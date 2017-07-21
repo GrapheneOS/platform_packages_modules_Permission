@@ -169,6 +169,8 @@ public final class Utils {
 
         PLATFORM_PERMISSIONS.put(Manifest.permission.BODY_SENSORS, SENSORS);
 
+        PLATFORM_PERMISSIONS.put(Manifest.permission.INTERNET, Manifest.permission_group.NETWORK);
+
         PLATFORM_PERMISSION_GROUPS = new ArrayMap<>();
         int numPlatformPermissions = PLATFORM_PERMISSIONS.size();
         for (int i = 0; i < numPlatformPermissions; i++) {
