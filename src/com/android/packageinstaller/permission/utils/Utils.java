@@ -28,6 +28,7 @@ import static android.Manifest.permission_group.PHONE;
 import static android.Manifest.permission_group.SENSORS;
 import static android.Manifest.permission_group.SMS;
 import static android.Manifest.permission_group.STORAGE;
+import static android.Manifest.permission_group.NETWORK;
 import static android.app.role.RoleManager.ROLE_ASSISTANT;
 import static android.content.Context.MODE_PRIVATE;
 import static android.content.pm.PackageManager.FLAG_PERMISSION_USER_SENSITIVE_WHEN_DENIED;
@@ -168,6 +169,8 @@ public final class Utils {
         PLATFORM_PERMISSIONS.put(Manifest.permission.CAMERA, CAMERA);
 
         PLATFORM_PERMISSIONS.put(Manifest.permission.BODY_SENSORS, SENSORS);
+
+        PLATFORM_PERMISSIONS.put(Manifest.permission.INTERNET, NETWORK);
 
         PLATFORM_PERMISSION_GROUPS = new ArrayMap<>();
         int numPlatformPermissions = PLATFORM_PERMISSIONS.size();
