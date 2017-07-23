@@ -41,6 +41,7 @@ import com.android.permissioncontroller.permission.model.livedatatypes.LightAppP
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.PermissionMapping
+import com.android.permissioncontroller.permission.utils.PermissionMapping.isSpecialRuntimePermissionGroup
 import com.android.permissioncontroller.permission.utils.application
 import com.android.permissioncontroller.permission.utils.forEachInParallel
 import com.android.permissioncontroller.permission.utils.updatePermissionFlags
@@ -140,8 +141,7 @@ suspend fun revokeAppPermissions(
                         !group.isGrantedByDefault &&
                         !group.isGrantedByRole &&
                         !group.isRevokeWhenRequested &&
-                        group.isUserSensitive
-                ) {
+                        group.isUserSensitive && !isSpecialRuntimePermissionGroup(groupName)) {
                     revocableGroups.add(groupName)
                 }
             }
