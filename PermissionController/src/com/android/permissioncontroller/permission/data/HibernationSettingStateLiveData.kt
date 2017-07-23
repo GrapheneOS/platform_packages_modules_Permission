@@ -34,6 +34,7 @@ import com.android.permissioncontroller.hibernation.isPackageHibernationExemptBy
 import com.android.permissioncontroller.hibernation.isPackageHibernationExemptByUser
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData.Companion.NON_RUNTIME_NORMAL_PERMS
 import com.android.permissioncontroller.permission.model.livedatatypes.HibernationSettingState
+import com.android.permissioncontroller.permission.utils.Utils
 import kotlinx.coroutines.Job
 
 /**
@@ -117,7 +118,7 @@ class HibernationSettingStateLiveData private constructor(
                     permState.permFlags and (FLAG_PERMISSION_GRANTED_BY_DEFAULT or
                             FLAG_PERMISSION_GRANTED_BY_ROLE) != 0
                 } ?: false
-                if (!default) {
+                if (!default && !Utils.isSpecialRuntimePermissionGroup(groupName)) {
                     revocableGroups.add(groupName)
                 }
             }
