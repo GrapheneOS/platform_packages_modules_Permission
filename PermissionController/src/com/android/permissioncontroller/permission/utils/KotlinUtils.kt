@@ -91,6 +91,7 @@ import com.android.permissioncontroller.permission.model.livedatatypes.LightPerm
 import com.android.permissioncontroller.permission.model.livedatatypes.PermState
 import com.android.permissioncontroller.permission.service.LocationAccessCheck
 import com.android.permissioncontroller.permission.ui.handheld.SettingsWithLargeHeader
+import com.android.permissioncontroller.permission.utils.PermissionMapping.isSpecialRuntimePermission
 import com.android.safetycenter.resources.SafetyCenterResourcesApk
 import java.time.Duration
 import java.util.concurrent.atomic.AtomicReference
@@ -910,6 +911,7 @@ object KotlinUtils {
         val user = UserHandle.getUserHandleForUid(pkgInfo.uid)
         val deviceId = group.deviceId
         val supportsRuntime = pkgInfo.targetSdkVersion >= Build.VERSION_CODES.M
+                || isSpecialRuntimePermission(perm.name)
         val isGrantingAllowed =
             (!pkgInfo.isInstantApp || perm.isInstantPerm) &&
                 (supportsRuntime || !perm.isRuntimeOnly)
@@ -1245,6 +1247,7 @@ object KotlinUtils {
         val deviceId = group.deviceId
         var isGranted = perm.isGranted
         val supportsRuntime = group.packageInfo.targetSdkVersion >= Build.VERSION_CODES.M
+                || isSpecialRuntimePermission(perm.name)
         var shouldKill = false
 
         val affectsAppOp = permissionToOp(perm.name) != null || perm.isBackgroundPermission
