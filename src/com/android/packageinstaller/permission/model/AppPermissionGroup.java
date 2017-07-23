@@ -33,6 +33,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.PermissionGroupInfo;
 import android.content.pm.PermissionInfo;
+import android.Manifest;
 import android.os.Build;
 import android.os.UserHandle;
 import android.permission.PermissionManager;
@@ -651,7 +652,7 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
                     && !ArrayUtils.contains(filterPermissions, permission.getName())) {
                 continue;
             }
-            if (permission.isGrantedIncludingAppOp()) {
+            if (permission.isGrantedIncludingAppOp() || Manifest.permission.INTERNET.equals(permission.getName())) {
                 return true;
             }
         }
@@ -785,7 +786,7 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
 
             boolean wasGranted = permission.isGrantedIncludingAppOp();
 
-            if (mAppSupportsRuntimePermissions) {
+            if (mAppSupportsRuntimePermissions || Manifest.permission.INTERNET.equals(permission.getName())) {
                 // Do not touch permissions fixed by the system.
                 if (permission.isSystemFixed()) {
                     wasAllGranted = false;
@@ -957,7 +958,7 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
             }
 
             // Do not touch permissions fixed by the system.
-            if (permission.isSystemFixed()) {
+            if (permission.isSystemFixed() || Manifest.permission.INTERNET.equals(permission.getName())) {
                 wasAllRevoked = false;
                 break;
             }
