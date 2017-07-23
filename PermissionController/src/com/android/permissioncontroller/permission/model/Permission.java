@@ -24,6 +24,8 @@ import androidx.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import static com.android.permissioncontroller.permission.utils.PermissionMapping.isSpecialRuntimePermission;
+
 /**
  * A permission and it's properties.
  *
@@ -137,7 +139,7 @@ public final class Permission {
      * @return {@code true} if the permission (and the app-op) is granted.
      */
     public boolean isGrantedIncludingAppOp() {
-        return mGranted && (!affectsAppOp() || isAppOpAllowed()) && !isReviewRequired();
+        return mGranted && (!affectsAppOp() || isAppOpAllowed()) && (!isReviewRequired() || isSpecialRuntimePermission(mName));
     }
 
     public boolean isReviewRequired() {

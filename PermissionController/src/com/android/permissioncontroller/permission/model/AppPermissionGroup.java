@@ -28,6 +28,7 @@ import static android.content.pm.PackageManager.FLAG_PERMISSION_REVOKED_COMPAT;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.health.connect.HealthPermissions.HEALTH_PERMISSION_GROUP;
 
+import static com.android.permissioncontroller.permission.utils.PermissionMapping.isSpecialRuntimePermission;
 import static com.android.permissioncontroller.permission.utils.Utils.isHealthPermissionUiEnabled;
 
 import android.Manifest;
@@ -951,7 +952,7 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
                     permission.getName(),
                     mPackageInfo.applicationInfo.targetSdkVersion);
 
-            if (mAppSupportsRuntimePermissions && !isPermissionSplitFromNonRuntime) {
+            if ((mAppSupportsRuntimePermissions && !isPermissionSplitFromNonRuntime) || isSpecialRuntimePermission(permission.getName())) {
                 // Do not touch permissions fixed by the system.
                 if (permission.isSystemFixed()) {
                     wasAllGranted = false;
@@ -1147,7 +1148,7 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
                             permission.getName(),
                             mPackageInfo.applicationInfo.targetSdkVersion);
 
-            if (mAppSupportsRuntimePermissions && !isPermissionSplitFromNonRuntime) {
+            if ((mAppSupportsRuntimePermissions && !isPermissionSplitFromNonRuntime) || isSpecialRuntimePermission(permission.getName())) {
 
                 // Revoke the permission if needed.
                 if (permission.isGranted()) {
