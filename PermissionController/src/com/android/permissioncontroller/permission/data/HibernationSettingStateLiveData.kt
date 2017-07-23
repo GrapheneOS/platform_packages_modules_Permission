@@ -35,6 +35,7 @@ import com.android.permissioncontroller.hibernation.isPackageHibernationExemptBy
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData.Companion.NON_RUNTIME_NORMAL_PERMS
 import com.android.permissioncontroller.permission.model.livedatatypes.HibernationSettingState
 import com.android.permissioncontroller.permission.service.AUTO_REVOKE_EXEMPT_PERMISSIONS
+import com.android.permissioncontroller.permission.utils.PermissionMapping.isSpecialRuntimePermissionGroup
 import kotlinx.coroutines.Job
 
 /**
@@ -120,7 +121,7 @@ private constructor(
                         permName in AUTO_REVOKE_EXEMPT_PERMISSIONS
                     }
                         ?: false
-                if (!default && !allExempt) {
+                if (!default && !allExempt && !isSpecialRuntimePermissionGroup(groupName)) {
                     revocableGroups.add(groupName)
                 }
             }
