@@ -138,7 +138,7 @@ public final class Permission {
      * @return {@code true} if the permission (and the app-op) is granted.
      */
     public boolean isGrantedIncludingAppOp() {
-        return mGranted && (!affectsAppOp() || isAppOpAllowed()) && (!isReviewRequired() || Manifest.permission.INTERNET.equals(mName));
+        return mGranted && (!affectsAppOp() || isAppOpAllowed()) && (!isReviewRequired() || Manifest.permission.INTERNET.equals(mName) || Manifest.permission.OTHER_SENSORS.equals(mName));
     }
 
     public boolean isReviewRequired() {
