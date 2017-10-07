@@ -52,7 +52,8 @@ public final class Utils {
             Manifest.permission_group.PHONE,
             Manifest.permission_group.MICROPHONE,
             Manifest.permission_group.STORAGE,
-            Manifest.permission_group.NETWORK
+            Manifest.permission_group.NETWORK,
+            Manifest.permission_group.OTHER_SENSORS
     };
 
     private static final Intent LAUNCHER_INTENT = new Intent(Intent.ACTION_MAIN, null)
