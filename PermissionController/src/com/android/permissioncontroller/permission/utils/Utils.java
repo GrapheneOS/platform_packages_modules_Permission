@@ -707,7 +707,8 @@ public final class Utils {
         }
         return Manifest.permission_group.SMS.equals(group)
                 || Manifest.permission_group.PHONE.equals(group)
-                || Manifest.permission_group.CONTACTS.equals(group);
+                || Manifest.permission_group.CONTACTS.equals(group)
+                || Manifest.permission_group.CALL_LOG.equals(group);
     }
 
     public static boolean isPermissionIndividuallyControlled(Context context, String permission) {
