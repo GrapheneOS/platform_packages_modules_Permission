@@ -652,7 +652,7 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
                     && !ArrayUtils.contains(filterPermissions, permission.getName())) {
                 continue;
             }
-            if (permission.isGrantedIncludingAppOp() || Manifest.permission.INTERNET.equals(permission.getName()) || Manifest.permission.OTHER_SENSORS.equals(permission.getName())) {
+            if (permission.isGrantedIncludingAppOp()) {
                 return true;
             }
         }
