@@ -42,13 +42,13 @@
     <string name="grant_dialog_button_allow_foreground" msgid="3921023528122697550">"Қолданбаны пайдаланған кезде"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="3290372652702487431">"Тек осы кезде"</string>
     <string name="grant_dialog_button_allow_background" msgid="3190568549032350790">"Біржола рұқсат ету"</string>
-    <string name="grant_dialog_button_allow_all_files" msgid="1581085085495813735">"Барлық файлдарды пайдалануға рұқсат беру"</string>
+    <string name="grant_dialog_button_allow_all_files" msgid="1581085085495813735">"Барлық файлдарды басқаруға рұқсат беру"</string>
     <string name="grant_dialog_button_allow_media_only" msgid="3516456055703710144">"Медиафайлдарды пайдалануға рұқсат беру"</string>
     <string name="app_permissions_breadcrumb" msgid="6174723486639913311">"Қолданбалар"</string>
     <string name="app_permissions" msgid="2778362347879465223">"Қолданба рұқсаттары"</string>
     <string name="unused_apps" msgid="3935514133237470759">"Пайдаланылмайтын қолданбалар"</string>
     <string name="app_disable_dlg_positive" msgid="3928516331670255309">"Қолданбаны өшіру"</string>
-    <string name="app_disable_dlg_text" msgid="5218197617670218828">"Бұл қолданбаны өшірсеңіз, Android жүйесі мен басқа қолданбалар тиісінше жұмыс істемеуі мүмкін. Бұл қолданба құрылғыға алдын ала орнатылатындықтан, оны жою мүмкін еместігін ескеріңіз. Өшіріп қою арқылы сіз бұл қолданбаны өшіріп, оны құрылғыда жасыра аласыз."</string>
+    <string name="app_disable_dlg_text" msgid="5218197617670218828">"Бұл қолданбаны өшірсеңіз, Android жүйесі мен басқа қолданбалар тиісінше жұмыс істемеуі мүмкін. Бұл қолданба құрылғыға алдын ала орнатылатындықтан, оны жою мүмкін еместігін ескеріңіз. Өшіріп қою арқылы сіз бұл қолданбаны ажыратып, оны құрылғыда жасыра аласыз."</string>
     <string name="app_permission_manager" msgid="3802609813311662642">"Рұқсат басқарушысы"</string>
     <string name="never_ask_again" msgid="7645304182523160030">"Қайта сұралмасын"</string>
     <string name="no_permissions" msgid="2193893107241172888">"Рұқсат жоқ"</string>
@@ -105,7 +105,7 @@
     <string name="filter_by_time" msgid="1763143592970195407">"Уақыты бойынша сүзу"</string>
     <string name="item_separator" msgid="8266062815210378175">", "</string>
     <string name="app_permission_button_allow" msgid="1358817292836175593">"Рұқсат беру"</string>
-    <string name="app_permission_button_allow_all_files" msgid="4981526745327887198">"Барлық файлдарды пайдалануға рұқсат беру"</string>
+    <string name="app_permission_button_allow_all_files" msgid="4981526745327887198">"Барлық файлдарды басқаруға рұқсат беру"</string>
     <string name="app_permission_button_allow_media_only" msgid="4093190111622941620">"Тек медиафайлдарды пайдалануға рұқсат беру"</string>
     <string name="app_permission_button_allow_always" msgid="4313513946865105788">"Әрдайым рұқсат беру"</string>
     <string name="app_permission_button_allow_foreground" msgid="2303741829613210541">"Қолданбаны пайдалану кезінде ғана рұқсат беру"</string>
@@ -116,8 +116,10 @@
     <string name="app_permission_footer_app_permissions_link" msgid="8033278634020892918">"Барлық <xliff:g id="APP">%1$s</xliff:g> рұқсаттарын көру"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="8759141212929298774">"Осы рұқсатқа ие барлық қолданбаларды көру"</string>
     <string name="auto_revoke_label" msgid="8755748230070160969">"Қолданба пайдаланылмаса, рұқсаттарды өшіру"</string>
-    <string name="auto_revoke_summary" msgid="1842110019199306298">"Қолданба бірнеше ай бойы қолданылмаса, деректеріңізді қорғау үшін осы қолданбаға арналған рұқсаттардан бас тартылады."</string>
-    <string name="auto_revoke_summary_with_permissions" msgid="160422052726006109">"Деректер қорғау мақсатында қолданбаны бірнеше ай бойы пайдаланбасаңыз, рұқсаттар өшіріледі: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
+    <string name="auto_revoke_summary" msgid="308686883215278993">"Бұл қолданба бірнеше ай бойы пайдаланылмаса, деректеріңізді қорғау үшін оған берілген рұқсаттар өшіріледі."</string>
+    <string name="auto_revoke_summary_with_permissions" msgid="5460568151204648005">"Қолданба бірнеше ай бойы пайдаланылмаса, деректеріңізді қорғау үшін мына рұқсаттар өшіріледі: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
+    <string name="auto_revoked_apps_page_summary" msgid="2780912986594704165">"Бірнеше ай бойы пайдаланылмаған қолданбаларға берілген рұқсаттар деректеріңізді қорғау үшін өшірілді."</string>
+    <string name="auto_revoke_open_app_message" msgid="7960965074929429500">"Қайта рұқсат бергіңіз келсе, қолданбаны ашыңыз."</string>
     <string name="auto_revoke_disabled" msgid="4480748641016277290">"Бұл қолданба үшін автоматты түрде өшіру ажыратылған."</string>
     <string name="auto_revocable_permissions_none" msgid="2908881351941596829">"Автоматты түрде бас тартуға болатын ешқандай рұқсат берілмеген."</string>
     <string name="auto_revocable_permissions_one" msgid="8790555940010364058">"<xliff:g id="PERM">%1$s</xliff:g> рұқсаты өшіріледі."</string>
@@ -153,7 +155,7 @@
     <string name="allowed_always_header" msgid="6698473105201405782">"Біржола рұқсат етілгендер"</string>
     <string name="allowed_foreground_header" msgid="7553595563464819175">"Қолданылып жатқанда ғана рұқсат етілгендер"</string>
     <string name="allowed_storage_scoped" msgid="2472018207553284700">"Тек медиафайлды пайдалана алатын қолданбалар"</string>
-    <string name="allowed_storage_full" msgid="4167507647800726342">"Барлық файлдарды пайдаланатын қолданбалар"</string>
+    <string name="allowed_storage_full" msgid="4167507647800726342">"Барлық файлдарды басқара алатын қолданбалар"</string>
     <string name="ask_header" msgid="4471670860332046665">"Әрдайым сұрау"</string>
     <string name="denied_header" msgid="2277998574238617699">"Тыйым салынғандар"</string>
     <plurals name="days" formatted="false" msgid="3903419301028414979">
@@ -190,6 +192,8 @@
     <string name="unused_permissions_subtitle_two" msgid="8377946866912481356">"<xliff:g id="PERM_NAME_0">%1$s</xliff:g> және <xliff:g id="PERM_NAME_1">%2$s</xliff:g>"</string>
     <string name="unused_permissions_subtitle_many" msgid="3293109339018555084">"<xliff:g id="PERM_NAME_0">%1$s</xliff:g>, <xliff:g id="PERM_NAME_1">%2$s</xliff:g> және тағы <xliff:g id="NUMBER_OF_PERMISSIONS">%3$s</xliff:g>"</string>
     <string name="unused_app_permissions_removed_summary" msgid="323483158593998019">"Деректер қорғау мақсатында бірнеше ай бойы пайдаланылмаған қолданбалардан рұқсаттар өшіріледі"</string>
+    <string name="one_unused_app_summary" msgid="4609894550969723046">"1 қолданба бірнеше ай бойы пайдаланылмады."</string>
+    <string name="num_unused_apps_summary" msgid="2950515592303103371">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> қолданба бірнеше ай бойы пайдаланылмады."</string>
     <string name="permission_subtitle_only_in_foreground" msgid="3101936262905298459">"Қолданба пайдаланып жатқанда ғана"</string>
     <string name="permission_subtitle_media_only" msgid="4163630471124702816">"Meдиафайлдар"</string>
     <string name="permission_subtitle_all_files" msgid="8017896678339448565">"Барлық файлдар"</string>
