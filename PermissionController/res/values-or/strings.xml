@@ -175,8 +175,10 @@
       <item quantity="one">1 ସେକେଣ୍ଡ</item>
     </plurals>
     <string name="permission_reminders" msgid="8040710767178843151">"ଅନୁମତି ରିମାଇଣ୍ଡର୍"</string>
-    <string name="auto_revoke_permission_reminder_notification_title" msgid="4605662126884792273">"ଆପ୍ ଅନୁମତିଗୁଡ଼ିକୁ ସ୍ୱଚାଳିତ ଭାବେ କାଢ଼ି ଦିଆଯାଇଛି"</string>
-    <string name="auto_revoke_permission_reminder_notification_content" msgid="5782565378830205909">"କିଛି ଆପକୁ କିଛି ମାସ ହେଲା ବ୍ୟବହାର କରାଯାଇନାହିଁ। ଅଧିକ ସୂଚନା ପାଇଁ ଟାପ୍ କରନ୍ତୁ।"</string>
+    <string name="auto_revoke_permission_reminder_notification_title_one" msgid="5769691038915584486">"1ଟି ଅବ୍ୟବହୃତ ଆପ୍"</string>
+    <string name="auto_revoke_permission_reminder_notification_title_many" msgid="9035362208572362215">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g>ଟି ଅବ୍ୟବହୃତ ଆପ୍"</string>
+    <string name="auto_revoke_permission_reminder_notification_content" msgid="5952076530125261716">"ଆପଣଙ୍କ ଗୋପନୀୟତାକୁ ସୁରକ୍ଷା ଦେବା ପାଇଁ ଅନୁମତିଗୁଡ଼ିକୁ କାଢ଼ି ଦିଆଯାଇଛି। ସମୀକ୍ଷା କରିବାକୁ ଟାପ୍ କରନ୍ତୁ"</string>
+    <string name="auto_revoke_preference_summary" msgid="422689541593333180">"ଆପଣଙ୍କ ଗୋପନୀୟତାକୁ ସୁରକ୍ଷା ଦେବା ପାଇଁ ଅନୁମତିଗୁଡ଼ିକୁ କାଢ଼ି ଦିଆଯାଇଛି"</string>
     <string name="background_location_access_reminder_notification_title" msgid="458109692937364585">"<xliff:g id="APP_NAME">%s</xliff:g> ପୃଷ୍ଠପଟରେ ଆପଣଙ୍କ ଲୋକେସନ୍ ପାଇଛି"</string>
     <string name="background_location_access_reminder_notification_content" msgid="2715202570602748060">"ଏହି ଆପ୍ ସବୁବେଳେ ଆପଣଙ୍କ ଲୋକେସନ୍ ଆକ୍ସେସ୍ କରିପାରିବ। ବଦଳାଇବା ପାଇଁ ଟାପ୍ କରନ୍ତୁ"</string>
     <string name="auto_revoke_after_notification_title" msgid="6256474332719286120">"ଗୋପନୀୟତାକୁ ସୁରକ୍ଷା ଦେବା ପାଇଁ ଆପ୍ ଅନୁମତିଗୁଡ଼ିକ କାଢ଼ି ଦିଆଯାଇଛି"</string>
@@ -280,7 +282,7 @@
     <string name="incident_report_notification_text" msgid="8316657912290049576">"<xliff:g id="APP_NAME">%1$s</xliff:g> ଡିବଗିଂ ସୂଚନା ଅପ୍‌ଲୋଡ୍ କରିବାକୁ ଚାହାନ୍ତି।"</string>
     <string name="incident_report_dialog_title" msgid="6147075171471634629">"ଡିବଗିଂ ଡାଟା ସେୟାର୍ କରନ୍ତୁ"</string>
     <string name="incident_report_dialog_intro" msgid="153446034925770956">"ସିଷ୍ଟମ୍ ଗୋଟିଏ ସମସ୍ୟା ଚିହ୍ନଟ କରିଛି"</string>
-    <string name="incident_report_dialog_text" msgid="6838105320223101131">"<xliff:g id="APP_NAME_0">%1$s</xliff:g> <xliff:g id="DATE">%2$s</xliff:g> <xliff:g id="TIME">%3$s</xliff:g>ରେ ଏହି ଡିଭାଇସ୍‌ରୁ ନିଆଯାଇଥିବା ଏକ ବଗ୍ ରିପୋର୍ଟ ଅପ୍‌ଲୋଡ୍ କରିବାକୁ ଅନୁରୋଧ କରିଛି। ବଗ୍ ରିପୋର୍ଟରେ ଆପଣଙ୍କ ଡିଭାଇସ୍ ସମ୍ବନ୍ଧରେ ବ୍ୟକ୍ତିଗତ ସୂଚନା ବା ଆପ୍ସ ଲଗ୍‌ଇନ୍ ସମୟରେ ଦେଇଥିବା ବ୍ୟକ୍ତିଗତ ସୂଚନା ଉଦାହରଣ ସ୍ବରୂପ ଉପଯୋଗକର୍ତ୍ତାଙ୍କ ନାମ, ଲୋକେସନ୍, ଡିଭାଇସ୍ ଚିହ୍ନଟକାରୀ, ଏବଂ ନେଟ୍‍ୱର୍କ ସୂଚନା ଅନ୍ତର୍ଭୂକ୍ତ ରହିଛି। ଏହି ସୂଚନା ସେୟାର୍ କରିବା ପାଇଁ ଆପଣ ଯାହାଙ୍କୁ ଭରସା କରୁଛନ୍ତି କେବଳ ସେହି ଲୋକ ଏବଂ ଆପ୍ସ ସହିତ ବଗ୍ ରିପୋର୍ଟ ସେୟାର୍ କରନ୍ତୁ। ଏକ ବଗ୍ ରିପୋର୍ଟ ଅପ୍‌ଲୋଡ୍ କରିବା ପାଇଁ <xliff:g id="APP_NAME_1">%4$s</xliff:g>କୁ ଅନୁମତି ଦେବେ?"</string>
+    <string name="incident_report_dialog_text" msgid="6838105320223101131">"<xliff:g id="APP_NAME_0">%1$s</xliff:g> <xliff:g id="DATE">%2$s</xliff:g> <xliff:g id="TIME">%3$s</xliff:g>ରେ ଏହି ଡିଭାଇସ୍‌ରୁ ନିଆଯାଇଥିବା ଏକ ବଗ୍ ରିପୋର୍ଟ ଅପ୍‌ଲୋଡ୍ କରିବାକୁ ଅନୁରୋଧ କରୁଛି। ବଗ୍ ରିପୋର୍ଟରେ ଆପଣଙ୍କ ଡିଭାଇସ୍ ସମ୍ବନ୍ଧରେ ବ୍ୟକ୍ତିଗତ ସୂଚନା ବା ଆପ୍ସ ଲଗ୍ କରିଥିବା ବ୍ୟକ୍ତିଗତ ସୂଚନା, ଉଦାହରଣ ସ୍ୱରୂପ ଉପଯୋଗକର୍ତ୍ତାଙ୍କ ନାମ, ଲୋକେସନ୍ ଡାଟା, ଡିଭାଇସ୍ ଚିହ୍ନଟକାରୀ, ଏବଂ ନେଟୱାର୍କ ସୂଚନା ଅନ୍ତର୍ଭୁକ୍ତ ରହିଛି। ଏହି ସୂଚନା ସେୟାର୍ କରିବା ପାଇଁ ଆପଣ ଯାହାକୁ ଭରସା କରୁଛନ୍ତି କେବଳ ସେହି ଲୋକ ଏବଂ ଆପ୍ସ ସହିତ ବଗ୍ ରିପୋର୍ଟ ସେୟାର୍ କରନ୍ତୁ। ଏକ ବଗ୍ ରିପୋର୍ଟ ଅପ୍‌ଲୋଡ୍ କରିବା ପାଇଁ <xliff:g id="APP_NAME_1">%4$s</xliff:g>କୁ ଅନୁମତି ଦେବେ?"</string>
     <string name="incident_report_error_dialog_text" msgid="1001752000696958519">"<xliff:g id="APP_NAME">%1$s</xliff:g> ପାଇଁ ବଗ୍ ରିପୋର୍ଟ ପ୍ରକ୍ରିୟାକରଣରେ ଏକ ତ୍ରୁଟି ହୋଇଛି। ତେଣୁ ଡିବଗିଂ ବିବରଣୀ ଡାଟା ସେୟାରିଂ ପ୍ରତ୍ୟାକ୍ଷାନ ହୋଇଛି। ଅସୁବିଧା ପାଇଁ ଦୁଃଖିତ।"</string>
     <string name="incident_report_dialog_allow_label" msgid="6863130835544805205">"ଅନୁମତି ଦିଅନ୍ତୁ"</string>
     <string name="incident_report_dialog_deny_label" msgid="1297192379930944676">"ପ୍ରତ୍ୟାଖ୍ୟାନ କରନ୍ତୁ"</string>
