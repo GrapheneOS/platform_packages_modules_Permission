@@ -31,7 +31,7 @@
     <string name="back">Back</string>
 
     <!-- Button label for uninstall or disable actions [CHAR LIMIT=none] -->
-    <string name="uninstall_or_disable">Unintstall or disable</string>
+    <string name="uninstall_or_disable">Uninstall or disable</string>
 
     <!--  [CHAR LIMIT=30] -->
     <string name="app_not_found_dlg_title">App not found</string>
