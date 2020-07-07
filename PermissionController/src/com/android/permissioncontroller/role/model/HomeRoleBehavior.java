@@ -38,6 +38,7 @@ import com.android.permissioncontroller.permission.utils.CollectionUtils;
 import com.android.permissioncontroller.role.ui.TwoTargetPreference;
 import com.android.permissioncontroller.role.utils.UserUtils;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -51,6 +52,9 @@ import java.util.Objects;
 public class HomeRoleBehavior implements RoleBehavior {
 
     private static final String LOG_TAG = HomeRoleBehavior.class.getSimpleName();
+
+    private static final List<String> AUTOMOTIVE_PERMISSIONS = Arrays.asList(
+            android.Manifest.permission.READ_CALL_LOG, android.Manifest.permission.READ_CONTACTS);
 
     @Override
     public boolean isAvailableAsUser(@NonNull Role role, @NonNull UserHandle user,
@@ -176,5 +180,21 @@ public class HomeRoleBehavior implements RoleBehavior {
                 .addCategory(Intent.CATEGORY_HOME)
                 .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
+    }
+
+    @Override
+    public void grant(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
+        if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE)) {
+            Permissions.grant(packageName, AUTOMOTIVE_PERMISSIONS,
+                    true, false, true, false, false, context);
+        }
+    }
+
+    @Override
+    public void revoke(@NonNull Role role, @NonNull String packageName,
+            @NonNull Context context) {
+        if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE)) {
+            Permissions.revoke(packageName, AUTOMOTIVE_PERMISSIONS, true, false, false, context);
+        }
     }
 }
