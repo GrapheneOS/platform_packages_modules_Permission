@@ -60,7 +60,6 @@ import android.provider.DeviceConfig
 import android.provider.Settings
 import android.service.attention.AttentionService
 import android.service.autofill.AutofillService
-import android.service.autofill.augmented.AugmentedAutofillService
 import android.service.dreams.DreamService
 import android.service.notification.NotificationListenerService
 import android.service.textclassifier.TextClassifierService
@@ -715,10 +714,6 @@ class ExemptServicesLiveData(val user: UserHandle)
             ServiceLiveData[
                     AutofillService.SERVICE_INTERFACE,
                     Manifest.permission.BIND_AUTOFILL_SERVICE,
-                    user],
-            ServiceLiveData[
-                    AugmentedAutofillService.SERVICE_INTERFACE,
-                    Manifest.permission.BIND_AUGMENTED_AUTOFILL_SERVICE,
                     user],
             ServiceLiveData[
                     DevicePolicyManager.ACTION_DEVICE_ADMIN_SERVICE,
