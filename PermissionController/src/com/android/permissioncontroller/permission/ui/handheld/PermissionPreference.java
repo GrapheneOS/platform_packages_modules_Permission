@@ -575,7 +575,8 @@ class PermissionPreference extends MultiTargetSwitchPreference {
 
         Bundle args = new Bundle();
         args.putCharSequence(BackgroundAccessChooser.TITLE,
-                getRequestMessage(getAppLabel(), mGroup, getContext(), mGroup.getRequest()));
+                getRequestMessage(getAppLabel(), mGroup.getApp().packageName, mGroup.getName(),
+                        getContext(), mGroup.getRequest()));
         args.putString(BackgroundAccessChooser.KEY, getKey());
 
 

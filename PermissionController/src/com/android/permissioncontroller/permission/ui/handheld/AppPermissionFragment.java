@@ -431,6 +431,10 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
     }
 
     private void setResult(@GrantPermissionsViewHandler.Result int result) {
+        if (!mPackageName.equals(
+                getActivity().getIntent().getStringExtra(Intent.EXTRA_PACKAGE_NAME))) {
+            return;
+        }
         Intent intent = new Intent()
                 .putExtra(EXTRA_RESULT_PERMISSION_INTERACTED, mPermGroupName)
                 .putExtra(EXTRA_RESULT_PERMISSION_RESULT, result);

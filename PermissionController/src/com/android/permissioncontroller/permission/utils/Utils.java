@@ -29,6 +29,8 @@ import static android.Manifest.permission_group.PHONE;
 import static android.Manifest.permission_group.SENSORS;
 import static android.Manifest.permission_group.SMS;
 import static android.Manifest.permission_group.STORAGE;
+import static android.app.AppOpsManager.MODE_ALLOWED;
+import static android.app.AppOpsManager.OPSTR_LEGACY_STORAGE;
 import static android.content.Context.MODE_PRIVATE;
 import static android.content.pm.PackageManager.FLAG_PERMISSION_RESTRICTION_INSTALLER_EXEMPT;
 import static android.content.pm.PackageManager.FLAG_PERMISSION_RESTRICTION_SYSTEM_EXEMPT;
@@ -43,6 +45,7 @@ import static android.os.UserHandle.myUserId;
 import static com.android.permissioncontroller.Constants.INVALID_SESSION_ID;
 
 import android.Manifest;
+import android.app.AppOpsManager;
 import android.app.Application;
 import android.app.role.RoleManager;
 import android.content.ActivityNotFoundException;
@@ -51,9 +54,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageItemInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.PermissionGroupInfo;
 import android.content.pm.PermissionInfo;
 import android.content.pm.ResolveInfo;
 import android.content.pm.ServiceInfo;
@@ -62,6 +67,7 @@ import android.content.res.Resources.Theme;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Parcelable;
 import android.os.Process;
 import android.os.UserHandle;
@@ -719,15 +725,23 @@ public final class Utils {
      * Get the message shown to grant a permission group to an app.
      *
      * @param appLabel The label of the app
-     * @param group the group to be granted
+     * @param packageName The package name of the app
+     * @param groupName The name of the permission group
      * @param context A context to resolve resources
      * @param requestRes The resource id of the grant request message
      *
      * @return The formatted message to be used as title when granting permissions
      */
-    public static CharSequence getRequestMessage(CharSequence appLabel, AppPermissionGroup group,
-            Context context, @StringRes int requestRes) {
-        if (group.getName().equals(STORAGE) && !group.isNonIsolatedStorage()) {
+    public static CharSequence getRequestMessage(CharSequence appLabel, String packageName,
+            String groupName, Context context, @StringRes int requestRes) {
+
+        boolean isIsolatedStorage = false;
+        try {
+            isIsolatedStorage = !isNonIsolatedStorage(context, packageName);
+        } catch (NameNotFoundException e) {
+            return null;
+        }
+        if (groupName.equals(STORAGE) && isIsolatedStorage) {
             return Html.fromHtml(
                     String.format(context.getResources().getConfiguration().getLocales().get(0),
                             context.getString(R.string.permgrouprequest_storage_isolated),
@@ -737,7 +751,43 @@ public final class Utils {
         }
 
         return Html.fromHtml(context.getString(R.string.permission_warning_template, appLabel,
-                group.getDescription()), 0);
+                loadGroupDescription(context, groupName, context.getPackageManager())), 0);
+    }
+
+    private static CharSequence loadGroupDescription(Context context, String groupName,
+            @NonNull PackageManager packageManager) {
+        PackageItemInfo groupInfo = getGroupInfo(groupName, context);
+        CharSequence description = null;
+        if (groupInfo instanceof PermissionGroupInfo) {
+            description = ((PermissionGroupInfo) groupInfo).loadDescription(packageManager);
+        } else if (groupInfo instanceof PermissionInfo) {
+            description = ((PermissionInfo) groupInfo).loadDescription(packageManager);
+        }
+
+        if (description == null || description.length() <= 0) {
+            description = context.getString(R.string.default_permission_description);
+        }
+
+        return description;
+    }
+
+    /**
+     * Whether or not the given package has non-isolated storage permissions
+     * @param context The current context
+     * @param packageName The package name to check
+     * @return True if the package has access to non-isolated storage, false otherwise
+     * @throws NameNotFoundException
+     */
+    public static boolean isNonIsolatedStorage(@NonNull Context context,
+            @NonNull String packageName) throws NameNotFoundException {
+        PackageInfo packageInfo = context.getPackageManager().getPackageInfo(packageName, 0);
+        AppOpsManager manager = context.getSystemService(AppOpsManager.class);
+
+
+        return packageInfo.applicationInfo.targetSdkVersion < Build.VERSION_CODES.P
+                || (packageInfo.applicationInfo.targetSdkVersion < Build.VERSION_CODES.R
+                && manager.unsafeCheckOpNoThrow(OPSTR_LEGACY_STORAGE,
+                packageInfo.applicationInfo.uid, packageInfo.packageName) == MODE_ALLOWED);
     }
 
     /**

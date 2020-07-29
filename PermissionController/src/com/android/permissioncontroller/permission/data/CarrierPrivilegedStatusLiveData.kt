@@ -37,6 +37,11 @@ class CarrierPrivilegedStatusLiveData private constructor(
         value = telephonyManager.checkCarrierPrivilegesForPackageAnyPhone(packageName)
     }
 
+    override fun onActive() {
+        super.onActive()
+        updateIfActive()
+    }
+
     /**
      * Repository for [CarrierPrivilegedStatusLiveData].
      * <p> Key value is a package name, value is its corresponding LiveData of

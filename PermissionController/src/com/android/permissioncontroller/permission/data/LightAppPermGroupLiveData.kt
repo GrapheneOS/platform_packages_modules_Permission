@@ -190,11 +190,11 @@ class LightAppPermGroupLiveData private constructor(
     }
 
     override fun onInactive() {
-        super.onInactive()
-
         if (isSpecialLocation) {
             LocationUtils.removeLocationListener(this)
         }
+
+        super.onInactive()
     }
 
     /**

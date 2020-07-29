@@ -23,7 +23,7 @@ import com.android.permissioncontroller.permission.utils.Utils
  * installed, runtime permission in every platform permission group. This LiveData's value is
  * static, since the background/foreground permission relationships are defined by the system.
  */
-object ForegroundPermNamesLiveData : SmartUpdateMediatorLiveData<Map<String, List<String>>>() {
+object ForegroundPermNamesLiveData : SmartUpdateMediatorLiveData<Map<String, List<String>>>(true) {
 
     // Since the value will be static, initialize the value upon creating the LiveData.
     init {
