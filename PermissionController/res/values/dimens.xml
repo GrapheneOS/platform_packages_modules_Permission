@@ -58,8 +58,11 @@
     <dimen name="incident_reason_bullet_indent">10dp</dimen>
 
     <!-- Auto related dimensions -->
-    <dimen name="car_action_bar_height">@*android:dimen/car_app_bar_height</dimen>
-    <dimen name="car_margin">@*android:dimen/car_margin</dimen>
-    <dimen name="car_icon_size">@*android:dimen/car_primary_icon_size</dimen>
+    <dimen name="car_action_bar_height">80dp</dimen>
+    <dimen name="car_margin">20dp</dimen>
+    <dimen name="car_icon_size">44dp</dimen>
+    <dimen name="car_preference_icon_size">44dp</dimen>
+    <dimen name="car_radius_1">4dp</dimen>
+    <dimen name="car_preference_row_vertical_margin">16dp</dimen>
 
 </resources>
