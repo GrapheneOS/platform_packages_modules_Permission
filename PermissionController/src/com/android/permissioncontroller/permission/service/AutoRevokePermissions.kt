@@ -239,7 +239,7 @@ private suspend fun revokePermissionsOnUnusedApps(
     // TODO ntmyren: remove once b/154796729 is fixed
     Log.i(LOG_TAG, "getting UserPackageInfoLiveData for all users " +
         "in AutoRevokePermissions")
-    val allPackagesByUser = AllPackageInfosLiveData.getInitializedValue()
+    val allPackagesByUser = AllPackageInfosLiveData.getInitializedValue(forceUpdate = true)
     val allPackagesByUserByUid = allPackagesByUser.mapValues { (_, pkgs) ->
         pkgs.groupBy { pkg -> pkg.uid }
     }
