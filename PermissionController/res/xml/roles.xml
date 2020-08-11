@@ -440,4 +440,17 @@
             <app-op name="android:write_media_video" mode="allowed" />
         </app-ops>
     </role>
+
+    <role
+        name="android.app.role.SYSTEM_AUTOMOTIVE_CLUSTER"
+        behavior="SystemAutomotiveClusterRoleBehavior"
+        defaultHolders="config_systemAutomotiveCluster"
+        exclusive="true"
+        systemOnly="true"
+        visible="false">
+        <permissions>
+            <permission name="android.permission.READ_CALL_LOG" />
+            <permission name="android.permission.READ_CONTACTS" />
+        </permissions>
+    </role>
 </roles>
