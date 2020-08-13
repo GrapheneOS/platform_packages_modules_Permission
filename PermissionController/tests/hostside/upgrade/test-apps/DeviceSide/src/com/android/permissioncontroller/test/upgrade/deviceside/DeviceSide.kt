@@ -99,210 +99,164 @@ class DeviceSide {
     }
 
     @Test
-    fun testFgCameraPermissionUnchanged_sdk30CameraGranted() {
-        assertThat(pm.checkPermission(CAMERA, PKG_30_CAMERA_GRANTED))
-                .isEqualTo(PERMISSION_GRANTED)
-    }
+    fun testUpgrade1() {
+        with(MultipleTestRunner()) {
+            runTest("testFgCameraPermissionUnchanged_sdk30CameraGranted") {
+                assertThat(pm.checkPermission(CAMERA, PKG_30_CAMERA_GRANTED))
+                        .isEqualTo(PERMISSION_GRANTED)
+            }
+            runTest("testFgCameraPermissionUnchanged_sdk30CameraDenied") {
+                assertThat(pm.checkPermission(CAMERA, PKG_30_CAMERA_DENIED))
+                        .isEqualTo(PERMISSION_DENIED)
+            }
+            runTest("testFgCameraPermissionUnchanged_sdk30CameraGrantedDeclaresBg") {
+                assertThat(pm.checkPermission(CAMERA, PKG_30_CAMERA_GRANTED_DECLARES_BG))
+                        .isEqualTo(PERMISSION_GRANTED)
+            }
+            runTest("testFgCameraPermissionUnchanged_sdk30CameraDeniedDeclaresBg") {
+                assertThat(pm.checkPermission(CAMERA, PKG_30_CAMERA_DENIED_DECLARES_BG))
+                        .isEqualTo(PERMISSION_DENIED)
+            }
+            runTest("testFgCameraPermissionUnchanged_sdkCurrentCameraGranted") {
+                assertThat(pm.checkPermission(CAMERA, PKG_CURRENT_CAMERA_GRANTED))
+                        .isEqualTo(PERMISSION_GRANTED)
+            }
+            runTest("testFgCameraPermissionUnchanged_sdkCurrentCameraDenied") {
+                assertThat(pm.checkPermission(CAMERA, PKG_CURRENT_CAMERA_DENIED))
+                        .isEqualTo(PERMISSION_DENIED)
+            }
+            runTest("testFgCameraPermissionUnchanged_sdkCurrentCameraGrantedDeclaresBg") {
+                assertThat(pm.checkPermission(CAMERA, PKG_CURRENT_CAMERA_GRANTED_DECLARES_BG))
+                        .isEqualTo(PERMISSION_GRANTED)
+            }
+            runTest("testFgCameraPermissionUnchanged_sdkCurrentCameraDeniedDeclaresBg") {
+                assertThat(pm.checkPermission(CAMERA, PKG_CURRENT_CAMERA_DENIED_DECLARES_BG))
+                        .isEqualTo(PERMISSION_DENIED)
+            }
 
-    @Test
-    fun testFgCameraPermissionUnchanged_sdk30CameraDenied() {
-        assertThat(pm.checkPermission(CAMERA, PKG_30_CAMERA_DENIED))
-                .isEqualTo(PERMISSION_DENIED)
-    }
+            runTest("testPackagesRequestBgCamera_sdk30CameraGranted") {
+                assertThat(pm.getPackageInfo(PKG_30_CAMERA_GRANTED, GET_PERMISSIONS)
+                        .requestedPermissions.contains(BACKGROUND_CAMERA)).isEqualTo(true)
+            }
+            runTest("testPackagesRequestBgCamera_sdk30CameraDenied") {
+                assertThat(pm.getPackageInfo(PKG_30_CAMERA_DENIED, GET_PERMISSIONS)
+                        .requestedPermissions.contains(BACKGROUND_CAMERA)).isEqualTo(true)
+            }
+            runTest("testPackagesRequestBgCamera_sdk30CameraGrantedDeclaresBg") {
+                assertThat(pm.getPackageInfo(PKG_30_CAMERA_GRANTED_DECLARES_BG, GET_PERMISSIONS)
+                        .requestedPermissions.contains(BACKGROUND_CAMERA)).isEqualTo(true)
+            }
+            runTest("testPackagesRequestBgCamera_sdk30CameraDeniedDeclaresBg") {
+                assertThat(pm.getPackageInfo(PKG_30_CAMERA_DENIED_DECLARES_BG, GET_PERMISSIONS)
+                        .requestedPermissions.contains(BACKGROUND_CAMERA)).isEqualTo(true)
+            }
+            runTest("testPackagesRequestBgCamera_sdkCurrentCameraGranted") {
+                assertThat(pm.getPackageInfo(PKG_CURRENT_CAMERA_GRANTED, GET_PERMISSIONS)
+                        .requestedPermissions.contains(BACKGROUND_CAMERA)).isEqualTo(false)
+            }
+            runTest("testPackagesRequestBgCamera_sdkCurrentCameraDenied") {
+                assertThat(pm.getPackageInfo(PKG_CURRENT_CAMERA_DENIED, GET_PERMISSIONS)
+                        .requestedPermissions.contains(BACKGROUND_CAMERA)).isEqualTo(false)
+            }
+            runTest("testPackagesRequestBgCamera_sdkCurrentCameraGrantedDeclaresBg") {
+                assertThat(pm.getPackageInfo(
+                        PKG_CURRENT_CAMERA_GRANTED_DECLARES_BG, GET_PERMISSIONS)
+                        .requestedPermissions.contains(BACKGROUND_CAMERA)).isEqualTo(true)
+            }
+            runTest("testPackagesRequestBgCamera_sdkCurrentCameraDeniedDeclaresBg") {
+                assertThat(pm.getPackageInfo(PKG_CURRENT_CAMERA_DENIED_DECLARES_BG, GET_PERMISSIONS)
+                        .requestedPermissions.contains(BACKGROUND_CAMERA)).isEqualTo(true)
+            }
 
-    @Test
-    fun testFgCameraPermissionUnchanged_sdk30CameraGrantedDeclaresBg() {
-        assertThat(pm.checkPermission(CAMERA, PKG_30_CAMERA_GRANTED_DECLARES_BG))
-                .isEqualTo(PERMISSION_GRANTED)
-    }
+            runTest("testBgCameraRestrictionApplied_sdk30CameraGranted") {
+                runWithShellPermissionIdentity {
+                    assertThat(pm.getPermissionFlags(BACKGROUND_CAMERA,
+                            PKG_30_CAMERA_GRANTED, user) and
+                            FLAG_PERMISSION_APPLY_RESTRICTION).isNotEqualTo(0)
+                }
+            }
+            runTest("testBgCameraRestrictionApplied_sdk30CameraDenied") {
+                runWithShellPermissionIdentity {
+                    assertThat(pm.getPermissionFlags(BACKGROUND_CAMERA,
+                            PKG_30_CAMERA_DENIED, user) and
+                            FLAG_PERMISSION_APPLY_RESTRICTION).isNotEqualTo(0)
+                }
+            }
+            runTest("testBgCameraRestrictionApplied_sdk30CameraGrantedDeclaresBg") {
+                runWithShellPermissionIdentity {
+                    assertThat(pm.getPermissionFlags(BACKGROUND_CAMERA,
+                            PKG_30_CAMERA_GRANTED_DECLARES_BG, user) and
+                            FLAG_PERMISSION_APPLY_RESTRICTION).isNotEqualTo(0)
+                }
+            }
+            runTest("testBgCameraRestrictionApplied_sdk30CameraDeniedDeclaresBg") {
+                runWithShellPermissionIdentity {
+                    assertThat(pm.getPermissionFlags(BACKGROUND_CAMERA,
+                            PKG_30_CAMERA_DENIED_DECLARES_BG, user) and
+                            FLAG_PERMISSION_APPLY_RESTRICTION).isNotEqualTo(0)
+                }
+            }
+            /* Removed 2 packages targeting CURRENT only declaring fg */
+            runTest("testBgCameraRestrictionApplied_sdkCurrentCameraGrantedDeclaresBg") {
+                runWithShellPermissionIdentity {
+                    assertThat(pm.getPermissionFlags(BACKGROUND_CAMERA,
+                            PKG_CURRENT_CAMERA_GRANTED_DECLARES_BG, user) and
+                            FLAG_PERMISSION_APPLY_RESTRICTION).isNotEqualTo(0)
+                }
+            }
+            runTest("testBgCameraRestrictionApplied_sdkCurrentCameraDeniedDeclaresBg") {
+                runWithShellPermissionIdentity {
+                    assertThat(pm.getPermissionFlags(BACKGROUND_CAMERA,
+                            PKG_CURRENT_CAMERA_DENIED_DECLARES_BG, user) and
+                            FLAG_PERMISSION_APPLY_RESTRICTION).isNotEqualTo(0)
+                }
+            }
 
-    @Test
-    fun testFgCameraPermissionUnchanged_sdk30CameraDeniedDeclaresBg() {
-        assertThat(pm.checkPermission(CAMERA, PKG_30_CAMERA_DENIED_DECLARES_BG))
-                .isEqualTo(PERMISSION_DENIED)
-    }
+            runTest("testBgCameraIsNotExempt_sdk30CameraGranted") {
+                runWithShellPermissionIdentity {
+                    assertThat(pm.getPermissionFlags(BACKGROUND_CAMERA,
+                            PKG_30_CAMERA_GRANTED, user) and
+                            ALL_PERMISSION_EXEMPT_FLAGS).isEqualTo(0)
+                }
+            }
+            runTest("testBgCameraIsNotExempt_sdk30CameraDenied") {
+                runWithShellPermissionIdentity {
+                    assertThat(pm.getPermissionFlags(BACKGROUND_CAMERA,
+                            PKG_30_CAMERA_DENIED, user) and
+                            ALL_PERMISSION_EXEMPT_FLAGS).isEqualTo(0)
+                }
+            }
+            runTest("testBgCameraIsNotExempt_sdk30CameraGrantedDeclaresBg") {
+                runWithShellPermissionIdentity {
+                    assertThat(pm.getPermissionFlags(BACKGROUND_CAMERA,
+                            PKG_30_CAMERA_GRANTED_DECLARES_BG, user) and
+                            ALL_PERMISSION_EXEMPT_FLAGS).isEqualTo(0)
+                }
+            }
+            runTest("testBgCameraIsNotExempt_sdk30CameraDeniedDeclaresBg") {
+                runWithShellPermissionIdentity {
+                    assertThat(pm.getPermissionFlags(BACKGROUND_CAMERA,
+                            PKG_30_CAMERA_DENIED_DECLARES_BG, user) and
+                            ALL_PERMISSION_EXEMPT_FLAGS).isEqualTo(0)
+                }
+            }
+            /* Removed 2 packages targeting CURRENT only declaring fg */
+            runTest("testBgCameraIsNotExempt_sdkCurrentCameraGrantedDeclaresBg") {
+                runWithShellPermissionIdentity {
+                    assertThat(pm.getPermissionFlags(BACKGROUND_CAMERA,
+                            PKG_CURRENT_CAMERA_GRANTED_DECLARES_BG, user) and
+                            ALL_PERMISSION_EXEMPT_FLAGS).isEqualTo(0)
+                }
+            }
+            runTest("testBgCameraIsNotExempt_sdkCurrentCameraDeniedDeclaresBg") {
+                runWithShellPermissionIdentity {
+                    assertThat(pm.getPermissionFlags(BACKGROUND_CAMERA,
+                            PKG_CURRENT_CAMERA_DENIED_DECLARES_BG, user) and
+                            ALL_PERMISSION_EXEMPT_FLAGS).isEqualTo(0)
+                }
+            }
 
-    @Test
-    fun testFgCameraPermissionUnchanged_sdkCurrentCameraGranted() {
-        assertThat(pm.checkPermission(CAMERA, PKG_CURRENT_CAMERA_GRANTED))
-                .isEqualTo(PERMISSION_GRANTED)
-    }
-
-    @Test
-    fun testFgCameraPermissionUnchanged_sdkCurrentCameraDenied() {
-        assertThat(pm.checkPermission(CAMERA, PKG_CURRENT_CAMERA_DENIED))
-                .isEqualTo(PERMISSION_DENIED)
-    }
-
-    @Test
-    fun testFgCameraPermissionUnchanged_sdkCurrentCameraGrantedDeclaresBg() {
-        assertThat(pm.checkPermission(CAMERA, PKG_CURRENT_CAMERA_GRANTED_DECLARES_BG))
-                .isEqualTo(PERMISSION_GRANTED)
-    }
-
-    @Test
-    fun testFgCameraPermissionUnchanged_sdkCurrentCameraDeniedDeclaresBg() {
-        assertThat(pm.checkPermission(CAMERA, PKG_CURRENT_CAMERA_DENIED_DECLARES_BG))
-                .isEqualTo(PERMISSION_DENIED)
-    }
-
-    @Test
-    fun testPackagesRequestBgCamera_sdk30CameraGranted() {
-        assertThat(pm.getPackageInfo(PKG_30_CAMERA_GRANTED, GET_PERMISSIONS)
-                .requestedPermissions.contains(BACKGROUND_CAMERA)).isEqualTo(true)
-    }
-
-    @Test
-    fun testPackagesRequestBgCamera_sdk30CameraDenied() {
-        assertThat(pm.getPackageInfo(PKG_30_CAMERA_DENIED, GET_PERMISSIONS)
-                .requestedPermissions.contains(BACKGROUND_CAMERA)).isEqualTo(true)
-    }
-
-    @Test
-    fun testPackagesRequestBgCamera_sdk30CameraGrantedDeclaresBg() {
-        assertThat(pm.getPackageInfo(PKG_30_CAMERA_GRANTED_DECLARES_BG, GET_PERMISSIONS)
-                .requestedPermissions.contains(BACKGROUND_CAMERA)).isEqualTo(true)
-    }
-
-    @Test
-    fun testPackagesRequestBgCamera_sdk30CameraDeniedDeclaresBg() {
-        assertThat(pm.getPackageInfo(PKG_30_CAMERA_DENIED_DECLARES_BG, GET_PERMISSIONS)
-                .requestedPermissions.contains(BACKGROUND_CAMERA)).isEqualTo(true)
-    }
-
-    @Test
-    fun testPackagesRequestBgCamera_sdkCurrentCameraGranted() {
-        assertThat(pm.getPackageInfo(PKG_CURRENT_CAMERA_GRANTED, GET_PERMISSIONS)
-                .requestedPermissions.contains(BACKGROUND_CAMERA)).isEqualTo(false)
-    }
-
-    @Test
-    fun testPackagesRequestBgCamera_sdkCurrentCameraDenied() {
-        assertThat(pm.getPackageInfo(PKG_CURRENT_CAMERA_DENIED, GET_PERMISSIONS)
-                .requestedPermissions.contains(BACKGROUND_CAMERA)).isEqualTo(false)
-    }
-
-    @Test
-    fun testPackagesRequestBgCamera_sdkCurrentCameraGrantedDeclaresBg() {
-        assertThat(pm.getPackageInfo(PKG_CURRENT_CAMERA_GRANTED_DECLARES_BG, GET_PERMISSIONS)
-                .requestedPermissions.contains(BACKGROUND_CAMERA)).isEqualTo(true)
-    }
-
-    @Test
-    fun testPackagesRequestBgCamera_sdkCurrentCameraDeniedDeclaresBg() {
-        assertThat(pm.getPackageInfo(PKG_CURRENT_CAMERA_DENIED_DECLARES_BG, GET_PERMISSIONS)
-                .requestedPermissions.contains(BACKGROUND_CAMERA)).isEqualTo(true)
-    }
-
-    @Test
-    fun testBgCameraRestrictionApplied_sdk30CameraGranted() {
-        runWithShellPermissionIdentity {
-            assertThat(pm.getPermissionFlags(BACKGROUND_CAMERA,
-                    PKG_30_CAMERA_GRANTED, user) and
-                    FLAG_PERMISSION_APPLY_RESTRICTION).isNotEqualTo(0)
-        }
-    }
-
-    @Test
-    fun testBgCameraRestrictionApplied_sdk30CameraDenied() {
-        runWithShellPermissionIdentity {
-            assertThat(pm.getPermissionFlags(BACKGROUND_CAMERA,
-                    PKG_30_CAMERA_DENIED, user) and
-                    FLAG_PERMISSION_APPLY_RESTRICTION).isNotEqualTo(0)
-        }
-    }
-
-    @Test
-    fun testBgCameraRestrictionApplied_sdk30CameraGrantedDeclaresBg() {
-        runWithShellPermissionIdentity {
-            assertThat(pm.getPermissionFlags(BACKGROUND_CAMERA,
-                    PKG_30_CAMERA_GRANTED_DECLARES_BG, user) and
-                    FLAG_PERMISSION_APPLY_RESTRICTION).isNotEqualTo(0)
-        }
-    }
-
-    @Test
-    fun testBgCameraRestrictionApplied_sdk30CameraDeniedDeclaresBg() {
-        runWithShellPermissionIdentity {
-            assertThat(pm.getPermissionFlags(BACKGROUND_CAMERA,
-                    PKG_30_CAMERA_DENIED_DECLARES_BG, user) and
-                    FLAG_PERMISSION_APPLY_RESTRICTION).isNotEqualTo(0)
-        }
-    }
-
-    /* Removed packages targeting CURRENT only declaring fg */
-
-    @Test
-    fun testBgCameraRestrictionApplied_sdkCurrentCameraGrantedDeclaresBg() {
-        runWithShellPermissionIdentity {
-            assertThat(pm.getPermissionFlags(BACKGROUND_CAMERA,
-                    PKG_CURRENT_CAMERA_GRANTED_DECLARES_BG, user) and
-                    FLAG_PERMISSION_APPLY_RESTRICTION).isNotEqualTo(0)
-        }
-    }
-
-    @Test
-    fun testBgCameraRestrictionApplied_sdkCurrentCameraDeniedDeclaresBg() {
-        runWithShellPermissionIdentity {
-            assertThat(pm.getPermissionFlags(BACKGROUND_CAMERA,
-                    PKG_CURRENT_CAMERA_DENIED_DECLARES_BG, user) and
-                    FLAG_PERMISSION_APPLY_RESTRICTION).isNotEqualTo(0)
-        }
-    }
-
-    @Test
-    fun testBgCameraIsNotExempt_sdk30CameraGranted() {
-        runWithShellPermissionIdentity {
-            assertThat(pm.getPermissionFlags(BACKGROUND_CAMERA,
-                    PKG_30_CAMERA_GRANTED, user) and
-                    ALL_PERMISSION_EXEMPT_FLAGS).isEqualTo(0)
-        }
-    }
-
-    @Test
-    fun testBgCameraIsNotExempt_sdk30CameraDenied() {
-        runWithShellPermissionIdentity {
-            assertThat(pm.getPermissionFlags(BACKGROUND_CAMERA,
-                    PKG_30_CAMERA_DENIED, user) and
-                    ALL_PERMISSION_EXEMPT_FLAGS).isEqualTo(0)
-        }
-    }
-
-    @Test
-    fun testBgCameraIsNotExempt_sdk30CameraGrantedDeclaresBg() {
-        runWithShellPermissionIdentity {
-            assertThat(pm.getPermissionFlags(BACKGROUND_CAMERA,
-                    PKG_30_CAMERA_GRANTED_DECLARES_BG, user) and
-                    ALL_PERMISSION_EXEMPT_FLAGS).isEqualTo(0)
-        }
-    }
-
-    @Test
-    fun testBgCameraIsNotExempt_sdk30CameraDeniedDeclaresBg() {
-        runWithShellPermissionIdentity {
-            assertThat(pm.getPermissionFlags(BACKGROUND_CAMERA,
-                    PKG_30_CAMERA_DENIED_DECLARES_BG, user) and
-                    ALL_PERMISSION_EXEMPT_FLAGS).isEqualTo(0)
-        }
-    }
-
-    /* Removed packages targeting CURRENT only declaring fg */
-
-    @Test
-    fun testBgCameraIsNotExempt_sdkCurrentCameraGrantedDeclaresBg() {
-        runWithShellPermissionIdentity {
-            assertThat(pm.getPermissionFlags(BACKGROUND_CAMERA,
-                    PKG_CURRENT_CAMERA_GRANTED_DECLARES_BG, user) and
-                    ALL_PERMISSION_EXEMPT_FLAGS).isEqualTo(0)
-        }
-    }
-
-    @Test
-    fun testBgCameraIsNotExempt_sdkCurrentCameraDeniedDeclaresBg() {
-        runWithShellPermissionIdentity {
-            assertThat(pm.getPermissionFlags(BACKGROUND_CAMERA,
-                    PKG_CURRENT_CAMERA_DENIED_DECLARES_BG, user) and
-                    ALL_PERMISSION_EXEMPT_FLAGS).isEqualTo(0)
+            finish()
         }
     }
 

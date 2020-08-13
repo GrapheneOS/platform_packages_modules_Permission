@@ -18,7 +18,6 @@ package com.android.permissioncontroller.test.upgrade
 
 import com.android.tradefed.testtype.DeviceJUnit4ClassRunner
 import com.android.tradefed.testtype.junit4.BaseHostJUnit4Test
-import org.junit.Before
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
 import org.junit.runner.RunWith
@@ -35,16 +34,15 @@ class Upgrade30ToCurrent : BaseHostJUnit4Test() {
                 "/data/misc_de/0/apexdata/com.android.permission/runtime-permissions.xml"
         private const val CURRENT_DEVICE_PERMISSION_DB_PATH =
                 "/data/misc_de/0/apexdata/com.android.permission/runtime-permissions.xml"
-
-        var hasSimulatedUpgrade = false
     }
 
-    @Before
-    fun simulateUpgrade() {
-        if (hasSimulatedUpgrade) {
-            return
-        }
-        hasSimulatedUpgrade = true
+    @Test
+    fun testUpgrade1() {
+        simulateUpgrade(PERMISSION_SDK30_PATH)
+        runDeviceSideTest("testUpgrade1")
+    }
+
+    fun simulateUpgrade(permissionsPath: String) {
         runDeviceSideTest("verifyPackagesAreInstalled")
         device.executeShellCommand("stop")
 
@@ -53,7 +51,7 @@ class Upgrade30ToCurrent : BaseHostJUnit4Test() {
         val tmpFolder = TemporaryFolder()
         tmpFolder.create()
         val tmpFile = File(tmpFolder.root, "runtime-permissions.xml")
-        val input = javaClass.classLoader!!.getResourceAsStream(PERMISSION_SDK30_PATH)
+        val input = javaClass.classLoader!!.getResourceAsStream(permissionsPath)
         Files.copy(input, tmpFile.toPath())
         device.pushFile(tmpFile, SDK30_DEVICE_PERMISSION_DB_PATH)
 
@@ -65,150 +63,6 @@ class Upgrade30ToCurrent : BaseHostJUnit4Test() {
         device.waitForDeviceAvailable()
 
         runDeviceSideTest("verifyPackagesAreInstalled")
-    }
-
-    @Test
-    fun testFgCameraPermissionUnchanged_sdk30CameraGranted() {
-        runDeviceSideTest("testFgCameraPermissionUnchanged_sdk30CameraGranted")
-    }
-
-    @Test
-    fun testFgCameraPermissionUnchanged_sdk30CameraDenied() {
-        runDeviceSideTest("testFgCameraPermissionUnchanged_sdk30CameraDenied")
-    }
-
-    @Test
-    fun testFgCameraPermissionUnchanged_sdk30CameraGrantedDeclaresBg() {
-        runDeviceSideTest("testFgCameraPermissionUnchanged_sdk30CameraGrantedDeclaresBg")
-    }
-
-    @Test
-    fun testFgCameraPermissionUnchanged_sdk30CameraDeniedDeclaresBg() {
-        runDeviceSideTest("testFgCameraPermissionUnchanged_sdk30CameraDeniedDeclaresBg")
-    }
-
-    @Test
-    fun testFgCameraPermissionUnchanged_sdkCurrentCameraGranted() {
-        runDeviceSideTest("testFgCameraPermissionUnchanged_sdkCurrentCameraGranted")
-    }
-
-    @Test
-    fun testFgCameraPermissionUnchanged_sdkCurrentCameraDenied() {
-        runDeviceSideTest("testFgCameraPermissionUnchanged_sdkCurrentCameraDenied")
-    }
-
-    @Test
-    fun testFgCameraPermissionUnchanged_sdkCurrentCameraGrantedDeclaresBg() {
-        runDeviceSideTest("testFgCameraPermissionUnchanged_sdkCurrentCameraGrantedDeclaresBg")
-    }
-
-    @Test
-    fun testFgCameraPermissionUnchanged_sdkCurrentCameraDeniedDeclaresBg() {
-        runDeviceSideTest("testFgCameraPermissionUnchanged_sdkCurrentCameraDeniedDeclaresBg")
-    }
-
-    @Test
-    fun testPackagesRequestBgCamera_sdk30CameraGranted() {
-        runDeviceSideTest("testPackagesRequestBgCamera_sdk30CameraGranted")
-    }
-
-    @Test
-    fun testPackagesRequestBgCamera_sdk30CameraDenied() {
-        runDeviceSideTest("testPackagesRequestBgCamera_sdk30CameraDenied")
-    }
-
-    @Test
-    fun testPackagesRequestBgCamera_sdk30CameraGrantedDeclaresBg() {
-        runDeviceSideTest("testPackagesRequestBgCamera_sdk30CameraGrantedDeclaresBg")
-    }
-
-    @Test
-    fun testPackagesRequestBgCamera_sdk30CameraDeniedDeclaresBg() {
-        runDeviceSideTest("testPackagesRequestBgCamera_sdk30CameraDeniedDeclaresBg")
-    }
-
-    @Test
-    fun testPackagesRequestBgCamera_sdkCurrentCameraGranted() {
-        runDeviceSideTest("testPackagesRequestBgCamera_sdkCurrentCameraGranted")
-    }
-
-    @Test
-    fun testPackagesRequestBgCamera_sdkCurrentCameraDenied() {
-        runDeviceSideTest("testPackagesRequestBgCamera_sdkCurrentCameraDenied")
-    }
-
-    @Test
-    fun testPackagesRequestBgCamera_sdkCurrentCameraGrantedDeclaresBg() {
-        runDeviceSideTest("testPackagesRequestBgCamera_sdkCurrentCameraGrantedDeclaresBg")
-    }
-
-    @Test
-    fun testPackagesRequestBgCamera_sdkCurrentCameraDeniedDeclaresBg() {
-        runDeviceSideTest("testPackagesRequestBgCamera_sdkCurrentCameraDeniedDeclaresBg")
-    }
-
-    @Test
-    fun testBgCameraRestrictionApplied_sdk30CameraGranted() {
-        runDeviceSideTest("testBgCameraRestrictionApplied_sdk30CameraGranted")
-    }
-
-    @Test
-    fun testBgCameraRestrictionApplied_sdk30CameraDenied() {
-        runDeviceSideTest("testBgCameraRestrictionApplied_sdk30CameraDenied")
-    }
-
-    @Test
-    fun testBgCameraRestrictionApplied_sdk30CameraGrantedDeclaresBg() {
-        runDeviceSideTest("testBgCameraRestrictionApplied_sdk30CameraGrantedDeclaresBg")
-    }
-
-    @Test
-    fun testBgCameraRestrictionApplied_sdk30CameraDeniedDeclaresBg() {
-        runDeviceSideTest("testBgCameraRestrictionApplied_sdk30CameraDeniedDeclaresBg")
-    }
-
-    /* Removed packages targeting CURRENT only declaring fg */
-
-    @Test
-    fun testBgCameraRestrictionApplied_sdkCurrentCameraGrantedDeclaresBg() {
-        runDeviceSideTest("testBgCameraRestrictionApplied_sdkCurrentCameraGrantedDeclaresBg")
-    }
-
-    @Test
-    fun testBgCameraRestrictionApplied_sdkCurrentCameraDeniedDeclaresBg() {
-        runDeviceSideTest("testBgCameraRestrictionApplied_sdkCurrentCameraDeniedDeclaresBg")
-    }
-
-    @Test
-    fun testBgCameraIsNotExempt_sdk30CameraGranted() {
-        runDeviceSideTest("testBgCameraIsNotExempt_sdk30CameraGranted")
-    }
-
-    @Test
-    fun testBgCameraIsNotExempt_sdk30CameraDenied() {
-        runDeviceSideTest("testBgCameraIsNotExempt_sdk30CameraDenied")
-    }
-
-    @Test
-    fun testBgCameraIsNotExempt_sdk30CameraGrantedDeclaresBg() {
-        runDeviceSideTest("testBgCameraIsNotExempt_sdk30CameraGrantedDeclaresBg")
-    }
-
-    @Test
-    fun testBgCameraIsNotExempt_sdk30CameraDeniedDeclaresBg() {
-        runDeviceSideTest("testBgCameraIsNotExempt_sdk30CameraDeniedDeclaresBg")
-    }
-
-    /* Removed packages targeting CURRENT only declaring fg */
-
-    @Test
-    fun testBgCameraIsNotExempt_sdkCurrentCameraGrantedDeclaresBg() {
-        runDeviceSideTest("testBgCameraIsNotExempt_sdkCurrentCameraGrantedDeclaresBg")
-    }
-
-    @Test
-    fun testBgCameraIsNotExempt_sdkCurrentCameraDeniedDeclaresBg() {
-        runDeviceSideTest("testBgCameraIsNotExempt_sdkCurrentCameraDeniedDeclaresBg")
     }
 
     private fun runDeviceSideTest(method: String) {
