@@ -28,32 +28,57 @@ import java.nio.file.Files
 class Upgrade30ToCurrent : BaseHostJUnit4Test() {
 
     companion object {
-        private const val FULL_REBOOT = true
-        private const val PERMISSION_SDK30_PATH = "raw/runtime-permissions-30.xml"
+        private const val FULL_REBOOT = false
+        private const val PERMISSION_SDK30_ASSISTANT_MIC_GRANTED_PATH =
+                "raw/runtime-permissions-30_AssistantMicGranted.xml"
+        private const val PERMISSION_SDK30_ASSISTANT_MIC_DENIED_PATH =
+                "raw/runtime-permissions-30_AssistantMicDenied.xml"
+        private const val PERMISSION_SDK30_ROLES_PATH = "raw/roles-30.xml"
+
         private const val SDK30_DEVICE_PERMISSION_DB_PATH =
                 "/data/misc_de/0/apexdata/com.android.permission/runtime-permissions.xml"
         private const val CURRENT_DEVICE_PERMISSION_DB_PATH =
                 "/data/misc_de/0/apexdata/com.android.permission/runtime-permissions.xml"
+
+        private const val SDK30_DEVICE_ROLES_DB_PATH =
+                "/data/misc_de/0/apexdata/com.android.permission/roles.xml"
+        private const val CURRENT_DEVICE_ROLES_DB_PATH =
+                "/data/misc_de/0/apexdata/com.android.permission/roles.xml"
     }
 
     @Test
     fun testUpgrade1() {
-        simulateUpgrade(PERMISSION_SDK30_PATH)
+        simulateUpgrade(PERMISSION_SDK30_ASSISTANT_MIC_GRANTED_PATH, PERMISSION_SDK30_ROLES_PATH)
+
         runDeviceSideTest("testUpgrade1")
     }
 
-    fun simulateUpgrade(permissionsPath: String) {
+    @Test
+    fun testUpgrade2() {
+        simulateUpgrade(PERMISSION_SDK30_ASSISTANT_MIC_DENIED_PATH, PERMISSION_SDK30_ROLES_PATH)
+
+        runDeviceSideTest("testUpgrade2")
+    }
+
+    fun simulateUpgrade(permissionsPath: String, rolesPath: String) {
         runDeviceSideTest("verifyPackagesAreInstalled")
         device.executeShellCommand("stop")
 
         // Delete the current permissions file and write the R version
         device.deleteFile(CURRENT_DEVICE_PERMISSION_DB_PATH)
+        device.deleteFile(CURRENT_DEVICE_ROLES_DB_PATH)
         val tmpFolder = TemporaryFolder()
         tmpFolder.create()
-        val tmpFile = File(tmpFolder.root, "runtime-permissions.xml")
-        val input = javaClass.classLoader!!.getResourceAsStream(permissionsPath)
+
+        var tmpFile = File(tmpFolder.root, "runtime-permissions.xml")
+        var input = javaClass.classLoader!!.getResourceAsStream(permissionsPath)
         Files.copy(input, tmpFile.toPath())
         device.pushFile(tmpFile, SDK30_DEVICE_PERMISSION_DB_PATH)
+
+        tmpFile = File(tmpFolder.root, "roles.xml")
+        input = javaClass.classLoader!!.getResourceAsStream(rolesPath)
+        Files.copy(input, tmpFile.toPath())
+        device.pushFile(tmpFile, SDK30_DEVICE_ROLES_DB_PATH)
 
         if (FULL_REBOOT) {
             device.reboot()

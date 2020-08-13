@@ -55,3 +55,9 @@ android_test_helper_app {
     name: "PermissionUpgradeCurrentHasCameraDeniedAndDeclaresBgCamera",
     manifest: "PermissionUpgradeCurrentHasCameraDeniedAndDeclaresBgCamera.xml"
 }
+
+android_test_helper_app {
+    name: "PermissionUpgrade30Assistant",
+    manifest: "PermissionUpgrade30Assistant.xml",
+    sdk_version: "30",
+}

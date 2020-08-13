@@ -33,5 +33,6 @@
         <option name="test-file-name" value="PermissionUpgradeCurrentHasCameraDenied.apk" />
         <option name="test-file-name" value="PermissionUpgradeCurrentHasCameraGrantedAndDeclaresBgCamera.apk" />
         <option name="test-file-name" value="PermissionUpgradeCurrentHasCameraDeniedAndDeclaresBgCamera.apk" />
+        <option name="test-file-name" value="PermissionUpgrade30Assistant.apk" />
     </target_preparer>
 </configuration>

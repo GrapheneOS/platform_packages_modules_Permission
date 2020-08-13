@@ -18,6 +18,8 @@ package com.android.permissioncontroller.test.upgrade.deviceside
 
 import android.Manifest.permission.BACKGROUND_CAMERA
 import android.Manifest.permission.CAMERA
+import android.Manifest.permission.RECORD_AUDIO
+import android.Manifest.permission.RECORD_BACKGROUND_AUDIO
 import android.app.UiAutomation
 import android.content.Context
 import android.content.pm.PackageManager
@@ -59,6 +61,9 @@ class DeviceSide {
                 "com.android.permission.test.upgrade.sdk_current.camera_granted_declares_bg"
         private const val PKG_CURRENT_CAMERA_DENIED_DECLARES_BG =
                 "com.android.permission.test.upgrade.sdk_current.camera_denied_declares_bg"
+
+        private const val PKG_30_ASSISTANT =
+                "com.android.permission.test.upgrade.sdk_30.assistant"
 
         private const val ALL_PERMISSION_EXEMPT_FLAGS =
                 FLAG_PERMISSION_RESTRICTION_INSTALLER_EXEMPT or
@@ -253,6 +258,56 @@ class DeviceSide {
                     assertThat(pm.getPermissionFlags(BACKGROUND_CAMERA,
                             PKG_CURRENT_CAMERA_DENIED_DECLARES_BG, user) and
                             ALL_PERMISSION_EXEMPT_FLAGS).isEqualTo(0)
+                }
+            }
+
+            runTest("testGetsBgMicGranted_sdk30AssistantMicGranted") {
+                assertThat(pm.checkPermission(RECORD_AUDIO, PKG_30_ASSISTANT))
+                        .isEqualTo(PERMISSION_GRANTED)
+                assertThat(pm
+                        .checkPermission(RECORD_BACKGROUND_AUDIO, PKG_30_ASSISTANT))
+                        .isEqualTo(PERMISSION_GRANTED)
+            }
+            runTest("testBgMicRestrictionNotApplied_sdk30AssistantMicGranted") {
+                runWithShellPermissionIdentity {
+                    assertThat(pm.getPermissionFlags(RECORD_BACKGROUND_AUDIO,
+                            PKG_30_ASSISTANT, user) and
+                            FLAG_PERMISSION_APPLY_RESTRICTION).isEqualTo(0)
+                }
+            }
+            runTest("testBgMicIsExempt_sdk30AssistantMicGranted") {
+                runWithShellPermissionIdentity {
+                    assertThat(pm.getPermissionFlags(RECORD_BACKGROUND_AUDIO,
+                            PKG_30_ASSISTANT, user) and
+                            ALL_PERMISSION_EXEMPT_FLAGS).isNotEqualTo(0)
+                }
+            }
+
+            finish()
+        }
+    }
+
+    @Test
+    fun testUpgrade2() {
+        with(MultipleTestRunner()) {
+            runTest("testGetsBgMicGranted_sdk30AssistantMicDenied") {
+                assertThat(pm.checkPermission(RECORD_AUDIO, PKG_30_ASSISTANT))
+                        .isEqualTo(PERMISSION_DENIED)
+                assertThat(pm.checkPermission(RECORD_BACKGROUND_AUDIO, PKG_30_ASSISTANT))
+                        .isEqualTo(PERMISSION_DENIED)
+            }
+            runTest("testBgMicRestrictionNotApplied_sdk30AssistantMicDenied") {
+                runWithShellPermissionIdentity {
+                    assertThat(pm.getPermissionFlags(RECORD_BACKGROUND_AUDIO,
+                            PKG_30_ASSISTANT, user) and
+                            FLAG_PERMISSION_APPLY_RESTRICTION).isEqualTo(0)
+                }
+            }
+            runTest("testBgMicIsExempt_sdk30AssistantMicDenied") {
+                runWithShellPermissionIdentity {
+                    assertThat(pm.getPermissionFlags(RECORD_BACKGROUND_AUDIO,
+                            PKG_30_ASSISTANT, user) and
+                            ALL_PERMISSION_EXEMPT_FLAGS).isNotEqualTo(0)
                 }
             }
 
