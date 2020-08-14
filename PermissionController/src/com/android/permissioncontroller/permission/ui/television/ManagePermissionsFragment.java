@@ -26,7 +26,6 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.loader.app.LoaderManager;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceClickListener;
 import androidx.preference.PreferenceScreen;
@@ -184,9 +183,8 @@ public final class ManagePermissionsFragment extends SettingsWithHeader
                     R.plurals.additional_permissions_more, count, count));
             screen.addPreference(extraScreenPreference);
         }
-        if (screen.getPreferenceCount() != 0) {
-            setLoading(false /* loading */, true /* animate */);
-        }
+
+        setLoading(false /* loading */, true /* animate */);
     }
 
     public static class AdditionalPermissionsFragment extends SettingsWithHeader {
