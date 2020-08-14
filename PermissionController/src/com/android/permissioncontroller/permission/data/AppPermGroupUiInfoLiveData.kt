@@ -145,26 +145,31 @@ class AppPermGroupUiInfoLiveData private constructor(
         groupInfo: LightPermGroupInfo,
         permissionInfos: Collection<LightPermInfo>
     ): Boolean {
+        if (groupInfo.packageName == Utils.OS_PKG &&
+            !isModernPermissionGroup(groupInfo.name)) {
+            return false
+        }
+
+        var hasInstantPerm = false
         var hasPreRuntime = false
 
         for (permissionInfo in permissionInfos) {
             if (permissionInfo.protectionFlags and
                 PermissionInfo.PROTECTION_FLAG_RUNTIME_ONLY == 0) {
                 hasPreRuntime = true
-                break
+            }
+
+            if (permissionInfo.protectionFlags and PermissionInfo.PROTECTION_FLAG_INSTANT != 0) {
+                hasInstantPerm = true
             }
         }
 
-        val isGrantingAllowed = !packageInfo.isInstantApp &&
+        val isGrantingAllowed = (!packageInfo.isInstantApp || hasInstantPerm) &&
             (packageInfo.targetSdkVersion >= Build.VERSION_CODES.M || hasPreRuntime)
         if (!isGrantingAllowed) {
             return false
         }
 
-        if (groupInfo.packageName == Utils.OS_PKG &&
-            !isModernPermissionGroup(groupInfo.name)) {
-            return false
-        }
         return true
     }
 
