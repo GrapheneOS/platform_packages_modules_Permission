@@ -76,7 +76,7 @@ public class GrantPermissionsActivity extends FragmentActivity
 
     public static final int NEXT_BUTTON = 11;
     public static final int ALLOW_BUTTON = 0;
-    public static final int ALLOW_ALWAYS_BUTTON = 1;
+    public static final int ALLOW_ALWAYS_BUTTON = 1; // Used in auto
     public static final int ALLOW_FOREGROUND_BUTTON = 2;
     public static final int DENY_BUTTON = 3;
     public static final int DENY_AND_DONT_ASK_AGAIN_BUTTON = 4;
@@ -418,11 +418,7 @@ public class GrantPermissionsActivity extends FragmentActivity
         int presentedButtons = getButtonState();
         switch (grantResult) {
             case GRANTED_ALWAYS:
-                if (mButtonVisibilities[ALLOW_BUTTON]) {
-                    clickedButton = 1 << ALLOW_BUTTON;
-                } else {
-                    clickedButton = 1 << ALLOW_ALWAYS_BUTTON;
-                }
+                clickedButton = 1 << ALLOW_BUTTON;
                 break;
             case GRANTED_FOREGROUND_ONLY:
                 clickedButton = 1 << ALLOW_FOREGROUND_BUTTON;

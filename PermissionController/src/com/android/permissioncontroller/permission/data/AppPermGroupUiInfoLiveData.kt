@@ -243,22 +243,16 @@ class AppPermGroupUiInfoLiveData private constructor(
 
         val anyAllowed = specialLocationState ?: permissionState.any { it.value.granted }
         if (anyAllowed && (hasPermWithBackground || shouldShowAsForegroundGroup())) {
-            if (isOneTime) {
-                return PermGrantState.PERMS_ASK
+            return if (isOneTime) {
+                PermGrantState.PERMS_ASK
             } else {
-                if (Utils.couldHaveForegroundCapabilities(
-                                Utils.getUserContext(app, user), packageName) ||
-                        Utils.isEmergencyApp(Utils.getUserContext(app, user), packageName)) {
-                    return PermGrantState.PERMS_ALLOWED_ALWAYS
-                } else {
-                    return PermGrantState.PERMS_ALLOWED_FOREGROUND_ONLY
-                }
+                PermGrantState.PERMS_ALLOWED_FOREGROUND_ONLY
             }
         } else if (anyAllowed) {
-            if (isOneTime) {
-                return PermGrantState.PERMS_ASK
+            return if (isOneTime) {
+                PermGrantState.PERMS_ASK
             } else {
-                return PermGrantState.PERMS_ALLOWED
+                PermGrantState.PERMS_ALLOWED
             }
         }
         if (isUserFixed) {

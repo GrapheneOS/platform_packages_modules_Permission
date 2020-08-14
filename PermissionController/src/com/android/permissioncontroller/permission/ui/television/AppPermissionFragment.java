@@ -50,20 +50,19 @@ import android.os.Looper;
 import android.os.UserHandle;
 import android.text.BidiFormatter;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.fragment.app.DialogFragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.PreferenceViewHolder;
-import androidx.lifecycle.ViewModelProvider;
 
+import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.model.AppPermissions;
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler;
@@ -74,7 +73,6 @@ import com.android.permissioncontroller.permission.ui.model.AppPermissionViewMod
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModelFactory;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
-import com.android.permissioncontroller.R;
 
 import java.util.Map;
 import java.util.Objects;
@@ -109,7 +107,6 @@ public class AppPermissionFragment extends SettingsWithHeader
     private @NonNull String mPackageLabel;
     private @NonNull String mPermGroupLabel;
     private Drawable mPackageIcon;
-    private Utils.ForegroundCapableType mForegroundCapableType;
 
     /**
      * Create a bundle with the arguments needed by this fragment
@@ -172,17 +169,11 @@ public class AppPermissionFragment extends SettingsWithHeader
                 mPermGroupName).toString();
         mPackageIcon = KotlinUtils.INSTANCE.getBadgedPackageIcon(getActivity().getApplication(),
                 mPackageName, mUser);
-        try {
-            mForegroundCapableType = Utils.getForegroundCapableType(getContext(), mPackageName);
-        } catch (PackageManager.NameNotFoundException e) {
-            Log.e(LOG_TAG, "Package " + mPackageName + " not found", e);
-        }
 
         mSessionId = getArguments().getLong(EXTRA_SESSION_ID, INVALID_SESSION_ID);
 
         AppPermissionViewModelFactory factory = new AppPermissionViewModelFactory(
-                getActivity().getApplication(), mPackageName, mPermGroupName, mUser, mSessionId,
-                mForegroundCapableType);
+                getActivity().getApplication(), mPackageName, mPermGroupName, mUser, mSessionId);
         mViewModel = new ViewModelProvider(this, factory).get(AppPermissionViewModel.class);
         Handler delayHandler = new Handler(Looper.getMainLooper());
         mViewModel.getButtonStateLiveData().observe(this, buttonState -> {
