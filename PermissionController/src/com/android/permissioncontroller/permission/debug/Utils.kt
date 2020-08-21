@@ -66,7 +66,8 @@ fun isCameraMicIconsFlagEnabled(): Boolean {
  * @return whether to show the icons.
  */
 fun shouldShowCameraMicIndicators(): Boolean {
-    return isCameraMicIconsFlagEnabled() || isPermissionsHub2FlagEnabled()
+    // TODO ntmyren: revert when possible
+    return true // isCameraMicIconsFlagEnabled() || isPermissionsHub2FlagEnabled()
 }
 
 /**
