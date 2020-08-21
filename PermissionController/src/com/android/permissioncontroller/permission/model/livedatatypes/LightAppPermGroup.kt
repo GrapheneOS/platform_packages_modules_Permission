@@ -16,6 +16,7 @@
 
 package com.android.permissioncontroller.permission.model.livedatatypes
 
+import android.content.pm.PermissionInfo
 import android.os.Build
 import android.os.UserHandle
 
@@ -78,10 +79,10 @@ data class LightAppPermGroup(
     }
 
     val foreground = AppPermSubGroup(permissions.filter { it.key in foregroundPermNames },
-        specialLocationGrant)
+        packageInfo, specialLocationGrant)
 
     val background = AppPermSubGroup(permissions.filter { it.key in backgroundPermNames },
-        specialLocationGrant)
+        packageInfo, specialLocationGrant)
 
     /**
      * Whether or not this App Permission Group has a permission which has a background mode
@@ -144,6 +145,7 @@ data class LightAppPermGroup(
      */
     data class AppPermSubGroup internal constructor(
         private val permissions: Map<String, LightPermission>,
+        private val packageInfo: LightPackageInfo,
         private val specialLocationGrant: Boolean?
     ) {
         /**
@@ -180,5 +182,12 @@ data class LightAppPermGroup(
          * Whether any of this App Permission Subgroup's permissions are set by the role of this app
          */
         val isGrantedByRole = permissions.any { it.value.isGrantedByRole }
+
+        private val hasPreRuntimePerm = permissions.any { (_, perm) ->
+            perm.permInfo.protectionFlags and PermissionInfo.PROTECTION_FLAG_RUNTIME_ONLY == 0
+        }
+
+        val isGrantable = !packageInfo.isInstantApp &&
+            (packageInfo.targetSdkVersion >= Build.VERSION_CODES.M || hasPreRuntimePerm)
     }
 }

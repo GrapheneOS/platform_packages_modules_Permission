@@ -46,6 +46,7 @@ import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.os.UserHandle
+import android.permission.PermissionManager
 import android.text.TextUtils
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
@@ -56,6 +57,7 @@ import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.data.LightPackageInfoLiveData
 import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
+import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPermission
 import com.android.permissioncontroller.permission.model.livedatatypes.PermState
 import com.android.permissioncontroller.permission.service.LocationAccessCheck
@@ -85,6 +87,20 @@ object KotlinUtils {
         FLAG_PERMISSION_AUTO_REVOKED
 
     private const val KILL_REASON_APP_OP_CHANGE = "Permission related app op changed"
+
+    /**
+     * Importance level to define the threshold for whether a package is in a state which resets the
+     * timer on its one-time permission session
+     */
+    private val ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_RESET_TIMER =
+        ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND
+
+    /**
+     * Importance level to define the threshold for whether a package is in a state which keeps its
+     * one-time permission session alive after the timer ends
+     */
+    private val ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_KEEP_SESSION_ALIVE =
+        ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND_SERVICE
 
     /**
      * Given a Map, and a List, determines which elements are in the list, but not the map, and
@@ -365,6 +381,50 @@ object KotlinUtils {
     }
 
     /**
+     * Set a list of flags for a set of permissions of a LightAppPermGroup
+     *
+     * @param app: The current application
+     * @param group: The LightAppPermGroup whose permission flags we wish to set
+     * @param flags: Pairs of <FlagInt, ShouldSetFlag>
+     * @param filterPermissions: A list of permissions to filter by. Only the filtered permissions
+     * will be set
+     *
+     * @return A new LightAppPermGroup with the flags set.
+     */
+    fun setGroupFlags(
+        app: Application,
+        group: LightAppPermGroup,
+        vararg flags: Pair<Int, Boolean>,
+        filterPermissions: List<String> = group.permissions.keys.toList()
+    ): LightAppPermGroup {
+        var flagMask = 0
+        var flagsToSet = 0
+        for ((flag, shouldSet) in flags) {
+            flagMask = flagMask or flag
+            if (shouldSet) {
+                flagsToSet = flagsToSet or flag
+            }
+        }
+
+        val permFlagFilter = flagsToSet or flagMask.inv()
+        val newPerms = mutableMapOf<String, LightPermission>()
+        for ((permName, perm) in group.permissions) {
+            if (permName !in filterPermissions) {
+                continue
+            }
+            val newFlags = perm.flags and permFlagFilter
+            if (newFlags != perm.flags) {
+                app.packageManager.updatePermissionFlags(permName, group.packageName,
+                    group.userHandle, *flags)
+            }
+            newPerms[permName] = LightPermission(group.packageInfo, perm.permInfo,
+                perm.isGrantedIncludingAppOp, newFlags, perm.foregroundPerms)
+        }
+        return LightAppPermGroup(group.packageInfo, group.permGroupInfo, newPerms,
+            group.hasInstallToRuntimeSplit, group.specialLocationGrant)
+    }
+
+    /**
      * Grant all foreground runtime permissions of a LightAppPermGroup
      *
      * <p>This also automatically grants all app ops for permissions that have app ops.
@@ -381,9 +441,10 @@ object KotlinUtils {
     fun grantForegroundRuntimePermissions(
         app: Application,
         group: LightAppPermGroup,
-        filterPermissions: List<String> = group.permissions.keys.toList()
+        filterPermissions: List<String> = group.permissions.keys.toList(),
+        isOneTime: Boolean = false
     ): LightAppPermGroup {
-        return grantRuntimePermissions(app, group, false, filterPermissions)
+        return grantRuntimePermissions(app, group, false, isOneTime, filterPermissions)
     }
 
     /**
@@ -405,22 +466,24 @@ object KotlinUtils {
         group: LightAppPermGroup,
         filterPermissions: List<String> = group.permissions.keys.toList()
     ): LightAppPermGroup {
-        return grantRuntimePermissions(app, group, true, filterPermissions)
+        return grantRuntimePermissions(app, group, true, false, filterPermissions)
     }
 
     private fun grantRuntimePermissions(
         app: Application,
         group: LightAppPermGroup,
         grantBackground: Boolean,
+        isOneTime: Boolean = false,
         filterPermissions: List<String> = group.permissions.keys.toList()
     ): LightAppPermGroup {
+        val wasOneTime = group.isOneTime
         val newPerms = group.permissions.toMutableMap()
         var shouldKillForAnyPermission = false
         for (permName in filterPermissions) {
             val perm = group.permissions[permName] ?: continue
             val isBackgroundPerm = permName in group.backgroundPermNames
             if (isBackgroundPerm == grantBackground) {
-                val (newPerm, shouldKill) = grantRuntimePermission(app, perm, group)
+                val (newPerm, shouldKill) = grantRuntimePermission(app, perm, isOneTime, group)
                 newPerms[newPerm.name] = newPerm
                 shouldKillForAnyPermission = shouldKillForAnyPermission || shouldKill
             }
@@ -430,8 +493,15 @@ object KotlinUtils {
             (app.getSystemService(ActivityManager::class.java) as ActivityManager).killUid(
                 group.packageInfo.uid, KILL_REASON_APP_OP_CHANGE)
         }
-        return LightAppPermGroup(group.packageInfo, group.permGroupInfo, newPerms,
+        val newGroup = LightAppPermGroup(group.packageInfo, group.permGroupInfo, newPerms,
             group.hasInstallToRuntimeSplit, group.specialLocationGrant)
+        if (newGroup.isOneTime) {
+            app.getSystemService(PermissionManager::class.java)!!.startOneTimePermissionSession(
+                group.packageName, Utils.getOneTimePermissionsTimeout(),
+                ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_RESET_TIMER,
+                ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_KEEP_SESSION_ALIVE)
+        }
+        return newGroup
     }
 
     /**
@@ -448,6 +518,7 @@ object KotlinUtils {
     private fun grantRuntimePermission(
         app: Application,
         perm: LightPermission,
+        isOneTime: Boolean,
         group: LightAppPermGroup
     ): Pair<LightPermission, Boolean> {
         val user = UserHandle.getUserHandleForUid(group.packageInfo.uid)
@@ -497,8 +568,13 @@ object KotlinUtils {
         // no longer has it fixed in a denied state.
         newFlags = newFlags.clearFlag(PackageManager.FLAG_PERMISSION_USER_FIXED)
         newFlags = newFlags.setFlag(PackageManager.FLAG_PERMISSION_USER_SET)
-        newFlags = newFlags.clearFlag(PackageManager.FLAG_PERMISSION_ONE_TIME)
         newFlags = newFlags.clearFlag(PackageManager.FLAG_PERMISSION_AUTO_REVOKED)
+
+        newFlags = if (isOneTime) {
+            newFlags.setFlag(PackageManager.FLAG_PERMISSION_ONE_TIME)
+        } else {
+            newFlags.clearFlag(PackageManager.FLAG_PERMISSION_ONE_TIME)
+        }
 
         // If we newly grant background access to the fine location, double-guess the user some
         // time later if this was really the right choice.
@@ -586,6 +662,7 @@ object KotlinUtils {
         oneTime: Boolean,
         filterPermissions: List<String>
     ): LightAppPermGroup {
+        val wasOneTime = group.isOneTime
         val newPerms = group.permissions.toMutableMap()
         var shouldKillForAnyPermission = false
         for (permName in filterPermissions) {
@@ -603,10 +680,50 @@ object KotlinUtils {
             (app.getSystemService(ActivityManager::class.java) as ActivityManager).killUid(
                 group.packageInfo.uid, KILL_REASON_APP_OP_CHANGE)
         }
-        return LightAppPermGroup(group.packageInfo, group.permGroupInfo, newPerms,
+
+        val newGroup = LightAppPermGroup(group.packageInfo, group.permGroupInfo, newPerms,
             group.hasInstallToRuntimeSplit, group.specialLocationGrant)
+
+        if (wasOneTime && !anyPermsOfPackageOneTimeGranted(app, newGroup.packageInfo, newGroup)) {
+            app.getSystemService(PermissionManager::class.java)!!.stopOneTimePermissionSession(
+                group.packageName)
+        }
+        return newGroup
     }
 
+    /**
+     * Determines if any permissions of a package are granted for one-time only
+     *
+     * @param app The current application
+     * @param packageInfo The packageInfo we wish to examine
+     * @param group Optional, the current app permission group we are examining
+     *
+     * @return true if any permission in the package is granted for one time, false otherwise
+     */
+    private fun anyPermsOfPackageOneTimeGranted(
+        app: Application,
+        packageInfo: LightPackageInfo,
+        group: LightAppPermGroup? = null
+    ): Boolean {
+        val user = group?.userHandle ?: UserHandle.getUserHandleForUid(packageInfo.uid)
+        if (group?.isOneTime == true) {
+            return true
+        }
+        for ((idx, permName) in packageInfo.requestedPermissions.withIndex()) {
+            if (permName in group?.permissions ?: emptyMap()) {
+                continue
+            }
+            val flags = app.packageManager.getPermissionFlags(permName, packageInfo.packageName,
+                user) and FLAG_PERMISSION_ONE_TIME
+            val granted = packageInfo.requestedPermissionsFlags[idx] ==
+                PackageManager.PERMISSION_GRANTED &&
+                (flags and FLAG_PERMISSION_REVOKED_COMPAT) == 0
+            if (granted && (flags and FLAG_PERMISSION_ONE_TIME) != 0) {
+                return true
+            }
+        }
+        return false
+    }
     /**
      * Revokes a single runtime permission.
      *
