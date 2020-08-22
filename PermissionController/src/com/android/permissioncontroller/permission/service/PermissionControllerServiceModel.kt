@@ -92,11 +92,7 @@ class PermissionControllerServiceModel(private val service: PermissionController
                 }
             }
 
-            if (liveData is SmartUpdateMediatorLiveData<T>) {
-                liveData.observeStale(service, observer)
-            } else {
-                liveData.observe(service, observer)
-            }
+            liveData.observe(service, observer)
         }
     }
 

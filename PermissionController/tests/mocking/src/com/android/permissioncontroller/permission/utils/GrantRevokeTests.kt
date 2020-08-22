@@ -39,6 +39,7 @@ import android.content.pm.PermissionInfo.PROTECTION_FLAG_INSTANT
 import android.content.pm.PermissionInfo.PROTECTION_FLAG_RUNTIME_ONLY
 import android.os.Build
 import android.os.UserHandle
+import android.permission.PermissionManager
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPermGroupInfo
@@ -120,6 +121,9 @@ class GrantRevokeTests {
 
         `when`(app.getSystemService(ActivityManager::class.java)).thenReturn(
             mock(ActivityManager::class.java))
+
+        `when`(app.getSystemService(PermissionManager::class.java)).thenReturn(
+            mock(PermissionManager::class.java))
     }
 
     /**
@@ -742,7 +746,7 @@ class GrantRevokeTests {
     fun revokeTwoPermTest() {
         val pkg = createMockPackage(mapOf(FG_PERM_NAME to true, FG_PERM_2_NAME to true))
         val perms = mutableMapOf<String, LightPermission>()
-        perms[FG_PERM_NAME] = createMockPerm(pkg,FG_PERM_NAME)
+        perms[FG_PERM_NAME] = createMockPerm(pkg, FG_PERM_NAME)
         perms[FG_PERM_2_NAME] = createMockPerm(pkg, FG_PERM_2_NAME)
         val group = createMockGroup(pkg, perms)
         resetMockAppState()
