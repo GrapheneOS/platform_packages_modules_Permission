@@ -335,6 +335,20 @@
     <string name="request_role_current_default" msgid="7512045433655289638">"目前預設"</string>
     <string name="request_role_dont_ask_again" msgid="6250680190065090205">"不要再詢問"</string>
     <string name="request_role_set_as_default" msgid="5706081295230541240">"設定為預設"</string>
+    <!-- no translation found for phone_call_uses_microphone (8526072517150019104) -->
+    <skip />
+    <!-- no translation found for phone_call_uses_microphone_and_camera (3200724412615066778) -->
+    <skip />
+    <!-- no translation found for phone_call_uses_camera (4755426610656986999) -->
+    <skip />
+    <!-- no translation found for system_uses_microphone (5472800603226495574) -->
+    <skip />
+    <!-- no translation found for system_uses_microphone_and_camera (5359556706104231621) -->
+    <skip />
+    <!-- no translation found for system_uses_camera (4961711670120922150) -->
+    <skip />
+    <!-- no translation found for other_use (9076086164996623754) -->
+    <skip />
     <string name="ongoing_usage_dialog_ok" msgid="3007005536659549573">"知道了"</string>
     <string name="ongoing_usage_dialog_title" msgid="6545358148523337174">"最近使用了<xliff:g id="TYPES_LIST">%s</xliff:g>"</string>
     <string name="ongoing_usage_dialog_separator" msgid="9008030412869423988">"、 "</string>
@@ -373,7 +387,7 @@
     <string name="adjust_user_sensitive_globally_title" msgid="4596006254112905767">"顯示系統應用程式使用情況"</string>
     <string name="adjust_user_sensitive_globally_summary" msgid="4193481017313015238">"在狀態列、資訊主頁和其他地方顯示系統應用程式使用權限的情況"</string>
     <string name="adjust_user_sensitive_per_app_header" msgid="1372152438971168364">"突顯以下應用程式的使用情況"</string>
-    <string name="assistant_record_audio_user_sensitive_title" msgid="5382972366928946381">"顯示 Google 助理觸發偵測"</string>
+    <string name="assistant_record_audio_user_sensitive_title" msgid="772256764681129627">"顯示「Google 助理」觸發偵測"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6852572549436960848">"使用麥克風啟用語音助手時，在狀態列中顯示圖示"</string>
     <string name="permgrouprequest_storage_isolated" msgid="1019696034804170865">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取您裝置上的相片和媒體嗎？"</string>
     <string name="permgrouprequest_contacts" msgid="1493445560009228831">"允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取您的聯絡人嗎？"</string>
