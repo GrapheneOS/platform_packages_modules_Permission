@@ -335,6 +335,13 @@
     <string name="request_role_current_default" msgid="7512045433655289638">"現在のデフォルト"</string>
     <string name="request_role_dont_ask_again" msgid="6250680190065090205">"次回から表示しない"</string>
     <string name="request_role_set_as_default" msgid="5706081295230541240">"デフォルトに設定"</string>
+    <string name="phone_call_uses_microphone" msgid="8526072517150019104">"マイクは&lt;b&gt;通話&lt;/b&gt;に使用されています"</string>
+    <string name="phone_call_uses_microphone_and_camera" msgid="3200724412615066778">"カメラとマイクは&lt;b&gt;ビデオ通話&lt;/b&gt;に使用されています"</string>
+    <string name="phone_call_uses_camera" msgid="4755426610656986999">"カメラは&lt;b&gt;ビデオ通話&lt;/b&gt;に使用されています"</string>
+    <string name="system_uses_microphone" msgid="5472800603226495574">"システム サービスを使用してマイクにアクセスしています"</string>
+    <string name="system_uses_microphone_and_camera" msgid="5359556706104231621">"システム サービスを使用してカメラとマイクにアクセスしています"</string>
+    <string name="system_uses_camera" msgid="4961711670120922150">"システム サービスを使用してカメラにアクセスしています"</string>
+    <string name="other_use" msgid="9076086164996623754">"その他の用途:"</string>
     <string name="ongoing_usage_dialog_ok" msgid="3007005536659549573">"OK"</string>
     <string name="ongoing_usage_dialog_title" msgid="6545358148523337174">"<xliff:g id="TYPES_LIST">%s</xliff:g> の最近の使用状況"</string>
     <string name="ongoing_usage_dialog_separator" msgid="9008030412869423988">"、 "</string>
@@ -373,7 +380,7 @@
     <string name="adjust_user_sensitive_globally_title" msgid="4596006254112905767">"システムアプリの使用状況を表示"</string>
     <string name="adjust_user_sensitive_globally_summary" msgid="4193481017313015238">"ステータスバーやダッシュボードなどにシステムアプリによる権限の使用状況を表示する"</string>
     <string name="adjust_user_sensitive_per_app_header" msgid="1372152438971168364">"次のアプリの使用状況をハイライト表示"</string>
-    <string name="assistant_record_audio_user_sensitive_title" msgid="5382972366928946381">"アシスタントのトリガー検出を表示"</string>
+    <string name="assistant_record_audio_user_sensitive_title" msgid="772256764681129627">"アシスタントのトリガー検出を表示"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6852572549436960848">"マイクを使って音声アシスタントを有効にする場合にステータスバーにアイコンを表示する"</string>
     <string name="permgrouprequest_storage_isolated" msgid="1019696034804170865">"デバイス内の写真やメディアへのアクセスを「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に許可しますか？"</string>
     <string name="permgrouprequest_contacts" msgid="1493445560009228831">"連絡先へのアクセスを「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に許可しますか？"</string>

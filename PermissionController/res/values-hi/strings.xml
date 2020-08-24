@@ -335,6 +335,20 @@
     <string name="request_role_current_default" msgid="7512045433655289638">"मौजूदा डिफ़ॉल्ट"</string>
     <string name="request_role_dont_ask_again" msgid="6250680190065090205">"फिर से न पूछें"</string>
     <string name="request_role_set_as_default" msgid="5706081295230541240">"डिफ़ॉल्ट के रूप में सेट करें"</string>
+    <!-- no translation found for phone_call_uses_microphone (8526072517150019104) -->
+    <skip />
+    <!-- no translation found for phone_call_uses_microphone_and_camera (3200724412615066778) -->
+    <skip />
+    <!-- no translation found for phone_call_uses_camera (4755426610656986999) -->
+    <skip />
+    <!-- no translation found for system_uses_microphone (5472800603226495574) -->
+    <skip />
+    <!-- no translation found for system_uses_microphone_and_camera (5359556706104231621) -->
+    <skip />
+    <!-- no translation found for system_uses_camera (4961711670120922150) -->
+    <skip />
+    <!-- no translation found for other_use (9076086164996623754) -->
+    <skip />
     <string name="ongoing_usage_dialog_ok" msgid="3007005536659549573">"ठीक है"</string>
     <string name="ongoing_usage_dialog_title" msgid="6545358148523337174">"<xliff:g id="TYPES_LIST">%s</xliff:g> का हाल ही में किया गया इस्तेमाल"</string>
     <string name="ongoing_usage_dialog_separator" msgid="9008030412869423988">", "</string>
@@ -373,7 +387,7 @@
     <string name="adjust_user_sensitive_globally_title" msgid="4596006254112905767">"सिस्टम ऐप्लिकेशन का इस्तेमाल दिखाएं"</string>
     <string name="adjust_user_sensitive_globally_summary" msgid="4193481017313015238">"स्थिति बार, डैशबोर्ड में और दूसरी जगहों पर अनुमतियों का सिस्टम ऐप्लिकेशन इस्तेमाल दिखाएं"</string>
     <string name="adjust_user_sensitive_per_app_header" msgid="1372152438971168364">"आगे दी गई चीज़ों का इस्तेमाल हाइलाइट करें"</string>
-    <string name="assistant_record_audio_user_sensitive_title" msgid="5382972366928946381">"Assistant ट्रिगर पहचान दिखाएं"</string>
+    <string name="assistant_record_audio_user_sensitive_title" msgid="772256764681129627">"असिस्टेंट ऐप्लिकेशन का माइक्रोफ़ोन चालू है या बंद, इसकी सूचना दिखाएं"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6852572549436960848">"आवाज़ से डिवाइस का इस्तेमाल करने के लिए, माइक्रोफ़ोन का इस्तेमाल करते समय स्थिति बार में आइकॉन दिखाएं"</string>
     <string name="permgrouprequest_storage_isolated" msgid="1019696034804170865">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को अपने डिवाइस में मौजूद फ़ोटो और मीडिया ऐक्सेस करने की अनुमति देना चाहते हैं?"</string>
     <string name="permgrouprequest_contacts" msgid="1493445560009228831">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को अपने संपर्क देखने की अनुमति देना चाहते हैं?"</string>

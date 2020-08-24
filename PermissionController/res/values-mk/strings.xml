@@ -335,6 +335,20 @@
     <string name="request_role_current_default" msgid="7512045433655289638">"Стандардна апликација сега"</string>
     <string name="request_role_dont_ask_again" msgid="6250680190065090205">"Не прашувај повторно"</string>
     <string name="request_role_set_as_default" msgid="5706081295230541240">"Нека биде стандардна"</string>
+    <!-- no translation found for phone_call_uses_microphone (8526072517150019104) -->
+    <skip />
+    <!-- no translation found for phone_call_uses_microphone_and_camera (3200724412615066778) -->
+    <skip />
+    <!-- no translation found for phone_call_uses_camera (4755426610656986999) -->
+    <skip />
+    <!-- no translation found for system_uses_microphone (5472800603226495574) -->
+    <skip />
+    <!-- no translation found for system_uses_microphone_and_camera (5359556706104231621) -->
+    <skip />
+    <!-- no translation found for system_uses_camera (4961711670120922150) -->
+    <skip />
+    <!-- no translation found for other_use (9076086164996623754) -->
+    <skip />
     <string name="ongoing_usage_dialog_ok" msgid="3007005536659549573">"Сфатив"</string>
     <string name="ongoing_usage_dialog_title" msgid="6545358148523337174">"Скорешно користење на <xliff:g id="TYPES_LIST">%s</xliff:g>"</string>
     <string name="ongoing_usage_dialog_separator" msgid="9008030412869423988">", "</string>
@@ -373,7 +387,7 @@
     <string name="adjust_user_sensitive_globally_title" msgid="4596006254112905767">"Прикажувај го користењето на системските апликации"</string>
     <string name="adjust_user_sensitive_globally_summary" msgid="4193481017313015238">"Прикажувај го користењето дозволи од системските апликации во статусната лента, контролната табла и на други места"</string>
     <string name="adjust_user_sensitive_per_app_header" msgid="1372152438971168364">"Нагласи го користењето за следново"</string>
-    <string name="assistant_record_audio_user_sensitive_title" msgid="5382972366928946381">"Прикажувај го откривањето за активирање на „Помошникот“"</string>
+    <string name="assistant_record_audio_user_sensitive_title" msgid="772256764681129627">"Прикажувај го откривањето за активирање на „Помошникот“"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6852572549436960848">"Прикажувај икона во статусната лента кога микрофонот се користи за активирање на гласовниот помошник"</string>
     <string name="permgrouprequest_storage_isolated" msgid="1019696034804170865">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до фотографии и аудиовизуелни содржини на уредот?"</string>
     <string name="permgrouprequest_contacts" msgid="1493445560009228831">"Дали да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до контактите?"</string>
