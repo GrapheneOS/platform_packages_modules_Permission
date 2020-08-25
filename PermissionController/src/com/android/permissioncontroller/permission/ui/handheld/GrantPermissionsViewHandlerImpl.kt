@@ -57,8 +57,8 @@ import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandle
 
 class GrantPermissionsViewHandlerImpl(
     private val mActivity: Activity,
-    private val mAppPackageName: String,
-    private val mUserHandle: UserHandle
+    mAppPackageName: String,
+    mUserHandle: UserHandle
 ) : GrantPermissionsViewHandler, OnClickListener {
 
     private var resultListener: GrantPermissionsViewHandler.ResultListener? = null
@@ -70,13 +70,13 @@ class GrantPermissionsViewHandlerImpl(
     private var groupIcon: Icon? = null
     private var groupMessage: CharSequence? = null
     private var detailMessage: CharSequence? = null
-    private var buttonVisibilities: BooleanArray? = null
+    private val buttonVisibilities = BooleanArray(BUTTON_RES_ID_TO_NUM.size()) { false }
 
     // Views
     private var iconView: ImageView? = null
     private var messageView: TextView? = null
     private var detailMessageView: TextView? = null
-    private var buttons: Array<Button?>? = null
+    private var buttons: Array<Button?> = emptyArray()
     private var rootView: ViewGroup? = null
 
     override fun setResultListener(
@@ -103,7 +103,7 @@ class GrantPermissionsViewHandlerImpl(
         groupCount = savedInstanceState.getInt(ARG_GROUP_COUNT)
         groupIndex = savedInstanceState.getInt(ARG_GROUP_INDEX)
         detailMessage = savedInstanceState.getCharSequence(ARG_GROUP_DETAIL_MESSAGE)
-        buttonVisibilities = savedInstanceState.getBooleanArray(ARG_DIALOG_BUTTON_VISIBILITIES)
+        setButtonVisibilities(savedInstanceState.getBooleanArray(ARG_DIALOG_BUTTON_VISIBILITIES))
 
         updateAll()
     }
@@ -115,7 +115,7 @@ class GrantPermissionsViewHandlerImpl(
         icon: Icon,
         message: CharSequence,
         detailMessage: CharSequence?,
-        buttonVisibilities: BooleanArray
+        visibilities: BooleanArray
     ) {
 
         this.groupName = groupName
@@ -124,7 +124,7 @@ class GrantPermissionsViewHandlerImpl(
         groupIcon = icon
         groupMessage = message
         this.detailMessage = detailMessage
-        this.buttonVisibilities = buttonVisibilities
+        setButtonVisibilities(visibilities)
 
         // If this is a second (or later) permission and the views exist, then animate.
         if (iconView != null) {
@@ -184,6 +184,16 @@ class GrantPermissionsViewHandlerImpl(
         // No-op
     }
 
+    private fun setButtonVisibilities(visibilities: BooleanArray?) {
+        for (i in buttonVisibilities.indices) {
+            buttonVisibilities[i] = if (visibilities != null && i < visibilities.size) {
+                visibilities[i]
+            } else {
+                false
+            }
+        }
+    }
+
     private fun updateDescription() {
         if (groupIcon != null) {
             iconView!!.setImageDrawable(groupIcon!!.loadDrawable(mActivity))
@@ -201,10 +211,9 @@ class GrantPermissionsViewHandlerImpl(
     }
 
     private fun updateButtons() {
-        val numButtons = BUTTON_RES_ID_TO_NUM.size()
-        for (i in 0 until numButtons) {
+        for (i in 0 until BUTTON_RES_ID_TO_NUM.size()) {
             val pos = BUTTON_RES_ID_TO_NUM.valueAt(i)
-            buttons!![pos]!!.visibility = if (buttonVisibilities!![pos]) {
+            buttons[pos]?.visibility = if (buttonVisibilities[pos]) {
                 View.VISIBLE
             } else {
                 View.GONE
