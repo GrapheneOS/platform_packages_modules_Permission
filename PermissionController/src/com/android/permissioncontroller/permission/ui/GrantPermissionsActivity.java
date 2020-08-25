@@ -102,14 +102,12 @@ public class GrantPermissionsActivity extends FragmentActivity
     private String mCallingPackage;
     private int mTotalRequests = 0;
     private int mCurrentRequestIdx = 0;
-    private Resources.Theme mOriginalTheme;
+    private boolean mViewSetUp;
+    private float mOriginalDimAmount;
     private View mRootView;
 
     @Override
     public void onCreate(Bundle icicle) {
-        mOriginalTheme = getTheme();
-        // Set the activity to be transparent until data is loaded
-        setTheme(R.style.Theme_PermissionGrantDialog_Transparent);
         super.onCreate(icicle);
 
         if (icicle == null) {
@@ -160,28 +158,31 @@ public class GrantPermissionsActivity extends FragmentActivity
         mViewModel = factory.create(GrantPermissionsViewModel.class);
         mViewModel.getRequestInfosLiveData().observe(this, this::onRequestInfoLoad);
 
+        mRootView = mViewHandler.createView();
+        mRootView.setVisibility(View.GONE);
+        setContentView(mRootView);
+        mOriginalDimAmount = getWindow().getAttributes().dimAmount;
         // Restore UI state after lifecycle events. This has to be before we show the first request,
         // as the UI behaves differently for updates and initial creations.
         if (icicle != null) {
             setUpView();
             mViewHandler.loadInstanceState(icicle);
+        } else {
+            // Do not show screen dim until data is loaded
+            getWindow().setDimAmount(0f);
         }
     }
 
     private void setUpView() {
-        if (mRootView != null) {
+        if (mViewSetUp) {
             return;
         }
 
-        setTheme(mOriginalTheme);
-
-        mRootView = mViewHandler.createView();
-        mRootView.setVisibility(View.GONE);
-        setContentView(mRootView);
-
+        mViewSetUp = true;
 
         Window window = getWindow();
         WindowManager.LayoutParams layoutParams = window.getAttributes();
+        layoutParams.dimAmount = mOriginalDimAmount;
         mViewHandler.updateWindowAttributes(layoutParams);
         window.setAttributes(layoutParams);
     }
