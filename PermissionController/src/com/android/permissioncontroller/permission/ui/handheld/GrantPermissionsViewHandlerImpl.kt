@@ -222,15 +222,8 @@ class GrantPermissionsViewHandlerImpl(
             }
             return
         }
-        var button = -1
-        try {
-            button = BUTTON_RES_ID_TO_NUM.get(id)
-        } catch (e: NullPointerException) {
-            // Clicked a view which is not one of the defined buttons
-            return
-        }
 
-        when (button) {
+        when (BUTTON_RES_ID_TO_NUM.get(id, -1)) {
             ALLOW_BUTTON -> if (resultListener != null) {
                 view.performAccessibilityAction(
                     AccessibilityNodeInfo.ACTION_CLEAR_ACCESSIBILITY_FOCUS, null)
@@ -275,17 +268,17 @@ class GrantPermissionsViewHandlerImpl(
 
     companion object {
 
-        val ARG_GROUP_NAME = "ARG_GROUP_NAME"
-        val ARG_GROUP_COUNT = "ARG_GROUP_COUNT"
-        val ARG_GROUP_INDEX = "ARG_GROUP_INDEX"
-        val ARG_GROUP_ICON = "ARG_GROUP_ICON"
-        val ARG_GROUP_MESSAGE = "ARG_GROUP_MESSAGE"
-        private val ARG_GROUP_DETAIL_MESSAGE = "ARG_GROUP_DETAIL_MESSAGE"
-        private val ARG_DIALOG_BUTTON_VISIBILITIES = "ARG_DIALOG_BUTTON_VISIBILITIES"
+        const val ARG_GROUP_NAME = "ARG_GROUP_NAME"
+        const val ARG_GROUP_COUNT = "ARG_GROUP_COUNT"
+        const val ARG_GROUP_INDEX = "ARG_GROUP_INDEX"
+        const val ARG_GROUP_ICON = "ARG_GROUP_ICON"
+        const val ARG_GROUP_MESSAGE = "ARG_GROUP_MESSAGE"
+        private const val ARG_GROUP_DETAIL_MESSAGE = "ARG_GROUP_DETAIL_MESSAGE"
+        private const val ARG_DIALOG_BUTTON_VISIBILITIES = "ARG_DIALOG_BUTTON_VISIBILITIES"
 
         // Animation parameters.
-        private val SWITCH_TIME_MILLIS: Long = 75
-        private val ANIMATION_DURATION_MILLIS: Long = 200
+        private const val SWITCH_TIME_MILLIS: Long = 75
+        private const val ANIMATION_DURATION_MILLIS: Long = 200
 
         private val BUTTON_RES_ID_TO_NUM = SparseIntArray()
 
