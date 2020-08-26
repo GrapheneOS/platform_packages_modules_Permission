@@ -847,12 +847,6 @@ class GrantPermissionsViewModel(
         }
     }
 
-    // TODO ntmyren: remove after b/166095244 is fixed
-    fun logState(message: String) {
-        Log.i(LOG_TAG, "$message: RequestInfos: ${requestInfosLiveData.value}")
-        Log.i(LOG_TAG, "$message: GroupStates: $groupStates")
-    }
-
     private fun startAppPermissionFragment(activity: Activity, groupName: String) {
         val intent = Intent(Intent.ACTION_MANAGE_APP_PERMISSION)
             .putExtra(Intent.EXTRA_PACKAGE_NAME, packageName)
