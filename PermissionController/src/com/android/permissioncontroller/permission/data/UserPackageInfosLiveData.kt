@@ -92,8 +92,6 @@ class UserPackageInfosLiveData private constructor(
         for (packageInfo in value ?: emptyList()) {
             PermissionListenerMultiplexer.addCallback(packageInfo.uid, this)
         }
-
-        updateAsync()
     }
 
     override fun onInactive() {

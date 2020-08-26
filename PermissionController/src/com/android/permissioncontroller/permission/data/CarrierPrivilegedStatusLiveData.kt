@@ -39,7 +39,7 @@ class CarrierPrivilegedStatusLiveData private constructor(
 
     override fun onActive() {
         super.onActive()
-        updateIfActive()
+        update()
     }
 
     /**
