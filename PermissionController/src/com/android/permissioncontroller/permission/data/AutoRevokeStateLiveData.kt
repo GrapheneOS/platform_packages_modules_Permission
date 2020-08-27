@@ -53,13 +53,13 @@ class AutoRevokeStateLiveData private constructor(
 
     init {
         addSource(packagePermsLiveData) {
-            update()
+            updateIfActive()
         }
         addSource(packageLiveData) {
-            update()
+            updateIfActive()
         }
         addSource(exemptServicesLiveData) {
-            update()
+            updateIfActive()
         }
     }
 
@@ -102,13 +102,14 @@ class AutoRevokeStateLiveData private constructor(
 
     override fun onOpChanged(op: String?, packageName: String?) {
         if (op == OPSTR_AUTO_REVOKE_PERMISSIONS_IF_UNUSED && packageName == packageName) {
-            update()
+            updateIfActive()
         }
     }
 
     override fun onActive() {
         super.onActive()
         appOpsManager.startWatchingMode(OPSTR_AUTO_REVOKE_PERMISSIONS_IF_UNUSED, packageName, this)
+        updateIfActive()
     }
 
     override fun onInactive() {

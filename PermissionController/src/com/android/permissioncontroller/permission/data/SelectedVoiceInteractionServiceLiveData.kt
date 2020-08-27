@@ -50,6 +50,11 @@ class SelectedVoiceInteractionServiceLiveData(
         postValue(packageName)
     }
 
+    override fun onActive() {
+        super.onActive()
+        updateAsync()
+    }
+
     /**
      * Repository for [SelectedVoiceInteractionServiceLiveData]
      *

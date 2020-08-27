@@ -60,7 +60,7 @@ class SinglePermGroupPackagesUiInfoLiveData private constructor(
         }
 
         addSource(permGroupPackagesLiveData) {
-            update()
+            updateIfActive()
         }
     }
 

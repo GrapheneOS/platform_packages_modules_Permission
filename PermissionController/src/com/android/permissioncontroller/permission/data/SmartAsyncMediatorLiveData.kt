@@ -26,14 +26,8 @@ import kotlinx.coroutines.launch
 /**
  * A LiveData which loads its data in a background AsyncTask. It will cancel current tasks, if new
  * requests come during execution
- *
- * @param isStaticVal Whether or not this LiveData value is expected to change
- * @param alwaysUpdateOnActive Whether or not this LiveData should update upon going active
  */
-abstract class SmartAsyncMediatorLiveData<T>(
-    isStaticVal: Boolean = false,
-    private val alwaysUpdateOnActive: Boolean = true
-) : SmartUpdateMediatorLiveData<T>(isStaticVal) {
+abstract class SmartAsyncMediatorLiveData<T> : SmartUpdateMediatorLiveData<T>() {
 
     private var currentJob: Job? = null
     @Volatile
@@ -71,14 +65,6 @@ abstract class SmartAsyncMediatorLiveData<T>(
                     updateAsync()
                 }
             }
-        }
-    }
-
-    override fun onActive() {
-        super.onActive()
-
-        if (alwaysUpdateOnActive) {
-            updateAsync()
         }
     }
 

@@ -226,6 +226,8 @@ class ServiceLiveData(
         super.onActive()
 
         PackageBroadcastReceiver.addAllCallback(this)
+
+        updateAsync()
     }
 
     override fun onInactive() {

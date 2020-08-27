@@ -47,7 +47,7 @@ class PermGroupsPackagesUiInfoLiveData(
     init {
         addSource(groupNamesLiveData) {
             groupNames = it ?: emptyList()
-            update()
+            updateIfActive()
             getPermGroupPackageLiveDatas()
         }
     }

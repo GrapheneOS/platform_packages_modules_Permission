@@ -60,7 +60,7 @@ class LightAppPermGroupLiveData private constructor(
             LocationUtils.isLocationGroupAndControllerExtraPackage(app, permGroupName, packageName)
 
         addSource(fgPermNamesLiveData) {
-            update()
+            updateIfActive()
         }
 
         val key = Triple(packageName, permGroupName, user)
@@ -70,7 +70,7 @@ class LightAppPermGroupLiveData private constructor(
                 invalidateSingle(key)
                 value = null
             } else {
-                update()
+                updateIfActive()
             }
         }
 
@@ -79,7 +79,7 @@ class LightAppPermGroupLiveData private constructor(
                 invalidateSingle(key)
                 value = null
             } else {
-                update()
+                updateIfActive()
             }
         }
 
@@ -88,7 +88,7 @@ class LightAppPermGroupLiveData private constructor(
                 invalidateSingle(key)
                 value = null
             } else {
-                update()
+                updateIfActive()
             }
         }
     }
@@ -177,7 +177,7 @@ class LightAppPermGroupLiveData private constructor(
     }
 
     override fun onLocationStateChange(enabled: Boolean) {
-        update()
+        updateIfActive()
     }
 
     override fun onActive() {
@@ -185,7 +185,7 @@ class LightAppPermGroupLiveData private constructor(
 
         if (isSpecialLocation) {
             LocationUtils.addLocationListener(this)
-            update()
+            updateIfActive()
         }
     }
 

@@ -170,7 +170,7 @@ internal object RuntimePermissionsUpgradeController {
                             if (preinstalledPkgInfos != null) {
                                 removeSource(preinstalledPkgInfoProvider)
 
-                                update()
+                                updateIfActive()
                             }
                         }
                     }
@@ -185,7 +185,7 @@ internal object RuntimePermissionsUpgradeController {
                             platformRuntimePermissionInfoProvidersDone.add(permProvider)
                             removeSource(permProvider)
 
-                            update()
+                            updateIfActive()
                         }
                     }
                 }
@@ -238,14 +238,14 @@ internal object RuntimePermissionsUpgradeController {
                                 permGroupProvidersDone.add(permGroupProvider)
                                 removeSource(permGroupProvider)
 
-                                update()
+                                updateIfActive()
                             }
                         }
                     }
 
                     // If no group need to be loaded, directly switch to third step
                     if (permGroupProviders!!.isEmpty()) {
-                        update()
+                        updateIfActive()
                     }
                 } else if (permGroupProviders != null &&
                         permGroupProvidersDone.size == permGroupProviders!!.size &&

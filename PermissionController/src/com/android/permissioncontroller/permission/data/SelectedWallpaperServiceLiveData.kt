@@ -51,6 +51,11 @@ class SelectedWallpaperServiceLiveData(
         postValue(packageName)
     }
 
+    override fun onActive() {
+        super.onActive()
+        updateAsync()
+    }
+
     /**
      * Repository for [SelectedWallpaperServiceLiveData]
      *

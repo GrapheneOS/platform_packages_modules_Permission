@@ -54,9 +54,9 @@ class AllAppPermissionsViewModel(
 
         init {
             addSource(packagePermsLiveData) {
-                update()
+                updateIfActive()
             }
-            update()
+            updateIfActive()
         }
 
         override fun onUpdate() {
