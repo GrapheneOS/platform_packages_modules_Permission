@@ -106,13 +106,8 @@ public class GrantPermissionsActivity extends FragmentActivity
     private float mOriginalDimAmount;
     private View mRootView;
 
-    // TODO ntmyren: remove after b/166095244 is fixed
-    private Long mStartTime;
-    private static final Long NORMAL_TIME_MS = 3000L;
-
     @Override
     public void onCreate(Bundle icicle) {
-        mStartTime = System.currentTimeMillis();
         super.onCreate(icicle);
 
         if (icicle == null) {
@@ -395,10 +390,6 @@ public class GrantPermissionsActivity extends FragmentActivity
     public void finish() {
         setResultIfNeeded(RESULT_CANCELED);
         mViewModel.autoGrantNotify();
-        Long visibleTime = System.currentTimeMillis() - mStartTime;
-        if (visibleTime < NORMAL_TIME_MS) {
-            mViewModel.logState("Finished in " + visibleTime + "ms");
-        }
         super.finish();
     }
 
