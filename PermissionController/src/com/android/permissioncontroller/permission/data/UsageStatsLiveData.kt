@@ -41,7 +41,7 @@ class UsageStatsLiveData private constructor(
 
     init {
         addSource(UsersLiveData) {
-            updateIfActive()
+            update()
         }
     }
 
@@ -66,11 +66,6 @@ class UsageStatsLiveData private constructor(
         }
 
         postValue(userMap)
-    }
-
-    override fun onActive() {
-        super.onActive()
-        updateIfActive()
     }
 
     companion object : DataRepository<Pair<Long, Int>, UsageStatsLiveData>() {

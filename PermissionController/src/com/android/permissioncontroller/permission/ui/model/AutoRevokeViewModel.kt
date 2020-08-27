@@ -75,7 +75,9 @@ class AutoRevokeViewModel(private val app: Application, private val sessionId: L
     )
 
     val autoRevokedPackageCategoriesLiveData = object
-        : SmartAsyncMediatorLiveData<Map<Months, List<RevokedPackageInfo>>>() {
+        : SmartAsyncMediatorLiveData<Map<Months, List<RevokedPackageInfo>>>(
+        alwaysUpdateOnActive = false
+    ) {
         private val usageStatsLiveData = UsageStatsLiveData[SIX_MONTHS_MILLIS]
 
         init {

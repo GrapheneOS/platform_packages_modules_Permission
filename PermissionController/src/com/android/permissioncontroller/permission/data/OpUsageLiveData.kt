@@ -102,11 +102,6 @@ class OpUsageLiveData(
         }
     }
 
-    override fun onActive() {
-        super.onActive()
-        updateAsync()
-    }
-
     companion object : DataRepository<Pair<List<String>, Long>, OpUsageLiveData>() {
         override fun newValue(key: Pair<List<String>, Long>): OpUsageLiveData {
             return OpUsageLiveData(PermissionControllerApplication.get(), key.first, key.second)
