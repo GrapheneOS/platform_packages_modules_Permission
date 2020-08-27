@@ -47,11 +47,6 @@ class SelectedAutofillServiceLiveData(
         postValue(packageName)
     }
 
-    override fun onActive() {
-        super.onActive()
-        updateAsync()
-    }
-
     /**
      * Repository for [SelectedAutofillServiceLiveData]
      *
