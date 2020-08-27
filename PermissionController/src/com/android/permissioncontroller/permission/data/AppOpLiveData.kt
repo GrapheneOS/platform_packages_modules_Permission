@@ -47,7 +47,7 @@ class AppOpLiveData private constructor(
 
     override fun onActive() {
         super.onActive()
-        update()
+        updateIfActive()
     }
 
     /**

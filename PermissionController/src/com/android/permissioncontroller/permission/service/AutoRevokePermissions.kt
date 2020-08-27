@@ -682,7 +682,7 @@ class ExemptServicesLiveData(val user: UserHandle)
     )
 
     init {
-        serviceLiveDatas.forEach { addSource(it) { update() } }
+        serviceLiveDatas.forEach { addSource(it) { updateIfActive() } }
     }
 
     override fun onUpdate() {
@@ -880,18 +880,18 @@ private class AutoRevokeDumpLiveData(context: Context) :
 
     init {
         addSource(revokedPermGroupNames) {
-            update()
+            updateIfActive()
         }
 
         addSource(users) {
             services?.values?.forEach { removeSource(it) }
             services = null
 
-            update()
+            updateIfActive()
         }
 
         addSource(usages) {
-            update()
+            updateIfActive()
         }
 
         addSource(packages) {
@@ -899,7 +899,7 @@ private class AutoRevokeDumpLiveData(context: Context) :
             pkgPermGroupNames = null
             pkgPermGroups.values.forEach { it?.values?.forEach { removeSource(it) } }
 
-            update()
+            updateIfActive()
         }
     }
 
@@ -919,7 +919,7 @@ private class AutoRevokeDumpLiveData(context: Context) :
                 services!![user] = newServices
 
                 addSource(newServices) {
-                    update()
+                    updateIfActive()
                 }
             }
         }
@@ -937,7 +937,7 @@ private class AutoRevokeDumpLiveData(context: Context) :
                         pkgPermGroups[user to pkg.packageName]?.forEach { removeSource(it.value) }
                         pkgPermGroups.remove(user to pkg.packageName)
 
-                        update()
+                        updateIfActive()
                     }
                 }
             }
@@ -963,7 +963,7 @@ private class AutoRevokeDumpLiveData(context: Context) :
 
                             pkgPermGroups[user to pkg.packageName]!![groupName] = newPkgPermGroup
 
-                            addSource(newPkgPermGroup) { update() }
+                            addSource(newPkgPermGroup) { updateIfActive() }
                         }
                     }
                 }

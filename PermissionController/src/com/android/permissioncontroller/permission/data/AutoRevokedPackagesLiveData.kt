@@ -35,7 +35,7 @@ object AutoRevokedPackagesLiveData
 
     init {
         addSource(AllPackageInfosLiveData) {
-            update()
+            updateIfActive()
         }
     }
 
@@ -178,10 +178,10 @@ object UnusedAutoRevokedPackagesLiveData
 
     init {
         addSource(usageStatsLiveData) {
-            update()
+            updateIfActive()
         }
         addSource(AutoRevokedPackagesLiveData) {
-            update()
+            updateIfActive()
         }
     }
 

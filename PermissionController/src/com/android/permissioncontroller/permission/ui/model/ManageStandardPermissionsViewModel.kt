@@ -100,7 +100,7 @@ class NumCustomPermGroupsWithPackagesLiveData() :
 
     init {
         addSource(customPermGroupPackages) {
-            update()
+            updateIfActive()
         }
     }
 

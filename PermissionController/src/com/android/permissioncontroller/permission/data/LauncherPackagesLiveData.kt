@@ -45,12 +45,12 @@ object LauncherPackagesLiveData : SmartAsyncMediatorLiveData<Set<String>>(),
     }
 
     override fun onPackageUpdate(packageName: String) {
-        update()
+        updateIfActive()
     }
 
     override fun onActive() {
         super.onActive()
-        update()
+        updateIfActive()
         PackageBroadcastReceiver.addAllCallback(this)
     }
 

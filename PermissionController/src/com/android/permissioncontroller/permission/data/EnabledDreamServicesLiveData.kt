@@ -56,6 +56,11 @@ class EnabledDreamServicesLiveData(
         postValue(packageNames)
     }
 
+    override fun onActive() {
+        super.onActive()
+        updateAsync()
+    }
+
     /**
      * Repository for [EnabledDreamServicesLiveData]
      *

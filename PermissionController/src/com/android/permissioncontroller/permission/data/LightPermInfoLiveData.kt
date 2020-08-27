@@ -119,6 +119,7 @@ class LightPermInfoLiveData private constructor(
         super.onActive()
 
         startListeningForChanges()
+        updateAsync()
     }
 
     override fun onInactive() {

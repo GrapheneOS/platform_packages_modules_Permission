@@ -21,6 +21,7 @@ import android.content.pm.PackageManager.GET_PERMISSIONS
 import android.content.pm.PackageManager.MATCH_FACTORY_ONLY
 import android.content.pm.PackageManager.MATCH_UNINSTALLED_PACKAGES
 import android.os.UserHandle
+import android.util.Log
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 import kotlinx.coroutines.Job
@@ -35,9 +36,7 @@ import kotlinx.coroutines.Job
 class PreinstalledUserPackageInfosLiveData private constructor(
     private val app: Application,
     private val user: UserHandle
-) : SmartAsyncMediatorLiveData<@kotlin.jvm.JvmSuppressWildcards List<LightPackageInfo>>(
-    isStaticVal = true, alwaysUpdateOnActive = false
-) {
+) : SmartAsyncMediatorLiveData<@kotlin.jvm.JvmSuppressWildcards List<LightPackageInfo>>() {
 
     /**
      * Get all of the preinstalled packages in the system for this user
@@ -46,6 +45,9 @@ class PreinstalledUserPackageInfosLiveData private constructor(
         if (job.isCancelled) {
             return
         }
+        // TODO ntmyren: remove once b/154796729 is fixed
+        Log.i("PreinstalledUserPackageInfos", "updating PreinstalledUserPackageInfosLiveData for " +
+            "user ${user.identifier}")
         val packageInfos = app.applicationContext.packageManager
                 .getInstalledPackagesAsUser(GET_PERMISSIONS or MATCH_UNINSTALLED_PACKAGES
                         or MATCH_FACTORY_ONLY, user.identifier)
