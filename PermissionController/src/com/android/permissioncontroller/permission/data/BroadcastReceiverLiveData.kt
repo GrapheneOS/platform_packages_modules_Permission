@@ -112,8 +112,6 @@ class BroadcastReceiverLiveData(
         super.onActive()
 
         PackageBroadcastReceiver.addAllCallback(this)
-
-        updateAsync()
     }
 
     override fun onInactive() {

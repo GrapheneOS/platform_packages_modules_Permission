@@ -52,11 +52,6 @@ class EnabledAccessibilityServicesLiveData(
         postValue(packageNames)
     }
 
-    override fun onActive() {
-        super.onActive()
-        updateAsync()
-    }
-
     /**
      * Repository for [EnabledAccessibilityServicesLiveData]
      *
