@@ -97,11 +97,6 @@ object FullStoragePermissionAppsLiveData :
         postValue(fullStoragePackages)
     }
 
-    override fun onActive() {
-        super.onActive()
-        updateAsync()
-    }
-
     /**
      * Recalculate the LiveData
      * TODO ntmyren: Make livedata properly observe app ops

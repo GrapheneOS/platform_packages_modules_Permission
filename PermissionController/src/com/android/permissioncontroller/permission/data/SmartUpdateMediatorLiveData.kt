@@ -33,6 +33,8 @@ import kotlinx.coroutines.launch
  * A MediatorLiveData which tracks how long it has been inactive, compares new values before setting
  * its value (avoiding unnecessary updates), and can calculate the set difference between a list
  * and a map (used when determining whether or not to add a LiveData as a source).
+ *
+ * @param isStaticVal Whether or not this LiveData value is expected to change
  */
 abstract class SmartUpdateMediatorLiveData<T>(private val isStaticVal: Boolean = false)
     : MediatorLiveData<T>(), DataRepository.InactiveTimekeeper {
@@ -91,9 +93,9 @@ abstract class SmartUpdateMediatorLiveData<T>(private val isStaticVal: Boolean =
      * This usually results in an IPC when active and no action otherwise.
      */
     @MainThread
-    fun updateIfActive() {
+    fun update() {
         if (DEBUG_UPDATES) {
-            Log.i(LOG_TAG, "updateIfActive ${javaClass.simpleName} ${shortStackTrace()}")
+            Log.i(LOG_TAG, "update ${javaClass.simpleName} ${shortStackTrace()}")
         }
         onUpdate()
     }
@@ -197,7 +199,7 @@ abstract class SmartUpdateMediatorLiveData<T>(private val isStaticVal: Boolean =
                     if (onUpdateFun != null) {
                         onUpdateFun(key)
                     } else {
-                        updateIfActive()
+                        update()
                     }
                 }
                 addSourceWithError(liveData, observer, stackTraceException)
@@ -211,7 +213,7 @@ abstract class SmartUpdateMediatorLiveData<T>(private val isStaticVal: Boolean =
         // force update our value
         if (sources.isNotEmpty() && sources.all { !it.isStale } &&
             this !is SmartAsyncMediatorLiveData<T>) {
-            updateIfActive()
+            update()
         }
         super.onActive()
     }
@@ -228,14 +230,14 @@ abstract class SmartUpdateMediatorLiveData<T>(private val isStaticVal: Boolean =
      * Get the [initialized][isInitialized] value, suspending until one is available
      *
      * @param staleOk whether [isStale] value is ok to return
-     * @param forceUpdate whether to call [updateIfActive] (usually triggers an IPC)
+     * @param forceUpdate whether to call [update] (usually triggers an IPC)
      */
     suspend fun getInitializedValue(staleOk: Boolean = false, forceUpdate: Boolean = false): T {
         return getInitializedValue(
             observe = { observer ->
                 observeForever(observer)
                 if (forceUpdate) {
-                    updateIfActive()
+                    update()
                 }
             },
             isInitialized = { isInitialized && (staleOk || !isStale) })

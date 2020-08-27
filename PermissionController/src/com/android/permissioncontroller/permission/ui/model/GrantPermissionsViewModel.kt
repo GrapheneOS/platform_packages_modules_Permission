@@ -711,7 +711,7 @@ class GrantPermissionsViewModel(
         }
         reportRequestResult(groupState.affectedPermissions, result)
         // group state has changed, reload liveData
-        requestInfosLiveData.updateIfActive()
+        requestInfosLiveData.update()
     }
 
     private fun getGroupWithPerm(
@@ -823,7 +823,7 @@ class GrantPermissionsViewModel(
 
                 permGroupsToSkip.add(groupName)
                 // Update our liveData now that there is a new skipped group
-                requestInfosLiveData.updateIfActive()
+                requestInfosLiveData.update()
             }
         }
     }
@@ -842,7 +842,7 @@ class GrantPermissionsViewModel(
                 permGroupsToSkip.add(returnGroupName)
                 val result = data.getIntExtra(EXTRA_RESULT_PERMISSION_RESULT, -1)
                 logSettingsInteraction(returnGroupName, result)
-                requestInfosLiveData.updateIfActive()
+                requestInfosLiveData.update()
             }
         }
     }
