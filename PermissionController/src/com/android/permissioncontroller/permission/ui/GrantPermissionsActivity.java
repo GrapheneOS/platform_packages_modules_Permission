@@ -108,11 +108,11 @@ public class GrantPermissionsActivity extends FragmentActivity
 
     // TODO ntmyren: remove after b/166095244 is fixed
     private Long mStartTime;
-    private static final Long NORMAL_TIME_MS = 3000L;
 
     @Override
     public void onCreate(Bundle icicle) {
         mStartTime = System.currentTimeMillis();
+        Log.i(LOG_TAG, "GrantPermissionsActivity onCreate");
         super.onCreate(icicle);
 
         if (icicle == null) {
@@ -396,9 +396,7 @@ public class GrantPermissionsActivity extends FragmentActivity
         setResultIfNeeded(RESULT_CANCELED);
         mViewModel.autoGrantNotify();
         Long visibleTime = System.currentTimeMillis() - mStartTime;
-        if (visibleTime < NORMAL_TIME_MS) {
-            mViewModel.logState("Finished in " + visibleTime + "ms");
-        }
+        mViewModel.logState("Finished in " + visibleTime + "ms");
         super.finish();
     }
 
