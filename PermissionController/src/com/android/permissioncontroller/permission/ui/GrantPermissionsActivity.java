@@ -193,7 +193,9 @@ public class GrantPermissionsActivity extends FragmentActivity
     }
 
     private void onRequestInfoLoad(List<RequestInfo> requests) {
+        Log.i(LOG_TAG, "got RequestInfos " + requests);
         if (!mViewModel.getRequestInfosLiveData().isInitialized() || mResultSet) {
+            Log.i(LOG_TAG, "Result set: " + mResultSet + " or liveData not initialized");
             return;
         } else if (requests == null) {
             finish();
@@ -214,6 +216,7 @@ public class GrantPermissionsActivity extends FragmentActivity
     }
 
     private void showNextRequest() {
+        Log.i(LOG_TAG, "showing next request");
         if (mRequestInfos == null || mRequestInfos.isEmpty()) {
             return;
         }
