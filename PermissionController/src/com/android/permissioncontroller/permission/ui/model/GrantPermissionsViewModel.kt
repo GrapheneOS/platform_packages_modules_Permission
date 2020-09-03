@@ -148,14 +148,18 @@ class GrantPermissionsViewModel(
         private val appPermGroupLiveDatas = mutableMapOf<String, LightAppPermGroupLiveData>()
 
         init {
+            Log.i(LOG_TAG, "init requestInfoLiveData")
             GlobalScope.launch(Main.immediate) {
                 val groups = packagePermissionsLiveData.getInitializedValue()
+                Log.i(LOG_TAG, "received groups $groups")
                 if (groups == null || groups.isEmpty()) {
                     Log.w(LOG_TAG, "Package $packageName not found")
                     value = null
                     return@launch
                 }
                 packageInfo = packageInfoLiveData.getInitializedValue()
+                Log.i(LOG_TAG, "received package ${packageInfo.packageName} " +
+                    "${packageInfo.requestedPermissions}")
 
                 if (packageInfo.requestedPermissions.isEmpty() ||
                     packageInfo.targetSdkVersion < Build.VERSION_CODES.M) {
@@ -190,6 +194,7 @@ class GrantPermissionsViewModel(
                 return
             }
 
+            Log.i(LOG_TAG, "requesting to observe $requestedGroups")
             val getLiveDataFun = { groupName: String ->
                 LightAppPermGroupLiveData[packageName, groupName, user]
             }
@@ -197,6 +202,8 @@ class GrantPermissionsViewModel(
         }
 
         override fun onUpdate() {
+            Log.i(LOG_TAG, "stale status: " +
+                appPermGroupLiveDatas.map { it.key to it.value.isStale })
             if (appPermGroupLiveDatas.any { it.value.isStale }) {
                 return
             }
@@ -234,10 +241,12 @@ class GrantPermissionsViewModel(
                 groupStates = getRequiredGroupStates(
                     appPermGroupLiveDatas.mapNotNull { it.value.value })
             }
+            Log.i(LOG_TAG, "new Groups: $newGroups, groups: $groupStates")
             getRequestInfosFromGroupStates()
         }
 
         private fun getRequestInfosFromGroupStates() {
+            Log.i(LOG_TAG, "getting RequestInfos")
             val requestInfos = mutableListOf<RequestInfo>()
             for ((key, groupState) in groupStates) {
                 val groupInfo = groupState.group.permGroupInfo
