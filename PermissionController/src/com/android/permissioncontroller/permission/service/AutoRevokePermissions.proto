@@ -46,14 +46,6 @@ message PerUserProto {
   repeated PackageProto packages = 2;
 }
 
-message TeamFoodSettingsProto {
-  optional bool enabled_for_pre_R_apps = 1;
-  optional int64 unused_threshold_millis = 2;
-  optional int64 check_frequency_millis = 3;
-}
-
 message AutoRevokePermissionsDumpProto {
   repeated PerUserProto users = 1;
-
-  optional TeamFoodSettingsProto teamfood_settings = 2;
 }
