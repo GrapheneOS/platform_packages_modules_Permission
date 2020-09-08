@@ -166,30 +166,19 @@ public class GrantPermissionsActivity extends FragmentActivity
         mRootView = mViewHandler.createView();
         mRootView.setVisibility(View.GONE);
         setContentView(mRootView);
-        mOriginalDimAmount = getWindow().getAttributes().dimAmount;
+        Window window = getWindow();
+        WindowManager.LayoutParams layoutParams = window.getAttributes();
+        mOriginalDimAmount = layoutParams.dimAmount;
+        mViewHandler.updateWindowAttributes(layoutParams);
+        window.setAttributes(layoutParams);
         // Restore UI state after lifecycle events. This has to be before we show the first request,
         // as the UI behaves differently for updates and initial creations.
         if (icicle != null) {
-            setUpView();
             mViewHandler.loadInstanceState(icicle);
         } else {
             // Do not show screen dim until data is loaded
-            getWindow().setDimAmount(0f);
+            window.setDimAmount(0f);
         }
-    }
-
-    private void setUpView() {
-        if (mViewSetUp) {
-            return;
-        }
-
-        mViewSetUp = true;
-
-        Window window = getWindow();
-        WindowManager.LayoutParams layoutParams = window.getAttributes();
-        layoutParams.dimAmount = mOriginalDimAmount;
-        mViewHandler.updateWindowAttributes(layoutParams);
-        window.setAttributes(layoutParams);
     }
 
     private void onRequestInfoLoad(List<RequestInfo> requests) {
@@ -204,8 +193,6 @@ public class GrantPermissionsActivity extends FragmentActivity
             setResultAndFinish();
             return;
         }
-
-        setUpView();
 
         if (mRequestInfos == null) {
             mTotalRequests = requests.size();
@@ -303,6 +290,8 @@ public class GrantPermissionsActivity extends FragmentActivity
         if (showingNewGroup) {
             mCurrentRequestIdx++;
         }
+
+        getWindow().setDimAmount(mOriginalDimAmount);
         mRootView.setVisibility(View.VISIBLE);
     }
 
