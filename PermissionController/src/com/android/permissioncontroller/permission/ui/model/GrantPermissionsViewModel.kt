@@ -20,6 +20,7 @@ import android.app.Activity
 import android.app.Application
 import android.app.admin.DevicePolicyManager
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.pm.PackageManager.FLAG_PERMISSION_POLICY_FIXED
 import android.content.pm.PackageManager.FLAG_PERMISSION_USER_FIXED
 import android.content.pm.PackageManager.FLAG_PERMISSION_USER_SET
@@ -794,8 +795,8 @@ class GrantPermissionsViewModel(
     /**
      * Determine if the activity should return permission state to the caller
      *
-     * @return whether or not state should be returned, or true if the calling PackageInfo has not
-     * been initialized (which it should always be)
+     * @return Whether or not state should be returned. False only if the package is pre-M, true
+     * otherwise.
      */
     fun shouldReturnPermissionState(): Boolean {
         return if (packageInfoLiveData.isInitialized) {
@@ -803,7 +804,12 @@ class GrantPermissionsViewModel(
         } else {
             // Should not be reached, as this method shouldn't be called before data is passed to
             // the activity for the first time
-            true
+            try {
+                Utils.getUserContext(app, user).packageManager
+                    .getApplicationInfo(packageName, 0).targetSdkVersion >= Build.VERSION_CODES.M
+            } catch (e: PackageManager.NameNotFoundException) {
+                true
+            }
         }
     }
 
