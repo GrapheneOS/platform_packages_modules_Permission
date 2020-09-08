@@ -408,21 +408,20 @@ public class GrantPermissionsActivity extends FragmentActivity
             mResultSet = true;
             mViewModel.logRequestedPermissionGroups();
             Intent result = new Intent(PackageManager.ACTION_REQUEST_PERMISSIONS);
-            result.putExtra(PackageManager.EXTRA_REQUEST_PERMISSIONS_NAMES, mRequestedPermissions);
+            String[] resultPermissions = mRequestedPermissions;
+            int[] grantResults = new int[mRequestedPermissions.length];
 
-            if (mViewModel.getRequestInfosLiveData().isInitialized()
-                    && mViewModel.shouldReturnPermissionState()) {
+            if (mViewModel.shouldReturnPermissionState()) {
                 PackageManager pm = getPackageManager();
-                int numRequestedPermissions = mRequestedPermissions.length;
-                int[] grantResults = new int[numRequestedPermissions];
-                for (int i = 0; i < numRequestedPermissions; i++) {
+                for (int i = 0; i < mRequestedPermissions.length; i++) {
                     grantResults[i] = pm.checkPermission(mRequestedPermissions[i], mCallingPackage);
                 }
-
-                result.putExtra(PackageManager.EXTRA_REQUEST_PERMISSIONS_RESULTS, grantResults);
             } else {
-                result.putExtra(PackageManager.EXTRA_REQUEST_PERMISSIONS_RESULTS, new int[0]);
+                grantResults = new int[0];
+                resultPermissions = new String[0];
             }
+            result.putExtra(PackageManager.EXTRA_REQUEST_PERMISSIONS_NAMES, resultPermissions);
+            result.putExtra(PackageManager.EXTRA_REQUEST_PERMISSIONS_RESULTS, grantResults);
             setResult(resultCode, result);
         }
     }
