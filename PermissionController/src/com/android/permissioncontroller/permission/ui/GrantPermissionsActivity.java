@@ -102,17 +102,11 @@ public class GrantPermissionsActivity extends FragmentActivity
     private String mCallingPackage;
     private int mTotalRequests = 0;
     private int mCurrentRequestIdx = 0;
-    private boolean mViewSetUp;
     private float mOriginalDimAmount;
     private View mRootView;
 
-    // TODO ntmyren: remove after b/166095244 is fixed
-    private Long mStartTime;
-
     @Override
     public void onCreate(Bundle icicle) {
-        mStartTime = System.currentTimeMillis();
-        Log.i(LOG_TAG, "GrantPermissionsActivity onCreate");
         super.onCreate(icicle);
 
         if (icicle == null) {
@@ -182,9 +176,7 @@ public class GrantPermissionsActivity extends FragmentActivity
     }
 
     private void onRequestInfoLoad(List<RequestInfo> requests) {
-        Log.i(LOG_TAG, "got RequestInfos " + requests);
         if (!mViewModel.getRequestInfosLiveData().isInitialized() || mResultSet) {
-            Log.i(LOG_TAG, "Result set: " + mResultSet + " or liveData not initialized");
             return;
         } else if (requests == null) {
             finish();
@@ -203,7 +195,6 @@ public class GrantPermissionsActivity extends FragmentActivity
     }
 
     private void showNextRequest() {
-        Log.i(LOG_TAG, "showing next request");
         if (mRequestInfos == null || mRequestInfos.isEmpty()) {
             return;
         }
@@ -388,8 +379,6 @@ public class GrantPermissionsActivity extends FragmentActivity
         setResultIfNeeded(RESULT_CANCELED);
         if (mViewModel != null) {
             mViewModel.autoGrantNotify();
-            Long visibleTime = System.currentTimeMillis() - mStartTime;
-            mViewModel.logState("Finished in " + visibleTime + "ms");
         }
         super.finish();
     }
