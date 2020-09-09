@@ -95,7 +95,10 @@ class PermGroupLiveData private constructor(
             is PermissionInfo -> {
                 permissionInfos[groupInfo.name] = LightPermInfo(groupInfo as PermissionInfo)
             }
-            else -> return
+            else -> {
+                value = null
+                return
+            }
         }
 
         val permGroup = PermGroup(LightPermGroupInfo(groupInfo), permissionInfos)

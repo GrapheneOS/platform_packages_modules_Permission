@@ -79,8 +79,11 @@ abstract class SmartUpdateMediatorLiveData<T>(private val isStaticVal: Boolean =
         }
 
         val wasStale = isStale
-        // If all sources are not stale, and we are active, we are not stale
-        isStale = sources.any { it.isStale } || !hasActiveObservers()
+        // If this liveData is not active, and is not a static value, then it is stale
+        val isActiveOrStaticVal = isStaticVal || hasActiveObservers()
+        // If all of this liveData's sources are non-stale, and this liveData is active or is a
+        // static val, then it is non stale
+        isStale = !(sources.all { !it.isStale } && isActiveOrStaticVal)
 
         if (valueNotEqual(super.getValue(), newValue) || (wasStale && !isStale)) {
             super.setValue(newValue)
