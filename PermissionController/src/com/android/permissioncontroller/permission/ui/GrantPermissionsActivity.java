@@ -386,21 +386,25 @@ public class GrantPermissionsActivity extends FragmentActivity
     @Override
     public void finish() {
         setResultIfNeeded(RESULT_CANCELED);
-        mViewModel.autoGrantNotify();
-        Long visibleTime = System.currentTimeMillis() - mStartTime;
-        mViewModel.logState("Finished in " + visibleTime + "ms");
+        if (mViewModel != null) {
+            mViewModel.autoGrantNotify();
+            Long visibleTime = System.currentTimeMillis() - mStartTime;
+            mViewModel.logState("Finished in " + visibleTime + "ms");
+        }
         super.finish();
     }
 
     private void setResultIfNeeded(int resultCode) {
         if (!mResultSet) {
             mResultSet = true;
-            mViewModel.logRequestedPermissionGroups();
+            if (mViewModel != null) {
+                mViewModel.logRequestedPermissionGroups();
+            }
             Intent result = new Intent(PackageManager.ACTION_REQUEST_PERMISSIONS);
             String[] resultPermissions = mRequestedPermissions;
             int[] grantResults = new int[mRequestedPermissions.length];
 
-            if (mViewModel.shouldReturnPermissionState()) {
+            if (mViewModel != null && mViewModel.shouldReturnPermissionState()) {
                 PackageManager pm = getPackageManager();
                 for (int i = 0; i < mRequestedPermissions.length; i++) {
                     grantResults[i] = pm.checkPermission(mRequestedPermissions[i], mCallingPackage);
