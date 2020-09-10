@@ -21,6 +21,7 @@ import android.Manifest.permission_group
 import android.app.role.RoleManager
 import android.content.Context
 import android.content.pm.PackageInfo
+import android.content.pm.PackageManager.FLAG_PERMISSION_ALLOWLIST_ROLE
 import android.content.pm.PackageManager.FLAG_PERMISSION_RESTRICTION_UPGRADE_EXEMPT
 import android.content.pm.PackageManager.FLAG_PERMISSION_WHITELIST_UPGRADE
 import android.content.pm.PermissionInfo
@@ -89,13 +90,14 @@ internal object RuntimePermissionsUpgradeController {
      */
     private fun getExemptions(
         permissions: Set<String>,
-        pkgs: List<LightPackageInfo>
+        pkgs: List<LightPackageInfo>,
+        flags: Int = FLAG_PERMISSION_WHITELIST_UPGRADE
     ): List<RestrictionExemption> {
         val exemptions = mutableListOf<RestrictionExemption>()
 
         for (pkg in pkgs) {
             for (permission in permissions intersect pkg.requestedPermissions) {
-                exemptions.add(RestrictionExemption(pkg.packageName, permission))
+                exemptions.add(RestrictionExemption(pkg.packageName, permission, flags))
             }
         }
 
@@ -500,7 +502,7 @@ internal object RuntimePermissionsUpgradeController {
             }
 
             exemptions.addAll(getExemptions(setOf(permission.RECORD_BACKGROUND_AUDIO),
-                    packagesToExempt))
+                    packagesToExempt, FLAG_PERMISSION_ALLOWLIST_ROLE))
 
             currentVersion = 9
         }
@@ -543,7 +545,9 @@ internal object RuntimePermissionsUpgradeController {
         /** Name of package to exempt */
         val pkgName: String,
         /** Name of permissions to exempt */
-        val permission: String
+        val permission: String,
+        /** Name of permissions to exempt */
+        val flags: Int = FLAG_PERMISSION_WHITELIST_UPGRADE
     ) {
         /**
          * Exempt the permission by updating the platform state.
@@ -551,8 +555,7 @@ internal object RuntimePermissionsUpgradeController {
          * @param context context to use when calling the platform
          */
         fun applyToPlatform(context: Context) {
-            context.packageManager.addWhitelistedRestrictedPermission(pkgName, permission,
-                    FLAG_PERMISSION_WHITELIST_UPGRADE)
+            context.packageManager.addWhitelistedRestrictedPermission(pkgName, permission, flags)
         }
     }
 

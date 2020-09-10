@@ -25,6 +25,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.FLAG_PERMISSION_APPLY_RESTRICTION
 import android.content.pm.PackageManager.FLAG_PERMISSION_RESTRICTION_INSTALLER_EXEMPT
+import android.content.pm.PackageManager.FLAG_PERMISSION_RESTRICTION_ROLE_EXEMPT
 import android.content.pm.PackageManager.FLAG_PERMISSION_RESTRICTION_SYSTEM_EXEMPT
 import android.content.pm.PackageManager.FLAG_PERMISSION_RESTRICTION_UPGRADE_EXEMPT
 import android.content.pm.PackageManager.GET_PERMISSIONS
@@ -68,7 +69,8 @@ class DeviceSide {
         private const val ALL_PERMISSION_EXEMPT_FLAGS =
                 FLAG_PERMISSION_RESTRICTION_INSTALLER_EXEMPT or
                         FLAG_PERMISSION_RESTRICTION_SYSTEM_EXEMPT or
-                        FLAG_PERMISSION_RESTRICTION_UPGRADE_EXEMPT
+                        FLAG_PERMISSION_RESTRICTION_UPGRADE_EXEMPT or
+                        FLAG_PERMISSION_RESTRICTION_ROLE_EXEMPT
     }
 
     lateinit var uiautomation: UiAutomation
