@@ -78,7 +78,7 @@
     </style>
 
     <style name="CarSettings" parent="Theme.CarUi.WithToolbar">
-        <item name="carDividerColor">@*android:color/car_list_divider</item>
+        <item name="carDividerColor">@color/car_divider_color</item>
     </style>
 
     <style name="AutoRevokeDivider">
