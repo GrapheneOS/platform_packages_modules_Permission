@@ -149,22 +149,18 @@ class GrantPermissionsViewModel(
         private val appPermGroupLiveDatas = mutableMapOf<String, LightAppPermGroupLiveData>()
 
         init {
-            Log.i(LOG_TAG, "init requestInfoLiveData")
             GlobalScope.launch(Main.immediate) {
                 val groups = packagePermissionsLiveData.getInitializedValue()
-                Log.i(LOG_TAG, "received groups $groups")
                 if (groups == null || groups.isEmpty()) {
-                    Log.w(LOG_TAG, "Package $packageName not found")
+                    Log.e(LOG_TAG, "Package $packageName not found")
                     value = null
                     return@launch
                 }
                 packageInfo = packageInfoLiveData.getInitializedValue()
-                Log.i(LOG_TAG, "received package ${packageInfo.packageName} " +
-                    "${packageInfo.requestedPermissions}")
 
                 if (packageInfo.requestedPermissions.isEmpty() ||
                     packageInfo.targetSdkVersion < Build.VERSION_CODES.M) {
-                    Log.w(LOG_TAG, "Package $packageName has no requested permissions, or " +
+                    Log.e(LOG_TAG, "Package $packageName has no requested permissions, or " +
                         "is a pre-M app")
                     value = null
                     return@launch
@@ -195,7 +191,6 @@ class GrantPermissionsViewModel(
                 return
             }
 
-            Log.i(LOG_TAG, "requesting to observe $requestedGroups")
             val getLiveDataFun = { groupName: String ->
                 LightAppPermGroupLiveData[packageName, groupName, user]
             }
@@ -203,8 +198,6 @@ class GrantPermissionsViewModel(
         }
 
         override fun onUpdate() {
-            Log.i(LOG_TAG, "stale status: " +
-                appPermGroupLiveDatas.map { it.key to it.value.isStale })
             if (appPermGroupLiveDatas.any { it.value.isStale }) {
                 return
             }
@@ -213,7 +206,7 @@ class GrantPermissionsViewModel(
                 val appPermGroup = groupLiveData.value
                 if (appPermGroup == null || groupName in permGroupsToSkip) {
                     if (appPermGroup == null) {
-                        Log.w(LOG_TAG, "Group $packageName $groupName invalid")
+                        Log.e(LOG_TAG, "Group $packageName $groupName invalid")
                     }
                     groupStates[groupName to true]?.state = STATE_SKIPPED
                     groupStates[groupName to false]?.state = STATE_SKIPPED
@@ -242,12 +235,10 @@ class GrantPermissionsViewModel(
                 groupStates = getRequiredGroupStates(
                     appPermGroupLiveDatas.mapNotNull { it.value.value })
             }
-            Log.i(LOG_TAG, "new Groups: $newGroups, groups: $groupStates")
             getRequestInfosFromGroupStates()
         }
 
         private fun getRequestInfosFromGroupStates() {
-            Log.i(LOG_TAG, "getting RequestInfos")
             val requestInfos = mutableListOf<RequestInfo>()
             for ((key, groupState) in groupStates) {
                 val groupInfo = groupState.group.permGroupInfo
@@ -860,12 +851,6 @@ class GrantPermissionsViewModel(
                 requestInfosLiveData.update()
             }
         }
-    }
-
-    // TODO ntmyren: remove after b/166095244 is fixed
-    fun logState(message: String) {
-        Log.i(LOG_TAG, "$message: RequestInfos: ${requestInfosLiveData.value}")
-        Log.i(LOG_TAG, "$message: GroupStates: $groupStates")
     }
 
     private fun startAppPermissionFragment(activity: Activity, groupName: String) {
