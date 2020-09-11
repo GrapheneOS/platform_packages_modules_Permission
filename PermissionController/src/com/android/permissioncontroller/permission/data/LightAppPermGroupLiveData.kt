@@ -98,10 +98,6 @@ class LightAppPermGroupLiveData private constructor(
         val permGroup = permGroupLiveData.value ?: return
         val packageInfo = packageInfoLiveData.value ?: return
         val allForegroundPerms = fgPermNamesLiveData.value ?: return
-        // TODO ntmyren: remove after b/166095244 is fixed
-        Log.i(LOG_TAG, "$packageName $permGroupName stale status: permState=" +
-            "${permStateLiveData.isStale}, package=" + "${packageInfoLiveData.isStale}, perm" +
-            "Group=${permGroupLiveData.isStale}, foregroundPerms=${fgPermNamesLiveData.isStale}")
 
         // Do not allow toggling pre-M custom perm groups
         if (packageInfo.targetSdkVersion < Build.VERSION_CODES.M &&
