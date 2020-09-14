@@ -55,7 +55,6 @@ import android.os.UserHandle
 import android.os.UserManager
 import android.printservice.PrintService
 import android.provider.DeviceConfig
-import android.provider.Settings
 import android.service.autofill.AutofillService
 import android.service.dreams.DreamService
 import android.service.notification.NotificationListenerService
@@ -99,7 +98,6 @@ import com.android.permissioncontroller.permission.service.AutoRevokePermissions
 import com.android.permissioncontroller.permission.service.AutoRevokePermissionsProto.PackageProto
 import com.android.permissioncontroller.permission.service.AutoRevokePermissionsProto.PerUserProto
 import com.android.permissioncontroller.permission.service.AutoRevokePermissionsProto.PermissionGroupProto
-import com.android.permissioncontroller.permission.service.AutoRevokePermissionsProto.TeamFoodSettingsProto
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity
 import com.android.permissioncontroller.permission.utils.IPC
 import com.android.permissioncontroller.permission.utils.KotlinUtils
@@ -136,20 +134,16 @@ private val DEFAULT_UNUSED_THRESHOLD_MS =
         if (AUTO_REVOKE_ENABLED) DAYS.toMillis(90) else Long.MAX_VALUE
 fun getUnusedThresholdMs(context: Context) = when {
     DEBUG_OVERRIDE_THRESHOLDS -> SECONDS.toMillis(1)
-    TeamfoodSettings.get(context) != null -> TeamfoodSettings.get(context)!!.unusedThresholdMs
     else -> DeviceConfig.getLong(DeviceConfig.NAMESPACE_PERMISSIONS,
             PROPERTY_AUTO_REVOKE_UNUSED_THRESHOLD_MILLIS,
             DEFAULT_UNUSED_THRESHOLD_MS)
 }
 
 private val DEFAULT_CHECK_FREQUENCY_MS = DAYS.toMillis(15)
-private fun getCheckFrequencyMs(context: Context) = when {
-    TeamfoodSettings.get(context) != null -> TeamfoodSettings.get(context)!!.checkFrequencyMs
-    else -> DeviceConfig.getLong(
-            DeviceConfig.NAMESPACE_PERMISSIONS,
-            PROPERTY_AUTO_REVOKE_CHECK_FREQUENCY_MILLIS,
-            DEFAULT_CHECK_FREQUENCY_MS)
-}
+private fun getCheckFrequencyMs(context: Context) = DeviceConfig.getLong(
+    DeviceConfig.NAMESPACE_PERMISSIONS,
+    PROPERTY_AUTO_REVOKE_CHECK_FREQUENCY_MILLIS,
+    DEFAULT_CHECK_FREQUENCY_MS)
 
 private val SERVER_LOG_ID =
     PERMISSION_GRANT_REQUEST_RESULT_REPORTED__RESULT__AUTO_UNUSED_APP_PERMISSION_REVOKED
@@ -166,17 +160,12 @@ fun isAutoRevokeEnabled(context: Context): Boolean {
  * @return dump of auto revoke service as a proto
  */
 suspend fun dumpAutoRevokePermissions(context: Context): AutoRevokePermissionsDumpProto {
-    val teamFoodSettings = GlobalScope.async(IPC) {
-        TeamfoodSettings.get(context)?.dump()
-                ?: TeamFoodSettingsProto.newBuilder().build()
-    }
 
     val dumpData = GlobalScope.async(IPC) {
         AutoRevokeDumpLiveData(context).getInitializedValue()
     }
 
     return AutoRevokePermissionsDumpProto.newBuilder()
-            .setTeamfoodSettings(teamFoodSettings.await())
             .addAllUsers(dumpData.await().dumpUsers())
             .build()
 }
@@ -512,9 +501,8 @@ suspend fun isPackageAutoRevokeExempt(
             return false
         }
 
-        // Q- packages exempt by default, except for dogfooding
-        return pkg.targetSdkVersion <= android.os.Build.VERSION_CODES.Q &&
-                TeamfoodSettings.get(context)?.enabledForPreRApps != true
+        // Q- packages exempt by default
+        return pkg.targetSdkVersion <= android.os.Build.VERSION_CODES.Q
     }
     // Check whether user/installer exempt
     return whitelistAppOpMode != MODE_ALLOWED
@@ -723,61 +711,6 @@ class ExemptServicesLiveData(val user: UserHandle)
         override fun newValue(key: UserHandle): ExemptServicesLiveData {
             return ExemptServicesLiveData(key)
         }
-    }
-}
-
-private data class TeamfoodSettings(
-    val enabledForPreRApps: Boolean,
-    val unusedThresholdMs: Long,
-    val checkFrequencyMs: Long
-) {
-    companion object {
-        private var cached: TeamfoodSettings? = null
-
-        fun get(context: Context): TeamfoodSettings? {
-            if (cached != null) return cached
-
-            return Settings.Global.getString(context.contentResolver,
-                "auto_revoke_parameters" /* Settings.Global.AUTO_REVOKE_PARAMETERS */)?.let { str ->
-
-                if (DEBUG_AUTO_REVOKE) {
-                    DumpableLog.i(LOG_TAG, "Parsing teamfood setting value: $str")
-                }
-                str.split(",")
-                    .mapNotNull {
-                        val keyValue = it.split("=")
-                        keyValue.getOrNull(0)?.let { key ->
-                            key to keyValue.getOrNull(1)
-                        }
-                    }
-                    .toMap()
-                    .let { pairs ->
-                        TeamfoodSettings(
-                            enabledForPreRApps = pairs["enabledForPreRApps"] == "true",
-                            unusedThresholdMs =
-                                pairs["unusedThresholdMs"]?.toLongOrNull()
-                                        ?: DEFAULT_UNUSED_THRESHOLD_MS,
-                            checkFrequencyMs = pairs["checkFrequencyMs"]?.toLongOrNull()
-                                    ?: DEFAULT_CHECK_FREQUENCY_MS)
-                    }
-            }.also {
-                cached = it
-                if (DEBUG_AUTO_REVOKE) {
-                    Log.i(LOG_TAG, "Parsed teamfood setting value: $it")
-                }
-            }
-        }
-    }
-
-    /**
-     * @return team food settings for dumping as as a proto
-     */
-    suspend fun dump(): TeamFoodSettingsProto {
-        return TeamFoodSettingsProto.newBuilder()
-                .setEnabledForPreRApps(enabledForPreRApps)
-                .setUnusedThresholdMillis(unusedThresholdMs)
-                .setCheckFrequencyMillis(checkFrequencyMs)
-                .build()
     }
 }
 
