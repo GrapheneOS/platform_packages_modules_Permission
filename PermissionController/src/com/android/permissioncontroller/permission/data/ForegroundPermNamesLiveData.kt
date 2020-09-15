@@ -27,6 +27,7 @@ import kotlinx.coroutines.Job
  * static, since the background/foreground permission relationships are defined by the system.
  */
 object ForegroundPermNamesLiveData : SmartAsyncMediatorLiveData<Map<String, List<String>>>(true) {
+    private val app = PermissionControllerApplication.get()
 
     // Since the value will be static, initialize the value upon creating the LiveData.
     init {
@@ -38,8 +39,7 @@ object ForegroundPermNamesLiveData : SmartAsyncMediatorLiveData<Map<String, List
         val permMap = mutableMapOf<String, MutableList<String>>()
         for (groupName in systemGroups) {
             val permInfos = try {
-                Utils.getInstalledRuntimePermissionInfosForGroup(
-                    PermissionControllerApplication.get().packageManager, groupName)
+                Utils.getInstalledRuntimePermissionInfosForGroup(app.packageManager, groupName)
             } catch (e: PackageManager.NameNotFoundException) {
                 continue
             }
