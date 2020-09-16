@@ -350,7 +350,6 @@ public class ReviewOngoingUsageFragment extends PreferenceFragmentCompat {
 
             TextView permissionsList = itemView.requireViewById(R.id.permissionsList);
             permissionsList.setText(getListOfPermissionLabels(usedGroupsThisApp));
-            permissionsList.setVisibility(View.VISIBLE);
 
             itemView.setOnClickListener((v) -> {
                 String packageName = app.getPackageName();
