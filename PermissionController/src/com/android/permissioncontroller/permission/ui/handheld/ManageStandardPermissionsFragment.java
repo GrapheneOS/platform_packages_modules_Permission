@@ -15,11 +15,14 @@
  */
 package com.android.permissioncontroller.permission.ui.handheld;
 
+import static androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory;
+
 import static com.android.permissioncontroller.Constants.EXTRA_SESSION_ID;
 import static com.android.permissioncontroller.Constants.INVALID_SESSION_ID;
 import static com.android.permissioncontroller.permission.debug.UtilsKt.shouldShowPermissionsDashboard;
 import static com.android.permissioncontroller.permission.ui.handheld.UtilsKt.pressBack;
 
+import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,7 +37,6 @@ import androidx.preference.PreferenceScreen;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity;
 import com.android.permissioncontroller.permission.ui.model.ManageStandardPermissionsViewModel;
-import com.android.permissioncontroller.permission.ui.model.ManageStandardPermissionsViewModelFactory;
 import com.android.permissioncontroller.permission.utils.Utils;
 
 /**
@@ -65,9 +67,8 @@ public final class ManageStandardPermissionsFragment extends ManagePermissionsFr
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
-        ManageStandardPermissionsViewModelFactory factory =
-                new ManageStandardPermissionsViewModelFactory(getActivity().getApplication());
-        mViewModel = new ViewModelProvider(this, factory)
+        final Application application = getActivity().getApplication();
+        mViewModel = new ViewModelProvider(this, AndroidViewModelFactory.getInstance(application))
                 .get(ManageStandardPermissionsViewModel.class);
         mPermissionGroups = mViewModel.getUiDataLiveData().getValue();
 
