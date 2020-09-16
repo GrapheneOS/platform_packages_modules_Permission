@@ -124,10 +124,6 @@ class AppPermissionGroupsViewModel(
                 return
             }
 
-            val hasFullStorage = fullStoragePermsLiveData.value?.any { pkg ->
-                pkg.packageName == packageName && pkg.user == user && pkg.isGranted
-            } ?: false
-
             val getLiveData = { groupName: String ->
                 AppPermGroupUiInfoLiveData[packageName, groupName, user]
             }
@@ -143,10 +139,15 @@ class AppPermissionGroupsViewModel(
             groupGrantStates[Category.ASK] = mutableListOf()
             groupGrantStates[Category.DENIED] = mutableListOf()
 
+            val fullStorageState = fullStoragePermsLiveData.value?.find { pkg ->
+                pkg.packageName == packageName && pkg.user == user
+            }
+
             for (groupName in groups) {
                 val isSystem = Utils.getPlatformPermissionGroups().contains(groupName)
                 appPermGroupUiInfoLiveDatas[groupName]?.value?.let { uiInfo ->
-                    if (groupName == Manifest.permission_group.STORAGE && hasFullStorage) {
+                    if (groupName == Manifest.permission_group.STORAGE &&
+                        (fullStorageState?.isGranted == true && !fullStorageState.isLegacy)) {
                         groupGrantStates[Category.ALLOWED]!!.add(
                             GroupUiInfo(groupName, isSystem, PermSubtitle.ALL_FILES))
                         return@let
@@ -154,7 +155,11 @@ class AppPermissionGroupsViewModel(
                     when (uiInfo.permGrantState) {
                         PermGrantState.PERMS_ALLOWED -> {
                             val subtitle = if (groupName == Manifest.permission_group.STORAGE) {
-                                PermSubtitle.MEDIA_ONLY
+                                if (fullStorageState?.isLegacy == true) {
+                                    PermSubtitle.ALL_FILES
+                                } else {
+                                    PermSubtitle.MEDIA_ONLY
+                                }
                             } else {
                                 PermSubtitle.NONE
                             }
