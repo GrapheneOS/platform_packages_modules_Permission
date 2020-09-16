@@ -17,6 +17,7 @@
 package com.android.permissioncontroller.permission.data
 
 import android.content.Context
+import android.content.res.Resources.ID_NULL
 import android.os.Process.myUserHandle
 import android.os.UserHandle
 import android.permission.cts.PermissionUtils.install
@@ -44,6 +45,13 @@ class AttributionLabelLiveDataTest {
         AttributionLabelLiveData["testTag", PKG, myUserHandle()].withLoadedValue {
             assertThat(context.packageManager.getResourcesForApplication(PKG)
                     .getString(it!!)).isEqualTo("Test Attribution Label")
+        }
+    }
+
+    @Test
+    fun getDefaultTag() {
+        AttributionLabelLiveData[null, PKG, myUserHandle()].withLoadedValue {
+            assertThat(it).isEqualTo(ID_NULL)
         }
     }
 

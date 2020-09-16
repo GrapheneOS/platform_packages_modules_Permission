@@ -45,7 +45,7 @@ private const val LABEL_ATTR = "label"
  */
 class AttributionLabelLiveData private constructor(
     private val app: Application,
-    private val attributionTag: String,
+    private val attributionTag: String?,
     private val packageName: String,
     private val user: UserHandle
 ) : SmartAsyncMediatorLiveData<Int>(), PackageBroadcastReceiver.PackageBroadcastListener {
@@ -53,6 +53,11 @@ class AttributionLabelLiveData private constructor(
 
     override suspend fun loadDataAndPostValue(job: Job) {
         if (job.isCancelled) {
+            return
+        }
+
+        if (attributionTag == null) {
+            postValue(ID_NULL)
             return
         }
 
@@ -155,11 +160,15 @@ class AttributionLabelLiveData private constructor(
      * <p> Key value is a pair of string attribution tag, string package name, user handle, value is
      * its corresponding LiveData.
      */
-    companion object : DataRepository<Triple<String, String, UserHandle>,
+    companion object : DataRepository<Triple<String?, String, UserHandle>,
             AttributionLabelLiveData>() {
-        override fun newValue(key: Triple<String, String, UserHandle>): AttributionLabelLiveData {
+        override fun newValue(key: Triple<String?, String, UserHandle>): AttributionLabelLiveData {
             return AttributionLabelLiveData(PermissionControllerApplication.get(),
                     key.first, key.second, key.third)
         }
+
+        operator fun get(attributionTag: String?, packageName: String, user: UserHandle):
+                AttributionLabelLiveData =
+            get(Triple(attributionTag, packageName, user))
     }
 }

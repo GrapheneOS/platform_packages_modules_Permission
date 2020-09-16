@@ -22,7 +22,7 @@ import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.utils.Utils.getPlatformPermissionNamesOfGroup
 
 /**
- * LiveData that loads the last usage of permission group for every package.
+ * LiveData that loads the last usage of permission group for every package/attributionTag-pair.
  *
  * <p>This relies on app-ops data, hence this only works for platform defined permission groups.
  *
@@ -69,12 +69,13 @@ class PermGroupUsageLiveData(
 
         // Only keep the last access for a permission group
         value = permGroupUsages.map { (permGroupName, usageLiveData) ->
-            val lastAccess = mutableMapOf<String, OpAccess>()
+            // (packageName, attributionTag) -> access
+            val lastAccess = mutableMapOf<Pair<String, String?>, OpAccess>()
             for (access in usageLiveData.value!!.values.flatten()) {
+                val key = access.packageName to access.attributionTag
                 if (access.isRunning() ||
-                        lastAccess[access.packageName]?.lastAccessTime ?: 0 <
-                        access.lastAccessTime) {
-                    lastAccess[access.packageName] = access
+                        lastAccess[key]?.lastAccessTime ?: 0 < access.lastAccessTime) {
+                    lastAccess[key] = access
                 }
             }
 

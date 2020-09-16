@@ -20,15 +20,18 @@ import android.Manifest.permission_group.CAMERA
 import android.Manifest.permission_group.LOCATION
 import android.Manifest.permission_group.MICROPHONE
 import android.app.Application
+import android.content.res.Resources.ID_NULL
 import android.location.LocationManager
 import android.os.Bundle
 import android.os.UserHandle
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.data.AppPermGroupUiInfoLiveData
+import com.android.permissioncontroller.permission.data.AttributionLabelLiveData
 import com.android.permissioncontroller.permission.data.LoadAndFreezeLifeData
 import com.android.permissioncontroller.permission.data.MicMutedLiveData
 import com.android.permissioncontroller.permission.data.OpAccess
@@ -66,8 +69,8 @@ class ReviewOngoingUsageViewModel(
             Instant.EPOCH.toEpochMilli())
 
     data class Usages(
-        /** Package name/user -> perm groups accessed */
-        val appUsages: Map<Pair<String, UserHandle>, Set<String>>,
+        /** attribution-res-id/packageName/user -> perm groups accessed */
+        val appUsages: Map<Triple<Int, String, UserHandle>, Set<String>>,
         /** Op-names of phone call accesses */
         val callUsages: Collection<String>,
         /** Perm groups accessed by system */
@@ -143,16 +146,20 @@ class ReviewOngoingUsageViewModel(
     /**
      * Permission group used by user sensitive packages
      *
-     * <p>Package/user -> PermissionGroupName
+     * <p>attributionLabel-string-res-id/Package/user -> PermissionGroupName
      */
     private class UserSensitivePermGroupUsages(
         private val rawPermGroupUsages: SmartUpdateMediatorLiveData<Map<String,
                 Collection<OpAccess>>>,
         private val isMicMuted: SmartUpdateMediatorLiveData<Boolean>
-    ) : SmartUpdateMediatorLiveData<Map<Pair<String, UserHandle>, Set<String>>>() {
+    ) : SmartUpdateMediatorLiveData<Map<Triple<Int, String, UserHandle>, Set<String>>>() {
         /** (packageName, user, permissionGroupName) -> uiInfo */
         private var permGroupUiInfos = mutableMapOf<Triple<String, UserHandle, String>,
                 AppPermGroupUiInfoLiveData>()
+
+        /** (packageName, user, attribution tag) -> attribution label */
+        private var attributionLabels = mutableMapOf<Triple<String?, String, UserHandle>,
+                AttributionLabelLiveData>()
 
         init {
             addSource(rawPermGroupUsages) {
@@ -161,6 +168,34 @@ class ReviewOngoingUsageViewModel(
 
             addSource(isMicMuted) {
                 update()
+            }
+        }
+
+        /**
+         * Adjust {@code currentSources} to only include {@link requiredSources} by removing
+         * obsolete sources and creating and adding newly required sources
+         */
+        private fun <K, V : LiveData<out Any>> adjustSources(
+            currentSources: MutableMap<K, V>,
+            requiredSources: List<K>,
+            newSource: (K) -> V
+        ) {
+            val (toAdd, toRemove) = getMapAndListDifferences(requiredSources, currentSources)
+
+            for (key in toRemove) {
+                removeSource(currentSources.remove(key)!!)
+            }
+
+            for (key in toAdd) {
+                val new = newSource(key)
+                currentSources[key] = new
+
+                addSource(new) {
+                    // Delay updates to prevent recursive updates
+                    GlobalScope.launch(Dispatchers.Main) {
+                        update()
+                    }
+                }
             }
         }
 
@@ -182,30 +217,30 @@ class ReviewOngoingUsageViewModel(
                     }
                 }
 
-            val (toAdd, toRemove) = getMapAndListDifferences(requiredUiInfos, permGroupUiInfos)
-
-            for (key in toRemove) {
-                removeSource(permGroupUiInfos.remove(key)!!)
+            adjustSources(permGroupUiInfos, requiredUiInfos) { (packageName, user, permGroupName) ->
+                AppPermGroupUiInfoLiveData[packageName, permGroupName, user]
             }
 
-            for ((packageName, user, permGroupName) in toAdd) {
-                val new = AppPermGroupUiInfoLiveData[packageName, permGroupName, user]
-                permGroupUiInfos[Triple(packageName, user, permGroupName)] = new
-
-                addSource(new) {
-                    // Delay updates to prevent updates during execution of this method
-                    GlobalScope.launch(Dispatchers.Main) {
-                        update()
+            // Update set of attributionLabels needed
+            val requiredLabels = rawPermGroupUsages.value!!.flatMap {
+                (_, accesses) ->
+                    accesses.map { access ->
+                        Triple(access.attributionTag, access.packageName, access.user)
                     }
-                }
-            }
+            }.distinct()
 
-            if (permGroupUiInfos.values.any { !it.isInitialized }) {
+            adjustSources(attributionLabels, requiredLabels) {
+                (attributionTag, packageName, user) ->
+                    AttributionLabelLiveData[attributionTag, packageName, user]
+                }
+
+            if (permGroupUiInfos.values.any { !it.isInitialized } ||
+                    attributionLabels.values.any { !it.isInitialized }) {
                 return
             }
 
             // Filter out system (== non user sensitive) apps
-            val filteredUsages = mutableMapOf<Pair<String, UserHandle>, MutableSet<String>>()
+            val filteredUsages = mutableMapOf<Triple<Int, String, UserHandle>, MutableSet<String>>()
             for ((permGroupName, usages) in rawPermGroupUsages.value!!) {
                 for (usage in usages) {
                     if (permGroupUiInfos[Triple(usage.packageName, usage.user, permGroupName)]!!
@@ -214,8 +249,12 @@ class ReviewOngoingUsageViewModel(
                             continue
                         }
 
-                        filteredUsages.getOrPut(usage.packageName to usage.user, { mutableSetOf() })
-                                .add(permGroupName)
+                        filteredUsages.getOrPut(Triple(
+                                attributionLabels[Triple(usage.attributionTag,
+                                        usage.packageName,
+                                        usage.user)]!!.value ?: ID_NULL,
+                                usage.packageName,
+                                usage.user), { mutableSetOf() }).add(permGroupName)
                     }
                 }
             }

@@ -18,6 +18,7 @@ package com.android.permissioncontroller.permission.ui.handheld;
 
 import static android.Manifest.permission_group.CAMERA;
 import static android.Manifest.permission_group.MICROPHONE;
+import static android.content.res.Resources.ID_NULL;
 
 import static com.android.permissioncontroller.PermissionControllerStatsLog.PRIVACY_INDICATORS_INTERACTED;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.PRIVACY_INDICATORS_INTERACTED__TYPE__DIALOG_DISMISS;
@@ -26,10 +27,12 @@ import static com.android.permissioncontroller.PermissionControllerStatsLog.PRIV
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.text.Html;
 import android.util.ArrayMap;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,12 +57,13 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
-import kotlin.Pair;
+import kotlin.Triple;
 
 /**
  * A dialog listing the currently uses of camera, microphone, and location.
  */
 public class ReviewOngoingUsageFragment extends PreferenceFragmentCompat {
+    private static final String LOG_TAG = ReviewOngoingUsageFragment.class.getSimpleName();
 
     // TODO: Replace with OPSTR... APIs
     public static final String PHONE_CALL = "android:phone_call_microphone";
@@ -154,7 +158,7 @@ public class ReviewOngoingUsageFragment extends PreferenceFragmentCompat {
         LayoutInflater inflater = LayoutInflater.from(context);
         View contentView = inflater.inflate(R.layout.ongoing_usage_dialog_content, null);
         ViewGroup appsList = contentView.requireViewById(R.id.items_container);
-        Map<Pair<String, UserHandle>, Set<String>> appUsages = allUsages.getAppUsages();
+        Map<Triple<Integer, String, UserHandle>, Set<String>> appUsages = allUsages.getAppUsages();
         Collection<String> callUsage = allUsages.getCallUsages();
         Set<String> systemUsage = allUsages.getSystemUsages();
 
@@ -233,16 +237,30 @@ public class ReviewOngoingUsageFragment extends PreferenceFragmentCompat {
         }
 
         // Add the layout for each app.
-        for (Map.Entry<Pair<String, UserHandle>, Set<String>> usage : appUsages.entrySet()) {
-            String packageName = usage.getKey().getFirst();
-            UserHandle user = usage.getKey().getSecond();
+        for (Map.Entry<Triple<Integer, String, UserHandle>, Set<String>> usage
+                : appUsages.entrySet()) {
+            String packageName = usage.getKey().getSecond();
+            UserHandle user = usage.getKey().getThird();
+
+            String attributionLabel = null;
+            if (usage.getKey().getFirst() != ID_NULL) {
+                try {
+                    attributionLabel = context.createPackageContextAsUser(packageName, 0, user)
+                            .getString(usage.getKey().getFirst());
+                } catch (PackageManager.NameNotFoundException e) {
+                    Log.e(LOG_TAG, "Could not resolve attribution label "
+                            + usage.getKey().getFirst(), e);
+                }
+            }
+
             Set<String> groups = usage.getValue();
 
             View itemView = inflater.inflate(R.layout.ongoing_usage_dialog_item, appsList, false);
 
             ((TextView) itemView.requireViewById(R.id.app_name))
                     .setText(KotlinUtils.INSTANCE.getPackageLabel(context.getApplication(),
-                            packageName, user));
+                            packageName, user)
+                            + (attributionLabel == null ? "" : " (" + attributionLabel + ")"));
             ((ImageView) itemView.requireViewById(R.id.app_icon))
                     .setImageDrawable(KotlinUtils.INSTANCE.getBadgedPackageIcon(
                             context.getApplication(), packageName, user));
