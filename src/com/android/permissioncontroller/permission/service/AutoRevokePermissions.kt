@@ -231,8 +231,7 @@ class AutoRevokeOnBootReceiver : BroadcastReceiver() {
 private suspend fun revokePermissionsOnUnusedApps(
     context: Context,
     sessionId: Long = INVALID_SESSION_ID
-):
-    List<Pair<String, UserHandle>> {
+): List<Pair<String, UserHandle>> {
     if (!isAutoRevokeEnabled(context)) {
         return emptyList()
     }
@@ -353,7 +352,8 @@ private suspend fun revokePermissionsOnUnusedApps(
                     granted &&
                     !group.isGrantedByDefault &&
                     !group.isGrantedByRole &&
-                    group.isUserSensitive) {
+                    group.isUserSensitive &&
+                    !Utils.isSpecialRuntimePermissionGroup(groupName)) {
 
                     val revocablePermissions = group.permissions.keys.toList()
 
