@@ -29,6 +29,7 @@ import com.android.permissioncontroller.permission.service.ExemptServicesLiveDat
 import com.android.permissioncontroller.permission.service.isAutoRevokeEnabled
 import com.android.permissioncontroller.permission.service.isPackageAutoRevokeExempt
 import com.android.permissioncontroller.permission.service.isPackageAutoRevokePermanentlyExempt
+import com.android.permissioncontroller.permission.utils.Utils
 import kotlinx.coroutines.Job
 
 /**
@@ -91,7 +92,7 @@ class AutoRevokeStateLiveData private constructor(
                     permState.permFlags and (FLAG_PERMISSION_GRANTED_BY_DEFAULT or
                             FLAG_PERMISSION_GRANTED_BY_ROLE) != 0
                 } ?: false
-                if (!default) {
+                if (!default && !Utils.isSpecialRuntimePermissionGroup(groupName)) {
                     revocableGroups.add(groupName)
                 }
             }
