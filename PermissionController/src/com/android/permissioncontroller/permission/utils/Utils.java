@@ -744,6 +744,17 @@ public final class Utils {
     }
 
     /**
+     * Is the permission group a special runtime permission group?
+     * These are treated as a runtime permission even for legacy apps. They
+     * need to be granted by default for all apps to maintain compatibility.
+     *
+     * @return whether the permission group is a special runtime permission group.
+     */
+    public static boolean isSpecialRuntimePermissionGroup(@NonNull String permissionGroup) {
+        return SPECIAL_RUNTIME_PERMISSIONS.containsValue(permissionGroup);
+    }
+
+    /**
      * Should UI show this permission.
      *
      * <p>If the user cannot change the group, it should not be shown.
