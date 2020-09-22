@@ -20,6 +20,7 @@ import android.app.AppOpsManager.permissionToOp
 import android.app.Application
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.utils.Utils.getPlatformPermissionNamesOfGroup
+import kotlin.collections.set
 
 /**
  * LiveData that loads the last usage of permission group for every package/attributionTag-pair.
@@ -45,8 +46,7 @@ class PermGroupUsageLiveData(
             permissionToOp(permName)
         }
 
-        // Do not use cached live-data to avoid stale data
-        permGroup to OpUsageLiveData(app, appops, usageDurationMs)
+        permGroup to OpUsageLiveData[appops, usageDurationMs]
     }.toMap()
 
     init {

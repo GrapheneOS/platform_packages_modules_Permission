@@ -164,7 +164,6 @@ public class ReviewOngoingUsageFragment extends PreferenceFragmentCompat {
 
         // Compute all of the permission group labels that were used.
         ArrayMap<String, CharSequence> usedGroups = new ArrayMap<>();
-        int numUsages = appUsages.size();
         for (Set<String> accessedPermGroupNames : appUsages.values()) {
             for (String accessedPermGroupName : accessedPermGroupNames) {
                 usedGroups.put(accessedPermGroupName, KotlinUtils.INSTANCE.getPermGroupLabel(
@@ -177,29 +176,33 @@ public class ReviewOngoingUsageFragment extends PreferenceFragmentCompat {
         TextView systemUseContent = contentView.requireViewById(R.id.system_use_content);
         View otherUseSpacer = contentView.requireViewById(R.id.other_use_inside_spacer);
 
-        if (callUsage.isEmpty() && systemUsage.isEmpty()) {
+        boolean hasCallUsage = !callUsage.isEmpty();
+        boolean hasSystemUsage = !systemUsage.isEmpty();
+        boolean hasAppUsages = !appUsages.isEmpty();
+
+        if (!hasCallUsage && !hasSystemUsage) {
             otherUseHeader.setVisibility(View.GONE);
             otherUseContent.setVisibility(View.GONE);
         }
 
-        if (numUsages == 0) {
+        if (!hasAppUsages) {
             otherUseHeader.setVisibility(View.GONE);
             appsList.setVisibility(View.GONE);
         }
 
-        if (callUsage.isEmpty() || systemUsage.isEmpty()) {
+        if (!hasCallUsage || !hasSystemUsage) {
             otherUseSpacer.setVisibility(View.GONE);
         }
 
-        if (callUsage.isEmpty()) {
+        if (!hasCallUsage) {
             otherUseContent.setVisibility(View.GONE);
         }
 
-        if (systemUsage.isEmpty()) {
+        if (!hasSystemUsage) {
             systemUseContent.setVisibility(View.GONE);
         }
 
-        if (!callUsage.isEmpty()) {
+        if (hasCallUsage) {
             if (callUsage.contains(VIDEO_CALL) && callUsage.contains(PHONE_CALL)) {
                 otherUseContent.setText(
                         Html.fromHtml(getString(R.string.phone_call_uses_microphone_and_camera),
@@ -222,7 +225,7 @@ public class ReviewOngoingUsageFragment extends PreferenceFragmentCompat {
             }
         }
 
-        if (!systemUsage.isEmpty()) {
+        if (hasSystemUsage) {
             if (systemUsage.contains(MICROPHONE) && systemUsage.contains(CAMERA)) {
                 systemUseContent.setText(getString(R.string.system_uses_microphone_and_camera));
             } else if (systemUsage.contains(CAMERA)) {
