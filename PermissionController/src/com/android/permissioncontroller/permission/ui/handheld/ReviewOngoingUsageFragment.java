@@ -300,11 +300,23 @@ public class ReviewOngoingUsageFragment extends PreferenceFragmentCompat {
             appsList.addView(itemView);
         }
 
-        ((TextView) contentView.requireViewById(R.id.title)).setText(
-                getString(R.string.ongoing_usage_dialog_title,
-                        getListOfPermissionLabels(usedGroups)));
+        ((TextView) contentView.requireViewById(R.id.title)).setText(getTitle(usedGroups));
 
         return contentView;
+    }
+
+    private CharSequence getTitle(ArrayMap<String, CharSequence> usedGroups) {
+        if (usedGroups.size() == 1 && usedGroups.keyAt(0).equals(MICROPHONE)) {
+            return getString(R.string.ongoing_usage_dialog_title_mic);
+        } else if (usedGroups.size() == 1 && usedGroups.keyAt(0).equals(CAMERA)) {
+            return getString(R.string.ongoing_usage_dialog_title_camera);
+        } else if (usedGroups.size() == 2 && usedGroups.containsKey(MICROPHONE)
+                && usedGroups.containsKey(CAMERA)) {
+            return getString(R.string.ongoing_usage_dialog_title_mic_camera);
+        } else {
+            return getString(R.string.ongoing_usage_dialog_title,
+                    getListOfPermissionLabels(usedGroups));
+        }
     }
 
     @Override
