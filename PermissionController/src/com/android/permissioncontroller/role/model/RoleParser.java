@@ -1015,6 +1015,13 @@ public class RoleParser {
 
     private void validatePermission(@NonNull String permission) {
         PackageManager packageManager = mContext.getPackageManager();
+        boolean isAutomotive = packageManager.hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE);
+
+        // Skip validation for car permissions which may not be available on all build targets.
+        if (!isAutomotive && permission.startsWith("android.car")) {
+            return;
+        }
+
         try {
             packageManager.getPermissionInfo(permission, 0);
         } catch (PackageManager.NameNotFoundException e) {

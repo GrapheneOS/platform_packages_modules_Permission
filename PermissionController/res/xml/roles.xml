@@ -451,6 +451,7 @@
         <permissions>
             <permission name="android.permission.READ_CALL_LOG" />
             <permission name="android.permission.READ_CONTACTS" />
+            <permission name="android.car.permission.CAR_ENERGY"/>
         </permissions>
     </role>
 </roles>

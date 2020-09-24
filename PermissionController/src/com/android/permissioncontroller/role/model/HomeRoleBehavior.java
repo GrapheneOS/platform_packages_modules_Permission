@@ -54,7 +54,9 @@ public class HomeRoleBehavior implements RoleBehavior {
     private static final String LOG_TAG = HomeRoleBehavior.class.getSimpleName();
 
     private static final List<String> AUTOMOTIVE_PERMISSIONS = Arrays.asList(
-            android.Manifest.permission.READ_CALL_LOG, android.Manifest.permission.READ_CONTACTS);
+            android.Manifest.permission.READ_CALL_LOG,
+            android.Manifest.permission.WRITE_CALL_LOG,
+            android.Manifest.permission.READ_CONTACTS);
 
     @Override
     public boolean isAvailableAsUser(@NonNull Role role, @NonNull UserHandle user,
