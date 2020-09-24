@@ -116,7 +116,11 @@ class OpUsageLiveData(
             }
         }
 
-        appOpsManager.startWatchingActive(opNames.toTypedArray(), { it.run() }, this)
+        try {
+            appOpsManager.startWatchingActive(opNames.toTypedArray(), { it.run() }, this)
+        } catch (ignored: IllegalArgumentException) {
+            // older builds might not support all the app-ops requested
+        }
     }
 
     override fun onInactive() {
