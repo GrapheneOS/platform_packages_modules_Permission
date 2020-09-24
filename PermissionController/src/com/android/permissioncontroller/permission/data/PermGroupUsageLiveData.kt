@@ -73,7 +73,7 @@ class PermGroupUsageLiveData(
             val lastAccess = mutableMapOf<Pair<String, String?>, OpAccess>()
             for (access in usageLiveData.value!!.values.flatten()) {
                 val key = access.packageName to access.attributionTag
-                if (access.isRunning() ||
+                if (access.isRunning ||
                         lastAccess[key]?.lastAccessTime ?: 0 < access.lastAccessTime) {
                     lastAccess[key] = access
                 }
