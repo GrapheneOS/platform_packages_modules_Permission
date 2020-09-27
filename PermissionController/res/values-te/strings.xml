@@ -344,6 +344,12 @@
     <string name="other_use" msgid="9076086164996623754">"ఇతర ఉపయోగాలు:"</string>
     <string name="ongoing_usage_dialog_ok" msgid="3007005536659549573">"అర్థమైంది"</string>
     <string name="ongoing_usage_dialog_title" msgid="6545358148523337174">"<xliff:g id="TYPES_LIST">%s</xliff:g> యొక్క ఇటీవలి వినియోగం"</string>
+    <!-- no translation found for ongoing_usage_dialog_title_mic (6894507213986512796) -->
+    <skip />
+    <!-- no translation found for ongoing_usage_dialog_title_camera (8144887777239572315) -->
+    <skip />
+    <!-- no translation found for ongoing_usage_dialog_title_mic_camera (4926106474407100024) -->
+    <skip />
     <string name="ongoing_usage_dialog_separator" msgid="9008030412869423988">", "</string>
     <string name="ongoing_usage_dialog_last_separator" msgid="7455459775266515801">" మరియు "</string>
     <string name="default_app_search_keyword" msgid="6938709626391437391">"ఆటోమేటిక్ యాప్‌లు"</string>
@@ -382,7 +388,7 @@
     <string name="adjust_user_sensitive_per_app_header" msgid="1372152438971168364">"అనుసరిస్తున్న వినియోగాన్ని హైలైట్ చేయండి"</string>
     <string name="assistant_record_audio_user_sensitive_title" msgid="772256764681129627">"అసిస్టెంట్ ట్రిగ్గర్ గుర్తింపును చూపించడం"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6852572549436960848">"వాయిస్ అసిస్టెంట్‌ను యాక్టివేట్ చేయడానికి మైక్రోఫోన్‌ను ఉపయోగించినప్పుడు, స్థితి పట్టీలో చిహ్నాన్ని చూపు"</string>
-    <string name="permgrouprequest_storage_isolated" msgid="1019696034804170865">"మీ పరికరంలో ఫోటోలు, మీడియాను యాక్సెస్ చేయుటకు &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
+    <string name="permgrouprequest_storage_isolated" msgid="1019696034804170865">"మీ పరికరంలో ఫోటోలు, మీడియా ఫైళ్లను యాక్సెస్ చేయగలిగేలా &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
     <string name="permgrouprequest_contacts" msgid="1493445560009228831">"మీ పరిచయాలను యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ని అనుమతించాలా?"</string>
     <string name="permgrouprequest_location" msgid="4367626296074714965">"ఈ పరికర లొకేషన్‌ను యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
     <string name="permgrouprequestdetail_location" msgid="4985222951894409507">"మీరు యాప్‌ను ఉపయోగిస్తున్నప్పుడు మాత్రమే స్థానానికి యాప్ యాక్సెస్ కలిగి ఉంటుంది"</string>
