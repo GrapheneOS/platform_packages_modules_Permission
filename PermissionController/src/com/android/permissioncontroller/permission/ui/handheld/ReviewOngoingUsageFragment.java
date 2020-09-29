@@ -94,6 +94,10 @@ public class ReviewOngoingUsageFragment extends PreferenceFragmentCompat {
         mViewModel = new ViewModelProvider(this, factory).get(ReviewOngoingUsageViewModel.class);
 
         mViewModel.getUsages().observe(this, usages -> {
+            if (mViewModel.getUsages().isStale()) {
+                // Prevent stale data from being shown, if Dialog is shown twice in quick succession
+                return;
+            }
             if (usages == null) {
                 getActivity().finish();
                 return;

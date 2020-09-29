@@ -19,10 +19,15 @@ package com.android.permissioncontroller.permission.ui.model
 import android.Manifest.permission_group.CAMERA
 import android.Manifest.permission_group.LOCATION
 import android.Manifest.permission_group.MICROPHONE
+import android.Manifest.permission_group.PHONE
 import android.content.res.Resources.ID_NULL
 import android.location.LocationManager
+import android.media.AudioManager
+import android.media.AudioManager.MODE_IN_COMMUNICATION
 import android.os.Bundle
 import android.os.UserHandle
+import android.telephony.TelephonyManager
+import android.telephony.TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.SavedStateHandle
@@ -93,197 +98,199 @@ class ReviewOngoingUsageViewModel(
      */
     private val isMicMuted = LoadAndFreezeLifeData(state, MIC_MUTED_KEY, micMutedLiveData)
 
-    /** App, system, and call usages in a single, nice, handy package */
-    val usages = object : SmartUpdateMediatorLiveData<Usages>() {
-        /** App runtime permission usages */
-        private val appUsagesLiveData = object : SmartUpdateMediatorLiveData<Map<Triple<Int,
-                String, UserHandle>, Set<String>>>() {
-            /** (packageName, user, permissionGroupName) -> uiInfo */
-            private var permGroupUiInfos = mutableMapOf<Triple<String, UserHandle, String>,
-                    AppPermGroupUiInfoLiveData>()
+    /** App runtime permission usages */
+    private val appUsagesLiveData = object : SmartUpdateMediatorLiveData<Map<Triple<Int,
+        String, UserHandle>, Set<String>>>() {
+        /** (packageName, user, permissionGroupName) -> uiInfo */
+        private var permGroupUiInfos = mutableMapOf<Triple<String, UserHandle, String>,
+            AppPermGroupUiInfoLiveData>()
 
-            /** (packageName, user, attribution tag) -> attribution label */
-            private var attributionLabels = mutableMapOf<Triple<String?, String, UserHandle>,
-                    AttributionLabelLiveData>()
+        /** (packageName, user, attribution tag) -> attribution label */
+        private var attributionLabels = mutableMapOf<Triple<String?, String, UserHandle>,
+            AttributionLabelLiveData>()
+
+        init {
+            addSource(permGroupUsages) {
+                update()
+            }
+
+            addSource(isMicMuted) {
+                update()
+            }
+        }
+
+        /**
+         * Adjust {@code currentSources} to only include {@link requiredSources} by removing
+         * obsolete sources and creating and adding newly required sources
+         */
+        private fun <K, V : LiveData<out Any>> adjustSources(
+            currentSources: MutableMap<K, V>,
+            requiredSources: List<K>,
+            newSource: (K) -> V
+        ) {
+            val (toAdd, toRemove) = getMapAndListDifferences(requiredSources, currentSources)
+
+            for (key in toRemove) {
+                removeSource(currentSources.remove(key)!!)
+            }
+
+            for (key in toAdd) {
+                val new = newSource(key)
+                currentSources[key] = new
+
+                addSource(new) {
+                    // Delay updates to prevent recursive updates
+                    GlobalScope.launch(Dispatchers.Main) {
+                        update()
+                    }
+                }
+            }
+        }
+
+        override fun onUpdate() {
+            if (!permGroupUsages.isInitialized || !isMicMuted.isInitialized) {
+                return
+            }
+
+            if (permGroupUsages.value == null) {
+                value = null
+                return
+            }
+
+            // Update set of permGroupUiInfos if needed
+            val requiredUiInfos = permGroupUsages.value!!.flatMap {
+                (permissionGroupName, accesses) ->
+                accesses.map { access ->
+                    Triple(access.packageName, access.user, permissionGroupName)
+                }
+            }
+
+            adjustSources(permGroupUiInfos, requiredUiInfos) {
+                (packageName, user, permGroupName) ->
+                AppPermGroupUiInfoLiveData[packageName, permGroupName, user]
+            }
+
+            // Update set of attributionLabels needed
+            val requiredLabels = permGroupUsages.value!!.flatMap {
+                (_, accesses) ->
+                accesses.map { access ->
+                    Triple(access.attributionTag, access.packageName, access.user)
+                }
+            }.distinct()
+
+            adjustSources(attributionLabels, requiredLabels) {
+                (attributionTag, packageName, user) ->
+                AttributionLabelLiveData[attributionTag, packageName, user]
+            }
+
+            if (permGroupUiInfos.values.any { !it.isInitialized } ||
+                attributionLabels.values.any { !it.isInitialized }) {
+                return
+            }
+
+            // Filter out system (== non user sensitive) apps
+            val filteredUsages = mutableMapOf<Triple<Int, String, UserHandle>,
+                MutableSet<String>>()
+            for ((permGroupName, usages) in permGroupUsages.value!!) {
+                for (usage in usages) {
+                    if (permGroupUiInfos[Triple(usage.packageName, usage.user, permGroupName)]!!
+                            .value?.isSystem == false) {
+                        if (permGroupName == MICROPHONE && isMicMuted.value == true) {
+                            continue
+                        }
+
+                        filteredUsages.getOrPut(Triple(
+                            attributionLabels[Triple(usage.attributionTag,
+                                usage.packageName,
+                                usage.user)]!!.value ?: ID_NULL,
+                            usage.packageName,
+                            usage.user), { mutableSetOf() }).add(permGroupName)
+                    }
+                }
+            }
+
+            value = filteredUsages
+        }
+    }
+
+    /** System runtime permission usages */
+    private val systemUsagesLiveData = object : SmartAsyncMediatorLiveData<Set<String>>() {
+        private val app = PermissionControllerApplication.get()
+
+        init {
+            addSource(permGroupUsages) {
+                update()
+            }
+
+            addSource(isMicMuted) {
+                update()
+            }
+        }
+
+        override suspend fun loadDataAndPostValue(job: Job) {
+            if (job.isCancelled) {
+                return
+            }
+
+            if (!permGroupUsages.isInitialized || !isMicMuted.isInitialized) {
+                return
+            }
+
+            if (permGroupUsages.value == null) {
+                value = null
+                return
+            }
+
+            val filteredUsages = mutableSetOf<String>()
+            for ((permGroupName, usages) in permGroupUsages.value!!) {
+                for (usage in usages) {
+                    if (app.getSystemService(LocationManager::class.java)
+                            .isProviderPackage(usage.packageName) &&
+                        (permGroupName == CAMERA ||
+                            (permGroupName == MICROPHONE &&
+                                isMicMuted.value == false))) {
+                        filteredUsages.add(permGroupName)
+                    }
+                }
+            }
+
+            postValue(filteredUsages)
+        }
+    }
+
+    /** Phone call usages */
+    private val callOpUsageLiveData =
+        object : SmartUpdateMediatorLiveData<Collection<String>>() {
+            private val rawOps = LoadAndFreezeLifeData(state, CALL_OP_USAGE_KEY,
+                OpUsageLiveData[listOf(PHONE_CALL, VIDEO_CALL),
+                    System.currentTimeMillis() - startTime])
 
             init {
-                addSource(permGroupUsages) {
+                addSource(rawOps) {
                     update()
                 }
 
                 addSource(isMicMuted) {
                     update()
-                }
-            }
-
-            /**
-             * Adjust {@code currentSources} to only include {@link requiredSources} by removing
-             * obsolete sources and creating and adding newly required sources
-             */
-            private fun <K, V : LiveData<out Any>> adjustSources(
-                currentSources: MutableMap<K, V>,
-                requiredSources: List<K>,
-                newSource: (K) -> V
-            ) {
-                val (toAdd, toRemove) = getMapAndListDifferences(requiredSources, currentSources)
-
-                for (key in toRemove) {
-                    removeSource(currentSources.remove(key)!!)
-                }
-
-                for (key in toAdd) {
-                    val new = newSource(key)
-                    currentSources[key] = new
-
-                    addSource(new) {
-                        // Delay updates to prevent recursive updates
-                        GlobalScope.launch(Dispatchers.Main) {
-                            update()
-                        }
-                    }
                 }
             }
 
             override fun onUpdate() {
-                if (!permGroupUsages.isInitialized || !isMicMuted.isInitialized) {
+                if (!isMicMuted.isInitialized || !rawOps.isInitialized) {
                     return
                 }
 
-                if (permGroupUsages.value == null) {
-                    value = null
-                    return
+                value = if (isMicMuted.value == true) {
+                    rawOps.value!!.keys.filter { it != PHONE_CALL }
+                } else {
+                    rawOps.value!!.keys
                 }
-
-                // Update set of permGroupUiInfos if needed
-                val requiredUiInfos = permGroupUsages.value!!.flatMap {
-                    (permissionGroupName, accesses) ->
-                    accesses.map { access ->
-                        Triple(access.packageName, access.user, permissionGroupName)
-                    }
-                }
-
-                adjustSources(permGroupUiInfos, requiredUiInfos) {
-                    (packageName, user, permGroupName) ->
-                    AppPermGroupUiInfoLiveData[packageName, permGroupName, user]
-                }
-
-                // Update set of attributionLabels needed
-                val requiredLabels = permGroupUsages.value!!.flatMap {
-                    (_, accesses) ->
-                    accesses.map { access ->
-                        Triple(access.attributionTag, access.packageName, access.user)
-                    }
-                }.distinct()
-
-                adjustSources(attributionLabels, requiredLabels) {
-                    (attributionTag, packageName, user) ->
-                    AttributionLabelLiveData[attributionTag, packageName, user]
-                }
-
-                if (permGroupUiInfos.values.any { !it.isInitialized } ||
-                        attributionLabels.values.any { !it.isInitialized }) {
-                    return
-                }
-
-                // Filter out system (== non user sensitive) apps
-                val filteredUsages = mutableMapOf<Triple<Int, String, UserHandle>,
-                        MutableSet<String>>()
-                for ((permGroupName, usages) in permGroupUsages.value!!) {
-                    for (usage in usages) {
-                        if (permGroupUiInfos[Triple(usage.packageName, usage.user, permGroupName)]!!
-                                        .value?.isSystem == false) {
-                            if (permGroupName == MICROPHONE && isMicMuted.value == true) {
-                                continue
-                            }
-
-                            filteredUsages.getOrPut(Triple(
-                                    attributionLabels[Triple(usage.attributionTag,
-                                            usage.packageName,
-                                            usage.user)]!!.value ?: ID_NULL,
-                                    usage.packageName,
-                                    usage.user), { mutableSetOf() }).add(permGroupName)
-                        }
-                    }
-                }
-
-                value = filteredUsages
             }
         }
 
-        /** System runtime permission usages */
-        private val systemUsagesLiveData = object : SmartAsyncMediatorLiveData<Set<String>>() {
-            private val app = PermissionControllerApplication.get()
-
-            init {
-                addSource(permGroupUsages) {
-                    update()
-                }
-
-                addSource(isMicMuted) {
-                    update()
-                }
-            }
-
-            override suspend fun loadDataAndPostValue(job: Job) {
-                if (job.isCancelled) {
-                    return
-                }
-
-                if (!permGroupUsages.isInitialized || !isMicMuted.isInitialized) {
-                    return
-                }
-
-                if (permGroupUsages.value == null) {
-                    value = null
-                    return
-                }
-
-                val filteredUsages = mutableSetOf<String>()
-                for ((permGroupName, usages) in permGroupUsages.value!!) {
-                    for (usage in usages) {
-                        if (app.getSystemService(LocationManager::class.java)
-                                        .isProviderPackage(usage.packageName) &&
-                                (permGroupName == CAMERA ||
-                                        (permGroupName == MICROPHONE &&
-                                                isMicMuted.value == false))) {
-                            filteredUsages.add(permGroupName)
-                        }
-                    }
-                }
-
-                postValue(filteredUsages)
-            }
-        }
-
-        /** Phone call usages */
-        private val callOpUsageLiveData =
-                object : SmartUpdateMediatorLiveData<Collection<String>>() {
-                    private val rawOps = LoadAndFreezeLifeData(state, CALL_OP_USAGE_KEY,
-                            OpUsageLiveData[listOf(PHONE_CALL, VIDEO_CALL),
-                                    System.currentTimeMillis() - startTime])
-
-                    init {
-                        addSource(rawOps) {
-                            update()
-                        }
-
-                        addSource(isMicMuted) {
-                            update()
-                        }
-                    }
-
-                    override fun onUpdate() {
-                        if (!isMicMuted.isInitialized || !rawOps.isInitialized) {
-                            return
-                        }
-
-                        value = if (isMicMuted.value == true) {
-                            rawOps.value!!.keys.filter { it != PHONE_CALL }
-                        } else {
-                            rawOps.value!!.keys
-                        }
-                    }
-                }
+    /** App, system, and call usages in a single, nice, handy package */
+    val usages = object : SmartAsyncMediatorLiveData<Usages>() {
+        private val app = PermissionControllerApplication.get()
 
         init {
             addSource(appUsagesLiveData) {
@@ -299,29 +306,53 @@ class ReviewOngoingUsageViewModel(
             }
         }
 
-        override fun onUpdate() {
-            if (callOpUsageLiveData.isStale || appUsagesLiveData.isStale ||
-                    systemUsagesLiveData.isStale) {
+        override suspend fun loadDataAndPostValue(job: Job) {
+            if (job.isCancelled) {
                 return
             }
 
-            val callOpUsages = callOpUsageLiveData.value
-            val appUsages = appUsagesLiveData.value
+            if (!callOpUsageLiveData.isInitialized || !appUsagesLiveData.isInitialized ||
+                    !systemUsagesLiveData.isInitialized) {
+                return
+            }
+
+            val callOpUsages = callOpUsageLiveData.value?.toMutableSet()
+            val appUsages = appUsagesLiveData.value?.toMutableMap()
             val systemUsages = systemUsagesLiveData.value
 
             if (callOpUsages == null || appUsages == null || systemUsages == null) {
-                value = null
+                postValue(null)
                 return
             }
 
             // If there is nothing to show the dialog should be closed, hence return a "invalid"
             // value
             if (appUsages.isEmpty() && callOpUsages.isEmpty() && systemUsages.isEmpty()) {
-                value = null
+                postValue(null)
                 return
             }
 
-            value = Usages(appUsages, callOpUsages, systemUsages)
+            // If we are in a VOIP call (aka MODE_IN_COMMUNICATION), and have a carrier privileged
+            // app using the mic, hide phone usage.
+            val audioManager = app.getSystemService(AudioManager::class.java)!!
+            if (callOpUsages.isNotEmpty() && audioManager.mode == MODE_IN_COMMUNICATION) {
+                val telephonyManager = app.getSystemService(TelephonyManager::class.java)!!
+                for ((pkg, usages) in appUsages) {
+                    if (telephonyManager.checkCarrierPrivilegesForPackage(pkg.second) ==
+                        CARRIER_PRIVILEGE_STATUS_HAS_ACCESS && usages.contains(MICROPHONE)) {
+                        appUsages[pkg] = usages.toMutableSet().apply {
+                            // TODO ntmyren: Replace this with real behavior
+                            remove(MICROPHONE)
+                            add(PHONE)
+                        }
+
+                        callOpUsages.clear()
+                        continue
+                    }
+                }
+            }
+
+            postValue(Usages(appUsages, callOpUsages, systemUsages))
         }
     }
 }
