@@ -550,7 +550,7 @@ public class Permissions {
         PackageManager packageManager = context.getPackageManager();
         Set<String> exemptedPermissions = new ArraySet<>(packageManager
                 .getWhitelistedRestrictedPermissions(packageName,
-                        PackageManager.FLAG_PERMISSION_WHITELIST_SYSTEM));
+                        PackageManager.FLAG_PERMISSION_ALLOWLIST_ROLE));
         int permissionsSize = permissions.size();
         boolean permissionChanged = false;
         for (int i = 0; i < permissionsSize; i++) {
@@ -558,7 +558,7 @@ public class Permissions {
             if (!exemptedPermissions.contains(permissionName)) {
                 permissionChanged |= packageManager.addWhitelistedRestrictedPermission(
                         packageName, permissionName,
-                        PackageManager.FLAG_PERMISSION_WHITELIST_SYSTEM);
+                        PackageManager.FLAG_PERMISSION_ALLOWLIST_ROLE);
             }
         }
 
@@ -580,7 +580,7 @@ public class Permissions {
         PackageManager packageManager = context.getPackageManager();
         Set<String> exemptedPermissions = new ArraySet<>(packageManager
                 .getWhitelistedRestrictedPermissions(packageName,
-                        PackageManager.FLAG_PERMISSION_WHITELIST_SYSTEM));
+                        PackageManager.FLAG_PERMISSION_ALLOWLIST_ROLE));
         int permissionsSize = permissions.size();
         boolean permissionChanged = false;
         for (int i = 0; i < permissionsSize; i++) {
@@ -588,7 +588,7 @@ public class Permissions {
             if (exemptedPermissions.contains(permissionName)) {
                 permissionChanged |= packageManager.removeWhitelistedRestrictedPermission(
                         packageName, permissionName,
-                        PackageManager.FLAG_PERMISSION_WHITELIST_SYSTEM);
+                        PackageManager.FLAG_PERMISSION_ALLOWLIST_ROLE);
             }
         }
 
