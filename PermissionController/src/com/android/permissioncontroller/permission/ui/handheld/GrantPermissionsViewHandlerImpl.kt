@@ -34,7 +34,6 @@ import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_ALWAYS_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_BUTTON
@@ -70,13 +69,13 @@ class GrantPermissionsViewHandlerImpl(
     private var groupIcon: Icon? = null
     private var groupMessage: CharSequence? = null
     private var detailMessage: CharSequence? = null
-    private val buttonVisibilities = BooleanArray(BUTTON_RES_ID_TO_NUM.size()) { false }
+    private val buttonVisibilities = BooleanArray(NEXT_BUTTON) { false }
 
     // Views
     private var iconView: ImageView? = null
     private var messageView: TextView? = null
     private var detailMessageView: TextView? = null
-    private var buttons: Array<Button?> = emptyArray()
+    private var buttons: Array<Button?> = arrayOfNulls(NEXT_BUTTON)
     private var rootView: ViewGroup? = null
 
     override fun setResultListener(
@@ -293,8 +292,6 @@ class GrantPermissionsViewHandlerImpl(
 
         init {
             BUTTON_RES_ID_TO_NUM.put(R.id.permission_allow_button, ALLOW_BUTTON)
-            BUTTON_RES_ID_TO_NUM.put(R.id.permission_allow_always_button,
-                ALLOW_ALWAYS_BUTTON)
             BUTTON_RES_ID_TO_NUM.put(R.id.permission_allow_foreground_only_button,
                 ALLOW_FOREGROUND_BUTTON)
             BUTTON_RES_ID_TO_NUM.put(R.id.permission_deny_button, DENY_BUTTON)

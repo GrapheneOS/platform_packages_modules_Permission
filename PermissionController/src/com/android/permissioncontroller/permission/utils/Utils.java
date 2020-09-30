@@ -16,8 +16,6 @@
 
 package com.android.permissioncontroller.permission.utils;
 
-import static android.Manifest.permission.BIND_SOUND_TRIGGER_DETECTION_SERVICE;
-import static android.Manifest.permission.CAPTURE_AUDIO_HOTWORD;
 import static android.Manifest.permission_group.ACTIVITY_RECOGNITION;
 import static android.Manifest.permission_group.CALENDAR;
 import static android.Manifest.permission_group.CALL_LOG;
@@ -37,9 +35,7 @@ import static android.content.pm.PackageManager.FLAG_PERMISSION_RESTRICTION_SYST
 import static android.content.pm.PackageManager.FLAG_PERMISSION_RESTRICTION_UPGRADE_EXEMPT;
 import static android.content.pm.PackageManager.FLAG_PERMISSION_USER_SENSITIVE_WHEN_DENIED;
 import static android.content.pm.PackageManager.FLAG_PERMISSION_USER_SENSITIVE_WHEN_GRANTED;
-import static android.content.pm.PackageManager.GET_SERVICES;
 import static android.content.pm.PackageManager.MATCH_SYSTEM_ONLY;
-import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.os.UserHandle.myUserId;
 
 import static com.android.permissioncontroller.Constants.INVALID_SESSION_ID;
@@ -47,9 +43,7 @@ import static com.android.permissioncontroller.Constants.INVALID_SESSION_ID;
 import android.Manifest;
 import android.app.AppOpsManager;
 import android.app.Application;
-import android.app.role.RoleManager;
 import android.content.ActivityNotFoundException;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -61,7 +55,6 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.PermissionGroupInfo;
 import android.content.pm.PermissionInfo;
 import android.content.pm.ResolveInfo;
-import android.content.pm.ServiceInfo;
 import android.content.res.Resources;
 import android.content.res.Resources.Theme;
 import android.graphics.Bitmap;
@@ -74,8 +67,6 @@ import android.os.UserHandle;
 import android.os.UserManager;
 import android.provider.DeviceConfig;
 import android.provider.Settings;
-import android.service.carrier.CarrierService;
-import android.telephony.TelephonyManager;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.format.DateFormat;
@@ -292,14 +283,6 @@ public final class Utils {
     }
 
     private static ArrayMap<UserHandle, Context> sUserContexts = new ArrayMap<>();
-
-    public enum ForegroundCapableType {
-        SOUND_TRIGGER,
-        ASSISTANT,
-        VOICE_INTERACTION,
-        CARRIER_SERVICE,
-        NONE
-    }
 
     /**
      * Creates and caches a PackageContext for the requested user, or returns the previously cached
@@ -1076,7 +1059,7 @@ public final class Utils {
             if ((pm.getPermissionFlags(permissionName, packageName, Process.myUserHandle())
                     & PackageManager.FLAG_PERMISSION_ONE_TIME) != 0
                     && pm.checkPermission(permissionName, packageName)
-                    == PERMISSION_GRANTED) {
+                    == PackageManager.PERMISSION_GRANTED) {
                 return true;
             }
         }
@@ -1115,74 +1098,6 @@ public final class Utils {
     }
 
     /**
-     * If an app could have foreground capabilities it is because it meets some criteria. This
-     * function returns which criteria it meets.
-     * @param context The context as the user of interest.
-     * @param packageName The package to check.
-     * @return the type of foreground capable app.
-     * @throws NameNotFoundException
-     */
-    public static @NonNull ForegroundCapableType getForegroundCapableType(@NonNull Context context,
-            @NonNull String packageName) throws NameNotFoundException {
-
-        PackageManager pm = context.getPackageManager();
-
-        // Apps which can be bound by SoundTriggerService
-        if (pm.checkPermission(CAPTURE_AUDIO_HOTWORD, packageName) == PERMISSION_GRANTED) {
-            ServiceInfo[] services = pm.getPackageInfo(packageName, GET_SERVICES).services;
-            if (services != null) {
-                for (ServiceInfo service : services) {
-                    if (BIND_SOUND_TRIGGER_DETECTION_SERVICE.equals(service.permission)) {
-                        return ForegroundCapableType.SOUND_TRIGGER;
-                    }
-                }
-            }
-        }
-
-        // VoiceInteractionService
-        if (context.getSystemService(RoleManager.class).getRoleHolders(RoleManager.ROLE_ASSISTANT)
-                .contains(packageName)) {
-            return ForegroundCapableType.ASSISTANT;
-        }
-        String voiceInteraction = Settings.Secure.getString(context.getContentResolver(),
-                "voice_interaction_service");
-        if (!TextUtils.isEmpty(voiceInteraction)) {
-            ComponentName component = ComponentName.unflattenFromString(voiceInteraction);
-            if (component != null && TextUtils.equals(packageName, component.getPackageName())) {
-                return ForegroundCapableType.VOICE_INTERACTION;
-            }
-        }
-
-        // Carrier privileged apps implementing the carrier service
-        final TelephonyManager telephonyManager =
-                context.getSystemService(TelephonyManager.class);
-        int numPhones = telephonyManager.getActiveModemCount();
-        for (int phoneId = 0; phoneId < numPhones; phoneId++) {
-            List<String> packages = telephonyManager.getCarrierPackageNamesForIntentAndPhone(
-                    new Intent(CarrierService.CARRIER_SERVICE_INTERFACE), phoneId);
-            if (packages != null && packages.contains(packageName)) {
-                return ForegroundCapableType.CARRIER_SERVICE;
-            }
-        }
-
-        return ForegroundCapableType.NONE;
-    }
-
-    /**
-     * This tells whether we should blame the app for potential background access. Intended to be
-     * used for creating Ui.
-     * @param context The context as the user of interest
-     * @param packageName The package to check
-     * @return true if the given package could possibly have foreground capabilities while in the
-     * background, otherwise false.
-     * @throws NameNotFoundException
-     */
-    public static boolean couldHaveForegroundCapabilities(@NonNull Context context,
-            @NonNull String packageName) throws NameNotFoundException {
-        return getForegroundCapableType(context, packageName) != ForegroundCapableType.NONE;
-    }
-
-    /**
      * Determines if a given user is disabled, or is a work profile.
      * @param user The user to check
      * @return true if the user is disabled, or the user is a work profile
@@ -1194,19 +1109,5 @@ public final class Utils {
         return !userManager.getEnabledProfiles().contains(user)
                 || (userManager.isManagedProfile(user.getIdentifier())
                 && !DeviceUtils.isTelevision(app));
-    }
-
-    /**
-     * @return Whether a package is an emergency app.
-     */
-    public static boolean isEmergencyApp(@NonNull Context context,  @NonNull String packageName) {
-        try {
-            return context.getSystemService(RoleManager.class)
-                    .getRoleHolders(RoleManager.ROLE_EMERGENCY).contains(packageName);
-        } catch (Throwable t) {
-            // Avoid crashing for any reason, this isn't very well tested
-            Log.e(LOG_TAG, "Unable to check if " + packageName + " is an emergency app.", t);
-            return false;
-        }
     }
 }

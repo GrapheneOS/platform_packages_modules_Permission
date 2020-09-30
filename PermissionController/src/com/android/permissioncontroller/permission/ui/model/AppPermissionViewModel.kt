@@ -44,26 +44,24 @@ import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveD
 import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPermission
-import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.ALLOW
-import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.ALLOW_ALWAYS
-import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.ALLOW_FOREGROUND
-import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.ASK
-import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.ASK_ONCE
-import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.DENY
-import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.DENY_FOREGROUND
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.LocationUtils
 import com.android.permissioncontroller.permission.utils.SafetyNetLogger
+import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.ALLOW
+import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.ALLOW_ALWAYS
+import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.ALLOW_FOREGROUND
+import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.ASK_ONCE
+import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.ASK
+import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.DENY
+import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.DENY_FOREGROUND
 import com.android.permissioncontroller.permission.utils.Utils
-import com.android.permissioncontroller.permission.utils.Utils.ForegroundCapableType.ASSISTANT
-import com.android.permissioncontroller.permission.utils.Utils.ForegroundCapableType.CARRIER_SERVICE
-import com.android.permissioncontroller.permission.utils.Utils.ForegroundCapableType.SOUND_TRIGGER
-import com.android.permissioncontroller.permission.utils.Utils.ForegroundCapableType.VOICE_INTERACTION
 import com.android.permissioncontroller.permission.utils.navigateSafe
 import com.android.settingslib.RestrictedLockUtils
 import java.util.Random
 import kotlin.collections.component1
 import kotlin.collections.component2
+import kotlin.collections.filter
+import kotlin.collections.iterator
 
 /**
  * ViewModel for the AppPermissionFragment. Determines button state and detail text strings, logs
@@ -74,16 +72,13 @@ import kotlin.collections.component2
  * @param permGroupName The name of the permission group this ViewModel represents
  * @param user The user of the package
  * @param sessionId A session ID used in logs to identify this particular session
- * @param couldPackageHaveFgCapabilities Whether the package could access a foreground perm while in
- * the background
  */
 class AppPermissionViewModel(
     private val app: Application,
     private val packageName: String,
     private val permGroupName: String,
     private val user: UserHandle,
-    private val sessionId: Long,
-    private val foregroundCapableType: Utils.ForegroundCapableType
+    private val sessionId: Long
 ) : ViewModel() {
 
     companion object {
@@ -208,17 +203,15 @@ class AppPermissionViewModel(
 
             val admin = RestrictedLockUtils.getProfileOrDeviceOwner(app, user)
 
-            val couldPackageHaveFgCapabilities =
-                    foregroundCapableType != Utils.ForegroundCapableType.NONE
-
             val allowedState = ButtonState()
             val allowedAlwaysState = ButtonState()
             val allowedForegroundState = ButtonState()
             val askOneTimeState = ButtonState()
             val askState = ButtonState()
             val deniedState = ButtonState()
-            val deniedForegroundState = ButtonState() // when bg is fixed as granted and fg is flex
+            val deniedForegroundState = ButtonState()
 
+            askOneTimeState.isShown = group.foreground.isGranted && group.isOneTime
             askState.isShown = Utils.supportsOneTimeGrant(permGroupName) &&
                     !(group.foreground.isGranted && group.isOneTime)
             deniedState.isShown = true
@@ -238,7 +231,6 @@ class AppPermissionViewModel(
                 askOneTimeState.isChecked = group.foreground.isGranted && group.isOneTime
                 askOneTimeState.isShown = askOneTimeState.isChecked
                 deniedState.isChecked = !group.foreground.isGranted && !group.isOneTime
-                var detailId = 0
                 if (applyFixToForegroundBackground(group, group.foreground.isSystemFixed,
                         group.background.isSystemFixed, allowedAlwaysState,
                         allowedForegroundState, askState, deniedState,
@@ -248,40 +240,14 @@ class AppPermissionViewModel(
                         allowedForegroundState, askState, deniedState,
                         deniedForegroundState)) {
                     showAdminSupportLiveData.value = admin
-                    detailId = getDetailResIdForFixedByPolicyPermissionGroup(group,
+                    val detailId = getDetailResIdForFixedByPolicyPermissionGroup(group,
                         admin != null)
                     if (detailId != 0) {
                         detailResIdLiveData.value = detailId to null
                     }
                 } else if (Utils.areGroupPermissionsIndividuallyControlled(app, permGroupName)) {
-                    val detailPair = getIndividualPermissionDetailResId(group)
-                    detailId = detailPair.first
-                    detailResIdLiveData.value = detailId to detailPair.second
-                }
-                if (couldPackageHaveFgCapabilities) {
-                    // Correct the UI in case the app can access bg location with only fg perm
-                    allowedAlwaysState.isShown = true
-                    allowedAlwaysState.isChecked =
-                            allowedAlwaysState.isChecked || allowedForegroundState.isChecked
-                    // Should be enabled && is denied enabled for the user to be able to switch to.
-                    allowedAlwaysState.isEnabled =
-                            ((allowedAlwaysState.isEnabled && allowedAlwaysState.isShown) ||
-                                    allowedForegroundState.isEnabled) &&
-                                    ((deniedState.isEnabled && deniedState.isShown) ||
-                                            (deniedForegroundState.isEnabled &&
-                                                    deniedForegroundState.isShown))
-                    allowedForegroundState.isChecked = false
-                    allowedForegroundState.isEnabled = false
-                    deniedState.isChecked = deniedState.isChecked || askState.isChecked
-                    deniedForegroundState.isChecked = deniedState.isChecked
-                    askState.isEnabled = false
-
-                    if (detailId == 0) {
-                        detailId = getForegroundCapableDetailResId(foregroundCapableType)
-                        if (detailId != 0) {
-                            detailResIdLiveData.value = detailId to null
-                        }
-                    }
+                    val detailId = getIndividualPermissionDetailResId(group)
+                    detailResIdLiveData.value = detailId.first to detailId.second
                 }
             } else {
                 // Allow / Deny case
@@ -293,7 +259,6 @@ class AppPermissionViewModel(
                 askOneTimeState.isShown = askOneTimeState.isChecked
                 deniedState.isChecked = !group.foreground.isGranted && !group.isOneTime
 
-                var detailId = 0
                 if (group.foreground.isPolicyFixed || group.foreground.isSystemFixed) {
                     allowedState.isEnabled = false
                     askState.isEnabled = false
@@ -310,23 +275,6 @@ class AppPermissionViewModel(
                     allowedState.isShown = false
                     allowedForegroundState.isChecked = allowedState.isChecked
                     allowedForegroundState.isEnabled = allowedState.isEnabled
-                    if (couldPackageHaveFgCapabilities || (Utils.isEmergencyApp(app, packageName) &&
-                                    isMicrophone(permGroupName))) {
-                        allowedAlwaysState.isShown = true
-                        allowedAlwaysState.isChecked = allowedForegroundState.isChecked
-                        allowedAlwaysState.isEnabled = allowedForegroundState.isEnabled
-                        allowedForegroundState.isChecked = false
-                        allowedForegroundState.isEnabled = false
-                        deniedState.isChecked = deniedState.isChecked || askState.isChecked
-                        askState.isEnabled = false
-
-                        if (detailId == 0) {
-                            detailId = getForegroundCapableDetailResId(foregroundCapableType)
-                            if (detailId != 0) {
-                                detailResIdLiveData.value = detailId to null
-                            }
-                        }
-                    }
                 }
             }
             if (group.packageInfo.targetSdkVersion < Build.VERSION_CODES.M) {
@@ -371,9 +319,6 @@ class AppPermissionViewModel(
     private fun isForegroundGroupSpecialCase(permissionGroupName: String): Boolean {
         return permissionGroupName.equals(Manifest.permission_group.CAMERA) ||
                 permissionGroupName.equals(Manifest.permission_group.MICROPHONE)
-    }
-    private fun isMicrophone(permissionGroupName: String): Boolean {
-        return permissionGroupName.equals(Manifest.permission_group.MICROPHONE)
     }
 
     /**
@@ -500,14 +445,10 @@ class AppPermissionViewModel(
             LocationUtils.showLocationDialog(context, packageLabel)
         }
 
-        val shouldGrantForeground = !group.isForegroundFixed &&
-                changeRequest andValue ChangeRequest.GRANT_FOREGROUND != 0
-        val shouldGrantBackground = !group.isBackgroundFixed &&
-                changeRequest andValue ChangeRequest.GRANT_BACKGROUND != 0
-        val shouldRevokeForeground = !group.isForegroundFixed &&
-                changeRequest andValue ChangeRequest.REVOKE_FOREGROUND != 0
-        val shouldRevokeBackground = !group.isBackgroundFixed &&
-                changeRequest andValue ChangeRequest.REVOKE_BACKGROUND != 0
+        val shouldGrantForeground = changeRequest andValue ChangeRequest.GRANT_FOREGROUND != 0
+        val shouldGrantBackground = changeRequest andValue ChangeRequest.GRANT_BACKGROUND != 0
+        val shouldRevokeForeground = changeRequest andValue ChangeRequest.REVOKE_FOREGROUND != 0
+        val shouldRevokeBackground = changeRequest andValue ChangeRequest.REVOKE_BACKGROUND != 0
         var showDefaultDenyDialog = false
         var showGrantedByDefaultWarning = false
 
@@ -728,16 +669,6 @@ class AppPermissionViewModel(
         return 0
     }
 
-    private fun getForegroundCapableDetailResId(type: Utils.ForegroundCapableType): Int {
-        when (type) {
-            SOUND_TRIGGER -> return R.string.fg_capabilities_sound_trigger
-            ASSISTANT -> return R.string.fg_capabilities_assistant
-            VOICE_INTERACTION -> return R.string.fg_capabilities_voice_interaction
-            CARRIER_SERVICE -> return R.string.fg_capabilities_carrier
-        }
-        return 0
-    }
-
     private fun logPermissionChanges(
         oldGroup: LightAppPermGroup,
         newGroup: LightAppPermGroup,
@@ -797,12 +728,10 @@ class AppPermissionViewModelFactory(
     private val packageName: String,
     private val permGroupName: String,
     private val user: UserHandle,
-    private val sessionId: Long,
-    private val foregroundCapableType: Utils.ForegroundCapableType
+    private val sessionId: Long
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         @Suppress("UNCHECKED_CAST")
-        return AppPermissionViewModel(app, packageName, permGroupName, user, sessionId,
-                foregroundCapableType) as T
+        return AppPermissionViewModel(app, packageName, permGroupName, user, sessionId) as T
     }
 }
