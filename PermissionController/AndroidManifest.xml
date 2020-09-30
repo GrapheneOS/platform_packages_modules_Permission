@@ -320,6 +320,8 @@
         <receiver android:name="com.android.permissioncontroller.incident.ApprovalReceiver"
             android:exported="false" />
 
+        <receiver android:name="com.android.permissioncontroller.permission.service.ExemptRestrictedPermission"
+                  android:exported="false" />
     </application>
 
 </manifest>
