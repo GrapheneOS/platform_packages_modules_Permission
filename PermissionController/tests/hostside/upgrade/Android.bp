@@ -35,5 +35,6 @@ java_test_host {
         ":PermissionUpgradeCurrentHasCameraDenied",
         ":PermissionUpgradeCurrentHasCameraGrantedAndDeclaresBgCamera",
         ":PermissionUpgradeCurrentHasCameraDeniedAndDeclaresBgCamera",
+        ":PermissionUpgrade30Assistant",
     ],
 }

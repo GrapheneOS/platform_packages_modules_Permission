@@ -24,4 +24,7 @@
   <package name="com.android.permission.test.upgrade.sdk_current.camera_denied_declares_bg">
     <permission name="android.permission.CAMERA" granted="false" flags="300" />
   </package>
+  <package name="com.android.permission.test.upgrade.sdk_30.assistant">
+    <permission name="android.permission.RECORD_AUDIO" granted="false" flags="300" />
+  </package>
 </runtime-permissions>
