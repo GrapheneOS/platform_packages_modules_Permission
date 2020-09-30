@@ -208,10 +208,12 @@ public final class Utils {
         PLATFORM_PERMISSIONS.put(Manifest.permission.ACCEPT_HANDOVER, PHONE);
 
         PLATFORM_PERMISSIONS.put(Manifest.permission.RECORD_AUDIO, MICROPHONE);
+        PLATFORM_PERMISSIONS.put(Manifest.permission.RECORD_BACKGROUND_AUDIO, MICROPHONE);
 
         PLATFORM_PERMISSIONS.put(Manifest.permission.ACTIVITY_RECOGNITION, ACTIVITY_RECOGNITION);
 
         PLATFORM_PERMISSIONS.put(Manifest.permission.CAMERA, CAMERA);
+        PLATFORM_PERMISSIONS.put(Manifest.permission.BACKGROUND_CAMERA, CAMERA);
 
         PLATFORM_PERMISSIONS.put(Manifest.permission.BODY_SENSORS, SENSORS);
 
@@ -252,21 +254,37 @@ public final class Utils {
 
         PERM_GROUP_REQUEST_DETAIL_RES = new ArrayMap<>();
         PERM_GROUP_REQUEST_DETAIL_RES.put(LOCATION, R.string.permgrouprequestdetail_location);
+        PERM_GROUP_REQUEST_DETAIL_RES.put(MICROPHONE, R.string.permgrouprequestdetail_microphone);
+        PERM_GROUP_REQUEST_DETAIL_RES.put(CAMERA, R.string.permgrouprequestdetail_camera);
 
         PERM_GROUP_BACKGROUND_REQUEST_RES = new ArrayMap<>();
         PERM_GROUP_BACKGROUND_REQUEST_RES
                 .put(LOCATION, R.string.permgroupbackgroundrequest_location);
+        PERM_GROUP_BACKGROUND_REQUEST_RES
+                .put(MICROPHONE, R.string.permgroupbackgroundrequest_microphone);
+        PERM_GROUP_BACKGROUND_REQUEST_RES
+                .put(CAMERA, R.string.permgroupbackgroundrequest_camera);
 
         PERM_GROUP_BACKGROUND_REQUEST_DETAIL_RES = new ArrayMap<>();
         PERM_GROUP_BACKGROUND_REQUEST_DETAIL_RES
                 .put(LOCATION, R.string.permgroupbackgroundrequestdetail_location);
+        PERM_GROUP_BACKGROUND_REQUEST_DETAIL_RES
+                .put(MICROPHONE, R.string.permgroupbackgroundrequestdetail_microphone);
+        PERM_GROUP_BACKGROUND_REQUEST_DETAIL_RES
+                .put(CAMERA, R.string.permgroupbackgroundrequestdetail_camera);
 
         PERM_GROUP_UPGRADE_REQUEST_RES = new ArrayMap<>();
         PERM_GROUP_UPGRADE_REQUEST_RES.put(LOCATION, R.string.permgroupupgraderequest_location);
+        PERM_GROUP_UPGRADE_REQUEST_RES.put(MICROPHONE, R.string.permgroupupgraderequest_microphone);
+        PERM_GROUP_UPGRADE_REQUEST_RES.put(CAMERA, R.string.permgroupupgraderequest_camera);
 
         PERM_GROUP_UPGRADE_REQUEST_DETAIL_RES = new ArrayMap<>();
         PERM_GROUP_UPGRADE_REQUEST_DETAIL_RES
                 .put(LOCATION, R.string.permgroupupgraderequestdetail_location);
+        PERM_GROUP_UPGRADE_REQUEST_DETAIL_RES
+                .put(MICROPHONE, R.string.permgroupupgraderequestdetail_microphone);
+        PERM_GROUP_UPGRADE_REQUEST_DETAIL_RES
+                .put(CAMERA, R.string.permgroupupgraderequestdetail_camera);
     }
 
     private Utils() {
