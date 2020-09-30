@@ -1085,6 +1085,17 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
     <string name="permgrouprequest_microphone">Allow
         &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to record audio?</string>
+    <!-- Subtitle of the message shown to the user when the apps requests permission to use the microphone only while app is in foreground [CHAR LIMIT=150]-->
+    <string name="permgrouprequestdetail_microphone">The app will only be able to record audio while you\u2019re using the app</string>
+    <!-- Message shown to the user when the apps requests permission to use the microphone while app is in foreground and background. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
+    <string name="permgroupbackgroundrequest_microphone">Allow
+        &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to record audio?</string>
+    <!-- Subtitle of the message shown to the user when the apps requests permission to use the microphone while app is in foreground and background. Try to keep the link annotation at the end of the string [CHAR LIMIT=150] -->
+    <string name="permgroupbackgroundrequestdetail_microphone">This app may want to record audio all the time, even when you\u2019re not using the app. <annotation id="link">Allow in settings.</annotation></string>
+    <!-- Message shown to the user when the apps requests permission to use the microphone while app is in foreground and background. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
+    <string name="permgroupupgraderequest_microphone">Change microphone access for &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b>?</string>
+    <!-- Subtitle of the message shown to the user when the apps requests permission to use the microphone while app is in foreground and background. Try to keep the link annotation at the end of the string [CHAR LIMIT=150] -->
+    <string name="permgroupupgraderequestdetail_microphone">This app wants to record audio all the time, even when you\u2019re not using the app. <annotation id="link">Allow in settings.</annotation></string>
 
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
     <string name="permgrouprequest_activityRecognition">Allow
@@ -1093,6 +1104,17 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
     <string name="permgrouprequest_camera">Allow
         &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to take pictures and record video?</string>
+    <!-- Subtitle of the message shown to the user when the apps requests permission to use the location only while app is in foreground [CHAR LIMIT=150]-->
+    <string name="permgrouprequestdetail_camera">The app will only be able to take pictures and record video while you\u2019re using the app</string>
+    <!-- Message shown to the user when the apps requests permission to use the camera while app is in foreground and background. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
+    <string name="permgroupbackgroundrequest_camera">Allow
+        &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to take pictures and record video?</string>
+    <!-- Subtitle of the message shown to the user when the apps requests permission to use the camera while app is in foreground and background. Try to keep the link annotation at the end of the string [CHAR LIMIT=150] -->
+    <string name="permgroupbackgroundrequestdetail_camera">This app may want to take pictures and record video all the time, even when you\u2019re not using the app. <annotation id="link">Allow in settings.</annotation></string>
+    <!-- Message shown to the user when the apps requests permission to use the camera while app is in foreground and background. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
+    <string name="permgroupupgraderequest_camera">Change camera access for &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b>?</string>
+    <!-- Subtitle of the message shown to the user when the apps requests permission to use the camera while app is in foreground and background. Try to keep the link annotation at the end of the string [CHAR LIMIT=150] -->
+    <string name="permgroupupgraderequestdetail_camera">This app wants to take pictures and record video all the time, even when you\u2019re not using the app. <annotation id="link">Allow in settings.</annotation></string>
 
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
     <string name="permgrouprequest_calllog">Allow
@@ -1112,13 +1134,4 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="auto_granted_location_permission_notification_title">Location can be accessed</string>
     <!-- Body of the notification, that does not include the app name and is specific to location permissions. [CHAR LIMIT=120]-->
     <string name="auto_granted_permission_notification_body">Your IT admin is allowing <xliff:g id="app_name" example="Gmail">%s</xliff:g> to access your location</string>
-
-    <!-- Detail message explaining why foreground options aren't available. [CHAR LIMIT=160] -->
-    <string name="fg_capabilities_sound_trigger">Some options aren\u2019t available because this app needs to detect sound</string>
-    <!-- Detail message explaining why foreground options aren't available. Try to match translation for "default digital assistant" in this string to role_assistant_label. [CHAR LIMIT=160] -->
-    <string name="fg_capabilities_assistant">Some options aren\u2019t available because this app is your default digital assistant</string>
-    <!-- Detail message explaining why foreground options aren't available. [CHAR LIMIT=160] -->
-    <string name="fg_capabilities_voice_interaction">Some options aren\u2019t available because this app is used for voice input</string>
-    <!-- Detail message explaining why foreground options aren't available. [CHAR LIMIT=160] -->
-    <string name="fg_capabilities_carrier">Some options aren\u2019t available because this app is managed by your carrier</string>
 </resources>

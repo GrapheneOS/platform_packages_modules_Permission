@@ -16,6 +16,7 @@
 
 package com.android.permissioncontroller.permission.ui.model
 
+import android.Manifest
 import android.app.Activity
 import android.app.Application
 import android.app.admin.DevicePolicyManager
@@ -278,17 +279,46 @@ class GrantPermissionsViewModel(
                     if (isBackground || groupState.group.hasPermWithBackgroundMode) {
                         if (needFgPermissions) {
                             if (needBgPermissions) {
-                                // Shouldn't be reached as background must be requested as a
-                                // singleton
-                                Log.e(LOG_TAG, "For R+ apps, background permissions must be " +
-                                    "requested after foreground permissions are already granted")
-                                value = null
-                                return
+                                if (groupState.group.permGroupName
+                                                .equals(Manifest.permission_group.CAMERA) ||
+                                        groupState.group.permGroupName
+                                                .equals(Manifest.permission_group.MICROPHONE)) {
+                                    if (groupState.group.packageInfo.targetSdkVersion >=
+                                            Build.VERSION_CODES.S) {
+                                        Log.e(LOG_TAG,
+                                                "For S apps, background permissions must be " +
+                                                "requested after foreground permissions are" +
+                                                        " already granted")
+                                        value = null
+                                        return
+                                    } else {
+                                        // Case: sdk < S, BG&FG mic/camera permission requested
+                                        buttonVisibilities[ALLOW_BUTTON] = false
+                                        buttonVisibilities[ALLOW_FOREGROUND_BUTTON] = true
+                                        buttonVisibilities[DENY_BUTTON] = !isFgUserSet
+                                        buttonVisibilities[DENY_AND_DONT_ASK_AGAIN_BUTTON] =
+                                                isFgUserSet
+                                        if (needBgPermissions) {
+                                            // Case: sdk < R, BG/FG permission requesting both
+                                            message = RequestMessage.BG_MESSAGE
+                                            detailMessage = RequestMessage.BG_MESSAGE
+                                        }
+                                    }
+                                } else {
+                                    // Shouldn't be reached as background must be requested as a
+                                    // singleton
+                                    Log.e(LOG_TAG, "For R+ apps, background permissions must be " +
+                                            "requested after foreground permissions are already" +
+                                            " granted")
+                                    value = null
+                                    return
+                                }
+                            } else {
+                                buttonVisibilities[ALLOW_BUTTON] = false
+                                buttonVisibilities[ALLOW_FOREGROUND_BUTTON] = true
+                                buttonVisibilities[DENY_BUTTON] = !isFgUserSet
+                                buttonVisibilities[DENY_AND_DONT_ASK_AGAIN_BUTTON] = isFgUserSet
                             }
-                            buttonVisibilities[ALLOW_BUTTON] = false
-                            buttonVisibilities[ALLOW_FOREGROUND_BUTTON] = true
-                            buttonVisibilities[DENY_BUTTON] = !isFgUserSet
-                            buttonVisibilities[DENY_AND_DONT_ASK_AGAIN_BUTTON] = isFgUserSet
                         } else if (needBgPermissions) {
                             // Case: sdk >= R, BG/FG permission requesting BG only
                             requestInfos.add(RequestInfo(

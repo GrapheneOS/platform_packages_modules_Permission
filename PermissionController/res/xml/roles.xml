@@ -114,6 +114,9 @@
             <permission-set name="sms" />
             <permission name="android.permission.READ_CALL_LOG" />
         </permissions>
+        <exempt-permissions>
+            <permission name="android.permission.RECORD_BACKGROUND_AUDIO" />
+        </exempt-permissions>
     </role>
 
     <!---

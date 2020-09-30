@@ -42,7 +42,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -75,7 +74,6 @@ import com.android.permissioncontroller.permission.ui.model.AppPermissionViewMod
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ChangeRequest;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModelFactory;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
-import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.settingslib.RestrictedLockUtils;
 import com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 import com.android.settingslib.widget.ActionBarShadowController;
@@ -119,7 +117,6 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
     private @NonNull String mPackageLabel;
     private @NonNull String mPermGroupLabel;
     private Drawable mPackageIcon;
-    private Utils.ForegroundCapableType mForegroundCapableType;
 
     /**
      * Create a bundle with the arguments needed by this fragment
@@ -176,17 +173,10 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
                 mPermGroupName).toString();
         mPackageIcon = KotlinUtils.INSTANCE.getBadgedPackageIcon(getActivity().getApplication(),
                 mPackageName, mUser);
-        try {
-            mForegroundCapableType = Utils.getForegroundCapableType(getContext(), mPackageName);
-        } catch (PackageManager.NameNotFoundException e) {
-            Log.e(LOG_TAG, "Package " + mPackageName + " not found", e);
-        }
-
         mSessionId = getArguments().getLong(EXTRA_SESSION_ID, INVALID_SESSION_ID);
 
         AppPermissionViewModelFactory factory = new AppPermissionViewModelFactory(
-                getActivity().getApplication(), mPackageName, mPermGroupName, mUser, mSessionId,
-                mForegroundCapableType);
+                getActivity().getApplication(), mPackageName, mPermGroupName, mUser, mSessionId);
         mViewModel = new ViewModelProvider(this, factory).get(AppPermissionViewModel.class);
         Handler delayHandler = new Handler(Looper.getMainLooper());
         mViewModel.getButtonStateLiveData().observe(this, buttonState -> {

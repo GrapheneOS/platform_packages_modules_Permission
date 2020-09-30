@@ -104,8 +104,6 @@
     <!-- for use in overlays -->
     <style name="PermissionGrantButtonAllow"
            parent="@style/PermissionGrantButton"></style>
-    <style name="PermissionGrantButtonAllowAlways"
-           parent="@style/PermissionGrantButton"></style>
     <style name="PermissionGrantButtonAllowForeground"
            parent="@style/PermissionGrantButton"></style>
     <style name="PermissionGrantButtonAllowOneTime"
@@ -317,6 +315,7 @@
     <style name="AppPermissionDetails">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
         <item name="android:layout_marginStart">48dp</item>
     </style>
 
