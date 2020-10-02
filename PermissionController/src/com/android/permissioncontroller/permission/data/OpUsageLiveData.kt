@@ -19,6 +19,8 @@ package com.android.permissioncontroller.permission.data
 import android.app.AppOpsManager
 import android.app.AppOpsManager.OP_FLAGS_ALL_TRUSTED
 import android.app.Application
+import android.os.Parcel
+import android.os.Parcelable
 import android.os.UserHandle
 import android.util.Log
 import com.android.permissioncontroller.PermissionControllerApplication
@@ -26,7 +28,6 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.io.Serializable
 
 /**
  * LiveData that loads the last usage of each of a list of app ops for every package.
@@ -149,10 +150,35 @@ data class OpAccess(
     val attributionTag: String?,
     val user: UserHandle,
     val lastAccessTime: Long
-) : Serializable {
-    companion object {
-        const val IS_RUNNING = -1L
+) : Parcelable {
+    fun isRunning() = lastAccessTime == IS_RUNNING
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(packageName)
+        parcel.writeString(attributionTag)
+        parcel.writeParcelable(user, flags)
+        parcel.writeLong(lastAccessTime)
     }
 
-    fun isRunning() = lastAccessTime == IS_RUNNING
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object {
+        const val IS_RUNNING = -1L
+
+        @JvmField
+        val CREATOR = object : Parcelable.Creator<OpAccess> {
+            override fun createFromParcel(parcel: Parcel): OpAccess {
+                return OpAccess(parcel.readString()!!,
+                        parcel.readString(),
+                        parcel.readParcelable(UserHandle::class.java.classLoader)!!,
+                        parcel.readLong())
+            }
+
+            override fun newArray(size: Int): Array<OpAccess?> {
+                return arrayOfNulls(size)
+            }
+        }
+    }
 }
