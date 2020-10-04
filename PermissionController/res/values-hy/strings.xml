@@ -344,12 +344,9 @@
     <string name="other_use" msgid="9076086164996623754">"Նաև օգտագործում են՝"</string>
     <string name="ongoing_usage_dialog_ok" msgid="3007005536659549573">"Եղավ"</string>
     <string name="ongoing_usage_dialog_title" msgid="6545358148523337174">"<xliff:g id="TYPES_LIST">%s</xliff:g>․ վերջին օգտագործումը"</string>
-    <!-- no translation found for ongoing_usage_dialog_title_mic (6894507213986512796) -->
-    <skip />
-    <!-- no translation found for ongoing_usage_dialog_title_camera (8144887777239572315) -->
-    <skip />
-    <!-- no translation found for ongoing_usage_dialog_title_mic_camera (4926106474407100024) -->
-    <skip />
+    <string name="ongoing_usage_dialog_title_mic" msgid="6894507213986512796">"Խոսափողի օգտագործման վերջին տվյալները"</string>
+    <string name="ongoing_usage_dialog_title_camera" msgid="8144887777239572315">"Տեսախցիկի օգտագործման վերջին տվյալները"</string>
+    <string name="ongoing_usage_dialog_title_mic_camera" msgid="4926106474407100024">"Տեսախցիկի և խոսափողի օգտագործման վերջին տվյալները"</string>
     <string name="ongoing_usage_dialog_separator" msgid="9008030412869423988">", "</string>
     <string name="ongoing_usage_dialog_last_separator" msgid="7455459775266515801">" և "</string>
     <string name="default_app_search_keyword" msgid="6938709626391437391">"կանխադրված հավելվածներ"</string>
@@ -400,16 +397,22 @@
     <string name="permgrouprequest_sms" msgid="2622312529683649944">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին ուղարկել և դիտել SMS հաղորդագրություններ:"</string>
     <string name="permgrouprequest_storage" msgid="1092300826793175064">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել սարքում պահված լուսանկարները, մուլտիմեդիան և ֆայլերը"</string>
     <string name="permgrouprequest_microphone" msgid="3490533265167914830">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին ձայնագրել"</string>
+    <string name="permgrouprequestdetail_microphone" msgid="1655297382086387437">"Այս հավելվածը կկարողանա ձայնագրություններ անել միայն, երբ այն օգտագործելիս լինեք"</string>
+    <string name="permgroupbackgroundrequest_microphone" msgid="455336315236630733">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին ձայնագրություններ անել։"</string>
+    <string name="permgroupbackgroundrequestdetail_microphone" msgid="6194915901304558005">"Այս հավելվածը հավանաբար կուզենա ձայնագրություններ անել նույնիսկ այն ժամանակ, երբ չեք օգտվում դրանից։ "<annotation id="link">"Թույլտվությունը տրամադրեք այստեղ։"</annotation></string>
+    <string name="permgroupupgraderequest_microphone" msgid="8883808168545381176">"Փոխե՞լ խոսափողի հասանելիության կարգավորումները &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածի համար։"</string>
+    <string name="permgroupupgraderequestdetail_microphone" msgid="2438159401621407618">"Այս հավելվածն ուզւոմ է ձայնագրություններ անել նույնիսկ այն ժամանակ, երբ չեք օգտվում դրանից։ "<annotation id="link">"Թույլտվությունը տրամադրեք այստեղ։"</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="6217921552252496983">"Հասանելի դարձնե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին ձեր ֆիզիկական ակտիվության տվյալները:"</string>
     <string name="permgrouprequest_camera" msgid="5379726026447957660">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին լուսանկարել և տեսագրել"</string>
+    <string name="permgrouprequestdetail_camera" msgid="6623022572072206275">"Այս հավելվածը կկարողանա լուսանկարել և տեսագրել միայն, երբ այն օգտագործելիս լինեք"</string>
+    <string name="permgroupbackgroundrequest_camera" msgid="8135690750774719094">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին լուսանկարել և տեսագրել։"</string>
+    <string name="permgroupbackgroundrequestdetail_camera" msgid="7112569917025971735">"Այս հավելվածը հավանաբար կուզենա լուսանկարել և տեսագրել նույնիսկ այն ժամանակ, երբ չեք օգտվում դրանից։ "<annotation id="link">"Թույլտվությունը տրամադրեք այստեղ։"</annotation></string>
+    <string name="permgroupupgraderequest_camera" msgid="5482245762449780421">"Փոխե՞լ տեսախցիկի հասանելիության կարգավորումները &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածի համար։"</string>
+    <string name="permgroupupgraderequestdetail_camera" msgid="6537492326954748907">"Այս հավելվածն ուզում է լուսանկարել և տեսագրել նույնիսկ այն ժամանակ, երբ չեք օգտվում դրանից։ "<annotation id="link">"Թույլտվությունը տրամադրեք այստեղ։"</annotation></string>
     <string name="permgrouprequest_calllog" msgid="8654341234544121138">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել ձեր հեռախոսազանգերի մատյանները"</string>
     <string name="permgrouprequest_phone" msgid="6240218310343431124">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին կատարել հեռախոսազանգեր և կառավարել դրանք"</string>
     <string name="permgrouprequest_sensors" msgid="1939578702884234985">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին սենսորից ստանալ ձեր կենսագործունեության հիմնական տվյալները:"</string>
     <string name="auto_granted_permissions" msgid="5726065128917092357">"Կառավարվող թույլտվություններ"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="6496820273286832200">"Հավելվածին հասանելի են ձեր տեղադրության մասին տվյալները"</string>
     <string name="auto_granted_permission_notification_body" msgid="492268790630112781">"Ձեր ՏՏ ադմինիստրատորը <xliff:g id="APP_NAME">%s</xliff:g> հավելվածին թույլատրել է օգտագործել ձեր տեղադրության մասին տվյալները։"</string>
-    <string name="fg_capabilities_sound_trigger" msgid="4937457992874270459">"Որոշ տարբերակներ հասանելի չեն, քանի որ այս հավելվածը պետք է ձայներ հայտնաբերի"</string>
-    <string name="fg_capabilities_assistant" msgid="6285681832588297471">"Որոշ տարբերակներ հասանելի չեն, քանի որ այս հավելվածը ձեր կանխադրված թվային օգնականն է"</string>
-    <string name="fg_capabilities_voice_interaction" msgid="5211466473396010463">"Որոշ տարբերակներ հասանելի չեն, քանի որ այս հավելվածն օգտագործվում է ձայնային ներածման համար"</string>
-    <string name="fg_capabilities_carrier" msgid="4063467791736574406">"Որոշ տարբերակներ հասանելի չեն, քանի որ այս հավելվածը կառավարվում է ձեր բջջային օպերատորի կողմից"</string>
 </resources>

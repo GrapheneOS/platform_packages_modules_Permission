@@ -344,12 +344,9 @@
     <string name="other_use" msgid="9076086164996623754">"Hoạt động sử dụng khác:"</string>
     <string name="ongoing_usage_dialog_ok" msgid="3007005536659549573">"Đã hiểu"</string>
     <string name="ongoing_usage_dialog_title" msgid="6545358148523337174">"Lần sử dụng <xliff:g id="TYPES_LIST">%s</xliff:g> gần đây"</string>
-    <!-- no translation found for ongoing_usage_dialog_title_mic (6894507213986512796) -->
-    <skip />
-    <!-- no translation found for ongoing_usage_dialog_title_camera (8144887777239572315) -->
-    <skip />
-    <!-- no translation found for ongoing_usage_dialog_title_mic_camera (4926106474407100024) -->
-    <skip />
+    <string name="ongoing_usage_dialog_title_mic" msgid="6894507213986512796">"Lần sử dụng Micrô gần đây"</string>
+    <string name="ongoing_usage_dialog_title_camera" msgid="8144887777239572315">"Lần sử dụng Máy ảnh gần đây"</string>
+    <string name="ongoing_usage_dialog_title_mic_camera" msgid="4926106474407100024">"Lần sử dụng Micrô và Máy ảnh gần đây"</string>
     <string name="ongoing_usage_dialog_separator" msgid="9008030412869423988">", "</string>
     <string name="ongoing_usage_dialog_last_separator" msgid="7455459775266515801">" và "</string>
     <string name="default_app_search_keyword" msgid="6938709626391437391">"ứng dụng mặc định"</string>
@@ -400,16 +397,32 @@
     <string name="permgrouprequest_sms" msgid="2622312529683649944">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; gửi và xem tin nhắn SMS?"</string>
     <string name="permgrouprequest_storage" msgid="1092300826793175064">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào ảnh, nội dung nghe nhìn và tệp trên thiết bị của bạn?"</string>
     <string name="permgrouprequest_microphone" msgid="3490533265167914830">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ghi âm?"</string>
+    <!-- no translation found for permgrouprequestdetail_microphone (1655297382086387437) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequest_microphone (455336315236630733) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequestdetail_microphone (6194915901304558005) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequest_microphone (8883808168545381176) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequestdetail_microphone (2438159401621407618) -->
+    <skip />
     <string name="permgrouprequest_activityRecognition" msgid="6217921552252496983">"Bạn cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào hoạt động thể chất?"</string>
     <string name="permgrouprequest_camera" msgid="5379726026447957660">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; chụp ảnh và quay video?"</string>
+    <!-- no translation found for permgrouprequestdetail_camera (6623022572072206275) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequest_camera (8135690750774719094) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequestdetail_camera (7112569917025971735) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequest_camera (5482245762449780421) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequestdetail_camera (6537492326954748907) -->
+    <skip />
     <string name="permgrouprequest_calllog" msgid="8654341234544121138">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào nhật ký cuộc gọi điện thoại của bạn?"</string>
     <string name="permgrouprequest_phone" msgid="6240218310343431124">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; thực hiện và quản lý cuộc gọi điện thoại?"</string>
     <string name="permgrouprequest_sensors" msgid="1939578702884234985">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào dữ liệu cảm biến về các dấu hiệu sinh tồn của bạn?"</string>
     <string name="auto_granted_permissions" msgid="5726065128917092357">"Các quyền bị kiểm soát"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="6496820273286832200">"Ứng dụng có thể truy cập thông tin vị trí"</string>
     <string name="auto_granted_permission_notification_body" msgid="492268790630112781">"Quản trị viên CNTT đang cho phép ứng dụng <xliff:g id="APP_NAME">%s</xliff:g> truy cập vào thông tin vị trí của bạn"</string>
-    <string name="fg_capabilities_sound_trigger" msgid="4937457992874270459">"Một số tùy chọn có thể không có sẵn vì ứng dụng này cần phát hiện âm thanh"</string>
-    <string name="fg_capabilities_assistant" msgid="6285681832588297471">"Một số tùy chọn có thể không có sẵn vì ứng dụng này là trợ lý kỹ thuật số mặc định"</string>
-    <string name="fg_capabilities_voice_interaction" msgid="5211466473396010463">"Một số tùy chọn có thể không có sẵn vì ứng dụng này dùng để nhập liệu bằng giọng nói"</string>
-    <string name="fg_capabilities_carrier" msgid="4063467791736574406">"Một số tùy chọn có thể không có sẵn vì ứng dụng này do nhà mạng quản lý"</string>
 </resources>

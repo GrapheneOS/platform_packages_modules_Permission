@@ -344,12 +344,9 @@
     <string name="other_use" msgid="9076086164996623754">"பிற பயன்பாடு:"</string>
     <string name="ongoing_usage_dialog_ok" msgid="3007005536659549573">"புரிந்தது"</string>
     <string name="ongoing_usage_dialog_title" msgid="6545358148523337174">"<xliff:g id="TYPES_LIST">%s</xliff:g> இன் சமீபத்திய பயன்பாடு"</string>
-    <!-- no translation found for ongoing_usage_dialog_title_mic (6894507213986512796) -->
-    <skip />
-    <!-- no translation found for ongoing_usage_dialog_title_camera (8144887777239572315) -->
-    <skip />
-    <!-- no translation found for ongoing_usage_dialog_title_mic_camera (4926106474407100024) -->
-    <skip />
+    <string name="ongoing_usage_dialog_title_mic" msgid="6894507213986512796">"மைக்ரோஃபோனைச் சமீபத்தில் பயன்படுத்தும் ஆப்ஸ்"</string>
+    <string name="ongoing_usage_dialog_title_camera" msgid="8144887777239572315">"கேமராவைச் சமீபத்தில் பயன்படுத்தும் ஆப்ஸ்"</string>
+    <string name="ongoing_usage_dialog_title_mic_camera" msgid="4926106474407100024">"மைக்ரோஃபோன் &amp; கேமராவைச் சமீபத்தில் பயன்படுத்தும் ஆப்ஸ்"</string>
     <string name="ongoing_usage_dialog_separator" msgid="9008030412869423988">", "</string>
     <string name="ongoing_usage_dialog_last_separator" msgid="7455459775266515801">" மற்றும் "</string>
     <string name="default_app_search_keyword" msgid="6938709626391437391">"இயல்பான ஆப்ஸ்"</string>
@@ -400,16 +397,32 @@
     <string name="permgrouprequest_sms" msgid="2622312529683649944">"மெசேஜ்களை அனுப்பவும், பார்க்கவும் &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
     <string name="permgrouprequest_storage" msgid="1092300826793175064">"உங்கள் சாதனத்திலுள்ள படங்கள், மீடியா, ஃபைல்கள் ஆகியவற்றை அணுகுவதற்கு &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
     <string name="permgrouprequest_microphone" msgid="3490533265167914830">"ஆடியோ ரெக்கார்டு செய்ய &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
+    <!-- no translation found for permgrouprequestdetail_microphone (1655297382086387437) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequest_microphone (455336315236630733) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequestdetail_microphone (6194915901304558005) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequest_microphone (8883808168545381176) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequestdetail_microphone (2438159401621407618) -->
+    <skip />
     <string name="permgrouprequest_activityRecognition" msgid="6217921552252496983">"உடல் செயல்பாட்டைக் கண்காணிக்க &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
     <string name="permgrouprequest_camera" msgid="5379726026447957660">"படங்கள் எடுக்கவும் வீடியோ ரெக்கார்டு செய்யவும் &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
+    <!-- no translation found for permgrouprequestdetail_camera (6623022572072206275) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequest_camera (8135690750774719094) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequestdetail_camera (7112569917025971735) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequest_camera (5482245762449780421) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequestdetail_camera (6537492326954748907) -->
+    <skip />
     <string name="permgrouprequest_calllog" msgid="8654341234544121138">"உங்கள் மொபைல் அழைப்புப் பதிவுகளை அணுக, &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
     <string name="permgrouprequest_phone" msgid="6240218310343431124">"மொபைல் அழைப்புகள் செய்யவும், அவற்றை நிர்வகிக்கவும், &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
     <string name="permgrouprequest_sensors" msgid="1939578702884234985">"உங்கள் உடலியக்கக் குறிகள் பற்றிய சென்சார் தரவை அணுகுவதற்கு &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
     <string name="auto_granted_permissions" msgid="5726065128917092357">"கட்டுப்படுத்தப்பட்ட அனுமதிகள்"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="6496820273286832200">"இருப்பிடத்தை அணுகலாம்"</string>
     <string name="auto_granted_permission_notification_body" msgid="492268790630112781">"<xliff:g id="APP_NAME">%s</xliff:g> ஆப்ஸ் உங்கள் இருப்பிடத்தை அணுக உங்கள் IT நிர்வாகி அனுமதித்துள்ளார்"</string>
-    <string name="fg_capabilities_sound_trigger" msgid="4937457992874270459">"இந்த ஆப்ஸ் ஒலியைக் கண்டறிய வேண்டியுள்ளதால் சில விருப்பங்கள் கிடைக்கவில்லை"</string>
-    <string name="fg_capabilities_assistant" msgid="6285681832588297471">"இந்த ஆப்ஸ் உங்கள் இயல்பான டிஜிட்டல் அசிஸ்டண்ட்டாக இருப்பதால் சில விருப்பங்கள் கிடைக்கவில்லை"</string>
-    <string name="fg_capabilities_voice_interaction" msgid="5211466473396010463">"இந்த ஆப்ஸ் குரல் உள்ளீட்டிற்குப் பயன்படுத்தப்படுவதால் சில விருப்பங்கள் கிடைக்கவில்லை"</string>
-    <string name="fg_capabilities_carrier" msgid="4063467791736574406">"இந்த ஆப்ஸ் உங்கள் மொபைல் நிறுவனத்தால் நிர்வகிக்கப்படுவதால் சில விருப்பங்கள் கிடைக்கவில்லை"</string>
 </resources>

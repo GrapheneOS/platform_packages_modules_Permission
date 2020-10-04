@@ -344,12 +344,9 @@
     <string name="other_use" msgid="9076086164996623754">"ਹੋਰ ਵਰਤੋਂ:"</string>
     <string name="ongoing_usage_dialog_ok" msgid="3007005536659549573">"ਸਮਝ ਲਿਆ"</string>
     <string name="ongoing_usage_dialog_title" msgid="6545358148523337174">"<xliff:g id="TYPES_LIST">%s</xliff:g> ਦੀ ਹਾਲੀਆ ਵਰਤੋਂ"</string>
-    <!-- no translation found for ongoing_usage_dialog_title_mic (6894507213986512796) -->
-    <skip />
-    <!-- no translation found for ongoing_usage_dialog_title_camera (8144887777239572315) -->
-    <skip />
-    <!-- no translation found for ongoing_usage_dialog_title_mic_camera (4926106474407100024) -->
-    <skip />
+    <string name="ongoing_usage_dialog_title_mic" msgid="6894507213986512796">"ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਦੀ ਹਾਲੀਆ ਵਰਤੋਂ"</string>
+    <string name="ongoing_usage_dialog_title_camera" msgid="8144887777239572315">"ਕੈਮਰੇ ਦੀ ਹਾਲੀਆ ਵਰਤੋਂ"</string>
+    <string name="ongoing_usage_dialog_title_mic_camera" msgid="4926106474407100024">"ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਅਤੇ ਕੈਮਰੇ ਦੀ ਹਾਲੀਆ ਵਰਤੋਂ"</string>
     <string name="ongoing_usage_dialog_separator" msgid="9008030412869423988">", "</string>
     <string name="ongoing_usage_dialog_last_separator" msgid="7455459775266515801">" ਅਤੇ "</string>
     <string name="default_app_search_keyword" msgid="6938709626391437391">"ਪੂਰਵ-ਨਿਰਧਾਰਤ ਐਪਾਂ"</string>
@@ -400,16 +397,32 @@
     <string name="permgrouprequest_sms" msgid="2622312529683649944">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ SMS ਸੁਨੇਹੇ ਭੇਜਣ ਅਤੇ ਦੇਖਣ ਦੇਣੇ ਹਨ?"</string>
     <string name="permgrouprequest_storage" msgid="1092300826793175064">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਆਪਣੇ ਡੀਵਾਈਸ \'ਤੇ ਫ਼ੋਟੋਆਂ, ਮੀਡੀਆ ਅਤੇ ਫ਼ਾਈਲਾਂ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
     <string name="permgrouprequest_microphone" msgid="3490533265167914830">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਆਡੀਓ ਰਿਕਾਰਡ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
+    <!-- no translation found for permgrouprequestdetail_microphone (1655297382086387437) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequest_microphone (455336315236630733) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequestdetail_microphone (6194915901304558005) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequest_microphone (8883808168545381176) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequestdetail_microphone (2438159401621407618) -->
+    <skip />
     <string name="permgrouprequest_activityRecognition" msgid="6217921552252496983">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਆਪਣੀ ਸਰੀਰਕ ਸਰਗਰਮੀ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
     <string name="permgrouprequest_camera" msgid="5379726026447957660">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਤਸਵੀਰਾਂ ਖਿੱਚਣ ਅਤੇ ਵੀਡੀਓ ਰਿਕਾਰਡ ਕਰਨ ਦੇਣਾ ਹੈ?"</string>
+    <!-- no translation found for permgrouprequestdetail_camera (6623022572072206275) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequest_camera (8135690750774719094) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequestdetail_camera (7112569917025971735) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequest_camera (5482245762449780421) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequestdetail_camera (6537492326954748907) -->
+    <skip />
     <string name="permgrouprequest_calllog" msgid="8654341234544121138">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਤੁਹਾਡੇ ਫ਼ੋਨ ਦੇ ਕਾਲ ਲੌਗਾਂ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
     <string name="permgrouprequest_phone" msgid="6240218310343431124">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਫ਼ੋਨ ਕਾਲਾਂ ਕਰਨ ਅਤੇ ਉਹਨਾਂ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰਨ ਦੇਣਾ ਹੈ?"</string>
     <string name="permgrouprequest_sensors" msgid="1939578702884234985">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਤੁਹਾਡੇ ਸਰੀਰ ਦੇ ਅਹਿਮ ਲੱਛਣਾਂ ਸੰਬੰਧੀ ਸੈਂਸਰ ਡਾਟੇ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
     <string name="auto_granted_permissions" msgid="5726065128917092357">"ਨਿਯੰਤਰਿਤ ਇਜਾਜ਼ਤਾਂ"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="6496820273286832200">"ਟਿਕਾਣੇ ਤੱਕ ਪਹੁੰਚ ਕੀਤੀ ਜਾ ਸਕਦੀ ਹੈ"</string>
     <string name="auto_granted_permission_notification_body" msgid="492268790630112781">"ਤੁਹਾਡਾ ਆਈ.ਟੀ. ਪ੍ਰਸ਼ਾਸਕ <xliff:g id="APP_NAME">%s</xliff:g> ਨੂੰ ਤੁਹਾਡੇ ਟਿਕਾਣੇ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇ ਰਿਹਾ ਹੈ"</string>
-    <string name="fg_capabilities_sound_trigger" msgid="4937457992874270459">"ਕੁਝ ਵਿਕਲਪ ਉਪਲਬਧ ਨਹੀਂ ਹਨ ਕਿਉਂਕਿ ਇਸ ਐਪ ਨੂੰ ਧੁਨੀ ਦੀ ਪਛਾਣ ਕਰਨ ਦੀ ਲੋੜ ਹੈ"</string>
-    <string name="fg_capabilities_assistant" msgid="6285681832588297471">"ਕੁਝ ਵਿਕਲਪ ਉਪਲਬਧ ਨਹੀਂ ਹਨ ਕਿਉਂਕਿ ਇਹ ਐਪ ਤੁਹਾਡੀ ਪੂਰਵ-ਨਿਰਧਾਰਤ ਡਿਜੀਟਲ ਸਹਾਇਕ ਹੈ"</string>
-    <string name="fg_capabilities_voice_interaction" msgid="5211466473396010463">"ਕੁਝ ਵਿਕਲਪ ਉਪਲਬਧ ਨਹੀਂ ਹਨ ਕਿਉਂਕਿ ਇਹ ਐਪ ਵੌਇਸ ਇਨਪੁੱਟ ਲਈ ਵਰਤੀ ਜਾਂਦੀ ਹੈ"</string>
-    <string name="fg_capabilities_carrier" msgid="4063467791736574406">"ਕੁਝ ਵਿਕਲਪ ਉਪਲਬਧ ਨਹੀਂ ਹਨ ਕਿਉਂਕਿ ਇਸ ਐਪ ਦਾ ਪ੍ਰਬੰਧਨ ਤੁਹਾਡੇ ਕੈਰੀਅਰ ਵੱਲੋਂ ਕੀਤਾ ਜਾਂਦਾ ਹੈ"</string>
 </resources>

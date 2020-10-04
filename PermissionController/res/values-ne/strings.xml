@@ -344,12 +344,9 @@
     <string name="other_use" msgid="9076086164996623754">"अन्य प्रयोग:"</string>
     <string name="ongoing_usage_dialog_ok" msgid="3007005536659549573">"बुझेँ"</string>
     <string name="ongoing_usage_dialog_title" msgid="6545358148523337174">"<xliff:g id="TYPES_LIST">%s</xliff:g>को हालै गरिएको प्रयोग"</string>
-    <!-- no translation found for ongoing_usage_dialog_title_mic (6894507213986512796) -->
-    <skip />
-    <!-- no translation found for ongoing_usage_dialog_title_camera (8144887777239572315) -->
-    <skip />
-    <!-- no translation found for ongoing_usage_dialog_title_mic_camera (4926106474407100024) -->
-    <skip />
+    <string name="ongoing_usage_dialog_title_mic" msgid="6894507213986512796">"यी एपहरूले हालसालै माइक्रोफोन प्रयोग गरेका छन्"</string>
+    <string name="ongoing_usage_dialog_title_camera" msgid="8144887777239572315">"यी एपहरूले हालसालै क्यामेरा प्रयोग गरेका छन्"</string>
+    <string name="ongoing_usage_dialog_title_mic_camera" msgid="4926106474407100024">"यी एपहरूले हालसालै माइक्रोफोन र क्यामेरा प्रयोग गरेका छन्"</string>
     <string name="ongoing_usage_dialog_separator" msgid="9008030412869423988">", "</string>
     <string name="ongoing_usage_dialog_last_separator" msgid="7455459775266515801">" र "</string>
     <string name="default_app_search_keyword" msgid="6938709626391437391">"पूर्वनिर्धारित एपहरू"</string>
@@ -400,16 +397,32 @@
     <string name="permgrouprequest_sms" msgid="2622312529683649944">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; SMS सन्देशहरू पठाउन र हेर्न दिने हो?"</string>
     <string name="permgrouprequest_storage" msgid="1092300826793175064">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई आफ्नो यन्त्रमा रहेका फोटो, मिडिया र फाइलहरू प्रयोग गर्न दिने हो?"</string>
     <string name="permgrouprequest_microphone" msgid="3490533265167914830">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई अडियो रेकर्ड गर्न दिने हो?"</string>
+    <!-- no translation found for permgrouprequestdetail_microphone (1655297382086387437) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequest_microphone (455336315236630733) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequestdetail_microphone (6194915901304558005) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequest_microphone (8883808168545381176) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequestdetail_microphone (2438159401621407618) -->
+    <skip />
     <string name="permgrouprequest_activityRecognition" msgid="6217921552252496983">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई आफ्नो शारीरिक क्रियाकलापमाथि पहुँच राख्न दिने हो?"</string>
     <string name="permgrouprequest_camera" msgid="5379726026447957660">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई फोटो खिच्न र भिडियो रेकर्ड गर्न दिने हो?"</string>
+    <!-- no translation found for permgrouprequestdetail_camera (6623022572072206275) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequest_camera (8135690750774719094) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequestdetail_camera (7112569917025971735) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequest_camera (5482245762449780421) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequestdetail_camera (6537492326954748907) -->
+    <skip />
     <string name="permgrouprequest_calllog" msgid="8654341234544121138">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई आफ्ना फोन कलका लगहरू प्रयोग गर्ने अनुमति दिने हो?"</string>
     <string name="permgrouprequest_phone" msgid="6240218310343431124">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई फोन कल गर्न र ती कलको व्यवस्थापन गर्न दिने हो?"</string>
     <string name="permgrouprequest_sensors" msgid="1939578702884234985">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई आफ्ना महत्त्वपूर्ण लक्षणहरूसम्बन्धी सेन्सर डेटामाथि पहुँच राख्न दिने हो?"</string>
     <string name="auto_granted_permissions" msgid="5726065128917092357">"नियन्त्रित अनुमतिहरू"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="6496820273286832200">"स्थानसम्बन्धी जानकारी हेरिन सक्छ"</string>
     <string name="auto_granted_permission_notification_body" msgid="492268790630112781">"तपाईंका IT एडमिनले <xliff:g id="APP_NAME">%s</xliff:g> लाई तपाईंको स्थान हेर्ने अनुमति दिनुभएको छ"</string>
-    <string name="fg_capabilities_sound_trigger" msgid="4937457992874270459">"यो एपले आवाज पहिचान गर्नु पर्ने हुनाले केही विकल्पहरू उपलब्ध हुँदैनन्"</string>
-    <string name="fg_capabilities_assistant" msgid="6285681832588297471">"यो एप तपाईंको पूर्वनिर्धारित डिजिटल सहायक भएका हुनाले केही विकल्पहरू उपलब्ध हुँदैनन्"</string>
-    <string name="fg_capabilities_voice_interaction" msgid="5211466473396010463">"भ्वाइस इनपुट गर्न यो एप प्रयोग गरिएको हुनाले केही विकल्पहरू उपलब्ध छैनन्"</string>
-    <string name="fg_capabilities_carrier" msgid="4063467791736574406">"तपाईंको सेवा प्रदायकले यो एप व्यवस्थापन गर्ने हुनाले केही विकल्पहरू उपलब्ध छैनन्"</string>
 </resources>
