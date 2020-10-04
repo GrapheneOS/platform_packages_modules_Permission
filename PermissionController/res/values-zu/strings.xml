@@ -344,12 +344,9 @@
     <string name="other_use" msgid="9076086164996623754">"Okunye ukusetshenziswa:"</string>
     <string name="ongoing_usage_dialog_ok" msgid="3007005536659549573">"Ngiyezwa"</string>
     <string name="ongoing_usage_dialog_title" msgid="6545358148523337174">"Ukusetshenziswa kwakamuva kwe-<xliff:g id="TYPES_LIST">%s</xliff:g>"</string>
-    <!-- no translation found for ongoing_usage_dialog_title_mic (6894507213986512796) -->
-    <skip />
-    <!-- no translation found for ongoing_usage_dialog_title_camera (8144887777239572315) -->
-    <skip />
-    <!-- no translation found for ongoing_usage_dialog_title_mic_camera (4926106474407100024) -->
-    <skip />
+    <string name="ongoing_usage_dialog_title_mic" msgid="6894507213986512796">"Ukusetshenziswa kwakamuva Kwemakrofoni"</string>
+    <string name="ongoing_usage_dialog_title_camera" msgid="8144887777239572315">"Ukusetshenziswa kwakamuva Kwekhamera"</string>
+    <string name="ongoing_usage_dialog_title_mic_camera" msgid="4926106474407100024">"Ukusetshenziswa kwakamuva Kwemakrofoni Nekhamera"</string>
     <string name="ongoing_usage_dialog_separator" msgid="9008030412869423988">", "</string>
     <string name="ongoing_usage_dialog_last_separator" msgid="7455459775266515801">" kanye "</string>
     <string name="default_app_search_keyword" msgid="6938709626391437391">"izinhlelo zokusebenza ezizenzakalelayo"</string>
@@ -400,16 +397,32 @@
     <string name="permgrouprequest_sms" msgid="2622312529683649944">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi ithumele iphinde ibuke imilayezo ye-SMS?"</string>
     <string name="permgrouprequest_storage" msgid="1092300826793175064">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi ifinyelele kuzithombe, imidiya, namafayela akudivayisi yakho?"</string>
     <string name="permgrouprequest_microphone" msgid="3490533265167914830">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi irekhode umsindo?"</string>
+    <!-- no translation found for permgrouprequestdetail_microphone (1655297382086387437) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequest_microphone (455336315236630733) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequestdetail_microphone (6194915901304558005) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequest_microphone (8883808168545381176) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequestdetail_microphone (2438159401621407618) -->
+    <skip />
     <string name="permgrouprequest_activityRecognition" msgid="6217921552252496983">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi ifinyelele kumsebenzi wakho womzimba?"</string>
     <string name="permgrouprequest_camera" msgid="5379726026447957660">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthatha izithombe iphinde irekhode ividiyo?"</string>
+    <!-- no translation found for permgrouprequestdetail_camera (6623022572072206275) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequest_camera (8135690750774719094) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequestdetail_camera (7112569917025971735) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequest_camera (5482245762449780421) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequestdetail_camera (6537492326954748907) -->
+    <skip />
     <string name="permgrouprequest_calllog" msgid="8654341234544121138">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukufinyelela kurekhodi lakho lamakholi wefoni?"</string>
     <string name="permgrouprequest_phone" msgid="6240218310343431124">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi yenze iphinde iphathe amakholi efoni?"</string>
     <string name="permgrouprequest_sensors" msgid="1939578702884234985">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi ifinyelele kudatha yenzwa emayelana nezimpawu zakho ezibalulekile?"</string>
     <string name="auto_granted_permissions" msgid="5726065128917092357">"Izimvume ezilawuliwe"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="6496820273286832200">"Indawo ingafinyelelwa"</string>
     <string name="auto_granted_permission_notification_body" msgid="492268790630112781">"Umphathi wakho we-IT uvumela i-<xliff:g id="APP_NAME">%s</xliff:g> ukuba ifinyelele indawo okuyo"</string>
-    <string name="fg_capabilities_sound_trigger" msgid="4937457992874270459">"Ezinye izinketho azitholakali ngoba lolu hlelo lokusebenza ludinga ukuthola umsindo"</string>
-    <string name="fg_capabilities_assistant" msgid="6285681832588297471">"Ezinye izinketho azitholakali ngoba lolu hlelo lokusebenza lingumsizi wakho odijithali ngokuzenzakalelayo"</string>
-    <string name="fg_capabilities_voice_interaction" msgid="5211466473396010463">"Ezinye izinketho azitholakali ngoba lolu hlelo lokusebenza lusetshenziselwa ukuthayipha ngezwi"</string>
-    <string name="fg_capabilities_carrier" msgid="4063467791736574406">"Ezinye izinketho azitholakali ngoba lolu hlelo lokusebenza liphethwe yinkampani yakho yenethiwekhi"</string>
 </resources>

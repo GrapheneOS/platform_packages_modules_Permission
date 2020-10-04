@@ -344,12 +344,9 @@
     <string name="other_use" msgid="9076086164996623754">"Autre utilisation :"</string>
     <string name="ongoing_usage_dialog_ok" msgid="3007005536659549573">"OK"</string>
     <string name="ongoing_usage_dialog_title" msgid="6545358148523337174">"Utilisation récente de l\'élément suivant : <xliff:g id="TYPES_LIST">%s</xliff:g>"</string>
-    <!-- no translation found for ongoing_usage_dialog_title_mic (6894507213986512796) -->
-    <skip />
-    <!-- no translation found for ongoing_usage_dialog_title_camera (8144887777239572315) -->
-    <skip />
-    <!-- no translation found for ongoing_usage_dialog_title_mic_camera (4926106474407100024) -->
-    <skip />
+    <string name="ongoing_usage_dialog_title_mic" msgid="6894507213986512796">"Utilisation récente du microphone"</string>
+    <string name="ongoing_usage_dialog_title_camera" msgid="8144887777239572315">"Utilisation récente de l\'appareil photo"</string>
+    <string name="ongoing_usage_dialog_title_mic_camera" msgid="4926106474407100024">"Utilisation récente du microphone et de l\'appareil photo"</string>
     <string name="ongoing_usage_dialog_separator" msgid="9008030412869423988">", "</string>
     <string name="ongoing_usage_dialog_last_separator" msgid="7455459775266515801">" et "</string>
     <string name="default_app_search_keyword" msgid="6938709626391437391">"applications par défaut"</string>
@@ -400,16 +397,22 @@
     <string name="permgrouprequest_sms" msgid="2622312529683649944">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;  à envoyer et à afficher des messages texte?"</string>
     <string name="permgrouprequest_storage" msgid="1092300826793175064">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder aux photos, au contenu multimédia et aux fichiers de votre appareil?"</string>
     <string name="permgrouprequest_microphone" msgid="3490533265167914830">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à enregistrer l\'audio?"</string>
+    <string name="permgrouprequestdetail_microphone" msgid="1655297382086387437">"L\'application pourra uniquement enregistrer de l\'audio lorsque vous l\'utilisez"</string>
+    <string name="permgroupbackgroundrequest_microphone" msgid="455336315236630733">"Autoriser « <xliff:g id="APP_NAME">%1$s</xliff:g> » à enregistrer de l\'audio?"</string>
+    <string name="permgroupbackgroundrequestdetail_microphone" msgid="6194915901304558005">"Cette application pourrait demander à enregistrer de l\'audio en tout temps, même lorsque vous ne l\'utilisez pas. "<annotation id="link">"Autorisez dans les paramètres."</annotation></string>
+    <string name="permgroupupgraderequest_microphone" msgid="8883808168545381176">"Modifier l\'accès au microphone pour « <xliff:g id="APP_NAME">%1$s</xliff:g> »?"</string>
+    <string name="permgroupupgraderequestdetail_microphone" msgid="2438159401621407618">"Cette application veut enregistrer de l\'audio en tout temps, même si vous ne l\'utilisez pas. "<annotation id="link">"Autorisez dans les paramètres."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="6217921552252496983">"Autoriser « <xliff:g id="APP_NAME">%1$s</xliff:g> » à accéder à vos activités physiques?"</string>
     <string name="permgrouprequest_camera" msgid="5379726026447957660">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à prendre des photos et à filmer des vidéos?"</string>
+    <string name="permgrouprequestdetail_camera" msgid="6623022572072206275">"L\'application pourra uniquement prendre des photos et enregistrer des vidéos lorsque vous l\'utilisez"</string>
+    <string name="permgroupbackgroundrequest_camera" msgid="8135690750774719094">"Autoriser « <xliff:g id="APP_NAME">%1$s</xliff:g> » à prendre des photos et à enregistrer des vidéos?"</string>
+    <string name="permgroupbackgroundrequestdetail_camera" msgid="7112569917025971735">"Cette appli pourrait demander à prendre des photos et des vidéos en tout temps, même lorsque vous ne l\'utilisez pas. "<annotation id="link">"Autorisez dans les paramètres."</annotation></string>
+    <string name="permgroupupgraderequest_camera" msgid="5482245762449780421">"Modifier l\'accès à l\'appareil photo pour « <xliff:g id="APP_NAME">%1$s</xliff:g> »?"</string>
+    <string name="permgroupupgraderequestdetail_camera" msgid="6537492326954748907">"Cette application veut prendre des photos et enregistrer des vidéos en tout temps, même lorsque vous ne l\'utilisez pas. "<annotation id="link">"Autorisez dans les paramètres."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="8654341234544121138">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder à vos journaux d\'appels?"</string>
     <string name="permgrouprequest_phone" msgid="6240218310343431124">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à faire et à gérer des appels téléphoniques?"</string>
     <string name="permgrouprequest_sensors" msgid="1939578702884234985">"Autoriser « <xliff:g id="APP_NAME">%1$s</xliff:g> » à accéder aux données des capteurs pour vos signes vitaux?"</string>
     <string name="auto_granted_permissions" msgid="5726065128917092357">"Autorisations contrôlées"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="6496820273286832200">"L\'accès à la position est autorisé"</string>
     <string name="auto_granted_permission_notification_body" msgid="492268790630112781">"Votre administrateur informatique autorise <xliff:g id="APP_NAME">%s</xliff:g> à accéder à votre position"</string>
-    <string name="fg_capabilities_sound_trigger" msgid="4937457992874270459">"Certaines options ne sont pas accessibles parce que cette application doit être en mesure de détecter le son"</string>
-    <string name="fg_capabilities_assistant" msgid="6285681832588297471">"Certaines options ne sont pas accessibles parce que cette application est votre assistant numérique par défaut"</string>
-    <string name="fg_capabilities_voice_interaction" msgid="5211466473396010463">"Certaines options ne sont pas accessibles parce que cette application est utilisée pour l\'entrée vocale"</string>
-    <string name="fg_capabilities_carrier" msgid="4063467791736574406">"Certaines options ne sont pas accessibles parce que cette application est gérée par votre fournisseur de services"</string>
 </resources>

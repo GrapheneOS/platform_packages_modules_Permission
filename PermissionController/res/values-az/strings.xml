@@ -344,12 +344,9 @@
     <string name="other_use" msgid="9076086164996623754">"Digər istifadə:"</string>
     <string name="ongoing_usage_dialog_ok" msgid="3007005536659549573">"Anladım"</string>
     <string name="ongoing_usage_dialog_title" msgid="6545358148523337174">"Son <xliff:g id="TYPES_LIST">%s</xliff:g> istifadəsi"</string>
-    <!-- no translation found for ongoing_usage_dialog_title_mic (6894507213986512796) -->
-    <skip />
-    <!-- no translation found for ongoing_usage_dialog_title_camera (8144887777239572315) -->
-    <skip />
-    <!-- no translation found for ongoing_usage_dialog_title_mic_camera (4926106474407100024) -->
-    <skip />
+    <string name="ongoing_usage_dialog_title_mic" msgid="6894507213986512796">"Son Mikrofon istifadəsi"</string>
+    <string name="ongoing_usage_dialog_title_camera" msgid="8144887777239572315">"Son Kamera istifadəsi"</string>
+    <string name="ongoing_usage_dialog_title_mic_camera" msgid="4926106474407100024">"Son Mikrofon &amp; Kamera istifadəsi"</string>
     <string name="ongoing_usage_dialog_separator" msgid="9008030412869423988">", "</string>
     <string name="ongoing_usage_dialog_last_separator" msgid="7455459775266515801">" və "</string>
     <string name="default_app_search_keyword" msgid="6938709626391437391">"defolt tətbiqlər"</string>
@@ -400,16 +397,32 @@
     <string name="permgrouprequest_sms" msgid="2622312529683649944">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə SMS mesajları göndərmək və onlara baxmaq icazəsi verilsin?"</string>
     <string name="permgrouprequest_storage" msgid="1092300826793175064">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə cihazdakı foto, media və fayllara daxil olmaq icazəsi verilsin?"</string>
     <string name="permgrouprequest_microphone" msgid="3490533265167914830">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə səs yazmaq icazəsi verilsin?"</string>
+    <!-- no translation found for permgrouprequestdetail_microphone (1655297382086387437) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequest_microphone (455336315236630733) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequestdetail_microphone (6194915901304558005) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequest_microphone (8883808168545381176) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequestdetail_microphone (2438159401621407618) -->
+    <skip />
     <string name="permgrouprequest_activityRecognition" msgid="6217921552252496983">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinin fiziki fəaliyyətinizə daxil olmasına icazə verilsin?"</string>
     <string name="permgrouprequest_camera" msgid="5379726026447957660">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə şəkil və video çəkmək icazəsi verilsin?"</string>
+    <!-- no translation found for permgrouprequestdetail_camera (6623022572072206275) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequest_camera (8135690750774719094) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequestdetail_camera (7112569917025971735) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequest_camera (5482245762449780421) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequestdetail_camera (6537492326954748907) -->
+    <skip />
     <string name="permgrouprequest_calllog" msgid="8654341234544121138">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə telefonun zəng qeydlərinə daxil olmaq icazəsi verilsin?"</string>
     <string name="permgrouprequest_phone" msgid="6240218310343431124">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə telefon zəngləri etmək və onları idarə etmək icazəsi verilsin?"</string>
     <string name="permgrouprequest_sensors" msgid="1939578702884234985">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə həyati əlamətlər haqqında sensor dataya daxil olmaq icazəsi verilsin?"</string>
     <string name="auto_granted_permissions" msgid="5726065128917092357">"İdarə edilən icazələr"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="6496820273286832200">"Məkana giriş edilə bilər"</string>
     <string name="auto_granted_permission_notification_body" msgid="492268790630112781">"İT admininiz <xliff:g id="APP_NAME">%s</xliff:g> tətbiqinə məkanınıza giriş icazəsi verir"</string>
-    <string name="fg_capabilities_sound_trigger" msgid="4937457992874270459">"Bu tətbiq səsi aşkarlamalı olduğuna görə bəzi seçimlər əlçatan deyil"</string>
-    <string name="fg_capabilities_assistant" msgid="6285681832588297471">"Bu tətbiq defolt rəqəmsal assistentiniz olduğuna görə bəzi seçimlər əlçatan deyil"</string>
-    <string name="fg_capabilities_voice_interaction" msgid="5211466473396010463">"Bu tətbiq səs daxiletməsi üçün istifadə edildiyinə görə bəzi seçimlər əlçatan deyil"</string>
-    <string name="fg_capabilities_carrier" msgid="4063467791736574406">"Bu tətbiq operator tərəfindən idarə edildiyinə görə bəzi seçimlər əlçatan deyil"</string>
 </resources>
