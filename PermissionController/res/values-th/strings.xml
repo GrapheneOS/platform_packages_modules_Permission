@@ -344,12 +344,9 @@
     <string name="other_use" msgid="9076086164996623754">"องค์ประกอบอื่นๆ ที่ใช้:"</string>
     <string name="ongoing_usage_dialog_ok" msgid="3007005536659549573">"รับทราบ"</string>
     <string name="ongoing_usage_dialog_title" msgid="6545358148523337174">"การใช้<xliff:g id="TYPES_LIST">%s</xliff:g>ครั้งล่าสุด"</string>
-    <!-- no translation found for ongoing_usage_dialog_title_mic (6894507213986512796) -->
-    <skip />
-    <!-- no translation found for ongoing_usage_dialog_title_camera (8144887777239572315) -->
-    <skip />
-    <!-- no translation found for ongoing_usage_dialog_title_mic_camera (4926106474407100024) -->
-    <skip />
+    <string name="ongoing_usage_dialog_title_mic" msgid="6894507213986512796">"การใช้ไมโครโฟนครั้งล่าสุด"</string>
+    <string name="ongoing_usage_dialog_title_camera" msgid="8144887777239572315">"การใช้กล้องถ่ายรูปครั้งล่าสุด"</string>
+    <string name="ongoing_usage_dialog_title_mic_camera" msgid="4926106474407100024">"การใช้ไมโครโฟนและกล้องถ่ายรูปครั้งล่าสุด"</string>
     <string name="ongoing_usage_dialog_separator" msgid="9008030412869423988">" "</string>
     <string name="ongoing_usage_dialog_last_separator" msgid="7455459775266515801">" และ "</string>
     <string name="default_app_search_keyword" msgid="6938709626391437391">"แอปเริ่มต้น"</string>
@@ -400,16 +397,32 @@
     <string name="permgrouprequest_sms" msgid="2622312529683649944">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ส่งและดูข้อความ SMS ไหม"</string>
     <string name="permgrouprequest_storage" msgid="1092300826793175064">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึงรูปภาพ สื่อ และไฟล์ในอุปกรณ์ไหม"</string>
     <string name="permgrouprequest_microphone" msgid="3490533265167914830">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; บันทึกเสียงไหม"</string>
+    <!-- no translation found for permgrouprequestdetail_microphone (1655297382086387437) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequest_microphone (455336315236630733) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequestdetail_microphone (6194915901304558005) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequest_microphone (8883808168545381176) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequestdetail_microphone (2438159401621407618) -->
+    <skip />
     <string name="permgrouprequest_activityRecognition" msgid="6217921552252496983">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึงกิจกรรมการเคลื่อนไหวร่างกายของคุณไหม"</string>
     <string name="permgrouprequest_camera" msgid="5379726026447957660">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ถ่ายรูปและบันทึกวิดีโอไหม"</string>
+    <!-- no translation found for permgrouprequestdetail_camera (6623022572072206275) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequest_camera (8135690750774719094) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequestdetail_camera (7112569917025971735) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequest_camera (5482245762449780421) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequestdetail_camera (6537492326954748907) -->
+    <skip />
     <string name="permgrouprequest_calllog" msgid="8654341234544121138">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึงประวัติการโทรในโทรศัพท์ไหม"</string>
     <string name="permgrouprequest_phone" msgid="6240218310343431124">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; โทรและจัดการการโทรไหม"</string>
     <string name="permgrouprequest_sensors" msgid="1939578702884234985">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึงข้อมูลเซ็นเซอร์เกี่ยวกับสัญญาณชีพไหม"</string>
     <string name="auto_granted_permissions" msgid="5726065128917092357">"สิทธิ์ที่มีการควบคุม"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="6496820273286832200">"เข้าถึงตำแหน่งได้"</string>
     <string name="auto_granted_permission_notification_body" msgid="492268790630112781">"ผู้ดูแลระบบไอทีอนุญาตให้ <xliff:g id="APP_NAME">%s</xliff:g> เข้าถึงตำแหน่งของคุณได้"</string>
-    <string name="fg_capabilities_sound_trigger" msgid="4937457992874270459">"ตัวเลือกบางอย่างไม่พร้อมใช้งานเนื่องจากแอปนี้ต้องตรวจจับเสียง"</string>
-    <string name="fg_capabilities_assistant" msgid="6285681832588297471">"ตัวเลือกบางอย่างไม่พร้อมใช้งานเนื่องจากแอปนี้เป็นผู้ช่วยดิจิทัลเริ่มต้นของคุณ"</string>
-    <string name="fg_capabilities_voice_interaction" msgid="5211466473396010463">"ตัวเลือกบางอย่างไม่พร้อมใช้งานเนื่องจากแอปนี้ใช้สำหรับการป้อนข้อมูลด้วยเสียง"</string>
-    <string name="fg_capabilities_carrier" msgid="4063467791736574406">"ตัวเลือกบางอย่างไม่พร้อมใช้งานเนื่องจากแอปนี้จัดการโดยผู้ให้บริการของคุณ"</string>
 </resources>

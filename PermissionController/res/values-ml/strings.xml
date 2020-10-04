@@ -344,12 +344,9 @@
     <string name="other_use" msgid="9076086164996623754">"മറ്റ് ഉപയോഗം:"</string>
     <string name="ongoing_usage_dialog_ok" msgid="3007005536659549573">"മനസ്സിലായി"</string>
     <string name="ongoing_usage_dialog_title" msgid="6545358148523337174">"<xliff:g id="TYPES_LIST">%s</xliff:g> എന്നതിന്റെ അടുത്തിടെയുള്ള ഉപയോഗം"</string>
-    <!-- no translation found for ongoing_usage_dialog_title_mic (6894507213986512796) -->
-    <skip />
-    <!-- no translation found for ongoing_usage_dialog_title_camera (8144887777239572315) -->
-    <skip />
-    <!-- no translation found for ongoing_usage_dialog_title_mic_camera (4926106474407100024) -->
-    <skip />
+    <string name="ongoing_usage_dialog_title_mic" msgid="6894507213986512796">"മൈക്രോഫോണിന്റെ സമീപകാല ഉപയോഗം"</string>
+    <string name="ongoing_usage_dialog_title_camera" msgid="8144887777239572315">"ക്യാമറയുടെ സമീപകാല ഉപയോഗം"</string>
+    <string name="ongoing_usage_dialog_title_mic_camera" msgid="4926106474407100024">"മെെക്രോഫോണിന്റെയും ക്യാമറയുടെയും സമീപകാല ഉപയോഗം"</string>
     <string name="ongoing_usage_dialog_separator" msgid="9008030412869423988">", "</string>
     <string name="ongoing_usage_dialog_last_separator" msgid="7455459775266515801">" ഒപ്പം "</string>
     <string name="default_app_search_keyword" msgid="6938709626391437391">"ഡിഫോൾട്ട് ആപ്പുകൾ"</string>
@@ -400,16 +397,32 @@
     <string name="permgrouprequest_sms" msgid="2622312529683649944">"SMS സന്ദേശങ്ങൾ അയയ്ക്കാനും കാണാനും &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>
     <string name="permgrouprequest_storage" msgid="1092300826793175064">"നിങ്ങളുടെ ഉപകരണത്തിലെ ഫോട്ടോകളും മീഡിയയും ഫയലുകളും ആക്‌സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>
     <string name="permgrouprequest_microphone" msgid="3490533265167914830">"ഓഡിയോ റെക്കോർഡ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>
+    <!-- no translation found for permgrouprequestdetail_microphone (1655297382086387437) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequest_microphone (455336315236630733) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequestdetail_microphone (6194915901304558005) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequest_microphone (8883808168545381176) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequestdetail_microphone (2438159401621407618) -->
+    <skip />
     <string name="permgrouprequest_activityRecognition" msgid="6217921552252496983">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-നെ നിങ്ങളുടെ കായിക പ്രവർത്തനം ആക്‌സസ് ചെയ്യാൻ അനുവദിക്കണോ?"</string>
     <string name="permgrouprequest_camera" msgid="5379726026447957660">"ചിത്രം എടുക്കാനും വീഡിയോ റെക്കോർഡ് ചെയ്യാനും &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>
+    <!-- no translation found for permgrouprequestdetail_camera (6623022572072206275) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequest_camera (8135690750774719094) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequestdetail_camera (7112569917025971735) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequest_camera (5482245762449780421) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequestdetail_camera (6537492326954748907) -->
+    <skip />
     <string name="permgrouprequest_calllog" msgid="8654341234544121138">"നിങ്ങളുടെ ഫോൺ കോൾ ലോഗുകൾ ആക്സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>
     <string name="permgrouprequest_phone" msgid="6240218310343431124">"ഫോൺ കോളുകൾ ചെയ്യാനും അവ മാനേജ് ചെയ്യാനും &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>
     <string name="permgrouprequest_sensors" msgid="1939578702884234985">"നിങ്ങളുടെ ജീവധാരണ ലക്ഷണങ്ങളെ കുറിച്ചുള്ള സെൻസർ ഡാറ്റ ആക്‌സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>
     <string name="auto_granted_permissions" msgid="5726065128917092357">"നിയന്ത്രിത അനുമതികൾ"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="6496820273286832200">"ലൊക്കേഷൻ ആക്‌സസ് ചെയ്യാൻ കഴിയും"</string>
     <string name="auto_granted_permission_notification_body" msgid="492268790630112781">"നിങ്ങളുടെ ലൊക്കേഷൻ ആക്‌സസ് ചെയ്യാൻ നിങ്ങളുടെ ഐടി അഡ്‌മിൻ <xliff:g id="APP_NAME">%s</xliff:g> എന്നതിനെ അനുവദിക്കുന്നു"</string>
-    <string name="fg_capabilities_sound_trigger" msgid="4937457992874270459">"ഈ ആപ്പിന് ശബ്‌ദം തിരിച്ചറിയേണ്ടതിനാൽ ചില ഓപ്‌ഷനുകൾ ലഭ്യമല്ല"</string>
-    <string name="fg_capabilities_assistant" msgid="6285681832588297471">"ഈ ആപ്പ് നിങ്ങളുടെ ഡിഫോൾട്ട് ഡിജിറ്റൽ അസിസ്‌റ്റന്റ് ആയതിനാൽ ചില ഓപ്ഷനുകൾ ലഭ്യമല്ല"</string>
-    <string name="fg_capabilities_voice_interaction" msgid="5211466473396010463">"വോയ്‌സ് ഇൻപുട്ടിന് ഈ ആപ്പ് ഉപയോഗിക്കുന്നതിനാൽ ചില ഓപ്‌ഷനുകൾ ലഭ്യമല്ല"</string>
-    <string name="fg_capabilities_carrier" msgid="4063467791736574406">"ഈ ആപ്പ് നിങ്ങളുടെ സേവനദാതാവ് മാനേജ് ചെയ്യുന്നതിനാൽ ചില ഓപ്‌ഷനുകൾ ലഭ്യമല്ല"</string>
 </resources>

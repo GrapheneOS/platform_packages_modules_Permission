@@ -344,12 +344,9 @@
     <string name="other_use" msgid="9076086164996623754">"사용 중인 다른 앱 및 시스템 서비스:"</string>
     <string name="ongoing_usage_dialog_ok" msgid="3007005536659549573">"확인"</string>
     <string name="ongoing_usage_dialog_title" msgid="6545358148523337174">"최근 <xliff:g id="TYPES_LIST">%s</xliff:g> 사용 앱"</string>
-    <!-- no translation found for ongoing_usage_dialog_title_mic (6894507213986512796) -->
-    <skip />
-    <!-- no translation found for ongoing_usage_dialog_title_camera (8144887777239572315) -->
-    <skip />
-    <!-- no translation found for ongoing_usage_dialog_title_mic_camera (4926106474407100024) -->
-    <skip />
+    <string name="ongoing_usage_dialog_title_mic" msgid="6894507213986512796">"마이크 최근 사용"</string>
+    <string name="ongoing_usage_dialog_title_camera" msgid="8144887777239572315">"카메라 최근 사용"</string>
+    <string name="ongoing_usage_dialog_title_mic_camera" msgid="4926106474407100024">"마이크 및 카메라 최근 사용"</string>
     <string name="ongoing_usage_dialog_separator" msgid="9008030412869423988">", "</string>
     <string name="ongoing_usage_dialog_last_separator" msgid="7455459775266515801">" 및 "</string>
     <string name="default_app_search_keyword" msgid="6938709626391437391">"기본 앱"</string>
@@ -400,16 +397,32 @@
     <string name="permgrouprequest_sms" msgid="2622312529683649944">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 SMS 메시지를 전송하고 보도록 허용하시겠습니까?"</string>
     <string name="permgrouprequest_storage" msgid="1092300826793175064">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 기기의 사진, 미디어, 파일에 액세스하도록 허용하시겠습니까?"</string>
     <string name="permgrouprequest_microphone" msgid="3490533265167914830">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 오디오를 녹음하도록 허용하시겠습니까?"</string>
+    <!-- no translation found for permgrouprequestdetail_microphone (1655297382086387437) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequest_microphone (455336315236630733) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequestdetail_microphone (6194915901304558005) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequest_microphone (8883808168545381176) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequestdetail_microphone (2438159401621407618) -->
+    <skip />
     <string name="permgrouprequest_activityRecognition" msgid="6217921552252496983">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 내 신체 활동 정보에 액세스하도록 허용하시겠습니까?"</string>
     <string name="permgrouprequest_camera" msgid="5379726026447957660">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 사진을 촬영하고 동영상을 녹화하도록 허용하시겠습니까?"</string>
+    <!-- no translation found for permgrouprequestdetail_camera (6623022572072206275) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequest_camera (8135690750774719094) -->
+    <skip />
+    <!-- no translation found for permgroupbackgroundrequestdetail_camera (7112569917025971735) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequest_camera (5482245762449780421) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequestdetail_camera (6537492326954748907) -->
+    <skip />
     <string name="permgrouprequest_calllog" msgid="8654341234544121138">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 통화 기록에 액세스하도록 허용하시겠습니까?"</string>
     <string name="permgrouprequest_phone" msgid="6240218310343431124">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 전화를 걸고 관리하도록 허용하시겠습니까?"</string>
     <string name="permgrouprequest_sensors" msgid="1939578702884234985">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 생체 신호에 관한 센서 데이터에 액세스하도록 허용하시겠습니까?"</string>
     <string name="auto_granted_permissions" msgid="5726065128917092357">"관리 대상 권한"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="6496820273286832200">"앱이 위치 정보에 액세스할 수 있음"</string>
     <string name="auto_granted_permission_notification_body" msgid="492268790630112781">"IT 관리자가 <xliff:g id="APP_NAME">%s</xliff:g>에서 내 위치 정보에 액세스하도록 허용합니다."</string>
-    <string name="fg_capabilities_sound_trigger" msgid="4937457992874270459">"소리 감지가 필요한 앱이므로 일부 옵션을 사용할 수 없습니다."</string>
-    <string name="fg_capabilities_assistant" msgid="6285681832588297471">"기본 디지털 어시스턴트 앱이므로 일부 옵션을 사용할 수 없습니다."</string>
-    <string name="fg_capabilities_voice_interaction" msgid="5211466473396010463">"음성 입력에 사용되는 앱이므로 일부 옵션을 사용할 수 없습니다."</string>
-    <string name="fg_capabilities_carrier" msgid="4063467791736574406">"이동통신사에서 관리하는 앱이므로 일부 옵션을 사용할 수 없습니다."</string>
 </resources>

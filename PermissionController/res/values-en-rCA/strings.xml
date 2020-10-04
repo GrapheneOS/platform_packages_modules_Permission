@@ -397,16 +397,22 @@
     <string name="permgrouprequest_sms" msgid="2622312529683649944">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to send and view SMS messages?"</string>
     <string name="permgrouprequest_storage" msgid="1092300826793175064">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access photos, media and files on your device?"</string>
     <string name="permgrouprequest_microphone" msgid="3490533265167914830">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to record audio?"</string>
+    <string name="permgrouprequestdetail_microphone" msgid="1655297382086387437">"The app will only be able to record audio while you’re using the app"</string>
+    <string name="permgroupbackgroundrequest_microphone" msgid="455336315236630733">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to record audio?"</string>
+    <string name="permgroupbackgroundrequestdetail_microphone" msgid="6194915901304558005">"This app may want to record audio all the time, even when you’re not using the app. "<annotation id="link">"Allow in settings."</annotation></string>
+    <string name="permgroupupgraderequest_microphone" msgid="8883808168545381176">"Change microphone access for &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <string name="permgroupupgraderequestdetail_microphone" msgid="2438159401621407618">"This app wants to record audio all the time, even when you’re not using the app. "<annotation id="link">"Allow in settings."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="6217921552252496983">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access your physical activity?"</string>
     <string name="permgrouprequest_camera" msgid="5379726026447957660">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to take pictures and record video?"</string>
+    <string name="permgrouprequestdetail_camera" msgid="6623022572072206275">"The app will only be able to take pictures and record video while you’re using the app"</string>
+    <string name="permgroupbackgroundrequest_camera" msgid="8135690750774719094">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to take pictures and record video?"</string>
+    <string name="permgroupbackgroundrequestdetail_camera" msgid="7112569917025971735">"This app may want to take pictures and record video all the time, even when you’re not using the app. "<annotation id="link">"Allow in settings."</annotation></string>
+    <string name="permgroupupgraderequest_camera" msgid="5482245762449780421">"Change camera access for &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <string name="permgroupupgraderequestdetail_camera" msgid="6537492326954748907">"This app wants to take pictures and record video all the time, even when you’re not using the app. "<annotation id="link">"Allow in settings."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="8654341234544121138">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access your phone call logs?"</string>
     <string name="permgrouprequest_phone" msgid="6240218310343431124">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to make and manage phone calls?"</string>
     <string name="permgrouprequest_sensors" msgid="1939578702884234985">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access sensor data about your vital signs?"</string>
     <string name="auto_granted_permissions" msgid="5726065128917092357">"Controlled permissions"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="6496820273286832200">"Location can be accessed"</string>
     <string name="auto_granted_permission_notification_body" msgid="492268790630112781">"Your IT admin is allowing <xliff:g id="APP_NAME">%s</xliff:g> to access your location"</string>
-    <string name="fg_capabilities_sound_trigger" msgid="4937457992874270459">"Some options aren’t available because this app needs to detect sound"</string>
-    <string name="fg_capabilities_assistant" msgid="6285681832588297471">"Some options aren’t available because this app is your default digital assistant"</string>
-    <string name="fg_capabilities_voice_interaction" msgid="5211466473396010463">"Some options aren’t available because this app is used for voice input"</string>
-    <string name="fg_capabilities_carrier" msgid="4063467791736574406">"Some options aren’t available because this app is managed by your operator"</string>
 </resources>
