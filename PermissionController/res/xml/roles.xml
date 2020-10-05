@@ -457,4 +457,21 @@
             <permission name="android.car.permission.CAR_ENERGY"/>
         </permissions>
     </role>
+
+    <role
+        name="android.app.role.SYSTEM_VIDEO_CALL"
+        defaultHolders="config_systemVideoCall"
+        exclusive="true"
+        systemOnly="true"
+        visible="false">
+        <permissions>
+            <permission-set name="camera" />
+            <permission-set name="microphone" />
+            <permission-set name="contacts" />
+            <permission name="android.permission.WRITE_CALL_LOG" />
+        </permissions>
+        <exempt-permissions>
+            <permission name="android.permission.READ_CALL_LOG" />
+        </exempt-permissions>
+    </role>
 </roles>
