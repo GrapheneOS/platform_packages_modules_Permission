@@ -195,4 +195,9 @@ public class Constants {
      * {@link com.android.permissioncontroller.permission.ui.AutoGrantPermissionsNotifier}.
      */
     public static final int PERMISSION_GRANTED_BY_ADMIN_NOTIFICATION_ID = 1;
+
+    /**
+     * Package name of the Android platform.
+     */
+    public static final String OS_PACKAGE_NAME = "android";
 }
