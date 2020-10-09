@@ -39,7 +39,7 @@ class PermGroupUsageLiveData(
     private val app: Application,
     private val permGroupsNames: List<String>,
     private val usageDurationMs: Long
-) : SmartUpdateMediatorLiveData<Map<String, Collection<OpAccess>>>() {
+) : SmartUpdateMediatorLiveData<Map<String, List<OpAccess>>>() {
     /** Perm group name -> OpUsageLiveData */
     private val permGroupUsages = permGroupsNames.map { permGroup ->
         val appops = getPlatformPermissionNamesOfGroup(permGroup).mapNotNull { permName ->
@@ -79,7 +79,7 @@ class PermGroupUsageLiveData(
                 }
             }
 
-            permGroupName to lastAccess.values
+            permGroupName to lastAccess.values.toList()
         }.toMap()
     }
 
