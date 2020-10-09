@@ -85,14 +85,21 @@ class OpUsageLiveData(
                         } else {
                             lastAccessTime
                         }
-                        accessList.add(OpAccess(packageOp.packageName, attributionTag, user,
-                                accessTime))
+                        val proxy = attributedOpEntry.getLastProxyInfo(OP_FLAGS_ALL_TRUSTED)
+                        var proxyAccess: OpAccess? = null
+                        if (proxy != null && proxy.packageName != null) {
+                            proxyAccess = OpAccess(proxy.packageName!!, proxy.attributionTag,
+                                UserHandle.getUserHandleForUid(proxy.uid), accessTime)
+                        }
+                        accessList.add(OpAccess(packageOp.packageName, attributionTag,
+                            user, accessTime, proxyAccess))
 
                         // TODO ntmyren: remove logs once b/160724034 is fixed
                         Log.i("OpUsageLiveData", "adding ${opEntry.opStr} for " +
                                 "${packageOp.packageName}/$attributionTag, access time of " +
                                 "$lastAccessTime, isRunning: ${attributedOpEntry.isRunning} " +
-                                "current time $now, duration $lastAccessDuration")
+                                "current time $now, duration $lastAccessDuration, proxy: " +
+                                "${proxy?.packageName}")
                     } else {
                         Log.i("OpUsageLiveData", "NOT adding ${opEntry.opStr} for " +
                                 "${packageOp.packageName}/$attributionTag, access time of " +
@@ -149,9 +156,10 @@ data class OpAccess(
     val packageName: String,
     val attributionTag: String?,
     val user: UserHandle,
-    val lastAccessTime: Long
+    val lastAccessTime: Long,
+    val proxyAccess: OpAccess? = null
 ) : Parcelable {
-    fun isRunning() = lastAccessTime == IS_RUNNING
+    val isRunning = lastAccessTime == IS_RUNNING
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(packageName)
