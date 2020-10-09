@@ -820,8 +820,8 @@ class GrantPermissionsViewModel(
      * otherwise.
      */
     fun shouldReturnPermissionState(): Boolean {
-        return if (packageInfoLiveData.isInitialized) {
-            packageInfo.targetSdkVersion >= Build.VERSION_CODES.M
+        return if (packageInfoLiveData.value != null) {
+            packageInfoLiveData.value!!.targetSdkVersion >= Build.VERSION_CODES.M
         } else {
             // Should not be reached, as this method shouldn't be called before data is passed to
             // the activity for the first time
