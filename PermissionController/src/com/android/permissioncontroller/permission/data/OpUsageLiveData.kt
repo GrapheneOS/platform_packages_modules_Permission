@@ -166,6 +166,9 @@ data class OpAccess(
         parcel.writeString(attributionTag)
         parcel.writeParcelable(user, flags)
         parcel.writeLong(lastAccessTime)
+        parcel.writeString(proxyAccess?.packageName)
+        parcel.writeString(proxyAccess?.attributionTag)
+        parcel.writeParcelable(proxyAccess?.user, flags)
     }
 
     override fun describeContents(): Int {
@@ -178,10 +181,19 @@ data class OpAccess(
         @JvmField
         val CREATOR = object : Parcelable.Creator<OpAccess> {
             override fun createFromParcel(parcel: Parcel): OpAccess {
-                return OpAccess(parcel.readString()!!,
+                val packageName = parcel.readString()!!
+                val attributionTag = parcel.readString()
+                val user: UserHandle = parcel.readParcelable(UserHandle::class.java.classLoader)!!
+                val lastAccessTime = parcel.readLong()
+                var proxyAccess: OpAccess? = null
+                val proxyPackageName = parcel.readString()
+                if (proxyPackageName != null) {
+                    proxyAccess = OpAccess(proxyPackageName,
                         parcel.readString(),
                         parcel.readParcelable(UserHandle::class.java.classLoader)!!,
-                        parcel.readLong())
+                        lastAccessTime)
+                }
+                return OpAccess(packageName, attributionTag, user, lastAccessTime, proxyAccess)
             }
 
             override fun newArray(size: Int): Array<OpAccess?> {
