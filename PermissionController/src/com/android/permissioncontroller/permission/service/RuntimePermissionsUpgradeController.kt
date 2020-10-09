@@ -131,7 +131,7 @@ internal object RuntimePermissionsUpgradeController {
 
         val needBackgroundAppPermGroups = sdkUpgradedFromP && currentVersion <= 6
         val needAccessMediaAppPermGroups = !isNewUser && currentVersion <= 7
-        val needBackgroundMicAppPermGroups = currentVersion <= 8
+        val needBackgroundMicAppPermGroupsForAssistant = !isNewUser && currentVersion <= 8
 
         // All data needed by this method.
         //
@@ -198,24 +198,27 @@ internal object RuntimePermissionsUpgradeController {
                     }
                 }
 
-                addSource(assistants) { assists ->
-                    if (assists != null) {
-                        removeSource(assistants)
+                if (needBackgroundMicAppPermGroupsForAssistant) {
+                    addSource(assistants) { assists ->
+                        if (assists != null) {
+                            removeSource(assistants)
 
-                        update()
+                            update()
+                        }
                     }
                 }
             }
 
             override fun onUpdate() {
-                if (permGroupProviders == null && pkgInfoProvider.value != null) {
+                if (permGroupProviders == null && pkgInfoProvider.value != null &&
+                        (!needBackgroundMicAppPermGroupsForAssistant || assistants.value != null)) {
                     // Second step: Trigger load of app-perm-groups
 
                     permGroupProviders = mutableListOf()
 
                     // Only load app-perm-groups needed for this upgrade
                     if (needBackgroundAppPermGroups || needAccessMediaAppPermGroups ||
-                            needBackgroundMicAppPermGroups) {
+                            needBackgroundMicAppPermGroupsForAssistant) {
                         for ((pkgName, _, requestedPerms, requestedPermFlags) in
                                 pkgInfoProvider.value!!) {
                             var hasAccessMedia = false
@@ -240,8 +243,9 @@ internal object RuntimePermissionsUpgradeController {
                                     }
                                 }
 
-                                if (needBackgroundMicAppPermGroups &&
-                                        perm == permission.RECORD_BACKGROUND_AUDIO) {
+                                if (needBackgroundMicAppPermGroupsForAssistant &&
+                                        perm == permission.RECORD_BACKGROUND_AUDIO &&
+                                        assistants.value!!.contains(pkgName)) {
                                     permGroupProviders!!.add(LightAppPermGroupLiveData[pkgName,
                                             permission_group.MICROPHONE, myUserHandle()])
                                 }
@@ -274,8 +278,7 @@ internal object RuntimePermissionsUpgradeController {
                         permGroupProvidersDone.size == permGroupProviders!!.size &&
                         preinstalledPkgInfoProvider.value != null &&
                         platformRuntimePermissionInfoProviders.size
-                        == platformRuntimePermissionInfoProvidersDone.size &&
-                        assistants.value != null) {
+                        == platformRuntimePermissionInfoProvidersDone.size) {
                     // Third step: All packages, perm infos and perm groups are loaded, set value
 
                     val bgGroups = mutableListOf<LightAppPermGroup>()
@@ -291,9 +294,7 @@ internal object RuntimePermissionsUpgradeController {
                                 storageGroups.add(group)
                             }
                             permission_group.MICROPHONE -> {
-                                if (assistants.value!!.contains(group.packageName)) {
-                                    bgMicGroups.add(group)
-                                }
+                                bgMicGroups.add(group)
                             }
                         }
                     }

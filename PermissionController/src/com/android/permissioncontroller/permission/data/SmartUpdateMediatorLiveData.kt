@@ -106,7 +106,7 @@ abstract class SmartUpdateMediatorLiveData<T>(private val isStaticVal: Boolean =
     @MainThread
     protected abstract fun onUpdate()
 
-    override var timeWentInactive: Long? = null
+    override var timeWentInactive: Long? = System.nanoTime()
 
     /**
      * Some LiveDatas have types, like Drawables which do not have a non-default equals method.
