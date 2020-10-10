@@ -397,28 +397,18 @@
     <string name="permgrouprequest_sms" msgid="2622312529683649944">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; saata ja vaadata SMS-sõnumeid?"</string>
     <string name="permgrouprequest_storage" msgid="1092300826793175064">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; juurdepääs seadmes olevatele fotodele, meediale ja failidele?"</string>
     <string name="permgrouprequest_microphone" msgid="3490533265167914830">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; salvestada heli?"</string>
-    <!-- no translation found for permgrouprequestdetail_microphone (1655297382086387437) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequest_microphone (455336315236630733) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequestdetail_microphone (6194915901304558005) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequest_microphone (8883808168545381176) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequestdetail_microphone (2438159401621407618) -->
-    <skip />
+    <string name="permgrouprequestdetail_microphone" msgid="1655297382086387437">"Rakendus saab heli salvestada vaid siis, kui rakendust kasutate"</string>
+    <string name="permgroupbackgroundrequest_microphone" msgid="455336315236630733">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; heli salvestada?"</string>
+    <string name="permgroupbackgroundrequestdetail_microphone" msgid="6194915901304558005">"See rakendus võib soovida heli salvestada mis tahes ajal (ka siis, kui te rakendust ei kasuta). "<annotation id="link">"Lubage see seadetes."</annotation></string>
+    <string name="permgroupupgraderequest_microphone" msgid="8883808168545381176">"Kas muuta rakenduse &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; puhul juurdepääsu mikrofonile?"</string>
+    <string name="permgroupupgraderequestdetail_microphone" msgid="2438159401621407618">"See rakendus soovib heli salvestada mis tahes ajal (ka siis, kui te rakendust ei kasuta). "<annotation id="link">"Lubage see seadetes."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="6217921552252496983">"Kas anda rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; juurdepääs teie füüsilisele tegevusele?"</string>
     <string name="permgrouprequest_camera" msgid="5379726026447957660">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; jäädvustada pilte ja salvestada videoid?"</string>
-    <!-- no translation found for permgrouprequestdetail_camera (6623022572072206275) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequest_camera (8135690750774719094) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequestdetail_camera (7112569917025971735) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequest_camera (5482245762449780421) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequestdetail_camera (6537492326954748907) -->
-    <skip />
+    <string name="permgrouprequestdetail_camera" msgid="6623022572072206275">"Rakendus saab pildistada ja videoid salvestada vaid siis, kui rakendust kasutate"</string>
+    <string name="permgroupbackgroundrequest_camera" msgid="8135690750774719094">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pildistada ja videoid salvestada?"</string>
+    <string name="permgroupbackgroundrequestdetail_camera" msgid="7112569917025971735">"See rakendus võib soovida pildistada ja videoid salvestada mis tahes ajal (ka siis, kui te rakendust ei kasuta). "<annotation id="link">"Lubage see seadetes."</annotation></string>
+    <string name="permgroupupgraderequest_camera" msgid="5482245762449780421">"Kas muuta rakenduse &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; puhul juurdepääsu kaamerale?"</string>
+    <string name="permgroupupgraderequestdetail_camera" msgid="6537492326954748907">"See rakendus soovib pildistada ja videoid salvestada mis tahes ajal (ka siis, kui te rakendust ei kasuta). "<annotation id="link">"Lubage see seadetes."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="8654341234544121138">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pääseda juurde teie telefoni kõnelogidele?"</string>
     <string name="permgrouprequest_phone" msgid="6240218310343431124">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; teha ja hallata telefonikõnesid?"</string>
     <string name="permgrouprequest_sensors" msgid="1939578702884234985">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; juurdepääs anduri andmetele teie eluliste näitajate kohta?"</string>

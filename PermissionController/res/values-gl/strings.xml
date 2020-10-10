@@ -293,10 +293,10 @@
     <string name="role_assistant_description" msgid="8677846995018695304">"As aplicacións de asistencia pódente axudar en función da información que apareza na pantalla en cada momento. Algunhas aplicacións son compatibles tanto cos servizos de entrada de voz como co launcher para proporcionarche unha asistencia integrada."</string>
     <string name="role_assistant_request_title" msgid="1838385568238889604">"Queres definir <xliff:g id="APP_NAME">%1$s</xliff:g> como a túa aplicación predeterminada de asistencia?"</string>
     <string name="role_assistant_request_description" msgid="1086168907357494789">"Recibe acceso ás SMS e ao rexistro de chamadas"</string>
-    <string name="role_browser_label" msgid="814240075813716311">"App de navegación predetermin."</string>
+    <string name="role_browser_label" msgid="814240075813716311">"Aplicación de navegador predeterminada"</string>
     <string name="role_browser_short_label" msgid="6222206565850006894">"Aplicación de navegador"</string>
     <string name="role_browser_description" msgid="2326990202516329438">"Aplicacións que che permiten acceder a Internet e abrir as ligazóns que tocas"</string>
-    <string name="role_browser_request_title" msgid="751745081301397114">"Queres definir <xliff:g id="APP_NAME">%1$s</xliff:g> como a túa aplicación predeterminada de navegación?"</string>
+    <string name="role_browser_request_title" msgid="751745081301397114">"Queres definir <xliff:g id="APP_NAME">%1$s</xliff:g> como a túa aplicación de navegador predeterminada?"</string>
     <string name="role_browser_request_description" msgid="3204873553391043604">"Non se necesita ningún permiso"</string>
     <string name="role_dialer_label" msgid="7920168918746178929">"App de teléfono predeterminada"</string>
     <string name="role_dialer_short_label" msgid="2980581587550675305">"Aplicación de teléfono"</string>
@@ -397,28 +397,18 @@
     <string name="permgrouprequest_sms" msgid="2622312529683649944">"Queres permitir que a aplicación &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; envíe e vexa mensaxes SMS?"</string>
     <string name="permgrouprequest_storage" msgid="1092300826793175064">"Queres permitir que a aplicación &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a fotos, contido multimedia e ficheiros no teu dispositivo?"</string>
     <string name="permgrouprequest_microphone" msgid="3490533265167914830">"Permitir que a aplicación &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; grave audio?"</string>
-    <!-- no translation found for permgrouprequestdetail_microphone (1655297382086387437) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequest_microphone (455336315236630733) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequestdetail_microphone (6194915901304558005) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequest_microphone (8883808168545381176) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequestdetail_microphone (2438159401621407618) -->
-    <skip />
+    <string name="permgrouprequestdetail_microphone" msgid="1655297382086387437">"Esta aplicación só poderá gravar audio cando a esteas utilizando"</string>
+    <string name="permgroupbackgroundrequest_microphone" msgid="455336315236630733">"Queres permitir que a aplicación &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; grave audio?"</string>
+    <string name="permgroupbackgroundrequestdetail_microphone" msgid="6194915901304558005">"Pode que esta aplicación queira gravar audio todo o tempo, incluso cando non a esteas utilizando. "<annotation id="link">"Permitir en Configuración."</annotation></string>
+    <string name="permgroupupgraderequest_microphone" msgid="8883808168545381176">"Queres cambiar o acceso da aplicación &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ao micrófono?"</string>
+    <string name="permgroupupgraderequestdetail_microphone" msgid="2438159401621407618">"Esta aplicación quere gravar audio todo o tempo, incluso cando non a esteas utilizando. "<annotation id="link">"Permitir en Configuración."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="6217921552252496983">"Queres permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda á túa actividade física?"</string>
     <string name="permgrouprequest_camera" msgid="5379726026447957660">"Queres permitir que a aplicación &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; realice fotos e grave vídeos?"</string>
-    <!-- no translation found for permgrouprequestdetail_camera (6623022572072206275) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequest_camera (8135690750774719094) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequestdetail_camera (7112569917025971735) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequest_camera (5482245762449780421) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequestdetail_camera (6537492326954748907) -->
-    <skip />
+    <string name="permgrouprequestdetail_camera" msgid="6623022572072206275">"Esta aplicación só poderá sacar fotos e gravar vídeos cando a esteas utilizando"</string>
+    <string name="permgroupbackgroundrequest_camera" msgid="8135690750774719094">"Queres permitir que a aplicación &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; saque fotos e grave vídeos?"</string>
+    <string name="permgroupbackgroundrequestdetail_camera" msgid="7112569917025971735">"Pode que esta aplicación queira sacar fotos e gravar vídeos todo o tempo, incluso cando non a esteas utilizando. "<annotation id="link">"Permitir en Configuración."</annotation></string>
+    <string name="permgroupupgraderequest_camera" msgid="5482245762449780421">"Queres cambiar o acceso da aplicación &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; á cámara?"</string>
+    <string name="permgroupupgraderequestdetail_camera" msgid="6537492326954748907">"Esta aplicación quere sacar fotos e gravar vídeos todo o tempo, incluso cando non a esteas utilizando. "<annotation id="link">"Permitir en Configuración."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="8654341234544121138">"Queres permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda aos rexistros de chamadas do teléfono?"</string>
     <string name="permgrouprequest_phone" msgid="6240218310343431124">"Queres permitir que a aplicación &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; realice e xestione chamadas telefónicas?"</string>
     <string name="permgrouprequest_sensors" msgid="1939578702884234985">"Queres permitir que a aplicación &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda aos datos dos sensores sobre as túas constantes vitais?"</string>
