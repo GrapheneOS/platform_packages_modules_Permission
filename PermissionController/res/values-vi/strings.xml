@@ -397,28 +397,18 @@
     <string name="permgrouprequest_sms" msgid="2622312529683649944">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; gửi và xem tin nhắn SMS?"</string>
     <string name="permgrouprequest_storage" msgid="1092300826793175064">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào ảnh, nội dung nghe nhìn và tệp trên thiết bị của bạn?"</string>
     <string name="permgrouprequest_microphone" msgid="3490533265167914830">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ghi âm?"</string>
-    <!-- no translation found for permgrouprequestdetail_microphone (1655297382086387437) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequest_microphone (455336315236630733) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequestdetail_microphone (6194915901304558005) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequest_microphone (8883808168545381176) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequestdetail_microphone (2438159401621407618) -->
-    <skip />
+    <string name="permgrouprequestdetail_microphone" msgid="1655297382086387437">"Ứng dụng này chỉ có thể ghi âm khi bạn đang dùng ứng dụng"</string>
+    <string name="permgroupbackgroundrequest_microphone" msgid="455336315236630733">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ghi âm?"</string>
+    <string name="permgroupbackgroundrequestdetail_microphone" msgid="6194915901304558005">"Ứng dụng này có thể muốn ghi âm mọi lúc, ngay cả khi bạn không dùng ứng dụng. "<annotation id="link">"Cho phép trong phần cài đặt."</annotation></string>
+    <string name="permgroupupgraderequest_microphone" msgid="8883808168545381176">"Thay đổi quyền sử dụng micrô của &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <string name="permgroupupgraderequestdetail_microphone" msgid="2438159401621407618">"Ứng dụng này muốn ghi âm mọi lúc, ngay cả khi bạn không dùng ứng dụng. "<annotation id="link">"Cho phép trong phần cài đặt."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="6217921552252496983">"Bạn cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào hoạt động thể chất?"</string>
     <string name="permgrouprequest_camera" msgid="5379726026447957660">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; chụp ảnh và quay video?"</string>
-    <!-- no translation found for permgrouprequestdetail_camera (6623022572072206275) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequest_camera (8135690750774719094) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequestdetail_camera (7112569917025971735) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequest_camera (5482245762449780421) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequestdetail_camera (6537492326954748907) -->
-    <skip />
+    <string name="permgrouprequestdetail_camera" msgid="6623022572072206275">"Ứng dụng này chỉ có thể chụp ảnh và quay video khi bạn đang dùng ứng dụng"</string>
+    <string name="permgroupbackgroundrequest_camera" msgid="8135690750774719094">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; chụp ảnh và quay video?"</string>
+    <string name="permgroupbackgroundrequestdetail_camera" msgid="7112569917025971735">"Ứng dụng này có thể muốn chụp ảnh và quay video mọi lúc, ngay cả khi bạn không dùng ứng dụng. "<annotation id="link">"Cho phép trong phần cài đặt."</annotation></string>
+    <string name="permgroupupgraderequest_camera" msgid="5482245762449780421">"Thay đổi quyền sử dụng máy ảnh của &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <string name="permgroupupgraderequestdetail_camera" msgid="6537492326954748907">"Ứng dụng này muốn chụp ảnh và quay video mọi lúc, ngay cả khi bạn không dùng ứng dụng. "<annotation id="link">"Cho phép trong phần cài đặt."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="8654341234544121138">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào nhật ký cuộc gọi điện thoại của bạn?"</string>
     <string name="permgrouprequest_phone" msgid="6240218310343431124">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; thực hiện và quản lý cuộc gọi điện thoại?"</string>
     <string name="permgrouprequest_sensors" msgid="1939578702884234985">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào dữ liệu cảm biến về các dấu hiệu sinh tồn của bạn?"</string>

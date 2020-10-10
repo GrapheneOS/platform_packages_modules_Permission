@@ -397,28 +397,18 @@
     <string name="permgrouprequest_sms" msgid="2622312529683649944">"ອະນຸຍາດ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ໃຫ້ສົ່ງ ແລະ ອ່ານຂໍ້ຄວາມ SMS ບໍ?"</string>
     <string name="permgrouprequest_storage" msgid="1092300826793175064">"ອະນຸຍາດ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ໃຫ້ເຂົ້າເຖິງຮູບພາບ, ມີເດຍ ແລະ ໄຟລ໌ຢູ່ອຸປະກອນຂອງທ່ານບໍ?"</string>
     <string name="permgrouprequest_microphone" msgid="3490533265167914830">"ອະນຸຍາດ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ໃຫ້ບັນທຶກສຽງບໍ?"</string>
-    <!-- no translation found for permgrouprequestdetail_microphone (1655297382086387437) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequest_microphone (455336315236630733) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequestdetail_microphone (6194915901304558005) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequest_microphone (8883808168545381176) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequestdetail_microphone (2438159401621407618) -->
-    <skip />
+    <string name="permgrouprequestdetail_microphone" msgid="1655297382086387437">"ແອັບນີ້ສາມາດບັນທຶກສຽງໃນຂະນະທີ່ທ່ານກຳລັງໃຊ້ແອັບເທົ່ານັ້ນ"</string>
+    <string name="permgroupbackgroundrequest_microphone" msgid="455336315236630733">"ອະນຸຍາດ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ໃຫ້ບັນທຶກສຽງບໍ?"</string>
+    <string name="permgroupbackgroundrequestdetail_microphone" msgid="6194915901304558005">"ແອັບນີ້ອາດຕ້ອງການບັນທຶກສຽງຕະຫຼອດເວລາ, ເຖິງແມ່ນວ່າທ່ານຈະບໍ່ໄດ້ໃຊ້ແອັບຢູ່ກໍຕາມ. "<annotation id="link">"ອະນຸຍາດໃນການຕັ້ງຄ່າ."</annotation></string>
+    <string name="permgroupupgraderequest_microphone" msgid="8883808168545381176">"ປ່ຽນສິດເຂົ້າເຖິງໄມໂຄຣໂຟນສຳລັບ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ບໍ?"</string>
+    <string name="permgroupupgraderequestdetail_microphone" msgid="2438159401621407618">"ແອັບນີ້ຕ້ອງການບັນທຶກສຽງຕະຫຼອດເວລາ, ເຖິງແມ່ນວ່າທ່ານຈະບໍ່ໄດ້ໃຊ້ແອັບຢູ່ກໍຕາມ. "<annotation id="link">"ອະນຸຍາດໃນການຕັ້ງຄ່າ."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="6217921552252496983">"ອະນຸຍາດໃຫ້ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ເຂົ້າເຖິງກິດຈະກຳທາງກາຍະພາບຂອງທ່ານບໍ?"</string>
     <string name="permgrouprequest_camera" msgid="5379726026447957660">"ອະນຸຍາດ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ໃຫ້ຖ່າຍຮູບ ແລະ ບັນທຶກວິດີໂອບໍ?"</string>
-    <!-- no translation found for permgrouprequestdetail_camera (6623022572072206275) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequest_camera (8135690750774719094) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequestdetail_camera (7112569917025971735) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequest_camera (5482245762449780421) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequestdetail_camera (6537492326954748907) -->
-    <skip />
+    <string name="permgrouprequestdetail_camera" msgid="6623022572072206275">"ແອັບຈະສາມາດຖ່າຍຮູບ ແລະ ບັນທຶກວິດີໂອໄດ້ສະເພາະໃນເວລາທີ່ທ່ານກຳລັງໃຊ້ແອັບເທົ່ານັ້ນ"</string>
+    <string name="permgroupbackgroundrequest_camera" msgid="8135690750774719094">"ອະນຸຍາດ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ໃຫ້ຖ່າຍຮູບ ແລະ ບັນທຶກວິດີໂອບໍ?"</string>
+    <string name="permgroupbackgroundrequestdetail_camera" msgid="7112569917025971735">"ແອັບນີ້ອາດຕ້ອງການຖ່າຍຮູບ ແລະ ບັນທຶກວິດີໂອຕະຫຼອດເວລາ, ເຖິງແມ່ນວ່າທ່ານຈະບໍ່ໄດ້ໃຊ້ແອັບຢູ່ກໍຕາມ. "<annotation id="link">"ອະນຸຍາດໃນການຕັ້ງຄ່າ."</annotation></string>
+    <string name="permgroupupgraderequest_camera" msgid="5482245762449780421">"ປ່ຽນສິດເຂົ້າເຖິງກ້ອງສຳລັບ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ບໍ?"</string>
+    <string name="permgroupupgraderequestdetail_camera" msgid="6537492326954748907">"ແອັບອາດຕ້ອງການຖ່າຍຮູບ ແລະ ບັນທຶກວິດີໂອຕະຫຼອດເວລາ, ເຖິງແມ່ນວ່າທ່ານຈະບໍ່ໄດ້ໃຊ້ແອັບຢູ່ກໍຕາມ. "<annotation id="link">"ອະນຸຍາດໃນການຕັ້ງຄ່າ."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="8654341234544121138">"ອະນຸຍາດໃຫ້ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ເຂົ້າເຖິງບັນທຶກການໂທທັງໝົດຂອງທ່ານໄດ້ບໍ?"</string>
     <string name="permgrouprequest_phone" msgid="6240218310343431124">"ອະນຸຍາດ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ໃຫ້ໂທ ແລະ ຈັດການການໂທບໍ?"</string>
     <string name="permgrouprequest_sensors" msgid="1939578702884234985">"ອະນຸຍາດ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ໃຫ້ເຂົ້າເຖິງຂໍ້ມູນເຊັນເຊີກ່ຽວກັບສັນຍານຊີບຂອງທ່ານບໍ?"</string>

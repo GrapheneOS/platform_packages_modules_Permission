@@ -397,28 +397,18 @@
     <string name="permgrouprequest_sms" msgid="2622312529683649944">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; enviï i llegeixi missatges SMS?"</string>
     <string name="permgrouprequest_storage" msgid="1092300826793175064">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi a fotos, contingut multimèdia i fitxers del dispositiu?"</string>
     <string name="permgrouprequest_microphone" msgid="3490533265167914830">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; gravi àudio?"</string>
-    <!-- no translation found for permgrouprequestdetail_microphone (1655297382086387437) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequest_microphone (455336315236630733) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequestdetail_microphone (6194915901304558005) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequest_microphone (8883808168545381176) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequestdetail_microphone (2438159401621407618) -->
-    <skip />
+    <string name="permgrouprequestdetail_microphone" msgid="1655297382086387437">"L\'aplicació només podrà gravar àudio mentre l\'estiguis utilitzant"</string>
+    <string name="permgroupbackgroundrequest_microphone" msgid="455336315236630733">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; gravi àudio?"</string>
+    <string name="permgroupbackgroundrequestdetail_microphone" msgid="6194915901304558005">"És possible que aquesta aplicació vulgui gravar àudio sempre, fins i tot quan no l\'estiguis utilitzant. "<annotation id="link">"Pots permetre-ho a la configuració"</annotation>"."</string>
+    <string name="permgroupupgraderequest_microphone" msgid="8883808168545381176">"Vols canviar l\'accés al micròfon de l\'aplicació &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <string name="permgroupupgraderequestdetail_microphone" msgid="2438159401621407618">"Aquesta aplicació vol gravar àudio sempre, fins i tot quan no l\'estiguis utilitzant. "<annotation id="link">"Pots permetre-ho a la configuració"</annotation>"."</string>
     <string name="permgrouprequest_activityRecognition" msgid="6217921552252496983">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi a la teva activitat física?"</string>
     <string name="permgrouprequest_camera" msgid="5379726026447957660">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; faci fotos i gravi vídeos?"</string>
-    <!-- no translation found for permgrouprequestdetail_camera (6623022572072206275) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequest_camera (8135690750774719094) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequestdetail_camera (7112569917025971735) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequest_camera (5482245762449780421) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequestdetail_camera (6537492326954748907) -->
-    <skip />
+    <string name="permgrouprequestdetail_camera" msgid="6623022572072206275">"L\'aplicació només podrà fer fotos i gravar vídeos mentre l\'estiguis utilitzant"</string>
+    <string name="permgroupbackgroundrequest_camera" msgid="8135690750774719094">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; faci fotos i gravi vídeos?"</string>
+    <string name="permgroupbackgroundrequestdetail_camera" msgid="7112569917025971735">"És possible que aquesta app vulgui fer fotos i gravar vídeos sempre, fins i tot quan no l\'estiguis utilitzant. "<annotation id="link">"Pots permetre-ho a la configuració"</annotation>"."</string>
+    <string name="permgroupupgraderequest_camera" msgid="5482245762449780421">"Vols canviar l\'accés a la càmera de l\'aplicació &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <string name="permgroupupgraderequestdetail_camera" msgid="6537492326954748907">"Aquesta aplicació vol fer fotos i gravar vídeos sempre, fins i tot quan no l\'estiguis utilitzant. "<annotation id="link">"Pots permetre-ho a la configuració"</annotation>"."</string>
     <string name="permgrouprequest_calllog" msgid="8654341234544121138">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi als registres de trucades del telèfon?"</string>
     <string name="permgrouprequest_phone" msgid="6240218310343431124">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; faci trucades i les gestioni?"</string>
     <string name="permgrouprequest_sensors" msgid="1939578702884234985">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi a les dades del sensor de constants vitals?"</string>

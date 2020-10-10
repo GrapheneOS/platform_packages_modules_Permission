@@ -397,28 +397,18 @@
     <string name="permgrouprequest_sms" msgid="2622312529683649944">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η αποστολή και η προβολή μηνυμάτων SMS;"</string>
     <string name="permgrouprequest_storage" msgid="1092300826793175064">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να έχει πρόσβαση σε φωτογραφίες, μέσα και αρχεία στη συσκευή σας;"</string>
     <string name="permgrouprequest_microphone" msgid="3490533265167914830">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η εγγραφή ήχου;"</string>
-    <!-- no translation found for permgrouprequestdetail_microphone (1655297382086387437) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequest_microphone (455336315236630733) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequestdetail_microphone (6194915901304558005) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequest_microphone (8883808168545381176) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequestdetail_microphone (2438159401621407618) -->
-    <skip />
+    <string name="permgrouprequestdetail_microphone" msgid="1655297382086387437">"Αυτή η εφαρμογή θα μπορεί να εγγράφει ήχο μόνο όταν τη χρησιμοποιείτε"</string>
+    <string name="permgroupbackgroundrequest_microphone" msgid="455336315236630733">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η εγγραφή ήχου;"</string>
+    <string name="permgroupbackgroundrequestdetail_microphone" msgid="6194915901304558005">"Αυτή η εφαρμογή ενδέχεται να εγγράφει βίντεο συνεχώς, ακόμη και όταν δεν τη χρησιμοποιείτε. "<annotation id="link">"Έγκριση στις ρυθμίσεις."</annotation></string>
+    <string name="permgroupupgraderequest_microphone" msgid="8883808168545381176">"Αλλαγή πρόσβασης στο μικρόφωνο για την εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;;"</string>
+    <string name="permgroupupgraderequestdetail_microphone" msgid="2438159401621407618">"Αυτή η εφαρμογή θέλει να εγγράφει ήχο συνεχώς, ακόμη και όταν δεν τη χρησιμοποιείται. "<annotation id="link">"Έγκριση στις ρυθμίσεις."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="6217921552252496983">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να έχει πρόσβαση στη σωματική σας δραστηριότητα;"</string>
     <string name="permgrouprequest_camera" msgid="5379726026447957660">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η λήψη φωτογραφιών και η εγγραφή βίντεο;"</string>
-    <!-- no translation found for permgrouprequestdetail_camera (6623022572072206275) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequest_camera (8135690750774719094) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequestdetail_camera (7112569917025971735) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequest_camera (5482245762449780421) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequestdetail_camera (6537492326954748907) -->
-    <skip />
+    <string name="permgrouprequestdetail_camera" msgid="6623022572072206275">"Αυτή η εφαρμογή θα μπορεί να τραβάει φωτογραφίες και να εγγράφει βίντεο μόνο όταν τη χρησιμοποιείτε"</string>
+    <string name="permgroupbackgroundrequest_camera" msgid="8135690750774719094">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η λήψη φωτογραφιών και η εγγραφή βίντεο;"</string>
+    <string name="permgroupbackgroundrequestdetail_camera" msgid="7112569917025971735">"Αυτή η εφαρμογή ενδέχεται να τραβάει φωτογραφίες και να εγγράφει βίντεο συνεχώς, ακόμη και όταν δεν τη χρησιμοποιείτε. "<annotation id="link">"Έγκριση στις Ρυθμίσεις."</annotation></string>
+    <string name="permgroupupgraderequest_camera" msgid="5482245762449780421">"Αλλαγή πρόσβασης στην κάμερα για την εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;;"</string>
+    <string name="permgroupupgraderequestdetail_camera" msgid="6537492326954748907">"Αυτή η εφαρμογή θέλει να τραβάει φωτογραφίες και να εγγράφει βίντεο συνεχώς, ακόμη και όταν δεν τη χρησιμοποιείται. "<annotation id="link">"Έγκριση στις Ρυθμίσεις."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="8654341234544121138">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να έχει πρόσβαση στα αρχεία καταγραφής τηλεφωνικών κλήσεών σας;"</string>
     <string name="permgrouprequest_phone" msgid="6240218310343431124">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πραγματοποίηση και η διαχείριση τηλεφωνικών κλήσεων;"</string>
     <string name="permgrouprequest_sensors" msgid="1939578702884234985">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να έχει πρόσβαση στα δεδομένα αισθητήρα σχετικά με τις ζωτικές ενδείξεις σας;"</string>

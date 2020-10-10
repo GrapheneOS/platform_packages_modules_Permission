@@ -397,28 +397,18 @@
     <string name="permgrouprequest_sms" msgid="2622312529683649944">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di inviare e visualizzare SMS?"</string>
     <string name="permgrouprequest_storage" msgid="1092300826793175064">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere a foto, contenuti multimediali e file memorizzati sul dispositivo?"</string>
     <string name="permgrouprequest_microphone" msgid="3490533265167914830">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di registrare audio?"</string>
-    <!-- no translation found for permgrouprequestdetail_microphone (1655297382086387437) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequest_microphone (455336315236630733) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequestdetail_microphone (6194915901304558005) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequest_microphone (8883808168545381176) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequestdetail_microphone (2438159401621407618) -->
-    <skip />
+    <string name="permgrouprequestdetail_microphone" msgid="1655297382086387437">"L\'app potrà registrare audio soltanto quando la usi"</string>
+    <string name="permgroupbackgroundrequest_microphone" msgid="455336315236630733">"Vuoi consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di registrare audio?"</string>
+    <string name="permgroupbackgroundrequestdetail_microphone" msgid="6194915901304558005">"Questa app potrebbe voler registrare sempre audio, anche quando non la usi. "<annotation id="link">"Consenti l\'accesso nelle impostazioni."</annotation></string>
+    <string name="permgroupupgraderequest_microphone" msgid="8883808168545381176">"Vuoi cambiare l\'accesso al microfono per l\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <string name="permgroupupgraderequestdetail_microphone" msgid="2438159401621407618">"Questa app vorrebbe registrare sempre audio, anche quando non la usi. "<annotation id="link">"Consenti l\'accesso nelle impostazioni."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="6217921552252496983">"Consentire a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere alla tua attività fisica?"</string>
     <string name="permgrouprequest_camera" msgid="5379726026447957660">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di scattare foto e registrare video?"</string>
-    <!-- no translation found for permgrouprequestdetail_camera (6623022572072206275) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequest_camera (8135690750774719094) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequestdetail_camera (7112569917025971735) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequest_camera (5482245762449780421) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequestdetail_camera (6537492326954748907) -->
-    <skip />
+    <string name="permgrouprequestdetail_camera" msgid="6623022572072206275">"L\'app potrà scattare foto e registrare video soltanto quando la usi"</string>
+    <string name="permgroupbackgroundrequest_camera" msgid="8135690750774719094">"Vuoi consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di scattare foto e registrare video?"</string>
+    <string name="permgroupbackgroundrequestdetail_camera" msgid="7112569917025971735">"Questa app potrebbe voler scattare foto e registrare video sempre, anche quando non la usi. "<annotation id="link">"Consenti l\'accesso nelle impostazioni."</annotation></string>
+    <string name="permgroupupgraderequest_camera" msgid="5482245762449780421">"Vuoi cambiare l\'accesso alla fotocamera per l\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <string name="permgroupupgraderequestdetail_camera" msgid="6537492326954748907">"Questa app vorrebbe scattare foto e registrare video sempre, anche quando non la usi. "<annotation id="link">"Consenti l\'accesso nelle impostazioni."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="8654341234544121138">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere ai registri chiamate del tuo telefono?"</string>
     <string name="permgrouprequest_phone" msgid="6240218310343431124">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di effettuare e gestire telefonate?"</string>
     <string name="permgrouprequest_sensors" msgid="1939578702884234985">"Consentire a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere ai dati dei sensori relativi ai parametri vitali?"</string>

@@ -397,28 +397,18 @@
     <string name="permgrouprequest_sms" msgid="2622312529683649944">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ផ្ញើ និង​មើលសារ SMS ?"</string>
     <string name="permgrouprequest_storage" msgid="1092300826793175064">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ចូលប្រើ​រូបថត មេឌៀ និងឯកសារនៅលើ​ឧបករណ៍របស់អ្នក?"</string>
     <string name="permgrouprequest_microphone" msgid="3490533265167914830">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ថតសំឡេង?"</string>
-    <!-- no translation found for permgrouprequestdetail_microphone (1655297382086387437) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequest_microphone (455336315236630733) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequestdetail_microphone (6194915901304558005) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequest_microphone (8883808168545381176) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequestdetail_microphone (2438159401621407618) -->
-    <skip />
+    <string name="permgrouprequestdetail_microphone" msgid="1655297382086387437">"កម្មវិធីនេះនឹងអាចថតសំឡេង នៅពេលអ្នកកំពុងប្រើប្រាស់កម្មវិធីតែប៉ុណ្ណោះ"</string>
+    <string name="permgroupbackgroundrequest_microphone" msgid="455336315236630733">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ថតសំឡេងឬ?"</string>
+    <string name="permgroupbackgroundrequestdetail_microphone" msgid="6194915901304558005">"កម្មវិធីនេះអាចចង់ថតសំឡេងគ្រប់ពេល ទោះបីជានៅពេលអ្នកមិនកំពុងប្រើប្រាស់កម្មវិធីក៏ដោយ។ "<annotation id="link">"អនុញ្ញាតនៅក្នុងការកំណត់។"</annotation></string>
+    <string name="permgroupupgraderequest_microphone" msgid="8883808168545381176">"ប្ដូរសិទ្ធិ​ចូលប្រើ​មីក្រូហ្វូន​សម្រាប់ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ឬ?"</string>
+    <string name="permgroupupgraderequestdetail_microphone" msgid="2438159401621407618">"កម្មវិធីនេះចង់ថតសំឡេងគ្រប់ពេល ទោះបីជានៅពេលអ្នកមិនកំពុងប្រើប្រាស់កម្មវិធីក៏ដោយ។ "<annotation id="link">"អនុញ្ញាតនៅក្នុងការកំណត់។"</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="6217921552252496983">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ចូលប្រើ​សកម្មភាព​រាងកាយ​របស់អ្នក?"</string>
     <string name="permgrouprequest_camera" msgid="5379726026447957660">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ថតរូប និងថត​វីដេអូ?"</string>
-    <!-- no translation found for permgrouprequestdetail_camera (6623022572072206275) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequest_camera (8135690750774719094) -->
-    <skip />
-    <!-- no translation found for permgroupbackgroundrequestdetail_camera (7112569917025971735) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequest_camera (5482245762449780421) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequestdetail_camera (6537492326954748907) -->
-    <skip />
+    <string name="permgrouprequestdetail_camera" msgid="6623022572072206275">"កម្មវិធីនេះនឹងអាចថតរូប និងវីដេអូ នៅពេលអ្នកកំពុងប្រើប្រាស់កម្មវិធីតែប៉ុណ្ណោះ"</string>
+    <string name="permgroupbackgroundrequest_camera" msgid="8135690750774719094">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ថតរូប និងថត​វីដេអូឬ?"</string>
+    <string name="permgroupbackgroundrequestdetail_camera" msgid="7112569917025971735">"កម្មវិធីនេះអាចចង់ថតរូប និងវីដេអូគ្រប់ពេល ទោះបីជានៅពេលអ្នកមិនកំពុងប្រើប្រាស់កម្មវិធីក៏ដោយ។ "<annotation id="link">"អនុញ្ញាតនៅក្នុងការកំណត់។"</annotation></string>
+    <string name="permgroupupgraderequest_camera" msgid="5482245762449780421">"ប្ដូរសិទ្ធិ​ចូលប្រើ​កាមេរ៉ាសម្រាប់ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ឬ?"</string>
+    <string name="permgroupupgraderequestdetail_camera" msgid="6537492326954748907">"កម្មវិធីនេះចង់ថតរូប និងវីដេអូគ្រប់ពេល ទោះបីជានៅពេលអ្នកមិនកំពុងប្រើប្រាស់កម្មវិធីក៏ដោយ។ "<annotation id="link">"អនុញ្ញាតនៅក្នុងការកំណត់។"</annotation></string>
     <string name="permgrouprequest_calllog" msgid="8654341234544121138">"អនុញ្ញាត​ឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ចូល​ប្រើ​កំណត់ហេតុ​ហៅទូរសព្ទ​របស់អ្នក?"</string>
     <string name="permgrouprequest_phone" msgid="6240218310343431124">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; គ្រប់គ្រង និង​ធ្វើការហៅទូរសព្ទ?"</string>
     <string name="permgrouprequest_sensors" msgid="1939578702884234985">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ចូលប្រើ​ទិន្នន័យឧបករណ៍ចាប់សញ្ញាអំពីស្ថានភាពសុខភាពរបស់អ្នក?"</string>
