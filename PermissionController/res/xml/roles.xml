@@ -474,4 +474,16 @@
             <permission name="android.permission.READ_CALL_LOG" />
         </exempt-permissions>
     </role>
+
+    <role
+        name="android.app.role.COMPANION_DEVICE_WATCH"
+        behavior="CompanionDeviceWatchRoleBehavior"
+        exclusive="false"
+        systemOnly="false"
+        visible="false">
+        <permissions>
+            <permission-set name="calendar" />
+            <permission-set name="phone" />
+        </permissions>
+    </role>
 </roles>
