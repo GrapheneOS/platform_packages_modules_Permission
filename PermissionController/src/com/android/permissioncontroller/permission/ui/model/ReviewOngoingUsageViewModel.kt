@@ -43,6 +43,7 @@ import com.android.permissioncontroller.permission.data.SmartAsyncMediatorLiveDa
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.data.micMutedLiveData
+import com.android.permissioncontroller.permission.debug.shouldShowLocationIndicators
 import com.android.permissioncontroller.permission.debug.shouldShowPermissionsDashboard
 import com.android.permissioncontroller.permission.ui.handheld.ReviewOngoingUsageFragment.PHONE_CALL
 import com.android.permissioncontroller.permission.ui.handheld.ReviewOngoingUsageFragment.VIDEO_CALL
@@ -87,7 +88,7 @@ class ReviewOngoingUsageViewModel(
      */
     private val permGroupUsages = LoadAndFreezeLifeData(state, USAGES_KEY,
             PermGroupUsageLiveData(PermissionControllerApplication.get(),
-                    if (shouldShowPermissionsDashboard()) {
+                    if (shouldShowPermissionsDashboard() || shouldShowLocationIndicators()) {
                         listOf(CAMERA, LOCATION, MICROPHONE)
                     } else {
                         listOf(CAMERA, MICROPHONE)

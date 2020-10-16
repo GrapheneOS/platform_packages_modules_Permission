@@ -26,8 +26,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 
 import com.android.permissioncontroller.DeviceUtils;
-import com.android.permissioncontroller.permission.ui.handheld.ReviewOngoingUsageFragment;
 import com.android.permissioncontroller.permission.debug.UtilsKt;
+import com.android.permissioncontroller.permission.ui.handheld.ReviewOngoingUsageFragment;
 
 /**
  * A dialog listing the currently uses of camera, microphone, and location.
@@ -41,7 +41,7 @@ public final class ReviewOngoingUsageActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (!UtilsKt.shouldShowCameraMicIndicators()) {
+        if (!UtilsKt.shouldShowCameraMicIndicators() && !UtilsKt.shouldShowLocationIndicators()) {
             finish();
             return;
         }
