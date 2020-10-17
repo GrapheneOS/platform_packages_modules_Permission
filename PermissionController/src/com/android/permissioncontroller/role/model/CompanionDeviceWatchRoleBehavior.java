@@ -16,7 +16,6 @@
 
 package com.android.permissioncontroller.role.model;
 
-import android.Manifest;
 import android.app.NotificationManager;
 import android.content.ComponentName;
 import android.content.Context;
@@ -39,14 +38,20 @@ public class CompanionDeviceWatchRoleBehavior implements RoleBehavior {
 
     @Override
     public void grant(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
-        NotificationManager notificationManager = context.getSystemService(
-                NotificationManager.class);
         List<ComponentName> notificationListenersForPackage =
                 getNotificationListenersForPackage(packageName, context);
+        setNotificationGrantState(context, notificationListenersForPackage, true);
+    }
+
+    private void setNotificationGrantState(@NonNull Context context,
+            List<ComponentName> notificationListenersForPackage, boolean granted) {
+        NotificationManager notificationManager =
+                context.getSystemService(NotificationManager.class);
         int size = notificationListenersForPackage.size();
         for (int i = 0; i < size; i++) {
             ComponentName componentName = notificationListenersForPackage.get(i);
-            notificationManager.setNotificationListenerAccessGranted(componentName, true);
+            notificationManager.setNotificationListenerAccessGranted(
+                    componentName, granted, false);
         }
     }
 
@@ -61,7 +66,8 @@ public class CompanionDeviceWatchRoleBehavior implements RoleBehavior {
             ResolveInfo service = allListeners.get(i);
             ServiceInfo serviceInfo = service.serviceInfo;
             if (Objects.equals(serviceInfo.permission,
-                    Manifest.permission.BIND_NOTIFICATION_LISTENER_SERVICE)) {
+                    android.Manifest.permission.BIND_NOTIFICATION_LISTENER_SERVICE)
+                    && packageName.equals(serviceInfo.packageName)) {
                 pkgListeners.add(new ComponentName(serviceInfo.packageName, serviceInfo.name));
             }
         }
@@ -70,16 +76,10 @@ public class CompanionDeviceWatchRoleBehavior implements RoleBehavior {
 
     @Override
     public void revoke(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
-        NotificationManager notificationManager = context.getSystemService(
-                NotificationManager.class);
+        NotificationManager notificationManager =
+                context.getSystemService(NotificationManager.class);
         List<ComponentName> enabledNotificationListeners =
                 notificationManager.getEnabledNotificationListeners();
-        int size = enabledNotificationListeners.size();
-        for (int i = 0; i < size; i++) {
-            ComponentName componentName = enabledNotificationListeners.get(i);
-            if (packageName.equals(componentName.getPackageName())) {
-                notificationManager.setNotificationListenerAccessGranted(componentName, false);
-            }
-        }
+        setNotificationGrantState(context, enabledNotificationListeners, false);
     }
 }
