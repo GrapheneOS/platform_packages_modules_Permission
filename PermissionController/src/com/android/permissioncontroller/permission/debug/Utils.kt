@@ -31,6 +31,9 @@ private const val PROPERTY_PERMISSIONS_HUB_2_ENABLED = "permissions_hub_2_enable
 /** Whether to show the mic and camera icons.  */
 const val PROPERTY_CAMERA_MIC_ICONS_ENABLED = "camera_mic_icons_enabled"
 
+/** Whether to show the location indicators. */
+const val PROPERTY_LOCATION_INDICATORS_ENABLED = "location_indicators_enabled"
+
 /**
  * Whether the Permissions Hub 2 flag is enabled
  *
@@ -68,6 +71,24 @@ fun isCameraMicIconsFlagEnabled(): Boolean {
 fun shouldShowCameraMicIndicators(): Boolean {
     // TODO ntmyren: revert when possible
     return true // isCameraMicIconsFlagEnabled() || isPermissionsHub2FlagEnabled()
+}
+
+/**
+ * Whether the location indicators are enabled by flag.
+ *
+ * @return whether the location indicators are enabled by flag.
+ */
+fun isLocationIndicatorsFlagEnabled(): Boolean {
+    return DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
+            PROPERTY_LOCATION_INDICATORS_ENABLED, false)
+}
+
+/**
+ * Whether to show the location indicators. The location indicators are enable if the
+ * permission hub, or location indicator specifically are enabled.
+ */
+fun shouldShowLocationIndicators(): Boolean {
+    return isLocationIndicatorsFlagEnabled() || isPermissionsHub2FlagEnabled()
 }
 
 /**
