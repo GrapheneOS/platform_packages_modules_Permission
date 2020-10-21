@@ -20,16 +20,20 @@ import android.Manifest.permission_group.CAMERA
 import android.Manifest.permission_group.LOCATION
 import android.Manifest.permission_group.MICROPHONE
 import android.Manifest.permission_group.PHONE
-import android.content.res.Resources.ID_NULL
+import android.content.ComponentName
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.location.LocationManager
 import android.media.AudioManager
 import android.media.AudioManager.MODE_IN_COMMUNICATION
 import android.os.Bundle
 import android.os.UserHandle
+import android.provider.Settings
+import android.speech.RecognitionService
 import android.telephony.TelephonyManager
 import android.telephony.TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS
+import android.view.inputmethod.InputMethodManager
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
@@ -47,8 +51,8 @@ import com.android.permissioncontroller.permission.debug.shouldShowLocationIndic
 import com.android.permissioncontroller.permission.debug.shouldShowPermissionsDashboard
 import com.android.permissioncontroller.permission.ui.handheld.ReviewOngoingUsageFragment.PHONE_CALL
 import com.android.permissioncontroller.permission.ui.handheld.ReviewOngoingUsageFragment.VIDEO_CALL
-import com.android.permissioncontroller.permission.utils.KotlinUtils.getMapAndListDifferences
-import kotlinx.coroutines.Dispatchers
+import com.android.permissioncontroller.permission.utils.Utils
+import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -73,11 +77,19 @@ class ReviewOngoingUsageViewModel(
 
     data class Usages(
         /** attribution-res-id/packageName/user -> perm groups accessed */
-        val appUsages: Map<Triple<Int, String, UserHandle>, Set<String>>,
+        val appUsages: Map<PackageAttribution, Set<String>>,
         /** Op-names of phone call accesses */
         val callUsages: Collection<String>,
         /** Perm groups accessed by system */
-        val systemUsages: Set<String>
+        val systemUsages: Set<String>,
+        /** A map of attribut, packageName and user -> attribution label to show with microphone*/
+        val shownAttributionTags: Map<PackageAttribution, CharSequence> = emptyMap()
+    )
+
+    data class PackageAttribution(
+        val attributionTag: String?,
+        val packageName: String,
+        val user: UserHandle
     )
 
     /**
@@ -100,15 +112,11 @@ class ReviewOngoingUsageViewModel(
     private val isMicMuted = LoadAndFreezeLifeData(state, MIC_MUTED_KEY, micMutedLiveData)
 
     /** App runtime permission usages */
-    private val appUsagesLiveData = object : SmartUpdateMediatorLiveData<Map<Triple<Int,
-        String, UserHandle>, Set<String>>>() {
+    private val appUsagesLiveData = object : SmartUpdateMediatorLiveData<Map<PackageAttribution,
+        Set<String>>>() {
         /** (packageName, user, permissionGroupName) -> uiInfo */
-        private var permGroupUiInfos = mutableMapOf<Triple<String, UserHandle, String>,
+        private var permGroupUiInfos = mutableMapOf<Triple<String, String, UserHandle>,
             AppPermGroupUiInfoLiveData>()
-
-        /** (packageName, user, attribution tag) -> attribution label */
-        private var attributionLabels = mutableMapOf<Triple<String?, String, UserHandle>,
-            AttributionLabelLiveData>()
 
         init {
             addSource(permGroupUsages) {
@@ -117,34 +125,6 @@ class ReviewOngoingUsageViewModel(
 
             addSource(isMicMuted) {
                 update()
-            }
-        }
-
-        /**
-         * Adjust {@code currentSources} to only include {@link requiredSources} by removing
-         * obsolete sources and creating and adding newly required sources
-         */
-        private fun <K, V : LiveData<out Any>> adjustSources(
-            currentSources: MutableMap<K, V>,
-            requiredSources: List<K>,
-            newSource: (K) -> V
-        ) {
-            val (toAdd, toRemove) = getMapAndListDifferences(requiredSources, currentSources)
-
-            for (key in toRemove) {
-                removeSource(currentSources.remove(key)!!)
-            }
-
-            for (key in toAdd) {
-                val new = newSource(key)
-                currentSources[key] = new
-
-                addSource(new) {
-                    // Delay updates to prevent recursive updates
-                    GlobalScope.launch(Dispatchers.Main) {
-                        update()
-                    }
-                }
             }
         }
 
@@ -162,13 +142,14 @@ class ReviewOngoingUsageViewModel(
             val requiredUiInfos = permGroupUsages.value!!.flatMap {
                 (permissionGroupName, accesses) ->
                 accesses.map { access ->
-                    Triple(access.packageName, access.user, permissionGroupName)
+                    Triple(access.packageName, permissionGroupName, access.user)
                 }
             }
 
-            adjustSources(permGroupUiInfos, requiredUiInfos) {
-                (packageName, user, permGroupName) ->
-                AppPermGroupUiInfoLiveData[packageName, permGroupName, user]
+            val getLiveDataFun = { key: Triple<String, String, UserHandle> ->
+                AppPermGroupUiInfoLiveData[key.first, key.second, key.third] }
+            setSourcesToDifference(requiredUiInfos, permGroupUiInfos, getLiveDataFun) {
+                GlobalScope.launch(Main.immediate) { update() }
             }
 
             // Update set of attributionLabels needed
@@ -179,31 +160,22 @@ class ReviewOngoingUsageViewModel(
                 }
             }.distinct()
 
-            adjustSources(attributionLabels, requiredLabels) {
-                (attributionTag, packageName, user) ->
-                AttributionLabelLiveData[attributionTag, packageName, user]
-            }
-
-            if (permGroupUiInfos.values.any { !it.isInitialized } ||
-                attributionLabels.values.any { !it.isInitialized }) {
+            if (permGroupUiInfos.values.any { !it.isInitialized }) {
                 return
             }
 
             // Filter out system (== non user sensitive) apps
-            val filteredUsages = mutableMapOf<Triple<Int, String, UserHandle>,
-                MutableSet<String>>()
+            val filteredUsages = mutableMapOf<PackageAttribution, MutableSet<String>>()
             for ((permGroupName, usages) in permGroupUsages.value!!) {
                 for (usage in usages) {
-                    if (permGroupUiInfos[Triple(usage.packageName, usage.user, permGroupName)]!!
+                    if (permGroupUiInfos[Triple(usage.packageName, permGroupName, usage.user)]!!
                             .value?.isSystem == false) {
                         if (permGroupName == MICROPHONE && isMicMuted.value == true) {
                             continue
                         }
 
-                        filteredUsages.getOrPut(Triple(
-                            attributionLabels[Triple(usage.attributionTag,
-                                usage.packageName,
-                                usage.user)]!!.value ?: ID_NULL,
+                        filteredUsages.getOrPut(PackageAttribution(
+                            usage.attributionTag,
                             usage.packageName,
                             usage.user), { mutableSetOf() }).add(permGroupName)
                     }
@@ -211,6 +183,109 @@ class ReviewOngoingUsageViewModel(
             }
 
             value = filteredUsages
+        }
+    }
+
+    /**
+     * Gets all trusted proxied voice IME and voice recognition microphone uses, and get the
+     * label needed to display with it.
+     */
+    private val trustedAttrsLiveData = object : SmartAsyncMediatorLiveData<Map<PackageAttribution,
+        CharSequence>>() {
+        private val VOICE_IME_SUBTYPE = "voice"
+
+        private val attributionLabelLiveDatas =
+            mutableMapOf<Triple<String?, String, UserHandle>, AttributionLabelLiveData>()
+        init {
+            addSource(permGroupUsages) {
+                updateAsync()
+            }
+        }
+
+        override suspend fun loadDataAndPostValue(job: Job) {
+            if (!permGroupUsages.isInitialized) {
+                return
+            }
+            val usages = permGroupUsages.value?.get(MICROPHONE) ?: run {
+                postValue(emptyMap())
+                return
+            }
+            val proxies = usages.mapNotNull { it.proxyAccess }
+
+            val toAddLabelLiveDatas = proxies.map {
+                Triple(it.attributionTag, it.packageName, it.user) }
+            val getLiveDataFun = { key: Triple<String?, String, UserHandle> ->
+                AttributionLabelLiveData[key] }
+            setSourcesToDifference(toAddLabelLiveDatas, attributionLabelLiveDatas, getLiveDataFun)
+
+            if (attributionLabelLiveDatas.any { !it.value.isInitialized }) {
+                return
+            }
+
+            val approvedAttrs = mutableMapOf<PackageAttribution, String>()
+            for (user in proxies.map { it.user }.distinct()) {
+                val userContext = Utils.getUserContext(PermissionControllerApplication.get(), user)
+
+                // TODO ntmyren: Observe changes, possibly split into separate LiveDatas
+                val inputAttrs = mutableMapOf<String, CharSequence>()
+                userContext.getSystemService(InputMethodManager::class.java)!!
+                    .enabledInputMethodList.forEach {
+                        for (i in 0 until it.subtypeCount) {
+                            if (it.getSubtypeAt(i).mode == VOICE_IME_SUBTYPE) {
+                                inputAttrs[it.packageName] =
+                                    it.loadLabel(userContext.packageManager)
+                                break
+                            }
+                        }
+                    }
+
+                // Get the currently selected recognizer from the secure setting.
+                val recognitionPackageName = Settings.Secure.getString(userContext.contentResolver,
+                    // Settings.Secure.VOICE_RECOGNITION_SERVICE
+                    "voice_recognition_service")
+                    ?.let(ComponentName::unflattenFromString)?.packageName
+
+                val recognizers = mutableMapOf<String, CharSequence>()
+                val availableRecognizers = userContext.packageManager.queryIntentServices(
+                    Intent(RecognitionService.SERVICE_INTERFACE), PackageManager.GET_META_DATA)
+                availableRecognizers.forEach {
+                    val sI = it.serviceInfo
+                    if (sI.packageName == recognitionPackageName) {
+                        recognizers[sI.packageName] = sI.loadLabel(userContext.packageManager)
+                    }
+                }
+
+                for (opAccess in usages) {
+                    val proxyAccess = opAccess.proxyAccess ?: continue
+                    val proxyPackageName = proxyAccess.packageName
+                    if (proxyAccess.user != user || (proxyPackageName !in inputAttrs &&
+                            proxyPackageName !in recognizers)) {
+                        continue
+                    }
+
+                    val attrLabelResId = attributionLabelLiveDatas[Triple(
+                        proxyAccess.attributionTag, proxyAccess.packageName, proxyAccess.user)]
+                        ?.value ?: 0
+                    val attrLabel = try {
+                        userContext.createPackageContext(proxyPackageName, 0)
+                            .getString(attrLabelResId)
+                    } catch (e: Exception) {
+                        continue
+                    }
+
+                    val appAttr = PackageAttribution(opAccess.attributionTag, opAccess.packageName,
+                        opAccess.user)
+                    if (inputAttrs[proxyPackageName] == attrLabel) {
+                        approvedAttrs[appAttr] = attrLabel
+                    }
+
+                    // Voice attribution label overrides voice typing, if they happen simultaneously
+                    if (recognizers[proxyPackageName] == attrLabel) {
+                        approvedAttrs[appAttr] = attrLabel
+                    }
+                }
+            }
+            postValue(approvedAttrs)
         }
     }
 
@@ -245,7 +320,7 @@ class ReviewOngoingUsageViewModel(
             val filteredUsages = mutableSetOf<String>()
             for ((permGroupName, usages) in permGroupUsages.value!!) {
                 for (usage in usages) {
-                    if (app.getSystemService(LocationManager::class.java)
+                    if (app.getSystemService(LocationManager::class.java)!!
                             .isProviderPackage(usage.packageName) &&
                         (permGroupName == CAMERA ||
                             (permGroupName == MICROPHONE &&
@@ -305,6 +380,10 @@ class ReviewOngoingUsageViewModel(
             addSource(callOpUsageLiveData) {
                 update()
             }
+
+            addSource(trustedAttrsLiveData) {
+                update()
+            }
         }
 
         override suspend fun loadDataAndPostValue(job: Job) {
@@ -313,13 +392,14 @@ class ReviewOngoingUsageViewModel(
             }
 
             if (!callOpUsageLiveData.isInitialized || !appUsagesLiveData.isInitialized ||
-                    !systemUsagesLiveData.isInitialized) {
+                    !systemUsagesLiveData.isInitialized || !trustedAttrsLiveData.isInitialized) {
                 return
             }
 
             val callOpUsages = callOpUsageLiveData.value?.toMutableSet()
             val appUsages = appUsagesLiveData.value?.toMutableMap()
             val systemUsages = systemUsagesLiveData.value
+            val approvedAttrs = trustedAttrsLiveData.value?.toMutableMap() ?: emptyMap()
 
             if (callOpUsages == null || appUsages == null || systemUsages == null) {
                 postValue(null)
@@ -339,7 +419,7 @@ class ReviewOngoingUsageViewModel(
             if (callOpUsages.isNotEmpty() && audioManager.mode == MODE_IN_COMMUNICATION) {
                 val telephonyManager = app.getSystemService(TelephonyManager::class.java)!!
                 for ((pkg, usages) in appUsages) {
-                    if (telephonyManager.checkCarrierPrivilegesForPackage(pkg.second) ==
+                    if (telephonyManager.checkCarrierPrivilegesForPackage(pkg.packageName) ==
                         CARRIER_PRIVILEGE_STATUS_HAS_ACCESS && usages.contains(MICROPHONE)) {
                         appUsages[pkg] = usages.toMutableSet().apply {
                             // TODO ntmyren: Replace this with real behavior
@@ -353,7 +433,7 @@ class ReviewOngoingUsageViewModel(
                 }
             }
 
-            postValue(Usages(appUsages, callOpUsages, systemUsages))
+            postValue(Usages(appUsages, callOpUsages, systemUsages, approvedAttrs))
         }
     }
 }
