@@ -18,7 +18,6 @@ package com.android.permissioncontroller.permission.ui.handheld;
 
 import static android.Manifest.permission_group.CAMERA;
 import static android.Manifest.permission_group.MICROPHONE;
-import static android.content.res.Resources.ID_NULL;
 
 import static com.android.permissioncontroller.PermissionControllerStatsLog.PRIVACY_INDICATORS_INTERACTED;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.PRIVACY_INDICATORS_INTERACTED__TYPE__DIALOG_DISMISS;
@@ -27,12 +26,10 @@ import static com.android.permissioncontroller.PermissionControllerStatsLog.PRIV
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.text.Html;
 import android.util.ArrayMap;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +44,7 @@ import androidx.preference.PreferenceFragmentCompat;
 import com.android.permissioncontroller.PermissionControllerStatsLog;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.ui.model.ReviewOngoingUsageViewModel;
+import com.android.permissioncontroller.permission.ui.model.ReviewOngoingUsageViewModel.PackageAttribution;
 import com.android.permissioncontroller.permission.ui.model.ReviewOngoingUsageViewModelFactory;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
@@ -56,8 +54,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
-
-import kotlin.Triple;
 
 /**
  * A dialog listing the currently uses of camera, microphone, and location.
@@ -122,15 +118,19 @@ public class ReviewOngoingUsageFragment extends PreferenceFragmentCompat {
      * Get a list of permission labels.
      *
      * @param groups map<perm group name, perm group label>
+     * @param specialMessage Whether or not one of the groups has a modified message. Do not use
+     *                       static strings if so
      *
      * @return A localized string with the list of permissions
      */
-    private CharSequence getListOfPermissionLabels(ArrayMap<String, CharSequence> groups) {
+    private CharSequence getListOfPermissionLabels(ArrayMap<String, CharSequence> groups,
+            boolean specialMessage) {
         int numGroups = groups.size();
 
         if (numGroups == 1) {
             return groups.valueAt(0);
-        } else if (numGroups == 2 && groups.containsKey(MICROPHONE) && groups.containsKey(CAMERA)) {
+        } else if (numGroups == 2 && groups.containsKey(MICROPHONE) && groups.containsKey(CAMERA)
+                && !specialMessage) {
             // Special case camera + mic permission to be localization friendly
             return getContext().getString(R.string.permgroup_list_microphone_and_camera);
         } else {
@@ -162,9 +162,10 @@ public class ReviewOngoingUsageFragment extends PreferenceFragmentCompat {
         LayoutInflater inflater = LayoutInflater.from(context);
         View contentView = inflater.inflate(R.layout.ongoing_usage_dialog_content, null);
         ViewGroup appsList = contentView.requireViewById(R.id.items_container);
-        Map<Triple<Integer, String, UserHandle>, Set<String>> appUsages = allUsages.getAppUsages();
+        Map<PackageAttribution, Set<String>> appUsages = allUsages.getAppUsages();
         Collection<String> callUsage = allUsages.getCallUsages();
         Set<String> systemUsage = allUsages.getSystemUsages();
+        Map<PackageAttribution, CharSequence> attrTagPkgs = allUsages.getShownAttributionTags();
 
         // Compute all of the permission group labels that were used.
         ArrayMap<String, CharSequence> usedGroups = new ArrayMap<>();
@@ -244,21 +245,9 @@ public class ReviewOngoingUsageFragment extends PreferenceFragmentCompat {
         }
 
         // Add the layout for each app.
-        for (Map.Entry<Triple<Integer, String, UserHandle>, Set<String>> usage
-                : appUsages.entrySet()) {
-            String packageName = usage.getKey().getSecond();
-            UserHandle user = usage.getKey().getThird();
-
-            String attributionLabel = null;
-            if (usage.getKey().getFirst() != ID_NULL) {
-                try {
-                    attributionLabel = context.createPackageContextAsUser(packageName, 0, user)
-                            .getString(usage.getKey().getFirst());
-                } catch (PackageManager.NameNotFoundException e) {
-                    Log.e(LOG_TAG, "Could not resolve attribution label "
-                            + usage.getKey().getFirst(), e);
-                }
-            }
+        for (Map.Entry<PackageAttribution, Set<String>> usage : appUsages.entrySet()) {
+            String packageName = usage.getKey().getPackageName();
+            UserHandle user = usage.getKey().getUser();
 
             Set<String> groups = usage.getValue();
 
@@ -266,8 +255,7 @@ public class ReviewOngoingUsageFragment extends PreferenceFragmentCompat {
 
             ((TextView) itemView.requireViewById(R.id.app_name))
                     .setText(KotlinUtils.INSTANCE.getPackageLabel(context.getApplication(),
-                            packageName, user)
-                            + (attributionLabel == null ? "" : " (" + attributionLabel + ")"));
+                            packageName, user));
             ((ImageView) itemView.requireViewById(R.id.app_icon))
                     .setImageDrawable(KotlinUtils.INSTANCE.getBadgedPackageIcon(
                             context.getApplication(), packageName, user));
@@ -275,6 +263,7 @@ public class ReviewOngoingUsageFragment extends PreferenceFragmentCompat {
             ArrayMap<String, CharSequence> usedGroupsThisApp = new ArrayMap<>();
 
             ViewGroup iconFrame = itemView.requireViewById(R.id.icons);
+            boolean hasSpecialGroupMessage = false;
             for (String group : groups) {
                 ViewGroup groupView = (ViewGroup) inflater.inflate(R.layout.image_view, null);
                 ((ImageView) groupView.requireViewById(R.id.icon)).setImageDrawable(
@@ -282,13 +271,20 @@ public class ReviewOngoingUsageFragment extends PreferenceFragmentCompat {
                                 group), android.R.attr.colorControlNormal));
                 iconFrame.addView(groupView);
 
-                usedGroupsThisApp.put(group, KotlinUtils.INSTANCE.getPermGroupLabel(context,
-                        group));
+                CharSequence groupLabel = KotlinUtils.INSTANCE.getPermGroupLabel(context, group);
+                if (group.equals(MICROPHONE) && attrTagPkgs.containsKey(usage.getKey())) {
+                    // TODO ntmyren: add correct string concatenation
+                    groupLabel = groupLabel + " via " + attrTagPkgs.get(usage.getKey());
+                    hasSpecialGroupMessage = true;
+                }
+
+                usedGroupsThisApp.put(group, groupLabel);
             }
             iconFrame.setVisibility(View.VISIBLE);
 
             TextView permissionsList = itemView.requireViewById(R.id.permissionsList);
-            permissionsList.setText(getListOfPermissionLabels(usedGroupsThisApp));
+            permissionsList.setText(getListOfPermissionLabels(usedGroupsThisApp,
+                    hasSpecialGroupMessage));
 
             itemView.setOnClickListener((v) -> {
                 PermissionControllerStatsLog.write(PRIVACY_INDICATORS_INTERACTED,
@@ -319,7 +315,7 @@ public class ReviewOngoingUsageFragment extends PreferenceFragmentCompat {
             return getString(R.string.ongoing_usage_dialog_title_mic_camera);
         } else {
             return getString(R.string.ongoing_usage_dialog_title,
-                    getListOfPermissionLabels(usedGroups));
+                    getListOfPermissionLabels(usedGroups, false));
         }
     }
 
