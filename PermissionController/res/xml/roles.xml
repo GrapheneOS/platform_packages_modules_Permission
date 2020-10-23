@@ -486,4 +486,23 @@
             <permission-set name="phone" />
         </permissions>
     </role>
+
+    <role
+        name="android.app.role.SYSTEM_AUTOMOTIVE_PROJECTION"
+        defaultHolders="config_systemAutomotiveProjection"
+        exclusive="false"
+        systemOnly="true"
+        visible="false">
+        <permissions>
+            <permission name="android.permission.READ_PHONE_STATE" />
+            <permission name="android.permission.CALL_PHONE" />
+            <permission name="android.permission.READ_CALL_LOG" />
+            <permission name="android.permission.READ_CONTACTS" />
+            <permission name="android.permission.ACCESS_FINE_LOCATION" />
+            <permission name="android.permission.RECEIVE_SMS" />
+            <permission name="android.permission.SEND_SMS" />
+            <permission name="android.permission.RECORD_AUDIO" />
+            <permission name="android.permission.READ_CALENDAR" />
+        </permissions>
+    </role>
 </roles>
