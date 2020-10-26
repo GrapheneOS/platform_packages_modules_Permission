@@ -16,13 +16,16 @@
 
 package com.android.permissioncontroller.permission.ui.model
 
+import android.Manifest.permission.UPDATE_APP_OPS_STATS
 import android.Manifest.permission_group.CAMERA
 import android.Manifest.permission_group.LOCATION
 import android.Manifest.permission_group.MICROPHONE
 import android.Manifest.permission_group.PHONE
 import android.content.ComponentName
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.location.LocationManager
 import android.media.AudioManager
 import android.media.AudioManager.MODE_IN_COMMUNICATION
@@ -30,6 +33,7 @@ import android.os.Bundle
 import android.os.UserHandle
 import android.provider.Settings
 import android.speech.RecognitionService
+import android.speech.RecognizerIntent
 import android.telephony.TelephonyManager
 import android.telephony.TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS
 import android.view.inputmethod.InputMethodManager
@@ -41,6 +45,7 @@ import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.data.AppPermGroupUiInfoLiveData
 import com.android.permissioncontroller.permission.data.AttributionLabelLiveData
 import com.android.permissioncontroller.permission.data.LoadAndFreezeLifeData
+import com.android.permissioncontroller.permission.data.OpAccess
 import com.android.permissioncontroller.permission.data.OpUsageLiveData
 import com.android.permissioncontroller.permission.data.PermGroupUsageLiveData
 import com.android.permissioncontroller.permission.data.SmartAsyncMediatorLiveData
@@ -212,8 +217,10 @@ class ReviewOngoingUsageViewModel(
             }
             val proxies = usages.mapNotNull { it.proxyAccess }
 
-            val toAddLabelLiveDatas = proxies.map {
+            val proxyLabelLiveDatas = proxies.map {
                 Triple(it.attributionTag, it.packageName, it.user) }
+            val toAddLabelLiveDatas = (usages.map { Triple(it.attributionTag, it.packageName,
+                it.user) } + proxyLabelLiveDatas).distinct()
             val getLiveDataFun = { key: Triple<String?, String, UserHandle> ->
                 AttributionLabelLiveData[key] }
             setSourcesToDifference(toAddLabelLiveDatas, attributionLabelLiveDatas, getLiveDataFun)
@@ -223,17 +230,18 @@ class ReviewOngoingUsageViewModel(
             }
 
             val approvedAttrs = mutableMapOf<PackageAttribution, String>()
-            for (user in proxies.map { it.user }.distinct()) {
+            for (user in usages.map { it.user }.distinct()) {
                 val userContext = Utils.getUserContext(PermissionControllerApplication.get(), user)
 
                 // TODO ntmyren: Observe changes, possibly split into separate LiveDatas
-                val inputAttrs = mutableMapOf<String, CharSequence>()
+                val voiceInputs = mutableMapOf<String, CharSequence>()
                 userContext.getSystemService(InputMethodManager::class.java)!!
                     .enabledInputMethodList.forEach {
                         for (i in 0 until it.subtypeCount) {
                             if (it.getSubtypeAt(i).mode == VOICE_IME_SUBTYPE) {
-                                inputAttrs[it.packageName] =
-                                    it.loadLabel(userContext.packageManager)
+                                voiceInputs[it.packageName] =
+                                    it.serviceInfo.loadSafeLabel(userContext.packageManager,
+                                        Float.MAX_VALUE, 0)
                                 break
                             }
                         }
@@ -251,41 +259,75 @@ class ReviewOngoingUsageViewModel(
                 availableRecognizers.forEach {
                     val sI = it.serviceInfo
                     if (sI.packageName == recognitionPackageName) {
-                        recognizers[sI.packageName] = sI.loadLabel(userContext.packageManager)
+                        recognizers[sI.packageName] = sI.loadSafeLabel(userContext.packageManager,
+                        Float.MAX_VALUE, 0)
                     }
                 }
 
+                val recognizerIntents = mutableMapOf<String, CharSequence>()
+                val availableRecognizerIntents = userContext.packageManager.queryIntentActivities(
+                    Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH), PackageManager.GET_META_DATA)
+                availableRecognizers.forEach { rI ->
+                    val servicePkg = rI.serviceInfo.packageName
+                    if (userContext.packageManager.checkPermission(UPDATE_APP_OPS_STATS, servicePkg)
+                        == PERMISSION_GRANTED && availableRecognizerIntents.any {
+                            it.activityInfo.packageName == servicePkg }) {
+                        // If this recognizer intent is also a recognizer service, and is trusted,
+                        // Then attribute to voice recognition
+                        recognizerIntents[servicePkg] =
+                            rI.serviceInfo.loadSafeLabel(userContext.packageManager,
+                                Float.MAX_VALUE, 0)
+                    }
+                }
+
+                // get attribution labels for voice IME, recognition intents, and recognition
+                // services
                 for (opAccess in usages) {
-                    val proxyAccess = opAccess.proxyAccess ?: continue
-                    val proxyPackageName = proxyAccess.packageName
-                    if (proxyAccess.user != user || (proxyPackageName !in inputAttrs &&
-                            proxyPackageName !in recognizers)) {
-                        continue
-                    }
-
-                    val attrLabelResId = attributionLabelLiveDatas[Triple(
-                        proxyAccess.attributionTag, proxyAccess.packageName, proxyAccess.user)]
-                        ?.value ?: 0
-                    val attrLabel = try {
-                        userContext.createPackageContext(proxyPackageName, 0)
-                            .getString(attrLabelResId)
-                    } catch (e: Exception) {
-                        continue
-                    }
-
-                    val appAttr = PackageAttribution(opAccess.attributionTag, opAccess.packageName,
-                        opAccess.user)
-                    if (inputAttrs[proxyPackageName] == attrLabel) {
-                        approvedAttrs[appAttr] = attrLabel
-                    }
-
-                    // Voice attribution label overrides voice typing, if they happen simultaneously
-                    if (recognizers[proxyPackageName] == attrLabel) {
-                        approvedAttrs[appAttr] = attrLabel
-                    }
+                    setTrustedAttrsForAccess(userContext, opAccess, user, false, voiceInputs,
+                        approvedAttrs)
+                    setTrustedAttrsForAccess(userContext, opAccess, user, false, recognizerIntents,
+                        approvedAttrs)
+                    setTrustedAttrsForAccess(userContext, opAccess, user, true, recognizers,
+                        approvedAttrs)
                 }
             }
             postValue(approvedAttrs)
+        }
+
+        private fun setTrustedAttrsForAccess(
+            context: Context,
+            opAccess: OpAccess,
+            currUser: UserHandle,
+            getProxyLabel: Boolean,
+            trustedMap: Map<String, CharSequence>,
+            toSetMap: MutableMap<PackageAttribution, String>
+        ) {
+            val access = if (getProxyLabel) {
+                opAccess.proxyAccess
+            } else {
+                opAccess
+            }
+
+            if (access == null || access.user != currUser || access.packageName !in trustedMap) {
+                return
+            }
+
+            // Always use the original op access for the PackageAttribution object
+            val appAttr = PackageAttribution(opAccess.attributionTag, opAccess.packageName,
+                opAccess.user)
+            val packageName = access.packageName
+
+            val labelResId = attributionLabelLiveDatas[Triple(access.attributionTag,
+                access.packageName, access.user)]?.value ?: 0
+            val label = try {
+                context.createPackageContext(packageName, 0)
+                    .getString(labelResId)
+            } catch (e: Exception) {
+                return
+            }
+            if (trustedMap[packageName] == label) {
+                toSetMap[appAttr] = label
+            }
         }
     }
 
