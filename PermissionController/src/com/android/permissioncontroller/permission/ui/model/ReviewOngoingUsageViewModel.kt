@@ -20,7 +20,6 @@ import android.Manifest.permission.UPDATE_APP_OPS_STATS
 import android.Manifest.permission_group.CAMERA
 import android.Manifest.permission_group.LOCATION
 import android.Manifest.permission_group.MICROPHONE
-import android.Manifest.permission_group.PHONE
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -463,12 +462,6 @@ class ReviewOngoingUsageViewModel(
                 for ((pkg, usages) in appUsages) {
                     if (telephonyManager.checkCarrierPrivilegesForPackage(pkg.packageName) ==
                         CARRIER_PRIVILEGE_STATUS_HAS_ACCESS && usages.contains(MICROPHONE)) {
-                        appUsages[pkg] = usages.toMutableSet().apply {
-                            // TODO ntmyren: Replace this with real behavior
-                            remove(MICROPHONE)
-                            add(PHONE)
-                        }
-
                         callOpUsages.clear()
                         continue
                     }
