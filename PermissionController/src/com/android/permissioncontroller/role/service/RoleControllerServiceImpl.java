@@ -153,7 +153,7 @@ public class RoleControllerServiceImpl extends RoleControllerService {
                     // phone calls or SMS, so we just keep the old behavior. But overriding user
                     // choice about permission without explicit user action is bad, so maybe we
                     // should at least show a notification?
-                    addRoleHolderInternal(role, packageName, true);
+                    addRoleHolderInternal(role, packageName, role.shouldOverrideUserWhenGranting());
                 }
             }
 
@@ -226,7 +226,8 @@ public class RoleControllerServiceImpl extends RoleControllerService {
         }
 
         boolean dontKillApp = hasFlag(flags, RoleManager.MANAGE_HOLDERS_FLAG_DONT_KILL_APP);
-        added = addRoleHolderInternal(role, packageName, dontKillApp, true, added);
+        added = addRoleHolderInternal(role, packageName, dontKillApp,
+                role.shouldOverrideUserWhenGranting(), added);
         if (!added) {
             return false;
         }
@@ -396,7 +397,8 @@ public class RoleControllerServiceImpl extends RoleControllerService {
         // phone calls or SMS, so we just keep the old behavior. But overriding user
         // choice about permission without explicit user action is bad, so maybe we
         // should at least show a notification?
-        return addRoleHolderInternal(role, fallbackPackageName, true);
+        return addRoleHolderInternal(role, fallbackPackageName,
+                role.shouldOverrideUserWhenGranting());
     }
 
     @Override

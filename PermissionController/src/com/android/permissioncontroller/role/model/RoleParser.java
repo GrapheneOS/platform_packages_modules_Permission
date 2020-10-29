@@ -78,6 +78,7 @@ public class RoleParser {
     private static final String ATTRIBUTE_EXCLUSIVE = "exclusive";
     private static final String ATTRIBUTE_FALL_BACK_TO_DEFAULT_HOLDER = "fallBackToDefaultHolder";
     private static final String ATTRIBUTE_LABEL = "label";
+    private static final String ATTRIBUTE_OVERRIDE_USER_WHEN_GRANTING = "overrideUserWhenGranting";
     private static final String ATTRIBUTE_REQUEST_TITLE = "requestTitle";
     private static final String ATTRIBUTE_REQUEST_DESCRIPTION = "requestDescription";
     private static final String ATTRIBUTE_REQUESTABLE = "requestable";
@@ -328,6 +329,9 @@ public class RoleParser {
         boolean fallBackToDefaultHolder = getAttributeBooleanValue(parser,
                 ATTRIBUTE_FALL_BACK_TO_DEFAULT_HOLDER, false);
 
+        boolean overrideUserWhenGranting = getAttributeBooleanValue(parser,
+                ATTRIBUTE_OVERRIDE_USER_WHEN_GRANTING, true);
+
         boolean requestable = getAttributeBooleanValue(parser, ATTRIBUTE_REQUESTABLE, visible);
         Integer requestDescriptionResource;
         Integer requestTitleResource;
@@ -453,10 +457,11 @@ public class RoleParser {
             preferredActivities = Collections.emptyList();
         }
         return new Role(name, behavior, defaultHoldersResourceName, descriptionResource, exclusive,
-                fallBackToDefaultHolder, labelResource, requestDescriptionResource,
-                requestTitleResource, requestable, searchKeywordsResource, shortLabelResource,
-                showNone, systemOnly, visible, requiredComponents, permissions, exemptedPermissions,
-                appOpPermissions, appOps, preferredActivities);
+                fallBackToDefaultHolder, labelResource, overrideUserWhenGranting,
+                requestDescriptionResource, requestTitleResource, requestable,
+                searchKeywordsResource, shortLabelResource, showNone, systemOnly, visible,
+                requiredComponents, permissions, exemptedPermissions, appOpPermissions, appOps,
+                preferredActivities);
     }
 
     @NonNull

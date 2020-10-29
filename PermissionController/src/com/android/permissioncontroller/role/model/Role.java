@@ -111,6 +111,11 @@ public class Role {
     private final int mLabelResource;
 
     /**
+     * Whether this role should override user's choice about privileges when granting.
+     */
+    private final boolean mOverrideUserWhenGranting;
+
+    /**
      * The string resource for the request description of this role, shown below the selected app in
      * the request role dialog.
      */
@@ -199,13 +204,13 @@ public class Role {
     public Role(@NonNull String name, @Nullable RoleBehavior behavior,
             @Nullable String defaultHoldersResourceName, @StringRes int descriptionResource,
             boolean exclusive, boolean fallBackToDefaultHolder, @StringRes int labelResource,
-            @StringRes int requestDescriptionResource, @StringRes int requestTitleResource,
-            boolean requestable, @StringRes int searchKeywordsResource,
-            @StringRes int shortLabelResource, boolean showNone, boolean systemOnly,
-            boolean visible, @NonNull List<RequiredComponent> requiredComponents,
-            @NonNull List<String> permissions, @NonNull List<String> exemptedPermissions,
-            @NonNull List<String> appOpPermissions, @NonNull List<AppOp> appOps,
-            @NonNull List<PreferredActivity> preferredActivities) {
+            boolean overrideUserWhenGranting, @StringRes int requestDescriptionResource,
+            @StringRes int requestTitleResource, boolean requestable,
+            @StringRes int searchKeywordsResource, @StringRes int shortLabelResource,
+            boolean showNone, boolean systemOnly, boolean visible,
+            @NonNull List<RequiredComponent> requiredComponents, @NonNull List<String> permissions,
+            @NonNull List<String> exemptedPermissions, @NonNull List<String> appOpPermissions,
+            @NonNull List<AppOp> appOps, @NonNull List<PreferredActivity> preferredActivities) {
         mName = name;
         mBehavior = behavior;
         mDefaultHoldersResourceName = defaultHoldersResourceName;
@@ -213,6 +218,7 @@ public class Role {
         mExclusive = exclusive;
         mFallBackToDefaultHolder = fallBackToDefaultHolder;
         mLabelResource = labelResource;
+        mOverrideUserWhenGranting = overrideUserWhenGranting;
         mRequestDescriptionResource = requestDescriptionResource;
         mRequestTitleResource = requestTitleResource;
         mRequestable = requestable;
@@ -275,6 +281,13 @@ public class Role {
     @StringRes
     public int getShortLabelResource() {
         return mShortLabelResource;
+    }
+
+    /**
+     * @see #mOverrideUserWhenGranting
+     */
+    public boolean shouldOverrideUserWhenGranting() {
+        return mOverrideUserWhenGranting;
     }
 
     /**
@@ -889,6 +902,7 @@ public class Role {
                 + ", mExclusive=" + mExclusive
                 + ", mFallBackToDefaultHolder=" + mFallBackToDefaultHolder
                 + ", mLabelResource=" + mLabelResource
+                + ", mOverrideUserWhenGranting=" + mOverrideUserWhenGranting
                 + ", mRequestDescriptionResource=" + mRequestDescriptionResource
                 + ", mRequestTitleResource=" + mRequestTitleResource
                 + ", mRequestable=" + mRequestable
