@@ -239,7 +239,7 @@ abstract class SmartUpdateMediatorLiveData<T>(private val isStaticVal: Boolean =
         return getInitializedValue(
             observe = { observer ->
                 observeForever(observer)
-                if (forceUpdate) {
+                if (forceUpdate || (!staleOk && isStale)) {
                     update()
                 }
             },
