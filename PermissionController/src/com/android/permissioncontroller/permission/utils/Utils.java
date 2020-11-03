@@ -31,6 +31,7 @@ import static android.app.AppOpsManager.MODE_ALLOWED;
 import static android.app.AppOpsManager.OPSTR_LEGACY_STORAGE;
 import static android.content.Context.MODE_PRIVATE;
 import static android.content.pm.PackageManager.FLAG_PERMISSION_RESTRICTION_INSTALLER_EXEMPT;
+import static android.content.pm.PackageManager.FLAG_PERMISSION_RESTRICTION_ROLE_EXEMPT;
 import static android.content.pm.PackageManager.FLAG_PERMISSION_RESTRICTION_SYSTEM_EXEMPT;
 import static android.content.pm.PackageManager.FLAG_PERMISSION_RESTRICTION_UPGRADE_EXEMPT;
 import static android.content.pm.PackageManager.FLAG_PERMISSION_USER_SENSITIVE_WHEN_DENIED;
@@ -128,13 +129,15 @@ public final class Utils {
     public static final int FLAGS_PERMISSION_WHITELIST_ALL =
             PackageManager.FLAG_PERMISSION_WHITELIST_SYSTEM
                     | PackageManager.FLAG_PERMISSION_WHITELIST_UPGRADE
-                    | PackageManager.FLAG_PERMISSION_WHITELIST_INSTALLER;
+                    | PackageManager.FLAG_PERMISSION_WHITELIST_INSTALLER
+                    | PackageManager.FLAG_PERMISSION_ALLOWLIST_ROLE;
 
-    /** All permission restriction excemptions. */
+    /** All permission restriction exemptions. */
     public static final int FLAGS_PERMISSION_RESTRICTION_ANY_EXEMPT =
             FLAG_PERMISSION_RESTRICTION_SYSTEM_EXEMPT
                     | FLAG_PERMISSION_RESTRICTION_UPGRADE_EXEMPT
-                    | FLAG_PERMISSION_RESTRICTION_INSTALLER_EXEMPT;
+                    | FLAG_PERMISSION_RESTRICTION_INSTALLER_EXEMPT
+                    | FLAG_PERMISSION_RESTRICTION_ROLE_EXEMPT;
 
     /**
      * The default length of the timeout for one-time permissions
