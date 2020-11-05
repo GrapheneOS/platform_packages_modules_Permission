@@ -26,6 +26,7 @@ import static com.android.permissioncontroller.PermissionControllerStatsLog.PRIV
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.icu.text.ListFormatter;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.text.Html;
@@ -52,6 +53,7 @@ import com.android.permissioncontroller.permission.utils.Utils;
 import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -159,7 +161,7 @@ public class ReviewOngoingUsageFragment extends PreferenceFragmentCompat {
         Map<PackageAttribution, Set<String>> appUsages = allUsages.getAppUsages();
         Collection<String> callUsage = allUsages.getCallUsages();
         Set<String> systemUsage = allUsages.getSystemUsages();
-        Map<PackageAttribution, CharSequence> attrTagPkgs = allUsages.getShownAttributionTags();
+        Map<PackageAttribution, List<CharSequence>> attrLabels = allUsages.getShownAttributions();
 
         // Compute all of the permission group labels that were used.
         ArrayMap<String, CharSequence> usedGroups = new ArrayMap<>();
@@ -266,8 +268,9 @@ public class ReviewOngoingUsageFragment extends PreferenceFragmentCompat {
                 iconFrame.addView(groupView);
 
                 CharSequence groupLabel = KotlinUtils.INSTANCE.getPermGroupLabel(context, group);
-                if (group.equals(MICROPHONE) && attrTagPkgs.containsKey(usage.getKey())) {
-                    specialGroupMessage = attrTagPkgs.get(usage.getKey());
+                if (group.equals(MICROPHONE) && attrLabels.containsKey(usage.getKey())) {
+                    specialGroupMessage = ListFormatter.getInstance().format(
+                            attrLabels.get(usage.getKey()));
                     continue;
                 }
 
@@ -276,11 +279,8 @@ public class ReviewOngoingUsageFragment extends PreferenceFragmentCompat {
             iconFrame.setVisibility(View.VISIBLE);
 
             TextView permissionsList = itemView.requireViewById(R.id.permissionsList);
-            if (specialGroupMessage == null) {
-                permissionsList.setText(getListOfPermissionLabels(usedGroupsThisApp));
-            } else {
-                permissionsList.setText(specialGroupMessage);
-            }
+            permissionsList.setText(specialGroupMessage != null
+                    ? specialGroupMessage : getListOfPermissionLabels(usedGroupsThisApp));
 
             itemView.setOnClickListener((v) -> {
                 PermissionControllerStatsLog.write(PRIVACY_INDICATORS_INTERACTED,
