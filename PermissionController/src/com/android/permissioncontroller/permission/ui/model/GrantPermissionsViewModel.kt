@@ -421,19 +421,20 @@ class GrantPermissionsViewModel(
                 GroupState(group, isBackground)
             }
 
-            var currGroupState = if (group.permGroupName in permGroupsToSkip) {
-                STATE_SKIPPED
-            } else {
-                groupStateInfo.state
-            }
+            var currGroupState = groupStateInfo.state
             if (storedState != null && currGroupState != STATE_UNKNOWN) {
                 currGroupState = storedState.getInt(getInstanceStateKey(group.permGroupName,
                     isBackground), STATE_UNKNOWN)
             }
 
-            if (currGroupState == STATE_UNKNOWN) {
-                val otherGroupPermissions = filteredPermissions.filter { it in group.permissions }
-                currGroupState = getGroupState(perm, group, otherGroupPermissions)
+            val otherGroupPermissions = filteredPermissions.filter { it in group.permissions }
+            val groupStateOfPerm = getGroupState(perm, group, otherGroupPermissions)
+            if (groupStateOfPerm != STATE_UNKNOWN) {
+                currGroupState = groupStateOfPerm
+            }
+
+            if (group.permGroupName in permGroupsToSkip) {
+                currGroupState = STATE_SKIPPED
             }
 
             if (currGroupState != STATE_UNKNOWN) {
@@ -535,7 +536,7 @@ class GrantPermissionsViewModel(
     private fun getGroupState(
         perm: String,
         group: LightAppPermGroup,
-        otherGroupRequestedPermissions: List<String>
+        groupRequestedPermissions: List<String>
     ): Int {
         val policyState = getStateFromPolicy(perm, group)
         if (policyState != STATE_UNKNOWN) {
@@ -544,7 +545,7 @@ class GrantPermissionsViewModel(
 
         val isBackground = perm in group.backgroundPermNames
 
-        val hasForegroundRequest = otherGroupRequestedPermissions.any {
+        val hasForegroundRequest = groupRequestedPermissions.any {
             it !in group.backgroundPermNames
         }
 
@@ -553,7 +554,7 @@ class GrantPermissionsViewModel(
         if (isBackground && !group.foreground.isGranted && !hasForegroundRequest) {
             Log.w(LOG_TAG, "Cannot grant $perm as the matching foreground permission is not " +
                 "already granted.")
-            val affectedPermissions = otherGroupRequestedPermissions.filter {
+            val affectedPermissions = groupRequestedPermissions.filter {
                 it in group.backgroundPermNames
             }
             reportRequestResult(affectedPermissions,
