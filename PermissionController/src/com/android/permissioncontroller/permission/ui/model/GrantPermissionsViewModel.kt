@@ -564,16 +564,18 @@ class GrantPermissionsViewModel(
 
         if (isBackground && group.background.isGranted ||
             !isBackground && group.foreground.isGranted) {
-            if (isBackground) {
-                KotlinUtils.grantBackgroundRuntimePermissions(app, group, listOf(perm))
-            } else {
-                KotlinUtils.grantForegroundRuntimePermissions(app, group, listOf(perm))
+            if (group.permissions[perm]?.isGrantedIncludingAppOp == false) {
+                if (isBackground) {
+                    KotlinUtils.grantBackgroundRuntimePermissions(app, group, listOf(perm))
+                } else {
+                    KotlinUtils.grantForegroundRuntimePermissions(app, group, listOf(perm))
+                }
+                KotlinUtils.setGroupFlags(app, group, FLAG_PERMISSION_USER_SET to false,
+                    FLAG_PERMISSION_USER_FIXED to false, filterPermissions = listOf(perm))
+                reportRequestResult(perm,
+                    PERMISSION_GRANT_REQUEST_RESULT_REPORTED__RESULT__AUTO_GRANTED)
             }
-            KotlinUtils.setGroupFlags(app, group, FLAG_PERMISSION_USER_SET to false,
-                FLAG_PERMISSION_USER_FIXED to false, filterPermissions = listOf(perm))
 
-            reportRequestResult(perm,
-                PERMISSION_GRANT_REQUEST_RESULT_REPORTED__RESULT__AUTO_GRANTED)
             return if (storedState == null) {
                 STATE_SKIPPED
             } else {
@@ -794,7 +796,7 @@ class GrantPermissionsViewModel(
 
         Log.v(LOG_TAG, "Permission grant result requestId=$sessionId " +
             "callingUid=${packageInfo.uid} callingPackage=$packageName permission=$permission " +
-            "isImplicit=$isImplicit result=$result")
+            "isImplicit=$isImplicit result=$result", Exception())
 
         PermissionControllerStatsLog.write(
             PermissionControllerStatsLog.PERMISSION_GRANT_REQUEST_RESULT_REPORTED, sessionId,
@@ -991,6 +993,7 @@ class GrantPermissionsViewModel(
         private const val STATE_ALLOWED = 1
         private const val STATE_DENIED = 2
         private const val STATE_SKIPPED = 3
+        private const val STATE_ALREADY_ALLOWED = 4
 
         /**
          * An enum that represents the type of message which should be shown- foreground,
