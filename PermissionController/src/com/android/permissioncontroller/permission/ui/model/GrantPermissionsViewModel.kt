@@ -796,7 +796,7 @@ class GrantPermissionsViewModel(
 
         Log.v(LOG_TAG, "Permission grant result requestId=$sessionId " +
             "callingUid=${packageInfo.uid} callingPackage=$packageName permission=$permission " +
-            "isImplicit=$isImplicit result=$result", Exception())
+            "isImplicit=$isImplicit result=$result")
 
         PermissionControllerStatsLog.write(
             PermissionControllerStatsLog.PERMISSION_GRANT_REQUEST_RESULT_REPORTED, sessionId,
