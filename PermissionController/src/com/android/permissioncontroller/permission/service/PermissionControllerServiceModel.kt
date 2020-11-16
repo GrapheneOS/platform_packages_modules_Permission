@@ -64,6 +64,7 @@ class PermissionControllerServiceModel(private val service: PermissionController
      */
     fun <T> observeAndCheckForLifecycleState(
         liveData: LiveData<T>,
+        forceUpdate: Boolean = false,
         onChangedFun: (t: T?) -> Unit
     ) {
         GlobalScope.launch(Main.immediate) {
@@ -75,6 +76,10 @@ class PermissionControllerServiceModel(private val service: PermissionController
             if (!liveData.hasActiveObservers()) {
                 observedLiveDatas.add(liveData)
                 liveData.observe(service, Observer { })
+            }
+
+            if (forceUpdate && liveData is SmartUpdateMediatorLiveData<T>) {
+                liveData.update()
             }
 
             var updated = false
@@ -253,7 +258,7 @@ class PermissionControllerServiceModel(private val service: PermissionController
                 // acceptable
                 val uiInfoLiveData = AppPermGroupUiInfoLiveData[packageName, groupName,
                     Process.myUserHandle()]
-                observeAndCheckForLifecycleState(uiInfoLiveData) { uiInfo ->
+                observeAndCheckForLifecycleState(uiInfoLiveData, forceUpdate = true) { uiInfo ->
                     numLiveDatasUpdated++
 
                     uiInfo?.let {
