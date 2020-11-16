@@ -100,6 +100,10 @@ abstract class SmartUpdateMediatorLiveData<T>(private val isStaticVal: Boolean =
         if (DEBUG_UPDATES) {
             Log.i(LOG_TAG, "update ${javaClass.simpleName} ${shortStackTrace()}")
         }
+
+        if (this is SmartAsyncMediatorLiveData<T>) {
+            isStale = true
+        }
         onUpdate()
     }
 
