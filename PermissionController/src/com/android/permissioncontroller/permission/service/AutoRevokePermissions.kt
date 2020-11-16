@@ -495,7 +495,6 @@ suspend fun isPackageAutoRevokeExempt(
             .getInitializedValue()
     if (whitelistAppOpMode == MODE_DEFAULT) {
         // Initial state - whitelist not explicitly overridden by either user or installer
-
         if (DEBUG_OVERRIDE_THRESHOLDS) {
             // Suppress exemptions to allow debugging
             return false
