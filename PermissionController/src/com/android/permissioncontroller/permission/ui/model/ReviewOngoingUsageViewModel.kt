@@ -83,8 +83,6 @@ class ReviewOngoingUsageViewModel(
         val appUsages: Map<PackageAttribution, Set<String>>,
         /** Op-names of phone call accesses */
         val callUsages: Collection<String>,
-        /** Perm groups accessed by system */
-        val systemUsages: Set<String>,
         /** A map of attribution, packageName and user -> list of attribution labels to show with
          * microphone*/
         val shownAttributions: Map<PackageAttribution, List<CharSequence>> = emptyMap()
@@ -122,6 +120,7 @@ class ReviewOngoingUsageViewModel(
     /** App runtime permission usages */
     private val appUsagesLiveData = object : SmartUpdateMediatorLiveData<Map<PackageAttribution,
         Set<String>>>() {
+        private val app = PermissionControllerApplication.get()
         /** (packageName, user, permissionGroupName) -> uiInfo */
         private var permGroupUiInfos = mutableMapOf<Triple<String, String, UserHandle>,
             AppPermGroupUiInfoLiveData>()
@@ -167,15 +166,20 @@ class ReviewOngoingUsageViewModel(
             // Filter out system (== non user sensitive) apps
             val filteredUsages = mutableMapOf<PackageAttribution, MutableSet<String>>()
             for ((permGroupName, usages) in permGroupUsages.value!!) {
+                if (permGroupName == MICROPHONE && isMicMuted.value == true) {
+                    continue
+                }
+
                 for (usage in usages) {
                     if (permGroupUiInfos[Triple(usage.packageName, permGroupName, usage.user)]!!
                             .value?.isSystem == false) {
-                        if (permGroupName == MICROPHONE && isMicMuted.value == true) {
-                            continue
-                        }
 
                         filteredUsages.getOrPut(getPackageAttr(usage),
                             { mutableSetOf() }).add(permGroupName)
+                    } else if (app.getSystemService(LocationManager::class.java)!!
+                                    .isProviderPackage(usage.packageName)) {
+                        filteredUsages.getOrPut(getPackageAttr(usage),
+                                { mutableSetOf() }).add(permGroupName)
                     }
                 }
             }
@@ -387,51 +391,6 @@ class ReviewOngoingUsageViewModel(
         }
     }
 
-    /** System runtime permission usages */
-    private val systemUsagesLiveData = object : SmartAsyncMediatorLiveData<Set<String>>() {
-        private val app = PermissionControllerApplication.get()
-
-        init {
-            addSource(permGroupUsages) {
-                update()
-            }
-
-            addSource(isMicMuted) {
-                update()
-            }
-        }
-
-        override suspend fun loadDataAndPostValue(job: Job) {
-            if (job.isCancelled) {
-                return
-            }
-
-            if (!permGroupUsages.isInitialized || !isMicMuted.isInitialized) {
-                return
-            }
-
-            if (permGroupUsages.value == null) {
-                value = null
-                return
-            }
-
-            val filteredUsages = mutableSetOf<String>()
-            for ((permGroupName, usages) in permGroupUsages.value!!) {
-                for (usage in usages) {
-                    if (app.getSystemService(LocationManager::class.java)!!
-                            .isProviderPackage(usage.packageName) &&
-                        (permGroupName == CAMERA ||
-                            (permGroupName == MICROPHONE &&
-                                isMicMuted.value == false))) {
-                        filteredUsages.add(permGroupName)
-                    }
-                }
-            }
-
-            postValue(filteredUsages)
-        }
-    }
-
     /** Phone call usages */
     private val callOpUsageLiveData =
         object : SmartUpdateMediatorLiveData<Collection<String>>() {
@@ -471,10 +430,6 @@ class ReviewOngoingUsageViewModel(
                 update()
             }
 
-            addSource(systemUsagesLiveData) {
-                update()
-            }
-
             addSource(callOpUsageLiveData) {
                 update()
             }
@@ -494,25 +449,23 @@ class ReviewOngoingUsageViewModel(
             }
 
             if (!callOpUsageLiveData.isInitialized || !appUsagesLiveData.isInitialized ||
-                !systemUsagesLiveData.isInitialized || !trustedAttrsLiveData.isInitialized ||
-                !proxyChainsLiveData.isInitialized) {
+                !trustedAttrsLiveData.isInitialized || !proxyChainsLiveData.isInitialized) {
                 return
             }
 
             val callOpUsages = callOpUsageLiveData.value?.toMutableSet()
             val appUsages = appUsagesLiveData.value?.toMutableMap()
-            val systemUsages = systemUsagesLiveData.value
             val approvedAttrs = trustedAttrsLiveData.value?.toMutableMap() ?: mutableMapOf()
             val proxyChains = proxyChainsLiveData.value ?: emptySet()
 
-            if (callOpUsages == null || appUsages == null || systemUsages == null) {
+            if (callOpUsages == null || appUsages == null) {
                 postValue(null)
                 return
             }
 
             // If there is nothing to show the dialog should be closed, hence return a "invalid"
             // value
-            if (appUsages.isEmpty() && callOpUsages.isEmpty() && systemUsages.isEmpty()) {
+            if (appUsages.isEmpty() && callOpUsages.isEmpty()) {
                 postValue(null)
                 return
             }
@@ -586,7 +539,7 @@ class ReviewOngoingUsageViewModel(
 
             removeDuplicates(appUsages, approvedLabels.keys)
 
-            postValue(Usages(appUsages, callOpUsages, systemUsages, approvedLabels))
+            postValue(Usages(appUsages, callOpUsages, approvedLabels))
         }
 
         /**
