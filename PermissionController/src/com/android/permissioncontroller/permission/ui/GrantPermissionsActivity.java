@@ -266,8 +266,15 @@ public class GrantPermissionsActivity extends FragmentActivity
             Log.e(LOG_TAG, "Cannot load icon for group" + info.getGroupName(), e);
         }
 
-        boolean showingNewGroup = message == null || !message.equals(getTitle());
-        setTitle(message);
+        boolean showingNewGroup = message == null || !message.equals(getTitle());                
+        
+        // Set the permission message as the title so it can be announced. Skip on Wear
+        // because the dialog title is already announced, as is the default selection which
+        // is a text view containing the title.
+        if (!DeviceUtils.isWear(this)) {
+            setTitle(message);
+        }
+                
         ArrayList<Integer> idxs = new ArrayList<>();
         mButtonVisibilities = new boolean[info.getButtonVisibilities().size()];
         for (int i = 0; i < info.getButtonVisibilities().size(); i++) {
