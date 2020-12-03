@@ -55,6 +55,18 @@ public final class PackageUtils {
     }
 
     /**
+     * Retrieve if a package is a system package.
+     *
+     * @param packageName the name of the package
+     * @param context the {@code Context} to retrieve system services
+     *
+     * @return whether the package is a system package
+     */
+    public static boolean isSystemPackage(@NonNull String packageName, @NonNull Context context) {
+        return getPackageInfo(packageName, PackageManager.MATCH_SYSTEM_ONLY, context) != null;
+    }
+
+    /**
      * Retrieve the {@link ApplicationInfo} of an application.
      *
      * @param packageName the package name of the application

@@ -21,6 +21,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Process;
 import android.os.UserHandle;
 import android.util.ArraySet;
@@ -29,9 +30,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.android.permissioncontroller.R;
+import com.android.permissioncontroller.role.utils.PackageUtils;
 import com.android.permissioncontroller.role.utils.UserUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -43,11 +46,15 @@ import java.util.List;
  * @see com.android.server.pm.PackageManagerService#resolveAllBrowserApps(int)
  */
 public class BrowserRoleBehavior implements RoleBehavior {
-
     private static final Intent BROWSER_INTENT = new Intent()
             .setAction(Intent.ACTION_VIEW)
             .addCategory(Intent.CATEGORY_BROWSABLE)
             .setData(Uri.fromParts("http", "", null));
+
+    private static final List<String> SYSTEM_BROWSER_PERMISSIONS = Arrays.asList(
+            android.Manifest.permission.ACCESS_COARSE_LOCATION,
+            android.Manifest.permission.ACCESS_FINE_LOCATION
+    );
 
     @Nullable
     @Override
@@ -105,6 +112,18 @@ public class BrowserRoleBehavior implements RoleBehavior {
             packageNames.add(resolveInfo.activityInfo.packageName);
         }
         return new ArrayList<>(packageNames);
+    }
+
+    @Override
+    public void grant(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
+        // @see com.android.server.pm.permission.DefaultPermissionGrantPolicy
+        //      #grantDefaultPermissionsToDefaultBrowser(java.lang.String, int)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            if (PackageUtils.isSystemPackage(packageName, context)) {
+                Permissions.grant(packageName, SYSTEM_BROWSER_PERMISSIONS, false, false, false,
+                        true, false, context);
+            }
+        }
     }
 
     @Override
