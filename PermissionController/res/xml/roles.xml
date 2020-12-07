@@ -486,6 +486,9 @@
             <permission-set name="calendar" />
             <permission-set name="phone" />
         </permissions>
+        <app-op-permissions>
+            <app-op-permission name="android.permission.MANAGE_ONGOING_CALLS" />
+        </app-op-permissions>
     </role>
 
     <role
