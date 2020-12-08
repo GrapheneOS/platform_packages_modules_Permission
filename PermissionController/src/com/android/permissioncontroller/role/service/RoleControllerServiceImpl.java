@@ -16,8 +16,11 @@
 
 package com.android.permissioncontroller.role.service;
 
+import static java.util.Collections.emptyList;
+
 import android.app.role.RoleControllerService;
 import android.app.role.RoleManager;
+import android.app.role.RolePrivileges;
 import android.content.pm.ApplicationInfo;
 import android.os.Process;
 import android.os.UserHandle;
@@ -29,6 +32,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.WorkerThread;
 
 import com.android.permissioncontroller.permission.utils.CollectionUtils;
+import com.android.permissioncontroller.role.model.AppOp;
 import com.android.permissioncontroller.role.model.Role;
 import com.android.permissioncontroller.role.model.Roles;
 import com.android.permissioncontroller.role.utils.PackageUtils;
@@ -440,6 +444,26 @@ public class RoleControllerServiceImpl extends RoleControllerService {
             return false;
         }
         return role.isVisibleAsUser(Process.myUserHandle(), this);
+    }
+
+    @Override
+    public @NonNull RolePrivileges getRolePrivileges(@NonNull String roleName) {
+        Role role = Objects.requireNonNull(
+                Roles.get(this).get(roleName),
+                "Role not found: " + roleName);
+
+        List<String> appOpNames = new ArrayList<>();
+        List<AppOp> appOps = role.getAppOps();
+        for (int i = 0, opsSize = appOps.size(); i < opsSize; i++) {
+            appOpNames.add(appOps.get(i).getName());
+        }
+
+        return new RolePrivileges(
+                role.getPermissions(),
+                role.getAppOpPermissions(),
+                appOpNames,
+                //TODO(eugenesusla) implement returning special privileges
+                emptyList());
     }
 
     private static boolean checkFlags(int flags, int allowedFlags) {
