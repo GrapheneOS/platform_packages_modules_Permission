@@ -488,6 +488,7 @@
         </permissions>
         <app-op-permissions>
             <app-op-permission name="android.permission.MANAGE_ONGOING_CALLS" />
+            <app-op-permission name="android.permission.USE_ICC_AUTH_WITH_DEVICE_IDENTIFIER" />
         </app-op-permissions>
     </role>
 
