@@ -452,6 +452,7 @@
         systemOnly="true"
         visible="false">
         <permissions>
+            <permission name="android.permission.ANSWER_PHONE_CALLS" />
             <permission name="android.permission.READ_CALL_LOG" />
             <permission name="android.permission.READ_CONTACTS" />
             <permission name="android.car.permission.CAR_ENERGY"/>
