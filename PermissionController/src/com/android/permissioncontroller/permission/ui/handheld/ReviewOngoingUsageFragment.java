@@ -160,7 +160,6 @@ public class ReviewOngoingUsageFragment extends PreferenceFragmentCompat {
         ViewGroup appsList = contentView.requireViewById(R.id.items_container);
         Map<PackageAttribution, Set<String>> appUsages = allUsages.getAppUsages();
         Collection<String> callUsage = allUsages.getCallUsages();
-        Set<String> systemUsage = allUsages.getSystemUsages();
         Map<PackageAttribution, List<CharSequence>> attrLabels = allUsages.getShownAttributions();
 
         // Compute all of the permission group labels that were used.
@@ -174,14 +173,11 @@ public class ReviewOngoingUsageFragment extends PreferenceFragmentCompat {
 
         TextView otherUseHeader = contentView.requireViewById(R.id.other_use_header);
         TextView otherUseContent = contentView.requireViewById(R.id.other_use_content);
-        TextView systemUseContent = contentView.requireViewById(R.id.system_use_content);
-        View otherUseSpacer = contentView.requireViewById(R.id.other_use_inside_spacer);
 
         boolean hasCallUsage = !callUsage.isEmpty();
-        boolean hasSystemUsage = !systemUsage.isEmpty();
         boolean hasAppUsages = !appUsages.isEmpty();
 
-        if (!hasCallUsage && !hasSystemUsage) {
+        if (!hasCallUsage) {
             otherUseHeader.setVisibility(View.GONE);
             otherUseContent.setVisibility(View.GONE);
         }
@@ -191,16 +187,8 @@ public class ReviewOngoingUsageFragment extends PreferenceFragmentCompat {
             appsList.setVisibility(View.GONE);
         }
 
-        if (!hasCallUsage || !hasSystemUsage) {
-            otherUseSpacer.setVisibility(View.GONE);
-        }
-
         if (!hasCallUsage) {
             otherUseContent.setVisibility(View.GONE);
-        }
-
-        if (!hasSystemUsage) {
-            systemUseContent.setVisibility(View.GONE);
         }
 
         if (hasCallUsage) {
@@ -223,20 +211,6 @@ public class ReviewOngoingUsageFragment extends PreferenceFragmentCompat {
             if (callUsage.contains(PHONE_CALL)) {
                 usedGroups.put(MICROPHONE, KotlinUtils.INSTANCE.getPermGroupLabel(context,
                         MICROPHONE));
-            }
-        }
-
-        if (hasSystemUsage) {
-            if (systemUsage.contains(MICROPHONE) && systemUsage.contains(CAMERA)) {
-                systemUseContent.setText(getString(R.string.system_uses_microphone_and_camera));
-            } else if (systemUsage.contains(CAMERA)) {
-                systemUseContent.setText(getString(R.string.system_uses_camera));
-            } else if (systemUsage.contains(MICROPHONE)) {
-                systemUseContent.setText(getString(R.string.system_uses_microphone));
-            }
-
-            for (String usage : systemUsage) {
-                usedGroups.put(usage, KotlinUtils.INSTANCE.getPermGroupLabel(context, usage));
             }
         }
 
