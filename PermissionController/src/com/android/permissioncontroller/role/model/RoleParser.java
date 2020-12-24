@@ -710,7 +710,6 @@ public class RoleParser {
                 }
                 validateNoDuplicateElement(appOpPermission, appOpPermissions, "app op permission");
                 appOpPermissions.add(appOpPermission);
-                break;
             } else {
                 throwOrLogForUnknownTag(parser);
                 skipCurrentTag(parser);
