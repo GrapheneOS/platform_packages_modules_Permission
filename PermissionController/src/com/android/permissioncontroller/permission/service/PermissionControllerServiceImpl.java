@@ -59,6 +59,8 @@ import com.android.permissioncontroller.permission.utils.ArrayUtils;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.UserSensitiveFlagsUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
+import com.android.permissioncontroller.role.model.Role;
+import com.android.permissioncontroller.role.model.Roles;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlSerializer;
@@ -658,5 +660,14 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
                         requestId, uid, packageName, permName, false, r);
             }
         }
+    }
+
+    @Override
+    public String getPrivilegesDescriptionStringForProfile(@NonNull String deviceProfileName) {
+        Role role = Roles.get(this).get(deviceProfileName);
+        if (role == null) {
+            throw new IllegalArgumentException("No such role: " + deviceProfileName);
+        }
+        return getString(role.getDescriptionResource(), "APP_NAME");
     }
 }

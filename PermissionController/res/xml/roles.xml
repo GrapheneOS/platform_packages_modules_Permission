@@ -479,6 +479,7 @@
     <role
         name="android.app.role.COMPANION_DEVICE_WATCH"
         behavior="CompanionDeviceWatchRoleBehavior"
+        description="@string/role_watch_description"
         exclusive="false"
         overrideUserWhenGranting="false"
         systemOnly="false"
