@@ -17,7 +17,7 @@ import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.android.permissioncontroller.R;
@@ -36,7 +36,7 @@ public final class GrantPermissionsViewHandlerImpl implements GrantPermissionsVi
 
     private String mGroupName;
 
-    private LinearLayout mRootView;
+    private FrameLayout mRootView;
     private TextView mMessageView;
     private ImageView mIconView;
     private TextView mCurrentGroupView;
@@ -59,7 +59,7 @@ public final class GrantPermissionsViewHandlerImpl implements GrantPermissionsVi
 
     @Override
     public View createView() {
-        mRootView = (LinearLayout) LayoutInflater.from(mContext)
+        mRootView = (FrameLayout) LayoutInflater.from(mContext)
                 .inflate(R.layout.grant_permissions, null);
 
         mMessageView = (TextView) mRootView.findViewById(R.id.permission_message);
@@ -123,7 +123,7 @@ public final class GrantPermissionsViewHandlerImpl implements GrantPermissionsVi
             mCurrentGroupView.setText(mContext.getString(R.string.current_permission_template,
                     groupIndex + 1, groupCount));
         } else {
-            mCurrentGroupView.setVisibility(View.INVISIBLE);
+            mCurrentGroupView.setVisibility(View.GONE);
         }
     }
 
