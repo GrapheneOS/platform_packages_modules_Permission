@@ -16,6 +16,7 @@
 
 package com.android.permissioncontroller.permission.ui.model
 
+import android.Manifest
 import android.Manifest.permission_group.CAMERA
 import android.Manifest.permission_group.LOCATION
 import android.Manifest.permission_group.MICROPHONE
@@ -177,7 +178,10 @@ class ReviewOngoingUsageViewModel(
                         filteredUsages.getOrPut(getPackageAttr(usage),
                             { mutableSetOf() }).add(permGroupName)
                     } else if (app.getSystemService(LocationManager::class.java)!!
-                                    .isProviderPackage(usage.packageName)) {
+                                    .isProviderPackage(usage.packageName) ||
+                            (shouldShowPermissionsDashboard() && isAppPredictor(usage))) {
+                        // TODO ntmyren: Replace this with package name agnostic setting for aiai
+                        //  if this moves beyond teamfood.
                         filteredUsages.getOrPut(getPackageAttr(usage),
                                 { mutableSetOf() }).add(permGroupName)
                     }
@@ -185,6 +189,13 @@ class ReviewOngoingUsageViewModel(
             }
 
             value = filteredUsages
+        }
+
+        // TODO ntmyren: Replace this with better check if this moves beyond teamfood
+        private fun isAppPredictor(usage: OpAccess): Boolean {
+            return Utils.getUserContext(app, usage.user).packageManager.checkPermission(
+                    Manifest.permission.MANAGE_APP_PREDICTIONS, usage.packageName) ==
+                    PackageManager.PERMISSION_GRANTED
         }
     }
 
