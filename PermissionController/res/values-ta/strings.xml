@@ -332,6 +332,8 @@
     <string name="role_call_screening_description" msgid="4406678458741015733">"அழைப்புகளை அடையாளம் காணவும் ஸ்பேம், ரோபோகால்கள் அல்லது தேவையற்ற எண்களைத் தடைசெய்யவும் அனுமதிக்கும் ஆப்ஸ்"</string>
     <string name="role_call_screening_request_title" msgid="4775643776524356653">"<xliff:g id="APP_NAME">%1$s</xliff:g>ஐ இயல்பான அழைப்பாளர் ஐடி &amp; ஸ்பேம் ஆப்ஸாக அமைக்கவா?"</string>
     <string name="role_call_screening_request_description" msgid="7788142583532880646">"அனுமதிகள் தேவையில்லை"</string>
+    <!-- no translation found for role_watch_description (8925968267419795536) -->
+    <skip />
     <string name="request_role_current_default" msgid="7512045433655289638">"தற்போதைய இயல்பான ஆப்ஸ்"</string>
     <string name="request_role_dont_ask_again" msgid="6250680190065090205">"மீண்டும் கேட்காதே"</string>
     <string name="request_role_set_as_default" msgid="5706081295230541240">"இயல்பு ஆப்ஸாக அமை"</string>

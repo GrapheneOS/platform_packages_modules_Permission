@@ -332,6 +332,8 @@
     <string name="role_call_screening_description" msgid="4406678458741015733">"Appar som möjliggör identifiering av samtal och blockering av spam, robotsamtal eller oönskade nummer"</string>
     <string name="role_call_screening_request_title" msgid="4775643776524356653">"Vill du ställa in <xliff:g id="APP_NAME">%1$s</xliff:g> som din standardapp för spam och nummerpresentatör?"</string>
     <string name="role_call_screening_request_description" msgid="7788142583532880646">"Inga behörigheter krävs"</string>
+    <!-- no translation found for role_watch_description (8925968267419795536) -->
+    <skip />
     <string name="request_role_current_default" msgid="7512045433655289638">"Nuvarande standardapp"</string>
     <string name="request_role_dont_ask_again" msgid="6250680190065090205">"Fråga inte igen"</string>
     <string name="request_role_set_as_default" msgid="5706081295230541240">"Ange som standard"</string>

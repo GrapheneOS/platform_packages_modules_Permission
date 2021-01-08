@@ -332,6 +332,8 @@
     <string name="role_call_screening_description" msgid="4406678458741015733">"ಕರೆಗಳನ್ನು ಗುರುತಿಸಲು ಮತ್ತು ಸ್ಪ್ಯಾಮ್ ಕರೆಗಳು, ರೊಬೊಕಾಲ್‌ಗಳು ಹಾಗೂ ಅನಗತ್ಯ ಸಂಖ್ಯೆಗಳನ್ನು ನಿರ್ಬಂಧಿಸಲು ನಿಮಗೆ ಅನುಮತಿಸುವ ಆ್ಯಪ್‌ಗಳು"</string>
     <string name="role_call_screening_request_title" msgid="4775643776524356653">"<xliff:g id="APP_NAME">%1$s</xliff:g> ಆ್ಯಪ್ ಅನ್ನು ನಿಮ್ಮ ಡೀಫಾಲ್ಟ್ ಕರೆಮಾಡುವವರ ID ಮತ್ತು ಸ್ಪ್ಯಾಮ್ ಆ್ಯಪ್ ಆಗಿ ಹೊಂದಿಸುವುದೇ?"</string>
     <string name="role_call_screening_request_description" msgid="7788142583532880646">"ಯಾವುದೇ ಅನುಮತಿಗಳ ಅಗತ್ಯವಿಲ್ಲ"</string>
+    <!-- no translation found for role_watch_description (8925968267419795536) -->
+    <skip />
     <string name="request_role_current_default" msgid="7512045433655289638">"ಪ್ರಸ್ತುತ ಡೀಫಾಲ್ಟ್"</string>
     <string name="request_role_dont_ask_again" msgid="6250680190065090205">"ಮತ್ತೆ ಕೇಳಬೇಡ"</string>
     <string name="request_role_set_as_default" msgid="5706081295230541240">"ಡೀಫಾಲ್ಟ್ ಆಗಿ ಹೊಂದಿಸಿ"</string>
