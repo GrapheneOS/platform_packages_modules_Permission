@@ -332,6 +332,8 @@
     <string name="role_call_screening_description" msgid="4406678458741015733">"Programme wat dit vir jou moontlik maak om oproepe te identifiseer en strooipos, robotoproepe en ongewenste nommers te blokkeer"</string>
     <string name="role_call_screening_request_title" msgid="4775643776524356653">"Stel <xliff:g id="APP_NAME">%1$s</xliff:g> as jou verstekbeller-ID en -strooiposprogram?"</string>
     <string name="role_call_screening_request_description" msgid="7788142583532880646">"Geen toestemmings is nodig nie"</string>
+    <!-- no translation found for role_watch_description (8925968267419795536) -->
+    <skip />
     <string name="request_role_current_default" msgid="7512045433655289638">"Huidige verstek"</string>
     <string name="request_role_dont_ask_again" msgid="6250680190065090205">"Moenie weer vra nie"</string>
     <string name="request_role_set_as_default" msgid="5706081295230541240">"Stel as verstek"</string>

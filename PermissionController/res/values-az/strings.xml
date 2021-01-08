@@ -332,6 +332,8 @@
     <string name="role_call_screening_description" msgid="4406678458741015733">"Zəngləri müəyyən etməyə, spam, avtomatik zənglər və arzuolunmaz nömrələri blok etməyə imkan verən tətbiqlər"</string>
     <string name="role_call_screening_request_title" msgid="4775643776524356653">"<xliff:g id="APP_NAME">%1$s</xliff:g> defolt zəng edənin ID-si və spam tətbiqi olaraq ayarlansın?"</string>
     <string name="role_call_screening_request_description" msgid="7788142583532880646">"İcazəyə ehtiyac yoxdur"</string>
+    <!-- no translation found for role_watch_description (8925968267419795536) -->
+    <skip />
     <string name="request_role_current_default" msgid="7512045433655289638">"Cari defolt"</string>
     <string name="request_role_dont_ask_again" msgid="6250680190065090205">"Bir daha soruşmayın"</string>
     <string name="request_role_set_as_default" msgid="5706081295230541240">"Defolt olaraq seçin"</string>
