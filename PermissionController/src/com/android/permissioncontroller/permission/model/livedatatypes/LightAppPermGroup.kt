@@ -116,9 +116,11 @@ data class LightAppPermGroup(
     val supportsRuntimePerms = packageInfo.targetSdkVersion >= Build.VERSION_CODES.M
 
     /**
-     * Whether this App Permission Group contains any one-time permission
+     * Whether this App Permission Group contains any one-time permission and
+     * none of the permissions are granted (not one-time)
      */
-    val isOneTime = permissions.any { it.value.isOneTime }
+    val isOneTime = permissions.any { it.value.isOneTime } &&
+            !permissions.any { !it.value.isOneTime && it.value.isGrantedIncludingAppOp }
 
     /**
      * Whether any permissions in this group are granted by default (pregrant)

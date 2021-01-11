@@ -87,6 +87,13 @@ public class GrantPermissionsActivity extends FragmentActivity
     public static final int NO_UPGRADE_OT_AND_DONT_ASK_AGAIN_BUTTON = 9; // one-time
     public static final int LINK_TO_SETTINGS = 10;
 
+    public static final int NEXT_LOCATION_DIALOG = 5;
+    public static final int FINE_RADIO_BUTTON = 0;
+    public static final int COARSE_RADIO_BUTTON = 1;
+    public static final int DIALOG_WITH_BOTH_LOCATIONS = 2;
+    public static final int DIALOG_WITH_FINE_LOCATION_ONLY = 3;
+    public static final int DIALOG_WITH_COARSE_LOCATION_ONLY = 4;
+
     private static final int APP_PERMISSION_REQUEST_CODE = 1;
 
     /** Unique Id of a request */
@@ -94,6 +101,7 @@ public class GrantPermissionsActivity extends FragmentActivity
 
     private String[] mRequestedPermissions;
     private boolean[] mButtonVisibilities;
+    private boolean[] mLocationVisibilities;
     private List<RequestInfo> mRequestInfos = new ArrayList<>();
     private GrantPermissionsViewHandler mViewHandler;
     private GrantPermissionsViewModel mViewModel;
@@ -214,6 +222,12 @@ public class GrantPermissionsActivity extends FragmentActivity
             case FG_MESSAGE:
                 messageId = Utils.getRequest(info.getGroupName());
                 break;
+            case FG_FINE_LOCATION_MESSAGE:
+                messageId = R.string.permgrouprequest_finelocation;
+                break;
+            case FG_COARSE_LOCATION_MESSAGE:
+                messageId = R.string.permgrouprequest_coarselocation;
+                break;
             case BG_MESSAGE:
                 messageId = Utils.getBackgroundRequest(info.getGroupName());
                 break;
@@ -266,15 +280,15 @@ public class GrantPermissionsActivity extends FragmentActivity
             Log.e(LOG_TAG, "Cannot load icon for group" + info.getGroupName(), e);
         }
 
-        boolean showingNewGroup = message == null || !message.equals(getTitle());                
-        
+        boolean showingNewGroup = message == null || !message.equals(getTitle());
+
         // Set the permission message as the title so it can be announced. Skip on Wear
         // because the dialog title is already announced, as is the default selection which
         // is a text view containing the title.
         if (!DeviceUtils.isWear(this)) {
             setTitle(message);
         }
-                
+
         ArrayList<Integer> idxs = new ArrayList<>();
         mButtonVisibilities = new boolean[info.getButtonVisibilities().size()];
         for (int i = 0; i < info.getButtonVisibilities().size(); i++) {
@@ -283,8 +297,14 @@ public class GrantPermissionsActivity extends FragmentActivity
                 idxs.add(i);
             }
         }
+
+        mLocationVisibilities = new boolean[info.getLocationVisibilities().size()];
+        for (int i = 0; i < info.getLocationVisibilities().size(); i++) {
+            mLocationVisibilities[i] = info.getLocationVisibilities().get(i);
+        }
+
         mViewHandler.updateUi(info.getGroupName(), mTotalRequests, mCurrentRequestIdx, icon,
-                message, detailMessage, mButtonVisibilities);
+                message, detailMessage, mButtonVisibilities, mLocationVisibilities);
         if (showingNewGroup) {
             mCurrentRequestIdx++;
         }
@@ -317,7 +337,7 @@ public class GrantPermissionsActivity extends FragmentActivity
         return new ClickableSpan() {
             @Override
             public void onClick(View widget) {
-                logGrantPermissionActivityButtons(info.getGroupName(), LINKED_TO_SETTINGS);
+                logGrantPermissionActivityButtons(info.getGroupName(), null, LINKED_TO_SETTINGS);
                 mViewModel.sendToSettingsFromLink(GrantPermissionsActivity.this,
                         info.getGroupName());
             }
@@ -339,37 +359,27 @@ public class GrantPermissionsActivity extends FragmentActivity
     @Override
     public void onPermissionGrantResult(String name,
             @GrantPermissionsViewHandler.Result int result) {
-        if (result == GRANTED_ALWAYS || result == GRANTED_FOREGROUND_ONLY
-                || result == DENIED_DO_NOT_ASK_AGAIN) {
-            KeyguardManager kgm = getSystemService(KeyguardManager.class);
-
-            if (kgm.isDeviceLocked()) {
-                kgm.requestDismissKeyguard(this, new KeyguardManager.KeyguardDismissCallback() {
-                            @Override
-                            public void onDismissError() {
-                                Log.e(LOG_TAG, "Cannot dismiss keyguard perm=" + name
-                                        + " result=" + result);
-                            }
-
-                            @Override
-                            public void onDismissCancelled() {
-                                // do nothing (i.e. stay at the current permission group)
-                            }
-
-                            @Override
-                            public void onDismissSucceeded() {
-                                // Now the keyguard is dismissed, hence the device is not locked
-                                // anymore
-                                onPermissionGrantResult(name, result);
-                            }
-                        });
-
-                return;
-            }
+        if (checkKgm(name, null, result)) {
+            return;
         }
 
-        logGrantPermissionActivityButtons(name, result);
-        mViewModel.onPermissionGrantResult(name, result);
+        logGrantPermissionActivityButtons(name, null, result);
+        mViewModel.onPermissionGrantResult(name, null, result);
+        showNextRequest();
+        if (result == CANCELED) {
+            setResultAndFinish();
+        }
+    }
+
+    @Override
+    public void onPermissionGrantResult(String name, List<String> affectedForegroundPermissions,
+            @GrantPermissionsViewHandler.Result int result) {
+        if (checkKgm(name, affectedForegroundPermissions, result)) {
+            return;
+        }
+
+        logGrantPermissionActivityButtons(name, affectedForegroundPermissions, result);
+        mViewModel.onPermissionGrantResult(name, affectedForegroundPermissions, result);
         showNextRequest();
         if (result == CANCELED) {
             setResultAndFinish();
@@ -388,6 +398,38 @@ public class GrantPermissionsActivity extends FragmentActivity
             mViewModel.autoGrantNotify();
         }
         super.finish();
+    }
+
+    private boolean checkKgm(String name, List<String> affectedForegroundPermissions,
+            @GrantPermissionsViewHandler.Result int result) {
+        if (result == GRANTED_ALWAYS || result == GRANTED_FOREGROUND_ONLY
+                || result == DENIED_DO_NOT_ASK_AGAIN) {
+            KeyguardManager kgm = getSystemService(KeyguardManager.class);
+
+            if (kgm != null && kgm.isDeviceLocked()) {
+                kgm.requestDismissKeyguard(this, new KeyguardManager.KeyguardDismissCallback() {
+                    @Override
+                    public void onDismissError() {
+                        Log.e(LOG_TAG, "Cannot dismiss keyguard perm=" + name
+                                + " result=" + result);
+                    }
+
+                    @Override
+                    public void onDismissCancelled() {
+                        // do nothing (i.e. stay at the current permission group)
+                    }
+
+                    @Override
+                    public void onDismissSucceeded() {
+                        // Now the keyguard is dismissed, hence the device is not locked
+                        // anymore
+                        onPermissionGrantResult(name, affectedForegroundPermissions, result);
+                    }
+                });
+                return true;
+            }
+        }
+        return false;
     }
 
     private void setResultIfNeeded(int resultCode) {
@@ -420,7 +462,8 @@ public class GrantPermissionsActivity extends FragmentActivity
         finish();
     }
 
-    private void logGrantPermissionActivityButtons(String permissionGroupName, int grantResult) {
+    private void logGrantPermissionActivityButtons(String permissionGroupName,
+            List<String> affectedForegroundPermissions, int grantResult) {
         int clickedButton = 0;
         int presentedButtons = getButtonState();
         switch (grantResult) {
@@ -459,7 +502,8 @@ public class GrantPermissionsActivity extends FragmentActivity
                 break;
         }
 
-        mViewModel.logClickedButtons(permissionGroupName, clickedButton, presentedButtons);
+        mViewModel.logClickedButtons(permissionGroupName, affectedForegroundPermissions,
+                clickedButton, presentedButtons);
     }
 
     private int getButtonState() {

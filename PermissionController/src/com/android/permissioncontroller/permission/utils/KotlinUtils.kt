@@ -16,6 +16,7 @@
 
 package com.android.permissioncontroller.permission.utils
 
+import android.Manifest
 import android.Manifest.permission.ACCESS_BACKGROUND_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.app.ActivityManager
@@ -406,19 +407,18 @@ object KotlinUtils {
             }
         }
 
-        val permFlagFilter = flagsToSet or flagMask.inv()
         val newPerms = mutableMapOf<String, LightPermission>()
         for ((permName, perm) in group.permissions) {
             if (permName !in filterPermissions) {
                 continue
             }
-            val newFlags = perm.flags and permFlagFilter
-            if (newFlags != perm.flags) {
+            // Check if flags need to be updated
+            if (flagMask and (perm.flags xor flagsToSet) != 0) {
                 app.packageManager.updatePermissionFlags(permName, group.packageName,
                     group.userHandle, *flags)
             }
             newPerms[permName] = LightPermission(group.packageInfo, perm.permInfo,
-                perm.isGrantedIncludingAppOp, newFlags, perm.foregroundPerms)
+                perm.isGrantedIncludingAppOp, perm.flags or flagsToSet, perm.foregroundPerms)
         }
         return LightAppPermGroup(group.packageInfo, group.permGroupInfo, newPerms,
             group.hasInstallToRuntimeSplit, group.specialLocationGrant)
@@ -972,6 +972,35 @@ object KotlinUtils {
                 MATCH_DIRECT_BOOT_AWARE or MATCH_DIRECT_BOOT_UNAWARE)
         }
         return resolveInfos != null && resolveInfos.size > 0
+    }
+
+    /**
+     * Set selected location accuracy flags for COARSE and FINE location permissions.
+     *
+     * @param app: The current application
+     * @param group: The LightAppPermGroup whose permission flags we wish to set
+     * @param isFineSelected: Whether fine location is selected
+     */
+    fun setFlagsWhenLocationAccuracyChanged(
+        app: Application,
+        group: LightAppPermGroup,
+        isFineSelected: Boolean
+    ) {
+        if (isFineSelected) {
+            setGroupFlags(app, group,
+                PackageManager.FLAG_PERMISSION_SELECTED_LOCATION_ACCURACY to true,
+                filterPermissions = listOf(ACCESS_FINE_LOCATION))
+            setGroupFlags(app, group,
+                PackageManager.FLAG_PERMISSION_SELECTED_LOCATION_ACCURACY to false,
+                filterPermissions = listOf(Manifest.permission.ACCESS_COARSE_LOCATION))
+        } else {
+            setGroupFlags(app, group,
+                PackageManager.FLAG_PERMISSION_SELECTED_LOCATION_ACCURACY to false,
+                filterPermissions = listOf(ACCESS_FINE_LOCATION))
+            setGroupFlags(app, group,
+                PackageManager.FLAG_PERMISSION_SELECTED_LOCATION_ACCURACY to true,
+                filterPermissions = listOf(Manifest.permission.ACCESS_COARSE_LOCATION))
+        }
     }
 }
 

@@ -56,6 +56,36 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/permission_location_accuracy">
+
+                <RadioGroup
+                    android:id="@+id/permission_location_accuracy_radio_group"
+                    style="@style/PermissionLocationAccuracyRadioGroup">
+
+                    <RadioButton
+                        android:id="@+id/permission_location_accuracy_radio_fine"
+                        android:text="@string/permgrouprequest_finelocation_imagetext"
+                        style="@style/PermissionLocationAccuracyRadioFine"/>
+
+                    <RadioButton
+                        android:id="@+id/permission_location_accuracy_radio_coarse"
+                        android:text="@string/permgrouprequest_coarselocation_imagetext"
+                        style="@style/PermissionLocationAccuracyRadioCoarse" />
+                </RadioGroup>
+
+                <ImageView
+                    android:id="@+id/permission_location_accuracy_fine_only"
+                    style="@style/PermissionLocationAccuracyFineImageView" />
+
+                <ImageView
+                    android:id="@+id/permission_location_accuracy_coarse_only"
+                    style="@style/PermissionLocationAccuracyCoarseImageView" />
+
+            </LinearLayout>
+
             <!-- Buttons on bottom of dialog -->
             <LinearLayout
                 style="@style/PermissionGrantButtonList">

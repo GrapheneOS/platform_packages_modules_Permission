@@ -17,6 +17,9 @@
 package com.android.permissioncontroller.permission.ui.model
 
 import android.Manifest
+import android.Manifest.permission.ACCESS_COARSE_LOCATION
+import android.Manifest.permission.ACCESS_FINE_LOCATION
+import android.Manifest.permission_group.LOCATION
 import android.app.Activity
 import android.app.Application
 import android.app.admin.DevicePolicyManager
@@ -63,10 +66,16 @@ import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_FOREGROUND_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_ONE_TIME_BUTTON
+import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.COARSE_RADIO_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DENY_AND_DONT_ASK_AGAIN_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DENY_BUTTON
+import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DIALOG_WITH_BOTH_LOCATIONS
+import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DIALOG_WITH_COARSE_LOCATION_ONLY
+import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DIALOG_WITH_FINE_LOCATION_ONLY
+import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.FINE_RADIO_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.LINK_TO_SETTINGS
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.NEXT_BUTTON
+import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.NEXT_LOCATION_DIALOG
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.NO_UPGRADE_AND_DONT_ASK_AGAIN_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.NO_UPGRADE_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.NO_UPGRADE_OT_AND_DONT_ASK_AGAIN_BUTTON
@@ -131,6 +140,7 @@ class GrantPermissionsViewModel(
     data class RequestInfo(
         val groupInfo: LightPermGroupInfo,
         val buttonVisibilities: List<Boolean> = List(NEXT_BUTTON) { false },
+        val locationVisibilities: List<Boolean> = List(NEXT_LOCATION_DIALOG) { false },
         val message: RequestMessage = RequestMessage.FG_MESSAGE,
         val detailMessage: RequestMessage = RequestMessage.NO_MESSAGE,
         val sendToSettingsImmediately: Boolean = false
@@ -255,9 +265,14 @@ class GrantPermissionsViewModel(
                 var isFgUserSet = false
                 var isBgUserSet = false
 
-                if (fgState?.group?.foreground?.isGranted == false) {
-                    needFgPermissions = true
-                    isFgUserSet = fgState.group.foreground.isUserSet
+                if (fgState?.group != null) {
+                    val fgGroup = fgState.group
+                    if (!fgGroup.foreground.isGranted ||
+                        fgGroup.permissions[ACCESS_FINE_LOCATION]?.isGrantedIncludingAppOp
+                            == false) {
+                        needFgPermissions = true
+                        isFgUserSet = fgState.group.foreground.isUserSet
+                    }
                 }
 
                 if (bgState?.group?.background?.isGranted == false) {
@@ -377,7 +392,49 @@ class GrantPermissionsViewModel(
                 buttonVisibilities[LINK_TO_SETTINGS] =
                     detailMessage != RequestMessage.NO_MESSAGE
 
-                requestInfos.add(RequestInfo(groupInfo, buttonVisibilities, message, detailMessage))
+                // Show location permission dialogs based on location permissions
+                val locationVisibilities = MutableList(NEXT_LOCATION_DIALOG) { false }
+                if (groupState.group.permGroupName == LOCATION) {
+                    if (needFgPermissions) {
+                        if (groupState.group.foregroundPermNames.contains(ACCESS_FINE_LOCATION)) {
+                            val coarseLocationPerm =
+                                groupState.group.allPermissions[ACCESS_COARSE_LOCATION]
+                            if (coarseLocationPerm?.isGrantedIncludingAppOp == true) {
+                                // Upgrade flow
+                                locationVisibilities[DIALOG_WITH_FINE_LOCATION_ONLY] = true
+                                message = RequestMessage.FG_FINE_LOCATION_MESSAGE
+                                // If COARSE was granted one time, hide 'While in use' button
+                                if (coarseLocationPerm.isOneTime) {
+                                    buttonVisibilities[ALLOW_FOREGROUND_BUTTON] = false
+                                }
+                            } else {
+                                // Normal flow with both Coarse and Fine locations
+                                locationVisibilities[DIALOG_WITH_BOTH_LOCATIONS] = true
+                                // When user has set to coarse location for one time permission in
+                                // location settings, select coarse location as the default option.
+                                if (coarseLocationPerm?.isSelectedLocationAccuracy == true) {
+                                    locationVisibilities[COARSE_RADIO_BUTTON] = true
+                                    message = RequestMessage.FG_COARSE_LOCATION_MESSAGE
+                                } else {
+                                    locationVisibilities[FINE_RADIO_BUTTON] = true
+                                    message = RequestMessage.FG_FINE_LOCATION_MESSAGE
+                                }
+                            }
+                        } else if (groupState.group.foregroundPermNames
+                                .contains(ACCESS_COARSE_LOCATION)) {
+                            // Request Coarse only
+                            locationVisibilities[DIALOG_WITH_COARSE_LOCATION_ONLY] = true
+                            message = RequestMessage.FG_COARSE_LOCATION_MESSAGE
+                        }
+                    }
+                }
+
+                requestInfos.add(RequestInfo(
+                    groupInfo,
+                    buttonVisibilities,
+                    locationVisibilities,
+                    message,
+                    detailMessage))
             }
             requestInfos.sortWith(Comparator { rhs, lhs ->
                 val rhsHasOneTime = rhs.buttonVisibilities[ALLOW_ONE_TIME_BUTTON]
@@ -438,7 +495,10 @@ class GrantPermissionsViewModel(
             }
 
             if (currGroupState != STATE_UNKNOWN) {
-                groupStateInfo.state = currGroupState
+                // If one of the permissions is STATE_UNKNOWN then the group is STATE_UNKNOWN
+                if (groupStateInfo.state != STATE_UNKNOWN) {
+                    groupStateInfo.state = currGroupState
+                }
             }
             // If we saved state, load it
             groupStateInfo.affectedPermissions.add(perm)
@@ -568,6 +628,14 @@ class GrantPermissionsViewModel(
                 if (isBackground) {
                     KotlinUtils.grantBackgroundRuntimePermissions(app, group, listOf(perm))
                 } else {
+                    // If FINE location is not granted, do not grant it automatically when COARSE
+                    // location is already granted.
+                    if (group.permGroupName == LOCATION &&
+                        group.foregroundPermNames.contains(ACCESS_FINE_LOCATION) &&
+                        group.allPermissions[ACCESS_FINE_LOCATION]?.isGrantedIncludingAppOp
+                            == false) {
+                        return STATE_UNKNOWN
+                    }
                     KotlinUtils.grantForegroundRuntimePermissions(app, group, listOf(perm))
                 }
                 KotlinUtils.setGroupFlags(app, group, FLAG_PERMISSION_USER_SET to false,
@@ -630,9 +698,14 @@ class GrantPermissionsViewModel(
      * Upon the user clicking a button, grant permissions, if applicable.
      *
      * @param groupName The name of the permission group which was changed
+     * @param affectedForegroundPermissions The name of the foreground permission which was changed
      * @param result The choice the user made regarding the group.
      */
-    fun onPermissionGrantResult(groupName: String?, result: Int) {
+    fun onPermissionGrantResult(
+        groupName: String?,
+        affectedForegroundPermissions: List<String>?,
+        result: Int
+    ) {
         if (groupName == null) {
             return
         }
@@ -653,51 +726,61 @@ class GrantPermissionsViewModel(
             GRANTED_ALWAYS -> {
                 if (foregroundGroupState != null) {
                     onPermissionGrantResultSingleState(foregroundGroupState,
-                        granted = true, isOneTime = false, doNotAskAgain = false)
+                        affectedForegroundPermissions, granted = true, isOneTime = false,
+                        doNotAskAgain = false)
                 }
                 if (backgroundGroupState != null) {
                     onPermissionGrantResultSingleState(backgroundGroupState,
-                        granted = true, isOneTime = false, doNotAskAgain = false)
+                        affectedForegroundPermissions, granted = true, isOneTime = false,
+                        doNotAskAgain = false)
                 }
             }
             GRANTED_FOREGROUND_ONLY -> {
                 if (foregroundGroupState != null) {
                     onPermissionGrantResultSingleState(foregroundGroupState,
-                        granted = true, isOneTime = false, doNotAskAgain = false)
+                        affectedForegroundPermissions, granted = true, isOneTime = false,
+                        doNotAskAgain = false)
                 }
                 if (backgroundGroupState != null) {
                     onPermissionGrantResultSingleState(backgroundGroupState,
-                        granted = false, isOneTime = false, doNotAskAgain = false)
+                        affectedForegroundPermissions, granted = false, isOneTime = false,
+                        doNotAskAgain = false)
                 }
             }
             GrantPermissionsViewHandler.GRANTED_ONE_TIME -> {
                 if (foregroundGroupState != null) {
                     onPermissionGrantResultSingleState(foregroundGroupState,
-                        granted = true, isOneTime = true, doNotAskAgain = false)
+                        affectedForegroundPermissions, granted = true, isOneTime = true,
+                        doNotAskAgain = false)
                 }
                 if (backgroundGroupState != null) {
                     onPermissionGrantResultSingleState(backgroundGroupState,
-                        granted = false, isOneTime = true, doNotAskAgain = false)
+                        affectedForegroundPermissions, granted = false, isOneTime = true,
+                        doNotAskAgain = false)
                 }
             }
             DENIED -> {
                 if (foregroundGroupState != null) {
                     onPermissionGrantResultSingleState(foregroundGroupState,
-                        granted = false, isOneTime = false, doNotAskAgain = false)
+                        affectedForegroundPermissions, granted = false, isOneTime = false,
+                        doNotAskAgain = false)
                 }
                 if (backgroundGroupState != null) {
-                    onPermissionGrantResultSingleState(backgroundGroupState, granted = false,
-                        isOneTime = false, doNotAskAgain = false)
+                    onPermissionGrantResultSingleState(backgroundGroupState,
+                        affectedForegroundPermissions, granted = false, isOneTime = false,
+                        doNotAskAgain = false)
                 }
             }
             DENIED_DO_NOT_ASK_AGAIN -> {
                 if (foregroundGroupState != null) {
                     onPermissionGrantResultSingleState(foregroundGroupState,
-                        granted = false, isOneTime = false, doNotAskAgain = true)
+                        affectedForegroundPermissions, granted = false, isOneTime = false,
+                        doNotAskAgain = true)
                 }
                 if (backgroundGroupState != null) {
                     onPermissionGrantResultSingleState(backgroundGroupState,
-                        granted = false, isOneTime = false, doNotAskAgain = true)
+                        affectedForegroundPermissions, granted = false, isOneTime = false,
+                        doNotAskAgain = true)
                 }
             }
         }
@@ -705,6 +788,7 @@ class GrantPermissionsViewModel(
 
     private fun onPermissionGrantResultSingleState(
         groupState: GroupState,
+        affectedForegroundPermissions: List<String>?,
         granted: Boolean,
         isOneTime: Boolean,
         doNotAskAgain: Boolean
@@ -724,8 +808,15 @@ class GrantPermissionsViewModel(
                 KotlinUtils.grantBackgroundRuntimePermissions(app, groupState.group,
                     groupState.affectedPermissions)
             } else {
-                KotlinUtils.grantForegroundRuntimePermissions(app, groupState.group,
-                    groupState.affectedPermissions, isOneTime)
+                if (affectedForegroundPermissions == null) {
+                    KotlinUtils.grantForegroundRuntimePermissions(app, groupState.group,
+                        groupState.affectedPermissions, isOneTime)
+                } else {
+                    KotlinUtils.grantForegroundRuntimePermissions(app, groupState.group,
+                        filterPermissions = affectedForegroundPermissions, isOneTime)
+                    KotlinUtils.setFlagsWhenLocationAccuracyChanged(app, groupState.group,
+                            affectedForegroundPermissions.contains(ACCESS_FINE_LOCATION))
+                }
             }
             groupState.state = STATE_ALLOWED
         } else {
@@ -733,8 +824,15 @@ class GrantPermissionsViewModel(
                 KotlinUtils.revokeBackgroundRuntimePermissions(app, groupState.group,
                     userFixed = doNotAskAgain, filterPermissions = groupState.affectedPermissions)
             } else {
-                KotlinUtils.revokeForegroundRuntimePermissions(app, groupState.group,
-                    userFixed = doNotAskAgain, filterPermissions = groupState.affectedPermissions)
+                if (affectedForegroundPermissions == null) {
+                    KotlinUtils.revokeForegroundRuntimePermissions(app, groupState.group,
+                        userFixed = doNotAskAgain,
+                        filterPermissions = groupState.affectedPermissions, oneTime = isOneTime)
+                } else {
+                    KotlinUtils.revokeForegroundRuntimePermissions(app, groupState.group,
+                        userFixed = doNotAskAgain,
+                        filterPermissions = affectedForegroundPermissions, oneTime = isOneTime)
+                }
             }
             result = if (doNotAskAgain) {
                 PERMISSION_GRANT_REQUEST_RESULT_REPORTED__RESULT__USER_DENIED_WITH_PREJUDICE
@@ -966,17 +1064,28 @@ class GrantPermissionsViewModel(
      * Log information about the buttons which were shown and clicked by the user.
      *
      * @param groupName The name of the permission group which was interacted with
+     * @param affectedForegroundPermissions The name of the foreground permission which was
+     *                                      interacted with.
      * @param clickedButton The button that was clicked by the user
      * @param presentedButtons All buttons which were shown to the user
      */
-    fun logClickedButtons(groupName: String?, clickedButton: Int, presentedButtons: Int) {
+    fun logClickedButtons(
+        groupName: String?,
+        affectedForegroundPermissions: List<String>?,
+        clickedButton: Int,
+        presentedButtons: Int
+    ) {
         if (groupName == null) {
             return
         }
         PermissionControllerStatsLog.write(GRANT_PERMISSIONS_ACTIVITY_BUTTON_ACTIONS,
             groupName, packageInfo.uid, packageName, presentedButtons, clickedButton, sessionId)
+        val permissionsString =
+            if (affectedForegroundPermissions != null) "permission=$affectedForegroundPermissions "
+            else ""
         Log.v(LOG_TAG, "Logged buttons presented and clicked permissionGroupName=" +
-            "$groupName uid=${packageInfo.uid} package=$packageName presentedButtons=" +
+            "$groupName uid=${packageInfo.uid} " + permissionsString +
+            "package=$packageName presentedButtons=" +
             "$presentedButtons clickedButton=$clickedButton sessionId=$sessionId")
     }
 
@@ -1003,7 +1112,9 @@ class GrantPermissionsViewModel(
             FG_MESSAGE(0),
             BG_MESSAGE(1),
             UPGRADE_MESSAGE(2),
-            NO_MESSAGE(3)
+            NO_MESSAGE(3),
+            FG_FINE_LOCATION_MESSAGE(4),
+            FG_COARSE_LOCATION_MESSAGE(5)
         }
     }
 }
