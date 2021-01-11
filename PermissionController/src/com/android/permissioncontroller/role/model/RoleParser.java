@@ -289,14 +289,13 @@ public class RoleParser {
 
         String defaultHoldersResourceName = getAttributeValue(parser, ATTRIBUTE_DEFAULT_HOLDERS);
 
+        int descriptionResource = getAttributeResourceValue(parser, ATTRIBUTE_DESCRIPTION, 0);
+
         boolean visible = getAttributeBooleanValue(parser, ATTRIBUTE_VISIBLE, true);
-        Integer descriptionResource;
         Integer labelResource;
         Integer shortLabelResource;
         if (visible) {
-            descriptionResource = requireAttributeResourceValue(parser,
-                    ATTRIBUTE_DESCRIPTION, 0, TAG_ROLE);
-            if (descriptionResource == null) {
+            if (descriptionResource == 0) {
                 skipCurrentTag(parser);
                 return null;
             }
@@ -314,7 +313,6 @@ public class RoleParser {
                 return null;
             }
         } else {
-            descriptionResource = 0;
             labelResource = 0;
             shortLabelResource = 0;
         }
