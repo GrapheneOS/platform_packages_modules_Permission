@@ -1,7 +1,7 @@
 package com.android.permissioncontroller.permission.ui.television;
 
-import static com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_BUTTON;
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_ALWAYS_BUTTON;
+import static com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_BUTTON;
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_FOREGROUND_BUTTON;
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_ONE_TIME_BUTTON;
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DENY_AND_DONT_ASK_AGAIN_BUTTON;
@@ -16,8 +16,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.permissioncontroller.R;
@@ -89,7 +89,7 @@ public final class GrantPermissionsViewHandlerImpl implements GrantPermissionsVi
     public void updateWindowAttributes(WindowManager.LayoutParams outLayoutParams) {
         outLayoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
         outLayoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        outLayoutParams.format = PixelFormat.OPAQUE;
+        outLayoutParams.format = PixelFormat.TRANSPARENT;
         outLayoutParams.gravity = Gravity.BOTTOM;
         outLayoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_DIALOG;
         outLayoutParams.flags |= WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;

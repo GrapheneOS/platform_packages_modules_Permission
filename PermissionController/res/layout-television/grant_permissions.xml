@@ -22,7 +22,7 @@
     android:layout_gravity="center">
     <LinearLayout
         android:id="@+id/grant_dialog"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/grant_permissions_dialog_side_margin"
         android:layout_marginRight="@dimen/grant_permissions_dialog_side_margin"
