@@ -332,8 +332,7 @@
     <string name="role_call_screening_description" msgid="4406678458741015733">"此類應用程式讓您識別來電，並封鎖垃圾電話、錄音電話或騷擾電話號碼"</string>
     <string name="role_call_screening_request_title" msgid="4775643776524356653">"要將「<xliff:g id="APP_NAME">%1$s</xliff:g>」設為預設來電顯示與垃圾郵件應用程式嗎？"</string>
     <string name="role_call_screening_request_description" msgid="7788142583532880646">"無需任何權限"</string>
-    <!-- no translation found for role_watch_description (8925968267419795536) -->
-    <skip />
+    <string name="role_watch_description" msgid="8925968267419795536">"<xliff:g id="APP_NAME">%1$s</xliff:g> 將可以存取「通知」、「電話」、「聯絡人」和「日曆」。"</string>
     <string name="request_role_current_default" msgid="7512045433655289638">"目前預設"</string>
     <string name="request_role_dont_ask_again" msgid="6250680190065090205">"不要再詢問"</string>
     <string name="request_role_set_as_default" msgid="5706081295230541240">"設定為預設"</string>

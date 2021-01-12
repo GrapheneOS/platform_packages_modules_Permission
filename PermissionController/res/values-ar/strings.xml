@@ -384,8 +384,7 @@
     <string name="role_call_screening_description" msgid="4406678458741015733">"التطبيقات التي تتيح لك إمكانية تحديد هوية المتصلين أو حظر الرسائل غير المرغوب فيها أو المكالمات المسجّلة أو الأرقام غير المرغوب فيها"</string>
     <string name="role_call_screening_request_title" msgid="4775643776524356653">"هل تريد ضبط <xliff:g id="APP_NAME">%1$s</xliff:g> باعتباره التطبيق التلقائي لإظهار رقم المتّصل والرسائل غير المرغوب فيها؟"</string>
     <string name="role_call_screening_request_description" msgid="7788142583532880646">"لا يجب تقديم أذونات."</string>
-    <!-- no translation found for role_watch_description (8925968267419795536) -->
-    <skip />
+    <string name="role_watch_description" msgid="8925968267419795536">"سيتمكن تطبيق <xliff:g id="APP_NAME">%1$s</xliff:g> من الوصول إلى الإشعارات والهاتف وجهات الاتصال والتقويم."</string>
     <string name="request_role_current_default" msgid="7512045433655289638">"التطبيق التلقائي الحالي"</string>
     <string name="request_role_dont_ask_again" msgid="6250680190065090205">"لا تسألني مرة أخرى."</string>
     <string name="request_role_set_as_default" msgid="5706081295230541240">"ضبط كتطبيق تلقائي"</string>
