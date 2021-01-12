@@ -332,8 +332,7 @@
     <string name="role_call_screening_description" msgid="4406678458741015733">"Приложения, които ви дават възможност да идентифицирате обажданията и да блокирате спам, автоматизирани или нежелани обаждания"</string>
     <string name="role_call_screening_request_title" msgid="4775643776524356653">"Да се зададе ли <xliff:g id="APP_NAME">%1$s</xliff:g> като стандартно приложение за идентификатор на обаждащия се и спам?"</string>
     <string name="role_call_screening_request_description" msgid="7788142583532880646">"Не са необходими разрешения"</string>
-    <!-- no translation found for role_watch_description (8925968267419795536) -->
-    <skip />
+    <string name="role_watch_description" msgid="8925968267419795536">"<xliff:g id="APP_NAME">%1$s</xliff:g> ще получи достъп до известията, телефона, контактите и календара."</string>
     <string name="request_role_current_default" msgid="7512045433655289638">"Текущо стандартно приложение"</string>
     <string name="request_role_dont_ask_again" msgid="6250680190065090205">"Без повторно питане"</string>
     <string name="request_role_set_as_default" msgid="5706081295230541240">"Задаване"</string>

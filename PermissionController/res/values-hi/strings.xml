@@ -332,8 +332,7 @@
     <string name="role_call_screening_description" msgid="4406678458741015733">"ऐसे ऐप्लिकेशन जो कॉल करने वाले की पहचान करने और स्पैम कॉल, रोबोकॉल या अनचाहे नंबर से आ रहे कॉल को ब्लॉक करने में आपकी मदद करते हैं"</string>
     <string name="role_call_screening_request_title" msgid="4775643776524356653">"क्या <xliff:g id="APP_NAME">%1$s</xliff:g> को अपना डिफ़ॉल्ट कॉलर आईडी और स्पैम आईडी के तौर पर सेट करना चाहते हैं?"</string>
     <string name="role_call_screening_request_description" msgid="7788142583532880646">"अनुमति की ज़रूरत नहीं है"</string>
-    <!-- no translation found for role_watch_description (8925968267419795536) -->
-    <skip />
+    <string name="role_watch_description" msgid="8925968267419795536">"<xliff:g id="APP_NAME">%1$s</xliff:g> को सूचनाओं, फ़ोन, संपर्कों, और कैलेंडर का ऐक्सेस मिल जाएगा."</string>
     <string name="request_role_current_default" msgid="7512045433655289638">"मौजूदा डिफ़ॉल्ट"</string>
     <string name="request_role_dont_ask_again" msgid="6250680190065090205">"फिर से न पूछें"</string>
     <string name="request_role_set_as_default" msgid="5706081295230541240">"डिफ़ॉल्ट के रूप में सेट करें"</string>

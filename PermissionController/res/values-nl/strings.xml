@@ -332,8 +332,7 @@
     <string name="role_call_screening_description" msgid="4406678458741015733">"Apps waarmee je gesprekken kunt identificeren en spam, robocalls of ongewenste nummers kunt blokkeren"</string>
     <string name="role_call_screening_request_title" msgid="4775643776524356653">"<xliff:g id="APP_NAME">%1$s</xliff:g> instellen als standaard-app voor beller-ID\'s en spam?"</string>
     <string name="role_call_screening_request_description" msgid="7788142583532880646">"Geen rechten nodig"</string>
-    <!-- no translation found for role_watch_description (8925968267419795536) -->
-    <skip />
+    <string name="role_watch_description" msgid="8925968267419795536">"<xliff:g id="APP_NAME">%1$s</xliff:g> krijgt toegang tot Meldingen, Telefoon, Contacten en Agenda."</string>
     <string name="request_role_current_default" msgid="7512045433655289638">"Huidige standaard-app"</string>
     <string name="request_role_dont_ask_again" msgid="6250680190065090205">"Niet meer vragen"</string>
     <string name="request_role_set_as_default" msgid="5706081295230541240">"Standaard instellen"</string>

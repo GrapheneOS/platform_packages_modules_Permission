@@ -332,8 +332,7 @@
     <string name="role_call_screening_description" msgid="4406678458741015733">"Танд дуудлага таних болон спам, роботын дуудлага эсвэл хүсээгүй дугаарыг блоклох боломжийг олгодог аппууд"</string>
     <string name="role_call_screening_request_title" msgid="4775643776524356653">"<xliff:g id="APP_NAME">%1$s</xliff:g>-г дуудлага хийгчийн ID болон спамын өгөгдмөл аппаар тохируулах уу?"</string>
     <string name="role_call_screening_request_description" msgid="7788142583532880646">"Ямар ч зөвшөөрөл шаардлагагүй"</string>
-    <!-- no translation found for role_watch_description (8925968267419795536) -->
-    <skip />
+    <string name="role_watch_description" msgid="8925968267419795536">"<xliff:g id="APP_NAME">%1$s</xliff:g> Мэдэгдэл, Утас, Харилцагчид болон Календарьт хандах эрхийг авна."</string>
     <string name="request_role_current_default" msgid="7512045433655289638">"Одоогийн өгөгдмөл апп"</string>
     <string name="request_role_dont_ask_again" msgid="6250680190065090205">"Дахиж бүү асуу"</string>
     <string name="request_role_set_as_default" msgid="5706081295230541240">"Өгөгдмөлөөр тохируулах"</string>

@@ -332,8 +332,7 @@
     <string name="role_call_screening_description" msgid="4406678458741015733">"Alkalmazások, amelyek lehetővé teszik a hívások azonosítását, a spam jellegű tartalmak és a robothívások letiltását, valamint a nemkívánatos telefonszámok tiltólistára tételét"</string>
     <string name="role_call_screening_request_title" msgid="4775643776524356653">"Beállítja a(z) <xliff:g id="APP_NAME">%1$s</xliff:g> alkalmazást alapértelmezett hívóazonosító és spamszűrő alkalmazásként?"</string>
     <string name="role_call_screening_request_description" msgid="7788142583532880646">"Nincs szükség engedélyre"</string>
-    <!-- no translation found for role_watch_description (8925968267419795536) -->
-    <skip />
+    <string name="role_watch_description" msgid="8925968267419795536">"A(z) <xliff:g id="APP_NAME">%1$s</xliff:g> hozzáférést kap majd az Értesítésekhez, a Telefonhoz, a Névjegyekhez, valamint a Naptárhoz."</string>
     <string name="request_role_current_default" msgid="7512045433655289638">"Aktuális alapérték"</string>
     <string name="request_role_dont_ask_again" msgid="6250680190065090205">"Ne jelenjen meg többé"</string>
     <string name="request_role_set_as_default" msgid="5706081295230541240">"Alapértelmezett"</string>

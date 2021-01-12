@@ -345,8 +345,7 @@
     <string name="role_call_screening_description" msgid="4406678458741015733">"Aplicații care vă ajută să identificați apeluri și să blocați spamul, apelurile automate sau numerele nedorite"</string>
     <string name="role_call_screening_request_title" msgid="4775643776524356653">"Setați <xliff:g id="APP_NAME">%1$s</xliff:g> ca aplicație prestabilită pentru ID-ul apelantului și spam?"</string>
     <string name="role_call_screening_request_description" msgid="7788142583532880646">"Nu este nevoie de permisiuni"</string>
-    <!-- no translation found for role_watch_description (8925968267419795536) -->
-    <skip />
+    <string name="role_watch_description" msgid="8925968267419795536">"<xliff:g id="APP_NAME">%1$s</xliff:g> va primi acces la Notificări, Telefon, Agendă și Calendar."</string>
     <string name="request_role_current_default" msgid="7512045433655289638">"Aplicația prestabilită actuală"</string>
     <string name="request_role_dont_ask_again" msgid="6250680190065090205">"Nu mai întreba"</string>
     <string name="request_role_set_as_default" msgid="5706081295230541240">"Setați ca standard"</string>
