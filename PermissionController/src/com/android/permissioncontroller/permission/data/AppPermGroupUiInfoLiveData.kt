@@ -129,9 +129,11 @@ class AppPermGroupUiInfoLiveData private constructor(
 
         val isSystemApp = !isUserSensitive(permissionState)
 
+        val isUserSet = isUserSet(permissionState)
+
         val isGranted = getGrantedIncludingBackground(permissionState, allPermInfos, packageInfo)
 
-        return AppPermGroupUiInfo(shouldShow, isGranted, isSystemApp)
+        return AppPermGroupUiInfo(shouldShow, isGranted, isSystemApp, isUserSet)
     }
 
     /**
@@ -205,6 +207,21 @@ class AppPermGroupUiInfoLiveData private constructor(
             }
         }
         return false
+    }
+
+    /**
+     * Determines if the app permission group is user set
+     *
+     * @param permissionState The permission flags and grant state corresponding to the permissions
+     * in this group requested by a given app
+     *
+     * @return Whether or not any of the permissions in this group have been set or fixed by the
+     * user
+     */
+    private fun isUserSet(permissionState: Map<String, PermState>): Boolean {
+        val flagMask = PackageManager.FLAG_PERMISSION_USER_SET or
+                PackageManager.FLAG_PERMISSION_USER_FIXED
+        return permissionState.any { (it.value.permFlags and flagMask) != 0 }
     }
 
     /**
