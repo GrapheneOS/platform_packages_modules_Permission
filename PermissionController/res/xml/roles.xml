@@ -197,6 +197,9 @@
             <permission-set name="microphone" />
             <permission-set name="camera" />
         </permissions>
+        <app-op-permissions>
+            <app-op-permission name="android.permission.SYSTEM_ALERT_WINDOW" />
+        </app-op-permissions>
         <app-ops>
             <!--
               ~ @see com.android.settings.applications.defaultapps.DefaultPhonePicker#setDefaultKey(String)
