@@ -332,8 +332,7 @@
     <string name="role_call_screening_description" msgid="4406678458741015733">"আপোনাক কলসমূহ চিনাক্ত কৰিবলৈ আৰু স্পাম, ৰ’ব’কলসমূহ আৰু অনাকাংক্ষিত নম্বৰসমূহ অৱৰোধ কৰিবলৈ অনুমতি দিয়া এপ্‌সমূহ"</string>
     <string name="role_call_screening_request_title" msgid="4775643776524356653">"<xliff:g id="APP_NAME">%1$s</xliff:g>ক আপোনাৰ ডিফ’ল্ট কলাৰ আই.ডি আৰু স্পাম এপ্ হিচাপে ছেট কৰিবনে?"</string>
     <string name="role_call_screening_request_description" msgid="7788142583532880646">"কোনো অনুমতিৰ প্ৰয়োজন নাই"</string>
-    <!-- no translation found for role_watch_description (8925968267419795536) -->
-    <skip />
+    <string name="role_watch_description" msgid="8925968267419795536">"<xliff:g id="APP_NAME">%1$s</xliff:g>এ জাননী, ফ’ন, সম্পৰ্ক আৰু কেলেণ্ডাৰৰ এক্সেছ লাভ কৰিব।"</string>
     <string name="request_role_current_default" msgid="7512045433655289638">"বৰ্তমানৰ ডিফ’ল্ট"</string>
     <string name="request_role_dont_ask_again" msgid="6250680190065090205">"পুনৰায় নুসুধিব"</string>
     <string name="request_role_set_as_default" msgid="5706081295230541240">"ডিফ’ল্ট ৰূপে ছেট কৰক"</string>
