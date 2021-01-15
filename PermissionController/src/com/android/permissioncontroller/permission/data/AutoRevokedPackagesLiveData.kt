@@ -16,14 +16,17 @@
 
 package com.android.permissioncontroller.permission.data
 
+import android.content.pm.PackageManager
 import android.content.pm.PackageManager.FLAG_PERMISSION_AUTO_REVOKED
+import android.os.Build
 import android.os.UserHandle
 import com.android.permissioncontroller.PermissionControllerApplication
-import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData.Companion.NON_RUNTIME_NORMAL_PERMS
 import com.android.permissioncontroller.permission.service.getUnusedThresholdMs
 import com.android.permissioncontroller.permission.utils.KotlinUtils
+import com.android.permissioncontroller.permission.utils.Utils
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 /**
@@ -31,7 +34,7 @@ import kotlinx.coroutines.launch
  * packages.
  */
 object AutoRevokedPackagesLiveData
-    : SmartUpdateMediatorLiveData<Map<Pair<String, UserHandle>, Set<String>>>() {
+    : SmartAsyncMediatorLiveData<Map<Pair<String, UserHandle>, Set<String>>>() {
 
     init {
         addSource(AllPackageInfosLiveData) {
@@ -41,65 +44,36 @@ object AutoRevokedPackagesLiveData
 
     private val permStateLiveDatas =
         mutableMapOf<Triple<String, String, UserHandle>, PermStateLiveData>()
-    private val packagePermGroupsLiveDatas =
-        mutableMapOf<Pair<String, UserHandle>, PackagePermissionsLiveData>()
     private val packageAutoRevokedPermsList =
         mutableMapOf<Pair<String, UserHandle>, MutableSet<String>>()
 
-    override fun onUpdate() {
+    override suspend fun loadDataAndPostValue(job: Job) {
         if (!AllPackageInfosLiveData.isInitialized) {
             return
         }
 
-        val packageNames = mutableListOf<Pair<String, UserHandle>>()
+        val allPackageGroups = mutableSetOf<Triple<String, String, UserHandle>>()
         for ((user, packageList) in AllPackageInfosLiveData.value ?: emptyMap()) {
-            packageNames.addAll(packageList.mapNotNull { pkg ->
-                if (pkg.enabled) {
-                    pkg.packageName to user
-                } else {
-                    null
+            for (pkg in packageList) {
+                if (job.isCancelled) {
+                    return
                 }
-            })
-        }
 
-        GlobalScope.launch(Main.immediate) {
-            val (toAdd, toRemove) =
-                KotlinUtils.getMapAndListDifferences(packageNames, packagePermGroupsLiveDatas)
-
-            for (pkg in toRemove) {
-                val packagePermissionsLiveData = packagePermGroupsLiveDatas.remove(pkg) ?: continue
-                removeSource(packagePermissionsLiveData)
-                for ((groupName, _) in packagePermissionsLiveData.value ?: continue) {
-                    removeSource(permStateLiveDatas.remove(Triple(pkg.first, groupName, pkg.second))
-                        ?: continue)
-                }
-                packageAutoRevokedPermsList.remove(pkg)
-            }
-            if (toRemove.isNotEmpty()) {
-                postCopyOfMap()
-            }
-
-            toAdd.forEach { packagePermGroupsLiveDatas[it] = PackagePermissionsLiveData[it] }
-
-            toAdd.forEach { userPackage ->
-                addSource(packagePermGroupsLiveDatas[userPackage]!!) {
-                    if (packagePermGroupsLiveDatas.all { it.value.isInitialized }) {
-                        observePermStateLiveDatas()
+                val pkgGroups = mutableSetOf<Triple<String, String, UserHandle>>()
+                for ((idx, requestedPerm) in pkg.requestedPermissions.withIndex()) {
+                    val group = Utils.getGroupOfPlatformPermission(requestedPerm) ?: continue
+                    if (pkg.targetSdkVersion < Build.VERSION_CODES.M ||
+                        pkg.requestedPermissionsFlags[idx] == PackageManager.PERMISSION_DENIED) {
+                        pkgGroups.add(Triple(pkg.packageName, group, user))
                     }
                 }
+                allPackageGroups.addAll(pkgGroups)
             }
         }
+        observePermStateLiveDatas(allPackageGroups)
     }
 
-    private fun observePermStateLiveDatas() {
-        val packageGroups = mutableListOf<Triple<String, String, UserHandle>>()
-        packageGroups.addAll(packagePermGroupsLiveDatas.flatMap { (pkgPair, liveData) ->
-            liveData.value?.keys?.toMutableSet()?.let { permGroups ->
-                permGroups.remove(NON_RUNTIME_NORMAL_PERMS)
-                permGroups.map { Triple(pkgPair.first, it, pkgPair.second) }
-            } ?: emptyList()
-        })
-
+    private fun observePermStateLiveDatas(packageGroups: Set<Triple<String, String, UserHandle>>) {
         GlobalScope.launch(Main.immediate) {
 
             val (toAdd, toRemove) =
