@@ -322,7 +322,8 @@ private suspend fun revokePermissionsOnUnusedApps(
                     .getInitializedValue()
 
             pkgPermGroups?.entries?.forEachInParallel(Main) { (groupName, _) ->
-                if (groupName == PackagePermissionsLiveData.NON_RUNTIME_NORMAL_PERMS) {
+                if (groupName == PackagePermissionsLiveData.NON_RUNTIME_NORMAL_PERMS ||
+                    groupName !in Utils.getPlatformPermissionGroups()) {
                     return@forEachInParallel
                 }
 
