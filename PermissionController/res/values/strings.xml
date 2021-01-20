@@ -1137,4 +1137,17 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="auto_granted_location_permission_notification_title">Location can be accessed</string>
     <!-- Body of the notification, that does not include the app name and is specific to location permissions. [CHAR LIMIT=120]-->
     <string name="auto_granted_permission_notification_body">Your IT admin is allowing <xliff:g id="app_name" example="Gmail">%s</xliff:g> to access your location</string>
+
+    <!-- The title of (and the button label for a link to) the screen that lists permissions that aren't considered the most relevant to the user at the moment, and thus did not make to the "main" screen. [CHAR LIMIT=80] -->
+    <string name="other_permissions_label">Other permissions</string>
+
+    <!-- Title for a list of permissions that are not requested by any of the installed applications. [CHAR LIMIT=80] -->
+    <string name="not_used_permissions_label">Permission used by the system</string>
+    <!-- Subtitle for a list of permissions that are not requested by any of the installed applications. [CHAR LIMIT=none] -->
+    <string name="not_used_permissions_description">Permissions used only by the system applications.</string>
+
+    <!-- Title for a list of "custom" permissions (defined by applications, not the platform). [CHAR LIMIT=80] -->
+    <string name="additional_permissions_label">Additional permissions</string>
+    <!-- Subtitle for a list of "custom" permissions (defined by applications, not the platform). [CHAR LIMIT=none] -->
+    <string name="additional_permissions_description">Permissions defined by applications.</string>
 </resources>

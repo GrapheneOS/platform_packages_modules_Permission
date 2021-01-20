@@ -175,11 +175,6 @@ public final class PermissionAppsFragment extends SettingsWithHeader implements 
 
                 mainScreen.addPreference(showSystemAppPref);
             }
-
-            int allowedSystemApps = allowedCategory.findPreference(KEY_NO_APPS_ALLOWED) != null ? 0
-                    : allowedCategory.getPreferenceCount();
-            showSystemAppPref.setSummary(getString(R.string.app_permissions_group_summary,
-                    allowedSystemApps, systemScreenApps.size()));
         } else if (showSystemAppPref != null) {
             // There are not system apps, but there is a "Show system apps" button: remove the
             // button.
@@ -218,12 +213,16 @@ public final class PermissionAppsFragment extends SettingsWithHeader implements 
                     // Already have this app in the right category.
                     continue;
                 }
-            } else {
+            } else if (app.getPermissionGroup().isUserSet()) {
                 hasDenied = true;
                 if (toRemoveFromDenied.remove(key)) {
                     // Already have this app in the right category.
                     continue;
                 }
+            } else {
+                // Not granted and not user set, meaning that it was never requested, so we don't
+                // need to show it.
+                continue;
             }
 
             PreferenceCategory rightCategory = isAllowed ? allowedCategory : deniedCategory;
