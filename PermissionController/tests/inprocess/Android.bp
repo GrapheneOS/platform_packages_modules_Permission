@@ -46,6 +46,7 @@ android_test {
         "androidx.test.rules",
         "androidx.test.ext.truth",
         "androidx.test.ext.junit",
+        "androidx.test.uiautomator",
         "compatibility-device-util-axt",
         "permission-test-util-lib",
     ],

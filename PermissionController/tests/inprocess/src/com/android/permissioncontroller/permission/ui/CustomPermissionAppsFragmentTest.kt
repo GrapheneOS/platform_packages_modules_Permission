@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 The Android Open Source Project
+ * Copyright (C) 2021 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.ui.handheld
+package com.android.permissioncontroller.permission.ui
 
 import android.permission.cts.PermissionUtils.uninstallApp
 import androidx.navigation.Navigation.findNavController
@@ -28,6 +28,9 @@ import org.junit.runner.RunWith
 
 /**
  * Simple tests for {@link PermissionAppsFragment} when showing custom permission
+ *
+ * Currently, does NOT run on TV (same as the other tests that extend [PermissionAppsFragmentTest]).
+ * TODO(b/178576541): Adapt and run on TV.
  */
 @RunWith(AndroidJUnit4::class)
 class CustomPermissionAppsFragmentTest : PermissionAppsFragmentTest(
