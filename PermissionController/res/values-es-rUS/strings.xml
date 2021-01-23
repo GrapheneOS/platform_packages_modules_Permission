@@ -416,4 +416,9 @@
     <string name="auto_granted_permissions" msgid="5726065128917092357">"Permisos controlados"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="6496820273286832200">"Se puede acceder a la ubicación"</string>
     <string name="auto_granted_permission_notification_body" msgid="492268790630112781">"Tu administrador de TI permite que <xliff:g id="APP_NAME">%s</xliff:g> acceda a tu ubicación"</string>
+    <string name="other_permissions_label" msgid="1488700059418255587">"Otros permisos"</string>
+    <string name="not_used_permissions_label" msgid="6548885819033173329">"Permiso que usa el sistema"</string>
+    <string name="not_used_permissions_description" msgid="5522661489389331026">"Permisos que usan solo las aplicaciones del sistema."</string>
+    <string name="additional_permissions_label" msgid="83526526095903825">"Permisos adicionales"</string>
+    <string name="additional_permissions_description" msgid="5156531686968081533">"Permisos definidos por las aplicaciones."</string>
 </resources>

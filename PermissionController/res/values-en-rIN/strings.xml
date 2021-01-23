@@ -416,4 +416,9 @@
     <string name="auto_granted_permissions" msgid="5726065128917092357">"Controlled permissions"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="6496820273286832200">"Location can be accessed"</string>
     <string name="auto_granted_permission_notification_body" msgid="492268790630112781">"Your IT admin is allowing <xliff:g id="APP_NAME">%s</xliff:g> to access your location"</string>
+    <string name="other_permissions_label" msgid="1488700059418255587">"Other permissions"</string>
+    <string name="not_used_permissions_label" msgid="6548885819033173329">"Permission used by the system"</string>
+    <string name="not_used_permissions_description" msgid="5522661489389331026">"Permissions used only by the system applications."</string>
+    <string name="additional_permissions_label" msgid="83526526095903825">"Additional permissions"</string>
+    <string name="additional_permissions_description" msgid="5156531686968081533">"Permissions defined by applications."</string>
 </resources>
