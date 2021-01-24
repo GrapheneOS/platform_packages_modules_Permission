@@ -442,4 +442,14 @@
     <string name="auto_granted_permissions" msgid="5726065128917092357">"Керовані дозволи"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="6496820273286832200">"Відкрито доступ до місцезнаходження"</string>
     <string name="auto_granted_permission_notification_body" msgid="492268790630112781">"Ваш ІТ-адміністратор дозволяє додатку <xliff:g id="APP_NAME">%s</xliff:g> отримувати доступ до вашого місцезнаходження"</string>
+    <!-- no translation found for other_permissions_label (1488700059418255587) -->
+    <skip />
+    <!-- no translation found for not_used_permissions_label (6548885819033173329) -->
+    <skip />
+    <!-- no translation found for not_used_permissions_description (5522661489389331026) -->
+    <skip />
+    <!-- no translation found for additional_permissions_label (83526526095903825) -->
+    <skip />
+    <!-- no translation found for additional_permissions_description (5156531686968081533) -->
+    <skip />
 </resources>

@@ -412,7 +412,7 @@
     <string name="adjust_user_sensitive_per_app_header" msgid="1372152438971168364">"Zvýrazniť využitie týmito aplikáciami"</string>
     <string name="assistant_record_audio_user_sensitive_title" msgid="772256764681129627">"Zobrazovať detekciu spustenia asistenta"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6852572549436960848">"Zobrazovať v stavovom riadku ikonu, keď bude pomocou mikrofónu aktivovaný hlasový asistent"</string>
-    <string name="permgrouprequest_storage_isolated" msgid="1019696034804170865">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; používať fotky a médiá v zariadení?"</string>
+    <string name="permgrouprequest_storage_isolated" msgid="1019696034804170865">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k fotkám a médiám v zariadení?"</string>
     <string name="permgrouprequest_contacts" msgid="1493445560009228831">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup ku kontaktom?"</string>
     <string name="permgrouprequest_location" msgid="4367626296074714965">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k polohe tohto zariadenia?"</string>
     <string name="permgrouprequestdetail_location" msgid="4985222951894409507">"Aplikácia bude mať prístup k polohe iba vtedy, keď ju budete používať"</string>
@@ -442,4 +442,14 @@
     <string name="auto_granted_permissions" msgid="5726065128917092357">"Ovládané povolenia"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="6496820273286832200">"Polohu je možné používať"</string>
     <string name="auto_granted_permission_notification_body" msgid="492268790630112781">"Váš správca IT povoľuje aplikácii <xliff:g id="APP_NAME">%s</xliff:g> používať vašu polohu"</string>
+    <!-- no translation found for other_permissions_label (1488700059418255587) -->
+    <skip />
+    <!-- no translation found for not_used_permissions_label (6548885819033173329) -->
+    <skip />
+    <!-- no translation found for not_used_permissions_description (5522661489389331026) -->
+    <skip />
+    <!-- no translation found for additional_permissions_label (83526526095903825) -->
+    <skip />
+    <!-- no translation found for additional_permissions_description (5156531686968081533) -->
+    <skip />
 </resources>
