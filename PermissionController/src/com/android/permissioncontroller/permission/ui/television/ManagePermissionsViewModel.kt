@@ -66,7 +66,9 @@ class ManagePermissionsViewModel(app: Application) : AndroidViewModel(app) {
     val unusedPermissionGroups: LiveData<List<PermGroupPackagesUiInfo>> =
         MediatorLiveData<List<PermGroupPackagesUiInfo>>().apply {
             addSource(standardPermGroupsLiveData) {
-                permGroups -> value = permGroups.filter { it.nonSystemUserSetOrPreGranted == 0 }
+                permGroups -> value = permGroups
+                    .filter { it.nonSystemUserSetOrPreGranted == 0 }
+                    .filter { it.systemUserSetOrPreGranted > 0 }
             }
         }
 
@@ -81,7 +83,11 @@ class ManagePermissionsViewModel(app: Application) : AndroidViewModel(app) {
         MediatorLiveData<List<PermGroupPackagesUiInfo>>().apply {
             addSource(PermGroupsPackagesUiInfoLiveData(
                 app, UsedCustomPermGroupNamesLiveData())) {
-                permGroups -> value = permGroups.values.filterNotNull()
+                permGroups -> value = permGroups.values
+                    .filterNotNull()
+                    .filter {
+                        (it.nonSystemUserSetOrPreGranted > 0) or (it.systemUserSetOrPreGranted > 0)
+                    }
             }
         }
 
