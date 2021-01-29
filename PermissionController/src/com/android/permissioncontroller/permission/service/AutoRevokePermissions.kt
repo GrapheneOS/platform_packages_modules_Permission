@@ -213,14 +213,17 @@ class AutoRevokeOnBootReceiver : BroadcastReceiver() {
     }
 }
 
+// TODO: Refactor this method to hibernation policy class
+/**
+ * Gets apps that are unused and auto-revocable as a map of the user and their revocable apps.
+ */
 @MainThread
-private suspend fun revokePermissionsOnUnusedApps(
-    context: Context,
-    sessionId: Long = INVALID_SESSION_ID
+private suspend fun getRevocableApps(
+    context: Context
 ):
-    List<Pair<String, UserHandle>> {
+    Map<UserHandle, List<String>> {
     if (!isAutoRevokeEnabled(context)) {
-        return emptyList()
+        return emptyMap()
     }
 
     val now = System.currentTimeMillis()
@@ -295,13 +298,14 @@ private suspend fun revokePermissionsOnUnusedApps(
         }
     }
 
-    val revokedApps = mutableListOf<Pair<String, UserHandle>>()
+    val revocableApps = mutableMapOf<UserHandle, List<String>>()
     val userManager = context.getSystemService(UserManager::class.java)
     for ((user, userApps) in unusedApps) {
         if (userManager == null || !userManager.isUserUnlocked(user)) {
             DumpableLog.w(LOG_TAG, "Skipping $user - locked direct boot state")
             continue
         }
+        var userRevocableApps = mutableListOf<String>()
         userApps.forEachInParallel(Main) { pkg: LightPackageInfo ->
             if (pkg.grantedPermissions.isEmpty()) {
                 return@forEachInParallel
@@ -311,11 +315,45 @@ private suspend fun revokePermissionsOnUnusedApps(
                 return@forEachInParallel
             }
 
-            val packageName = pkg.packageName
             if (isPackageAutoRevokeExempt(context, pkg)) {
                 return@forEachInParallel
             }
 
+            if (DEBUG_AUTO_REVOKE) {
+                var packageName = pkg.packageName
+                DumpableLog.i(LOG_TAG, "unused app $packageName - lastVisible on " +
+                    userStats[user]?.lastTimeVisible(packageName)?.let(::Date))
+            }
+
+            synchronized(userRevocableApps) {
+                userRevocableApps.add(pkg.packageName)
+            }
+        }
+        revocableApps.put(user, userRevocableApps)
+    }
+    return revocableApps
+}
+
+/**
+ * Revoke granted app permissions for apps that should be auto-revoked
+ *
+ * @return list of packages that successfully had their permissions revoked
+ */
+@MainThread
+private suspend fun revokeAppPermissions(
+    apps: Map<UserHandle, List<String>>,
+    context: Context,
+    sessionId: Long = INVALID_SESSION_ID
+): List<Pair<String, UserHandle>> {
+    val revokedApps = mutableListOf<Pair<String, UserHandle>>()
+    val userManager = context.getSystemService(UserManager::class.java)
+
+    for ((user, userApps) in apps) {
+        if (userManager == null || !userManager.isUserUnlocked(user)) {
+            DumpableLog.w(LOG_TAG, "Skipping $user - locked direct boot state")
+            continue
+        }
+        userApps.forEachInParallel(Main) { packageName: String ->
             val anyPermsRevoked = AtomicBoolean(false)
             val pkgPermGroups: Map<String, List<String>>? =
                 PackagePermissionsLiveData[packageName, user]
@@ -349,9 +387,8 @@ private suspend fun revokePermissionsOnUnusedApps(
                     }
 
                     if (DEBUG_AUTO_REVOKE) {
-                        DumpableLog.i(LOG_TAG, "revokeUnused $packageName - $revocablePermissions" +
-                                " - lastVisible on " +
-                                userStats[user]?.lastTimeVisible(packageName)?.let(::Date))
+                        DumpableLog.i(LOG_TAG,
+                                "revokeUnused $packageName - $revocablePermissions")
                     }
 
                     val uid = group.packageInfo.uid
@@ -404,7 +441,7 @@ private suspend fun revokePermissionsOnUnusedApps(
 
             if (anyPermsRevoked.get()) {
                 synchronized(revokedApps) {
-                    revokedApps.add(pkg.packageName to user)
+                    revokedApps.add(packageName to user)
                 }
             }
         }
@@ -544,7 +581,7 @@ private val Context.firstBootTime: Long get() {
 
 /**
  * A job to check for apps unused in the last [getUnusedThresholdMs]ms every
- * [getCheckFrequencyMs]ms and [revokePermissionsOnUnusedApps] for them
+ * [getCheckFrequencyMs]ms and revoke their permissions.
  */
 class AutoRevokeService : JobService() {
     var job: Job? = null
@@ -572,7 +609,9 @@ class AutoRevokeService : JobService() {
                     sessionId = Random().nextLong()
                 }
 
-                val revokedApps = revokePermissionsOnUnusedApps(this@AutoRevokeService, sessionId)
+                val revocableApps = getRevocableApps(this@AutoRevokeService)
+                val revokedApps = revokeAppPermissions(
+                        revocableApps, this@AutoRevokeService, sessionId)
                 if (revokedApps.isNotEmpty()) {
                     showAutoRevokeNotification(sessionId)
                 }
