@@ -955,7 +955,7 @@ private class AutoRevokeDumpLiveData(context: Context) :
 
                     pkgs.add(AutoRevokeDumpPackageData(pkg.uid, pkg.packageName,
                             pkg.firstInstallTime,
-                            usages.value!![user]?.lastTimeVisible(pkg.packageName),
+                            null,
                             services!![user]?.value!![pkg.packageName] ?: emptyList(),
                             groups))
                 }
