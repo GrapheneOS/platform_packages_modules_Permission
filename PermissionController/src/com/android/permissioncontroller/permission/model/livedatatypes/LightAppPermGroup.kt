@@ -16,7 +16,6 @@
 
 package com.android.permissioncontroller.permission.model.livedatatypes
 
-import android.content.pm.PermissionInfo
 import android.os.Build
 import android.os.UserHandle
 
@@ -130,7 +129,7 @@ data class LightAppPermGroup(
      */
     val isGrantedByRole = foreground.isGrantedByRole || background.isGrantedByRole
 
-    /*
+    /**
      * Whether any permissions in this group are user sensitive
      */
     val isUserSensitive = permissions.any { it.value.isUserSensitive }
@@ -183,11 +182,14 @@ data class LightAppPermGroup(
          */
         val isGrantedByRole = permissions.any { it.value.isGrantedByRole }
 
-        private val hasPreRuntimePerm = permissions.any { (_, perm) ->
-            perm.permInfo.protectionFlags and PermissionInfo.PROTECTION_FLAG_RUNTIME_ONLY == 0
-        }
+        private val hasPreRuntimePerm = permissions.any { (_, perm) -> !perm.isRuntimeOnly }
 
-        val isGrantable = !packageInfo.isInstantApp &&
-            (packageInfo.targetSdkVersion >= Build.VERSION_CODES.M || hasPreRuntimePerm)
+        private val hasInstantPerm = permissions.any { (_, perm) -> perm.isInstantPerm }
+
+        /**
+         * Whether or not any permissions in this App Permission Subgroup can be granted
+         */
+        val isGrantable = (!packageInfo.isInstantApp || hasInstantPerm) &&
+                (packageInfo.targetSdkVersion >= Build.VERSION_CODES.M || hasPreRuntimePerm)
     }
 }
