@@ -16,7 +16,7 @@
 
 package com.android.permissioncontroller.permission.data
 
-import android.content.pm.PackageManager
+import android.content.pm.PackageInfo
 import android.content.pm.PackageManager.FLAG_PERMISSION_AUTO_REVOKED
 import android.os.Build
 import android.os.UserHandle
@@ -62,15 +62,21 @@ object AutoRevokedPackagesLiveData
                 val pkgGroups = mutableSetOf<Triple<String, String, UserHandle>>()
                 for ((idx, requestedPerm) in pkg.requestedPermissions.withIndex()) {
                     val group = Utils.getGroupOfPlatformPermission(requestedPerm) ?: continue
-                    if (pkg.targetSdkVersion < Build.VERSION_CODES.M ||
-                        pkg.requestedPermissionsFlags[idx] == PackageManager.PERMISSION_DENIED) {
+                    val granted = (pkg.requestedPermissionsFlags[idx] and
+                            PackageInfo.REQUESTED_PERMISSION_GRANTED) != 0
+                    if (pkg.targetSdkVersion < Build.VERSION_CODES.M || !granted) {
                         pkgGroups.add(Triple(pkg.packageName, group, user))
                     }
                 }
                 allPackageGroups.addAll(pkgGroups)
             }
         }
-        observePermStateLiveDatas(allPackageGroups)
+
+        if (allPackageGroups.isEmpty()) {
+            postCopyOfMap()
+        } else {
+            observePermStateLiveDatas(allPackageGroups)
+        }
     }
 
     private fun observePermStateLiveDatas(packageGroups: Set<Triple<String, String, UserHandle>>) {
