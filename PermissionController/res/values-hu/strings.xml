@@ -416,14 +416,9 @@
     <string name="auto_granted_permissions" msgid="5726065128917092357">"Szabályozott engedélyek"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="6496820273286832200">"A helyadatok hozzáférhetők"</string>
     <string name="auto_granted_permission_notification_body" msgid="492268790630112781">"Az Ön adminisztrátora engedélyezi a(z) <xliff:g id="APP_NAME">%s</xliff:g> számára, hogy hozzáférjen az eszköz helyadataihoz"</string>
-    <!-- no translation found for other_permissions_label (1488700059418255587) -->
-    <skip />
-    <!-- no translation found for not_used_permissions_label (6548885819033173329) -->
-    <skip />
-    <!-- no translation found for not_used_permissions_description (5522661489389331026) -->
-    <skip />
-    <!-- no translation found for additional_permissions_label (83526526095903825) -->
-    <skip />
-    <!-- no translation found for additional_permissions_description (5156531686968081533) -->
-    <skip />
+    <string name="other_permissions_label" msgid="1488700059418255587">"További engedélyek"</string>
+    <string name="not_used_permissions_label" msgid="6548885819033173329">"Rendszer által használt engedélyek"</string>
+    <string name="not_used_permissions_description" msgid="5522661489389331026">"Csak rendszeralkalmazások által használt engedélyek."</string>
+    <string name="additional_permissions_label" msgid="83526526095903825">"További engedélyek"</string>
+    <string name="additional_permissions_description" msgid="5156531686968081533">"Alkalmazások által meghatározott engedélyek."</string>
 </resources>
