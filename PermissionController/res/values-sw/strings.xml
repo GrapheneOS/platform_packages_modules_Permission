@@ -416,14 +416,9 @@
     <string name="auto_granted_permissions" msgid="5726065128917092357">"Ruhusa zinazodhibitiwa"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="6496820273286832200">"Maelezo ya mahali yanaweza kufikiwa"</string>
     <string name="auto_granted_permission_notification_body" msgid="492268790630112781">"Msimamizi wako wa TEHAMA anaruhusu <xliff:g id="APP_NAME">%s</xliff:g> kufikia maelezo ya mahali ulipo"</string>
-    <!-- no translation found for other_permissions_label (1488700059418255587) -->
-    <skip />
-    <!-- no translation found for not_used_permissions_label (6548885819033173329) -->
-    <skip />
-    <!-- no translation found for not_used_permissions_description (5522661489389331026) -->
-    <skip />
-    <!-- no translation found for additional_permissions_label (83526526095903825) -->
-    <skip />
-    <!-- no translation found for additional_permissions_description (5156531686968081533) -->
-    <skip />
+    <string name="other_permissions_label" msgid="1488700059418255587">"Ruhusa nyinginezo"</string>
+    <string name="not_used_permissions_label" msgid="6548885819033173329">"Ruhusa zinazotumiwa na mfumo"</string>
+    <string name="not_used_permissions_description" msgid="5522661489389331026">"Ruhusa zinazotumiwa tu na programu za mfumo."</string>
+    <string name="additional_permissions_label" msgid="83526526095903825">"Ruhusa za ziada"</string>
+    <string name="additional_permissions_description" msgid="5156531686968081533">"Ruhusa zinazobainishwa na programu."</string>
 </resources>
