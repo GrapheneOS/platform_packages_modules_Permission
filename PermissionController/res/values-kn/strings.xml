@@ -416,14 +416,9 @@
     <string name="auto_granted_permissions" msgid="5726065128917092357">"ನಿಯಂತ್ರಿತ ಅನುಮತಿಗಳು"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="6496820273286832200">"ಸ್ಥಳವನ್ನು ಪ್ರವೇಶಿಸಬಹುದು"</string>
     <string name="auto_granted_permission_notification_body" msgid="492268790630112781">"ನಿಮ್ಮ IT ನಿರ್ವಾಹಕರು <xliff:g id="APP_NAME">%s</xliff:g> ಗೆ ನಿಮ್ಮ ಸ್ಥಳವನ್ನು ಪ್ರವೇಶಿಸಲು ಅನುಮತಿಸುತ್ತಿದ್ದಾರೆ"</string>
-    <!-- no translation found for other_permissions_label (1488700059418255587) -->
-    <skip />
-    <!-- no translation found for not_used_permissions_label (6548885819033173329) -->
-    <skip />
-    <!-- no translation found for not_used_permissions_description (5522661489389331026) -->
-    <skip />
-    <!-- no translation found for additional_permissions_label (83526526095903825) -->
-    <skip />
-    <!-- no translation found for additional_permissions_description (5156531686968081533) -->
-    <skip />
+    <string name="other_permissions_label" msgid="1488700059418255587">"ಇತರ ಅನುಮತಿಗಳು"</string>
+    <string name="not_used_permissions_label" msgid="6548885819033173329">"ಸಿಸ್ಟಂನಿಂದ ಬಳಸಲ್ಪಡುವ ಅನುಮತಿಗಳು"</string>
+    <string name="not_used_permissions_description" msgid="5522661489389331026">"ಸಿಸ್ಟಂ ಅಪ್ಲಿಕೇಶನ್‌ಗಳಿಂದ ಮಾತ್ರ ಬಳಸಲ್ಪಡುವ ಅನುಮತಿಗಳು."</string>
+    <string name="additional_permissions_label" msgid="83526526095903825">"ಹೆಚ್ಚುವರಿ ಅನುಮತಿಗಳು"</string>
+    <string name="additional_permissions_description" msgid="5156531686968081533">"ಅಪ್ಲಿಕೇಶನ್‌ಗಳ ಮೂಲಕ ವ್ಯಾಖ್ಯಾನಿಸಲಾದ ಅನುಮತಿಗಳು."</string>
 </resources>

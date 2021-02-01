@@ -416,14 +416,9 @@
     <string name="auto_granted_permissions" msgid="5726065128917092357">"관리 대상 권한"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="6496820273286832200">"앱이 위치 정보에 액세스할 수 있음"</string>
     <string name="auto_granted_permission_notification_body" msgid="492268790630112781">"IT 관리자가 <xliff:g id="APP_NAME">%s</xliff:g>에서 내 위치 정보에 액세스하도록 허용합니다."</string>
-    <!-- no translation found for other_permissions_label (1488700059418255587) -->
-    <skip />
-    <!-- no translation found for not_used_permissions_label (6548885819033173329) -->
-    <skip />
-    <!-- no translation found for not_used_permissions_description (5522661489389331026) -->
-    <skip />
-    <!-- no translation found for additional_permissions_label (83526526095903825) -->
-    <skip />
-    <!-- no translation found for additional_permissions_description (5156531686968081533) -->
-    <skip />
+    <string name="other_permissions_label" msgid="1488700059418255587">"기타 권한"</string>
+    <string name="not_used_permissions_label" msgid="6548885819033173329">"시스템에서 사용하는 권한"</string>
+    <string name="not_used_permissions_description" msgid="5522661489389331026">"시스템 애플리케이션에서만 사용하는 권한입니다."</string>
+    <string name="additional_permissions_label" msgid="83526526095903825">"추가 권한"</string>
+    <string name="additional_permissions_description" msgid="5156531686968081533">"애플리케이션에서 정의한 권한입니다."</string>
 </resources>

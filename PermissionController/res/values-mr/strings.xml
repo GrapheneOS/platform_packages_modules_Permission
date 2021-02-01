@@ -416,14 +416,9 @@
     <string name="auto_granted_permissions" msgid="5726065128917092357">"नियंत्रित परवानग्या"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="6496820273286832200">"स्थान अ‍ॅक्सेस करता येऊ शकते"</string>
     <string name="auto_granted_permission_notification_body" msgid="492268790630112781">"तुमचा आयटी ॲडमिन <xliff:g id="APP_NAME">%s</xliff:g> ला तुमचे स्थान अ‍ॅक्सेस करण्याची अनुमती देत आहे"</string>
-    <!-- no translation found for other_permissions_label (1488700059418255587) -->
-    <skip />
-    <!-- no translation found for not_used_permissions_label (6548885819033173329) -->
-    <skip />
-    <!-- no translation found for not_used_permissions_description (5522661489389331026) -->
-    <skip />
-    <!-- no translation found for additional_permissions_label (83526526095903825) -->
-    <skip />
-    <!-- no translation found for additional_permissions_description (5156531686968081533) -->
-    <skip />
+    <string name="other_permissions_label" msgid="1488700059418255587">"इतर परवानग्या"</string>
+    <string name="not_used_permissions_label" msgid="6548885819033173329">"सिस्टमद्वारे वापरल्या जाणाऱ्या परवानग्या"</string>
+    <string name="not_used_permissions_description" msgid="5522661489389331026">"फक्त सिस्टम ॲप्लिकेशनद्वारे वापरल्या जाणाऱ्या परवानग्या."</string>
+    <string name="additional_permissions_label" msgid="83526526095903825">"अतिरिक्त परवानग्या"</string>
+    <string name="additional_permissions_description" msgid="5156531686968081533">"अ‍ॅप्लिकेशनद्वारे परिभाषित केलेल्या परवानग्या."</string>
 </resources>
