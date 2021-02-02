@@ -26,6 +26,8 @@ import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_
 import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__ASK_EVERY_TIME;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__DENY;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__DENY_FOREGROUND;
+import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__GRANT_FINE_LOCATION;
+import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__REVOKE_FINE_LOCATION;
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.DENIED;
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.DENIED_DO_NOT_ASK_AGAIN;
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.GRANTED_ALWAYS;
@@ -53,8 +55,10 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -103,6 +107,8 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
     private @NonNull RadioButton mAskButton;
     private @NonNull RadioButton mDenyButton;
     private @NonNull RadioButton mDenyForegroundButton;
+    private @NonNull View mLocationAccuracy;
+    private @NonNull Switch mLocationAccuracySwitch;
     private @NonNull View mDivider;
     private @NonNull ViewGroup mWidgetFrame;
     private @NonNull TextView mPermissionDetails;
@@ -229,6 +235,8 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         mDivider = root.requireViewById(R.id.two_target_divider);
         mWidgetFrame = root.requireViewById(R.id.widget_frame);
         mPermissionDetails = root.requireViewById(R.id.permission_details);
+        mLocationAccuracy = root.requireViewById(R.id.location_accuracy);
+        mLocationAccuracySwitch = root.requireViewById(R.id.location_accuracy_switch);
 
         mNestedScrollView = root.requireViewById(R.id.nested_scroll_view);
 
@@ -242,6 +250,7 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
             mAskButton.setVisibility(View.GONE);
             mDenyButton.setVisibility(View.GONE);
             mDenyForegroundButton.setVisibility(View.GONE);
+            mLocationAccuracy.setVisibility(View.GONE);
         }
 
         if (mViewModel.getFullStorageStateLiveData().isInitialized() && mIsStorageGroup) {
@@ -363,6 +372,20 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
                     APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__DENY_FOREGROUND);
             setResult(DENIED_DO_NOT_ASK_AGAIN);
         });
+        // Set long variable names to new variables to bypass linter errors.
+        int grantFineLocation =
+                APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__GRANT_FINE_LOCATION;
+        int revokeFineLocation =
+                APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__REVOKE_FINE_LOCATION;
+        mLocationAccuracySwitch.setOnClickListener((v) -> {
+            if (((Switch) v).isChecked()) {
+                mViewModel.requestChange(false, this, this, ChangeRequest.GRANT_FINE_LOCATION,
+                        grantFineLocation);
+            } else {
+                mViewModel.requestChange(false, this, this, ChangeRequest.REVOKE_FINE_LOCATION,
+                        revokeFineLocation);
+            }
+        });
 
         setButtonState(mAllowButton, states.get(ButtonType.ALLOW));
         setButtonState(mAllowAlwaysButton, states.get(ButtonType.ALLOW_ALWAYS));
@@ -372,6 +395,15 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         setButtonState(mDenyButton, states.get(ButtonType.DENY));
         setButtonState(mDenyForegroundButton, states.get(ButtonType.DENY_FOREGROUND));
 
+        ButtonState locationAccuracyState = states.get(ButtonType.LOCATION_ACCURACY);
+        if (!locationAccuracyState.isShown()) {
+            mLocationAccuracy.setVisibility(View.GONE);
+        } else {
+            // TODO guojing: Set it back to VISIBLE once FINE/COARSE sharing AppOps issue is fixed
+            mLocationAccuracy.setVisibility(View.VISIBLE);
+        }
+        mLocationAccuracySwitch.setChecked(locationAccuracyState.isChecked());
+
         mIsInitialLoad = false;
 
         if (mViewModel.getFullStorageStateLiveData().isInitialized()) {
@@ -379,7 +411,7 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         }
     }
 
-    private void setButtonState(RadioButton button, AppPermissionViewModel.ButtonState state) {
+    private void setButtonState(CompoundButton button, AppPermissionViewModel.ButtonState state) {
         int visible = state.isShown() ? View.VISIBLE : View.GONE;
         button.setVisibility(visible);
         if (state.isShown()) {
