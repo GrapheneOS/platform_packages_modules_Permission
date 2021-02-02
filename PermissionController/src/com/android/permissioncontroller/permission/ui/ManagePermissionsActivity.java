@@ -126,15 +126,16 @@ public final class ManagePermissionsActivity extends FragmentActivity {
         String permissionName;
         switch (action) {
             case Intent.ACTION_MANAGE_PERMISSIONS:
+                Bundle arguments = new Bundle();
+                arguments.putLong(EXTRA_SESSION_ID, sessionId);
                 if (DeviceUtils.isAuto(this)) {
                     androidXFragment = AutoManageStandardPermissionsFragment.newInstance();
+                    androidXFragment.setArguments(arguments);
                 } else if (DeviceUtils.isTelevision(this)) {
                     androidXFragment =
                             com.android.permissioncontroller.permission.ui.television
                                     .ManagePermissionsFragment.newInstance();
                 } else {
-                    Bundle arguments = new Bundle();
-                    arguments.putLong(EXTRA_SESSION_ID, sessionId);
                     setContentView(R.layout.nav_host_fragment);
                     Navigation.findNavController(this, R.id.nav_host_fragment).setGraph(
                             R.navigation.nav_graph, arguments);
