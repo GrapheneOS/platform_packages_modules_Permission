@@ -17,12 +17,15 @@
 package com.android.permissioncontroller.permission.ui.model
 
 import android.Manifest
+import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.app.AppOpsManager
 import android.app.AppOpsManager.MODE_ALLOWED
 import android.app.AppOpsManager.MODE_ERRORED
 import android.app.AppOpsManager.OPSTR_MANAGE_EXTERNAL_STORAGE
 import android.app.Application
 import android.content.Intent
+import android.Manifest.permission_group.LOCATION
+import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.os.Build
 import android.os.Bundle
 import android.os.UserHandle
@@ -54,6 +57,7 @@ import com.android.permissioncontroller.permission.ui.model.AppPermissionViewMod
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.ASK
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.DENY
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.DENY_FOREGROUND
+import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.LOCATION_ACCURACY
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.navigateSafe
 import com.android.settingslib.RestrictedLockUtils
@@ -102,7 +106,9 @@ class AppPermissionViewModel(
         GRANT_BOTH(GRANT_FOREGROUND.value or GRANT_BACKGROUND.value),
         REVOKE_BOTH(REVOKE_FOREGROUND.value or REVOKE_BACKGROUND.value),
         GRANT_FOREGROUND_ONLY(GRANT_FOREGROUND.value or REVOKE_BACKGROUND.value),
-        GRANT_All_FILE_ACCESS(16);
+        GRANT_All_FILE_ACCESS(16),
+        GRANT_FINE_LOCATION(32),
+        REVOKE_FINE_LOCATION(64);
 
         infix fun andValue(other: ChangeRequest): Int {
             return value and other.value
@@ -116,12 +122,16 @@ class AppPermissionViewModel(
         ASK_ONCE(3),
         ASK(4),
         DENY(5),
-        DENY_FOREGROUND(6);
+        DENY_FOREGROUND(6),
+        LOCATION_ACCURACY(7);
     }
 
     private val isStorage = permGroupName == Manifest.permission_group.STORAGE
     private var hasConfirmedRevoke = false
     private var lightAppPermGroup: LightAppPermGroup? = null
+
+    /* Whether the current ViewModel is Location permission with both Coarse and Fine */
+    private var isLocationPermWithFine: Boolean? = null
 
     /**
      * A livedata which determines which detail string, if any, should be shown
@@ -309,10 +319,36 @@ class AppPermissionViewModel(
                 allowedState.isShown = false
             }
 
-            value = mapOf(ALLOW to allowedState, ALLOW_ALWAYS to allowedAlwaysState,
+            if (isLocationPermWithFine == null) {
+                isLocationPermWithFine = group.permGroupName == LOCATION &&
+                        group.permissions.containsKey(ACCESS_FINE_LOCATION)
+            }
+            val locationAccuracyState = ButtonState(isFineLocationChecked(group),
+                    true, false, null)
+            if (isLocationPermWithFine == true && !deniedState.isChecked) {
+                locationAccuracyState.isShown = true
+            }
+
+            value = mapOf(
+                ALLOW to allowedState, ALLOW_ALWAYS to allowedAlwaysState,
                 ALLOW_FOREGROUND to allowedForegroundState, ASK_ONCE to askOneTimeState,
-                ASK to askState, DENY to deniedState, DENY_FOREGROUND to deniedForegroundState)
+                ASK to askState, DENY to deniedState, DENY_FOREGROUND to deniedForegroundState,
+                LOCATION_ACCURACY to locationAccuracyState)
         }
+    }
+
+    private fun isFineLocationChecked(group: LightAppPermGroup): Boolean {
+        if (isLocationPermWithFine == true) {
+            val coarseLocation = group.permissions[ACCESS_COARSE_LOCATION]!!
+            val fineLocation = group.permissions[ACCESS_FINE_LOCATION]!!
+            // Two cases when location accuracy switch is set to ON (FINE)
+            // 1. Both FINE and COARSE location isSelectedLocationAccuracy flags are not set
+            // 2. FINE location isSelectedLocationAccuracy flag is set to true
+            return (!fineLocation.isSelectedLocationAccuracy &&
+                        !coarseLocation.isSelectedLocationAccuracy) ||
+                    fineLocation.isSelectedLocationAccuracy
+        }
+        return false
     }
 
     // TODO evanseverson: Actually change mic/camera to be a foreground only permission
@@ -445,6 +481,23 @@ class AppPermissionViewModel(
             LocationUtils.showLocationDialog(context, packageLabel)
         }
 
+        if (changeRequest == ChangeRequest.GRANT_FINE_LOCATION) {
+            if (!group.isOneTime) {
+                KotlinUtils.grantForegroundRuntimePermissions(app, group)
+            }
+            KotlinUtils.setFlagsWhenLocationAccuracyChanged(app, group, true)
+            return
+        }
+
+        if (changeRequest == ChangeRequest.REVOKE_FINE_LOCATION) {
+            if (!group.isOneTime) {
+                KotlinUtils.revokeForegroundRuntimePermissions(app, group,
+                    filterPermissions = listOf(ACCESS_FINE_LOCATION))
+            }
+            KotlinUtils.setFlagsWhenLocationAccuracyChanged(app, group, false)
+            return
+        }
+
         val shouldGrantForeground = changeRequest andValue ChangeRequest.GRANT_FOREGROUND != 0
         val shouldGrantBackground = changeRequest andValue ChangeRequest.GRANT_BACKGROUND != 0
         val shouldRevokeForeground = changeRequest andValue ChangeRequest.REVOKE_FOREGROUND != 0
@@ -509,7 +562,12 @@ class AppPermissionViewModel(
         }
 
         if (shouldGrantForeground) {
-            newGroup = KotlinUtils.grantForegroundRuntimePermissions(app, newGroup)
+            if (isLocationPermWithFine == true && !isFineLocationChecked(newGroup)) {
+                newGroup = KotlinUtils.grantForegroundRuntimePermissions(app, newGroup,
+                    filterPermissions = listOf(ACCESS_COARSE_LOCATION))
+            } else {
+                newGroup = KotlinUtils.grantForegroundRuntimePermissions(app, newGroup)
+            }
 
             if (!wasForegroundGranted) {
                 SafetyNetLogger.logPermissionToggled(newGroup)
