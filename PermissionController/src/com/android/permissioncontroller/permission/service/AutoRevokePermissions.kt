@@ -46,6 +46,7 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
 import android.content.pm.PackageManager.FLAG_PERMISSION_AUTO_REVOKED
 import android.content.pm.PackageManager.FLAG_PERMISSION_USER_SET
 import android.content.pm.PackageManager.PERMISSION_GRANTED
@@ -538,8 +539,15 @@ suspend fun isPackageAutoRevokeExempt(
             return false
         }
 
-        // Q- packages exempt by default
-        return pkg.targetSdkVersion <= android.os.Build.VERSION_CODES.Q
+        // Q- packages exempt by default, except R- on Auto since Auto-Revoke was skipped in R
+        val maxTargetSdkVersionForExemptApps =
+                if (context.packageManager.hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE)) {
+                    android.os.Build.VERSION_CODES.R
+                } else {
+                    android.os.Build.VERSION_CODES.Q
+                }
+
+        return pkg.targetSdkVersion <= maxTargetSdkVersionForExemptApps
     }
     // Check whether user/installer exempt
     return whitelistAppOpMode != MODE_ALLOWED
