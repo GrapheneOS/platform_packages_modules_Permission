@@ -115,6 +115,29 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/location_accuracy">
+
+                <LinearLayout
+                    style="@style/AppPermissionLocationAccuracyText">
+                    <TextView
+                        android:text="@string/app_permission_location_accuracy"
+                        style="@style/AppPermissionLocationAccuracyTitle" />
+                    <TextView
+                        android:text="@string/app_permission_location_accuracy_subtitle"
+                        style="@style/AppPermissionLocationAccuracySubtitle" />
+                </LinearLayout>
+
+                <Switch
+                    android:id="@+id/location_accuracy_switch"
+                    android:checked="true"
+                    style="@style/AppPermissionLocationAccuracySwitch" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
                 style="@style/AppPermissionFooter">
 
                 <View

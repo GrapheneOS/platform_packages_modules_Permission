@@ -97,7 +97,8 @@ public final class GrantPermissionsViewHandlerImpl implements GrantPermissionsVi
 
     @Override
     public void updateUi(String groupName, int groupCount, int groupIndex, Icon icon,
-            CharSequence message, CharSequence detailMessage, boolean[] buttonVisibilities) {
+            CharSequence message, CharSequence detailMessage, boolean[] buttonVisibilities,
+            boolean[] locationVisibilities) {
         // TODO: Handle detailMessage
 
         mGroupName = groupName;

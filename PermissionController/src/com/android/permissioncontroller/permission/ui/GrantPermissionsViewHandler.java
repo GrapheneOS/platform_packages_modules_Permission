@@ -26,6 +26,7 @@ import android.view.WindowManager;
 import androidx.annotation.IntDef;
 
 import java.lang.annotation.Retention;
+import java.util.List;
 
 /**
  * Class for managing the presentation and user interaction of the "grant
@@ -50,6 +51,9 @@ public interface GrantPermissionsViewHandler {
      */
     interface ResultListener {
         void onPermissionGrantResult(String groupName, @Result int result);
+
+        void onPermissionGrantResult(String groupName, List<String> affectedForegroundPermissions,
+                @Result int result);
     }
 
     /**
@@ -79,9 +83,11 @@ public interface GrantPermissionsViewHandler {
      * @param detailMessage another message to display to the user. This clarifies "message" in more
      *                      detail
      * @param buttonVisibilities visibilities for each button
+     * @param locationVisibilities visibilities for location options
      */
     void updateUi(String groupName, int groupCount, int groupIndex, Icon icon,
-            CharSequence message, CharSequence detailMessage, boolean[] buttonVisibilities);
+            CharSequence message, CharSequence detailMessage, boolean[] buttonVisibilities,
+            boolean[] locationVisibilities);
 
     /**
      * Sets the result listener that will be notified when the user responds

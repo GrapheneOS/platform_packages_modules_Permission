@@ -464,6 +464,12 @@
     <!-- Title for the dialog button to deny with prejudice a permission grant. [CHAR LIMIT=60] -->
     <string name="app_permission_button_deny">Deny</string>
 
+    <!-- Title for location accuracy switch in location settings. [CHAR LIMIT=60] -->
+    <string name="app_permission_location_accuracy">Use precise location</string>
+
+    <!-- Subtitle for location accuracy switch in location settings. [CHAR LIMIT=none] -->
+    <string name="app_permission_location_accuracy_subtitle">Apps can only determine your approximate location within a neighborhood proximity with it off</string>
+
     <!-- Title for app permission [CHAR LIMIT=30] -->
     <string name="app_permission_title"><xliff:g id="perm" example="location">%1$s</xliff:g> permission</string>
 
@@ -1072,6 +1078,14 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="permgroupupgraderequest_location">Change location access for &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b>?</string>
     <!-- Subtitle of the message shown to the user when the apps requests permission to use the location while app is in foreground and background. Try to keep the link annotation at the end of the string [CHAR LIMIT=150] -->
     <string name="permgroupupgraderequestdetail_location">This app wants to access your location all the time, even when you\u2019re not using the app. <annotation id="link">Allow in settings.</annotation></string>
+    <!-- Message shown to the user when the app requests permission to use fine location [CHAR LIMIT=120] -->
+    <string name="permgrouprequest_finelocation">Allow &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access this device\u2019s precise location?</string>
+    <!-- Message shown to the user when the app requests permission to use coarse location [CHAR LIMIT=120] -->
+    <string name="permgrouprequest_coarselocation">Allow &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access this device\u2019s approximate location?</string>
+    <!-- Text for the FINE location image [CHAR LIMIT=20] -->
+    <string name="permgrouprequest_finelocation_imagetext">Precise</string>
+    <!-- Text for the COARSE location image [CHAR LIMIT=20] -->
+    <string name="permgrouprequest_coarselocation_imagetext">Approximate</string>
 
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
     <string name="permgrouprequest_calendar">Allow
