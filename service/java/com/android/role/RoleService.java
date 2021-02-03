@@ -552,8 +552,6 @@ public class RoleService extends SystemService implements RoleUserState.Callback
         }
 
         private boolean isUserExistent(@UserIdInt int userId) {
-            // FIXME: This checks whether the user is alive, but we should check for whether the
-            //  user is existent.
             return mUserManager.getUserHandles(true).contains(UserHandle.of(userId));
         }
 
