@@ -45,6 +45,7 @@ import com.android.permissioncontroller.permission.data.FullStoragePermissionApp
 import com.android.permissioncontroller.permission.data.LightAppPermGroupLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.data.get
+import com.android.permissioncontroller.permission.debug.isLocationAccuracyEnabled
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPermission
 import com.android.permissioncontroller.permission.utils.KotlinUtils
@@ -131,7 +132,7 @@ class AppPermissionViewModel(
     private var lightAppPermGroup: LightAppPermGroup? = null
 
     /* Whether the current ViewModel is Location permission with both Coarse and Fine */
-    private var isLocationPermWithFine: Boolean? = null
+    private var shouldShowLocationAccuracy: Boolean? = null
 
     /**
      * A livedata which determines which detail string, if any, should be shown
@@ -319,13 +320,14 @@ class AppPermissionViewModel(
                 allowedState.isShown = false
             }
 
-            if (isLocationPermWithFine == null) {
-                isLocationPermWithFine = group.permGroupName == LOCATION &&
-                        group.permissions.containsKey(ACCESS_FINE_LOCATION)
+            if (shouldShowLocationAccuracy == null) {
+                shouldShowLocationAccuracy = group.permGroupName == LOCATION &&
+                        group.permissions.containsKey(ACCESS_FINE_LOCATION) &&
+                        isLocationAccuracyEnabled()
             }
             val locationAccuracyState = ButtonState(isFineLocationChecked(group),
                     true, false, null)
-            if (isLocationPermWithFine == true && !deniedState.isChecked) {
+            if (shouldShowLocationAccuracy == true && !deniedState.isChecked) {
                 locationAccuracyState.isShown = true
             }
 
@@ -338,7 +340,7 @@ class AppPermissionViewModel(
     }
 
     private fun isFineLocationChecked(group: LightAppPermGroup): Boolean {
-        if (isLocationPermWithFine == true) {
+        if (shouldShowLocationAccuracy == true) {
             val coarseLocation = group.permissions[ACCESS_COARSE_LOCATION]!!
             val fineLocation = group.permissions[ACCESS_FINE_LOCATION]!!
             // Two cases when location accuracy switch is set to ON (FINE)
@@ -562,7 +564,7 @@ class AppPermissionViewModel(
         }
 
         if (shouldGrantForeground) {
-            if (isLocationPermWithFine == true && !isFineLocationChecked(newGroup)) {
+            if (shouldShowLocationAccuracy == true && !isFineLocationChecked(newGroup)) {
                 newGroup = KotlinUtils.grantForegroundRuntimePermissions(app, newGroup,
                     filterPermissions = listOf(ACCESS_COARSE_LOCATION))
             } else {

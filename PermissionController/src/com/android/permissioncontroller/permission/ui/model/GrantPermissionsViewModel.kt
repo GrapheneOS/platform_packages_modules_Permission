@@ -58,6 +58,7 @@ import com.android.permissioncontroller.permission.data.LightPackageInfoLiveData
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.data.get
+import com.android.permissioncontroller.permission.debug.isLocationAccuracyEnabled
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPermGroupInfo
@@ -74,6 +75,7 @@ import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.D
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DIALOG_WITH_FINE_LOCATION_ONLY
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.FINE_RADIO_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.LINK_TO_SETTINGS
+import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.LOCATION_ACCURACY_LAYOUT
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.NEXT_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.NEXT_LOCATION_DIALOG
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.NO_UPGRADE_AND_DONT_ASK_AGAIN_BUTTON
@@ -394,8 +396,9 @@ class GrantPermissionsViewModel(
 
                 // Show location permission dialogs based on location permissions
                 val locationVisibilities = MutableList(NEXT_LOCATION_DIALOG) { false }
-                if (groupState.group.permGroupName == LOCATION) {
+                if (groupState.group.permGroupName == LOCATION && isLocationAccuracyEnabled()) {
                     if (needFgPermissions) {
+                        locationVisibilities[LOCATION_ACCURACY_LAYOUT] = true
                         if (groupState.group.foregroundPermNames.contains(ACCESS_FINE_LOCATION)) {
                             val coarseLocationPerm =
                                 groupState.group.allPermissions[ACCESS_COARSE_LOCATION]
