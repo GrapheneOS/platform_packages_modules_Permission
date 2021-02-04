@@ -87,12 +87,13 @@ public class GrantPermissionsActivity extends FragmentActivity
     public static final int NO_UPGRADE_OT_AND_DONT_ASK_AGAIN_BUTTON = 9; // one-time
     public static final int LINK_TO_SETTINGS = 10;
 
-    public static final int NEXT_LOCATION_DIALOG = 5;
-    public static final int FINE_RADIO_BUTTON = 0;
-    public static final int COARSE_RADIO_BUTTON = 1;
-    public static final int DIALOG_WITH_BOTH_LOCATIONS = 2;
-    public static final int DIALOG_WITH_FINE_LOCATION_ONLY = 3;
-    public static final int DIALOG_WITH_COARSE_LOCATION_ONLY = 4;
+    public static final int NEXT_LOCATION_DIALOG = 6;
+    public static final int LOCATION_ACCURACY_LAYOUT = 0;
+    public static final int FINE_RADIO_BUTTON = 1;
+    public static final int COARSE_RADIO_BUTTON = 2;
+    public static final int DIALOG_WITH_BOTH_LOCATIONS = 3;
+    public static final int DIALOG_WITH_FINE_LOCATION_ONLY = 4;
+    public static final int DIALOG_WITH_COARSE_LOCATION_ONLY = 5;
 
     private static final int APP_PERMISSION_REQUEST_CODE = 1;
 

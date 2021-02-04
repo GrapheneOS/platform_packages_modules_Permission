@@ -34,6 +34,9 @@ const val PROPERTY_CAMERA_MIC_ICONS_ENABLED = "camera_mic_icons_enabled"
 /** Whether to show the location indicators. */
 const val PROPERTY_LOCATION_INDICATORS_ENABLED = "location_indicators_enabled"
 
+/* Whether location accuracy feature is enabled */
+const val PROPERTY_LOCATION_ACCURACY_ENABLED = "location_accuracy_enabled"
+
 /**
  * Whether the Permissions Hub 2 flag is enabled
  *
@@ -88,6 +91,15 @@ fun isLocationIndicatorsFlagEnabled(): Boolean {
  */
 fun shouldShowLocationIndicators(): Boolean {
     return isLocationIndicatorsFlagEnabled() || isPermissionsHub2FlagEnabled()
+}
+
+/**
+ * Whether the location accuracy feature is enabled
+ */
+fun isLocationAccuracyEnabled(): Boolean {
+    // TODO: guojing Change default value to true after the teamfood.
+    return DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
+        PROPERTY_LOCATION_ACCURACY_ENABLED, false)
 }
 
 /**
