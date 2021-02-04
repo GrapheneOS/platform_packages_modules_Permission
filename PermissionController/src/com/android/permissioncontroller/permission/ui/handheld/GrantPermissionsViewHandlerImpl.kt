@@ -43,13 +43,14 @@ import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.A
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_FOREGROUND_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_ONE_TIME_BUTTON
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DIALOG_WITH_BOTH_LOCATIONS
-import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DIALOG_WITH_COARSE_LOCATION_ONLY
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.COARSE_RADIO_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DENY_AND_DONT_ASK_AGAIN_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DENY_BUTTON
+import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DIALOG_WITH_BOTH_LOCATIONS
+import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DIALOG_WITH_COARSE_LOCATION_ONLY
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.DIALOG_WITH_FINE_LOCATION_ONLY
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.FINE_RADIO_BUTTON
+import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.LOCATION_ACCURACY_LAYOUT
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.NEXT_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.NEXT_LOCATION_DIALOG
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.NO_UPGRADE_AND_DONT_ASK_AGAIN_BUTTON
@@ -71,6 +72,10 @@ class GrantPermissionsViewHandlerImpl(
     private val mAppPackageName: String,
     private val mUserHandle: UserHandle
 ) : GrantPermissionsViewHandler, OnClickListener {
+
+    private val LOCATION_ACCURACY_DIALOGS = listOf(DIALOG_WITH_BOTH_LOCATIONS,
+            DIALOG_WITH_FINE_LOCATION_ONLY, DIALOG_WITH_COARSE_LOCATION_ONLY)
+    private val LOCATION_ACCURACY_RADIO_BUTTONS = listOf(FINE_RADIO_BUTTON, COARSE_RADIO_BUTTON)
 
     private var resultListener: GrantPermissionsViewHandler.ResultListener? = null
 
@@ -262,16 +267,23 @@ class GrantPermissionsViewHandlerImpl(
     }
 
     private fun updateLocationVisibilities() {
-        for (i in 0 until 2) {
-            locationViews[i]?.visibility = View.VISIBLE
-            (locationViews[i] as RadioButton).isChecked = locationVisibilities[i]
-        }
-        for (i in 2 until LOCATION_RES_ID_TO_NUM.size()) {
-            locationViews[i]?.visibility = if (locationVisibilities[i]) {
-                View.VISIBLE
-            } else {
-                View.GONE
+        if (locationVisibilities[LOCATION_ACCURACY_LAYOUT]) {
+            locationViews[LOCATION_ACCURACY_LAYOUT]?.visibility = View.VISIBLE
+            for (i in LOCATION_ACCURACY_DIALOGS) {
+                locationViews[i]?.visibility = if (locationVisibilities[i]) {
+                    View.VISIBLE
+                } else {
+                    View.GONE
+                }
             }
+            if (locationVisibilities[DIALOG_WITH_BOTH_LOCATIONS]) {
+                for (i in LOCATION_ACCURACY_RADIO_BUTTONS) {
+                    locationViews[i]?.visibility = View.VISIBLE
+                    (locationViews[i] as RadioButton).isChecked = locationVisibilities[i]
+                }
+            }
+        } else {
+            locationViews[LOCATION_ACCURACY_LAYOUT]?.visibility = View.GONE
         }
     }
 
@@ -406,6 +418,7 @@ class GrantPermissionsViewHandlerImpl(
             BUTTON_RES_ID_TO_NUM.put(R.id.permission_no_upgrade_one_time_and_dont_ask_again_button,
                 NO_UPGRADE_OT_AND_DONT_ASK_AGAIN_BUTTON)
 
+            LOCATION_RES_ID_TO_NUM.put(R.id.permission_location_accuracy, LOCATION_ACCURACY_LAYOUT)
             LOCATION_RES_ID_TO_NUM.put(R.id.permission_location_accuracy_radio_fine,
                 FINE_RADIO_BUTTON)
             LOCATION_RES_ID_TO_NUM.put(R.id.permission_location_accuracy_radio_coarse,
