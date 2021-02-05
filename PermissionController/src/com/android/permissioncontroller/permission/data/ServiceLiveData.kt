@@ -31,7 +31,7 @@ import android.service.wallpaper.WallpaperService
 import android.view.inputmethod.InputMethod
 import com.android.permissioncontroller.DumpableLog
 import com.android.permissioncontroller.PermissionControllerApplication
-import com.android.permissioncontroller.hibernation.DEBUG_AUTO_REVOKE_POLICY
+import com.android.permissioncontroller.hibernation.DEBUG_HIBERNATION_POLICY
 import com.android.permissioncontroller.permission.utils.Utils.getUserContext
 import kotlinx.coroutines.Job
 
@@ -169,7 +169,7 @@ class ServiceLiveData(
                     }
                     val packageName = resolveInfo?.serviceInfo?.packageName
                     if (!isServiceEnabled(packageName)) {
-                        if (DEBUG_AUTO_REVOKE_POLICY) {
+                        if (DEBUG_HIBERNATION_POLICY) {
                             DumpableLog.i(LOG_TAG,
                                     "Not exempting $packageName - not an active $name " +
                                             "for u${user.identifier}")
@@ -178,7 +178,7 @@ class ServiceLiveData(
                     }
                     packageName
                 }.toSet()
-        if (DEBUG_AUTO_REVOKE_POLICY) {
+        if (DEBUG_HIBERNATION_POLICY) {
             DumpableLog.i(LOG_TAG,
                     "Detected ${name}s: $packageNames")
         }

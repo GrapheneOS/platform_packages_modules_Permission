@@ -287,7 +287,7 @@ private class AutoRevokeDumpLiveData(context: Context) :
 
     /** Usage stats: user -> list<usages> */
     private val usages = UsageStatsLiveData[
-        getUnusedThresholdMs(context),
+        getUnusedThresholdMs(),
         if (DEBUG_OVERRIDE_THRESHOLDS) INTERVAL_DAILY else INTERVAL_MONTHLY
     ]
 

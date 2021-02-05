@@ -30,7 +30,8 @@ import android.app.job.JobParameters
 import android.app.job.JobScheduler
 import android.app.job.JobService
 import android.app.usage.UsageStats
-import android.app.usage.UsageStatsManager
+import android.app.usage.UsageStatsManager.INTERVAL_DAILY
+import android.app.usage.UsageStatsManager.INTERVAL_MONTHLY
 import android.content.BroadcastReceiver
 import android.content.ComponentName
 import android.content.Context
@@ -75,7 +76,6 @@ import com.android.permissioncontroller.permission.model.livedatatypes.LightPack
 import com.android.permissioncontroller.permission.service.revokeAppPermissions
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity
 import com.android.permissioncontroller.permission.utils.Utils
-import com.android.permissioncontroller.permission.utils.application
 import com.android.permissioncontroller.permission.utils.forEachInParallel
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.GlobalScope
@@ -88,16 +88,21 @@ import java.util.concurrent.TimeUnit
 private const val LOG_TAG = "HibernationPolicy"
 const val DEBUG_OVERRIDE_THRESHOLDS = false
 // TODO eugenesusla: temporarily enabled for extra logs during dogfooding
-const val DEBUG_AUTO_REVOKE_POLICY = true || DEBUG_OVERRIDE_THRESHOLDS
+const val DEBUG_HIBERNATION_POLICY = true || DEBUG_OVERRIDE_THRESHOLDS
 
+private val HIBERNATION_ENABLED =
+        DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_APP_HIBERNATION,
+        PolicyUtils.PROPERTY_APP_HIBERNATION_ENABLED, false)
 private const val AUTO_REVOKE_ENABLED = true
 
 private var SKIP_NEXT_RUN = false
 
 private val DEFAULT_UNUSED_THRESHOLD_MS =
-        if (AUTO_REVOKE_ENABLED) TimeUnit.DAYS.toMillis(90) else Long.MAX_VALUE
+        if (HIBERNATION_ENABLED || AUTO_REVOKE_ENABLED)
+            TimeUnit.DAYS.toMillis(90) else Long.MAX_VALUE
 
-fun getUnusedThresholdMs(context: Context) = when {
+// TODO(b/175830282): Rename this for hibernation along with CTS test
+fun getUnusedThresholdMs() = when {
     DEBUG_OVERRIDE_THRESHOLDS -> TimeUnit.SECONDS.toMillis(1)
     else -> DeviceConfig.getLong(DeviceConfig.NAMESPACE_PERMISSIONS,
             PolicyUtils.PROPERTY_AUTO_REVOKE_UNUSED_THRESHOLD_MILLIS,
@@ -105,71 +110,70 @@ fun getUnusedThresholdMs(context: Context) = when {
 }
 
 private val DEFAULT_CHECK_FREQUENCY_MS = TimeUnit.DAYS.toMillis(15)
-private fun getCheckFrequencyMs(context: Context) = DeviceConfig.getLong(
+// TODO(b/175830282): Rename this for hibernation along with CTS test
+private fun getCheckFrequencyMs() = DeviceConfig.getLong(
     DeviceConfig.NAMESPACE_PERMISSIONS,
         PolicyUtils.PROPERTY_AUTO_REVOKE_CHECK_FREQUENCY_MILLIS,
         DEFAULT_CHECK_FREQUENCY_MS)
 
 private val PREF_KEY_FIRST_BOOT_TIME = "first_boot_time"
 
-fun isAutoRevokeEnabled(context: Context): Boolean {
-    return getCheckFrequencyMs(context) > 0 &&
-            getUnusedThresholdMs(context) > 0 &&
-            getUnusedThresholdMs(context) != Long.MAX_VALUE
+fun isHibernationJobEnabled(): Boolean {
+    return getCheckFrequencyMs() > 0 &&
+            getUnusedThresholdMs() > 0 &&
+            getUnusedThresholdMs() != Long.MAX_VALUE
 }
 
 /**
  * Receiver of the onBoot event.
  */
-class AutoRevokeOnBootReceiver : BroadcastReceiver() {
+class HibernationOnBootReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent?) {
-        // Init firstBootTime
-        val firstBootTime = context.firstBootTime
-
-        if (DEBUG_AUTO_REVOKE_POLICY) {
-            DumpableLog.i(LOG_TAG, "scheduleAutoRevokePermissions " +
-                    "with frequency ${getCheckFrequencyMs(context)}ms " +
-                    "and threshold ${getUnusedThresholdMs(context)}ms")
+        if (DEBUG_HIBERNATION_POLICY) {
+            DumpableLog.i(LOG_TAG, "scheduleHibernationJob " +
+                    "with frequency ${getCheckFrequencyMs()}ms " +
+                    "and threshold ${getUnusedThresholdMs()}ms")
         }
 
         val userManager = context.getSystemService(UserManager::class.java)!!
-        // If this user is a profile, then its auto revoke will be handled by the primary user
+        // If this user is a profile, then its hibernation/auto-revoke will be handled by the
+        // primary user
         if (userManager.isProfile) {
-            if (DEBUG_AUTO_REVOKE_POLICY) {
-                DumpableLog.i(LOG_TAG, "user ${Process.myUserHandle().identifier} is a profile. " +
-                        "Not running Auto Revoke.")
+            if (DEBUG_HIBERNATION_POLICY) {
+                DumpableLog.i(LOG_TAG, "user ${Process.myUserHandle().identifier} is a profile." +
+                        " Not running hibernation job.")
             }
             return
-        } else if (DEBUG_AUTO_REVOKE_POLICY) {
-            DumpableLog.i(LOG_TAG, "user ${Process.myUserHandle().identifier} is a profile " +
-                    "owner. Running Auto Revoke.")
+        } else if (DEBUG_HIBERNATION_POLICY) {
+            DumpableLog.i(LOG_TAG, "user ${Process.myUserHandle().identifier} is a profile" +
+                    "owner. Running hibernation job.")
         }
 
         SKIP_NEXT_RUN = true
 
         val jobInfo = JobInfo.Builder(
-                Constants.AUTO_REVOKE_JOB_ID,
-                ComponentName(context, AutoRevokeService::class.java))
-            .setPeriodic(getCheckFrequencyMs(context))
+                Constants.HIBERNATION_JOB_ID,
+                ComponentName(context, HibernationJobService::class.java))
+            .setPeriodic(getCheckFrequencyMs())
             .build()
         val status = context.getSystemService(JobScheduler::class.java)!!.schedule(jobInfo)
         if (status != JobScheduler.RESULT_SUCCESS) {
             DumpableLog.e(LOG_TAG,
-                    "Could not schedule ${AutoRevokeService::class.java.simpleName}: $status")
+                    "Could not schedule ${HibernationJobService::class.java.simpleName}: $status")
         }
     }
 }
 
 /**
- * Gets apps that are unused and auto-revocable as a map of the user and their revocable apps.
+ * Gets apps that are unused and should hibernate as a map of the user and their hibernateable apps.
  */
 @MainThread
-private suspend fun getRevocableApps(
+private suspend fun getAppsToHibernate(
     context: Context
 ):
     Map<UserHandle, List<String>> {
-    if (!isAutoRevokeEnabled(context)) {
+    if (!isHibernationJobEnabled()) {
         return emptyMap()
     }
 
@@ -178,17 +182,16 @@ private suspend fun getRevocableApps(
 
     // TODO ntmyren: remove once b/154796729 is fixed
     Log.i(LOG_TAG, "getting UserPackageInfoLiveData for all users " +
-            "in AutoRevokePermissions")
+            "in " + HibernationJobService::class.java.simpleName)
     val allPackagesByUser = AllPackageInfosLiveData.getInitializedValue(forceUpdate = true)
     val allPackagesByUserByUid = allPackagesByUser.mapValues { (_, pkgs) ->
         pkgs.groupBy { pkg -> pkg.uid }
     }
     val unusedApps = allPackagesByUser.toMutableMap()
 
-    val userStats = UsageStatsLiveData[getUnusedThresholdMs(context),
-        if (DEBUG_OVERRIDE_THRESHOLDS) UsageStatsManager.INTERVAL_DAILY
-        else UsageStatsManager.INTERVAL_MONTHLY].getInitializedValue()
-    if (DEBUG_AUTO_REVOKE_POLICY) {
+    val userStats = UsageStatsLiveData[getUnusedThresholdMs(),
+        if (DEBUG_OVERRIDE_THRESHOLDS) INTERVAL_DAILY else INTERVAL_MONTHLY].getInitializedValue()
+    if (DEBUG_HIBERNATION_POLICY) {
         for ((user, stats) in userStats) {
             DumpableLog.i(LOG_TAG, "Usage stats for user ${user.identifier}: " +
                     stats.map { stat ->
@@ -198,7 +201,7 @@ private suspend fun getRevocableApps(
     }
     for (user in unusedApps.keys.toList()) {
         if (user !in userStats.keys) {
-            if (DEBUG_AUTO_REVOKE_POLICY) {
+            if (DEBUG_HIBERNATION_POLICY) {
                 DumpableLog.i(LOG_TAG, "Ignoring user ${user.identifier}")
             }
             unusedApps.remove(user)
@@ -236,50 +239,52 @@ private suspend fun getRevocableApps(
             }
 
             // Threshold check - whether app is unused
-            now - lastTimeVisible > getUnusedThresholdMs(context)
+            now - lastTimeVisible > getUnusedThresholdMs()
         }
 
         unusedApps[user] = unusedUserApps
-        if (DEBUG_AUTO_REVOKE_POLICY) {
+        if (DEBUG_HIBERNATION_POLICY) {
             DumpableLog.i(LOG_TAG, "Unused apps for user ${user.identifier}: " +
                     "${unusedUserApps.map { it.packageName }}")
         }
     }
 
-    val revocableApps = mutableMapOf<UserHandle, List<String>>()
+    val appsToHibernate = mutableMapOf<UserHandle, List<String>>()
     val userManager = context.getSystemService(UserManager::class.java)
     for ((user, userApps) in unusedApps) {
         if (userManager == null || !userManager.isUserUnlocked(user)) {
             DumpableLog.w(LOG_TAG, "Skipping $user - locked direct boot state")
             continue
         }
-        var userRevocableApps = mutableListOf<String>()
+        var userAppsToHibernate = mutableListOf<String>()
         userApps.forEachInParallel(Main) { pkg: LightPackageInfo ->
+            // TODO(b/175830282) Move this to auto-revoke specific files
             if (pkg.grantedPermissions.isEmpty()) {
                 return@forEachInParallel
             }
 
-            if (isPackageAutoRevokePermanentlyExempt(pkg, user)) {
+            if (isPackageHibernationExemptBySystem(pkg, user)) {
                 return@forEachInParallel
             }
 
-            if (isPackageAutoRevokeExempt(context, pkg)) {
+            // TODO(b/175830282) Use this on pre-S devices only and hibernation exemption on S+
+            if (isPackageAutoRevokeExemptByUser(context, pkg)) {
                 return@forEachInParallel
             }
 
-            if (DEBUG_AUTO_REVOKE_POLICY) {
+            if (DEBUG_HIBERNATION_POLICY) {
                 var packageName = pkg.packageName
                 DumpableLog.i(LOG_TAG, "unused app $packageName - lastVisible on " +
                     userStats[user]?.lastTimeVisible(packageName)?.let(::Date))
             }
 
-            synchronized(userRevocableApps) {
-                userRevocableApps.add(pkg.packageName)
+            synchronized(userAppsToHibernate) {
+                userAppsToHibernate.add(pkg.packageName)
             }
         }
-        revocableApps.put(user, userRevocableApps)
+        appsToHibernate.put(user, userAppsToHibernate)
     }
-    return revocableApps
+    return appsToHibernate
 }
 
 private fun List<UsageStats>.lastTimeVisible(pkgNames: List<String>): Long {
@@ -297,9 +302,9 @@ private fun List<UsageStats>.lastTimeVisible(pkgName: String): Long {
 }
 
 /**
- * Checks if the given package is exempt from auto revoke in a way that's not user-overridable
+ * Checks if the given package is exempt from hibernation in a way that's not user-overridable
  */
-suspend fun isPackageAutoRevokePermanentlyExempt(
+suspend fun isPackageHibernationExemptBySystem(
     pkg: LightPackageInfo,
     user: UserHandle
 ): Boolean {
@@ -309,7 +314,7 @@ suspend fun isPackageAutoRevokePermanentlyExempt(
         return true
     }
     if (Utils.isUserDisabledOrWorkProfile(user)) {
-        if (DEBUG_AUTO_REVOKE_POLICY) {
+        if (DEBUG_HIBERNATION_POLICY) {
             DumpableLog.i(LOG_TAG,
                     "Exempted ${pkg.packageName} - $user is disabled or a work profile")
         }
@@ -323,7 +328,7 @@ suspend fun isPackageAutoRevokePermanentlyExempt(
                 carrierPrivilegedStatus)
     }
     if (carrierPrivilegedStatus == CARRIER_PRIVILEGE_STATUS_HAS_ACCESS) {
-        if (DEBUG_AUTO_REVOKE_POLICY) {
+        if (DEBUG_HIBERNATION_POLICY) {
             DumpableLog.i(LOG_TAG, "Exempted ${pkg.packageName} - carrier privileged")
         }
         return true
@@ -334,7 +339,7 @@ suspend fun isPackageAutoRevokePermanentlyExempt(
             .checkPermission(
                     Manifest.permission.READ_PRIVILEGED_PHONE_STATE,
                     pkg.packageName) == PERMISSION_GRANTED) {
-        if (DEBUG_AUTO_REVOKE_POLICY) {
+        if (DEBUG_HIBERNATION_POLICY) {
             DumpableLog.i(LOG_TAG, "Exempted ${pkg.packageName} " +
                     "- holder of READ_PRIVILEGED_PHONE_STATE")
         }
@@ -347,7 +352,7 @@ suspend fun isPackageAutoRevokePermanentlyExempt(
 /**
  * Checks if the given package is exempt from auto revoke in a way that's user-overridable
  */
-suspend fun isPackageAutoRevokeExempt(
+suspend fun isPackageAutoRevokeExemptByUser(
     context: Context,
     pkg: LightPackageInfo
 ): Boolean {
@@ -388,16 +393,6 @@ private fun Context.isPackageCrossProfile(pkg: String): Boolean {
             Manifest.permission.INTERACT_ACROSS_USERS_FULL, pkg) == PERMISSION_GRANTED
 }
 
-private fun Context.forUser(user: UserHandle): Context {
-    return Utils.getUserContext(application, user)
-}
-
-private fun Context.forParentUser(): Context {
-    return Utils.getParentUserContext(this)
-}
-
-private inline fun <reified T> Context.getSystemService() = getSystemService(T::class.java)!!
-
 val Context.sharedPreferences: SharedPreferences
     get() {
     return PreferenceManager.getDefaultSharedPreferences(this)
@@ -416,20 +411,20 @@ private val Context.firstBootTime: Long get() {
 
 /**
  * A job to check for apps unused in the last [getUnusedThresholdMs]ms every
- * [getCheckFrequencyMs]ms and revoke their permissions.
+ * [getCheckFrequencyMs]ms and hibernate the app / revoke their runtime permissions.
  */
-class AutoRevokeService : JobService() {
+class HibernationJobService : JobService() {
     var job: Job? = null
     var jobStartTime: Long = -1L
 
     override fun onStartJob(params: JobParameters?): Boolean {
-        if (DEBUG_AUTO_REVOKE_POLICY) {
+        if (DEBUG_HIBERNATION_POLICY) {
             DumpableLog.i(LOG_TAG, "onStartJob")
         }
 
         if (SKIP_NEXT_RUN) {
             SKIP_NEXT_RUN = false
-            if (DEBUG_AUTO_REVOKE_POLICY) {
+            if (DEBUG_HIBERNATION_POLICY) {
                 Log.i(LOG_TAG, "Skipping auto revoke first run when scheduled by system")
             }
             jobFinished(params, false)
@@ -444,9 +439,10 @@ class AutoRevokeService : JobService() {
                     sessionId = Random().nextLong()
                 }
 
-                val revocableApps = getRevocableApps(this@AutoRevokeService)
+                val appsToHibernate = getAppsToHibernate(this@HibernationJobService)
+                // TODO(b/175830282) Call system API to hibernate app here
                 val revokedApps = revokeAppPermissions(
-                        revocableApps, this@AutoRevokeService, sessionId)
+                        appsToHibernate, this@HibernationJobService, sessionId)
                 if (revokedApps.isNotEmpty()) {
                     showAutoRevokeNotification(sessionId)
                 }
@@ -492,14 +488,10 @@ class AutoRevokeService : JobService() {
             b.addExtras(extras)
         }
 
-        notificationManager.notify(AutoRevokeService::class.java.simpleName,
+        notificationManager.notify(HibernationJobService::class.java.simpleName,
                 Constants.AUTO_REVOKE_NOTIFICATION_ID, b.build())
         // Preload the auto revoked packages
         UnusedAutoRevokedPackagesLiveData.getInitializedValue()
-    }
-
-    companion object {
-        const val SHOW_AUTO_REVOKE = "showAutoRevoke"
     }
 
     override fun onStopJob(params: JobParameters?): Boolean {
