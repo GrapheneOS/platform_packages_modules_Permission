@@ -23,7 +23,7 @@ import android.content.pm.PackageManager
 import android.os.UserHandle
 import com.android.permissioncontroller.DumpableLog
 import com.android.permissioncontroller.PermissionControllerApplication
-import com.android.permissioncontroller.hibernation.DEBUG_AUTO_REVOKE_POLICY
+import com.android.permissioncontroller.hibernation.DEBUG_HIBERNATION_POLICY
 import com.android.permissioncontroller.permission.utils.Utils.getUserContext
 import kotlinx.coroutines.Job
 
@@ -79,7 +79,7 @@ class BroadcastReceiverLiveData(
                     }
                     val packageName = resolveInfo?.activityInfo?.packageName
                     if (!isReceiverEnabled(packageName)) {
-                        if (DEBUG_AUTO_REVOKE_POLICY) {
+                        if (DEBUG_HIBERNATION_POLICY) {
                             DumpableLog.i(LOG_TAG,
                                     "Not exempting $packageName - not an active $name " +
                                             "for u${user.identifier}")
@@ -88,7 +88,7 @@ class BroadcastReceiverLiveData(
                     }
                     packageName
                 }.toSet()
-        if (DEBUG_AUTO_REVOKE_POLICY) {
+        if (DEBUG_HIBERNATION_POLICY) {
             DumpableLog.i(LOG_TAG,
                     "Detected ${intentAction.substringAfterLast(".")}s: $packageNames")
         }

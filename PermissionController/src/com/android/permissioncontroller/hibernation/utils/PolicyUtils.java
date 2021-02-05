@@ -28,4 +28,7 @@ public final class PolicyUtils {
     /** The frequency of running the job for auto-revoke permissions */
     public static final String PROPERTY_AUTO_REVOKE_CHECK_FREQUENCY_MILLIS =
             "auto_revoke_check_frequency_millis";
+
+    /** Whether or not app hibernation is enabled on the device **/
+    public static final String PROPERTY_APP_HIBERNATION_ENABLED = "app_hibernation_enabled";
 }
