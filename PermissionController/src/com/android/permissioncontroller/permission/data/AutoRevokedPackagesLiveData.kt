@@ -21,7 +21,7 @@ import android.content.pm.PackageManager.FLAG_PERMISSION_AUTO_REVOKED
 import android.os.Build
 import android.os.UserHandle
 import com.android.permissioncontroller.PermissionControllerApplication
-import com.android.permissioncontroller.permission.service.getUnusedThresholdMs
+import com.android.permissioncontroller.hibernation.getUnusedThresholdMs
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.Utils
 import kotlinx.coroutines.Dispatchers.Main

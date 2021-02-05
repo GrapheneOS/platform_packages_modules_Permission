@@ -25,10 +25,10 @@ import android.os.UserHandle
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData.Companion.NON_RUNTIME_NORMAL_PERMS
 import com.android.permissioncontroller.permission.model.livedatatypes.AutoRevokeState
-import com.android.permissioncontroller.permission.service.ExemptServicesLiveData
-import com.android.permissioncontroller.permission.service.isAutoRevokeEnabled
-import com.android.permissioncontroller.permission.service.isPackageAutoRevokeExempt
-import com.android.permissioncontroller.permission.service.isPackageAutoRevokePermanentlyExempt
+import com.android.permissioncontroller.hibernation.ExemptServicesLiveData
+import com.android.permissioncontroller.hibernation.isAutoRevokeEnabled
+import com.android.permissioncontroller.hibernation.isPackageAutoRevokeExempt
+import com.android.permissioncontroller.hibernation.isPackageAutoRevokePermanentlyExempt
 import kotlinx.coroutines.Job
 
 /**
