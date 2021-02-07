@@ -89,7 +89,9 @@ java_sdk_library {
         ":service-permission-javastream-protos",
     ],
     libs: [
-        "framework-permission",
+        // TODO(b/177884622): Short term solution to prevent service-permission from seeing hidden
+        //  APIs in framework-permission, as we don't actually have any dependency in it.
+        //"framework-permission",
         "framework-permission-s.impl",
         "framework-permission-s-shared",
     ],
