@@ -64,8 +64,8 @@
     <string name="default_permission_description" msgid="4624464917726285203">"белгисиз аракеттерди жасайт"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_1">%2$d</xliff:g> колдонмонун ичинен <xliff:g id="COUNT_0">%1$d</xliff:g> уруксат берилген"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> колдонмого уруксат берилди"</string>
-    <string name="menu_show_system" msgid="4254021607027872504">"Тутумдагы процесстерди көрсөтүү"</string>
-    <string name="menu_hide_system" msgid="3855390843744028465">"Тутумдагы процесстерди жашыруу"</string>
+    <string name="menu_show_system" msgid="4254021607027872504">"Системалык процесстерди көрсөтүү"</string>
+    <string name="menu_hide_system" msgid="3855390843744028465">"Системалык процесстерди жашыруу"</string>
     <string name="no_apps" msgid="2412612731628386816">"Бир да колдонмо жок"</string>
     <string name="location_settings" msgid="3624412509133422562">"Жайгашкан жерди аныктоо жөндөөлөрү"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> - бул түзмөктөгү жайгашкан жерди аныктоо кызматынын жабдуучусу. Жайгашкан жерди көрүү мүмкүнчүлүгүн жайгашкан жерди аныктоо жөндөөлөрүнөн өзгөртсө болот."</string>
@@ -373,7 +373,7 @@
     <string name="special_app_access_no_apps" msgid="4102911722787886970">"Бир да колдонмо жок"</string>
     <string name="home_missing_work_profile_support" msgid="1756855847669387977">"Жумуш профили колдоого алынбайт"</string>
     <string name="encryption_unaware_confirmation_message" msgid="8274491794636402484">"Эскертүү: Эгер түзмөгүңүздү өчүрүп күйгүзгөндө экранды бөгөттөө жөндөлгөн болсо, түзмөктү бөгөттөн чыгармайынча бул колдонмо ачылбайт."</string>
-    <string name="assistant_confirmation_message" msgid="7476540402884416212">"Жардамчы тутумуңузда иштеп жаткан программалар тууралуу маалыматты, ошондой эле экраныңызда көрүнүп турган же колдонмолордогу маалыматты окуй алат."</string>
+    <string name="assistant_confirmation_message" msgid="7476540402884416212">"Жардамчы системаңызда иштеп жаткан программалар тууралуу маалыматты, ошондой эле экраныңызда көрүнүп турган же колдонмолордогу маалыматты окуй алат."</string>
     <string name="incident_report_channel_name" msgid="3144954065936288440">"Мүчүлүштүктөр тууралуу кабарлоо"</string>
     <string name="incident_report_notification_title" msgid="4635984625656519773">"Мүчүлүштүктөрдү аныктоо дайындары бөлүшүлсүнбү?"</string>
     <string name="incident_report_notification_text" msgid="3376480583513587923">"<xliff:g id="APP_NAME">%1$s</xliff:g> мүчүлүштүктөрдү оңдоо маалыматын жүктөп бергиси келет."</string>
