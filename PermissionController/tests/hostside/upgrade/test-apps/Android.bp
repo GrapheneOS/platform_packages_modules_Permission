@@ -1,0 +1,63 @@
+// Copyright (C) 2020 The Android Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+android_test_helper_app {
+    name: "PermissionUpgrade30HasCameraGranted",
+    sdk_version: "30",
+    manifest: "PermissionUpgrade30HasCameraGranted.xml"
+}
+
+android_test_helper_app {
+    name: "PermissionUpgrade30HasCameraDenied",
+    sdk_version: "30",
+    manifest: "PermissionUpgrade30HasCameraDenied.xml"
+}
+
+android_test_helper_app {
+    name: "PermissionUpgrade30HasCameraGrantedAndDeclaresBgCamera",
+    sdk_version: "30",
+    manifest: "PermissionUpgrade30HasCameraGrantedAndDeclaresBgCamera.xml"
+}
+
+android_test_helper_app {
+    name: "PermissionUpgrade30HasCameraDeniedAndDeclaresBgCamera",
+    sdk_version: "30",
+    manifest: "PermissionUpgrade30HasCameraDeniedAndDeclaresBgCamera.xml"
+}
+
+android_test_helper_app {
+    name: "PermissionUpgradeCurrentHasCameraGranted",
+    manifest: "PermissionUpgradeCurrentHasCameraGranted.xml"
+}
+
+android_test_helper_app {
+    name: "PermissionUpgradeCurrentHasCameraDenied",
+    manifest: "PermissionUpgradeCurrentHasCameraDenied.xml"
+}
+
+android_test_helper_app {
+    name: "PermissionUpgradeCurrentHasCameraGrantedAndDeclaresBgCamera",
+    manifest: "PermissionUpgradeCurrentHasCameraGrantedAndDeclaresBgCamera.xml"
+}
+
+android_test_helper_app {
+    name: "PermissionUpgradeCurrentHasCameraDeniedAndDeclaresBgCamera",
+    manifest: "PermissionUpgradeCurrentHasCameraDeniedAndDeclaresBgCamera.xml"
+}
+
+android_test_helper_app {
+    name: "PermissionUpgrade30Assistant",
+    manifest: "PermissionUpgrade30Assistant.xml",
+    sdk_version: "30",
+}
