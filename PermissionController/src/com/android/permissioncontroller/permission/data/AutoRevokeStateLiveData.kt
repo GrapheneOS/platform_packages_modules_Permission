@@ -27,7 +27,7 @@ import com.android.permissioncontroller.permission.data.PackagePermissionsLiveDa
 import com.android.permissioncontroller.permission.model.livedatatypes.AutoRevokeState
 import com.android.permissioncontroller.hibernation.ExemptServicesLiveData
 import com.android.permissioncontroller.hibernation.isHibernationJobEnabled
-import com.android.permissioncontroller.hibernation.isPackageAutoRevokeExemptByUser
+import com.android.permissioncontroller.hibernation.isPackageHibernationExemptByUser
 import com.android.permissioncontroller.hibernation.isPackageHibernationExemptBySystem
 import kotlinx.coroutines.Job
 
@@ -83,7 +83,7 @@ class AutoRevokeStateLiveData private constructor(
             return
         }
 
-        val revocable = !isPackageAutoRevokeExemptByUser(app, packageLiveData.value!!)
+        val revocable = !isPackageHibernationExemptByUser(app, packageLiveData.value!!)
         val revocableGroups = mutableListOf<String>()
         if (!isPackageHibernationExemptBySystem(packageLiveData.value!!, user)) {
             permStateLiveDatas.forEach { (groupName, liveData) ->
