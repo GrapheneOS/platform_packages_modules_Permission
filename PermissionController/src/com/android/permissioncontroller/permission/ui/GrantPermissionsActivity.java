@@ -16,6 +16,8 @@
 
 package com.android.permissioncontroller.permission.ui;
 
+import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
+import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import static android.view.WindowManager.LayoutParams.SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS;
 
 import static com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.CANCELED;
@@ -59,7 +61,9 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -94,6 +98,12 @@ public class GrantPermissionsActivity extends FragmentActivity
     public static final int DIALOG_WITH_BOTH_LOCATIONS = 3;
     public static final int DIALOG_WITH_FINE_LOCATION_ONLY = 4;
     public static final int DIALOG_WITH_COARSE_LOCATION_ONLY = 5;
+
+    public static final Map<String, Integer> PERMISSION_TO_BIT_SHIFT =
+            new HashMap<String, Integer>() {{
+                put(ACCESS_COARSE_LOCATION, 0);
+                put(ACCESS_FINE_LOCATION, 1);
+            }};
 
     private static final int APP_PERMISSION_REQUEST_CODE = 1;
 
@@ -503,8 +513,17 @@ public class GrantPermissionsActivity extends FragmentActivity
                 break;
         }
 
-        mViewModel.logClickedButtons(permissionGroupName, affectedForegroundPermissions,
-                clickedButton, presentedButtons);
+        int selectedPrecision = 0;
+        if (affectedForegroundPermissions != null) {
+            for (Map.Entry<String, Integer> entry : PERMISSION_TO_BIT_SHIFT.entrySet()) {
+                if (affectedForegroundPermissions.contains(entry.getKey())) {
+                    selectedPrecision |= 1 << entry.getValue();
+                }
+            }
+        }
+
+        mViewModel.logClickedButtons(permissionGroupName, selectedPrecision, clickedButton,
+                presentedButtons);
     }
 
     private int getButtonState() {
