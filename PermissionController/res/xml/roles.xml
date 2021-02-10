@@ -283,6 +283,7 @@
             <permission-set name="storage" />
             <permission-set name="microphone" />
             <permission-set name="camera" />
+            <permission name="android.permission.START_FOREGROUND_SERVICES_FROM_BACKGROUND" />
         </permissions>
         <app-ops>
             <app-op name="android:write_sms" mode="allowed" />
@@ -345,6 +346,9 @@
                 </intent-filter>
             </activity>
         </required-components>
+        <permissions>
+            <permission name="android.permission.START_FOREGROUND_SERVICES_FROM_BACKGROUND" />
+        </permissions>
     </role>
 
     <!---
@@ -440,6 +444,7 @@
         <permissions>
             <permission-set name="storage" />
             <permission name="android.permission.ACCESS_MEDIA_LOCATION" />
+            <permission name="android.permission.START_FOREGROUND_SERVICES_FROM_BACKGROUND" />
         </permissions>
         <app-ops>
             <app-op name="android:write_media_images" mode="allowed" />
