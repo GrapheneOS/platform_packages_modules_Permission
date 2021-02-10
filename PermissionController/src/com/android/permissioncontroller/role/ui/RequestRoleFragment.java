@@ -161,6 +161,12 @@ public class RequestRoleFragment extends DialogFragment {
             mAdapter.onRestoreInstanceState(savedInstanceState);
         }
         mListView.setAdapter(mAdapter);
+        if (!mListView.isInTouchMode()) {
+            mListView.post(() -> {
+                mListView.setSelection(0);
+                mListView.requestFocus();
+            });
+        }
 
         CheckBox dontAskAgainCheck = viewLayout.requireViewById(R.id.dont_ask_again);
         boolean isDeniedOnce = UserDeniedManager.getInstance(context).isDeniedOnce(mRoleName,
