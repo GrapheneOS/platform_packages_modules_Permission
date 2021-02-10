@@ -196,12 +196,16 @@ public final class Utils {
         PLATFORM_PERMISSIONS.put(Manifest.permission.ACCEPT_HANDOVER, PHONE);
 
         PLATFORM_PERMISSIONS.put(Manifest.permission.RECORD_AUDIO, MICROPHONE);
-        PLATFORM_PERMISSIONS.put(Manifest.permission.RECORD_BACKGROUND_AUDIO, MICROPHONE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            PLATFORM_PERMISSIONS.put(Manifest.permission.RECORD_BACKGROUND_AUDIO, MICROPHONE);
+        }
 
         PLATFORM_PERMISSIONS.put(Manifest.permission.ACTIVITY_RECOGNITION, ACTIVITY_RECOGNITION);
 
         PLATFORM_PERMISSIONS.put(Manifest.permission.CAMERA, CAMERA);
-        PLATFORM_PERMISSIONS.put(Manifest.permission.BACKGROUND_CAMERA, CAMERA);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            PLATFORM_PERMISSIONS.put(Manifest.permission.BACKGROUND_CAMERA, CAMERA);
+        }
 
         PLATFORM_PERMISSIONS.put(Manifest.permission.BODY_SENSORS, SENSORS);
 
