@@ -25,10 +25,10 @@ import android.os.UserHandle
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData.Companion.NON_RUNTIME_NORMAL_PERMS
 import com.android.permissioncontroller.permission.model.livedatatypes.AutoRevokeState
-import com.android.permissioncontroller.permission.service.ExemptServicesLiveData
-import com.android.permissioncontroller.permission.service.isAutoRevokeEnabled
-import com.android.permissioncontroller.permission.service.isPackageAutoRevokeExempt
-import com.android.permissioncontroller.permission.service.isPackageAutoRevokePermanentlyExempt
+import com.android.permissioncontroller.hibernation.ExemptServicesLiveData
+import com.android.permissioncontroller.hibernation.isHibernationJobEnabled
+import com.android.permissioncontroller.hibernation.isPackageAutoRevokeExemptByUser
+import com.android.permissioncontroller.hibernation.isPackageHibernationExemptBySystem
 import kotlinx.coroutines.Job
 
 /**
@@ -83,9 +83,9 @@ class AutoRevokeStateLiveData private constructor(
             return
         }
 
-        val revocable = !isPackageAutoRevokeExempt(app, packageLiveData.value!!)
+        val revocable = !isPackageAutoRevokeExemptByUser(app, packageLiveData.value!!)
         val revocableGroups = mutableListOf<String>()
-        if (!isPackageAutoRevokePermanentlyExempt(packageLiveData.value!!, user)) {
+        if (!isPackageHibernationExemptBySystem(packageLiveData.value!!, user)) {
             permStateLiveDatas.forEach { (groupName, liveData) ->
                 val default = liveData.value?.any { (_, permState) ->
                     permState.permFlags and (FLAG_PERMISSION_GRANTED_BY_DEFAULT or
@@ -97,7 +97,7 @@ class AutoRevokeStateLiveData private constructor(
             }
         }
 
-        postValue(AutoRevokeState(isAutoRevokeEnabled(app), revocable, revocableGroups))
+        postValue(AutoRevokeState(isHibernationJobEnabled(), revocable, revocableGroups))
     }
 
     override fun onOpChanged(op: String?, packageName: String?) {

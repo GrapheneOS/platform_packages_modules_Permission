@@ -76,7 +76,7 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name="com.android.permissioncontroller.permission.service.AutoRevokeOnBootReceiver">
+        <receiver android:name="com.android.permissioncontroller.hibernation.HibernationOnBootReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
@@ -97,7 +97,7 @@
         <service android:name="com.android.permissioncontroller.permission.service.LocationAccessCheck$LocationAccessCheckJobService"
                  android:permission="android.permission.BIND_JOB_SERVICE" />
 
-        <service android:name="com.android.permissioncontroller.permission.service.AutoRevokeService"
+        <service android:name="com.android.permissioncontroller.hibernation.HibernationJobService"
                  android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <service android:name="com.android.permissioncontroller.permission.service.AutoRevokeReGrantService"
