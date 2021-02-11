@@ -16,6 +16,7 @@
 
 package com.android.permissioncontroller.permission.ui.auto;
 
+import static com.android.permissioncontroller.Constants.EXTRA_SESSION_ID;
 import static com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_CALLER_NAME;
 
 import android.app.Activity;
@@ -23,34 +24,51 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.graphics.drawable.Drawable;
+import android.icu.text.ListFormatter;
 import android.os.Bundle;
 import android.os.UserHandle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceGroup;
 import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.auto.AutoSettingsFrameFragment;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.model.AppPermissions;
+import com.android.permissioncontroller.permission.model.livedatatypes.AutoRevokeState;
+import com.android.permissioncontroller.permission.ui.Category;
+import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModel;
+import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModelFactory;
 import com.android.permissioncontroller.permission.utils.Utils;
 
 import java.text.Collator;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /** Screen to show the permissions for a specific application. */
 public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment {
+    private static final String LOG_TAG = AutoAppPermissionsFragment.class.getSimpleName();
 
     private static final String KEY_ALLOWED_PERMISSIONS_GROUP = "allowed_permissions_group";
     private static final String KEY_DENIED_PERMISSIONS_GROUP = "denied_permissions_group";
+    private static final String AUTO_REVOKE_CATEGORY_KEY = "_AUTO_REVOKE_KEY";
+    private static final String AUTO_REVOKE_SWITCH_KEY = "_AUTO_REVOKE_SWITCH_KEY";
+    private static final String AUTO_REVOKE_SUMMARY_KEY = "_AUTO_REVOKE_SUMMARY_KEY";
+
+    private AppPermissionGroupsViewModel mViewModel;
 
     private AppPermissions mAppPermissions;
     private PreferenceScreen mExtraScreen;
+    private String mPackageName;
 
     private Collator mCollator;
 
@@ -77,10 +95,10 @@ public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment {
         super.onCreate(savedInstanceState);
         setLoading(true);
 
-        String packageName = getArguments().getString(Intent.EXTRA_PACKAGE_NAME);
+        mPackageName = getArguments().getString(Intent.EXTRA_PACKAGE_NAME);
         UserHandle userHandle = getArguments().getParcelable(Intent.EXTRA_USER);
         Activity activity = requireActivity();
-        PackageInfo packageInfo = AutoPermissionsUtils.getPackageInfo(activity, packageName,
+        PackageInfo packageInfo = AutoPermissionsUtils.getPackageInfo(activity, mPackageName,
                 userHandle);
         if (packageInfo == null) {
             Toast.makeText(getContext(), R.string.app_not_found_dlg_title,
@@ -89,27 +107,29 @@ public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment {
             return;
         }
 
-        setHeaderLabel(getContext().getString(R.string.app_permissions));
-        setAction(getContext().getString(R.string.all_permissions), v -> showAllPermissions());
-
         mAppPermissions = new AppPermissions(activity, packageInfo, /* sortGroups= */ true,
                 () -> getActivity().finish());
-
         mCollator = Collator.getInstance(
                 getContext().getResources().getConfiguration().getLocales().get(0));
+        AppPermissionGroupsViewModelFactory factory =
+                new AppPermissionGroupsViewModelFactory(mPackageName, userHandle,
+                        getArguments().getLong(EXTRA_SESSION_ID, 0));
+        mViewModel = new ViewModelProvider(this, factory).get(AppPermissionGroupsViewModel.class);
+
+        setHeaderLabel(getContext().getString(R.string.app_permissions));
+        setAction(getContext().getString(R.string.all_permissions), v -> showAllPermissions());
+        createPreferenceCategories(packageInfo);
+
+        mViewModel.getPackagePermGroupsLiveData().observe(this, this::updatePreferences);
+        mViewModel.getAutoRevokeLiveData().observe(this, this::setAutoRevokeToggleState);
+        if (mViewModel.getPackagePermGroupsLiveData().getValue() != null) {
+            updatePreferences(mViewModel.getPackagePermGroupsLiveData().getValue());
+        }
     }
 
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
         setPreferenceScreen(getPreferenceManager().createPreferenceScreen(getContext()));
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        mAppPermissions.refresh();
-        bindUi(mAppPermissions.getPackageInfo());
-        updatePreferences();
     }
 
     @Override
@@ -144,9 +164,26 @@ public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment {
         getPreferenceScreen().addPreference(denied);
     }
 
-    private void updatePreferences() {
+    private void createPreferenceCategories(PackageInfo packageInfo) {
+        bindUi(packageInfo);
+        addAutoRevokePreferences(getPreferenceScreen());
+    }
+
+    // TODO(b/179383241): Make full use of groupMap data in this method
+    private void updatePreferences(
+            Map<Category, List<AppPermissionGroupsViewModel.GroupUiInfo>> groupMap) {
+        mAppPermissions.refresh();
         Context context = getPreferenceManager().getContext();
         if (context == null) {
+            return;
+        }
+
+        if (groupMap == null && mViewModel.getPackagePermGroupsLiveData().isInitialized()) {
+            Toast.makeText(
+                    getActivity(), R.string.app_not_found_dlg_title, Toast.LENGTH_LONG).show();
+            Log.w(LOG_TAG, "invalid package " + mPackageName);
+
+            getActivity().finish();
             return;
         }
 
@@ -236,6 +273,8 @@ public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment {
             denied.addPreference(empty);
         }
 
+        setAutoRevokeToggleState(mViewModel.getAutoRevokeLiveData().getValue());
+
         setLoading(false);
     }
 
@@ -272,6 +311,73 @@ public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment {
         }
         return null;
     }
+
+    private void addAutoRevokePreferences(PreferenceScreen screen) {
+        Context context = screen.getPreferenceManager().getContext();
+
+        PreferenceCategory autoRevokeCategory = new PreferenceCategory(context);
+        autoRevokeCategory.setKey(AUTO_REVOKE_CATEGORY_KEY);
+        screen.addPreference(autoRevokeCategory);
+
+        SwitchPreference autoRevokeSwitch = new SwitchPreference(context);
+        autoRevokeSwitch.setOnPreferenceClickListener(preference -> {
+            mViewModel.setAutoRevoke(autoRevokeSwitch.isChecked());
+            return true;
+        });
+        autoRevokeSwitch.setTitle(R.string.auto_revoke_label);
+        autoRevokeSwitch.setKey(AUTO_REVOKE_SWITCH_KEY);
+        autoRevokeCategory.addPreference(autoRevokeSwitch);
+
+        Preference autoRevokeSummary = new Preference(context);
+        autoRevokeSummary.setIcon(Utils.applyTint(getActivity(), R.drawable.ic_info_outline,
+                android.R.attr.colorControlNormal));
+        autoRevokeSummary.setKey(AUTO_REVOKE_SUMMARY_KEY);
+        autoRevokeCategory.addPreference(autoRevokeSummary);
+    }
+
+    private void setAutoRevokeToggleState(AutoRevokeState state) {
+        if (state == null || !mViewModel.getPackagePermGroupsLiveData().isInitialized()
+                || getListView() == null || getView() == null) {
+            return;
+        }
+
+        PreferenceCategory autoRevokeCategory = getPreferenceScreen()
+                .findPreference(AUTO_REVOKE_CATEGORY_KEY);
+        SwitchPreference autoRevokeSwitch = autoRevokeCategory.findPreference(
+                AUTO_REVOKE_SWITCH_KEY);
+        Preference autoRevokeSummary = autoRevokeCategory.findPreference(AUTO_REVOKE_SUMMARY_KEY);
+
+        if (!state.isEnabledGlobal()) {
+            autoRevokeCategory.setVisible(false);
+            autoRevokeSwitch.setVisible(false);
+            autoRevokeSummary.setVisible(false);
+            return;
+        }
+        autoRevokeCategory.setVisible(true);
+        autoRevokeSwitch.setVisible(true);
+        autoRevokeSummary.setVisible(true);
+        autoRevokeSwitch.setEnabled(state.getShouldAllowUserToggle());
+        autoRevokeSwitch.setChecked(state.isEnabledForApp());
+
+        List<String> groupLabels = new ArrayList<>();
+        for (String groupName : state.getRevocableGroupNames()) {
+            PreferenceCategory category = getPreferenceScreen().findPreference(
+                    KEY_ALLOWED_PERMISSIONS_GROUP);
+            Preference pref = category.findPreference(groupName);
+            if (pref != null) {
+                groupLabels.add(pref.getTitle().toString());
+            }
+        }
+
+        groupLabels.sort(mCollator);
+        if (groupLabels.isEmpty()) {
+            autoRevokeSummary.setSummary(R.string.auto_revoke_summary);
+        } else {
+            autoRevokeSummary.setSummary(getString(R.string.auto_revoke_summary_with_permissions,
+                    ListFormatter.getInstance().format(groupLabels)));
+        }
+    }
+
 
     /**
      * Class that shows additional permissions.
