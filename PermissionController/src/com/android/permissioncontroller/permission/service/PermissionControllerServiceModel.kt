@@ -283,11 +283,9 @@ class PermissionControllerServiceModel(private val service: PermissionController
     suspend fun onDump(): PermissionControllerDumpProto {
         // Timeout is less than the timeout used by dumping (10 s)
         return withTimeout(9000) {
-            val autoRevokeDump = GlobalScope.async(IPC) { dumpAutoRevokePermissions(service) }
             val dumpedLogs = GlobalScope.async(IO) { DumpableLog.get() }
 
             PermissionControllerDumpProto.newBuilder()
-                    .setAutoRevoke(autoRevokeDump.await())
                     .addAllLogs(dumpedLogs.await())
                     .build()
         }
