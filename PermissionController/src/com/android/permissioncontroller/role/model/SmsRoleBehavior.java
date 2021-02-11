@@ -17,6 +17,7 @@
 package com.android.permissioncontroller.role.model;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Process;
 import android.os.UserHandle;
 import android.os.UserManager;
@@ -27,8 +28,10 @@ import androidx.annotation.Nullable;
 
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.utils.CollectionUtils;
+import com.android.permissioncontroller.role.utils.PackageUtils;
 import com.android.permissioncontroller.role.utils.UserUtils;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -39,6 +42,10 @@ import java.util.List;
  * @see com.android.settings.applications.defaultapps.DefaultSmsPicker
  */
 public class SmsRoleBehavior implements RoleBehavior {
+
+    private static final List<String> SYSTEM_SMS_PERMISSIONS = Arrays.asList(
+            android.Manifest.permission.PERFORM_IMS_SINGLE_REGISTRATION
+    );
 
     @Override
     public boolean isAvailableAsUser(@NonNull Role role, @NonNull UserHandle user,
@@ -87,5 +94,23 @@ public class SmsRoleBehavior implements RoleBehavior {
     public boolean isVisibleAsUser(@NonNull Role role, @NonNull UserHandle user,
             @NonNull Context context) {
         return context.getResources().getBoolean(R.bool.config_showSmsRole);
+    }
+
+    @Override
+    public void grant(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            if (PackageUtils.isSystemPackage(packageName, context)) {
+                Permissions.grant(packageName, SYSTEM_SMS_PERMISSIONS, false, false,
+                        true, false, false, context);
+            }
+        }
+    }
+
+    @Override
+    public void revoke(@NonNull Role role, @NonNull String packageName,
+            @NonNull Context context) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            Permissions.revoke(packageName, SYSTEM_SMS_PERMISSIONS, true, false, false, context);
+        }
     }
 }
