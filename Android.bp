@@ -51,3 +51,11 @@ filegroup {
     name: "permission-jarjar-rules",
     srcs: ["jarjar-rules.txt"],
 }
+
+sdk {
+    name: "permission-sdk",
+    java_sdk_libs: [
+        "framework-permission",
+        "framework-permission-s",
+    ],
+}

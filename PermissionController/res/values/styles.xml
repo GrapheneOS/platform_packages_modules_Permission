@@ -776,7 +776,7 @@
 
     <!-- START REQUEST ROLE DIALOG TITLE -->
 
-    <style name="RequestRoleTitle">
+    <style name="RequestRoleTitleBase">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingStart">?android:dialogPreferredPadding</item>
@@ -785,6 +785,8 @@
         <item name="android:gravity">center_horizontal</item>
         <item name="android:orientation">vertical</item>
     </style>
+
+    <style name="RequestRoleTitle" parent="@style/RequestRoleTitleBase" />
 
     <style name="RequestRoleTitleIcon">
         <item name="android:layout_width">32dp</item>
@@ -803,7 +805,7 @@
 
     <!-- START REQUEST ROLE DIALOG ITEM -->
 
-    <style name="RequestRoleItem">
+    <style name="RequestRoleItemBase">
         <item name="android:minHeight">?android:listPreferredItemHeight</item>
         <item name="android:paddingStart">?android:listPreferredItemPaddingStart</item>
         <item name="android:paddingEnd">?android:listPreferredItemPaddingEnd</item>
@@ -811,6 +813,8 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:orientation">horizontal</item>
     </style>
+
+    <style name="RequestRoleItem" parent="RequestRoleItemBase" />
 
     <style name="RequestRoleItemIcon">
         <item name="android:layout_width">32dp</item>

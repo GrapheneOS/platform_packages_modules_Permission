@@ -54,4 +54,7 @@
     <dimen name="grant_permissions_dialog_padding">40dp</dimen>
 
     <dimen name="settings_category_text_size">12dp</dimen>
+
+    <dimen name="request_role_padding">28dp</dimen>
+    <dimen name="request_role_dialog_background_radius">8dp</dimen>
 </resources>
