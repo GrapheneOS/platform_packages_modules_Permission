@@ -171,13 +171,15 @@ abstract class SmartUpdateMediatorLiveData<T>(private val isStaticVal: Boolean =
      * @param getLiveDataFun A function to turn a key into a liveData
      * @param onUpdateFun An optional function which will update differently based on different
      * LiveDatas. If blank, will simply call update.
+     *
+     * @return a pair of (all keys added, all keys removed)
      */
     fun <K, V : LiveData<*>> setSourcesToDifference(
         desired: Collection<K>,
         have: MutableMap<K, V>,
         getLiveDataFun: (K) -> V,
         onUpdateFun: ((K) -> Unit)? = null
-    ) {
+    ) : Pair<Set<K>, Set<K>>{
         // Ensure the map is correct when method returns
         val (toAdd, toRemove) = KotlinUtils.getMapAndListDifferences(desired, have)
         for (key in toAdd) {
@@ -212,6 +214,7 @@ abstract class SmartUpdateMediatorLiveData<T>(private val isStaticVal: Boolean =
                 addSourceWithError(liveData, observer, stackTraceException)
             }
         }
+        return toAdd to toRemove
     }
 
     override fun onActive() {
