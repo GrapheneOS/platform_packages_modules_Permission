@@ -16,6 +16,8 @@
 
 package com.android.permissioncontroller;
 
+import com.android.permissioncontroller.hibernation.HibernationJobService;
+
 /**
  * App-global constants
  */
@@ -35,9 +37,9 @@ public class Constants {
 
     /**
      * ID of the periodic job
-     * {@link com.android.permissioncontroller.permission.service.AutoRevokeService}
+     * {@link HibernationJobService}
      */
-    public static final int AUTO_REVOKE_JOB_ID = 2;
+    public static final int HIBERNATION_JOB_ID = 2;
 
     /**
      * Name of file to containing the packages we already showed a notificaiton for.
@@ -55,7 +57,7 @@ public class Constants {
 
     /**
      * ID for notification shown by
-     * {@link com.android.permissioncontroller.permission.service.AutoRevokeService}.
+     * {@link HibernationJobService}.
      */
     public static final int AUTO_REVOKE_NOTIFICATION_ID = 1;
 
