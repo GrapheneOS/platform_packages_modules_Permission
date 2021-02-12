@@ -72,4 +72,21 @@
         <item name="android:windowEnterAnimation">@anim/snackbar_enter</item>
         <item name="android:windowExitAnimation">@anim/snackbar_exit</item>
     </style>
+
+    <style name="RequestRole" parent="android:Theme.DeviceDefault.Settings">
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarDividerColor">@null</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:alertDialogTheme">@style/RequestRoleDialog</item>
+    </style>
 </resources>
