@@ -82,6 +82,7 @@ import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.N
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.NO_UPGRADE_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.NO_UPGRADE_OT_AND_DONT_ASK_AGAIN_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.NO_UPGRADE_OT_BUTTON
+import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.PERMISSION_TO_BIT_SHIFT
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.DENIED
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.DENIED_DO_NOT_ASK_AGAIN
@@ -122,6 +123,7 @@ class GrantPermissionsViewModel(
         .getPermissionPolicy(null)
     private val permGroupsToSkip = mutableListOf<String>()
     private var groupStates = mutableMapOf<Pair<String, Boolean>, GroupState>()
+    private var isFirstTimeRequestingFineAndCoarse: Boolean = false
 
     private var autoGrantNotifier: AutoGrantPermissionsNotifier? = null
     private fun getAutoGrantNotifier(): AutoGrantPermissionsNotifier {
@@ -411,6 +413,11 @@ class GrantPermissionsViewModel(
                                     buttonVisibilities[ALLOW_FOREGROUND_BUTTON] = false
                                 }
                             } else {
+                                if (coarseLocationPerm?.isOneTime == false &&
+                                        !coarseLocationPerm.isUserSet &&
+                                        !coarseLocationPerm.isUserFixed) {
+                                    isFirstTimeRequestingFineAndCoarse = true
+                                }
                                 // Normal flow with both Coarse and Fine locations
                                 locationVisibilities[DIALOG_WITH_BOTH_LOCATIONS] = true
                                 // When user has set to coarse location for one time permission in
@@ -1067,29 +1074,35 @@ class GrantPermissionsViewModel(
      * Log information about the buttons which were shown and clicked by the user.
      *
      * @param groupName The name of the permission group which was interacted with
-     * @param affectedForegroundPermissions The name of the foreground permission which was
-     *                                      interacted with.
+     * @param selectedPrecision Selected precision of the location permission - bit flags indicate
+     *                          which locations were chosen
      * @param clickedButton The button that was clicked by the user
      * @param presentedButtons All buttons which were shown to the user
      */
     fun logClickedButtons(
         groupName: String?,
-        affectedForegroundPermissions: List<String>?,
+        selectedPrecision: Int,
         clickedButton: Int,
         presentedButtons: Int
     ) {
         if (groupName == null) {
             return
         }
+        var selectedLocations = 0
+        // log permissions if it's 1) first time requesting both locations OR 2) upgrade flow
+        if (isFirstTimeRequestingFineAndCoarse ||
+                selectedPrecision ==
+                    1 shl PERMISSION_TO_BIT_SHIFT[ACCESS_FINE_LOCATION]!!) {
+            selectedLocations = selectedPrecision
+        }
         PermissionControllerStatsLog.write(GRANT_PERMISSIONS_ACTIVITY_BUTTON_ACTIONS,
-            groupName, packageInfo.uid, packageName, presentedButtons, clickedButton, sessionId)
-        val permissionsString =
-            if (affectedForegroundPermissions != null) "permission=$affectedForegroundPermissions "
-            else ""
+                groupName, packageInfo.uid, packageName, presentedButtons, clickedButton, sessionId,
+                packageInfo.targetSdkVersion, selectedLocations)
         Log.v(LOG_TAG, "Logged buttons presented and clicked permissionGroupName=" +
-            "$groupName uid=${packageInfo.uid} " + permissionsString +
-            "package=$packageName presentedButtons=" +
-            "$presentedButtons clickedButton=$clickedButton sessionId=$sessionId")
+                "$groupName uid=${packageInfo.uid} selectedLocations=$selectedLocations " +
+                "package=$packageName presentedButtons=$presentedButtons " +
+                "clickedButton=$clickedButton sessionId=$sessionId " +
+                "targetSdk=${packageInfo.targetSdkVersion}")
     }
 
     /**
