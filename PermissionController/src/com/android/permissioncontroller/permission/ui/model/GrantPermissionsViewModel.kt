@@ -368,6 +368,12 @@ class GrantPermissionsViewModel(
                             }
                         } else if (needBgPermissions) {
                             // Case: sdk < R, BG/FG permission requesting BG only
+                            if (!groupState.group.foreground.isGranted) {
+                                Log.e(LOG_TAG, "Background permissions can't be requested " +
+                                        "solely before foreground permissions are granted.")
+                                value = null
+                                return
+                            }
                             message = RequestMessage.UPGRADE_MESSAGE
                             detailMessage = RequestMessage.UPGRADE_MESSAGE
                             buttonVisibilities[ALLOW_BUTTON] = false
@@ -388,6 +394,11 @@ class GrantPermissionsViewModel(
                             return
                         }
                     } else {
+                        // If no permissions needed, do nothing
+                        if (!needFgPermissions && !needBgPermissions) {
+                            value = null
+                            return
+                        }
                         // Case: sdk < R, Requesting normal permission
                         buttonVisibilities[DENY_BUTTON] = !isFgUserSet
                         buttonVisibilities[DENY_AND_DONT_ASK_AGAIN_BUTTON] = isFgUserSet
