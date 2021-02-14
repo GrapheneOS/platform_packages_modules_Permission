@@ -47,7 +47,7 @@ android_app_certificate {
 }
 
 sdk {
-    name: "permission-sdk",
+    name: "permission-module-sdk",
     java_sdk_libs: [
         "framework-permission",
     ],
