@@ -738,11 +738,11 @@ public final class Utils {
     public static CharSequence getRequestMessage(CharSequence appLabel, String packageName,
             String groupName, Context context, @StringRes int requestRes) {
 
-        boolean isIsolatedStorage = false;
+        boolean isIsolatedStorage;
         try {
             isIsolatedStorage = !isNonIsolatedStorage(context, packageName);
         } catch (NameNotFoundException e) {
-            return null;
+            isIsolatedStorage = false;
         }
         if (groupName.equals(STORAGE) && isIsolatedStorage) {
             return Html.fromHtml(
