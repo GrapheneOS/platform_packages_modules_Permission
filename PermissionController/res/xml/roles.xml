@@ -499,4 +499,12 @@
             <permission name="android.permission.SEND_SMS" />
         </permissions>
     </role>
+
+    <role
+        name="android.app.role.SYSTEM_SHELL"
+        behavior="SystemShellRoleBehavior"
+        defaultHolders="config_systemShell"
+        exclusive="true"
+        systemOnly="true"
+        visible="false" />
 </roles>
