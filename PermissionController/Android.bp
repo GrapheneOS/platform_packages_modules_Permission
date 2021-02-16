@@ -118,6 +118,7 @@ android_app {
         "car-ui-lib-overlayable",
         "libprotobuf-java-lite",
         "SettingsLibUtils",
+        "modules-utils-build_system",
     ],
 
     proto: {
