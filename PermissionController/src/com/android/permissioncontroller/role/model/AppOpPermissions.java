@@ -54,7 +54,11 @@ public class AppOpPermissions {
             return false;
         }
         String appOp = AppOpsManager.permissionToOp(appOpPermission);
-        return setAppOpMode(packageName, appOp, AppOpsManager.MODE_ALLOWED, context);
+        boolean changed = setAppOpMode(packageName, appOp, AppOpsManager.MODE_ALLOWED, context);
+        if (changed) {
+            Permissions.setPermissionGrantedByRole(packageName, appOpPermission, true, context);
+        }
+        return changed;
     }
 
     /**
@@ -68,9 +72,14 @@ public class AppOpPermissions {
      */
     public static boolean revoke(@NonNull String packageName, @NonNull String appOpPermission,
             @NonNull Context context) {
+        if (!Permissions.isPermissionGrantedByRole(packageName, appOpPermission, context)) {
+            return false;
+        }
         String appOp = AppOpsManager.permissionToOp(appOpPermission);
         int defaultMode = Permissions.getDefaultAppOpMode(appOp);
-        return setAppOpMode(packageName, appOp, defaultMode, context);
+        boolean changed = setAppOpMode(packageName, appOp, defaultMode, context);
+        Permissions.setPermissionGrantedByRole(packageName, appOpPermission, false, context);
+        return changed;
     }
 
     private static boolean setAppOpMode(@NonNull String packageName, @NonNull String appOp,
