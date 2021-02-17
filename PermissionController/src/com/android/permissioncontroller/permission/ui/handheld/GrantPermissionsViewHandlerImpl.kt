@@ -88,6 +88,7 @@ class GrantPermissionsViewHandlerImpl(
     private var detailMessage: CharSequence? = null
     private val buttonVisibilities = BooleanArray(NEXT_BUTTON) { false }
     private val locationVisibilities = BooleanArray(NEXT_LOCATION_DIALOG) { false }
+    private var selectedPrecision: Int = 0
 
     // Views
     private var iconView: ImageView? = null
@@ -113,6 +114,7 @@ class GrantPermissionsViewHandlerImpl(
         arguments.putCharSequence(ARG_GROUP_DETAIL_MESSAGE, detailMessage)
         arguments.putBooleanArray(ARG_DIALOG_BUTTON_VISIBILITIES, buttonVisibilities)
         arguments.putBooleanArray(ARG_DIALOG_LOCATION_VISIBILITIES, locationVisibilities)
+        arguments.putInt(ARG_DIALOG_SELECTED_PRECISION, selectedPrecision)
     }
 
     override fun loadInstanceState(savedInstanceState: Bundle) {
@@ -125,6 +127,7 @@ class GrantPermissionsViewHandlerImpl(
         setButtonVisibilities(savedInstanceState.getBooleanArray(ARG_DIALOG_BUTTON_VISIBILITIES))
         setLocationVisibilities(savedInstanceState.getBooleanArray(
             ARG_DIALOG_LOCATION_VISIBILITIES))
+        selectedPrecision = savedInstanceState.getInt(ARG_DIALOG_SELECTED_PRECISION)
 
         updateAll()
     }
@@ -279,7 +282,11 @@ class GrantPermissionsViewHandlerImpl(
             if (locationVisibilities[DIALOG_WITH_BOTH_LOCATIONS]) {
                 for (i in LOCATION_ACCURACY_RADIO_BUTTONS) {
                     locationViews[i]?.visibility = View.VISIBLE
-                    (locationViews[i] as RadioButton).isChecked = locationVisibilities[i]
+                    if (selectedPrecision == 0) {
+                        (locationViews[i] as RadioButton).isChecked = locationVisibilities[i]
+                    } else {
+                        (locationViews[i] as RadioButton).isChecked = selectedPrecision == i
+                    }
                 }
             }
         } else {
@@ -300,6 +307,7 @@ class GrantPermissionsViewHandlerImpl(
 
         if (id == R.id.permission_location_accuracy_radio_fine) {
             (locationViews[FINE_RADIO_BUTTON] as RadioButton).isChecked = true
+            selectedPrecision = FINE_RADIO_BUTTON
             val appLabel: CharSequence =
                 getPackageLabel(mActivity.getApplication(), mAppPackageName, mUserHandle)
             val message = getRequestMessage(appLabel, mAppPackageName, groupName, mActivity,
@@ -310,6 +318,7 @@ class GrantPermissionsViewHandlerImpl(
 
         if (id == R.id.permission_location_accuracy_radio_coarse) {
             (locationViews[COARSE_RADIO_BUTTON] as RadioButton).isChecked = true
+            selectedPrecision = COARSE_RADIO_BUTTON
             val appLabel: CharSequence =
                 getPackageLabel(mActivity.getApplication(), mAppPackageName, mUserHandle)
             val message = getRequestMessage(appLabel, mAppPackageName, groupName, mActivity,
@@ -392,6 +401,7 @@ class GrantPermissionsViewHandlerImpl(
         private const val ARG_GROUP_DETAIL_MESSAGE = "ARG_GROUP_DETAIL_MESSAGE"
         private const val ARG_DIALOG_BUTTON_VISIBILITIES = "ARG_DIALOG_BUTTON_VISIBILITIES"
         private const val ARG_DIALOG_LOCATION_VISIBILITIES = "ARG_DIALOG_LOCATION_VISIBILITIES"
+        private const val ARG_DIALOG_SELECTED_PRECISION = "ARG_DIALOG_SELECTED_PRECISION"
 
         // Animation parameters.
         private const val SWITCH_TIME_MILLIS: Long = 75
