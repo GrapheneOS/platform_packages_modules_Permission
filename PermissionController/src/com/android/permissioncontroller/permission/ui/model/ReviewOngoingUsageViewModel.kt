@@ -398,8 +398,8 @@ class ReviewOngoingUsageViewModel(
     private val callOpUsageLiveData =
         object : SmartUpdateMediatorLiveData<Collection<String>>() {
             private val rawOps = LoadAndFreezeLifeData(state, CALL_OP_USAGE_KEY,
-                OpUsageLiveData[listOf(PHONE_CALL, VIDEO_CALL),
-                    System.currentTimeMillis() - startTime])
+                OpUsageLiveData(PermissionControllerApplication.get(),
+                        listOf(PHONE_CALL, VIDEO_CALL), System.currentTimeMillis() - startTime))
 
             init {
                 addSource(rawOps) {

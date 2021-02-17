@@ -46,7 +46,7 @@ class PermGroupUsageLiveData(
             permissionToOp(permName)
         }
 
-        permGroup to OpUsageLiveData[appops, usageDurationMs]
+        permGroup to OpUsageLiveData(app, appops, usageDurationMs)
     }.toMap()
 
     init {
