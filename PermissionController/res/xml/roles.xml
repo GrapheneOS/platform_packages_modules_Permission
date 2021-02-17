@@ -114,6 +114,9 @@
             <permission-set name="sms" />
             <permission name="android.permission.READ_CALL_LOG" />
         </permissions>
+        <app-op-permissions>
+            <app-op-permission name="android.permission.SYSTEM_ALERT_WINDOW" />
+        </app-op-permissions>
         <exempt-permissions>
             <permission name="android.permission.RECORD_BACKGROUND_AUDIO" />
         </exempt-permissions>
@@ -499,4 +502,12 @@
             <permission name="android.permission.SEND_SMS" />
         </permissions>
     </role>
+
+    <role
+        name="android.app.role.SYSTEM_SHELL"
+        behavior="SystemShellRoleBehavior"
+        defaultHolders="config_systemShell"
+        exclusive="true"
+        systemOnly="true"
+        visible="false" />
 </roles>
