@@ -47,6 +47,7 @@ import com.android.permissioncontroller.DeviceUtils;
 import com.android.permissioncontroller.PermissionControllerStatsLog;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.debug.PermissionUsageFragment;
+import com.android.permissioncontroller.permission.debug.PermissionUsageV2Fragment;
 import com.android.permissioncontroller.permission.debug.UtilsKt;
 import com.android.permissioncontroller.permission.ui.auto.AutoAllAppPermissionsFragment;
 import com.android.permissioncontroller.permission.ui.auto.AutoAppPermissionsFragment;
@@ -152,6 +153,13 @@ public final class ManagePermissionsActivity extends FragmentActivity {
 
                 String groupName = getIntent().getStringExtra(Intent.EXTRA_PERMISSION_GROUP_NAME);
                 androidXFragment = PermissionUsageFragment.newInstance(groupName, Long.MAX_VALUE);
+
+                if (false) {
+                    // TODO: theianchen
+                    // Here's a blank permission usage V2 top level page.
+                    // Setting the condition to false since it's still WIP.
+                    androidXFragment = PermissionUsageV2Fragment.newInstance();
+                }
             } break;
 
             case Intent.ACTION_MANAGE_APP_PERMISSION: {
