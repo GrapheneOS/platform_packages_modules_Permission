@@ -68,6 +68,10 @@ The role is named with the `SYSTEM_` prefix to indicate that it is an invisible 
 role. The config resource `config_systemYourRoleName` will be added in the next step, and more
 details about role are available in [Android Role for system developers](Role.md).
 
+If you are writing a CTS test for an API protected by an `internal|role` permission, you probably
+want to grant the permission to Shell as well. This can be achieved by adding the permission to the
+`SYSTEM_SHELL` role in `roles.xml`.
+
 ## Add the default role holder config
 
 Now that we have a role, we need to define a platform config resource to initialize it with your
