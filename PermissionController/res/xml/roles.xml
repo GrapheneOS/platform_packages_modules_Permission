@@ -509,5 +509,22 @@
         defaultHolders="config_systemShell"
         exclusive="true"
         systemOnly="true"
-        visible="false" />
+        visible="false">
+        <permissions>
+            <!-- Used for CTS testing -->
+            <permission name="android.permission.ACCESS_RCS_USER_CAPABILITY_EXCHANGE" />
+            <permission name="android.permission.PERFORM_IMS_SINGLE_REGISTRATION" />
+        </permissions>
+    </role>
+
+    <role
+        name="android.app.role.SYSTEM_CONTACTS"
+        defaultHolders="config_systemContacts"
+        exclusive="true"
+        systemOnly="true"
+        visible="false">
+        <permissions>
+            <permission name="android.permission.ACCESS_RCS_USER_CAPABILITY_EXCHANGE" />
+        </permissions>
+    </role>
 </roles>
