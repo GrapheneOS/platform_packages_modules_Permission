@@ -91,6 +91,7 @@ import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandle
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_RESULT_PERMISSION_INTERACTED
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_RESULT_PERMISSION_RESULT
+import com.android.permissioncontroller.permission.utils.AdminRestrictedPermissionsUtils
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.SafetyNetLogger
 import com.android.permissioncontroller.permission.utils.Utils
@@ -119,8 +120,8 @@ class GrantPermissionsViewModel(
     private val LOG_TAG = GrantPermissionsViewModel::class.java.simpleName
     private val user = Process.myUserHandle()
     private val packageInfoLiveData = LightPackageInfoLiveData[packageName, user]
-    private val permissionPolicy = app.getSystemService(DevicePolicyManager::class.java)!!
-        .getPermissionPolicy(null)
+    private val dpm = app.getSystemService(DevicePolicyManager::class.java)!!
+    private val permissionPolicy = dpm.getPermissionPolicy(null)
     private val permGroupsToSkip = mutableListOf<String>()
     private var groupStates = mutableMapOf<Pair<String, Boolean>, GroupState>()
     private var isFirstTimeRequestingFineAndCoarse: Boolean = false
@@ -680,20 +681,23 @@ class GrantPermissionsViewModel(
         var state = STATE_UNKNOWN
         when (permissionPolicy) {
             DevicePolicyManager.PERMISSION_POLICY_AUTO_GRANT -> {
-                if (isBackground) {
-                    KotlinUtils.grantBackgroundRuntimePermissions(app, group, listOf(perm))
-                } else {
-                    KotlinUtils.grantForegroundRuntimePermissions(app, group, listOf(perm))
-                }
-                KotlinUtils.setGroupFlags(app, group, FLAG_PERMISSION_POLICY_FIXED to true,
-                    FLAG_PERMISSION_USER_SET to false, FLAG_PERMISSION_USER_FIXED to false,
-                    filterPermissions = listOf(perm))
-                state = STATE_ALLOWED
-                skipGroup = true
+                if (AdminRestrictedPermissionsUtils.mayAdminGrantPermission(
+                                app, perm, user.identifier)) {
+                    if (isBackground) {
+                        KotlinUtils.grantBackgroundRuntimePermissions(app, group, listOf(perm))
+                    } else {
+                        KotlinUtils.grantForegroundRuntimePermissions(app, group, listOf(perm))
+                    }
+                    KotlinUtils.setGroupFlags(app, group, FLAG_PERMISSION_POLICY_FIXED to true,
+                            FLAG_PERMISSION_USER_SET to false, FLAG_PERMISSION_USER_FIXED to false,
+                            filterPermissions = listOf(perm))
+                    state = STATE_ALLOWED
+                    skipGroup = true
 
-                getAutoGrantNotifier().onPermissionAutoGranted(perm)
-                reportRequestResult(perm,
-                    PERMISSION_GRANT_REQUEST_RESULT_REPORTED__RESULT__AUTO_GRANTED)
+                    getAutoGrantNotifier().onPermissionAutoGranted(perm)
+                    reportRequestResult(perm,
+                            PERMISSION_GRANT_REQUEST_RESULT_REPORTED__RESULT__AUTO_GRANTED)
+                }
             }
 
             DevicePolicyManager.PERMISSION_POLICY_AUTO_DENY -> {
