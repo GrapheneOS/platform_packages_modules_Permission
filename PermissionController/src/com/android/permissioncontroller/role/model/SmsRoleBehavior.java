@@ -33,6 +33,7 @@ import com.android.permissioncontroller.role.utils.UserUtils;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Class for behavior of the SMS role.
@@ -43,8 +44,12 @@ import java.util.List;
  */
 public class SmsRoleBehavior implements RoleBehavior {
 
+    /**
+     * Permissions to be granted if the application fulfilling the SMS role is also a system app.
+     */
     private static final List<String> SYSTEM_SMS_PERMISSIONS = Arrays.asList(
-            android.Manifest.permission.PERFORM_IMS_SINGLE_REGISTRATION
+            android.Manifest.permission.PERFORM_IMS_SINGLE_REGISTRATION,
+            android.Manifest.permission.ACCESS_RCS_USER_CAPABILITY_EXCHANGE
     );
 
     @Override
@@ -98,7 +103,9 @@ public class SmsRoleBehavior implements RoleBehavior {
 
     @Override
     public void grant(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+                // Need to check codename for prerelease
+                || Build.VERSION.CODENAME.toUpperCase().startsWith("S")) {
             if (PackageUtils.isSystemPackage(packageName, context)) {
                 Permissions.grant(packageName, SYSTEM_SMS_PERMISSIONS, false, false,
                         true, false, false, context);
@@ -109,7 +116,9 @@ public class SmsRoleBehavior implements RoleBehavior {
     @Override
     public void revoke(@NonNull Role role, @NonNull String packageName,
             @NonNull Context context) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+                // Need to check codename for prerelease
+                || Objects.equals(Build.VERSION.CODENAME, "S")) {
             Permissions.revoke(packageName, SYSTEM_SMS_PERMISSIONS, true, false, false, context);
         }
     }
