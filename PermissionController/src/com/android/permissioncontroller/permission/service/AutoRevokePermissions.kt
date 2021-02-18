@@ -45,6 +45,7 @@ import com.android.permissioncontroller.permission.data.UsageStatsLiveData
 import com.android.permissioncontroller.permission.data.UsersLiveData
 import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
+import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 import com.android.permissioncontroller.permission.service.AutoRevokePermissionsProto.AutoRevokePermissionsDumpProto
 import com.android.permissioncontroller.permission.service.AutoRevokePermissionsProto.PackageProto
 import com.android.permissioncontroller.permission.service.AutoRevokePermissionsProto.PerUserProto
@@ -76,7 +77,7 @@ private val SERVER_LOG_ID =
  */
 @MainThread
 suspend fun revokeAppPermissions(
-    apps: Map<UserHandle, List<String>>,
+    apps: Map<UserHandle, List<LightPackageInfo>>,
     context: Context,
     sessionId: Long = INVALID_SESSION_ID
 ): List<Pair<String, UserHandle>> {
@@ -88,7 +89,11 @@ suspend fun revokeAppPermissions(
             DumpableLog.w(LOG_TAG, "Skipping $user - locked direct boot state")
             continue
         }
-        userApps.forEachInParallel(Main) { packageName: String ->
+        userApps.forEachInParallel(Main) { pkg: LightPackageInfo ->
+            if (pkg.grantedPermissions.isEmpty()) {
+                return@forEachInParallel
+            }
+            val packageName = pkg.packageName
             val anyPermsRevoked = AtomicBoolean(false)
             val pkgPermGroups: Map<String, List<String>>? =
                 PackagePermissionsLiveData[packageName, user]
