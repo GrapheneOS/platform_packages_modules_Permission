@@ -136,8 +136,8 @@ class GrantPermissionsViewHandlerImpl(
         groupName: String,
         groupCount: Int,
         groupIndex: Int,
-        icon: Icon,
-        message: CharSequence,
+        icon: Icon?,
+        message: CharSequence?,
         detailMessage: CharSequence?,
         buttonVisibilities: BooleanArray,
         locationVisibilities: BooleanArray
