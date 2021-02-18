@@ -36,6 +36,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Process;
 import android.os.UserHandle;
+import android.permission.AdminPermissionControlParams;
 import android.permission.PermissionManager;
 import android.permission.RuntimePermissionPresentationInfo;
 import android.permission.RuntimePermissionUsageInfo;
@@ -55,6 +56,7 @@ import com.android.permissioncontroller.permission.model.Permission;
 import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo;
 import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo.PermGrantState;
 import com.android.permissioncontroller.permission.ui.AutoGrantPermissionsNotifier;
+import com.android.permissioncontroller.permission.utils.AdminRestrictedPermissionsUtils;
 import com.android.permissioncontroller.permission.utils.ArrayUtils;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.UserSensitiveFlagsUtils;
@@ -493,11 +495,24 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
             @NonNull String packageName, @NonNull String unexpandedPermission, int grantState,
             @NonNull Consumer<Boolean> callback) {
         AsyncTask.execute(() -> callback.accept(onSetRuntimePermissionGrantStateByDeviceAdmin(
-                callerPackageName, packageName, unexpandedPermission, grantState)));
+                callerPackageName, packageName, unexpandedPermission, grantState, true)));
+    }
+
+    /**
+     * Admin control based on params.
+     */
+    @Override
+    public void onSetRuntimePermissionGrantStateByDeviceAdmin(
+            @NonNull String callerPackageName, @NonNull AdminPermissionControlParams params,
+            @NonNull Consumer<Boolean> callback) {
+        AsyncTask.execute(() -> callback.accept(onSetRuntimePermissionGrantStateByDeviceAdmin(
+                callerPackageName, params.getGranteePackageName(), params.getPermission(),
+                params.getGrantState(), params.canAdminGrantSensorsPermissions())));
     }
 
     private boolean onSetRuntimePermissionGrantStateByDeviceAdmin(@NonNull String callerPackageName,
-            @NonNull String packageName, @NonNull String unexpandedPermission, int grantState) {
+            @NonNull String packageName, @NonNull String unexpandedPermission, int grantState,
+            boolean canAdminGrantSensorsPermissions) {
         PackageInfo callerPkgInfo = getPkgInfo(callerPackageName);
         if (callerPkgInfo == null) {
             Log.w(LOG_TAG, "Cannot fix " + unexpandedPermission + " as admin "
@@ -535,9 +550,15 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
 
             switch (grantState) {
                 case PERMISSION_GRANT_STATE_GRANTED:
-                    perm.setPolicyFixed(true);
-                    group.grantRuntimePermissions(false, false, new String[]{permName});
-                    autoGrantPermissionsNotifier.onPermissionAutoGranted(permName);
+                    if (AdminRestrictedPermissionsUtils.mayAdminGrantPermission(perm.getName(),
+                            canAdminGrantSensorsPermissions)) {
+                        perm.setPolicyFixed(true);
+                        group.grantRuntimePermissions(false, false, new String[]{permName});
+                        autoGrantPermissionsNotifier.onPermissionAutoGranted(permName);
+                    } else {
+                        // similar to PERMISSION_GRANT_STATE_DEFAULT
+                        perm.setPolicyFixed(false);
+                    }
                     break;
                 case PERMISSION_GRANT_STATE_DENIED:
                     perm.setPolicyFixed(true);
