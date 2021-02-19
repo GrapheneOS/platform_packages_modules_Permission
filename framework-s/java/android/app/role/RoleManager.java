@@ -128,6 +128,14 @@ public final class RoleManager {
     public static final String ROLE_CALL_SCREENING = "android.app.role.CALL_SCREENING";
 
     /**
+     * The name of the system wellbeing role.
+     *
+     * @hide
+     */
+    @SystemApi
+    public static final String ROLE_SYSTEM_WELLBEING = "android.app.role.SYSTEM_WELLBEING";
+
+    /**
      * @hide
      */
     @IntDef(flag = true, value = { MANAGE_HOLDERS_FLAG_DONT_KILL_APP })
