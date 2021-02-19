@@ -35,6 +35,7 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 
 import com.android.permissioncontroller.R;
+import com.android.permissioncontroller.permission.ui.AutoRevokeFragment;
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity;
 import com.android.permissioncontroller.permission.ui.model.ManageStandardPermissionsViewModel;
 import com.android.permissioncontroller.permission.utils.Utils;
