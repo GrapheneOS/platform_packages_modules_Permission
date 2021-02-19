@@ -60,7 +60,6 @@ import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.DumpableLog
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.R
-import com.android.permissioncontroller.hibernation.utils.PolicyUtils
 import com.android.permissioncontroller.permission.data.AllPackageInfosLiveData
 import com.android.permissioncontroller.permission.data.AppOpLiveData
 import com.android.permissioncontroller.permission.data.BroadcastReceiverLiveData
@@ -90,9 +89,10 @@ const val DEBUG_OVERRIDE_THRESHOLDS = false
 // TODO eugenesusla: temporarily enabled for extra logs during dogfooding
 const val DEBUG_HIBERNATION_POLICY = true || DEBUG_OVERRIDE_THRESHOLDS
 
+// TODO(b/175830282): Add SDK check when platform SDK moves up
 private val HIBERNATION_ENABLED =
         DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_APP_HIBERNATION,
-        PolicyUtils.PROPERTY_APP_HIBERNATION_ENABLED, false)
+        Utils.PROPERTY_APP_HIBERNATION_ENABLED, false)
 private const val AUTO_REVOKE_ENABLED = true
 
 private var SKIP_NEXT_RUN = false
@@ -101,19 +101,18 @@ private val DEFAULT_UNUSED_THRESHOLD_MS =
         if (HIBERNATION_ENABLED || AUTO_REVOKE_ENABLED)
             TimeUnit.DAYS.toMillis(90) else Long.MAX_VALUE
 
-// TODO(b/175830282): Rename this for hibernation along with CTS test
 fun getUnusedThresholdMs() = when {
     DEBUG_OVERRIDE_THRESHOLDS -> TimeUnit.SECONDS.toMillis(1)
     else -> DeviceConfig.getLong(DeviceConfig.NAMESPACE_PERMISSIONS,
-            PolicyUtils.PROPERTY_AUTO_REVOKE_UNUSED_THRESHOLD_MILLIS,
+            Utils.PROPERTY_HIBERNATION_UNUSED_THRESHOLD_MILLIS,
             DEFAULT_UNUSED_THRESHOLD_MS)
 }
 
 private val DEFAULT_CHECK_FREQUENCY_MS = TimeUnit.DAYS.toMillis(15)
-// TODO(b/175830282): Rename this for hibernation along with CTS test
+
 private fun getCheckFrequencyMs() = DeviceConfig.getLong(
     DeviceConfig.NAMESPACE_PERMISSIONS,
-        PolicyUtils.PROPERTY_AUTO_REVOKE_CHECK_FREQUENCY_MILLIS,
+        Utils.PROPERTY_HIBERNATION_CHECK_FREQUENCY_MILLIS,
         DEFAULT_CHECK_FREQUENCY_MS)
 
 private val PREF_KEY_FIRST_BOOT_TIME = "first_boot_time"
@@ -171,8 +170,7 @@ class HibernationOnBootReceiver : BroadcastReceiver() {
 @MainThread
 private suspend fun getAppsToHibernate(
     context: Context
-):
-    Map<UserHandle, List<String>> {
+): Map<UserHandle, List<LightPackageInfo>> {
     if (!isHibernationJobEnabled()) {
         return emptyMap()
     }
@@ -249,26 +247,20 @@ private suspend fun getAppsToHibernate(
         }
     }
 
-    val appsToHibernate = mutableMapOf<UserHandle, List<String>>()
+    val appsToHibernate = mutableMapOf<UserHandle, List<LightPackageInfo>>()
     val userManager = context.getSystemService(UserManager::class.java)
     for ((user, userApps) in unusedApps) {
         if (userManager == null || !userManager.isUserUnlocked(user)) {
             DumpableLog.w(LOG_TAG, "Skipping $user - locked direct boot state")
             continue
         }
-        var userAppsToHibernate = mutableListOf<String>()
+        var userAppsToHibernate = mutableListOf<LightPackageInfo>()
         userApps.forEachInParallel(Main) { pkg: LightPackageInfo ->
-            // TODO(b/175830282) Move this to auto-revoke specific files
-            if (pkg.grantedPermissions.isEmpty()) {
-                return@forEachInParallel
-            }
-
             if (isPackageHibernationExemptBySystem(pkg, user)) {
                 return@forEachInParallel
             }
 
-            // TODO(b/175830282) Use this on pre-S devices only and hibernation exemption on S+
-            if (isPackageAutoRevokeExemptByUser(context, pkg)) {
+            if (isPackageHibernationExemptByUser(context, pkg)) {
                 return@forEachInParallel
             }
 
@@ -279,7 +271,7 @@ private suspend fun getAppsToHibernate(
             }
 
             synchronized(userAppsToHibernate) {
-                userAppsToHibernate.add(pkg.packageName)
+                userAppsToHibernate.add(pkg)
             }
         }
         appsToHibernate.put(user, userAppsToHibernate)
@@ -352,7 +344,19 @@ suspend fun isPackageHibernationExemptBySystem(
 /**
  * Checks if the given package is exempt from auto revoke in a way that's user-overridable
  */
-suspend fun isPackageAutoRevokeExemptByUser(
+suspend fun isPackageHibernationExemptByUser(
+    context: Context,
+    pkg: LightPackageInfo
+): Boolean {
+    if (HIBERNATION_ENABLED) {
+        // TODO(b/175830282): Hook into hibernation exemption list
+        return false
+    } else {
+        return isPackageAutoRevokeExemptByUser(context, pkg)
+    }
+}
+
+private suspend fun isPackageAutoRevokeExemptByUser(
     context: Context,
     pkg: LightPackageInfo
 ): Boolean {
