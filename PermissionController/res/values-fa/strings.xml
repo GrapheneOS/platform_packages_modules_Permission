@@ -83,7 +83,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"همیشه مجاز بودن"</string>
-    <string name="permission_access_only_foreground" msgid="7801170728159326195">"مجاز فقط حین استفاده از برنامه"</string>
+    <string name="permission_access_only_foreground" msgid="7801170728159326195">"مجاز بودن فقط هنگام استفاده از برنامه"</string>
     <string name="permission_access_never" msgid="1029877154284995424">"مجاز نبودن"</string>
     <string name="loading" msgid="4789365003890741082">"درحال بارگیری…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"همه مجوزها"</string>
@@ -168,13 +168,11 @@
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"اجازه دادن برای مدیریت همه فایل‌ها"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"اجازه دادن فقط برای دسترسی به رسانه‌ها"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"همیشه مجاز بودن"</string>
-    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"مجاز فقط حین استفاده از برنامه"</string>
+    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"مجاز بودن فقط هنگام استفاده از برنامه"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"هربار پرسیده شود"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"مجاز نبودن"</string>
-    <!-- no translation found for app_permission_location_accuracy (7166912915040018669) -->
-    <skip />
-    <!-- no translation found for app_permission_location_accuracy_subtitle (6926477966417403604) -->
-    <skip />
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"استفاده از مکان دقیق"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"وقتی دقت مکان خاموش باشد، برنامه‌ها فقط می‌توانند مکان تقریبی شما را در محدوده مجاورتان مشخص کنند"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"اجازه <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"دسترسی <xliff:g id="PERM">%1$s</xliff:g> برای این برنامه"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"مشاهده همه اجازه‌های <xliff:g id="APP">%1$s</xliff:g>"</string>
@@ -398,14 +396,10 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"این برنامه ممکن است بخواهد مرتب به مکانتان دسترسی داشته باشد، حتی زمانی‌که از برنامه استفاده نمی‌کنید. "<annotation id="link">"در تنظیمات به آن اجازه دهید."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"‏دسترسی به مکان برای &lt;b&amp;gt؛<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&amp;gt تغییر کند؟"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"این برنامه می‌خواهد مرتب به مکانتان دسترسی داشته باشد، حتی زمانی‌که از برنامه استفاده نمی‌کنید. "<annotation id="link">"در تنظیمات به آن اجازه دهید."</annotation></string>
-    <!-- no translation found for permgrouprequest_finelocation (169340229199345158) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation (7244605063736425232) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_finelocation_imagetext (1313062433398914334) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation_imagetext (8650605041483025297) -->
-    <skip />
+    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"‏به &lt;b&amp;gt؛<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&amp;gt؛ اجازه داده شود به مکان دقیق این دستگاه دسترسی پیدا کند؟"</string>
+    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"‏به &lt;b&amp;gt؛<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&amp;gt؛ اجازه داده شود به مکان تقریبی این دستگاه دسترسی پیدا کند؟"</string>
+    <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"دقیق"</string>
+    <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"تقریبی"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"‏به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; اجازه داده شود به تقویم شما دسترسی پیدا کند؟"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"‏به «&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&gt;» اجازه داده شود پیامک ارسال و مشاهده کند؟"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"‏به برنامه &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&gt; اجازه داده شود به عکس‌ها، رسانه، و فایل‌های موجود در دستگاهتان دسترسی داشته باشد؟"</string>

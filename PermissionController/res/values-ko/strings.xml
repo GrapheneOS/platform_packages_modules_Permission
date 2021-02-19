@@ -171,10 +171,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"앱 사용 중에만 허용"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"항상 확인"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"거부"</string>
-    <!-- no translation found for app_permission_location_accuracy (7166912915040018669) -->
-    <skip />
-    <!-- no translation found for app_permission_location_accuracy_subtitle (6926477966417403604) -->
-    <skip />
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"정확한 위치 사용"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"정확한 위치가 사용 중지된 상태에서는 앱에서 주변 지역 범위 내의 대략적인 위치만 파악할 수 있습니다."</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> 액세스 권한"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"이 앱의 <xliff:g id="PERM">%1$s</xliff:g> 액세스 권한"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g> 앱 권한 모두 보기"</string>
@@ -398,14 +396,10 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"앱을 사용하고 있지 않을 때도 앱에서 내 위치에 항상 액세스하려고 할 수 있습니다. "<annotation id="link">"설정에서 액세스를 허용"</annotation>"하세요."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;의 위치 액세스 권한을 변경하시겠습니까?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"앱을 사용하고 있지 않을 때도 앱에서 내 위치에 항상 액세스하려고 합니다. "<annotation id="link">"설정에서 액세스를 허용"</annotation>"하세요."</string>
-    <!-- no translation found for permgrouprequest_finelocation (169340229199345158) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation (7244605063736425232) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_finelocation_imagetext (1313062433398914334) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation_imagetext (8650605041483025297) -->
-    <skip />
+    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 기기의 정확한 위치에 액세스하도록 허용하시겠습니까?"</string>
+    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 기기의 대략적인 위치에 액세스하도록 허용하시겠습니까?"</string>
+    <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"정확한 위치"</string>
+    <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"대략적인 위치"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 내 캘린더에 액세스하도록 허용하시겠습니까?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 SMS 메시지를 전송하고 보도록 허용하시겠습니까?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 기기의 사진, 미디어, 파일에 액세스하도록 허용하시겠습니까?"</string>

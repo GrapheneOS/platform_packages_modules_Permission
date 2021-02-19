@@ -171,10 +171,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Permitir apenas durante a utilização da app"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Perguntar sempre"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Recusar"</string>
-    <!-- no translation found for app_permission_location_accuracy (7166912915040018669) -->
-    <skip />
-    <!-- no translation found for app_permission_location_accuracy_subtitle (6926477966417403604) -->
-    <skip />
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Utilizar localização exata"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"As apps apenas conseguem determinar a sua localização aproximada num bairro próximo com a localização exata desativada."</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Autorização de <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Acesso desta app a <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Ver todas as autorizações da app <xliff:g id="APP">%1$s</xliff:g>"</string>
@@ -398,14 +396,10 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Esta app poderá pretender aceder sempre à sua localização, mesmo quando não a estiver a utilizar. "<annotation id="link">"Permita-o nas definições."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Pretende alterar o acesso à localização para a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Esta app pretende aceder sempre à sua localização, mesmo quando não a estiver a utilizar. "<annotation id="link">"Permita-o nas definições."</annotation></string>
-    <!-- no translation found for permgrouprequest_finelocation (169340229199345158) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation (7244605063736425232) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_finelocation_imagetext (1313062433398914334) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation_imagetext (8650605041483025297) -->
-    <skip />
+    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Pretende permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aceda à localização exata deste dispositivo?"</string>
+    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Pretende permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aceda à localização aproximada deste dispositivo?"</string>
+    <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Exata"</string>
+    <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Aproximada"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aceda ao calendário?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; envie e veja mensagens SMS?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aceda a fotos, multimédia e ficheiros no dispositivo?"</string>

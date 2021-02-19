@@ -178,10 +178,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Dozv. samo dok se apl. koristi"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Pitaj svaki put"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Odbij"</string>
-    <!-- no translation found for app_permission_location_accuracy (7166912915040018669) -->
-    <skip />
-    <!-- no translation found for app_permission_location_accuracy_subtitle (6926477966417403604) -->
-    <skip />
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Koristi preciznu lokaciju"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Kada je ovo isključeno, aplikacije mogu da odrede samo vašu približnu lokaciju u okviru vašeg susedstva"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> - dozvola"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Pristup ove aplikacije funkciji „<xliff:g id="PERM">%1$s</xliff:g>“"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Prikaži sve dozvole za <xliff:g id="APP">%1$s</xliff:g>"</string>
@@ -411,14 +409,10 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Ova aplikacija možda želi da pristupa lokaciji sve vreme, čak i kada ne koristite aplikaciju. "<annotation id="link">"Dozvolite u podešavanjima."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Želite li da promenite pristup lokaciji za aplikaciju &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Ova aplikacija želi da pristupa lokaciji sve vreme, čak i kada ne koristite aplikaciju. "<annotation id="link">"Dozvolite u podešavanjima."</annotation></string>
-    <!-- no translation found for permgrouprequest_finelocation (169340229199345158) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation (7244605063736425232) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_finelocation_imagetext (1313062433398914334) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation_imagetext (8650605041483025297) -->
-    <skip />
+    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Želite li da omogućite da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa preciznoj lokaciji ovog uređaja?"</string>
+    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Želite li da omogućite da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa približnoj lokaciji ovog uređaja?"</string>
+    <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Precizna"</string>
+    <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Približna"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Želite da omogućite da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa kalendaru?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Želite da omogućite da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; šalje i pregleda SMS-ove?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Želite da omogućite da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa slikama, medijskim i drugim datotekama na uređaju?"</string>
