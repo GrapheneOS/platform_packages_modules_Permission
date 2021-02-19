@@ -492,7 +492,7 @@
         visible="false">
         <permissions>
             <permission-set name="microphone" />
-            <permission name="android.permission.ACCESS_FINE_LOCATION" />
+            <permission-set name="location" />
             <permission name="android.permission.CALL_PHONE" />
             <permission name="android.permission.READ_CALENDAR" />
             <permission name="android.permission.READ_CALL_LOG" />
