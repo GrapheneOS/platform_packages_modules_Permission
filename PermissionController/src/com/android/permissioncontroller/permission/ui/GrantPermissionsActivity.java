@@ -152,6 +152,7 @@ public class GrantPermissionsActivity extends FragmentActivity
         mRequestedPermissions = getIntent().getStringArrayExtra(
                 PackageManager.EXTRA_REQUEST_PERMISSIONS_NAMES);
         if (mRequestedPermissions == null || mRequestedPermissions.length == 0) {
+            mRequestedPermissions = new String[0];
             setResultAndFinish();
             return;
         }

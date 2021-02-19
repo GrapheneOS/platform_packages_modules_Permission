@@ -517,10 +517,7 @@ class GrantPermissionsViewModel(
             }
 
             if (currGroupState != STATE_UNKNOWN) {
-                // If one of the permissions is STATE_UNKNOWN then the group is STATE_UNKNOWN
-                if (groupStateInfo.state != STATE_UNKNOWN) {
-                    groupStateInfo.state = currGroupState
-                }
+                groupStateInfo.state = currGroupState
             }
             // If we saved state, load it
             groupStateInfo.affectedPermissions.add(perm)
@@ -646,18 +643,18 @@ class GrantPermissionsViewModel(
 
         if (isBackground && group.background.isGranted ||
             !isBackground && group.foreground.isGranted) {
+            // If FINE location is not granted, do not grant it automatically when COARSE
+            // location is already granted.
+            if (group.permGroupName == LOCATION &&
+                    group.allPermissions[ACCESS_FINE_LOCATION]?.isGrantedIncludingAppOp
+                    == false) {
+                return STATE_UNKNOWN
+            }
+
             if (group.permissions[perm]?.isGrantedIncludingAppOp == false) {
                 if (isBackground) {
                     KotlinUtils.grantBackgroundRuntimePermissions(app, group, listOf(perm))
                 } else {
-                    // If FINE location is not granted, do not grant it automatically when COARSE
-                    // location is already granted.
-                    if (group.permGroupName == LOCATION &&
-                        group.foregroundPermNames.contains(ACCESS_FINE_LOCATION) &&
-                        group.allPermissions[ACCESS_FINE_LOCATION]?.isGrantedIncludingAppOp
-                            == false) {
-                        return STATE_UNKNOWN
-                    }
                     KotlinUtils.grantForegroundRuntimePermissions(app, group, listOf(perm))
                 }
                 KotlinUtils.setGroupFlags(app, group, FLAG_PERMISSION_USER_SET to false,

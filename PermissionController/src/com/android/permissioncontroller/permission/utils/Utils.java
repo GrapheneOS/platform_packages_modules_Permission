@@ -106,6 +106,17 @@ public final class Utils {
 
     public static final float DEFAULT_MAX_LABEL_SIZE_PX = 500f;
 
+    /** The time an app needs to be unused in order to be hibernated */
+    public static final String PROPERTY_HIBERNATION_UNUSED_THRESHOLD_MILLIS =
+            "auto_revoke_unused_threshold_millis2";
+
+    /** The frequency of running the job for hibernating apps */
+    public static final String PROPERTY_HIBERNATION_CHECK_FREQUENCY_MILLIS =
+            "auto_revoke_check_frequency_millis";
+
+    /** Whether or not app hibernation is enabled on the device **/
+    public static final String PROPERTY_APP_HIBERNATION_ENABLED = "app_hibernation_enabled";
+
     /** Whether to show the Permissions Hub. */
     private static final String PROPERTY_PERMISSIONS_HUB_ENABLED = "permissions_hub_enabled";
 
@@ -738,11 +749,11 @@ public final class Utils {
     public static CharSequence getRequestMessage(CharSequence appLabel, String packageName,
             String groupName, Context context, @StringRes int requestRes) {
 
-        boolean isIsolatedStorage = false;
+        boolean isIsolatedStorage;
         try {
             isIsolatedStorage = !isNonIsolatedStorage(context, packageName);
         } catch (NameNotFoundException e) {
-            return null;
+            isIsolatedStorage = false;
         }
         if (groupName.equals(STORAGE) && isIsolatedStorage) {
             return Html.fromHtml(
