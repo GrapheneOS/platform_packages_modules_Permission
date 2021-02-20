@@ -171,10 +171,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Зөвхөн аппыг ашиглаж байх үед зөвшөөрөх"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Тухай бүрд асуух"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Татгалзах"</string>
-    <!-- no translation found for app_permission_location_accuracy (7166912915040018669) -->
-    <skip />
-    <!-- no translation found for app_permission_location_accuracy_subtitle (6926477966417403604) -->
-    <skip />
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Нарийвчилсан байршлыг ашиглах"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Үүнийг унтраасан үед аппууд таны байршлыг зөвхөн ойролцоох хорооллоос барагцаалан тодорхойлох боломжтой"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>-н зөвшөөрөл"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Энэ аппад <xliff:g id="PERM">%1$s</xliff:g>-р хандах"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g>-н бүх зөвшөөрлийг харах"</string>
@@ -398,14 +396,10 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Энэ апп нь таныг апп ашиглаагүй байх үед ч таны байршилд үргэлж хандах хүcэлтэй байж болзошгүй. "<annotation id="link">"Тохиргоо хэсгээс зөвшөөрнө үү."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д зориулж байршлын хандалтыг өөрчлөх үү?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Энэ апп нь таныг апп ашиглаагүй байх үед ч таны байршилд үргэлж хандах хүcэлтэй байна. "<annotation id="link">"Тохиргоо хэсгээс зөвшөөрнө үү."</annotation></string>
-    <!-- no translation found for permgrouprequest_finelocation (169340229199345158) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation (7244605063736425232) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_finelocation_imagetext (1313062433398914334) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation_imagetext (8650605041483025297) -->
-    <skip />
+    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д энэ төхөөрөмжийн нарийвчилсан байршилд хандахыг зөвшөөрөх үү?"</string>
+    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д энэ төхөөрөмжийн барагцаалсан байршилд хандахыг зөвшөөрөх үү?"</string>
+    <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Нарийвчилсан"</string>
+    <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Барагцаалсан"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д таны календарьт хандахыг зөвшөөрөх үү?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д SMS мессеж илгээх болон харахыг зөвшөөрөх үү?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д таны төхөөрөмжийн зураг, медиа болон файлд хандахыг зөвшөөрөх үү?"</string>

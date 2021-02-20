@@ -171,10 +171,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Թույլատրել միայն հավելվածի օգտագործման ժամանակ"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Ամեն անգամ հարցնել"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Մերժել"</string>
-    <!-- no translation found for app_permission_location_accuracy (7166912915040018669) -->
-    <skip />
-    <!-- no translation found for app_permission_location_accuracy_subtitle (6926477966417403604) -->
-    <skip />
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Օգտագործել ճշգրիտ տեղադրությունը"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Եթե ճշգրիտ տեղադրությունն անջատված է, հավելվածները կարող են որոշել միայն ձեր մոտավոր տեղադրությունը՝ որոշակի տեղանքի սահմաններում"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"«<xliff:g id="PERM">%1$s</xliff:g>» թույլտվություն"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"<xliff:g id="PERM">%1$s</xliff:g> օգտագործելու թույլտվություն այս հավելվածի համար"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Տեսնել <xliff:g id="APP">%1$s</xliff:g> հավելվածի բոլոր թույլտվությունները"</string>
@@ -398,14 +396,10 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Հավելվածին անհրաժեշտ է ձեր գտնվելու վայրը հետագծելու թույլտվություն, նույնիսկ երբ դուք չեք օգտվում դրանից։ "<annotation id="link">"Թույլտվությունը տրամադրեք այստեղ"</annotation>"։"</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Փոխե՞լ տեղադրության մասին տվյալների հասանելիությունը &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածի համար։"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Հավելվածին անհրաժեշտ է ձեր գտնվելու վայրը հետագծելու թույլտվություն, նույնիսկ երբ դուք չեք օգտվում դրանից։ "<annotation id="link">"Թույլտվությունը տրամադրեք այստեղ"</annotation>"։"</string>
-    <!-- no translation found for permgrouprequest_finelocation (169340229199345158) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation (7244605063736425232) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_finelocation_imagetext (1313062433398914334) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation_imagetext (8650605041483025297) -->
-    <skip />
+    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել այս սարքի ճշգրիտ տեղադրության տվյալները։"</string>
+    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել այս սարքի մոտավոր տեղադրության տվյալները։"</string>
+    <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Ճշգրիտ"</string>
+    <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Մոտավոր"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել ձեր օրացույցը:"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին ուղարկել և դիտել SMS հաղորդագրություններ:"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել սարքում պահված լուսանկարները, մուլտիմեդիան և ֆայլերը"</string>
@@ -415,7 +409,7 @@
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"Այս հավելվածը հավանաբար կուզենա ձայնագրություններ անել նույնիսկ այն ժամանակ, երբ չեք օգտվում դրանից։ "<annotation id="link">"Թույլտվությունը տրամադրեք այստեղ։"</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"Փոխե՞լ խոսափողի հասանելիության կարգավորումները &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածի համար։"</string>
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"Այս հավելվածն ուզւոմ է ձայնագրություններ անել նույնիսկ այն ժամանակ, երբ չեք օգտվում դրանից։ "<annotation id="link">"Թույլտվությունը տրամադրեք այստեղ։"</annotation></string>
-    <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"Հասանելի դարձնե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին ձեր ֆիզիկական ակտիվության տվյալները:"</string>
+    <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել ձեր ֆիզիկական ակտիվության տվյալները"</string>
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին լուսանկարել և տեսագրել"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"Այս հավելվածը կկարողանա լուսանկարել և տեսագրել միայն, երբ այն օգտագործելիս լինեք"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին լուսանկարել և տեսագրել։"</string>
