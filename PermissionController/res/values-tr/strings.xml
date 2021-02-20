@@ -171,10 +171,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Yalnızca uygulama kullanılırken izin ver"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Her zaman sor"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Reddet"</string>
-    <!-- no translation found for app_permission_location_accuracy (7166912915040018669) -->
-    <skip />
-    <!-- no translation found for app_permission_location_accuracy_subtitle (6926477966417403604) -->
-    <skip />
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Tam konumu kullan"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Tam konum kapalıyken uygulamalar, konumunuzu sadece yakınında bulunduğunuz mahalle ölçeğinde belirleyebilir"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> izni"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Bu uygulamanın <xliff:g id="PERM">%1$s</xliff:g> erişimi için"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Tüm <xliff:g id="APP">%1$s</xliff:g> izinlerini göster"</string>
@@ -398,14 +396,10 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Bu uygulama, kullanmadığınız sırada bile konum bilginize sürekli olarak erişmek isteyebilir. "<annotation id="link">"Ayarlar\'da izin verin."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; için konum adresi değiştirilsin mi?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Bu uygulama, kullanmadığınız sırada bile konum bilginize sürekli olarak erişmek isteyebilir. "<annotation id="link">"Ayarlar\'da izin verin."</annotation></string>
-    <!-- no translation found for permgrouprequest_finelocation (169340229199345158) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation (7244605063736425232) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_finelocation_imagetext (1313062433398914334) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation_imagetext (8650605041483025297) -->
-    <skip />
+    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının bu cihazın tam konumuna erişmesine izin verilsin mi?"</string>
+    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının bu cihazın yaklaşık konumuna erişmesine izin verilsin mi?"</string>
+    <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Tam"</string>
+    <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Yaklaşık"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının takviminize erişmesine izin verilsin mi?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının SMS mesajları göndermesine ve görüntülemesine izin verilsin mi?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının cihazınızdaki fotoğraf, medya ve dosyalara erişmesine izin verilsin mi?"</string>

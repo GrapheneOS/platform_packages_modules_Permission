@@ -171,10 +171,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"යෙදුම භාවිතයේදී පමණක් ඉඩ දෙන්න"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"සෑම විටම ඉල්ලන්න"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"ප්‍රතික්ෂේප කර."</string>
-    <!-- no translation found for app_permission_location_accuracy (7166912915040018669) -->
-    <skip />
-    <!-- no translation found for app_permission_location_accuracy_subtitle (6926477966417403604) -->
-    <skip />
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"ඉතා නිවැරදි ස්ථානය භාවිත කරන්න"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"යෙදුම්වලට ඔබගේ ආසන්න ස්ථානය තීරණය කළ හැක්කේ එය ක්‍රියාවිරහිතව ඇති අසල්වැසි ප්‍රදේශයක පමණි"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> අවසරය"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"මෙම යෙදුම සඳහා <xliff:g id="PERM">%1$s</xliff:g> ප්‍රවේශය"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"සියලුම <xliff:g id="APP">%1$s</xliff:g> අවසර බලන්න"</string>
@@ -398,14 +396,10 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"මෙයට ඔබ යෙදුම භාවිත නොකරමින් සිටින විට පවා සියලු අවස්ථාවල ඔබේ ස්ථානය වෙත ප්‍රවේශ වීමට අවශ්‍ය විය හැකිය. "<annotation id="link">"සැකසීම්වල ඉඩ දෙන්න."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; සඳහා ස්ථාන ප්‍රවේශය වෙනස් කරන්නද?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"මෙම යෙදුමට ඔබ යෙදුම භාවිත නොකරමින් සිටින විට පවා සියලු අවස්ථාවල ඔබේ ස්ථානය වෙත ප්‍රවේශ වීමට අවශ්‍යයි. "<annotation id="link">"සැකසීම්වල ඉඩ දෙන්න."</annotation></string>
-    <!-- no translation found for permgrouprequest_finelocation (169340229199345158) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation (7244605063736425232) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_finelocation_imagetext (1313062433398914334) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation_imagetext (8650605041483025297) -->
-    <skip />
+    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; හට මෙම උපාංගයෙහි ඉතා නිවැරදි ස්ථානය වෙත ප්‍රවේශ වීමට ඉඩ දෙන්නද?"</string>
+    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ට මෙම උපාංගයෙහි ස්ථානය වෙත ප්‍රවේශ වීමට ඉඩ දෙන්නද?"</string>
+    <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"ඉතා නිවැරදි"</string>
+    <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"ආසන්න"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&gt; වෙත ඔබගේ දින දර්ශනය ප්‍රවේශ කිරීමට ඉඩ දෙන්නද?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&gt; වෙත SMS පණිවිඩ යැවීමට සහ බැලීමට ඉඩ දෙන්නද?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&gt; වෙත ඔබගේ උපාංගය තුළ ඇති ඡායාරූප, මාධ්‍ය, සහ ගොනු වෙත ප්‍රවේශ වීමට ඉඩ දෙන්නද?"</string>

@@ -171,10 +171,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"អនុញ្ញាត​ពេល​កំពុង​ប្រើប្រាស់​កម្មវិធីតែ​ប៉ុណ្ណោះ"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"សួរគ្រប់ពេល"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"បដិសេធ"</string>
-    <!-- no translation found for app_permission_location_accuracy (7166912915040018669) -->
-    <skip />
-    <!-- no translation found for app_permission_location_accuracy_subtitle (6926477966417403604) -->
-    <skip />
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"ប្រើទីតាំងជាក់លាក់"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"ប្រសិនបើបិទទីតាំងជាក់លាក់ កម្មវិធីអាចកំណត់ទីតាំង​ប្រហាក់ប្រហែលរបស់អ្នកនៅម្ដុំដែលអ្នកនៅតែប៉ុណ្ណោះ"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"ការអនុញ្ញាត​<xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"ការចូលប្រើ​<xliff:g id="PERM">%1$s</xliff:g>​សម្រាប់​កម្មវិធី​នេះ​"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"មើល​ការអនុញ្ញាតឱ្យទៅ <xliff:g id="APP">%1$s</xliff:g> ទាំងអស់"</string>
@@ -398,14 +396,10 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"កម្មវិធីនេះ​ប្រហែលជា​ចង់ចូលប្រើ​ទីតាំង​របស់អ្នក​គ្រប់ពេល ទោះបីជា​អ្នកមិនកំពុងប្រើ​កម្មវិធីនេះ​ក៏ដោយ។ "<annotation id="link">"អនុញ្ញាត​នៅក្នុងការកំណត់។"</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"ប្ដូរសិទ្ធិ​ចូលប្រើ​ទីតាំង​សម្រាប់ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ដែរទេ?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"កម្មវិធីនេះ​ចង់ចូលប្រើ​ទីតាំង​របស់អ្នក​គ្រប់ពេល ទោះបីជា​អ្នកមិនកំពុងប្រើ​កម្មវិធីនេះ​ក៏ដោយ។ "<annotation id="link">"អនុញ្ញាត​នៅក្នុងការកំណត់។"</annotation></string>
-    <!-- no translation found for permgrouprequest_finelocation (169340229199345158) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation (7244605063736425232) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_finelocation_imagetext (1313062433398914334) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation_imagetext (8650605041483025297) -->
-    <skip />
+    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ចូលប្រើ​ទីតាំងជាក់លាក់របស់​ឧបករណ៍នេះ​ឬ?"</string>
+    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ចូលប្រើ​ទីតាំងប្រហាក់ប្រហែលរបស់​ឧបករណ៍នេះ​ឬ?"</string>
+    <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"ជាក់លាក់"</string>
+    <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"ប្រហាក់ប្រហែល"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ចូលប្រើ​ប្រតិទិនរបស់អ្នក?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ផ្ញើ និង​មើលសារ SMS ?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ចូលប្រើ​រូបថត មេឌៀ និងឯកសារនៅលើ​ឧបករណ៍របស់អ្នក?"</string>

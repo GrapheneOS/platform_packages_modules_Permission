@@ -171,10 +171,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Yalnız tətbiqdən istifadə edərkən icazə verin"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Hər dəfə soruşun"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"İmtina edin"</string>
-    <!-- no translation found for app_permission_location_accuracy (7166912915040018669) -->
-    <skip />
-    <!-- no translation found for app_permission_location_accuracy_subtitle (6926477966417403604) -->
-    <skip />
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Dəqiq məkanı istifadə edin"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Tətbiqlər yalnız deaktiv olduqda, qonşuluqdakı təxmini məkanınızı təyin edə bilər"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> üçün icazə"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Bu tətbiq üçün <xliff:g id="PERM">%1$s</xliff:g> girişi"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Bütün <xliff:g id="APP">%1$s</xliff:g> icazələrinə baxın"</string>
@@ -398,14 +396,10 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Bu tətbiq hətta ondan istifadə etmədiyiniz zaman belə məkanınıza daxil olmaq istəyə bilər. "<annotation id="link">"Ayarlarda icazə verin."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; üçün məkana giriş dəyişdirilsin?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Bu tətbiq hətta ondan istifadə etmədiyiniz zaman belə məkanınıza daxil olmaq istəyir. "<annotation id="link">"Ayarlarda icazə verin."</annotation></string>
-    <!-- no translation found for permgrouprequest_finelocation (169340229199345158) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation (7244605063736425232) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_finelocation_imagetext (1313062433398914334) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation_imagetext (8650605041483025297) -->
-    <skip />
+    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə bu cihazın dəqiq məkanına daxil olmaq icazəsi verilsin?"</string>
+    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə bu cihazın təxmini məkanına daxil olmaq icazəsi verilsin?"</string>
+    <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Dəqiq"</string>
+    <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Təxmini"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə təqvimə daxil olmaq icazəsi verilsin?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə SMS mesajları göndərmək və onlara baxmaq icazəsi verilsin?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə cihazdakı foto, media və fayllara daxil olmaq icazəsi verilsin?"</string>
