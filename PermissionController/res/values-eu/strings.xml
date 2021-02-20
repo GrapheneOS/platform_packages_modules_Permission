@@ -171,10 +171,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Aplikazioa erabiltzean soilik"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Galdetu beti"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Ukatu"</string>
-    <!-- no translation found for app_permission_location_accuracy (7166912915040018669) -->
-    <skip />
-    <!-- no translation found for app_permission_location_accuracy_subtitle (6926477966417403604) -->
-    <skip />
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Erabili kokapen zehatza"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Eginbidea desaktibatuta dagoenean, aplikazioek auzo-mailan baino ezin dute zehaztu gutxi gorabeherako kokapena"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> atzitzeko baimena"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Aplikazio honek <xliff:g id="PERM">%1$s</xliff:g> atzitzeko duen baimena"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Ikusi <xliff:g id="APP">%1$s</xliff:g> aplikazioaren baimen guztiak"</string>
@@ -398,14 +396,10 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Baliteke aplikazioak beti atzitu nahi izatea zure kokapena, baita aplikazioa erabiltzen ari ez zarenean ere. "<annotation id="link">"Eman baimen hori Ezarpenak atalean"</annotation>"."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Kokapenerako sarbidea aldatu nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Aplikazioak beti atzitu nahi du zure kokapena, baita aplikazioa erabiltzen ari ez zarenean ere. "<annotation id="link">"Eman baimen hori Ezarpenak atalean"</annotation>"."</string>
-    <!-- no translation found for permgrouprequest_finelocation (169340229199345158) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation (7244605063736425232) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_finelocation_imagetext (1313062433398914334) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation_imagetext (8650605041483025297) -->
-    <skip />
+    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Gailuaren kokapen zehatza atzitzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
+    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Gailuaren gutxi gorabeherako kokapena atzitzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
+    <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Zehatza"</string>
+    <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Gutxi gorabeherakoa"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Egutegia atzitzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"SMS mezuak bidaltzeko eta ikusteko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Gailuko argazkiak, multimedia-edukia eta fitxategiak atzitzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>

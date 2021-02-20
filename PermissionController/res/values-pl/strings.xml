@@ -185,10 +185,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Zezwalaj tylko podczas używania aplikacji"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Zawsze pytaj"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Odmów"</string>
-    <!-- no translation found for app_permission_location_accuracy (7166912915040018669) -->
-    <skip />
-    <!-- no translation found for app_permission_location_accuracy_subtitle (6926477966417403604) -->
-    <skip />
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Użyj dokładnej lokalizacji"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Jeśli to ustawienie jest wyłączone, aplikacje mogą określać Twoją lokalizację w danej okolicy tylko w przybliżeniu"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> – dostęp"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Dostęp aplikacji do: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Zobacz wszystkie uprawnienia aplikacji <xliff:g id="APP">%1$s</xliff:g>"</string>
@@ -424,14 +422,10 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Aplikacja chce mieć stały dostęp do Twojej lokalizacji, nawet gdy nie jest używana. "<annotation id="link">"Zezwól w ustawieniach"</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Zmienić uprawnienia dostępu do lokalizacji w przypadku aplikacji „<xliff:g id="APP_NAME">%1$s</xliff:g>”?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Aplikacja chce mieć stały dostęp do Twojej lokalizacji, nawet gdy nie jest używana. "<annotation id="link">"Zezwól w ustawieniach"</annotation></string>
-    <!-- no translation found for permgrouprequest_finelocation (169340229199345158) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation (7244605063736425232) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_finelocation_imagetext (1313062433398914334) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation_imagetext (8650605041483025297) -->
-    <skip />
+    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Zezwolić aplikacji „<xliff:g id="APP_NAME">%1$s</xliff:g>” na dostęp do dokładnej lokalizacji urządzenia?"</string>
+    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Zezwolić aplikacji „<xliff:g id="APP_NAME">%1$s</xliff:g>” na dostęp do przybliżonej lokalizacji urządzenia?"</string>
+    <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Dokładnie"</string>
+    <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"W przybliżeniu"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na dostęp do kalendarza?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na wysyłanie i wyświetlanie SMS-ów?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na dostęp do zdjęć, multimediów i plików na urządzeniu?"</string>

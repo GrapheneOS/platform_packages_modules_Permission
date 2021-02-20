@@ -171,10 +171,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"アプリの使用中のみ許可"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"毎回確認"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"許可しない"</string>
-    <!-- no translation found for app_permission_location_accuracy (7166912915040018669) -->
-    <skip />
-    <!-- no translation found for app_permission_location_accuracy_subtitle (6926477966417403604) -->
-    <skip />
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"正確な位置情報を使用"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"アプリはユーザーの位置情報について、近接する地域内でのおおよその位置しか特定できません"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>の権限"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"このアプリの<xliff:g id="PERM">%1$s</xliff:g>へのアクセス権限"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g>の権限をすべて表示"</string>
@@ -398,14 +396,10 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"このアプリは、未使用時も含め、常に位置情報にアクセスする可能性があります。"<annotation id="link">"[設定] で許可してください。"</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に対する位置情報へのアクセス許可を変更しますか?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"このアプリは、未使用時も含め、常に位置情報へのアクセスを試みます。"<annotation id="link">"[設定] で許可してください。"</annotation></string>
-    <!-- no translation found for permgrouprequest_finelocation (169340229199345158) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation (7244605063736425232) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_finelocation_imagetext (1313062433398914334) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation_imagetext (8650605041483025297) -->
-    <skip />
+    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"このデバイスの正確な位置情報へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
+    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"このデバイスのおおよその位置情報へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
+    <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"正確"</string>
+    <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"おおよそ"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"カレンダーへのアクセスを「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に許可しますか？"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"SMS メッセージの送信と表示を「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に許可しますか？"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"デバイス内の写真、メディア、ファイルへのアクセスを「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に許可しますか？"</string>
