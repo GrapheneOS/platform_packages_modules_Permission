@@ -51,11 +51,12 @@ import com.android.permissioncontroller.permission.debug.PermissionUsageV2Fragme
 import com.android.permissioncontroller.permission.debug.UtilsKt;
 import com.android.permissioncontroller.permission.ui.auto.AutoAllAppPermissionsFragment;
 import com.android.permissioncontroller.permission.ui.auto.AutoAppPermissionsFragment;
+import com.android.permissioncontroller.permission.ui.auto.AutoAutoRevokeFragment;
 import com.android.permissioncontroller.permission.ui.auto.AutoManageStandardPermissionsFragment;
 import com.android.permissioncontroller.permission.ui.auto.AutoPermissionAppsFragment;
 import com.android.permissioncontroller.permission.ui.handheld.AppPermissionFragment;
 import com.android.permissioncontroller.permission.ui.handheld.AppPermissionGroupsFragment;
-import com.android.permissioncontroller.permission.ui.handheld.AutoRevokeFragment;
+import com.android.permissioncontroller.permission.ui.handheld.HandheldAutoRevokeFragment;
 import com.android.permissioncontroller.permission.ui.handheld.PermissionAppsFragment;
 import com.android.permissioncontroller.permission.ui.legacy.AppPermissionActivity;
 import com.android.permissioncontroller.permission.ui.wear.AppPermissionsFragmentWear;
@@ -288,10 +289,11 @@ public final class ManagePermissionsActivity extends FragmentActivity {
                         + " from notification");
                 PermissionControllerStatsLog.write(AUTO_REVOKE_NOTIFICATION_CLICKED, sessionId);
 
-                if (DeviceUtils.isWear(this) || DeviceUtils.isAuto(this)
-                        || DeviceUtils.isTelevision(this)) {
-                    androidXFragment = com.android.permissioncontroller.permission.ui.handheld
-                            .AutoRevokeFragment.newInstance();
+                if (DeviceUtils.isAuto(this)) {
+                    androidXFragment = AutoAutoRevokeFragment.newInstance();
+                    androidXFragment.setArguments(AutoRevokeFragment.createArgs(sessionId));
+                } else if (DeviceUtils.isWear(this) || DeviceUtils.isTelevision(this)) {
+                    androidXFragment = HandheldAutoRevokeFragment.newInstance();
                     androidXFragment.setArguments(AutoRevokeFragment.createArgs(sessionId));
                 } else {
                     setNavGraph(AutoRevokeFragment.createArgs(sessionId), R.id.auto_revoke);
