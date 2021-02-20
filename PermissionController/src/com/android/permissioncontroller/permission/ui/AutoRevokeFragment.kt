@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 The Android Open Source Project
+ * Copyright (C) 2021 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,22 +14,24 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.ui.handheld
+package com.android.permissioncontroller.permission.ui
 
 import android.Manifest.permission_group
 import android.app.AlertDialog
+import android.app.Application
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.UserHandle
 import android.util.Log
-import android.view.MenuItem
-import android.view.View
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
+import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.PreferenceScreen
 import com.android.permissioncontroller.Constants.EXTRA_SESSION_ID
 import com.android.permissioncontroller.Constants.INVALID_SESSION_ID
 import com.android.permissioncontroller.R
@@ -49,7 +51,11 @@ import java.text.Collator
  * A fragment displaying all applications that have been auto-revoked, as well as the option to
  * remove them, and to open them.
  */
-class AutoRevokeFragment : PermissionsFrameFragment() {
+class AutoRevokeFragment<PF, AutoRevokePref> : PreferenceFragmentCompat()
+    where PF : PreferenceFragmentCompat, PF : AutoRevokeFragment.Parent<AutoRevokePref>,
+          AutoRevokePref : Preference, AutoRevokePref : RemovablePref {
+
+    private val INFO_MSG_CATEGORY = "info_msg_category"
 
     private lateinit var viewModel: AutoRevokeViewModel
     private lateinit var collator: Collator
@@ -63,7 +69,9 @@ class AutoRevokeFragment : PermissionsFrameFragment() {
         private val LOG_TAG = AutoRevokeFragment::class.java.simpleName
 
         @JvmStatic
-        fun newInstance(): AutoRevokeFragment {
+        fun <PF, AutoRevokePref> newInstance(): AutoRevokeFragment<PF, AutoRevokePref>
+            where PF : PreferenceFragmentCompat, PF : AutoRevokeFragment.Parent<AutoRevokePref>,
+                  AutoRevokePref : Preference, AutoRevokePref : RemovablePref {
             return AutoRevokeFragment()
         }
 
@@ -82,9 +90,13 @@ class AutoRevokeFragment : PermissionsFrameFragment() {
         }
     }
 
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        // empty
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        mUseShadowController = false
         super.onCreate(savedInstanceState)
+        val preferenceFragment: PF = requirePreferenceFragment()
         isFirstLoad = true
 
         collator = Collator.getInstance(
@@ -95,7 +107,7 @@ class AutoRevokeFragment : PermissionsFrameFragment() {
         viewModel.autoRevokedPackageCategoriesLiveData.observe(this, Observer {
             it?.let { pkgs ->
                 updatePackages(pkgs)
-                setLoading(false, true)
+                preferenceFragment.setLoadingState(loading = false, animate = true)
             }
         })
 
@@ -107,7 +119,7 @@ class AutoRevokeFragment : PermissionsFrameFragment() {
                 delay(SHOW_LOAD_DELAY_MS)
                 if (!viewModel.areAutoRevokedPackagesLoaded()) {
                     GlobalScope.launch(Main) {
-                        setLoading(true, true)
+                        preferenceFragment.setLoadingState(loading = true, animate = true)
                     }
                 }
             }
@@ -120,29 +132,47 @@ class AutoRevokeFragment : PermissionsFrameFragment() {
         if (ab != null) {
             ab!!.setElevation(ELEVATION_HIGH)
         }
-        activity!!.title = getString(R.string.permission_removed_page_title)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            this.pressBack()
-            return true
-        }
-        return super.onOptionsItemSelected(item)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        val preferenceFragment: PF = requirePreferenceFragment()
+        preferenceFragment.setTitle(getString(R.string.permission_removed_page_title))
+    }
+
+    private fun requirePreferenceFragment(): PF {
+        return requireParentFragment() as PF
+    }
+
+    /**
+     * Create [PreferenceScreen] in the parent fragment.
+     */
+    private fun createPreferenceScreen() {
+        val preferenceFragment: PF = requirePreferenceFragment()
+        val preferenceScreen = preferenceManager.inflateFromResource(
+            context,
+            R.xml.unused_app_categories,
+            /* rootPreferences= */ null)
+        preferenceFragment.preferenceScreen = preferenceScreen
+
+        val infoMsgCategory = preferenceScreen.findPreference<PreferenceCategory>(INFO_MSG_CATEGORY)
+        val footerPreference = preferenceFragment.createFooterPreference(context!!)
+        footerPreference.key = INFO_MSG_KEY
+        infoMsgCategory?.addPreference(footerPreference)
     }
 
     private fun updatePackages(categorizedPackages: Map<Months, List<RevokedPackageInfo>>) {
-        if (preferenceScreen == null) {
-            addPreferencesFromResource(R.xml.unused_app_categories)
-            val infoPref = preferenceScreen?.findPreference<FooterPreference>(INFO_MSG_KEY)
-            infoPref?.secondSummary = getString(R.string.auto_revoke_open_app_message)
+        val preferenceFragment: PF = requirePreferenceFragment()
+        if (preferenceFragment.preferenceScreen == null) {
+            createPreferenceScreen()
         }
+        val preferenceScreen: PreferenceScreen = preferenceFragment.preferenceScreen
 
-        val removedPrefs = mutableMapOf<String, AutoRevokePermissionPreference>()
+        val removedPrefs = mutableMapOf<String, AutoRevokePref>()
         for (month in Months.allMonths()) {
-            val category = findPreference<PreferenceCategory>(month.value)!!
+            val category = preferenceScreen.findPreference<PreferenceCategory>(month.value)!!
             for (i in 0 until category.preferenceCount) {
-                val pref = category.getPreference(i) as AutoRevokePermissionPreference
+                val pref = category.getPreference(i) as AutoRevokePref
                 val contains = categorizedPackages[Months.THREE]?.any { (pkgName, user, _) ->
                     val key = createKey(pkgName, user)
                     pref.key == key
@@ -158,7 +188,7 @@ class AutoRevokeFragment : PermissionsFrameFragment() {
         }
 
         for ((month, packages) in categorizedPackages) {
-            val category = findPreference<PreferenceCategory>(month.value)!!
+            val category = preferenceScreen.findPreference<PreferenceCategory>(month.value)!!
             category.title = if (month == Months.THREE) {
                 getString(R.string.last_opened_category_title, "3")
             } else {
@@ -170,20 +200,20 @@ class AutoRevokeFragment : PermissionsFrameFragment() {
                 val revokedPerms = permSet.toList()
                 val key = createKey(pkgName, user)
 
-                var pref = category.findPreference<AutoRevokePermissionPreference>(key)
+                var pref = category.findPreference<AutoRevokePref>(key)
                 if (pref == null) {
-                    pref = removedPrefs[key] ?: AutoRevokePermissionPreference(
+                    pref = removedPrefs[key] ?: preferenceFragment.createAutoRevokePermissionPref(
                         activity!!.application, pkgName, user, preferenceManager.context!!)
                     pref.key = key
                     pref.title = KotlinUtils.getPackageLabel(activity!!.application, pkgName, user)
                 }
 
                 if (shouldDisable) {
-                    pref.removeClickListener = View.OnClickListener {
+                    pref.setRemoveClickRunnable {
                         createDisableDialog(pkgName, user)
                     }
                 } else {
-                    pref.removeClickListener = View.OnClickListener {
+                    pref.setRemoveClickRunnable {
                         viewModel.requestUninstallApp(this, pkgName, user)
                     }
                 }
@@ -216,7 +246,7 @@ class AutoRevokeFragment : PermissionsFrameFragment() {
 
         if (isFirstLoad) {
             if (categorizedPackages[Months.SIX]!!.isNotEmpty() ||
-                    categorizedPackages[Months.THREE]!!.isNotEmpty()) {
+                categorizedPackages[Months.THREE]!!.isNotEmpty()) {
                 isFirstLoad = false
             }
             Log.i(LOG_TAG, "sessionId: $sessionId Showed Auto Revoke Page")
@@ -275,7 +305,7 @@ class AutoRevokeFragment : PermissionsFrameFragment() {
 
     class DisableDialog : DialogFragment() {
         override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-            val fragment = parentFragment as AutoRevokeFragment
+            val fragment = parentFragment as AutoRevokeFragment<*, *>
             val packageName = arguments!!.getString(Intent.EXTRA_PACKAGE_NAME)!!
             val user = arguments!!.getParcelable<UserHandle>(Intent.EXTRA_USER)!!
             val b = AlertDialog.Builder(context!!)
@@ -288,5 +318,52 @@ class AutoRevokeFragment : PermissionsFrameFragment() {
             d.setCanceledOnTouchOutside(true)
             return d
         }
+    }
+
+    /**
+     * Interface that the parent fragment must implement.
+     */
+    interface Parent<AutoRevokePref> where AutoRevokePref : Preference,
+                                           AutoRevokePref : RemovablePref {
+
+        /**
+         * Set the title of the current settings page.
+         *
+         * @param title the title of the current settings page
+         */
+        fun setTitle(title: CharSequence)
+
+        /**
+         * Creates the footer preference that explains why permissions have been re-used and how an
+         * app can re-request them.
+         *
+         * @param context The current context
+         */
+        fun createFooterPreference(context: Context): Preference
+
+        /**
+         * Sets the loading state of the view.
+         *
+         * @param loading whether the view is loading
+         * @param animate whether the load state should change with a fade animation
+         */
+        fun setLoadingState(loading: Boolean, animate: Boolean)
+
+        /**
+         * Creates a apreference which represents an app that has been auto revoked. Has the app
+         * icon and label, as well as a button to uninstall/disable the app, and a button to open
+         * the app.
+         *
+         * @param app The current application
+         * @param packageName The name of the package whose icon this preference will retrieve
+         * @param user The user whose package icon will be retrieved
+         * @param context The current context
+         */
+        fun createAutoRevokePermissionPref(
+            app: Application,
+            packageName: String,
+            user: UserHandle,
+            context: Context
+        ): AutoRevokePref
     }
 }

@@ -71,7 +71,7 @@
 
     <fragment
         android:id="@+id/auto_revoke"
-        android:name="com.android.permissioncontroller.permission.ui.handheld.AutoRevokeFragment"
+        android:name="com.android.permissioncontroller.permission.ui.handheld.HandheldAutoRevokeFragment"
         android:label="AutoRevoke">
 
         <action
