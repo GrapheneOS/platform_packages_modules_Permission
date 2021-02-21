@@ -171,10 +171,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"仅在使用该应用时允许"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"每次都询问"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"拒绝"</string>
-    <!-- no translation found for app_permission_location_accuracy (7166912915040018669) -->
-    <skip />
-    <!-- no translation found for app_permission_location_accuracy_subtitle (6926477966417403604) -->
-    <skip />
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"使用确切位置"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"如果此设置处于关闭状态，应用只能确定您的大致位置范围"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>权限"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"是否允许这个应用访问<xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"查看“<xliff:g id="APP">%1$s</xliff:g>”的所有权限"</string>
@@ -398,14 +396,10 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"该应用可能想要随时获取您的位置信息（即使您并未使用该应用）。"<annotation id="link">"在“设置”中允许"</annotation>"。"</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"要更改&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;的位置信息访问权限吗？"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"该应用想要随时获取您的位置信息（即使您并未使用该应用）。"<annotation id="link">"在“设置”中允许"</annotation>"。"</string>
-    <!-- no translation found for permgrouprequest_finelocation (169340229199345158) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation (7244605063736425232) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_finelocation_imagetext (1313062433398914334) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation_imagetext (8650605041483025297) -->
-    <skip />
+    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;获取此设备的确切位置吗？"</string>
+    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;获取此设备的大致位置吗？"</string>
+    <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"确切"</string>
+    <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"大致"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问您的日历吗？"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;发送和查看短信吗？"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"允许“<xliff:g id="APP_NAME">%1$s</xliff:g>”&lt;b&gt;&lt;/b&gt;访问您设备上的照片、媒体内容和文件吗？"</string>

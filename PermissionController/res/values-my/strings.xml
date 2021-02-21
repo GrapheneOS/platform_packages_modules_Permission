@@ -171,10 +171,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"အက်ပ်ကိုသုံးစဉ်သာ ခွင့်ပြုရန်"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"အမြဲမေးပါ"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"ငြင်းပယ်ရန်"</string>
-    <!-- no translation found for app_permission_location_accuracy (7166912915040018669) -->
-    <skip />
-    <!-- no translation found for app_permission_location_accuracy_subtitle (6926477966417403604) -->
-    <skip />
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"နေရာအတိအကျကို သုံးခြင်း"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"၎င်းကို ပိတ်ထားသည့်အခါ ပတ်ဝန်းကျင်အနီးအနားရှိ သင်၏ တည်နေရာခန့်မှန်းခြေကိုသာ အက်ပ်များက ဆုံးဖြတ်နိုင်သည်"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> ခွင့်ပြုချက်"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"ဤအက်ပ်အတွက် <xliff:g id="PERM">%1$s</xliff:g> အသုံးပြုခွင့်"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g> ခွင့်ပြုချက်အားလုံး ကြည့်ရန်"</string>
@@ -398,14 +396,10 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"သင် အသုံးမပြုနေလျှင်တောင်မှ ဤအက်ပ်က သင့်တည်နေရာကို သုံးခွင့်ရနေပါမည်။ "<annotation id="link">"ဆက်တင်များတွင် ခွင့်ပြုပါ။"</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&amp;gt တို့အတွက် တည်နေရာ ဝင်ခွင့် ပြောင်းပေးမလား။"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"သင် အသုံးမပြုနေလျှင်တောင်မှ ဤအက်ပ်က သင့်တည်နေရာကို သုံးခွင့်ရလိုသည်။ "<annotation id="link">"ဆက်တင်များတွင် ခွင့်ပြုပါ။"</annotation></string>
-    <!-- no translation found for permgrouprequest_finelocation (169340229199345158) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation (7244605063736425232) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_finelocation_imagetext (1313062433398914334) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation_imagetext (8650605041483025297) -->
-    <skip />
+    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား ဤစက်၏ နေရာအတိအကျကို သုံးခွင့်ပေးလိုပါသလား။"</string>
+    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား ဤစက်၏ တည်နေရာခန့်မှန်းခြေကို သုံးခွင့်ပေးလိုပါသလား။"</string>
+    <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"နေရာအတိအကျ"</string>
+    <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"ခန့်မှန်းခြေ"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သင်၏ပြက္ခဒိန်ကို သုံးခွင့်ပေးလိုပါသလား။"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား SMS မက်ဆေ့ဂျ်များ ကြည့်ရှုခွင့်နှင့် ပို့ခွင့်ပေးလိုပါသလား။"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သင့်ဖုန်းရှိ ဓာတ်ပုံများ၊ မီဒီယာနှင့် ဖိုင်များ ဝင်သုံးခွင့်ပေးလိုပါသလား။"</string>

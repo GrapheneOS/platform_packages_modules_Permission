@@ -171,12 +171,10 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Ruhusu tu unapotumia programu"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Uliza kila wakati"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Kataa"</string>
-    <!-- no translation found for app_permission_location_accuracy (7166912915040018669) -->
-    <skip />
-    <!-- no translation found for app_permission_location_accuracy_subtitle (6926477966417403604) -->
-    <skip />
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Tumia eneo mahususi"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Programu zinaweza tu kukadiria mahali ulipo katika mitaa iliyo karibu ikiwa imezimwa"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Ruhusa ya <xliff:g id="PERM">%1$s</xliff:g>"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"Idhini ya programu hii ya kufikia <xliff:g id="PERM">%1$s</xliff:g>"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"Idhini ya programu hii kufikia <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Angalia ruhusa zote za <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Angalia programu zote zenye ruhusa hii"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Onyesha matumizi ya maikrofoni ya mratibu"</string>
@@ -398,14 +396,10 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Huenda programu hii ikataka kufikia maelezo ya mahali ulipo kila wakati, hata wakati huitumii."<annotation id="link">"Iruhusu katika mipangilio."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Ungependa kubadilisha ruhusa za &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; za kufikia maelezo ya mahali?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Programu hii inataka kufikia maelezo ya mahali ulipo kila wakati, hata wakati huitumii."<annotation id="link">"Iruhusu katika mipangilio."</annotation></string>
-    <!-- no translation found for permgrouprequest_finelocation (169340229199345158) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation (7244605063736425232) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_finelocation_imagetext (1313062433398914334) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation_imagetext (8650605041483025297) -->
-    <skip />
+    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie mahali mahususi kilipo kifaa hiki?"</string>
+    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie mahali palipokadiriwa kilipo kifaa hiki?"</string>
+    <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Mahususi"</string>
+    <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Palipokadiriwa"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie kalenda yako?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; itume na ione ujumbe wa SMS?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Ungependa &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie picha, maudhui na faili kwenye kifaa chako?"</string>
