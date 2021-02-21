@@ -171,10 +171,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"ആപ്പ് ഉപയോഗിക്കുമ്പോൾ മാത്രം"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"എപ്പോഴും ചോദിക്കുക"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"നിരസിക്കുക"</string>
-    <!-- no translation found for app_permission_location_accuracy (7166912915040018669) -->
-    <skip />
-    <!-- no translation found for app_permission_location_accuracy_subtitle (6926477966417403604) -->
-    <skip />
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"കൃത്യമായ ലൊക്കേഷൻ ഉപയോഗിക്കുക"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"ഇത് ഓഫായിരിക്കുമ്പോൾ, നിങ്ങളുടെ ചുറ്റുവട്ടത്തിന്റെ ഏകദേശ ലൊക്കേഷൻ മാത്രമേ ആപ്പുകൾക്ക് നിർണ്ണയിക്കാനാകൂ"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> അനുമതി"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"ഈ ആപ്പിനുള്ള <xliff:g id="PERM">%1$s</xliff:g> ആക്‌സ‌സ്"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"എല്ലാ <xliff:g id="APP">%1$s</xliff:g> അനുമതികളും കാണുക"</string>
@@ -398,14 +396,10 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"ആപ്പ് ഉപയോഗിക്കാത്തപ്പോൾ പോലും, എല്ലാ സമയത്തും ഈ ആപ്പിന് നിങ്ങളുടെ ലൊക്കേഷൻ ആക്‌സസ് ചെയ്യേണ്ടതുണ്ട്. "<annotation id="link">"ക്രമീകരണത്തിൽ"</annotation>" അനുവദിക്കുക."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിന്റെ ലൊക്കേഷൻ ആക്സസ് മാറ്റണോ?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"ആപ്പ് നിങ്ങൾ ഉപയോഗിക്കാത്തപ്പോഴടക്കം, എല്ലാ സമയത്തും ഈ ആപ്പ് നിങ്ങളുടെ ലൊക്കേഷൻ ആക്‌സസ് ചെയ്യാൻ ആഗ്രഹിക്കുന്നു. "<annotation id="link">"ക്രമീകരണത്തിൽ അനുവദിക്കുക."</annotation></string>
-    <!-- no translation found for permgrouprequest_finelocation (169340229199345158) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation (7244605063736425232) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_finelocation_imagetext (1313062433398914334) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation_imagetext (8650605041483025297) -->
-    <skip />
+    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"ഈ ഉപകരണത്തിന്റെ കൃത്യമായ ലൊക്കേഷൻ ആക്‌സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കണോ?"</string>
+    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"ഈ ഉപകരണത്തിന്റെ ഏകദേശ ലൊക്കേഷൻ ആക്‌സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കണോ?"</string>
+    <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"കൃത്യമായ"</string>
+    <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"ഏകദേശം"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"നിങ്ങളുടെ കലണ്ടർ ആക്‌സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"SMS സന്ദേശങ്ങൾ അയയ്ക്കാനും കാണാനും &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"നിങ്ങളുടെ ഉപകരണത്തിലെ ഫോട്ടോകളും മീഡിയയും ഫയലുകളും ആക്‌സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>
@@ -415,7 +409,7 @@
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"നിങ്ങൾ ആപ്പ് ഉപയോഗിക്കാത്തപ്പോൾ പോലും ഈ ആപ്പിന് എപ്പോഴും ഓഡിയോ റെക്കോർഡ് ചെയ്യേണ്ടതുണ്ട്. "<annotation id="link">"ക്രമീകരണത്തിൽ അനുവദിക്കുക."</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനുള്ള മൈക്രോഫോൺ ആക്സസ് മാറ്റണോ?"</string>
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"നിങ്ങൾ ആപ്പ് ഉപയോഗിക്കാത്തപ്പോൾ പോലും ഈ ആപ്പിന് എപ്പോഴും ഓഡിയോ റെക്കോർഡ് ചെയ്യണം. "<annotation id="link">"ക്രമീകരണത്തിൽ അനുവദിക്കുക."</annotation></string>
-    <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-നെ നിങ്ങളുടെ കായിക പ്രവർത്തനം ആക്‌സസ് ചെയ്യാൻ അനുവദിക്കണോ?"</string>
+    <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ നിങ്ങളുടെ കായിക പ്രവർത്തനം ആക്‌സസ് ചെയ്യാൻ അനുവദിക്കണോ?"</string>
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"ചിത്രം എടുക്കാനും വീഡിയോ റെക്കോർഡ് ചെയ്യാനും &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"നിങ്ങൾ ആപ്പ് ഉപയോഗിക്കുമ്പോൾ മാത്രമേ അതിന് ചിത്രങ്ങളെടുക്കാനും വീഡിയോ റെക്കോർഡ് ചെയ്യാൻ കഴിയൂ"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"ചിത്രം എടുക്കാനും വീഡിയോ റെക്കോർഡ് ചെയ്യാനും &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>

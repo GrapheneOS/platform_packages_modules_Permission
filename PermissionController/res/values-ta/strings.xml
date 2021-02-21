@@ -171,10 +171,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"ஆப்ஸை உபயோகிக்கும்போது மட்டும் அனுமதி"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"ஒவ்வொரு முறையும் கேள்"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"நிராகரி"</string>
-    <!-- no translation found for app_permission_location_accuracy (7166912915040018669) -->
-    <skip />
-    <!-- no translation found for app_permission_location_accuracy_subtitle (6926477966417403604) -->
-    <skip />
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"துல்லியமான இருப்பிடத்தைப் பயன்படுத்து"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"துல்லியமான இருப்பிடம் ஆஃப் செய்யப்பட்டிருக்கும்போது ஆப்ஸால் அருகிலுள்ள இடங்களை வைத்து உங்கள் தோராயமான இருப்பிடத்தை மட்டுமே கணிக்க முடியும்"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> என்பதற்கான அனுமதி"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"இந்த ஆப்ஸிற்கு <xliff:g id="PERM">%1$s</xliff:g> அணுகல்"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"அனைத்து <xliff:g id="APP">%1$s</xliff:g> அனுமதிகளையும் காட்டு"</string>
@@ -398,14 +396,10 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"இந்த ஆப்ஸை நீங்கள் பயன்படுத்தாதபோதும்கூட உங்கள் இருப்பிடத்தை எந்நேரமும் அணுக இது விரும்பக்கூடும். "<annotation id="link">"அமைப்புகளில் அனுமதிக்கவும்"</annotation>"."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸிற்கு இருப்பிட அணுகலை மாற்றவா?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"இந்த ஆப்ஸை நீங்கள் பயன்படுத்தாதபோதும்கூட உங்கள் இருப்பிடத்தை எந்நேரமும் அணுக இது விரும்பக்கூடும். "<annotation id="link">"அமைப்புகளில் அனுமதிக்கவும்"</annotation>"."</string>
-    <!-- no translation found for permgrouprequest_finelocation (169340229199345158) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation (7244605063736425232) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_finelocation_imagetext (1313062433398914334) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation_imagetext (8650605041483025297) -->
-    <skip />
+    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"இந்தச் சாதனத்தின் துல்லியமான இருப்பிடத்தை அணுக &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
+    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"இந்தச் சாதனத்தின் தோராயமான இருப்பிடத்தை அணுக &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
+    <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"துல்லியமானது"</string>
+    <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"தோராயமானது"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"கேலெண்டரை அணுகுவதற்கு &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"மெசேஜ்களை அனுப்பவும், பார்க்கவும் &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"உங்கள் சாதனத்திலுள்ள படங்கள், மீடியா, ஃபைல்கள் ஆகியவற்றை அணுகுவதற்கு &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
