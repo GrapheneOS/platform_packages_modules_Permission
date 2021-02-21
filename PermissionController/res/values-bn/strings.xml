@@ -171,10 +171,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"শুধু অ্যাপ ব্যবহারের সময় অনুমতি দিন"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"প্রতিবার জিজ্ঞাসা করা হবে"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"খারিজ করুন"</string>
-    <!-- no translation found for app_permission_location_accuracy (7166912915040018669) -->
-    <skip />
-    <!-- no translation found for app_permission_location_accuracy_subtitle (6926477966417403604) -->
-    <skip />
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"নির্ভুল লোকেশন ব্যবহার করুন"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"অ্যাপ শুধুমাত্র আপনার আশেপাশের এলাকার মধ্যে এটিকে বাদ দিয়ে আপনার নিকটবর্তী লোকেশন নির্ধারণ করে"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> অনুমতি"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"এই অ্যাপের জন্য <xliff:g id="PERM">%1$s</xliff:g> অ্যাক্সেস"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g>-কে দেওয়া সব অনুমতি দেখুন"</string>
@@ -398,14 +396,10 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"এই অ্যাপ হয়ত সবসময় আপনার লোকেশন অ্যাক্সেস করতে চায়, এমনকি আপনার অ্যাপ চালু না থাকলেও। "<annotation id="link">"সেটিংস বিকল্প থেকে অনুমতি দিন।"</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-এর জন্য লোকেশন অ্যাক্সেস পরিবর্তন করতে চান?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"এই অ্যাপটি সবসময় আপনার লোকেশন অ্যাক্সেস করতে চায়, এমনকি আপনার অ্যাপ চালু না থাকলেও। "<annotation id="link">"সেটিংস বিকল্প থেকে অনুমতি দিন।"</annotation></string>
-    <!-- no translation found for permgrouprequest_finelocation (169340229199345158) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation (7244605063736425232) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_finelocation_imagetext (1313062433398914334) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation_imagetext (8650605041483025297) -->
-    <skip />
+    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে এই ডিভাইসের নির্ভুল লোকেশন অ্যাক্সেস করতে দেবেন?"</string>
+    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে এই ডিভাইসের নিকটবর্তী লোকেশন অ্যাক্সেস করতে দেবেন?"</string>
+    <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"নির্ভুল"</string>
+    <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"নিকটবর্তী"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে আপনার ক্যালেন্ডারে অ্যাক্সেস দেবেন?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে এসএমএস দেখতে ও পাঠাতে দেবেন?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে আপনার ডিভাইসের ফটো, মিডিয়া এবং ফাইলে অ্যাক্সেস দেবেন?"</string>

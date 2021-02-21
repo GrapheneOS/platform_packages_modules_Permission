@@ -171,10 +171,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"ಆ್ಯಪ್ ಬಳಸುವಾಗ ಮಾತ್ರ ಅನುಮತಿಸಿ"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"ಪ್ರತಿ ಬಾರಿ ಕೇಳಿ"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"ನಿರಾಕರಿಸಿ"</string>
-    <!-- no translation found for app_permission_location_accuracy (7166912915040018669) -->
-    <skip />
-    <!-- no translation found for app_permission_location_accuracy_subtitle (6926477966417403604) -->
-    <skip />
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"ನಿಖರವಾದ ಸ್ಥಳವನ್ನು ಬಳಸಿ"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"ನಿಖರವಾದ ಸ್ಥಳ ಆಫ್ ಆಗಿರುವಾಗ ಆ್ಯಪ್‌ಗಳು ನೆರೆಹೊರೆಯ ಪ್ರದೇಶದಲ್ಲಿನ ನಿಮ್ಮ ಅಂದಾಜು ಸ್ಥಳವನ್ನು ಮಾತ್ರ ಪತ್ತೆಮಾಡಬಹುದು"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> ಅನುಮತಿ"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"ಈ <xliff:g id="PERM">%1$s</xliff:g> ಆ್ಯಪ್‌ಗಾಗಿ ಪ್ರವೇಶದ ಅನುಮತಿ"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"ಎಲ್ಲಾ <xliff:g id="APP">%1$s</xliff:g> ಅನುಮತಿಗಳನ್ನು ವೀಕ್ಷಿಸಿ"</string>
@@ -398,14 +396,10 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"ನೀವು ಈ ಆ್ಯಪ್ ಅನ್ನು ಬಳಸದಿರುವಾಗಲೂ ಸಹ, ಯಾವಾಗಲೂ ನಿಮ್ಮ ಸ್ಥಳಕ್ಕೆ ಪ್ರವೇಶವನ್ನು ಹೊಂದಲು ಆ್ಯಪ್ ಬಯಸಬಹುದು. "<annotation id="link">"ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಅನುಮತಿಸಿ."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಆ್ಯಪ್‌ಗಾಗಿ ಸ್ಥಳ ಪ್ರವೇಶವನ್ನು ಬದಲಾಯಿಸಬೇಕೆ?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"ನೀವು ಈ ಆ್ಯಪ್ ಅನ್ನು ಬಳಸದಿರುವಾಗಲೂ ಸಹ, ಯಾವಾಗಲೂ ನಿಮ್ಮ ಸ್ಥಳಕ್ಕೆ ಪ್ರವೇಶವನ್ನು ಹೊಂದಲು ಆ್ಯಪ್ ಬಯಸುತ್ತದೆ. "<annotation id="link">"ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಅನುಮತಿಸಿ."</annotation></string>
-    <!-- no translation found for permgrouprequest_finelocation (169340229199345158) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation (7244605063736425232) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_finelocation_imagetext (1313062433398914334) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_coarselocation_imagetext (8650605041483025297) -->
-    <skip />
+    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"ಈ ಸಾಧನದ ನಿಖರವಾದ ಸ್ಥಳವನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
+    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"ಈ ಸಾಧನದ ಅಂದಾಜು ಸ್ಥಳವನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
+    <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"ನಿಖರ"</string>
+    <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"ಅಂದಾಜು"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"ನಿಮ್ಮ ಕ್ಯಾಲೆಂಡರ್ ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"ಎಸ್‌ಎಂಎಸ್‌ ಸಂದೇಶಗಳನ್ನು ಕಳುಹಿಸಲು ಮತ್ತು ವೀಕ್ಷಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"ಸಾಧನದಲ್ಲಿ ಫೋಟೋಗಳು, ಮಾಧ್ಯಮ, ಫೈಲ್‌ಗಳನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
@@ -415,7 +409,7 @@
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"ನೀವು ಈ ಆ್ಯಪ್ ಅನ್ನು ಬಳಸದಿರುವಾಗಲೂ ಸಹ, ಈ ಆ್ಯಪ್ ಯಾವಾಗಲೂ ಆಡಿಯೊವನ್ನು ರೆಕಾರ್ಡ್ ಮಾಡಲು ಬಯಸಬಹುದು. "<annotation id="link">"ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಅನುಮತಿಸಿ."</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಆ್ಯಪ್‌ಗಾಗಿ ಮೈಕ್ರೋಫೋನ್ ಪ್ರವೇಶವನ್ನು ಬದಲಾಯಿಸಬೇಕೆ?"</string>
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"ನೀವು ಈ ಆ್ಯಪ್ ಅನ್ನು ಬಳಸದಿರುವಾಗಲೂ ಸಹ, ಈ ಆ್ಯಪ್ ಯಾವಾಗಲೂ ಆಡಿಯೊವನ್ನು ರೆಕಾರ್ಡ್ ಮಾಡಲು ಬಯಸುತ್ತದೆ. "<annotation id="link">"ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಅನುಮತಿಸಿ."</annotation></string>
-    <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"ನಿಮ್ಮ ದೈಹಿಕ ಚಟುವಟಿಕೆಯನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸುವುದೇ?"</string>
+    <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"ನಿಮ್ಮ ದೈಹಿಕ ಚಟುವಟಿಕೆಯನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ಕ್ಕೆ ಅನುಮತಿಸುವುದೇ?"</string>
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"ಚಿತ್ರಗಳನ್ನು ಸೆರೆಹಿಡಿಯಲು ಮತ್ತು ವೀಡಿಯೊ ರೆಕಾರ್ಡ್‌ ಮಾಡಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"ನೀವು ಆ್ಯಪ್ ಅನ್ನು ಬಳಸುತ್ತಿರುವಾಗ ಮಾತ್ರ ಆ್ಯಪ್‌ಗೆ ಚಿತ್ರಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳಲು ಮತ್ತು ವೀಡಿಯೊ ರೆಕಾರ್ಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗುತ್ತದೆ"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"ಚಿತ್ರಗಳನ್ನು ಸೆರೆಹಿಡಿಯಲು ಮತ್ತು ವೀಡಿಯೊ ರೆಕಾರ್ಡ್‌ ಮಾಡಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಆ್ಯಪ್‌ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
