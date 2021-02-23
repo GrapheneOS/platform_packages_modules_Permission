@@ -21,7 +21,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Process;
 import android.os.UserHandle;
 import android.util.ArraySet;
@@ -29,6 +28,7 @@ import android.util.ArraySet;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.role.utils.PackageUtils;
 import com.android.permissioncontroller.role.utils.UserUtils;
@@ -118,7 +118,7 @@ public class BrowserRoleBehavior implements RoleBehavior {
     public void grant(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
         // @see com.android.server.pm.permission.DefaultPermissionGrantPolicy
         //      #grantDefaultPermissionsToDefaultBrowser(java.lang.String, int)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        if (SdkLevel.isAtLeastS()) {
             if (PackageUtils.isSystemPackage(packageName, context)) {
                 Permissions.grant(packageName, SYSTEM_BROWSER_PERMISSIONS, false, false, false,
                         true, false, context);
