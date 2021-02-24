@@ -17,7 +17,6 @@
 package com.android.permissioncontroller.role.model;
 
 import android.content.Context;
-import android.os.Build;
 import android.os.Process;
 import android.os.UserHandle;
 import android.os.UserManager;
@@ -26,6 +25,7 @@ import android.telephony.TelephonyManager;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.utils.CollectionUtils;
 import com.android.permissioncontroller.role.utils.PackageUtils;
@@ -33,7 +33,6 @@ import com.android.permissioncontroller.role.utils.UserUtils;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Class for behavior of the SMS role.
@@ -103,22 +102,16 @@ public class SmsRoleBehavior implements RoleBehavior {
 
     @Override
     public void grant(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
-                // Need to check codename for prerelease
-                || Build.VERSION.CODENAME.toUpperCase().startsWith("S")) {
-            if (PackageUtils.isSystemPackage(packageName, context)) {
-                Permissions.grant(packageName, SYSTEM_SMS_PERMISSIONS, false, false,
-                        true, false, false, context);
-            }
+        if (SdkLevel.isAtLeastS() && PackageUtils.isSystemPackage(packageName, context)) {
+            Permissions.grant(packageName, SYSTEM_SMS_PERMISSIONS, false, false,
+                    true, false, false, context);
         }
     }
 
     @Override
     public void revoke(@NonNull Role role, @NonNull String packageName,
             @NonNull Context context) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
-                // Need to check codename for prerelease
-                || Objects.equals(Build.VERSION.CODENAME, "S")) {
+        if (SdkLevel.isAtLeastS()) {
             Permissions.revoke(packageName, SYSTEM_SMS_PERMISSIONS, true, false, false, context);
         }
     }

@@ -85,6 +85,7 @@ import androidx.core.text.BidiFormatter;
 import androidx.core.util.Preconditions;
 
 import com.android.launcher3.icons.IconFactory;
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.Constants;
 import com.android.permissioncontroller.DeviceUtils;
 import com.android.permissioncontroller.PermissionControllerApplication;
@@ -207,14 +208,14 @@ public final class Utils {
         PLATFORM_PERMISSIONS.put(Manifest.permission.ACCEPT_HANDOVER, PHONE);
 
         PLATFORM_PERMISSIONS.put(Manifest.permission.RECORD_AUDIO, MICROPHONE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        if (SdkLevel.isAtLeastS()) {
             PLATFORM_PERMISSIONS.put(Manifest.permission.RECORD_BACKGROUND_AUDIO, MICROPHONE);
         }
 
         PLATFORM_PERMISSIONS.put(Manifest.permission.ACTIVITY_RECOGNITION, ACTIVITY_RECOGNITION);
 
         PLATFORM_PERMISSIONS.put(Manifest.permission.CAMERA, CAMERA);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        if (SdkLevel.isAtLeastS()) {
             PLATFORM_PERMISSIONS.put(Manifest.permission.BACKGROUND_CAMERA, CAMERA);
         }
 
