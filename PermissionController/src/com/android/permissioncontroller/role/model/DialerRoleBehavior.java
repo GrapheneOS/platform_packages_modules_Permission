@@ -18,7 +18,6 @@ package com.android.permissioncontroller.role.model;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
-import android.os.Build;
 import android.os.UserHandle;
 import android.telecom.TelecomManager;
 import android.telephony.TelephonyManager;
@@ -27,6 +26,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.preference.Preference;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.role.utils.PackageUtils;
 
@@ -86,9 +86,7 @@ public class DialerRoleBehavior implements RoleBehavior {
 
     @Override
     public void grant(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
-                // Need to check codename for prerelease
-                || Objects.equals(Build.VERSION.CODENAME, "S")) {
+        if (SdkLevel.isAtLeastS()) {
             if (PackageUtils.isSystemPackage(packageName, context)) {
                 Permissions.grant(packageName, SYSTEM_DIALER_PERMISSIONS, false, false,
                         true, false, false, context);
@@ -99,9 +97,7 @@ public class DialerRoleBehavior implements RoleBehavior {
     @Override
     public void revoke(@NonNull Role role, @NonNull String packageName,
             @NonNull Context context) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
-                // Need to check codename for prerelease
-                || Objects.equals(Build.VERSION.CODENAME, "S")) {
+        if (SdkLevel.isAtLeastS()) {
             Permissions.revoke(packageName, SYSTEM_DIALER_PERMISSIONS, true, false, false, context);
         }
     }

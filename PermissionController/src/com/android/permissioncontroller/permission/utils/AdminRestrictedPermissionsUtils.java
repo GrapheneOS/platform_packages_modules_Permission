@@ -19,9 +19,10 @@ package com.android.permissioncontroller.permission.utils;
 import android.Manifest;
 import android.app.admin.DevicePolicyManager;
 import android.content.Context;
-import android.os.Build;
 import android.os.UserHandle;
 import android.util.ArraySet;
+
+import com.android.modules.utils.build.SdkLevel;
 
 /**
  * A class for dealing with permissions that the admin may not grant in certain configurations.
@@ -42,7 +43,7 @@ public final class AdminRestrictedPermissionsUtils {
         ADMIN_RESTRICTED_SENSORS_PERMISSIONS.add(Manifest.permission.ACTIVITY_RECOGNITION);
         ADMIN_RESTRICTED_SENSORS_PERMISSIONS.add(Manifest.permission.BODY_SENSORS);
         // New S permissions - do not add unless running on S and above.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        if (SdkLevel.isAtLeastS()) {
             ADMIN_RESTRICTED_SENSORS_PERMISSIONS.add(Manifest.permission.BACKGROUND_CAMERA);
             ADMIN_RESTRICTED_SENSORS_PERMISSIONS.add(Manifest.permission.RECORD_BACKGROUND_AUDIO);
         }
