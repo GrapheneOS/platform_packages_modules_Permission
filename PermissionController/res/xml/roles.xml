@@ -117,9 +117,6 @@
         <app-op-permissions>
             <app-op-permission name="android.permission.SYSTEM_ALERT_WINDOW" />
         </app-op-permissions>
-        <exempt-permissions>
-            <permission name="android.permission.RECORD_BACKGROUND_AUDIO" />
-        </exempt-permissions>
     </role>
 
     <!---
