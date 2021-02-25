@@ -18,10 +18,6 @@
 
 package com.android.permissioncontroller.permission.service
 
-import android.app.ActivityManager
-import android.app.ActivityManager.RunningAppProcessInfo.IMPORTANCE_TOP_SLEEPING
-import android.app.usage.UsageStatsManager.INTERVAL_DAILY
-import android.app.usage.UsageStatsManager.INTERVAL_MONTHLY
 import android.content.Context
 import android.content.pm.PackageManager.FLAG_PERMISSION_AUTO_REVOKED
 import android.content.pm.PackageManager.FLAG_PERMISSION_USER_SET
@@ -33,32 +29,17 @@ import com.android.permissioncontroller.DumpableLog
 import com.android.permissioncontroller.PermissionControllerStatsLog
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_GRANT_REQUEST_RESULT_REPORTED
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_GRANT_REQUEST_RESULT_REPORTED__RESULT__AUTO_UNUSED_APP_PERMISSION_REVOKED
-import com.android.permissioncontroller.hibernation.DEBUG_OVERRIDE_THRESHOLDS
-import com.android.permissioncontroller.hibernation.ExemptServicesLiveData
-import com.android.permissioncontroller.hibernation.getUnusedThresholdMs
-import com.android.permissioncontroller.permission.data.AllPackageInfosLiveData
 import com.android.permissioncontroller.permission.data.LightAppPermGroupLiveData
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData
-import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
-import com.android.permissioncontroller.permission.data.UnusedAutoRevokedPackagesLiveData
-import com.android.permissioncontroller.permission.data.UsageStatsLiveData
-import com.android.permissioncontroller.permission.data.UsersLiveData
 import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
-import com.android.permissioncontroller.permission.service.AutoRevokePermissionsProto.AutoRevokePermissionsDumpProto
-import com.android.permissioncontroller.permission.service.AutoRevokePermissionsProto.PackageProto
-import com.android.permissioncontroller.permission.service.AutoRevokePermissionsProto.PerUserProto
-import com.android.permissioncontroller.permission.service.AutoRevokePermissionsProto.PermissionGroupProto
-import com.android.permissioncontroller.permission.utils.IPC
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.application
 import com.android.permissioncontroller.permission.utils.forEachInParallel
 import com.android.permissioncontroller.permission.utils.updatePermissionFlags
 import kotlinx.coroutines.Dispatchers.Main
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
 import java.util.concurrent.atomic.AtomicBoolean
 
 private const val LOG_TAG = "AutoRevokePermissions"
@@ -138,43 +119,34 @@ suspend fun revokeAppPermissions(
                             sessionId, uid, packageName, permName, false, SERVER_LOG_ID)
                     }
 
-                    val packageImportance = context
-                        .getSystemService(ActivityManager::class.java)!!
-                        .getPackageImportance(packageName)
-                    if (packageImportance > IMPORTANCE_TOP_SLEEPING) {
-                        if (DEBUG_AUTO_REVOKE) {
-                            DumpableLog.i(LOG_TAG, "revoking $packageName - $revocablePermissions")
-                            DumpableLog.i(LOG_TAG, "State pre revocation: ${group.allPermissions}")
-                        }
-                        anyPermsRevoked.compareAndSet(false, true)
+                    if (DEBUG_AUTO_REVOKE) {
+                        DumpableLog.i(LOG_TAG, "revoking $packageName - $revocablePermissions")
+                        DumpableLog.i(LOG_TAG, "State pre revocation: ${group.allPermissions}")
+                    }
+                    anyPermsRevoked.compareAndSet(false, true)
 
-                        val bgRevokedState = KotlinUtils.revokeBackgroundRuntimePermissions(
-                                context.application, group,
-                                userFixed = false, oneTime = false,
-                                filterPermissions = revocablePermissions)
-                        if (DEBUG_AUTO_REVOKE) {
-                            DumpableLog.i(LOG_TAG,
-                                "Bg state post revocation: ${bgRevokedState.allPermissions}")
-                        }
-                        val fgRevokedState = KotlinUtils.revokeForegroundRuntimePermissions(
+                    val bgRevokedState = KotlinUtils.revokeBackgroundRuntimePermissions(
                             context.application, group,
                             userFixed = false, oneTime = false,
                             filterPermissions = revocablePermissions)
-                        if (DEBUG_AUTO_REVOKE) {
-                            DumpableLog.i(LOG_TAG,
-                                "Fg state post revocation: ${fgRevokedState.allPermissions}")
-                        }
-
-                        for (permission in revocablePermissions) {
-                            context.packageManager.updatePermissionFlags(
-                                permission, packageName, user,
-                                FLAG_PERMISSION_AUTO_REVOKED to true,
-                                FLAG_PERMISSION_USER_SET to false)
-                        }
-                    } else {
+                    if (DEBUG_AUTO_REVOKE) {
                         DumpableLog.i(LOG_TAG,
-                            "Skipping auto-revoke - $packageName running with importance " +
-                                "$packageImportance")
+                            "Bg state post revocation: ${bgRevokedState.allPermissions}")
+                    }
+                    val fgRevokedState = KotlinUtils.revokeForegroundRuntimePermissions(
+                        context.application, group,
+                        userFixed = false, oneTime = false,
+                        filterPermissions = revocablePermissions)
+                    if (DEBUG_AUTO_REVOKE) {
+                        DumpableLog.i(LOG_TAG,
+                            "Fg state post revocation: ${fgRevokedState.allPermissions}")
+                    }
+
+                    for (permission in revocablePermissions) {
+                        context.packageManager.updatePermissionFlags(
+                            permission, packageName, user,
+                            FLAG_PERMISSION_AUTO_REVOKED to true,
+                            FLAG_PERMISSION_USER_SET to false)
                     }
                 }
             }
