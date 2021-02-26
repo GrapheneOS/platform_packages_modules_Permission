@@ -97,9 +97,8 @@ fun shouldShowLocationIndicators(): Boolean {
  * Whether the location accuracy feature is enabled
  */
 fun isLocationAccuracyEnabled(): Boolean {
-    // TODO: guojing Change default value to true after the teamfood.
     return DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
-        PROPERTY_LOCATION_ACCURACY_ENABLED, false)
+        PROPERTY_LOCATION_ACCURACY_ENABLED, true)
 }
 
 /**
