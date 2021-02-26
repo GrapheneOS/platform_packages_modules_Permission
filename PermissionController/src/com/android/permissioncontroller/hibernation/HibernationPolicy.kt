@@ -18,6 +18,8 @@ package com.android.permissioncontroller.hibernation
 
 import android.Manifest
 import android.accessibilityservice.AccessibilityService
+import android.app.ActivityManager
+import android.app.ActivityManager.RunningAppProcessInfo.IMPORTANCE_CANT_SAVE_STATE
 import android.app.AppOpsManager
 import android.app.Notification
 import android.app.NotificationChannel
@@ -264,8 +266,19 @@ private suspend fun getAppsToHibernate(
                 return@forEachInParallel
             }
 
+            val packageName = pkg.packageName
+            val packageImportance = context
+                .getSystemService(ActivityManager::class.java)!!
+                .getPackageImportance(packageName)
+            if (packageImportance <= IMPORTANCE_CANT_SAVE_STATE) {
+                // Process is running in a state where it should not be killed
+                DumpableLog.i(LOG_TAG,
+                    "Skipping hibernation - $packageName running with importance " +
+                        "$packageImportance")
+                return@forEachInParallel
+            }
+
             if (DEBUG_HIBERNATION_POLICY) {
-                var packageName = pkg.packageName
                 DumpableLog.i(LOG_TAG, "unused app $packageName - lastVisible on " +
                     userStats[user]?.lastTimeVisible(packageName)?.let(::Date))
             }
@@ -444,7 +457,11 @@ class HibernationJobService : JobService() {
                 }
 
                 val appsToHibernate = getAppsToHibernate(this@HibernationJobService)
-                // TODO(b/175830282) Call system API to hibernate app here
+                if (HIBERNATION_ENABLED) {
+                    val hibernationController = HibernationController(this@HibernationJobService)
+                    hibernationController.hibernateApps(appsToHibernate)
+                    // TODO(b/175830282): Show hibernation notification
+                }
                 val revokedApps = revokeAppPermissions(
                         appsToHibernate, this@HibernationJobService, sessionId)
                 if (revokedApps.isNotEmpty()) {
