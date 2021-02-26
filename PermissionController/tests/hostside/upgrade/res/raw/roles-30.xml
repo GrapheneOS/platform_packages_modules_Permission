@@ -1,6 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
-<roles version="-1" packagesHash="">
-    <role name="android.app.role.ASSISTANT">
-        <holder name="com.android.permission.test.upgrade.sdk_30.assistant" />
-    </role>
-</roles>
