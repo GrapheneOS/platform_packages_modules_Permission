@@ -527,4 +527,22 @@
             <permission name="android.permission.ACCESS_RCS_USER_CAPABILITY_EXCHANGE" />
         </permissions>
     </role>
+
+    <role
+        name="android.app.role.SYSTEM_SPEECH_RECOGNIZER"
+        defaultHolders="config_systemSpeechRecognizer"
+        exclusive="true"
+        systemOnly="true"
+        visible="false">
+        <permissions>
+            <permission name="android.permission.RECORD_AUDIO" />
+        </permissions>
+        <required-components>
+            <service>
+                <intent-filter>
+                    <action name="android.speech.RecognitionService" />
+                </intent-filter>
+            </service>
+        </required-components>
+    </role>
 </roles>
