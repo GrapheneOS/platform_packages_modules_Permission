@@ -64,7 +64,6 @@ public class RoleParser {
     private static final String TAG_CATEGORY = "category";
     private static final String TAG_DATA = "data";
     private static final String TAG_PERMISSIONS = "permissions";
-    private static final String TAG_EXEMPT_PERMISSIONS = "exempt-permissions";
     private static final String TAG_APP_OP_PERMISSIONS = "app-op-permissions";
     private static final String TAG_APP_OP_PERMISSION = "app-op-permission";
     private static final String TAG_APP_OPS = "app-ops";
@@ -366,7 +365,6 @@ public class RoleParser {
 
         List<RequiredComponent> requiredComponents = null;
         List<String> permissions = null;
-        List<String> exemptedPermissions = null;
         List<String> appOpPermissions = null;
         List<AppOp> appOps = null;
         List<PreferredActivity> preferredActivities = null;
@@ -397,14 +395,6 @@ public class RoleParser {
                         continue;
                     }
                     permissions = parsePermissions(parser, permissionSets);
-                    break;
-                case TAG_EXEMPT_PERMISSIONS:
-                    if (exemptedPermissions != null) {
-                        throwOrLogMessage("Duplicate <exempt-permissions> in role: " + name);
-                        skipCurrentTag(parser);
-                        continue;
-                    }
-                    exemptedPermissions = parsePermissions(parser, permissionSets);
                     break;
                 case TAG_APP_OP_PERMISSIONS:
                     if (appOpPermissions != null) {
@@ -442,9 +432,6 @@ public class RoleParser {
         if (permissions == null) {
             permissions = Collections.emptyList();
         }
-        if (exemptedPermissions == null) {
-            exemptedPermissions = Collections.emptyList();
-        }
         if (appOpPermissions == null) {
             appOpPermissions = Collections.emptyList();
         }
@@ -458,7 +445,7 @@ public class RoleParser {
                 fallBackToDefaultHolder, labelResource, overrideUserWhenGranting,
                 requestDescriptionResource, requestTitleResource, requestable,
                 searchKeywordsResource, shortLabelResource, showNone, systemOnly, visible,
-                requiredComponents, permissions, exemptedPermissions, appOpPermissions, appOps,
+                requiredComponents, permissions, appOpPermissions, appOps,
                 preferredActivities);
     }
 
