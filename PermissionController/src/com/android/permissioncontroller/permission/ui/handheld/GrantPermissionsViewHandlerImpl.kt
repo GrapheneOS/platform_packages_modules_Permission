@@ -266,6 +266,7 @@ class GrantPermissionsViewHandlerImpl(
             } else {
                 View.GONE
             }
+            buttons[pos]?.requestLayout()
         }
     }
 
