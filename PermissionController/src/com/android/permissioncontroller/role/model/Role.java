@@ -35,6 +35,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.preference.Preference;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.Constants;
 import com.android.permissioncontroller.permission.utils.CollectionUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
@@ -704,8 +705,9 @@ public class Role {
      */
     public void grant(@NonNull String packageName, boolean dontKillApp,
             boolean overrideUserSetAndFixedPermissions, @NonNull Context context) {
-        boolean permissionOrAppOpChanged = Permissions.grant(packageName, mPermissions, true,
-                overrideUserSetAndFixedPermissions, true, false, false, context);
+        boolean permissionOrAppOpChanged = Permissions.grant(packageName, mPermissions,
+                SdkLevel.isAtLeastS() ? !mSystemOnly : true, overrideUserSetAndFixedPermissions,
+                true, false, false, context);
 
         int appOpPermissionsSize = mAppOpPermissions.size();
         for (int i = 0; i < appOpPermissionsSize; i++) {
