@@ -536,65 +536,6 @@ public class Permissions {
         return permissionOrAppOpChanged;
     }
 
-    /**
-     * Exempts the restricted permissions
-     *
-     * @param packageName the package name of the application to exempt permissions to
-     * @param permissions the list of permissions to be exempted
-     * @param context the {@code Context} to retrieve system services
-     *
-     * @return whether any permission changed
-     */
-    public static boolean exempt(@NonNull String packageName, @NonNull List<String> permissions,
-            @NonNull Context context) {
-        PackageManager packageManager = context.getPackageManager();
-        Set<String> exemptedPermissions = new ArraySet<>(packageManager
-                .getWhitelistedRestrictedPermissions(packageName,
-                        PackageManager.FLAG_PERMISSION_ALLOWLIST_ROLE));
-        int permissionsSize = permissions.size();
-        boolean permissionChanged = false;
-        for (int i = 0; i < permissionsSize; i++) {
-            String permissionName = permissions.get(i);
-            if (!exemptedPermissions.contains(permissionName)) {
-                permissionChanged |= packageManager.addWhitelistedRestrictedPermission(
-                        packageName, permissionName,
-                        PackageManager.FLAG_PERMISSION_ALLOWLIST_ROLE);
-            }
-        }
-
-        return permissionChanged;
-    }
-
-
-    /**
-     * Restricts the restricted permissions
-     *
-     * @param packageName the package name of the application to restrict permissions to
-     * @param permissions the list of permissions to be restricted
-     * @param context the {@code Context} to retrieve system services
-     *
-     * @return whether any permission changed
-     */
-    public static boolean restrict(@NonNull String packageName, @NonNull List<String> permissions,
-            @NonNull Context context) {
-        PackageManager packageManager = context.getPackageManager();
-        Set<String> exemptedPermissions = new ArraySet<>(packageManager
-                .getWhitelistedRestrictedPermissions(packageName,
-                        PackageManager.FLAG_PERMISSION_ALLOWLIST_ROLE));
-        int permissionsSize = permissions.size();
-        boolean permissionChanged = false;
-        for (int i = 0; i < permissionsSize; i++) {
-            String permissionName = permissions.get(i);
-            if (exemptedPermissions.contains(permissionName)) {
-                permissionChanged |= packageManager.removeWhitelistedRestrictedPermission(
-                        packageName, permissionName,
-                        PackageManager.FLAG_PERMISSION_ALLOWLIST_ROLE);
-            }
-        }
-
-        return permissionChanged;
-    }
-
     @Nullable
     private static PackageInfo getPackageInfo(@NonNull String packageName,
             @NonNull Context context) {
