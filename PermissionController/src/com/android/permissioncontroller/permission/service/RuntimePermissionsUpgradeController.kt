@@ -18,10 +18,8 @@ package com.android.permissioncontroller.permission.service
 
 import android.Manifest.permission
 import android.Manifest.permission_group
-import android.app.role.RoleManager
 import android.content.Context
 import android.content.pm.PackageInfo
-import android.content.pm.PackageManager.FLAG_PERMISSION_ALLOWLIST_ROLE
 import android.content.pm.PackageManager.FLAG_PERMISSION_RESTRICTION_UPGRADE_EXEMPT
 import android.content.pm.PackageManager.FLAG_PERMISSION_WHITELIST_UPGRADE
 import android.content.pm.PermissionInfo
@@ -33,13 +31,11 @@ import com.android.permissioncontroller.PermissionControllerStatsLog.RUNTIME_PER
 import com.android.permissioncontroller.permission.data.LightAppPermGroupLiveData
 import com.android.permissioncontroller.permission.data.LightPermInfoLiveData
 import com.android.permissioncontroller.permission.data.PreinstalledUserPackageInfosLiveData
-import com.android.permissioncontroller.permission.data.RoleHoldersLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.data.UserPackageInfosLiveData
 import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
-import com.android.permissioncontroller.permission.model.livedatatypes.LightPermInfo
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPermission
 import com.android.permissioncontroller.permission.utils.IPC
 import com.android.permissioncontroller.permission.utils.KotlinUtils.grantBackgroundRuntimePermissions
@@ -131,7 +127,6 @@ internal object RuntimePermissionsUpgradeController {
 
         val needBackgroundAppPermGroups = sdkUpgradedFromP && currentVersion <= 6
         val needAccessMediaAppPermGroups = !isNewUser && currentVersion <= 7
-        val needBackgroundMicAppPermGroupsForAssistant = !isNewUser && currentVersion <= 8
 
         // All data needed by this method.
         //
@@ -157,9 +152,6 @@ internal object RuntimePermissionsUpgradeController {
 
             /** {@link #permGroupProviders} that already provided a result */
             private val permGroupProvidersDone = mutableSetOf<LightAppPermGroupLiveData>()
-
-            /** Provides the currently set assistant  */
-            private val assistants = RoleHoldersLiveData[RoleManager.ROLE_ASSISTANT, myUserHandle()]
 
             init {
                 // First step: Load packages + perm infos
@@ -197,28 +189,16 @@ internal object RuntimePermissionsUpgradeController {
                         }
                     }
                 }
-
-                if (needBackgroundMicAppPermGroupsForAssistant) {
-                    addSource(assistants) { assists ->
-                        if (assists != null) {
-                            removeSource(assistants)
-
-                            update()
-                        }
-                    }
-                }
             }
 
             override fun onUpdate() {
-                if (permGroupProviders == null && pkgInfoProvider.value != null &&
-                        (!needBackgroundMicAppPermGroupsForAssistant || assistants.value != null)) {
+                if (permGroupProviders == null && pkgInfoProvider.value != null) {
                     // Second step: Trigger load of app-perm-groups
 
                     permGroupProviders = mutableListOf()
 
                     // Only load app-perm-groups needed for this upgrade
-                    if (needBackgroundAppPermGroups || needAccessMediaAppPermGroups ||
-                            needBackgroundMicAppPermGroupsForAssistant) {
+                    if (needBackgroundAppPermGroups || needAccessMediaAppPermGroups) {
                         for ((pkgName, _, requestedPerms, requestedPermFlags) in
                                 pkgInfoProvider.value!!) {
                             var hasAccessMedia = false
@@ -241,13 +221,6 @@ internal object RuntimePermissionsUpgradeController {
                                             != 0) {
                                         hasGrantedExternalStorage = true
                                     }
-                                }
-
-                                if (needBackgroundMicAppPermGroupsForAssistant &&
-                                        perm == permission.RECORD_BACKGROUND_AUDIO &&
-                                        assistants.value!!.contains(pkgName)) {
-                                    permGroupProviders!!.add(LightAppPermGroupLiveData[pkgName,
-                                            permission_group.MICROPHONE, myUserHandle()])
                                 }
                             }
 
@@ -299,8 +272,7 @@ internal object RuntimePermissionsUpgradeController {
                         }
                     }
 
-                    val restrictedPermissions = mutableSetOf<LightPermInfo>()
-                    val restrictedPermissionsInstallerExemptIgnored = mutableSetOf<String>()
+                    val restrictedPermissions = mutableSetOf<String>()
                     for (permInfoLiveDt in platformRuntimePermissionInfoProviders) {
                         val permInfo = permInfoLiveDt.value!!
 
@@ -309,11 +281,7 @@ internal object RuntimePermissionsUpgradeController {
                             continue
                         }
 
-                        if (permInfo.flags and PermissionInfo.FLAG_INSTALLER_EXEMPT_IGNORED != 0) {
-                            restrictedPermissionsInstallerExemptIgnored.add(permInfo.name)
-                        }
-
-                        restrictedPermissions.add(permInfo)
+                        restrictedPermissions.add(permInfo.name)
                     }
 
                     value = UpgradeData(preinstalledPkgInfoProvider.value!!, restrictedPermissions,
@@ -331,15 +299,11 @@ internal object RuntimePermissionsUpgradeController {
         // If a restricted permission can't be exempted by the installer then it should be filtered
         // out here.
         val preinstalledAppExemptions = getExemptions(
-                upgradeData.restrictedPermissions.filter {
-                    it.flags and PermissionInfo.FLAG_INSTALLER_EXEMPT_IGNORED == 0
-                }.map {
-                    it.name
-                }.toSet(),
+                upgradeData.restrictedPermissions,
                 upgradeData.preinstalledPkgs)
 
         val (newVersion, upgradeExemptions, grants) = onUpgradeLockedDataLoaded(currentVersion,
-                upgradeData.pkgs, upgradeData.restrictedPermissions.map { it.name }.toSet(),
+                upgradeData.pkgs, upgradeData.restrictedPermissions,
                 upgradeData.bgGroups, upgradeData.storageGroups, upgradeData.bgMicGroups)
 
         // Do not run in parallel. Measurements have shown that this is slower than sequential
@@ -494,16 +458,7 @@ internal object RuntimePermissionsUpgradeController {
         }
 
         if (currentVersion == 8) {
-            val packagesToExempt = mutableListOf<LightPackageInfo>()
-            for (permGroup in bgMicApps) {
-                packagesToExempt.add(permGroup.packageInfo)
-                if (permGroup.foreground.isGranted) {
-                    grants.add(Grant(true, permGroup, listOf(permission.RECORD_BACKGROUND_AUDIO)))
-                }
-            }
-
-            exemptions.addAll(getExemptions(setOf(permission.RECORD_BACKGROUND_AUDIO),
-                    packagesToExempt, FLAG_PERMISSION_ALLOWLIST_ROLE))
+            // Removed
 
             currentVersion = 9
         }
@@ -520,7 +475,7 @@ internal object RuntimePermissionsUpgradeController {
         /** Preinstalled packages */
         val preinstalledPkgs: List<LightPackageInfo>,
         /** Restricted permissions */
-        val restrictedPermissions: Set<LightPermInfo>,
+        val restrictedPermissions: Set<String>,
         /** Currently installed packages */
         val pkgs: List<LightPackageInfo>,
         /**
