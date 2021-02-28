@@ -21,19 +21,15 @@ import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.Manifest.permission.ACCESS_MEDIA_LOCATION
 import android.Manifest.permission.READ_CALL_LOG
 import android.Manifest.permission.READ_EXTERNAL_STORAGE
-import android.Manifest.permission.RECORD_AUDIO
-import android.Manifest.permission.RECORD_BACKGROUND_AUDIO
 import android.Manifest.permission.SEND_SMS
 import android.app.ActivityManager
 import android.app.AppOpsManager
 import android.app.job.JobScheduler
-import android.app.role.RoleManager
 import android.content.ComponentCallbacks2
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageInfo
 import android.content.pm.PackageInfo.REQUESTED_PERMISSION_GRANTED
 import android.content.pm.PackageManager
-import android.content.pm.PackageManager.FLAG_PERMISSION_ALLOWLIST_ROLE
 import android.content.pm.PackageManager.FLAG_PERMISSION_RESTRICTION_INSTALLER_EXEMPT
 import android.content.pm.PackageManager.FLAG_PERMISSION_RESTRICTION_SYSTEM_EXEMPT
 import android.content.pm.PackageManager.FLAG_PERMISSION_WHITELIST_UPGRADE
@@ -111,8 +107,6 @@ class RuntimePermissionsUpgradeControllerTest {
     lateinit var userManager: UserManager
     @Mock
     lateinit var jobScheduler: JobScheduler
-    @Mock
-    lateinit var roleManager: RoleManager
 
     /**
      * Set up {@link #packageManager} as if the passed packages are installed.
@@ -160,15 +154,6 @@ class RuntimePermissionsUpgradeControllerTest {
         }
     }
 
-    private fun setRoleHolders(roleName: String, pkgs: List<Package>) {
-        whenever(roleManager.getRoleHolders(eq(roleName))).thenAnswer {
-            pkgs.map { it.name }
-        }
-        whenever(roleManager.getRoleHoldersAsUser(eq(roleName), any())).thenAnswer {
-            pkgs.map { it.name }
-        }
-    }
-
     /**
      * Set up system, i.e. point all the services to the mocks and forward some boring methods to
      * the system.
@@ -193,7 +178,6 @@ class RuntimePermissionsUpgradeControllerTest {
                 userManager)
         whenever(application.getSystemService(JobScheduler::class.java)).thenReturn(
                 jobScheduler)
-        whenever(application.getSystemService(RoleManager::class.java)).thenReturn(roleManager)
 
         whenever(application.packageManager).thenReturn(packageManager)
 
@@ -230,14 +214,10 @@ class RuntimePermissionsUpgradeControllerTest {
         whenever(permissionManager.runtimePermissionsVersion).thenReturn(initialVersion)
     }
 
-    private fun verifyWhitelisted(
-        packageName: String,
-        vararg permissionNames: String,
-        flag: Int = FLAG_PERMISSION_WHITELIST_UPGRADE
-    ) {
+    private fun verifyWhitelisted(packageName: String, vararg permissionNames: String) {
         for (permissionName in permissionNames) {
             verify(packageManager, timeout(100)).addWhitelistedRestrictedPermission(
-                    packageName, permissionName, flag)
+                    packageName, permissionName, FLAG_PERMISSION_WHITELIST_UPGRADE)
         }
     }
 
@@ -497,35 +477,6 @@ class RuntimePermissionsUpgradeControllerTest {
         upgradeIfNeeded()
 
         verifyNotGranted(TEST_PKG_NAME, ACCESS_MEDIA_LOCATION)
-    }
-
-    @Test
-    fun microphoneDoesNotGetExpandedWhenVersionIs8() {
-        setInitialDatabaseVersion(8)
-        val pkg = Package(TEST_PKG_NAME,
-                Permission(RECORD_AUDIO, isGranted = true),
-                Permission(RECORD_BACKGROUND_AUDIO))
-        setPackages(pkg)
-
-        upgradeIfNeeded()
-
-        verifyNotWhitelisted(TEST_PKG_NAME, RECORD_BACKGROUND_AUDIO)
-        verifyNotGranted(TEST_PKG_NAME, RECORD_BACKGROUND_AUDIO)
-    }
-
-    @Test
-    fun microphoneGetsExemptedForAssistantWhenVersionIs8() {
-        setInitialDatabaseVersion(8)
-        val pkg = Package(TEST_PKG_NAME,
-                Permission(RECORD_AUDIO, isGranted = true),
-                Permission(RECORD_BACKGROUND_AUDIO))
-        setPackages(pkg)
-        setRoleHolders(RoleManager.ROLE_ASSISTANT, listOf(pkg))
-
-        upgradeIfNeeded()
-
-        verifyWhitelisted(TEST_PKG_NAME, RECORD_BACKGROUND_AUDIO,
-                flag = FLAG_PERMISSION_ALLOWLIST_ROLE)
     }
 
     @After
