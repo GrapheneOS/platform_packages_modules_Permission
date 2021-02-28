@@ -35,6 +35,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.preference.Preference;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.Constants;
 import com.android.permissioncontroller.permission.utils.CollectionUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
@@ -178,12 +179,6 @@ public class Role {
     private final List<String> mPermissions;
 
     /**
-     * Restricted permissions to be exempted by this role
-     */
-    @NonNull
-    private final List<String> mExemptedPermissions;
-
-    /**
      * The app op permissions to be granted by this role.
      */
     @NonNull
@@ -209,8 +204,8 @@ public class Role {
             @StringRes int searchKeywordsResource, @StringRes int shortLabelResource,
             boolean showNone, boolean systemOnly, boolean visible,
             @NonNull List<RequiredComponent> requiredComponents, @NonNull List<String> permissions,
-            @NonNull List<String> exemptedPermissions, @NonNull List<String> appOpPermissions,
-            @NonNull List<AppOp> appOps, @NonNull List<PreferredActivity> preferredActivities) {
+            @NonNull List<String> appOpPermissions, @NonNull List<AppOp> appOps,
+            @NonNull List<PreferredActivity> preferredActivities) {
         mName = name;
         mBehavior = behavior;
         mDefaultHoldersResourceName = defaultHoldersResourceName;
@@ -229,7 +224,6 @@ public class Role {
         mVisible = visible;
         mRequiredComponents = requiredComponents;
         mPermissions = permissions;
-        mExemptedPermissions = exemptedPermissions;
         mAppOpPermissions = appOpPermissions;
         mAppOps = appOps;
         mPreferredActivities = preferredActivities;
@@ -711,9 +705,9 @@ public class Role {
      */
     public void grant(@NonNull String packageName, boolean dontKillApp,
             boolean overrideUserSetAndFixedPermissions, @NonNull Context context) {
-        boolean permissionOrAppOpChanged = Permissions.grant(packageName, mPermissions, true,
-                overrideUserSetAndFixedPermissions, true, false, false, context);
-        permissionOrAppOpChanged |= Permissions.exempt(packageName, mExemptedPermissions, context);
+        boolean permissionOrAppOpChanged = Permissions.grant(packageName, mPermissions,
+                SdkLevel.isAtLeastS() ? !mSystemOnly : true, overrideUserSetAndFixedPermissions,
+                true, false, false, context);
 
         int appOpPermissionsSize = mAppOpPermissions.size();
         for (int i = 0; i < appOpPermissionsSize; i++) {
@@ -758,20 +752,16 @@ public class Role {
         otherRoleNames.remove(mName);
 
         List<String> permissionsToRevoke = new ArrayList<>(mPermissions);
-        List<String> permissionsToRestrict = new ArrayList<>(mExemptedPermissions);
         ArrayMap<String, Role> roles = Roles.get(context);
         int otherRoleNamesSize = otherRoleNames.size();
         for (int i = 0; i < otherRoleNamesSize; i++) {
             String roleName = otherRoleNames.get(i);
             Role role = roles.get(roleName);
             permissionsToRevoke.removeAll(role.mPermissions);
-            permissionsToRestrict.removeAll(role.mExemptedPermissions);
         }
 
         boolean permissionOrAppOpChanged = Permissions.revoke(packageName, permissionsToRevoke,
                 true, false, overrideSystemFixedPermissions, context);
-        permissionOrAppOpChanged |=
-                Permissions.restrict(packageName, permissionsToRestrict, context);
 
         List<String> appOpPermissionsToRevoke = new ArrayList<>(mAppOpPermissions);
         for (int i = 0; i < otherRoleNamesSize; i++) {
@@ -913,7 +903,6 @@ public class Role {
                 + ", mVisible=" + mVisible
                 + ", mRequiredComponents=" + mRequiredComponents
                 + ", mPermissions=" + mPermissions
-                + ", mExemptedPermissions=" + mExemptedPermissions
                 + ", mAppOpPermissions=" + mAppOpPermissions
                 + ", mAppOps=" + mAppOps
                 + ", mPreferredActivities=" + mPreferredActivities
