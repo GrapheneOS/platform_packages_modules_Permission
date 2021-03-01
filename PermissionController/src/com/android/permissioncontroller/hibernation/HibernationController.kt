@@ -30,6 +30,7 @@ class HibernationController(val context: Context) {
 
     companion object {
         private const val LOG_TAG = "HibernationController"
+        private const val DEBUG_HIBERNATION = true
     }
 
     /**
@@ -53,6 +54,11 @@ class HibernationController(val context: Context) {
                 } catch (e: Exception) {
                     DumpableLog.e(LOG_TAG, "Failed to hibernate package: ${pkg.packageName}", e)
                 }
+            }
+            if (DEBUG_HIBERNATION) {
+                DumpableLog.i(LOG_TAG,
+                    "Hibernated apps for user ${user.identifier}. " +
+                        "Hibernated ${hibernatedApps[user.identifier]}")
             }
         }
         return hibernatedApps
