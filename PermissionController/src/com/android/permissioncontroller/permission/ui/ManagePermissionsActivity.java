@@ -159,7 +159,8 @@ public final class ManagePermissionsActivity extends FragmentActivity {
                     // TODO: theianchen
                     // Here's a blank permission usage V2 top level page.
                     // Setting the condition to false since it's still WIP.
-                    androidXFragment = PermissionUsageV2Fragment.newInstance();
+                    androidXFragment = PermissionUsageV2Fragment
+                            .newInstance(groupName, Long.MAX_VALUE);
                 }
             } break;
 
