@@ -26,6 +26,8 @@ import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData.Companion.NON_RUNTIME_NORMAL_PERMS
 import com.android.permissioncontroller.permission.model.livedatatypes.HibernationSettingState
 import com.android.permissioncontroller.hibernation.ExemptServicesLiveData
+import com.android.permissioncontroller.hibernation.HibernationEnabledLiveData
+import com.android.permissioncontroller.hibernation.isHibernationEnabled
 import com.android.permissioncontroller.hibernation.isHibernationJobEnabled
 import com.android.permissioncontroller.hibernation.isPackageHibernationExemptByUser
 import com.android.permissioncontroller.hibernation.isPackageHibernationExemptBySystem
@@ -59,6 +61,9 @@ class HibernationSettingStateLiveData private constructor(
             update()
         }
         addSource(exemptServicesLiveData) {
+            update()
+        }
+        addSource(HibernationEnabledLiveData) {
             update()
         }
     }
@@ -97,7 +102,8 @@ class HibernationSettingStateLiveData private constructor(
             }
         }
 
-        postValue(HibernationSettingState(isHibernationJobEnabled(), canHibernate, revocableGroups))
+        postValue(HibernationSettingState(isHibernationJobEnabled(), canHibernate, revocableGroups,
+            isHibernationEnabled() || revocableGroups.isNotEmpty()))
     }
 
     override fun onOpChanged(op: String?, packageName: String?) {
