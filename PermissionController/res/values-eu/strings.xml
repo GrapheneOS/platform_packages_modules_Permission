@@ -99,7 +99,7 @@
     <string name="review_button_cancel" msgid="2191147944056548886">"Utzi"</string>
     <string name="review_button_continue" msgid="2527918375047602199">"Egin aurrera"</string>
     <string name="new_permissions_category" msgid="552995090178417611">"Baimen berriak"</string>
-    <string name="current_permissions_category" msgid="4292990083585728880">"Uneko baimenak"</string>
+    <string name="current_permissions_category" msgid="4292990083585728880">"Baimenak"</string>
     <string name="message_staging" msgid="9110563899955511866">"Aplikazioa prestatzen…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Ezezaguna"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Panela"</string>
@@ -335,7 +335,7 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> ezarri nahi duzu deitzailearen IDrako eta spamerako aplikazio lehenetsi gisa?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Ez du behar baimenik"</string>
     <string name="role_watch_description" msgid="472019219209648726">"<xliff:g id="APP_NAME">%1$s</xliff:g> aplikazioak jakinarazpenak, Telefonoa aplikazioa, kontaktuak eta egutegia atzitu ahalko ditu."</string>
-    <string name="request_role_current_default" msgid="738722892438247184">"Uneko aplikazio lehenetsia"</string>
+    <string name="request_role_current_default" msgid="738722892438247184">"Aplikazio lehenetsia"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Ez galdetu berriro"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Ezarri lehenetsi gisa"</string>
     <string name="phone_call_uses_microphone" msgid="233569591461187177">"&lt;b&gt;Dei&lt;/b&gt; batean erabiltzen ari zara mikrofonoa"</string>
