@@ -101,6 +101,7 @@ class AutoRevokeViewModel(private val app: Application, private val sessionId: L
             }
 
             val unusedApps = UnusedAutoRevokedPackagesLiveData.value!!
+            Log.i(LOG_TAG, "Unused apps: $unusedApps")
             val overSixMonthApps = unusedApps.keys.toMutableSet()
             val categorizedApps = mutableMapOf<Months, MutableList<RevokedPackageInfo>>()
             categorizedApps[Months.THREE] = mutableListOf()
@@ -151,8 +152,6 @@ class AutoRevokeViewModel(private val app: Application, private val sessionId: L
                 } else {
                     Months.SIX
                 }
-                val canOpen = Utils.getUserContext(app, user).packageManager
-                    .getLaunchIntentForPackage(packageName) != null
                 val userPackage = packageName to user
                 categorizedApps[months]!!.add(
                     RevokedPackageInfo(packageName, user, disableActionApps.contains(userPackage),
