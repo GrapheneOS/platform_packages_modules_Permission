@@ -91,20 +91,15 @@ const val DEBUG_OVERRIDE_THRESHOLDS = false
 // TODO eugenesusla: temporarily enabled for extra logs during dogfooding
 const val DEBUG_HIBERNATION_POLICY = true || DEBUG_OVERRIDE_THRESHOLDS
 
-// TODO(b/175830282): Add SDK check when platform SDK moves up
-private val HIBERNATION_ENABLED =
-        DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_APP_HIBERNATION,
-        Utils.PROPERTY_APP_HIBERNATION_ENABLED, false)
 private const val AUTO_REVOKE_ENABLED = true
 
 private var SKIP_NEXT_RUN = false
 
-private val DEFAULT_UNUSED_THRESHOLD_MS =
-        if (HIBERNATION_ENABLED || AUTO_REVOKE_ENABLED)
-            TimeUnit.DAYS.toMillis(90) else Long.MAX_VALUE
+private val DEFAULT_UNUSED_THRESHOLD_MS = TimeUnit.DAYS.toMillis(90)
 
 fun getUnusedThresholdMs() = when {
     DEBUG_OVERRIDE_THRESHOLDS -> TimeUnit.SECONDS.toMillis(1)
+    !isHibernationEnabled() && !AUTO_REVOKE_ENABLED -> Long.MAX_VALUE
     else -> DeviceConfig.getLong(DeviceConfig.NAMESPACE_PERMISSIONS,
             Utils.PROPERTY_HIBERNATION_UNUSED_THRESHOLD_MILLIS,
             DEFAULT_UNUSED_THRESHOLD_MS)
@@ -118,6 +113,12 @@ private fun getCheckFrequencyMs() = DeviceConfig.getLong(
         DEFAULT_CHECK_FREQUENCY_MS)
 
 private val PREF_KEY_FIRST_BOOT_TIME = "first_boot_time"
+
+// TODO(b/175830282): Add SDK check when platform SDK moves up
+private fun isHibernationEnabled(): Boolean {
+    return DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_APP_HIBERNATION,
+        Utils.PROPERTY_APP_HIBERNATION_ENABLED, false)
+}
 
 fun isHibernationJobEnabled(): Boolean {
     return getCheckFrequencyMs() > 0 &&
@@ -361,7 +362,7 @@ suspend fun isPackageHibernationExemptByUser(
     context: Context,
     pkg: LightPackageInfo
 ): Boolean {
-    if (HIBERNATION_ENABLED) {
+    if (isHibernationEnabled()) {
         // TODO(b/175830282): Hook into hibernation exemption list
         return false
     } else {
@@ -457,7 +458,7 @@ class HibernationJobService : JobService() {
                 }
 
                 val appsToHibernate = getAppsToHibernate(this@HibernationJobService)
-                if (HIBERNATION_ENABLED) {
+                if (isHibernationEnabled()) {
                     val hibernationController = HibernationController(this@HibernationJobService)
                     hibernationController.hibernateApps(appsToHibernate)
                     // TODO(b/175830282): Show hibernation notification
