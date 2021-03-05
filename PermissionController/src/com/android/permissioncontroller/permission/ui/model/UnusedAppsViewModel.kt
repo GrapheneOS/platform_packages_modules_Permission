@@ -45,10 +45,10 @@ import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit.DAYS
 
 /**
- * ViewModel for the AutoRevokeFragment. Has a livedata which provides all auto revoked apps,
+ * UnusedAppsViewModel for the AutoRevokeFragment. Has a livedata which provides all unused apps,
  * organized by how long they have been unused.
  */
-class AutoRevokeViewModel(private val app: Application, private val sessionId: Long) : ViewModel() {
+class UnusedAppsViewModel(private val app: Application, private val sessionId: Long) : ViewModel() {
 
     companion object {
         private val SIX_MONTHS_MILLIS = DAYS.toMillis(180)
@@ -223,13 +223,13 @@ class AutoRevokeViewModel(private val app: Application, private val sessionId: L
     }
 }
 
-class AutoRevokeViewModelFactory(
+class UnusedAppsViewModelFactory(
     private val app: Application,
     private val sessionId: Long
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         @Suppress("UNCHECKED_CAST")
-        return AutoRevokeViewModel(app, sessionId) as T
+        return UnusedAppsViewModel(app, sessionId) as T
     }
 }
