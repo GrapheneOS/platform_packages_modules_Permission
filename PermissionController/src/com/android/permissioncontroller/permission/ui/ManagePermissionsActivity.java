@@ -155,10 +155,9 @@ public final class ManagePermissionsActivity extends FragmentActivity {
                 String groupName = getIntent().getStringExtra(Intent.EXTRA_PERMISSION_GROUP_NAME);
                 androidXFragment = PermissionUsageFragment.newInstance(groupName, Long.MAX_VALUE);
 
-                if (false) {
-                    // TODO: theianchen
-                    // Here's a blank permission usage V2 top level page.
-                    // Setting the condition to false since it's still WIP.
+                // TODO: theianchen Once Permission Usage link is added to Permission Manager,
+                //                  this check needs to be moved to wrap around the new link.
+                if (UtilsKt.isPrivacyHubEnabled()) {
                     androidXFragment = PermissionUsageV2Fragment
                             .newInstance(groupName, Long.MAX_VALUE);
                 }
