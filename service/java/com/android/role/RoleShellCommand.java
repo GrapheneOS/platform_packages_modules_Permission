@@ -19,8 +19,11 @@ package com.android.role;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.app.role.IRoleManager;
+import android.os.Build;
 import android.os.RemoteCallback;
 import android.os.RemoteException;
+
+import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.BasicShellCommandHandler;
 import com.android.permission.compat.UserHandleCompat;
@@ -29,6 +32,7 @@ import java.io.PrintWriter;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
+@RequiresApi(Build.VERSION_CODES.S)
 class RoleShellCommand extends BasicShellCommandHandler {
     @NonNull
     private final IRoleManager mRoleManager;
