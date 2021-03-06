@@ -37,6 +37,9 @@ const val PROPERTY_LOCATION_INDICATORS_ENABLED = "location_indicators_enabled"
 /* Whether location accuracy feature is enabled */
 const val PROPERTY_LOCATION_ACCURACY_ENABLED = "location_accuracy_enabled"
 
+/* Whether privacy hub feature is enabled */
+const val PROPERTY_PRIVACY_HUB_ENABLED = "privacy_hub_enabled"
+
 /**
  * Whether the Permissions Hub 2 flag is enabled
  *
@@ -99,6 +102,14 @@ fun shouldShowLocationIndicators(): Boolean {
 fun isLocationAccuracyEnabled(): Boolean {
     return DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
         PROPERTY_LOCATION_ACCURACY_ENABLED, true)
+}
+
+/**
+ * Whether the privacy hub feature is enabled
+ */
+fun isPrivacyHubEnabled(): Boolean {
+    return DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
+            PROPERTY_PRIVACY_HUB_ENABLED, false)
 }
 
 /**
