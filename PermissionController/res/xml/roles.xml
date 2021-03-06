@@ -542,4 +542,16 @@
             </service>
         </required-components>
     </role>
+
+    <role
+        name="android.app.role.SYSTEM_WIFI_COEX_MANAGER"
+        defaultHolders="config_systemWifiCoexManager"
+        exclusive="true"
+        systemOnly="true"
+        visible="false">
+        <permissions>
+            <permission name="android.permission.WIFI_ACCESS_COEX_UNSAFE_CHANNELS" />
+            <permission name="android.permission.WIFI_UPDATE_COEX_UNSAFE_CHANNELS" />
+        </permissions>
+    </role>
 </roles>
