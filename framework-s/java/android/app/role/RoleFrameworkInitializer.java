@@ -19,12 +19,16 @@ package android.app.role;
 import android.annotation.SystemApi;
 import android.app.SystemServiceRegistry;
 import android.content.Context;
+import android.os.Build;
+
+import com.android.modules.annotation.MinSdk;
 
 /**
  * Class holding initialization code for role in the permission module.
  *
  * @hide
  */
+@MinSdk(Build.VERSION_CODES.S)
 @SystemApi
 public class RoleFrameworkInitializer {
     private RoleFrameworkInitializer() {}

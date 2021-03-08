@@ -34,6 +34,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Binder;
+import android.os.Build;
 import android.os.Handler;
 import android.os.ParcelFileDescriptor;
 import android.os.Process;
@@ -48,6 +49,8 @@ import android.util.IndentingPrintWriter;
 import android.util.Log;
 import android.util.SparseArray;
 import android.util.proto.ProtoOutputStream;
+
+import androidx.annotation.RequiresApi;
 
 import com.android.internal.annotations.GuardedBy;
 import com.android.internal.infra.AndroidFuture;
@@ -80,6 +83,7 @@ import java.util.concurrent.TimeoutException;
  *
  * @see RoleManager
  */
+@RequiresApi(Build.VERSION_CODES.S)
 public class RoleService extends SystemService implements RoleUserState.Callback {
     private static final String LOG_TAG = RoleService.class.getSimpleName();
 
