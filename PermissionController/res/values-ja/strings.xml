@@ -139,10 +139,15 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"権限の使用状況（過去 24 時間）"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"権限の使用状況（過去 1 時間）"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"権限の使用状況（過去 15 分間）"</string>
+    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"使用状況"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"権限の使用状況（過去 1 分間）"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> 個のアプリ</item>
       <item quantity="one">1 個のアプリ</item>
+    </plurals>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
+      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> 個で使用</item>
+      <item quantity="one">1 個で使用</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"ダッシュボードにすべて表示"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"フィルタ: <xliff:g id="PERM">%1$s</xliff:g>"</string>

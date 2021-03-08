@@ -139,10 +139,15 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Azken 24 orduetan baimenei eman zaien erabilera"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Azken ordubetean baimenei eman zaien erabilera"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Azken 15 minutuetan baimenei eman zaien erabilera"</string>
+    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"erabilera"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Azken minutuan baimenei eman zaien erabilera"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> aplikazio</item>
       <item quantity="one">1 aplikazio</item>
+    </plurals>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
+      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> aplikaziok erabilia</item>
+      <item quantity="one">Aplikazio batek erabilia</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Ikusi guztiak panelean"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Iragazteko irizpidea: <xliff:g id="PERM">%1$s</xliff:g>"</string>
