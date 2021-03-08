@@ -93,7 +93,9 @@ java_sdk_library {
         //  APIs in framework-permission, as we don't actually have any dependency in it.
         //"framework-permission",
         "framework-permission-s.impl",
+        "androidx.annotation_annotation",
         "framework-permission-s-shared",
+        "modules-annotation-minsdk",
     ],
     static_libs: [
         "modules-utils-os",
