@@ -139,10 +139,15 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"കഴിഞ്ഞ 24 മണിക്കൂറിലെ അനുമതിയുടെ ഉപയോഗം"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"കഴിഞ്ഞ 1 മണിക്കൂറിലെ അനുമതിയുടെ ഉപയോഗം"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"കഴിഞ്ഞ 15 മിനിറ്റിലെ അനുമതിയുടെ ഉപയോഗം"</string>
+    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"ഉപയോഗം"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"കഴിഞ്ഞ 1 മിനിറ്റിലെ അനുമതിയുടെ ഉപയോഗം"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ആപ്പുകൾ</item>
       <item quantity="one">ഒരു ആപ്പ്</item>
+    </plurals>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
+      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> ആപ്പുകൾ ഉപയോഗിച്ചു</item>
+      <item quantity="one">ഒരു ആപ്പ് ഉപയോഗിച്ചു</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"എല്ലാം ഡാഷ്ബോർഡിൽ കാണുക"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"ഇതുപ്രകാരം ഫിൽട്ടർ ചെയ്‌‌തു: <xliff:g id="PERM">%1$s</xliff:g>"</string>

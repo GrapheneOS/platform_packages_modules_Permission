@@ -149,12 +149,19 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Uporaba dovoljenj v zadnjih 24 urah"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Uporaba dovoljenj v zadnji uri"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Uporaba dovoljenj v zadnjih 15 minutah"</string>
+    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"uporaba"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Uporaba dovoljenj v zadnji minuti"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> aplikacija</item>
       <item quantity="two"><xliff:g id="NUMBER">%s</xliff:g> aplikaciji</item>
       <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> aplikacije</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> aplikacij</item>
+    </plurals>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
+      <item quantity="one">Uporabljena je <xliff:g id="NUMBER">%d</xliff:g> aplikacija.</item>
+      <item quantity="two">Uporabljeni sta <xliff:g id="NUMBER">%d</xliff:g> aplikaciji.</item>
+      <item quantity="few">Uporabljene so <xliff:g id="NUMBER">%d</xliff:g> aplikacije.</item>
+      <item quantity="other">Uporabljenih je <xliff:g id="NUMBER">%d</xliff:g> aplikacij.</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Prikaži vse na nadzorni plošči"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrirano po: <xliff:g id="PERM">%1$s</xliff:g>"</string>
