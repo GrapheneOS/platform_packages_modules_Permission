@@ -23,6 +23,7 @@ import android.os.UserHandle
 import android.view.MenuItem
 import androidx.preference.Preference
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.hibernation.isHibernationEnabled
 import com.android.permissioncontroller.permission.ui.UnusedAppsFragment
 
 /**
@@ -68,9 +69,16 @@ class HandheldUnusedAppsFragment : PermissionsFrameFragment(),
     }
 
     override fun createFooterPreference(context: Context): Preference {
-        val preference = FooterPreference(context)
-        preference.summary = getString(R.string.auto_revoked_apps_page_summary)
-        preference.secondSummary = getString(R.string.auto_revoke_open_app_message)
+        var preference: Preference
+        if (isHibernationEnabled()) {
+            preference = Preference(context)
+            preference.summary = getString(R.string.unused_apps_page_summary)
+        } else {
+            preference = FooterPreference(context)
+
+            preference.summary = getString(R.string.auto_revoked_apps_page_summary)
+            preference.secondSummary = getString(R.string.auto_revoke_open_app_message)
+        }
         preference.setIcon(R.drawable.ic_info_outline)
         preference.isSelectable = false
         return preference

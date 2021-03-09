@@ -35,6 +35,7 @@ import androidx.preference.PreferenceScreen
 import com.android.permissioncontroller.Constants.EXTRA_SESSION_ID
 import com.android.permissioncontroller.Constants.INVALID_SESSION_ID
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.hibernation.isHibernationEnabled
 import com.android.permissioncontroller.permission.ui.model.UnusedAppsViewModel
 import com.android.permissioncontroller.permission.ui.model.UnusedAppsViewModel.Months
 import com.android.permissioncontroller.permission.ui.model.UnusedAppsViewModel.UnusedPackageInfo
@@ -137,7 +138,11 @@ class UnusedAppsFragment<PF, UnusedAppPref> : PreferenceFragmentCompat()
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val preferenceFragment: PF = requirePreferenceFragment()
-        preferenceFragment.setTitle(getString(R.string.permission_removed_page_title))
+        if (isHibernationEnabled()) {
+            preferenceFragment.setTitle(getString(R.string.unused_apps_page_title))
+        } else {
+            preferenceFragment.setTitle(getString(R.string.permission_removed_page_title))
+        }
     }
 
     private fun requirePreferenceFragment(): PF {
@@ -226,6 +231,7 @@ class UnusedAppsFragment<PF, UnusedAppPref> : PreferenceFragmentCompat()
                 val mostImportant = getMostImportantGroup(revokedPerms)
                 val importantLabel = KotlinUtils.getPermGroupLabel(context!!, mostImportant)
                 pref.summary = when {
+                    revokedPerms.isEmpty() -> null
                     revokedPerms.size == 1 -> getString(R.string.auto_revoked_app_summary_one,
                         importantLabel)
                     revokedPerms.size == 2 -> {
