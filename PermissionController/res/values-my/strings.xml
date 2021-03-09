@@ -139,10 +139,15 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"ပြီးခဲ့သော ၂၄ နာရီအတွင်း ခွင့်ပြုချက် အသုံးပြုမှု"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"ပြီးခဲ့သော ၁ မိနစ်အတွင်း ခွင့်ပြုချက်သုံးစွဲမှု"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"ပြီးခဲ့သော ၁၅ မိနစ်အတွင်း ခွင့်ပြုချက်သုံးစွဲမှု"</string>
+    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"အသုံးပြုမှု"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"ပြီးခဲ့သော ၁ မိနစ်အတွင်း ခွင့်ပြုချက်သုံးစွဲမှု"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other">အက်ပ် <xliff:g id="NUMBER">%s</xliff:g> ခု</item>
       <item quantity="one">အက်ပ် ၁ ခု</item>
+    </plurals>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
+      <item quantity="other">အက်ပ် <xliff:g id="NUMBER">%d</xliff:g> ခုက သုံးထားသည်</item>
+      <item quantity="one">အက်ပ် 1 ခုက သုံးထားသည်</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"အားလုံးကို \'ဒက်ရှ်ဘုတ်\' တွင်ကြည့်ရန်"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"စစ်ထုတ်စနစ်- <xliff:g id="PERM">%1$s</xliff:g>"</string>

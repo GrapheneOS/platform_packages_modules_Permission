@@ -139,10 +139,15 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Berechtigungsnutzungen (letzte 24 Stunden)"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Berechtigungsnutzungen (letzte Stunde)"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Berechtigungsnutzungen (letzte 15 Minuten)"</string>
+    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"Verwendung"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Berechtigungsnutzungen (letzte Minute)"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> Apps</item>
       <item quantity="one">1 App</item>
+    </plurals>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
+      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> Apps genutzt</item>
+      <item quantity="one">1 App genutzt</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Alle im Dashboard ansehen"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Gefiltert nach: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -173,7 +178,7 @@
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Ablehnen"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Genauen Standort verwenden"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Apps können nur deinen ungefähren Standort ermitteln, wenn diese Option deaktiviert ist"</string>
-    <string name="app_permission_title" msgid="2090897901051370711">"Berechtigung \"<xliff:g id="PERM">%1$s</xliff:g>\""</string>
+    <string name="app_permission_title" msgid="2090897901051370711">"Berechtigung: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Dieser App Zugriff auf <xliff:g id="PERM">%1$s</xliff:g> erlauben?"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Alle Berechtigungen der App \"<xliff:g id="APP">%1$s</xliff:g>\" anzeigen"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Alle Apps mit dieser Berechtigung anzeigen"</string>

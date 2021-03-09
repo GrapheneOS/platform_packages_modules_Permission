@@ -139,10 +139,15 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"గత 24 గంటలలో అనుమతి వినియోగం"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"గడిచిన ఒక గంటలో అనుమతి వినియోగించబడింది"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"గత 15 నిమిషాలలో అనుమతి వినియోగించబడింది"</string>
+    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"వినియోగం"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"గత నిమిషంలో అనుమతి వినియోగించబడింది"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> యాప్‌లు</item>
       <item quantity="one">1 యాప్</item>
+    </plurals>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
+      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> యాప్‌లు</item>
+      <item quantity="one">1 యాప్ ఉప.</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"అన్నింటినీ డాష్‌బోర్డ్‌లో చూడండి"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"దీని ద్వారా ఫిల్టర్ చేయబడింది: <xliff:g id="PERM">%1$s</xliff:g>"</string>
