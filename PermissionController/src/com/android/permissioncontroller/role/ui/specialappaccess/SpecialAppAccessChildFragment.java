@@ -43,8 +43,10 @@ import com.android.permissioncontroller.role.ui.ManageRoleHolderStateLiveData;
 import java.util.List;
 
 /**
- * Child fragment for a special app access. Must be added as a child fragment and its parent
- * fragment must be a {@link PreferenceFragmentCompat} which implements {@link Parent}.
+ * Child fragment for a special app access.
+ * <p>
+ * Must be added as a child fragment and its parent fragment must be a
+ * {@link PreferenceFragmentCompat} that implements {@link Parent}.
  *
  * @param <PF> type of the parent fragment
  */
@@ -54,14 +56,16 @@ public class SpecialAppAccessChildFragment<PF extends PreferenceFragmentCompat
 
     private static final String PREFERENCE_EXTRA_APPLICATION_INFO =
             SpecialAppAccessChildFragment.class.getName() + ".extra.APPLICATION_INFO";
-
     private static final String PREFERENCE_KEY_DESCRIPTION =
             SpecialAppAccessChildFragment.class.getName() + ".preference.DESCRIPTION";
 
+    @NonNull
     private String mRoleName;
 
+    @NonNull
     private Role mRole;
 
+    @NonNull
     private SpecialAppAccessViewModel mViewModel;
 
     /**

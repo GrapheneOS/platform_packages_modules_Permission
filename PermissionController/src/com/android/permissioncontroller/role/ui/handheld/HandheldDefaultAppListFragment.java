@@ -16,22 +16,17 @@
 
 package com.android.permissioncontroller.role.ui.handheld;
 
-import android.content.Context;
-import android.os.Bundle;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
+import androidx.preference.PreferenceFragmentCompat;
 
 import com.android.permissioncontroller.R;
-import com.android.permissioncontroller.role.ui.DefaultAppListChildFragment;
-import com.android.permissioncontroller.role.ui.TwoTargetPreference;
 
 /**
  * Handheld fragment for the list of default apps.
  */
 public class HandheldDefaultAppListFragment extends SettingsFragment
-        implements DefaultAppListChildFragment.Parent {
+        implements HandheldDefaultAppListPreferenceFragment.Parent {
 
     /**
      * Create a new instance of this fragment.
@@ -43,16 +38,10 @@ public class HandheldDefaultAppListFragment extends SettingsFragment
         return new HandheldDefaultAppListFragment();
     }
 
+    @NonNull
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        if (savedInstanceState == null) {
-            DefaultAppListChildFragment fragment = DefaultAppListChildFragment.newInstance();
-            getChildFragmentManager().beginTransaction()
-                    .add(fragment, null)
-                    .commit();
-        }
+    protected PreferenceFragmentCompat onCreatePreferenceFragment() {
+        return HandheldDefaultAppListPreferenceFragment.newInstance();
     }
 
     @Override
@@ -64,16 +53,5 @@ public class HandheldDefaultAppListFragment extends SettingsFragment
     @Override
     protected int getHelpUriResource() {
         return R.string.help_uri_default_apps;
-    }
-
-    @NonNull
-    @Override
-    public TwoTargetPreference createPreference(@NonNull Context context) {
-        return new AppIconSettingsButtonPreference(context);
-    }
-
-    @Override
-    public void onPreferenceScreenChanged() {
-        updateState();
     }
 }
