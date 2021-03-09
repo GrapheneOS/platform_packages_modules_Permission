@@ -554,4 +554,17 @@
             <permission name="android.permission.WIFI_UPDATE_COEX_UNSAFE_CHANNELS" />
         </permissions>
     </role>
+
+    <role
+        name="android.app.role.SYSTEM_WELLBEING"
+        defaultHolders="config_systemWellbeing"
+        exclusive="true"
+        systemOnly="true"
+        visible="false" >
+        <permissions>
+            <permission name="android.permission.ACCESS_INSTANT_APPS"/>
+            <permission name="android.permission.SUSPEND_APPS"/>
+            <permission name="android.permission.SYSTEM_APPLICATION_OVERLAY"/>
+        </permissions>
+    </role>
 </roles>

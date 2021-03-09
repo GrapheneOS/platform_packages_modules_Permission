@@ -21,11 +21,14 @@ import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.annotation.WorkerThread;
+import android.os.Build;
 import android.os.Handler;
 import android.os.UserHandle;
 import android.util.ArrayMap;
 import android.util.ArraySet;
 import android.util.Log;
+
+import androidx.annotation.RequiresApi;
 
 import com.android.internal.annotations.GuardedBy;
 import com.android.internal.util.dump.DualDumpOutputStream;
@@ -44,6 +47,7 @@ import java.util.Set;
 /**
  * Stores the state of roles for a user.
  */
+@RequiresApi(Build.VERSION_CODES.S)
 class RoleUserState {
     private static final String LOG_TAG = RoleUserState.class.getSimpleName();
 

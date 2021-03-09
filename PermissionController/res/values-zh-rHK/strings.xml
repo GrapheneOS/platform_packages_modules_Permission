@@ -139,10 +139,15 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"過去 24 小時內的權限使用情況"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"過去 1 小時內的權限使用情況"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"過去 15 分鐘內的權限使用情況"</string>
+    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"使用情況"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"過去 1 分鐘內的權限使用情況"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> 個應用程式</item>
       <item quantity="one">1 個應用程式</item>
+    </plurals>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
+      <item quantity="other">有 <xliff:g id="NUMBER">%d</xliff:g> 個應用程式使用</item>
+      <item quantity="one">有 1 個應用程式使用</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"在「資訊主頁」查看全部"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"篩選條件：<xliff:g id="PERM">%1$s</xliff:g>"</string>
