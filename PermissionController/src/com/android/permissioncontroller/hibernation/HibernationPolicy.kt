@@ -466,7 +466,7 @@ class HibernationJobService : JobService() {
                 val revokedApps = revokeAppPermissions(
                         appsToHibernate, this@HibernationJobService, sessionId)
                 if (revokedApps.isNotEmpty()) {
-                    showAutoRevokeNotification(sessionId)
+                    showUnusedAppsNotification(sessionId)
                 }
             } catch (e: Exception) {
                 DumpableLog.e(LOG_TAG, "Failed to auto-revoke permissions", e)
@@ -476,7 +476,7 @@ class HibernationJobService : JobService() {
         return true
     }
 
-    private suspend fun showAutoRevokeNotification(sessionId: Long) {
+    private suspend fun showUnusedAppsNotification(sessionId: Long) {
         val notificationManager = getSystemService(NotificationManager::class.java)!!
 
         val permissionReminderChannel = NotificationChannel(
@@ -512,7 +512,7 @@ class HibernationJobService : JobService() {
 
         notificationManager.notify(HibernationJobService::class.java.simpleName,
                 Constants.AUTO_REVOKE_NOTIFICATION_ID, b.build())
-        // Preload the auto revoked packages
+        // Preload the unused packages
         UnusedAutoRevokedPackagesLiveData.getInitializedValue()
     }
 

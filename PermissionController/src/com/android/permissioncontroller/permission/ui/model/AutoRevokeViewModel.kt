@@ -67,15 +67,15 @@ class AutoRevokeViewModel(private val app: Application, private val sessionId: L
         }
     }
 
-    data class RevokedPackageInfo(
+    data class UnusedPackageInfo(
         val packageName: String,
         val user: UserHandle,
         val shouldDisable: Boolean,
         val revokedGroups: Set<String>
     )
 
-    val autoRevokedPackageCategoriesLiveData = object
-        : SmartAsyncMediatorLiveData<Map<Months, List<RevokedPackageInfo>>>(
+    val unusedPackageCategoriesLiveData = object
+        : SmartAsyncMediatorLiveData<Map<Months, List<UnusedPackageInfo>>>(
         alwaysUpdateOnActive = false
     ) {
         private val usageStatsLiveData = UsageStatsLiveData[SIX_MONTHS_MILLIS]
@@ -103,7 +103,7 @@ class AutoRevokeViewModel(private val app: Application, private val sessionId: L
             val unusedApps = UnusedAutoRevokedPackagesLiveData.value!!
             Log.i(LOG_TAG, "Unused apps: $unusedApps")
             val overSixMonthApps = unusedApps.keys.toMutableSet()
-            val categorizedApps = mutableMapOf<Months, MutableList<RevokedPackageInfo>>()
+            val categorizedApps = mutableMapOf<Months, MutableList<UnusedPackageInfo>>()
             categorizedApps[Months.THREE] = mutableListOf()
             categorizedApps[Months.SIX] = mutableListOf()
 
@@ -130,7 +130,7 @@ class AutoRevokeViewModel(private val app: Application, private val sessionId: L
                     }
 
                     categorizedApps[Months.THREE]!!.add(
-                        RevokedPackageInfo(stat.packageName, user,
+                        UnusedPackageInfo(stat.packageName, user,
                             disableActionApps.contains(statPackage), unusedApps[statPackage]!!))
                     overSixMonthApps.remove(statPackage)
                 }
@@ -154,7 +154,7 @@ class AutoRevokeViewModel(private val app: Application, private val sessionId: L
                 }
                 val userPackage = packageName to user
                 categorizedApps[months]!!.add(
-                    RevokedPackageInfo(packageName, user, disableActionApps.contains(userPackage),
+                    UnusedPackageInfo(packageName, user, disableActionApps.contains(userPackage),
                         unusedApps[userPackage]!!))
             }
 
@@ -162,7 +162,7 @@ class AutoRevokeViewModel(private val app: Application, private val sessionId: L
         }
     }
 
-    fun areAutoRevokedPackagesLoaded(): Boolean {
+    fun areUnusedPackagesLoaded(): Boolean {
         return UnusedAutoRevokedPackagesLiveData.isInitialized
     }
 
