@@ -24,6 +24,7 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Process;
 import android.os.UserHandle;
 import android.text.TextUtils;
@@ -110,6 +111,11 @@ public class Role {
      */
     @StringRes
     private final int mLabelResource;
+
+    /**
+     * The minimum SDK version for this role to be available.
+     */
+    private final int mMinSdkVersion;
 
     /**
      * Whether this role should override user's choice about privileges when granting.
@@ -199,13 +205,13 @@ public class Role {
     public Role(@NonNull String name, @Nullable RoleBehavior behavior,
             @Nullable String defaultHoldersResourceName, @StringRes int descriptionResource,
             boolean exclusive, boolean fallBackToDefaultHolder, @StringRes int labelResource,
-            boolean overrideUserWhenGranting, @StringRes int requestDescriptionResource,
-            @StringRes int requestTitleResource, boolean requestable,
-            @StringRes int searchKeywordsResource, @StringRes int shortLabelResource,
-            boolean showNone, boolean systemOnly, boolean visible,
-            @NonNull List<RequiredComponent> requiredComponents, @NonNull List<String> permissions,
-            @NonNull List<String> appOpPermissions, @NonNull List<AppOp> appOps,
-            @NonNull List<PreferredActivity> preferredActivities) {
+            int minSdkVersion, boolean overrideUserWhenGranting,
+            @StringRes int requestDescriptionResource, @StringRes int requestTitleResource,
+            boolean requestable, @StringRes int searchKeywordsResource,
+            @StringRes int shortLabelResource, boolean showNone, boolean systemOnly,
+            boolean visible, @NonNull List<RequiredComponent> requiredComponents,
+            @NonNull List<String> permissions, @NonNull List<String> appOpPermissions,
+            @NonNull List<AppOp> appOps, @NonNull List<PreferredActivity> preferredActivities) {
         mName = name;
         mBehavior = behavior;
         mDefaultHoldersResourceName = defaultHoldersResourceName;
@@ -213,6 +219,7 @@ public class Role {
         mExclusive = exclusive;
         mFallBackToDefaultHolder = fallBackToDefaultHolder;
         mLabelResource = labelResource;
+        mMinSdkVersion = minSdkVersion;
         mOverrideUserWhenGranting = overrideUserWhenGranting;
         mRequestDescriptionResource = requestDescriptionResource;
         mRequestTitleResource = requestTitleResource;
@@ -340,6 +347,9 @@ public class Role {
      * @return whether this role is available.
      */
     public boolean isAvailableAsUser(@NonNull UserHandle user, @NonNull Context context) {
+        if (Build.VERSION.SDK_INT < mMinSdkVersion) {
+            return false;
+        }
         if (mBehavior != null) {
             return mBehavior.isAvailableAsUser(this, user, context);
         }
@@ -892,6 +902,7 @@ public class Role {
                 + ", mExclusive=" + mExclusive
                 + ", mFallBackToDefaultHolder=" + mFallBackToDefaultHolder
                 + ", mLabelResource=" + mLabelResource
+                + ", mMinSdkVersion=" + mMinSdkVersion
                 + ", mOverrideUserWhenGranting=" + mOverrideUserWhenGranting
                 + ", mRequestDescriptionResource=" + mRequestDescriptionResource
                 + ", mRequestTitleResource=" + mRequestTitleResource
