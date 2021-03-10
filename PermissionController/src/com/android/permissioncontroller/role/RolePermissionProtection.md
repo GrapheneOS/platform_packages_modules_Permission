@@ -56,6 +56,7 @@ Edit [roles.xml](../../../../../res/xml/roles.xml) to add your new role:
     name="android.app.role.SYSTEM_YOUR_ROLE_NAME"
     defaultHolders="config_systemYourRoleName"
     exclusive="true"
+    minSdkVersion="31"
     systemOnly="true"
     visible="false">
     <permissions>
@@ -66,7 +67,9 @@ Edit [roles.xml](../../../../../res/xml/roles.xml) to add your new role:
 
 The role is named with the `SYSTEM_` prefix to indicate that it is an invisible and system app only
 role. The config resource `config_systemYourRoleName` will be added in the next step, and more
-details about role are available in [Android Role for system developers](Role.md).
+details about role are available in [Android Role for system developers](Role.md). The
+`minSdkVersion` attribute should normally be set to the current SDK version, to avoid making the
+role available on older platforms.
 
 If you are writing a CTS test for an API protected by an `internal|role` permission, you probably
 want to grant the permission to Shell as well. This can be achieved by adding the permission to the
