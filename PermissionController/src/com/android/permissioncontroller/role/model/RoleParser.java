@@ -77,6 +77,7 @@ public class RoleParser {
     private static final String ATTRIBUTE_EXCLUSIVE = "exclusive";
     private static final String ATTRIBUTE_FALL_BACK_TO_DEFAULT_HOLDER = "fallBackToDefaultHolder";
     private static final String ATTRIBUTE_LABEL = "label";
+    private static final String ATTRIBUTE_MIN_SDK_VERSION = "minSdkVersion";
     private static final String ATTRIBUTE_OVERRIDE_USER_WHEN_GRANTING = "overrideUserWhenGranting";
     private static final String ATTRIBUTE_REQUEST_TITLE = "requestTitle";
     private static final String ATTRIBUTE_REQUEST_DESCRIPTION = "requestDescription";
@@ -89,8 +90,6 @@ public class RoleParser {
     private static final String ATTRIBUTE_PERMISSION = "permission";
     private static final String ATTRIBUTE_SCHEME = "scheme";
     private static final String ATTRIBUTE_MIME_TYPE = "mimeType";
-    private static final String ATTRIBUTE_VALUE = "value";
-    private static final String ATTRIBUTE_OPTIONAL = "optional";
     private static final String ATTRIBUTE_MAX_TARGET_SDK_VERSION = "maxTargetSdkVersion";
     private static final String ATTRIBUTE_MODE = "mode";
 
@@ -326,6 +325,9 @@ public class RoleParser {
         boolean fallBackToDefaultHolder = getAttributeBooleanValue(parser,
                 ATTRIBUTE_FALL_BACK_TO_DEFAULT_HOLDER, false);
 
+        int minSdkVersion = getAttributeIntValue(parser, ATTRIBUTE_MIN_SDK_VERSION,
+                Build.VERSION_CODES.BASE);
+
         boolean overrideUserWhenGranting = getAttributeBooleanValue(parser,
                 ATTRIBUTE_OVERRIDE_USER_WHEN_GRANTING, true);
 
@@ -442,7 +444,7 @@ public class RoleParser {
             preferredActivities = Collections.emptyList();
         }
         return new Role(name, behavior, defaultHoldersResourceName, descriptionResource, exclusive,
-                fallBackToDefaultHolder, labelResource, overrideUserWhenGranting,
+                fallBackToDefaultHolder, labelResource, minSdkVersion, overrideUserWhenGranting,
                 requestDescriptionResource, requestTitleResource, requestable,
                 searchKeywordsResource, shortLabelResource, showNone, systemOnly, visible,
                 requiredComponents, permissions, appOpPermissions, appOps,
