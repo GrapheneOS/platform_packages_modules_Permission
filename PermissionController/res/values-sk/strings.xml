@@ -149,12 +149,19 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Používanie povolení za posledných 24 hodín"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Používanie povolení za poslednú hodinu"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Používanie povolení za posledných 15 minút"</string>
+    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"použitie"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Používanie povolení za poslednú minútu"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> aplikácie</item>
       <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> apps</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> aplikácií</item>
       <item quantity="one">1 aplikácia</item>
+    </plurals>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
+      <item quantity="few">Použili <xliff:g id="NUMBER">%d</xliff:g> aplikácie</item>
+      <item quantity="many"><xliff:g id="NUMBER">%d</xliff:g> apps used</item>
+      <item quantity="other">Použilo <xliff:g id="NUMBER">%d</xliff:g> aplikácií</item>
+      <item quantity="one">Použila 1 aplikácia</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Zobraziť všetko v hlavnom paneli"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrované podľa: <xliff:g id="PERM">%1$s</xliff:g>"</string>

@@ -139,10 +139,15 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"पिछले 24 घंटों में इस्तेमाल की गई अनुमतियां"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"पिछले एक घंटे में अनुमति का इस्तेमाल"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"पिछले 15 मिनटों में अनुमति का इस्तेमाल"</string>
+    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"इस्तेमाल"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"पिछले एक मिनट में अनुमति का इस्तेमाल"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> ऐप्लिकेशन</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ऐप्लिकेशन</item>
+    </plurals>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
+      <item quantity="one"><xliff:g id="NUMBER">%d</xliff:g> ऐप ने इस्तेमाल किया</item>
+      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> ऐप ने इस्तेमाल किया</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"डैशबोर्ड में सभी को देखें"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"इससे फ़िल्टर किया गया: <xliff:g id="PERM">%1$s</xliff:g>"</string>
