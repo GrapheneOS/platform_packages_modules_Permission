@@ -480,6 +480,7 @@
         <permissions>
             <permission-set name="calendar" />
             <permission-set name="phone" />
+            <permission-set name="sms" />
             <permission-set name="contacts" />
         </permissions>
         <app-op-permissions>
