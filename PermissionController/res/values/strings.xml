@@ -894,7 +894,7 @@
     <string name="role_call_screening_request_description">No permissions needed</string>
 
     <!-- Description for the watch profile role. [CHAR LIMIT=NONE] -->
-    <string name="role_watch_description"><xliff:g id="app_name" example="Wear">%1$s</xliff:g> will get access to Notifications, Phone, Contacts and Calendar.</string>
+    <string name="role_watch_description"><xliff:g id="app_name" example="Wear">%1$s</xliff:g> will get access to Notifications, Phone, SMS, Contacts and Calendar.</string>
 
     <!-- Subtitle for the application that is the current default application [CHAR LIMIT=30] -->
     <string name="request_role_current_default">Current default</string>
