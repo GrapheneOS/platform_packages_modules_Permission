@@ -139,10 +139,15 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Акыркы 24 саатта колдонулган уруксаттар"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Акыркы 1 саатта колдонулган уруксаттар"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Акыркы 15 мүнөттө уруксаттардын колдонулушу"</string>
+    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"колдонулушу"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Акыркы 1 мүнөттө уруксаттардын колдонулушу"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> колдонмо</item>
       <item quantity="one">1 колдонмо</item>
+    </plurals>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
+      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> колдонмо иштетилди</item>
+      <item quantity="one">1 колдонмо иштетилди</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Баарын Куралдар тактасында көрүү"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Чыпка: <xliff:g id="PERM">%1$s</xliff:g>"</string>

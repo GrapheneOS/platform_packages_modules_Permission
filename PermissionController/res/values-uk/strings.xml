@@ -149,12 +149,19 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Використання дозволів за останні 24 години"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Використання дозволів за останню годину"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Використання дозволів за останні 15 хвилин"</string>
+    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"використання"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Використання дозволів за останню хвилину"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> додаток</item>
       <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> додатки</item>
       <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> додатків</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> додатка</item>
+    </plurals>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
+      <item quantity="one">Використав <xliff:g id="NUMBER">%d</xliff:g> додаток</item>
+      <item quantity="few">Використали <xliff:g id="NUMBER">%d</xliff:g> додатки</item>
+      <item quantity="many">Використали <xliff:g id="NUMBER">%d</xliff:g> додатків</item>
+      <item quantity="other">Використали <xliff:g id="NUMBER">%d</xliff:g> додатка</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Переглянути деталі на інформаційній панелі"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Відфільтровано за параметром \"<xliff:g id="PERM">%1$s</xliff:g>\""</string>

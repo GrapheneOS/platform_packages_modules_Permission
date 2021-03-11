@@ -149,12 +149,19 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"שימוש בהרשאות ב-24 השעות האחרונות"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"שימוש בהרשאות בשעה האחרונה"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"שימוש בהרשאות ב-15 הדקות האחרונות"</string>
+    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"שימוש"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"שימוש בהרשאות בדקה האחרונה"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="two"><xliff:g id="NUMBER">%s</xliff:g> אפליקציות</item>
       <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> אפליקציות</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> אפליקציות</item>
       <item quantity="one">אפליקציה אחת</item>
+    </plurals>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
+      <item quantity="two">ב-<xliff:g id="NUMBER">%d</xliff:g> אפליקציות</item>
+      <item quantity="many">ב-<xliff:g id="NUMBER">%d</xliff:g> אפליקציות</item>
+      <item quantity="other">ב-<xliff:g id="NUMBER">%d</xliff:g> אפליקציות</item>
+      <item quantity="one">באפליקציה אחת</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"הצגת כל הפרטים במרכז השליטה"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"סינון לפי: <xliff:g id="PERM">%1$s</xliff:g>"</string>

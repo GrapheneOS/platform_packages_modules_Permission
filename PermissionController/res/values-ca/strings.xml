@@ -139,10 +139,15 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Ús de permisos durant les últimes 24 hores"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Ús de permisos durant l\'última hora"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Ús de permisos durant els últims 15 minuts"</string>
+    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"ús"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Ús de permisos durant l\'últim minut"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> aplicacions</item>
       <item quantity="one">1 aplicació</item>
+    </plurals>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
+      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> apps utilitzades</item>
+      <item quantity="one">1 app utilitzada</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Mostra-ho tot al tauler"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrats per: <xliff:g id="PERM">%1$s</xliff:g>"</string>

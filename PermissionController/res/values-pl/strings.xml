@@ -149,12 +149,19 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Użycie uprawnień w ciągu ostatnich 24 godzin"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Użycie uprawnień w ciągu ostatniej godziny"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Użycie uprawnień w ciągu ostatnich 15 minut"</string>
+    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"użycie"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Użycie uprawnień w ciągu ostatniej minuty"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> aplikacje</item>
       <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> aplikacji</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> aplikacji</item>
       <item quantity="one">1 aplikacja</item>
+    </plurals>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
+      <item quantity="few"><xliff:g id="NUMBER">%d</xliff:g> aplikacje używały</item>
+      <item quantity="many"><xliff:g id="NUMBER">%d</xliff:g> aplikacji używało</item>
+      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> aplikacji używało</item>
+      <item quantity="one">1 aplikacja używała</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Pokaż wszystko w panelu"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrowane według: <xliff:g id="PERM">%1$s</xliff:g>"</string>
