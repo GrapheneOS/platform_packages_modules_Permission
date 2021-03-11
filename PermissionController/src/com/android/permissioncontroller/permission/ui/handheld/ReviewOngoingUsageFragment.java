@@ -82,9 +82,11 @@ public class ReviewOngoingUsageFragment extends PreferenceFragmentCompat {
         return fragment;
     }
 
+    // create new ViewModel in onStart, because viewModel is sometimes persisting after finish()
+    // TODO: determine why viewModel is doing this.
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onStart() {
+        super.onStart();
 
         ReviewOngoingUsageViewModelFactory factory =
                 new ReviewOngoingUsageViewModelFactory(
@@ -113,7 +115,16 @@ public class ReviewOngoingUsageFragment extends PreferenceFragmentCompat {
             } else {
                 updateDialogView(usages);
             }
+            mViewModel.getUsages().removeObservers(this);
         });
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mDialog != null && getActivity() != null && !getActivity().isFinishing()) {
+            mDialog.dismiss();
+        }
     }
 
     /**
