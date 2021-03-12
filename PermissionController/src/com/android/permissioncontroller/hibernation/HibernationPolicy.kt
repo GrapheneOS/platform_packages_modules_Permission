@@ -72,9 +72,9 @@ import com.android.permissioncontroller.permission.data.DataRepositoryForPackage
 import com.android.permissioncontroller.permission.data.HasIntentAction
 import com.android.permissioncontroller.permission.data.ServiceLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
-import com.android.permissioncontroller.permission.data.UnusedAutoRevokedPackagesLiveData
 import com.android.permissioncontroller.permission.data.UsageStatsLiveData
 import com.android.permissioncontroller.permission.data.get
+import com.android.permissioncontroller.permission.data.getUnusedPackages
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 import com.android.permissioncontroller.permission.service.revokeAppPermissions
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity
@@ -513,7 +513,7 @@ class HibernationJobService : JobService() {
         notificationManager.notify(HibernationJobService::class.java.simpleName,
                 Constants.AUTO_REVOKE_NOTIFICATION_ID, b.build())
         // Preload the unused packages
-        UnusedAutoRevokedPackagesLiveData.getInitializedValue()
+        getUnusedPackages().getInitializedValue()
     }
 
     override fun onStopJob(params: JobParameters?): Boolean {
