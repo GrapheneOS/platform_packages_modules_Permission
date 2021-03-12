@@ -480,6 +480,7 @@
         <permissions>
             <permission-set name="calendar" />
             <permission-set name="phone" />
+            <permission-set name="sms" />
             <permission-set name="contacts" />
         </permissions>
         <app-op-permissions>
@@ -578,6 +579,18 @@
             <permission name="android.permission.ACCESS_INSTANT_APPS"/>
             <permission name="android.permission.SUSPEND_APPS"/>
             <permission name="android.permission.SYSTEM_APPLICATION_OVERLAY"/>
+        </permissions>
+    </role>
+
+    <role
+        name="android.app.role.SYSTEM_TELEVISION_NOTIFICATION_HANDLER"
+        defaultHolders="config_systemTelevisionNotificationHandler"
+        exclusive="true"
+        minSdkVersion="31"
+        systemOnly="true"
+        visible="false">
+        <permissions>
+            <permission name="android.permission.SYSTEM_APPLICATION_OVERLAY" />
         </permissions>
     </role>
 </roles>
