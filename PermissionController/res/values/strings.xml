@@ -443,6 +443,9 @@
         <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> apps</item>
     </plurals>
 
+    <!-- Label for the title of permission history. [CHAR LIMIT=20] -->
+    <string name="permission_history_title">Permission history</string>
+
     <!-- Help URL, permission usage [DO NOT TRANSLATE] -->
     <string name="help_permission_usage" translatable="false"></string>
 
