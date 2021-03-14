@@ -59,6 +59,7 @@ import com.android.permissioncontroller.permission.model.AppPermissionUsage;
 import com.android.permissioncontroller.permission.model.AppPermissionUsage.GroupUsage;
 import com.android.permissioncontroller.permission.model.legacy.PermissionApps;
 import com.android.permissioncontroller.permission.ui.handheld.PermissionControlPreference;
+import com.android.permissioncontroller.permission.ui.handheld.PermissionUsageV2ControlPreference;
 import com.android.permissioncontroller.permission.ui.handheld.SettingsWithLargeHeader;
 import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.settingslib.HelpUtils;
@@ -409,7 +410,7 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
                 GroupUsage groupUsage = appGroups.get(groupNum);
                 long lastAccessTime = groupUsage.getLastAccessTime();
 
-                if (groupUsage.getAccessCount() <= 0) {
+                if (!groupUsage.hasDiscreteData()) {
                     continue;
                 }
                 if (lastAccessTime == 0) {
@@ -421,12 +422,10 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
                 if (lastAccessTime < startTime) {
                     continue;
                 }
+
                 final boolean isSystemApp = !Utils.isGroupOrBgGroupUserSensitive(
                         groupUsage.getGroup());
                 seenSystemApp = seenSystemApp || isSystemApp;
-                if (isSystemApp && !mShowSystem) {
-                    continue;
-                }
 
                 used = true;
                 addGroupUser(groupUsage.getGroup().getName());
@@ -457,7 +456,7 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
             ArrayList<PermissionApps.PermissionApp> permApps,
             PreferenceCategory category) {
         new PermissionApps.AppDataLoader(context, () -> {
-            Preference permissionUsagePreference = null;
+            PermissionUsageV2ControlPreference permissionUsagePreference = null;
             int permissionUsageAppCount = 0;
             GroupUsage lastGroupUsage = null;
             String lastAccessTimeString = null;
@@ -539,13 +538,17 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
         }
     }
 
-    private Preference createPermissionUsagePreference(@NonNull Context context,
-            @NonNull AppPermissionGroup appPermissionGroup, @Nullable String summaryString) {
-        Preference permissionUsagePreference = new Preference(context);
+    private PermissionUsageV2ControlPreference createPermissionUsagePreference(
+            @NonNull Context context,
+            @NonNull AppPermissionGroup appPermissionGroup,
+            @Nullable String summaryString) {
+        PermissionUsageV2ControlPreference permissionUsagePreference =
+                new PermissionUsageV2ControlPreference(context);
 
         permissionUsagePreference.setTitle(appPermissionGroup.getLabel()
                 + " " + context.getString(R.string.suffix_permission_usage_preference));
         permissionUsagePreference.setIcon(appPermissionGroup.getIconResId());
+        permissionUsagePreference.setGroup(appPermissionGroup.getName());
         if (summaryString != null) {
             permissionUsagePreference.setSummary(summaryString);
         }
