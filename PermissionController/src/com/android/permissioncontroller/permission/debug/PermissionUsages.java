@@ -39,9 +39,9 @@ import android.util.SparseArray;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.model.AppPermissionUsage;
 import com.android.permissioncontroller.permission.model.AppPermissionUsage.Builder;
-import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.model.Permission;
 import com.android.permissioncontroller.permission.model.legacy.PermissionApps.PermissionApp;
 import com.android.permissioncontroller.permission.model.legacy.PermissionGroup;
@@ -292,12 +292,13 @@ public final class PermissionUsages implements LoaderCallbacks<List<AppPermissio
             if ((mUsageFlags & USAGE_FLAG_HISTORICAL) != 0) {
                 final AtomicReference<HistoricalOps> historicalOpsRef = new AtomicReference<>();
                 final CountDownLatch latch = new CountDownLatch(1);
+
+                // query for discrete timeline data for location, mic and camera
                 final HistoricalOpsRequest request = new HistoricalOpsRequest.Builder(
                         mFilterBeginTimeMillis, mFilterEndTimeMillis)
-                        .setUid(mFilterUid)
-                        .setPackageName(mFilterPackageName)
-                        .setOpNames(new ArrayList<>(opNames))
-                        .setFlags(AppOpsManager.OP_FLAGS_ALL_TRUSTED)
+                        .setFlags(AppOpsManager.OP_FLAG_SELF
+                                | AppOpsManager.OP_FLAG_TRUSTED_PROXIED)
+                        .setHistoryFlags(AppOpsManager.HISTORY_FLAG_DISCRETE)
                         .build();
                 appOpsManager.getHistoricalOps(request, Runnable::run,
                         (HistoricalOps ops) -> {
@@ -309,6 +310,7 @@ public final class PermissionUsages implements LoaderCallbacks<List<AppPermissio
                 } catch (InterruptedException ignored) { }
 
                 final HistoricalOps historicalOps = historicalOpsRef.get();
+
                 if (historicalOps != null) {
                     final int uidCount = historicalOps.getUidCount();
                     for (int i = 0; i < uidCount; i++) {
@@ -351,6 +353,7 @@ public final class PermissionUsages implements LoaderCallbacks<List<AppPermissio
                 final PackageOps lastUsage = lastUsages.get(key);
                 usageBuilder.setLastUsage(lastUsage);
                 final HistoricalPackageOps historicalUsage = historicalUsages.get(key);
+
                 usageBuilder.setHistoricalUsage(historicalUsage);
                 usageBuilder.setRecordingConfiguration(recordingsByUid.get(key.first));
                 usages.add(usageBuilder.build());
