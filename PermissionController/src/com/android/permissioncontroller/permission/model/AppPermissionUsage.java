@@ -179,6 +179,27 @@ public final class AppPermissionUsage {
             );
         }
 
+        /**
+         * returns whether the usage has discrete data
+         */
+        public boolean hasDiscreteData() {
+            if (mHistoricalUsage == null) {
+                return false;
+            }
+
+            final ArrayList<Permission> permissions = mGroup.getPermissions();
+            final int permissionCount = permissions.size();
+            for (int i = 0; i < permissionCount; i++) {
+                final Permission permission = permissions.get(i);
+                final String opName = permission.getAppOp();
+                final HistoricalOp historicalOp = mHistoricalUsage.getOp(opName);
+                if (historicalOp != null && historicalOp.getDiscreteAccessCount() > 0) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public long getLastAccessDuration() {
             if (mLastUsage == null) {
                 return 0;

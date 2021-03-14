@@ -46,6 +46,7 @@ import com.android.permissioncontroller.Constants;
 import com.android.permissioncontroller.DeviceUtils;
 import com.android.permissioncontroller.PermissionControllerStatsLog;
 import com.android.permissioncontroller.R;
+import com.android.permissioncontroller.permission.debug.PermissionDetailsFragment;
 import com.android.permissioncontroller.permission.debug.PermissionUsageFragment;
 import com.android.permissioncontroller.permission.debug.PermissionUsageV2Fragment;
 import com.android.permissioncontroller.permission.debug.UtilsKt;
@@ -162,6 +163,17 @@ public final class ManagePermissionsActivity extends FragmentActivity {
                             .newInstance(groupName, Long.MAX_VALUE);
                 }
             } break;
+
+            case Intent.ACTION_REVIEW_PERMISSION_HISTORY: {
+                if (UtilsKt.isPrivacyHubEnabled()) {
+                    String groupName = getIntent()
+                            .getStringExtra(Intent.EXTRA_PERMISSION_GROUP_NAME);
+                    androidXFragment = PermissionDetailsFragment
+                            .newInstance(groupName, Long.MAX_VALUE);
+                }
+
+                break;
+            }
 
             case Intent.ACTION_MANAGE_APP_PERMISSION: {
                 if (DeviceUtils.isAuto(this) || DeviceUtils.isTelevision(this)
