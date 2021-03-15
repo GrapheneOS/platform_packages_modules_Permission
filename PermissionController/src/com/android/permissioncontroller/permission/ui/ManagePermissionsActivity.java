@@ -296,6 +296,8 @@ public final class ManagePermissionsActivity extends FragmentActivity {
                 }
             } break;
 
+            case Intent.ACTION_MANAGE_UNUSED_APPS :
+                // fall through
             case ACTION_MANAGE_AUTO_REVOKE: {
                 Log.i(LOG_TAG, "sessionId " + sessionId + " starting auto revoke fragment"
                         + " from notification");
