@@ -24,6 +24,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.pm.ServiceInfo;
 import android.service.notification.NotificationListenerService;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -35,6 +36,8 @@ import java.util.Objects;
  * Class for behavior of the "watch" Companion device profile role.
  */
 public class CompanionDeviceWatchRoleBehavior implements RoleBehavior {
+
+    public static final String LOG_TAG = CompanionDeviceWatchRoleBehavior.class.getSimpleName();
 
     @Override
     public void grant(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
@@ -71,6 +74,7 @@ public class CompanionDeviceWatchRoleBehavior implements RoleBehavior {
                 pkgListeners.add(new ComponentName(serviceInfo.packageName, serviceInfo.name));
             }
         }
+        Log.d(LOG_TAG, "getNotificationListenersForPackage(" + packageName + "): " + pkgListeners);
         return pkgListeners;
     }
 
