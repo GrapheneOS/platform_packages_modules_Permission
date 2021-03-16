@@ -81,6 +81,8 @@
         <item name="carDividerColor">@color/car_divider_color</item>
     </style>
 
+    <style name="PreferenceDivider" parent="AutoRevokeDivider" />
+
     <style name="AutoRevokeDivider">
         <item name="android:background">@color/divider_color_primary</item>
     </style>
