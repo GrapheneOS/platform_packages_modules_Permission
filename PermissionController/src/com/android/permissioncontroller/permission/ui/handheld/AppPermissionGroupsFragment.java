@@ -26,10 +26,14 @@ import static com.android.permissioncontroller.permission.ui.handheld.UtilsKt.pr
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.icu.text.ListFormatter;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.UserHandle;
@@ -67,6 +71,7 @@ import java.text.Collator;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -281,6 +286,30 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader {
                 }
                 if (groupInfo.getSubtitle() == PermSubtitle.FOREGROUND_ONLY) {
                     preference.setSummary(R.string.permission_subtitle_only_in_foreground);
+                }
+                // Add an info icon if the package is a location provider
+                LocationManager locationManager = context.getSystemService(LocationManager.class);
+                if (locationManager != null && locationManager.isProviderPackage(mPackageName)) {
+                    Intent sendIntent = new Intent();
+                    sendIntent.setAction(Intent.ACTION_VIEW_PERMISSION_USAGE);
+                    sendIntent.setPackage(mPackageName);
+                    sendIntent.putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, groupName);
+
+                    PackageManager pm = getActivity().getPackageManager();
+                    ActivityInfo activityInfo = sendIntent.resolveActivityInfo(pm, 0);
+                    if (activityInfo != null && Objects.equals(activityInfo.permission,
+                            android.Manifest.permission.START_VIEW_PERMISSION_USAGE)) {
+                        preference.setRightIcon(
+                                context.getDrawable(R.drawable.ic_info_outline),
+                                v -> {
+                                    try {
+                                        startActivity(sendIntent);
+                                    } catch (ActivityNotFoundException e) {
+                                        Log.e(LOG_TAG, "No activity found for viewing permission "
+                                                + "usage.");
+                                    }
+                                });
+                    }
                 }
                 if (groupInfo.isSystem() == mIsSystemPermsScreen) {
                     category.addPreference(preference);
