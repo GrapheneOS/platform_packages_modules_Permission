@@ -683,6 +683,15 @@
         <item quantity="other"><xliff:g id="count" example="2">%1$d</xliff:g> apps haven\u2019t been used in a few months. Tap to review</item>
     </plurals>
 
+    <!-- The notification title for the notification that app hibernation has happened [CHAR LIMIT=60] -->
+    <plurals name="unused_apps_notification_title">
+        <item quantity="one"><xliff:g id="count" example="1">%1$d</xliff:g> unused app</item>
+        <item quantity="other"><xliff:g id="count" example="2">%1$d</xliff:g> unused apps</item>
+    </plurals>
+
+    <!-- The notification content for the hibernation reminder notification [CHAR LIMIT=none] -->
+    <string name="unused_apps_notification_content">Permissions and temporary files have been removed. Tap to review.</string>
+
     <!-- The subtitle for the auto revoke settings card [CHAR LIMIT=none] -->
     <string name="auto_revoke_setting_subtitle">Some apps haven\u2019t been used in a few months</string>
 
