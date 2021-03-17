@@ -33,7 +33,7 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils
  * @param user The user whose package icon will be retrieved
  * @param context The current context
  */
-class AutoAutoRevokePermissionPreference(
+class AutoUnusedAppsPreference(
     app: Application,
     packageName: String,
     user: UserHandle,

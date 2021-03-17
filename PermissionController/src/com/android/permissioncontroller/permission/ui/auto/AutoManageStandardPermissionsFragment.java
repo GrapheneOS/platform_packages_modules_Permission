@@ -29,7 +29,7 @@ import androidx.preference.Preference;
 
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.model.legacy.PermissionGroup;
-import com.android.permissioncontroller.permission.ui.AutoRevokeFragment;
+import com.android.permissioncontroller.permission.ui.UnusedAppsFragment;
 import com.android.permissioncontroller.permission.ui.model.ManageStandardPermissionsViewModel;
 import com.android.permissioncontroller.permission.utils.Utils;
 
@@ -135,8 +135,8 @@ public class AutoManageStandardPermissionsFragment extends AutoManagePermissions
                 autoRevokePreference.setSummary(
                         R.string.auto_revoke_setting_subtitle);
                 autoRevokePreference.setOnPreferenceClickListener(preference -> {
-                    AutoAutoRevokeFragment frag = AutoAutoRevokeFragment.newInstance();
-                    frag.setArguments(AutoRevokeFragment.createArgs(
+                    AutoUnusedAppsFragment frag = AutoUnusedAppsFragment.newInstance();
+                    frag.setArguments(UnusedAppsFragment.createArgs(
                             getArguments().getLong(EXTRA_SESSION_ID, INVALID_SESSION_ID)));
                     frag.setTargetFragment(AutoManageStandardPermissionsFragment.this,
                             /* requestCode= */ 0);
