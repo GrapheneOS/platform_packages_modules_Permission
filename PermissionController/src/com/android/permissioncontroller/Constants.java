@@ -59,7 +59,7 @@ public class Constants {
      * ID for notification shown by
      * {@link HibernationJobService}.
      */
-    public static final int AUTO_REVOKE_NOTIFICATION_ID = 1;
+    public static final int UNUSED_APPS_NOTIFICATION_ID = 1;
 
     /**
      * String action for navigating to the auto revoke screen.

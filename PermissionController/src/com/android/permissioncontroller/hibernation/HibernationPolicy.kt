@@ -77,7 +77,6 @@ import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.data.getUnusedPackages
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 import com.android.permissioncontroller.permission.service.revokeAppPermissions
-import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.forEachInParallel
 import kotlinx.coroutines.Dispatchers.Main
@@ -458,15 +457,16 @@ class HibernationJobService : JobService() {
                 }
 
                 val appsToHibernate = getAppsToHibernate(this@HibernationJobService)
+                var hibernatedApps: List<Pair<String, UserHandle>> = emptyList()
                 if (isHibernationEnabled()) {
                     val hibernationController = HibernationController(this@HibernationJobService)
-                    hibernationController.hibernateApps(appsToHibernate)
-                    // TODO(b/175830282): Show hibernation notification
+                    hibernatedApps = hibernationController.hibernateApps(appsToHibernate)
                 }
                 val revokedApps = revokeAppPermissions(
                         appsToHibernate, this@HibernationJobService, sessionId)
-                if (revokedApps.isNotEmpty()) {
-                    showUnusedAppsNotification(sessionId)
+                val unusedApps = if (isHibernationEnabled()) hibernatedApps else revokedApps
+                if (unusedApps.isNotEmpty()) {
+                    showUnusedAppsNotification(unusedApps.size, sessionId)
                 }
             } catch (e: Exception) {
                 DumpableLog.e(LOG_TAG, "Failed to auto-revoke permissions", e)
@@ -476,7 +476,7 @@ class HibernationJobService : JobService() {
         return true
     }
 
-    private suspend fun showUnusedAppsNotification(sessionId: Long) {
+    private suspend fun showUnusedAppsNotification(numUnused: Int, sessionId: Long) {
         val notificationManager = getSystemService(NotificationManager::class.java)!!
 
         val permissionReminderChannel = NotificationChannel(
@@ -484,20 +484,28 @@ class HibernationJobService : JobService() {
                 NotificationManager.IMPORTANCE_LOW)
         notificationManager.createNotificationChannel(permissionReminderChannel)
 
-        val clickIntent = Intent(this, ManagePermissionsActivity::class.java).apply {
-            action = Constants.ACTION_MANAGE_AUTO_REVOKE
+        val clickIntent = Intent(Intent.ACTION_MANAGE_UNUSED_APPS).apply {
             putExtra(Constants.EXTRA_SESSION_ID, sessionId)
             flags = Intent.FLAG_ACTIVITY_NEW_TASK
         }
         val pendingIntent = PendingIntent.getActivity(this, 0, clickIntent,
                 PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_UPDATE_CURRENT)
 
+        var notifTitle: String
+        var notifContent: String
+        if (isHibernationEnabled()) {
+            notifTitle = getResources().getQuantityString(
+                R.plurals.unused_apps_notification_title, numUnused, numUnused)
+            notifContent = getString(R.string.unused_apps_notification_content)
+        } else {
+            notifTitle = getString(R.string.auto_revoke_permission_notification_title)
+            notifContent = getString(R.string.auto_revoke_permission_notification_content)
+        }
+
         val b = Notification.Builder(this, Constants.PERMISSION_REMINDER_CHANNEL_ID)
-            .setContentTitle(getString(R.string.auto_revoke_permission_notification_title))
-            .setContentText(getString(
-                R.string.auto_revoke_permission_notification_content))
-            .setStyle(Notification.BigTextStyle().bigText(getString(
-                R.string.auto_revoke_permission_notification_content)))
+            .setContentTitle(notifTitle)
+            .setContentText(notifContent)
+            .setStyle(Notification.BigTextStyle().bigText(notifContent))
             .setSmallIcon(R.drawable.ic_settings_24dp)
             .setColor(getColor(android.R.color.system_notification_accent_color))
             .setAutoCancel(true)
@@ -511,7 +519,7 @@ class HibernationJobService : JobService() {
         }
 
         notificationManager.notify(HibernationJobService::class.java.simpleName,
-                Constants.AUTO_REVOKE_NOTIFICATION_ID, b.build())
+                Constants.UNUSED_APPS_NOTIFICATION_ID, b.build())
         // Preload the unused packages
         getUnusedPackages().getInitializedValue()
     }
