@@ -49,7 +49,7 @@ import androidx.preference.SwitchPreference;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.model.AppPermissions;
-import com.android.permissioncontroller.permission.model.livedatatypes.AutoRevokeState;
+import com.android.permissioncontroller.permission.model.livedatatypes.HibernationSettingState;
 import com.android.permissioncontroller.permission.ui.ReviewPermissionsActivity;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModel;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModelFactory;
@@ -412,7 +412,7 @@ public final class AppPermissionsFragment extends SettingsWithHeader
         screen.addPreference(autoRevokeSwitch);
     }
 
-    private void setAutoRevokeToggleState(AutoRevokeState state) {
+    private void setAutoRevokeToggleState(HibernationSettingState state) {
         SwitchPreference autoRevokeSwitch = getPreferenceScreen().findPreference(
                 AUTO_REVOKE_SWITCH_KEY);
         if (state == null || autoRevokeSwitch == null) {
