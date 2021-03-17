@@ -292,6 +292,10 @@ class GrantPermissionsViewHandlerImpl(
             }
         } else {
             locationViews[LOCATION_ACCURACY_LAYOUT]?.visibility = View.GONE
+            for (i in LOCATION_ACCURACY_DIALOGS) {
+                locationVisibilities[i] = false
+                locationViews[i]?.visibility = View.GONE
+            }
         }
     }
 
@@ -329,7 +333,7 @@ class GrantPermissionsViewHandlerImpl(
         }
 
         var affectedForegroundPermissions: List<String>? = null
-        if (locationViews[DIALOG_WITH_BOTH_LOCATIONS]?.visibility == View.VISIBLE) {
+        if (locationVisibilities[DIALOG_WITH_BOTH_LOCATIONS]) {
             when ((locationViews[DIALOG_WITH_BOTH_LOCATIONS] as RadioGroup).checkedRadioButtonId) {
                 R.id.permission_location_accuracy_radio_coarse ->
                     affectedForegroundPermissions = listOf(ACCESS_COARSE_LOCATION)
@@ -337,9 +341,9 @@ class GrantPermissionsViewHandlerImpl(
                     affectedForegroundPermissions = listOf(ACCESS_FINE_LOCATION,
                         ACCESS_COARSE_LOCATION)
             }
-        } else if (locationViews[DIALOG_WITH_FINE_LOCATION_ONLY]?.visibility == View.VISIBLE) {
+        } else if (locationVisibilities[DIALOG_WITH_FINE_LOCATION_ONLY]) {
             affectedForegroundPermissions = listOf(ACCESS_FINE_LOCATION)
-        } else if (locationViews[DIALOG_WITH_COARSE_LOCATION_ONLY]?.visibility == View.VISIBLE) {
+        } else if (locationVisibilities[DIALOG_WITH_COARSE_LOCATION_ONLY]) {
             affectedForegroundPermissions = listOf(ACCESS_COARSE_LOCATION)
         }
 
