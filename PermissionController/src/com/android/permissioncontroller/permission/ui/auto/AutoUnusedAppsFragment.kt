@@ -22,6 +22,7 @@ import android.os.UserHandle
 import androidx.preference.Preference
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.auto.AutoSettingsFrameFragment
+import com.android.permissioncontroller.hibernation.isHibernationEnabled
 import com.android.permissioncontroller.permission.ui.UnusedAppsFragment
 
 /**
@@ -59,10 +60,14 @@ class AutoUnusedAppsFragment : AutoSettingsFrameFragment(),
 
     override fun createFooterPreference(context: Context): Preference {
         val preference = Preference(context)
-        preference.summary = """
+        if (isHibernationEnabled()) {
+            preference.summary = getString(R.string.unused_apps_page_summary)
+        } else {
+            preference.summary = """
             ${getString(R.string.auto_revoked_apps_page_summary)}
             ${getString(R.string.auto_revoke_open_app_message)}
             """.trimIndent()
+        }
         preference.setIcon(R.drawable.ic_info_outline)
         preference.isSelectable = false
         return preference
