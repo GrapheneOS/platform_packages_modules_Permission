@@ -13,43 +13,41 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-package com.android.permissioncontroller.permission.ui.handheld
+package com.android.permissioncontroller.permission.ui.auto
 
 import android.app.Application
 import android.content.Context
 import android.os.Bundle
 import android.os.UserHandle
-import android.view.MenuItem
 import androidx.preference.Preference
 import com.android.permissioncontroller.R
-import com.android.permissioncontroller.permission.ui.AutoRevokeFragment
+import com.android.permissioncontroller.auto.AutoSettingsFrameFragment
+import com.android.permissioncontroller.permission.ui.UnusedAppsFragment
 
 /**
- * Handheld wrapper, with customizations, around {@link AutoRevokeFragment}.
+ * Auto wrapper, with customizations, around [UnusedAppsFragment].
  */
-class HandheldAutoRevokeFragment : PermissionsFrameFragment(),
-    AutoRevokeFragment.Parent<AutoRevokePermissionPreference> {
+class AutoUnusedAppsFragment : AutoSettingsFrameFragment(),
+    UnusedAppsFragment.Parent<AutoUnusedAppsPreference> {
 
     companion object {
         /** Create a new instance of this fragment.  */
         @JvmStatic
-        fun newInstance(): HandheldAutoRevokeFragment {
-            return HandheldAutoRevokeFragment()
+        fun newInstance(): AutoUnusedAppsFragment {
+            return AutoUnusedAppsFragment()
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        mUseShadowController = false
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        // Preferences will be added via shared logic in [UnusedAppsFragment].
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         if (savedInstanceState == null) {
             val fragment:
-                AutoRevokeFragment<HandheldAutoRevokeFragment, AutoRevokePermissionPreference> =
-                AutoRevokeFragment.newInstance()
+                UnusedAppsFragment<AutoUnusedAppsFragment, AutoUnusedAppsPreference> =
+                UnusedAppsFragment.newInstance()
             fragment.arguments = arguments
             // child fragment does not have its own UI - it will add to the preferences of this
             // parent fragment
@@ -59,37 +57,31 @@ class HandheldAutoRevokeFragment : PermissionsFrameFragment(),
         }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            this.pressBack()
-            return true
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
     override fun createFooterPreference(context: Context): Preference {
-        val preference = FooterPreference(context)
-        preference.summary = getString(R.string.auto_revoked_apps_page_summary)
-        preference.secondSummary = getString(R.string.auto_revoke_open_app_message)
+        val preference = Preference(context)
+        preference.summary = """
+            ${getString(R.string.auto_revoked_apps_page_summary)}
+            ${getString(R.string.auto_revoke_open_app_message)}
+            """.trimIndent()
         preference.setIcon(R.drawable.ic_info_outline)
         preference.isSelectable = false
         return preference
     }
 
     override fun setLoadingState(loading: Boolean, animate: Boolean) {
-        setLoading(loading, animate)
+        setLoading(false)
     }
 
-    override fun createAutoRevokePermissionPref(
+    override fun createUnusedAppPref(
         app: Application,
         packageName: String,
         user: UserHandle,
         context: Context
-    ): AutoRevokePermissionPreference {
-        return AutoRevokePermissionPreference(app, packageName, user, context)
+    ): AutoUnusedAppsPreference {
+        return AutoUnusedAppsPreference(app, packageName, user, context)
     }
 
     override fun setTitle(title: CharSequence) {
-        requireActivity().setTitle(title)
+        headerLabel = title
     }
 }
