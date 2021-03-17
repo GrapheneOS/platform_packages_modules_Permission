@@ -128,6 +128,7 @@
                 <action android:name="android.intent.action.MANAGE_PERMISSION_APPS" />
                 <action android:name="android.intent.action.MANAGE_PERMISSIONS" />
                 <action android:name="android.intent.action.REVIEW_PERMISSION_USAGE" />
+                <action android:name="android.intent.action.REVIEW_PERMISSION_HISTORY" />
                 <action android:name="android.intent.action.MANAGE_UNUSED_APPS" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
