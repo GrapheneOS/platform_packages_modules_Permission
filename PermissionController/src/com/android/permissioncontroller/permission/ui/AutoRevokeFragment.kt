@@ -37,7 +37,7 @@ import com.android.permissioncontroller.Constants.INVALID_SESSION_ID
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.ui.model.AutoRevokeViewModel
 import com.android.permissioncontroller.permission.ui.model.AutoRevokeViewModel.Months
-import com.android.permissioncontroller.permission.ui.model.AutoRevokeViewModel.RevokedPackageInfo
+import com.android.permissioncontroller.permission.ui.model.AutoRevokeViewModel.UnusedPackageInfo
 import com.android.permissioncontroller.permission.ui.model.AutoRevokeViewModelFactory
 import com.android.permissioncontroller.permission.utils.IPC
 import com.android.permissioncontroller.permission.utils.KotlinUtils
@@ -104,7 +104,7 @@ class AutoRevokeFragment<PF, AutoRevokePref> : PreferenceFragmentCompat()
         sessionId = arguments!!.getLong(EXTRA_SESSION_ID, INVALID_SESSION_ID)
         val factory = AutoRevokeViewModelFactory(activity!!.application, sessionId)
         viewModel = ViewModelProvider(this, factory).get(AutoRevokeViewModel::class.java)
-        viewModel.autoRevokedPackageCategoriesLiveData.observe(this, Observer {
+        viewModel.unusedPackageCategoriesLiveData.observe(this, Observer {
             it?.let { pkgs ->
                 updatePackages(pkgs)
                 preferenceFragment.setLoadingState(loading = false, animate = true)
@@ -114,10 +114,10 @@ class AutoRevokeFragment<PF, AutoRevokePref> : PreferenceFragmentCompat()
         setHasOptionsMenu(true)
         activity?.getActionBar()?.setDisplayHomeAsUpEnabled(true)
 
-        if (!viewModel.areAutoRevokedPackagesLoaded()) {
+        if (!viewModel.areUnusedPackagesLoaded()) {
             GlobalScope.launch(IPC) {
                 delay(SHOW_LOAD_DELAY_MS)
-                if (!viewModel.areAutoRevokedPackagesLoaded()) {
+                if (!viewModel.areUnusedPackagesLoaded()) {
                     GlobalScope.launch(Main) {
                         preferenceFragment.setLoadingState(loading = true, animate = true)
                     }
@@ -161,7 +161,7 @@ class AutoRevokeFragment<PF, AutoRevokePref> : PreferenceFragmentCompat()
         infoMsgCategory?.addPreference(footerPreference)
     }
 
-    private fun updatePackages(categorizedPackages: Map<Months, List<RevokedPackageInfo>>) {
+    private fun updatePackages(categorizedPackages: Map<Months, List<UnusedPackageInfo>>) {
         val preferenceFragment: PF = requirePreferenceFragment()
         if (preferenceFragment.preferenceScreen == null) {
             createPreferenceScreen()

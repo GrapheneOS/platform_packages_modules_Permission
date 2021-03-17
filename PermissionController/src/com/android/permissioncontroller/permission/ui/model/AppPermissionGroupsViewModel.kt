@@ -16,11 +16,11 @@
 
 package com.android.permissioncontroller.permission.ui.model
 
+import android.Manifest
 import android.app.AppOpsManager
 import android.app.AppOpsManager.MODE_ALLOWED
 import android.app.AppOpsManager.MODE_IGNORED
 import android.app.AppOpsManager.OPSTR_AUTO_REVOKE_PERMISSIONS_IF_UNUSED
-import android.Manifest
 import android.os.Bundle
 import android.os.UserHandle
 import android.util.Log
@@ -35,8 +35,8 @@ import com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISS
 import com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_GROUPS_FRAGMENT_AUTO_REVOKE_ACTION__ACTION__SWITCH_ENABLED
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.data.AppPermGroupUiInfoLiveData
-import com.android.permissioncontroller.permission.data.AutoRevokeStateLiveData
 import com.android.permissioncontroller.permission.data.FullStoragePermissionAppsLiveData
+import com.android.permissioncontroller.permission.data.HibernationSettingStateLiveData
 import com.android.permissioncontroller.permission.data.LightPackageInfoLiveData
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData.Companion.NON_RUNTIME_NORMAL_PERMS
@@ -85,7 +85,8 @@ class AppPermissionGroupsViewModel(
             this(groupName, isSystem, PermSubtitle.NONE)
     }
 
-    val autoRevokeLiveData = AutoRevokeStateLiveData[packageName, user]
+    // Auto-revoke and hibernation share the same settings
+    val autoRevokeLiveData = HibernationSettingStateLiveData[packageName, user]
 
     /**
      * LiveData whose data is a map of grant category (either allowed or denied) to a list

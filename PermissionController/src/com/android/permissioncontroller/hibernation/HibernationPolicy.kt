@@ -47,6 +47,7 @@ import android.os.UserHandle
 import android.os.UserManager
 import android.printservice.PrintService
 import android.provider.DeviceConfig
+import android.provider.DeviceConfig.NAMESPACE_APP_HIBERNATION
 import android.service.autofill.AutofillService
 import android.service.dreams.DreamService
 import android.service.notification.NotificationListenerService
@@ -57,6 +58,7 @@ import android.telephony.TelephonyManager.CARRIER_PRIVILEGE_STATUS_NO_ACCESS
 import android.util.Log
 import android.view.inputmethod.InputMethod
 import androidx.annotation.MainThread
+import androidx.lifecycle.MutableLiveData
 import androidx.preference.PreferenceManager
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.DumpableLog
@@ -70,9 +72,9 @@ import com.android.permissioncontroller.permission.data.DataRepositoryForPackage
 import com.android.permissioncontroller.permission.data.HasIntentAction
 import com.android.permissioncontroller.permission.data.ServiceLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
-import com.android.permissioncontroller.permission.data.UnusedAutoRevokedPackagesLiveData
 import com.android.permissioncontroller.permission.data.UsageStatsLiveData
 import com.android.permissioncontroller.permission.data.get
+import com.android.permissioncontroller.permission.data.getUnusedPackages
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 import com.android.permissioncontroller.permission.service.revokeAppPermissions
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity
@@ -114,10 +116,8 @@ private fun getCheckFrequencyMs() = DeviceConfig.getLong(
 
 private val PREF_KEY_FIRST_BOOT_TIME = "first_boot_time"
 
-// TODO(b/175830282): Add SDK check when platform SDK moves up
-private fun isHibernationEnabled(): Boolean {
-    return DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_APP_HIBERNATION,
-        Utils.PROPERTY_APP_HIBERNATION_ENABLED, false)
+fun isHibernationEnabled(): Boolean {
+    return HibernationEnabledLiveData.value!!
 }
 
 fun isHibernationJobEnabled(): Boolean {
@@ -466,7 +466,7 @@ class HibernationJobService : JobService() {
                 val revokedApps = revokeAppPermissions(
                         appsToHibernate, this@HibernationJobService, sessionId)
                 if (revokedApps.isNotEmpty()) {
-                    showAutoRevokeNotification(sessionId)
+                    showUnusedAppsNotification(sessionId)
                 }
             } catch (e: Exception) {
                 DumpableLog.e(LOG_TAG, "Failed to auto-revoke permissions", e)
@@ -476,7 +476,7 @@ class HibernationJobService : JobService() {
         return true
     }
 
-    private suspend fun showAutoRevokeNotification(sessionId: Long) {
+    private suspend fun showUnusedAppsNotification(sessionId: Long) {
         val notificationManager = getSystemService(NotificationManager::class.java)!!
 
         val permissionReminderChannel = NotificationChannel(
@@ -512,8 +512,8 @@ class HibernationJobService : JobService() {
 
         notificationManager.notify(HibernationJobService::class.java.simpleName,
                 Constants.AUTO_REVOKE_NOTIFICATION_ID, b.build())
-        // Preload the auto revoked packages
-        UnusedAutoRevokedPackagesLiveData.getInitializedValue()
+        // Preload the unused packages
+        getUnusedPackages().getInitializedValue()
     }
 
     override fun onStopJob(params: JobParameters?): Boolean {
@@ -599,5 +599,30 @@ class ExemptServicesLiveData(val user: UserHandle)
         override fun newValue(key: UserHandle): ExemptServicesLiveData {
             return ExemptServicesLiveData(key)
         }
+    }
+}
+
+/**
+ * Live data for whether the hibernation feature is enabled or not.
+ */
+object HibernationEnabledLiveData
+    : MutableLiveData<Boolean>() {
+    init {
+        // TODO(b/175830282): Add SDK check when platform SDK moves up
+        value = DeviceConfig.getBoolean(
+            NAMESPACE_APP_HIBERNATION, Utils.PROPERTY_APP_HIBERNATION_ENABLED,
+            false /* defaultValue */)
+        DeviceConfig.addOnPropertiesChangedListener(
+            NAMESPACE_APP_HIBERNATION,
+            PermissionControllerApplication.get().mainExecutor,
+            { properties ->
+                for (key in properties.keyset) {
+                    if (key == Utils.PROPERTY_APP_HIBERNATION_ENABLED) {
+                        value = properties.getBoolean(key, false /* defaultValue */)
+                        break
+                    }
+                }
+            }
+        )
     }
 }
