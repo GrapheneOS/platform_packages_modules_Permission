@@ -24,27 +24,25 @@ import android.content.pm.PackageManager.FLAG_PERMISSION_GRANTED_BY_ROLE
 import android.os.UserHandle
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData.Companion.NON_RUNTIME_NORMAL_PERMS
-import com.android.permissioncontroller.permission.model.livedatatypes.HibernationSettingState
+import com.android.permissioncontroller.permission.model.livedatatypes.AutoRevokeState
 import com.android.permissioncontroller.hibernation.ExemptServicesLiveData
-import com.android.permissioncontroller.hibernation.HibernationEnabledLiveData
-import com.android.permissioncontroller.hibernation.isHibernationEnabled
 import com.android.permissioncontroller.hibernation.isHibernationJobEnabled
 import com.android.permissioncontroller.hibernation.isPackageHibernationExemptByUser
 import com.android.permissioncontroller.hibernation.isPackageHibernationExemptBySystem
 import kotlinx.coroutines.Job
 
 /**
- * A LiveData which tracks the hibernation/auto-revoke state for one user package.
+ * A LiveData which tracks the AutoRevoke state for one user package.
  *
  * @param app The current application
  * @param packageName The package name whose state we want
  * @param user The user for whom we want the package
  */
-class HibernationSettingStateLiveData private constructor(
+class AutoRevokeStateLiveData private constructor(
     private val app: Application,
     private val packageName: String,
     private val user: UserHandle
-) : SmartAsyncMediatorLiveData<HibernationSettingState>(), AppOpsManager.OnOpChangedListener {
+) : SmartAsyncMediatorLiveData<AutoRevokeState>(), AppOpsManager.OnOpChangedListener {
 
     private val packagePermsLiveData =
         PackagePermissionsLiveData[packageName, user]
@@ -61,9 +59,6 @@ class HibernationSettingStateLiveData private constructor(
             update()
         }
         addSource(exemptServicesLiveData) {
-            update()
-        }
-        addSource(HibernationEnabledLiveData) {
             update()
         }
     }
@@ -88,7 +83,7 @@ class HibernationSettingStateLiveData private constructor(
             return
         }
 
-        val canHibernate = !isPackageHibernationExemptByUser(app, packageLiveData.value!!)
+        val revocable = !isPackageHibernationExemptByUser(app, packageLiveData.value!!)
         val revocableGroups = mutableListOf<String>()
         if (!isPackageHibernationExemptBySystem(packageLiveData.value!!, user)) {
             permStateLiveDatas.forEach { (groupName, liveData) ->
@@ -102,8 +97,7 @@ class HibernationSettingStateLiveData private constructor(
             }
         }
 
-        postValue(HibernationSettingState(isHibernationJobEnabled(), canHibernate, revocableGroups,
-            isHibernationEnabled() || revocableGroups.isNotEmpty()))
+        postValue(AutoRevokeState(isHibernationJobEnabled(), revocable, revocableGroups))
     }
 
     override fun onOpChanged(op: String?, packageName: String?) {
@@ -122,14 +116,14 @@ class HibernationSettingStateLiveData private constructor(
         appOpsManager.stopWatchingMode(this)
     }
     /**
-     * Repository for HibernationSettingStateLiveDatas.
+     * Repository for AutoRevokeStateLiveDatas.
      * <p> Key value is a pair of string package name and UserHandle, value is its corresponding
      * LiveData.
      */
     companion object : DataRepositoryForPackage<Pair<String, UserHandle>,
-        HibernationSettingStateLiveData>() {
-        override fun newValue(key: Pair<String, UserHandle>): HibernationSettingStateLiveData {
-            return HibernationSettingStateLiveData(PermissionControllerApplication.get(),
+        AutoRevokeStateLiveData>() {
+        override fun newValue(key: Pair<String, UserHandle>): AutoRevokeStateLiveData {
+            return AutoRevokeStateLiveData(PermissionControllerApplication.get(),
                 key.first, key.second)
         }
     }

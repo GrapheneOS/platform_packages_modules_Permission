@@ -47,7 +47,6 @@ import android.os.UserHandle
 import android.os.UserManager
 import android.printservice.PrintService
 import android.provider.DeviceConfig
-import android.provider.DeviceConfig.NAMESPACE_APP_HIBERNATION
 import android.service.autofill.AutofillService
 import android.service.dreams.DreamService
 import android.service.notification.NotificationListenerService
@@ -58,7 +57,6 @@ import android.telephony.TelephonyManager.CARRIER_PRIVILEGE_STATUS_NO_ACCESS
 import android.util.Log
 import android.view.inputmethod.InputMethod
 import androidx.annotation.MainThread
-import androidx.lifecycle.MutableLiveData
 import androidx.preference.PreferenceManager
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.DumpableLog
@@ -72,11 +70,12 @@ import com.android.permissioncontroller.permission.data.DataRepositoryForPackage
 import com.android.permissioncontroller.permission.data.HasIntentAction
 import com.android.permissioncontroller.permission.data.ServiceLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
+import com.android.permissioncontroller.permission.data.UnusedAutoRevokedPackagesLiveData
 import com.android.permissioncontroller.permission.data.UsageStatsLiveData
 import com.android.permissioncontroller.permission.data.get
-import com.android.permissioncontroller.permission.data.getUnusedPackages
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 import com.android.permissioncontroller.permission.service.revokeAppPermissions
+import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.forEachInParallel
 import kotlinx.coroutines.Dispatchers.Main
@@ -115,8 +114,10 @@ private fun getCheckFrequencyMs() = DeviceConfig.getLong(
 
 private val PREF_KEY_FIRST_BOOT_TIME = "first_boot_time"
 
-fun isHibernationEnabled(): Boolean {
-    return HibernationEnabledLiveData.value!!
+// TODO(b/175830282): Add SDK check when platform SDK moves up
+private fun isHibernationEnabled(): Boolean {
+    return DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_APP_HIBERNATION,
+        Utils.PROPERTY_APP_HIBERNATION_ENABLED, false)
 }
 
 fun isHibernationJobEnabled(): Boolean {
@@ -457,16 +458,15 @@ class HibernationJobService : JobService() {
                 }
 
                 val appsToHibernate = getAppsToHibernate(this@HibernationJobService)
-                var hibernatedApps: List<Pair<String, UserHandle>> = emptyList()
                 if (isHibernationEnabled()) {
                     val hibernationController = HibernationController(this@HibernationJobService)
-                    hibernatedApps = hibernationController.hibernateApps(appsToHibernate)
+                    hibernationController.hibernateApps(appsToHibernate)
+                    // TODO(b/175830282): Show hibernation notification
                 }
                 val revokedApps = revokeAppPermissions(
                         appsToHibernate, this@HibernationJobService, sessionId)
-                val unusedApps = if (isHibernationEnabled()) hibernatedApps else revokedApps
-                if (unusedApps.isNotEmpty()) {
-                    showUnusedAppsNotification(unusedApps.size, sessionId)
+                if (revokedApps.isNotEmpty()) {
+                    showAutoRevokeNotification(sessionId)
                 }
             } catch (e: Exception) {
                 DumpableLog.e(LOG_TAG, "Failed to auto-revoke permissions", e)
@@ -476,7 +476,7 @@ class HibernationJobService : JobService() {
         return true
     }
 
-    private suspend fun showUnusedAppsNotification(numUnused: Int, sessionId: Long) {
+    private suspend fun showAutoRevokeNotification(sessionId: Long) {
         val notificationManager = getSystemService(NotificationManager::class.java)!!
 
         val permissionReminderChannel = NotificationChannel(
@@ -484,28 +484,20 @@ class HibernationJobService : JobService() {
                 NotificationManager.IMPORTANCE_LOW)
         notificationManager.createNotificationChannel(permissionReminderChannel)
 
-        val clickIntent = Intent(Intent.ACTION_MANAGE_UNUSED_APPS).apply {
+        val clickIntent = Intent(this, ManagePermissionsActivity::class.java).apply {
+            action = Constants.ACTION_MANAGE_AUTO_REVOKE
             putExtra(Constants.EXTRA_SESSION_ID, sessionId)
             flags = Intent.FLAG_ACTIVITY_NEW_TASK
         }
         val pendingIntent = PendingIntent.getActivity(this, 0, clickIntent,
                 PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_UPDATE_CURRENT)
 
-        var notifTitle: String
-        var notifContent: String
-        if (isHibernationEnabled()) {
-            notifTitle = getResources().getQuantityString(
-                R.plurals.unused_apps_notification_title, numUnused, numUnused)
-            notifContent = getString(R.string.unused_apps_notification_content)
-        } else {
-            notifTitle = getString(R.string.auto_revoke_permission_notification_title)
-            notifContent = getString(R.string.auto_revoke_permission_notification_content)
-        }
-
         val b = Notification.Builder(this, Constants.PERMISSION_REMINDER_CHANNEL_ID)
-            .setContentTitle(notifTitle)
-            .setContentText(notifContent)
-            .setStyle(Notification.BigTextStyle().bigText(notifContent))
+            .setContentTitle(getString(R.string.auto_revoke_permission_notification_title))
+            .setContentText(getString(
+                R.string.auto_revoke_permission_notification_content))
+            .setStyle(Notification.BigTextStyle().bigText(getString(
+                R.string.auto_revoke_permission_notification_content)))
             .setSmallIcon(R.drawable.ic_settings_24dp)
             .setColor(getColor(android.R.color.system_notification_accent_color))
             .setAutoCancel(true)
@@ -519,9 +511,9 @@ class HibernationJobService : JobService() {
         }
 
         notificationManager.notify(HibernationJobService::class.java.simpleName,
-                Constants.UNUSED_APPS_NOTIFICATION_ID, b.build())
-        // Preload the unused packages
-        getUnusedPackages().getInitializedValue()
+                Constants.AUTO_REVOKE_NOTIFICATION_ID, b.build())
+        // Preload the auto revoked packages
+        UnusedAutoRevokedPackagesLiveData.getInitializedValue()
     }
 
     override fun onStopJob(params: JobParameters?): Boolean {
@@ -607,30 +599,5 @@ class ExemptServicesLiveData(val user: UserHandle)
         override fun newValue(key: UserHandle): ExemptServicesLiveData {
             return ExemptServicesLiveData(key)
         }
-    }
-}
-
-/**
- * Live data for whether the hibernation feature is enabled or not.
- */
-object HibernationEnabledLiveData
-    : MutableLiveData<Boolean>() {
-    init {
-        // TODO(b/175830282): Add SDK check when platform SDK moves up
-        value = DeviceConfig.getBoolean(
-            NAMESPACE_APP_HIBERNATION, Utils.PROPERTY_APP_HIBERNATION_ENABLED,
-            false /* defaultValue */)
-        DeviceConfig.addOnPropertiesChangedListener(
-            NAMESPACE_APP_HIBERNATION,
-            PermissionControllerApplication.get().mainExecutor,
-            { properties ->
-                for (key in properties.keyset) {
-                    if (key == Utils.PROPERTY_APP_HIBERNATION_ENABLED) {
-                        value = properties.getBoolean(key, false /* defaultValue */)
-                        break
-                    }
-                }
-            }
-        )
     }
 }
