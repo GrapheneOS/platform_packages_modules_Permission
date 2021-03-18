@@ -479,6 +479,12 @@
     <!-- Title for the dialog button to deny with prejudice a permission grant. [CHAR LIMIT=60] -->
     <string name="app_permission_button_deny">Deny</string>
 
+    <!-- Content description for precise location image. [CHAR LIMIT=50] -->
+    <string name="precise_image_description">Precise location</string>
+
+    <!-- Content description for approximate location image. [CHAR LIMIT=50] -->
+    <string name="approximate_image_description">Approximate location</string>
+
     <!-- Title for location accuracy switch in location settings. [CHAR LIMIT=60] -->
     <string name="app_permission_location_accuracy">Use precise location</string>
 
