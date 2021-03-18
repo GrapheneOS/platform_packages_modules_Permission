@@ -89,10 +89,7 @@
     </style>
 
     <style name="PermissionLocationAccuracyRadioFine">
-        <item name="android:layout_width">130dp</item>
-        <item name="android:layout_height">150dp</item>
         <item name="android:button">@null</item>
-        <item name="android:drawableTop">@drawable/fine_location</item>
         <item name="android:background">@null</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:layout_marginEnd">16dp</item>
@@ -101,10 +98,7 @@
     </style>
 
     <style name="PermissionLocationAccuracyRadioCoarse">
-        <item name="android:layout_width">130dp</item>
-        <item name="android:layout_height">150dp</item>
         <item name="android:button">@null</item>
-        <item name="android:drawableTop">@drawable/coarse_location</item>
         <item name="android:background">@null</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:layout_marginStart">16dp</item>
@@ -117,7 +111,6 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">24dp</item>
         <item name="android:layout_marginBottom">24dp</item>
-        <item name="android:src">@drawable/fine_on</item>
     </style>
 
     <style name="PermissionLocationAccuracyCoarseImageView">
@@ -125,7 +118,6 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">24dp</item>
         <item name="android:layout_marginBottom">24dp</item>
-        <item name="android:src">@drawable/coarse_on</item>
     </style>
 
     <style name="PermissionGrantButtonList">

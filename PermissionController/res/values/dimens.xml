@@ -65,4 +65,6 @@
     <dimen name="car_radius_1">4dp</dimen>
     <dimen name="car_preference_row_vertical_margin">16dp</dimen>
 
+    <dimen name="location_accuracy_image_size">130dp</dimen>
+
 </resources>
