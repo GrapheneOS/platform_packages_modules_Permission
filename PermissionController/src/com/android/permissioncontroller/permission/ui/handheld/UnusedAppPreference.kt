@@ -25,15 +25,15 @@ import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.ui.RemovablePref
 
 /**
- * A preference which represents an app that has been auto revoked. Has the app icon and label, as
- * well as a button to uninstall/disable the app, and a button to open the app.
+ * A preference which represents an app that is unused. Has the app icon and label, as well as a
+ * button to uninstall/disable the app, and a button to open the app.
  *
  * @param app The current application
  * @param packageName The name of the package whose icon this preference will retrieve
  * @param user The user whose package icon will be retrieved
  * @param context The current context
  */
-class AutoRevokePermissionPreference(
+class UnusedAppPreference(
     app: Application,
     packageName: String,
     user: UserHandle,

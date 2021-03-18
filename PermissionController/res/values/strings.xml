@@ -545,6 +545,12 @@
     <!-- Summary describing the permissions that have been removed from an app, when more than two permissions are removed [CHAR LIMIT=none] -->
     <string name="auto_revoked_app_summary_many"><xliff:g id="permission_name" example="Microphone">%1$s</xliff:g> and <xliff:g id="number" example="2">%2$s</xliff:g> other permissions removed</string>
 
+    <!-- The title of a page showing unused apps that have been hibernated [CHAR LIMIT=60]-->
+    <string name="unused_apps_page_title">Unused apps</string>
+
+    <!-- Summary for the screen that shows all unused apps that have been hibernated [CHAR LIMIT=none] -->
+    <string name="unused_apps_page_summary">If an app is unused for a few months:\n\n\u2022 Permissions are removed to protect your privacy\n\u2022 Temporary files are removed to free up space\n\u2022 Notifications are stopped to save battery</string>
+
     <!-- Title for a category of apps that were last used several months ago [CHAR LIMIT=none] -->
     <string name="last_opened_category_title">Last opened more than <xliff:g id="number" example="3">%s</xliff:g> months ago</string>
 
@@ -676,6 +682,15 @@
         <item quantity="one"><xliff:g id="count" example="1">%1$d</xliff:g> app hasn\u2019t been used in a few months. Tap to review</item>
         <item quantity="other"><xliff:g id="count" example="2">%1$d</xliff:g> apps haven\u2019t been used in a few months. Tap to review</item>
     </plurals>
+
+    <!-- The notification title for the notification that app hibernation has happened [CHAR LIMIT=60] -->
+    <plurals name="unused_apps_notification_title">
+        <item quantity="one"><xliff:g id="count" example="1">%1$d</xliff:g> unused app</item>
+        <item quantity="other"><xliff:g id="count" example="2">%1$d</xliff:g> unused apps</item>
+    </plurals>
+
+    <!-- The notification content for the hibernation reminder notification [CHAR LIMIT=none] -->
+    <string name="unused_apps_notification_content">Permissions and temporary files have been removed. Tap to review.</string>
 
     <!-- The subtitle for the auto revoke settings card [CHAR LIMIT=none] -->
     <string name="auto_revoke_setting_subtitle">Some apps haven\u2019t been used in a few months</string>
@@ -897,7 +912,7 @@
     <string name="role_call_screening_request_description">No permissions needed</string>
 
     <!-- Description for the watch profile role. [CHAR LIMIT=NONE] -->
-    <string name="role_watch_description"><xliff:g id="app_name" example="Wear">%1$s</xliff:g> will get access to Notifications, Phone, SMS, Contacts and Calendar.</string>
+    <string name="role_watch_description"><xliff:g id="app_name" example="Wear">%1$s</xliff:g> will be allowed to interact with your notifications and access your Phone, SMS, Contacts and Calendar permissions.</string>
 
     <!-- Subtitle for the application that is the current default application [CHAR LIMIT=30] -->
     <string name="request_role_current_default">Current default</string>

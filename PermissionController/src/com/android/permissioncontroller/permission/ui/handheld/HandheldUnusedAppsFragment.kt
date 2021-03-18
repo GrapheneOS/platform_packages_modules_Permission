@@ -23,19 +23,20 @@ import android.os.UserHandle
 import android.view.MenuItem
 import androidx.preference.Preference
 import com.android.permissioncontroller.R
-import com.android.permissioncontroller.permission.ui.AutoRevokeFragment
+import com.android.permissioncontroller.hibernation.isHibernationEnabled
+import com.android.permissioncontroller.permission.ui.UnusedAppsFragment
 
 /**
- * Handheld wrapper, with customizations, around {@link AutoRevokeFragment}.
+ * Handheld wrapper, with customizations, around [UnusedAppsFragment].
  */
-class HandheldAutoRevokeFragment : PermissionsFrameFragment(),
-    AutoRevokeFragment.Parent<AutoRevokePermissionPreference> {
+class HandheldUnusedAppsFragment : PermissionsFrameFragment(),
+    UnusedAppsFragment.Parent<UnusedAppPreference> {
 
     companion object {
         /** Create a new instance of this fragment.  */
         @JvmStatic
-        fun newInstance(): HandheldAutoRevokeFragment {
-            return HandheldAutoRevokeFragment()
+        fun newInstance(): HandheldUnusedAppsFragment {
+            return HandheldUnusedAppsFragment()
         }
     }
 
@@ -48,8 +49,8 @@ class HandheldAutoRevokeFragment : PermissionsFrameFragment(),
         super.onActivityCreated(savedInstanceState)
         if (savedInstanceState == null) {
             val fragment:
-                AutoRevokeFragment<HandheldAutoRevokeFragment, AutoRevokePermissionPreference> =
-                AutoRevokeFragment.newInstance()
+                UnusedAppsFragment<HandheldUnusedAppsFragment, UnusedAppPreference> =
+                UnusedAppsFragment.newInstance()
             fragment.arguments = arguments
             // child fragment does not have its own UI - it will add to the preferences of this
             // parent fragment
@@ -68,9 +69,16 @@ class HandheldAutoRevokeFragment : PermissionsFrameFragment(),
     }
 
     override fun createFooterPreference(context: Context): Preference {
-        val preference = FooterPreference(context)
-        preference.summary = getString(R.string.auto_revoked_apps_page_summary)
-        preference.secondSummary = getString(R.string.auto_revoke_open_app_message)
+        var preference: Preference
+        if (isHibernationEnabled()) {
+            preference = Preference(context)
+            preference.summary = getString(R.string.unused_apps_page_summary)
+        } else {
+            preference = FooterPreference(context)
+
+            preference.summary = getString(R.string.auto_revoked_apps_page_summary)
+            preference.secondSummary = getString(R.string.auto_revoke_open_app_message)
+        }
         preference.setIcon(R.drawable.ic_info_outline)
         preference.isSelectable = false
         return preference
@@ -80,13 +88,13 @@ class HandheldAutoRevokeFragment : PermissionsFrameFragment(),
         setLoading(loading, animate)
     }
 
-    override fun createAutoRevokePermissionPref(
+    override fun createUnusedAppPref(
         app: Application,
         packageName: String,
         user: UserHandle,
         context: Context
-    ): AutoRevokePermissionPreference {
-        return AutoRevokePermissionPreference(app, packageName, user, context)
+    ): UnusedAppPreference {
+        return UnusedAppPreference(app, packageName, user, context)
     }
 
     override fun setTitle(title: CharSequence) {
