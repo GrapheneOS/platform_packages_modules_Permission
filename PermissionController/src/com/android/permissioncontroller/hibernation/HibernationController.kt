@@ -55,11 +55,10 @@ class HibernationController(val context: Context) {
                     DumpableLog.e(LOG_TAG, "Failed to hibernate package: ${pkg.packageName}", e)
                 }
             }
-            if (DEBUG_HIBERNATION) {
-                DumpableLog.i(LOG_TAG,
-                    "Hibernated apps for user ${user.identifier}. " +
-                        "Hibernated ${hibernatedApps[user.identifier]}")
-            }
+        }
+        if (DEBUG_HIBERNATION) {
+            DumpableLog.i(LOG_TAG,
+                "Done hibernating apps $hibernatedApps")
         }
         return hibernatedApps
     }
