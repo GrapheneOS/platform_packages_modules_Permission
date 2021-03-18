@@ -35,10 +35,11 @@ import androidx.preference.PreferenceScreen
 import com.android.permissioncontroller.Constants.EXTRA_SESSION_ID
 import com.android.permissioncontroller.Constants.INVALID_SESSION_ID
 import com.android.permissioncontroller.R
-import com.android.permissioncontroller.permission.ui.model.AutoRevokeViewModel
-import com.android.permissioncontroller.permission.ui.model.AutoRevokeViewModel.Months
-import com.android.permissioncontroller.permission.ui.model.AutoRevokeViewModel.RevokedPackageInfo
-import com.android.permissioncontroller.permission.ui.model.AutoRevokeViewModelFactory
+import com.android.permissioncontroller.hibernation.isHibernationEnabled
+import com.android.permissioncontroller.permission.ui.model.UnusedAppsViewModel
+import com.android.permissioncontroller.permission.ui.model.UnusedAppsViewModel.Months
+import com.android.permissioncontroller.permission.ui.model.UnusedAppsViewModel.UnusedPackageInfo
+import com.android.permissioncontroller.permission.ui.model.UnusedAppsViewModelFactory
 import com.android.permissioncontroller.permission.utils.IPC
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import kotlinx.coroutines.Dispatchers.Main
@@ -48,16 +49,16 @@ import kotlinx.coroutines.launch
 import java.text.Collator
 
 /**
- * A fragment displaying all applications that have been auto-revoked, as well as the option to
- * remove them, and to open them.
+ * A fragment displaying all applications that are unused as well as the option to remove them
+ * and to open them.
  */
-class AutoRevokeFragment<PF, AutoRevokePref> : PreferenceFragmentCompat()
-    where PF : PreferenceFragmentCompat, PF : AutoRevokeFragment.Parent<AutoRevokePref>,
-          AutoRevokePref : Preference, AutoRevokePref : RemovablePref {
+class UnusedAppsFragment<PF, UnusedAppPref> : PreferenceFragmentCompat()
+    where PF : PreferenceFragmentCompat, PF : UnusedAppsFragment.Parent<UnusedAppPref>,
+          UnusedAppPref : Preference, UnusedAppPref : RemovablePref {
 
     private val INFO_MSG_CATEGORY = "info_msg_category"
 
-    private lateinit var viewModel: AutoRevokeViewModel
+    private lateinit var viewModel: UnusedAppsViewModel
     private lateinit var collator: Collator
     private var sessionId: Long = 0L
     private var isFirstLoad = false
@@ -66,13 +67,13 @@ class AutoRevokeFragment<PF, AutoRevokePref> : PreferenceFragmentCompat()
         private const val SHOW_LOAD_DELAY_MS = 200L
         private const val INFO_MSG_KEY = "info_msg"
         private const val ELEVATION_HIGH = 8f
-        private val LOG_TAG = AutoRevokeFragment::class.java.simpleName
+        private val LOG_TAG = UnusedAppsFragment::class.java.simpleName
 
         @JvmStatic
-        fun <PF, AutoRevokePref> newInstance(): AutoRevokeFragment<PF, AutoRevokePref>
-            where PF : PreferenceFragmentCompat, PF : AutoRevokeFragment.Parent<AutoRevokePref>,
-                  AutoRevokePref : Preference, AutoRevokePref : RemovablePref {
-            return AutoRevokeFragment()
+        fun <PF, UnusedAppPref> newInstance(): UnusedAppsFragment<PF, UnusedAppPref>
+            where PF : PreferenceFragmentCompat, PF : UnusedAppsFragment.Parent<UnusedAppPref>,
+                  UnusedAppPref : Preference, UnusedAppPref : RemovablePref {
+            return UnusedAppsFragment()
         }
 
         /**
@@ -102,9 +103,9 @@ class AutoRevokeFragment<PF, AutoRevokePref> : PreferenceFragmentCompat()
         collator = Collator.getInstance(
             context!!.getResources().getConfiguration().getLocales().get(0))
         sessionId = arguments!!.getLong(EXTRA_SESSION_ID, INVALID_SESSION_ID)
-        val factory = AutoRevokeViewModelFactory(activity!!.application, sessionId)
-        viewModel = ViewModelProvider(this, factory).get(AutoRevokeViewModel::class.java)
-        viewModel.autoRevokedPackageCategoriesLiveData.observe(this, Observer {
+        val factory = UnusedAppsViewModelFactory(activity!!.application, sessionId)
+        viewModel = ViewModelProvider(this, factory).get(UnusedAppsViewModel::class.java)
+        viewModel.unusedPackageCategoriesLiveData.observe(this, Observer {
             it?.let { pkgs ->
                 updatePackages(pkgs)
                 preferenceFragment.setLoadingState(loading = false, animate = true)
@@ -114,10 +115,10 @@ class AutoRevokeFragment<PF, AutoRevokePref> : PreferenceFragmentCompat()
         setHasOptionsMenu(true)
         activity?.getActionBar()?.setDisplayHomeAsUpEnabled(true)
 
-        if (!viewModel.areAutoRevokedPackagesLoaded()) {
+        if (!viewModel.areUnusedPackagesLoaded()) {
             GlobalScope.launch(IPC) {
                 delay(SHOW_LOAD_DELAY_MS)
-                if (!viewModel.areAutoRevokedPackagesLoaded()) {
+                if (!viewModel.areUnusedPackagesLoaded()) {
                     GlobalScope.launch(Main) {
                         preferenceFragment.setLoadingState(loading = true, animate = true)
                     }
@@ -137,7 +138,11 @@ class AutoRevokeFragment<PF, AutoRevokePref> : PreferenceFragmentCompat()
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val preferenceFragment: PF = requirePreferenceFragment()
-        preferenceFragment.setTitle(getString(R.string.permission_removed_page_title))
+        if (isHibernationEnabled()) {
+            preferenceFragment.setTitle(getString(R.string.unused_apps_page_title))
+        } else {
+            preferenceFragment.setTitle(getString(R.string.permission_removed_page_title))
+        }
     }
 
     private fun requirePreferenceFragment(): PF {
@@ -161,18 +166,18 @@ class AutoRevokeFragment<PF, AutoRevokePref> : PreferenceFragmentCompat()
         infoMsgCategory?.addPreference(footerPreference)
     }
 
-    private fun updatePackages(categorizedPackages: Map<Months, List<RevokedPackageInfo>>) {
+    private fun updatePackages(categorizedPackages: Map<Months, List<UnusedPackageInfo>>) {
         val preferenceFragment: PF = requirePreferenceFragment()
         if (preferenceFragment.preferenceScreen == null) {
             createPreferenceScreen()
         }
         val preferenceScreen: PreferenceScreen = preferenceFragment.preferenceScreen
 
-        val removedPrefs = mutableMapOf<String, AutoRevokePref>()
+        val removedPrefs = mutableMapOf<String, UnusedAppPref>()
         for (month in Months.allMonths()) {
             val category = preferenceScreen.findPreference<PreferenceCategory>(month.value)!!
             for (i in 0 until category.preferenceCount) {
-                val pref = category.getPreference(i) as AutoRevokePref
+                val pref = category.getPreference(i) as UnusedAppPref
                 val contains = categorizedPackages[Months.THREE]?.any { (pkgName, user, _) ->
                     val key = createKey(pkgName, user)
                     pref.key == key
@@ -200,9 +205,9 @@ class AutoRevokeFragment<PF, AutoRevokePref> : PreferenceFragmentCompat()
                 val revokedPerms = permSet.toList()
                 val key = createKey(pkgName, user)
 
-                var pref = category.findPreference<AutoRevokePref>(key)
+                var pref = category.findPreference<UnusedAppPref>(key)
                 if (pref == null) {
-                    pref = removedPrefs[key] ?: preferenceFragment.createAutoRevokePermissionPref(
+                    pref = removedPrefs[key] ?: preferenceFragment.createUnusedAppPref(
                         activity!!.application, pkgName, user, preferenceManager.context!!)
                     pref.key = key
                     pref.title = KotlinUtils.getPackageLabel(activity!!.application, pkgName, user)
@@ -226,6 +231,7 @@ class AutoRevokeFragment<PF, AutoRevokePref> : PreferenceFragmentCompat()
                 val mostImportant = getMostImportantGroup(revokedPerms)
                 val importantLabel = KotlinUtils.getPermGroupLabel(context!!, mostImportant)
                 pref.summary = when {
+                    revokedPerms.isEmpty() -> null
                     revokedPerms.size == 1 -> getString(R.string.auto_revoked_app_summary_one,
                         importantLabel)
                     revokedPerms.size == 2 -> {
@@ -305,7 +311,7 @@ class AutoRevokeFragment<PF, AutoRevokePref> : PreferenceFragmentCompat()
 
     class DisableDialog : DialogFragment() {
         override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-            val fragment = parentFragment as AutoRevokeFragment<*, *>
+            val fragment = parentFragment as UnusedAppsFragment<*, *>
             val packageName = arguments!!.getString(Intent.EXTRA_PACKAGE_NAME)!!
             val user = arguments!!.getParcelable<UserHandle>(Intent.EXTRA_USER)!!
             val b = AlertDialog.Builder(context!!)
@@ -323,8 +329,8 @@ class AutoRevokeFragment<PF, AutoRevokePref> : PreferenceFragmentCompat()
     /**
      * Interface that the parent fragment must implement.
      */
-    interface Parent<AutoRevokePref> where AutoRevokePref : Preference,
-                                           AutoRevokePref : RemovablePref {
+    interface Parent<UnusedAppPref> where UnusedAppPref : Preference,
+                                           UnusedAppPref : RemovablePref {
 
         /**
          * Set the title of the current settings page.
@@ -350,20 +356,19 @@ class AutoRevokeFragment<PF, AutoRevokePref> : PreferenceFragmentCompat()
         fun setLoadingState(loading: Boolean, animate: Boolean)
 
         /**
-         * Creates a apreference which represents an app that has been auto revoked. Has the app
-         * icon and label, as well as a button to uninstall/disable the app, and a button to open
-         * the app.
+         * Creates a preference which represents an app that is unused. Has the app icon and label,
+         * as well as a button to uninstall/disable the app, and a button to open the app.
          *
          * @param app The current application
          * @param packageName The name of the package whose icon this preference will retrieve
          * @param user The user whose package icon will be retrieved
          * @param context The current context
          */
-        fun createAutoRevokePermissionPref(
+        fun createUnusedAppPref(
             app: Application,
             packageName: String,
             user: UserHandle,
             context: Context
-        ): AutoRevokePref
+        ): UnusedAppPref
     }
 }

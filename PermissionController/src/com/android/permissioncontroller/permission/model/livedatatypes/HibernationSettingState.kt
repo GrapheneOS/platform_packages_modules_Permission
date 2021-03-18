@@ -17,23 +17,20 @@
 package com.android.permissioncontroller.permission.model.livedatatypes
 
 /**
- * Tracks the state of auto revoke for a package
+ * Tracks the setting state of hibernation and auto revoke for a package
  *
- * @param isEnabledGlobal Whether or not the Auto Revoke feature is enabled globally
+ * @param isEnabledGlobal Whether or not the hibernation/auto-revoke job runs
  * @param isEnabledForApp Whether or not the OPSTR_AUTO_REVOKE_PERMISSIONS_IF_UNUSED is set to
  * MODE_ALLOWED for this package
  * @param revocableGroupNames A list of which permission groups of this package are eligible for
  * auto-revoke. A permission group is auto-revocable if it does not contain a default granted
  * permission.
+ * @param shouldAllowUserToggle If the hibernation/auto-revoke switch should be provided for the
+ * user to control.
  */
-class AutoRevokeState(
+data class HibernationSettingState(
     val isEnabledGlobal: Boolean,
     val isEnabledForApp: Boolean,
-    val revocableGroupNames: List<String>
-) {
-
-    /**
-     * If the auto revoke switch should be provided for the user to control.
-     */
-    val shouldAllowUserToggle = revocableGroupNames.isNotEmpty()
-}
+    val revocableGroupNames: List<String>,
+    val shouldAllowUserToggle: Boolean
+)

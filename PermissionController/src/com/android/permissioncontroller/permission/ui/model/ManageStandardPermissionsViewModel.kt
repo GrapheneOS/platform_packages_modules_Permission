@@ -27,7 +27,7 @@ import com.android.permissioncontroller.permission.data.PermGroupsPackagesLiveDa
 import com.android.permissioncontroller.permission.data.PermGroupsPackagesUiInfoLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.data.StandardPermGroupNamesLiveData
-import com.android.permissioncontroller.permission.data.UnusedAutoRevokedPackagesLiveData
+import com.android.permissioncontroller.permission.data.unusedAutoRevokePackagesLiveData
 import com.android.permissioncontroller.permission.utils.navigateSafe
 
 /**
@@ -44,7 +44,7 @@ class ManageStandardPermissionsViewModel(
     val uiDataLiveData = PermGroupsPackagesUiInfoLiveData(app,
         StandardPermGroupNamesLiveData)
     val numCustomPermGroups = NumCustomPermGroupsWithPackagesLiveData()
-    val numAutoRevoked = Transformations.map(UnusedAutoRevokedPackagesLiveData) {
+    val numAutoRevoked = Transformations.map(unusedAutoRevokePackagesLiveData) {
         it?.size ?: 0
     }
 
