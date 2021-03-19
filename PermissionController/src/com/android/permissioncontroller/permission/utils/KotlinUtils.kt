@@ -495,7 +495,8 @@ object KotlinUtils {
         }
         val newGroup = LightAppPermGroup(group.packageInfo, group.permGroupInfo, newPerms,
             group.hasInstallToRuntimeSplit, group.specialLocationGrant)
-        if (newGroup.isOneTime) {
+        // If any permission in the group is one time granted, start one time permission session.
+        if (newGroup.permissions.any { it.value.isOneTime && it.value.isGrantedIncludingAppOp }) {
             app.getSystemService(PermissionManager::class.java)!!.startOneTimePermissionSession(
                 group.packageName, Utils.getOneTimePermissionsTimeout(),
                 ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_RESET_TIMER,
