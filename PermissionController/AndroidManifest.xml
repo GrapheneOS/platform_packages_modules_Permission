@@ -50,6 +50,7 @@
     <!-- TODO(b/170896938): make this privileged(signature may only work on pixel) -->
     <uses-permission android:name="android.permission.MANAGE_NOTIFICATION_LISTENERS" />
     <uses-permission android:name="android.permission.START_VIEW_PERMISSION_USAGE" />
+    <uses-permission android:name="android.permission.MANAGE_APP_HIBERNATION" />
 
     <uses-sdk android:minSdkVersion="29" android:targetSdkVersion="29" />
 
