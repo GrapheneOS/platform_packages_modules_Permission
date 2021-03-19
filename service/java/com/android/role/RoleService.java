@@ -556,7 +556,12 @@ public class RoleService extends SystemService implements RoleUserState.Callback
         }
 
         private boolean isUserExistent(@UserIdInt int userId) {
-            return mUserManager.getUserHandles(true).contains(UserHandle.of(userId));
+            final long identity = Binder.clearCallingIdentity();
+            try {
+                return mUserManager.getUserHandles(true).contains(UserHandle.of(userId));
+            } finally {
+                Binder.restoreCallingIdentity(identity);
+            }
         }
 
         private void enforceCrossUserPermission(@UserIdInt int userId, boolean allowAll,
