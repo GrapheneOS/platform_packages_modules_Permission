@@ -345,6 +345,12 @@ class GrantPermissionsViewHandlerImpl(
             } else {
                 View.GONE
             }
+            if (pos == ALLOW_FOREGROUND_BUTTON && buttonVisibilities[pos] &&
+                    locationVisibilities[LOCATION_ACCURACY_LAYOUT] &&
+                    locationVisibilities[DIALOG_WITH_FINE_LOCATION_ONLY]) {
+                buttons[pos]?.text = mActivity.resources.getString(
+                        R.string.grant_dialog_button_change_to_precise_location)
+            }
             buttons[pos]?.requestLayout()
         }
     }
