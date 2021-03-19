@@ -195,7 +195,7 @@ private suspend fun getAppsToHibernate(
         for ((user, stats) in userStats) {
             DumpableLog.i(LOG_TAG, "Usage stats for user ${user.identifier}: " +
                     stats.map { stat ->
-                        stat.packageName to Date(stat.lastTimeVisible)
+                        stat.packageName to Date(stat.lastTimePackageUsed())
                     }.toMap())
         }
     }
@@ -220,13 +220,13 @@ private suspend fun getAppsToHibernate(
                 Log.wtf(LOG_TAG, "Package $pkgName not among packages for " +
                         "its uid ${packageInfo.uid}: $uidPackages")
             }
-            var lastTimeVisible: Long = stats.lastTimeVisible(uidPackages)
+            var lastTimePkgUsed: Long = stats.lastTimePackageUsed(uidPackages)
 
             // Limit by install time
-            lastTimeVisible = Math.max(lastTimeVisible, packageInfo.firstInstallTime)
+            lastTimePkgUsed = Math.max(lastTimePkgUsed, packageInfo.firstInstallTime)
 
             // Limit by first boot time
-            lastTimeVisible = Math.max(lastTimeVisible, firstBootTime)
+            lastTimePkgUsed = Math.max(lastTimePkgUsed, firstBootTime)
 
             // Handle cross-profile apps
             if (context.isPackageCrossProfile(pkgName)) {
@@ -234,12 +234,13 @@ private suspend fun getAppsToHibernate(
                     if (otherUser == user) {
                         continue
                     }
-                    lastTimeVisible = Math.max(lastTimeVisible, otherStats.lastTimeVisible(pkgName))
+                    lastTimePkgUsed =
+                        maxOf(lastTimePkgUsed, otherStats.lastTimePackageUsed(pkgName))
                 }
             }
 
             // Threshold check - whether app is unused
-            now - lastTimeVisible > getUnusedThresholdMs()
+            now - lastTimePkgUsed > getUnusedThresholdMs()
         }
 
         unusedApps[user] = unusedUserApps
@@ -279,8 +280,8 @@ private suspend fun getAppsToHibernate(
             }
 
             if (DEBUG_HIBERNATION_POLICY) {
-                DumpableLog.i(LOG_TAG, "unused app $packageName - lastVisible on " +
-                    userStats[user]?.lastTimeVisible(packageName)?.let(::Date))
+                DumpableLog.i(LOG_TAG, "unused app $packageName - last used on " +
+                    userStats[user]?.lastTimePackageUsed(packageName)?.let(::Date))
             }
 
             synchronized(userAppsToHibernate) {
@@ -292,18 +293,32 @@ private suspend fun getAppsToHibernate(
     return appsToHibernate
 }
 
-private fun List<UsageStats>.lastTimeVisible(pkgNames: List<String>): Long {
+/**
+ * Gets the last time we consider the package used based off its usage stats. On pre-S devices
+ * this looks at last time visible which tracks explicit usage. In S, we add component usage
+ * which tracks various forms of implicit usage (e.g. service bindings).
+ */
+fun UsageStats.lastTimePackageUsed(): Long {
+    var lastTimePkgUsed = this.lastTimeVisible
+    // TODO(b/180748832): Change this to SDK check once SDK moves up and feature flag is removed.
+    if (isHibernationEnabled()) {
+        lastTimePkgUsed = maxOf(lastTimePkgUsed, this.lastTimeComponentUsed)
+    }
+    return lastTimePkgUsed
+}
+
+private fun List<UsageStats>.lastTimePackageUsed(pkgNames: List<String>): Long {
     var result = 0L
     for (stat in this) {
         if (stat.packageName in pkgNames) {
-            result = Math.max(result, stat.lastTimeVisible)
+            result = Math.max(result, stat.lastTimePackageUsed())
         }
     }
     return result
 }
 
-private fun List<UsageStats>.lastTimeVisible(pkgName: String): Long {
-    return lastTimeVisible(listOf(pkgName))
+private fun List<UsageStats>.lastTimePackageUsed(pkgName: String): Long {
+    return lastTimePackageUsed(listOf(pkgName))
 }
 
 /**
