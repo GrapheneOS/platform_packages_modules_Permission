@@ -57,7 +57,7 @@ import androidx.preference.SwitchPreference;
 
 import com.android.permissioncontroller.PermissionControllerStatsLog;
 import com.android.permissioncontroller.R;
-import com.android.permissioncontroller.permission.model.livedatatypes.AutoRevokeState;
+import com.android.permissioncontroller.permission.model.livedatatypes.HibernationSettingState;
 import com.android.permissioncontroller.permission.ui.Category;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModel;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModel.GroupUiInfo;
@@ -365,7 +365,7 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader {
         autoRevokeCategory.addPreference(autoRevokeSummary);
     }
 
-    private void setAutoRevokeToggleState(AutoRevokeState state) {
+    private void setAutoRevokeToggleState(HibernationSettingState state) {
         if (state == null || !mViewModel.getPackagePermGroupsLiveData().isInitialized()
                 || getListView() == null || getView() == null) {
             return;
