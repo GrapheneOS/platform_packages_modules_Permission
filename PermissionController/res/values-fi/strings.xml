@@ -70,6 +70,7 @@
     <string name="location_settings" msgid="3624412509133422562">"Sijaintiasetukset"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> on tämän laitteen sijaintipalveluiden tarjoaja. Sijainnin käyttöoikeutta voi muokata sijaintiasetuksissa."</string>
     <string name="system_warning" msgid="1173400963234358816">"Jos peruutat tämän käyttöoikeuden, laitteesi perustoiminnot eivät välttämättä enää toimi oikein."</string>
+    <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"Jos perut tämän luvan, jotkin tällä sovelluksella ylläpidetyn laitteesi ominaisuudet eivät välttämättä enää toimi oikein."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Käytännön vahvistama"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Käytäntö estää taustakäytön"</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"Käytäntö sallii taustakäytön"</string>
@@ -103,6 +104,10 @@
     <string name="message_staging" msgid="9110563899955511866">"Valmistellaan sovellusta…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Tuntematon"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Hallintapaneeli"</string>
+    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
+    <skip />
+    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Viimeinen käyttökerta: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> käyttökertaa</item>
       <item quantity="one">Viimeinen käyttökerta: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> käyttökerta</item>
@@ -166,6 +171,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> sovellusta</item>
       <item quantity="one">1 sovellus</item>
     </plurals>
+    <string name="permission_history_title" msgid="8340081285133025225">"Käyttöoikeushistoria"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Sovelluksen käyttöoikeudet"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Käyttö: <xliff:g id="NUM">%1$s</xliff:g> kertaa. Kokonaiskesto: <xliff:g id="DURATION">%2$s</xliff:g>. Käytetty viimeksi <xliff:g id="TIME">%3$s</xliff:g> sitten."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Käyttö: <xliff:g id="NUM">%1$s</xliff:g> kertaa. Käytetty viimeksi <xliff:g id="TIME">%2$s</xliff:g> sitten."</string>
@@ -176,6 +182,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Salli vain, kun sovellus on käytössä"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Kysy aina"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Estä"</string>
+    <string name="precise_image_description" msgid="6349638632303619872">"Tarkka sijainti"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"Likimääräinen sijainti"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Käytä tarkkaa sijaintia"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Kun tarkka sijainti on pois päältä, sovellukset voivat määrittää karkean sijainnin vain asuinalueen tarkkuudella"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>lupa"</string>
@@ -198,6 +206,8 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"Lupa poistettu: <xliff:g id="PERMISSION_NAME">%s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Luvat poistettu: <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> ja <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ja <xliff:g id="NUMBER">%2$s</xliff:g> muuta käyttöoikeutta poistettiin"</string>
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"Käyttämättömät sovellukset"</string>
+    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Jos sovellusta ei käytetä muutamaan kuukauteen:\n\n• Käyttöoikeudet poistetaan tietoturvasyistä\n• Väliaikaiset tiedostot poistetaan tilan vapauttamiseksi\n• Ilmoitukset lopetetaan akun säästämiseksi"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Avattu viimeksi <xliff:g id="NUMBER">%s</xliff:g> kuukautta sitten"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Sovellus avattiin viimeksi <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Avattu viimeksi <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -252,6 +262,11 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> sovellusta ei ole käytetty muutamaan kuukauteen. Tarkista napauttamalla.</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> sovellusta ei ole käytetty muutamaan kuukauteen. Tarkista napauttamalla.</item>
     </plurals>
+    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
+      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> käyttämätöntä sovellusta</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> käyttämätön sovellus</item>
+    </plurals>
+    <string name="unused_apps_notification_content" msgid="3704446042109375119">"Väliaikaiset ja käyttöoikeustiedostot on poistettu. Tarkista napauttamalla."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Joitain sovelluksia ei ole käytetty muutamaan kuukauteen"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> sovellusta ei ole käytetty muutamaan kuukauteen</item>
@@ -339,7 +354,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Sovellukset, joiden avulla voit tunnistaa puhelut ja estää häirikkö- ja robottipuhelut tai ei-toivotut numerot"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Asetetaanko <xliff:g id="APP_NAME">%1$s</xliff:g> soittajan tunnuksen ja häiriköinnin eston oletussovellukseksi?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Käyttöoikeuksia ei tarvita"</string>
-    <string name="role_watch_description" msgid="472019219209648726">"<xliff:g id="APP_NAME">%1$s</xliff:g> saa pääsyn ilmoituksiin, puhelimeen, yhteystietoihin ja kalenteriin."</string>
+    <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> saa luvan käyttää ilmoituksiasi sekä puhelimen, tekstiviestien, kontaktien ja kalenterin käyttöoikeudet."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Nykyinen oletus"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Älä kysy uudelleen"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Aseta oletukseksi"</string>
