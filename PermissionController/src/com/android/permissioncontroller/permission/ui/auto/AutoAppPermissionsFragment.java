@@ -132,12 +132,6 @@ public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment {
         setPreferenceScreen(getPreferenceManager().createPreferenceScreen(getContext()));
     }
 
-    @Override
-    public void onStop() {
-        super.onStop();
-        getPreferenceScreen().removeAll();
-    }
-
     private void showAllPermissions() {
         Fragment frag = AutoAllAppPermissionsFragment.newInstance(
                 getArguments().getString(Intent.EXTRA_PACKAGE_NAME),

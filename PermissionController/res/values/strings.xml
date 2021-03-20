@@ -106,6 +106,9 @@
     <!-- Title for the dialog button to allow a permission grant only when the app is in the foreground. [CHAR LIMIT=60] -->
     <string name="grant_dialog_button_allow_foreground">While using the app</string>
 
+    <!-- Title for the dialog button to change to precise location. [CHAR LIMIT=60] -->
+    <string name="grant_dialog_button_change_to_precise_location">Change to precise location</string>
+
     <!-- Title for the dialog button to allow a permission grant temporarily in teh foreground. [CHAR LIMIT=60] -->
     <string name="grant_dialog_button_allow_one_time">Only this time</string>
 
