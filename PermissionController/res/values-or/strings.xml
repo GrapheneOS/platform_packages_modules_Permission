@@ -70,6 +70,7 @@
     <string name="location_settings" msgid="3624412509133422562">"ଲୋକେ‍ସନ୍‌ ସେଟିଂସ୍‌"</string>
     <string name="location_warning" msgid="2381649060929040962">"ଏହି ଡିଭାଇସ୍‍ ପାଇଁ <xliff:g id="APP_NAME">%1$s</xliff:g> ଲୋକେସନ୍‍ ସେବା ପ୍ରଦାନ କରେ। ଲୋକେସନ୍‌ ସେଟିଂସ୍‌ରୁ ଲୋକେସନ୍‍ ଆକ୍ସେସ୍‍ ବଦଳାଯାଇପାରିବ।"</string>
     <string name="system_warning" msgid="1173400963234358816">"ଏହି ଅନୁମତିକୁ ଯଦି ଆପଣ ପ୍ରତ୍ୟାଖ୍ୟାନ କରନ୍ତି, ଆପଣଙ୍କ ଡିଭାଇସ୍‌ର ସାଧାରଣ ସୁବିଧାଗୁଡ଼ିକ ଆଉ କାର୍ଯ୍ୟ ନକରିପାରେ।"</string>
+    <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"ଯଦି ଆପଣ ଏହି ଅନୁମତି ଦେବାକୁ ଅଗ୍ରାହ୍ୟ କରନ୍ତି, ତେବେ ଏହି ଆପ୍ ଦ୍ୱାରା ପରିଚାଳିତ ଆପଣଙ୍କ ଡିଭାଇସର କିଛି ଫିଚର୍ ଆଉ ଆଶାନୁରୂପେ କାର୍ଯ୍ୟ କରିନପାରେ।"</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"ନିତୀଦ୍ୱାରା ଲାଗୁ କରାଯାଇଛି"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"ନିତୀ ଅନୁସାରେ ବ୍ୟାକ୍‌ଗ୍ରାଉଣ୍ଡ ଆକ୍ସେସ୍‌ ଅକ୍ଷମ କରାଯାଇଛି"</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"ନିତୀ ଅନୁସାରେ ପୃଷ୍ଠପଟ ଆକ୍ସେସ୍‌ ସକ୍ଷମ କରାଯାଇଛି"</string>
@@ -103,6 +104,10 @@
     <string name="message_staging" msgid="9110563899955511866">"ଆପ୍‍ ପର୍ଯ୍ୟାୟଭୁକ୍ତ କରାଯାଉଛି…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"ଅଜଣା"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"ଡ୍ୟାସ୍‍‍ବୋର୍ଡ"</string>
+    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
+    <skip />
+    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">ଶେଷ ଆକ୍ସେସ୍: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g>ଟି ଆକ୍ସେସ୍</item>
       <item quantity="one">ଶେଷ ଆକ୍ସେସ୍: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> ଆକ୍ସେସ୍</item>
@@ -166,6 +171,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g>ଟି ଆପ୍ସ</item>
       <item quantity="one">1 ଆପ୍</item>
     </plurals>
+    <string name="permission_history_title" msgid="8340081285133025225">"ଅନୁମତି ଇତିହାସ"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"ଆପ୍‍ ଅନୁମତି ବ୍ୟବହାର"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"ଆକ୍ସେସ୍‍: <xliff:g id="NUM">%1$s</xliff:g>ଥର। ସମୁଦାୟ ଅବଧି: <xliff:g id="DURATION">%2$s</xliff:g>। ଅନ୍ତିମ ଥର <xliff:g id="TIME">%3$s</xliff:g> ପୂର୍ବେ ବ୍ୟବହୃତ ହୋଇଥିଲା।"</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"ଆକ୍ସେସ୍‍: <xliff:g id="NUM">%1$s</xliff:g>ଥର। ଅନ୍ତିମ ଥର <xliff:g id="TIME">%2$s</xliff:g> ପୂର୍ବେ ବ୍ୟବହୃତ ହୋଇଥିଲା।"</string>
@@ -176,6 +182,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"ଆପ୍ ବ୍ୟବହାର ବେଳେ କେବଳ ଅନୁମତି ଦିଅନ୍ତୁ"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"ପ୍ରତ୍ୟେକ ଥର ପଚାରନ୍ତୁ"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"ଅଗ୍ରାହ୍ୟ କରନ୍ତୁ"</string>
+    <string name="precise_image_description" msgid="6349638632303619872">"ସଠିକ୍ ଲୋକେସନ୍"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"ଆନୁମାନିକ ଲୋକେସନ୍"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"ସଠିକ୍ ଲୋକେସନ୍ ବ୍ୟବହାର କରନ୍ତୁ"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"ଏହା ବନ୍ଦ ଥିଲେ ଆପଗୁଡ଼ିକ କେବଳ ଏକ ପାଖାପାଖି ଅଞ୍ଚଳର ପ୍ରକ୍ସିମିଟିରେ ଆପଣଙ୍କ ଆନୁମାନିକ ଲୋକେସନ୍ ନିର୍ଦ୍ଧାରଣ କରିପାରିବ"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> ଅନୁମତି"</string>
@@ -198,6 +206,8 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"<xliff:g id="PERMISSION_NAME">%s</xliff:g> ଅନୁମତିକୁ କାଢ଼ି ଦିଆଯାଇଛି"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> ଏବଂ <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> ଅନୁମତିକୁ କାଢ଼ି ଦିଆଯାଇଛି"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ଏବଂ ଅନ୍ୟ <xliff:g id="NUMBER">%2$s</xliff:g>ଟି ଅନୁମତି କାଢ଼ି ଦିଆଯାଇଛି"</string>
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"ଅବ୍ୟବହୃତ ଆପଗୁଡ଼ିକ"</string>
+    <string name="unused_apps_page_summary" msgid="5271048000004368665">"ଯଦି ଏକ ଆପକୁ କିଛି ମାସ ପାଇଁ ବ୍ୟବହାର କରାଯାଇନାହିଁ, ତେବେ:\n\n• ଆପଣଙ୍କ ଗୋପନୀୟତାକୁ ସୁରକ୍ଷା ଦେବା ପାଇଁ ଅନୁମତିଗୁଡ଼ିକୁ କାଢ଼ି ଦିଆଯାଏ\n• ସ୍ପେସ୍ ଖାଲି କରିବା ପାଇଁ ଅସ୍ଥାୟୀ ଫାଇଲଗୁଡ଼ିକୁ କାଢ଼ି ଦିଆଯାଏ\n• ବ୍ୟାଟେରୀ ସେଭ୍ କରିବାକୁ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକୁ ବନ୍ଦ କରାଯାଏ"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"ଗତଥର <xliff:g id="NUMBER">%s</xliff:g> ମାସ ପୂର୍ବେ ଖୋଲାଯାଇଥିଲା"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ଗତ ଥର <xliff:g id="DATE">%s</xliff:g>ରେ ଆପକୁ ଖୋଲାଯାଇଥିଲା"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"ଗତ ଥର <xliff:g id="DATE">%s</xliff:g>ରେ ଖୋଲାଯାଇଥିଲା"</string>
@@ -252,6 +262,11 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g>ଟି ଆପକୁ କିଛି ମାସ ହେଲା ବ୍ୟବହାର କରାଯାଇନାହିଁ। ସମୀକ୍ଷା କରିବାକୁ ଟାପ୍ କରନ୍ତୁ</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g>ଟି ଆପକୁ କିଛି ମାସ ହେଲା ବ୍ୟବହାର କରାଯାଇନାହିଁ। ସମୀକ୍ଷା କରିବାକୁ ଟାପ୍ କରନ୍ତୁ</item>
     </plurals>
+    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
+      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g>ଟି ଅବ୍ୟବହୃତ ଆପ୍</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g>ଟି ଅବ୍ୟବହୃତ ଆପ୍</item>
+    </plurals>
+    <string name="unused_apps_notification_content" msgid="3704446042109375119">"ଅନୁମତି ଏବଂ ଅସ୍ଥାୟୀ ଫାଇଲଗୁଡ଼ିକୁ କାଢ଼ି ଦିଆଯାଇଛି। ସମୀକ୍ଷା କରିବାକୁ ଟାପ୍ କରନ୍ତୁ।"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"କିଛି ଆପକୁ କିଛି ମାସ ହେଲା ବ୍ୟବହାର କରାଯାଇନାହିଁ"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g>ଟି ଆପକୁ କିଛି ମାସ ହେଲା ବ୍ୟବହାର କରାଯାଇନାହିଁ</item>
@@ -339,7 +354,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"ସେହି ଆପ୍ସ ଯାହା କଲଗୁଡ଼ିକୁ ଚିହ୍ନଟ କରିବା, ସ୍ପାମ୍ ଓ ରୋବୋକଲ୍ ବା ଅଦରକାରୀ ନମ୍ବରଗୁଡ଼ିକୁ ବ୍ଲକ୍ କରିବାକୁ ଅନୁମତି ଦିଏ"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g>କୁ ଆପଣଙ୍କର ଡିଫଲ୍ଟ କଲର୍ ଆଇଡି &amp; ସ୍ପାମ୍ ଆପ୍ ଭାବ୍ ସେଟ୍ କରିବେ କି?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"କୌଣସି ଅନୁମତି ଆବଶ୍ୟକ ନାହିଁ"</string>
-    <string name="role_watch_description" msgid="472019219209648726">"ବିଜ୍ଞପ୍ତି, ଫୋନ୍, ଯୋଗାଯୋଗ ଓ କ୍ୟାଲେଣ୍ଡରକୁ <xliff:g id="APP_NAME">%1$s</xliff:g> ଆକ୍ସେସ୍ ପାଇବ।"</string>
+    <string name="role_watch_description" msgid="267003778693177779">"ଆପଣଙ୍କ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକ ସହ ଇଣ୍ଟରାକ୍ଟ କରିବା ଏବଂ ଆପଣଙ୍କ ଫୋନ୍, SMS, ଯୋଗାଯୋଗ ଓ କ୍ୟାଲେଣ୍ଡର ଅନୁମତିଗୁଡ଼ିକୁ ଆକ୍ସେସ୍ କରିବା ପାଇଁ <xliff:g id="APP_NAME">%1$s</xliff:g>କୁ ଅନୁମତି ଦିଆଯିବ।"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"ସମ୍ପ୍ରତ୍ତି ଡିଫଲ୍ଟ"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"ଆଉ ପଚାରନ୍ତୁ ନାହିଁ"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"ଡିଫଲ୍ଟ ଭାବେ ସେଟ୍ କରନ୍ତୁ"</string>

@@ -70,6 +70,7 @@
     <string name="location_settings" msgid="3624412509133422562">"위치 설정"</string>
     <string name="location_warning" msgid="2381649060929040962">"이 기기의 위치 서비스 제공업체는 <xliff:g id="APP_NAME">%1$s</xliff:g>입니다. 위치 정보 액세스는 위치 설정에서 수정할 수 있습니다."</string>
     <string name="system_warning" msgid="1173400963234358816">"이 권한을 거부하면 기기의 기본 기능이 정상적으로 작동하지 않을 수 있습니다."</string>
+    <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"권한을 거부하면 이 앱에서 관리하는 기기의 일부 기능이 더 이상 제대로 작동하지 않을 수 있습니다."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"정책에 의해 시행됨"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"정책에 따라 백그라운드 액세스가 사용 중지됨"</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"정책에 따라 백그라운드 액세스가 사용 설정됨"</string>
@@ -103,6 +104,10 @@
     <string name="message_staging" msgid="9110563899955511866">"앱 준비 중…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"알 수 없음"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"대시보드"</string>
+    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
+    <skip />
+    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">마지막 액세스: <xliff:g id="TIME_2">%1$s</xliff:g>\n액세스 <xliff:g id="NUM_3">%2$s</xliff:g>회</item>
       <item quantity="one">마지막 액세스: <xliff:g id="TIME_0">%1$s</xliff:g>\n액세스 <xliff:g id="NUM_1">%2$s</xliff:g>회</item>
@@ -166,6 +171,7 @@
       <item quantity="other">앱 <xliff:g id="NUMBER">%s</xliff:g>개</item>
       <item quantity="one">앱 1개</item>
     </plurals>
+    <string name="permission_history_title" msgid="8340081285133025225">"권한 내역"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"앱 권한 사용"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"액세스: <xliff:g id="NUM">%1$s</xliff:g>회, 총 기간: <xliff:g id="DURATION">%2$s</xliff:g>, 마지막 사용: <xliff:g id="TIME">%3$s</xliff:g> 전"</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"액세스: <xliff:g id="NUM">%1$s</xliff:g>회, 마지막 사용: <xliff:g id="TIME">%2$s</xliff:g> 전"</string>
@@ -176,6 +182,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"앱 사용 중에만 허용"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"항상 확인"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"거부"</string>
+    <string name="precise_image_description" msgid="6349638632303619872">"정확한 위치"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"대략적인 위치"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"정확한 위치 사용"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"정확한 위치가 사용 중지된 상태에서는 앱에서 주변 지역 범위 내의 대략적인 위치만 파악할 수 있습니다."</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> 액세스 권한"</string>
@@ -198,6 +206,8 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"<xliff:g id="PERMISSION_NAME">%s</xliff:g> 권한 삭제됨"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> 및 <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> 권한 삭제됨"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> 외 <xliff:g id="NUMBER">%2$s</xliff:g>개 권한 삭제됨"</string>
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"사용하지 않는 앱"</string>
+    <string name="unused_apps_page_summary" msgid="5271048000004368665">"앱이 몇 개월간 사용되지 않는 경우 다음 사항이 적용됩니다.\n\n• 개인정보 보호를 위해 권한이 삭제됨\n• 여유 공간 확보를 위해 임시 파일이 삭제됨\n• 배터리 절약을 위해 알림이 중단됨"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"마지막으로 실행한 지 <xliff:g id="NUMBER">%s</xliff:g>개월 이상 경과함"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"마지막 앱 실행 날짜: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"마지막 실행 날짜: <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -252,6 +262,11 @@
       <item quantity="other">앱 <xliff:g id="COUNT_1">%1$d</xliff:g>개를 몇 개월 동안 사용하지 않았습니다. 검토하려면 탭하세요.</item>
       <item quantity="one">앱 <xliff:g id="COUNT_0">%1$d</xliff:g>개를 몇 개월 동안 사용하지 않았습니다. 검토하려면 탭하세요.</item>
     </plurals>
+    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
+      <item quantity="other">사용하지 않는 앱 <xliff:g id="COUNT_1">%1$d</xliff:g>개</item>
+      <item quantity="one">사용하지 않는 앱 <xliff:g id="COUNT_0">%1$d</xliff:g>개</item>
+    </plurals>
+    <string name="unused_apps_notification_content" msgid="3704446042109375119">"권한과 임시 파일이 삭제되었습니다. 검토하려면 탭하세요."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"일부 앱을 몇 개월 동안 사용하지 않았습니다."</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other">앱 <xliff:g id="COUNT_1">%1$d</xliff:g>개를 몇 개월 동안 사용하지 않았습니다.</item>
@@ -339,7 +354,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"전화를 확인하고 스팸, 자동녹음전화 또는 원하지 않는 번호를 차단하는 앱입니다."</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> 앱을 기본 발신번호 표시 및 스팸 앱으로 설정하시겠습니까?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"필요한 권한 없음"</string>
-    <string name="role_watch_description" msgid="472019219209648726">"<xliff:g id="APP_NAME">%1$s</xliff:g>에서 알림, 휴대전화, 주소록, 캘린더에 액세스할 수 있습니다."</string>
+    <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g>에서 알림과 상호작용하고 전화, SMS, 연락처, 캘린더에 액세스할 수 있게 됩니다."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"현재 기본 앱"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"다시 묻지 않음"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"기본 앱으로 설정"</string>

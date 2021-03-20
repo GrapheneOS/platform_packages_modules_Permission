@@ -70,6 +70,7 @@
     <string name="location_settings" msgid="3624412509133422562">"Tetapan Lokasi"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> ialah pembekal perkhidmatan lokasi untuk peranti ini. Akses lokasi boleh diubah suai daripada tetapan lokasi."</string>
     <string name="system_warning" msgid="1173400963234358816">"Jika anda tolak kebenaran ini, ciri asas peranti anda mungkin tidak lagi berfungsi seperti yang dimaksudkan."</string>
+    <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"Jika anda menolak kebenaran ini, beberapa ciri peranti anda yang diurus oleh apl ini mungkin tidak lagi berfungsi seperti yang sepatutnya."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Dikuatkuasakan oleh dasar"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Akses latar belakang dilumpuhkan oleh dasar"</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"Akses latar belakang didayakan oleh dasar"</string>
@@ -103,6 +104,10 @@
     <string name="message_staging" msgid="9110563899955511866">"Pemeringkatan apl…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Tidak diketahui"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Papan Pemuka"</string>
+    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
+    <skip />
+    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Akses terakhir: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> akses</item>
       <item quantity="one">Akses terakhir: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> akses</item>
@@ -166,6 +171,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> apl</item>
       <item quantity="one">1 apl</item>
     </plurals>
+    <string name="permission_history_title" msgid="8340081285133025225">"Sejarah kebenaran"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Penggunaan kebenaran apl"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Akses: <xliff:g id="NUM">%1$s</xliff:g> kali. Jumlah tempoh: <xliff:g id="DURATION">%2$s</xliff:g>. Terakhir digunakan <xliff:g id="TIME">%3$s</xliff:g> yang lalu."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Akses: <xliff:g id="NUM">%1$s</xliff:g> kali. Terakhir digunakan <xliff:g id="TIME">%2$s</xliff:g> yang lalu."</string>
@@ -176,6 +182,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Benarkan hanya semasa menggunakan apl"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Tanya setiap kali"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Tolak"</string>
+    <string name="precise_image_description" msgid="6349638632303619872">"Lokasi tepat"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"Lokasi anggaran"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Gunakan lokasi tepat"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Apl hanya boleh menentukan lokasi anggaran anda dalam kejiranan berdekatan"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Kebenaran <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -198,6 +206,8 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"Kebenaran <xliff:g id="PERMISSION_NAME">%s</xliff:g> dialih keluar"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Kebenaran <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> dan <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> dialih keluar"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> dan <xliff:g id="NUMBER">%2$s</xliff:g> kebenaran lain dialih keluar"</string>
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"Apl yang tidak digunakan"</string>
+    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Jika apl tidak digunakan selama beberapa bulan:\n\n• Kebenaran dialih keluar untuk melindungi privasi anda\n• Fail sementara dialih keluar untuk mengosongkan ruang\n• Pemberitahuan diberhentikan untuk menjimatkan bateri"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Terakhir dibuka lebih <xliff:g id="NUMBER">%s</xliff:g> bulan yang lalu"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Apl dibuka kali terakhir pada <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Terakhir dibuka <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -252,6 +262,11 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> apl tidak digunakan selama beberapa bulan. Ketik untuk menyemak</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> apl tidak digunakan selama beberapa bulan. Ketik untuk menyemak</item>
     </plurals>
+    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
+      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> apl yang tidak digunakan</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> apl yang tidak digunakan</item>
+    </plurals>
+    <string name="unused_apps_notification_content" msgid="3704446042109375119">"Kebenaran dan fail sementara telah dialih keluar. Ketik untuk menyemak."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Sesetengah apl tidak digunakan selama beberapa bulan"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> apl tidak digunakan selama beberapa bulan</item>
@@ -339,7 +354,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Apl yang membenarkan anda mengenal pasti panggilan dan menyekat spam, robopanggilan atau nombor yang tidak dikehendaki"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Tetapkan <xliff:g id="APP_NAME">%1$s</xliff:g> sebagai ID pemanggil &amp; apl spam lalai anda?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Kebenaran tidak diperlukan"</string>
-    <string name="role_watch_description" msgid="472019219209648726">"<xliff:g id="APP_NAME">%1$s</xliff:g> akan mendapat akses kepada Pemberitahuan, Telefon, Kenalan dan Kalendar."</string>
+    <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> akan dibenarkan berinteraksi dengan pemberitahuan anda dan mengakses kebenaran Telefon, SMS, Kenalan dan Kalendar anda."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Lalai semasa"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Jangan tanya lagi"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Tetapkan sbg lalai"</string>

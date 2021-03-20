@@ -71,6 +71,7 @@
     <string name="location_settings" msgid="3624412509133422562">"Setări privind locația"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> este un furnizor de servicii de localizare pentru acest dispozitiv. Accesul la locație poate fi modificat din setările privind locația."</string>
     <string name="system_warning" msgid="1173400963234358816">"Dacă refuzați această permisiune, este posibil ca funcțiile de bază ale dispozitivului să nu mai funcționeze corespunzător."</string>
+    <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"Dacă refuzați permisiunea, este posibil ca unele opțiuni ale dispozitivului gestionat de această aplicație să nu mai funcționeze corespunzător."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Aplicată conform politicii"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Acces la fundal dezactivat de politică"</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"Acces la fundal activat de politică"</string>
@@ -104,6 +105,10 @@
     <string name="message_staging" msgid="9110563899955511866">"Se pregătește aplicația…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Necunoscut"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Tablou de bord"</string>
+    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
+    <skip />
+    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="few">Ultima accesare: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> accesări</item>
       <item quantity="other">Ultima accesare: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> de accesări</item>
@@ -174,6 +179,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> de aplicații</item>
       <item quantity="one">O aplicație</item>
     </plurals>
+    <string name="permission_history_title" msgid="8340081285133025225">"Istoric de permisiuni"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Utilizare permisiuni pentru aplicație"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Acces: <xliff:g id="NUM">%1$s</xliff:g> ori. Durată totală: <xliff:g id="DURATION">%2$s</xliff:g>. Ultima utilizare: acum <xliff:g id="TIME">%3$s</xliff:g>."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Acces: <xliff:g id="NUM">%1$s</xliff:g> ori. Ultima utilizare: acum <xliff:g id="TIME">%2$s</xliff:g>."</string>
@@ -184,6 +190,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Permiteți numai când folosiți aplicația"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Întreabă de fiecare dată"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Refuzați"</string>
+    <string name="precise_image_description" msgid="6349638632303619872">"Locația exactă"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"Locația aproximativă"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Folosiți locația exactă"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Dacă opțiunea este dezactivată, aplicațiile vă pot determina doar locația aproximativă la nivel de cartier"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Permisiune <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -206,6 +214,8 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"Permisiunea <xliff:g id="PERMISSION_NAME">%s</xliff:g> a fost eliminată"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Permisiunile <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> și <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> au fost eliminate"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Permisiunea <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> și încă <xliff:g id="NUMBER">%2$s</xliff:g> permisiuni au fost eliminate"</string>
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"Aplicații nefolosite"</string>
+    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Dacă o aplicație nu este folosită timp de câteva luni:\n\n• permisiunile sunt eliminate pentru a vă proteja confidențialitatea;\n• fișierele temporare sunt eliminate pentru a elibera spațiu;\n• notificările sunt dezactivate pentru a economisi baterie."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Data ultimei deschideri: cu peste <xliff:g id="NUMBER">%s</xliff:g> luni în urmă"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Aplicația a fost deschisă ultima dată pe <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Data ultimei deschideri: <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -265,6 +275,12 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> de aplicații nu au fost folosite de câteva luni. Atingeți pentru a examina.</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> aplicație nu a fost folosită de câteva luni. Atingeți pentru a examina.</item>
     </plurals>
+    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
+      <item quantity="few"><xliff:g id="COUNT_1">%1$d</xliff:g> aplicații nefolosite</item>
+      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> de aplicații nefolosite</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> aplicație nefolosită</item>
+    </plurals>
+    <string name="unused_apps_notification_content" msgid="3704446042109375119">"Permisiunile și fișierele temporare au fost eliminate. Atingeți pentru a examina."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Unele aplicații nu au fost folosite de câteva luni"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="few"><xliff:g id="COUNT_1">%1$d</xliff:g> aplicații nu au fost folosite de câteva luni</item>
@@ -353,7 +369,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Aplicații care vă ajută să identificați apeluri și să blocați spamul, apelurile automate sau numerele nedorite"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Setați <xliff:g id="APP_NAME">%1$s</xliff:g> ca aplicație prestabilită pentru ID-ul apelantului și spam?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Nu este nevoie de permisiuni"</string>
-    <string name="role_watch_description" msgid="472019219209648726">"<xliff:g id="APP_NAME">%1$s</xliff:g> va primi acces la Notificări, Telefon, Agendă și Calendar."</string>
+    <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> va putea să interacționeze cu notificările dvs. și să vă acceseze permisiunile pentru Telefon, SMS-uri, Agendă și Calendar."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Aplicația prestabilită actuală"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Nu mai întreba"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Setați ca standard"</string>

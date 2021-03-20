@@ -64,12 +64,13 @@
     <string name="default_permission_description" msgid="4624464917726285203">"een onbekende actie uitvoeren"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"Verleend aan <xliff:g id="COUNT_0">%1$d</xliff:g> van <xliff:g id="COUNT_1">%2$d</xliff:g> apps"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"Verleend aan <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> apps"</string>
-    <string name="menu_show_system" msgid="4254021607027872504">"Systeem-apps weergeven"</string>
+    <string name="menu_show_system" msgid="4254021607027872504">"Systeem-apps tonen"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Systeem-apps verbergen"</string>
     <string name="no_apps" msgid="2412612731628386816">"Geen apps"</string>
     <string name="location_settings" msgid="3624412509133422562">"Locatie-instellingen"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> is een leverancier van locatieservices voor dit apparaat. Locatietoegang kan worden aangepast via de locatie-instellingen."</string>
     <string name="system_warning" msgid="1173400963234358816">"Als je dit recht weigert, kan het zijn dat basisfuncties van je apparaat niet meer werken zoals bedoeld."</string>
+    <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"Als je dit recht weigert, kan het zijn dat sommige functies van je apparaat dat wordt beheerd door deze app niet meer werken zoals bedoeld."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Afgedwongen door beleid"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Toegang op de achtergrond uitgeschakeld op basis van beleid"</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"Toegang op de achtergrond ingeschakeld op basis van beleid"</string>
@@ -103,6 +104,10 @@
     <string name="message_staging" msgid="9110563899955511866">"App uitvoeren…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Onbekend"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Dashboard"</string>
+    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
+    <skip />
+    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Laatste keer geopend: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> toegangsacties</item>
       <item quantity="one">Laatste keer geopend: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> toegangsactie</item>
@@ -149,7 +154,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> apps gebruikt</item>
       <item quantity="one">1 app gebruikt</item>
     </plurals>
-    <string name="permission_usage_view_details" msgid="6675335735468752787">"Alles weergeven op dashboard"</string>
+    <string name="permission_usage_view_details" msgid="6675335735468752787">"Alles op dashboard tonen"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Gefilterd op: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Filter verwijderen"</string>
     <string name="filter_by_title" msgid="7300368602759958031">"Filteren op"</string>
@@ -166,6 +171,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> apps</item>
       <item quantity="one">1 app</item>
     </plurals>
+    <string name="permission_history_title" msgid="8340081285133025225">"Rechtengeschiedenis"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Gebruik van app-rechten"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Toegang: <xliff:g id="NUM">%1$s</xliff:g> keer. Totale duur: <xliff:g id="DURATION">%2$s</xliff:g>. Laatst gebruikt: <xliff:g id="TIME">%3$s</xliff:g> geleden."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Toegang: <xliff:g id="NUM">%1$s</xliff:g> keer. Laatst gebruikt: <xliff:g id="TIME">%2$s</xliff:g> geleden."</string>
@@ -176,13 +182,15 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Toestaan bij gebruik van app"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Altijd vragen"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Weigeren"</string>
+    <string name="precise_image_description" msgid="6349638632303619872">"Exacte locatie"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"Geschatte locatie"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Exacte locatie gebruiken"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Apps kunnen alleen je geschatte locatie binnen een bepaalde omgeving vaststellen als dit uit staat"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>-recht"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Toegang tot <xliff:g id="PERM">%1$s</xliff:g> voor deze app"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Alle rechten van <xliff:g id="APP">%1$s</xliff:g> bekijken"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Alle apps met dit recht bekijken"</string>
-    <string name="assistant_mic_label" msgid="1011432357152323896">"Gebruik van Assistent-microfoon weergeven"</string>
+    <string name="assistant_mic_label" msgid="1011432357152323896">"Gebruik van Assistent-microfoon tonen"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Rechten verwijderen als app niet wordt gebruikt"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Om je gegevens te beschermen worden de rechten voor deze app verwijderd als de app een aantal maanden niet is gebruikt."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Om je gegevens te beschermen worden de volgende rechten verwijderd als de app een paar maanden niet is gebruikt: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
@@ -198,6 +206,8 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"Recht voor <xliff:g id="PERMISSION_NAME">%s</xliff:g> verwijderd"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Rechten voor <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> en <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> verwijderd"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> en <xliff:g id="NUMBER">%2$s</xliff:g> andere rechten zijn verwijderd"</string>
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"Niet-gebruikte apps"</string>
+    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Als je een app een aantal maanden niet gebruikt:\n\n• Rechten worden ingetrokken om je privacy te beschermen.\n• Tijdelijke bestanden worden verwijderd om ruimte vrij te maken.\n• Meldingen worden gestopt om batterijlading te sparen."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Meer dan <xliff:g id="NUMBER">%s</xliff:g> maanden geleden voor het laatst geopend"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"App laatst geopend op <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Laatst geopend op <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -252,6 +262,11 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> apps zijn al een paar maanden niet gebruikt. Tik om te bekijken.</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> app is al een paar maanden niet gebruikt. Tik om te bekijken.</item>
     </plurals>
+    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
+      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> niet-gebruikte apps</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> niet-gebruikte app</item>
+    </plurals>
+    <string name="unused_apps_notification_content" msgid="3704446042109375119">"Rechten en tijdelijke bestanden zijn verwijderd. Tik om te bekijken."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Bepaalde apps zijn al een paar maanden niet gebruikt"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> apps zijn al een paar maanden niet gebruikt</item>
@@ -339,7 +354,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Apps waarmee je gesprekken kunt identificeren en spam, robocalls of ongewenste nummers kunt blokkeren"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> instellen als standaard-app voor beller-ID\'s en spam?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Geen rechten nodig"</string>
-    <string name="role_watch_description" msgid="472019219209648726">"<xliff:g id="APP_NAME">%1$s</xliff:g> krijgt toegang tot Meldingen, Telefoon, Contacten en Agenda."</string>
+    <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> kan interactie hebben met je meldingen en toegang krijgen tot je rechten voor telefoon, sms, contacten en agenda."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Huidige standaard-app"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Niet meer vragen"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Standaard instellen"</string>
@@ -388,11 +403,11 @@
     <string name="incident_report_dialog_deny_label" msgid="3535314290677579383">"Weigeren"</string>
     <string name="adjust_user_sensitive_title" msgid="4196724451314280527">"Geavanceerde instellingen"</string>
     <string name="menu_adjust_user_sensitive" msgid="6497923610654425780">"Geavanceerde instellingen"</string>
-    <string name="adjust_user_sensitive_globally_title" msgid="8649190949066029174">"Gebruik van systeem-apps weergeven"</string>
-    <string name="adjust_user_sensitive_globally_summary" msgid="129467818433773912">"Gebruik van rechten door systeem-apps weergeven op statusbalk, dashboard en elders"</string>
+    <string name="adjust_user_sensitive_globally_title" msgid="8649190949066029174">"Gebruik van systeem-apps tonen"</string>
+    <string name="adjust_user_sensitive_globally_summary" msgid="129467818433773912">"Gebruik van rechten door systeem-apps tonen op statusbalk, dashboard en elders"</string>
     <string name="adjust_user_sensitive_per_app_header" msgid="4543506440989005648">"Gebruik laten zien voor het volgende"</string>
-    <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Activeringsdetectie van de assistent weergeven"</string>
-    <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Icoon op statusbalk weergeven als microfoon wordt gebruikt om de Spraakassistent te activeren"</string>
+    <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Activeringsdetectie van de assistent tonen"</string>
+    <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Icoon op statusbalk tonen als microfoon wordt gebruikt om de Spraakassistent te activeren"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot foto\'s en media op je apparaat?"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot je contacten?"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot de locatie van dit apparaat?"</string>
