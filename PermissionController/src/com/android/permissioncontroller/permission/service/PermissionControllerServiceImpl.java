@@ -82,6 +82,7 @@ import java.util.Set;
 import java.util.concurrent.Executor;
 import java.util.function.Consumer;
 import java.util.function.IntConsumer;
+import java.util.stream.Collectors;
 
 import kotlin.Pair;
 import kotlinx.coroutines.BuildersKt;
@@ -656,7 +657,16 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
         for (AppPermissionGroup group : groups) {
             if (group.areRuntimePermissionsGranted()) {
                 logOneTimeSessionRevoke(packageName, uid, group, requestId);
-                group.revokeRuntimePermissions(false);
+                // Revoke only one time granted permissions if not all
+                List<String> oneTimeGrantedPermissions = group.getPermissions().stream()
+                        .filter(Permission::isOneTime).filter(Permission::isGranted)
+                        .map(Permission::getName).collect(Collectors.toList());
+                if (group.getPermissions().size() == oneTimeGrantedPermissions.size()) {
+                    group.revokeRuntimePermissions(false);
+                } else {
+                    group.revokeRuntimePermissions(false,
+                            oneTimeGrantedPermissions.toArray(new String[0]));
+                }
             }
             group.setUserSet(false);
             group.persistChanges(false, ONE_TIME_PERMISSION_REVOKED_REASON);
