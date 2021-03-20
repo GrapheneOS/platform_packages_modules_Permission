@@ -30,7 +30,6 @@ import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
 
@@ -38,6 +37,7 @@ import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.model.AppPermissionUsage;
 import com.android.permissioncontroller.permission.model.legacy.PermissionApps;
+import com.android.permissioncontroller.permission.ui.handheld.PermissionGroupPreference;
 import com.android.permissioncontroller.permission.ui.handheld.PermissionHistoryPreference;
 import com.android.permissioncontroller.permission.ui.handheld.SettingsWithLargeHeader;
 import com.android.permissioncontroller.permission.utils.Utils;
@@ -143,12 +143,8 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
         long startTime = Math.max(timeFilterItem == null ? 0 : (curTime - timeFilterItem.getTime()),
                 0);
 
-        AppPermissionGroup group = getGroup(mFilterGroup);
-        Preference permissionPreference = new Preference(context);
-        // TODO: theianchen use KotlinUtils.INSTANCE.getPermGroupLabel()
-        permissionPreference.setTitle(group.getLabel());
-        // TODO: theianchen use KotlinUtils.INSTANCE.getPermGroupLabel()
-        permissionPreference.setIcon(group.getIconResId());
+        PermissionGroupPreference permissionPreference = new PermissionGroupPreference(context,
+                getResources(), mFilterGroup);
         screen.addPreference(permissionPreference);
 
         List<Pair<AppPermissionUsage, Long>> usages = new ArrayList<>();
@@ -175,7 +171,7 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
 
                 used = true;
                 // identify whether the group matches the group for the page
-                if (groupUsage.getGroup().getName().equals(group.getName())) {
+                if (groupUsage.getGroup().getName().equals(mFilterGroup)) {
                     usages.add(Pair.create(appUsage, lastAccessTime));
                 }
             }
