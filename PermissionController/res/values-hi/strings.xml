@@ -70,6 +70,7 @@
     <string name="location_settings" msgid="3624412509133422562">"जगह की जानकारी की सेटिंग"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> से इस डिवाइस पर जगह की जानकारी मिलती है. जगह की जानकारी की सेटिंग में जाकर जगह की जानकरी ऐक्सेस करने की अनुमति में बदलाव किया जा सकता है."</string>
     <string name="system_warning" msgid="1173400963234358816">"अगर आप यह अनुमति नहीं देते हैं, तो हो सकता है कि आपके डिवाइस की बुनियादी सुविधाएं ठीक तरह से काम न करें."</string>
+    <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"अगर आप यह अनुमति नहीं देते हैं, तो आपके डिवाइस पर इस ऐप्लिकेशन के ज़रिए मैनेज की जाने वाली कुछ सुविधाएं, ठीक तरह से काम नहीं करेंगी."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"नीति के मुताबिक चालू किया गया"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"नीति के मुताबिक बैकग्राउंड में चलने का ऐक्सेस बंद है"</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"नीति के मुताबिक बैकग्राउंड में चलने का ऐक्सेस चालू किया गया"</string>
@@ -103,6 +104,10 @@
     <string name="message_staging" msgid="9110563899955511866">"ऐप्लिकेशन तैयार किया जा रहा है…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"ऐप्लिकेशन के बारे में कोई जानकारी नहीं है"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"डैशबोर्ड"</string>
+    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
+    <skip />
+    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="one">पिछले ऐक्सेस की जानकारी: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> बार ऐक्सेस किया गया</item>
       <item quantity="other">पिछले ऐक्सेस की जानकारी: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> बार ऐक्सेस किया गया</item>
@@ -166,6 +171,7 @@
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> ऐप्लिकेशन</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ऐप्लिकेशन</item>
     </plurals>
+    <string name="permission_history_title" msgid="8340081285133025225">"अनुमति का इतिहास"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"ऐप्लिकेशन अनुमतियों इस्तेमाल"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"ऐक्सेस: <xliff:g id="NUM">%1$s</xliff:g> बार. कुल अवधि: <xliff:g id="DURATION">%2$s</xliff:g>. आखिरी बार <xliff:g id="TIME">%3$s</xliff:g> पहले इस्तेमाल किया गया."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"ऐक्सेस: <xliff:g id="NUM">%1$s</xliff:g> बार. आखिरी बार <xliff:g id="TIME">%2$s</xliff:g> पहले इस्तेमाल किया गया."</string>
@@ -176,6 +182,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"सिर्फ़ ऐप्लिकेशन इस्तेमाल करते समय अनुमति दें"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"हर बार पूछें"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"अनुमति न दें"</string>
+    <string name="precise_image_description" msgid="6349638632303619872">"सटीक जगह"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"अनुमानित जगह"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"जगह की सटीक जानकारी का इस्तेमाल करें"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"जगह की सटीक जानकारी पता लगाने की सुविधा बंद होने पर, ये ऐप्लिकेशन आपके आस-पास के इलाके में, आपकी जगह की जानकारी का सिर्फ़ अनुमान लगा सकते हैं"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> अनुमति"</string>
@@ -198,6 +206,8 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"<xliff:g id="PERMISSION_NAME">%s</xliff:g> की अनुमति हटाई गई"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> और <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> की अनुमतियां हटाई गईं"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> और <xliff:g id="NUMBER">%2$s</xliff:g> अन्य अनुमतियां हटाई गईं"</string>
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"इस्तेमाल नहीं किए गए ऐप्लिकेशन"</string>
+    <string name="unused_apps_page_summary" msgid="5271048000004368665">"अगर आप किसी ऐप्लिकेशन का कुछ महीनों तक इस्तेमाल नहीं करते हैं, तो:\n\n• आपकी निजता की सुरक्षा के लिए, उस ऐप्लिकेशन को दी गई अनुमतियां हटा दी जाती हैं\n• मेमोरी खाली करने के लिए, डिवाइस पर कुछ समय के लिए सेव की गई फ़ाइलें हटा दी जाती हैं\n• बैटरी बचाने के लिए, सूचनाएं बंद कर दी जाती हैं"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"पिछली बार इसे <xliff:g id="NUMBER">%s</xliff:g> महीने पहले खोला गया था"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ऐप्लिकेशन पिछली बार <xliff:g id="DATE">%s</xliff:g> को खोला गया था"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"पिछली बार <xliff:g id="DATE">%s</xliff:g> को खोला गया था"</string>
@@ -252,6 +262,11 @@
       <item quantity="one">कुछ महीनों से <xliff:g id="COUNT_1">%1$d</xliff:g> ऐप्लिकेशन इस्तेमाल नहीं किया गया है. देखने के लिए टैप करें</item>
       <item quantity="other">कुछ महीनों से <xliff:g id="COUNT_1">%1$d</xliff:g> ऐप्लिकेशन इस्तेमाल नहीं किए गए हैं. देखने के लिए टैप करें</item>
     </plurals>
+    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
+      <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> ऐप्लिकेशन इस्तेमाल नहीं किया जा रहा</item>
+      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> ऐप्लिकेशन इस्तेमाल नहीं किए जा रहे</item>
+    </plurals>
+    <string name="unused_apps_notification_content" msgid="3704446042109375119">"अनुमतियां और आपके डिवाइस पर कुछ समय तक रहने वाली फ़ाइलें हटा दी गई हैं. देखने के लिए टैप करें."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"कुछ ऐप्लिकेशन का इस्तेमाल कुछ महीनों से नहीं किया गया है"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="one">कुछ महीनों से <xliff:g id="COUNT_1">%1$d</xliff:g> ऐप्लिकेशन इस्तेमाल नहीं किया गया है</item>
@@ -339,7 +354,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"ऐसे ऐप्लिकेशन जो कॉल करने वाले की पहचान करने और स्पैम कॉल, रोबोकॉल या अनचाहे नंबर से आ रहे कॉल को ब्लॉक करने में आपकी मदद करते हैं"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"क्या <xliff:g id="APP_NAME">%1$s</xliff:g> को अपना डिफ़ॉल्ट कॉलर आईडी और स्पैम आईडी के तौर पर सेट करना चाहते हैं?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"अनुमति की ज़रूरत नहीं है"</string>
-    <string name="role_watch_description" msgid="472019219209648726">"<xliff:g id="APP_NAME">%1$s</xliff:g> को सूचनाओं, फ़ोन, संपर्कों, और कैलेंडर का ऐक्सेस मिल जाएगा."</string>
+    <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> आपकी सूचनाओं से इंटरैक्ट कर पाएगा. साथ ही, इसे आपके फ़ोन, एसएमएस, संपर्कों, और कैलेंडर की अनुमतियों का ऐक्सेस मिल जाएगा."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"मौजूदा डिफ़ॉल्ट"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"फिर से न पूछें"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"डिफ़ॉल्ट के रूप में सेट करें"</string>

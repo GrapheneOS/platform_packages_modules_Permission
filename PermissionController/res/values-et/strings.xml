@@ -70,6 +70,7 @@
     <string name="location_settings" msgid="3624412509133422562">"Asukohaseaded"</string>
     <string name="location_warning" msgid="2381649060929040962">"Rakendus <xliff:g id="APP_NAME">%1$s</xliff:g> on selle seadme asukohateenuste pakkuja. Asukoha juurdepääsu saab muuta asukohaseadetes."</string>
     <string name="system_warning" msgid="1173400963234358816">"Kui keelate selle loa, ei pruugi seadme põhifunktsioonid enam ootuspäraselt töötada."</string>
+    <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"Kui te seda luba ei anna, ei pruugi selle rakenduse hallatava seadme mõned funktsioonid enam ootuspäraselt töötada."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Reegliga jõustatud"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Taustale juurdepääs on reegli alusel keelatud"</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"Taustale juurdepääs on reegli alusel lubatud"</string>
@@ -103,6 +104,10 @@
     <string name="message_staging" msgid="9110563899955511866">"Rakenduse koondamine …"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Tundmatu"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Juhtpaneel"</string>
+    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
+    <skip />
+    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Viimane juurdepääs: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> juurdepääsu</item>
       <item quantity="one">Viimane juurdepääs: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> juurdepääs</item>
@@ -166,6 +171,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> rakendust</item>
       <item quantity="one">1 rakendus</item>
     </plurals>
+    <string name="permission_history_title" msgid="8340081285133025225">"Lubade ajalugu"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Rakenduse lubade kasutus"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Juurdepääs: <xliff:g id="NUM">%1$s</xliff:g> korda. Kogukestus: <xliff:g id="DURATION">%2$s</xliff:g>. Viimati kasutati <xliff:g id="TIME">%3$s</xliff:g> tagasi."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Juurdepääs: <xliff:g id="NUM">%1$s</xliff:g> korda. Viimati kasutati <xliff:g id="TIME">%2$s</xliff:g> tagasi."</string>
@@ -176,6 +182,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Luba rakenduse kasutamise ajal"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Küsi iga kord"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Keela"</string>
+    <string name="precise_image_description" msgid="6349638632303619872">"Täpne asukoht"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"Ligikaudne asukoht"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Täpse asukoha kasutamine"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Kui see on väljas, saavad rakendused määrata ainult teie ligikaudse asukoha naabruskonna täpsusega"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Funktsiooni <xliff:g id="PERM">%1$s</xliff:g> luba"</string>
@@ -198,6 +206,8 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"Luba <xliff:g id="PERMISSION_NAME">%s</xliff:g> eemaldati"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Load <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> ja <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> eemaldati"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ja veel <xliff:g id="NUMBER">%2$s</xliff:g> luba eemaldati"</string>
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"Kasutamata rakendused"</string>
+    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Kui rakendust pole mõne kuu jooksul kasutatud, toimub järgmine.\n\n• Teie privaatsuse kaitsmiseks eemaldatakse load.\n• Ruumi vabastamiseks eemaldatakse ajutised failid.\n• Aku säästmiseks peatatakse märguanded."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Viimati avatud rohkem kui <xliff:g id="NUMBER">%s</xliff:g> kuud tagasi"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Rakendus avati viimati <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Viimati avatud <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -252,6 +262,11 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> rakendust ei ole mõne kuu jooksul kasutatud. Puudutage ülevaatamiseks</item>
       <item quantity="one">Rakendust <xliff:g id="COUNT_0">%1$d</xliff:g> ei ole mõne kuu jooksul kasutatud. Puudutage ülevaatamiseks</item>
     </plurals>
+    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
+      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> kasutamata rakendust</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> kasutamata rakendus</item>
+    </plurals>
+    <string name="unused_apps_notification_content" msgid="3704446042109375119">"Load ja ajutised failid eemaldati. Puudutage ülevaatamiseks."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Mõningaid rakendusi ei ole mõne kuu jooksul kasutatud"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> rakendust ei ole mõne kuu jooksul kasutatud</item>
@@ -339,7 +354,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Rakendused, mis võimaldavad teil kõnesid tuvastada ning rämps- ja robotkõnesid ning soovimatuid numbreid blokeerida"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Kas soovite määrata rakenduse <xliff:g id="APP_NAME">%1$s</xliff:g> helistaja ID ja rämpskõnede vaikerakenduseks?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Lube ei ole vaja"</string>
-    <string name="role_watch_description" msgid="472019219209648726">"<xliff:g id="APP_NAME">%1$s</xliff:g> saab juurdepääsu märguannetele, telefonile, kontaktidele ja kalendrile."</string>
+    <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> saab kasutada teie märguandeid ning pääseb juurde teie telefoni, SMS-ide, kontaktide ja kalendri lubadele."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Praegune vaikeseade"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Ära enam küsi"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Määra vaikeseadeks"</string>

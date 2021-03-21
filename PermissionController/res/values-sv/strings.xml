@@ -70,6 +70,7 @@
     <string name="location_settings" msgid="3624412509133422562">"Platsinställningar"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> är en platstjänstleverantör för enheten. Platsåtkomsten kan redigeras i platsinställningarna."</string>
     <string name="system_warning" msgid="1173400963234358816">"Om du nekar appen behörighet kan det hända att grundläggande funktioner på enheten inte fungerar som de ska."</string>
+    <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"Om du nekar appen behörighet kan det hända att vissa funktioner på enheten som hanteras av appen inte fungerar som de ska."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Enligt policyn"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Åtkomst i bakgrunden har inaktiverats av en princip"</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"Åtkomst i bakgrunden har aktiverats av en princip"</string>
@@ -103,6 +104,10 @@
     <string name="message_staging" msgid="9110563899955511866">"Provkör appen …"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Okänd"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Översikt"</string>
+    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
+    <skip />
+    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Senaste åtkomst: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> åtkomster</item>
       <item quantity="one">Senaste åtkomst: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> åtkomst</item>
@@ -166,6 +171,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> appar</item>
       <item quantity="one">1 app</item>
     </plurals>
+    <string name="permission_history_title" msgid="8340081285133025225">"Behörighetshistorik"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Appens behörighetsanvändning"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Åtkomst: <xliff:g id="NUM">%1$s</xliff:g> gånger. Användningstid totalt: <xliff:g id="DURATION">%2$s</xliff:g>. Användes senast för <xliff:g id="TIME">%3$s</xliff:g> sedan."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Åtkomst: <xliff:g id="NUM">%1$s</xliff:g> gånger. Användes senast för <xliff:g id="TIME">%2$s</xliff:g> sedan."</string>
@@ -176,6 +182,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Tillåt bara när appen används"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Fråga varje gång"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Neka"</string>
+    <string name="precise_image_description" msgid="6349638632303619872">"Exakt plats"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"Ungefärlig plats"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Använd exakt plats"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Appar kan endast fastställa din ungefärliga plats inom ett visst område om du inaktiverar detta"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Behörighet till <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -198,6 +206,8 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"Följande behörighet har tagits bort: <xliff:g id="PERMISSION_NAME">%s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Följande behörigheter har tagits bort: <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> och <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> och <xliff:g id="NUMBER">%2$s</xliff:g> andra behörigheter har tagits bort"</string>
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"Appar som inte används"</string>
+    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Om en app inte används på några månader sker följande:\n\n• Behörigheter tas bort i syfte att skydda din integritet\n• Tillfälliga filer tas bort för att frigöra lagringsutrymme\n• Aviseringar stoppas för att spara batteri"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Öppnades senast för över <xliff:g id="NUMBER">%s</xliff:g> månader sedan"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Appen öppnades senast den <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Öppnades senast <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -252,6 +262,11 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> appar har inte använts på några månader. Tryck för att granska</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> app har inte använts på några månader. Tryck för att granska</item>
     </plurals>
+    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
+      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> appar som inte används</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> app som inte används</item>
+    </plurals>
+    <string name="unused_apps_notification_content" msgid="3704446042109375119">"Behörigheter och tillfälliga filer har tagits bort. Tryck för att granska."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Vissa appar har inte använts på några månader"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> appar har inte använts på några månader</item>
@@ -339,7 +354,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Appar som möjliggör identifiering av samtal och blockering av spam, robotsamtal eller oönskade nummer"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Vill du ställa in <xliff:g id="APP_NAME">%1$s</xliff:g> som din standardapp för spam och nummerpresentatör?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Inga behörigheter krävs"</string>
-    <string name="role_watch_description" msgid="472019219209648726">"<xliff:g id="APP_NAME">%1$s</xliff:g> får åtkomst till Aviseringar, Telefon, Kontakter och Kalender."</string>
+    <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> får behörighet att interagera med dina aviseringar och komma åt behörigheterna för Telefon, Sms, Kontakter och Kalender."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Nuvarande standardapp"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Fråga inte igen"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Ange som standard"</string>

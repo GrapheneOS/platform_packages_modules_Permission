@@ -70,6 +70,7 @@
     <string name="location_settings" msgid="3624412509133422562">"การตั้งค่าตำแหน่ง"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> เป็นผู้ให้บริการตำแหน่งสำหรับอุปกรณ์นี้ คุณสามารถแก้ไขสิทธิ์เข้าถึงตำแหน่งได้จากการตั้งค่าตำแหน่ง"</string>
     <string name="system_warning" msgid="1173400963234358816">"หากคุณปฏิเสธสิทธิ์นี้ ฟีเจอร์พื้นฐานของอุปกรณ์อาจไม่ทำงานตามที่ควรจะเป็นอีกต่อไป"</string>
+    <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"หากคุณปฏิเสธสิทธิ์นี้ ฟีเจอร์บางอย่างของอุปกรณ์ที่จัดการโดยแอปนี้อาจไม่ทำงานตามที่ควรจะเป็นอีกต่อไป"</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"บังคับใช้โดยนโยบาย"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"ปิดใช้การเข้าถึงในเบื้องหลังโดยนโยบาย"</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"เปิดใช้การเข้าถึงในเบื้องหลังโดยนโยบาย"</string>
@@ -103,6 +104,10 @@
     <string name="message_staging" msgid="9110563899955511866">"กำลังปรับสภาพแวดล้อมของแอป…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"ไม่ทราบ"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"หน้าแดชบอร์ด"</string>
+    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
+    <skip />
+    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">เข้าถึงล่าสุด: การเข้าถึง <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> รายการ</item>
       <item quantity="one">เข้าถึงล่าสุด: การเข้าถึง <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> รายการ</item>
@@ -166,6 +171,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> แอป</item>
       <item quantity="one">1 แอป</item>
     </plurals>
+    <string name="permission_history_title" msgid="8340081285133025225">"ประวัติเกี่ยวกับสิทธิ์"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"การใช้สิทธิ์ของแอป"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"เข้าถึง: <xliff:g id="NUM">%1$s</xliff:g> ครั้ง ระยะเวลารวม: <xliff:g id="DURATION">%2$s</xliff:g> ใช้ล่าสุดเมื่อ <xliff:g id="TIME">%3$s</xliff:g>ที่ผ่านมา"</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"เข้าถึง: <xliff:g id="NUM">%1$s</xliff:g> ครั้ง ใช้ล่าสุดเมื่อ <xliff:g id="TIME">%2$s</xliff:g>ที่ผ่านมา"</string>
@@ -176,6 +182,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"อนุญาตขณะมีการใช้แอปเท่านั้น"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"ถามทุกครั้ง"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"ปฏิเสธ"</string>
+    <string name="precise_image_description" msgid="6349638632303619872">"ตำแหน่งที่แน่นอน"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"ตำแหน่งโดยประมาณ"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"ใช้ตำแหน่งที่แน่นอน"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"หากปิดตำแหน่งที่แน่นอนไว้ แอปจะระบุตำแหน่งโดยประมาณของคุณภายในบริเวณใกล้เคียงเท่านั้น"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"สิทธิ์เข้าถึง<xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -198,6 +206,8 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"มีการนำสิทธิ์เข้าถึง<xliff:g id="PERMISSION_NAME">%s</xliff:g>ออก"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"มีการนำสิทธิ์เข้าถึง<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>และ<xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>ออก"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"มีการนำสิทธิ์เข้าถึง<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>และสิทธิ์อีก <xliff:g id="NUMBER">%2$s</xliff:g> รายการออก"</string>
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"แอปที่ไม่ได้ใช้"</string>
+    <string name="unused_apps_page_summary" msgid="5271048000004368665">"หากไม่ได้ใช้แอปเป็นเวลา 2-3 เดือนจะมีการดำเนินการต่อไปนี้\n\n• สิทธิ์จะถูกนำออกเพื่อปกป้องความเป็นส่วนตัวของคุณ\n• ไฟล์ชั่วคราวจะถูกนำออกเพื่อเพิ่มพื้นที่ว่าง\n• การแจ้งเตือนจะหยุดลงเพื่อประหยัดแบตเตอรี่"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"เปิดล่าสุดนานกว่า <xliff:g id="NUMBER">%s</xliff:g> เดือนที่ผ่านมา"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"เปิดแอปล่าสุดเมื่อวันที่ <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"เปิดล่าสุดเมื่อวันที่ <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -252,6 +262,11 @@
       <item quantity="other">มี <xliff:g id="COUNT_1">%1$d</xliff:g> แอปที่ไม่มีการใช้งานมา 2-3 เดือนแล้ว แตะเพื่อตรวจสอบ</item>
       <item quantity="one">มี <xliff:g id="COUNT_0">%1$d</xliff:g> แอปที่ไม่มีการใช้งานมา 2-3 เดือนแล้ว แตะเพื่อตรวจสอบ</item>
     </plurals>
+    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
+      <item quantity="other">แอปที่ไม่ได้ใช้ <xliff:g id="COUNT_1">%1$d</xliff:g> รายการ</item>
+      <item quantity="one">แอปที่ไม่ได้ใช้ <xliff:g id="COUNT_0">%1$d</xliff:g> รายการ</item>
+    </plurals>
+    <string name="unused_apps_notification_content" msgid="3704446042109375119">"สิทธิ์และไฟล์ชั่วคราวถูกนำออกแล้ว แตะเพื่อตรวจสอบ"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"บางแอปไม่มีการใช้งานมา 2-3 เดือนแล้ว"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other">มี <xliff:g id="COUNT_1">%1$d</xliff:g> แอปที่ไม่มีการใช้งานมา 2-3 เดือนแล้ว</item>
@@ -339,7 +354,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"แอปที่ให้คุณระบุสายเรียกเข้าและบล็อกสแปม สายจากระบบตอบรับอัตโนมัติ หรือหมายเลขที่ไม่พึงประสงค์"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"ตั้งค่า <xliff:g id="APP_NAME">%1$s</xliff:g> เป็นแอปเริ่มต้นสำหรับสกรีนหมายเลขผู้โทรและสแปมไหม"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"ไม่ต้องใช้สิทธิ์"</string>
-    <string name="role_watch_description" msgid="472019219209648726">"<xliff:g id="APP_NAME">%1$s</xliff:g> จะได้รับสิทธิ์เข้าถึงการแจ้งเตือน โทรศัพท์ รายชื่อติดต่อ และปฏิทิน"</string>
+    <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> จะได้รับอนุญาตให้โต้ตอบกับการแจ้งเตือนและได้รับสิทธิ์เข้าถึงโทรศัพท์, SMS, รายชื่อติดต่อ และปฏิทิน"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"แอปเริ่มต้นปัจจุบัน"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"ไม่ต้องถามอีก"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"ตั้งเป็นแอปเริ่มต้น"</string>
