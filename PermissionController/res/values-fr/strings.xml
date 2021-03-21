@@ -70,6 +70,7 @@
     <string name="location_settings" msgid="3624412509133422562">"Paramètres de localisation"</string>
     <string name="location_warning" msgid="2381649060929040962">"Les services de localisation pour cet appareil sont fournis via <xliff:g id="APP_NAME">%1$s</xliff:g>. Vous pouvez modifier l\'accès aux données de localisation dans les paramètres de localisation."</string>
     <string name="system_warning" msgid="1173400963234358816">"Si vous refusez cette autorisation, certaines fonctionnalités de base de votre appareil risquent de ne plus fonctionner correctement."</string>
+    <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"Si vous refusez cette autorisation, certaines fonctionnalités de votre appareil gérées par cette appli risquent de ne plus fonctionner correctement."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Activé conformément aux règles"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Accès en arrière-plan désactivé conformément au règlement"</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"Accès en arrière-plan activé conformément au règlement"</string>
@@ -103,6 +104,10 @@
     <string name="message_staging" msgid="9110563899955511866">"Pré-production de l\'application…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Inconnu"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Tableau de bord"</string>
+    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
+    <skip />
+    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="one">Dernier accès : <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> accès</item>
       <item quantity="other">Derniers accès : <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> accès</item>
@@ -166,6 +171,7 @@
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> application</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> applications</item>
     </plurals>
+    <string name="permission_history_title" msgid="8340081285133025225">"Histo. autorisations"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Utilisation des autorisations"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Accès : <xliff:g id="NUM">%1$s</xliff:g> fois. Durée totale : <xliff:g id="DURATION">%2$s</xliff:g>. Dernière utilisation il y a <xliff:g id="TIME">%3$s</xliff:g>."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Accès : <xliff:g id="NUM">%1$s</xliff:g> fois. Dernière utilisation il y a <xliff:g id="TIME">%2$s</xliff:g>."</string>
@@ -176,6 +182,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Autoriser seulement si l\'appli est en cours d\'utilisation"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Toujours demander"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Refuser"</string>
+    <string name="precise_image_description" msgid="6349638632303619872">"Position exacte"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"Position approximative"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Utiliser la position exacte"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Si ce paramètre est désactivé, les applications peuvent uniquement déterminer votre position approximative"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Autorisation : <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -198,6 +206,8 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"L\'autorisation \"<xliff:g id="PERMISSION_NAME">%s</xliff:g>\" a été révoquée"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Les autorisations \"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>\" et \"<xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>\" ont été révoquées"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"\"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>\" et <xliff:g id="NUMBER">%2$s</xliff:g> autres autorisations révoquées"</string>
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"Applis inutilisées"</string>
+    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Si vous n\'utilisez pas une appli pendant quelques mois :\n\n• Les autorisations sont annulées afin de protéger votre confidentialité\n• Les fichiers temporaires sont supprimés pour libérer de l\'espace\n• Les notifications sont désactivées pour économiser la batterie"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Ouvertes pour la dernière fois il y a plus de <xliff:g id="NUMBER">%s</xliff:g> mois"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Dernière ouverture de l\'application le <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Dernière ouverture : <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -252,6 +262,11 @@
       <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> application inutilisée depuis plusieurs mois. Appuyez ici pour en savoir plus</item>
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> applications inutilisées depuis plusieurs mois. Appuyez ici pour en savoir plus</item>
     </plurals>
+    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
+      <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> appli inutilisée</item>
+      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> applis inutilisées</item>
+    </plurals>
+    <string name="unused_apps_notification_content" msgid="3704446042109375119">"Les autorisations et les fichiers temporaires ont été supprimés. Appuyez ici pour en savoir plus."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Certaines applications n\'ont pas été utilisées depuis plusieurs mois"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> application inutilisée depuis plusieurs mois</item>
@@ -339,7 +354,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Applications qui vous permettent d\'identifier les appels entrants et de bloquer le spam, les appels automatiques ou les numéros indésirables"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Définir <xliff:g id="APP_NAME">%1$s</xliff:g> comme votre application par défaut pour l\'affichage du numéro de l\'appelant et du spam ?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Aucune autorisation nécessaire"</string>
-    <string name="role_watch_description" msgid="472019219209648726">"<xliff:g id="APP_NAME">%1$s</xliff:g> aura accès aux notifications, au téléphone, aux contacts et à l\'agenda."</string>
+    <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> aura l\'autorisation d\'interagir avec vos notifications et d\'accéder au téléphone, aux SMS, aux contacts et à l\'agenda."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Appli par défaut actuelle"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Ne plus me demander"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Définir par défaut"</string>

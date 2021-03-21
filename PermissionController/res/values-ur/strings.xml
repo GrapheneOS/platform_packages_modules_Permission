@@ -70,6 +70,7 @@
     <string name="location_settings" msgid="3624412509133422562">"مقام کی ترتیبات"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> اس آلہ کیلئے مقام کی سروسز کا فراہم کنندہ ہے۔ مقام کی رسائی میں مقام کی ترتیبات سے ترمیم کی جا سکتی ہے۔"</string>
     <string name="system_warning" msgid="1173400963234358816">"اگرآپ اس اجازت کو مسترد کرتے ہیں تو شاید آپ کے آلہ کی بنیادی خصوصیات ٹھیک سے کام نہ کریں۔"</string>
+    <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"اگر آپ اس اجازت کو مسترد کرتے ہیں تو ہو سکتا ہے کہ اس ایپ کے زیر انتظام آپ کے آلے کی کچھ خصوصیات ٹھیک سے کام نہ کریں۔"</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"پالیسی کے تحت نافذ کردہ"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"پالیسی کے تحت پس منظر کی رسائی غیر فعال ہو گئی ہے"</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"پالیسی کے تحت پس منظر کی رسائی فعال ہو گئی ہے"</string>
@@ -103,6 +104,10 @@
     <string name="message_staging" msgid="9110563899955511866">"ایپ کی مرحلہ بندی ہو رہی ہے…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"نامعلوم"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"ڈیش بورڈ"</string>
+    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
+    <skip />
+    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">آخری بار رسائی: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> رسائیاں</item>
       <item quantity="one">آخری بار رسائی: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> رسائی</item>
@@ -166,6 +171,8 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ایپس</item>
       <item quantity="one">1 ایپ</item>
     </plurals>
+    <!-- no translation found for permission_history_title (8340081285133025225) -->
+    <skip />
     <string name="app_permission_usage_title" msgid="6676802437831981822">"ایپ کی اجازتوں کا استعمال"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"رسائی: <xliff:g id="NUM">%1$s</xliff:g> مرتبہ۔ کل دورانیہ: <xliff:g id="DURATION">%2$s</xliff:g>۔ <xliff:g id="TIME">%3$s</xliff:g> پہلے آخری بار استعمال کیا گيا۔"</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"رسائی: <xliff:g id="NUM">%1$s</xliff:g> مرتبہ۔ <xliff:g id="TIME">%2$s</xliff:g> پہلے آخری بار استعمال کیا گیا۔"</string>
@@ -176,6 +183,10 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"صرف ایپ استعمال کرتے وقت اجازت دیں"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"ہر بار پوچھیں"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"مسترد کریں"</string>
+    <!-- no translation found for precise_image_description (6349638632303619872) -->
+    <skip />
+    <!-- no translation found for approximate_image_description (938803699637069884) -->
+    <skip />
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"قطعی مقام استعمال کریں"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"آف ہونے پر ایپس صرف آپ کے آس پاس کے قریبی علاقے میں آپ کے تخمینی مقام کا تعین کر سکتی ہیں"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> کی اجازت"</string>
@@ -198,6 +209,10 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"<xliff:g id="PERMISSION_NAME">%s</xliff:g> اجازت کو ہٹایا گیا"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> اور <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> اجازتوں کو ہٹایا گیا"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> اور <xliff:g id="NUMBER">%2$s</xliff:g> دیگر اجازتوں کو ہٹایا گیا"</string>
+    <!-- no translation found for unused_apps_page_title (6986983535677572559) -->
+    <skip />
+    <!-- no translation found for unused_apps_page_summary (5271048000004368665) -->
+    <skip />
     <string name="last_opened_category_title" msgid="7871347400611202595">"آخری بار <xliff:g id="NUMBER">%s</xliff:g> ماہ سے زیادہ پہلے کھولی گئی"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ایپ آخری بار <xliff:g id="DATE">%s</xliff:g> کو کھولی گئی"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"آخری بار <xliff:g id="DATE">%s</xliff:g> کو کھولی گئی"</string>
@@ -252,6 +267,9 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> ایپس کا استعمال کچھ مہینوں سے نہیں کیا گیا ہے۔ جائزے کے لیے تھپتھپائیں</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> ایپ کا استعمال کچھ مہینوں سے نہیں کیا گیا ہے۔ جائزے کے لیے تھپتھپائیں</item>
     </plurals>
+    <!-- no translation found for unused_apps_notification_title (8046612559038762856) -->
+    <!-- no translation found for unused_apps_notification_content (3704446042109375119) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"کچھ ایپس کا استعمال کچھ مہینوں سے نہیں کیا گیا ہے"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> ایپس کا استعمال کچھ مہینوں سے نہیں کیا گیا ہے</item>
@@ -339,7 +357,8 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"ایسے ایپس جو آپ کی کالز کی شناخت کرنے اور اسپام، روبوکالز، یا ناپسندیدہ نمبروں کو مسدود کرنے کی اجازت دیتی ہیں"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"‏<xliff:g id="APP_NAME">%1$s</xliff:g> کو کالر ID اور اسپام کی آپ کی ڈیفالٹ ایپ کے بطور سیٹ کریں؟"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"کوئی اجازت درکار نہیں ہے"</string>
-    <string name="role_watch_description" msgid="472019219209648726">"<xliff:g id="APP_NAME">%1$s</xliff:g> کو اطلاعات، فون، رابطوں اور کیلنڈر تک رسائی حاصل ہوگی۔"</string>
+    <!-- no translation found for role_watch_description (267003778693177779) -->
+    <skip />
     <string name="request_role_current_default" msgid="738722892438247184">"موجودہ ڈیفالٹ"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"دوبارہ نہ پوچھیں"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"بطور ڈیفالٹ سیٹ کریں"</string>

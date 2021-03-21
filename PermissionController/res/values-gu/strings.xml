@@ -70,10 +70,11 @@
     <string name="location_settings" msgid="3624412509133422562">"સ્થાન સેટિંગ"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g>એ આ ઉપકરણ માટે સ્થાન સેવાઓના પ્રદાતા છે. સ્થાન સેટિંગમાંથી સ્થાન ઍક્સેસમાં ફેરફાર કરી શકાતો છે."</string>
     <string name="system_warning" msgid="1173400963234358816">"જો તમે આ પરવાનગી નકારો છો, તો તમારા ઉપકરણની મૂળભૂત સુવિધાઓ અપેક્ષા પ્રમાણે કાર્ય કરી શકશે નહીં."</string>
-    <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"નીતિ દ્વારા લાગુ"</string>
-    <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"નીતિ દ્વારા બૅકગ્રાઉન્ડ ઍક્સેસને બંધ કરવામાં આવ્યો છે"</string>
-    <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"નીતિ દ્વારા બૅકગ્રાઉન્ડ ઍક્સેસને ચાલુ કરવામાં આવ્યો છે"</string>
-    <string name="permission_summary_enabled_by_policy_foreground_only" msgid="3844582916889767831">"નીતિ દ્વારા ફૉરગ્રાઉન્ડ ઍક્સેસને ચાલુ કરવામાં આવ્યો છે"</string>
+    <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"જો તમે આ પરવાનગી નકારો છો, તો આ ઍપ દ્વારા મેનેજ કરવામાં આવતા તમારા ડિવાઇસની અમુક સુવિધાઓ અપેક્ષા પ્રમાણે કાર્ય કરી શકશે નહીં."</string>
+    <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"પૉલિસી દ્વારા લાગુ"</string>
+    <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"પૉલિસી દ્વારા બૅકગ્રાઉન્ડ ઍક્સેસને બંધ કરવામાં આવ્યો છે"</string>
+    <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"પૉલિસી દ્વારા બૅકગ્રાઉન્ડ ઍક્સેસને ચાલુ કરવામાં આવ્યો છે"</string>
+    <string name="permission_summary_enabled_by_policy_foreground_only" msgid="3844582916889767831">"પૉલિસી દ્વારા ફૉરગ્રાઉન્ડ ઍક્સેસને ચાલુ કરવામાં આવ્યો છે"</string>
     <string name="permission_summary_enforced_by_admin" msgid="822702574117248700">"વ્યવસ્થાપક દ્વારા નિયંત્રિત"</string>
     <string name="permission_summary_disabled_by_admin_background_only" msgid="3127091456731845646">"વ્યવસ્થાપકે બૅકગ્રાઉન્ડ ઍક્સેસ બંધ કર્યો છે"</string>
     <string name="permission_summary_enabled_by_admin_background_only" msgid="9132423838440275757">"વ્યવસ્થાપકે બૅકગ્રાઉન્ડ ઍક્સેસ ચાલુ કર્યો છે"</string>
@@ -103,6 +104,10 @@
     <string name="message_staging" msgid="9110563899955511866">"ઍપની પ્રક્રિયા ચાલુ છે…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"અજાણ"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"ડૅશબોર્ડ"</string>
+    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
+    <skip />
+    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="one">છેલ્લો ઍક્સેસ: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> ઍક્સેસ</item>
       <item quantity="other">છેલ્લો ઍક્સેસ: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> ઍક્સેસ</item>
@@ -166,6 +171,7 @@
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> ઍપ</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ઍપ</item>
     </plurals>
+    <string name="permission_history_title" msgid="8340081285133025225">"પરવાનગીનો ઇતિહાસ"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"અ‍ૅપ પરવાનગીઓનો ઉપયોગ"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"ઍક્સેસ આપો: <xliff:g id="NUM">%1$s</xliff:g> વાર. કુલ અવધિ: <xliff:g id="DURATION">%2$s</xliff:g>. છેલ્લે <xliff:g id="TIME">%3$s</xliff:g> પહેલાં ઉપયોગ કર્યો હતો."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"ઍક્સેસ આપો: <xliff:g id="NUM">%1$s</xliff:g> વાર. છેલ્લે <xliff:g id="TIME">%2$s</xliff:g> પહેલાં ઉપયોગ કર્યો હતો."</string>
@@ -176,6 +182,10 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"ઍપનો ઉપયોગ કરતી વખતે જ મંજૂરી આપો"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"દર વખતે પૂછો"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"નકારો"</string>
+    <!-- no translation found for precise_image_description (6349638632303619872) -->
+    <skip />
+    <!-- no translation found for approximate_image_description (938803699637069884) -->
+    <skip />
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"ચોક્કસ સ્થાનનો ઉપયોગ કરો"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"સ્થાનની સુવિધા બંધ હોવાને લીધે, આસપાસના પડોશમાંથી ઍપ માત્ર તમારું અંદાજીત સ્થાન મેળવી શકશે"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> પરવાનગી"</string>
@@ -198,6 +208,10 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"<xliff:g id="PERMISSION_NAME">%s</xliff:g>ની પરવાનગી કાઢી નાખવામાં આવી"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> અને <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>ની પરવાનગીઓ કાઢી નાખવામાં આવી"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> અને અન્ય <xliff:g id="NUMBER">%2$s</xliff:g> પરવાનગીઓ કાઢી નાખવામાં આવી"</string>
+    <!-- no translation found for unused_apps_page_title (6986983535677572559) -->
+    <skip />
+    <!-- no translation found for unused_apps_page_summary (5271048000004368665) -->
+    <skip />
     <string name="last_opened_category_title" msgid="7871347400611202595">"છેલ્લે <xliff:g id="NUMBER">%s</xliff:g> મહિના કરતાં પર વધારે સમય અગાઉ ખોલી હતી"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ઍપ છેલ્લે <xliff:g id="DATE">%s</xliff:g>ના રોજ ખોલી"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"છેલ્લે <xliff:g id="DATE">%s</xliff:g>ના રોજ ખોલી"</string>
@@ -252,6 +266,9 @@
       <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> ઍપનો થોડા મહિનામાં ઉપયોગ થયો નથી. રિવ્યૂ કરવા માટે ટૅપ કરો</item>
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> ઍપનો થોડા મહિનામાં ઉપયોગ થયો નથી. રિવ્યૂ કરવા માટે ટૅપ કરો</item>
     </plurals>
+    <!-- no translation found for unused_apps_notification_title (8046612559038762856) -->
+    <!-- no translation found for unused_apps_notification_content (3704446042109375119) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"અમુક ઍપનો થોડા મહિનામાં ઉપયોગ થયો નથી"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> ઍપનો થોડા મહિનામાં ઉપયોગ થયો નથી</item>
@@ -339,7 +356,8 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"એવી ઍપ કે જે તમને કૉલ કરનારી વ્યક્તિને ઓળખવાની અને સ્પામ, રોબોકૉલ અથવા અનિચ્છનીય નંબરને બ્લૉક કરવાની મંજૂરી આપે છે"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g>ને તમારી ડિફૉલ્ટ કૉલર ID અને સ્પામ ઍપ તરીકે સેટ કરીએ?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"કોઈ પરવાનગી જરૂરી નથી"</string>
-    <string name="role_watch_description" msgid="472019219209648726">"<xliff:g id="APP_NAME">%1$s</xliff:g>ને નોટિફિકેશન, ફોન, સંપર્કો અને Calendarનો ઍક્સેસ મળશે."</string>
+    <!-- no translation found for role_watch_description (267003778693177779) -->
+    <skip />
     <string name="request_role_current_default" msgid="738722892438247184">"હાલની ડિફૉલ્ટ"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"ફરીથી પૂછશો નહીં"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"ડિફૉલ્ટ તરીકે સેટ"</string>

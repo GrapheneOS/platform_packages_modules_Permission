@@ -71,6 +71,7 @@
     <string name="location_settings" msgid="3624412509133422562">"Postavke lokacije"</string>
     <string name="location_warning" msgid="2381649060929040962">"Aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g> pruža usluge lokacije za ovaj uređaj. Pristup lokaciji se može izmijeniti u postavkama lokacije."</string>
     <string name="system_warning" msgid="1173400963234358816">"Ako odbijete ovo odobrenje, osnovne funkcije vašeg uređaja možda više neće funkcionirati onako kako je prvobitno zamišljeno."</string>
+    <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"Ako odbijete ovo odobrenje, određene funkcije vašeg uređaja kojim upravlja ova aplikacija možda više neće raditi ispravno."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Nametnuto je pravilima"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Pristup iz pozadine je onemogućen u skladu s pravilima"</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"Pristup iz pozadine je omogućen u skladu s pravilima"</string>
@@ -104,6 +105,10 @@
     <string name="message_staging" msgid="9110563899955511866">"Pripremanje aplikacije…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Nepoznato"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Kontrolna tabla"</string>
+    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
+    <skip />
+    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="one">Posljednji pristup: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> pristup</item>
       <item quantity="few">Posljednji pristup: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> pristupa</item>
@@ -174,6 +179,7 @@
       <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> aplikacije</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> aplikacija</item>
     </plurals>
+    <string name="permission_history_title" msgid="8340081285133025225">"Historija odobrenja"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Korišt. dozvole za aplikacije"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Pristup: <xliff:g id="NUM">%1$s</xliff:g> puta. Ukupno trajanje: <xliff:g id="DURATION">%2$s</xliff:g>. Zadnji put korištena prije <xliff:g id="TIME">%3$s</xliff:g>."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Pristup: <xliff:g id="NUM">%1$s</xliff:g> puta. Zadnji put korištena prije <xliff:g id="TIME">%2$s</xliff:g>."</string>
@@ -184,6 +190,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Dozvoli samo dok se aplikacija koristi"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Pitaj svaki put"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Odbij"</string>
+    <string name="precise_image_description" msgid="6349638632303619872">"Tačna lokacija"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"Približna lokacija"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Koristi tačnu lokaciju"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Kada je lokacija isključena, aplikacije mogu odrediti samo vašu približnu lokaciju unutar naselja"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Odobrenje za funkciju <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -206,6 +214,8 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"Uklonjeno je odobrenje za <xliff:g id="PERMISSION_NAME">%s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Uklonjena su odobrenja <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> i <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Uklonjeno je odobrenje <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> i njih još <xliff:g id="NUMBER">%2$s</xliff:g>"</string>
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"Nekorištene aplikacije"</string>
+    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Ako se aplikacija ne koristi nekoliko mjeseci: \n\n• odobrenja se uklanjaju radi zaštite privatnosti\n• privremeni fajlovi se uklanjaju radi oslobađanja prostora\n• obavještenja se zaustavljaju radi uštede baterije"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Posljednji put otvoreno prije više od <xliff:g id="NUMBER">%s</xliff:g> mj."</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Aplikacija je posljednji put otvorena na dan <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Posljednji put otvoreno na dan <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -265,6 +275,12 @@
       <item quantity="few"><xliff:g id="COUNT_1">%1$d</xliff:g> aplikacije nisu korištene nekoliko mjeseci. Dodirnite za pregled</item>
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> aplikacija nije korišteno nekoliko mjeseci. Dodirnite za pregled</item>
     </plurals>
+    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
+      <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> nekorištena aplikacija</item>
+      <item quantity="few"><xliff:g id="COUNT_1">%1$d</xliff:g> nekorištene aplikacije</item>
+      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> nekorištenih aplikacija</item>
+    </plurals>
+    <string name="unused_apps_notification_content" msgid="3704446042109375119">"Odobrenja i privremeni fajlovi su uklonjeni. Dodirnite da pregledate."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Neke aplikacije nisu korištene nekoliko mjeseci"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> aplikacija nije korištena nekoliko mjeseci</item>
@@ -353,7 +369,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Aplikacije koje vam omogućavaju da identificirate pozive i blokirate neželjene pozive, automatizirane telefonske pozive ili neželjene brojeve"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Postaviti aplikaciju <xliff:g id="APP_NAME">%1$s</xliff:g> kao zadanu aplikaciju za prikaz ID-a pozivaoca i blokadu neželjenih poziva?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Nije potrebno odobrenje"</string>
-    <string name="role_watch_description" msgid="472019219209648726">"<xliff:g id="APP_NAME">%1$s</xliff:g> će dobiti pristup obavještenjima, Telefonu, Kontaktima i Kalendaru."</string>
+    <string name="role_watch_description" msgid="267003778693177779">"Aplikaciji <xliff:g id="APP_NAME">%1$s</xliff:g> će se dozvoliti da ostvari interakciju s vašim obavještenjima i pristupi odobrenjima za telefon, SMS, kontakte i kalendar."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Trenutno zadano"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Ne pitaj ponovo"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Postavi kao zadano"</string>

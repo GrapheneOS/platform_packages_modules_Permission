@@ -70,6 +70,7 @@
     <string name="location_settings" msgid="3624412509133422562">"Helybeállítások"</string>
     <string name="location_warning" msgid="2381649060929040962">"A(z) <xliff:g id="APP_NAME">%1$s</xliff:g> helyszolgáltatásokat biztosít ennek az eszköznek. A helyhozzáférést a helybeállításokban lehet módosítani."</string>
     <string name="system_warning" msgid="1173400963234358816">"Ha ezt nem engedélyezi, akkor előfordulhat, hogy az eszköz egyes alapfunkciói nem megfelelően működnek majd."</string>
+    <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"Ha ezt nem engedélyezi, akkor előfordulhat, hogy az eszköznek az alkalmazás által kezelt bizonyos funkciói nem megfelelően működnek majd."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Házirend által kényszerítve"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"A házirend letiltotta a háttérhozzáférést"</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"A házirend engedélyezte a háttérhozzáférést"</string>
@@ -103,6 +104,10 @@
     <string name="message_staging" msgid="9110563899955511866">"Alkalmazás fokozatos közzététele…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Ismeretlen"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Irányítópult"</string>
+    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
+    <skip />
+    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Legutóbbi hozzáférés: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> hozzáférés</item>
       <item quantity="one">Legutóbbi hozzáférés: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> hozzáférés</item>
@@ -166,6 +171,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> alkalmazás</item>
       <item quantity="one">1 alkalmazás</item>
     </plurals>
+    <string name="permission_history_title" msgid="8340081285133025225">"Engedélyelőzmények"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Alkalmazásengedély-használat"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Hozzáférés: <xliff:g id="NUM">%1$s</xliff:g> alkalommal. Teljes időtartam: <xliff:g id="DURATION">%2$s</xliff:g>. Utoljára használva ennyi ideje: <xliff:g id="TIME">%3$s</xliff:g>"</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Hozzáférés: <xliff:g id="NUM">%1$s</xliff:g> alkalommal. Utoljára használva ennyi ideje: <xliff:g id="TIME">%2$s</xliff:g>"</string>
@@ -176,6 +182,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Engedélyezés csak az alkalmazás használatakor"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Mindig kérdezzen rá"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Tiltás"</string>
+    <string name="precise_image_description" msgid="6349638632303619872">"Pontos hely"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"Hozzávetőleges hely"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Pontos helyadatok használata"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Az alkalmazások csak mérsékelt távolságból határozhatják meg az Ön hozzávetőleges tartózkodási helyét, ha a beállítás ki van kapcsolva"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> – engedély"</string>
@@ -198,6 +206,8 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"A(z) <xliff:g id="PERMISSION_NAME">%s</xliff:g> engedély visszavonva"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"A(z) <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> és a(z) <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> engedély visszavonva"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"A(z) <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> és <xliff:g id="NUMBER">%2$s</xliff:g> másik engedély visszavonva"</string>
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"Nem használt alkalmazások"</string>
+    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Ha az adott alkalmazást nem használják néhány hónapig:\n\n• Az engedélyeket az adatvédelem biztosítása érdekében eltávolítjuk\n• Tárhely felszabadítása érdekében az ideiglenes fájlokat eltávolítjuk\n• Az akkumulátor kímélése érdekében az értesítéseket leállítjuk"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Utoljára több mint <xliff:g id="NUMBER">%s</xliff:g> hónapja nyitotta meg"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Az alkalmazás legutóbbi megnyitása: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Legutóbb megnyitva ekkor: <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -252,6 +262,11 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> alkalmazást több hónapja nem használt. Koppintson az áttekintéshez.</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> alkalmazást több hónapja nem használt. Koppintson az áttekintéshez.</item>
     </plurals>
+    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
+      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> nem használt alkalmazás</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> nem használt alkalmazás</item>
+    </plurals>
+    <string name="unused_apps_notification_content" msgid="3704446042109375119">"Az engedélyeket és az ideiglenes fájlokat eltávolítottuk. Koppintson az áttekintéshez."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Egyes alkalmazásokat több hónapja nem használt"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> alkalmazást több hónapja nem használt</item>
@@ -339,7 +354,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Alkalmazások, amelyek lehetővé teszik a hívások azonosítását, a spam jellegű tartalmak és a robothívások letiltását, valamint a nemkívánatos telefonszámok tiltólistára tételét"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Beállítja a(z) <xliff:g id="APP_NAME">%1$s</xliff:g> alkalmazást alapértelmezett hívóazonosító és spamszűrő alkalmazásként?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Nincs szükség engedélyre"</string>
-    <string name="role_watch_description" msgid="472019219209648726">"A(z) <xliff:g id="APP_NAME">%1$s</xliff:g> hozzáférést kap majd az Értesítésekhez, a Telefonhoz, a Névjegyekhez, valamint a Naptárhoz."</string>
+    <string name="role_watch_description" msgid="267003778693177779">"A(z) <xliff:g id="APP_NAME">%1$s</xliff:g> műveleteket végezhet majd az értesítésekkel, és hozzáférhet a telefonra, az SMS-ekre, a névjegyekre és a naptárra vonatkozó engedélyekhez."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Aktuális alapérték"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Ne jelenjen meg többé"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Alapértelmezett"</string>

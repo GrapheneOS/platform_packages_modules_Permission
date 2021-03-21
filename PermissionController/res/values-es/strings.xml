@@ -70,6 +70,7 @@
     <string name="location_settings" msgid="3624412509133422562">"Ajustes de ubicación"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> es un proveedor de servicios de ubicación de este dispositivo. El acceso a la ubicación se puede modificar en los ajustes de ubicación."</string>
     <string name="system_warning" msgid="1173400963234358816">"Si rechazas este permiso, es posible que algunas funciones básicas de tu dispositivo dejen de funcionar correctamente."</string>
+    <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"Si rechazas este permiso, puede que algunas funciones del dispositivo gestionado por esta aplicación no puedan usarse como estaba previsto."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Aplicado por política"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Acceso en segundo plano inhabilitado por política"</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"Acceso en segundo plano habilitado por política"</string>
@@ -103,6 +104,10 @@
     <string name="message_staging" msgid="9110563899955511866">"Preparando aplicación…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Desconocida"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Panel de control"</string>
+    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
+    <skip />
+    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Último acceso: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> accesos</item>
       <item quantity="one">Último acceso: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> acceso</item>
@@ -166,6 +171,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> aplicaciones</item>
       <item quantity="one">1 aplicación</item>
     </plurals>
+    <string name="permission_history_title" msgid="8340081285133025225">"Historial de permisos"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Uso permisos de la aplicación"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Acceso: <xliff:g id="NUM">%1$s</xliff:g> veces. Duración total: <xliff:g id="DURATION">%2$s</xliff:g>. Último uso: hace <xliff:g id="TIME">%3$s</xliff:g>."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Acceso: <xliff:g id="NUM">%1$s</xliff:g> veces. Último uso: hace <xliff:g id="TIME">%2$s</xliff:g>."</string>
@@ -176,6 +182,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Permitir si la aplicación está en uso"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Preguntar siempre"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Denegar"</string>
+    <string name="precise_image_description" msgid="6349638632303619872">"Ubicación precisa"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"Ubicación aproximada"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Usar ubicación precisa"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Si está desactivada, las aplicaciones solo pueden determinar tu ubicación aproximada a nivel de barrio"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Permiso de <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -198,6 +206,8 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"Permiso <xliff:g id="PERMISSION_NAME">%s</xliff:g> quitado"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Permisos <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> y <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> quitados"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Permisos <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> y <xliff:g id="NUMBER">%2$s</xliff:g> más quitados"</string>
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"Aplicaciones no usadas"</string>
+    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Si una aplicación no se usa durante algunos meses:\n\n• Se retiran sus permisos para proteger la privacidad\n• Se eliminan sus archivos temporales para liberar espacio\n• Se desactivan sus notificaciones para ahorrar batería"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Abierto por última vez hace más de <xliff:g id="NUMBER">%s</xliff:g> meses"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"La aplicación se abrió por última vez el <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Se abrió por última vez el <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -221,7 +231,7 @@
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"Denegado / Último acceso: Nunca"</string>
     <string name="allowed_header" msgid="7769277978004790414">"Permitido"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"Permitido siempre"</string>
-    <string name="allowed_foreground_header" msgid="6845655788447833353">"Permitido solo mientras se usa"</string>
+    <string name="allowed_foreground_header" msgid="6845655788447833353">"Permitido solo mientras se usan"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Pueden acceder solo al contenido multimedia"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Pueden gestionar todos los archivos"</string>
     <string name="ask_header" msgid="2633816846459944376">"Preguntar siempre"</string>
@@ -252,6 +262,11 @@
       <item quantity="other">Hay <xliff:g id="COUNT_1">%1$d</xliff:g> aplicaciones que llevan meses sin usarse. Toca para revisarlas.</item>
       <item quantity="one">Hay <xliff:g id="COUNT_0">%1$d</xliff:g> aplicación que lleva meses sin usarse. Toca para revisarla.</item>
     </plurals>
+    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
+      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> aplicaciones no usadas</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> aplicación no usada</item>
+    </plurals>
+    <string name="unused_apps_notification_content" msgid="3704446042109375119">"Retirados los permisos y archivos temporales. Toca para revisarlos."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Hay varias aplicaciones que llevan meses sin usarse"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other">Hay <xliff:g id="COUNT_1">%1$d</xliff:g> aplicaciones que llevan meses sin usarse</item>
@@ -339,7 +354,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Aplicaciones que te permiten identificar llamadas y bloquear spam, llamadas automatizadas o números no deseados"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"¿Quieres establecer a <xliff:g id="APP_NAME">%1$s</xliff:g> como tu aplicación predeterminada de filtro de ID de llamada y spam?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"No se necesita ningún permiso"</string>
-    <string name="role_watch_description" msgid="472019219209648726">"<xliff:g id="APP_NAME">%1$s</xliff:g> tendrá acceso a las notificaciones, al teléfono, a los contactos y al calendario."</string>
+    <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> podrá interactuar con tus notificaciones y acceder a tu teléfono, SMS, contactos y calendario."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Predeterminada"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"No volver a preguntar"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Establecer como predeterminado"</string>

@@ -70,6 +70,7 @@
     <string name="location_settings" msgid="3624412509133422562">"Жайгашкан жерди аныктоо жөндөөлөрү"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> - бул түзмөктөгү жайгашкан жерди аныктоо кызматынын жабдуучусу. Жайгашкан жерди көрүү мүмкүнчүлүгүн жайгашкан жерди аныктоо жөндөөлөрүнөн өзгөртсө болот."</string>
     <string name="system_warning" msgid="1173400963234358816">"Эгер бул уруксатты четке каксаңыз, түзмөгүңүздүн негизги функциялары талаптагыдай иштебей калышы мүмкүн."</string>
+    <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"Эгер бул уруксатты четке каксаңыз, түзмөгүңүздүн бул колдонмо башкарган айрым функциялары талаптагыдай иштебей калышы мүмкүн."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Саясат тарабынан күчүнө киргизилген"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Фондук режимде дайындарга мүмкүнчүлүк алуу саясат тарабынан өчүрүлгөн"</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"Фондук режимде дайындарга мүмкүнчүлүк алуу саясат тарабынан иштетилген"</string>
@@ -103,6 +104,10 @@
     <string name="message_staging" msgid="9110563899955511866">"Күтө туруңуз…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Белгисиз"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Куралдар тактасы"</string>
+    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
+    <skip />
+    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Акыркы жолу качан колдонулду: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> жолу колдонулду</item>
       <item quantity="one">Акыркы жолу качан колдонулду: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> жолу колдонулду</item>
@@ -166,6 +171,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> колдонмо</item>
       <item quantity="one">1 колдонмо</item>
     </plurals>
+    <string name="permission_history_title" msgid="8340081285133025225">"Уруксаттар таржымалы"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Колдонмонун уруксаттарын пайдалануу"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Кирүү: <xliff:g id="NUM">%1$s</xliff:g> жолу. Жалпы колдонулган убакыт: <xliff:g id="DURATION">%2$s</xliff:g>. Акыркы жолу <xliff:g id="TIME">%3$s</xliff:g> колдонулган."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Кирүү: <xliff:g id="NUM">%1$s</xliff:g> жолу. Акыркы жолу <xliff:g id="TIME">%2$s</xliff:g> колдонулган."</string>
@@ -176,6 +182,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Колдонмо колдонулуп жатканда гана уруксат берилет"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Ар дайым суралсын"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Тыюу салынат"</string>
+    <string name="precise_image_description" msgid="6349638632303619872">"Так жайгашкан жери"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"Болжолдуу жайгашкан жери"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Так жайгашкан жерди колдонуу"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Эгер бул жөндөө өчүрүлсө, колдонмолор жакын жердеги болжолдуу жайгашкан жериңизди гана көрүшөт"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> дайындарына уруксаттар"</string>
@@ -198,6 +206,8 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"<xliff:g id="PERMISSION_NAME">%s</xliff:g> уруксаты өчүрүлдү"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> жана <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> уруксаттары өчүрүлдү"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> жана дагы <xliff:g id="NUMBER">%2$s</xliff:g> уруксат өчүрүлдү"</string>
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"Иштетилбеген колдонмолор"</string>
+    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Эгер колдонмо бир нече ай иштетилбесе:\n\n• Купуялыгыңызды коргоо үчүн уруксаттар жоюлат\n• Орун бошотуу үчүн убактылуу файлдар өчүрүлөт\n• Батареянын кубатынын мөөнөтүн узартуу үчүн билдирмелет токтотулат"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Акыркы жолу <xliff:g id="NUMBER">%s</xliff:g> ай мурда ачылган"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Колдонмо акыркы жолу <xliff:g id="DATE">%s</xliff:g> ачылган"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Акыркы жолу <xliff:g id="DATE">%s</xliff:g> ачылган"</string>
@@ -252,6 +262,11 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> колдонмо бир нече айдан бери иштетиле элек. Көрүү үчүн таптап коюңуз</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> колдонмо бир нече айдан бери иштетиле элек. Көрүү үчүн таптап коюңуз</item>
     </plurals>
+    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
+      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> иштетилбеген колдонмо</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> иштетилбеген колдонмо</item>
+    </plurals>
+    <string name="unused_apps_notification_content" msgid="3704446042109375119">"Уруксаттар менен убактылуу файлдар өчүрүлдү. Көрүү үчүн таптап коюңуз."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Айрым колдонмолор бир нече ай иштетилген жок"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> колдонмо бир нече айдан бери иштетиле элек</item>
@@ -339,7 +354,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Сизге чалып жаткан номерлерди аныктап, спамдарды жана автоматтык чалууларды бөгөттөп, керексиз номерлерди кара тизмеге киргизген колдонмолор"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> колдонмосун чалуучунун демейки идентификатору жана \"спам\" колдонмосу катары коёсузбу?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Уруксаттардын кереги жок"</string>
-    <string name="role_watch_description" msgid="472019219209648726">"<xliff:g id="APP_NAME">%1$s</xliff:g> Билдирмелер, Телефон, Байланыштар жана Жылнаамага кирүү мүмкүнчүлүгүн алат."</string>
+    <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> билдирмелериңиз менен иштеп, телефонуңуздун, SMS билдирүүлөрүңүздүн, Байланыштырыңыздын жана Жылнаамаңыздын уруксаттарына кире алат."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Учурдагы демейки колдонмо"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Экинчи суралбасын"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Демейки катары коюу"</string>

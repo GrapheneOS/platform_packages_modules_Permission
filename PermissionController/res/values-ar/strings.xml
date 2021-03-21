@@ -74,6 +74,7 @@
     <string name="location_settings" msgid="3624412509133422562">"إعدادات الموقع الجغرافي"</string>
     <string name="location_warning" msgid="2381649060929040962">"يعد <xliff:g id="APP_NAME">%1$s</xliff:g> أحد مقدِّمي خدمات الموقع الجغرافي لهذا الجهاز. ويمكن تعديل إمكانية الوصول إلى الموقع الجغرافي من إعدادات الموقع الجغرافي."</string>
     <string name="system_warning" msgid="1173400963234358816">"في حال رفض هذا الإذن، قد لا تعمل ميزات أساسية في جهازك على النحو المطلوب."</string>
+    <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"بعض ميزات جهازك الذي يديره هذا التطبيق، قد لا تعمل على النحو المطلوب إذا رفضت هذا الإذن."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"فرضته إحدى السياسات"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"تمّ إيقاف الوصول إلى الخلفية بواسطة السياسة."</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"تمّ تمكين الوصول إلى الخلفية بواسطة السياسة."</string>
@@ -107,6 +108,10 @@
     <string name="message_staging" msgid="9110563899955511866">"جارٍ الطرح المرحلي للتطبيق…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"غير معروف"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"لوحة التحكّم"</string>
+    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
+    <skip />
+    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="zero">آخر إذن وصول: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> إذن وصول</item>
       <item quantity="two">آخر إذن وصول: <xliff:g id="TIME_2">%1$s</xliff:g>\nإذنا وصول (<xliff:g id="NUM_3">%2$s</xliff:g>)</item>
@@ -198,6 +203,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> تطبيق</item>
       <item quantity="one">تطبيق واحد</item>
     </plurals>
+    <string name="permission_history_title" msgid="8340081285133025225">"سجلّ الأذونات"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"استخدام أذونات التطبيق"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"استخدام الإذن: <xliff:g id="NUM">%1$s</xliff:g> مرّة إجمالي المدّة: <xliff:g id="DURATION">%2$s</xliff:g>. آخر استخدام قبل <xliff:g id="TIME">%3$s</xliff:g>."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"استخدام الإذن: <xliff:g id="NUM">%1$s</xliff:g> مرّة آخر استخدام قبل <xliff:g id="TIME">%2$s</xliff:g>."</string>
@@ -208,6 +214,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"السماح عند استخدام التطبيق فقط"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"الطلب في كل مرة"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"رفض"</string>
+    <string name="precise_image_description" msgid="6349638632303619872">"الموقع الجغرافي الدقيق"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"الموقع الجغرافي التقريبي"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"استخدام الموقع الجغرافي الدقيق"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"يمكن للتطبيقات تحديد موقعك الجغرافي التقريبي فقط في نطاق الحي عندما تكون الميزة غير مفعّلة"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"إذن <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -230,6 +238,8 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"تمت إزالة إذن \"<xliff:g id="PERMISSION_NAME">%s</xliff:g>\"."</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"تمت إزالة إذنَي \"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>\" و\"<xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>\"."</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"تمت إزالة إذن \"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>\" وعدد <xliff:g id="NUMBER">%2$s</xliff:g> من الأذونات الأخرى."</string>
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"التطبيقات غير المستخدمة"</string>
+    <string name="unused_apps_page_summary" msgid="5271048000004368665">"في حال عدم استخدام التطبيق لبضعة أشهر:\n\n• تتم إزالة الأذونات لحماية الخصوصية.\n• تتم إزالة الملفات المؤقتة لتوفير مساحة.\n• يتم إيقاف الإشعارات لتوفير شحن البطارية."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"تم فتح هذه التطبيقات آخر مرة قبل أكثر من <xliff:g id="NUMBER">%s</xliff:g> شهر"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"آخر مرة تم فتح التطبيق فيها: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"آخر مرة تم فتحه: <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -304,6 +314,15 @@
       <item quantity="other">لم يتم استخدام <xliff:g id="COUNT_1">%1$d</xliff:g> تطبيق منذ عدة شهور. انقر لمراجعة الأذونات.</item>
       <item quantity="one">لم يتم استخدام تطبيق واحد (<xliff:g id="COUNT_0">%1$d</xliff:g>) منذ عدة أشهر. انقر لمراجعة الأذونات.</item>
     </plurals>
+    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
+      <item quantity="zero"><xliff:g id="COUNT_1">%1$d</xliff:g> تطبيق غير مستخدم</item>
+      <item quantity="two">تطبيقان (<xliff:g id="COUNT_1">%1$d</xliff:g>) غير مستخدمين</item>
+      <item quantity="few"><xliff:g id="COUNT_1">%1$d</xliff:g> تطبيقات غير مستخدمة</item>
+      <item quantity="many"><xliff:g id="COUNT_1">%1$d</xliff:g> تطبيقًا غير مستخدم</item>
+      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> تطبيق غير مستخدم</item>
+      <item quantity="one">تطبيق واحد (<xliff:g id="COUNT_0">%1$d</xliff:g>) غير مستخدم</item>
+    </plurals>
+    <string name="unused_apps_notification_content" msgid="3704446042109375119">"تمت إزالة الأذونات والملفات المؤقتة. انقر لمراجعة الإعدادات."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"لم يتم استخدام بعض التطبيقات منذ عدة أشهر"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="zero">لم يتم استخدام <xliff:g id="COUNT_1">%1$d</xliff:g> تطبيق منذ عدة شهور.</item>
@@ -395,7 +414,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"التطبيقات التي تتيح لك إمكانية تحديد هوية المتصلين أو حظر الرسائل غير المرغوب فيها أو المكالمات المسجّلة أو الأرقام غير المرغوب فيها"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"هل تريد ضبط <xliff:g id="APP_NAME">%1$s</xliff:g> باعتباره التطبيق التلقائي لإظهار رقم المتّصل والرسائل غير المرغوب فيها؟"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"لا يجب تقديم أذونات."</string>
-    <string name="role_watch_description" msgid="472019219209648726">"سيتمكن تطبيق <xliff:g id="APP_NAME">%1$s</xliff:g> من الوصول إلى الإشعارات والهاتف وجهات الاتصال والتقويم."</string>
+    <string name="role_watch_description" msgid="267003778693177779">"سيتم السماح لتطبيق <xliff:g id="APP_NAME">%1$s</xliff:g> بالتفاعل مع الإشعارات والوصول إلى أذونات الهاتف والرسائل القصيرة وجهات الاتصال والتقويم."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"التطبيق التلقائي الحالي"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"لا تسألني مرة أخرى."</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"ضبط كتطبيق تلقائي"</string>
