@@ -70,6 +70,7 @@
     <string name="location_settings" msgid="3624412509133422562">"Орналасу параметрлері"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> – осы құрылғыға орынды анықтау қызметтерін көрсететін қолданба. Орынды пайдалану мүмкіндігін орынды анықтау параметрлерінде өзгертуге болады."</string>
     <string name="system_warning" msgid="1173400963234358816">"Бұл рұқсатты бермесеңіз, құрылғының негізгі функциялары енді көзделгендей жұмыс істемеуі мүмкін."</string>
+    <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"Бұл рұқсаттан бас тартсаңыз, осы қолданба арқылы басқарылатын құрылғыңыздың кейбір функциясы бұдан былай ойдағыдай жұмыс істемеуі мүмкін."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Саясат арқылы қолданылған"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Саясат бойынша фондық режимде кіруге рұқсат етілмеген"</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"Саясат бойынша фондық режимде кіруге рұқсат етілген"</string>
@@ -103,6 +104,10 @@
     <string name="message_staging" msgid="9110563899955511866">"Қолданба реттелуде…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Белгісіз"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Бақылау тақтасы"</string>
+    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
+    <skip />
+    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Соңғы рет пайдаланылды: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> рет</item>
       <item quantity="one">Соңғы рет пайдаланылды: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> рет</item>
@@ -166,6 +171,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> қолданба</item>
       <item quantity="one">1 қолданба</item>
     </plurals>
+    <string name="permission_history_title" msgid="8340081285133025225">"Рұқсаттар тарихы"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Қолданба рұқсаттарын пайдалану"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Кіру рұқсаты сұралды: <xliff:g id="NUM">%1$s</xliff:g> рет. Жалпы ұзақтығы: <xliff:g id="DURATION">%2$s</xliff:g>. Соңғы рет <xliff:g id="TIME">%3$s</xliff:g> бұрын пайдаланылған."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Кіру рұқсаты сұралды: <xliff:g id="NUM">%1$s</xliff:g> рет. Соңғы рет <xliff:g id="TIME">%2$s</xliff:g> бұрын пайдаланылған."</string>
@@ -176,6 +182,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Қолданбаны пайдалану кезінде ғана рұқсат беру"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Әрдайым сұрау"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Тыйым салу"</string>
+    <string name="precise_image_description" msgid="6349638632303619872">"Нақты орын"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"Шамамен алынған орын"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Нақты орынды пайдалану"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Бұл функция өшірулі болса, қолданбалар жақын қашықтықтағы болжалды орныңызды ғана анықтай алады."</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> рұқсаты"</string>
@@ -198,6 +206,8 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"<xliff:g id="PERMISSION_NAME">%s</xliff:g> рұқсаты өшірілді"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> және <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> рұқсаттары өшірілді"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> және тағы <xliff:g id="NUMBER">%2$s</xliff:g> рұқсат өшірілді"</string>
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"Пайдаланылмайтын қолданбалар"</string>
+    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Қолданба бірнеше ай бойы пайдаланылмаса:\n\n• Құпиялылықты қорғау үшін рұқсаттар өшіріледі.\n• Орын босату үшін уақытша файлдар өшіріледі.\n• Батарея үнемдеу үшін хабарландырулар тоқтатылады."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Соңғы рет <xliff:g id="NUMBER">%s</xliff:g> айдан астам уақыт бұрын ашылған"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Қолданбаның соңғы рет ашылуы: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Соңғы рет ашылуы: <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -252,6 +262,11 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> қолданба бірнеше ай бойы пайдаланылмады. Көру үшін түртіңіз.</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> қолданба бірнеше ай бойы пайдаланылмады. Көру үшін түртіңіз.</item>
     </plurals>
+    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
+      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> пайдаланылмайтын қолданба</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> пайдаланылмайтын қолданба</item>
+    </plurals>
+    <string name="unused_apps_notification_content" msgid="3704446042109375119">"Рұқсаттар мен уақытша файлдар өшірілді. Көру үшін түртіңіз."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Кейбір қолданбалар бірнеше ай бойы пайдаланылмаған."</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> қолданба бірнеше ай бойы пайдаланылмады.</item>
@@ -339,7 +354,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Қоңырау шалушыны анықтауға, спамды және автоматты қоңырауларды және қажетсіз нөмірлерді бөгеуге мүмкіндік беретін қолданбалар."</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> нөмірді автоматты анықтау қызметі мен спам анықтау қолданбасы болып орнатылсын ба?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Ешқандай рұқсат қажет емес."</string>
-    <string name="role_watch_description" msgid="472019219209648726">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасы мына қызметтерді пайдаланады: Хабарландырулар, Телефон, Контактілер және Күнтізбе."</string>
+    <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасы хабарландыруларды, телефонды, SMS, контактілерді және күнтізбе рұқсаттарын пайдалана алады."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Ағымдағы әдепкі қолданба"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Қайта сұралмасын"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Әдепкі етіп орнату"</string>

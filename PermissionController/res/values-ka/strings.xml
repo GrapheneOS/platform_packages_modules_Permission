@@ -70,6 +70,7 @@
     <string name="location_settings" msgid="3624412509133422562">"მდებარეობის პარამეტრები"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> არის მდებარეობის სერვისების მომწოდებელი ამ მოწყობილობისთვის. მდებარეობაზე წვდომის შეცვლა შესაძლებელია მდებარეობის პარამეტრებიდან."</string>
     <string name="system_warning" msgid="1173400963234358816">"ამ ნებართვის უარყოფის შემთხვევაში, თქვენი მოწყობილობის ძირითადმა ფუნქციებმა შესაძლოა სათანადოდ აღარ იმუშაოს."</string>
+    <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"ამ ნებართვის უარყოფის შემთხვევაში, თქვენი მოწყობილობის ზოგმა ფუნქციამ, რომელიც ამ აპით იმართება, შესაძლოა სათანადოდ აღარ იმუშაოს."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"შეესაბამება წესს"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"ფონზე წვდომა დებულებით გათიშულია"</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"ფონზე წვდომა დებულებით დაშვებულია"</string>
@@ -103,6 +104,10 @@
     <string name="message_staging" msgid="9110563899955511866">"მიმდინარეობს აპის შუალედური შენახვა…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"უცნობი"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"საინფორმაციო დაფა"</string>
+    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
+    <skip />
+    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">ბოლო წვდომა: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> წვდომა</item>
       <item quantity="one">ბოლო წვდომა: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> წვდომა</item>
@@ -166,6 +171,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> აპი</item>
       <item quantity="one">1 აპი</item>
     </plurals>
+    <string name="permission_history_title" msgid="8340081285133025225">"ნებართვების ისტორია"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"აპის ნებართვებით სარგებლობა"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"წვდომა: <xliff:g id="NUM">%1$s</xliff:g>-ჯერ. საერთო ხანგრძლივობა: <xliff:g id="DURATION">%2$s</xliff:g>. ბოლო გამოყენებიდან გავიდა <xliff:g id="TIME">%3$s</xliff:g>."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"წვდომა: <xliff:g id="NUM">%1$s</xliff:g>-ჯერ. ბოლო გამოყენებიდან გავიდა <xliff:g id="TIME">%2$s</xliff:g>."</string>
@@ -176,6 +182,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"მხოლოდ აპის გამოყენებისას დაშვება"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"ყოველთვის მკითხეთ"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"უარყოფა"</string>
+    <string name="precise_image_description" msgid="6349638632303619872">"ზუსტი მდებარეობა"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"მიახლოებითი მდებარეობა"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"ზუსტი მდებარეობის გამოყენება"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"აპებს მხოლოდ უბნების დონეზე შეუძლია თქვენი მიახლოებითი მდებარეობის გარკვევა, როცა ის გამორთულია"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"ნებართვა: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -198,6 +206,8 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"ამოშლილია ნებართვა <xliff:g id="PERMISSION_NAME">%s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"ამოშლილია ნებართვები <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> და <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"ამოშლილია <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> და <xliff:g id="NUMBER">%2$s</xliff:g> სხვა ნებართვა"</string>
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"გამოუყენებელი აპები"</string>
+    <string name="unused_apps_page_summary" msgid="5271048000004368665">"თუ აპი რამდენიმე თვის განმავლობაში არ გამოიყენება:\n\n• ნებართვები ამოიშლება თქვენი კონფიდენციალურობის დასაცავად\n• დროებითი ფაილები ამოიშლება მეხსიერების გასათავისუფლებლად\n• შეტყობინებების მიღება შეწყდება ბატარეის დასაზოგად"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"აპის ბოლო გახსნა: <xliff:g id="NUMBER">%s</xliff:g>-ზე მეტი თვის წინ"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"აპის ბოლო გახსნა: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"ბოლო გახსნა: <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -252,6 +262,11 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> აპი რამდენიმე თვეა გამოუყენებელია. შეეხეთ გადასახედად</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> აპი რამდენიმე თვეა გამოუყენებელია. შეეხეთ გადასახედად</item>
     </plurals>
+    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
+      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> გამოუყენებელი აპი</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> გამოუყენებელი აპი</item>
+    </plurals>
+    <string name="unused_apps_notification_content" msgid="3704446042109375119">"ნებართვები და დროებითი ფაილები ამოიშალა. შეეხეთ გადასახედად."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"ზოგიერთი აპი რამდენიმე თვეა გამოუყენებელია"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> აპი რამდენიმე თვეა გამოუყენებელია</item>
@@ -339,7 +354,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"აპები, რომლებიც საშუალებას გაძლევთ, ამოიცნოთ ზარები, დაბლოკოთ სპამი, ავტომატიზირებული ზარები და არასასურველი ნომრები"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"გახდეს <xliff:g id="APP_NAME">%1$s</xliff:g> თქვენი ნაგულისხმევი აბონენტის ID და სპამის აპი?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"ნებართვები არ არის საჭირო"</string>
-    <string name="role_watch_description" msgid="472019219209648726">"<xliff:g id="APP_NAME">%1$s</xliff:g> მიიღებს წვდომას შეტყობინებებზე, ტელეფონზე, კონტაქტებსა და კალენდარზე."</string>
+    <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> შეძლებს თქვენს შეტყობინებებთან ინტერაქციას და თქვენი ტელეფონის, SMS-ების, კონტაქტებისა და კალენდრის ნებართვებზე წვდომას."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"ამჟამინდელი ნაგულისხმევი"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"აღარ მკითხოთ"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"ნაგულისხმ. დაყენება"</string>

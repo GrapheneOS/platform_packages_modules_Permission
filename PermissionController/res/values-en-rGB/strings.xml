@@ -70,6 +70,7 @@
     <string name="location_settings" msgid="3624412509133422562">"Location Settings"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> is a provider of location services for this device. Location access can be modified from location settings."</string>
     <string name="system_warning" msgid="1173400963234358816">"If you deny this permission, basic features of your device may no longer function as intended."</string>
+    <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"If you deny this permission, some features of your device managed by this app may no longer function as intended."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Enforced by policy"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Background access disabled by policy"</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"Background access enabled by policy"</string>
@@ -103,6 +104,8 @@
     <string name="message_staging" msgid="9110563899955511866">"Staging app…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Unknown"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Dashboard"</string>
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> usage"</string>
+    <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"When apps stopped using your <xliff:g id="PERMGROUP">%1$s</xliff:g> in the last 24 hours"</string>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Last access: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> accesses</item>
       <item quantity="one">Last access: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> access</item>
@@ -166,6 +169,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> apps</item>
       <item quantity="one">1 app</item>
     </plurals>
+    <string name="permission_history_title" msgid="8340081285133025225">"Permission history"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"App permissions usage"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Access: <xliff:g id="NUM">%1$s</xliff:g> times. Total duration: <xliff:g id="DURATION">%2$s</xliff:g>. Last used <xliff:g id="TIME">%3$s</xliff:g> ago."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Access: <xliff:g id="NUM">%1$s</xliff:g> times. Last used <xliff:g id="TIME">%2$s</xliff:g> ago."</string>
@@ -176,6 +180,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Allow only while using the app"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Ask every time"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Deny"</string>
+    <string name="precise_image_description" msgid="6349638632303619872">"Precise location"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"Approximate location"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Use precise location"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Apps can only determine your approximate location within a neighbourhood proximity with it off"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> permission"</string>
@@ -198,6 +204,8 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"<xliff:g id="PERMISSION_NAME">%s</xliff:g> permission removed"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> and <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> permissions removed"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> and <xliff:g id="NUMBER">%2$s</xliff:g> other permissions removed"</string>
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"Unused apps"</string>
+    <string name="unused_apps_page_summary" msgid="5271048000004368665">"If an app is unused for a few months:\n\n• Permissions are removed to protect your privacy\n• Temporary files are removed to free up space\n• Notifications are stopped to save battery"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Last opened more than <xliff:g id="NUMBER">%s</xliff:g> months ago"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"App last opened on <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Last opened <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -252,6 +260,11 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> apps haven’t been used for a few months. Tap to review</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> app hasn’t been used for a few months. Tap to review</item>
     </plurals>
+    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
+      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> unused apps</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> unused app</item>
+    </plurals>
+    <string name="unused_apps_notification_content" msgid="3704446042109375119">"Permissions and temporary files have been removed. Tap to review."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Some apps haven’t been used for a few months"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> apps haven’t been used for a few months</item>
@@ -339,7 +352,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Apps that allow you to identify calls and block spam, robocalls or unwanted numbers"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Set <xliff:g id="APP_NAME">%1$s</xliff:g> as your default caller ID &amp; spam app?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"No permissions needed"</string>
-    <string name="role_watch_description" msgid="472019219209648726">"<xliff:g id="APP_NAME">%1$s</xliff:g> will get access to notifications, phone, contacts and calendar."</string>
+    <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> will be allowed to interact with your notifications and access your Phone, SMS, Contacts and Calendar permissions."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Current default"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Don\'t ask again"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Set as default"</string>

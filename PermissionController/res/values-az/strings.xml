@@ -70,6 +70,7 @@
     <string name="location_settings" msgid="3624412509133422562">"Məkan Ayarları"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> bu cihaz üçün məkan xidmətləri təminatçısıdır. Məkana giriş məkan ayarlarından dəyişdirilə bilər."</string>
     <string name="system_warning" msgid="1173400963234358816">"Bu icazəni rədd etsəniz, cihazınızın əsas funksiyaları lazımi qaydada işləməyə bilər."</string>
+    <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"Bu icazəni rədd etsəniz, bu tətbiqin idarə etdiyi cihazınızın bəzi funksiyaları lazımi qaydada işləməyə bilər."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Siyasət tərəfindən tətbiq olunur"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Arxa fon girişi siyasətə əsasən deaktiv edildi"</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"Arxa fon girişi siyasət tərəfindən aktiv edildi"</string>
@@ -103,6 +104,10 @@
     <string name="message_staging" msgid="9110563899955511866">"Tətbiq hazırlanır..."</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Naməlum"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"İdarə paneli"</string>
+    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
+    <skip />
+    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Son giriş: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> giriş</item>
       <item quantity="one">Son giriş: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> giriş</item>
@@ -166,6 +171,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> tətbiq</item>
       <item quantity="one">1 tətbiq</item>
     </plurals>
+    <string name="permission_history_title" msgid="8340081285133025225">"İcazə tarixçəsi"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Tətbiq icazələri istifadəsi"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Giriş: <xliff:g id="NUM">%1$s</xliff:g> dəfə. Yekun müddət: <xliff:g id="DURATION">%2$s</xliff:g>. Son istifadə <xliff:g id="TIME">%3$s</xliff:g> əvvəl."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Giriş: <xliff:g id="NUM">%1$s</xliff:g> dəfə. Son istifadə <xliff:g id="TIME">%2$s</xliff:g> əvvəl."</string>
@@ -176,6 +182,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Yalnız tətbiqdən istifadə edərkən icazə verin"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Hər dəfə soruşun"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"İmtina edin"</string>
+    <string name="precise_image_description" msgid="6349638632303619872">"Dəqiq məkan"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"Təxmini məkan"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Dəqiq məkanı istifadə edin"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Tətbiqlər yalnız deaktiv olduqda, qonşuluqdakı təxmini məkanınızı təyin edə bilər"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> üçün icazə"</string>
@@ -198,6 +206,8 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"<xliff:g id="PERMISSION_NAME">%s</xliff:g> icazəsi silindi"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> və <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> icazəsi silindi"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> və digər <xliff:g id="NUMBER">%2$s</xliff:g> icazə silindi"</string>
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"İstifadə olunmayan tətbiqlər"</string>
+    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Bir tətbiq bir neçə ay istifadə edilmirsə:\n\n• Məxfiliyinizi qorumaq üçün icazələr silinir\n• Yer boşaltmaq üçün müvəqqəti fayllar silinir\n• Batareyaya qənaət etmək üçün bildirişlər dayandırılır"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Sonuncu dəfə ən azı <xliff:g id="NUMBER">%s</xliff:g> ay əvvəl açılıb"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Tətbiq sonuncu dəfə <xliff:g id="DATE">%s</xliff:g> tarixində açılıb"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Sonuncu dəfə <xliff:g id="DATE">%s</xliff:g> tarixində açılıb"</string>
@@ -252,6 +262,11 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> tətbiq bir neçə aydır ki, istifadə edilməyib. Nəzərdən keçirmək üçün toxunun</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> tətbiq bir neçə aydır ki, istifadə edilməyib. Nəzərdən keçirmək üçün toxunun</item>
     </plurals>
+    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
+      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> istifadə olunmayan tətbiq</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> istifadə olunmayan tətbiq</item>
+    </plurals>
+    <string name="unused_apps_notification_content" msgid="3704446042109375119">"İcazələr və müvəqqəti fayllar silinib. Nəzərdən keçirmək üçün toxunun."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Bəzi tətbiqlər bir neçə aydır ki, istifadə edilməyib"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> tətbiq bir neçə aydır ki, istifadə edilməyib</item>
@@ -339,7 +354,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Zəngləri müəyyən etməyə, spam, avtomatik zənglər və arzuolunmaz nömrələri blok etməyə imkan verən tətbiqlər"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> defolt zəng edənin ID-si və spam tətbiqi olaraq ayarlansın?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"İcazəyə ehtiyac yoxdur"</string>
-    <string name="role_watch_description" msgid="472019219209648726">"<xliff:g id="APP_NAME">%1$s</xliff:g> Bildirişlər, Telefon, Kontaktlar və Təqvimə giriş əldə edəcək."</string>
+    <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> bildirişlərinizə, Telefon, SMS, Kontaktlar və Təqvimə giriş əldə edəcək."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Cari defolt"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Bir daha soruşmayın"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Defolt olaraq seçin"</string>

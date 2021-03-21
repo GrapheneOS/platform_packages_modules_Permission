@@ -70,6 +70,7 @@
     <string name="location_settings" msgid="3624412509133422562">"Տեղադրության կարգավորումներ"</string>
     <string name="location_warning" msgid="2381649060929040962">"Այս սարքի տեղորոշման ծառայությունները տրամադրում է <xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածը: Տեղադրության ցուցադրման կարգավորումները կարող եք փոխել տեղադրության կարգավորումներում:"</string>
     <string name="system_warning" msgid="1173400963234358816">"Եթե այս թույլտվությունը մերժեք, ձեր սարքի հիմնական գործառույթները հնարավոր է պատշաճ չաշխատեն:"</string>
+    <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"Եթե այս թույլտվությունը մերժեք, ձեր սարքի որոշ գործառույթներ, որոնք կառավարվում են այս հավելվածի կողմից, կարող են պատշաճ չաշխատել։"</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Կանոնների համաձայն"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Հասանելիությունը ֆոնային ռեժիմում անջատած է կանոնի համաձայն"</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"Հասանելիությունը ֆոնային ռեժիմում միացված է կանոնի համաձայն"</string>
@@ -103,6 +104,10 @@
     <string name="message_staging" msgid="9110563899955511866">"Սպասեք…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Անհայտ"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Կառավարման վահանակ"</string>
+    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
+    <skip />
+    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="one">Վերջին օգտագործումը՝ <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> անգամ</item>
       <item quantity="other">Վերջին օգտագործումը՝ <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> անգամ</item>
@@ -166,6 +171,7 @@
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> հավելված</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> հավելված</item>
     </plurals>
+    <string name="permission_history_title" msgid="8340081285133025225">"Թույլտվությունների պատմություն"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Թույլտվությունների օգտագործում"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Օգտագործվել է <xliff:g id="NUM">%1$s</xliff:g> անգամ։ Ընդհանուր տևողությունը՝ <xliff:g id="DURATION">%2$s</xliff:g>։ Վերջին անգամ օգտագործվել է <xliff:g id="TIME">%3$s</xliff:g> առաջ։"</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Օգտագործվել է <xliff:g id="NUM">%1$s</xliff:g> անգամ։ Վերջինը՝ <xliff:g id="TIME">%2$s</xliff:g> առաջ։"</string>
@@ -176,6 +182,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Թույլատրել միայն հավելվածի օգտագործման ժամանակ"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Ամեն անգամ հարցնել"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Մերժել"</string>
+    <string name="precise_image_description" msgid="6349638632303619872">"Ճշգրիտ տեղադրություն"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"Մոտավոր տեղադրություն"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Օգտագործել ճշգրիտ տեղադրությունը"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Եթե ճշգրիտ տեղադրությունն անջատված է, հավելվածները կարող են որոշել միայն ձեր մոտավոր տեղադրությունը՝ որոշակի տեղանքի սահմաններում"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"«<xliff:g id="PERM">%1$s</xliff:g>» թույլտվություն"</string>
@@ -198,6 +206,8 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"<xliff:g id="PERMISSION_NAME">%s</xliff:g>ն օգտագործելու թույլտվությունը հեռացվել է"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>ն ու <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>ն օգտագործելու թույլտվությունները հեռացվել են"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>ն օգտագործելու թույլտվությունն ու ևս <xliff:g id="NUMBER">%2$s</xliff:g> թույլտվություն հեռացվել են"</string>
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"Չօգտագործվող հավելվածներ"</string>
+    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Եթե դուք մի քանի ամիս չեք օգտագործում հավելվածը՝\n\n• թույլտվությունները հեռացվում են՝ ձեր տվյալների գաղտնիությունը պաշտպանելու համար,\n• ժամանակավոր ֆայլերը հեռացվում են՝ տարածք ազատելու համար,\n• ծանուցումներն անջատվում են՝ մարտկոցի լիցքը խնայելու համար։"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Վերջին անգամ բացվել է ավելի քան <xliff:g id="NUMBER">%s</xliff:g> ամիս առաջ"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Հավելվածը վերջին անգամ բացվել է՝ <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Վերջին անգամ բացվել է՝ <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -252,6 +262,11 @@
       <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> հավելված մի քանի ամիս է, ինչ չի օգտագործվել։ Հպեք՝ մանրամասները տեսնելու համար։</item>
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> հավելված մի քանի ամիս է, ինչ չի օգտագործվել։ Հպեք՝ մանրամասները տեսնելու համար։</item>
     </plurals>
+    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
+      <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> չօգտագործվող հավելված</item>
+      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> չօգտագործվող հավելված</item>
+    </plurals>
+    <string name="unused_apps_notification_content" msgid="3704446042109375119">"Թույլտվություններն ու ժամանակավոր ֆայլերը հեռացվել են։ Հպեք՝ մանրամասները տեսնելու համար։"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Որոշ հավելվածներ մի քանի ամիս է, ինչ չեն օգտագործվել"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> հավելված մի քանի ամիս է, ինչ չի օգտագործվել</item>
@@ -339,7 +354,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Հավելվածներ, որոնք թույլ են տալիս ճանաչել հեռախոսահամարները, արգելափակել սպամը, ավտոմատ զանգերը և անցանկալի համարները"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Ընտրե՞լ <xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածը որպես համարների ավտոմատ որոշման և սպամից պաշտպանվելու կանխադված հավելված"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Թույլտվություններ հարկավոր չեն"</string>
-    <string name="role_watch_description" msgid="472019219209648726">"<xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածին հասանելի կլինեն «Ծանուցումներ», «Հեռախոս», «Կոնտակտներ» և «Օրացույց» ծառայությունները։"</string>
+    <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածը կկարողանա փոխազդել ձեր ծանուցումների հետ և կստանա «Հեռախոս», «SMS», «Կոնտակտներ» և «Օրացույց» ծառայությունների թույլտվությունները։"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Օգտագործվում է ըստ կանխադրման"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Նորից չհարցնել"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Նշել կանխադրված"</string>

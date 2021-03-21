@@ -70,6 +70,7 @@
     <string name="location_settings" msgid="3624412509133422562">"位置情報の設定"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g>はこのデバイスの位置情報サービスのプロバイダです。位置情報へのアクセスは位置情報の設定から変更できます。"</string>
     <string name="system_warning" msgid="1173400963234358816">"この権限を許可しない場合、デバイスの基本機能が正しく動作しなくなることがあります。"</string>
+    <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"この権限を許可しない場合、このアプリで管理されるデバイスの一部の機能が正しく動作しなくなることがあります。"</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"ポリシーにより適用"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"バックグラウンドでのアクセスはポリシーによって無効です"</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"バックグラウンドでのアクセスはポリシーによって有効です"</string>
@@ -103,6 +104,10 @@
     <string name="message_staging" msgid="9110563899955511866">"アプリを準備しています…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"不明"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"ダッシュボード"</string>
+    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
+    <skip />
+    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">前回のアクセス: <xliff:g id="TIME_2">%1$s</xliff:g>\nアクセス回数: <xliff:g id="NUM_3">%2$s</xliff:g> 回</item>
       <item quantity="one">前回のアクセス: <xliff:g id="TIME_0">%1$s</xliff:g>\nアクセス回数: <xliff:g id="NUM_1">%2$s</xliff:g> 回</item>
@@ -166,6 +171,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> 個のアプリ</item>
       <item quantity="one">1 個のアプリ</item>
     </plurals>
+    <string name="permission_history_title" msgid="8340081285133025225">"権限の履歴"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"アプリの権限の使用"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"アクセス: <xliff:g id="NUM">%1$s</xliff:g> 回。合計時間: <xliff:g id="DURATION">%2$s</xliff:g>。最終使用: <xliff:g id="TIME">%3$s</xliff:g>前。"</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"アクセス: <xliff:g id="NUM">%1$s</xliff:g> 回。最終使用: <xliff:g id="TIME">%2$s</xliff:g>前。"</string>
@@ -176,6 +182,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"アプリの使用中のみ許可"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"毎回確認"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"許可しない"</string>
+    <string name="precise_image_description" msgid="6349638632303619872">"正確な現在地"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"おおよその現在地"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"正確な位置情報を使用"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"アプリはユーザーの位置情報について、近接する地域内でのおおよその位置しか特定できません"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>の権限"</string>
@@ -198,6 +206,8 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"<xliff:g id="PERMISSION_NAME">%s</xliff:g>の権限が削除されました"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>、<xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>の権限が削除されました"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>、他 <xliff:g id="NUMBER">%2$s</xliff:g> 件の権限が削除されました"</string>
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"使用していないアプリ"</string>
+    <string name="unused_apps_page_summary" msgid="5271048000004368665">"数か月使用されていないアプリがある場合:\n\n• プライバシーを保護するため、権限が削除されます\n• 空き容量を増やすため、一時ファイルが削除されます\n• バッテリーを節約するため、通知が停止されます"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"最後に開いたのが <xliff:g id="NUMBER">%s</xliff:g> か月以上前"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"アプリ最終使用日: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"最終使用日: <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -252,6 +262,11 @@
       <item quantity="other">数か月使用していないアプリが <xliff:g id="COUNT_1">%1$d</xliff:g> 個あります。タップしてご確認ください</item>
       <item quantity="one">数か月使用していないアプリが <xliff:g id="COUNT_0">%1$d</xliff:g> 個あります。タップしてご確認ください</item>
     </plurals>
+    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
+      <item quantity="other">使用していないアプリ: <xliff:g id="COUNT_1">%1$d</xliff:g> 個</item>
+      <item quantity="one">使用していないアプリ: <xliff:g id="COUNT_0">%1$d</xliff:g> 個</item>
+    </plurals>
+    <string name="unused_apps_notification_content" msgid="3704446042109375119">"権限と一時ファイルが削除されました。タップしてご確認ください。"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"数か月使用していないアプリがあります"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other">数か月使用していないアプリが <xliff:g id="COUNT_1">%1$d</xliff:g> 個あります</item>
@@ -339,7 +354,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"通話の識別や、迷惑電話、ロボコール、不要な電話番号のブロックを行えるアプリです"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> をデフォルトの発信者番号 / 迷惑電話アプリとして設定しますか？"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"必要な権限がありません"</string>
-    <string name="role_watch_description" msgid="472019219209648726">"<xliff:g id="APP_NAME">%1$s</xliff:g> は、通知、電話、連絡先、カレンダーにアクセスします。"</string>
+    <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> は通知を使用でき、スマートフォン、SMS、連絡先、カレンダーの権限にもアクセスできます。"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"現在のデフォルト"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"次回から表示しない"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"デフォルトに設定"</string>
