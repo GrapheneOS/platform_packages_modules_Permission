@@ -70,6 +70,7 @@
     <string name="location_settings" msgid="3624412509133422562">"ການຕັ້ງຄ່າສະຖານທີ່"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> ເປັນຜູ້ໃຫ້ບໍລິການເລື່ອງການບໍລິການສະຖານທີ່ສຳລັບອຸປະກອນນີ້. ການເຂົ້າເຖິງສະຖານທີ່ແມ່ນສາມາດແກ້ໄຂໄດ້ຈາກການຕັ້ງຄ່າສະຖານທີ່."</string>
     <string name="system_warning" msgid="1173400963234358816">"ຖ້າທ່ານປະຕິເສດສິດອະນຸຍາດນີ້, ຄຸນສົມບັດພື້ນຖານຂອງອຸປະກອນຂອງທ່ານອາດຈະບໍ່ເຮັດໜ້າທີ່ຕາມທີ່ກຳນົດໄວ້."</string>
+    <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"ຫາກທ່ານປະຕິເສດການອະນຸຍາດນີ້, ຄຸນສົມບັດບາງຢ່າງຂອງອຸປະກອນທີ່ຖືກຈັດການໂດຍແອັບນີ້ຈະບໍ່ສາມາດເຮັດວຽກໄດ້ຕາມທີ່ຕັ້ງໃຈໄວ້."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"ບັງຄັບໃຊ້ຕາມນະໂຍບາຍແລ້ວ"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"ປິດນຳໃຊ້ການເຂົ້າເຖິງໃນພື້ນຫຼັງຕາມນະໂຍບາຍແລ້ວ"</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"ເປີດນຳໃຊ້ການເຂົ້າເຖິງໃນພື້ນຫຼັງຕາມນະໂຍບາຍແລ້ວ"</string>
@@ -103,6 +104,10 @@
     <string name="message_staging" msgid="9110563899955511866">"ກຳລັງຮຽງແອັບ…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"ບໍ່ຮູ້ຈັກ"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"ແຜງໜ້າປັດ"</string>
+    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
+    <skip />
+    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">ການເຂົ້າເຖິງຫຼ້າສຸດ: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> ການເຂົ້າເຖິງ</item>
       <item quantity="one">ການເຂົ້າເຖິງຫຼ້າສຸດ: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> ການເຂົ້າເຖິງ</item>
@@ -166,6 +171,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ແອັບ</item>
       <item quantity="one">1 ແອັບ</item>
     </plurals>
+    <string name="permission_history_title" msgid="8340081285133025225">"ປະຫວັດການອະນຸຍາດ"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"ການໃຊ້ສິດອະນຸຍາດແອັບ"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"ເຂົ້າເຖິງ: <xliff:g id="NUM">%1$s</xliff:g> ເທື່ອ. ໄລຍະເວລາທັງຮວມ: <xliff:g id="DURATION">%2$s</xliff:g>. ໃຊ້ຫຼ້າສຸດ <xliff:g id="TIME">%3$s</xliff:g> ກ່ອນ."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"ເຂົ້າເຖິງ: <xliff:g id="NUM">%1$s</xliff:g> ເທື່ອ. ໃຊ້ຫຼ້າສຸດ <xliff:g id="TIME">%2$s</xliff:g> ກ່ອນ."</string>
@@ -176,6 +182,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"ອະນຸຍາດໃນເວລາທີ່ກຳລັງໃຊ້ແອັບເທົ່ານັ້ນ"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"ຖາມທຸກເທື່ອ"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"ປະຕິເສດ"</string>
+    <string name="precise_image_description" msgid="6349638632303619872">"ສະຖານທີ່ແບບລະອຽດ"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"ສະຖານທີ່ໂດຍປະມານ"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"ໃຊ້ສະຖານທີ່ແບບລະອຽດ"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"ແອັບຕ່າງໆສາມາດກຳນົດສະຖານທີ່ໂດຍປະມານຂອງທ່ານໄດ້ພາຍໃນໄລຍະໃກ້ຄຽງບໍລິເວນທີ່ທ່ານຢູ່ເທົ່ານັ້ນຫາກປິດມັນໄວ້"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"ສິດອະນຸຍາດ <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -198,6 +206,8 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"ລຶບສິດອະນຸຍາດ <xliff:g id="PERMISSION_NAME">%s</xliff:g> ອອກແລ້ວ"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"ລຶບສິດອະນຸຍາດ <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> ແລະ <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> ອອກແລ້ວ"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"ລຶບສິດອະນຸຍາດ <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ແລະ ອີກ <xliff:g id="NUMBER">%2$s</xliff:g> ແອັບອອກແລ້ວ"</string>
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"ແອັບທີ່ບໍ່ໄດ້ໃຊ້"</string>
+    <string name="unused_apps_page_summary" msgid="5271048000004368665">"ຫາກບໍ່ໄດ້ໃຊ້ແອັບໃດໜຶ່ງເປັນເວລາສອງສາມເດືອນ:\n\n• ການອະນຸຍາດຈະຖືກລຶບອອກເພື່ອປົກປ້ອງຄວາມເປັນສ່ວນຕົວຂອງທ່ານ\n• ໄຟລ໌ຊົ່ວຄາວຈະຖືກລຶບອອກເພື່ອສ້າງພື້ນທີ່ຫວ່າງ\n• ການແຈ້ງເຕືອນຈະຢຸດເຮັດວຽກເພື່ອປະຢັດແບັດເຕີຣີ"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"ເປີດຫຼ້າສຸດຫຼາຍກວ່າ <xliff:g id="NUMBER">%s</xliff:g> ເດືອນກ່ອນ"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ເປີດແອັບຫຼ້າສຸດເມື່ອ <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"ເປີດຫຼ້າສຸດ <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -252,6 +262,11 @@
       <item quantity="other">ບໍ່ໄດ້ໃຊ້ <xliff:g id="COUNT_1">%1$d</xliff:g> ແອັບມາສອງສາມເດືອນແລ້ວ. ແຕະເພື່ອກວດສອບ</item>
       <item quantity="one">ບໍ່ໄດ້ໃຊ້ <xliff:g id="COUNT_0">%1$d</xliff:g> ມາສອງສາມເດືອນແລ້ວ. ແຕະເພື່ອກວດສອບ</item>
     </plurals>
+    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
+      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> ແອັບທີ່ບໍ່ໄດ້ໃຊ້</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> ແອັບທີ່ບໍ່ໄດ້ໃຊ້</item>
+    </plurals>
+    <string name="unused_apps_notification_content" msgid="3704446042109375119">"ລຶບການອະນຸຍາດ ແລະ ໄຟລ໌ຊົ່ວຄາວອອກແລ້ວ. ແຕະເພື່ອກວດສອບ."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"ບາງແອັບບໍ່ໄດ້ໃຊ້ມາສອງສາມເດືອນແລ້ວ"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other">ບໍ່ໄດ້ໃຊ້ <xliff:g id="COUNT_1">%1$d</xliff:g> ແອັບມາສອງສາມເດືອນແລ້ວ</item>
@@ -339,7 +354,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"ແອັບທີ່ອະນຸຍາດໃຫ້ທ່ານລະບຸການໂທ ແລະ ບລັອກເບີສະແປມ, ເບີບັນທຶກສຽງຄົນເວົ້າອັດຕະໂນມັດ ຫຼື ເບີທີ່ບໍ່ຕ້ອງການ"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"ຕັ້ງ <xliff:g id="APP_NAME">%1$s</xliff:g> ເປັນໝາຍເລກຜູ້ໂທເລີ່ມຕົ້ນ ແລະ ແອັບສະແປມເລີ່ມຕົ້ນຂອງທ່ານບໍ?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"ບໍ່ຈຳເປັນຕ້ອງມີສິດອະນຸຍາດ"</string>
-    <string name="role_watch_description" msgid="472019219209648726">"<xliff:g id="APP_NAME">%1$s</xliff:g> ຈະໄດ້ຮັບສິດເຂົ້າເຖິງການແຈ້ງເຕືອນ, ໂທລະສັບ, ລາຍຊື່ຜູ້ຕິດຕໍ່ ແລະ ປະຕິທິນ."</string>
+    <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> ຈະໄດ້ຮັບອະນຸຍາດໃຫ້ໂຕ້ຕອບກັບການແຈ້ງເຕືອນຂອງທ່ານ ແລະ ເຂົ້າເຖິງການອະນຸຍາດໂທລະສັບ, SMS, ລາຍຊື່ຜູ້ຕິດຕໍ່ ແລະ ປະຕິທິນຂອງທ່ານໄດ້."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"ຄ່າເລີ່ມຕົ້ນປັດຈຸບັນ"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"ບໍ່ຕ້ອງຖາມອີກ"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"ຕັ້ງເປັນຄ່າເລີ່ມຕົ້ນ"</string>

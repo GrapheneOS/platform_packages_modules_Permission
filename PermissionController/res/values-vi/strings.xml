@@ -70,6 +70,7 @@
     <string name="location_settings" msgid="3624412509133422562">"Cài đặt vị trí"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> là nhà cung cấp dịch vụ vị trí cho thiết bị này. Bạn có thể sửa đổi quyền truy cập vào vị trí trong mục cài đặt vị trí."</string>
     <string name="system_warning" msgid="1173400963234358816">"Nếu bạn từ chối quyền này thì các tính năng cơ bản của thiết bị có thể không còn hoạt động như dự kiến."</string>
+    <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"Nếu bạn từ chối cấp quyền này, một số tính năng trên thiết bị của bạn do ứng dụng này quản lý có thể không còn hoạt động như dự kiến."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Thực thi theo chính sách"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Quyền truy cập khi ở nền sau đã tắt theo chính sách"</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"Quyền truy cập khi ở nền sau đã bật theo chính sách"</string>
@@ -103,6 +104,10 @@
     <string name="message_staging" msgid="9110563899955511866">"Đang thử nghiệm ứng dụng…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Không xác định"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Trang tổng quan"</string>
+    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
+    <skip />
+    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Lần truy cập gần đây nhất: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> lần truy cập</item>
       <item quantity="one">Lần truy cập gần đây nhất: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> lần truy cập</item>
@@ -166,6 +171,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ứng dụng</item>
       <item quantity="one">1 ứng dụng</item>
     </plurals>
+    <string name="permission_history_title" msgid="8340081285133025225">"Nhật ký quyền"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Sử dụng quyền ứng dụng"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Truy cập: <xliff:g id="NUM">%1$s</xliff:g> lần. Tổng thời gian: <xliff:g id="DURATION">%2$s</xliff:g>. Sử dụng lần gần đây nhất vào <xliff:g id="TIME">%3$s</xliff:g> trước."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Truy cập: <xliff:g id="NUM">%1$s</xliff:g> lần. Sử dụng lần gần đây nhất vào <xliff:g id="TIME">%2$s</xliff:g> trước."</string>
@@ -176,6 +182,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Chỉ cho phép khi dùng ứng dụng"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Luôn hỏi"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Từ chối"</string>
+    <string name="precise_image_description" msgid="6349638632303619872">"Vị trí chính xác"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"Vị trí gần đúng"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Sử dụng vị trí chính xác"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Các ứng dụng chỉ có thể xác định vị trí gần đúng trong phạm vi gần người dùng khi chế độ cài đặt này đang tắt"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Quyền <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -198,6 +206,8 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"Đã thu hồi quyền sử dụng <xliff:g id="PERMISSION_NAME">%s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Đã thu hồi quyền đối với <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> và <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Đã thu hồi quyền sử dụng <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> và <xliff:g id="NUMBER">%2$s</xliff:g> quyền khác"</string>
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"Ứng dụng không dùng đến"</string>
+    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Nếu bạn không dùng một ứng dụng trong vài tháng, hệ thống sẽ:\n\n• Xóa các quyền để bảo vệ quyền riêng tư của bạn\n• Xóa các tệp tạm thời để giải phóng dung lượng\n• Dừng các thông báo để tiết kiệm pin"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Lần mở gần đây nhất là hơn <xliff:g id="NUMBER">%s</xliff:g> tháng trước"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Lần gần đây nhất bạn mở ứng dụng này là vào <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Lần mở gần đây nhất là vào <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -252,6 +262,11 @@
       <item quantity="other">Bạn không dùng <xliff:g id="COUNT_1">%1$d</xliff:g> ứng dụng trong vài tháng qua. Nhấn để xem</item>
       <item quantity="one">Bạn không dùng <xliff:g id="COUNT_0">%1$d</xliff:g> ứng dụng trong vài tháng qua. Nhấn để xem</item>
     </plurals>
+    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
+      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> ứng dụng không dùng đến</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> ứng dụng không dùng đến</item>
+    </plurals>
+    <string name="unused_apps_notification_content" msgid="3704446042109375119">"Các quyền và tệp tạm thời đã bị xóa. Nhấn để xem lại."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Bạn không dùng một số ứng dụng trong vài tháng qua"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other">Bạn không dùng <xliff:g id="COUNT_1">%1$d</xliff:g> ứng dụng trong vài tháng qua</item>
@@ -339,7 +354,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Các ứng dụng cho phép bạn xác định cuộc gọi và chặn cuộc gọi làm phiền, cuộc gọi tự động hoặc số điện thoại không mong muốn"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Bạn muốn đặt <xliff:g id="APP_NAME">%1$s</xliff:g> làm ứng dụng nhận dạng người gọi và chặn cuộc gọi làm phiền mặc định?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Không cần quyền"</string>
-    <string name="role_watch_description" msgid="472019219209648726">"<xliff:g id="APP_NAME">%1$s</xliff:g> sẽ có quyền truy cập vào Thông báo, Điện thoại, Danh bạ và Lịch."</string>
+    <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> sẽ được phép tương tác với thông báo cũng như truy cập vào Điện thoại, SMS, Danh bạ và Lịch."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Ứng dụng mặc định hiện tại"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Không hỏi lại"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Đặt làm mặc định"</string>
