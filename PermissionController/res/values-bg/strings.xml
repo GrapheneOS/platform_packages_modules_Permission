@@ -70,6 +70,7 @@
     <string name="location_settings" msgid="3624412509133422562">"Настройки за местоположението"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> е доставчик на услуги за местоположението за това устройство. Достъпът до местоположението може да бъде променен от съответните настройки."</string>
     <string name="system_warning" msgid="1173400963234358816">"Ако откажете това разрешение, основни функции на устройството ви може да спрат да работят както трябва."</string>
+    <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"Ако откажете това разрешение, някои функции на устройството ви, управлявани от приложението, може да спрат да работят правилно."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Наложено чрез правило"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Достъпът на заден план е деактивиран от правилата"</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"Достъпът на заден план е активиран от правилата"</string>
@@ -103,6 +104,10 @@
     <string name="message_staging" msgid="9110563899955511866">"Приложението се подготвя…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Неизвестно"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Табло за управление"</string>
+    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
+    <skip />
+    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Последен достъп: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> осъществявания на достъп</item>
       <item quantity="one">Последен достъп: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> осъществяване на достъп</item>
@@ -166,6 +171,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> приложения</item>
       <item quantity="one">1 приложение</item>
     </plurals>
+    <string name="permission_history_title" msgid="8340081285133025225">"Разрешения: История"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Използване на разрешенията"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Достъп: <xliff:g id="NUM">%1$s</xliff:g> пъти. Обща продължителност: <xliff:g id="DURATION">%2$s</xliff:g>. Последно използване преди <xliff:g id="TIME">%3$s</xliff:g>."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Достъп: <xliff:g id="NUM">%1$s</xliff:g> пъти. Последно използване преди <xliff:g id="TIME">%2$s</xliff:g>."</string>
@@ -176,6 +182,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Разрешаване само докато приложението се използва"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Извеждане на запитване всеки път"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Отказ"</string>
+    <string name="precise_image_description" msgid="6349638632303619872">"Точно местоположение"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"Приблизително местоположение"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Използване на точното местоположение"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Приложенията могат да определят само приблизителното ви местоположение до рамките на квартал, когато точното е изключено"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Разрешение за: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -198,6 +206,8 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"Разрешението за <xliff:g id="PERMISSION_NAME">%s</xliff:g> е премахнато"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Разрешенията за <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> и <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> са премахнати"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Разрешението за <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> и още <xliff:g id="NUMBER">%2$s</xliff:g> са премахнати"</string>
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"Неизползвани приложения"</string>
+    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Ако дадено приложение не бъде използвано няколко месеца:\n\n• разрешенията ще бъдат премахнати с цел защита на поверителността ви;\n• временните файлове ще бъдат премахнати, за да се освободи място;\n• известията ще бъдат спрени с цел икономия на батерията."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Последно отваряне преди повече от <xliff:g id="NUMBER">%s</xliff:g> месеца"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Приложението е отворено за последно на <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Последно отваряне на <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -252,6 +262,11 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> приложения не са използвани от няколко месеца. Докоснете за преглед</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> приложение не е използвано от няколко месеца. Докоснете за преглед</item>
     </plurals>
+    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
+      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> неизползвани приложения</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> неизползвано приложение</item>
+    </plurals>
+    <string name="unused_apps_notification_content" msgid="3704446042109375119">"Разрешенията и временните файлове са премахнати. Докоснете за преглед."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Някои приложения не са използвани от няколко месеца"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> приложения не са използвани от няколко месеца</item>
@@ -339,7 +354,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Приложения, които ви дават възможност да идентифицирате обажданията и да блокирате спам, автоматизирани или нежелани обаждания"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Да се зададе ли <xliff:g id="APP_NAME">%1$s</xliff:g> като стандартно приложение за идентификатор на обаждащия се и спам?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Не са необходими разрешения"</string>
-    <string name="role_watch_description" msgid="472019219209648726">"<xliff:g id="APP_NAME">%1$s</xliff:g> ще получи достъп до известията, телефона, контактите и календара."</string>
+    <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> ще получи разрешение да взаимодейства с известията ви и ще получи достъп до разрешенията за телефона, SMS съобщенията, контактите и календара."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Текущо стандартно приложение"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Без повторно питане"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Задаване"</string>

@@ -70,6 +70,7 @@
     <string name="location_settings" msgid="3624412509133422562">"位置信息设置"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g>是此设备的一个位置信息服务提供程序。您可以在位置信息设置中修改位置信息使用权。"</string>
     <string name="system_warning" msgid="1173400963234358816">"如果您拒绝此权限，您设备的基本功能可能会无法正常使用。"</string>
+    <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"如果您拒绝此权限，设备上受此应用管理的部分功能可能无法正常使用。"</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"依据相关政策强制执行"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"已根据相关政策停用后台使用权"</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"已根据相关政策启用后台使用权"</string>
@@ -103,6 +104,10 @@
     <string name="message_staging" msgid="9110563899955511866">"正在准备安装应用…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"未知"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"信息中心"</string>
+    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
+    <skip />
+    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">上次访问时间：<xliff:g id="TIME_2">%1$s</xliff:g>\n访问次数：<xliff:g id="NUM_3">%2$s</xliff:g> 次</item>
       <item quantity="one">上次访问时间：<xliff:g id="TIME_0">%1$s</xliff:g>\n访问次数：<xliff:g id="NUM_1">%2$s</xliff:g> 次</item>
@@ -166,6 +171,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> 个应用</item>
       <item quantity="one">1 个应用</item>
     </plurals>
+    <string name="permission_history_title" msgid="8340081285133025225">"权限记录"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"应用权限使用情况"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"访问次数：<xliff:g id="NUM">%1$s</xliff:g> 次。总时长：<xliff:g id="DURATION">%2$s</xliff:g>。上次使用时间：<xliff:g id="TIME">%3$s</xliff:g>前。"</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"访问次数：<xliff:g id="NUM">%1$s</xliff:g> 次。上次使用时间：<xliff:g id="TIME">%2$s</xliff:g>前。"</string>
@@ -176,6 +182,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"仅在使用该应用时允许"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"每次都询问"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"拒绝"</string>
+    <string name="precise_image_description" msgid="6349638632303619872">"确切位置"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"大致位置"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"使用确切位置"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"如果此设置处于关闭状态，应用只能确定您的大致位置范围"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>权限"</string>
@@ -198,6 +206,8 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"已移除<xliff:g id="PERMISSION_NAME">%s</xliff:g>权限"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"已移除<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>以及<xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>权限"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"已移除<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>权限及另外 <xliff:g id="NUMBER">%2$s</xliff:g> 项权限"</string>
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"未使用的应用"</string>
+    <string name="unused_apps_page_summary" msgid="5271048000004368665">"如果您连续几个月未使用某个应用，系统将对该应用采取以下措施：\n\n• 移除权限以保护您的隐私\n• 移除临时文件以释放空间\n• 停止通知功能以节省电量"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"上次打开时间是超过 <xliff:g id="NUMBER">%s</xliff:g> 个月前"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"应用上次打开时间是 <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"上次打开时间是 <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -252,6 +262,11 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> 个应用已连续几个月未使用过。点按即可查看</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> 个应用已连续几个月未使用过。点按即可查看</item>
     </plurals>
+    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
+      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> 个未使用的应用</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> 个未使用的应用</item>
+    </plurals>
+    <string name="unused_apps_notification_content" msgid="3704446042109375119">"系统已移除权限和临时文件。点按即可查看。"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"一些应用已连续几个月未使用过"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> 个应用已连续几个月未使用过</item>
@@ -339,7 +354,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"这类应用可让您识别来电，以及屏蔽骚扰电话、录音推销电话或不想接听的电话号码"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"要将<xliff:g id="APP_NAME">%1$s</xliff:g>设为您的默认来电显示和骚扰电话屏蔽应用吗？"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"无需任何权限"</string>
-    <string name="role_watch_description" msgid="472019219209648726">"<xliff:g id="APP_NAME">%1$s</xliff:g>将可访问通知、电话、通讯录和日历。"</string>
+    <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g>将能与通知互动，并可访问电话、短信、通讯录和日历。"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"当前默认应用"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"不再询问"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"设为默认应用"</string>

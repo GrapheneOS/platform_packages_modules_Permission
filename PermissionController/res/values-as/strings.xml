@@ -70,6 +70,7 @@
     <string name="location_settings" msgid="3624412509133422562">"অৱস্থান ছেটিংসমূহ"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> হ’ল এই ডিভাইচৰ অৱস্থান সেৱা প্ৰদানকাৰী। অৱস্থানৰ ছেটিংসমূহত অৱস্থানৰ এক্সেছ সলনি কৰিব পাৰি।"</string>
     <string name="system_warning" msgid="1173400963234358816">"আপুনি যদি এই অনুমতি প্ৰদান নকৰে, তেন্তে আপোনাৰ ডিভাইচৰ মৌলিক সুবিধাসমূহে বিচৰা ধৰণে কাম নকৰিবও পাৰে।"</string>
+    <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"আপুনি যদি এই অনুমতি প্ৰদান নকৰে, তেন্তে এই এপ্‌টোৱে পৰিচালনা কৰা আপোনাৰ ডিভাইচৰ কিছুমান সুবিধাই বিচৰা ধৰণে কাম নকৰিবও পাৰে।"</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"নীতিৰ যোগেদি বলৱৎ কৰা"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"নীতি অনুসৰি নেপথ্য়ৰ এক্সেছ অক্ষম কৰা হ’ল"</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"নীতি অনুসৰি নেপথ্য়ৰ এক্সেছ সক্ষম কৰা হ’ল"</string>
@@ -103,6 +104,10 @@
     <string name="message_staging" msgid="9110563899955511866">"এপৰ অন্তিম পর্যায়ৰ পৰীক্ষণ চলি আছে…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"অজ্ঞাত"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"ডেশ্বব’ৰ্ড"</string>
+    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
+    <skip />
+    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="one">শেহতীয়া এক্সেছৰ সংখ্যা: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g>টা এক্সেছ</item>
       <item quantity="other">শেহতীয়া এক্সেছৰ সংখ্যা: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g>টা এক্সেছ</item>
@@ -166,6 +171,7 @@
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g>টা এপ্</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g>টা এপ্</item>
     </plurals>
+    <string name="permission_history_title" msgid="8340081285133025225">"অনুমতিৰ ইতিহাস"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"এপৰ অনুমতিৰ ব্যৱহাৰ"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"এক্সেছ কৰা হৈছে: <xliff:g id="NUM">%1$s</xliff:g> বাৰ। মুঠ সময়: <xliff:g id="DURATION">%2$s</xliff:g>। অন্তিমবাৰ <xliff:g id="TIME">%3$s</xliff:g> আগত ব্যৱহাৰ কৰা হৈছিল।"</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"এক্সেছ কৰা হৈছে: <xliff:g id="NUM">%1$s</xliff:g> বাৰ। অন্তিমবাৰ <xliff:g id="TIME">%2$s</xliff:g> আগত ব্যৱহাৰ কৰা হৈছিল।"</string>
@@ -176,6 +182,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"কেৱল এপ্ ব্যৱহাৰ হৈ থাকোঁতে অনুমতি দিয়ক"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"প্ৰতিবাৰতে সোধক"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"অস্বীকাৰ কৰক"</string>
+    <string name="precise_image_description" msgid="6349638632303619872">"সঠিক অৱস্থান"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"আনুমানিক অৱস্থান"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"সঠিক অৱস্থান ব্যৱহাৰ কৰক"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"এপ্‌সমূহে ইয়াৰ চুবুৰীয়া অঞ্চলৰ দূৰত্বৰ ভিতৰতহে আপোনাৰ আনুমানিক অৱস্থান নিৰ্ধাৰণ কৰিব পাৰে"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> অনুমতি"</string>
@@ -198,6 +206,8 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"<xliff:g id="PERMISSION_NAME">%s</xliff:g>ৰ অনুমতি আঁতৰোৱা হ\'ল"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> আৰু <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>ৰ অনুমতিসমূহ আঁতৰোৱা হ\'ল"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>ৰ আৰু <xliff:g id="NUMBER">%2$s</xliff:g> টা অন্য অনুমতি আঁতৰোৱা হ\'ল"</string>
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"অব্যৱহৃত এপ্‌"</string>
+    <string name="unused_apps_page_summary" msgid="5271048000004368665">"কোনো এপ্‌ কেইমাহমানৰ বাবে ব্যৱহাৰ নকৰাকৈ থাকিলে:\n\n• আপোনাৰ গোপনীয়তা সুৰক্ষিত কৰিবলৈ অনুমতিসমূহ আঁতৰোৱা হয়\n• ঠাই খালী কৰিবলৈ অস্থায়ী ফাইল আঁতৰোৱা হয়\n• বেটাৰী ৰাহি কৰিবলৈ জাননী বন্ধ কৰা হয়"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"<xliff:g id="NUMBER">%s</xliff:g> মাহ পূর্বে অন্তিমবাৰ খোলা হৈছিল"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"এপ্‌টো অন্তিমবাৰ <xliff:g id="DATE">%s</xliff:g>ত খোলা হৈছিল"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"অন্তিমবাৰ <xliff:g id="DATE">%s</xliff:g>ত খোলা হৈছিল"</string>
@@ -252,6 +262,11 @@
       <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> টা এপ্‌ কেইমাহমান ব্যৱহাৰ কৰা হোৱা নাই। পর্যালোচনা কৰিবলৈ টিপক</item>
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> টা এপ্‌ কেইমাহমান ব্যৱহাৰ কৰা হোৱা নাই। পর্যালোচনা কৰিবলৈ টিপক</item>
     </plurals>
+    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
+      <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> টা অব্যৱহৃত এপ্‌</item>
+      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> টা অব্যৱহৃত এপ্‌</item>
+    </plurals>
+    <string name="unused_apps_notification_content" msgid="3704446042109375119">"অনুমতি আৰু অস্থায়ী ফাইল আঁতৰোৱা হৈছে। পৰ্যালোচনা কৰিবলৈ টিপক।"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"কিছুমান এপ্‌ কেইমাহমান ব্যৱহাৰ কৰা হোৱা নাই"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> টা এপ্‌ কেইমাহমান ব্যৱহাৰ কৰা হোৱা নাই</item>
@@ -339,7 +354,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"আপোনাক কলসমূহ চিনাক্ত কৰিবলৈ আৰু স্পাম, ৰ’ব’কলসমূহ আৰু অনাকাংক্ষিত নম্বৰসমূহ অৱৰোধ কৰিবলৈ অনুমতি দিয়া এপ্‌সমূহ"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g>ক আপোনাৰ ডিফ’ল্ট কলাৰ আই.ডি আৰু স্পাম এপ্ হিচাপে ছেট কৰিবনে?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"কোনো অনুমতিৰ প্ৰয়োজন নাই"</string>
-    <string name="role_watch_description" msgid="472019219209648726">"<xliff:g id="APP_NAME">%1$s</xliff:g>এ জাননী, ফ’ন, সম্পৰ্ক আৰু কেলেণ্ডাৰৰ এক্সেছ লাভ কৰিব।"</string>
+    <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g>ক আপোনাৰ জাননী ব্যৱহাৰ কৰিবলৈ আৰু আপোনাৰ ফ’ন, এছএমএছ, সম্পৰ্ক আৰু কেলেণ্ডাৰৰ অনুমতি এক্সেছ কৰিবলৈ দিয়া হ’ব।"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"বৰ্তমানৰ ডিফ’ল্ট"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"পুনৰায় নুসুধিব"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"ডিফ’ল্ট ৰূপে ছেট কৰক"</string>
