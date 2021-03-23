@@ -355,21 +355,10 @@ suspend fun isPackageHibernationExemptBySystem(
 }
 
 /**
- * Checks if the given package is exempt from auto revoke in a way that's user-overridable
+ * Checks if the given package is exempt from hibernation/auto revoke in a way that's
+ * user-overridable
  */
 suspend fun isPackageHibernationExemptByUser(
-    context: Context,
-    pkg: LightPackageInfo
-): Boolean {
-    if (isHibernationEnabled()) {
-        // TODO(b/175830282): Hook into hibernation exemption list
-        return false
-    } else {
-        return isPackageAutoRevokeExemptByUser(context, pkg)
-    }
-}
-
-private suspend fun isPackageAutoRevokeExemptByUser(
     context: Context,
     pkg: LightPackageInfo
 ): Boolean {
