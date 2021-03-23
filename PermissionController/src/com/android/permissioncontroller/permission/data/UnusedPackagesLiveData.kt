@@ -21,6 +21,7 @@ import android.util.ArraySet
 import android.util.Log
 import com.android.permissioncontroller.hibernation.getUnusedThresholdMs
 import com.android.permissioncontroller.hibernation.isHibernationEnabled
+import com.android.permissioncontroller.hibernation.lastTimePackageUsed
 
 /**
  * Gets all unused packages from an existing live data that have not been opened in a few months
@@ -72,7 +73,7 @@ class UnusedPackagesLiveData(
             for (stat in stats) {
                 val userPackage = stat.packageName to user
                 if (userPackage in autoRevokedPackages &&
-                    (now - stat.lastTimeVisible) < unusedThreshold) {
+                    (now - stat.lastTimePackageUsed()) < unusedThreshold) {
                     unusedPackages.remove(userPackage)
                 }
             }
