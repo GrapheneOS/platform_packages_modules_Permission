@@ -16,27 +16,24 @@
 
 package com.android.permissioncontroller.role.ui.specialappaccess.handheld;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
-import androidx.preference.Preference;
-import androidx.preference.TwoStatePreference;
+import androidx.preference.PreferenceFragmentCompat;
 
 import com.android.permissioncontroller.R;
-import com.android.permissioncontroller.role.ui.handheld.FooterPreference;
 import com.android.permissioncontroller.role.ui.handheld.SettingsFragment;
-import com.android.permissioncontroller.role.ui.specialappaccess.SpecialAppAccessChildFragment;
 
 /**
  * Handheld fragment for a special app access.
  */
 public class HandheldSpecialAppAccessFragment extends SettingsFragment
-        implements SpecialAppAccessChildFragment.Parent {
+        implements HandheldSpecialAppAccessPreferenceFragment.Parent {
 
+    @NonNull
     private String mRoleName;
 
     /**
@@ -63,45 +60,15 @@ public class HandheldSpecialAppAccessFragment extends SettingsFragment
         mRoleName = arguments.getString(Intent.EXTRA_ROLE_NAME);
     }
 
+    @NonNull
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        if (savedInstanceState == null) {
-            SpecialAppAccessChildFragment fragment = SpecialAppAccessChildFragment.newInstance(
-                    mRoleName);
-            getChildFragmentManager().beginTransaction()
-                    .add(fragment, null)
-                    .commit();
-        }
+    protected PreferenceFragmentCompat onCreatePreferenceFragment() {
+        return HandheldSpecialAppAccessPreferenceFragment.newInstance(mRoleName);
     }
 
     @Override
     @StringRes
     protected int getEmptyTextResource() {
         return R.string.special_app_access_no_apps;
-    }
-
-    @Override
-    public void setTitle(@NonNull CharSequence title) {
-        requireActivity().setTitle(title);
-    }
-
-    @NonNull
-    @Override
-    public TwoStatePreference createApplicationPreference(@NonNull Context context) {
-        return new AppIconSwitchPreference(context);
-    }
-
-    @NonNull
-    @Override
-    public Preference createFooterPreference(@NonNull Context context) {
-        return new FooterPreference(context);
-    }
-
-
-    @Override
-    public void onPreferenceScreenChanged() {
-        updateState();
     }
 }

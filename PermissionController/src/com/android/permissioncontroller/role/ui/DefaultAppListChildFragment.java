@@ -46,8 +46,10 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Child fragment for the list of default apps. Must be added as a child fragment and its parent
- * fragment must be a {@link PreferenceFragmentCompat} which implements {@link Parent}.
+ * Child fragment for the list of default apps.
+ * <p>
+ * Must be added as a child fragment and its parent fragment must be a
+ * {@link PreferenceFragmentCompat} that implements {@link Parent}.
  *
  * @param <PF> type of the parent fragment
  */
@@ -57,13 +59,12 @@ public class DefaultAppListChildFragment<PF extends PreferenceFragmentCompat
 
     private static final String PREFERENCE_KEY_MORE_DEFAULT_APPS =
             DefaultAppListChildFragment.class.getName() + ".preference.MORE_DEFAULT_APPS";
-
     private static final String PREFERENCE_KEY_MANAGE_DOMAIN_URLS =
             DefaultAppListChildFragment.class.getName() + ".preference.MANAGE_DOMAIN_URLS";
-
     private static final String PREFERENCE_KEY_WORK_CATEGORY =
             DefaultAppListChildFragment.class.getName() + ".preference.WORK_CATEGORY";
 
+    @NonNull
     private DefaultAppListViewModel mViewModel;
 
     /**
