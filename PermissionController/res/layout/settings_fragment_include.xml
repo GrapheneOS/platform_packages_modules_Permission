@@ -16,10 +16,12 @@
   ~ limitations under the License.
   -->
 
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/preference_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <LinearLayout
         android:id="@+id/loading"
@@ -49,4 +51,4 @@
         android:layout_gravity="center"
         android:visibility="invisible"
         style="@android:style/TextAppearance.Material.Subhead" />
-</FrameLayout>
+</merge>
