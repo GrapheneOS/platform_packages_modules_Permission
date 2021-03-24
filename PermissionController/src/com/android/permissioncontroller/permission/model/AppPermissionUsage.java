@@ -200,6 +200,37 @@ public final class AppPermissionUsage {
             return false;
         }
 
+        /**
+         * get all discrete access time in millis
+         */
+        public List<Long> getAllDiscreteAccessTime() {
+            List<Long> allDiscreteAccessTime = new ArrayList<>();
+            if (!hasDiscreteData()) {
+                return allDiscreteAccessTime;
+            }
+
+            final ArrayList<Permission> permissions = mGroup.getPermissions();
+            final int permissionCount = permissions.size();
+            for (int i = 0; i < permissionCount; i++) {
+                final Permission permission = permissions.get(i);
+                final String opName = permission.getAppOp();
+                final HistoricalOp historicalOp = mHistoricalUsage.getOp(opName);
+                if (historicalOp == null) {
+                    continue;
+                }
+
+                int discreteAccessCount = historicalOp.getDiscreteAccessCount();
+                for (int j = 0; j < discreteAccessCount; j++) {
+                    AppOpsManager.AttributedOpEntry opEntry = historicalOp.getDiscreteAccessAt(j);
+                    allDiscreteAccessTime.add(opEntry.getLastAccessTime(AppOpsManager.OP_FLAG_SELF
+                            | AppOpsManager.OP_FLAG_TRUSTED_PROXIED));
+                }
+
+            }
+
+            return allDiscreteAccessTime;
+        }
+
         public long getLastAccessDuration() {
             if (mLastUsage == null) {
                 return 0;
