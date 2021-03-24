@@ -330,6 +330,9 @@ class AppPermissionViewModel(
             if (shouldShowLocationAccuracy == true && !deniedState.isChecked) {
                 locationAccuracyState.isShown = true
             }
+            if (group.foreground.isSystemFixed || group.foreground.isPolicyFixed) {
+                locationAccuracyState.isEnabled = false
+            }
 
             value = mapOf(
                 ALLOW to allowedState, ALLOW_ALWAYS to allowedAlwaysState,
