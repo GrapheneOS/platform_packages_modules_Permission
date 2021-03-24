@@ -23,6 +23,7 @@ import static android.Manifest.permission_group.CAMERA;
 import static android.Manifest.permission_group.CONTACTS;
 import static android.Manifest.permission_group.LOCATION;
 import static android.Manifest.permission_group.MICROPHONE;
+import static android.Manifest.permission_group.NEARBY_DEVICES;
 import static android.Manifest.permission_group.PHONE;
 import static android.Manifest.permission_group.SENSORS;
 import static android.Manifest.permission_group.SMS;
@@ -192,6 +193,11 @@ public final class Utils {
         PLATFORM_PERMISSIONS.put(Manifest.permission.ACCESS_COARSE_LOCATION, LOCATION);
         PLATFORM_PERMISSIONS.put(Manifest.permission.ACCESS_BACKGROUND_LOCATION, LOCATION);
 
+        if (SdkLevel.isAtLeastS()) {
+            PLATFORM_PERMISSIONS.put(Manifest.permission.BLUETOOTH_SCAN, NEARBY_DEVICES);
+            PLATFORM_PERMISSIONS.put(Manifest.permission.BLUETOOTH_CONNECT, NEARBY_DEVICES);
+        }
+
         PLATFORM_PERMISSIONS.put(Manifest.permission.READ_CALL_LOG, CALL_LOG);
         PLATFORM_PERMISSIONS.put(Manifest.permission.WRITE_CALL_LOG, CALL_LOG);
         PLATFORM_PERMISSIONS.put(Manifest.permission.PROCESS_OUTGOING_CALLS, CALL_LOG);
@@ -242,6 +248,7 @@ public final class Utils {
         PERM_GROUP_REQUEST_RES = new ArrayMap<>();
         PERM_GROUP_REQUEST_RES.put(CONTACTS, R.string.permgrouprequest_contacts);
         PERM_GROUP_REQUEST_RES.put(LOCATION, R.string.permgrouprequest_location);
+        PERM_GROUP_REQUEST_RES.put(NEARBY_DEVICES, R.string.permgrouprequest_nearby_devices);
         PERM_GROUP_REQUEST_RES.put(CALENDAR, R.string.permgrouprequest_calendar);
         PERM_GROUP_REQUEST_RES.put(SMS, R.string.permgrouprequest_sms);
         PERM_GROUP_REQUEST_RES.put(STORAGE, R.string.permgrouprequest_storage);
@@ -912,6 +919,8 @@ public final class Utils {
                 return context.getString(R.string.permission_description_summary_location);
             case MICROPHONE:
                 return context.getString(R.string.permission_description_summary_microphone);
+            case NEARBY_DEVICES:
+                return context.getString(R.string.permission_description_summary_nearby_devices);
             case PHONE:
                 return context.getString(R.string.permission_description_summary_phone);
             case SENSORS:
