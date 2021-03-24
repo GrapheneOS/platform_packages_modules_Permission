@@ -399,10 +399,13 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         if (!locationAccuracyState.isShown()) {
             mLocationAccuracy.setVisibility(View.GONE);
         } else {
-            // TODO guojing: Set it back to VISIBLE once FINE/COARSE sharing AppOps issue is fixed
             mLocationAccuracy.setVisibility(View.VISIBLE);
         }
         mLocationAccuracySwitch.setChecked(locationAccuracyState.isChecked());
+        if (!locationAccuracyState.isEnabled()) {
+            mLocationAccuracy.setEnabled(false);
+            mLocationAccuracySwitch.setEnabled(false);
+        }
 
         mIsInitialLoad = false;
 
