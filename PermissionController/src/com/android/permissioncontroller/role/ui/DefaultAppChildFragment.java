@@ -46,8 +46,10 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Child fragment for a default app. Must be added as a child fragment and its parent fragment must
- * be a {@link PreferenceFragmentCompat} which implements {@link Parent}.
+ * Child fragment for a default app.
+ * <p>
+ * Must be added as a child fragment and its parent fragment must be a
+ * {@link PreferenceFragmentCompat} that implements {@link Parent}.
  *
  * @param <PF> type of the parent fragment
  */
@@ -58,16 +60,18 @@ public class DefaultAppChildFragment<PF extends PreferenceFragmentCompat
 
     private static final String PREFERENCE_KEY_NONE = DefaultAppChildFragment.class.getName()
             + ".preference.NONE";
-
     private static final String PREFERENCE_KEY_DESCRIPTION = DefaultAppChildFragment.class.getName()
             + ".preference.DESCRIPTION";
 
+    @NonNull
     private String mRoleName;
-
+    @NonNull
     private UserHandle mUser;
 
+    @NonNull
     private Role mRole;
 
+    @NonNull
     private DefaultAppViewModel mViewModel;
 
     /**

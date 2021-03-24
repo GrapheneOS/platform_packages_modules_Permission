@@ -16,7 +16,6 @@
 
 package com.android.permissioncontroller.role.ui.handheld;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.UserHandle;
@@ -24,20 +23,19 @@ import android.os.UserHandle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
-import androidx.preference.Preference;
-import androidx.preference.TwoStatePreference;
+import androidx.preference.PreferenceFragmentCompat;
 
 import com.android.permissioncontroller.R;
-import com.android.permissioncontroller.role.ui.DefaultAppChildFragment;
 
 /**
  * Handheld fragment for a default app.
  */
 public class HandheldDefaultAppFragment extends SettingsFragment
-        implements DefaultAppChildFragment.Parent {
+        implements HandheldDefaultAppPreferenceFragment.Parent {
 
+    @NonNull
     private String mRoleName;
-
+    @NonNull
     private UserHandle mUser;
 
     /**
@@ -68,44 +66,15 @@ public class HandheldDefaultAppFragment extends SettingsFragment
         mUser = arguments.getParcelable(Intent.EXTRA_USER);
     }
 
+    @NonNull
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        if (savedInstanceState == null) {
-            DefaultAppChildFragment fragment = DefaultAppChildFragment.newInstance(mRoleName,
-                    mUser);
-            getChildFragmentManager().beginTransaction()
-                    .add(fragment, null)
-                    .commit();
-        }
+    protected PreferenceFragmentCompat onCreatePreferenceFragment() {
+        return HandheldDefaultAppPreferenceFragment.newInstance(mRoleName, mUser);
     }
 
     @Override
     @StringRes
     protected int getEmptyTextResource() {
         return R.string.default_app_no_apps;
-    }
-
-    @Override
-    public void setTitle(@NonNull CharSequence title) {
-        requireActivity().setTitle(title);
-    }
-
-    @NonNull
-    @Override
-    public TwoStatePreference createApplicationPreference(@NonNull Context context) {
-        return new AppIconRadioButtonPreference(context);
-    }
-
-    @NonNull
-    @Override
-    public Preference createFooterPreference(@NonNull Context context) {
-        return new FooterPreference(context);
-    }
-
-    @Override
-    public void onPreferenceScreenChanged() {
-        updateState();
     }
 }

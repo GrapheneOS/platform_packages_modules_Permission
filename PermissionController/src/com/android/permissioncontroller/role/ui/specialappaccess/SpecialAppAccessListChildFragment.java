@@ -40,8 +40,10 @@ import com.android.permissioncontroller.role.ui.TwoTargetPreference;
 import java.util.List;
 
 /**
- * Child fragment for the list of special app accesses. Must be added as a child fragment and its
- * parent fragment must be a {@link PreferenceFragmentCompat} which implements {@link Parent}.
+ * Child fragment for the list of special app accesses.
+ * <p>
+ * Must be added as a child fragment and its parent fragment must be a
+ * {@link PreferenceFragmentCompat} that implements {@link Parent}.
  *
  * @param <PF> type of the parent fragment
  */
@@ -49,6 +51,7 @@ public class SpecialAppAccessListChildFragment<PF extends PreferenceFragmentComp
         & SpecialAppAccessListChildFragment.Parent> extends Fragment
         implements Preference.OnPreferenceClickListener {
 
+    @NonNull
     private SpecialAppAccessListViewModel mViewModel;
 
     /**
