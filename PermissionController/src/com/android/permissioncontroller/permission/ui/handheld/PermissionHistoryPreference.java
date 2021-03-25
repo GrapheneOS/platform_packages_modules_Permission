@@ -68,15 +68,18 @@ public class PermissionHistoryPreference extends Preference {
         marginLayoutParams.topMargin = margin;
         marginLayoutParams.bottomMargin = margin;
 
-        LayoutInflater inflater = mContext.getSystemService(LayoutInflater.class);
-        ViewGroup group = (ViewGroup) inflater.inflate(R.layout.permission_history_widget,
-                widgetFrameParent, false);
+        ViewGroup widget = (ViewGroup) holder.findViewById(R.id.permission_history_layout);
+        if (widget == null) {
+            LayoutInflater inflater = mContext.getSystemService(LayoutInflater.class);
+            widget = (ViewGroup) inflater.inflate(R.layout.permission_history_widget,
+                    widgetFrameParent, false);
 
-        TextView permissionHistoryTime = group.findViewById(R.id.permission_history_time);
+            widgetFrameParent.addView(widget, 0);
+        }
 
-        permissionHistoryTime.setText(mAccessTime);
-
-        widgetFrameParent.addView(group, 0);
         widgetFrameParent.setGravity(Gravity.TOP);
+
+        TextView permissionHistoryTime = widget.findViewById(R.id.permission_history_time);
+        permissionHistoryTime.setText(mAccessTime);
     }
 }
