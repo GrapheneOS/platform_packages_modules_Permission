@@ -596,7 +596,7 @@ public class Role {
         for (int i = 0; i < requiredComponentsSize; i++) {
             RequiredComponent requiredComponent = mRequiredComponents.get(i);
             if (requiredComponent.getQualifyingComponentForPackage(packageName, context) == null) {
-                Log.w(LOG_TAG, packageName + " not qualified for " + mName
+                Log.i(LOG_TAG, packageName + " not qualified for " + mName
                         + " due to missing " + requiredComponent);
                 return false;
             }
