@@ -51,6 +51,8 @@ import java.util.Set;
  */
 public class PermissionDetailsFragment extends SettingsWithLargeHeader implements
         PermissionUsages.PermissionsUsagesChangeCallback {
+    public static final int FILTER_24_HOURS = 2;
+
     private @Nullable String mFilterGroup;
     private @Nullable List<AppPermissionUsage> mAppPermissionUsages = new ArrayList<>();
     private @NonNull List<TimeFilterItem> mFilterTimes;
@@ -79,6 +81,8 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
 
         mFinishedInitialLoad = false;
         initializeTimeFilter();
+        mFilterTimeIndex = FILTER_24_HOURS;
+
         if (mFilterGroup == null) {
             mFilterGroup = getArguments().getString(Intent.EXTRA_PERMISSION_GROUP_NAME);
         }
@@ -157,22 +161,24 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
             int numGroups = appGroups.size();
             for (int groupNum = 0; groupNum < numGroups; groupNum++) {
                 AppPermissionUsage.GroupUsage groupUsage = appGroups.get(groupNum);
-                long lastAccessTime = groupUsage.getLastAccessTime();
-
                 if (!groupUsage.hasDiscreteData()) {
                     continue;
                 }
-                if (lastAccessTime == 0) {
-                    continue;
-                }
-                if (lastAccessTime < startTime) {
-                    continue;
-                }
 
-                used = true;
-                // identify whether the group matches the group for the page
-                if (groupUsage.getGroup().getName().equals(mFilterGroup)) {
-                    usages.add(Pair.create(appUsage, lastAccessTime));
+                List<Long> allDiscreteAccessTime = groupUsage.getAllDiscreteAccessTime();
+                for (Long discreteAccessTime : allDiscreteAccessTime) {
+                    if (discreteAccessTime == 0) {
+                        continue;
+                    }
+                    if (discreteAccessTime < startTime) {
+                        continue;
+                    }
+
+                    used = true;
+                    // identify whether the group matches the group for the page
+                    if (groupUsage.getGroup().getName().equals(mFilterGroup)) {
+                        usages.add(Pair.create(appUsage, discreteAccessTime));
+                    }
                 }
             }
 
@@ -294,20 +300,7 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
         mFilterTimes.add(new TimeFilterItem(MINUTES.toMillis(1),
                 context.getString(R.string.permission_usage_last_minute)));
 
-        long numMillis = getArguments().getLong(Intent.EXTRA_DURATION_MILLIS);
-        long supremum = Long.MAX_VALUE;
-        int supremumIndex = -1;
-        int numTimes = mFilterTimes.size();
-        for (int i = 0; i < numTimes; i++) {
-            long curTime = mFilterTimes.get(i).getTime();
-            if (curTime >= numMillis && curTime <= supremum) {
-                supremum = curTime;
-                supremumIndex = i;
-            }
-        }
-        if (supremumIndex != -1) {
-            mFilterTimeIndex = supremumIndex;
-        }
+        // TODO: theianchen add code for filtering by time here.
     }
 
     /**

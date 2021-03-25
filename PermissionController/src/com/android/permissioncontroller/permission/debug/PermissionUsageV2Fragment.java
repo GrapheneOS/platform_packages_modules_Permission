@@ -86,6 +86,7 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
     static final int SORT_RECENT = 1;
     static final int SORT_RECENT_APPS = 2;
 
+    public static final int FILTER_24_HOURS = 2;
     private static final int MENU_SORT_BY_APP = MENU_HIDE_SYSTEM + 1;
     private static final int MENU_SORT_BY_TIME = MENU_HIDE_SYSTEM + 2;
     private static final int MENU_FILTER_BY_PERMISSIONS = MENU_HIDE_SYSTEM + 3;
@@ -149,6 +150,8 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
         mSort = SORT_RECENT_APPS;
         mFilterGroup = null;
         initializeTimeFilter();
+        mFilterTimeIndex = FILTER_24_HOURS;
+
         if (savedInstanceState != null) {
             mShowSystem = savedInstanceState.getBoolean(SHOW_SYSTEM_KEY);
             mFilterGroup = savedInstanceState.getString(PERM_NAME_KEY);
@@ -200,21 +203,6 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
                 context.getString(R.string.permission_usage_last_15_minutes)));
         mFilterTimes.add(new TimeFilterItem(MINUTES.toMillis(1),
                 context.getString(R.string.permission_usage_last_minute)));
-
-        long numMillis = getArguments().getLong(Intent.EXTRA_DURATION_MILLIS);
-        long supremum = Long.MAX_VALUE;
-        int supremumIndex = -1;
-        int numTimes = mFilterTimes.size();
-        for (int i = 0; i < numTimes; i++) {
-            long curTime = mFilterTimes.get(i).getTime();
-            if (curTime >= numMillis && curTime <= supremum) {
-                supremum = curTime;
-                supremumIndex = i;
-            }
-        }
-        if (supremumIndex != -1) {
-            mFilterTimeIndex = supremumIndex;
-        }
     }
 
     @Override
