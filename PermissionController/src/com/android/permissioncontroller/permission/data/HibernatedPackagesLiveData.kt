@@ -69,4 +69,25 @@ object HibernatedPackagesLiveData
     }
 }
 
-val unusedHibernatedPackagesLiveData = UnusedPackagesLiveData(HibernatedPackagesLiveData)
+private val hibernatedOrRevokedPackagesLiveData = object
+    : SmartUpdateMediatorLiveData<Set<Pair<String, UserHandle>>>() {
+
+    init {
+        addSource(AutoRevokedPackagesLiveData) {
+            update()
+        }
+        addSource(HibernatedPackagesLiveData) {
+            update()
+        }
+    }
+
+    override fun onUpdate() {
+        if (!AutoRevokedPackagesLiveData.isInitialized ||
+            !HibernatedPackagesLiveData.isInitialized) {
+            return
+        }
+        value = AutoRevokedPackagesLiveData.value!!.keys + HibernatedPackagesLiveData.value!!
+    }
+}
+val unusedHibernatedOrRevokedPackagesLiveData =
+    UnusedPackagesLiveData(hibernatedOrRevokedPackagesLiveData)
