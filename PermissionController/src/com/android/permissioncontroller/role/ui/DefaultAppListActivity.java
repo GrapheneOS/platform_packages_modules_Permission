@@ -40,6 +40,7 @@ public class DefaultAppListActivity extends FragmentActivity {
             // fragments are restored properly on configuration changes.
             setTheme(R.style.CarSettings);
         }
+
         super.onCreate(savedInstanceState);
 
         getWindow().addSystemFlags(

@@ -413,7 +413,8 @@ class GrantPermissionsViewModel(
                 if (groupState.group.permGroupName == LOCATION && isLocationAccuracyEnabled()) {
                     if (needFgPermissions) {
                         locationVisibilities[LOCATION_ACCURACY_LAYOUT] = true
-                        if (groupState.affectedPermissions.contains(ACCESS_FINE_LOCATION)) {
+                        if (fgState != null &&
+                                fgState.affectedPermissions.contains(ACCESS_FINE_LOCATION)) {
                             val coarseLocationPerm =
                                 groupState.group.allPermissions[ACCESS_COARSE_LOCATION]
                             if (coarseLocationPerm?.isGrantedIncludingAppOp == true) {
@@ -442,7 +443,7 @@ class GrantPermissionsViewModel(
                                     message = RequestMessage.FG_FINE_LOCATION_MESSAGE
                                 }
                             }
-                        } else if (groupState.affectedPermissions
+                        } else if (fgState != null && fgState.affectedPermissions
                                         .contains(ACCESS_COARSE_LOCATION)) {
                             // Request Coarse only
                             locationVisibilities[DIALOG_WITH_COARSE_LOCATION_ONLY] = true
@@ -835,7 +836,7 @@ class GrantPermissionsViewModel(
                         groupState.affectedPermissions, isOneTime)
                 } else {
                     KotlinUtils.grantForegroundRuntimePermissions(app, groupState.group,
-                        filterPermissions = affectedForegroundPermissions, isOneTime)
+                        affectedForegroundPermissions, isOneTime)
                     if (!isOneTime) {
                         KotlinUtils.setFlagsWhenLocationAccuracyChanged(app, groupState.group,
                                 affectedForegroundPermissions.contains(ACCESS_FINE_LOCATION))

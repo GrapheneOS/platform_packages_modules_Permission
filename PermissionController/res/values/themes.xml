@@ -23,6 +23,8 @@
         <item name="preferenceCategoryTitleTextAppearance">@style/TextAppearance.CategoryTitle</item>
     </style>
 
+    <style name="Settings.Role" />
+
     <style name="TextAppearance.CategoryTitle"
            parent="@android:style/TextAppearance.DeviceDefault.Medium">
         <item name="android:textAllCaps">true</item>
@@ -97,6 +99,10 @@
     </style>
 
     <style name="Settings.FilterTouches">
+        <item name="android:filterTouchesWhenObscured">true</item>
+    </style>
+
+    <style name="Settings.Role.FilterTouches">
         <item name="android:filterTouchesWhenObscured">true</item>
     </style>
 
