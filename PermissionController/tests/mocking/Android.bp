@@ -81,6 +81,7 @@ android_test {
         "SettingsLibBarChartPreference",
         "SettingsLibActionBarShadow",
         "SettingsLibProgressBar",
+        "SettingsLibCollapsingToolbarBaseActivity",
         "androidx.annotation_annotation",
         "permissioncontroller-statsd",
         "car-ui-lib",

@@ -593,4 +593,20 @@
             <permission name="android.permission.SYSTEM_APPLICATION_OVERLAY" />
         </permissions>
     </role>
+
+    <!---
+        A role for the system package that is allowed to create CompanionDeviceManager associations
+        based on user consent to allow the associated app to manage the associated device.
+    -->
+    <role
+        name="android.app.role.SYSTEM_COMPANION_DEVICE_PROVIDER"
+        defaultHolders="config_companionProviderPackage"
+        exclusive="true"
+        minSdkVersion="31"
+        systemOnly="true"
+        visible="false" >
+        <permissions>
+            <permission name="android.permission.ASSOCIATE_COMPANION_DEVICES"/>
+        </permissions>
+    </role>
 </roles>

@@ -211,7 +211,7 @@
 
         <activity android:name="com.android.permissioncontroller.role.ui.DefaultAppListActivity"
                   android:label="@string/default_apps"
-                  android:theme="@style/Settings.FilterTouches">
+                  android:theme="@style/Settings.Role.FilterTouches">
             <intent-filter android:priority="2">
                 <action android:name="android.settings.MANAGE_DEFAULT_APPS_SETTINGS" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -220,7 +220,7 @@
 
         <activity android:name="com.android.permissioncontroller.role.ui.DefaultAppActivity"
                   android:permission="android.permission.MANAGE_ROLE_HOLDERS"
-                  android:theme="@style/Settings.FilterTouches">
+                  android:theme="@style/Settings.Role.FilterTouches">
             <intent-filter android:priority="1">
                 <action android:name="android.intent.action.MANAGE_DEFAULT_APP" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -240,7 +240,7 @@
         <activity android:name="com.android.permissioncontroller.role.ui.SpecialAppAccessListActivity"
                   android:label="@string/special_app_access"
                   android:permission="android.permission.MANAGE_ROLE_HOLDERS"
-                  android:theme="@style/Settings.FilterTouches">
+                  android:theme="@style/Settings.Role.FilterTouches">
             <intent-filter android:priority="1">
                 <action android:name="android.intent.action.MANAGE_SPECIAL_APP_ACCESSES" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -249,7 +249,7 @@
 
         <!-- TODO: Override other Settings intents when we've done migrating them. -->
         <activity android:name="com.android.permissioncontroller.role.ui.SpecialAppAccessActivity"
-                  android:theme="@style/Settings.FilterTouches" />
+                  android:theme="@style/Settings.Role.FilterTouches" />
 
         <activity android:name="com.android.permissioncontroller.role.ui.RoleSearchTrampolineActivity"
                   android:excludeFromRecents="true"
