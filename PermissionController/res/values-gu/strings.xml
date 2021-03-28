@@ -42,6 +42,7 @@
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"મંજૂરી આપો"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"હંમેશાં મંજૂરી આપો"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"ઍપનો ઉપયોગ કરતી વખતે"</string>
+    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"ચોક્કસ સ્થાન પર બદલો"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"ફક્ત આ વખતે"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"હંમેશાં મંજૂરી આપો"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"બધી ફાઇલો મેનેજ કરવાની મંજૂરી આપો"</string>
@@ -104,10 +105,8 @@
     <string name="message_staging" msgid="9110563899955511866">"ઍપની પ્રક્રિયા ચાલુ છે…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"અજાણ"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"ડૅશબોર્ડ"</string>
-    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
-    <skip />
-    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
-    <skip />
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g>નો ઉપયોગ"</string>
+    <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"જ્યારે ઍપ છેલ્લા 24 કલાકમાં તમારા <xliff:g id="PERMGROUP">%1$s</xliff:g>નો ઉપયોગ કરવાનું બંધ કરે છે"</string>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="one">છેલ્લો ઍક્સેસ: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> ઍક્સેસ</item>
       <item quantity="other">છેલ્લો ઍક્સેસ: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> ઍક્સેસ</item>
@@ -182,10 +181,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"ઍપનો ઉપયોગ કરતી વખતે જ મંજૂરી આપો"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"દર વખતે પૂછો"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"નકારો"</string>
-    <!-- no translation found for precise_image_description (6349638632303619872) -->
-    <skip />
-    <!-- no translation found for approximate_image_description (938803699637069884) -->
-    <skip />
+    <string name="precise_image_description" msgid="6349638632303619872">"ચોક્કસ સ્થાન"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"અંદાજિત સ્થાન"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"ચોક્કસ સ્થાનનો ઉપયોગ કરો"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"સ્થાનની સુવિધા બંધ હોવાને લીધે, આસપાસના પડોશમાંથી ઍપ માત્ર તમારું અંદાજીત સ્થાન મેળવી શકશે"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> પરવાનગી"</string>
@@ -208,10 +205,8 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"<xliff:g id="PERMISSION_NAME">%s</xliff:g>ની પરવાનગી કાઢી નાખવામાં આવી"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> અને <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>ની પરવાનગીઓ કાઢી નાખવામાં આવી"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> અને અન્ય <xliff:g id="NUMBER">%2$s</xliff:g> પરવાનગીઓ કાઢી નાખવામાં આવી"</string>
-    <!-- no translation found for unused_apps_page_title (6986983535677572559) -->
-    <skip />
-    <!-- no translation found for unused_apps_page_summary (5271048000004368665) -->
-    <skip />
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"બિનવપરાયેલી ઍપ"</string>
+    <string name="unused_apps_page_summary" msgid="5271048000004368665">"જો ઍપનો ઉપયોગ થોડા મહિના ન કરવામાં આવે તો:\n\n• તમારી પ્રાઇવસીને સુરક્ષિત રાખવા માટે પરવાનગીઓ કાઢી નાખવામાં આવે છે\n• જગ્યા ખાલી કરવા માટે હંગામી ફાઇલો કાઢી નાખવામાં આવે છે\n• બૅટરીની બચત કરવા માટે નોટિફિકેશન રોકવામાં આવે છે"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"છેલ્લે <xliff:g id="NUMBER">%s</xliff:g> મહિના કરતાં પર વધારે સમય અગાઉ ખોલી હતી"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ઍપ છેલ્લે <xliff:g id="DATE">%s</xliff:g>ના રોજ ખોલી"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"છેલ્લે <xliff:g id="DATE">%s</xliff:g>ના રોજ ખોલી"</string>
@@ -266,9 +261,11 @@
       <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> ઍપનો થોડા મહિનામાં ઉપયોગ થયો નથી. રિવ્યૂ કરવા માટે ટૅપ કરો</item>
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> ઍપનો થોડા મહિનામાં ઉપયોગ થયો નથી. રિવ્યૂ કરવા માટે ટૅપ કરો</item>
     </plurals>
-    <!-- no translation found for unused_apps_notification_title (8046612559038762856) -->
-    <!-- no translation found for unused_apps_notification_content (3704446042109375119) -->
-    <skip />
+    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
+      <item quantity="one">બિનવપરાયેલી <xliff:g id="COUNT_1">%1$d</xliff:g> ઍપ</item>
+      <item quantity="other">બિનવપરાયેલી <xliff:g id="COUNT_1">%1$d</xliff:g> ઍપ</item>
+    </plurals>
+    <string name="unused_apps_notification_content" msgid="3704446042109375119">"પરવાનગીઓ અને હંગામી ફાઇલો કાઢી નાખવામાં આવી છે. રિવ્યૂ કરવા માટે ટૅપ કરો."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"અમુક ઍપનો થોડા મહિનામાં ઉપયોગ થયો નથી"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> ઍપનો થોડા મહિનામાં ઉપયોગ થયો નથી</item>
@@ -356,8 +353,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"એવી ઍપ કે જે તમને કૉલ કરનારી વ્યક્તિને ઓળખવાની અને સ્પામ, રોબોકૉલ અથવા અનિચ્છનીય નંબરને બ્લૉક કરવાની મંજૂરી આપે છે"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g>ને તમારી ડિફૉલ્ટ કૉલર ID અને સ્પામ ઍપ તરીકે સેટ કરીએ?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"કોઈ પરવાનગી જરૂરી નથી"</string>
-    <!-- no translation found for role_watch_description (267003778693177779) -->
-    <skip />
+    <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g>ને તમારા નોટિફિકેશન સાથે ક્રિયાપ્રતિક્રિયા કરવાની અને તમારા ફોન, SMS, સંપર્કો તેમજ Calendarની પરવાનગીઓ ઍક્સેસ કરવાની મંજૂરી મળશે."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"હાલની ડિફૉલ્ટ"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"ફરીથી પૂછશો નહીં"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"ડિફૉલ્ટ તરીકે સેટ"</string>

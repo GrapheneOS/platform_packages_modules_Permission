@@ -42,6 +42,7 @@
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"允許"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"一律允許"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"使用應用程式時"</string>
+    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"改用精確位置"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"僅限這次"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"一律允許"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"允許管理所有檔案"</string>
@@ -104,10 +105,8 @@
     <string name="message_staging" msgid="9110563899955511866">"正在準備安裝應用程式…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"不明"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"資訊主頁"</string>
-    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
-    <skip />
-    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
-    <skip />
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g>使用情況"</string>
+    <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"過去 24 小時內，應用程式已停止使用您的<xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">上次存取時間：<xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> 次存取</item>
       <item quantity="one">上次存取時間：<xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> 次存取</item>

@@ -42,6 +42,7 @@
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Tillad"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Tillad altid"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Mens du bruger appen"</string>
+    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Skift til præcis placering"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Kun denne gang"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Tillad altid"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Tillad administration af alle filer"</string>
@@ -104,10 +105,8 @@
     <string name="message_staging" msgid="9110563899955511866">"Forbereder appen…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Ukendt"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Kontrolpanel"</string>
-    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
-    <skip />
-    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
-    <skip />
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"Brug af <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
+    <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"Hvornår apps holdt op med at bruge din <xliff:g id="PERMGROUP">%1$s</xliff:g> i løbet af de seneste 24 timer"</string>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="one">Seneste adgang: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> adgang</item>
       <item quantity="other">Seneste adgang: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> adgange</item>
