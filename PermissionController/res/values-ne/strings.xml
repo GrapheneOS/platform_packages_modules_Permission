@@ -42,6 +42,7 @@
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"अनुमति दिनुहोस्"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"सधैँ अनुमति दिनुहोस्"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"एपको प्रयोग गर्दा"</string>
+    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"यो स्थान बदलेर सटीक स्थान बनाउनुहोस्"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"यो समय मात्र"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"सधैँ अनुमति दिनुहोस्"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"सबै फाइलहरू व्यवस्थापन गर्ने अनुमति दिइयोस्"</string>
@@ -104,10 +105,8 @@
     <string name="message_staging" msgid="9110563899955511866">"एप स्थापना गर्न तयारी गर्दै…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"अज्ञात"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"ड्यासबोर्ड"</string>
-    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
-    <skip />
-    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
-    <skip />
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> को प्रयोग"</string>
+    <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"एपहरूले विगत २४ घन्टामा तपाईंको <xliff:g id="PERMGROUP">%1$s</xliff:g> प्रयोग गर्न छाडेको समय"</string>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">पछिल्लो पटकको पहुँच: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> पहुँच</item>
       <item quantity="one">पछिल्लो पटकको पहुँच: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> पहुँच</item>

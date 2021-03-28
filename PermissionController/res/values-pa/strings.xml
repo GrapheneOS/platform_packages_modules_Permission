@@ -42,6 +42,7 @@
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"ਕਰਨ ਦਿਓ"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"ਹਰ ਵੇਲੇ ਕਰਨ ਦਿਓ"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"ਐਪ ਵਰਤਣ ਦੌਰਾਨ"</string>
+    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"ਸਹੀ ਟਿਕਾਣੇ \'ਤੇ ਬਦਲੋ"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"ਸਿਰਫ਼ ਇਸ ਵਾਰ"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"ਹਰ ਵੇਲੇ ਕਰਨ ਦਿਓ"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"ਸਾਰੀਆਂ ਫ਼ਾਈਲਾਂ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰਨ ਦਿਓ"</string>
@@ -104,10 +105,8 @@
     <string name="message_staging" msgid="9110563899955511866">"ਐਪ ਨੂੰ ਸਟੇਜ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"ਅਗਿਆਤ"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"ਡੈਸ਼ਬੋਰਡ"</string>
-    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
-    <skip />
-    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
-    <skip />
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> ਵਰਤੋਂ"</string>
+    <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"ਜਦੋਂ ਐਪਾਂ ਨੇ ਪਿਛਲੇ 24 ਘੰਟਿਆਂ ਵਿੱਚ ਤੁਹਾਡੇ <xliff:g id="PERMGROUP">%1$s</xliff:g> ਦੀ ਵਰਤੋਂ ਕਰਨੀ ਬੰਦ ਕਰ ਦਿੱਤੀ"</string>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="one">ਪਿਛਲੀ ਵਾਰ ਪਹੁੰਚ: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> ਪਹੁੰਚ</item>
       <item quantity="other">ਪਿਛਲੀ ਵਾਰ ਪਹੁੰਚ: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> ਪਹੁੰਚਾਂ</item>
