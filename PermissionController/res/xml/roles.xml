@@ -521,6 +521,8 @@
             <!-- Used for CTS testing -->
             <permission name="android.permission.ACCESS_RCS_USER_CAPABILITY_EXCHANGE" />
             <permission name="android.permission.PERFORM_IMS_SINGLE_REGISTRATION" />
+            <permission name="android.permission.BACKGROUND_CAMERA" />
+            <permission name="android.permission.RECORD_BACKGROUND_AUDIO" />
         </permissions>
     </role>
 
