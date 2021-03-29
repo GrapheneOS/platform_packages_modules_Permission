@@ -42,6 +42,7 @@
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"అనుమతించు"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"ఎల్ల‌ప్పుడూ అనుమతించు"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"యాప్‌ను ఉపయోగిస్తున్నప్పుడు"</string>
+    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"ఖచ్చితమైన లొకేషన్‌కు మార్చండి"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"ఈ ఒక్కసారి మాత్రమే"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"అన్ని సమయాలలో అనుమతించు"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"అన్ని ఫైల్‌ల నిర్వహణకు అనుమతించండి"</string>
@@ -104,10 +105,8 @@
     <string name="message_staging" msgid="9110563899955511866">"యాప్‌ను అందిస్తోంది…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"తెలియదు"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"డ్యాష్‌బోర్డ్"</string>
-    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
-    <skip />
-    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
-    <skip />
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> వినియోగం"</string>
+    <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"గత 24 గంటలలో యాప్‌లు మీ <xliff:g id="PERMGROUP">%1$s</xliff:g>ను ఉపయోగించడం ఆపివేసినప్పుడు"</string>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">చివరి యాక్సెస్: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> యాక్సెస్‌లు</item>
       <item quantity="one">చివరి యాక్సెస్: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> యాక్సెస్</item>
@@ -182,10 +181,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"యాప్‌ను ఉపయోగిస్తున్నప్పుడు మాత్రమే అనుమతించు"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"ప్రతిసారి అడగాలి"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"తిరస్కరించు"</string>
-    <!-- no translation found for precise_image_description (6349638632303619872) -->
-    <skip />
-    <!-- no translation found for approximate_image_description (938803699637069884) -->
-    <skip />
+    <string name="precise_image_description" msgid="6349638632303619872">"ఖచ్చితమైన లొకేషన్"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"సుమారు లొకేషన్"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"ఖచ్చితమైన లొకేషన్‌ను ఉపయోగించండి"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"\'ఖచ్చితమైన లొకేషన్\' ఆఫ్‌లో ఉన్నప్పుడు పరిసర ప్రాంతానికి సంబంధించిన మీ లొకేషన్‌ను యాప్‌లు సుమారుగా మాత్రమే నిర్ణయించగలవు"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> అనుమతి"</string>
@@ -208,10 +205,8 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"<xliff:g id="PERMISSION_NAME">%s</xliff:g> అనుమతి తీసివేయబడింది"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> మరియు <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> అనుమతులు తీసివేయబడ్డాయి"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>, మరో <xliff:g id="NUMBER">%2$s</xliff:g> ఇతర అనుమతులు తీసివేయబడ్డాయి"</string>
-    <!-- no translation found for unused_apps_page_title (6986983535677572559) -->
-    <skip />
-    <!-- no translation found for unused_apps_page_summary (5271048000004368665) -->
-    <skip />
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"ఉపయోగించని యాప్‌లు"</string>
+    <string name="unused_apps_page_summary" msgid="5271048000004368665">"యాప్‌ను కొన్ని నెలలు ఉపయోగించకపోతే:\n\n• మీ గోప్యతను రక్షించడానికి అనుమతులు తీసివేయబడతాయి\n• స్పేస్‌ను ఖాళీ చేయడానికి తాత్కాలిక ఫైల్‌లు తీసివేయబడతాయి\n• బ్యాటరీని సేవ్ చేయడానికి నోటిఫికేషన్‌లు ఆపివేయబడతాయి"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"చివరిసారిగా <xliff:g id="NUMBER">%s</xliff:g> నెలల కంటే ముందు తెరవబడింది"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"యాప్ చివరిసారిగా <xliff:g id="DATE">%s</xliff:g> తేదీన తెరవబడింది"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"చివరిగా తెరిచినది <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -266,9 +261,11 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> యాప్‌లు గత కొన్ని నెలలుగా వినియోగంలో లేవు. రివ్యూ చేయడానికి ట్యాప్ చేయండి</item>
       <item quantity="one">గత కొన్ని నెలలుగా <xliff:g id="COUNT_0">%1$d</xliff:g> యాప్ వినియోగంలో లేదు. రివ్యూ చేయడానికి ట్యాప్ చేయండి</item>
     </plurals>
-    <!-- no translation found for unused_apps_notification_title (8046612559038762856) -->
-    <!-- no translation found for unused_apps_notification_content (3704446042109375119) -->
-    <skip />
+    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
+      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> ఉపయోగించని యాప్‌లు</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> ఉపయోగించని యాప్</item>
+    </plurals>
+    <string name="unused_apps_notification_content" msgid="3704446042109375119">"అనుమతులు అలాగే తాత్కాలిక ఫైల్‌లు తీసివేయబడ్డాయి. రివ్యూ చేయడానికి ట్యాప్ చేయండి."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"గత కొన్ని నెలలుగా కొన్ని యాప్‌లు వినియోగంలో లేవు"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> యాప్‌లు గత కొన్ని నెలలుగా వినియోగంలో లేవు</item>
@@ -356,8 +353,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"కాల్‌లను గుర్తించడానికి, స్పామ్, స్వయంచాలక కాల్‌లు లేదా వద్దనుకునే నంబర్‌లను బ్లాక్ చేయడానికి మిమ్మల్ని అనుమతించే యాప్‌లు"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g>ను మీ డిఫాల్ట్ కాలర్ ID &amp; స్పామ్ యాప్‌గా సెట్ చేయాలా?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"అనుమతులు ఇవ్వనవసరం లేదు"</string>
-    <!-- no translation found for role_watch_description (267003778693177779) -->
-    <skip />
+    <string name="role_watch_description" msgid="267003778693177779">"మీ నోటిఫికేషన్‌లతో ఇంటరాక్ట్ అవ్వడానికి అలాగే మీ ఫోన్, SMS, కాంటాక్ట్‌లు అలాగే Calendar అనుమతులను యాక్సెస్ చేయడానికి <xliff:g id="APP_NAME">%1$s</xliff:g> అనుమతించబడుతుంది."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"ప్రస్తుతం డిఫాల్ట్‌గా ఉన్నది"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"మళ్లీ అడగవద్దు"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"దీన్ని డిఫాల్ట్ చేయి"</string>

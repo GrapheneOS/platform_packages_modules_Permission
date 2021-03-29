@@ -42,6 +42,7 @@
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Dozvoli"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Dozvoli uvek"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Dok koristim aplikaciju"</string>
+    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Promeni na preciznu lokaciju"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Samo ovaj put"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Dozvoli uvek"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Dozvoli upravljanje svim datotekama"</string>
@@ -105,10 +106,8 @@
     <string name="message_staging" msgid="9110563899955511866">"Aplikacija se priprema…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Nepoznato"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Kontrolna tabla"</string>
-    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
-    <skip />
-    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
-    <skip />
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"Korišćenje dozvole <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
+    <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"Kada su aplikacije prestale da koriste dozvolu <xliff:g id="PERMGROUP">%1$s</xliff:g> u poslednja 24 sata"</string>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="one">Poslednji pristup: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> pristup</item>
       <item quantity="few">Poslednji pristup: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> pristupa</item>

@@ -42,6 +42,7 @@
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"سماح"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"السماح طوال الوقت"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"أثناء استخدام التطبيق"</string>
+    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"تغيير إلى الموقع الجغرافي الدقيق"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"هذه المرَّة فقط"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"السماح طوال الوقت"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"السماح بإدارة كل الملفات"</string>
@@ -108,10 +109,8 @@
     <string name="message_staging" msgid="9110563899955511866">"جارٍ الطرح المرحلي للتطبيق…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"غير معروف"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"لوحة التحكّم"</string>
-    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
-    <skip />
-    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
-    <skip />
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"استخدام <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
+    <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"عندما توقفت التطبيقات عن استخدام <xliff:g id="PERMGROUP">%1$s</xliff:g> في آخر 24 ساعة."</string>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="zero">آخر إذن وصول: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> إذن وصول</item>
       <item quantity="two">آخر إذن وصول: <xliff:g id="TIME_2">%1$s</xliff:g>\nإذنا وصول (<xliff:g id="NUM_3">%2$s</xliff:g>)</item>

@@ -42,6 +42,7 @@
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‎‎‏‎‎‏‏‏‎‎‎‎‎‏‏‎‎‎‎‏‏‏‎‏‎‏‏‏‏‏‏‎‎‏‏‏‏‎‎‏‎‎‏‎‎‎‏‎‏‎‏‏‏‏‏‏‎‏‎‏‏‎‎Allow‎‏‎‎‏‎"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‏‏‏‏‎‎‎‏‏‏‏‏‏‏‏‏‎‎‎‏‎‎‏‎‎‏‏‏‎‎‎‏‎‏‏‎‎‏‏‏‏‎‎‎‎‎‎‏‎‎‏‏‏‎‎‎‏‏‏‎‏‎Allow all the time‎‏‎‎‏‎"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‎‏‏‏‏‎‏‏‏‏‎‏‏‏‎‎‎‏‏‎‎‎‏‎‎‎‎‎‎‎‏‏‎‎‏‏‏‎‎‏‏‏‎‎‏‏‎‎‏‏‎‎‏‏‏‎‏‏‎‏‎‏‎While using the app‎‏‎‎‏‎"</string>
+    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‎‏‏‎‏‎‏‏‎‏‏‎‎‎‏‏‏‎‎‎‏‏‎‎‎‏‏‎‎‏‏‏‏‏‎‎‎‎‏‎‏‎‏‎‏‏‎‏‏‏‎‏‎‏‏‎‎‎‎‎‏‎Change to precise location‎‏‎‎‏‎"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‎‎‏‎‎‎‏‎‏‎‏‎‏‎‏‎‏‎‎‎‏‏‎‏‎‎‎‏‎‎‏‏‎‏‏‎‏‏‎‎‎‎‎‏‏‏‎‏‎‎‎‎‏‏‎‎‏‎‏‏‏‎Only this time‎‏‎‎‏‎"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‏‎‎‏‎‎‏‎‎‏‏‎‎‎‏‎‎‏‏‏‏‎‎‎‎‏‎‏‏‏‎‎‎‎‏‎‎‎‎‏‎‏‎‎‏‏‏‏‎‎‏‏‏‎‏‎‏‏‎‎‏‎Allow all the time‎‏‎‎‏‎"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‎‎‎‏‎‎‏‏‎‎‎‏‎‏‎‎‏‏‏‏‏‏‏‎‏‏‎‎‎‏‎‎‎‏‏‏‏‏‎‎‎‏‏‏‎‎‏‎‏‎‎‎‎‎‎‏‎‎‎‏‏‎‎Allow management of all files‎‏‎‎‏‎"</string>
@@ -205,7 +206,8 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‏‏‏‎‏‎‏‎‎‎‎‎‏‏‏‎‎‏‏‏‏‎‏‏‎‏‏‏‎‏‎‏‏‎‏‎‏‏‎‏‏‏‏‏‏‏‏‎‎‏‏‏‏‏‏‏‎‎‏‏‎‏‎‎‏‎‎‏‏‎<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>‎‏‎‎‏‏‏‎ and ‎‏‎‎‏‏‎<xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>‎‏‎‎‏‏‏‎ permissions removed‎‏‎‎‏‎"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‎‏‎‎‏‎‎‏‎‎‏‏‏‏‎‎‎‎‏‏‏‏‎‏‏‏‎‏‎‏‎‏‎‏‎‎‎‏‏‏‎‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‎‏‏‏‎‎‎‏‎‎‏‏‎<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>‎‏‎‎‏‏‏‎ and ‎‏‎‎‏‏‎<xliff:g id="NUMBER">%2$s</xliff:g>‎‏‎‎‏‏‏‎ other permissions removed‎‏‎‎‏‎"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‎‎‎‎‎‏‏‏‏‎‏‏‎‏‏‎‎‎‎‎‎‏‎‎‎‎‎‎‏‏‏‎‎‏‏‏‏‏‎‎‏‎‎‎‎‏‎‎‎‎‏‎‏‏‏‎‎‏‏‏‏‎Unused apps‎‏‎‎‏‎"</string>
-    <string name="unused_apps_page_summary" msgid="5271048000004368665">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‎‎‏‎‎‏‎‎‏‎‎‏‏‎‏‎‎‎‎‏‏‎‎‎‏‏‏‎‏‎‏‎‎‏‎‎‏‎‎‏‎‎‏‎‏‏‎‎‏‎‏‎‎‏‎‎‎‏‏‎‎‏‎If an app is unused for a few months:‎‏‎‎‏‏‎\n‎‏‎‎‏‏‏‎‎‏‎‎‏‏‎\n‎‏‎‎‏‏‏‎• Permissions are removed to protect your privacy‎‏‎‎‏‏‎\n‎‏‎‎‏‏‏‎• Temporary files are removed to free up space‎‏‎‎‏‏‎\n‎‏‎‎‏‏‏‎• Notifications are stopped to save battery‎‏‎‎‏‎"</string>
+    <!-- no translation found for unused_apps_page_summary (5271048000004368665) -->
+    <skip />
     <string name="last_opened_category_title" msgid="7871347400611202595">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‎‏‏‎‏‎‎‏‏‏‏‎‎‏‎‏‎‎‏‎‎‏‏‎‎‎‎‎‏‏‎‏‏‎‏‎‏‎‎‏‎‎‎‎‎‎‎‎‎‎‏‏‎‎‎‏‎‎‎‏‏‎Last opened more than ‎‏‎‎‏‏‎<xliff:g id="NUMBER">%s</xliff:g>‎‏‎‎‏‏‏‎ months ago‎‏‎‎‏‎"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‎‎‏‎‎‎‏‏‎‏‏‎‎‎‎‎‏‎‎‎‏‏‎‎‏‎‏‎‏‎‎‎‏‏‏‏‎‏‎‏‎‏‎‏‏‎‎‎‏‎‏‎‏‎‎‏‏‎‏‎‎‎‎App last opened on ‎‏‎‎‏‏‎<xliff:g id="DATE">%s</xliff:g>‎‏‎‎‏‏‏‎‎‏‎‎‏‎"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‏‏‎‏‏‎‏‏‎‏‏‎‎‎‎‎‎‎‎‎‎‏‎‏‏‎‏‎‏‏‏‏‎‎‎‏‎‏‏‎‎‎‏‎‎‏‏‎‏‎‎‏‎‎‎‏‏‏‏‎‎‏‎Last opened ‎‏‎‎‏‏‎<xliff:g id="DATE">%s</xliff:g>‎‏‎‎‏‏‏‎‎‏‎‎‏‎"</string>
@@ -264,7 +266,8 @@
       <item quantity="other">‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‎‏‏‏‏‏‎‏‎‏‎‏‏‎‏‎‎‏‏‏‏‎‏‏‏‏‏‎‏‎‏‎‏‏‎‏‎‏‎‏‏‎‎‏‏‏‏‎‎‏‏‏‏‎‏‏‎‏‎‎‎‎‎‏‎‎‏‏‎<xliff:g id="COUNT_1">%1$d</xliff:g>‎‏‎‎‏‏‏‎ unused apps‎‏‎‎‏‎</item>
       <item quantity="one">‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‎‏‏‏‏‏‎‏‎‏‎‏‏‎‏‎‎‏‏‏‏‎‏‏‏‏‏‎‏‎‏‎‏‏‎‏‎‏‎‏‏‎‎‏‏‏‏‎‎‏‏‏‏‎‏‏‎‏‎‎‎‎‎‏‎‎‏‏‎<xliff:g id="COUNT_0">%1$d</xliff:g>‎‏‎‎‏‏‏‎ unused app‎‏‎‎‏‎</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="3704446042109375119">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‏‎‎‏‏‎‏‏‎‏‎‎‎‏‏‎‏‎‏‏‎‎‎‎‎‏‏‎‎‎‏‎‏‏‏‎‏‏‎‎‎‎‏‏‏‏‏‏‏‎‎‏‎‏‎‎‎‏‏‏‏‎Permissions and temporary files have been removed. Tap to review.‎‏‎‎‏‎"</string>
+    <!-- no translation found for unused_apps_notification_content (3704446042109375119) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‏‎‏‏‏‏‏‎‎‏‎‏‎‎‎‎‎‏‎‎‎‎‎‏‎‎‎‎‎‎‏‎‏‎‎‏‎‎‏‏‎‎‎‎‏‎‎‏‎‎‎‏‏‏‏‎‏‏‏‎‎‎Some apps haven’t been used in a few months‎‏‎‎‏‎"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other">‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‎‎‏‏‎‎‏‏‎‎‎‎‎‎‎‏‏‎‎‎‎‎‎‎‎‎‎‏‏‏‏‎‎‎‎‏‎‏‏‏‏‏‎‏‏‏‎‏‎‎‏‏‎‏‏‏‏‏‏‏‎‎‏‎‎‏‏‎<xliff:g id="COUNT_1">%1$d</xliff:g>‎‏‎‎‏‏‏‎ apps haven’t been used in a few months‎‏‎‎‏‎</item>

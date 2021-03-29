@@ -42,6 +42,7 @@
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"اجازت دیں"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"ہر وقت اجازت دیں"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"ایپ استعمال کرتے وقت"</string>
+    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"قطعی مقام پر تبدیل کریں"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"صرف اس وقت"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"ہر وقت اجازت دیں"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"سبھی فائلز کے نظم و نسق کی اجازت دیں"</string>
@@ -104,10 +105,8 @@
     <string name="message_staging" msgid="9110563899955511866">"ایپ کی مرحلہ بندی ہو رہی ہے…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"نامعلوم"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"ڈیش بورڈ"</string>
-    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
-    <skip />
-    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
-    <skip />
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> کا استعمال"</string>
+    <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"جب ایپس نے پچھلے 24 گھنٹے میں آپ کے <xliff:g id="PERMGROUP">%1$s</xliff:g> کا استعمال کرنا بند کردیا"</string>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">آخری بار رسائی: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> رسائیاں</item>
       <item quantity="one">آخری بار رسائی: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> رسائی</item>
@@ -171,8 +170,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ایپس</item>
       <item quantity="one">1 ایپ</item>
     </plurals>
-    <!-- no translation found for permission_history_title (8340081285133025225) -->
-    <skip />
+    <string name="permission_history_title" msgid="8340081285133025225">"اجازت کی سرگزشت"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"ایپ کی اجازتوں کا استعمال"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"رسائی: <xliff:g id="NUM">%1$s</xliff:g> مرتبہ۔ کل دورانیہ: <xliff:g id="DURATION">%2$s</xliff:g>۔ <xliff:g id="TIME">%3$s</xliff:g> پہلے آخری بار استعمال کیا گيا۔"</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"رسائی: <xliff:g id="NUM">%1$s</xliff:g> مرتبہ۔ <xliff:g id="TIME">%2$s</xliff:g> پہلے آخری بار استعمال کیا گیا۔"</string>
@@ -183,10 +181,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"صرف ایپ استعمال کرتے وقت اجازت دیں"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"ہر بار پوچھیں"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"مسترد کریں"</string>
-    <!-- no translation found for precise_image_description (6349638632303619872) -->
-    <skip />
-    <!-- no translation found for approximate_image_description (938803699637069884) -->
-    <skip />
+    <string name="precise_image_description" msgid="6349638632303619872">"قطعی مقام"</string>
+    <string name="approximate_image_description" msgid="938803699637069884">"تخمینی مقام"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"قطعی مقام استعمال کریں"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"آف ہونے پر ایپس صرف آپ کے آس پاس کے قریبی علاقے میں آپ کے تخمینی مقام کا تعین کر سکتی ہیں"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> کی اجازت"</string>
@@ -209,10 +205,8 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"<xliff:g id="PERMISSION_NAME">%s</xliff:g> اجازت کو ہٹایا گیا"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> اور <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> اجازتوں کو ہٹایا گیا"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> اور <xliff:g id="NUMBER">%2$s</xliff:g> دیگر اجازتوں کو ہٹایا گیا"</string>
-    <!-- no translation found for unused_apps_page_title (6986983535677572559) -->
-    <skip />
-    <!-- no translation found for unused_apps_page_summary (5271048000004368665) -->
-    <skip />
+    <string name="unused_apps_page_title" msgid="6986983535677572559">"غیر مستعمل ایپس"</string>
+    <string name="unused_apps_page_summary" msgid="5271048000004368665">"اگر کسی ایپ کا کچھ مہینوں تک استعمال نہیں ہوتا ہے تو:\n\n• آپ کی رازداری کی حفاظت کے لیے اجازتوں کو ہٹا دیا جاتا ہے\n• عارضی فائلز کو اسپیس خالی کرنے کے لیے ہٹا دیا جاتا ہے\n• بیٹری محفوظ کرنے کے لیے اطلاعات کو روک دیا جاتا ہے"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"آخری بار <xliff:g id="NUMBER">%s</xliff:g> ماہ سے زیادہ پہلے کھولی گئی"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ایپ آخری بار <xliff:g id="DATE">%s</xliff:g> کو کھولی گئی"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"آخری بار <xliff:g id="DATE">%s</xliff:g> کو کھولی گئی"</string>
@@ -267,9 +261,11 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> ایپس کا استعمال کچھ مہینوں سے نہیں کیا گیا ہے۔ جائزے کے لیے تھپتھپائیں</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> ایپ کا استعمال کچھ مہینوں سے نہیں کیا گیا ہے۔ جائزے کے لیے تھپتھپائیں</item>
     </plurals>
-    <!-- no translation found for unused_apps_notification_title (8046612559038762856) -->
-    <!-- no translation found for unused_apps_notification_content (3704446042109375119) -->
-    <skip />
+    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
+      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> غیر مستعمل ایپس</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> غیر مستعمل ایپ</item>
+    </plurals>
+    <string name="unused_apps_notification_content" msgid="3704446042109375119">"اجازتوں اور عارضی فائلز کو ہٹا دیا گیا ہے۔ جائزے کے لیے تھپتھپائیں۔"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"کچھ ایپس کا استعمال کچھ مہینوں سے نہیں کیا گیا ہے"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> ایپس کا استعمال کچھ مہینوں سے نہیں کیا گیا ہے</item>
@@ -357,8 +353,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"ایسے ایپس جو آپ کی کالز کی شناخت کرنے اور اسپام، روبوکالز، یا ناپسندیدہ نمبروں کو مسدود کرنے کی اجازت دیتی ہیں"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"‏<xliff:g id="APP_NAME">%1$s</xliff:g> کو کالر ID اور اسپام کی آپ کی ڈیفالٹ ایپ کے بطور سیٹ کریں؟"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"کوئی اجازت درکار نہیں ہے"</string>
-    <!-- no translation found for role_watch_description (267003778693177779) -->
-    <skip />
+    <string name="role_watch_description" msgid="267003778693177779">"‏<xliff:g id="APP_NAME">%1$s</xliff:g> کو آپ کی اطلاعات کے ساتھ تعامل کرنے اور آپ کے فون، SMS، رابطوں اور کیلنڈر کی اجازتوں تک رسائی کی اجازت ہوگی۔"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"موجودہ ڈیفالٹ"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"دوبارہ نہ پوچھیں"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"بطور ڈیفالٹ سیٹ کریں"</string>

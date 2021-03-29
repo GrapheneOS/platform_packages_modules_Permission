@@ -42,6 +42,7 @@
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"अनुमति दें"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"हमेशा के लिए अनुमति दें"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"ऐप्लिकेशन इस्तेमाल करते समय"</string>
+    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"जगह की सटीक जानकारी पर सेट करें"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"सिर्फ़ इस बार अनुमति दें"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"हमेशा के लिए अनुमति दें"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"सभी फ़ाइलें प्रबंधित करने की अनुमति दें"</string>
@@ -104,10 +105,8 @@
     <string name="message_staging" msgid="9110563899955511866">"ऐप्लिकेशन तैयार किया जा रहा है…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"ऐप्लिकेशन के बारे में कोई जानकारी नहीं है"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"डैशबोर्ड"</string>
-    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
-    <skip />
-    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
-    <skip />
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> का इस्तेमाल"</string>
+    <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"जब ऐप्लिकेशन ने पिछले 24 घंटों में आपके <xliff:g id="PERMGROUP">%1$s</xliff:g> का इस्तेमाल नहीं किया"</string>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="one">पिछले ऐक्सेस की जानकारी: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> बार ऐक्सेस किया गया</item>
       <item quantity="other">पिछले ऐक्सेस की जानकारी: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> बार ऐक्सेस किया गया</item>
@@ -354,7 +353,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"ऐसे ऐप्लिकेशन जो कॉल करने वाले की पहचान करने और स्पैम कॉल, रोबोकॉल या अनचाहे नंबर से आ रहे कॉल को ब्लॉक करने में आपकी मदद करते हैं"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"क्या <xliff:g id="APP_NAME">%1$s</xliff:g> को अपना डिफ़ॉल्ट कॉलर आईडी और स्पैम आईडी के तौर पर सेट करना चाहते हैं?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"अनुमति की ज़रूरत नहीं है"</string>
-    <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> आपकी सूचनाओं से इंटरैक्ट कर पाएगा. साथ ही, इसे आपके फ़ोन, एसएमएस, संपर्कों, और कैलेंडर की अनुमतियों का ऐक्सेस मिल जाएगा."</string>
+    <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> आपकी सूचनाओं को पढ़ सकेगा और उन पर कार्रवाई कर पाएगा. साथ ही, इसे आपके फ़ोन, एसएमएस, संपर्कों, और कैलेंडर की अनुमतियों का ऐक्सेस मिल जाएगा."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"मौजूदा डिफ़ॉल्ट"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"फिर से न पूछें"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"डिफ़ॉल्ट के रूप में सेट करें"</string>
