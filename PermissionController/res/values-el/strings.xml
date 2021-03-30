@@ -42,6 +42,7 @@
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Αποδοχή"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Να επιτρέπεται πάντα"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Κατά τη χρήση της εφαρμογής"</string>
+    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Αλλαγή σε ακριβή τοποθεσία"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Μόνο αυτήν τη φορά"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Να επιτρέπεται πάντα"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Να επιτρέπεται η διαχείριση όλων των αρχείων"</string>
@@ -104,10 +105,8 @@
     <string name="message_staging" msgid="9110563899955511866">"Σταδιακή διάθεση εφαρμογής…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Άγνωστο"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Πίνακας ελέγχου"</string>
-    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
-    <skip />
-    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
-    <skip />
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"Χρήση <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
+    <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"Πότε σταμάτησαν οι εφαρμογές σας να χρησιμοποιούν την ομάδα αδειών <xliff:g id="PERMGROUP">%1$s</xliff:g> κατά τις τελευταίες 24 ώρες"</string>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Τελευταία πρόσβαση: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> προσβάσεις</item>
       <item quantity="one">Τελευταία πρόσβαση: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> πρόσβαση</item>

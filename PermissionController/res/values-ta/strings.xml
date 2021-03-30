@@ -42,6 +42,7 @@
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"அனுமதி"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"அனைத்து நேரங்களிலும் அனுமதி"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"ஆப்ஸைப் பயன்படுத்தும்போது"</string>
+    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"துல்லியமான இருப்பிடத்திற்கு மாற்று"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"இப்போது மட்டும்"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"எப்போதும் அனுமதி"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"அனைத்து ஃபைல்களையும் நிர்வகிக்க அனுமதி"</string>
@@ -104,10 +105,8 @@
     <string name="message_staging" msgid="9110563899955511866">"ஆப்ஸ் தயாராகிறது…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"தெரியாதது"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"டாஷ்போர்டு"</string>
-    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
-    <skip />
-    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
-    <skip />
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> உபயோகம்"</string>
+    <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"கடந்த 24 மணிநேரத்தில் <xliff:g id="PERMGROUP">%1$s</xliff:g> ஐப் பயன்படுத்துவதை ஆப்ஸ் நிறுத்தியபோது"</string>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">கடைசியாகப் பயன்படுத்தியது: <xliff:g id="TIME_2">%1$s</xliff:g>\nபயன்படுத்தியவை: <xliff:g id="NUM_3">%2$s</xliff:g></item>
       <item quantity="one">கடைசியாகப் பயன்படுத்தியது: <xliff:g id="TIME_0">%1$s</xliff:g>\nபயன்படுத்தியது: <xliff:g id="NUM_1">%2$s</xliff:g></item>

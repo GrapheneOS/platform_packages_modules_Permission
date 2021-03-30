@@ -36,7 +36,6 @@
 
     <!-- Request role dialog start -->
     <style name="RequestRoleDialog" parent="@android:style/Theme.DeviceDefault.Dialog.Alert">
-        <item name="android:windowBackground">@drawable/request_role_dialog_background</item>
         <item name="android:buttonBarStyle">@style/RequestRoleButtonBar</item>
     </style>
 
