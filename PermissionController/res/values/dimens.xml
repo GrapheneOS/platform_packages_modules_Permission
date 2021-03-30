@@ -67,4 +67,7 @@
 
     <dimen name="location_accuracy_image_size">130dp</dimen>
 
+    <item name="permission_access_time_dialog_width_scalar" format="float" type="dimen">0.9</item>
+    <item name="permission_access_time_dialog_height_scalar" format="float" type="dimen">0.7</item>
+
 </resources>
