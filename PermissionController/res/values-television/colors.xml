@@ -44,6 +44,4 @@
     <color name="off_white">#ffeeeeee</color>
 
     <color name="settings_category_text_color">#FF51AAFF</color>
-
-    <color name="request_role_dialog_background">#1F232B</color>
 </resources>

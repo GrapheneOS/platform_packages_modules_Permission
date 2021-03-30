@@ -42,6 +42,7 @@
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Permitir"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Permitir siempre"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Mientras se usa la aplicación"</string>
+    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Cambiar a ubicación precisa"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Solo esta vez"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Permitir siempre"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Permitir gestionar todos los archivos"</string>
@@ -104,10 +105,8 @@
     <string name="message_staging" msgid="9110563899955511866">"Preparando aplicación…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Desconocida"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Panel de control"</string>
-    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
-    <skip />
-    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
-    <skip />
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"Uso de <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
+    <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"Cuando las aplicaciones llevan 24 horas sin utilizar tu <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Último acceso: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> accesos</item>
       <item quantity="one">Último acceso: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> acceso</item>

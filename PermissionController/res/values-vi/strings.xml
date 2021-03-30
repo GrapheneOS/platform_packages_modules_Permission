@@ -42,6 +42,7 @@
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Cho phép"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Luôn cho phép"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Trong khi dùng ứng dụng"</string>
+    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Thay đổi thành vị trí chính xác"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Chỉ lần này"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Luôn cho phép"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Cho phép quản lý tất cả các tệp"</string>
@@ -104,10 +105,8 @@
     <string name="message_staging" msgid="9110563899955511866">"Đang thử nghiệm ứng dụng…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Không xác định"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Trang tổng quan"</string>
-    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
-    <skip />
-    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
-    <skip />
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"Hoạt động sử dụng <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
+    <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"Khi các ứng dụng không dùng <xliff:g id="PERMGROUP">%1$s</xliff:g> của bạn trong 24 giờ qua"</string>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Lần truy cập gần đây nhất: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> lần truy cập</item>
       <item quantity="one">Lần truy cập gần đây nhất: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> lần truy cập</item>
