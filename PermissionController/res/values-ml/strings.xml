@@ -42,6 +42,7 @@
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"അനുവദിക്കുക"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"ഏതുസമയത്തും അനുവദിക്കുക"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"ആപ്പ് ഉപയോഗിക്കുമ്പോൾ"</string>
+    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"കൃത്യമായ ലൊക്കേഷനിലേക്ക് മാറുക"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"ഇപ്പോഴത്തേക്ക് മാത്രം"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"ഏതുസമയത്തും അനുവദിക്കുക"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"എല്ലാ ഫയലുകളും മാനേജ് ചെയ്യാൻ അനുവദിക്കുക"</string>
@@ -104,10 +105,8 @@
     <string name="message_staging" msgid="9110563899955511866">"ആപ്പ് തയ്യാറാക്കുന്നു…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"അജ്ഞാതം"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"ഡാഷ്‌ബോർഡ്"</string>
-    <!-- no translation found for permission_group_usage_title (2595013198075285173) -->
-    <skip />
-    <!-- no translation found for permission_group_usage_subtitle (5302255813297881611) -->
-    <skip />
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> ഉപയോഗം"</string>
+    <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"കഴിഞ്ഞ 24 മണിക്കൂർ, ആപ്പുകൾ നിങ്ങളുടെ <xliff:g id="PERMGROUP">%1$s</xliff:g> ഉപയോഗിക്കുന്നത് അവസാനിപ്പിച്ചപ്പോൾ"</string>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">അവസാനം ആക്‌‌സസ് ചെയ്‌തത്: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> ആക്‌സസുകള്‍</item>
       <item quantity="one">അവസാനം ആക്‌‌സസ് ചെയ്‌തത്: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> ആക്‌‌സസ്</item>
@@ -397,7 +396,7 @@
     <string name="incident_report_notification_text" msgid="3376480583513587923">"ഡീബഗ്ഗ് ചെയ്യൽ വിവരങ്ങൾ അപ്‌ലോഡ് ചെയ്യാൻ <xliff:g id="APP_NAME">%1$s</xliff:g> താൽപ്പര്യപ്പെടുന്നു."</string>
     <string name="incident_report_dialog_title" msgid="669104389325204095">"ഡീബഗ്ഗ് ചെയ്യൽ ഡാറ്റ പങ്കിടണോ?"</string>
     <string name="incident_report_dialog_intro" msgid="5897733669850951832">"സിസ്‌റ്റം ഒരു പ്രശ്‌നം കണ്ടെത്തി."</string>
-    <string name="incident_report_dialog_text" msgid="5675553296891757523">"ഈ ഉപകരണത്തിൽ നിന്ന് <xliff:g id="DATE">%2$s</xliff:g>-ന് <xliff:g id="TIME">%3$s</xliff:g>-ന് എടുത്ത ഒരു ബഗ് റിപ്പോർട്ട് അപ്‌ലോഡ് ചെയ്യാൻ <xliff:g id="APP_NAME_0">%1$s</xliff:g> അഭ്യർത്ഥിക്കുന്നു. നിങ്ങളുടെ ഉപകരണത്തെക്കുറിച്ചുള്ള വ്യക്തിപരമായ വിവരമോ ആപ്പുകൾ ലോഗ് ചെയ്യുമ്പോൾ നൽകുന്ന വിവരമോ, ഉദാഹരണത്തിന് നെറ്റ്‌വർക്ക് വിവരങ്ങൾ, ഉപകരണ ഐഡന്റിഫയറുകൾ, ലൊക്കേഷൻ ഡാറ്റ, ഉപയോക്തൃനാമങ്ങൾ എന്നിവ ബഗ് റിപ്പോർട്ടുകളിൽ ഉൾപ്പെടുന്നു. ഈ വിവരം ഉപയോഗിച്ച് നിങ്ങൾ വിശ്വസിക്കുന്ന ആപ്പുകൾക്കും ആളുകൾക്കും മാത്രം ബഗ് റിപ്പോർട്ടുകൾ പങ്കിടുക. <xliff:g id="APP_NAME_1">%4$s</xliff:g> എന്നതിനെ ഒരു ബഗ് റിപ്പോർട്ട് അപ്‌ലോഡ് ചെയ്യാൻ അനുവദിക്കണോ?"</string>
+    <string name="incident_report_dialog_text" msgid="5675553296891757523">"ഈ ഉപകരണത്തിൽ നിന്ന് <xliff:g id="DATE">%2$s</xliff:g>-ന് <xliff:g id="TIME">%3$s</xliff:g>-ന് എടുത്ത ഒരു ബഗ് റിപ്പോർട്ട് അപ്‌ലോഡ് ചെയ്യാൻ <xliff:g id="APP_NAME_0">%1$s</xliff:g> അഭ്യർത്ഥിക്കുന്നു. നിങ്ങളുടെ ഉപകരണത്തെക്കുറിച്ചുള്ള വ്യക്തിപരമായ വിവരങ്ങളോ ആപ്പുകൾ ലോഗ് ചെയ്യുമ്പോൾ നൽകുന്ന വിവരമോ, ഉദാഹരണത്തിന് നെറ്റ്‌വർക്ക് വിവരങ്ങൾ, ഉപകരണ ഐഡന്റിഫയറുകൾ, ലൊക്കേഷൻ ഡാറ്റ, ഉപയോക്തൃനാമങ്ങൾ എന്നിവ ബഗ് റിപ്പോർട്ടുകളിൽ ഉൾപ്പെടുന്നു. ഈ വിവരം ഉപയോഗിച്ച് നിങ്ങൾ വിശ്വസിക്കുന്ന ആപ്പുകൾക്കും ആളുകൾക്കും മാത്രം ബഗ് റിപ്പോർട്ടുകൾ പങ്കിടുക. <xliff:g id="APP_NAME_1">%4$s</xliff:g> എന്നതിനെ ഒരു ബഗ് റിപ്പോർട്ട് അപ്‌ലോഡ് ചെയ്യാൻ അനുവദിക്കണോ?"</string>
     <string name="incident_report_error_dialog_text" msgid="4189647113387092272">"<xliff:g id="APP_NAME">%1$s</xliff:g> എന്ന ആപ്പിൻ്റെ ബഗ് റിപ്പോർട്ട് പ്രോസസ് ചെയ്യുന്നതിൽ ഒരു പിശകുണ്ടായി. അതിനാൽ വിശദമായ ഡീബഗ്ഗ് ചെയ്യൽ ഡാറ്റ പങ്കിടുന്നത് തടഞ്ഞു. തടസ്സം നേരിട്ടതിൽ ഖേദിക്കുന്നു."</string>
     <string name="incident_report_dialog_allow_label" msgid="2970242967721155239">"അനുവദിക്കുക"</string>
     <string name="incident_report_dialog_deny_label" msgid="3535314290677579383">"നിരസിക്കുക"</string>
