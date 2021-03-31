@@ -87,7 +87,7 @@ class UnusedPackagesLiveData(
 
 fun getUnusedPackages(): UnusedPackagesLiveData {
     return if (isHibernationEnabled()) {
-        unusedHibernatedPackagesLiveData
+        unusedHibernatedOrRevokedPackagesLiveData
     } else {
         unusedAutoRevokePackagesLiveData
     }
