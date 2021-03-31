@@ -78,12 +78,12 @@
 
                 <ImageView
                     android:id="@+id/permission_location_accuracy_fine_only"
-                    android:contentDescription="@+string/precise_image_description"
+                    android:contentDescription="@string/precise_image_description"
                     style="@style/PermissionLocationAccuracyFineImageView" />
 
                 <ImageView
                     android:id="@+id/permission_location_accuracy_coarse_only"
-                    android:contentDescription="@+string/approximate_image_description"
+                    android:contentDescription="@string/approximate_image_description"
                     style="@style/PermissionLocationAccuracyCoarseImageView" />
 
             </LinearLayout>
