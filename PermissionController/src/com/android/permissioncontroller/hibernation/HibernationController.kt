@@ -19,6 +19,7 @@ package com.android.permissioncontroller.hibernation
 import android.apphibernation.AppHibernationManager
 import android.content.Context
 import android.content.Context.APP_HIBERNATION_SERVICE
+import android.os.Build
 import android.os.UserHandle
 import com.android.permissioncontroller.DumpableLog
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
@@ -41,14 +42,22 @@ class HibernationController(val context: Context) {
      */
     fun hibernateApps(
         apps: Map<UserHandle, List<LightPackageInfo>>
-    ): List<Pair<String, UserHandle>> {
-        val hibernatedApps = mutableListOf<Pair<String, UserHandle>>()
+    ): Set<Pair<String, UserHandle>> {
+        val hibernatedApps = mutableSetOf<Pair<String, UserHandle>>()
         for ((user, userApps) in apps) {
             val userContext = context.createContextAsUser(user, 0 /* flags */)
             val hibernationManager =
                 userContext.getSystemService(APP_HIBERNATION_SERVICE) as AppHibernationManager
             for (pkg in userApps) {
                 try {
+                    if (hibernationManager.isHibernatingForUser(pkg.packageName)) {
+                        continue
+                    }
+                    // TODO(b/184097792): Change this to < S when API finalizes.
+                    if (pkg.targetSdkVersion <= Build.VERSION_CODES.R) {
+                        // Only apps targeting S or above can be truly hibernated.
+                        continue
+                    }
                     hibernationManager.setHibernatingForUser(pkg.packageName, true)
                     hibernatedApps.add(pkg.packageName to user)
                 } catch (e: Exception) {

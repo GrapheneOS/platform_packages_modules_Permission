@@ -468,14 +468,14 @@ class HibernationJobService : JobService() {
                 }
 
                 val appsToHibernate = getAppsToHibernate(this@HibernationJobService)
-                var hibernatedApps: List<Pair<String, UserHandle>> = emptyList()
+                var hibernatedApps: Set<Pair<String, UserHandle>> = emptySet()
                 if (isHibernationEnabled()) {
                     val hibernationController = HibernationController(this@HibernationJobService)
                     hibernatedApps = hibernationController.hibernateApps(appsToHibernate)
                 }
                 val revokedApps = revokeAppPermissions(
                         appsToHibernate, this@HibernationJobService, sessionId)
-                val unusedApps = if (isHibernationEnabled()) hibernatedApps else revokedApps
+                val unusedApps: Set<Pair<String, UserHandle>> = hibernatedApps + revokedApps
                 if (unusedApps.isNotEmpty()) {
                     showUnusedAppsNotification(unusedApps.size, sessionId)
                 }
