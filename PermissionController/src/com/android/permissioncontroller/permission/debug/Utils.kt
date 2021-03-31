@@ -21,6 +21,7 @@ import android.icu.util.Calendar
 import android.provider.DeviceConfig
 import android.text.format.DateFormat.getMediumDateFormat
 import android.text.format.DateFormat.getTimeFormat
+import android.util.Pair
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.model.AppPermissionUsage.GroupUsage
 import java.util.Locale
@@ -39,6 +40,11 @@ const val PROPERTY_LOCATION_ACCURACY_ENABLED = "location_accuracy_enabled"
 
 /* Whether privacy hub feature is enabled */
 const val PROPERTY_PRIVACY_HUB_ENABLED = "privacy_hub_enabled"
+
+const val SECONDS = 1
+const val MINUTES = 2
+const val HOURS = 3
+const val DAYS = 4
 
 /**
  * Whether the Permissions Hub 2 flag is enabled
@@ -169,22 +175,57 @@ fun getUsageDurationString(context: Context, groupUsage: GroupUsage?): String? {
  * @return a string representing the given number of milliseconds.
  */
 fun getTimeDiffStr(context: Context, duration: Long): String {
+    val timeDiffAndUnit = calculateTimeDiffAndUnit(duration)
+    return when (timeDiffAndUnit.second) {
+        SECONDS -> context.resources.getQuantityString(R.plurals.seconds,
+                timeDiffAndUnit.first.toInt(), timeDiffAndUnit.first)
+        MINUTES -> context.resources.getQuantityString(R.plurals.minutes,
+                timeDiffAndUnit.first.toInt(), timeDiffAndUnit.first)
+        HOURS -> context.resources.getQuantityString(R.plurals.hours,
+                timeDiffAndUnit.first.toInt(), timeDiffAndUnit.first)
+        else -> context.resources.getQuantityString(R.plurals.days,
+                timeDiffAndUnit.first.toInt(), timeDiffAndUnit.first)
+    }
+}
+
+/**
+ * Build a string representing the duration used of milliseconds passed in.
+ * @return a string representing the duration used in the nearest unit. ex: Used for 3 mins
+ */
+fun getDurationUsedStr(context: Context, duration: Long): String {
+    val timeDiffAndUnit = calculateTimeDiffAndUnit(duration)
+    return when (timeDiffAndUnit.second) {
+        SECONDS -> context.resources.getQuantityString(R.plurals.duration_used_seconds,
+                timeDiffAndUnit.first.toInt(), timeDiffAndUnit.first)
+        MINUTES -> context.resources.getQuantityString(R.plurals.duration_used_minutes,
+                timeDiffAndUnit.first.toInt(), timeDiffAndUnit.first)
+        HOURS -> context.resources.getQuantityString(R.plurals.duration_used_hours,
+                timeDiffAndUnit.first.toInt(), timeDiffAndUnit.first)
+        else -> context.resources.getQuantityString(R.plurals.duration_used_days,
+                timeDiffAndUnit.first.toInt(), timeDiffAndUnit.first)
+    }
+}
+
+/**
+ * Given the duration in milliseconds, calculate the time of that duration in the nearest unit.
+ * @return a Pair of the <duration in the nearest unit, the nearest unit>
+ */
+fun calculateTimeDiffAndUnit(duration: Long): Pair<Long, Int> {
     val seconds = Math.max(1, duration / 1000)
+
     if (seconds < 60) {
-        return context.resources.getQuantityString(R.plurals.seconds, seconds.toInt(),
-                seconds)
+        return Pair.create(seconds, SECONDS)
     }
     val minutes = seconds / 60
     if (minutes < 60) {
-        return context.resources.getQuantityString(R.plurals.minutes, minutes.toInt(),
-                minutes)
+        return Pair.create(minutes, MINUTES)
     }
     val hours = minutes / 60
     if (hours < 24) {
-        return context.resources.getQuantityString(R.plurals.hours, hours.toInt(), hours)
+        return Pair.create(hours, HOURS)
     }
     val days = hours / 24
-    return context.resources.getQuantityString(R.plurals.days, days.toInt(), days)
+    return Pair.create(days, DAYS)
 }
 
 /**
