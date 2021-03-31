@@ -108,6 +108,10 @@
     <string name="permission_usage_title" msgid="5095876355858467390">"Контролна табла"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Коришћење дозволе <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"Када су апликације престале да користе дозволу <xliff:g id="PERMGROUP">%1$s</xliff:g> у последња 24 сата"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
+    <skip />
+    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="one">Последњи приступ: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> приступ</item>
       <item quantity="few">Последњи приступ: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> приступа</item>
@@ -214,7 +218,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Дозволе <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> и <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> су уклоњене"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Уклоњено: <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> и још <xliff:g id="NUMBER">%2$s</xliff:g> дозволе"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Апликације које се не користе"</string>
-    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Ако не користите апликацију неколико месеци:\n\n• дозволе се уклањају да би се заштитила приватност\n• привремени фајлови се уклањају да би се ослободио простор\n• обавештења се заустављају да би се штедела батерија"</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Ако не користите апликацију неколико месеци:\n\n• дозволе се уклањају да би се заштитили подаци\n• обавештења се заустављају да би се штедела батерија\n• привремени фајлови се уклањају да би се ослободио простор"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Последњи пут отворено пре више од <xliff:g id="NUMBER">%s</xliff:g> мес."</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Апликација је последњи пут отворена: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Последњи пут отворено: <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -227,6 +231,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Апликације са овом дозволом могу да снимају слике и видео снимке"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Апликације са овом дозволом могу да приступају контактима"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Апликације са овом дозволом могу да приступају локацији уређаја"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Апликације са овом дозволом могу да откривају и повезују се са оближњим Bluetooth уређајима"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Апликације са овом дозволом могу да снимају звук"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Апликације са овом дозволом могу да упућују телефонске позиве и управљају њима"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Апликације са овом дозволом могу да приступају подацима сензора о виталним функцијама"</string>
@@ -279,7 +284,7 @@
       <item quantity="few"><xliff:g id="COUNT_1">%1$d</xliff:g> апликације које се не користе</item>
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> апликација које се не користе</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="3704446042109375119">"Дозволе и привремени фајлови су уклоњени. Додирните да бисте прегледали."</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"Дозволе и привремени фајлови су уклоњени и обавештења су заустављена. Додирните да бисте прегледали."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Неке апликације нису коришћене пар месеци"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> апликација није коришћена неколико месеци</item>
@@ -430,6 +435,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Ова апликација можда жели да приступа локацији све време, чак и када не користите апликацију. "<annotation id="link">"Дозволите у подешавањима."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Желите ли да промените приступ локацији за апликацију &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Ова апликација жели да приступа локацији све време, чак и када не користите апликацију. "<annotation id="link">"Дозволите у подешавањима."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"Дозвољавате да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; открива и повезује се са оближњим Bluetooth уређајима?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"Дозвољавате да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; открива и повезује се са оближњим Bluetooth уређајима? "<annotation id="link">"Дозволите у подешавањима."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Желите ли да омогућите да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; приступа прецизној локацији овог уређаја?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Желите ли да омогућите да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; приступа приближној локацији овог уређаја?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Прецизна"</string>

@@ -107,6 +107,10 @@
     <string name="permission_usage_title" msgid="5095876355858467390">"Irányítópult"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> használata"</string>
     <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"Ha az alkalmazások nem használták a(z) <xliff:g id="PERMGROUP">%1$s</xliff:g> engedélycsoportot az elmúlt 24 órában"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
+    <skip />
+    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Legutóbbi hozzáférés: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> hozzáférés</item>
       <item quantity="one">Legutóbbi hozzáférés: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> hozzáférés</item>
@@ -206,7 +210,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"A(z) <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> és a(z) <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> engedély visszavonva"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"A(z) <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> és <xliff:g id="NUMBER">%2$s</xliff:g> másik engedély visszavonva"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Nem használt alkalmazások"</string>
-    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Ha az adott alkalmazást nem használják néhány hónapig:\n\n• Az engedélyeket az adatvédelem biztosítása érdekében eltávolítjuk\n• Tárhely felszabadítása érdekében az ideiglenes fájlokat eltávolítjuk\n• Az akkumulátor kímélése érdekében az értesítéseket leállítjuk"</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Ha az adott alkalmazást nem használja néhány hónapig:\n\n• Az engedélyeket az adatok védelme érdekében eltávolítjuk.\n• Az akkumulátor kímélése érdekében az értesítéseket leállítjuk.\n• Tárhely felszabadítása érdekében az ideiglenes fájlokat eltávolítjuk."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Utoljára több mint <xliff:g id="NUMBER">%s</xliff:g> hónapja nyitotta meg"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Az alkalmazás legutóbbi megnyitása: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Legutóbb megnyitva ekkor: <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -219,6 +223,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Az ezzel az engedéllyel rendelkező alkalmazások készíthetnek fotókat és videókat"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Az ezzel az engedéllyel rendelkező alkalmazások hozzáférhetnek a névjegyeihez"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Az ezzel az engedéllyel rendelkező alkalmazások hozzáférhetnek az eszköz helyadataihoz"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Az ezzel az engedéllyel rendelkező alkalmazások felfedezhetik a közeli Bluetooth-eszközöket, és csatlakozhatnak hozzájuk."</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Az ezzel az engedéllyel rendelkező alkalmazások készíthetnek hangfelvételt"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Az ezzel az engedéllyel rendelkező alkalmazások képesek a telefonhívások kezdeményezésére és kezelésére"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Az ezzel az engedéllyel rendelkező alkalmazások hozzáférhetnek az életjelekkel kapcsolatos szenzoradatokhoz"</string>
@@ -265,7 +270,7 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> nem használt alkalmazás</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> nem használt alkalmazás</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="3704446042109375119">"Az engedélyeket és az ideiglenes fájlokat eltávolítottuk. Koppintson az áttekintéshez."</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"Az engedélyek és az ideiglenes fájlok el lettek távolítva, az értesítések pedig le lettek állítva. Koppintson az áttekintéshez."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Egyes alkalmazásokat több hónapja nem használt"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> alkalmazást több hónapja nem használt</item>
@@ -415,6 +420,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Előfordulhat, hogy az alkalmazás akkor is hozzá szeretne férni a helyadataihoz, amikor nem használja az alkalmazást. "<annotation id="link">"A beállításokban engedélyezheti."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Megváltoztatja a helyadatokhoz való hozzáférést a következő számára: &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Az alkalmazás akkor is hozzá szeretne férni az Ön helyadataihoz, amikor Ön nem használja az alkalmazást. "<annotation id="link">"A beállításokban engedélyezheti."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára a közeli Bluetooth-eszközök felfedezését és a hozzájuk való csatlakozást?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára a közeli Bluetooth-eszközök felfedezését és a hozzájuk való csatlakozást? "<annotation id="link">"Engedélyezés a beállításokban."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hozzáférjen az eszköz pontos helyadataihoz?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Engedélyezi a(z) &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; számára, hogy hozzáférjen az eszköz hozzávetőleges helyadataihoz?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Pontos"</string>
