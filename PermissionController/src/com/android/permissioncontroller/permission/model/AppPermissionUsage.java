@@ -308,6 +308,21 @@ public final class AppPermissionUsage {
         public @NonNull AppPermissionGroup getGroup() {
             return mGroup;
         }
+
+        /**
+         * Returns attribution tags for the historical usage.
+         */
+        public @Nullable ArrayList<String> getAttributionTags() {
+            if (mHistoricalUsage == null || mHistoricalUsage.getAttributedOpsCount() == 0) {
+                return null;
+            }
+            ArrayList<String> attributionTags = new ArrayList<>();
+            int count = mHistoricalUsage.getAttributedOpsCount();
+            for (int i = 0; i < count; i++) {
+                attributionTags.add(mHistoricalUsage.getAttributedOpsAt(i).getTag());
+            }
+            return attributionTags;
+        }
     }
 
     public static class Builder {

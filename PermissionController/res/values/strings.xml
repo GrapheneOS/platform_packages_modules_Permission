@@ -302,6 +302,12 @@
     <!-- Subtitle for permission group usage [CHAR LIMIT=100] -->
     <string name="permission_group_usage_subtitle">When apps stopped using your <xliff:g id="permgroup" example="Location">%1$s</xliff:g> in the last 24 hours</string>
 
+    <!-- Subtitle for access time list dialog [CHAR LIMIT=100] -->
+    <string name="permission_usage_access_dialog_subtitle">When this app used your <xliff:g id="permgroup" example="Location">%1$s</xliff:g>:</string>
+
+    <!-- Link text for intent out to location provider [CHAR LIMIT=20] -->
+    <string name="permission_usage_access_dialog_learn_more">Learn more</string>
+
     <!-- Summary for showing a single permission access and the number of accesses [CHAR LIMIT=80] -->
     <plurals name="permission_usage_summary">
         <item quantity="one">Last access: <xliff:g id="time" example="12:10 PM">%1$s</xliff:g>\n<xliff:g id="num" example="42">%2$s</xliff:g> access</item>
