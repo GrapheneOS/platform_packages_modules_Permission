@@ -109,6 +109,10 @@
     <string name="permission_usage_title" msgid="5095876355858467390">"Панэль кіравання"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Выкарыстанне групы дазволаў \"<xliff:g id="PERMGROUP">%1$s</xliff:g>\""</string>
     <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"Калі за апошнія 24 гадзіны праграмы спынілі выкарыстанне групы дазволаў \"<xliff:g id="PERMGROUP">%1$s</xliff:g>\""</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
+    <skip />
+    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="one">Апошні доступ: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> доступ</item>
       <item quantity="few">Апошні доступ: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> доступы</item>
@@ -222,7 +226,8 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Дазволы \"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>\" і \"<xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>\" выдалены"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"\"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>\" і іншыя дазволы (<xliff:g id="NUMBER">%2$s</xliff:g> шт.) выдалены"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Праграмы не ў карыстанні"</string>
-    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Калі праграма не выкарыстоўвалася некалькі месяцаў:\n\n• у мэтах абароны вашай прыватнасці выдаляюцца дазволы;\n• для вызвалення месца выдаляюцца часовыя файлы;\n• дзеля эканоміі зараду акумулятара спыняюцца апавяшчэнні."</string>
+    <!-- no translation found for unused_apps_page_summary (4644643299214625298) -->
+    <skip />
     <string name="last_opened_category_title" msgid="7871347400611202595">"Адкрывалася ў апошні раз больш за <xliff:g id="NUMBER">%s</xliff:g> мес. таму"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Праграма адкрывалася ў апошні раз <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Адкрывалася ў апошні раз <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -235,6 +240,8 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Праграмы з гэтым дазволам могуць рабіць фота і запісваць відэа"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Праграмы з гэтым дазволам могуць мець доступ да кантактаў"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Праграмы з гэтым дазволам могуць мець доступ да звестак пра месцазнаходжанне прылады"</string>
+    <!-- no translation found for permission_description_summary_nearby_devices (4557465018373171998) -->
+    <skip />
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Праграмы з гэтым дазволам могуць запісваць аўдыя"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Праграмы з гэтым дазволам могуць рабіць тэлефонныя выклікі і кіраваць імі"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Праграмы з гэтым дазволам могуць мець доступ да даных з датчыкаў пра вашы асноўныя фізіялагічныя паказчыкі"</string>
@@ -293,7 +300,8 @@
       <item quantity="many"><xliff:g id="COUNT_1">%1$d</xliff:g> праграм не ў карыстанні</item>
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> праграмы не ў карыстанні</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="3704446042109375119">"Дазволы і часовыя файлы выдалены. Націсніце, каб праглядзець."</string>
+    <!-- no translation found for unused_apps_notification_content (9195026773244581246) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Некаторыя праграмы не выкарыстоўваліся некалькі месяцаў"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> праграма не выкарыстоўвалася некалькі месяцаў</item>
@@ -445,6 +453,10 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Гэта праграма можа запытваць пастаянны доступ да звестак пра ваша месцазнаходжанне, нават калі яна не выкарыстоўваецца. "<annotation id="link">"Дайце дазвол у наладах."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Змяніць налады доступу да даных пра месцазнаходжанне для праграмы &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Гэта праграма запытвае пастаянны доступ да звестак пра ваша месцазнаходжанне, нават калі яна не выкарыстоўваецца. "<annotation id="link">"Дайце дазвол у наладах."</annotation></string>
+    <!-- no translation found for permgrouprequest_nearby_devices (7447863425662482548) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequestdetail_nearby_devices (9013793366434153393) -->
+    <skip />
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да звестак пра дакладнае месцазнаходжанне гэтай прылады?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да звестак пра прыблізнае месцазнаходжанне гэтай прылады?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Дакладна"</string>

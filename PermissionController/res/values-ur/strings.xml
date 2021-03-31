@@ -107,6 +107,10 @@
     <string name="permission_usage_title" msgid="5095876355858467390">"ڈیش بورڈ"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> کا استعمال"</string>
     <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"جب ایپس نے پچھلے 24 گھنٹے میں آپ کے <xliff:g id="PERMGROUP">%1$s</xliff:g> کا استعمال کرنا بند کردیا"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
+    <skip />
+    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">آخری بار رسائی: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> رسائیاں</item>
       <item quantity="one">آخری بار رسائی: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> رسائی</item>
@@ -206,7 +210,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> اور <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> اجازتوں کو ہٹایا گیا"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> اور <xliff:g id="NUMBER">%2$s</xliff:g> دیگر اجازتوں کو ہٹایا گیا"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"غیر مستعمل ایپس"</string>
-    <string name="unused_apps_page_summary" msgid="5271048000004368665">"اگر کسی ایپ کا کچھ مہینوں تک استعمال نہیں ہوتا ہے تو:\n\n• آپ کی رازداری کی حفاظت کے لیے اجازتوں کو ہٹا دیا جاتا ہے\n• عارضی فائلز کو اسپیس خالی کرنے کے لیے ہٹا دیا جاتا ہے\n• بیٹری محفوظ کرنے کے لیے اطلاعات کو روک دیا جاتا ہے"</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"اگر کسی ایپ کا کچھ مہینوں تک استعمال نہیں ہوتا ہے تو:\n\n• آپ کے ڈیٹا کی حفاظت کرنے کے لیے اجازتوں کو ہٹا دیا جاتا ہے\n• بیٹری محفوظ کرنے کے لیے اطلاعات کو روک دیا جاتا ہے\n• عارضی فائلز کو اسپیس خالی کرنے کے لیے ہٹا دیا جاتا ہے"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"آخری بار <xliff:g id="NUMBER">%s</xliff:g> ماہ سے زیادہ پہلے کھولی گئی"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ایپ آخری بار <xliff:g id="DATE">%s</xliff:g> کو کھولی گئی"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"آخری بار <xliff:g id="DATE">%s</xliff:g> کو کھولی گئی"</string>
@@ -219,6 +223,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"اس اجازت والی ایپس تصاویر لے اور ویڈیو ریکارڈ کر سکتی ہیں"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"اس اجازت والی ایپس کو آپ کے رابطوں تک رسائی حاصل ہو سکتی ہے"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"اس اجازت والی ایپس کو اس آلہ کے مقام تک رسائی حاصل ہو سکتی ہے"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"یہ اجازت والی ایپس قریبی بلوٹوتھ آلات دریافت اور ان کا جوڑا بنا سکتی ہیں"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"اس اجازت والی ایپس آڈیو ریکارڈ کر سکتی ہیں"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"اس اجازت والی ایپس فون کالز کر اور ان کا نظم کر سکتی ہیں"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"اس اجازت والی ایپس آپ کے اہم اشاروں کے متعلق سینسر ڈیٹا تک رسائی حاصل کر سکتی ہیں"</string>
@@ -265,7 +270,7 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> غیر مستعمل ایپس</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> غیر مستعمل ایپ</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="3704446042109375119">"اجازتوں اور عارضی فائلز کو ہٹا دیا گیا ہے۔ جائزے کے لیے تھپتھپائیں۔"</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"اجازتوں اور عارضی فائلز کو ہٹا دیا گیا ہے اور اطلاعات کو روک دیا گیا۔ جائزے کے لیے تھپتھپائیں۔"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"کچھ ایپس کا استعمال کچھ مہینوں سے نہیں کیا گیا ہے"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> ایپس کا استعمال کچھ مہینوں سے نہیں کیا گیا ہے</item>
@@ -415,6 +420,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"ممکن ہے یہ ایپ ہر وقت آپ کے مقام تک رسائی حاصل کرنا چاہے، اگرچہ آپ ایپ استعمال نہ کر رہے ہوں۔ "<annotation id="link"></annotation>"ترتیبات میں اجازت دیں۔"</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کے ليے مقام تک رسائی تبدیل کریں"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"یہ ایپ ہر وقت آپ کے مقام تک رسائی حاصل کرنا چاہتی ہے، اگرچہ آپ ایپ استعمال نہ کر رہے ہوں۔ "<annotation id="link"></annotation>"ترتیبات میں اجازت دیں۔"</string>
+    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"‏قریبی بلوٹوتھ آلات دریافت کرنے اور ان کا جوڑا بنانے کے لیے ;‎&lt;b&amp;gt<xliff:g id="APP_NAME">%1$s</xliff:g>‏‎&lt;/b&gt;‎کو اجازت دیں؟"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"‏قریبی بلوٹوتھ آلات دریافت کرنے اور ان کا جوڑا بنانے کے لیے ;‎&lt;b&amp;gt<xliff:g id="APP_NAME">%1$s</xliff:g>‏‎&lt;/b&gt;‎کو اجازت دیں؟ "<annotation id="link">"ترتیبات میں اجازت دیں "</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"‏;‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&amp;gt کو اس آلے کے قطعی مقام تک رسائی کی اجازت دیں؟"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"‏;‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&amp;gt کو اس آلے کے تخمینی مقام تک رسائی کی اجازت دیں؟"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"قطعی"</string>

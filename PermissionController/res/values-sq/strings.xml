@@ -107,6 +107,10 @@
     <string name="permission_usage_title" msgid="5095876355858467390">"Paneli analitik"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Përdorimi i lejeve: <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"Kur kanë ndaluar aplikacionet së përdoruri lejet (<xliff:g id="PERMGROUP">%1$s</xliff:g>) në 24 orët e fundit"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
+    <skip />
+    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Qasja e fundit: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> qasje</item>
       <item quantity="one">Qasja e fundit: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> qasje</item>
@@ -206,7 +210,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> dhe <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> leje janë hequr"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> dhe <xliff:g id="NUMBER">%2$s</xliff:g> leje të tjera janë hequr"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Aplikacionet e papërdorura"</string>
-    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Nëse një aplikacion nuk përdoret për disa muaj:\n\n• Lejet hiqen për të mbrojtur privatësinë tënde\n• Skedarët e përkohshëm hiqen për të liruar hapësirën\n• Njoftimet ndalohen për të kursyer baterinë"</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Nëse një aplikacion nuk përdoret për disa muaj:\n\n• Lejet hiqen për të mbrojtur të dhënat e tua\n• Njoftimet ndalohen për të kursyer baterinë\n• Skedarët e përkohshëm hiqen për të liruar hapësirën"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Hapur për herë të fundit më shumë se <xliff:g id="NUMBER">%s</xliff:g> muaj më parë"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Aplikacioni është hapur së fundi më <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Hapur së fundi më <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -219,6 +223,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Aplikacionet me këtë leje mund të nxjerrin fotografi dhe të regjistrojnë video"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Aplikacionet me këtë leje mund të kenë qasje te kontaktet e tua"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Aplikacionet me këtë leje mund të kenë qasje te vendndodhja e kësaj pajisjeje"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Aplikacionet me këtë leje mund të zbulojnë dhe të lidhen me pajisjet me Bluetooth në afërsi"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Aplikacionet me këtë leje mund të regjistrojnë audion"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Aplikacionet me këtë leje mund të bëjnë telefonata dhe t\'i menaxhojnë ato"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Aplikacionet me këtë leje mund të kenë qasje te të dhënat e sensorëve për shenjat e tua jetësore"</string>
@@ -265,7 +270,7 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> aplikacione të papërdorura</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> aplikacion i papërdorur</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="3704446042109375119">"Lejet dhe skedarët e përkohshëm janë hequr. Trokit për t\'i rishikuar."</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"Lejet dhe skedarët e përkohshëm janë hequr dhe njoftimet janë ndaluar. Trokit për t\'i rishikuar."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Disa aplikacione nuk janë përdorur për disa muaj"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> aplikacione nuk janë përdorur për disa muaj</item>
@@ -415,6 +420,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Ky aplikacion mund të dëshirojë të ketë qasje në vendndodhjen tënde gjatë gjithë kohës, edhe kur nuk po e përdor aplikacionin. "<annotation id="link">"Lejoje te cilësimet"</annotation>"."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Do ta ndryshosh qasjen për vendndodhjen për &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Ky aplikacion dëshiron të ketë qasje në vendndodhjen tënde gjatë gjithë kohës, edhe kur nuk po e përdor aplikacionin. "<annotation id="link">"Lejoje te cilësimet"</annotation>"."</string>
+    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"Të lejohet që &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të zbulojë dhe të lidhet me pajisjet me Bluetooth në afërsi?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"Të lejohet që &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të zbulojë dhe të lidhet me pajisjet me Bluetooth në afërsi? "<annotation id="link">"Lejoje te cilësimet."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Të lejohet që &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të ketë qasje te vendndodhja e saktë e kësaj pajisjeje?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Të lejohet që &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të ketë qasje te vendndodhja e përafërt e kësaj pajisjeje?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"E saktë"</string>

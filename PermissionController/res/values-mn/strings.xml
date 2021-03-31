@@ -107,6 +107,10 @@
     <string name="permission_usage_title" msgid="5095876355858467390">"Хяналтын самбар"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g>-н ашиглалт"</string>
     <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"Сүүлийн 24 цагт аппууд таны <xliff:g id="PERMGROUP">%1$s</xliff:g>-г ашиглахаа больсон үед"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
+    <skip />
+    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Сүүлийн хандалт: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> хандалт</item>
       <item quantity="one">Сүүлийн хандалт: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> хандалт</item>
@@ -206,7 +210,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> болон <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>-н зөвшөөрлийг хассан"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>-н болон бусад <xliff:g id="NUMBER">%2$s</xliff:g> зөвшөөрлийг хассан"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Ашиглаагүй аппууд"</string>
-    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Хэрэв аппыг хэдэн сар ашиглаагүй бол:\n\n• Таны нууцлалыг хамгаалахын тулд Зөвшөөрлүүдийг хасна\n• Сул зай гаргахын тулд түр зуурын файлуудыг хасна\n• Батарейг хэмнэхийн тулд мэдэгдлүүдийг зогсооно"</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Хэрэв аппыг хэдэн сарын турш ашиглаагүй бол:\n\n• Таны нууцлалыг хамгаалахын тулд зөвшөөрлүүдийг хасна\n• Батарейг хэмнэхийн тулд мэдэгдлүүдийг зогсооно\n• Сул зай гаргахын тулд түр зуурын файлуудыг хасна"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Хамгийн сүүлд <xliff:g id="NUMBER">%s</xliff:g>-с олон сарын өмнө нээсэн"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Аппыг хамгийн сүүлд <xliff:g id="DATE">%s</xliff:g>-нд нээсэн"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Хамгийн сүүлд <xliff:g id="DATE">%s</xliff:g>-нд нээсэн"</string>
@@ -219,6 +223,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Энэ зөвшөөрөлтэй аппууд зураг авах болон видео хийх боломжтой"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Энэ зөвшөөрөлтэй аппууд таны харилцагчид хандах боломжтой"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Энэ зөвшөөрөлтэй аппууд энэ төхөөрөмжийн байршилд хандах боломжтой"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Ийм зөвшөөрөлтэй аппууд нь ойролцоох Bluetooth төхөөрөмжүүдийг илрүүлж, холбогдох боломжтой"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Энэ зөвшөөрөлтэй аппууд аудио бичих боломжтой"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Энэ зөвшөөрөлтэй аппууд утасны дуудлага хийх болон тэдгээрийг удирдах боломжтой"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Энэ зөвшөөрөлтэй аппууд таны биеийн ерөнхий байдлын үзүүлэлтүүдийн талаарх мэдрэгчийн өгөгдөлд хандах боломжтой"</string>
@@ -265,7 +270,7 @@
       <item quantity="other">Ашиглаагүй <xliff:g id="COUNT_1">%1$d</xliff:g> апп</item>
       <item quantity="one">Ашиглаагүй <xliff:g id="COUNT_0">%1$d</xliff:g> апп</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="3704446042109375119">"Зөвшөөрөл болон түр зуурын файлуудыг хассан. Хянахын тулд товшино уу."</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"Зөвшөөрөл болон түр зуурын файлуудыг хассан бөгөөд мэдэгдлийг зогсоосон. Хянахын тулд товшино уу."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Зарим аппыг хэдэн сарын турш ашиглаагүй байна"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> аппыг хэдэн сарын турш ашиглаагүй байна</item>
@@ -415,6 +420,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Энэ апп нь таныг апп ашиглаагүй байх үед ч таны байршилд үргэлж хандах хүcэлтэй байж болзошгүй. "<annotation id="link">"Тохиргоо хэсгээс зөвшөөрнө үү."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д зориулж байршлын хандалтыг өөрчлөх үү?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Энэ апп нь таныг апп ашиглаагүй байх үед ч таны байршилд үргэлж хандах хүcэлтэй байна. "<annotation id="link">"Тохиргоо хэсгээс зөвшөөрнө үү."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д ойролцоох Bluetooth төхөөрөмжүүдийг илрүүлж, холбогдохыг зөвшөөрөх үү?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д ойролцоох Bluetooth төхөөрөмжүүдийг илрүүлж, холбогдохыг зөвшөөрөх үү? "<annotation id="link">"Тохиргоонд зөвшөөрнө үү."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д энэ төхөөрөмжийн нарийвчилсан байршилд хандахыг зөвшөөрөх үү?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д энэ төхөөрөмжийн барагцаалсан байршилд хандахыг зөвшөөрөх үү?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Нарийвчилсан"</string>

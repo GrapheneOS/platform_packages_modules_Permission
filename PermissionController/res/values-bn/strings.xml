@@ -107,6 +107,10 @@
     <string name="permission_usage_title" msgid="5095876355858467390">"ড্যাশবোর্ড"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> ব্যবহার"</string>
     <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"অ্যাপ কখন কখন গত ২৪ ঘণ্টায় আপনার <xliff:g id="PERMGROUP">%1$s</xliff:g> ব্যবহার করা বন্ধ করেছে"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
+    <skip />
+    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="one">শেষবার অ্যাক্সেস করা হয়েছে: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g>বার অ্যাক্সেস করা হয়েছে</item>
       <item quantity="other">শেষবার অ্যাক্সেস করা হয়েছে: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g>বার অ্যাক্সেস করা হয়েছে</item>
@@ -206,7 +210,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> এবং <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> অনুমতি সরিয়ে দেওয়া হয়েছে"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> এবং অন্য <xliff:g id="NUMBER">%2$s</xliff:g>টি অনুমতি সরিয়ে দেওয়া হয়েছে"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"ব্যবহার করা হয়নি এমন অ্যাপ"</string>
-    <string name="unused_apps_page_summary" msgid="5271048000004368665">"কোনও অ্যাপ বেশ কয়েকমাস ধরে ব্যবহার করা না হলে:\n\n• আপনার গোপনীয়তা সুরক্ষিত রাখতে অনুমতি সরিয়ে নেওয়া হয়\n• স্পেস খালি করতে অস্থায়ী ফাইল সরিয়ে নেওয়া হয়\n• ব্যাটারির চার্জ বাঁচাতে বিজ্ঞপ্তি বন্ধ রাখা হয়"</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"কোনও অ্যাপ বেশ কয়েকমাস ধরে ব্যবহার করা না হলে:\n\n• আপনার গোপনীয়তা সুরক্ষিত রাখতে অনুমতি সরিয়ে নেওয়া হয়\n• ব্যাটারির চার্জ বাঁচাতে বিজ্ঞপ্তি বন্ধ রাখা হয়\n• স্পেস খালি করতে অস্থায়ী ফাইল সরিয়ে নেওয়া হয়"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"<xliff:g id="NUMBER">%s</xliff:g> মাসেরও বেশি সময় আগে শেষ খোলা হয়েছিল"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"অ্যাপ শেষ <xliff:g id="DATE">%s</xliff:g> তারিখে খোলা হয়েছে"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"শেষ <xliff:g id="DATE">%s</xliff:g> তারিখে খোলা হয়েছে"</string>
@@ -219,6 +223,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"যেসব অ্যাপের এই অনুমতি আছে সেগুলি ছবি তুলতে ও ভিডিও রেকর্ড করতে পারে"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"যেসব অ্যাপের এই অনুমতি আছে সেগুলি আপনার পরিচিতি অ্যাক্সেস করতে পারে"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"যেসব অ্যাপের এই অনুমতি আছে সেগুলি এই ডিভাইসের লোকেশন অ্যাক্সেস করতে পারে"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"এই অনুমতি আছে এমন অ্যাপ কাছাকাছি ব্লুটুথ ডিভাইস খুঁজে দেখতে এবং তার সাথে কানেক্ট করতে পারবে"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"যেসব অ্যাপের এই অনুমতি আছে সেগুলি অডিও রেকর্ড করতে পারে"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"যেসব অ্যাপের এই অনুমতি আছে সেগুলি কল করতে ও ম্যানেজ করতে পারে"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"যেসব অ্যাপের এই অনুমতি আছে সেগুলি আপনার স্বাস্থ্য সম্পর্কে সেন্সর ডেটা অ্যাক্সেস করতে পারে"</string>
@@ -265,7 +270,7 @@
       <item quantity="one">ব্যবহার হয়নি এমন <xliff:g id="COUNT_1">%1$d</xliff:g>টি অ্যাপ</item>
       <item quantity="other">ব্যবহার হয়নি এমন <xliff:g id="COUNT_1">%1$d</xliff:g>টি অ্যাপ</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="3704446042109375119">"অনুমতি এবং অস্থায়ী ফাইল সরানো হয়েছে। পর্যালোচনা করতে ট্যাপ করুন।"</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"অনুমতি এবং অস্থায়ী ফাইল সরানো হয়েছে এবং বিজ্ঞপ্তি বন্ধ করা আছে। পর্যালোচনা করতে ট্যাপ করুন।"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"কয়েক মাস ধরে কিছু অ্যাপ ব্যবহার করা হয়নি"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="one">কয়েক মাস ধরে <xliff:g id="COUNT_1">%1$d</xliff:g>টি অ্যাপ ব্যবহার করা হয়নি</item>
@@ -415,6 +420,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"এই অ্যাপ হয়ত সবসময় আপনার লোকেশন অ্যাক্সেস করতে চায়, এমনকি আপনার অ্যাপ চালু না থাকলেও। "<annotation id="link">"সেটিংস বিকল্প থেকে অনুমতি দিন।"</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-এর জন্য লোকেশন অ্যাক্সেস পরিবর্তন করতে চান?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"এই অ্যাপটি সবসময় আপনার লোকেশন অ্যাক্সেস করতে চায়, এমনকি আপনার অ্যাপ চালু না থাকলেও। "<annotation id="link">"সেটিংস বিকল্প থেকে অনুমতি দিন।"</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"কাছাকাছি ব্লুটুথ ডিভাইস খুঁজে দেখতে এবং তার সাথে কানেক্ট করতে &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে অনুমতি দিতে চান?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"কাছাকাছি ব্লুটুথ ডিভাইস খুঁজে দেখতে এবং তার সাথে কানেক্ট করতে &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে অনুমতি দিতে চান? "<annotation id="link">"সেটিংসে অনুমতি দিন।"</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে এই ডিভাইসের নির্ভুল লোকেশন অ্যাক্সেস করতে দেবেন?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে এই ডিভাইসের নিকটবর্তী লোকেশন অ্যাক্সেস করতে দেবেন?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"নির্ভুল"</string>
