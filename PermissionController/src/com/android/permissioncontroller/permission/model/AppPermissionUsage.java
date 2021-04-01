@@ -24,6 +24,7 @@ import android.app.AppOpsManager.HistoricalPackageOps;
 import android.app.AppOpsManager.OpEntry;
 import android.app.AppOpsManager.PackageOps;
 import android.media.AudioRecordingConfiguration;
+import android.util.Pair;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -202,9 +203,10 @@ public final class AppPermissionUsage {
 
         /**
          * get all discrete access time in millis
+         * Returns a list of pairs of (access time, access duration)
          */
-        public List<Long> getAllDiscreteAccessTime() {
-            List<Long> allDiscreteAccessTime = new ArrayList<>();
+        public List<Pair<Long, Long>> getAllDiscreteAccessTime() {
+            List<Pair<Long, Long>> allDiscreteAccessTime = new ArrayList<>();
             if (!hasDiscreteData()) {
                 return allDiscreteAccessTime;
             }
@@ -222,8 +224,9 @@ public final class AppPermissionUsage {
                 int discreteAccessCount = historicalOp.getDiscreteAccessCount();
                 for (int j = 0; j < discreteAccessCount; j++) {
                     AppOpsManager.AttributedOpEntry opEntry = historicalOp.getDiscreteAccessAt(j);
-                    allDiscreteAccessTime.add(opEntry.getLastAccessTime(AppOpsManager.OP_FLAG_SELF
-                            | AppOpsManager.OP_FLAG_TRUSTED_PROXIED));
+                    int flags = AppOpsManager.OP_FLAG_SELF | AppOpsManager.OP_FLAG_TRUSTED_PROXIED;
+                    allDiscreteAccessTime.add(Pair.create(opEntry.getLastAccessTime(flags),
+                                    opEntry.getLastDuration(flags)));
                 }
 
             }
