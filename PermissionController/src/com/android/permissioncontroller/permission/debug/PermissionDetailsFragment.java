@@ -25,7 +25,9 @@ import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.util.ArraySet;
+import android.util.Pair;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -42,14 +44,16 @@ import com.android.permissioncontroller.permission.ui.handheld.PermissionHistory
 import com.android.permissioncontroller.permission.ui.handheld.SettingsWithLargeHeader;
 import com.android.permissioncontroller.permission.utils.Utils;
 
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -166,17 +170,17 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
         screen.addPreference(permissionPreference);
 
         ArrayList<PermissionApps.PermissionApp> permApps = new ArrayList<>();
-
         List<AppPermissionUsageEntry> usages = mAppPermissionUsages.stream().map(appUsage -> {
             // Fetch the access time list of the app accesses mFilterGroup permission group
-            List<Long> discreteAccessTimeList = appUsage.getGroupUsages().stream()
+            // The DiscreteAccessTime is a Pair of (access time, access duration) of that app
+            List<Pair<Long, Long>> discreteAccessTimeList = appUsage.getGroupUsages().stream()
                     .filter(
                         groupUsage -> groupUsage.getGroup().getName().equals(mFilterGroup)
                                 && groupUsage.hasDiscreteData())
                     .flatMap(groupUsage -> groupUsage.getAllDiscreteAccessTime().stream())
-                    .filter(discreteAccessTime -> discreteAccessTime != 0
-                        && discreteAccessTime >= startTime)
-                    .sorted(Comparator.reverseOrder())
+                    .filter(discreteAccessTime -> discreteAccessTime.first != 0
+                        && discreteAccessTime.first >= startTime)
+                    .sorted((x, y) -> y.first.compareTo(x.first))
                     .collect(Collectors.toList());
 
             if (discreteAccessTimeList.size() > 0) {
@@ -188,33 +192,34 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
             if (!ALLOW_CLUSTERING_PERMISSION_GROUPS.contains(mFilterGroup)
                     || discreteAccessTimeList.size() <= 1) {
                 return discreteAccessTimeList.stream().map(
-                    time -> new AppPermissionUsageEntry(appUsage, time,
+                    time -> new AppPermissionUsageEntry(appUsage, time.first,
                         Collections.singletonList(time))).collect(Collectors.toList());
             }
 
             // Group access time list
             List<AppPermissionUsageEntry> usageEntries = new ArrayList<>();
             AppPermissionUsageEntry ongoingEntry = null;
-            for (Long time : discreteAccessTimeList) {
+            for (Pair<Long, Long> time : discreteAccessTimeList) {
                 if (ongoingEntry == null) {
-                    ongoingEntry = new AppPermissionUsageEntry(appUsage, time,
+                    ongoingEntry = new AppPermissionUsageEntry(appUsage, time.first,
                         Stream.of(time).collect(Collectors.toCollection(ArrayList::new)));
                 } else {
-                    List<Long> ongoingAccessTimeList = ongoingEntry.mClusteredAccessTimeList;
-                    if (time / ONE_HOUR_MS
-                            != ongoingAccessTimeList.get(0) / ONE_HOUR_MS
-                            || ongoingAccessTimeList.get(ongoingAccessTimeList.size() - 1)
-                            / ONE_MINUTE_MS - time / ONE_MINUTE_MS
+                    List<Pair<Long, Long>> ongoingAccessTimeList =
+                            ongoingEntry.mClusteredAccessTimeList;
+                    if (time.first / ONE_HOUR_MS
+                            != ongoingAccessTimeList.get(0).first / ONE_HOUR_MS
+                            || ongoingAccessTimeList.get(ongoingAccessTimeList.size() - 1).first
+                            / ONE_MINUTE_MS - time.first / ONE_MINUTE_MS
                             > CLUSTER_MINUTES_APART) {
                         // If the current access time is not in the same hour nor within
                         // CLUSTER_MINUTES_APART, add the ongoing entry to the usage list and start
                         // a new ongoing entry.
                         usageEntries.add(ongoingEntry);
-                        ongoingEntry = new AppPermissionUsageEntry(appUsage, time,
+                        ongoingEntry = new AppPermissionUsageEntry(appUsage, time.first,
                             Stream.of(time).collect(Collectors.toCollection(ArrayList::new)));
                     } else {
                         ongoingAccessTimeList.add(time);
-                        ongoingEntry.mStartTime = time;
+                        ongoingEntry.mStartTime = time.first;
                     }
                 }
             }
@@ -231,20 +236,64 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
                     y.mAppPermissionUsage.getApp().getLabel());
         }).collect(Collectors.toList());
 
-        PreferenceCategory category = new PreferenceCategory(context);
-        screen.addPreference(category);
+        long midnightToday = Instant.now().truncatedTo(ChronoUnit.DAYS).toEpochMilli();
+        AppPermissionUsageEntry midnightTodayEntry = new AppPermissionUsageEntry(
+                null, midnightToday, null);
+
+        // Use the placeholder pair midnightTodayPair to get
+        // the index of the first usage entry from yesterday
+        int todayCategoryIndex = 0;
+        int yesterdayCategoryIndex = Collections.binarySearch(usages,
+                midnightTodayEntry, (e1, e2) -> Long.compare(e2.getStartTime(), e1.getStartTime()));
+        if (yesterdayCategoryIndex < 0) {
+            yesterdayCategoryIndex = -1 * (yesterdayCategoryIndex + 1);
+        }
+
+        // Make these variables effectively final so that
+        // we can use these captured variables in the below lambda expression
+        AtomicReference<PreferenceCategory> category = new AtomicReference<>(
+                new PreferenceCategory(context));
+        screen.addPreference(category.get());
+        PreferenceScreen finalScreen = screen;
+        int finalYesterdayCategoryIndex = yesterdayCategoryIndex;
 
         new PermissionApps.AppDataLoader(context, () -> {
-            for (AppPermissionUsageEntry usage : usages) {
-                String accessTime = UtilsKt.getAbsoluteTimeString(context, usage.mStartTime);
+            final int numUsages = usages.size();
+            for (int usageNum = 0; usageNum < numUsages; usageNum++) {
+                AppPermissionUsageEntry usage = usages.get(usageNum);
+                if (finalYesterdayCategoryIndex == usageNum) {
+                    if (finalYesterdayCategoryIndex != todayCategoryIndex) {
+                        // We create a new category only when we need it.
+                        // We will not create a new category if we only need one category for
+                        // either today's or yesterday's usage
+                        category.set(new PreferenceCategory(context));
+                        finalScreen.addPreference(category.get());
+                    }
+                    category.get().setTitle(R.string.permission_history_category_yesterday);
+                } else if (todayCategoryIndex == usageNum) {
+                    category.get().setTitle(R.string.permission_history_category_today);
+                }
+
+                String accessTime = DateFormat.getTimeFormat(context).format(usage.mStartTime);
+                Long accessDurationLong = usage.mClusteredAccessTimeList
+                        .stream()
+                        .map(p -> p.second)
+                        .filter(dur -> dur > 0)
+                        .reduce(0L, (dur1, dur2) -> dur1 + dur2);
+
+                String accessDuration = null;
+                if (accessDurationLong > 0) {
+                    accessDuration = UtilsKt.getDurationUsedStr(context, accessDurationLong);
+                }
 
                 PermissionHistoryPreference permissionUsagePreference = new
                         PermissionHistoryPreference(context,
                         usage.mAppPermissionUsage.getPackageName(),
                         mFilterGroup, accessTime, usage.mAppPermissionUsage.getApp().getIcon(),
-                        usage.mAppPermissionUsage.getApp().getLabel());
+                        usage.mAppPermissionUsage.getApp().getLabel(), accessDuration);
                 if (usage.mClusteredAccessTimeList.size() > 1) {
-                    permissionUsagePreference.setAccessTimeList(usage.mClusteredAccessTimeList);
+                    permissionUsagePreference.setAccessTimeList(usage.mClusteredAccessTimeList
+                            .stream().map(p -> p.first).collect(Collectors.toList()));
 
                     ArrayList<String> attributionTags =
                             usage.mAppPermissionUsage.getGroupUsages().stream().filter(groupUsage ->
@@ -255,7 +304,7 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
                     permissionUsagePreference.setAttributionTags(attributionTags);
                 }
 
-                category.addPreference(permissionUsagePreference);
+                category.get().addPreference(permissionUsagePreference);
             }
 
             setLoading(false, true);
@@ -380,11 +429,11 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
      */
     private static class AppPermissionUsageEntry {
         private final AppPermissionUsage mAppPermissionUsage;
-        private final List<Long> mClusteredAccessTimeList;
+        private final List<Pair<Long, Long>> mClusteredAccessTimeList;
         private long mStartTime;
 
         AppPermissionUsageEntry(AppPermissionUsage appPermissionUsage, long startTime,
-                List<Long> clusteredAccessTimeList) {
+                List<Pair<Long, Long>> clusteredAccessTimeList) {
             mAppPermissionUsage = appPermissionUsage;
             mStartTime = startTime;
             mClusteredAccessTimeList = clusteredAccessTimeList;
@@ -398,7 +447,7 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
             return mStartTime;
         }
 
-        public List<Long> getAccessTime() {
+        public List<Pair<Long, Long>> getAccessTime() {
             return mClusteredAccessTimeList;
         }
     }
