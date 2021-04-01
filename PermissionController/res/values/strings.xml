@@ -300,7 +300,7 @@
     <string name="permission_group_usage_title"><xliff:g id="permgroup" example="Location">%1$s</xliff:g> usage</string>
 
     <!-- Subtitle for permission group usage [CHAR LIMIT=100] -->
-    <string name="permission_group_usage_subtitle">When apps stopped using your <xliff:g id="permgroup" example="Location">%1$s</xliff:g> in the last 24 hours</string>
+    <string name="permission_group_usage_subtitle">Timeline of when used your <xliff:g id="permgroup" example="Location">%1$s</xliff:g> in the last 24 hours</string>
 
     <!-- Subtitle for access time list dialog [CHAR LIMIT=100] -->
     <string name="permission_usage_access_dialog_subtitle">When this app used your <xliff:g id="permgroup" example="Location">%1$s</xliff:g>:</string>
