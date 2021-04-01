@@ -701,4 +701,16 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
         }
         return getString(role.getDescriptionResource(), "APP_NAME");
     }
+
+    @Override
+    public void onGetPlatformPermissionsForGroup(@NonNull String permissionGroupName,
+            @NonNull Consumer<List<String>> callback) {
+        callback.accept(Utils.getPlatformPermissionNamesOfGroup(permissionGroupName));
+    }
+
+    @Override
+    public void onGetGroupOfPlatformPermission(@NonNull String permissionName,
+            @NonNull Consumer<String> callback) {
+        callback.accept(Utils.getGroupOfPlatformPermission(permissionName));
+    }
 }
