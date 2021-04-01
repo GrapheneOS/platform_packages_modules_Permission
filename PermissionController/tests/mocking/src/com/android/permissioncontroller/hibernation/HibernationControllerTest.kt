@@ -28,7 +28,7 @@ import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 import org.junit.After
-import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -99,9 +99,9 @@ class HibernationControllerTest {
         val hibernatedApps = hibernationController.hibernateApps(map)
 
         // THEN the apps are hibernated for the user
-        for (i in hibernatedApps.indices) {
-            assertEquals(userPackages[i].packageName, hibernatedApps[i].first)
-            verify(appHibernationManager).setHibernatingForUser(userPackages[i].packageName, true)
+        for (pkg in userPackages) {
+            assertTrue(hibernatedApps.contains(pkg.packageName to UserHandle.of(USER_ID)))
+            verify(appHibernationManager).setHibernatingForUser(pkg.packageName, true)
         }
     }
 

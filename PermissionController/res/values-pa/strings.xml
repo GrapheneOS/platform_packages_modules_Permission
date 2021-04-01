@@ -107,6 +107,10 @@
     <string name="permission_usage_title" msgid="5095876355858467390">"ਡੈਸ਼ਬੋਰਡ"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> ਵਰਤੋਂ"</string>
     <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"ਜਦੋਂ ਐਪਾਂ ਨੇ ਪਿਛਲੇ 24 ਘੰਟਿਆਂ ਵਿੱਚ ਤੁਹਾਡੇ <xliff:g id="PERMGROUP">%1$s</xliff:g> ਦੀ ਵਰਤੋਂ ਕਰਨੀ ਬੰਦ ਕਰ ਦਿੱਤੀ"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
+    <skip />
+    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="one">ਪਿਛਲੀ ਵਾਰ ਪਹੁੰਚ: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> ਪਹੁੰਚ</item>
       <item quantity="other">ਪਿਛਲੀ ਵਾਰ ਪਹੁੰਚ: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> ਪਹੁੰਚਾਂ</item>
@@ -206,7 +210,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> ਅਤੇ <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> ਇਜਾਜ਼ਤਾਂ ਹਟਾਈਆਂ ਗਈਆਂ"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ਅਤੇ <xliff:g id="NUMBER">%2$s</xliff:g> ਹੋਰ ਇਜਾਜ਼ਤਾਂ ਹਟਾਈਆਂ ਗਈਆਂ"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"ਅਣਵਰਤੀਆਂ ਐਪਾਂ"</string>
-    <string name="unused_apps_page_summary" msgid="5271048000004368665">"ਜੇ ਕਿਸੇ ਐਪ ਨੂੰ ਕੁਝ ਮਹੀਨਿਆਂ ਤੱਕ ਵਰਤਿਆ ਨਹੀਂ ਜਾਂਦਾ ਹੈ, ਤਾਂ:\n\n• ਤੁਹਾਡੀ ਪਰਦੇਦਾਰੀ ਦੀ ਸੁਰੱਖਿਆ ਕਰਨ ਲਈ ਇਜਾਜ਼ਤਾਂ ਨੂੰ ਹਟਾ ਦਿੱਤਾ ਜਾਂਦਾ ਹੈ\n• ਜਗ੍ਹਾ ਖਾਲੀ ਕਰਨ ਲਈ ਅਸਥਾਈ ਫ਼ਾਈਲਾਂ ਨੂੰ ਹਟਾ ਦਿੱਤਾ ਜਾਂਦਾ ਹੈ\n• ਬੈਟਰੀ ਬਚਾਉਣ ਲਈ ਸੂਚਨਾਵਾਂ ਬੰਦ ਕਰ ਦਿੱਤੀਆਂ ਜਾਂਦੀਆਂ ਹਨ"</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"ਜੇ ਕਿਸੇ ਐਪ ਨੂੰ ਕੁਝ ਮਹੀਨਿਆਂ ਤੱਕ ਵਰਤਿਆ ਨਹੀਂ ਜਾਂਦਾ ਹੈ, ਤਾਂ:\n\n• ਤੁਹਾਡੇ ਡਾਟੇ ਦੀ ਸੁਰੱਖਿਆ ਕਰਨ ਲਈ ਇਜਾਜ਼ਤਾਂ ਨੂੰ ਹਟਾ ਦਿੱਤਾ ਜਾਂਦਾ ਹੈ\n• ਬੈਟਰੀ ਬਚਾਉਣ ਲਈ ਸੂਚਨਾਵਾਂ ਬੰਦ ਕਰ ਦਿੱਤੀਆਂ ਜਾਂਦੀਆਂ ਹਨ\n• ਜਗ੍ਹਾ ਖਾਲੀ ਕਰਨ ਲਈ ਅਸਥਾਈ ਫ਼ਾਈਲਾਂ ਨੂੰ ਹਟਾ ਦਿੱਤਾ ਜਾਂਦਾ ਹੈ"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"ਪਿਛਲੀ ਵਾਰ <xliff:g id="NUMBER">%s</xliff:g> ਤੋਂ ਵੱਧ ਮਹੀਨੇ ਪਹਿਲਾਂ ਖੋਲ੍ਹੀਆਂ ਗਈਆਂ"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ਐਪ ਨੂੰ ਆਖਰੀ ਵਾਰ <xliff:g id="DATE">%s</xliff:g> ਨੂੰ ਖੋਲ੍ਹਿਆ ਗਿਆ"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"ਆਖਰੀ ਵਾਰ <xliff:g id="DATE">%s</xliff:g> ਨੂੰ ਖੋਲ੍ਹਿਆ ਗਿਆ"</string>
@@ -219,6 +223,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਤਸਵੀਰਾਂ ਖਿੱਚ ਅਤੇ ਵੀਡੀਓ ਰਿਕਾਰਡ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਤੁਹਾਡੇ ਸੰਪਰਕਾਂ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਇਸ ਡੀਵਾਈਸ ਦੇ ਟਿਕਾਣੇ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"ਇਸ ਇਜਾਜ਼ਤ ਨਾਲ ਐਪਾਂ ਨਜ਼ਦੀਕੀ ਬਲੂਟੁੱਥ ਡੀਵਾਈਸਾਂ ਨੂੰ ਖੋਜ ਸਕਦੀਆਂ ਹਨ ਅਤੇ ਉਹਨਾਂ ਨਾਲ ਕਨੈਕਟ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਆਡੀਓ ਰਿਕਾਰਡ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਫ਼ੋਨ ਕਾਲਾਂ ਕਰ ਅਤੇ ਉਹਨਾਂ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਤੁਹਾਡੇ ਸਰੀਰ ਦੇ ਅਹਿਮ ਲੱਛਣਾਂ ਸੰਬੰਧੀ ਸੈਂਸਰ ਡਾਟੇ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
@@ -265,7 +270,7 @@
       <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> ਅਣਵਰਤੀ ਐਪ</item>
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> ਅਣਵਰਤੀਆਂ ਐਪਾਂ</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="3704446042109375119">"ਇਜਾਜ਼ਤਾਂ ਅਤੇ ਅਸਥਾਈ ਫ਼ਾਈਲਾਂ ਨੂੰ ਹਟਾ ਦਿੱਤਾ ਗਿਆ ਹੈ। ਸਮੀਖਿਆ ਲਈ ਟੈਪ ਕਰੋ।"</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"ਇਜਾਜ਼ਤਾਂ ਅਤੇ ਅਸਥਾਈ ਫ਼ਾਈਲਾਂ ਨੂੰ ਹਟਾ ਦਿੱਤਾ ਗਿਆ ਹੈ ਅਤੇ ਸੂਚਨਾਵਾਂ ਨੂੰ ਬੰਦ ਕੀਤਾ ਗਿਆ। ਸਮੀਖਿਆ ਲਈ ਟੈਪ ਕਰੋ।"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"ਕੁਝ ਐਪਾਂ ਨੂੰ ਕਈ ਮਹੀਨਿਆਂ ਤੋਂ ਵਰਤਿਆ ਨਹੀਂ ਗਿਆ"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> ਐਪ ਨੂੰ ਕੁਝ ਮਹੀਨਿਆਂ ਤੋਂ ਵਰਤਿਆ ਨਹੀਂ ਗਿਆ</item>
@@ -415,6 +420,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"ਸ਼ਾਇਦ ਇਸ ਐਪ ਨੂੰ ਹਰ ਵੇਲੇ ਤੁਹਾਡੇ ਟਿਕਾਣੇ ਤੱਕ ਪਹੁੰਚ ਹੋਵੇ, ਭਾਵੇਂ ਤੁਸੀਂ ਐਪ ਦੀ ਵਰਤੋਂ ਕਰ ਰਹੇ ਹੋ ਜਾਂ ਨਾ। "<annotation id="link">"ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਆਗਿਆ ਦਿਓ।"</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਲਈ ਟਿਕਾਣਾ ਪਹੁੰਚ ਨੂੰ ਬਦਲਣਾ ਹੈ?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"ਇਸ ਐਪ ਨੂੰ ਹਰ ਵੇਲੇ ਤੁਹਾਡੇ ਟਿਕਾਣੇ ਤੱਕ ਪਹੁੰਚ ਚਾਹੀਦੀ ਹੈ, ਭਾਵੇਂ ਤੁਸੀਂ ਐਪ ਦੀ ਵਰਤੋਂ ਕਰ ਰਹੇ ਹੋ ਜਾਂ ਨਾ। "<annotation id="link">"ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਆਗਿਆ ਦਿਓ।"</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਨਜ਼ਦੀਕੀ ਬਲੂਟੁੱਥ ਡੀਵਾਈਸਾਂ ਨੂੰ ਖੋਜਣ ਅਤੇ ਉਹਨਾਂ ਨਾਲ ਕਨੈਕਟ ਕਰਨ ਦੇਣਾ ਹੈ?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਨਜ਼ਦੀਕੀ ਬਲੂਟੁੱਥ ਡੀਵਾਈਸਾਂ ਨੂੰ ਖੋਜਣ ਅਤੇ ਉਹਨਾਂ ਨਾਲ ਕਨੈਕਟ ਕਰਨ ਦੇਣਾ ਹੈ? "<annotation id="link">"ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਇਜਾਜ਼ਤ ਦਿਓ।"</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਇਸ ਡੀਵਾਈਸ ਦੇ ਸਹੀ ਟਿਕਾਣੇ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੀ ਇਜਾਜ਼ਤ ਦੇਣੀ ਹੈ?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਇਸ ਡੀਵਾਈਸ ਦੇ ਅੰਦਾਜ਼ਨ ਟਿਕਾਣੇ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੀ ਇਜਾਜ਼ਤ ਦੇਣੀ ਹੈ?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"ਸਹੀ"</string>

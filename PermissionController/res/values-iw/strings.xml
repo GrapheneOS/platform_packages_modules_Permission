@@ -109,6 +109,10 @@
     <string name="permission_usage_title" msgid="5095876355858467390">"מרכז שליטה"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"שימוש ב<xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"מתי אפליקציות הפסיקו להשתמש ב<xliff:g id="PERMGROUP">%1$s</xliff:g> שלך ב-24 השעות האחרונות"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
+    <skip />
+    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="two">גישה אחרונה: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> קבלות גישה</item>
       <item quantity="many">גישה אחרונה: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> קבלות גישה</item>
@@ -125,7 +129,7 @@
       <item quantity="two">גישה אחרונה: <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> קבלות גישה\nמשך הזמן: <xliff:g id="TIME_5">%3$s</xliff:g></item>
       <item quantity="many">גישה אחרונה: <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> קבלות גישה\nמשך הזמן: <xliff:g id="TIME_5">%3$s</xliff:g></item>
       <item quantity="other">גישה אחרונה: <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> קבלות גישה\nמשך הזמן: <xliff:g id="TIME_5">%3$s</xliff:g></item>
-      <item quantity="one">גישה אחרונה: <xliff:g id="TIME_0">%1$s</xliff:g>\nגישה אחת (<xliff:g id="NUM_1">%2$s</xliff:g>)\nמשך הזמן: <xliff:g id="TIME_2">%3$s</xliff:g></item>
+      <item quantity="one">גישה אחרונה: <xliff:g id="TIME_0">%1$s</xliff:g>\n גישה אחת (<xliff:g id="NUM_1">%2$s</xliff:g>)\nמשך הזמן: <xliff:g id="TIME_2">%3$s</xliff:g></item>
     </plurals>
     <plurals name="permission_usage_summary_background_duration" formatted="false" msgid="6893924292010006727">
       <item quantity="two">גישה אחרונה: <xliff:g id="TIME_4">%1$s</xliff:g>\n<xliff:g id="NUM_5">%2$s</xliff:g> קבלות גישה (<xliff:g id="NUM_6">%3$s</xliff:g> ברקע)\nמשך הזמן: <xliff:g id="TIME_7">%3$s</xliff:g></item>
@@ -222,7 +226,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"הוסרו ההרשאות <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> וכן <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ו-<xliff:g id="NUMBER">%2$s</xliff:g> הרשאות נוספות הוסרו"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"אפליקציות שמזמן לא השתמשת בהן"</string>
-    <string name="unused_apps_page_summary" msgid="5271048000004368665">"אם לא ייעשה שימוש באפליקציה במשך מספר חודשים:\n\n• ההרשאות יבוטלו כדי להגן על הפרטיות שלך\n• הקבצים הזמניים יוסרו כדי לפנות מקום אחסון\n• ההתראות יושבתו כדי לחסוך בצריכת הסוללה"</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"אם לא ייעשה שימוש באפליקציה במשך מספר חודשים:\n\n• ההרשאות יבוטלו כדי להגן על הנתונים שלך\n• ההתראות יושבתו כדי לחסוך בצריכת הסוללה\n• הקבצים הזמניים יוסרו כדי לפנות מקום אחסון"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"נפתחו לאחרונה לפני יותר מ-<xliff:g id="NUMBER">%s</xliff:g> חודשים"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"האפליקציה נפתחה לאחרונה בתאריך <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"נפתחה לאחרונה: <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -235,6 +239,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"אפליקציות עם ההרשאה הזו יכולות לצלם תמונות ולהקליט וידאו"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"אפליקציות עם ההרשאה הזו יכולות לגשת אל אנשי הקשר"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"אפליקציות עם ההרשאה הזו יכולות לגשת אל מיקום המכשיר"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"‏אפליקציות עם ההרשאה הזו יכולות לגלות מכשירי Bluetooth בקרבת מקום ולהתחבר אליהם"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"אפליקציות עם ההרשאה הזו יכולות להקליט אודיו"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"אפליקציות עם ההרשאה הזו יכולות להתקשר ולנהל שיחות טלפון"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"אפליקציות עם ההרשאה הזו יכולות לגשת אל נתוני חיישנים שמודדים את הסימנים החיוניים שלך"</string>
@@ -293,7 +298,7 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> אפליקציות שמזמן לא השתמשת בהן</item>
       <item quantity="one">אפליקציה אחת (<xliff:g id="COUNT_0">%1$d</xliff:g>) שמזמן לא השתמשת בה</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="3704446042109375119">"ההרשאות בוטלו והקבצים הזמניים הוסרו. יש להקיש כדי לבדוק."</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"ההרשאות בוטלו, הקבצים הזמניים הוסרו וההתראות הופסקו. יש להקיש כדי לבדוק."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"יש אפליקציות שלא נעשה בהן שימוש כבר כמה חודשים"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="two">כבר כמה חודשים שלא נעשה שימוש ב-<xliff:g id="COUNT_1">%1$d</xliff:g> אפליקציות</item>
@@ -445,6 +450,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"ייתכן שהאפליקציה הזו תרצה לקבל גישה לנתוני המיקום שלך כל הזמן, גם כשהיא לא בשימוש. "<annotation id="link">"ניתן לאשר זאת בהגדרות."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"‏לשנות את הרשאת הגישה למיקום של &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"האפליקציה הזו רוצה לקבל גישה לנתוני המיקום שלך כל הזמן, גם כשהיא לא בשימוש. "<annotation id="link">"ניתן לאשר זאת בהגדרות."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"‏לאפשר לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; לגלות מכשירי Bluetooth בקרבת מקום ולהתחבר אליהם?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"‏לאפשר לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; לגלות מכשירי Bluetooth בקרבת מקום ולהתחבר אליהם? "<annotation id="link">"יש לתת הרשאה בהגדרות"</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה למיקום המדויק של המכשיר הזה?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה למיקום המשוער של המכשיר הזה?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"מדויק"</string>

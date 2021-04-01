@@ -107,6 +107,10 @@
     <string name="permission_usage_title" msgid="5095876355858467390">"Կառավարման վահանակ"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Թույլտվության օգտագործումը (<xliff:g id="PERMGROUP">%1$s</xliff:g>)"</string>
     <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"Երբ են հավելվածները վերջին 24 ժամվա ընթացքում դադարել օգտվել այս թույլտվությունից (<xliff:g id="PERMGROUP">%1$s</xliff:g>)"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
+    <skip />
+    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="one">Վերջին օգտագործումը՝ <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> անգամ</item>
       <item quantity="other">Վերջին օգտագործումը՝ <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> անգամ</item>
@@ -206,7 +210,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>ն ու <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>ն օգտագործելու թույլտվությունները հեռացվել են"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>ն օգտագործելու թույլտվությունն ու ևս <xliff:g id="NUMBER">%2$s</xliff:g> թույլտվություն հեռացվել են"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Չօգտագործվող հավելվածներ"</string>
-    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Եթե դուք մի քանի ամիս չեք օգտագործում հավելվածը՝\n\n• թույլտվությունները հեռացվում են՝ ձեր տվյալների գաղտնիությունը պաշտպանելու համար,\n• ժամանակավոր ֆայլերը հեռացվում են՝ տարածք ազատելու համար,\n• ծանուցումներն անջատվում են՝ մարտկոցի լիցքը խնայելու համար։"</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Եթե դուք մի քանի ամիս չեք օգտագործում հավելվածը՝\n\n• թույլտվությունները հեռացվում են՝ ձեր տվյալները պաշտպանելու համար,\n• ծանուցումներն անջատվում են՝ մարտկոցի լիցքը խնայելու համար,\n• ժամանակավոր ֆայլերը հեռացվում են՝ տարածք ազատելու համար։"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Վերջին անգամ բացվել է ավելի քան <xliff:g id="NUMBER">%s</xliff:g> ամիս առաջ"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Հավելվածը վերջին անգամ բացվել է՝ <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Վերջին անգամ բացվել է՝ <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -219,6 +223,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Այս թույլտվությունն ունեցող հավելվածները կարող են լուսանկարել և տեսագրել"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Այս թույլտվությունն ունեցող հավելվածներին հասանելի են ձեր կոնտակտները"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Այս թույլտվությունն ունեցող հավելվածներին հասանելի է սարքի տեղադրությունը"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Այս թույլտվությունն ունեցող հավելվածները կարող են հայտնաբերել մոտակա Bluetooth սարքերը և միանալ դրանց"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Այս թույլտվությունն ունեցող հավելվածները կարող են ձայնագրել"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Այս թույլտվությունն ունեցող հավելվածները կարող են կատարել զանգեր և կառավարել դրանք"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Այս թույլտվությունն ունեցող հավելվածներին հասանելի կլինեն տվիչների տվյալները ձեր կենսագործունեության մասին"</string>
@@ -265,7 +270,7 @@
       <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> չօգտագործվող հավելված</item>
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> չօգտագործվող հավելված</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="3704446042109375119">"Թույլտվություններն ու ժամանակավոր ֆայլերը հեռացվել են։ Հպեք՝ մանրամասները տեսնելու համար։"</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"Թույլտվություններն ու ժամանակավոր ֆայլերը հեռացվել են, իսկ ծանուցումների ուղարկումը դադարեցվել է։ Հպեք՝ մանրամասներն իմանալու համար։"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Որոշ հավելվածներ մի քանի ամիս է, ինչ չեն օգտագործվել"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> հավելված մի քանի ամիս է, ինչ չի օգտագործվել</item>
@@ -415,6 +420,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Հավելվածին անհրաժեշտ է ձեր գտնվելու վայրը հետագծելու թույլտվություն, նույնիսկ երբ դուք չեք օգտվում դրանից։ "<annotation id="link">"Թույլտվությունը տրամադրեք այստեղ"</annotation>"։"</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Փոխե՞լ տեղադրության մասին տվյալների հասանելիությունը &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածի համար։"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Հավելվածին անհրաժեշտ է ձեր գտնվելու վայրը հետագծելու թույլտվություն, նույնիսկ երբ դուք չեք օգտվում դրանից։ "<annotation id="link">"Թույլտվությունը տրամադրեք այստեղ"</annotation>"։"</string>
+    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին հայտնաբերել մոտակա Bluetooth սարքերը և միանալ դրանց։"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին հայտնաբերել մոտակա Bluetooth սարքերը և միանալ դրանց։ Թույլտվություն տրամադրելու համար անցեք "<annotation id="link">"կարգավորումներ"</annotation>"։"</string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել այս սարքի ճշգրիտ տեղադրության տվյալները։"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել այս սարքի մոտավոր տեղադրության տվյալները։"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Ճշգրիտ"</string>

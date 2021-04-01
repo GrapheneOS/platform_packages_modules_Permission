@@ -21,7 +21,7 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"rechten"</string>
     <string name="cancel" msgid="8943320028373963831">"Annuleren"</string>
     <string name="back" msgid="6249950659061523680">"Terug"</string>
-    <string name="uninstall_or_disable" msgid="4496612999740858933">"Verwijderen of uitschakelen"</string>
+    <string name="uninstall_or_disable" msgid="4496612999740858933">"Verwijderen of uitzetten"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"App niet gevonden"</string>
     <string name="grant_dialog_button_deny" msgid="5694497572414531524">"Weigeren"</string>
     <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1851917275643744594">"Weigeren en niet meer vragen"</string>
@@ -36,7 +36,7 @@
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"Alleen als app in gebruik is"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"Altijd"</string>
     <string name="deny_permission_deny_and_dont_ask_again" msgid="766882021426214510">"Weigeren en niet meer vragen"</string>
-    <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g> uitgeschakeld"</string>
+    <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g> uitgezet"</string>
     <string name="permission_revoked_all" msgid="3397649017727222283">"alle rechten uitgeschakeld"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"geen rechten uitgeschakeld"</string>
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Toestaan"</string>
@@ -50,8 +50,8 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Apps"</string>
     <string name="app_permissions" msgid="3369917736607944781">"App-rechten"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Niet-gebruikte apps"</string>
-    <string name="app_disable_dlg_positive" msgid="7418444149981904940">"App uitschakelen"</string>
-    <string name="app_disable_dlg_text" msgid="3126943217146120240">"Als je deze app uitschakelt, werken Android en andere apps mogelijk niet meer zoals bedoeld. Onthoud dat je deze app niet kunt verwijderen, omdat deze vooraf geïnstalleerd was op je apparaat. Uitschakelen betekent dat je deze app uitschakelt en verbergt op je apparaat."</string>
+    <string name="app_disable_dlg_positive" msgid="7418444149981904940">"App uitzetten"</string>
+    <string name="app_disable_dlg_text" msgid="3126943217146120240">"Als je deze app uitzet, werken Android en andere apps mogelijk niet meer zoals bedoeld. Je kunt deze app niet verwijderen omdat deze vooraf geïnstalleerd was op je apparaat. Door de app uit te zetten verberg je deze ook op je apparaat."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Rechtenbeheer"</string>
     <string name="never_ask_again" msgid="4728762438198560329">"Niet meer vragen"</string>
     <string name="no_permissions" msgid="3881676756371148563">"Geen rechten"</string>
@@ -74,12 +74,12 @@
     <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"Als je dit recht weigert, kan het zijn dat sommige functies van je apparaat dat wordt beheerd door deze app niet meer werken zoals bedoeld."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Afgedwongen door beleid"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Toegang op de achtergrond uitgeschakeld op basis van beleid"</string>
-    <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"Toegang op de achtergrond ingeschakeld op basis van beleid"</string>
-    <string name="permission_summary_enabled_by_policy_foreground_only" msgid="3844582916889767831">"Toegang op de voorgrond ingeschakeld op basis van beleid"</string>
+    <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"Toegang op de achtergrond aangezet op basis van beleid"</string>
+    <string name="permission_summary_enabled_by_policy_foreground_only" msgid="3844582916889767831">"Toegang op de voorgrond aangezet op basis van beleid"</string>
     <string name="permission_summary_enforced_by_admin" msgid="822702574117248700">"Ingesteld door beheerder"</string>
     <string name="permission_summary_disabled_by_admin_background_only" msgid="3127091456731845646">"Achtergrondtoegang uitgeschakeld door beheerder"</string>
-    <string name="permission_summary_enabled_by_admin_background_only" msgid="9132423838440275757">"Achtergrondtoegang ingeschakeld door beheerder"</string>
-    <string name="permission_summary_enabled_by_admin_foreground_only" msgid="1298432715610745358">"Voorgrondtoegang ingeschakeld door beheerder"</string>
+    <string name="permission_summary_enabled_by_admin_background_only" msgid="9132423838440275757">"Achtergrondtoegang aangezet door beheerder"</string>
+    <string name="permission_summary_enabled_by_admin_foreground_only" msgid="1298432715610745358">"Voorgrondtoegang aangezet door beheerder"</string>
     <string name="permission_summary_enabled_system_fixed" msgid="2438344700184127274">"Apparaat heeft dit recht nodig om te kunnen werken"</string>
     <!-- no translation found for background_access_chooser_dialog_choices:0 (1351721623256561996) -->
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
@@ -92,7 +92,7 @@
     <string name="other_permissions" msgid="2901186127193849594">"Andere app-mogelijkheden"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"Rechtenverzoek"</string>
     <string name="screen_overlay_title" msgid="6977038513913222078">"Schermoverlay gedetecteerd"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"Als u deze instelling voor rechten wilt wijzigen, moet u eerst de schermoverlay uitschakelen via Instellingen &gt; Apps"</string>
+    <string name="screen_overlay_message" msgid="5622563069757142102">"Als je deze instelling voor rechten wilt wijzigen, moet je eerst de schermoverlay uitzetten via Instellingen &gt; Apps"</string>
     <string name="screen_overlay_button" msgid="4655005928054025250">"Instellingen openen"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Acties voor installeren/verwijderen niet ondersteund op Wear."</string>
@@ -107,6 +107,10 @@
     <string name="permission_usage_title" msgid="5095876355858467390">"Dashboard"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Gebruik van <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"Wanneer apps in de afgelopen 24 uur zijn gestopt met het gebruik van je <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
+    <skip />
+    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Laatste keer geopend: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> toegangsacties</item>
       <item quantity="one">Laatste keer geopend: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> toegangsactie</item>
@@ -206,7 +210,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Rechten voor <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> en <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> verwijderd"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> en <xliff:g id="NUMBER">%2$s</xliff:g> andere rechten zijn verwijderd"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Niet-gebruikte apps"</string>
-    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Als je een app een aantal maanden niet gebruikt:\n\n• Rechten worden ingetrokken om je privacy te beschermen.\n• Tijdelijke bestanden worden verwijderd om ruimte vrij te maken.\n• Meldingen worden gestopt om batterijlading te sparen."</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Als je een app een paar maanden niet gebruikt:\n\n• Rechten worden ingetrokken om je gegevens te beschermen\n• Meldingen worden stopgezet om de batterij te sparen\n• Tijdelijke bestanden worden verwijderd om ruimte vrij te maken"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Meer dan <xliff:g id="NUMBER">%s</xliff:g> maanden geleden voor het laatst geopend"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"App laatst geopend op <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Laatst geopend op <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -219,6 +223,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Apps met dit recht kunnen foto\'s maken en video opnemen"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Apps met dit recht hebben toegang tot je contacten"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Apps met dit recht hebben toegang tot de locatie van dit apparaat"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Apps met dit recht kunnen bluetooth-apparaten in de buurt vinden en er verbinding mee maken"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Apps met dit recht kunnen audio opnemen"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Apps met dit recht kunnen bellen en telefoongesprekken beheren"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Apps met dit recht hebben toegang tot sensorgegevens over je vitale functies"</string>
@@ -265,7 +270,7 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> niet-gebruikte apps</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> niet-gebruikte app</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="3704446042109375119">"Rechten en tijdelijke bestanden zijn verwijderd. Tik om te bekijken."</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"Rechten en tijdelijke bestanden zijn verwijderd en meldingen zijn stopgezet. Tik om te bekijken."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Bepaalde apps zijn al een paar maanden niet gebruikt"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> apps zijn al een paar maanden niet gebruikt</item>
@@ -415,6 +420,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Deze app wil mogelijk altijd toegang tot je locatie, ook als je de app niet gebruikt. "<annotation id="link">"Je kunt dit toestaan via de instellingen."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Toegang tot locatie wijzigen voor &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Deze app wil altijd toegang tot je locatie, ook als je de app niet gebruikt. "<annotation id="link">"Je kunt dit toestaan via de instellingen."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toestaan om bluetooth-apparaten in de buurt te vinden en er verbinding mee te maken?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toestaan om bluetooth-apparaten in de buurt te vinden en er verbinding mee te maken? "<annotation id="link">"Toestaan in Instellingen"</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot de exacte locatie van dit apparaat?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot de geschatte locatie van dit apparaat?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Exact"</string>
