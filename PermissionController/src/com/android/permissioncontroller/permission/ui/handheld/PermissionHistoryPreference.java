@@ -73,7 +73,7 @@ public class PermissionHistoryPreference extends Preference {
 
     public PermissionHistoryPreference(@NonNull Context context, @NonNull String packageName,
             @NonNull String permissionGroup, @NonNull String accessTime, @NonNull Drawable appIcon,
-            @NonNull String title) {
+            @NonNull String title, @Nullable CharSequence accessDuration) {
         super(context);
         mContext = context;
         mPackageName = packageName;
@@ -94,6 +94,9 @@ public class PermissionHistoryPreference extends Preference {
 
         setIcon(appIcon);
         setTitle(title);
+        if (accessDuration != null) {
+            setSummary(accessDuration);
+        }
     }
 
     @Override
