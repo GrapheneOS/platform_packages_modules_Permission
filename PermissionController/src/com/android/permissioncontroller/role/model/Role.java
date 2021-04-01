@@ -347,8 +347,8 @@ public class Role {
      * @return whether this role is available.
      */
     public boolean isAvailableAsUser(@NonNull UserHandle user, @NonNull Context context) {
-        // Workaround to match the value 31 for S in roles.xml before SDK finalization.
-        if (mMinSdkVersion == 31) {
+        // Workaround to match the value 31+ for S+ in roles.xml before SDK finalization.
+        if (mMinSdkVersion >= 31) {
             if (!SdkLevel.isAtLeastS()) {
                 return false;
             }

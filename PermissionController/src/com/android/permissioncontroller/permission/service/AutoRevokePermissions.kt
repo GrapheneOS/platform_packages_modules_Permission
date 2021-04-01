@@ -61,8 +61,8 @@ suspend fun revokeAppPermissions(
     apps: Map<UserHandle, List<LightPackageInfo>>,
     context: Context,
     sessionId: Long = INVALID_SESSION_ID
-): List<Pair<String, UserHandle>> {
-    val revokedApps = mutableListOf<Pair<String, UserHandle>>()
+): Set<Pair<String, UserHandle>> {
+    val revokedApps = mutableSetOf<Pair<String, UserHandle>>()
     val userManager = context.getSystemService(UserManager::class.java)
 
     for ((user, userApps) in apps) {
