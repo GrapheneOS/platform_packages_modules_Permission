@@ -16,9 +16,11 @@
 
 package com.android.permissioncontroller.hibernation
 
+import android.app.usage.UsageStatsManager
 import android.apphibernation.AppHibernationManager
 import android.content.Context
 import android.content.Context.APP_HIBERNATION_SERVICE
+import android.content.Context.USAGE_STATS_SERVICE
 import android.os.Build
 import android.os.UserHandle
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -37,6 +39,7 @@ import org.mockito.ArgumentMatchers.anyInt
 import org.mockito.Mock
 import org.mockito.Mockito.doReturn
 import org.mockito.Mockito.mock
+import org.mockito.Mockito.never
 import org.mockito.Mockito.verify
 import org.mockito.MockitoAnnotations
 import org.mockito.MockitoSession
@@ -55,6 +58,9 @@ class HibernationControllerTest {
         const val USER_ID = 0
         const val PACKAGE_NAME_1 = "package_1"
         const val PACKAGE_NAME_2 = "package_2"
+
+        const val TEST_UNUSED_THRESHOLD = 10000000L
+        const val TEST_MOCK_DELAY = 1000000L
     }
 
     private var mockitoSession: MockitoSession? = null
@@ -63,6 +69,8 @@ class HibernationControllerTest {
     lateinit var context: Context
     @Mock
     lateinit var appHibernationManager: AppHibernationManager
+    @Mock
+    lateinit var usageStatsManager: UsageStatsManager
 
     lateinit var filesDir: File
 
@@ -79,8 +87,9 @@ class HibernationControllerTest {
 
         doReturn(context).`when`(context).createContextAsUser(any(), anyInt())
         doReturn(appHibernationManager).`when`(context).getSystemService(APP_HIBERNATION_SERVICE)
+        doReturn(usageStatsManager).`when`(context).getSystemService(USAGE_STATS_SERVICE)
 
-        hibernationController = HibernationController(context)
+        hibernationController = HibernationController(context, TEST_UNUSED_THRESHOLD)
     }
 
     @After
@@ -103,6 +112,36 @@ class HibernationControllerTest {
             assertTrue(hibernatedApps.contains(pkg.packageName to UserHandle.of(USER_ID)))
             verify(appHibernationManager).setHibernatingForUser(pkg.packageName, true)
         }
+    }
+
+    @Test
+    fun testHibernateApps_globallyUnusedAppIsGloballyHibernated() {
+        // GIVEN an app that is globally unused (i.e. unused at a package level)
+        val userPackages = listOf(makePackageInfo(PACKAGE_NAME_1), makePackageInfo(PACKAGE_NAME_2))
+        val map = mapOf(UserHandle.of(USER_ID) to userPackages)
+        whenever(usageStatsManager.getLastTimeAnyComponentUsed(PACKAGE_NAME_1)).thenReturn(
+            System.currentTimeMillis() - (TEST_UNUSED_THRESHOLD + TEST_MOCK_DELAY))
+
+        // WHEN the controller hibernates the apps
+        hibernationController.hibernateApps(map)
+
+        // THEN the app was hibernated globally
+        verify(appHibernationManager).setHibernatingGlobally(PACKAGE_NAME_1, true)
+    }
+
+    @Test
+    fun testHibernateApps_globallyUsedAppIsNotGloballyHibernated() {
+        // GIVEN an app that has been used globally (i.e. used at a package level)
+        val userPackages = listOf(makePackageInfo(PACKAGE_NAME_1), makePackageInfo(PACKAGE_NAME_2))
+        val map = mapOf(UserHandle.of(USER_ID) to userPackages)
+        whenever(usageStatsManager.getLastTimeAnyComponentUsed(PACKAGE_NAME_1)).thenReturn(
+            System.currentTimeMillis() - (TEST_UNUSED_THRESHOLD - TEST_MOCK_DELAY))
+
+        // WHEN the controller hibernates the apps
+        hibernationController.hibernateApps(map)
+
+        // THEN the app was NOT hibernated globally
+        verify(appHibernationManager, never()).setHibernatingGlobally(PACKAGE_NAME_1, true)
     }
 
     private fun makePackageInfo(packageName: String): LightPackageInfo {
