@@ -109,6 +109,10 @@
     <string name="permission_usage_title" msgid="5095876355858467390">"Hlavný panel"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Použitie skupiny povolení <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"Kedy za posledných 24 hodín prestali aplikácie používať skupinu povolení <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
+    <skip />
+    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="few">Posledný prístup: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> prístupy</item>
       <item quantity="many">Posledný prístup: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> accesses</item>
@@ -222,7 +226,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Boli odstránené povolenia <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> a <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Bolo odstránené povolenie <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> a ďalšie (<xliff:g id="NUMBER">%2$s</xliff:g>)"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Nepoužívané aplikácie"</string>
-    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Ak určitú aplikáciu niekoľko mesiacov nepoužijete:\n\n• v rámci ochrany vášho súkromia sa odstránia povolenia;\n• odstránia sa dočasné súbory, aby sa uvoľnil priestor;\n• zastavia sa upozornenia, aby sa šetrila batéria."</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Ak určitú aplikáciu niekoľko mesiacov nepoužijete:\n\n• v rámci ochrany vašich údajov sa odstránia povolenia;\n• zastavia sa upozornenia, aby sa šetrila batéria;\n• odstránia sa dočasné súbory, aby sa uvoľnil priestor."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Naposledy otvorené pred viac ako <xliff:g id="NUMBER">%s</xliff:g> mesiacmi"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Aplikácia bola naposledy otvorená <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Naposledy otvorená <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -235,6 +239,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Aplikácie s týmto povolením môžu fotiť a nahrávať video"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Aplikácie s týmto povolením majú prístup k vašim kontaktom"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Aplikácie s týmto povolením majú prístup k polohe tohto zariadenia"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Aplikácie s týmto povolením môžu objaviť zariadenia s rozhraním Bluetooth nablízku a pripojiť sa k nim"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Aplikácie s týmto povolením môžu nahrávať zvuk"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Aplikácie s týmto povolením môžu uskutočňovať a spravovať telefonické hovory"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Aplikácie s týmto povolením majú prístup k dátam senzorov o vašich životných funkciách"</string>
@@ -293,7 +298,7 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> nepoužívaných aplikácií</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> nepoužívaná aplikácia</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="3704446042109375119">"Povolenia a dočasné súbory boli odstránené. Skontrolujte to klepnutím."</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"Povolenia a dočasné súbory boli odstránené a upozornenia boli zastavené. Skontrolujte to klepnutím."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Niektoré aplikácie neboli niekoľko mesiacov používané"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="few"><xliff:g id="COUNT_1">%1$d</xliff:g> aplikácie neboli niekoľko mesiacov používané</item>
@@ -445,6 +450,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Táto aplikácia môže požadovať nepretržitý prístup k vašej polohe, aj keď ju nepoužívate. "<annotation id="link">"Povolíte ho v nastaveniach."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Chcete zmeniť prístup k polohe pre aplikáciu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Táto aplikácia požaduje nepretržitý prístup k vašej polohe, aj keď ju nepoužívate. "<annotation id="link">"Povolíte ho v nastaveniach."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"Chcete aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; povoliť objaviť zariadenia s rozhraním Bluetooth nablízku a pripojiť sa k nim?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"Chcete aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; povoliť objaviť zariadenia s rozhraním Bluetooth nablízku a pripojiť sa k nim? "<annotation id="link">"Povolíte to v nastaveniach."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k presnej polohe tohto zariadenia?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k približnej polohe tohto zariadenia?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Presná"</string>

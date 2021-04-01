@@ -107,6 +107,10 @@
     <string name="permission_usage_title" msgid="5095876355858467390">"داشبورد"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"استفاده از <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"وقتی برنامه‌ها استفاده از <xliff:g id="PERMGROUP">%1$s</xliff:g> شما را در ۲۴ ساعت گذشته متوقف کردند"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
+    <skip />
+    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="one">آخرین دسترسی: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> دسترسی</item>
       <item quantity="other">آخرین دسترسی: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> دسترسی</item>
@@ -206,7 +210,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"اجازه <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> و <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> برداشته شده است"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"اجازه <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> و <xliff:g id="NUMBER">%2$s</xliff:g> اجازه دیگر برداشته شده است"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"برنامه‌های استفاده‌نشده"</string>
-    <string name="unused_apps_page_summary" msgid="5271048000004368665">"اگر چند ماه از برنامه‌ای استفاده نشود:\n\n• اجازه‌ها برای محافظت از حریم‌خصوصی‌تان حذف می‌شوند\n• فایل‌های موقت برای آزادسازی فضا حذف می‌شوند\n• اعلان‌ها برای صرفه‌جویی در مصرف باتری متوقف می‌شوند"</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"اگر چند ماه از برنامه‌ای استفاده نشود:\n\n• اجازه‌ها برای محافظت از داده‌های شما حذف می‌شوند\n• اعلان‌ها برای صرفه‌جویی در مصرف باتری متوقف می‌شوند\n• فایل‌های موقت برای آزادسازی فضا حذف می‌شوند"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"آخرین بار بیش از <xliff:g id="NUMBER">%s</xliff:g> ماه قبل باز شده است"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"آخرین باری که برنامه باز شده است: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"آخرین باری که باز شده است: <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -219,6 +223,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"برنامه‌هایی که این مجوز را داشته باشند می‌توانند عکس بگیرند و ویدیو ضبط کنند"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"برنامه‌هایی که این مجوز را داشته باشند می‌توانند به مخاطبین دسترسی داشته باشند"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"برنامه‌هایی که این مجوز را داشته باشند می‌توانند به مکان این دستگاه دسترسی داشته باشند"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"برنامه‌هایی که این اجازه را دارند می‌توانند دستگاه‌های بلوتوث اطراف را پیدا کنند و به آن‌ها متصل شوند"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"برنامه‌هایی که این مجوز را داشته باشند می‌توانند صدا ضبط کنند"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"برنامه‌هایی که این مجوز را داشته باشند می‌توانند تماس تلفنی برقرار کنند و آن‌ را مدیریت کنند"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"برنامه‌هایی که این مجوز را داشته باشند می‌توانند به داده‌های حسگر مربوط به نشانه‌های حیاتی دسترسی داشته باشند"</string>
@@ -265,7 +270,7 @@
       <item quantity="one">‏<xliff:g id="COUNT_1">%1$d</xliff:g>برنامه استفاده‌نشده</item>
       <item quantity="other">‏<xliff:g id="COUNT_1">%1$d</xliff:g>برنامه استفاده‌نشده</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="3704446042109375119">"اجازه‌ها و فایل‌های موقف حذف شدند. برای مرور، ضربه بزنید."</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"اجازه‌ها و فایل‌های موقت حذف شده‌اند و اعلان‌ها متوقف شده‌اند. برای مرور، ضربه بزنید."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"برخی از برنامه‌ها به‌مدت چند ماه استفاده نشده‌اند"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> برنامه به‌مدت چند ماه استفاده نشده است</item>
@@ -415,6 +420,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"این برنامه ممکن است بخواهد مرتب به مکانتان دسترسی داشته باشد، حتی زمانی‌که از برنامه استفاده نمی‌کنید. "<annotation id="link">"در تنظیمات به آن اجازه دهید."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"‏دسترسی به مکان برای &lt;b&amp;gt؛<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&amp;gt تغییر کند؟"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"این برنامه می‌خواهد مرتب به مکانتان دسترسی داشته باشد، حتی زمانی‌که از برنامه استفاده نمی‌کنید. "<annotation id="link">"در تنظیمات به آن اجازه دهید."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"‏به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; اجازه می‌دهید دستگاه‌های بلوتوث اطراف را پیدا کند و به آن‌ها متصل شود؟"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"‏به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; اجازه می‌دهید دستگاه‌های بلوتوث اطراف را پیدا کند و به آن‌ها متصل شود؟ "<annotation id="link">"در تنظیمات اجازه دهید."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"‏به &lt;b&amp;gt؛<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&amp;gt؛ اجازه داده شود به مکان دقیق این دستگاه دسترسی پیدا کند؟"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"‏به &lt;b&amp;gt؛<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&amp;gt؛ اجازه داده شود به مکان تقریبی این دستگاه دسترسی پیدا کند؟"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"دقیق"</string>

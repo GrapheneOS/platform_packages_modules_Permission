@@ -107,6 +107,10 @@
     <string name="permission_usage_title" msgid="5095876355858467390">"ແຜງໜ້າປັດ"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"ການນໍາໃຊ້ <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"ເມື່ອແອັບຢຸດການນຳໃຊ້ <xliff:g id="PERMGROUP">%1$s</xliff:g> ຂອງທ່ານໃນ 24 ຊົ່ວໂມງທີ່ຜ່ານມາ"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
+    <skip />
+    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">ການເຂົ້າເຖິງຫຼ້າສຸດ: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> ການເຂົ້າເຖິງ</item>
       <item quantity="one">ການເຂົ້າເຖິງຫຼ້າສຸດ: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> ການເຂົ້າເຖິງ</item>
@@ -206,7 +210,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"ລຶບສິດອະນຸຍາດ <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> ແລະ <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> ອອກແລ້ວ"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"ລຶບສິດອະນຸຍາດ <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ແລະ ອີກ <xliff:g id="NUMBER">%2$s</xliff:g> ແອັບອອກແລ້ວ"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"ແອັບທີ່ບໍ່ໄດ້ໃຊ້"</string>
-    <string name="unused_apps_page_summary" msgid="5271048000004368665">"ຫາກບໍ່ໄດ້ໃຊ້ແອັບໃດໜຶ່ງເປັນເວລາສອງສາມເດືອນ:\n\n• ການອະນຸຍາດຈະຖືກລຶບອອກເພື່ອປົກປ້ອງຄວາມເປັນສ່ວນຕົວຂອງທ່ານ\n• ໄຟລ໌ຊົ່ວຄາວຈະຖືກລຶບອອກເພື່ອສ້າງພື້ນທີ່ຫວ່າງ\n• ການແຈ້ງເຕືອນຈະຢຸດເຮັດວຽກເພື່ອປະຢັດແບັດເຕີຣີ"</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"ຫາກບໍ່ໄດ້ໃຊ້ແອັບໃດໜຶ່ງເປັນເວລາສອງສາມເດືອນ:\n\n• ການອະນຸຍາດຈະຖືກລຶບອອກເພື່ອປົກປ້ອງຂໍ້ມູນຂອງທ່ານ\n• ການແຈ້ງເຕືອນຈະຢຸດເຮັດວຽກເພື່ອປະຢັດແບັດເຕີຣີ\n• ໄຟລ໌ຊົ່ວຄາວຈະຖືກລຶບອອກເພື່ອສ້າງພື້ນທີ່ຫວ່າງ"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"ເປີດຫຼ້າສຸດຫຼາຍກວ່າ <xliff:g id="NUMBER">%s</xliff:g> ເດືອນກ່ອນ"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ເປີດແອັບຫຼ້າສຸດເມື່ອ <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"ເປີດຫຼ້າສຸດ <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -219,6 +223,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"ແອັບທີ່ມີສິດອະນຸຍາດນີ້ຈະສາມາດຖ່າຍຮູບ ແລະ ບັນທຶກວິດີໂອໄດ້"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"ແອັບທີ່ມີສິດອະນຸຍາດນີ້ສາມາດເຂົ້າເຖິງລາຍຊື່ຜູ້ຕິດຕໍ່ຂອງທ່ານໄດ້"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"ແອັບທີ່ມີສິດອະນຸຍາດນີ້ຈະມີສິດເຂົ້າເຖິງສະຖານທີ່ຂອງອຸປະກອນນີ້ໄດ້"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"ແອັບທີ່ມີການອະນຸຍາດນີ້ສາມາດຄົ້ນພົບ ແລະ ເຊື່ອມຕໍ່ຫາອຸປະກອນ Bluetooth ທີ່ຢູ່ໃກ້ຄຽງໄດ້"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"ແອັບທີ່ມີສິດອະນຸຍາດນີ້ຈະສາມາດບັນທຶກສຽງໄດ້"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"ແອັບທີ່ມີສິດອະນຸຍາດນີ້ຈະສາມາດໂທ ແລະ ຈັດການການໂທໄດ້"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"ແອັບທີ່ມີສິດອະນຸຍາດຈະສາມາດເຂົ້າເຖິງຂໍ້ມູນເຊັນເຊີກ່ຽວກັບສັນຍານຊີບພະຈອນຂອງທ່ານໄດ້"</string>
@@ -265,7 +270,7 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> ແອັບທີ່ບໍ່ໄດ້ໃຊ້</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> ແອັບທີ່ບໍ່ໄດ້ໃຊ້</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="3704446042109375119">"ລຶບການອະນຸຍາດ ແລະ ໄຟລ໌ຊົ່ວຄາວອອກແລ້ວ. ແຕະເພື່ອກວດສອບ."</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"ລຶບການອະນຸຍາດ ແລະ ໄຟລ໌ຊົ່ວຄາວອອກແລ້ວ ແລະ ຢຸດການແຈ້ງເຕືອນແລ້ວ. ແຕະເພື່ອກວດສອບ."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"ບາງແອັບບໍ່ໄດ້ໃຊ້ມາສອງສາມເດືອນແລ້ວ"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other">ບໍ່ໄດ້ໃຊ້ <xliff:g id="COUNT_1">%1$d</xliff:g> ແອັບມາສອງສາມເດືອນແລ້ວ</item>
@@ -415,6 +420,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"ແອັບນີ້ອາດຕ້ອງການເຂົ້າເຖິງສະຖານທີ່ຂອງທ່ານຕະຫຼອດເວລາ, ເຖິງແມ່ນວ່າທ່ານຈະບໍ່ໄດ້ໃຊ້ແອັບຢູ່ກໍຕາມ. "<annotation id="link">"ອະນຸຍາດໃນການຕັ້ງຄ່າ."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"ປ່ຽນສິດອະນຸຍາດເຂົ້າເຖິງສຳລັບ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ບໍ?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"ແອັບນີ້ຕ້ອງການເຂົ້າເຖິງສະຖານທີ່ຂອງທ່ານຕະຫຼອດເວລາ, ເຖິງແມ່ນວ່າທ່ານຈະບໍ່ໄດ້ໃຊ້ແອັບຢູ່ກໍຕາມ. "<annotation id="link">"ອະນຸຍາດໃນການຕັ້ງຄ່າ."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"ອະນຸຍາດໃຫ້ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ຄົ້ນພົບ ແລະ ເຊື່ອມຕໍ່ຫາອຸປະກອນ Bluetooth ທີ່ຢູ່ໃກ້ຄຽງບໍ?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"ອະນຸຍາດໃຫ້ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ຄົ້ນພົບ ແລະ ເຊື່ອມຕໍ່ຫາອຸປະກອນ Bluetooth ທີ່ຢູ່ໃກ້ຄຽງບໍ? "<annotation id="link">"ອະນຸຍາດໃນການຕັ້ງຄ່າ."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"ອະນຸຍາດໃຫ້ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ເຂົ້າເຖິງສະຖານທີ່ແບບລະອຽດຂອງອຸປະກອນນີ້ບໍ?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"ອະນຸຍາດໃຫ້ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ເຂົ້າເຖິງສະຖານທີ່ໂດຍປະມານຂອງອຸປະກອນນີ້ບໍ?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"ແບບລະອຽດ"</string>

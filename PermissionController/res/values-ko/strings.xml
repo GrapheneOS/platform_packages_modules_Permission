@@ -107,6 +107,10 @@
     <string name="permission_usage_title" msgid="5095876355858467390">"대시보드"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> 권한 사용"</string>
     <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"지난 24시간 동안 앱에서 <xliff:g id="PERMGROUP">%1$s</xliff:g> 권한을 사용하지 않은 경우"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
+    <skip />
+    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">마지막 액세스: <xliff:g id="TIME_2">%1$s</xliff:g>\n액세스 <xliff:g id="NUM_3">%2$s</xliff:g>회</item>
       <item quantity="one">마지막 액세스: <xliff:g id="TIME_0">%1$s</xliff:g>\n액세스 <xliff:g id="NUM_1">%2$s</xliff:g>회</item>
@@ -206,7 +210,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> 및 <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> 권한 삭제됨"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> 외 <xliff:g id="NUMBER">%2$s</xliff:g>개 권한 삭제됨"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"사용하지 않는 앱"</string>
-    <string name="unused_apps_page_summary" msgid="5271048000004368665">"앱을 몇 개월간 사용하지 않는 경우 다음 사항이 적용됩니다.\n\n• 개인정보 보호를 위해 권한이 삭제됨\n• 여유 공간 확보를 위해 임시 파일이 삭제됨\n• 배터리 절약을 위해 알림이 중단됨"</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"앱을 몇 개월간 사용하지 않는 경우 다음 사항이 적용됩니다.\n\n• 데이터 보호를 위해 권한이 삭제됨\n• 배터리 절약을 위해 알림이 중단됨\n• 여유 공간 확보를 위해 임시 파일이 삭제됨"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"마지막으로 실행한 지 <xliff:g id="NUMBER">%s</xliff:g>개월 이상 경과함"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"마지막 앱 실행 날짜: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"마지막 실행 날짜: <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -219,6 +223,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"이 권한이 있는 앱은 사진을 찍고 동영상을 녹화할 수 있습니다."</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"이 권한이 있는 앱은 내 연락처에 액세스할 수 있습니다."</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"이 권한이 있는 앱은 이 기기의 위치에 액세스할 수 있습니다."</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"이 권한이 있는 앱은 근처의 블루투스 기기를 찾고 연결할 수 있습니다"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"이 권한이 있는 앱은 오디오를 녹음할 수 있습니다."</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"이 권한이 있는 앱은 전화를 걸고 관리할 수 있습니다."</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"이 권한이 있는 앱은 생체 신호에 관한 센서 데이터에 액세스할 수 있습니다."</string>
@@ -265,7 +270,7 @@
       <item quantity="other">사용하지 않는 앱 <xliff:g id="COUNT_1">%1$d</xliff:g>개</item>
       <item quantity="one">사용하지 않는 앱 <xliff:g id="COUNT_0">%1$d</xliff:g>개</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="3704446042109375119">"권한과 임시 파일이 삭제되었습니다. 확인하려면 탭하세요."</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"권한 및 임시 파일이 삭제되었고 알림이 중단되었습니다. 확인하려면 탭하세요."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"일부 앱을 몇 개월 동안 사용하지 않았습니다."</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other">앱 <xliff:g id="COUNT_1">%1$d</xliff:g>개를 몇 개월 동안 사용하지 않았습니다.</item>
@@ -415,6 +420,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"앱을 사용하고 있지 않을 때도 앱에서 내 위치에 항상 액세스하려고 할 수 있습니다. "<annotation id="link">"설정에서 액세스를 허용"</annotation>"하세요."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;의 위치 액세스 권한을 변경하시겠습니까?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"앱을 사용하고 있지 않을 때도 앱에서 내 위치에 항상 액세스하려고 합니다. "<annotation id="link">"설정에서 액세스를 허용"</annotation>"하세요."</string>
+    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 근처의 블루투스 기기를 찾고 연결하도록 허용하시겠습니까?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 근처의 블루투스 기기를 찾고 연결하도록 허용하시겠습니까? "<annotation id="link">"설정에서 허용하세요"</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 기기의 정확한 위치에 액세스하도록 허용하시겠습니까?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 기기의 대략적인 위치에 액세스하도록 허용하시겠습니까?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"정확한 위치"</string>

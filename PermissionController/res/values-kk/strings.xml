@@ -107,6 +107,10 @@
     <string name="permission_usage_title" msgid="5095876355858467390">"Бақылау тақтасы"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> деректерінің пайдаланылуы"</string>
     <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"Қолданбалар соңғы 24 сағаттағы <xliff:g id="PERMGROUP">%1$s</xliff:g> деректерін пайдалануды тоқтатқан кезде"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
+    <skip />
+    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Соңғы рет пайдаланылды: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> рет</item>
       <item quantity="one">Соңғы рет пайдаланылды: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> рет</item>
@@ -206,7 +210,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> және <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> рұқсаттары өшірілді"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> және тағы <xliff:g id="NUMBER">%2$s</xliff:g> рұқсат өшірілді"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Пайдаланылмайтын қолданбалар"</string>
-    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Қолданба бірнеше ай бойы пайдаланылмаса:\n\n• Құпиялылықты қорғау үшін рұқсаттар өшіріледі.\n• Орын босату үшін уақытша файлдар өшіріледі.\n• Батарея үнемдеу үшін хабарландырулар тоқтатылады."</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Қолданба бірнеше ай бойы пайдаланылмаса:\n\n• Деректерді қорғау үшін рұқсаттар өшіріледі.\n• Батарея үнемдеу үшін хабарландырулар тоқтатылады.\n• Орын босату үшін уақытша файлдар өшіріледі."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Соңғы рет <xliff:g id="NUMBER">%s</xliff:g> айдан астам уақыт бұрын ашылған"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Қолданбаның соңғы рет ашылуы: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Соңғы рет ашылуы: <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -219,6 +223,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Бұл рұқсатқа ие қолданбалар суретке түсіріп, бейне жаза алады."</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Бұл рұқсатқа ие қолданбалар контактілерге кіре алады."</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Бұл рұқсатқа ие қолданбалар осы құрылғының геодеректерін пайдалана алады."</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Рұқсаты бар қолданбалар маңайдағы Bluetooth құрылғыларын анықтап, қосыла алады."</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Бұл рұқсатқа ие қолданбалар дыбысты жаза алады."</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Бұл рұқсатқа ие қолданбалар телефон қоңырауларын шала және басқара алады."</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Бұл рұқсатқа ие қолданбалар тіршілік белгілері туралы датчик деректерін пайдалана алады."</string>
@@ -265,7 +270,7 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> пайдаланылмайтын қолданба</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> пайдаланылмайтын қолданба</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="3704446042109375119">"Рұқсаттар мен уақытша файлдар өшірілді. Көру үшін түртіңіз."</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"Рұқсаттар мен уақытша файлдар өшірілді және хабарландырулар тоқтатылды. Көру үшін түртіңіз."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Кейбір қолданбалар бірнеше ай бойы пайдаланылмаған."</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> қолданба бірнеше ай бойы пайдаланылмады.</item>
@@ -415,6 +420,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Қолданбаны пайдаланбасаңыз да, ол үнемі геодеректеріңізді пайдаланғысы келуі мүмкін. "<annotation id="link">"Параметрлерден рұқсат беріңіз."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына геодеректі пайдалануға рұқсат етілсін бе?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Қолданбаны пайдаланбасаңыз да, ол үнемі геодеректеріңізді пайдаланғысы келеді. "<annotation id="link">"Параметрлерден рұқсат беріңіз."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына маңайдағы Bluetooth құрылғыларын анықтап, қосылуға рұқсат берілсін бе?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына маңайдағы Bluetooth құрылғыларын анықтап, қосылуға рұқсат берілсін бе? "<annotation id="link">"Параметрлерден рұқсат беру."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына осы құрылғының нақты орнын пайдалануға рұқсат берілсін бе?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына осы құрылғының болжалды орнын пайдалануға рұқсат берілсін бе?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Нақты"</string>

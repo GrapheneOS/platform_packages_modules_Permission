@@ -70,6 +70,7 @@ import com.android.permissioncontroller.permission.data.BroadcastReceiverLiveDat
 import com.android.permissioncontroller.permission.data.CarrierPrivilegedStatusLiveData
 import com.android.permissioncontroller.permission.data.DataRepositoryForPackage
 import com.android.permissioncontroller.permission.data.HasIntentAction
+import com.android.permissioncontroller.permission.data.LauncherPackagesLiveData
 import com.android.permissioncontroller.permission.data.ServiceLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.data.UsageStatsLiveData
@@ -328,6 +329,12 @@ suspend fun isPackageHibernationExemptBySystem(
     pkg: LightPackageInfo,
     user: UserHandle
 ): Boolean {
+    if (!LauncherPackagesLiveData.getInitializedValue().contains(pkg.packageName)) {
+        if (DEBUG_HIBERNATION_POLICY) {
+            DumpableLog.i(LOG_TAG, "Exempted ${pkg.packageName} - Package is not on launcher")
+        }
+        return true
+    }
     if (!ExemptServicesLiveData[user]
             .getInitializedValue()[pkg.packageName]
             .isNullOrEmpty()) {
@@ -461,14 +468,14 @@ class HibernationJobService : JobService() {
                 }
 
                 val appsToHibernate = getAppsToHibernate(this@HibernationJobService)
-                var hibernatedApps: List<Pair<String, UserHandle>> = emptyList()
+                var hibernatedApps: Set<Pair<String, UserHandle>> = emptySet()
                 if (isHibernationEnabled()) {
                     val hibernationController = HibernationController(this@HibernationJobService)
                     hibernatedApps = hibernationController.hibernateApps(appsToHibernate)
                 }
                 val revokedApps = revokeAppPermissions(
                         appsToHibernate, this@HibernationJobService, sessionId)
-                val unusedApps = if (isHibernationEnabled()) hibernatedApps else revokedApps
+                val unusedApps: Set<Pair<String, UserHandle>> = hibernatedApps + revokedApps
                 if (unusedApps.isNotEmpty()) {
                     showUnusedAppsNotification(unusedApps.size, sessionId)
                 }

@@ -107,6 +107,10 @@
     <string name="permission_usage_title" msgid="5095876355858467390">"Hallintapaneeli"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Käyttöoikeusryhmän (<xliff:g id="PERMGROUP">%1$s</xliff:g>) käyttö"</string>
     <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"Milloin sovellukset lopettivat käyttöoikeusryhmän (<xliff:g id="PERMGROUP">%1$s</xliff:g>) käytön viimeisen 24 tunnin aikana"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
+    <skip />
+    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Viimeinen käyttökerta: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> käyttökertaa</item>
       <item quantity="one">Viimeinen käyttökerta: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> käyttökerta</item>
@@ -206,7 +210,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Luvat poistettu: <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> ja <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ja <xliff:g id="NUMBER">%2$s</xliff:g> muuta käyttöoikeutta poistettiin"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Käyttämättömät sovellukset"</string>
-    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Jos sovellusta ei käytetä muutamaan kuukauteen:\n\n• Käyttöoikeudet poistetaan tietoturvasyistä\n• Väliaikaiset tiedostot poistetaan tilan vapauttamiseksi\n• Ilmoitukset lopetetaan akun säästämiseksi"</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Jos sovellusta ei käytetä muutamaan kuukauteen:\n\n• Käyttöoikeudet poistetaan datasi suojaamiseksi\n• Ilmoitukset lopetetaan akun säästämiseksi\n• Väliaikaiset tiedostot poistetaan tilan vapauttamiseksi"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Avattu viimeksi <xliff:g id="NUMBER">%s</xliff:g> kuukautta sitten"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Sovellus avattiin viimeksi <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Avattu viimeksi <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -219,6 +223,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Sovellukset, joilla on tämä lupa, voivat ottaa kuvia ja kuvata videota."</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Sovelluksilla, joilla on tämä lupa, on pääsy yhteystietoihisi."</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Sovelluksilla, joilla on tämä lupa, on pääsy tämän laitteen sijaintiin."</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Sovellukset, joilla on tämä käyttöoikeus, voivat löytää lähellä olevia Bluetooth-laitteita ja yhdistää niihin"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Sovellukset, joilla on tämä lupa, voivat tallentaa ääntä."</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Sovellukset, joilla on tämä lupa, voivat soittaa ja ylläpitää puheluita."</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Sovellukset, joilla on tämä lupa, saavat käyttää anturitietoja elintoiminnoistasi."</string>
@@ -265,7 +270,7 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> käyttämätöntä sovellusta</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> käyttämätön sovellus</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="3704446042109375119">"Väliaikaiset ja käyttöoikeustiedostot on poistettu. Tarkista napauttamalla."</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"Käyttöoikeudet ja väliaikaiset tiedostot on poistettu, ja ilmoitukset on lopetettu. Tarkista napauttamalla."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Joitain sovelluksia ei ole käytetty muutamaan kuukauteen"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> sovellusta ei ole käytetty muutamaan kuukauteen</item>
@@ -415,6 +420,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Sovellus voi haluta nähdä sijaintisi aina, myös silloin kun et käytä sitä. "<annotation id="link">"Myönnä lupa asetuksista"</annotation>"."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Muutetaanko sijainnin käyttöoikeutta (&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;)?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Sovellus haluaa nähdä sijaintisi aina, myös silloin kun et käytä sitä. "<annotation id="link">"Myönnä lupa asetuksista"</annotation>"."</string>
+    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; löytää lähellä olevia Bluetooth-laitteita ja yhdistää niihin?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; löytää lähellä olevia Bluetooth-laitteita ja yhdistää niihin? "<annotation id="link">"Myönnä käyttöoikeus asetuksista."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pääsyn tämän laitteen tarkkaan sijaintiin?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pääsyn tämän laitteen karkeaan sijaintiin?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Tarkka"</string>

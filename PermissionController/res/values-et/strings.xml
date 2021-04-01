@@ -107,6 +107,10 @@
     <string name="permission_usage_title" msgid="5095876355858467390">"Juhtpaneel"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Lubade grupi <xliff:g id="PERMGROUP">%1$s</xliff:g> kasutus"</string>
     <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"Millal rakendused viimase 24 tunni jooksul teie lubade grupi <xliff:g id="PERMGROUP">%1$s</xliff:g> kasutamise lõpetasid"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
+    <skip />
+    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Viimane juurdepääs: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> juurdepääsu</item>
       <item quantity="one">Viimane juurdepääs: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> juurdepääs</item>
@@ -206,7 +210,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Load <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> ja <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> eemaldati"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ja veel <xliff:g id="NUMBER">%2$s</xliff:g> luba eemaldati"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Kasutamata rakendused"</string>
-    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Kui rakendust pole mõne kuu jooksul kasutatud, toimub järgmine.\n\n• Teie privaatsuse kaitsmiseks eemaldatakse load.\n• Ruumi vabastamiseks eemaldatakse ajutised failid.\n• Aku säästmiseks peatatakse märguanded."</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Kui rakendust mõne kuu vältel ei kasutata, toimub järgmine.\n\n• Load eemaldatakse, et teie andmeid kaitsta.\n• Märguanded peatatakse, et akut säästa.\n• Ajutised failid eemaldatakse, et ruumi vabastada."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Viimati avatud rohkem kui <xliff:g id="NUMBER">%s</xliff:g> kuud tagasi"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Rakendus avati viimati <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Viimati avatud <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -219,6 +223,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Selle loaga rakendused saavad jäädvustada pilte ja videoid"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Selle loaga rakendustel on juurdepääs teie kontaktidele"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Selle loaga rakendustel on juurdepääs seadme asukohateabele"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Selle loaga rakendused saavad avastada lähedalasuvaid Bluetooth-seadmeid ja luua nendega ühenduse"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Selle loaga rakendused võivad heli salvestada"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Selle loaga rakendused saavad telefonikõnesid teha ja hallata"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Selle loaga rakendustel on juurdepääs teie eluliste näitajate andurite andmetele"</string>
@@ -265,7 +270,7 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> kasutamata rakendust</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> kasutamata rakendus</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="3704446042109375119">"Load ja ajutised failid eemaldati. Puudutage ülevaatamiseks."</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"Load ja ajutised failid eemaldati ning märguanded peatati. Puudutage ülevaatamiseks."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Mõningaid rakendusi ei ole mõne kuu jooksul kasutatud"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> rakendust ei ole mõne kuu jooksul kasutatud</item>
@@ -415,6 +420,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"See rakendus võib soovida pidevat juurdepääsu teie asukohale (ka siis, kui te rakendust ei kasuta). "<annotation id="link">"Lubage see seadetes"</annotation>"."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Kas muuta rakenduse &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; puhul juurdepääsu asukohale?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"See rakendus soovib pidevat juurdepääsu teie asukohale (ka siis, kui te rakendust ei kasuta). "<annotation id="link">"Lubage see seadetes"</annotation>"."</string>
+    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; avastada lähedalasuvaid Bluetooth-seadmeid ja luua nendega ühendus?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; avastada lähedalasuvaid Bluetooth-seadmeid ja luua nendega ühendus? "<annotation id="link">"Lubage menüüs Seaded."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; juurdepääs selle seadme täpsele asukohale?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; juurdepääs selle seadme ligikaudsele asukohale?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Täpne"</string>

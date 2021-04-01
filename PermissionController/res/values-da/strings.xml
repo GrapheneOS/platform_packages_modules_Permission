@@ -107,6 +107,10 @@
     <string name="permission_usage_title" msgid="5095876355858467390">"Kontrolpanel"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Brug af <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"Hvornår apps holdt op med at bruge din <xliff:g id="PERMGROUP">%1$s</xliff:g> i løbet af de seneste 24 timer"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
+    <skip />
+    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="one">Seneste adgang: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> adgang</item>
       <item quantity="other">Seneste adgang: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> adgange</item>
@@ -206,7 +210,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Tilladelserne <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> og <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> blev fjernet"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> og <xliff:g id="NUMBER">%2$s</xliff:g> andre tilladelser blev fjernet"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Apps, du ikke bruger"</string>
-    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Hvis en app ikke bruges i et par måneder, sker følgende:\n\n• Tilladelser fjernes for at beskytte dit privatliv\n• Midlertidige filer fjernes for at frigøre plads\n• Notifikationer stoppes for at spare på batteriet"</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Hvis en app ikke bruges i et par måneder, sker følgende:\n\n• Tilladelser fjernes for at beskytte dine data\n• Notifikationer stoppes for at spare på batteriet\n• Midlertidige filer fjernes for at frigøre plads"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Sidst åbnet for mere end <xliff:g id="NUMBER">%s</xliff:g> måneder siden"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Appen blev sidst åbnet <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Sidst åbnet <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -219,6 +223,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Apps med denne tilladelse kan tage billeder og optage video"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Apps med denne tilladelse kan få adgang til dine kontakter"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Apps med denne tilladelse kan få adgang til denne enheds placering"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Apps med denne tilladelse kan registrere og oprette forbindelse til Bluetooth-enheder i nærheden"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Apps med denne tilladelse kan optage lyd"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Apps med denne tilladelse kan foretage og administrere telefonopkald"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Apps med denne tilladelse kan få adgang til sensordata om dine livstegn"</string>
@@ -265,7 +270,7 @@
       <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> app, du ikke bruger</item>
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> apps, du ikke bruger</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="3704446042109375119">"Tilladelser og midlertidige filer er blevet fjernet. Tryk for at se dem."</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"Tilladelser og midlertidige filer er blevet fjernet, og notifikationer blev stoppet. Tryk for at se dem."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Nogle apps er ikke blevet brugt i et par måneder"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> app er ikke blevet brugt i et par måneder</item>
@@ -415,6 +420,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Denne app vil muligvis gerne have adgang til din placering hele tiden, også når du ikke bruger appen. "<annotation id="link">"Giv tilladelse under Indstillinger."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Vil du skifte placeringsadgang for &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Appen vil gerne have adgang til din placering hele tiden, også når du ikke bruger appen. "<annotation id="link">"Giv appen tilladelse i Indstillinger."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"Vil du tillade, at &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; registrerer og opretter forbindelse til Bluetooth-enheder i nærheden?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"Vil du tillade, at &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; registrerer og opretter forbindelse til Bluetooth-enheder i nærheden? "<annotation id="link">"Tillad i Indstillinger."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Vil du give &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; adgang til enhedens præcise placering?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Vil du give &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; adgang til enhedens omtrentlige placering?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Præcis"</string>
