@@ -24,7 +24,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.graphics.drawable.Drawable;
-import android.icu.text.ListFormatter;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.util.Log;
@@ -37,13 +36,11 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceGroup;
 import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
 
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.auto.AutoSettingsFrameFragment;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.model.AppPermissions;
-import com.android.permissioncontroller.permission.model.livedatatypes.HibernationSettingState;
 import com.android.permissioncontroller.permission.ui.Category;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModel;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModelFactory;
@@ -60,9 +57,6 @@ public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment {
 
     private static final String KEY_ALLOWED_PERMISSIONS_GROUP = "allowed_permissions_group";
     private static final String KEY_DENIED_PERMISSIONS_GROUP = "denied_permissions_group";
-    private static final String AUTO_REVOKE_CATEGORY_KEY = "_AUTO_REVOKE_KEY";
-    private static final String AUTO_REVOKE_SWITCH_KEY = "_AUTO_REVOKE_SWITCH_KEY";
-    private static final String AUTO_REVOKE_SUMMARY_KEY = "_AUTO_REVOKE_SUMMARY_KEY";
 
     private AppPermissionGroupsViewModel mViewModel;
 
@@ -121,7 +115,6 @@ public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment {
         createPreferenceCategories(packageInfo);
 
         mViewModel.getPackagePermGroupsLiveData().observe(this, this::updatePreferences);
-        mViewModel.getAutoRevokeLiveData().observe(this, this::setAutoRevokeToggleState);
         if (mViewModel.getPackagePermGroupsLiveData().getValue() != null) {
             updatePreferences(mViewModel.getPackagePermGroupsLiveData().getValue());
         }
@@ -160,7 +153,6 @@ public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment {
 
     private void createPreferenceCategories(PackageInfo packageInfo) {
         bindUi(packageInfo);
-        addAutoRevokePreferences(getPreferenceScreen());
     }
 
     // TODO(b/179383241): Make full use of groupMap data in this method
@@ -267,8 +259,6 @@ public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment {
             denied.addPreference(empty);
         }
 
-        setAutoRevokeToggleState(mViewModel.getAutoRevokeLiveData().getValue());
-
         setLoading(false);
     }
 
@@ -305,73 +295,6 @@ public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment {
         }
         return null;
     }
-
-    private void addAutoRevokePreferences(PreferenceScreen screen) {
-        Context context = screen.getPreferenceManager().getContext();
-
-        PreferenceCategory autoRevokeCategory = new PreferenceCategory(context);
-        autoRevokeCategory.setKey(AUTO_REVOKE_CATEGORY_KEY);
-        screen.addPreference(autoRevokeCategory);
-
-        SwitchPreference autoRevokeSwitch = new SwitchPreference(context);
-        autoRevokeSwitch.setOnPreferenceClickListener(preference -> {
-            mViewModel.setAutoRevoke(autoRevokeSwitch.isChecked());
-            return true;
-        });
-        autoRevokeSwitch.setTitle(R.string.auto_revoke_label);
-        autoRevokeSwitch.setKey(AUTO_REVOKE_SWITCH_KEY);
-        autoRevokeCategory.addPreference(autoRevokeSwitch);
-
-        Preference autoRevokeSummary = new Preference(context);
-        autoRevokeSummary.setIcon(Utils.applyTint(getActivity(), R.drawable.ic_info_outline,
-                android.R.attr.colorControlNormal));
-        autoRevokeSummary.setKey(AUTO_REVOKE_SUMMARY_KEY);
-        autoRevokeCategory.addPreference(autoRevokeSummary);
-    }
-
-    private void setAutoRevokeToggleState(HibernationSettingState state) {
-        if (state == null || !mViewModel.getPackagePermGroupsLiveData().isInitialized()
-                || getListView() == null || getView() == null) {
-            return;
-        }
-
-        PreferenceCategory autoRevokeCategory = getPreferenceScreen()
-                .findPreference(AUTO_REVOKE_CATEGORY_KEY);
-        SwitchPreference autoRevokeSwitch = autoRevokeCategory.findPreference(
-                AUTO_REVOKE_SWITCH_KEY);
-        Preference autoRevokeSummary = autoRevokeCategory.findPreference(AUTO_REVOKE_SUMMARY_KEY);
-
-        if (!state.isEnabledGlobal()) {
-            autoRevokeCategory.setVisible(false);
-            autoRevokeSwitch.setVisible(false);
-            autoRevokeSummary.setVisible(false);
-            return;
-        }
-        autoRevokeCategory.setVisible(true);
-        autoRevokeSwitch.setVisible(true);
-        autoRevokeSummary.setVisible(true);
-        autoRevokeSwitch.setEnabled(state.getShouldAllowUserToggle());
-        autoRevokeSwitch.setChecked(state.isEnabledForApp());
-
-        List<String> groupLabels = new ArrayList<>();
-        for (String groupName : state.getRevocableGroupNames()) {
-            PreferenceCategory category = getPreferenceScreen().findPreference(
-                    KEY_ALLOWED_PERMISSIONS_GROUP);
-            Preference pref = category.findPreference(groupName);
-            if (pref != null) {
-                groupLabels.add(pref.getTitle().toString());
-            }
-        }
-
-        groupLabels.sort(mCollator);
-        if (groupLabels.isEmpty()) {
-            autoRevokeSummary.setSummary(R.string.auto_revoke_summary);
-        } else {
-            autoRevokeSummary.setSummary(getString(R.string.auto_revoke_summary_with_permissions,
-                    ListFormatter.getInstance().format(groupLabels)));
-        }
-    }
-
 
     /**
      * Class that shows additional permissions.
