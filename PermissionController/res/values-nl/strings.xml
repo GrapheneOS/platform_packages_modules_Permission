@@ -37,8 +37,8 @@
     <string name="allow_permission_always" msgid="5194342531206054051">"Altijd"</string>
     <string name="deny_permission_deny_and_dont_ask_again" msgid="766882021426214510">"Weigeren en niet meer vragen"</string>
     <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g> uitgezet"</string>
-    <string name="permission_revoked_all" msgid="3397649017727222283">"alle rechten uitgeschakeld"</string>
-    <string name="permission_revoked_none" msgid="9213345075484381180">"geen rechten uitgeschakeld"</string>
+    <string name="permission_revoked_all" msgid="3397649017727222283">"alle rechten ingetrokken"</string>
+    <string name="permission_revoked_none" msgid="9213345075484381180">"geen rechten ingetrokken"</string>
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Toestaan"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Altijd toestaan"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Tijdens gebruik van de app"</string>
@@ -73,11 +73,11 @@
     <string name="system_warning" msgid="1173400963234358816">"Als je dit recht weigert, kan het zijn dat basisfuncties van je apparaat niet meer werken zoals bedoeld."</string>
     <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"Als je dit recht weigert, kan het zijn dat sommige functies van je apparaat dat wordt beheerd door deze app niet meer werken zoals bedoeld."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Afgedwongen door beleid"</string>
-    <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Toegang op de achtergrond uitgeschakeld op basis van beleid"</string>
+    <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Toegang op de achtergrond ingetrokken op basis van beleid"</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"Toegang op de achtergrond aangezet op basis van beleid"</string>
     <string name="permission_summary_enabled_by_policy_foreground_only" msgid="3844582916889767831">"Toegang op de voorgrond aangezet op basis van beleid"</string>
     <string name="permission_summary_enforced_by_admin" msgid="822702574117248700">"Ingesteld door beheerder"</string>
-    <string name="permission_summary_disabled_by_admin_background_only" msgid="3127091456731845646">"Achtergrondtoegang uitgeschakeld door beheerder"</string>
+    <string name="permission_summary_disabled_by_admin_background_only" msgid="3127091456731845646">"Achtergrondtoegang ingetrokken door beheerder"</string>
     <string name="permission_summary_enabled_by_admin_background_only" msgid="9132423838440275757">"Achtergrondtoegang aangezet door beheerder"</string>
     <string name="permission_summary_enabled_by_admin_foreground_only" msgid="1298432715610745358">"Voorgrondtoegang aangezet door beheerder"</string>
     <string name="permission_summary_enabled_system_fixed" msgid="2438344700184127274">"Apparaat heeft dit recht nodig om te kunnen werken"</string>
@@ -199,7 +199,7 @@
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Om je gegevens te beschermen worden de volgende rechten verwijderd als de app een paar maanden niet is gebruikt: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Om je gegevens te beschermen zijn de rechten verwijderd van apps die al een paar maanden niet zijn gebruikt."</string>
     <string name="auto_revoke_open_app_message" msgid="8075556291711205039">"Als je weer rechten wilt toestaan, open je de app."</string>
-    <string name="auto_revoke_disabled" msgid="8697684442991567188">"Automatisch verwijderen is momenteel uitgeschakeld voor deze app."</string>
+    <string name="auto_revoke_disabled" msgid="8697684442991567188">"Automatisch verwijderen is momenteel uitgezet voor deze app."</string>
     <string name="auto_revocable_permissions_none" msgid="8334929619113991466">"Er zijn momenteel geen automatisch herroepbare rechten verleend"</string>
     <string name="auto_revocable_permissions_one" msgid="5299112369449458176">"Recht voor <xliff:g id="PERM">%1$s</xliff:g> wordt verwijderd."</string>
     <string name="auto_revocable_permissions_two" msgid="4874067408752041716">"Rechten voor <xliff:g id="PERM_0">%1$s</xliff:g> en <xliff:g id="PERM_1">%2$s</xliff:g> worden verwijderd."</string>
