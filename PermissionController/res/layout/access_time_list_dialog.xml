@@ -34,30 +34,19 @@
 
         <TextView
             android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="?android:attr/textColorPrimary"
-            android:textSize="24dp"
-            android:layout_marginTop="16dp" />
+            style="@style/AccessTimeDialogTitle" />
 
         <TextView
             android:id="@+id/subtitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="?android:attr/textColorSecondary"
             android:text="@string/permission_usage_access_dialog_subtitle"
-            android:textSize="14dp"
-            android:layout_marginTop="16dp" />
+            style="@style/AccessTimeDialogSubtitle" />
 
         <TextView
             android:id="@+id/learn_more"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="@string/permission_usage_access_dialog_learn_more"
             android:clickable="true"
-            android:visibility="gone" />
+            android:visibility="gone"
+            style="@style/AccessTimeDialogLearnMore" />
 
     </LinearLayout>
 
