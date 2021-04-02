@@ -26,6 +26,7 @@
         android:id="@+id/permission_history_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:minWidth="60dp"
         android:layout_marginTop="19dp"
     />
 
