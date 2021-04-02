@@ -107,6 +107,10 @@
     <string name="permission_usage_title" msgid="5095876355858467390">"ഡാഷ്‌ബോർഡ്"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> ഉപയോഗം"</string>
     <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"കഴിഞ്ഞ 24 മണിക്കൂർ, ആപ്പുകൾ നിങ്ങളുടെ <xliff:g id="PERMGROUP">%1$s</xliff:g> ഉപയോഗിക്കുന്നത് അവസാനിപ്പിച്ചപ്പോൾ"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
+    <skip />
+    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">അവസാനം ആക്‌‌സസ് ചെയ്‌തത്: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> ആക്‌സസുകള്‍</item>
       <item quantity="one">അവസാനം ആക്‌‌സസ് ചെയ്‌തത്: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> ആക്‌‌സസ്</item>
@@ -206,7 +210,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>, <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> അനുമതികൾ നീക്കം ചെയ്തു"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> അനുമതിയും മറ്റ് <xliff:g id="NUMBER">%2$s</xliff:g> അനുമതികളും നീക്കം ചെയ്തു"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"ഉപയോഗിക്കാത്ത ആപ്പുകൾ"</string>
-    <string name="unused_apps_page_summary" msgid="5271048000004368665">"ഒരു ആപ്പ് കുറച്ച് മാസങ്ങളായി ഉപയോഗിക്കുന്നില്ലെങ്കിൽ:\n\n• നിങ്ങളുടെ സ്വകാര്യത പരിരക്ഷിക്കാൻ അനുമതികൾ നീക്കം ചെയ്യും\n• ഇടമുണ്ടാക്കാൻ താൽക്കാലിക ഫയലുകൾ നീക്കം ചെയ്യും\n• ബാറ്ററി ലാഭിക്കാൻ അറിയിപ്പുകൾ ലഭിക്കുന്നത് നിർത്തും"</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"ഒരു ആപ്പ് കുറച്ച് മാസങ്ങളായി ഉപയോഗിക്കുന്നില്ലെങ്കിൽ:\n\n• നിങ്ങളുടെ ഡാറ്റ സംരക്ഷിക്കാൻ അനുമതികൾ നീക്കം ചെയ്യും\n• ബാറ്ററി ലാഭിക്കാൻ അറിയിപ്പുകൾ ലഭിക്കുന്നത് നിർത്തും\n• ഇടമുണ്ടാക്കാൻ താൽക്കാലിക ഫയലുകൾ നീക്കം ചെയ്യും"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"അവസാനം തുറന്നിട്ട് <xliff:g id="NUMBER">%s</xliff:g> മാസത്തിൽ കൂടുതലായി"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ആപ്പ് അവസാനം തുറന്നത് <xliff:g id="DATE">%s</xliff:g>-നാണ്"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"അവസാനം തുറന്നത് <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -219,6 +223,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"ഈ അനുമതിയുള്ള ആപ്പുകൾക്ക് വീഡിയോ റെക്കോർഡ് ചെയ്യുകയും ചിത്രങ്ങളെടുക്കുകയും ചെയ്യാം"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"ഈ അനുമതിയുള്ള ആപ്പുകൾക്ക് നിങ്ങളുടെ കോൺടാക്റ്റുകൾ ആക്‌സസ് ചെയ്യാം"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"ഈ അനുമതിയുള്ള ആപ്പുകൾക്ക് ഈ ഉപകരണത്തിന്റെ ലൊക്കേഷൻ ആക്‌സസ് ചെയ്യാം"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"ഈ അനുമതിയുള്ള ആപ്പുകൾക്ക് സമീപമുള്ള Bluetooth ഉപകരണങ്ങൾ കണ്ടെത്തി കണക്റ്റ് ചെയ്യാനാകും"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"ഈ അനുമതിയുള്ള ആപ്പുകൾക്ക് ഓഡിയോ റെക്കോർഡ് ചെയ്യാം"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"ഈ അനുമതിയുള്ള ആപ്പുകൾക്ക് കോളുകൾ ചെയ്യാനും അവ മാനേജ് ചെയ്യാനുമാവും"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"ഈ അനുമതിയുള്ള ആപ്പുകൾക്ക് നിങ്ങളുടെ ജീവാധാര ലക്ഷണങ്ങളെ കുറിച്ചുള്ള സെൻസർ വിവരങ്ങൾ ആക്‌സസ് ചെയ്യാനാവും"</string>
@@ -265,7 +270,7 @@
       <item quantity="other">ഉപയോഗിക്കാത്ത <xliff:g id="COUNT_1">%1$d</xliff:g> ആപ്പുകൾ</item>
       <item quantity="one">ഉപയോഗിക്കാത്ത <xliff:g id="COUNT_0">%1$d</xliff:g> ആപ്പ്</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="3704446042109375119">"അനുമതികളും താൽക്കാലിക ഫയലുകളും നീക്കം ചെയ്‌തു. അവലോകനം ചെയ്യുന്നതിന് ടാപ്പ് ചെയ്യുക."</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"അനുമതികളും താൽക്കാലിക ഫയലുകളും നീക്കം ചെയ്‌തു, അറിയിപ്പുകൾ നിർത്തി. അവലോകനം ചെയ്യാൻ ടാപ്പ് ചെയ്യുക."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"കുറച്ച് മാസങ്ങളായി ചില ആപ്പുകൾ ഉപയോഗിച്ചിട്ടില്ല"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other">കുറച്ച് മാസങ്ങളായി <xliff:g id="COUNT_1">%1$d</xliff:g> ആപ്പുകൾ ഉപയോഗിച്ചിട്ടില്ല</item>
@@ -415,6 +420,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"ആപ്പ് ഉപയോഗിക്കാത്തപ്പോൾ പോലും, എല്ലാ സമയത്തും ഈ ആപ്പിന് നിങ്ങളുടെ ലൊക്കേഷൻ ആക്‌സസ് ചെയ്യേണ്ടതുണ്ട്. "<annotation id="link">"ക്രമീകരണത്തിൽ"</annotation>" അനുവദിക്കുക."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിന്റെ ലൊക്കേഷൻ ആക്സസ് മാറ്റണോ?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"ആപ്പ് നിങ്ങൾ ഉപയോഗിക്കാത്തപ്പോഴടക്കം, എല്ലാ സമയത്തും ഈ ആപ്പ് നിങ്ങളുടെ ലൊക്കേഷൻ ആക്‌സസ് ചെയ്യാൻ ആഗ്രഹിക്കുന്നു. "<annotation id="link">"ക്രമീകരണത്തിൽ അനുവദിക്കുക."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"സമീപമുള്ള Bluetooth ഉപകരണങ്ങൾ കണ്ടെത്തി കണക്റ്റ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"സമീപമുള്ള Bluetooth ഉപകരണങ്ങൾ കണ്ടെത്തി കണക്റ്റ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ? "<annotation id="link">"ക്രമീകരണത്തിൽ അനുവദിക്കുക."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"ഈ ഉപകരണത്തിന്റെ കൃത്യമായ ലൊക്കേഷൻ ആക്‌സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കണോ?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"ഈ ഉപകരണത്തിന്റെ ഏകദേശ ലൊക്കേഷൻ ആക്‌സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കണോ?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"കൃത്യമായ"</string>
