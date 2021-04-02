@@ -47,7 +47,6 @@ import com.android.permissioncontroller.DeviceUtils;
 import com.android.permissioncontroller.PermissionControllerStatsLog;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.debug.PermissionDetailsFragment;
-import com.android.permissioncontroller.permission.debug.PermissionUsageFragment;
 import com.android.permissioncontroller.permission.debug.PermissionUsageV2Fragment;
 import com.android.permissioncontroller.permission.debug.UtilsKt;
 import com.android.permissioncontroller.permission.ui.auto.AutoAllAppPermissionsFragment;
@@ -148,20 +147,13 @@ public final class ManagePermissionsActivity extends FragmentActivity {
                 break;
 
             case Intent.ACTION_REVIEW_PERMISSION_USAGE: {
-                if (!UtilsKt.shouldShowPermissionsDashboard()) {
+                if (!UtilsKt.isPrivacyHubEnabled()) {
                     finish();
                     return;
                 }
 
                 String groupName = getIntent().getStringExtra(Intent.EXTRA_PERMISSION_GROUP_NAME);
-                androidXFragment = PermissionUsageFragment.newInstance(groupName, Long.MAX_VALUE);
-
-                // TODO: theianchen Once Permission Usage link is added to Permission Manager,
-                //                  this check needs to be moved to wrap around the new link.
-                if (UtilsKt.isPrivacyHubEnabled()) {
-                    androidXFragment = PermissionUsageV2Fragment
-                            .newInstance(groupName, Long.MAX_VALUE);
-                }
+                androidXFragment = PermissionUsageV2Fragment.newInstance(groupName, Long.MAX_VALUE);
             } break;
 
             case Intent.ACTION_REVIEW_PERMISSION_HISTORY: {

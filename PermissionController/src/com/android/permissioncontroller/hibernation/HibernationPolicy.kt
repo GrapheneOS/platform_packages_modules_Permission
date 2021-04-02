@@ -470,7 +470,8 @@ class HibernationJobService : JobService() {
                 val appsToHibernate = getAppsToHibernate(this@HibernationJobService)
                 var hibernatedApps: Set<Pair<String, UserHandle>> = emptySet()
                 if (isHibernationEnabled()) {
-                    val hibernationController = HibernationController(this@HibernationJobService)
+                    val hibernationController =
+                        HibernationController(this@HibernationJobService, getUnusedThresholdMs())
                     hibernatedApps = hibernationController.hibernateApps(appsToHibernate)
                 }
                 val revokedApps = revokeAppPermissions(
