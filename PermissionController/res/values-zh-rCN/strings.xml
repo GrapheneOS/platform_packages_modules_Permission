@@ -107,6 +107,10 @@
     <string name="permission_usage_title" msgid="5095876355858467390">"信息中心"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g>使用情况"</string>
     <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"过去 24 小时内，应用已停止使用您的<xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
+    <skip />
+    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">上次访问时间：<xliff:g id="TIME_2">%1$s</xliff:g>\n访问次数：<xliff:g id="NUM_3">%2$s</xliff:g> 次</item>
       <item quantity="one">上次访问时间：<xliff:g id="TIME_0">%1$s</xliff:g>\n访问次数：<xliff:g id="NUM_1">%2$s</xliff:g> 次</item>
@@ -206,7 +210,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"已移除<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>以及<xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>权限"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"已移除<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>权限及另外 <xliff:g id="NUMBER">%2$s</xliff:g> 项权限"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"未使用的应用"</string>
-    <string name="unused_apps_page_summary" msgid="5271048000004368665">"如果您连续几个月未使用某个应用，系统将对该应用采取以下措施：\n\n• 移除权限以保护您的隐私\n• 移除临时文件以释放空间\n• 停止通知功能以节省电量"</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"如果您连续数月未使用某个应用，系统将对该应用采取以下措施：\n\n• 移除应用权限以保护您的数据\n• 停止通知功能以节省电量\n• 移除临时文件以释放空间"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"上次打开时间是超过 <xliff:g id="NUMBER">%s</xliff:g> 个月前"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"应用上次打开时间是 <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"上次打开时间是 <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -219,6 +223,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"具有此权限的应用可以拍摄照片和录制视频"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"具有此权限的应用可以访问您的通讯录"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"具有此权限的应用可以使用此设备的位置信息"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"具有此权限的应用可以发现并连接到附近的蓝牙设备"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"具有此权限的应用可以录制音频"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"具有此权限的应用可以拨打电话及管理通话"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"具有此权限的应用可以获取与您的生命体征相关的传感器数据"</string>
@@ -265,7 +270,7 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> 个未使用的应用</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> 个未使用的应用</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="3704446042109375119">"系统已移除权限和临时文件。点按即可查看。"</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"系统已移除权限和临时文件，并停止通知功能。点按即可查看。"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"一些应用已连续几个月未使用过"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> 个应用已连续几个月未使用过</item>
@@ -415,6 +420,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"该应用可能想要随时获取您的位置信息（即使您并未使用该应用）。"<annotation id="link">"在“设置”中允许"</annotation>"。"</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"要更改&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;的位置信息访问权限吗？"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"该应用想要随时获取您的位置信息（即使您并未使用该应用）。"<annotation id="link">"在“设置”中允许"</annotation>"。"</string>
+    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;发现并连接到附近的蓝牙设备吗？"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;发现并连接到附近的蓝牙设备吗？"<annotation id="link">"您可以在“设置”中允许。"</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;获取此设备的确切位置吗？"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;获取此设备的大致位置吗？"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"确切"</string>

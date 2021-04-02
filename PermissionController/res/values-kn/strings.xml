@@ -107,6 +107,10 @@
     <string name="permission_usage_title" msgid="5095876355858467390">"ಡ್ಯಾಶ್‌ಬೋರ್ಡ್"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> ಬಳಕೆ"</string>
     <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"ಆ್ಯಪ್‌ಗಳು ಕಳೆದ 24 ಗಂಟೆಯಲ್ಲಿ ನಿಮ್ಮ <xliff:g id="PERMGROUP">%1$s</xliff:g> ದ ಬಳಕೆಯನ್ನು ಸ್ಥಗಿತಗೊಳಿಸಿದಾಗ"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
+    <skip />
+    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="one">ಕೊನೆಯ ಪ್ರವೇಶ: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> ಪ್ರವೇಶ</item>
       <item quantity="other">ಕೊನೆಯ ಪ್ರವೇಶ: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> ಪ್ರವೇಶ</item>
@@ -206,7 +210,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> ಮತ್ತು <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> ಅನುಮತಿಗಳನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ಮತ್ತು <xliff:g id="NUMBER">%2$s</xliff:g> ಇತರ ಅನುಮತಿಗಳನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"ಬಳಕೆಯಾಗದ ಆ್ಯಪ್‌ಗಳು"</string>
-    <string name="unused_apps_page_summary" msgid="5271048000004368665">"ಆ್ಯಪ್‌ವೊಂದನ್ನು ಕೆಲವು ತಿಂಗಳುಗಳವರೆಗೆ ಬಳಕೆ ಮಾಡದಿದ್ದರೆ:\n\n• ನಿಮ್ಮ ಗೌಪ್ಯತೆಯನ್ನು ರಕ್ಷಿಸಲು ಅನುಮತಿಗಳನ್ನು ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ\n• ಸ್ಥಳಾವಕಾಶವನ್ನು ಮುಕ್ತಗೊಳಿಸಲು ತಾತ್ಕಾಲಿಕ ಫೈಲ್‌ಗಳನ್ನು ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ\n• ಬ್ಯಾಟರಿಯನ್ನು ಉಳಿಸಲು ಅಧಿಸೂಚನೆಗಳನ್ನು ನಿಲ್ಲಿಸಲಾಗುತ್ತದೆ"</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"ಆ್ಯಪ್ ಅನ್ನು ಕೆಲವು ತಿಂಗಳುಗಳ ಕಾಲ ಬಳಸದೇ ಇದ್ದರೆ:\n\n• ನಿಮ್ಮ ಡೇಟಾವನ್ನು ರಕ್ಷಿಸಲು ಅನುಮತಿಗಳನ್ನು ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ\n• ಬ್ಯಾಟರಿ ಉಳಿಸಲು ಆಧಿಸೂಚನೆಗಳನ್ನು ನಿಲ್ಲಿಸಲಾಗುತ್ತದೆ\n• ಸ್ಥಳಾವಕಾಶವನ್ನು ಮುಕ್ತಗೊಳಿಸಲು ತಾತ್ಕಾಲಿಕ ಫೈಲ್ ಗಳನ್ನು ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"ಕೊನೆಯದಾಗಿ <xliff:g id="NUMBER">%s</xliff:g> ತಿಂಗಳುಗಳಿಗೂ ಹಿಂದೆ ತೆರೆಯಲಾಗಿದೆ"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ಆ್ಯಪ್ ಅನ್ನು ಕೊನೆಯದಾಗಿ ತೆರೆದಿರುವುದು: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"ಕೊನೆಯದಾಗಿ ತೆರೆದಿರುವುದು: <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -219,6 +223,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ಚಿತ್ರಗಳನ್ನು ಸೆರೆಹಿಡಿಯಬಹುದು ಮತ್ತು ವೀಡಿಯೊ ರೆಕಾರ್ಡ್ ಮಾಡಬಹುದು"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ನಿಮ್ಮ ಸಂಪರ್ಕಗಳನ್ನು ಪ್ರವೇಶಿಸಬಹುದು"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ಈ ಸಾಧನದ ಸ್ಥಳವನ್ನು ಪ್ರವೇಶಿಸಬಹುದು"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ಸಮೀಪದಲ್ಲಿರುವ ಬ್ಲೂಟೂತ್ ಸಾಧನಗಳನ್ನು ಅನ್ವೇಷಿಸಬಹುದು ಮತ್ತು ಅವುಗಳಿಗೆ ಕನೆಕ್ಟ್ ಮಾಡಬಹುದು"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ಆಡಿಯೊ ರೆಕಾರ್ಡ್ ಮಾಡಬಹುದು"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ಫೋನ್ ಕರೆಗಳನ್ನು ಮಾಡಬಹುದು ಮತ್ತು ನಿರ್ವಹಿಸಬಹುದು"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ನಿಮ್ಮ ಪ್ರಮುಖ ವೈದ್ಯಕೀಯ ಮಾಪನಗಳ ಕುರಿತ ಸೆನ್ಸರ್ ಡೇಟಾವನ್ನು ಪ್ರವೇಶಿಸಬಹುದು"</string>
@@ -265,7 +270,7 @@
       <item quantity="one">ಬಳಕೆಯಾಗದ <xliff:g id="COUNT_1">%1$d</xliff:g> ಆ್ಯಪ್‌ಗಳು</item>
       <item quantity="other">ಬಳಕೆಯಾಗದ <xliff:g id="COUNT_1">%1$d</xliff:g> ಆ್ಯಪ್‌ಗಳು</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="3704446042109375119">"ಅನುಮತಿಗಳು ಮತ್ತು ತಾತ್ಕಾಲಿಕ ಫೈಲ್‌ಗಳನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ. ಪರಿಶೀಲಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ."</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"ಅನುಮತಿಗಳು ಮತ್ತು ತಾತ್ಕಾಲಿಕ ಫೈಲ್‌ಗಳನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ ಮತ್ತು ಅಧಿಸೂಚನೆಗಳನ್ನು ಸ್ಥಗಿತಗೊಳಿಸಲಾಗಿದೆ. ಪರಿಶೀಲಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"ಹಲವಾರು ತಿಂಗಳುಗಳಿಂದ ಕೆಲವು ಆ್ಯಪ್‌ಗಳನ್ನು ಬಳಸಲಾಗಿಲ್ಲ"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> ಆ್ಯಪ್‌ಗಳನ್ನು ಕೆಲವು ತಿಂಗಳುಗಳಿಂದ ಬಳಸಲಾಗಿಲ್ಲ</item>
@@ -415,6 +420,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"ನೀವು ಈ ಆ್ಯಪ್ ಅನ್ನು ಬಳಸದಿರುವಾಗಲೂ ಸಹ, ಯಾವಾಗಲೂ ನಿಮ್ಮ ಸ್ಥಳಕ್ಕೆ ಪ್ರವೇಶವನ್ನು ಹೊಂದಲು ಆ್ಯಪ್ ಬಯಸಬಹುದು. "<annotation id="link">"ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಅನುಮತಿಸಿ."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಆ್ಯಪ್‌ಗಾಗಿ ಸ್ಥಳ ಪ್ರವೇಶವನ್ನು ಬದಲಾಯಿಸಬೇಕೆ?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"ನೀವು ಈ ಆ್ಯಪ್ ಅನ್ನು ಬಳಸದಿರುವಾಗಲೂ ಸಹ, ಯಾವಾಗಲೂ ನಿಮ್ಮ ಸ್ಥಳಕ್ಕೆ ಪ್ರವೇಶವನ್ನು ಹೊಂದಲು ಆ್ಯಪ್ ಬಯಸುತ್ತದೆ. "<annotation id="link">"ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಅನುಮತಿಸಿ."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"ನಿಮ್ಮ ಸಮೀಪದಲ್ಲಿರುವ ಬ್ಲೂಟೂತ್ ಸಾಧನಗಳನ್ನು ಅನ್ವೇಷಿಸಲು ಮತ್ತು ಅವುಗಳಿಗೆ ಕನೆಕ್ಟ್ ಮಾಡಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸುವುದೇ?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"ನಿಮ್ಮ ಸಮೀಪದಲ್ಲಿರುವ ಬ್ಲೂಟೂತ್ ಸಾಧನಗಳನ್ನು ಅನ್ವೇಷಿಸಲು ಮತ್ತು ಅವುಗಳಿಗೆ ಕನೆಕ್ಟ್ ಮಾಡಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸುವುದೇ? "<annotation id="link">"ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಅನುಮತಿಸಿ."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"ಈ ಸಾಧನದ ನಿಖರವಾದ ಸ್ಥಳವನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"ಈ ಸಾಧನದ ಅಂದಾಜು ಸ್ಥಳವನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"ನಿಖರ"</string>

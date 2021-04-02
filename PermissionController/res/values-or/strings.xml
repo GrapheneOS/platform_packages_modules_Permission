@@ -107,6 +107,10 @@
     <string name="permission_usage_title" msgid="5095876355858467390">"ଡ୍ୟାସ୍‍‍ବୋର୍ଡ"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> ବ୍ୟବହାର"</string>
     <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"ଯେତେବେଳେ ଆପଗୁଡ଼ିକ ଗତ 24 ଘଣ୍ଟାରେ ଆପଣଙ୍କ <xliff:g id="PERMGROUP">%1$s</xliff:g> ବ୍ୟବହାର କରିବା ବନ୍ଦ କରେ"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
+    <skip />
+    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">ଶେଷ ଆକ୍ସେସ୍: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g>ଟି ଆକ୍ସେସ୍</item>
       <item quantity="one">ଶେଷ ଆକ୍ସେସ୍: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> ଆକ୍ସେସ୍</item>
@@ -206,7 +210,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> ଏବଂ <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> ଅନୁମତିକୁ କାଢ଼ି ଦିଆଯାଇଛି"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ଏବଂ ଅନ୍ୟ <xliff:g id="NUMBER">%2$s</xliff:g>ଟି ଅନୁମତି କାଢ଼ି ଦିଆଯାଇଛି"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"ଅବ୍ୟବହୃତ ଆପଗୁଡ଼ିକ"</string>
-    <string name="unused_apps_page_summary" msgid="5271048000004368665">"ଯଦି ଏକ ଆପକୁ କିଛି ମାସ ପାଇଁ ବ୍ୟବହାର କରାଯାଇନାହିଁ, ତେବେ:\n\n• ଆପଣଙ୍କ ଗୋପନୀୟତାକୁ ସୁରକ୍ଷା ଦେବା ପାଇଁ ଅନୁମତିଗୁଡ଼ିକୁ କାଢ଼ି ଦିଆଯାଏ\n• ସ୍ପେସ୍ ଖାଲି କରିବା ପାଇଁ ଅସ୍ଥାୟୀ ଫାଇଲଗୁଡ଼ିକୁ କାଢ଼ି ଦିଆଯାଏ\n• ବ୍ୟାଟେରୀ ସେଭ୍ କରିବାକୁ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକୁ ବନ୍ଦ କରାଯାଏ"</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"ଯଦି ଏକ ଆପ୍ କିଛି ମାସ ପାଇଁ ଅବ୍ୟବହୃତ ଅଛି, ତେବେ:\n\n• ଆପଣଙ୍କ ଡାଟାକୁ ସୁରକ୍ଷା ଦେବା ପାଇଁ ଅନୁମତିଗୁଡ଼ିକୁ କାଢ଼ି ଦିଆଯାଏ\n• ବ୍ୟାଟେରୀ ସେଭ୍ କରିବାକୁ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକୁ ବନ୍ଦ କରାଯାଏ\n• ସ୍ପେସ୍ ଖାଲି କରିବା ପାଇଁ ଅସ୍ଥାୟୀ ଫାଇଲଗୁଡ଼ିକୁ କାଢ଼ି ଦିଆଯାଏ"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"ଗତଥର <xliff:g id="NUMBER">%s</xliff:g> ମାସ ପୂର୍ବେ ଖୋଲାଯାଇଥିଲା"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ଗତ ଥର <xliff:g id="DATE">%s</xliff:g>ରେ ଆପକୁ ଖୋଲାଯାଇଥିଲା"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"ଗତ ଥର <xliff:g id="DATE">%s</xliff:g>ରେ ଖୋଲାଯାଇଥିଲା"</string>
@@ -219,6 +223,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"ଏହି ଅନୁମତି ଥିବା ଆପ୍ସ ଛବି ନେଇପାରିବେ ଏବଂ ଭିଡିଓ ରେକର୍ଡ କରିପାରିବେ"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"ଏହି ଅନୁମତି ଥିବା ଆପ୍ସ ଆପଣଙ୍କର ଯୋଗାଯୋଗଗୁଡ଼ିକୁ ଆକ୍ସେସ୍ କରିପାରିବ"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"ଏହି ଅନୁମତି ଥିବା ଆପ୍ସ ଏହି ଡିଭାଇସ୍‌ର ଲୋକେସନ୍‍ ଆକ୍ସେସ୍‍ କରିପାରିବ"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"ଏହି ଅନୁମତି ଥିବା ଆପଗୁଡ଼ିକ ଆଖପାଖର ବ୍ଲୁଟୁଥ୍ ଡିଭାଇସଗୁଡ଼ିକୁ ଖୋଜି ସଂଯୋଗ କରିପାରିବ"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"ଏହି ଅନୁମତି ଥିବା ଆପ୍ସ ଅଡିଓ ରେକର୍ଡ କରିପାରିବ"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"ଏହି ଅନୁମତି ଥିବା ଆପ୍ସ ଫୋନ୍ କଲ୍ କରିପାରେ ଏବଂ ପରିଚାଳନା କରିପାରେ"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"ଏହି ଅନୁମତି ଥିବା ଆପ୍‌ଗୁଡ଼ିକ ଆପଣଙ୍କ ବିଷୟରେ ଗୁରୁତ୍ୱପୂର୍ଣ୍ଣ ସୂଚନା ଦେଉଥିବା ସେନ୍ସର୍ ଡାଟା ଆକ୍ସେସ୍ କରିପାରିବ"</string>
@@ -265,7 +270,7 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g>ଟି ଅବ୍ୟବହୃତ ଆପ୍</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g>ଟି ଅବ୍ୟବହୃତ ଆପ୍</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="3704446042109375119">"ଅନୁମତି ଏବଂ ଅସ୍ଥାୟୀ ଫାଇଲଗୁଡ଼ିକୁ କାଢ଼ି ଦିଆଯାଇଛି। ସମୀକ୍ଷା କରିବାକୁ ଟାପ୍ କରନ୍ତୁ।"</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"ଅନୁମତି ଓ ଅସ୍ଥାୟୀ ଫାଇଲଗୁଡ଼ିକୁ କାଢ଼ି ଦିଆଯାଇଛି ଏବଂ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକ ବନ୍ଦ କରାଯାଇଛି। ସମୀକ୍ଷା କରିବାକୁ ଟାପ୍ କରନ୍ତୁ।"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"କିଛି ଆପକୁ କିଛି ମାସ ହେଲା ବ୍ୟବହାର କରାଯାଇନାହିଁ"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g>ଟି ଆପକୁ କିଛି ମାସ ହେଲା ବ୍ୟବହାର କରାଯାଇନାହିଁ</item>
@@ -415,6 +420,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"ଆପଣ ଆପ୍ ବ୍ୟବହାର କରୁନଥିଲେ ମଧ୍ୟ, ଏହି ଆପ୍ ସବୁ ସମୟରେ ଆପଣଙ୍କର ଲୋକେସନ୍ ଆକ୍ସେସ୍ କରିବାକୁ ଚାହିଁପାରେ। "<annotation id="link">"ସେଟିଂସରେ ଅନୁମତି ଦିଅନ୍ତୁ।"</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ପାଇଁ ଲୋକେସନ୍ ଆକ୍ସେସ୍ ବଦଳାଇବେ କି?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"ଆପଣ ଆପ୍ ବ୍ୟବହାର କରୁନଥିଲେ ମଧ୍ୟ, ଏହି ଆପ୍ ସବୁ ସମୟରେ ଆପଣଙ୍କର ଲୋକେସନ୍ ଆକ୍ସେସ୍ କରିବାକୁ ଚାହେଁ। "<annotation id="link">"ସେଟିଂସରେ ଅନୁମତି ଦିଅନ୍ତୁ।"</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"ଆଖପାଖର ବ୍ଲୁଟୁଥ୍ ଡିଭାଇସଗୁଡ଼ିକୁ ଖୋଜି ସଂଯୋଗ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"ଆଖପାଖର ବ୍ଲୁଟୁଥ୍ ଡିଭାଇସଗୁଡ଼ିକୁ ଖୋଜି ସଂଯୋଗ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ? "<annotation id="link">"ସେଟିଂସରେ ଅନୁମତି ଦିଅନ୍ତୁ।"</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"ଏହି ଡିଭାଇସର ସଠିକ୍ ଲୋକେସନ୍ ଆକ୍ସେସ୍ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"ଏହି ଡିଭାଇସର ଆନୁମାନିକ ଲୋକେସନ୍ ଆକ୍ସେସ୍ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"ସଠିକ୍"</string>

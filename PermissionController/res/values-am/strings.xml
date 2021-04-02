@@ -107,6 +107,10 @@
     <string name="permission_usage_title" msgid="5095876355858467390">"ዳሽቦርድ"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"የ<xliff:g id="PERMGROUP">%1$s</xliff:g> አጠቃቀም"</string>
     <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"መተግበሪያዎች ባለፉት 24 ሰዓቶች ውስጥ የእርስዎን <xliff:g id="PERMGROUP">%1$s</xliff:g> በመጠቀም ሲያቆሙ"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
+    <skip />
+    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="one">የመጨረሻ መዳረሻ፦ <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> መዳረሻዎች</item>
       <item quantity="other">የመጨረሻ መዳረሻ፦ <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> መዳረሻዎች</item>
@@ -206,7 +210,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"የ<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> እና <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> ፈቃዶች ተወግደዋል"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> እና <xliff:g id="NUMBER">%2$s</xliff:g> ሌሎች ፈቃዶች ተወግደዋል"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"ስራ ላይ ያልዋሉ መተግበሪያዎች"</string>
-    <string name="unused_apps_page_summary" msgid="5271048000004368665">"አንድ መተግበሪያ ለጥቂት ወራት ስራ ላይ ካልዋለ፦\n\n• ግላዊነትዎን ለመጠበቅ ሲባል ፈቃዶች ይወገዳሉ\n• ቦታ ለማስለቀቅ ጊዜያዊ ፋይሎች ይወገዳሉ\n• ባትሪ ለመቆጠብ ማሳወቂያዎች ይቆማሉ"</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"አንድ መተግበሪያ ለጥቂት ወራት ስራ ላይ ካልዋለ፦\n\n• የእርስዎን ውሂብ ለመጠበቅ ፈቃዶች ይወገዳሉ\n• ባትሪ ለመቆጠብ ማሳወቂያዎች ይቆማሉ\n• ቦታን ለማስለቀቅ ጊዜያዊ ፋይሎች ይወገዳሉ"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"መጨረሻ የተከፈተው ከ<xliff:g id="NUMBER">%s</xliff:g> ወሮች በላይ በፊት ነበር"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"መተግበሪያ ለመጨረሻ ጊዜ በ<xliff:g id="DATE">%s</xliff:g> ላይ ተከፍቷል"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"መጨረሻ የተከፈተው <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -219,6 +223,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"ይህ ፈቃድ ያላቸው መተግበሪያዎች ፎቶ ማንሳት እና ቪዲዮ መቅረጽ ይችላሉ"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"ይህ ፈቃድ ያላቸው መተግበሪያዎች የእርስዎን እውቂያዎች መድረስ ይችላሉ"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"ይህ ፈቃድ ያላቸው መተግበሪያዎች የዚህን መሣሪያ መገኛ አካባቢ መድረስ የሚችሉ መተግበሪያዎች"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"ይህ ፈቃድ ያላቸው መተግበሪያዎች በአቅራቢያ ያሉ የብሉቱዝ መሣሪያዎችን ማግኘት እና መገናኘት ይችላሉ"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"ይህ ፈቃድ ያላቸው መተግበሪያዎች ኦዲዮን መቅረጽ ይችላሉ"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"ይህ ፈቃድ ያላቸው መተግበሪያዎች የስልክ ጥሪዎችን ሊያደርግ እና ሊያስተዳድር ይችላል"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"ይህ ፈቃድ ያላቸው መተግበሪያዎች ስለ የእርስዎ መሠረታዊ ምልክቶች የዳሳሽ ውሂብን መድረስ ይችላሉ"</string>
@@ -265,7 +270,7 @@
       <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> ጥቅም ላይ ያልዋሉ መተግበሪያዎች</item>
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> ጥቅም ላይ ያልዋሉ መተግበሪያዎች</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="3704446042109375119">"ፈቃዶች እና ጊዜያዊ ፋይሎች ተወግደዋል። ለመገምገም መታ ያድርጉ።"</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"ፈቃዶች እና ጊዜያዊ ፋይሎች ተወግደዋል እንዲሁም ማሳወቂያዎች ቆመዋል። ለመገምገም መታ ያድርጉ።"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"አንዳንድ መተግበሪያዎች ለጥቂት ወሮች ስራ ላይ አልዋሉም።"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> መተግበሪያዎች ለጥቂት ወሮች ስራ ላይ አልዋሉም</item>
@@ -415,6 +420,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"ይህ መተግበሪያ አካባቢዎን ሁልጊዜ መድረስ ሊፈልግ ይችላል፣ እርስዎ በማይጠቀሙበት ጊዜም እንኳ። "<annotation id="link">"በቅንብሮች ውስጥ ይፍቀዱ"</annotation>"።"</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"ለ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; የመገኛ አካባቢ መዳረሻ ይለወጥ?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"ይህ መተግበሪያ አካባቢዎን ሁልጊዜ መድረስ ይፈልጋል፣ እርስዎ በማይጠቀሙበት ጊዜም እንኳ። "<annotation id="link">"በቅንብሮች ውስጥ ይፍቀዱ"</annotation>"።"</string>
+    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"በአቅራቢያ ያሉ የብሉቱዝ መሣሪያዎችን እንዲያገኝ እና እንዲገናኝ ለ&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ይፈቀድ?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"በአቅራቢያ ያሉ የብሉቱዝ መሣሪያዎችን እንዲያገኝ እና እንዲገናኝ ለ&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ይፈቀድ? "<annotation id="link">"በቅንብሮች ውስጥ ይፍቀዱ።"</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; የዚህን መሣሪያ ትክክለኛ አካባቢ እንዲደርስ ይፈቀድለት?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; የዚህን መሣሪያ ግምታዊ አካባቢ እንዲደርስ ይፈቀድለት?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"ትክክለኛ"</string>

@@ -107,6 +107,10 @@
     <string name="permission_usage_title" msgid="5095876355858467390">"საინფორმაციო დაფა"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g>-ის გამოყენება"</string>
     <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"როდის შეწყვიტეს აპებმა თქვენი <xliff:g id="PERMGROUP">%1$s</xliff:g>-ის გამოყენება გასული 24 საათის განმავლობაში"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
+    <skip />
+    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">ბოლო წვდომა: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> წვდომა</item>
       <item quantity="one">ბოლო წვდომა: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> წვდომა</item>
@@ -206,7 +210,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"ამოშლილია ნებართვები <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> და <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"ამოშლილია <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> და <xliff:g id="NUMBER">%2$s</xliff:g> სხვა ნებართვა"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"გამოუყენებელი აპები"</string>
-    <string name="unused_apps_page_summary" msgid="5271048000004368665">"თუ აპი რამდენიმე თვის განმავლობაში არ გამოიყენება:\n\n• ნებართვები ამოიშლება თქვენი კონფიდენციალურობის დასაცავად\n• დროებითი ფაილები ამოიშლება მეხსიერების გასათავისუფლებლად\n• შეტყობინებების მიღება შეწყდება ბატარეის დასაზოგად"</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"თუ აპი რამდენიმე თვის განმავლობაში არ გამოიყენება:\n\n• ნებართვები ამოიშლება თქვენი მონაცემების დასაცავად\n• შეტყობინებების მიღება შეწყდება ბატარეის დასაზოგად\n• დროებითი ფაილები ამოიშლება მეხსიერების გასათავისუფლებლად"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"აპის ბოლო გახსნა: <xliff:g id="NUMBER">%s</xliff:g>-ზე მეტი თვის წინ"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"აპის ბოლო გახსნა: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"ბოლო გახსნა: <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -219,6 +223,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"ამ ნებართვის მქონე აპებს შეუძლია სურათების გადაღება და ვიდეოს ჩაწერა"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"ამ ნებართვის მქონე აპებს შეუძლიათ წვდომა თქვენს კონტაქტებზე"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"ამ ნებართვის მქონე აპებს შეუძლიათ წვდომა ამ მოწყობილობის მდებარეობაზე"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"ამ ნებართვის მქონე აპებს შეუძლიათ აღმოაჩინონ ახლომახლო Bluetooth მოწყობილობები და დაუკავშირდნენ მათ"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"ამ ნებართვის მქონე აპებს შეუძლიათ აუდიოს ჩაწერა"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"ამ ნებართვის მქონე აპებს შეუძლიათ სატელეფონო ზარების განხორციელება და მართვა"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"ამ ნებართვის მქონე აპებს შეუძლიათ წვდომა სენსორის მონაცემებზე თქვენი სასიცოცხლო ფუნქციების შესახებ"</string>
@@ -265,7 +270,7 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> გამოუყენებელი აპი</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> გამოუყენებელი აპი</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="3704446042109375119">"ნებართვები და დროებითი ფაილები ამოიშალა. შეეხეთ გადასახედად."</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"ნებართვები და დროებითი ფაილები ამოიშალა და შეტყობინებების მიღება შეწყდა. შეეხეთ გადასახედად."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"ზოგიერთი აპი რამდენიმე თვეა გამოუყენებელია"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> აპი რამდენიმე თვეა გამოუყენებელია</item>
@@ -415,6 +420,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"აპი ითხოვს თქვენს მდებარეობაზე წვდომას ნებისმიერ დროს, მაშინაც კი, როცა მას არ იყენებთ. "<annotation id="link">"დაუშვით პარამეტრებიდან."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"გსურთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-ისთვის&lt;/b&gt; მდებარეობაზე წვდომის შეცვლა?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"აპი ითხოვს თქვენს მდებარეობაზე წვდომას ნებისმიერ დროს, მაშინაც კი, როცა მას არ იყენებთ. "<annotation id="link">"დაუშვით პარამეტრებიდან."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"მიეცეს &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ს ახლომახლო Bluetooth მოწყობილობების აღმოჩენისა და მათთან დაკავშირების საშუალება?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"მიეცეს &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ს ახლომახლო Bluetooth მოწყობილობების აღმოჩენისა და მათთან დაკავშირების საშუალება? "<annotation id="link">"დაშვება პარამეტრებში."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"გსურთ, მიანიჭოთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-ს&lt;/b&gt; ამ მოწყობილობის ზუსტ მდებარეობაზე წვდომის ნებართვა?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"გსურთ, მიანიჭოთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-ს&lt;/b&gt; ამ მოწყობილობის მიახლოებით მდებარეობაზე წვდომის ნებართვა?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"ზუსტი"</string>
