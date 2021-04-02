@@ -45,6 +45,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.permissioncontroller.R;
+import com.android.permissioncontroller.permission.model.AppPermissionUsage;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.role.utils.UiUtils;
 
@@ -67,23 +68,26 @@ public class PermissionHistoryPreference extends Preference {
     private final String mTitle;
     private final float mDialogWidthScalar;
     private final float mDialogHeightScalar;
-    private Drawable mWidgetIcon;
-    private List<Long> mAccessTimeList;
-    private ArrayList<String> mAttributionTags;
+    private final List<Long> mAccessTimeList;
+    private final ArrayList<String> mAttributionTags;
+    private final Intent mIntent;
 
-    public PermissionHistoryPreference(@NonNull Context context, @NonNull String packageName,
-            @NonNull String permissionGroup, @NonNull String accessTime, @NonNull Drawable appIcon,
-            @NonNull String title, @Nullable CharSequence accessDuration) {
+    private Drawable mWidgetIcon;
+
+    public PermissionHistoryPreference(@NonNull Context context, @NonNull AppPermissionUsage usage,
+            @NonNull String permissionGroup, @NonNull String accessTime,
+            @Nullable CharSequence accessDuration, @NonNull List<Long> accessTimeList,
+            @NonNull ArrayList<String> attributionTags) {
         super(context);
         mContext = context;
-        mPackageName = packageName;
+        mPackageName = usage.getPackageName();
         mPermissionGroup = permissionGroup;
         mAccessTime = accessTime;
-        mAppIcon = appIcon;
-        mTitle = title;
+        mAppIcon = usage.getApp().getIcon();
+        mTitle = usage.getApp().getLabel();
         mWidgetIcon = null;
-        mAccessTimeList = null;
-        mAttributionTags = null;
+        mAccessTimeList = accessTimeList;
+        mAttributionTags = attributionTags;
         TypedValue outValue = new TypedValue();
         mContext.getResources().getValue(R.dimen.permission_access_time_dialog_width_scalar,
                 outValue, true);
@@ -92,10 +96,19 @@ public class PermissionHistoryPreference extends Preference {
                 outValue, true);
         mDialogHeightScalar = outValue.getFloat();
 
-        setIcon(appIcon);
-        setTitle(title);
+        setIcon(mAppIcon);
+        setTitle(mTitle);
         if (accessDuration != null) {
             setSummary(accessDuration);
+        }
+
+        mIntent = getViewPermissionUsageForPeriodIntent();
+        if (mAccessTimeList.size() > 1) {
+            mWidgetIcon = mContext.getDrawable(R.drawable.ic_history);
+            setWidgetLayoutResource(R.layout.image_view_with_divider);
+        } else if (mIntent != null) {
+            mWidgetIcon = mContext.getDrawable(R.drawable.ic_info_outline);
+            setWidgetLayoutResource(R.layout.image_view_with_divider);
         }
     }
 
@@ -131,14 +144,16 @@ public class PermissionHistoryPreference extends Preference {
         TextView permissionHistoryTime = widget.findViewById(R.id.permission_history_time);
         permissionHistoryTime.setText(mAccessTime);
 
-        if (mWidgetIcon != null) {
-            ImageView widgetView = widgetFrame.findViewById(R.id.icon);
-            widgetView.setImageDrawable(mWidgetIcon);
-            setWidgetViewOnClickListener(widgetView);
+        ImageView widgetView = widgetFrame.findViewById(R.id.icon);
+        if (mAccessTimeList.size() > 1) {
+            setHistoryIcon(widgetView);
+        } else {
+            setInfoIcon(widgetView);
         }
     }
 
-    private void setWidgetViewOnClickListener(ImageView widgetView) {
+    private void setHistoryIcon(ImageView widgetView) {
+        widgetView.setImageDrawable(mWidgetIcon);
         widgetView.setOnClickListener(v -> {
             Dialog dialog = new Dialog(mContext);
             dialog.setContentView(R.layout.access_time_list_dialog);
@@ -159,32 +174,16 @@ public class PermissionHistoryPreference extends Preference {
             AccessTimeListAdapter adapter = new AccessTimeListAdapter(mAccessTimeList);
             recyclerView.setAdapter(adapter);
 
-            LocationManager locationManager = mContext.getSystemService(LocationManager.class);
-            if (locationManager != null && locationManager.isProviderPackage(mPackageName)) {
-                Intent sendIntent = new Intent();
-                sendIntent.setAction(Intent.ACTION_VIEW_PERMISSION_USAGE_FOR_PERIOD);
-                sendIntent.setPackage(mPackageName);
-                sendIntent.putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, mPermissionGroup);
-                sendIntent.putStringArrayListExtra(Intent.EXTRA_ATTRIBUTION_TAGS, mAttributionTags);
-                sendIntent.putExtra(Intent.EXTRA_START_TIME,
-                        mAccessTimeList.get(mAccessTimeList.size() - 1));
-                sendIntent.putExtra(Intent.EXTRA_END_TIME, mAccessTimeList.get(0));
-
-                PackageManager pm = mContext.getPackageManager();
-                ActivityInfo activityInfo = sendIntent.resolveActivityInfo(pm, 0);
-                if (activityInfo != null && Objects.equals(activityInfo.permission,
-                        android.Manifest.permission.START_VIEW_PERMISSION_USAGE)) {
-                    TextView learnMoreView = dialog.findViewById(R.id.learn_more);
-                    learnMoreView.setVisibility(View.VISIBLE);
-                    learnMoreView.setOnClickListener(v1 -> {
-                        try {
-                            mContext.startActivity(sendIntent);
-                        } catch (ActivityNotFoundException e) {
-                            Log.e(LOG_TAG, "No activity found for viewing permission "
-                                    + "usage.");
-                        }
-                    });
-                }
+            if (mIntent != null) {
+                TextView learnMoreView = dialog.findViewById(R.id.learn_more);
+                learnMoreView.setVisibility(View.VISIBLE);
+                learnMoreView.setOnClickListener(v1 -> {
+                    try {
+                        mContext.startActivity(mIntent);
+                    } catch (ActivityNotFoundException e) {
+                        Log.e(LOG_TAG, "No activity found for viewing permission usage.");
+                    }
+                });
             }
 
             dialog.show();
@@ -205,20 +204,43 @@ public class PermissionHistoryPreference extends Preference {
         });
     }
 
-    /**
-     * Set this preference's clustered access time list.
-     */
-    public void setAccessTimeList(@NonNull List<Long> accessTimeList) {
-        mWidgetIcon = mContext.getDrawable(R.drawable.ic_history);
-        mAccessTimeList = accessTimeList;
-        setWidgetLayoutResource(R.layout.image_view_with_divider);
+    private void setInfoIcon(ImageView widgetView) {
+        if (mIntent != null) {
+            widgetView.setImageDrawable(mWidgetIcon);
+            widgetView.setOnClickListener(v -> {
+                try {
+                    mContext.startActivity(mIntent);
+                } catch (ActivityNotFoundException e) {
+                    Log.e(LOG_TAG, "No activity found for viewing permission usage.");
+                }
+            });
+        }
     }
 
     /**
-     * Set attribution tags for the location provider 'learn more' link intent.
+     * Get a {@link Intent#ACTION_VIEW_PERMISSION_USAGE_FOR_PERIOD} intent, or null if the intent
+     * can't be handled.
      */
-    public void setAttributionTags(@Nullable ArrayList<String> attributionTags) {
-        mAttributionTags = attributionTags;
+    private Intent getViewPermissionUsageForPeriodIntent() {
+        LocationManager locationManager = mContext.getSystemService(LocationManager.class);
+        if (locationManager != null && locationManager.isProviderPackage(mPackageName)) {
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_VIEW_PERMISSION_USAGE_FOR_PERIOD);
+            sendIntent.setPackage(mPackageName);
+            sendIntent.putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, mPermissionGroup);
+            sendIntent.putExtra(Intent.EXTRA_ATTRIBUTION_TAGS, mAttributionTags.toArray());
+            sendIntent.putExtra(Intent.EXTRA_START_TIME,
+                    mAccessTimeList.get(mAccessTimeList.size() - 1));
+            sendIntent.putExtra(Intent.EXTRA_END_TIME, mAccessTimeList.get(0));
+
+            PackageManager pm = mContext.getPackageManager();
+            ActivityInfo activityInfo = sendIntent.resolveActivityInfo(pm, 0);
+            if (activityInfo != null && Objects.equals(activityInfo.permission,
+                    android.Manifest.permission.START_VIEW_PERMISSION_USAGE)) {
+                return sendIntent;
+            }
+        }
+        return null;
     }
 
     /**

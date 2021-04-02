@@ -286,23 +286,17 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
                     accessDuration = UtilsKt.getDurationUsedStr(context, accessDurationLong);
                 }
 
+                List<Long> accessTimeList = usage.mClusteredAccessTimeList
+                        .stream().map(p -> p.first).collect(Collectors.toList());
+                ArrayList<String> attributionTags =
+                        usage.mAppPermissionUsage.getGroupUsages().stream().filter(groupUsage ->
+                                groupUsage.getGroup().getName().equals(mFilterGroup)).map(
+                                AppPermissionUsage.GroupUsage::getAttributionTags).filter(
+                                Objects::nonNull).flatMap(Collection::stream).collect(
+                                Collectors.toCollection(ArrayList::new));
                 PermissionHistoryPreference permissionUsagePreference = new
-                        PermissionHistoryPreference(context,
-                        usage.mAppPermissionUsage.getPackageName(),
-                        mFilterGroup, accessTime, usage.mAppPermissionUsage.getApp().getIcon(),
-                        usage.mAppPermissionUsage.getApp().getLabel(), accessDuration);
-                if (usage.mClusteredAccessTimeList.size() > 1) {
-                    permissionUsagePreference.setAccessTimeList(usage.mClusteredAccessTimeList
-                            .stream().map(p -> p.first).collect(Collectors.toList()));
-
-                    ArrayList<String> attributionTags =
-                            usage.mAppPermissionUsage.getGroupUsages().stream().filter(groupUsage ->
-                                    groupUsage.getGroup().getName().equals(mFilterGroup)).map(
-                                    AppPermissionUsage.GroupUsage::getAttributionTags).filter(
-                                    Objects::nonNull).flatMap(Collection::stream).collect(
-                                    Collectors.toCollection(ArrayList::new));
-                    permissionUsagePreference.setAttributionTags(attributionTags);
-                }
+                        PermissionHistoryPreference(context, usage.mAppPermissionUsage,
+                        mFilterGroup, accessTime, accessDuration, accessTimeList, attributionTags);
 
                 category.get().addPreference(permissionUsagePreference);
             }
