@@ -16,9 +16,11 @@
 
 package com.android.permissioncontroller.hibernation
 
+import android.app.usage.UsageStatsManager
 import android.apphibernation.AppHibernationManager
 import android.content.Context
 import android.content.Context.APP_HIBERNATION_SERVICE
+import android.content.Context.USAGE_STATS_SERVICE
 import android.os.Build
 import android.os.UserHandle
 import com.android.permissioncontroller.DumpableLog
@@ -27,7 +29,7 @@ import com.android.permissioncontroller.permission.model.livedatatypes.LightPack
 /**
  * Hibernation controller that handles modifying hibernation state.
  */
-class HibernationController(val context: Context) {
+class HibernationController(val context: Context, val unusedThreshold: Long) {
 
     companion object {
         private const val LOG_TAG = "HibernationController"
@@ -65,10 +67,33 @@ class HibernationController(val context: Context) {
                 }
             }
         }
+
+        // Globally hibernate any of the hibernated apps that are unused by any user
+        val usageStatsManager = context.getSystemService(USAGE_STATS_SERVICE) as UsageStatsManager
+        val hibernationManager =
+            context.getSystemService(APP_HIBERNATION_SERVICE) as AppHibernationManager
+        val globallyHibernatedApps = mutableSetOf<String>()
+        for ((pkgName, _) in hibernatedApps) {
+            if (globallyHibernatedApps.contains(pkgName) ||
+                hibernationManager.isHibernatingGlobally(pkgName)) {
+                continue
+            }
+
+            val now = System.currentTimeMillis()
+            val lastUsedGlobally = usageStatsManager.getLastTimeAnyComponentUsed(pkgName)
+            if (now - lastUsedGlobally < unusedThreshold) {
+                continue
+            }
+
+            hibernationManager.setHibernatingGlobally(pkgName, true)
+            globallyHibernatedApps.add(pkgName)
+        }
         if (DEBUG_HIBERNATION) {
             DumpableLog.i(LOG_TAG,
-                "Done hibernating apps $hibernatedApps")
+                "Done hibernating apps $hibernatedApps \n " +
+                "Globally hibernating apps $globallyHibernatedApps")
         }
+
         return hibernatedApps
     }
 }

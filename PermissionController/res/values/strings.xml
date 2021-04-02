@@ -308,6 +308,31 @@
     <!-- Link text for intent out to location provider [CHAR LIMIT=20] -->
     <string name="permission_usage_access_dialog_learn_more">Learn more</string>
 
+    <!-- Duration used for a permission in days -->
+    <plurals name="duration_used_days">
+        <item quantity="one">Used for 1 day</item>
+        <item quantity="other">Used for <xliff:g id="number" example="7">%s</xliff:g> days</item>
+    </plurals>
+
+    <!-- Duration used for a permission in hours -->
+    <plurals name="duration_used_hours">
+        <item quantity="one">Used for 1 hour</item>
+        <item quantity="other">Used for <xliff:g id="number" example="7">%s</xliff:g> hours</item>
+    </plurals>
+
+    <!-- Duration used for a permission in minutes -->
+    <plurals name="duration_used_minutes">
+        <item quantity="one">Used for 1 min</item>
+        <item quantity="other">Used for <xliff:g id="number" example="7">%s</xliff:g> mins</item>
+    </plurals>
+
+    <!-- Duration used for a permission in seconds -->
+    <plurals name="duration_used_seconds">
+        <item quantity="one">Used for 1 sec</item>
+        <item quantity="other">Used for <xliff:g id="number" example="7">%s</xliff:g> secs</item>
+    </plurals>
+
+
     <!-- Summary for showing a single permission access and the number of accesses [CHAR LIMIT=80] -->
     <plurals name="permission_usage_summary">
         <item quantity="one">Last access: <xliff:g id="time" example="12:10 PM">%1$s</xliff:g>\n<xliff:g id="num" example="42">%2$s</xliff:g> access</item>
@@ -460,6 +485,12 @@
 
     <!-- Label for the title of permission history. [CHAR LIMIT=20] -->
     <string name="permission_history_title">Permission history</string>
+
+    <!-- Label for the category title of permission history of today. [CHAR LIMIT=20] -->
+    <string name="permission_history_category_today">Today</string>
+
+    <!-- Label for the category title of permission history of yesterday. [CHAR LIMIT=20] -->
+    <string name="permission_history_category_yesterday">Yesterday</string>
 
     <!-- Help URL, permission usage [DO NOT TRANSLATE] -->
     <string name="help_permission_usage" translatable="false"></string>
