@@ -107,10 +107,8 @@
     <string name="permission_usage_title" msgid="5095876355858467390">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‎‎‎‏‏‎‏‎‏‏‏‎‎‎‎‎‏‏‎‎‎‎‏‎‎‎‏‎‏‏‏‏‏‎‏‎‏‎‎‏‎‎‎‎‎‏‏‎‎‎‏‎‏‎‎‎‏‏‏‏‏‎‎Dashboard‎‏‎‎‏‎"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‎‎‏‎‎‎‎‎‎‎‎‏‏‎‏‎‏‎‏‏‎‏‏‎‎‎‎‎‏‎‎‏‏‎‎‏‎‏‎‏‏‏‎‏‎‎‏‎‎‏‏‏‎‏‎‏‏‎‏‎‏‎‎‏‎‎‏‏‎<xliff:g id="PERMGROUP">%1$s</xliff:g>‎‏‎‎‏‏‏‎ usage‎‏‎‎‏‎"</string>
     <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‎‎‏‎‎‏‏‎‎‏‎‏‎‏‎‏‏‎‎‏‎‏‏‎‎‏‎‎‎‏‏‏‎‏‎‎‏‏‏‏‎‏‏‏‏‎‏‏‎‎‎‎‏‎‎‎‎‎‏‎‏‏‎When apps stopped using your ‎‏‎‎‏‏‎<xliff:g id="PERMGROUP">%1$s</xliff:g>‎‏‎‎‏‏‏‎ in the last 24 hours‎‏‎‎‏‎"</string>
-    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
-    <skip />
-    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
-    <skip />
+    <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‎‎‏‏‎‏‎‏‎‎‎‎‏‎‎‏‏‏‎‏‏‎‎‏‎‎‎‏‎‏‏‎‎‎‏‎‎‏‏‏‏‏‎‎‏‏‎‏‏‎‏‎‎‎‎‎‎‎‎‏‎‏‎When this app used your ‎‏‎‎‏‏‎<xliff:g id="PERMGROUP">%1$s</xliff:g>‎‏‎‎‏‏‏‎:‎‏‎‎‏‎"</string>
+    <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‎‎‎‏‎‏‏‎‏‎‏‎‎‏‎‎‎‏‎‎‏‏‏‎‏‎‏‏‏‏‎‎‎‎‎‏‏‎‏‎‎‏‎‎‏‎‎‏‏‏‎‎‎‎‏‏‎‎‏‎‏‎Learn more‎‏‎‎‏‎"</string>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‎‎‏‏‏‎‏‎‏‏‏‏‏‎‎‎‏‏‏‏‏‏‏‏‏‏‏‎‎‏‎‎‏‎‏‏‎‏‎‏‎‏‎‎‏‏‏‏‏‏‏‏‏‎‏‎‏‎‎‏‏‎Last access: ‎‏‎‎‏‏‎<xliff:g id="TIME_2">%1$s</xliff:g>‎‏‎‎‏‏‏‎‎‏‎‎‏‏‎\n‎‏‎‎‏‏‏‎‎‏‎‎‏‏‎<xliff:g id="NUM_3">%2$s</xliff:g>‎‏‎‎‏‏‏‎ accesses‎‏‎‎‏‎</item>
       <item quantity="one">‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‎‎‏‏‏‎‏‎‏‏‏‏‏‎‎‎‏‏‏‏‏‏‏‏‏‏‏‎‎‏‎‎‏‎‏‏‎‏‎‏‎‏‎‎‏‏‏‏‏‏‏‏‏‎‏‎‏‎‎‏‏‎Last access: ‎‏‎‎‏‏‎<xliff:g id="TIME_0">%1$s</xliff:g>‎‏‎‎‏‏‏‎‎‏‎‎‏‏‎\n‎‏‎‎‏‏‏‎‎‏‎‎‏‏‎<xliff:g id="NUM_1">%2$s</xliff:g>‎‏‎‎‏‏‏‎ access‎‏‎‎‏‎</item>
