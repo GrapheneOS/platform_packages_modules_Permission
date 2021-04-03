@@ -41,7 +41,7 @@
     <string name="permission_revoked_none" msgid="9213345075484381180">"אין הרשאות מושבתות"</string>
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"יש אישור"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"כן, כל הזמן"</string>
-    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"בעת שימוש באפליקציה"</string>
+    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"בזמן השימוש באפליקציה"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"שינוי למיקום המדויק"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"רק הפעם"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"להתיר כל הזמן"</string>
@@ -72,7 +72,7 @@
     <string name="no_apps" msgid="2412612731628386816">"אין אפליקציות"</string>
     <string name="location_settings" msgid="3624412509133422562">"הגדרות מיקום"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> הוא ספק של שירותי מיקום בשביל המכשיר הזה. אפשר לשנות את גישת המיקום בהגדרות המיקום."</string>
-    <string name="system_warning" msgid="1173400963234358816">"אם ההרשאה הזו תידחה, ייתכן שתכונות בסיסיות במכשיר לא יפעלו כצפוי."</string>
+    <string name="system_warning" msgid="1173400963234358816">"אם ההרשאה הזו תידחה, ייתכן שתכונות בסיסיות במכשיר לא יפעלו כראוי."</string>
     <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"אם ההרשאה הזו לא תאושר, ייתכן שחלק מהתכונות של המכשיר אשר מנוהלות על ידי האפליקציה הזו לא יפעלו כצפוי."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"נאכפה על ידי מדיניות"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"הגישה ברקע מושבתת על ידי מדיניות"</string>
@@ -89,7 +89,7 @@
     <string name="permission_access_always" msgid="1474641821883823446">"להתיר כל הזמן"</string>
     <string name="permission_access_only_foreground" msgid="7801170728159326195">"רק כשהאפליקציה בשימוש"</string>
     <string name="permission_access_never" msgid="1029877154284995424">"אני לא מרשה"</string>
-    <string name="loading" msgid="4789365003890741082">"טוען…"</string>
+    <string name="loading" msgid="4789365003890741082">"בטעינה…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"כל ההרשאות"</string>
     <string name="other_permissions" msgid="2901186127193849594">"הרשאות אחרות של האפליקציה"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"בקשת הרשאה"</string>
@@ -218,7 +218,7 @@
     <string name="auto_revoke_disabled" msgid="8697684442991567188">"ההסרה האוטומטית מושבתת בשלב זה לאפליקציה הזו."</string>
     <string name="auto_revocable_permissions_none" msgid="8334929619113991466">"אין הרשאות שמוענקות כרגע, שניתנות לביטול אוטומטית"</string>
     <string name="auto_revocable_permissions_one" msgid="5299112369449458176">"הרשאת <xliff:g id="PERM">%1$s</xliff:g> תוסר."</string>
-    <string name="auto_revocable_permissions_two" msgid="4874067408752041716">"הרשאות של <xliff:g id="PERM_0">%1$s</xliff:g> ו<xliff:g id="PERM_1">%2$s</xliff:g> יוסרו."</string>
+    <string name="auto_revocable_permissions_two" msgid="4874067408752041716">"ההרשאות <xliff:g id="PERM_0">%1$s</xliff:g> ו<xliff:g id="PERM_1">%2$s</xliff:g> יוסרו."</string>
     <string name="auto_revocable_permissions_many" msgid="1521807896206032992">"ההרשאות שיוסרו: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_manage_title" msgid="7693181026874842935">"ניהול הרשאות באופן אוטומטי"</string>
     <string name="off" msgid="1438489226422866263">"כבוי"</string>
@@ -285,7 +285,7 @@
     <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> אפליקציות שמזמן לא השתמשת בהן"</string>
     <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"הוסרו הרשאות כדי להגן על הפרטיות שלך. יש להקיש כדי לבדוק"</string>
     <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"הוסרו הרשאות לאפליקציות שמזמן לא השתמשת בהן"</string>
-    <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"יש אפליקציות שלא נעשה בהן שימוש כבר כמה חודשים. יש להקיש כדי לבדוק."</string>
+    <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"יש אפליקציות שלא נעשה בהן שימוש כבר כמה חודשים. אפשר להקיש כדי לבדוק."</string>
     <plurals name="auto_revoke_permission_notification_content_count" formatted="false" msgid="9159794096518540350">
       <item quantity="two">כבר כמה חודשים שלא נעשה שימוש ב-<xliff:g id="COUNT_1">%1$d</xliff:g> אפליקציות. יש להקיש כדי לבדוק</item>
       <item quantity="many">כבר כמה חודשים שלא נעשה שימוש ב-<xliff:g id="COUNT_1">%1$d</xliff:g> אפליקציות. יש להקיש כדי לבדוק</item>
@@ -324,7 +324,7 @@
     <string name="unused_apps_subtitle_after" msgid="2034267519506357898">"הרשאות הוסרו מהאפליקציות"</string>
     <string name="unused_apps_subtitle_before" msgid="5233302577076132427">"הרשאות יוסרו מהאפליקציות"</string>
     <string name="unused_permissions_subtitle_two" msgid="2207266295008423015">"<xliff:g id="PERM_NAME_0">%1$s</xliff:g> וגם <xliff:g id="PERM_NAME_1">%2$s</xliff:g>"</string>
-    <string name="unused_permissions_subtitle_many" msgid="4387289202207450238">"<xliff:g id="PERM_NAME_0">%1$s</xliff:g>, <xliff:g id="PERM_NAME_1">%2$s</xliff:g> ועוד <xliff:g id="NUMBER_OF_PERMISSIONS">%3$s</xliff:g>"</string>
+    <string name="unused_permissions_subtitle_many" msgid="4387289202207450238">"<xliff:g id="PERM_NAME_0">%1$s</xliff:g>,‏ <xliff:g id="PERM_NAME_1">%2$s</xliff:g> ועוד <xliff:g id="NUMBER_OF_PERMISSIONS">%3$s</xliff:g>"</string>
     <string name="unused_app_permissions_removed_summary" msgid="6779039455326071033">"כדי להגן על הנתונים שלך, הוסרו הרשאות מאפליקציות שלא השתמשת בהן כבר כמה חודשים"</string>
     <string name="unused_app_permissions_removed_summary_some" msgid="5080490037831563441">"כדי להגן על הנתונים שלך, הוסרו הרשאות מאפליקציות מסוימות שלא השתמשת בהן כבר כמה חודשים"</string>
     <string name="one_unused_app_summary" msgid="7831913934488881991">"לא נעשה שימוש באפליקציה אחת במשך מספר חודשים"</string>
@@ -467,13 +467,13 @@
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"האפליקציה הזו רוצה להקליט אודיו כל הזמן, גם כשהיא לא בשימוש. "<annotation id="link">"ניתן לאשר זאת בהגדרות."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"‏האם לאפשר לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; גישה לפעילות הגופנית שלך?"</string>
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"‏לאשר לאפליקציית &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; לצלם תמונות וסרטונים?"</string>
-    <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"האפליקציה תוכל לצלם תמונות ולהקליט סרטונים רק כאשר היא בשימוש"</string>
+    <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"האפליקציה תוכל לצלם תמונות וסרטונים רק כאשר היא בשימוש"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאה לצלם תמונות וסרטונים?"</string>
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"ייתכן שהאפליקציה הזו תרצה לצלם תמונות ולהקליט סרטונים כל הזמן, גם כשהיא לא בשימוש. "<annotation id="link">"ניתן לאשר זאת בהגדרות."</annotation></string>
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"‏לשנות את הרשאת הגישה של המצלמה אל &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"האפליקציה זו רוצה לצלם תמונות ולהקליט סרטונים כל הזמן, גם כשהיא לא בשימוש. "<annotation id="link">"ניתן לאשר זאת בהגדרות."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה ליומני השיחות של הטלפון?"</string>
-    <string name="permgrouprequest_phone" msgid="1829234136997316752">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאה להתקשרות ולניהול של שיחות טלפון?"</string>
+    <string name="permgrouprequest_phone" msgid="1829234136997316752">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאה לבצע ולנהל שיחות טלפון?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה לנתוני חיישנים העוקבים אחר הסימנים החיוניים שלך?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"הרשאות בבקרה"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"ניתן לגשת למיקום"</string>
