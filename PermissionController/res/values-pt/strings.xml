@@ -107,6 +107,10 @@
     <string name="permission_usage_title" msgid="5095876355858467390">"Painel"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Uso do grupo de permissões <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"Quando os apps pararam de usar o grupo de permissões <xliff:g id="PERMGROUP">%1$s</xliff:g> nas últimas 24 horas"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
+    <skip />
+    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="one">Último acesso: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g></item>
       <item quantity="other">Últimos acessos: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g></item>
@@ -206,7 +210,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Permissões <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> e <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> removidas"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> e mais <xliff:g id="NUMBER">%2$s</xliff:g> permissões removidas"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Apps não usados"</string>
-    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Se um app fica sem uso por alguns meses:\n\n• as permissões são removidas para proteger sua privacidade;\n• os arquivos temporários são removidos para liberar espaço;\n• as notificações são interrompidas para economizar bateria."</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Se um app fica sem uso por alguns meses:\n\n• as permissões são removidas para proteger seus dados;\n• as notificações são interrompidas para economizar bateria;\n• os arquivos temporários são removidos para liberar espaço."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Usado pela última vez há mais de <xliff:g id="NUMBER">%s</xliff:g> meses"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"App aberto pela última vez em <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Aberto pela última vez em <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -219,6 +223,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Apps que têm esta permissão podem tirar fotos e gravar vídeos"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Apps que têm esta permissão podem acessar seus contatos"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Apps que têm esta permissão podem acessar o local deste dispositivo"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Os apps com essa permissão podem descobrir e se conectar a dispositivos Bluetooth por perto"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Apps que têm esta permissão podem gravar áudio"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Apps que têm esta permissão podem fazer e gerenciar chamadas telefônicas"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Apps com esta permissão têm acesso aos seus sinais vitais coletados pelo sensor"</string>
@@ -265,7 +270,7 @@
       <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> app não usado</item>
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> apps não usados</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="3704446042109375119">"As permissões e os arquivos temporários foram removidos. Toque para revisar."</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"As permissões e os arquivos temporários foram removidos, e as notificações foram interrompidas. Toque para revisar."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Alguns apps não foram usados nos últimos meses"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> app não foi usado nos últimos meses</item>
@@ -415,6 +420,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Este app pode querer acessar sua localização o tempo todo, mesmo quando não estiver em uso. "<annotation id="link">"Permita o acesso nas configurações"</annotation>"."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Mudar o acesso que o app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tem à localização?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Este app quer acessar sua localização o tempo todo, mesmo quando não estiver em uso. "<annotation id="link">"Permita o acesso nas configurações"</annotation>"."</string>
+    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; descubra e se conecte a dispositivos Bluetooth por perto?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; descubra e se conecte a dispositivos Bluetooth por perto? "<annotation id="link">"Permita nas configurações."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Permitir que o app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acesse o local exato deste dispositivo?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Permitir que o app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acesse o local aproximado deste dispositivo?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Exato"</string>

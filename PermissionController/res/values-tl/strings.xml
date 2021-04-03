@@ -107,6 +107,10 @@
     <string name="permission_usage_title" msgid="5095876355858467390">"Dashboard"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Paggamit ng <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"Kung kailan tumigil ang mga app sa paggamit ng iyong <xliff:g id="PERMGROUP">%1$s</xliff:g> sa nakaraang 24 na oras"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
+    <skip />
+    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="one">Huling pag-access: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> pag-access</item>
       <item quantity="other">Huling pag-access: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> na pag-access</item>
@@ -206,7 +210,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Inalis ang mga pahintulot na <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> at <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Inalis ang <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> at <xliff:g id="NUMBER">%2$s</xliff:g> pang pahintulot"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Mga hindi ginagamit na app"</string>
-    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Kapag hindi ginamit ang isang app sa loob ng ilang buwan:\n\n• Aalisin ang mga pahintulot para maprotektahan ang iyong privacy\n• Aalisin ang mga pansamantalang file para magbakante ng space\n• Ihihinto ang mga notification para makatipid sa baterya"</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Kapag hindi ginamit ang isang app sa loob ng ilang buwan:\n\n• Aalisin ang mga pahintulot para maprotektahan ang iyong data\n• Ihihinto ang mga notification para makatipid ng baterya\n• Aalisin ang mga pansamantalang file para magbakante ng espasyo"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Huling binuksan mahigit <xliff:g id="NUMBER">%s</xliff:g> (na) buwan na ang nakakalipas"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Huling binuksan ang app noong <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Huling binuksan noong <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -219,6 +223,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Makakakuha ng mga larawan at makakapag-record ng mga video ang mga app na may ganitong pahintulot"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Maa-access ng mga app na may ganitong pahintulot ang iyong mga contact"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Maa-access ng mga app na may ganitong pahintulot ang lokasyon ng device na ito"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Ang mga app na may ganitong pahintulot ay puwedeng tumuklas at kumonekta sa mga malapit na Bluetooth device"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Makakapag-record ng audio ang mga app na may ganitong pahintulot"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Makakatawag at makakapamahala ng mga tawag sa telepono ang mga app na may ganitong pahintulot"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Maa-access ng mga app na may ganitong pahintulot ang data ng sensor tungkol sa iyong mga vital sign"</string>
@@ -265,7 +270,7 @@
       <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> hindi ginagamit na app</item>
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> na hindi ginagamit na app</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="3704446042109375119">"Inalis ang mga pahintulot at pansamantalang file. I-tap para suriin."</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"Inalis ang mga pahintulot at pansamantalang file at inihinto ang mga notification. I-tap para suriin."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"May ilang app na ilang buwan nang hindi ginagamit"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="one">May <xliff:g id="COUNT_1">%1$d</xliff:g> app na ilang buwan nang hindi ginagamit.</item>
@@ -415,6 +420,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Posibleng gustong i-access ng app na ito ang iyong lokasyon sa lahat ng oras, kahit na hindi mo ginagamit ang app. "<annotation id="link">"Payagan sa mga setting."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Baguhin ang access sa lokasyon para sa &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Gustong i-access ng app na ito ang iyong lokasyon sa lahat ng oras, kahit na hindi mo ginagamit ang app. "<annotation id="link">"Payagan sa mga setting."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na tumuklas at kumonekta sa mga malapit na Bluetooth device?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na tumuklas at kumonekta sa mga malapit na Bluetooth device? "<annotation id="link">"Payagan sa mga setting."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang eksaktong lokasyon ng device na ito?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Payagan ang &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na i-access ang tinatantyang lokasyon ng device na ito?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Eksakto"</string>

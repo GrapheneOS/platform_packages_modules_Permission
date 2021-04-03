@@ -107,6 +107,10 @@
     <string name="permission_usage_title" msgid="5095876355858467390">"Табло за управление"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Употреба на разрешенията за <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="5302255813297881611">"Кога през последните 24 часа приложенията са спрели да използват групата разрешения за <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
+    <skip />
+    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
+    <skip />
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Последен достъп: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> осъществявания на достъп</item>
       <item quantity="one">Последен достъп: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> осъществяване на достъп</item>
@@ -206,7 +210,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Разрешенията за <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> и <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> са премахнати"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Разрешението за <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> и още <xliff:g id="NUMBER">%2$s</xliff:g> са премахнати"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Неизползвани приложения"</string>
-    <string name="unused_apps_page_summary" msgid="5271048000004368665">"Ако дадено приложение не бъде използвано няколко месеца:\n\n• разрешенията ще бъдат премахнати с цел защита на поверителността ви;\n• временните файлове ще бъдат премахнати, за да се освободи място;\n• известията ще бъдат спрени с цел икономия на батерията."</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Ако дадено приложение не бъде използвано няколко месеца:\n\n• разрешенията ще бъдат премахнати с цел защита на данните ви;\n• известията ще бъдат спрени с цел икономия на батерията;\n• временните файлове ще бъдат премахнати, за да се освободи място."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Последно отваряне преди повече от <xliff:g id="NUMBER">%s</xliff:g> месеца"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Приложението е отворено за последно на <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Последно отваряне на <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -219,6 +223,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Приложенията с това разрешение могат да правят снимки и да записват видеоклипове"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Приложенията с това разрешение имат достъп до контактите ви"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Приложенията с това разрешение имат достъп до местоположението на устройството"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Приложенията с това разрешение могат да откриват устройства с Bluetooth в близост и да се свързват с тях"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Приложенията с това разрешение могат да записват аудио"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Приложенията с това разрешение могат да извършват телефонни обаждания и да ги управляват"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Приложенията с това разрешение имат достъп до данните от сензорите за жизнените ви показатели"</string>
@@ -265,7 +270,7 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> неизползвани приложения</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> неизползвано приложение</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="3704446042109375119">"Разрешенията и временните файлове са премахнати. Докоснете за преглед."</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"Разрешенията и временните файлове бяха премахнати, а известията – спрени. Докоснете за преглед."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Някои приложения не са използвани от няколко месеца"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> приложения не са използвани от няколко месеца</item>
@@ -415,6 +420,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Това приложение може да иска да осъществява постоянен достъп до местоположението ви – дори когато не го използвате. "<annotation id="link">"Разрешете от настройките"</annotation>"."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Да се промени ли достъпът до местоположението за &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Това приложение иска да осъществява постоянен достъп до местоположението ви – дори когато не го използвате. "<annotation id="link">"Разрешете от настройките"</annotation>"."</string>
+    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"Да се разреши ли на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да открива устройства с Bluetooth в близост и да се свързва с тях?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"Да се разреши ли на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да открива устройства с Bluetooth в близост и да се свързва с тях? "<annotation id="link">"Разрешаване от настройките"</annotation>"."</string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Да се разреши ли на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да осъществява достъп до точното местоположение на това устройство?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Да се разреши ли на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да осъществява достъп до приблизителното местоположение на това устройство?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Точно"</string>
