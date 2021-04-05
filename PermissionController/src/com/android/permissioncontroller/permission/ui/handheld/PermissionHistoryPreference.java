@@ -150,6 +150,14 @@ public class PermissionHistoryPreference extends Preference {
         } else {
             setInfoIcon(widgetView);
         }
+
+        setOnPreferenceClickListener((preference) -> {
+            Intent intent = new Intent(Intent.ACTION_MANAGE_APP_PERMISSIONS);
+            intent.putExtra(Intent.EXTRA_PACKAGE_NAME, mPackageName);
+
+            mContext.startActivity(intent);
+            return true;
+        });
     }
 
     private void setHistoryIcon(ImageView widgetView) {
