@@ -136,6 +136,14 @@ public class PermissionHistoryPreference extends Preference {
             widgetView.setImageDrawable(mWidgetIcon);
             setWidgetViewOnClickListener(widgetView);
         }
+
+        setOnPreferenceClickListener((preference) -> {
+            Intent intent = new Intent(Intent.ACTION_MANAGE_APP_PERMISSIONS);
+            intent.putExtra(Intent.EXTRA_PACKAGE_NAME, mPackageName);
+
+            mContext.startActivity(intent);
+            return true;
+        });
     }
 
     private void setWidgetViewOnClickListener(ImageView widgetView) {
