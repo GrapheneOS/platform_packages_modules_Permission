@@ -88,6 +88,8 @@ class AppPermissionViewModel(
 
     companion object {
         private val LOG_TAG = AppPermissionViewModel::class.java.simpleName
+
+        private const val DEVICE_PROFILE_ROLE_PREFIX = "android.app.role"
     }
 
     interface ConfirmDialogShowingFragment {
@@ -509,6 +511,7 @@ class AppPermissionViewModel(
         val shouldRevokeBackground = changeRequest andValue ChangeRequest.REVOKE_BACKGROUND != 0
         var showDefaultDenyDialog = false
         var showGrantedByDefaultWarning = false
+        var showCDMWarning = false
 
         if (shouldRevokeForeground && wasForegroundGranted) {
             showDefaultDenyDialog = (group.foreground.isGrantedByDefault ||
@@ -516,6 +519,7 @@ class AppPermissionViewModel(
                     group.hasInstallToRuntimeSplit)
             showGrantedByDefaultWarning = showGrantedByDefaultWarning ||
                     group.foreground.isGrantedByDefault
+            showCDMWarning = showCDMWarning || group.foreground.isGrantedByRole
         }
 
         if (shouldRevokeBackground && wasBackgroundGranted) {
@@ -525,6 +529,15 @@ class AppPermissionViewModel(
                     group.hasInstallToRuntimeSplit
             showGrantedByDefaultWarning = showGrantedByDefaultWarning ||
                     group.background.isGrantedByDefault
+            showCDMWarning = showCDMWarning || group.background.isGrantedByRole
+        }
+
+        if (showCDMWarning) {
+            // Refine showCDMWarning to only trigger for apps holding a device profile role
+            val heldRoles = context.getSystemService(android.app.role.RoleManager::class.java)
+                    .getHeldRolesFromController(packageName)
+            val heldProfiles = heldRoles.filter { it.startsWith(DEVICE_PROFILE_ROLE_PREFIX) }
+            showCDMWarning = showCDMWarning && heldProfiles.isNotEmpty()
         }
 
         if (showDefaultDenyDialog && !hasConfirmedRevoke && showGrantedByDefaultWarning) {
@@ -536,6 +549,12 @@ class AppPermissionViewModel(
         if (showDefaultDenyDialog && !hasConfirmedRevoke) {
             defaultDeny.showConfirmDialog(changeRequest, R.string.old_sdk_deny_warning,
                     buttonClicked, setOneTime)
+            return
+        }
+
+        if (showCDMWarning) {
+            defaultDeny.showConfirmDialog(changeRequest,
+                    R.string.cdm_profile_revoke_warning, buttonClicked, setOneTime)
             return
         }
 
