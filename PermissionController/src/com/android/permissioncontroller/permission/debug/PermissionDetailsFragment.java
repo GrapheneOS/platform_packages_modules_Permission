@@ -28,6 +28,8 @@ import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.ArraySet;
 import android.util.Pair;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -53,6 +55,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -71,12 +74,22 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
     private static final int ONE_MINUTE_MS = 60000;
     private static final int CLUSTER_MINUTES_APART = 1;
 
+    private static final String KEY_SHOW_SYSTEM_PREFS = "_show_system";
+    private static final String SHOW_SYSTEM_KEY = PermissionUsageFragment.class.getName()
+            + KEY_SHOW_SYSTEM_PREFS;
+
     private @Nullable String mFilterGroup;
     private @Nullable List<AppPermissionUsage> mAppPermissionUsages = new ArrayList<>();
     private @NonNull List<TimeFilterItem> mFilterTimes;
     private int mFilterTimeIndex;
     private @NonNull PermissionUsages mPermissionUsages;
     private boolean mFinishedInitialLoad;
+
+    private boolean mShowSystem;
+    private boolean mHasSystemApps;
+
+    private MenuItem mShowSystemMenu;
+    private MenuItem mHideSystemMenu;
 
     /**
      * Construct a new instance of PermissionDetailsFragment
@@ -100,6 +113,13 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
         mFinishedInitialLoad = false;
         initializeTimeFilter();
         mFilterTimeIndex = FILTER_24_HOURS;
+
+        // TODO: theianchen set the default value of mShowSystem to true for testing purposes
+        mShowSystem = true;
+
+        if (savedInstanceState != null) {
+            mShowSystem = savedInstanceState.getBoolean(SHOW_SYSTEM_KEY);
+        }
 
         if (mFilterGroup == null) {
             mFilterGroup = getArguments().getString(Intent.EXTRA_PERMISSION_GROUP_NAME);
@@ -139,10 +159,43 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(SHOW_SYSTEM_KEY, mShowSystem);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        if (mHasSystemApps) {
+            mShowSystemMenu = menu.add(Menu.NONE, MENU_SHOW_SYSTEM, Menu.NONE,
+                    R.string.menu_show_system);
+            mHideSystemMenu = menu.add(Menu.NONE, MENU_HIDE_SYSTEM, Menu.NONE,
+                    R.string.menu_hide_system);
+        }
+
+        updateMenu();
+    }
+
+    private void updateMenu() {
+        if (mHasSystemApps) {
+            mShowSystemMenu.setVisible(!mShowSystem);
+            mHideSystemMenu.setVisible(mShowSystem);
+        }
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            getActivity().finish();
-            return true;
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                getActivity().finish();
+                return true;
+            case MENU_SHOW_SYSTEM:
+            case MENU_HIDE_SYSTEM:
+                mShowSystem = item.getItemId() == MENU_SHOW_SYSTEM;
+                // We already loaded all data, so don't reload
+                updateUI();
+                updateMenu();
+                break;
         }
 
         return super.onOptionsItemSelected(item);
@@ -169,19 +222,46 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
                 getResources(), mFilterGroup);
         screen.addPreference(permissionPreference);
 
+        AtomicBoolean seenSystemApp = new AtomicBoolean(false);
+
         ArrayList<PermissionApps.PermissionApp> permApps = new ArrayList<>();
         List<AppPermissionUsageEntry> usages = mAppPermissionUsages.stream().map(appUsage -> {
             // Fetch the access time list of the app accesses mFilterGroup permission group
             // The DiscreteAccessTime is a Pair of (access time, access duration) of that app
-            List<Pair<Long, Long>> discreteAccessTimeList = appUsage.getGroupUsages().stream()
-                    .filter(
-                        groupUsage -> groupUsage.getGroup().getName().equals(mFilterGroup)
-                                && groupUsage.hasDiscreteData())
-                    .flatMap(groupUsage -> groupUsage.getAllDiscreteAccessTime().stream())
-                    .filter(discreteAccessTime -> discreteAccessTime.first != 0
-                        && discreteAccessTime.first >= startTime)
-                    .sorted((x, y) -> y.first.compareTo(x.first))
-                    .collect(Collectors.toList());
+            List<Pair<Long, Long>> discreteAccessTimeList = new ArrayList<>();
+            List<AppPermissionUsage.GroupUsage> appGroups = appUsage.getGroupUsages();
+            int numGroups = appGroups.size();
+            for (int groupIndex = 0; groupIndex < numGroups; groupIndex++) {
+                AppPermissionUsage.GroupUsage groupUsage = appGroups.get(groupIndex);
+                if (!groupUsage.getGroup().getName().equals(mFilterGroup)
+                        || !groupUsage.hasDiscreteData()) {
+                    continue;
+                }
+
+                final boolean isSystemApp = !Utils.isGroupOrBgGroupUserSensitive(
+                        groupUsage.getGroup());
+                seenSystemApp.set(seenSystemApp.get() || isSystemApp);
+                if (isSystemApp && !mShowSystem) {
+                    continue;
+                }
+
+                List<Pair<Long, Long>> allDiscreteAccessTime = groupUsage
+                        .getAllDiscreteAccessTime();
+                int numAllDiscreteAccessTime = allDiscreteAccessTime.size();
+                for (int discreteAccessTimeIndex = 0;
+                        discreteAccessTimeIndex < numAllDiscreteAccessTime;
+                        discreteAccessTimeIndex++) {
+                    Pair<Long, Long> discreteAccessTime = allDiscreteAccessTime
+                            .get(discreteAccessTimeIndex);
+                    if (discreteAccessTime.first == 0 || discreteAccessTime.first < startTime) {
+                        continue;
+                    }
+
+                    discreteAccessTimeList.add(discreteAccessTime);
+                }
+            }
+
+            Collections.sort(discreteAccessTimeList, (x, y) -> y.first.compareTo(x.first));
 
             if (discreteAccessTimeList.size() > 0) {
                 permApps.add(appUsage.getApp());
@@ -235,6 +315,11 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
             return x.mAppPermissionUsage.getApp().getLabel().compareTo(
                     y.mAppPermissionUsage.getApp().getLabel());
         }).collect(Collectors.toList());
+
+        if (mHasSystemApps != seenSystemApp.get()) {
+            mHasSystemApps = seenSystemApp.get();
+            getActivity().invalidateOptionsMenu();
+        }
 
         long midnightToday = Instant.now().truncatedTo(ChronoUnit.DAYS).toEpochMilli();
         AppPermissionUsageEntry midnightTodayEntry = new AppPermissionUsageEntry(
