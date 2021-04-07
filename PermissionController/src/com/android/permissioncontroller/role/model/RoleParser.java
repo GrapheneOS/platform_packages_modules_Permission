@@ -79,6 +79,7 @@ public class RoleParser {
     private static final String ATTRIBUTE_LABEL = "label";
     private static final String ATTRIBUTE_MIN_SDK_VERSION = "minSdkVersion";
     private static final String ATTRIBUTE_OVERRIDE_USER_WHEN_GRANTING = "overrideUserWhenGranting";
+    private static final String ATTRIBUTE_QUERY_FLAGS = "queryFlags";
     private static final String ATTRIBUTE_REQUEST_TITLE = "requestTitle";
     private static final String ATTRIBUTE_REQUEST_DESCRIPTION = "requestDescription";
     private static final String ATTRIBUTE_REQUESTABLE = "requestable";
@@ -494,6 +495,7 @@ public class RoleParser {
     private RequiredComponent parseRequiredComponent(@NonNull XmlResourceParser parser,
             @NonNull String name) throws IOException, XmlPullParserException {
         String permission = getAttributeValue(parser, ATTRIBUTE_PERMISSION);
+        int queryFlags = getAttributeIntValue(parser, ATTRIBUTE_QUERY_FLAGS, 0);
         IntentFilterData intentFilterData = null;
 
         int type;
@@ -527,13 +529,13 @@ public class RoleParser {
         }
         switch (name) {
             case TAG_ACTIVITY:
-                return new RequiredActivity(intentFilterData, permission);
+                return new RequiredActivity(intentFilterData, permission, queryFlags);
             case TAG_PROVIDER:
-                return new RequiredContentProvider(intentFilterData, permission);
+                return new RequiredContentProvider(intentFilterData, permission, queryFlags);
             case TAG_RECEIVER:
-                return new RequiredBroadcastReceiver(intentFilterData, permission);
+                return new RequiredBroadcastReceiver(intentFilterData, permission, queryFlags);
             case TAG_SERVICE:
-                return new RequiredService(intentFilterData, permission);
+                return new RequiredService(intentFilterData, permission, queryFlags);
             default:
                 throwOrLogMessage("Unknown tag <" + name + ">");
                 return null;
