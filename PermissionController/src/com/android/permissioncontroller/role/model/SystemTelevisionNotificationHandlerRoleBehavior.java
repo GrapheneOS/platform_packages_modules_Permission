@@ -25,7 +25,7 @@ import androidx.annotation.NonNull;
 /**
  * Class for behavior of the Television Notification Handler role.
  */
-public class SystemTelevisionNotificationHandler implements RoleBehavior {
+public class SystemTelevisionNotificationHandlerRoleBehavior implements RoleBehavior {
 
     @Override
     public boolean isAvailableAsUser(@NonNull Role role, @NonNull UserHandle user,
