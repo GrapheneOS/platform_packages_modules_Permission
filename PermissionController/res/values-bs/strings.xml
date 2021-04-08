@@ -41,7 +41,7 @@
     <string name="permission_revoked_none" msgid="9213345075484381180">"ništa nije onemogućeno"</string>
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Dozvoli"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Dozvoli sve vrijeme"</string>
-    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Dok koristim aplikaciju"</string>
+    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Dok se aplikacija koristi"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Promijeni na tačnu lokaciju"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Samo ovaj put"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Dozvoli sve vrijeme"</string>
@@ -107,16 +107,29 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Nepoznato"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Kontrolna tabla"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Korištenje grupe odobrenja <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
-    <!-- no translation found for permission_group_usage_subtitle (2060508926529591334) -->
-    <skip />
-    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
-    <skip />
-    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
-    <skip />
-    <!-- no translation found for duration_used_days (6029658139201482951) -->
-    <!-- no translation found for duration_used_hours (2934347147156813767) -->
-    <!-- no translation found for duration_used_minutes (1871095305219275611) -->
-    <!-- no translation found for duration_used_seconds (4036612197985123365) -->
+    <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Vremenski slijed korištenja (<xliff:g id="PERMGROUP">%1$s</xliff:g>) u posljednja 24 sata"</string>
+    <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Kada je ova aplikacija koristila grupu dozvola <xliff:g id="PERMGROUP">%1$s</xliff:g>:"</string>
+    <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Saznajte više"</string>
+    <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
+      <item quantity="one">Korišteno <xliff:g id="NUMBER">%s</xliff:g> dan</item>
+      <item quantity="few">Korišteno <xliff:g id="NUMBER">%s</xliff:g> dana</item>
+      <item quantity="other">Korišteno <xliff:g id="NUMBER">%s</xliff:g> dana</item>
+    </plurals>
+    <plurals name="duration_used_hours" formatted="false" msgid="2934347147156813767">
+      <item quantity="one">Korišteno <xliff:g id="NUMBER">%s</xliff:g> sat</item>
+      <item quantity="few">Korišteno <xliff:g id="NUMBER">%s</xliff:g> sata</item>
+      <item quantity="other">Korišteno <xliff:g id="NUMBER">%s</xliff:g> sati</item>
+    </plurals>
+    <plurals name="duration_used_minutes" formatted="false" msgid="1871095305219275611">
+      <item quantity="one">Korišteno <xliff:g id="NUMBER">%s</xliff:g> min</item>
+      <item quantity="few">Korišteno <xliff:g id="NUMBER">%s</xliff:g> min</item>
+      <item quantity="other">Korišteno <xliff:g id="NUMBER">%s</xliff:g> min</item>
+    </plurals>
+    <plurals name="duration_used_seconds" formatted="false" msgid="4036612197985123365">
+      <item quantity="one">Korišteno <xliff:g id="NUMBER">%s</xliff:g> s</item>
+      <item quantity="few">Korišteno <xliff:g id="NUMBER">%s</xliff:g> s</item>
+      <item quantity="other">Korišteno <xliff:g id="NUMBER">%s</xliff:g> s</item>
+    </plurals>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="one">Posljednji pristup: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> pristup</item>
       <item quantity="few">Posljednji pristup: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> pristupa</item>
@@ -188,10 +201,8 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> aplikacija</item>
     </plurals>
     <string name="permission_history_title" msgid="8340081285133025225">"Historija odobrenja"</string>
-    <!-- no translation found for permission_history_category_today (7496389369158806620) -->
-    <skip />
-    <!-- no translation found for permission_history_category_yesterday (7242517121222012521) -->
-    <skip />
+    <string name="permission_history_category_today" msgid="7496389369158806620">"Danas"</string>
+    <string name="permission_history_category_yesterday" msgid="7242517121222012521">"Jučer"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Korišt. dozvole za aplikacije"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Pristup: <xliff:g id="NUM">%1$s</xliff:g> puta. Ukupno trajanje: <xliff:g id="DURATION">%2$s</xliff:g>. Zadnji put korištena prije <xliff:g id="TIME">%3$s</xliff:g>."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Pristup: <xliff:g id="NUM">%1$s</xliff:g> puta. Zadnji put korištena prije <xliff:g id="TIME">%2$s</xliff:g>."</string>
@@ -338,7 +349,7 @@
     <string name="accessibility_service_dialog_title_multiple" msgid="5527879210683548175">"Sljedeći broj aplikacija za pristupačnost ima potpuni pristup vašem uređaju: <xliff:g id="NUM_SERVICES">%s</xliff:g>"</string>
     <string name="accessibility_service_dialog_bottom_text_single" msgid="1128666197822205958">"Usluga <xliff:g id="SERVICE_NAME">%s</xliff:g> može pregledati vaš ekran, radnje i unose, a može i izvršavati radnje i kontrolirati ekran."</string>
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"Ove aplikacije mogu pregledati vaš ekran, radnje i unose, izvršavati radnje i kontrolirati ekran."</string>
-    <string name="role_assistant_label" msgid="4727586018198208128">"Zadana apl. digital. asistenta"</string>
+    <string name="role_assistant_label" msgid="4727586018198208128">"Zadani digitalni asistent asistenta"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Aplikac. digitalnog asistenta"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Aplikacije za pomoć vam mogu pomoći na osnovu informacija s ekrana koji pregledate. Neke aplikacije podržavaju i usluge pokretača i glasovnog unosa kako bi vam pružile sveukupnu pomoć."</string>
     <string name="role_assistant_request_title" msgid="5964976301922776060">"Postaviti aplikaciju <xliff:g id="APP_NAME">%1$s</xliff:g> kao zadanu aplikaciju za pomoć?"</string>
@@ -350,7 +361,7 @@
     <string name="role_browser_request_description" msgid="5888803407905985941">"Nije potrebno odobrenje"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"Zadana aplikacija za telefon"</string>
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Aplikacija za telefon"</string>
-    <string name="role_dialer_description" msgid="8768708633696539612">"Aplikacije koje vam omogućavaju upućivanje i prijem telefonskih poziva na uređaju"</string>
+    <string name="role_dialer_description" msgid="8768708633696539612">"Aplikacije koje vam omogućavaju upućivanje i primanje telefonskih poziva na uređaju"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Postaviti aplikaciju <xliff:g id="APP_NAME">%1$s</xliff:g> kao zadanu aplikaciju za telefon?"</string>
     <string name="role_dialer_request_description" msgid="2264219375528345270">"Dobija pristup zapisnicima poziva, šalje SMS"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"brojčana tastatura"</string>
@@ -368,7 +379,7 @@
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"hitni slučaj"</string>
     <string name="role_home_label" msgid="3871847846649769412">"Zadana apl. na početnom ekranu"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"Aplikacija na početnom ekranu"</string>
-    <string name="role_home_description" msgid="7997371519626556675">"Aplikacije koje se često nazivaju pokretači i zamjenjuju početne ekrane na Android uređaju te vam daju pristup sadržaju i funkcijama uređaja"</string>
+    <string name="role_home_description" msgid="7997371519626556675">"Aplikacije, poznate i kao pokretači, koje zamjenjuju početne ekrane na Android uređaju te vam daju pristup sadržaju i funkcijama uređaja"</string>
     <string name="role_home_request_title" msgid="738136983453341081">"Postaviti aplikaciju <xliff:g id="APP_NAME">%1$s</xliff:g> kao zadanu aplikaciju na početnom ekranu?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"Nije potrebno odobrenje"</string>
     <string name="role_home_search_keywords" msgid="3830755001192666285">"pokretač"</string>
@@ -415,7 +426,7 @@
     <string name="car_default_app_selected_with_info" msgid="1932204186080593500">"Odabrano – <xliff:g id="ADDITIONAL_INFO">%1$s</xliff:g>"</string>
     <string name="special_app_access_search_keyword" msgid="8032347212290774210">"poseban pristup aplikacijama"</string>
     <string name="special_app_access" msgid="5019319067120213797">"Poseban pristup aplikacijama"</string>
-    <string name="no_special_app_access" msgid="6950277571805106247">"Nema pristupa posebnim apl."</string>
+    <string name="no_special_app_access" msgid="6950277571805106247">"Nema posebnog pristupa apl."</string>
     <string name="special_app_access_no_apps" msgid="4102911722787886970">"Nema aplikacija"</string>
     <string name="home_missing_work_profile_support" msgid="1756855847669387977">"Radni profil nije podržan"</string>
     <string name="encryption_unaware_confirmation_message" msgid="8274491794636402484">"Napomena: Ako ponovo pokrenete uređaj, a postavili ste zaključavanje ekrana, ova aplikacija se neće moći pokrenuti dok ne otključate uređaj."</string>

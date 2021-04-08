@@ -108,16 +108,33 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Inny"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Panel"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Korzystanie z uprawnień typu<xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
-    <!-- no translation found for permission_group_usage_subtitle (2060508926529591334) -->
-    <skip />
-    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
-    <skip />
-    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
-    <skip />
-    <!-- no translation found for duration_used_days (6029658139201482951) -->
-    <!-- no translation found for duration_used_hours (2934347147156813767) -->
-    <!-- no translation found for duration_used_minutes (1871095305219275611) -->
-    <!-- no translation found for duration_used_seconds (4036612197985123365) -->
+    <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Czas używania uprawnień <xliff:g id="PERMGROUP">%1$s</xliff:g> w ciągu ostatnich 24 godzin"</string>
+    <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Kiedy aplikacja używała uprawnień <xliff:g id="PERMGROUP">%1$s</xliff:g>:"</string>
+    <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Więcej informacji"</string>
+    <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
+      <item quantity="few">Używano przez <xliff:g id="NUMBER">%s</xliff:g> dni</item>
+      <item quantity="many">Używano <xliff:g id="NUMBER">%s</xliff:g> dni</item>
+      <item quantity="other">Używano <xliff:g id="NUMBER">%s</xliff:g> dnia</item>
+      <item quantity="one">Używano przez 1 dzień</item>
+    </plurals>
+    <plurals name="duration_used_hours" formatted="false" msgid="2934347147156813767">
+      <item quantity="few">Używano przez <xliff:g id="NUMBER">%s</xliff:g> godziny</item>
+      <item quantity="many">Używano przez <xliff:g id="NUMBER">%s</xliff:g> godzin</item>
+      <item quantity="other">Używano przez <xliff:g id="NUMBER">%s</xliff:g> godziny</item>
+      <item quantity="one">Używano przez 1 godzinę</item>
+    </plurals>
+    <plurals name="duration_used_minutes" formatted="false" msgid="1871095305219275611">
+      <item quantity="few">Używano przez <xliff:g id="NUMBER">%s</xliff:g> minuty</item>
+      <item quantity="many">Używano przez <xliff:g id="NUMBER">%s</xliff:g> minut</item>
+      <item quantity="other">Używano przez <xliff:g id="NUMBER">%s</xliff:g> minuty</item>
+      <item quantity="one">Używano przez 1 minutę</item>
+    </plurals>
+    <plurals name="duration_used_seconds" formatted="false" msgid="4036612197985123365">
+      <item quantity="few">Używano przez <xliff:g id="NUMBER">%s</xliff:g> sekundy</item>
+      <item quantity="many">Używano przez <xliff:g id="NUMBER">%s</xliff:g> sekund</item>
+      <item quantity="other">Używano przez <xliff:g id="NUMBER">%s</xliff:g> sekundy</item>
+      <item quantity="one">Używano przez 1 sekundę</item>
+    </plurals>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="few">Ostatnie użycie: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> użycia</item>
       <item quantity="many">Ostatnie użycie: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> użyć</item>
@@ -196,10 +213,8 @@
       <item quantity="one">1 aplikacja</item>
     </plurals>
     <string name="permission_history_title" msgid="8340081285133025225">"Historia uprawnień"</string>
-    <!-- no translation found for permission_history_category_today (7496389369158806620) -->
-    <skip />
-    <!-- no translation found for permission_history_category_yesterday (7242517121222012521) -->
-    <skip />
+    <string name="permission_history_category_today" msgid="7496389369158806620">"Dzisiaj"</string>
+    <string name="permission_history_category_yesterday" msgid="7242517121222012521">"Wczoraj"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Użycie uprawnień aplikacji"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Dostęp: <xliff:g id="NUM">%1$s</xliff:g> razy. Całkowity czas trwania: <xliff:g id="DURATION">%2$s</xliff:g>. Ostatnio użyto <xliff:g id="TIME">%3$s</xliff:g> temu."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Dostęp: <xliff:g id="NUM">%1$s</xliff:g> razy. Ostatnio użyto <xliff:g id="TIME">%2$s</xliff:g> temu."</string>
@@ -481,7 +496,7 @@
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"Ta aplikacja chce móc robić zdjęcia i nagrywać filmy przez cały czas, nawet gdy jej nie używasz. "<annotation id="link">"Zezwól w ustawieniach."</annotation></string>
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"Zmienić uprawnienia dostępu do aparatu w przypadku aplikacji „<xliff:g id="APP_NAME">%1$s</xliff:g>”?"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Ta aplikacja chce móc robić zdjęcia i nagrywać filmy przez cały czas, nawet gdy jej nie używasz. "<annotation id="link">"Zezwól w ustawieniach."</annotation></string>
-    <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Pozwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na dostęp do rejestrów połączeń?"</string>
+    <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na dostęp do rejestrów połączeń?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na wykonywanie połączeń telefonicznych i zarządzanie nimi?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na dostęp do danych z czujnika podstawowych funkcji życiowych?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Pozwolenia kontrolowane"</string>

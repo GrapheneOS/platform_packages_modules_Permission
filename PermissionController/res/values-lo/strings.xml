@@ -107,10 +107,8 @@
     <string name="permission_usage_title" msgid="5095876355858467390">"ແຜງໜ້າປັດ"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"ການນໍາໃຊ້ <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"ທາມລາຍຂອງເວລາທີ່ມີການໃຊ້ <xliff:g id="PERMGROUP">%1$s</xliff:g> ຂອງທ່ານໃນຮອບ 24 ຊົ່ວໂມງທີ່ຜ່ານມາ"</string>
-    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
-    <skip />
-    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
-    <skip />
+    <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"ເມື່ອແອັບນີ້ໃຊ້ <xliff:g id="PERMGROUP">%1$s</xliff:g> ຂອງທ່ານ:"</string>
+    <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"ສຶກສາເພີ່ມເຕີມ"</string>
     <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
       <item quantity="other">ໃຊ້ແລ້ວ <xliff:g id="NUMBER">%s</xliff:g> ມື້</item>
       <item quantity="one">ໃຊ້ແລ້ວ 1 ມື້</item>
