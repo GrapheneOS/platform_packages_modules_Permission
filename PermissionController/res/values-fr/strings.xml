@@ -171,8 +171,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Autoriser seulement si l\'appli est en cours d\'utilisation"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Toujours demander"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Refuser"</string>
-    <string name="app_permission_title" msgid="2090897901051370711">"Autorisation : <xliff:g id="PERM">%1$s</xliff:g>"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"<xliff:g id="PERM">%1$s</xliff:g> : accès pour cette application"</string>
+    <string name="app_permission_title" msgid="2090897901051370711">"Autorisation d\'accès à <xliff:g id="PERM">%1$s</xliff:g>"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"Accès à <xliff:g id="PERM">%1$s</xliff:g> pour cette appli"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Afficher toutes les autorisations pour <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Afficher toutes les applications disposant de cette autorisation"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Afficher l\'utilisation du micro par l\'Assistant"</string>
@@ -290,7 +290,7 @@
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"Ces applications peuvent voir votre écran, vos actions, ce que vous saisissez, réaliser des actions et contrôler l\'affichage."</string>
     <string name="role_assistant_label" msgid="4727586018198208128">"Assistant numérique par défaut"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Assistant numérique"</string>
-    <string name="role_assistant_description" msgid="6622458130459922952">"Les applications d\'assistance peuvent vous aider en fonction des informations affichées à l\'écran. Certaines applications sont compatibles à la fois avec le lanceur d\'applications et les services de saisie vocale, de sorte que vous puissiez bénéficier d\'une assistance intégrée."</string>
+    <string name="role_assistant_description" msgid="6622458130459922952">"Les applis d\'assistance peuvent se servir des infos à l\'écran pour vous aider. Certaines sont compatibles à la fois avec le lanceur d\'applications et les services de saisie vocale pour vous fournir une assistance intégrée."</string>
     <string name="role_assistant_request_title" msgid="5964976301922776060">"Définir <xliff:g id="APP_NAME">%1$s</xliff:g> comme votre application d\'assistance par défaut ?"</string>
     <string name="role_assistant_request_description" msgid="6836644847620178483">"Peut accéder aux SMS et au journal d\'appels"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Navigateur par défaut"</string>
@@ -316,9 +316,9 @@
     <string name="role_emergency_request_title" msgid="8469579020654348567">"Définir <xliff:g id="APP_NAME">%1$s</xliff:g> comme votre application par défaut pour les urgences ?"</string>
     <string name="role_emergency_request_description" msgid="131645948770262850">"Aucune autorisation nécessaire"</string>
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"en cas d\'urgence"</string>
-    <string name="role_home_label" msgid="3871847846649769412">"Appli écran d\'accueil par défaut"</string>
+    <string name="role_home_label" msgid="3871847846649769412">"Appli d\'accueil par défaut"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"Appli sur l\'écran d\'accueil"</string>
-    <string name="role_home_description" msgid="7997371519626556675">"Applications, souvent appelées lanceurs d\'applications, qui remplacent l\'écran d\'accueil de votre appareil Android, et vous permettent d\'accéder au contenu de l\'appareil et à ses fonctionnalités"</string>
+    <string name="role_home_description" msgid="7997371519626556675">"Applis, souvent appelées lanceurs, qui remplacent l\'écran d\'accueil de votre appareil Android et vous donnent accès au contenu de l\'appareil et à ses fonctionnalités"</string>
     <string name="role_home_request_title" msgid="738136983453341081">"Définir <xliff:g id="APP_NAME">%1$s</xliff:g> comme votre application d\'écran d\'accueil par défaut ?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"Aucune autorisation nécessaire"</string>
     <string name="role_home_search_keywords" msgid="3830755001192666285">"lanceur d\'applications"</string>
@@ -362,9 +362,9 @@
     <string name="default_app_no_apps" msgid="115720991680586885">"Aucune application"</string>
     <string name="car_default_app_selected" msgid="5416420830430644174">"Sélectionnée"</string>
     <string name="car_default_app_selected_with_info" msgid="1932204186080593500">"Sélectionnée – <xliff:g id="ADDITIONAL_INFO">%1$s</xliff:g>"</string>
-    <string name="special_app_access_search_keyword" msgid="8032347212290774210">"accès spécifique des applications"</string>
-    <string name="special_app_access" msgid="5019319067120213797">"Accès spécifique des applis"</string>
-    <string name="no_special_app_access" msgid="6950277571805106247">"Aucun accès spécif. des applis"</string>
+    <string name="special_app_access_search_keyword" msgid="8032347212290774210">"accès spéciaux des applis"</string>
+    <string name="special_app_access" msgid="5019319067120213797">"Accès spéciaux des applis"</string>
+    <string name="no_special_app_access" msgid="6950277571805106247">"Pas d\'accès spécial des applis"</string>
     <string name="special_app_access_no_apps" msgid="4102911722787886970">"Aucune application"</string>
     <string name="home_missing_work_profile_support" msgid="1756855847669387977">"Non compatible avec le profil professionnel"</string>
     <string name="encryption_unaware_confirmation_message" msgid="8274491794636402484">"Remarque : Si vous redémarrez votre appareil et que le verrouillage de l\'écran est activé, vous ne pouvez pas lancer cette application tant que vous n\'avez pas déverrouillé votre appareil."</string>
@@ -386,7 +386,7 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Afficher la détection de l\'activation de l\'assistant"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Afficher une icône dans la barre d\'état lorsque le micro est utilisé pour activer l\'assistance vocale"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"Permettre à &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; d\'accéder aux photos et contenus multimédias sur votre appareil ?"</string>
-    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Autoriser l\'appli &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder à vos contacts ?"</string>
+    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder à vos contacts ?"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"Autoriser l\'appli &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder à la position de cet appareil ?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"L\'application n\'a accès à la position de l\'appareil que lorsqu\'elle est ouverte"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"Autoriser l\'appli &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder à la position de cet appareil ?"</string>
@@ -395,12 +395,12 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Cette appli souhaite accéder à votre position en permanence, même lorsque vous ne l\'utilisez pas. "<annotation id="link">"Autorisez-la à le faire dans les paramètres."</annotation></string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Permettre à &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; d\'accéder à votre agenda ?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Autoriser l\'application &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à envoyer et afficher des SMS ?"</string>
-    <string name="permgrouprequest_storage" msgid="8717773092518621602">"Autoriser l\'appli &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder aux photos, contenus multimédias et fichiers sur votre appareil ?"</string>
-    <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Autoriser l\'appli &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à enregistrer des contenus audio ?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder aux photos, contenus multimédias et fichiers sur votre appareil ?"</string>
+    <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à enregistrer de l\'audio ?"</string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"Autoriser <xliff:g id="APP_NAME">%1$s</xliff:g> à accéder aux données relatives à votre activité physique ?"</string>
-    <string name="permgrouprequest_camera" msgid="5123097035410002594">"Autoriser l\'appli &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à prendre des photos et enregistrer des vidéos ?"</string>
-    <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Autoriser l\'appli &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder aux journaux d\'appels de votre téléphone ?"</string>
-    <string name="permgrouprequest_phone" msgid="1829234136997316752">"Autoriser l\'appli &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à passer et gérer des appels téléphoniques ?"</string>
+    <string name="permgrouprequest_camera" msgid="5123097035410002594">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à prendre des photos et enregistrer des vidéos ?"</string>
+    <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder aux journaux d\'appels de votre téléphone ?"</string>
+    <string name="permgrouprequest_phone" msgid="1829234136997316752">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à passer et gérer des appels téléphoniques ?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Permettre à &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; d\'accéder aux données des capteurs relatives à vos signes vitaux ?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Autorisations contrôlées"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Votre position est accessible"</string>

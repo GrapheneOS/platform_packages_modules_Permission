@@ -295,18 +295,18 @@
     <string name="role_assistant_request_description" msgid="6836644847620178483">"Ottiene accesso a registro chiamate e SMS"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"App browser predefinita"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"App browser"</string>
-    <string name="role_browser_description" msgid="3465253637499842671">"App che ti forniscono accesso a Internet e mostrano i link che tocchi"</string>
+    <string name="role_browser_description" msgid="3465253637499842671">"App che ti forniscono accesso a Internet e mostrano i link che tocchi."</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"Impostare <xliff:g id="APP_NAME">%1$s</xliff:g> come app browser predefinita?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"Nessuna autorizzazione necessaria"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"App telefono predefinita"</string>
     <string name="role_dialer_short_label" msgid="7186888549465352489">"App telefono"</string>
-    <string name="role_dialer_description" msgid="8768708633696539612">"App che ti permettono di effettuare e ricevere chiamate telefoniche sul tuo dispositivo"</string>
+    <string name="role_dialer_description" msgid="8768708633696539612">"App che ti permettono di effettuare e ricevere chiamate telefoniche sul tuo dispositivo."</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Impostare <xliff:g id="APP_NAME">%1$s</xliff:g> come app telefono predefinita?"</string>
     <string name="role_dialer_request_description" msgid="2264219375528345270">"Ottiene accesso a registro chiamate, invio SMS"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"telefono"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"App SMS predefinita"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"App SMS"</string>
-    <string name="role_sms_description" msgid="3424020199148153513">"App che ti permettono di utilizzare il tuo numero di telefono per inviare e ricevere brevi messaggi di testo, foto, video e altro"</string>
+    <string name="role_sms_description" msgid="3424020199148153513">"App che ti permettono di utilizzare il tuo numero di telefono per inviare e ricevere brevi messaggi di testo, foto, video e altro."</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Imposta <xliff:g id="APP_NAME">%1$s</xliff:g> come app SMS predefinita"</string>
     <string name="role_sms_request_description" msgid="983371022668134198">"Ottiene accesso a contatti, SMS, telefono"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"sms, invio di sms, messaggi, invio di messaggi"</string>
@@ -318,7 +318,7 @@
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"ICE"</string>
     <string name="role_home_label" msgid="3871847846649769412">"App iniziale predefinita"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"App iniziale"</string>
-    <string name="role_home_description" msgid="7997371519626556675">"App, spesso chiamate Avvio app, che sostituiscono le schermate Home sul tuo dispositivo Android e che ti forniscono l\'accesso ai contenuti e alle funzionalità del dispositivo"</string>
+    <string name="role_home_description" msgid="7997371519626556675">"App, spesso chiamate Avvio app, che sostituiscono le schermate Home sul tuo dispositivo Android e che ti forniscono l\'accesso ai contenuti e alle funzionalità del dispositivo."</string>
     <string name="role_home_request_title" msgid="738136983453341081">"Impostare <xliff:g id="APP_NAME">%1$s</xliff:g> come app casa predefinita?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"Nessuna autorizzazione necessaria"</string>
     <string name="role_home_search_keywords" msgid="3830755001192666285">"avvio app"</string>
@@ -329,7 +329,7 @@
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Nessuna autorizzazione necessaria"</string>
     <string name="role_call_screening_label" msgid="883935222060878724">"App ID chiamante e spam"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"App ID chiamante e spam"</string>
-    <string name="role_call_screening_description" msgid="2349431420497468981">"App che consentono di identificare le chiamate e bloccare spam, chiamate preregistrate o numeri indesiderati"</string>
+    <string name="role_call_screening_description" msgid="2349431420497468981">"App che consentono di identificare le chiamate e bloccare spam, chiamate preregistrate o numeri indesiderati."</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Impostare <xliff:g id="APP_NAME">%1$s</xliff:g> come app ID chiamante e spam?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Nessuna autorizzazione necessaria"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Valore predefinito attuale"</string>

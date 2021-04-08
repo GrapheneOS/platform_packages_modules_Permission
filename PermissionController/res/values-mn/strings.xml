@@ -172,7 +172,7 @@
     <string name="app_permission_button_ask" msgid="3342950658789427">"Тухай бүрд асуух"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Татгалзах"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>-н зөвшөөрөл"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"Энэ аппад <xliff:g id="PERM">%1$s</xliff:g>-р хандах"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"Энэ аппын <xliff:g id="PERM">%1$s</xliff:g>-д хандах эрх"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g>-н бүх зөвшөөрлийг харах"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Энэ зөвшөөрөлтэй бүх аппыг харах"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Туслах микрофон ашиглалтыг харуулах"</string>
@@ -400,7 +400,7 @@
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д таны биеийн дасгал хөдөлгөөнд хандахыг зөвшөөрөх үү?"</string>
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д зураг авах, видео хийхийг зөвшөөрөх үү?"</string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д таны утасны дуудлагын жагсаалтад хандахыг зөвшөөрөх үү?"</string>
-    <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д утасны дуудлага хийх, дуудлагад хариулахыг зөвшөөрөх үү?"</string>
+    <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д утасны дуудлага хийх, дуудлага удирдахыг зөвшөөрөх үү?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д таны биеийн ерөнхий байдлын үзүүлэлтүүдийн мэдрэгчийн өгөгдөлд хандахыг зөвшөөрөх үү?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Хяналттай зөвшөөрөл"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Байршилд хандах боломжтой"</string>

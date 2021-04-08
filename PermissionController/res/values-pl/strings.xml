@@ -425,7 +425,7 @@
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na nagrywanie dźwięku?"</string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na dostęp do aktywności fizycznej?"</string>
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na robienie zdjęć i nagrywanie filmów?"</string>
-    <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Pozwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na dostęp do rejestrów połączeń?"</string>
+    <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na dostęp do rejestrów połączeń?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na wykonywanie połączeń telefonicznych i zarządzanie nimi?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na dostęp do danych z czujnika podstawowych funkcji życiowych?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Pozwolenia kontrolowane"</string>

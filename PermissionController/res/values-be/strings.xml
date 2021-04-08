@@ -27,7 +27,7 @@
     <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1851917275643744594">"Адмовіць і больш не пытацца"</string>
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Пакінуць \"У актыўным рэжыме праграмы\""</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Захаваць толькі на гэты раз"</string>
-    <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Разгарнуць"</string>
+    <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Падрабязней"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="3221644923954258179">"Адмовіць"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Адхіліць"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> з <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
@@ -40,10 +40,10 @@
     <string name="permission_revoked_all" msgid="3397649017727222283">"усе адключаны"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"няма адключаных"</string>
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Дазволіць"</string>
-    <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Дазволіць у любым рэжыме"</string>
+    <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Дазволіць заўсёды"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Падчас выкарыстання праграмы"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Толькі ў гэты раз"</string>
-    <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Дазволіць у любым рэжыме"</string>
+    <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Дазволіць заўсёды"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Дазволіць кіраванне ўсімі файламі"</string>
     <string name="grant_dialog_button_allow_media_only" msgid="4832877658422573832">"Дазволіць доступ да файлаў мультымедыя"</string>
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Праграмы"</string>
@@ -84,7 +84,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:0 (1351721623256561996) -->
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
-    <string name="permission_access_always" msgid="1474641821883823446">"Дазволіць у любым рэжыме"</string>
+    <string name="permission_access_always" msgid="1474641821883823446">"Дазволіць заўсёды"</string>
     <string name="permission_access_only_foreground" msgid="7801170728159326195">"Падчас карыстання праграмай"</string>
     <string name="permission_access_never" msgid="1029877154284995424">"Адмовіць"</string>
     <string name="loading" msgid="4789365003890741082">"Загрузка…"</string>
@@ -181,7 +181,7 @@
     <string name="app_permission_button_allow" msgid="5808039516494774647">"Дазволіць"</string>
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Дазволіць кіраванне ўсімі файламі"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Дазволіць доступ толькі да мультымедыя"</string>
-    <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Дазволіць у любым рэжыме"</string>
+    <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Дазволіць заўсёды"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Дазволіць толькі падчас карыстання праграмай"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Заўсёды пытацца"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Адмовіць"</string>
@@ -315,7 +315,7 @@
     <string name="accessibility_service_dialog_bottom_text_single" msgid="1128666197822205958">"<xliff:g id="SERVICE_NAME">%s</xliff:g> можа праглядаць ваш экран, дзеянні і ўводы, самастойна выконваць дзеянні і кіраваць дысплэем."</string>
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"Гэтыя праграмы могуць праглядаць ваш экран, дзеянні і ўводы, а таксама самастойна выконваць дзеянні і кіраваць экранам."</string>
     <string name="role_assistant_label" msgid="4727586018198208128">"Стандартны лічбавы памочнік"</string>
-    <string name="role_assistant_short_label" msgid="3369003713187703399">"Лічбавая праграма-памочнік"</string>
+    <string name="role_assistant_short_label" msgid="3369003713187703399">"Лічбавы памочнік"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Праграмы-памочнікі кіруюцца інфармацыяй на экране. Для вашай зручнасці некаторыя з іх падтрымліваюць працу з панэллю запуску і галасавы ўвод."</string>
     <string name="role_assistant_request_title" msgid="5964976301922776060">"Прызначыць \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" стандартнай праграмай-памочнікам?"</string>
     <string name="role_assistant_request_description" msgid="6836644847620178483">"Патрабуе доступу да SMS і журнала выклікаў"</string>
@@ -325,7 +325,7 @@
     <string name="role_browser_request_title" msgid="2895200507835937192">"Прызначыць \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" стандартнай праграмай для прагляду?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"Дазволы не патрэбныя"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"Стандартная праграма \"Тэлефон\""</string>
-    <string name="role_dialer_short_label" msgid="7186888549465352489">"Праграма \"Тэлефон\""</string>
+    <string name="role_dialer_short_label" msgid="7186888549465352489">"Тэлефон"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Праграмы, якія дазваляюць вам рабіць і прымаць тэлефонныя выклікі на прыладзе"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Прызначыць \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" стандартнай праграмай для тэлефона?"</string>
     <string name="role_dialer_request_description" msgid="2264219375528345270">"Патрабуе доступу да журнала выклікаў і да адпраўкі SMS"</string>
@@ -342,8 +342,8 @@
     <string name="role_emergency_request_title" msgid="8469579020654348567">"Прызначыць \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" стандартнай праграмай экстраннай дапамогі?"</string>
     <string name="role_emergency_request_description" msgid="131645948770262850">"Дазволы не патрэбныя"</string>
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"у выпадку надзвычайнай сітуацыі"</string>
-    <string name="role_home_label" msgid="3871847846649769412">"Стандартная галоўная праграма"</string>
-    <string name="role_home_short_label" msgid="8544733747952272337">"Галоўная праграма"</string>
+    <string name="role_home_label" msgid="3871847846649769412">"Стандартны галоўны экран"</string>
+    <string name="role_home_short_label" msgid="8544733747952272337">"Галоўны экран"</string>
     <string name="role_home_description" msgid="7997371519626556675">"Праграмы, якія часта называюцца панэлямі запуску, замяняюць сабой галоўныя экраны на прыладзе Android і забяспечваюць вам доступ да змесціва і функцый прылады"</string>
     <string name="role_home_request_title" msgid="738136983453341081">"Прызначыць \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" стандартнай галоўнай праграмай?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"Дазволы не патрэбныя"</string>
@@ -425,7 +425,7 @@
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; запісваць аўдыя?"</string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да даных фізічнай актыўнасці?"</string>
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; рабіць фота і запісваць відэа?"</string>
-    <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Адкрыць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да журналаў выклікаў вашага тэлефона?"</string>
+    <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да журналаў выклікаў вашага тэлефона?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; рабіць тэлефонныя выклікі і кіраваць імі?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да даных з датчыкаў пра вашы асноўныя фізіялагічныя паказчыкі?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Кіраваныя дазволы"</string>

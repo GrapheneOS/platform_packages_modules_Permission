@@ -172,7 +172,7 @@
     <string name="app_permission_button_ask" msgid="3342950658789427">"Hər dəfə soruşun"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"İmtina edin"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> üçün icazə"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"Bu tətbiq üçün <xliff:g id="PERM">%1$s</xliff:g> girişi"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"Tətbiqə <xliff:g id="PERM">%1$s</xliff:g> icazəsi"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Bütün <xliff:g id="APP">%1$s</xliff:g> icazələrinə baxın"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Bu icazəyə sahib olan bütün tətbiqlərə baxın"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Assistent üçün mikrofon istifadəsini göstərin"</string>

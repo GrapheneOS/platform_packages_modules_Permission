@@ -19,7 +19,7 @@
     <string name="app_name" msgid="6098036489833144040">"Oikeuksien ylläpitäjä"</string>
     <string name="ok" msgid="1936281769725676272">"OK"</string>
     <string name="permission_search_keyword" msgid="1214451577494730543">"käyttöoikeudet"</string>
-    <string name="cancel" msgid="8943320028373963831">"Peruuta"</string>
+    <string name="cancel" msgid="8943320028373963831">"Peru"</string>
     <string name="back" msgid="6249950659061523680">"Takaisin"</string>
     <string name="uninstall_or_disable" msgid="5523723541310119437">"Poista asennus tai poista käytöstä"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Sovellusta ei löydy"</string>
@@ -96,7 +96,7 @@
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Wear ei tue asennus- ja poistotoimintoja."</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"Valitse, mitä käyttöoikeuksia sovellukselle &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; myönnetään."</string>
     <string name="permission_review_title_template_update" msgid="3232333580548588657">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; on päivitetty. Valitse, mitä käyttöoikeuksia tälle sovellukselle myönnetään."</string>
-    <string name="review_button_cancel" msgid="2191147944056548886">"Peruuta"</string>
+    <string name="review_button_cancel" msgid="2191147944056548886">"Peru"</string>
     <string name="review_button_continue" msgid="2527918375047602199">"Jatka"</string>
     <string name="new_permissions_category" msgid="552995090178417611">"Uudet käyttöoikeudet"</string>
     <string name="current_permissions_category" msgid="4292990083585728880">"Nykyiset käyttöoikeudet"</string>

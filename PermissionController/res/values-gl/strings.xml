@@ -295,41 +295,41 @@
     <string name="role_assistant_request_description" msgid="6836644847620178483">"Recibe acceso ás SMS e ao rexistro de chamadas"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Aplicación de navegador predeterminada"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Aplicación de navegador"</string>
-    <string name="role_browser_description" msgid="3465253637499842671">"Aplicacións que che permiten acceder a Internet e abrir as ligazóns que tocas"</string>
+    <string name="role_browser_description" msgid="3465253637499842671">"Aplicacións que che permiten acceder a Internet e abrir as ligazóns que tocas."</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"Queres definir <xliff:g id="APP_NAME">%1$s</xliff:g> como a túa aplicación de navegador predeterminada?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"Non se necesita ningún permiso"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"App de teléfono predeterminada"</string>
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Aplicación de teléfono"</string>
-    <string name="role_dialer_description" msgid="8768708633696539612">"Aplicacións que che permiten realizar e recibir chamadas telefónicas utilizando o teu dispositivo"</string>
+    <string name="role_dialer_description" msgid="8768708633696539612">"Aplicacións que che permiten realizar e recibir chamadas telefónicas utilizando o teu dispositivo."</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Queres definir <xliff:g id="APP_NAME">%1$s</xliff:g> como a túa aplicación predeterminada de teléfono?"</string>
     <string name="role_dialer_request_description" msgid="2264219375528345270">"Recibe acceso ao rexistro de chamadas e ao envío de SMS"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"marcador"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"App de SMS predeterminada"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"Aplicación de SMS"</string>
-    <string name="role_sms_description" msgid="3424020199148153513">"Aplicacións que che permiten utilizar o teu número de teléfono para enviar e recibir mensaxes de texto curtas, fotos, vídeos e máis contido"</string>
+    <string name="role_sms_description" msgid="3424020199148153513">"Aplicacións que che permiten utilizar o teu número de teléfono para enviar e recibir mensaxes de texto curtas, fotos, vídeos e máis contido."</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Queres definir <xliff:g id="APP_NAME">%1$s</xliff:g> como a túa aplicación predeterminada de SMS?"</string>
     <string name="role_sms_request_description" msgid="983371022668134198">"Recibe acceso aos contactos, ás SMS e ao teléfono"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"mensaxe de texto, envío de mensaxes de texto, mensaxes, mensaxaría"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"App emerxencias predeterminada"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"Aplicación para emerxencias"</string>
-    <string name="role_emergency_description" msgid="5051840234887686630">"Aplicacións que che permiten gardar a túa información médica e poñela á disposición dos equipos de asistencia sanitaria, recibir alertas sobre eventos climáticos graves e desastres naturais, así como enviarlles notificacións a outras persoas cando necesitas axuda"</string>
+    <string name="role_emergency_description" msgid="5051840234887686630">"Aplicacións que che permiten gardar a túa información médica e poñela á disposición dos equipos de asistencia sanitaria, recibir alertas sobre eventos climáticos graves e desastres naturais, así como enviarlles notificacións a outras persoas cando necesitas axuda."</string>
     <string name="role_emergency_request_title" msgid="8469579020654348567">"Queres definir <xliff:g id="APP_NAME">%1$s</xliff:g> como a túa aplicación predeterminada de emerxencias?"</string>
     <string name="role_emergency_request_description" msgid="131645948770262850">"Non se necesita ningún permiso"</string>
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"en caso de emerxencia"</string>
     <string name="role_home_label" msgid="3871847846649769412">"App de inicio predeterminada"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"Aplicación de inicio"</string>
-    <string name="role_home_description" msgid="7997371519626556675">"Aplicacións que adoitan chamarse \"launchers\" e que substitúen as pantallas de inicio do teu dispositivo Android para permitirche acceder aos contidos e ás funcións do dispositivo"</string>
+    <string name="role_home_description" msgid="7997371519626556675">"Aplicacións que adoitan chamarse \"launchers\" e que substitúen as pantallas de inicio do teu dispositivo Android para permitirche acceder aos contidos e ás funcións do dispositivo."</string>
     <string name="role_home_request_title" msgid="738136983453341081">"Queres definir <xliff:g id="APP_NAME">%1$s</xliff:g> como a túa aplicación predeterminada da casa?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"Non se necesita ningún permiso"</string>
     <string name="role_home_search_keywords" msgid="3830755001192666285">"launcher"</string>
     <string name="role_call_redirection_label" msgid="5785304207206147590">"App desvío de chamadas predet."</string>
     <string name="role_call_redirection_short_label" msgid="7568143419571217757">"App de redirección de chamadas"</string>
-    <string name="role_call_redirection_description" msgid="6091669882014664420">"Aplicacións que che permiten reenviar chamadas saíntes a outro número de teléfono"</string>
+    <string name="role_call_redirection_description" msgid="6091669882014664420">"Aplicacións que che permiten reenviar chamadas saíntes a outro número de teléfono."</string>
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"Queres definir <xliff:g id="APP_NAME">%1$s</xliff:g> como a túa aplicación predeterminada de desvío de chamadas?"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Non se necesita ningún permiso"</string>
     <string name="role_call_screening_label" msgid="883935222060878724">"App de filtro de chamadas e spam predefinida"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"App ident. de chamadas e spam"</string>
-    <string name="role_call_screening_description" msgid="2349431420497468981">"Aplicacións que che permiten identificar as chamadas e bloquear o spam, as chamadas automatizadas ou os números non desexados"</string>
+    <string name="role_call_screening_description" msgid="2349431420497468981">"Aplicacións que che permiten identificar as chamadas e bloquear o spam, as chamadas automatizadas ou os números non desexados."</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Queres definir <xliff:g id="APP_NAME">%1$s</xliff:g> como a túa aplicación predeterminada de identificación de chamadas e spam?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Non se necesita ningún permiso"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"App predeterminada actual"</string>

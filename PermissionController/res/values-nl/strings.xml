@@ -36,9 +36,9 @@
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"Alleen als app in gebruik is"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"Altijd"</string>
     <string name="deny_permission_deny_and_dont_ask_again" msgid="766882021426214510">"Weigeren en niet meer vragen"</string>
-    <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g> uitgeschakeld"</string>
-    <string name="permission_revoked_all" msgid="3397649017727222283">"alle rechten uitgeschakeld"</string>
-    <string name="permission_revoked_none" msgid="9213345075484381180">"geen rechten uitgeschakeld"</string>
+    <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g> uitgezet"</string>
+    <string name="permission_revoked_all" msgid="3397649017727222283">"alle rechten ingetrokken"</string>
+    <string name="permission_revoked_none" msgid="9213345075484381180">"geen rechten ingetrokken"</string>
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Toestaan"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Altijd toestaan"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Tijdens gebruik van de app"</string>
@@ -49,8 +49,8 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Apps"</string>
     <string name="app_permissions" msgid="3369917736607944781">"App-rechten"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Niet-gebruikte apps"</string>
-    <string name="app_disable_dlg_positive" msgid="7418444149981904940">"App uitschakelen"</string>
-    <string name="app_disable_dlg_text" msgid="3126943217146120240">"Als je deze app uitschakelt, werken Android en andere apps mogelijk niet meer zoals bedoeld. Onthoud dat je deze app niet kunt verwijderen, omdat deze vooraf geïnstalleerd was op je apparaat. Uitschakelen betekent dat je deze app uitschakelt en verbergt op je apparaat."</string>
+    <string name="app_disable_dlg_positive" msgid="7418444149981904940">"App uitzetten"</string>
+    <string name="app_disable_dlg_text" msgid="3126943217146120240">"Als je deze app uitzet, werken Android en andere apps mogelijk niet meer zoals bedoeld. Je kunt deze app niet verwijderen omdat deze vooraf geïnstalleerd was op je apparaat. Door de app uit te zetten verberg je deze ook op je apparaat."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Rechtenbeheer"</string>
     <string name="never_ask_again" msgid="4728762438198560329">"Niet meer vragen"</string>
     <string name="no_permissions" msgid="3881676756371148563">"Geen rechten"</string>
@@ -71,13 +71,13 @@
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> is een leverancier van locatieservices voor dit apparaat. Locatietoegang kan worden aangepast via de locatie-instellingen."</string>
     <string name="system_warning" msgid="1173400963234358816">"Als je dit recht weigert, kan het zijn dat basisfuncties van je apparaat niet meer werken zoals bedoeld."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Afgedwongen door beleid"</string>
-    <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Toegang op de achtergrond uitgeschakeld op basis van beleid"</string>
-    <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"Toegang op de achtergrond ingeschakeld op basis van beleid"</string>
-    <string name="permission_summary_enabled_by_policy_foreground_only" msgid="3844582916889767831">"Toegang op de voorgrond ingeschakeld op basis van beleid"</string>
+    <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Toegang op de achtergrond ingetrokken op basis van beleid"</string>
+    <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"Toegang op de achtergrond aangezet op basis van beleid"</string>
+    <string name="permission_summary_enabled_by_policy_foreground_only" msgid="3844582916889767831">"Toegang op de voorgrond aangezet op basis van beleid"</string>
     <string name="permission_summary_enforced_by_admin" msgid="822702574117248700">"Ingesteld door beheerder"</string>
-    <string name="permission_summary_disabled_by_admin_background_only" msgid="3127091456731845646">"Achtergrondtoegang uitgeschakeld door beheerder"</string>
-    <string name="permission_summary_enabled_by_admin_background_only" msgid="9132423838440275757">"Achtergrondtoegang ingeschakeld door beheerder"</string>
-    <string name="permission_summary_enabled_by_admin_foreground_only" msgid="1298432715610745358">"Voorgrondtoegang ingeschakeld door beheerder"</string>
+    <string name="permission_summary_disabled_by_admin_background_only" msgid="3127091456731845646">"Achtergrondtoegang ingetrokken door beheerder"</string>
+    <string name="permission_summary_enabled_by_admin_background_only" msgid="9132423838440275757">"Achtergrondtoegang aangezet door beheerder"</string>
+    <string name="permission_summary_enabled_by_admin_foreground_only" msgid="1298432715610745358">"Voorgrondtoegang aangezet door beheerder"</string>
     <string name="permission_summary_enabled_system_fixed" msgid="2438344700184127274">"Apparaat heeft dit recht nodig om te kunnen werken"</string>
     <!-- no translation found for background_access_chooser_dialog_choices:0 (1351721623256561996) -->
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
@@ -90,7 +90,7 @@
     <string name="other_permissions" msgid="2901186127193849594">"Andere app-mogelijkheden"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"Rechtenverzoek"</string>
     <string name="screen_overlay_title" msgid="6977038513913222078">"Schermoverlay gedetecteerd"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"Als u deze instelling voor rechten wilt wijzigen, moet u eerst de schermoverlay uitschakelen via Instellingen &gt; Apps"</string>
+    <string name="screen_overlay_message" msgid="5622563069757142102">"Als je deze instelling voor rechten wilt wijzigen, moet je eerst de schermoverlay uitzetten via Instellingen &gt; Apps"</string>
     <string name="screen_overlay_button" msgid="4655005928054025250">"Instellingen openen"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Acties voor installeren/verwijderen niet ondersteund op Wear."</string>
@@ -181,7 +181,7 @@
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Om je gegevens te beschermen worden de volgende rechten verwijderd als de app een paar maanden niet is gebruikt: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Om je gegevens te beschermen zijn de rechten verwijderd van apps die al een paar maanden niet zijn gebruikt."</string>
     <string name="auto_revoke_open_app_message" msgid="8075556291711205039">"Als je weer rechten wilt toestaan, open je de app."</string>
-    <string name="auto_revoke_disabled" msgid="8697684442991567188">"Automatisch verwijderen is momenteel uitgeschakeld voor deze app."</string>
+    <string name="auto_revoke_disabled" msgid="8697684442991567188">"Automatisch verwijderen is momenteel uitgezet voor deze app."</string>
     <string name="auto_revocable_permissions_none" msgid="8334929619113991466">"Er zijn momenteel geen automatisch herroepbare rechten verleend"</string>
     <string name="auto_revocable_permissions_one" msgid="5299112369449458176">"Recht voor <xliff:g id="PERM">%1$s</xliff:g> wordt verwijderd."</string>
     <string name="auto_revocable_permissions_two" msgid="4874067408752041716">"Rechten voor <xliff:g id="PERM_0">%1$s</xliff:g> en <xliff:g id="PERM_1">%2$s</xliff:g> worden verwijderd."</string>

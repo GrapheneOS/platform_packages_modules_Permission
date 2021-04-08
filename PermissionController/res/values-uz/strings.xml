@@ -216,7 +216,7 @@
     <string name="allowed_always_header" msgid="6455903312589013545">"Doim ruxsat berilgan"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"Ishlatilayotganda ruxsat beriladi"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Faqat media fayllarga ruxsati bor"</string>
-    <string name="allowed_storage_full" msgid="5356699280625693530">"Barcha fayllarni boshqarishga ruxsati bor"</string>
+    <string name="allowed_storage_full" msgid="5356699280625693530">"Barcha fayllarga ruxsati bor"</string>
     <string name="ask_header" msgid="2633816846459944376">"Har safar soʻralsin"</string>
     <string name="denied_header" msgid="2253955654228120835">"Taqiqlangan"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">

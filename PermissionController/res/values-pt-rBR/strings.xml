@@ -300,13 +300,13 @@
     <string name="role_browser_request_description" msgid="5888803407905985941">"Nenhuma permissão necessária"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"App de telefone padrão"</string>
     <string name="role_dialer_short_label" msgid="7186888549465352489">"App Telefone"</string>
-    <string name="role_dialer_description" msgid="8768708633696539612">"Apps que permitem fazer e receber chamadas no seu dispositivo"</string>
+    <string name="role_dialer_description" msgid="8768708633696539612">"Apps que permitem fazer e receber chamadas no seu dispositivo."</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Definir <xliff:g id="APP_NAME">%1$s</xliff:g> como seu app de telefone padrão?"</string>
     <string name="role_dialer_request_description" msgid="2264219375528345270">"Recebe acesso a registros de chamadas e envio de SMS"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"discador"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"App de SMS padrão"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"App de SMS"</string>
-    <string name="role_sms_description" msgid="3424020199148153513">"Apps que permitem usar o número do telefone para enviar e receber mensagens de texto curtas, fotos, vídeos e muito mais"</string>
+    <string name="role_sms_description" msgid="3424020199148153513">"Apps que permitem usar o número do telefone para enviar e receber mensagens de texto curtas, fotos, vídeos e muito mais."</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Definir <xliff:g id="APP_NAME">%1$s</xliff:g> como app de SMS padrão?"</string>
     <string name="role_sms_request_description" msgid="983371022668134198">"Recebe acesso a contatos, SMS, smartphone"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"mensagem de texto, enviar mensagens de texto, mensagens"</string>
@@ -318,7 +318,7 @@
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"em emergências"</string>
     <string name="role_home_label" msgid="3871847846649769412">"App de início padrão"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"App de início"</string>
-    <string name="role_home_description" msgid="7997371519626556675">"Apps geralmente chamados de acesso rápido, que substituem a tela inicial do dispositivo Android e permitem acesso a conteúdo e recursos do dispositivo"</string>
+    <string name="role_home_description" msgid="7997371519626556675">"Apps geralmente chamados de acesso rápido, que substituem a tela inicial do dispositivo Android e permitem acesso a conteúdo e recursos do dispositivo."</string>
     <string name="role_home_request_title" msgid="738136983453341081">"Definir <xliff:g id="APP_NAME">%1$s</xliff:g> como seu app de início padrão?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"Nenhuma permissão necessária"</string>
     <string name="role_home_search_keywords" msgid="3830755001192666285">"tela de início"</string>
@@ -329,7 +329,7 @@
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Nenhuma permissão necessária"</string>
     <string name="role_call_screening_label" msgid="883935222060878724">"App identificador de chamada e spam padrão"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"App identificador de chamada e spam"</string>
-    <string name="role_call_screening_description" msgid="2349431420497468981">"Apps que permitem identificar chamadas e bloquear spam, ligações automáticas ou números indesejados"</string>
+    <string name="role_call_screening_description" msgid="2349431420497468981">"Apps que permitem identificar chamadas e bloquear spam, ligações automáticas ou números indesejados."</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Definir <xliff:g id="APP_NAME">%1$s</xliff:g> como app padrão identificador de chamadas e spam?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Nenhuma permissão necessária"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Padrão atual"</string>

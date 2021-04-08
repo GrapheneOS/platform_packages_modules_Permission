@@ -214,7 +214,7 @@
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Апликације са овом дозволом могу да упућују телефонске позиве и управљају њима"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Апликације са овом дозволом могу да приступају подацима сензора о виталним функцијама"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Апликације са овом дозволом могу да шаљу и прегледају SMS-ове"</string>
-    <string name="permission_description_summary_storage" msgid="6575759089065303346">"Апликације са овом дозволом могу да приступају сликама, медијском садржају и датотекама на уређају"</string>
+    <string name="permission_description_summary_storage" msgid="6575759089065303346">"Апликације са овом дозволом могу да приступају сликама, медијском садржају и фајловима на уређају"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Последњи приступ: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Тренутно одбијено/последњи приступ: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Без приступа"</string>
@@ -408,7 +408,7 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Ова апликација жели да приступа локацији све време, чак и када не користите апликацију. "<annotation id="link">"Дозволите у подешавањима."</annotation></string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Желите да омогућите да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; приступа календару?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Желите да омогућите да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; шаље и прегледа SMS-ове?"</string>
-    <string name="permgrouprequest_storage" msgid="8717773092518621602">"Желите да омогућите да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; приступа сликама, медијским и другим датотекама на уређају?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"Желите да омогућите да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; приступа сликама, медијским и другим фајловима на уређају?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Желите да омогућите да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; снима звук?"</string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"Желите ли да дозволите да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; приступа физичким активностима?"</string>
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"Желите да омогућите да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; снима слике и видео снимке?"</string>

@@ -399,7 +399,7 @@
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; บันทึกเสียงไหม"</string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึงกิจกรรมการเคลื่อนไหวร่างกายของคุณไหม"</string>
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ถ่ายรูปและบันทึกวิดีโอไหม"</string>
-    <string name="permgrouprequest_calllog" msgid="2065327180175371397">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึงประวัติการโทรในโทรศัพท์ไหม"</string>
+    <string name="permgrouprequest_calllog" msgid="2065327180175371397">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึงบันทึกการโทรในโทรศัพท์ไหม"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; โทรและจัดการการโทรไหม"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึงข้อมูลเซ็นเซอร์เกี่ยวกับสัญญาณชีพไหม"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"สิทธิ์ที่มีการควบคุม"</string>

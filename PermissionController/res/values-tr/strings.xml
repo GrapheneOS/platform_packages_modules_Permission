@@ -399,7 +399,7 @@
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının ses kaydetmesine izin verilsin mi?"</string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasına fiziksel aktivitenize erişme izni verilsin mi?"</string>
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının fotoğraf çekmesine ve video kaydı yapmasına izin verilsin mi?"</string>
-    <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Telefon arama kayıtlarınıza erişmek için &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasına izin verilsin mi?"</string>
+    <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının telefon arama kayıtlarınıza erişmesine izin verilsin mi?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının telefon etmesine ve çağrıları yönetmesine izin verilsin mi?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının hayati belirtilerinizle ilgili sensör verilerine erişmesine izin verilsin mi?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Kontrol edilen izinler"</string>

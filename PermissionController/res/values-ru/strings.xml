@@ -183,14 +183,14 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Разрешить доступ только к медиафайлам"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Разрешить в любом режиме"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Разрешить только во время использования приложения"</string>
-    <string name="app_permission_button_ask" msgid="3342950658789427">"Всегда спрашивать"</string>
+    <string name="app_permission_button_ask" msgid="3342950658789427">"Спрашивать каждый раз"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Запретить"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Разрешение \"<xliff:g id="PERM">%1$s</xliff:g>\""</string>
     <string name="app_permission_header" msgid="2951363137032603806">"<xliff:g id="PERM">%1$s</xliff:g>: доступ для этого приложения"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Все разрешения приложения \"<xliff:g id="APP">%1$s</xliff:g>\""</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Все приложения с этим разрешением"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Показывать сведения об использовании микрофона Ассистентом"</string>
-    <string name="auto_revoke_label" msgid="5068393642936571656">"Отзывать разрешения у неиспользуемых приложений"</string>
+    <string name="auto_revoke_label" msgid="5068393642936571656">"Отзывать разрешения, если приложение не используется"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Для защиты ваших данных мы отзовем разрешения, предоставленные этому приложению, если вы не будете пользоваться им несколько месяцев."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Если вы не будете пользоваться приложением несколько месяцев, в целях защиты ваших данных мы отзовем следующие разрешения: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"В целях защиты ваших данных мы отозвали разрешения для приложений, которыми вы не пользовались несколько месяцев."</string>
@@ -316,7 +316,7 @@
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"Эти приложения могут получить доступ к изображению на экране, вашим действиям и вводимому тексту. Кроме того, они могут сами выполнять действия и управлять экраном."</string>
     <string name="role_assistant_label" msgid="4727586018198208128">"Цифровой помощник по умолчанию"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Цифровой помощник"</string>
-    <string name="role_assistant_description" msgid="6622458130459922952">"Приложения-помощники считывают информацию с экрана. Чтобы вам было удобнее, некоторые из них поддерживают и панель запуска, и голосовой ввод."</string>
+    <string name="role_assistant_description" msgid="6622458130459922952">"Приложения-помощники могут использовать информацию на экране. Для большего удобства некоторые из них поддерживают запуск других приложений и голосовой ввод."</string>
     <string name="role_assistant_request_title" msgid="5964976301922776060">"Сделать приложение \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" Помощником по умолчанию?"</string>
     <string name="role_assistant_request_description" msgid="6836644847620178483">"Будет предоставлен доступ к SMS и списку звонков."</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Браузер по умолчанию"</string>
@@ -332,7 +332,7 @@
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"набор номера"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Приложение для SMS"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS"</string>
-    <string name="role_sms_description" msgid="3424020199148153513">"Приложения, которые позволяют отправлять и принимать короткие текстовые сообщения, фото, видео и т. д."</string>
+    <string name="role_sms_description" msgid="3424020199148153513">"Приложения, которые позволяют отправлять и принимать короткие текстовые сообщения, фото, видео и другие данные, используя номер телефона."</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Сделать \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" приложением для обмена SMS по умолчанию?"</string>
     <string name="role_sms_request_description" msgid="983371022668134198">"Будет предоставлен доступ к SMS, звонкам и контактам."</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"сообщение, обмен сообщениями, текст, SMS"</string>
@@ -344,7 +344,7 @@
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"чрезвычайная ситуация"</string>
     <string name="role_home_label" msgid="3871847846649769412">"Главный экран по умолчанию"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"Главный экран"</string>
-    <string name="role_home_description" msgid="7997371519626556675">"Приложения, которые заменяют собой главный экран устройства и позволяют просматривать и запускать функции и приложения."</string>
+    <string name="role_home_description" msgid="7997371519626556675">"Такие приложения работают как главный экран устройства Android и предоставляют доступ к его содержимому и функциям."</string>
     <string name="role_home_request_title" msgid="738136983453341081">"Сделать \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" приложением для главного экрана по умолчанию?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"Разрешения не требуются"</string>
     <string name="role_home_search_keywords" msgid="3830755001192666285">"панель запуска"</string>

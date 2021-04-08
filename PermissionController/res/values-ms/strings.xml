@@ -327,10 +327,10 @@
     <string name="role_call_redirection_description" msgid="6091669882014664420">"Apl yang membenarkan anda memajukan panggilan keluar ke nombor telefon lain"</string>
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"Tetapkan <xliff:g id="APP_NAME">%1$s</xliff:g> sebagai apl pengubahhalaan panggilan lalai anda?"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Kebenaran tidak diperlukan"</string>
-    <string name="role_call_screening_label" msgid="883935222060878724">"ID pemanggil &amp; apl spam lalai"</string>
+    <string name="role_call_screening_label" msgid="883935222060878724">"Apl ID pemanggil &amp; spam lalai"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"ID Pemanggil &amp; apl spam"</string>
     <string name="role_call_screening_description" msgid="2349431420497468981">"Apl yang membenarkan anda mengenal pasti panggilan dan menyekat spam, robopanggilan atau nombor yang tidak dikehendaki"</string>
-    <string name="role_call_screening_request_title" msgid="7358309224566977290">"Tetapkan <xliff:g id="APP_NAME">%1$s</xliff:g> sebagai ID pemanggil &amp; apl spam lalai anda?"</string>
+    <string name="role_call_screening_request_title" msgid="7358309224566977290">"Tetapkan <xliff:g id="APP_NAME">%1$s</xliff:g> sebagai apl ID pemanggil &amp; spam lalai anda?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Kebenaran tidak diperlukan"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Lalai semasa"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Jangan tanya lagi"</string>

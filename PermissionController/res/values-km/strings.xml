@@ -213,7 +213,7 @@
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"មិនធ្លាប់​ចូលប្រើ"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"បាន​បដិសេធ / មិនធ្លាប់​ចូលប្រើ"</string>
     <string name="allowed_header" msgid="7769277978004790414">"បាន​អនុញ្ញាត"</string>
-    <string name="allowed_always_header" msgid="6455903312589013545">"បាន​អនុញ្ញាត​គ្រប់ពេល"</string>
+    <string name="allowed_always_header" msgid="6455903312589013545">"អនុញ្ញាត​គ្រប់ពេល"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"អនុញ្ញាត​ខណៈពេល​ប្រើប្រាស់តែ​ប៉ុណ្ណោះ"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"បានអនុញ្ញាតឱ្យចូលប្រើមេឌៀតែប៉ុណ្ណោះ"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"បានអនុញ្ញាតឱ្យគ្រប់គ្រងឯកសារទាំងអស់"</string>
@@ -355,7 +355,7 @@
     <string name="default_apps" msgid="5119201969348748639">"កម្មវិធី​លំនាំដើម"</string>
     <string name="no_default_apps" msgid="2593466527182950231">"គ្មានកម្មវិធីលំនាំដើមទេ"</string>
     <string name="default_apps_more" msgid="4078194675848858093">"លំនាំដើម​ច្រើនទៀត"</string>
-    <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"បើកតំណ"</string>
+    <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"ការបើកតំណ"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"លំនាំដើម​សម្រាប់ការងារ"</string>
     <string name="default_app_none" msgid="9084592086808194457">"គ្មាន"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(លំនាំដើមប្រព័ន្ធ)"</string>

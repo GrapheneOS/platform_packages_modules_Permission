@@ -31,7 +31,7 @@
     <string name="grant_dialog_button_deny_anyway" msgid="3221644923954258179">"Trotzdem ablehnen"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Schließen"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> von <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
-    <string name="permission_warning_template" msgid="2247087781222679458">"Zulassen, dass die App &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; Folgendes darf: <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
+    <string name="permission_warning_template" msgid="2247087781222679458">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, Folgendes zu tun: <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
     <string name="permission_add_background_warning_template" msgid="1812914855915092273">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; immer Folgendes erlauben: <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"Nur während der App-Nutzung"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"Immer"</string>
@@ -173,7 +173,7 @@
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Ablehnen"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Berechtigung: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Dieser App Zugriff auf <xliff:g id="PERM">%1$s</xliff:g> erlauben?"</string>
-    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Alle Berechtigungen der App \"<xliff:g id="APP">%1$s</xliff:g>\" anzeigen"</string>
+    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Alle Berechtigungen der App „<xliff:g id="APP">%1$s</xliff:g>“ anzeigen"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Alle Apps mit dieser Berechtigung anzeigen"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Nutzung der Berechtigung \"Mikrofon\" für Assistant anzeigen"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Berechtigungen entfernen, wenn die App nicht verwendet wird"</string>
@@ -212,7 +212,7 @@
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Zurzeit nicht zugelassen/Letzter Zugriff: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Bisher kein Zugriff auf diese Berechtigung"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"Abgelehnt/Kein Zugriff auf diese Berechtigung"</string>
-    <string name="allowed_header" msgid="7769277978004790414">"Zugriff zugelassen"</string>
+    <string name="allowed_header" msgid="7769277978004790414">"Zugelassen"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"Zugriff immer zugelassen"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"Zugriff nur während Nutzung zugelassen"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Zugriff nur auf Mediendateien zugelassen"</string>
@@ -318,7 +318,7 @@
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"notfall"</string>
     <string name="role_home_label" msgid="3871847846649769412">"Standardmäßige Start-App"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"Start-App"</string>
-    <string name="role_home_description" msgid="7997371519626556675">"Oft auch als \"Launcher\" bezeichnete Apps, die den Startbildschirm deines Android-Geräts ersetzen und Zugriff auf Inhalte und Funktionen deines Geräts gewähren"</string>
+    <string name="role_home_description" msgid="7997371519626556675">"Oft auch als „Launcher“ bezeichnete Apps, die den Startbildschirm deines Android-Geräts ersetzen und Zugriff auf Inhalte und Funktionen deines Geräts gewähren"</string>
     <string name="role_home_request_title" msgid="738136983453341081">"<xliff:g id="APP_NAME">%1$s</xliff:g> als standardmäßige Start-App festlegen?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"Keine Berechtigungen erforderlich"</string>
     <string name="role_home_search_keywords" msgid="3830755001192666285">"launcher"</string>
@@ -385,23 +385,23 @@
     <string name="adjust_user_sensitive_per_app_header" msgid="4543506440989005648">"Nutzung für diese System-Apps anzeigen"</string>
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Auslösererkennung für Assistenten anzeigen"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Symbol in der Statusleiste anzeigen, wenn das Mikrofon verwendet wird, um den Sprachassistenten zu aktivieren"</string>
-    <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"Zulassen, dass &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; auf Fotos und Medien auf deinem Gerät zugreift?"</string>
-    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Zulassen, dass &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; auf deine Kontakte zugreift?"</string>
+    <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf Fotos und Medien auf deinem Gerät zuzugreifen?"</string>
+    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf deine Kontakte zuzugreifen?"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, den Gerätestandort abzurufen?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Die App hat nur Zugriff auf den Gerätestandort, solange du sie verwendest"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, den Gerätestandort abzurufen?"</string>
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Diese App möchte eventuell Zugriff auf deinen Standort haben, auch wenn du sie nicht verwendest. "<annotation id="link">"Du kannst das in den Einstellungen zulassen."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Standortzugriff für &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ändern?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Diese App möchte jederzeit Zugriff auf deinen Standort haben, auch wenn du sie nicht verwendest. "<annotation id="link">"Du kannst das in den Einstellungen zulassen."</annotation></string>
-    <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Zulassen, dass &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; auf deinen Kalender zugreift?"</string>
-    <string name="permgrouprequest_sms" msgid="5672063688745420991">"Zulassen, dass die App &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; SMS sendet und aufruft?"</string>
-    <string name="permgrouprequest_storage" msgid="8717773092518621602">"Zulassen, dass &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; auf Fotos, Medien und Dateien auf deinem Gerät zugreift?"</string>
-    <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Zulassen, dass &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; Audioaufnahmen macht?"</string>
-    <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"Zulassen, dass &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; auf deine körperliche Aktivität zugreift?"</string>
-    <string name="permgrouprequest_camera" msgid="5123097035410002594">"Zulassen, dass &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; Bilder und Videos aufnimmt?"</string>
-    <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Zulassen, dass &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; auf deine Anrufliste zugreift?"</string>
-    <string name="permgrouprequest_phone" msgid="1829234136997316752">"Zulassen, dass &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; Anrufe startet und verwaltet?"</string>
-    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Zulassen, dass &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; auf Sensordaten zu deinen Vitalfunktionen zugreift?"</string>
+    <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf deinen Kalender zuzugreifen?"</string>
+    <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, SMS zu senden und aufzurufen?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf Fotos, Medien und Dateien auf deinem Gerät zuzugreifen?"</string>
+    <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, Audioaufnahmen zu machen?"</string>
+    <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf deine körperliche Aktivität zuzugreifen?"</string>
+    <string name="permgrouprequest_camera" msgid="5123097035410002594">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, Bilder und Videos aufzunehmen?"</string>
+    <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf deine Anrufliste zuzugreifen?"</string>
+    <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, Anrufe zu starten und zu verwalten?"</string>
+    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf Sensordaten zu deinen Vitalfunktionen zuzugreifen?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Erteilte Berechtigungen"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Standortzugriff möglich"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Dein IT-Administrator erlaubt der App \"<xliff:g id="APP_NAME">%s</xliff:g>\" den Zugriff auf deinen Standort"</string>

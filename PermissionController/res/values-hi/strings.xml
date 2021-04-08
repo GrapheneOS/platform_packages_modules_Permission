@@ -318,7 +318,7 @@
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"आपात स्थिति में"</string>
     <string name="role_home_label" msgid="3871847846649769412">"डिफ़ॉल्ट होम ऐप्लिकेशन"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"होम ऐप्लिकेशन"</string>
-    <string name="role_home_description" msgid="7997371519626556675">"ऐप्लिकेशन जिन्हें अक्सर लॉन्चर कहा जाता है, वे आपके Android डिवाइस पर होम स्क्रीन की जगह ले लेते हैं और आपको डिवाइस की सामग्रियों और सुविधाओं का ऐक्सेस देते हैं"</string>
+    <string name="role_home_description" msgid="7997371519626556675">"ऐप्लिकेशन जिन्हें अक्सर लॉन्चर कहा जाता है, वे आपके Android डिवाइस पर होम स्क्रीन की जगह ले लेते हैं और आपको डिवाइस के कॉन्टेंट और सुविधाओं का ऐक्सेस देते हैं"</string>
     <string name="role_home_request_title" msgid="738136983453341081">"<xliff:g id="APP_NAME">%1$s</xliff:g> को अपने डिफ़ॉल्ट होम ऐप्लिकेशन के तौर पर सेट करना चाहते हैं?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"अनुमति की ज़रूरत नहीं है"</string>
     <string name="role_home_search_keywords" msgid="3830755001192666285">"लॉन्चर"</string>
@@ -395,12 +395,12 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"यह ऐप्लिकेशन आपके डिवाइस की जगह की जानकारी हर समय ऐक्सेस करना चाहता है. उस समय भी जब आप इसका इस्तेमाल न कर रहे हों. "<annotation id="link">"सेटिंग में इसकी अनुमति दें."</annotation></string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को अपना कैलेंडर देखने की अनुमति देना चाहते हैं?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को एसएमएस (मैसेज) भेजने और देखने की अनुमति देना चाहते हैं?"</string>
-    <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को डिवाइस पर मौजूद फ़ोटो, ऑडियो-वीडियो, और फ़ाइलें ऐक्सेस करने की अनुमति दें?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को डिवाइस पर मौजूद फ़ोटो, ऑडियो-वीडियो, और फ़ाइलें ऐक्सेस करने की अनुमति देना चाहते हैं?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को ऑडियो रिकॉर्ड करने की अनुमति देना चाहते हैं?"</string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को अपनी शारीरिक गतिविधि की जानकारी पाने की अनुमति देना चाहते हैं?"</string>
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को फ़ोटो खींचने और वीडियो रिकॉर्ड करने की अनुमति देना चाहते हैं?"</string>
-    <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को अपने काॅल लाॅग ऐक्सेस करने की मंज़ूरी देना चाहते हैं?"</string>
-    <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को फ़ोन कॉल करने और उन्हें प्रबंधित करने की अनुमति दें?"</string>
+    <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को अपने फ़ोन के काॅल लाॅग को ऐक्सेस करने की अनुमति देना चाहते हैं?"</string>
+    <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को फ़ोन कॉल करने और उन्हें मैनेज करने की अनुमति देना चाहते हैं?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को अपने स्वास्थ्य से जुड़ी ज़रूरी जानकारी इस्तेमाल करने की अनुमति देना चाहते हैं?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"कंट्रोल की गई अनुमतियां"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"जगह की जानकारी देखी जा सकती है"</string>

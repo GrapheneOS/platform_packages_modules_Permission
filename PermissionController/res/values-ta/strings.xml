@@ -218,7 +218,7 @@
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"மீடியா ஃபைல்களுக்கு மட்டும் அணுகலுள்ளவை"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"எல்லா ஃபைல்களையும் நிர்வகிக்கும் அணுகலுள்ளவை"</string>
     <string name="ask_header" msgid="2633816846459944376">"ஒவ்வொரு முறையும் கேள்"</string>
-    <string name="denied_header" msgid="2253955654228120835">"மறுக்கப்பட்டது"</string>
+    <string name="denied_header" msgid="2253955654228120835">"மறுக்கப்பட்டவை"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> நாட்கள்</item>
       <item quantity="one">1 நாள்</item>
@@ -293,7 +293,7 @@
     <string name="role_assistant_description" msgid="6622458130459922952">"நீங்கள் பார்க்கும் திரையில் உள்ள தகவலின் அடிப்படையில் அசிஸ்ட் ஆப்ஸ் உதவும். ஒருங்கிணைந்த உதவியை வழங்குவதற்காக \'தொடக்கியையும்\' \'குரல் உள்ளீட்டுச் சேவைகளையும்\' சில ஆப்ஸ் பயன்படுத்துகின்றன."</string>
     <string name="role_assistant_request_title" msgid="5964976301922776060">"<xliff:g id="APP_NAME">%1$s</xliff:g>ஐ இயல்பான அசிஸ்ட் ஆப்ஸாக அமைக்கவா?"</string>
     <string name="role_assistant_request_description" msgid="6836644847620178483">"மெசேஜ், அழைப்புப் பதிவுக்கான அணுகலைப் பெறும்"</string>
-    <string name="role_browser_label" msgid="2877796144554070207">"இயல்பான உலாவி ஆப்ஸ்"</string>
+    <string name="role_browser_label" msgid="2877796144554070207">"உலாவிக்கான இயல்பான ஆப்ஸ்"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"உலாவி ஆப்ஸ்"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"இணையத்திற்கும் திரையில் பார்த்துத் தட்டக்கூடிய இணைப்புகளுக்கும் அணுகலை வழங்கும் ஆப்ஸ்"</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"<xliff:g id="APP_NAME">%1$s</xliff:g>ஐ இயல்பான உலாவி ஆப்ஸாக அமைக்கவா?"</string>
@@ -306,7 +306,7 @@
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"டயலர்"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"இயல்பான மெசேஜ் ஆப்ஸ்"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"மெசேஜ் ஆப்ஸ்"</string>
-    <string name="role_sms_description" msgid="3424020199148153513">"குறுகிய மெசேஜ்கள், படங்கள், வீடியோக்கள் மற்றும் பலவற்றை அனுப்புவதற்கும் பெறுவதற்கும் உங்கள் மொபைல் எண்ணைப் பயன்படுத்த அனுமதிக்கும் ஆப்ஸ்"</string>
+    <string name="role_sms_description" msgid="3424020199148153513">"சிறு மெசேஜ்கள், படங்கள், வீடியோக்கள் மற்றும் பலவற்றை அனுப்புவதற்கும் பெறுவதற்கும் உங்கள் மொபைல் எண்ணைப் பயன்படுத்த அனுமதிக்கும் ஆப்ஸ்"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g>ஐ இயல்பான மெசேஜ் ஆப்ஸாக அமைக்கவா?"</string>
     <string name="role_sms_request_description" msgid="983371022668134198">"தொடர்புகள், மெசேஜ், மொபைல் ஆகியவற்றுக்கான அணுகலைப் பெறும்"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"உரைச் செய்தி, உரைச் செய்தியிடல், மெசேஜ்கள், மெசேஜ் அனுப்புதல்"</string>

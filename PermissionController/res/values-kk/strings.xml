@@ -66,7 +66,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> қолданбаға рұқсат берілген"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Жүйені көрсету"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Жүйені жасыру"</string>
-    <string name="no_apps" msgid="2412612731628386816">"Қолданбалар жоқ"</string>
+    <string name="no_apps" msgid="2412612731628386816">"Қолданба жоқ"</string>
     <string name="location_settings" msgid="3624412509133422562">"Орналасу параметрлері"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> – осы құрылғыға орынды анықтау қызметтерін көрсететін қолданба. Орынды пайдалану мүмкіндігін орынды анықтау параметрлерінде өзгертуге болады."</string>
     <string name="system_warning" msgid="1173400963234358816">"Бұл рұқсатты бермесеңіз, құрылғының негізгі функциялары енді көзделгендей жұмыс істемеуі мүмкін."</string>
@@ -214,7 +214,7 @@
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"Тыйым салынған/Ешқашан пайдаланбаған"</string>
     <string name="allowed_header" msgid="7769277978004790414">"Рұқсат берілгендер"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"Біржола рұқсат етілгендер"</string>
-    <string name="allowed_foreground_header" msgid="6845655788447833353">"Қолданылып жатқанда ғана рұқсат етілгендер"</string>
+    <string name="allowed_foreground_header" msgid="6845655788447833353">"Пайдаланған кезде ғана рұқсат етілгендер"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Тек медиафайлды пайдалана алатын қолданбалар"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Барлық файлдарды басқара алатын қолданбалар"</string>
     <string name="ask_header" msgid="2633816846459944376">"Әрдайым сұрау"</string>
@@ -318,7 +318,7 @@
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"төтенше жағдайда"</string>
     <string name="role_home_label" msgid="3871847846649769412">"Әдепкі негізгі экран қолданбасы"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"Негізгі экран қолданбасы"</string>
-    <string name="role_home_description" msgid="7997371519626556675">"Android құрылғыңыздағы негізгі экрандарды ауыстыратын және құрылғының мазмұндары мен функцияларын пайдалануға мүмкіндік беретін қолданбалар (көбіне іске қосу құралы деп аталады)"</string>
+    <string name="role_home_description" msgid="7997371519626556675">"Android негізгі экранының орнына тұрып, құрылғының мазмұны мен функцияларын ашуға мүмкіндік беретін қолданбалар (көбіне іске қосу құралы деп аталады)."</string>
     <string name="role_home_request_title" msgid="738136983453341081">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасы әдепкі негізгі экран қолданбасы болып орнатылсын ба?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"Ешқандай рұқсат қажет емес."</string>
     <string name="role_home_search_keywords" msgid="3830755001192666285">"қосқыш"</string>
@@ -329,7 +329,7 @@
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Ешқандай рұқсат қажет емес."</string>
     <string name="role_call_screening_label" msgid="883935222060878724">"Нөмір мен спамды анықтаудың әдепкі қолданбасы"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"Нөмірді автоматты анықтау қызметі, спамды анықтау қолданбасы"</string>
-    <string name="role_call_screening_description" msgid="2349431420497468981">"Қоңырау шалушыны анықтауға, спамды және автоматты қоңырауларды және қажетсіз нөмірлерді бөгеуге мүмкіндік беретін қолданбалар."</string>
+    <string name="role_call_screening_description" msgid="2349431420497468981">"Қоңырау шалушыны анықтауға, спамды және автоматты қоңырауларды және қажетсіз нөмірлерді бөгеуге мүмкіндік беретін қолданбалар"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> нөмірді автоматты анықтау қызметі мен спам анықтау қолданбасы болып орнатылсын ба?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Ешқандай рұқсат қажет емес."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Ағымдағы әдепкі қолданба"</string>
@@ -359,13 +359,13 @@
     <string name="default_apps_for_work" msgid="4970308943596201811">"Жұмыс үшін әдепкі қолданба"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Жоқ"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(жүйенің әдепкі қолданбасы)"</string>
-    <string name="default_app_no_apps" msgid="115720991680586885">"Қолданбалар жоқ"</string>
+    <string name="default_app_no_apps" msgid="115720991680586885">"Қолданба жоқ"</string>
     <string name="car_default_app_selected" msgid="5416420830430644174">"Таңдалды"</string>
     <string name="car_default_app_selected_with_info" msgid="1932204186080593500">"Таңдалды – <xliff:g id="ADDITIONAL_INFO">%1$s</xliff:g>"</string>
     <string name="special_app_access_search_keyword" msgid="8032347212290774210">"арнайы қолданба рұқсаты"</string>
     <string name="special_app_access" msgid="5019319067120213797">"Арнайы кіру"</string>
     <string name="no_special_app_access" msgid="6950277571805106247">"Арнайы кіру мүмкіндігі жоқ"</string>
-    <string name="special_app_access_no_apps" msgid="4102911722787886970">"Қолданбалар жоқ"</string>
+    <string name="special_app_access_no_apps" msgid="4102911722787886970">"Қолданба жоқ"</string>
     <string name="home_missing_work_profile_support" msgid="1756855847669387977">"Жұмыс профиліне қолдау көрсетпейді."</string>
     <string name="encryption_unaware_confirmation_message" msgid="8274491794636402484">"Ескертпе: Құрылғыңызды қайта қоссаңыз және экран құлыпталса, құрылғының құлпы ашылмайынша, қолданба іске қосылмайды."</string>
     <string name="assistant_confirmation_message" msgid="7476540402884416212">"Көмекші қолданба жүйеде пайдаланылып жатқан қолданбалар туралы ақпаратты, соның ішінде экранға шығатын немесе қолданбалардағы деректерді оқи алады."</string>

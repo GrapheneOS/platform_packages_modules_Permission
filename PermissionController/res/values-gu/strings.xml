@@ -395,10 +395,10 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"તમે આ ઍપનો ઉપયોગ કરી રહ્યાં ન હો, તો પણ તે હંમેશાં તમારા સ્થાનને ઍક્સેસ કરવા માગે છે. "<annotation id="link">"સેટિંગમાંથી મંજૂરી આપો."</annotation></string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને તમારા કૅલેન્ડરને ઍક્સેસ કરવાની મંજૂરી આપીએ?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને SMS સંદેશા મોકલવા અને જોવાની મંજૂરી આપીએ?"</string>
-    <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને તમારા ડિવાઇસ પર ફોટા, મીડિયા અને ફાઇલોને ઍક્સેસ કરવાની મંજૂરી આપીએ?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને તમારા ડિવાઇસ પરના ફોટા, મીડિયા અને ફાઇલોને ઍક્સેસ કરવાની મંજૂરી આપીએ?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને ઑડિયો રેકૉર્ડ કરવાની મંજૂરી આપીએ?"</string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને તમારી શારીરિક પ્રવૃત્તિને ઍક્સેસ કરવાની મંજૂરી આપવી છે?"</string>
-    <string name="permgrouprequest_camera" msgid="5123097035410002594">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને ફોટા પાડવાની અને વીડિયો રેકૉર્ડ કરવાની મંજૂરી આપીએ?"</string>
+    <string name="permgrouprequest_camera" msgid="5123097035410002594">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને ફોટા પાડવાની અને વીડિયો રેકોર્ડ કરવાની મંજૂરી આપીએ?"</string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને તમારા ફોનના કૉલ લૉગ ઍક્સેસ કરવાની મંજૂરી આપીએ?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને ફોન કૉલ કરવાની અને તેને મેનેજ કરવાની મંજૂરી આપીએ?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને તમારી મહત્વપૂર્ણ સહી વિશેના સેન્સર ડેટાને ઍક્સેસ કરવાની મંજૂરી આપીએ?"</string>

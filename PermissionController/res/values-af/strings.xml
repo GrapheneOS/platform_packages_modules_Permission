@@ -293,7 +293,7 @@
     <string name="role_assistant_description" msgid="6622458130459922952">"Bystandprogramme kan jou help op grond van inligting vanaf die skerm waarna jy kyk. Sommige programme steun sowel lanseerder- as steminvoerdienste om vir jou geïntegreerde bystand te gee."</string>
     <string name="role_assistant_request_title" msgid="5964976301922776060">"Stel <xliff:g id="APP_NAME">%1$s</xliff:g> as jou verstekbystandprogram?"</string>
     <string name="role_assistant_request_description" msgid="6836644847620178483">"Kry toegang tot SMS, oproeprekord"</string>
-    <string name="role_browser_label" msgid="2877796144554070207">"Verstekblaaierprogram"</string>
+    <string name="role_browser_label" msgid="2877796144554070207">"Verstekblaaier"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Blaaierprogram"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Programme wat jou toegang tot die internet gee en na vertoonskakels waarop jy tik"</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"Stel <xliff:g id="APP_NAME">%1$s</xliff:g> as jou verstekblaaierprogram?"</string>
@@ -327,7 +327,7 @@
     <string name="role_call_redirection_description" msgid="6091669882014664420">"Programme wat jou toelaat om uitgaande oproepe na \'n ander foonnommer aan te stuur"</string>
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"Stel <xliff:g id="APP_NAME">%1$s</xliff:g> as jou oproepherleiding-verstekprogram?"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Geen toestemmings is nodig nie"</string>
-    <string name="role_call_screening_label" msgid="883935222060878724">"Verstekbeller-ID en strooiposprogram"</string>
+    <string name="role_call_screening_label" msgid="883935222060878724">"Verstekbeller-ID- en -strooiposprogram"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"Beller-ID en strooiposprogram"</string>
     <string name="role_call_screening_description" msgid="2349431420497468981">"Programme wat dit vir jou moontlik maak om oproepe te identifiseer en strooipos, robotoproepe en ongewenste nommers te blokkeer"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Stel <xliff:g id="APP_NAME">%1$s</xliff:g> as jou verstekbeller-ID en -strooiposprogram?"</string>
@@ -395,7 +395,7 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Hierdie program wil die hele tyd toegang tot jou ligging hê, selfs wanneer jy nie die program gebruik nie. "<annotation id="link">"Laat toe in instellings."</annotation></string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Gee &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang tot jou kalender?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Laat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toe om SMS\'e te stuur en te bekyk?"</string>
-    <string name="permgrouprequest_storage" msgid="8717773092518621602">"Gee vir &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang tot jou foto\'s, media en lêers op jou toestel?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"Gee vir &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang tot foto\'s, media en lêers op jou toestel?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Laat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toe om oudio op te neem?"</string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"Gee &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang tot jou fisieke aktiwiteit?"</string>
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"Laat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toe om foto\'s te neem en video\'s op te neem?"</string>
