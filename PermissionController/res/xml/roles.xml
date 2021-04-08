@@ -73,6 +73,11 @@
         <permission name="android.permission.WRITE_EXTERNAL_STORAGE" />
     </permission-set>
 
+    <permission-set name="nearby_devices">
+        <permission name="android.permission.BLUETOOTH_CONNECT" />
+        <permission name="android.permission.BLUETOOTH_SCAN" />
+    </permission-set>
+
     <role
         name="android.app.role.ASSISTANT"
         behavior="AssistantRoleBehavior"
@@ -499,6 +504,7 @@
         <permissions>
             <permission-set name="microphone" />
             <permission-set name="location" />
+            <permission-set name="nearby_devices" />
             <permission name="android.permission.CALL_PHONE" />
             <permission name="android.permission.READ_CALENDAR" />
             <permission name="android.permission.READ_CALL_LOG" />
