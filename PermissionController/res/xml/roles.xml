@@ -586,6 +586,7 @@
 
     <role
         name="android.app.role.SYSTEM_TELEVISION_NOTIFICATION_HANDLER"
+        behavior="SystemTelevisionNotificationHandlerRoleBehavior"
         defaultHolders="config_systemTelevisionNotificationHandler"
         exclusive="true"
         minSdkVersion="31"
