@@ -127,6 +127,9 @@ public class RoleService extends SystemService implements RoleUserState.Callback
     @NonNull
     private final Handler mListenerHandler = ForegroundThread.getHandler();
 
+    @GuardedBy("mLock")
+    private boolean mBypassingRoleQualification;
+
     /**
      * Maps user id to its throttled runnable for granting default roles.
      */
@@ -501,6 +504,24 @@ public class RoleService extends SystemService implements RoleUserState.Callback
                 return;
             }
             listeners.unregister(listener);
+        }
+
+        @Override
+        public boolean isBypassingRoleQualification() {
+            getContext().enforceCallingOrSelfPermission(Manifest.permission.MANAGE_ROLE_HOLDERS,
+                    "isBypassingRoleQualification");
+            synchronized (mLock) {
+                return mBypassingRoleQualification;
+            }
+        }
+
+        @Override
+        public void setBypassingRoleQualification(boolean bypassRoleQualification) {
+            getContext().enforceCallingOrSelfPermission(
+                    Manifest.permission.BYPASS_ROLE_QUALIFICATION, "setBypassingRoleQualification");
+            synchronized (mLock) {
+                mBypassingRoleQualification = bypassRoleQualification;
+            }
         }
 
         @Override
