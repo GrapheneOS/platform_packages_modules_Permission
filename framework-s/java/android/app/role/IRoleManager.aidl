@@ -45,6 +45,10 @@ interface IRoleManager {
     void removeOnRoleHoldersChangedListenerAsUser(IOnRoleHoldersChangedListener listener,
             int userId);
 
+    boolean isBypassingRoleQualification();
+
+    void setBypassingRoleQualification(boolean bypassRoleQualification);
+
     void setRoleNamesFromController(in List<String> roleNames);
 
     boolean addRoleHolderFromController(in String roleName, in String packageName);
