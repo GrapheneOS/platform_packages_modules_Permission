@@ -71,6 +71,8 @@ public class RoleParser {
     private static final String TAG_PREFERRED_ACTIVITIES = "preferred-activities";
     private static final String TAG_PREFERRED_ACTIVITY = "preferred-activity";
     private static final String ATTRIBUTE_NAME = "name";
+    private static final String ATTRIBUTE_ALLOW_BYPASSING_QUALIFICATION =
+            "allowBypassingQualification";
     private static final String ATTRIBUTE_BEHAVIOR = "behavior";
     private static final String ATTRIBUTE_DEFAULT_HOLDERS = "defaultHolders";
     private static final String ATTRIBUTE_DESCRIPTION = "description";
@@ -270,6 +272,9 @@ public class RoleParser {
             return null;
         }
 
+        boolean allowBypassingQualification = getAttributeBooleanValue(parser,
+                ATTRIBUTE_ALLOW_BYPASSING_QUALIFICATION, false);
+
         String behaviorClassSimpleName = getAttributeValue(parser, ATTRIBUTE_BEHAVIOR);
         RoleBehavior behavior;
         if (behaviorClassSimpleName != null) {
@@ -444,12 +449,12 @@ public class RoleParser {
         if (preferredActivities == null) {
             preferredActivities = Collections.emptyList();
         }
-        return new Role(name, behavior, defaultHoldersResourceName, descriptionResource, exclusive,
-                fallBackToDefaultHolder, labelResource, minSdkVersion, overrideUserWhenGranting,
-                requestDescriptionResource, requestTitleResource, requestable,
-                searchKeywordsResource, shortLabelResource, showNone, systemOnly, visible,
-                requiredComponents, permissions, appOpPermissions, appOps,
-                preferredActivities);
+        return new Role(name, allowBypassingQualification, behavior, defaultHoldersResourceName,
+                descriptionResource, exclusive, fallBackToDefaultHolder, labelResource,
+                minSdkVersion, overrideUserWhenGranting, requestDescriptionResource,
+                requestTitleResource, requestable, searchKeywordsResource, shortLabelResource,
+                showNone, systemOnly, visible, requiredComponents, permissions, appOpPermissions,
+                appOps, preferredActivities);
     }
 
     @NonNull
