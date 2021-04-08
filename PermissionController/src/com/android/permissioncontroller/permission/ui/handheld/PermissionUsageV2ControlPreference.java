@@ -20,40 +20,43 @@ import android.content.Context;
 import android.content.Intent;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.preference.Preference;
-import androidx.preference.PreferenceViewHolder;
+
+import com.android.permissioncontroller.R;
+import com.android.permissioncontroller.permission.utils.KotlinUtils;
 
 /**
  * Preference for the top level privacy hub page
  */
 public class PermissionUsageV2ControlPreference extends Preference {
-    private final @NonNull Context mContext;
-    private @Nullable CharSequence mGroupName;
+    private final Context mContext;
+    private final String mGroupName;
+    private final int mCount;
 
-    public PermissionUsageV2ControlPreference(@NonNull Context context) {
+    public PermissionUsageV2ControlPreference(@NonNull Context context, @NonNull String groupName,
+            int count) {
         super(context);
         mContext = context;
-    }
+        mGroupName = groupName;
+        mCount = count;
 
-    @Override
-    public void onBindViewHolder(PreferenceViewHolder holder) {
-        super.onBindViewHolder(holder);
+        CharSequence permGroupLabel = KotlinUtils.INSTANCE.getPermGroupLabel(mContext, mGroupName);
+        setTitle(mContext.getResources().getString(R.string.permission_group_usage_title,
+                permGroupLabel));
+        setIcon(KotlinUtils.INSTANCE.getPermGroupIcon(mContext, mGroupName));
+        setSummary(mContext.getResources().getQuantityString(
+                R.plurals.permission_usage_preference_label, mCount, mCount, permGroupLabel));
 
-        setOnPreferenceClickListener((preference) -> {
-            Intent intent = new Intent(Intent.ACTION_REVIEW_PERMISSION_HISTORY);
-            intent.putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, mGroupName);
+        if (mCount == 0) {
+            this.setEnabled(false);
+        } else {
+            setOnPreferenceClickListener((preference) -> {
+                Intent intent = new Intent(Intent.ACTION_REVIEW_PERMISSION_HISTORY);
+                intent.putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, mGroupName);
 
-            mContext.startActivity(intent);
-            return true;
-        });
-    }
-
-    public void setGroup(CharSequence groupName) {
-        this.mGroupName = groupName;
-    }
-
-    public CharSequence getGroupName() {
-        return this.mGroupName;
+                mContext.startActivity(intent);
+                return true;
+            });
+        }
     }
 }
