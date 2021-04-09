@@ -417,9 +417,6 @@
     <!-- Label for the title of the permission bar chart showing how often the most common permissions are used [CHAR LIMIT=50] -->
     <string name="permission_usage_bar_chart_title_last_15_minutes">Permission usage in last 15 minutes</string>
 
-    <!-- Suffix for the title of the permission usage preference on the top level page [CHAR LIMIT=50] -->
-    <string name="suffix_permission_usage_preference">usage</string>
-
     <!-- Label for the title of the permission bar chart showing how often the most common permissions are used [CHAR LIMIT=50] -->
     <string name="permission_usage_bar_chart_title_last_minute">Permission usage in last 1 minute</string>
 
@@ -431,8 +428,8 @@
 
     <!-- Label for the permission usage preference that shows how many apps have used various permissions [CHAR LIMIT=10] -->
     <plurals name="permission_usage_preference_label">
-        <item quantity="one">1 app used</item>
-        <item quantity="other"><xliff:g id="number" example="7">%d</xliff:g> apps used</item>
+        <item quantity="one">1 app used <xliff:g id="permgroup" example="Location">%2$s</xliff:g></item>
+        <item quantity="other"><xliff:g id="number" example="7">%1$d</xliff:g> apps used <xliff:g id="permgroup" example="Location">%2$s</xliff:g></item>
     </plurals>
 
     <!-- Label for the button to bring the user to view the details of recent permission accesses [CHAR LIMIT=42] -->
@@ -640,7 +637,7 @@
     <string name="permission_description_summary_location">Apps with this permission can access this device\'s location</string>
 
     <!-- Label for showing a permission group's description in the header of the list of apps that have the nearby devices permission [CHAR LIMIT=none] -->
-    <string name="permission_description_summary_nearby_devices">Apps with this permission can discover and connect to nearby Bluetooth devices</string>
+    <string name="permission_description_summary_nearby_devices">Apps with this permission can discover, connect to, and determine the relative position of nearby devices</string>
 
     <!-- Label for showing a permission group's description in the header of the list of apps that have the microphone permission [CHAR LIMIT=none] -->
     <string name="permission_description_summary_microphone">Apps with this permission can record audio</string>
@@ -1166,9 +1163,9 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
 
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
     <string name="permgrouprequest_nearby_devices">Allow
-        &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to discover and connect to nearby Bluetooth devices?</string>
+        &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to discover and connect to nearby devices?</string>
     <!-- Subtitle of the message shown to the user when the apps requests permission to discovery and connect to nearby devices while app is in foreground and background. Try to keep the link annotation at the end of the string [CHAR LIMIT=150] -->
-    <string name="permgroupupgraderequestdetail_nearby_devices">Allow &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to discover and connect to nearby Bluetooth devices? <annotation id="link">Allow in settings.</annotation></string>
+    <string name="permgroupupgraderequestdetail_nearby_devices">Allow &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to discover and connect to nearby devices? <annotation id="link">Allow in settings.</annotation></string>
 
     <!-- Message shown to the user when the app requests permission to use fine location [CHAR LIMIT=120] -->
     <string name="permgrouprequest_finelocation">Allow &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access this device\u2019s precise location?</string>
