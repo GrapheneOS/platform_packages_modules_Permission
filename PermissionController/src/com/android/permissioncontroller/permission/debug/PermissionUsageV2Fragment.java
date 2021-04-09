@@ -21,6 +21,7 @@ import static java.util.concurrent.TimeUnit.DAYS;
 import static java.util.concurrent.TimeUnit.HOURS;
 import static java.util.concurrent.TimeUnit.MINUTES;
 
+import android.Manifest;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.ActionBar;
@@ -49,7 +50,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
-import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
 
@@ -58,7 +58,6 @@ import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.model.AppPermissionUsage;
 import com.android.permissioncontroller.permission.model.AppPermissionUsage.GroupUsage;
 import com.android.permissioncontroller.permission.model.legacy.PermissionApps;
-import com.android.permissioncontroller.permission.ui.handheld.PermissionControlPreference;
 import com.android.permissioncontroller.permission.ui.handheld.PermissionUsageV2ControlPreference;
 import com.android.permissioncontroller.permission.ui.handheld.SettingsWithLargeHeader;
 import com.android.permissioncontroller.permission.utils.Utils;
@@ -69,9 +68,11 @@ import java.lang.annotation.Retention;
 import java.text.Collator;
 import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * This is a V2 version of the permission usage page. WIP.
@@ -105,6 +106,13 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
     private static final String KEY_SORT = "_sort";
     private static final String SORT_KEY = PermissionUsageV2Fragment.class.getName()
             + KEY_SORT;
+
+    private static final Map<String, Integer> PERMISSION_GROUP_ORDER = Map.of(
+            Manifest.permission_group.LOCATION, 0,
+            Manifest.permission_group.CAMERA, 1,
+            Manifest.permission_group.MICROPHONE, 2
+    );
+    private static final int DEFAULT_ORDER = 3;
 
     private @NonNull PermissionUsages mPermissionUsages;
     private @Nullable List<AppPermissionUsage> mAppPermissionUsages = new ArrayList<>();
@@ -336,8 +344,13 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
         long startTime = Math.max(timeFilterItem == null ? 0 : (curTime - timeFilterItem.getTime()),
                 Instant.EPOCH.toEpochMilli());
 
-        List<Pair<AppPermissionUsage, GroupUsage>> usages = new ArrayList<>();
         mGroupAppCounts.clear();
+        // Permission group to count mapping
+        Map<String, Integer> usages = new HashMap<>();
+        List<AppPermissionGroup> permissionGroups = getOSPermissionGroups();
+        for (int i = 0; i < permissionGroups.size(); i++) {
+            usages.put(permissionGroups.get(i).getName(), 0);
+        }
         ArrayList<PermissionApps.PermissionApp> permApps = new ArrayList<>();
 
         boolean seenSystemApp = extractPermissionUsage(usages, permApps, startTime);
@@ -362,14 +375,16 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
         PreferenceCategory category = new PreferenceCategory(context);
         screen.addPreference(category);
 
-        usages.sort(PermissionUsageV2Fragment::compareGroupUsage);
+        List<Map.Entry<String, Integer>> groupUsagesList = usages.entrySet().stream()
+                .sorted(PermissionUsageV2Fragment::comparePermissionGroupUsage)
+                .collect(Collectors.toList());
 
         // If there are no entries, don't show anything.
         if (usages.isEmpty()) {
             screen.removeAll();
         }
 
-        addUIContent(context, usages, permApps, category);
+        addUIContent(context, groupUsagesList, permApps, category);
     }
 
     /**
@@ -384,7 +399,7 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
      * @param permApps an empty List that will be filled with permission apps.
      * @return whether we have seen a system app.
      */
-    private boolean extractPermissionUsage(List<Pair<AppPermissionUsage, GroupUsage>> usages,
+    private boolean extractPermissionUsage(Map<String, Integer> usages,
             ArrayList<PermissionApps.PermissionApp> permApps,
             long startTime) {
         boolean seenSystemApp = false;
@@ -396,6 +411,7 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
             int numGroups = appGroups.size();
             for (int groupNum = 0; groupNum < numGroups; groupNum++) {
                 GroupUsage groupUsage = appGroups.get(groupNum);
+                String groupName = groupUsage.getGroup().getName();
                 long lastAccessTime = groupUsage.getLastAccessTime();
 
                 if (!groupUsage.hasDiscreteData()) {
@@ -416,16 +432,16 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
                 seenSystemApp = seenSystemApp || isSystemApp;
 
                 used = true;
-                addGroupUser(groupUsage.getGroup().getName());
+                addGroupUser(groupName);
 
                 // Filter out usages that aren't of the filtered permission group.
                 // We do this after we call addGroupUser so we compute the correct usage counts
                 // for the permission filter dialog but before we add the usage to our list.
-                if (mFilterGroup != null && !mFilterGroup.equals(groupUsage.getGroup().getName())) {
+                if (mFilterGroup != null && !mFilterGroup.equals(groupName)) {
                     continue;
                 }
 
-                usages.add(Pair.create(appUsage, appGroups.get(groupNum)));
+                usages.put(groupName, usages.getOrDefault(groupName, 0) + 1);
             }
             if (used) {
                 permApps.add(appUsage.getApp());
@@ -440,52 +456,23 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
      * Use the usages and permApps that are previously constructed to add UI content to the page
      */
     private void addUIContent(Context context,
-            List<Pair<AppPermissionUsage, GroupUsage>> usages,
+            List<Map.Entry<String, Integer>> usages,
             ArrayList<PermissionApps.PermissionApp> permApps,
             PreferenceCategory category) {
         new PermissionApps.AppDataLoader(context, () -> {
-            PermissionUsageV2ControlPreference permissionUsagePreference = null;
-            int permissionUsageAppCount = 0;
-            GroupUsage lastGroupUsage = null;
-            String lastAccessTimeString = null;
-
-            final int numUsages = usages.size();
-            for (int usageNum = 0; usageNum < numUsages; usageNum++) {
-                final Pair<AppPermissionUsage, GroupUsage> usage = usages.get(usageNum);
-                GroupUsage groupUsage = usage.second;
-
-                String accessTimeString = UtilsKt.getAbsoluteLastUsageString(context, groupUsage);
-
-                if (lastGroupUsage == null
-                        || !lastGroupUsage.getGroup().getLabel().toString()
-                        .equals(groupUsage.getGroup().getLabel().toString())
-                        || (mSort == SORT_RECENT
-                        && !accessTimeString.equals(lastAccessTimeString))) {
-
-                    setPermissionSummary(context, permissionUsagePreference, lastGroupUsage,
-                            permissionUsageAppCount);
-                    // Add a "parent" entry for the app that will expand to the individual entries.
-                    permissionUsagePreference = createPermissionUsagePreference(context,
-                            groupUsage.getGroup(),
-                            mSort == SORT_RECENT ? accessTimeString : null);
-                    category.addPreference(permissionUsagePreference);
-                    permissionUsageAppCount = 0;
-                }
-
-                permissionUsageAppCount++;
-                lastGroupUsage = groupUsage;
-
-                lastAccessTimeString = accessTimeString;
+            for (int i = 0; i < usages.size(); i++) {
+                Map.Entry<String, Integer> currentEntry = usages.get(i);
+                PermissionUsageV2ControlPreference permissionUsagePreference =
+                        new PermissionUsageV2ControlPreference(context, currentEntry.getKey(),
+                                currentEntry.getValue());
+                category.addPreference(permissionUsagePreference);
             }
-
-            setPermissionSummary(context, permissionUsagePreference,
-                    lastGroupUsage, permissionUsageAppCount);
 
             setLoading(false, true);
             mFinishedInitialLoad = true;
             setProgressBarVisible(false);
             mPermissionUsages.stopLoader(getActivity().getLoaderManager());
-        }).execute(permApps.toArray(new PermissionApps.PermissionApp[permApps.size()]));
+        }).execute(permApps.toArray(new PermissionApps.PermissionApp[0]));
     }
 
     private void addGroupUser(String app) {
@@ -495,18 +482,6 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
         } else {
             mGroupAppCounts.put(app, count + 1);
         }
-    }
-
-    private void setPermissionSummary(@NonNull Context context, @NonNull Preference pref,
-            GroupUsage groupUsage, int count) {
-        if (pref == null) {
-            return;
-        }
-
-        String numApps = context
-                .getResources()
-                .getQuantityString(R.plurals.permission_usage_preference_label, count, count);
-        pref.setSummary(numApps + " " + groupUsage.getGroup().getLabel());
     }
 
     /**
@@ -524,68 +499,6 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
         if (mFinishedInitialLoad) {
             setProgressBarVisible(true);
         }
-    }
-
-    private PermissionUsageV2ControlPreference createPermissionUsagePreference(
-            @NonNull Context context,
-            @NonNull AppPermissionGroup appPermissionGroup,
-            @Nullable String summaryString) {
-        PermissionUsageV2ControlPreference permissionUsagePreference =
-                new PermissionUsageV2ControlPreference(context);
-
-        permissionUsagePreference.setTitle(appPermissionGroup.getLabel()
-                + " " + context.getString(R.string.suffix_permission_usage_preference));
-        permissionUsagePreference.setIcon(appPermissionGroup.getIconResId());
-        permissionUsagePreference.setGroup(appPermissionGroup.getName());
-        if (summaryString != null) {
-            permissionUsagePreference.setSummary(summaryString);
-        }
-        return permissionUsagePreference;
-    }
-
-    /**
-     * Create a preference representing an app's use of a permission
-     *
-     * @param context the context
-     * @param appPermissionUsage the permission usage for the app
-     * @param groupUsage the permission item to add
-     * @param accessTimeStr the string representing the access time
-     *
-     * @return the Preference
-     */
-    private PermissionControlPreference createPermissionUsagePreference(@NonNull Context context,
-            @NonNull AppPermissionUsage appPermissionUsage,
-            @NonNull GroupUsage groupUsage, @NonNull String accessTimeStr) {
-        final PermissionControlPreference pref = new PermissionControlPreference(context,
-                groupUsage.getGroup(), PermissionUsageV2Fragment.class.getName());
-
-        final AppPermissionGroup group = groupUsage.getGroup();
-        pref.setTitle(group.getLabel());
-        pref.setUsageSummary(groupUsage, accessTimeStr);
-        pref.setTitleIcons(Collections.singletonList(group.getIconResId()));
-        pref.setKey(group.getApp().packageName + "," + group.getName());
-        pref.useSmallerIcon();
-        pref.setRightIcon(context.getDrawable(R.drawable.ic_settings_outline));
-        return pref;
-    }
-
-    /**
-     * Compare two usages by whichever app was used most recently.  If the two represent the same
-     * app, sort by which group was used most recently.
-     *
-     * Can be used as a {@link java.util.Comparator}.
-     *
-     * @param x a usage.
-     * @param y a usage.
-     *
-     * @return see {@link java.util.Comparator#compare(Object, Object)}.
-     */
-    private static int compareAccessAppRecency(@NonNull Pair<AppPermissionUsage, GroupUsage> x,
-            @NonNull Pair<AppPermissionUsage, GroupUsage> y) {
-        if (x.first.getApp().getKey().equals(y.first.getApp().getKey())) {
-            return compareAccessTime(x.second, y.second);
-        }
-        return compareAccessTime(x.first, y.first);
     }
 
     /**
@@ -623,26 +536,6 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
     }
 
     /**
-     * Compare two AppPermissionUsage by their access time.
-     *
-     * Can be used as a {@link java.util.Comparator}.
-     *
-     * @param x an AppPermissionUsage.
-     * @param y an AppPermissionUsage.
-     *
-     * @return see {@link java.util.Comparator#compare(Object, Object)}.
-     */
-    private static int compareAccessTime(@NonNull AppPermissionUsage x,
-            @NonNull AppPermissionUsage y) {
-        final int timeDiff = compareLong(x.getLastAccessTime(), y.getLastAccessTime());
-        if (timeDiff != 0) {
-            return timeDiff;
-        }
-        // Make sure we lose no data if same
-        return x.hashCode() - y.hashCode();
-    }
-
-    /**
      * Compare two longs. Will order the long values from big to small.
      *
      * Can be used as a {@link java.util.Comparator}.
@@ -661,56 +554,15 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
         return 0;
     }
 
-    /**
-     * Compare two usages by recency of access.
-     *
-     * Can be used as a {@link java.util.Comparator}.
-     *
-     * @param x a usage.
-     * @param y a usage.
-     *
-     * @return see {@link java.util.Comparator#compare(Object, Object)}.
-     */
-    private static int compareAccessRecency(@NonNull Pair<AppPermissionUsage, GroupUsage> x,
-            @NonNull Pair<AppPermissionUsage, GroupUsage> y) {
-        final int timeDiff = compareAccessTime(x, y);
-        if (timeDiff != 0) {
-            return timeDiff;
-        }
-        // Make sure we lose no data if same
-        return x.hashCode() - y.hashCode();
-    }
-
-    private static int compareGroupUsage(@NonNull Pair<AppPermissionUsage, GroupUsage> x,
-            @NonNull Pair<AppPermissionUsage, GroupUsage> y) {
-        String xLabel = x.second.getGroup().getLabel().toString();
-        String yLabel = y.second.getGroup().getLabel().toString();
-
-        // TODO: theianchen
-        // do the .equals() check against java variables instead of static strings here
-        // we should define the order as a list of constants but not just comparing the strings
-        if (xLabel.equals("Location")) {
-            return -1;
-        }
-        if (yLabel.equals("Location")) {
-            return 1;
-        }
-        if (xLabel.equals("Camera")) {
-            return -1;
-        }
-        if (yLabel.equals("Camera")) {
-            return 1;
-        }
-        if (xLabel.equals("Microphone")) {
-            return -1;
-        }
-        if (yLabel.equals("Microphone")) {
-            return 1;
+    private static int comparePermissionGroupUsage(@NonNull Map.Entry<String, Integer> x,
+            @NonNull Map.Entry<String, Integer> y) {
+        int xPermissionOrder = PERMISSION_GROUP_ORDER.getOrDefault(x.getKey(), DEFAULT_ORDER);
+        int yPermissionOrder = PERMISSION_GROUP_ORDER.getOrDefault(y.getKey(), DEFAULT_ORDER);
+        if (xPermissionOrder != yPermissionOrder) {
+            return xPermissionOrder - yPermissionOrder;
         }
 
-        // TODO: theianchen
-        // Sort the GroupUsage by the number of usages instead of lexicographically
-        return xLabel.compareTo(yLabel);
+        return y.getValue().compareTo(x.getValue());
     }
 
     /**
