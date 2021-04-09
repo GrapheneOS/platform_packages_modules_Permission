@@ -16,6 +16,7 @@
 
 package com.android.permissioncontroller.permission.ui.handheld;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 
@@ -25,10 +26,18 @@ import androidx.preference.Preference;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 
+import java.util.List;
+
 /**
  * Preference for the top level privacy hub page
  */
 public class PermissionUsageV2ControlPreference extends Preference {
+    private static final List<String> SENSOR_DATA_PERMISSIONS = List.of(
+            Manifest.permission_group.LOCATION,
+            Manifest.permission_group.CAMERA,
+            Manifest.permission_group.MICROPHONE
+    );
+
     private final Context mContext;
     private final String mGroupName;
     private final int mCount;
@@ -49,9 +58,17 @@ public class PermissionUsageV2ControlPreference extends Preference {
 
         if (mCount == 0) {
             this.setEnabled(false);
-        } else {
+        } else if (SENSOR_DATA_PERMISSIONS.contains(groupName)) {
             setOnPreferenceClickListener((preference) -> {
                 Intent intent = new Intent(Intent.ACTION_REVIEW_PERMISSION_HISTORY);
+                intent.putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, mGroupName);
+
+                mContext.startActivity(intent);
+                return true;
+            });
+        } else {
+            setOnPreferenceClickListener((preference) -> {
+                Intent intent = new Intent(Intent.ACTION_MANAGE_PERMISSION_APPS);
                 intent.putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, mGroupName);
 
                 mContext.startActivity(intent);
