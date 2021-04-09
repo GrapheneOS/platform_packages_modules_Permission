@@ -161,16 +161,14 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‎‏‏‏‎‎‏‎‏‎‏‏‎‏‏‏‎‏‏‏‏‏‎‏‏‎‎‎‏‎‎‎‎‎‏‏‏‎‎‏‎‎‏‏‏‏‎‎‏‎‎‎‏‎‏‏‎‎‏‏‏‎Permission usage in last 24 hours‎‏‎‎‏‎"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‎‏‏‎‏‏‎‎‏‏‎‎‏‏‎‎‏‎‏‏‏‎‏‎‎‏‎‏‏‏‏‎‎‎‏‎‏‎‎‏‎‏‏‏‎‏‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‏‎Permission usage in last 1 hour‎‏‎‎‏‎"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‎‎‏‏‎‎‎‎‏‎‎‎‏‏‎‎‏‏‎‏‎‏‎‏‎‎‎‏‏‏‎‎‏‎‏‎‎‏‏‎‏‎‏‏‏‎‏‎‎‎‎‏‎‏‏‏‏‎‎‏‏‎Permission usage in last 15 minutes‎‏‎‎‏‎"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‏‏‎‎‏‎‏‎‎‎‏‏‎‏‏‎‏‎‎‎‏‎‎‏‎‎‏‎‎‎‎‏‎‎‎‎‏‏‏‎‎‎‏‎‎‎‎‏‏‏‏‏‎‎‎‎‏‏‎‏‎‎usage‎‏‎‎‏‎"</string>
+    <!-- no translation found for suffix_permission_usage_preference (8738902080074563098) -->
+    <skip />
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‎‏‎‏‏‎‏‏‎‎‎‏‎‏‏‎‏‎‎‏‏‏‎‏‏‎‏‏‏‎‏‏‏‏‏‏‎‎‎‏‎‎‎‏‎‎‎‎‎‏‎‏‎‎‏‏‏‎‏‏‏‎Permission usage in last 1 minute‎‏‎‎‏‎"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other">‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‎‎‎‎‎‎‎‏‎‎‏‏‎‏‎‎‎‏‎‏‏‏‎‎‏‎‎‎‏‎‎‎‏‏‎‏‎‏‎‏‏‎‎‎‎‏‎‎‎‎‏‎‏‎‏‏‏‏‎‎‏‎‎‏‎‎‏‏‎<xliff:g id="NUMBER">%s</xliff:g>‎‏‎‎‏‏‏‎ apps‎‏‎‎‏‎</item>
       <item quantity="one">‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‎‎‎‎‎‎‎‏‎‎‏‏‎‏‎‎‎‏‎‏‏‏‎‎‏‎‎‎‏‎‎‎‏‏‎‏‎‏‎‏‏‎‎‎‎‏‎‎‎‎‏‎‏‎‏‏‏‏‎‎‏‎1 app‎‏‎‎‏‎</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="other">‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‎‏‎‏‏‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‎‏‏‏‏‎‎‏‎‎‎‏‏‏‏‎‎‏‎‎‏‎‎‏‏‏‎‎‏‎‎‏‏‏‏‏‎‎‎‎‎‎‏‎‎‏‏‎<xliff:g id="NUMBER">%d</xliff:g>‎‏‎‎‏‏‏‎ apps used‎‏‎‎‏‎</item>
-      <item quantity="one">‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‎‏‎‏‏‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‎‏‏‏‏‎‎‏‎‎‎‏‏‏‏‎‎‏‎‎‏‎‎‏‏‏‎‎‏‎‎‏‏‏‏‏‎‎‎‎‎1 app used‎‏‎‎‏‎</item>
-    </plurals>
+    <!-- no translation found for permission_usage_preference_label (7730498549813201392) -->
     <string name="permission_usage_view_details" msgid="6675335735468752787">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‎‏‏‏‎‎‏‎‏‎‎‎‏‏‏‎‎‎‏‏‏‎‎‏‏‏‏‎‏‏‏‏‏‎‎‏‎‏‎‎‎‏‎‏‎‏‏‏‏‏‏‏‏‏‏‎‎‏‎‎‏‏‎See all in Dashboard‎‏‎‎‏‎"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‎‎‎‏‏‏‎‏‎‏‏‏‎‏‎‏‎‎‏‏‎‎‎‏‎‏‎‎‏‏‏‏‎‏‎‎‏‎‎‏‏‎‎‎‎‎‎‎‏‎‎‏‎‎‏‏‏‏‏‏‎‎Filtered by: ‎‏‎‎‏‏‎<xliff:g id="PERM">%1$s</xliff:g>‎‏‎‎‏‏‏‎‎‏‎‎‏‎"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‎‏‎‎‎‏‎‎‏‏‎‏‏‏‏‎‎‏‏‎‎‏‏‎‏‎‏‏‏‎‎‏‎‏‏‎‎‎‎‎‎‏‏‏‎‎‎‏‎‎‎‏‏‏‎‏‎‏‏‏‏‎Remove filter‎‏‎‎‏‎"</string>
@@ -239,7 +237,8 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‎‎‏‏‎‏‏‏‏‏‏‏‏‎‏‏‎‏‎‏‎‏‏‎‏‎‎‎‎‎‏‎‏‏‎‎‎‎‏‎‎‎‏‎‏‎‏‏‏‏‏‎‏‏‎‏‎‏‎‏‎Apps with this permission can take pictures and record video‎‏‎‎‏‎"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‎‎‎‎‎‎‏‏‏‎‎‎‏‏‎‎‎‎‏‏‏‏‎‏‏‎‎‏‏‎‏‏‏‎‏‏‏‏‏‎‎‎‏‏‎‏‏‎‎‎‏‎‎‏‎‏‎‎‏‎‎‎Apps with this permission can access your contacts‎‏‎‎‏‎"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‎‎‏‏‏‎‎‎‏‏‎‎‏‏‏‏‎‎‎‏‎‎‎‏‏‏‏‏‎‎‏‏‏‏‏‏‎‎‏‏‎‎‏‏‎‏‏‏‎‏‏‏‎‏‏‏‏‎‏‏‎‎Apps with this permission can access this device\'s location‎‏‎‎‏‎"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‏‏‏‏‏‎‎‏‏‏‏‏‏‎‏‎‏‏‏‏‎‎‏‎‎‏‎‎‏‏‎‏‎‏‎‎‎‎‏‏‎‎‏‏‎‏‏‏‎‏‎‏‏‎‎‎‏‏‏‏‎‎Apps with this permission can discover and connect to nearby Bluetooth devices‎‏‎‎‏‎"</string>
+    <!-- no translation found for permission_description_summary_nearby_devices (4557465018373171998) -->
+    <skip />
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‎‏‎‎‎‏‏‎‎‎‎‎‏‎‎‏‎‏‏‎‎‏‏‏‎‏‎‎‎‏‎‎‏‏‎‎‎‎‏‎‏‎‏‎‏‎‎‎‏‏‏‎‏‏‎‏‏‎‎‏‏‎Apps with this permission can record audio‎‏‎‎‏‎"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‎‏‏‏‏‏‎‏‎‏‎‏‎‎‏‎‏‏‏‏‏‎‎‏‎‏‏‎‏‎‎‏‏‎‎‏‏‏‏‏‎‏‎‎‏‎‎‎‎‏‎‏‏‎‏‎‏‎‏‎‎‏‏‎Apps with this permission can make and manage phone calls‎‏‎‎‏‎"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‏‏‏‎‎‏‎‏‏‏‏‎‏‎‏‏‏‏‎‎‎‏‏‏‏‏‎‎‎‏‎‎‎‎‏‎‎‎‏‏‎‎‎‎‎‎‎‎‏‎‎‎‎‏‎‏‎‎‏‏‎‏‎Apps with this permission can access sensor data about your vital signs‎‏‎‎‏‎"</string>
@@ -436,8 +435,10 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‎‏‏‏‏‎‏‎‏‎‎‎‏‎‎‎‏‏‎‎‎‎‏‏‏‏‎‏‎‎‏‎‏‎‎‏‏‏‎‎‎‎‎‎‏‏‏‏‎‎‏‏‎‏‏‏‎‏‏‎‏‎This app may want to access your location all the time, even when you’re not using the app. ‎‏‎‎‏‏‎"<annotation id="link">"‎‏‎‎‏‏‏‎Allow in settings.‎‏‎‎‏‏‎"</annotation>"‎‏‎‎‏‏‏‎‎‏‎‎‏‎"</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‏‎‎‏‏‏‎‎‏‎‏‎‎‎‏‏‏‎‎‏‏‏‏‎‎‏‏‏‏‏‎‏‏‎‎‏‏‏‎‎‎‏‏‎‏‎‎‏‏‏‎‏‏‎‎‏‏‎‏‎‎‎Change location access for &lt;b&gt;‎‏‎‎‏‏‎<xliff:g id="APP_NAME">%1$s</xliff:g>‎‏‎‎‏‏‏‎&lt;/b&gt;?‎‏‎‎‏‎"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‏‏‎‏‎‏‏‎‎‎‎‏‎‏‏‏‏‎‎‏‏‎‎‏‏‏‏‏‏‎‎‏‎‎‏‏‎‏‏‏‎‏‎‏‏‎‏‎‏‏‏‎‎‎‎‎‏‎‏‏‎‏‎This app wants to access your location all the time, even when you’re not using the app. ‎‏‎‎‏‏‎"<annotation id="link">"‎‏‎‎‏‏‏‎Allow in settings.‎‏‎‎‏‏‎"</annotation>"‎‏‎‎‏‏‏‎‎‏‎‎‏‎"</string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‎‎‏‏‏‎‏‎‏‏‏‎‎‎‎‏‎‎‎‎‎‎‏‎‏‎‎‏‏‎‎‏‏‏‏‏‎‎‎‏‏‏‏‎‎‎‏‏‏‏‎‎‎‎‏‏‏‎‏‎‎‎Allow &lt;b&gt;‎‏‎‎‏‏‎<xliff:g id="APP_NAME">%1$s</xliff:g>‎‏‎‎‏‏‏‎&lt;/b&gt; to discover and connect to nearby Bluetooth devices?‎‏‎‎‏‎"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‏‏‏‎‏‎‎‎‏‎‏‏‏‎‏‏‎‏‏‎‏‎‏‎‎‏‏‏‏‎‏‎‎‎‏‎‏‎‎‎‏‎‏‎‎‏‎‎‎‎‎‏‏‏‎‏‏‎‎‎‏‎Allow &lt;b&gt;‎‏‎‎‏‏‎<xliff:g id="APP_NAME">%1$s</xliff:g>‎‏‎‎‏‏‏‎&lt;/b&gt; to discover and connect to nearby Bluetooth devices? ‎‏‎‎‏‏‎"<annotation id="link">"‎‏‎‎‏‏‏‎Allow in settings.‎‏‎‎‏‏‎"</annotation>"‎‏‎‎‏‏‏‎‎‏‎‎‏‎"</string>
+    <!-- no translation found for permgrouprequest_nearby_devices (7447863425662482548) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequestdetail_nearby_devices (9013793366434153393) -->
+    <skip />
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‎‏‎‏‎‎‏‎‏‏‎‎‏‏‎‎‏‏‏‏‎‎‎‎‎‏‎‏‎‏‎‎‎‏‏‏‏‏‎‎‏‏‏‎‎‎‎‏‏‎‏‏‎‎‎‎‎‎‏‏‎‎Allow &lt;b&gt;‎‏‎‎‏‏‎<xliff:g id="APP_NAME">%1$s</xliff:g>‎‏‎‎‏‏‏‎&lt;/b&gt; to access this device’s precise location?‎‏‎‎‏‎"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‏‏‏‏‎‎‏‎‎‏‎‎‎‏‎‏‎‎‎‎‎‎‎‎‏‏‏‏‎‏‏‎‎‎‎‎‎‎‎‏‎‎‎‎‎‎‎‎‏‎‏‏‏‏‎‏‏‎‎‎‏‎‎‎‎‎Allow &lt;b&gt;‎‏‎‎‏‏‎<xliff:g id="APP_NAME">%1$s</xliff:g>‎‏‎‎‏‏‏‎&lt;/b&gt; to access this device’s approximate location?‎‏‎‎‏‎"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‏‏‎‎‏‎‎‎‏‏‏‎‎‎‏‏‏‎‏‏‏‏‎‏‎‏‎‎‏‏‏‎‎‎‎‏‏‎‏‎‏‎‎‏‏‎‏‏‏‏‏‏‎‏‎‎‎‏‏‏‏‎‎Precise‎‏‎‎‏‎"</string>
