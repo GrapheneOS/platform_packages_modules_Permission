@@ -68,9 +68,6 @@ import java.util.function.Consumer;
  */
 @SystemService(Context.ROLE_SERVICE)
 public final class RoleManager {
-
-    private static final String LOG_TAG = RoleManager.class.getSimpleName();
-
     /**
      * The name of the assistant app role.
      *
@@ -136,6 +133,15 @@ public final class RoleManager {
      */
     @SystemApi
     public static final String ROLE_SYSTEM_WELLBEING = "android.app.role.SYSTEM_WELLBEING";
+
+    /**
+     * The name of the system activity recognizer role.
+     *
+     * @hide
+     */
+    @SystemApi
+    public static final String ROLE_SYSTEM_ACTIVITY_RECOGNIZER =
+            "android.app.role.SYSTEM_ACTIVITY_RECOGNIZER";
 
     /**
      * @hide
@@ -519,6 +525,50 @@ public final class RoleManager {
             if (listeners.isEmpty()) {
                 mListeners.remove(userId);
             }
+        }
+    }
+
+    /**
+     * Check whether role qualifications should be bypassed.
+     * <p>
+     * Only the shell is allowed to do this, the qualification for the shell role itself cannot be
+     * bypassed, and each role needs to explicitly allow bypassing qualification in its definition.
+     * The bypass state will not be persisted across reboot.
+     *
+     * @return whether role qualification should be bypassed
+     *
+     * @hide
+     */
+    @MinSdk(Build.VERSION_CODES.S)
+    @RequiresPermission(Manifest.permission.MANAGE_ROLE_HOLDERS)
+    @SystemApi
+    public boolean isBypassingRoleQualification() {
+        try {
+            return mService.isBypassingRoleQualification();
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
+    /**
+     * Set whether role qualifications should be bypassed.
+     * <p>
+     * Only the shell is allowed to do this, the qualification for the shell role itself cannot be
+     * bypassed, and each role needs to explicitly allow bypassing qualification in its definition.
+     * The bypass state will not be persisted across reboot.
+     *
+     * @param bypassRoleQualification whether role qualification should be bypassed
+     *
+     * @hide
+     */
+    @MinSdk(Build.VERSION_CODES.S)
+    @RequiresPermission(Manifest.permission.BYPASS_ROLE_QUALIFICATION)
+    @SystemApi
+    public void setBypassingRoleQualification(boolean bypassRoleQualification) {
+        try {
+            mService.setBypassingRoleQualification(bypassRoleQualification);
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
         }
     }
 
