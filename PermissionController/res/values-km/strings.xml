@@ -106,16 +106,25 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"មិនស្គាល់"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"ផ្ទាំង​គ្រប់គ្រង"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"ការប្រើប្រាស់ <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
-    <!-- no translation found for permission_group_usage_subtitle (2060508926529591334) -->
-    <skip />
-    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
-    <skip />
-    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
-    <skip />
-    <!-- no translation found for duration_used_days (6029658139201482951) -->
-    <!-- no translation found for duration_used_hours (2934347147156813767) -->
-    <!-- no translation found for duration_used_minutes (1871095305219275611) -->
-    <!-- no translation found for duration_used_seconds (4036612197985123365) -->
+    <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"បន្ទាត់ពេលវេលា​នៃពេល​ដែលប្រើ <xliff:g id="PERMGROUP">%1$s</xliff:g> របស់អ្នកក្នុងរ​យៈពេល 24 ម៉ោងចុងក្រោយ"</string>
+    <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"នៅពេលកម្មវិធីនេះ​បានប្រើ <xliff:g id="PERMGROUP">%1$s</xliff:g> របស់អ្នក៖"</string>
+    <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"ស្វែងយល់បន្ថែម"</string>
+    <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
+      <item quantity="other">បានប្រើ​រយៈពេល <xliff:g id="NUMBER">%s</xliff:g> ថ្ងៃ</item>
+      <item quantity="one">បានប្រើ​រយៈពេល 1 ថ្ងៃ</item>
+    </plurals>
+    <plurals name="duration_used_hours" formatted="false" msgid="2934347147156813767">
+      <item quantity="other">បានប្រើ​រយៈពេល <xliff:g id="NUMBER">%s</xliff:g> ម៉ោង</item>
+      <item quantity="one">បានប្រើ​រយៈពេល 1 ម៉ោង</item>
+    </plurals>
+    <plurals name="duration_used_minutes" formatted="false" msgid="1871095305219275611">
+      <item quantity="other">បានប្រើ​រយៈពេល <xliff:g id="NUMBER">%s</xliff:g> នាទី</item>
+      <item quantity="one">បានប្រើ​រយៈពេល 1 នាទី</item>
+    </plurals>
+    <plurals name="duration_used_seconds" formatted="false" msgid="4036612197985123365">
+      <item quantity="other">បានប្រើ​រយៈពេល <xliff:g id="NUMBER">%s</xliff:g> វិនាទី</item>
+      <item quantity="one">បានប្រើ​រយៈពេល 1 វិនាទី</item>
+    </plurals>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">ការចូលប្រើ​ចុងក្រោយ៖ <xliff:g id="TIME_2">%1$s</xliff:g>\nការចូលប្រើ <xliff:g id="NUM_3">%2$s</xliff:g> ដង</item>
       <item quantity="one">ការចូលប្រើ​ចុងក្រោយ៖ <xliff:g id="TIME_0">%1$s</xliff:g>\nការចូលប្រើ <xliff:g id="NUM_1">%2$s</xliff:g> ដង</item>
@@ -180,10 +189,8 @@
       <item quantity="one">កម្មវិធី 1</item>
     </plurals>
     <string name="permission_history_title" msgid="8340081285133025225">"ប្រវត្តិ​ការអនុញ្ញាត"</string>
-    <!-- no translation found for permission_history_category_today (7496389369158806620) -->
-    <skip />
-    <!-- no translation found for permission_history_category_yesterday (7242517121222012521) -->
-    <skip />
+    <string name="permission_history_category_today" msgid="7496389369158806620">"ថ្ងៃនេះ"</string>
+    <string name="permission_history_category_yesterday" msgid="7242517121222012521">"ម្សិលមិញ"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"ការប្រើប្រាស់​ការអនុញ្ញាត​កម្មវិធី"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"ចូលប្រើ៖ <xliff:g id="NUM">%1$s</xliff:g> ដង។ រយៈពេល​សរុប៖ <xliff:g id="DURATION">%2$s</xliff:g>។ បានប្រើចុងក្រោយ <xliff:g id="TIME">%3$s</xliff:g> មុន។"</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"ចូលប្រើ៖ <xliff:g id="NUM">%1$s</xliff:g> ដង។ បានប្រើចុងក្រោយ <xliff:g id="TIME">%2$s</xliff:g> មុន។"</string>
@@ -243,7 +250,7 @@
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"មិនធ្លាប់​ចូលប្រើ"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"បាន​បដិសេធ / មិនធ្លាប់​ចូលប្រើ"</string>
     <string name="allowed_header" msgid="7769277978004790414">"បាន​អនុញ្ញាត"</string>
-    <string name="allowed_always_header" msgid="6455903312589013545">"បាន​អនុញ្ញាត​គ្រប់ពេល"</string>
+    <string name="allowed_always_header" msgid="6455903312589013545">"អនុញ្ញាត​គ្រប់ពេល"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"អនុញ្ញាត​ខណៈពេល​ប្រើប្រាស់តែ​ប៉ុណ្ណោះ"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"បានអនុញ្ញាតឱ្យចូលប្រើមេឌៀតែប៉ុណ្ណោះ"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"បានអនុញ្ញាតឱ្យគ្រប់គ្រងឯកសារទាំងអស់"</string>
@@ -391,7 +398,7 @@
     <string name="default_apps" msgid="5119201969348748639">"កម្មវិធី​លំនាំដើម"</string>
     <string name="no_default_apps" msgid="2593466527182950231">"គ្មានកម្មវិធីលំនាំដើមទេ"</string>
     <string name="default_apps_more" msgid="4078194675848858093">"លំនាំដើម​ច្រើនទៀត"</string>
-    <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"បើកតំណ"</string>
+    <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"ការបើកតំណ"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"លំនាំដើម​សម្រាប់ការងារ"</string>
     <string name="default_app_none" msgid="9084592086808194457">"គ្មាន"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(លំនាំដើមប្រព័ន្ធ)"</string>

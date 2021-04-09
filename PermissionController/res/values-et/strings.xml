@@ -106,16 +106,25 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Tundmatu"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Juhtpaneel"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Lubade grupi <xliff:g id="PERMGROUP">%1$s</xliff:g> kasutus"</string>
-    <!-- no translation found for permission_group_usage_subtitle (2060508926529591334) -->
-    <skip />
-    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
-    <skip />
-    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
-    <skip />
-    <!-- no translation found for duration_used_days (6029658139201482951) -->
-    <!-- no translation found for duration_used_hours (2934347147156813767) -->
-    <!-- no translation found for duration_used_minutes (1871095305219275611) -->
-    <!-- no translation found for duration_used_seconds (4036612197985123365) -->
+    <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Üksuse <xliff:g id="PERMGROUP">%1$s</xliff:g> kasutamise ajaskaala viimase 24 tunni jooksul"</string>
+    <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Millal see rakendus üksust <xliff:g id="PERMGROUP">%1$s</xliff:g> kasutas:"</string>
+    <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Lisateave"</string>
+    <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
+      <item quantity="other">Kasutati <xliff:g id="NUMBER">%s</xliff:g> päeva</item>
+      <item quantity="one">Kasutati 1 päev</item>
+    </plurals>
+    <plurals name="duration_used_hours" formatted="false" msgid="2934347147156813767">
+      <item quantity="other">Kasutati <xliff:g id="NUMBER">%s</xliff:g> tundi</item>
+      <item quantity="one">Kasutati 1 tund</item>
+    </plurals>
+    <plurals name="duration_used_minutes" formatted="false" msgid="1871095305219275611">
+      <item quantity="other">Kasutati <xliff:g id="NUMBER">%s</xliff:g> minutit</item>
+      <item quantity="one">Kasutati 1 minut</item>
+    </plurals>
+    <plurals name="duration_used_seconds" formatted="false" msgid="4036612197985123365">
+      <item quantity="other">Kasutati <xliff:g id="NUMBER">%s</xliff:g> sekundit</item>
+      <item quantity="one">Kasutati 1 sekund</item>
+    </plurals>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Viimane juurdepääs: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> juurdepääsu</item>
       <item quantity="one">Viimane juurdepääs: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> juurdepääs</item>
@@ -180,10 +189,8 @@
       <item quantity="one">1 rakendus</item>
     </plurals>
     <string name="permission_history_title" msgid="8340081285133025225">"Lubade ajalugu"</string>
-    <!-- no translation found for permission_history_category_today (7496389369158806620) -->
-    <skip />
-    <!-- no translation found for permission_history_category_yesterday (7242517121222012521) -->
-    <skip />
+    <string name="permission_history_category_today" msgid="7496389369158806620">"Täna"</string>
+    <string name="permission_history_category_yesterday" msgid="7242517121222012521">"Eile"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Rakenduse lubade kasutus"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Juurdepääs: <xliff:g id="NUM">%1$s</xliff:g> korda. Kogukestus: <xliff:g id="DURATION">%2$s</xliff:g>. Viimati kasutati <xliff:g id="TIME">%3$s</xliff:g> tagasi."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Juurdepääs: <xliff:g id="NUM">%1$s</xliff:g> korda. Viimati kasutati <xliff:g id="TIME">%2$s</xliff:g> tagasi."</string>
@@ -328,7 +335,7 @@
     <string name="role_assistant_description" msgid="6622458130459922952">"Abirakendused saavad aidata teid kuvatud ekraaniteabe alusel. Mõned rakendused toetavad integreeritud abi pakkumisel nii käivitusprogrammi kui ka häälsisendi teenuseid."</string>
     <string name="role_assistant_request_title" msgid="5964976301922776060">"Kas määrata <xliff:g id="APP_NAME">%1$s</xliff:g> vaikeabirakenduseks?"</string>
     <string name="role_assistant_request_description" msgid="6836644847620178483">"Saab juurdepääsu SMS-idele ja kõnelogile"</string>
-    <string name="role_browser_label" msgid="2877796144554070207">"Vaikebrauserirakendus"</string>
+    <string name="role_browser_label" msgid="2877796144554070207">"Brauseri vaikerakendus"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Brauserirakendus"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Rakendused, mis võimaldavad juurdepääsu Internetile ja kuvavad puudutatavaid linke"</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"Kas määrata rakendus <xliff:g id="APP_NAME">%1$s</xliff:g> vaikebrauseriks?"</string>
@@ -367,7 +374,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Rakendused, mis võimaldavad teil kõnesid tuvastada ning rämps- ja robotkõnesid ning soovimatuid numbreid blokeerida"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Kas soovite määrata rakenduse <xliff:g id="APP_NAME">%1$s</xliff:g> helistaja ID ja rämpskõnede vaikerakenduseks?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Lube ei ole vaja"</string>
-    <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> saab kasutada teie märguandeid ning pääseb juurde teie telefoni, SMS-ide, kontaktide ja kalendri lubadele."</string>
+    <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> saab kasutada teie märguandeid ning hankida teie telefoni, SMS-ide, kontaktide ja kalendri load."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Praegune vaikeseade"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Ära enam küsi"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Määra vaikeseadeks"</string>

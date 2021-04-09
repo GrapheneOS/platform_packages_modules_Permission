@@ -108,14 +108,33 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Neznáme"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Hlavný panel"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Použitie skupiny povolení <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
-    <!-- no translation found for permission_group_usage_subtitle (2060508926529591334) -->
-    <skip />
+    <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Časová os používania skupiny povolení <xliff:g id="PERMGROUP">%1$s</xliff:g> za posledných 24 hodín"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Keď táto aplikácia použila vaše povolenia <xliff:g id="PERMGROUP">%1$s</xliff:g>:"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Ďalšie informácie"</string>
-    <!-- no translation found for duration_used_days (6029658139201482951) -->
-    <!-- no translation found for duration_used_hours (2934347147156813767) -->
-    <!-- no translation found for duration_used_minutes (1871095305219275611) -->
-    <!-- no translation found for duration_used_seconds (4036612197985123365) -->
+    <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
+      <item quantity="few">Používané <xliff:g id="NUMBER">%s</xliff:g> dni</item>
+      <item quantity="many">Používané <xliff:g id="NUMBER">%s</xliff:g> dňa</item>
+      <item quantity="other">Používané <xliff:g id="NUMBER">%s</xliff:g> dní</item>
+      <item quantity="one">Používané 1 deň</item>
+    </plurals>
+    <plurals name="duration_used_hours" formatted="false" msgid="2934347147156813767">
+      <item quantity="few">Používané <xliff:g id="NUMBER">%s</xliff:g> hodiny</item>
+      <item quantity="many">Používané <xliff:g id="NUMBER">%s</xliff:g> hodiny</item>
+      <item quantity="other">Používané <xliff:g id="NUMBER">%s</xliff:g> hodín</item>
+      <item quantity="one">Používané 1 hodinu</item>
+    </plurals>
+    <plurals name="duration_used_minutes" formatted="false" msgid="1871095305219275611">
+      <item quantity="few">Používané <xliff:g id="NUMBER">%s</xliff:g> minúty</item>
+      <item quantity="many">Používané <xliff:g id="NUMBER">%s</xliff:g> minúty</item>
+      <item quantity="other">Používané <xliff:g id="NUMBER">%s</xliff:g> minút</item>
+      <item quantity="one">Používané 1 minútu</item>
+    </plurals>
+    <plurals name="duration_used_seconds" formatted="false" msgid="4036612197985123365">
+      <item quantity="few">Používané <xliff:g id="NUMBER">%s</xliff:g> sekundy</item>
+      <item quantity="many">Používané <xliff:g id="NUMBER">%s</xliff:g> sekundy</item>
+      <item quantity="other">Používané <xliff:g id="NUMBER">%s</xliff:g> sekúnd</item>
+      <item quantity="one">Používané 1 sekundu</item>
+    </plurals>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="few">Posledný prístup: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> prístupy</item>
       <item quantity="many">Posledný prístup: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> accesses</item>
@@ -194,10 +213,8 @@
       <item quantity="one">1 aplikácia</item>
     </plurals>
     <string name="permission_history_title" msgid="8340081285133025225">"História povolení"</string>
-    <!-- no translation found for permission_history_category_today (7496389369158806620) -->
-    <skip />
-    <!-- no translation found for permission_history_category_yesterday (7242517121222012521) -->
-    <skip />
+    <string name="permission_history_category_today" msgid="7496389369158806620">"Dnes"</string>
+    <string name="permission_history_category_yesterday" msgid="7242517121222012521">"Včera"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Využitie povolení aplikácie"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Prístup: <xliff:g id="NUM">%1$s</xliff:g>‑krát. Celkové trvanie: <xliff:g id="DURATION">%2$s</xliff:g>. Naposledy použité pred <xliff:g id="TIME">%3$s</xliff:g>."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Prístup: <xliff:g id="NUM">%1$s</xliff:g>‑krát. Naposledy použité pred <xliff:g id="TIME">%2$s</xliff:g>."</string>
@@ -395,7 +412,7 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Aplikácie, ktoré vám umožňujú identifikovať hovory a blokovať spam, robotické hovory alebo nechcené čísla"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Chcete aplikáciu <xliff:g id="APP_NAME">%1$s</xliff:g> nastaviť ako predvolenú aplikáciu na identifikáciu volajúcich a spamu?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Nie sú potrebné žiadne povolenia"</string>
-    <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> bude môcť interagovať s vašimi upozorneniami a získa prístup k vašim povoleniam pre telefón, SMS, kontakty a kalendár."</string>
+    <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> bude môcť interagovať s vašimi upozorneniami a získa prístup k telefónu, SMS, kontaktom a kalendáru."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Aktuálne predvolená"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Nabudúce sa nepýtať"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Nastav. ako predvol."</string>
