@@ -106,14 +106,25 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Тодорхойгүй"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Хяналтын самбар"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g>-н ашиглалт"</string>
-    <!-- no translation found for permission_group_usage_subtitle (2060508926529591334) -->
-    <skip />
+    <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Сүүлийн 24 цагт өөрийн <xliff:g id="PERMGROUP">%1$s</xliff:g>-г хэзээ ашигласан болохыг харуулсан он цагийн хэлхээс"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Энэ апп таны <xliff:g id="PERMGROUP">%1$s</xliff:g>-г ашигласан тохиолдолд:"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Нэмэлт мэдээлэл авах"</string>
-    <!-- no translation found for duration_used_days (6029658139201482951) -->
-    <!-- no translation found for duration_used_hours (2934347147156813767) -->
-    <!-- no translation found for duration_used_minutes (1871095305219275611) -->
-    <!-- no translation found for duration_used_seconds (4036612197985123365) -->
+    <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> өдрийн турш ашигласан</item>
+      <item quantity="one">1 өдрийн турш ашигласан</item>
+    </plurals>
+    <plurals name="duration_used_hours" formatted="false" msgid="2934347147156813767">
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> цагийн турш ашигласан</item>
+      <item quantity="one">1 цагийн турш ашигласан</item>
+    </plurals>
+    <plurals name="duration_used_minutes" formatted="false" msgid="1871095305219275611">
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> минутын турш ашигласан</item>
+      <item quantity="one">1 минутын турш ашигласан</item>
+    </plurals>
+    <plurals name="duration_used_seconds" formatted="false" msgid="4036612197985123365">
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> секундийн турш ашигласан</item>
+      <item quantity="one">1 секундийн турш ашигласан</item>
+    </plurals>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Сүүлийн хандалт: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> хандалт</item>
       <item quantity="one">Сүүлийн хандалт: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> хандалт</item>
@@ -178,10 +189,8 @@
       <item quantity="one">1 апп</item>
     </plurals>
     <string name="permission_history_title" msgid="8340081285133025225">"Зөвшөөрлийн түүх"</string>
-    <!-- no translation found for permission_history_category_today (7496389369158806620) -->
-    <skip />
-    <!-- no translation found for permission_history_category_yesterday (7242517121222012521) -->
-    <skip />
+    <string name="permission_history_category_today" msgid="7496389369158806620">"Өнөөдөр"</string>
+    <string name="permission_history_category_yesterday" msgid="7242517121222012521">"Өчигдөр"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Аппын зөвшөөрлийн ашиглалт"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Хандалт: <xliff:g id="NUM">%1$s</xliff:g> удаа. Нийт хугацаа: <xliff:g id="DURATION">%2$s</xliff:g>. Хамгийн сүүлд <xliff:g id="TIME">%3$s</xliff:g>-н өмнө ашигласан."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Хандалт: <xliff:g id="NUM">%1$s</xliff:g> удаа. Хамгийн сүүлд <xliff:g id="TIME">%2$s</xliff:g>-н өмнө ашигласан."</string>
@@ -197,7 +206,7 @@
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Нарийвчилсан байршлыг ашиглах"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Үүнийг унтраасан үед аппууд таны байршлыг зөвхөн ойролцоох хорооллоос барагцаалан тодорхойлох боломжтой"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>-н зөвшөөрөл"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"Энэ аппад <xliff:g id="PERM">%1$s</xliff:g>-р хандах"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"Энэ аппын <xliff:g id="PERM">%1$s</xliff:g>-д хандах эрх"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g>-н бүх зөвшөөрлийг харах"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Энэ зөвшөөрөлтэй бүх аппыг харах"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Туслах микрофон ашиглалтыг харуулах"</string>
@@ -430,7 +439,7 @@
     <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д ойролцоох Bluetooth төхөөрөмжүүдийг илрүүлж, холбогдохыг зөвшөөрөх үү?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д ойролцоох Bluetooth төхөөрөмжүүдийг илрүүлж, холбогдохыг зөвшөөрөх үү? "<annotation id="link">"Тохиргоонд зөвшөөрнө үү."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д энэ төхөөрөмжийн нарийвчилсан байршилд хандахыг зөвшөөрөх үү?"</string>
-    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д энэ төхөөрөмжийн барагцаалсан байршилд хандахыг зөвшөөрөх үү?"</string>
+    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д энэ төхөөрөмжийн барагцаалсан байршилд хандахыг зөвшөөрөх үү?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Нарийвчилсан"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Барагцаалсан"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д таны календарьт хандахыг зөвшөөрөх үү?"</string>
@@ -450,7 +459,7 @@
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-н камерын хандалтыг өөрчлөх үү?"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Та аппыг ашиглаагүй үед ч энэ апп үргэлж зураг авж, видео бичихийг хүснэ. "<annotation id="link">"Тохиргоонд зөвшөөрнө үү."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д таны утасны дуудлагын жагсаалтад хандахыг зөвшөөрөх үү?"</string>
-    <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д утасны дуудлага хийх, дуудлагад хариулахыг зөвшөөрөх үү?"</string>
+    <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д утасны дуудлага хийх, дуудлага удирдахыг зөвшөөрөх үү?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д таны биеийн ерөнхий байдлын үзүүлэлтүүдийн мэдрэгчийн өгөгдөлд хандахыг зөвшөөрөх үү?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Хяналттай зөвшөөрөл"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Байршилд хандах боломжтой"</string>

@@ -106,14 +106,25 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Desconocida"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Panel"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Uso de <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
-    <!-- no translation found for permission_group_usage_subtitle (2060508926529591334) -->
-    <skip />
+    <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Cronograma de cuándo se usó tu <xliff:g id="PERMGROUP">%1$s</xliff:g> durante las últimas 24 horas"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Cuando la app usó tu <xliff:g id="PERMGROUP">%1$s</xliff:g>:"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Más información"</string>
-    <!-- no translation found for duration_used_days (6029658139201482951) -->
-    <!-- no translation found for duration_used_hours (2934347147156813767) -->
-    <!-- no translation found for duration_used_minutes (1871095305219275611) -->
-    <!-- no translation found for duration_used_seconds (4036612197985123365) -->
+    <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
+      <item quantity="other">Se usó durante <xliff:g id="NUMBER">%s</xliff:g> días</item>
+      <item quantity="one">Se usó durante 1 día</item>
+    </plurals>
+    <plurals name="duration_used_hours" formatted="false" msgid="2934347147156813767">
+      <item quantity="other">Se usó durante <xliff:g id="NUMBER">%s</xliff:g> horas</item>
+      <item quantity="one">Se usó durante 1 hora</item>
+    </plurals>
+    <plurals name="duration_used_minutes" formatted="false" msgid="1871095305219275611">
+      <item quantity="other">Se usó durante <xliff:g id="NUMBER">%s</xliff:g> mins</item>
+      <item quantity="one">Se usó durante 1 min</item>
+    </plurals>
+    <plurals name="duration_used_seconds" formatted="false" msgid="4036612197985123365">
+      <item quantity="other">Se usó durante <xliff:g id="NUMBER">%s</xliff:g> s</item>
+      <item quantity="one">Se usó durante 1 s</item>
+    </plurals>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Último acceso: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> accesos</item>
       <item quantity="one">Último acceso: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> acceso</item>
@@ -178,10 +189,8 @@
       <item quantity="one">1 app</item>
     </plurals>
     <string name="permission_history_title" msgid="8340081285133025225">"Hist. de permisos"</string>
-    <!-- no translation found for permission_history_category_today (7496389369158806620) -->
-    <skip />
-    <!-- no translation found for permission_history_category_yesterday (7242517121222012521) -->
-    <skip />
+    <string name="permission_history_category_today" msgid="7496389369158806620">"Hoy"</string>
+    <string name="permission_history_category_yesterday" msgid="7242517121222012521">"Ayer"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Uso de permisos de la app"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Acceso: <xliff:g id="NUM">%1$s</xliff:g> veces Duración total: <xliff:g id="DURATION">%2$s</xliff:g>. Último uso: hace <xliff:g id="TIME">%3$s</xliff:g>"</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Acceso: <xliff:g id="NUM">%1$s</xliff:g> veces Último uso: hace <xliff:g id="TIME">%2$s</xliff:g>"</string>
@@ -328,7 +337,7 @@
     <string name="role_assistant_request_description" msgid="6836644847620178483">"Obtiene acceso a los SMS y al registro de llamadas"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Navegador predet."</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"App de navegador"</string>
-    <string name="role_browser_description" msgid="3465253637499842671">"Apps que te permiten acceder a Internet y mostrar los vínculos que presionas"</string>
+    <string name="role_browser_description" msgid="3465253637499842671">"Apps que te permiten acceder a Internet y ver los vínculos que presionas"</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"¿Quieres establecer <xliff:g id="APP_NAME">%1$s</xliff:g> como tu app de navegador predeterminada?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"No se requieren permisos"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"App de teléfono predeterminada"</string>
@@ -396,8 +405,8 @@
     <string name="default_app_no_apps" msgid="115720991680586885">"Sin apps"</string>
     <string name="car_default_app_selected" msgid="5416420830430644174">"Seleccionada"</string>
     <string name="car_default_app_selected_with_info" msgid="1932204186080593500">"Se seleccionó: <xliff:g id="ADDITIONAL_INFO">%1$s</xliff:g>"</string>
-    <string name="special_app_access_search_keyword" msgid="8032347212290774210">"Acceso especial a apps"</string>
-    <string name="special_app_access" msgid="5019319067120213797">"Acceso especial a apps"</string>
+    <string name="special_app_access_search_keyword" msgid="8032347212290774210">"Acceso especial de apps"</string>
+    <string name="special_app_access" msgid="5019319067120213797">"Acceso especial de apps"</string>
     <string name="no_special_app_access" msgid="6950277571805106247">"No hay acceso especial a apps"</string>
     <string name="special_app_access_no_apps" msgid="4102911722787886970">"No hay apps"</string>
     <string name="home_missing_work_profile_support" msgid="1756855847669387977">"No admite el perfil de trabajo"</string>
