@@ -440,4 +440,16 @@
             <app-op name="android:write_media_video" mode="allowed" />
         </app-ops>
     </role>
+
+    <!---
+      ~ A role for the system package that serves as the activity recognizer on the device.
+      ~ This is the application that provides the data behind the activity recognition
+      ~ runtime permission.
+      -->
+    <role
+        name="android.app.role.SYSTEM_ACTIVITY_RECOGNIZER"
+        defaultHolders="config_systemActivityRecognizer"
+        exclusive="true"
+        systemOnly="true"
+        visible="false" />
 </roles>
