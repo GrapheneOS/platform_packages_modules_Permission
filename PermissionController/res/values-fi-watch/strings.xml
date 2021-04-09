@@ -21,5 +21,5 @@
     <string name="preference_show_system_apps" msgid="1055740303992024300">"Näytä järjestelmäsovellukset"</string>
     <string name="permission_summary_enforced_by_policy" msgid="2352478756952948019">"Ei muutettavissa"</string>
     <string name="generic_yes" msgid="2489207724988649846">"Kyllä"</string>
-    <string name="generic_cancel" msgid="2631708607129269698">"Peruuta"</string>
+    <string name="generic_cancel" msgid="2631708607129269698">"Peru"</string>
 </resources>
