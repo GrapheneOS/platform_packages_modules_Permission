@@ -413,10 +413,6 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
                 GroupUsage groupUsage = appGroups.get(groupNum);
                 String groupName = groupUsage.getGroup().getName();
                 long lastAccessTime = groupUsage.getLastAccessTime();
-
-                if (!groupUsage.hasDiscreteData()) {
-                    continue;
-                }
                 if (lastAccessTime == 0) {
                     Log.w(LOG_TAG,
                             "Unexpected access time of 0 for " + appUsage.getApp().getKey() + " "
