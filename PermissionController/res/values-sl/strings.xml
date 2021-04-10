@@ -108,14 +108,33 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Neznano"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Nadzorna plošča"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Uporaba dovoljenja za »<xliff:g id="PERMGROUP">%1$s</xliff:g>«"</string>
-    <!-- no translation found for permission_group_usage_subtitle (2060508926529591334) -->
-    <skip />
+    <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Časovna os uporabe dovoljenja za »<xliff:g id="PERMGROUP">%1$s</xliff:g>« v zadnjih 24 urah"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Kdaj je ta aplikacija uporabila to: <xliff:g id="PERMGROUP">%1$s</xliff:g>:"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Več o tem"</string>
-    <!-- no translation found for duration_used_days (6029658139201482951) -->
-    <!-- no translation found for duration_used_hours (2934347147156813767) -->
-    <!-- no translation found for duration_used_minutes (1871095305219275611) -->
-    <!-- no translation found for duration_used_seconds (4036612197985123365) -->
+    <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
+      <item quantity="one">Uporabljeno <xliff:g id="NUMBER">%s</xliff:g> dan</item>
+      <item quantity="two">Uporabljeno <xliff:g id="NUMBER">%s</xliff:g> dneva</item>
+      <item quantity="few">Uporabljeno <xliff:g id="NUMBER">%s</xliff:g> dni</item>
+      <item quantity="other">Uporabljeno <xliff:g id="NUMBER">%s</xliff:g> dni</item>
+    </plurals>
+    <plurals name="duration_used_hours" formatted="false" msgid="2934347147156813767">
+      <item quantity="one">Uporabljeno <xliff:g id="NUMBER">%s</xliff:g> uro</item>
+      <item quantity="two">Uporabljeno <xliff:g id="NUMBER">%s</xliff:g> uri</item>
+      <item quantity="few">Uporabljeno <xliff:g id="NUMBER">%s</xliff:g> ure</item>
+      <item quantity="other">Uporabljeno <xliff:g id="NUMBER">%s</xliff:g> ur</item>
+    </plurals>
+    <plurals name="duration_used_minutes" formatted="false" msgid="1871095305219275611">
+      <item quantity="one">Uporabljeno <xliff:g id="NUMBER">%s</xliff:g> minuto</item>
+      <item quantity="two">Uporabljeno <xliff:g id="NUMBER">%s</xliff:g> minuti</item>
+      <item quantity="few">Uporabljeno <xliff:g id="NUMBER">%s</xliff:g> minute</item>
+      <item quantity="other">Uporabljeno <xliff:g id="NUMBER">%s</xliff:g> minut</item>
+    </plurals>
+    <plurals name="duration_used_seconds" formatted="false" msgid="4036612197985123365">
+      <item quantity="one">Uporabljeno <xliff:g id="NUMBER">%s</xliff:g> sekundo</item>
+      <item quantity="two">Uporabljeno <xliff:g id="NUMBER">%s</xliff:g> sekundi</item>
+      <item quantity="few">Uporabljeno <xliff:g id="NUMBER">%s</xliff:g> sekunde</item>
+      <item quantity="other">Uporabljeno <xliff:g id="NUMBER">%s</xliff:g> sekund</item>
+    </plurals>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="one">Zadnji dostop: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> dostop</item>
       <item quantity="two">Zadnji dostop: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> dostopa</item>
@@ -194,10 +213,8 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> aplikacij</item>
     </plurals>
     <string name="permission_history_title" msgid="8340081285133025225">"Zgodovina dovoljenj"</string>
-    <!-- no translation found for permission_history_category_today (7496389369158806620) -->
-    <skip />
-    <!-- no translation found for permission_history_category_yesterday (7242517121222012521) -->
-    <skip />
+    <string name="permission_history_category_today" msgid="7496389369158806620">"Danes"</string>
+    <string name="permission_history_category_yesterday" msgid="7242517121222012521">"Včeraj"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Uporaba dovoljenj aplikacije"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Dostop: <xliff:g id="NUM">%1$s</xliff:g>-krat. Skupno trajanje: <xliff:g id="DURATION">%2$s</xliff:g>. Nazadnje uporabljeno pred <xliff:g id="TIME">%3$s</xliff:g>."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Dostop: <xliff:g id="NUM">%1$s</xliff:g>-krat. Nazadnje uporabljeno pred <xliff:g id="TIME">%2$s</xliff:g>."</string>
@@ -358,18 +375,18 @@
     <string name="role_assistant_request_description" msgid="6836644847620178483">"Dobi dostop do sporočil SMS in dnevnika klicev"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Privzeti brskalnik"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Brskalnik"</string>
-    <string name="role_browser_description" msgid="3465253637499842671">"Aplikacije, ki vam omogočajo dostop do interneta in prikaz povezav, ki se jih dotaknete"</string>
+    <string name="role_browser_description" msgid="3465253637499842671">"Aplikacije, ki vam omogočajo dostop do interneta in prikaz povezav, ki se jih dotaknete."</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"Želite aplikacijo <xliff:g id="APP_NAME">%1$s</xliff:g> nastaviti kot privzeto aplikacijo za brskalnik?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"Nobeno dovoljenje ni potrebno"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"Privzeta aplikac. za klicanje"</string>
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Aplikacija za klicanje"</string>
-    <string name="role_dialer_description" msgid="8768708633696539612">"Aplikacije, ki vam omogočajo opravljanje in prejemanje telefonskih klicev v napravi"</string>
+    <string name="role_dialer_description" msgid="8768708633696539612">"Aplikacije, ki vam omogočajo opravljanje in prejemanje telefonskih klicev v napravi."</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Želite aplikacijo <xliff:g id="APP_NAME">%1$s</xliff:g> nastaviti kot privzeto aplikacijo za klicanje?"</string>
     <string name="role_dialer_request_description" msgid="2264219375528345270">"Dobi dostop do dnevnika klicev in pošiljanja sporočil SMS"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"klicalnik"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Privzeta aplikacija za SMS-je"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"Aplikacija za sporočila SMS"</string>
-    <string name="role_sms_description" msgid="3424020199148153513">"Aplikacije, ki vam omogočajo uporabo telefonske številke za pošiljanje in prejemanje sporočil SMS, fotografij, videoposnetkov ter druge vsebine"</string>
+    <string name="role_sms_description" msgid="3424020199148153513">"Aplikacije, ki vam omogočajo uporabo telefonske številke za pošiljanje in prejemanje sporočil SMS, fotografij, videoposnetkov ter druge vsebine."</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Želite aplikacijo <xliff:g id="APP_NAME">%1$s</xliff:g> nastaviti kot privzeto aplikacijo za sporočila SMS?"</string>
     <string name="role_sms_request_description" msgid="983371022668134198">"Dobi dostop do stikov, sporočil SMS, telefona"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"sporočilo SMS, pošiljanje sporočil SMS, sporočila SMS, izmenjava sporočil SMS"</string>
@@ -381,7 +398,7 @@
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"nujni primeri, nujno, v sili, v težavah, v nevarnosti"</string>
     <string name="role_home_label" msgid="3871847846649769412">"Privzeta apl. začetnega zasl."</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"Aplikacija začetnega zaslona"</string>
-    <string name="role_home_description" msgid="7997371519626556675">"Aplikacije, pogosto imenovane zaganjalniki, ki zamenjajo začetne zaslone v napravi Android in vam omogočijo dostop do vsebine in funkcij naprave"</string>
+    <string name="role_home_description" msgid="7997371519626556675">"Aplikacije, pogosto imenovane zaganjalniki, ki zamenjajo začetne zaslone v napravi Android in vam omogočijo dostop do vsebine in funkcij naprave."</string>
     <string name="role_home_request_title" msgid="738136983453341081">"Želite aplikacijo <xliff:g id="APP_NAME">%1$s</xliff:g> nastaviti kot privzeto aplikacijo začetnega zaslona?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"Nobeno dovoljenje ni potrebno"</string>
     <string name="role_home_search_keywords" msgid="3830755001192666285">"zaganjalnik"</string>
@@ -392,7 +409,7 @@
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Nobeno dovoljenje ni potrebno"</string>
     <string name="role_call_screening_label" msgid="883935222060878724">"Privz. apl. za ID klicatelja in nežel. klice"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"ID klicatelja in neželeni klici"</string>
-    <string name="role_call_screening_description" msgid="2349431420497468981">"Aplikacije, ki vam omogočajo prepoznavo klicev ter blokiranje reklamnih, avtomatiziranih ali neželenih klicev"</string>
+    <string name="role_call_screening_description" msgid="2349431420497468981">"Aplikacije, ki vam omogočajo prepoznavo klicev ter blokiranje reklamnih, avtomatiziranih ali neželenih klicev."</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Želite aplikacijo <xliff:g id="APP_NAME">%1$s</xliff:g> nastaviti kot privzeto aplikacijo za ID-je klicateljev in neželene klice?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Nobeno dovoljenje ni potrebno"</string>
     <string name="role_watch_description" msgid="267003778693177779">"Aplikaciji <xliff:g id="APP_NAME">%1$s</xliff:g> bosta omogočena interakcija z obvestili in dostop do dovoljenj za telefon, sporočila SMS, stike in koledar."</string>
@@ -459,8 +476,8 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Ta aplikacija želi imeti stalen dostop do vaše lokacije, tudi ko aplikacije ne uporabljate. "<annotation id="link">"Omogočite v nastavitvah."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"Želite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; omogočiti odkrivanje naprav Bluetooth v bližini in povezovanje z njimi?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"Želite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; omogočiti odkrivanje naprav Bluetooth v bližini in povezovanje z njimi? "<annotation id="link">"Omogočite v nastavitvah."</annotation></string>
-    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Želite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dovoliti dostop do natančne lokacije te naprave?"</string>
-    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Želite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dovoliti dostop do približne lokacije te naprave?"</string>
+    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Dovolite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dostop do natančne lokacije te naprave?"</string>
+    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Dovolite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dostop do približne lokacije te naprave?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Natančna"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Približna"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Dovolite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dostop do koledarja?"</string>

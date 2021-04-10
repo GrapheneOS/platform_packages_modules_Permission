@@ -106,14 +106,25 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Okänd"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Översikt"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"användning av <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
-    <!-- no translation found for permission_group_usage_subtitle (2060508926529591334) -->
-    <skip />
+    <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Tidslinje för när du har använt <xliff:g id="PERMGROUP">%1$s</xliff:g> under de senaste 24 timmarna"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"När <xliff:g id="PERMGROUP">%1$s</xliff:g> användes av den här appen"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Läs mer"</string>
-    <!-- no translation found for duration_used_days (6029658139201482951) -->
-    <!-- no translation found for duration_used_hours (2934347147156813767) -->
-    <!-- no translation found for duration_used_minutes (1871095305219275611) -->
-    <!-- no translation found for duration_used_seconds (4036612197985123365) -->
+    <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
+      <item quantity="other">Har använts i <xliff:g id="NUMBER">%s</xliff:g> dagar</item>
+      <item quantity="one">Har använts i 1 dag</item>
+    </plurals>
+    <plurals name="duration_used_hours" formatted="false" msgid="2934347147156813767">
+      <item quantity="other">Har använts i <xliff:g id="NUMBER">%s</xliff:g> timmar</item>
+      <item quantity="one">Har använts i 1 timme</item>
+    </plurals>
+    <plurals name="duration_used_minutes" formatted="false" msgid="1871095305219275611">
+      <item quantity="other">Har använts i <xliff:g id="NUMBER">%s</xliff:g> minuter</item>
+      <item quantity="one">Har använts i 1 minut</item>
+    </plurals>
+    <plurals name="duration_used_seconds" formatted="false" msgid="4036612197985123365">
+      <item quantity="other">Har använts i <xliff:g id="NUMBER">%s</xliff:g> sekunder</item>
+      <item quantity="one">Har använts i 1 sekund</item>
+    </plurals>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Senaste åtkomst: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> åtkomster</item>
       <item quantity="one">Senaste åtkomst: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> åtkomst</item>
@@ -178,10 +189,8 @@
       <item quantity="one">1 app</item>
     </plurals>
     <string name="permission_history_title" msgid="8340081285133025225">"Behörighetshistorik"</string>
-    <!-- no translation found for permission_history_category_today (7496389369158806620) -->
-    <skip />
-    <!-- no translation found for permission_history_category_yesterday (7242517121222012521) -->
-    <skip />
+    <string name="permission_history_category_today" msgid="7496389369158806620">"I dag"</string>
+    <string name="permission_history_category_yesterday" msgid="7242517121222012521">"I går"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Appens behörighetsanvändning"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Åtkomst: <xliff:g id="NUM">%1$s</xliff:g> gånger. Användningstid totalt: <xliff:g id="DURATION">%2$s</xliff:g>. Användes senast för <xliff:g id="TIME">%3$s</xliff:g> sedan."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Åtkomst: <xliff:g id="NUM">%1$s</xliff:g> gånger. Användes senast för <xliff:g id="TIME">%2$s</xliff:g> sedan."</string>
@@ -326,13 +335,13 @@
     <string name="role_assistant_description" msgid="6622458130459922952">"Med assistentappar kan du få hjälp av som baseras på den information som visas på den aktuella skärmen. Vissa appar har stöd för både översikts- och röstinmatningstjänster för att hjälpa dig."</string>
     <string name="role_assistant_request_title" msgid="5964976301922776060">"Vill du ställa in <xliff:g id="APP_NAME">%1$s</xliff:g> som din standardassistentapp?"</string>
     <string name="role_assistant_request_description" msgid="6836644847620178483">"Får åtkomst till sms och samtalshistorik"</string>
-    <string name="role_browser_label" msgid="2877796144554070207">"Standardwebbläsarapp"</string>
+    <string name="role_browser_label" msgid="2877796144554070207">"Standard webbläsarapp"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Webbläsarapp"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Appar som visar länkar du trycker på och du använder för att ansluta till internet"</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"Vill du ställa in <xliff:g id="APP_NAME">%1$s</xliff:g> som din standardwebbläsarapp?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"Inga behörigheter krävs"</string>
-    <string name="role_dialer_label" msgid="1100224146343237968">"Standardtelefonapp"</string>
-    <string name="role_dialer_short_label" msgid="7186888549465352489">"Appen Telefon"</string>
+    <string name="role_dialer_label" msgid="1100224146343237968">"Standard telefonapp"</string>
+    <string name="role_dialer_short_label" msgid="7186888549465352489">"Telefonapp"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Appar som möjliggör att ringa och ta emot telefonsamtal på enheten"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Vill du ställa in <xliff:g id="APP_NAME">%1$s</xliff:g> som din standardtelefonapp?"</string>
     <string name="role_dialer_request_description" msgid="2264219375528345270">"Får åtkomst till samtalshistoriken och kan skicka sms"</string>
@@ -349,7 +358,7 @@
     <string name="role_emergency_request_title" msgid="8469579020654348567">"Vill du ställa in <xliff:g id="APP_NAME">%1$s</xliff:g> som din standardapp för nödsituationer?"</string>
     <string name="role_emergency_request_description" msgid="131645948770262850">"Inga behörigheter krävs"</string>
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"ice"</string>
-    <string name="role_home_label" msgid="3871847846649769412">"Standardstartskärmsapp"</string>
+    <string name="role_home_label" msgid="3871847846649769412">"Standard startskärmsapp"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"Startskärmsapp"</string>
     <string name="role_home_description" msgid="7997371519626556675">"Appar som kallas Översikter ersätter startskärmarna på Android-enheten. Du får åtkomst till innehåll och funktioner på enheten via översikten."</string>
     <string name="role_home_request_title" msgid="738136983453341081">"Vill du ställa in <xliff:g id="APP_NAME">%1$s</xliff:g> som din standardapp för startskärm?"</string>
