@@ -106,16 +106,25 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"ਅਗਿਆਤ"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"ਡੈਸ਼ਬੋਰਡ"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> ਵਰਤੋਂ"</string>
-    <!-- no translation found for permission_group_usage_subtitle (2060508926529591334) -->
-    <skip />
-    <!-- no translation found for permission_usage_access_dialog_subtitle (5567142130422605829) -->
-    <skip />
-    <!-- no translation found for permission_usage_access_dialog_learn_more (7121468469493184613) -->
-    <skip />
-    <!-- no translation found for duration_used_days (6029658139201482951) -->
-    <!-- no translation found for duration_used_hours (2934347147156813767) -->
-    <!-- no translation found for duration_used_minutes (1871095305219275611) -->
-    <!-- no translation found for duration_used_seconds (4036612197985123365) -->
+    <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"ਪਿਛਲੇ 24 ਘੰਟਿਆਂ ਵਿੱਚ ਤੁਹਾਡੇ <xliff:g id="PERMGROUP">%1$s</xliff:g> ਨੂੰ ਵਰਤੇ ਜਾਣ ਦੀ ਸਮਾਂਰੇਖਾ"</string>
+    <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"ਜਦੋਂ ਇਸ ਐਪ ਨੇ ਤੁਹਾਡੇ <xliff:g id="PERMGROUP">%1$s</xliff:g> ਨੂੰ ਵਰਤਿਆ:"</string>
+    <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"ਹੋਰ ਜਾਣੋ"</string>
+    <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
+      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> ਦਿਨ ਲਈ ਵਰਤਿਆ ਗਿਆ</item>
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ਦਿਨਾਂ ਲਈ ਵਰਤਿਆ ਗਿਆ</item>
+    </plurals>
+    <plurals name="duration_used_hours" formatted="false" msgid="2934347147156813767">
+      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> ਘੰਟੇ ਲਈ ਵਰਤਿਆ ਗਿਆ</item>
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ਘੰਟਿਆਂ ਲਈ ਵਰਤਿਆ ਗਿਆ</item>
+    </plurals>
+    <plurals name="duration_used_minutes" formatted="false" msgid="1871095305219275611">
+      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> ਮਿੰਟ ਲਈ ਵਰਤਿਆ ਗਿਆ</item>
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ਮਿੰਟਾਂ ਲਈ ਵਰਤਿਆ ਗਿਆ</item>
+    </plurals>
+    <plurals name="duration_used_seconds" formatted="false" msgid="4036612197985123365">
+      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> ਸਕਿੰਟ ਲਈ ਵਰਤਿਆ ਗਿਆ</item>
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ਸਕਿੰਟਾਂ ਲਈ ਵਰਤਿਆ ਗਿਆ</item>
+    </plurals>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="one">ਪਿਛਲੀ ਵਾਰ ਪਹੁੰਚ: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> ਪਹੁੰਚ</item>
       <item quantity="other">ਪਿਛਲੀ ਵਾਰ ਪਹੁੰਚ: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> ਪਹੁੰਚਾਂ</item>
@@ -180,10 +189,8 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ਐਪਾਂ</item>
     </plurals>
     <string name="permission_history_title" msgid="8340081285133025225">"ਇਜਾਜ਼ਤ ਦਾ ਇਤਿਹਾਸ"</string>
-    <!-- no translation found for permission_history_category_today (7496389369158806620) -->
-    <skip />
-    <!-- no translation found for permission_history_category_yesterday (7242517121222012521) -->
-    <skip />
+    <string name="permission_history_category_today" msgid="7496389369158806620">"ਅੱਜ"</string>
+    <string name="permission_history_category_yesterday" msgid="7242517121222012521">"ਬੀਤੇ ਕੱਲ੍ਹ"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"ਐਪ ਇਜਾਜ਼ਤਾਂ ਵਰਤੋ"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"ਪਹੁੰਚ: <xliff:g id="NUM">%1$s</xliff:g> ਵਾਰ। ਕੁੱਲ ਮਿਆਦ: <xliff:g id="DURATION">%2$s</xliff:g>। ਪਿਛਲੀ ਵਾਰ <xliff:g id="TIME">%3$s</xliff:g> ਪਹਿਲਾਂ ਵਰਤੀ ਗਈ।"</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"ਪਹੁੰਚ: <xliff:g id="NUM">%1$s</xliff:g> ਵਾਰ। ਪਿਛਲੀ ਵਾਰ <xliff:g id="TIME">%2$s</xliff:g> ਪਹਿਲਾਂ ਵਰਤੀ ਗਈ।"</string>
@@ -243,8 +250,8 @@
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"ਕਦੇ ਪਹੁੰਚ ਨਹੀਂ ਕੀਤੀ"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"ਮਨ੍ਹਾ ਕੀਤਾ ਗਿਆ / ਕਦੇ ਪਹੁੰਚ ਨਹੀਂ ਕੀਤੀ"</string>
     <string name="allowed_header" msgid="7769277978004790414">"ਮਨਜ਼ੂਰਸ਼ੁਦਾ"</string>
-    <string name="allowed_always_header" msgid="6455903312589013545">"ਹਰ ਵੇਲੇ ਕਰਨ ਦਿੱਤੀ ਗਈ"</string>
-    <string name="allowed_foreground_header" msgid="6845655788447833353">"ਸਿਰਫ਼ ਵਰਤੋਂ \'ਚ ਹੋਣ \'ਤੇ ਕਰਨ ਦਿੱਤੀਆਂ ਜਾਂਦੀਆਂ"</string>
+    <string name="allowed_always_header" msgid="6455903312589013545">"ਹਰ ਵੇਲੇ ਪਹੁੰਚ ਵਾਲੀਆਂ"</string>
+    <string name="allowed_foreground_header" msgid="6845655788447833353">"ਸਿਰਫ਼ ਐਪ ਵਰਤੋਂ ਵੇਲੇ ਪਹੁੰਚ ਵਾਲੀਆਂ"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"ਸਿਰਫ਼ ਮੀਡੀਆ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੀ ਆਗਿਆ ਦਿੱਤੀ ਗਈ"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"ਸਾਰੀਆਂ ਫ਼ਾਈਲਾਂ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰਨ ਦੀ ਆਗਿਆ ਦਿੱਤੀ ਗਈ"</string>
     <string name="ask_header" msgid="2633816846459944376">"ਹਰ ਵਾਰ ਪੁੱਛੋ"</string>
@@ -323,25 +330,25 @@
     <string name="accessibility_service_dialog_title_multiple" msgid="5527879210683548175">"<xliff:g id="NUM_SERVICES">%s</xliff:g> ਪਹੁੰਚਯੋਗਤਾ ਐਪਾਂ ਕੋਲ ਤੁਹਾਡੇ ਡੀਵਾਈਸ ਤੱਕ ਪੂਰੀ ਪਹੁੰਚ ਹੈ"</string>
     <string name="accessibility_service_dialog_bottom_text_single" msgid="1128666197822205958">"<xliff:g id="SERVICE_NAME">%s</xliff:g> ਐਪ ਤੁਹਾਡੀ ਸਕ੍ਰੀਨ, ਕਾਰਵਾਈਆਂ ਅਤੇ ਇਨਪੁੱਟਾਂ ਨੂੰ ਦੇਖ ਸਕਦੀ ਹੈ, ਕਾਰਵਾਈਆਂ ਕਰ ਸਕਦੀ ਹੈ ਅਤੇ ਡਿਸਪਲੇ ਕੰਟਰੋਲ ਕਰ ਸਕਦੀ ਹੈ।"</string>
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"ਇਹ ਐਪਾਂ ਤੁਹਾਡੀ ਸਕ੍ਰੀਨ, ਕਾਰਵਾਈਆਂ ਅਤੇ ਇਨਪੁੱਟਾਂ ਨੂੰ ਦੇਖ ਸਕਦੀਆਂ ਹਨ, ਕਾਰਵਾਈਆਂ ਕਰ ਸਕਦੀਆਂ ਹਨ ਅਤੇ ਡਿਸਪਲੇ ਕੰਟਰੋਲ ਕਰ ਸਕਦੀਆਂ ਹਨ।"</string>
-    <string name="role_assistant_label" msgid="4727586018198208128">"ਪੂਰਵ-ਨਿਰਧਾਰਤ ਡਿਜੀਟਲ ਸਹਾਇਕ ਐਪ"</string>
+    <string name="role_assistant_label" msgid="4727586018198208128">"ਪੂਰਵ-ਨਿਰਧਾਰਿਤ ਡਿਜੀਟਲ ਸਹਾਇਕ ਐਪ"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"ਡਿਜੀਟਲ ਸਹਾਇਕ ਐਪ"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"ਸਹਾਇਕ ਐਪਾਂ ਤੁਹਾਡੇ ਵੱਲੋਂ ਦੇਖੀ ਜਾਂਦੀ ਸਕ੍ਰੀਨ ਤੋਂ ਪ੍ਰਾਪਤ ਜਾਣਕਾਰੀ ਦੇ ਆਧਾਰ \'ਤੇ ਤੁਹਾਡੀ ਮਦਦ ਕਰ ਸਕਦੀਆਂ ਹਨ। ਕੁਝ ਐਪਾਂ ਤੁਹਾਨੂੰ ਏਕੀਕ੍ਰਿਤ ਸਹਾਇਤਾ ਦੇਣ ਲਈ ਲਾਂਚਰ ਅਤੇ ਵੌਇਸ ਇਨਪੁੱਟ ਸੇਵਾਵਾਂ ਦੋਵਾਂ ਦਾ ਸਮਰਥਨ ਕਰਦੇ ਹਨ।"</string>
     <string name="role_assistant_request_title" msgid="5964976301922776060">"ਕੀ <xliff:g id="APP_NAME">%1$s</xliff:g> ਨੂੰ ਤੁਹਾਡੀ ਪੂਰਵ-ਨਿਰਧਾਰਤ ਸਹਾਇਕ ਐਪ ਵਜੋਂ ਸੈੱਟ ਕਰਨਾ ਹੈ?"</string>
     <string name="role_assistant_request_description" msgid="6836644847620178483">"SMS, ਕਾਲ ਲੌਗ ਤੱਕ ਪਹੁੰਚ ਪ੍ਰਾਪਤ ਹੁੰਦੀ ਹੈ"</string>
-    <string name="role_browser_label" msgid="2877796144554070207">"ਪੂਰਵ-ਨਿਰਧਾਰਤ ਬ੍ਰਾਊਜ਼ਰ ਐਪ"</string>
+    <string name="role_browser_label" msgid="2877796144554070207">"ਪੂਰਵ-ਨਿਰਧਾਰਿਤ ਬ੍ਰਾਊਜ਼ਰ ਐਪ"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"ਬ੍ਰਾਊਜ਼ਰ ਐਪ"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"ਐਪਾਂ ਜੋ ਤੁਹਾਨੂੰ ਇੰਟਰਨੈੱਟ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦਿੰਦੀਆਂ ਹਨ ਅਤੇ ਤੁਹਾਡੇ ਵੱਲੋਂ ਟੈਪ ਕੀਤੇ ਲਿੰਕ ਦਿਖਾਉਂਦੀਆਂ ਹਨ"</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"ਕੀ <xliff:g id="APP_NAME">%1$s</xliff:g> ਨੂੰ ਤੁਹਾਡੀ ਪੂਰਵ-ਨਿਰਧਾਰਤ ਬ੍ਰਾਊਜ਼ਰ ਐਪ ਵਜੋਂ ਸੈੱਟ ਕਰਨਾ ਹੈ?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"ਕਿਸੇ ਇਜਾਜ਼ਤ ਦੀ ਲੋੜ ਨਹੀਂ ਹੈ"</string>
-    <string name="role_dialer_label" msgid="1100224146343237968">"ਪੂਰਵ-ਨਿਰਧਾਰਤ ਫ਼ੋਨ ਐਪ"</string>
+    <string name="role_dialer_label" msgid="1100224146343237968">"ਪੂਰਵ-ਨਿਰਧਾਰਿਤ ਫ਼ੋਨ ਐਪ"</string>
     <string name="role_dialer_short_label" msgid="7186888549465352489">"ਫ਼ੋਨ ਐਪ"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"ਐਪਾਂ ਜੋ ਤੁਹਾਨੂੰ ਆਪਣੇ ਡੀਵਾਈਸ \'ਤੇ ਟੈਲੀਫ਼ੋਨ ਕਾਲਾਂ ਕਰਨ ਅਤੇ ਪ੍ਰਾਪਤ ਕਰਨ ਦਿੰਦੀਆਂ ਹਨ"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"ਕੀ <xliff:g id="APP_NAME">%1$s</xliff:g> ਨੂੰ ਤੁਹਾਡੀ ਪੂਰਵ-ਨਿਰਧਾਰਤ ਫ਼ੋਨ ਐਪ ਵਜੋਂ ਸੈੱਟ ਕਰਨਾ ਹੈ?"</string>
     <string name="role_dialer_request_description" msgid="2264219375528345270">"ਕਾਲ ਲੌਗ ਤੱਕ ਪਹੁੰਚ ਪ੍ਰਾਪਤ ਹੁੰਦੀ ਹੈ, SMS ਭੇਜਿਆ ਜਾਂਦਾ ਹੈ"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"ਡਾਇਲਰ"</string>
-    <string name="role_sms_label" msgid="8456999857547686640">"ਪੂਰਵ-ਨਿਰਧਾਰਤ SMS ਐਪ"</string>
+    <string name="role_sms_label" msgid="8456999857547686640">"ਪੂਰਵ-ਨਿਰਧਾਰਿਤ SMS ਐਪ"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS ਐਪ"</string>
-    <string name="role_sms_description" msgid="3424020199148153513">"ਐਪਾਂ ਜੋ ਤੁਹਾਨੂੰ ਛੋਟੇ ਲਿਖਤ ਸੁਨੇਹੇ, ਫ਼ੋਟੋਆਂ, ਵੀਡੀਓ ਅਤੇ ਹੋਰ ਚੀਜਾਂ ਭੇਜਣ ਅਤੇ ਪ੍ਰਾਪਤ ਕਰਨ ਲਈ ਆਪਣਾ ਫ਼ੋਨ ਨੰਬਰ ਵਰਤਣ ਦਿੰਦੀਆਂ ਹਨ"</string>
+    <string name="role_sms_description" msgid="3424020199148153513">"ਐਪਾਂ ਜੋ ਤੁਹਾਨੂੰ ਛੋਟੇ ਲਿਖਤ ਸੁਨੇਹੇ, ਫ਼ੋਟੋਆਂ, ਵੀਡੀਓ ਅਤੇ ਹੋਰ ਚੀਜ਼ਾਂ ਭੇਜਣ ਅਤੇ ਪ੍ਰਾਪਤ ਕਰਨ ਲਈ ਆਪਣਾ ਫ਼ੋਨ ਨੰਬਰ ਵਰਤਣ ਦਿੰਦੀਆਂ ਹਨ"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"ਕੀ <xliff:g id="APP_NAME">%1$s</xliff:g> ਨੂੰ ਤੁਹਾਡੀ ਪੂਰਵ-ਨਿਰਧਾਰਤ SMS ਐਪ ਵਜੋਂ ਸੈੱਟ ਕਰਨਾ ਹੈ?"</string>
     <string name="role_sms_request_description" msgid="983371022668134198">"ਸੰਪਰਕਾਂ, SMS, ਫ਼ੋਨ ਤੱਕ ਪਹੁੰਚ ਪ੍ਰਾਪਤ ਹੁੰਦੀ ਹੈ"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"ਲਿਖਤ ਸੁਨੇਹਾ, ਲਿਖਤ ਭੇਜਣਾ, ਸੁਨੇਹੇ, ਸੁਨੇਹਾ ਭੇਜਣਾ"</string>
@@ -351,9 +358,9 @@
     <string name="role_emergency_request_title" msgid="8469579020654348567">"ਕੀ <xliff:g id="APP_NAME">%1$s</xliff:g> ਨੂੰ ਤੁਹਾਡੀ ਪੂਰਵ-ਨਿਰਧਾਰਤ ਸੰਕਟਕਾਲੀਨ ਐਪ ਵਜੋਂ ਸੈੱਟ ਕਰਨਾ ਹੈ?"</string>
     <string name="role_emergency_request_description" msgid="131645948770262850">"ਕਿਸੇ ਇਜਾਜ਼ਤ ਦੀ ਲੋੜ ਨਹੀਂ ਹੈ"</string>
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"ice"</string>
-    <string name="role_home_label" msgid="3871847846649769412">"ਪੂਰਵ-ਨਿਰਧਾਰਤ ਹੋਮ ਐਪ"</string>
+    <string name="role_home_label" msgid="3871847846649769412">"ਪੂਰਵ-ਨਿਰਧਾਰਿਤ ਹੋਮ ਐਪ"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"ਹੋਮ ਐਪ"</string>
-    <string name="role_home_description" msgid="7997371519626556675">"ਐਪਾਂ, ਜਿਨ੍ਹਾਂ ਨੂੰ ਕਈ ਵਾਰ ਲਾਂਚਰ ਵੀ ਕਿਹਾ ਜਾਂਦਾ ਹੈ, ਜੋ ਤੁਹਾਡੇ Android ਡੀਵਾਈਸ \'ਤੇ ਹੋਮ ਸਕ੍ਰੀਨ ਬਦਲਦੀਆਂ ਹਨ ਅਤੇ ਤੁਹਾਨੂੰ ਤੁਹਾਡੇ ਡੀਵਾਈਸ ਦੀਆਂ ਸਮੱਗਰੀਆਂ ਅਤੇ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦਿੰਦੀਆਂ ਹਨ"</string>
+    <string name="role_home_description" msgid="7997371519626556675">"ਐਪਾਂ, ਜਿਨ੍ਹਾਂ ਨੂੰ ਕਈ ਵਾਰ ਲਾਂਚਰ ਵੀ ਕਿਹਾ ਜਾਂਦਾ ਹੈ, ਜੋ ਤੁਹਾਡੇ Android ਡੀਵਾਈਸ \'ਤੇ ਹੋਮ ਸਕ੍ਰੀਨ ਦੀ ਜਗ੍ਹਾ ਲੈਂਦੀਆਂ ਹਨ ਅਤੇ ਤੁਹਾਨੂੰ ਤੁਹਾਡੇ ਡੀਵਾਈਸ ਦੀਆਂ ਸਮੱਗਰੀਆਂ ਅਤੇ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦਿੰਦੀਆਂ ਹਨ"</string>
     <string name="role_home_request_title" msgid="738136983453341081">"ਕੀ <xliff:g id="APP_NAME">%1$s</xliff:g> ਨੂੰ ਤੁਹਾਡੀ ਪੂਰਵ-ਨਿਰਧਾਰਤ ਹੋਮ ਐਪ ਵਜੋਂ ਸੈੱਟ ਕਰਨਾ ਹੈ?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"ਕਿਸੇ ਇਜਾਜ਼ਤ ਦੀ ਲੋੜ ਨਹੀਂ ਹੈ"</string>
     <string name="role_home_search_keywords" msgid="3830755001192666285">"ਲਾਂਚਰ"</string>
@@ -362,7 +369,7 @@
     <string name="role_call_redirection_description" msgid="6091669882014664420">"ਐਪਾਂ ਜਿਨ੍ਹਾਂ ਨਾਲ ਤੁਸੀਂ ਆਊਟਗੋਇੰਗ ਕਾਲਾਂ ਨੂੰ ਕਿਸੇ ਹੋਰ ਫ਼ੋਨ ਨੰਬਰ \'ਤੇ ਅੱਗੇ ਭੇਜ ਸਕਦੇ ਹੋ"</string>
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"ਕੀ <xliff:g id="APP_NAME">%1$s</xliff:g> ਨੂੰ ਤੁਹਾਡੀ ਪੂਰਵ-ਨਿਰਧਾਰਤ ਕਾਲ ਬਦਲਣ ਵਾਲੀ ਐਪ ਵਜੋਂ ਸੈੱਟ ਕਰਨਾ ਹੈ?"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"ਕਿਸੇ ਇਜਾਜ਼ਤ ਦੀ ਲੋੜ ਨਹੀਂ ਹੈ"</string>
-    <string name="role_call_screening_label" msgid="883935222060878724">"ਪੂਰਵ-ਨਿਰਧਾਰਤ ਕਾਲਰ ਆਈਡੀ ਅਤੇ ਸਪੈਮ ਐਪ"</string>
+    <string name="role_call_screening_label" msgid="883935222060878724">"ਪੂਰਵ-ਨਿਰਧਾਰਿਤ ਕਾਲਰ ਆਈਡੀ ਅਤੇ ਸਪੈਮ ਐਪ"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"ਕਾਲਰ ਆਈਡੀ ਅਤੇ ਸਪੈਮ ਐਪ"</string>
     <string name="role_call_screening_description" msgid="2349431420497468981">"ਐਪਾਂ ਜਿਨ੍ਹਾਂ ਨਾਲ ਤੁਸੀਂ ਕਾਲਾਂ ਦੀ ਪਛਾਣ ਕਰ ਸਕਦੇ ਹੋ ਅਤੇ ਸਪੈਮ, ਰੋਬੋਕਾਲਾਂ ਜਾਂ ਅਣਚਾਹੇ ਨੰਬਰਾਂ ਨੂੰ ਬਲਾਕ ਕਰ ਸਕਦੇ ਹੋ"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"ਕੀ <xliff:g id="APP_NAME">%1$s</xliff:g> ਨੂੰ ਤੁਹਾਡੀ ਪੂਰਵ-ਨਿਰਧਾਰਤ ਕਾਲਰ ਆਈ.ਡੀ. ਅਤੇ ਸਪੈਮ ਐਪ ਵਜੋਂ ਸੈੱਟ ਕਰਨਾ ਹੈ?"</string>
@@ -385,16 +392,16 @@
     <string name="ongoing_usage_dialog_title_mic_camera" msgid="9079747867228772797">"ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਅਤੇ ਕੈਮਰੇ ਦੀ ਹਾਲੀਆ ਵਰਤੋਂ"</string>
     <string name="ongoing_usage_dialog_separator" msgid="1715181526581520068">", "</string>
     <string name="ongoing_usage_dialog_last_separator" msgid="4170995004748832163">" ਅਤੇ "</string>
-    <string name="default_app_search_keyword" msgid="8330125736889689743">"ਪੂਰਵ-ਨਿਰਧਾਰਤ ਐਪਾਂ"</string>
+    <string name="default_app_search_keyword" msgid="8330125736889689743">"ਪੂਰਵ-ਨਿਰਧਾਰਿਤ ਐਪਾਂ"</string>
     <string name="permgroup_list_microphone_and_camera" msgid="962768198001487969">"ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਅਤੇ ਕੈਮਰਾ"</string>
     <string name="settings_button" msgid="4414988414732479636">"ਸੈਟਿੰਗਾਂ"</string>
-    <string name="default_apps" msgid="5119201969348748639">"ਪੂਰਵ-ਨਿਰਧਾਰਤ ਐਪਾਂ"</string>
+    <string name="default_apps" msgid="5119201969348748639">"ਪੂਰਵ-ਨਿਰਧਾਰਿਤ ਐਪਾਂ"</string>
     <string name="no_default_apps" msgid="2593466527182950231">"ਕੋਈ ਪੂਰਵ-ਨਿਰਧਾਰਤ ਐਪਾਂ ਨਹੀਂ"</string>
     <string name="default_apps_more" msgid="4078194675848858093">"ਹੋਰ ਪੂਰਵ-ਨਿਰਧਾਰਤ"</string>
-    <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"ਖੋਲ੍ਹੇ ਜਾਣ ਵਾਲੇ ਲਿੰਕ"</string>
+    <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"ਖੁੱਲ੍ਹਣ ਵਾਲੇ ਲਿੰਕ"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"ਕੰਮ ਲਈ ਪੂਰਵ-ਨਿਰਧਾਰਤ"</string>
     <string name="default_app_none" msgid="9084592086808194457">"ਕੋਈ ਨਹੀਂ"</string>
-    <string name="default_app_system_default" msgid="6218386768175513760">"(ਸਿਸਟਮ ਪੂਰਵ-ਨਿਰਧਾਰਤ)"</string>
+    <string name="default_app_system_default" msgid="6218386768175513760">"(ਸਿਸਟਮ ਪੂਰਵ-ਨਿਰਧਾਰਿਤ)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"ਕੋਈ ਐਪਾਂ ਨਹੀਂ"</string>
     <string name="car_default_app_selected" msgid="5416420830430644174">"ਚੁਣੀ ਗਈ"</string>
     <string name="car_default_app_selected_with_info" msgid="1932204186080593500">"ਚੁਣੀ ਗਈ - <xliff:g id="ADDITIONAL_INFO">%1$s</xliff:g>"</string>

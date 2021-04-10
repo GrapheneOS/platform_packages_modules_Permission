@@ -194,8 +194,9 @@ public final class Utils {
         PLATFORM_PERMISSIONS.put(Manifest.permission.ACCESS_BACKGROUND_LOCATION, LOCATION);
 
         if (SdkLevel.isAtLeastS()) {
-            PLATFORM_PERMISSIONS.put(Manifest.permission.BLUETOOTH_SCAN, NEARBY_DEVICES);
+            PLATFORM_PERMISSIONS.put(Manifest.permission.BLUETOOTH_ADVERTISE, NEARBY_DEVICES);
             PLATFORM_PERMISSIONS.put(Manifest.permission.BLUETOOTH_CONNECT, NEARBY_DEVICES);
+            PLATFORM_PERMISSIONS.put(Manifest.permission.BLUETOOTH_SCAN, NEARBY_DEVICES);
             PLATFORM_PERMISSIONS.put(Manifest.permission.UWB_RANGING, NEARBY_DEVICES);
         }
 

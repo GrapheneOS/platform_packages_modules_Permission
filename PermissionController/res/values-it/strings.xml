@@ -106,14 +106,25 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Sconosciuto"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Dashboard"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Uso di <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
-    <!-- no translation found for permission_group_usage_subtitle (2060508926529591334) -->
-    <skip />
+    <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Cronologia dell\'utilizzo di <xliff:g id="PERMGROUP">%1$s</xliff:g> nelle ultime 24 ore"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Quando questa app ha usato il gruppo di autorizzazioni <xliff:g id="PERMGROUP">%1$s</xliff:g>:"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Scopri di più"</string>
-    <!-- no translation found for duration_used_days (6029658139201482951) -->
-    <!-- no translation found for duration_used_hours (2934347147156813767) -->
-    <!-- no translation found for duration_used_minutes (1871095305219275611) -->
-    <!-- no translation found for duration_used_seconds (4036612197985123365) -->
+    <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
+      <item quantity="other">Usata per <xliff:g id="NUMBER">%s</xliff:g> giorni</item>
+      <item quantity="one">Usata per 1 giorno</item>
+    </plurals>
+    <plurals name="duration_used_hours" formatted="false" msgid="2934347147156813767">
+      <item quantity="other">Usata per <xliff:g id="NUMBER">%s</xliff:g> ore</item>
+      <item quantity="one">Usata per 1 ora</item>
+    </plurals>
+    <plurals name="duration_used_minutes" formatted="false" msgid="1871095305219275611">
+      <item quantity="other">Usata per <xliff:g id="NUMBER">%s</xliff:g> minuti</item>
+      <item quantity="one">Usata per 1 minuto</item>
+    </plurals>
+    <plurals name="duration_used_seconds" formatted="false" msgid="4036612197985123365">
+      <item quantity="other">Usata per <xliff:g id="NUMBER">%s</xliff:g> secondi</item>
+      <item quantity="one">Usata per 1 secondo</item>
+    </plurals>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Ultimo accesso: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> accessi</item>
       <item quantity="one">Ultimo accesso: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> accesso</item>
@@ -178,10 +189,8 @@
       <item quantity="one">1 app</item>
     </plurals>
     <string name="permission_history_title" msgid="8340081285133025225">"Cronologia autorizz."</string>
-    <!-- no translation found for permission_history_category_today (7496389369158806620) -->
-    <skip />
-    <!-- no translation found for permission_history_category_yesterday (7242517121222012521) -->
-    <skip />
+    <string name="permission_history_category_today" msgid="7496389369158806620">"Oggi"</string>
+    <string name="permission_history_category_yesterday" msgid="7242517121222012521">"Ieri"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Uso delle autorizzazioni app"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Accesso: <xliff:g id="NUM">%1$s</xliff:g> volte. Durata totale: <xliff:g id="DURATION">%2$s</xliff:g>. Ultimo utilizzo: <xliff:g id="TIME">%3$s</xliff:g> fa."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Accesso: <xliff:g id="NUM">%1$s</xliff:g> volte. Ultimo utilizzo: <xliff:g id="TIME">%2$s</xliff:g> fa."</string>
@@ -328,18 +337,18 @@
     <string name="role_assistant_request_description" msgid="6836644847620178483">"Ottiene accesso a registro chiamate e SMS"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"App browser predefinita"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"App browser"</string>
-    <string name="role_browser_description" msgid="3465253637499842671">"App che ti forniscono accesso a Internet e mostrano i link che tocchi"</string>
+    <string name="role_browser_description" msgid="3465253637499842671">"App che ti forniscono accesso a Internet e mostrano i link che tocchi."</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"Impostare <xliff:g id="APP_NAME">%1$s</xliff:g> come app browser predefinita?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"Nessuna autorizzazione necessaria"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"App telefono predefinita"</string>
     <string name="role_dialer_short_label" msgid="7186888549465352489">"App telefono"</string>
-    <string name="role_dialer_description" msgid="8768708633696539612">"App che ti permettono di effettuare e ricevere chiamate telefoniche sul tuo dispositivo"</string>
+    <string name="role_dialer_description" msgid="8768708633696539612">"App che ti permettono di effettuare e ricevere chiamate telefoniche sul tuo dispositivo."</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Impostare <xliff:g id="APP_NAME">%1$s</xliff:g> come app telefono predefinita?"</string>
     <string name="role_dialer_request_description" msgid="2264219375528345270">"Ottiene accesso a registro chiamate, invio SMS"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"telefono"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"App SMS predefinita"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"App SMS"</string>
-    <string name="role_sms_description" msgid="3424020199148153513">"App che ti permettono di utilizzare il tuo numero di telefono per inviare e ricevere brevi messaggi di testo, foto, video e altro"</string>
+    <string name="role_sms_description" msgid="3424020199148153513">"App che ti permettono di utilizzare il tuo numero di telefono per inviare e ricevere brevi messaggi di testo, foto, video e altro."</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Imposta <xliff:g id="APP_NAME">%1$s</xliff:g> come app SMS predefinita"</string>
     <string name="role_sms_request_description" msgid="983371022668134198">"Ottiene accesso a contatti, SMS, telefono"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"sms, invio di sms, messaggi, invio di messaggi"</string>
@@ -351,7 +360,7 @@
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"ICE"</string>
     <string name="role_home_label" msgid="3871847846649769412">"App iniziale predefinita"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"App iniziale"</string>
-    <string name="role_home_description" msgid="7997371519626556675">"App, spesso chiamate Avvio app, che sostituiscono le schermate Home sul tuo dispositivo Android e che ti forniscono l\'accesso ai contenuti e alle funzionalità del dispositivo"</string>
+    <string name="role_home_description" msgid="7997371519626556675">"App, spesso chiamate Avvio app, che sostituiscono le schermate Home sul tuo dispositivo Android e che ti forniscono l\'accesso ai contenuti e alle funzionalità del dispositivo."</string>
     <string name="role_home_request_title" msgid="738136983453341081">"Impostare <xliff:g id="APP_NAME">%1$s</xliff:g> come app casa predefinita?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"Nessuna autorizzazione necessaria"</string>
     <string name="role_home_search_keywords" msgid="3830755001192666285">"avvio app"</string>
@@ -362,10 +371,10 @@
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Nessuna autorizzazione necessaria"</string>
     <string name="role_call_screening_label" msgid="883935222060878724">"App ID chiamante e spam"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"App ID chiamante e spam"</string>
-    <string name="role_call_screening_description" msgid="2349431420497468981">"App che consentono di identificare le chiamate e bloccare spam, chiamate preregistrate o numeri indesiderati"</string>
+    <string name="role_call_screening_description" msgid="2349431420497468981">"App che consentono di identificare le chiamate e bloccare spam, chiamate preregistrate o numeri indesiderati."</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Impostare <xliff:g id="APP_NAME">%1$s</xliff:g> come app ID chiamante e spam?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Nessuna autorizzazione necessaria"</string>
-    <string name="role_watch_description" msgid="267003778693177779">"L\'app <xliff:g id="APP_NAME">%1$s</xliff:g> potrà interagire con le tue notifiche e accedere alle autorizzazioni Telefono, SMS, Contatti e Calendario."</string>
+    <string name="role_watch_description" msgid="267003778693177779">"L\'app <xliff:g id="APP_NAME">%1$s</xliff:g> potrà interagire con le tue notifiche e accedere a telefono, SMS, contatti e calendario."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Valore predefinito attuale"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Non chiedermelo più"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Imposta predefinito"</string>

@@ -106,14 +106,25 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Không xác định"</string>
     <string name="permission_usage_title" msgid="5095876355858467390">"Trang tổng quan"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Hoạt động sử dụng <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
-    <!-- no translation found for permission_group_usage_subtitle (2060508926529591334) -->
-    <skip />
+    <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Lịch trình sử dụng <xliff:g id="PERMGROUP">%1$s</xliff:g> của bạn trong 24 giờ qua"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Khi ứng dụng này dùng <xliff:g id="PERMGROUP">%1$s</xliff:g>:"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Tìm hiểu thêm"</string>
-    <!-- no translation found for duration_used_days (6029658139201482951) -->
-    <!-- no translation found for duration_used_hours (2934347147156813767) -->
-    <!-- no translation found for duration_used_minutes (1871095305219275611) -->
-    <!-- no translation found for duration_used_seconds (4036612197985123365) -->
+    <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
+      <item quantity="other">Đã sử dụng trong <xliff:g id="NUMBER">%s</xliff:g> ngày</item>
+      <item quantity="one">Đã sử dụng trong 1 ngày</item>
+    </plurals>
+    <plurals name="duration_used_hours" formatted="false" msgid="2934347147156813767">
+      <item quantity="other">Đã sử dụng trong <xliff:g id="NUMBER">%s</xliff:g> giờ</item>
+      <item quantity="one">Đã sử dụng trong 1 giờ</item>
+    </plurals>
+    <plurals name="duration_used_minutes" formatted="false" msgid="1871095305219275611">
+      <item quantity="other">Đã sử dụng trong <xliff:g id="NUMBER">%s</xliff:g> phút</item>
+      <item quantity="one">Đã sử dụng trong 1 phút</item>
+    </plurals>
+    <plurals name="duration_used_seconds" formatted="false" msgid="4036612197985123365">
+      <item quantity="other">Đã sử dụng trong <xliff:g id="NUMBER">%s</xliff:g> giây</item>
+      <item quantity="one">Đã sử dụng trong 1 giây</item>
+    </plurals>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Lần truy cập gần đây nhất: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> lần truy cập</item>
       <item quantity="one">Lần truy cập gần đây nhất: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> lần truy cập</item>
@@ -178,10 +189,8 @@
       <item quantity="one">1 ứng dụng</item>
     </plurals>
     <string name="permission_history_title" msgid="8340081285133025225">"Nhật ký quyền"</string>
-    <!-- no translation found for permission_history_category_today (7496389369158806620) -->
-    <skip />
-    <!-- no translation found for permission_history_category_yesterday (7242517121222012521) -->
-    <skip />
+    <string name="permission_history_category_today" msgid="7496389369158806620">"Hôm nay"</string>
+    <string name="permission_history_category_yesterday" msgid="7242517121222012521">"Hôm qua"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Sử dụng quyền ứng dụng"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Truy cập: <xliff:g id="NUM">%1$s</xliff:g> lần. Tổng thời gian: <xliff:g id="DURATION">%2$s</xliff:g>. Sử dụng lần gần đây nhất vào <xliff:g id="TIME">%3$s</xliff:g> trước."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Truy cập: <xliff:g id="NUM">%1$s</xliff:g> lần. Sử dụng lần gần đây nhất vào <xliff:g id="TIME">%2$s</xliff:g> trước."</string>
@@ -201,7 +210,7 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Xem tất cả các quyền của <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Xem tất cả ứng dụng có quyền này"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Hiển thị việc sử dụng micrô của Trợ lý"</string>
-    <string name="auto_revoke_label" msgid="5068393642936571656">"Thu hồi quyền nếu chưa dùng ứng dụng"</string>
+    <string name="auto_revoke_label" msgid="5068393642936571656">"Thu hồi quyền nếu không dùng ứng dụng"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Để bảo vệ dữ liệu của bạn, các quyền cấp cho ứng dụng này sẽ bị thu hồi nếu bạn không dùng ứng dụng trong vài tháng."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Để bảo vệ dữ liệu của bạn, nếu bạn không dùng ứng dụng này trong vài tháng thì các quyền sau đây sẽ bị thu hồi: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Để bảo vệ dữ liệu của bạn, quản trị viên CNTT đã thu hồi các quyền đối với những ứng dụng bạn không dùng trong vài tháng."</string>
