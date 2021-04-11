@@ -23,6 +23,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.SharedLibraryInfo;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Process;
@@ -724,8 +725,14 @@ public class Role {
 
         PackageManager userPackageManager = UserUtils.getUserContext(context, user)
                 .getPackageManager();
-        if (!userPackageManager.getDeclaredSharedLibraries(packageName, 0).isEmpty()) {
-            return false;
+        List<SharedLibraryInfo> declaredLibraries = userPackageManager.getDeclaredSharedLibraries(
+                packageName, 0);
+        final int libCount = declaredLibraries.size();
+        for (int i = 0; i < libCount; i++) {
+            SharedLibraryInfo sharedLibrary = declaredLibraries.get(i);
+            if (sharedLibrary.getType() != SharedLibraryInfo.TYPE_DYNAMIC) {
+                return false;
+            }
         }
 
         return true;
