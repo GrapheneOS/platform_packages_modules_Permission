@@ -114,9 +114,6 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
         initializeTimeFilter();
         mFilterTimeIndex = FILTER_24_HOURS;
 
-        // TODO: theianchen set the default value of mShowSystem to true for testing purposes
-        mShowSystem = true;
-
         if (savedInstanceState != null) {
             mShowSystem = savedInstanceState.getBoolean(SHOW_SYSTEM_KEY);
         }
