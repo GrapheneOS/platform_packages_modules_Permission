@@ -305,7 +305,7 @@ fun UsageStats.lastTimePackageUsed(): Long {
     var lastTimePkgUsed = this.lastTimeVisible
     // TODO(b/180748832): Change this to SDK check once SDK moves up and feature flag is removed.
     if (isHibernationEnabled()) {
-        lastTimePkgUsed = maxOf(lastTimePkgUsed, this.lastTimeComponentUsed)
+        lastTimePkgUsed = maxOf(lastTimePkgUsed, this.lastTimeAnyComponentUsed)
     }
     return lastTimePkgUsed
 }
