@@ -775,5 +775,14 @@
         defaultHolders="config_systemActivityRecognizer"
         exclusive="true"
         systemOnly="true"
-        visible="false" />
+        visible="false">
+        <required-components>
+            <service>
+                <intent-filter>
+                    <action name="android.intent.action.ACTIVITY_RECOGNIZER" />
+                </intent-filter>
+            </service>
+        </required-components>
+    </role>
+
 </roles>
