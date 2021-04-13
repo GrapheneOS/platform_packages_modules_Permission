@@ -23,7 +23,10 @@
         <item name="preferenceCategoryTitleTextAppearance">@style/TextAppearance.CategoryTitle</item>
     </style>
 
-    <style name="Settings.Role" />
+    <style name="Settings.Role">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
 
     <style name="TextAppearance.CategoryTitle"
            parent="@android:style/TextAppearance.DeviceDefault.Medium">
