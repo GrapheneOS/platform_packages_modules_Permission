@@ -610,7 +610,7 @@
     -->
     <role
         name="android.app.role.SYSTEM_COMPANION_DEVICE_PROVIDER"
-        defaultHolders="config_companionProviderPackage"
+        defaultHolders="config_systemCompanionDeviceProvider"
         exclusive="true"
         minSdkVersion="31"
         systemOnly="true"
