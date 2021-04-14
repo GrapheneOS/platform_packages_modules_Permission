@@ -179,7 +179,6 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Użycie uprawnień w ciągu ostatnich 24 godzin"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Użycie uprawnień w ciągu ostatniej godziny"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Użycie uprawnień w ciągu ostatnich 15 minut"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"użycie"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Użycie uprawnień w ciągu ostatniej minuty"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> aplikacje</item>
@@ -187,11 +186,11 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> aplikacji</item>
       <item quantity="one">1 aplikacja</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="few"><xliff:g id="NUMBER">%d</xliff:g> aplikacje używały</item>
-      <item quantity="many"><xliff:g id="NUMBER">%d</xliff:g> aplikacji używało</item>
-      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> aplikacji używało</item>
-      <item quantity="one">1 aplikacja używała</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="few"><xliff:g id="NUMBER">%1$d</xliff:g> aplikacje używały uprawnień typu <xliff:g id="PERMGROUP_1">%2$s</xliff:g></item>
+      <item quantity="many"><xliff:g id="NUMBER">%1$d</xliff:g> aplikacji używało uprawnień typu <xliff:g id="PERMGROUP_1">%2$s</xliff:g></item>
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> aplikacji używało uprawnień typu <xliff:g id="PERMGROUP_1">%2$s</xliff:g></item>
+      <item quantity="one">1 aplikacja używała uprawnień typu <xliff:g id="PERMGROUP_0">%2$s</xliff:g></item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Pokaż wszystko w panelu"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrowane według: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -263,7 +262,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Aplikacje z tym uprawnieniem mogą robić zdjęcia i nagrywać filmy"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Aplikacje z tym uprawnieniem mają dostęp do kontaktów"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Aplikacje z tym uprawnieniem mają dostęp do lokalizacji tego urządzenia"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Aplikacje z tymi uprawnieniami mogą wykrywać urządzenia Bluetooth w pobliżu i łączyć się z nimi"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Aplikacje z tymi uprawnieniami mogą wykrywać urządzenia w pobliżu, określać ich względne położenie oraz łączyć się z nimi"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Aplikacje z tym uprawnieniem mogą nagrywać dźwięk"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Aplikacje z tym uprawnieniem mogą nawiązywać połączenia telefoniczne i nimi zarządzać"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Aplikacje z tym uprawnieniem mają dostęp do danych z czujnika podstawowych funkcji życiowych"</string>
@@ -474,12 +473,12 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Aplikacja chce mieć stały dostęp do Twojej lokalizacji, nawet gdy nie jest używana. "<annotation id="link">"Zezwól w ustawieniach"</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Zmienić uprawnienia dostępu do lokalizacji w przypadku aplikacji „<xliff:g id="APP_NAME">%1$s</xliff:g>”?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Aplikacja chce mieć stały dostęp do Twojej lokalizacji, nawet gdy nie jest używana. "<annotation id="link">"Zezwól w ustawieniach"</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"Zezwolić aplikacji „<xliff:g id="APP_NAME">%1$s</xliff:g>” na wykrywanie urządzeń Bluetooth w pobliżu i łączenie się z nimi?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"Zezwolić aplikacji „<xliff:g id="APP_NAME">%1$s</xliff:g>” na wykrywanie urządzeń Bluetooth w pobliżu i łączenie się z nimi? "<annotation id="link">"Zezwól w ustawieniach."</annotation></string>
-    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Zezwolić aplikacji „<xliff:g id="APP_NAME">%1$s</xliff:g>” na dostęp do dokładnej lokalizacji urządzenia?"</string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"Zezwolić aplikacji „<xliff:g id="APP_NAME">%1$s</xliff:g>” na wykrywanie urządzeń w pobliżu i łączenie się z nimi?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"Zezwolić aplikacji „<xliff:g id="APP_NAME">%1$s</xliff:g>” na wykrywanie urządzeń w pobliżu i łączenie się z nimi? "<annotation id="link">"Zezwól w ustawieniach."</annotation></string>
+    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Zezwolić aplikacji <xliff:g id="APP_NAME">%1$s</xliff:g> na dostęp do dokładnej lokalizacji urządzenia?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Zezwolić aplikacji „<xliff:g id="APP_NAME">%1$s</xliff:g>” na dostęp do przybliżonej lokalizacji urządzenia?"</string>
-    <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Dokładnie"</string>
-    <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"W przybliżeniu"</string>
+    <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Dokładna"</string>
+    <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Przybliżona"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na dostęp do kalendarza?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na wysyłanie i wyświetlanie SMS-ów?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na dostęp do zdjęć, multimediów i plików na urządzeniu?"</string>

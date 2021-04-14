@@ -161,16 +161,12 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"గత 24 గంటలలో అనుమతి వినియోగం"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"గడిచిన ఒక గంటలో అనుమతి వినియోగించబడింది"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"గత 15 నిమిషాలలో అనుమతి వినియోగించబడింది"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"వినియోగం"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"గత నిమిషంలో అనుమతి వినియోగించబడింది"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> యాప్‌లు</item>
       <item quantity="one">1 యాప్</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> యాప్‌లు</item>
-      <item quantity="one">1 యాప్ ఉప.</item>
-    </plurals>
+    <!-- no translation found for permission_usage_preference_label (7599037764529821028) -->
     <string name="permission_usage_view_details" msgid="6675335735468752787">"అన్నింటినీ డాష్‌బోర్డ్‌లో చూడండి"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"దీని ద్వారా ఫిల్టర్ చేయబడింది: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"ఫిల్టర్‌ తీసివేయి"</string>
@@ -239,7 +235,8 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"ఈ అనుమతి ఉన్న యాప్‌లు చిత్రాలను తీయగలవు, వీడియోను రికార్డ్ చేయగలవు"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"ఈ అనుమతి ఉన్న యాప్‌లు మీ కాంటాక్ట్‌లను యాక్సెస్ చేయగలవు"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"ఈ అనుమతి ఉన్న యాప్‌లు ఈ పరికర లొకేషన్‌ను యాక్సెస్ చేయగలవు"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"ఈ అనుమతి ఉన్న యాప్‌లు సమీపంలోని బ్లూటూత్ పరికరాలను కనుగొనగవచ్చు, కనెక్ట్ చేయవచ్చు"</string>
+    <!-- no translation found for permission_description_summary_nearby_devices (4993093121706938071) -->
+    <skip />
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"ఈ అనుమతి ఉన్న యాప్‌లు ఆడియోను రికార్డ్ చేయగలవు"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"ఈ అనుమతులు ఉన్న యాప్‌లు ఫోన్ కాల్‌లు చేయగలవు మరియు నిర్వహించగలవు"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"ఈ అనుమతి ఉన్న యాప్‌లు మీ ఆరోగ్య స్థితిని తెలియజేసే గణాంకాల సెన్సార్ డేటాను యాక్సెస్ చేయగలవు"</string>
@@ -436,8 +433,10 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"ఈ యాప్‌నకు మీ లొకేషన్ యాక్సెస్ అన్ని సమయాలలో, అంటే యాప్‌ను ఉపయోగించనప్పుడు కూడా, అవసరం ఉండవచ్చు. "<annotation id="link">"సెట్టింగ్‌లలో అనుమతించండి."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; కోసం లొకేష‌న్‌ యాక్సెస్‌ను మార్చాలా?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"మీరు యాప్ ఉపయోగించనప్పుడు కూడా ఈ యాప్ మీ లొకేష‌న్‌ను ఎప్పటికప్పుడు యాక్సెస్ చేయాల‌ని అనుకుంటోంది."<annotation id="link">"సెట్టింగ్‌లలో అనుమతించండి."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"సమీప బ్లూటూత్ పరికరాలను కనుగొనడానికి, కనెక్ట్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"సమీప బ్లూటూత్ పరికరాలను కనుగొనడానికి, కనెక్ట్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా? "<annotation id="link">"సెట్టింగ్‌లలో అనుమతించు."</annotation></string>
+    <!-- no translation found for permgrouprequest_nearby_devices (620046480867488546) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequestdetail_nearby_devices (2560445503628306938) -->
+    <skip />
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"ఈ పరికరానికి సంబంధించి ఖచ్చితమైన లొకేషన్‌ను యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ని అనుమతించాలా?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"ఈ పరికరానికి సంబంధించి సుమారుగా ఉన్న లొకేషన్‌ను యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ని అనుమతించాలా?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"ఖచ్చితమైన"</string>
