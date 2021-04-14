@@ -45,7 +45,7 @@
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Wijzigen in exacte locatie"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Alleen deze keer"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Altijd toestaan"</string>
-    <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Toestemming geven om alle bestanden te beheren"</string>
+    <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Beheer van alle bestanden toestaan"</string>
     <string name="grant_dialog_button_allow_media_only" msgid="4832877658422573832">"Toegang tot mediabestanden toestaan"</string>
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Apps"</string>
     <string name="app_permissions" msgid="3369917736607944781">"App-rechten"</string>
@@ -80,7 +80,7 @@
     <string name="permission_summary_disabled_by_admin_background_only" msgid="3127091456731845646">"Achtergrondtoegang ingetrokken door beheerder"</string>
     <string name="permission_summary_enabled_by_admin_background_only" msgid="9132423838440275757">"Achtergrondtoegang aangezet door beheerder"</string>
     <string name="permission_summary_enabled_by_admin_foreground_only" msgid="1298432715610745358">"Voorgrondtoegang aangezet door beheerder"</string>
-    <string name="permission_summary_enabled_system_fixed" msgid="2438344700184127274">"Apparaat heeft dit recht nodig om te kunnen werken"</string>
+    <string name="permission_summary_enabled_system_fixed" msgid="2438344700184127274">"Dit recht is vereist voor de werking van het apparaat"</string>
     <!-- no translation found for background_access_chooser_dialog_choices:0 (1351721623256561996) -->
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
@@ -161,15 +161,14 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Rechtengebruik in de afgelopen 24 uur"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Rechtengebruik in het afgelopen uur"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Rechtengebruik in de afgelopen 15 minuten"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"gebruik"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Rechtengebruik in de afgelopen minuut"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> apps</item>
       <item quantity="one">1 app</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> apps gebruikt</item>
-      <item quantity="one">1 app gebruikt</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> apps hebben <xliff:g id="PERMGROUP_1">%2$s</xliff:g> gebruikt</item>
+      <item quantity="one">1 app heeft <xliff:g id="PERMGROUP_0">%2$s</xliff:g> gebruikt</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Alles op dashboard tonen"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Gefilterd op: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -195,7 +194,7 @@
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Toegang: <xliff:g id="NUM">%1$s</xliff:g> keer. Totale duur: <xliff:g id="DURATION">%2$s</xliff:g>. Laatst gebruikt: <xliff:g id="TIME">%3$s</xliff:g> geleden."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Toegang: <xliff:g id="NUM">%1$s</xliff:g> keer. Laatst gebruikt: <xliff:g id="TIME">%2$s</xliff:g> geleden."</string>
     <string name="app_permission_button_allow" msgid="5808039516494774647">"Toestaan"</string>
-    <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Toestemming geven om alle bestanden te beheren"</string>
+    <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Beheer van alle bestanden toestaan"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Alleen toegang tot media toestaan"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Altijd toestaan"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Toestaan bij gebruik van app"</string>
@@ -205,7 +204,7 @@
     <string name="approximate_image_description" msgid="938803699637069884">"Geschatte locatie"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Exacte locatie gebruiken"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Apps kunnen alleen je geschatte locatie binnen een bepaalde omgeving vaststellen als dit uit staat"</string>
-    <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>-recht"</string>
+    <string name="app_permission_title" msgid="2090897901051370711">"Recht van <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Toegang tot <xliff:g id="PERM">%1$s</xliff:g> voor deze app"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Alle rechten van <xliff:g id="APP">%1$s</xliff:g> bekijken"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Alle apps met dit recht bekijken"</string>
@@ -230,16 +229,16 @@
     <string name="last_opened_category_title" msgid="7871347400611202595">"Meer dan <xliff:g id="NUMBER">%s</xliff:g> maanden geleden voor het laatst geopend"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"App laatst geopend op <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Laatst geopend op <xliff:g id="DATE">%s</xliff:g>"</string>
-    <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Als je beheer van alle bestanden toestaat, kan deze app alle bestanden in algemene opslag op dit apparaat of op gekoppelde opslagapparaten openen, aanpassen en verwijderen. De app kan toegang tot bestanden krijgen zonder dat aan je te vragen."</string>
+    <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Als je het beheer van alle bestanden toestaat, kan deze app alle bestanden in de algemene opslag van dit apparaat of gekoppelde opslagapparaten openen, bewerken en verwijderen. De app kan toegang tot bestanden krijgen zonder je dat te vragen."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Toestaan dat deze app bestanden op het apparaat of gekoppelde opslagapparaten kan openen, aanpassen of verwijderen? Deze app kan toegang tot bestanden krijgen zonder dat aan je te vragen."</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"Apps met dit recht kunnen <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Apps met dit recht hebben toegang tot je fysieke activiteit, zoals wandelen, fietsen, autorijden, aantal stappen en meer"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Apps met dit recht hebben toegang tot je agenda"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Apps met dit recht kunnen de gesprekslijst van je telefoon lezen en erin schrijven"</string>
-    <string name="permission_description_summary_camera" msgid="108004375101882069">"Apps met dit recht kunnen foto\'s maken en video opnemen"</string>
+    <string name="permission_description_summary_camera" msgid="108004375101882069">"Apps met dit recht kunnen foto\'s en video\'s maken"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Apps met dit recht hebben toegang tot je contacten"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Apps met dit recht hebben toegang tot de locatie van dit apparaat"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Apps met dit recht kunnen bluetooth-apparaten in de buurt vinden en er verbinding mee maken"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Apps met dit recht kunnen apparaten in de buurt vinden, er verbinding mee maken en de relatieve positie ervan vaststellen"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Apps met dit recht kunnen audio opnemen"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Apps met dit recht kunnen bellen en telefoongesprekken beheren"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Apps met dit recht hebben toegang tot sensorgegevens over je vitale functies"</string>
@@ -252,8 +251,8 @@
     <string name="allowed_header" msgid="7769277978004790414">"Toegestaan"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"Altijd toegestaan"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"Alleen toegestaan tijdens gebruik"</string>
-    <string name="allowed_storage_scoped" msgid="5383645873719086975">"Alleen toegang tot media toegestaan"</string>
-    <string name="allowed_storage_full" msgid="5356699280625693530">"Toestemming om alle bestanden te beheren"</string>
+    <string name="allowed_storage_scoped" msgid="5383645873719086975">"Alleen toegang tot media"</string>
+    <string name="allowed_storage_full" msgid="5356699280625693530">"Alle bestanden beheren"</string>
     <string name="ask_header" msgid="2633816846459944376">"Altijd vragen"</string>
     <string name="denied_header" msgid="2253955654228120835">"Geweigerd"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
@@ -436,8 +435,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Deze app wil mogelijk altijd toegang tot je locatie, ook als je de app niet gebruikt. "<annotation id="link">"Je kunt dit toestaan via de instellingen."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Toegang tot locatie wijzigen voor &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Deze app wil altijd toegang tot je locatie, ook als je de app niet gebruikt. "<annotation id="link">"Je kunt dit toestaan via de instellingen."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toestaan om bluetooth-apparaten in de buurt te vinden en er verbinding mee te maken?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toestaan om bluetooth-apparaten in de buurt te vinden en er verbinding mee te maken? "<annotation id="link">"Toestaan in Instellingen"</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toestaan om apparaten in de buurt te vinden en er verbinding mee te maken?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toestaan om apparaten in de buurt te vinden en er verbinding mee te maken? "<annotation id="link">"Toestaan in Instellingen"</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot de exacte locatie van dit apparaat?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot de geschatte locatie van dit apparaat?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Exact"</string>

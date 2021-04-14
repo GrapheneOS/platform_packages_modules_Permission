@@ -161,15 +161,14 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Lupien käyttö viimeisten 24 tunnin ajalta"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Lupien käyttö viimeisen tunnin ajalta"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Lupien käyttö viimeisten 15 min ajalta"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"käyttö"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Lupien käyttö viimeisen minuutin ajalta"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> sovellusta</item>
       <item quantity="one">1 sovellus</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> sovellusta käyttänyt</item>
-      <item quantity="one">1 sovellus käyttänyt</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> sovellusta käyttänyt: <xliff:g id="PERMGROUP_1">%2$s</xliff:g></item>
+      <item quantity="one">1 sovellus käyttänyt tätä: <xliff:g id="PERMGROUP_0">%2$s</xliff:g></item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Näytä kaikki ohjauspaneelissa"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Suodatusperuste: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -239,7 +238,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Sovellukset, joilla on tämä lupa, voivat ottaa kuvia ja kuvata videota."</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Sovelluksilla, joilla on tämä lupa, on pääsy yhteystietoihisi."</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Sovelluksilla, joilla on tämä lupa, on pääsy tämän laitteen sijaintiin."</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Sovellukset, joilla on tämä käyttöoikeus, voivat löytää lähellä olevia Bluetooth-laitteita ja yhdistää niihin"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Sovellukset, joilla on tämä lupa, voivat löytää lähellä olevia laitteita, muodostaa niihin yhteyden ja määrittää niiden suhteellisen sijainnin"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Sovellukset, joilla on tämä lupa, voivat tallentaa ääntä."</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Sovellukset, joilla on tämä lupa, voivat soittaa ja ylläpitää puheluita."</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Sovellukset, joilla on tämä lupa, saavat käyttää anturitietoja elintoiminnoistasi."</string>
@@ -436,8 +435,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Sovellus voi haluta nähdä sijaintisi aina, myös silloin kun et käytä sitä. "<annotation id="link">"Myönnä lupa asetuksista"</annotation>"."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Muutetaanko sijainnin käyttöoikeutta (&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;)?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Sovellus haluaa nähdä sijaintisi aina, myös silloin kun et käytä sitä. "<annotation id="link">"Myönnä lupa asetuksista"</annotation>"."</string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; löytää lähellä olevia Bluetooth-laitteita ja yhdistää niihin?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; löytää lähellä olevia Bluetooth-laitteita ja yhdistää niihin? "<annotation id="link">"Myönnä käyttöoikeus asetuksista."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; löytää lähellä olevia laitteita ja yhdistää niihin?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; löytää lähellä olevia laitteita ja yhdistää niihin? "<annotation id="link">"Myönnä lupa asetuksista."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pääsyn tämän laitteen tarkkaan sijaintiin?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pääsyn tämän laitteen karkeaan sijaintiin?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Tarkka"</string>

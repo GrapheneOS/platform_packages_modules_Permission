@@ -161,15 +161,14 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"ការប្រើការអនុញ្ញាត​ក្នុងរយៈពេល 24 ម៉ោង​ចុងក្រោយ"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"ការប្រើប្រាស់​ការអនុញ្ញាត​ក្នុងរយៈពេល 1 ម៉ោងចុងក្រោយ"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"ការប្រើប្រាស់​ការអនុញ្ញាត​ក្នុងរយៈពេល​ 15 នាទីចុងក្រោយ"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"ការប្រើប្រាស់"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"ការប្រើប្រាស់​ការអនុញ្ញាត​ក្នុងរយៈពេល 1 នាទីចុងក្រោយ"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other">កម្មវិធី <xliff:g id="NUMBER">%s</xliff:g></item>
       <item quantity="one">កម្មវិធី 1</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="other">បានប្រើកម្មវិធី <xliff:g id="NUMBER">%d</xliff:g></item>
-      <item quantity="one">បានប្រើកម្មវិធី 1</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="other">កម្មវិធី <xliff:g id="NUMBER">%1$d</xliff:g> បានប្រើ <xliff:g id="PERMGROUP_1">%2$s</xliff:g></item>
+      <item quantity="one">កម្មវិធី 1 បានប្រើ <xliff:g id="PERMGROUP_0">%2$s</xliff:g></item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"មើល​ទាំងអស់នៅក្នុងផ្ទាំង​គ្រប់គ្រង"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"ត្រង​តាម៖ <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -207,7 +206,7 @@
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"ប្រសិនបើបិទទីតាំងជាក់លាក់ កម្មវិធីអាចកំណត់ទីតាំង​ប្រហាក់ប្រហែលរបស់អ្នកនៅម្ដុំដែលអ្នកនៅតែប៉ុណ្ណោះ"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"ការអនុញ្ញាត​<xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"ការចូលប្រើ​<xliff:g id="PERM">%1$s</xliff:g>​សម្រាប់​កម្មវិធី​នេះ​"</string>
-    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"មើល​ការអនុញ្ញាតឱ្យទៅ <xliff:g id="APP">%1$s</xliff:g> ទាំងអស់"</string>
+    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"មើល​ការអនុញ្ញាតទាំងអស់ឱ្យទៅ <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"មើលកម្មវិធី​ទាំងអស់​ដែលមាន​ការអនុញ្ញាត​នេះ"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"បង្ហាញការប្រើប្រាស់​មីក្រូហ្វូនរបស់ជំនួយការ"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"ដកការ​អនុញ្ញាតចេញ ប្រសិនបើ​មិនប្រើប្រាស់​កម្មវិធី"</string>
@@ -239,7 +238,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"កម្មវិធី​ដែលមាន​ការអនុញ្ញាត​នេះ​អាចថតរូប និងថតវីដេអូ"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"កម្មវិធី​ដែលមាន​ការអនុញ្ញាត​នេះ​អាចចូលប្រើ​ទំនាក់ទំនង​របស់អ្នក​"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"កម្មវិធី​ដែលមាន​ការអនុញ្ញាត​នេះ​អាចចូលប្រើ​ទីតាំង​របស់​ឧបករណ៍នេះ"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"កម្មវិធីដែលមានការអនុញ្ញាតនេះ​អាចស្វែងរក និងភ្ជាប់ទៅឧបករណ៍​ប៊្លូធូសដែលនៅជិត"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"កម្មវិធី​ដែលមាន​ការអនុញ្ញាតនេះ​អាចស្វែងរក ភ្ជាប់ទៅ និងកំណត់​ចម្ងាយពាក់ព័ន្ធ​រវាងឧបករណ៍​ដែលនៅជិត"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"កម្មវិធី​ដែលមាន​ការអនុញ្ញាត​នេះ​អាច​ថតសំឡេង"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"កម្មវិធី​ដែលមាន​ការអនុញ្ញាត​នេះ​អាចគ្រប់គ្រង និងធ្វើការហៅទូរសព្ទ"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"កម្មវិធី​ដែលមាន​ការអនុញ្ញាត​នេះ​អាច​ចូលប្រើ​ទិន្នន័យឧបករណ៍ចាប់សញ្ញាអំពីសញ្ញា​មុខងារសំខាន់ៗ​របស់រាងកាយ​អ្នក"</string>
@@ -436,8 +435,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"កម្មវិធីនេះ​ប្រហែលជា​ចង់ចូលប្រើ​ទីតាំង​របស់អ្នក​គ្រប់ពេល ទោះបីជា​អ្នកមិនកំពុងប្រើ​កម្មវិធីនេះ​ក៏ដោយ។ "<annotation id="link">"អនុញ្ញាត​នៅក្នុងការកំណត់។"</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"ប្ដូរសិទ្ធិ​ចូលប្រើ​ទីតាំង​សម្រាប់ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ដែរទេ?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"កម្មវិធីនេះ​ចង់ចូលប្រើ​ទីតាំង​របស់អ្នក​គ្រប់ពេល ទោះបីជា​អ្នកមិនកំពុងប្រើ​កម្មវិធីនេះ​ក៏ដោយ។ "<annotation id="link">"អនុញ្ញាត​នៅក្នុងការកំណត់។"</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ស្វែងរក និងភ្ជាប់ទៅឧបករណ៍​ប៊្លូធូសដែលនៅជិតឬ?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ស្វែងរក និងភ្ជាប់ទៅឧបករណ៍​ប៊្លូធូសដែលនៅជិតឬ? "<annotation id="link">"អនុញ្ញាតនៅក្នុងការកំណត់។"</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ស្វែងរក និងភ្ជាប់ទៅឧបករណ៍​ដែលនៅជិតឬ?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ស្វែងរក និងភ្ជាប់ទៅឧបករណ៍​ដែលនៅជិតឬ? "<annotation id="link">"អនុញ្ញាតនៅក្នុងការកំណត់។"</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ចូលប្រើ​ទីតាំងជាក់លាក់របស់​ឧបករណ៍នេះ​ឬ?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ចូលប្រើ​ទីតាំងប្រហាក់ប្រហែលរបស់​ឧបករណ៍នេះ​ឬ?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"ជាក់លាក់"</string>

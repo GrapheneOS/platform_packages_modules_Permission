@@ -161,15 +161,14 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"ການນຳໃຊ້ສິດອະນຸຍາດໃນ 24 ຊົ່ວໂມງທີ່ຜ່ານມາ"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"ການນຳໃຊ້ສິດອະນຸຍາດໃນ 1 ຊົ່ວໂມງທີ່ຜ່ານມາ"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"ການນຳໃຊ້ສິດອະນຸຍາດໃນ 15 ນາທີທີ່ຜ່ານມາ"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"ການນໍາໃຊ້"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"ການນຳໃຊ້ສິດອະນຸຍາດໃນ 1 ນາທີທີ່ຜ່ານມາ"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ແອັບ</item>
       <item quantity="one">1 ແອັບ</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="other">ໃຊ້ໂດຍ <xliff:g id="NUMBER">%d</xliff:g> ແອັບ</item>
-      <item quantity="one">ໃຊ້ໂດຍ 1 ແອັບ</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> ແອັບໃຊ້ <xliff:g id="PERMGROUP_1">%2$s</xliff:g></item>
+      <item quantity="one">1 ແອັບໃຊ້ <xliff:g id="PERMGROUP_0">%2$s</xliff:g></item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"ເບິ່ງທັງໝົດໃນແຜງໜ້າປັດ"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"ກັ່ນຕອງແລ້ວໂດຍ: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -239,7 +238,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"ແອັບທີ່ມີສິດອະນຸຍາດນີ້ຈະສາມາດຖ່າຍຮູບ ແລະ ບັນທຶກວິດີໂອໄດ້"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"ແອັບທີ່ມີສິດອະນຸຍາດນີ້ສາມາດເຂົ້າເຖິງລາຍຊື່ຜູ້ຕິດຕໍ່ຂອງທ່ານໄດ້"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"ແອັບທີ່ມີສິດອະນຸຍາດນີ້ຈະມີສິດເຂົ້າເຖິງສະຖານທີ່ຂອງອຸປະກອນນີ້ໄດ້"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"ແອັບທີ່ມີການອະນຸຍາດນີ້ສາມາດຄົ້ນພົບ ແລະ ເຊື່ອມຕໍ່ຫາອຸປະກອນ Bluetooth ທີ່ຢູ່ໃກ້ຄຽງໄດ້"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"ແອັບທີ່ມີການອະນຸຍາດນີ້ສາມາດຄົ້ນພົບ, ເຊື່ອມຕໍ່ຫາ ແລະ ກຳນົດຕຳແໜ່ງທີ່ສຳພັນກັນຂອງອຸປະກອນທີ່ຢູ່ໃກ້ຄຽງໄດ້"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"ແອັບທີ່ມີສິດອະນຸຍາດນີ້ຈະສາມາດບັນທຶກສຽງໄດ້"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"ແອັບທີ່ມີສິດອະນຸຍາດນີ້ຈະສາມາດໂທ ແລະ ຈັດການການໂທໄດ້"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"ແອັບທີ່ມີສິດອະນຸຍາດຈະສາມາດເຂົ້າເຖິງຂໍ້ມູນເຊັນເຊີກ່ຽວກັບສັນຍານຊີບພະຈອນຂອງທ່ານໄດ້"</string>
@@ -436,8 +435,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"ແອັບນີ້ອາດຕ້ອງການເຂົ້າເຖິງສະຖານທີ່ຂອງທ່ານຕະຫຼອດເວລາ, ເຖິງແມ່ນວ່າທ່ານຈະບໍ່ໄດ້ໃຊ້ແອັບຢູ່ກໍຕາມ. "<annotation id="link">"ອະນຸຍາດໃນການຕັ້ງຄ່າ."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"ປ່ຽນສິດອະນຸຍາດເຂົ້າເຖິງສຳລັບ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ບໍ?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"ແອັບນີ້ຕ້ອງການເຂົ້າເຖິງສະຖານທີ່ຂອງທ່ານຕະຫຼອດເວລາ, ເຖິງແມ່ນວ່າທ່ານຈະບໍ່ໄດ້ໃຊ້ແອັບຢູ່ກໍຕາມ. "<annotation id="link">"ອະນຸຍາດໃນການຕັ້ງຄ່າ."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"ອະນຸຍາດໃຫ້ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ຄົ້ນພົບ ແລະ ເຊື່ອມຕໍ່ຫາອຸປະກອນ Bluetooth ທີ່ຢູ່ໃກ້ຄຽງບໍ?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"ອະນຸຍາດໃຫ້ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ຄົ້ນພົບ ແລະ ເຊື່ອມຕໍ່ຫາອຸປະກອນ Bluetooth ທີ່ຢູ່ໃກ້ຄຽງບໍ? "<annotation id="link">"ອະນຸຍາດໃນການຕັ້ງຄ່າ."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"ອະນຸຍາດໃຫ້ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ຄົ້ນພົບ ແລະ ເຊື່ອມຕໍ່ຫາອຸປະກອນທີ່ຢູ່ໃກ້ຄຽງບໍ?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"ອະນຸຍາດໃຫ້ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ຄົ້ນພົບ ແລະ ເຊື່ອມຕໍ່ຫາອຸປະກອນທີ່ຢູ່ໃກ້ຄຽງບໍ? "<annotation id="link">"ອະນຸຍາດໃນການຕັ້ງຄ່າ."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"ອະນຸຍາດໃຫ້ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ເຂົ້າເຖິງສະຖານທີ່ແບບລະອຽດຂອງອຸປະກອນນີ້ບໍ?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"ອະນຸຍາດໃຫ້ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ເຂົ້າເຖິງສະຖານທີ່ໂດຍປະມານຂອງອຸປະກອນນີ້ບໍ?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"ແບບລະອຽດ"</string>

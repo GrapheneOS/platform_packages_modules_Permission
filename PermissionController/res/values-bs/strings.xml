@@ -170,17 +170,16 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Korištenje odobrenja u posljednja 24 sata"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Korištena odobrenja u posljenji 1 sat"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Korištena odobrenja u posljednjih 15 minuta"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"korištenje"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Korištena odobrenja u protekloj minuti"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> aplikacija</item>
       <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> aplikacije</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> aplikacija</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="one"><xliff:g id="NUMBER">%d</xliff:g> aplikacija</item>
-      <item quantity="few"><xliff:g id="NUMBER">%d</xliff:g> aplikacije</item>
-      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> aplikacija</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="one"><xliff:g id="NUMBER">%1$d</xliff:g> apl. – <xliff:g id="PERMGROUP_1">%2$s</xliff:g></item>
+      <item quantity="few"><xliff:g id="NUMBER">%1$d</xliff:g> apl. – <xliff:g id="PERMGROUP_1">%2$s</xliff:g></item>
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> apl. – <xliff:g id="PERMGROUP_1">%2$s</xliff:g></item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Prikaži sve na kontrolnoj tabli"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrirano prema: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -217,8 +216,8 @@
     <string name="approximate_image_description" msgid="938803699637069884">"Približna lokacija"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Koristi tačnu lokaciju"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Kada je lokacija isključena, aplikacije mogu odrediti samo vašu približnu lokaciju unutar naselja"</string>
-    <string name="app_permission_title" msgid="2090897901051370711">"Odobrenje za funkciju <xliff:g id="PERM">%1$s</xliff:g>"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"Pristup aplikacije funkciji \"<xliff:g id="PERM">%1$s</xliff:g>\""</string>
+    <string name="app_permission_title" msgid="2090897901051370711">"Odobrenje za: <xliff:g id="PERM">%1$s</xliff:g>"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"Pristup aplikacije za: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Prikaži sva odobrenja aplikacije <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Prikaži sve aplikacije s ovim odobrenjem"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Prikaži korištenje mikrofona asistenta"</string>
@@ -251,7 +250,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Aplikacije s ovim odobrenjem mogu snimati fotografije i videozapise"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Aplikacije s ovim odobrenjem mogu pristupiti vašim kontaktima"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Aplikacije s ovim odobrenjem mogu pristupiti lokaciji uređaja"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Aplikacije s ovim odobrenjem mogu otkrivati Bluetooth uređaje u blizini i povezivati se s njima"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Aplikacije s ovim odobrenjem mogu otkriti uređaje u blizini, povezati se s njima te odrediti njihov relativni položaj"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Aplikacije s ovim odobrenjem mogu snimati zvuk"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Aplikacije s ovim odobrenjem mogu upućivati pozive i upravljati njima"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Aplikacije s ovim odobrenjem mogu pristupiti podacima senzora o vašim vitalnim znacima"</string>
@@ -455,8 +454,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Moguće je da će aplikacija željeti pristup vašoj lokaciji sve vrijeme, čak i kada je ne budete koristili. "<annotation id="link">"Dozvolite u postavkama."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Promijeniti pristup lokaciji za aplikaciju &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Ova aplikacija želi pristup vašoj lokaciji sve vrijeme, čak i kada je ne koristite. "<annotation id="link">"Dozvolite u postavkama."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da otkrije Bluetooth uređaje u blizini i poveže se s njima?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da otkrije Bluetooth uređaje u blizini i poveže se s njima? "<annotation id="link">"Dozvolite u postavkama."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da otkrije uređaje u blizini i poveže se s njima?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da otkrije uređaje u blizini i poveže se s njima? "<annotation id="link">"Dozvolite u postavkama."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa tačnoj lokaciji ovog uređaja?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa približnoj lokaciji ovog uređaja?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Tačno"</string>

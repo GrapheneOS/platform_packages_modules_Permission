@@ -161,15 +161,14 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Behörighetsanvändning under de senaste 24 timmarna"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Behörighetsanvändning under den senaste timmen"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Behörighetsanvändning under den senaste kvarten"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"användning"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Behörighetsanvändning under den senaste minuten"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> appar</item>
       <item quantity="one">1 app</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> appar</item>
-      <item quantity="one">1 app</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> appar använde <xliff:g id="PERMGROUP_1">%2$s</xliff:g></item>
+      <item quantity="one">1 app använde <xliff:g id="PERMGROUP_0">%2$s</xliff:g></item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Visa alla i översikten"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtreras efter: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -232,14 +231,14 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Öppnades senast <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Om du tillåter hantering av alla filer kan appen komma åt, redigera och radera alla filer i det vanliga lagringsutrymmet på denna enhet eller anslutna lagringsenheter. Appen kan komma åt filer utan att du tillfrågas."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Vill du tillåta att den här appen får komma åt, redigera och radera filer på enheten och eventuella anslutna lagringsenheter? Appen kan komma åt filer utan att du tillfrågas."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Appar med den här behörigheten kan få <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Appar med den här behörigheten kan: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Appar med den här behörigheten får åtkomst till din fysiska aktivitet, till exempel promenader, cykelturer, körning, stegräkning och annat"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Appar med den här behörigheten får åtkomst till din kalender"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Appar med den här behörigheten kan läsa och skriva samtalshistoriken"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Appar med den här behörigheten kan ta foton och spela in video"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Appar med den här behörigheten får åtkomst till dina kontakter"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Appar med den här behörigheten får åtkomst till enhetens plats"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Appar med denna behörighet kan hitta och ansluta till Bluetooth-enheter i närheten"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Appar med den här behörigheten kan upptäcka, ansluta till och fastställa relativ position för enheter i närheten"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Appar med den här behörigheten kan spela in ljud"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Appar med den här behörigheten kan ringa och hantera telefonsamtal"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Appar med den här behörigheten får åtkomst till sensordata om vitalparametrar"</string>
@@ -436,8 +435,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Appen kanske vill få åtkomst till din plats hela tiden, även när du inte använder den. "<annotation id="link">"Tillåt i inställningarna."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Vill du ändra platsåtkomsten för &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Appen vill få åtkomst till din plats hela tiden, även när du inte använder den. "<annotation id="link">"Tillåt i inställningarna."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"Vill du tillåta &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; att hitta och ansluta till Bluetooth-enheter i närheten?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"Vill du tillåta &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; att hitta och ansluta till Bluetooth-enheter i närheten? "<annotation id="link">"Tillåt i inställningarna."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"Vill du tillåta &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; att hitta och ansluta till enheter i närheten?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"Vill du tillåta &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; att hitta och ansluta till enheter i närheten? "<annotation id="link">"Tillåt i inställningarna."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Vill du ge &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; åtkomst till enhetens exakta plats?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Vill du ge &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; åtkomst till enhetens ungefärliga plats?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Exakt"</string>

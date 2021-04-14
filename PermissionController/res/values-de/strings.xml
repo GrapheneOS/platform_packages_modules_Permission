@@ -161,16 +161,12 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Berechtigungsnutzungen (letzte 24 Stunden)"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Berechtigungsnutzungen (letzte Stunde)"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Berechtigungsnutzungen (letzte 15 Minuten)"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"Verwendung"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Berechtigungsnutzungen (letzte Minute)"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> Apps</item>
       <item quantity="one">1 App</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> Apps genutzt</item>
-      <item quantity="one">1 App genutzt</item>
-    </plurals>
+    <!-- no translation found for permission_usage_preference_label (7599037764529821028) -->
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Alle im Dashboard ansehen"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Gefiltert nach: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Filter entfernen"</string>
@@ -239,7 +235,8 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Apps mit dieser Berechtigung können Fotos und Videos aufnehmen"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Apps mit dieser Berechtigung dürfen auf deine Kontakte zugreifen"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Apps mit dieser Berechtigung dürfen auf den Standort dieses Geräts zugreifen"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Apps mit dieser Berechtigung können Bluetooth-Geräte in der Nähe finden und sich mit ihnen verbinden"</string>
+    <!-- no translation found for permission_description_summary_nearby_devices (4993093121706938071) -->
+    <skip />
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Apps mit dieser Berechtigung dürfen Audio aufnehmen"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Apps mit dieser Berechtigung dürfen Telefonanrufe starten und verwalten"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Apps mit dieser Berechtigung dürfen auf Sensordaten zu deinen Vitalfunktionen zugreifen"</string>
@@ -250,12 +247,12 @@
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Bisher kein Zugriff auf diese Berechtigung"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"Abgelehnt/Kein Zugriff auf diese Berechtigung"</string>
     <string name="allowed_header" msgid="7769277978004790414">"Zugelassen"</string>
-    <string name="allowed_always_header" msgid="6455903312589013545">"Zugriff immer zugelassen"</string>
-    <string name="allowed_foreground_header" msgid="6845655788447833353">"Zugriff nur während Nutzung zugelassen"</string>
+    <string name="allowed_always_header" msgid="6455903312589013545">"Immer zugelassen"</string>
+    <string name="allowed_foreground_header" msgid="6845655788447833353">"Nur während Nutzung zugelassen"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Zugriff nur auf Mediendateien zugelassen"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Verwalten aller Dateien zugelassen"</string>
     <string name="ask_header" msgid="2633816846459944376">"Jedes Mal fragen"</string>
-    <string name="denied_header" msgid="2253955654228120835">"Zugriff abgelehnt"</string>
+    <string name="denied_header" msgid="2253955654228120835">"Abgelehnt"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> Tage</item>
       <item quantity="one">1 Tag</item>
@@ -436,8 +433,10 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Diese App möchte eventuell Zugriff auf deinen Standort haben, auch wenn du sie nicht verwendest. "<annotation id="link">"Du kannst das in den Einstellungen zulassen."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Standortzugriff für &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ändern?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Diese App möchte jederzeit Zugriff auf deinen Standort haben, auch wenn du sie nicht verwendest. "<annotation id="link">"Du kannst das in den Einstellungen zulassen."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, Bluetooth-Geräte in der Nähe zu finden und sich mit ihnen zu verbinden?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, Bluetooth-Geräte in der Nähe zu finden und sich mit ihnen zu verbinden? "<annotation id="link">"In den Einstellungen zulassen."</annotation></string>
+    <!-- no translation found for permgrouprequest_nearby_devices (620046480867488546) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequestdetail_nearby_devices (2560445503628306938) -->
+    <skip />
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, den genauen Gerätestandort abzurufen?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, den ungefähren Gerätestandort abzurufen?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Genau"</string>
