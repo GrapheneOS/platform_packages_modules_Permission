@@ -161,15 +161,14 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"ਪਿਛਲੇ 24 ਘੰਟਿਆਂ ਵਿੱਚ ਇਜਾਜ਼ਤ ਵਰਤੋਂ"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"ਪਿਛਲੇ 1 ਘੰਟੇ ਵਿੱਚ ਇਜਾਜ਼ਤ ਵਰਤੋਂ"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"ਪਿਛਲੇ 15 ਮਿੰਟ ਵਿੱਚ ਇਜਾਜ਼ਤ ਵਰਤੋਂ"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"ਵਰਤੋਂ"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"ਪਿਛਲੇ 1 ਮਿੰਟ ਵਿੱਚ ਇਜਾਜ਼ਤ ਵਰਤੋਂ"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> ਐਪ</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ਐਪਾਂ</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="one"><xliff:g id="NUMBER">%d</xliff:g> ਐਪ ਵਰਤੀ ਗਈ</item>
-      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> ਐਪਾਂ ਵਰਤੀਆਂ ਗਈਆਂ</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="one"><xliff:g id="NUMBER">%1$d</xliff:g> ਐਪ ਵਰਤੀ ਗਈ <xliff:g id="PERMGROUP_1">%2$s</xliff:g></item>
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> ਐਪਾਂ ਵਰਤੀਆਂ ਗਈਆਂ <xliff:g id="PERMGROUP_1">%2$s</xliff:g></item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"ਸਭ ਡੈਸ਼ਬੋਰਡ ਵਿੱਚ ਦੇਖੋ"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"ਇਸ ਮੁਤਾਬਕ ਫਿਲਟਰ ਕੀਤਾ ਗਿਆ: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -239,7 +238,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਤਸਵੀਰਾਂ ਖਿੱਚ ਅਤੇ ਵੀਡੀਓ ਰਿਕਾਰਡ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਤੁਹਾਡੇ ਸੰਪਰਕਾਂ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਇਸ ਡੀਵਾਈਸ ਦੇ ਟਿਕਾਣੇ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"ਇਸ ਇਜਾਜ਼ਤ ਨਾਲ ਐਪਾਂ ਨਜ਼ਦੀਕੀ ਬਲੂਟੁੱਥ ਡੀਵਾਈਸਾਂ ਨੂੰ ਖੋਜ ਸਕਦੀਆਂ ਹਨ ਅਤੇ ਉਹਨਾਂ ਨਾਲ ਕਨੈਕਟ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਨਜ਼ਦੀਕੀ ਡੀਵਾਈਸਾਂ ਨੂੰ ਖੋਜ ਸਕਦੀਆਂ ਹਨ, ਉਹਨਾਂ ਨਾਲ ਕਨੈਕਟ ਕਰ ਸਕਦੀਆਂ ਹਨ ਅਤੇ ਉਹਨਾਂ ਦੀ ਸੰਬੰਧਿਤ ਸਥਿਤੀ ਨੂੰ ਨਿਰਧਾਰਿਤ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਆਡੀਓ ਰਿਕਾਰਡ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਫ਼ੋਨ ਕਾਲਾਂ ਕਰ ਅਤੇ ਉਹਨਾਂ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਤੁਹਾਡੇ ਸਰੀਰ ਦੇ ਅਹਿਮ ਲੱਛਣਾਂ ਸੰਬੰਧੀ ਸੈਂਸਰ ਡਾਟੇ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
@@ -436,8 +435,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"ਸ਼ਾਇਦ ਇਸ ਐਪ ਨੂੰ ਹਰ ਵੇਲੇ ਤੁਹਾਡੇ ਟਿਕਾਣੇ ਤੱਕ ਪਹੁੰਚ ਹੋਵੇ, ਭਾਵੇਂ ਤੁਸੀਂ ਐਪ ਦੀ ਵਰਤੋਂ ਕਰ ਰਹੇ ਹੋ ਜਾਂ ਨਾ। "<annotation id="link">"ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਆਗਿਆ ਦਿਓ।"</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਲਈ ਟਿਕਾਣਾ ਪਹੁੰਚ ਨੂੰ ਬਦਲਣਾ ਹੈ?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"ਇਸ ਐਪ ਨੂੰ ਹਰ ਵੇਲੇ ਤੁਹਾਡੇ ਟਿਕਾਣੇ ਤੱਕ ਪਹੁੰਚ ਚਾਹੀਦੀ ਹੈ, ਭਾਵੇਂ ਤੁਸੀਂ ਐਪ ਦੀ ਵਰਤੋਂ ਕਰ ਰਹੇ ਹੋ ਜਾਂ ਨਾ। "<annotation id="link">"ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਆਗਿਆ ਦਿਓ।"</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਨਜ਼ਦੀਕੀ ਬਲੂਟੁੱਥ ਡੀਵਾਈਸਾਂ ਨੂੰ ਖੋਜਣ ਅਤੇ ਉਹਨਾਂ ਨਾਲ ਕਨੈਕਟ ਕਰਨ ਦੇਣਾ ਹੈ?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਨਜ਼ਦੀਕੀ ਬਲੂਟੁੱਥ ਡੀਵਾਈਸਾਂ ਨੂੰ ਖੋਜਣ ਅਤੇ ਉਹਨਾਂ ਨਾਲ ਕਨੈਕਟ ਕਰਨ ਦੇਣਾ ਹੈ? "<annotation id="link">"ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਇਜਾਜ਼ਤ ਦਿਓ।"</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਨਜ਼ਦੀਕੀ ਡੀਵਾਈਸਾਂ ਨੂੰ ਖੋਜਣ ਅਤੇ ਉਹਨਾਂ ਨਾਲ ਕਨੈਕਟ ਕਰਨ ਦੇਣਾ ਹੈ?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਨਜ਼ਦੀਕੀ ਡੀਵਾਈਸਾਂ ਨੂੰ ਖੋਜਣ ਅਤੇ ਉਹਨਾਂ ਨਾਲ ਕਨੈਕਟ ਕਰਨ ਦੇਣਾ ਹੈ? "<annotation id="link">"ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਇਜਾਜ਼ਤ ਦਿਓ।"</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਇਸ ਡੀਵਾਈਸ ਦੇ ਸਹੀ ਟਿਕਾਣੇ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੀ ਇਜਾਜ਼ਤ ਦੇਣੀ ਹੈ?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਇਸ ਡੀਵਾਈਸ ਦੇ ਅੰਦਾਜ਼ਨ ਟਿਕਾਣੇ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੀ ਇਜਾਜ਼ਤ ਦੇਣੀ ਹੈ?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"ਸਹੀ"</string>

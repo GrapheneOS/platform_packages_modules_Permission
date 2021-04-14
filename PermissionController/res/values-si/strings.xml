@@ -161,15 +161,14 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"අවසාන පැය 24 තුළ අවසර භාවිතය"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"අවසාන 1 පැයක් තුළ අවසර භාවිතය"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"අවසාන විනාඩි 15 තුළ අවසර භාවිතය"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"භාවිතය"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"අවසාන 1 විනාඩිය තුළ අවසර භාවිතය"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="one">යෙදුම් <xliff:g id="NUMBER">%s</xliff:g>ක්</item>
       <item quantity="other">යෙදුම් <xliff:g id="NUMBER">%s</xliff:g>ක්</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="one">යෙදුම් <xliff:g id="NUMBER">%d</xliff:g>ක් භාවිත කරන ලදි</item>
-      <item quantity="other">යෙදුම් <xliff:g id="NUMBER">%d</xliff:g>ක් භාවිත කරන ලදි</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="one"><xliff:g id="PERMGROUP_1">%2$s</xliff:g> යෙදුම් <xliff:g id="NUMBER">%1$d</xliff:g>ක් භාවිත කරන ලදි</item>
+      <item quantity="other"><xliff:g id="PERMGROUP_1">%2$s</xliff:g> යෙදුම් <xliff:g id="NUMBER">%1$d</xliff:g>ක් භාවිත කරන ලදි</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"උපකරණ පුවරුවේ ඇති සියල්ල බලන්න"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"මේ අනුව පෙරහන්න: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -239,7 +238,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"මෙම අවසරය සහිත යෙදුම්වලට පින්තූර ලබා ගැනීමට සහ වීඩියෝ පටිගත කිරීමටත් හැකි ය"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"මෙම අවසරය සහිත යෙදුම්වලට ඔබේ සම්බන්ධතා වෙත ප්‍රවේශ විය හැක"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"මෙම අවසරය සහිත යෙදුම්වලට මෙම උපාංගයේ ස්ථානය වෙත ප්‍රවේශ විය හැක"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"මෙම අවසරය සහිත යෙදුම්වලට අවට බ්ලූටූත් උපාංග සොයා ගැනීමට සහ සම්බන්ධ වීමට හැකිය"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"මෙම අවසරය ඇති යෙදුම්වලට අවට උපාංගවල සාපේක්ෂ පිහිටීම සොයා ගැනීමට, සම්බන්ධ වීමට සහ නිර්ණය කිරීමට හැකිය"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"මෙම අවසරය සහිත යෙදුම්වලට ශ්‍රව්‍ය පටිගත කළ හැක"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"මෙම අවසරය සහිත යෙදුම්වලට දුරකථන ඇමතුම් කිරීමටත් කළමනා කිරීමටත් හැකි ය"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"මෙම අවසරය සහිත යෙදුම්වලට ඔබේ ජෛව ලක්‍ෂණ පිළිබඳ සංවේදී දත්ත වෙත ප්‍රවේශ විය හැක"</string>
@@ -436,8 +435,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"මෙයට ඔබ යෙදුම භාවිත නොකරමින් සිටින විට පවා සියලු අවස්ථාවල ඔබේ ස්ථානය වෙත ප්‍රවේශ වීමට අවශ්‍ය විය හැකිය. "<annotation id="link">"සැකසීම්වල ඉඩ දෙන්න."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; සඳහා ස්ථාන ප්‍රවේශය වෙනස් කරන්නද?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"මෙම යෙදුමට ඔබ යෙදුම භාවිත නොකරමින් සිටින විට පවා සියලු අවස්ථාවල ඔබේ ස්ථානය වෙත ප්‍රවේශ වීමට අවශ්‍යයි. "<annotation id="link">"සැකසීම්වල ඉඩ දෙන්න."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&gt; හට අවට බ්ලූටූත් උපාංග සොයා ගැනීමට සහ සම්බන්ධ වීමට ඉඩ දෙන්නද?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&gt; හට අවට බ්ලූටූත් උපාංග සොයා ගැනීමට සහ සම්බන්ධ වීමට ඉඩ දෙන්නද? "<annotation id="link">"සැකසීම් තුළ ඉඩ දෙන්න."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&gt; හට අවට උපාංග සොයා ගැනීමට සහ සම්බන්ධ වීමට ඉඩ දෙන්නද?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&gt; හට අවට උපාංග සොයා ගැනීමට සහ සම්බන්ධ වීමට ඉඩ දෙන්නද? "<annotation id="link">"සැකසීම් තුළ ඉඩ දෙන්න."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; හට මෙම උපාංගයෙහි ඉතා නිවැරදි ස්ථානය වෙත ප්‍රවේශ වීමට ඉඩ දෙන්නද?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ට මෙම උපාංගයෙහි ස්ථානය වෙත ප්‍රවේශ වීමට ඉඩ දෙන්නද?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"ඉතා නිවැරදි"</string>

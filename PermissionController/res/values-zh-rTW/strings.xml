@@ -161,15 +161,14 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"過去 24 小時內各權限的使用頻率"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"過去 1 小時內各權限的使用頻率"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"過去 15 分鐘內各權限的使用頻率"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"使用情況"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"過去 1 分鐘內各權限的使用頻率"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> 個應用程式</item>
       <item quantity="one">1 個應用程式</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="other">有 <xliff:g id="NUMBER">%d</xliff:g> 個應用程式使用</item>
-      <item quantity="one">有 1 個應用程式使用</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> 個應用程式使用了「<xliff:g id="PERMGROUP_1">%2$s</xliff:g>」</item>
+      <item quantity="one">1 個應用程式使用了「<xliff:g id="PERMGROUP_0">%2$s</xliff:g>」</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"在資訊主頁查看所有詳細資料"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"篩選依據：<xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -239,7 +238,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"具備此權限的應用程式可拍照及錄影"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"具備此權限的應用程式可存取你的聯絡人"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"具備此權限的應用程式可存取這個裝置的位置資訊"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"具有這項權限的應用程式可以探索鄰近藍牙裝置並進行連線"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"擁有這個權限的應用程式不但可以探索附近的裝置並進行連線，還能判斷與附近裝置間的相對位置。"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"具備此權限的應用程式可錄音"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"具備此權限的應用程式可撥打電話及管理通話"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"具備此權限的應用程式可存取與你生命徵象相關的感應器資料"</string>
@@ -436,8 +435,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"這個應用程式可能會要求隨時存取你的位置資訊 (即使在你未使用此應用程式時)。"<annotation id="link">"如要授予權限，請前往「設定」"</annotation>"。"</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"要變更「<xliff:g id="APP_NAME">%1$s</xliff:g>」的位置資訊存取權嗎？"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"這個應用程式想要隨時存取你的位置資訊 (即使在你未使用此應用程式時)。"<annotation id="link">"如要授予權限，請前往「設定」"</annotation>"。"</string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;探索鄰近藍牙裝置並進行連線嗎？"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;探索鄰近藍牙裝置並進行連線嗎？"<annotation id="link">"請前往「設定」授予權限。"</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;探索附近的裝置並進行連線嗎？"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;探索附近的裝置並進行連線嗎？"<annotation id="link">"請前往「設定」授予權限。"</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取這部裝置的精確位置資訊嗎？"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取這部裝置的概略位置資訊嗎？"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"精確"</string>

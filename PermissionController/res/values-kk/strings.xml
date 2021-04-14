@@ -52,7 +52,7 @@
     <string name="unused_apps" msgid="2058057455175955094">"Пайдаланылмайтын қолданбалар"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Қолданбаны өшіру"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Бұл қолданбаны өшірсеңіз, Android жүйесі мен басқа қолданбалар тиісінше жұмыс істемеуі мүмкін. Бұл қолданба құрылғыға алдын ала орнатылатындықтан, оны жою мүмкін еместігін ескеріңіз. Өшіріп қою арқылы сіз бұл қолданбаны ажыратып, оны құрылғыда жасыра аласыз."</string>
-    <string name="app_permission_manager" msgid="3903811137630909550">"Рұқсат басқарушысы"</string>
+    <string name="app_permission_manager" msgid="3903811137630909550">"Рұқсат менеджері"</string>
     <string name="never_ask_again" msgid="4728762438198560329">"Қайта сұралмасын"</string>
     <string name="no_permissions" msgid="3881676756371148563">"Рұқсат жоқ"</string>
     <string name="additional_permissions" msgid="5801285469338873430">"Қосымша рұқсаттар"</string>
@@ -161,15 +161,14 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Рұқсаттың соңғы 24 сағатта пайдаланылуы"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Рұқсаттың соңғы 1 сағатта пайдаланылуы"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Рұқсаттың соңғы 15 минутта пайдаланылуы"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"пайдалану"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Рұқсаттың соңғы 1 минутта пайдаланылуы"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> қолданба</item>
       <item quantity="one">1 қолданба</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> қолданба пайдаланылды</item>
-      <item quantity="one">1 қолданба пайдаланылды</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> қолданба <xliff:g id="PERMGROUP_1">%2$s</xliff:g> пайдаланды</item>
+      <item quantity="one">1 қолданба <xliff:g id="PERMGROUP_0">%2$s</xliff:g> пайдаланды</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Барлығын бақылау тақтасынан көру"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Сүзгі шарты: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -239,7 +238,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Бұл рұқсатқа ие қолданбалар суретке түсіріп, бейне жаза алады."</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Бұл рұқсатқа ие қолданбалар контактілерге кіре алады."</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Бұл рұқсатқа ие қолданбалар осы құрылғының геодеректерін пайдалана алады."</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Рұқсаты бар қолданбалар маңайдағы Bluetooth құрылғыларын анықтап, қосыла алады."</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Мұндай рұқсаты бар қолданбалар маңайдағы құрылғылардың бір-біріне қатысты орнын анықтап, қосыла алады."</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Бұл рұқсатқа ие қолданбалар дыбысты жаза алады."</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Бұл рұқсатқа ие қолданбалар телефон қоңырауларын шала және басқара алады."</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Бұл рұқсатқа ие қолданбалар тіршілік белгілері туралы датчик деректерін пайдалана алады."</string>
@@ -320,10 +319,10 @@
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"Барлық файлдар"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Ешқандай рұқсат берілмеді"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"Ешқандай рұқсатқа тыйым салынбады"</string>
-    <string name="no_apps_allowed" msgid="7718822655254468631">"Ешқандай қолданбаға рұқсат берілмеді"</string>
+    <string name="no_apps_allowed" msgid="7718822655254468631">"Ешқандай қолданбаға рұқсат берілмеді."</string>
     <string name="no_apps_allowed_full" msgid="8011716991498934104">"Барлық файлға рұқсаты бар қолданбалар жоқ."</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"Медиафайлдарға ғана рұқсаты бар қолданбалар жоқ."</string>
-    <string name="no_apps_denied" msgid="7663435886986784743">"Ешқандай қолданбаға тыйым салынбады"</string>
+    <string name="no_apps_denied" msgid="7663435886986784743">"Ешқандай қолданбаға тыйым салынбады."</string>
     <string name="car_permission_selected" msgid="180837028920791596">"Таңдалды"</string>
     <string name="settings" msgid="5409109923158713323">"Параметрлер"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"<xliff:g id="SERVICE_NAME">%s</xliff:g> қызметі құрылғыңызды толықтай пайдалана алады"</string>
@@ -436,8 +435,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Қолданбаны пайдаланбасаңыз да, ол үнемі геодеректеріңізді пайдаланғысы келуі мүмкін. "<annotation id="link">"Параметрлерден рұқсат беріңіз."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына геодеректі пайдалануға рұқсат етілсін бе?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Қолданбаны пайдаланбасаңыз да, ол үнемі геодеректеріңізді пайдаланғысы келеді. "<annotation id="link">"Параметрлерден рұқсат беріңіз."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына маңайдағы Bluetooth құрылғыларын анықтап, қосылуға рұқсат берілсін бе?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына маңайдағы Bluetooth құрылғыларын анықтап, қосылуға рұқсат берілсін бе? "<annotation id="link">"Параметрлерден рұқсат беру."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына маңайдағы құрылғыларды анықтап, қосылуға рұқсат берілсін бе?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына маңайдағы құрылғыларды анықтап, қосылуға рұқсат берілсін бе? "<annotation id="link">"Параметрлерден рұқсат беру."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына осы құрылғының нақты орнын пайдалануға рұқсат берілсін бе?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына осы құрылғының болжалды орнын пайдалануға рұқсат берілсін бе?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Нақты"</string>

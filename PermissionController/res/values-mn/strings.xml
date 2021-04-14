@@ -161,15 +161,14 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Сүүлийн 24 цагийн зөвшөөрлийн ашиглалт"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Сүүлийн 1 цагийн зөвшөөрлийн ашиглалт"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Сүүлийн 15 минутын зөвшөөрлийн ашиглалт"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"ашиглалт"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Сүүлийн 1 минутын зөвшөөрлийн ашиглалт"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> апп</item>
       <item quantity="one">1 апп</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> апп ашигласан</item>
-      <item quantity="one">1 апп ашигласан</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> апп ашигласан <xliff:g id="PERMGROUP_1">%2$s</xliff:g></item>
+      <item quantity="one">1 апп ашигласан <xliff:g id="PERMGROUP_0">%2$s</xliff:g></item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Хяналтын самбараас бүгдийг нь харах"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Шүүсэн: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -232,14 +231,14 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Хамгийн сүүлд <xliff:g id="DATE">%s</xliff:g>-нд нээсэн"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Хэрэв та бүх файлыг удирдахыг зөвшөөрвөл энэ апп нь уг төхөөрөмжийн нийтлэг хадгалах сан дахь эсвэл холбогдсон хадгалах төхөөрөмж дэх дурын файлд хандах, түүнийг өөрчлөх болон устгах боломжтой. Апп танаас асуухгүйгээр файлуудад хандаж болзошгүй."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Энэ төхөөрөмж дээрх эсвэл холбогдсон дурын хадгалалтын төхөөрөмжийн файлуудад хандах, тэднийг өөрчлөх болон устгахыг энэ апп-д зөвшөөрөх үү? Энэ апп танаас асуухгүйгээр файлуудад хандаж болзошгүй."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Энэ зөвшөөрөлтэй аппууд <xliff:g id="DESCRIPTION">%1$s</xliff:g> боломжтой"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Энэ зөвшөөрөлтэй аппууд <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Энэ зөвшөөрөлтэй аппууд таны алхалт, дугуй унах, жолоодлого, алхмын тоо болон бусад биеийн дасгал хөдөлгөөнд хандах боломжтой"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Энэ зөвшөөрөлтэй аппууд таны календарьт хандах боломжтой"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Энэ зөвшөөрөлтэй аппууд утасны дуудлагын жагсаалтыг унших болон бичих боломжтой"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Энэ зөвшөөрөлтэй аппууд зураг авах болон видео хийх боломжтой"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Энэ зөвшөөрөлтэй аппууд таны харилцагчид хандах боломжтой"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Энэ зөвшөөрөлтэй аппууд энэ төхөөрөмжийн байршилд хандах боломжтой"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Ийм зөвшөөрөлтэй аппууд нь ойролцоох Bluetooth төхөөрөмжүүдийг илрүүлж, холбогдох боломжтой"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Ийм зөвшөөрөлтэй аппууд нь ойролцоох төхөөрөмжүүдийн холбоотой байрлалыг илрүүлж, холбогдож, тодорхойлох боломжтой"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Энэ зөвшөөрөлтэй аппууд аудио бичих боломжтой"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Энэ зөвшөөрөлтэй аппууд утасны дуудлага хийх болон тэдгээрийг удирдах боломжтой"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Энэ зөвшөөрөлтэй аппууд таны биеийн ерөнхий байдлын үзүүлэлтүүдийн талаарх мэдрэгчийн өгөгдөлд хандах боломжтой"</string>
@@ -436,8 +435,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Энэ апп нь таныг апп ашиглаагүй байх үед ч таны байршилд үргэлж хандах хүcэлтэй байж болзошгүй. "<annotation id="link">"Тохиргоо хэсгээс зөвшөөрнө үү."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д зориулж байршлын хандалтыг өөрчлөх үү?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Энэ апп нь таныг апп ашиглаагүй байх үед ч таны байршилд үргэлж хандах хүcэлтэй байна. "<annotation id="link">"Тохиргоо хэсгээс зөвшөөрнө үү."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д ойролцоох Bluetooth төхөөрөмжүүдийг илрүүлж, холбогдохыг зөвшөөрөх үү?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д ойролцоох Bluetooth төхөөрөмжүүдийг илрүүлж, холбогдохыг зөвшөөрөх үү? "<annotation id="link">"Тохиргоонд зөвшөөрнө үү."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д ойролцоох Bluetooth төхөөрөмжүүдийг илрүүлж, холбогдохыг зөвшөөрөх үү?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д ойролцоох Bluetooth төхөөрөмжүүдийг илрүүлж, холбогдохыг зөвшөөрөх үү? "<annotation id="link">"Тохиргоонд зөвшөөрнө үү."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д энэ төхөөрөмжийн нарийвчилсан байршилд хандахыг зөвшөөрөх үү?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д энэ төхөөрөмжийн барагцаалсан байршилд хандахыг зөвшөөрөх үү?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Нарийвчилсан"</string>
