@@ -450,6 +450,7 @@
         name="android.app.role.SYSTEM_ACTIVITY_RECOGNIZER"
         defaultHolders="config_systemActivityRecognizer"
         exclusive="true"
+        fallBackToDefaultHolder="true"
         systemOnly="true"
         visible="false">
         <required-components>
