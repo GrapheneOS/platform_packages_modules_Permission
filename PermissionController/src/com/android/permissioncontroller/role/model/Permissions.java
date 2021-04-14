@@ -318,25 +318,24 @@ public class Permissions {
         // Grant the app op.
         if (!isBackgroundPermission(permission, context)) {
             String appOp = getPermissionAppOp(permission);
-            if (appOp == null) {
-                return false;
-            }
-
-            int appOpMode;
-            if (!isForegroundPermission(permission, context)) {
-                // This permission is an ordinary permission, set its app op mode to MODE_ALLOWED.
-                appOpMode = AppOpsManager.MODE_ALLOWED;
-            } else {
-                // This permission is a foreground permission, set its app op mode according to
-                // whether its background permission is granted.
-                String backgroundPermission = getBackgroundPermission(permission, context);
-                if (!isPermissionAndAppOpGranted(packageName, backgroundPermission, context)) {
-                    appOpMode = AppOpsManager.MODE_FOREGROUND;
-                } else {
+            if (appOp != null) {
+                int appOpMode;
+                if (!isForegroundPermission(permission, context)) {
+                    // This permission is an ordinary permission, set its app op mode to
+                    // MODE_ALLOWED.
                     appOpMode = AppOpsManager.MODE_ALLOWED;
+                } else {
+                    // This permission is a foreground permission, set its app op mode according to
+                    // whether its background permission is granted.
+                    String backgroundPermission = getBackgroundPermission(permission, context);
+                    if (!isPermissionAndAppOpGranted(packageName, backgroundPermission, context)) {
+                        appOpMode = AppOpsManager.MODE_FOREGROUND;
+                    } else {
+                        appOpMode = AppOpsManager.MODE_ALLOWED;
+                    }
                 }
+                permissionOrAppOpChanged |= setAppOpUidMode(packageName, appOp, appOpMode, context);
             }
-            permissionOrAppOpChanged = setAppOpUidMode(packageName, appOp, appOpMode, context);
         } else {
             // This permission is a background permission, set all its foreground permissions' app
             // op modes to MODE_ALLOWED.
@@ -492,24 +491,23 @@ public class Permissions {
         // Revoke the app op.
         if (!isBackgroundPermission(permission, context)) {
             String appOp = getPermissionAppOp(permission);
-            if (appOp == null) {
-                return false;
-            }
+            if (appOp != null) {
+                // This permission is an ordinary or foreground permission, reset its app op mode to
+                // default.
+                int appOpMode = getDefaultAppOpMode(appOp);
+                boolean appOpModeChanged = setAppOpUidMode(packageName, appOp, appOpMode, context);
+                permissionOrAppOpChanged |= appOpModeChanged;
 
-            // This permission is an ordinary or foreground permission, reset its app op mode to
-            // default.
-            int appOpMode = getDefaultAppOpMode(appOp);
-            boolean appOpModeChanged = setAppOpUidMode(packageName, appOp, appOpMode, context);
-            permissionOrAppOpChanged |= appOpModeChanged;
-
-            if (appOpModeChanged) {
-                if (!isRuntimePermissionsSupported && (appOpMode == AppOpsManager.MODE_FOREGROUND
-                        || appOpMode == AppOpsManager.MODE_ALLOWED)) {
-                    // We've reset this permission's app op mode to be permissive, so we'll need the
-                    // user to review it again.
-                    setPermissionFlags(packageName, permission,
-                            PackageManager.FLAG_PERMISSION_REVIEW_REQUIRED,
-                            PackageManager.FLAG_PERMISSION_REVIEW_REQUIRED, context);
+                if (appOpModeChanged) {
+                    if (!isRuntimePermissionsSupported
+                            && (appOpMode == AppOpsManager.MODE_FOREGROUND
+                                    || appOpMode == AppOpsManager.MODE_ALLOWED)) {
+                        // We've reset this permission's app op mode to be permissive, so we'll need
+                        // the user to review it again.
+                        setPermissionFlags(packageName, permission,
+                                PackageManager.FLAG_PERMISSION_REVIEW_REQUIRED,
+                                PackageManager.FLAG_PERMISSION_REVIEW_REQUIRED, context);
+                    }
                 }
             }
         } else {
