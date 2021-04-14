@@ -79,6 +79,8 @@ class ReviewOngoingUsageViewModel(
     private val startTime = max(state.get<Long>(FIRST_OPENED_KEY)!! - extraDurationMills,
             Instant.EPOCH.toEpochMilli())
 
+    private val SYSTEM_PKG = "android"
+
     data class Usages(
         /** attribution-res-id/packageName/user -> perm groups accessed */
         val appUsages: Map<PackageAttribution, Set<String>>,
@@ -122,9 +124,6 @@ class ReviewOngoingUsageViewModel(
     private val appUsagesLiveData = object : SmartUpdateMediatorLiveData<Map<PackageAttribution,
         Set<String>>>() {
         private val app = PermissionControllerApplication.get()
-        /** (packageName, user, permissionGroupName) -> uiInfo */
-        private var permGroupUiInfos = mutableMapOf<Triple<String, String, UserHandle>,
-            AppPermGroupUiInfoLiveData>()
 
         init {
             addSource(permGroupUsages) {
@@ -154,17 +153,7 @@ class ReviewOngoingUsageViewModel(
                 }
             }
 
-            val getLiveDataFun = { key: Triple<String, String, UserHandle> ->
-                AppPermGroupUiInfoLiveData[key.first, key.second, key.third] }
-            setSourcesToDifference(requiredUiInfos, permGroupUiInfos, getLiveDataFun) {
-                GlobalScope.launch(Main.immediate) { update() }
-            }
-
-            if (permGroupUiInfos.values.any { !it.isInitialized }) {
-                return
-            }
-
-            // Filter out system (== non user sensitive) apps
+            // Filter out system package
             val filteredUsages = mutableMapOf<PackageAttribution, MutableSet<String>>()
             for ((permGroupName, usages) in permGroupUsages.value!!) {
                 if (permGroupName == MICROPHONE && isMicMuted.value == true) {
@@ -172,16 +161,7 @@ class ReviewOngoingUsageViewModel(
                 }
 
                 for (usage in usages) {
-                    if (permGroupUiInfos[Triple(usage.packageName, permGroupName, usage.user)]!!
-                            .value?.isSystem == false) {
-
-                        filteredUsages.getOrPut(getPackageAttr(usage),
-                            { mutableSetOf() }).add(permGroupName)
-                    } else if (app.getSystemService(LocationManager::class.java)!!
-                                    .isProviderPackage(usage.packageName) ||
-                            (shouldShowPermissionsDashboard() && isAppPredictor(usage))) {
-                        // TODO ntmyren: Replace this with package name agnostic setting for aiai
-                        //  if this moves beyond teamfood.
+                    if (usage.packageName != SYSTEM_PKG) {
                         filteredUsages.getOrPut(getPackageAttr(usage),
                                 { mutableSetOf() }).add(permGroupName)
                     }
@@ -527,7 +507,8 @@ class ReviewOngoingUsageViewModel(
                         labels.add(approvedAttrs[appAttr]!!)
                         approvedAttrs.remove(appAttr)
                     } else if (chain.subList(idx + 1, chain.size).all {
-                            it.packageName != opAccess.packageName }) {
+                            it.packageName != opAccess.packageName } &&
+                            opAccess.packageName != SYSTEM_PKG) {
                         labels.add(KotlinUtils.getPackageLabel(app, opAccess.packageName,
                             opAccess.user))
                     }
