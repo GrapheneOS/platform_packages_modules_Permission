@@ -426,7 +426,7 @@
         <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> apps</item>
     </plurals>
 
-    <!-- Label for the permission usage preference that shows how many apps have used various permissions [CHAR LIMIT=10] -->
+    <!-- Label for the permission usage preference that shows how many apps have used various permissions [CHAR LIMIT=30] -->
     <plurals name="permission_usage_preference_label">
         <item quantity="one">1 app used <xliff:g id="permgroup" example="Location">%2$s</xliff:g></item>
         <item quantity="other"><xliff:g id="number" example="7">%1$d</xliff:g> apps used <xliff:g id="permgroup" example="Location">%2$s</xliff:g></item>
