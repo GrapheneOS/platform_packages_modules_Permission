@@ -161,15 +161,14 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Χρήση αδειών τις τελευταίες 24 ώρες"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Χρήση άδειας την τελευταία 1 ώρα"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Χρήση αδειών τα τελευταία 15 λεπτά"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"χρήση"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Χρήση άδειας το τελευταίο 1 λεπτό"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> εφαρμογές</item>
       <item quantity="one">1 εφαρμογή</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="other">Χρησιμοποιούνται <xliff:g id="NUMBER">%d</xliff:g> εφαρμογές</item>
-      <item quantity="one">Χρησιμοποιείται 1 εφαρμογή</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> εφ. χρ. <xliff:g id="PERMGROUP_1">%2$s</xliff:g></item>
+      <item quantity="one">1 εφ. χρ. <xliff:g id="PERMGROUP_0">%2$s</xliff:g></item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Εμφάνιση όλων στον Πίνακα ελέγχου"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Φιλτράρισμα κατά: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -239,7 +238,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Οι εφαρμογές με αυτήν την άδεια μπορούν να τραβούν φωτογραφίες και να εγγράφουν βίντεο"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Οι εφαρμογές με αυτήν την άδεια μπορούν να αποκτήσουν πρόσβαση στις επαφές σας"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Οι εφαρμογές με αυτήν την άδεια μπορούν να αποκτήσουν πρόσβαση στην τοποθεσία αυτής της συσκευής"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Οι εφαρμογές με αυτήν την άδεια μπορούν να ανακαλύπτουν και να συνδέονται σε κοντινές συσκευές Bluetooth"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Οι εφαρμογές με αυτήν την άδεια μπορούν να ανακαλύπτουν, να συνδέονται και να προσδιορίζουν τη σχετική θέση κοντινών συσκευών"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Οι εφαρμογές με αυτήν την άδεια μπορούν να εγγράφουν ήχο"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Οι εφαρμογές με αυτήν την άδεια έχουν δυνατότητα πραγματοποίησης και διαχείρισης τηλεφωνικών κλήσεων"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Οι εφαρμογές με αυτήν την άδεια μπορούν να αποκτήσουν πρόσβαση στα δεδομένα αισθητήρα σχετικά με τις ζωτικές ενδείξεις σας"</string>
@@ -436,8 +435,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Αυτή η εφαρμογή θέλει να έχει συνεχώς πρόσβαση στην τοποθεσία σας, ακόμη και όταν δεν χρησιμοποιείτε την εφαρμογή. "<annotation id="link">"Εγκρίνετε το αίτημα στις ρυθμίσεις."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Αλλαγή πρόσβασης στην τοποθεσία για την εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;;"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Αυτή η εφαρμογή θέλει να έχει συνεχώς πρόσβαση στην τοποθεσία σας, ακόμη και όταν δεν χρησιμοποιείτε την εφαρμογή. "<annotation id="link">"Εγκρίνετε το αίτημα στις ρυθμίσεις."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η ανακάλυψη και η σύνδεση σε κοντινές συσκευές Bluetooth;"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η ανακάλυψη και η σύνδεση σε κοντινές συσκευές Bluetooth; "<annotation id="link">"Έγκριση στις Ρυθμίσεις."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η ανακάλυψη και η σύνδεση σε κοντινές συσκευές;"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η ανακάλυψη και η σύνδεση σε κοντινές συσκευές; "<annotation id="link">"Έγκριση στις Ρυθμίσεις."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να έχει πρόσβαση στην ακριβή τοποθεσία αυτής της συσκευής;"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να έχει πρόσβαση στην κατά προσέγγιση τοποθεσία αυτής της συσκευής;"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Ακριβής"</string>

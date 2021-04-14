@@ -85,7 +85,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"Həmişə icazə verin"</string>
-    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Yalnız tətbiqdən istifadə edərkən icazə verin"</string>
+    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Yalnız istifadə zamanı"</string>
     <string name="permission_access_never" msgid="1029877154284995424">"İmtina edin"</string>
     <string name="loading" msgid="4789365003890741082">"Yüklənir…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"Bütün icazələr"</string>
@@ -161,15 +161,14 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Son 24 saat ərzində icazə istifadəsi"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Son 1 saat ərzində icazə istifadəsi"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Son 15 dəqiqə ərzində icazə istifadəsi"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"istifadə"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Son 1 dəqiqə ərinzdə icazə istifadəsi"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> tətbiq</item>
       <item quantity="one">1 tətbiq</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> tətbiq istifadə edilir</item>
-      <item quantity="one">1 tətbiq istifadə edilir</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> tətbiq <xliff:g id="PERMGROUP_1">%2$s</xliff:g> istifadə edir</item>
+      <item quantity="one">1 tətbiq <xliff:g id="PERMGROUP_0">%2$s</xliff:g> istifadə edir</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Hamısına İdarə panelində baxın"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrlədi: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -198,8 +197,8 @@
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Bütün faylların idarə edilməsinə icazə verin"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Yalnız mediaya giriş icazəsi verin"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Həmişə icazə verin"</string>
-    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Yalnız tətbiqdən istifadə edərkən icazə verin"</string>
-    <string name="app_permission_button_ask" msgid="3342950658789427">"Hər dəfə soruşun"</string>
+    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Yalnız istifadə zamanı"</string>
+    <string name="app_permission_button_ask" msgid="3342950658789427">"Həmişə soruşulsun"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"İmtina edin"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Dəqiq məkan"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Təxmini məkan"</string>
@@ -230,7 +229,7 @@
     <string name="last_opened_category_title" msgid="7871347400611202595">"Sonuncu dəfə ən azı <xliff:g id="NUMBER">%s</xliff:g> ay əvvəl açılıb"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Tətbiq sonuncu dəfə <xliff:g id="DATE">%s</xliff:g> tarixində açılıb"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Sonuncu dəfə <xliff:g id="DATE">%s</xliff:g> tarixində açılıb"</string>
-    <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Bütün faylların idarə edilməsinə icazə versəniz, bu tətbiq bu cihazda və ya qoşulmuş yaddaş cihazlarında ümumi yaddaş yerindəki bütün fayllara daxil ola, dəyişiklik edə və ya onları silə bilər. Tətbiq sizdən soruşmadan fayllara daxil ola bilər."</string>
+    <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Bununla, tətbiq bu və ya qoşulmuş cihazlarda ümumi yaddaşdakı bütün fayllara daxil ola, dəyişiklik edə və ya onları silə bilər. Fayllara sizdən xəbərsiz girə bilər."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Bu tətbiqə cihazdakı və ya istənilən qoşulmuş yaddaş cihazındakı fayllara daxil olmaq, dəyişiklik etmək və onları silmək icazəsi verilsin? Bu tətbiq sizdən soruşmadan fayllara daxil ola bilər."</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"Bu icazəyə sahib tətbiqlər edə bilər: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Bu icazəyə sahib tətbiqlər gəzmək, velosiped, avtomobil sürmək, addım sayı və s. kimi fiziki fəaliyyətə daxil ola bilər"</string>
@@ -239,7 +238,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Bu icazəyə sahib tətbiqlər şəkil və videolar çəkə bilər"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Bu icazəyə sahib tətbiqlər kontaklara giriş edə bilır"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Bu icazəyə sahib tətbiqlər cihazın məkanına giriş edə bilər"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Bu icazəyə sahib tətbiqlər yaxınlıqdakı Bluetooth cihazlarını aşkarlaya və onlara qoşula bilər"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Bu icazəsi olan tətbiqlər yaxınlıqdakı cihazları aşkarlaya, qoşula və nisbi mövqeyi təyin edə bilər"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Bu icazəyə sahib tətbiqlər audio qeydə ala bilər"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Bu icazəyə sahib olan tətbiqlər telefon zəngləri aça edə və onları idarə edə bilər"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Bu icazəsi olan tətbiqlər sağlamlığınız haqqında sensor datasına giriş edə bilər"</string>
@@ -250,12 +249,12 @@
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Heç vaxt giriş edilməyib"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"İmtina edilib/ Heç vaxt giriş edilməyib"</string>
     <string name="allowed_header" msgid="7769277978004790414">"İcazə verilib"</string>
-    <string name="allowed_always_header" msgid="6455903312589013545">"Həmişə icazə verin"</string>
-    <string name="allowed_foreground_header" msgid="6845655788447833353">"Yalnız istifadədə olarkən icazə verildi"</string>
-    <string name="allowed_storage_scoped" msgid="5383645873719086975">"Yalnız mediaya giriş icazəsi verildi"</string>
-    <string name="allowed_storage_full" msgid="5356699280625693530">"Bütün faylları idarə etmək icazəsi verildi"</string>
-    <string name="ask_header" msgid="2633816846459944376">"Hər dəfə soruşun"</string>
-    <string name="denied_header" msgid="2253955654228120835">"Ləğv edildi"</string>
+    <string name="allowed_always_header" msgid="6455903312589013545">"Həmişə icazə verilib"</string>
+    <string name="allowed_foreground_header" msgid="6845655788447833353">"İstifadə zamanı icazə verilib"</string>
+    <string name="allowed_storage_scoped" msgid="5383645873719086975">"Mediafayllara girişi olanlar"</string>
+    <string name="allowed_storage_full" msgid="5356699280625693530">"Bütün fayllara girişi olanlar"</string>
+    <string name="ask_header" msgid="2633816846459944376">"Həmişə soruşulsun"</string>
+    <string name="denied_header" msgid="2253955654228120835">"Qadağan edilmişlər"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> gün</item>
       <item quantity="one">1 gün</item>
@@ -360,8 +359,8 @@
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"ice"</string>
     <string name="role_home_label" msgid="3871847846649769412">"Defolt əsas səhifə tətbiqi"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"Əsas səhifə tətbiqi"</string>
-    <string name="role_home_description" msgid="7997371519626556675">"Android cihazınızda əsas səhifə ekranını əvəz edərək cihaz kontenti və funksiyalarına giriş təmin edən, adətən başladıcı adlanan tətbiqlər"</string>
-    <string name="role_home_request_title" msgid="738136983453341081">"<xliff:g id="APP_NAME">%1$s</xliff:g> defolt əsas səhifə tətbiqi olaraq ayarlansın?"</string>
+    <string name="role_home_description" msgid="7997371519626556675">"Bu tətbiqlər Android cihazının əsas ekranı kimi işləyib onun kontentinə və funksiyalarına giriş təqdim edir."</string>
+    <string name="role_home_request_title" msgid="738136983453341081">"<xliff:g id="APP_NAME">%1$s</xliff:g> defolt əsas səhifə tətbiqi olsun?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"İcazəyə ehtiyac yoxdur"</string>
     <string name="role_home_search_keywords" msgid="3830755001192666285">"başladıcı"</string>
     <string name="role_call_redirection_label" msgid="5785304207206147590">"Defolt zəng yönləndirmə tətbiqi"</string>
@@ -436,9 +435,9 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Bu tətbiq hətta ondan istifadə etmədiyiniz zaman belə məkanınıza daxil olmaq istəyə bilər. "<annotation id="link">"Ayarlarda icazə verin."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; üçün məkana giriş dəyişdirilsin?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Bu tətbiq hətta ondan istifadə etmədiyiniz zaman belə məkanınıza daxil olmaq istəyir. "<annotation id="link">"Ayarlarda icazə verin."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə yaxınlıqdakı Bluetooth cihazlarını aşkarlamaq və onlara qoşulmaq icazəsi verilsin?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə yaxınlıqdakı Bluetooth cihazlarını aşkarlamaq və onlara qoşulmaq icazəsi verilsin? "<annotation id="link">"Ayarlarda icazə verin."</annotation></string>
-    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə bu cihazın dəqiq məkanına daxil olmaq icazəsi verilsin?"</string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə yaxınlıqdakı cihazları aşkarlamaq və onlara qoşulmaq icazəsi verilsin?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə yaxınlıqdakı cihazları aşkarlamaq və onlara qoşulmaq icazəsi verilsin? "<annotation id="link">"Ayarlarda icazə verin."</annotation></string>
+    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə bu cihazın məkanını öyrənmək icazəsi verilsin?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə bu cihazın təxmini məkanına daxil olmaq icazəsi verilsin?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Dəqiq"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Təxmini"</string>

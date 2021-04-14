@@ -179,7 +179,6 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"שימוש בהרשאות ב-24 השעות האחרונות"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"שימוש בהרשאות בשעה האחרונה"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"שימוש בהרשאות ב-15 הדקות האחרונות"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"שימוש"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"שימוש בהרשאות בדקה האחרונה"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="two"><xliff:g id="NUMBER">%s</xliff:g> אפליקציות</item>
@@ -187,11 +186,11 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> אפליקציות</item>
       <item quantity="one">אפליקציה אחת</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="two">ב-<xliff:g id="NUMBER">%d</xliff:g> אפליקציות</item>
-      <item quantity="many">ב-<xliff:g id="NUMBER">%d</xliff:g> אפליקציות</item>
-      <item quantity="other">ב-<xliff:g id="NUMBER">%d</xliff:g> אפליקציות</item>
-      <item quantity="one">באפליקציה אחת</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="two"><xliff:g id="NUMBER">%1$d</xliff:g> אפליקציות השתמשו ב<xliff:g id="PERMGROUP_1">%2$s</xliff:g></item>
+      <item quantity="many"><xliff:g id="NUMBER">%1$d</xliff:g> אפליקציות השתמשו ב<xliff:g id="PERMGROUP_1">%2$s</xliff:g></item>
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> אפליקציות השתמשו ב<xliff:g id="PERMGROUP_1">%2$s</xliff:g></item>
+      <item quantity="one">אפליקציה אחת השתמשה ב<xliff:g id="PERMGROUP_0">%2$s</xliff:g></item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"הצגת כל הפרטים במרכז השליטה"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"סינון לפי: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -230,7 +229,7 @@
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"שימוש במיקום מדויק"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"כשההגדרה כבויה, אפליקציות יכולות לקבוע רק את מיקומך המשוער באזור של שכונה"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"הרשאת <xliff:g id="PERM">%1$s</xliff:g>"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"האפליקציה הזו יכולה לגשת אל: <xliff:g id="PERM">%1$s</xliff:g>"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"לאפליקציה תהיה גישה אל: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"הצגת כל ההרשאות של \'<xliff:g id="APP">%1$s</xliff:g>\'"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"הצגת כל האפליקציות עם ההרשאה הזו"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"‏הצגת השימוש במיקרופון של Assistant"</string>
@@ -254,21 +253,21 @@
     <string name="last_opened_category_title" msgid="7871347400611202595">"נפתחו לאחרונה לפני יותר מ-<xliff:g id="NUMBER">%s</xliff:g> חודשים"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"האפליקציה נפתחה לאחרונה בתאריך <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"נפתחה לאחרונה: <xliff:g id="DATE">%s</xliff:g>"</string>
-    <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"‏אם מאשרים ניהול של כל הקבצים, האפליקציה זו תוכל לגשת לקבצים באחסון משותף (Common storage) במכשיר הזה או בהתקני אחסון מחוברים, לשנות או למחוק אותם. האפליקציה תורשה לגשת לקבצים בלי לבקש את הסכמתך."</string>
+    <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"‏אם מאשרים ניהול של כל הקבצים, האפליקציה הזו תוכל לגשת לקבצים באחסון משותף (Common storage) במכשיר הזה או בהתקני אחסון מחוברים, ולשנות או למחוק אותם. האפליקציה תוכל לגשת לקבצים בלי לבקש ממך אישור."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"לאשר לאפליקציה הזו לגשת לקבצים במכשיר הזה או בכל התקן אחסון שמחובר אליו, לשנות או למחוק אותם? האפליקציה הזו עשויה לגשת לקבצים בלי לבקש את רשותך."</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"אפליקציות עם ההרשאה הזו יכולות <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"אפליקציות עם ההרשאה הזו יכולות לקבל גישה לפעילות הגופנית שלך, למשל הליכה, רכיבה על אופניים, נהיגה, ספירת צעדים ועוד"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"אפליקציות עם ההרשאה הזו יכולות לגשת אל היומן"</string>
-    <string name="permission_description_summary_call_log" msgid="7321437186317577624">"אפליקציות עם ההרשאה הזו יכולות לקרוא ולכתוב ביומן השיחות של הטלפון"</string>
-    <string name="permission_description_summary_camera" msgid="108004375101882069">"אפליקציות עם ההרשאה הזו יכולות לצלם תמונות ולהקליט וידאו"</string>
+    <string name="permission_description_summary_call_log" msgid="7321437186317577624">"אפליקציות עם ההרשאה הזו יכולות לקרוא את יומן השיחות של הטלפון ולכתוב בו"</string>
+    <string name="permission_description_summary_camera" msgid="108004375101882069">"אפליקציות עם ההרשאה הזו יכולות לצלם תמונות וסרטונים"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"אפליקציות עם ההרשאה הזו יכולות לגשת אל אנשי הקשר"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"לאפליקציות עם ההרשאה הזו יש גישה למיקום של המכשיר"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"‏אפליקציות עם ההרשאה הזו יכולות לגלות מכשירי Bluetooth בקרבת מקום ולהתחבר אליהם"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"אפליקציות עם ההרשאה הזו יכולות לאתר מכשירים קרובים, להתחבר אליהם ולזהות את מיקומם היחסי."</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"אפליקציות עם ההרשאה הזו יכולות להקליט אודיו"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"אפליקציות עם ההרשאה הזו יכולות להתקשר ולנהל שיחות טלפון"</string>
-    <string name="permission_description_summary_sensors" msgid="1836045815643119949">"אפליקציות עם ההרשאה הזו יכולות לגשת אל נתוני חיישנים שמודדים את הסימנים החיוניים שלך"</string>
+    <string name="permission_description_summary_sensors" msgid="1836045815643119949">"אפליקציות עם ההרשאה הזו יכולות לגשת אל נתונים של חיישנים שמודדים את הסימנים החיוניים שלך"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"‏אפליקציות עם ההרשאה הזו יכולות לשלוח ולהציג הודעות SMS"</string>
-    <string name="permission_description_summary_storage" msgid="6575759089065303346">"אפליקציות עם ההרשאה הזו יכולות לקבל גישה לתמונות, למדיה ולקבצים במכשיר שלך"</string>
+    <string name="permission_description_summary_storage" msgid="6575759089065303346">"אפליקציות עם ההרשאה הזו יכולות לגשת לתמונות, למדיה ולקבצים במכשיר שלך"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"גישה אחרונה: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"חסומה כרגע / גישה אחרונה: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"אף פעם לא הופעלה"</string>
@@ -474,8 +473,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"ייתכן שהאפליקציה הזו תרצה לקבל גישה לנתוני המיקום שלך כל הזמן, גם כשהיא לא בשימוש. "<annotation id="link">"ניתן לאשר זאת בהגדרות."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"‏לשנות את הרשאת הגישה למיקום של &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"האפליקציה הזו רוצה לקבל גישה לנתוני המיקום שלך כל הזמן, גם כשהיא לא בשימוש. "<annotation id="link">"ניתן לאשר זאת בהגדרות."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"‏לאפשר לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; לגלות מכשירי Bluetooth בקרבת מקום ולהתחבר אליהם?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"‏לאפשר לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; לגלות מכשירי Bluetooth בקרבת מקום ולהתחבר אליהם? "<annotation id="link">"יש לתת הרשאה בהגדרות"</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"‏לאפשר לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; לזהות מכשירים קרובים ולהתחבר אליהם?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"‏לאפשר לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; לזהות מכשירים קרובים ולהתחבר אליהם? "<annotation id="link">"יש לתת הרשאה בהגדרות."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה למיקום המדויק של המכשיר?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה למיקום המשוער של המכשיר?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"מדויק"</string>

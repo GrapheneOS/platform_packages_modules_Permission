@@ -161,15 +161,14 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Toestemminggebruik in afgelope 24 uur"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Toestemminggebruik in afgelope 1 uur"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Toestemminggebruik in afgelope 15 minute"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"gebruik"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Toestemminggebruik in afgelope 1 minuut"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> programme</item>
       <item quantity="one">1 program</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> programme</item>
-      <item quantity="one">1 program</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> programme het <xliff:g id="PERMGROUP_1">%2$s</xliff:g> gebruik</item>
+      <item quantity="one">1 program het <xliff:g id="PERMGROUP_0">%2$s</xliff:g> gebruik</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Sien alles in Dashboard"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Gefiltreer volgens: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -239,7 +238,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Programme met hierdie toestemming kan foto\'s neem en video\'s opneem"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Programme met hierdie toestemming kan toegang tot jou kontakte kry"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Programme met hierdie toestemming kan toegang tot jou toestel se ligging kry"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Programme met hierdie toestemming kan Bluetooth-toestelle in die omtrek ontdek en daaraan koppel"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Programme met hierdie toestemming kan toestelle in die omtrek ontdek, daaraan koppel, en die relatiewe posisie daarvan bepaal"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Programme met hierdie toestemming kan oudio opneem"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Programme met hierdie toestemming kan foonoproepe maak en bestuur"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Programme met hierdie toestemming kan toegang kry tot sensordata oor jou lewenstekens"</string>
@@ -436,8 +435,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Hierdie program wil dalk die hele tyd toegang tot jou ligging hê, selfs wanneer jy nie die program gebruik nie. "<annotation id="link">"Laat toe in instellings."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Verander liggingtoegang vir &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Hierdie program wil die hele tyd toegang tot jou ligging hê, selfs wanneer jy nie die program gebruik nie. "<annotation id="link">"Laat toe in instellings."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"Laat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toe om Bluetooth-toestelle in die omtrek te ontdek en daaraan te koppel?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"Laat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toe om Bluetooth-toestelle in die omtrek te ontdek en daaraan te koppel? "<annotation id="link">"Laat in Instellings toe."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"Laat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toe om toestelle in die omtrek te ontdek en daaraan te koppel?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"Laat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toe om toestelle in die omtrek te ontdek en daaraan te koppel? "<annotation id="link">"Laat in Instellings toe."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Gee &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang tot hierdie toestel se presiese ligging?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Gee &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang tot hierdie toestel se benaderde ligging?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Presies"</string>

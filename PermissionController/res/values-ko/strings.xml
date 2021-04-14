@@ -161,15 +161,14 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"지난 24시간 동안 사용된 권한"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"지난 1시간 동안 사용된 권한"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"지난 15분 동안 사용된 권한"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"사용 중인 앱 수"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"지난 1분 동안 사용된 권한"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other">앱 <xliff:g id="NUMBER">%s</xliff:g>개</item>
       <item quantity="one">앱 1개</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="other">앱 <xliff:g id="NUMBER">%d</xliff:g>개 사용됨</item>
-      <item quantity="one">앱 1개 사용됨</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="other">앱 <xliff:g id="NUMBER">%1$d</xliff:g>개가 <xliff:g id="PERMGROUP_1">%2$s</xliff:g> 권한을 사용함</item>
+      <item quantity="one">앱 1개가 <xliff:g id="PERMGROUP_0">%2$s</xliff:g> 권한을 사용함</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"대시보드에서 모두 보기"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"필터링 기준: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -239,7 +238,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"이 권한이 있는 앱은 사진을 찍고 동영상을 녹화할 수 있습니다."</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"이 권한이 있는 앱은 내 연락처에 액세스할 수 있습니다."</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"이 권한이 있는 앱은 이 기기의 위치에 액세스할 수 있습니다."</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"이 권한이 있는 앱은 근처의 블루투스 기기를 찾고 연결할 수 있습니다"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"이 권한이 있는 앱은 근처 기기를 검색하여 연결하고 기기 간 상대적 위치를 파악할 수 있습니다."</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"이 권한이 있는 앱은 오디오를 녹음할 수 있습니다."</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"이 권한이 있는 앱은 전화를 걸고 관리할 수 있습니다."</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"이 권한이 있는 앱은 생체 신호에 관한 센서 데이터에 액세스할 수 있습니다."</string>
@@ -436,8 +435,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"앱을 사용하고 있지 않을 때도 앱에서 내 위치에 항상 액세스하려고 할 수 있습니다. "<annotation id="link">"설정에서 액세스를 허용"</annotation>"하세요."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;의 위치 액세스 권한을 변경하시겠습니까?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"앱을 사용하고 있지 않을 때도 앱에서 내 위치에 항상 액세스하려고 합니다. "<annotation id="link">"설정에서 액세스를 허용"</annotation>"하세요."</string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 근처의 블루투스 기기를 찾고 연결하도록 허용하시겠습니까?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 근처의 블루투스 기기를 찾고 연결하도록 허용하시겠습니까? "<annotation id="link">"설정에서 허용하세요"</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 앱이 근처 기기를 검색하고 연결하도록 허용하시겠습니까?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 앱이 근처 기기를 검색하고 연결하도록 허용하시겠습니까? "<annotation id="link">"설정에서 허용"</annotation>"하세요."</string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 기기의 정확한 위치에 액세스하도록 허용하시겠습니까?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 기기의 대략적인 위치에 액세스하도록 허용하시겠습니까?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"정확한 위치"</string>

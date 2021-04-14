@@ -179,7 +179,6 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Leidimo naudojimas per pastarąsias 24 valandas"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Leidimo naudojimas per pastarąją 1 valandą"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Leidimo naudojimas per pastarąsias 15 minučių"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"naudojimas"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Leidimo naudojimas per pastarąją 1 minutę"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> programa</item>
@@ -187,11 +186,11 @@
       <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> programos</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> programų</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="one">Naudojo <xliff:g id="NUMBER">%d</xliff:g> programa</item>
-      <item quantity="few">Naudojo <xliff:g id="NUMBER">%d</xliff:g> programos</item>
-      <item quantity="many">Naudojo <xliff:g id="NUMBER">%d</xliff:g> programos</item>
-      <item quantity="other">Naudojo <xliff:g id="NUMBER">%d</xliff:g> programų</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="one">Naudojo <xliff:g id="NUMBER">%1$d</xliff:g> programa: <xliff:g id="PERMGROUP_1">%2$s</xliff:g></item>
+      <item quantity="few">Naudojo <xliff:g id="NUMBER">%1$d</xliff:g> programos: <xliff:g id="PERMGROUP_1">%2$s</xliff:g></item>
+      <item quantity="many">Naudojo <xliff:g id="NUMBER">%1$d</xliff:g> programos: <xliff:g id="PERMGROUP_1">%2$s</xliff:g></item>
+      <item quantity="other">Naudojo <xliff:g id="NUMBER">%1$d</xliff:g> programų: <xliff:g id="PERMGROUP_1">%2$s</xliff:g></item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Žr. viską informacijos suvestinėje"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtruota pagal: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -263,7 +262,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Programos, kurioms suteiktas šis leidimas, gali fotografuoti ir įrašyti vaizdo įrašus"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Programos, kurioms suteiktas šis leidimas, gali pasiekti jūsų kontaktus"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Programos, kurioms suteiktas šis leidimas, gali pasiekti šio įrenginio vietovę"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Šį leidimą turinčios programos gali aptikti „Bluetooth“ įrenginius netoliese ir prisijungti prie jų"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Programos, kurioms suteiktas šis leidimas, gali nustatyti apytikslę netoliese esančių įrenginių poziciją, aptikti juos ir prisijungti prie jų"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Programos, kurioms suteiktas šis leidimas, gali įrašyti garsą"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Programos, kurioms suteiktas šis leidimas, gal atlikti ir tvarkyti telefonų skambučius"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Programos, kurioms suteiktas šis leidimas, gali pasiekti jutiklių duomenis apie gyvybinius ženklus"</string>
@@ -474,8 +473,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Ši programa gali norėti pasiekti jūsų vietovę visą laiką, net kai programos nenaudojate. "<annotation id="link">"Leiskite skiltyje „Nustatymai“."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Pakeisti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prieigą prie vietovės duomenų?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Ši programa nori pasiekti jūsų vietovę visą laiką, net kai programos nenaudojate. "<annotation id="link">"Leiskite skiltyje „Nustatymai“."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"Leisti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aptikti „Bluetooth“ įrenginius netoliese ir prisijungti prie jų?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"Leisti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aptikti „Bluetooth“ įrenginius netoliese ir prisijungti prie jų? "<annotation id="link">"Leisti nustatymuose."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"Leisti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aptikti įrenginius netoliese ir prisijungti prie jų?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"Leisti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aptikti įrenginius netoliese ir prisijungti prie jų? "<annotation id="link">"Leisti nustatymuose."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Leisti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pasiekti tikslią šio įrenginio vietovę?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Leisti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pasiekti apytikslę šio įrenginio vietovę?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Tiksli"</string>

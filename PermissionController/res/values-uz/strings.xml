@@ -161,15 +161,14 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Oxirgi 24 soatda ishlatilgan ruxsatlar"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Oxirgi 1 soatda ishlatilgan ruxsatlar"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Oxirgi 15 daqiqada ishlatilgan ruxsatlar"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"ishlatilishi"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Oxirgi 1 daqiqada ishlatilgan ruxsatlar"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ta ilova</item>
       <item quantity="one">1 ta ilova</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> ta ilova ishlatgan</item>
-      <item quantity="one">1 ta ilova ishlatgan</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> ta ilova <xliff:g id="PERMGROUP_1">%2$s</xliff:g> ishlatgan</item>
+      <item quantity="one">1 ta ilova <xliff:g id="PERMGROUP_0">%2$s</xliff:g> ishlatgan</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Boshqaruv panelida ochish"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrlar: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -239,7 +238,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Bunday ruxsatga ega ilovalar surat va videolar olishi mumkin"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Bunday ruxsatga ega ilovalar kontaktlaringizdan foydalana oladi"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Bunday ruxsatga ega ilovalar ushbu qurilmaning joylashuvi haqidagi axborotdan foydalana oladi"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Bunday ruxsatga ega ilovalar yaqin-atrofdagi Bluetooth qurilmalarni topishi va ularga ulanishi mumkin"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Bu ruxsat berilgan ilovalar yaqin-atrofdagi qurilmalarni aniqlashi, ulanishi va nisbiy holatini aniqlashi mumkin."</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Bunday ruxsatga ega ilovalar audio yoza oladi"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Bunday ruxsatga ega ilovalar telefon chaqiruvlarini amalga oshira oladi va boshqara oladi"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Bunday ruxsatga ega ilovalar organizm holati haqidagi sezgichlar axborotlaridan foydalana oladi"</string>
@@ -436,8 +435,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Bu ilova ochiq emasligida ham joylashuvingiz haqidagi axborotdan foydalanmoqchi. Bunga "<annotation id="link">" sozlamalar"</annotation>" orqali ruxsat bering."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun joylashuv axborotiga ruxsat oʻzgartirilsinmi?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Bu ilova ochiq emasligida ham joylashuvingiz haqidagi axborotdan foydalanmoqchi. Bunga "<annotation id="link">"sozlamalar"</annotation>" orqali ruxsat bering."</string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ilovasiga yaqin-atrofdagi Bluetooth qurilmalarni topishi va ularga ulanishi uchun ruxsat berilsinmi?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ilovasiga yaqin-atrofdagi Bluetooth qurilmalarni topishi va ularga ulanishi uchun ruxsat berilsinmi? "<annotation id="link">"Sozlamalar orqali ruxsat berish mumkin."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ilovasiga yaqin-atrofdagi qurilmalarni topishi va ularga ulanishi uchun ruxsat berilsinmi?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ilovasiga yaqin-atrofdagi qurilmalarni topishi va ularga ulanishi uchun ruxsat berilsinmi? "<annotation id="link">"Sozlamalar orqali ruxsat berish mumkin."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun bu qurilmaning aniq joylashuvi haqidagi axborotdan foydalanish ruxsati berilsinmi?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun bu qurilmaning taxminiy joylashuvi haqidagi axborotdan foydalanish ruxsati berilsinmi?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Aniq"</string>

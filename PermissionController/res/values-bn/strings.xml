@@ -161,16 +161,12 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"গত ২৪ ঘণ্টার মধ্যে অনুমতির ব্যবহার"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"গত ১ ঘণ্টার মধ্যে অনুমতির ব্যবহার"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"গত ১৫ মিনিটের মধ্যে অনুমতির ব্যবহার"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"ব্যবহার"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"গত ১ মিনিটের মধ্যে অনুমতির ব্যবহার"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g>টি অ্যাপ</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g>টি অ্যাপ</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="one"><xliff:g id="NUMBER">%d</xliff:g>টি অ্যাপ ব্যবহার হয়েছে</item>
-      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g>টি অ্যাপ ব্যবহার হয়েছে</item>
-    </plurals>
+    <!-- no translation found for permission_usage_preference_label (7599037764529821028) -->
     <string name="permission_usage_view_details" msgid="6675335735468752787">"সবকিছু ড্যাশবোর্ডে দেখুন"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"এই অনুযায়ী ফিল্টার করা হয়েছে: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"ফিল্টার সরান"</string>
@@ -239,7 +235,8 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"যেসব অ্যাপের এই অনুমতি আছে সেগুলি ছবি তুলতে ও ভিডিও রেকর্ড করতে পারে"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"যেসব অ্যাপের এই অনুমতি আছে সেগুলি আপনার পরিচিতি অ্যাক্সেস করতে পারে"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"যেসব অ্যাপের এই অনুমতি আছে সেগুলি এই ডিভাইসের লোকেশন অ্যাক্সেস করতে পারে"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"এই অনুমতি আছে এমন অ্যাপ কাছাকাছি ব্লুটুথ ডিভাইস খুঁজে দেখতে এবং তার সাথে কানেক্ট করতে পারবে"</string>
+    <!-- no translation found for permission_description_summary_nearby_devices (4993093121706938071) -->
+    <skip />
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"যেসব অ্যাপের এই অনুমতি আছে সেগুলি অডিও রেকর্ড করতে পারে"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"যেসব অ্যাপের এই অনুমতি আছে সেগুলি কল করতে ও ম্যানেজ করতে পারে"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"যেসব অ্যাপের এই অনুমতি আছে সেগুলি আপনার স্বাস্থ্য সম্পর্কে সেন্সর ডেটা অ্যাক্সেস করতে পারে"</string>
@@ -436,8 +433,10 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"এই অ্যাপ হয়ত সবসময় আপনার লোকেশন অ্যাক্সেস করতে চায়, এমনকি আপনার অ্যাপ চালু না থাকলেও। "<annotation id="link">"সেটিংস বিকল্প থেকে অনুমতি দিন।"</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-এর জন্য লোকেশন অ্যাক্সেস পরিবর্তন করতে চান?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"এই অ্যাপটি সবসময় আপনার লোকেশন অ্যাক্সেস করতে চায়, এমনকি আপনার অ্যাপ চালু না থাকলেও। "<annotation id="link">"সেটিংস বিকল্প থেকে অনুমতি দিন।"</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"কাছাকাছি ব্লুটুথ ডিভাইস খুঁজে দেখতে এবং তার সাথে কানেক্ট করতে &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে অনুমতি দিতে চান?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"কাছাকাছি ব্লুটুথ ডিভাইস খুঁজে দেখতে এবং তার সাথে কানেক্ট করতে &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে অনুমতি দিতে চান? "<annotation id="link">"সেটিংসে অনুমতি দিন।"</annotation></string>
+    <!-- no translation found for permgrouprequest_nearby_devices (620046480867488546) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequestdetail_nearby_devices (2560445503628306938) -->
+    <skip />
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে এই ডিভাইসের নির্ভুল লোকেশন অ্যাক্সেস করতে দেবেন?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে এই ডিভাইসের নিকটবর্তী লোকেশন অ্যাক্সেস করতে দেবেন?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"নির্ভুল"</string>
