@@ -161,15 +161,14 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Uso de permisos en las últimas 24 horas"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Uso de permisos en la última hora"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Uso de permisos en los últimos 15 minutos"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"uso"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Uso de permisos en el último minuto"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> aplicaciones</item>
       <item quantity="one">1 aplicación</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> apps usadas</item>
-      <item quantity="one">1 app usada</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> apps usaron <xliff:g id="PERMGROUP_1">%2$s</xliff:g></item>
+      <item quantity="one">1 app usó <xliff:g id="PERMGROUP_0">%2$s</xliff:g></item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Ver todo en el panel de control"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrados por: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -230,7 +229,7 @@
     <string name="last_opened_category_title" msgid="7871347400611202595">"Abierto por última vez hace más de <xliff:g id="NUMBER">%s</xliff:g> meses"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"La aplicación se abrió por última vez el <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Se abrió por última vez el <xliff:g id="DATE">%s</xliff:g>"</string>
-    <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Si permites que esta aplicación gestione todos los archivos, podrá consultar, modificar y eliminar los archivos que haya en el almacenamiento común de este dispositivo o en los dispositivos de almacenamiento conectados. Quizá acceda a archivos sin solicitarlo explícitamente."</string>
+    <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Si permites la gestión de todos los archivos, esta aplicación puede consultar, modificar y eliminar cualquier archivo que haya en el almacenamiento común de este dispositivo o en los dispositivos de almacenamiento conectados. Es posible que acceda a archivos sin preguntarte."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"¿Quieres permitir que esta aplicación pueda consultar, modificar y eliminar archivos de este dispositivo o de los dispositivos de almacenamiento conectados? Quizá acceda a archivos sin solicitarlo explícitamente."</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"Las aplicaciones con este permiso pueden <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Las aplicaciones con este permiso pueden acceder a tu actividad física, como paseos a pie o en bici, trayectos en coche, número de pasos y más"</string>
@@ -239,7 +238,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Las aplicaciones con este permiso este permiso pueden hacer fotos y grabar vídeo"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Las aplicaciones con este permiso este permiso pueden acceder a tus contactos"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Las aplicaciones con este permiso este permiso pueden acceder a la ubicación de este dispositivo"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Las aplicaciones que tienen este permiso pueden detectar y conectarse a dispositivos Bluetooth cercanos"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Las aplicaciones que tienen este permiso pueden detectar y conectarse a los dispositivos cercanos, así como determinar su posición relativa"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Las aplicaciones con este permiso este permiso pueden grabar audio"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Las aplicaciones con este permiso este permiso pueden hacer y gestionar llamadas de teléfono"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Las aplicaciones con este permiso este permiso pueden acceder a los datos de los sensores sobre tus constantes vitales"</string>
@@ -436,8 +435,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Es posible que esta aplicación quiera acceder a tu ubicación siempre, aunque no la estés usando. Puedes darle permiso en "<annotation id="link">"Ajustes"</annotation>"."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"¿Quieres cambiar el acceso a la ubicación de &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Esta aplicación quiere acceder a tu ubicación siempre, incluso aunque no la estés usando. Puedes darle permiso en "<annotation id="link">"Ajustes"</annotation>"."</string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; detecte y se conecte a dispositivos Bluetooth cercanos?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; detecte y se conecte a dispositivos Bluetooth cercanos? "<annotation id="link">"Permitir en los ajustes"</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; detecte y se conecte a dispositivos cercanos?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; detecte y se conecte a dispositivos cercanos? "<annotation id="link">"Permitir en los ajustes"</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a la ubicación precisa de este dispositivo?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a la ubicación aproximada de este dispositivo?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Precisa"</string>

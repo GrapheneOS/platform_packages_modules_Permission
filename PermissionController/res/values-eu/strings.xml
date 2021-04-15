@@ -161,15 +161,14 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Azken 24 orduetan baimenei eman zaien erabilera"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Azken ordubetean baimenei eman zaien erabilera"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Azken 15 minutuetan baimenei eman zaien erabilera"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"erabilera"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Azken minutuan baimenei eman zaien erabilera"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> aplikazio</item>
       <item quantity="one">1 aplikazio</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> aplikaziok erabilia</item>
-      <item quantity="one">Aplikazio batek erabilia</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> aplikaziok <xliff:g id="PERMGROUP_1">%2$s</xliff:g> atzitzeko baimenak erabili dituzte</item>
+      <item quantity="one">Aplikazio batek <xliff:g id="PERMGROUP_0">%2$s</xliff:g> atzitzeko baimenak erabili ditu</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Ikusi guztiak panelean"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Iragazteko irizpidea: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -239,7 +238,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Argazkiak atera eta bideoak graba ditzakete baimen hau duten aplikazioek"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Zure kontaktuak atzi ditzakete baimen hau duten aplikazioek"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Gailu honen kokapena atzi dezakete baimen hau duten aplikazioek"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Inguruko Bluetooth bidezko gailuak hauteman, eta haietara konekta daitezke baimen hau duten aplikazioek"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Baimen hori duten aplikazioek inguruko gailuak hauteman, haietara konektatu eta haien posizio erlatiboa zehatz dezakete"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Audioa graba dezakete baimen hau duten aplikazioek"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Telefono-deiak egin eta kudea ditzakete baimen hau duten aplikazioek"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Bizi-konstanteen sentsoreen datuak atzi ditzakete baimen hau duten aplikazioek"</string>
@@ -436,8 +435,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Baliteke aplikazioak beti atzitu nahi izatea zure kokapena, baita aplikazioa erabiltzen ari ez zarenean ere. "<annotation id="link">"Eman baimen hori Ezarpenak atalean"</annotation>"."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Kokapenerako sarbidea aldatu nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Aplikazioak beti atzitu nahi du zure kokapena, baita aplikazioa erabiltzen ari ez zarenean ere. "<annotation id="link">"Eman baimen hori Ezarpenak atalean"</annotation>"."</string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"Inguruko Bluetooth bidezko gailuak hautemateko eta haietara konektatzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"Inguruko Bluetooth bidezko gailuak hautemateko eta haietara konektatzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari? "<annotation id="link">"Eman baimena ezarpenetan."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"Inguruko gailuak hautemateko eta haietara konektatzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"Inguruko gailuak hautemateko eta haietara konektatzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari? "<annotation id="link">"Eman baimena ezarpenetan."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Gailuaren kokapen zehatza atzitzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Gailuaren gutxi gorabeherako kokapena atzitzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Zehatza"</string>

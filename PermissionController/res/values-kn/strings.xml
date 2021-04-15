@@ -161,16 +161,12 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"ಕಳೆದ 24 ಗಂಟೆಗಳಲ್ಲಿನ ಅನುಮತಿಯ ಬಳಕೆ"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"ಕಳೆದ 1 ಗಂಟೆಯಲ್ಲಿನ ಅನುಮತಿಯ ಬಳಕೆ"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"ಕಳೆದ 15 ನಿಮಿಷಗಳಲ್ಲಿನ ಅನುಮತಿಯ ಬಳಕೆ"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"ಬಳಕೆ"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"ಕಳೆದ 1 ನಿಮಿಷದಲ್ಲಿನ ಅನುಮತಿಯ ಬಳಕೆ"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> ಆ್ಯಪ್‌ಗಳು</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ಆ್ಯಪ್‌ಗಳು</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="one"><xliff:g id="NUMBER">%d</xliff:g> ಆ್ಯಪ್‌ಗಳನ್ನು ಬಳಸಲಾಗಿದೆ</item>
-      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> ಆ್ಯಪ್‌ಗಳನ್ನು ಬಳಸಲಾಗಿದೆ</item>
-    </plurals>
+    <!-- no translation found for permission_usage_preference_label (7599037764529821028) -->
     <string name="permission_usage_view_details" msgid="6675335735468752787">"ಎಲ್ಲವನ್ನೂ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ನಲ್ಲಿ ವೀಕ್ಷಿಸಿ"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"ಈ ಆಧಾರದ ಮೇಲೆ ಫಿಲ್ಟರ್ ಮಾಡಲಾಗಿದೆ: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"ಫಿಲ್ಟರ್ ತೆಗೆದುಹಾಕಿ"</string>
@@ -239,7 +235,8 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ಚಿತ್ರಗಳನ್ನು ಸೆರೆಹಿಡಿಯಬಹುದು ಮತ್ತು ವೀಡಿಯೊ ರೆಕಾರ್ಡ್ ಮಾಡಬಹುದು"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ನಿಮ್ಮ ಸಂಪರ್ಕಗಳನ್ನು ಪ್ರವೇಶಿಸಬಹುದು"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ಈ ಸಾಧನದ ಸ್ಥಳವನ್ನು ಪ್ರವೇಶಿಸಬಹುದು"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ಸಮೀಪದಲ್ಲಿರುವ ಬ್ಲೂಟೂತ್ ಸಾಧನಗಳನ್ನು ಅನ್ವೇಷಿಸಬಹುದು ಮತ್ತು ಅವುಗಳಿಗೆ ಕನೆಕ್ಟ್ ಮಾಡಬಹುದು"</string>
+    <!-- no translation found for permission_description_summary_nearby_devices (4993093121706938071) -->
+    <skip />
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ಆಡಿಯೊ ರೆಕಾರ್ಡ್ ಮಾಡಬಹುದು"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ಫೋನ್ ಕರೆಗಳನ್ನು ಮಾಡಬಹುದು ಮತ್ತು ನಿರ್ವಹಿಸಬಹುದು"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ನಿಮ್ಮ ಪ್ರಮುಖ ವೈದ್ಯಕೀಯ ಮಾಪನಗಳ ಕುರಿತ ಸೆನ್ಸರ್ ಡೇಟಾವನ್ನು ಪ್ರವೇಶಿಸಬಹುದು"</string>
@@ -436,8 +433,10 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"ನೀವು ಈ ಆ್ಯಪ್ ಅನ್ನು ಬಳಸದಿರುವಾಗಲೂ ಸಹ, ಯಾವಾಗಲೂ ನಿಮ್ಮ ಸ್ಥಳಕ್ಕೆ ಪ್ರವೇಶವನ್ನು ಹೊಂದಲು ಆ್ಯಪ್ ಬಯಸಬಹುದು. "<annotation id="link">"ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಅನುಮತಿಸಿ."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಆ್ಯಪ್‌ಗಾಗಿ ಸ್ಥಳ ಪ್ರವೇಶವನ್ನು ಬದಲಾಯಿಸಬೇಕೆ?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"ನೀವು ಈ ಆ್ಯಪ್ ಅನ್ನು ಬಳಸದಿರುವಾಗಲೂ ಸಹ, ಯಾವಾಗಲೂ ನಿಮ್ಮ ಸ್ಥಳಕ್ಕೆ ಪ್ರವೇಶವನ್ನು ಹೊಂದಲು ಆ್ಯಪ್ ಬಯಸುತ್ತದೆ. "<annotation id="link">"ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಅನುಮತಿಸಿ."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"ನಿಮ್ಮ ಸಮೀಪದಲ್ಲಿರುವ ಬ್ಲೂಟೂತ್ ಸಾಧನಗಳನ್ನು ಅನ್ವೇಷಿಸಲು ಮತ್ತು ಅವುಗಳಿಗೆ ಕನೆಕ್ಟ್ ಮಾಡಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸುವುದೇ?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"ನಿಮ್ಮ ಸಮೀಪದಲ್ಲಿರುವ ಬ್ಲೂಟೂತ್ ಸಾಧನಗಳನ್ನು ಅನ್ವೇಷಿಸಲು ಮತ್ತು ಅವುಗಳಿಗೆ ಕನೆಕ್ಟ್ ಮಾಡಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸುವುದೇ? "<annotation id="link">"ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಅನುಮತಿಸಿ."</annotation></string>
+    <!-- no translation found for permgrouprequest_nearby_devices (620046480867488546) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequestdetail_nearby_devices (2560445503628306938) -->
+    <skip />
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"ಈ ಸಾಧನದ ನಿಖರವಾದ ಸ್ಥಳವನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"ಈ ಸಾಧನದ ಅಂದಾಜು ಸ್ಥಳವನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"ನಿಖರ"</string>

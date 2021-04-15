@@ -161,15 +161,14 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Penggunaan izin dalam 24 jam terakhir"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Penggunaan izin dalam 1 jam terakhir"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Penggunaan izin dalam 15 menit terakhir"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"penggunaan"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Penggunaan izin dalam 1 menit terakhir"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> aplikasi</item>
       <item quantity="one">1 aplikasi</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> aplikasi digunakan</item>
-      <item quantity="one">1 aplikasi digunakan</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> aplikasi menggunakan <xliff:g id="PERMGROUP_1">%2$s</xliff:g></item>
+      <item quantity="one">1 aplikasi menggunakan <xliff:g id="PERMGROUP_0">%2$s</xliff:g></item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Lihat semua di Dasbor"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Difilter menurut: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -230,7 +229,7 @@
     <string name="last_opened_category_title" msgid="7871347400611202595">"Terakhir dibuka lebih dari <xliff:g id="NUMBER">%s</xliff:g> bulan lalu"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Aplikasi terakhir dibuka pada <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Terakhir dibuka <xliff:g id="DATE">%s</xliff:g>"</string>
-    <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Jika Anda mengizinkan pengelolaan semua file, aplikasi ini dapat mengakses, mengubah, dan menghapus file di penyimpanan umum pada perangkat ini atau perangkat penyimpanan yang terhubung. Aplikasi dapat mengakses file tanpa bertanya pada Anda."</string>
+    <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Jika Anda mengizinkan pengelolaan semua file, aplikasi ini dapat mengakses, mengubah, dan menghapus file di penyimpanan umum pada perangkat ini atau perangkat penyimpanan yang terhubung. Aplikasi dapat mengakses file tanpa bertanya kepada Anda."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Izinkan aplikasi ini untuk mengakses, mengubah, dan menghapus file di perangkat, atau perangkat penyimpanan yang terhubung? Aplikasi ini dapat mengakses file tanpa bertanya pada Anda."</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"Aplikasi dengan izin ini dapat <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Aplikasi dengan izin ini dapat mengakses aktivitas fisik Anda, seperti berjalan, bersepeda, mengemudi, menghitung langkah, dan sebagainya"</string>
@@ -239,7 +238,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Aplikasi dengan izin ini dapat mengambil foto dan merekam video"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Aplikasi dengan izin ini dapat mengakses kontak Anda"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Aplikasi dengan izin ini dapat mengakses lokasi perangkat ini"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Aplikasi dengan izin ini dapat menemukan dan terhubung ke perangkat Bluetooth di sekitar"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Aplikasi dengan izin ini dapat menemukan, terhubung ke, dan menentukan posisi relatif perangkat di sekitar"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Aplikasi dengan izin ini dapat merekam audio"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Aplikasi dengan izin ini dapat melakukan dan mengelola panggilan telepon"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Aplikasi dengan izin ini dapat mengakses data sensor tentang tanda-tanda vital Anda"</string>
@@ -436,8 +435,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Aplikasi ini mungkin ingin selalu mengakses lokasi, meski tidak sedang digunakan. "<annotation id="link">"Izinkan di setelan."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Ubah akses lokasi untuk &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Aplikasi ini mungkin ingin selalu mengakses lokasi, meski tidak sedang digunakan. "<annotation id="link">"Izinkan di setelan."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; untuk menemukan dan terhubung ke perangkat Bluetooth di sekitar?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; untuk menemukan dan terhubung ke perangkat Bluetooth di sekitar? "<annotation id="link">"Izinkan di setelan."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; menemukan dan terhubung ke perangkat di sekitar?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; menemukan dan terhubung ke perangkat di sekitar? "<annotation id="link">"Izinkan di setelan."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses lokasi akurat perangkat ini?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses perkiraan lokasi perangkat ini?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Akurat"</string>

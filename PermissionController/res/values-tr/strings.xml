@@ -161,15 +161,14 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Son 24 saat içinde gerçekleşen izin kullanımı"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Son 1 saat içinde gerçekleşen izin kullanımı"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Son 15 dakika içinde gerçekleştirilen izin kullanımı"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"kullanım"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Son 1 dakika içinde gerçekleşen izin kullanımı"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> uygulama</item>
       <item quantity="one">1 uygulama</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> uygulama kullandı</item>
-      <item quantity="one">1 uygulama kullandı</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> uygulama <xliff:g id="PERMGROUP_1">%2$s</xliff:g> kullandı</item>
+      <item quantity="one">1 uygulama <xliff:g id="PERMGROUP_0">%2$s</xliff:g> kullandı</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Tümünü Kontrol Paneli\'nde göster"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtre ölçütü: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -239,7 +238,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Bu izne sahip uygulamalar fotoğraf çekebilir ve video kaydedebilir"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Bu izne sahip uygulamalar kişilerinize erişebilir"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Bu izne sahip uygulamalar bu cihazın konumuna erişebilir"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Bu izne sahip uygulamalar, yakındaki Bluetooth cihazları keşfedip bağlanabilir"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Bu izne sahip uygulamalar, yakındaki cihazları keşfedip bağlanabilir ve bu cihazların göreli konumunu belirleyebilir"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Bu izne sahip uygulamalar sesleri kaydedebilir"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Bu izne sahip uygulamalar telefon aramaları yapabilir ve telefon aramalarını yönetebilir"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Bu izne sahip uygulamalar hayati belirtilerinizle ilgili sensör verilerine erişebilir"</string>
@@ -436,8 +435,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Bu uygulama, kullanmadığınız sırada bile konum bilginize sürekli olarak erişmek isteyebilir. "<annotation id="link">"Ayarlar\'da izin verin."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; için konum adresi değiştirilsin mi?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Bu uygulama, kullanmadığınız sırada bile konum bilginize sürekli olarak erişmek isteyebilir. "<annotation id="link">"Ayarlar\'da izin verin."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasına, yakındaki Bluetooth cihazları keşfedip bağlanma izni verilsin mi?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasına, yakındaki Bluetooth cihazları keşfedip bağlanma izni verilsin mi? "<annotation id="link">"Ayarlarda izin ver"</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasına, yakındaki cihazları keşfedip bağlanma izni verilsin mi?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasına, yakındaki cihazları keşfedip bağlanma izni verilsin mi? "<annotation id="link">"Ayarlarda izin ver"</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının bu cihazın tam konumuna erişmesine izin verilsin mi?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının bu cihazın yaklaşık konumuna erişmesine izin verilsin mi?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Tam"</string>

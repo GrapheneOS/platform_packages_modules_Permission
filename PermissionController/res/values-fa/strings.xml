@@ -39,7 +39,7 @@
     <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g> مجوز غیرفعال است"</string>
     <string name="permission_revoked_all" msgid="3397649017727222283">"همه مجوزها غیرفعال است"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"هیچ‌ موردی غیرفعال نیست"</string>
-    <string name="grant_dialog_button_allow" msgid="5314677880021102550">"مجاز"</string>
+    <string name="grant_dialog_button_allow" msgid="5314677880021102550">"مجاز بودن"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"همیشه مجاز بودن"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"هنگام استفاده از برنامه"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"تغییر به مکان دقیق"</string>
@@ -161,15 +161,14 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"پراستفاده‌ترین مجوز در ۲۴ ساعت گذشته"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"پراستفاده‌ترین مجوزها در ۱ ساعت گذشته"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"پراستفاده‌ترین مجوزها در ۱۵ دقیقه گذشته"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"مصرف"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"پراستفاده‌ترین مجوزها در ۱ دقیقه گذشته"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> برنامه</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> برنامه</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="one"><xliff:g id="NUMBER">%d</xliff:g> برنامه استفاده کرده است</item>
-      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> برنامه استفاده کرده است</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="one"><xliff:g id="NUMBER">%1$d</xliff:g> برنامه از <xliff:g id="PERMGROUP_1">%2$s</xliff:g> استفاده کرده است</item>
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> برنامه از <xliff:g id="PERMGROUP_1">%2$s</xliff:g> استفاده کرده است</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"دیدن همه موارد در داشبورد"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"فیلترشده براساس: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -194,7 +193,7 @@
     <string name="app_permission_usage_title" msgid="6676802437831981822">"استفاده از اجازه‌های برنامه"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"دسترسی: <xliff:g id="NUM">%1$s</xliff:g> بار. کل مدت: <xliff:g id="DURATION">%2$s</xliff:g>. آخرین استفاده: <xliff:g id="TIME">%3$s</xliff:g> قبل."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"دسترسی: <xliff:g id="NUM">%1$s</xliff:g> بار. آخرین استفاده: <xliff:g id="TIME">%2$s</xliff:g> قبل."</string>
-    <string name="app_permission_button_allow" msgid="5808039516494774647">"مجاز"</string>
+    <string name="app_permission_button_allow" msgid="5808039516494774647">"مجاز بودن"</string>
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"اجازه دادن برای مدیریت همه فایل‌ها"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"اجازه دادن فقط برای دسترسی به رسانه‌ها"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"همیشه مجاز بودن"</string>
@@ -239,7 +238,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"برنامه‌هایی که این مجوز را داشته باشند می‌توانند عکس بگیرند و ویدیو ضبط کنند"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"برنامه‌هایی که این مجوز را داشته باشند می‌توانند به مخاطبین دسترسی داشته باشند"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"برنامه‌هایی که این مجوز را داشته باشند می‌توانند به مکان این دستگاه دسترسی داشته باشند"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"برنامه‌هایی که این اجازه را دارند می‌توانند دستگاه‌های بلوتوث اطراف را پیدا کنند و به آن‌ها متصل شوند"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"برنامه‌هایی که این اجازه را دارند می‌توانند دستگاه‌های اطراف را پیدا کنند، به آن‌ها متصل شوند، و موقعیت نسبی آن‌ها را مشخص کنند"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"برنامه‌هایی که این مجوز را داشته باشند می‌توانند صدا ضبط کنند"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"برنامه‌هایی که این مجوز را داشته باشند می‌توانند تماس تلفنی برقرار کنند و آن‌ را مدیریت کنند"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"برنامه‌هایی که این مجوز را داشته باشند می‌توانند به داده‌های حسگر مربوط به نشانه‌های حیاتی دسترسی داشته باشند"</string>
@@ -249,7 +248,7 @@
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"درحال‌حاضر رد شده است / آخرین دسترسی: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"هرگز دسترسی نداشته است"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"غیرمجاز / هرگز دسترسی نداشته است"</string>
-    <string name="allowed_header" msgid="7769277978004790414">"مجاز"</string>
+    <string name="allowed_header" msgid="7769277978004790414">"مجاز بودن"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"همیشه مجاز بودن"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"مجاز فقط هنگام استفاده از برنامه"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"مجاز فقط برای دسترسی به رسانه‌ها"</string>
@@ -320,10 +319,10 @@
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"همه فایل‌ها"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"هیچ مجوزی اعطا نشده است"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"هیچ اجازه‌ای رد نشده"</string>
-    <string name="no_apps_allowed" msgid="7718822655254468631">"هیچ برنامه‌ای مجاز نیست"</string>
-    <string name="no_apps_allowed_full" msgid="8011716991498934104">"هیچ برنامه‌ای برای همه فایل‌ها مجاز نیست"</string>
-    <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"هیچ برنامه‌ای فقط برای رسانه‌ها مجاز نیست"</string>
-    <string name="no_apps_denied" msgid="7663435886986784743">"هیچ برنامه‌ای رد نشد"</string>
+    <string name="no_apps_allowed" msgid="7718822655254468631">"برنامه‌ای مجاز نشده"</string>
+    <string name="no_apps_allowed_full" msgid="8011716991498934104">"برنامه‌ای برای همه فایل‌ها مجاز نشده"</string>
+    <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"برنامه‌ای برای فقط رسانه مجاز نشده"</string>
+    <string name="no_apps_denied" msgid="7663435886986784743">"برنامه‌ای غیرمجاز نشده"</string>
     <string name="car_permission_selected" msgid="180837028920791596">"انتخاب‌شده"</string>
     <string name="settings" msgid="5409109923158713323">"تنظیمات"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"<xliff:g id="SERVICE_NAME">%s</xliff:g> سرویس به دستگاه شما دسترسی کامل دارند"</string>
@@ -419,7 +418,7 @@
     <string name="incident_report_dialog_intro" msgid="5897733669850951832">"سیستم مشکلی را تشخیص داده است."</string>
     <string name="incident_report_dialog_text" msgid="5675553296891757523">"<xliff:g id="APP_NAME_0">%1$s</xliff:g> درخواست بارگذاری گزارش اشکالی را دارد که در <xliff:g id="DATE">%2$s</xliff:g> ساعت <xliff:g id="TIME">%3$s</xliff:g> در این دستگاه پیش آمده است. گزارش‌های اشکال شامل اطلاعات شخصی درباره دستگاه شما است یا اطلاعاتی که توسط برنامه‌ها گزارش شده است، برای مثال نام‌های کاربر، داده‌های مکان، شناسه‌های دستگاه و اطلاعات شبکه. گزارش‌های اشکال را تنها با افراد و برنامه‌هایی هم‌رسانی کنید که به آن‌ها در این‌باره اعتماد دارید. به <xliff:g id="APP_NAME_1">%4$s</xliff:g> اجازه بارگذاری گزارش اشکال داده شود؟"</string>
     <string name="incident_report_error_dialog_text" msgid="4189647113387092272">"هنگام پردازش گزارش اشکال برای <xliff:g id="APP_NAME">%1$s</xliff:g> خطایی رخ داد. بنابراین هم‌رسانی داده‌های اشکال‌زدایی دقیق رد شد. از وقفه پیش‌آمده پوزش می‌طلبیم."</string>
-    <string name="incident_report_dialog_allow_label" msgid="2970242967721155239">"مجاز"</string>
+    <string name="incident_report_dialog_allow_label" msgid="2970242967721155239">"مجاز بودن"</string>
     <string name="incident_report_dialog_deny_label" msgid="3535314290677579383">"مجاز نبودن"</string>
     <string name="adjust_user_sensitive_title" msgid="4196724451314280527">"تنظیمات پیشرفته"</string>
     <string name="menu_adjust_user_sensitive" msgid="6497923610654425780">"تنظیمات پیشرفته"</string>
@@ -436,8 +435,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"این برنامه ممکن است بخواهد مرتب به مکانتان دسترسی داشته باشد، حتی زمانی‌که از برنامه استفاده نمی‌کنید. "<annotation id="link">"در تنظیمات به آن اجازه دهید."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"‏دسترسی به مکان برای &lt;b&amp;gt؛<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&amp;gt تغییر کند؟"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"این برنامه می‌خواهد مرتب به مکانتان دسترسی داشته باشد، حتی زمانی‌که از برنامه استفاده نمی‌کنید. "<annotation id="link">"در تنظیمات به آن اجازه دهید."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"‏به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; اجازه می‌دهید دستگاه‌های بلوتوث اطراف را پیدا کند و به آن‌ها متصل شود؟"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"‏به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; اجازه می‌دهید دستگاه‌های بلوتوث اطراف را پیدا کند و به آن‌ها متصل شود؟ "<annotation id="link">"در تنظیمات اجازه دهید."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"‏به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; اجازه می‌دهید دستگاه‌های اطراف را پیدا کند و به آن‌ها متصل شود؟"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"‏به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; اجازه می‌دهید دستگاه‌های اطراف را پیدا کند و به آن‌ها متصل شود؟ "<annotation id="link">"در تنظیمات اجازه دهید."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"‏به &lt;b&amp;gt؛<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&amp;gt؛ اجازه داده شود به مکان دقیق این دستگاه دسترسی پیدا کند؟"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"‏به &lt;b&amp;gt؛<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&amp;gt؛ اجازه داده شود به مکان تقریبی این دستگاه دسترسی پیدا کند؟"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"دقیق"</string>

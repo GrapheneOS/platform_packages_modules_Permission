@@ -179,7 +179,6 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Використання дозволів за останні 24 години"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Використання дозволів за останню годину"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Використання дозволів за останні 15 хвилин"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"використання"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Використання дозволів за останню хвилину"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> додаток</item>
@@ -187,11 +186,11 @@
       <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> додатків</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> додатка</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="one">Використав <xliff:g id="NUMBER">%d</xliff:g> додаток</item>
-      <item quantity="few">Використали <xliff:g id="NUMBER">%d</xliff:g> додатки</item>
-      <item quantity="many">Використали <xliff:g id="NUMBER">%d</xliff:g> додатків</item>
-      <item quantity="other">Використали <xliff:g id="NUMBER">%d</xliff:g> додатка</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="one"><xliff:g id="NUMBER">%1$d</xliff:g> додаток використовував групу дозволів \"<xliff:g id="PERMGROUP_1">%2$s</xliff:g>\"</item>
+      <item quantity="few"><xliff:g id="NUMBER">%1$d</xliff:g> додатки використовували групу дозволів \"<xliff:g id="PERMGROUP_1">%2$s</xliff:g>\"</item>
+      <item quantity="many"><xliff:g id="NUMBER">%1$d</xliff:g> додатків використовували групу дозволів \"<xliff:g id="PERMGROUP_1">%2$s</xliff:g>\"</item>
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> додатка використовували групу дозволів \"<xliff:g id="PERMGROUP_1">%2$s</xliff:g>\"</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Переглянути деталі на інформаційній панелі"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Відфільтровано за параметром \"<xliff:g id="PERM">%1$s</xliff:g>\""</string>
@@ -263,7 +262,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Додатки з цим дозволом можуть робити знімки та записувати відео"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Додатки з цим дозволом мають доступ до ваших контактів"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Додатки з цим дозволом мають доступ до геоданих цього пристрою"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Додатки з цим дозволом можуть знаходити поблизу пристрої з Bluetooth і підключатися до них"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Додатки з цим дозволом можуть знаходити пристрої поблизу, визначати відстань і підключатися до них."</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Додатки з цим дозволом можуть записувати аудіо"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Додатки з цим дозволом можуть здійснювати виклики й керувати ними"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Додатки з цим дозволом мають доступ до даних датчиків про ваші життєві показники"</string>
@@ -474,8 +473,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Додаток може запитувати доступ до ваших геоданих, навіть коли ви не використовуєте його. Дозвіл можна надати в "<annotation id="link">"налаштуваннях"</annotation>"."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Змінити доступ до геоданих для додатка &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Додаток хоче завжди отримувати доступ до ваших геоданих, навіть коли ви не використовуєте його. Дозвіл можна надати в "<annotation id="link">"налаштуваннях"</annotation>"."</string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"Дозволити додатку <xliff:g id="APP_NAME">%1$s</xliff:g> знаходити поблизу пристрої з Bluetooth і підключатися до них?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"Дозволити додатку <xliff:g id="APP_NAME">%1$s</xliff:g> знаходити поблизу пристрої з Bluetooth і підключатися до них? "<annotation id="link">"Дозвольте в налаштуваннях."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"Дозволити додатку <xliff:g id="APP_NAME">%1$s</xliff:g> знаходити поблизу пристрої та підключатися до них?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"Дозволити додатку <xliff:g id="APP_NAME">%1$s</xliff:g> знаходити поблизу пристрої та підключатися до них? "<annotation id="link">"Дозвольте в налаштуваннях."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Надати додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до точного місцезнаходження пристрою?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Надати додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до приблизного місцезнаходження пристрою?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Точне"</string>
