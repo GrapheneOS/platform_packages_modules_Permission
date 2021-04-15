@@ -22,6 +22,7 @@ import static java.util.concurrent.TimeUnit.MINUTES;
 
 import android.Manifest.permission_group;
 import android.app.ActionBar;
+import android.app.role.RoleManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -90,6 +91,7 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
 
     private MenuItem mShowSystemMenu;
     private MenuItem mHideSystemMenu;
+    private @NonNull RoleManager mRoleManager;
 
     /**
      * Construct a new instance of PermissionDetailsFragment
@@ -114,6 +116,7 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
         initializeTimeFilter();
         mFilterTimeIndex = FILTER_24_HOURS;
 
+        mShowSystem = false;
         if (savedInstanceState != null) {
             mShowSystem = savedInstanceState.getBoolean(SHOW_SYSTEM_KEY);
         }
@@ -131,6 +134,8 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
         Context context = getPreferenceManager().getContext();
 
         mPermissionUsages = new PermissionUsages(context);
+        mRoleManager = Utils.getSystemServiceSafe(context, RoleManager.class);
+
         reloadData();
     }
 
@@ -215,6 +220,8 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
         long startTime = Math.max(timeFilterItem == null ? 0 : (curTime - timeFilterItem.getTime()),
                 0);
 
+        Set<String> exemptedPackages = Utils.getExemptedPackages(mRoleManager);
+
         PermissionGroupPreference permissionPreference = new PermissionGroupPreference(context,
                 getResources(), mFilterGroup);
         screen.addPreference(permissionPreference);
@@ -222,7 +229,9 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
         AtomicBoolean seenSystemApp = new AtomicBoolean(false);
 
         ArrayList<PermissionApps.PermissionApp> permApps = new ArrayList<>();
-        List<AppPermissionUsageEntry> usages = mAppPermissionUsages.stream().map(appUsage -> {
+        List<AppPermissionUsageEntry> usages = mAppPermissionUsages.stream()
+                .filter(appUsage -> !exemptedPackages.contains(appUsage.getPackageName()))
+                .map(appUsage -> {
             // Fetch the access time list of the app accesses mFilterGroup permission group
             // The DiscreteAccessTime is a Pair of (access time, access duration) of that app
             List<Pair<Long, Long>> discreteAccessTimeList = new ArrayList<>();
