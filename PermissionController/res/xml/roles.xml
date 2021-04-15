@@ -775,6 +775,7 @@
         allowBypassingQualification="true"
         defaultHolders="config_systemActivityRecognizer"
         exclusive="true"
+        fallBackToDefaultHolder="true"
         systemOnly="true"
         visible="false">
         <required-components>
