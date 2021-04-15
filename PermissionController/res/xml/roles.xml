@@ -487,6 +487,7 @@
             <permission-set name="phone" />
             <permission-set name="sms" />
             <permission-set name="contacts" />
+            <permission-set name="nearby_devices" />
         </permissions>
         <app-op-permissions>
             <app-op-permission name="android.permission.MANAGE_ONGOING_CALLS" />
@@ -610,7 +611,7 @@
     -->
     <role
         name="android.app.role.SYSTEM_COMPANION_DEVICE_PROVIDER"
-        defaultHolders="config_companionProviderPackage"
+        defaultHolders="config_systemCompanionDeviceProvider"
         exclusive="true"
         minSdkVersion="31"
         systemOnly="true"

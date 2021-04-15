@@ -161,15 +161,14 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"मागील २४ तासांतील परवानगी वापर"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"मागील एका तासातील परवानगी वापर"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"मागील १५ मिनिटांतील परवानगी वापर"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"वापर"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"मागील एका मिनिटातील परवानगी वापर"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> अ‍ॅप्स</item>
       <item quantity="one">एक अ‍ॅप</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> ॲप्स वापरली</item>
-      <item quantity="one">एक ॲप वापरले</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> ॲप्सने <xliff:g id="PERMGROUP_1">%2$s</xliff:g> वापरला</item>
+      <item quantity="one">१ ॲपने <xliff:g id="PERMGROUP_0">%2$s</xliff:g> वापरला</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"डॅशबोर्डमध्ये सर्व पहा"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"यानुसार फिल्टर केले: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -239,7 +238,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"ही परवानगी असलेली अ‍ॅप्स फोटो घेऊ आणि व्हिडिओ रेकॉर्ड करू शकतात"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"ही परवानगी असलेली अ‍ॅप्स तुमचे संपर्क अ‍ॅक्सेस करू शकतात"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"ही परवानगी असलेली अ‍ॅप्स या डिव्हाइसचे स्थान अ‍ॅक्सेस करू शकतात"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"या परवानगीसह ॲप्स जवळपासची ब्लूटूथ डिव्‍हाइस शोधू आणि कनेक्ट करू शकतात"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"ही परवानगी असलेली ॲप्स जवळपासची डिव्हाइस शोधू शकतात, त्यांच्याशी कनेक्ट करू शकतात आणि त्यांचे संबंधित स्थान निर्धारित करू शकतात"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"ही परवानगी असलेली अ‍ॅप्स ऑडिओ रेकॉर्ड करू शकतात"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"ही परवानगी असलेली अ‍ॅप्स फोन कॉल करू आणि व्यवस्थापित करू शकतात"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"ही परवानगी असलेली अ‍ॅप्स तुमच्या महत्त्वाच्या लक्षणांबद्दलचा सेन्सर डेटा अ‍ॅक्सेस करू शकतात"</string>
@@ -436,8 +435,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"तुम्ही अ‍ॅप वापरत नसतानादेखील कदाचित या ॲपला नेहमी तुमचे स्थान ॲक्सेस करायचे आहे."<annotation id="link">"सेटिंग्जमधून अनुमती द्या."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;<xliff:g id="APP_NAME">%1$s</xliff:g>&gt; चा स्थान ॲक्सेस बदलायचा आहे का?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"तुम्ही अ‍ॅप वापरत नसतानादेखील या ॲपला नेहमी तुमचे स्थान ॲक्सेस करायचे आहे. "<annotation id="link">"सेटिंग्जमधून अनुमती द्या."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&gt; ला जवळपासची ब्लूटूथ डिव्‍हाइस शोधण्यासाठी आणि कनेक्ट करण्यासाठी अनुमती द्यायची का?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&gt; ला जवळपासची ब्लूटूथ डिव्‍हाइस शोधण्यासाठी आणि कनेक्ट करण्यासाठी अनुमती द्यायची का? "<annotation id="link">"सेटिंग्जमध्ये अनुमती द्या."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&gt; ला जवळपासची डिव्‍हाइस शोधण्यासाठी आणि त्यांच्याशी कनेक्ट करण्यासाठी अनुमती द्यायची आहे का?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&gt; ला जवळपासची डिव्‍हाइस शोधण्यासाठी आणि त्यांच्याशी कनेक्ट करण्यासाठी अनुमती द्यायची आहे का? "<annotation id="link">"सेटिंग्जमध्ये अनुमती द्या."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला या डिव्हाइसचे अचूक स्थान ॲक्सेस करू द्यायचे आहे का?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला या डिव्हाइसचे अंदाजे स्थान ॲक्सेस करू द्यायचे आहे का?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"अचूक"</string>
