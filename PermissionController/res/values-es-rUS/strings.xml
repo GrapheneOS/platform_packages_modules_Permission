@@ -161,15 +161,14 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Uso de permisos en las últimas 24 horas"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Uso de permisos en la última hora"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Uso de permisos en los últimos 15 minutos"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"uso"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Uso de permisos en el último minuto"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> apps</item>
       <item quantity="one">1 app</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="other">Se usan <xliff:g id="NUMBER">%d</xliff:g> apps</item>
-      <item quantity="one">Se usa 1 app</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> apps en <xliff:g id="PERMGROUP_1">%2$s</xliff:g></item>
+      <item quantity="one">1 app en <xliff:g id="PERMGROUP_0">%2$s</xliff:g></item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Ver todo en el panel"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrado por: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -232,14 +231,14 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Abierta por última vez el <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Si permites que se administren todos los archivos, esta app podrá consultar, modificar y borrar los archivos que haya en el almacenamiento común de este dispositivo o en los dispositivos de almacenamiento conectados. Podrá acceder a los archivos sin consultarte."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"¿Deseas permitir que esta app consulte, modifique y borre los archivos de este dispositivo y de los dispositivos de almacenamiento conectados? Podrá acceder a los archivos sin consultarte."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Las apps con este permiso pueden <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Permiso para estas apps: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Las apps que tienen este permiso pueden acceder a tu actividad física, recorridos a pie o en bicicleta, trayectos en automóvil, recuento de pasos y más"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Las apps con este permiso pueden acceder a tu calendario"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Las apps que tienen este permiso pueden leer el registro de llamadas del teléfono y escribir en él"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Las apps que tienen este permiso pueden tomar fotos y grabar videos"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Las apps que tienen este permiso pueden acceder a tus contactos"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Las apps que tienen este permiso pueden acceder a la ubicación del dispositivo"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Las apps que tienen este permiso pueden descubrir dispositivos Bluetooth cercanos y conectarse a ellos"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Las apps con este permiso pueden descubrir dispositivos cercanos, conectarse a ellos y determinar su posición relativa"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Las apps que tienen este permiso pueden grabar audio"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Las apps que tienen este permiso pueden realizar y administrar llamadas telefónicas"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Las apps que tienen este permiso pueden acceder a los datos de tus signos vitales capturados por un sensor"</string>
@@ -436,8 +435,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Es posible que esta app quiera acceder a tu ubicación todo el tiempo, incluso cuando no la uses. "<annotation id="link">"Permite el acceso en Configuración."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"¿Quieres cambiar el acceso a la ubicación de &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Esta app quiere acceder a tu ubicación todo el tiempo, incluso cuando no la uses. "<annotation id="link">"Permite el acceso en Configuración."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"¿Quieres permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; descubra dispositivos Bluetooth cercanos y se conecte a ellos?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"¿Quieres permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; descubra dispositivos Bluetooth cercanos y se conecte a ellos? "<annotation id="link">"Hazlo en Configuración."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"¿Quieres permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; descubra dispositivos cercanos y se conecte a ellos?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"¿Quieres permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; descubra dispositivos cercanos y se conecte a ellos? "<annotation id="link">"Hazlo en Configuración."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"¿Deseas permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a la ubicación precisa de este dispositivo?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"¿Deseas permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a la ubicación aproximada de este dispositivo?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Precisa"</string>

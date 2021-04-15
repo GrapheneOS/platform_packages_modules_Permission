@@ -161,15 +161,14 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Uso dos permisos nas últimas 24 horas"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Uso dos permisos durante a última hora"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Uso dos permisos durante os últimos 15 minutos"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"uso"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Uso dos permisos durante o último minuto"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> aplicacións</item>
       <item quantity="one">1 aplicación</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> apps</item>
-      <item quantity="one">1 app</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="other"><xliff:g id="PERMGROUP_1">%2$s</xliff:g>: <xliff:g id="NUMBER">%1$d</xliff:g> apps</item>
+      <item quantity="one"><xliff:g id="PERMGROUP_0">%2$s</xliff:g>: 1 app</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Ver todo no panel de control"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Vista filtrada por: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -239,7 +238,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"As aplicacións que teñen este permiso poden sacar fotos e gravar vídeos"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"As aplicacións que teñen este permiso poden acceder aos teus contactos"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"As aplicacións que teñen este permiso poden acceder á localización deste dispositivo"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"As aplicacións con este permiso poden detectar dispositivos Bluetooth próximos e conectarse a eles"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"As aplicacións con este permiso poden detectar dispositivos próximos, conectarse a eles e determinar a súa posición relativa"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"As aplicacións con este permiso poden gravar audio"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"As aplicacións que teñen este permiso poden realizar e xestionar chamadas telefónicas"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"As aplicacións que teñen este permiso poden acceder aos datos dos sensores sobre as túas constantes vitais"</string>
@@ -275,7 +274,7 @@
     <string name="permission_reminders" msgid="6528257957664832636">"Recordatorios de permisos"</string>
     <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"1 aplicación que non se usa"</string>
     <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> aplicacións que non se usan"</string>
-    <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"Elimináronse os permisos para protexer a túa privacidade. Toca para revisar a utilización"</string>
+    <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"Quitáronse os permisos para protexer a túa privacidade. Toca para revisar a utilización"</string>
     <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"Quitáronse os permisos das aplicacións que non se usan"</string>
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Algunhas aplicacións levan varios meses sen usarse. Toca para revisar a utilización."</string>
     <plurals name="auto_revoke_permission_notification_content_count" formatted="false" msgid="9159794096518540350">
@@ -296,7 +295,7 @@
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Permisos quitados"</string>
     <string name="all_unused_apps_category_title" msgid="755663524704745414">"Todas as aplicacións que non se usan"</string>
     <string name="months_ago" msgid="1766026492610646354">"Hai <xliff:g id="COUNT">%1$d</xliff:g> meses"</string>
-    <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Elimináronse os permisos para protexer a túa privacidade"</string>
+    <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Quitáronse os permisos para protexer a túa privacidade"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"A aplicación <xliff:g id="APP_NAME">%s</xliff:g> accedeu á túa localización en segundo plano"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Esta aplicación pode acceder sempre á túa localización. Toca para cambiar esta opción."</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Permisos de aplicacións quitados para protexer a privacidade"</string>
@@ -436,8 +435,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Esta aplicación pode querer acceder á túa localización todo o tempo, incluso cando non a esteas utilizando. "<annotation id="link">"Permitir en Configuración"</annotation>"."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Queres cambiar o acceso da aplicación &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; á localización?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Esta aplicación quere acceder á túa localización todo o tempo, incluso cando non a esteas utilizando. "<annotation id="link">"Permitir en Configuración"</annotation>"."</string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"Queres permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; detecte dispositivos Bluetooth próximos e se conecte a eles?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"Queres permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; detecte dispositivos Bluetooth próximos e se conecte a eles? "<annotation id="link">"Permitir na configuración"</annotation>"."</string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"Queres permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; detecte dispositivos próximos e se conecte a eles?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"Queres permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; detecte dispositivos próximos e se conecte a eles? "<annotation id="link">"Permitir na configuración"</annotation>"."</string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Queres permitir que a aplicación &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda á localización precisa deste dispositivo?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Queres permitir que a aplicación &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda á localización aproximada deste dispositivo?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Precisa"</string>

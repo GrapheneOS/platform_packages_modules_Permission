@@ -161,15 +161,14 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Matumizi ya ruhusa katika saa 24 zilizopita"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Ruhusa zilizotumiwa zaidi katika saa 1 iliyopita"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Matumizi ya ruhusa katika dakika 15 zilizopita."</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"matumizi"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Matumizi ya ruhusa katika dakika 1 iliyopita"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other">Programu <xliff:g id="NUMBER">%s</xliff:g></item>
       <item quantity="one">Programu 1</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="other">Programu <xliff:g id="NUMBER">%d</xliff:g> zimetumika</item>
-      <item quantity="one">Programu moja imetumika</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="other">Programu <xliff:g id="NUMBER">%1$d</xliff:g> zimetumia <xliff:g id="PERMGROUP_1">%2$s</xliff:g></item>
+      <item quantity="one">Programu moja imetumia <xliff:g id="PERMGROUP_0">%2$s</xliff:g></item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Yaone yote kwenye Dashibodi"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Zilizochujwa kulingana na: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -239,7 +238,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Programu zenye ruhusa hii zinaweza kupiga picha na kurekodi video"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Programu zenye ruhusa hii zinaweza kufikia anwani zako"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Programu zenye ruhusa hii zinaweza kutambua mahali kilipo kifaa hiki"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Programu zenye ruhusa hii zinaweza kutambua na kuunganisha kwenye vifaa vyenye Bluetooth vilivyo karibu"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Programu zenye ruhusa hii zinaweza kutambua, kuunganisha kwenye na kubaini nafasi ya vifaa vilivyo karibu"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Programu zenye ruhusa hii zinaweza kurekodi sauti"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Programu zenye ruhusa hii zinaweza kupiga na kudhibiti simu"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Vifaa vyenye ruhusa hii vinaweza kufikia data ya vitambuzi kuhusu ishara zako kuu"</string>
@@ -436,8 +435,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Huenda programu hii ikataka kufikia maelezo ya mahali ulipo kila wakati, hata wakati huitumii."<annotation id="link">"Iruhusu katika mipangilio."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Ungependa kubadilisha ruhusa za &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; za kufikia maelezo ya mahali?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Programu hii inataka kufikia maelezo ya mahali ulipo kila wakati, hata wakati huitumii."<annotation id="link">"Iruhusu katika mipangilio."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; itambue na kuunganisha kwenye vifaa vyenye Bluetooth vilivyo karibu?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; itambue na kuunganisha kwenye vifaa vyenye Bluetooth vilivyo karibu? "<annotation id="link">"Ruhusu katika mipangilio."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; itambue na kuunganisha kwenye vifaa vilivyo karibu?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; itambue na kuunganisha kwenye vifaa vilivyo karibu? "<annotation id="link">"Ruhusu katika mipangilio."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie mahali mahususi kilipo kifaa hiki?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie mahali palipokadiriwa kilipo kifaa hiki?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Mahususi"</string>

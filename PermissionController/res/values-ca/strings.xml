@@ -161,15 +161,14 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Ús de permisos durant les últimes 24 hores"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Ús de permisos durant l\'última hora"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Ús de permisos durant els últims 15 minuts"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"ús"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Ús de permisos durant l\'últim minut"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> aplicacions</item>
       <item quantity="one">1 aplicació</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> apps utilitzades</item>
-      <item quantity="one">1 app utilitzada</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="other"><xliff:g id="PERMGROUP_1">%2$s</xliff:g>: <xliff:g id="NUMBER">%1$d</xliff:g> apps</item>
+      <item quantity="one"><xliff:g id="PERMGROUP_0">%2$s</xliff:g>: 1 app</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Mostra-ho tot al tauler"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrats per: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -239,7 +238,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Les aplicacions amb aquest permís poden fer fotos i gravar vídeos"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Les aplicacions amb aquest permís poden accedir als teus contactes"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Les aplicacions amb aquest permís poden accedir a la ubicació d\'aquest dispositiu"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Les aplicacions amb aquest permís poden detectar i connectar-se a dispositius Bluetooth propers"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Les aplicacions amb aquest permís poden detectar dispositius propers, connectar-s\'hi i determinar-ne la posició relativa"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Les aplicacions amb aquest permís poden gravar àudio"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Les aplicacions amb aquest permís poden fer i gestionar trucades telefòniques"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Les aplicacions amb aquest permís poden accedir a les dades dels sensors sobre les teves constants vitals"</string>
@@ -436,8 +435,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Aquesta aplicació vol tenir accés a la teva ubicació sempre, fins i tot quan no l\'estiguis utilitzant. "<annotation id="link">"Pots permetre-ho a Configuració"</annotation>"."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Vols canviar l\'accés a la ubicació per a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Aquesta aplicació vol tenir accés a la teva ubicació sempre, fins i tot quan no l\'estiguis utilitzant. "<annotation id="link">"Pots permetre-ho a Configuració"</annotation>"."</string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; detecti i es connecti a dispositius Bluetooth propers?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; detecti i es connecti a dispositius Bluetooth propers? "<annotation id="link">"Permet a Configuració"</annotation>"."</string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; detecti dispositius propers i s\'hi connecti?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; detecti dispositius propers i s\'hi connecti? "<annotation id="link">"Permet a Configuració"</annotation>"."</string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi a la ubicació exacta del dispositiu?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi a la ubicació aproximada del dispositiu?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Exacta"</string>

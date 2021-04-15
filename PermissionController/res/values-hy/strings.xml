@@ -161,15 +161,14 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Թույլտվությունների օգտագործումը վերջին 24 ժամում"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Թույլտվությունների օգտագործումը վերջին 1 ժամում"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Թույլտվությունների օգտագործումը վերջին 15 րոպեում"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"օգտագործում"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Թույլտվությունների օգտագործումը վերջին 1 րոպեում"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> հավելված</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> հավելված</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="one">Օգտագործվում է <xliff:g id="NUMBER">%d</xliff:g> հավելված</item>
-      <item quantity="other">Օգտագործվում է <xliff:g id="NUMBER">%d</xliff:g> հավելված</item>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="one"><xliff:g id="NUMBER">%1$d</xliff:g> հավելված օգտագործել է <xliff:g id="PERMGROUP_1">%2$s</xliff:g></item>
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> հավելված օգտագործել է <xliff:g id="PERMGROUP_1">%2$s</xliff:g></item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Դիտել բոլորը կառավարման վահանակում"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Զտիչ՝ <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -239,7 +238,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Այս թույլտվությունն ունեցող հավելվածները կարող են լուսանկարել և տեսագրել"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Այս թույլտվությունն ունեցող հավելվածներին հասանելի են ձեր կոնտակտները"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Այս թույլտվությունն ունեցող հավելվածներին հասանելի է սարքի տեղադրությունը"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Այս թույլտվությունն ունեցող հավելվածները կարող են հայտնաբերել մոտակա Bluetooth սարքերը և միանալ դրանց"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Այս թույլտվությունն ունեցող հավելվածները կարող են հայտնաբերել մոտակա սարքերը, միանալ դրանց և որոշել դրանց հարաբերական դիրքավորումը"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Այս թույլտվությունն ունեցող հավելվածները կարող են ձայնագրել"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Այս թույլտվությունն ունեցող հավելվածները կարող են կատարել զանգեր և կառավարել դրանք"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Այս թույլտվությունն ունեցող հավելվածներին հասանելի կլինեն տվիչների տվյալները ձեր կենսագործունեության մասին"</string>
@@ -436,10 +435,10 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Հավելվածին անհրաժեշտ է ձեր գտնվելու վայրը հետագծելու թույլտվություն, նույնիսկ երբ դուք չեք օգտվում դրանից։ "<annotation id="link">"Թույլտվությունը տրամադրեք այստեղ"</annotation>"։"</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Փոխե՞լ տեղադրության մասին տվյալների հասանելիությունը &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածի համար։"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Հավելվածին անհրաժեշտ է ձեր գտնվելու վայրը հետագծելու թույլտվություն, նույնիսկ երբ դուք չեք օգտվում դրանից։ "<annotation id="link">"Թույլտվությունը տրամադրեք այստեղ"</annotation>"։"</string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին հայտնաբերել մոտակա Bluetooth սարքերը և միանալ դրանց։"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին հայտնաբերել մոտակա Bluetooth սարքերը և միանալ դրանց։ Թույլտվություն տրամադրելու համար անցեք "<annotation id="link">"կարգավորումներ"</annotation>"։"</string>
-    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել այս սարքի ճշգրիտ տեղադրության տվյալները։"</string>
-    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել այս սարքի մոտավոր տեղադրության տվյալները։"</string>
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին հայտնաբերել մոտակա սարքերը և միանալ դրանց։"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին հայտնաբերել մոտակա սարքերը և միանալ դրանց։ Թույլտվություն տրամադրելու համար անցեք "<annotation id="link">"կարգավորումներ"</annotation>"։"</string>
+    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել այս սարքի ճշգրիտ տեղադրությունը"</string>
+    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել այս սարքի մոտավոր տեղադրությունը"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Ճշգրիտ"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Մոտավոր"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել ձեր օրացույցը:"</string>
