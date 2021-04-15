@@ -56,6 +56,7 @@ Edit [roles.xml](../../../../../res/xml/roles.xml) to add your new role:
     name="android.app.role.SYSTEM_YOUR_ROLE_NAME"
     defaultHolders="config_systemYourRoleName"
     exclusive="true"
+    fallBackToDefaultHolder="true"
     minSdkVersion="31"
     systemOnly="true"
     visible="false">
