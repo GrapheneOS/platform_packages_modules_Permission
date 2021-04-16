@@ -44,6 +44,7 @@ import static com.android.permissioncontroller.Constants.INVALID_SESSION_ID;
 import android.Manifest;
 import android.app.AppOpsManager;
 import android.app.Application;
+import android.app.role.RoleManager;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
@@ -95,9 +96,11 @@ import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
+import java.util.Set;
 
 public final class Utils {
 
@@ -165,6 +168,31 @@ public final class Utils {
     public static final int FLAGS_ALWAYS_USER_SENSITIVE =
             FLAG_PERMISSION_USER_SENSITIVE_WHEN_GRANTED
                     | FLAG_PERMISSION_USER_SENSITIVE_WHEN_DENIED;
+
+    private static final String SYSTEM_PKG = "android";
+
+    private static final String SYSTEM_AMBIENT_AUDIO_INTELLIGENCE =
+            "android.app.role.SYSTEM_AMBIENT_AUDIO_INTELLIGENCE";
+    private static final String SYSTEM_UI_INTELLIGENCE =
+            "android.app.role.SYSTEM_UI_INTELLIGENCE";
+    private static final String SYSTEM_AUDIO_INTELLIGENCE =
+            "android.app.role.SYSTEM_AUDIO_INTELLIGENCE";
+    private static final String SYSTEM_NOTIFICATION_INTELLIGENCE =
+            "android.app.role.SYSTEM_NOTIFICATION_INTELLIGENCE";
+    private static final String SYSTEM_TEXT_INTELLIGENCE =
+            "android.app.role.SYSTEM_TEXT_INTELLIGENCE";
+    private static final String SYSTEM_VISUAL_INTELLIGENCE =
+            "android.app.role.SYSTEM_VISUAL_INTELLIGENCE";
+
+    // TODO: theianchen Using hardcoded values here as a WIP solution for now.
+    private static final String[] EXEMPTED_ROLES = {
+            SYSTEM_AMBIENT_AUDIO_INTELLIGENCE,
+            SYSTEM_UI_INTELLIGENCE,
+            SYSTEM_AUDIO_INTELLIGENCE,
+            SYSTEM_NOTIFICATION_INTELLIGENCE,
+            SYSTEM_TEXT_INTELLIGENCE,
+            SYSTEM_VISUAL_INTELLIGENCE,
+    };
 
     static {
         PLATFORM_PERMISSIONS = new ArrayMap<>();
@@ -1131,5 +1159,19 @@ public final class Utils {
         return !userManager.getEnabledProfiles().contains(user)
                 || (userManager.isManagedProfile(user.getIdentifier())
                 && !DeviceUtils.isTelevision(app));
+    }
+
+    /**
+     * Get all the exempted packages.
+     */
+    public static Set<String> getExemptedPackages(@NonNull RoleManager roleManager) {
+        Set<String> exemptedPackages = new HashSet<>();
+
+        exemptedPackages.add(SYSTEM_PKG);
+        for (int i = 0; i < EXEMPTED_ROLES.length; i++) {
+            exemptedPackages.addAll(roleManager.getRoleHolders(EXEMPTED_ROLES[i]));
+        }
+
+        return exemptedPackages;
     }
 }
