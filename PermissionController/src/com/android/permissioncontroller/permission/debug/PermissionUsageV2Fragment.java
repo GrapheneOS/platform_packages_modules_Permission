@@ -27,6 +27,7 @@ import android.accounts.AccountManager;
 import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.role.RoleManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -135,6 +136,8 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
 
     private boolean mFinishedInitialLoad;
 
+    private @NonNull RoleManager mRoleManager;
+
     /**
      * @return A new fragment
      */
@@ -182,6 +185,7 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
         mCollator = Collator.getInstance(
                 context.getResources().getConfiguration().getLocales().get(0));
         mPermissionUsages = new PermissionUsages(context);
+        mRoleManager = Utils.getSystemServiceSafe(context, RoleManager.class);
 
         reloadData();
     }
@@ -353,7 +357,10 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
         }
         ArrayList<PermissionApps.PermissionApp> permApps = new ArrayList<>();
 
-        boolean seenSystemApp = extractPermissionUsage(usages, permApps, startTime);
+        Set<String> exemptedPackages = Utils.getExemptedPackages(mRoleManager);
+
+        boolean seenSystemApp = extractPermissionUsage(exemptedPackages,
+                usages, permApps, startTime);
 
         if (mHasSystemApps != seenSystemApp) {
             mHasSystemApps = seenSystemApp;
@@ -395,17 +402,23 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
      * It's doing two things at the same method which is violating the SOLID principle.
      * We should fix this.
      *
+     * @param exemptedPackages packages that are the role holders for exempted roles
      * @param usages an empty List that will be filled with permission usages.
      * @param permApps an empty List that will be filled with permission apps.
      * @return whether we have seen a system app.
      */
-    private boolean extractPermissionUsage(Map<String, Integer> usages,
+    private boolean extractPermissionUsage(Set<String> exemptedPackages,
+            Map<String, Integer> usages,
             ArrayList<PermissionApps.PermissionApp> permApps,
             long startTime) {
         boolean seenSystemApp = false;
         int numApps = mAppPermissionUsages.size();
         for (int appNum = 0; appNum < numApps; appNum++) {
             AppPermissionUsage appUsage = mAppPermissionUsages.get(appNum);
+            if (exemptedPackages.contains(appUsage.getPackageName())) {
+                continue;
+            }
+
             boolean used = false;
             List<GroupUsage> appGroups = appUsage.getGroupUsages();
             int numGroups = appGroups.size();
