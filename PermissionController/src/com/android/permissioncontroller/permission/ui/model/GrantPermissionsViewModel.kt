@@ -272,11 +272,17 @@ class GrantPermissionsViewModel(
 
                 if (fgState?.group != null) {
                     val fgGroup = fgState.group
-                    if (!fgGroup.foreground.isGranted ||
-                        fgGroup.permissions[ACCESS_FINE_LOCATION]?.isGrantedIncludingAppOp
-                            == false) {
-                        needFgPermissions = true
-                        isFgUserSet = fgState.group.foreground.isUserSet
+                    for (perm in fgState.affectedPermissions) {
+                        if (fgGroup.permissions[perm]?.isGrantedIncludingAppOp == false) {
+                            // If any of the requested permissions is not granted,
+                            // needFgPermissions = true
+                            needFgPermissions = true
+                            // If any of the requested permission's UserSet is true and the
+                            // permission is not granted, isFgUserSet = true.
+                            if (fgGroup.permissions[perm]?.isUserSet == true) {
+                                isFgUserSet = true
+                            }
+                        }
                     }
                 }
 
