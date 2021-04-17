@@ -242,7 +242,7 @@
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များက အသံဖမ်းယူနိုင်သည်"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များက ဖုန်းခေါ်ဆိုမှုများကို ပြုလုပ်နိုင် စီမံနိုင်သည်"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များက သင်၏အရေးကြီးသော ကျန်းမာရေးလက္ခဏာများနှင့်ဆိုင်သည့် အာရုံခံစနစ်ဒေတာကို ဝင်သုံးနိုင်သည်"</string>
-    <string name="permission_description_summary_sms" msgid="725999468547768517">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များက SMS မက်ဆေ့ဂျ်များ ပို့နိုင်၊ ကြည့်နိုင်သည်"</string>
+    <string name="permission_description_summary_sms" msgid="725999468547768517">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်က SMS မက်ဆေ့ဂျ် ပို့နိုင်၊ ကြည့်နိုင်သည်"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များက သင့်စက်ပေါ်ရှိ ဓာတ်ပုံ၊ မီဒီယာနှင့် ဖိုင်များကို ဝင်သုံးနိုင်သည်"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"နောက်ဆုံး အသုံးပြုချိန်- <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"လက်ရှိငြင်းပယ်ထားသည် / နောက်ဆုံးဝင်သုံးချိန်− <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>

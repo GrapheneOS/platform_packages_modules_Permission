@@ -167,8 +167,8 @@
       <item quantity="one">ஒரு ஆப்ஸ்</item>
     </plurals>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
-      <item quantity="other"><xliff:g id="PERMGROUP_1">%2$s</xliff:g> ஐ <xliff:g id="NUMBER">%1$d</xliff:g> ஆப்ஸ் பயன்படுத்தின</item>
-      <item quantity="one"><xliff:g id="PERMGROUP_0">%2$s</xliff:g> ஐ 1 ஆப்ஸ் பயன்படுத்தியது</item>
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> ஆப்ஸால் <xliff:g id="PERMGROUP_1">%2$s</xliff:g>பயன்படுத்தப்பட்டது</item>
+      <item quantity="one">1 ஆப்ஸால் <xliff:g id="PERMGROUP_0">%2$s</xliff:g> பயன்படுத்தப்பட்டது</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"டாஷ்போர்டில் அனைத்தையும் காட்டு"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"இதன்படி வடிகட்டப்பட்டது: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -231,7 +231,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"கடைசியாகத் திறந்தது: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"அனைத்து ஃபைல்களையும் நிர்வகிப்பதற்கு அனுமதி வழங்கினால் இந்தச் சாதனத்தின் பொதுவான சேமிப்பகத்திலோ இணைக்கப்பட்டுள்ள சேமிப்பகச் சாதனங்களிலோ உள்ள ஃபைல்களை அணுகவும் நீக்கவும் அவற்றில் மாற்றங்களைச் செய்யவும் இந்த ஆப்ஸால் முடியும். உங்களிடம் கேட்காமலேயே ஃபைல்களை ஆப்ஸ் அணுகக்கூடும்."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"இந்தச் சாதனத்திலோ இணைக்கப்பட்டுள்ள சேமிப்பகச் சாதனங்களிலோ உள்ள ஃபைல்களை அணுகவும் நீக்கவும் அவற்றில் மாற்றங்களைச் செய்யவும் இந்த ஆப்ஸை அனுமதிக்கவா? உங்களிடம் கேட்காமலேயே ஃபைல்களை இந்த ஆப்ஸ் அணுகக்கூடும்."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"இந்த அனுமதியைக் கொண்டுள்ள ஆப்ஸால் <xliff:g id="DESCRIPTION">%1$s</xliff:g> செய்ய இயலும்"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"இந்த அனுமதியைக் கொண்டுள்ள ஆப்ஸானது <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"இந்த அனுமதியைக் கொண்டுள்ள ஆப்ஸால் நடத்தல், சைக்கிள் ஓட்டுதல், வாகனம் ஓட்டுதல், படிகளில் ஏறி இறங்குதல் மற்றும் பல உடல்ரீதியான செயல்பாடுகளை அணுக இயலும்"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"இந்த அனுமதியைக் கொண்டுள்ள ஆப்ஸால் உங்கள் கேலெண்டரை அணுக இயலும்"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"இந்த அனுமதியைக் கொண்டுள்ள ஆப்ஸ் மொபைல் அழைப்புப் பதிவைப் படிக்கும், எழுதும்"</string>
