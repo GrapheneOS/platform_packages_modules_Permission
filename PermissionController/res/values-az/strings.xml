@@ -202,8 +202,8 @@
     <string name="app_permission_button_deny" msgid="2399316993899108824">"İmtina edin"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Dəqiq məkan"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Təxmini məkan"</string>
-    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Dəqiq məkanı istifadə edin"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Tətbiqlər yalnız deaktiv olduqda, qonşuluqdakı təxmini məkanınızı təyin edə bilər"</string>
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Məkan dəqiq aşkarlansın"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Tətbiqlər deaktiv olduqda məkanı təxmini aşkarlaya bilər"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> üçün icazə"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Tətbiqə <xliff:g id="PERM">%1$s</xliff:g> icazəsi"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Bütün <xliff:g id="APP">%1$s</xliff:g> icazələrinə baxın"</string>
@@ -237,7 +237,7 @@
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Bu icazəyə sahib olan tətbiqlər telefon üçün zəng siyahısını oxuya və yaza bilər"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Bu icazəyə sahib tətbiqlər şəkil və videolar çəkə bilər"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Bu icazəyə sahib tətbiqlər kontaklara giriş edə bilır"</string>
-    <string name="permission_description_summary_location" msgid="2817531799933480694">"Bu icazəyə sahib tətbiqlər cihazın məkanına giriş edə bilər"</string>
+    <string name="permission_description_summary_location" msgid="2817531799933480694">"Buna icazəsi olan tətbiqlər cihaz məkanını öyrənə bilər"</string>
     <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Bu icazəsi olan tətbiqlər yaxınlıqdakı cihazları aşkarlaya, qoşula və nisbi mövqeyi təyin edə bilər"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Bu icazəyə sahib tətbiqlər audio qeydə ala bilər"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Bu icazəyə sahib olan tətbiqlər telefon zəngləri aça edə və onları idarə edə bilər"</string>

@@ -265,9 +265,9 @@
     <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Приложения с этим разрешением могут находить устройства поблизости, подключаться к ним и определять их относительное позиционирование."</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Приложения с этим разрешением могут записывать аудио."</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Приложения с этим разрешением могут совершать звонки и управлять ими."</string>
-    <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Приложения с этим разрешением могут получать доступ к данным датчиков о состоянии организма."</string>
+    <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Приложения с этим разрешением могут получать доступ к данным датчиков основных показателей жизнедеятельности."</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Приложения с этим разрешением могут отправлять и просматривать SMS-сообщения."</string>
-    <string name="permission_description_summary_storage" msgid="6575759089065303346">"Приложения с этим разрешением могут получить доступ к фотографиям, медиа и другим файлам на вашем устройстве."</string>
+    <string name="permission_description_summary_storage" msgid="6575759089065303346">"Приложения с этим разрешением могут получать доступ к фотографиям, медиа и другим файлам на вашем устройстве."</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Последний раз использовано: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Временно запрещено / Последний доступ: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Не использовалось"</string>
