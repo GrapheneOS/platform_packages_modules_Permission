@@ -166,7 +166,10 @@
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g>টা এপ্</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g>টা এপ্</item>
     </plurals>
-    <!-- no translation found for permission_usage_preference_label (7599037764529821028) -->
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="one"><xliff:g id="NUMBER">%1$d</xliff:g> টা এপে <xliff:g id="PERMGROUP_1">%2$s</xliff:g> ব্যৱহাৰ কৰিছে</item>
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> টা এপে <xliff:g id="PERMGROUP_1">%2$s</xliff:g> ব্যৱহাৰ কৰিছে</item>
+    </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"সকলো ডেশ্বব’ৰ্ডত চাওক"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"এই অনুসৰি ফিল্টাৰ কৰা: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"ফিল্টাৰ আঁতৰাওক"</string>
@@ -235,8 +238,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"এই অনুমতি থকা এপ্‌সমূহে ফট’ তুলিব আৰু ভিডিঅ’ ৰেকৰ্ড কৰিব পাৰে"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"এই অনুমতি থকা এপ্‌সমূহে আপোনাৰ সম্পৰ্কসূচী এক্সেছ কৰিব পাৰে"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"এই অনুমতি থকা এপ্‌সমূহে এই ডিভাইচটোৰ অৱস্থান এক্সেছ কৰিব পাৰিব"</string>
-    <!-- no translation found for permission_description_summary_nearby_devices (4993093121706938071) -->
-    <skip />
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"অনুমতি থকা এপে নিকটৱৰ্তী ডিভাইচৰ আপেক্ষিক স্থান বিচাৰিব, তাৰ সৈতে সংযোগ কৰি আৰু সেয়া নিৰ্ধাৰণ কৰিব পাৰে"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"এই অনুমতি থকা এপ্‌সমূহে অডিঅ’ ৰেকৰ্ড কৰিব পাৰে"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"এই অনুমতি থকা এপ্‌সমূহে ফ’ন কল কৰিব আৰু পৰিচালনা কৰিব পাৰে"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"এই অনুমতি থকা এপে আপোনাৰ দেহৰ গুৰুত্বপূৰ্ণ অংগসমূহৰ অৱস্থাৰ বিষয়ে ছেন্সৰৰ ডেটা লাভ কৰিব পাৰে"</string>
@@ -252,7 +254,7 @@
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"কেৱল মিডিয়ালৈ এক্সেছৰ অনুমতি আছে"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"সকলো ফাইল পৰিচালনা কৰিবলৈ অনুমতি আছে"</string>
     <string name="ask_header" msgid="2633816846459944376">"প্ৰতিবাৰতে সোধক"</string>
-    <string name="denied_header" msgid="2253955654228120835">"অস্বীকাৰ কৰা হৈছে"</string>
+    <string name="denied_header" msgid="2253955654228120835">"প্রত্যাখ্যান কৰা হৈছে"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> দিন</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> দিন</item>
@@ -433,10 +435,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"এই এপ্‌টোৱে সকলো সময়তে আপোনাৰ অৱস্থান এক্সেছ কৰিবলৈ বিচাৰিব পাৰে, আনকি আপুনি এপ্‌টো ব্যৱহাৰ কৰি নথকা সময়তো। "<annotation id="link">"ছেটিংসমূহত ত অনুমতি দিয়ক।"</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ৰ বাবে অৱস্থানৰ এক্সেছ সলনি কৰিবনে?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"এই এপ্‌টোৱে সকলো সময়তে আপোনাৰ অৱস্থান এক্সেছ কৰিবলৈ বিচাৰে, আনকি আপুনি এপ্‌টো ব্যৱহাৰ কৰি নথকা সময়তো। "<annotation id="link">"ত অনুমতি দিয়ক।"</annotation></string>
-    <!-- no translation found for permgrouprequest_nearby_devices (620046480867488546) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequestdetail_nearby_devices (2560445503628306938) -->
-    <skip />
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক নিকটৱৰ্তী ডিভাইচসমূহ বিচাৰি উলিয়াবলৈ আৰু সেইসমূহৰ সৈতে সংযোগ কৰিবলৈ দিবনে?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক নিকটৱৰ্তী ডিভাইচসমূহ বিচাৰি উলিয়াবলৈ আৰু সেইসমূহৰ সৈতে সংযোগ কৰিবলৈ দিবনে? "<annotation id="link">"ছেটিঙত অনুমতি প্ৰদান কৰক।"</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক এই ডিভাইচটোৰ সঠিক অৱস্থান এক্সেছ কৰিবলৈ অনুমতি দিবনে?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক এই ডিভাইচটোৰ আনুমানিক অৱস্থান এক্সেছ কৰিবলৈ অনুমতি দিবনে?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"সঠিক"</string>

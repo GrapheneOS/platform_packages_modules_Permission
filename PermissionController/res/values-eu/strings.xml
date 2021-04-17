@@ -167,8 +167,8 @@
       <item quantity="one">1 aplikazio</item>
     </plurals>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
-      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> aplikaziok <xliff:g id="PERMGROUP_1">%2$s</xliff:g> atzitzeko baimenak erabili dituzte</item>
-      <item quantity="one">Aplikazio batek <xliff:g id="PERMGROUP_0">%2$s</xliff:g> atzitzeko baimenak erabili ditu</item>
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> aplikaziok <xliff:g id="PERMGROUP_1">%2$s</xliff:g> atzitzeko baimena erabili dute</item>
+      <item quantity="one">Aplikazio batek <xliff:g id="PERMGROUP_0">%2$s</xliff:g> atzitzeko baimena erabili du</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Ikusi guztiak panelean"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Iragazteko irizpidea: <xliff:g id="PERM">%1$s</xliff:g>"</string>

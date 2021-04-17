@@ -166,7 +166,10 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> Apps</item>
       <item quantity="one">1 App</item>
     </plurals>
-    <!-- no translation found for permission_usage_preference_label (7599037764529821028) -->
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> Apps haben <xliff:g id="PERMGROUP_1">%2$s</xliff:g> verwendet</item>
+      <item quantity="one">1 App hat <xliff:g id="PERMGROUP_0">%2$s</xliff:g> verwendet</item>
+    </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Alle im Dashboard ansehen"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Gefiltert nach: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Filter entfernen"</string>
@@ -235,8 +238,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Apps mit dieser Berechtigung können Fotos und Videos aufnehmen"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Apps mit dieser Berechtigung dürfen auf deine Kontakte zugreifen"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Apps mit dieser Berechtigung dürfen auf den Standort dieses Geräts zugreifen"</string>
-    <!-- no translation found for permission_description_summary_nearby_devices (4993093121706938071) -->
-    <skip />
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Apps mit dieser Berechtigung können Geräte in der Nähe finden, eine Verbindung zu ihnen herstellen und ihre relative Distanz zwischen einander ermitteln"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Apps mit dieser Berechtigung dürfen Audio aufnehmen"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Apps mit dieser Berechtigung dürfen Telefonanrufe starten und verwalten"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Apps mit dieser Berechtigung dürfen auf Sensordaten zu deinen Vitalfunktionen zugreifen"</string>
@@ -433,10 +435,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Diese App möchte eventuell Zugriff auf deinen Standort haben, auch wenn du sie nicht verwendest. "<annotation id="link">"Du kannst das in den Einstellungen zulassen."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Standortzugriff für &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ändern?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Diese App möchte jederzeit Zugriff auf deinen Standort haben, auch wenn du sie nicht verwendest. "<annotation id="link">"Du kannst das in den Einstellungen zulassen."</annotation></string>
-    <!-- no translation found for permgrouprequest_nearby_devices (620046480867488546) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequestdetail_nearby_devices (2560445503628306938) -->
-    <skip />
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, Geräte in der Nähe zu finden und eine Verbindung herzustellen?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, Geräte in der Nähe zu finden und eine Verbindung herzustellen? "<annotation id="link">"In den Einstellungen zulassen."</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, den genauen Gerätestandort abzurufen?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, den ungefähren Gerätestandort abzurufen?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Genau"</string>

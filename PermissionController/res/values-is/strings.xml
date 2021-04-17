@@ -145,7 +145,7 @@
     <string name="permission_usage_any_permission" msgid="6358023078298106997">"Hvaða heimild sem er"</string>
     <string name="permission_usage_any_time" msgid="3802087027301631827">"Hvenær sem er"</string>
     <string name="permission_usage_last_7_days" msgid="7386221251886130065">"Síðustu sjö daga"</string>
-    <string name="permission_usage_last_day" msgid="1512880889737305115">"Síðasta sólarhring"</string>
+    <string name="permission_usage_last_day" msgid="1512880889737305115">"Síðasti sólarhringur"</string>
     <string name="permission_usage_last_hour" msgid="3866005205535400264">"Síðustu klukkustund"</string>
     <string name="permission_usage_last_15_minutes" msgid="9077554653436200702">"Síðustu 15 mínútur"</string>
     <string name="permission_usage_last_minute" msgid="7297055967335176238">"Síðasta mínúta"</string>
@@ -236,12 +236,12 @@
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Forrit með þessar heimildir hafa aðgang að dagatalinu þínu"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Forrit með þessa heimild geta lesið og skrifað símtalaskrá síma"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Forrit með þessa heimild geta tekið myndir og tekið upp myndskeið"</string>
-    <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Forrit með þessar heimildir hafa aðgang að tengiliðum þínum"</string>
+    <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Forrit með þessa heimild hafa aðgang að tengiliðunum þínum"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Forrit með þessa heimild hafa aðgang að staðsetningu þessa tækis"</string>
     <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Forrit með heimildir geta fundið, tengst við og ákvarðað fjarlægð milli nálægra tækja"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Forrit með þessa heimild geta tekið upp hljóð"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Forrit með þessa heimild geta hringt og stjórnað símtölum"</string>
-    <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Forrit með þessa heimild hafa aðgang að skynjaragögnum yfir lífsmörk þín"</string>
+    <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Forrit með þessa heimild hafa aðgang að skynjaragögnum um lífsmörk þín"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Forrit með þessa heimild geta sent og skoðað SMS-skilaboð"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Forrit sem hafa þessa heimild hafa aðgang að myndum, efni og skrám í tækinu þínu"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Síðast notuð: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
