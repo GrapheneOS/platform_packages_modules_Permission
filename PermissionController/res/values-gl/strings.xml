@@ -384,7 +384,7 @@
     <string name="system_uses_microphone_and_camera" msgid="5124478304275138804">"Estase accedendo á cámara e ao micrófono mediante un servizo do sistema"</string>
     <string name="system_uses_camera" msgid="1911223105234441470">"Estase accedendo á cámara mediante un servizo do sistema"</string>
     <string name="other_use" msgid="6564855051022776692">"Outro uso:"</string>
-    <string name="ongoing_usage_dialog_ok" msgid="103556809118460072">"De acordo"</string>
+    <string name="ongoing_usage_dialog_ok" msgid="103556809118460072">"Entendido"</string>
     <string name="ongoing_usage_dialog_title" msgid="683836493556628569">"Uso recente de: <xliff:g id="TYPES_LIST">%s</xliff:g>"</string>
     <string name="ongoing_usage_dialog_title_mic" msgid="5966714811125593992">"Uso recente do micrófono"</string>
     <string name="ongoing_usage_dialog_title_camera" msgid="7819329688650711470">"Uso recente da cámara"</string>

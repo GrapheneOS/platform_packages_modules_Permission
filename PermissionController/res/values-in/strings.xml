@@ -191,8 +191,8 @@
     <string name="permission_history_category_today" msgid="7496389369158806620">"Hari ini"</string>
     <string name="permission_history_category_yesterday" msgid="7242517121222012521">"Kemarin"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Penggunaan izin aplikasi"</string>
-    <string name="app_permission_usage_summary" msgid="390383661936709672">"Akses: <xliff:g id="NUM">%1$s</xliff:g> kali. Durasi total: <xliff:g id="DURATION">%2$s</xliff:g>. Terakhir digunakan <xliff:g id="TIME">%3$s</xliff:g> yang lalu."</string>
-    <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Akses: <xliff:g id="NUM">%1$s</xliff:g> kali. Terakhir digunakan <xliff:g id="TIME">%2$s</xliff:g> yang lalu."</string>
+    <string name="app_permission_usage_summary" msgid="390383661936709672">"Akses: <xliff:g id="NUM">%1$s</xliff:g> kali. Durasi total: <xliff:g id="DURATION">%2$s</xliff:g>. Terakhir digunakan <xliff:g id="TIME">%3$s</xliff:g> lalu."</string>
+    <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Akses: <xliff:g id="NUM">%1$s</xliff:g> kali. Terakhir digunakan <xliff:g id="TIME">%2$s</xliff:g> lalu."</string>
     <string name="app_permission_button_allow" msgid="5808039516494774647">"Izinkan"</string>
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Izinkan pengelolaan semua file"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Izinkan akses hanya ke media"</string>
@@ -294,7 +294,7 @@
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Izin yang dihapus"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Izin dihapus"</string>
     <string name="all_unused_apps_category_title" msgid="755663524704745414">"Semua aplikasi yang tidak digunakan"</string>
-    <string name="months_ago" msgid="1766026492610646354">"<xliff:g id="COUNT">%1$d</xliff:g> bulan yang lalu"</string>
+    <string name="months_ago" msgid="1766026492610646354">"<xliff:g id="COUNT">%1$d</xliff:g> bulan lalu"</string>
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Izin dihapus untuk melindungi privasi Anda"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> mendapatkan lokasi Anda di latar belakang"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Aplikasi ini selalu dapat mengakses lokasi Anda. Ketuk untuk mengubah."</string>
