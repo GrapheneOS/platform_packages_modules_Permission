@@ -166,7 +166,10 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ایپس</item>
       <item quantity="one">1 ایپ</item>
     </plurals>
-    <!-- no translation found for permission_usage_preference_label (7599037764529821028) -->
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> ایپس نے <xliff:g id="PERMGROUP_1">%2$s</xliff:g> کا استعمال کیا</item>
+      <item quantity="one">1 ایپ نے <xliff:g id="PERMGROUP_0">%2$s</xliff:g> کا استعمال کیا</item>
+    </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"سبھی کو ڈیش بورڈ میں دیکھیں"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"فلٹر کردہ بلحاظ: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"فلٹر ہٹائیں"</string>
@@ -201,7 +204,7 @@
     <string name="approximate_image_description" msgid="938803699637069884">"تخمینی مقام"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"قطعی مقام استعمال کریں"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"آف ہونے پر ایپس صرف آپ کے آس پاس کے قریبی علاقے میں آپ کے تخمینی مقام کا تعین کر سکتی ہیں"</string>
-    <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> کی اجازت"</string>
+    <string name="app_permission_title" msgid="2090897901051370711">"‫<xliff:g id="PERM">%1$s</xliff:g> کی اجازت"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"اس ایپ کیلئے <xliff:g id="PERM">%1$s</xliff:g> تک رسائی"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g> کی سبھی اجازتیں دیکھیں"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"اس اجازت والی سبھی ایپس دیکھیں"</string>
@@ -235,8 +238,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"اس اجازت والی ایپس تصاویر لے اور ویڈیو ریکارڈ کر سکتی ہیں"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"اس اجازت والی ایپس کو آپ کے رابطوں تک رسائی حاصل ہو سکتی ہے"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"اس اجازت والی ایپس کو اس آلہ کے مقام تک رسائی حاصل ہو سکتی ہے"</string>
-    <!-- no translation found for permission_description_summary_nearby_devices (4993093121706938071) -->
-    <skip />
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"اس اجازت والی ایپس قریبی آلات کو دریافت کر سکتی، ان سے منسلک ہو سکتی ان کی متعلقہ پوزیشن کا تعین کر سکتی ہیں"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"اس اجازت والی ایپس آڈیو ریکارڈ کر سکتی ہیں"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"اس اجازت والی ایپس فون کالز کر اور ان کا نظم کر سکتی ہیں"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"اس اجازت والی ایپس آپ کے اہم اشاروں کے متعلق سینسر ڈیٹا تک رسائی حاصل کر سکتی ہیں"</string>
@@ -433,10 +435,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"ممکن ہے یہ ایپ ہر وقت آپ کے مقام تک رسائی حاصل کرنا چاہے، اگرچہ آپ ایپ استعمال نہ کر رہے ہوں۔ "<annotation id="link"></annotation>"ترتیبات میں اجازت دیں۔"</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کے ليے مقام تک رسائی تبدیل کریں"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"یہ ایپ ہر وقت آپ کے مقام تک رسائی حاصل کرنا چاہتی ہے، اگرچہ آپ ایپ استعمال نہ کر رہے ہوں۔ "<annotation id="link"></annotation>"ترتیبات میں اجازت دیں۔"</string>
-    <!-- no translation found for permgrouprequest_nearby_devices (620046480867488546) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequestdetail_nearby_devices (2560445503628306938) -->
-    <skip />
+    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"‏‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎ کو قریبی آلات دریافت کرنے اور ان سے منسلک ہونے کی اجازت دیں؟"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"‏‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎ کو قریبی آلات دریافت کرنے اور ان سے منسلک ہونے کی اجازت دیں؟ "<annotation id="link">"ترتیبات میں اجازت دیں۔"</annotation></string>
     <string name="permgrouprequest_finelocation" msgid="169340229199345158">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو اس آلے کے قطعی مقام تک رسائی کی اجازت دیں؟"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو اس آلے کے تخمینی مقام تک رسائی کی اجازت دیں؟"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"قطعی"</string>

@@ -232,7 +232,7 @@
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"ሁሉንም ፋይሎች ማስተዳደርን ከፈቀዱ፣ ይህ መተግበሪያ በዚህ መሣሪያ ላይ ወይም በተገናኙ ማከማቻ መሣሪያዎች ላይ ማናቸውንም ፋይሎች መድረስ፣ ማሻሻል እና መሰረዝ ይችላል። እርስዎን ሳይጠይቅ ይህ መተግበሪያ ፋይሎችን መድረስ ይችል ይሆናል።"</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"ይህ መተግበሪያ በዚህ መሣሪያ ላይ ወይም በተገናኙ ማከማቻ መሣሪያዎች ላይ ማናቸውንም ፋይሎች መድረስ፣ ማሻሻል እና መሰረዝ ይፈቀድለት? ይህ መተግበሪያ እርስዎን ሳይጠይቅ ፋይሎችን መድረስ ይችል ይሆናል።"</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"ይህ ፈቃድ ያላቸው መተግበሪያዎች <xliff:g id="DESCRIPTION">%1$s</xliff:g> ይችላሉ"</string>
-    <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"ይህ ፈቃድ ያላቸው መተግበሪያዎች እንደ መረመድ፣ ቢስክሌት ግልቢያ፣ መንዳት፣ የእርምጃ ብዛት እና ተጨማሪ ነገሮች ያሉ አካላዊ እንቅስቃሴዎን መድረስ ይችላሉ"</string>
+    <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"ይህ ፈቃድ ያላቸው መተግበሪያዎች እንደ መራመድ፣ ቢስክሌት ግልቢያ፣ መንዳት፣ የእርምጃ ብዛት እና ተጨማሪ ነገሮች ያሉ አካላዊ እንቅስቃሴዎን መድረስ ይችላሉ"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"ይህ ፈቃድ ያላቸው መተግበሪያዎች የእርስዎን ቀን መቁጠሪያ ሊደርሱበት ይችላሉ"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"ይህ ፈቃድ ያላቸው መተግበሪያዎች የስልክ ጥሪ ምዝግብን ሊያነቡ እና ሊጽፉ ይችላሉ"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"ይህ ፈቃድ ያላቸው መተግበሪያዎች ፎቶ ማንሳት እና ቪዲዮ መቅረጽ ይችላሉ"</string>

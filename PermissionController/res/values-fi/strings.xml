@@ -48,7 +48,7 @@
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Salli kaikkien tiedostojen ylläpito"</string>
     <string name="grant_dialog_button_allow_media_only" msgid="4832877658422573832">"Salli pääsy mediatiedostoihin"</string>
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Sovell."</string>
-    <string name="app_permissions" msgid="3369917736607944781">"Sovelluksen käyttöoikeudet"</string>
+    <string name="app_permissions" msgid="3369917736607944781">"Sovellusluvat"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Käyttämättömät sovellukset"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Poista sovellus käytöstä"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Jos poistat sovelluksen käytöstä, Android ja muut sovellukset eivät välttämättä enää toimi oikein. Muista, ettet voi poistaa sovellusta, sillä se tuli laitteesi mukana. Poistamalla sovelluksen käytöstä suljet sen ja piilotat sen laitteella."</string>
@@ -80,7 +80,7 @@
     <string name="permission_summary_disabled_by_admin_background_only" msgid="3127091456731845646">"Järjestelmänvalvoja estää taustakäytön"</string>
     <string name="permission_summary_enabled_by_admin_background_only" msgid="9132423838440275757">"Järjestelmänvalvoja sallii taustakäytön"</string>
     <string name="permission_summary_enabled_by_admin_foreground_only" msgid="1298432715610745358">"Järjestelmänvalvoja sallii käytön etualalla"</string>
-    <string name="permission_summary_enabled_system_fixed" msgid="2438344700184127274">"Laite ei toimi ilman tätä käyttöoikeutta."</string>
+    <string name="permission_summary_enabled_system_fixed" msgid="2438344700184127274">"Laite ei toimi ilman tätä käyttöoikeutta"</string>
     <!-- no translation found for background_access_chooser_dialog_choices:0 (1351721623256561996) -->
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
@@ -88,7 +88,7 @@
     <string name="permission_access_only_foreground" msgid="7801170728159326195">"Salli vain, kun sov. on käyt."</string>
     <string name="permission_access_never" msgid="1029877154284995424">"Estä"</string>
     <string name="loading" msgid="4789365003890741082">"Ladataan…"</string>
-    <string name="all_permissions" msgid="6911125611996872522">"Kaikki käyttöoikeudet"</string>
+    <string name="all_permissions" msgid="6911125611996872522">"Kaikki luvat"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Muut sovellusluvat"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"Lupapyyntö"</string>
     <string name="screen_overlay_title" msgid="6977038513913222078">"Näytön peittokuva havaittiin"</string>
@@ -190,7 +190,7 @@
     <string name="permission_history_title" msgid="8340081285133025225">"Käyttöoikeushistoria"</string>
     <string name="permission_history_category_today" msgid="7496389369158806620">"Tänään"</string>
     <string name="permission_history_category_yesterday" msgid="7242517121222012521">"Eilen"</string>
-    <string name="app_permission_usage_title" msgid="6676802437831981822">"Sovelluksen käyttöoikeudet"</string>
+    <string name="app_permission_usage_title" msgid="6676802437831981822">"Sovellusluvat"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Käyttö: <xliff:g id="NUM">%1$s</xliff:g> kertaa. Kokonaiskesto: <xliff:g id="DURATION">%2$s</xliff:g>. Käytetty viimeksi <xliff:g id="TIME">%3$s</xliff:g> sitten."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Käyttö: <xliff:g id="NUM">%1$s</xliff:g> kertaa. Käytetty viimeksi <xliff:g id="TIME">%2$s</xliff:g> sitten."</string>
     <string name="app_permission_button_allow" msgid="5808039516494774647">"Salli"</string>
@@ -225,7 +225,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Luvat poistettu: <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> ja <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ja <xliff:g id="NUMBER">%2$s</xliff:g> muuta käyttöoikeutta poistettiin"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Käyttämättömät sovellukset"</string>
-    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Jos sovellusta ei käytetä muutamaan kuukauteen:\n\n• Käyttöoikeudet poistetaan datasi suojaamiseksi\n• Ilmoitukset lopetetaan akun säästämiseksi\n• Väliaikaiset tiedostot poistetaan tilan vapauttamiseksi"</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Jos sovellusta ei käytetä muutamaan kuukauteen:\n\n• Luvat poistetaan datasi suojaamiseksi\n• Ilmoitukset lopetetaan akun säästämiseksi\n• Väliaikaiset tiedostot poistetaan tilan vapauttamiseksi"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Avattu viimeksi <xliff:g id="NUMBER">%s</xliff:g> kuukautta sitten"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Sovellus avattiin viimeksi <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Avattu viimeksi <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -285,7 +285,7 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> käyttämätöntä sovellusta</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> käyttämätön sovellus</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="9195026773244581246">"Käyttöoikeudet ja väliaikaiset tiedostot on poistettu, ja ilmoitukset on lopetettu. Tarkista napauttamalla."</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"Luvat ja väliaikaiset tiedostot on poistettu, ja ilmoitukset on lopetettu. Tarkista napauttamalla."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Joitain sovelluksia ei ole käytetty muutamaan kuukauteen"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> sovellusta ei ole käytetty muutamaan kuukauteen</item>

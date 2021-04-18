@@ -206,7 +206,7 @@
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"აპებს მხოლოდ უბნების დონეზე შეუძლია თქვენი მიახლოებითი მდებარეობის გარკვევა, როცა ის გამორთულია"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"ნებართვა: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"<xliff:g id="PERM">%1$s</xliff:g>-ზე წვდომა ამ აპისთვის"</string>
-    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"ყველა <xliff:g id="APP">%1$s</xliff:g> ნებართვის ნახვა"</string>
+    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"ყველა ნებართვის ნახვა: <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"ამ ნებართვის მქონე ყველა აპის ნახვა"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"ასისტენტის მიკროფონის გამოყენების ჩვენება"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"ნებართვების ამოშლა აპის გამოუყენებლობის შემთხვევაში."</string>
