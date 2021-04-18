@@ -82,7 +82,7 @@
     <string name="permission_summary_disabled_by_admin_background_only" msgid="3127091456731845646">"הגישה ברקע מושבתת על ידי מנהל מערכת"</string>
     <string name="permission_summary_enabled_by_admin_background_only" msgid="9132423838440275757">"הגישה ברקע מופעלת על ידי מנהל מערכת"</string>
     <string name="permission_summary_enabled_by_admin_foreground_only" msgid="1298432715610745358">"הגישה במצב פעיל מופעלת על ידי מנהל מערכת"</string>
-    <string name="permission_summary_enabled_system_fixed" msgid="2438344700184127274">"ההרשאה הזו נחוצה למכשיר כדי לפעול"</string>
+    <string name="permission_summary_enabled_system_fixed" msgid="2438344700184127274">"ההרשאה הזו נחוצה כדי שהמכשיר יפעל"</string>
     <!-- no translation found for background_access_chooser_dialog_choices:0 (1351721623256561996) -->
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->

@@ -80,7 +80,7 @@
     <string name="permission_summary_disabled_by_admin_background_only" msgid="3127091456731845646">"Acesso em segundo plano desativado pelo administrador"</string>
     <string name="permission_summary_enabled_by_admin_background_only" msgid="9132423838440275757">"Acesso em segundo plano ativado pelo administrador"</string>
     <string name="permission_summary_enabled_by_admin_foreground_only" msgid="1298432715610745358">"Acesso em primeiro plano ativado pelo administrador"</string>
-    <string name="permission_summary_enabled_system_fixed" msgid="2438344700184127274">"O dispositivo requer essa permissão para funcionar"</string>
+    <string name="permission_summary_enabled_system_fixed" msgid="2438344700184127274">"Essa permissão é necessária para o dispositivo funcionar"</string>
     <!-- no translation found for background_access_chooser_dialog_choices:0 (1351721623256561996) -->
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
@@ -232,7 +232,7 @@
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Se você permitir o gerenciamento de todos os arquivos, o app poderá acessar, modificar e excluir qualquer arquivo no armazenamento comum do dispositivo ou no armazenamento de dispositivos conectados. O app poderá acessar arquivos sem pedir autorização."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Permitir que o app acesse, modifique e exclua arquivos no dispositivo ou em dispositivos de armazenamento conectados? O app poderá acessar arquivos sem pedir autorização."</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"Apps que têm esta permissão podem <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
-    <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Apps com esta permissão podem acessar sua atividade física, como caminhar, pedalar, dirigir e contagem de passos, entre outros."</string>
+    <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Apps com esta permissão podem acessar sua atividade física, como caminhar, pedalar, dirigir, contar passos, entre outros."</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Apps que têm esta permissão podem acessar sua agenda"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Apps que têm esta permissão podem ler e gravar o registro de chamadas do smartphone"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Apps que têm esta permissão podem tirar fotos e gravar vídeos"</string>

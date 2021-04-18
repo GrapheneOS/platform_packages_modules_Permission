@@ -92,7 +92,7 @@
     <string name="other_permissions" msgid="2901186127193849594">"Колдонмонун башка мүмкүнчүлүктөрү"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"Уруксат суроо"</string>
     <string name="screen_overlay_title" msgid="6977038513913222078">"Колдонмонун үстүнө коюу күйүк"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"Бул уруксаттын жөндөөсүн өзгөртүү үчүн, адегенде Жөндөөлөр &gt; Колдонмолор бөлүмүнөн колдонмонун үстүнө коюуну өчүрүңүз"</string>
+    <string name="screen_overlay_message" msgid="5622563069757142102">"Бул уруксаттын жөндөөсүн өзгөртүү үчүн адегенде Жөндөөлөр &gt; Колдонмолор бөлүмүнөн колдонмонун үстүнө коюуну өчүрүңүз"</string>
     <string name="screen_overlay_button" msgid="4655005928054025250">"Жөндөөлөрдү ачуу"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Орнотуу/чыгарып салуу аракеттери Android Wear\'де колдоого алынбайт."</string>
@@ -240,7 +240,7 @@
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Мындай уруксаты бар колдонмолор бул түзмөктүн кайда турганын аныктай алышат"</string>
     <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Мындай уруксаты бар колдонмолор туташкан түзмөктөрдүн абалын аныктап, аларга туташып жана көрө алышат"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Мындай уруксаты бар колдонмолор аудиолорду жаздыра алат"</string>
-    <string name="permission_description_summary_phone" msgid="4515277217435233619">"Мындай уруксаты бар колдонмолор телефон чалып, аларды башкара алат"</string>
+    <string name="permission_description_summary_phone" msgid="4515277217435233619">"Мындай уруксаты бар колдонмолор телефон чалып, чалууларды башкара алышат"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Мындай уруксаты бар колдонмо организмдин абалына көз салган сенсордун көрсөткүчтөрүн көрө алат"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Мындай уруксаты бар колдонмолор SMS билдирүүлөрүн жөнөтүп, көрө алат"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Мындай уруксаты бар колдонмолор түзмөгүңүздөгү сүрөттөрүңүздү, медиа жана башка файлдарыңызды көрө алышат"</string>
