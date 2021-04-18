@@ -51,7 +51,7 @@
     <string name="unused_apps" msgid="2058057455175955094">"Пайдаланылмайтын қолданбалар"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Қолданбаны өшіру"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Бұл қолданбаны өшірсеңіз, Android жүйесі мен басқа қолданбалар тиісінше жұмыс істемеуі мүмкін. Бұл қолданба құрылғыға алдын ала орнатылатындықтан, оны жою мүмкін еместігін ескеріңіз. Өшіріп қою арқылы сіз бұл қолданбаны ажыратып, оны құрылғыда жасыра аласыз."</string>
-    <string name="app_permission_manager" msgid="3903811137630909550">"Рұқсат басқарушысы"</string>
+    <string name="app_permission_manager" msgid="3903811137630909550">"Рұқсат менеджері"</string>
     <string name="never_ask_again" msgid="4728762438198560329">"Қайта сұралмасын"</string>
     <string name="no_permissions" msgid="3881676756371148563">"Рұқсат жоқ"</string>
     <string name="additional_permissions" msgid="5801285469338873430">"Қосымша рұқсаттар"</string>
@@ -197,7 +197,7 @@
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Егер барлық файлдарды басқаруға рұқсат берілсе, бұл қолданба құрылғының жалпы жадындағы немесе жалғанған жад құрылғыларындағы кез келген файлды пайдалана, өзгерте және жоя алатын болады. Қолданба файлдарды сіздің рұқсатыңызсыз пайдалануы мүмкін."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Қолданбаға құрылғыдағы немесе жалғанған жад құрылғыларындағы барлық файлдарды пайдалануға, өзгертуге немесе жоюға рұқсат берілсін бе? Бұл қолданба файлдарды сіздің рұқсатыңызсыз пайдалануы мүмкін."</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"Бұл рұқсатқа ие қолданбалардың мүмкіндігі: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
-    <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Рұқсатқа ие қолданбалар жаяу жүру, велосипед тебу, көлік жүргізу, қадамдар саны, т.б. сияқты іс-қимылдар дерегін пайдалана алады."</string>
+    <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Рұқсатқа ие қолданбалар жаяу жүру, велосипед тебу, көлік жүргізу, қадам санау сияқты іс-қимыл туралы мәліметті пайдалана алады."</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Бұл рұқсатқа ие қолданбалар күнтізбені пайдалана алады."</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Бұл рұқсатқа ие қолданбалар телефонның қоңыраулар журналын оқи және жаза алады."</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Бұл рұқсатқа ие қолданбалар суретке түсіріп, бейне жаза алады."</string>
@@ -278,10 +278,10 @@
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"Барлық файлдар"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Ешқандай рұқсат берілмеді"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"Ешқандай рұқсатқа тыйым салынбады"</string>
-    <string name="no_apps_allowed" msgid="7718822655254468631">"Ешқандай қолданбаға рұқсат берілмеді"</string>
+    <string name="no_apps_allowed" msgid="7718822655254468631">"Ешқандай қолданбаға рұқсат берілмеді."</string>
     <string name="no_apps_allowed_full" msgid="8011716991498934104">"Барлық файлға рұқсаты бар қолданбалар жоқ."</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"Медиафайлдарға ғана рұқсаты бар қолданбалар жоқ."</string>
-    <string name="no_apps_denied" msgid="7663435886986784743">"Ешқандай қолданбаға тыйым салынбады"</string>
+    <string name="no_apps_denied" msgid="7663435886986784743">"Ешқандай қолданбаға тыйым салынбады."</string>
     <string name="car_permission_selected" msgid="180837028920791596">"Таңдалды"</string>
     <string name="settings" msgid="5409109923158713323">"Параметрлер"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"<xliff:g id="SERVICE_NAME">%s</xliff:g> қызметі құрылғыңызды толықтай пайдалана алады"</string>
@@ -403,7 +403,7 @@
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына қоңыраулар шалуға және басқаруға рұқсат берілсін бе?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына негізгі физиологиялық көрсеткіштерді көрсететін сенсорлық деректерді пайдалануға рұқсат берілсін бе?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Басқарылатын рұқсаттар"</string>
-    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Геодерек пайдаланылады."</string>
+    <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Локация пайдаланылады."</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Әкімшіңіз <xliff:g id="APP_NAME">%s</xliff:g> қолданбасына геодерегіңізді пайдалануға рұқсат береді."</string>
     <string name="fg_capabilities_sound_trigger" msgid="2207678171360291488">"Кейбір опциялар қолжетімді емес, себебі бұл қолданба дыбысты анықтауы қажет."</string>
     <string name="fg_capabilities_assistant" msgid="4804133798496291112">"Кейбір опциялар қолжетімді емес, себебі бұл қолданба – әдепкі цифрлық көмекші."</string>

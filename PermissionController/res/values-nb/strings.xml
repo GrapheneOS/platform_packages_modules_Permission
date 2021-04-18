@@ -62,7 +62,7 @@
     </plurals>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"Denne appen er laget for en eldre versjon av Android. Hvis du ikke gir tillatelse, kan det føre til at den ikke lenger fungerer som den skal."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"utføre en ukjent handling"</string>
-    <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> av <xliff:g id="COUNT_1">%2$d</xliff:g> apper er tillatt"</string>
+    <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> av <xliff:g id="COUNT_1">%2$d</xliff:g> apper har denne tillatelsen"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> apper er tillatt"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Vis systemet"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Skjul systemet"</string>
@@ -166,7 +166,7 @@
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Tilgang: <xliff:g id="NUM">%1$s</xliff:g> ganger. Sist brukt for <xliff:g id="TIME">%2$s</xliff:g> siden."</string>
     <string name="app_permission_button_allow" msgid="5808039516494774647">"Tillat"</string>
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Gi tillatelse til administrering av alle filer"</string>
-    <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Gi bare tilgang til medier"</string>
+    <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Har bare tilgang til medier"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Tillat hele tiden"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Bare tillat når appen brukes"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Spør hver gang"</string>
@@ -216,7 +216,7 @@
     <string name="allowed_always_header" msgid="6455903312589013545">"Tillatt hele tiden"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"Tillatt bare når appen brukes"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Har bare tilgang til medier"</string>
-    <string name="allowed_storage_full" msgid="5356699280625693530">"Har tillatelse til å administrere alle filer"</string>
+    <string name="allowed_storage_full" msgid="5356699280625693530">"Kan administrere alle filer"</string>
     <string name="ask_header" msgid="2633816846459944376">"Spør hver gang"</string>
     <string name="denied_header" msgid="2253955654228120835">"Avvist"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
@@ -281,7 +281,7 @@
     <string name="no_apps_allowed" msgid="7718822655254468631">"Ingen apper har denne tillatelsen"</string>
     <string name="no_apps_allowed_full" msgid="8011716991498934104">"Ingen apper tillates for alle filer"</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"Ingen apper tillates for bare medier"</string>
-    <string name="no_apps_denied" msgid="7663435886986784743">"Ingen apptillatelser er avvist"</string>
+    <string name="no_apps_denied" msgid="7663435886986784743">"Ingen apper er avvist"</string>
     <string name="car_permission_selected" msgid="180837028920791596">"Valgt"</string>
     <string name="settings" msgid="5409109923158713323">"Innstillinger"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"<xliff:g id="SERVICE_NAME">%s</xliff:g> har full tilgang til enheten din"</string>

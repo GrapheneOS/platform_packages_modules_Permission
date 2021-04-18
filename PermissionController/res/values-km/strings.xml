@@ -173,7 +173,7 @@
     <string name="app_permission_button_deny" msgid="2399316993899108824">"បដិសេធ"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"ការអនុញ្ញាត​<xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"ការចូលប្រើ​<xliff:g id="PERM">%1$s</xliff:g>​សម្រាប់​កម្មវិធី​នេះ​"</string>
-    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"មើល​ការអនុញ្ញាតឱ្យទៅ <xliff:g id="APP">%1$s</xliff:g> ទាំងអស់"</string>
+    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"មើល​ការអនុញ្ញាតទាំងអស់ឱ្យទៅ <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"មើលកម្មវិធី​ទាំងអស់​ដែលមាន​ការអនុញ្ញាត​នេះ"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"បង្ហាញការប្រើប្រាស់​មីក្រូហ្វូនរបស់ជំនួយការ"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"ដកការ​អនុញ្ញាតចេញ ប្រសិនបើ​មិនប្រើប្រាស់​កម្មវិធី"</string>

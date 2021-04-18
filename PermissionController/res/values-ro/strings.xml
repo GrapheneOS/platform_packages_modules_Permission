@@ -63,7 +63,7 @@
     </plurals>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"Această aplicație a fost creată pentru o versiune Android mai veche. Dacă nu acordați permisiunea, este posibil ca aceasta să nu mai funcționeze corespunzător."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"efectuează o acțiune necunoscută"</string>
-    <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> din <xliff:g id="COUNT_1">%2$d</xliff:g> aplicații au această permisiune"</string>
+    <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> din <xliff:g id="COUNT_1">%2$d</xliff:g> aplicație(i) au această permisiune"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> aplicații au această permisiune"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Afișați aplicațiile de sistem"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Ascundeți aplicațiile de sistem"</string>

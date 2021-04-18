@@ -80,7 +80,7 @@
     <string name="permission_summary_disabled_by_admin_background_only" msgid="3127091456731845646">"הגישה ברקע מושבתת על ידי מנהל מערכת"</string>
     <string name="permission_summary_enabled_by_admin_background_only" msgid="9132423838440275757">"הגישה ברקע מופעלת על ידי מנהל מערכת"</string>
     <string name="permission_summary_enabled_by_admin_foreground_only" msgid="1298432715610745358">"הגישה במצב פעיל מופעלת על ידי מנהל מערכת"</string>
-    <string name="permission_summary_enabled_system_fixed" msgid="2438344700184127274">"ההרשאה הזו נחוצה למכשיר כדי לפעול"</string>
+    <string name="permission_summary_enabled_system_fixed" msgid="2438344700184127274">"ההרשאה הזו נחוצה כדי שהמכשיר יפעל"</string>
     <!-- no translation found for background_access_chooser_dialog_choices:0 (1351721623256561996) -->
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
@@ -186,7 +186,7 @@
     <string name="app_permission_button_ask" msgid="3342950658789427">"יש לשאול בכל פעם"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"אני לא מרשה"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"הרשאת <xliff:g id="PERM">%1$s</xliff:g>"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"האפליקציה הזו יכולה לגשת אל: <xliff:g id="PERM">%1$s</xliff:g>"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"לאפליקציה תהיה גישה אל: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"הצגת כל ההרשאות של \'<xliff:g id="APP">%1$s</xliff:g>\'"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"הצגת כל האפליקציות עם ההרשאה הזו"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"‏הצגת השימוש במיקרופון של Assistant"</string>
@@ -208,20 +208,20 @@
     <string name="last_opened_category_title" msgid="7871347400611202595">"נפתחו לאחרונה לפני יותר מ-<xliff:g id="NUMBER">%s</xliff:g> חודשים"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"האפליקציה נפתחה לאחרונה בתאריך <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"נפתחה לאחרונה: <xliff:g id="DATE">%s</xliff:g>"</string>
-    <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"‏אם מאשרים ניהול של כל הקבצים, האפליקציה זו תוכל לגשת לקבצים באחסון משותף (Common storage) במכשיר הזה או בהתקני אחסון מחוברים, לשנות או למחוק אותם. האפליקציה תורשה לגשת לקבצים בלי לבקש את הסכמתך."</string>
+    <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"‏אם מאשרים ניהול של כל הקבצים, האפליקציה הזו תוכל לגשת לקבצים באחסון משותף (Common storage) במכשיר הזה או בהתקני אחסון מחוברים, ולשנות או למחוק אותם. האפליקציה תוכל לגשת לקבצים בלי לבקש ממך אישור."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"לאשר לאפליקציה הזו לגשת לקבצים במכשיר הזה או בכל התקן אחסון שמחובר אליו, לשנות או למחוק אותם? האפליקציה הזו עשויה לגשת לקבצים בלי לבקש את רשותך."</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"אפליקציות עם ההרשאה הזו יכולות <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"אפליקציות עם ההרשאה הזו יכולות לקבל גישה לפעילות הגופנית שלך, למשל הליכה, רכיבה על אופניים, נהיגה, ספירת צעדים ועוד"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"אפליקציות עם ההרשאה הזו יכולות לגשת אל היומן"</string>
-    <string name="permission_description_summary_call_log" msgid="7321437186317577624">"אפליקציות עם ההרשאה הזו יכולות לקרוא ולכתוב ביומן השיחות של הטלפון"</string>
-    <string name="permission_description_summary_camera" msgid="108004375101882069">"אפליקציות עם ההרשאה הזו יכולות לצלם תמונות ולהקליט וידאו"</string>
+    <string name="permission_description_summary_call_log" msgid="7321437186317577624">"אפליקציות עם ההרשאה הזו יכולות לקרוא את יומן השיחות של הטלפון ולכתוב בו"</string>
+    <string name="permission_description_summary_camera" msgid="108004375101882069">"אפליקציות עם ההרשאה הזו יכולות לצלם תמונות וסרטונים"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"אפליקציות עם ההרשאה הזו יכולות לגשת אל אנשי הקשר"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"לאפליקציות עם ההרשאה הזו יש גישה למיקום של המכשיר"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"אפליקציות עם ההרשאה הזו יכולות להקליט אודיו"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"אפליקציות עם ההרשאה הזו יכולות להתקשר ולנהל שיחות טלפון"</string>
-    <string name="permission_description_summary_sensors" msgid="1836045815643119949">"אפליקציות עם ההרשאה הזו יכולות לגשת אל נתוני חיישנים שמודדים את הסימנים החיוניים שלך"</string>
+    <string name="permission_description_summary_sensors" msgid="1836045815643119949">"אפליקציות עם ההרשאה הזו יכולות לגשת אל נתונים של חיישנים שמודדים את הסימנים החיוניים שלך"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"‏אפליקציות עם ההרשאה הזו יכולות לשלוח ולהציג הודעות SMS"</string>
-    <string name="permission_description_summary_storage" msgid="6575759089065303346">"אפליקציות עם ההרשאה הזו יכולות לקבל גישה לתמונות, למדיה ולקבצים במכשיר שלך"</string>
+    <string name="permission_description_summary_storage" msgid="6575759089065303346">"אפליקציות עם ההרשאה הזו יכולות לגשת לתמונות, למדיה ולקבצים במכשיר שלך"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"גישה אחרונה: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"חסומה כרגע / גישה אחרונה: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"אף פעם לא הופעלה"</string>

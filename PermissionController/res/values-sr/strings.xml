@@ -180,7 +180,7 @@
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Одбиј"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> - дозвола"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Приступ ове апликације функцији „<xliff:g id="PERM">%1$s</xliff:g>“"</string>
-    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Прикажи све дозволе за <xliff:g id="APP">%1$s</xliff:g>"</string>
+    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Прикажи све дозволе за: <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Прикажи све апликације са овом дозволом"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Прикажи како Помоћник користи микрофон"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Уклони дозволе ако се апликација не користи"</string>
@@ -291,7 +291,7 @@
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"Све датотеке"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Дозволе нису одобрене"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"Ниједна дозвола није одбијена"</string>
-    <string name="no_apps_allowed" msgid="7718822655254468631">"Ниједна апликација"</string>
+    <string name="no_apps_allowed" msgid="7718822655254468631">"Ниједна апликација нема дозволу"</string>
     <string name="no_apps_allowed_full" msgid="8011716991498934104">"Ниједна апликација није омогућена за све датотеке"</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"Ниједна апликација није омогућена само за медије"</string>
     <string name="no_apps_denied" msgid="7663435886986784743">"Није одбијена ниједна апликација"</string>

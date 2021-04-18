@@ -162,8 +162,8 @@
       <item quantity="one">1 aplikasi</item>
     </plurals>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Penggunaan izin aplikasi"</string>
-    <string name="app_permission_usage_summary" msgid="390383661936709672">"Akses: <xliff:g id="NUM">%1$s</xliff:g> kali. Durasi total: <xliff:g id="DURATION">%2$s</xliff:g>. Terakhir digunakan <xliff:g id="TIME">%3$s</xliff:g> yang lalu."</string>
-    <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Akses: <xliff:g id="NUM">%1$s</xliff:g> kali. Terakhir digunakan <xliff:g id="TIME">%2$s</xliff:g> yang lalu."</string>
+    <string name="app_permission_usage_summary" msgid="390383661936709672">"Akses: <xliff:g id="NUM">%1$s</xliff:g> kali. Durasi total: <xliff:g id="DURATION">%2$s</xliff:g>. Terakhir digunakan <xliff:g id="TIME">%3$s</xliff:g> lalu."</string>
+    <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Akses: <xliff:g id="NUM">%1$s</xliff:g> kali. Terakhir digunakan <xliff:g id="TIME">%2$s</xliff:g> lalu."</string>
     <string name="app_permission_button_allow" msgid="5808039516494774647">"Izinkan"</string>
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Izinkan pengelolaan semua file"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Izinkan akses hanya ke media"</string>
@@ -194,7 +194,7 @@
     <string name="last_opened_category_title" msgid="7871347400611202595">"Terakhir dibuka lebih dari <xliff:g id="NUMBER">%s</xliff:g> bulan lalu"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Aplikasi terakhir dibuka pada <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Terakhir dibuka <xliff:g id="DATE">%s</xliff:g>"</string>
-    <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Jika Anda mengizinkan pengelolaan semua file, aplikasi ini dapat mengakses, mengubah, dan menghapus file di penyimpanan umum pada perangkat ini atau perangkat penyimpanan yang terhubung. Aplikasi dapat mengakses file tanpa bertanya pada Anda."</string>
+    <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Jika Anda mengizinkan pengelolaan semua file, aplikasi ini dapat mengakses, mengubah, dan menghapus file di penyimpanan umum pada perangkat ini atau perangkat penyimpanan yang terhubung. Aplikasi dapat mengakses file tanpa bertanya kepada Anda."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Izinkan aplikasi ini untuk mengakses, mengubah, dan menghapus file di perangkat, atau perangkat penyimpanan yang terhubung? Aplikasi ini dapat mengakses file tanpa bertanya pada Anda."</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"Aplikasi dengan izin ini dapat <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Aplikasi dengan izin ini dapat mengakses aktivitas fisik Anda, seperti berjalan, bersepeda, mengemudi, menghitung langkah, dan sebagainya"</string>
@@ -253,7 +253,7 @@
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Izin yang dihapus"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Izin dihapus"</string>
     <string name="all_unused_apps_category_title" msgid="755663524704745414">"Semua aplikasi yang tidak digunakan"</string>
-    <string name="months_ago" msgid="1766026492610646354">"<xliff:g id="COUNT">%1$d</xliff:g> bulan yang lalu"</string>
+    <string name="months_ago" msgid="1766026492610646354">"<xliff:g id="COUNT">%1$d</xliff:g> bulan lalu"</string>
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Izin dihapus untuk melindungi privasi Anda"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> mendapatkan lokasi Anda di latar belakang"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Aplikasi ini selalu dapat mengakses lokasi Anda. Ketuk untuk mengubah."</string>

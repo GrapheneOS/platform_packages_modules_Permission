@@ -205,8 +205,8 @@
     <string name="permission_description_summary_location" msgid="2817531799933480694">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များက ဤစက်ပစ္စည်း၏ တည်နေရာကို ဝင်သုံးနိုင်သည်"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များက အသံဖမ်းယူနိုင်သည်"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များက ဖုန်းခေါ်ဆိုမှုများကို ပြုလုပ်နိုင် စီမံနိုင်သည်"</string>
-    <string name="permission_description_summary_sensors" msgid="1836045815643119949">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များက သင့်အဓိကကျသော လက္ခဏာများနှင့်ဆိုင်သည့် အာရုံခံစနစ် ဒေတာကို ဝင်သုံးနိုင်သည်"</string>
-    <string name="permission_description_summary_sms" msgid="725999468547768517">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များက SMS မက်ဆေ့ဂျ်များ ပို့နိုင်၊ ကြည့်နိုင်သည်"</string>
+    <string name="permission_description_summary_sensors" msgid="1836045815643119949">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များက သင်၏အရေးကြီးသော ကျန်းမာရေးလက္ခဏာများနှင့်ဆိုင်သည့် အာရုံခံစနစ်ဒေတာကို ဝင်သုံးနိုင်သည်"</string>
+    <string name="permission_description_summary_sms" msgid="725999468547768517">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်က SMS မက်ဆေ့ဂျ် ပို့နိုင်၊ ကြည့်နိုင်သည်"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များက သင့်စက်ပေါ်ရှိ ဓာတ်ပုံ၊ မီဒီယာနှင့် ဖိုင်များကို ဝင်သုံးနိုင်သည်"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"နောက်ဆုံး အသုံးပြုချိန်- <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"လက်ရှိငြင်းပယ်ထားသည် / နောက်ဆုံးဝင်သုံးချိန်− <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
@@ -401,7 +401,7 @@
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား ဓာတ်ပုံနှင့် ဗီဒီယိုရိုက်ကူးခွင့် ပေးလိုပါသလား။"</string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သင်၏ခေါ်ဆိုထားသော မှတ်တမ်းများကို သုံးခွင့်ပေးလိုပါသလား။"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ကို ဖုန်းခေါ်ဆိုမှုများ ပြုလုပ်ခွင့်နှင့် စီမံခွင့်ပေးလိုပါသလား။"</string>
-    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သင်၏ အရေးကြီးသောလက္ခဏာ အာရုံခံကိရိယာ ဒေတာများကို သုံးခွင့်ပေးလိုပါသလား။"</string>
+    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သင်၏ အရေးကြီးသော ကျန်းမာရေးလက္ခဏာဆိုင်ရာ အာရုံခံကိရိယာဒေတာ သုံးခွင့်ပေးလိုပါသလား။"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"ထိန်းချုပ်ထားသော ခွင့်ပြုချက်များ"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"တည်နေရာကို ဝင်ကြည့်နိုင်သည်"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"သင့် IT စီမံခန့်ခွဲသူက <xliff:g id="APP_NAME">%s</xliff:g> အား သင်၏တည်နေရာကို ဝင်ကြည့်ခွင့်ပြုထားသည်"</string>

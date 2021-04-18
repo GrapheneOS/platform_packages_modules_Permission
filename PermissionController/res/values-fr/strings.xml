@@ -171,8 +171,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Autoriser seulement si l\'appli est en cours d\'utilisation"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Toujours demander"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Refuser"</string>
-    <string name="app_permission_title" msgid="2090897901051370711">"Autorisation d\'accès à <xliff:g id="PERM">%1$s</xliff:g>"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"Accès à <xliff:g id="PERM">%1$s</xliff:g> pour cette appli"</string>
+    <string name="app_permission_title" msgid="2090897901051370711">"Autorisation d\'accès à \"<xliff:g id="PERM">%1$s</xliff:g>\""</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"Accès à \"<xliff:g id="PERM">%1$s</xliff:g>\" pour cette appli"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Afficher toutes les autorisations pour <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Afficher toutes les applications disposant de cette autorisation"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Afficher l\'utilisation du micro par l\'Assistant"</string>

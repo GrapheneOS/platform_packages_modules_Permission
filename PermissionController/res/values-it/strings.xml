@@ -212,13 +212,13 @@
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Al momento rifiutata/Ultimo accesso: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Accesso mai eseguito"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"Rifiutata/Accesso mai effettuato"</string>
-    <string name="allowed_header" msgid="7769277978004790414">"Consentite"</string>
+    <string name="allowed_header" msgid="7769277978004790414">"Autorizzazione concessa"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"Sempre autorizzate"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"Autorizzate solo durante l\'uso"</string>
-    <string name="allowed_storage_scoped" msgid="5383645873719086975">"Accesso autorizzato solo per file multimediali"</string>
+    <string name="allowed_storage_scoped" msgid="5383645873719086975">"Autorizzate solo per contenuti multimediali"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Autorizzate per gestire tutti i file"</string>
     <string name="ask_header" msgid="2633816846459944376">"Chiedi ogni volta"</string>
-    <string name="denied_header" msgid="2253955654228120835">"Rifiutate"</string>
+    <string name="denied_header" msgid="2253955654228120835">"Autorizzazione negata"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> giorni</item>
       <item quantity="one">1 giorno</item>
@@ -281,7 +281,7 @@
     <string name="no_apps_allowed" msgid="7718822655254468631">"Nessuna app autorizzata"</string>
     <string name="no_apps_allowed_full" msgid="8011716991498934104">"Nessuna app consentita per tutti i file"</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"Nessuna app autorizzata solo per i contenuti multimediali"</string>
-    <string name="no_apps_denied" msgid="7663435886986784743">"Nessuna app non autorizzata"</string>
+    <string name="no_apps_denied" msgid="7663435886986784743">"A nessuna app è stata negata l\'autorizzazione"</string>
     <string name="car_permission_selected" msgid="180837028920791596">"Selezionato"</string>
     <string name="settings" msgid="5409109923158713323">"Impostazioni"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"<xliff:g id="SERVICE_NAME">%s</xliff:g> ha accesso completo al tuo dispositivo"</string>

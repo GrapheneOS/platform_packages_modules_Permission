@@ -178,8 +178,8 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Dozvoli samo dok se aplikacija koristi"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Pitaj svaki put"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Odbij"</string>
-    <string name="app_permission_title" msgid="2090897901051370711">"Odobrenje za funkciju <xliff:g id="PERM">%1$s</xliff:g>"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"Pristup aplikacije funkciji \"<xliff:g id="PERM">%1$s</xliff:g>\""</string>
+    <string name="app_permission_title" msgid="2090897901051370711">"Odobrenje za: <xliff:g id="PERM">%1$s</xliff:g>"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"Pristup aplikacije za: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Prikaži sva odobrenja aplikacije <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Prikaži sve aplikacije s ovim odobrenjem"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Prikaži korištenje mikrofona asistenta"</string>

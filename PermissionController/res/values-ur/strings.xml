@@ -171,7 +171,7 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"صرف ایپ استعمال کرتے وقت اجازت دیں"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"ہر بار پوچھیں"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"مسترد کریں"</string>
-    <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> کی اجازت"</string>
+    <string name="app_permission_title" msgid="2090897901051370711">"‫<xliff:g id="PERM">%1$s</xliff:g> کی اجازت"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"اس ایپ کیلئے <xliff:g id="PERM">%1$s</xliff:g> تک رسائی"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g> کی سبھی اجازتیں دیکھیں"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"اس اجازت والی سبھی ایپس دیکھیں"</string>
@@ -194,7 +194,7 @@
     <string name="last_opened_category_title" msgid="7871347400611202595">"آخری بار <xliff:g id="NUMBER">%s</xliff:g> ماہ سے زیادہ پہلے کھولی گئی"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ایپ آخری بار <xliff:g id="DATE">%s</xliff:g> کو کھولی گئی"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"آخری بار <xliff:g id="DATE">%s</xliff:g> کو کھولی گئی"</string>
-    <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"اگر آپ سبھی فائلز کے مینیجمنٹ کو اجازت دیتے ہیں تو، یہ ایپ اس آلہ یا منسلک اسٹوریج آلات پر مشترکہ اسٹوریج میں موجود کسی بھی فائل تک رسائی، اس میں ترمیم اور حذف کر سکتی ہے۔ ایپ آپ سے پوچھے بغیر فائلز تک رسائی حاصل کر سکتی ہے۔"</string>
+    <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"اگر آپ سبھی فائلز کی مینیجمنٹ کی اجازت دیتے ہیں تو یہ ایپ اس آلہ یا منسلک اسٹوریج آلات پر مشترکہ اسٹوریج میں موجود کسی بھی فائل تک رسائی، اس میں ترمیم اور حذف کر سکتی ہے۔ ایپ آپ سے پوچھے بغیر فائلز تک رسائی حاصل کر سکتی ہے۔"</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"اس ایپ کو آلہ یا کسی منسلک اسٹوریج آلات پر فائلز تک رسائی، اس میں ترمیم اور حذف کرنے کی اجازت دیں؟ یہ ایپ آپ سے پوچھے بغیر فائلز تک رسائی حاصل کر سکتی ہے۔"</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"اس اجازت والی ایپس یہ کام کر سکتی ہیں: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"اس اجازت والی اپپس آپ کی جسمانی سرگرمی، جیسے کہ چہل قدمی، بائی سائیکلنگ، ڈرائیونگ، قدموں کی تعداد اور مزید تک رسائی حاصل کر سکتی ہیں"</string>
