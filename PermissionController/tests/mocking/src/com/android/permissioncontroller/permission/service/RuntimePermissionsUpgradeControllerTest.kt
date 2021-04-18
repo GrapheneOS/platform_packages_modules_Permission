@@ -34,6 +34,7 @@ import android.content.pm.PackageManager.FLAG_PERMISSION_RESTRICTION_INSTALLER_E
 import android.content.pm.PackageManager.FLAG_PERMISSION_RESTRICTION_SYSTEM_EXEMPT
 import android.content.pm.PackageManager.FLAG_PERMISSION_WHITELIST_UPGRADE
 import android.content.pm.PackageManager.MATCH_FACTORY_ONLY
+import android.content.pm.PermissionInfo
 import android.location.LocationManager
 import android.os.Build.VERSION_CODES.R
 import android.os.UserManager
@@ -195,8 +196,10 @@ class RuntimePermissionsUpgradeControllerTest {
                     .getPermissionGroupInfo(groupName, 0)
         }
 
-        whenever(packageManager.queryPermissionsByGroup(any(), anyInt())).thenReturn(
-                mutableListOf())
+        // We cannot use thenReturn(mutableListOf()) because that would return the same instance.
+        whenever(packageManager.queryPermissionsByGroup(any(), anyInt())).thenAnswer {
+            mutableListOf<PermissionInfo>()
+        }
     }
 
     /**
