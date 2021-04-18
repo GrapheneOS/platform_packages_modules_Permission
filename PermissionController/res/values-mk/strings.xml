@@ -44,7 +44,7 @@
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Додека се користи апликацијата"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Само овој пат"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Дозволи цело време"</string>
-    <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Дозволете управување со сите датотеки"</string>
+    <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Дозволи управување со сите датотеки"</string>
     <string name="grant_dialog_button_allow_media_only" msgid="4832877658422573832">"Дозволете пристап до датотеките со аудиовизуелни содржини"</string>
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Апликации"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Дозволи за апликацијата"</string>
@@ -165,8 +165,8 @@
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Пристап: <xliff:g id="NUM">%1$s</xliff:g> пати. Вкупно времетраење: <xliff:g id="DURATION">%2$s</xliff:g>. Последно користење пред <xliff:g id="TIME">%3$s</xliff:g>."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Пристап: <xliff:g id="NUM">%1$s</xliff:g> пати. Последно користење пред <xliff:g id="TIME">%2$s</xliff:g>."</string>
     <string name="app_permission_button_allow" msgid="5808039516494774647">"Дозволи"</string>
-    <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Дозволете управување со сите датотеки"</string>
-    <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Дозволете пристап само до аудиовизуелните содржини"</string>
+    <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Дозволи управување со сите датотеки"</string>
+    <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Дозволи пристап само до аудиовизуелните содржини"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Дозволи цело време"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Дозволи само додека се користи апликацијата"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Секогаш прашувај"</string>
@@ -194,10 +194,10 @@
     <string name="last_opened_category_title" msgid="7871347400611202595">"Последно отворени пред повеќе од <xliff:g id="NUMBER">%s</xliff:g> месеци"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Последно отворање на апликацијата: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Последно отворање: <xliff:g id="DATE">%s</xliff:g>"</string>
-    <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Ако дозволите управување со сите датотеки, апликацијава ќе може да ги менува, брише, како и да пристапува до сите датотеки во заедничката меморија на уредов или на поврзаните уреди за складирање. Апликацијата може да пристапува до датотеки без да ве праша."</string>
-    <string name="special_file_access_dialog" msgid="583804114020740610">"Дали дозволувате апликацијава да менува, брише, како и да пристапува до датотеките на уредов или на поврзаните уреди за складирање? Апликацијава може да пристапува до датотеки без да ве праша."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Апликациите со оваа дозвола може да <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
-    <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Апликациите со оваа дозвола може да пристапуваат до вашата физичка активност, како пешачење, возење велосипед, возење, броење чекори и друго."</string>
+    <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Ако дозволите управување со сите датотеки, апликацијава ќе може да ги менува, да ги брише, како и да пристапува до сите датотеки во заедничката меморија на уредов или на поврзаните уреди за складирање. Апликацијата може да пристапува до датотеките без да ве праша."</string>
+    <string name="special_file_access_dialog" msgid="583804114020740610">"Дали дозволувате апликацијава да ги менува, да ги брише, како и да пристапува до датотеките на уредов или на поврзаните уреди за складирање? Апликацијава може да пристапува до датотеките без да ве праша."</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Апликациите со оваа дозвола може <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Апликациите со оваа дозвола може да пристапуваат до вашата физичка активност, како пешачење, возење велосипед, возење, броење чекори и друго"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Апликациите со оваа дозвола може да пристапуваат до вашиот календар"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Апликациите со оваа дозвола може да читаат и пишуваат во евиденцијата на повици на телефонот"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Апликациите со оваа дозвола може да фотографираат и да снимаат видео"</string>
@@ -207,7 +207,7 @@
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Апликациите со оваа дозвола може да упатуваат телефонски повици и да управуваат со нив"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Апликациите со оваа дозвола може да пристапуваат до податоци од сензорите за виталните знаци"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Апликациите со оваа дозвола може да испраќаат и прегледуваат SMS-пораки"</string>
-    <string name="permission_description_summary_storage" msgid="6575759089065303346">"Апликациите со оваа дозвола може да пристапуваат до фотографии, аудиовизуелни содржини и датотеки на вашиот уред."</string>
+    <string name="permission_description_summary_storage" msgid="6575759089065303346">"Апликациите со оваа дозвола може да пристапуваат до фотографии, аудиовизуелни содржини и датотеки на вашиот уред"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Последен пристап: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Моментално одбиена/Последен пристап: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Никогаш не е пристапено"</string>

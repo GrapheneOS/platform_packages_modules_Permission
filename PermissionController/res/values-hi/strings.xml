@@ -44,14 +44,14 @@
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"ऐप्लिकेशन इस्तेमाल करते समय"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"सिर्फ़ इस बार अनुमति दें"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"हमेशा के लिए अनुमति दें"</string>
-    <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"सभी फ़ाइलें प्रबंधित करने की अनुमति दें"</string>
+    <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"सभी फ़ाइलों को मैनेज करने की अनुमति दें"</string>
     <string name="grant_dialog_button_allow_media_only" msgid="4832877658422573832">"मीडिया फ़ाइलें ऐक्सेस करने की अनुमति दें"</string>
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"ऐप्लिकेशन"</string>
     <string name="app_permissions" msgid="3369917736607944781">"ऐप्लिकेशन की अनुमतियां"</string>
     <string name="unused_apps" msgid="2058057455175955094">"इस्तेमाल नहीं किए गए ऐप्लिकेशन"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"ऐप्लिकेशन बंद करें"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"अगर आप इस ऐप्लिकेशन को बंद कर देते हैं, तो हो सकता है कि Android और दूसरे ऐप्लिकेशन ठीक से काम न करें. ध्यान रखें कि आप इस ऐप्लिकेशन को मिटा नहीं सकते, क्योंकि यह आपके डिवाइस पर पहले से इंस्टॉल होकर आया है. इसे बंद करने पर ऐप्लिकेशन बंद हो जाएगा और आपके डिवाइस पर नहीं दिखेगा."</string>
-    <string name="app_permission_manager" msgid="3903811137630909550">"अनुमतियों का प्रबंधन"</string>
+    <string name="app_permission_manager" msgid="3903811137630909550">"अनुमतियों को मैनेज करना"</string>
     <string name="never_ask_again" msgid="4728762438198560329">"दोबारा न पूछें"</string>
     <string name="no_permissions" msgid="3881676756371148563">"किसी अनुमति की ज़रूरत नहीं है"</string>
     <string name="additional_permissions" msgid="5801285469338873430">"दूसरी अनुमतियां"</string>
@@ -78,7 +78,7 @@
     <string name="permission_summary_disabled_by_admin_background_only" msgid="3127091456731845646">"एडमिन ने बैकग्राउंड में चलने का ऐक्सेस बंद कर दिया है"</string>
     <string name="permission_summary_enabled_by_admin_background_only" msgid="9132423838440275757">"एडमिन ने बैकग्राउंड में चलने का ऐक्सेस चालू कर दिया है"</string>
     <string name="permission_summary_enabled_by_admin_foreground_only" msgid="1298432715610745358">"एडमिन ने स्क्रीन पर दिखाने का ऐक्सेस चालू कर दिया है"</string>
-    <string name="permission_summary_enabled_system_fixed" msgid="2438344700184127274">"काम करने के लिए डिवाइस कि इस अनुमति की ज़रूरत है"</string>
+    <string name="permission_summary_enabled_system_fixed" msgid="2438344700184127274">"काम करने के लिए डिवाइस को इस अनुमति की ज़रूरत है"</string>
     <!-- no translation found for background_access_chooser_dialog_choices:0 (1351721623256561996) -->
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
@@ -165,7 +165,7 @@
     <string name="app_permission_usage_summary" msgid="390383661936709672">"ऐक्सेस: <xliff:g id="NUM">%1$s</xliff:g> बार. कुल अवधि: <xliff:g id="DURATION">%2$s</xliff:g>. आखिरी बार <xliff:g id="TIME">%3$s</xliff:g> पहले इस्तेमाल किया गया."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"ऐक्सेस: <xliff:g id="NUM">%1$s</xliff:g> बार. आखिरी बार <xliff:g id="TIME">%2$s</xliff:g> पहले इस्तेमाल किया गया."</string>
     <string name="app_permission_button_allow" msgid="5808039516494774647">"अनुमति दें"</string>
-    <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"सभी फ़ाइलें प्रबंधित करने की अनुमति दें"</string>
+    <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"सभी फ़ाइलों को मैनेज करने की अनुमति दें"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"सिर्फ़ मीडिया फ़ाइलें ऐक्सेस करने की अनुमति दें"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"हमेशा के लिए अनुमति दें"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"सिर्फ़ ऐप्लिकेशन इस्तेमाल करते समय अनुमति दें"</string>
@@ -194,7 +194,7 @@
     <string name="last_opened_category_title" msgid="7871347400611202595">"पिछली बार इसे <xliff:g id="NUMBER">%s</xliff:g> महीने पहले खोला गया था"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ऐप्लिकेशन पिछली बार <xliff:g id="DATE">%s</xliff:g> को खोला गया था"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"पिछली बार <xliff:g id="DATE">%s</xliff:g> को खोला गया था"</string>
-    <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"अगर आप इस ऐप्लिकेशन को सभी फ़ाइलें प्रबंधित करने की अनुमति देते हैं, तो यह ऐप्लिकेशन इस डिवाइस या इससे जुड़े दूसरे डिवाइस की मेमोरी में मौजूद किसी भी फ़ाइल को ऐक्सेस कर सकता है, उनमें बदलाव कर सकता है, और उन्हें मिटा भी सकता है. यह ऐप्लिकेशन आपसे पूछे बिना फ़ाइलें ऐक्सेस कर सकता है."</string>
+    <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"अगर आप इस ऐप्लिकेशन को सभी फ़ाइलों को मैनेज करने की अनुमति देते हैं, तो यह ऐप्लिकेशन इस डिवाइस या इससे जुड़े दूसरे डिवाइस की मेमोरी में मौजूद किसी भी फ़ाइल को ऐक्सेस कर सकता है, उनमें बदलाव कर सकता है, और उन्हें मिटा भी सकता है. यह ऐप्लिकेशन आपसे पूछे बिना फ़ाइलें ऐक्सेस कर सकता है."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"क्या आप इस ऐप्लिकेशन को इस डिवाइस या इससे जुड़े दूसरे डिवाइस की मेमोरी में मौजूद फ़ाइलें ऐक्सेस करने, उनमें बदलाव करने, और उन्हें मिटाने की अनुमति देना चाहते हैं? यह ऐप्लिकेशन आपसे पूछे बिना फ़ाइलें ऐक्सेस कर सकता है."</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"इस अनुमति वाली ऐप्लिकेशन <xliff:g id="DESCRIPTION">%1$s</xliff:g> कर सकते हैं"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"इसकी अनुमति वाले ऐप्लिकेशन, आपकी शारीरिक गतिविधियों की जानकारी ऐक्सेस कर सकते हैं. इसमें चलने, साइकल चलाने, गाड़ी चलाने, और कदमों की संख्या जैसी कई जानकारी शामिल है"</string>
@@ -204,7 +204,7 @@
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"इस अनुमति वाले ऐप्लिकेशन आपके संपर्कों को ऐक्सेस कर सकते हैं"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"इस अनुमति वाले ऐप्लिकेशन डिवाइस की जगह की जानकारी ऐक्सेस कर सकते हैं"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"इस अनुमति वाले ऐप्लिकेशन ऑडियो रिकॉर्ड कर सकते हैं"</string>
-    <string name="permission_description_summary_phone" msgid="4515277217435233619">"इस अनुमति वाले ऐप्लिकेशन, फ़ोन कॉल कर सकते हैं और कॉल प्रबंधित कर सकते हैं"</string>
+    <string name="permission_description_summary_phone" msgid="4515277217435233619">"इस अनुमति वाले ऐप्लिकेशन, फ़ोन कॉल कर सकते हैं और कॉल को मैनेज कर सकते हैं"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"इस अनुमति वाले ऐप्लिकेशन, आपके बारे में खास जानकारी देने वाली चीज़ों को बताने वाले सेंसर डेटा को ऐक्सेस कर सकते हैं"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"इस अनुमति वाले ऐप्लिकेशन मैसेज भेज और देख सकते हैं"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"इसकी अनुमति वाले ऐप्लिकेशन आपके डिवाइस के फ़ोटो, मीडिया, और फ़ाइलें ऐक्सेस कर सकते हैं"</string>
@@ -216,7 +216,7 @@
     <string name="allowed_always_header" msgid="6455903312589013545">"हमेशा के लिए मंज़ूरी"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"सिर्फ़ इस्तेमाल में होने पर अनुमति है"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"ये सिर्फ़ मीडिया फ़ाइलें ऐक्सेस कर सकते हैं"</string>
-    <string name="allowed_storage_full" msgid="5356699280625693530">"ये ऐप्लिकेशन सभी फ़ाइलें प्रबंधित कर सकते हैं"</string>
+    <string name="allowed_storage_full" msgid="5356699280625693530">"ये ऐप्लिकेशन सभी फ़ाइलों को मैनेज कर सकते हैं"</string>
     <string name="ask_header" msgid="2633816846459944376">"हर बार पूछें"</string>
     <string name="denied_header" msgid="2253955654228120835">"इन ऐप्लिकेशन के पास अनुमति नहीं है"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">

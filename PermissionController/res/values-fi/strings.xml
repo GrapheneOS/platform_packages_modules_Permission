@@ -47,7 +47,7 @@
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Salli kaikkien tiedostojen ylläpito"</string>
     <string name="grant_dialog_button_allow_media_only" msgid="4832877658422573832">"Salli pääsy mediatiedostoihin"</string>
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Sovell."</string>
-    <string name="app_permissions" msgid="3369917736607944781">"Sovelluksen käyttöoikeudet"</string>
+    <string name="app_permissions" msgid="3369917736607944781">"Sovellusluvat"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Käyttämättömät sovellukset"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Poista sovellus käytöstä"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Jos poistat sovelluksen käytöstä, Android ja muut sovellukset eivät välttämättä enää toimi oikein. Muista, ettet voi poistaa sovellusta, sillä se tuli laitteesi mukana. Poistamalla sovelluksen käytöstä suljet sen ja piilotat sen laitteella."</string>
@@ -78,7 +78,7 @@
     <string name="permission_summary_disabled_by_admin_background_only" msgid="3127091456731845646">"Järjestelmänvalvoja estää taustakäytön"</string>
     <string name="permission_summary_enabled_by_admin_background_only" msgid="9132423838440275757">"Järjestelmänvalvoja sallii taustakäytön"</string>
     <string name="permission_summary_enabled_by_admin_foreground_only" msgid="1298432715610745358">"Järjestelmänvalvoja sallii käytön etualalla"</string>
-    <string name="permission_summary_enabled_system_fixed" msgid="2438344700184127274">"Laite ei toimi ilman tätä käyttöoikeutta."</string>
+    <string name="permission_summary_enabled_system_fixed" msgid="2438344700184127274">"Laite ei toimi ilman tätä käyttöoikeutta"</string>
     <!-- no translation found for background_access_chooser_dialog_choices:0 (1351721623256561996) -->
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
@@ -86,7 +86,7 @@
     <string name="permission_access_only_foreground" msgid="7801170728159326195">"Salli vain, kun sov. on käyt."</string>
     <string name="permission_access_never" msgid="1029877154284995424">"Estä"</string>
     <string name="loading" msgid="4789365003890741082">"Ladataan…"</string>
-    <string name="all_permissions" msgid="6911125611996872522">"Kaikki käyttöoikeudet"</string>
+    <string name="all_permissions" msgid="6911125611996872522">"Kaikki luvat"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Muut sovellusluvat"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"Lupapyyntö"</string>
     <string name="screen_overlay_title" msgid="6977038513913222078">"Näytön peittokuva havaittiin"</string>
@@ -161,7 +161,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> sovellusta</item>
       <item quantity="one">1 sovellus</item>
     </plurals>
-    <string name="app_permission_usage_title" msgid="6676802437831981822">"Sovelluksen käyttöoikeudet"</string>
+    <string name="app_permission_usage_title" msgid="6676802437831981822">"Sovellusluvat"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Käyttö: <xliff:g id="NUM">%1$s</xliff:g> kertaa. Kokonaiskesto: <xliff:g id="DURATION">%2$s</xliff:g>. Käytetty viimeksi <xliff:g id="TIME">%3$s</xliff:g> sitten."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Käyttö: <xliff:g id="NUM">%1$s</xliff:g> kertaa. Käytetty viimeksi <xliff:g id="TIME">%2$s</xliff:g> sitten."</string>
     <string name="app_permission_button_allow" msgid="5808039516494774647">"Salli"</string>

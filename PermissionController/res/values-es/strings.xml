@@ -194,19 +194,19 @@
     <string name="last_opened_category_title" msgid="7871347400611202595">"Abierto por última vez hace más de <xliff:g id="NUMBER">%s</xliff:g> meses"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"La aplicación se abrió por última vez el <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Se abrió por última vez el <xliff:g id="DATE">%s</xliff:g>"</string>
-    <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Si permites que esta aplicación gestione todos los archivos, podrá consultar, modificar y eliminar los archivos que haya en el almacenamiento común de este dispositivo o en los dispositivos de almacenamiento conectados. Quizá acceda a archivos sin solicitarlo explícitamente."</string>
+    <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Si permites la gestión de todos los archivos, esta aplicación puede consultar, modificar y eliminar cualquier archivo que haya en el almacenamiento común de este dispositivo o en los dispositivos de almacenamiento conectados. Es posible que acceda a archivos sin preguntarte."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"¿Quieres permitir que esta aplicación pueda consultar, modificar y eliminar archivos de este dispositivo o de los dispositivos de almacenamiento conectados? Quizá acceda a archivos sin solicitarlo explícitamente."</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"Las aplicaciones con este permiso pueden <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Las aplicaciones con este permiso pueden acceder a tu actividad física, como paseos a pie o en bici, trayectos en coche, número de pasos y más"</string>
-    <string name="permission_description_summary_calendar" msgid="103329982944411010">"Las aplicaciones con este permiso este permiso pueden acceder a tu calendario"</string>
-    <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Las aplicaciones con este permiso este permiso pueden leer y editar el registro de llamadas del teléfono"</string>
-    <string name="permission_description_summary_camera" msgid="108004375101882069">"Las aplicaciones con este permiso este permiso pueden hacer fotos y grabar vídeo"</string>
-    <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Las aplicaciones con este permiso este permiso pueden acceder a tus contactos"</string>
-    <string name="permission_description_summary_location" msgid="2817531799933480694">"Las aplicaciones con este permiso este permiso pueden acceder a la ubicación de este dispositivo"</string>
-    <string name="permission_description_summary_microphone" msgid="630834800308329907">"Las aplicaciones con este permiso este permiso pueden grabar audio"</string>
-    <string name="permission_description_summary_phone" msgid="4515277217435233619">"Las aplicaciones con este permiso este permiso pueden hacer y gestionar llamadas de teléfono"</string>
-    <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Las aplicaciones con este permiso este permiso pueden acceder a los datos de los sensores sobre tus constantes vitales"</string>
-    <string name="permission_description_summary_sms" msgid="725999468547768517">"Las aplicaciones con este permiso este permiso pueden ver y enviar mensajes SMS"</string>
+    <string name="permission_description_summary_calendar" msgid="103329982944411010">"Las aplicaciones con este permiso pueden acceder a tu calendario"</string>
+    <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Las aplicaciones con este permiso pueden leer y editar el registro de llamadas del teléfono"</string>
+    <string name="permission_description_summary_camera" msgid="108004375101882069">"Las aplicaciones con este permiso pueden hacer fotos y grabar vídeo"</string>
+    <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Las aplicaciones con este permiso pueden acceder a tus contactos"</string>
+    <string name="permission_description_summary_location" msgid="2817531799933480694">"Las aplicaciones con este permiso pueden acceder a la ubicación de este dispositivo"</string>
+    <string name="permission_description_summary_microphone" msgid="630834800308329907">"Las aplicaciones con este permiso pueden grabar audio"</string>
+    <string name="permission_description_summary_phone" msgid="4515277217435233619">"Las aplicaciones con este permiso pueden hacer y gestionar llamadas de teléfono"</string>
+    <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Las aplicaciones con este permiso pueden acceder a los datos de los sensores sobre tus constantes vitales"</string>
+    <string name="permission_description_summary_sms" msgid="725999468547768517">"Las aplicaciones con este permiso pueden ver y enviar mensajes SMS"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Las aplicaciones con este permiso pueden acceder a fotos, contenido multimedia y archivos de tu dispositivo"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Último acceso: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Actualmente denegado / Último acceso: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
@@ -342,7 +342,7 @@
     <string name="system_uses_microphone_and_camera" msgid="5124478304275138804">"Un servicio del sistema está accediendo a la cámara y al micrófono"</string>
     <string name="system_uses_camera" msgid="1911223105234441470">"Un servicio del sistema está accediendo a la cámara"</string>
     <string name="other_use" msgid="6564855051022776692">"Otros usos:"</string>
-    <string name="ongoing_usage_dialog_ok" msgid="103556809118460072">"Listo"</string>
+    <string name="ongoing_usage_dialog_ok" msgid="103556809118460072">"Entendido"</string>
     <string name="ongoing_usage_dialog_title" msgid="683836493556628569">"Uso reciente de: <xliff:g id="TYPES_LIST">%s</xliff:g>"</string>
     <string name="ongoing_usage_dialog_title_mic" msgid="5966714811125593992">"Uso reciente del micrófono"</string>
     <string name="ongoing_usage_dialog_title_camera" msgid="7819329688650711470">"Uso reciente de la cámara"</string>

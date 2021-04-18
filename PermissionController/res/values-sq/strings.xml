@@ -78,7 +78,7 @@
     <string name="permission_summary_disabled_by_admin_background_only" msgid="3127091456731845646">"Qasja në sfond është e çaktivizuar nga administratori"</string>
     <string name="permission_summary_enabled_by_admin_background_only" msgid="9132423838440275757">"Qasja në sfond është e aktivizuar nga administratori"</string>
     <string name="permission_summary_enabled_by_admin_foreground_only" msgid="1298432715610745358">"Qasja në planin e parë është e aktivizuar nga administratori"</string>
-    <string name="permission_summary_enabled_system_fixed" msgid="2438344700184127274">"Pajisja kërkon këtë autorizim për të funksionuar"</string>
+    <string name="permission_summary_enabled_system_fixed" msgid="2438344700184127274">"Pajisja kërkon këtë leje për të funksionuar"</string>
     <!-- no translation found for background_access_chooser_dialog_choices:0 (1351721623256561996) -->
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
@@ -173,7 +173,7 @@
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Refuzo"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Leje për te <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Qasja te <xliff:g id="PERM">%1$s</xliff:g> për këtë aplikacion"</string>
-    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Shiko të gjitha lejet e <xliff:g id="APP">%1$s</xliff:g>"</string>
+    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Shiko të gjitha lejet e aplikacionit \"<xliff:g id="APP">%1$s</xliff:g>\""</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Shiko të gjitha aplikacionet me këtë leje"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Shfaq përdorimin e mikrofonit të \"Asistentit\""</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Hiq lejet nëse aplikacioni nuk është përdorur"</string>

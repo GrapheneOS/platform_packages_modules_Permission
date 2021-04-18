@@ -64,8 +64,8 @@
     <string name="default_permission_description" msgid="4624464917726285203">"कुनै अज्ञात कारबाही गर्नुहोस्"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_1">%2$d</xliff:g> मध्ये <xliff:g id="COUNT_0">%1$d</xliff:g> एपहरूलाई अनुमति दिइएको छ"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> एपहरूलाई अनुमति दिइएको छ"</string>
-    <string name="menu_show_system" msgid="4254021607027872504">"प्रणाली देखाउनुहोस्"</string>
-    <string name="menu_hide_system" msgid="3855390843744028465">"प्रणाली लुकाउनुहोस्"</string>
+    <string name="menu_show_system" msgid="4254021607027872504">"सिस्टम देखाउनुहोस्"</string>
+    <string name="menu_hide_system" msgid="3855390843744028465">"सिस्टम लुकाउनुहोस्"</string>
     <string name="no_apps" msgid="2412612731628386816">"कुनै पनि एप छैन"</string>
     <string name="location_settings" msgid="3624412509133422562">"स्थानसम्बन्धी सेटिङहरू"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> यस डिभाइसको स्थानसम्बन्धी सेवा प्रदायक हो। स्थानसम्बन्धी सेटिङहरूमा गई स्थानसम्बन्धी पहुँच परिमार्जन गर्न सकिन्छ।"</string>
@@ -78,7 +78,7 @@
     <string name="permission_summary_disabled_by_admin_background_only" msgid="3127091456731845646">"प्रशासकले पृष्ठभूमिको प‍हुँच असक्षम पार्नुभएको छ"</string>
     <string name="permission_summary_enabled_by_admin_background_only" msgid="9132423838440275757">"प्रशासकले पृष्ठभूमिको प‍हुँच सक्षम पार्नुभएको छ"</string>
     <string name="permission_summary_enabled_by_admin_foreground_only" msgid="1298432715610745358">"प्रशासकले अग्रभूमिको पहुँच सक्षम पार्नुभएको छ"</string>
-    <string name="permission_summary_enabled_system_fixed" msgid="2438344700184127274">"यन्त्र सञ्चालित हुन यो अनुमति आवश्यक हुन्छ"</string>
+    <string name="permission_summary_enabled_system_fixed" msgid="2438344700184127274">"यो अनुमतिबिना डिभाइस चल्दैन"</string>
     <!-- no translation found for background_access_chooser_dialog_choices:0 (1351721623256561996) -->
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
@@ -173,7 +173,7 @@
     <string name="app_permission_button_deny" msgid="2399316993899108824">"अस्वीकार गरियोस्‌"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> अनुमति"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"यस एपमाथि <xliff:g id="PERM">%1$s</xliff:g> पहुँच"</string>
-    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g> का सबै अनुमतिहरू हेर्नुहोस्"</string>
+    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g> सँग भएका सबै अनुमतिहरू हेर्नुहोस्"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"यो अनुमति पाएका सबै एपहरू हेर्नुहोस्"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"सहायकको माइक्रोफोन प्रयोगसम्बन्धी डेटा देखाउनुहोस्"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"यो एप प्रयोग नहुँदा यसलाई दिइएका अनुमतिहरू रद्द गरियोस्"</string>
@@ -194,19 +194,19 @@
     <string name="last_opened_category_title" msgid="7871347400611202595">"पछिल्लो पटक <xliff:g id="NUMBER">%s</xliff:g> महिनाभन्दा पहिले प्रयोग गरिएको"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"यो एप पछिल्लो पटक <xliff:g id="DATE">%s</xliff:g> मा खोलिएको थियो"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"पछिल्लो पटक <xliff:g id="DATE">%s</xliff:g> मा खोलिएको थियो"</string>
-    <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"तपाईंले सबै फाइलहरू व्यवस्थापन गर्ने अनुमति दिनुभयो भने यो एपले यस यन्त्र वा यस यन्त्रसँग जोडिएका अन्य भण्डारण डिभाइसको साझा भण्डारणमा भएका सबै फाइलहरू प्रयोग गर्न, परिमार्जन गर्न र मेटाउन सक्छ। यो एपले तपाईंलाई जानकारी नदिइकन ‌फाइलहरू प्रयोग गर्न सक्छ।"</string>
+    <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"तपाईंले सबै फाइलहरू व्यवस्थापन गर्ने अनुमति दिनुभयो भने यो एपले यस डिभाइस वा यस डिभाइससँग कनेक्ट गरिएका अन्य डिभाइसको साझा भण्डारणमा भएका सबै फाइलहरू प्रयोग गर्न, परिमार्जन गर्न र मेटाउन सक्छ। यो एपले तपाईंलाई जानकारी नदिइकन ‌फाइलहरू प्रयोग गर्न सक्छ।"</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"यो एपलाई यस यन्त्र वा यस यन्त्रसँग जोडिएका अन्य भण्डारण डिभाइसमा रहेका फाइलहरू प्रयोग गर्न, परिमार्जन गर्न र मेटाउन दिने हो? यो एपले तपाईंलाई जानकारी नदिइकन ‌फाइलहरू प्रयोग गर्न सक्छ।"</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"यो अनुमति पाएका एपहरूले निम्न कार्य गर्न सक्छन् <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"यो अनुमति भएका एपहरूले तपाईंले हिँड्ने, साइकल र गाडी कुदाउने जस्ता क्रियाकलाप गर्दा सृजित हुने डेटा हेर्न तथा प्रयोग गर्न सक्छन्"</string>
-    <string name="permission_description_summary_calendar" msgid="103329982944411010">"यो अनुमति पाएका एपहरूले तपाईंको पात्रो हेर्न सक्छन्"</string>
-    <string name="permission_description_summary_call_log" msgid="7321437186317577624">"यो अनुमतिसहितका एपहरूले फोन कलको लग पढ्न र लेख्न सक्छन्"</string>
+    <string name="permission_description_summary_calendar" msgid="103329982944411010">"यो अनुमति पाएका एपहरूले तपाईंको पात्रो हेर्न तथा चलाउन सक्छन्"</string>
+    <string name="permission_description_summary_call_log" msgid="7321437186317577624">"यो अनुमति भएका एपले फोन कल लग हेर्न तथा प्रयोग गर्न सक्छन्"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"यो अनुमति पाएका एपहरूले फोटो खिच्न र भिडियो रेकर्ड गर्न सक्छन्"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"यो अनुमति पाएका एपहरूले तपाईंका सम्पर्क ठेगानाहरू हेर्न सक्छन्"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"यो अनुमति भएका  एपहरूले यस डिभाइसको लोकेसन हेर्न तथा प्रयोग गर्न सक्छन्"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"यो अनुमति भएका एपहरूले अडियो रेकर्ड गर्न सक्छन्"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"यो अनुमति पाएका एपहरूले फोन कल गर्न र तिनको व्यवस्थापन गर्न सक्छन्"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"यो अनुमति भएका एपहरूले मुटुको धड्कन जस्ता तपाईं जीवित रहेको संकेत गर्ने शरीरका महत्त्वपूर्ण चालसम्बन्धी डेटा प्रयोग गर्न सक्छन्"</string>
-    <string name="permission_description_summary_sms" msgid="725999468547768517">"यो अनुमति पाएका एपहरूले SMS सन्देशहरू पठाउन र हेर्न सक्छन्"</string>
+    <string name="permission_description_summary_sms" msgid="725999468547768517">"यो अनुमति पाएका एपहरूले SMS म्यासेज पठाउन र हेर्न सक्छन्"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"यो अनुमति भएका एपहरूले तपाईंको डिभाइसमा रहेका फोटो, मिडिया तथा फाइल हेर्न तथा प्रयोग गर्न सक्छन्"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"पछिल्लो पटक पहुँच राखिएको समय: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"हाल अस्वीकार गरियो / पछिल्लो पटक पहुँच गरिएको: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
@@ -215,8 +215,8 @@
     <string name="allowed_header" msgid="7769277978004790414">"अनुमति दिइएको"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"सधैँ अनुमति दिइएको"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"प्रयोग भइरहेका बेला मात्र अनुमति दिइने"</string>
-    <string name="allowed_storage_scoped" msgid="5383645873719086975">"केवल मिडिया प्रयोग गर्ने अनुमति दिइएको छ"</string>
-    <string name="allowed_storage_full" msgid="5356699280625693530">"सबै फाइलहरू व्यवस्थापन गर्ने अनुमति दिइएको छ"</string>
+    <string name="allowed_storage_scoped" msgid="5383645873719086975">"मिडिया मात्र प्रयोग गर्ने अनुमति दिइएको"</string>
+    <string name="allowed_storage_full" msgid="5356699280625693530">"सबै फाइल व्यवस्थापन गर्ने अनुमति दिइएको"</string>
     <string name="ask_header" msgid="2633816846459944376">"प्रत्येक पटक सोधियोस्"</string>
     <string name="denied_header" msgid="2253955654228120835">"अस्वीकार गरिएको"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
@@ -281,7 +281,7 @@
     <string name="no_apps_allowed" msgid="7718822655254468631">"कुनै पनि एपलाई अनुमति दिइएको छैन"</string>
     <string name="no_apps_allowed_full" msgid="8011716991498934104">"सबै फाइलहरू कुनै पनि अनुप्रयोगमा राख्न सकिँदैन"</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"कुनै पनि एपलाई मिडिया फाइल मात्र प्रयोग गर्ने अनुमति दिइएको छैन"</string>
-    <string name="no_apps_denied" msgid="7663435886986784743">"कुनै पनि एपको अनुमति अस्वीकार गरिएको छैन"</string>
+    <string name="no_apps_denied" msgid="7663435886986784743">"सबै एपलाई अनुमति दिइएको छ"</string>
     <string name="car_permission_selected" msgid="180837028920791596">"चयन गरिएको"</string>
     <string name="settings" msgid="5409109923158713323">"सेटिङहरू"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"<xliff:g id="SERVICE_NAME">%s</xliff:g> ले तपाईंको यन्त्रमाथि पूर्ण रूपमा पहुँच राख्न सक्छ"</string>
@@ -291,48 +291,48 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"डिफल्ट डिजिटल सहायक एप"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"डिजिटल सहायक एप"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"सहायक एपहरूले तपाईंले हेर्दै गर्नुभएको स्क्रिनबाट प्राप्त जानकारीमा आधारित भई तपाईंलाई मद्दत गर्न सक्छन्।केही एपहरूले तपाईंलाई एकीकृत सहायता दिन दुवै लन्चर र आवाज संलग्न इनपुट सेवाहरूलाई समर्थन गर्दछन्।"</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"तपाईंको पूर्वनिर्धारित सहायक एपका रूपमा <xliff:g id="APP_NAME">%1$s</xliff:g> सेट गर्ने हो?"</string>
+    <string name="role_assistant_request_title" msgid="5964976301922776060">"तपाईंको डिफल्ट सहायक एपका रूपमा <xliff:g id="APP_NAME">%1$s</xliff:g> सेट गर्ने हो?"</string>
     <string name="role_assistant_request_description" msgid="6836644847620178483">"यसले SMS र कल लगमाथि पहुँच प्राप्त गर्छ"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"डिफल्ट ब्राउजर एप"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"ब्राउजरसम्बन्धी एप"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"तपाईंलाई इन्टरनेट चलाउने दिने र तपाईंले ट्याप गर्ने लिंकहरू देखाउने एपहरू"</string>
-    <string name="role_browser_request_title" msgid="2895200507835937192">"आफ्नो पूर्वनिर्धारित ब्राउजर एपका रूपमा <xliff:g id="APP_NAME">%1$s</xliff:g> सेट गर्ने हो?"</string>
+    <string name="role_browser_request_title" msgid="2895200507835937192">"आफ्नो डिफल्ट ब्राउजर एपका रूपमा <xliff:g id="APP_NAME">%1$s</xliff:g> सेट गर्ने हो?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"कुनै पनि अनुमति आवश्यक छैन"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"डिफल्ट फोन एप"</string>
     <string name="role_dialer_short_label" msgid="7186888549465352489">"फोन एप"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"तपाईंलाई आफ्नो डिभाइसमार्फत टेलिफोन कल गर्न र उठाउन दिने एपहरू"</string>
-    <string name="role_dialer_request_title" msgid="5959618560705912058">"तपाईंको पूर्वनिर्धारित फोन एपका रूपमा <xliff:g id="APP_NAME">%1$s</xliff:g> सेट गर्ने हो?"</string>
+    <string name="role_dialer_request_title" msgid="5959618560705912058">"तपाईंको डिफल्ट फोन एपका रूपमा <xliff:g id="APP_NAME">%1$s</xliff:g> सेट गर्ने हो?"</string>
     <string name="role_dialer_request_description" msgid="2264219375528345270">"यसले कल लग र SMS पठाउने सेवामाथि पहुँच प्राप्त गर्छ"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"डायलर"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"डिफल्ट SMS एप"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS एप"</string>
-    <string name="role_sms_description" msgid="3424020199148153513">"तपाईंलाई छोटा पाठ सन्देश, फोटो, भिडियो र थप कुरा पठाउन र प्राप्त गर्न आफ्नो फोन नम्बर प्रयोग गर्न दिने एपहरू"</string>
-    <string name="role_sms_request_title" msgid="7953552109601185602">"आफ्नो पूर्वनिर्धारित SMS एपका रूपमा <xliff:g id="APP_NAME">%1$s</xliff:g> सेट गर्ने हो?"</string>
+    <string name="role_sms_description" msgid="3424020199148153513">"तपाईंलाई छोटा टेक्स्ट म्यासेज, फोटो, भिडियो र थप कुरा पठाउन र प्राप्त गर्न आफ्नो फोन नम्बर प्रयोग गर्न दिने एपहरू"</string>
+    <string name="role_sms_request_title" msgid="7953552109601185602">"आफ्नो डिफल्ट SMS एपका रूपमा <xliff:g id="APP_NAME">%1$s</xliff:g> सेट गर्ने हो?"</string>
     <string name="role_sms_request_description" msgid="983371022668134198">"यसले सम्पर्क, SMS र फोनमाथि पहुँच प्राप्त गर्छ"</string>
-    <string name="role_sms_search_keywords" msgid="8022048144395047352">"पाठ सन्देश, पाठ सन्देश पठाउने, सन्देशहरू, सन्देश प्रवाह"</string>
-    <string name="role_emergency_label" msgid="7028825857206842366">"पूर्वनिर्धारित आपत्‌कालीन एप"</string>
+    <string name="role_sms_search_keywords" msgid="8022048144395047352">"टेक्स्ट म्यासेज, टेक्स्ट म्यासेज पठाउने, सन्देशहरू, सन्देश प्रवाह"</string>
+    <string name="role_emergency_label" msgid="7028825857206842366">"डिफल्ट आपत्‌कालीन एप"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"आपत्‌कालीन एप"</string>
     <string name="role_emergency_description" msgid="5051840234887686630">"तपाईंलाई आफ्नो स्वास्थ्यसम्बन्धी जानकारी रेकर्ड गर्न र आपत्‌कालीन अवस्थामा सहयोग गर्ने मान्छेहरूलाई उक्त जानकारीमाथि पहुँच प्रदान गर्न; कठोर मौसम तथा विपत्तिसम्बन्धी अलर्टहरू प्रदान गर्न; तपाईंलाई आवश्यकता पर्दा अरू मान्छेहरूलाई जानकारी दिन अनुमति दिने एपहरू"</string>
-    <string name="role_emergency_request_title" msgid="8469579020654348567">"आफ्नो पूर्वनिर्धारित आपत्‌कालीन एपका रूपमा <xliff:g id="APP_NAME">%1$s</xliff:g> सेट गर्ने हो?"</string>
+    <string name="role_emergency_request_title" msgid="8469579020654348567">"आफ्नो डिफल्ट आपत्‌कालीन एपका रूपमा <xliff:g id="APP_NAME">%1$s</xliff:g> सेट गर्ने हो?"</string>
     <string name="role_emergency_request_description" msgid="131645948770262850">"कुनै पनि अनुमति आवश्यक छैन"</string>
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"ICE"</string>
     <string name="role_home_label" msgid="3871847846649769412">"डिफल्ट होम एप"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"गृह एप"</string>
     <string name="role_home_description" msgid="7997371519626556675">"तपाईंको डिभाइसमा गृह स्क्रिन प्रतिस्थापित गर्ने र तपाईंलाई आफ्नो Android डिभाइसका सामग्री र सुविधाहरूमाथि पहुँच गर्न दिने (लन्चर पनि भनिने) एपहरू"</string>
-    <string name="role_home_request_title" msgid="738136983453341081">"आफ्नो पूर्वनिर्धारित गृह एपका रूपमा <xliff:g id="APP_NAME">%1$s</xliff:g> सेट गर्ने हो?"</string>
+    <string name="role_home_request_title" msgid="738136983453341081">"आफ्नो डिफल्ट गृह एपका रूपमा <xliff:g id="APP_NAME">%1$s</xliff:g> सेट गर्ने हो?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"कुनै पनि अनुमति आवश्यक छैन"</string>
     <string name="role_home_search_keywords" msgid="3830755001192666285">"लन्चर"</string>
-    <string name="role_call_redirection_label" msgid="5785304207206147590">"कल रिडिरेक्ट गर्ने पूर्वनिर्धारित एप"</string>
+    <string name="role_call_redirection_label" msgid="5785304207206147590">"कल रिडिरेक्ट गर्ने डिफल्ट एप"</string>
     <string name="role_call_redirection_short_label" msgid="7568143419571217757">"कल रिडिरेक्ट गर्ने एप"</string>
     <string name="role_call_redirection_description" msgid="6091669882014664420">"तपाईंलाई बहिर्गमन कल अर्को फोन नम्बरमा फर्वार्ड गर्न दिने एपहरू"</string>
-    <string name="role_call_redirection_request_title" msgid="2816244455003562925">"तपाईंको कल रिडिरेक्ट गर्ने पूर्वनिर्धारित एपका रूपमा <xliff:g id="APP_NAME">%1$s</xliff:g> सेट गर्ने हो?"</string>
+    <string name="role_call_redirection_request_title" msgid="2816244455003562925">"तपाईंको कल रिडिरेक्ट गर्ने डिफल्ट एपका रूपमा <xliff:g id="APP_NAME">%1$s</xliff:g> सेट गर्ने हो?"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"कुनै पनि अनुमति आवश्यक छैन"</string>
     <string name="role_call_screening_label" msgid="883935222060878724">"डिफल्ट कलर ID र स्प्याम एप"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"कल गर्ने व्यक्तिको ID रamp; स्प्यामसम्बन्धी एप"</string>
     <string name="role_call_screening_description" msgid="2349431420497468981">"तपाईंलाई कल गर्ने व्यक्तिको पहिचान गर्न तथा स्प्याम कल, robocall वा अन्य नम्बरबाट आउने अनावश्यक कलहरूमाथि रोक लगाउन मद्दत गर्ने एपहरू"</string>
-    <string name="role_call_screening_request_title" msgid="7358309224566977290">"आफ्नो पूर्वनिर्धारित कल गर्ने व्यक्तिको ID र स्प्याम एपका रूपमा <xliff:g id="APP_NAME">%1$s</xliff:g> सेट गर्ने हो?"</string>
+    <string name="role_call_screening_request_title" msgid="7358309224566977290">"आफ्नो डिफल्ट कल गर्ने व्यक्तिको ID र स्प्याम एपका रूपमा <xliff:g id="APP_NAME">%1$s</xliff:g> सेट गर्ने हो?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"कुनै पनि अनुमति आवश्यक छैन"</string>
-    <string name="request_role_current_default" msgid="738722892438247184">"हालको पूर्वनिर्धारित एप"</string>
+    <string name="request_role_current_default" msgid="738722892438247184">"हालको डिफल्ट एप"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"फेरि नसोध्नुहोस्"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"डिफल्ट सेट गर्नुहोस्"</string>
     <string name="phone_call_uses_microphone" msgid="233569591461187177">"माइक्रोफोन हाल &lt;b&gt;फोन कल&lt;/b&gt;मा प्रयोग भइरहेको छ"</string>
@@ -353,10 +353,10 @@
     <string name="permgroup_list_microphone_and_camera" msgid="962768198001487969">"माइक्रोफोन तथा क्यामेरा"</string>
     <string name="settings_button" msgid="4414988414732479636">"सेटिङहरू"</string>
     <string name="default_apps" msgid="5119201969348748639">"डिफल्ट एपहरू"</string>
-    <string name="no_default_apps" msgid="2593466527182950231">"कुनै पनि पूर्वनिर्धारित एप छैन"</string>
+    <string name="no_default_apps" msgid="2593466527182950231">"कुनै पनि डिफल्ट एप छैन"</string>
     <string name="default_apps_more" msgid="4078194675848858093">"थप डिफल्ट एपहरू"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"लिंकहरू खोल्दा"</string>
-    <string name="default_apps_for_work" msgid="4970308943596201811">"कार्यका लागि पूर्वनिर्धारित"</string>
+    <string name="default_apps_for_work" msgid="4970308943596201811">"कार्यका लागि डिफल्ट"</string>
     <string name="default_app_none" msgid="9084592086808194457">"कुनै पनि होइन"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(डिफल्ट सिस्टम एप)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"कुनै पनि एप छैन"</string>
@@ -394,7 +394,7 @@
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; का लागि स्थानसम्बन्धी पहुँच परिवर्तन गर्ने हो?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"तपाईं उक्त एप प्रयोग नगरिरहेका बेलामा लगायत जुनसुकै समयमा यो एपले तपाईंको स्थानमाथि पहुँच राख्न खोज्छ। "<annotation id="link">"सेटिङमा गई अनुमति दिनुहोस्।"</annotation></string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई आफ्नो पात्रोमाथि पहुँच राख्न दिने हो?"</string>
-    <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; SMS सन्देशहरू पठाउन र हेर्न दिने हो?"</string>
+    <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; SMS म्यासेज पठाउन र हेर्न दिने हो?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई आफ्नो डिभाइसमा रहेका फोटो, मिडिया र फाइलहरू प्रयोग गर्न दिने हो?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई अडियो रेकर्ड गर्न दिने हो?"</string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई आफ्नो शारीरिक क्रियाकलाप प्रयोग गर्न दिने हो?"</string>

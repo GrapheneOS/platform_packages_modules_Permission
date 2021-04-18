@@ -186,7 +186,7 @@
     <string name="app_permission_button_ask" msgid="3342950658789427">"Vedno vprašaj"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Zavrni"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Dovoljenje »<xliff:g id="PERM">%1$s</xliff:g>«"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"Dovoljenje »<xliff:g id="PERM">%1$s</xliff:g>« za to aplikacijo"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"Dostop te aplikacije do dovoljenja »<xliff:g id="PERM">%1$s</xliff:g>«"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Ogled vseh dovoljenj za aplikacijo <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Ogled vseh aplikacij s tem dovoljenjem"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Prikaz uporabe pomožnega mikrofona"</string>
@@ -212,16 +212,16 @@
     <string name="special_file_access_dialog" msgid="583804114020740610">"Ali tej aplikaciji dovolite dostop do datotek, ki so v napravi ali drugih povezanih napravah za shranjevanje, ter njihovo spreminjanje in brisanje? Ta aplikacija lahko do datotek dostopa brez vaše vednosti."</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"Aplikacije s tem dovoljenjem imajo te možnosti: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Aplikacije s tem dovoljenjem lahko dostopajo do podatkov o vaši telesni dejavnosti, na primer hoji, kolesarjenju, vožnji, številu korakov itd."</string>
-    <string name="permission_description_summary_calendar" msgid="103329982944411010">"Aplikacije s tem dovoljenjem lahko dostopajo do koledarja"</string>
-    <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Aplikacije s tem dovoljenjem lahko berejo dnevnik klicev v telefonu in zapisujejo vanj"</string>
-    <string name="permission_description_summary_camera" msgid="108004375101882069">"Aplikacije s tem dovoljenjem lahko snemajo fotografije in videoposnetke"</string>
-    <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Aplikacije s tem dovoljenjem lahko dostopajo do stikov"</string>
-    <string name="permission_description_summary_location" msgid="2817531799933480694">"Aplikacije s tem dovoljenjem lahko dostopajo do lokacije te naprave"</string>
-    <string name="permission_description_summary_microphone" msgid="630834800308329907">"Aplikacije s tem dovoljenjem lahko snemajo zvok"</string>
-    <string name="permission_description_summary_phone" msgid="4515277217435233619">"Aplikacije s tem dovoljenjem lahko opravljajo in upravljajo telefonske klice"</string>
-    <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Aplikacije s tem dovoljenjem lahko dostopajo do podatkov tipal o vaših vitalnih znakih"</string>
-    <string name="permission_description_summary_sms" msgid="725999468547768517">"Aplikacije s tem dovoljenjem lahko pošiljajo in berejo sporočila SMS"</string>
-    <string name="permission_description_summary_storage" msgid="6575759089065303346">"Aplikacije s tem dovoljenjem lahko dostopajo do fotografij, predstavnostnih vsebin in datotek v napravi"</string>
+    <string name="permission_description_summary_calendar" msgid="103329982944411010">"Aplikacije s tem dovoljenjem lahko dostopajo do koledarja."</string>
+    <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Aplikacije s tem dovoljenjem lahko berejo dnevnik klicev v telefonu in zapisujejo vanj."</string>
+    <string name="permission_description_summary_camera" msgid="108004375101882069">"Aplikacije s tem dovoljenjem lahko snemajo fotografije in videoposnetke."</string>
+    <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Aplikacije s tem dovoljenjem lahko dostopajo do stikov."</string>
+    <string name="permission_description_summary_location" msgid="2817531799933480694">"Aplikacije s tem dovoljenjem lahko dostopajo do lokacije te naprave."</string>
+    <string name="permission_description_summary_microphone" msgid="630834800308329907">"Aplikacije s tem dovoljenjem lahko snemajo zvok."</string>
+    <string name="permission_description_summary_phone" msgid="4515277217435233619">"Aplikacije s tem dovoljenjem lahko opravljajo in upravljajo telefonske klice."</string>
+    <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Aplikacije s tem dovoljenjem lahko dostopajo do podatkov tipal o vaših vitalnih znakih."</string>
+    <string name="permission_description_summary_sms" msgid="725999468547768517">"Aplikacije s tem dovoljenjem lahko pošiljajo in berejo sporočila SMS."</string>
+    <string name="permission_description_summary_storage" msgid="6575759089065303346">"Aplikacije s tem dovoljenjem lahko dostopajo do fotografij, predstavnostnih vsebin in datotek v napravi."</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Zadnja uporaba: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Trenutno zavrnjeno / zadnja uporaba: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Še brez uporabe"</string>

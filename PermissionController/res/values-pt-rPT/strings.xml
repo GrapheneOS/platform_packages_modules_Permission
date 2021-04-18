@@ -196,7 +196,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Último acesso a <xliff:g id="DATE">%s</xliff:g>."</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Se permitir a gestão de todos os ficheiros, esta app pode aceder, modificar e eliminar todos os ficheiros no armazenamento comum neste dispositivo ou nos dispositivos de armazenamento associados. A app pode aceder aos ficheiros sem lhe pedir autorização."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Pretende permitir que esta app aceda, modifique e elimine ficheiros no dispositivo ou em qualquer dispositivo de armazenamento associado? Esta app pode aceder aos ficheiros sem lhe pedir autorização."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"As aplicações com esta autorização podem <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"As apps com esta autorização podem <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"As apps com esta autorização podem aceder aos dados da sua atividade física, como caminhar, andar de bicicleta, conduzir, contar os passos, etc."</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"As apps com esta autorização podem aceder ao seu calendário"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"As apps com esta autorização podem ler e escrever no registo de chamadas do telemóvel"</string>
@@ -204,7 +204,7 @@
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"As apps com esta autorização podem aceder aos seus contactos"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"As apps com esta autorização podem aceder à localização deste dispositivo"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"As apps com esta autorização podem gravar áudio"</string>
-    <string name="permission_description_summary_phone" msgid="4515277217435233619">"As aplicações com esta autorização podem efetuar e gerir chamadas telefónicas"</string>
+    <string name="permission_description_summary_phone" msgid="4515277217435233619">"As apps com esta autorização podem efetuar e gerir chamadas telefónicas"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"As apps com esta autorização podem aceder aos dados de sensores acerca dos seus sinais vitais"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"As apps com esta autorização podem enviar e ver mensagens SMS"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"As apps com esta autorização podem aceder a fotos, conteúdos multimédia e ficheiros no dispositivo"</string>

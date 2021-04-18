@@ -71,7 +71,7 @@
     <string name="location_warning" msgid="2381649060929040962">"Այս սարքի տեղորոշման ծառայությունները տրամադրում է <xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածը: Տեղադրության ցուցադրման կարգավորումները կարող եք փոխել տեղադրության կարգավորումներում:"</string>
     <string name="system_warning" msgid="1173400963234358816">"Եթե այս թույլտվությունը մերժեք, ձեր սարքի հիմնական գործառույթները հնարավոր է պատշաճ չաշխատեն:"</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Կանոնների համաձայն"</string>
-    <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Հասանելիությունը ֆոնային ռեժիմում անջատած է կանոնի համաձայն"</string>
+    <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Հասանելիությունը ֆոնային ռեժիմում անջատված է կանոնի համաձայն"</string>
     <string name="permission_summary_enabled_by_policy_background_only" msgid="8287675974767104279">"Հասանելիությունը ֆոնային ռեժիմում միացված է կանոնի համաձայն"</string>
     <string name="permission_summary_enabled_by_policy_foreground_only" msgid="3844582916889767831">"Հասանելիությունն ակտիվ ռեժիմում միացված է կանոնի համաձայն"</string>
     <string name="permission_summary_enforced_by_admin" msgid="822702574117248700">"Վերահսկվում է ադմինիստրատորի կողմից"</string>
@@ -173,7 +173,7 @@
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Մերժել"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"«<xliff:g id="PERM">%1$s</xliff:g>» թույլտվություն"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"<xliff:g id="PERM">%1$s</xliff:g> օգտագործելու թույլտվություն այս հավելվածի համար"</string>
-    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Տեսնել <xliff:g id="APP">%1$s</xliff:g> հավելվածի բոլոր թույլտվությունները"</string>
+    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Տեսնել «<xliff:g id="APP">%1$s</xliff:g>» հավելվածի բոլոր թույլտվությունները"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Դիտել այս թույլտվությունն ունեցող հավելվածների ցանկը"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Ցույց տալ օգնականի կողմից խոսափողի օգտագործման վիճակագրությունը"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Հեռացնել թույլտվությունները, եթե հավելվածը չի օգտագործվում"</string>

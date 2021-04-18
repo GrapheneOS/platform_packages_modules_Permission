@@ -213,12 +213,12 @@
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Bisher kein Zugriff auf diese Berechtigung"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"Abgelehnt/Kein Zugriff auf diese Berechtigung"</string>
     <string name="allowed_header" msgid="7769277978004790414">"Zugelassen"</string>
-    <string name="allowed_always_header" msgid="6455903312589013545">"Zugriff immer zugelassen"</string>
-    <string name="allowed_foreground_header" msgid="6845655788447833353">"Zugriff nur während Nutzung zugelassen"</string>
+    <string name="allowed_always_header" msgid="6455903312589013545">"Immer zugelassen"</string>
+    <string name="allowed_foreground_header" msgid="6845655788447833353">"Nur während Nutzung zugelassen"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Zugriff nur auf Mediendateien zugelassen"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Verwalten aller Dateien zugelassen"</string>
     <string name="ask_header" msgid="2633816846459944376">"Jedes Mal fragen"</string>
-    <string name="denied_header" msgid="2253955654228120835">"Zugriff abgelehnt"</string>
+    <string name="denied_header" msgid="2253955654228120835">"Abgelehnt"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> Tage</item>
       <item quantity="one">1 Tag</item>
