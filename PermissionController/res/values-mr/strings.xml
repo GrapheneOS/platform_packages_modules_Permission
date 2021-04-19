@@ -278,7 +278,7 @@
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"सर्व फाइल"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"कोणत्याही परवानगीची अनुमती नाही"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"कोणत्याही परवानग्या नाकारल्या नाहीत"</string>
-    <string name="no_apps_allowed" msgid="7718822655254468631">"कोणत्याही अ‍ॅप्सला अनुमती नाही"</string>
+    <string name="no_apps_allowed" msgid="7718822655254468631">"कोणत्याही अ‍ॅप्सना अनुमती नाही"</string>
     <string name="no_apps_allowed_full" msgid="8011716991498934104">"सर्व फाइलसाठी अ‍ॅप्सना अनुमती नाही"</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"फक्त मीडियासाठी कोणत्याही ॲप्सना अनुमती नाही"</string>
     <string name="no_apps_denied" msgid="7663435886986784743">"कोणतीही अ‍ॅप्स नाकारली नाहीत"</string>

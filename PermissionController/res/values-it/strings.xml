@@ -213,8 +213,8 @@
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Accesso mai eseguito"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"Rifiutata/Accesso mai effettuato"</string>
     <string name="allowed_header" msgid="7769277978004790414">"Autorizzazione concessa"</string>
-    <string name="allowed_always_header" msgid="6455903312589013545">"Sempre autorizzate"</string>
-    <string name="allowed_foreground_header" msgid="6845655788447833353">"Autorizzate solo durante l\'uso"</string>
+    <string name="allowed_always_header" msgid="6455903312589013545">"Autorizzazione sempre concessa"</string>
+    <string name="allowed_foreground_header" msgid="6845655788447833353">"Autorizzazione concessa solo durante l\'uso"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Autorizzate solo per contenuti multimediali"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Autorizzate per gestire tutti i file"</string>
     <string name="ask_header" msgid="2633816846459944376">"Chiedi ogni volta"</string>

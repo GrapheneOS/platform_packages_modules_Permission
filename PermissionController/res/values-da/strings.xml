@@ -199,7 +199,7 @@
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"Apps med denne tilladelse kan <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Apps med denne tilladelse har adgang til dine fysiske aktiviteter, f.eks. hvor meget du har gået, cyklet eller kørt, skridttæller m.m."</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Apps med denne tilladelse kan få adgang til din kalender"</string>
-    <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Apps med denne tilladelse kan læse og redigere telefonens opkaldsliste"</string>
+    <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Apps med denne tilladelse kan læse og redigere telefonens opkaldshistorik"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Apps med denne tilladelse kan tage billeder og optage video"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Apps med denne tilladelse kan få adgang til dine kontakter"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Apps med denne tilladelse kan få adgang til denne enheds placering"</string>
@@ -292,7 +292,7 @@
     <string name="role_assistant_short_label" msgid="3369003713187703399">"App for digital assistent"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Assistanceapps kan hjælpe dig på baggrund af oplysningerne på den aktuelle skærm. Nogle apps understøtter både startertjenester og tjenester til indtaling for at give dig integreret assistance."</string>
     <string name="role_assistant_request_title" msgid="5964976301922776060">"Vil du angive <xliff:g id="APP_NAME">%1$s</xliff:g> som din standardapp til assistance?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"Appen får adgang til sms-beskeder og opkaldsliste"</string>
+    <string name="role_assistant_request_description" msgid="6836644847620178483">"Appen får adgang til sms-beskeder og opkaldshistorik"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Standardbrowserapp"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Browserapp"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Apps, der giver dig adgang til internettet og viser links, som du trykker på"</string>
@@ -302,7 +302,7 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Opkaldsapp"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Apps, der giver dig mulighed for at foretage og modtage opkald på din enhed"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Vil du angive <xliff:g id="APP_NAME">%1$s</xliff:g> som din standardapp til opkald?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"Får adgang til opkaldsliste og afsendelse af sms-beskeder"</string>
+    <string name="role_dialer_request_description" msgid="2264219375528345270">"Får adgang til opkaldshistorik og afsendelse af sms-beskeder"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"opkald"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Standardapp til sms-beskeder"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"Sms-app"</string>
