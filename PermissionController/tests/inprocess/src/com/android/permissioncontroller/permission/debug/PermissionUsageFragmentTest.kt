@@ -35,6 +35,7 @@ import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity
 import com.android.permissioncontroller.scrollToPreference
 import com.google.common.truth.Truth.assertThat
 import org.junit.After
+import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -62,6 +63,7 @@ class PermissionUsageFragmentTest : PermissionHub2Test() {
         }
     }
 
+    @Ignore("ACTION_REVIEW_PERMISSION_USAGE is handled by the new UI and will need a new test")
     @Test
     fun cameraAccessShouldBeShown() {
         eventually {
