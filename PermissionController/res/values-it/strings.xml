@@ -203,7 +203,7 @@
     <string name="precise_image_description" msgid="6349638632303619872">"Posizione esatta"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Posizione approssimativa"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Usa posizione esatta"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Se questa opzione non è attiva, le app possono stabilire soltanto la tua posizione approssimativa all\'interno del quartiere in cui ti trovi"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Se questa opzione non è attiva, le app possono stabilire soltanto la posizione approssimativa dell\'area in cui ti trovi"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Autorizzazione <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Accesso a <xliff:g id="PERM">%1$s</xliff:g> per questa app"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Mostra tutte le autorizzazioni di <xliff:g id="APP">%1$s</xliff:g>"</string>
@@ -249,8 +249,8 @@
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Accesso mai eseguito"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"Rifiutata/Accesso mai effettuato"</string>
     <string name="allowed_header" msgid="7769277978004790414">"Autorizzazione concessa"</string>
-    <string name="allowed_always_header" msgid="6455903312589013545">"Sempre autorizzate"</string>
-    <string name="allowed_foreground_header" msgid="6845655788447833353">"Autorizzate solo durante l\'uso"</string>
+    <string name="allowed_always_header" msgid="6455903312589013545">"Autorizzazione sempre concessa"</string>
+    <string name="allowed_foreground_header" msgid="6845655788447833353">"Autorizzazione concessa solo durante l\'uso"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Autorizzate solo per contenuti multimediali"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Autorizzate per gestire tutti i file"</string>
     <string name="ask_header" msgid="2633816846459944376">"Chiedi ogni volta"</string>
