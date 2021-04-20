@@ -203,7 +203,7 @@
     <string name="precise_image_description" msgid="6349638632303619872">"Нақты орын"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Шамамен алынған орын"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Нақты орынды пайдалану"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Бұл функция өшірулі болса, қолданбалар жақын қашықтықтағы болжалды орныңызды ғана анықтай алады."</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Бұл функция өшірулі болса, қолданбалар болжалды орныңызды ғана анықтай алады."</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> рұқсаты"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"<xliff:g id="PERM">%1$s</xliff:g>: осы қолданбаның рұқсаты"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Барлық <xliff:g id="APP">%1$s</xliff:g> рұқсаттарын көру"</string>
