@@ -109,6 +109,9 @@
     <!-- Title for the dialog button to change to precise location. [CHAR LIMIT=60] -->
     <string name="grant_dialog_button_change_to_precise_location">Change to precise location</string>
 
+    <!-- Title for the dialog button to keep approximate location. [CHAR LIMIT=60] -->
+    <string name="grant_dialog_button_keey_approximate_location">Keep approximate location</string>
+
     <!-- Title for the dialog button to allow a permission grant temporarily in teh foreground. [CHAR LIMIT=60] -->
     <string name="grant_dialog_button_allow_one_time">Only this time</string>
 
@@ -426,7 +429,7 @@
         <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> apps</item>
     </plurals>
 
-    <!-- Label for the permission usage preference that shows how many apps have used various permissions [CHAR LIMIT=30] -->
+    <!-- Label for the permission usage preference that shows how many apps have used various permissions [CHAR LIMIT=50] -->
     <plurals name="permission_usage_preference_label">
         <item quantity="one">1 app used <xliff:g id="permgroup" example="Location">%2$s</xliff:g></item>
         <item quantity="other"><xliff:g id="number" example="7">%1$d</xliff:g> apps used <xliff:g id="permgroup" example="Location">%2$s</xliff:g></item>
@@ -1167,8 +1170,8 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <!-- Subtitle of the message shown to the user when the apps requests permission to discovery and connect to nearby devices while app is in foreground and background. Try to keep the link annotation at the end of the string [CHAR LIMIT=150] -->
     <string name="permgroupupgraderequestdetail_nearby_devices">Allow &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to discover and connect to nearby devices? <annotation id="link">Allow in settings.</annotation></string>
 
-    <!-- Message shown to the user when the app requests permission to use fine location [CHAR LIMIT=120] -->
-    <string name="permgrouprequest_finelocation">Allow &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access this device\u2019s precise location?</string>
+    <!-- Message shown to the user when the app requests permission to upgrade to fine location [CHAR LIMIT=120] -->
+    <string name="permgrouprequest_fineupgrade">Change <xliff:g id="app_name" example="Gmail">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>\u2019s location access from approximate to precise?</string>
     <!-- Message shown to the user when the app requests permission to use coarse location [CHAR LIMIT=120] -->
     <string name="permgrouprequest_coarselocation">Allow &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access this device\u2019s approximate location?</string>
     <!-- Text for the FINE location image [CHAR LIMIT=20] -->

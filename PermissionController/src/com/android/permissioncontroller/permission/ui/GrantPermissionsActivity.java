@@ -235,7 +235,7 @@ public class GrantPermissionsActivity extends FragmentActivity
                 messageId = Utils.getRequest(info.getGroupName());
                 break;
             case FG_FINE_LOCATION_MESSAGE:
-                messageId = R.string.permgrouprequest_finelocation;
+                messageId = R.string.permgrouprequest_fineupgrade;
                 break;
             case FG_COARSE_LOCATION_MESSAGE:
                 messageId = R.string.permgrouprequest_coarselocation;
