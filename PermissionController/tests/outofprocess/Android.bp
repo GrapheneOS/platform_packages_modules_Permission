@@ -53,5 +53,8 @@ android_test {
         type: "lite",
     },
 
-    test_suites: ["device-tests"]
+    test_suites: [
+        "device-tests",
+        "mts",
+    ],
 }
