@@ -30,7 +30,6 @@ import android.graphics.PorterDuffXfermode
 import android.graphics.drawable.AnimatedImageDrawable
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.Icon
-import android.graphics.drawable.StateListDrawable
 import android.os.Bundle
 import android.os.UserHandle
 import android.text.method.LinkMovementMethod
@@ -75,8 +74,6 @@ import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandle
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.GRANTED_ALWAYS
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.GRANTED_FOREGROUND_ONLY
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler.GRANTED_ONE_TIME
-import com.android.permissioncontroller.permission.utils.KotlinUtils.getPackageLabel
-import com.android.permissioncontroller.permission.utils.Utils.getRequestMessage
 
 class GrantPermissionsViewHandlerImpl(
     private val mActivity: Activity,
@@ -86,11 +83,8 @@ class GrantPermissionsViewHandlerImpl(
 
     private val LOCATION_ACCURACY_DIALOGS = listOf(DIALOG_WITH_BOTH_LOCATIONS,
             DIALOG_WITH_FINE_LOCATION_ONLY, DIALOG_WITH_COARSE_LOCATION_ONLY)
-    private val LOCATION_ACCURACY_RADIO_BUTTONS = listOf(FINE_RADIO_BUTTON, COARSE_RADIO_BUTTON)
     private val LOCATION_ACCURACY_IMAGE_DIAMETER = mActivity.resources.getDimension(
             R.dimen.location_accuracy_image_size).toInt()
-    private val LOCATION_RADIO_BUTTON_STATE_UNCHECKED = intArrayOf(-android.R.attr.state_checked)
-    private val LOCATION_RADIO_BUTTON_STATE_CHECKED = intArrayOf(android.R.attr.state_checked)
 
     private var resultListener: GrantPermissionsViewHandler.ResultListener? = null
 
@@ -104,8 +98,13 @@ class GrantPermissionsViewHandlerImpl(
     private val buttonVisibilities = BooleanArray(NEXT_BUTTON) { false }
     private val locationVisibilities = BooleanArray(NEXT_LOCATION_DIALOG) { false }
     private var selectedPrecision: Int = 0
-    private var fineStateList: StateListDrawable = StateListDrawable()
-    private var coarseStateList: StateListDrawable = StateListDrawable()
+    private var isLocationPermissionDialogActionClicked: Boolean = false
+    private var coarseRadioButton: RadioButton? = null
+    private var fineRadioButton: RadioButton? = null
+    private var coarseOffDrawable: AnimatedImageDrawable? = null
+    private var coarseOnDrawable: AnimatedImageDrawable? = null
+    private var fineOffDrawable: AnimatedImageDrawable? = null
+    private var fineOnDrawable: AnimatedImageDrawable? = null
 
     // Views
     private var iconView: ImageView? = null
@@ -223,11 +222,13 @@ class GrantPermissionsViewHandlerImpl(
             val locationView = rootView.findViewById<View>(LOCATION_RES_ID_TO_NUM.keyAt(i))
             locationViews[LOCATION_RES_ID_TO_NUM.valueAt(i)] = locationView
         }
-        setAnimatedImages(locationViews)
+        initializeAnimatedImages()
 
         // Set location accuracy radio buttons' click listeners
-        (locationViews[FINE_RADIO_BUTTON] as RadioButton).setOnClickListener(this)
-        (locationViews[COARSE_RADIO_BUTTON] as RadioButton).setOnClickListener(this)
+        coarseRadioButton = locationViews[COARSE_RADIO_BUTTON] as RadioButton
+        fineRadioButton = locationViews[FINE_RADIO_BUTTON] as RadioButton
+        coarseRadioButton!!.setOnClickListener(this)
+        fineRadioButton!!.setOnClickListener(this)
         this.locationViews = locationViews
 
         if (groupName != null) {
@@ -237,7 +238,7 @@ class GrantPermissionsViewHandlerImpl(
         return rootView
     }
 
-    private fun setAnimatedImages(locationViews: Array<View?>) {
+    private fun initializeAnimatedImages() {
         val isDarkMode = (mActivity.resources.configuration.uiMode and
                 Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
         val coarseOffDrawableId = if (isDarkMode) R.drawable.coarse_off_dark
@@ -248,30 +249,10 @@ class GrantPermissionsViewHandlerImpl(
             else R.drawable.fine_off_light
         val fineOnDrawableId = if (isDarkMode) R.drawable.fine_on_dark else R.drawable.fine_on_light
 
-        // Set COARSE only drawable
-        val coarseOnlyDrawable = getDrawableFromId(coarseOnDrawableId)
-        (locationViews[DIALOG_WITH_COARSE_LOCATION_ONLY] as ImageView).setImageDrawable(
-                coarseOnlyDrawable)
-
-        // Set FINE upgrade drawable
-        val fineUpgradeDrawable = getDrawableFromId(fineOnDrawableId)
-        (locationViews[DIALOG_WITH_FINE_LOCATION_ONLY] as ImageView).setImageDrawable(
-                fineUpgradeDrawable)
-
-        // Set FINE/COARSE drawables to StateListDrawables
-        val coarseOffDrawable = getDrawableFromId(coarseOffDrawableId)
-        val coarseOnDrawable = getDrawableFromId(coarseOnDrawableId)
-        coarseStateList.addState(LOCATION_RADIO_BUTTON_STATE_UNCHECKED, coarseOffDrawable)
-        coarseStateList.addState(LOCATION_RADIO_BUTTON_STATE_CHECKED, coarseOnDrawable)
-        (locationViews[COARSE_RADIO_BUTTON] as RadioButton).setCompoundDrawablesWithIntrinsicBounds(
-                null, coarseStateList, null, null)
-
-        val fineOffDrawable = getDrawableFromId(fineOffDrawableId)
-        val fineOnDrawable = getDrawableFromId(fineOnDrawableId)
-        fineStateList.addState(LOCATION_RADIO_BUTTON_STATE_UNCHECKED, fineOffDrawable)
-        fineStateList.addState(LOCATION_RADIO_BUTTON_STATE_CHECKED, fineOnDrawable)
-        (locationViews[FINE_RADIO_BUTTON] as RadioButton).setCompoundDrawablesWithIntrinsicBounds(
-                null, fineStateList, null, null)
+        coarseOffDrawable = getDrawableFromId(coarseOffDrawableId) as AnimatedImageDrawable
+        coarseOnDrawable = getDrawableFromId(coarseOnDrawableId) as AnimatedImageDrawable
+        fineOffDrawable = getDrawableFromId(fineOffDrawableId) as AnimatedImageDrawable
+        fineOnDrawable = getDrawableFromId(fineOnDrawableId) as AnimatedImageDrawable
     }
 
     private fun getDrawableFromId(drawableId: Int): Drawable {
@@ -351,12 +332,21 @@ class GrantPermissionsViewHandlerImpl(
                 buttons[pos]?.text = mActivity.resources.getString(
                         R.string.grant_dialog_button_change_to_precise_location)
             }
+            if ((pos == DENY_BUTTON || pos == DENY_AND_DONT_ASK_AGAIN_BUTTON) &&
+                    locationVisibilities[LOCATION_ACCURACY_LAYOUT] &&
+                    locationVisibilities[DIALOG_WITH_FINE_LOCATION_ONLY]) {
+                buttons[pos]?.text = mActivity.resources.getString(
+                        R.string.grant_dialog_button_keey_approximate_location)
+            }
             buttons[pos]?.requestLayout()
         }
     }
 
     private fun updateLocationVisibilities() {
         if (locationVisibilities[LOCATION_ACCURACY_LAYOUT]) {
+            if (isLocationPermissionDialogActionClicked) {
+                return
+            }
             locationViews[LOCATION_ACCURACY_LAYOUT]?.visibility = View.VISIBLE
             for (i in LOCATION_ACCURACY_DIALOGS) {
                 locationViews[i]?.visibility = if (locationVisibilities[i]) {
@@ -366,33 +356,25 @@ class GrantPermissionsViewHandlerImpl(
                 }
             }
             if (locationVisibilities[DIALOG_WITH_BOTH_LOCATIONS]) {
-                for (i in LOCATION_ACCURACY_RADIO_BUTTONS) {
-                    locationViews[i]?.visibility = View.VISIBLE
-                    if (selectedPrecision == 0) {
-                        (locationViews[i] as RadioButton).isChecked = locationVisibilities[i]
-                    } else {
-                        (locationViews[i] as RadioButton).isChecked = selectedPrecision == i
-                    }
-                }
-                if ((locationViews[FINE_RADIO_BUTTON] as RadioButton).isChecked) {
-                    (fineStateList.getStateDrawable(fineStateList.findStateDrawableIndex(
-                            LOCATION_RADIO_BUTTON_STATE_CHECKED)) as AnimatedImageDrawable).start()
-                    (coarseStateList.getStateDrawable(coarseStateList.findStateDrawableIndex(
-                            LOCATION_RADIO_BUTTON_STATE_UNCHECKED)) as AnimatedImageDrawable
-                            ).start()
-                } else if ((locationViews[COARSE_RADIO_BUTTON] as RadioButton).isChecked) {
-                    (fineStateList.getStateDrawable(fineStateList.findStateDrawableIndex(
-                            LOCATION_RADIO_BUTTON_STATE_UNCHECKED)) as AnimatedImageDrawable
-                            ).start()
-                    (coarseStateList.getStateDrawable(coarseStateList.findStateDrawableIndex(
-                            LOCATION_RADIO_BUTTON_STATE_CHECKED)) as AnimatedImageDrawable).start()
+                coarseRadioButton?.visibility = View.VISIBLE
+                fineRadioButton?.visibility = View.VISIBLE
+                coarseRadioButton?.isChecked = selectedPrecision == COARSE_RADIO_BUTTON ||
+                        locationVisibilities[COARSE_RADIO_BUTTON]
+                fineRadioButton?.isChecked = selectedPrecision == FINE_RADIO_BUTTON ||
+                        locationVisibilities[FINE_RADIO_BUTTON]
+                if (coarseRadioButton?.isChecked == true) {
+                    runLocationAccuracyAnimation(false)
+                } else if (fineRadioButton?.isChecked == true) {
+                    runLocationAccuracyAnimation(true)
                 }
             } else if (locationVisibilities[DIALOG_WITH_COARSE_LOCATION_ONLY]) {
-                ((locationViews[DIALOG_WITH_COARSE_LOCATION_ONLY] as ImageView).drawable
-                        as AnimatedImageDrawable).start()
+                (locationViews[DIALOG_WITH_COARSE_LOCATION_ONLY] as ImageView).setImageDrawable(
+                        coarseOnDrawable)
+                coarseOnDrawable?.start()
             } else if (locationVisibilities[DIALOG_WITH_FINE_LOCATION_ONLY]) {
-                ((locationViews[DIALOG_WITH_FINE_LOCATION_ONLY] as ImageView).drawable
-                        as AnimatedImageDrawable).start()
+                (locationViews[DIALOG_WITH_FINE_LOCATION_ONLY] as ImageView).setImageDrawable(
+                        fineOnDrawable)
+                fineOnDrawable?.start()
             }
         } else {
             locationViews[LOCATION_ACCURACY_LAYOUT]?.visibility = View.GONE
@@ -403,52 +385,55 @@ class GrantPermissionsViewHandlerImpl(
         }
     }
 
+    private fun runLocationAccuracyAnimation(isFineSelected: Boolean) {
+        if (isFineSelected) {
+            coarseOnDrawable?.stop()
+            fineOffDrawable?.stop()
+            coarseRadioButton?.setCompoundDrawablesWithIntrinsicBounds(null, coarseOffDrawable,
+                    null, null)
+            fineRadioButton?.setCompoundDrawablesWithIntrinsicBounds(null, fineOnDrawable,
+                    null, null)
+            coarseOffDrawable?.start()
+            fineOnDrawable?.start()
+        } else {
+            coarseOffDrawable?.stop()
+            fineOnDrawable?.stop()
+            coarseRadioButton?.setCompoundDrawablesWithIntrinsicBounds(null, coarseOnDrawable,
+                    null, null)
+            fineRadioButton?.setCompoundDrawablesWithIntrinsicBounds(null, fineOffDrawable,
+                    null, null)
+            coarseOnDrawable?.start()
+            fineOffDrawable?.start()
+        }
+    }
+
     override fun onClick(view: View) {
         val id = view.id
-        if (id == R.id.grant_singleton) {
-            if (resultListener != null) {
-                resultListener!!.onPermissionGrantResult(groupName, CANCELED)
-            } else {
-                mActivity.finish()
-            }
-            return
-        }
 
         if (id == R.id.permission_location_accuracy_radio_fine) {
             (locationViews[FINE_RADIO_BUTTON] as RadioButton).isChecked = true
             selectedPrecision = FINE_RADIO_BUTTON
-            val appLabel: CharSequence =
-                getPackageLabel(mActivity.getApplication(), mAppPackageName, mUserHandle)
-            val message = getRequestMessage(appLabel, mAppPackageName, groupName, mActivity,
-                R.string.permgrouprequest_finelocation)
-            messageView!!.text = message
-            (fineStateList.getStateDrawable(fineStateList.findStateDrawableIndex(
-                    LOCATION_RADIO_BUTTON_STATE_UNCHECKED)) as AnimatedImageDrawable).stop()
-            (fineStateList.getStateDrawable(fineStateList.findStateDrawableIndex(
-                    LOCATION_RADIO_BUTTON_STATE_CHECKED)) as AnimatedImageDrawable).start()
-            (coarseStateList.getStateDrawable(coarseStateList.findStateDrawableIndex(
-                    LOCATION_RADIO_BUTTON_STATE_CHECKED)) as AnimatedImageDrawable).stop()
-            (coarseStateList.getStateDrawable(coarseStateList.findStateDrawableIndex(
-                    LOCATION_RADIO_BUTTON_STATE_UNCHECKED)) as AnimatedImageDrawable).start()
+            runLocationAccuracyAnimation(true)
             return
         }
 
         if (id == R.id.permission_location_accuracy_radio_coarse) {
             (locationViews[COARSE_RADIO_BUTTON] as RadioButton).isChecked = true
             selectedPrecision = COARSE_RADIO_BUTTON
-            val appLabel: CharSequence =
-                getPackageLabel(mActivity.getApplication(), mAppPackageName, mUserHandle)
-            val message = getRequestMessage(appLabel, mAppPackageName, groupName, mActivity,
-                R.string.permgrouprequest_coarselocation)
-            messageView!!.text = message
-            (fineStateList.getStateDrawable(fineStateList.findStateDrawableIndex(
-                    LOCATION_RADIO_BUTTON_STATE_CHECKED)) as AnimatedImageDrawable).stop()
-            (fineStateList.getStateDrawable(fineStateList.findStateDrawableIndex(
-                    LOCATION_RADIO_BUTTON_STATE_UNCHECKED)) as AnimatedImageDrawable).start()
-            (coarseStateList.getStateDrawable(coarseStateList.findStateDrawableIndex(
-                    LOCATION_RADIO_BUTTON_STATE_UNCHECKED)) as AnimatedImageDrawable).stop()
-            (coarseStateList.getStateDrawable(coarseStateList.findStateDrawableIndex(
-                    LOCATION_RADIO_BUTTON_STATE_CHECKED)) as AnimatedImageDrawable).start()
+            runLocationAccuracyAnimation(false)
+            return
+        }
+
+        if (locationVisibilities[LOCATION_ACCURACY_LAYOUT]) {
+            isLocationPermissionDialogActionClicked = true
+        }
+
+        if (id == R.id.grant_singleton) {
+            if (resultListener != null) {
+                resultListener!!.onPermissionGrantResult(groupName, CANCELED)
+            } else {
+                mActivity.finish()
+            }
             return
         }
 
