@@ -237,7 +237,7 @@
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များသည် ဖုန်းခေါ်ဆိုထားသော မှတ်တမ်းကို ဖတ်နိုင်၊ ရေးနိုင်သည်"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များက ဓာတ်ပုံနှင့် ဗီဒီယိုများ ရိုက်ယူနိုင်သည်"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များက သင့်အဆက်အသွယ်များကို ဝင်သုံးနိုင်သည်"</string>
-    <string name="permission_description_summary_location" msgid="2817531799933480694">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များက ဤစက်ပစ္စည်း၏ တည်နေရာကို ဝင်သုံးနိုင်သည်"</string>
+    <string name="permission_description_summary_location" msgid="2817531799933480694">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များက ဤစက်ပစ္စည်း၏ တည်နေရာကို ဝင်ကြည့်နိုင်သည်"</string>
     <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များက အနီးတစ်ဝိုက်ရှိ စက်များ၏ ဆက်စပ်နေရာကို ရှာဖွေခြင်း၊ ချိတ်ဆက်ခြင်းနှင့် သတ်မှတ်ခြင်းတို့ လုပ်နိုင်သည်"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များက အသံဖမ်းယူနိုင်သည်"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များက ဖုန်းခေါ်ဆိုမှုများကို ပြုလုပ်နိုင် စီမံနိုင်သည်"</string>
@@ -249,7 +249,7 @@
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"တစ်ခါမှ အသုံးပြုမထားပါ"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"ငြင်းထားသည် / တစ်ခါမှ အသုံးပြုမထားပါ"</string>
     <string name="allowed_header" msgid="7769277978004790414">"ခွင့်ပြုထားသည်"</string>
-    <string name="allowed_always_header" msgid="6455903312589013545">"အမြဲ ခွင့်ပြုထားသည်များ"</string>
+    <string name="allowed_always_header" msgid="6455903312589013545">"အမြဲ ခွင့်ပြုထားသည်"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"အသုံးပြုစဉ်တွင်သာ ခွင့်ပြုထားသည်"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"မီဒီယာကိုသာ သုံးခွင့်ပြုထားသည်"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"ဖိုင်အားလုံးကို စီမံခွင့်ပြုထားသည်"</string>
