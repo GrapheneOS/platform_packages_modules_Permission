@@ -802,4 +802,20 @@
         </required-components>
     </role>
 
+    <!---
+      ~ A role for the system UI package.
+      -->
+    <role
+        name="android.app.role.SYSTEM_UI"
+        defaultHolders="config_systemUi"
+        exclusive="true"
+        fallBackToDefaultHolder="true"
+        minSdkVersion="31"
+        systemOnly="true"
+        visible="false">
+        <permissions>
+            <permission name="android.permission.MANAGE_SENSOR_PRIVACY" />
+            <permission name="android.permission.OBSERVE_SENSOR_PRIVACY" />
+        </permissions>
+    </role>
 </roles>
