@@ -43,6 +43,7 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"همیشه مجاز بودن"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"هنگام استفاده از برنامه"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"تغییر به مکان دقیق"</string>
+    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"حفظ مکان تقریبی"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"فقط این بار"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"همیشه مجاز بودن"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"اجازه دادن برای مدیریت همه فایل‌ها"</string>
@@ -437,7 +438,7 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"این برنامه می‌خواهد مرتب به مکانتان دسترسی داشته باشد، حتی زمانی‌که از برنامه استفاده نمی‌کنید. "<annotation id="link">"در تنظیمات به آن اجازه دهید."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"‏به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; اجازه می‌دهید دستگاه‌های اطراف را پیدا کند و به آن‌ها متصل شود؟"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"‏به &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; اجازه می‌دهید دستگاه‌های اطراف را پیدا کند و به آن‌ها متصل شود؟ "<annotation id="link">"در تنظیمات اجازه دهید."</annotation></string>
-    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"‏به &lt;b&amp;gt؛<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&amp;gt؛ اجازه داده شود به مکان دقیق این دستگاه دسترسی پیدا کند؟"</string>
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"دسترسی <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> به مکان از حالت تقریبی به دقیق تغییر کند؟"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"‏به &lt;b&amp;gt؛<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&amp;gt؛ اجازه داده شود به مکان تقریبی این دستگاه دسترسی پیدا کند؟"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"دقیق"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"تقریبی"</string>

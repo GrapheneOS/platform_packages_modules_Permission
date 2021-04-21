@@ -43,6 +43,7 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Leyfa alltaf"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Meðan verið er að nota forritið"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Skipta yfir í nákvæma staðsetningu"</string>
+    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Halda áætlaðri staðsetningu"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Aðeins í þetta skipti"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Leyfa alltaf"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Leyfa stjórnun allra skráa"</string>
@@ -437,7 +438,7 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Þetta forrit vill fá aðgang að staðsetningu þinni öllum stundum, jafnvel þegar þú ert ekki að nota forritið. "<annotation id="link">"Þú getur leyft það í stillingum."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"Leyfa &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; að finna og tengjast nálægum tækjum?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"Leyfa &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; að finna og tengjast nálægum tækjum? "<annotation id="link">"Þú getur leyft það í stillingunum."</annotation></string>
-    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Viltu veita &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aðgang að nákvæmri staðsetningu þessa tækis?"</string>
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Breyta aðgangi <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> að staðsetningu úr áætlaðri í nákvæma?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Viltu veita &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aðgang að áætlaðri staðsetningu þessa tækis?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Nákvæm"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Áætluð"</string>

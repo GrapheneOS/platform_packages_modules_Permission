@@ -43,6 +43,7 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Allow all the time"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"While using the app"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Change to precise location"</string>
+    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Keep approximate location"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Only this time"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Allow all the time"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Allow management of all files"</string>
@@ -437,7 +438,7 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"This app wants to access your location all the time, even when you’re not using the app. "<annotation id="link">"Allow in Settings."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to discover and connect to nearby devices?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to discover and connect to nearby devices? "<annotation id="link">"Allow in settings."</annotation></string>
-    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access this device’s precise location?"</string>
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Change <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>’s location access from approximate to precise?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access this device’s approximate location?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Precise"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Approximate"</string>

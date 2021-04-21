@@ -43,6 +43,7 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"ყოველთვის დაშვება"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"აპის გამოყენებისას"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"ზუსტ მდებარეობაზე გადართვა"</string>
+    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"მიახლოებითი მდებარეობის შენახვა"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"მხოლოდ ამ ერთხელ"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"ყოველთვის დაშვება"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"ყველა ფაილის მართვის დაშვება"</string>
@@ -437,7 +438,7 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"აპი ითხოვს თქვენს მდებარეობაზე წვდომას ნებისმიერ დროს, მაშინაც კი, როცა მას არ იყენებთ. "<annotation id="link">"დაუშვით პარამეტრებიდან."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"მიეცეს &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ს ახლომახლო მოწყობილობების აღმოჩენისა და მათთან დაკავშირების საშუალება?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"მიეცეს &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-ს ახლომახლო მოწყობილობების აღმოჩენისა და მათთან დაკავშირების საშუალება? "<annotation id="link">"დაშვება პარამეტრებში."</annotation></string>
-    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"გსურთ, მიანიჭოთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-ს&lt;/b&gt; ამ მოწყობილობის ზუსტ მდებარეობაზე წვდომის ნებართვა?"</string>
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"შეიცვალოს <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>-ის მდებარეობაზე წვდომა მიახლოებითის მაგიერ ზუსტით?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"გსურთ, მიანიჭოთ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-ს&lt;/b&gt; ამ მოწყობილობის მიახლოებით მდებარეობაზე წვდომის ნებართვა?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"ზუსტი"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"მიახლოებითი"</string>

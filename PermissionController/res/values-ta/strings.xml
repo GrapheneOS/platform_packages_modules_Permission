@@ -43,6 +43,8 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"அனைத்து நேரங்களிலும் அனுமதி"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"ஆப்ஸைப் பயன்படுத்தும்போது"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"துல்லியமான இருப்பிடத்திற்கு மாற்று"</string>
+    <!-- no translation found for grant_dialog_button_keey_approximate_location (438025182769080011) -->
+    <skip />
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"இப்போது மட்டும்"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"எப்போதும் அனுமதி"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"அனைத்து ஃபைல்களையும் நிர்வகிக்க அனுமதி"</string>
@@ -437,7 +439,8 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"இந்த ஆப்ஸை நீங்கள் பயன்படுத்தாதபோதும்கூட உங்கள் இருப்பிடத்தை எந்நேரமும் அணுக இது விரும்பக்கூடும். "<annotation id="link">"அமைப்புகளில் அனுமதிக்கவும்"</annotation>"."</string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"அருகிலுள்ள சாதனங்களைக் கண்டறிந்து அவற்றுடன் இணைவதற்கு &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"அருகிலுள்ள சாதனங்களைக் கண்டறிந்து அவற்றுடன் இணைவதற்கு &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா? "<annotation id="link">"அமைப்புகளில் அனுமதி."</annotation></string>
-    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"இந்தச் சாதனத்தின் துல்லியமான இருப்பிடத்தை அணுக &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
+    <!-- no translation found for permgrouprequest_fineupgrade (2334242928821697672) -->
+    <skip />
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"இந்தச் சாதனத்தின் தோராயமான இருப்பிடத்தை அணுக &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"துல்லியமானது"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"தோராயமானது"</string>

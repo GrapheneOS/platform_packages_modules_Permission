@@ -43,6 +43,8 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Vienmēr atļaut"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Lietotnes izmantošanas laikā"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Mainīt uz precīzu atrašanās vietu"</string>
+    <!-- no translation found for grant_dialog_button_keey_approximate_location (438025182769080011) -->
+    <skip />
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Tikai šoreiz"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Vienmēr atļaut"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Atļaut pārvaldīt visus failus"</string>
@@ -456,7 +458,8 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Šī lietotne vēlas piekļūt jūsu atrašanās vietai vienmēr, pat ja neizmantojat lietotni. "<annotation id="link">"Atļauju varat piešķirt iestatījumos"</annotation>"."</string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; atrast tuvumā esošas ierīces un izveidot savienojumu ar tām?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; atrast tuvumā esošas ierīces un izveidot savienojumu ar tām? "<annotation id="link">"Varat to atļaut iestatījumos."</annotation></string>
-    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt precīzai šīs ierīces atrašanās vietai?"</string>
+    <!-- no translation found for permgrouprequest_fineupgrade (2334242928821697672) -->
+    <skip />
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt aptuvenai šīs ierīces atrašanās vietai?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Precīza"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Aptuvena"</string>

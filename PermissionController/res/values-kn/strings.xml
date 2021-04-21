@@ -43,6 +43,8 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"ಎಲ್ಲಾ ಸಮಯದಲ್ಲೂ ಅನುಮತಿಸಿ"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"ಆ್ಯಪ್ ಬಳಸುವಾಗ"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"ನಿಖರವಾದ ಸ್ಥಾನಕ್ಕೆ ಬದಲಾಯಿಸಿ"</string>
+    <!-- no translation found for grant_dialog_button_keey_approximate_location (438025182769080011) -->
+    <skip />
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"ಈ ಬಾರಿ ಮಾತ್ರ"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"ಎಲ್ಲಾ ಸಮಯದಲ್ಲೂ ಅನುಮತಿಸಿ"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"ಎಲ್ಲಾ ಫೈಲ್‌ಗಳ ನಿರ್ವಹಣೆಯನ್ನು ಅನುಮತಿಸಿ"</string>
@@ -437,7 +439,8 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"ನೀವು ಈ ಆ್ಯಪ್ ಅನ್ನು ಬಳಸದಿರುವಾಗಲೂ ಸಹ, ಯಾವಾಗಲೂ ನಿಮ್ಮ ಸ್ಥಳಕ್ಕೆ ಪ್ರವೇಶವನ್ನು ಹೊಂದಲು ಆ್ಯಪ್ ಬಯಸುತ್ತದೆ. "<annotation id="link">"ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಅನುಮತಿಸಿ."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"ನಿಮ್ಮ ಸಮೀಪದಲ್ಲಿರುವ ಸಾಧನಗಳನ್ನು ಅನ್ವೇಷಿಸಲು ಮತ್ತು ಅವುಗಳಿಗೆ ಕನೆಕ್ಟ್ ಮಾಡಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸುವಿರಾ?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"ನಿಮ್ಮ ಸಮೀಪದಲ್ಲಿರುವ ಸಾಧನಗಳನ್ನು ಅನ್ವೇಷಿಸಲು ಮತ್ತು ಅವುಗಳಿಗೆ ಕನೆಕ್ಟ್ ಮಾಡಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸುವಿರಾ? "<annotation id="link">"ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಅನುಮತಿಸಿ."</annotation></string>
-    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"ಈ ಸಾಧನದ ನಿಖರವಾದ ಸ್ಥಳವನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
+    <!-- no translation found for permgrouprequest_fineupgrade (2334242928821697672) -->
+    <skip />
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"ಈ ಸಾಧನದ ಅಂದಾಜು ಸ್ಥಳವನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"ನಿಖರ"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"ಅಂದಾಜು"</string>

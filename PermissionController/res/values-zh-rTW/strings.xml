@@ -43,6 +43,8 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"一律允許"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"使用應用程式時"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"改用精確位置"</string>
+    <!-- no translation found for grant_dialog_button_keey_approximate_location (438025182769080011) -->
+    <skip />
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"僅允許這一次"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"一律允許"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"允許管理所有檔案"</string>
@@ -437,7 +439,8 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"這個應用程式想要隨時存取你的位置資訊 (即使在你未使用此應用程式時)。"<annotation id="link">"如要授予權限，請前往「設定」"</annotation>"。"</string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;探索附近的裝置並進行連線嗎？"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;探索附近的裝置並進行連線嗎？"<annotation id="link">"請前往「設定」授予權限。"</annotation></string>
-    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取這部裝置的精確位置資訊嗎？"</string>
+    <!-- no translation found for permgrouprequest_fineupgrade (2334242928821697672) -->
+    <skip />
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"要允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取這部裝置的概略位置資訊嗎？"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"精確"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"概略"</string>
