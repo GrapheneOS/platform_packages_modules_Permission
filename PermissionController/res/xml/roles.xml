@@ -74,6 +74,7 @@
     </permission-set>
 
     <permission-set name="nearby_devices">
+        <permission name="android.permission.BLUETOOTH_ADVERTISE" />
         <permission name="android.permission.BLUETOOTH_CONNECT" />
         <permission name="android.permission.BLUETOOTH_SCAN" />
     </permission-set>
