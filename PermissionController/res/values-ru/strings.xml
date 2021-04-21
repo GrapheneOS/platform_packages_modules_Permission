@@ -43,6 +43,8 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Разрешить в любом режиме"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"При использовании приложения"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Изменить на точное местоположение"</string>
+    <!-- no translation found for grant_dialog_button_keey_approximate_location (438025182769080011) -->
+    <skip />
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Только в этот раз"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Разрешить в любом режиме"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Разрешить управление всеми файлами"</string>
@@ -357,10 +359,10 @@
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"Все файлы"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Разрешения не предоставлены"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"Предоставлены все разрешения"</string>
-    <string name="no_apps_allowed" msgid="7718822655254468631">"Не разрешено ни одному приложению"</string>
+    <string name="no_apps_allowed" msgid="7718822655254468631">"Не разрешено ни одному приложению."</string>
     <string name="no_apps_allowed_full" msgid="8011716991498934104">"Нет приложений с доступом ко всем файлам."</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"Нет приложений с доступом только к медиаконтенту."</string>
-    <string name="no_apps_denied" msgid="7663435886986784743">"Не запрещено ни одному приложению"</string>
+    <string name="no_apps_denied" msgid="7663435886986784743">"Не запрещено ни одному приложению."</string>
     <string name="car_permission_selected" msgid="180837028920791596">"Выбрано"</string>
     <string name="settings" msgid="5409109923158713323">"Настройки"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"У сервиса \"<xliff:g id="SERVICE_NAME">%s</xliff:g>\" есть полный доступ к вашему устройству"</string>
@@ -475,7 +477,8 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Этому приложению требуется доступ к вашему местоположению, даже когда вы им не пользуетесь. Предоставьте разрешение в "<annotation id="link">"настройках"</annotation>"."</string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; находить устройства поблизости и подключаться к ним?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; находить устройства поблизости и подключаться к ним? "<annotation id="link">"Открыть настройки"</annotation></string>
-    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным о точном местоположении устройства?"</string>
+    <!-- no translation found for permgrouprequest_fineupgrade (2334242928821697672) -->
+    <skip />
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным о приблизительном местоположении устройства?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Точно"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Приблизительно"</string>

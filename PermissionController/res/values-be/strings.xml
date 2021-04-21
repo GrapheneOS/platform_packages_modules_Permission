@@ -43,6 +43,8 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Дазволіць заўсёды"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Падчас выкарыстання праграмы"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Пераключыцца на дакладнае вызначэнне месцазнаходжання"</string>
+    <!-- no translation found for grant_dialog_button_keey_approximate_location (438025182769080011) -->
+    <skip />
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Толькі ў гэты раз"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Дазволіць заўсёды"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Дазволіць кіраванне ўсімі файламі"</string>
@@ -475,7 +477,8 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Гэта праграма запытвае пастаянны доступ да звестак пра ваша месцазнаходжанне, нават калі яна не выкарыстоўваецца. "<annotation id="link">"Дайце дазвол у наладах."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; выяўляць прылады паблізу і падключацца да іх?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; выяўляць прылады паблізу і падключацца да іх? "<annotation id="link">"Дазволіць у наладах."</annotation></string>
-    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да звестак пра дакладнае месцазнаходжанне гэтай прылады?"</string>
+    <!-- no translation found for permgrouprequest_fineupgrade (2334242928821697672) -->
+    <skip />
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да звестак пра прыблізнае месцазнаходжанне гэтай прылады?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Дакладна"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Прыблізна"</string>

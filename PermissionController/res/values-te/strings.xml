@@ -43,6 +43,8 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"ఎల్ల‌ప్పుడూ అనుమతించు"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"యాప్‌ను ఉపయోగిస్తున్నప్పుడు"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"ఖచ్చితమైన లొకేషన్‌కు మార్చండి"</string>
+    <!-- no translation found for grant_dialog_button_keey_approximate_location (438025182769080011) -->
+    <skip />
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"ఈ ఒక్కసారి మాత్రమే"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"అన్ని సమయాలలో అనుమతించు"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"అన్ని ఫైల్‌ల నిర్వహణకు అనుమతించండి"</string>
@@ -437,7 +439,8 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"మీరు యాప్ ఉపయోగించనప్పుడు కూడా ఈ యాప్ మీ లొకేష‌న్‌ను ఎప్పటికప్పుడు యాక్సెస్ చేయాల‌ని అనుకుంటోంది."<annotation id="link">"సెట్టింగ్‌లలో అనుమతించండి."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"సమీప పరికరాలను కనుగొనడానికి, కనెక్ట్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"సమీప పరికరాలను కనుగొనడానికి, కనెక్ట్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా? "<annotation id="link">"సెట్టింగ్‌లలో అనుమతించు."</annotation></string>
-    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"ఈ పరికరానికి సంబంధించి ఖచ్చితమైన లొకేషన్‌ను యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ని అనుమతించాలా?"</string>
+    <!-- no translation found for permgrouprequest_fineupgrade (2334242928821697672) -->
+    <skip />
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"ఈ పరికరానికి సంబంధించి సుమారుగా ఉన్న లొకేషన్‌ను యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ని అనుమతించాలా?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"ఖచ్చితమైన"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"సుమారుగా"</string>
