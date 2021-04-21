@@ -115,7 +115,7 @@ fun isLocationAccuracyEnabled(): Boolean {
  */
 fun isPrivacyHubEnabled(): Boolean {
     return DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
-            PROPERTY_PRIVACY_HUB_ENABLED, false)
+            PROPERTY_PRIVACY_HUB_ENABLED, true)
 }
 
 /**
