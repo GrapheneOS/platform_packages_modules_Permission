@@ -962,7 +962,7 @@ public class RoleParser {
             for (int permissionsIndex = 0; permissionsIndex < permissionsSize; permissionsIndex++) {
                 String permission = permissions.get(permissionsIndex);
 
-                validatePermission(permission);
+                validatePermission(permission, false);
             }
         }
 
@@ -979,7 +979,7 @@ public class RoleParser {
 
                 String permission = requiredComponent.getPermission();
                 if (permission != null) {
-                    validatePermission(permission);
+                    validatePermission(permission, true);
                 }
             }
 
@@ -988,7 +988,7 @@ public class RoleParser {
             for (int i = 0; i < permissionsSize; i++) {
                 String permission = permissions.get(i);
 
-                validatePermission(permission);
+                validatePermission(permission, false);
             }
 
             List<AppOp> appOps = role.getAppOps();
@@ -1024,19 +1024,27 @@ public class RoleParser {
         }
     }
 
-    private void validatePermission(@NonNull String permission) {
+    private void validatePermission(@NonNull String permission, boolean isRequirement) {
         PackageManager packageManager = mContext.getPackageManager();
-        boolean isAutomotive = packageManager.hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE);
 
+        boolean isAutomotive = packageManager.hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE);
         // Skip validation for car permissions which may not be available on all build targets.
         if (!isAutomotive && permission.startsWith("android.car")) {
             return;
         }
 
+        PermissionInfo permissionInfo;
         try {
-            packageManager.getPermissionInfo(permission, 0);
+            permissionInfo = packageManager.getPermissionInfo(permission, 0);
         } catch (PackageManager.NameNotFoundException e) {
             throw new IllegalArgumentException("Unknown permission: " + permission, e);
+        }
+
+        if (!(isRequirement || permissionInfo.getProtection() == PermissionInfo.PROTECTION_DANGEROUS
+                || (permissionInfo.getProtectionFlags() & PermissionInfo.PROTECTION_FLAG_ROLE)
+                        == PermissionInfo.PROTECTION_FLAG_ROLE)) {
+            throw new IllegalArgumentException(
+                    "Permission is not a runtime or role permission: " + permission);
         }
     }
 
