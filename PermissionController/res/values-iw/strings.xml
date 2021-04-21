@@ -43,6 +43,8 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"כן, כל הזמן"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"בזמן השימוש באפליקציה"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"שינוי למיקום המדויק"</string>
+    <!-- no translation found for grant_dialog_button_keey_approximate_location (438025182769080011) -->
+    <skip />
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"רק הפעם"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"להתיר כל הזמן"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"אישור לניהול כל הקבצים"</string>
@@ -475,7 +477,8 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"האפליקציה הזו רוצה לקבל גישה לנתוני המיקום שלך כל הזמן, גם כשהיא לא בשימוש. "<annotation id="link">"ניתן לאשר זאת בהגדרות."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"‏לאפשר לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; לזהות מכשירים קרובים ולהתחבר אליהם?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"‏לאפשר לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; לזהות מכשירים קרובים ולהתחבר אליהם? "<annotation id="link">"יש לתת הרשאה בהגדרות."</annotation></string>
-    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה למיקום המדויק של המכשיר?"</string>
+    <!-- no translation found for permgrouprequest_fineupgrade (2334242928821697672) -->
+    <skip />
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה למיקום המשוער של המכשיר?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"מדויק"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"משוער"</string>

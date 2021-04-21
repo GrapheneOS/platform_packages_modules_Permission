@@ -43,6 +43,8 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Luôn cho phép"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Trong khi dùng ứng dụng"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Thay đổi thành vị trí chính xác"</string>
+    <!-- no translation found for grant_dialog_button_keey_approximate_location (438025182769080011) -->
+    <skip />
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Chỉ lần này"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Luôn cho phép"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Cho phép quản lý tất cả các tệp"</string>
@@ -437,7 +439,8 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Ứng dụng này muốn truy cập vào thông tin vị trí của bạn mọi lúc, ngay cả khi bạn không dùng ứng dụng. "<annotation id="link">"Hãy cho phép trong phần cài đặt."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; khám phá và kết nối với các thiết bị ở gần?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; khám phá và kết nối với các thiết bị ở gần? "<annotation id="link">"Bạn có thể cho phép việc này trong phần cài đặt."</annotation></string>
-    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào thông tin vị trí chính xác của thiết bị này?"</string>
+    <!-- no translation found for permgrouprequest_fineupgrade (2334242928821697672) -->
+    <skip />
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào thông tin vị trí gần đúng của thiết bị này?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Chính xác"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Gần đúng"</string>

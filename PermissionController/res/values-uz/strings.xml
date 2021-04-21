@@ -43,6 +43,8 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Har doim ruxsat"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Bu ilova ishlayotganda"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Aniq joylashuvga oʻzgartirish"</string>
+    <!-- no translation found for grant_dialog_button_keey_approximate_location (438025182769080011) -->
+    <skip />
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Faqat shu safar"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Har doim ruxsat"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Barcha fayllarni boshqarishga ruxsat"</string>
@@ -202,7 +204,7 @@
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Rad etish"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Aniq joylashuv"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Taxminiy joylashuv"</string>
-    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Joylashuv yaxshiroq aniqlansin"</string>
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Aniq joylashuv axborotidan foydalanish"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Ilovalar faqat taxminiy joylashuvingizni aniqlay oladi"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> ruxsati"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"<xliff:g id="PERM">%1$s</xliff:g>: bu ilova uchun ruxsat"</string>
@@ -437,7 +439,8 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Bu ilova ochiq emasligida ham joylashuvingiz haqidagi axborotdan foydalanmoqchi. Bunga "<annotation id="link">"sozlamalar"</annotation>" orqali ruxsat bering."</string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ilovasiga yaqin-atrofdagi qurilmalarni topishi va ularga ulanishi uchun ruxsat berilsinmi?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ilovasiga yaqin-atrofdagi qurilmalarni topishi va ularga ulanishi uchun ruxsat berilsinmi? "<annotation id="link">"Sozlamalar orqali ruxsat berish mumkin."</annotation></string>
-    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun bu qurilmaning aniq joylashuvi haqidagi axborotdan foydalanish ruxsati berilsinmi?"</string>
+    <!-- no translation found for permgrouprequest_fineupgrade (2334242928821697672) -->
+    <skip />
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun bu qurilmaning taxminiy joylashuvi haqidagi axborotdan foydalanish ruxsati berilsinmi?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Aniq"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Taxminiy"</string>
