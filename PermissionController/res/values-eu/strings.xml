@@ -172,7 +172,7 @@
     <string name="app_permission_button_ask" msgid="3342950658789427">"Galdetu beti"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Ukatu"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> atzitzeko baimena"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"Aplikazio honek <xliff:g id="PERM">%1$s</xliff:g> atzitzeko duen baimena"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"Aplikazio honek <xliff:g id="PERM">%1$s</xliff:g> erabiltzeko duen baimena"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Ikusi <xliff:g id="APP">%1$s</xliff:g> aplikazioaren baimen guztiak"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Ikusi baimen hau duten aplikazio guztiak"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Erakutsi laguntzaileak mikrofonoa erabiltzeko duen baimena"</string>
