@@ -43,6 +43,8 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Lejo gjithmonë"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Gjatë përdorimit të aplikacionit"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Ndrysho në \"vendndodhja e saktë\""</string>
+    <!-- no translation found for grant_dialog_button_keey_approximate_location (438025182769080011) -->
+    <skip />
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Vetëm këtë herë"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Lejo gjithmonë"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Lejo menaxhimin e të gjithë skedarëve"</string>
@@ -249,7 +251,7 @@
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Nuk ka pasur asnjëherë qasje"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"Refuzuar / Nuk ka pasur asnjëherë qasje"</string>
     <string name="allowed_header" msgid="7769277978004790414">"Të lejuara"</string>
-    <string name="allowed_always_header" msgid="6455903312589013545">"Lejohet gjatë të gjithë kohës"</string>
+    <string name="allowed_always_header" msgid="6455903312589013545">"Lejohet gjithmonë"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"Lejohet vetëm kur është në përdorim"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Lejohet qasja vetëm në media"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Lejohet të menaxhojë të gjithë skedarët"</string>
@@ -437,7 +439,8 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Ky aplikacion dëshiron të ketë qasje në vendndodhjen tënde gjatë gjithë kohës, edhe kur nuk po e përdor aplikacionin. "<annotation id="link">"Lejoje te cilësimet"</annotation>"."</string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"Të lejohet që &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të zbulojë dhe të lidhet me pajisjet në afërsi?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"Të lejohet që &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të zbulojë dhe të lidhet me pajisjet në afërsi? "<annotation id="link">"Lejoje te cilësimet."</annotation></string>
-    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Të lejohet që &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të ketë qasje te vendndodhja e saktë e kësaj pajisjeje?"</string>
+    <!-- no translation found for permgrouprequest_fineupgrade (2334242928821697672) -->
+    <skip />
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Të lejohet që &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të ketë qasje te vendndodhja e përafërt e kësaj pajisjeje?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"E saktë"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"E përafërt"</string>
