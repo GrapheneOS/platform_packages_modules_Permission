@@ -22,17 +22,27 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.android.permissioncontroller.permission.utils.Utils
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.TimeUnit
 
 class GetPermissionGroupInfoTest {
     private val context = InstrumentationRegistry.getInstrumentation().context as Context
     private val pcManager = context.getSystemService(PermissionControllerManager::class.java)!!
+    private val timeoutMs: Long = 10000
 
     @Test
     fun assertAllPlatformPermGroupPermListsMatch() {
         val groups = Utils.getPlatformPermissionGroups()
+        var returnedPerms: List<String>? = null
         for (group in groups) {
-            assertThat(pcManager.getPlatformPermissionsForGroup(group)).isEqualTo(
-                    Utils.getPlatformPermissionNamesOfGroup(group).toSet())
+            val latch = CountDownLatch(1)
+            pcManager.getPlatformPermissionsForGroup(group) { ret ->
+                returnedPerms = ret
+                latch.countDown()
+            }
+            latch.await(timeoutMs, TimeUnit.MILLISECONDS)
+            assertThat(returnedPerms).isEqualTo(
+                    Utils.getPlatformPermissionNamesOfGroup(group))
         }
     }
 
@@ -42,8 +52,14 @@ class GetPermissionGroupInfoTest {
         for (group in groups) {
             val perms = Utils.getPlatformPermissionNamesOfGroup(group)
             for (permName in perms) {
-                assertThat(pcManager.getGroupOfPlatformPermission(permName))
-                        .isEqualTo(Utils.getGroupOfPlatformPermission(permName))
+                var permGroup: String? = null
+                val latch = CountDownLatch(1)
+                pcManager.getGroupOfPlatformPermission(permName) { retGroup ->
+                    permGroup = retGroup
+                    latch.countDown()
+                }
+                latch.await(timeoutMs, TimeUnit.MILLISECONDS)
+                assertThat(permGroup).isEqualTo(Utils.getGroupOfPlatformPermission(permName))
             }
         }
     }
