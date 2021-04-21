@@ -377,8 +377,9 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
                 APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__GRANT_FINE_LOCATION;
         int revokeFineLocation =
                 APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__REVOKE_FINE_LOCATION;
-        mLocationAccuracySwitch.setOnClickListener((v) -> {
-            if (((Switch) v).isChecked()) {
+        mLocationAccuracy.setOnClickListener((v) -> {
+            mLocationAccuracySwitch.performClick();
+            if (mLocationAccuracySwitch.isChecked()) {
                 mViewModel.requestChange(false, this, this, ChangeRequest.GRANT_FINE_LOCATION,
                         grantFineLocation);
             } else {
