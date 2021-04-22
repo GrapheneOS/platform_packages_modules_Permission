@@ -99,6 +99,7 @@ android_test {
         "libdexmakerjvmtiagent",
         "libstaticjvmtiagent",
     ],
+    compile_multilib: "both",
 
     aaptflags: ["--custom-package com.android.permissioncontroller"],
 
