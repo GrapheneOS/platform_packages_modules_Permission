@@ -473,7 +473,7 @@
 
     <role
         name="android.app.role.SYSTEM_AUTOMOTIVE_CLUSTER"
-        behavior="SystemAutomotiveClusterRoleBehavior"
+        behavior="AutomotiveRoleBehavior"
         defaultHolders="config_systemAutomotiveCluster"
         exclusive="true"
         minSdkVersion="31"
@@ -1076,6 +1076,25 @@
         visible="false">
         <permissions>
             <permission name="android.permission.GET_HISTORICAL_APP_OPS_STATS" />
+        </permissions>
+    </role>
+
+    <!---
+      ~ A role for the system package that handles syncing calendar from another device on
+      ~ Automotive.
+      -->
+    <role
+        name="android.app.role.SYSTEM_AUTOMOTIVE_CALENDAR_SYNC_MANAGER"
+        behavior="AutomotiveRoleBehavior"
+        defaultHolders="config_systemAutomotiveCalendarSyncManager"
+        exclusive="true"
+        minSdkVersion="33"
+        static="true"
+        systemOnly="true"
+        visible="false">
+        <permissions>
+            <permission name="android.permission.READ_CALENDAR" />
+            <permission name="android.permission.WRITE_CALENDAR" />
         </permissions>
     </role>
 </roles>
