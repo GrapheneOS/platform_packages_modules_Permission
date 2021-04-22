@@ -443,10 +443,8 @@ class GrantPermissionsViewModel(
                                 // location settings, select coarse location as the default option.
                                 if (coarseLocationPerm?.isSelectedLocationAccuracy == true) {
                                     locationVisibilities[COARSE_RADIO_BUTTON] = true
-                                    message = RequestMessage.FG_COARSE_LOCATION_MESSAGE
                                 } else {
                                     locationVisibilities[FINE_RADIO_BUTTON] = true
-                                    message = RequestMessage.FG_FINE_LOCATION_MESSAGE
                                 }
                             }
                         } else if (fgState != null && fgState.affectedPermissions

@@ -202,7 +202,7 @@
     <string name="app_permission_button_deny" msgid="2399316993899108824">"अस्वीकार गरियोस्‌"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"सटीक स्थान"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"अनुमानित स्थान"</string>
-    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"सटीक लोकेसन प्रयोग गर्नुहोस्"</string>
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"सटीक लोकेसन प्रयोग गरियोस्"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"तपाईंले यो सेटिङ अफ गर्नुभयो भने एपहरूले तपाईंका छेउछाउका अनुमानित लोकेसन मात्र दिन सक्छन्"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> अनुमति"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"यस एपमाथि <xliff:g id="PERM">%1$s</xliff:g> पहुँच"</string>
