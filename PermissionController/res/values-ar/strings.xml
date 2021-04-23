@@ -43,8 +43,7 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"السماح طوال الوقت"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"أثناء استخدام التطبيق"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"تغيير إلى الموقع الجغرافي الدقيق"</string>
-    <!-- no translation found for grant_dialog_button_keey_approximate_location (438025182769080011) -->
-    <skip />
+    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"الاحتفاظ بالموقع الجغرافي التقريبي."</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"هذه المرَّة فقط"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"السماح طوال الوقت"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"السماح بإدارة كل الملفات"</string>
@@ -515,8 +514,7 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"يطلب هذا التطبيق الوصول الدائم إلى موقعك الجغرافي، حتى عند عدم استخدامك للتطبيق. يمكنك "<annotation id="link">"السماح بذلك في الإعدادات."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"‏هل تريد السماح للتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; برصد الأجهزة المجاورة والربط بها؟"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"‏هل تريد السماح للتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; برصد الأجهزة المجاورة والربط بها؟ "<annotation id="link">"يمكنك السماح بذلك في \"الإعدادات\"."</annotation></string>
-    <!-- no translation found for permgrouprequest_fineupgrade (2334242928821697672) -->
-    <skip />
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"هل تريد تغيير إذن وصول <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> من الموقع الجغرافي التقريبي إلى الموقع الجغرافي الدقيق؟"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بالوصول إلى الموقع الجغرافي التقريبي لهذا الجهاز؟"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"دقيق"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"تقريبي"</string>

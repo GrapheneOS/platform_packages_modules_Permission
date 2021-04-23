@@ -43,8 +43,7 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Дозволи увек"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Док користим апликацију"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Промени на прецизну локацију"</string>
-    <!-- no translation found for grant_dialog_button_keey_approximate_location (438025182769080011) -->
-    <skip />
+    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Задржи приближну локацију"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Само овај пут"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Дозволи увек"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Дозволи управљање свим датотекама"</string>
@@ -458,8 +457,7 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Ова апликација жели да приступа локацији све време, чак и када не користите апликацију. "<annotation id="link">"Дозволите у подешавањима."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"Дозвољавате ли да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; открива уређаје у близини и повезује се са њима?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"Дозвољавате ли да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; открива уређаје у близини и повезује се са њима? "<annotation id="link">"Дозволите у подешавањима."</annotation></string>
-    <!-- no translation found for permgrouprequest_fineupgrade (2334242928821697672) -->
-    <skip />
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Желите ли да промените приступ апликације <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> локацији са приближне у прецизну?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Желите ли да омогућите да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; приступа приближној локацији овог уређаја?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Прецизна"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Приближна"</string>

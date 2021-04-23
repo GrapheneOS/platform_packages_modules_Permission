@@ -43,8 +43,7 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"सर्व वेळी ॲक्सेसची अनुमती द्या"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"ॲप वापरताना"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"अचूक स्थानावर बदला"</string>
-    <!-- no translation found for grant_dialog_button_keey_approximate_location (438025182769080011) -->
-    <skip />
+    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"अंदाजे स्थान ठेवा"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"फक्त या वेळी"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"सर्व वेळी अनुमती द्या"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"सर्व फाइल व्यवस्थापित करण्यासाठी अनुमती द्या"</string>
@@ -439,8 +438,7 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"तुम्ही अ‍ॅप वापरत नसतानादेखील या ॲपला नेहमी तुमचे स्थान ॲक्सेस करायचे आहे. "<annotation id="link">"सेटिंग्जमधून अनुमती द्या."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&gt; ला जवळपासची डिव्‍हाइस शोधण्यासाठी आणि त्यांच्याशी कनेक्ट करण्यासाठी अनुमती द्यायची आहे का?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&gt; ला जवळपासची डिव्‍हाइस शोधण्यासाठी आणि त्यांच्याशी कनेक्ट करण्यासाठी अनुमती द्यायची आहे का? "<annotation id="link">"सेटिंग्जमध्ये अनुमती द्या."</annotation></string>
-    <!-- no translation found for permgrouprequest_fineupgrade (2334242928821697672) -->
-    <skip />
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> च्या स्थानाचा अ‍ॅक्सेस अंदाजेवरून अचूकवर बदलायचा आहे का?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला या डिव्हाइसचे अंदाजे स्थान ॲक्सेस करू द्यायचे आहे का?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"अचूक"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"अंदाजे"</string>
