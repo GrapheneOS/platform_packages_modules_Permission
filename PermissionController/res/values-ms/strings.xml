@@ -43,6 +43,8 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Benarkan sepanjang masa"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Semasa menggunakan apl"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Tukar kepada lokasi tepat"</string>
+    <!-- no translation found for grant_dialog_button_keey_approximate_location (438025182769080011) -->
+    <skip />
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Kali ini sahaja"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Benarkan sepanjang masa"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Benarkan pengurusan semua fail"</string>
@@ -437,7 +439,8 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Apl ini mahu mengakses lokasi anda pada sepanjang masa, meskipun apabila anda tidak menggunakan apl itu. "<annotation id="link">"Benarkan dalam tetapan."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; untuk menemukan dan menyambung kepada peranti yang berdekatan?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; untuk menemukan dan menyambung kepada peranti yang berdekatan? "<annotation id="link">"Benarkan dalam tetapan."</annotation></string>
-    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses lokasi tepat peranti ini?"</string>
+    <!-- no translation found for permgrouprequest_fineupgrade (2334242928821697672) -->
+    <skip />
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses lokasi anggaran peranti ini?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Tepat"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Anggaran"</string>

@@ -30,6 +30,13 @@ import androidx.annotation.Nullable;
  */
 public class CompositeCircleView extends FrameLayout {
 
+    /**
+     * Angles toward the middle of each colored partial circle, calculated in
+     * {@link #configure(float[], int[], int)}. Can be used to position text relative to the
+     * partial circles, by index.
+     */
+    private float[] mPartialCircleCenterAngles;
+
     public CompositeCircleView(@NonNull Context context) {
         super(context);
     }
@@ -67,6 +74,7 @@ public class CompositeCircleView extends FrameLayout {
 
         // Start from vertical top, which is angle = 270.
         float startAngle = 270;
+        mPartialCircleCenterAngles = new float[values.length];
 
         for (int i = 0; i < values.length; i++) {
             PartialCircleView pcv = new PartialCircleView(getContext());
@@ -75,13 +83,21 @@ public class CompositeCircleView extends FrameLayout {
             pcv.setColor(colors[i]);
             pcv.setStrokeWidth(strokeWidth);
 
-            // Calculate sweep, which is (value / total) * 360.
+            // Calculate sweep, which is (value / total) * 360, keep track of segment center
+            // angles for later reference.
             float sweepAngle = (values[i] / total) * 360;
             pcv.setSweepAngle(sweepAngle);
+            mPartialCircleCenterAngles[i] = (startAngle + (sweepAngle * 0.5f)) % 360;
 
             // Move to next segment.
             startAngle += sweepAngle;
+            startAngle %= 360;
         }
+    }
+
+    /** Returns the center angle for the given partial circle index. */
+    public float getPartialCircleCenterAngle(int index) {
+        return mPartialCircleCenterAngles[index];
     }
 }
 

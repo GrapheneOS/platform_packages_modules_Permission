@@ -43,6 +43,8 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"সর্বদা অনুমতি দিন"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"অ্যাপ ব্যবহার করার সময়"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"সুনির্দিষ্ট লোকেশনে পরিবর্তন করুন"</string>
+    <!-- no translation found for grant_dialog_button_keey_approximate_location (438025182769080011) -->
+    <skip />
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"শুধুমাত্র এই সময়ে"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"সব সময়ের জন্য অনুমতি দিন"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"সমস্ত ফাইল ম্যানেজ করার অনুমতি দিন"</string>
@@ -437,7 +439,8 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"এই অ্যাপটি সবসময় আপনার লোকেশন অ্যাক্সেস করতে চায়, এমনকি আপনার অ্যাপ চালু না থাকলেও। "<annotation id="link">"সেটিংস বিকল্প থেকে অনুমতি দিন।"</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"কাছাকাছি ডিভাইস খুঁজে দেখতে এবং তার সাথে কানেক্ট করতে &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে অনুমতি দিতে চান?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"কাছাকাছি ডিভাইস খুঁজে দেখতে এবং তার সাথে কানেক্ট করতে &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে অনুমতি দিতে চান? "<annotation id="link">"সেটিংসে অনুমতি দিন।"</annotation></string>
-    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে এই ডিভাইসের নির্ভুল লোকেশন অ্যাক্সেস করতে দেবেন?"</string>
+    <!-- no translation found for permgrouprequest_fineupgrade (2334242928821697672) -->
+    <skip />
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে এই ডিভাইসের নিকটবর্তী লোকেশন অ্যাক্সেস করতে দেবেন?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"নির্ভুল"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"নিকটবর্তী"</string>

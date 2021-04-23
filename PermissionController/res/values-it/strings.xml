@@ -43,6 +43,7 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Consenti sempre"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Mentre usi l\'app"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Passa a posizione esatta"</string>
+    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Mantieni posizione approssimativa"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Solo questa volta"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Consenti sempre"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Consenti la gestione di tutti i file"</string>
@@ -437,7 +438,7 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Questa app vorrebbe accedere sempre alla tua posizione, anche quando non la usi. "<annotation id="link">"Consenti l\'accesso nelle impostazioni"</annotation>"."</string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"Vuoi consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di rilevare dispositivi nelle vicinanze e connettersi a tali dispositivi?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"Vuoi consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di rilevare dispositivi nelle vicinanze e connettersi a tali dispositivi? "<annotation id="link">"Consenti nelle impostazioni."</annotation></string>
-    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Consentire a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere alla posizione esatta di questo dispositivo?"</string>
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Modificare accesso alla posizione di <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> da Approssimativa a Esatta?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Consentire a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere alla posizione approssimativa di questo dispositivo?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Esatta"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Approssimativa"</string>
