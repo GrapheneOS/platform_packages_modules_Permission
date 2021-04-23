@@ -43,6 +43,8 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"始终允许"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"仅在使用该应用时允许"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"更改为确切位置"</string>
+    <!-- no translation found for grant_dialog_button_keey_approximate_location (438025182769080011) -->
+    <skip />
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"仅限这一次"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"一律允许"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"允许管理所有文件"</string>
@@ -437,7 +439,8 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"该应用想要随时获取您的位置信息（即使您并未使用该应用）。"<annotation id="link">"在“设置”中允许"</annotation>"。"</string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;发现并连接到附近的设备吗？"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;发现并连接到附近的设备吗？"<annotation id="link">"您可以在“设置”中允许。"</annotation></string>
-    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;获取此设备的确切位置吗？"</string>
+    <!-- no translation found for permgrouprequest_fineupgrade (2334242928821697672) -->
+    <skip />
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;获取此设备的粗略位置吗？"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"确切位置"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"粗略位置"</string>

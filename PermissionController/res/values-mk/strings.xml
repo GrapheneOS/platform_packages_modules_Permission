@@ -43,6 +43,8 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Дозволи цело време"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Додека се користи апликацијата"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Промени на прецизна локација"</string>
+    <!-- no translation found for grant_dialog_button_keey_approximate_location (438025182769080011) -->
+    <skip />
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Само овој пат"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Дозволи цело време"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Дозволи управување со сите датотеки"</string>
@@ -238,7 +240,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Апликациите со оваа дозвола може да фотографираат и да снимаат видео"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Апликациите со оваа дозвола може да пристапуваат до вашите контакти"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Апликациите со оваа дозвола може да пристапуваат до локацијата на уредов"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Апликациите со оваа дозвола можат да откриваат, да се поврзуваат и да ја одредуваат релативната положба на уредите во близина"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Апликациите со оваа дозвола може да ги откриваат и да се поврзуваат со уредите во близина, како и да ја утврдуваат нивната релативна положба"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Апликациите со оваа дозвола може да снимаат аудио"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Апликациите со оваа дозвола може да упатуваат телефонски повици и да управуваат со нив"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Апликациите со оваа дозвола може да пристапуваат до податоци од сензорите за виталните знаци"</string>
@@ -437,7 +439,8 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Апликцијава сака да пристапува до вашата локација цело време, дури и кога не ја користите. "<annotation id="link">"Дозволете во поставките."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да открива и да се поврзува со уреди во близина?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да открива и да се поврзува со уреди во близина? "<annotation id="link">"Дозволете во „Поставки“."</annotation></string>
-    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до прецизната локација на уредов?"</string>
+    <!-- no translation found for permgrouprequest_fineupgrade (2334242928821697672) -->
+    <skip />
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до приближната локација на уредов?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Прецизна"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Приближна"</string>
