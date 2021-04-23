@@ -205,7 +205,7 @@
     <string name="precise_image_description" msgid="6349638632303619872">"确切位置"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"大致位置"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"使用确切位置"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"如果此设置处于关闭状态，应用只能确定您的大致位置范围"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"如果此设置处于关闭状态，应用只能确定您的粗略位置范围"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>权限"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"是否允许这个应用访问<xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"查看“<xliff:g id="APP">%1$s</xliff:g>”的所有权限"</string>

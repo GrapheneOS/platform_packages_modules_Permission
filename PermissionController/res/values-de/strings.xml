@@ -240,7 +240,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Apps mit dieser Berechtigung können Fotos und Videos aufnehmen"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Apps mit dieser Berechtigung dürfen auf deine Kontakte zugreifen"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Apps mit dieser Berechtigung dürfen auf den Standort dieses Geräts zugreifen"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Apps mit dieser Berechtigung können Geräte in der Nähe finden, eine Verbindung zu ihnen herstellen und ihre relative Distanz zwischen einander ermitteln"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Apps mit dieser Berechtigung können Geräte in der Nähe finden, eine Verbindung zu ihnen herstellen und ihre relative Position ermitteln"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Apps mit dieser Berechtigung dürfen Audio aufnehmen"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Apps mit dieser Berechtigung dürfen Telefonanrufe starten und verwalten"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Apps mit dieser Berechtigung dürfen auf Sensordaten zu deinen Vitalfunktionen zugreifen"</string>
