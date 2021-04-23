@@ -28,7 +28,6 @@ import android.os.Process.myUserHandle
 import android.provider.DeviceConfig
 import android.provider.DeviceConfig.NAMESPACE_PRIVACY
 import androidx.test.platform.app.InstrumentationRegistry
-import com.android.compatibility.common.util.SystemUtil
 import com.android.compatibility.common.util.SystemUtil.eventually
 import com.android.compatibility.common.util.SystemUtil.runShellCommand
 import com.google.common.truth.Truth.assertThat
@@ -82,19 +81,17 @@ open class PermissionHub2Test {
 
         eventually {
             assertThat(
-                    SystemUtil.callWithShellPermissionIdentity {
-                        context.packageManager.getPermissionFlags(CAMERA, APP, myUserHandle()) and
-                                FLAG_PERMISSION_USER_SENSITIVE_WHEN_GRANTED
-                    }).isNotEqualTo(0)
+                context.packageManager.getPermissionFlags(CAMERA, APP, myUserHandle()) and
+                    FLAG_PERMISSION_USER_SENSITIVE_WHEN_GRANTED
+            ).isNotEqualTo(0)
         }
 
         eventually {
             assertThat(
-                    SystemUtil.callWithShellPermissionIdentity {
-                        context.getSystemService(AppOpsManager::class.java).startOp(
-                                OPSTR_CAMERA, context.packageManager.getPackageUid(APP, 0),
-                                APP, null, null)
-                    }).isEqualTo(MODE_ALLOWED)
+                context.getSystemService(AppOpsManager::class.java).startOp(
+                    OPSTR_CAMERA, context.packageManager.getPackageUid(APP, 0), APP, null, null
+                )
+            ).isEqualTo(MODE_ALLOWED)
         }
     }
 }
