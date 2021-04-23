@@ -535,6 +535,8 @@
             <permission name="android.permission.BACKGROUND_CAMERA" />
             <permission name="android.permission.RECORD_BACKGROUND_AUDIO" />
             <permission name="android.permission.BYPASS_ROLE_QUALIFICATION" />
+            <permission name="android.permission.OBSERVE_SENSOR_PRIVACY" />
+            <permission name="android.permission.MANAGE_SENSOR_PRIVACY" />
         </permissions>
     </role>
 
