@@ -52,7 +52,7 @@ public class PartialCircleView extends View {
     }
 
     public PartialCircleView(Context context, AttributeSet attrs,
-                             int defStyleAttr, int defStyleRes) {
+            int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
@@ -115,4 +115,3 @@ public class PartialCircleView extends View {
         canvas.drawArc(oval, mStartAngle, mSweepAngle, false, paint);
     }
 }
-
