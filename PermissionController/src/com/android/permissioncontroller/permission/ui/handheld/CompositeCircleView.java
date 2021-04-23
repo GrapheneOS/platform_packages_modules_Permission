@@ -46,12 +46,12 @@ public class CompositeCircleView extends FrameLayout {
     }
 
     public CompositeCircleView(@NonNull Context context, @Nullable AttributeSet attrs,
-                               int defStyleAttr) {
+            int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
     public CompositeCircleView(@NonNull Context context, @Nullable AttributeSet attrs,
-                               int defStyleAttr, int defStyleRes) {
+            int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
@@ -100,4 +100,3 @@ public class CompositeCircleView extends FrameLayout {
         return mPartialCircleCenterAngles[index];
     }
 }
-
