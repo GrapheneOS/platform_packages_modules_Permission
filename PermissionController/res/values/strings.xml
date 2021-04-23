@@ -834,6 +834,42 @@
     <!-- Subtitle for a storage preference that is currently granted for all files. [CHAR LIMIT=60] -->
     <string name="permission_subtitle_all_files">All Files</string>
 
+    <!-- Summary for showing the last access text for sensor data permissions for today [CHAR LIMIT=70] -->
+    <string name="app_perms_24h_access">Last accessed <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g></string>
+
+    <!-- Summary for showing the last access text for sensor data permissions for yesterday [CHAR LIMIT=70] -->
+    <string name="app_perms_24h_access_yest">Last accessed yesterday at <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g></string>
+
+    <!-- Summary for showing the last access text for content provider permissions [CHAR LIMIT=70] -->
+    <string name="app_perms_content_provider">Accessed in past 24 hours</string>
+
+    <!-- Subtitle for the preference that is currently granted only when the app is in the foreground. [CHAR LIMIT=70] -->
+    <string name="app_perms_24h_access_only_in_foreground">Last accessed <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g> \u2022 Only while app is in use</string>
+
+    <!-- Subtitle for the preference that is currently granted only when the app is in the foreground. [CHAR LIMIT=70] -->
+    <string name="app_perms_24h_access_yest_only_in_foreground">Last accessed yesterday at <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g> \u2022 Only while app is in use</string>
+
+    <!-- Subtitle for the preference that is currently granted only when the app is in the foreground. [CHAR LIMIT=70] -->
+    <string name="app_perms_content_provider_only_in_foreground">Accessed in past 24 hours \u2022 Only while app is in use</string>
+
+    <!-- Subtitle for a storage preference that is currently granted for Media files only. [CHAR LIMIT=70] -->
+    <string name="app_perms_24h_access_media_only">Last accessed <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g> \u2022 Media</string>
+
+    <!-- Subtitle for a storage preference that is currently granted for Media files only. [CHAR LIMIT=70] -->
+    <string name="app_perms_24h_access_yest_media_only">Last accessed yesterday at <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g> \u2022 Media</string>
+
+    <!-- Subtitle for a storage preference that is currently granted for Media files only. [CHAR LIMIT=70] -->
+    <string name="app_perms_content_provider_media_only">Accessed in past 24 hours \u2022 Media</string>
+
+    <!-- Subtitle for a storage preference that is currently granted for all files. [CHAR LIMIT=70] -->
+    <string name="app_perms_24h_access_all_files">Last accessed <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g> \u2022 All Files</string>
+
+    <!-- Subtitle for a storage preference that is currently granted for all files. [CHAR LIMIT=70] -->
+    <string name="app_perms_24h_access_yest_all_files">Last accessed yesterday at <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g> \u2022 All Files</string>
+
+    <!-- Subtitle for a storage preference that is currently granted for all files. [CHAR LIMIT=70] -->
+    <string name="app_perms_content_provider_all_files">Accessed in past 24 hours \u2022 All Files</string>
+
     <!-- Label when app has been granted no permissions [CHAR LIMIT=none] -->
     <string name="no_permissions_allowed">No permissions allowed</string>
 

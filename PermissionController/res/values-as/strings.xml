@@ -43,6 +43,8 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"সদায় অনুমতি দিয়ক"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"এপ্‌টো ব্যৱহাৰ কৰি থকাৰ সময়ত"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"সঠিক অৱস্থানলৈ সলনি কৰক"</string>
+    <!-- no translation found for grant_dialog_button_keey_approximate_location (438025182769080011) -->
+    <skip />
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"কেৱল এইবাৰৰ বাবে"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"সদায় অনুমতি দিয়ক"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"সকলো ফাইল পৰিচালনাৰ অনুমতি দিয়ক"</string>
@@ -437,7 +439,8 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"এই এপ্‌টোৱে সকলো সময়তে আপোনাৰ অৱস্থান এক্সেছ কৰিবলৈ বিচাৰে, আনকি আপুনি এপ্‌টো ব্যৱহাৰ কৰি নথকা সময়তো। "<annotation id="link">"ত অনুমতি দিয়ক।"</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক নিকটৱৰ্তী ডিভাইচসমূহ বিচাৰি উলিয়াবলৈ আৰু সেইসমূহৰ সৈতে সংযোগ কৰিবলৈ দিবনে?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক নিকটৱৰ্তী ডিভাইচসমূহ বিচাৰি উলিয়াবলৈ আৰু সেইসমূহৰ সৈতে সংযোগ কৰিবলৈ দিবনে? "<annotation id="link">"ছেটিঙত অনুমতি প্ৰদান কৰক।"</annotation></string>
-    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক এই ডিভাইচটোৰ সঠিক অৱস্থান এক্সেছ কৰিবলৈ অনুমতি দিবনে?"</string>
+    <!-- no translation found for permgrouprequest_fineupgrade (2334242928821697672) -->
+    <skip />
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক এই ডিভাইচটোৰ আনুমানিক অৱস্থান এক্সেছ কৰিবলৈ অনুমতি দিবনে?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"সঠিক"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"আনুমানিক"</string>

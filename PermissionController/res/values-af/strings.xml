@@ -43,6 +43,7 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Laat altyd toe"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Terwyl die program gebruik word"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Verander na presiese ligging"</string>
+    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Hou benaderde ligging"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Net hierdie keer"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Laat altyd toe"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Laat toe dat alle lêers bestuur word"</string>
@@ -437,7 +438,7 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Hierdie program wil die hele tyd toegang tot jou ligging hê, selfs wanneer jy nie die program gebruik nie. "<annotation id="link">"Laat toe in instellings."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"Laat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toe om toestelle in die omtrek te ontdek en daaraan te koppel?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"Laat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toe om toestelle in die omtrek te ontdek en daaraan te koppel? "<annotation id="link">"Laat in Instellings toe."</annotation></string>
-    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Gee &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang tot hierdie toestel se presiese ligging?"</string>
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Verander <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> se liggingtoegang van benaderd na presies?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Gee &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang tot hierdie toestel se benaderde ligging?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Presies"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Benaderd"</string>
