@@ -43,12 +43,12 @@ public class CompositeCircleViewLabeler extends RelativeLayout {
     }
 
     public CompositeCircleViewLabeler(@NonNull Context context, @Nullable AttributeSet attrs,
-                                      int defStyleAttr) {
+            int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
     public CompositeCircleViewLabeler(@NonNull Context context, @Nullable AttributeSet attrs,
-                                      int defStyleAttr, int defStyleRes) {
+            int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
@@ -63,7 +63,7 @@ public class CompositeCircleViewLabeler extends RelativeLayout {
      *                          radius at which we want to show labels
      */
     public void configure(int circleId, TextView centerLabel, TextView[] labels,
-                          float labelRadiusScalar) {
+            float labelRadiusScalar) {
         // Remove previous text content first.
         for (int i = 0; i < getChildCount(); i++) {
             if (getChildAt(i) instanceof TextView) {
@@ -119,4 +119,3 @@ public class CompositeCircleViewLabeler extends RelativeLayout {
         }
     }
 }
-
