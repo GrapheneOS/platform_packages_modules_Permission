@@ -43,8 +43,7 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"အမြဲ ခွင့်ပြုရန်"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"အက်ပ်ကို သုံးနေစဉ်"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"နေရာအတိအကျသို့ ပြောင်းခြင်း"</string>
-    <!-- no translation found for grant_dialog_button_keey_approximate_location (438025182769080011) -->
-    <skip />
+    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"တည်နေရာခန့်မှန်းခြေကို ဆက်ထားပါ"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"ဤအကြိမ်သာ"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"အမြဲ ခွင့်ပြုရန်"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"ဖိုင်အားလုံးကို စီမံခွင့်ပြုရန်"</string>
@@ -439,8 +438,7 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"သင် အသုံးမပြုနေလျှင်တောင်မှ ဤအက်ပ်က သင့်တည်နေရာကို သုံးခွင့်ရလိုသည်။ "<annotation id="link">"ဆက်တင်များတွင် ခွင့်ပြုပါ။"</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"အနီးတစ်ဝိုက်ရှိ စက်များကို ရှာဖွေပြီးချိတ်ဆက်ရန် &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ကို ခွင့်ပြုမလား။"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"အနီးတစ်ဝိုက်ရှိ စက်များကို ရှာဖွေပြီးချိတ်ဆက်ရန် &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ကို ခွင့်ပြုမလား။ "<annotation id="link">"ဆက်တင်များတွင် ခွင့်ပြုပါ။"</annotation></string>
-    <!-- no translation found for permgrouprequest_fineupgrade (2334242928821697672) -->
-    <skip />
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> ၏ တည်နေရာသုံးခွင့်ကို ခန့်မှန်းခြေမှ အတိအကျသို့ ပြောင်းမလား။"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား ဤစက်၏ တည်နေရာခန့်မှန်းခြေကို သုံးခွင့်ပေးလိုပါသလား။"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"နေရာအတိအကျ"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"ခန့်မှန်းခြေ"</string>

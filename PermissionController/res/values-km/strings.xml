@@ -43,8 +43,7 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"អនុញ្ញាតគ្រប់ពេល"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"ខណៈពេល​កំពុងប្រើ​កម្មវិធី"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"ប្ដូរ​ទៅទីតាំងជាក់លាក់"</string>
-    <!-- no translation found for grant_dialog_button_keey_approximate_location (438025182769080011) -->
-    <skip />
+    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"រក្សាទុកទីតាំងប្រហាក់ប្រហែល"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"តែពេលនេះ​ប៉ុណ្ណោះ"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"អនុញ្ញាតគ្រប់ពេល"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"អនុញ្ញាតឱ្យគ្រប់គ្រងឯកសារទាំងអស់"</string>
@@ -439,8 +438,7 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"កម្មវិធីនេះ​ចង់ចូលប្រើ​ទីតាំង​របស់អ្នក​គ្រប់ពេល ទោះបីជា​អ្នកមិនកំពុងប្រើ​កម្មវិធីនេះ​ក៏ដោយ។ "<annotation id="link">"អនុញ្ញាត​នៅក្នុងការកំណត់។"</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ស្វែងរក និងភ្ជាប់ទៅឧបករណ៍​ដែលនៅជិតឬ?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ស្វែងរក និងភ្ជាប់ទៅឧបករណ៍​ដែលនៅជិតឬ? "<annotation id="link">"អនុញ្ញាតនៅក្នុងការកំណត់។"</annotation></string>
-    <!-- no translation found for permgrouprequest_fineupgrade (2334242928821697672) -->
-    <skip />
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"ផ្លាស់ប្ដូរ​ការចូលប្រើ​ទីតាំងរបស់ <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> ពីទីតាំងប្រហាក់ប្រហែល​ទៅជាក់លាក់ឬ?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ចូលប្រើ​ទីតាំងប្រហាក់ប្រហែលរបស់​ឧបករណ៍នេះ​ឬ?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"ជាក់លាក់"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"ប្រហាក់ប្រហែល"</string>

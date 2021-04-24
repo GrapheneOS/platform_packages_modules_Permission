@@ -43,8 +43,7 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Altijd toestaan"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Tijdens gebruik van de app"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Wijzigen in exacte locatie"</string>
-    <!-- no translation found for grant_dialog_button_keey_approximate_location (438025182769080011) -->
-    <skip />
+    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Geschatte locatie behouden"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Alleen deze keer"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Altijd toestaan"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Beheer van alle bestanden toestaan"</string>
@@ -439,8 +438,7 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Deze app wil altijd toegang tot je locatie, ook als je de app niet gebruikt. "<annotation id="link">"Je kunt dit toestaan via de instellingen."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toestaan om apparaten in de buurt te vinden en er verbinding mee te maken?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toestaan om apparaten in de buurt te vinden en er verbinding mee te maken? "<annotation id="link">"Toestaan in Instellingen"</annotation></string>
-    <!-- no translation found for permgrouprequest_fineupgrade (2334242928821697672) -->
-    <skip />
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Locatietoegang van <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> wijzigen van geschatte in exacte locatie?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang geven tot de geschatte locatie van dit apparaat?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Exact"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Geschat"</string>
