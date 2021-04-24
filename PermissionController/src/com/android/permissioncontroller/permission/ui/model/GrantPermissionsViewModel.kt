@@ -841,10 +841,8 @@ class GrantPermissionsViewModel(
                 } else {
                     KotlinUtils.grantForegroundRuntimePermissions(app, groupState.group,
                         affectedForegroundPermissions, isOneTime)
-                    if (!isOneTime) {
-                        KotlinUtils.setFlagsWhenLocationAccuracyChanged(app, groupState.group,
-                                affectedForegroundPermissions.contains(ACCESS_FINE_LOCATION))
-                    }
+                    KotlinUtils.setFlagsWhenLocationAccuracyChanged(app, groupState.group,
+                            affectedForegroundPermissions.contains(ACCESS_FINE_LOCATION))
                 }
             }
             groupState.state = STATE_ALLOWED
