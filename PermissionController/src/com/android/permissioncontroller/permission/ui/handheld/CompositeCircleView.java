@@ -30,6 +30,12 @@ import androidx.annotation.Nullable;
  */
 public class CompositeCircleView extends FrameLayout {
 
+    /** Spacing between circle segments in degrees. */
+    private static final int SEGMENT_ANGLE_SPACING_DEG = 2;
+
+    /** Values being represented by this circle. */
+    private int[] mValues;
+
     /**
      * Angles toward the middle of each colored partial circle, calculated in
      * {@link #configure(float[], int[], int)}. Can be used to position text relative to the
@@ -64,19 +70,32 @@ public class CompositeCircleView extends FrameLayout {
      * @param colors colors corresponding to relative weights
      * @param strokeWidth stroke width to apply to all contained partial circles
      */
-    public void configure(float[] values, int[] colors, int strokeWidth) {
+    public void configure(int[] values, int[] colors, int strokeWidth) {
         removeAllViews();
+        mValues = values;
 
+        // Get total values and number of values over 0.
         float total = 0;
+        int numValidValues = 0;
         for (int i = 0; i < values.length; i++) {
             total += values[i];
+            if (values[i] > 0) {
+                numValidValues++;
+            }
         }
 
         // Start from vertical top, which is angle = 270.
-        float startAngle = 270;
+        float startAngle = 270 + (SEGMENT_ANGLE_SPACING_DEG * 0.5f);
         mPartialCircleCenterAngles = new float[values.length];
 
+        // Number of degrees allocated to drawing circle segments.
+        float allocatedDegrees = 360 - (numValidValues * SEGMENT_ANGLE_SPACING_DEG);
+
         for (int i = 0; i < values.length; i++) {
+            if (values[i] <= 0) {
+                continue;
+            }
+
             PartialCircleView pcv = new PartialCircleView(getContext());
             addView(pcv);
             pcv.setStartAngle(startAngle);
@@ -85,14 +104,20 @@ public class CompositeCircleView extends FrameLayout {
 
             // Calculate sweep, which is (value / total) * 360, keep track of segment center
             // angles for later reference.
-            float sweepAngle = (values[i] / total) * 360;
+            float sweepAngle = (values[i] / total) * allocatedDegrees;
             pcv.setSweepAngle(sweepAngle);
             mPartialCircleCenterAngles[i] = (startAngle + (sweepAngle * 0.5f)) % 360;
 
             // Move to next segment.
             startAngle += sweepAngle;
+            startAngle += SEGMENT_ANGLE_SPACING_DEG;
             startAngle %= 360;
         }
+    }
+
+    /** Returns the value for the given index. */
+    public int getValue(int index) {
+        return mValues[index];
     }
 
     /** Returns the center angle for the given partial circle index. */
