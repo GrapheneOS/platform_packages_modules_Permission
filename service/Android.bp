@@ -29,12 +29,14 @@ java_sdk_library {
         "//frameworks/base/apex/permission/testing",
         "//frameworks/base/apex/permission/tests",
         "//frameworks/base/services/tests/mockingservicestests",
+        "//packages/modules/Permission:__subpackages__",
     ],
     impl_library_visibility: [
         "//visibility:override",
         "//frameworks/base/apex/permission/tests",
         "//frameworks/base/services/tests/mockingservicestests",
         "//frameworks/base/services/tests/servicestests",
+        "//packages/modules/Permission/tests",
     ],
     srcs: [
         ":service-permission-sources",
