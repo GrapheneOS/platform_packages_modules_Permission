@@ -89,7 +89,8 @@ class HibernationControllerTest {
         doReturn(appHibernationManager).`when`(context).getSystemService(APP_HIBERNATION_SERVICE)
         doReturn(usageStatsManager).`when`(context).getSystemService(USAGE_STATS_SERVICE)
 
-        hibernationController = HibernationController(context, TEST_UNUSED_THRESHOLD)
+        hibernationController = HibernationController(
+            context, TEST_UNUSED_THRESHOLD, true /* targetsPreS */)
     }
 
     @After
