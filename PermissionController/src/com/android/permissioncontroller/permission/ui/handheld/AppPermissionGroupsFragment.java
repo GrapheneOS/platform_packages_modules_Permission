@@ -214,6 +214,10 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
         if (mPermissionUsages.getUsages().isEmpty()) {
             return;
         }
+        if (getContext() == null) {
+            // Async result has come in after our context is gone.
+            return;
+        }
 
         mAppPermissionUsages = new ArrayList<>(mPermissionUsages.getUsages());
         updatePreferences(mViewModel.getPackagePermGroupsLiveData().getValue());
