@@ -32,6 +32,7 @@ java_sdk_library {
     impl_library_visibility: [
         "//visibility:override", // Ignore the visibility property.
         "//frameworks/base/apex/permission:__subpackages__",
+        "//packages/modules/Permission:__subpackages__",
     ],
 
     srcs: [
