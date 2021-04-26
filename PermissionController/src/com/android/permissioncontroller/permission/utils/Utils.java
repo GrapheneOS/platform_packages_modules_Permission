@@ -118,6 +118,10 @@ public final class Utils {
     public static final String PROPERTY_HIBERNATION_CHECK_FREQUENCY_MILLIS =
             "auto_revoke_check_frequency_millis";
 
+    /** Whether hibernation targets apps that target a pre-S SDK */
+    public static final String PROPERTY_HIBERNATION_TARGETS_PRE_S_APPS =
+            "app_hibernation_targets_pre_s_apps";
+
     /** Whether or not app hibernation is enabled on the device **/
     public static final String PROPERTY_APP_HIBERNATION_ENABLED = "app_hibernation_enabled";
 
