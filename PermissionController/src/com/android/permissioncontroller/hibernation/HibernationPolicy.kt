@@ -122,6 +122,16 @@ fun isHibernationEnabled(): Boolean {
         false /* defaultValue */)
 }
 
+/**
+ * Whether hibernation defaults on and affects apps that target pre-S. Has no effect if
+ * [isHibernationEnabled] is false.
+ */
+fun hibernationTargetsPreSApps(): Boolean {
+    return DeviceConfig.getBoolean(NAMESPACE_APP_HIBERNATION,
+        Utils.PROPERTY_HIBERNATION_TARGETS_PRE_S_APPS,
+        false /* defaultValue */)
+}
+
 fun isHibernationJobEnabled(): Boolean {
     return getCheckFrequencyMs() > 0 &&
             getUnusedThresholdMs() > 0 &&
@@ -400,6 +410,11 @@ suspend fun isPackageHibernationExemptByUser(
             return false
         }
 
+        if (hibernationTargetsPreSApps()) {
+            // Default on if overridden
+            return false
+        }
+
         // Q- packages exempt by default, except R- on Auto since Auto-Revoke was skipped in R
         val maxTargetSdkVersionForExemptApps =
                 if (context.packageManager.hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE)) {
@@ -473,7 +488,8 @@ class HibernationJobService : JobService() {
                 var hibernatedApps: Set<Pair<String, UserHandle>> = emptySet()
                 if (isHibernationEnabled()) {
                     val hibernationController =
-                        HibernationController(this@HibernationJobService, getUnusedThresholdMs())
+                        HibernationController(this@HibernationJobService, getUnusedThresholdMs(),
+                            hibernationTargetsPreSApps())
                     hibernatedApps = hibernationController.hibernateApps(appsToHibernate)
                 }
                 val revokedApps = revokeAppPermissions(
