@@ -286,7 +286,7 @@
       <item quantity="other">사용하지 않는 앱 <xliff:g id="COUNT_1">%1$d</xliff:g>개</item>
       <item quantity="one">사용하지 않는 앱 <xliff:g id="COUNT_0">%1$d</xliff:g>개</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="9195026773244581246">"권한 및 임시 파일이 삭제되었고 알림이 중단되었습니다. 확인하려면 탭하세요."</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"권한 및 임시 파일이 삭제되었으며 알림이 중단되었습니다. 확인하려면 탭하세요."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"일부 앱을 몇 개월 동안 사용하지 않았습니다."</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other">앱 <xliff:g id="COUNT_1">%1$d</xliff:g>개를 몇 개월 동안 사용하지 않았습니다.</item>
@@ -318,6 +318,18 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"앱 사용 중에만"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"미디어"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"모든 파일"</string>
+    <string name="app_perms_24h_access" msgid="99069906850627181">"<xliff:g id="TIME_DATE">%1$s</xliff:g>에 마지막으로 액세스함"</string>
+    <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"어제 <xliff:g id="TIME_DATE">%1$s</xliff:g>에 마지막으로 액세스함"</string>
+    <string name="app_perms_content_provider" msgid="6996750793881252778">"지난 24시간 이내에 액세스함"</string>
+    <string name="app_perms_24h_access_only_in_foreground" msgid="8590228656172893995">"<xliff:g id="TIME_DATE">%1$s</xliff:g>에 마지막으로 액세스함 • 앱 사용 중에만"</string>
+    <string name="app_perms_24h_access_yest_only_in_foreground" msgid="8491319626462867381">"어제 <xliff:g id="TIME_DATE">%1$s</xliff:g>에 마지막으로 액세스함 • 앱 사용 중에만"</string>
+    <string name="app_perms_content_provider_only_in_foreground" msgid="7111427348979322476">"지난 24시간 이내에 액세스함 • 앱 사용 중에만"</string>
+    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"<xliff:g id="TIME_DATE">%1$s</xliff:g>에 마지막으로 액세스함 • 미디어"</string>
+    <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"어제 <xliff:g id="TIME_DATE">%1$s</xliff:g>에 마지막으로 액세스함 • 미디어"</string>
+    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"지난 24시간 이내에 액세스함 • 미디어"</string>
+    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"<xliff:g id="TIME_DATE">%1$s</xliff:g>에 마지막으로 액세스함 • 모든 파일"</string>
+    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"어제 <xliff:g id="TIME_DATE">%1$s</xliff:g>에 마지막으로 액세스함 • 모든 파일"</string>
+    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"지난 24시간 이내에 액세스함 • 모든 파일"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"허용된 권한 없음"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"거부된 권한 없음"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"허용된 앱 없음"</string>

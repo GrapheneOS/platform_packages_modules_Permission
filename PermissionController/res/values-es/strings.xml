@@ -227,7 +227,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Permisos <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> y <xliff:g id="NUMBER">%2$s</xliff:g> más quitados"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Aplicaciones no usadas"</string>
     <string name="unused_apps_page_summary" msgid="4644643299214625298">"Si una aplicación lleva varios meses sin usarse:\n\n• Se le retiran los permisos para proteger tus datos\n• Se detienen sus notificaciones para ahorrar batería\n• Se eliminan sus archivos temporales para liberar espacio"</string>
-    <string name="last_opened_category_title" msgid="7871347400611202595">"Abierto por última vez hace más de <xliff:g id="NUMBER">%s</xliff:g> meses"</string>
+    <string name="last_opened_category_title" msgid="7871347400611202595">"Abiertas por última vez hace más de <xliff:g id="NUMBER">%s</xliff:g> meses"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"La aplicación se abrió por última vez el <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Se abrió por última vez el <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Si permites la gestión de todos los archivos, esta aplicación puede consultar, modificar y eliminar cualquier archivo que haya en el almacenamiento común de este dispositivo o en los dispositivos de almacenamiento conectados. Es posible que acceda a archivos sin preguntarte."</string>
@@ -318,6 +318,18 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"Solo mientras la aplicación está en uso"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"Contenido multimedia"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"Todos los archivos"</string>
+    <string name="app_perms_24h_access" msgid="99069906850627181">"Último acceso: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Último acceso: ayer a las <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_content_provider" msgid="6996750793881252778">"Acceso durante las últimas 24 horas"</string>
+    <string name="app_perms_24h_access_only_in_foreground" msgid="8590228656172893995">"Último acceso: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Solo cuando se usa la aplicación"</string>
+    <string name="app_perms_24h_access_yest_only_in_foreground" msgid="8491319626462867381">"Último acceso: ayer a las <xliff:g id="TIME_DATE">%1$s</xliff:g> • Solo cuando se usa la aplicación"</string>
+    <string name="app_perms_content_provider_only_in_foreground" msgid="7111427348979322476">"Acceso durante las últimas 24 horas • Solo cuando se usa la aplicación"</string>
+    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Último acceso: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Contenido multimedia"</string>
+    <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Último acceso: ayer a las <xliff:g id="TIME_DATE">%1$s</xliff:g> • Contenido multimedia"</string>
+    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"Acceso durante las últimas 24 horas • Contenido multimedia"</string>
+    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"Último acceso: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Todos los archivos"</string>
+    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"Último acceso: ayer a las <xliff:g id="TIME_DATE">%1$s</xliff:g> • Todos los archivos"</string>
+    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"Acceso durante las últimas 24 horas • Todos los archivos"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"No se ha concedido ningún permiso"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"No se ha denegado ningún permiso"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"No hay aplicaciones permitidas"</string>
