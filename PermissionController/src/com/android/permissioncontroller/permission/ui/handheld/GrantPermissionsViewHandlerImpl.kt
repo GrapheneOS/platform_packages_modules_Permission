@@ -358,10 +358,13 @@ class GrantPermissionsViewHandlerImpl(
             if (locationVisibilities[DIALOG_WITH_BOTH_LOCATIONS]) {
                 coarseRadioButton?.visibility = View.VISIBLE
                 fineRadioButton?.visibility = View.VISIBLE
-                coarseRadioButton?.isChecked = selectedPrecision == COARSE_RADIO_BUTTON ||
-                        locationVisibilities[COARSE_RADIO_BUTTON]
-                fineRadioButton?.isChecked = selectedPrecision == FINE_RADIO_BUTTON ||
-                        locationVisibilities[FINE_RADIO_BUTTON]
+                if (selectedPrecision == 0) {
+                    fineRadioButton?.isChecked = locationVisibilities[FINE_RADIO_BUTTON]
+                    coarseRadioButton?.isChecked = locationVisibilities[COARSE_RADIO_BUTTON]
+                } else {
+                    fineRadioButton?.isChecked = selectedPrecision == FINE_RADIO_BUTTON
+                    coarseRadioButton?.isChecked = selectedPrecision == COARSE_RADIO_BUTTON
+                }
                 if (coarseRadioButton?.isChecked == true) {
                     runLocationAccuracyAnimation(false)
                 } else if (fineRadioButton?.isChecked == true) {
