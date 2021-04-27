@@ -176,7 +176,7 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Afficher toutes les autorisations pour <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Afficher toutes les applications qui possèdent cette autorisation"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Afficher l\'usage du microphone de l\'assistant"</string>
-    <string name="auto_revoke_label" msgid="5068393642936571656">"Supprimer les autorisations si l\'application est inutilisée"</string>
+    <string name="auto_revoke_label" msgid="5068393642936571656">"Retirer les autorisations si l\'application est inutilisée"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Afin de protéger vos données, les autorisations pour cette application seront supprimées si elle n\'est pas utilisée pendant quelques mois."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Afin de protéger vos données, si l\'application n\'est pas utilisée pendant quelques mois, les autorisations suivantes seront supprimées : <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Afin de protéger vos données, les autorisations ont été supprimées pour les applications que vous n\'avez pas utilisées depuis quelques mois."</string>

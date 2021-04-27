@@ -191,7 +191,7 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"Permiso <xliff:g id="PERMISSION_NAME">%s</xliff:g> quitado"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Permisos <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> y <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> quitados"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Permisos <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> y <xliff:g id="NUMBER">%2$s</xliff:g> más quitados"</string>
-    <string name="last_opened_category_title" msgid="7871347400611202595">"Abierto por última vez hace más de <xliff:g id="NUMBER">%s</xliff:g> meses"</string>
+    <string name="last_opened_category_title" msgid="7871347400611202595">"Abiertas por última vez hace más de <xliff:g id="NUMBER">%s</xliff:g> meses"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"La aplicación se abrió por última vez el <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Se abrió por última vez el <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Si permites la gestión de todos los archivos, esta aplicación puede consultar, modificar y eliminar cualquier archivo que haya en el almacenamiento común de este dispositivo o en los dispositivos de almacenamiento conectados. Es posible que acceda a archivos sin preguntarte."</string>

@@ -213,7 +213,7 @@
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"ಎಂದಿಗೂ ಪ್ರವೇಶಿಸಿಲ್ಲ"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"ನಿರಾಕರಿಸಲಾಗಿದೆ / ಎಂದಿಗೂ ಪ್ರವೇಶಿಸಲಾಗಿಲ್ಲ"</string>
     <string name="allowed_header" msgid="7769277978004790414">"ಅನುಮತಿಸಲಾಗಿದೆ"</string>
-    <string name="allowed_always_header" msgid="6455903312589013545">"ಎಲ್ಲಾ ಸಮಯದಲ್ಲೂ ಅನುಮತಿಸಲಾಗಿದೆ"</string>
+    <string name="allowed_always_header" msgid="6455903312589013545">"ಎಲ್ಲಾ ಸಮಯದಲ್ಲೂ ಅನುಮತಿಸಿರುವುದು"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"ಬಳಕೆಯಲ್ಲಿದ್ದಾಗ ಮಾತ್ರ ಅನುಮತಿಸಲಾಗಿದೆ"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"ಮೀಡಿಯಾಕ್ಕೆ ಮಾತ್ರ ಪ್ರವೇಶಿಸಲು ಅನುಮತಿಸಲಾಗಿದೆ"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"ಎಲ್ಲಾ ಫೈಲ್‌ಗಳನ್ನು ನಿರ್ವಹಿಸಲು ಅನುಮತಿಸಲಾಗಿದೆ"</string>

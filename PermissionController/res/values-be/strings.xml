@@ -48,7 +48,7 @@
     <string name="grant_dialog_button_allow_media_only" msgid="4832877658422573832">"Дазволіць доступ да файлаў мультымедыя"</string>
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Праграмы"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Дазволы праграмы"</string>
-    <string name="unused_apps" msgid="2058057455175955094">"Праграмы не ў карыстанні"</string>
+    <string name="unused_apps" msgid="2058057455175955094">"Праграмы, якія не выкарыстоўваюцца"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Адключыць праграму"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Калі вы адключыце гэту праграму, іншыя праграмы могуць працаваць неналежным чынам. Майце на ўвазе, што вы не можаце выдаліць гэту праграму, таму што яна папярэдне ўсталявана на вашай прыладзе. Аднак вы можаце выключыць гэту праграму і схаваць яе."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Менеджар дазволаў"</string>
@@ -258,7 +258,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> секунды</item>
     </plurals>
     <string name="permission_reminders" msgid="6528257957664832636">"Напаміны пра дазволы"</string>
-    <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"1 праграма не ў карыстанні"</string>
+    <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"1 праграма не выкарыстоўваецца"</string>
     <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"Колькасць праграм не ў карыстанні: <xliff:g id="NUMBER_OF_APPS">%s</xliff:g>"</string>
     <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"Дазволы выдалены ў мэтах абароны прыватнасці. Націсніце, каб праглядзець"</string>
     <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"Для праграм, якія не выкарыстоўваюцца, дазволы выдалены"</string>
@@ -290,7 +290,7 @@
     <string name="auto_revoke_before_notification_title_one" msgid="6758024954464359876">"Не выкарыстоўваецца 1 праграма"</string>
     <string name="auto_revoke_before_notification_title_many" msgid="4415543943846385685">"Не выкарыстоўваецца праграм: <xliff:g id="NUMBER_OF_APPS">%s</xliff:g>"</string>
     <string name="auto_revoke_before_notification_content_one" msgid="1156635373417068822">"Для абароны вашай прыватнасці дазволы будуць выдалены. Націсніце, каб праглядзець."</string>
-    <string name="unused_apps_title" msgid="8589298917717872239">"Праграмы не ў карыстанні"</string>
+    <string name="unused_apps_title" msgid="8589298917717872239">"Праграмы, якія не выкарыстоўваюцца"</string>
     <string name="unused_apps_subtitle_after" msgid="2034267519506357898">"Дазволы выдалены з"</string>
     <string name="unused_apps_subtitle_before" msgid="5233302577076132427">"Дазволы будуць выдалены з"</string>
     <string name="unused_permissions_subtitle_two" msgid="2207266295008423015">"<xliff:g id="PERM_NAME_0">%1$s</xliff:g> і <xliff:g id="PERM_NAME_1">%2$s</xliff:g>"</string>
