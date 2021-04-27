@@ -227,7 +227,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> അനുമതിയും മറ്റ് <xliff:g id="NUMBER">%2$s</xliff:g> അനുമതികളും നീക്കം ചെയ്തു"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"ഉപയോഗിക്കാത്ത ആപ്പുകൾ"</string>
     <string name="unused_apps_page_summary" msgid="4644643299214625298">"ഒരു ആപ്പ് കുറച്ച് മാസങ്ങളായി ഉപയോഗിക്കുന്നില്ലെങ്കിൽ:\n\n• നിങ്ങളുടെ ഡാറ്റ സംരക്ഷിക്കാൻ അനുമതികൾ നീക്കം ചെയ്യും\n• ബാറ്ററി ലാഭിക്കാൻ അറിയിപ്പുകൾ ലഭിക്കുന്നത് നിർത്തും\n• ഇടമുണ്ടാക്കാൻ താൽക്കാലിക ഫയലുകൾ നീക്കം ചെയ്യും"</string>
-    <string name="last_opened_category_title" msgid="7871347400611202595">"അവസാനം തുറന്നിട്ട് <xliff:g id="NUMBER">%s</xliff:g> മാസത്തിൽ കൂടുതലായി"</string>
+    <string name="last_opened_category_title" msgid="7871347400611202595">"അവസാനം തുറന്നിട്ട് <xliff:g id="NUMBER">%s</xliff:g> മാസത്തിൽ കൂടുതലായവ"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ആപ്പ് അവസാനം തുറന്നത് <xliff:g id="DATE">%s</xliff:g>-നാണ്"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"അവസാനം തുറന്നത് <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"എല്ലാ ഫയലുകളും മാനേജ് ചെയ്യാൻ അനുവദിച്ചാൽ ഈ ഉപകരണത്തിലെയോ കണക്റ്റ് ചെയ്‌തിരിക്കുന്ന സ്റ്റോറേജ് ഉപകരണങ്ങളിലെയോ പൊതു സ്റ്റോറേജിലുള്ള ഏത് ഫയലും ആക്‌സസ് ചെയ്യാനും പരിഷ്‌കരിക്കാനും ഇല്ലാതാക്കാനും ഈ ആപ്പിന് കഴിയും. നിങ്ങളോട് ചോദിക്കാതെ തന്നെ ആപ്പ് ഫയലുകൾ ആക്‌സസ് ചെയ്തേക്കാം."</string>
@@ -318,6 +318,18 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"ആപ്പ് ഉപയോഗത്തിലുള്ളപ്പോൾ മാത്രം"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"മീഡിയ"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"എല്ലാ ഫയലുകളും"</string>
+    <string name="app_perms_24h_access" msgid="99069906850627181">"അവസാനം ആക്‌സസ് ചെയ്‌തത് <xliff:g id="TIME_DATE">%1$s</xliff:g>-ന്"</string>
+    <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"അവസാനം ആക്‌സസ് ചെയ്‌തത് ഇന്നലെ <xliff:g id="TIME_DATE">%1$s</xliff:g>-ന്"</string>
+    <string name="app_perms_content_provider" msgid="6996750793881252778">"കഴിഞ്ഞ 24 മണിക്കൂറിനിടെ ആക്‌സസ് ചെയ്‌തു"</string>
+    <string name="app_perms_24h_access_only_in_foreground" msgid="8590228656172893995">"അവസാനം ആക്‌സസ് ചെയ്‌തത് <xliff:g id="TIME_DATE">%1$s</xliff:g>-ന് • ആപ്പ് ഉപയോഗിക്കുമ്പോൾ മാത്രം"</string>
+    <string name="app_perms_24h_access_yest_only_in_foreground" msgid="8491319626462867381">"അവസാനം ആക്‌സസ് ചെയ്‌തത് ഇന്നലെ <xliff:g id="TIME_DATE">%1$s</xliff:g>-ന് • ആപ്പ് ഉപയോഗിക്കുമ്പോൾ മാത്രം"</string>
+    <string name="app_perms_content_provider_only_in_foreground" msgid="7111427348979322476">"കഴിഞ്ഞ 24 മണിക്കൂറിനിടെ ആക്‌സസ് ചെയ്‌തു • ആപ്പ് ഉപയോഗിക്കുമ്പോൾ മാത്രം"</string>
+    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"അവസാനം ആക്‌സസ് ചെയ്‌തത് <xliff:g id="TIME_DATE">%1$s</xliff:g>-ന് • മീഡിയ"</string>
+    <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"അവസാനം ആക്‌സസ് ചെയ്‌തത് ഇന്നലെ <xliff:g id="TIME_DATE">%1$s</xliff:g>-ന് • മീഡിയ"</string>
+    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"കഴിഞ്ഞ 24 മണിക്കൂറിനിടെ ആക്‌സസ് ചെയ്‌തു • മീഡിയ"</string>
+    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"അവസാനം ആക്‌സസ് ചെയ്‌തത് <xliff:g id="TIME_DATE">%1$s</xliff:g>-ന് • എല്ലാ ഫയലുകളും"</string>
+    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"അവസാനം ആക്‌സസ് ചെയ്‌തത് ഇന്നലെ <xliff:g id="TIME_DATE">%1$s</xliff:g>-ന് • എല്ലാ ഫയലുകളും"</string>
+    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"കഴിഞ്ഞ 24 മണിക്കൂറിനിടെ ആക്‌സസ് ചെയ്‌തു • എല്ലാ ഫയലുകളും"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"അനുമതികളൊന്നും നൽകിയിട്ടില്ല"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"അനുമതികളൊന്നും നിഷേധിച്ചിട്ടില്ല"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"ആപ്പുകൾക്കൊന്നും അനുമതി നൽകിയിട്ടില്ല"</string>

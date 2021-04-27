@@ -318,6 +318,18 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"सिर्फ़ ऐप्लिकेशन इस्तेमाल में होने के दौरान"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"सिर्फ़ मीडिया फ़ाइलें"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"सभी फ़ाइलें"</string>
+    <string name="app_perms_24h_access" msgid="99069906850627181">"पिछली बार <xliff:g id="TIME_DATE">%1$s</xliff:g> पर ऐक्सेस किया गया"</string>
+    <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"पिछली बार, कल <xliff:g id="TIME_DATE">%1$s</xliff:g> पर ऐक्सेस किया गया"</string>
+    <string name="app_perms_content_provider" msgid="6996750793881252778">"पिछले 24 घंटे में ऐक्सेस किया गया"</string>
+    <string name="app_perms_24h_access_only_in_foreground" msgid="8590228656172893995">"पिछली बार <xliff:g id="TIME_DATE">%1$s</xliff:g> पर ऐक्सेस किया गया • जब ऐप्लिकेशन इस्तेमाल में हो, सिर्फ़ तब"</string>
+    <string name="app_perms_24h_access_yest_only_in_foreground" msgid="8491319626462867381">"पिछली बार, कल <xliff:g id="TIME_DATE">%1$s</xliff:g> पर ऐक्सेस किया गया • जब ऐप्लिकेशन इस्तेमाल में हो, सिर्फ़ तब"</string>
+    <string name="app_perms_content_provider_only_in_foreground" msgid="7111427348979322476">"पिछले 24 घंटे में ऐक्सेस किया गया • जब ऐप्लिकेशन इस्तेमाल में हो, सिर्फ़ तब"</string>
+    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"पिछली बार <xliff:g id="TIME_DATE">%1$s</xliff:g> पर ऐक्सेस किया गया • मीडिया"</string>
+    <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"पिछली बार, कल <xliff:g id="TIME_DATE">%1$s</xliff:g> पर ऐक्सेस किया गया • मीडिया"</string>
+    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"पिछले 24 घंटे में ऐक्सेस किया गया • मीडिया"</string>
+    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"पिछली बार <xliff:g id="TIME_DATE">%1$s</xliff:g> पर ऐक्सेस की गईं • सभी फ़ाइलें"</string>
+    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"पिछली बार, कल <xliff:g id="TIME_DATE">%1$s</xliff:g> पर ऐक्सेस की गईं • सभी फ़ाइलें"</string>
+    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"पिछले 24 घंटे में ऐक्सेस की गईं • सभी फ़ाइलें"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"कोई अनुमति नहीं मिली है"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"इस ऐप्लिकेशन के पास सभी अनुमतियां हैं"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"किसी ऐप्लिकेशन को अनुमति नहीं है"</string>
