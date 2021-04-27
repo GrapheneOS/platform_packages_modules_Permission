@@ -239,7 +239,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"擁有此權限的應用程式可以拍照及錄製影片"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"擁有此權限的應用程式可以存取您的通訊錄"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"擁有此權限的應用程式可以存取此裝置的位置資訊"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"擁有此權限的應用程式可以探索、連接並判斷附近裝置的相對位置"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"擁有此權限的應用程式可以尋找和連接附近的裝置，並可判斷附近裝置的相對位置"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"擁有此權限的應用程式可以錄音"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"擁有此權限的應用程式可以撥打電話和管理通話"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"擁有此權限的應用程式，可以從感應器取得與身體機能相關的資料"</string>
@@ -318,6 +318,18 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"只在使用應用程式時"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"媒體"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"所有檔案"</string>
+    <string name="app_perms_24h_access" msgid="99069906850627181">"上次存取時間：<xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"上次存取時間：昨天 <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_content_provider" msgid="6996750793881252778">"上次存取時間：過去 24 小時內"</string>
+    <string name="app_perms_24h_access_only_in_foreground" msgid="8590228656172893995">"上次存取時間：<xliff:g id="TIME_DATE">%1$s</xliff:g> • 只限應用程式使用期間"</string>
+    <string name="app_perms_24h_access_yest_only_in_foreground" msgid="8491319626462867381">"上次存取時間：昨天 <xliff:g id="TIME_DATE">%1$s</xliff:g> • 只限應用程式使用期間"</string>
+    <string name="app_perms_content_provider_only_in_foreground" msgid="7111427348979322476">"上次存取時間：過去 24 小時內 • 只限應用程式使用期間"</string>
+    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"上次存取時間：<xliff:g id="TIME_DATE">%1$s</xliff:g> • 媒體"</string>
+    <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"上次存取時間：昨天 <xliff:g id="TIME_DATE">%1$s</xliff:g> • 媒體"</string>
+    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"上次存取時間：過去 24 小時內 • 媒體"</string>
+    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"上次存取時間：<xliff:g id="TIME_DATE">%1$s</xliff:g> • 所有檔案"</string>
+    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"上次存取時間：昨天 <xliff:g id="TIME_DATE">%1$s</xliff:g> • 所有檔案"</string>
+    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"上次存取時間：過去 24 小時內 • 所有檔案"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"不允許任何權限"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"沒有拒絕任何權限"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"沒有允許任何應用程式"</string>

@@ -318,6 +318,18 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"ពេល​កំពុង​ប្រើប្រាស់​កម្មវិធីតែ​ប៉ុណ្ណោះ"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"មេឌៀ"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"ឯកសារ​ទាំងអស់"</string>
+    <string name="app_perms_24h_access" msgid="99069906850627181">"បានចូលប្រើចុងក្រោយនៅម៉ោង <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"បានចូលប្រើចុងក្រោយកាលពីម្សិលមិញនៅម៉ោង <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_content_provider" msgid="6996750793881252778">"បានចូលប្រើក្នុងរយៈពេល 24 ម៉ោងចុងក្រោយ"</string>
+    <string name="app_perms_24h_access_only_in_foreground" msgid="8590228656172893995">"បានចូលប្រើចុងក្រោយនៅម៉ោង <xliff:g id="TIME_DATE">%1$s</xliff:g> • នៅពេលប្រើកម្មវិធីតែប៉ុណ្ណោះ"</string>
+    <string name="app_perms_24h_access_yest_only_in_foreground" msgid="8491319626462867381">"បានចូលប្រើចុងក្រោយកាលពីម្សិលមិញនៅម៉ោង <xliff:g id="TIME_DATE">%1$s</xliff:g> • នៅពេលប្រើកម្មវិធីតែប៉ុណ្ណោះ"</string>
+    <string name="app_perms_content_provider_only_in_foreground" msgid="7111427348979322476">"បានចូលប្រើក្នុងរយៈពេល 24 ម៉ោងចុងក្រោយ • នៅពេលប្រើកម្មវិធីតែប៉ុណ្ណោះ"</string>
+    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"បានចូលប្រើចុងក្រោយនៅម៉ោង <xliff:g id="TIME_DATE">%1$s</xliff:g> • មេឌៀ"</string>
+    <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"បានចូលប្រើចុងក្រោយកាលពីម្សិលមិញនៅម៉ោង <xliff:g id="TIME_DATE">%1$s</xliff:g> • មេឌៀ"</string>
+    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"បានចូលប្រើក្នុងរយៈពេល 24 ម៉ោងចុងក្រោយ • មេឌៀ"</string>
+    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"បានចូលប្រើចុងក្រោយនៅម៉ោង <xliff:g id="TIME_DATE">%1$s</xliff:g> • ឯកសារទាំងអស់"</string>
+    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"បានចូលប្រើចុងក្រោយកាលពីម្សិលមិញនៅម៉ោង <xliff:g id="TIME_DATE">%1$s</xliff:g> • ឯកសារទាំងអស់"</string>
+    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"បានចូលប្រើក្នុងរយៈពេល 24 ម៉ោងចុងក្រោយ • ឯកសារទាំងអស់"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"មិន​បាន​ផ្ដល់ការអនុញ្ញាតទេ"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"មិន​បានបដិសេធការ​អនុញ្ញាតទេ"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"គ្មាន​កម្មវិធី​ដែល​បាន​ទទួល​ការអនុញ្ញាត​​ទេ"</string>

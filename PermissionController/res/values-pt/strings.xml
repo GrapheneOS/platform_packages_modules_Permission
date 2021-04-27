@@ -318,6 +318,18 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"Apenas enquanto o app estiver em uso"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"Mídia"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"Todos os arquivos"</string>
+    <string name="app_perms_24h_access" msgid="99069906850627181">"Último acesso: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Último acesso: ontem às <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_content_provider" msgid="6996750793881252778">"Acessado nas últimas 24 horas"</string>
+    <string name="app_perms_24h_access_only_in_foreground" msgid="8590228656172893995">"Último acesso: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Apenas enquanto o app estiver em uso"</string>
+    <string name="app_perms_24h_access_yest_only_in_foreground" msgid="8491319626462867381">"Último acesso: ontem às <xliff:g id="TIME_DATE">%1$s</xliff:g> • Apenas enquanto o app estiver em uso"</string>
+    <string name="app_perms_content_provider_only_in_foreground" msgid="7111427348979322476">"Acessado nas últimas 24 horas • Apenas enquanto o app estiver em uso"</string>
+    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Último acesso: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Arquivos de mídia"</string>
+    <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Último acesso: ontem às <xliff:g id="TIME_DATE">%1$s</xliff:g> • Arquivos de mídia"</string>
+    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"Acessado nas últimas 24 horas • Arquivos de mídia"</string>
+    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"Último acesso: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Todos os arquivos"</string>
+    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"Último acesso: ontem às <xliff:g id="TIME_DATE">%1$s</xliff:g> • Todos os arquivos"</string>
+    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"Acessado nas últimas 24 horas • Todos os arquivos"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Nenhuma permissão autorizada"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"Nenhuma permissão negada"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"Nenhum app permitido"</string>
