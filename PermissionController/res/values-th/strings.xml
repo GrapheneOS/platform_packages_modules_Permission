@@ -226,7 +226,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"มีการนำสิทธิ์เข้าถึง<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>และ<xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>ออก"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"มีการนำสิทธิ์เข้าถึง<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>และสิทธิ์อีก <xliff:g id="NUMBER">%2$s</xliff:g> รายการออก"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"แอปที่ไม่ได้ใช้"</string>
-    <string name="unused_apps_page_summary" msgid="4644643299214625298">"หากไม่ได้ใช้แอปเป็นเวลา 2-3 เดือนจะมีการดำเนินการต่อไปนี้\n\n• สิทธิ์จะถูกนำออกเพื่อปกป้องข้อมูลของคุณ\n• การแจ้งเตือนจะหยุดลงเพื่อประหยัดแบตเตอรี่\n• ไฟล์ชั่วคราวจะถูกนำออกเพื่อเพิ่มพื้นที่ว่าง"</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"จะมีการดำเนินการต่อไปนี้หากไม่ได้ใช้แอปเป็นเวลา 2-3 เดือน\n\n• สิทธิ์จะถูกนำออกเพื่อปกป้องข้อมูลของคุณ\n• การแจ้งเตือนจะหยุดลงเพื่อประหยัดแบตเตอรี่\n• ไฟล์ชั่วคราวจะถูกนำออกเพื่อเพิ่มพื้นที่ว่าง"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"เปิดล่าสุดนานกว่า <xliff:g id="NUMBER">%s</xliff:g> เดือนที่ผ่านมา"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"เปิดแอปล่าสุดเมื่อวันที่ <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"เปิดล่าสุดเมื่อวันที่ <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -318,6 +318,18 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"เมื่อมีการใช้แอปเท่านั้น"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"สื่อ"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"ทุกไฟล์"</string>
+    <string name="app_perms_24h_access" msgid="99069906850627181">"เข้าถึงล่าสุดเมื่อ <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"เข้าถึงล่าสุดเมื่อวานตอน <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_content_provider" msgid="6996750793881252778">"เข้าถึงในช่วง 24 ชั่วโมงที่ผ่านมา"</string>
+    <string name="app_perms_24h_access_only_in_foreground" msgid="8590228656172893995">"เข้าถึงล่าสุดเมื่อ <xliff:g id="TIME_DATE">%1$s</xliff:g> • เมื่อมีการใช้แอปเท่านั้น"</string>
+    <string name="app_perms_24h_access_yest_only_in_foreground" msgid="8491319626462867381">"เข้าถึงล่าสุดเมื่อวานตอน <xliff:g id="TIME_DATE">%1$s</xliff:g> • เมื่อมีการใช้แอปเท่านั้น"</string>
+    <string name="app_perms_content_provider_only_in_foreground" msgid="7111427348979322476">"เข้าถึงในช่วง 24 ชั่วโมงที่ผ่านมา • เมื่อมีการใช้แอปเท่านั้น"</string>
+    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"เข้าถึงล่าสุดเมื่อ <xliff:g id="TIME_DATE">%1$s</xliff:g> • สื่อ"</string>
+    <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"เข้าถึงล่าสุดเมื่อวานตอน <xliff:g id="TIME_DATE">%1$s</xliff:g> • สื่อ"</string>
+    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"เข้าถึงในช่วง 24 ชั่วโมงที่ผ่านมา • สื่อ"</string>
+    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"เข้าถึงล่าสุดเมื่อ <xliff:g id="TIME_DATE">%1$s</xliff:g> • ไฟล์ทั้งหมด"</string>
+    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"เข้าถึงล่าสุดเมื่อวานตอน <xliff:g id="TIME_DATE">%1$s</xliff:g> • ไฟล์ทั้งหมด"</string>
+    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"เข้าถึงในช่วง 24 ชั่วโมงที่ผ่านมา • ไฟล์ทั้งหมด"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"ไม่ได้ให้สิทธิ์ใดเลย"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"ไม่ได้ปฏิเสธสิทธิ์ใดเลย"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"ไม่ได้อนุญาตแอปใดเลย"</string>

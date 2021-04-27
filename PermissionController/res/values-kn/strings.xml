@@ -43,8 +43,7 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"ಎಲ್ಲಾ ಸಮಯದಲ್ಲೂ ಅನುಮತಿಸಿ"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"ಆ್ಯಪ್ ಬಳಸುವಾಗ"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"ನಿಖರವಾದ ಸ್ಥಾನಕ್ಕೆ ಬದಲಾಯಿಸಿ"</string>
-    <!-- no translation found for grant_dialog_button_keey_approximate_location (438025182769080011) -->
-    <skip />
+    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"ಅಂದಾಜು ಸ್ಥಳವನ್ನು ಇರಿಸಿ"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"ಈ ಬಾರಿ ಮಾತ್ರ"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"ಎಲ್ಲಾ ಸಮಯದಲ್ಲೂ ಅನುಮತಿಸಿ"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"ಎಲ್ಲಾ ಫೈಲ್‌ಗಳ ನಿರ್ವಹಣೆಯನ್ನು ಅನುಮತಿಸಿ"</string>
@@ -251,7 +250,7 @@
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"ಎಂದಿಗೂ ಪ್ರವೇಶಿಸಿಲ್ಲ"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"ನಿರಾಕರಿಸಲಾಗಿದೆ / ಎಂದಿಗೂ ಪ್ರವೇಶಿಸಲಾಗಿಲ್ಲ"</string>
     <string name="allowed_header" msgid="7769277978004790414">"ಅನುಮತಿಸಲಾಗಿದೆ"</string>
-    <string name="allowed_always_header" msgid="6455903312589013545">"ಎಲ್ಲಾ ಸಮಯದಲ್ಲೂ ಅನುಮತಿಸಲಾಗಿದೆ"</string>
+    <string name="allowed_always_header" msgid="6455903312589013545">"ಎಲ್ಲಾ ಸಮಯದಲ್ಲೂ ಅನುಮತಿಸಿರುವುದು"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"ಬಳಕೆಯಲ್ಲಿದ್ದಾಗ ಮಾತ್ರ ಅನುಮತಿಸಲಾಗಿದೆ"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"ಮೀಡಿಯಾಕ್ಕೆ ಮಾತ್ರ ಪ್ರವೇಶಿಸಲು ಅನುಮತಿಸಲಾಗಿದೆ"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"ಎಲ್ಲಾ ಫೈಲ್‌ಗಳನ್ನು ನಿರ್ವಹಿಸಲು ಅನುಮತಿಸಲಾಗಿದೆ"</string>
@@ -319,6 +318,18 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"ಆ್ಯಪ್ ಬಳಕೆಯಲ್ಲಿದ್ದಾಗ ಮಾತ್ರ"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"ಮೀಡಿಯಾ"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"ಎಲ್ಲ ಫೈಲ್‌ಗಳು"</string>
+    <string name="app_perms_24h_access" msgid="99069906850627181">"ಕೊನೆಯ ಬಾರಿ ಪ್ರವೇಶಿಸಿರುವುದು <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"ನಿನ್ನೆ <xliff:g id="TIME_DATE">%1$s</xliff:g> ರ ಸಮಯದಲ್ಲಿ ಕೊನೆಯ ಬಾರಿ ಪ್ರವೇಶಿಸಲಾಗಿದೆ"</string>
+    <string name="app_perms_content_provider" msgid="6996750793881252778">"ಕಳೆದ 24 ಗಂಟೆಗಳಲ್ಲಿ ಪ್ರವೇಶಿಸಲಾಗಿದೆ"</string>
+    <string name="app_perms_24h_access_only_in_foreground" msgid="8590228656172893995">"ಕೊನೆಯ ಬಾರಿ ಪ್ರವೇಶಿಸಿರುವುದು <xliff:g id="TIME_DATE">%1$s</xliff:g> • ಆ್ಯಪ್ ಬಳಕೆಯಲ್ಲಿರುವಾಗ ಮಾತ್ರ"</string>
+    <string name="app_perms_24h_access_yest_only_in_foreground" msgid="8491319626462867381">"ನಿನ್ನೆ <xliff:g id="TIME_DATE">%1$s</xliff:g> ರ ಸಮಯದಲ್ಲಿ ಕೊನೆಯ ಬಾರಿ ಪ್ರವೇಶಿಸಲಾಗಿದೆ • ಆ್ಯಪ್ ಬಳಕೆಯಲ್ಲಿರುವಾಗ ಮಾತ್ರ"</string>
+    <string name="app_perms_content_provider_only_in_foreground" msgid="7111427348979322476">"ಕಳೆದ 24 ಗಂಟೆಗಳಲ್ಲಿ ಪ್ರವೇಶಿಸಲಾಗಿದೆ • ಆ್ಯಪ್ ಬಳಕೆಯಲ್ಲಿರುವಾಗ ಮಾತ್ರ"</string>
+    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"ಕೊನೆಯ ಬಾರಿ ಪ್ರವೇಶಿಸಿರುವುದು <xliff:g id="TIME_DATE">%1$s</xliff:g> • ಮಾಧ್ಯಮ"</string>
+    <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"ನಿನ್ನೆ <xliff:g id="TIME_DATE">%1$s</xliff:g> ರ ಸಮಯದಲ್ಲಿ ಕೊನೆಯ ಬಾರಿ ಪ್ರವೇಶಿಸಲಾಗಿದೆ • ಮಾಧ್ಯಮ"</string>
+    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"ಕಳೆದ 24 ಗಂಟೆಗಳಲ್ಲಿ ಪ್ರವೇಶಿಸಲಾಗಿದೆ • ಮಾಧ್ಯಮ"</string>
+    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"ಕೊನೆಯ ಬಾರಿ ಪ್ರವೇಶಿಸಿರುವುದು <xliff:g id="TIME_DATE">%1$s</xliff:g> • ಎಲ್ಲಾ ಫೈಲ್‌ಗಳು"</string>
+    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"ನಿನ್ನೆ <xliff:g id="TIME_DATE">%1$s</xliff:g> ರ ಸಮಯದಲ್ಲಿ ಕೊನೆಯ ಬಾರಿ ಪ್ರವೇಶಿಸಲಾಗಿದೆ • ಎಲ್ಲಾ ಫೈಲ್‌ಗಳು"</string>
+    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"ಕಳೆದ 24 ಗಂಟೆಗಳಲ್ಲಿ ಪ್ರವೇಶಿಸಲಾಗಿದೆ • ಎಲ್ಲಾ ಫೈಲ್‌ಗಳು"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"ಯಾವುದೇ ಅನುಮತಿಗಳನ್ನು ಅನುಮತಿಸಲಾಗಿಲ್ಲ"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"ಯಾವುದೇ ಅನುಮತಿಗಳನ್ನು ನಿರಾಕರಿಸಲಾಗಿಲ್ಲ"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"ಯಾವುದೇ ಆ್ಯಪ್‌ಗಳನ್ನು ಅನುಮತಿಸಲಾಗಿಲ್ಲ"</string>
@@ -439,8 +450,7 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"ನೀವು ಈ ಆ್ಯಪ್ ಅನ್ನು ಬಳಸದಿರುವಾಗಲೂ ಸಹ, ಯಾವಾಗಲೂ ನಿಮ್ಮ ಸ್ಥಳಕ್ಕೆ ಪ್ರವೇಶವನ್ನು ಹೊಂದಲು ಆ್ಯಪ್ ಬಯಸುತ್ತದೆ. "<annotation id="link">"ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಅನುಮತಿಸಿ."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"ನಿಮ್ಮ ಸಮೀಪದಲ್ಲಿರುವ ಸಾಧನಗಳನ್ನು ಅನ್ವೇಷಿಸಲು ಮತ್ತು ಅವುಗಳಿಗೆ ಕನೆಕ್ಟ್ ಮಾಡಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸುವಿರಾ?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"ನಿಮ್ಮ ಸಮೀಪದಲ್ಲಿರುವ ಸಾಧನಗಳನ್ನು ಅನ್ವೇಷಿಸಲು ಮತ್ತು ಅವುಗಳಿಗೆ ಕನೆಕ್ಟ್ ಮಾಡಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸುವಿರಾ? "<annotation id="link">"ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಅನುಮತಿಸಿ."</annotation></string>
-    <!-- no translation found for permgrouprequest_fineupgrade (2334242928821697672) -->
-    <skip />
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> ನ ಸ್ಥಳ ಪ್ರವೇಶವನ್ನು ಅಂದಾಜಿನಿಂದ ನಿಖರತೆಗೆ ಬದಲಾಯಿಸುವುದೇ?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"ಈ ಸಾಧನದ ಅಂದಾಜು ಸ್ಥಳವನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"ನಿಖರ"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"ಅಂದಾಜು"</string>

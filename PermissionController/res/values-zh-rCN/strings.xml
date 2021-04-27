@@ -43,8 +43,7 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"始终允许"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"仅在使用该应用时允许"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"更改为确切位置"</string>
-    <!-- no translation found for grant_dialog_button_keey_approximate_location (438025182769080011) -->
-    <skip />
+    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"继续使用大概位置"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"仅限这一次"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"一律允许"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"允许管理所有文件"</string>
@@ -228,7 +227,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"已移除<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>权限及另外 <xliff:g id="NUMBER">%2$s</xliff:g> 项权限"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"未使用的应用"</string>
     <string name="unused_apps_page_summary" msgid="4644643299214625298">"如果您连续数月未使用某个应用，系统将对该应用采取以下措施：\n\n• 移除应用权限以保护您的数据\n• 停止通知功能以节省电量\n• 移除临时文件以释放空间"</string>
-    <string name="last_opened_category_title" msgid="7871347400611202595">"上次打开时间是超过 <xliff:g id="NUMBER">%s</xliff:g> 个月前"</string>
+    <string name="last_opened_category_title" msgid="7871347400611202595">"距上次打开已超过 <xliff:g id="NUMBER">%s</xliff:g> 个月"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"应用上次打开时间是 <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"上次打开时间是 <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"如果您允许此应用管理所有文件，此应用将可以访问、修改和删除本设备或连接的存储设备上通用存储空间中的任何文件。此应用可能会在您不知情的情况下访问文件。"</string>
@@ -319,6 +318,30 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"仅在使用该应用期间允许"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"媒体文件"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"所有文件"</string>
+    <!-- no translation found for app_perms_24h_access (99069906850627181) -->
+    <skip />
+    <!-- no translation found for app_perms_24h_access_yest (5411926024794555022) -->
+    <skip />
+    <!-- no translation found for app_perms_content_provider (6996750793881252778) -->
+    <skip />
+    <!-- no translation found for app_perms_24h_access_only_in_foreground (8590228656172893995) -->
+    <skip />
+    <!-- no translation found for app_perms_24h_access_yest_only_in_foreground (8491319626462867381) -->
+    <skip />
+    <!-- no translation found for app_perms_content_provider_only_in_foreground (7111427348979322476) -->
+    <skip />
+    <!-- no translation found for app_perms_24h_access_media_only (6651699644199132054) -->
+    <skip />
+    <!-- no translation found for app_perms_24h_access_yest_media_only (7213187706424998792) -->
+    <skip />
+    <!-- no translation found for app_perms_content_provider_media_only (6206759230589923421) -->
+    <skip />
+    <!-- no translation found for app_perms_24h_access_all_files (8902360456978159091) -->
+    <skip />
+    <!-- no translation found for app_perms_24h_access_yest_all_files (5708424073126844909) -->
+    <skip />
+    <!-- no translation found for app_perms_content_provider_all_files (3315281519230304799) -->
+    <skip />
     <string name="no_permissions_allowed" msgid="6081976856354669209">"未允许任何权限"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"未拒绝任何权限"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"未允许任何应用"</string>
@@ -439,8 +462,7 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"该应用想要随时获取您的位置信息（即使您并未使用该应用）。"<annotation id="link">"在“设置”中允许"</annotation>"。"</string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;发现并连接到附近的设备吗？"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;发现并连接到附近的设备吗？"<annotation id="link">"您可以在“设置”中允许。"</annotation></string>
-    <!-- no translation found for permgrouprequest_fineupgrade (2334242928821697672) -->
-    <skip />
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"要将“<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>”可以使用的位置信息从大概位置改为确切位置吗？"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;获取此设备的粗略位置吗？"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"确切位置"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"粗略位置"</string>
