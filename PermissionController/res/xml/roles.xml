@@ -784,6 +784,38 @@
     </role>
 
     <!---
+      ~ A role for the system package that is allowed to manage documents (e.g., attach files etc.)
+      ~ on the device.
+      ~ A package holding this role must comply with the requirements outlined in the Android CDD
+      ~ section "2.2.3. Software" under heading "3.2.3.1/H-0-1".
+      ~ Example link for Android 11:
+      ~ https://source.android.com/compatibility/11/android-11-cdd#2_2_3_software
+    -->
+    <role
+        name="android.app.role.SYSTEM_DOCUMENT_MANAGER"
+        behavior="DocumentManagerRoleBehavior"
+        exclusive="true"
+        minSdkVersion="33"
+        systemOnly="true"
+        visible="false">
+        <required-components>
+            <!--- Flag value is MATCH_DISABLED_COMPONENTS-->
+            <activity queryFlags="0x00000200">
+                <intent-filter>
+                    <action name="android.intent.action.OPEN_DOCUMENT" />
+                    <category name="android.intent.category.OPENABLE" />
+                    <data mimeType="*/*" />
+                </intent-filter>
+            </activity>
+        </required-components>
+        <permissions>
+            <permission name="android.permission.MANAGE_DOCUMENTS" />
+            <permission name="android.permission.CACHE_CONTENT" />
+            <permission name="android.permission.REMOVE_TASKS" />
+        </permissions>
+    </role>
+
+    <!---
       ~ A role for the system package that serves as the activity recognizer on the device.
       ~ This is the application that provides the data behind the activity recognition
       ~ runtime permission.
