@@ -318,6 +318,18 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"Wakati programu inatumika pekee"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"Maudhui"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"Faili Zote"</string>
+    <string name="app_perms_24h_access" msgid="99069906850627181">"Ilitumiwa mwisho <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Ilitumiwa mwisho jana <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_content_provider" msgid="6996750793881252778">"Ilitumiwa katika saa 24 zilizopita"</string>
+    <string name="app_perms_24h_access_only_in_foreground" msgid="8590228656172893995">"Ilitumiwa mwisho <xliff:g id="TIME_DATE">%1$s</xliff:g> • Wakati programu inatumika pekee"</string>
+    <string name="app_perms_24h_access_yest_only_in_foreground" msgid="8491319626462867381">"Ilitumiwa mwisho jana <xliff:g id="TIME_DATE">%1$s</xliff:g> • Wakati tu programu inatumika"</string>
+    <string name="app_perms_content_provider_only_in_foreground" msgid="7111427348979322476">"Ilitumiwa katika saa 24 zilizopita • Wakati programu inatumika pekee"</string>
+    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Ilitumiwa mwisho <xliff:g id="TIME_DATE">%1$s</xliff:g> • Maudhui"</string>
+    <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Ilitumiwa mwisho jana <xliff:g id="TIME_DATE">%1$s</xliff:g> • Maudhui"</string>
+    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"Ilitumiwa katika saa 24 zilizopita • Maudhui"</string>
+    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"Ilitumiwa mwisho <xliff:g id="TIME_DATE">%1$s</xliff:g> • Faili Zote"</string>
+    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"Ilitumiwa mwisho jana <xliff:g id="TIME_DATE">%1$s</xliff:g> • Faili Zote"</string>
+    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"Ilitumiwa katika saa 24 zilizopita • Faili Zote"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Hakuna ruhusa zilizotolewa"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"Hakuna ruhusa ambazo hazijatolewa"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"Hakuna programu zinazoruhusiwa"</string>

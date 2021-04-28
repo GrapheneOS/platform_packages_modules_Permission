@@ -297,7 +297,7 @@
     <string name="help_app_permissions" translatable="false"></string>
 
     <!-- Title for permission usage [CHAR LIMIT=30] -->
-    <string name="permission_usage_title">Dashboard</string>
+    <string name="permission_usage_title">Privacy dashboard</string>
 
     <!-- Title for permission group usage [CHAR LIMIT=30] -->
     <string name="permission_group_usage_title"><xliff:g id="permgroup" example="Location">%1$s</xliff:g> usage</string>
@@ -1292,4 +1292,17 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="additional_permissions_label">Additional permissions</string>
     <!-- Subtitle for a list of "custom" permissions (defined by applications, not the platform). [CHAR LIMIT=none] -->
     <string name="additional_permissions_description">Permissions defined by applications.</string>
+
+    <!-- Permission label for camera. [CHAR LIMIT=20] -->
+    <string name="privdash_label_camera">Camera</string>
+    <!-- Permission label for microphone. [CHAR LIMIT=20] -->
+    <string name="privdash_label_microphone">Microphone</string>
+    <!-- Permission label for location. [CHAR LIMIT=20] -->
+    <string name="privdash_label_location">Location</string>
+    <!-- Permission label for "other" (not camera, microphone, or location). [CHAR LIMIT=20] -->
+    <string name="privdash_label_other">Other</string>
+    <!-- Permission label for "none" (not anything). [CHAR LIMIT=20] -->
+    <string name="privdash_label_none">None</string>
+    <!-- Label that describes a "last 24 hours" time window, prefer two lines. [CHAR LIMIT=20] -->
+    <string name="privdash_label_24h">Past\n24 hours</string>
 </resources>
