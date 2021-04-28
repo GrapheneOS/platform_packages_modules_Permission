@@ -318,6 +318,18 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"Hanya saat aplikasi sedang digunakan"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"Media"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"Semua File"</string>
+    <string name="app_perms_24h_access" msgid="99069906850627181">"Terakhir diakses pada <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Terakhir diakses kemarin pada <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_content_provider" msgid="6996750793881252778">"Diakses dalam 24 jam terakhir"</string>
+    <string name="app_perms_24h_access_only_in_foreground" msgid="8590228656172893995">"Terakhir diakses pada <xliff:g id="TIME_DATE">%1$s</xliff:g> • Hanya saat aplikasi sedang digunakan"</string>
+    <string name="app_perms_24h_access_yest_only_in_foreground" msgid="8491319626462867381">"Terakhir diakses kemarin pada <xliff:g id="TIME_DATE">%1$s</xliff:g> • Hanya saat aplikasi sedang digunakan"</string>
+    <string name="app_perms_content_provider_only_in_foreground" msgid="7111427348979322476">"Diakses dalam 24 jam terakhir • Hanya saat aplikasi sedang digunakan"</string>
+    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Terakhir diakses pada <xliff:g id="TIME_DATE">%1$s</xliff:g> • Media"</string>
+    <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Terakhir diakses kemarin pada <xliff:g id="TIME_DATE">%1$s</xliff:g> • Media"</string>
+    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"Diakses dalam 24 jam terakhir • Media"</string>
+    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"Terakhir diakses pada <xliff:g id="TIME_DATE">%1$s</xliff:g> • Semua File"</string>
+    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"Terakhir diakses kemarin pada <xliff:g id="TIME_DATE">%1$s</xliff:g> • Semua File"</string>
+    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"Diakses dalam 24 jam terakhir • Semua File"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Tidak ada izin"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"Tidak ada izin yang ditolak"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"Tidak ada aplikasi yang diizinkan"</string>

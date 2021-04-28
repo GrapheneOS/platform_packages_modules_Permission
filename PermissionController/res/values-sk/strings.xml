@@ -263,7 +263,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Aplikácie s týmto povolením môžu fotiť a nahrávať video"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Aplikácie s týmto povolením majú prístup k vašim kontaktom"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Aplikácie s týmto povolením majú prístup k polohe tohto zariadenia"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Aplikácie s týmto povolením môžu vyhľadávať aj určovať relatívnu polohu zariadení v okolí a pripájať sa k nim"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Aplikácie s týmto povolením môžu nachádzať zariadenia v okolí, pripájať sa k nim a zisťovať ich vzájomnú polohu"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Aplikácie s týmto povolením môžu nahrávať zvuk"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Aplikácie s týmto povolením môžu uskutočňovať a spravovať telefonické hovory"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Aplikácie s týmto povolením majú prístup k dátam senzorov o vašich životných funkciách"</string>
@@ -356,6 +356,18 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"Iba počas používania aplikácie"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"Médiá"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"Všetky súbory"</string>
+    <string name="app_perms_24h_access" msgid="99069906850627181">"Naposledy použité <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Naposledy použité včera o <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_content_provider" msgid="6996750793881252778">"Použité v posledných 24 hodinách"</string>
+    <string name="app_perms_24h_access_only_in_foreground" msgid="8590228656172893995">"Naposledy použité <xliff:g id="TIME_DATE">%1$s</xliff:g> • Iba pri používaní aplikácie"</string>
+    <string name="app_perms_24h_access_yest_only_in_foreground" msgid="8491319626462867381">"Naposledy použité včera o <xliff:g id="TIME_DATE">%1$s</xliff:g> • Iba pri používaní aplikácie"</string>
+    <string name="app_perms_content_provider_only_in_foreground" msgid="7111427348979322476">"Použité v posledných 24 hodinách • Iba pri používaní aplikácie"</string>
+    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Naposledy použité <xliff:g id="TIME_DATE">%1$s</xliff:g> • Médiá"</string>
+    <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Naposledy použité včera o <xliff:g id="TIME_DATE">%1$s</xliff:g> • Médiá"</string>
+    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"Použité v posledných 24 hodinách • Médiá"</string>
+    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"Naposledy použité <xliff:g id="TIME_DATE">%1$s</xliff:g> • Všetky súbory"</string>
+    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"Naposledy použité včera o <xliff:g id="TIME_DATE">%1$s</xliff:g> • Všetky súbory"</string>
+    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"Použité v posledných 24 hodinách • Všetky súbory"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Žiadne udelené povolenia"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"Žiadne zamietnuté povolenia"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"Žiadne povolené aplikácie"</string>

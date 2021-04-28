@@ -29,7 +29,11 @@ import com.android.permissioncontroller.permission.model.livedatatypes.LightPack
 /**
  * Hibernation controller that handles modifying hibernation state.
  */
-class HibernationController(val context: Context, val unusedThreshold: Long) {
+class HibernationController(
+    val context: Context,
+    val unusedThreshold: Long,
+    val targetsPreS: Boolean
+) {
 
     companion object {
         private const val LOG_TAG = "HibernationController"
@@ -56,7 +60,8 @@ class HibernationController(val context: Context, val unusedThreshold: Long) {
                         continue
                     }
                     // TODO(b/184097792): Change this to < S when API finalizes.
-                    if (pkg.targetSdkVersion <= Build.VERSION_CODES.R) {
+                    if (!targetsPreS &&
+                        pkg.targetSdkVersion <= Build.VERSION_CODES.R) {
                         // Only apps targeting S or above can be truly hibernated.
                         continue
                     }
