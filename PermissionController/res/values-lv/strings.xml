@@ -337,6 +337,18 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"Tikai lietotnes izmantošanas laikā"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"Multivide"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"Visi faili"</string>
+    <string name="app_perms_24h_access" msgid="99069906850627181">"Pēdējoreiz piekļūts: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Pēdējoreiz piekļūts vakar plkst. <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_content_provider" msgid="6996750793881252778">"Piekļūts pēdējo 24 stundu laikā"</string>
+    <string name="app_perms_24h_access_only_in_foreground" msgid="8590228656172893995">"Pēdējoreiz piekļūts: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Tikai lietotnes izmantošanas laikā"</string>
+    <string name="app_perms_24h_access_yest_only_in_foreground" msgid="8491319626462867381">"Pēdējoreiz piekļūts vakar plkst. <xliff:g id="TIME_DATE">%1$s</xliff:g> • Tikai lietotnes izmantošanas laikā"</string>
+    <string name="app_perms_content_provider_only_in_foreground" msgid="7111427348979322476">"Piekļūts pēdējo 24 stundu laikā • Tikai lietotnes izmantošanas laikā"</string>
+    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Pēdējoreiz piekļūts: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Multivide"</string>
+    <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Pēdējoreiz piekļūts vakar plkst. <xliff:g id="TIME_DATE">%1$s</xliff:g> • Multivide"</string>
+    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"Piekļūts pēdējo 24 stundu laikā • Multivide"</string>
+    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"Pēdējoreiz piekļūts: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Visi faili"</string>
+    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"Pēdējoreiz piekļūts vakar plkst. <xliff:g id="TIME_DATE">%1$s</xliff:g> • Visi faili"</string>
+    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"Piekļūts pēdējo 24 stundu laikā • Visi faili"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Nav piešķirta neviena atļauja"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"Nav noraidīta neviena atļauja"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"Nav atļauta neviena lietotne"</string>

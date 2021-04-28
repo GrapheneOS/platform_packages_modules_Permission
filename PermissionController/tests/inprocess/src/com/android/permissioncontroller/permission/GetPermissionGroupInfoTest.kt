@@ -36,7 +36,7 @@ class GetPermissionGroupInfoTest {
         var returnedPerms: List<String>? = null
         for (group in groups) {
             val latch = CountDownLatch(1)
-            pcManager.getPlatformPermissionsForGroup(group) { ret ->
+            pcManager.getPlatformPermissionsForGroup(group, context.mainExecutor) { ret ->
                 returnedPerms = ret
                 latch.countDown()
             }
@@ -54,7 +54,7 @@ class GetPermissionGroupInfoTest {
             for (permName in perms) {
                 var permGroup: String? = null
                 val latch = CountDownLatch(1)
-                pcManager.getGroupOfPlatformPermission(permName) { retGroup ->
+                pcManager.getGroupOfPlatformPermission(permName, context.mainExecutor) { retGroup ->
                     permGroup = retGroup
                     latch.countDown()
                 }

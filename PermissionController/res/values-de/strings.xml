@@ -43,8 +43,7 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Immer zulassen"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Bei Nutzung der App"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Auf genauen Standort ändern"</string>
-    <!-- no translation found for grant_dialog_button_keey_approximate_location (438025182769080011) -->
-    <skip />
+    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Ungefähren Standort beibehalten"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Nur dieses Mal"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Immer zulassen"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Verwaltung aller Dateien zulassen"</string>
@@ -227,7 +226,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Berechtigungen für <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> und <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> entfernt"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Berechtigungen für <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> und <xliff:g id="NUMBER">%2$s</xliff:g> weitere entfernt"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Nicht verwendete Apps"</string>
-    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Wenn du eine App seit einigen Monaten nicht mehr verwendet hast:\n\n• Zum Schutz deiner Daten werden die Berechtigungen entfernt\n• Benachrichtigungen werden gestoppt, um den Akku zu schonen\n• Temporäre Dateien werden gelöscht, um Speicherplatz freizugeben"</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Wenn du eine App seit einigen Monaten nicht mehr verwendet hast, geschieht Folgendes:\n\n• Zum Schutz deiner Daten werden die Berechtigungen entfernt\n• Benachrichtigungen werden gestoppt, um den Akku zu schonen\n• Temporäre Dateien werden gelöscht, um Speicherplatz freizugeben"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Zuletzt geöffnet vor mehr als <xliff:g id="NUMBER">%s</xliff:g> Monaten"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"App wurde zuletzt geöffnet am <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Zuletzt geöffnet am <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -319,6 +318,30 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"Nur während die App verwendet wird"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"Mediendateien"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"Alle Dateien"</string>
+    <!-- no translation found for app_perms_24h_access (99069906850627181) -->
+    <skip />
+    <!-- no translation found for app_perms_24h_access_yest (5411926024794555022) -->
+    <skip />
+    <!-- no translation found for app_perms_content_provider (6996750793881252778) -->
+    <skip />
+    <!-- no translation found for app_perms_24h_access_only_in_foreground (8590228656172893995) -->
+    <skip />
+    <!-- no translation found for app_perms_24h_access_yest_only_in_foreground (8491319626462867381) -->
+    <skip />
+    <!-- no translation found for app_perms_content_provider_only_in_foreground (7111427348979322476) -->
+    <skip />
+    <!-- no translation found for app_perms_24h_access_media_only (6651699644199132054) -->
+    <skip />
+    <!-- no translation found for app_perms_24h_access_yest_media_only (7213187706424998792) -->
+    <skip />
+    <!-- no translation found for app_perms_content_provider_media_only (6206759230589923421) -->
+    <skip />
+    <!-- no translation found for app_perms_24h_access_all_files (8902360456978159091) -->
+    <skip />
+    <!-- no translation found for app_perms_24h_access_yest_all_files (5708424073126844909) -->
+    <skip />
+    <!-- no translation found for app_perms_content_provider_all_files (3315281519230304799) -->
+    <skip />
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Keine Berechtigungen zugelassen"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"Alle Berechtigungen zugelassen"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"Zugriff für keine Apps zugelassen"</string>
@@ -439,8 +462,7 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Diese App möchte jederzeit Zugriff auf deinen Standort haben, auch wenn du sie nicht verwendest. "<annotation id="link">"Du kannst das in den Einstellungen zulassen."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, Geräte in der Nähe zu finden und eine Verbindung herzustellen?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, Geräte in der Nähe zu finden und eine Verbindung herzustellen? "<annotation id="link">"In den Einstellungen zulassen."</annotation></string>
-    <!-- no translation found for permgrouprequest_fineupgrade (2334242928821697672) -->
-    <skip />
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Soll der Standortzugriff von <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> von ungefähr zu genau geändert werden?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, den ungefähren Gerätestandort abzurufen?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Genau"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Ungefähr"</string>
