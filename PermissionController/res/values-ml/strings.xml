@@ -105,7 +105,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"നിലവിലെ അനുമതികൾ"</string>
     <string name="message_staging" msgid="9110563899955511866">"ആപ്പ് തയ്യാറാക്കുന്നു…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"അജ്ഞാതം"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"ഡാഷ്‌ബോർഡ്"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"സ്വകാര്യതാ ഡാഷ്ബോർഡ്"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> ഉപയോഗം"</string>
     <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"കഴിഞ്ഞ 24 മണിക്കൂർ നിങ്ങളുടെ <xliff:g id="PERMGROUP">%1$s</xliff:g> ഉപയോഗിച്ചത് എപ്പോൾ എന്നതിന്റെ ടൈംലൈൻ"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"ഈ ആപ്പ് നിങ്ങളുടെ <xliff:g id="PERMGROUP">%1$s</xliff:g> ഉപയോഗിച്ചത് എപ്പോഴാണ്:"</string>
@@ -481,4 +481,10 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"സിസ്‌റ്റം ആപ്പുകൾ മാത്രം ഉപയോഗിക്കുന്ന അനുമതികൾ."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"അധിക അനുമതികൾ"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"ആപ്പുകൾ നിർവചിച്ച അനുമതികൾ."</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"ക്യാമറ"</string>
+    <string name="privdash_label_microphone" msgid="8415035835803511693">"മൈക്രോഫോൺ"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"ലൊക്കേഷൻ"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"മറ്റുള്ളവ"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"ഒന്നുമില്ല"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"കഴിഞ്ഞ\n24 മണിക്കൂർ"</string>
 </resources>

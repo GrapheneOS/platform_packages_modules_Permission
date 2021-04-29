@@ -105,7 +105,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"Các quyền hiện tại"</string>
     <string name="message_staging" msgid="9110563899955511866">"Đang thử nghiệm ứng dụng…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Không xác định"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"Trang tổng quan"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"Bảng tổng quan về quyền riêng tư"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Hoạt động sử dụng <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Lịch trình sử dụng <xliff:g id="PERMGROUP">%1$s</xliff:g> của bạn trong 24 giờ qua"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Khi ứng dụng này dùng <xliff:g id="PERMGROUP">%1$s</xliff:g>:"</string>
@@ -226,8 +226,8 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Đã thu hồi quyền đối với <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> và <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Đã thu hồi quyền sử dụng <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> và <xliff:g id="NUMBER">%2$s</xliff:g> quyền khác"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Ứng dụng không dùng đến"</string>
-    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Nếu bạn không dùng một ứng dụng trong vài tháng, hệ thống sẽ:\n\n• Xóa các quyền để bảo vệ dữ liệu của bạn\n• Chặn các thông báo để tiết kiệm pin\n• Xóa các tệp tạm thời để giải phóng dung lượng"</string>
-    <string name="last_opened_category_title" msgid="7871347400611202595">"Lần mở gần đây nhất là hơn <xliff:g id="NUMBER">%s</xliff:g> tháng trước"</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Nếu bạn không dùng một ứng dụng trong vài tháng, hệ thống sẽ:\n\n• Thu hồi các quyền để bảo vệ dữ liệu của bạn\n• Chặn các thông báo để tiết kiệm pin\n• Xóa các tệp tạm thời để giải phóng dung lượng"</string>
+    <string name="last_opened_category_title" msgid="7871347400611202595">"Mở lần cuối cách đây hơn <xliff:g id="NUMBER">%s</xliff:g> tháng trước"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Lần gần đây nhất bạn mở ứng dụng này là vào <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Lần mở gần đây nhất là vào <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Nếu bạn cho phép quản lý tất cả các tệp, thì ứng dụng này có thể truy cập, sửa đổi và xóa bất kỳ tệp nào trong bộ nhớ chung trên thiết bị này hoặc các thiết bị lưu trữ được kết nối. Ứng dụng có thể truy cập vào tệp mà không cần hỏi bạn."</string>
@@ -286,7 +286,7 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> ứng dụng không dùng đến</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> ứng dụng không dùng đến</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="9195026773244581246">"Các quyền và tệp tạm thời bị xóa còn thông báo thì bị chặn. Hãy nhấn để xem lại."</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"Các quyền và tệp tạm thời đã bị xóa. Thông báo đã bị chặn. Hãy nhấn để xem lại."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Bạn không dùng một số ứng dụng trong vài tháng qua"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other">Bạn không dùng <xliff:g id="COUNT_1">%1$d</xliff:g> ứng dụng trong vài tháng qua</item>
@@ -481,4 +481,10 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Quyền chỉ được ứng dụng hệ thống sử dụng."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Quyền bổ sung"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Quyền do ứng dụng xác định."</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"Máy ảnh"</string>
+    <string name="privdash_label_microphone" msgid="8415035835803511693">"Micrô"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"Vị trí"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"Khác"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"Không có"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"24 giờ\nqua"</string>
 </resources>

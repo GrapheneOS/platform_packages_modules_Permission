@@ -105,7 +105,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"Izin saat ini"</string>
     <string name="message_staging" msgid="9110563899955511866">"Menyiapkan aplikasi..."</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Tak dikenal"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"Dasbor"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"Dasbor privasi"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Penggunaan <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Linimasa saat menggunakan <xliff:g id="PERMGROUP">%1$s</xliff:g> Anda dalam 24 jam terakhir"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Saat aplikasi ini digunakan oleh <xliff:g id="PERMGROUP">%1$s</xliff:g>:"</string>
@@ -481,4 +481,10 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Izin hanya digunakan oleh aplikasi sistem."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Izin tambahan"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Izin ditentukan oleh aplikasi."</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"Kamera"</string>
+    <string name="privdash_label_microphone" msgid="8415035835803511693">"Mikrofon"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"Lokasi"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"Lainnya"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"Tidak ada"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"24 jam\nterakhir"</string>
 </resources>

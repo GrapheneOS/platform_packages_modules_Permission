@@ -105,7 +105,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"Huidige rechten"</string>
     <string name="message_staging" msgid="9110563899955511866">"App uitvoeren…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Onbekend"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"Dashboard"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"Privacydashboard"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Gebruik van <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Tijdlijn van het gebruik van je <xliff:g id="PERMGROUP">%1$s</xliff:g> in de afgelopen 24 uur"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Wanneer deze app gebruik maakte van je <xliff:g id="PERMGROUP">%1$s</xliff:g>:"</string>
@@ -481,4 +481,10 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Rechten alleen gebruikt door systeem-apps."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Aanvullende rechten"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Rechten gedefinieerd door apps."</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"Camera"</string>
+    <string name="privdash_label_microphone" msgid="8415035835803511693">"Microfoon"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"Locatie"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"Overig"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"Geen"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"Afgelopen\n24 uur"</string>
 </resources>

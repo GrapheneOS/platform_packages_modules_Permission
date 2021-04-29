@@ -105,7 +105,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"مجوزهای کنونی"</string>
     <string name="message_staging" msgid="9110563899955511866">"مرحله‌بندی برنامه…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"نامشخص"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"داشبورد"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"داشبورد حریم‌خصوصی"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"استفاده از <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"خط زمان مدتی که از <xliff:g id="PERMGROUP">%1$s</xliff:g> شما در ۲۴ ساعت گذشته استفاده کرده است"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"وقتی این برنامه از <xliff:g id="PERMGROUP">%1$s</xliff:g> شما استفاده کرد:"</string>
@@ -227,9 +227,9 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"اجازه <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> و <xliff:g id="NUMBER">%2$s</xliff:g> اجازه دیگر برداشته شده است"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"برنامه‌های استفاده‌نشده"</string>
     <string name="unused_apps_page_summary" msgid="4644643299214625298">"اگر چند ماه از برنامه‌ای استفاده نشود:\n\n• اجازه‌ها برای محافظت از داده‌های شما حذف می‌شوند\n• اعلان‌ها برای صرفه‌جویی در مصرف باتری متوقف می‌شوند\n• فایل‌های موقت برای آزادسازی فضا حذف می‌شوند"</string>
-    <string name="last_opened_category_title" msgid="7871347400611202595">"آخرین بار بیش از <xliff:g id="NUMBER">%s</xliff:g> ماه قبل باز شده است"</string>
-    <string name="last_opened_summary" msgid="5248984030024968808">"آخرین باری که برنامه باز شده است: <xliff:g id="DATE">%s</xliff:g>"</string>
-    <string name="last_opened_summary_short" msgid="1646067226191176825">"آخرین باری که باز شده است: <xliff:g id="DATE">%s</xliff:g>"</string>
+    <string name="last_opened_category_title" msgid="7871347400611202595">"آخرین باری که باز شده: بیش‌از <xliff:g id="NUMBER">%s</xliff:g> ماه قبل"</string>
+    <string name="last_opened_summary" msgid="5248984030024968808">"آخرین باری که برنامه باز شده: <xliff:g id="DATE">%s</xliff:g>"</string>
+    <string name="last_opened_summary_short" msgid="1646067226191176825">"آخرین باری که باز شده: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"اگر مدیریت همه فایل‌ها را مجاز کنید، این برنامه می‌تواند به همه فایل‌های موجود در فضای ذخیره‌سازی استاندارد این دستگاه یا دستگاه‌های ذخیره‌سازی متصل دسترسی داشته باشد، آن‌ها را تغییر دهد، و حذف کند. این برنامه ممکن است بدون سؤال کردن از شما به فایل‌ها دسترسی پیدا کند."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"به این برنامه اجازه داده شود به فایل‌های موجود در این دستگاه یا دستگاه‌های ذخیره‌سازی متصل دسترسی داشته باشد، آن‌ها را تغییر دهد، و حذف کند؟ این برنامه ممکن است بدون سؤال کردن از شما به فایل‌ها دسترسی پیدا کند."</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"برنامه‌هایی که این مجوز را داشته باشند می‌توانند <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
@@ -481,4 +481,10 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"اجازه‌هایی که فقط برنامه‌های سیستم استفاده می‌کنند."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"اجازه‌های تکمیلی"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"اجازه‌هایی که برنامه‌ها تعریف کرده‌اند."</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"دوربین"</string>
+    <string name="privdash_label_microphone" msgid="8415035835803511693">"میکروفون"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"مکان"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"موارد دیگر"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"هیچ‌کدام"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"۲۴\nساعت گذشته"</string>
 </resources>

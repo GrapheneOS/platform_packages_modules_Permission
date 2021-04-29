@@ -105,7 +105,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"የአሁኖቹ ፍቃዶች"</string>
     <string name="message_staging" msgid="9110563899955511866">"መተግበሪያን በማዘጋጀት ላይ…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"ያልታወቀ"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"ዳሽቦርድ"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"የግላዊነት ዳሽቦርድ"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"የ<xliff:g id="PERMGROUP">%1$s</xliff:g> አጠቃቀም"</string>
     <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"ባለፉት 24 ሰዓቶች ውስጥ የእርስዎ <xliff:g id="PERMGROUP">%1$s</xliff:g> ስራ ላይ የዋለ የጊዜ ሰሌዳ"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"ይህ መተግበሪያ የእርስዎን <xliff:g id="PERMGROUP">%1$s</xliff:g> ሲጠቀም፦"</string>
@@ -481,4 +481,10 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"በስርዓት መተግበሪያዎችች ብቻ ጥቅም ላይ የሚውሉ ፈቃዶች።"</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"ተጨማሪ ፈቃዶች"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"በመተግበሪያዎች የተገለጹ ፈቃዶች።"</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"ካሜራ"</string>
+    <string name="privdash_label_microphone" msgid="8415035835803511693">"ማይክሮፎን"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"አካባቢ"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"ሌላ"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"ምንም"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"ባለፉት\n24 ሰዓታት"</string>
 </resources>
