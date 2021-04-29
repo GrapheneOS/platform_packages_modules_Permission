@@ -105,7 +105,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"தற்போதைய அனுமதிகள்"</string>
     <string name="message_staging" msgid="9110563899955511866">"ஆப்ஸ் தயாராகிறது…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"தெரியாதது"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"டாஷ்போர்டு"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"பிரைவசி டாஷ்போர்டு"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> உபயோகம்"</string>
     <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"கடந்த 24 மணிநேரத்தில் <xliff:g id="PERMGROUP">%1$s</xliff:g> ஐப் பயன்படுத்தியதற்கான காலப்பதிவு"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"<xliff:g id="PERMGROUP">%1$s</xliff:g> ஐ இந்த ஆப்ஸ் பயன்படுத்திய நேரம்:"</string>
@@ -481,4 +481,10 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"சிஸ்டம் ஆப்ஸால் மட்டுமே பயன்படுத்தப்படும் அனுமதிகள்."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"கூடுதல் அனுமதிகள்"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"ஆப்ஸால் வரையறுக்கப்பட்ட அனுமதிகள்."</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"கேமரா"</string>
+    <string name="privdash_label_microphone" msgid="8415035835803511693">"மைக்ரோஃபோன்"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"இருப்பிடம்"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"மற்றவை"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"எதுவுமில்லை"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"கடந்த\n24 மணிநேரம்"</string>
 </resources>

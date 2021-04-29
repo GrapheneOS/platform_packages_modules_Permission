@@ -49,7 +49,7 @@
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"সকলো ফাইল পৰিচালনাৰ অনুমতি দিয়ক"</string>
     <string name="grant_dialog_button_allow_media_only" msgid="4832877658422573832">"মিডিয়া ফাইলসমূহলৈ এক্সেছ দিয়ক"</string>
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"এপ্"</string>
-    <string name="app_permissions" msgid="3369917736607944781">"এপ্‌ৰ অনুমতি"</string>
+    <string name="app_permissions" msgid="3369917736607944781">"এপৰ অনুমতি"</string>
     <string name="unused_apps" msgid="2058057455175955094">"অব্যৱহৃত এপ্‌সমূহ"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"এপ্ অক্ষম কৰক"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"আপুনি যদি এই এপ্‌টো অক্ষম কৰে, Android আৰু অন্য এপ্‌সমূহে বিচৰাৰ দৰে আৰু কাম নকৰিব পাৰে। মনত ৰাখিব, এই এপ্‌টো আপোনাৰ ডিভাইচটোত আগৰেপৰা ইনষ্টল কৰি থোৱা আছে বাবে আপুনি ইয়াক মচিব নোৱাৰে। অক্ষম কৰি আপুনি এই এপ্‌টো অফ কৰে আৰু ইয়াক আপোনাৰ ডিভাইচৰ পৰা লুকুৱায়।"</string>
@@ -105,7 +105,8 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"সাম্প্ৰতিক অনুমতি"</string>
     <string name="message_staging" msgid="9110563899955511866">"এপৰ অন্তিম পর্যায়ৰ পৰীক্ষণ চলি আছে…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"অজ্ঞাত"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"ডেশ্বব’ৰ্ড"</string>
+    <!-- no translation found for permission_usage_title (1568233336351734538) -->
+    <skip />
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g>ৰ ব্যৱহাৰ"</string>
     <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"যোৱা ২৪ ঘণ্টাত আপোনাৰ <xliff:g id="PERMGROUP">%1$s</xliff:g> ব্যৱহাৰ কৰাৰ টাইমলাইন"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"এই এপ্‌টোৱে যেতিয়া আপোনাৰ <xliff:g id="PERMGROUP">%1$s</xliff:g> ব্যৱহাৰ কৰিছিল:"</string>
@@ -318,30 +319,18 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"কেৱল এপটো ব্যৱহাৰ হৈ থকা সময়ত"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"মিডিয়া"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"সকলো ফাইল"</string>
-    <!-- no translation found for app_perms_24h_access (99069906850627181) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_yest (5411926024794555022) -->
-    <skip />
-    <!-- no translation found for app_perms_content_provider (6996750793881252778) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_only_in_foreground (8590228656172893995) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_yest_only_in_foreground (8491319626462867381) -->
-    <skip />
-    <!-- no translation found for app_perms_content_provider_only_in_foreground (7111427348979322476) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_media_only (6651699644199132054) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_yest_media_only (7213187706424998792) -->
-    <skip />
-    <!-- no translation found for app_perms_content_provider_media_only (6206759230589923421) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_all_files (8902360456978159091) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_yest_all_files (5708424073126844909) -->
-    <skip />
-    <!-- no translation found for app_perms_content_provider_all_files (3315281519230304799) -->
-    <skip />
+    <string name="app_perms_24h_access" msgid="99069906850627181">"অন্তিমবাৰ <xliff:g id="TIME_DATE">%1$s</xliff:g>ত এক্সেছ কৰিছিল"</string>
+    <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"অন্তিমবাৰ কালি <xliff:g id="TIME_DATE">%1$s</xliff:g>ত এক্সেছ কৰিছিল"</string>
+    <string name="app_perms_content_provider" msgid="6996750793881252778">"যোৱা ২৪ ঘণ্টাত এক্সেছ কৰিছে"</string>
+    <string name="app_perms_24h_access_only_in_foreground" msgid="8590228656172893995">"অন্তিমবাৰ <xliff:g id="TIME_DATE">%1$s</xliff:g>ত এক্সেছ কৰিছিল • কেৱল এপ্‌টো ব্যৱহাৰ হৈ থকাৰ সময়ত"</string>
+    <string name="app_perms_24h_access_yest_only_in_foreground" msgid="8491319626462867381">"অন্তিমবাৰ কালি <xliff:g id="TIME_DATE">%1$s</xliff:g>ত এক্সেছ কৰিছিল • কেৱল এপ্‌টো ব্যৱহাৰ হৈ থকাৰ সময়ত"</string>
+    <string name="app_perms_content_provider_only_in_foreground" msgid="7111427348979322476">"যোৱা ২৪ ঘণ্টাত এক্সেছ কৰিছে • কেৱল এপ্‌টো ব্যৱহাৰ হৈ থকাৰ সময়ত"</string>
+    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"অন্তিমবাৰ <xliff:g id="TIME_DATE">%1$s</xliff:g>ত এক্সেছ কৰিছিল • মিডিয়া"</string>
+    <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"অন্তিমবাৰ কালি <xliff:g id="TIME_DATE">%1$s</xliff:g>ত এক্সেছ কৰিছিল • মিডিয়া"</string>
+    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"যোৱা ২৪ ঘণ্টাত এক্সেছ কৰিছে • মিডিয়া"</string>
+    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"অন্তিমবাৰ <xliff:g id="TIME_DATE">%1$s</xliff:g>ত এক্সেছ কৰিছিল • আটাইবোৰ ফাইল"</string>
+    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"অন্তিমবাৰ কালি <xliff:g id="TIME_DATE">%1$s</xliff:g>ত এক্সেছ কৰিছিল • আটাইবোৰ ফাইল"</string>
+    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"যোৱা ২৪ ঘণ্টাত এক্সেছ কৰিছে • আটাইবোৰ ফাইল"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"কোনো অনুমতি দিয়া নাই"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"কোনো অনুমতি প্ৰত্যাখ্যান কৰা নাই"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"কোনো এপক অনুমতি দিয়া নাই"</string>
@@ -493,4 +482,16 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"কেৱল ছিষ্টেম এপ্লিকেশ্বনে ব্যৱহাৰ কৰা অনুমতি।"</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"অতিৰিক্ত অনুমতি"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"এপ্লিকেশ্বনে নির্ধাৰণ কৰা অনুমতি।"</string>
+    <!-- no translation found for privdash_label_camera (1426440033626198096) -->
+    <skip />
+    <!-- no translation found for privdash_label_microphone (8415035835803511693) -->
+    <skip />
+    <!-- no translation found for privdash_label_location (6882400763866489291) -->
+    <skip />
+    <!-- no translation found for privdash_label_other (3710394147423236033) -->
+    <skip />
+    <!-- no translation found for privdash_label_none (5991866260360484858) -->
+    <skip />
+    <!-- no translation found for privdash_label_24h (1512532123865375319) -->
+    <skip />
 </resources>

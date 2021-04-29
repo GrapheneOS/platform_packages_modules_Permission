@@ -105,7 +105,8 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"ప్రస్తుత అనుమతులు"</string>
     <string name="message_staging" msgid="9110563899955511866">"యాప్‌ను అందిస్తోంది…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"తెలియదు"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"డ్యాష్‌బోర్డ్"</string>
+    <!-- no translation found for permission_usage_title (1568233336351734538) -->
+    <skip />
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> వినియోగం"</string>
     <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"గత 24 గంటలలో మీరు <xliff:g id="PERMGROUP">%1$s</xliff:g>ను ఎప్పుడు ఉపయోగించారో దానికి సంబంధించిన టైమ్‌లైన్"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"ఈ యాప్ మీ <xliff:g id="PERMGROUP">%1$s</xliff:g>ను ఉపయోగించినప్పుడు:"</string>
@@ -318,30 +319,18 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"యాప్ వినియోగంలో ఉన్నప్పుడు మాత్రమే"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"మీడియా"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"అన్ని ఫైల్‌లు"</string>
-    <!-- no translation found for app_perms_24h_access (99069906850627181) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_yest (5411926024794555022) -->
-    <skip />
-    <!-- no translation found for app_perms_content_provider (6996750793881252778) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_only_in_foreground (8590228656172893995) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_yest_only_in_foreground (8491319626462867381) -->
-    <skip />
-    <!-- no translation found for app_perms_content_provider_only_in_foreground (7111427348979322476) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_media_only (6651699644199132054) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_yest_media_only (7213187706424998792) -->
-    <skip />
-    <!-- no translation found for app_perms_content_provider_media_only (6206759230589923421) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_all_files (8902360456978159091) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_yest_all_files (5708424073126844909) -->
-    <skip />
-    <!-- no translation found for app_perms_content_provider_all_files (3315281519230304799) -->
-    <skip />
+    <string name="app_perms_24h_access" msgid="99069906850627181">"చివరగా యాక్సెస్ చేసిన సమయం <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"నిన్న <xliff:g id="TIME_DATE">%1$s</xliff:g> సమయంలో చివరగా యాక్సెస్ చేయబడింది"</string>
+    <string name="app_perms_content_provider" msgid="6996750793881252778">"గత 24 గంటల్లో యాక్సెస్ చేయబడింది"</string>
+    <string name="app_perms_24h_access_only_in_foreground" msgid="8590228656172893995">"చివరగా యాక్సెస్ చేసిన సమయం <xliff:g id="TIME_DATE">%1$s</xliff:g> • యాప్ ఉపయోగంలో ఉన్నప్పుడు మాత్రమే"</string>
+    <string name="app_perms_24h_access_yest_only_in_foreground" msgid="8491319626462867381">"నిన్న <xliff:g id="TIME_DATE">%1$s</xliff:g> సమయంలో చివరి యాక్సెస్ • యాప్ ఉపయోగంలో ఉన్నప్పుడు మాత్రమే"</string>
+    <string name="app_perms_content_provider_only_in_foreground" msgid="7111427348979322476">"గత 24 గంటల్లో యాక్సెస్ చేయబడింది • యాప్ ఉపయోగంలో ఉన్నప్పుడు మాత్రమే"</string>
+    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"చివరగా యాక్సెస్ చేసిన సమయం <xliff:g id="TIME_DATE">%1$s</xliff:g> • మీడియా"</string>
+    <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"నిన్న <xliff:g id="TIME_DATE">%1$s</xliff:g> సమయంలో చివరగా యాక్సెస్ చేయబడింది • మీడియా"</string>
+    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"గత 24 గంటల్లో యాక్సెస్ చేయబడింది • మీడియా"</string>
+    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"చివరగా యాక్సెస్ చేసిన సమయం <xliff:g id="TIME_DATE">%1$s</xliff:g> • అన్ని ఫైల్‌లు"</string>
+    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"నిన్న <xliff:g id="TIME_DATE">%1$s</xliff:g> సమయంలో చివరగా యాక్సెస్ చేయబడింది • అన్ని ఫైల్‌లు"</string>
+    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"గత 24 గంటల్లో యాక్సెస్ చేయబడింది • అన్ని ఫైల్‌లు"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"అనుమతులు ఏవీ ఇవ్వలేదు"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"అన్ని అనుమతులు ఇచ్చారు"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"ఏ యాప్‌న‌కు అనుమతి లేదు"</string>
@@ -493,4 +482,16 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"సిస్టమ్ యాప్‌లు మాత్రమే ఉపయోగించే అనుమతులు."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"అదనపు అనుమతులు"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"యాప్‌ల ద్వారా నిర్వచించబడిన అనుమతులు."</string>
+    <!-- no translation found for privdash_label_camera (1426440033626198096) -->
+    <skip />
+    <!-- no translation found for privdash_label_microphone (8415035835803511693) -->
+    <skip />
+    <!-- no translation found for privdash_label_location (6882400763866489291) -->
+    <skip />
+    <!-- no translation found for privdash_label_other (3710394147423236033) -->
+    <skip />
+    <!-- no translation found for privdash_label_none (5991866260360484858) -->
+    <skip />
+    <!-- no translation found for privdash_label_24h (1512532123865375319) -->
+    <skip />
 </resources>
