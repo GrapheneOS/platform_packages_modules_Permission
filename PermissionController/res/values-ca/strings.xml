@@ -105,7 +105,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"Permisos actuals"</string>
     <string name="message_staging" msgid="9110563899955511866">"S\'està preparant la instal·lació de l\'aplicació…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Desconegut"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"Tauler"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"Tauler privat"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Ús de: <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Cronologia de l\'ús del permís <xliff:g id="PERMGROUP">%1$s</xliff:g> durant les 24 darreres hores"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Quan aquesta aplicació ha utilitzat el permís <xliff:g id="PERMGROUP">%1$s</xliff:g>:"</string>
@@ -481,4 +481,10 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Permisos utilitzats només per les aplicacions del sistema."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Permisos addicionals"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Permisos definits per aplicacions."</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"Càmera"</string>
+    <string name="privdash_label_microphone" msgid="8415035835803511693">"Micròfon"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"Ubicació"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"Altres"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"Cap"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"24 darreres\nhores"</string>
 </resources>

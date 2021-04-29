@@ -106,7 +106,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"Pašreizējās atļaujas"</string>
     <string name="message_staging" msgid="9110563899955511866">"Lietotne tiek izstādīta…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Nezināma"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"Informācijas panelis"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"Konfidencialitātes informācijas panelis"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Šīs atļauju grupas lietojums: <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Šajā laika grafikā ir norādīts atļauju grupas “<xliff:g id="PERMGROUP">%1$s</xliff:g>” lietojums pēdējo 24 stundu laikā"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Kad šī lietotne izmantoja atļauju “<xliff:g id="PERMGROUP">%1$s</xliff:g>”:"</string>
@@ -500,4 +500,10 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Atļaujas, kas tiek izmantotas tikai sistēmas lietojumprogrammās."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Papildu atļaujas"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Lietojumprogrammās definētās atļaujas."</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"Kamera"</string>
+    <string name="privdash_label_microphone" msgid="8415035835803511693">"Mikrofons"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"Atrašanās vieta"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"Cita"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"Nav"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"Pēdējās\n24 stundās"</string>
 </resources>

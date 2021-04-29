@@ -105,7 +105,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"Ағымдағы рұқсаттар"</string>
     <string name="message_staging" msgid="9110563899955511866">"Қолданба реттелуде…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Белгісіз"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"Бақылау тақтасы"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"Құпиялылық тақтасы"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> деректерінің пайдаланылуы"</string>
     <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Соңғы 24 сағатта <xliff:g id="PERMGROUP">%1$s</xliff:g> пайдалану хронологиясы"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Қолданба <xliff:g id="PERMGROUP">%1$s</xliff:g> пайдаланған кезде:"</string>
@@ -274,7 +274,7 @@
     </plurals>
     <string name="permission_reminders" msgid="6528257957664832636">"Рұқсат туралы еске салғыштар"</string>
     <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"1 пайдаланылмайтын қолданба"</string>
-    <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> пайдаланылмайтын қолданба"</string>
+    <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> пайдаланылмайтын қолданба бар"</string>
     <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"Құпиялылықты қорғау үшін рұқсаттар өшірілді. Көру үшін түртіңіз."</string>
     <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"Пайдаланылмайтын қолданбалар үшін рұқсаттар өшірілді"</string>
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Кейбір қолданбалар бірнеше ай бойы пайдаланылмаған. Көру үшін түртіңіз."</string>
@@ -481,4 +481,10 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Тек жүйе қолданбалары пайдаланатын рұқсаттар."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Қосымша рұқсаттар"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Рұқсаттарды қолданбалар анықтайды."</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"Камера"</string>
+    <string name="privdash_label_microphone" msgid="8415035835803511693">"Микрофон"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"Локация"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"Басқа"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"Ешбірі"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"Соңғы\n24 сағатта"</string>
 </resources>

@@ -107,7 +107,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"הרשאות קיימות"</string>
     <string name="message_staging" msgid="9110563899955511866">"האפליקציה בהכנה להתקנה…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"לא ידוע"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"מרכז שליטה"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"מרכז בקרת הפרטיות"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"שימוש ב<xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"ציר הזמן של משך השימוש ב-<xliff:g id="PERMGROUP">%1$s</xliff:g> ב-24 השעות האחרונות"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"מתי האפליקציה השתמשה ב<xliff:g id="PERMGROUP">%1$s</xliff:g> שלך"</string>
@@ -519,4 +519,10 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"הרשאות שרק אפליקציות מערכת משתמשות בהן."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"הרשאות נוספות"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"הרשאות שהוגדרו על ידי אפליקציות."</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"מצלמה"</string>
+    <string name="privdash_label_microphone" msgid="8415035835803511693">"מיקרופון"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"מיקום"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"אחר"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"ללא"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"ב-24 השעות\nהאחרונות"</string>
 </resources>

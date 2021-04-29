@@ -105,7 +105,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"Τρέχουσες άδειες"</string>
     <string name="message_staging" msgid="9110563899955511866">"Σταδιακή διάθεση εφαρμογής…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Άγνωστο"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"Πίνακας ελέγχου"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"Πίνακας ελέγχου απορρήτου"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Χρήση <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Χρονολόγιο των περιπτώσεων που χρησιμοποιήσατε την ομάδα αδειών <xliff:g id="PERMGROUP">%1$s</xliff:g> τις τελευταίες 24 ώρες"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Πότε χρησιμοποιήθηκε η ομάδα αδειών <xliff:g id="PERMGROUP">%1$s</xliff:g> από αυτήν την εφαρμογή:"</string>
@@ -481,4 +481,10 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Άδειες που χρησιμοποιούνται από εφαρμογές του συστήματος."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Πρόσθετες άδειες"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Άδειες που έχουν οριστεί από εφαρμογές."</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"Κάμερα"</string>
+    <string name="privdash_label_microphone" msgid="8415035835803511693">"Μικρόφωνο"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"Τοποθεσία"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"Άλλο"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"Καμία"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"Τελευταίες\n24 ώρες"</string>
 </resources>

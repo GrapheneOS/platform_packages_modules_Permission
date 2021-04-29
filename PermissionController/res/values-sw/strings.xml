@@ -105,7 +105,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"Ruhusa zilizopo"</string>
     <string name="message_staging" msgid="9110563899955511866">"Inatayarisha programu…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Haijulikani"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"Dashibodi"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"Dashibodi ya faragha"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Matumizi ya <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Muda uliotumia <xliff:g id="PERMGROUP">%1$s</xliff:g> yako katika saa 24 zilizopita"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Programu hii ilipotumia ruhusa yako ya <xliff:g id="PERMGROUP">%1$s</xliff:g>:"</string>
@@ -227,7 +227,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Ruhusa ya <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> na ruhusa zingine <xliff:g id="NUMBER">%2$s</xliff:g> zimeondolewa"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Programu zisizotumika"</string>
     <string name="unused_apps_page_summary" msgid="4644643299214625298">"Programu isipotumika kwa miezi kadhaa:\n\n• Ruhusa zinaondolewa ili kulinda data yako \n• Arifa zinasimamishwa ili kuokoa betri\n• Faili za muda zinaondolewa ili upate nafasi"</string>
-    <string name="last_opened_category_title" msgid="7871347400611202595">"Zilizofunguliwa mara ya mwisho miezi <xliff:g id="NUMBER">%s</xliff:g> iliyopita"</string>
+    <string name="last_opened_category_title" msgid="7871347400611202595">"Zilizofunguliwa mwisho zaidi ya miezi <xliff:g id="NUMBER">%s</xliff:g> iliyopita"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Ilifunguliwa mara ya mwisho tarehe <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Ilifunguliwa mara ya mwisho <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Ukiruhusu udhibiti wa faili zote, programu hii inaweza kufikia, kubadilisha na kufuta faili zozote zilizo katika hifadhi kwenye kifaa hiki au vifaa vilivyounganishwa vya kuhifadhi. Programu inaweza kufikia faili bila kukuomba ruhusa."</string>
@@ -481,4 +481,10 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Ruhusa zinazotumiwa tu na programu za mfumo."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Ruhusa za ziada"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Ruhusa zinazobainishwa na programu."</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"Kamera"</string>
+    <string name="privdash_label_microphone" msgid="8415035835803511693">"Maikrofoni"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"Mahali"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"Mengine"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"Hamna"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"Saa 24\nzilizopita"</string>
 </resources>
