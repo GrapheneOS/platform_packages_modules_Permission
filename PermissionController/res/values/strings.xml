@@ -640,7 +640,7 @@
     <string name="permission_description_summary_location">Apps with this permission can access this device\'s location</string>
 
     <!-- Label for showing a permission group's description in the header of the list of apps that have the nearby devices permission [CHAR LIMIT=none] -->
-    <string name="permission_description_summary_nearby_devices">Apps with this permission can discover, connect to, and determine the relative position of nearby devices</string>
+    <string name="permission_description_summary_nearby_devices">Apps with this permission can find, connect to, and determine the relative position of nearby devices</string>
 
     <!-- Label for showing a permission group's description in the header of the list of apps that have the microphone permission [CHAR LIMIT=none] -->
     <string name="permission_description_summary_microphone">Apps with this permission can record audio</string>
@@ -1202,9 +1202,9 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
 
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
     <string name="permgrouprequest_nearby_devices">Allow
-        &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to discover and connect to nearby devices?</string>
+        &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to find, connect to, and determine the relative position of nearby devices?</string>
     <!-- Subtitle of the message shown to the user when the apps requests permission to discovery and connect to nearby devices while app is in foreground and background. Try to keep the link annotation at the end of the string [CHAR LIMIT=150] -->
-    <string name="permgroupupgraderequestdetail_nearby_devices">Allow &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to discover and connect to nearby devices? <annotation id="link">Allow in settings.</annotation></string>
+    <string name="permgroupupgraderequestdetail_nearby_devices">Allow &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to find, connect to, and determine the relative position of nearby devices? <annotation id="link">Allow in settings.</annotation></string>
 
     <!-- Message shown to the user when the app requests permission to upgrade to fine location [CHAR LIMIT=120] -->
     <string name="permgrouprequest_fineupgrade">Change <xliff:g id="app_name" example="Gmail">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>\u2019s location access from approximate to precise?</string>
