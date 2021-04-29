@@ -107,7 +107,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"Aktuální oprávnění"</string>
     <string name="message_staging" msgid="9110563899955511866">"Příprava instalace…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Neznámé"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"Panel"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"Panel na ochranu soukromí"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Používání skupiny oprávnění <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Doba využívání oprávnění <xliff:g id="PERMGROUP">%1$s</xliff:g> během uplynulých 24 hodin"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Kdy aplikace použila oprávnění <xliff:g id="PERMGROUP">%1$s</xliff:g>:"</string>
@@ -519,4 +519,10 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Oprávnění, která jsou používaná pouze systémovými aplikacemi."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Další oprávnění"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Oprávnění definovaná aplikacemi."</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"Fotoaparát"</string>
+    <string name="privdash_label_microphone" msgid="8415035835803511693">"Mikrofon"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"Poloha"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"Jiné"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"Žádné"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"Posledních\n24 hodin"</string>
 </resources>

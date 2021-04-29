@@ -105,7 +105,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"Huidige toestemmings"</string>
     <string name="message_staging" msgid="9110563899955511866">"Voer tans program uit …"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Onbekend"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"Kontroleskerm"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"Privaatheidkontroleskerm"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g>-gebruik"</string>
     <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Tydlyn van wanneer jy jou <xliff:g id="PERMGROUP">%1$s</xliff:g> in die afgelope 24 uur gebruik het"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Wanneer hierdie program jou <xliff:g id="PERMGROUP">%1$s</xliff:g> gebruik het:"</string>
@@ -226,7 +226,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>- en <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>-toestemming verwyder"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> en <xliff:g id="NUMBER">%2$s</xliff:g> ander toestemmings verwyder"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Ongebruikte programme"</string>
-    <string name="unused_apps_page_summary" msgid="4644643299214625298">"As \'n program vir paar maande nie gebruik word nie:\n\n• Word toestemmings verwyder om jou privaatheid te beskerm\n• Word kennisgewings gestop om batterykrag te bespaar\n• Word tydelike lêers verwyder om spasie beskikbaar te maak"</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"As \'n program vir \'n paar maande nie gebruik word nie:\n\n• Word toestemmings verwyder om jou privaatheid te beskerm\n• Word kennisgewings gestop om batterykrag te bespaar\n• Word tydelike lêers verwyder om spasie beskikbaar te maak"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Meer as <xliff:g id="NUMBER">%s</xliff:g> maande gelede laas oopgemaak"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Program is <xliff:g id="DATE">%s</xliff:g> laas oopgemaak"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"<xliff:g id="DATE">%s</xliff:g> laas oopgemaak"</string>
@@ -481,4 +481,10 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Toestemmings wat net deur die stelselprogramme gebruik word."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Bykomende toestemmings"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Toestemmings wat deur programme gedefinieer word."</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"Kamera"</string>
+    <string name="privdash_label_microphone" msgid="8415035835803511693">"Mikrofoon"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"Ligging"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"Ander"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"Geen"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"Afgelope\n24 uur"</string>
 </resources>

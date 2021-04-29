@@ -105,7 +105,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"Aktuelle tilladelser"</string>
     <string name="message_staging" msgid="9110563899955511866">"Forbereder appen…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Ukendt"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"Kontrolpanel"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"Privatlivspanel"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Brug af <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Tidslinje for, hvornår <xliff:g id="PERMGROUP">%1$s</xliff:g> er blevet brugt i løbet af de seneste 24 timer"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Da denne app anvendte din <xliff:g id="PERMGROUP">%1$s</xliff:g>:"</string>
@@ -286,7 +286,7 @@
       <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> app, du ikke bruger</item>
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> apps, du ikke bruger</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="9195026773244581246">"Tilladelser og midlertidige filer er blevet fjernet, og notifikationer blev stoppet. Tryk for at se dem."</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"Tilladelser og midlertidige filer er blevet fjernet, og notifikationer blev stoppet. Tryk for at se."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Nogle apps er ikke blevet brugt i et par måneder"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> app er ikke blevet brugt i et par måneder</item>
@@ -481,4 +481,10 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Tilladelser, der kun anvendes af systemapps"</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Yderligere tilladelser"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Tilladelser, der er defineret af apps"</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"Kamera"</string>
+    <string name="privdash_label_microphone" msgid="8415035835803511693">"Mikrofon"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"Placering"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"Andet"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"Ingen"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"Seneste\n24 timer"</string>
 </resources>
