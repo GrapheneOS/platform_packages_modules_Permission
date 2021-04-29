@@ -25,7 +25,7 @@
             android:dashWidth="1dp"
             android:dashGap="1dp"
             android:width="1dp"
-            android:height="36dp"
+            android:height="26dp"
         />
     </shape>
 </rotate>

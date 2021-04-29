@@ -54,7 +54,7 @@ public class PermissionUsageV2ControlPreference extends Preference {
                 permGroupLabel));
         setIcon(KotlinUtils.INSTANCE.getPermGroupIcon(mContext, mGroupName));
         setSummary(mContext.getResources().getQuantityString(
-                R.plurals.permission_usage_preference_label, mCount, mCount, permGroupLabel));
+                R.plurals.permission_usage_preference_label, mCount, mCount));
 
         if (mCount == 0) {
             this.setEnabled(false);
