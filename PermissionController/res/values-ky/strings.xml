@@ -48,7 +48,7 @@
     <string name="grant_dialog_button_allow_media_only" msgid="4832877658422573832">"Медиа файлдарга кирүүгө уруксат берүү"</string>
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Колдонмолор"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Колдонмонун уруксаттары"</string>
-    <string name="unused_apps" msgid="2058057455175955094">"Иштетилбеген колдонмолор"</string>
+    <string name="unused_apps" msgid="2058057455175955094">"Колдонулбаган колдонмолор"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Колдонмону өчүрүү"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Эгер бул колдонмону өчүрсөңүз, Android жана башка колдонмолор талаптагыдай иштебей калышы мүмкүн. Бул колдонмо түзмөгүңүздө алдын ала орнотулуп келген, андыктан аны өчүрө албайсыз. Өчүрүү менен, бул түзмөктү өчүрүп, түзмөгүңүздө жашырасыз."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Уруксаттарды башкаргыч"</string>
@@ -236,8 +236,8 @@
       <item quantity="one">1 секунд</item>
     </plurals>
     <string name="permission_reminders" msgid="6528257957664832636">"Уруксат жөнүндө эстеткичтер"</string>
-    <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"1 иштетилбеген колдонмо"</string>
-    <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> иштетилбеген колдонмо"</string>
+    <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"1 колдонулбаган колдонмо"</string>
+    <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> колдонулбаган колдонмо"</string>
     <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"Купуялыгыңызды коргоо максатында, уруксаттар өчүрүлөт. Кененирээк маалымат алгыңыз келсе, бул жерди басып коюңуз"</string>
     <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"Иштетилбеген колдонмолордун уруксаттары өчүрүлдү"</string>
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Айрым колдонмолор бир нече ай иштетилген жок. Көрүү үчүн таптап коюңуз."</string>

@@ -191,7 +191,7 @@
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"Permissão <xliff:g id="PERMISSION_NAME">%s</xliff:g> removida"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Permissões <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> e <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> removidas"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> e mais <xliff:g id="NUMBER">%2$s</xliff:g> permissões removidas"</string>
-    <string name="last_opened_category_title" msgid="7871347400611202595">"Usado pela última vez há mais de <xliff:g id="NUMBER">%s</xliff:g> meses"</string>
+    <string name="last_opened_category_title" msgid="7871347400611202595">"Abertos pela última vez há mais de <xliff:g id="NUMBER">%s</xliff:g> meses"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"App aberto pela última vez em <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Aberto pela última vez em <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Se você permitir o gerenciamento de todos os arquivos, o app poderá acessar, modificar e excluir qualquer arquivo no armazenamento comum do dispositivo ou no armazenamento de dispositivos conectados. O app poderá acessar arquivos sem pedir autorização."</string>
