@@ -343,7 +343,7 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
         // Make these variables effectively final so that
         // we can use these captured variables in the below lambda expression
         AtomicReference<PreferenceCategory> category = new AtomicReference<>(
-                new PreferenceCategory(context));
+                createDayCategoryPreference(context));
         screen.addPreference(category.get());
         PreferenceScreen finalScreen = screen;
         int finalYesterdayCategoryIndex = yesterdayCategoryIndex;
@@ -357,7 +357,7 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
                         // We create a new category only when we need it.
                         // We will not create a new category if we only need one category for
                         // either today's or yesterday's usage
-                        category.set(new PreferenceCategory(context));
+                        category.set(createDayCategoryPreference(context));
                         finalScreen.addPreference(category.get());
                     }
                     category.get().setTitle(R.string.permission_history_category_yesterday);
@@ -398,6 +398,13 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
             mPermissionUsages.stopLoader(getActivity().getLoaderManager());
 
         }).execute(permApps.toArray(new PermissionApps.PermissionApp[permApps.size()]));
+    }
+
+    private PreferenceCategory createDayCategoryPreference(Context context) {
+        PreferenceCategory category = new PreferenceCategory(context);
+        // Do not reserve icon space, so that the text moves all the way left.
+        category.setIconSpaceReserved(false);
+        return category;
     }
 
     /**
