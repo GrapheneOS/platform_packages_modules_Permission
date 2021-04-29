@@ -99,6 +99,7 @@ suspend fun revokeAppPermissions(
                     granted &&
                     !group.isGrantedByDefault &&
                     !group.isGrantedByRole &&
+                    !group.isRevokeWhenRequested &&
                     group.isUserSensitive) {
 
                     val revocablePermissions = group.permissions.keys.toList()
