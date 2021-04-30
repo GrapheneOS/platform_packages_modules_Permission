@@ -43,6 +43,7 @@ import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -50,6 +51,7 @@ import androidx.annotation.NonNull;
 import androidx.core.util.Consumer;
 import androidx.fragment.app.FragmentActivity;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.DeviceUtils;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.ui.auto.GrantPermissionsAutoViewHandler;
@@ -185,6 +187,25 @@ public class GrantPermissionsActivity extends FragmentActivity
         mOriginalDimAmount = layoutParams.dimAmount;
         mViewHandler.updateWindowAttributes(layoutParams);
         window.setAttributes(layoutParams);
+
+        if (SdkLevel.isAtLeastS() && getResources().getBoolean(R.bool.config_useWindowBlur)) {
+            java.util.function.Consumer<Boolean> blurEnabledListener = enabled -> {
+                mViewHandler.onBlurEnabledChanged(window, enabled);
+            };
+            mRootView.addOnAttachStateChangeListener(new OnAttachStateChangeListener() {
+                @Override
+                public void onViewAttachedToWindow(View v) {
+                    window.getWindowManager().addCrossWindowBlurEnabledListener(
+                            blurEnabledListener);
+                }
+
+                @Override
+                public void onViewDetachedFromWindow(View v) {
+                    window.getWindowManager().removeCrossWindowBlurEnabledListener(
+                            blurEnabledListener);
+                }
+            });
+        }
         // Restore UI state after lifecycle events. This has to be before we show the first request,
         // as the UI behaves differently for updates and initial creations.
         if (icicle != null) {
