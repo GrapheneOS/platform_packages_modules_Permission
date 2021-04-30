@@ -35,9 +35,6 @@
 
             <include layout="@layout/header_large" />
 
-            <View
-                style="@style/LargeHeaderDivider" />
-
             <LinearLayout
                 style="@style/AppPermissionSelection">
 
@@ -143,10 +140,6 @@
 
             <LinearLayout
                 style="@style/AppPermissionFooter">
-
-                <View
-                    android:id="@+id/divider"
-                    style="@style/AppPermissionFooterDivider" />
 
                 <TextView
                     android:id="@+id/footer_link_1"

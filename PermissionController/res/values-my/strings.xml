@@ -105,7 +105,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"လက်ရှိ ခွင့်ပြုချက်များ"</string>
     <string name="message_staging" msgid="9110563899955511866">"အက်ပ်ကို ပြင်ဆင်နေသည်…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"အမည်မသိ"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"ဒက်ရှ်ဘုတ်"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"ပုဂ္ဂိုလ်ရေးလုံခြုံမှု ဒက်ရှ်ဘုတ်"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> အသုံးပြုမှု"</string>
     <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"ပြီးခဲ့သော ၂၄ နာရီအတွင်း သင့် <xliff:g id="PERMGROUP">%1$s</xliff:g> ကို အသုံးပြုသည့် အချိန်မှတ်တမ်း"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"ဤအက်ပ်က သင့် <xliff:g id="PERMGROUP">%1$s</xliff:g> ကို သုံးလျှင်-"</string>
@@ -481,4 +481,10 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"စနစ် အပလီကေးရှင်းများကသာ အသုံးပြုသည့် ခွင့်ပြုချက်များ။"</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"ထပ်ဆောင်း ခွင့်ပြုချက်များ"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"အပလီကေးရှင်းများက သတ်မှတ်သည့် ခွင့်ပြုချက်များ။"</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"ကင်မရာ"</string>
+    <string name="privdash_label_microphone" msgid="8415035835803511693">"မိုက်ခရိုဖုန်း"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"တည်နေရာ"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"အခြား"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"မရှိ"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"ပြီးခဲ့သော\n၂၄ နာရီ"</string>
 </resources>

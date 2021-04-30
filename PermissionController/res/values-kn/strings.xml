@@ -105,7 +105,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"ಪ್ರಸ್ತುತ ಅನುಮತಿಗಳು"</string>
     <string name="message_staging" msgid="9110563899955511866">"ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಲು ಸಿದ್ಧವಿರುವ ಆ್ಯಪ್…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"ಅಪರಿಚಿತ"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"ಡ್ಯಾಶ್‌ಬೋರ್ಡ್"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"ಗೌಪ್ಯತೆ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> ಬಳಕೆ"</string>
     <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"ಕಳೆದ 24 ಗಂಟೆಗಳಲ್ಲಿ ನಿಮ್ಮ <xliff:g id="PERMGROUP">%1$s</xliff:g> ಅನ್ನು ಯಾವ ಸಮಯದಲ್ಲಿ ಬಳಸಲಾಗಿದೆ ಎಂಬುದರ ಟೈಮ್‌ಲೈನ್"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"ಈ ಆ್ಯಪ್ ನಿಮ್ಮ <xliff:g id="PERMGROUP">%1$s</xliff:g> ಅನ್ನು ಬಳಸಿದಾಗ:"</string>
@@ -283,8 +283,8 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> ಆ್ಯಪ್‌ಗಳನ್ನು ಕೆಲವು ತಿಂಗಳುಗಳಿಂದ ಬಳಸಲಾಗಿಲ್ಲ. ಪರಿಶೀಲಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ</item>
     </plurals>
     <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
-      <item quantity="one">ಬಳಕೆಯಾಗದ <xliff:g id="COUNT_1">%1$d</xliff:g> ಆ್ಯಪ್‌ಗಳು</item>
-      <item quantity="other">ಬಳಕೆಯಾಗದ <xliff:g id="COUNT_1">%1$d</xliff:g> ಆ್ಯಪ್‌ಗಳು</item>
+      <item quantity="one">ಬಳಸದಿರುವ <xliff:g id="COUNT_1">%1$d</xliff:g> ಆ್ಯಪ್‌ಗಳು</item>
+      <item quantity="other">ಬಳಸದಿರುವ <xliff:g id="COUNT_1">%1$d</xliff:g> ಆ್ಯಪ್‌ಗಳು</item>
     </plurals>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"ಅನುಮತಿಗಳು ಮತ್ತು ತಾತ್ಕಾಲಿಕ ಫೈಲ್‌ಗಳನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ ಮತ್ತು ಅಧಿಸೂಚನೆಗಳನ್ನು ಸ್ಥಗಿತಗೊಳಿಸಲಾಗಿದೆ. ಪರಿಶೀಲಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"ಹಲವಾರು ತಿಂಗಳುಗಳಿಂದ ಕೆಲವು ಆ್ಯಪ್‌ಗಳನ್ನು ಬಳಸಲಾಗಿಲ್ಲ"</string>
@@ -481,4 +481,10 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"ಸಿಸ್ಟಂ ಅಪ್ಲಿಕೇಶನ್‌ಗಳಿಂದ ಮಾತ್ರ ಬಳಸಲ್ಪಡುವ ಅನುಮತಿಗಳು."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"ಹೆಚ್ಚುವರಿ ಅನುಮತಿಗಳು"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"ಅಪ್ಲಿಕೇಶನ್‌ಗಳ ಮೂಲಕ ವ್ಯಾಖ್ಯಾನಿಸಲಾದ ಅನುಮತಿಗಳು."</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"ಕ್ಯಾಮರಾ"</string>
+    <string name="privdash_label_microphone" msgid="8415035835803511693">"ಮೈಕ್ರೋಫೋನ್"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"ಸ್ಥಳ"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"ಇತರ"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"ಯಾವುದೂ ಅಲ್ಲ"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"ಕಳೆದ\n24 ಗಂಟೆಗಳು"</string>
 </resources>

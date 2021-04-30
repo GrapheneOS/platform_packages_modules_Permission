@@ -107,7 +107,8 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"Aktualne uprawnienia"</string>
     <string name="message_staging" msgid="9110563899955511866">"Przygotowuję aplikację…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Inny"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"Panel"</string>
+    <!-- no translation found for permission_usage_title (1568233336351734538) -->
+    <skip />
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Korzystanie z uprawnień typu<xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Czas używania uprawnień <xliff:g id="PERMGROUP">%1$s</xliff:g> w ciągu ostatnich 24 godzin"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Kiedy aplikacja używała uprawnień <xliff:g id="PERMGROUP">%1$s</xliff:g>:"</string>
@@ -519,4 +520,16 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Uprawnienia używane tylko przez aplikacje systemowe."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Dodatkowe uprawnienia"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Uprawnienia określone przez aplikacje."</string>
+    <!-- no translation found for privdash_label_camera (1426440033626198096) -->
+    <skip />
+    <!-- no translation found for privdash_label_microphone (8415035835803511693) -->
+    <skip />
+    <!-- no translation found for privdash_label_location (6882400763866489291) -->
+    <skip />
+    <!-- no translation found for privdash_label_other (3710394147423236033) -->
+    <skip />
+    <!-- no translation found for privdash_label_none (5991866260360484858) -->
+    <skip />
+    <!-- no translation found for privdash_label_24h (1512532123865375319) -->
+    <skip />
 </resources>

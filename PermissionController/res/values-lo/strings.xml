@@ -105,7 +105,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"ສິດອະນຸຍາດປັດຈຸບັນ"</string>
     <string name="message_staging" msgid="9110563899955511866">"ກຳລັງຮຽງແອັບ…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"ບໍ່ຮູ້ຈັກ"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"ແຜງໜ້າປັດ"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"ແຜງໜ້າປັດຄວາມເປັນສ່ວນຕົວ"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"ການນໍາໃຊ້ <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"ທາມລາຍຂອງເວລາທີ່ມີການໃຊ້ <xliff:g id="PERMGROUP">%1$s</xliff:g> ຂອງທ່ານໃນຮອບ 24 ຊົ່ວໂມງທີ່ຜ່ານມາ"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"ເມື່ອແອັບນີ້ໃຊ້ <xliff:g id="PERMGROUP">%1$s</xliff:g> ຂອງທ່ານ:"</string>
@@ -481,4 +481,10 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"ການອະນຸຍາດທີ່ໃຊ້ໂດຍແອັບພລິເຄຊັນລະບົບເທົ່ານັ້ນ."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"ການອະນຸຍາດເພີ່ມເຕີມ"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"ການອະນຸຍາດທີ່ກຳນົດໂດຍແອັບພລິເຄຊັນ."</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"ກ້ອງຖ່າຍຮູບ"</string>
+    <string name="privdash_label_microphone" msgid="8415035835803511693">"ໄມໂຄຣໂຟນ"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"ສະຖານທີ່"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"ອື່ນໆ"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"ບໍ່ມີ"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"24 ຊົ່ວໂມງ\nທີ່ຜ່ານມາ"</string>
 </resources>

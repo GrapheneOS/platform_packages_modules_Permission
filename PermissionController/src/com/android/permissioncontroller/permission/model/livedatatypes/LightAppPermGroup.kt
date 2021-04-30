@@ -137,6 +137,11 @@ data class LightAppPermGroup(
     val isUserSensitive = permissions.any { it.value.isUserSensitive }
 
     /**
+     * Whether any permissions in this group are revoke-when-requested
+     */
+    val isRevokeWhenRequested = permissions.any { it.value.isRevokeWhenRequested }
+
+    /**
      * A subset of the AppPermssionGroup, representing either the background or foreground permissions
      * of the full group.
      *

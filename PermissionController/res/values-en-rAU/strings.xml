@@ -105,7 +105,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"Current permissions"</string>
     <string name="message_staging" msgid="9110563899955511866">"Staging app…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Unknown"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"Dashboard"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"Privacy dashboard"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> usage"</string>
     <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Timeline of when used your <xliff:g id="PERMGROUP">%1$s</xliff:g> in the last 24 hours"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"When this app used your <xliff:g id="PERMGROUP">%1$s</xliff:g>:"</string>
@@ -481,4 +481,10 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Permissions used only by the system applications."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Additional permissions"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Permissions defined by applications."</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"Camera"</string>
+    <string name="privdash_label_microphone" msgid="8415035835803511693">"Microphone"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"Location"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"Other"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"None"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"Past\n24 hours"</string>
 </resources>

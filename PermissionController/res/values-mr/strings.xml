@@ -105,7 +105,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"वर्तमान परवानग्या"</string>
     <string name="message_staging" msgid="9110563899955511866">"अ‍ॅप सुरुवातीच्या स्थितीत आहे…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"अज्ञात"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"डॅशबोर्ड"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"गोपनीयता डॅशबोर्ड"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> वापर"</string>
     <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"तुम्ही मागील २४ तासांमध्ये तुमचे <xliff:g id="PERMGROUP">%1$s</xliff:g> कधी वापरले याची टाइमलाइन"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"हे ॲप तुमचे <xliff:g id="PERMGROUP">%1$s</xliff:g> वापरते तेव्हा:"</string>
@@ -481,4 +481,10 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"फक्त सिस्टम ॲप्लिकेशनद्वारे वापरल्या जाणाऱ्या परवानग्या."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"अतिरिक्त परवानग्या"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"अ‍ॅप्लिकेशनद्वारे परिभाषित केलेल्या परवानग्या."</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"कॅमेरा"</string>
+    <string name="privdash_label_microphone" msgid="8415035835803511693">"मायक्रोफोन"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"स्थान"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"इतर"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"कोणतेही नाही"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"मागील\n२४ तास"</string>
 </resources>
