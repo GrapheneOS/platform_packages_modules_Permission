@@ -105,7 +105,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"ការអនុញ្ញាត​បច្ចុប្បន្ន"</string>
     <string name="message_staging" msgid="9110563899955511866">"កំពុងសាកល្បងកម្មវិធី…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"មិនស្គាល់"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"ផ្ទាំង​គ្រប់គ្រង"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"ផ្ទាំងគ្រប់គ្រង​ឯកជនភាព"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"ការប្រើប្រាស់ <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"បន្ទាត់ពេលវេលា​នៃពេល​ដែលប្រើ <xliff:g id="PERMGROUP">%1$s</xliff:g> របស់អ្នកក្នុងរ​យៈពេល 24 ម៉ោងចុងក្រោយ"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"នៅពេលកម្មវិធីនេះ​បានប្រើ <xliff:g id="PERMGROUP">%1$s</xliff:g> របស់អ្នក៖"</string>
@@ -481,4 +481,10 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"ការអនុញ្ញាត​ដែលត្រូវបានប្រើ​ដោយកម្មវិធីប្រព័ន្ធ​តែប៉ុណ្ណោះ។"</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"ការអនុញ្ញាតបន្ថែម"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"ការអនុញ្ញាត​ដែលត្រូវបានកំណត់​ដោយកម្មវិធី។"</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"កាមេរ៉ា"</string>
+    <string name="privdash_label_microphone" msgid="8415035835803511693">"មីក្រូហ្វូន"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"ទីតាំង"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"ផ្សេងៗ"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"គ្មាន"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"24 ម៉ោង\nចុងក្រោយ"</string>
 </resources>

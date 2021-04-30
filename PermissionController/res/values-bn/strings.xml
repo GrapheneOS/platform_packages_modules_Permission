@@ -105,7 +105,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"বর্তমান অনুমতি"</string>
     <string name="message_staging" msgid="9110563899955511866">"অ্যাপ স্টেজ করা হচ্ছে…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"অজানা"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"ড্যাশবোর্ড"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"প্রাইভেসি ড্যাশবোর্ড"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> ব্যবহার"</string>
     <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"গত ২৪ ঘণ্টাতে আপনার <xliff:g id="PERMGROUP">%1$s</xliff:g> ব্যবহার করার টাইমলাইন"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"এই অ্যাপ যখন আপনার <xliff:g id="PERMGROUP">%1$s</xliff:g> ব্যবহার করে:"</string>
@@ -318,30 +318,18 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"শুধুমাত্র অ্যাপ ব্যবহারের সময়"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"মিডিয়া ফাইল"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"সমস্ত ফাইল"</string>
-    <!-- no translation found for app_perms_24h_access (99069906850627181) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_yest (5411926024794555022) -->
-    <skip />
-    <!-- no translation found for app_perms_content_provider (6996750793881252778) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_only_in_foreground (8590228656172893995) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_yest_only_in_foreground (8491319626462867381) -->
-    <skip />
-    <!-- no translation found for app_perms_content_provider_only_in_foreground (7111427348979322476) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_media_only (6651699644199132054) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_yest_media_only (7213187706424998792) -->
-    <skip />
-    <!-- no translation found for app_perms_content_provider_media_only (6206759230589923421) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_all_files (8902360456978159091) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_yest_all_files (5708424073126844909) -->
-    <skip />
-    <!-- no translation found for app_perms_content_provider_all_files (3315281519230304799) -->
-    <skip />
+    <string name="app_perms_24h_access" msgid="99069906850627181">"<xliff:g id="TIME_DATE">%1$s</xliff:g>-এ শেষবার অ্যাক্সেস করা হয়েছে"</string>
+    <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"গতকাল <xliff:g id="TIME_DATE">%1$s</xliff:g>-এ শেষবার অ্যাক্সেস করা হয়েছে"</string>
+    <string name="app_perms_content_provider" msgid="6996750793881252778">"গত ২৪ ঘন্টায় অ্যাক্সেস করা হয়েছে"</string>
+    <string name="app_perms_24h_access_only_in_foreground" msgid="8590228656172893995">"<xliff:g id="TIME_DATE">%1$s</xliff:g>-এ শেষবার অ্যাক্সেস করা হয়েছে • শুধুমাত্র অ্যাপ ব্যবহারের সময়"</string>
+    <string name="app_perms_24h_access_yest_only_in_foreground" msgid="8491319626462867381">"গতকাল <xliff:g id="TIME_DATE">%1$s</xliff:g>-এ শেষবার অ্যাক্সেস করা হয়েছে • শুধুমাত্র অ্যাপ ব্যবহারের সময়"</string>
+    <string name="app_perms_content_provider_only_in_foreground" msgid="7111427348979322476">"গত ২৪ ঘন্টায় অ্যাক্সেস করা হয়েছে • শুধুমাত্র অ্যাপ ব্যবহারের সময়"</string>
+    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"<xliff:g id="TIME_DATE">%1$s</xliff:g>-এ শেষবার অ্যাক্সেস করা হয়েছে • মিডিয়া"</string>
+    <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"গতকাল <xliff:g id="TIME_DATE">%1$s</xliff:g>-এ শেষবার অ্যাক্সেস করা হয়েছে • মিডিয়া"</string>
+    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"গত ২৪ ঘন্টায় অ্যাক্সেস করা হয়েছে • মিডিয়া"</string>
+    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"<xliff:g id="TIME_DATE">%1$s</xliff:g>-এ শেষবার অ্যাক্সেস করা হয়েছে • সব ফাইল"</string>
+    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"গতকাল <xliff:g id="TIME_DATE">%1$s</xliff:g>-এ শেষবার অ্যাক্সেস করা হয়েছে • সব ফাইল"</string>
+    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"গত ২৪ ঘন্টায় অ্যাক্সেস করা হয়েছে • সব ফাইল"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"কোনও অনুমতি নেই"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"কোনও অনুমতি প্রত্যাখান করা হয়নি"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"কোনও অ্যাপ অনুমোদিত নয়"</string>
@@ -493,4 +481,10 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"যেসব অনুমতি শুধুমাত্র সিস্টেম অ্যাপ্লিকেশনে ব্যবহার করা হয়।"</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"অতিরিক্ত অনুমতি"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"অ্যাপ্লিকেশনে বর্ণনা করা অনুমতি।"</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"ক্যামেরা"</string>
+    <string name="privdash_label_microphone" msgid="8415035835803511693">"মাইক্রোফোন"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"লোকেশন"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"অন্য"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"কোনওটিই নয়"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"গত\n২৪ ঘণ্টা"</string>
 </resources>
