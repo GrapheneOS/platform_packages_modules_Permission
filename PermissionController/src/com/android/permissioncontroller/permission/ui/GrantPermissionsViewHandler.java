@@ -21,6 +21,7 @@ import static java.lang.annotation.RetentionPolicy.SOURCE;
 import android.graphics.drawable.Icon;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.annotation.IntDef;
@@ -111,4 +112,10 @@ public interface GrantPermissionsViewHandler {
      * Gives a chance for handling the back key.
      */
     void onBackPressed();
+
+    /**
+     * Called by {@link GrantPermissionsActivity} to allow the handler to update
+     * the ui when blur is enabled/disabled.
+     */
+    default void onBlurEnabledChanged(Window window, boolean enabled) {}
 }
