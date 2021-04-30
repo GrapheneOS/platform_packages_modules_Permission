@@ -302,6 +302,15 @@
     <!-- Title for permission group usage [CHAR LIMIT=30] -->
     <string name="permission_group_usage_title"><xliff:g id="permgroup" example="Location">%1$s</xliff:g> usage</string>
 
+    <!-- Title for permission usage advanced info [CHAR LIMIT=30] -->
+    <string name="perm_usage_adv_info_title">See other permissions</string>
+
+    <!-- Summary for permission usage advanced info for 2 items [CHAR LIMIT=60] -->
+    <string name="perm_usage_adv_info_summary_2_items"><xliff:g id="permgroup" example="Location">%1$s</xliff:g>,\u0020<xliff:g id="permgroup" example="Location">%2$s</xliff:g></string>
+
+    <!-- Summary for permission usage advanced info for 3 or more items [CHAR LIMIT=60] -->
+    <string name="perm_usage_adv_info_summary_more_items"><xliff:g id="permgroup" example="Location">%1$s</xliff:g>,\u0020<xliff:g id="permgroup" example="Location">%2$s</xliff:g>, and\u0020<xliff:g id="num" example="7">%3$s</xliff:g> more</string>
+
     <!-- Subtitle for permission group usage [CHAR LIMIT=100] -->
     <string name="permission_group_usage_subtitle">Timeline of when apps used your <xliff:g id="permgroup" example="Location">%1$s</xliff:g> in the past 24 hours</string>
 
@@ -431,8 +440,8 @@
 
     <!-- Label for the permission usage preference that shows how many apps have used various permissions [CHAR LIMIT=50] -->
     <plurals name="permission_usage_preference_label">
-        <item quantity="one">1 app used <xliff:g id="permgroup" example="Location">%2$s</xliff:g></item>
-        <item quantity="other"><xliff:g id="number" example="7">%1$d</xliff:g> apps used <xliff:g id="permgroup" example="Location">%2$s</xliff:g></item>
+        <item quantity="one">Used by 1 app</item>
+        <item quantity="other">Used by <xliff:g id="number" example="7">%1$d</xliff:g> apps</item>
     </plurals>
 
     <!-- Label for the button to bring the user to view the details of recent permission accesses [CHAR LIMIT=42] -->
