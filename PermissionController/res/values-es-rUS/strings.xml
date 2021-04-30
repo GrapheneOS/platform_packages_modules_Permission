@@ -48,7 +48,7 @@
     <string name="grant_dialog_button_allow_media_only" msgid="4832877658422573832">"Permitir acceso a los archivos multimedia"</string>
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Apps"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Permisos de la app"</string>
-    <string name="unused_apps" msgid="2058057455175955094">"Apps en desuso"</string>
+    <string name="unused_apps" msgid="2058057455175955094">"Apps que no usas"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Inhabilitar app"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Si inhabilitas esta app, es posible que Android y otras apps ya no funcionen correctamente. Ten en cuenta que no puedes borrar esta app, ya que vino preinstalada en el dispositivo. Si la inhabilitas, se desactivará y se ocultará en tu dispositivo."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Administrador de permisos"</string>
@@ -237,7 +237,7 @@
     </plurals>
     <string name="permission_reminders" msgid="6528257957664832636">"Recordatorios de permisos"</string>
     <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"1 app en desuso"</string>
-    <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> apps en desuso"</string>
+    <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> apps que no usas"</string>
     <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"Se quitaron los permisos para proteger tu privacidad. Presiona para revisar el cambio"</string>
     <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"Se quitaron los permisos de las apps que no se usan"</string>
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Hace varios meses que no usas algunas apps. Presiona para verlas."</string>
@@ -264,7 +264,7 @@
     <string name="auto_revoke_before_notification_title_one" msgid="6758024954464359876">"1 app está en desuso"</string>
     <string name="auto_revoke_before_notification_title_many" msgid="4415543943846385685">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> apps están en desuso"</string>
     <string name="auto_revoke_before_notification_content_one" msgid="1156635373417068822">"Se quitarán los permisos para proteger tu privacidad. Presiona para revisar el cambio."</string>
-    <string name="unused_apps_title" msgid="8589298917717872239">"Apps en desuso"</string>
+    <string name="unused_apps_title" msgid="8589298917717872239">"Apps que no usas"</string>
     <string name="unused_apps_subtitle_after" msgid="2034267519506357898">"Se quitaron los permisos de"</string>
     <string name="unused_apps_subtitle_before" msgid="5233302577076132427">"Se quitarán los permisos de"</string>
     <string name="unused_permissions_subtitle_two" msgid="2207266295008423015">"<xliff:g id="PERM_NAME_0">%1$s</xliff:g> y <xliff:g id="PERM_NAME_1">%2$s</xliff:g>"</string>
