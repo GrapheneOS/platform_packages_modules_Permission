@@ -105,7 +105,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"Autorisations actuelles"</string>
     <string name="message_staging" msgid="9110563899955511866">"Pré-production de l\'application…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Inconnu"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"Tableau de bord"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"Tableau de bord Confidentialité"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Utilisation de : <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Durée d\'utilisation de \"<xliff:g id="PERMGROUP">%1$s</xliff:g>\" au cours des dernières 24 heures"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Quand cette appli a utilisé votre <xliff:g id="PERMGROUP">%1$s</xliff:g> :"</string>
@@ -318,30 +318,18 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"Seulement quand l\'application est en cours d\'utilisation"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"Fichiers multimédias"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"Tous les fichiers"</string>
-    <!-- no translation found for app_perms_24h_access (99069906850627181) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_yest (5411926024794555022) -->
-    <skip />
-    <!-- no translation found for app_perms_content_provider (6996750793881252778) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_only_in_foreground (8590228656172893995) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_yest_only_in_foreground (8491319626462867381) -->
-    <skip />
-    <!-- no translation found for app_perms_content_provider_only_in_foreground (7111427348979322476) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_media_only (6651699644199132054) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_yest_media_only (7213187706424998792) -->
-    <skip />
-    <!-- no translation found for app_perms_content_provider_media_only (6206759230589923421) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_all_files (8902360456978159091) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_yest_all_files (5708424073126844909) -->
-    <skip />
-    <!-- no translation found for app_perms_content_provider_all_files (3315281519230304799) -->
-    <skip />
+    <string name="app_perms_24h_access" msgid="99069906850627181">"Dernier accès à <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Dernier accès hier à <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_content_provider" msgid="6996750793881252778">"Accès au cours des dernières 24 heures"</string>
+    <string name="app_perms_24h_access_only_in_foreground" msgid="8590228656172893995">"Dernier accès à <xliff:g id="TIME_DATE">%1$s</xliff:g> • Seulement lorsque l\'appli est utilisée"</string>
+    <string name="app_perms_24h_access_yest_only_in_foreground" msgid="8491319626462867381">"Dernier accès hier à <xliff:g id="TIME_DATE">%1$s</xliff:g> • Seulement lorsque l\'appli est utilisée"</string>
+    <string name="app_perms_content_provider_only_in_foreground" msgid="7111427348979322476">"Accès lors des dernières 24 h • Seulement lorsque l\'appli est active"</string>
+    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Dernier accès à <xliff:g id="TIME_DATE">%1$s</xliff:g> • Fichiers multimédias"</string>
+    <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Dernier accès hier à <xliff:g id="TIME_DATE">%1$s</xliff:g> • Fichiers multimédias"</string>
+    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"Accès au cours des dernières 24 heures • Fichiers multimédias"</string>
+    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"Dernier accès à <xliff:g id="TIME_DATE">%1$s</xliff:g> • Tous les fichiers"</string>
+    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"Dernier accès hier à <xliff:g id="TIME_DATE">%1$s</xliff:g> • Tous les fichiers"</string>
+    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"Accès au cours des dernières 24 heures • Tous les fichiers"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Aucune autorisation accordée"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"Aucune autorisation refusée"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"Aucune application autorisée"</string>
@@ -493,4 +481,10 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Autorisations utilisées uniquement par les applications système."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Autorisations supplémentaires"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Autorisations définies par les applications."</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"Caméra"</string>
+    <string name="privdash_label_microphone" msgid="8415035835803511693">"Micro"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"Position"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"Autre"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"Aucune"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"Dernières\n24 heures"</string>
 </resources>

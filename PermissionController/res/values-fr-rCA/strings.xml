@@ -105,7 +105,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"Autorisations actuelles"</string>
     <string name="message_staging" msgid="9110563899955511866">"Pré-production de l\'application en cours…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Inconnu"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"Tableau de bord"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"Tableau de bord de confidentialité"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Utilisation de votre <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Chronologie de quand vous avez utilisé votre <xliff:g id="PERMGROUP">%1$s</xliff:g> au cours des dernières 24 heures"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Quand cette application a utilisé votre <xliff:g id="PERMGROUP">%1$s</xliff:g> :"</string>
@@ -481,4 +481,10 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Autorisations utilisées par les applications système."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Autorisations supplémentaires"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Autorisations définies par les applications."</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"Appareil photo"</string>
+    <string name="privdash_label_microphone" msgid="8415035835803511693">"Microphone"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"Position"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"Autre"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"Aucun"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"Dernières\n24 heures"</string>
 </resources>

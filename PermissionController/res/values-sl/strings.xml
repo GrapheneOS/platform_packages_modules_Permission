@@ -107,7 +107,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"Trenutna dovoljenja"</string>
     <string name="message_staging" msgid="9110563899955511866">"Priprava aplikacije …"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Neznano"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"Nadzorna plošča"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"Nadzorna plošča za zasebnost"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Uporaba dovoljenja za »<xliff:g id="PERMGROUP">%1$s</xliff:g>«"</string>
     <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Časovna os uporabe dovoljenja za »<xliff:g id="PERMGROUP">%1$s</xliff:g>« v zadnjih 24 urah"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Kdaj je ta aplikacija uporabila to: <xliff:g id="PERMGROUP">%1$s</xliff:g>:"</string>
@@ -519,4 +519,10 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Dovoljenja, ki jih uporabljajo le sistemske aplikacije"</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Dodatna dovoljenja"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Dovoljenja, ki jih opredelijo aplikacije"</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"Fotoaparat"</string>
+    <string name="privdash_label_microphone" msgid="8415035835803511693">"Mikrofon"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"Lokacija"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"Drugo"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"Brez"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"V zadnjih\n24 urah"</string>
 </resources>

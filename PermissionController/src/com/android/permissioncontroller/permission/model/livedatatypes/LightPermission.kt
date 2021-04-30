@@ -78,6 +78,8 @@ data class LightPermission(
     val isGrantedByDefault = flags and PackageManager.FLAG_PERMISSION_GRANTED_BY_DEFAULT != 0
     /** Whether this permission is granted by role */
     val isGrantedByRole = flags and PackageManager.FLAG_PERMISSION_GRANTED_BY_ROLE != 0
+    /** Whether this permission is set to be revoked upon being requested */
+    val isRevokeWhenRequested = flags and PackageManager.FLAG_PERMISSION_REVOKE_WHEN_REQUESTED != 0
     /** Whether this permission is user sensitive in its current grant state */
     val isUserSensitive = !isRuntimePlatformPermission(permInfo.name) ||
             (isGrantedIncludingAppOp &&
