@@ -234,7 +234,7 @@ public class RoleParser {
             return null;
         }
 
-        List<String> permissions = new ArrayList<>();
+        List<Permission> permissions = new ArrayList<>();
 
         int type;
         int depth;
@@ -247,7 +247,7 @@ public class RoleParser {
             }
 
             if (parser.getName().equals(TAG_PERMISSION)) {
-                String permission = requireAttributeValue(parser, ATTRIBUTE_NAME, TAG_PERMISSION);
+                Permission permission = parsePermission(parser);
                 if (permission == null) {
                     continue;
                 }
@@ -260,6 +260,19 @@ public class RoleParser {
         }
 
         return new PermissionSet(name, permissions);
+    }
+
+    @Nullable
+    private Permission parsePermission(@NonNull XmlResourceParser parser) throws IOException,
+            XmlPullParserException {
+        String name = requireAttributeValue(parser, ATTRIBUTE_NAME, TAG_PERMISSION);
+        if (name == null) {
+            skipCurrentTag(parser);
+            return null;
+        }
+        int minSdkVersion = getAttributeIntValue(parser, ATTRIBUTE_MIN_SDK_VERSION,
+                Build.VERSION_CODES.BASE);
+        return new Permission(name, minSdkVersion);
     }
 
     @Nullable
@@ -372,7 +385,7 @@ public class RoleParser {
         boolean systemOnly = getAttributeBooleanValue(parser, ATTRIBUTE_SYSTEM_ONLY, false);
 
         List<RequiredComponent> requiredComponents = null;
-        List<String> permissions = null;
+        List<Permission> permissions = null;
         List<String> appOpPermissions = null;
         List<AppOp> appOps = null;
         List<PreferredActivity> preferredActivities = null;
@@ -631,10 +644,10 @@ public class RoleParser {
     }
 
     @NonNull
-    private List<String> parsePermissions(@NonNull XmlResourceParser parser,
+    private List<Permission> parsePermissions(@NonNull XmlResourceParser parser,
             @NonNull ArrayMap<String, PermissionSet> permissionSets) throws IOException,
             XmlPullParserException {
-        List<String> permissions = new ArrayList<>();
+        List<Permission> permissions = new ArrayList<>();
 
         int type;
         int depth;
@@ -663,8 +676,7 @@ public class RoleParser {
                     break;
                 }
                 case TAG_PERMISSION: {
-                    String permission = requireAttributeValue(parser, ATTRIBUTE_NAME,
-                            TAG_PERMISSION);
+                    Permission permission = parsePermission(parser);
                     if (permission == null) {
                         continue;
                     }
@@ -957,18 +969,22 @@ public class RoleParser {
                 permissionSetsIndex++) {
             PermissionSet permissionSet = permissionSets.valueAt(permissionSetsIndex);
 
-            List<String> permissions = permissionSet.getPermissions();
+            List<Permission> permissions = permissionSet.getPermissions();
             int permissionsSize = permissions.size();
             for (int permissionsIndex = 0; permissionsIndex < permissionsSize; permissionsIndex++) {
-                String permission = permissions.get(permissionsIndex);
+                Permission permission = permissions.get(permissionsIndex);
 
-                validatePermission(permission, false);
+                validatePermission(permission);
             }
         }
 
         int rolesSize = roles.size();
         for (int rolesIndex = 0; rolesIndex < rolesSize; rolesIndex++) {
             Role role = roles.valueAt(rolesIndex);
+
+            if (!role.isAvailableBySdkVersion()) {
+                continue;
+            }
 
             List<RequiredComponent> requiredComponents = role.getRequiredComponents();
             int requiredComponentsSize = requiredComponents.size();
@@ -979,16 +995,16 @@ public class RoleParser {
 
                 String permission = requiredComponent.getPermission();
                 if (permission != null) {
-                    validatePermission(permission, true);
+                    validatePermission(permission);
                 }
             }
 
-            List<String> permissions = role.getPermissions();
+            List<Permission> permissions = role.getPermissions();
             int permissionsSize = permissions.size();
             for (int i = 0; i < permissionsSize; i++) {
-                String permission = permissions.get(i);
+                Permission permission = permissions.get(i);
 
-                validatePermission(permission, false);
+                validatePermission(permission);
             }
 
             List<AppOp> appOps = role.getAppOps();
@@ -1024,9 +1040,19 @@ public class RoleParser {
         }
     }
 
-    private void validatePermission(@NonNull String permission, boolean isRequirement) {
-        PackageManager packageManager = mContext.getPackageManager();
+    private void validatePermission(@NonNull Permission permission) {
+        if (!permission.isAvailable()) {
+            return;
+        }
+        validatePermission(permission.getName(), true);
+    }
 
+    private void validatePermission(@NonNull String permission) {
+        validatePermission(permission, false);
+    }
+
+    private void validatePermission(@NonNull String permission, boolean enforceIsRuntimeOrRole) {
+        PackageManager packageManager = mContext.getPackageManager();
         boolean isAutomotive = packageManager.hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE);
         // Skip validation for car permissions which may not be available on all build targets.
         if (!isAutomotive && permission.startsWith("android.car")) {
@@ -1040,11 +1066,13 @@ public class RoleParser {
             throw new IllegalArgumentException("Unknown permission: " + permission, e);
         }
 
-        if (!(isRequirement || permissionInfo.getProtection() == PermissionInfo.PROTECTION_DANGEROUS
-                || (permissionInfo.getProtectionFlags() & PermissionInfo.PROTECTION_FLAG_ROLE)
-                        == PermissionInfo.PROTECTION_FLAG_ROLE)) {
-            throw new IllegalArgumentException(
-                    "Permission is not a runtime or role permission: " + permission);
+        if (enforceIsRuntimeOrRole) {
+            if (!(permissionInfo.getProtection() == PermissionInfo.PROTECTION_DANGEROUS
+                    || (permissionInfo.getProtectionFlags() & PermissionInfo.PROTECTION_FLAG_ROLE)
+                            == PermissionInfo.PROTECTION_FLAG_ROLE)) {
+                throw new IllegalArgumentException(
+                        "Permission is not a runtime or role permission: " + permission);
+            }
         }
     }
 
