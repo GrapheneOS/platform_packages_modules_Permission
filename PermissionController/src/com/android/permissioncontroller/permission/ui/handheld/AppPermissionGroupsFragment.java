@@ -367,7 +367,7 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader {
 
     private void setAutoRevokeToggleState(AutoRevokeState state) {
         if (state == null || !mViewModel.getPackagePermGroupsLiveData().isInitialized()
-                || getListView() == null || getView() == null) {
+                || getPreferenceScreen() == null || getListView() == null || getView() == null) {
             return;
         }
 
