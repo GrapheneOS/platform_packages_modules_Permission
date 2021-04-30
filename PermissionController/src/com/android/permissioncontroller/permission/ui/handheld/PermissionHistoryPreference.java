@@ -47,7 +47,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.model.AppPermissionUsage;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
-import com.android.permissioncontroller.role.utils.UiUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,7 +95,6 @@ public class PermissionHistoryPreference extends Preference {
                 outValue, true);
         mDialogHeightScalar = outValue.getFloat();
 
-        setIcon(mAppIcon);
         setTitle(mTitle);
         if (accessDuration != null) {
             setSummary(accessDuration);
@@ -119,16 +117,8 @@ public class PermissionHistoryPreference extends Preference {
         ViewGroup widgetFrame = (ViewGroup) holder.findViewById(android.R.id.widget_frame);
         LinearLayout widgetFrameParent = (LinearLayout) widgetFrame.getParent();
 
-        ImageView icon = (ImageView) holder.findViewById(android.R.id.icon);
-        int size = getContext().getResources().getDimensionPixelSize(
-                R.dimen.permission_icon_size);
-        icon.getLayoutParams().width = size;
-        icon.getLayoutParams().height = size;
-        ViewGroup.MarginLayoutParams marginLayoutParams =
-                (ViewGroup.MarginLayoutParams) icon.getLayoutParams();
-        int margin = UiUtils.dpToPxSize(12, icon.getContext());
-        marginLayoutParams.topMargin = margin;
-        marginLayoutParams.bottomMargin = margin;
+        View iconFrame = holder.findViewById(R.id.icon_frame);
+        widgetFrameParent.removeView(iconFrame);
 
         ViewGroup widget = (ViewGroup) holder.findViewById(R.id.permission_history_layout);
         if (widget == null) {
@@ -143,6 +133,9 @@ public class PermissionHistoryPreference extends Preference {
 
         TextView permissionHistoryTime = widget.findViewById(R.id.permission_history_time);
         permissionHistoryTime.setText(mAccessTime);
+        ImageView permissionIcon = widget.findViewById(R.id.permission_history_icon);
+
+        permissionIcon.setImageDrawable(mAppIcon);
 
         ImageView widgetView = widgetFrame.findViewById(R.id.icon);
         if (mAccessTimeList.size() > 1) {
