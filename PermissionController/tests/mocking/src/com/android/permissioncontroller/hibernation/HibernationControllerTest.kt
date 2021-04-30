@@ -24,6 +24,7 @@ import android.content.Context.USAGE_STATS_SERVICE
 import android.os.Build
 import android.os.UserHandle
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
 import com.android.dx.mockito.inline.extended.ExtendedMockito.mockitoSession
 import com.android.permissioncontroller.Constants
@@ -51,6 +52,7 @@ import org.mockito.Mockito.`when` as whenever
  * Unit tests for [HibernationController].
  */
 @RunWith(AndroidJUnit4::class)
+@SdkSuppress(minSdkVersion = Build.VERSION_CODES.S, codeName = "S")
 class HibernationControllerTest {
     companion object {
         val application = mock(PermissionControllerApplication::class.java)
