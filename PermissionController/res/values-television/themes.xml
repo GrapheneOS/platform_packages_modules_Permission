@@ -29,8 +29,8 @@
         <item name="android:windowAnimationStyle">@style/Animation.Snackbar</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:backgroundDimAmount">0.2</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:colorBackground">@android:color/transparent</item>
+        <item name="android:windowBackground">@drawable/dialog_background</item>
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 
     <style name="GrantPermissions.BreadcrumbText">
