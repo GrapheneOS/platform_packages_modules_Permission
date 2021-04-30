@@ -50,8 +50,7 @@ public class PermissionUsageV2ControlPreference extends Preference {
         mCount = count;
 
         CharSequence permGroupLabel = KotlinUtils.INSTANCE.getPermGroupLabel(mContext, mGroupName);
-        setTitle(mContext.getResources().getString(R.string.permission_group_usage_title,
-                permGroupLabel));
+        setTitle(permGroupLabel);
         setIcon(KotlinUtils.INSTANCE.getPermGroupIcon(mContext, mGroupName));
         setSummary(mContext.getResources().getQuantityString(
                 R.plurals.permission_usage_preference_label, mCount, mCount));
