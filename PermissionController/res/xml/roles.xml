@@ -119,6 +119,7 @@
         <permissions>
             <permission-set name="sms" />
             <permission name="android.permission.READ_CALL_LOG" />
+            <permission name="android.permission.ACCESS_BLOBS_ACROSS_USERS" minSdkVersion="31" />
         </permissions>
         <app-op-permissions>
             <app-op-permission name="android.permission.SYSTEM_ALERT_WINDOW" />
