@@ -18,30 +18,33 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:orientation="vertical"
-              android:gravity="center">
+              android:gravity="left">
 
     <ImageView
         android:id="@+id/icon"
         style="@style/PermissionReviewTitleIcon"
-        android:layout_marginTop="48dp"/>
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="44dp" />
 
     <TextView
         android:id="@+id/title"
-        style="@android:style/TextAppearance.DeviceDefault.SearchResult.Title"
+        android:textAppearance="@style/TextAppearance.EntityHeaderTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:textSize="36sp" />
 
     <TextView
         android:id="@+id/subtitle"
-        style="@android:style/TextAppearance.DeviceDefault.SearchResult.Subtitle"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginRight="48dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="24dp"
         android:textSize="14sp"
-        android:gravity="center" />
+        android:gravity="left" />
 
 </LinearLayout>
