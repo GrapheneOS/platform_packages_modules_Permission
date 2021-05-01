@@ -14,111 +14,101 @@
      limitations under the License.
 -->
 
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/grant_dialog"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/transparent"
-    android:layout_gravity="center">
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="@dimen/grant_permissions_dialog_padding">
+
     <LinearLayout
-        android:id="@+id/grant_dialog"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/grant_permissions_dialog_side_margin"
-        android:layout_marginRight="@dimen/grant_permissions_dialog_side_margin"
-        android:layout_marginBottom="@dimen/grant_permissions_dialog_margin_bottom"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="@dimen/grant_permissions_dialog_padding"
-        android:background="@drawable/dialog_background">
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/permission_icon"
+            android:layout_width="@dimen/grant_permissions_app_icon_size"
+            android:layout_height="@dimen/grant_permissions_app_icon_size"
+            android:tint="@color/grant_permissions_app_color"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-            <ImageView
-                android:id="@+id/permission_icon"
-                android:layout_width="@dimen/grant_permissions_app_icon_size"
-                android:layout_height="@dimen/grant_permissions_app_icon_size"
-                android:tint="@color/grant_permissions_app_color"/>
-
-            <LinearLayout
+            android:layout_marginLeft="@dimen/action_dialog_content_margin_left"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/current_page_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/action_dialog_content_margin_left"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/current_page_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/grant_permissions_app_breadcrumb_margin_bottom"
-                    android:textAppearance="@style/GrantPermissions.BreadcrumbText" />
+                android:layout_marginBottom="@dimen/grant_permissions_app_breadcrumb_margin_bottom"
+                android:textAppearance="@style/GrantPermissions.BreadcrumbText" />
 
-                <TextView
-                    android:id="@+id/permission_message"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/grant_permissions_app_title_margin_bottom"
-                    android:textAppearance="@style/GrantPermissions.TitleText"/>
+            <TextView
+                android:id="@+id/permission_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/grant_permissions_app_title_margin_bottom"
+                android:textAppearance="@style/GrantPermissions.TitleText"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/grant_permissions_app_details_margin_bottom"
-                    android:text="@string/grant_dialog_how_to_change"
-                    android:textAppearance="@style/GrantPermissions.BodyText" />
-            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/grant_permissions_app_details_margin_bottom"
+                android:text="@string/grant_dialog_how_to_change"
+                android:textAppearance="@style/GrantPermissions.BodyText" />
         </LinearLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="@dimen/action_dialog_actions_width"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/grant_permissions_actions_margin_left"
-            android:layout_marginRight="@dimen/grant_permissions_actions_margin_right">
-            <Button
-                android:id="@+id/permission_allow_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/grant_dialog_button_allow"
-                style="@style/GrantPermissions.ActionItem" />
-
-            <Button
-                android:id="@+id/permission_allow_always_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/grant_dialog_button_allow_always"
-                style="@style/GrantPermissions.ActionItem" />
-
-            <Button
-                android:id="@+id/permission_allow_foreground_only_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/grant_dialog_button_allow_foreground"
-                style="@style/GrantPermissions.ActionItem" />
-
-            <Button
-                android:id="@+id/permission_allow_one_time_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/grant_dialog_button_allow_one_time"
-                style="@style/GrantPermissions.ActionItem" />
-
-            <Button
-                android:id="@+id/permission_deny_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/grant_dialog_button_deny"
-                style="@style/GrantPermissions.ActionItem" />
-
-            <Button
-                android:id="@+id/permission_deny_dont_ask_again_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/grant_dialog_button_deny_dont_ask_again"
-                style="@style/GrantPermissions.ActionItem" />
-        </LinearLayout>
-
     </LinearLayout>
-</FrameLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="@dimen/action_dialog_actions_width"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/grant_permissions_actions_margin_left"
+        android:layout_marginRight="@dimen/grant_permissions_actions_margin_right">
+        <Button
+            android:id="@+id/permission_allow_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/grant_dialog_button_allow"
+            style="@style/GrantPermissions.ActionItem" />
+
+        <Button
+            android:id="@+id/permission_allow_always_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/grant_dialog_button_allow_always"
+            style="@style/GrantPermissions.ActionItem" />
+
+        <Button
+            android:id="@+id/permission_allow_foreground_only_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/grant_dialog_button_allow_foreground"
+            style="@style/GrantPermissions.ActionItem" />
+
+        <Button
+            android:id="@+id/permission_allow_one_time_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/grant_dialog_button_allow_one_time"
+            style="@style/GrantPermissions.ActionItem" />
+
+        <Button
+            android:id="@+id/permission_deny_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/grant_dialog_button_deny"
+            style="@style/GrantPermissions.ActionItem" />
+
+        <Button
+            android:id="@+id/permission_deny_dont_ask_again_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/grant_dialog_button_deny_dont_ask_again"
+            style="@style/GrantPermissions.ActionItem" />
+    </LinearLayout>
+
+</LinearLayout>
