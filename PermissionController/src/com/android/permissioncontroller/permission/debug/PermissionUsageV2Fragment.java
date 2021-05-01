@@ -51,8 +51,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
+import androidx.preference.PreferenceGroupAdapter;
 import androidx.preference.PreferenceScreen;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
@@ -62,6 +65,7 @@ import com.android.permissioncontroller.permission.model.legacy.PermissionApps;
 import com.android.permissioncontroller.permission.ui.handheld.PermissionUsageGraphicPreference;
 import com.android.permissioncontroller.permission.ui.handheld.PermissionUsageV2ControlPreference;
 import com.android.permissioncontroller.permission.ui.handheld.SettingsWithLargeHeader;
+import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.settingslib.HelpUtils;
 import com.android.settingslib.widget.ActionBarShadowController;
@@ -74,7 +78,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * This is a V2 version of the permission usage page. WIP.
@@ -102,6 +105,12 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
             Manifest.permission_group.MICROPHONE, 2
     );
     private static final int DEFAULT_ORDER = 3;
+
+    // Pie chart in this screen will be the first child.
+    // Hence we use PERMISSION_GROUP_ORDER + 1 here.
+    private static final int PERMISSION_USAGE_INITIAL_EXPANDED_CHILDREN_COUNT =
+            PERMISSION_GROUP_ORDER.size() + 1;
+    private static final int EXPAND_BUTTON_ORDER = 999;
 
     private @NonNull PermissionUsages mPermissionUsages;
     private @Nullable List<AppPermissionUsage> mAppPermissionUsages = new ArrayList<>();
@@ -166,6 +175,58 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
         mRoleManager = Utils.getSystemServiceSafe(context, RoleManager.class);
 
         reloadData();
+    }
+
+    @Override
+    public RecyclerView.Adapter onCreateAdapter(PreferenceScreen preferenceScreen) {
+        PreferenceGroupAdapter adapter =
+                (PreferenceGroupAdapter) super.onCreateAdapter(preferenceScreen);
+
+        adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onChanged() {
+                updatePreferenceScreenAdvancedTitleAndSummary(preferenceScreen, adapter);
+            }
+
+            @Override
+            public void onItemRangeInserted(int positionStart, int itemCount) {
+                onChanged();
+            }
+
+            @Override
+            public void onItemRangeRemoved(int positionStart, int itemCount) {
+                onChanged();
+            }
+
+            @Override
+            public void onItemRangeChanged(int positionStart, int itemCount) {
+                onChanged();
+            }
+
+            @Override
+            public void onItemRangeMoved(int fromPosition, int toPosition, int itemCount) {
+                onChanged();
+            }
+        });
+
+        updatePreferenceScreenAdvancedTitleAndSummary(preferenceScreen, adapter);
+        return adapter;
+    }
+
+    private void updatePreferenceScreenAdvancedTitleAndSummary(PreferenceScreen preferenceScreen,
+            PreferenceGroupAdapter adapter) {
+        int count = adapter.getItemCount();
+        if (count == 0) {
+            return;
+        }
+
+        Preference preference = adapter.getItem(count - 1);
+
+        // This is a hacky way of getting the expand button preference for advanced info
+        if (preference.getOrder() == EXPAND_BUTTON_ORDER) {
+            preference.setTitle(R.string.perm_usage_adv_info_title);
+            preference.setSummary(preferenceScreen.getSummary());
+        }
     }
 
     @Override
@@ -273,6 +334,7 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
             setPreferenceScreen(screen);
         }
         screen.removeAll();
+        screen.setInitialExpandedChildrenCount(PERMISSION_USAGE_INITIAL_EXPANDED_CHILDREN_COUNT);
 
         StringBuffer accounts = new StringBuffer();
         for (UserHandle user : getContext().getSystemService(UserManager.class).getAllProfiles()) {
@@ -317,11 +379,57 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
         PreferenceCategory category = new PreferenceCategory(context);
         screen.addPreference(category);
 
-        List<Map.Entry<String, Integer>> groupUsagesList = usages.entrySet().stream()
-                .sorted(PermissionUsageV2Fragment::comparePermissionGroupUsage)
-                .collect(Collectors.toList());
+        Map<String, CharSequence> groupUsageNameToLabel = new HashMap<>();
+        List<Map.Entry<String, Integer>> groupUsagesList = new ArrayList<>(usages.entrySet());
+        int usagesEntryCount = groupUsagesList.size();
+        for (int usageEntryIndex = 0; usageEntryIndex < usagesEntryCount; usageEntryIndex++) {
+            Map.Entry<String, Integer> usageEntry = groupUsagesList.get(usageEntryIndex);
+            groupUsageNameToLabel.put(usageEntry.getKey(),
+                    KotlinUtils.INSTANCE.getPermGroupLabel(context, usageEntry.getKey()));
+        }
+
+        groupUsagesList.sort((e1, e2) -> comparePermissionGroupUsage(
+                e1, e2, groupUsageNameToLabel));
+
+        CharSequence advancedInfoSummary = getAdvancedInfoSummaryString(context, groupUsagesList);
+        screen.setSummary(advancedInfoSummary);
 
         addUIContent(context, groupUsagesList, permApps, category);
+    }
+
+    private CharSequence getAdvancedInfoSummaryString(Context context,
+            List<Map.Entry<String, Integer>> groupUsagesList) {
+        int size = groupUsagesList.size();
+        if (size <= PERMISSION_USAGE_INITIAL_EXPANDED_CHILDREN_COUNT - 1) {
+            return "";
+        }
+
+        // case for 1 extra item in the advanced info
+        if (size == PERMISSION_USAGE_INITIAL_EXPANDED_CHILDREN_COUNT) {
+            String permGroupName = groupUsagesList
+                    .get(PERMISSION_USAGE_INITIAL_EXPANDED_CHILDREN_COUNT - 1).getKey();
+            return KotlinUtils.INSTANCE.getPermGroupLabel(context, permGroupName);
+        }
+
+        String permGroupName1 = groupUsagesList
+                .get(PERMISSION_USAGE_INITIAL_EXPANDED_CHILDREN_COUNT - 1).getKey();
+        String permGroupName2 = groupUsagesList
+                .get(PERMISSION_USAGE_INITIAL_EXPANDED_CHILDREN_COUNT).getKey();
+        CharSequence permGroupLabel1 = KotlinUtils
+                .INSTANCE.getPermGroupLabel(context, permGroupName1);
+        CharSequence permGroupLabel2 = KotlinUtils
+                .INSTANCE.getPermGroupLabel(context, permGroupName2);
+
+        // case for 2 extra items in the advanced info
+        if (size == PERMISSION_USAGE_INITIAL_EXPANDED_CHILDREN_COUNT + 1) {
+            return context.getResources().getString(R.string.perm_usage_adv_info_summary_2_items,
+                    permGroupLabel1, permGroupLabel2);
+        }
+
+        // case for 3 or more extra items in the advanced info
+        int numExtraItems = size - PERMISSION_USAGE_INITIAL_EXPANDED_CHILDREN_COUNT - 1;
+        return context.getResources().getString(R.string.perm_usage_adv_info_summary_more_items,
+                permGroupLabel1, permGroupLabel2, numExtraItems);
     }
 
     /**
@@ -491,15 +599,19 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
         return 0;
     }
 
-    private static int comparePermissionGroupUsage(@NonNull Map.Entry<String, Integer> x,
-            @NonNull Map.Entry<String, Integer> y) {
-        int xPermissionOrder = PERMISSION_GROUP_ORDER.getOrDefault(x.getKey(), DEFAULT_ORDER);
-        int yPermissionOrder = PERMISSION_GROUP_ORDER.getOrDefault(y.getKey(), DEFAULT_ORDER);
-        if (xPermissionOrder != yPermissionOrder) {
-            return xPermissionOrder - yPermissionOrder;
+    private static int comparePermissionGroupUsage(@NonNull Map.Entry<String, Integer> first,
+            @NonNull Map.Entry<String, Integer> second,
+            Map<String, CharSequence> groupUsageNameToLabelMapping) {
+        int firstPermissionOrder = PERMISSION_GROUP_ORDER
+                .getOrDefault(first.getKey(), DEFAULT_ORDER);
+        int secondPermissionOrder = PERMISSION_GROUP_ORDER
+                .getOrDefault(second.getKey(), DEFAULT_ORDER);
+        if (firstPermissionOrder != secondPermissionOrder) {
+            return firstPermissionOrder - secondPermissionOrder;
         }
 
-        return y.getValue().compareTo(x.getValue());
+        return groupUsageNameToLabelMapping.get(first.getKey()).toString()
+                .compareTo(groupUsageNameToLabelMapping.get(second.getKey()).toString());
     }
 
     /**

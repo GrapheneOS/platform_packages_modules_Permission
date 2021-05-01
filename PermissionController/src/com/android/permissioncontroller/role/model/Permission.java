@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 The Android Open Source Project
+ * Copyright (C) 2021 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,31 +16,33 @@
 
 package com.android.permissioncontroller.role.model;
 
+import android.os.Build;
+
 import androidx.annotation.NonNull;
 
-import java.util.List;
+import com.android.modules.utils.build.SdkLevel;
+
 import java.util.Objects;
 
 /**
- * A set of permissions with a name to be granted by a {@link Role}.
+ * A permission to be granted or revoke by a {@link Role}.
  */
-public class PermissionSet {
+public class Permission {
 
     /**
-     * The name of this permission set. Must be unique.
+     * The name of the permission.
      */
     @NonNull
     private final String mName;
 
     /**
-     * The permissions of this permission set.
+     * The minimum SDK version for this permission to be granted.
      */
-    @NonNull
-    private final List<Permission> mPermissions;
+    private final int mMinSdkVersion;
 
-    public PermissionSet(@NonNull String name, @NonNull List<Permission> permissions) {
+    public Permission(@NonNull String name, int minSdkVersion) {
         mName = name;
-        mPermissions = permissions;
+        mMinSdkVersion = minSdkVersion;
     }
 
     @NonNull
@@ -48,16 +50,29 @@ public class PermissionSet {
         return mName;
     }
 
-    @NonNull
-    public List<Permission> getPermissions() {
-        return mPermissions;
+    public int getMinSdkVersion() {
+        return mMinSdkVersion;
+    }
+
+    /**
+     * Check whether this permission is available.
+     *
+     * @return whether this permission is available
+     */
+    public boolean isAvailable() {
+        // Workaround to match the value 31+ for S+ in roles.xml before SDK finalization.
+        if (mMinSdkVersion >= 31) {
+            return SdkLevel.isAtLeastS();
+        } else {
+            return Build.VERSION.SDK_INT >= mMinSdkVersion;
+        }
     }
 
     @Override
     public String toString() {
-        return "PermissionSet{"
+        return "Permission{"
                 + "mName='" + mName + '\''
-                + ", mPermissions=" + mPermissions
+                + ", mMinSdkVersion=" + mMinSdkVersion
                 + '}';
     }
 
@@ -69,13 +84,13 @@ public class PermissionSet {
         if (object == null || getClass() != object.getClass()) {
             return false;
         }
-        PermissionSet that = (PermissionSet) object;
-        return Objects.equals(mName, that.mName)
-                && Objects.equals(mPermissions, that.mPermissions);
+        Permission that = (Permission) object;
+        return mMinSdkVersion == that.mMinSdkVersion
+                && mName.equals(that.mName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mName, mPermissions);
+        return Objects.hash(mName, mMinSdkVersion);
     }
 }

@@ -58,6 +58,27 @@ public class Permissions {
     private static final Object sForegroundBackgroundPermissionMappingsLock = new Object();
 
     /**
+     * Filter a list of permissions based on their SDK versions.
+     *
+     * @param permissions the list of permissions
+     *
+     * @return the filtered list of permission names.
+     */
+    @NonNull
+    public static List<String> filterBySdkVersion(@NonNull List<Permission> permissions) {
+        List<String> permissionNames = new ArrayList<>();
+        int permissionsSize = permissions.size();
+        for (int i = 0; i < permissionsSize; i++) {
+            Permission permission = permissions.get(i);
+            if (!permission.isAvailable()) {
+                continue;
+            }
+            permissionNames.add(permission.getName());
+        }
+        return permissionNames;
+    }
+
+    /**
      * Grant permissions and associated app ops to an application.
      *
      * @param packageName the package name of the application to be granted permissions to
