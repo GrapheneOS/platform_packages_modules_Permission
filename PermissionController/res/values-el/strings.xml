@@ -23,19 +23,19 @@
     <string name="back" msgid="6249950659061523680">"Πίσω"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Απεγκατάσταση ή απενεργοποίηση"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Η εφαρμογή δεν βρέθηκε"</string>
-    <string name="grant_dialog_button_deny" msgid="5694497572414531524">"Απόρριψη"</string>
-    <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1851917275643744594">"Απόρριψη και να μην ερωτηθώ ξανά"</string>
+    <string name="grant_dialog_button_deny" msgid="88262611492697192">"Να μην επιτρέπεται"</string>
+    <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"Να μην επιτρέπεται και να μην γίνει ερώτηση ξανά"</string>
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Διατήρηση της επιλογής \"Όταν χρησιμοποιείται η εφαρμογή\""</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Διατήρηση μόνο αυτήν τη φορά"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Περισσότερα"</string>
-    <string name="grant_dialog_button_deny_anyway" msgid="3221644923954258179">"Απόρριψη"</string>
+    <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Να μην επιτρέπεται καθόλου"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Παράβλεψη"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> από <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
     <string name="permission_warning_template" msgid="2247087781222679458">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να <xliff:g id="ACTION">%2$s</xliff:g>;"</string>
     <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Να επιτρέπεται πάντα στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να <xliff:g id="ACTION">%2$s</xliff:g>;"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"Μόνο κατά τη χρήση της εφαρμογής"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"Πάντα"</string>
-    <string name="deny_permission_deny_and_dont_ask_again" msgid="766882021426214510">"Απόρριψη και να μην ερωτηθώ ξανά"</string>
+    <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"Να μην επιτρέπεται και να μην γίνει ερώτηση ξανά"</string>
     <string name="permission_revoked_count" msgid="4785082705441547086">"έχουν απενεργοποιηθεί <xliff:g id="COUNT">%1$d</xliff:g>"</string>
     <string name="permission_revoked_all" msgid="3397649017727222283">"έχουν απενεργοποιηθεί όλες"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"δεν έχει απενεργοποιηθεί καμία"</string>
@@ -87,7 +87,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"Να επιτρέπεται πάντα"</string>
     <string name="permission_access_only_foreground" msgid="7801170728159326195">"Μόνο με τη χρήση της εφαρμογής"</string>
-    <string name="permission_access_never" msgid="1029877154284995424">"Όχι"</string>
+    <string name="permission_access_never" msgid="4647014230217936900">"Να μην επιτρέπεται"</string>
     <string name="loading" msgid="4789365003890741082">"Φόρτωση…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"Όλες οι άδειες"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Άλλες δυνατότητες εφαρμογής"</string>
@@ -107,7 +107,13 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Άγνωστο"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Πίνακας ελέγχου απορρήτου"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Χρήση <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
-    <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Χρονολόγιο των περιπτώσεων που χρησιμοποιήσατε την ομάδα αδειών <xliff:g id="PERMGROUP">%1$s</xliff:g> τις τελευταίες 24 ώρες"</string>
+    <!-- no translation found for perm_usage_adv_info_title (3357831829538873708) -->
+    <skip />
+    <!-- no translation found for perm_usage_adv_info_summary_2_items (3702175198750127822) -->
+    <skip />
+    <!-- no translation found for perm_usage_adv_info_summary_more_items (949055326299562218) -->
+    <skip />
+    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Χρονολόγιο των περιπτώσεων που οι εφαρμογές χρησιμοποίησαν την ομάδα αδειών <xliff:g id="PERMGROUP">%1$s</xliff:g> τις τελευταίες 24 ώρες"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Πότε χρησιμοποιήθηκε η ομάδα αδειών <xliff:g id="PERMGROUP">%1$s</xliff:g> από αυτήν την εφαρμογή:"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Μάθετε περισσότερα"</string>
     <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
@@ -167,10 +173,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> εφαρμογές</item>
       <item quantity="one">1 εφαρμογή</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
-      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> εφ. χρ. <xliff:g id="PERMGROUP_1">%2$s</xliff:g></item>
-      <item quantity="one">1 εφ. χρ. <xliff:g id="PERMGROUP_0">%2$s</xliff:g></item>
-    </plurals>
+    <!-- no translation found for permission_usage_preference_label (9033113721294293706) -->
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Εμφάνιση όλων στον Πίνακα ελέγχου"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Φιλτράρισμα κατά: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Κατάργηση φίλτρου"</string>
@@ -200,11 +203,11 @@
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Να επιτρέπεται πάντα"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Μόνο με τη χρήση της εφαρμογής"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Να ερωτώμαι κάθε φορά"</string>
-    <string name="app_permission_button_deny" msgid="2399316993899108824">"Να μην επιτρέπεται"</string>
+    <string name="app_permission_button_deny" msgid="6016454069832050300">"Να μην επιτρέπεται"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Ακριβής τοποθεσία"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Τοποθεσία κατά προσέγγιση"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Χρήση ακριβούς τοποθεσίας"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Όταν αυτή η ρύθμιση είναι απενεργοποιημένη, οι εφαρμογές μπορούν να προσδιορίσουν την τοποθεσία σας σε μια γειτονιά, μόνο κατά προσέγγιση."</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Όταν είναι απενεργοποιημένη η ακριβής τοποθεσία, οι εφαρμογές μπορούν να έχουν πρόσβαση στην κατά προσέγγιση τοποθεσία σας"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Άδεια - <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Πρόσβαση σε <xliff:g id="PERM">%1$s</xliff:g> για αυτήν την εφαρμογή"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Εμφάνιση όλων των αδειών της εφαρμογής <xliff:g id="APP">%1$s</xliff:g>"</string>
@@ -239,7 +242,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Οι εφαρμογές με αυτήν την άδεια μπορούν να τραβούν φωτογραφίες και να εγγράφουν βίντεο"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Οι εφαρμογές με αυτήν την άδεια μπορούν να αποκτήσουν πρόσβαση στις επαφές σας"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Οι εφαρμογές με αυτήν την άδεια μπορούν να αποκτήσουν πρόσβαση στην τοποθεσία αυτής της συσκευής"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Οι εφαρμογές με αυτήν την άδεια μπορούν να ανακαλύπτουν, να συνδέονται και να προσδιορίζουν τη σχετική θέση κοντινών συσκευών"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Οι εφαρμογές με αυτήν την άδεια μπορούν να βρίσκουν, να συνδέονται και να προσδιορίζουν τη σχετική τοποθεσία κοντινών συσκευών"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Οι εφαρμογές με αυτήν την άδεια μπορούν να εγγράφουν ήχο"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Οι εφαρμογές με αυτήν την άδεια έχουν δυνατότητα πραγματοποίησης και διαχείρισης τηλεφωνικών κλήσεων"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Οι εφαρμογές με αυτήν την άδεια μπορούν να αποκτήσουν πρόσβαση στα δεδομένα αισθητήρα σχετικά με τις ζωτικές ενδείξεις σας"</string>
@@ -255,7 +258,7 @@
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Επιτρέπεται η πρόσβαση μόνο σε μέσα"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Επιτρέπεται η διαχείριση όλων των αρχείων"</string>
     <string name="ask_header" msgid="2633816846459944376">"Ερώτηση κάθε φορά"</string>
-    <string name="denied_header" msgid="2253955654228120835">"Απορρίφθηκαν"</string>
+    <string name="denied_header" msgid="903209608358177654">"Δεν επιτρέπεται"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ημέρες</item>
       <item quantity="one">1 ημέρα</item>
@@ -448,8 +451,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Αυτή η εφαρμογή θέλει να έχει συνεχώς πρόσβαση στην τοποθεσία σας, ακόμη και όταν δεν χρησιμοποιείτε την εφαρμογή. "<annotation id="link">"Εγκρίνετε το αίτημα στις ρυθμίσεις."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Αλλαγή πρόσβασης στην τοποθεσία για την εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;;"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Αυτή η εφαρμογή θέλει να έχει συνεχώς πρόσβαση στην τοποθεσία σας, ακόμη και όταν δεν χρησιμοποιείτε την εφαρμογή. "<annotation id="link">"Εγκρίνετε το αίτημα στις ρυθμίσεις."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η ανακάλυψη και η σύνδεση σε κοντινές συσκευές;"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η ανακάλυψη και η σύνδεση σε κοντινές συσκευές; "<annotation id="link">"Έγκριση στις Ρυθμίσεις."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Να επιτρέπεται η εύρεση, η σύνδεση κι ο προσδιορισμός σχετικής τοποθεσίας των κοντινών συσκευών από &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;;"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Να επιτρέπεται η εύρεση, η σύνδεση κι ο προσδιορισμός σχετικής τοποθεσίας των κοντινών συσκευών από &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;; "<annotation id="link">"Έγκριση στις Ρυθμίσεις."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Αλλαγή της πρόσβασης της εφαρμογής <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> στην τοποθεσία από κατά προσέγγιση σε ακριβή;"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να έχει πρόσβαση στην κατά προσέγγιση τοποθεσία αυτής της συσκευής;"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Ακριβής"</string>
