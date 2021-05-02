@@ -23,19 +23,23 @@
     <string name="back" msgid="6249950659061523680">"ආපසු යන්න"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"අස්ථාපනය කරන්න නැතහොත් අබල කරන්න"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"යෙදුම හමුවී නැත"</string>
-    <string name="grant_dialog_button_deny" msgid="5694497572414531524">"ප්‍රතික්ෂේප කර."</string>
-    <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1851917275643744594">"ප්‍රතික්ෂේප කර නැවත අසන්න එපා"</string>
+    <!-- no translation found for grant_dialog_button_deny (88262611492697192) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_deny_and_dont_ask_again (1748925431574312595) -->
+    <skip />
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“යෙදුම භාවිතයේ තිබෙන අතරතුර” තබා ගන්න"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“මේ වතාවේ පමණක්” තබා ගන්න"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"තවත් තතු"</string>
-    <string name="grant_dialog_button_deny_anyway" msgid="3221644923954258179">"කෙසේ වෙතත් ප්‍රතික්ෂේප කරන්න"</string>
+    <!-- no translation found for grant_dialog_button_deny_anyway (7225905870668915151) -->
+    <skip />
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"ඉවත ලන්න"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>කින් <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
     <string name="permission_warning_template" msgid="2247087781222679458">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; හට <xliff:g id="ACTION">%2$s</xliff:g> වෙත ඉඩ දෙන්නද?"</string>
     <string name="permission_add_background_warning_template" msgid="1812914855915092273">"සැම විට &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; හට <xliff:g id="ACTION">%2$s</xliff:g> වෙත ඉඩ දෙන්නද?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"යෙදුම භාවිතා කරන විට පමණි"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"සැමවිටම"</string>
-    <string name="deny_permission_deny_and_dont_ask_again" msgid="766882021426214510">"ප්‍රතික්ෂේප කරන්න, නැවත අසන්න එපා"</string>
+    <!-- no translation found for deny_permission_deny_and_dont_ask_again (6106035221490102341) -->
+    <skip />
     <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g> අබලයි"</string>
     <string name="permission_revoked_all" msgid="3397649017727222283">"සියල්ල අබලයි"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"කිසිවක් අබල නැත"</string>
@@ -87,7 +91,8 @@
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"සැම විටම ඉඩ දෙන්න"</string>
     <string name="permission_access_only_foreground" msgid="7801170728159326195">"යෙදුම භාවිතයේදී පමණක් ඉඩ දෙන්න"</string>
-    <string name="permission_access_never" msgid="1029877154284995424">"ප්‍රතික්‍ෂේප කරන්න"</string>
+    <!-- no translation found for permission_access_never (4647014230217936900) -->
+    <skip />
     <string name="loading" msgid="4789365003890741082">"පූරණය කරමින්…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"සියලු අවසර"</string>
     <string name="other_permissions" msgid="2901186127193849594">"වෙනත් යෙදුම් හැකියාවන්"</string>
@@ -107,7 +112,14 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"නොදනී"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"පෞද්ගලිකත්ව උපකරණ පුවරුව"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> භාවිතය"</string>
-    <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"පසුගිය පැය 24 තුළ ඔබගේ <xliff:g id="PERMGROUP">%1$s</xliff:g> භාවිත කළ විට කාලරේඛාව"</string>
+    <!-- no translation found for perm_usage_adv_info_title (3357831829538873708) -->
+    <skip />
+    <!-- no translation found for perm_usage_adv_info_summary_2_items (3702175198750127822) -->
+    <skip />
+    <!-- no translation found for perm_usage_adv_info_summary_more_items (949055326299562218) -->
+    <skip />
+    <!-- no translation found for permission_group_usage_subtitle (712843174810251274) -->
+    <skip />
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"මෙම යෙදුම ඔබගේ <xliff:g id="PERMGROUP">%1$s</xliff:g> භාවිත කරන විට:"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"තව දැන ගන්න"</string>
     <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
@@ -167,10 +179,7 @@
       <item quantity="one">යෙදුම් <xliff:g id="NUMBER">%s</xliff:g>ක්</item>
       <item quantity="other">යෙදුම් <xliff:g id="NUMBER">%s</xliff:g>ක්</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
-      <item quantity="one"><xliff:g id="PERMGROUP_1">%2$s</xliff:g> යෙදුම් <xliff:g id="NUMBER">%1$d</xliff:g>ක් භාවිත කරන ලදි</item>
-      <item quantity="other"><xliff:g id="PERMGROUP_1">%2$s</xliff:g> යෙදුම් <xliff:g id="NUMBER">%1$d</xliff:g>ක් භාවිත කරන ලදි</item>
-    </plurals>
+    <!-- no translation found for permission_usage_preference_label (9033113721294293706) -->
     <string name="permission_usage_view_details" msgid="6675335735468752787">"උපකරණ පුවරුවේ ඇති සියල්ල බලන්න"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"මේ අනුව පෙරහන්න: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"පෙරහන ඉවත් කරන්න"</string>
@@ -200,11 +209,13 @@
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"සැම විටම ඉඩ දෙන්න"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"යෙදුම භාවිතයේදී පමණක් ඉඩ දෙන්න"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"සෑම විටම ඉල්ලන්න"</string>
-    <string name="app_permission_button_deny" msgid="2399316993899108824">"ප්‍රතික්ෂේප කර."</string>
+    <!-- no translation found for app_permission_button_deny (6016454069832050300) -->
+    <skip />
     <string name="precise_image_description" msgid="6349638632303619872">"ඉතා නිවැරදි ස්ථානය"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"දළ ස්ථානය"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"ඉතා නිවැරදි ස්ථානය භාවිත කරන්න"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"යෙදුම්වලට ඔබගේ ආසන්න ස්ථානය තීරණය කළ හැක්කේ එය ක්‍රියාවිරහිතව ඇති අසල්වැසි ප්‍රදේශයක පමණි"</string>
+    <!-- no translation found for app_permission_location_accuracy_subtitle (2654077606404987210) -->
+    <skip />
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> අවසරය"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"මෙම යෙදුම සඳහා <xliff:g id="PERM">%1$s</xliff:g> ප්‍රවේශය"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"සියලුම <xliff:g id="APP">%1$s</xliff:g> අවසර බලන්න"</string>
@@ -239,7 +250,8 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"මෙම අවසරය සහිත යෙදුම්වලට පින්තූර ලබා ගැනීමට සහ වීඩියෝ පටිගත කිරීමටත් හැකි ය"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"මෙම අවසරය සහිත යෙදුම්වලට ඔබේ සම්බන්ධතා වෙත ප්‍රවේශ විය හැක"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"මෙම අවසරය සහිත යෙදුම්වලට මෙම උපාංගයේ ස්ථානය වෙත ප්‍රවේශ විය හැක"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"මෙම අවසරය ඇති යෙදුම්වලට අවට උපාංගවල සාපේක්ෂ පිහිටීම සොයා ගැනීමට, සම්බන්ධ වීමට සහ නිර්ණය කිරීමට හැකිය"</string>
+    <!-- no translation found for permission_description_summary_nearby_devices (8269183818275073741) -->
+    <skip />
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"මෙම අවසරය සහිත යෙදුම්වලට ශ්‍රව්‍ය පටිගත කළ හැක"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"මෙම අවසරය සහිත යෙදුම්වලට දුරකථන ඇමතුම් කිරීමටත් කළමනා කිරීමටත් හැකි ය"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"මෙම අවසරය සහිත යෙදුම්වලට ඔබේ ජෛව ලක්‍ෂණ පිළිබඳ සංවේදී දත්ත වෙත ප්‍රවේශ විය හැක"</string>
@@ -255,7 +267,8 @@
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"මාධ්‍ය වෙත පමණක් ප්‍රවේශය ඉඩ දී ඇත"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"සියලු පාලන කළමනාකරණය කිරීමට ඉඩ දී ඇත"</string>
     <string name="ask_header" msgid="2633816846459944376">"සෑම විටම ඉල්ලන්න"</string>
-    <string name="denied_header" msgid="2253955654228120835">"ප්‍රතික්ෂේපයි"</string>
+    <!-- no translation found for denied_header (903209608358177654) -->
+    <skip />
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="one">දින <xliff:g id="NUMBER">%s</xliff:g></item>
       <item quantity="other">දින <xliff:g id="NUMBER">%s</xliff:g></item>
@@ -448,8 +461,10 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"මෙයට ඔබ යෙදුම භාවිත නොකරමින් සිටින විට පවා සියලු අවස්ථාවල ඔබේ ස්ථානය වෙත ප්‍රවේශ වීමට අවශ්‍ය විය හැකිය. "<annotation id="link">"සැකසීම්වල ඉඩ දෙන්න."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; සඳහා ස්ථාන ප්‍රවේශය වෙනස් කරන්නද?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"මෙම යෙදුමට ඔබ යෙදුම භාවිත නොකරමින් සිටින විට පවා සියලු අවස්ථාවල ඔබේ ස්ථානය වෙත ප්‍රවේශ වීමට අවශ්‍යයි. "<annotation id="link">"සැකසීම්වල ඉඩ දෙන්න."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&gt; හට අවට උපාංග සොයා ගැනීමට සහ සම්බන්ධ වීමට ඉඩ දෙන්නද?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&gt; හට අවට උපාංග සොයා ගැනීමට සහ සම්බන්ධ වීමට ඉඩ දෙන්නද? "<annotation id="link">"සැකසීම් තුළ ඉඩ දෙන්න."</annotation></string>
+    <!-- no translation found for permgrouprequest_nearby_devices (2272829282660436700) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequestdetail_nearby_devices (6877531270654738614) -->
+    <skip />
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> හි ස්ථානය ආසන්න සිට නිවැරදි දක්වා වෙනස් කරන්නද?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ට මෙම උපාංගයෙහි ස්ථානය වෙත ප්‍රවේශ වීමට ඉඩ දෙන්නද?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"ඉතා නිවැරදි"</string>
