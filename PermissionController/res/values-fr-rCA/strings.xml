@@ -146,7 +146,7 @@
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Tout afficher dans le tableau de bord"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtré par : <xliff:g id="PERM">%1$s</xliff:g>"</string>
-    <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Supprimer le filtre"</string>
+    <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Retirer le filtre"</string>
     <string name="filter_by_title" msgid="7300368602759958031">"Filtrer par"</string>
     <string name="filter_by_permissions" msgid="7613462963111282568">"Filtrer par autorisation"</string>
     <string name="filter_by_time" msgid="6667864816999691642">"Filtrer par heure"</string>
