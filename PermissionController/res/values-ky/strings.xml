@@ -23,19 +23,23 @@
     <string name="back" msgid="6249950659061523680">"Артка"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Чыгарып салуу же өчүрүү"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Колдонмо табылган жок"</string>
-    <string name="grant_dialog_button_deny" msgid="5694497572414531524">"Баш тартуу"</string>
-    <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1851917275643744594">"Баш тартам жана экинчи суралбасын"</string>
+    <!-- no translation found for grant_dialog_button_deny (88262611492697192) -->
+    <skip />
+    <!-- no translation found for grant_dialog_button_deny_and_dont_ask_again (1748925431574312595) -->
+    <skip />
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"\"Колдонмо пайдаланылып жаткан учурда\" режимин калтыруу"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"\"Ушул жолу гана\" жөндөөсү калсын"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Дагы маалымат"</string>
-    <string name="grant_dialog_button_deny_anyway" msgid="3221644923954258179">"Баары бир баш тартуу"</string>
+    <!-- no translation found for grant_dialog_button_deny_anyway (7225905870668915151) -->
+    <skip />
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Жабуу"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g> уруксаттын ичинен <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>"</string>
     <string name="permission_warning_template" msgid="2247087781222679458">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна <xliff:g id="ACTION">%2$s</xliff:g> уруксат берилсинби?"</string>
     <string name="permission_add_background_warning_template" msgid="1812914855915092273">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна <xliff:g id="ACTION">%2$s</xliff:g> аракетине ар дайым уруксат берилсинби?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"Ушул колдонмодо иштегенде гана"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"Ар дайым"</string>
-    <string name="deny_permission_deny_and_dont_ask_again" msgid="766882021426214510">"Баш тартам жана экинчи суралбасын"</string>
+    <!-- no translation found for deny_permission_deny_and_dont_ask_again (6106035221490102341) -->
+    <skip />
     <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g> өчүрүлгөн"</string>
     <string name="permission_revoked_all" msgid="3397649017727222283">"баары өчүрүлгөн"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"эч бири өчүрүлгөн жок"</string>
@@ -87,7 +91,8 @@
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"Бардык учурда уруксат берилет"</string>
     <string name="permission_access_only_foreground" msgid="7801170728159326195">"Колдонмо колдонулуп жатканда гана уруксат берилет"</string>
-    <string name="permission_access_never" msgid="1029877154284995424">"Уруксат берилбейт"</string>
+    <!-- no translation found for permission_access_never (4647014230217936900) -->
+    <skip />
     <string name="loading" msgid="4789365003890741082">"Жүктөлүүдө…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"Бардык уруксаттар"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Колдонмонун башка мүмкүнчүлүктөрү"</string>
@@ -107,7 +112,14 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Белгисиз"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Купуялык тактасы"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> колдонулушу"</string>
-    <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Акыркы 24 сааттын ичинде <xliff:g id="PERMGROUP">%1$s</xliff:g> уруксатын колдонуунун убакыт тилкеси"</string>
+    <!-- no translation found for perm_usage_adv_info_title (3357831829538873708) -->
+    <skip />
+    <!-- no translation found for perm_usage_adv_info_summary_2_items (3702175198750127822) -->
+    <skip />
+    <!-- no translation found for perm_usage_adv_info_summary_more_items (949055326299562218) -->
+    <skip />
+    <!-- no translation found for permission_group_usage_subtitle (712843174810251274) -->
+    <skip />
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Бул колдонмо уруксатыңызды (<xliff:g id="PERMGROUP">%1$s</xliff:g>) колдонгондо:"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Кененирээк"</string>
     <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
@@ -167,10 +179,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> колдонмо</item>
       <item quantity="one">1 колдонмо</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
-      <item quantity="other"><xliff:g id="PERMGROUP_1">%2$s</xliff:g> уруксатын <xliff:g id="NUMBER">%1$d</xliff:g> колдонмо пайдаланды</item>
-      <item quantity="one"><xliff:g id="PERMGROUP_0">%2$s</xliff:g> уруксатын 1 колдонмо пайдаланды</item>
-    </plurals>
+    <!-- no translation found for permission_usage_preference_label (9033113721294293706) -->
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Баарын Куралдар тактасында көрүү"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Чыпка: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Чыпканы алып салуу"</string>
@@ -200,11 +209,13 @@
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Бардык учурда уруксат берилет"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Колдонмо колдонулуп жатканда гана уруксат берилет"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Ар дайым суралсын"</string>
-    <string name="app_permission_button_deny" msgid="2399316993899108824">"Тыюу салынат"</string>
+    <!-- no translation found for app_permission_button_deny (6016454069832050300) -->
+    <skip />
     <string name="precise_image_description" msgid="6349638632303619872">"Так жайгашкан жери"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Болжолдуу жайгашкан жери"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Турган жерди так аныктоо"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Эгер бул параметр өчүк болсо, колдонмолор жүргөн районуңузду гана болжолдоп аныктай алышат"</string>
+    <!-- no translation found for app_permission_location_accuracy_subtitle (2654077606404987210) -->
+    <skip />
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> дайындарына уруксаттар"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"<xliff:g id="PERM">%1$s</xliff:g>: бул колдонмого уруксат берүү"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Бардык <xliff:g id="APP">%1$s</xliff:g> уруксаттарын көрүү"</string>
@@ -239,7 +250,8 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Мындай уруксаты бар колдонмолор сүрөт жана видео тарта алышат"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Мындай уруксаты бар колдонмолор байланыштарыңызды көрө алышат"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Мындай уруксаты бар колдонмолор бул түзмөктүн кайда турганын аныктай алышат"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Мындай уруксаты бар колдонмолор туташкан түзмөктөрдүн абалын аныктап, аларга туташып жана көрө алышат"</string>
+    <!-- no translation found for permission_description_summary_nearby_devices (8269183818275073741) -->
+    <skip />
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Мындай уруксаты бар колдонмолор аудиолорду жаздыра алат"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Мындай уруксаты бар колдонмолор телефон чалып, чалууларды башкара алышат"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Мындай уруксаты бар колдонмо организмдин абалына көз салган сенсордун көрсөткүчтөрүн көрө алат"</string>
@@ -255,7 +267,8 @@
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Медиа файлдарды гана көрүүгө уруксат берилген"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Бардык файлдарды башкарууга уруксат берилген"</string>
     <string name="ask_header" msgid="2633816846459944376">"Ар дайым суралсын"</string>
-    <string name="denied_header" msgid="2253955654228120835">"Четке кагылган"</string>
+    <!-- no translation found for denied_header (903209608358177654) -->
+    <skip />
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> күн</item>
       <item quantity="one">1 күн</item>
@@ -448,8 +461,10 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Бул колдонмо кайда жүргөнүңүздү ар дайым, колдонмону пайдаланбай турганда да, көрүүгө уруксат сурашы мүмкүн. "<annotation id="link">"Жөндөөлөрдөн уруксат бериңиз."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосу үчүн түзмөктүн жайгашкан жерин пайдалануу мүмкүнчүлүгү өзгөртүлсүнбү?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Бул колдонмо кайда жүргөнүңүздү ар дайым, колдонмону пайдаланбай турганда да, көрүүгө уруксат сурап жатат. "<annotation id="link">"Жөндөөлөрдөн уруксат бериңиз."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна жакын жердеги түзмөктөрдү аныктап, туташууга уруксат берилсинби?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна жакын жердеги түзмөктөрдү аныктап, туташууга уруксат берилсинби? "<annotation id="link">"Жөндөөлөрдөн уруксат берүү."</annotation></string>
+    <!-- no translation found for permgrouprequest_nearby_devices (2272829282660436700) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequestdetail_nearby_devices (6877531270654738614) -->
+    <skip />
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> колдонмосунун жайгашкан жери болжолдуудан так маалыматка өзгөртүлсүнбү?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна бул түзмөктүн болжолдуу жайгашкан жерин пайдаланууга уруксат берилсинби?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Так"</string>
