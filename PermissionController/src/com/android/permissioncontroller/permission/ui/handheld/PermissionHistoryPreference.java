@@ -69,6 +69,7 @@ public class PermissionHistoryPreference extends Preference {
     private final float mDialogHeightScalar;
     private final List<Long> mAccessTimeList;
     private final ArrayList<String> mAttributionTags;
+    private final boolean mIsLastUsage;
     private final Intent mIntent;
 
     private Drawable mWidgetIcon;
@@ -76,7 +77,7 @@ public class PermissionHistoryPreference extends Preference {
     public PermissionHistoryPreference(@NonNull Context context, @NonNull AppPermissionUsage usage,
             @NonNull String permissionGroup, @NonNull String accessTime,
             @Nullable CharSequence accessDuration, @NonNull List<Long> accessTimeList,
-            @NonNull ArrayList<String> attributionTags) {
+            @NonNull ArrayList<String> attributionTags, boolean isLastUsage) {
         super(context);
         mContext = context;
         mPackageName = usage.getPackageName();
@@ -87,6 +88,7 @@ public class PermissionHistoryPreference extends Preference {
         mWidgetIcon = null;
         mAccessTimeList = accessTimeList;
         mAttributionTags = attributionTags;
+        mIsLastUsage = isLastUsage;
         TypedValue outValue = new TypedValue();
         mContext.getResources().getValue(R.dimen.permission_access_time_dialog_width_scalar,
                 outValue, true);
@@ -133,8 +135,8 @@ public class PermissionHistoryPreference extends Preference {
 
         TextView permissionHistoryTime = widget.findViewById(R.id.permission_history_time);
         permissionHistoryTime.setText(mAccessTime);
-        ImageView permissionIcon = widget.findViewById(R.id.permission_history_icon);
 
+        ImageView permissionIcon = widget.findViewById(R.id.permission_history_icon);
         permissionIcon.setImageDrawable(mAppIcon);
 
         ImageView widgetView = widgetFrame.findViewById(R.id.icon);
@@ -143,6 +145,9 @@ public class PermissionHistoryPreference extends Preference {
         } else {
             setInfoIcon(widgetView);
         }
+
+        View dashLine = widget.findViewById(R.id.permission_history_dash_line);
+        dashLine.setVisibility(mIsLastUsage ? View.GONE : View.VISIBLE);
 
         setOnPreferenceClickListener((preference) -> {
             Intent intent = new Intent(Intent.ACTION_MANAGE_APP_PERMISSIONS);
