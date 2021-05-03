@@ -43,6 +43,7 @@
             android:layout_marginTop="14dp"/>
 
         <View
+            android:id="@+id/permission_history_dash_line"
             android:layout_width="26dp"
             android:layout_height="26dp"
             android:layout_marginStart="10dp"

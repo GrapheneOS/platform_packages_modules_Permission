@@ -387,7 +387,8 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
                                 Collectors.toCollection(ArrayList::new));
                 PermissionHistoryPreference permissionUsagePreference = new
                         PermissionHistoryPreference(context, usage.mAppPermissionUsage,
-                        mFilterGroup, accessTime, accessDuration, accessTimeList, attributionTags);
+                        mFilterGroup, accessTime, accessDuration, accessTimeList, attributionTags,
+                        usageNum == (numUsages - 1));
 
                 category.get().addPreference(permissionUsagePreference);
             }
