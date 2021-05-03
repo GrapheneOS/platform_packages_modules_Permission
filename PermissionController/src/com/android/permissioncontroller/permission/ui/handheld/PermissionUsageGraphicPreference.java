@@ -144,7 +144,8 @@ public class PermissionUsageGraphicPreference extends Preference {
 
         // Configure circle and labeler.
         ccvl.configure(R.id.composite_circle_view, centerLabel, labels, labelRadiusScalar);
-        ccv.configure(counts, colors, circleStrokeWidth);
+        // Start at angle 300 (top right) to allow for small segments for cam, mic, and loc.
+        ccv.configure(300, counts, colors, circleStrokeWidth);
     }
 
     private int getUsageCount(String group) {
