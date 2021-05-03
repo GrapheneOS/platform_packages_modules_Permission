@@ -69,6 +69,7 @@ public class CompositeCircleViewLabeler extends RelativeLayout {
         for (int i = 0; i < getChildCount(); i++) {
             if (getChildAt(i) instanceof TextView) {
                 removeViewAt(i);
+                i--;
             }
         }
         mCircleId = circleId;
@@ -100,12 +101,11 @@ public class CompositeCircleViewLabeler extends RelativeLayout {
 
         // Position center label.
         if (mCenterLabel != null) {
-            mCenterLabel.setX(ccvCenterX - (mCenterLabel.getWidth() * 0.5f));
-            mCenterLabel.setY(ccvCenterY - (mCenterLabel.getHeight() * 0.5f));
+            mCenterLabel.setX((int) (ccvCenterX - (mCenterLabel.getWidth() * 0.5f)));
+            mCenterLabel.setY((int) (ccvCenterY - (mCenterLabel.getHeight() * 0.5f)));
         }
 
         // For each provided label, determine position angle.
-        // TODO(b/176902658): Handle case where labels are overlapping.
         for (int i = 0; i < mLabels.length; i++) {
             TextView label = mLabels[i];
             if (label == null) {
@@ -127,8 +127,8 @@ public class CompositeCircleViewLabeler extends RelativeLayout {
             } else if (angle < (Math.PI * 1.5d)) {
                 x -= label.getWidth();
             }
-            label.setX((float) x);
-            label.setY((float) y);
+            label.setX((int) x);
+            label.setY((int) y);
         }
     }
 }
