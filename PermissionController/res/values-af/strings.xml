@@ -23,19 +23,19 @@
     <string name="back" msgid="6249950659061523680">"Terug"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Deïnstalleer of deaktiveer"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Program nie gevind nie"</string>
-    <string name="grant_dialog_button_deny" msgid="5694497572414531524">"Weier"</string>
-    <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1851917275643744594">"Weier en moenie weer vra nie"</string>
+    <string name="grant_dialog_button_deny" msgid="88262611492697192">"Moenie toelaat nie"</string>
+    <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"Moenie toelaat nie en moenie weer vra nie"</string>
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Hou \"Terwyl die program gebruik word\""</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Hou \"Net hierdie keer\""</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Meer inligting"</string>
-    <string name="grant_dialog_button_deny_anyway" msgid="3221644923954258179">"Weier in elk geval"</string>
+    <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Moet in elk geval nie toelaat nie"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Maak toe"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> van <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
     <string name="permission_warning_template" msgid="2247087781222679458">"Laat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toe om <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
     <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Laat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; altyd toe om <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"Net terwyl program gebruik word"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"Altyd"</string>
-    <string name="deny_permission_deny_and_dont_ask_again" msgid="766882021426214510">"Weier en moenie weer vra nie"</string>
+    <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"Moenie toelaat nie en moenie weer vra nie"</string>
     <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g> is gedeaktiveer"</string>
     <string name="permission_revoked_all" msgid="3397649017727222283">"alles is gedeaktiveer"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"geen is gedeaktiveer nie"</string>
@@ -87,7 +87,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"Laat altyd toe"</string>
     <string name="permission_access_only_foreground" msgid="7801170728159326195">"Laat net toe terwyl jy program gebruik"</string>
-    <string name="permission_access_never" msgid="1029877154284995424">"Weier"</string>
+    <string name="permission_access_never" msgid="4647014230217936900">"Moenie toelaat nie"</string>
     <string name="loading" msgid="4789365003890741082">"Laai tans …"</string>
     <string name="all_permissions" msgid="6911125611996872522">"Alle toestemmings"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Ander programvermoëns"</string>
@@ -107,7 +107,13 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Onbekend"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Privaatheidkontroleskerm"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g>-gebruik"</string>
-    <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Tydlyn van wanneer jy jou <xliff:g id="PERMGROUP">%1$s</xliff:g> in die afgelope 24 uur gebruik het"</string>
+    <!-- no translation found for perm_usage_adv_info_title (3357831829538873708) -->
+    <skip />
+    <!-- no translation found for perm_usage_adv_info_summary_2_items (3702175198750127822) -->
+    <skip />
+    <!-- no translation found for perm_usage_adv_info_summary_more_items (949055326299562218) -->
+    <skip />
+    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Tydlyn van wanneer programme jou <xliff:g id="PERMGROUP">%1$s</xliff:g> in die afgelope 24 uur gebruik het"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Wanneer hierdie program jou <xliff:g id="PERMGROUP">%1$s</xliff:g> gebruik het:"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Kom meer te wete"</string>
     <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
@@ -167,10 +173,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> programme</item>
       <item quantity="one">1 program</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
-      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> programme het <xliff:g id="PERMGROUP_1">%2$s</xliff:g> gebruik</item>
-      <item quantity="one">1 program het <xliff:g id="PERMGROUP_0">%2$s</xliff:g> gebruik</item>
-    </plurals>
+    <!-- no translation found for permission_usage_preference_label (9033113721294293706) -->
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Sien alles in Dashboard"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Gefiltreer volgens: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Verwyder filter"</string>
@@ -200,11 +203,11 @@
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Laat altyd toe"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Laat net toe terwyl jy program gebruik"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Vra elke keer"</string>
-    <string name="app_permission_button_deny" msgid="2399316993899108824">"Weier"</string>
+    <string name="app_permission_button_deny" msgid="6016454069832050300">"Moenie toelaat nie"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Presiese ligging"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Benaderde ligging"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Gebruik presiese ligging"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Programme kan jou benaderde ligging binne \'n woonbuurt slegs bepaal wanneer dit af is"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Wanneer presiese ligging af is, kan programme jou benaderde ligging bepaal"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>-toestemming"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Toegang tot <xliff:g id="PERM">%1$s</xliff:g> vir hierdie program"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Sien al <xliff:g id="APP">%1$s</xliff:g> se toestemmings"</string>
@@ -239,7 +242,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Programme met hierdie toestemming kan foto\'s neem en video\'s opneem"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Programme met hierdie toestemming kan toegang tot jou kontakte kry"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Programme met hierdie toestemming kan toegang tot jou toestel se ligging kry"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Programme met hierdie toestemming kan toestelle in die omtrek ontdek, daaraan koppel, en die relatiewe posisie daarvan bepaal"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Programme met hierdie toestemming kan toestelle in die omtrek soek, aan hulle koppel en hul relatiewe posisie bepaal"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Programme met hierdie toestemming kan oudio opneem"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Programme met hierdie toestemming kan foonoproepe maak en bestuur"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Programme met hierdie toestemming kan toegang kry tot sensordata oor jou lewenstekens"</string>
@@ -255,7 +258,7 @@
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Net toegang tot media toegelaat"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Toegelaat om alle lêers te bestuur"</string>
     <string name="ask_header" msgid="2633816846459944376">"Vra elke keer"</string>
-    <string name="denied_header" msgid="2253955654228120835">"Geweier"</string>
+    <string name="denied_header" msgid="903209608358177654">"Nie toegelaat nie"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> dae</item>
       <item quantity="one">1 dag</item>
@@ -448,8 +451,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Hierdie program wil dalk die hele tyd toegang tot jou ligging hê, selfs wanneer jy nie die program gebruik nie. "<annotation id="link">"Laat toe in instellings."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Verander liggingtoegang vir &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Hierdie program wil die hele tyd toegang tot jou ligging hê, selfs wanneer jy nie die program gebruik nie. "<annotation id="link">"Laat toe in instellings."</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"Laat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toe om toestelle in die omtrek te ontdek en daaraan te koppel?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"Laat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toe om toestelle in die omtrek te ontdek en daaraan te koppel? "<annotation id="link">"Laat in Instellings toe."</annotation></string>
+    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Laat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toe om toestelle in die omtrek te soek, aan hulle te koppel en hul relatiewe posisie te bepaal?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Laat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toe om toestelle in die omtrek te soek, aan hulle te koppel en hul relatiewe posisie te bepaal? "<annotation id="link">"Laat toe in Instellings."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Verander <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> se liggingtoegang van benaderd na presies?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Gee &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang tot hierdie toestel se benaderde ligging?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Presies"</string>
