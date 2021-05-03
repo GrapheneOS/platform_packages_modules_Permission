@@ -26,19 +26,22 @@ import androidx.annotation.Nullable;
 /**
  * Configured to draw a set of contiguous partial circles via {@link PartialCircleView}, which
  * are generated from the relative weight of values and corresponding colors given to
- * {@link #configure(float[], int[], int)}.
+ * {@link #configure(float, int[], int[], int)}.
  */
 public class CompositeCircleView extends FrameLayout {
 
     /** Spacing between circle segments in degrees. */
     private static final int SEGMENT_ANGLE_SPACING_DEG = 2;
 
+    /** How far apart to bump labels so that they have more space. */
+    private static final float LABEL_BUMP_DEGREES = 10;
+
     /** Values being represented by this circle. */
     private int[] mValues;
 
     /**
      * Angles toward the middle of each colored partial circle, calculated in
-     * {@link #configure(float[], int[], int)}. Can be used to position text relative to the
+     * {@link #configure(float, int[], int[], int)}. Can be used to position text relative to the
      * partial circles, by index.
      */
     private float[] mPartialCircleCenterAngles;
@@ -66,11 +69,12 @@ public class CompositeCircleView extends FrameLayout {
      * are generated from the relative weight of the given values and corresponding colors. The
      * first segment starts at the top, and drawing proceeds clockwise from there.
      *
+     * @param startAngle the angle at which to start segments
      * @param values relative weights, used to size the partial circles
      * @param colors colors corresponding to relative weights
      * @param strokeWidth stroke width to apply to all contained partial circles
      */
-    public void configure(int[] values, int[] colors, int strokeWidth) {
+    public void configure(float startAngle, int[] values, int[] colors, int strokeWidth) {
         removeAllViews();
         mValues = values;
 
@@ -84,12 +88,15 @@ public class CompositeCircleView extends FrameLayout {
             }
         }
 
-        // Start from vertical top, which is angle = 270.
-        float startAngle = 270 + (SEGMENT_ANGLE_SPACING_DEG * 0.5f);
+        // Add small spacing to the first angle to make the little space between segments.
+        startAngle = startAngle + (SEGMENT_ANGLE_SPACING_DEG * 0.5f);
         mPartialCircleCenterAngles = new float[values.length];
 
         // Number of degrees allocated to drawing circle segments.
         float allocatedDegrees = 360 - (numValidValues * SEGMENT_ANGLE_SPACING_DEG);
+
+        // Number of consecutive times we've bumped the next label further to make space.
+        int labelBumps = 0;
 
         for (int i = 0; i < values.length; i++) {
             if (values[i] <= 0) {
@@ -106,12 +113,51 @@ public class CompositeCircleView extends FrameLayout {
             // angles for later reference.
             float sweepAngle = (values[i] / total) * allocatedDegrees;
             pcv.setSweepAngle(sweepAngle);
-            mPartialCircleCenterAngles[i] = (startAngle + (sweepAngle * 0.5f)) % 360;
+
+            // If the sweep angle is big, don't bump this label out, spread previous label
+            // bumps by moving all bumped items back.
+            if (sweepAngle > ((labelBumps * LABEL_BUMP_DEGREES) * 2)) {
+                spreadPreviousLabelBumps(labelBumps, i);
+                labelBumps = 0;
+            }
+
+            mPartialCircleCenterAngles[i] =
+                    (startAngle + (sweepAngle * 0.5f) + (labelBumps * LABEL_BUMP_DEGREES)) % 360;
+
+            // If the sweep angle is tiny, we have to bump the next label out a bit.
+            if (sweepAngle < LABEL_BUMP_DEGREES) {
+                labelBumps++;
+            }
 
             // Move to next segment.
             startAngle += sweepAngle;
             startAngle += SEGMENT_ANGLE_SPACING_DEG;
             startAngle %= 360;
+        }
+
+        // If any label bumps remaining, spread now.
+        spreadPreviousLabelBumps(labelBumps, values.length);
+    }
+
+    /**
+     * If we've been bumping labels further from previous labels to make space, we use this method
+     * to spread the bumps back along the circle, so that labels are as close as possible to their
+     * corresponding segments.
+     *
+     * @param labelBumps total number of previous segments under the size threshold
+     * @param behindIndex the index behind which we were bumping labels
+     */
+    private void spreadPreviousLabelBumps(int labelBumps, int behindIndex) {
+        if (labelBumps > 0) {
+            float spread = ((labelBumps - 1) * LABEL_BUMP_DEGREES) * 0.5f;
+            for (int i = 1; i <= labelBumps; i++) {
+                int index = behindIndex - i;
+                float angle = mPartialCircleCenterAngles[index];
+                angle -= spread;
+                angle += 360;
+                angle %= 360;
+                mPartialCircleCenterAngles[index] = angle;
+            }
         }
     }
 
