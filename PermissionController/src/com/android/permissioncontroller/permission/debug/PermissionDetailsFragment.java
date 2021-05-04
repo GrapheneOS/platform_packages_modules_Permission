@@ -29,9 +29,12 @@ import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.ArraySet;
 import android.util.Pair;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -141,6 +144,23 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
         mRoleManager = Utils.getSystemServiceSafe(context, RoleManager.class);
 
         reloadData();
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+            Bundle savedInstanceState) {
+        ViewGroup root = (ViewGroup) super.onCreateView(inflater, container, savedInstanceState);
+
+        mExtendedFab.setText(R.string.manage_permission);
+        mExtendedFab.setIcon(getActivity().getDrawable(R.drawable.ic_settings_outline));
+        mExtendedFab.setVisibility(View.VISIBLE);
+        mExtendedFab.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_MANAGE_PERMISSION_APPS)
+                    .putExtra(Intent.EXTRA_PERMISSION_NAME, mFilterGroup);
+            startActivity(intent);
+        });
+
+        return root;
     }
 
     @Override
