@@ -24,6 +24,7 @@ import androidx.annotation.NonNull;
 import androidx.preference.Preference;
 
 import com.android.permissioncontroller.R;
+import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 
 import java.util.List;
@@ -41,13 +42,15 @@ public class PermissionUsageV2ControlPreference extends Preference {
     private final Context mContext;
     private final String mGroupName;
     private final int mCount;
+    private final boolean mShowSystem;
 
     public PermissionUsageV2ControlPreference(@NonNull Context context, @NonNull String groupName,
-            int count) {
+            int count, boolean showSystem) {
         super(context);
         mContext = context;
         mGroupName = groupName;
         mCount = count;
+        mShowSystem = showSystem;
 
         CharSequence permGroupLabel = KotlinUtils.INSTANCE.getPermGroupLabel(mContext, mGroupName);
         setTitle(permGroupLabel);
@@ -61,6 +64,7 @@ public class PermissionUsageV2ControlPreference extends Preference {
             setOnPreferenceClickListener((preference) -> {
                 Intent intent = new Intent(Intent.ACTION_REVIEW_PERMISSION_HISTORY);
                 intent.putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, mGroupName);
+                intent.putExtra(ManagePermissionsActivity.EXTRA_SHOW_SYSTEM, mShowSystem);
 
                 mContext.startActivity(intent);
                 return true;
