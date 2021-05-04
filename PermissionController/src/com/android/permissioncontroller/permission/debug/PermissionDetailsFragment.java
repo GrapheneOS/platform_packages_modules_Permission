@@ -48,7 +48,7 @@ import com.android.permissioncontroller.permission.ui.handheld.PermissionHistory
 import com.android.permissioncontroller.permission.ui.handheld.SettingsWithLargeHeader;
 import com.android.permissioncontroller.permission.utils.Utils;
 
-import java.time.Instant;
+import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -331,7 +331,9 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
             getActivity().invalidateOptionsMenu();
         }
 
-        long midnightToday = Instant.now().truncatedTo(ChronoUnit.DAYS).toEpochMilli();
+        // Truncate to midnight in current timezone.
+        final long midnightToday = ZonedDateTime.now().truncatedTo(ChronoUnit.DAYS).toEpochSecond()
+                * 1000L;
         AppPermissionUsageEntry midnightTodayEntry = new AppPermissionUsageEntry(
                 null, midnightToday, null);
 
@@ -376,8 +378,10 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
                         .filter(dur -> dur > 0)
                         .reduce(0L, (dur1, dur2) -> dur1 + dur2);
 
+                // Only show the duration if it is at least (cluster + 1) minutes. Displaying times
+                // that are the same as the cluster granularity does not convey useful information.
                 String accessDuration = null;
-                if (accessDurationLong > 0) {
+                if (accessDurationLong >= MINUTES.toMillis(CLUSTER_MINUTES_APART + 1)) {
                     accessDuration = UtilsKt.getDurationUsedStr(context, accessDurationLong);
                 }
 
