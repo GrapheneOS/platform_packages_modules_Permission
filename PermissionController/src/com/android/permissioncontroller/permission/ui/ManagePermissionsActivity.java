@@ -87,6 +87,12 @@ public final class ManagePermissionsActivity extends FragmentActivity {
             + ".permissioncontroller.extra.PERMISSION_RESULT";
 
     /**
+     * Whether to show system apps in UI receiving an intent containing this extra.
+     */
+    public static final String EXTRA_SHOW_SYSTEM = "com.android"
+            + ".permissioncontroller.extra.SHOW_SYSTEM";
+
+    /**
      * The requestCode used when we decide not to use this activity, but instead launch
      * another activity in our place. When that activity finishes, we set it's result
      * as our result and then finish.
@@ -160,8 +166,10 @@ public final class ManagePermissionsActivity extends FragmentActivity {
                 if (UtilsKt.isPrivacyHubEnabled()) {
                     String groupName = getIntent()
                             .getStringExtra(Intent.EXTRA_PERMISSION_GROUP_NAME);
+                    boolean showSystem = getIntent()
+                            .getBooleanExtra(EXTRA_SHOW_SYSTEM, false);
                     androidXFragment = PermissionDetailsFragment
-                            .newInstance(groupName, Long.MAX_VALUE);
+                            .newInstance(groupName, Long.MAX_VALUE, showSystem);
                 }
 
                 break;
