@@ -103,10 +103,7 @@ public class PermissionHistoryPreference extends Preference {
         }
 
         mIntent = getViewPermissionUsageForPeriodIntent();
-        if (mAccessTimeList.size() > 1) {
-            mWidgetIcon = mContext.getDrawable(R.drawable.ic_history);
-            setWidgetLayoutResource(R.layout.image_view_with_divider);
-        } else if (mIntent != null) {
+        if (mIntent != null) {
             mWidgetIcon = mContext.getDrawable(R.drawable.ic_info_outline);
             setWidgetLayoutResource(R.layout.image_view_with_divider);
         }
@@ -140,11 +137,7 @@ public class PermissionHistoryPreference extends Preference {
         permissionIcon.setImageDrawable(mAppIcon);
 
         ImageView widgetView = widgetFrame.findViewById(R.id.icon);
-        if (mAccessTimeList.size() > 1) {
-            setHistoryIcon(widgetView);
-        } else {
-            setInfoIcon(widgetView);
-        }
+        setInfoIcon(widgetView);
 
         View dashLine = widget.findViewById(R.id.permission_history_dash_line);
         dashLine.setVisibility(mIsLastUsage ? View.GONE : View.VISIBLE);
