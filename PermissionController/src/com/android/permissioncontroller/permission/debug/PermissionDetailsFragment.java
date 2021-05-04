@@ -42,6 +42,7 @@ import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.model.AppPermissionUsage;
 import com.android.permissioncontroller.permission.model.legacy.PermissionApps;
+import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity;
 import com.android.permissioncontroller.permission.ui.handheld.PermissionGroupPreference;
 import com.android.permissioncontroller.permission.ui.handheld.PermissionHistoryPreference;
 import com.android.permissioncontroller.permission.ui.handheld.SettingsWithLargeHeader;
@@ -76,7 +77,7 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
     private static final int CLUSTER_MINUTES_APART = 1;
 
     private static final String KEY_SHOW_SYSTEM_PREFS = "_show_system";
-    private static final String SHOW_SYSTEM_KEY = PermissionUsageFragment.class.getName()
+    private static final String SHOW_SYSTEM_KEY = PermissionDetailsFragment.class.getName()
             + KEY_SHOW_SYSTEM_PREFS;
 
     private @Nullable String mFilterGroup;
@@ -97,13 +98,14 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
      * Construct a new instance of PermissionDetailsFragment
      */
     public static @NonNull PermissionDetailsFragment newInstance(@Nullable String groupName,
-            long numMillis) {
+            long numMillis, boolean showSystem) {
         PermissionDetailsFragment fragment = new PermissionDetailsFragment();
         Bundle arguments = new Bundle();
         if (groupName != null) {
             arguments.putString(Intent.EXTRA_PERMISSION_GROUP_NAME, groupName);
         }
         arguments.putLong(Intent.EXTRA_DURATION_MILLIS, numMillis);
+        arguments.putBoolean(ManagePermissionsActivity.EXTRA_SHOW_SYSTEM, showSystem);
         fragment.setArguments(arguments);
         return fragment;
     }
@@ -116,9 +118,11 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
         initializeTimeFilter();
         mFilterTimeIndex = FILTER_24_HOURS;
 
-        mShowSystem = false;
         if (savedInstanceState != null) {
             mShowSystem = savedInstanceState.getBoolean(SHOW_SYSTEM_KEY);
+        } else {
+            mShowSystem = getArguments().getBoolean(
+                    ManagePermissionsActivity.EXTRA_SHOW_SYSTEM, false);
         }
 
         if (mFilterGroup == null) {
