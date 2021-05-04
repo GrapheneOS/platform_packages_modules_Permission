@@ -309,7 +309,6 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
                             Stream.of(time).collect(Collectors.toCollection(ArrayList::new)));
                     } else {
                         ongoingAccessTimeList.add(time);
-                        ongoingEntry.mStartTime = time.first;
                     }
                 }
             }
@@ -318,7 +317,7 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
             return usageEntries;
         }).flatMap(Collection::stream).sorted((x, y) -> {
             // Sort all usage entries by startTime desc, and then by app name.
-            int timeCompare = Long.compare(y.mStartTime, x.mStartTime);
+            int timeCompare = Long.compare(y.mEndTime, x.mEndTime);
             if (timeCompare != 0) {
                 return timeCompare;
             }
@@ -341,7 +340,7 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
         // the index of the first usage entry from yesterday
         int todayCategoryIndex = 0;
         int yesterdayCategoryIndex = Collections.binarySearch(usages,
-                midnightTodayEntry, (e1, e2) -> Long.compare(e2.getStartTime(), e1.getStartTime()));
+                midnightTodayEntry, (e1, e2) -> Long.compare(e2.getEndTime(), e1.getEndTime()));
         if (yesterdayCategoryIndex < 0) {
             yesterdayCategoryIndex = -1 * (yesterdayCategoryIndex + 1);
         }
@@ -371,7 +370,7 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
                     category.get().setTitle(R.string.permission_history_category_today);
                 }
 
-                String accessTime = DateFormat.getTimeFormat(context).format(usage.mStartTime);
+                String accessTime = DateFormat.getTimeFormat(context).format(usage.mEndTime);
                 Long accessDurationLong = usage.mClusteredAccessTimeList
                         .stream()
                         .map(p -> p.second)
@@ -531,12 +530,12 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
     private static class AppPermissionUsageEntry {
         private final AppPermissionUsage mAppPermissionUsage;
         private final List<Pair<Long, Long>> mClusteredAccessTimeList;
-        private long mStartTime;
+        private long mEndTime;
 
-        AppPermissionUsageEntry(AppPermissionUsage appPermissionUsage, long startTime,
+        AppPermissionUsageEntry(AppPermissionUsage appPermissionUsage, long endTime,
                 List<Pair<Long, Long>> clusteredAccessTimeList) {
             mAppPermissionUsage = appPermissionUsage;
-            mStartTime = startTime;
+            mEndTime = endTime;
             mClusteredAccessTimeList = clusteredAccessTimeList;
         }
 
@@ -544,8 +543,8 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
             return mAppPermissionUsage;
         }
 
-        public long getStartTime() {
-            return mStartTime;
+        public long getEndTime() {
+            return mEndTime;
         }
 
         public List<Pair<Long, Long>> getAccessTime() {
