@@ -509,7 +509,7 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
                 Map.Entry<String, Integer> currentEntry = usages.get(i);
                 PermissionUsageV2ControlPreference permissionUsagePreference =
                         new PermissionUsageV2ControlPreference(context, currentEntry.getKey(),
-                                currentEntry.getValue());
+                                currentEntry.getValue(), mShowSystem);
                 category.addPreference(permissionUsagePreference);
             }
 
