@@ -322,26 +322,26 @@
 
     <!-- Duration used for a permission in days -->
     <plurals name="duration_used_days">
-        <item quantity="one">Used for 1 day</item>
-        <item quantity="other">Used for <xliff:g id="number" example="7">%s</xliff:g> days</item>
+        <item quantity="one">1 day</item>
+        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> days</item>
     </plurals>
 
     <!-- Duration used for a permission in hours -->
     <plurals name="duration_used_hours">
-        <item quantity="one">Used for 1 hour</item>
-        <item quantity="other">Used for <xliff:g id="number" example="7">%s</xliff:g> hours</item>
+        <item quantity="one">1 hour</item>
+        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> hours</item>
     </plurals>
 
     <!-- Duration used for a permission in minutes -->
     <plurals name="duration_used_minutes">
-        <item quantity="one">Used for 1 min</item>
-        <item quantity="other">Used for <xliff:g id="number" example="7">%s</xliff:g> mins</item>
+        <item quantity="one">1 min</item>
+        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> mins</item>
     </plurals>
 
     <!-- Duration used for a permission in seconds -->
     <plurals name="duration_used_seconds">
-        <item quantity="one">Used for 1 sec</item>
-        <item quantity="other">Used for <xliff:g id="number" example="7">%s</xliff:g> secs</item>
+        <item quantity="one">1 sec</item>
+        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> secs</item>
     </plurals>
 
 
