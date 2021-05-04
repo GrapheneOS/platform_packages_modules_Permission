@@ -107,12 +107,9 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Desconhecido"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Painel de privacidade"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Uso do grupo de permissões <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
-    <!-- no translation found for perm_usage_adv_info_title (3357831829538873708) -->
-    <skip />
-    <!-- no translation found for perm_usage_adv_info_summary_2_items (3702175198750127822) -->
-    <skip />
-    <!-- no translation found for perm_usage_adv_info_summary_more_items (949055326299562218) -->
-    <skip />
+    <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Ver outras permissões"</string>
+    <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
+    <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> e mais <xliff:g id="NUM">%3$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Linha do tempo de quando apps usaram seu <xliff:g id="PERMGROUP">%1$s</xliff:g> nas últimas 24 horas"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Quando esse app usou seu <xliff:g id="PERMGROUP">%1$s</xliff:g>:"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Saiba mais"</string>
@@ -173,7 +170,10 @@
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> app</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> apps</item>
     </plurals>
-    <!-- no translation found for permission_usage_preference_label (9033113721294293706) -->
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
+      <item quantity="one">Usadas por <xliff:g id="NUMBER">%1$d</xliff:g> app</item>
+      <item quantity="other">Usadas por <xliff:g id="NUMBER">%1$d</xliff:g> apps</item>
+    </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Ver tudo no painel"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrado por: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Remover filtro"</string>

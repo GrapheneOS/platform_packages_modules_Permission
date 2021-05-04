@@ -23,23 +23,19 @@
     <string name="back" msgid="6249950659061523680">"Назад"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Удалить или отключить"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Приложение не найдено"</string>
-    <!-- no translation found for grant_dialog_button_deny (88262611492697192) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_deny_and_dont_ask_again (1748925431574312595) -->
-    <skip />
+    <string name="grant_dialog_button_deny" msgid="88262611492697192">"Запретить"</string>
+    <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"Запретить и больше не спрашивать"</string>
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Оставить доступ только в активном режиме"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Оставить \"Только в этот раз\""</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Подробнее"</string>
-    <!-- no translation found for grant_dialog_button_deny_anyway (7225905870668915151) -->
-    <skip />
+    <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Все равно запретить"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Закрыть"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> из <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
     <string name="permission_warning_template" msgid="2247087781222679458">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
     <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Всегда разрешать приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"Когда открыто приложение"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"Всегда"</string>
-    <!-- no translation found for deny_permission_deny_and_dont_ask_again (6106035221490102341) -->
-    <skip />
+    <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"Запретить и больше не спрашивать"</string>
     <string name="permission_revoked_count" msgid="4785082705441547086">"отключено: <xliff:g id="COUNT">%1$d</xliff:g>"</string>
     <string name="permission_revoked_all" msgid="3397649017727222283">"все отключены"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"все включены"</string>
@@ -93,8 +89,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"Разрешить в любом режиме"</string>
     <string name="permission_access_only_foreground" msgid="7801170728159326195">"Только во время использования"</string>
-    <!-- no translation found for permission_access_never (4647014230217936900) -->
-    <skip />
+    <string name="permission_access_never" msgid="4647014230217936900">"Запретить"</string>
     <string name="loading" msgid="4789365003890741082">"Загрузка…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"Все разрешения"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Что ещё может приложение"</string>
@@ -114,14 +109,10 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Неизвестное приложение"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Панель управления доступом"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Использование разрешения \"<xliff:g id="PERMGROUP">%1$s</xliff:g>\""</string>
-    <!-- no translation found for perm_usage_adv_info_title (3357831829538873708) -->
-    <skip />
-    <!-- no translation found for perm_usage_adv_info_summary_2_items (3702175198750127822) -->
-    <skip />
-    <!-- no translation found for perm_usage_adv_info_summary_more_items (949055326299562218) -->
-    <skip />
-    <!-- no translation found for permission_group_usage_subtitle (712843174810251274) -->
-    <skip />
+    <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Показать другие разрешения"</string>
+    <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
+    <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> и ещё <xliff:g id="NUM">%3$s</xliff:g>"</string>
+    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Хронология использования разрешения \"<xliff:g id="PERMGROUP">%1$s</xliff:g>\" за последние 24 часа"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Когда это приложение использовало ваши данные (<xliff:g id="PERMGROUP">%1$s</xliff:g>):"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Подробнее…"</string>
     <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
@@ -199,7 +190,12 @@
       <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> приложений</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> приложения</item>
     </plurals>
-    <!-- no translation found for permission_usage_preference_label (9033113721294293706) -->
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
+      <item quantity="one">Используется в <xliff:g id="NUMBER">%1$d</xliff:g> приложении</item>
+      <item quantity="few">Используется в <xliff:g id="NUMBER">%1$d</xliff:g> приложениях</item>
+      <item quantity="many">Используется в <xliff:g id="NUMBER">%1$d</xliff:g> приложениях</item>
+      <item quantity="other">Используется в <xliff:g id="NUMBER">%1$d</xliff:g> приложения</item>
+    </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Показать все в панели управления"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Фильтр: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Удалить фильтр"</string>
@@ -231,13 +227,11 @@
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Разрешить в любом режиме"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Разрешить только во время использования приложения"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Спрашивать каждый раз"</string>
-    <!-- no translation found for app_permission_button_deny (6016454069832050300) -->
-    <skip />
+    <string name="app_permission_button_deny" msgid="6016454069832050300">"Запретить"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Точное местоположение"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Приблизительное местоположение"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Использовать точное местоположение"</string>
-    <!-- no translation found for app_permission_location_accuracy_subtitle (2654077606404987210) -->
-    <skip />
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Если определение точного местоположения отключено, приложения могут использовать данные о примерном местоположении устройства"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Разрешение \"<xliff:g id="PERM">%1$s</xliff:g>\""</string>
     <string name="app_permission_header" msgid="2951363137032603806">"<xliff:g id="PERM">%1$s</xliff:g>: доступ для этого приложения"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Все разрешения приложения \"<xliff:g id="APP">%1$s</xliff:g>\""</string>
@@ -272,8 +266,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Приложения с этим разрешением могут снимать фото и видео."</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Приложения с этим разрешением могут получать доступ к контактам."</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Приложения с этим разрешением могут получать доступ к местоположению устройства."</string>
-    <!-- no translation found for permission_description_summary_nearby_devices (8269183818275073741) -->
-    <skip />
+    <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Приложения с этим разрешением могут находить устройства поблизости, подключаться к ним и определять их относительное позиционирование."</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Приложения с этим разрешением могут записывать аудио."</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Приложения с этим разрешением могут совершать звонки и управлять ими."</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Приложения с этим разрешением могут получать доступ к данным датчиков основных показателей жизнедеятельности."</string>
@@ -289,8 +282,7 @@
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Приложения с доступом только к медиафайлам"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Приложения с доступом ко всем файлам"</string>
     <string name="ask_header" msgid="2633816846459944376">"Разрешение запрашивается каждый раз"</string>
-    <!-- no translation found for denied_header (903209608358177654) -->
-    <skip />
+    <string name="denied_header" msgid="903209608358177654">"Доступ запрещен"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> день</item>
       <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> дня</item>
@@ -497,10 +489,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Этому приложению может потребоваться доступ к вашему местоположению, даже когда вы им не пользуетесь. Предоставьте разрешение в "<annotation id="link">"настройках"</annotation>"."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Изменить настройки доступа к данным о местоположении для приложения &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Этому приложению требуется доступ к вашему местоположению, даже когда вы им не пользуетесь. Предоставьте разрешение в "<annotation id="link">"настройках"</annotation>"."</string>
-    <!-- no translation found for permgrouprequest_nearby_devices (2272829282660436700) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequestdetail_nearby_devices (6877531270654738614) -->
-    <skip />
+    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Разрешить приложению \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" находить устройства поблизости, подключаться к ним и определять их относительное позиционирование?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Разрешить приложению \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" находить устройства поблизости, подключаться к ним и определять их относительное позиционирование? "<annotation id="link">"Открыть настройки"</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Изменить местоположение в приложении \"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>\" с приблизительного на точное?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным о приблизительном местоположении устройства?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Точно"</string>
