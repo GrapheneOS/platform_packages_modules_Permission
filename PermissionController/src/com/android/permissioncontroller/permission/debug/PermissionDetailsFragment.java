@@ -172,12 +172,10 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        if (mHasSystemApps) {
-            mShowSystemMenu = menu.add(Menu.NONE, MENU_SHOW_SYSTEM, Menu.NONE,
-                    R.string.menu_show_system);
-            mHideSystemMenu = menu.add(Menu.NONE, MENU_HIDE_SYSTEM, Menu.NONE,
-                    R.string.menu_hide_system);
-        }
+        mShowSystemMenu = menu.add(Menu.NONE, MENU_SHOW_SYSTEM, Menu.NONE,
+                R.string.menu_show_system);
+        mHideSystemMenu = menu.add(Menu.NONE, MENU_HIDE_SYSTEM, Menu.NONE,
+                R.string.menu_hide_system);
 
         updateMenu();
     }
@@ -185,7 +183,16 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
     private void updateMenu() {
         if (mHasSystemApps) {
             mShowSystemMenu.setVisible(!mShowSystem);
+            mShowSystemMenu.setEnabled(true);
+
             mHideSystemMenu.setVisible(mShowSystem);
+            mHideSystemMenu.setEnabled(true);
+        } else {
+            mShowSystemMenu.setVisible(true);
+            mShowSystemMenu.setEnabled(false);
+
+            mHideSystemMenu.setVisible(false);
+            mHideSystemMenu.setEnabled(false);
         }
     }
 
