@@ -107,12 +107,9 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Ukendt"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Privatlivspanel"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Brug af <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
-    <!-- no translation found for perm_usage_adv_info_title (3357831829538873708) -->
-    <skip />
-    <!-- no translation found for perm_usage_adv_info_summary_2_items (3702175198750127822) -->
-    <skip />
-    <!-- no translation found for perm_usage_adv_info_summary_more_items (949055326299562218) -->
-    <skip />
+    <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Se andre tilladelser"</string>
+    <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g> <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
+    <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> og <xliff:g id="NUM">%3$s</xliff:g> mere"</string>
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Tidslinje for, hvornår apps anvendte din <xliff:g id="PERMGROUP">%1$s</xliff:g> inden for de seneste 24 timer"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Da denne app anvendte din <xliff:g id="PERMGROUP">%1$s</xliff:g>:"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Få flere oplysninger"</string>
@@ -173,7 +170,10 @@
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> app</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> apps</item>
     </plurals>
-    <!-- no translation found for permission_usage_preference_label (9033113721294293706) -->
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
+      <item quantity="one">Anvendes af <xliff:g id="NUMBER">%1$d</xliff:g> app</item>
+      <item quantity="other">Anvendes af <xliff:g id="NUMBER">%1$d</xliff:g> apps</item>
+    </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Se alt i kontrolpanelet"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtreret efter: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Fjern filter"</string>
