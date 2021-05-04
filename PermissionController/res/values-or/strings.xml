@@ -23,23 +23,19 @@
     <string name="back" msgid="6249950659061523680">"ପଛକୁ ଫେରନ୍ତୁ"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"ଅନଇନଷ୍ଟଲ୍ କରନ୍ତୁ କିମ୍ବା ଅକ୍ଷମ କରନ୍ତୁ"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"ଆପ୍‍ ମିଳିଲା ନାହିଁ"</string>
-    <!-- no translation found for grant_dialog_button_deny (88262611492697192) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_deny_and_dont_ask_again (1748925431574312595) -->
-    <skip />
+    <string name="grant_dialog_button_deny" msgid="88262611492697192">"ଅନୁମତି ଦିଅନ୍ତୁ ନାହିଁ"</string>
+    <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"ଅନୁମତି ଦିଅନ୍ତୁ ନାହିଁ ଏବଂ ପୁଣ ପଚାରନ୍ତୁ ନାହିଁ"</string>
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“ଆପ୍ ବ୍ୟବହାରରେ ଥିବା ବେଳେ” ରଖନ୍ତୁ"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“କେବଳ ଏହି ସମୟ” ରଖନ୍ତୁ"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"ଅଧିକ ସୂଚନା"</string>
-    <!-- no translation found for grant_dialog_button_deny_anyway (7225905870668915151) -->
-    <skip />
+    <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"ଯେ କୌଣସି ମତେ ଅନୁମତି ଦିଅ ନାହିଁ"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"ଖାରଜ କରନ୍ତୁ"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g> ରୁ <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>"</string>
     <string name="permission_warning_template" msgid="2247087781222679458">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ <xliff:g id="ACTION">%2$s</xliff:g> ପାଇଁ ଅନୁମତି ଦେବେ କି?"</string>
     <string name="permission_add_background_warning_template" msgid="1812914855915092273">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ସବୁବେଳେ <xliff:g id="ACTION">%2$s</xliff:g>କୁ ଅନୁମତି ଦେବେ?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"କେବଳ ଆପ୍‍ ବ୍ୟବହାର ସମୟରେ"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"ସର୍ବଦା"</string>
-    <!-- no translation found for deny_permission_deny_and_dont_ask_again (6106035221490102341) -->
-    <skip />
+    <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"ଅନୁମତି ଦିଅନ୍ତୁ ନାହିଁ ଏବଂ ପୁଣ ପଚାରନ୍ତୁ ନାହିଁ"</string>
     <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g> ଅନୁମତି ଅକ୍ଷମ କରାଯାଇଛି"</string>
     <string name="permission_revoked_all" msgid="3397649017727222283">"ସମସ୍ତ ଅନୁମତି ଅକ୍ଷମ କରାଯାଇଛି"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"କୌଣସି ଅନୁମତି ଅକ୍ଷମ କରାଯାଇନାହିଁ"</string>
@@ -91,8 +87,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"ସର୍ବଦା ଅନୁମତି ଦିଅନ୍ତୁ"</string>
     <string name="permission_access_only_foreground" msgid="7801170728159326195">"ଆପ୍ ବ୍ୟବହାର ବେଳେ କେବଳ ଅନୁମତି ଦିଅନ୍ତୁ"</string>
-    <!-- no translation found for permission_access_never (4647014230217936900) -->
-    <skip />
+    <string name="permission_access_never" msgid="4647014230217936900">"ଅନୁମତି ଦିଅନ୍ତୁ ନାହିଁ"</string>
     <string name="loading" msgid="4789365003890741082">"ଲୋଡ୍ ହେଉଛି…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"ସମସ୍ତ ଅନୁମତିଗୁଡ଼ିକ"</string>
     <string name="other_permissions" msgid="2901186127193849594">"ଅନ୍ୟାନ୍ୟ ଆପ୍‍ ଦକ୍ଷତା"</string>
@@ -112,14 +107,10 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"ଅଜଣା"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"ଗୋପନୀୟତା ଡ୍ୟାସବୋର୍ଡ"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> ବ୍ୟବହାର"</string>
-    <!-- no translation found for perm_usage_adv_info_title (3357831829538873708) -->
-    <skip />
-    <!-- no translation found for perm_usage_adv_info_summary_2_items (3702175198750127822) -->
-    <skip />
-    <!-- no translation found for perm_usage_adv_info_summary_more_items (949055326299562218) -->
-    <skip />
-    <!-- no translation found for permission_group_usage_subtitle (712843174810251274) -->
-    <skip />
+    <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"ଅନ୍ୟ ଅନୁମତିଗୁଡ଼ିକୁ ଦେଖନ୍ତୁ"</string>
+    <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
+    <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> ଏବଂ ଅଧିକ <xliff:g id="NUM">%3$s</xliff:g>ଟି"</string>
+    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"ଗତ 24 ଘଣ୍ଟାରେ ଯେତେବେଳେ ଆପଗୁଡ଼ିକ ଆପଣଙ୍କ <xliff:g id="PERMGROUP">%1$s</xliff:g> ବ୍ୟବହାର କରିଥାଏ ତାହାର ଟାଇମଲାଇନ୍"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"ଏହି ଆପ୍ କେତେବେଳେ ଆପଣଙ୍କ <xliff:g id="PERMGROUP">%1$s</xliff:g> ବ୍ୟବହାର କରିଛି:"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"ଅଧିକ ଜାଣନ୍ତୁ"</string>
     <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
@@ -179,7 +170,10 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g>ଟି ଆପ୍ସ</item>
       <item quantity="one">1 ଆପ୍</item>
     </plurals>
-    <!-- no translation found for permission_usage_preference_label (9033113721294293706) -->
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g>ଟି ଆପ୍ ଦ୍ୱାରା ବ୍ୟବହାର କରାଯାଇଛି</item>
+      <item quantity="one">1ଟି ଆପ୍ ଦ୍ୱାରା ବ୍ୟବହାର କରାଯାଇଛି</item>
+    </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"ଡ୍ୟାସ୍‍‍ବୋର୍ଡରେ ସବୁ ଦେଖନ୍ତୁ"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"<xliff:g id="PERM">%1$s</xliff:g> ଦ୍ବାରା ଫିଲ୍ଟର୍ କରାଯାଇଛି"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"ଫିଲ୍ଟର୍‌କୁ କାଢ଼ିଦିଅନ୍ତୁ"</string>
@@ -209,13 +203,11 @@
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"ସବୁ ସମୟ ପାଇଁ ଅନୁମତି ଦିଅନ୍ତୁ"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"ଆପ୍ ବ୍ୟବହାର ବେଳେ କେବଳ ଅନୁମତି ଦିଅନ୍ତୁ"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"ପ୍ରତ୍ୟେକ ଥର ପଚାରନ୍ତୁ"</string>
-    <!-- no translation found for app_permission_button_deny (6016454069832050300) -->
-    <skip />
+    <string name="app_permission_button_deny" msgid="6016454069832050300">"ଅନୁମତି ଦିଅନ୍ତୁ ନାହିଁ"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"ସଠିକ୍ ଲୋକେସନ୍"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"ଆନୁମାନିକ ଲୋକେସନ୍"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"ସଠିକ୍ ଲୋକେସନ୍ ବ୍ୟବହାର କରନ୍ତୁ"</string>
-    <!-- no translation found for app_permission_location_accuracy_subtitle (2654077606404987210) -->
-    <skip />
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"ଯେତେବେଳେ ସଠିକ୍ ଲୋକେସନ୍ ବନ୍ଦ ଥାଏ, ସେତେବେଳେ ଆପଗୁଡ଼ିକ ଆପଣଙ୍କ ଆନୁମାନିକ ଲୋକେସନକୁ ଆକ୍ସେସ୍ କରିପାରିବ"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> ଅନୁମତି"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"ଏହି ଆପ୍‍ ପାଇଁ <xliff:g id="PERM">%1$s</xliff:g> ଆକ୍ସେସ୍‌ ଅନୁମତି ଦିଅନ୍ତୁ"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"ସମସ୍ତ <xliff:g id="APP">%1$s</xliff:g> ଅନୁମତି ଦେଖନ୍ତୁ"</string>
@@ -250,8 +242,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"ଏହି ଅନୁମତି ଥିବା ଆପ୍ସ ଛବି ନେଇପାରିବେ ଏବଂ ଭିଡିଓ ରେକର୍ଡ କରିପାରିବେ"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"ଏହି ଅନୁମତି ଥିବା ଆପ୍ସ ଆପଣଙ୍କର ଯୋଗାଯୋଗଗୁଡ଼ିକୁ ଆକ୍ସେସ୍ କରିପାରିବ"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"ଏହି ଅନୁମତି ଥିବା ଆପ୍ସ ଏହି ଡିଭାଇସ୍‌ର ଲୋକେସନ୍‍ ଆକ୍ସେସ୍‍ କରିପାରିବ"</string>
-    <!-- no translation found for permission_description_summary_nearby_devices (8269183818275073741) -->
-    <skip />
+    <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"ଏହି ଅନୁମତି ଥିବା ଆପଗୁଡ଼ିକ ଆଖପାଖର ଡିଭାଇସଗୁଡ଼ିକର ଆପେକ୍ଷିକ ଅବସ୍ଥିତିକୁ ଖୋଜିପାରିବ, ସଂଯୋଗ ଏବଂ ନିର୍ଦ୍ଧାରଣ କରିପାରିବ"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"ଏହି ଅନୁମତି ଥିବା ଆପ୍ସ ଅଡିଓ ରେକର୍ଡ କରିପାରିବ"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"ଏହି ଅନୁମତି ଥିବା ଆପ୍ସ ଫୋନ୍ କଲ୍ କରିପାରେ ଏବଂ ପରିଚାଳନା କରିପାରେ"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"ଏହି ଅନୁମତି ଥିବା ଆପ୍‌ଗୁଡ଼ିକ ଆପଣଙ୍କ ବିଷୟରେ ଗୁରୁତ୍ୱପୂର୍ଣ୍ଣ ସୂଚନା ଦେଉଥିବା ସେନ୍ସର୍ ଡାଟା ଆକ୍ସେସ୍ କରିପାରିବ"</string>
@@ -267,8 +258,7 @@
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"କେବଳ ମିଡିଆକୁ ଆକ୍ସେସ୍ ଅନୁମତି ଦିଆଯାଇଛି"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"ସମସ୍ତ ଫାଇଲ୍ ପରିଚାଳନା କରିବାକୁ ଅନୁମତି ଦିଆଯାଇଛି"</string>
     <string name="ask_header" msgid="2633816846459944376">"ପ୍ରତ୍ୟେକ ଥର ପଚାରନ୍ତୁ"</string>
-    <!-- no translation found for denied_header (903209608358177654) -->
-    <skip />
+    <string name="denied_header" msgid="903209608358177654">"ଅନୁମତି ନାହିଁ"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ଦିନ</item>
       <item quantity="one">1 ଦିନ</item>
@@ -461,10 +451,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"ଆପଣ ଆପ୍ ବ୍ୟବହାର କରୁନଥିଲେ ମଧ୍ୟ, ଏହି ଆପ୍ ସବୁ ସମୟରେ ଆପଣଙ୍କର ଲୋକେସନ୍ ଆକ୍ସେସ୍ କରିବାକୁ ଚାହିଁପାରେ। "<annotation id="link">"ସେଟିଂସରେ ଅନୁମତି ଦିଅନ୍ତୁ।"</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ପାଇଁ ଲୋକେସନ୍ ଆକ୍ସେସ୍ ବଦଳାଇବେ କି?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"ଆପଣ ଆପ୍ ବ୍ୟବହାର କରୁନଥିଲେ ମଧ୍ୟ, ଏହି ଆପ୍ ସବୁ ସମୟରେ ଆପଣଙ୍କର ଲୋକେସନ୍ ଆକ୍ସେସ୍ କରିବାକୁ ଚାହେଁ। "<annotation id="link">"ସେଟିଂସରେ ଅନୁମତି ଦିଅନ୍ତୁ।"</annotation></string>
-    <!-- no translation found for permgrouprequest_nearby_devices (2272829282660436700) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequestdetail_nearby_devices (6877531270654738614) -->
-    <skip />
+    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"ଆଖପାଖର ଡିଭାଇସଗୁଡ଼ିକର ଆପେକ୍ଷିକ ଅବସ୍ଥିତିକୁ ଖୋଜିବା, ସଂଯୋଗ ଏବଂ ନିର୍ଦ୍ଧାରଣ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"ଆଖପାଖର ଡିଭାଇସଗୁଡ଼ିକର ଆପେକ୍ଷିକ ଅବସ୍ଥିତିକୁ ଖୋଜିବା, ସଂଯୋଗ ଏବଂ ନିର୍ଦ୍ଧାରଣ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ? "<annotation id="link">"ସେଟିଂସରେ ଅନୁମତି ଦିଅନ୍ତୁ।"</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>ର ଲୋକେସନ୍ ଆକ୍ସେସକୁ ଆନୁମାନିକରୁ ସଠିକକୁ ବଦଳାଇବେ?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"ଏହି ଡିଭାଇସର ଆନୁମାନିକ ଲୋକେସନ୍ ଆକ୍ସେସ୍ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"ସଠିକ୍"</string>
