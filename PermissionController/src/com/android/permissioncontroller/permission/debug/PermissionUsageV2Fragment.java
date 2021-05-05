@@ -25,8 +25,6 @@ import android.Manifest;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.ActionBar;
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.role.RoleManager;
 import android.content.Context;
 import android.content.Intent;
@@ -37,19 +35,13 @@ import android.util.ArrayMap;
 import android.util.ArraySet;
 import android.util.Log;
 import android.util.Pair;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RadioButton;
-import android.widget.TextView;
 
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
@@ -68,7 +60,6 @@ import com.android.permissioncontroller.permission.ui.handheld.SettingsWithLarge
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.settingslib.HelpUtils;
-import com.android.settingslib.widget.ActionBarShadowController;
 
 import java.lang.annotation.Retention;
 import java.text.Collator;
@@ -509,7 +500,7 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
                 Map.Entry<String, Integer> currentEntry = usages.get(i);
                 PermissionUsageV2ControlPreference permissionUsagePreference =
                         new PermissionUsageV2ControlPreference(context, currentEntry.getKey(),
-                                currentEntry.getValue());
+                                currentEntry.getValue(), mShowSystem);
                 category.addPreference(permissionUsagePreference);
             }
 
@@ -659,57 +650,6 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
     }
 
     /**
-     * Show a dialog that allows selecting a permission group by which to filter the entries.
-     */
-    private void showPermissionFilterDialog() {
-        Context context = getPreferenceManager().getContext();
-
-        // Get the permission labels.
-        List<AppPermissionGroup> groups = getOSPermissionGroups();
-        groups.sort(
-                (x, y) -> mCollator.compare(x.getLabel().toString(), y.getLabel().toString()));
-
-        // Create the dialog entries.
-        String[] groupNames = new String[groups.size() + 1];
-        CharSequence[] groupLabels = new CharSequence[groupNames.length];
-        int[] groupAccessCounts = new int[groupNames.length];
-        groupNames[0] = null;
-        groupLabels[0] = context.getString(R.string.permission_usage_any_permission);
-        Integer allAccesses = mGroupAppCounts.get(null);
-        if (allAccesses == null) {
-            allAccesses = 0;
-        }
-        groupAccessCounts[0] = allAccesses;
-        int selection = 0;
-        int numGroups = groups.size();
-        for (int i = 0; i < numGroups; i++) {
-            AppPermissionGroup group = groups.get(i);
-            groupNames[i + 1] = group.getName();
-            groupLabels[i + 1] = group.getLabel();
-            Integer appCount = mGroupAppCounts.get(group.getName());
-            if (appCount == null) {
-                appCount = 0;
-            }
-            groupAccessCounts[i + 1] = appCount;
-        }
-
-        // Create the dialog
-        Bundle args = new Bundle();
-        args.putCharSequence(PermissionsFilterDialog.TITLE,
-                context.getString(R.string.filter_by_title));
-        args.putCharSequenceArray(PermissionsFilterDialog.ELEMS,
-                groupLabels);
-        args.putInt(PermissionsFilterDialog.SELECTION, selection);
-        args.putStringArray(PermissionsFilterDialog.GROUPS, groupNames);
-        args.putIntArray(PermissionsFilterDialog.ACCESS_COUNTS, groupAccessCounts);
-        PermissionsFilterDialog chooserDialog = new PermissionsFilterDialog();
-        chooserDialog.setArguments(args);
-        chooserDialog.setTargetFragment(this, 0);
-        chooserDialog.show(getFragmentManager().beginTransaction(),
-                PermissionsFilterDialog.class.getName());
-    }
-
-    /**
      * Callback when the user selects a permission group by which to filter.
      *
      * @param selectedGroup The PermissionGroup to use to filter entries, or null if we should show
@@ -724,97 +664,6 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
     }
 
     /**
-     * A dialog that allows the user to select a permission group by which to filter entries.
-     *
-     * @see #showPermissionFilterDialog()
-     */
-    public static class PermissionsFilterDialog extends DialogFragment {
-        private static final String TITLE = PermissionsFilterDialog.class.getName() + ".arg.title";
-        private static final String ELEMS = PermissionsFilterDialog.class.getName() + ".arg.elems";
-        private static final String SELECTION = PermissionsFilterDialog.class.getName()
-                + ".arg.selection";
-        private static final String GROUPS = PermissionsFilterDialog.class.getName()
-                + ".arg.groups";
-        private static final String ACCESS_COUNTS = PermissionsFilterDialog.class.getName()
-                + ".arg.access_counts";
-
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            AlertDialog.Builder b = new AlertDialog.Builder(getActivity())
-                    .setView(createDialogView());
-
-            return b.create();
-        }
-
-        private @NonNull View createDialogView() {
-            PermissionUsageV2Fragment fragment = (PermissionUsageV2Fragment) getTargetFragment();
-            CharSequence[] elems = getArguments().getCharSequenceArray(ELEMS);
-            String[] groups = getArguments().getStringArray(GROUPS);
-            int[] accessCounts = getArguments().getIntArray(ACCESS_COUNTS);
-            int selectedIndex = getArguments().getInt(SELECTION);
-
-            LayoutInflater layoutInflater = LayoutInflater.from(fragment.getActivity());
-            View view = layoutInflater.inflate(R.layout.permission_filter_dialog, null);
-            ViewGroup itemsListView = view.requireViewById(R.id.items_container);
-
-            ((TextView) view.requireViewById(R.id.title)).setText(
-                    getArguments().getCharSequence(TITLE));
-
-            ActionBarShadowController.attachToView(view.requireViewById(R.id.title_container),
-                    getLifecycle(), view.requireViewById(R.id.scroll_view));
-
-            for (int i = 0; i < elems.length; i++) {
-                String groupName = groups[i];
-                View itemView = layoutInflater.inflate(R.layout.permission_filter_dialog_item,
-                        itemsListView, false);
-
-                ((TextView) itemView.requireViewById(R.id.title)).setText(elems[i]);
-                ((TextView) itemView.requireViewById(R.id.summary)).setText(
-                        getActivity().getResources().getQuantityString(
-                                R.plurals.permission_usage_permission_filter_subtitle,
-                                accessCounts[i], accessCounts[i]));
-
-                itemView.setOnClickListener((v) -> {
-                    dismissAllowingStateLoss();
-                    fragment.onPermissionGroupSelected(groupName);
-                });
-
-                RadioButton radioButton = itemView.requireViewById(R.id.radio_button);
-                radioButton.setChecked(i == selectedIndex);
-                radioButton.setOnClickListener((v) -> {
-                    dismissAllowingStateLoss();
-                    fragment.onPermissionGroupSelected(groupName);
-                });
-
-                itemsListView.addView(itemView);
-            }
-
-            return view;
-        }
-    }
-
-    private void showTimeFilterDialog() {
-        Context context = getPreferenceManager().getContext();
-
-        CharSequence[] labels = new CharSequence[mFilterTimes.size()];
-        for (int i = 0; i < labels.length; i++) {
-            labels[i] = mFilterTimes.get(i).getLabel();
-        }
-
-        // Create the dialog
-        Bundle args = new Bundle();
-        args.putCharSequence(TimeFilterDialog.TITLE,
-                context.getString(R.string.filter_by_title));
-        args.putCharSequenceArray(TimeFilterDialog.ELEMS, labels);
-        args.putInt(TimeFilterDialog.SELECTION, mFilterTimeIndex);
-        TimeFilterDialog chooserDialog = new TimeFilterDialog();
-        chooserDialog.setArguments(args);
-        chooserDialog.setTargetFragment(this, 0);
-        chooserDialog.show(getFragmentManager().beginTransaction(),
-                TimeFilterDialog.class.getName());
-    }
-
-    /**
      * Callback when the user selects a time by which to filter.
      *
      * @param selectedIndex The index of the dialog option selected by the user.
@@ -822,33 +671,6 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
     private void onTimeSelected(int selectedIndex) {
         mFilterTimeIndex = selectedIndex;
         reloadData();
-    }
-
-    /**
-     * A dialog that allows the user to select a time by which to filter entries.
-     *
-     * @see #showTimeFilterDialog()
-     */
-    public static class TimeFilterDialog extends DialogFragment {
-        private static final String TITLE = TimeFilterDialog.class.getName() + ".arg.title";
-        private static final String ELEMS = TimeFilterDialog.class.getName() + ".arg.elems";
-        private static final String SELECTION = TimeFilterDialog.class.getName() + ".arg.selection";
-
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            PermissionUsageV2Fragment fragment = (PermissionUsageV2Fragment) getTargetFragment();
-            CharSequence[] elems = getArguments().getCharSequenceArray(ELEMS);
-            AlertDialog.Builder b = new AlertDialog.Builder(getActivity())
-                    .setTitle(getArguments().getCharSequence(TITLE))
-                    .setSingleChoiceItems(elems, getArguments().getInt(SELECTION),
-                            (dialog, which) -> {
-                                dismissAllowingStateLoss();
-                                fragment.onTimeSelected(which);
-                            }
-                    );
-
-            return b.create();
-        }
     }
 
     /**
