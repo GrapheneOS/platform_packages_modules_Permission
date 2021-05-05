@@ -27,7 +27,6 @@ import androidx.annotation.AttrRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StyleRes;
-import androidx.core.graphics.ColorUtils;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
@@ -37,6 +36,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * A Preference for the permission usage graphic.
@@ -45,6 +45,9 @@ public class PermissionUsageGraphicPreference extends Preference {
 
     /** Permission group to count mapping. */
     private @NonNull Map<String, Integer> mUsages = new HashMap<>();
+
+    /** Whether to show the "Other" category. */
+    private boolean mShowOtherCategory;
 
     public PermissionUsageGraphicPreference(@NonNull Context context, @Nullable AttributeSet attrs,
             @AttrRes int defStyleAttr, @StyleRes int defStyleRes) {
@@ -76,8 +79,18 @@ public class PermissionUsageGraphicPreference extends Preference {
 
     /** Sets permission group usages: map of group name to usage count. */
     public void setUsages(Map<String, Integer> usages) {
-        mUsages = usages;
-        notifyChanged();
+        if (!Objects.equals(mUsages, usages)) {
+            mUsages = usages;
+            notifyChanged();
+        }
+    }
+
+    /** Sets whether to show the "Other" category. */
+    public void setShowOtherCategory(boolean showOtherCategory) {
+        if (mShowOtherCategory != showOtherCategory) {
+            mShowOtherCategory = showOtherCategory;
+            notifyChanged();
+        }
     }
 
     @Override
@@ -91,9 +104,11 @@ public class PermissionUsageGraphicPreference extends Preference {
                 R.id.composite_circle_view_labeler);
 
         // Set center text.
+        // TODO(b/176902658): Fix text appearance.
         TextView centerLabel = new TextView(getContext());
         centerLabel.setTextAlignment(TextView.TEXT_ALIGNMENT_CENTER);
         centerLabel.setText(getContext().getString(R.string.privdash_label_24h));
+        centerLabel.setTextAppearance(R.style.PrivacyDashboardGraphicLabel);
 
         // Create labels, counts, and colors.
         TextView[] labels;
@@ -121,17 +136,24 @@ public class PermissionUsageGraphicPreference extends Preference {
                     getUsageCount(Manifest.permission_group.CAMERA),
                     getUsageCount(Manifest.permission_group.MICROPHONE),
                     getUsageCount(Manifest.permission_group.LOCATION),
-                    getUsageCountExcluding(Manifest.permission_group.CAMERA,
+                    mShowOtherCategory
+                            ? getUsageCountExcluding(Manifest.permission_group.CAMERA,
                             Manifest.permission_group.MICROPHONE,
-                            Manifest.permission_group.LOCATION)
+                            Manifest.permission_group.LOCATION) : 0
             };
-            // TODO(b/176902658): Determine base color, and best way to blend below.
+            // TODO(b/176902658): Determine colors from system theme / sampled color.
+            // These are placeholders.
             colors = new int[] {
-                    ColorUtils.blendARGB(Color.RED, Color.GRAY, 0.5f),
-                    ColorUtils.blendARGB(Color.GREEN, Color.GRAY, 0.5f),
-                    ColorUtils.blendARGB(Color.BLUE, Color.GRAY, 0.5f),
-                    Color.GRAY,
+                    0xff4285f4,
+                    0xffea4335,
+                    0xfffbbc05,
+                    0xff34a853
             };
+        }
+
+        // Set label styles.
+        for (int i = 0; i < labels.length; i++) {
+            labels[i].setTextAppearance(R.style.PrivacyDashboardGraphicLabel);
         }
 
         // Get circle-related dimensions.
