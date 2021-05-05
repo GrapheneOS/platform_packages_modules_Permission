@@ -109,12 +109,9 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Neznáme"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Panel na ochranu súkromia"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Použitie skupiny povolení <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
-    <!-- no translation found for perm_usage_adv_info_title (3357831829538873708) -->
-    <skip />
-    <!-- no translation found for perm_usage_adv_info_summary_2_items (3702175198750127822) -->
-    <skip />
-    <!-- no translation found for perm_usage_adv_info_summary_more_items (949055326299562218) -->
-    <skip />
+    <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Zobraziť ostatné povolenia"</string>
+    <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
+    <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> a ďalšie (počet: <xliff:g id="NUM">%3$s</xliff:g>)"</string>
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Časová os, kedy za posledných 24 hodín aplikácie použili vašu skupinu povolení <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Keď táto aplikácia použila vaše povolenia <xliff:g id="PERMGROUP">%1$s</xliff:g>:"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Ďalšie informácie"</string>
@@ -193,7 +190,12 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> aplikácií</item>
       <item quantity="one">1 aplikácia</item>
     </plurals>
-    <!-- no translation found for permission_usage_preference_label (9033113721294293706) -->
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
+      <item quantity="few">Používajú <xliff:g id="NUMBER">%1$d</xliff:g> aplikácie</item>
+      <item quantity="many">Used by <xliff:g id="NUMBER">%1$d</xliff:g> apps</item>
+      <item quantity="other">Používa <xliff:g id="NUMBER">%1$d</xliff:g> aplikácií</item>
+      <item quantity="one">Používa 1 aplikácia</item>
+    </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Zobraziť všetko v hlavnom paneli"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrované podľa: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Odstrániť filter"</string>
