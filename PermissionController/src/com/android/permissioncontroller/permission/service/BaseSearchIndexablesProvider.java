@@ -108,6 +108,9 @@ public abstract class BaseSearchIndexablesProvider extends SearchIndexablesProvi
     @CheckResult
     public static boolean isIntentValid(@NonNull Intent intent, @NonNull Context context) {
         String key = intent.getStringExtra(EXTRA_SETTINGS_SEARCH_KEY);
+        if (key == null || key.length() < PASSWORD_LENGTH) {
+            return false;
+        }
         String passwordFromIntent = key.substring(0, PASSWORD_LENGTH);
         String password = getPassword(context);
         boolean verified = Objects.equals(passwordFromIntent, password);
