@@ -122,6 +122,8 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
 
     private @NonNull RoleManager mRoleManager;
 
+    private PermissionUsageGraphicPreference mGraphic;
+
     /**
      * @return A new fragment
      */
@@ -217,6 +219,13 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
         if (preference.getOrder() == EXPAND_BUTTON_ORDER) {
             preference.setTitle(R.string.perm_usage_adv_info_title);
             preference.setSummary(preferenceScreen.getSummary());
+            if (mGraphic != null) {
+                mGraphic.setShowOtherCategory(false);
+            }
+        } else {
+            if (mGraphic != null) {
+                mGraphic.setShowOtherCategory(true);
+            }
         }
     }
 
@@ -362,9 +371,9 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
             getActivity().invalidateOptionsMenu();
         }
 
-        PermissionUsageGraphicPreference graphic = new PermissionUsageGraphicPreference(context);
-        screen.addPreference(graphic);
-        graphic.setUsages(usages);
+        mGraphic = new PermissionUsageGraphicPreference(context);
+        screen.addPreference(mGraphic);
+        mGraphic.setUsages(usages);
 
         // Add the preference header.
         PreferenceCategory category = new PreferenceCategory(context);
