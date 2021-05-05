@@ -37,7 +37,6 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.icu.text.ListFormatter;
-import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.UserHandle;
@@ -404,29 +403,26 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
                             default:
                         }
                 }
-                // Add an info icon if the package is a location provider
-                LocationManager locationManager = context.getSystemService(LocationManager.class);
-                if (locationManager != null && locationManager.isProviderPackage(mPackageName)) {
-                    Intent sendIntent = new Intent();
-                    sendIntent.setAction(Intent.ACTION_VIEW_PERMISSION_USAGE);
-                    sendIntent.setPackage(mPackageName);
-                    sendIntent.putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, groupName);
+                // Add an info icon if the package handles ACTION_VIEW_PERMISSION_USAGE.
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_VIEW_PERMISSION_USAGE);
+                sendIntent.setPackage(mPackageName);
+                sendIntent.putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, groupName);
 
-                    PackageManager pm = getActivity().getPackageManager();
-                    ActivityInfo activityInfo = sendIntent.resolveActivityInfo(pm, 0);
-                    if (activityInfo != null && Objects.equals(activityInfo.permission,
-                            android.Manifest.permission.START_VIEW_PERMISSION_USAGE)) {
-                        preference.setRightIcon(
-                                context.getDrawable(R.drawable.ic_info_outline),
-                                v -> {
-                                    try {
-                                        startActivity(sendIntent);
-                                    } catch (ActivityNotFoundException e) {
-                                        Log.e(LOG_TAG, "No activity found for viewing permission "
-                                                + "usage.");
-                                    }
-                                });
-                    }
+                PackageManager pm = getActivity().getPackageManager();
+                ActivityInfo activityInfo = sendIntent.resolveActivityInfo(pm, 0);
+                if (activityInfo != null && Objects.equals(activityInfo.permission,
+                        android.Manifest.permission.START_VIEW_PERMISSION_USAGE)) {
+                    preference.setRightIcon(
+                            context.getDrawable(R.drawable.ic_info_outline),
+                            v -> {
+                                try {
+                                    startActivity(sendIntent);
+                                } catch (ActivityNotFoundException e) {
+                                    Log.e(LOG_TAG, "No activity found for viewing permission "
+                                            + "usage.");
+                                }
+                            });
                 }
                 if (groupInfo.isSystem() == mIsSystemPermsScreen) {
                     category.addPreference(preference);
