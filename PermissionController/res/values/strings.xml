@@ -178,6 +178,9 @@
    <!-- [CHAR LIMIT=NONE] Menu for manage permissions to control whether system apps are hidden -->
    <string name="menu_hide_system">Hide system</string>
 
+    <!-- FAB text of permission usage fragment [CHAR LIMIT=30] -->
+    <string name="manage_permission">Manage Permission</string>
+
    <!-- [CHAR LIMIT=NONE] Label when no apps requesting this permission -->
    <string name="no_apps">No apps</string>
 
