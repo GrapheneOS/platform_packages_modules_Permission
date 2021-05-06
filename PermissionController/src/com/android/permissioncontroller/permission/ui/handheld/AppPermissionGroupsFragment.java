@@ -31,10 +31,11 @@ import android.Manifest;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
 import android.icu.text.ListFormatter;
 import android.net.Uri;
@@ -404,20 +405,23 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
                         }
                 }
                 // Add an info icon if the package handles ACTION_VIEW_PERMISSION_USAGE.
-                Intent sendIntent = new Intent();
-                sendIntent.setAction(Intent.ACTION_VIEW_PERMISSION_USAGE);
-                sendIntent.setPackage(mPackageName);
-                sendIntent.putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, groupName);
-
-                PackageManager pm = getActivity().getPackageManager();
-                ActivityInfo activityInfo = sendIntent.resolveActivityInfo(pm, 0);
-                if (activityInfo != null && Objects.equals(activityInfo.permission,
+                PackageManager packageManager = requireActivity().getPackageManager();
+                Intent viewUsageIntent = new Intent()
+                        .setPackage(mPackageName)
+                        .setAction(Intent.ACTION_VIEW_PERMISSION_USAGE)
+                        .putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, groupName);
+                ResolveInfo resolveInfo = packageManager.resolveActivity(viewUsageIntent, 0);
+                if (resolveInfo != null && resolveInfo.activityInfo != null && Objects.equals(
+                        resolveInfo.activityInfo.permission,
                         android.Manifest.permission.START_VIEW_PERMISSION_USAGE)) {
+                    // Make the intent explicit to not require CATEGORY_DEFAULT.
+                    viewUsageIntent.setComponent(new ComponentName(
+                            resolveInfo.activityInfo.packageName, resolveInfo.activityInfo.name));
                     preference.setRightIcon(
                             context.getDrawable(R.drawable.ic_info_outline),
                             v -> {
                                 try {
-                                    startActivity(sendIntent);
+                                    startActivity(viewUsageIntent);
                                 } catch (ActivityNotFoundException e) {
                                     Log.e(LOG_TAG, "No activity found for viewing permission "
                                             + "usage.");
