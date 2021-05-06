@@ -244,6 +244,16 @@
         <item name="android:layout_marginTop">32dp</item>
     </style>
 
+    <style name="PermissionFrameExtendedFloatingActionButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">bottom|center_horizontal</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:backgroundTint">?android:attr/colorAccent</item>
+    </style>
+
     <!-- END PERMISSIONS FRAME -->
 
     <!-- START HEADER -->
@@ -1039,5 +1049,17 @@
     </style>
 
     <!-- END ACCESSIBILITY SERVICE DIALOG ITEM -->
+
+    <!-- START PRIVACY DASHBOARD -->
+
+    <style name="PrivacyDashboardGraphicLabel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- END PRIVACY DASHBOARD -->
 
 </resources>
