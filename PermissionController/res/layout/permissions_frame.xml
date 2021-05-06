@@ -22,24 +22,30 @@
 
     <include layout="@layout/progress_header" />
 
-    <FrameLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-            <LinearLayout
-                android:id="@+id/prefs_container"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/prefs_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/no_permissions"
-                    style="@style/PermissionsFrameNoPermissionsText" />
+            <TextView
+                android:id="@+id/no_permissions"
+                style="@style/PermissionsFrameNoPermissionsText" />
 
-            </LinearLayout>
+        </LinearLayout>
 
         <include layout="@layout/loading_container" />
 
-    </FrameLayout>
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/extended_fab"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
+            style="@style/PermissionFrameExtendedFloatingActionButton"
+            android:visibility="gone" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </LinearLayout>
