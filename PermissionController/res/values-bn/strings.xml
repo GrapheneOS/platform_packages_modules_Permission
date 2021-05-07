@@ -68,6 +68,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_1">%2$d</xliff:g>টি অ্যাপের মধ্যে <xliff:g id="COUNT_0">%1$d</xliff:g>টি অনুমোদিত"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"সিস্টেম অ্যাপ দেখুন"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"সিস্টেম অ্যাপ লুকান"</string>
+    <!-- no translation found for manage_permission (3796219072742331048) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"কোনও অ্যাপ নেই"</string>
     <string name="location_settings" msgid="3624412509133422562">"লোকেশন সেটিংস"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> এই ডিভাইসের জন্য লোকেশন পরিষেবা প্রদান করে। লোকেশন সেটিংস থেকে লোকেশনের অ্যাক্সেস পরিবর্তন করা যায়।"</string>
@@ -107,31 +109,17 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"অজানা"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"প্রাইভেসি ড্যাশবোর্ড"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> ব্যবহার"</string>
-    <!-- no translation found for perm_usage_adv_info_title (3357831829538873708) -->
-    <skip />
-    <!-- no translation found for perm_usage_adv_info_summary_2_items (3702175198750127822) -->
-    <skip />
-    <!-- no translation found for perm_usage_adv_info_summary_more_items (949055326299562218) -->
-    <skip />
+    <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"অন্য অনুমতি দেখুন"</string>
+    <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
+    <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> ও আরও <xliff:g id="NUM">%3$s</xliff:g>টি"</string>
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"গত ২৪ ঘণ্টায় আপনার <xliff:g id="PERMGROUP">%1$s</xliff:g> ব্যবহার সংক্রান্ত অ্যাপের টাইমলাইন"</string>
-    <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"এই অ্যাপ যখন আপনার <xliff:g id="PERMGROUP">%1$s</xliff:g> ব্যবহার করে:"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (4171772805196955753) -->
+    <skip />
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"আরও জানুন"</string>
-    <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> দিনের জন্য ব্যবহার করা হয়েছিল</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> দিনের জন্য ব্যবহার করা হয়েছিল</item>
-    </plurals>
-    <plurals name="duration_used_hours" formatted="false" msgid="2934347147156813767">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> ঘণ্টার জন্য ব্যবহার করা হয়েছিল</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ঘণ্টার জন্য ব্যবহার করা হয়েছিল</item>
-    </plurals>
-    <plurals name="duration_used_minutes" formatted="false" msgid="1871095305219275611">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> মিনিটের জন্য ব্যবহার করা হয়েছিল</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> মিনিটের জন্য ব্যবহার করা হয়েছিল</item>
-    </plurals>
-    <plurals name="duration_used_seconds" formatted="false" msgid="4036612197985123365">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> সেকেন্ডের জন্য ব্যবহার করা হয়েছিল</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> সেকেন্ডের জন্য ব্যবহার করা হয়েছিল</item>
-    </plurals>
+    <!-- no translation found for duration_used_days (1993098309578536308) -->
+    <!-- no translation found for duration_used_hours (1020075479447003242) -->
+    <!-- no translation found for duration_used_minutes (3422338854436291744) -->
+    <!-- no translation found for duration_used_seconds (2726799598314248110) -->
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="one">শেষবার অ্যাক্সেস করা হয়েছে: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g>বার অ্যাক্সেস করা হয়েছে</item>
       <item quantity="other">শেষবার অ্যাক্সেস করা হয়েছে: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g>বার অ্যাক্সেস করা হয়েছে</item>
@@ -173,7 +161,12 @@
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g>টি অ্যাপ</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g>টি অ্যাপ</item>
     </plurals>
-    <!-- no translation found for permission_usage_preference_label (9033113721294293706) -->
+    <!-- no translation found for permission_usage_preference_summary_not_used (8806755646449754282) -->
+    <skip />
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
+      <item quantity="one"><xliff:g id="NUMBER">%1$d</xliff:g>টি অ্যাপ ব্যবহার করেছে</item>
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g>টি অ্যাপ ব্যবহার করেছে</item>
+    </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"সবকিছু ড্যাশবোর্ডে দেখুন"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"এই অনুযায়ী ফিল্টার করা হয়েছে: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"ফিল্টার সরান"</string>

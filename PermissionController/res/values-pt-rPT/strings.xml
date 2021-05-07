@@ -68,6 +68,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> apps permitidas."</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Mostrar sistema"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Ocultar sistema"</string>
+    <!-- no translation found for manage_permission (3796219072742331048) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"Sem apps"</string>
     <string name="location_settings" msgid="3624412509133422562">"Definições de localização"</string>
     <string name="location_warning" msgid="2381649060929040962">"O <xliff:g id="APP_NAME">%1$s</xliff:g> é um fornecedor de serviços de localização para este dispositivo. É possível modificar o acesso à localização a partir das definições de localização."</string>
@@ -111,24 +113,13 @@
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> e mais <xliff:g id="NUM">%3$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Linha cronológica da utilização do grupo <xliff:g id="PERMGROUP">%1$s</xliff:g> por apps nas últimas 24 horas"</string>
-    <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Quando esta app utilizou <xliff:g id="PERMGROUP">%1$s</xliff:g>:"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (4171772805196955753) -->
+    <skip />
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Saiba mais"</string>
-    <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
-      <item quantity="other">Utilizada durante <xliff:g id="NUMBER">%s</xliff:g> dias</item>
-      <item quantity="one">Utilizada durante 1 dia</item>
-    </plurals>
-    <plurals name="duration_used_hours" formatted="false" msgid="2934347147156813767">
-      <item quantity="other">Utilizada durante <xliff:g id="NUMBER">%s</xliff:g> horas</item>
-      <item quantity="one">Utilizada durante 1 hora</item>
-    </plurals>
-    <plurals name="duration_used_minutes" formatted="false" msgid="1871095305219275611">
-      <item quantity="other">Utilizada durante <xliff:g id="NUMBER">%s</xliff:g> min</item>
-      <item quantity="one">Utilizada durante 1 min</item>
-    </plurals>
-    <plurals name="duration_used_seconds" formatted="false" msgid="4036612197985123365">
-      <item quantity="other">Utilizada durante <xliff:g id="NUMBER">%s</xliff:g> s</item>
-      <item quantity="one">Utilizada durante 1 s</item>
-    </plurals>
+    <!-- no translation found for duration_used_days (1993098309578536308) -->
+    <!-- no translation found for duration_used_hours (1020075479447003242) -->
+    <!-- no translation found for duration_used_minutes (3422338854436291744) -->
+    <!-- no translation found for duration_used_seconds (2726799598314248110) -->
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Último acesso: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> acessos</item>
       <item quantity="one">Último acesso: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> acesso</item>
@@ -170,6 +161,8 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> apps</item>
       <item quantity="one">1 app</item>
     </plurals>
+    <!-- no translation found for permission_usage_preference_summary_not_used (8806755646449754282) -->
+    <skip />
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
       <item quantity="other">Utilizada por <xliff:g id="NUMBER">%1$d</xliff:g> apps</item>
       <item quantity="one">Utilizada por 1 app</item>

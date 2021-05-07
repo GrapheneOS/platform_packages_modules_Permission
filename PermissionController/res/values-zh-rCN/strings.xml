@@ -68,6 +68,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"已授权 <xliff:g id="COUNT_0">%1$d</xliff:g> 个应用/共 <xliff:g id="COUNT_1">%2$d</xliff:g> 个"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"显示系统应用"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"隐藏系统应用"</string>
+    <!-- no translation found for manage_permission (3796219072742331048) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"没有应用"</string>
     <string name="location_settings" msgid="3624412509133422562">"位置信息设置"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g>是此设备的一个位置信息服务提供程序。您可以在位置信息设置中修改位置信息使用权。"</string>
@@ -107,31 +109,17 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"未知"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"隐私信息中心"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g>使用情况"</string>
-    <!-- no translation found for perm_usage_adv_info_title (3357831829538873708) -->
-    <skip />
-    <!-- no translation found for perm_usage_adv_info_summary_2_items (3702175198750127822) -->
-    <skip />
-    <!-- no translation found for perm_usage_adv_info_summary_more_items (949055326299562218) -->
-    <skip />
+    <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"查看其他权限"</string>
+    <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_1">%2$s</xliff:g>、<xliff:g id="PERMGROUP_0">%1$s</xliff:g>"</string>
+    <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>、<xliff:g id="PERMGROUP_1">%2$s</xliff:g>和另外 <xliff:g id="NUM">%3$s</xliff:g> 项权限"</string>
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"过去 24 小时内应用使用“<xliff:g id="PERMGROUP">%1$s</xliff:g>”权限的时间轴"</string>
-    <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"该应用使用您的<xliff:g id="PERMGROUP">%1$s</xliff:g>时："</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (4171772805196955753) -->
+    <skip />
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"了解详情"</string>
-    <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
-      <item quantity="other">使用时间：<xliff:g id="NUMBER">%s</xliff:g> 天</item>
-      <item quantity="one">使用时间：1 天</item>
-    </plurals>
-    <plurals name="duration_used_hours" formatted="false" msgid="2934347147156813767">
-      <item quantity="other">使用时间：<xliff:g id="NUMBER">%s</xliff:g> 小时</item>
-      <item quantity="one">使用时间：1 小时</item>
-    </plurals>
-    <plurals name="duration_used_minutes" formatted="false" msgid="1871095305219275611">
-      <item quantity="other">使用时间：<xliff:g id="NUMBER">%s</xliff:g> 分钟</item>
-      <item quantity="one">使用时间：1 分钟</item>
-    </plurals>
-    <plurals name="duration_used_seconds" formatted="false" msgid="4036612197985123365">
-      <item quantity="other">使用时间：<xliff:g id="NUMBER">%s</xliff:g> 秒</item>
-      <item quantity="one">使用时间：1 秒</item>
-    </plurals>
+    <!-- no translation found for duration_used_days (1993098309578536308) -->
+    <!-- no translation found for duration_used_hours (1020075479447003242) -->
+    <!-- no translation found for duration_used_minutes (3422338854436291744) -->
+    <!-- no translation found for duration_used_seconds (2726799598314248110) -->
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">上次访问时间：<xliff:g id="TIME_2">%1$s</xliff:g>\n访问次数：<xliff:g id="NUM_3">%2$s</xliff:g> 次</item>
       <item quantity="one">上次访问时间：<xliff:g id="TIME_0">%1$s</xliff:g>\n访问次数：<xliff:g id="NUM_1">%2$s</xliff:g> 次</item>
@@ -173,7 +161,12 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> 个应用</item>
       <item quantity="one">1 个应用</item>
     </plurals>
-    <!-- no translation found for permission_usage_preference_label (9033113721294293706) -->
+    <!-- no translation found for permission_usage_preference_summary_not_used (8806755646449754282) -->
+    <skip />
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
+      <item quantity="other">有 <xliff:g id="NUMBER">%1$d</xliff:g> 个应用使用过</item>
+      <item quantity="one">有 1 个应用使用过</item>
+    </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"在信息中心查看全部详细信息"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"过滤条件：<xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"移除过滤条件"</string>
