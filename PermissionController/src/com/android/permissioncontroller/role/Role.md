@@ -80,6 +80,8 @@ role is `visible`.
 - `showNone`: Whether this role will show a "None" option. This allows user to explicitly select
 none of the apps for a role. This attribute is optional, only applies to `exclusive` roles and
 defaults to `false`.
+- `static`: Whether this role is static, i.e. the role will always be assigned to its default
+holders. This attribute is optional and defaults to `false`.
 - `systemOnly`: Whether this role only allows system apps to hold it. This attribute is optional and
 defaults to `false.
 - `visible`: Whether this role is visible to users. If a role is invisible (a.k.a. hidden) to users,
