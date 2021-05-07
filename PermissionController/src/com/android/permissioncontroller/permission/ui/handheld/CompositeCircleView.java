@@ -88,12 +88,18 @@ public class CompositeCircleView extends FrameLayout {
             }
         }
 
-        // Add small spacing to the first angle to make the little space between segments.
-        startAngle = startAngle + (SEGMENT_ANGLE_SPACING_DEG * 0.5f);
+        // Add small spacing to the first angle to make the little space between segments, but only
+        // if we have more than one segment.
+        if (values.length > 1) {
+            startAngle = startAngle + (SEGMENT_ANGLE_SPACING_DEG * 0.5f);
+        }
         mPartialCircleCenterAngles = new float[values.length];
 
         // Number of degrees allocated to drawing circle segments.
-        float allocatedDegrees = 360 - (numValidValues * SEGMENT_ANGLE_SPACING_DEG);
+        float allocatedDegrees = 360;
+        if (values.length > 1) {
+            allocatedDegrees -= (numValidValues * SEGMENT_ANGLE_SPACING_DEG);
+        }
 
         // Number of consecutive times we've bumped the next label further to make space.
         int labelBumps = 0;

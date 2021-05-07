@@ -18,7 +18,6 @@ package com.android.permissioncontroller.permission.ui.handheld;
 
 import android.Manifest;
 import android.content.Context;
-import android.graphics.Color;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.widget.TextView;
@@ -110,6 +109,17 @@ public class PermissionUsageGraphicPreference extends Preference {
         centerLabel.setText(getContext().getString(R.string.privdash_label_24h));
         centerLabel.setTextAppearance(R.style.PrivacyDashboardGraphicLabel);
 
+        // Sample colors.
+        // TODO(b/176902658): Use proper API for sampling these colors.
+        final int colorAccentPrimary = getContext().getColor(
+                android.R.color.system_accent1_300);
+        final int colorAccentPrimaryVariant = getContext().getColor(
+                android.R.color.system_accent1_600);
+        final int colorAccentSecondary = getContext().getColor(
+                android.R.color.system_accent2_300);
+        final int colorAccentTertiary = getContext().getColor(
+                android.R.color.system_accent3_300);
+
         // Create labels, counts, and colors.
         TextView[] labels;
         int[] counts;
@@ -117,10 +127,9 @@ public class PermissionUsageGraphicPreference extends Preference {
         if (isUsagesEmpty) {
             // Special case if usages are empty.
             labels = new TextView[] { new TextView(getContext()) };
-            labels[0].setText(getContext().getString(R.string.privdash_label_none));
+            labels[0] = null;
             counts = new int[] { 1 };
-            // TODO(b/176902658): Determine base color, and best way to blend below.
-            colors = new int[] { Color.GRAY };
+            colors = new int[] { colorAccentPrimaryVariant };
         } else {
             labels = new TextView[] {
                     new TextView(getContext()),
@@ -141,19 +150,19 @@ public class PermissionUsageGraphicPreference extends Preference {
                             Manifest.permission_group.MICROPHONE,
                             Manifest.permission_group.LOCATION) : 0
             };
-            // TODO(b/176902658): Determine colors from system theme / sampled color.
-            // These are placeholders.
             colors = new int[] {
-                    0xff4285f4,
-                    0xffea4335,
-                    0xfffbbc05,
-                    0xff34a853
+                    colorAccentSecondary,
+                    colorAccentPrimary,
+                    colorAccentTertiary,
+                    colorAccentPrimaryVariant
             };
         }
 
         // Set label styles.
         for (int i = 0; i < labels.length; i++) {
-            labels[i].setTextAppearance(R.style.PrivacyDashboardGraphicLabel);
+            if (labels[i] != null) {
+                labels[i].setTextAppearance(R.style.PrivacyDashboardGraphicLabel);
+            }
         }
 
         // Get circle-related dimensions.
