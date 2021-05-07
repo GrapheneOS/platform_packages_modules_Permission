@@ -170,6 +170,11 @@ public class Role {
     private final boolean mShowNone;
 
     /**
+     * Whether this role is static, i.e. the role will always be assigned to its default holders.
+     */
+    private final boolean mStatic;
+
+    /**
      * Whether this role only accepts system apps as its holders.
      */
     private final boolean mSystemOnly;
@@ -215,7 +220,7 @@ public class Role {
             @StringRes int labelResource, int minSdkVersion, boolean overrideUserWhenGranting,
             @StringRes int requestDescriptionResource, @StringRes int requestTitleResource,
             boolean requestable, @StringRes int searchKeywordsResource,
-            @StringRes int shortLabelResource, boolean showNone, boolean systemOnly,
+            @StringRes int shortLabelResource, boolean showNone, boolean statik, boolean systemOnly,
             boolean visible, @NonNull List<RequiredComponent> requiredComponents,
             @NonNull List<Permission> permissions, @NonNull List<String> appOpPermissions,
             @NonNull List<AppOp> appOps, @NonNull List<PreferredActivity> preferredActivities) {
@@ -235,6 +240,7 @@ public class Role {
         mSearchKeywordsResource = searchKeywordsResource;
         mShortLabelResource = shortLabelResource;
         mShowNone = showNone;
+        mStatic = statik;
         mSystemOnly = systemOnly;
         mVisible = visible;
         mRequiredComponents = requiredComponents;
@@ -394,6 +400,10 @@ public class Role {
      */
     public boolean isAvailable(@NonNull Context context) {
         return isAvailableAsUser(Process.myUserHandle(), context);
+    }
+
+    public boolean isStatic() {
+        return mStatic;
     }
 
     /**
@@ -628,6 +638,10 @@ public class Role {
                         + " due to missing " + requiredComponent);
                 return false;
             }
+        }
+
+        if (mStatic && !getDefaultHolders(context).contains(packageName)) {
+            return false;
         }
 
         return true;
@@ -953,6 +967,7 @@ public class Role {
                 + ", mSearchKeywordsResource=" + mSearchKeywordsResource
                 + ", mShortLabelResource=" + mShortLabelResource
                 + ", mShowNone=" + mShowNone
+                + ", mStatic=" + mStatic
                 + ", mSystemOnly=" + mSystemOnly
                 + ", mVisible=" + mVisible
                 + ", mRequiredComponents=" + mRequiredComponents
