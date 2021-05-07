@@ -838,6 +838,11 @@ class GrantPermissionsViewModel(
                 if (affectedForegroundPermissions == null) {
                     KotlinUtils.grantForegroundRuntimePermissions(app, groupState.group,
                         groupState.affectedPermissions, isOneTime)
+                    // This prevents weird flag state when app targetSDK switches from S+ to R-
+                    if (groupState.affectedPermissions.contains(ACCESS_FINE_LOCATION)) {
+                        KotlinUtils.setFlagsWhenLocationAccuracyChanged(
+                                app, groupState.group, true)
+                    }
                 } else {
                     val newGroup = KotlinUtils.grantForegroundRuntimePermissions(app,
                             groupState.group, affectedForegroundPermissions, isOneTime)
