@@ -123,13 +123,14 @@ public class RoleControllerServiceImpl extends RoleControllerService {
                 }
             }
 
-            // If there is no holder for a role now, we need to add default or fallback holders, if
-            // any.
+            // If there is no holder for a role now, or the role is static, we need to add default
+            // or fallback holders, if any.
             currentPackageNames = mRoleManager.getRoleHolders(roleName);
             currentPackageNamesSize = currentPackageNames.size();
-            if (currentPackageNamesSize == 0) {
+            boolean isStaticRole = role.isStatic();
+            if (currentPackageNamesSize == 0 || isStaticRole) {
                 List<String> packageNamesToAdd = null;
-                if (addedRoleNames.contains(roleName)) {
+                if (addedRoleNames.contains(roleName) || isStaticRole) {
                     packageNamesToAdd = role.getDefaultHolders(this);
                 }
                 if (packageNamesToAdd == null || packageNamesToAdd.isEmpty()) {
@@ -142,6 +143,11 @@ public class RoleControllerServiceImpl extends RoleControllerService {
                         packageNamesToAddIndex++) {
                     String packageName = packageNamesToAdd.get(packageNamesToAddIndex);
 
+                    if (currentPackageNames.contains(packageName)) {
+                        // This may happen when we are ensuring all default holders are added for
+                        // static roles.
+                        continue;
+                    }
                     if (!role.isPackageQualified(packageName, this)) {
                         Log.e(LOG_TAG, "Default/fallback role holder package doesn't qualify for"
                                 + " the role, package: " + packageName + ", role: " + roleName);
