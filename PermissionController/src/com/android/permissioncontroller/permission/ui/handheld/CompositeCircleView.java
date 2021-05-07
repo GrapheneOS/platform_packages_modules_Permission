@@ -34,7 +34,7 @@ public class CompositeCircleView extends FrameLayout {
     private static final int SEGMENT_ANGLE_SPACING_DEG = 2;
 
     /** How far apart to bump labels so that they have more space. */
-    private static final float LABEL_BUMP_DEGREES = 10;
+    private static final float LABEL_BUMP_DEGREES = 15;
 
     /** Values being represented by this circle. */
     private int[] mValues;
