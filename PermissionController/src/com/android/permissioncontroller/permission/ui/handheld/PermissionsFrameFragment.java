@@ -28,6 +28,7 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -52,7 +53,7 @@ public abstract class PermissionsFrameFragment extends PreferenceFragmentCompat 
     private View mProgressView;
     private ViewGroup mPrefsView;
     private boolean mIsLoading;
-    protected ExtendedFloatingActionButton mExtendedFab;
+    @Nullable protected ExtendedFloatingActionButton mExtendedFab;
 
     protected boolean mUseShadowController = true;
 

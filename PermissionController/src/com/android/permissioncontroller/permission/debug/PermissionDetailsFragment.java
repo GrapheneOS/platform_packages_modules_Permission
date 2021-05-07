@@ -151,14 +151,16 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
             Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) super.onCreateView(inflater, container, savedInstanceState);
 
-        mExtendedFab.setText(R.string.manage_permission);
-        mExtendedFab.setIcon(getActivity().getDrawable(R.drawable.ic_settings_outline));
-        mExtendedFab.setVisibility(View.VISIBLE);
-        mExtendedFab.setOnClickListener(v -> {
-            Intent intent = new Intent(Intent.ACTION_MANAGE_PERMISSION_APPS)
-                    .putExtra(Intent.EXTRA_PERMISSION_NAME, mFilterGroup);
-            startActivity(intent);
-        });
+        if (mExtendedFab != null) {
+            mExtendedFab.setText(R.string.manage_permission);
+            mExtendedFab.setIcon(getActivity().getDrawable(R.drawable.ic_settings_outline));
+            mExtendedFab.setVisibility(View.VISIBLE);
+            mExtendedFab.setOnClickListener(v -> {
+                Intent intent = new Intent(Intent.ACTION_MANAGE_PERMISSION_APPS)
+                        .putExtra(Intent.EXTRA_PERMISSION_NAME, mFilterGroup);
+                startActivity(intent);
+            });
+        }
 
         return root;
     }
