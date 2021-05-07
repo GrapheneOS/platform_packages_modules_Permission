@@ -23,23 +23,19 @@
     <string name="back" msgid="6249950659061523680">"पछाडि जानुहोस्"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"अनइन्स्टल गर्नुहोस् वा असक्षम पार्नुहोस्"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"एप फेला परेन"</string>
-    <!-- no translation found for grant_dialog_button_deny (88262611492697192) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_deny_and_dont_ask_again (1748925431574312595) -->
-    <skip />
+    <string name="grant_dialog_button_deny" msgid="88262611492697192">"अनुमति नदिनुहोस्"</string>
+    <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"अनुमति नदिइनुहोस् र फेरि नसोध्नुहोस्"</string>
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“एप प्रयोगमा भएको बेलामा” शीर्षक कायम राख्नुहोस्"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“यस बेला मात्र” राख्नुहोस्"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"थप जानकारी"</string>
-    <!-- no translation found for grant_dialog_button_deny_anyway (7225905870668915151) -->
-    <skip />
+    <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"जे भए पनि फेरि नसोध्नुहोस्"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"खारेज गर्नुहोस्"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g> मध्ये <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>"</string>
     <string name="permission_warning_template" msgid="2247087781222679458">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई <xliff:g id="ACTION">%2$s</xliff:g> अनुमति दिने हो?"</string>
     <string name="permission_add_background_warning_template" msgid="1812914855915092273">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई सधैँ <xliff:g id="ACTION">%2$s</xliff:g> अनुमति दिने हो?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"एप प्रयोग गर्दा मात्र"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"सधैँ"</string>
-    <!-- no translation found for deny_permission_deny_and_dont_ask_again (6106035221490102341) -->
-    <skip />
+    <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"अनुमति नदिइयोस् र फेरि नसोधियोस्"</string>
     <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g> अनुमति असक्षम पारिएको छ"</string>
     <string name="permission_revoked_all" msgid="3397649017727222283">"सबै अनुमति असक्षम पारिएको छ"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"कुनै पनि असक्षम पारिएको छैन"</string>
@@ -72,6 +68,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> एपहरूलाई अनुमति दिइएको छ"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"सिस्टम देखाउनुहोस्"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"सिस्टम लुकाउनुहोस्"</string>
+    <!-- no translation found for manage_permission (3796219072742331048) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"कुनै पनि एप छैन"</string>
     <string name="location_settings" msgid="3624412509133422562">"स्थानसम्बन्धी सेटिङहरू"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> यस डिभाइसको स्थानसम्बन्धी सेवा प्रदायक हो। स्थानसम्बन्धी सेटिङहरूमा गई स्थानसम्बन्धी पहुँच परिमार्जन गर्न सकिन्छ।"</string>
@@ -91,8 +89,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"सधैँ अनुमति दिइयोस्"</string>
     <string name="permission_access_only_foreground" msgid="7801170728159326195">"यो एप प्रयोग गरिरहेका बेला मात्र अनुमति दिइयोस्"</string>
-    <!-- no translation found for permission_access_never (4647014230217936900) -->
-    <skip />
+    <string name="permission_access_never" msgid="4647014230217936900">"अनुमति नदिनुहोस्"</string>
     <string name="loading" msgid="4789365003890741082">"लोड गर्दै…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"सबै अनुमति"</string>
     <string name="other_permissions" msgid="2901186127193849594">"एपका अन्य क्षमताहरू"</string>
@@ -112,32 +109,17 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"अज्ञात"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"गोपनीयतासम्बन्धी ड्यासबोर्ड"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> को प्रयोग"</string>
-    <!-- no translation found for perm_usage_adv_info_title (3357831829538873708) -->
+    <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"अन्य अनुमति हेर्नुहोस्"</string>
+    <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
+    <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> र थप <xliff:g id="NUM">%3$s</xliff:g>"</string>
+    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"एपहरूले पछिल्ला २४ घन्टामा कुन कुन समयमा तपाईंको <xliff:g id="PERMGROUP">%1$s</xliff:g> प्रयोग गरे भन्ने कुरा देखाइएको टाइमलाइन"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (4171772805196955753) -->
     <skip />
-    <!-- no translation found for perm_usage_adv_info_summary_2_items (3702175198750127822) -->
-    <skip />
-    <!-- no translation found for perm_usage_adv_info_summary_more_items (949055326299562218) -->
-    <skip />
-    <!-- no translation found for permission_group_usage_subtitle (712843174810251274) -->
-    <skip />
-    <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"यस एपले तपाईंको <xliff:g id="PERMGROUP">%1$s</xliff:g> प्रयोग गरेको बेलामा:"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"थप जान्नुहोस्"</string>
-    <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> दिन प्रयोग गरिएको</item>
-      <item quantity="one">१ दिन प्रयोग गरिएको</item>
-    </plurals>
-    <plurals name="duration_used_hours" formatted="false" msgid="2934347147156813767">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> घन्टा प्रयोग गरिएको</item>
-      <item quantity="one">१ घन्टा प्रयोग गरिएको</item>
-    </plurals>
-    <plurals name="duration_used_minutes" formatted="false" msgid="1871095305219275611">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> मिनेट प्रयोग गरिएको</item>
-      <item quantity="one">१ मिनेट प्रयोग गरिएको</item>
-    </plurals>
-    <plurals name="duration_used_seconds" formatted="false" msgid="4036612197985123365">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> सेकेन्ड प्रयोग गरिएको</item>
-      <item quantity="one">१ सेकेन्ड प्रयोग गरिएको</item>
-    </plurals>
+    <!-- no translation found for duration_used_days (1993098309578536308) -->
+    <!-- no translation found for duration_used_hours (1020075479447003242) -->
+    <!-- no translation found for duration_used_minutes (3422338854436291744) -->
+    <!-- no translation found for duration_used_seconds (2726799598314248110) -->
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">पछिल्लो पटकको पहुँच: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> पहुँच</item>
       <item quantity="one">पछिल्लो पटकको पहुँच: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> पहुँच</item>
@@ -179,7 +161,12 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> एपहरू</item>
       <item quantity="one">१ एप</item>
     </plurals>
-    <!-- no translation found for permission_usage_preference_label (9033113721294293706) -->
+    <!-- no translation found for permission_usage_preference_summary_not_used (8806755646449754282) -->
+    <skip />
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> वटा एप‌ले प्रयोग गरेको</item>
+      <item quantity="one">एउटा एप‌ले प्रयोग गरेको</item>
+    </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"ड्यासबोर्डमा सबै कुरा हेर्नुहोस्"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"यसअनुसार फिल्टर गरिएको: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"फिल्टर हटाउनुहोस्"</string>
@@ -209,13 +196,11 @@
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"सधैँ अनुमति दिइयोस्"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"यो एप प्रयोग गरिरहेका बेला मात्र अनुमति दिइयोस्"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"प्रत्येक पटक सोधियोस्"</string>
-    <!-- no translation found for app_permission_button_deny (6016454069832050300) -->
-    <skip />
+    <string name="app_permission_button_deny" msgid="6016454069832050300">"अनुमति नदिनुहोस्"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"सटीक स्थान"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"अनुमानित स्थान"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"सटीक लोकेसन प्रयोग गरियोस्"</string>
-    <!-- no translation found for app_permission_location_accuracy_subtitle (2654077606404987210) -->
-    <skip />
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"सटीक स्थान अफ गरिएका बेला एपहरूले तपाईंको अनुमानित स्थान प्रयोग गर्न सक्छन्"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> अनुमति"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"<xliff:g id="PERM">%1$s</xliff:g> लाई यो एप प्रयोग गर्ने अनुमति दिने वा नदिने"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g> सँग भएका सबै अनुमतिहरू हेर्नुहोस्"</string>
@@ -250,8 +235,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"यो अनुमति पाएका एपहरूले फोटो खिच्न र भिडियो रेकर्ड गर्न सक्छन्"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"यो अनुमति पाएका एपहरूले तपाईंका सम्पर्क ठेगानाहरू हेर्न सक्छन्"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"यो अनुमति भएका  एपहरूले यस डिभाइसको लोकेसन हेर्न तथा प्रयोग गर्न सक्छन्"</string>
-    <!-- no translation found for permission_description_summary_nearby_devices (8269183818275073741) -->
-    <skip />
+    <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"यो अनुमति दिइएका एपहरूले नजिकै रहेका डिभाइसहरू भेट्टाउन, ती डिभाइससँग कनेक्ट गर्न र तिनको सापेक्ष स्थिति निर्धारण गर्न सक्छन्"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"यो अनुमति भएका एपहरूले अडियो रेकर्ड गर्न सक्छन्"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"यो अनुमति पाएका एपहरूले फोन कल गर्न र तिनको व्यवस्थापन गर्न सक्छन्"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"यो अनुमति भएका एपहरूले मुटुको धड्कन जस्ता तपाईं जीवित रहेको संकेत गर्ने शरीरका महत्त्वपूर्ण चालसम्बन्धी डेटा प्रयोग गर्न सक्छन्"</string>
@@ -267,8 +251,7 @@
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"मिडिया मात्र प्रयोग गर्ने अनुमति दिइएको"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"सबै फाइल व्यवस्थापन गर्ने अनुमति दिइएको"</string>
     <string name="ask_header" msgid="2633816846459944376">"प्रत्येक पटक सोधियोस्"</string>
-    <!-- no translation found for denied_header (903209608358177654) -->
-    <skip />
+    <string name="denied_header" msgid="903209608358177654">"अनुमति नदिइएका"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> दिन</item>
       <item quantity="one">१ दिन</item>
@@ -461,10 +444,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"तपाईं उक्त एप प्रयोग नगरिरहेका बेलामा लगायत जुनसुकै समयमा यो एपले तपाईंको स्थानमाथि पहुँच राख्न सक्छ। "<annotation id="link">"सेटिङमा गई अनुमति दिनुहोस्।"</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; का लागि स्थानसम्बन्धी पहुँच परिवर्तन गर्ने हो?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"तपाईं उक्त एप प्रयोग नगरिरहेका बेलामा लगायत जुनसुकै समयमा यो एपले तपाईंको स्थानमाथि पहुँच राख्न खोज्छ। "<annotation id="link">"सेटिङमा गई अनुमति दिनुहोस्।"</annotation></string>
-    <!-- no translation found for permgrouprequest_nearby_devices (2272829282660436700) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequestdetail_nearby_devices (6877531270654738614) -->
-    <skip />
+    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई नजिकै रहेका डिभाइसहरू भेट्टाउने, ती डिभाइससँग कनेक्ट गर्ने र तिनको सापेक्ष स्थिति निर्धारण गर्ने अनुमति दिने हो?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई नजिकै रहेका डिभाइसहरू भेट्टाउने, ती डिभाइससँग कनेक्ट गर्ने र तिनको सापेक्ष स्थिति निर्धारण गर्ने अनुमति दिने हो? "<annotation id="link">"सेटिङमा गई अनुमति दिनुहोस्।"</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> लाई स्थानसम्बन्धी अनुमानित जानकारीको साटो सटीक जानकारी प्रयोग गर्न दिने हो?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई यो डिभाइसको अनुमानित लोकेसन प्रयोग गर्न दिने हो?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"सटीक"</string>
