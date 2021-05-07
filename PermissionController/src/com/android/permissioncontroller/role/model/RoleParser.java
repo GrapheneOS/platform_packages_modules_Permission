@@ -88,6 +88,7 @@ public class RoleParser {
     private static final String ATTRIBUTE_SEARCH_KEYWORDS = "searchKeywords";
     private static final String ATTRIBUTE_SHORT_LABEL = "shortLabel";
     private static final String ATTRIBUTE_SHOW_NONE = "showNone";
+    private static final String ATTRIBUTE_STATIC = "static";
     private static final String ATTRIBUTE_SYSTEM_ONLY = "systemOnly";
     private static final String ATTRIBUTE_VISIBLE = "visible";
     private static final String ATTRIBUTE_PERMISSION = "permission";
@@ -382,6 +383,14 @@ public class RoleParser {
             return null;
         }
 
+        boolean statik = getAttributeBooleanValue(parser, ATTRIBUTE_STATIC, false);
+        if (statik && (visible || requestable)) {
+            throwOrLogMessage("static=\"true\" is invalid for a visible or requestable role: "
+                    + name);
+            skipCurrentTag(parser);
+            return null;
+        }
+
         boolean systemOnly = getAttributeBooleanValue(parser, ATTRIBUTE_SYSTEM_ONLY, false);
 
         List<RequiredComponent> requiredComponents = null;
@@ -466,8 +475,8 @@ public class RoleParser {
                 descriptionResource, exclusive, fallBackToDefaultHolder, labelResource,
                 minSdkVersion, overrideUserWhenGranting, requestDescriptionResource,
                 requestTitleResource, requestable, searchKeywordsResource, shortLabelResource,
-                showNone, systemOnly, visible, requiredComponents, permissions, appOpPermissions,
-                appOps, preferredActivities);
+                showNone, statik, systemOnly, visible, requiredComponents, permissions,
+                appOpPermissions, appOps, preferredActivities);
     }
 
     @NonNull
