@@ -68,6 +68,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> ആപ്പുകൾക്ക് അനുമതി നൽകി"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"സിസ്‌റ്റം കാണിക്കുക"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"സിസ്‌റ്റം മറയ്ക്കുക"</string>
+    <!-- no translation found for manage_permission (3796219072742331048) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"ആപ്പുകൾ ഒന്നുമില്ല"</string>
     <string name="location_settings" msgid="3624412509133422562">"ലൊക്കേഷൻ ക്രമീകരണം"</string>
     <string name="location_warning" msgid="2381649060929040962">"ഈ ഉപകരണത്തിനായുള്ള ലൊക്കേഷൻ സേവനങ്ങളുടെ ദാതാവ് <xliff:g id="APP_NAME">%1$s</xliff:g> ആണ്. ലൊക്കേഷൻ ക്രമീകരണത്തിൽ നിന്ന് ലൊക്കേഷൻ ആക്‌സസ് പരിഷ്‌കരിക്കാവുന്നതാണ്."</string>
@@ -107,31 +109,17 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"അജ്ഞാതം"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"സ്വകാര്യതാ ഡാഷ്ബോർഡ്"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> ഉപയോഗം"</string>
-    <!-- no translation found for perm_usage_adv_info_title (3357831829538873708) -->
-    <skip />
-    <!-- no translation found for perm_usage_adv_info_summary_2_items (3702175198750127822) -->
-    <skip />
-    <!-- no translation found for perm_usage_adv_info_summary_more_items (949055326299562218) -->
-    <skip />
+    <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"മറ്റ് അനുമതികൾ കാണുക"</string>
+    <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
+    <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> എന്നിവയും മറ്റ് <xliff:g id="NUM">%3$s</xliff:g> എണ്ണവും കൂടി"</string>
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"കഴിഞ്ഞ 24 മണിക്കൂറിനിടെ എപ്പോഴാണ് ആപ്പുകൾ നിങ്ങളുടെ <xliff:g id="PERMGROUP">%1$s</xliff:g> ഉപയോഗിച്ചത് എന്നതിന്റെ ടൈംലൈൻ"</string>
-    <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"ഈ ആപ്പ് നിങ്ങളുടെ <xliff:g id="PERMGROUP">%1$s</xliff:g> ഉപയോഗിച്ചത് എപ്പോഴാണ്:"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (4171772805196955753) -->
+    <skip />
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"കൂടുതലറിയുക"</string>
-    <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ദിവസം ഉപയോഗിച്ചു</item>
-      <item quantity="one">ഒരു ദിവസം ഉപയോഗിച്ചു</item>
-    </plurals>
-    <plurals name="duration_used_hours" formatted="false" msgid="2934347147156813767">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> മണിക്കൂർ ഉപയോഗിച്ചു</item>
-      <item quantity="one">ഒരു മണിക്കൂർ ഉപയോഗിച്ചു</item>
-    </plurals>
-    <plurals name="duration_used_minutes" formatted="false" msgid="1871095305219275611">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> മിനിറ്റ് ഉപയോഗിച്ചു</item>
-      <item quantity="one">ഒരു മിനിറ്റ് ഉപയോഗിച്ചു</item>
-    </plurals>
-    <plurals name="duration_used_seconds" formatted="false" msgid="4036612197985123365">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> സെക്കൻഡ് ഉപയോഗിച്ചു</item>
-      <item quantity="one">ഒരു സെക്കൻഡ് ഉപയോഗിച്ചു</item>
-    </plurals>
+    <!-- no translation found for duration_used_days (1993098309578536308) -->
+    <!-- no translation found for duration_used_hours (1020075479447003242) -->
+    <!-- no translation found for duration_used_minutes (3422338854436291744) -->
+    <!-- no translation found for duration_used_seconds (2726799598314248110) -->
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">അവസാനം ആക്‌‌സസ് ചെയ്‌തത്: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> ആക്‌സസുകള്‍</item>
       <item quantity="one">അവസാനം ആക്‌‌സസ് ചെയ്‌തത്: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> ആക്‌‌സസ്</item>
@@ -173,7 +161,12 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ആപ്പുകൾ</item>
       <item quantity="one">ഒരു ആപ്പ്</item>
     </plurals>
-    <!-- no translation found for permission_usage_preference_label (9033113721294293706) -->
+    <!-- no translation found for permission_usage_preference_summary_not_used (8806755646449754282) -->
+    <skip />
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> ആപ്പുകൾ ഉപയോഗിച്ചു</item>
+      <item quantity="one">ഒരു ആപ്പ് ഉപയോഗിച്ചു</item>
+    </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"എല്ലാം ഡാഷ്ബോർഡിൽ കാണുക"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"ഇതുപ്രകാരം ഫിൽട്ടർ ചെയ്‌‌തു: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"ഫിൽട്ടർ നീക്കം ചെയ്യുക"</string>

@@ -68,6 +68,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"បានអនុញ្ញាត​កម្មវិធី <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"បង្ហាញ​ប្រព័ន្ធ"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"លាក់ប្រព័ន្ធ"</string>
+    <!-- no translation found for manage_permission (3796219072742331048) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"គ្មានកម្មវិធី"</string>
     <string name="location_settings" msgid="3624412509133422562">"ការកំណត់ទីតាំង"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> គឺជាកម្មវិធី​ផ្តល់សេវាកម្ម​ទីតាំង​សម្រាប់​ឧបករណ៍នេះ។ ការចូលប្រើ​ទីតាំងអាច​កែសម្រួល​បានពីការកំណត់​ទីតាំង។"</string>
@@ -111,24 +113,13 @@
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> និង <xliff:g id="NUM">%3$s</xliff:g> ទៀត"</string>
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"បន្ទាត់ពេលវេលានៃ​ពេលដែលកម្មវិធី​បានប្រើ <xliff:g id="PERMGROUP">%1$s</xliff:g> របស់អ្នក​ក្នុងរយៈពេល 24 ម៉ោងចុងក្រោយ"</string>
-    <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"នៅពេលកម្មវិធីនេះ​បានប្រើ <xliff:g id="PERMGROUP">%1$s</xliff:g> របស់អ្នក៖"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (4171772805196955753) -->
+    <skip />
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"ស្វែងយល់បន្ថែម"</string>
-    <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
-      <item quantity="other">បានប្រើ​រយៈពេល <xliff:g id="NUMBER">%s</xliff:g> ថ្ងៃ</item>
-      <item quantity="one">បានប្រើ​រយៈពេល 1 ថ្ងៃ</item>
-    </plurals>
-    <plurals name="duration_used_hours" formatted="false" msgid="2934347147156813767">
-      <item quantity="other">បានប្រើ​រយៈពេល <xliff:g id="NUMBER">%s</xliff:g> ម៉ោង</item>
-      <item quantity="one">បានប្រើ​រយៈពេល 1 ម៉ោង</item>
-    </plurals>
-    <plurals name="duration_used_minutes" formatted="false" msgid="1871095305219275611">
-      <item quantity="other">បានប្រើ​រយៈពេល <xliff:g id="NUMBER">%s</xliff:g> នាទី</item>
-      <item quantity="one">បានប្រើ​រយៈពេល 1 នាទី</item>
-    </plurals>
-    <plurals name="duration_used_seconds" formatted="false" msgid="4036612197985123365">
-      <item quantity="other">បានប្រើ​រយៈពេល <xliff:g id="NUMBER">%s</xliff:g> វិនាទី</item>
-      <item quantity="one">បានប្រើ​រយៈពេល 1 វិនាទី</item>
-    </plurals>
+    <!-- no translation found for duration_used_days (1993098309578536308) -->
+    <!-- no translation found for duration_used_hours (1020075479447003242) -->
+    <!-- no translation found for duration_used_minutes (3422338854436291744) -->
+    <!-- no translation found for duration_used_seconds (2726799598314248110) -->
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">ការចូលប្រើ​ចុងក្រោយ៖ <xliff:g id="TIME_2">%1$s</xliff:g>\nការចូលប្រើ <xliff:g id="NUM_3">%2$s</xliff:g> ដង</item>
       <item quantity="one">ការចូលប្រើ​ចុងក្រោយ៖ <xliff:g id="TIME_0">%1$s</xliff:g>\nការចូលប្រើ <xliff:g id="NUM_1">%2$s</xliff:g> ដង</item>
@@ -170,6 +161,8 @@
       <item quantity="other">កម្មវិធី <xliff:g id="NUMBER">%s</xliff:g></item>
       <item quantity="one">កម្មវិធី 1</item>
     </plurals>
+    <!-- no translation found for permission_usage_preference_summary_not_used (8806755646449754282) -->
+    <skip />
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
       <item quantity="other">បាន​ប្រើដោយ​កម្មវិធី <xliff:g id="NUMBER">%1$d</xliff:g></item>
       <item quantity="one">បាន​ប្រើដោយ​កម្មវិធី 1</item>

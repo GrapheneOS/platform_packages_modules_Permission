@@ -28,4 +28,5 @@
     <color name="car_card_ripple_background">#27ffffff</color>
     <color name="car_accent">#ff60a8f0</color>
     <color name="car_divider_color">#1fffffff</color>
+
 </resources>

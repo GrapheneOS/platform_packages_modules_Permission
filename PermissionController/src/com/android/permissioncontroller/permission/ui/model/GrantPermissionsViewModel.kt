@@ -416,8 +416,7 @@ class GrantPermissionsViewModel(
 
                 // Show location permission dialogs based on location permissions
                 val locationVisibilities = MutableList(NEXT_LOCATION_DIALOG) { false }
-                if (groupState.group.permGroupName == LOCATION && isLocationAccuracyEnabled() &&
-                        app.applicationInfo.targetSdkVersion >= Build.VERSION_CODES.S) {
+                if (groupState.group.permGroupName == LOCATION && isLocationAccuracyEnabled()) {
                     if (needFgPermissions) {
                         locationVisibilities[LOCATION_ACCURACY_LAYOUT] = true
                         if (fgState != null &&
@@ -433,12 +432,6 @@ class GrantPermissionsViewModel(
                                     buttonVisibilities[ALLOW_FOREGROUND_BUTTON] = false
                                 }
                             } else {
-                                if (!fgState.affectedPermissions.contains(ACCESS_COARSE_LOCATION)) {
-                                    Log.e(LOG_TAG, "ACCESS_FINE_LOCATION must be requested " +
-                                            "with ACCESS_COARSE_LOCATION.")
-                                    value = null
-                                    return
-                                }
                                 if (coarseLocationPerm?.isOneTime == false &&
                                         !coarseLocationPerm.isUserSet &&
                                         !coarseLocationPerm.isUserFixed) {
@@ -845,6 +838,11 @@ class GrantPermissionsViewModel(
                 if (affectedForegroundPermissions == null) {
                     KotlinUtils.grantForegroundRuntimePermissions(app, groupState.group,
                         groupState.affectedPermissions, isOneTime)
+                    // This prevents weird flag state when app targetSDK switches from S+ to R-
+                    if (groupState.affectedPermissions.contains(ACCESS_FINE_LOCATION)) {
+                        KotlinUtils.setFlagsWhenLocationAccuracyChanged(
+                                app, groupState.group, true)
+                    }
                 } else {
                     val newGroup = KotlinUtils.grantForegroundRuntimePermissions(app,
                             groupState.group, affectedForegroundPermissions, isOneTime)
