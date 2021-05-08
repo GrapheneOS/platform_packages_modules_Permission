@@ -793,7 +793,7 @@
         name="android.app.role.SYSTEM_ACTIVITY_RECOGNIZER"
         allowBypassingQualification="true"
         defaultHolders="config_systemActivityRecognizer"
-        exclusive="true"
+        exclusive="false"
         static="true"
         systemOnly="true"
         visible="false">
