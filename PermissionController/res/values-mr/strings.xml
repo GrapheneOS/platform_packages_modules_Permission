@@ -23,23 +23,19 @@
     <string name="back" msgid="6249950659061523680">"परत"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"अनइंस्टॉल करा किंवा बंद करा"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"अ‍ॅप आढळले नाही"</string>
-    <!-- no translation found for grant_dialog_button_deny (88262611492697192) -->
-    <skip />
-    <!-- no translation found for grant_dialog_button_deny_and_dont_ask_again (1748925431574312595) -->
-    <skip />
+    <string name="grant_dialog_button_deny" msgid="88262611492697192">"अनुमती देऊ नका"</string>
+    <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"अनुमती देऊ नका आणि पुन्हा विचारू नका"</string>
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“ॲप वापरत असताना” ठेवा"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“फक्त यावेळेपुरते” ठेवा"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"अधिक माहिती"</string>
-    <!-- no translation found for grant_dialog_button_deny_anyway (7225905870668915151) -->
-    <skip />
+    <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"तरीही अनुमती देऊ नका"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"डिसमिस करा"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> पैकी <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
     <string name="permission_warning_template" msgid="2247087781222679458">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला <xliff:g id="ACTION">%2$s</xliff:g> ची परवानगी द्यायची का?"</string>
     <string name="permission_add_background_warning_template" msgid="1812914855915092273">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला नेहमी <xliff:g id="ACTION">%2$s</xliff:g> ची परवानगी द्यायची का?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"फक्त अ‍ॅप वापरत असताना"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"नेहमी"</string>
-    <!-- no translation found for deny_permission_deny_and_dont_ask_again (6106035221490102341) -->
-    <skip />
+    <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"अनुमती देऊ नका आणि पुन्हा विचारू नका"</string>
     <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g> बंद केल्या"</string>
     <string name="permission_revoked_all" msgid="3397649017727222283">"सर्व बंद केल्या"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"कोणत्याही बंद केल्या नाहीत"</string>
@@ -72,6 +68,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> अ‍ॅप्सना अनुमती आहे"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"सिस्टम दर्शवा"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"सिस्टम लपवा"</string>
+    <!-- no translation found for manage_permission (3796219072742331048) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"कोणतेही अ‍ॅप्स नाहीत"</string>
     <string name="location_settings" msgid="3624412509133422562">"स्थान सेटिंग्ज"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> हा या डिव्‍हाइससाठी स्थान सेवांचा पुरवठादार आहे. स्थान अ‍ॅक्सेस स्थान सेटिंग्ज वरून सुधारित केला जाऊ शकतो."</string>
@@ -91,8 +89,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"सर्व वेळी अनुमती द्या"</string>
     <string name="permission_access_only_foreground" msgid="7801170728159326195">"फक्त अ‍ॅप वापरताना अनुमती द्या"</string>
-    <!-- no translation found for permission_access_never (4647014230217936900) -->
-    <skip />
+    <string name="permission_access_never" msgid="4647014230217936900">"अनुमती देऊ नका"</string>
     <string name="loading" msgid="4789365003890741082">"लोड होत आहे…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"सर्व परवानग्या"</string>
     <string name="other_permissions" msgid="2901186127193849594">"अन्य अ‍ॅप क्षमता"</string>
@@ -112,32 +109,17 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"अज्ञात"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"गोपनीयता डॅशबोर्ड"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> वापर"</string>
-    <!-- no translation found for perm_usage_adv_info_title (3357831829538873708) -->
+    <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"इतर परवानग्या पाहणे"</string>
+    <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
+    <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> आणि आणखी <xliff:g id="NUM">%3$s</xliff:g>"</string>
+    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"ॲप्सनी मागील २४ तासांमध्ये तुमचे <xliff:g id="PERMGROUP">%1$s</xliff:g> वापरलेल्याची टाइमलाइन"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (4171772805196955753) -->
     <skip />
-    <!-- no translation found for perm_usage_adv_info_summary_2_items (3702175198750127822) -->
-    <skip />
-    <!-- no translation found for perm_usage_adv_info_summary_more_items (949055326299562218) -->
-    <skip />
-    <!-- no translation found for permission_group_usage_subtitle (712843174810251274) -->
-    <skip />
-    <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"हे ॲप तुमचे <xliff:g id="PERMGROUP">%1$s</xliff:g> वापरते तेव्हा:"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"अधिक जाणून घ्या"</string>
-    <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> दिवसांसाठी वापरली</item>
-      <item quantity="one">एका दिवसासाठी वापरली</item>
-    </plurals>
-    <plurals name="duration_used_hours" formatted="false" msgid="2934347147156813767">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> तासांसाठी वापरली</item>
-      <item quantity="one">एका तासासाठी वापरली</item>
-    </plurals>
-    <plurals name="duration_used_minutes" formatted="false" msgid="1871095305219275611">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> मिनिटांसाठी वापरली</item>
-      <item quantity="one">एका मिनिटासाठी वापरली</item>
-    </plurals>
-    <plurals name="duration_used_seconds" formatted="false" msgid="4036612197985123365">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> सेकंदांसाठी वापरली</item>
-      <item quantity="one">एका सेकंदासाठी वापरली</item>
-    </plurals>
+    <!-- no translation found for duration_used_days (1993098309578536308) -->
+    <!-- no translation found for duration_used_hours (1020075479447003242) -->
+    <!-- no translation found for duration_used_minutes (3422338854436291744) -->
+    <!-- no translation found for duration_used_seconds (2726799598314248110) -->
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">शेवटचा अ‍ॅक्सेस: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> अ‍ॅक्सेस</item>
       <item quantity="one">शेवटचा अ‍ॅक्सेस: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> अ‍ॅक्सेस</item>
@@ -179,7 +161,12 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> अ‍ॅप्स</item>
       <item quantity="one">एक अ‍ॅप</item>
     </plurals>
-    <!-- no translation found for permission_usage_preference_label (9033113721294293706) -->
+    <!-- no translation found for permission_usage_preference_summary_not_used (8806755646449754282) -->
+    <skip />
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> अ‍ॅप्सनी वापरले</item>
+      <item quantity="one">एका अ‍ॅपने वापरले</item>
+    </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"डॅशबोर्डमध्ये सर्व पहा"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"यानुसार फिल्टर केले: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"फिल्टर काढून टाका"</string>
@@ -209,13 +196,11 @@
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"सर्व वेळी अनुमती द्या"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"फक्त अ‍ॅप वापरत असताना अनुमती द्या"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"प्रत्येक वेळी विचारा"</string>
-    <!-- no translation found for app_permission_button_deny (6016454069832050300) -->
-    <skip />
+    <string name="app_permission_button_deny" msgid="6016454069832050300">"अनुमती देऊ नका"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"अचूक स्थान"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"अंदाजे स्‍थान"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"अचूक स्थान वापरा"</string>
-    <!-- no translation found for app_permission_location_accuracy_subtitle (2654077606404987210) -->
-    <skip />
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"अचूक स्थान बंद असते तेव्हा, ॲप्स तुमचे अंदाजे स्थान अ‍ॅक्सेस करू शकतात"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> परवानगी"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"या अ‍ॅपसाठी <xliff:g id="PERM">%1$s</xliff:g> अ‍ॅक्सेस केला"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"सर्व <xliff:g id="APP">%1$s</xliff:g> परवानग्या पहा"</string>
@@ -250,8 +235,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"ही परवानगी असलेली अ‍ॅप्स फोटो घेऊ आणि व्हिडिओ रेकॉर्ड करू शकतात"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"ही परवानगी असलेली अ‍ॅप्स तुमचे संपर्क अ‍ॅक्सेस करू शकतात"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"ही परवानगी असलेली अ‍ॅप्स या डिव्हाइसचे स्थान अ‍ॅक्सेस करू शकतात"</string>
-    <!-- no translation found for permission_description_summary_nearby_devices (8269183818275073741) -->
-    <skip />
+    <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"ही परवानगी असलेली ॲप्स जवळील डिव्हाइस शोधू शकतात, त्यांच्याशी कनेक्ट करू शकतात आणि त्यांचे संबंधित स्थान निर्धारित करू शकतात"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"ही परवानगी असलेली अ‍ॅप्स ऑडिओ रेकॉर्ड करू शकतात"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"ही परवानगी असलेली अ‍ॅप्स फोन कॉल करू आणि व्यवस्थापित करू शकतात"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"ही परवानगी असलेली अ‍ॅप्स तुमच्या महत्त्वाच्या लक्षणांबद्दलचा सेन्सर डेटा अ‍ॅक्सेस करू शकतात"</string>
@@ -267,8 +251,7 @@
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"फक्त मीडिया ॲक्सेस करण्यासाठी अनुमती दिली आहे"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"सर्व फाइल व्यवस्थापित करण्यास अनुमती दिली आहे"</string>
     <string name="ask_header" msgid="2633816846459944376">"प्रत्येक वेळी विचारा"</string>
-    <!-- no translation found for denied_header (903209608358177654) -->
-    <skip />
+    <string name="denied_header" msgid="903209608358177654">"अनुमती नाही"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> दिवस</item>
       <item quantity="one">एक दिवस</item>
@@ -461,10 +444,8 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"तुम्ही अ‍ॅप वापरत नसतानादेखील कदाचित या ॲपला नेहमी तुमचे स्थान ॲक्सेस करायचे आहे."<annotation id="link">"सेटिंग्जमधून अनुमती द्या."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;<xliff:g id="APP_NAME">%1$s</xliff:g>&gt; चा स्थान ॲक्सेस बदलायचा आहे का?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"तुम्ही अ‍ॅप वापरत नसतानादेखील या ॲपला नेहमी तुमचे स्थान ॲक्सेस करायचे आहे. "<annotation id="link">"सेटिंग्जमधून अनुमती द्या."</annotation></string>
-    <!-- no translation found for permgrouprequest_nearby_devices (2272829282660436700) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequestdetail_nearby_devices (6877531270654738614) -->
-    <skip />
+    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला जवळील डिव्हाइस शोधण्याची, त्यांच्याशी कनेक्ट व त्यांचे संबंधित स्थान निर्धारित करण्याची अनुमती द्यायची का?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला जवळील डिव्हाइस शोधण्याची, त्यांच्याशी कनेक्ट व त्यांचे संबंधित स्थान निर्धारित करण्याची अनुमती द्यायची का? "<annotation id="link">"सेटिंग्जमध्ये अनुमती द्या."</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> च्या स्थानाचा अ‍ॅक्सेस अंदाजेवरून अचूकवर बदलायचा आहे का?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला या डिव्हाइसचे अंदाजे स्थान ॲक्सेस करू द्यायचे आहे का?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"अचूक"</string>
