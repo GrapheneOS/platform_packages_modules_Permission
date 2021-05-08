@@ -34,7 +34,7 @@ public class CompositeCircleView extends FrameLayout {
     private static final int SEGMENT_ANGLE_SPACING_DEG = 2;
 
     /** How far apart to bump labels so that they have more space. */
-    private static final float LABEL_BUMP_DEGREES = 10;
+    private static final float LABEL_BUMP_DEGREES = 15;
 
     /** Values being represented by this circle. */
     private int[] mValues;
@@ -88,14 +88,21 @@ public class CompositeCircleView extends FrameLayout {
             }
         }
 
-        // Add small spacing to the first angle to make the little space between segments.
-        startAngle = startAngle + (SEGMENT_ANGLE_SPACING_DEG * 0.5f);
+        // Add small spacing to the first angle to make the little space between segments, but only
+        // if we have more than one segment.
+        if (values.length > 1) {
+            startAngle = startAngle + (SEGMENT_ANGLE_SPACING_DEG * 0.5f);
+        }
         mPartialCircleCenterAngles = new float[values.length];
 
         // Number of degrees allocated to drawing circle segments.
-        float allocatedDegrees = 360 - (numValidValues * SEGMENT_ANGLE_SPACING_DEG);
+        float allocatedDegrees = 360;
+        if (values.length > 1) {
+            allocatedDegrees -= (numValidValues * SEGMENT_ANGLE_SPACING_DEG);
+        }
 
-        // Number of consecutive times we've bumped the next label further to make space.
+        // Total label bump degrees so far.
+        float totalBumpDegrees = 0;
         int labelBumps = 0;
 
         for (int i = 0; i < values.length; i++) {
@@ -114,19 +121,21 @@ public class CompositeCircleView extends FrameLayout {
             float sweepAngle = (values[i] / total) * allocatedDegrees;
             pcv.setSweepAngle(sweepAngle);
 
-            // If the sweep angle is big, don't bump this label out, spread previous label
-            // bumps by moving all bumped items back.
-            if (sweepAngle > ((labelBumps * LABEL_BUMP_DEGREES) * 2)) {
-                spreadPreviousLabelBumps(labelBumps, i);
-                labelBumps = 0;
-            }
-
-            mPartialCircleCenterAngles[i] =
-                    (startAngle + (sweepAngle * 0.5f) + (labelBumps * LABEL_BUMP_DEGREES)) % 360;
-
-            // If the sweep angle is tiny, we have to bump the next label out a bit.
-            if (sweepAngle < LABEL_BUMP_DEGREES) {
-                labelBumps++;
+            mPartialCircleCenterAngles[i] = (startAngle + (sweepAngle * 0.5f)) % 360;
+            if (i > 0) {
+                float angleDiff =
+                        ((mPartialCircleCenterAngles[i] - mPartialCircleCenterAngles[i - 1])
+                                + 360) % 360;
+                if (angleDiff < LABEL_BUMP_DEGREES) {
+                    float bump = LABEL_BUMP_DEGREES - angleDiff;
+                    mPartialCircleCenterAngles[i] += bump;
+                    totalBumpDegrees += bump;
+                    labelBumps++;
+                } else {
+                    spreadPreviousLabelBumps(labelBumps, totalBumpDegrees, i);
+                    totalBumpDegrees = 0;
+                    labelBumps = 0;
+                }
             }
 
             // Move to next segment.
@@ -136,7 +145,7 @@ public class CompositeCircleView extends FrameLayout {
         }
 
         // If any label bumps remaining, spread now.
-        spreadPreviousLabelBumps(labelBumps, values.length);
+        spreadPreviousLabelBumps(labelBumps, totalBumpDegrees, values.length);
     }
 
     /**
@@ -145,12 +154,13 @@ public class CompositeCircleView extends FrameLayout {
      * corresponding segments.
      *
      * @param labelBumps total number of previous segments under the size threshold
+     * @param totalBumpDegrees the total degrees to spread along previous labels
      * @param behindIndex the index behind which we were bumping labels
      */
-    private void spreadPreviousLabelBumps(int labelBumps, int behindIndex) {
+    private void spreadPreviousLabelBumps(int labelBumps, float totalBumpDegrees, int behindIndex) {
         if (labelBumps > 0) {
-            float spread = ((labelBumps - 1) * LABEL_BUMP_DEGREES) * 0.5f;
-            for (int i = 1; i <= labelBumps; i++) {
+            float spread = totalBumpDegrees * 0.5f;
+            for (int i = 1; i <= labelBumps + 1; i++) {
                 int index = behindIndex - i;
                 float angle = mPartialCircleCenterAngles[index];
                 angle -= spread;

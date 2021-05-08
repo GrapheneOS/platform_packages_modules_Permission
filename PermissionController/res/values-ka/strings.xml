@@ -68,6 +68,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"დაშვებულია <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> აპი"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"სისტემის ჩვენება"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"სისტემური პროცესების დამალვა"</string>
+    <!-- no translation found for manage_permission (3796219072742331048) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"აპები არ არის"</string>
     <string name="location_settings" msgid="3624412509133422562">"მდებარეობის პარამეტრები"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> არის მდებარეობის სერვისების მომწოდებელი ამ მოწყობილობისთვის. მდებარეობაზე წვდომის შეცვლა შესაძლებელია მდებარეობის პარამეტრებიდან."</string>
@@ -111,24 +113,13 @@
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> და <xliff:g id="NUM">%3$s</xliff:g> სხვა"</string>
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"აპების მიერ თქვენი <xliff:g id="PERMGROUP">%1$s</xliff:g>-ის გამოყენების ქრონოლოგია ბოლო 24 საათის განმავლობაში"</string>
-    <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"როდის გამოიყენა ამ აპმა თქვენი <xliff:g id="PERMGROUP">%1$s</xliff:g>:"</string>
+    <!-- no translation found for permission_usage_access_dialog_subtitle (4171772805196955753) -->
+    <skip />
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"შეიტყვეთ მეტი"</string>
-    <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
-      <item quantity="other">გამოყენებულია <xliff:g id="NUMBER">%s</xliff:g> დღის განმავლობაში</item>
-      <item quantity="one">გამოყენებულია 1 დღის განმავლობაში</item>
-    </plurals>
-    <plurals name="duration_used_hours" formatted="false" msgid="2934347147156813767">
-      <item quantity="other">გამოყენებულია <xliff:g id="NUMBER">%s</xliff:g> საათის განმავლობაში</item>
-      <item quantity="one">გამოყენებულია 1 საათის განმავლობაში</item>
-    </plurals>
-    <plurals name="duration_used_minutes" formatted="false" msgid="1871095305219275611">
-      <item quantity="other">გამოყენებულია <xliff:g id="NUMBER">%s</xliff:g> წუთის განმავლობაში</item>
-      <item quantity="one">გამოყენებულია 1 წუთის განმავლობაში</item>
-    </plurals>
-    <plurals name="duration_used_seconds" formatted="false" msgid="4036612197985123365">
-      <item quantity="other">გამოყენებულია <xliff:g id="NUMBER">%s</xliff:g> წამის განმავლობაში</item>
-      <item quantity="one">გამოყენებულია 1 წამის განმავლობაში</item>
-    </plurals>
+    <!-- no translation found for duration_used_days (1993098309578536308) -->
+    <!-- no translation found for duration_used_hours (1020075479447003242) -->
+    <!-- no translation found for duration_used_minutes (3422338854436291744) -->
+    <!-- no translation found for duration_used_seconds (2726799598314248110) -->
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">ბოლო წვდომა: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> წვდომა</item>
       <item quantity="one">ბოლო წვდომა: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> წვდომა</item>
@@ -170,6 +161,8 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> აპი</item>
       <item quantity="one">1 აპი</item>
     </plurals>
+    <!-- no translation found for permission_usage_preference_summary_not_used (8806755646449754282) -->
+    <skip />
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
       <item quantity="other">იყენებს <xliff:g id="NUMBER">%1$d</xliff:g> აპი</item>
       <item quantity="one">იყენებს 1 აპი</item>
