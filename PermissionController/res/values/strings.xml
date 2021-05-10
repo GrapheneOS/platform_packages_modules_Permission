@@ -849,6 +849,9 @@
     <!-- Subtitle for a storage preference that is currently granted for all files. [CHAR LIMIT=60] -->
     <string name="permission_subtitle_all_files">All Files</string>
 
+    <!-- Subtitle for the preference that the permission is currently always granted. [CHAR LIMIT=60] -->
+    <string name="permission_subtitle_background">Allowed all the time</string>
+
     <!-- Summary for showing the last access text for sensor data permissions for today [CHAR LIMIT=70] -->
     <string name="app_perms_24h_access">Last accessed <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g></string>
 
@@ -858,14 +861,14 @@
     <!-- Summary for showing the last access text for content provider permissions [CHAR LIMIT=70] -->
     <string name="app_perms_content_provider">Accessed in past 24 hours</string>
 
-    <!-- Subtitle for the preference that is currently granted only when the app is in the foreground. [CHAR LIMIT=70] -->
-    <string name="app_perms_24h_access_only_in_foreground">Last accessed <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g> \u2022 Only while app is in use</string>
+    <!-- Subtitle for the preference that the permission is currently always granted. [CHAR LIMIT=70] -->
+    <string name="app_perms_24h_access_background">Last accessed <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g> \u2022 Allowed all the time</string>
 
-    <!-- Subtitle for the preference that is currently granted only when the app is in the foreground. [CHAR LIMIT=70] -->
-    <string name="app_perms_24h_access_yest_only_in_foreground">Last accessed yesterday at <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g> \u2022 Only while app is in use</string>
+    <!-- Subtitle for the preference that the permission is currently always granted. [CHAR LIMIT=70] -->
+    <string name="app_perms_24h_access_yest_background">Last accessed yesterday at <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g> \u2022 Allowed all the time</string>
 
-    <!-- Subtitle for the preference that is currently granted only when the app is in the foreground. [CHAR LIMIT=70] -->
-    <string name="app_perms_content_provider_only_in_foreground">Accessed in past 24 hours \u2022 Only while app is in use</string>
+    <!-- Subtitle for the preference that the permission is currently always granted. [CHAR LIMIT=70] -->
+    <string name="app_perms_content_provider_background">Accessed in past 24 hours \u2022 Allowed all the time</string>
 
     <!-- Subtitle for a storage preference that is currently granted for Media files only. [CHAR LIMIT=70] -->
     <string name="app_perms_24h_access_media_only">Last accessed <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g> \u2022 Media</string>
