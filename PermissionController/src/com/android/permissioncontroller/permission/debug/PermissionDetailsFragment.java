@@ -20,6 +20,7 @@ import static java.util.concurrent.TimeUnit.DAYS;
 import static java.util.concurrent.TimeUnit.HOURS;
 import static java.util.concurrent.TimeUnit.MINUTES;
 
+import android.Manifest;
 import android.Manifest.permission_group;
 import android.app.ActionBar;
 import android.app.role.RoleManager;
@@ -400,18 +401,11 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
                 }
 
                 String accessTime = DateFormat.getTimeFormat(context).format(usage.mEndTime);
-                Long accessDurationLong = usage.mClusteredAccessTimeList
+                Long durationLong = usage.mClusteredAccessTimeList
                         .stream()
                         .map(p -> p.second)
                         .filter(dur -> dur > 0)
                         .reduce(0L, (dur1, dur2) -> dur1 + dur2);
-
-                // Only show the duration if it is at least (cluster + 1) minutes. Displaying times
-                // that are the same as the cluster granularity does not convey useful information.
-                String accessDuration = null;
-                if (accessDurationLong >= MINUTES.toMillis(CLUSTER_MINUTES_APART + 1)) {
-                    accessDuration = UtilsKt.getDurationUsedStr(context, accessDurationLong);
-                }
 
                 List<Long> accessTimeList = usage.mClusteredAccessTimeList
                         .stream().map(p -> p.first).collect(Collectors.toList());
@@ -421,6 +415,33 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
                                 AppPermissionUsage.GroupUsage::getAttributionTags).filter(
                                 Objects::nonNull).flatMap(Collection::stream).collect(
                                 Collectors.toCollection(ArrayList::new));
+
+                // Determine duration string.
+                String accessDuration = null;
+                // Since Location accesses are atomic, we manually calculate the access duration
+                // by comparing the first and last access within the cluster
+                if (mFilterGroup.equals(Manifest.permission_group.LOCATION)) {
+                    if (accessTimeList.size() > 1) {
+                        durationLong = accessTimeList.get(0)
+                                - accessTimeList.get(accessTimeList.size() - 1);
+
+                        // Similar to other history items, only show the duration if it's longer
+                        // than the clustering granularity.
+                        if (durationLong
+                                >= (MINUTES.toMillis(CLUSTER_MINUTES_APART) + 1)) {
+                            accessDuration = UtilsKt.getDurationUsedStr(context, durationLong);
+                        }
+                    }
+                } else {
+                    // Only show the duration if it is at least (cluster + 1) minutes. Displaying
+                    // times that are the same as the cluster granularity does not convey useful
+                    // information.
+                    if ((durationLong != null)
+                            && durationLong >= MINUTES.toMillis(CLUSTER_MINUTES_APART + 1)) {
+                        accessDuration = UtilsKt.getDurationUsedStr(context, durationLong);
+                    }
+                }
+
                 PermissionHistoryPreference permissionUsagePreference = new
                         PermissionHistoryPreference(context, usage.mAppPermissionUsage,
                         mFilterGroup, accessTime, accessDuration, accessTimeList, attributionTags,
