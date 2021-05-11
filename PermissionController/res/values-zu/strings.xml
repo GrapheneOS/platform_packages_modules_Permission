@@ -68,8 +68,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> izinhlelo zokusebenza ezivunyelwe"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Bonisa isistimu"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Fihla isistimu"</string>
-    <!-- no translation found for manage_permission (3796219072742331048) -->
-    <skip />
+    <string name="manage_permission" msgid="3796219072742331048">"Phatha Izimvume"</string>
     <string name="no_apps" msgid="2412612731628386816">"Azikho izinhlelo zokusebenza"</string>
     <string name="location_settings" msgid="3624412509133422562">"Izilungiselelo Zendawo"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> ingumhlinzeki wamasevisi wendawo kule divayisi. Ukufinyelela kwendawo kungashintshwa kusuka kuzilungiselelo zendawo."</string>
@@ -113,13 +112,24 @@
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>, nokungu-<xliff:g id="NUM">%3$s</xliff:g> ngaphezulu"</string>
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Isikhathi esimisiwe sokuthi ama-app asebenzise nini i-<xliff:g id="PERMGROUP">%1$s</xliff:g> emahoreni angama-24 adlule"</string>
-    <!-- no translation found for permission_usage_access_dialog_subtitle (4171772805196955753) -->
-    <skip />
+    <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Lapho le app isebenzisa imvume yakho ye-<xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Funda kabanzi"</string>
-    <!-- no translation found for duration_used_days (1993098309578536308) -->
-    <!-- no translation found for duration_used_hours (1020075479447003242) -->
-    <!-- no translation found for duration_used_minutes (3422338854436291744) -->
-    <!-- no translation found for duration_used_seconds (2726799598314248110) -->
+    <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
+      <item quantity="one">izinsuku <xliff:g id="NUMBER">%s</xliff:g></item>
+      <item quantity="other">izinsuku <xliff:g id="NUMBER">%s</xliff:g></item>
+    </plurals>
+    <plurals name="duration_used_hours" formatted="false" msgid="1020075479447003242">
+      <item quantity="one">amahora <xliff:g id="NUMBER">%s</xliff:g></item>
+      <item quantity="other">amahora <xliff:g id="NUMBER">%s</xliff:g></item>
+    </plurals>
+    <plurals name="duration_used_minutes" formatted="false" msgid="3422338854436291744">
+      <item quantity="one">imizuzu <xliff:g id="NUMBER">%s</xliff:g></item>
+      <item quantity="other">imizuzu <xliff:g id="NUMBER">%s</xliff:g></item>
+    </plurals>
+    <plurals name="duration_used_seconds" formatted="false" msgid="2726799598314248110">
+      <item quantity="one">imizuzwana <xliff:g id="NUMBER">%s</xliff:g></item>
+      <item quantity="other">imizuzwana <xliff:g id="NUMBER">%s</xliff:g></item>
+    </plurals>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="one">Ukufinyelela kokugcina: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> iyafinyelela</item>
       <item quantity="other">Ukufinyelela kokugcina: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> iyafinyelela</item>
@@ -161,8 +171,7 @@
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> izinhlelo zokusebenza</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> izinhlelo zokusebenza</item>
     </plurals>
-    <!-- no translation found for permission_usage_preference_summary_not_used (8806755646449754282) -->
-    <skip />
+    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Ayisetshenziswanga emahoreni angama-24 adlule"</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
       <item quantity="one">Kusetshenziswe ama-app angu-<xliff:g id="NUMBER">%1$d</xliff:g></item>
       <item quantity="other">Kusetshenziswe ama-app angu-<xliff:g id="NUMBER">%1$d</xliff:g></item>
