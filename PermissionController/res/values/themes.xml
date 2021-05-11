@@ -23,6 +23,7 @@
         <item name="preferenceCategoryTitleTextAppearance">@style/TextAppearance.CategoryTitle</item>
     </style>
 
+    <!-- TODO(b/177638483): Remove this theme once permission UI uses toolbar as well. -->
     <style name="Settings.Role">
         <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
