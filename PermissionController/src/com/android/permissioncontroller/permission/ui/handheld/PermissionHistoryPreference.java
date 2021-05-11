@@ -16,7 +16,6 @@
 
 package com.android.permissioncontroller.permission.ui.handheld;
 
-import android.Manifest;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -45,7 +44,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.permissioncontroller.R;
-import com.android.permissioncontroller.permission.debug.UtilsKt;
 import com.android.permissioncontroller.permission.model.AppPermissionUsage;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 
@@ -101,16 +99,6 @@ public class PermissionHistoryPreference extends Preference {
         setTitle(mTitle);
         if (accessDuration != null) {
             setSummary(accessDuration);
-        }
-
-        // Since Location accesses are atomic, we manually calculate the access duration
-        // by comparing the first and last access within the cluster
-        if (mPermissionGroup.equals(Manifest.permission_group.LOCATION)
-                && mAccessTimeList.size() > 1) {
-            int accessTimeListSize = mAccessTimeList.size();
-            long locationAccessDuration = mAccessTimeList.get(0)
-                    - mAccessTimeList.get(accessTimeListSize - 1);
-            setSummary(UtilsKt.getDurationUsedStr(context, locationAccessDuration));
         }
 
         mIntent = getViewPermissionUsageForPeriodIntent();

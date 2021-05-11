@@ -296,6 +296,12 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
                     continue;
                 }
 
+                // We might have another AppPermissionUsage entry that's of the same packageName
+                // but with a different uid. In that case, we want to grab the max lastAccessTime
+                // as the last usage to show.
+                lastAccessTime = Math.max(
+                        accessTime.getOrDefault(groupName, Instant.EPOCH.toEpochMilli()),
+                        lastAccessTime);
                 accessTime.put(groupName, lastAccessTime);
             }
         }
@@ -375,27 +381,27 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
                 preference.setIcon(KotlinUtils.INSTANCE.getPermGroupIcon(context, groupName));
                 preference.setKey(groupName);
                 switch (groupInfo.getSubtitle()) {
-                    case FOREGROUND_ONLY:
+                    case BACKGROUND:
                         switch (lastAccessType) {
                             case LAST_24H_CONTENT_PROVIDER:
                                 preference.setSummary(
-                                        R.string.app_perms_content_provider_only_in_foreground);
+                                        R.string.app_perms_content_provider_background);
                                 break;
                             case LAST_24H_SENSOR_TODAY:
                                 preference.setSummary(
                                         getString(
-                                                R.string.app_perms_24h_access_only_in_foreground,
+                                                R.string.app_perms_24h_access_background,
                                                 lastAccessTimeFormatted));
                                 break;
                             case LAST_24H_SENSOR_YESTERDAY:
                                 preference.setSummary(getString(
-                                        R.string.app_perms_24h_access_yest_only_in_foreground,
+                                        R.string.app_perms_24h_access_yest_background,
                                         lastAccessTimeFormatted));
                                 break;
                             case NOT_IN_LAST_24H:
                             default:
                                 preference.setSummary(
-                                        R.string.permission_subtitle_only_in_foreground);
+                                        R.string.permission_subtitle_background);
                         }
 
                         break;
@@ -447,6 +453,8 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
                         }
 
                         break;
+                    case FOREGROUND_ONLY:
+                        // We don't want to note the foreground access
                     default:
                         switch (lastAccessType) {
                             case LAST_24H_CONTENT_PROVIDER:
