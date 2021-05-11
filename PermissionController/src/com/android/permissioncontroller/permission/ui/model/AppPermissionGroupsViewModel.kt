@@ -74,6 +74,7 @@ class AppPermissionGroupsViewModel(
         MEDIA_ONLY(1),
         ALL_FILES(2),
         FOREGROUND_ONLY(3),
+        BACKGROUND(4),
     }
 
     data class GroupUiInfo(
@@ -168,10 +169,11 @@ class AppPermissionGroupsViewModel(
                                 GroupUiInfo(groupName, isSystem, subtitle))
                         }
                         PermGrantState.PERMS_ALLOWED_ALWAYS -> groupGrantStates[
-                            Category.ALLOWED]!!.add(GroupUiInfo(groupName, isSystem))
+                            Category.ALLOWED]!!.add(GroupUiInfo(groupName, isSystem,
+                                PermSubtitle.BACKGROUND))
                         PermGrantState.PERMS_ALLOWED_FOREGROUND_ONLY -> groupGrantStates[
                             Category.ALLOWED]!!.add(GroupUiInfo(groupName, isSystem,
-                            PermSubtitle.FOREGROUND_ONLY))
+                                PermSubtitle.FOREGROUND_ONLY))
                         PermGrantState.PERMS_DENIED -> groupGrantStates[Category.DENIED]!!.add(
                             GroupUiInfo(groupName, isSystem))
                         PermGrantState.PERMS_ASK -> groupGrantStates[Category.ASK]!!.add(
