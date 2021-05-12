@@ -28,6 +28,8 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.TwoStatePreference;
 
 import com.android.permissioncontroller.role.ui.DefaultAppChildFragment;
+import com.android.settingslib.widget.FooterPreference;
+import com.android.settingslib.widget.RadioButtonPreference;
 
 /**
  * Handheld preference fragment for a default app.
@@ -96,7 +98,7 @@ public class HandheldDefaultAppPreferenceFragment extends PreferenceFragmentComp
     @NonNull
     @Override
     public TwoStatePreference createApplicationPreference(@NonNull Context context) {
-        return new AppIconRadioButtonPreference(context);
+        return new RadioButtonPreference(context);
     }
 
     @NonNull
