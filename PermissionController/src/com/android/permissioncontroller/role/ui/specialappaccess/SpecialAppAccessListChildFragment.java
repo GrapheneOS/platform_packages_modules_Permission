@@ -101,10 +101,9 @@ public class SpecialAppAccessListChildFragment<PF extends PreferenceFragmentComp
             RoleItem roleItem = roleItems.get(i);
 
             Role role = roleItem.getRole();
-            TwoTargetPreference preference = (TwoTargetPreference) oldPreferences.get(
-                    role.getName());
+            Preference preference = oldPreferences.get(role.getName());
             if (preference == null) {
-                preference = preferenceFragment.createPreference(context);
+                preference = (Preference) preferenceFragment.createPreference(context);
                 preference.setKey(role.getName());
                 preference.setIconSpaceReserved(true);
                 preference.setTitle(role.getShortLabelResource());
@@ -112,7 +111,8 @@ public class SpecialAppAccessListChildFragment<PF extends PreferenceFragmentComp
                 preference.setOnPreferenceClickListener(this);
             }
 
-            role.preparePreferenceAsUser(preference, Process.myUserHandle(), context);
+            role.preparePreferenceAsUser((TwoTargetPreference) preference, Process.myUserHandle(),
+                    context);
 
             preferenceScreen.addPreference(preference);
         }
