@@ -26,13 +26,10 @@ apex_defaults {
     name: "com.android.permission-defaults",
     updatable: true,
     min_sdk_version: "30",
+    bootclasspath_fragments: ["com.android.permission-bootclasspath-fragment"],
     key: "com.android.permission.key",
     certificate: ":com.android.permission.certificate",
-    java_libs: [
-        "framework-permission",
-        "framework-permission-s",
-        "service-permission",
-    ],
+    java_libs: ["service-permission"],
     apps: ["PermissionController"],
 }
 
@@ -58,4 +55,14 @@ sdk {
         "framework-permission",
         "framework-permission-s",
     ],
+}
+
+// Encapsulate the contributions made by the com.android.permission to the bootclasspath.
+bootclasspath_fragment {
+    name: "com.android.permission-bootclasspath-fragment",
+    contents: [
+      "framework-permission",
+      "framework-permission-s",
+    ],
+    apex_available: ["com.android.permission"],
 }
