@@ -64,7 +64,7 @@ public class HandheldDefaultAppListPreferenceFragment extends PreferenceFragment
     @NonNull
     @Override
     public TwoTargetPreference createPreference(@NonNull Context context) {
-        return new AppIconSettingsButtonPreference(context);
+        return new SettingsButtonPreference(context);
     }
 
     @Override
