@@ -45,3 +45,10 @@ android_app_certificate {
     name: "com.android.permission.certificate",
     certificate: "com.android.permission",
 }
+
+sdk {
+    name: "permission-sdk",
+    java_sdk_libs: [
+        "framework-permission",
+    ],
+}
