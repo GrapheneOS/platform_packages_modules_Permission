@@ -163,10 +163,9 @@ public class DefaultAppListChildFragment<PF extends PreferenceFragmentCompat
             RoleItem roleItem = roleItems.get(i);
 
             Role role = roleItem.getRole();
-            TwoTargetPreference preference = (TwoTargetPreference) oldPreferences.get(
-                    role.getName());
+            Preference preference = oldPreferences.get(role.getName());
             if (preference == null) {
-                preference = preferenceFragment.createPreference(context);
+                preference = (Preference) preferenceFragment.createPreference(context);
                 preference.setKey(role.getName());
                 preference.setIconSpaceReserved(true);
                 preference.setTitle(role.getShortLabelResource());
@@ -184,7 +183,7 @@ public class DefaultAppListChildFragment<PF extends PreferenceFragmentCompat
                 preference.setIcon(Utils.getBadgedIcon(context, holderApplicationInfo));
                 preference.setSummary(Utils.getAppLabel(holderApplicationInfo, context));
             }
-            role.preparePreferenceAsUser(preference, user, context);
+            role.preparePreferenceAsUser((TwoTargetPreference) preference, user, context);
 
             preferenceGroup.addPreference(preference);
         }
