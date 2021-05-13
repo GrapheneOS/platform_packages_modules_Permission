@@ -58,6 +58,7 @@ import com.android.permissioncontroller.permission.data.LightPackageInfoLiveData
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.data.get
+import com.android.permissioncontroller.permission.debug.getDefaultPrecision
 import com.android.permissioncontroller.permission.debug.isLocationAccuracyEnabled
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
@@ -439,9 +440,20 @@ class GrantPermissionsViewModel(
                                 }
                                 // Normal flow with both Coarse and Fine locations
                                 locationVisibilities[DIALOG_WITH_BOTH_LOCATIONS] = true
-                                // When user has set to coarse location for one time permission in
-                                // location settings, select coarse location as the default option.
-                                if (coarseLocationPerm?.isSelectedLocationAccuracy == true) {
+                                // Steps to decide location accuracy default state
+                                // 1. If none of the FINE and COARSE isSelectedLocationAccuracy
+                                //    flags is set, then use default precision from device config.
+                                // 2. Otherwise set to whichever isSelectedLocationAccuracy is true.
+                                val fineLocationPerm =
+                                        groupState.group.allPermissions[ACCESS_FINE_LOCATION]
+                                if (coarseLocationPerm?.isSelectedLocationAccuracy == false &&
+                                        fineLocationPerm?.isSelectedLocationAccuracy == false) {
+                                    if (getDefaultPrecision()) {
+                                        locationVisibilities[FINE_RADIO_BUTTON] = true
+                                    } else {
+                                        locationVisibilities[COARSE_RADIO_BUTTON] = true
+                                    }
+                                } else if (coarseLocationPerm?.isSelectedLocationAccuracy == true) {
                                     locationVisibilities[COARSE_RADIO_BUTTON] = true
                                 } else {
                                     locationVisibilities[FINE_RADIO_BUTTON] = true
