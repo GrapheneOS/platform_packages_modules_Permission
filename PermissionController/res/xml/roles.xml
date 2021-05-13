@@ -25,6 +25,7 @@
         <permission name="com.android.voicemail.permission.ADD_VOICEMAIL" />
         <permission name="android.permission.USE_SIP" />
         <permission name="android.permission.PROCESS_OUTGOING_CALLS" />
+        <permission name="android.permission.ANSWER_PHONE_CALLS" />
     </permission-set>
 
     <permission-set name="contacts">
