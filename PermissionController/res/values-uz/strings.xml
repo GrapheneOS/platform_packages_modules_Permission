@@ -323,12 +323,13 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"Faqat ilova faolligida ruxsat"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"Media"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"Barcha fayllar"</string>
+    <string name="permission_subtitle_background" msgid="8916750995309083180">"Doimiy ruxsat berilgan"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"Oxirgi kirilgan vaqt: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Oxirgi marta kecha <xliff:g id="TIME_DATE">%1$s</xliff:g> da kirilgan"</string>
     <string name="app_perms_content_provider" msgid="6996750793881252778">"24 soat ichida kirilgan"</string>
-    <string name="app_perms_24h_access_only_in_foreground" msgid="8590228656172893995">"Oxirgi kirilgan vaqt: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Faqat ilova ishlatilayotganda"</string>
-    <string name="app_perms_24h_access_yest_only_in_foreground" msgid="8491319626462867381">"Oxirgi marta kecha <xliff:g id="TIME_DATE">%1$s</xliff:g> da kirilgan • Faqat ilova ishlatilayotganda"</string>
-    <string name="app_perms_content_provider_only_in_foreground" msgid="7111427348979322476">"24 soat ichida kirilgan • Faqat ilova ishlatilayotganda"</string>
+    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Oxirgi kirish: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Doimiy ruxsat berilgan"</string>
+    <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Oxirgi kirish: kecha, <xliff:g id="TIME_DATE">%1$s</xliff:g> • Doimiy ruxsat berilgan"</string>
+    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"Oxirgi 24 soat ichida kirilgan • Doimiy ruxsat berilgan"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Oxirgi kirilgan vaqt: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Media"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Oxirgi marta kecha <xliff:g id="TIME_DATE">%1$s</xliff:g> da kirilgan • Media"</string>
     <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"24 soat ichida kirilgan • Media"</string>

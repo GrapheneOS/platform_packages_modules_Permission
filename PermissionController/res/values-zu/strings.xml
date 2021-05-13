@@ -323,12 +323,13 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"Kuphela ngenkathi uhlelo lokusebenza lusebenza"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"Imidiya"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"Wonke ama-Files"</string>
+    <string name="permission_subtitle_background" msgid="8916750995309083180">"Ivunyelwe ngaso sonke isikhathi"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"Igcine ukufinyelelwa ngo-<xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Igcine ukufinyelelwa izolo ngo-<xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_content_provider" msgid="6996750793881252778">"Ifinyelelwe emahoreni angama-24 adlule"</string>
-    <string name="app_perms_24h_access_only_in_foreground" msgid="8590228656172893995">"Igcine ukufinyelelwa ngo-<xliff:g id="TIME_DATE">%1$s</xliff:g> • Uma i-app isetshenziswa kuphela"</string>
-    <string name="app_perms_24h_access_yest_only_in_foreground" msgid="8491319626462867381">"Igcine ukufinyelelwa izolo ngo-<xliff:g id="TIME_DATE">%1$s</xliff:g> • Uma i-app isetshenziswa kuphela"</string>
-    <string name="app_perms_content_provider_only_in_foreground" msgid="7111427348979322476">"Ifinyelelwe emahoreni angama-24 adlule • Uma i-app isetshenziswa kuphela"</string>
+    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Igcine ukufinyelelwa ngo-<xliff:g id="TIME_DATE">%1$s</xliff:g> • Ivumelekile ngaso sonke isikhathi"</string>
+    <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Igcine ukufinyelelwa izolo ngo-<xliff:g id="TIME_DATE">%1$s</xliff:g> • Ivumelekile ngaso sonke isikhathi"</string>
+    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"Ifinyelelwe emahoreni angama-24 edlule • Ivumeleke ngaso sonke isikhathi"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Igcine ukufinyelelwa ngo-<xliff:g id="TIME_DATE">%1$s</xliff:g> • Imidiya"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Igcine ukufinyelelwa izolo ngo-<xliff:g id="TIME_DATE">%1$s</xliff:g> • Imidiya"</string>
     <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"Ifinyelelwe emahoreni angama-24 adlule • Imidiya"</string>
