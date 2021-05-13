@@ -41,6 +41,8 @@ import static android.os.UserHandle.myUserId;
 
 import static com.android.permissioncontroller.Constants.INVALID_SESSION_ID;
 
+import static java.lang.annotation.RetentionPolicy.SOURCE;
+
 import android.Manifest;
 import android.app.AppOpsManager;
 import android.app.Application;
@@ -79,6 +81,7 @@ import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
@@ -93,6 +96,9 @@ import com.android.permissioncontroller.PermissionControllerApplication;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 
+import java.lang.annotation.Retention;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -102,7 +108,24 @@ import java.util.Locale;
 import java.util.Random;
 import java.util.Set;
 
+import kotlin.Pair;
+
 public final class Utils {
+
+    @Retention(SOURCE)
+    @IntDef(value = {LAST_24H_SENSOR_TODAY, LAST_24H_SENSOR_YESTERDAY,
+            LAST_24H_CONTENT_PROVIDER, NOT_IN_LAST_24H})
+    public @interface AppPermsLastAccessType {}
+    public static final int LAST_24H_SENSOR_TODAY = 1;
+    public static final int LAST_24H_SENSOR_YESTERDAY = 2;
+    public static final int LAST_24H_CONTENT_PROVIDER = 3;
+    public static final int NOT_IN_LAST_24H = 4;
+
+    private static final List<String> SENSOR_DATA_PERMISSIONS = List.of(
+            Manifest.permission_group.LOCATION,
+            Manifest.permission_group.CAMERA,
+            Manifest.permission_group.MICROPHONE
+    );
 
     private static final String LOG_TAG = "Utils";
 
@@ -1177,5 +1200,30 @@ public final class Utils {
         }
 
         return exemptedPackages;
+    }
+
+    /**
+     * Get the timestamp and lastAccessType for the summary text
+     * in app permission groups and permission apps screens
+     */
+    public static Pair<String, Integer> getPermissionLastAccessSummaryTimestamp(
+            Long lastAccessTime, Context context, String groupName) {
+        long midnightToday = Instant.now().truncatedTo(ChronoUnit.DAYS).toEpochMilli();
+        boolean isLastAccessToday = lastAccessTime != null
+                && midnightToday <= lastAccessTime;
+        String lastAccessTimeFormatted = "";
+        @AppPermsLastAccessType int lastAccessType = NOT_IN_LAST_24H;
+
+        if (lastAccessTime != null) {
+            lastAccessTimeFormatted = DateFormat.getTimeFormat(context)
+                    .format(lastAccessTime);
+
+            lastAccessType = !SENSOR_DATA_PERMISSIONS.contains(groupName)
+                    ? LAST_24H_CONTENT_PROVIDER : isLastAccessToday
+                    ? LAST_24H_SENSOR_TODAY :
+                    LAST_24H_SENSOR_YESTERDAY;
+        }
+
+        return new Pair<>(lastAccessTimeFormatted, lastAccessType);
     }
 }
