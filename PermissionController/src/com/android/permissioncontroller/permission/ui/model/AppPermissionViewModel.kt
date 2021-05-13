@@ -45,6 +45,7 @@ import com.android.permissioncontroller.permission.data.FullStoragePermissionApp
 import com.android.permissioncontroller.permission.data.LightAppPermGroupLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.data.get
+import com.android.permissioncontroller.permission.debug.getDefaultPrecision
 import com.android.permissioncontroller.permission.debug.isLocationAccuracyEnabled
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPermission
@@ -348,12 +349,16 @@ class AppPermissionViewModel(
         if (shouldShowLocationAccuracy == true) {
             val coarseLocation = group.permissions[ACCESS_COARSE_LOCATION]!!
             val fineLocation = group.permissions[ACCESS_FINE_LOCATION]!!
-            // Two cases when location accuracy switch is set to ON (FINE)
-            // 1. Both FINE and COARSE location isSelectedLocationAccuracy flags are not set
-            // 2. FINE location isSelectedLocationAccuracy flag is set to true
-            return (!fineLocation.isSelectedLocationAccuracy &&
-                        !coarseLocation.isSelectedLocationAccuracy) ||
-                    fineLocation.isSelectedLocationAccuracy
+            // Steps to decide location accuracy toggle state
+            // 1. If none of the FINE and COARSE isSelectedLocationAccuracy flags is set,
+            //    then use default precision from device config.
+            // 2. Otherwise return if FINE isSelectedLocationAccuracy is set to true.
+            return if ((!fineLocation.isSelectedLocationAccuracy &&
+                            !coarseLocation.isSelectedLocationAccuracy)) {
+                getDefaultPrecision()
+            } else {
+                fineLocation.isSelectedLocationAccuracy
+            }
         }
         return false
     }
