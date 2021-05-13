@@ -47,7 +47,7 @@
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Omogući upravljanja svim datotekama"</string>
     <string name="grant_dialog_button_allow_media_only" msgid="4832877658422573832">"Omogući pristup medijskim datotekama"</string>
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Aplikacije"</string>
-    <string name="app_permissions" msgid="3369917736607944781">"Dopuštenja aplikacije"</string>
+    <string name="app_permissions" msgid="3369917736607944781">"Dopuštenja za aplikacije"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Nekorištene aplikacije"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Onemogući aplikaciju"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Ako onemogućite tu aplikaciju, Android i druge aplikacije možda više neće funkcionirati pravilno. Napominjemo da ne možete izbrisati tu aplikaciju jer je unaprijed instalirana na vašem uređaju. Ako je onemogućite, isključit ćete je i više se neće prikazivati na vašem uređaju."</string>
@@ -270,7 +270,7 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Uklonjena su dopuštenja radi zaštite vaše privatnosti"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"Aplikacija <xliff:g id="APP_NAME">%s</xliff:g> pristupa vašoj lokaciji u pozadini"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Ova aplikacija može uvijek pristupiti vašoj lokaciji. Dodirnite za promjenu."</string>
-    <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Dopuštenja aplikacije uklonjena su radi zaštite privatnosti"</string>
+    <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Dopuštenja za aplikacije uklonjena su radi zaštite privatnosti"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"Aplikaciju <xliff:g id="APP_NAME">%s</xliff:g> niste upotrebljavali nekoliko mjeseci. Dodirnite za pregled."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"Aplikaciju <xliff:g id="APP_NAME">%s</xliff:g> i još jednu aplikaciju niste upotrebljavali nekoliko mjeseci. Dodirnite za pregled."</string>
     <string name="auto_revoke_after_notification_content_many" msgid="4774106206289751220">"Aplikaciju <xliff:g id="APP_NAME">%1$s</xliff:g> i još njih <xliff:g id="NUMBER_OF_APPS">%2$s</xliff:g> niste upotrebljavali nekoliko mjeseci. Dodirnite za pregled."</string>
