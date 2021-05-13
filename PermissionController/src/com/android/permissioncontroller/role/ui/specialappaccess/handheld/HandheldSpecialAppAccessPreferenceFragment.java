@@ -26,8 +26,9 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.TwoStatePreference;
 
-import com.android.permissioncontroller.role.ui.handheld.FooterPreference;
 import com.android.permissioncontroller.role.ui.specialappaccess.SpecialAppAccessChildFragment;
+import com.android.settingslib.widget.AppSwitchPreference;
+import com.android.settingslib.widget.FooterPreference;
 
 /**
  * Handheld fragment for a special app access.
@@ -91,7 +92,7 @@ public class HandheldSpecialAppAccessPreferenceFragment extends PreferenceFragme
     @NonNull
     @Override
     public TwoStatePreference createApplicationPreference(@NonNull Context context) {
-        return new AppIconSwitchPreference(context);
+        return new AppSwitchPreference(context);
     }
 
     @NonNull
