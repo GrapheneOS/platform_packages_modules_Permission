@@ -361,12 +361,13 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"Iba počas používania aplikácie"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"Médiá"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"Všetky súbory"</string>
+    <string name="permission_subtitle_background" msgid="8916750995309083180">"Povolené vždy"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"Naposledy použité <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Naposledy použité včera o <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_content_provider" msgid="6996750793881252778">"Použité v posledných 24 hodinách"</string>
-    <string name="app_perms_24h_access_only_in_foreground" msgid="8590228656172893995">"Naposledy použité <xliff:g id="TIME_DATE">%1$s</xliff:g> • Iba pri používaní aplikácie"</string>
-    <string name="app_perms_24h_access_yest_only_in_foreground" msgid="8491319626462867381">"Naposledy použité včera o <xliff:g id="TIME_DATE">%1$s</xliff:g> • Iba pri používaní aplikácie"</string>
-    <string name="app_perms_content_provider_only_in_foreground" msgid="7111427348979322476">"Použité v posledných 24 hodinách • Iba pri používaní aplikácie"</string>
+    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Posledný prístup: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Povolené vždy"</string>
+    <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Posledný prístup včera o <xliff:g id="TIME_DATE">%1$s</xliff:g> • Povolené vždy"</string>
+    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"Prístup za posledných 24 hodín • Povolené vždy"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Naposledy použité <xliff:g id="TIME_DATE">%1$s</xliff:g> • Médiá"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Naposledy použité včera o <xliff:g id="TIME_DATE">%1$s</xliff:g> • Médiá"</string>
     <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"Použité v posledných 24 hodinách • Médiá"</string>

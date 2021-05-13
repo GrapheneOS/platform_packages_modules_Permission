@@ -68,8 +68,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"დაშვებულია <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> აპი"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"სისტემის ჩვენება"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"სისტემური პროცესების დამალვა"</string>
-    <!-- no translation found for manage_permission (3796219072742331048) -->
-    <skip />
+    <string name="manage_permission" msgid="3796219072742331048">"ნებართვის მართვა"</string>
     <string name="no_apps" msgid="2412612731628386816">"აპები არ არის"</string>
     <string name="location_settings" msgid="3624412509133422562">"მდებარეობის პარამეტრები"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> არის მდებარეობის სერვისების მომწოდებელი ამ მოწყობილობისთვის. მდებარეობაზე წვდომის შეცვლა შესაძლებელია მდებარეობის პარამეტრებიდან."</string>
@@ -113,13 +112,24 @@
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> და <xliff:g id="NUM">%3$s</xliff:g> სხვა"</string>
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"აპების მიერ თქვენი <xliff:g id="PERMGROUP">%1$s</xliff:g>-ის გამოყენების ქრონოლოგია ბოლო 24 საათის განმავლობაში"</string>
-    <!-- no translation found for permission_usage_access_dialog_subtitle (4171772805196955753) -->
-    <skip />
+    <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"როცა ამ აპმა გამოიყენა თქვენი ნებართვა <xliff:g id="PERMGROUP">%1$s</xliff:g>-ზე"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"შეიტყვეთ მეტი"</string>
-    <!-- no translation found for duration_used_days (1993098309578536308) -->
-    <!-- no translation found for duration_used_hours (1020075479447003242) -->
-    <!-- no translation found for duration_used_minutes (3422338854436291744) -->
-    <!-- no translation found for duration_used_seconds (2726799598314248110) -->
+    <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> დღე</item>
+      <item quantity="one">1 დღე</item>
+    </plurals>
+    <plurals name="duration_used_hours" formatted="false" msgid="1020075479447003242">
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> სთ</item>
+      <item quantity="one">1 საათი</item>
+    </plurals>
+    <plurals name="duration_used_minutes" formatted="false" msgid="3422338854436291744">
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> წთ</item>
+      <item quantity="one">1 წთ</item>
+    </plurals>
+    <plurals name="duration_used_seconds" formatted="false" msgid="2726799598314248110">
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> წმ</item>
+      <item quantity="one">1 წმ</item>
+    </plurals>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">ბოლო წვდომა: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> წვდომა</item>
       <item quantity="one">ბოლო წვდომა: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> წვდომა</item>
@@ -161,8 +171,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> აპი</item>
       <item quantity="one">1 აპი</item>
     </plurals>
-    <!-- no translation found for permission_usage_preference_summary_not_used (8806755646449754282) -->
-    <skip />
+    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"არ გამოყენებულა ბოლო 24 საათის განმავლობაში"</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
       <item quantity="other">იყენებს <xliff:g id="NUMBER">%1$d</xliff:g> აპი</item>
       <item quantity="one">იყენებს 1 აპი</item>
@@ -314,12 +323,13 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"მხოლოდ აპის გამოყენებისას"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"მედია"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"ყველა ფაილი"</string>
+    <string name="permission_subtitle_background" msgid="8916750995309083180">"დაშვებულია ყოველთვის"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"ბოლო წვდომა: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"ბოლო წვდომა გუშინ: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_content_provider" msgid="6996750793881252778">"წვდომა განხორციელდა ბოლო 24 საათში"</string>
-    <string name="app_perms_24h_access_only_in_foreground" msgid="8590228656172893995">"ბოლო წვდომა აპის გამოყენებისას: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
-    <string name="app_perms_24h_access_yest_only_in_foreground" msgid="8491319626462867381">"ბოლო წვდომა აპის გამოყენებისას გუშინ: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
-    <string name="app_perms_content_provider_only_in_foreground" msgid="7111427348979322476">"წვდომა განხორციელდა ბოლო 24 საათში • მხოლოდ აპის გამოყენებისას"</string>
+    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"ბოლო წვდომა: <xliff:g id="TIME_DATE">%1$s</xliff:g> • დაშვებულია ყოველთვის"</string>
+    <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"ბოლო წვდომა: გუშინ <xliff:g id="TIME_DATE">%1$s</xliff:g> • დაშვებულია ყოველთვის"</string>
+    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"წვდომა: გასულ 24 საათში • დაშვებულია ყოველთვის"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"ბოლო წვდომა მედიაზე: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"ბოლო წვდომა მედიაზე გუშინ: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"წვდომა განხორციელდა ბოლო 24 საათში • მედია"</string>
