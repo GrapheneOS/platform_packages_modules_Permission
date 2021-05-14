@@ -323,12 +323,13 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"ಆ್ಯಪ್ ಬಳಕೆಯಲ್ಲಿದ್ದಾಗ ಮಾತ್ರ"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"ಮೀಡಿಯಾ"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"ಎಲ್ಲ ಫೈಲ್‌ಗಳು"</string>
+    <string name="permission_subtitle_background" msgid="8916750995309083180">"ಎಲ್ಲಾ ಸಮಯದಲ್ಲಿ ಅನುಮತಿಸಲಾಗಿದೆ"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"ಕೊನೆಯ ಬಾರಿ ಪ್ರವೇಶಿಸಿರುವುದು <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"ನಿನ್ನೆ <xliff:g id="TIME_DATE">%1$s</xliff:g> ರ ಸಮಯದಲ್ಲಿ ಕೊನೆಯ ಬಾರಿ ಪ್ರವೇಶಿಸಲಾಗಿದೆ"</string>
     <string name="app_perms_content_provider" msgid="6996750793881252778">"ಕಳೆದ 24 ಗಂಟೆಗಳಲ್ಲಿ ಪ್ರವೇಶಿಸಲಾಗಿದೆ"</string>
-    <string name="app_perms_24h_access_only_in_foreground" msgid="8590228656172893995">"ಕೊನೆಯ ಬಾರಿ ಪ್ರವೇಶಿಸಿರುವುದು <xliff:g id="TIME_DATE">%1$s</xliff:g> • ಆ್ಯಪ್ ಬಳಕೆಯಲ್ಲಿರುವಾಗ ಮಾತ್ರ"</string>
-    <string name="app_perms_24h_access_yest_only_in_foreground" msgid="8491319626462867381">"ನಿನ್ನೆ <xliff:g id="TIME_DATE">%1$s</xliff:g> ರ ಸಮಯದಲ್ಲಿ ಕೊನೆಯ ಬಾರಿ ಪ್ರವೇಶಿಸಲಾಗಿದೆ • ಆ್ಯಪ್ ಬಳಕೆಯಲ್ಲಿರುವಾಗ ಮಾತ್ರ"</string>
-    <string name="app_perms_content_provider_only_in_foreground" msgid="7111427348979322476">"ಕಳೆದ 24 ಗಂಟೆಗಳಲ್ಲಿ ಪ್ರವೇಶಿಸಲಾಗಿದೆ • ಆ್ಯಪ್ ಬಳಕೆಯಲ್ಲಿರುವಾಗ ಮಾತ್ರ"</string>
+    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"ಕೊನೆಯ ಬಾರಿ <xliff:g id="TIME_DATE">%1$s</xliff:g> ಗೆ ಪ್ರವೇಶಿಸಲಾಗಿದೆ • ಎಲ್ಲಾ ಸಮಯದಲ್ಲಿ ಅನುಮತಿಸಲಾಗಿದೆ"</string>
+    <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"ಕೊನೆಯದಾಗಿ ನಿನ್ನೆ <xliff:g id="TIME_DATE">%1$s</xliff:g> ಗೆ ಪ್ರವೇಶಿಸಲಾಗಿದೆ • ಎಲ್ಲಾ ಸಮಯದಲ್ಲಿ ಅನುಮತಿಸಲಾಗಿದೆ"</string>
+    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"ಕಳೆದ 24 ಗಂಟೆಗಳಲ್ಲಿ ಪ್ರವೇಶಿಸಲಾಗಿದೆ • ಎಲ್ಲಾ ಸಮಯದಲ್ಲಿ ಅನುಮತಿಸಲಾಗಿದೆ"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"ಕೊನೆಯ ಬಾರಿ ಪ್ರವೇಶಿಸಿರುವುದು <xliff:g id="TIME_DATE">%1$s</xliff:g> • ಮಾಧ್ಯಮ"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"ನಿನ್ನೆ <xliff:g id="TIME_DATE">%1$s</xliff:g> ರ ಸಮಯದಲ್ಲಿ ಕೊನೆಯ ಬಾರಿ ಪ್ರವೇಶಿಸಲಾಗಿದೆ • ಮಾಧ್ಯಮ"</string>
     <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"ಕಳೆದ 24 ಗಂಟೆಗಳಲ್ಲಿ ಪ್ರವೇಶಿಸಲಾಗಿದೆ • ಮಾಧ್ಯಮ"</string>

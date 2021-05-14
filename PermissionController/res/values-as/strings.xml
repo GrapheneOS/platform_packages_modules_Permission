@@ -314,12 +314,17 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"কেৱল এপটো ব্যৱহাৰ হৈ থকা সময়ত"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"মিডিয়া"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"সকলো ফাইল"</string>
+    <!-- no translation found for permission_subtitle_background (8916750995309083180) -->
+    <skip />
     <string name="app_perms_24h_access" msgid="99069906850627181">"অন্তিমবাৰ <xliff:g id="TIME_DATE">%1$s</xliff:g>ত এক্সেছ কৰিছিল"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"অন্তিমবাৰ কালি <xliff:g id="TIME_DATE">%1$s</xliff:g>ত এক্সেছ কৰিছিল"</string>
     <string name="app_perms_content_provider" msgid="6996750793881252778">"যোৱা ২৪ ঘণ্টাত এক্সেছ কৰিছে"</string>
-    <string name="app_perms_24h_access_only_in_foreground" msgid="8590228656172893995">"অন্তিমবাৰ <xliff:g id="TIME_DATE">%1$s</xliff:g>ত এক্সেছ কৰিছিল • কেৱল এপ্‌টো ব্যৱহাৰ হৈ থকাৰ সময়ত"</string>
-    <string name="app_perms_24h_access_yest_only_in_foreground" msgid="8491319626462867381">"অন্তিমবাৰ কালি <xliff:g id="TIME_DATE">%1$s</xliff:g>ত এক্সেছ কৰিছিল • কেৱল এপ্‌টো ব্যৱহাৰ হৈ থকাৰ সময়ত"</string>
-    <string name="app_perms_content_provider_only_in_foreground" msgid="7111427348979322476">"যোৱা ২৪ ঘণ্টাত এক্সেছ কৰিছে • কেৱল এপ্‌টো ব্যৱহাৰ হৈ থকাৰ সময়ত"</string>
+    <!-- no translation found for app_perms_24h_access_background (3413674718969576843) -->
+    <skip />
+    <!-- no translation found for app_perms_24h_access_yest_background (9174750810998076725) -->
+    <skip />
+    <!-- no translation found for app_perms_content_provider_background (7793984056711923997) -->
+    <skip />
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"অন্তিমবাৰ <xliff:g id="TIME_DATE">%1$s</xliff:g>ত এক্সেছ কৰিছিল • মিডিয়া"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"অন্তিমবাৰ কালি <xliff:g id="TIME_DATE">%1$s</xliff:g>ত এক্সেছ কৰিছিল • মিডিয়া"</string>
     <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"যোৱা ২৪ ঘণ্টাত এক্সেছ কৰিছে • মিডিয়া"</string>
