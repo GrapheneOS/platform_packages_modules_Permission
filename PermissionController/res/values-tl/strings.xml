@@ -68,8 +68,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> app ang pinayagan"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Ipakita ang system"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Itago ang system"</string>
-    <!-- no translation found for manage_permission (3796219072742331048) -->
-    <skip />
+    <string name="manage_permission" msgid="3796219072742331048">"Pamahalaan ang Pagpapahintulot"</string>
     <string name="no_apps" msgid="2412612731628386816">"Walang app"</string>
     <string name="location_settings" msgid="3624412509133422562">"Mga Setting ng Lokasyon"</string>
     <string name="location_warning" msgid="2381649060929040962">"Ang <xliff:g id="APP_NAME">%1$s</xliff:g> ay isang provider ng mga serbisyo ng lokasyon para sa device na ito. Maaaring baguhin ang access sa lokasyon sa mga setting ng lokasyon."</string>
@@ -113,13 +112,24 @@
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>, at <xliff:g id="NUM">%3$s</xliff:g> pang iba"</string>
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Timeline ng kung kailan ginamit ng mga app ang iyong <xliff:g id="PERMGROUP">%1$s</xliff:g> sa nakalipas na 24 na oras"</string>
-    <!-- no translation found for permission_usage_access_dialog_subtitle (4171772805196955753) -->
-    <skip />
+    <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Kung kailan ginamit ng app na ito ang iyong<xliff:g id="PERMGROUP">%1$s</xliff:g> pahintulot"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Matuto pa"</string>
-    <!-- no translation found for duration_used_days (1993098309578536308) -->
-    <!-- no translation found for duration_used_hours (1020075479447003242) -->
-    <!-- no translation found for duration_used_minutes (3422338854436291744) -->
-    <!-- no translation found for duration_used_seconds (2726799598314248110) -->
+    <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
+      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> araw</item>
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> na araw</item>
+    </plurals>
+    <plurals name="duration_used_hours" formatted="false" msgid="1020075479447003242">
+      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> oras</item>
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> na oras</item>
+    </plurals>
+    <plurals name="duration_used_minutes" formatted="false" msgid="3422338854436291744">
+      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> minuto</item>
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> na minuto</item>
+    </plurals>
+    <plurals name="duration_used_seconds" formatted="false" msgid="2726799598314248110">
+      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> segundo</item>
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> na segundo</item>
+    </plurals>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="one">Huling pag-access: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> pag-access</item>
       <item quantity="other">Huling pag-access: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> na pag-access</item>
@@ -161,8 +171,7 @@
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> app</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> na app</item>
     </plurals>
-    <!-- no translation found for permission_usage_preference_summary_not_used (8806755646449754282) -->
-    <skip />
+    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Hindi ginamit sa nakaraang 24 na oras"</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
       <item quantity="one">Ginagamit ng <xliff:g id="NUMBER">%1$d</xliff:g> app</item>
       <item quantity="other">Ginagamit ng <xliff:g id="NUMBER">%1$d</xliff:g> na app</item>
@@ -314,12 +323,13 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"Habang ginagamit lang ang app"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"Media"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"Lahat ng File"</string>
+    <string name="permission_subtitle_background" msgid="8916750995309083180">"Palaging pinapayagan"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"Huling na-access noong <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Huling na-access kahapon nang <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_content_provider" msgid="6996750793881252778">"Na-access sa nakalipas na 24 na oras"</string>
-    <string name="app_perms_24h_access_only_in_foreground" msgid="8590228656172893995">"Huling na-access noong <xliff:g id="TIME_DATE">%1$s</xliff:g> • Habang ginagamit lang ang app"</string>
-    <string name="app_perms_24h_access_yest_only_in_foreground" msgid="8491319626462867381">"Huling na-access kahapon nang <xliff:g id="TIME_DATE">%1$s</xliff:g> • Habang ginagamit lang ang app"</string>
-    <string name="app_perms_content_provider_only_in_foreground" msgid="7111427348979322476">"Na-access sa nakalipas na 24 na oras • Habang ginagamit lang ang app"</string>
+    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Huling na-access noong <xliff:g id="TIME_DATE">%1$s</xliff:g> • Palaging pinapayagan"</string>
+    <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Huling na-access kahapon ng <xliff:g id="TIME_DATE">%1$s</xliff:g> • Palaging pinapayagan"</string>
+    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"Na-access sa nakalipas na 24 na oras • Palaging pinapayagan"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Huling na-access noong <xliff:g id="TIME_DATE">%1$s</xliff:g> • Media"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Huling na-access kahapon nang <xliff:g id="TIME_DATE">%1$s</xliff:g> • Media"</string>
     <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"Na-access sa nakalipas na 24 na oras • Media"</string>
