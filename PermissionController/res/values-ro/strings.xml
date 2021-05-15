@@ -69,8 +69,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> aplicații au această permisiune"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Afișați aplicațiile de sistem"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Ascundeți aplicațiile de sistem"</string>
-    <!-- no translation found for manage_permission (3796219072742331048) -->
-    <skip />
+    <string name="manage_permission" msgid="3796219072742331048">"Gestionați permisiunea"</string>
     <string name="no_apps" msgid="2412612731628386816">"Nicio aplicație"</string>
     <string name="location_settings" msgid="3624412509133422562">"Setări privind locația"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> este un furnizor de servicii de localizare pentru acest dispozitiv. Accesul la locație poate fi modificat din setările privind locația."</string>
@@ -114,13 +113,28 @@
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g> <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> și încă <xliff:g id="NUM">%3$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Momentele din ultimele 24 de ore, în care aplicațiile au folosit grupul dvs. de permisiuni <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
-    <!-- no translation found for permission_usage_access_dialog_subtitle (4171772805196955753) -->
-    <skip />
+    <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Când această aplicație a folosit permisiunea <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Aflați mai multe"</string>
-    <!-- no translation found for duration_used_days (1993098309578536308) -->
-    <!-- no translation found for duration_used_hours (1020075479447003242) -->
-    <!-- no translation found for duration_used_minutes (3422338854436291744) -->
-    <!-- no translation found for duration_used_seconds (2726799598314248110) -->
+    <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
+      <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> zile</item>
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> de zile</item>
+      <item quantity="one">O zi</item>
+    </plurals>
+    <plurals name="duration_used_hours" formatted="false" msgid="1020075479447003242">
+      <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> ore</item>
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> de ore</item>
+      <item quantity="one">O oră</item>
+    </plurals>
+    <plurals name="duration_used_minutes" formatted="false" msgid="3422338854436291744">
+      <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> min</item>
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> de minute</item>
+      <item quantity="one">1 min</item>
+    </plurals>
+    <plurals name="duration_used_seconds" formatted="false" msgid="2726799598314248110">
+      <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> sec</item>
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> de sec</item>
+      <item quantity="one">O sec.</item>
+    </plurals>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="few">Ultima accesare: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> accesări</item>
       <item quantity="other">Ultima accesare: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> de accesări</item>
@@ -167,8 +181,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> de aplic.</item>
       <item quantity="one">O aplic.</item>
     </plurals>
-    <!-- no translation found for permission_usage_preference_summary_not_used (8806755646449754282) -->
-    <skip />
+    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Nu a fost folosită în ultimele 24 de ore"</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
       <item quantity="few">Folosită de <xliff:g id="NUMBER">%1$d</xliff:g> aplicații</item>
       <item quantity="other">Folosită de <xliff:g id="NUMBER">%1$d</xliff:g> de aplicații</item>
@@ -329,12 +342,13 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"Numai când aplicația este folosită"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"Media"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"Toate fișierele"</string>
+    <string name="permission_subtitle_background" msgid="8916750995309083180">"Se permite mereu"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"Ultima accesare: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Ultima accesare ieri, la <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_content_provider" msgid="6996750793881252778">"Accesate în ultimele 24 de ore"</string>
-    <string name="app_perms_24h_access_only_in_foreground" msgid="8590228656172893995">"Ultima accesare: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Doar când aplicația este în uz"</string>
-    <string name="app_perms_24h_access_yest_only_in_foreground" msgid="8491319626462867381">"Ultima accesare ieri, la <xliff:g id="TIME_DATE">%1$s</xliff:g> • Doar când aplicația este în uz"</string>
-    <string name="app_perms_content_provider_only_in_foreground" msgid="7111427348979322476">"Accesate în ultimele 24 de ore • Doar când aplicația este în uz"</string>
+    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Ultima accesare: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Se permite mereu"</string>
+    <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Ultima accesare ieri la <xliff:g id="TIME_DATE">%1$s</xliff:g> • Se permite mereu"</string>
+    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"Accesată în ultimele 24 de ore • Se permite mereu"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Ultima accesare: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Media"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Ultima accesare ieri, la <xliff:g id="TIME_DATE">%1$s</xliff:g> • Media"</string>
     <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"Accesate în ultimele 24 de ore • Media"</string>
