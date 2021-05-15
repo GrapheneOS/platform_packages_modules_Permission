@@ -323,12 +323,13 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"Alleen terwijl de app wordt gebruikt"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"Media"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"Alle bestanden"</string>
+    <string name="permission_subtitle_background" msgid="8916750995309083180">"Altijd toegestaan"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"Laatst geopend: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Laatst geopend: gisteren om <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_content_provider" msgid="6996750793881252778">"Geopend in de afgelopen 24 uur"</string>
-    <string name="app_perms_24h_access_only_in_foreground" msgid="8590228656172893995">"Laatst geopend: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Alleen terwijl de app wordt gebruikt"</string>
-    <string name="app_perms_24h_access_yest_only_in_foreground" msgid="8491319626462867381">"Laatst geopend: gisteren om <xliff:g id="TIME_DATE">%1$s</xliff:g> • Alleen terwijl de app wordt gebruikt"</string>
-    <string name="app_perms_content_provider_only_in_foreground" msgid="7111427348979322476">"Geopend in de afgelopen 24 uur • Alleen terwijl de app wordt gebruikt"</string>
+    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Laatst geopend: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Altijd toegestaan"</string>
+    <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Laatst geopend: gisteren om <xliff:g id="TIME_DATE">%1$s</xliff:g> • Altijd toegestaan"</string>
+    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"Geopend in de afgelopen 24 uur • Altijd toegestaan"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Laatst geopend: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Media"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Laatst geopend: gisteren om <xliff:g id="TIME_DATE">%1$s</xliff:g> • Media"</string>
     <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"Geopend in de afgelopen 24 uur • Media"</string>
