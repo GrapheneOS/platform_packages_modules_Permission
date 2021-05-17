@@ -42,7 +42,7 @@ android_test {
 
     static_libs: [
         "androidx.test.espresso.core",
-        "androidx.test.espresso.contrib",
+        "androidx.test.espresso.contrib-nodeps",
         "androidx.test.rules",
         "androidx.test.ext.truth",
         "androidx.test.ext.junit",
