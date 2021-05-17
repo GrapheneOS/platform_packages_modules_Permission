@@ -26,6 +26,9 @@ import android.app.ActionBar;
 import android.app.role.RoleManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.content.res.Configuration;
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.ArraySet;
@@ -150,10 +153,27 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        ViewGroup root = (ViewGroup) super.onCreateView(inflater, container, savedInstanceState);
+        ViewGroup rootView = (ViewGroup) super.onCreateView(inflater, container,
+                savedInstanceState);
 
         if (mExtendedFab != null) {
+            // Load the background tint color from the application theme
+            // rather than the Material Design theme
+            final int colorAccentTertiary = getContext().getColor(
+                    android.R.color.system_accent3_100);
+            mExtendedFab.setBackgroundTintList(ColorStateList.valueOf(colorAccentTertiary));
+
             mExtendedFab.setText(R.string.manage_permission);
+            final boolean isDarkMode = (getActivity().getResources().getConfiguration().uiMode
+                    & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES;
+            int textColor = isDarkMode ? android.R.attr.textColorPrimaryInverse
+                    : android.R.attr.textColorPrimary;
+            TypedArray colorArray = getActivity().obtainStyledAttributes(
+                    new int[]{
+                            textColor
+                    }
+            );
+            mExtendedFab.setTextColor(colorArray.getColor(0, -1));
             mExtendedFab.setIcon(getActivity().getDrawable(R.drawable.ic_settings_outline));
             mExtendedFab.setVisibility(View.VISIBLE);
             mExtendedFab.setOnClickListener(v -> {
@@ -163,7 +183,7 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
             });
         }
 
-        return root;
+        return rootView;
     }
 
     @Override
