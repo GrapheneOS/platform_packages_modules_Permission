@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 The Android Open Source Project
+ * Copyright (C) 2021 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.ui.handheld
+package com.android.permissioncontroller.permission.ui
 
 import android.content.Intent
 import android.content.Intent.ACTION_MANAGE_PERMISSION_APPS
@@ -23,12 +23,11 @@ import android.permission.cts.PermissionUtils.install
 import android.permission.cts.PermissionUtils.uninstallApp
 import androidx.test.rule.ActivityTestRule
 import com.android.compatibility.common.util.SystemUtil.eventually
-import com.android.permissioncontroller.DisableAnimationsRule
 import com.android.permissioncontroller.assertDoesNotHavePreference
-import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity
 import com.android.permissioncontroller.scrollToPreference
 import com.android.permissioncontroller.wakeUpScreen
 import org.junit.After
+import org.junit.Assume
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -37,6 +36,9 @@ import org.junit.Test
  * Superclass of all tests for {@link PermissionAppsFragmentTest}.
  *
  * <p>Leave abstract to prevent the test runner from trying to run it
+ *
+ * Currently, none of the tests that extend [PermissionAppsFragmentTest] run on TV.
+ * TODO(b/178576541): Adapt and run on TV.
  */
 abstract class PermissionAppsFragmentTest(
     val userApk: String,
@@ -44,11 +46,7 @@ abstract class PermissionAppsFragmentTest(
     val perm: String,
     val definerApk: String? = null,
     val definerPkg: String? = null
-) {
-    @get:Rule
-    val disableAnimations = DisableAnimationsRule()
-
-    @get:Rule
+) : UiBaseTest() {
     val managePermissionsActivity = object : ActivityTestRule<ManagePermissionsActivity>(
             ManagePermissionsActivity::class.java) {
         override fun getActivityIntent() = Intent(ACTION_MANAGE_PERMISSION_APPS)
@@ -60,6 +58,12 @@ abstract class PermissionAppsFragmentTest(
             }
         }
     }
+
+    @Rule
+    fun activityRule() = if (isTelevision) noOpTestRule else managePermissionsActivity
+
+    @Before
+    fun assumeNotTelevision() = Assume.assumeFalse(isTelevision)
 
     @Before
     fun wakeScreenUp() {

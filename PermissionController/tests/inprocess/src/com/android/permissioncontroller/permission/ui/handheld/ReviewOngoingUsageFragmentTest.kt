@@ -17,16 +17,17 @@
 package com.android.permissioncontroller.permission.ui.handheld
 
 import android.Manifest.permission.CAMERA
-import android.permission.cts.PermissionUtils.grantPermission
-import android.permission.cts.PermissionUtils.install
-import android.permission.cts.PermissionUtils.uninstallApp
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.RootMatchers.isDialog
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.rule.ActivityTestRule
 import com.android.permissioncontroller.permission.PermissionHub2Test
+import com.android.permissioncontroller.permission.ui.CAMERA_TEST_APP_LABEL
 import com.android.permissioncontroller.permission.ui.ReviewOngoingUsageActivity
+import com.android.permissioncontroller.permission.ui.grantTestAppPermission
+import com.android.permissioncontroller.permission.ui.installTestAppThatUsesCameraPermission
+import com.android.permissioncontroller.permission.ui.uninstallTestApps
 import org.junit.After
 import org.junit.Rule
 import org.junit.Test
@@ -35,17 +36,12 @@ import org.junit.Test
  * Simple tests for {@link ReviewOngoingUsageFragment}
  */
 class ReviewOngoingUsageFragmentTest : PermissionHub2Test() {
-    private val APK =
-            "/data/local/tmp/permissioncontroller/tests/inprocess/AppThatUsesCameraPermission.apk"
-    private val APP = "com.android.permissioncontroller.tests.appthatrequestpermission"
-    private val APP_LABEL = "CameraRequestApp"
-
     @get:Rule
     val managePermissionsActivity = object : ActivityTestRule<ReviewOngoingUsageActivity>(
             ReviewOngoingUsageActivity::class.java) {
         override fun beforeActivityLaunched() {
-            install(APK)
-            grantPermission(APP, CAMERA)
+            installTestAppThatUsesCameraPermission()
+            grantTestAppPermission(CAMERA)
 
             accessCamera()
         }
@@ -54,13 +50,11 @@ class ReviewOngoingUsageFragmentTest : PermissionHub2Test() {
     @Test
     fun cameraAccessShouldBeShown() {
         // Click on app entry
-        onView(withText(APP_LABEL))
+        onView(withText(CAMERA_TEST_APP_LABEL))
                 .inRoot(isDialog())
                 .perform(click())
     }
 
     @After
-    fun uninstallTestApp() {
-        uninstallApp(APP)
-    }
+    fun cleanUp() = uninstallTestApps()
 }
