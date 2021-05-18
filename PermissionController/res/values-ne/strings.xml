@@ -94,7 +94,7 @@
     <string name="other_permissions" msgid="2901186127193849594">"एपका अन्य क्षमताहरू"</string>
     <string name="permission_request_title" msgid="8790310151025020126">"अनुमति दिन भनी गरिएको अनुरोध"</string>
     <string name="screen_overlay_title" msgid="6977038513913222078">"स्क्रिन ओभरले पत्ता लाग्यो"</string>
-    <string name="screen_overlay_message" msgid="5622563069757142102">"यो अनुमतिसम्बन्धी सेटिङ बदल्न तपाईंले पहिला सेटिङ &gt; अनुप्रयोगमा गई स्क्रिन ओभरले निष्क्रिय पार्नु पर्छ।"</string>
+    <string name="screen_overlay_message" msgid="5622563069757142102">"यो अनुमतिसम्बन्धी सेटिङ बदल्न तपाईंले पहिला सेटिङ &gt; एपमा गई स्क्रिन ओभरले निष्क्रिय पार्नु पर्छ।"</string>
     <string name="screen_overlay_button" msgid="4655005928054025250">"सेटिङहरू खोल्नुहोस्"</string>
     <string name="wear_not_allowed_dlg_title" msgid="1429467891296932713">"Android Wear"</string>
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Wear मा स्थापना/स्थापना रद्द गर्ने कारबाहीहरू समर्थित छैनन्।"</string>
@@ -323,17 +323,13 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"एप प्रयोगमा भएको बेला मात्र"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"मिडिया"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"सबै फाइलहरू"</string>
-    <!-- no translation found for permission_subtitle_background (8916750995309083180) -->
-    <skip />
+    <string name="permission_subtitle_background" msgid="8916750995309083180">"सधैँ अनुमति दिइएका एपहरू"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"पछिल्लो पटक प्रयोग गरेको समय: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"पछिल्लो पटक हिजो <xliff:g id="TIME_DATE">%1$s</xliff:g> बजे प्रयोग गरियो"</string>
     <string name="app_perms_content_provider" msgid="6996750793881252778">"पछिल्लो २४ घन्टामा प्रयोग गरियो"</string>
-    <!-- no translation found for app_perms_24h_access_background (3413674718969576843) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_yest_background (9174750810998076725) -->
-    <skip />
-    <!-- no translation found for app_perms_content_provider_background (7793984056711923997) -->
-    <skip />
+    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"पछिल्लो पटक <xliff:g id="TIME_DATE">%1$s</xliff:g> बजे प्रयोग गरिएको थियो • सधैँ प्रयोग गर्ने अनुमति दिइएको छ"</string>
+    <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"पछिल्लो पटक हिजो <xliff:g id="TIME_DATE">%1$s</xliff:g> बजे प्रयोग गरिएको थियो• सधैँ प्रयोग गर्ने अनुमति दिइएको छ"</string>
+    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"पछिल्ला २४ घण्टामा प्रयोग गरिएको थियो • सधैँ प्रयोग गर्ने अनुमति दिइएको छ"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"पछिल्लो पटक प्रयोग गरेको समय: <xliff:g id="TIME_DATE">%1$s</xliff:g> • मिडिया"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"पछिल्लो पटक हिजो <xliff:g id="TIME_DATE">%1$s</xliff:g> बजे प्रयोग गरियो • मिडिया"</string>
     <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"पछिल्लो २४ घन्टामा प्रयोग गरियो • मिडिया"</string>
@@ -343,7 +339,7 @@
     <string name="no_permissions_allowed" msgid="6081976856354669209">"कुनै पनि अनुमति छैन"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"कुनै पनि अनुमति अस्वीकार गरिएको छैन"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"कुनै पनि एपलाई अनुमति दिइएको छैन"</string>
-    <string name="no_apps_allowed_full" msgid="8011716991498934104">"सबै फाइलहरू कुनै पनि अनुप्रयोगमा राख्न सकिँदैन"</string>
+    <string name="no_apps_allowed_full" msgid="8011716991498934104">"सबै फाइलहरू कुनै पनि एपमा राख्न सकिँदैन"</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"कुनै पनि एपलाई मिडिया फाइल मात्र प्रयोग गर्ने अनुमति दिइएको छैन"</string>
     <string name="no_apps_denied" msgid="7663435886986784743">"सबै एपलाई अनुमति दिइएको छ"</string>
     <string name="car_permission_selected" msgid="180837028920791596">"चयन गरिएको"</string>
