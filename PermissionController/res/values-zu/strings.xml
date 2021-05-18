@@ -23,19 +23,19 @@
     <string name="back" msgid="6249950659061523680">"Emuva"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Khipha noma ukhubaze"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"I-App ayitholakalanga"</string>
-    <string name="grant_dialog_button_deny" msgid="5694497572414531524">"Phika"</string>
-    <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1851917275643744594">"Yenqaba futhi ungasabuza"</string>
+    <string name="grant_dialog_button_deny" msgid="88262611492697192">"Ungavumeli"</string>
+    <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"Ungavumeli futhi ungaceli futhi"</string>
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Gcina okuthi “Ngenkathi uhlelo lokusebenza lusebenza”"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Gcina “Kulesi sikhathi kuphela”"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Olunye ulwazi"</string>
-    <string name="grant_dialog_button_deny_anyway" msgid="3221644923954258179">"Yenqaba yize kunjalo"</string>
+    <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Ungavumeli noma kunjalo"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Vula"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> kokungu-<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
     <string name="permission_warning_template" msgid="2247087781222679458">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
     <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Njalo vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukwenza <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"Kuphela ngenkathi usebenzisa uhlelo lokusebenza"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"Njalo"</string>
-    <string name="deny_permission_deny_and_dont_ask_again" msgid="766882021426214510">"Yenqaba futhi ungasabuzi"</string>
+    <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"Ungavumeli futhi ungaceli futhi"</string>
     <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g> kukhutshaziwe"</string>
     <string name="permission_revoked_all" msgid="3397649017727222283">"konke kukhutshaziwe"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"Lutho olukhutshaziwe"</string>
@@ -43,6 +43,7 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Vumela sonke isikhathi"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Ngenkathi usebenzisa uhlelo lokusebenza"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Shintshela kwindawo ngqo"</string>
+    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Gcina indawo elinganiselwayo"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Ngalesi sikhathi kuphela"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Vumela sonke isikhathi"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Vumela ukuphathwa kwawo wonke amafayela"</string>
@@ -67,6 +68,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> izinhlelo zokusebenza ezivunyelwe"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Bonisa isistimu"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Fihla isistimu"</string>
+    <string name="manage_permission" msgid="3796219072742331048">"Phatha Izimvume"</string>
     <string name="no_apps" msgid="2412612731628386816">"Azikho izinhlelo zokusebenza"</string>
     <string name="location_settings" msgid="3624412509133422562">"Izilungiselelo Zendawo"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> ingumhlinzeki wamasevisi wendawo kule divayisi. Ukufinyelela kwendawo kungashintshwa kusuka kuzilungiselelo zendawo."</string>
@@ -86,7 +88,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"Vumela sonke isikhathi"</string>
     <string name="permission_access_only_foreground" msgid="7801170728159326195">"Vumela kuphela ngenkathi usebenzisa uhlelo lokusebenza"</string>
-    <string name="permission_access_never" msgid="1029877154284995424">"Yenqaba"</string>
+    <string name="permission_access_never" msgid="4647014230217936900">"Ungavumeli"</string>
     <string name="loading" msgid="4789365003890741082">"Iyalayisha…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"Zonke izimvume"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Amanye amakhono wohlelo lokusebenza"</string>
@@ -104,26 +106,29 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"Izimvume zamanje"</string>
     <string name="message_staging" msgid="9110563899955511866">"Ifaka kusiteji uhlelo lokusebenza…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Akwaziwa"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"Ideshibhodi"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"Ideshibhodi yobumfihlo"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> ukusetshenziswa"</string>
-    <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Isikhathi esimisiwe salapho usebenzise khona i-<xliff:g id="PERMGROUP">%1$s</xliff:g> yakho emahoreni angu-24 adlule"</string>
-    <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Uma le app isetshenziswa yi-<xliff:g id="PERMGROUP">%1$s</xliff:g> yakho:"</string>
+    <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Bona ezinye izimvume"</string>
+    <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
+    <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>, nokungu-<xliff:g id="NUM">%3$s</xliff:g> ngaphezulu"</string>
+    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Isikhathi esimisiwe sokuthi ama-app asebenzise nini i-<xliff:g id="PERMGROUP">%1$s</xliff:g> emahoreni angama-24 adlule"</string>
+    <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Lapho le app isebenzisa imvume yakho ye-<xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Funda kabanzi"</string>
-    <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
-      <item quantity="one">Isetshenzisiwe izinsuku ezingu-<xliff:g id="NUMBER">%s</xliff:g></item>
-      <item quantity="other">Isetshenzisiwe izinsuku ezingu-<xliff:g id="NUMBER">%s</xliff:g></item>
+    <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
+      <item quantity="one">izinsuku <xliff:g id="NUMBER">%s</xliff:g></item>
+      <item quantity="other">izinsuku <xliff:g id="NUMBER">%s</xliff:g></item>
     </plurals>
-    <plurals name="duration_used_hours" formatted="false" msgid="2934347147156813767">
-      <item quantity="one">Isetshenzisiwe amahora angu-<xliff:g id="NUMBER">%s</xliff:g></item>
-      <item quantity="other">Isetshenzisiwe amahora angu-<xliff:g id="NUMBER">%s</xliff:g></item>
+    <plurals name="duration_used_hours" formatted="false" msgid="1020075479447003242">
+      <item quantity="one">amahora <xliff:g id="NUMBER">%s</xliff:g></item>
+      <item quantity="other">amahora <xliff:g id="NUMBER">%s</xliff:g></item>
     </plurals>
-    <plurals name="duration_used_minutes" formatted="false" msgid="1871095305219275611">
-      <item quantity="one">Isetshenziswe imizuzu engu-<xliff:g id="NUMBER">%s</xliff:g></item>
-      <item quantity="other">Isetshenziswe imizuzu engu-<xliff:g id="NUMBER">%s</xliff:g></item>
+    <plurals name="duration_used_minutes" formatted="false" msgid="3422338854436291744">
+      <item quantity="one">imizuzu <xliff:g id="NUMBER">%s</xliff:g></item>
+      <item quantity="other">imizuzu <xliff:g id="NUMBER">%s</xliff:g></item>
     </plurals>
-    <plurals name="duration_used_seconds" formatted="false" msgid="4036612197985123365">
-      <item quantity="one">Isetshenziswe imizuzwana engu-<xliff:g id="NUMBER">%s</xliff:g></item>
-      <item quantity="other">Isetshenziswe imizuzwana engu-<xliff:g id="NUMBER">%s</xliff:g></item>
+    <plurals name="duration_used_seconds" formatted="false" msgid="2726799598314248110">
+      <item quantity="one">imizuzwana <xliff:g id="NUMBER">%s</xliff:g></item>
+      <item quantity="other">imizuzwana <xliff:g id="NUMBER">%s</xliff:g></item>
     </plurals>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="one">Ukufinyelela kokugcina: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> iyafinyelela</item>
@@ -161,15 +166,15 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"Ukusetshenziswa kwemvume kuhlala amahora angu-24"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Ukusetshenziswa kwembume kuhora lokugcina elingu-1"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Ukusetshenziswa kwemvume kumaminithi okugcina okungu-15"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"ukusetshenziswa"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Ukusetshenziswa kwemvume ngeminithi elingu-1 lokugcina"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> izinhlelo zokusebenza</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> izinhlelo zokusebenza</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="one">ama-app angu-<xliff:g id="NUMBER">%d</xliff:g> asetshenzisiwe</item>
-      <item quantity="other">ama-app angu-<xliff:g id="NUMBER">%d</xliff:g> asetshenzisiwe</item>
+    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Ayisetshenziswanga emahoreni angama-24 adlule"</string>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
+      <item quantity="one">Kusetshenziswe ama-app angu-<xliff:g id="NUMBER">%1$d</xliff:g></item>
+      <item quantity="other">Kusetshenziswe ama-app angu-<xliff:g id="NUMBER">%1$d</xliff:g></item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Bona konke kudeshibhodi"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Kuhlungwe ngalokhu: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -200,11 +205,11 @@
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Vumela sonke isikhathi"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Vumela kuphela ngenkathi usebenzisa uhlelo lokusebenza"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Buza njalo"</string>
-    <string name="app_permission_button_deny" msgid="2399316993899108824">"Phika"</string>
+    <string name="app_permission_button_deny" msgid="6016454069832050300">"Ungavumeli"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Indawo eqondile"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Indawo elinganiselwayo"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Sebenzisa indawo eqondile"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Izinhlelo zokusebenza zingathola indawo yakho okucishe kube yini phakathi nebanga lasendaweni lapho ivaliwe"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Uma indawo ngqo ivaliwe, ama-app angakwazi ukufinyelela indawo yakho elinganiselwayo"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> imvume"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"<xliff:g id="PERM">%1$s</xliff:g> ukufinyelela kwalolu hlelolo kusebenza"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Bona zonke izimvume ze-<xliff:g id="APP">%1$s</xliff:g>"</string>
@@ -239,7 +244,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Izinhlelo zokusebenza ezinale mvume zingathatha izithombe ziphinde zirekhode ividiyo"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Izinhlelo zokusebenza ezinale mvume zingafinyelela koxhumana nabo"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Izinhlelo zokusebenza ezinale mvume zingafinyelela kundawo yale divayisi"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"Ama-app anale mvume angathola futhi axhume kumadivayisi we-Bluetooth aseduze"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Ama-app anale mvume angathola, axhume, futhi anqume ukuma okuhlobene kwamadivayisi aseduze"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Izinhlelo zokusebenza ezinale mvume zingarekhoda umsindo"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Izinhlelo zokusebenza ezinale mvume zingenza ziphinde ziphathe amakholi efoni"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Izinhlelo zokusebenza ezinale mvume zingafinyelela kudatha yenzwa emayelana nezimpawu zakho ezibalulekile"</string>
@@ -255,7 +260,7 @@
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Kuvumelekile ukufinyelela kumidiya kuphela"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Kuvumelekile ukuphatha wonke amafayela"</string>
     <string name="ask_header" msgid="2633816846459944376">"Buza njalo"</string>
-    <string name="denied_header" msgid="2253955654228120835">"Kunqatshiwe"</string>
+    <string name="denied_header" msgid="903209608358177654">"Akuvumelekile"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> izinsuku</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> izinsuku</item>
@@ -318,6 +323,19 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"Kuphela ngenkathi uhlelo lokusebenza lusebenza"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"Imidiya"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"Wonke ama-Files"</string>
+    <string name="permission_subtitle_background" msgid="8916750995309083180">"Ivunyelwe ngaso sonke isikhathi"</string>
+    <string name="app_perms_24h_access" msgid="99069906850627181">"Igcine ukufinyelelwa ngo-<xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Igcine ukufinyelelwa izolo ngo-<xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_content_provider" msgid="6996750793881252778">"Ifinyelelwe emahoreni angama-24 adlule"</string>
+    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Igcine ukufinyelelwa ngo-<xliff:g id="TIME_DATE">%1$s</xliff:g> • Ivumelekile ngaso sonke isikhathi"</string>
+    <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Igcine ukufinyelelwa izolo ngo-<xliff:g id="TIME_DATE">%1$s</xliff:g> • Ivumelekile ngaso sonke isikhathi"</string>
+    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"Ifinyelelwe emahoreni angama-24 edlule • Ivumeleke ngaso sonke isikhathi"</string>
+    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Igcine ukufinyelelwa ngo-<xliff:g id="TIME_DATE">%1$s</xliff:g> • Imidiya"</string>
+    <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Igcine ukufinyelelwa izolo ngo-<xliff:g id="TIME_DATE">%1$s</xliff:g> • Imidiya"</string>
+    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"Ifinyelelwe emahoreni angama-24 adlule • Imidiya"</string>
+    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"Igcine ukufinyelelwa ngo-<xliff:g id="TIME_DATE">%1$s</xliff:g> • Wonke Amafayela"</string>
+    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"Igcine ukufinyelelwa izolo ngo-<xliff:g id="TIME_DATE">%1$s</xliff:g> • Wonke Amafayela"</string>
+    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"Ifinyelelwe emahoreni angama-24 adlule • Wonke Amafayela"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Azikho izimvume ezivunyelwe"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"Azikho izimvume ezinqatshelwe"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"Azikho izinhlelo zokusebenza ezivunyelwe"</string>
@@ -436,9 +454,9 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Lolu hlelo lokusebenza lungafuna ukufinyelela indawo yakho ngaso sonke isikhathi, ngisho noma ungasebenzisi uhlelo lokusebenza. "<annotation id="link">"Vumela kokuthi izilungiselelo"</annotation>"."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Shintsha ukufinyelela kwendawo kwe-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Lolu hlelo lokusebenza lufuna ukufinyelela kundawo yakho ngaso sonke isikhathi, nanoma ungasebenzisi uhlelo lokusebenza. "<annotation id="link">"Vumela kokuthi izilungiselelo"</annotation>"."</string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuba ithole futhi ixhume kumadivayisi we-Bluetooth aseduze?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuba ithole futhi ixhume kumadivayisi we-Bluetooth aseduze? "<annotation id="link">"Vumela kumasethingi."</annotation></string>
-    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi ifinyelele indawo yale divayisi enembile?"</string>
+    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi ithole, ixhume, futhi anqume ukuma okuhlobene kwamadivayisi aseduze?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi ithole, ixhume, futhi anqume ukuma okuhlobene kwamadivayisi aseduze? "<annotation id="link">"Vumela kumasethingi."</annotation></string>
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Shintsha ukufinyelela indawo kwe-<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> kusuka kokulinganiselwayo kuya kokunembile?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi ifinyelele indawo elinganiselwe yale divayisi?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Kunembile"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Cishe"</string>
@@ -469,4 +487,10 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Izimvume ezisetshenziswa yizinhlelo zokusebenza zesistimu kuphela."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Izimvume ezingeziwe"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Izimvume ezichazwe yizinhlelo zokusebenza."</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"Ikhamera"</string>
+    <string name="privdash_label_microphone" msgid="8415035835803511693">"Imakrofoni"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"Indawo"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"Okunye"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"Lutho"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"Emahoreni angama-\n24 adlule"</string>
 </resources>

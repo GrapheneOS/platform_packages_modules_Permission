@@ -23,19 +23,19 @@
     <string name="back" msgid="6249950659061523680">"উভতি যাওক"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"আনইনষ্টল অথবা অক্ষম কৰক"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"এপ্ পোৱা নগ\'ল"</string>
-    <string name="grant_dialog_button_deny" msgid="5694497572414531524">"অস্বীকাৰ কৰক"</string>
-    <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1851917275643744594">"অস্বীকাৰ কৰক, পুনৰাই নুসুধিব"</string>
+    <string name="grant_dialog_button_deny" msgid="88262611492697192">"অনুমতি নিদিব"</string>
+    <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"অনুমতি নিদিব আৰু পুনৰ নুসুধিব"</string>
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“এপ্‌টো ব্যৱহাৰ হৈ থকা অৱস্থাত” ৰাখক"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“কেৱল এইবাৰৰ বাবে অনুমতি দিয়ক” বিকল্পটো ৰাখক"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"অধিক তথ্য"</string>
-    <string name="grant_dialog_button_deny_anyway" msgid="3221644923954258179">"অস্বীকাৰেই কৰক"</string>
+    <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"তথাপি অনুমতি নিদিব"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"অগ্ৰাহ্য কৰক"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>ৰ ভিতৰত <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>টা"</string>
     <string name="permission_warning_template" msgid="2247087781222679458">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক <xliff:g id="ACTION">%2$s</xliff:g>ৰ বাবে অনুমতি দিবনে?"</string>
     <string name="permission_add_background_warning_template" msgid="1812914855915092273">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক সদায় <xliff:g id="ACTION">%2$s</xliff:g> কৰাৰ অনুমতি দিবনে?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"এপ্ ব্য়ৱহাৰ কৰি থাকোঁতে মাত্ৰ"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"সদায়"</string>
-    <string name="deny_permission_deny_and_dont_ask_again" msgid="766882021426214510">"অস্বীকাৰ কৰক আৰু পুনৰাই নুসুধিব"</string>
+    <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"অনুমতি নিদিব আৰু পুনৰ নুসুধিব"</string>
     <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g>টা অক্ষম কৰা হ’ল"</string>
     <string name="permission_revoked_all" msgid="3397649017727222283">"সকলো অক্ষম কৰা হ’ল"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"একো অক্ষম কৰা হোৱা নাই"</string>
@@ -43,12 +43,13 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"সদায় অনুমতি দিয়ক"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"এপ্‌টো ব্যৱহাৰ কৰি থকাৰ সময়ত"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"সঠিক অৱস্থানলৈ সলনি কৰক"</string>
+    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"আনুমানিক অৱস্থান ৰাখক"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"কেৱল এইবাৰৰ বাবে"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"সদায় অনুমতি দিয়ক"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"সকলো ফাইল পৰিচালনাৰ অনুমতি দিয়ক"</string>
     <string name="grant_dialog_button_allow_media_only" msgid="4832877658422573832">"মিডিয়া ফাইলসমূহলৈ এক্সেছ দিয়ক"</string>
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"এপ্"</string>
-    <string name="app_permissions" msgid="3369917736607944781">"এপ্‌ৰ অনুমতি"</string>
+    <string name="app_permissions" msgid="3369917736607944781">"এপৰ অনুমতি"</string>
     <string name="unused_apps" msgid="2058057455175955094">"অব্যৱহৃত এপ্‌সমূহ"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"এপ্ অক্ষম কৰক"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"আপুনি যদি এই এপ্‌টো অক্ষম কৰে, Android আৰু অন্য এপ্‌সমূহে বিচৰাৰ দৰে আৰু কাম নকৰিব পাৰে। মনত ৰাখিব, এই এপ্‌টো আপোনাৰ ডিভাইচটোত আগৰেপৰা ইনষ্টল কৰি থোৱা আছে বাবে আপুনি ইয়াক মচিব নোৱাৰে। অক্ষম কৰি আপুনি এই এপ্‌টো অফ কৰে আৰু ইয়াক আপোনাৰ ডিভাইচৰ পৰা লুকুৱায়।"</string>
@@ -67,6 +68,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> টা এপক অনুমতি দিয়া হ\'ল"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"ছিষ্টেম দেখুৱাওক"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"ছিষ্টেম লুকুৱাওক"</string>
+    <string name="manage_permission" msgid="3796219072742331048">"অনুমতি পৰিচালনা কৰক"</string>
     <string name="no_apps" msgid="2412612731628386816">"কোনো এপে এই অনুমতি বিচৰা নাই"</string>
     <string name="location_settings" msgid="3624412509133422562">"অৱস্থান ছেটিংসমূহ"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> হ’ল এই ডিভাইচৰ অৱস্থান সেৱা প্ৰদানকাৰী। অৱস্থানৰ ছেটিংসমূহত অৱস্থানৰ এক্সেছ সলনি কৰিব পাৰি।"</string>
@@ -86,7 +88,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"সদায় অনুমতি দিয়ক"</string>
     <string name="permission_access_only_foreground" msgid="7801170728159326195">"এপ্ ব্যৱহাৰ হৈ থাকোঁতে অনুমতি"</string>
-    <string name="permission_access_never" msgid="1029877154284995424">"অস্বীকাৰ কৰক"</string>
+    <string name="permission_access_never" msgid="4647014230217936900">"অনুমতি নিদিব"</string>
     <string name="loading" msgid="4789365003890741082">"ল’ড হৈ আছে…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"সকলো অনুমতি"</string>
     <string name="other_permissions" msgid="2901186127193849594">"অন্য এপৰ কার্যক্ষমতা"</string>
@@ -104,26 +106,29 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"সাম্প্ৰতিক অনুমতি"</string>
     <string name="message_staging" msgid="9110563899955511866">"এপৰ অন্তিম পর্যায়ৰ পৰীক্ষণ চলি আছে…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"অজ্ঞাত"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"ডেশ্বব’ৰ্ড"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"গোপনীয়তাৰ ডেশ্বব’ৰ্ড"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g>ৰ ব্যৱহাৰ"</string>
-    <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"যোৱা ২৪ ঘণ্টাত আপোনাৰ <xliff:g id="PERMGROUP">%1$s</xliff:g> ব্যৱহাৰ কৰাৰ টাইমলাইন"</string>
-    <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"এই এপ্‌টোৱে যেতিয়া আপোনাৰ <xliff:g id="PERMGROUP">%1$s</xliff:g> ব্যৱহাৰ কৰিছিল:"</string>
+    <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"অন্য অনুমতি চাওক"</string>
+    <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
+    <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> আৰু <xliff:g id="NUM">%3$s</xliff:g> টা"</string>
+    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"এপে যোৱা ২৪ ঘণ্টাত আপোনাৰ <xliff:g id="PERMGROUP">%1$s</xliff:g> ব্যৱহাৰ কৰাৰ টাইমলাইন"</string>
+    <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"এই এপ্‌টোৱে কেতিয়া আপোনাৰ <xliff:g id="PERMGROUP">%1$s</xliff:g> অনুমতি ব্যৱহাৰ কৰিছিল"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"অধিক জানক"</string>
-    <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> দিন ব্যৱহাৰ কৰা</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> দিন ব্যৱহাৰ কৰা</item>
+    <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
+      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> দিন</item>
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> দিন</item>
     </plurals>
-    <plurals name="duration_used_hours" formatted="false" msgid="2934347147156813767">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> ঘণ্টা ব্যৱহাৰ কৰা</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ঘণ্টা ব্যৱহাৰ কৰা</item>
+    <plurals name="duration_used_hours" formatted="false" msgid="1020075479447003242">
+      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> ঘণ্টা</item>
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ঘণ্টা</item>
     </plurals>
-    <plurals name="duration_used_minutes" formatted="false" msgid="1871095305219275611">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> মিনিট ব্যৱহাৰ কৰা</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> মিনিট ব্যৱহাৰ কৰা</item>
+    <plurals name="duration_used_minutes" formatted="false" msgid="3422338854436291744">
+      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> মিনিট</item>
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> মিনিট</item>
     </plurals>
-    <plurals name="duration_used_seconds" formatted="false" msgid="4036612197985123365">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> ছেকেণ্ড ব্যৱহাৰ কৰা</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ছেকেণ্ড ব্যৱহাৰ কৰা</item>
+    <plurals name="duration_used_seconds" formatted="false" msgid="2726799598314248110">
+      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> ছেকেণ্ড</item>
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ছেকেণ্ড</item>
     </plurals>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="one">শেহতীয়া এক্সেছৰ সংখ্যা: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g>টা এক্সেছ</item>
@@ -161,15 +166,15 @@
     <string name="permission_usage_bar_chart_title_last_day" msgid="7950805735777472871">"যোৱা ২৪ ঘণ্টাৰ কৰা অনুমতিৰ ব্যৱহাৰ"</string>
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"যোৱা ১ মিনিটত কৰা অনুমতিৰ ব্যৱহাৰ"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"যোৱা ১৫ মিনিটত কৰা অনুমতিৰ ব্যৱহাৰ"</string>
-    <string name="suffix_permission_usage_preference" msgid="8738902080074563098">"ব্যৱহাৰ"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"যোৱা ১ মিনিটত কৰা অনুমতিৰ ব্যৱহাৰ"</string>
     <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g>টা এপ্</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g>টা এপ্</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7730498549813201392">
-      <item quantity="one"><xliff:g id="NUMBER">%d</xliff:g> টা এপে ব্যৱহাৰ কৰিছে</item>
-      <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> টা এপে ব্যৱহাৰ কৰিছে</item>
+    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"যোৱা ২৪ ঘণ্টাত ব্যৱহাৰ কৰা হোৱা নাই"</string>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
+      <item quantity="one"><xliff:g id="NUMBER">%1$d</xliff:g> টা এপে ব্যৱহাৰ কৰিছে</item>
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> টা এপে ব্যৱহাৰ কৰিছে</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"সকলো ডেশ্বব’ৰ্ডত চাওক"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"এই অনুসৰি ফিল্টাৰ কৰা: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -200,11 +205,11 @@
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"সকলো সময়ৰ বাবে অনুমতি দিয়ক"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"কেৱল এপ্ ব্যৱহাৰ হৈ থাকোঁতে অনুমতি দিয়ক"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"প্ৰতিবাৰতে সোধক"</string>
-    <string name="app_permission_button_deny" msgid="2399316993899108824">"অস্বীকাৰ কৰক"</string>
+    <string name="app_permission_button_deny" msgid="6016454069832050300">"অনুমতি নিদিব"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"সঠিক অৱস্থান"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"আনুমানিক অৱস্থান"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"সঠিক অৱস্থান ব্যৱহাৰ কৰক"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"এপ্‌সমূহে ইয়াৰ চুবুৰীয়া অঞ্চলৰ দূৰত্বৰ ভিতৰতহে আপোনাৰ আনুমানিক অৱস্থান নিৰ্ধাৰণ কৰিব পাৰে"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"সঠিক অৱস্থানটো অফ থাকিলে, এপে আপোনাৰ আনুমানিক অৱস্থান এক্সেছ কৰিব পাৰে"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> অনুমতি"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"এই এপ্‌টোৰ বাবে <xliff:g id="PERM">%1$s</xliff:g>ৰ এক্সেছ"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"সকলো <xliff:g id="APP">%1$s</xliff:g> অনুমতি চাওক"</string>
@@ -239,7 +244,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"এই অনুমতি থকা এপ্‌সমূহে ফট’ তুলিব আৰু ভিডিঅ’ ৰেকৰ্ড কৰিব পাৰে"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"এই অনুমতি থকা এপ্‌সমূহে আপোনাৰ সম্পৰ্কসূচী এক্সেছ কৰিব পাৰে"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"এই অনুমতি থকা এপ্‌সমূহে এই ডিভাইচটোৰ অৱস্থান এক্সেছ কৰিব পাৰিব"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4557465018373171998">"এই অনুমতি লাভ কৰা এপে নিকটৱৰ্তী ব্লুটুথ ডিভাইচ বিচাৰি উলিয়াব আৰু সেইসমূহৰ সৈতে সংযোগ কৰিব পাৰে"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"এই অনুমতিটো থকা এপে বিচাৰিব, সংযোগ কৰিব আৰু নিকটৱৰ্তী ডিভাইচৰ আপেক্ষিক স্থান নিৰ্ধাৰণ কৰিব পাৰে"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"এই অনুমতি থকা এপ্‌সমূহে অডিঅ’ ৰেকৰ্ড কৰিব পাৰে"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"এই অনুমতি থকা এপ্‌সমূহে ফ’ন কল কৰিব আৰু পৰিচালনা কৰিব পাৰে"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"এই অনুমতি থকা এপে আপোনাৰ দেহৰ গুৰুত্বপূৰ্ণ অংগসমূহৰ অৱস্থাৰ বিষয়ে ছেন্সৰৰ ডেটা লাভ কৰিব পাৰে"</string>
@@ -255,7 +260,7 @@
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"কেৱল মিডিয়ালৈ এক্সেছৰ অনুমতি আছে"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"সকলো ফাইল পৰিচালনা কৰিবলৈ অনুমতি আছে"</string>
     <string name="ask_header" msgid="2633816846459944376">"প্ৰতিবাৰতে সোধক"</string>
-    <string name="denied_header" msgid="2253955654228120835">"অস্বীকাৰ কৰা হৈছে"</string>
+    <string name="denied_header" msgid="903209608358177654">"অনুমতি নাই"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> দিন</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> দিন</item>
@@ -318,6 +323,19 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"কেৱল এপটো ব্যৱহাৰ হৈ থকা সময়ত"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"মিডিয়া"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"সকলো ফাইল"</string>
+    <string name="permission_subtitle_background" msgid="8916750995309083180">"সকলো সময়ৰ বাবে অনুমতি দিয়া হৈছে"</string>
+    <string name="app_perms_24h_access" msgid="99069906850627181">"অন্তিমবাৰ <xliff:g id="TIME_DATE">%1$s</xliff:g>ত এক্সেছ কৰিছিল"</string>
+    <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"অন্তিমবাৰ কালি <xliff:g id="TIME_DATE">%1$s</xliff:g>ত এক্সেছ কৰিছিল"</string>
+    <string name="app_perms_content_provider" msgid="6996750793881252778">"যোৱা ২৪ ঘণ্টাত এক্সেছ কৰিছে"</string>
+    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"অন্তিমবাৰ <xliff:g id="TIME_DATE">%1$s</xliff:g>ত এক্সেছ কৰিছে • সকলো সময়ৰ বাবে অনুমতি দিয়া হৈছে"</string>
+    <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"অন্তিমবাৰ কালি <xliff:g id="TIME_DATE">%1$s</xliff:g>ত এক্সেছ কৰিছে • সকলো সময়ৰ বাবে অনুমতি দিয়া হৈছে"</string>
+    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"যোৱা ২৪ ঘণ্টাত এক্সেছ কৰিছে • সকলো সময়ৰ বাবে অনুমতি দিয়া হৈছে"</string>
+    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"অন্তিমবাৰ <xliff:g id="TIME_DATE">%1$s</xliff:g>ত এক্সেছ কৰিছিল • মিডিয়া"</string>
+    <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"অন্তিমবাৰ কালি <xliff:g id="TIME_DATE">%1$s</xliff:g>ত এক্সেছ কৰিছিল • মিডিয়া"</string>
+    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"যোৱা ২৪ ঘণ্টাত এক্সেছ কৰিছে • মিডিয়া"</string>
+    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"অন্তিমবাৰ <xliff:g id="TIME_DATE">%1$s</xliff:g>ত এক্সেছ কৰিছিল • আটাইবোৰ ফাইল"</string>
+    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"অন্তিমবাৰ কালি <xliff:g id="TIME_DATE">%1$s</xliff:g>ত এক্সেছ কৰিছিল • আটাইবোৰ ফাইল"</string>
+    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"যোৱা ২৪ ঘণ্টাত এক্সেছ কৰিছে • আটাইবোৰ ফাইল"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"কোনো অনুমতি দিয়া নাই"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"কোনো অনুমতি প্ৰত্যাখ্যান কৰা নাই"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"কোনো এপক অনুমতি দিয়া নাই"</string>
@@ -436,9 +454,9 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"এই এপ্‌টোৱে সকলো সময়তে আপোনাৰ অৱস্থান এক্সেছ কৰিবলৈ বিচাৰিব পাৰে, আনকি আপুনি এপ্‌টো ব্যৱহাৰ কৰি নথকা সময়তো। "<annotation id="link">"ছেটিংসমূহত ত অনুমতি দিয়ক।"</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ৰ বাবে অৱস্থানৰ এক্সেছ সলনি কৰিবনে?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"এই এপ্‌টোৱে সকলো সময়তে আপোনাৰ অৱস্থান এক্সেছ কৰিবলৈ বিচাৰে, আনকি আপুনি এপ্‌টো ব্যৱহাৰ কৰি নথকা সময়তো। "<annotation id="link">"ত অনুমতি দিয়ক।"</annotation></string>
-    <string name="permgrouprequest_nearby_devices" msgid="7447863425662482548">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক নিকটৱৰ্তী ব্লুটুথ ডিভাইচ বিচাৰি উলিয়াবলৈ আৰু সেইসমূহৰ সৈতে সংযোগ কৰিবলৈ দিবনে?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="9013793366434153393">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক নিকটৱৰ্তী ব্লুটুথ ডিভাইচ বিচাৰি উলিয়াবলৈ আৰু সেইসমূহৰ সৈতে সংযোগ কৰিবলৈ দিবনে? "<annotation id="link">"ছেটিঙত অনুমতি প্ৰদান কৰক।"</annotation></string>
-    <string name="permgrouprequest_finelocation" msgid="169340229199345158">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক এই ডিভাইচটোৰ সঠিক অৱস্থান এক্সেছ কৰিবলৈ অনুমতি দিবনে?"</string>
+    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক বিচাৰিবলৈ, সংযোগ কৰিবলৈ আৰু নিকটৱৰ্তী ডিভাইচৰ আপেক্ষিক স্থান নিৰ্ধাৰণ কৰিবলৈ দিবনে?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক বিচাৰিবলৈ, সংযোগ কৰিবলৈ আৰু নিকটৱৰ্তী ডিভাইচৰ আপেক্ষিক স্থান নিৰ্ধাৰণ কৰিবলৈ দিবনে? "<annotation id="link">"ছেটিঙত অনুমতি প্ৰদান কৰক।"</annotation></string>
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>ৰ অৱস্থানৰ এক্সেছ আনুমানিকৰ পৰা সঠিকলৈ সলনি কৰিবনে?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক এই ডিভাইচটোৰ আনুমানিক অৱস্থান এক্সেছ কৰিবলৈ অনুমতি দিবনে?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"সঠিক"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"আনুমানিক"</string>
@@ -469,4 +487,10 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"কেৱল ছিষ্টেম এপ্লিকেশ্বনে ব্যৱহাৰ কৰা অনুমতি।"</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"অতিৰিক্ত অনুমতি"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"এপ্লিকেশ্বনে নির্ধাৰণ কৰা অনুমতি।"</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"কেমেৰা"</string>
+    <string name="privdash_label_microphone" msgid="8415035835803511693">"মাইক্ৰ’ফ’ন"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"অৱস্থান"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"অন্য"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"নাই"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"বিগত\n২৪ ঘণ্টা"</string>
 </resources>
