@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 The Android Open Source Project
+ * Copyright (C) 2021 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.ui.handheld
+package com.android.permissioncontroller.permission.ui
 
 import android.content.Intent
 import android.content.Intent.ACTION_MANAGE_APP_PERMISSIONS
@@ -27,14 +27,14 @@ import androidx.navigation.Navigation.findNavController
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.android.compatibility.common.util.SystemUtil.eventually
-import com.android.permissioncontroller.DisableAnimationsRule
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.assertDoesNotHavePreference
-import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity
+import com.android.permissioncontroller.permission.ui.handheld.AllAppPermissionsFragment
 import com.android.permissioncontroller.scrollToPreference
 import com.android.permissioncontroller.wakeUpScreen
 import com.google.common.truth.Truth.assertThat
 import org.junit.After
+import org.junit.Assume
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -42,11 +42,16 @@ import org.junit.runner.RunWith
 
 /**
  * Simple tests for {@link AllAppPermissionsFragment}
+ * Currently, does NOT run on TV.
+ * TODO(b/178576541): Adapt and run on TV.
+ * Run with:
+ * atest AllAppPermissionsFragmentTest
  */
 @RunWith(AndroidJUnit4::class)
-class AllAppPermissionsFragmentTest {
+class AllAppPermissionsFragmentTest : UiBaseTest() {
     private val ONE_PERMISSION_DEFINER_APK =
-            "/data/local/tmp/permissioncontroller/tests/inprocess/AppThatDefinesAdditionalPermission.apk"
+            "/data/local/tmp/permissioncontroller/tests/inprocess/" +
+                "AppThatDefinesAdditionalPermission.apk"
     private val PERMISSION_USER_APK =
             "/data/local/tmp/permissioncontroller/tests/inprocess/" +
                     "AppThatUsesAdditionalPermission.apk"
@@ -59,11 +64,7 @@ class AllAppPermissionsFragmentTest {
     private val PERM_LABEL = "Permission B"
     private val SECOND_PERM_LABEL = "Permission C"
 
-    @get:Rule
-    val disableAnimations = DisableAnimationsRule()
-
-    @get:Rule
-    val managePermissionsActivity = object : ActivityTestRule<ManagePermissionsActivity>(
+    private val managePermissionsActivity = object : ActivityTestRule<ManagePermissionsActivity>(
             ManagePermissionsActivity::class.java) {
         override fun getActivityIntent() = Intent(ACTION_MANAGE_APP_PERMISSIONS)
                 .putExtra(EXTRA_PACKAGE_NAME, USER_PKG)
@@ -82,6 +83,12 @@ class AllAppPermissionsFragmentTest {
             }
         }
     }
+
+    @Rule
+    fun activityRule() = if (isTelevision) noOpTestRule else managePermissionsActivity
+
+    @Before
+    fun assumeNotTelevision() = Assume.assumeFalse(isTelevision)
 
     @Before
     fun wakeScreenUp() {
