@@ -28,7 +28,6 @@ import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import com.android.compatibility.common.util.SystemUtil.eventually
 import com.android.compatibility.common.util.SystemUtil.getEventually
-import com.android.permissioncontroller.DisableAnimationsRule
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.getPreferenceSummary
 import com.android.permissioncontroller.getUsageCountsFromUi
@@ -37,12 +36,9 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils.getPermGrou
 import com.android.permissioncontroller.permission.utils.Utils.getGroupOfPlatformPermission
 import com.android.permissioncontroller.scrollToPreference
 import com.android.permissioncontroller.wakeUpScreen
-import com.android.permissioncontroller.workAroundAppCompatCheckVectorDrawableSetup
 import com.google.common.truth.Truth.assertThat
 import org.junit.After
 import org.junit.Before
-import org.junit.BeforeClass
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -50,11 +46,12 @@ import org.junit.runner.RunWith
  * Simple tests for {@link ManageStandardPermissionsFragment}
  */
 @RunWith(AndroidJUnit4::class)
-class ManageStandardPermissionsFragmentTest {
+class ManageStandardPermissionsFragmentTest : HandheldUiBaseTest() {
     private val LOCATION_USER_APK =
             "/data/local/tmp/permissioncontroller/tests/inprocess/AppThatRequestsLocation.apk"
     private val ADDITIONAL_DEFINER_APK =
-            "/data/local/tmp/permissioncontroller/tests/inprocess/AppThatDefinesAdditionalPermission.apk"
+            "/data/local/tmp/permissioncontroller/tests/inprocess/" +
+                "AppThatDefinesAdditionalPermission.apk"
     private val ADDITIONAL_USER_APK =
             "/data/local/tmp/permissioncontroller/tests/inprocess/" +
                     "AppThatUsesAdditionalPermission.apk"
@@ -69,11 +66,7 @@ class ManageStandardPermissionsFragmentTest {
     private val locationGroupLabel = getPermGroupLabel(context,
             getGroupOfPlatformPermission(ACCESS_COARSE_LOCATION)!!).toString()
 
-    @get:Rule
-    val disableAnimations = DisableAnimationsRule()
-
-    @get:Rule
-    val managePermissionsActivity = object : ActivityTestRule<ManagePermissionsActivity>(
+    override fun provideActivityRule() = object : ActivityTestRule<ManagePermissionsActivity>(
             ManagePermissionsActivity::class.java) {
         override fun getActivityIntent() = Intent(ACTION_MANAGE_PERMISSIONS)
     }
@@ -216,13 +209,5 @@ class ManageStandardPermissionsFragmentTest {
         uninstallApp(LOCATION_USER_PKG)
         uninstallApp(ADDITIONAL_DEFINER_PKG)
         uninstallApp(ADDITIONAL_USER_PKG)
-    }
-
-    companion object {
-        @BeforeClass
-        @JvmStatic
-        fun workAroundVectorDrawable() {
-            workAroundAppCompatCheckVectorDrawableSetup()
-        }
     }
 }
