@@ -22,8 +22,6 @@ import static java.util.concurrent.TimeUnit.HOURS;
 import static java.util.concurrent.TimeUnit.MINUTES;
 
 import android.Manifest;
-import android.accounts.Account;
-import android.accounts.AccountManager;
 import android.app.ActionBar;
 import android.app.role.RoleManager;
 import android.content.Context;
@@ -335,17 +333,6 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
         }
         screen.removeAll();
         screen.setInitialExpandedChildrenCount(PERMISSION_USAGE_INITIAL_EXPANDED_CHILDREN_COUNT);
-
-        StringBuffer accounts = new StringBuffer();
-        for (UserHandle user : getContext().getSystemService(UserManager.class).getAllProfiles()) {
-            for (Account account : getContext().createContextAsUser(user, 0).getSystemService(
-                    AccountManager.class).getAccounts()) {
-                accounts.append(", " + account.name);
-            }
-        }
-        if (accounts.length() > 0) {
-            accounts.delete(0, 2);
-        }
 
         final TimeFilterItem timeFilterItem = mFilterTimes.get(mFilterTimeIndex);
         long curTime = System.currentTimeMillis();
