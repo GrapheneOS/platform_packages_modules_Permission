@@ -323,17 +323,13 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"ആപ്പ് ഉപയോഗത്തിലുള്ളപ്പോൾ മാത്രം"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"മീഡിയ"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"എല്ലാ ഫയലുകളും"</string>
-    <!-- no translation found for permission_subtitle_background (8916750995309083180) -->
-    <skip />
+    <string name="permission_subtitle_background" msgid="8916750995309083180">"എല്ലാ സമയത്തും അനുവദിച്ചിരിക്കുന്നു"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"അവസാനം ആക്‌സസ് ചെയ്‌തത് <xliff:g id="TIME_DATE">%1$s</xliff:g>-ന്"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"അവസാനം ആക്‌സസ് ചെയ്‌തത് ഇന്നലെ <xliff:g id="TIME_DATE">%1$s</xliff:g>-ന്"</string>
     <string name="app_perms_content_provider" msgid="6996750793881252778">"കഴിഞ്ഞ 24 മണിക്കൂറിനിടെ ആക്‌സസ് ചെയ്‌തു"</string>
-    <!-- no translation found for app_perms_24h_access_background (3413674718969576843) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_yest_background (9174750810998076725) -->
-    <skip />
-    <!-- no translation found for app_perms_content_provider_background (7793984056711923997) -->
-    <skip />
+    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"അവസാനം ആക്‌സസ് ചെയ്‌തത് <xliff:g id="TIME_DATE">%1$s</xliff:g>-ന് • എല്ലാ സമയത്തും അനുവദിച്ചിരിക്കുന്നു"</string>
+    <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"അവസാനം ആക്സസ് ചെയ്തത് ഇന്നലെ <xliff:g id="TIME_DATE">%1$s</xliff:g>-ന് • എല്ലാ സമയത്തും അനുവദിച്ചിരിക്കുന്നു"</string>
+    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"കഴിഞ്ഞ 24 മണിക്കൂറിൽ ആക്സസ് ചെയ്തു • എപ്പോഴും അനുവദിച്ചിരിക്കുന്നു"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"അവസാനം ആക്‌സസ് ചെയ്‌തത് <xliff:g id="TIME_DATE">%1$s</xliff:g>-ന് • മീഡിയ"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"അവസാനം ആക്‌സസ് ചെയ്‌തത് ഇന്നലെ <xliff:g id="TIME_DATE">%1$s</xliff:g>-ന് • മീഡിയ"</string>
     <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"കഴിഞ്ഞ 24 മണിക്കൂറിനിടെ ആക്‌സസ് ചെയ്‌തു • മീഡിയ"</string>
