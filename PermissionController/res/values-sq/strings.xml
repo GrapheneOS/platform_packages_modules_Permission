@@ -314,17 +314,13 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"Vetëm kur aplikacioni është në përdorim"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"Media"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"Të gjithë skedarët"</string>
-    <!-- no translation found for permission_subtitle_background (8916750995309083180) -->
-    <skip />
+    <string name="permission_subtitle_background" msgid="8916750995309083180">"Lejohet gjithmonë"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"Qasja e fundit: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Qasja e fundit dje në <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_content_provider" msgid="6996750793881252778">"Qasja brenda 24 orëve të fundit"</string>
-    <!-- no translation found for app_perms_24h_access_background (3413674718969576843) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_yest_background (9174750810998076725) -->
-    <skip />
-    <!-- no translation found for app_perms_content_provider_background (7793984056711923997) -->
-    <skip />
+    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Qasja e fundit: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Lejohet gjithmonë"</string>
+    <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Qasja e fundit dje në <xliff:g id="TIME_DATE">%1$s</xliff:g> • Lejohet gjithmonë"</string>
+    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"Qasja brenda 24 orëve të fundit • Lejohet gjithmonë"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Qasja e fundit: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Media"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Qasja e fundit dje në <xliff:g id="TIME_DATE">%1$s</xliff:g> • Media"</string>
     <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"Qasja brenda 24 orëve të fundit • Media"</string>
