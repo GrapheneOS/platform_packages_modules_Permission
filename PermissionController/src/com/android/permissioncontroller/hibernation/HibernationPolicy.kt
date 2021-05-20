@@ -17,6 +17,7 @@
 package com.android.permissioncontroller.hibernation
 
 import android.Manifest
+import android.Manifest.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION
 import android.accessibilityservice.AccessibilityService
 import android.app.ActivityManager
 import android.app.ActivityManager.RunningAppProcessInfo.IMPORTANCE_CANT_SAVE_STATE
@@ -60,6 +61,7 @@ import android.view.inputmethod.InputMethod
 import androidx.annotation.MainThread
 import androidx.lifecycle.MutableLiveData
 import androidx.preference.PreferenceManager
+import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.DumpableLog
 import com.android.permissioncontroller.PermissionControllerApplication
@@ -383,6 +385,22 @@ suspend fun isPackageHibernationExemptBySystem(
                     "- holder of READ_PRIVILEGED_PHONE_STATE")
         }
         return true
+    }
+
+    if (SdkLevel.isAtLeastS()) {
+        val hasUpdatePackagesWithoutUserActionPermission =
+            PermissionControllerApplication.get().packageManager.checkPermission(
+                UPDATE_PACKAGES_WITHOUT_USER_ACTION, pkg.packageName) == PERMISSION_GRANTED
+        val installPackagesAppOpMode = AppOpLiveData[pkg.packageName,
+            AppOpsManager.OPSTR_REQUEST_INSTALL_PACKAGES, pkg.uid]
+            .getInitializedValue()
+        if (hasUpdatePackagesWithoutUserActionPermission &&
+            installPackagesAppOpMode == AppOpsManager.MODE_ALLOWED) {
+            if (DEBUG_HIBERNATION_POLICY) {
+                DumpableLog.i(LOG_TAG, "Exempted ${pkg.packageName} - 3p app store")
+            }
+            return true
+        }
     }
 
     return false

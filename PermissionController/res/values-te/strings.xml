@@ -323,17 +323,13 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"యాప్ వినియోగంలో ఉన్నప్పుడు మాత్రమే"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"మీడియా"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"అన్ని ఫైల్‌లు"</string>
-    <!-- no translation found for permission_subtitle_background (8916750995309083180) -->
-    <skip />
+    <string name="permission_subtitle_background" msgid="8916750995309083180">"అన్ని సమయాలలో అనుమతించబడతాయి"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"చివరగా యాక్సెస్ చేసిన సమయం <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"నిన్న <xliff:g id="TIME_DATE">%1$s</xliff:g> సమయంలో చివరగా యాక్సెస్ చేయబడింది"</string>
     <string name="app_perms_content_provider" msgid="6996750793881252778">"గత 24 గంటల్లో యాక్సెస్ చేయబడింది"</string>
-    <!-- no translation found for app_perms_24h_access_background (3413674718969576843) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_yest_background (9174750810998076725) -->
-    <skip />
-    <!-- no translation found for app_perms_content_provider_background (7793984056711923997) -->
-    <skip />
+    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"చివరిగా <xliff:g id="TIME_DATE">%1$s</xliff:g>కి యాక్సెస్ చేయబడింది • అన్ని సమయాలలో అనుమతించబడతాయి"</string>
+    <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"చివరిగా రేపు <xliff:g id="TIME_DATE">%1$s</xliff:g>కి యాక్సెస్ చేయబడింది • అన్ని సమయాలలో అనుమతించబడతాయి"</string>
+    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"గత 24 గంటలలో యాక్సెస్ చేయబడింది • అన్ని సమయాలలో అనుమతించబడతాయి"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"చివరగా యాక్సెస్ చేసిన సమయం <xliff:g id="TIME_DATE">%1$s</xliff:g> • మీడియా"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"నిన్న <xliff:g id="TIME_DATE">%1$s</xliff:g> సమయంలో చివరగా యాక్సెస్ చేయబడింది • మీడియా"</string>
     <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"గత 24 గంటల్లో యాక్సెస్ చేయబడింది • మీడియా"</string>
