@@ -484,7 +484,7 @@
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"目前 IT 管理員允許「<xliff:g id="APP_NAME">%s</xliff:g>」存取你的位置資訊"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"其他權限"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"系統使用的權限"</string>
-    <string name="not_used_permissions_description" msgid="7595514824169388718">"僅系統應用程式使用的權限。"</string>
+    <string name="not_used_permissions_description" msgid="7595514824169388718">"僅供系統應用程式使用的權限。"</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"額外權限"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"應用程式定義的權限。"</string>
     <string name="privdash_label_camera" msgid="1426440033626198096">"相機"</string>

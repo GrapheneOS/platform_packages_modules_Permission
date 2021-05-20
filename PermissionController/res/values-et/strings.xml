@@ -42,7 +42,7 @@
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Luba"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Luba alati"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Rakenduse kasutamise ajal"</string>
-    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Täpse asukoha muudatus"</string>
+    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Muuda täpsele asukohale"</string>
     <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Säilita ligikaudne asukoht"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Ainult see kord"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Luba alati"</string>
