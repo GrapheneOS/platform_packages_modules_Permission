@@ -459,7 +459,7 @@
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Muutetaanko sijainnin käyttöoikeus (<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>) likimääräisestä tarkaksi?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pääsyn tämän laitteen karkeaan sijaintiin?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Tarkka"</string>
-    <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Karkea"</string>
+    <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Likimääräinen"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; kalenterisi käyttöoikeuden?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; lähettää ja lukea tekstiviestejä?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; käyttää laitteellasi olevia kuvia, mediaa ja tiedostoja?"</string>
@@ -483,7 +483,7 @@
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Pääsy sijaintiin myönnetty"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"<xliff:g id="APP_NAME">%s</xliff:g> on saanut pääsyn sijaintiisi järjestelmänvalvojalta"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"Muut luvat"</string>
-    <string name="not_used_permissions_label" msgid="3939839426115141264">"Järjestelmän käyttävät luvat"</string>
+    <string name="not_used_permissions_label" msgid="3939839426115141264">"Järjestelmän käyttämät luvat"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Vain järjestelmäsovellusten käyttämät luvat"</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Lisäluvat"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Luvat sovellusten mukaan"</string>
