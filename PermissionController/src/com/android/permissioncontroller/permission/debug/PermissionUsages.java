@@ -16,6 +16,9 @@
 
 package com.android.permissioncontroller.permission.debug;
 
+import static android.Manifest.permission.CAMERA;
+import static android.Manifest.permission.RECORD_AUDIO;
+
 import android.app.AppOpsManager;
 import android.app.AppOpsManager.HistoricalOps;
 import android.app.AppOpsManager.HistoricalOpsRequest;
@@ -27,6 +30,7 @@ import android.app.LoaderManager.LoaderCallbacks;
 import android.content.AsyncTaskLoader;
 import android.content.Context;
 import android.content.Loader;
+import android.content.pm.PackageInfo;
 import android.media.AudioManager;
 import android.media.AudioRecordingConfiguration;
 import android.os.Bundle;
@@ -49,6 +53,7 @@ import com.android.permissioncontroller.permission.model.legacy.PermissionGroups
 import com.android.permissioncontroller.permission.utils.Utils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
@@ -74,6 +79,12 @@ public final class PermissionUsages implements LoaderCallbacks<List<AppPermissio
     private static final String KEY_GET_UI_INFO =  "KEY_GET_UI_INFO";
     private static final String KEY_GET_NON_PLATFORM_PERMISSIONS =
             "KEY_GET_NON_PLATFORM_PERMISSIONS";
+    private static final String TELECOM_PACKAGE = "com.android.server.telecom";
+    private static final int DEFAULT_REQUIRED_PERMISSION_FLAG = 3;
+
+    // TODO: theianchen move them to SystemApi
+    private static final String OPSTR_PHONE_CALL_MICROPHONE = "android:phone_call_microphone";
+    private static final String OPSTR_PHONE_CALL_CAMERA = "android:phone_call_camera";
 
     private @Nullable PermissionsUsagesChangeCallback mCallback;
 
@@ -212,6 +223,7 @@ public final class PermissionUsages implements LoaderCallbacks<List<AppPermissio
                     new ArrayMap<>();
 
             final int groupCount = groups.size();
+            boolean telecomMicAndCamAdded = false;
             for (int groupIdx = 0; groupIdx < groupCount; groupIdx++) {
                 final PermissionGroup group = groups.get(groupIdx);
                 // Filter out third party permissions
@@ -242,6 +254,46 @@ public final class PermissionUsages implements LoaderCallbacks<List<AppPermissio
                         usageBuilders.put(usageKey, usageBuilder);
                     }
                     usageBuilder.addGroup(appPermGroup);
+
+                    // Since PermissionGroups.getPermissionGroups doesn't return
+                    // Telecom PermissionApp entity with Microphone and Camera permission groups,
+                    // we have to manually add those entries here.
+                    if (!telecomMicAndCamAdded
+                            && permissionApp.getPackageName().equals(TELECOM_PACKAGE)) {
+                        PackageInfo telecomPackageInfo = appPermGroup.getApp();
+
+                        String[] newReqPerms = Arrays.copyOf(
+                                telecomPackageInfo.requestedPermissions,
+                                telecomPackageInfo.requestedPermissions.length + 2);
+                        newReqPerms[telecomPackageInfo.requestedPermissions.length] = RECORD_AUDIO;
+                        newReqPerms[telecomPackageInfo.requestedPermissions.length + 1] = CAMERA;
+                        telecomPackageInfo.requestedPermissions = newReqPerms;
+
+                        int[] newReqPermsFlags = Arrays.copyOf(
+                                telecomPackageInfo.requestedPermissionsFlags,
+                                telecomPackageInfo.requestedPermissionsFlags.length + 2);
+                        newReqPermsFlags[telecomPackageInfo.requestedPermissionsFlags.length] =
+                                DEFAULT_REQUIRED_PERMISSION_FLAG;
+                        newReqPermsFlags[telecomPackageInfo.requestedPermissionsFlags.length + 1] =
+                                DEFAULT_REQUIRED_PERMISSION_FLAG;
+                        telecomPackageInfo.requestedPermissionsFlags = newReqPermsFlags;
+
+                        AppPermissionGroup micGroup = AppPermissionGroup.create(getContext(),
+                                telecomPackageInfo, RECORD_AUDIO, false);
+                        AppPermissionGroup camGroup = AppPermissionGroup.create(getContext(),
+                                telecomPackageInfo, CAMERA, false);
+
+                        if (micGroup != null) {
+                            usageBuilder.addGroup(micGroup);
+                        }
+
+                        if (camGroup != null) {
+                            usageBuilder.addGroup(camGroup);
+                        }
+
+                        telecomMicAndCamAdded = true;
+                    }
+
                     final List<Permission> permissions = appPermGroup.getPermissions();
                     final int permCount = permissions.size();
                     for (int permIdx = 0; permIdx < permCount; permIdx++) {
@@ -263,6 +315,8 @@ public final class PermissionUsages implements LoaderCallbacks<List<AppPermissio
             // Get last usage data and put in a map for a quick lookup.
             final ArrayMap<Pair<Integer, String>, PackageOps> lastUsages =
                     new ArrayMap<>(usageBuilders.size());
+            opNames.add(OPSTR_PHONE_CALL_MICROPHONE);
+            opNames.add(OPSTR_PHONE_CALL_CAMERA);
             final String[] opNamesArray = opNames.toArray(new String[opNames.size()]);
             if ((mUsageFlags & USAGE_FLAG_LAST) != 0) {
                 final List<PackageOps> usageOps;
