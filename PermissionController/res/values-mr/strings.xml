@@ -211,7 +211,7 @@
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"अचूक स्थान वापरा"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"अचूक स्थान बंद असते तेव्हा, ॲप्स तुमचे अंदाजे स्थान अ‍ॅक्सेस करू शकतात"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> परवानगी"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"या अ‍ॅपसाठी <xliff:g id="PERM">%1$s</xliff:g> अ‍ॅक्सेस केला"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"या अ‍ॅपसाठी <xliff:g id="PERM">%1$s</xliff:g> चा अ‍ॅक्सेस द्या"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"सर्व <xliff:g id="APP">%1$s</xliff:g> परवानग्या पहा"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"ही परवानगी असलेली सर्व अ‍ॅप्स पहा"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Assistant ने मायक्रोफोनचा केलेला वापर दाखवा"</string>
@@ -323,17 +323,13 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"फक्त अ‍ॅप वापरत असताना"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"मीडिया"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"सर्व फाइल"</string>
-    <!-- no translation found for permission_subtitle_background (8916750995309083180) -->
-    <skip />
+    <string name="permission_subtitle_background" msgid="8916750995309083180">"सर्व वेळी अनुमती आहे"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"<xliff:g id="TIME_DATE">%1$s</xliff:g> वाजता शेवटचे अ‍ॅक्सेस केले"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"काल <xliff:g id="TIME_DATE">%1$s</xliff:g> वाजता शेवटचे अ‍ॅक्सेस केले"</string>
     <string name="app_perms_content_provider" msgid="6996750793881252778">"मागील २४ तासांमध्ये अ‍ॅक्सेस केले"</string>
-    <!-- no translation found for app_perms_24h_access_background (3413674718969576843) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_yest_background (9174750810998076725) -->
-    <skip />
-    <!-- no translation found for app_perms_content_provider_background (7793984056711923997) -->
-    <skip />
+    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"<xliff:g id="TIME_DATE">%1$s</xliff:g> वाजता शेवटचे अ‍ॅक्सेस केले • नेहमी अनुमती आहे"</string>
+    <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"काल <xliff:g id="TIME_DATE">%1$s</xliff:g> वाजता शेवटचे अ‍ॅक्सेस केले • नेहमी अनुमती आहे"</string>
+    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"मागील २४ तासांमध्ये अ‍ॅक्सेस केले • नेहमी अनुमती आहे"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"<xliff:g id="TIME_DATE">%1$s</xliff:g> वाजता शेवटचे अ‍ॅक्सेस केले • मीडिया"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"काल <xliff:g id="TIME_DATE">%1$s</xliff:g> वाजता शेवटचे अ‍ॅक्सेस केले • मीडिया"</string>
     <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"मागील २४ तासांमध्ये अ‍ॅक्सेस केले • मीडिया"</string>
