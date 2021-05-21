@@ -61,6 +61,7 @@ import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.PermissionControllerStatsLog;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.debug.PermissionUsages;
@@ -230,8 +231,10 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
         super.onCreateOptionsMenu(menu, inflater);
         if (mIsSystemPermsScreen) {
             menu.add(Menu.NONE, MENU_ALL_PERMS, Menu.NONE, R.string.all_permissions);
-            HelpUtils.prepareHelpMenuItem(getActivity(), menu, R.string.help_app_permissions,
-                    getClass().getName());
+            if (!SdkLevel.isAtLeastS()) {
+                HelpUtils.prepareHelpMenuItem(getActivity(), menu, R.string.help_app_permissions,
+                        getClass().getName());
+            }
         }
     }
 
