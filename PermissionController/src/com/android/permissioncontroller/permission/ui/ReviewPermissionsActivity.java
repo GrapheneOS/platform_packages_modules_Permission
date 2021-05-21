@@ -28,7 +28,7 @@ import androidx.fragment.app.FragmentActivity;
 import com.android.permissioncontroller.DeviceUtils;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.ui.ConfirmActionDialogFragment.OnActionConfirmedListener;
-import com.android.permissioncontroller.permission.ui.handheld.ReviewPermissionsFragment;
+import com.android.permissioncontroller.permission.ui.handheld.ReviewPermissionsWrapperFragment;
 import com.android.permissioncontroller.permission.ui.wear.ReviewPermissionsWearFragment;
 
 public final class ReviewPermissionsActivity extends FragmentActivity
@@ -52,7 +52,7 @@ public final class ReviewPermissionsActivity extends FragmentActivity
             setContentView(R.layout.review_permissions);
             if (getSupportFragmentManager().findFragmentById(R.id.preferences_frame) == null) {
                 getSupportFragmentManager().beginTransaction().add(R.id.preferences_frame,
-                        ReviewPermissionsFragment.newInstance(packageInfo)).commit();
+                        ReviewPermissionsWrapperFragment.newInstance(packageInfo)).commit();
             }
         }
     }
