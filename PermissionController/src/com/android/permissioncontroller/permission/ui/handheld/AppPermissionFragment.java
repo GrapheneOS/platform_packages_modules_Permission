@@ -516,7 +516,7 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
     }
 
     /**
-     * Show a dialog that warns the user that she/he is about to revoke permissions that were
+     * Show a dialog that warns the users that they are about to revoke permissions that were
      * granted by default, or that they are about to grant full file access to an app.
      *
      *
