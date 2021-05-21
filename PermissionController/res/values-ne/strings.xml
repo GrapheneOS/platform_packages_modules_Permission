@@ -483,7 +483,7 @@
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"स्थानसम्बन्धी जानकारी हेरिन सक्छ"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"तपाईंका IT एडमिनले <xliff:g id="APP_NAME">%s</xliff:g> लाई तपाईंको स्थान हेर्ने अनुमति दिनुभएको छ"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"अन्य अनुमतिहरू"</string>
-    <string name="not_used_permissions_label" msgid="3939839426115141264">"सिस्टममा प्रयोग गरिने अनुमतिहरू"</string>
+    <string name="not_used_permissions_label" msgid="3939839426115141264">" सिस्टमले प्रयोग गर्ने अनुमतिहरू"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"सिस्टमका एपहरूमा मात्र प्रयोग गरिने अनुमतिहरू।"</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"अतिरिक्त अनुमतिहरू"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"एपहरूलाई दिइनु पर्ने अनुमतिहरू।"</string>
