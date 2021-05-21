@@ -56,6 +56,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.PermissionControllerStatsLog;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.debug.PermissionUsages;
@@ -197,8 +198,10 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
             menu.add(Menu.NONE, MENU_PERMISSION_USAGE, Menu.NONE, R.string.permission_usage_title);
         }
 
-        HelpUtils.prepareHelpMenuItem(getActivity(), menu, R.string.help_app_permissions,
-                getClass().getName());
+        if (!SdkLevel.isAtLeastS()) {
+            HelpUtils.prepareHelpMenuItem(getActivity(), menu, R.string.help_app_permissions,
+                    getClass().getName());
+        }
     }
 
     @Override

@@ -70,13 +70,6 @@ public final class AllAppPermissionsFragment extends SettingsWithLargeHeader {
     private String mFilterGroup;
     private UserHandle mUser;
 
-    public static AllAppPermissionsFragment newInstance(@NonNull String packageName,
-            @Nullable String filterGroup, @NonNull UserHandle userHandle) {
-        AllAppPermissionsFragment instance = new AllAppPermissionsFragment();
-        instance.setArguments(createArgs(packageName, filterGroup, userHandle));
-        return instance;
-    }
-
     /**
      * Create a bundle with the arguments needed by this fragment
      *
