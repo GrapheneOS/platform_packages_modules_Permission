@@ -51,7 +51,7 @@ import org.junit.runner.RunWith
 class AllAppPermissionsFragmentTest : UiBaseTest() {
     private val ONE_PERMISSION_DEFINER_APK =
             "/data/local/tmp/permissioncontroller/tests/inprocess/" +
-                "AppThatDefinesAdditionalPermission.apk"
+                    "AppThatDefinesAdditionalPermission.apk"
     private val PERMISSION_USER_APK =
             "/data/local/tmp/permissioncontroller/tests/inprocess/" +
                     "AppThatUsesAdditionalPermission.apk"

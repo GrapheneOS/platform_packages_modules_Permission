@@ -66,7 +66,7 @@ public final class ReviewPermissionsFragment extends PreferenceFragmentCompat
         implements View.OnClickListener, PermissionPreference.PermissionPreferenceChangeListener,
         PermissionPreference.PermissionPreferenceOwnerFragment {
 
-    private static final String EXTRA_PACKAGE_INFO =
+    public static final String EXTRA_PACKAGE_INFO =
             "com.android.permissioncontroller.permission.ui.extra.PACKAGE_INFO";
     private static final String LOG_TAG = ReviewPermissionsFragment.class.getSimpleName();
 
@@ -80,15 +80,6 @@ public final class ReviewPermissionsFragment extends PreferenceFragmentCompat
     private PreferenceCategory mCurrentPermissionsCategory;
 
     private boolean mHasConfirmedRevoke;
-
-    public static ReviewPermissionsFragment newInstance(PackageInfo packageInfo) {
-        Bundle arguments = new Bundle();
-        arguments.putParcelable(ReviewPermissionsFragment.EXTRA_PACKAGE_INFO, packageInfo);
-        ReviewPermissionsFragment instance = new ReviewPermissionsFragment();
-        instance.setArguments(arguments);
-        instance.setRetainInstance(true);
-        return instance;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

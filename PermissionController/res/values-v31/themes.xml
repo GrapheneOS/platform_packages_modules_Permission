@@ -17,7 +17,5 @@
   -->
 
 <resources>
-
-    <!-- TODO(b/177638483): Remove this theme once permission UI uses toolbar as well. -->
-    <style name="Settings.Role" parent="Theme.SubSettingsBase" />
+    <style name="Settings" parent="Theme.SubSettingsBase" />
 </resources>
