@@ -63,9 +63,9 @@ import androidx.preference.PreferenceScreen;
 import androidx.preference.PreferenceViewHolder;
 
 import com.android.permissioncontroller.R;
+import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.model.AppPermissionUsage;
 import com.android.permissioncontroller.permission.model.AppPermissionUsage.GroupUsage;
-import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.model.legacy.PermissionApps;
 import com.android.permissioncontroller.permission.model.legacy.PermissionApps.PermissionApp;
 import com.android.permissioncontroller.permission.ui.handheld.PermissionControlPreference;
@@ -285,7 +285,7 @@ public class PermissionUsageFragment extends SettingsWithLargeHeader implements
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                getActivity().finish();
+                getActivity().finishAfterTransition();
                 return true;
             case MENU_SORT_BY_APP:
                 mSort = SORT_RECENT_APPS;
