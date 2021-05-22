@@ -483,7 +483,7 @@
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"লোকেশন অ্যাক্সেস করা হতে পারে"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"আপনার আইটি অ্যাডমিন <xliff:g id="APP_NAME">%s</xliff:g> অ্যাপটিকে আপনার লোকেশন অ্যাক্সেস করার অনুমতি দিয়েছে"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"অন্যান্য অনুমতি"</string>
-    <string name="not_used_permissions_label" msgid="3939839426115141264">"যেসব অনুমতি শুধুমাত্র সিস্টেম অ্যাপ্লিকেশনে ব্যবহার করা হয়"</string>
+    <string name="not_used_permissions_label" msgid="3939839426115141264">"যেসব অনুমতি শুধু সিস্টেম অ্যাপ ব্যবহার করেছে"</string>
     <string name="not_used_permissions_description" msgid="7595514824169388718">"যেসব অনুমতি শুধুমাত্র সিস্টেম অ্যাপ্লিকেশনে ব্যবহার করা হয়।"</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"অতিরিক্ত অনুমতি"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"অ্যাপ্লিকেশনে বর্ণনা করা অনুমতি।"</string>
