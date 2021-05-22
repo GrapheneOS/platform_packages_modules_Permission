@@ -266,7 +266,7 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                getActivity().finish();
+                getActivity().finishAfterTransition();
                 return true;
             case MENU_SHOW_SYSTEM:
             case MENU_HIDE_SYSTEM:
