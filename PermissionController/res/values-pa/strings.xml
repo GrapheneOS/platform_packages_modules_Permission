@@ -483,8 +483,8 @@
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"ਟਿਕਾਣੇ ਤੱਕ ਪਹੁੰਚ ਕੀਤੀ ਜਾ ਸਕਦੀ ਹੈ"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"ਤੁਹਾਡਾ ਆਈ.ਟੀ. ਪ੍ਰਸ਼ਾਸਕ <xliff:g id="APP_NAME">%s</xliff:g> ਨੂੰ ਤੁਹਾਡੇ ਟਿਕਾਣੇ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇ ਰਿਹਾ ਹੈ"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"ਹੋਰ ਇਜਾਜ਼ਤਾਂ"</string>
-    <string name="not_used_permissions_label" msgid="3939839426115141264">"ਸਿਸਟਮ ਦੁਆਰਾ ਵਰਤੀ ਗਈ ਇਜਾਜ਼ਤ"</string>
-    <string name="not_used_permissions_description" msgid="7595514824169388718">"ਸਿਸਟਮ ਐਪਲੀਕੇਸ਼ਨਾਂ ਦੁਆਰਾ ਵਰਤੀਆਂ ਗਈਆਂ ਇਜਾਜ਼ਤਾਂ"</string>
+    <string name="not_used_permissions_label" msgid="3939839426115141264">"ਸਿਸਟਮ ਵੱਲੋਂ ਵਰਤੀ ਗਈ ਇਜਾਜ਼ਤ"</string>
+    <string name="not_used_permissions_description" msgid="7595514824169388718">"ਸਿਰਫ਼ ਸਿਸਟਮ ਐਪਲੀਕੇਸ਼ਨਾਂ ਵੱਲੋਂ ਵਰਤੀਆਂ ਗਈਆਂ ਇਜਾਜ਼ਤਾਂ"</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"ਵਧੀਕ ਇਜਾਜ਼ਤਾਂ"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"ਐਪਲੀਕੇਸ਼ਨਾਂ ਦੁਆਰਾ ਪਰਿਭਾਸ਼ਿਤ ਕੀਤੀਆਂ ਇਜਾਜ਼ਤਾਂ"</string>
     <string name="privdash_label_camera" msgid="1426440033626198096">"ਕੈਮਰਾ"</string>

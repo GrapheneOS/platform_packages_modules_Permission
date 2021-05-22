@@ -64,7 +64,7 @@
     </plurals>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"Android-en bertsio zaharrago baterako diseinatuta dago aplikazio hau. Baimena ukatzen baduzu, agian aurrerantzean ez du behar bezala funtzionatuko."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"Gauzatu ekintza ezezagunak"</string>
-    <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> aplikaziok dute baimena"</string>
+    <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> aplikaziok du(te) baimena"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"Baimena daukaten <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> aplikazio"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Erakutsi sistemaren aplikazioak"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Ezkutatu sistema"</string>
