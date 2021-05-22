@@ -483,8 +483,8 @@
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Ứng dụng có thể truy cập thông tin vị trí"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Quản trị viên CNTT đang cho phép ứng dụng <xliff:g id="APP_NAME">%s</xliff:g> truy cập vào thông tin vị trí của bạn"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"Quyền khác"</string>
-    <string name="not_used_permissions_label" msgid="3939839426115141264">"Quyền được hệ thống sử dụng"</string>
-    <string name="not_used_permissions_description" msgid="7595514824169388718">"Quyền chỉ được ứng dụng hệ thống sử dụng."</string>
+    <string name="not_used_permissions_label" msgid="3939839426115141264">"Quyền mà hệ thống sử dụng"</string>
+    <string name="not_used_permissions_description" msgid="7595514824169388718">"Quyền mà chỉ có ứng dụng hệ thống sử dụng."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Quyền bổ sung"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Quyền do ứng dụng xác định."</string>
     <string name="privdash_label_camera" msgid="1426440033626198096">"Máy ảnh"</string>
