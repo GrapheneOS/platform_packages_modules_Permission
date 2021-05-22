@@ -101,22 +101,6 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
     private MenuItem mHideSystemMenu;
     private @NonNull RoleManager mRoleManager;
 
-    /**
-     * Construct a new instance of PermissionDetailsFragment
-     */
-    public static @NonNull PermissionDetailsFragment newInstance(@Nullable String groupName,
-            long numMillis, boolean showSystem) {
-        PermissionDetailsFragment fragment = new PermissionDetailsFragment();
-        Bundle arguments = new Bundle();
-        if (groupName != null) {
-            arguments.putString(Intent.EXTRA_PERMISSION_GROUP_NAME, groupName);
-        }
-        arguments.putLong(Intent.EXTRA_DURATION_MILLIS, numMillis);
-        arguments.putBoolean(ManagePermissionsActivity.EXTRA_SHOW_SYSTEM, showSystem);
-        fragment.setArguments(arguments);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
