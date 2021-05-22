@@ -25,7 +25,6 @@ import android.Manifest;
 import android.app.ActionBar;
 import android.app.role.RoleManager;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.os.UserManager;
@@ -40,7 +39,6 @@ import android.view.MenuItem;
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceGroupAdapter;
@@ -121,21 +119,6 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
     private @NonNull RoleManager mRoleManager;
 
     private PermissionUsageGraphicPreference mGraphic;
-
-    /**
-     * @return A new fragment
-     */
-    public static @NonNull PermissionUsageV2Fragment newInstance(@Nullable String groupName,
-            long numMillis) {
-        PermissionUsageV2Fragment fragment = new PermissionUsageV2Fragment();
-        Bundle arguments = new Bundle();
-        if (groupName != null) {
-            arguments.putString(Intent.EXTRA_PERMISSION_GROUP_NAME, groupName);
-        }
-        arguments.putLong(Intent.EXTRA_DURATION_MILLIS, numMillis);
-        fragment.setArguments(arguments);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -643,20 +626,6 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
             }
         }
         return null;
-    }
-
-    /**
-     * Callback when the user selects a permission group by which to filter.
-     *
-     * @param selectedGroup The PermissionGroup to use to filter entries, or null if we should show
-     *                      all entries.
-     */
-    private void onPermissionGroupSelected(@Nullable String selectedGroup) {
-        Fragment frag = newInstance(selectedGroup, mFilterTimes.get(mFilterTimeIndex).getTime());
-        getFragmentManager().beginTransaction()
-                .replace(android.R.id.content, frag)
-                .addToBackStack("PermissionUsage")
-                .commit();
     }
 
     /**

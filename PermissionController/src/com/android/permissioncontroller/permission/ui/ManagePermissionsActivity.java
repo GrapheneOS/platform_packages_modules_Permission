@@ -46,8 +46,8 @@ import com.android.permissioncontroller.Constants;
 import com.android.permissioncontroller.DeviceUtils;
 import com.android.permissioncontroller.PermissionControllerStatsLog;
 import com.android.permissioncontroller.R;
-import com.android.permissioncontroller.permission.debug.PermissionDetailsFragment;
-import com.android.permissioncontroller.permission.debug.PermissionUsageV2Fragment;
+import com.android.permissioncontroller.permission.debug.PermissionDetailsWrapperFragment;
+import com.android.permissioncontroller.permission.debug.PermissionUsageV2WrapperFragment;
 import com.android.permissioncontroller.permission.debug.UtilsKt;
 import com.android.permissioncontroller.permission.ui.auto.AutoAllAppPermissionsFragment;
 import com.android.permissioncontroller.permission.ui.auto.AutoAppPermissionsFragment;
@@ -56,7 +56,7 @@ import com.android.permissioncontroller.permission.ui.auto.AutoPermissionAppsFra
 import com.android.permissioncontroller.permission.ui.auto.AutoUnusedAppsFragment;
 import com.android.permissioncontroller.permission.ui.handheld.AppPermissionFragment;
 import com.android.permissioncontroller.permission.ui.handheld.AppPermissionGroupsFragment;
-import com.android.permissioncontroller.permission.ui.handheld.HandheldUnusedAppsFragment;
+import com.android.permissioncontroller.permission.ui.handheld.HandheldUnusedAppsWrapperFragment;
 import com.android.permissioncontroller.permission.ui.handheld.PermissionAppsFragment;
 import com.android.permissioncontroller.permission.ui.legacy.AppPermissionActivity;
 import com.android.permissioncontroller.permission.ui.wear.AppPermissionsFragmentWear;
@@ -159,7 +159,8 @@ public final class ManagePermissionsActivity extends FragmentActivity {
                 }
 
                 String groupName = getIntent().getStringExtra(Intent.EXTRA_PERMISSION_GROUP_NAME);
-                androidXFragment = PermissionUsageV2Fragment.newInstance(groupName, Long.MAX_VALUE);
+                androidXFragment = PermissionUsageV2WrapperFragment.newInstance(groupName,
+                        Long.MAX_VALUE);
             } break;
 
             case Intent.ACTION_REVIEW_PERMISSION_HISTORY: {
@@ -168,7 +169,7 @@ public final class ManagePermissionsActivity extends FragmentActivity {
                             .getStringExtra(Intent.EXTRA_PERMISSION_GROUP_NAME);
                     boolean showSystem = getIntent()
                             .getBooleanExtra(EXTRA_SHOW_SYSTEM, false);
-                    androidXFragment = PermissionDetailsFragment
+                    androidXFragment = PermissionDetailsWrapperFragment
                             .newInstance(groupName, Long.MAX_VALUE, showSystem);
                 }
 
@@ -307,7 +308,7 @@ public final class ManagePermissionsActivity extends FragmentActivity {
                     androidXFragment = AutoUnusedAppsFragment.newInstance();
                     androidXFragment.setArguments(UnusedAppsFragment.createArgs(sessionId));
                 } else if (DeviceUtils.isWear(this) || DeviceUtils.isTelevision(this)) {
-                    androidXFragment = HandheldUnusedAppsFragment.newInstance();
+                    androidXFragment = HandheldUnusedAppsWrapperFragment.newInstance();
                     androidXFragment.setArguments(UnusedAppsFragment.createArgs(sessionId));
                 } else {
                     setNavGraph(UnusedAppsFragment.createArgs(sessionId), R.id.auto_revoke);
