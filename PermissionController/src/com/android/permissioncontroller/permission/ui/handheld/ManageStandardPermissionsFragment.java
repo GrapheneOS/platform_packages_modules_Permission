@@ -79,7 +79,7 @@ public final class ManageStandardPermissionsFragment extends ManagePermissionsFr
                 updatePermissionsUi();
             } else {
                 Log.e(LOG_TAG, "ViewModel returned null data, exiting");
-                getActivity().finish();
+                getActivity().finishAfterTransition();
             }
         });
 
