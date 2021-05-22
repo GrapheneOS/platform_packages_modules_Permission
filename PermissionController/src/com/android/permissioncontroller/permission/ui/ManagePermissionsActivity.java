@@ -36,7 +36,6 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.NavGraph;
 import androidx.navigation.NavInflater;
 import androidx.navigation.Navigation;
@@ -65,9 +64,15 @@ import com.android.permissioncontroller.permission.utils.Utils;
 
 import java.util.Random;
 
-public final class ManagePermissionsActivity extends FragmentActivity {
+/**
+ * Activity to review and manage permissions
+ */
+public final class ManagePermissionsActivity extends SettingsActivity {
     private static final String LOG_TAG = ManagePermissionsActivity.class.getSimpleName();
 
+    /**
+     * Name of the extra parameter that indicates whether or not to show all app permissions
+     */
     public static final String EXTRA_ALL_PERMISSIONS =
             "com.android.permissioncontroller.extra.ALL_PERMISSIONS";
 
@@ -154,7 +159,7 @@ public final class ManagePermissionsActivity extends FragmentActivity {
 
             case Intent.ACTION_REVIEW_PERMISSION_USAGE: {
                 if (!UtilsKt.isPrivacyHubEnabled()) {
-                    finish();
+                    finishAfterTransition();
                     return;
                 }
 
@@ -200,7 +205,7 @@ public final class ManagePermissionsActivity extends FragmentActivity {
                 String packageName = getIntent().getStringExtra(Intent.EXTRA_PACKAGE_NAME);
                 if (packageName == null) {
                     Log.i(LOG_TAG, "Missing mandatory argument EXTRA_PACKAGE_NAME");
-                    finish();
+                    finishAfterTransition();
                     return;
                 }
 
@@ -280,7 +285,7 @@ public final class ManagePermissionsActivity extends FragmentActivity {
                 if (permissionName == null && permissionGroupName == null) {
                     Log.i(LOG_TAG, "Missing mandatory argument EXTRA_PERMISSION_NAME or"
                             + "EXTRA_PERMISSION_GROUP_NAME");
-                    finish();
+                    finishAfterTransition();
                     return;
                 }
                 if (DeviceUtils.isAuto(this)) {
@@ -318,7 +323,7 @@ public final class ManagePermissionsActivity extends FragmentActivity {
 
             default: {
                 Log.w(LOG_TAG, "Unrecognized action " + action);
-                finish();
+                finishAfterTransition();
                 return;
             }
         }
@@ -358,6 +363,7 @@ public final class ManagePermissionsActivity extends FragmentActivity {
             switch (item.getItemId()) {
                 case android.R.id.home:
                     onBackPressed();
+                    finishAfterTransition();
                     return true;
                 default:
                     return super.onOptionsItemSelected(item);
@@ -371,7 +377,8 @@ public final class ManagePermissionsActivity extends FragmentActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PROXY_ACTIVITY_REQUEST_CODE) {
             setResult(resultCode, data);
-            finish();
+            finishAfterTransition();
         }
     }
+
 }
