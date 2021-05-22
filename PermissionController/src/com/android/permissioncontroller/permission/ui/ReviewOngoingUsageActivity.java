@@ -27,7 +27,7 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.android.permissioncontroller.DeviceUtils;
 import com.android.permissioncontroller.permission.debug.UtilsKt;
-import com.android.permissioncontroller.permission.ui.handheld.ReviewOngoingUsageFragment;
+import com.android.permissioncontroller.permission.ui.handheld.ReviewOngoingUsageWrapperFragment;
 
 /**
  * A dialog listing the currently uses of camera, microphone, and location.
@@ -50,7 +50,7 @@ public final class ReviewOngoingUsageActivity extends FragmentActivity {
 
         long numMillis = getIntent().getLongExtra(Intent.EXTRA_DURATION_MILLIS, DEFAULT_MILLIS);
         getSupportFragmentManager().beginTransaction().replace(android.R.id.content,
-                ReviewOngoingUsageFragment.newInstance(numMillis)).commit();
+                ReviewOngoingUsageWrapperFragment.newInstance(numMillis)).commit();
     }
 
 

@@ -502,8 +502,8 @@
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Lokaciji se može pristupiti"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Vaš IT administrator dozvoljava aplikaciji <xliff:g id="APP_NAME">%s</xliff:g> da pristupa vašoj lokaciji"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"Ostala odobrenja"</string>
-    <string name="not_used_permissions_label" msgid="3939839426115141264">"Odobrenje koje sistem koristi"</string>
-    <string name="not_used_permissions_description" msgid="7595514824169388718">"Odobrenja koja samo sistemske aplikacije koriste."</string>
+    <string name="not_used_permissions_label" msgid="3939839426115141264">"Odobrenje koje koristi sistem"</string>
+    <string name="not_used_permissions_description" msgid="7595514824169388718">"Odobrenja koja koriste samo sistemske aplikacije."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Dodatna odobrenja"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Odobrenja koja aplikacije definiraju."</string>
     <string name="privdash_label_camera" msgid="1426440033626198096">"Kamera"</string>
