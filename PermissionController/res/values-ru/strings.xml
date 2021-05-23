@@ -522,7 +522,7 @@
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Администратор разрешил приложению \"<xliff:g id="APP_NAME">%s</xliff:g>\" доступ к вашему местоположению."</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"Другие разрешения"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Разрешения, используемые системой"</string>
-    <string name="not_used_permissions_description" msgid="7595514824169388718">"Разрешения, используемые только системными приложениями."</string>
+    <string name="not_used_permissions_description" msgid="7595514824169388718">"Разрешения, используемые только системными приложениями"</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Дополнительные разрешения"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Разрешения, определяемые приложениями."</string>
     <string name="privdash_label_camera" msgid="1426440033626198096">"Камера"</string>
