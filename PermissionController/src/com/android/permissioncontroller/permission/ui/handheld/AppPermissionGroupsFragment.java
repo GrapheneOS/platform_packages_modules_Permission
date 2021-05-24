@@ -74,6 +74,7 @@ import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsV
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.settingslib.HelpUtils;
+import com.android.settingslib.widget.FooterPreference;
 
 import java.text.Collator;
 import java.time.Instant;
@@ -523,7 +524,7 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
         autoRevokeSwitch.setKey(AUTO_REVOKE_SWITCH_KEY);
         autoRevokeCategory.addPreference(autoRevokeSwitch);
 
-        Preference autoRevokeSummary = new Preference(context);
+        FooterPreference autoRevokeSummary = new FooterPreference(context);
         autoRevokeSummary.setIcon(Utils.applyTint(getActivity(), R.drawable.ic_info_outline,
                 android.R.attr.colorControlNormal));
         autoRevokeSummary.setKey(AUTO_REVOKE_SUMMARY_KEY);
@@ -540,7 +541,8 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
                 .findPreference(AUTO_REVOKE_CATEGORY_KEY);
         SwitchPreference autoRevokeSwitch = autoRevokeCategory.findPreference(
                 AUTO_REVOKE_SWITCH_KEY);
-        Preference autoRevokeSummary = autoRevokeCategory.findPreference(AUTO_REVOKE_SUMMARY_KEY);
+        FooterPreference autoRevokeSummary = autoRevokeCategory.findPreference(
+                AUTO_REVOKE_SUMMARY_KEY);
 
         if (!state.isEnabledGlobal()) {
             autoRevokeCategory.setVisible(false);
