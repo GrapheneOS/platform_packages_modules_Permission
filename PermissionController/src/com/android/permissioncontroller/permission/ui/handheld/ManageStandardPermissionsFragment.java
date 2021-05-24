@@ -25,10 +25,14 @@ import static com.android.permissioncontroller.permission.ui.handheld.UtilsKt.pr
 import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.Preference;
@@ -39,6 +43,7 @@ import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity;
 import com.android.permissioncontroller.permission.ui.UnusedAppsFragment;
 import com.android.permissioncontroller.permission.ui.model.ManageStandardPermissionsViewModel;
 import com.android.permissioncontroller.permission.utils.Utils;
+import com.android.settingslib.widget.FooterPreference;
 
 /**
  * Fragment that allows the user to manage standard permissions.
@@ -161,25 +166,34 @@ public final class ManageStandardPermissionsFragment extends ManagePermissionsFr
 
         Integer numAutoRevoked = mViewModel.getNumAutoRevoked().getValue();
 
-        Preference autoRevokePreference = screen.findPreference(AUTO_REVOKE_KEY);
+        FooterPreference autoRevokePreference = screen.findPreference(AUTO_REVOKE_KEY);
         if (numAutoRevoked != null && numAutoRevoked != 0) {
             if (autoRevokePreference == null) {
-                autoRevokePreference = new FixedSizeIconPreference(
-                        getPreferenceManager().getContext(), true, true);
-                autoRevokePreference.setOrder(-1);
-                autoRevokePreference.setKey(AUTO_REVOKE_KEY);
-                autoRevokePreference.setSingleLineTitle(false);
-                autoRevokePreference.setIcon(R.drawable.ic_info_outline_accent);
-                autoRevokePreference.setTitle(
-                            R.string.auto_revoke_permission_notification_title);
-                autoRevokePreference.setSummary(
-                        R.string.auto_revoke_setting_subtitle);
-                autoRevokePreference.setOnPreferenceClickListener(preference -> {
-                    mViewModel.showAutoRevoke(this, UnusedAppsFragment.createArgs(
-                            getArguments().getLong(EXTRA_SESSION_ID, INVALID_SESSION_ID)));
-                    return true;
-                });
+                FooterPreference.Builder autoRevokePreferenceBuilder =
+                        new FooterPreference.Builder(getContext());
+                autoRevokePreferenceBuilder.setKey(AUTO_REVOKE_KEY);
+                // Description contains a "Learn more" link
+                CharSequence descriptionText = getContext().getText(
+                        R.string.auto_revoked_apps_page_summary);
+                SpannableStringBuilder sb = new SpannableStringBuilder();
+                sb.append(descriptionText);
+                sb.append("\n\n");
+                CharSequence learnMoreText = getContext().getText(
+                        R.string.permission_usage_access_dialog_learn_more);
+                ClickableSpan link = new ClickableSpan() {
+                    @Override
+                    public void onClick(View view) {
+                        mViewModel.showAutoRevoke(ManageStandardPermissionsFragment.this,
+                                UnusedAppsFragment.createArgs(
+                                        getArguments().getLong(EXTRA_SESSION_ID,
+                                                INVALID_SESSION_ID)));
 
+                    }
+                };
+                sb.append(learnMoreText, link, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+                autoRevokePreferenceBuilder.setTitle(sb);
+                autoRevokePreference = autoRevokePreferenceBuilder.build();
+                autoRevokePreference.setIcon(R.drawable.ic_info_outline_accent);
                 screen.addPreference(autoRevokePreference);
             }
         } else if (numAutoRevoked != null && autoRevokePreference != null) {
