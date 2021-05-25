@@ -456,7 +456,7 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Հավելվածին անհրաժեշտ է ձեր գտնվելու վայրը հետագծելու թույլտվություն, նույնիսկ երբ դուք չեք օգտվում դրանից։ "<annotation id="link">"Թույլտվությունը տրամադրեք այստեղ"</annotation>"։"</string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին գտնել մոտակա սարքերը, միանալ դրանց և որոշել դրանց հարաբերական դիրքավորումը։"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին գտնել մոտակա սարքերը, միանալ դրանց և որոշել դրանց հարաբերական դիրքավորումը։ Թույլատրելու համար անցեք "<annotation id="link">"կարգավորումներ։"</annotation></string>
-    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Դարձնե՞լ <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> հավելվածի տեղորոշման թույլտվությունը մոտավորից ճշգրիտ"</string>
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"«<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>» հավելվածի տեղորոշումը փոխե՞լ մոտավորից ճգշրիտի"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել այս սարքի մոտավոր տեղադրությունը"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Ճշգրիտ"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Մոտավոր"</string>

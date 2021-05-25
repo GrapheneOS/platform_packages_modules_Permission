@@ -42,8 +42,8 @@
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Уруксат берүү"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Бардык учурда уруксат берилет"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Колдонмо ачылып турганда"</string>
-    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Так дарекке өзгөртүү"</string>
-    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Болжолдуу жайгашкан жер калсын"</string>
+    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Так аныкталсын"</string>
+    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Болжолдуу жер кала берсин"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Ушул жолу гана"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Бардык учурда уруксат берилет"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Бардык файлдарды башкарууга уруксат берүү"</string>
@@ -107,11 +107,11 @@
     <string name="message_staging" msgid="9110563899955511866">"Күтө туруңуз…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Белгисиз"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Купуялык тактасы"</string>
-    <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> колдонулушу"</string>
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> уруксатынын колдонулушу"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Башка уруксаттарды көрүү"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> жана дагы <xliff:g id="NUM">%3$s</xliff:g>"</string>
-    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Акыркы 24 сааттын ичинде колдонмолор <xliff:g id="PERMGROUP">%1$s</xliff:g> уруксатын пайдаланган убакыт тилкеси"</string>
+    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Соңку 24 сааттын ичинде <xliff:g id="PERMGROUP">%1$s</xliff:g> уруксаты колдонулган убакыт тилкеси"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Бул колдонмо <xliff:g id="PERMGROUP">%1$s</xliff:g> уруксатыңызды колдонгондо"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Кененирээк"</string>
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
@@ -209,7 +209,7 @@
     <string name="precise_image_description" msgid="6349638632303619872">"Так жайгашкан жери"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Болжолдуу жайгашкан жери"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Турган жерди так аныктоо"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Так жайгашкан жерди көрүү мүмкүнчүлүгү өчүрүлгөн болсо, колдонмолор болжолдуу жайгашкан жериңизди көрө алат"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Так жайгашкан жерди көрүү мүмкүнчүлүгү өчүрүлгөн болсо, колдонмолор турган жериңизди болжолдоп аныктай алышат"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> дайындарына уруксаттар"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"<xliff:g id="PERM">%1$s</xliff:g>: бул колдонмого уруксат берүү"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Бардык <xliff:g id="APP">%1$s</xliff:g> уруксаттарын көрүү"</string>
@@ -456,7 +456,7 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Бул колдонмо кайда жүргөнүңүздү ар дайым, колдонмону пайдаланбай турганда да, көрүүгө уруксат сурап жатат. "<annotation id="link">"Жөндөөлөрдөн уруксат бериңиз."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосу жакын жердеги түзмөктөрдү таап, аларга туташып жана абалын аныктай алсынбы?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосу жакын жердеги түзмөктөрдү таап, аларга туташып жана абалын аныктай алсынбы? "<annotation id="link">"Жөндөөлөрдөн уруксат берүү."</annotation></string>
-    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> колдонмосунун жайгашкан жери болжолдуудан так маалыматка өзгөртүлсүнбү?"</string>
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> колдонмосунда жайгашкан жер болжолдуу эмес, так аныкталсынбы?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна бул түзмөктүн болжолдуу жайгашкан жерин пайдаланууга уруксат берилсинби?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Так"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Болжолдуу"</string>
