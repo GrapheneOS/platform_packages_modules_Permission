@@ -54,6 +54,9 @@ public final class AdminRestrictedPermissionsUtils {
      * the device may not be able to control in certain configurations.
      */
     public static boolean isPermissionRestrictedForAdmin(String permission) {
+        if (!SdkLevel.isAtLeastS()) {
+            return false;
+        }
         return ADMIN_RESTRICTED_SENSORS_PERMISSIONS.contains(permission);
     }
 
@@ -61,6 +64,9 @@ public final class AdminRestrictedPermissionsUtils {
      * Returns true if the admin may grant this permission, false otherwise.
      */
     public static boolean mayAdminGrantPermission(Context context, String permission, int userId) {
+        if (!SdkLevel.isAtLeastS()) {
+            return true;
+        }
         if (!ADMIN_RESTRICTED_SENSORS_PERMISSIONS.contains(permission)) {
             return true;
         }
@@ -74,6 +80,9 @@ public final class AdminRestrictedPermissionsUtils {
      */
     public static boolean mayAdminGrantPermission(String permission,
             boolean canAdminGrantSensorsPermissions) {
+        if (!SdkLevel.isAtLeastS()) {
+            return true;
+        }
         if (!ADMIN_RESTRICTED_SENSORS_PERMISSIONS.contains(permission)) {
             return true;
         }
