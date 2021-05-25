@@ -51,7 +51,7 @@
     <string name="unused_apps" msgid="2058057455175955094">"Käyttämättömät sovellukset"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Poista sovellus käytöstä"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Jos poistat sovelluksen käytöstä, Android ja muut sovellukset eivät välttämättä enää toimi oikein. Muista, ettet voi poistaa sovellusta, sillä se tuli laitteesi mukana. Poistamalla sovelluksen käytöstä suljet sen ja piilotat sen laitteella."</string>
-    <string name="app_permission_manager" msgid="3903811137630909550">"Käyttöoikeuksien ylläpito"</string>
+    <string name="app_permission_manager" msgid="3903811137630909550">"Lupien ylläpito"</string>
     <string name="never_ask_again" msgid="4728762438198560329">"Älä kysy enää"</string>
     <string name="no_permissions" msgid="3881676756371148563">"Ei lupia"</string>
     <string name="additional_permissions" msgid="5801285469338873430">"Lisäluvat"</string>
@@ -171,7 +171,7 @@
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Salli vain, kun sovellus on käytössä"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Kysy aina"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Estä"</string>
-    <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>lupa"</string>
+    <string name="app_permission_title" msgid="2090897901051370711">"Lupa (<xliff:g id="PERM">%1$s</xliff:g>)"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Sovellus pyytää pääsyä näihin: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Näytä kaikki luvat, jotka <xliff:g id="APP">%1$s</xliff:g> on saanut"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Näytä kaikki sovellukset, joilla on tämä lupa"</string>

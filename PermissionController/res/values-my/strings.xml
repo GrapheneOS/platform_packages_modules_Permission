@@ -42,7 +42,7 @@
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"ခွင့်ပြုရန်"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"အမြဲ ခွင့်ပြုရန်"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"အက်ပ်ကို သုံးနေစဉ်"</string>
-    <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"ဤအကြိမ်သာ"</string>
+    <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"ဤတစ်ကြိမ်သာ"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"အမြဲ ခွင့်ပြုရန်"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"ဖိုင်အားလုံးကို စီမံခွင့်ပြုရန်"</string>
     <string name="grant_dialog_button_allow_media_only" msgid="4832877658422573832">"မီဒီယာဖိုင်များကို သုံးခွင့်ပြုရန်"</string>
@@ -169,7 +169,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"မီဒီယာကိုသာ သုံးခွင့်ပြုရန်"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"အမြဲ ခွင့်ပြုရန်"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"အက်ပ်ကိုသုံးစဉ်သာ ခွင့်ပြုရန်"</string>
-    <string name="app_permission_button_ask" msgid="3342950658789427">"အမြဲမေးပါ"</string>
+    <string name="app_permission_button_ask" msgid="3342950658789427">"အမြဲမေးရန်"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"ငြင်းပယ်ရန်"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> ခွင့်ပြုချက်"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"ဤအက်ပ်အတွက် <xliff:g id="PERM">%1$s</xliff:g> အသုံးပြုခွင့်"</string>
@@ -217,7 +217,7 @@
     <string name="allowed_foreground_header" msgid="6845655788447833353">"အသုံးပြုစဉ်တွင်သာ ခွင့်ပြုထားသည်"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"မီဒီယာကိုသာ သုံးခွင့်ပြုထားသည်"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"ဖိုင်အားလုံးကို စီမံခွင့်ပြုထားသည်"</string>
-    <string name="ask_header" msgid="2633816846459944376">"အမြဲမေးပါ"</string>
+    <string name="ask_header" msgid="2633816846459944376">"အမြဲမေးရန်"</string>
     <string name="denied_header" msgid="2253955654228120835">"ငြင်းပယ်ထားသည်"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ရက်</item>

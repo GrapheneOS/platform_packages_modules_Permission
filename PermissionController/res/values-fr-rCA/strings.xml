@@ -40,10 +40,10 @@
     <string name="permission_revoked_all" msgid="3397649017727222283">"toutes autorisations désactivées"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"aucune autorisation désactivée"</string>
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Autoriser"</string>
-    <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Autoriser tout le temps"</string>
+    <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Toujours autoriser"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Lorsque vous utilisez l\'application"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Uniquement cette fois-ci"</string>
-    <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Autoriser tout le temps"</string>
+    <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Toujours autoriser"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Autoriser à gérer tous les fichiers"</string>
     <string name="grant_dialog_button_allow_media_only" msgid="4832877658422573832">"Autoriser l\'accès aux fichiers multimédias"</string>
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Applications"</string>
@@ -82,7 +82,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:0 (1351721623256561996) -->
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
-    <string name="permission_access_always" msgid="1474641821883823446">"Autoriser tout le temps"</string>
+    <string name="permission_access_always" msgid="1474641821883823446">"Toujours autoriser"</string>
     <string name="permission_access_only_foreground" msgid="7801170728159326195">"Autoriser si l\'application est utilisée"</string>
     <string name="permission_access_never" msgid="1029877154284995424">"Refuser"</string>
     <string name="loading" msgid="4789365003890741082">"Chargement en cours…"</string>
@@ -167,7 +167,7 @@
     <string name="app_permission_button_allow" msgid="5808039516494774647">"Autoriser"</string>
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Autoriser à gérer tous les fichiers"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Autoriser à accéder aux éléments multimédias seulement"</string>
-    <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Autoriser tout le temps"</string>
+    <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Toujours autoriser"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Autoriser uniquement lorsque l\'appli est en cours d\'utilisation"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Toujours demander"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Refuser"</string>
