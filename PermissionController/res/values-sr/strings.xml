@@ -69,7 +69,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"Дозвољено апликација: <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Прикажи системске"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Сакриј системске"</string>
-    <string name="manage_permission" msgid="3796219072742331048">"Дозвола за управљање"</string>
+    <string name="manage_permission" msgid="3796219072742331048">"Управљање дозволом"</string>
     <string name="no_apps" msgid="2412612731628386816">"Нема апликација"</string>
     <string name="location_settings" msgid="3624412509133422562">"Подешавања локације"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> пружа услуге локације за овај уређај. Приступ локацији можете да измените у подешавањима локације."</string>
@@ -181,7 +181,7 @@
       <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> апликације</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> апликација</item>
     </plurals>
-    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Није коришћена у последња 24 сата"</string>
+    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Није коришћено у последња 24 сата"</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
       <item quantity="one">Користи <xliff:g id="NUMBER">%1$d</xliff:g> апликација</item>
       <item quantity="few">Користе <xliff:g id="NUMBER">%1$d</xliff:g> апликације</item>
@@ -475,7 +475,7 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Ова апликација жели да приступа локацији све време, чак и када не користите апликацију. "<annotation id="link">"Дозволите у подешавањима."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Дозвољавате да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; проналази уређаје у близини, повезује се с њима и одређује им релативан положај?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Дозвољавате да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; проналази уређаје у близини, повезује се с њима и одређује им релативан положај? "<annotation id="link">"Дозволите у подешавањима."</annotation></string>
-    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Желите ли да промените приступ апликације <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> локацији са приближне у прецизну?"</string>
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Желите ли да промените приступ апликације <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> локацији са приближне на прецизну?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Желите ли да омогућите да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; приступа приближној локацији овог уређаја?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Прецизна"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Приближна"</string>
