@@ -43,7 +43,7 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"อนุญาตตลอด"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"ขณะใช้แอป"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"เปลี่ยนเป็นตำแหน่งที่แน่นอน"</string>
-    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"เก็บตำแหน่งโดยประมาณ"</string>
+    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"ใช้ตำแหน่งโดยประมาณต่อ"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"เฉพาะครั้งนี้"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"อนุญาตตลอด"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"อนุญาตให้จัดการไฟล์ทั้งหมด"</string>
@@ -209,9 +209,9 @@
     <string name="precise_image_description" msgid="6349638632303619872">"ตำแหน่งที่แน่นอน"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"ตำแหน่งโดยประมาณ"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"ใช้ตำแหน่งที่แน่นอน"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"แอปเข้าถึงตำแหน่งโดยประมาณได้เมื่อตำแหน่งที่แน่นอนปิดอยู่"</string>
-    <string name="app_permission_title" msgid="2090897901051370711">"สิทธิ์เข้าถึง<xliff:g id="PERM">%1$s</xliff:g>"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"สิทธิ์การเข้าถึง<xliff:g id="PERM">%1$s</xliff:g>สำหรับแอปนี้"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"แอปจะเข้าถึงตำแหน่งโดยประมาณเมื่อปิดใช้ตำแหน่งที่แน่นอน"</string>
+    <string name="app_permission_title" msgid="2090897901051370711">"สิทธิ์เข้าถึง <xliff:g id="PERM">%1$s</xliff:g>"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"สิทธิ์การเข้าถึง <xliff:g id="PERM">%1$s</xliff:g> สำหรับแอปนี้"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"ดูสิทธิ์ทั้งหมดของ \"<xliff:g id="APP">%1$s</xliff:g>\""</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"ดูแอปทั้งหมดที่มีสิทธิ์นี้"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"แสดงการใช้ไมโครโฟนของ Assistant"</string>
@@ -237,7 +237,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"เปิดล่าสุดเมื่อวันที่ <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"หากคุณอนุญาตให้จัดการไฟล์ทั้งหมด แอปนี้จะเข้าถึง แก้ไข และลบไฟล์ใดก็ได้ในพื้นที่เก็บข้อมูลทั่วไปในอุปกรณ์นี้หรือในอุปกรณ์จัดเก็บข้อมูลที่เชื่อมต่อ รวมถึงอาจเข้าถึงไฟล์โดยไม่ขอคุณก่อน"</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"อนุญาตให้แอปนี้เข้าถึง แก้ไข และลบไฟล์ใดก็ได้ในอุปกรณ์นี้หรือในอุปกรณ์จัดเก็บข้อมูลที่เชื่อมต่อใช่ไหม แอปนี้อาจเข้าถึงไฟล์โดยไม่ขอคุณก่อน"</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"แอปที่มีสิทธิ์นี้จะ<xliff:g id="DESCRIPTION">%1$s</xliff:g> ได้"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"แอปที่มีสิทธิ์นี้จะสามารถ<xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"แอปที่มีสิทธิ์นี้จะเข้าถึงกิจกรรมการเคลื่อนไหวร่างกายได้ เช่น การเดิน การปั่นจักรยาน การขับรถ การนับจำนวนก้าว และอื่นๆ"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"แอปที่มีสิทธิ์นี้จะเข้าถึงปฏิทินของคุณได้"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"แอปที่มีสิทธิ์นี้จะอ่านและเขียนบันทึกการโทรได้"</string>

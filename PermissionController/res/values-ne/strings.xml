@@ -42,8 +42,8 @@
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"अनुमति दिनुहोस्"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"सधैँ अनुमति दिइयोस्"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"एप चलाएका बेला"</string>
-    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"यो स्थान बदलेर सटीक स्थान बनाउनुहोस्"</string>
-    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"स्थानसम्बन्धी अनुमानित जानकारी मात्र प्रयोग गर्न दिइराख्नु…"</string>
+    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"सटीक लोकेसन प्रयोग गरियोस्"</string>
+    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"अनुमानित लोकेसन मात्र प्रयोग गरियोस्"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"यस पटक मात्र"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"सधैँ अनुमति दिइयोस्"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"सबै फाइलहरू व्यवस्थापन गर्ने अनुमति दिइयोस्"</string>
@@ -209,9 +209,9 @@
     <string name="precise_image_description" msgid="6349638632303619872">"सटीक स्थान"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"अनुमानित स्थान"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"सटीक लोकेसन प्रयोग गरियोस्"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"सटीक स्थान अफ गरिएका बेला एपहरूले तपाईंको अनुमानित स्थान प्रयोग गर्न सक्छन्"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"सटीक लोकेसन अफ हुँदा एपहरूलाई मेरो अनुमानित लोकेसन प्रयोग गर्न दिइयोस्"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> अनुमति"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"<xliff:g id="PERM">%1$s</xliff:g> लाई यो एप प्रयोग गर्ने अनुमति दिने वा नदिने"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"<xliff:g id="PERM">%1$s</xliff:g>लाई यो एप प्रयोग गर्ने अनुमति दिने वा नदिने"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g> सँग भएका सबै अनुमतिहरू हेर्नुहोस्"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"यो अनुमति पाएका सबै एपहरू हेर्नुहोस्"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"सहायकको माइक्रोफोन प्रयोगसम्बन्धी डेटा देखाउनुहोस्"</string>
@@ -456,7 +456,7 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"तपाईं उक्त एप प्रयोग नगरिरहेका बेलामा लगायत जुनसुकै समयमा यो एपले तपाईंको स्थानमाथि पहुँच राख्न खोज्छ। "<annotation id="link">"सेटिङमा गई अनुमति दिनुहोस्।"</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई नजिकै रहेका डिभाइसहरू भेट्टाउने, ती डिभाइससँग कनेक्ट गर्ने र तिनको सापेक्ष स्थिति निर्धारण गर्ने अनुमति दिने हो?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई नजिकै रहेका डिभाइसहरू भेट्टाउने, ती डिभाइससँग कनेक्ट गर्ने र तिनको सापेक्ष स्थिति निर्धारण गर्ने अनुमति दिने हो? "<annotation id="link">"सेटिङमा गई अनुमति दिनुहोस्।"</annotation></string>
-    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> लाई स्थानसम्बन्धी अनुमानित जानकारीको साटो सटीक जानकारी प्रयोग गर्न दिने हो?"</string>
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> लाई अनुमानित लोकेसनको साटो सटीक लोकेसन प्रयोग गर्न दिने हो?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई यो डिभाइसको अनुमानित लोकेसन प्रयोग गर्न दिने हो?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"सटीक"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"अनुमानित"</string>

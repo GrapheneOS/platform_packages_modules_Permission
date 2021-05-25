@@ -494,7 +494,7 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"האפליקציה הזו רוצה לקבל גישה לנתוני המיקום שלך כל הזמן, גם כשהיא לא בשימוש. "<annotation id="link">"ניתן לאשר זאת בהגדרות."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"‏לאשר לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; לאתר מכשירים קרובים, להתחבר אליהם ולזהות את מיקומם היחסי?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"‏לאשר לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; לאתר מכשירים קרובים, להתחבר אליהם ולזהות את מיקומם היחסי? "<annotation id="link">"יש לתת הרשאה בהגדרות"</annotation></string>
-    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"לשנות את הרשאת הגישה של <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> למיקום ממשוער למדויק?"</string>
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"לשנות את הרשאת הגישה של <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> ממיקום משוער למיקום מדויק?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה למיקום המשוער של המכשיר?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"מדויק"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"משוער"</string>
