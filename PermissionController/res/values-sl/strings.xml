@@ -109,7 +109,7 @@
     <string name="message_staging" msgid="9110563899955511866">"Priprava aplikacije …"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Neznano"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Nadzorna plošča za zasebnost"</string>
-    <string name="permission_group_usage_title" msgid="2595013198075285173">"Uporaba dovoljenja za »<xliff:g id="PERMGROUP">%1$s</xliff:g>«"</string>
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"Uporaba dovoljenja »<xliff:g id="PERMGROUP">%1$s</xliff:g>«"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Ogled drugih dovoljenj"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> in še <xliff:g id="NUM">%3$s</xliff:g>"</string>
@@ -193,10 +193,10 @@
     </plurals>
     <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Brez uporabe v zadnjih 24 urah"</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
-      <item quantity="one">Uporablja ga <xliff:g id="NUMBER">%1$d</xliff:g> aplikacija</item>
-      <item quantity="two">Uporabljata ga <xliff:g id="NUMBER">%1$d</xliff:g> aplikaciji</item>
-      <item quantity="few">Uporabljajo ga <xliff:g id="NUMBER">%1$d</xliff:g> aplikacije</item>
-      <item quantity="other">Uporablja ga <xliff:g id="NUMBER">%1$d</xliff:g> aplikacij</item>
+      <item quantity="one">Uporablja <xliff:g id="NUMBER">%1$d</xliff:g> aplikacija</item>
+      <item quantity="two">Uporabljata <xliff:g id="NUMBER">%1$d</xliff:g> aplikaciji</item>
+      <item quantity="few">Uporabljajo <xliff:g id="NUMBER">%1$d</xliff:g> aplikacije</item>
+      <item quantity="other">Uporablja <xliff:g id="NUMBER">%1$d</xliff:g> aplikacij</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Prikaži vse na nadzorni plošči"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrirano po: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -232,7 +232,7 @@
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Ne dovoli"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Natančna lokacija"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Približna lokacija"</string>
-    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Uporabi točno lokacijo"</string>
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Uporabi natančno lokacijo"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Ko je zaznavanje natančne lokacije izklopljeno, lahko aplikacije dostopajo do vaše približne lokacije."</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Dovoljenje »<xliff:g id="PERM">%1$s</xliff:g>«"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Dostop te aplikacije do dovoljenja »<xliff:g id="PERM">%1$s</xliff:g>«"</string>
