@@ -53,7 +53,7 @@
     <string name="unused_apps" msgid="2058057455175955094">"Käyttämättömät sovellukset"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Poista sovellus käytöstä"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Jos poistat sovelluksen käytöstä, Android ja muut sovellukset eivät välttämättä enää toimi oikein. Muista, ettet voi poistaa sovellusta, sillä se tuli laitteesi mukana. Poistamalla sovelluksen käytöstä suljet sen ja piilotat sen laitteella."</string>
-    <string name="app_permission_manager" msgid="3903811137630909550">"Käyttöoikeuksien ylläpito"</string>
+    <string name="app_permission_manager" msgid="3903811137630909550">"Lupien ylläpito"</string>
     <string name="never_ask_again" msgid="4728762438198560329">"Älä kysy enää"</string>
     <string name="no_permissions" msgid="3881676756371148563">"Ei lupia"</string>
     <string name="additional_permissions" msgid="5801285469338873430">"Lisäluvat"</string>
@@ -68,7 +68,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> sovelluksella lupa"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Näytä järjestelmä"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Piilota järjestelmä"</string>
-    <string name="manage_permission" msgid="3796219072742331048">"Käyttölupien ylläpito"</string>
+    <string name="manage_permission" msgid="3796219072742331048">"Lupien ylläpito"</string>
     <string name="no_apps" msgid="2412612731628386816">"Ei sovelluksia"</string>
     <string name="location_settings" msgid="3624412509133422562">"Sijaintiasetukset"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> on tämän laitteen sijaintipalveluiden tarjoaja. Sijainnin käyttöoikeutta voi muokata sijaintiasetuksissa."</string>
@@ -107,11 +107,11 @@
     <string name="message_staging" msgid="9110563899955511866">"Valmistellaan sovellusta…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Tuntematon"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Yksityisyydenhallintapaneeli"</string>
-    <string name="permission_group_usage_title" msgid="2595013198075285173">"Käyttöoikeusryhmän (<xliff:g id="PERMGROUP">%1$s</xliff:g>) käyttö"</string>
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> käytössä"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Katso muut luvat"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> ja <xliff:g id="NUM">%3$s</xliff:g> muuta"</string>
-    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Aikajana luvan (<xliff:g id="PERMGROUP">%1$s</xliff:g>) käytöstä sovelluksissa viimeisten 24 tunnin ajalta"</string>
+    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Aikajanalta näet, milloin <xliff:g id="PERMGROUP">%1$s</xliff:g> on ollut käytössä eri sovelluksissa kuluneen vuorokauden aikana"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Milloin tämä sovellus käytti seuraavaa lupaa: <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Lue lisää"</string>
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
@@ -173,8 +173,8 @@
     </plurals>
     <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Ei käytetty 24 viime tunnin aikana"</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
-      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> sovelluksen käyttämä</item>
-      <item quantity="one">1 sovelluksen käyttämä</item>
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> sovelluksen käytössä</item>
+      <item quantity="one">1 sovelluksen käytössä</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Näytä kaikki ohjauspaneelissa"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Suodatusperuste: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -193,7 +193,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> sovellusta</item>
       <item quantity="one">1 sovellus</item>
     </plurals>
-    <string name="permission_history_title" msgid="8340081285133025225">"Käyttöoikeushistoria"</string>
+    <string name="permission_history_title" msgid="8340081285133025225">"Lupahistoria"</string>
     <string name="permission_history_category_today" msgid="7496389369158806620">"Tänään"</string>
     <string name="permission_history_category_yesterday" msgid="7242517121222012521">"Eilen"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Sovellusluvat"</string>
@@ -210,7 +210,7 @@
     <string name="approximate_image_description" msgid="938803699637069884">"Likimääräinen sijainti"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Käytä tarkkaa sijaintia"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Kun tarkka sijainti ei ole päällä, sovellukset voivat nähdä likimääräisen sijaintisi"</string>
-    <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>lupa"</string>
+    <string name="app_permission_title" msgid="2090897901051370711">"Lupa (<xliff:g id="PERM">%1$s</xliff:g>)"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Sovellus pyytää pääsyä näihin: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Näytä kaikki luvat, jotka <xliff:g id="APP">%1$s</xliff:g> on saanut"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Näytä kaikki sovellukset, joilla on tämä lupa"</string>

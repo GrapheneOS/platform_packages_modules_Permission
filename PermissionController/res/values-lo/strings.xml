@@ -43,7 +43,7 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"ອະນຸຍາດຕະຫຼອດເວລາ"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"ອະນຸຍາດສະເພາະໃນເວລາໃຊ້ແອັບ"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"ປ່ຽນເປັນສະຖານທີ່ແບບລະອຽດ"</string>
-    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"ເກັບສະຖານທີ່ໂດຍປະມານໄວ້"</string>
+    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"ໃຊ້ສະຖານທີ່ໂດຍປະມານຕໍ່ໄປ"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"ອະນຸຍາດສະເພາະເທື່ອນີ້"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"ອະນຸຍາດຕະຫຼອດເວລາ"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"ອະນຸຍາດການຈັດການໄຟລ໌ທັງໝົດ"</string>
