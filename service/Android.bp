@@ -22,7 +22,7 @@ filegroup {
         "java/**/*.java",
     ],
     path: "java",
-    visibility: ["//frameworks/base/services"],
+    visibility: ["//visibility:private"],
 }
 
 filegroup {
