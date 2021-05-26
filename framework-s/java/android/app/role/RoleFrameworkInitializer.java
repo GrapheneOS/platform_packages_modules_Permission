@@ -29,7 +29,7 @@ import com.android.modules.annotation.MinSdk;
  * @hide
  */
 @MinSdk(Build.VERSION_CODES.S)
-@SystemApi
+@SystemApi(client = SystemApi.Client.MODULE_LIBRARIES)
 public class RoleFrameworkInitializer {
     private RoleFrameworkInitializer() {}
 
