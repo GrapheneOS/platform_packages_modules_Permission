@@ -1,6 +1,10 @@
 // Signature format: 2.0
 package android.app.role {
 
+  public class RoleFrameworkInitializer {
+    method public static void registerServiceWrappers();
+  }
+
   public final class RoleManager {
     method @Nullable public String getBrowserRoleHolder(int);
     method @Nullable public String getSmsRoleHolder(int);
