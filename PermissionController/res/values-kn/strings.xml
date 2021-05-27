@@ -456,7 +456,7 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"ನೀವು ಈ ಆ್ಯಪ್ ಅನ್ನು ಬಳಸದಿರುವಾಗಲೂ ಸಹ, ಯಾವಾಗಲೂ ನಿಮ್ಮ ಸ್ಥಳಕ್ಕೆ ಪ್ರವೇಶವನ್ನು ಹೊಂದಲು ಆ್ಯಪ್ ಬಯಸುತ್ತದೆ. "<annotation id="link">"ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಅನುಮತಿಸಿ."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"ಸಮೀಪದ ಸಾಧನಗಳನ್ನು ಹುಡುಕಲು, ಅವುಗಳಿಗೆ ಕನೆಕ್ಟ್ ಮಾಡಲು ಮತ್ತು ಅವುಗಳ ಸಂಬಂಧಿತ ಸ್ಥಾನವನ್ನು ನಿರ್ಧರಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"ಸಮೀಪದ ಸಾಧನಗಳನ್ನು ಹುಡುಕಲು, ಅವುಗಳಿಗೆ ಕನೆಕ್ಟ್ ಮಾಡಲು ಮತ್ತು ಅವುಗಳ ಸಂಬಂಧಿತ ಸ್ಥಾನವನ್ನು ನಿರ್ಧರಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ? "<annotation id="link">"ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಅನುಮತಿಸಿ."</annotation></string>
-    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> ನ ಸ್ಥಳ ಪ್ರವೇಶವನ್ನು ಅಂದಾಜಿನಿಂದ ನಿಖರತೆಗೆ ಬದಲಾಯಿಸುವುದೇ?"</string>
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> ನ ಸ್ಥಳ ಪ್ರವೇಶವನ್ನು ಅಂದಾಜಿನಿಂದ ನಿಖರತೆಗೆ ಬದಲಾಯಿಸಬೇಕೇ?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"ಈ ಸಾಧನದ ಅಂದಾಜು ಸ್ಥಳವನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"ನಿಖರ"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"ಅಂದಾಜು"</string>
