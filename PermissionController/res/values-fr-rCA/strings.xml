@@ -326,7 +326,7 @@
     <string name="permission_subtitle_background" msgid="8916750995309083180">"Autorisée en permanence"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"Dernier accès : <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Dernier accès : hier à <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
-    <string name="app_perms_content_provider" msgid="6996750793881252778">"Dernier accès : au cours des dernières 24 heures"</string>
+    <string name="app_perms_content_provider" msgid="6996750793881252778">"Dernier accès : au cours des dernières 24 heures"</string>
     <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Dernier accès : <xliff:g id="TIME_DATE">%1$s</xliff:g> • Autorisée en permanence"</string>
     <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Dernier accès : hier à <xliff:g id="TIME_DATE">%1$s</xliff:g> • Autorisée en permanence"</string>
     <string name="app_perms_content_provider_background" msgid="7793984056711923997">"Dernier accès : au cours des dernières 24 h • Autorisée en permanence"</string>

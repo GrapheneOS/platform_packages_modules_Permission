@@ -484,11 +484,11 @@
     <string name="adjust_user_sensitive_per_app_header" msgid="4543506440989005648">"Показувати дані про використання для цих додатків"</string>
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Показувати значок очікування активатора асистента"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Показувати значок у рядку стану, коли мікрофон працює в режимі очікування активатора голосового помічника"</string>
-    <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"Надати додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до фото й медіа на пристрої?"</string>
-    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Надати додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до контактів?"</string>
-    <string name="permgrouprequest_location" msgid="6990232580121067883">"Надати додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до геоданих пристрою?"</string>
+    <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до фото й медіа на пристрої?"</string>
+    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до контактів?"</string>
+    <string name="permgrouprequest_location" msgid="6990232580121067883">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до місцезнаходження пристрою?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Додаток матиме доступ до геоданих, лише коли ви ним користуєтеся"</string>
-    <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"Надати додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до геоданих пристрою?"</string>
+    <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до місцезнаходження пристрою?"</string>
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Додаток може запитувати доступ до ваших геоданих, навіть коли ви не використовуєте його. Дозвіл можна надати в "<annotation id="link">"налаштуваннях"</annotation>"."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Змінити доступ до геоданих для додатка &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Додаток хоче завжди отримувати доступ до ваших геоданих, навіть коли ви не використовуєте його. Дозвіл можна надати в "<annotation id="link">"налаштуваннях"</annotation>"."</string>
@@ -500,7 +500,7 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Приблизне"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Надати додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до календаря?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; надсилати та переглядати SMS?"</string>
-    <string name="permgrouprequest_storage" msgid="8717773092518621602">"Надати додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до фото, медіа та файлів на пристрої?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до фото, медіа та файлів на пристрої?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; записувати аудіо?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Додаток зможе записувати звук, лише коли ви використовуєте його"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; записувати звук?"</string>
@@ -514,7 +514,7 @@
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"Цей додаток може робити фотографії та записувати відео, навіть коли ви не використовуєте його. Дозвіл можна надати в "<annotation id="link">"налаштуваннях"</annotation>"."</string>
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"Змінити налаштування доступу до камери для додатка &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Цей додаток може робити фотографії та записувати відео, навіть коли ви не використовуєте його. Дозвіл можна надати в "<annotation id="link">"налаштуваннях"</annotation>"."</string>
-    <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Надати додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до журналів викликів телефона?"</string>
+    <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до журналів викликів телефона?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; здійснювати телефонні дзвінки та керувати ними?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Надати додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до життєвих показників із датчиків?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Керовані дозволи"</string>

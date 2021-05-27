@@ -508,9 +508,9 @@
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"Změnit přístup k mikrofonu pro aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"Tato aplikace chce zaznamenávat zvuk kdykoli, dokonce i když ji nepoužíváte. "<annotation id="link">"Povolit v nastavení"</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; přístup k vaší fyzické aktivitě?"</string>
-    <string name="permgrouprequest_camera" msgid="5123097035410002594">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; fotit a nahrávat video?"</string>
+    <string name="permgrouprequest_camera" msgid="5123097035410002594">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; fotit a nahrávat videa?"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"Aplikace bude moci pořizovat snímky a nahrávat videa, pouze když ji budete používat"</string>
-    <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; fotit a nahrávat video?"</string>
+    <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; fotit a nahrávat videa?"</string>
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"Tato aplikace může chtít pořizovat snímky a nahrávat videa kdykoli, dokonce i když ji nepoužíváte. "<annotation id="link">"Povolit v nastavení"</annotation></string>
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"Změnit přístup k fotoaparátu pro aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Tato aplikace chce pořizovat snímky a nahrávat videa kdykoli, dokonce i když ji nepoužíváte. "<annotation id="link">"Povolit v nastavení"</annotation></string>
