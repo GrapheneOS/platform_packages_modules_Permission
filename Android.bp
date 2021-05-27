@@ -28,6 +28,7 @@ apex_defaults {
     min_sdk_version: "30",
     bootclasspath_fragments: ["com.android.permission-bootclasspath-fragment"],
     systemserverclasspath_fragments: ["com.android.permission-systemserverclasspath-fragment"],
+    prebuilts: ["current_sdkinfo"],
     key: "com.android.permission.key",
     certificate: ":com.android.permission.certificate",
     apps: ["PermissionController"],
