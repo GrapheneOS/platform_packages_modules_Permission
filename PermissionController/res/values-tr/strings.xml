@@ -108,7 +108,7 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Bilinmiyor"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Gizlilik kontrol paneli"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> kullanımı"</string>
-    <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Diğer izinlere bakma"</string>
+    <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Diğer izinleri göster"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> ve <xliff:g id="NUM">%3$s</xliff:g> tane daha"</string>
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"<xliff:g id="PERMGROUP">%1$s</xliff:g> izin grubunuzun, son 24 saat içinde uygulamalar tarafından kullanımının zaman çizelgesi"</string>
@@ -260,7 +260,7 @@
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Yalnızca medyaya erişim izni verildi"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Tüm dosyaları yönetme izni verildi"</string>
     <string name="ask_header" msgid="2633816846459944376">"Her zaman sor"</string>
-    <string name="denied_header" msgid="903209608358177654">"İzin verilmiyor"</string>
+    <string name="denied_header" msgid="903209608358177654">"İzin verilmeyenler"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> gün</item>
       <item quantity="one">1 gün</item>
