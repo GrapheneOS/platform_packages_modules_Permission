@@ -18,7 +18,9 @@ package {
 
 android_test {
     name: "PermissionApexTests",
+    defaults: ["mts-target-sdk-version-current"],
     sdk_version: "test_current",
+    min_sdk_version: "30",
     srcs: [
         "java/**/*.kt",
     ],
