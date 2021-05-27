@@ -40,6 +40,11 @@ class HandheldUnusedAppsFragment : PermissionsFrameFragment(),
         }
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
     override fun onStart() {
         super.onStart()
         mUseShadowController = false
