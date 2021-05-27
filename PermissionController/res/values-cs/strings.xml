@@ -424,7 +424,7 @@
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; přístup k fotkám, mediálnímu obsahu a souborům v zařízení?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; nahrávat zvuk?"</string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; přístup k vaší fyzické aktivitě?"</string>
-    <string name="permgrouprequest_camera" msgid="5123097035410002594">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; fotit a nahrávat video?"</string>
+    <string name="permgrouprequest_camera" msgid="5123097035410002594">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; fotit a nahrávat videa?"</string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; přístup k seznamu telefonních hovorů?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uskutečňovat a spravovat telefonní hovory?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; přístup k údajům ze snímačů vašich životních funkcí?"</string>

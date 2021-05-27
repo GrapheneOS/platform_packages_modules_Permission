@@ -169,7 +169,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"メディアへのアクセスのみを許可"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"常に許可"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"アプリの使用中のみ許可"</string>
-    <string name="app_permission_button_ask" msgid="3342950658789427">"毎回確認"</string>
+    <string name="app_permission_button_ask" msgid="3342950658789427">"毎回確認する"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"許可しない"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>の権限"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"このアプリによる<xliff:g id="PERM">%1$s</xliff:g>へのアクセス"</string>
@@ -212,12 +212,12 @@
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"現在は許可しない / 最終アクセス: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"未アクセス"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"許可しない / 未アクセス"</string>
-    <string name="allowed_header" msgid="7769277978004790414">"許可"</string>
+    <string name="allowed_header" msgid="7769277978004790414">"許可されているアプリ"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"常に許可"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"使用中のみ許可"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"メディアへのアクセスのみが許可されたアプリ"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"すべてのファイルの管理が許可されたアプリ"</string>
-    <string name="ask_header" msgid="2633816846459944376">"毎回確認"</string>
+    <string name="ask_header" msgid="2633816846459944376">"毎回確認する"</string>
     <string name="denied_header" msgid="2253955654228120835">"許可しない"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g>日</item>
@@ -236,7 +236,7 @@
       <item quantity="one">1秒</item>
     </plurals>
     <string name="permission_reminders" msgid="6528257957664832636">"権限のリマインダー"</string>
-    <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"使用していないアプリ: 1 個"</string>
+    <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"使用されていないアプリ: 1 個"</string>
     <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"使用されていないアプリ: <xliff:g id="NUMBER_OF_APPS">%s</xliff:g> 個"</string>
     <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"プライバシー保護のため権限を削除しました。タップしてご確認ください"</string>
     <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"使用していないアプリの権限を削除しました"</string>

@@ -176,9 +176,9 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Alle rechten van <xliff:g id="APP">%1$s</xliff:g> bekijken"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Alle apps met dit recht bekijken"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Gebruik van Assistent-microfoon tonen"</string>
-    <string name="auto_revoke_label" msgid="5068393642936571656">"Rechten verwijderen als app niet wordt gebruikt"</string>
+    <string name="auto_revoke_label" msgid="5068393642936571656">"Rechten intrekken als app niet wordt gebruikt"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Om je gegevens te beschermen worden de rechten voor deze app verwijderd als de app een aantal maanden niet is gebruikt."</string>
-    <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Om je gegevens te beschermen worden de volgende rechten verwijderd als de app een paar maanden niet is gebruikt: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
+    <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Om je gegevens te beschermen worden de volgende rechten ingetrokken als de app een paar maanden niet is gebruikt: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Om je gegevens te beschermen zijn de rechten verwijderd van apps die al een paar maanden niet zijn gebruikt."</string>
     <string name="auto_revoke_open_app_message" msgid="8075556291711205039">"Als je weer rechten wilt toestaan, open je de app."</string>
     <string name="auto_revoke_disabled" msgid="8697684442991567188">"Automatisch verwijderen is momenteel uitgezet voor deze app."</string>

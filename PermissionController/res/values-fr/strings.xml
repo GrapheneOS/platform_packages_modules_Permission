@@ -190,7 +190,7 @@
     <string name="off" msgid="1438489226422866263">"Désactivé"</string>
     <string name="auto_revoked_app_summary_one" msgid="7093213590301252970">"L\'autorisation \"<xliff:g id="PERMISSION_NAME">%s</xliff:g>\" a été révoquée"</string>
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Les autorisations \"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>\" et \"<xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>\" ont été révoquées"</string>
-    <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"\"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>\" et <xliff:g id="NUMBER">%2$s</xliff:g> autres autorisations révoquées"</string>
+    <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"L\'autorisation \"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>\" et <xliff:g id="NUMBER">%2$s</xliff:g> autres ont été révoquées"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Ouvertes pour la dernière fois il y a plus de <xliff:g id="NUMBER">%s</xliff:g> mois"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Dernière ouverture de l\'application le <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Dernière ouverture : <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -212,7 +212,7 @@
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Accès actuellement refusé/Dernier accès : <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Aucun accès enregistré"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"Accès refusé/aucune tentative d\'accès"</string>
-    <string name="allowed_header" msgid="7769277978004790414">"Accès autorisé"</string>
+    <string name="allowed_header" msgid="7769277978004790414">"Autorisations accordées"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"Toujours autorisées"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"Autorisées seulement pendant l\'utilisation"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Autorisées à gérer les fichiers multimédias"</string>
@@ -385,11 +385,11 @@
     <string name="adjust_user_sensitive_per_app_header" msgid="4543506440989005648">"Mettre en avant l\'utilisation des applications suivantes"</string>
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Afficher la détection de l\'activation de l\'assistant"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Afficher une icône dans la barre d\'état lorsque le micro est utilisé pour activer l\'assistance vocale"</string>
-    <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"Permettre à &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; d\'accéder aux photos et contenus multimédias sur votre appareil ?"</string>
+    <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder aux photos et contenus multimédias sur votre appareil ?"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder à vos contacts ?"</string>
-    <string name="permgrouprequest_location" msgid="6990232580121067883">"Autoriser l\'appli &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder à la position de cet appareil ?"</string>
+    <string name="permgrouprequest_location" msgid="6990232580121067883">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder à la position de cet appareil ?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"L\'application n\'a accès à la position de l\'appareil que lorsqu\'elle est ouverte"</string>
-    <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"Autoriser l\'appli &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder à la position de cet appareil ?"</string>
+    <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder à la position de cet appareil ?"</string>
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Cette appli peut vouloir accéder à votre position en permanence, même lorsque vous ne l\'utilisez pas. "<annotation id="link">"Autorisez-la à le faire dans les paramètres."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Changer l\'autorisation d\'accès à la position pour &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Cette appli souhaite accéder à votre position en permanence, même lorsque vous ne l\'utilisez pas. "<annotation id="link">"Autorisez-la à le faire dans les paramètres."</annotation></string>

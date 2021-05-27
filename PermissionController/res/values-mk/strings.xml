@@ -169,7 +169,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Дозволи пристап само до аудиовизуелните содржини"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Дозволи цело време"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Дозволи само додека се користи апликацијата"</string>
-    <string name="app_permission_button_ask" msgid="3342950658789427">"Секогаш прашувај"</string>
+    <string name="app_permission_button_ask" msgid="3342950658789427">"Прашувај секогаш"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Одбиј"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Дозвола за <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Пристап до <xliff:g id="PERM">%1$s</xliff:g> за апликацијава"</string>
@@ -217,7 +217,7 @@
     <string name="allowed_foreground_header" msgid="6845655788447833353">"Со дозвола само кога се користат"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Со пристап само до аудиовизуелните содржини"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Со дозвола за управување со сите датотеки"</string>
-    <string name="ask_header" msgid="2633816846459944376">"Секогаш прашувај"</string>
+    <string name="ask_header" msgid="2633816846459944376">"Прашувај секогаш"</string>
     <string name="denied_header" msgid="2253955654228120835">"Без дозвола"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> ден</item>

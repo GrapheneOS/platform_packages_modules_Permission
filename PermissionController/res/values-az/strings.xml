@@ -177,9 +177,9 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Bu icazəyə sahib olan bütün tətbiqlərə baxın"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Assistent üçün mikrofon istifadəsini göstərin"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Tətbiq istifadə edilmirsə, icazələri silin"</string>
-    <string name="auto_revoke_summary" msgid="5867548789805911683">"Datanızı qorumaq üçün tətbiq bir neçə ay istifadə edilmədikdə həmin tətbiq üzrə icazələr silinəcək."</string>
-    <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Datanızı qorumaq üçün tətbiq bir neçə ay istifadə edilmədikdə aşağıdakı icazələr silinəcək: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
-    <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Datanızı qorumaq üçün bir neçə ay istifadə etmədiyiniz tətbiqlərdən icazələr silinib."</string>
+    <string name="auto_revoke_summary" msgid="5867548789805911683">"Bir neçə ay istifadə etmədiyiniz tətbiqlərdən icazələr datanızın qorunması məqsədilə silinib."</string>
+    <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Bir neçə ay istifadə etmədiyiniz tətbiqlərdən icazələr datanızın qorunması məqsədilə silinib: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
+    <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Bir neçə ay istifadə etmədiyiniz tətbiqlərdən icazələr datanızın qorunması məqsədilə silinib."</string>
     <string name="auto_revoke_open_app_message" msgid="8075556291711205039">"Yenidən icazələr vermək istəyirsinizsə, tətbiqi açın."</string>
     <string name="auto_revoke_disabled" msgid="8697684442991567188">"Bu tətbiq üçün avtomatik silinmə hazırda deaktivdir."</string>
     <string name="auto_revocable_permissions_none" msgid="8334929619113991466">"Hazırda avtomatik ləğv edilə bilən heç bir icazə verilməyib"</string>
@@ -269,8 +269,8 @@
     <string name="unused_apps_subtitle_before" msgid="5233302577076132427">"Bu tətbiqdən icazələr silinəcək:"</string>
     <string name="unused_permissions_subtitle_two" msgid="2207266295008423015">"<xliff:g id="PERM_NAME_0">%1$s</xliff:g> və <xliff:g id="PERM_NAME_1">%2$s</xliff:g>"</string>
     <string name="unused_permissions_subtitle_many" msgid="4387289202207450238">"<xliff:g id="PERM_NAME_0">%1$s</xliff:g>, <xliff:g id="PERM_NAME_1">%2$s</xliff:g>, və daha <xliff:g id="NUMBER_OF_PERMISSIONS">%3$s</xliff:g> icazə"</string>
-    <string name="unused_app_permissions_removed_summary" msgid="6779039455326071033">"Datanızı qorumaq üçün bir neçə ay istifadə etmədiyiniz tətbiqlərdən icazələr silinib"</string>
-    <string name="unused_app_permissions_removed_summary_some" msgid="5080490037831563441">"Datanızı qorumaq üçün bir neçə ay istifadə etmədiyiniz bəzi tətbiqlərdən icazələr silinib."</string>
+    <string name="unused_app_permissions_removed_summary" msgid="6779039455326071033">"Bir neçə ay istifadə etmədiyiniz tətbiqlərdən icazələr datanızın qorunması məqsədilə silinib"</string>
+    <string name="unused_app_permissions_removed_summary_some" msgid="5080490037831563441">"Bir neçə ay istifadə etmədiyiniz tətbiqlərdən icazələr datanızın qorunması məqsədilə silinib."</string>
     <string name="one_unused_app_summary" msgid="7831913934488881991">"1 tətbiq bir neçə aydır ki, istifadə edilməyib"</string>
     <string name="num_unused_apps_summary" msgid="1870719749940571227">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> tətbiq bir neçə aydır ki, istifadə edilməyib"</string>
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"Yalnız tətbiqin istifadəsi zamanı"</string>
@@ -290,7 +290,7 @@
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"Bu tətbiqlər ekran, əməliyyat və daxiletməyə baxa, əməliyyatlar icra edə və displeyə nəzarət edə bilər."</string>
     <string name="role_assistant_label" msgid="4727586018198208128">"Standart rəqəmsal assistent"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Rəq. assistent tətbiqi"</string>
-    <string name="role_assistant_description" msgid="6622458130459922952">"Yardım tətbiqləri baxdığınız məlumatdan asılı olaraq Sizə kömək edə bilər. Bəzi tətbiqlər tamamlanmış yardım üçün həm başladıcı, həm də səs daxiletməsi xidmətlərini dəstəkləyir."</string>
+    <string name="role_assistant_description" msgid="6622458130459922952">"Köməkçi tətbiqlər ekrandakı məlumatı istifadə edə bilər. Rahat olmaları üçün onlardan bəziləri digər tətbiqlərin işə salınmasını və səsli əmr funksiyasını dəstəkləyir."</string>
     <string name="role_assistant_request_title" msgid="5964976301922776060">"<xliff:g id="APP_NAME">%1$s</xliff:g> defolt yardım tətbiqi olaraq ayarlansın?"</string>
     <string name="role_assistant_request_description" msgid="6836644847620178483">"SMS, zəng siyahısına giriş əldə edir"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Defolt brauzer tətbiqi"</string>
@@ -306,7 +306,7 @@
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"nömrə yığan"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Defolt SMS tətbiqi"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS tətbiqi"</string>
-    <string name="role_sms_description" msgid="3424020199148153513">"Qısa mətn mesajları, foto, video və s. göndərmək üçün telefon nömrəsindən istifadə etməyinizə icazə verən tətbiqlər"</string>
+    <string name="role_sms_description" msgid="3424020199148153513">"Telefon nömrəsini istifadə etməklə mesaj, foto, video və digər məlumatları göndərən tətbiqlər."</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g> defolt SMS tətbiqi olaraq ayarlansın?"</string>
     <string name="role_sms_request_description" msgid="983371022668134198">"Kontaktlar, SMS, telefona giriş əldə edir"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"mətn mesajı, mətn yazmaq, mesajlar, mesaj yazmaq"</string>
@@ -327,9 +327,9 @@
     <string name="role_call_redirection_description" msgid="6091669882014664420">"Gedən zəngləri başqa telefon nömrəsinə yönləndirməyə imkan verən tətbiqlər"</string>
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"<xliff:g id="APP_NAME">%1$s</xliff:g> defolt zəng yönləndirmə tətbiqi olaraq ayarlansın?"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"İcazəyə ehtiyac yoxdur"</string>
-    <string name="role_call_screening_label" msgid="883935222060878724">"Defolt yığan ID &amp; spam tətbiqi"</string>
+    <string name="role_call_screening_label" msgid="883935222060878724">"Defolt Nömrə aşkarlanması və spamdan müdafiə"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"Zəng ID-si &amp; spam tətbiqi"</string>
-    <string name="role_call_screening_description" msgid="2349431420497468981">"Zəngləri müəyyən etməyə, spam, avtomatik zənglər və arzuolunmaz nömrələri blok etməyə imkan verən tətbiqlər"</string>
+    <string name="role_call_screening_description" msgid="2349431420497468981">"Nömrələri aşkarlamağa, spam, avtomatik zəng və arzuolunmaz nömrələri blok etməyə imkan verən tətbiqlər"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> defolt zəng edənin ID-si və spam tətbiqi olaraq ayarlansın?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"İcazəyə ehtiyac yoxdur"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Cari defolt"</string>
@@ -355,7 +355,7 @@
     <string name="default_apps" msgid="5119201969348748639">"Defolt tətbiqlər"</string>
     <string name="no_default_apps" msgid="2593466527182950231">"Defolt tətbiq yoxdur"</string>
     <string name="default_apps_more" msgid="4078194675848858093">"Daha çox defolt"</string>
-    <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Linkləri açmaq"</string>
+    <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Linklərin açılması"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"İş üçün defolt"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Yoxdur"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Sistem defoltu)"</string>
