@@ -173,8 +173,8 @@
     </plurals>
     <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"過去 24 小時內未使用"</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
-      <item quantity="other">有 <xliff:g id="NUMBER">%1$d</xliff:g> 個應用程式使用過</item>
-      <item quantity="one">有 1 個應用程式使用過</item>
+      <item quantity="other">有 <xliff:g id="NUMBER">%1$d</xliff:g> 個應用程式使用</item>
+      <item quantity="one">有 1 個應用程式使用</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"在資訊主頁查看所有詳細資料"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"篩選依據：<xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -215,7 +215,7 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"查看「<xliff:g id="APP">%1$s</xliff:g>」的所有權限"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"查看具備此權限的所有應用程式"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"顯示 Google 助理的麥克風使用狀況"</string>
-    <string name="auto_revoke_label" msgid="5068393642936571656">"如果應用程式未使用，系統會移除相關權限"</string>
+    <string name="auto_revoke_label" msgid="5068393642936571656">"如果應用程式未使用，讓系統移除相關權限"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"為了保護你的資料，如果你連續幾個月都未使用這個應用程式，系統會移除其權限。"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"為了保護你的資料，如果應用程式已有數個月未使用，系統將移除以下權限：<xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"為了保護你的資料，針對數個月未使用的應用程式，系統已移除相關權限。"</string>
