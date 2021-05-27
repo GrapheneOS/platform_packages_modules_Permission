@@ -23,27 +23,27 @@
     <string name="back" msgid="6249950659061523680">"Артқа"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Жою немесе өшіру"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Қолданба табылмады"</string>
-    <string name="grant_dialog_button_deny" msgid="88262611492697192">"Рұқсат етпеу"</string>
-    <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"Рұқсат етпеу және қайта сұрамау"</string>
+    <string name="grant_dialog_button_deny" msgid="88262611492697192">"Рұқсат бермеу"</string>
+    <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"Рұқсат бермеу және қайта сұрамау"</string>
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"\"Қолданба пайдаланылатын кезде\" түймесін басып тұрыңыз"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"\"Тек осы жолы\" күйінде қалдыру"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Толығырақ"</string>
-    <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Бәрібір рұқсат етпеу"</string>
+    <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Бәрібір рұқсат бермеу"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Жабу"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>/<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
     <string name="permission_warning_template" msgid="2247087781222679458">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына <xliff:g id="ACTION">%2$s</xliff:g> рұқсатын беру керек пе?"</string>
     <string name="permission_add_background_warning_template" msgid="1812914855915092273">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасы үшін <xliff:g id="ACTION">%2$s</xliff:g> әрекетіне әрқашан рұқсат етілсін бе?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"Қолданба пайдаланылғанда ғана"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"Әрқашан"</string>
-    <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"Рұқсат етпеу және қайта сұрамау"</string>
+    <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"Рұқсат бермеу және қайта сұрамау"</string>
     <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g> рұқсат өшірілді"</string>
     <string name="permission_revoked_all" msgid="3397649017727222283">"барлық рұқсаттар өшірілді"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"ешқандай рұқсат өшірілмеді"</string>
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Рұқсат беру"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Әрқашан рұқсат беру"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Қолданбаны пайдаланған кезде"</string>
-    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Нақты орынды өзгерту"</string>
-    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Болжалды локацияны қосып тұру"</string>
+    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Нақты локацияға ауысу"</string>
+    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Болжалды локацияны қалдыру"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Тек осы жолы"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Біржола рұқсат ету"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Барлық файлдарды басқаруға рұқсат беру"</string>
@@ -88,7 +88,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"Біржола рұқсат ету"</string>
     <string name="permission_access_only_foreground" msgid="7801170728159326195">"Қолданбаны пайдаланғанда ғана"</string>
-    <string name="permission_access_never" msgid="4647014230217936900">"Рұқсат етпеу"</string>
+    <string name="permission_access_never" msgid="4647014230217936900">"Рұқсат бермеу"</string>
     <string name="loading" msgid="4789365003890741082">"Жүктелуде…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"Барлық рұқсаттар"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Басқа қолданба мүмкіндіктері"</string>
@@ -205,10 +205,10 @@
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Әрдайым рұқсат беру"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Қолданбаны пайдалану кезінде ғана рұқсат беру"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Әрдайым сұрау"</string>
-    <string name="app_permission_button_deny" msgid="6016454069832050300">"Рұқсат етпеу"</string>
+    <string name="app_permission_button_deny" msgid="6016454069832050300">"Рұқсат бермеу"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Нақты орын"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Шамамен алынған орын"</string>
-    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Нақты орынды пайдалану"</string>
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Нақты локацияны пайдалану"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Нақты локацияңыз өшірулі болған кезде, қолданбалар болжалды локацияңызды пайдалана алады."</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> рұқсаты"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"<xliff:g id="PERM">%1$s</xliff:g>: осы қолданбаның рұқсаты"</string>
@@ -448,9 +448,9 @@
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Микрофон арқылы дауыс көмекшісін іске қосқанда, күй жолағында белгішені көрсету"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына құрылғыдағы суреттерді, медиафайлдарды пайдалануға рұқсат берілсін бе?"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына контактілерге кіруге рұқсат берілсін бе?"</string>
-    <string name="permgrouprequest_location" msgid="6990232580121067883">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына осы құрылғының геодеректерін пайдалануға рұқсат етілсін бе?"</string>
+    <string name="permgrouprequest_location" msgid="6990232580121067883">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына осы құрылғының локациясын пайдалануға рұқсат берілсін бе?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Қолданбаны пайдалану кезінде ғана оған геодеректеріңізді көруге рұқсат етіледі."</string>
-    <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына осы құрылғының геодеректерін пайдалануға рұқсат етілсін бе?"</string>
+    <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына осы құрылғының локациясын пайдалануға рұқсат берілсін бе?"</string>
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Қолданбаны пайдаланбасаңыз да, ол үнемі геодеректеріңізді пайдаланғысы келуі мүмкін. "<annotation id="link">"Параметрлерден рұқсат беріңіз."</annotation></string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына геодеректі пайдалануға рұқсат етілсін бе?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Қолданбаны пайдаланбасаңыз да, ол үнемі геодеректеріңізді пайдаланғысы келеді. "<annotation id="link">"Параметрлерден рұқсат беріңіз."</annotation></string>

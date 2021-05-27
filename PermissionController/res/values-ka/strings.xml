@@ -209,7 +209,7 @@
     <string name="precise_image_description" msgid="6349638632303619872">"ზუსტი მდებარეობა"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"მიახლოებითი მდებარეობა"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"ზუსტი მდებარეობის გამოყენება"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"როდესაც ზუსტი მდებარეობა გამორთულია, აპებს თქვენს მიახლოებით მდებარეობაზე წვდომა შეუძლიათ"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"როდესაც ზუსტი მდებარეობა გამორთულია, აპებს თქვენს მიახლოებით მდებარეობაზე წვდომა შეუძლია"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"ნებართვა: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"<xliff:g id="PERM">%1$s</xliff:g>-ზე წვდომა ამ აპისთვის"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"ყველა ნებართვის ნახვა: <xliff:g id="APP">%1$s</xliff:g>"</string>
