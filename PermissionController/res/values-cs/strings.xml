@@ -70,7 +70,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"Povolené aplikace: <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Zobrazit systémové aplikace"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Skrýt systémové aplikace"</string>
-    <string name="manage_permission" msgid="3796219072742331048">"Oprávnění ke správě"</string>
+    <string name="manage_permission" msgid="3796219072742331048">"Správa oprávnění"</string>
     <string name="no_apps" msgid="2412612731628386816">"Žádné aplikace"</string>
     <string name="location_settings" msgid="3624412509133422562">"Nastavení polohy"</string>
     <string name="location_warning" msgid="2381649060929040962">"Služby určování polohy v tomto zařízení poskytuje aplikace <xliff:g id="APP_NAME">%1$s</xliff:g>. Přístup k poloze lze upravit v nastavení polohy."</string>
@@ -109,11 +109,11 @@
     <string name="message_staging" msgid="9110563899955511866">"Příprava instalace…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Neznámé"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Panel na ochranu soukromí"</string>
-    <string name="permission_group_usage_title" msgid="2595013198075285173">"Používání skupiny oprávnění <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> – používání"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Zobrazit další oprávnění"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g> <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
-    <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>, a ještě <xliff:g id="NUM">%3$s</xliff:g>"</string>
-    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Doba využívání oprávnění <xliff:g id="PERMGROUP">%1$s</xliff:g> aplikacemi během uplynulých 24 hodin"</string>
+    <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> a ještě <xliff:g id="NUM">%3$s</xliff:g>"</string>
+    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"<xliff:g id="PERMGROUP">%1$s</xliff:g> – časový přehled využívání aplikacemi za posledních 24 hodin"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Kdy tato aplikace použila oprávnění <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Další informace"</string>
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
@@ -353,7 +353,7 @@
     <string name="unused_apps_subtitle_after" msgid="2034267519506357898">"Oprávnění byla odebrána od aplikací"</string>
     <string name="unused_apps_subtitle_before" msgid="5233302577076132427">"Oprávnění budou odebrána od aplikací"</string>
     <string name="unused_permissions_subtitle_two" msgid="2207266295008423015">"<xliff:g id="PERM_NAME_0">%1$s</xliff:g> a <xliff:g id="PERM_NAME_1">%2$s</xliff:g>"</string>
-    <string name="unused_permissions_subtitle_many" msgid="4387289202207450238">"<xliff:g id="PERM_NAME_0">%1$s</xliff:g>, <xliff:g id="PERM_NAME_1">%2$s</xliff:g>, a ještě <xliff:g id="NUMBER_OF_PERMISSIONS">%3$s</xliff:g>"</string>
+    <string name="unused_permissions_subtitle_many" msgid="4387289202207450238">"<xliff:g id="PERM_NAME_0">%1$s</xliff:g>, <xliff:g id="PERM_NAME_1">%2$s</xliff:g> a ještě <xliff:g id="NUMBER_OF_PERMISSIONS">%3$s</xliff:g>"</string>
     <string name="unused_app_permissions_removed_summary" msgid="6779039455326071033">"Za účelem ochrany vašich dat byla odebrána oprávnění od aplikací, které jste několik měsíců nepoužili"</string>
     <string name="unused_app_permissions_removed_summary_some" msgid="5080490037831563441">"Za účelem ochrany vašich dat byla odebrána oprávnění některých aplikací, které jste několik měsíců nepoužili"</string>
     <string name="one_unused_app_summary" msgid="7831913934488881991">"Jednu aplikaci jste několik měsíců nepoužili"</string>
