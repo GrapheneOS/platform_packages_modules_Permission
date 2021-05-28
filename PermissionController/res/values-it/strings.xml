@@ -106,12 +106,12 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"Autorizzazioni correnti"</string>
     <string name="message_staging" msgid="9110563899955511866">"App in preparazione…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Sconosciuto"</string>
-    <string name="permission_usage_title" msgid="1568233336351734538">"Dashboard privata"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"Dashboard della privacy"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Uso di <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Vedi altre autorizzazioni"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> e altri <xliff:g id="NUM">%3$s</xliff:g>"</string>
-    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Cronologia dell\'utilizzo del gruppo di autorizzazioni <xliff:g id="PERMGROUP">%1$s</xliff:g> da parte delle app nelle ultime 24 ore"</string>
+    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Cronologia delle volte in cui le app hanno usato <xliff:g id="PERMGROUP">%1$s</xliff:g> nelle ultime 24 ore"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Quando questa app ha usato l\'autorizzazione <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Scopri di più"</string>
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
@@ -171,10 +171,10 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> app</item>
       <item quantity="one">1 app</item>
     </plurals>
-    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Non utilizzata nelle ultime 24 ore"</string>
+    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Autorizzazione non utilizzata nelle ultime 24 ore"</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
-      <item quantity="other">Utilizzate da <xliff:g id="NUMBER">%1$d</xliff:g> app</item>
-      <item quantity="one">Utilizzate da 1 app</item>
+      <item quantity="other">Utilizzata da <xliff:g id="NUMBER">%1$d</xliff:g> app</item>
+      <item quantity="one">Utilizzata da 1 app</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Mostra tutto nella Dashboard"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrata per: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -260,7 +260,7 @@
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Autorizzate solo per contenuti multimediali"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Autorizzate per gestire tutti i file"</string>
     <string name="ask_header" msgid="2633816846459944376">"Chiedi ogni volta"</string>
-    <string name="denied_header" msgid="903209608358177654">"Non consentite"</string>
+    <string name="denied_header" msgid="903209608358177654">"Autorizzazione non concessa"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> giorni</item>
       <item quantity="one">1 giorno</item>
