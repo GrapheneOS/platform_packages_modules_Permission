@@ -463,7 +463,7 @@
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে আপনার ক্যালেন্ডারে অ্যাক্সেস দেবেন?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে এসএমএস দেখতে ও পাঠাতে দেবেন?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে আপনার ডিভাইসের ফটো, মিডিয়া এবং ফাইলে অ্যাক্সেস দেবেন?"</string>
-    <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;কে অডিও রেকর্ড করার অনুমতি দেবেন?"</string>
+    <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে অডিও রেকর্ড করার অনুমতি দেবেন?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"আপনি এই অ্যাপ ব্যবহার করার সময়েই শুধুমাত্র সেটি অডিও রেকর্ড করতে পারবে"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে অডিও রেকর্ড করার অনুমতি দিতে চান?"</string>
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"এই অ্যাপ হয়ত সবসময় এমনকি আপনি যখন অ্যাপ ব্যবহার করছেন না তখনও অডিও রেকর্ড করতে চাইতে পারে। "<annotation id="link">"সেটিংস থেকে অনুমতি দিন।"</annotation></string>

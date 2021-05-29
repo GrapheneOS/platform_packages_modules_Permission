@@ -171,7 +171,7 @@
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> ਐਪ</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ਐਪਾਂ</item>
     </plurals>
-    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"ਪਿਛਲੇ 24 ਘੰਟਿਆਂ ਵਿੱਚ ਨਹੀਂ ਵਰਤੇ ਜਾਣ \'ਤੇ"</string>
+    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"ਪਿਛਲੇ 24 ਘੰਟਿਆਂ ਵਿੱਚ ਵਰਤੀਆਂ ਨਹੀਂ ਗਈਆਂ"</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
       <item quantity="one"><xliff:g id="NUMBER">%1$d</xliff:g> ਐਪ ਵੱਲੋਂ ਇਜਾਜ਼ਤਾਂ ਵਰਤੀਆਂ ਗਈਆਂ</item>
       <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> ਐਪਾਂ ਵੱਲੋਂ ਇਜਾਜ਼ਤਾਂ ਵਰਤੀਆਂ ਗਈਆਂ</item>

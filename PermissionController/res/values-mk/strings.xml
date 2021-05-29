@@ -111,7 +111,7 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Видете други дозволи"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> и уште <xliff:g id="NUM">%3$s</xliff:g> други"</string>
-    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Кога апликациите ја користеле дозволата за <xliff:g id="PERMGROUP">%1$s</xliff:g> во минатите 24 часа"</string>
+    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Кога ја користеле апликациите дозволата за <xliff:g id="PERMGROUP">%1$s</xliff:g> во изминатите 24 часа"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Кога апликацијава ја користела дозволата за <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Дознајте повеќе"</string>
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
@@ -204,7 +204,7 @@
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Дозволи пристап само до аудиовизуелните содржини"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Дозволи цело време"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Дозволи само додека се користи апликацијата"</string>
-    <string name="app_permission_button_ask" msgid="3342950658789427">"Секогаш прашувај"</string>
+    <string name="app_permission_button_ask" msgid="3342950658789427">"Прашувај секогаш"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Не дозволувај"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Прецизна локација"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Приближна локација"</string>
@@ -259,7 +259,7 @@
     <string name="allowed_foreground_header" msgid="6845655788447833353">"Со дозвола само кога се користат"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Со пристап само до аудиовизуелните содржини"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Со дозвола за управување со сите датотеки"</string>
-    <string name="ask_header" msgid="2633816846459944376">"Секогаш прашувај"</string>
+    <string name="ask_header" msgid="2633816846459944376">"Прашувај секогаш"</string>
     <string name="denied_header" msgid="903209608358177654">"Не е дозволено"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> ден</item>

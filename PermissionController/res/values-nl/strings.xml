@@ -215,9 +215,9 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Alle rechten van <xliff:g id="APP">%1$s</xliff:g> bekijken"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Alle apps met dit recht bekijken"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Gebruik van Assistent-microfoon tonen"</string>
-    <string name="auto_revoke_label" msgid="5068393642936571656">"Rechten verwijderen als app niet wordt gebruikt"</string>
+    <string name="auto_revoke_label" msgid="5068393642936571656">"Rechten intrekken als app niet wordt gebruikt"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Om je gegevens te beschermen worden de rechten voor deze app verwijderd als de app een aantal maanden niet is gebruikt."</string>
-    <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Om je gegevens te beschermen worden de volgende rechten verwijderd als de app een paar maanden niet is gebruikt: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
+    <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Om je gegevens te beschermen worden de volgende rechten ingetrokken als de app een paar maanden niet is gebruikt: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Om je gegevens te beschermen zijn de rechten verwijderd van apps die al een paar maanden niet zijn gebruikt."</string>
     <string name="auto_revoke_open_app_message" msgid="8075556291711205039">"Als je weer rechten wilt toestaan, open je de app."</string>
     <string name="auto_revoke_disabled" msgid="8697684442991567188">"Automatisch verwijderen is momenteel uitgezet voor deze app."</string>
@@ -231,7 +231,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Rechten voor <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> en <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> verwijderd"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> en <xliff:g id="NUMBER">%2$s</xliff:g> andere rechten zijn verwijderd"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Niet-gebruikte apps"</string>
-    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Als je een app een paar maanden niet gebruikt:\n\n• Rechten worden ingetrokken om je gegevens te beschermen\n• Meldingen worden stopgezet om de batterij te sparen\n• Tijdelijke bestanden worden verwijderd om ruimte vrij te maken"</string>
+    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Als je een app een paar maanden niet gebruikt:\n\n• worden rechten ingetrokken om je gegevens te beschermen,\n• worden meldingen stopgezet om de batterij te sparen,\n• worden tijdelijke bestanden verwijderd om ruimte vrij te maken."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Meer dan <xliff:g id="NUMBER">%s</xliff:g> maanden geleden voor het laatst geopend"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"App laatst geopend op <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Laatst geopend op <xliff:g id="DATE">%s</xliff:g>"</string>
