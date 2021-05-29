@@ -193,7 +193,7 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ஆப்ஸ்</item>
       <item quantity="one">1 ஆப்ஸ்</item>
     </plurals>
-    <string name="permission_history_title" msgid="8340081285133025225">"அனுமதி வரலாறு"</string>
+    <string name="permission_history_title" msgid="8340081285133025225">"இதுவரையான அனுமதிகள்"</string>
     <string name="permission_history_category_today" msgid="7496389369158806620">"இன்று"</string>
     <string name="permission_history_category_yesterday" msgid="7242517121222012521">"நேற்று"</string>
     <string name="app_permission_usage_title" msgid="6676802437831981822">"ஆப்ஸ் அனுமதிகளை உபயோகித்தல்"</string>
