@@ -465,7 +465,8 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
                         .setPackage(mPackageName)
                         .setAction(Intent.ACTION_VIEW_PERMISSION_USAGE)
                         .putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, groupName);
-                ResolveInfo resolveInfo = packageManager.resolveActivity(viewUsageIntent, 0);
+                ResolveInfo resolveInfo = packageManager.resolveActivity(viewUsageIntent,
+                        PackageManager.MATCH_INSTANT);
                 if (resolveInfo != null && resolveInfo.activityInfo != null && Objects.equals(
                         resolveInfo.activityInfo.permission,
                         android.Manifest.permission.START_VIEW_PERMISSION_USAGE)) {
