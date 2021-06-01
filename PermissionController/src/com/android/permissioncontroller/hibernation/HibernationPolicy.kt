@@ -166,18 +166,50 @@ class HibernationOnBootReceiver : BroadcastReceiver() {
                     "owner. Running hibernation job.")
         }
 
-        SKIP_NEXT_RUN = true
-
-        val jobInfo = JobInfo.Builder(
+        if (isNewJobScheduleRequired(context)) {
+            // periodic jobs normally run immediately, which is unnecessarily premature
+            SKIP_NEXT_RUN = true
+            val jobInfo = JobInfo.Builder(
                 Constants.HIBERNATION_JOB_ID,
                 ComponentName(context, HibernationJobService::class.java))
-            .setPeriodic(getCheckFrequencyMs())
-            .build()
-        val status = context.getSystemService(JobScheduler::class.java)!!.schedule(jobInfo)
-        if (status != JobScheduler.RESULT_SUCCESS) {
-            DumpableLog.e(LOG_TAG,
+                .setPeriodic(getCheckFrequencyMs())
+                // persist this job across boots
+                .setPersisted(true)
+                .build()
+            val status = context.getSystemService(JobScheduler::class.java)!!.schedule(jobInfo)
+            if (status != JobScheduler.RESULT_SUCCESS) {
+                DumpableLog.e(LOG_TAG,
                     "Could not schedule ${HibernationJobService::class.java.simpleName}: $status")
+            }
         }
+    }
+
+    /**
+     * Returns whether a new job needs to be scheduled. A persisted job is used to keep the schedule
+     * across boots, but that job needs to be scheduled a first time and whenever the check
+     * frequency changes.
+     */
+    private fun isNewJobScheduleRequired(context: Context): Boolean {
+        // check if the job is already scheduled or needs a change
+        var scheduleNewJob = false
+        val existingJob: JobInfo? = context.getSystemService(JobScheduler::class.java)!!
+            .getPendingJob(Constants.HIBERNATION_JOB_ID)
+        if (existingJob == null) {
+            if (DEBUG_HIBERNATION_POLICY) {
+                DumpableLog.i(LOG_TAG, "No existing job, scheduling a new one")
+            }
+            scheduleNewJob = true
+        } else if (existingJob.intervalMillis != getCheckFrequencyMs()) {
+            if (DEBUG_HIBERNATION_POLICY) {
+                DumpableLog.i(LOG_TAG, "Interval frequency has changed, updating job")
+            }
+            scheduleNewJob = true
+        } else {
+            if (DEBUG_HIBERNATION_POLICY) {
+                DumpableLog.i(LOG_TAG, "Job already scheduled.")
+            }
+        }
+        return scheduleNewJob
     }
 }
 
@@ -488,7 +520,7 @@ class HibernationJobService : JobService() {
         if (SKIP_NEXT_RUN) {
             SKIP_NEXT_RUN = false
             if (DEBUG_HIBERNATION_POLICY) {
-                Log.i(LOG_TAG, "Skipping auto revoke first run when scheduled by system")
+                DumpableLog.i(LOG_TAG, "Skipping auto revoke first run when scheduled by system")
             }
             jobFinished(params, false)
             return true
