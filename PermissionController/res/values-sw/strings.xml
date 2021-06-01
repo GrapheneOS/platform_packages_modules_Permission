@@ -240,7 +240,7 @@
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"Programu zenye ruhusa hii zinaweza <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Programu zenye ruhusa hii zinaweza kufikia data kuhusu mazoezi yako ya mwili, kama vile kutembea, kuendesha baiskeli, kuendesha gari, kuhesabu hatua na mengineyo"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Programu zenye ruhusa hii zinaweza kufikia kalenda yako"</string>
-    <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Programu zenye ruhusa hii zinaweza kusoma na kuandika rekodi ya nambari za simu"</string>
+    <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Programu zenye ruhusa hii zinaweza kusoma na kuandika kumbukumbu za simu"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Programu zenye ruhusa hii zinaweza kupiga picha na kurekodi video"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Programu zenye ruhusa hii zinaweza kufikia anwani zako"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Programu zenye ruhusa hii zinaweza kutambua mahali kilipo kifaa hiki"</string>
@@ -352,7 +352,7 @@
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Programu dijitali ya usaidizi"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Programu za usaidizi zinaweza kukusaidia kulingana na maelezo kutoka skrini unayotazama. Baadhi ya programu zinaweza kutumia huduma za kifungua programu na kuweka data kwa kutamka ili kukupa usaidizi wa pamoja."</string>
     <string name="role_assistant_request_title" msgid="5964976301922776060">"Je, ungependa kuweka <xliff:g id="APP_NAME">%1$s</xliff:g> iwe programu yako chaguomsingi ya usaidizi?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"Hupata uwezo wa kufikia SMS, rekodi ya nambari za simu"</string>
+    <string name="role_assistant_request_description" msgid="6836644847620178483">"Hupata uwezo wa kufikia SMS, kumbukumbu za simu"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Programu kuu ya kivinjari"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Programu ya kivinjari"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Programu zinazokupa uwezo wa kufikia intaneti na kuonyesha viungo unavyogusa"</string>
@@ -362,7 +362,7 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Programu ya simu"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Programu zinazokuruhusu kupiga na kupokea simu kwenye kifaa chako"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Je, ungependa kuweka <xliff:g id="APP_NAME">%1$s</xliff:g> iwe programu yako chaguomsingi ya simu?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"Hupata uwezo wa kufikia rekodi ya nambari za simu, kutuma SMS"</string>
+    <string name="role_dialer_request_description" msgid="2264219375528345270">"Hupata uwezo wa kufikia kumbukumbu za simu, kutuma SMS"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"kipiga simu"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Programu chaguomsingi ya SMS"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"Programu ya SMS"</string>

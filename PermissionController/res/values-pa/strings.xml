@@ -23,7 +23,7 @@
     <string name="back" msgid="6249950659061523680">"ਪਿੱਛੇ"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"ਅਣਸਥਾਪਤ ਕਰੋ ਜਾਂ ਬੰਦ ਕਰੋ"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"ਐਪ ਨਹੀਂ ਮਿਲੀ"</string>
-    <string name="grant_dialog_button_deny" msgid="88262611492697192">"ਆਗਿਆ ਨਾ ਦਿਓ"</string>
+    <string name="grant_dialog_button_deny" msgid="88262611492697192">"ਨਾ ਕਰਨ ਦਿਓ"</string>
     <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"ਆਗਿਆ ਨਾ ਦਿਓ ਅਤੇ ਦੁਬਾਰਾ ਨਾ ਪੁੱਛੋ"</string>
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“ਐਪ ਵਰਤੋਂ ਵਿੱਚ ਹੋਣ ਵੇਲੇ” ਨੂੰ ਰੱਖੋ"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“ਸਿਰਫ਼ ਇਸ ਸਮੇਂ ਲਈ ਇਜਾਜ਼ਤ ਦਿਓ” ਰੱਖੋ"</string>
@@ -205,7 +205,7 @@
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"ਹਰ ਵੇਲੇ ਕਰਨ ਦਿਓ"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"ਸਿਰਫ਼ ਐਪ ਵਰਤੇ ਜਾਣ ਵੇਲੇ ਕਰਨ ਦਿਓ"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"ਹਰ ਵਾਰ ਪੁੱਛੋ"</string>
-    <string name="app_permission_button_deny" msgid="6016454069832050300">"ਆਗਿਆ ਨਾ ਦਿਓ"</string>
+    <string name="app_permission_button_deny" msgid="6016454069832050300">"ਨਾ ਕਰਨ ਦਿਓ"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"ਸਹੀ ਟਿਕਾਣਾ"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"ਅੰਦਾਜ਼ਨ ਟਿਕਾਣਾ"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"ਸਹੀ ਟਿਕਾਣਾ ਵਰਤੋ"</string>

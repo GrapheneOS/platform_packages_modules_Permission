@@ -171,10 +171,10 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> қолданба</item>
       <item quantity="one">1 қолданба</item>
     </plurals>
-    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Соңғы 24 сағатта қолданылмады."</string>
+    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Соңғы 24 сағатта пайдаланылмады."</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
-      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> қолданба пайдаланды</item>
-      <item quantity="one">1 қолданба пайдаланды</item>
+      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> қолданба пайдаланды.</item>
+      <item quantity="one">1 қолданба пайдаланды.</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Барлығын бақылау тақтасынан көру"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Сүзгі шарты: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -243,7 +243,7 @@
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Бұл рұқсатқа ие қолданбалар телефонның қоңыраулар журналын оқи және жаза алады."</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Бұл рұқсатқа ие қолданбалар суретке түсіріп, бейне жаза алады."</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Бұл рұқсатқа ие қолданбалар контактілерге кіре алады."</string>
-    <string name="permission_description_summary_location" msgid="2817531799933480694">"Бұл рұқсатқа ие қолданбалар осы құрылғының геодеректерін пайдалана алады."</string>
+    <string name="permission_description_summary_location" msgid="2817531799933480694">"Бұл рұқсатқа ие қолданбалар осы құрылғының локациясын пайдалана алады."</string>
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Мұндай рұқсаты бар қолданбалар маңайдағы құрылғыларды тауып, олармен байланысып, тиісті орнын анықтай алады."</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Бұл рұқсатқа ие қолданбалар дыбысты жаза алады."</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Бұл рұқсатқа ие қолданбалар телефон қоңырауларын шала және басқара алады."</string>
@@ -477,7 +477,7 @@
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына камераны пайдалануға рұқсат етілсін бе?"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Қолданбаны пайдаланбасаңыз да, ол кез келген уақытта суретке түсіріп, бейне жазғысы келеді. "<annotation id="link">"Параметрлерден рұқсат беріңіз."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына телефонның қоңыраулар журналына кіруге рұқсат берілсін бе?"</string>
-    <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына қоңыраулар шалуға және басқаруға рұқсат берілсін бе?"</string>
+    <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына қоңырау шалуға және қоңырауларды басқаруға рұқсат берілсін бе?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына негізгі физиологиялық көрсеткіштерді көрсететін сенсорлық деректерді пайдалануға рұқсат берілсін бе?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Басқарылатын рұқсаттар"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Локация пайдаланылады."</string>
