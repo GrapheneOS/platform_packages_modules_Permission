@@ -446,7 +446,7 @@
     <string name="adjust_user_sensitive_per_app_header" msgid="4543506440989005648">"Şu öğelere ilişkin kullanımı göster"</string>
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Yardımcı uygulama tetikleyici algılamasını göster"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Sesli yardımı etkinleştirmek için mikrofon kullanıldığında simgeyi durum çubuğunda göster"</string>
-    <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının cihazınızdaki fotoğraf ve dosyalara erişmesine izin verilsin mi?"</string>
+    <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının cihazınızdaki fotoğraf ve medya içeriğine erişmesine izin verilsin mi?"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının kişilerinize erişmesine izin verilsin mi?"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının bu cihazın konumuna erişmesine izin verilsin mi?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Bu uygulama konum bilgisine yalnızca kullanıldığı sırada erişebilecektir"</string>
@@ -477,7 +477,7 @@
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; için kamera erişimi değiştirilsin mi?"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Bu uygulama, kullanmadığınız sırada bile sürekli olarak resim çekmek ve video kaydetmek istiyor. "<annotation id="link">"Ayarlar\'da izin verin."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının telefon arama kayıtlarınıza erişmesine izin verilsin mi?"</string>
-    <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının telefon etmesine ve çağrıları yönetmesine izin verilsin mi?"</string>
+    <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının telefon etmesine ve aramaları yönetmesine izin verilsin mi?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının hayati belirtilerinizle ilgili sensör verilerine erişmesine izin verilsin mi?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Kontrol edilen izinler"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Konuma erişilebilir"</string>

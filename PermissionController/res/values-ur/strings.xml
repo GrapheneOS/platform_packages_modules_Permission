@@ -446,7 +446,7 @@
     <string name="adjust_user_sensitive_per_app_header" msgid="4543506440989005648">"مندرجہ ذیل کے استعمال کو نمایاں کریں"</string>
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"اسسٹنٹ ٹریگر کا پتہ لگانا دکھائیں"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"جب صوتی معاون کو فعال کرنے کے لیے مائیکروفون کا استعمال کیا جائے تو اسٹیٹس بار میں آئیکن دکھائیں"</string>
-    <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"‏‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎ کو آپ کے آلہ پر تصاویر، میڈیا تک رسائی کی اجازت دیں؟"</string>
+    <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"‏‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎ کو آپ کے آلہ پر تصاویر اور میڈیا تک رسائی کی اجازت دیں؟"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو آپ کے رابطوں تک رسائی کی اجازت دیں؟"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو اس آلہ کے مقام تک رسائی کی اجازت دیں؟"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"جب آپ ایپ استعمال کریں گے تبھی ایپ کو مقام تک رسائی حاصل ہوگی"</string>
