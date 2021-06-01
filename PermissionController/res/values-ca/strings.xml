@@ -123,7 +123,7 @@
     <string name="permission_usage_any_permission" msgid="6358023078298106997">"Qualsevol permís"</string>
     <string name="permission_usage_any_time" msgid="3802087027301631827">"En qualsevol moment"</string>
     <string name="permission_usage_last_7_days" msgid="7386221251886130065">"7 darrers dies"</string>
-    <string name="permission_usage_last_day" msgid="1512880889737305115">"Últimes 24 hores"</string>
+    <string name="permission_usage_last_day" msgid="1512880889737305115">"Darreres 24 hores"</string>
     <string name="permission_usage_last_hour" msgid="3866005205535400264">"Última hora"</string>
     <string name="permission_usage_last_15_minutes" msgid="9077554653436200702">"Últims 15 minuts"</string>
     <string name="permission_usage_last_minute" msgid="7297055967335176238">"Últim minut"</string>
@@ -212,7 +212,7 @@
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Actualment denegat / Últim accés: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"No s\'hi ha accedit mai"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"Denegat / No hi ha accedit mai"</string>
-    <string name="allowed_header" msgid="7769277978004790414">"Permès"</string>
+    <string name="allowed_header" msgid="7769277978004790414">"Amb permís"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"Permès sempre"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"Permès només mentre s\'utilitza"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Poden accedir només als fitxers multimèdia"</string>

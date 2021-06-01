@@ -66,7 +66,7 @@
     <string name="default_permission_description" msgid="4624464917726285203">"выполнять неизвестное действие"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"Приложений с разрешением: <xliff:g id="COUNT_0">%1$d</xliff:g> из <xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"Приложений с разрешением: <xliff:g id="COUNT_0">%1$d</xliff:g> из <xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
-    <string name="menu_show_system" msgid="4254021607027872504">"Показать системные"</string>
+    <string name="menu_show_system" msgid="4254021607027872504">"Показать системные процессы"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Скрыть системные процессы"</string>
     <string name="no_apps" msgid="2412612731628386816">"Нет приложений"</string>
     <string name="location_settings" msgid="3624412509133422562">"Настройки геолокации"</string>

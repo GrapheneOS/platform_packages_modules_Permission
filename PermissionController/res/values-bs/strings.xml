@@ -398,7 +398,7 @@
     <string name="adjust_user_sensitive_per_app_header" msgid="4543506440989005648">"Istakni korištenje za sljedeće"</string>
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Prikaži otkrivanje aktiviranja asistenta"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Prikaz ikone na statusnoj traci kada se mikrofon koristi za aktiviranje glasovne pomoći"</string>
-    <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristup fotografijama i medijima na vašem uređaju?"</string>
+    <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa fotografijama i medijima na vašem uređaju?"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa vašim kontaktima?"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa lokaciji ovog uređaja?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Aplikacija će imati pristup lokaciji isključivo dok je koristite"</string>
@@ -413,7 +413,7 @@
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa informacijama o vašoj fizičkoj aktivnosti?"</string>
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da snima fotografije i videozapise?"</string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa zapisnicima poziva?"</string>
-    <string name="permgrouprequest_phone" msgid="1829234136997316752">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da upućuje pozove i upravlja njima?"</string>
+    <string name="permgrouprequest_phone" msgid="1829234136997316752">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da upućuje pozive i upravlja njima?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristup senzornim podacima o vašim vitalnim znacima?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Kontrolirana odobrenja"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Lokaciji se može pristupiti"</string>

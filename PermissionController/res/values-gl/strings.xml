@@ -278,7 +278,7 @@
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"Todos os ficheiros"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Non se concederon permisos"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"Non se denegou ningún permiso"</string>
-    <string name="no_apps_allowed" msgid="7718822655254468631">"Ningunha aplicación ten permiso"</string>
+    <string name="no_apps_allowed" msgid="7718822655254468631">"A ningunha aplicación se lle concedeu o permiso"</string>
     <string name="no_apps_allowed_full" msgid="8011716991498934104">"Non hai aplicacións permitidas para todos os ficheiros"</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"Non hai aplicacións permitidas só para ficheiros multimedia"</string>
     <string name="no_apps_denied" msgid="7663435886986784743">"A ningunha aplicación se lle denegou o permiso"</string>

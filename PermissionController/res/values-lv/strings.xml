@@ -184,8 +184,8 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Skatīt visas lietotnes, kam ir šī atļauja"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Rādīt Asistenta mikrofona lietojumu"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Noņemt atļaujas, ja lietotne netiek izmantota"</string>
-    <string name="auto_revoke_summary" msgid="5867548789805911683">"Lai aizsargātu jūsu datus, šīs lietotnes atļaujas tiks atsauktas, ja lietotne nebūs izmantota vairākus mēnešus."</string>
-    <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Lai aizsargātu datus, ja lietotne nebūs izmantota vairākus mēnešus, tiks atsauktas tālāk norādītās atļaujas: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
+    <string name="auto_revoke_summary" msgid="5867548789805911683">"Ja lietotni dažus mēnešus neizmantosiet, tai tiks noņemtas tālāk norādītās atļaujas, lai aizsargātu jūsu datus."</string>
+    <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Ja lietotni dažus mēnešus neizmantosiet, tai tiks noņemtas tālāk norādītās atļaujas, lai aizsargātu jūsu datus: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Lai aizsargātu jūsu datus, tika atsauktas atļaujas tām lietotnēm, kas nav izmantotas vairākus mēnešus."</string>
     <string name="auto_revoke_open_app_message" msgid="8075556291711205039">"Ja vēlaties atkal piešķirt atļaujas, atveriet lietotni."</string>
     <string name="auto_revoke_disabled" msgid="8697684442991567188">"Automātiskā noņemšana šai lietotnei pašlaik ir atspējota."</string>

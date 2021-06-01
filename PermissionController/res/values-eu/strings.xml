@@ -39,7 +39,7 @@
     <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g> desgaituta"</string>
     <string name="permission_revoked_all" msgid="3397649017727222283">"guztiak desgaituta"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"guztiak gaituta"</string>
-    <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Baimendu"</string>
+    <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Eman baimena"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Baimendu beti"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Aplikazioa erabili bitartean"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Oraingo honetan soilik"</string>
@@ -164,7 +164,7 @@
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Aplikazio-baimenen erabilera"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Sarbidea: <xliff:g id="NUM">%1$s</xliff:g> aldiz. Iraupena, guztira: <xliff:g id="DURATION">%2$s</xliff:g>. Duela <xliff:g id="TIME">%3$s</xliff:g> erabili zen azken aldiz."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Sarbidea: <xliff:g id="NUM">%1$s</xliff:g> aldiz. Duela <xliff:g id="TIME">%2$s</xliff:g> erabili zen azken aldiz."</string>
-    <string name="app_permission_button_allow" msgid="5808039516494774647">"Baimendu"</string>
+    <string name="app_permission_button_allow" msgid="5808039516494774647">"Eman baimena"</string>
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Eman fitxategi guztiak kudeatzeko baimena"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Eman multimedia-fitxategiak soilik atzitzeko baimena"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Baimendu beti"</string>
@@ -376,7 +376,7 @@
     <string name="incident_report_dialog_intro" msgid="5897733669850951832">"Arazo bat hauteman du sistemak."</string>
     <string name="incident_report_dialog_text" msgid="5675553296891757523">"<xliff:g id="DATE">%2$s</xliff:g> (<xliff:g id="TIME">%3$s</xliff:g>) datan sortutako akatsen txostena kargatzeko baimena eskatzen ari da <xliff:g id="APP_NAME_0">%1$s</xliff:g>. Akatsen txostenek zure gailuari buruzkoa den edo aplikazioek erregistratu duten informazio pertsonala dute; adibidez, erabiltzaile-izenak, kokapenari buruzko datuak, gailuaren identifikatzaileak eta sareari buruzko informazioa. Informazio hori izateko fidagarriak iruditzen zaizkizun pertsona eta aplikazioekin soilik partekatu beharko zenituzke akatsen txostenak. <xliff:g id="APP_NAME_1">%4$s</xliff:g> aplikazioari akatsen txostena kargatzeko baimena eman nahi diozu?"</string>
     <string name="incident_report_error_dialog_text" msgid="4189647113387092272">"Errore bat gertatu da <xliff:g id="APP_NAME">%1$s</xliff:g> aplikazioaren akatsen txostena prozesatzean; beraz, ezin izan dira partekatu arazketa-datu xehatuak. Barkatu eragozpenak."</string>
-    <string name="incident_report_dialog_allow_label" msgid="2970242967721155239">"Baimendu"</string>
+    <string name="incident_report_dialog_allow_label" msgid="2970242967721155239">"Eman baimena"</string>
     <string name="incident_report_dialog_deny_label" msgid="3535314290677579383">"Ukatu"</string>
     <string name="adjust_user_sensitive_title" msgid="4196724451314280527">"Ezarpen aurreratuak"</string>
     <string name="menu_adjust_user_sensitive" msgid="6497923610654425780">"Ezarpen aurreratuak"</string>

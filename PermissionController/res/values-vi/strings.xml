@@ -385,7 +385,7 @@
     <string name="adjust_user_sensitive_per_app_header" msgid="4543506440989005648">"Hiển thị mức sử dụng của"</string>
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Hiển thị tính năng phát hiện trình kích hoạt Trợ lý"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Hiển thị biểu tượng trong thanh trạng thái khi sử dụng micrô để kích hoạt trợ lý thoại"</string>
-    <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"Bạn có cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào ảnh và nội dung nghe nhìn trên thiết bị của mình không?"</string>
+    <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào ảnh và nội dung nghe nhìn trên thiết bị?"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào danh bạ của bạn?"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào thông tin vị trí của thiết bị này?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Ứng dụng này sẽ chỉ có quyền truy cập vào vị trí khi bạn đang sử dụng ứng dụng này"</string>
