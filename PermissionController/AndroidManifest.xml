@@ -284,7 +284,8 @@
             </intent-filter>
         </provider>
 
-        <service android:name="com.android.permissioncontroller.permission.service.PermissionControllerServiceImpl">
+        <service android:name="com.android.permissioncontroller.permission.service.PermissionControllerServiceImpl"
+                 android:visibleToInstantApps="true">
             <intent-filter android:priority="1">
                 <action android:name="android.permission.PermissionControllerService"/>
             </intent-filter>

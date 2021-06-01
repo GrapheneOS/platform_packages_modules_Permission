@@ -20,8 +20,8 @@ import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
 import android.text.format.DateFormat;
 import android.util.DisplayMetrics;
@@ -220,20 +220,22 @@ public class PermissionHistoryPreference extends Preference {
      * can't be handled.
      */
     private Intent getViewPermissionUsageForPeriodIntent() {
-        Intent sendIntent = new Intent();
-        sendIntent.setAction(Intent.ACTION_VIEW_PERMISSION_USAGE_FOR_PERIOD);
-        sendIntent.setPackage(mPackageName);
-        sendIntent.putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, mPermissionGroup);
-        sendIntent.putExtra(Intent.EXTRA_ATTRIBUTION_TAGS, mAttributionTags.toArray());
-        sendIntent.putExtra(Intent.EXTRA_START_TIME,
+        Intent viewUsageIntent = new Intent();
+        viewUsageIntent.setAction(Intent.ACTION_VIEW_PERMISSION_USAGE_FOR_PERIOD);
+        viewUsageIntent.setPackage(mPackageName);
+        viewUsageIntent.putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, mPermissionGroup);
+        viewUsageIntent.putExtra(Intent.EXTRA_ATTRIBUTION_TAGS, mAttributionTags.toArray());
+        viewUsageIntent.putExtra(Intent.EXTRA_START_TIME,
                 mAccessTimeList.get(mAccessTimeList.size() - 1));
-        sendIntent.putExtra(Intent.EXTRA_END_TIME, mAccessTimeList.get(0));
+        viewUsageIntent.putExtra(Intent.EXTRA_END_TIME, mAccessTimeList.get(0));
 
-        PackageManager pm = mContext.getPackageManager();
-        ActivityInfo activityInfo = sendIntent.resolveActivityInfo(pm, 0);
-        if (activityInfo != null && Objects.equals(activityInfo.permission,
+        PackageManager packageManager = mContext.getPackageManager();
+        ResolveInfo resolveInfo = packageManager.resolveActivity(viewUsageIntent,
+                PackageManager.MATCH_INSTANT);
+        if (resolveInfo != null && resolveInfo.activityInfo != null && Objects.equals(
+                resolveInfo.activityInfo.permission,
                 android.Manifest.permission.START_VIEW_PERMISSION_USAGE)) {
-            return sendIntent;
+            return viewUsageIntent;
         }
         return null;
     }
