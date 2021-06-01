@@ -111,7 +111,7 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Ver outros permisos"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> e <xliff:g id="NUM">%3$s</xliff:g> máis"</string>
-    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Cronoloxía da utilización do grupo <xliff:g id="PERMGROUP">%1$s</xliff:g> por parte das aplicacións nas últimas 24 horas"</string>
+    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Cronoloxía da utilización do permiso <xliff:g id="PERMGROUP">%1$s</xliff:g> por parte das aplicacións nas últimas 24 horas"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Cando utilizou esta aplicación o permiso de <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Máis información"</string>
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
@@ -173,8 +173,8 @@
     </plurals>
     <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Non se utilizou nas últimas 24 horas"</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
-      <item quantity="other">Úsanos <xliff:g id="NUMBER">%1$d</xliff:g> aplicacións</item>
-      <item quantity="one">Úsaos 1 aplicación</item>
+      <item quantity="other">Usado por <xliff:g id="NUMBER">%1$d</xliff:g> aplicacións</item>
+      <item quantity="one">Usado por 1 aplicación</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Ver todo no panel de control"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Vista filtrada por: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -260,7 +260,7 @@
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Permiso para acceder só a contido multimedia"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Permiso para xestionar todos os ficheiros"</string>
     <string name="ask_header" msgid="2633816846459944376">"Preguntar sempre"</string>
-    <string name="denied_header" msgid="903209608358177654">"Non permitido"</string>
+    <string name="denied_header" msgid="903209608358177654">"Permiso non concedido"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> días</item>
       <item quantity="one">1 día</item>
@@ -338,7 +338,7 @@
     <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"Último acceso hai menos de 24 horas • Todos os ficheiros"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Non se concederon permisos"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"Non se denegou ningún permiso"</string>
-    <string name="no_apps_allowed" msgid="7718822655254468631">"Ningunha aplicación ten permiso"</string>
+    <string name="no_apps_allowed" msgid="7718822655254468631">"A ningunha aplicación se lle concedeu o permiso"</string>
     <string name="no_apps_allowed_full" msgid="8011716991498934104">"Non hai aplicacións permitidas para todos os ficheiros"</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"Non hai aplicacións permitidas só para ficheiros multimedia"</string>
     <string name="no_apps_denied" msgid="7663435886986784743">"A ningunha aplicación se lle denegou o permiso"</string>

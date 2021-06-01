@@ -53,7 +53,7 @@
     <string name="unused_apps" msgid="2058057455175955094">"Ubrukte apper"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Deaktiver appen"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Hvis du deaktiverer denne appen, slutter muligens Android og andre apper å fungere som de skal. Husk at du ikke kan slette denne appen, fordi den var forhåndsinstallert på enheten din. Ved å deaktivere appen slår du den av og skjuler den på enheten din."</string>
-    <string name="app_permission_manager" msgid="3903811137630909550">"Behandle tillatelser"</string>
+    <string name="app_permission_manager" msgid="3903811137630909550">"Tillatelseskontroll"</string>
     <string name="never_ask_again" msgid="4728762438198560329">"Ikke spør igjen"</string>
     <string name="no_permissions" msgid="3881676756371148563">"Ingen tillatelser"</string>
     <string name="additional_permissions" msgid="5801285469338873430">"Flere tillatelser"</string>
@@ -217,7 +217,7 @@
     <string name="assistant_mic_label" msgid="1011432357152323896">"Vis bruk av assistentmikrofonen"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Fjern tillatelser hvis appen ikke brukes"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"For å beskytte dataene dine fjernes tillatelser for denne appen hvis appen ikke brukes på noen måneder."</string>
-    <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"For å beskytte dataene din fjernes disse tillatelsene hvis appen ikke brukes på noen måneder: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
+    <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Hvis appen ikke brukes på noen måneder, fjernes disse tillatelsene for å beskytte dataene dine: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"For å beskytte dataene dine har tillatelser blitt fjernet fra apper du ikke har brukt på noen måneder."</string>
     <string name="auto_revoke_open_app_message" msgid="8075556291711205039">"Åpne appen hvis du vil gi tillatelser igjen."</string>
     <string name="auto_revoke_disabled" msgid="8697684442991567188">"Automatisk fjerning er for øyeblikket slått av for denne appen."</string>
