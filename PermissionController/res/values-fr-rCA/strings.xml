@@ -470,7 +470,7 @@
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"Modifier l\'accès au microphone pour « <xliff:g id="APP_NAME">%1$s</xliff:g> »?"</string>
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"Cette application veut enregistrer de l\'audio en tout temps, même si vous ne l\'utilisez pas. "<annotation id="link">"Autorisez dans les paramètres."</annotation></string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"Autoriser « <xliff:g id="APP_NAME">%1$s</xliff:g> » à accéder à vos activités physiques?"</string>
-    <string name="permgrouprequest_camera" msgid="5123097035410002594">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à prendre des photos et à filmer des vidéos?"</string>
+    <string name="permgrouprequest_camera" msgid="5123097035410002594">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à prendre des photos et à enregistrer des vidéos?"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"L\'application pourra uniquement prendre des photos et enregistrer des vidéos lorsque vous l\'utilisez"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"Autoriser « <xliff:g id="APP_NAME">%1$s</xliff:g> » à prendre des photos et à enregistrer des vidéos?"</string>
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"Cette appli pourrait demander à prendre des photos et des vidéos en tout temps, même lorsque vous ne l\'utilisez pas. "<annotation id="link">"Autorisez dans les paramètres."</annotation></string>
