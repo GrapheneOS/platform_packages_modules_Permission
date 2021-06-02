@@ -111,7 +111,7 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"查看其他權限"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>，<xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>、<xliff:g id="PERMGROUP_1">%2$s</xliff:g> 和另外 <xliff:g id="NUM">%3$s</xliff:g> 個"</string>
-    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"過去 24 小時內應用程式使用「<xliff:g id="PERMGROUP">%1$s</xliff:g>」權限的時間軸"</string>
+    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"應用程式在過去 24 小時內使用<xliff:g id="PERMGROUP">%1$s</xliff:g>的時間軸"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"當此應用程式使用您的<xliff:g id="PERMGROUP">%1$s</xliff:g>權限時"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"瞭解詳情"</string>
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
@@ -173,8 +173,8 @@
     </plurals>
     <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"過去 24 小時內未使用"</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
-      <item quantity="other">使用權限的應用程式數量：<xliff:g id="NUMBER">%1$d</xliff:g> 個</item>
-      <item quantity="one">使用權限的應用程式數量：1 個</item>
+      <item quantity="other">有 <xliff:g id="NUMBER">%1$d</xliff:g> 個應用程式使用</item>
+      <item quantity="one">有 1 個應用程式使用</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"在「資訊主頁」查看全部"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"篩選條件：<xliff:g id="PERM">%1$s</xliff:g>"</string>
