@@ -249,13 +249,13 @@
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"इस अनुमति वाले ऐप्लिकेशन, फ़ोन कॉल कर सकते हैं और कॉल को मैनेज कर सकते हैं"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"इस अनुमति वाले ऐप्लिकेशन, आपके बारे में खास जानकारी देने वाली चीज़ों को बताने वाले सेंसर डेटा को ऐक्सेस कर सकते हैं"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"इस अनुमति वाले ऐप्लिकेशन मैसेज भेज और देख सकते हैं"</string>
-    <string name="permission_description_summary_storage" msgid="6575759089065303346">"इसकी अनुमति वाले ऐप्लिकेशन आपके डिवाइस के फ़ोटो, मीडिया, और फ़ाइलें ऐक्सेस कर सकते हैं"</string>
+    <string name="permission_description_summary_storage" msgid="6575759089065303346">"इसकी अनुमति वाले ऐप्लिकेशन आपके डिवाइस की फ़ोटो, मीडिया, और फ़ाइलें ऐक्सेस कर सकते हैं"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"पिछली बार ऐक्सेस किया गया: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"इस समय मना किया गया / आखिरी बार ऐक्सेस किया गया: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"कभी ऐक्सेस नहीं किया गया"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"मना किया गया / कभी ऐक्सेस नहीं किया गया"</string>
     <string name="allowed_header" msgid="7769277978004790414">"इन ऐप्लिकेशन के पास अनुमति है"</string>
-    <string name="allowed_always_header" msgid="6455903312589013545">"हमेशा के लिए मंज़ूरी"</string>
+    <string name="allowed_always_header" msgid="6455903312589013545">"हमेशा के लिए अनुमति"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"सिर्फ़ इस्तेमाल में होने पर अनुमति है"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"ये सिर्फ़ मीडिया फ़ाइलें ऐक्सेस कर सकते हैं"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"ये ऐप्लिकेशन सभी फ़ाइलों को मैनेज कर सकते हैं"</string>
@@ -341,7 +341,7 @@
     <string name="no_apps_allowed" msgid="7718822655254468631">"किसी ऐप्लिकेशन को अनुमति नहीं है"</string>
     <string name="no_apps_allowed_full" msgid="8011716991498934104">"किसी भी ऐप्लिकेशन को, सभी फ़ाइलों के लिए अनुमति नहीं दी गई है"</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"किसी भी ऐप्लिकेशन को, सिर्फ़ मीडिया फ़ाइलों के लिए अनुमति नहीं दी गई है"</string>
-    <string name="no_apps_denied" msgid="7663435886986784743">"किसी ऐप्लिकेशन को नामंज़ूर नहीं किया गया है"</string>
+    <string name="no_apps_denied" msgid="7663435886986784743">"किसी ऐप्लिकेशन की अनुमति नहीं रोकी गई है"</string>
     <string name="car_permission_selected" msgid="180837028920791596">"चुनी गई अनुमति"</string>
     <string name="settings" msgid="5409109923158713323">"सेटिंग"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"<xliff:g id="SERVICE_NAME">%s</xliff:g> को आपके डिवाइस पर पूरा ऐक्सेस मिला है"</string>

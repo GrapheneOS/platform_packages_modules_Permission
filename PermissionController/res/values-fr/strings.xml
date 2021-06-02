@@ -173,8 +173,8 @@
     </plurals>
     <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Aucune utilisation au cours des dernières 24 heures"</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
-      <item quantity="one">Utilisé(e) par <xliff:g id="NUMBER">%1$d</xliff:g> appli</item>
-      <item quantity="other">Utilisé(e) par <xliff:g id="NUMBER">%1$d</xliff:g> applis</item>
+      <item quantity="one">Utilisation par <xliff:g id="NUMBER">%1$d</xliff:g> appli</item>
+      <item quantity="other">Utilisation par <xliff:g id="NUMBER">%1$d</xliff:g> applis</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Tout afficher dans le tableau de bord"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Données filtrées par : <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -254,13 +254,13 @@
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Accès actuellement refusé/Dernier accès : <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Aucun accès enregistré"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"Accès refusé/aucune tentative d\'accès"</string>
-    <string name="allowed_header" msgid="7769277978004790414">"Autorisations accordées"</string>
+    <string name="allowed_header" msgid="7769277978004790414">"Autorisées"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"Toujours autorisées"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"Autorisées seulement pendant l\'utilisation"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Autorisées à gérer les fichiers multimédias"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Autorisées à gérer tous les fichiers"</string>
     <string name="ask_header" msgid="2633816846459944376">"Toujours demander"</string>
-    <string name="denied_header" msgid="903209608358177654">"Autorisations refusées"</string>
+    <string name="denied_header" msgid="903209608358177654">"Non autorisées"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> jour</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> jours</item>

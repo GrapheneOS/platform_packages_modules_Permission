@@ -49,11 +49,11 @@
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"אישור לניהול כל הקבצים"</string>
     <string name="grant_dialog_button_allow_media_only" msgid="4832877658422573832">"אישור גישה לקבצי מדיה"</string>
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"אפליקציות"</string>
-    <string name="app_permissions" msgid="3369917736607944781">"הרשאות של אפליקציות"</string>
+    <string name="app_permissions" msgid="3369917736607944781">"הרשאות לאפליקציות"</string>
     <string name="unused_apps" msgid="2058057455175955094">"אפליקציות שמזמן לא השתמשת בהן"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"השבתת האפליקציה"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"‏אם האפליקציה הזו תושבת, ייתכן ש-Android ואפליקציות אחרות לא יפעלו כצפוי. חשוב לזכור שלא ניתן למחוק את האפליקציה, כי היא הותקנה מראש במכשיר. ההשבתה מכבה את האפליקציה ומסתירה אותה במכשיר."</string>
-    <string name="app_permission_manager" msgid="3903811137630909550">"מנהל הרשאות"</string>
+    <string name="app_permission_manager" msgid="3903811137630909550">"מנהל ההרשאות"</string>
     <string name="never_ask_again" msgid="4728762438198560329">"אל תשאלו שוב"</string>
     <string name="no_permissions" msgid="3881676756371148563">"אין הרשאות"</string>
     <string name="additional_permissions" msgid="5801285469338873430">"הרשאות נוספות"</string>
@@ -68,8 +68,8 @@
     <string name="default_permission_description" msgid="4624464917726285203">"ביצוע פעולה לא ידועה"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> מתוך <xliff:g id="COUNT_1">%2$d</xliff:g> אפליקציות קיבלו הרשאה"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> אפליקציות שקיבלו הרשאה"</string>
-    <string name="menu_show_system" msgid="4254021607027872504">"הצגת המערכת"</string>
-    <string name="menu_hide_system" msgid="3855390843744028465">"הסתרת המערכת"</string>
+    <string name="menu_show_system" msgid="4254021607027872504">"הצגת אפליקציות מערכת"</string>
+    <string name="menu_hide_system" msgid="3855390843744028465">"הסתרת אפליקציות מערכת"</string>
     <string name="manage_permission" msgid="3796219072742331048">"ניהול ההרשאה"</string>
     <string name="no_apps" msgid="2412612731628386816">"אין אפליקציות"</string>
     <string name="location_settings" msgid="3624412509133422562">"הגדרות מיקום"</string>
@@ -112,8 +112,8 @@
     <string name="permission_group_usage_title" msgid="2595013198075285173">"שימוש ב<xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"צפייה בהרשאות נוספות"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
-    <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> ועוד <xliff:g id="NUM">%3$s</xliff:g>"</string>
-    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"ציר זמן של משך השימוש של אפליקציות ב<xliff:g id="PERMGROUP">%1$s</xliff:g> ב-24 השעות האחרונות"</string>
+    <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, ‏<xliff:g id="PERMGROUP_1">%2$s</xliff:g> ועוד <xliff:g id="NUM">%3$s</xliff:g>"</string>
+    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"ציר הזמן: מתי אפליקציות שונות השתמשו ב<xliff:g id="PERMGROUP">%1$s</xliff:g> שלך ב-24 השעות האחרונות"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"משך הזמן שהאפליקציה הזו השתמשה בהרשאה <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"מידע נוסף"</string>
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
@@ -191,12 +191,12 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> אפליקציות</item>
       <item quantity="one">אפליקציה אחת</item>
     </plurals>
-    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"לא נעשה שימוש בהרשאה ב-24 השעות האחרונות"</string>
+    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"לא היה שימוש ב-24 השעות האחרונות"</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
-      <item quantity="two">בשימוש על ידי <xliff:g id="NUMBER">%1$d</xliff:g> אפליקציות</item>
-      <item quantity="many">בשימוש על ידי <xliff:g id="NUMBER">%1$d</xliff:g> אפליקציות</item>
-      <item quantity="other">בשימוש על ידי <xliff:g id="NUMBER">%1$d</xliff:g> אפליקציות</item>
-      <item quantity="one">בשימוש על ידי אפליקציה אחת</item>
+      <item quantity="two">נעשה שימוש על ידי <xliff:g id="NUMBER">%1$d</xliff:g> אפליקציות</item>
+      <item quantity="many">נעשה שימוש על ידי <xliff:g id="NUMBER">%1$d</xliff:g> אפליקציות</item>
+      <item quantity="other">נעשה שימוש על ידי <xliff:g id="NUMBER">%1$d</xliff:g> אפליקציות</item>
+      <item quantity="one">נעשה שימוש על ידי אפליקציה אחת</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"הצגת כל הפרטים במרכז השליטה"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"סינון לפי: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -263,7 +263,7 @@
     <string name="special_file_access_dialog" msgid="583804114020740610">"לאשר לאפליקציה הזו לגשת לקבצים במכשיר הזה או בכל התקן אחסון שמחובר אליו, לשנות או למחוק אותם? האפליקציה הזו עשויה לגשת לקבצים בלי לבקש את רשותך."</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"אפליקציות עם ההרשאה הזו יכולות <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"אפליקציות עם ההרשאה הזו יכולות לקבל גישה לפעילות הגופנית שלך, למשל הליכה, רכיבה על אופניים, נהיגה, ספירת צעדים ועוד"</string>
-    <string name="permission_description_summary_calendar" msgid="103329982944411010">"אפליקציות עם ההרשאה הזו יכולות לגשת אל היומן"</string>
+    <string name="permission_description_summary_calendar" msgid="103329982944411010">"לאפליקציות עם ההרשאה הזו יש גישה ליומן שלך"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"אפליקציות עם ההרשאה הזו יכולות לקרוא את יומן השיחות של הטלפון ולכתוב בו"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"אפליקציות עם ההרשאה הזו יכולות לצלם תמונות וסרטונים"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"אפליקציות עם ההרשאה הזו יכולות לגשת אל אנשי הקשר"</string>
@@ -353,7 +353,7 @@
     <string name="unused_apps_subtitle_after" msgid="2034267519506357898">"הרשאות הוסרו מהאפליקציות"</string>
     <string name="unused_apps_subtitle_before" msgid="5233302577076132427">"הרשאות יוסרו מהאפליקציות"</string>
     <string name="unused_permissions_subtitle_two" msgid="2207266295008423015">"<xliff:g id="PERM_NAME_0">%1$s</xliff:g> וגם <xliff:g id="PERM_NAME_1">%2$s</xliff:g>"</string>
-    <string name="unused_permissions_subtitle_many" msgid="4387289202207450238">"<xliff:g id="PERM_NAME_0">%1$s</xliff:g>,‏ <xliff:g id="PERM_NAME_1">%2$s</xliff:g> ועוד <xliff:g id="NUMBER_OF_PERMISSIONS">%3$s</xliff:g>"</string>
+    <string name="unused_permissions_subtitle_many" msgid="4387289202207450238">"<xliff:g id="PERM_NAME_0">%1$s</xliff:g>, ‏<xliff:g id="PERM_NAME_1">%2$s</xliff:g> ועוד <xliff:g id="NUMBER_OF_PERMISSIONS">%3$s</xliff:g>"</string>
     <string name="unused_app_permissions_removed_summary" msgid="6779039455326071033">"כדי להגן על הנתונים שלך, הוסרו הרשאות מאפליקציות שלא השתמשת בהן כבר כמה חודשים"</string>
     <string name="unused_app_permissions_removed_summary_some" msgid="5080490037831563441">"כדי להגן על הנתונים שלך, הוסרו הרשאות מאפליקציות מסוימות שלא השתמשת בהן כבר כמה חודשים"</string>
     <string name="one_unused_app_summary" msgid="7831913934488881991">"לא נעשה שימוש באפליקציה אחת במשך מספר חודשים"</string>
@@ -364,7 +364,7 @@
     <string name="permission_subtitle_background" msgid="8916750995309083180">"מורשה תמיד"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"הגישה האחרונה: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"הגישה האחרונה בוצעה אתמול בשעה <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
-    <string name="app_perms_content_provider" msgid="6996750793881252778">"בוצעה גישה ב-24 השעות האחרונות"</string>
+    <string name="app_perms_content_provider" msgid="6996750793881252778">"הייתה גישה ב-24 השעות האחרונות"</string>
     <string name="app_perms_24h_access_background" msgid="3413674718969576843">"הגישה האחרונה <xliff:g id="TIME_DATE">%1$s</xliff:g> • מורשה תמיד"</string>
     <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"הגישה האחרונה בוצעה אתמול בשעה <xliff:g id="TIME_DATE">%1$s</xliff:g> • מורשה תמיד"</string>
     <string name="app_perms_content_provider_background" msgid="7793984056711923997">"בוצעה גישה ב-24 השעות האחרונות • מורשה תמיד"</string>

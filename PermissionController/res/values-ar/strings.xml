@@ -213,12 +213,12 @@
     </plurals>
     <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"لم يتم استخدام الإذن في آخر 24 ساعة."</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
-      <item quantity="zero">يستخدِمه <xliff:g id="NUMBER">%1$d</xliff:g> تطبيق.</item>
-      <item quantity="two">يستخدِمه تطبيقان (<xliff:g id="NUMBER">%1$d</xliff:g>).</item>
-      <item quantity="few">تستخدِمه <xliff:g id="NUMBER">%1$d</xliff:g> تطبيقات.</item>
-      <item quantity="many">يستخدِمه <xliff:g id="NUMBER">%1$d</xliff:g> تطبيقًا.</item>
-      <item quantity="other">يستخدِمه <xliff:g id="NUMBER">%1$d</xliff:g> تطبيق.</item>
-      <item quantity="one">يستخدِمه تطبيق واحد.</item>
+      <item quantity="zero">يستخدمه <xliff:g id="NUMBER">%1$d</xliff:g> تطبيق.</item>
+      <item quantity="two">يستخدمه تطبيقان (<xliff:g id="NUMBER">%1$d</xliff:g>).</item>
+      <item quantity="few">يستخدمه <xliff:g id="NUMBER">%1$d</xliff:g> تطبيقات.</item>
+      <item quantity="many">يستخدمه <xliff:g id="NUMBER">%1$d</xliff:g> تطبيقًا.</item>
+      <item quantity="other">يستخدمه <xliff:g id="NUMBER">%1$d</xliff:g> تطبيق.</item>
+      <item quantity="one">يستخدمه تطبيق واحد.</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"الاطّلاع على الكل في \"لوحة البيانات\""</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"تمّت الفلترة حسب: <xliff:g id="PERM">%1$s</xliff:g>"</string>
