@@ -107,8 +107,8 @@
     <string name="message_staging" msgid="9110563899955511866">"Приложението се подготвя…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Неизвестно"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Управление на поверителността"</string>
-    <string name="permission_group_usage_title" msgid="2595013198075285173">"Употреба на разрешенията за <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
-    <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Вижте други разширения"</string>
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"Използване на <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
+    <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Вижте други разрешения"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> и още <xliff:g id="NUM">%3$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Хронология за използването на <xliff:g id="PERMGROUP">%1$s</xliff:g> от приложенията през последните 24 часа"</string>
@@ -209,7 +209,7 @@
     <string name="precise_image_description" msgid="6349638632303619872">"Точно местоположение"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Приблизително местоположение"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Използване на точното местоположение"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Когато точното местоположение е изключено, приложенията могат да осъществяват достъп до приблизителното ви"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Когато точното местоположение е изключено, приложенията могат да осъществяват достъп до приблизителното ви местоположение"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Разрешение за: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Достъп до <xliff:g id="PERM">%1$s</xliff:g> за това приложение"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Преглед на всички разрешения за <xliff:g id="APP">%1$s</xliff:g>"</string>
