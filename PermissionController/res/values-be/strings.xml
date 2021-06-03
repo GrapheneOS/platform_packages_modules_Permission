@@ -379,7 +379,7 @@
     <string name="no_apps_allowed" msgid="7718822655254468631">"Няма дазволеных праграм"</string>
     <string name="no_apps_allowed_full" msgid="8011716991498934104">"Праграмы не дазволены для ўсіх файлаў"</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"Праграмы не дазволены толькі для файлаў мультымедыя"</string>
-    <string name="no_apps_denied" msgid="7663435886986784743">"Няма адмоўленых праграм"</string>
+    <string name="no_apps_denied" msgid="7663435886986784743">"Няма забароненых праграм"</string>
     <string name="car_permission_selected" msgid="180837028920791596">"Выбрана"</string>
     <string name="settings" msgid="5409109923158713323">"Налады"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"<xliff:g id="SERVICE_NAME">%s</xliff:g> мае поўны доступ да даных вашай прылады"</string>
