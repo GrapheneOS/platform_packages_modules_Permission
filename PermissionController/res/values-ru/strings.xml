@@ -259,7 +259,7 @@
     <string name="last_opened_category_title" msgid="7871347400611202595">"Использовались более <xliff:g id="NUMBER">%s</xliff:g> мес. назад"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Вы открывали это приложение <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Использовалось <xliff:g id="DATE">%s</xliff:g>"</string>
-    <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Приложение сможет просматривать, изменять и удалять любые файлы в общем хранилище на этом устройстве, а также на подключенных запоминающих устройствах. При этом оно сможет получать доступ к файлам без вашего ведома."</string>
+    <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Если вы разрешите приложению управлять всеми файлами, оно сможет просматривать, изменять и удалять любые файлы в общем хранилище на этом устройстве, а также на подключенных запоминающих устройствах. При этом оно сможет получать доступ к файлам без вашего ведома."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Разрешить этому приложению просматривать, изменять и удалять любые файлы на этом устройстве, а также на подключенных запоминающих устройствах? Приложение сможет получать доступ к файлам без вашего ведома."</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"Приложения с этим разрешением могут <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Приложения с этим разрешением могут получать доступ к данным о вашей физической активности, например прогулках, поездках на велосипеде, количестве пройденных шагов и пр."</string>
@@ -364,16 +364,16 @@
     <string name="permission_subtitle_background" msgid="8916750995309083180">"Разрешено всегда"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"Последний доступ: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Последний доступ: вчера в <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
-    <string name="app_perms_content_provider" msgid="6996750793881252778">"Доступ за последние 24 часа"</string>
+    <string name="app_perms_content_provider" msgid="6996750793881252778">"Разрешение использовалось в последние 24 часа"</string>
     <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Последний доступ: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Разрешено всегда"</string>
     <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Последний доступ: вчера в <xliff:g id="TIME_DATE">%1$s</xliff:g> • Разрешено всегда"</string>
-    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"Доступ за последние 24 часа • Разрешено всегда"</string>
+    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"Разрешение использовалось в последние 24 часа • Разрешено всегда"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Последний доступ: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Медиафайлы"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Последний доступ: вчера в <xliff:g id="TIME_DATE">%1$s</xliff:g> • Медиафайлы"</string>
-    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"Доступ за последние 24 часа • Медиафайлы"</string>
+    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"Разрешение использовалось в последние 24 часа • Медиафайлы"</string>
     <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"Последний доступ: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Все файлы"</string>
     <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"Последний доступ: вчера в <xliff:g id="TIME_DATE">%1$s</xliff:g> • Все файлы"</string>
-    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"Доступ за последние 24 часа • Все файлы"</string>
+    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"Разрешение использовалось в последние 24 часа • Все файлы"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Разрешения не предоставлены"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"Предоставлены все разрешения"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"Не разрешено ни одному приложению."</string>

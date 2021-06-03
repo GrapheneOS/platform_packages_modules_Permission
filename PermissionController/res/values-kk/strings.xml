@@ -202,7 +202,7 @@
     <string name="app_permission_button_allow" msgid="5808039516494774647">"Рұқсат беру"</string>
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Барлық файлдарды басқаруға рұқсат беру"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Тек медиафайлдарды пайдалануға рұқсат беру"</string>
-    <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Әрдайым рұқсат беру"</string>
+    <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Біржола рұқсат беру"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Қолданбаны пайдалану кезінде ғана рұқсат беру"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Әрдайым сұрау"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Рұқсат бермеу"</string>
@@ -255,12 +255,12 @@
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Ешқашан пайдаланбады"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"Тыйым салынған/Ешқашан пайдаланбаған"</string>
     <string name="allowed_header" msgid="7769277978004790414">"Рұқсат берілгендер"</string>
-    <string name="allowed_always_header" msgid="6455903312589013545">"Біржола рұқсат етілгендер"</string>
-    <string name="allowed_foreground_header" msgid="6845655788447833353">"Пайдаланған кезде ғана рұқсат етілгендер"</string>
-    <string name="allowed_storage_scoped" msgid="5383645873719086975">"Тек медиафайлды пайдалана алатын қолданбалар"</string>
+    <string name="allowed_always_header" msgid="6455903312589013545">"Біржола рұқсат берілгендер"</string>
+    <string name="allowed_foreground_header" msgid="6845655788447833353">"Пайдаланғанда ғана рұқсат берілгендер"</string>
+    <string name="allowed_storage_scoped" msgid="5383645873719086975">"Тек мультимедианы пайдалана алатын қолданбалар"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Барлық файлдарды басқара алатын қолданбалар"</string>
     <string name="ask_header" msgid="2633816846459944376">"Әрдайым сұрау"</string>
-    <string name="denied_header" msgid="903209608358177654">"Рұқсат етілмеген"</string>
+    <string name="denied_header" msgid="903209608358177654">"Рұқсат берілмегендер"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> күн</item>
       <item quantity="one">1 күн</item>
