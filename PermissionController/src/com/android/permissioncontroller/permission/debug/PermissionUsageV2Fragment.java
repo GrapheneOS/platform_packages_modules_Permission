@@ -26,12 +26,9 @@ import android.app.ActionBar;
 import android.app.role.RoleManager;
 import android.content.Context;
 import android.os.Bundle;
-import android.os.UserHandle;
-import android.os.UserManager;
 import android.util.ArrayMap;
 import android.util.ArraySet;
 import android.util.Log;
-import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -58,7 +55,6 @@ import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.settingslib.HelpUtils;
 
 import java.lang.annotation.Retention;
-import java.text.Collator;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -102,8 +98,6 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
     private @NonNull PermissionUsages mPermissionUsages;
     private @Nullable List<AppPermissionUsage> mAppPermissionUsages = new ArrayList<>();
 
-    private Collator mCollator;
-
     private @NonNull List<TimeFilterItem> mFilterTimes;
     private int mFilterTimeIndex;
 
@@ -143,8 +137,6 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
         }
 
         Context context = getPreferenceManager().getContext();
-        mCollator = Collator.getInstance(
-                context.getResources().getConfiguration().getLocales().get(0));
         mPermissionUsages = new PermissionUsages(context);
         mRoleManager = Utils.getSystemServiceSafe(context, RoleManager.class);
 
@@ -516,59 +508,6 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
         }
     }
 
-    /**
-     * Compare two usages by their access time.
-     *
-     * Can be used as a {@link java.util.Comparator}.
-     *
-     * @param x a usage.
-     * @param y a usage.
-     *
-     * @return see {@link java.util.Comparator#compare(Object, Object)}.
-     */
-    private static int compareAccessTime(@NonNull Pair<AppPermissionUsage, GroupUsage> x,
-            @NonNull Pair<AppPermissionUsage, GroupUsage> y) {
-        return compareAccessTime(x.second, y.second);
-    }
-
-    /**
-     * Compare two usages by their access time.
-     *
-     * Can be used as a {@link java.util.Comparator}.
-     *
-     * @param x a usage.
-     * @param y a usage.
-     *
-     * @return see {@link java.util.Comparator#compare(Object, Object)}.
-     */
-    private static int compareAccessTime(@NonNull GroupUsage x, @NonNull GroupUsage y) {
-        final int timeDiff = compareLong(x.getLastAccessTime(), y.getLastAccessTime());
-        if (timeDiff != 0) {
-            return timeDiff;
-        }
-        // Make sure we lose no data if same
-        return x.hashCode() - y.hashCode();
-    }
-
-    /**
-     * Compare two longs. Will order the long values from big to small.
-     *
-     * Can be used as a {@link java.util.Comparator}.
-     *
-     * @param x the first long.
-     * @param y the second long.
-     *
-     * @return see {@link java.util.Comparator#compare(Object, Object)}.
-     */
-    private static int compareLong(long x, long y) {
-        if (x > y) {
-            return -1;
-        } else if (x < y) {
-            return 1;
-        }
-        return 0;
-    }
-
     private static int comparePermissionGroupUsage(@NonNull Map.Entry<String, Integer> first,
             @NonNull Map.Entry<String, Integer> second,
             Map<String, CharSequence> groupUsageNameToLabelMapping) {
@@ -607,35 +546,6 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
             }
         }
         return groups;
-    }
-
-    /**
-     * Get an AppPermissionGroup that represents the given permission group (and an arbitrary app).
-     *
-     * @param groupName The name of the permission group.
-     *
-     * @return an AppPermissionGroup rerepsenting the given permission group or null if no such
-     * AppPermissionGroup is found.
-     */
-    private @Nullable AppPermissionGroup getGroup(@NonNull String groupName) {
-        List<AppPermissionGroup> groups = getOSPermissionGroups();
-        int numGroups = groups.size();
-        for (int i = 0; i < numGroups; i++) {
-            if (groups.get(i).getName().equals(groupName)) {
-                return groups.get(i);
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Callback when the user selects a time by which to filter.
-     *
-     * @param selectedIndex The index of the dialog option selected by the user.
-     */
-    private void onTimeSelected(int selectedIndex) {
-        mFilterTimeIndex = selectedIndex;
-        reloadData();
     }
 
     /**
