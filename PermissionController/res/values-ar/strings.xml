@@ -68,7 +68,7 @@
     </plurals>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"‏تمّ تصميم هذا التطبيق لإصدار قديم من Android. وقد يؤدي رفض الإذن إلى عدم العمل على النحو المطلوب مرة أخرى."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"تنفيذ إجراء غير معروف"</string>
-    <string name="app_permissions_group_summary" msgid="8788419008958284002">"تمّ السماح لـ <xliff:g id="COUNT_0">%1$d</xliff:g> من أصل <xliff:g id="COUNT_1">%2$d</xliff:g> تطبيق"</string>
+    <string name="app_permissions_group_summary" msgid="8788419008958284002">"تمّ السماح لـ <xliff:g id="COUNT_0">%1$d</xliff:g> من أصل <xliff:g id="COUNT_1">%2$d</xliff:g> تطبيق."</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"التطبيقات التي تم منحها الإذن: <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"إظهار تطبيقات النظام"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"إخفاء تطبيقات النظام"</string>
@@ -257,7 +257,7 @@
     <string name="precise_image_description" msgid="6349638632303619872">"الموقع الجغرافي الدقيق"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"الموقع الجغرافي التقريبي"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"استخدام الموقع الجغرافي الدقيق"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"عندما يكون الموقع الجغرافي الدقيق غير مفعّل، يمكن للتطبيقات الوصول إلى الموقع الجغرافي التقريبي"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"عندما يكون الموقع الجغرافي الدقيق غير مفعّل، يمكن للتطبيقات الوصول إلى الموقع الجغرافي التقريبي."</string>
     <string name="app_permission_title" msgid="2090897901051370711">"إذن <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"منح هذا التطبيق الإذن بالوصول إلى <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"الاطّلاع على جميع أذونات <xliff:g id="APP">%1$s</xliff:g>"</string>

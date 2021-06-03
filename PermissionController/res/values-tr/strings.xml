@@ -257,8 +257,8 @@
     <string name="allowed_header" msgid="7769277978004790414">"İzin verilenler"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"Her zaman izin verilenler"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"Yalnızca kullanımdayken izin verilenler"</string>
-    <string name="allowed_storage_scoped" msgid="5383645873719086975">"Yalnızca medyaya erişim izni verildi"</string>
-    <string name="allowed_storage_full" msgid="5356699280625693530">"Tüm dosyaları yönetme izni verildi"</string>
+    <string name="allowed_storage_scoped" msgid="5383645873719086975">"Yalnızca medyaya erişim izni verilenler"</string>
+    <string name="allowed_storage_full" msgid="5356699280625693530">"Tüm dosyaları yönetme izni verilenler"</string>
     <string name="ask_header" msgid="2633816846459944376">"Her zaman sor"</string>
     <string name="denied_header" msgid="903209608358177654">"İzin verilmeyenler"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
