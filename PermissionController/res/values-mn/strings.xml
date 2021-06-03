@@ -388,7 +388,7 @@
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"<xliff:g id="APP_NAME">%1$s</xliff:g>-г дуудлагыг дахин чиглүүлэх өгөгдмөл аппаар тохируулах уу?"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Ямар ч зөвшөөрөл шаардлагагүй"</string>
     <string name="role_call_screening_label" msgid="883935222060878724">"Үндсэн дуудлага хийгчийн ID &amp; спамын  апп"</string>
-    <string name="role_call_screening_short_label" msgid="2048465565063130834">"Дуудлага хийгчийн ID &amp; спамын апп"</string>
+    <string name="role_call_screening_short_label" msgid="2048465565063130834">"Дуудлага хийгчийн ID, спамын апп"</string>
     <string name="role_call_screening_description" msgid="2349431420497468981">"Танд дуудлага таних болон спам, роботын дуудлага эсвэл хүсээгүй дугаарыг блоклох боломжийг олгодог аппууд"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g>-г дуудлага хийгчийн ID болон спамын өгөгдмөл аппаар тохируулах уу?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Ямар ч зөвшөөрөл шаардлагагүй"</string>
