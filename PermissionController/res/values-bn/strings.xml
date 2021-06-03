@@ -173,7 +173,7 @@
     <string name="app_permission_button_deny" msgid="2399316993899108824">"খারিজ করুন"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> অনুমতি"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"এই অ্যাপের জন্য <xliff:g id="PERM">%1$s</xliff:g> অ্যাক্সেস"</string>
-    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g>-কে দেওয়া সব অনুমতি দেখুন"</string>
+    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g>-এর ক্ষেত্রে দেওয়া সব অনুমতি দেখুন"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"যেসব অ্যাপের এই অনুমতি আছে সেগুলি দেখুন"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Assistant-এর মাইক্রোফোন ব্যবহার সম্পর্কিত ডেটা দেখুন"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"অ্যাপ ব্যবহার করা না হলে সেটি থেকে অনুমতি প্রত্যাহার করে নিন"</string>

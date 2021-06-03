@@ -80,7 +80,7 @@
     <string name="permission_summary_disabled_by_admin_background_only" msgid="3127091456731845646">"Skrbnik je onemogočil dostop iz ozadja"</string>
     <string name="permission_summary_enabled_by_admin_background_only" msgid="9132423838440275757">"Skrbnik je omogočil dostop iz ozadja"</string>
     <string name="permission_summary_enabled_by_admin_foreground_only" msgid="1298432715610745358">"Skrbnik je omogočil dostop v ospredju"</string>
-    <string name="permission_summary_enabled_system_fixed" msgid="2438344700184127274">"Naprava potrebuje to dovoljenje za delovanje"</string>
+    <string name="permission_summary_enabled_system_fixed" msgid="2438344700184127274">"Naprava potrebuje to dovoljenje za delovanje."</string>
     <!-- no translation found for background_access_chooser_dialog_choices:0 (1351721623256561996) -->
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
@@ -304,10 +304,10 @@
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"Vse datoteke"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Aplikacija nima nobenih dovoljenj"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"Nobeno dovoljenje ni zavrnjeno"</string>
-    <string name="no_apps_allowed" msgid="7718822655254468631">"Nobena aplikacija nima dovoljenja"</string>
+    <string name="no_apps_allowed" msgid="7718822655254468631">"Nobena aplikacija nima dovoljenja."</string>
     <string name="no_apps_allowed_full" msgid="8011716991498934104">"Nobena aplikacija za »Dovoljeno za vse datoteke«"</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"Nobena aplikacija nima dovoljenja samo za predstavnost"</string>
-    <string name="no_apps_denied" msgid="7663435886986784743">"Dovoljenje ni zavrnjeno nobeni aplikaciji"</string>
+    <string name="no_apps_denied" msgid="7663435886986784743">"Dovoljenje ni zavrnjeno nobeni aplikaciji."</string>
     <string name="car_permission_selected" msgid="180837028920791596">"Izbrano"</string>
     <string name="settings" msgid="5409109923158713323">"Nastavitve"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"Storitev <xliff:g id="SERVICE_NAME">%s</xliff:g> ima poln dostop do naprave"</string>

@@ -62,7 +62,7 @@
     </plurals>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"Այս հավելվածը նախատեսված է Android-ի ավելի հին տարբերակի համար: Եթե մերժեք թույլտվությունը, այն կարող է չաշխատել ինչպես հարկն է:"</string>
     <string name="default_permission_description" msgid="4624464917726285203">"կատարել անհայտ գործողություն"</string>
-    <string name="app_permissions_group_summary" msgid="8788419008958284002">"Թույլատրված է <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> հավելվածի"</string>
+    <string name="app_permissions_group_summary" msgid="8788419008958284002">"Թույլատրված է <xliff:g id="COUNT_1">%2$d</xliff:g> հավելվածից <xliff:g id="COUNT_0">%1$d</xliff:g>-ին"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"Թույլատրված հավելված(ներ)՝ <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Ցույց տալ համակարգի հավելվածները"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Թաքցնել համակարգի հավելվածները"</string>
@@ -213,7 +213,7 @@
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Երբեք չի օգտագործվել"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"Մերժվել է/Երբեք չի օգտագործվել"</string>
     <string name="allowed_header" msgid="7769277978004790414">"Թույլատրված"</string>
-    <string name="allowed_always_header" msgid="6455903312589013545">"Միշտ թույլատրված է"</string>
+    <string name="allowed_always_header" msgid="6455903312589013545">"Միշտ թույլատրված"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"Միայն հավելվածի օգտագործման ժամանակ"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Հավելվածներ, որոնց հասանելի են մեդիաֆայլերը"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Հավելվածներ, որոնց հասանելի են բոլոր ֆայլերը"</string>
@@ -281,7 +281,7 @@
     <string name="no_apps_allowed" msgid="7718822655254468631">"Թույլատրված չէ ոչ մի հավելվածի"</string>
     <string name="no_apps_allowed_full" msgid="8011716991498934104">"Ոչ մի հավելված թույլատրված չէ բոլոր ֆայլերի համար"</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"Ոչ մի հավելված թույլատրված չէ մեդիա ֆայլերի համար"</string>
-    <string name="no_apps_denied" msgid="7663435886986784743">"Մերժված չէ ոչ մի հավելվածի"</string>
+    <string name="no_apps_denied" msgid="7663435886986784743">"Արգելված չէ ոչ մի հավելվածի"</string>
     <string name="car_permission_selected" msgid="180837028920791596">"Ընտրված է"</string>
     <string name="settings" msgid="5409109923158713323">"Կարգավորումներ"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"<xliff:g id="SERVICE_NAME">%s</xliff:g> ծառայությունն ունի ձեր սարքն օգտագործելու լրիվ թույլտվություն"</string>
