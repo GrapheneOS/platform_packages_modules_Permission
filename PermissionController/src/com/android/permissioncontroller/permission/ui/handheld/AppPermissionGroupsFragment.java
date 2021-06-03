@@ -55,6 +55,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
+import androidx.core.os.BuildCompat;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
@@ -112,8 +113,8 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
     private boolean mIsFirstLoad;
     private String mPackageName;
     private UserHandle mUser;
-    private @NonNull PermissionUsages mPermissionUsages;
-    private @NonNull List<AppPermissionUsage> mAppPermissionUsages = new ArrayList<>();
+    private PermissionUsages mPermissionUsages;
+    private List<AppPermissionUsage> mAppPermissionUsages = new ArrayList<>();
 
     private Collator mCollator;
 
@@ -177,14 +178,19 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
         mCollator = Collator.getInstance(
                 getContext().getResources().getConfiguration().getLocales().get(0));
 
-        Context context = getPreferenceManager().getContext();
-        mPermissionUsages = new PermissionUsages(context);
+        // If the build type is below S, the app ops for permission usage can't be found. Thus, we
+        // shouldn't load permission usages, for them.
+        if (BuildCompat.isAtLeastS()) {
+            Context context = getPreferenceManager().getContext();
+            mPermissionUsages = new PermissionUsages(context);
 
-        long filterTimeBeginMillis = Math.max(System.currentTimeMillis()
-                - DAYS.toMillis(AGGREGATE_DATA_FILTER_BEGIN_DAYS), Instant.EPOCH.toEpochMilli());
-        mPermissionUsages.load(null, null, filterTimeBeginMillis, Long.MAX_VALUE,
-                PermissionUsages.USAGE_FLAG_LAST, getActivity().getLoaderManager(),
-                false, false, this, false);
+            long filterTimeBeginMillis = Math.max(System.currentTimeMillis()
+                            - DAYS.toMillis(AGGREGATE_DATA_FILTER_BEGIN_DAYS),
+                    Instant.EPOCH.toEpochMilli());
+            mPermissionUsages.load(null, null, filterTimeBeginMillis, Long.MAX_VALUE,
+                    PermissionUsages.USAGE_FLAG_LAST, getActivity().getLoaderManager(),
+                    false, false, this, false);
+        }
 
         updatePreferences(mViewModel.getPackagePermGroupsLiveData().getValue());
     }
