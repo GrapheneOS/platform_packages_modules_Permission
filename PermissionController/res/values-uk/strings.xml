@@ -364,7 +364,7 @@
     <string name="permission_subtitle_background" msgid="8916750995309083180">"Завжди дозволено"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"Востаннє відкрито: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Востаннє відкрито вчора о <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
-    <string name="app_perms_content_provider" msgid="6996750793881252778">"Відкрито за останні 24 години"</string>
+    <string name="app_perms_content_provider" msgid="6996750793881252778">"Доступ за останні 24 години"</string>
     <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Останній доступ: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Завжди дозволено"</string>
     <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Останній доступ: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Завжди дозволено"</string>
     <string name="app_perms_content_provider_background" msgid="7793984056711923997">"Останній доступ: упродовж останніх 24 годин • Завжди дозволено"</string>
