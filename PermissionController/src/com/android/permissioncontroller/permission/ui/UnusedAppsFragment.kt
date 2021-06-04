@@ -25,6 +25,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.UserHandle
 import android.util.Log
+import android.view.MenuItem
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -36,6 +37,7 @@ import com.android.permissioncontroller.Constants.EXTRA_SESSION_ID
 import com.android.permissioncontroller.Constants.INVALID_SESSION_ID
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.hibernation.isHibernationEnabled
+import com.android.permissioncontroller.permission.ui.handheld.pressBack
 import com.android.permissioncontroller.permission.ui.model.UnusedAppsViewModel
 import com.android.permissioncontroller.permission.ui.model.UnusedAppsViewModel.Months
 import com.android.permissioncontroller.permission.ui.model.UnusedAppsViewModel.UnusedPackageInfo
@@ -163,6 +165,16 @@ class UnusedAppsFragment<PF, UnusedAppPref> : PreferenceFragmentCompat()
         val footerPreference = preferenceFragment.createFooterPreference(context!!)
         footerPreference.key = INFO_MSG_KEY
         infoMsgCategory?.addPreference(footerPreference)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                this.pressBack()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun updatePackages(categorizedPackages: Map<Months, List<UnusedPackageInfo>>) {
