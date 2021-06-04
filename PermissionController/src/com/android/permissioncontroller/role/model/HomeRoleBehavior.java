@@ -20,7 +20,6 @@ import android.app.role.RoleManager;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -117,8 +116,9 @@ public class HomeRoleBehavior implements RoleBehavior {
                     .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             PackageManager userPackageManager = UserUtils.getUserContext(context, user)
                     .getPackageManager();
-            ActivityInfo activityInfo = intent.resolveActivityInfo(userPackageManager, 0);
-            if (activityInfo != null && activityInfo.exported) {
+            ResolveInfo resolveInfo = userPackageManager.resolveActivity(intent, 0);
+            if (resolveInfo != null && resolveInfo.activityInfo != null
+                    && resolveInfo.activityInfo.exported) {
                 listener = preference2 -> {
                     try {
                         context.startActivity(intent);
