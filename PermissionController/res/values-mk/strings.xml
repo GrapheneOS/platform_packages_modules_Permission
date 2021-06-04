@@ -111,7 +111,7 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Видете други дозволи"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> и уште <xliff:g id="NUM">%3$s</xliff:g> други"</string>
-    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Кога ја користеле апликациите дозволата за <xliff:g id="PERMGROUP">%1$s</xliff:g> во изминатите 24 часа"</string>
+    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Кога ја користеле апликациите дозволата за <xliff:g id="PERMGROUP">%1$s</xliff:g> во минатите 24 часа"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Кога апликацијава ја користела дозволата за <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Дознајте повеќе"</string>
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
@@ -171,10 +171,10 @@
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> апликација</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> апликации</item>
     </plurals>
-    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Не е користена во последните 24 часа"</string>
+    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Не е користена во минатите 24 часа"</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
-      <item quantity="one">Искористена од <xliff:g id="NUMBER">%1$d</xliff:g> апликација</item>
-      <item quantity="other">Искористена од <xliff:g id="NUMBER">%1$d</xliff:g> апликации</item>
+      <item quantity="one">Користена од <xliff:g id="NUMBER">%1$d</xliff:g> апликација</item>
+      <item quantity="other">Користена од <xliff:g id="NUMBER">%1$d</xliff:g> апликации</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Прикажи ги сите на контролната табла"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Филтрирано според: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -215,7 +215,7 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Прикажи ги сите дозволи за <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Прикажи ги сите апликации со оваа дозвола"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Прикажи го користењето на микрофонот на „Помошникот“"</string>
-    <string name="auto_revoke_label" msgid="5068393642936571656">"Отстрани ги дозволите ако апликацијата не е користена"</string>
+    <string name="auto_revoke_label" msgid="5068393642936571656">"Отстрани ги дозволите ако апликацијата не се користи"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"За да се заштитат вашите податоци, дозволите за апликацијава ќе се отстранат ако апликацијата не се користи неколку месеци."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Ако апликацијата не се користи неколку месеци, заради заштита на податоците, ќе се отстранат следниве дозволи: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"За заштита на податоците, отстранети се дозволите од апликациите што не сте ги користеле неколку месеци."</string>
@@ -260,7 +260,7 @@
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Со пристап само до аудиовизуелните содржини"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Со дозвола за управување со сите датотеки"</string>
     <string name="ask_header" msgid="2633816846459944376">"Прашувај секогаш"</string>
-    <string name="denied_header" msgid="903209608358177654">"Не е дозволено"</string>
+    <string name="denied_header" msgid="903209608358177654">"Без дозвола"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> ден</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> дена</item>
@@ -326,16 +326,16 @@
     <string name="permission_subtitle_background" msgid="8916750995309083180">"Дозволена цело време"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"Последен пристап: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Последен пристап: вчера во <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
-    <string name="app_perms_content_provider" msgid="6996750793881252778">"Пристапено во изминатите 24 часа"</string>
+    <string name="app_perms_content_provider" msgid="6996750793881252778">"Пристапено во минатите 24 часа"</string>
     <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Последен пристап: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Дозволена цело време"</string>
     <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Последен пристап: вчера во <xliff:g id="TIME_DATE">%1$s</xliff:g> • Дозволена цело време"</string>
     <string name="app_perms_content_provider_background" msgid="7793984056711923997">"Пристапено во последните 24 часа • Дозволена цело време"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Последен пристап: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Аудиовизуелни датотеки"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Последен пристап: вчера во <xliff:g id="TIME_DATE">%1$s</xliff:g> • Аудиовизуелни датотеки"</string>
-    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"Пристапено во изминатите 24 часа • Аудиовизуелни датотеки"</string>
+    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"Пристапено во минатите 24 часа • Аудиовизуелни датотеки"</string>
     <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"Последен пристап: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Сите датотеки"</string>
     <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"Последен пристап: вчера во <xliff:g id="TIME_DATE">%1$s</xliff:g> • Сите датотеки"</string>
-    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"Пристапено во изминатите 24 часа • Сите датотеки"</string>
+    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"Пристапено во минатите 24 часа • Сите датотеки"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Нема овозможени дозволи"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"Нема одбиени дозволи"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"Нема апликации со дозвола"</string>

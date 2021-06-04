@@ -239,7 +239,7 @@
     <string name="special_file_access_dialog" msgid="583804114020740610">"Viltu gefa þessu forriti aðgang að skrám í tækinu eða tengdum geymslutækjum og leyfi til að breyta þeim og eyða? Þetta forrit getur opnað skrár án þess að spyrja þig."</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"Forrit með þessa heimild <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Forrit með þessa heimild hafa aðgang að upplýsingum um hreyfingu þína, svo sem göngu, hjólreiðar, akstur, skrefafjölda og fleira"</string>
-    <string name="permission_description_summary_calendar" msgid="103329982944411010">"Forrit með þessar heimildir hafa aðgang að dagatalinu þínu"</string>
+    <string name="permission_description_summary_calendar" msgid="103329982944411010">"Forrit með þessa heimild hafa aðgang að dagatalinu þínu"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Forrit með þessa heimild geta lesið og skrifað símtalaskrá síma"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Forrit með þessa heimild geta tekið myndir og tekið upp myndskeið"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Forrit með þessa heimild hafa aðgang að tengiliðunum þínum"</string>

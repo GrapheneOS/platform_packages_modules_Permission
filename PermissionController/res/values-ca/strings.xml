@@ -235,7 +235,7 @@
     <string name="last_opened_category_title" msgid="7871347400611202595">"Obertes per darrera vegada fa més de <xliff:g id="NUMBER">%s</xliff:g> mesos"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Aplicació oberta per darrera vegada el dia <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Oberta per darrera vegada el dia <xliff:g id="DATE">%s</xliff:g>"</string>
-    <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Si permets la gestió de tots els fitxers, aquesta aplicació podrà accedir a qualsevol fitxer, així com modificar-los i suprimir-los, a l\'emmagatzematge comú d\'aquest dispositiu o als dispositius d\'emmagatzematge connectats. L\'aplicació podrà accedir als fitxers sense demanar-te permís."</string>
+    <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Si permets la gestió de tots els fitxers, aquesta aplicació podrà accedir als fitxers, així com modificar-los i suprimir-los, que es trobin a l\'emmagatzematge comú d\'aquest dispositiu o als dispositius d\'emmagatzematge connectats. L\'aplicació podrà accedir als fitxers sense demanar-te permís."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Vols permetre que aquesta aplicació accedeixi als fitxers, o els modifiqui o suprimeixi, en aquest dispositiu o en qualsevol altre dispositiu d\'emmagatzematge connectat? Aquesta aplicació podrà accedir als fitxers sense demanar-te permís."</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"Les aplicacions amb aquest permís poden <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Les aplicacions amb aquest permís poden accedir a la teva activitat física, com ara els passejos a peu, els trajectes amb bici o cotxe, el recompte de passos, etc."</string>
@@ -257,7 +257,7 @@
     <string name="allowed_header" msgid="7769277978004790414">"Amb permís"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"Permès sempre"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"Permès només mentre s\'utilitza"</string>
-    <string name="allowed_storage_scoped" msgid="5383645873719086975">"Poden accedir només als fitxers multimèdia"</string>
+    <string name="allowed_storage_scoped" msgid="5383645873719086975">"Poden accedir només al contingut multimèdia"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Poden gestionar tots els fitxers"</string>
     <string name="ask_header" msgid="2633816846459944376">"Pregunta sempre"</string>
     <string name="denied_header" msgid="903209608358177654">"Sense permís"</string>
