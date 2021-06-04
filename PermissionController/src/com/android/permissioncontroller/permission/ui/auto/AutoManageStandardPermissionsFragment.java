@@ -129,7 +129,7 @@ public class AutoManageStandardPermissionsFragment extends AutoManagePermissions
                 autoRevokePreference.setOrder(-1);
                 autoRevokePreference.setKey(AUTO_REVOKE_KEY);
                 autoRevokePreference.setSingleLineTitle(false);
-                autoRevokePreference.setIcon(R.drawable.ic_info_outline_accent);
+                autoRevokePreference.setIcon(R.drawable.ic_info_outline);
                 autoRevokePreference.setTitle(
                         R.string.auto_revoke_permission_notification_title);
                 autoRevokePreference.setSummary(
