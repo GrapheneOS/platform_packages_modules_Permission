@@ -36,7 +36,7 @@
             android:id="@+id/standard_to_custom"
             app:destination="@id/manage_custom"
             app:enterAnim="@anim/activity_open_enter"
-            app:popEnterAnim="@anim/activity_close_enter"
+            app:popEnterAnim="@anim/activity_open_enter"
             app:popExitAnim="@anim/activity_close_exit"/>
 
         <action
