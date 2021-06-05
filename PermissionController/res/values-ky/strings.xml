@@ -201,7 +201,7 @@
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Кирүү: <xliff:g id="NUM">%1$s</xliff:g> жолу. Акыркы жолу <xliff:g id="TIME">%2$s</xliff:g> колдонулган."</string>
     <string name="app_permission_button_allow" msgid="5808039516494774647">"Уруксат берүү"</string>
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Бардык файлдарды башкарууга уруксат берүү"</string>
-    <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Медиа файлдарга гана кирүүгө уруксат берүү"</string>
+    <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Медиа файлдарга гана уруксат берүү"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Бардык учурда уруксат берилет"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Колдонмо колдонулуп жатканда гана уруксат берилет"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Ар дайым суралсын"</string>
@@ -210,7 +210,7 @@
     <string name="approximate_image_description" msgid="938803699637069884">"Болжолдуу жайгашкан жери"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Турган жерди так аныктоо"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Так жайгашкан жерди көрүү мүмкүнчүлүгү өчүрүлгөн болсо, колдонмолор турган жериңизди болжолдоп аныктай алышат"</string>
-    <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> дайындарына уруксаттар"</string>
+    <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> уруксаттары"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"<xliff:g id="PERM">%1$s</xliff:g>: бул колдонмого уруксат берүү"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Бардык <xliff:g id="APP">%1$s</xliff:g> уруксаттарын көрүү"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Ушундай уруксат берилген бардык колдонмолорду көрүү"</string>

@@ -239,7 +239,7 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"הצגת כל ההרשאות של \'<xliff:g id="APP">%1$s</xliff:g>\'"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"הצגת כל האפליקציות עם ההרשאה הזו"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"‏הצגת השימוש במיקרופון של Assistant"</string>
-    <string name="auto_revoke_label" msgid="5068393642936571656">"יש להסיר הרשאות אם האפליקציה לא נמצאת בשימוש"</string>
+    <string name="auto_revoke_label" msgid="5068393642936571656">"הסרת ההרשאות אם האפליקציה לא נמצאת בשימוש"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"כדי להגן על הנתונים שלך, אם האפליקציה הזו לא תהיה בשימוש במשך מספר חודשים, ההרשאות שניתנו לה יוסרו."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"כדי להגן על הנתונים שלך, אם האפליקציה לא תהיה בשימוש במשך מספר חודשים, ההרשאות הבאות יוסרו: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"כדי להגן על הנתונים שלך, הוסרו הרשאות מאפליקציות שלא השתמשת בהן במשך מספר חודשים."</string>
@@ -270,7 +270,7 @@
     <string name="permission_description_summary_location" msgid="2817531799933480694">"לאפליקציות עם ההרשאה הזו יש גישה למיקום של המכשיר"</string>
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"אפליקציות עם ההרשאה הזו יכולות לאתר מכשירים קרובים, להתחבר אליהם ולזהות את מיקומם היחסי."</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"אפליקציות עם ההרשאה הזו יכולות להקליט אודיו"</string>
-    <string name="permission_description_summary_phone" msgid="4515277217435233619">"אפליקציות עם ההרשאה הזו יכולות להתקשר ולנהל שיחות טלפון"</string>
+    <string name="permission_description_summary_phone" msgid="4515277217435233619">"אפליקציות עם ההרשאה הזו יכולות לבצע ולנהל שיחות טלפון"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"אפליקציות עם ההרשאה הזו יכולות לגשת אל נתונים של חיישנים שמודדים את הסימנים החיוניים שלך"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"‏אפליקציות עם ההרשאה הזו יכולות לשלוח ולהציג הודעות SMS"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"אפליקציות עם ההרשאה הזו יכולות לגשת לתמונות, למדיה ולקבצים במכשיר שלך"</string>
@@ -282,7 +282,7 @@
     <string name="allowed_always_header" msgid="6455903312589013545">"מורשות תמיד"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"מורשות רק בזמן השימוש"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"הרשאת גישה למדיה בלבד"</string>
-    <string name="allowed_storage_full" msgid="5356699280625693530">"יש הרשאה לניהול כל הקבצים"</string>
+    <string name="allowed_storage_full" msgid="5356699280625693530">"הרשאה לניהול כל הקבצים"</string>
     <string name="ask_header" msgid="2633816846459944376">"יש לשאול בכל פעם"</string>
     <string name="denied_header" msgid="903209608358177654">"אין הרשאה"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
