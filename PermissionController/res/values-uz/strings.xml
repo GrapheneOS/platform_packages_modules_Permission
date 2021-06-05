@@ -326,16 +326,16 @@
     <string name="permission_subtitle_background" msgid="8916750995309083180">"Doimiy ruxsat berilgan"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"Oxirgi kirilgan vaqt: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Oxirgi marta kecha <xliff:g id="TIME_DATE">%1$s</xliff:g> da kirilgan"</string>
-    <string name="app_perms_content_provider" msgid="6996750793881252778">"24 soat ichida kirilgan"</string>
+    <string name="app_perms_content_provider" msgid="6996750793881252778">"Oxirgi 24 soat ichida ishlatilgan"</string>
     <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Oxirgi kirish: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Doimiy ruxsat berilgan"</string>
     <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Oxirgi kirish: kecha, <xliff:g id="TIME_DATE">%1$s</xliff:g> • Doimiy ruxsat berilgan"</string>
-    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"Oxirgi 24 soat ichida kirilgan • Doimiy ruxsat berilgan"</string>
+    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"Oxirgi 24 soat ichida ishlatilgan • Doimiy ruxsat berilgan"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Oxirgi kirilgan vaqt: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Media"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Oxirgi marta kecha <xliff:g id="TIME_DATE">%1$s</xliff:g> da kirilgan • Media"</string>
-    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"24 soat ichida kirilgan • Media"</string>
+    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"Oxirgi 24 soat ichida ishlatilgan • Media"</string>
     <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"Oxirgi kirilgan vaqt: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Barcha fayllar"</string>
     <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"Oxirgi marta kecha <xliff:g id="TIME_DATE">%1$s</xliff:g> da kirilgan • Barcha fayllar"</string>
-    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"24 soat ichida kirilgan • Barcha fayllar"</string>
+    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"Oxirgi 24 soat ichida ishlatilgan • Barcha fayllar"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Hech qanday ruxsat berilmagan"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"Barcha ruxsatlar taqdim etilgan"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"Hech qanday ilovaga ruxsat berilmagan"</string>

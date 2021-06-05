@@ -240,7 +240,7 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Zobrazit všechny aplikace s tímto oprávněním"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Zobrazit používání mikrofonu asistentem"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Odebrat oprávnění, pokud se aplikace nepoužívá"</string>
-    <string name="auto_revoke_summary" msgid="5867548789805911683">"Pokud tuto aplikaci několik měsíců nepoužijete, kvůli ochraně vašich dat jí budou odebrána oprávnění."</string>
+    <string name="auto_revoke_summary" msgid="5867548789805911683">"Pokud tuto aplikaci několik měsíců nepoužijete, kvůli ochraně vašich dat jí budou oprávnění odebrána."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Pokud tuto aplikaci několik měsíců nepoužijete, budou jí kvůli ochraně vašich dat odebrána následující oprávnění: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Za účelem ochrany vašich dat byla odebrána oprávnění aplikacím, které jste několik měsíců nepoužili."</string>
     <string name="auto_revoke_open_app_message" msgid="8075556291711205039">"Pokud chcete oprávnění znovu povolit, aplikaci otevřete."</string>
@@ -278,13 +278,13 @@
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Zakázáno / naposledy použito: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Žádný přístup"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"Zakázáno / žádný přístup"</string>
-    <string name="allowed_header" msgid="7769277978004790414">"Povolené"</string>
-    <string name="allowed_always_header" msgid="6455903312589013545">"Povolené pořád"</string>
-    <string name="allowed_foreground_header" msgid="6845655788447833353">"Povolené pouze při používání"</string>
+    <string name="allowed_header" msgid="7769277978004790414">"Povoleno"</string>
+    <string name="allowed_always_header" msgid="6455903312589013545">"Povoleno pořád"</string>
+    <string name="allowed_foreground_header" msgid="6845655788447833353">"Povoleno pouze při používání"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Povolen pouze přístup k médiím"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Povolena správa všech souborů"</string>
     <string name="ask_header" msgid="2633816846459944376">"Pokaždé se zeptat"</string>
-    <string name="denied_header" msgid="903209608358177654">"Nepovolené"</string>
+    <string name="denied_header" msgid="903209608358177654">"Nepovoleno"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> dny</item>
       <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> dne</item>

@@ -238,14 +238,14 @@
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Si vous l\'autorisez à gérer tous les fichiers, cette application pourra y accéder, les modifier et les supprimer, sur cet appareil et sur les périphériques de stockage connectés. L\'application pourra accéder aux fichiers sans vous le demander."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Autoriser cette application à accéder aux fichiers, à les modifier et à les supprimer, sur cet appareil et sur les périphériques de stockage connectés ? L\'application pourra accéder aux fichiers sans vous le demander."</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"Les applications disposant de cette autorisation peuvent <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
-    <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Les applications disposant de cette autorisation peuvent accéder aux données relatives à votre activité physique (marche, vélo, voiture, nombre de pas, etc.)"</string>
+    <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Les applications disposant de cette autorisation peuvent accéder à votre activité physique (marche, vélo, voiture, nombre de pas, etc.)"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Les applications disposant de cette autorisation peuvent accéder à votre agenda"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Les applications disposant de cette autorisation peuvent consulter et modifier le journal d\'appels du téléphone"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Les applications disposant de cette autorisation peuvent prendre des photos et enregistrer des vidéos"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Les applications disposant de cette autorisation peuvent accéder à vos contacts"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Les applications disposant de cette autorisation peuvent accéder à la position de cet appareil"</string>
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Les applis disposant de cette autorisation peuvent détecter les appareils à proximité, s\'y connecter et déterminer leur position relative"</string>
-    <string name="permission_description_summary_microphone" msgid="630834800308329907">"Les applications disposant de cette autorisation peuvent enregistrer du contenu audio"</string>
+    <string name="permission_description_summary_microphone" msgid="630834800308329907">"Les applications disposant de cette autorisation peuvent enregistrer de l\'audio"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Les applications disposant de cette autorisation peuvent passer et gérer des appels téléphoniques"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Les applications disposant de cette autorisation peuvent accéder aux données des capteurs corporels"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Les applications disposant de cette autorisation peuvent envoyer et lire des SMS"</string>
@@ -349,23 +349,23 @@
     <string name="accessibility_service_dialog_bottom_text_single" msgid="1128666197822205958">"<xliff:g id="SERVICE_NAME">%s</xliff:g> peut voir votre écran, vos actions et ce que vous saisissez, réaliser des actions et contrôler l\'affichage."</string>
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"Ces applications peuvent voir votre écran, vos actions, ce que vous saisissez, réaliser des actions et contrôler l\'affichage."</string>
     <string name="role_assistant_label" msgid="4727586018198208128">"Assistant numérique par défaut"</string>
-    <string name="role_assistant_short_label" msgid="3369003713187703399">"Assistant numérique"</string>
+    <string name="role_assistant_short_label" msgid="3369003713187703399">"Appli d\'assistant numérique"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Les applis d\'assistance peuvent se servir des infos à l\'écran pour vous aider. Certaines sont compatibles à la fois avec le lanceur d\'applications et les services de saisie vocale pour vous fournir une assistance intégrée."</string>
     <string name="role_assistant_request_title" msgid="5964976301922776060">"Définir <xliff:g id="APP_NAME">%1$s</xliff:g> comme votre application d\'assistance par défaut ?"</string>
     <string name="role_assistant_request_description" msgid="6836644847620178483">"Peut accéder aux SMS et au journal d\'appels"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Navigateur par défaut"</string>
-    <string name="role_browser_short_label" msgid="6745009127123292296">"Navigateur"</string>
+    <string name="role_browser_short_label" msgid="6745009127123292296">"Appli de navigateur"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Applications qui vous permettent d\'accéder à Internet et d\'afficher des liens sur lesquels appuyer"</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"Utiliser <xliff:g id="APP_NAME">%1$s</xliff:g> en tant que navigateur par défaut ?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"Aucune autorisation nécessaire"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"Appli de téléphone par défaut"</string>
-    <string name="role_dialer_short_label" msgid="7186888549465352489">"Application de téléphone"</string>
+    <string name="role_dialer_short_label" msgid="7186888549465352489">"Appli de téléphone"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Applications qui vous permettent de passer et de recevoir des appels téléphoniques sur votre appareil"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Définir <xliff:g id="APP_NAME">%1$s</xliff:g> comme votre application de téléphone par défaut ?"</string>
     <string name="role_dialer_request_description" msgid="2264219375528345270">"Peut accéder au journal d\'appels et envoyer des SMS"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"clavier"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Appli de SMS par défaut"</string>
-    <string name="role_sms_short_label" msgid="4371444488034692243">"Application de SMS"</string>
+    <string name="role_sms_short_label" msgid="4371444488034692243">"Appli de SMS"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Applications qui vous permettent d\'utiliser votre numéro de téléphone pour envoyer et recevoir des SMS, des photos, des vidéos et plus encore"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Définir <xliff:g id="APP_NAME">%1$s</xliff:g> comme application par défaut pour les SMS ?"</string>
     <string name="role_sms_request_description" msgid="983371022668134198">"Peut accéder aux contacts, aux SMS et au téléphone"</string>

@@ -260,7 +260,7 @@
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"បានអនុញ្ញាតឱ្យចូលប្រើមេឌៀតែប៉ុណ្ណោះ"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"បានអនុញ្ញាតឱ្យគ្រប់គ្រងឯកសារទាំងអស់"</string>
     <string name="ask_header" msgid="2633816846459944376">"សួរគ្រប់ពេល"</string>
-    <string name="denied_header" msgid="903209608358177654">"មិន​អនុញ្ញាត​"</string>
+    <string name="denied_header" msgid="903209608358177654">"មិន​បានអនុញ្ញាត​"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ថ្ងៃ</item>
       <item quantity="one">1 ថ្ងៃ</item>
