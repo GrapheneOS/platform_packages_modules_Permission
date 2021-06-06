@@ -23,8 +23,8 @@
         <permission name="android.permission.READ_CALL_LOG" />
         <permission name="android.permission.WRITE_CALL_LOG" />
         <permission name="com.android.voicemail.permission.ADD_VOICEMAIL" />
-        <permission name="com.android.voicemail.permission.READ_VOICEMAIL" />
-        <permission name="com.android.voicemail.permission.WRITE_VOICEMAIL" />
+        <permission name="com.android.voicemail.permission.READ_VOICEMAIL" minSdkVersion="31" />
+        <permission name="com.android.voicemail.permission.WRITE_VOICEMAIL" minSdkVersion="31" />
         <permission name="android.permission.USE_SIP" />
         <permission name="android.permission.PROCESS_OUTGOING_CALLS" />
         <permission name="android.permission.ANSWER_PHONE_CALLS" />
