@@ -212,7 +212,7 @@
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Une honetan ukatuta / Azken sarbide-data: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Ez da erabili inoiz"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"Ukatuta / Ez da erabili inoiz"</string>
-    <string name="allowed_header" msgid="7769277978004790414">"Baimendutakoak"</string>
+    <string name="allowed_header" msgid="7769277978004790414">"Baimenduta"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"Beti baimendutakoak"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"Erabili bitartean soilik baimendutakoak"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Multimedia-fitx. soilik atzitzeko baimena dutenak"</string>
@@ -305,7 +305,7 @@
     <string name="role_dialer_request_description" msgid="2264219375528345270">"SMSak bidal eta deien erregistroa atzitu ahalko ditu"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"markagailua"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"SMSetarako aplik. lehenetsia"</string>
-    <string name="role_sms_short_label" msgid="4371444488034692243">"SMS mezuetarako aplikazioa"</string>
+    <string name="role_sms_short_label" msgid="4371444488034692243">"SMSetarako aplikazioa"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Telefono-zenbakiaren bidez testu-mezu laburrak, argazkiak, bideoak eta beste zenbait gauza bidaltzea eta jasotzea ahalbidetzen dizuten aplikazioak"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g> ezarri nahi duzu SMS mezuetarako aplikazio lehenetsi gisa?"</string>
     <string name="role_sms_request_description" msgid="983371022668134198">"Kontaktuak, SMSak ete telefonoa atzitu ahalko ditu"</string>
@@ -328,7 +328,7 @@
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"<xliff:g id="APP_NAME">%1$s</xliff:g> ezarri nahi duzu deiak birbideratzeko aplikazio lehenetsi gisa?"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Ez du behar baimenik"</string>
     <string name="role_call_screening_label" msgid="883935222060878724">"Deitzailearen ID eta spam-aplikazio lehenetsia"</string>
-    <string name="role_call_screening_short_label" msgid="2048465565063130834">"Deitzailearen ID eta spam-aplikazioa"</string>
+    <string name="role_call_screening_short_label" msgid="2048465565063130834">"Deitzailearen IDa eta spama"</string>
     <string name="role_call_screening_description" msgid="2349431420497468981">"Deiak identifikatzeko, eta spama, dei automatizatuak eta nahi ez dituzun zenbakiak blokeatzeko aukera ematen dizuten aplikazioak"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> ezarri nahi duzu deitzailearen ID eta spam-aplikazio lehenetsi gisa?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Ez du behar baimenik"</string>
