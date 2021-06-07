@@ -248,7 +248,7 @@
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"この権限があるアプリは録音を行えます"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"この権限があるアプリは電話の発信と管理を行えます"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"この権限があるアプリはバイタルサインに関するセンサーデータにアクセスできます"</string>
-    <string name="permission_description_summary_sms" msgid="725999468547768517">"この権限があるアプリは SMS メッセージの送信、表示を行えます"</string>
+    <string name="permission_description_summary_sms" msgid="725999468547768517">"この権限があるアプリは SMS メッセージの送信、参照を行えます"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"この権限があるアプリは、デバイス内の写真、メディア、ファイルにアクセスできます"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"最終アクセス: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"現在は許可しない / 最終アクセス: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>

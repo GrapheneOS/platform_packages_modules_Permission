@@ -238,7 +238,7 @@
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Bununla, tətbiq bu və ya qoşulmuş cihazlarda ümumi yaddaşdakı bütün fayllara daxil ola, dəyişiklik edə və ya onları silə bilər. Fayllara sizdən xəbərsiz girə bilər."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Bu tətbiqə cihazdakı və ya istənilən qoşulmuş yaddaş cihazındakı fayllara daxil olmaq, dəyişiklik etmək və onları silmək icazəsi verilsin? Bu tətbiq sizdən soruşmadan fayllara daxil ola bilər."</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"Bu icazəyə sahib tətbiqlər edə bilər: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
-    <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Bu icazəyə sahib tətbiqlər gəzmək, velosiped, avtomobil sürmək, addım sayı və s. kimi fiziki fəaliyyətə daxil ola bilər"</string>
+    <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"İcazəsi olan tətbiqlər addımların sayı, velosiped və ya avtomobillər gedilmiş yolun uzunluğu kimi fiziki fəaliyyətə daxil ola bilər"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Bu icazəyə sahib tətbiqlər təqviminizə giriş edə bilər"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Bu icazəyə sahib olan tətbiqlər telefon üçün zəng siyahısını oxuya və yaza bilər"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Bu icazəyə sahib tətbiqlər şəkil və videolar çəkə bilər"</string>
@@ -246,7 +246,7 @@
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Buna icazəsi olan tətbiqlər cihaz məkanını öyrənə bilər"</string>
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Bu icazəsi olan tətbiqlər yaxınlıqdakı cihazları tapa, qoşula və nisbi mövqeyi təyin edə bilər"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Bu icazəyə sahib tətbiqlər audio qeydə ala bilər"</string>
-    <string name="permission_description_summary_phone" msgid="4515277217435233619">"Bu icazəyə sahib olan tətbiqlər telefon zəngləri aça edə və onları idarə edə bilər"</string>
+    <string name="permission_description_summary_phone" msgid="4515277217435233619">"İcazəsi olan tətbiqlər zəngləri idarə edə bilər."</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Bu icazəsi olan tətbiqlər sağlamlığınız haqqında sensor datasına giriş edə bilər"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Bu icazəyə sahib tətbiqlər SMS mesajları göndərə və baxa bilər"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Bu icazəyə sahib tətbiqlər cihazdakı foto, media və fayllara daxil ola bilər"</string>
