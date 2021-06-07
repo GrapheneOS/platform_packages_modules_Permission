@@ -396,13 +396,13 @@
     <string name="role_browser_description" msgid="3465253637499842671">"אפליקציות שמספקות לך גישה לאינטרנט ומציגות קישורים להקשה"</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"להגדיר את <xliff:g id="APP_NAME">%1$s</xliff:g> כאפליקציית הדפדפן המשמשת כברירת מחדל?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"אין צורך בהרשאות"</string>
-    <string name="role_dialer_label" msgid="1100224146343237968">"אפליקציית ברירת מחדל לטלפון"</string>
+    <string name="role_dialer_label" msgid="1100224146343237968">"אפליקציית ברירת המחדל לטלפון"</string>
     <string name="role_dialer_short_label" msgid="7186888549465352489">"אפליקציית טלפון"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"אפליקציות שמאפשרות לך להתקשר ולקבל שיחות במכשיר"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"להגדיר את <xliff:g id="APP_NAME">%1$s</xliff:g> בתור אפליקציית הטלפון שמשמשת כברירת מחדל?"</string>
     <string name="role_dialer_request_description" msgid="2264219375528345270">"‏מקבלת גישה אל יומן השיחות ולשליחת SMS"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"חייגן"</string>
-    <string name="role_sms_label" msgid="8456999857547686640">"‏אפליקציית ברירת מחדל ל-SMS"</string>
+    <string name="role_sms_label" msgid="8456999857547686640">"‏אפליקציית ברירת המחדל ל-SMS"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"‏אפליקציית SMS"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"אפליקציות שמאפשרות לך להשתמש במספר הטלפון כדי לשלוח ולקבל הודעות טקסט קצרות, תמונות, סרטונים ועוד"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"‏להגדיר את <xliff:g id="APP_NAME">%1$s</xliff:g> כאפליקציית ברירת המחדל ל-SMS?"</string>

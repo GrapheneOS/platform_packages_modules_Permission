@@ -256,7 +256,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Aplikacije s tim dopuštenjem mogu snimati fotografije i videozapise"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Aplikacije s tim dopuštenjem mogu pristupiti vašim kontaktima"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Aplikacije s tim dopuštenjem mogu pristupiti lokaciji ovog uređaja"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Aplikacije s tim dopuštenjem mogu tražiti uređaje u blizini, povezati se s njima i odrediti njihov približni položaj"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Aplikacije s tim dopuštenjem mogu tražiti uređaje u blizini, povezivati se s njima i određivati njihov približni položaj"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Aplikacije s tim dopuštenjem mogu snimati zvuk"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Aplikacije s tim dopuštenjem mogu uspostavljati telefonske pozive i upravljati njima"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Aplikacije s tim dopuštenjem mogu pristupiti podacima senzora o vašim vitalnim znakovima"</string>

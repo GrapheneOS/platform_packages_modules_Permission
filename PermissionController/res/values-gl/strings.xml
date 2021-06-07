@@ -254,13 +254,13 @@
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Actualmente denegado. Último acceso: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Non accedeu nunca"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"Denegado/Non accedeu nunca"</string>
-    <string name="allowed_header" msgid="7769277978004790414">"Con permiso"</string>
+    <string name="allowed_header" msgid="7769277978004790414">"Permiso concedido"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"Permítese sempre"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"Só se permite mentres estea en uso"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Permiso para acceder só a contido multimedia"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Permiso para xestionar todos os ficheiros"</string>
     <string name="ask_header" msgid="2633816846459944376">"Preguntar sempre"</string>
-    <string name="denied_header" msgid="903209608358177654">"Sen permiso"</string>
+    <string name="denied_header" msgid="903209608358177654">"Permiso non concedido"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> días</item>
       <item quantity="one">1 día</item>
