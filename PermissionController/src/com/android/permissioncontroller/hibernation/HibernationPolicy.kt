@@ -347,8 +347,7 @@ private suspend fun getAppsToHibernate(
  */
 fun UsageStats.lastTimePackageUsed(): Long {
     var lastTimePkgUsed = this.lastTimeVisible
-    // TODO(b/180748832): Change this to SDK check once SDK moves up and feature flag is removed.
-    if (isHibernationEnabled()) {
+    if (SdkLevel.isAtLeastS()) {
         lastTimePkgUsed = maxOf(lastTimePkgUsed, this.lastTimeAnyComponentUsed)
     }
     return lastTimePkgUsed
@@ -696,17 +695,17 @@ class ExemptServicesLiveData(val user: UserHandle)
 object HibernationEnabledLiveData
     : MutableLiveData<Boolean>() {
     init {
-        // TODO(b/175830282): Add SDK check when platform SDK moves up
-        value = DeviceConfig.getBoolean(
-            NAMESPACE_APP_HIBERNATION, Utils.PROPERTY_APP_HIBERNATION_ENABLED,
-            false /* defaultValue */)
+        value = SdkLevel.isAtLeastS() &&
+            DeviceConfig.getBoolean(NAMESPACE_APP_HIBERNATION,
+            Utils.PROPERTY_APP_HIBERNATION_ENABLED, false /* defaultValue */)
         DeviceConfig.addOnPropertiesChangedListener(
             NAMESPACE_APP_HIBERNATION,
             PermissionControllerApplication.get().mainExecutor,
             { properties ->
                 for (key in properties.keyset) {
                     if (key == Utils.PROPERTY_APP_HIBERNATION_ENABLED) {
-                        value = properties.getBoolean(key, false /* defaultValue */)
+                        value = SdkLevel.isAtLeastS() &&
+                            properties.getBoolean(key, false /* defaultValue */)
                         break
                     }
                 }
