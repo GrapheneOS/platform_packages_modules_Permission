@@ -364,7 +364,7 @@
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Pretende definir o <xliff:g id="APP_NAME">%1$s</xliff:g> como a app de telefone predefinida?"</string>
     <string name="role_dialer_request_description" msgid="2264219375528345270">"Obtém acesso ao registo de chamadas e envia SMS."</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"telefone"</string>
-    <string name="role_sms_label" msgid="8456999857547686640">"Aplicação de SMS predefinida"</string>
+    <string name="role_sms_label" msgid="8456999857547686640">"App de SMS predefinida"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"Aplicação de SMS"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Apps que permitem utilizar o seu número de telefone para enviar e receber mensagens de texto, fotos, vídeos e muito mais."</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Pretende definir o <xliff:g id="APP_NAME">%1$s</xliff:g> como app SMS predefinida?"</string>

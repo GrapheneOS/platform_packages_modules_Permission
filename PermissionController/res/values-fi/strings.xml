@@ -243,7 +243,7 @@
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Sovellukset, joilla on tämä lupa, voivat lukea ja kirjoittaa puhelulokia"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Sovellukset, joilla on tämä lupa, voivat ottaa kuvia ja kuvata videota"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Sovelluksilla, joilla on tämä lupa, on pääsy yhteystietoihisi."</string>
-    <string name="permission_description_summary_location" msgid="2817531799933480694">"Sovelluksilla, joilla on tämä lupa, on pääsy tämän laitteen sijaintiin."</string>
+    <string name="permission_description_summary_location" msgid="2817531799933480694">"Sovelluksilla, joilla on tämä lupa, on pääsy tämän laitteen sijaintiin"</string>
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Sovellukset, joilla on tämä lupa, voivat löytää lähellä olevia laitteita, yhdistää niihin ja määrittää niiden suhteellisen sijainnin"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Sovellukset, joilla on tämä lupa, voivat tallentaa ääntä"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Sovellukset, joilla on tämä lupa, voivat soittaa ja ylläpitää puheluita"</string>
