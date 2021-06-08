@@ -19,7 +19,7 @@
     <string name="app_name" msgid="6098036489833144040">"Уруксаттарды көзөмөлдөгүч"</string>
     <string name="ok" msgid="1936281769725676272">"ЖАРАЙТ"</string>
     <string name="permission_search_keyword" msgid="1214451577494730543">"уруксаттар"</string>
-    <string name="cancel" msgid="8943320028373963831">"Жокко чыгаруу"</string>
+    <string name="cancel" msgid="8943320028373963831">"Жок"</string>
     <string name="back" msgid="6249950659061523680">"Артка"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Чыгарып салуу же өчүрүү"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Колдонмо табылган жок"</string>
@@ -209,7 +209,7 @@
     <string name="precise_image_description" msgid="6349638632303619872">"Так жайгашкан жери"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Болжолдуу жайгашкан жери"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Турган жерди так аныктоо"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Так жайгашкан жерди көрүү мүмкүнчүлүгү өчүрүлгөн болсо, колдонмолор турган жериңизди болжолдоп аныктай алышат"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Жайгашкан жерди тагыраак аныктоо мүмкүнчүлүгү өчүрүлгөн болсо, колдонмолор турган жериңизди болжолдоп аныктай алышат"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> уруксаттары"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"<xliff:g id="PERM">%1$s</xliff:g>: бул колдонмого уруксат берүү"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Бардык <xliff:g id="APP">%1$s</xliff:g> уруксаттарын көрүү"</string>
@@ -350,7 +350,7 @@
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"Бул колдонмолор экраныңыздагы маалыматты, аракеттерди жана киргизүүлөрдү көрүп, аракеттерди аткарып, дисплейди көзөмөлдөйт."</string>
     <string name="role_assistant_label" msgid="4727586018198208128">"Демейки санариптик жардамчы"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Санариптик жардамчы колдонмосу"</string>
-    <string name="role_assistant_description" msgid="6622458130459922952">"Көмөкчү колдонмолор экранда көргөн маалыматыңыздын негизинде сизге жардам бере алат. Айрым колдонмолор жүргүзгүчтү жана оозеки киргизүү функциясын да колдоого алат."</string>
+    <string name="role_assistant_description" msgid="6622458130459922952">"Көмөкчү колдонмолор экранда көргөн маалыматыңыздын негизинде сизге жардам бере алат. Айрым колдонмолор жүргүзгүчтү жана айтып киргизүү функциясын да колдоого алат."</string>
     <string name="role_assistant_request_title" msgid="5964976301922776060">"<xliff:g id="APP_NAME">%1$s</xliff:g> демейки көмөкчү колдонмоңуз катары коюлсунбу?"</string>
     <string name="role_assistant_request_description" msgid="6836644847620178483">"SMS’ке, чалуулар тизмесине мүмкүнчүлүк алат"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Демейки серепчи"</string>
@@ -387,7 +387,7 @@
     <string name="role_call_redirection_description" msgid="6091669882014664420">"Чалууларды башка телефон номерине багыттоого мүмкүнчүлүк берген колдонмолор"</string>
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"<xliff:g id="APP_NAME">%1$s</xliff:g> колдонмосун демейки \"чалууларды багыттоо\" колдонмосу катары коёсузбу?"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Уруксаттардын кереги жок"</string>
-    <string name="role_call_screening_label" msgid="883935222060878724">"Чалуучуну аныктап, спамдардан коргоо жана \"спам\" колдонмосу"</string>
+    <string name="role_call_screening_label" msgid="883935222060878724">"Чалуучуну аныктап, спамдардан коргогон колдонмо"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"Чалуучунун идентификатору жана \"спам\" колдонмосу"</string>
     <string name="role_call_screening_description" msgid="2349431420497468981">"Сизге чалып жаткан номерлерди аныктап, спамдарды жана автоматтык чалууларды бөгөттөп, керексиз номерлерди кара тизмеге киргизген колдонмолор"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> колдонмосун чалуучунун демейки идентификатору жана \"спам\" колдонмосу катары коёсузбу?"</string>
@@ -442,7 +442,7 @@
     <string name="adjust_user_sensitive_title" msgid="4196724451314280527">"Өркүндөтүлгөн жөндөөлөр"</string>
     <string name="menu_adjust_user_sensitive" msgid="6497923610654425780">"Өркүндөтүлгөн жөндөөлөр"</string>
     <string name="adjust_user_sensitive_globally_title" msgid="8649190949066029174">"Тутум колдонмолорунун колдонгондугун көрсөтүү"</string>
-    <string name="adjust_user_sensitive_globally_summary" msgid="129467818433773912">"Тутумдун уруксаттарды колдонгондугу абал тилкесинде, куралдар тактасында жана башка жерде көрүнөт"</string>
+    <string name="adjust_user_sensitive_globally_summary" msgid="129467818433773912">"Системанын уруксаттарды колдонгондугу абал тилкесинде, куралдар тактасында жана башка жерде көрүнөт"</string>
     <string name="adjust_user_sensitive_per_app_header" msgid="4543506440989005648">"Тандалган колдонмолорду көрсөтүү"</string>
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Үн жардамчысынын иштегенин чагылдырган сүрөтчөнү көрсөтүү"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Үн жардамчысын иштетүү үчүн микрофон колдонулганда, абал тилкесинде сүрөтчө көрүнөт"</string>

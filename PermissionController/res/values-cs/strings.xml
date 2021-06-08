@@ -66,7 +66,7 @@
     </plurals>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"Tato aplikace byla vytvořena pro starší verzi platformy Android. Pokud oprávnění neudělíte, může přestat fungovat podle původního záměru."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"provést neznámou akci"</string>
-    <string name="app_permissions_group_summary" msgid="8788419008958284002">"Povoleno u <xliff:g id="COUNT_0">%1$d</xliff:g> z <xliff:g id="COUNT_1">%2$d</xliff:g> aplikací"</string>
+    <string name="app_permissions_group_summary" msgid="8788419008958284002">"Povoleno u aplikací: <xliff:g id="COUNT_0">%1$d</xliff:g> z <xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"Povolené aplikace: <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Zobrazit systémové aplikace"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Skrýt systémové aplikace"</string>
@@ -386,9 +386,9 @@
     <string name="accessibility_service_dialog_title_multiple" msgid="5527879210683548175">"Služby přístupnosti, které mají plný přístup k vašemu zařízení: <xliff:g id="NUM_SERVICES">%s</xliff:g>"</string>
     <string name="accessibility_service_dialog_bottom_text_single" msgid="1128666197822205958">"Služba <xliff:g id="SERVICE_NAME">%s</xliff:g> může zobrazit vaši obrazovku, akce a vstup, provádět akce a ovládat obrazovku."</string>
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"Tyto aplikace mohou zobrazit vaši obrazovku, akce a zadávaný obsah, provádět akce a ovládat obrazovku."</string>
-    <string name="role_assistant_label" msgid="4727586018198208128">"Výchozí aplikace dig. asistenta"</string>
+    <string name="role_assistant_label" msgid="4727586018198208128">"Výchozí digitální asistent"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Aplikace digitálního asistenta"</string>
-    <string name="role_assistant_description" msgid="6622458130459922952">"Asistenční aplikace vám mohou pomoct na základě informací na zobrazené obrazovce. Některé aplikace podporují Launcher i hlasový vstup, a nabízejí tak integrovanou asistenci."</string>
+    <string name="role_assistant_description" msgid="6622458130459922952">"Asistenční aplikace pomáhají na základě informací na zobrazené obrazovce. Některé aplikace podporují spouštěče i hlasový vstup, a nabízejí tak integrovanou asistenci."</string>
     <string name="role_assistant_request_title" msgid="5964976301922776060">"Nastavit <xliff:g id="APP_NAME">%1$s</xliff:g> jako výchozí asistenční aplikaci?"</string>
     <string name="role_assistant_request_description" msgid="6836644847620178483">"Získá přístup k SMS a seznamu hovorů"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Výchozí prohlížeč"</string>
@@ -396,7 +396,7 @@
     <string name="role_browser_description" msgid="3465253637499842671">"Aplikace, které vám umožňují přístup k internetu a zobrazují odkazy, na které můžete klepnout."</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"Nastavit <xliff:g id="APP_NAME">%1$s</xliff:g> jako výchozí prohlížeč?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"Není potřeba žádné oprávnění"</string>
-    <string name="role_dialer_label" msgid="1100224146343237968">"Výchozí aplikace na volání"</string>
+    <string name="role_dialer_label" msgid="1100224146343237968">"Výchozí aplikace k volání"</string>
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Aplikace k telefonování"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Aplikace, které vám v zařízení umožňují volat a přijímat hovory."</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Nastavit <xliff:g id="APP_NAME">%1$s</xliff:g> jako výchozí aplikaci k telefonování?"</string>
@@ -425,9 +425,9 @@
     <string name="role_call_redirection_description" msgid="6091669882014664420">"Aplikace, které vám umožňují přesměrovat odchozí hovory na jiné číslo"</string>
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"Nastavit <xliff:g id="APP_NAME">%1$s</xliff:g> jako výchozí aplikaci na přesměrování hovorů?"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Není potřeba žádné oprávnění"</string>
-    <string name="role_call_screening_label" msgid="883935222060878724">"Výchozí aplikace na ID a spam"</string>
-    <string name="role_call_screening_short_label" msgid="2048465565063130834">"Ap. na ID volajícího a spam"</string>
-    <string name="role_call_screening_description" msgid="2349431420497468981">"Aplikace, které umožňují identifikovat hovory, blokovat spam, automatické hovory a a zakázaná čísla."</string>
+    <string name="role_call_screening_label" msgid="883935222060878724">"Výchozí aplikace k identifikaci volajícího a spamu"</string>
+    <string name="role_call_screening_short_label" msgid="2048465565063130834">"Aplikace na ID volajícího a spam"</string>
+    <string name="role_call_screening_description" msgid="2349431420497468981">"Aplikace, které umožňují identifikovat hovory a blokovat spam, automatické hovory a zakázaná čísla."</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Nastavit <xliff:g id="APP_NAME">%1$s</xliff:g> jako výchozí aplikaci k identifikaci volajícího a prevenci spamu?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Není potřeba žádné oprávnění"</string>
     <string name="role_watch_description" msgid="267003778693177779">"Aplikace <xliff:g id="APP_NAME">%1$s</xliff:g> bude moci interagovat s vašimi oznámeními a získá přístup k telefonu, SMS, kontaktům a kalendáři."</string>
@@ -456,7 +456,7 @@
     <string name="default_apps_more" msgid="4078194675848858093">"Další výchozí nastavení"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Otevírání odkazů"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Výchozí pracovní"</string>
-    <string name="default_app_none" msgid="9084592086808194457">"Žádné"</string>
+    <string name="default_app_none" msgid="9084592086808194457">"Žádná"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Výchozí nastavení systému)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Žádné aplikace"</string>
     <string name="car_default_app_selected" msgid="5416420830430644174">"Vybráno"</string>
