@@ -348,8 +348,8 @@
     <string name="accessibility_service_dialog_title_multiple" msgid="5527879210683548175">"အများသုံးစွဲနိုင်မှုဆိုင်ရာ အက်ပ် <xliff:g id="NUM_SERVICES">%s</xliff:g> ခုက သင့်စက်ပစ္စည်းကို အပြည့်အဝ အသုံးပြုခွင့်ရှိသည်"</string>
     <string name="accessibility_service_dialog_bottom_text_single" msgid="1128666197822205958">"<xliff:g id="SERVICE_NAME">%s</xliff:g> သည် သင်၏ မျက်နှာပြင်၊ လုပ်ဆောင်ချက်များ၊ ထည့်သွင်းမှုများကို ကြည့်နိုင်ပြီး လုပ်ဆောင်ချက်များကို ဆောင်ရွက်နိုင်သည့်အပြင် မျက်နှာပြင်သမှုကိုလည်း ထိန်းချုပ်နိုင်သည်။"</string>
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"ဤအက်ပ်များက သင်၏ မျက်နှာပြင်၊ လုပ်ဆောင်ချက်များ၊ ထည့်သွင်းမှုများကို ကြည့်နိုင်ပြီး လုပ်ဆောင်ချက်များကို ဆောင်ရွက်နိုင်သည့်အပြင် မျက်နှာပြင်ပြသမှုကိုလည်း ထိန်းချုပ်နိုင်သည်။"</string>
-    <string name="role_assistant_label" msgid="4727586018198208128">"မူလဒစ်ဂျစ်တယ် assistant အက်ပ်"</string>
-    <string name="role_assistant_short_label" msgid="3369003713187703399">"ဒစ်ဂျစ်တယ် assistant အက်ပ်"</string>
+    <string name="role_assistant_label" msgid="4727586018198208128">"မူလဒစ်ဂျစ်တယ် Assistant အက်ပ်"</string>
+    <string name="role_assistant_short_label" msgid="3369003713187703399">"ဒစ်ဂျစ်တယ် Assistant အက်ပ်"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"အကူအညီအက်ပ်များသည် သင်ကြည့်နေသည့် မျက်နှာပြင်မှ အချက်အလက်ကို အခြေခံ၍ ပံ့ပိုးပေးနိုင်ပါသည်။ ဘက်စုံ အထောက်အကူပေးနိုင်ရန်အတွက် အချို့အက်ပ်များသည် စဖွင့်စနစ်နှင့် အသံဖြင့်ထည့်သွင်းဝန်ဆောင်မှု နှစ်ခုလုံးကို ပံ့ပိုးပါသည်။"</string>
     <string name="role_assistant_request_title" msgid="5964976301922776060">"<xliff:g id="APP_NAME">%1$s</xliff:g> ကို သင့်မူရင်း အကူအညီအက်ပ်အဖြစ် သတ်မှတ်လိုပါသလား။"</string>
     <string name="role_assistant_request_description" msgid="6836644847620178483">"SMS နှင့် ခေါ်ဆိုမှတ်တမ်းကို ဝင်သုံးခွင့် ရယူသည်"</string>
@@ -389,7 +389,7 @@
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"ခွင့်ပြုချက် မလိုပါ"</string>
     <string name="role_call_screening_label" msgid="883935222060878724">"မူရင်းခေါ်ဆိုသူ ID နှင့် စပမ်းအက်ပ်"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"ခေါ်ဆိုသူ ID နှင့် စပမ်းအက်ပ်"</string>
-    <string name="role_call_screening_description" msgid="2349431420497468981">"ခေါ်ဆိုမှုများကို ခွဲခြားသတ်မှတ်ရန်နှင့် စပမ်း၊ အလိုအလျောက် ခေါ်ဆိုမှုစနစ်များသို့မဟုတ် မလိုလားအပ်သည့် နံပါတ်များကိုပိတ်ရန် ပြုလုပ်ခွင့်ပေးသည့် အက်ပ်များ"</string>
+    <string name="role_call_screening_description" msgid="2349431420497468981">"ခေါ်ဆိုမှုများကို ခွဲခြားသိရှိရန်နှင့် စပမ်း၊ အလိုအလျောက် ခေါ်ဆိုမှုစနစ်များ သို့မဟုတ် မလိုလားအပ်သည့် နံပါတ်များကိုပိတ်ရန် ပြုလုပ်ခွင့်ပေးသည့် အက်ပ်များ"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> ကို သင့်မူရင်း ခေါ်ဆိုသူ ID နှင့် စပမ်းအက်ပ်အဖြစ် သတ်မှတ်လိုပါသလား။"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"ခွင့်ပြုချက် မလိုပါ"</string>
     <string name="role_watch_description" msgid="267003778693177779">"သင်၏ ‘ဖုန်း’၊ ‘SMS စာတိုစနစ်’၊ ‘အဆက်အသွယ်များ’ နှင့် ‘ပြက္ခဒိန်’ ခွင့်ပြုချက်များကို သုံးရန်နှင့် အကြောင်းကြားချက်များကို ပြန်လှန်တုံ့ပြန်ရန် <xliff:g id="APP_NAME">%1$s</xliff:g> ကို ခွင့်ပြုပါမည်။"</string>
