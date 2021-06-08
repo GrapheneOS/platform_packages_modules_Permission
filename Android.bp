@@ -52,10 +52,8 @@ filegroup {
 
 sdk {
     name: "permission-module-sdk",
-    java_sdk_libs: [
-        "framework-permission",
-        "framework-permission-s",
-    ],
+    bootclasspath_fragments: ["com.android.permission-bootclasspath-fragment"],
+    java_sdk_libs: ["service-permission"],
 }
 
 // Encapsulate the contributions made by the com.android.permission to the bootclasspath.
