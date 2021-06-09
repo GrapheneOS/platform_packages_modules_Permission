@@ -238,7 +238,7 @@
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Tüm dosyaların yönetilmesine izin verirseniz bu uygulama, bu cihazdaki ortak depolama alanında veya bu cihaza bağlı depolama cihazlarında bulunan tüm dosyalara erişebilir, bunları değiştirebilir ve silebilir. Uygulama, size sormadan dosyalara erişebilir."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Bu uygulamaya, bu cihazdaki veya bu cihaza bağlı herhangi bir depolama cihazındaki dosyalara erişim izni ve bu dosyaları değiştirme, silme izni verilsin mi? Bu uygulama, size sormadan dosyalara erişebilir."</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"Bu izne sahip uygulamalar şunu yapabilir: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
-    <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Bu izne sahip uygulamalar, yürüyüş, bisiklete binme, araba kullanma, adım sayısı gibi fiziksel aktivitelerinize erişebilir."</string>
+    <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Bu izne sahip uygulamalar, yürüyüş, bisiklete binme, araba kullanma, adım sayısı gibi fiziksel aktivitelerinize erişebilir"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Bu izne sahip uygulamalar takviminize erişebilir"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Bu izne sahip uygulamalar telefon arama kaydını okuyabilir ve yazabilir"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Bu izne sahip uygulamalar fotoğraf çekebilir ve video kaydedebilir"</string>

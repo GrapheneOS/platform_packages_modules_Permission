@@ -348,12 +348,12 @@
     <string name="accessibility_service_dialog_title_multiple" msgid="5527879210683548175">"<xliff:g id="NUM_SERVICES">%s</xliff:g> applications d\'accessibilité bénéficient d\'un accès complet à votre appareil"</string>
     <string name="accessibility_service_dialog_bottom_text_single" msgid="1128666197822205958">"<xliff:g id="SERVICE_NAME">%s</xliff:g> peut voir votre écran, vos actions et ce que vous saisissez, réaliser des actions et contrôler l\'affichage."</string>
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"Ces applications peuvent voir votre écran, vos actions, ce que vous saisissez, réaliser des actions et contrôler l\'affichage."</string>
-    <string name="role_assistant_label" msgid="4727586018198208128">"Assistant numérique par défaut"</string>
+    <string name="role_assistant_label" msgid="4727586018198208128">"Appli d\'assistant numérique par défaut"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Appli d\'assistant numérique"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Les applis d\'assistance peuvent se servir des infos à l\'écran pour vous aider. Certaines sont compatibles à la fois avec le lanceur d\'applications et les services de saisie vocale pour vous fournir une assistance intégrée."</string>
     <string name="role_assistant_request_title" msgid="5964976301922776060">"Définir <xliff:g id="APP_NAME">%1$s</xliff:g> comme votre application d\'assistance par défaut ?"</string>
     <string name="role_assistant_request_description" msgid="6836644847620178483">"Peut accéder aux SMS et au journal d\'appels"</string>
-    <string name="role_browser_label" msgid="2877796144554070207">"Navigateur par défaut"</string>
+    <string name="role_browser_label" msgid="2877796144554070207">"Appli de navigateur par défaut"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Appli de navigateur"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Applications qui vous permettent d\'accéder à Internet et d\'afficher des liens sur lesquels appuyer"</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"Utiliser <xliff:g id="APP_NAME">%1$s</xliff:g> en tant que navigateur par défaut ?"</string>

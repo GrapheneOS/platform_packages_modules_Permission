@@ -255,7 +255,7 @@
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Хэзээ ч хандаагүй"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"Татгалзсан / Хэзээ ч хандаагүй"</string>
     <string name="allowed_header" msgid="7769277978004790414">"Зөвшөөрсөн"</string>
-    <string name="allowed_always_header" msgid="6455903312589013545">"Ямар ч үед зөвшөөрөх"</string>
+    <string name="allowed_always_header" msgid="6455903312589013545">"Үргэлж зөвшөөрсөн"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"Зөвхөн ашиглаж байх үед зөвшөөрөгдсөн"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Зөвхөн медиад хандахыг зөвшөөрсөн"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Бүх файлыг удирдахыг зөвшөөрсөн"</string>
@@ -387,7 +387,7 @@
     <string name="role_call_redirection_description" msgid="6091669882014664420">"Танд залгасан дуудлагыг өөр утасны дугаар луу дамжуулахыг зөвшөөрдөг аппууд"</string>
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"<xliff:g id="APP_NAME">%1$s</xliff:g>-г дуудлагыг дахин чиглүүлэх өгөгдмөл аппаар тохируулах уу?"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Ямар ч зөвшөөрөл шаардлагагүй"</string>
-    <string name="role_call_screening_label" msgid="883935222060878724">"Үндсэн дуудлага хийгчийн ID &amp; спамын  апп"</string>
+    <string name="role_call_screening_label" msgid="883935222060878724">"Үндсэн дуудлага хийгчийн ID, спамын  апп"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"Дуудлага хийгчийн ID, спамын апп"</string>
     <string name="role_call_screening_description" msgid="2349431420497468981">"Танд дуудлага таних болон спам, роботын дуудлага эсвэл хүсээгүй дугаарыг блоклох боломжийг олгодог аппууд"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g>-г дуудлага хийгчийн ID болон спамын өгөгдмөл аппаар тохируулах уу?"</string>

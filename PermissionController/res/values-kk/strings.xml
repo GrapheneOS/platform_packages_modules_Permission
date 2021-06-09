@@ -245,7 +245,7 @@
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Бұл рұқсатқа ие қолданбалар контактілерге кіре алады."</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Бұл рұқсатқа ие қолданбалар осы құрылғының локациясын пайдалана алады."</string>
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Мұндай рұқсаты бар қолданбалар маңайдағы құрылғыларды тауып, олармен байланысып, тиісті орнын анықтай алады."</string>
-    <string name="permission_description_summary_microphone" msgid="630834800308329907">"Бұл рұқсатқа ие қолданбалар дыбысты жаза алады."</string>
+    <string name="permission_description_summary_microphone" msgid="630834800308329907">"Бұл рұқсатқа ие қолданбалар дыбыс жаза алады."</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Бұл рұқсатқа ие қолданбалар телефон қоңырауларын шала және басқара алады."</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Бұл рұқсатқа ие қолданбалар тіршілік белгілері туралы датчик деректерін пайдалана алады."</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Бұл рұқсатқа ие қолданбалар SMS хабарларын жібере және көре алады."</string>
