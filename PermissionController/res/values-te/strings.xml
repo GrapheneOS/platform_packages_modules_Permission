@@ -210,8 +210,8 @@
     <string name="approximate_image_description" msgid="938803699637069884">"సుమారు లొకేషన్"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"ఖచ్చితమైన లొకేషన్‌ను ఉపయోగించండి"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"ఖచ్చితమైన లొకేషన్ ఆఫ్‌లో ఉన్నప్పుడు, యాప్‌లు మీ సుమారు లొకేషన్‌ను యాక్సెస్ చేయగలగవచ్చు"</string>
-    <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> అనుమతి"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"ఈ యాప్ కోసం <xliff:g id="PERM">%1$s</xliff:g> యాక్సెస్"</string>
+    <string name="app_permission_title" msgid="2090897901051370711">"\'<xliff:g id="PERM">%1$s</xliff:g>\' అనుమతి"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"ఈ యాప్ కోసం \'<xliff:g id="PERM">%1$s</xliff:g>\' యాక్సెస్"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"అన్ని \'<xliff:g id="APP">%1$s</xliff:g>\' అనుమతులను చూడండి"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"ఈ అనుమతి ఉన్న అన్ని యాప్‌లను చూడండి"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"అసిస్టెంట్ మైక్రోఫోన్ ఉపయోగాన్ని చూపు"</string>
@@ -244,7 +244,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"ఈ అనుమతి ఉన్న యాప్‌లు ఫోటోలు తీయగలవు, వీడియోను రికార్డ్ చేయగలవు"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"ఈ అనుమతి ఉన్న యాప్‌లు మీ కాంటాక్ట్‌లను యాక్సెస్ చేయగలవు"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"ఈ అనుమతి ఉన్న యాప్‌లు ఈ పరికర లొకేషన్‌ను యాక్సెస్ చేయగలవు"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"ఈ అనుమతి ఉన్న యాప్‌లు సమీప పరికరాల సంబంధిత స్థానాన్ని కనుగొనవచ్చు, కనెక్ట్ చేయవచ్చు అలాగే నిర్ణయించవచ్చు"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"ఈ అనుమతి ఉన్న యాప్‌లు సమీప పరికరాలను గుర్తించవచ్చు, వాటి సంబంధిత స్థానాన్ని తెలుసుకోవచ్చు, అలాగే వాటికి కనెక్ట్ చేయవచ్చు"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"ఈ అనుమతి ఉన్న యాప్‌లు ఆడియోను రికార్డ్ చేయగలవు"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"ఈ అనుమతులు ఉన్న యాప్‌లు ఫోన్ కాల్స్‌ చేయగలవు, మేనేజ్ చేయగలవు"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"ఈ అనుమతి ఉన్న యాప్‌లు మీ ఆరోగ్య స్థితిని తెలియజేసే గణాంకాల సెన్సార్ డేటాను యాక్సెస్ చేయగలవు"</string>
