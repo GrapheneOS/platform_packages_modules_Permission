@@ -210,7 +210,7 @@
     <string name="approximate_image_description" msgid="938803699637069884">"আনুমানিক অৱস্থান"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"সঠিক অৱস্থান ব্যৱহাৰ কৰক"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"সঠিক অৱস্থানটো অফ থাকিলে, এপে আপোনাৰ আনুমানিক অৱস্থান এক্সেছ কৰিব পাৰে"</string>
-    <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> অনুমতি"</string>
+    <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>ৰ অনুমতি"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"এই এপ্‌টোৰ বাবে <xliff:g id="PERM">%1$s</xliff:g>ৰ এক্সেছ"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"সকলো <xliff:g id="APP">%1$s</xliff:g> অনুমতি চাওক"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"এই অনুমতি থকা সকলো এপ্ চাওক"</string>

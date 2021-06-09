@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!--
-  ~ Copyright (C) 2020 The Android Open Source Project
+  ~ Copyright (C) 2021 The Android Open Source Project
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -16,20 +16,20 @@
   ~ limitations under the License.
   -->
 
-<configuration description="Runs unit tests for PermissionController.">
+<configuration description="Runs tests for Permission APEX.">
     <option name="test-suite-tag" value="apct" />
     <option name="test-suite-tag" value="apct-instrumentation" />
-    <option name="test-tag" value="PermissionControllerMockingTests" />
+    <option name="test-tag" value="PermissionApexTests" />
     <object type="module_controller" class="com.android.tradefed.testtype.suite.module.Sdk30ModuleController" />
 
     <!-- Install test -->
     <target_preparer class="com.android.tradefed.targetprep.TestAppInstallSetup">
-        <option name="test-file-name" value="PermissionControllerMockingTests.apk" />
+        <option name="test-file-name" value="PermissionApexTests.apk" />
         <option name="cleanup-apks" value="true" />
     </target_preparer>
 
     <test class="com.android.tradefed.testtype.AndroidJUnitTest" >
-        <option name="package" value="com.android.permissioncontroller.tests.mocking" />
+        <option name="package" value="com.android.permission.test" />
         <option name="runner" value="androidx.test.runner.AndroidJUnitRunner" />
     </test>
 </configuration>
