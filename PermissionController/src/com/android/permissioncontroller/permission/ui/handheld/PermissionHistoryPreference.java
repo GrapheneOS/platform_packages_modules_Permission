@@ -224,7 +224,8 @@ public class PermissionHistoryPreference extends Preference {
         viewUsageIntent.setAction(Intent.ACTION_VIEW_PERMISSION_USAGE_FOR_PERIOD);
         viewUsageIntent.setPackage(mPackageName);
         viewUsageIntent.putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, mPermissionGroup);
-        viewUsageIntent.putExtra(Intent.EXTRA_ATTRIBUTION_TAGS, mAttributionTags.toArray());
+        viewUsageIntent.putExtra(Intent.EXTRA_ATTRIBUTION_TAGS,
+                mAttributionTags.toArray(new String[0]));
         viewUsageIntent.putExtra(Intent.EXTRA_START_TIME,
                 mAccessTimeList.get(mAccessTimeList.size() - 1));
         viewUsageIntent.putExtra(Intent.EXTRA_END_TIME, mAccessTimeList.get(0));
