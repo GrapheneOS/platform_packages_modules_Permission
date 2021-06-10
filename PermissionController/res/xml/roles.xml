@@ -790,6 +790,7 @@
         visible="false">
         <permissions>
             <permission name="android.permission.CAMERA" />
+            <permission name="android.permission.SYSTEM_CAMERA" />
             <permission name="android.permission.UPDATE_DEVICE_STATS" />
             <permission name="android.permission.OBSERVE_SENSOR_PRIVACY" />
         </permissions>
