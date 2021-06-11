@@ -259,7 +259,7 @@
     <string name="allowed_foreground_header" msgid="6845655788447833353">"Yalnızca kullanımdayken izin verilenler"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Yalnızca medyaya erişim izni verilenler"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Tüm dosyaları yönetme izni verilenler"</string>
-    <string name="ask_header" msgid="2633816846459944376">"Her zaman sor"</string>
+    <string name="ask_header" msgid="2633816846459944376">"Her zaman sorulacaklar"</string>
     <string name="denied_header" msgid="903209608358177654">"İzin verilmeyenler"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> gün</item>
@@ -350,7 +350,7 @@
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"Bu uygulamalar ekranınızı, işlemlerinizi ve girişlerinizi görebilir, işlemler gerçekleştirebilir ve ekranı kontrol edebilir."</string>
     <string name="role_assistant_label" msgid="4727586018198208128">"Varsayılan dijital asistan uygulaması"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Dijital asistan uygulaması"</string>
-    <string name="role_assistant_description" msgid="6622458130459922952">"Asistan uygulamaları, görüntülemekte olduğunuz ekrandaki bilgilere dayalı olarak size yardım edebilir. Bazı uygulamalar, entegre yardım sağlamak için hem başlatıcıyı hem de ses girişi hizmetlerini destekler."</string>
+    <string name="role_assistant_description" msgid="6622458130459922952">"Asistan uygulamaları görüntülemekte olduğunuz ekrandaki bilgilere dayalı olarak size yardım edebilir. Bazı uygulamalar entegre yardım sağlamak için hem başlatıcıyı hem de ses girişi hizmetlerini destekler."</string>
     <string name="role_assistant_request_title" msgid="5964976301922776060">"<xliff:g id="APP_NAME">%1$s</xliff:g>, varsayılan asistan uygulamanız olarak ayarlansın mı?"</string>
     <string name="role_assistant_request_description" msgid="6836644847620178483">"SMS, arama kaydına erişim sağlar"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Varsayılan tarayıcı"</string>
