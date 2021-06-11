@@ -166,6 +166,12 @@ abstract class ManagePermissionsFragment extends PermissionsFrameFragment
             super(context);
         }
 
+        FixedSizeIconPreference(Context context, boolean dividerAbove, boolean dividerBelow) {
+            super(context);
+            mShowDividerAbove = dividerAbove;
+            mShowDividerBelow = dividerBelow;
+        }
+
         @Override
         public void onBindViewHolder(PreferenceViewHolder holder) {
             super.onBindViewHolder(holder);
