@@ -416,7 +416,7 @@
     <string name="default_apps" msgid="5119201969348748639">"Sjálfgefin forrit"</string>
     <string name="no_default_apps" msgid="2593466527182950231">"Engin sjálfgefin forrit"</string>
     <string name="default_apps_more" msgid="4078194675848858093">"Fleiri sjálfgildi"</string>
-    <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Opnar tengla"</string>
+    <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Opnun tengla"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Sjálfgefið fyrir vinnu"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Ekkert"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(Sjálfgildi kerfis)"</string>
