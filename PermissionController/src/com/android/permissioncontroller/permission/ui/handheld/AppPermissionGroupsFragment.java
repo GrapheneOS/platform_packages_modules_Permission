@@ -531,7 +531,8 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
         autoRevokeSwitch.setKey(AUTO_REVOKE_SWITCH_KEY);
         autoRevokeCategory.addPreference(autoRevokeSwitch);
 
-        FooterPreference autoRevokeSummary = new FooterPreference(context);
+        Preference autoRevokeSummary = SdkLevel.isAtLeastS() ? new FooterPreference(context)
+                : new Preference(context);
         autoRevokeSummary.setIcon(Utils.applyTint(getActivity(), R.drawable.ic_info_outline,
                 android.R.attr.colorControlNormal));
         autoRevokeSummary.setKey(AUTO_REVOKE_SUMMARY_KEY);
@@ -548,7 +549,7 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
                 .findPreference(AUTO_REVOKE_CATEGORY_KEY);
         SwitchPreference autoRevokeSwitch = autoRevokeCategory.findPreference(
                 AUTO_REVOKE_SWITCH_KEY);
-        FooterPreference autoRevokeSummary = autoRevokeCategory.findPreference(
+        Preference autoRevokeSummary = autoRevokeCategory.findPreference(
                 AUTO_REVOKE_SUMMARY_KEY);
 
         if (!state.isEnabledGlobal()) {
