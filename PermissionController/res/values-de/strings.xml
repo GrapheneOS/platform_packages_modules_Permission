@@ -209,7 +209,7 @@
     <string name="precise_image_description" msgid="6349638632303619872">"Auf genauen Standort zugreifen"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Ungefährer Standort"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Genauen Standort verwenden"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Wenn der genaue Standort deaktiviert ist, können Apps auf Ihren ungefähren Standort zugreifen"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Wenn der genaue Standort deaktiviert ist, können Apps auf deinen ungefähren Standort zugreifen"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Berechtigung: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Dieser App Zugriff auf <xliff:g id="PERM">%1$s</xliff:g> erlauben?"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Alle Berechtigungen der App „<xliff:g id="APP">%1$s</xliff:g>“ anzeigen"</string>
@@ -419,7 +419,7 @@
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Links öffnen"</string>
     <string name="default_apps_for_work" msgid="4970308943596201811">"Standardeinstellung für Arbeit"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Keine App"</string>
-    <string name="default_app_system_default" msgid="6218386768175513760">"(Systemstandardeinstellung)"</string>
+    <string name="default_app_system_default" msgid="6218386768175513760">"(System-Standardeinstellung)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Keine Apps"</string>
     <string name="car_default_app_selected" msgid="5416420830430644174">"Ausgewählt"</string>
     <string name="car_default_app_selected_with_info" msgid="1932204186080593500">"Ausgewählt – <xliff:g id="ADDITIONAL_INFO">%1$s</xliff:g>"</string>
