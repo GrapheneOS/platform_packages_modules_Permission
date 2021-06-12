@@ -261,7 +261,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Nazadnje odprto: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Če dovolite upravljanje vseh datotek, lahko ta aplikacija dostopa do vseh datotek, ki so v skupni shrambi v tej napravi ali povezanih napravah za shranjevanje, ter jih ureja in briše. Aplikacija lahko do datotek dostopa brez vaše vednosti."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Ali tej aplikaciji dovolite dostop do datotek, ki so v napravi ali drugih povezanih napravah za shranjevanje, ter njihovo spreminjanje in brisanje? Ta aplikacija lahko do datotek dostopa brez vaše vednosti."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Aplikacije s tem dovoljenjem imajo te možnosti: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Aplikacije s tem dovoljenjem imajo te možnosti: <xliff:g id="DESCRIPTION">%1$s</xliff:g>."</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Aplikacije s tem dovoljenjem lahko dostopajo do podatkov o vaši telesni dejavnosti, na primer hoji, kolesarjenju, vožnji, številu korakov itd."</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Aplikacije s tem dovoljenjem lahko dostopajo do koledarja."</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Aplikacije s tem dovoljenjem lahko berejo dnevnik klicev v telefonu in zapisujejo vanj."</string>
