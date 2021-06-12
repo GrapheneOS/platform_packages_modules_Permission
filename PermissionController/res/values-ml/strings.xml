@@ -237,7 +237,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"അവസാനം തുറന്നത് <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"എല്ലാ ഫയലുകളും മാനേജ് ചെയ്യാൻ അനുവദിച്ചാൽ ഈ ഉപകരണത്തിലെയോ കണക്റ്റ് ചെയ്‌തിരിക്കുന്ന സ്റ്റോറേജ് ഉപകരണങ്ങളിലെയോ പൊതു സ്റ്റോറേജിലുള്ള ഏത് ഫയലും ആക്‌സസ് ചെയ്യാനും പരിഷ്‌കരിക്കാനും ഇല്ലാതാക്കാനും ഈ ആപ്പിന് കഴിയും. നിങ്ങളോട് ചോദിക്കാതെ തന്നെ ആപ്പ് ഫയലുകൾ ആക്‌സസ് ചെയ്തേക്കാം."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"ഈ ഉപകരണത്തിലെയോ കണക്റ്റ് ചെയ്‌തിരിക്കുന്ന ഏതെങ്കിലും സ്റ്റോറേജ് ഉപകരണത്തിലെയോ ഫയലുകൾ ആക്‌സസ് ചെയ്യാനും പരിഷ്‌കരിക്കാനും ഇല്ലാതാക്കാനും ഈ ആപ്പിനെ അനുവദിക്കണോ? നിങ്ങളോട് ചോദിക്കാതെ തന്നെ ഈ ആപ്പ് ഫയലുകൾ ആക്‌സസ് ചെയ്തേക്കാം."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"ഈ അനുമതിയുള്ള ആപ്പുകൾ <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"ഈ അനുമതിയുള്ള ആപ്പുകൾക്ക് <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"നടത്തം, സൈക്ലിംഗ്, ഡ്രൈവിംഗ്, സ്‌റ്റെപ് കൗണ്ട് എന്നിവപോലുള്ള നിങ്ങളുടെ ശാരീരിക ആക്റ്റിവിറ്റി ഈ അനുമതിയുള്ള ആപ്പുകൾക്ക് ആക്‌സസ് ചെയ്യാനാകും"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"ഈ അനുമതിയുള്ള ആപ്പുകൾക്ക് നിങ്ങളുടെ കലണ്ടർ ആക്‌സസ് ചെയ്യാനാവും"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"ഈ അനുമതിയുള്ള ആപ്പുകൾക്ക് ഫോൺ കോൾ ചരിത്രം വായിക്കാനും എഴുതാനുമാവും"</string>

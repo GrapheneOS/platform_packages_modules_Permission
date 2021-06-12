@@ -348,7 +348,7 @@
     <string name="accessibility_service_dialog_title_multiple" msgid="5527879210683548175">"<xliff:g id="NUM_SERVICES">%s</xliff:g> apps med hjælpefunktioner har fuld adgang til din enhed"</string>
     <string name="accessibility_service_dialog_bottom_text_single" msgid="1128666197822205958">"<xliff:g id="SERVICE_NAME">%s</xliff:g> kan se din skærm, dine handlinger og dine input samt udføre handlinger og styre skærmen"</string>
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"Disse apps kan se din skærm, dine handlinger og dine input samt udføre handlinger og styre skærmen."</string>
-    <string name="role_assistant_label" msgid="4727586018198208128">"Standardapp for digital assis."</string>
+    <string name="role_assistant_label" msgid="4727586018198208128">"Standardapp for digital assistent"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"App for digital assistent"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Assistanceapps kan hjælpe dig på baggrund af oplysningerne på den aktuelle skærm. Nogle apps understøtter både startertjenester og tjenester til indtaling for at give dig integreret assistance."</string>
     <string name="role_assistant_request_title" msgid="5964976301922776060">"Vil du angive <xliff:g id="APP_NAME">%1$s</xliff:g> som din standardapp til assistance?"</string>
@@ -366,7 +366,7 @@
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"opkald"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Standardapp til sms-beskeder"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"Sms-app"</string>
-    <string name="role_sms_description" msgid="3424020199148153513">"Apps, der bruger dit telefonnummer til at sende og modtage sms-beskeder, billeder, video m.m."</string>
+    <string name="role_sms_description" msgid="3424020199148153513">"Apps, der bruger dit telefonnummer til at sende og modtage sms-beskeder, billeder, videoer m.m."</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Vil du angive <xliff:g id="APP_NAME">%1$s</xliff:g> som din standardapp til sms-beskeder?"</string>
     <string name="role_sms_request_description" msgid="983371022668134198">"Får adgang til kontakter, sms-beskeder og opkald"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"sms, sende sms-beskeder, beskeder, chat"</string>
