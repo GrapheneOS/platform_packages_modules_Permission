@@ -378,7 +378,7 @@
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"ice"</string>
     <string name="role_home_label" msgid="3871847846649769412">"Aplicació d\'inici predeterminada"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"Aplicació d\'inici"</string>
-    <string name="role_home_description" msgid="7997371519626556675">"Aplicacions, sovint anomenades \"menú d\'aplicacions\", que reemplacen les pantalles d\'inici del dispositiu Android i et donen accés al contingut i funcions del teu dispositiu"</string>
+    <string name="role_home_description" msgid="7997371519626556675">"Aplicacions, sovint anomenades \"menú d\'aplicacions\", que reemplacen les pantalles d\'inici del dispositiu Android i et donen accés al contingut i a les funcions del teu dispositiu"</string>
     <string name="role_home_request_title" msgid="738136983453341081">"Vols establir <xliff:g id="APP_NAME">%1$s</xliff:g> com a aplicació d\'inici predeterminada?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"No calen permisos"</string>
     <string name="role_home_search_keywords" msgid="3830755001192666285">"launcher"</string>

@@ -348,12 +348,12 @@
     <string name="accessibility_service_dialog_title_multiple" msgid="5527879210683548175">"<xliff:g id="NUM_SERVICES">%s</xliff:g> యాక్సెస్ సామర్థ్య యాప్‌లు మీ పరికరానికి పూర్తి యాక్సెస్‌ను కలిగి ఉన్నాయి"</string>
     <string name="accessibility_service_dialog_bottom_text_single" msgid="1128666197822205958">"<xliff:g id="SERVICE_NAME">%s</xliff:g> మీ స్క్రీన్, చర్యలు మరియు ఇన్‌పుట్‌లను చూడగలదు, చర్యలను అమలు చేయగలదు, అలాగే ప్రదర్శనను నియంత్రించగలదు."</string>
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"ఈ యాప్‌లు మీ స్క్రీన్, చర్యలు, ఇన్‌పుట్‌లను చూడగలవు, చర్యలను అమలు చేయగలవు, అలాగే ప్రదర్శనను నియంత్రించగలవు."</string>
-    <string name="role_assistant_label" msgid="4727586018198208128">"ఆటోమేటిక్ డిజిటల్ అసిస్టెంట్"</string>
+    <string name="role_assistant_label" msgid="4727586018198208128">"ఆటోమేటిక్ డిజిటల్ అసిస్టెంట్ యాప్"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"డిజిటల్ అసిస్టెంట్ యాప్"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"సహాయక యాప్‌లు మీరు వీక్షిస్తున్న స్క్రీన్‌పై ఉన్న సమాచారం ఆధారంగా మీకు సహాయపడగలవు. కొన్ని యాప్‌లు మీకు సమగ్రమైన సహాయాన్ని అందించడానికి లాంచర్‌కు, వాయిస్ ఇన్‌పుట్ సర్వీసులకు రెండింటికీ సపోర్ట్‌ చేస్తాయి."</string>
     <string name="role_assistant_request_title" msgid="5964976301922776060">"<xliff:g id="APP_NAME">%1$s</xliff:g>ను మీ డిఫాల్ట్ సహాయక యాప్‌గా సెట్ చేయాలా?"</string>
     <string name="role_assistant_request_description" msgid="6836644847620178483">"SMS, కాల్ లాగ్‌లకు యాక్సెస్ పొందుతుంది"</string>
-    <string name="role_browser_label" msgid="2877796144554070207">"డిఫాల్ట్ బ్రౌజర్ యాప్"</string>
+    <string name="role_browser_label" msgid="2877796144554070207">"ఆటోమేటిక్ బ్రౌజర్ యాప్"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"బ్రౌజర్ యాప్"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"మీకు ఇంటర్నెట్ యాక్సెస్‌ను అందించే, అలాగే మీరు నొక్కే లింక్‌లను చూపించే యాప్‌లు"</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"<xliff:g id="APP_NAME">%1$s</xliff:g>ను మీ డిఫాల్ట్ బ్రౌజర్ యాప్‌గా సెట్ చేయాలా?"</string>
@@ -364,7 +364,7 @@
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g>ను మీ డిఫాల్ట్ ఫోన్ యాప్‌గా సెట్ చేయాలా?"</string>
     <string name="role_dialer_request_description" msgid="2264219375528345270">"కాల్ లాగ్, అలాగే SMSలు పంపడానికి యాక్సెస్ పొందుతుంది"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"డయలర్"</string>
-    <string name="role_sms_label" msgid="8456999857547686640">"డిఫాల్ట్ SMS యాప్"</string>
+    <string name="role_sms_label" msgid="8456999857547686640">"ఆటోమాటిక్ SMS యాప్"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS యాప్"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"SMSలు, ఫోటోలు, వీడియోలు, మరిన్నింటిని పంపడానికి, అందుకోవడానికి మీ ఫోన్ నంబర్‌ను ఉపయోగించేందుకు మిమ్మల్ని అనుమతించే యాప్‌లు"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g>ను మీ డిఫాల్ట్ SMS యాప్‌గా సెట్ చేయాలా?"</string>
@@ -376,7 +376,7 @@
     <string name="role_emergency_request_title" msgid="8469579020654348567">"<xliff:g id="APP_NAME">%1$s</xliff:g>ను మీ డిఫాల్ట్ అత్యవసర యాప్‌గా సెట్ చేయాలా?"</string>
     <string name="role_emergency_request_description" msgid="131645948770262850">"అనుమతులు ఇవ్వనవసరం లేదు"</string>
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"అత్యవసర పరిస్థితుల్లో"</string>
-    <string name="role_home_label" msgid="3871847846649769412">"డిఫాల్ట్ హోమ్ యాప్"</string>
+    <string name="role_home_label" msgid="3871847846649769412">"ఆటోమేటిక్ హోమ్ యాప్"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"మొదటి స్క్రీన్ యాప్"</string>
     <string name="role_home_description" msgid="7997371519626556675">"త‌ర‌చుగా లాంచర్‌లు అని పిలవబడే యాప్‌లు, మీ Android పరికరంలో హోమ్ స్క్రీన్‌లను రీప్లేస్‌ చేయగలవు. మీ పరికరం కంటెంట్‌లకు, ఫీచర్‌లకు యాక్సెస్ ఇవ్వగలవు."</string>
     <string name="role_home_request_title" msgid="738136983453341081">"<xliff:g id="APP_NAME">%1$s</xliff:g>ను మీ డిఫాల్ట్ హోమ్ యాప్‌గా సెట్ చేయాలా?"</string>
