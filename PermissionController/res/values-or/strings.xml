@@ -56,7 +56,7 @@
     <string name="app_permission_manager" msgid="3903811137630909550">"ଅନୁମତି ପରିଚାଳକ"</string>
     <string name="never_ask_again" msgid="4728762438198560329">"ପୁଣି ପଚାରନ୍ତୁ ନାହିଁ"</string>
     <string name="no_permissions" msgid="3881676756371148563">"କୌଣସି ଅନୁମତିଗୁଡ଼ିକ ନାହିଁ"</string>
-    <string name="additional_permissions" msgid="5801285469338873430">"ଅତିରିକ୍ତ ଅନୁମତିଗୁଡ଼ିକ"</string>
+    <string name="additional_permissions" msgid="5801285469338873430">"ଅତିରିକ୍ତ ଅନୁମତି"</string>
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"ଆପ୍‌ର ସୂଚନା ଖୋଲନ୍ତୁ"</string>
     <plurals name="additional_permissions_more" formatted="false" msgid="5297511511961335277">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> ଅଧିକ</item>
