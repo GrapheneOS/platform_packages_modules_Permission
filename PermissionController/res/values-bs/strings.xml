@@ -368,7 +368,7 @@
     <string name="accessibility_service_dialog_bottom_text_single" msgid="1128666197822205958">"Usluga <xliff:g id="SERVICE_NAME">%s</xliff:g> može pregledati vaš ekran, radnje i unose, a može i izvršavati radnje i kontrolirati ekran."</string>
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"Ove aplikacije mogu pregledati vaš ekran, radnje i unose, izvršavati radnje i kontrolirati ekran."</string>
     <string name="role_assistant_label" msgid="4727586018198208128">"Zadani digitalni asistent"</string>
-    <string name="role_assistant_short_label" msgid="3369003713187703399">"Aplikac. digitalnog asistenta"</string>
+    <string name="role_assistant_short_label" msgid="3369003713187703399">"Aplikacija digitalnog asistenta"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Aplikacije za pomoć vam mogu pomoći na osnovu informacija s ekrana koji pregledate. Neke aplikacije podržavaju i usluge pokretača i glasovnog unosa kako bi vam pružile sveukupnu pomoć."</string>
     <string name="role_assistant_request_title" msgid="5964976301922776060">"Postaviti aplikaciju <xliff:g id="APP_NAME">%1$s</xliff:g> kao zadanu aplikaciju za pomoć?"</string>
     <string name="role_assistant_request_description" msgid="6836644847620178483">"Dobija pristup SMS-u, zapisniku poziva"</string>
