@@ -71,7 +71,7 @@
     <string name="manage_permission" msgid="3796219072742331048">"अनुमति व्यवस्थापन गर्नुहोस्"</string>
     <string name="no_apps" msgid="2412612731628386816">"कुनै पनि एप छैन"</string>
     <string name="location_settings" msgid="3624412509133422562">"स्थानसम्बन्धी सेटिङहरू"</string>
-    <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> यस डिभाइसको स्थानसम्बन्धी सेवा प्रदायक हो। स्थानसम्बन्धी सेटिङहरूमा गई स्थानसम्बन्धी पहुँच परिमार्जन गर्न सकिन्छ।"</string>
+    <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> यस डिभाइसको लोकेसन सर्भिस प्रदायक हो। स्थानसम्बन्धी सेटिङहरूमा गई स्थानसम्बन्धी पहुँच परिमार्जन गर्न सकिन्छ।"</string>
     <string name="system_warning" msgid="1173400963234358816">"तपाईंले यो अनुमति अस्वीकार गर्नुभएमा तपाईंको डिभाइसका मूल सुविधाहरूले अब चाहेअनुसार कार्य नगर्न पनि सक्छन्।"</string>
     <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"तपाईंले यो अनुमति दिनुभएन भने यो एपले व्यवस्थापन गर्ने तपाईंको डिभाइसका केही सुविधाहरूले अपेक्षाअनुसार काम नगर्न सक्छन्।"</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"नीतिले लागू गरेको"</string>
@@ -210,7 +210,7 @@
     <string name="approximate_image_description" msgid="938803699637069884">"अनुमानित स्थान"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"सटीक लोकेसन प्रयोग गरियोस्"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"सटीक लोकेसन अफ हुँदा एपहरूलाई मेरो अनुमानित लोकेसन प्रयोग गर्न दिइयोस्"</string>
-    <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> अनुमति"</string>
+    <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>सम्बन्धी अनुमति"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"<xliff:g id="PERM">%1$s</xliff:g>लाई यो एप प्रयोग गर्ने अनुमति दिने वा नदिने"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g>सँग भएका सबै अनुमति हेर्नुहोस्"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"यो अनुमति पाएका सबै एपहरू हेर्नुहोस्"</string>
@@ -237,7 +237,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"पछिल्लो पटक <xliff:g id="DATE">%s</xliff:g> मा खोलिएको थियो"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"तपाईंले सबै फाइलहरू व्यवस्थापन गर्ने अनुमति दिनुभयो भने यो एपले यस डिभाइस वा यस डिभाइससँग कनेक्ट गरिएका अन्य डिभाइसको साझा भण्डारणमा भएका सबै फाइलहरू प्रयोग गर्न, परिमार्जन गर्न र मेटाउन सक्छ। यो एपले तपाईंलाई जानकारी नदिइकन ‌फाइलहरू प्रयोग गर्न सक्छ।"</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"यो एपलाई यस यन्त्र वा यस यन्त्रसँग जोडिएका अन्य भण्डारण डिभाइसमा रहेका फाइलहरू प्रयोग गर्न, परिमार्जन गर्न र मेटाउन दिने हो? यो एपले तपाईंलाई जानकारी नदिइकन ‌फाइलहरू प्रयोग गर्न सक्छ।"</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"यो अनुमति पाएका एपहरूले निम्न कार्य गर्न सक्छन् <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"यो अनुमति पाएका एपहरूले निम्न कार्य गर्न सक्छन्: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"यो अनुमति भएका एपहरूले तपाईंले हिँड्ने, साइकल र गाडी कुदाउने जस्ता क्रियाकलाप गर्दा सृजित हुने डेटा हेर्न तथा प्रयोग गर्न सक्छन्"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"यो अनुमति पाएका एपहरूले तपाईंको पात्रो हेर्न तथा चलाउन सक्छन्"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"यो अनुमति भएका एपले फोन कल लग हेर्न तथा प्रयोग गर्न सक्छन्"</string>
@@ -378,7 +378,7 @@
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"ICE"</string>
     <string name="role_home_label" msgid="3871847846649769412">"डिफल्ट होम एप"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"होम एप"</string>
-    <string name="role_home_description" msgid="7997371519626556675">"तपाईंको डिभाइसमा गृह स्क्रिन प्रतिस्थापित गर्ने र तपाईंलाई आफ्नो Android डिभाइसका सामग्री र सुविधाहरूमाथि पहुँच गर्न दिने (लन्चर पनि भनिने) एपहरू"</string>
+    <string name="role_home_description" msgid="7997371519626556675">"तपाईंको डिभाइसको होम स्क्रिन प्रतिस्थापित गर्ने र तपाईंलाई आफ्नो Android डिभाइसका सामग्री र सुविधाहरू प्रयोग गर्न दिने लन्चर वा एपहरू"</string>
     <string name="role_home_request_title" msgid="738136983453341081">"आफ्नो डिफल्ट गृह एपका रूपमा <xliff:g id="APP_NAME">%1$s</xliff:g> सेट गर्ने हो?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"कुनै पनि अनुमति आवश्यक छैन"</string>
     <string name="role_home_search_keywords" msgid="3830755001192666285">"लन्चर"</string>
