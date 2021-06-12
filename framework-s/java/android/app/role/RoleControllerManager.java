@@ -98,7 +98,8 @@ public class RoleControllerManager {
             int userId = context.getUser().getIdentifier();
             ServiceConnector<IRoleController> remoteService = sRemoteServices.get(userId);
             if (remoteService == null) {
-                remoteService = new ServiceConnector.Impl<IRoleController>(context,
+                remoteService = new ServiceConnector.Impl<IRoleController>(
+                        context.getApplicationContext(),
                         new Intent(RoleControllerService.SERVICE_INTERFACE)
                                 .setComponent(remoteServiceComponentName),
                         0 /* bindingFlags */, userId, IRoleController.Stub::asInterface) {
