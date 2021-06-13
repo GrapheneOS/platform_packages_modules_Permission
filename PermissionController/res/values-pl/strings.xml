@@ -232,7 +232,7 @@
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Nie zezwalaj"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Dokładna lokalizacja"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Przybliżona lokalizacja"</string>
-    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Użyj dokładnej lokalizacji"</string>
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Używaj dokładnej lokalizacji"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Kiedy dokładna lokalizacja jest wyłączona, aplikacje mają dostęp do Twojej przybliżonej lokalizacji"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> – dostęp"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Dostęp tej aplikacji do: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -261,7 +261,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Ostatnio otwarto <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Jeśli pozwolisz zarządzać wszystkimi plikami, ta aplikacja będzie mogła odczytywać, modyfikować i usuwać dowolne pliki na tym urządzeniu lub zewnętrznych urządzeniach do przechowywania danych. Ta aplikacja może bez pytania uzyskiwać dostęp do plików."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Zezwól tej aplikacji na odczytywanie, modyfikowanie i usuwanie plików na tym urządzeniu oraz wszelkich podłączonych zewnętrznych urządzeniach do przechowywania danych. Ta aplikacja może bez pytania uzyskiwać dostęp do plików."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Aplikacje z tym uprawnieniem mają <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Aplikacje z tym uprawnieniem mogą <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Aplikacje z tym uprawnieniem mają dostęp do danych o Twojej aktywności fizycznej takiej jak spacery, jazda na rowerze, jazda samochodem, liczba kroków i inne"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Aplikacje z tym uprawnieniem mają dostęp do kalendarza"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Aplikacje z tym uprawnieniem mogą odczytywać i zapisywać rejestr połączeń telefonicznych"</string>
@@ -425,7 +425,7 @@
     <string name="role_call_redirection_description" msgid="6091669882014664420">"Aplikacje umożliwiające przekazywanie połączeń pod inny numer telefonu"</string>
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"Czy aplikacja <xliff:g id="APP_NAME">%1$s</xliff:g> ma być domyślną aplikacją do przekierowywania połączeń?"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Nie potrzebuje uprawnień"</string>
-    <string name="role_call_screening_label" msgid="883935222060878724">"Domyślna aplikacja do identyfikacji rozmówcy i spamu"</string>
+    <string name="role_call_screening_label" msgid="883935222060878724">"Domyślna aplikacja do identyfikacji rozmówcy i spamu"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"Aplikacja do identyfikacji rozmówcy i spamu"</string>
     <string name="role_call_screening_description" msgid="2349431420497468981">"Aplikacje, które mogą identyfikować połączenia oraz blokować spam, automatyczne wiadomości telefoniczne i niechciane numery"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Czy aplikacja <xliff:g id="APP_NAME">%1$s</xliff:g> ma być domyślną aplikacją do identyfikacji rozmówcy i spamu?"</string>

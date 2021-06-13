@@ -324,7 +324,7 @@
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"Meдиафайлдар"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"Барлық файлдар"</string>
     <string name="permission_subtitle_background" msgid="8916750995309083180">"Барлық уақытта рұқсат етіледі."</string>
-    <string name="app_perms_24h_access" msgid="99069906850627181">"Соңғы пайдалану уақыты: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_24h_access" msgid="99069906850627181">"Соңғы рет пайдаланылуы: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Соңғы пайдалану уақыты: кеше <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_content_provider" msgid="6996750793881252778">"Соңғы 24 сағатта пайдаланылды."</string>
     <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Соңғы пайдалану уақыты: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Барлық уақытта рұқсат етіледі."</string>
@@ -366,7 +366,7 @@
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"нөмір тергіш"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Әдепкі SMS қолданбасы"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS қолданбасы"</string>
-    <string name="role_sms_description" msgid="3424020199148153513">"Қысқа мәтіндік хабарларды, фотосуреттерді, бейнелерді және т.б. жіберу және алу үшін телефон нөміріңізді пайдалануға мүмкіндік беретін қолданбалар"</string>
+    <string name="role_sms_description" msgid="3424020199148153513">"Қысқа мәтіндік хабарларды, фотосуреттерді, бейнелерді және т.б. жіберу және алу үшін телефон нөмірін пайдалануға мүмкіндік беретін қолданбалар"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасы әдепкі SMS қолданбасы болып орнатылсын ба?"</string>
     <string name="role_sms_request_description" msgid="983371022668134198">"Контакт, телефон, SMS хабарларын пайдалануға рұқсат алады."</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"мәтіндік хабар, мәтіндік хабарлар жіберу, хабарлар, хабар алмасу"</string>
