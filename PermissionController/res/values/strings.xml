@@ -133,6 +133,9 @@
     <!-- Title for the page of manage unused apps [CHAR LIMIT=30] -->
     <string name="unused_apps">Unused apps</string>
 
+    <!-- Label when there are no unused apps [CHAR LIMIT=30] -->
+    <string name="no_unused_apps">No unused apps</string>
+
     <!-- [CHAR LIMIT=30] Manage applications, label for option to disable app -->
     <string name="app_disable_dlg_positive">Disable app</string>
 
