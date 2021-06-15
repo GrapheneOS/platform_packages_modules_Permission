@@ -704,6 +704,12 @@ public class RoleService extends SystemService implements RoleUserState.Callback
 
         @Override
         public String getSmsRoleHolder(int userId) {
+            enforceCrossUserPermission(userId, false, "getSmsRoleHolder");
+            if (!isUserExistent(userId)) {
+                Log.e(LOG_TAG, "user " + userId + " does not exist");
+                return null;
+            }
+
             final long identity = Binder.clearCallingIdentity();
             try {
                 return CollectionUtils.firstOrNull(getRoleHoldersAsUser(RoleManager.ROLE_SMS,
