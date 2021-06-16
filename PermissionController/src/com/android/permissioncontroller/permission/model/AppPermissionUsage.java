@@ -314,9 +314,9 @@ public final class AppPermissionUsage {
             return aggregate;
         }
 
-        private Set<String> getAllOps(AppPermissionGroup appPermissionGroup) {
+        private static Set<String> getAllOps(AppPermissionGroup appPermissionGroup) {
             Set<String> allOps = new HashSet<>();
-            List<Permission> permissions = mGroup.getPermissions();
+            List<Permission> permissions = appPermissionGroup.getPermissions();
             final int permissionCount = permissions.size();
             for (int permissionNum = 0; permissionNum < permissionCount; permissionNum++) {
                 final Permission permission = permissions.get(permissionNum);
@@ -326,11 +326,11 @@ public final class AppPermissionUsage {
                 }
             }
 
-            if (mGroup.getName().equals(Manifest.permission_group.MICROPHONE)) {
+            if (appPermissionGroup.getName().equals(Manifest.permission_group.MICROPHONE)) {
                 allOps.add(OPSTR_PHONE_CALL_MICROPHONE);
             }
 
-            if (mGroup.getName().equals(Manifest.permission_group.CAMERA)) {
+            if (appPermissionGroup.getName().equals(Manifest.permission_group.CAMERA)) {
                 allOps.add(OPSTR_PHONE_CALL_CAMERA);
             }
 
