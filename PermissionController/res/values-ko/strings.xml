@@ -68,7 +68,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"앱 <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>개에 권한 부여됨"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"시스템 표시"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"시스템 숨기기"</string>
-    <string name="manage_permission" msgid="3796219072742331048">"권한 관리"</string>
+    <!-- no translation found for manage_permission (2895385393037061964) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"앱 없음"</string>
     <string name="location_settings" msgid="3624412509133422562">"위치 설정"</string>
     <string name="location_warning" msgid="2381649060929040962">"이 기기의 위치 서비스 제공업체는 <xliff:g id="APP_NAME">%1$s</xliff:g>입니다. 위치 정보 액세스는 위치 설정에서 수정할 수 있습니다."</string>
@@ -111,7 +112,7 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"다른 권한 보기"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> 외 <xliff:g id="NUM">%3$s</xliff:g>개"</string>
-    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"지난 24시간 동안 앱에서 <xliff:g id="PERMGROUP">%1$s</xliff:g> 권한을 사용한 타임라인입니다"</string>
+    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"지난 24시간 동안 앱에서 <xliff:g id="PERMGROUP">%1$s</xliff:g> 권한을 사용한 타임라인입니다."</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"앱에서 <xliff:g id="PERMGROUP">%1$s</xliff:g> 권한을 사용한 시간"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"자세히 알아보기"</string>
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
@@ -173,8 +174,8 @@
     </plurals>
     <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"지난 24시간 동안 사용하지 않음"</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
-      <item quantity="other">앱 <xliff:g id="NUMBER">%1$d</xliff:g>개에서 사용 중</item>
-      <item quantity="one">앱 1개에서 사용 중</item>
+      <item quantity="other">앱 <xliff:g id="NUMBER">%1$d</xliff:g>개에서 사용함</item>
+      <item quantity="one">앱 1개에서 사용함</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"대시보드에서 모두 보기"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"필터링 기준: <xliff:g id="PERM">%1$s</xliff:g>"</string>

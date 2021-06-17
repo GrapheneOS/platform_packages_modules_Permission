@@ -68,7 +68,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> app autorizzate"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Mostra sistema"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Nascondi sistema"</string>
-    <string name="manage_permission" msgid="3796219072742331048">"Gestisci autorizzazione"</string>
+    <!-- no translation found for manage_permission (2895385393037061964) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"Nessuna app"</string>
     <string name="location_settings" msgid="3624412509133422562">"Geolocalizzazione"</string>
     <string name="location_warning" msgid="2381649060929040962">"L\'app <xliff:g id="APP_NAME">%1$s</xliff:g> è un fornitore di servizi di geolocalizzazione per questo dispositivo. È possibile modificare l\'accesso alla posizione dalle impostazioni per la geolocalizzazione."</string>
