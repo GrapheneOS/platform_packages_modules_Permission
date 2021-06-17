@@ -19,10 +19,14 @@ package com.android.permissioncontroller.permission.ui.handheld;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.TypedArray;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.preference.Preference;
+import androidx.preference.PreferenceViewHolder;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
@@ -78,6 +82,20 @@ public class PermissionUsageV2ControlPreference extends Preference {
                 mContext.startActivity(intent);
                 return true;
             });
+        }
+    }
+
+    @Override
+    public void onBindViewHolder(PreferenceViewHolder view) {
+        super.onBindViewHolder(view);
+
+        if (SdkLevel.isAtLeastS()) {
+            TextView titleView = (TextView) view.findViewById(android.R.id.title);
+            TypedArray ta = mContext.obtainStyledAttributes(
+                    new int[]{android.R.attr.textAppearanceListItem});
+            int resId = ta.getResourceId(0, 0);
+            ta.recycle();
+            titleView.setTextAppearance(resId);
         }
     }
 }
