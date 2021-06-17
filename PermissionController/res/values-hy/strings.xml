@@ -68,7 +68,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"Թույլատրված հավելված(ներ)՝ <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Ցույց տալ համակարգի հավելվածները"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Թաքցնել համակարգի հավելվածները"</string>
-    <string name="manage_permission" msgid="3796219072742331048">"Կառավարել թույլտվությունը"</string>
+    <!-- no translation found for manage_permission (2895385393037061964) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"Հավելվածներ չկան"</string>
     <string name="location_settings" msgid="3624412509133422562">"Տեղադրության կարգավորումներ"</string>
     <string name="location_warning" msgid="2381649060929040962">"Այս սարքի տեղորոշման ծառայությունները տրամադրում է <xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածը: Տեղադրության ցուցադրման կարգավորումները կարող եք փոխել տեղադրության կարգավորումներում:"</string>

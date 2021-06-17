@@ -68,7 +68,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> 件のアプリを許可"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"システムアプリを表示"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"システムアプリを表示しない"</string>
-    <string name="manage_permission" msgid="3796219072742331048">"権限の管理"</string>
+    <!-- no translation found for manage_permission (2895385393037061964) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"アプリがありません"</string>
     <string name="location_settings" msgid="3624412509133422562">"位置情報の設定"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g>はこのデバイスの位置情報サービスのプロバイダです。位置情報へのアクセスは位置情報の設定から変更できます。"</string>

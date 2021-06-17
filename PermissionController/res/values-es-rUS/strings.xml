@@ -68,7 +68,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> apps permitidas"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Mostrar sistema"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Ocultar sistema"</string>
-    <string name="manage_permission" msgid="3796219072742331048">"Administrar permisos"</string>
+    <!-- no translation found for manage_permission (2895385393037061964) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"Ninguna app"</string>
     <string name="location_settings" msgid="3624412509133422562">"Configuración de la ubicación"</string>
     <string name="location_warning" msgid="2381649060929040962">"La app de <xliff:g id="APP_NAME">%1$s</xliff:g> provee servicios de ubicación a este dispositivo. El acceso a la ubicación puede modificarse desde la configuración de la ubicación."</string>
@@ -173,8 +174,8 @@
     </plurals>
     <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"No se usó en las últimas 24 horas"</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
-      <item quantity="other">En uso por parte de <xliff:g id="NUMBER">%1$d</xliff:g> apps</item>
-      <item quantity="one">En uso por parte de 1 app</item>
+      <item quantity="other">Usado por <xliff:g id="NUMBER">%1$d</xliff:g> apps</item>
+      <item quantity="one">Usado por 1 app</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Ver todo en el panel"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrado por: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -260,7 +261,7 @@
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Pueden acceder solo a contenido multimedia"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Pueden administrar todos los archivos"</string>
     <string name="ask_header" msgid="2633816846459944376">"Preguntar siempre"</string>
-    <string name="denied_header" msgid="903209608358177654">"No tienen permiso"</string>
+    <string name="denied_header" msgid="903209608358177654">"Sin permiso"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> días</item>
       <item quantity="one">1 día</item>

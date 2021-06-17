@@ -68,7 +68,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_1">%2$d</xliff:g>টি অ্যাপের মধ্যে <xliff:g id="COUNT_0">%1$d</xliff:g>টি অনুমোদিত"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"সিস্টেম অ্যাপ দেখুন"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"সিস্টেম অ্যাপ লুকান"</string>
-    <string name="manage_permission" msgid="3796219072742331048">"অনুমতি ম্যানেজ করুন"</string>
+    <!-- no translation found for manage_permission (2895385393037061964) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"কোনও অ্যাপ নেই"</string>
     <string name="location_settings" msgid="3624412509133422562">"লোকেশন সেটিংস"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> এই ডিভাইসের জন্য লোকেশন পরিষেবা প্রদান করে। লোকেশন সেটিংস থেকে লোকেশনের অ্যাক্সেস পরিবর্তন করা যায়।"</string>

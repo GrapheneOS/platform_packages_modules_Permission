@@ -68,7 +68,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> applications autorisées"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Afficher les applications système"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Masquer les applications système"</string>
-    <string name="manage_permission" msgid="3796219072742331048">"Gérer l\'autorisation"</string>
+    <!-- no translation found for manage_permission (2895385393037061964) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"Aucune application"</string>
     <string name="location_settings" msgid="3624412509133422562">"Paramètres de localisation"</string>
     <string name="location_warning" msgid="2381649060929040962">"Les services de localisation pour cet appareil sont fournis via <xliff:g id="APP_NAME">%1$s</xliff:g>. Vous pouvez modifier l\'accès aux données de localisation dans les paramètres de localisation."</string>
@@ -111,7 +112,7 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Voir les autres autorisations"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> et <xliff:g id="NUM">%3$s</xliff:g> autres"</string>
-    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Chronologie des applis ayant utilisé votre/vos <xliff:g id="PERMGROUP">%1$s</xliff:g> au cours des dernières 24 h"</string>
+    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Chronologie des applis ayant utilisé vos données de <xliff:g id="PERMGROUP">%1$s</xliff:g> au cours des dernières 24 h"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Quand cette appli a utilisé votre autorisation <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"En savoir plus"</string>
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">

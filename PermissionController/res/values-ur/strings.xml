@@ -68,7 +68,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> ایپس کو اجازت دی گئی ہے"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"سسٹم دکھائیں"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"سسٹم چھپائیں"</string>
-    <string name="manage_permission" msgid="3796219072742331048">"اجازت کا نظم کریں"</string>
+    <!-- no translation found for manage_permission (2895385393037061964) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"کوئی ایپ نہیں ہے"</string>
     <string name="location_settings" msgid="3624412509133422562">"مقام کی ترتیبات"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> اس آلہ کیلئے مقام کی سروسز کا فراہم کنندہ ہے۔ مقام کی رسائی میں مقام کی ترتیبات سے ترمیم کی جا سکتی ہے۔"</string>

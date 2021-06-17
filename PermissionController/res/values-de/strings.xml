@@ -68,7 +68,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g> von <xliff:g id="COUNT_1">%2$d</xliff:g> Apps zugelassen"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"System-Apps anzeigen"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"System-Apps ausblenden"</string>
-    <string name="manage_permission" msgid="3796219072742331048">"Berechtigung verwalten"</string>
+    <!-- no translation found for manage_permission (2895385393037061964) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"Keine Apps"</string>
     <string name="location_settings" msgid="3624412509133422562">"Standorteinstellungen"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> ist ein Anbieter von Standortdiensten für dieses Gerät. Die Berechtigungen für den Zugriff auf deinen Standort kannst du in den Standorteinstellungen ändern."</string>
@@ -417,7 +418,7 @@
     <string name="no_default_apps" msgid="2593466527182950231">"Keine Standard-Apps"</string>
     <string name="default_apps_more" msgid="4078194675848858093">"Weitere Standard-Apps"</string>
     <string name="default_apps_manage_domain_urls" msgid="6775566451561036069">"Links öffnen"</string>
-    <string name="default_apps_for_work" msgid="4970308943596201811">"Standardeinstellung für Arbeit"</string>
+    <string name="default_apps_for_work" msgid="4970308943596201811">"Standard-Apps für Arbeit"</string>
     <string name="default_app_none" msgid="9084592086808194457">"Keine App"</string>
     <string name="default_app_system_default" msgid="6218386768175513760">"(System-Standardeinstellung)"</string>
     <string name="default_app_no_apps" msgid="115720991680586885">"Keine Apps"</string>
@@ -456,7 +457,7 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Diese App möchte jederzeit Zugriff auf deinen Standort haben, auch wenn du sie nicht verwendest. "<annotation id="link">"Du kannst das in den Einstellungen zulassen."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Zulassen, dass &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; Geräte in der Nähe finden, sich mit ihnen verbinden und ihre relative Position bestimmen kann?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Zulassen, dass &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; Geräte in der Nähe finden, sich mit ihnen verbinden und ihre relative Position bestimmen kann? "<annotation id="link">"In den Einstellungen zulassen."</annotation></string>
-    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Soll der Standortzugriff von <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> von ungefähr zu genau geändert werden?"</string>
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Soll der Standortzugriff von <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> von „Ungefähr“ zu „Genau“ geändert werden?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, den ungefähren Gerätestandort abzurufen?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Genau"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Ungefähr"</string>

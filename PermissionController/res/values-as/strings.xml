@@ -68,7 +68,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> টা এপক অনুমতি দিয়া হ\'ল"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"ছিষ্টেম দেখুৱাওক"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"ছিষ্টেম লুকুৱাওক"</string>
-    <string name="manage_permission" msgid="3796219072742331048">"অনুমতি পৰিচালনা কৰক"</string>
+    <!-- no translation found for manage_permission (2895385393037061964) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"কোনো এপে এই অনুমতি বিচৰা নাই"</string>
     <string name="location_settings" msgid="3624412509133422562">"অৱস্থান ছেটিংসমূহ"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> হ’ল এই ডিভাইচৰ অৱস্থান সেৱা প্ৰদানকাৰী। অৱস্থানৰ ছেটিংসমূহত অৱস্থানৰ এক্সেছ সলনি কৰিব পাৰি।"</string>
