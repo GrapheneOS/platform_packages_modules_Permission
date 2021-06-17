@@ -35,8 +35,8 @@ import android.util.SparseArray;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.os.BuildCompat;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.utils.Utils;
@@ -194,7 +194,7 @@ public class PermissionApps {
             return apps;
         }
         int pkgQueryFlags = PackageManager.GET_PERMISSIONS;
-        if (BuildCompat.isAtLeastS()) {
+        if (SdkLevel.isAtLeastS()) {
             pkgQueryFlags = pkgQueryFlags | PackageManager.GET_ATTRIBUTIONS;
         }
         if (mPackageName == null) {
