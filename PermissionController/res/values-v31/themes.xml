@@ -18,22 +18,4 @@
 
 <resources>
     <style name="Settings" parent="Theme.SubSettingsBase" />
-    <style name="AppPermissionRadioButton"
-           parent="@android:style/Widget.DeviceDefault.CompoundButton.RadioButton">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">16dp</item>
-        <item name="android:paddingStart">?android:attr/listPreferredItemPaddingStart</item>
-        <item name="android:paddingTop">8dp</item>
-        <item name="android:paddingBottom">8dp</item>
-        <item name="android:textDirection">locale</item>
-        <item name="android:textAppearance">?android:attr/textAppearanceListItem</item>
-    </style>
-    <style name="AppPermissionLocationAccuracyTitle">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
-        <item name="android:textDirection">locale</item>
-        <item name="android:textAppearance">?android:attr/textAppearanceListItem</item>
-    </style>
 </resources>
