@@ -42,6 +42,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
 import androidx.recyclerview.widget.RecyclerView;
@@ -51,9 +52,9 @@ import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.model.AppPermissionUsage;
 import com.android.permissioncontroller.permission.model.legacy.PermissionApps;
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity;
-import com.android.permissioncontroller.permission.ui.handheld.PermissionGroupPreference;
 import com.android.permissioncontroller.permission.ui.handheld.PermissionHistoryPreference;
 import com.android.permissioncontroller.permission.ui.handheld.SettingsWithLargeHeader;
+import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
 
 import java.time.ZonedDateTime;
@@ -180,7 +181,12 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
     @Override
     public void onStart() {
         super.onStart();
-        getActivity().setTitle(R.string.permission_history_title);
+        CharSequence title = getString(R.string.permission_history_title);
+        if (mFilterGroup != null) {
+            title = getResources().getString(R.string.permission_group_usage_title,
+                    KotlinUtils.INSTANCE.getPermGroupLabel(getActivity(), mFilterGroup));
+        }
+        getActivity().setTitle(title);
     }
 
     @Override
@@ -267,9 +273,12 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
 
         Set<String> exemptedPackages = Utils.getExemptedPackages(mRoleManager);
 
-        PermissionGroupPreference permissionPreference = new PermissionGroupPreference(context,
-                getResources(), mFilterGroup);
-        screen.addPreference(permissionPreference);
+        Preference subtitlePreference = new Preference(context);
+        subtitlePreference.setSummary(
+                getResources().getString(R.string.permission_group_usage_subtitle,
+                KotlinUtils.INSTANCE.getPermGroupLabel(getActivity(), mFilterGroup)));
+        subtitlePreference.setSelectable(false);
+        screen.addPreference(subtitlePreference);
 
         AtomicBoolean seenSystemApp = new AtomicBoolean(false);
 
@@ -485,7 +494,7 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
      *
      * @param groupName The name of the permission group.
      *
-     * @return an AppPermissionGroup rerepsenting the given permission group or null if no such
+     * @return an AppPermissionGroup representing the given permission group or null if no such
      * AppPermissionGroup is found.
      */
     private @Nullable AppPermissionGroup getGroup(@NonNull String groupName) {
