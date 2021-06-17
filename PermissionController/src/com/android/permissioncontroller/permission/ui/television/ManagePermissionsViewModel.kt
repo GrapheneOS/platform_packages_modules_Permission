@@ -60,7 +60,8 @@ class ManagePermissionsViewModel(app: Application) : AndroidViewModel(app) {
      * of the permissions in the group neither has been requested at runtime by any of the
      * non-system applications nor has been pregranted to any such application. But at least one of
      * the permissions in the group is requested by or pregranted to at least one system
-     * application.
+     * application, other than the Shell (we do not show permission groups that are granted only to
+     * the Shell, because it has all the permissions granted).
      * @see com.android.permissioncontroller.permission.ui.television.ManagePermissionsOtherFragment
      */
     val unusedPermissionGroups: LiveData<List<PermGroupPackagesUiInfo>> =
@@ -69,6 +70,7 @@ class ManagePermissionsViewModel(app: Application) : AndroidViewModel(app) {
                 permGroups -> value = permGroups
                     .filter { it.nonSystemUserSetOrPreGranted == 0 }
                     .filter { it.systemUserSetOrPreGranted > 0 }
+                    .filterNot { it.onlyShellPackageGranted }
             }
         }
 
