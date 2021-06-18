@@ -55,7 +55,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
-import androidx.core.os.BuildCompat;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
@@ -180,7 +179,7 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
 
         // If the build type is below S, the app ops for permission usage can't be found. Thus, we
         // shouldn't load permission usages, for them.
-        if (BuildCompat.isAtLeastS()) {
+        if (SdkLevel.isAtLeastS()) {
             Context context = getPreferenceManager().getContext();
             mPermissionUsages = new PermissionUsages(context);
 
