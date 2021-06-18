@@ -179,7 +179,7 @@
    <string name="menu_hide_system">Hide system</string>
 
     <!-- FAB text of permission usage fragment [CHAR LIMIT=30] -->
-    <string name="manage_permission">Manage Permission</string>
+    <string name="manage_permission">Manage permission</string>
 
    <!-- [CHAR LIMIT=NONE] Label when no apps requesting this permission -->
    <string name="no_apps">No apps</string>
