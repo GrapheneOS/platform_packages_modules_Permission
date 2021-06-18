@@ -35,6 +35,7 @@ import android.util.SparseArray;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.os.BuildCompat;
 
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
@@ -192,13 +193,15 @@ public class PermissionApps {
             }
             return apps;
         }
+        int pkgQueryFlags = PackageManager.GET_PERMISSIONS;
+        if (BuildCompat.isAtLeastS()) {
+            pkgQueryFlags = pkgQueryFlags | PackageManager.GET_ATTRIBUTIONS;
+        }
         if (mPackageName == null) {
-            return mPm.getInstalledPackagesAsUser(PackageManager.GET_PERMISSIONS,
-                    user.getIdentifier());
+            return mPm.getInstalledPackagesAsUser(pkgQueryFlags, user.getIdentifier());
         } else {
             try {
-                final PackageInfo packageInfo = mPm.getPackageInfo(mPackageName,
-                        PackageManager.GET_PERMISSIONS);
+                final PackageInfo packageInfo = mPm.getPackageInfo(mPackageName, pkgQueryFlags);
                 apps = new ArrayList<>(1);
                 apps.add(packageInfo);
                 return apps;
