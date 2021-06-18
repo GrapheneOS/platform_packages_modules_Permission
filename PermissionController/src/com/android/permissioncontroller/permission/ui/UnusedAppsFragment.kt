@@ -191,6 +191,7 @@ class UnusedAppsFragment<PF, UnusedAppPref> : PreferenceFragmentCompat()
             }
         }
 
+        var allCategoriesEmpty = true
         for ((month, packages) in categorizedPackages) {
             val category = preferenceScreen.findPreference<PreferenceCategory>(month.value)!!
             category.title = if (month == Months.THREE) {
@@ -199,6 +200,9 @@ class UnusedAppsFragment<PF, UnusedAppPref> : PreferenceFragmentCompat()
                 getString(R.string.last_opened_category_title, "6")
             }
             category.isVisible = packages.isNotEmpty()
+            if (packages.isNotEmpty()) {
+                allCategoriesEmpty = false
+            }
 
             for ((pkgName, user, shouldDisable, permSet) in packages) {
                 val revokedPerms = permSet.toList()
@@ -248,6 +252,10 @@ class UnusedAppsFragment<PF, UnusedAppPref> : PreferenceFragmentCompat()
                 KotlinUtils.sortPreferenceGroup(category, this::comparePreference, false)
             }
         }
+
+        val infoMsgCategory =
+            preferenceScreen.findPreference<PreferenceCategory>(INFO_MSG_CATEGORY)!!
+        infoMsgCategory.isVisible = !allCategoriesEmpty
 
         if (isFirstLoad) {
             if (categorizedPackages[Months.SIX]!!.isNotEmpty() ||
