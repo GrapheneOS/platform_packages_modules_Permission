@@ -42,6 +42,7 @@ import androidx.preference.PreferenceGroupAdapter;
 import androidx.preference.PreferenceScreen;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.model.AppPermissionUsage;
@@ -192,6 +193,9 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
         if (preference.getOrder() == EXPAND_BUTTON_ORDER) {
             preference.setTitle(R.string.perm_usage_adv_info_title);
             preference.setSummary(preferenceScreen.getSummary());
+            if (SdkLevel.isAtLeastS()) {
+                preference.setLayoutResource(R.layout.expand_button_with_large_title);
+            }
             if (mGraphic != null) {
                 mGraphic.setShowOtherCategory(false);
             }

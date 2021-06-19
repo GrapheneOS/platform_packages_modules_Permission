@@ -119,9 +119,9 @@ private fun getCheckFrequencyMs() = DeviceConfig.getLong(
 private val PREF_KEY_FIRST_BOOT_TIME = "first_boot_time"
 
 fun isHibernationEnabled(): Boolean {
-    return DeviceConfig.getBoolean(
-        NAMESPACE_APP_HIBERNATION, Utils.PROPERTY_APP_HIBERNATION_ENABLED,
-        false /* defaultValue */)
+    return SdkLevel.isAtLeastS() &&
+        DeviceConfig.getBoolean(NAMESPACE_APP_HIBERNATION, Utils.PROPERTY_APP_HIBERNATION_ENABLED,
+            false /* defaultValue */)
 }
 
 /**
