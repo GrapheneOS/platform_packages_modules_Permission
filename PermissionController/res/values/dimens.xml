@@ -72,4 +72,6 @@
 
     <item name="privhub_label_radius_scalar" format="float" type="dimen">1.1</item>
     <dimen name="privhub_circle_stroke_width">8dp</dimen>
+
+    <dimen name="privhub_details_recycler_view_bottom_padding">96dp</dimen>
 </resources>
