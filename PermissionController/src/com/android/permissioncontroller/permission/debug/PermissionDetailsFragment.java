@@ -44,6 +44,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
@@ -166,6 +167,12 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
                 startActivity(intent);
             });
         }
+        RecyclerView recyclerView = getListView();
+        int bottomPadding = getResources()
+                .getDimensionPixelSize(R.dimen.privhub_details_recycler_view_bottom_padding);
+        recyclerView.setPadding(0, 0, 0, bottomPadding);
+        recyclerView.setClipToPadding(false);
+        recyclerView.setScrollBarStyle(View.SCROLLBARS_OUTSIDE_OVERLAY);
 
         return rootView;
     }
