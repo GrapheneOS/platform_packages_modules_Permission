@@ -51,6 +51,8 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"အက်ပ်များ"</string>
     <string name="app_permissions" msgid="3369917736607944781">"အက်ပ်ခွင့်ပြုချက်များ"</string>
     <string name="unused_apps" msgid="2058057455175955094">"အသုံးမပြုသော အက်ပ်များ"</string>
+    <!-- no translation found for no_unused_apps (12809387670415295) -->
+    <skip />
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"အက်ပ်ကို ပိတ်ရန်"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"ဤအက်ပ်ကို ပိတ်လိုက်လျှင် Android နှင့် အခြားအက်ပ်များ ပုံမှန် အလုပ်လုပ်တော့မည် မဟုတ်ပါ။ ဤအက်ပ်ကို သင့်စက်ပေါ်တွင် ကြိုတင်ထည့်သွင်းထားသဖြင့် ၎င်းကို ဖျက်၍မရပါ။ ပိတ်ခြင်းဖြင့် ဤအက်ပ်ကို ရပ်လိုက်ပြီး သင့်စက်ပေါ်တွင် ဖျောက်ထားပါမည်။"</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"ခွင့်ပြုချက် မန်နေဂျာ"</string>
@@ -68,7 +70,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"အက်ပ် <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> ခု ခွင့်ပြုသည်"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"စနစ်ကိုပြရန်"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"စနစ်ကို ဖျောက်ရန်"</string>
-    <string name="manage_permission" msgid="3796219072742331048">"ခွင့်ပြုချက် စီမံခန့်ခွဲခြင်း"</string>
+    <!-- no translation found for manage_permission (2895385393037061964) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"အက်ပ် မရှိပါ"</string>
     <string name="location_settings" msgid="3624412509133422562">"တည်နေရာ ဆက်တင်များ"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> သည် ဤကိရိယာအတွက် တည်နေရာ ဝန်ဆောင်မှုများကို ပံ့ပိုးပေးသူ ဖြစ်သည်။ တည်နေရာ အသုံးပြုမှုကို တည်နေရာဆက်တင်များတွင် ပြောင်းနိုင်ပါသည်။"</string>

@@ -51,6 +51,8 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Приложения"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Разрешения за приложенията"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Неизползвани приложения"</string>
+    <!-- no translation found for no_unused_apps (12809387670415295) -->
+    <skip />
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Деактивиране на приложението"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Ако деактивирате това приложение, Android и други приложения може да спрат да работят както трябва. Имайте предвид, че не можете да изтриете това приложение, тъй като е предварително инсталирано на устройството ви. Като деактивирате приложението, го изключвате и скривате на устройството си."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Мениджър на разрешенията"</string>
@@ -68,7 +70,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> приложения имат разрешение"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Показване на системн. приложения"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Скриване на системните приложения"</string>
-    <string name="manage_permission" msgid="3796219072742331048">"Разрешение за управление"</string>
+    <!-- no translation found for manage_permission (2895385393037061964) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"Няма приложения"</string>
     <string name="location_settings" msgid="3624412509133422562">"Настройки за местоположението"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> е доставчик на услуги за местоположението за това устройство. Достъпът до местоположението може да бъде променен от съответните настройки."</string>
