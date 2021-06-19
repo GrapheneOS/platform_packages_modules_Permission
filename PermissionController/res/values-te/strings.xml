@@ -68,7 +68,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>లో<xliff:g id="COUNT_1">%2$d</xliff:g> యాప్‌లు అనుమతించబడ్డాయి"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"సిస్టమ్‌ను చూపు"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"సిస్టమ్‌ను దాచు"</string>
-    <string name="manage_permission" msgid="3796219072742331048">"అనుమతిని మేనేజ్ చేయండి"</string>
+    <!-- no translation found for manage_permission (2895385393037061964) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"యాప్‌లు లేవు"</string>
     <string name="location_settings" msgid="3624412509133422562">"లొకేషన్ సెట్టింగ్‌లు"</string>
     <string name="location_warning" msgid="2381649060929040962">"ఈ పరికరం కోసం స్థాన సేవల ప్రదాత <xliff:g id="APP_NAME">%1$s</xliff:g>. స్థాన సెట్టింగ్‌ల నుండి స్థాన యాక్సెస్‌ను సవరించవచ్చు."</string>

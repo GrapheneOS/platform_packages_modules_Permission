@@ -73,6 +73,10 @@ class HandheldUnusedAppsFragment : PermissionsFrameFragment(),
         return super.onOptionsItemSelected(item)
     }
 
+    override fun getEmptyViewString(): Int {
+        return if (isHibernationEnabled()) R.string.no_unused_apps else super.getEmptyViewString()
+    }
+
     override fun createFooterPreference(context: Context): Preference {
         var preference: Preference
         if (isHibernationEnabled()) {
