@@ -51,6 +51,8 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"應用程式"</string>
     <string name="app_permissions" msgid="3369917736607944781">"應用程式權限"</string>
     <string name="unused_apps" msgid="2058057455175955094">"未使用的應用程式"</string>
+    <!-- no translation found for no_unused_apps (12809387670415295) -->
+    <skip />
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"停用應用程式"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"如果你停用這個應用程式，Android 和其他應用程式可能無法正常運作。請注意，這是預先安裝在裝置上的應用程式，因此無法刪除。不過，只要停用這個應用程式，即可將應用程式關閉並在裝置上隱藏。"</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"權限管理員"</string>
@@ -68,7 +70,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"已授權給 <xliff:g id="COUNT_0">%1$d</xliff:g> 個應用程式 (共 <xliff:g id="COUNT_1">%2$d</xliff:g> 個)"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"顯示系統程序"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"隱藏系統程序"</string>
-    <string name="manage_permission" msgid="3796219072742331048">"管理權限"</string>
+    <!-- no translation found for manage_permission (2895385393037061964) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"沒有應用程式"</string>
     <string name="location_settings" msgid="3624412509133422562">"位置資訊設定"</string>
     <string name="location_warning" msgid="2381649060929040962">"「<xliff:g id="APP_NAME">%1$s</xliff:g>」是這個裝置的定位服務供應商。你可以在位置資訊設定中修改位置資訊存取權。"</string>

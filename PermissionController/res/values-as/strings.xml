@@ -51,6 +51,8 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"এপ্"</string>
     <string name="app_permissions" msgid="3369917736607944781">"এপৰ অনুমতি"</string>
     <string name="unused_apps" msgid="2058057455175955094">"অব্যৱহৃত এপ্‌সমূহ"</string>
+    <!-- no translation found for no_unused_apps (12809387670415295) -->
+    <skip />
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"এপ্ অক্ষম কৰক"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"আপুনি যদি এই এপ্‌টো অক্ষম কৰে, Android আৰু অন্য এপ্‌সমূহে বিচৰাৰ দৰে আৰু কাম নকৰিব পাৰে। মনত ৰাখিব, এই এপ্‌টো আপোনাৰ ডিভাইচটোত আগৰেপৰা ইনষ্টল কৰি থোৱা আছে বাবে আপুনি ইয়াক মচিব নোৱাৰে। অক্ষম কৰি আপুনি এই এপ্‌টো অফ কৰে আৰু ইয়াক আপোনাৰ ডিভাইচৰ পৰা লুকুৱায়।"</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"অনুমতি পৰিচালক"</string>
@@ -68,7 +70,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> টা এপক অনুমতি দিয়া হ\'ল"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"ছিষ্টেম দেখুৱাওক"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"ছিষ্টেম লুকুৱাওক"</string>
-    <string name="manage_permission" msgid="3796219072742331048">"অনুমতি পৰিচালনা কৰক"</string>
+    <!-- no translation found for manage_permission (2895385393037061964) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"কোনো এপে এই অনুমতি বিচৰা নাই"</string>
     <string name="location_settings" msgid="3624412509133422562">"অৱস্থান ছেটিংসমূহ"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> হ’ল এই ডিভাইচৰ অৱস্থান সেৱা প্ৰদানকাৰী। অৱস্থানৰ ছেটিংসমূহত অৱস্থানৰ এক্সেছ সলনি কৰিব পাৰি।"</string>
