@@ -51,6 +51,8 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Applications"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Autorisations des applications"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Applications inutilisées"</string>
+    <!-- no translation found for no_unused_apps (12809387670415295) -->
+    <skip />
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Désactiver l\'application"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Si vous désactivez cette application, il est possible qu\'Android et d\'autres applications ne fonctionnent plus comme prévu. N\'oubliez pas que vous ne pouvez pas supprimer cette application, car elle est préinstallée sur votre appareil. Si vous la désactivez, elle ne sera plus visible sur votre appareil."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Gestionnaire d\'autorisations"</string>
