@@ -51,6 +51,8 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"برنامه‌ها"</string>
     <string name="app_permissions" msgid="3369917736607944781">"اجازه‌های برنامه"</string>
     <string name="unused_apps" msgid="2058057455175955094">"برنامه‌های استفاده‌نشده"</string>
+    <!-- no translation found for no_unused_apps (12809387670415295) -->
+    <skip />
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"غیرفعال کردن برنامه"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"‏اگر این برنامه را غیرفعال کنید، ممکن است Android و سایر برنامه‌های دیگر عملکرد موردانتظار را نداشته باشند. به‌خاطر داشته باشید که نمی‌توانید این برنامه را حذف کنید، چون از برنامه‌های ازپیش نصب‌شده روی دستگاه است. این برنامه، با غیرفعال کردن، خاموش می‌شود و در دستگاه پنهان می‌شود."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"مدیر اجازه‌ها"</string>
@@ -68,7 +70,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g> برنامه از <xliff:g id="COUNT_1">%2$d</xliff:g> برنامه مجاز است"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"نمایش سیستم"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"پنهان کردن سیستم"</string>
-    <string name="manage_permission" msgid="3796219072742331048">"مدیریت اجازه"</string>
+    <!-- no translation found for manage_permission (2895385393037061964) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"برنامه‌ای موجود نیست"</string>
     <string name="location_settings" msgid="3624412509133422562">"تنظیمات مکان"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> یکی از ارائه‌دهندگان سرویس‌های مکان برای این دستگاه است. با رفتن به تنظیمات مکان می‌توانید دسترسی به موقعیت مکانی را تغییر دهید."</string>

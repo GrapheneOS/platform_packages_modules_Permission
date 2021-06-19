@@ -51,6 +51,8 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Aplicacións"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Permisos de aplicacións"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Aplicacións que non se usan"</string>
+    <!-- no translation found for no_unused_apps (12809387670415295) -->
+    <skip />
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Desactivar aplicación"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Se desactivas esta aplicación, Android e outras aplicacións poden deixar de funcionar segundo o previsto. Ten en conta que esta aplicación non se pode desinstalar, xa que viña preinstalada no dispositivo. Se a desactivas, ocultarase no dispositivo."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Xestor de permisos"</string>
@@ -68,7 +70,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"Aplicacións permitidas: <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Mostrar sistema"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Ocultar sistema"</string>
-    <string name="manage_permission" msgid="3796219072742331048">"Xestionar permiso"</string>
+    <!-- no translation found for manage_permission (2895385393037061964) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"Sen aplicacións"</string>
     <string name="location_settings" msgid="3624412509133422562">"Configuración de localización"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> é un fornecedor de servizos de localización para este dispositivo. O acceso de localización pode modificarse desde a configuración de localización."</string>
