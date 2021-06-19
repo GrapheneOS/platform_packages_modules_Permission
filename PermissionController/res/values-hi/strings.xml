@@ -51,6 +51,8 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"ऐप्लिकेशन"</string>
     <string name="app_permissions" msgid="3369917736607944781">"ऐप्लिकेशन की अनुमतियां"</string>
     <string name="unused_apps" msgid="2058057455175955094">"इस्तेमाल नहीं किए गए ऐप्लिकेशन"</string>
+    <!-- no translation found for no_unused_apps (12809387670415295) -->
+    <skip />
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"ऐप्लिकेशन बंद करें"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"अगर आप इस ऐप्लिकेशन को बंद कर देते हैं, तो हो सकता है कि Android और दूसरे ऐप्लिकेशन ठीक से काम न करें. ध्यान रखें कि आप इस ऐप्लिकेशन को मिटा नहीं सकते, क्योंकि यह आपके डिवाइस पर पहले से इंस्टॉल होकर आया है. इसे बंद करने पर ऐप्लिकेशन बंद हो जाएगा और आपके डिवाइस पर नहीं दिखेगा."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"अनुमतियों को मैनेज करना"</string>
@@ -68,7 +70,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> ऐप्लिकेशन को अनुमति दी गई है"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"सिस्टम के ऐप्लिकेशन दिखाएं"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"सिस्टम के ऐप्लिकेशन छिपाएं"</string>
-    <string name="manage_permission" msgid="3796219072742331048">"अनुमति मैनेज करें"</string>
+    <!-- no translation found for manage_permission (2895385393037061964) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"किसी ऐप्लिकेशन को इस अनुमति की ज़रूरत नहीं है"</string>
     <string name="location_settings" msgid="3624412509133422562">"जगह की जानकारी की सेटिंग"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> से इस डिवाइस पर जगह की जानकारी मिलती है. जगह की जानकारी की सेटिंग में जाकर जगह की जानकरी ऐक्सेस करने की अनुमति में बदलाव किया जा सकता है."</string>

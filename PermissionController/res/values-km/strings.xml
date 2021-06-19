@@ -51,6 +51,8 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"កម្មវិធី"</string>
     <string name="app_permissions" msgid="3369917736607944781">"ការអនុញ្ញាតកម្មវិធី"</string>
     <string name="unused_apps" msgid="2058057455175955094">"កម្មវិធី​ដែលមិន​ប្រើ"</string>
+    <!-- no translation found for no_unused_apps (12809387670415295) -->
+    <skip />
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"បិទកម្មវិធី"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"ប្រសិន​បើ​អ្នក​បិទ​កម្មវិធីនេះ កម្មវិធី Android និង​កម្មវិធី​ផ្សេង​ទៀត​អាច​នឹង​លែង​ដំណើរការដូច​ដែលអ្វី​​ចង់បាន​។ សូមចាំថា អ្នក​មិនអាច​លុបកម្មវិធី​នេះ​បាន​ទេ ដោយសារកម្មវិធី​នេះត្រូវបាន​ដំឡើងជាស្រេច​នៅលើឧបករណ៍​របស់អ្នក។ ប្រសិនបើ​បិទ មានន័យថាអ្នក​បិទកម្មវិធីនេះ ហើយលាក់វានៅលើឧបករណ៍​របស់អ្នក។"</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"កម្មវិធីគ្រប់គ្រង​ការអនុញ្ញាត"</string>
@@ -68,7 +70,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"បានអនុញ្ញាត​កម្មវិធី <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"បង្ហាញ​ប្រព័ន្ធ"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"លាក់ប្រព័ន្ធ"</string>
-    <string name="manage_permission" msgid="3796219072742331048">"គ្រប់គ្រងការអនុញ្ញាត"</string>
+    <!-- no translation found for manage_permission (2895385393037061964) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"គ្មានកម្មវិធី"</string>
     <string name="location_settings" msgid="3624412509133422562">"ការកំណត់ទីតាំង"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> គឺជាកម្មវិធី​ផ្តល់សេវាកម្ម​ទីតាំង​សម្រាប់​ឧបករណ៍នេះ។ ការចូលប្រើ​ទីតាំងអាច​កែសម្រួល​បានពីការកំណត់​ទីតាំង។"</string>

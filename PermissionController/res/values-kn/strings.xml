@@ -51,6 +51,8 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"ಆ್ಯಪ್‌ಗಳು"</string>
     <string name="app_permissions" msgid="3369917736607944781">"ಆ್ಯಪ್ ಅನುಮತಿಗಳು"</string>
     <string name="unused_apps" msgid="2058057455175955094">"ಬಳಕೆಯಾಗದ ಆ್ಯಪ್‌ಗಳು"</string>
+    <!-- no translation found for no_unused_apps (12809387670415295) -->
+    <skip />
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"ಆ್ಯಪ್ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"ನೀವು ಈ ಆ್ಯಪ್ ಅನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿದರೆ, Android ಮತ್ತು ಇತರ ಆ್ಯಪ್‌ಗಳು ಇನ್ನು ಮುಂದೆ ಉದ್ದೇಶಿಸಿದ ಹಾಗೆ ಕಾರ್ಯನಿರ್ವಹಿಸದಿರಬಹುದು. ಈ ಆ್ಯಪ್ ಅನ್ನು ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿ ಪೂರ್ವ-ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಿರುವುದರಿಂದ, ನೀವು ಅದನ್ನು ಅಳಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ ಎಂಬುದನ್ನು ನೆನಪಿನಲ್ಲಿಡಿ. ನಿಷ್ಕ್ರಿಯಗೊಳಿಸುವ ಮೂಲಕ, ಈ ಆ್ಯಪ್ ಅನ್ನು ನೀವು ಆಫ್ ಮಾಡಬಹುದು ಮತ್ತು ಅದನ್ನು ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿ ಮರೆ ಮಾಡಬಹುದು."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"ಅನುಮತಿ ನಿರ್ವಾಹಕ"</string>
@@ -68,7 +70,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> ಆ್ಯಪ್‌ಗಳನ್ನು ಅನುಮತಿಸಲಾಗಿದೆ"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"ಸಿಸ್ಟಂ ತೋರಿಸಿ"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"ಸಿಸ್ಟಂ ಮರೆಮಾಡಿ"</string>
-    <string name="manage_permission" msgid="3796219072742331048">"ಅನುಮತಿಗಳನ್ನು ನಿರ್ವಹಿಸಿ"</string>
+    <!-- no translation found for manage_permission (2895385393037061964) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"ಯಾವುದೇ ಆ್ಯಪ್‌ಗಳು ಇಲ್ಲ"</string>
     <string name="location_settings" msgid="3624412509133422562">"ಸ್ಥಳ ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> ಆ್ಯಪ್ ಈ ಸಾಧನಕ್ಕೆ ಸ್ಥಳ ಸೇವೆಗಳನ್ನು ಒದಗಿಸುತ್ತದೆ. ಸ್ಥಳ ಪ್ರವೇಶವನ್ನು ಸ್ಥಳ ಸೆಟ್ಟಿಂಗ್‌ಗಳಿಂದ ಮಾರ್ಪಡಿಸಬಹುದು."</string>
