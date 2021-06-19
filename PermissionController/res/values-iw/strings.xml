@@ -51,6 +51,8 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"אפליקציות"</string>
     <string name="app_permissions" msgid="3369917736607944781">"הרשאות לאפליקציות"</string>
     <string name="unused_apps" msgid="2058057455175955094">"אפליקציות שמזמן לא השתמשת בהן"</string>
+    <!-- no translation found for no_unused_apps (12809387670415295) -->
+    <skip />
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"השבתת האפליקציה"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"‏אם האפליקציה הזו תושבת, ייתכן ש-Android ואפליקציות אחרות לא יפעלו כצפוי. חשוב לזכור שלא ניתן למחוק את האפליקציה, כי היא הותקנה מראש במכשיר. ההשבתה מכבה את האפליקציה ומסתירה אותה במכשיר."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"מנהל ההרשאות"</string>
@@ -70,7 +72,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> אפליקציות שקיבלו הרשאה"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"הצגת אפליקציות מערכת"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"הסתרת אפליקציות מערכת"</string>
-    <string name="manage_permission" msgid="3796219072742331048">"ניהול ההרשאה"</string>
+    <!-- no translation found for manage_permission (2895385393037061964) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"אין אפליקציות"</string>
     <string name="location_settings" msgid="3624412509133422562">"הגדרות מיקום"</string>
     <string name="location_warning" msgid="2381649060929040962">"האפליקציה <xliff:g id="APP_NAME">%1$s</xliff:g> מספקת שירותי מיקום בשביל המכשיר הזה. אפשר לשנות את גישת המיקום בהגדרות המיקום."</string>
