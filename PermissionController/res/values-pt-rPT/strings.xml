@@ -51,6 +51,8 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Apps"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Autorizações da app"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Apps não utilizadas"</string>
+    <!-- no translation found for no_unused_apps (12809387670415295) -->
+    <skip />
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Desativar app"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Se desativar esta app, o Android e outras apps podem deixar de funcionar corretamente. Não se esqueça de que não pode eliminar esta app por ter sido pré-instalada no dispositivo. Ao desativá-la, irá ocultá-la no dispositivo."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Gestor de autorizações"</string>
@@ -68,8 +70,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> apps permitidas."</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Mostrar sistema"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Ocultar sistema"</string>
-    <!-- no translation found for manage_permission (2895385393037061964) -->
-    <skip />
+    <string name="manage_permission" msgid="2895385393037061964">"Gerir autorização"</string>
     <string name="no_apps" msgid="2412612731628386816">"Sem apps"</string>
     <string name="location_settings" msgid="3624412509133422562">"Definições de localização"</string>
     <string name="location_warning" msgid="2381649060929040962">"O <xliff:g id="APP_NAME">%1$s</xliff:g> é um fornecedor de serviços de localização para este dispositivo. É possível modificar o acesso à localização a partir das definições de localização."</string>
