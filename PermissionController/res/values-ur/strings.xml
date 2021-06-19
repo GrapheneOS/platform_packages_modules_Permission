@@ -51,6 +51,8 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"ایپس"</string>
     <string name="app_permissions" msgid="3369917736607944781">"ایپ کی اجازتیں"</string>
     <string name="unused_apps" msgid="2058057455175955094">"غیر مستعمل ایپس"</string>
+    <!-- no translation found for no_unused_apps (12809387670415295) -->
+    <skip />
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"ایپ کو غیر فعال کریں"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"‏اگر آپ اس ایپ کو غیر فعال کرتے ہیں تو ہو سکتا ہے Android اور دیگر ایپس ٹھیک سے کام نہ کریں۔ ذہن نشین رکھیں کہ آپ اس ایپ کو حذف نہیں کر سکتے ہیں کیونکہ یہ آپ کے آلہ پر پہلے سے انسٹال ہے۔ غیر فعال کر کے، آپ اس ایپ کو آف کر دیتے ہیں اور اس کو اپنے آلہ پر چھپا دیتے ہیں۔"</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"اجازتوں کا مینیجر"</string>
@@ -68,7 +70,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> ایپس کو اجازت دی گئی ہے"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"سسٹم دکھائیں"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"سسٹم چھپائیں"</string>
-    <string name="manage_permission" msgid="3796219072742331048">"اجازت کا نظم کریں"</string>
+    <!-- no translation found for manage_permission (2895385393037061964) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"کوئی ایپ نہیں ہے"</string>
     <string name="location_settings" msgid="3624412509133422562">"مقام کی ترتیبات"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> اس آلہ کیلئے مقام کی سروسز کا فراہم کنندہ ہے۔ مقام کی رسائی میں مقام کی ترتیبات سے ترمیم کی جا سکتی ہے۔"</string>
