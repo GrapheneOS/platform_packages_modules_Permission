@@ -85,7 +85,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"Povolit vždy"</string>
-    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Povolit jen při používání"</string>
+    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Povolit jen při používání aplikace"</string>
     <string name="permission_access_never" msgid="1029877154284995424">"Zakázat"</string>
     <string name="loading" msgid="4789365003890741082">"Načítání…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"Všechna oprávnění"</string>
@@ -182,7 +182,7 @@
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Povolit správu všech souborů"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Povolit pouze přístup k médiím"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Povolit vždy"</string>
-    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Povolit jen při používání"</string>
+    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Povolit jen při používání aplikace"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Pokaždé se zeptat"</string>
     <string name="app_permission_button_deny" msgid="2399316993899108824">"Zakázat"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>: oprávnění"</string>
