@@ -51,6 +51,8 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Հավելվածներ"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Հավելվածների թույլտվություններ"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Չօգտագործվող հավելվածներ"</string>
+    <!-- no translation found for no_unused_apps (12809387670415295) -->
+    <skip />
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Անջատել հավելվածը"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Եթե անջատեք այս հավելվածը, համակարգը և այլ հավելվածներ հնարավոր է սխալներով աշխատեն։ Դուք չեք կարող ջնջել այս հավելվածը, քանի որ այն նախապես տեղադրված է եղել ձեր սարքում։ Անջատելու դեպքում հավելվածը կդադարի աշխատել և կթաքցվի։"</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Թույլտվությունների կառավարիչ"</string>
@@ -68,7 +70,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"Թույլատրված հավելված(ներ)՝ <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Ցույց տալ համակարգի հավելվածները"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Թաքցնել համակարգի հավելվածները"</string>
-    <string name="manage_permission" msgid="3796219072742331048">"Կառավարել թույլտվությունը"</string>
+    <!-- no translation found for manage_permission (2895385393037061964) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"Հավելվածներ չկան"</string>
     <string name="location_settings" msgid="3624412509133422562">"Տեղադրության կարգավորումներ"</string>
     <string name="location_warning" msgid="2381649060929040962">"Այս սարքի տեղորոշման ծառայությունները տրամադրում է <xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածը: Տեղադրության ցուցադրման կարգավորումները կարող եք փոխել տեղադրության կարգավորումներում:"</string>

@@ -51,6 +51,8 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Ứng dụng"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Quyền ứng dụng"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Ứng dụng không dùng đến"</string>
+    <!-- no translation found for no_unused_apps (12809387670415295) -->
+    <skip />
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Vô hiệu hóa ứng dụng"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Nếu bạn vô hiệu hóa ứng dụng này, thì Android và các ứng dụng khác có thể không hoạt động như dự kiến nữa. Lưu ý rằng bạn không thể xóa ứng dụng này vì đây là ứng dụng cài sẵn trên thiết bị. Khi bạn vô hiệu hóa, ứng dụng sẽ bị tắt và ẩn trên thiết bị."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Trình quản lý quyền"</string>
@@ -68,7 +70,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"Đã cho phép <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> ứng dụng"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Hiển thị hệ thống"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Ẩn hệ thống"</string>
-    <string name="manage_permission" msgid="3796219072742331048">"Quản lý quyền"</string>
+    <!-- no translation found for manage_permission (2895385393037061964) -->
+    <skip />
     <string name="no_apps" msgid="2412612731628386816">"Không có ứng dụng"</string>
     <string name="location_settings" msgid="3624412509133422562">"Cài đặt vị trí"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> là nhà cung cấp dịch vụ vị trí cho thiết bị này. Bạn có thể sửa đổi quyền truy cập vào vị trí trong mục cài đặt vị trí."</string>
