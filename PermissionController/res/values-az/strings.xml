@@ -176,7 +176,7 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Bütün <xliff:g id="APP">%1$s</xliff:g> icazələrinə baxın"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Bu icazəyə sahib olan bütün tətbiqlərə baxın"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Assistent üçün mikrofon istifadəsini göstərin"</string>
-    <string name="auto_revoke_label" msgid="5068393642936571656">"Tətbiq istifadə edilmirsə, icazələri silin"</string>
+    <string name="auto_revoke_label" msgid="5068393642936571656">"Tətbiq işlənməyəndə icazə ləğv edilsin"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Bir neçə ay istifadə etmədiyiniz tətbiqlərdən icazələr datanızın qorunması məqsədilə silinib."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Bir neçə ay istifadə etmədiyiniz tətbiqlərdən icazələr datanızın qorunması məqsədilə silinib: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Bir neçə ay istifadə etmədiyiniz tətbiqlərdən icazələr datanızın qorunması məqsədilə silinib."</string>
@@ -236,7 +236,7 @@
       <item quantity="one">1 saniyə</item>
     </plurals>
     <string name="permission_reminders" msgid="6528257957664832636">"İcazə xatırladıcıları"</string>
-    <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"1 istifadə olunmayan tətbiq"</string>
+    <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"1 tətbiq istifadə edilmir"</string>
     <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> istifadə olunmayan tətbiq"</string>
     <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"Məxfiliyinizi qorumaq üçün icazələr silinib. Nəzərdən keçirmək üçün toxunun"</string>
     <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"İstifadə edilməyən tətbiqlər üçün icazələr silinib"</string>
