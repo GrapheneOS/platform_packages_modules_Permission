@@ -454,9 +454,13 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
                 }
 
                 PermissionHistoryPreference permissionUsagePreference = new
-                        PermissionHistoryPreference(context, usage.mAppPermissionUsage,
+                        PermissionHistoryPreference(context,
+                        usage.mAppPermissionUsage.getPackageName(),
+                        usage.mAppPermissionUsage.getApp().getIcon(),
+                        usage.mAppPermissionUsage.getApp().getLabel(),
                         mFilterGroup, accessTime, accessDuration, accessTimeList, attributionTags,
-                        usageNum == (numUsages - 1));
+                        usageNum == (numUsages - 1)
+                );
 
                 category.get().addPreference(permissionUsagePreference);
             }
