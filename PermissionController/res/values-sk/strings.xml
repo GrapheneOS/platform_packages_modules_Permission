@@ -72,8 +72,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"Počet povolených aplikácií: <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Zobraziť systémové"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Skryť systémové"</string>
-    <!-- no translation found for manage_permission (2895385393037061964) -->
-    <skip />
+    <string name="manage_permission" msgid="2895385393037061964">"Spravovať povolenie"</string>
     <string name="no_apps" msgid="2412612731628386816">"Žiadne aplikácie"</string>
     <string name="location_settings" msgid="3624412509133422562">"Nastavenia polohy"</string>
     <string name="location_warning" msgid="2381649060929040962">"Aplikácia <xliff:g id="APP_NAME">%1$s</xliff:g> je poskytovateľ služieb určovania polohy tohto zariadenia. Prístup k polohe môžete upraviť v nastaveniach polohy."</string>
@@ -258,7 +257,8 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Boli odstránené povolenia <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> a <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Bolo odstránené povolenie <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> a ďalšie (<xliff:g id="NUMBER">%2$s</xliff:g>)"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Nepoužívané aplikácie"</string>
-    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Ak určitú aplikáciu niekoľko mesiacov nepoužijete:\n\n• v rámci ochrany vašich údajov sa odstránia povolenia;\n• zastavia sa upozornenia, aby sa šetrila batéria;\n• odstránia sa dočasné súbory, aby sa uvoľnil priestor."</string>
+    <!-- no translation found for unused_apps_page_summary (1867593913217272155) -->
+    <skip />
     <string name="last_opened_category_title" msgid="7871347400611202595">"Naposledy otvorené pred viac ako <xliff:g id="NUMBER">%s</xliff:g> mesiacmi"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Aplikácia bola naposledy otvorená <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Naposledy otvorená <xliff:g id="DATE">%s</xliff:g>"</string>
