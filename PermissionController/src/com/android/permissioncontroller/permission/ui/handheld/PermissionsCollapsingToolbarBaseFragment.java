@@ -18,30 +18,19 @@ package com.android.permissioncontroller.permission.ui.handheld;
 
 import android.app.ActionBar;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.preference.PreferenceFragmentCompat;
 
-import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseFragment;
-import com.android.settingslib.transition.SettingsTransitionHelper;
 
 /**
  * Base class which act as a wrapper over a preference fragment
  */
 public abstract class PermissionsCollapsingToolbarBaseFragment
         extends CollapsingToolbarBaseFragment {
-
-    @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
-        SettingsTransitionHelper.applyForwardTransition(this);
-        SettingsTransitionHelper.applyBackwardTransition(this);
-    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -59,12 +48,9 @@ public abstract class PermissionsCollapsingToolbarBaseFragment
         if (preferenceFragment == null) {
             preferenceFragment = createPreferenceFragment();
             preferenceFragment.setArguments(getArguments());
-            FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-            if (SdkLevel.isAtLeastS()) {
-                View toolBar = requireView().requireViewById(R.id.action_bar);
-                transaction.addSharedElement(toolBar, toolBar.getTransitionName());
-            }
-            transaction.add(R.id.content_frame, preferenceFragment).commit();
+            getChildFragmentManager().beginTransaction()
+                    .add(R.id.content_frame, preferenceFragment)
+                    .commit();
         }
     }
 
