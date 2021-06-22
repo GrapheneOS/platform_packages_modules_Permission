@@ -70,8 +70,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> sovelluksella lupa"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Näytä järjestelmä"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Piilota järjestelmä"</string>
-    <!-- no translation found for manage_permission (2895385393037061964) -->
-    <skip />
+    <string name="manage_permission" msgid="2895385393037061964">"Ylläpidä lupaa"</string>
     <string name="no_apps" msgid="2412612731628386816">"Ei sovelluksia"</string>
     <string name="location_settings" msgid="3624412509133422562">"Sijaintiasetukset"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> on tämän laitteen sijaintipalveluiden tarjoaja. Sijainnin käyttöoikeutta voi muokata sijaintiasetuksissa."</string>
@@ -234,7 +233,8 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Luvat poistettu: <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> ja <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ja <xliff:g id="NUMBER">%2$s</xliff:g> muuta käyttöoikeutta poistettiin"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Käyttämättömät sovellukset"</string>
-    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Jos sovellusta ei käytetä muutamaan kuukauteen:\n\n• Luvat poistetaan datasi suojaamiseksi\n• Ilmoitukset lopetetaan akun säästämiseksi\n• Väliaikaiset tiedostot poistetaan tilan vapauttamiseksi"</string>
+    <!-- no translation found for unused_apps_page_summary (1867593913217272155) -->
+    <skip />
     <string name="last_opened_category_title" msgid="7871347400611202595">"Avattu viimeksi <xliff:g id="NUMBER">%s</xliff:g> kuukautta sitten"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Sovellus avattiin viimeksi <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Avattu viimeksi <xliff:g id="DATE">%s</xliff:g>"</string>
