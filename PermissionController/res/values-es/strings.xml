@@ -51,8 +51,7 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Aplicaciones"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Permisos de aplicaciones"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Aplicaciones no usadas"</string>
-    <!-- no translation found for no_unused_apps (12809387670415295) -->
-    <skip />
+    <string name="no_unused_apps" msgid="12809387670415295">"No hay aplicaciones no usadas"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Inhabilitar aplicación"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Si inhabilitas esta aplicación, es posible que Android y otras aplicaciones no funcionen como deberían. Recuerda que no puedes eliminar esta aplicación, ya que estaba preinstalada en tu dispositivo. Al inhabilitarla, desactivas la aplicación y la ocultas en tu dispositivo."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Gestor de permisos"</string>
@@ -70,8 +69,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g> de <xliff:g id="COUNT_1">%2$d</xliff:g> aplicaciones permitidas"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Mostrar sistema"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Ocultar sistema"</string>
-    <!-- no translation found for manage_permission (2895385393037061964) -->
-    <skip />
+    <string name="manage_permission" msgid="2895385393037061964">"Gestionar permiso"</string>
     <string name="no_apps" msgid="2412612731628386816">"No hay aplicaciones"</string>
     <string name="location_settings" msgid="3624412509133422562">"Ajustes de ubicación"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> es un proveedor de servicios de ubicación de este dispositivo. El acceso a la ubicación se puede modificar en los ajustes de ubicación."</string>
@@ -234,7 +232,8 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Permisos <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> y <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> quitados"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Permisos <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> y <xliff:g id="NUMBER">%2$s</xliff:g> más quitados"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Aplicaciones no usadas"</string>
-    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Si una aplicación lleva varios meses sin usarse:\n\n• Se le retiran los permisos para proteger tus datos\n• Se detienen sus notificaciones para ahorrar batería\n• Se eliminan sus archivos temporales para liberar espacio"</string>
+    <!-- no translation found for unused_apps_page_summary (1867593913217272155) -->
+    <skip />
     <string name="last_opened_category_title" msgid="7871347400611202595">"Abiertas por última vez hace más de <xliff:g id="NUMBER">%s</xliff:g> meses"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"La aplicación se abrió por última vez el <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Se abrió por última vez el <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -259,7 +258,7 @@
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"Denegado / Último acceso: Nunca"</string>
     <string name="allowed_header" msgid="7769277978004790414">"Permitido"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"Permitido siempre"</string>
-    <string name="allowed_foreground_header" msgid="6845655788447833353">"Permitido solo mientras se usan"</string>
+    <string name="allowed_foreground_header" msgid="6845655788447833353">"Permitido solo mientras se usa"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Pueden acceder solo al contenido multimedia"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Pueden gestionar todos los archivos"</string>
     <string name="ask_header" msgid="2633816846459944376">"Preguntar siempre"</string>
