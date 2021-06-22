@@ -51,8 +51,7 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Tətbiq"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Tətbiq icazələri"</string>
     <string name="unused_apps" msgid="2058057455175955094">"İşlədilməyən tətbiqlər"</string>
-    <!-- no translation found for no_unused_apps (12809387670415295) -->
-    <skip />
+    <string name="no_unused_apps" msgid="12809387670415295">"İstifadə olunmayan tətbiq yoxdur"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Tətbiqi deaktiv edin"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Əgər bu tətbiqi deaktiv etsəniz, Android və digər tətbiqlər düzgün işləməyə bilər. Yadda saxlayın ki, cihazda əvvəlcədən quraşdırıldığına görə bu tətbiqi silə bilməzsiniz. Deaktiv etməklə, bu tətbiqi söndürür və cihazda gizlədirsiniz."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"İcazə meneceri"</string>
@@ -70,8 +69,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> tətbiqə icazə verilir"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Sistemi göstərin"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Sistemi gizlədin"</string>
-    <!-- no translation found for manage_permission (2895385393037061964) -->
-    <skip />
+    <string name="manage_permission" msgid="2895385393037061964">"İcazənin idarə edilməsi"</string>
     <string name="no_apps" msgid="2412612731628386816">"Tətbiq yoxdur"</string>
     <string name="location_settings" msgid="3624412509133422562">"Məkan Ayarları"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> bu cihaz üçün məkan xidmətləri təminatçısıdır. Məkana giriş məkan ayarlarından dəyişdirilə bilər."</string>
@@ -218,7 +216,7 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Bütün <xliff:g id="APP">%1$s</xliff:g> icazələrinə baxın"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Bu icazəyə sahib olan bütün tətbiqlərə baxın"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Assistent üçün mikrofon istifadəsini göstərin"</string>
-    <string name="auto_revoke_label" msgid="5068393642936571656">"Tətbiq istifadə edilmirsə, icazələri silin"</string>
+    <string name="auto_revoke_label" msgid="5068393642936571656">"Tətbiq işlənməyəndə icazə ləğv edilsin"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Bir neçə ay istifadə etmədiyiniz tətbiqlərdən icazələr datanızın qorunması məqsədilə silinib."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Bir neçə ay istifadə etmədiyiniz tətbiqlərdən icazələr datanızın qorunması məqsədilə silinib: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Bir neçə ay istifadə etmədiyiniz tətbiqlərdən icazələr datanızın qorunması məqsədilə silinib."</string>
@@ -281,7 +279,7 @@
       <item quantity="one">1 saniyə</item>
     </plurals>
     <string name="permission_reminders" msgid="6528257957664832636">"İcazə xatırladıcıları"</string>
-    <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"1 istifadə olunmayan tətbiq"</string>
+    <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"1 tətbiq istifadə edilmir"</string>
     <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> istifadə olunmayan tətbiq"</string>
     <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"Məxfiliyinizi qorumaq üçün icazələr silinib. Nəzərdən keçirmək üçün toxunun"</string>
     <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"İstifadə edilməyən tətbiqlər üçün icazələr silinib"</string>
@@ -294,7 +292,7 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> istifadə olunmayan tətbiq</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> istifadə olunmayan tətbiq</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="9195026773244581246">"İcazələr və müvəqqəti fayllar silinib və bildirişlər dayandırılıb. Nəzərdən keçirmək üçün toxunun."</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"İcazə ləğv edildi, müvəqqəti fayllar silindi və bildirişlər söndürüldü. Ətraflı məlumat üçün toxunun."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Bəzi tətbiqlər bir neçə aydır ki, istifadə edilməyib"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> tətbiq bir neçə aydır ki, istifadə edilməyib</item>
