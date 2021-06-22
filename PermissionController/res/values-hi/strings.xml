@@ -70,8 +70,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> ऐप्लिकेशन को अनुमति दी गई है"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"सिस्टम के ऐप्लिकेशन दिखाएं"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"सिस्टम के ऐप्लिकेशन छिपाएं"</string>
-    <!-- no translation found for manage_permission (2895385393037061964) -->
-    <skip />
+    <string name="manage_permission" msgid="2895385393037061964">"अनुमति मैनेज करें"</string>
     <string name="no_apps" msgid="2412612731628386816">"किसी ऐप्लिकेशन को इस अनुमति की ज़रूरत नहीं है"</string>
     <string name="location_settings" msgid="3624412509133422562">"जगह की जानकारी की सेटिंग"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> से इस डिवाइस पर जगह की जानकारी मिलती है. जगह की जानकारी की सेटिंग में जाकर जगह की जानकरी ऐक्सेस करने की अनुमति में बदलाव किया जा सकता है."</string>
@@ -234,7 +233,8 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> और <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> की अनुमतियां हटाई गईं"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> और <xliff:g id="NUMBER">%2$s</xliff:g> अन्य अनुमतियां हटाई गईं"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"इस्तेमाल नहीं किए गए ऐप्लिकेशन"</string>
-    <string name="unused_apps_page_summary" msgid="4644643299214625298">"अगर आप किसी ऐप्लिकेशन का कुछ महीनों तक इस्तेमाल नहीं करते हैं, तो:\n\n• आपके डेटा की सुरक्षा के लिए, उस ऐप्लिकेशन को दी गई अनुमतियां हटा दी जाती हैं\n• बैटरी बचाने के लिए, सूचनाएं बंद कर दी जाती हैं\n• मेमोरी खाली करने के लिए, डिवाइस पर कुछ समय के लिए सेव की गई फ़ाइलें हटा दी जाती हैं"</string>
+    <!-- no translation found for unused_apps_page_summary (1867593913217272155) -->
+    <skip />
     <string name="last_opened_category_title" msgid="7871347400611202595">"पिछली बार इसे <xliff:g id="NUMBER">%s</xliff:g> महीने पहले खोला गया था"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ऐप्लिकेशन पिछली बार <xliff:g id="DATE">%s</xliff:g> को खोला गया था"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"पिछली बार <xliff:g id="DATE">%s</xliff:g> को खोला गया था"</string>

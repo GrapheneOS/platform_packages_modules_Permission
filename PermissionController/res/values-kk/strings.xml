@@ -51,8 +51,7 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Қолданбалар"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Қолданба рұқсаттары"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Пайдаланылмайтын қолданбалар"</string>
-    <!-- no translation found for no_unused_apps (12809387670415295) -->
-    <skip />
+    <string name="no_unused_apps" msgid="12809387670415295">"Пайдаланылмайтын қолданбалар жоқ"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Қолданбаны өшіру"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Бұл қолданбаны өшірсеңіз, Android жүйесі мен басқа қолданбалар тиісінше жұмыс істемеуі мүмкін. Бұл қолданба құрылғыға алдын ала орнатылатындықтан, оны жою мүмкін еместігін ескеріңіз. Өшіріп қою арқылы сіз бұл қолданбаны ажыратып, оны құрылғыда жасыра аласыз."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Рұқсат менеджері"</string>
@@ -70,8 +69,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> қолданбаға рұқсат берілген"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Жүйені көрсету"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Жүйені жасыру"</string>
-    <!-- no translation found for manage_permission (2895385393037061964) -->
-    <skip />
+    <string name="manage_permission" msgid="2895385393037061964">"Рұқсатты басқару"</string>
     <string name="no_apps" msgid="2412612731628386816">"Қолданба жоқ"</string>
     <string name="location_settings" msgid="3624412509133422562">"Орналасу параметрлері"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> – осы құрылғыға орынды анықтау қызметтерін көрсететін қолданба. Орынды пайдалану мүмкіндігін орынды анықтау параметрлерінде өзгертуге болады."</string>
@@ -234,7 +232,8 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> және <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> рұқсаттары өшірілді"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> және тағы <xliff:g id="NUMBER">%2$s</xliff:g> рұқсат өшірілді"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Пайдаланылмайтын қолданбалар"</string>
-    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Қолданба бірнеше ай бойы пайдаланылмаса:\n\n• Деректерді қорғау үшін рұқсаттар өшіріледі.\n• Батарея үнемдеу үшін хабарландырулар тоқтатылады.\n• Орын босату үшін уақытша файлдар өшіріледі."</string>
+    <!-- no translation found for unused_apps_page_summary (1867593913217272155) -->
+    <skip />
     <string name="last_opened_category_title" msgid="7871347400611202595">"Соңғы рет <xliff:g id="NUMBER">%s</xliff:g> айдан астам уақыт бұрын ашылған"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Қолданбаның соңғы рет ашылуы: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Соңғы рет ашылуы: <xliff:g id="DATE">%s</xliff:g>"</string>
