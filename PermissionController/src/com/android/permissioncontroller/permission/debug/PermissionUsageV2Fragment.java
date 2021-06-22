@@ -23,6 +23,7 @@ import static java.util.concurrent.TimeUnit.MINUTES;
 
 import android.Manifest;
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.role.RoleManager;
 import android.content.Context;
 import android.os.Bundle;
@@ -482,7 +483,11 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
             setLoading(false, true);
             mFinishedInitialLoad = true;
             setProgressBarVisible(false);
-            mPermissionUsages.stopLoader(getActivity().getLoaderManager());
+
+            Activity activity = getActivity();
+            if (activity != null) {
+                mPermissionUsages.stopLoader(activity.getLoaderManager());
+            }
         }).execute(permApps.toArray(new PermissionApps.PermissionApp[0]));
     }
 
