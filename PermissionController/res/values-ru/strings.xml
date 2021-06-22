@@ -72,8 +72,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"Приложений с разрешением: <xliff:g id="COUNT_0">%1$d</xliff:g> из <xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Показать системные процессы"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Скрыть системные процессы"</string>
-    <!-- no translation found for manage_permission (2895385393037061964) -->
-    <skip />
+    <string name="manage_permission" msgid="2895385393037061964">"Управление разрешением"</string>
     <string name="no_apps" msgid="2412612731628386816">"Нет приложений"</string>
     <string name="location_settings" msgid="3624412509133422562">"Настройки геолокации"</string>
     <string name="location_warning" msgid="2381649060929040962">"Приложение \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" обеспечивает геолокацию на этом устройстве. Вы всегда можете изменить настройки доступа к данным о местоположении."</string>
@@ -258,7 +257,8 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Отозваны разрешения \"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>\" и \"<xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>\"."</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Отозвано разрешение \"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>\" и ещё <xliff:g id="NUMBER">%2$s</xliff:g>."</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Неиспользуемые приложения"</string>
-    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Если вы не пользовались приложением несколько месяцев:\n\n• разрешения будут отозваны для защиты ваших данных;\n• уведомления будут отключены для экономии заряда батареи;\n• временные файлы будут удалены, чтобы освободить место."</string>
+    <!-- no translation found for unused_apps_page_summary (1867593913217272155) -->
+    <skip />
     <string name="last_opened_category_title" msgid="7871347400611202595">"Использовались более <xliff:g id="NUMBER">%s</xliff:g> мес. назад"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Вы открывали это приложение <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Использовалось <xliff:g id="DATE">%s</xliff:g>"</string>

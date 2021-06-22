@@ -51,8 +51,7 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Аппууд"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Аппын зөвшөөрөл"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Ашиглаагүй аппууд"</string>
-    <!-- no translation found for no_unused_apps (12809387670415295) -->
-    <skip />
+    <string name="no_unused_apps" msgid="12809387670415295">"Ашиглаагүй апп байхгүй байна"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Aппыг идэвхгүй болгох"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Хэрэв та энэ аппыг идэвхгүй болговол Android болон бусад апп цаашид хэвийн ажиллахгүй байж болзошгүй. Энэ аппыг таны төхөөрөмжид урьдчилан суулгасан тул устгах боломжгүйг анхаарна уу. Идэвхгүй болгосноор та энэ аппыг унтрааж, төхөөрөмж дээрээсээ нуух болно."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Зөвшөөрлийн менежер"</string>
@@ -70,8 +69,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_1">%2$d</xliff:g>-с <xliff:g id="COUNT_0">%1$d</xliff:g> аппыг зөвшөөрсөн"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Системийг харуулах"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Системийг нуух"</string>
-    <!-- no translation found for manage_permission (2895385393037061964) -->
-    <skip />
+    <string name="manage_permission" msgid="2895385393037061964">"Зөвшөөрлийг удирдах"</string>
     <string name="no_apps" msgid="2412612731628386816">"Апп алга"</string>
     <string name="location_settings" msgid="3624412509133422562">"Байршлын тохиргоо"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> нь энэ төхөөрөмжийн байршлын үйлчилгээ үзүүлэгч юм. Байршлын хандалтыг байршлын тохиргоонд өөрчилж болно."</string>
@@ -234,7 +232,8 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> болон <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>-н зөвшөөрлийг хассан"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>-н болон бусад <xliff:g id="NUMBER">%2$s</xliff:g> зөвшөөрлийг хассан"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Ашиглаагүй аппууд"</string>
-    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Хэрэв аппыг хэдэн сарын турш ашиглаагүй бол:\n\n• Таны нууцлалыг хамгаалахын тулд зөвшөөрлүүдийг хасна\n• Батарейг хэмнэхийн тулд мэдэгдлүүдийг зогсооно\n• Сул зай гаргахын тулд түр зуурын файлуудыг хасна"</string>
+    <!-- no translation found for unused_apps_page_summary (1867593913217272155) -->
+    <skip />
     <string name="last_opened_category_title" msgid="7871347400611202595">"Хамгийн сүүлд <xliff:g id="NUMBER">%s</xliff:g>-с олон сарын өмнө нээсэн"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Аппыг хамгийн сүүлд <xliff:g id="DATE">%s</xliff:g>-нд нээсэн"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Хамгийн сүүлд <xliff:g id="DATE">%s</xliff:g>-нд нээсэн"</string>

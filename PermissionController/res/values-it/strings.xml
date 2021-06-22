@@ -51,8 +51,7 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"App"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Autorizzazioni app"</string>
     <string name="unused_apps" msgid="2058057455175955094">"App inutilizzate"</string>
-    <!-- no translation found for no_unused_apps (12809387670415295) -->
-    <skip />
+    <string name="no_unused_apps" msgid="12809387670415295">"Nessuna app inutilizzata"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Disattiva app"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Se disattivi questa app, Android e altre app potrebbero non funzionare più come previsto. Tieni presente che non puoi eliminare questa app perché è preinstallata sul tuo dispositivo. Puoi scegliere di disattivare l\'app e nasconderla sul tuo dispositivo."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Gestione autorizzazioni"</string>
@@ -70,8 +69,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> app autorizzate"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Mostra sistema"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Nascondi sistema"</string>
-    <!-- no translation found for manage_permission (2895385393037061964) -->
-    <skip />
+    <string name="manage_permission" msgid="2895385393037061964">"Gestisci autorizzazione"</string>
     <string name="no_apps" msgid="2412612731628386816">"Nessuna app"</string>
     <string name="location_settings" msgid="3624412509133422562">"Geolocalizzazione"</string>
     <string name="location_warning" msgid="2381649060929040962">"L\'app <xliff:g id="APP_NAME">%1$s</xliff:g> è un fornitore di servizi di geolocalizzazione per questo dispositivo. È possibile modificare l\'accesso alla posizione dalle impostazioni per la geolocalizzazione."</string>
@@ -234,7 +232,8 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Autorizzazioni <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> e <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> rimosse"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> e altre <xliff:g id="NUMBER">%2$s</xliff:g> autorizzazioni rimosse"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"App inutilizzate"</string>
-    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Se un\'app non viene usata per alcuni mesi:\n\n• Vengono rimosse le autorizzazioni per proteggere i tuoi dati\n• Vengono interrotte le notifiche per risparmiare batteria\n• Vengono rimossi i file temporanei per liberare spazio"</string>
+    <!-- no translation found for unused_apps_page_summary (1867593913217272155) -->
+    <skip />
     <string name="last_opened_category_title" msgid="7871347400611202595">"Aperte l\'ultima volta più di <xliff:g id="NUMBER">%s</xliff:g> mesi fa"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Ultimo utilizzo dell\'app: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Ultimo utilizzo: <xliff:g id="DATE">%s</xliff:g>"</string>

@@ -51,8 +51,7 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"កម្មវិធី"</string>
     <string name="app_permissions" msgid="3369917736607944781">"ការអនុញ្ញាតកម្មវិធី"</string>
     <string name="unused_apps" msgid="2058057455175955094">"កម្មវិធី​ដែលមិន​ប្រើ"</string>
-    <!-- no translation found for no_unused_apps (12809387670415295) -->
-    <skip />
+    <string name="no_unused_apps" msgid="12809387670415295">"មិនមានកម្មវិធីដែលមិនបានប្រើទេ"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"បិទកម្មវិធី"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"ប្រសិន​បើ​អ្នក​បិទ​កម្មវិធីនេះ កម្មវិធី Android និង​កម្មវិធី​ផ្សេង​ទៀត​អាច​នឹង​លែង​ដំណើរការដូច​ដែលអ្វី​​ចង់បាន​។ សូមចាំថា អ្នក​មិនអាច​លុបកម្មវិធី​នេះ​បាន​ទេ ដោយសារកម្មវិធី​នេះត្រូវបាន​ដំឡើងជាស្រេច​នៅលើឧបករណ៍​របស់អ្នក។ ប្រសិនបើ​បិទ មានន័យថាអ្នក​បិទកម្មវិធីនេះ ហើយលាក់វានៅលើឧបករណ៍​របស់អ្នក។"</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"កម្មវិធីគ្រប់គ្រង​ការអនុញ្ញាត"</string>
@@ -70,8 +69,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"បានអនុញ្ញាត​កម្មវិធី <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"បង្ហាញ​ប្រព័ន្ធ"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"លាក់ប្រព័ន្ធ"</string>
-    <!-- no translation found for manage_permission (2895385393037061964) -->
-    <skip />
+    <string name="manage_permission" msgid="2895385393037061964">"គ្រប់គ្រង​ការអនុញ្ញាត"</string>
     <string name="no_apps" msgid="2412612731628386816">"គ្មានកម្មវិធី"</string>
     <string name="location_settings" msgid="3624412509133422562">"ការកំណត់ទីតាំង"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> គឺជាកម្មវិធី​ផ្តល់សេវាកម្ម​ទីតាំង​សម្រាប់​ឧបករណ៍នេះ។ ការចូលប្រើ​ទីតាំងអាច​កែសម្រួល​បានពីការកំណត់​ទីតាំង។"</string>
@@ -234,7 +232,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"បានដក​ការអនុញ្ញាត <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> និង <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"បានដក​ការអនុញ្ញាត​<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> និង​ការអនុញ្ញាត <xliff:g id="NUMBER">%2$s</xliff:g> ទៀត"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"កម្មវិធី​ដែលមិន​ប្រើ"</string>
-    <string name="unused_apps_page_summary" msgid="4644643299214625298">"ប្រសិនបើកម្មវិធីនេះមិនត្រូវបានប្រើរយៈពេលពីរបីខែ៖\n\n• ការអនុញ្ញាតត្រូវបានលុបចេញ ដើម្បីការពារទិន្នន័យរបស់អ្នក\n• ការជូនដំណឹងត្រូវបានបញ្ឈប់ ដើម្បីសន្សំថ្ម\n• ឯកសារបណ្ដោះអាសន្នត្រូវបានលុបចេញ ដើម្បីបង្កើនទំហំផ្ទុក"</string>
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"ប្រសិនបើ​កម្មវិធី​មិនត្រូវបានប្រើ​រយៈពេលពីរបីខែ៖\n\n• ការអនុញ្ញាតត្រូវបាន​ដកចេញ ដើម្បីការពារ​ទិន្នន័យ​របស់អ្នក\n• ការជូនដំណឹង​ត្រូវបានបញ្ឈប់ ដើម្បីសន្សំថ្ម\n• ឯកសារ​បណ្ដោះអាសន្នត្រូវបាន​លុបចេញ ដើម្បីបង្កើន​ទំហំផ្ទុក\n\nដើម្បីផ្ដល់​ការអនុញ្ញាត និង​អនុញ្ញាតឱ្យ​ជូនដំណឹង​ម្ដងទៀត សូមបើក​កម្មវិធីនោះ។"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"បានបើក​លើកចុងក្រោយ​លើសពី <xliff:g id="NUMBER">%s</xliff:g> ខែមុន"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"បានបើក​កម្មវិធី​លើកចុងក្រោយ​នៅថ្ងៃទី <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"បានបើក​លើកចុងក្រោយ​នៅថ្ងៃទី <xliff:g id="DATE">%s</xliff:g>"</string>
