@@ -91,6 +91,7 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
     private boolean mHasSystemApps;
     private MenuItem mShowSystemMenu;
     private MenuItem mHideSystemMenu;
+    private boolean mOtherExpanded;
 
     private ArrayMap<String, Integer> mGroupAppCounts = new ArrayMap<>();
 
@@ -108,6 +109,9 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
 
         // By default, do not show system app usages.
         mShowSystem = false;
+
+        // Start out with 'other' permissions not expanded.
+        mOtherExpanded = false;
 
         setLoading(true, false);
         setHasOptionsMenu(true);
@@ -170,6 +174,7 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
 
         // This is a hacky way of getting the expand button preference for advanced info
         if (preference.getOrder() == EXPAND_BUTTON_ORDER) {
+            mOtherExpanded = false;
             preference.setTitle(R.string.perm_usage_adv_info_title);
             preference.setSummary(preferenceScreen.getSummary());
             if (SdkLevel.isAtLeastS()) {
@@ -179,6 +184,7 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
                 mGraphic.setShowOtherCategory(false);
             }
         } else {
+            mOtherExpanded = true;
             if (mGraphic != null) {
                 mGraphic.setShowOtherCategory(true);
             }
@@ -263,7 +269,13 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
             setPreferenceScreen(screen);
         }
         screen.removeAll();
-        screen.setInitialExpandedChildrenCount(PERMISSION_USAGE_INITIAL_EXPANDED_CHILDREN_COUNT);
+
+        if (mOtherExpanded) {
+            screen.setInitialExpandedChildrenCount(Integer.MAX_VALUE);
+        } else {
+            screen.setInitialExpandedChildrenCount(
+                    PERMISSION_USAGE_INITIAL_EXPANDED_CHILDREN_COUNT);
+        }
 
         long curTime = System.currentTimeMillis();
         long startTime = Math.max(curTime - TIME_FILTER_MILLIS,
