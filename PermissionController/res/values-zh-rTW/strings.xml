@@ -70,8 +70,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"已授權給 <xliff:g id="COUNT_0">%1$d</xliff:g> 個應用程式 (共 <xliff:g id="COUNT_1">%2$d</xliff:g> 個)"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"顯示系統程序"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"隱藏系統程序"</string>
-    <!-- no translation found for manage_permission (2895385393037061964) -->
-    <skip />
+    <string name="manage_permission" msgid="2895385393037061964">"管理權限"</string>
     <string name="no_apps" msgid="2412612731628386816">"沒有應用程式"</string>
     <string name="location_settings" msgid="3624412509133422562">"位置資訊設定"</string>
     <string name="location_warning" msgid="2381649060929040962">"「<xliff:g id="APP_NAME">%1$s</xliff:g>」是這個裝置的定位服務供應商。你可以在位置資訊設定中修改位置資訊存取權。"</string>
@@ -234,7 +233,8 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"已移除<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>和<xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>存取權"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"已移除<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>存取權和另外 <xliff:g id="NUMBER">%2$s</xliff:g> 項權限"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"未使用的應用程式"</string>
-    <string name="unused_apps_page_summary" msgid="4644643299214625298">"如果你數個月未使用某個應用程式，系統將對該應用程式採取以下措施：\n\n• 移除權限以保護你的資料\n• 停止通知以節省電力\n• 移除暫存檔以釋出空間"</string>
+    <!-- no translation found for unused_apps_page_summary (1867593913217272155) -->
+    <skip />
     <string name="last_opened_category_title" msgid="7871347400611202595">"距離上次開啟時間已超過 <xliff:g id="NUMBER">%s</xliff:g> 個月"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"應用程式上次開啟時間：<xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"上次開啟時間：<xliff:g id="DATE">%s</xliff:g>"</string>

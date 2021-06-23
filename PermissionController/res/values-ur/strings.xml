@@ -234,7 +234,8 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> اور <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> اجازتوں کو ہٹایا گیا"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> اور <xliff:g id="NUMBER">%2$s</xliff:g> دیگر اجازتوں کو ہٹایا گیا"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"غیر مستعمل ایپس"</string>
-    <string name="unused_apps_page_summary" msgid="4644643299214625298">"اگر کوئی ایپ کچھ ماہ تک استعمال نہیں ہوتی ہے تو:\n\n• آپ کے ڈیٹا کی حفاظت کرنے کے لیے اجازتوں کو ہٹا دیا جاتا ہے\n• بیٹری محفوظ کرنے کے لیے اطلاعات کو روک دیا جاتا ہے\n• عارضی فائلز کو اسپیس خالی کرنے کے لیے ہٹا دیا جاتا ہے"</string>
+    <!-- no translation found for unused_apps_page_summary (1867593913217272155) -->
+    <skip />
     <string name="last_opened_category_title" msgid="7871347400611202595">"آخری بار <xliff:g id="NUMBER">%s</xliff:g> ماہ سے زیادہ پہلے کھولی گئی"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ایپ آخری بار <xliff:g id="DATE">%s</xliff:g> کو کھولی گئی"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"آخری بار <xliff:g id="DATE">%s</xliff:g> کو کھولی گئی"</string>
