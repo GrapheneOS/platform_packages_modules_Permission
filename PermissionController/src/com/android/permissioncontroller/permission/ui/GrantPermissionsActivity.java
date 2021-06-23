@@ -506,21 +506,25 @@ public class GrantPermissionsActivity extends SettingsActivity
                 clickedButton = 1 << ALLOW_FOREGROUND_BUTTON;
                 break;
             case DENIED:
-                if (mButtonVisibilities[NO_UPGRADE_BUTTON]) {
-                    clickedButton = 1 << NO_UPGRADE_BUTTON;
-                } else if (mButtonVisibilities[NO_UPGRADE_OT_BUTTON]) {
-                    clickedButton = 1 << NO_UPGRADE_OT_BUTTON;
-                } else if (mButtonVisibilities[DENY_BUTTON]) {
-                    clickedButton = 1 << DENY_BUTTON;
+                if (mButtonVisibilities != null) {
+                    if (mButtonVisibilities[NO_UPGRADE_BUTTON]) {
+                        clickedButton = 1 << NO_UPGRADE_BUTTON;
+                    } else if (mButtonVisibilities[NO_UPGRADE_OT_BUTTON]) {
+                        clickedButton = 1 << NO_UPGRADE_OT_BUTTON;
+                    } else if (mButtonVisibilities[DENY_BUTTON]) {
+                        clickedButton = 1 << DENY_BUTTON;
+                    }
                 }
                 break;
             case DENIED_DO_NOT_ASK_AGAIN:
-                if (mButtonVisibilities[NO_UPGRADE_AND_DONT_ASK_AGAIN_BUTTON]) {
-                    clickedButton = 1 << NO_UPGRADE_AND_DONT_ASK_AGAIN_BUTTON;
-                } else if (mButtonVisibilities[NO_UPGRADE_OT_AND_DONT_ASK_AGAIN_BUTTON]) {
-                    clickedButton = 1 << NO_UPGRADE_OT_AND_DONT_ASK_AGAIN_BUTTON;
-                } else if (mButtonVisibilities[DENY_AND_DONT_ASK_AGAIN_BUTTON]) {
-                    clickedButton = 1 << DENY_AND_DONT_ASK_AGAIN_BUTTON;
+                if (mButtonVisibilities != null) {
+                    if (mButtonVisibilities[NO_UPGRADE_AND_DONT_ASK_AGAIN_BUTTON]) {
+                        clickedButton = 1 << NO_UPGRADE_AND_DONT_ASK_AGAIN_BUTTON;
+                    } else if (mButtonVisibilities[NO_UPGRADE_OT_AND_DONT_ASK_AGAIN_BUTTON]) {
+                        clickedButton = 1 << NO_UPGRADE_OT_AND_DONT_ASK_AGAIN_BUTTON;
+                    } else if (mButtonVisibilities[DENY_AND_DONT_ASK_AGAIN_BUTTON]) {
+                        clickedButton = 1 << DENY_AND_DONT_ASK_AGAIN_BUTTON;
+                    }
                 }
                 break;
             case GRANTED_ONE_TIME:
