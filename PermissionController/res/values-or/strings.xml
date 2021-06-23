@@ -51,8 +51,7 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"ଆପ୍ସ"</string>
     <string name="app_permissions" msgid="3369917736607944781">"ଆପ୍‌ ଅନୁମତିଗୁଡ଼ିକ"</string>
     <string name="unused_apps" msgid="2058057455175955094">"ଅବ୍ୟବହୃତ ଆପଗୁଡ଼ିକ"</string>
-    <!-- no translation found for no_unused_apps (12809387670415295) -->
-    <skip />
+    <string name="no_unused_apps" msgid="12809387670415295">"କୌଣସି ଅବ୍ୟବହୃତ ଆପ୍ ନାହିଁ"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"ଆପ୍ ଅକ୍ଷମ କରନ୍ତୁ"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"ଯଦି ଆପଣ ଏହି ଆପକୁ ଅକ୍ଷମ କରିବେ, ତେବେ Android ଓ ଅନ୍ୟ ଆପଗୁଡ଼ିକ ଆଉ ଆଶାନୁରୂପେ କାର୍ଯ୍ୟ କରିନପାରେ। ମନେରଖନ୍ତୁ ଯେ, ଏହି ଆପ୍ ଆପଣଙ୍କ ଡିଭାଇସରେ ପୂର୍ବରୁ-ଇନଷ୍ଟଲ୍ କରାଯାଇଥିବା ଯୋଗୁଁ ଆପଣ ଏହାକୁ ଡିଲିଟ୍ କରିପାରିବେ ନାହିଁ। ଅକ୍ଷମ କରି, ଆପଣ ଏହି ଆପକୁ ବନ୍ଦ କରିଦିଅନ୍ତି ଏବଂ ଆପଣଙ୍କ ଡିଭାଇସରେ ଲୁଚାଇଦିଅନ୍ତି।"</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"ଅନୁମତି ପରିଚାଳକ"</string>
@@ -234,7 +233,8 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> ଏବଂ <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> ଅନୁମତିକୁ କାଢ଼ି ଦିଆଯାଇଛି"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ଏବଂ ଅନ୍ୟ <xliff:g id="NUMBER">%2$s</xliff:g>ଟି ଅନୁମତି କାଢ଼ି ଦିଆଯାଇଛି"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"ଅବ୍ୟବହୃତ ଆପଗୁଡ଼ିକ"</string>
-    <string name="unused_apps_page_summary" msgid="4644643299214625298">"ଯଦି ଏକ ଆପ୍ କିଛି ମାସ ପାଇଁ ଅବ୍ୟବହୃତ ଅଛି, ତେବେ:\n\n• ଆପଣଙ୍କ ଡାଟାକୁ ସୁରକ୍ଷା ଦେବା ପାଇଁ ଅନୁମତିଗୁଡ଼ିକୁ କାଢ଼ି ଦିଆଯାଏ\n• ବ୍ୟାଟେରୀ ସେଭ୍ କରିବାକୁ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକୁ ବନ୍ଦ କରାଯାଏ\n• ସ୍ପେସ୍ ଖାଲି କରିବା ପାଇଁ ଅସ୍ଥାୟୀ ଫାଇଲଗୁଡ଼ିକୁ କାଢ଼ି ଦିଆଯାଏ"</string>
+    <!-- no translation found for unused_apps_page_summary (1867593913217272155) -->
+    <skip />
     <string name="last_opened_category_title" msgid="7871347400611202595">"ଗତଥର <xliff:g id="NUMBER">%s</xliff:g> ମାସ ପୂର୍ବେ ଖୋଲାଯାଇଥିଲା"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ଗତ ଥର <xliff:g id="DATE">%s</xliff:g>ରେ ଆପକୁ ଖୋଲାଯାଇଥିଲା"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"ଗତ ଥର <xliff:g id="DATE">%s</xliff:g>ରେ ଖୋଲାଯାଇଥିଲା"</string>

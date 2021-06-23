@@ -358,6 +358,7 @@
         </required-components>
         <permissions>
             <permission name="android.permission.START_FOREGROUND_SERVICES_FROM_BACKGROUND" minSdkVersion="31" />
+            <permission name="android.permission.OBSERVE_SENSOR_PRIVACY" minSdkVersion="31" />
         </permissions>
     </role>
 

@@ -44,7 +44,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.permissioncontroller.R;
-import com.android.permissioncontroller.permission.model.AppPermissionUsage;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 
 import java.util.ArrayList;
@@ -73,17 +72,19 @@ public class PermissionHistoryPreference extends Preference {
 
     private Drawable mWidgetIcon;
 
-    public PermissionHistoryPreference(@NonNull Context context, @NonNull AppPermissionUsage usage,
+    public PermissionHistoryPreference(@NonNull Context context, @NonNull String pkgName,
+            @NonNull Drawable appIcon,
+            @NonNull String preferenceTitle,
             @NonNull String permissionGroup, @NonNull String accessTime,
             @Nullable CharSequence accessDuration, @NonNull List<Long> accessTimeList,
             @NonNull ArrayList<String> attributionTags, boolean isLastUsage) {
         super(context);
         mContext = context;
-        mPackageName = usage.getPackageName();
+        mPackageName = pkgName;
         mPermissionGroup = permissionGroup;
         mAccessTime = accessTime;
-        mAppIcon = usage.getApp().getIcon();
-        mTitle = usage.getApp().getLabel();
+        mAppIcon = appIcon;
+        mTitle = preferenceTitle;
         mWidgetIcon = null;
         mAccessTimeList = accessTimeList;
         mAttributionTags = attributionTags;

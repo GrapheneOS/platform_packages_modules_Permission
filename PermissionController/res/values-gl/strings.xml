@@ -70,8 +70,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"Aplicacións permitidas: <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Mostrar sistema"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Ocultar sistema"</string>
-    <!-- no translation found for manage_permission (2895385393037061964) -->
-    <skip />
+    <string name="manage_permission" msgid="2895385393037061964">"Xestionar permiso"</string>
     <string name="no_apps" msgid="2412612731628386816">"Sen aplicacións"</string>
     <string name="location_settings" msgid="3624412509133422562">"Configuración de localización"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> é un fornecedor de servizos de localización para este dispositivo. O acceso de localización pode modificarse desde a configuración de localización."</string>
@@ -234,7 +233,8 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Quitáronse os permisos (<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> e <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>)"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Quitáronse os permisos (<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> e <xliff:g id="NUMBER">%2$s</xliff:g> máis)"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Aplicacións que non se usan"</string>
-    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Se durante uns meses non se usa unha aplicación:\n\n• Quítanselle os permisos para protexer os teus datos\n• Detéñense as notificacións para aforrar batería\n• Quítanse os ficheiros temporais para liberar espazo"</string>
+    <!-- no translation found for unused_apps_page_summary (1867593913217272155) -->
+    <skip />
     <string name="last_opened_category_title" msgid="7871347400611202595">"Última vez que se abriu: hai máis de <xliff:g id="NUMBER">%s</xliff:g> meses"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"A aplicación abriuse por última vez o <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Abriuse por última vez o <xliff:g id="DATE">%s</xliff:g>"</string>
