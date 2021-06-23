@@ -23,9 +23,9 @@ import android.app.AppOpsManager;
 import android.app.AppOpsManager.HistoricalOp;
 import android.app.AppOpsManager.HistoricalPackageOps;
 import android.app.AppOpsManager.OpEntry;
+import android.app.AppOpsManager.OpEventProxyInfo;
 import android.app.AppOpsManager.PackageOps;
 import android.media.AudioRecordingConfiguration;
-import android.util.Pair;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,6 +37,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Function;
+
+import kotlin.Triple;
 
 /**
  * Stats for permission usage of an app. This data is for a given time period,
@@ -50,7 +52,7 @@ public final class AppPermissionUsage {
     private static final String OPSTR_PHONE_CALL_MICROPHONE = "android:phone_call_microphone";
     private static final String OPSTR_PHONE_CALL_CAMERA = "android:phone_call_camera";
     private static final int PRIVACY_HUB_FLAGS = AppOpsManager.OP_FLAG_SELF
-            | AppOpsManager.OP_FLAG_TRUSTED_PROXIED;
+            | AppOpsManager.OP_FLAG_TRUSTED_PROXIED | AppOpsManager.OP_FLAG_TRUSTED_PROXY;
 
     private AppPermissionUsage(@NonNull PermissionApp permissionApp,
             @NonNull List<AppPermissionGroup> groups, @Nullable PackageOps lastUsage,
@@ -238,10 +240,10 @@ public final class AppPermissionUsage {
 
         /**
          * get all discrete access time in millis
-         * Returns a list of pairs of (access time, access duration)
+         * Returns a list of triples of (access time, access duration, proxy)
          */
-        public List<Pair<Long, Long>> getAllDiscreteAccessTime() {
-            List<Pair<Long, Long>> allDiscreteAccessTime = new ArrayList<>();
+        public List<Triple<Long, Long, OpEventProxyInfo>> getAllDiscreteAccessTime() {
+            List<Triple<Long, Long, OpEventProxyInfo>> allDiscreteAccessTime = new ArrayList<>();
             if (!hasDiscreteData()) {
                 return allDiscreteAccessTime;
             }
@@ -256,9 +258,10 @@ public final class AppPermissionUsage {
                 int discreteAccessCount = historicalOp.getDiscreteAccessCount();
                 for (int j = 0; j < discreteAccessCount; j++) {
                     AppOpsManager.AttributedOpEntry opEntry = historicalOp.getDiscreteAccessAt(j);
-                    allDiscreteAccessTime.add(Pair.create(
+                    allDiscreteAccessTime.add(new Triple<>(
                             opEntry.getLastAccessTime(PRIVACY_HUB_FLAGS),
-                            opEntry.getLastDuration(PRIVACY_HUB_FLAGS)));
+                            opEntry.getLastDuration(PRIVACY_HUB_FLAGS),
+                            opEntry.getLastProxyInfo(PRIVACY_HUB_FLAGS)));
                 }
             }
 

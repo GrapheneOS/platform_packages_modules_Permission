@@ -85,6 +85,7 @@ public final class PermissionUsages implements LoaderCallbacks<List<AppPermissio
     // TODO: theianchen move them to SystemApi
     private static final String OPSTR_PHONE_CALL_MICROPHONE = "android:phone_call_microphone";
     private static final String OPSTR_PHONE_CALL_CAMERA = "android:phone_call_camera";
+    public static final int HISTORY_FLAG_GET_ATTRIBUTION_CHAINS = 1 << 2;
 
     private @Nullable PermissionsUsagesChangeCallback mCallback;
 
@@ -352,7 +353,8 @@ public final class PermissionUsages implements LoaderCallbacks<List<AppPermissio
                         mFilterBeginTimeMillis, mFilterEndTimeMillis)
                         .setFlags(AppOpsManager.OP_FLAG_SELF
                                 | AppOpsManager.OP_FLAG_TRUSTED_PROXIED)
-                        .setHistoryFlags(AppOpsManager.HISTORY_FLAG_DISCRETE)
+                        .setHistoryFlags(AppOpsManager.HISTORY_FLAG_DISCRETE
+                                | HISTORY_FLAG_GET_ATTRIBUTION_CHAINS)
                         .build();
                 appOpsManager.getHistoricalOps(request, Runnable::run,
                         (HistoricalOps ops) -> {
