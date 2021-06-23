@@ -74,8 +74,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"التطبيقات التي تم منحها الإذن: <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"إظهار تطبيقات النظام"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"إخفاء تطبيقات النظام"</string>
-    <!-- no translation found for manage_permission (2895385393037061964) -->
-    <skip />
+    <string name="manage_permission" msgid="2895385393037061964">"إدارة الإذن"</string>
     <string name="no_apps" msgid="2412612731628386816">"ليس هناك أيّ تطبيقات."</string>
     <string name="location_settings" msgid="3624412509133422562">"إعدادات الموقع الجغرافي"</string>
     <string name="location_warning" msgid="2381649060929040962">"يعد <xliff:g id="APP_NAME">%1$s</xliff:g> أحد مقدِّمي خدمات الموقع الجغرافي لهذا الجهاز. ويمكن تعديل إمكانية الوصول إلى الموقع الجغرافي من إعدادات الموقع الجغرافي."</string>
@@ -282,7 +281,8 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"تمت إزالة إذنَي \"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>\" و\"<xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>\"."</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"تمت إزالة إذن \"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>\" وعدد <xliff:g id="NUMBER">%2$s</xliff:g> من الأذونات الأخرى."</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"التطبيقات غير المستخدمة"</string>
-    <string name="unused_apps_page_summary" msgid="4644643299214625298">"في حال عدم استخدام التطبيق لبضعة أشهر:\n\n• تتم إزالة الأذونات لحماية بياناتك.\n• يتم إيقاف الإشعارات لتوفير شحن البطارية.\n• تتم إزالة الملفات المؤقتة لتوفير مساحة."</string>
+    <!-- no translation found for unused_apps_page_summary (1867593913217272155) -->
+    <skip />
     <string name="last_opened_category_title" msgid="7871347400611202595">"تم فتح هذه التطبيقات آخر مرة قبل أكثر من <xliff:g id="NUMBER">%s</xliff:g> شهر"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"آخر مرة تم فتح التطبيق فيها: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"آخر مرة تم فتحه: <xliff:g id="DATE">%s</xliff:g>"</string>
