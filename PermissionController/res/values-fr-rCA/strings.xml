@@ -51,8 +51,7 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Applications"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Autorisations des applications"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Applications non utilisées"</string>
-    <!-- no translation found for no_unused_apps (12809387670415295) -->
-    <skip />
+    <string name="no_unused_apps" msgid="12809387670415295">"Aucune application inutilisée"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Désactiver l\'application"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Si vous désactivez cette application, Android et d\'autres applications risquent de ne plus fonctionner correctement. Gardez à l\'esprit que vous ne pouvez pas supprimer cette application, étant donné qu\'elle était préinstallée sur votre appareil. En la désactivant, elle ne sera plus active et elle sera masquée sur votre appareil."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Gestionnaire des autorisations"</string>
@@ -233,8 +232,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Les autorisations <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> et <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> ont été supprimées"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"L\'autorisation <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> et <xliff:g id="NUMBER">%2$s</xliff:g> autres ont été supprimées"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Applications non utilisées"</string>
-    <!-- no translation found for unused_apps_page_summary (1867593913217272155) -->
-    <skip />
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Si une application n\'est pas utilisée pendant quelques mois :\n\n• Les autorisations sont retirées pour protéger vos données.\n• Les notifications sont arrêtées pour économiser la pile.\n• Les fichiers temporaires sont retirés pour libérer de l\'espace de stockage.\n\nPour permettre d\'accéder de nouveau aux autorisations et aux notifications, ouvrez l\'application."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Dernière ouverture : il y a plus de <xliff:g id="NUMBER">%s</xliff:g> mois"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Dernière ouverture de l\'application le <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Dernière ouverture : <xliff:g id="DATE">%s</xliff:g>"</string>

@@ -209,8 +209,8 @@
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Não permitir"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Local exato"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Local aproximado"</string>
-    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Usar local exato"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Apps podem acessar seu local aproximado quando o local exato está desativado"</string>
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Usar localização exata"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Apps podem acessar a localização aproximada quando a localização exata estiver desativada"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Permissão para acessar <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Permitir que este app acesse: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Ver todas as permissões do app <xliff:g id="APP">%1$s</xliff:g>"</string>
@@ -232,8 +232,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Permissões <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> e <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> removidas"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> e mais <xliff:g id="NUMBER">%2$s</xliff:g> permissões removidas"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Apps não usados"</string>
-    <!-- no translation found for unused_apps_page_summary (1867593913217272155) -->
-    <skip />
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Se um app fica sem uso por alguns meses:\n\n• as permissões são removidas para proteger seus dados;\n• as notificações são interrompidas para economizar bateria;\n• os arquivos temporários são removidos para liberar espaço.\n\nPara retomar as permissões e notificações, abra o app."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Abertos pela última vez há mais de <xliff:g id="NUMBER">%s</xliff:g> meses"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"App aberto pela última vez em <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Aberto pela última vez em <xliff:g id="DATE">%s</xliff:g>"</string>

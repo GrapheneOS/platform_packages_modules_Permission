@@ -232,8 +232,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Autorizzazioni <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> e <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> rimosse"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> e altre <xliff:g id="NUMBER">%2$s</xliff:g> autorizzazioni rimosse"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"App inutilizzate"</string>
-    <!-- no translation found for unused_apps_page_summary (1867593913217272155) -->
-    <skip />
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Se un\'app non viene usata per alcuni mesi:\n\n• Vengono rimosse le autorizzazioni per proteggere i tuoi dati\n• Vengono interrotte le notifiche per risparmiare batteria\n• Vengono rimossi i file temporanei per liberare spazio\n\nApri l\'app per consentire di nuovo autorizzazioni e notifiche."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Aperte l\'ultima volta più di <xliff:g id="NUMBER">%s</xliff:g> mesi fa"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Ultimo utilizzo dell\'app: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Ultimo utilizzo: <xliff:g id="DATE">%s</xliff:g>"</string>
