@@ -115,6 +115,8 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"<xliff:g id="PERMGROUP">%1$s</xliff:g> icazənizin son 24 saat ərzində tətbiqlərin nə zaman istifadə edildiyini göstərən taymlayn"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Bu tətbiqin <xliff:g id="PERMGROUP">%1$s</xliff:g> icazənizdən istifadə etdiyi vaxt"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Ətraflı məlumat"</string>
+    <!-- no translation found for permission_usage_duration_and_proxy (573959201368716399) -->
+    <skip />
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> gün</item>
       <item quantity="one">1 gün</item>
@@ -232,8 +234,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> və <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> icazəsi silindi"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> və digər <xliff:g id="NUMBER">%2$s</xliff:g> icazə silindi"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"İstifadə olunmayan tətbiqlər"</string>
-    <!-- no translation found for unused_apps_page_summary (1867593913217272155) -->
-    <skip />
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Tətbiq bir neçə ay istifadə edilmirsə:\n\n• Datanızı qorumaq üçün icazələr silinir\n• Enerjiyə qənaət üçün bildirişlər dayandırılır\n• Yer boşaltmaq üçün müvəqqəti fayllar silinir\n\nİcazələrə və bildirişlərə yenidən icazə vermək üçün tətbiqi açın."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Sonuncu dəfə ən azı <xliff:g id="NUMBER">%s</xliff:g> ay əvvəl açılıb"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Tətbiq sonuncu dəfə <xliff:g id="DATE">%s</xliff:g> tarixində açılıb"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Sonuncu dəfə <xliff:g id="DATE">%s</xliff:g> tarixində açılıb"</string>
