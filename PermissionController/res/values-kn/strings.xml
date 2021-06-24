@@ -51,8 +51,7 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"ಆ್ಯಪ್‌ಗಳು"</string>
     <string name="app_permissions" msgid="3369917736607944781">"ಆ್ಯಪ್ ಅನುಮತಿಗಳು"</string>
     <string name="unused_apps" msgid="2058057455175955094">"ಬಳಕೆಯಾಗದ ಆ್ಯಪ್‌ಗಳು"</string>
-    <!-- no translation found for no_unused_apps (12809387670415295) -->
-    <skip />
+    <string name="no_unused_apps" msgid="12809387670415295">"ಯಾವುದೇ ಬಳಕೆಯಾಗದ ಆ್ಯಪ್‌ಗಳಿಲ್ಲ"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"ಆ್ಯಪ್ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"ನೀವು ಈ ಆ್ಯಪ್ ಅನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿದರೆ, Android ಮತ್ತು ಇತರ ಆ್ಯಪ್‌ಗಳು ಇನ್ನು ಮುಂದೆ ಉದ್ದೇಶಿಸಿದ ಹಾಗೆ ಕಾರ್ಯನಿರ್ವಹಿಸದಿರಬಹುದು. ಈ ಆ್ಯಪ್ ಅನ್ನು ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿ ಪೂರ್ವ-ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಿರುವುದರಿಂದ, ನೀವು ಅದನ್ನು ಅಳಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ ಎಂಬುದನ್ನು ನೆನಪಿನಲ್ಲಿಡಿ. ನಿಷ್ಕ್ರಿಯಗೊಳಿಸುವ ಮೂಲಕ, ಈ ಆ್ಯಪ್ ಅನ್ನು ನೀವು ಆಫ್ ಮಾಡಬಹುದು ಮತ್ತು ಅದನ್ನು ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿ ಮರೆ ಮಾಡಬಹುದು."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"ಅನುಮತಿ ನಿರ್ವಾಹಕ"</string>
@@ -70,8 +69,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> ಆ್ಯಪ್‌ಗಳನ್ನು ಅನುಮತಿಸಲಾಗಿದೆ"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"ಸಿಸ್ಟಂ ತೋರಿಸಿ"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"ಸಿಸ್ಟಂ ಮರೆಮಾಡಿ"</string>
-    <!-- no translation found for manage_permission (2895385393037061964) -->
-    <skip />
+    <string name="manage_permission" msgid="2895385393037061964">"ಅನುಮತಿಗಳನ್ನು ನಿರ್ವಹಿಸಿ"</string>
     <string name="no_apps" msgid="2412612731628386816">"ಯಾವುದೇ ಆ್ಯಪ್‌ಗಳು ಇಲ್ಲ"</string>
     <string name="location_settings" msgid="3624412509133422562">"ಸ್ಥಳ ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> ಆ್ಯಪ್ ಈ ಸಾಧನಕ್ಕೆ ಸ್ಥಳ ಸೇವೆಗಳನ್ನು ಒದಗಿಸುತ್ತದೆ. ಸ್ಥಳ ಪ್ರವೇಶವನ್ನು ಸ್ಥಳ ಸೆಟ್ಟಿಂಗ್‌ಗಳಿಂದ ಮಾರ್ಪಡಿಸಬಹುದು."</string>
@@ -234,8 +232,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> ಮತ್ತು <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> ಅನುಮತಿಗಳನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ಮತ್ತು <xliff:g id="NUMBER">%2$s</xliff:g> ಇತರ ಅನುಮತಿಗಳನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"ಬಳಕೆಯಾಗದ ಆ್ಯಪ್‌ಗಳು"</string>
-    <!-- no translation found for unused_apps_page_summary (1867593913217272155) -->
-    <skip />
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"ಆ್ಯಪ್ ಅನ್ನು ಕೆಲವು ತಿಂಗಳುಗಳ ಕಾಲ ಬಳಸದೇ ಇದ್ದರೆ:\n\n• ನಿಮ್ಮ ಡೇಟಾವನ್ನು ರಕ್ಷಿಸಲು ಅನುಮತಿಗಳನ್ನು ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ\n• ಬ್ಯಾಟರಿ ಉಳಿಸಲು ಅಧಿಸೂಚನೆಗಳನ್ನು ನಿಲ್ಲಿಸಲಾಗುತ್ತದೆ\n• ಸ್ಥಳಾವಕಾಶವನ್ನು ಮುಕ್ತಗೊಳಿಸಲು ತಾತ್ಕಾಲಿಕ ಫೈಲ್‌ಗಳನ್ನು ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ\n\nಪುನಃ ಅನುಮತಿಗಳು ಮತ್ತು ಅಧಿಸೂಚನೆಗಳನ್ನು ಅನುಮತಿಸಲು, ಆ್ಯಪ್ ಅನ್ನು ತೆರೆಯಿರಿ."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"ಕೊನೆಯದಾಗಿ <xliff:g id="NUMBER">%s</xliff:g> ತಿಂಗಳುಗಳಿಗೂ ಹಿಂದೆ ತೆರೆಯಲಾಗಿದೆ"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ಆ್ಯಪ್ ಅನ್ನು ಕೊನೆಯದಾಗಿ ತೆರೆದಿರುವುದು: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"ಕೊನೆಯದಾಗಿ ತೆರೆದಿರುವುದು: <xliff:g id="DATE">%s</xliff:g>"</string>

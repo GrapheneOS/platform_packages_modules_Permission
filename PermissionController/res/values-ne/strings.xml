@@ -51,8 +51,7 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"एपहरू"</string>
     <string name="app_permissions" msgid="3369917736607944781">"एपसम्बन्धी अनुमति"</string>
     <string name="unused_apps" msgid="2058057455175955094">"प्रयोग नगरिएका एपहरू"</string>
-    <!-- no translation found for no_unused_apps (12809387670415295) -->
-    <skip />
+    <string name="no_unused_apps" msgid="12809387670415295">"सबै एप चलाइएका छन्"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"एप असक्षम पार्नुहोस्"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"तपाईंले यो एप असक्षम पार्नुभयो भने Android र अन्य एपहरूले अब उप्रान्त अपेक्षाअनुसार कार्य नगर्न सक्छन्। स्मरण रहोस्, तपाईं यो एप तपाईंको यन्त्रसँग पहिल्यै स्थापना भएर आएको हुँदा तपाईं यसलाई मेटाउन सक्नुहुन्न। यो एप असक्षम पारेर, तपाईं यसलाई निष्क्रिय पार्नुहुन्छ तथा यसलाई आफ्नो डिभाइसमा लुकाउनुहुन्छ।"</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"पर्मिसन म्यानेजर"</string>
@@ -70,8 +69,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> एपहरूलाई अनुमति दिइएको छ"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"सिस्टम देखाइयोस्"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"सिस्टम लुकाइयोस्"</string>
-    <!-- no translation found for manage_permission (2895385393037061964) -->
-    <skip />
+    <string name="manage_permission" msgid="2895385393037061964">"अनुमति व्यवस्थापन गर्नुहोस्"</string>
     <string name="no_apps" msgid="2412612731628386816">"कुनै पनि एप छैन"</string>
     <string name="location_settings" msgid="3624412509133422562">"स्थानसम्बन्धी सेटिङहरू"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> यस डिभाइसको लोकेसन सर्भिस प्रदायक हो। स्थानसम्बन्धी सेटिङहरूमा गई स्थानसम्बन्धी पहुँच परिमार्जन गर्न सकिन्छ।"</string>
@@ -234,8 +232,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> र <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> सम्बन्धी अनुमतिहरू हटाइए"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> र अन्य <xliff:g id="NUMBER">%2$s</xliff:g> अनुमतिहरू हटाइए"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"प्रयोग नगरिएका एपहरू"</string>
-    <!-- no translation found for unused_apps_page_summary (1867593913217272155) -->
-    <skip />
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"कुनै एप केही महिनादेखि चलाइएको छैन भने:\n\n• तपाईंको डेटा सुरक्षित राख्न उक्त एपलाई दिइएका अनुमतिहरू रद्द गरिन्छन्\n• ब्याट्री बचत गर्न सूचनाहरू बन्द गरिन्छन्\n• ठाउँ खाली गर्न अस्थायी फाइलहरू हटाइन्छन्\n\nसो एपलाई फेरि ती अनुमतिहरू दिन र सो एपबाट सूचनाहरू प्राप्त गर्न सो एप खोल्नुहोस्।"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"पछिल्लो पटक <xliff:g id="NUMBER">%s</xliff:g> महिनाभन्दा पहिले प्रयोग गरिएको"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"यो एप पछिल्लो पटक <xliff:g id="DATE">%s</xliff:g> मा खोलिएको थियो"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"पछिल्लो पटक <xliff:g id="DATE">%s</xliff:g> मा खोलिएको थियो"</string>
