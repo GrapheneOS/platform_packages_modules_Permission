@@ -213,7 +213,7 @@
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"कधीही अ‍ॅक्सेस केलेले नाही"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"नाकारले / कधीही अ‍ॅक्सेस केले नाही"</string>
     <string name="allowed_header" msgid="7769277978004790414">"अनुमती असलेले"</string>
-    <string name="allowed_always_header" msgid="6455903312589013545">"सर्व वेळी अनुमती आहे"</string>
+    <string name="allowed_always_header" msgid="6455903312589013545">"नेहमी अनुमती आहे"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"फक्त वापरत असताना अनुमती आहे"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"फक्त मीडिया ॲक्सेस करण्यासाठी अनुमती दिली आहे"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"सर्व फाइल व्यवस्थापित करण्यास अनुमती दिली आहे"</string>
