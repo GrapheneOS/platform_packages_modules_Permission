@@ -76,7 +76,7 @@ public class PermissionHistoryPreference extends Preference {
             @NonNull Drawable appIcon,
             @NonNull String preferenceTitle,
             @NonNull String permissionGroup, @NonNull String accessTime,
-            @Nullable CharSequence accessDuration, @NonNull List<Long> accessTimeList,
+            @Nullable CharSequence summaryText, @NonNull List<Long> accessTimeList,
             @NonNull ArrayList<String> attributionTags, boolean isLastUsage) {
         super(context);
         mContext = context;
@@ -98,8 +98,8 @@ public class PermissionHistoryPreference extends Preference {
         mDialogHeightScalar = outValue.getFloat();
 
         setTitle(mTitle);
-        if (accessDuration != null) {
-            setSummary(accessDuration);
+        if (summaryText != null) {
+            setSummary(summaryText);
         }
 
         mIntent = getViewPermissionUsageForPeriodIntent();
