@@ -51,8 +51,7 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Апликације"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Дозволе за апликације"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Апликације које се не користе"</string>
-    <!-- no translation found for no_unused_apps (12809387670415295) -->
-    <skip />
+    <string name="no_unused_apps" msgid="12809387670415295">"Нема аплик. које се не користе"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Онемогући апликацију"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Ако онемогућите ову апликацију, Android и друге апликације можда више неће радити исправно. Имајте на уму да не можете да избришете ову апликацију јер је била унапред инсталирана на уређају. Ако је онемогућите, искључићете је и сакрити на уређају."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Менаџер дозвола"</string>
@@ -117,6 +116,8 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Хронологија коришћења групе дозвола <xliff:g id="PERMGROUP">%1$s</xliff:g> од стране апликација у последња 24 сата"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Када је ова апликација користила дозволу <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Сазнајте више"</string>
+    <!-- no translation found for permission_usage_duration_and_proxy (573959201368716399) -->
+    <skip />
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> дан</item>
       <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> дана</item>
@@ -245,8 +246,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Дозволе <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> и <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> су уклоњене"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Уклоњено: <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> и још <xliff:g id="NUMBER">%2$s</xliff:g> дозволе"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Апликације које се не користе"</string>
-    <!-- no translation found for unused_apps_page_summary (1867593913217272155) -->
-    <skip />
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Ако не користите апликацију неколико месеци:\n\n• дозволе се уклањају да би се заштитили подаци\n• обавештења се заустављају да би се штедела батерија\n• привремени фајлови се уклањају да би се ослободио простор\n\nДа бисте поново омогућили дозволе и обавештења, отворите апликацију."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Последњи пут отворено пре више од <xliff:g id="NUMBER">%s</xliff:g> мес."</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Апликација је последњи пут отворена: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Последњи пут отворено: <xliff:g id="DATE">%s</xliff:g>"</string>

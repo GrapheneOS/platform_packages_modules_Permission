@@ -51,8 +51,7 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Приложения"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Разрешения приложений"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Неиспользуемые приложения"</string>
-    <!-- no translation found for no_unused_apps (12809387670415295) -->
-    <skip />
+    <string name="no_unused_apps" msgid="12809387670415295">"Неиспользуемых приложений нет"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Отключить приложение"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Если вы отключите это приложение, система и другие программы могут работать неправильно. Приложение установлено производителем, поэтому его нельзя удалить с устройства. После отключения оно перестанет работать и будет скрыто."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Разрешения"</string>
@@ -118,6 +117,8 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Хронология использования разрешения \"<xliff:g id="PERMGROUP">%1$s</xliff:g>\" за последние 24 часа"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Когда приложение использовало разрешение \"<xliff:g id="PERMGROUP">%1$s</xliff:g>\""</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Подробнее…"</string>
+    <!-- no translation found for permission_usage_duration_and_proxy (573959201368716399) -->
+    <skip />
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> день</item>
       <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> дня</item>
@@ -257,8 +258,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Отозваны разрешения \"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>\" и \"<xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>\"."</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Отозвано разрешение \"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>\" и ещё <xliff:g id="NUMBER">%2$s</xliff:g>."</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Неиспользуемые приложения"</string>
-    <!-- no translation found for unused_apps_page_summary (1867593913217272155) -->
-    <skip />
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Если вы не пользовались приложением несколько месяцев:\n\n• разрешения будут отозваны для защиты ваших данных;\n• уведомления будут отключены для экономии заряда батареи;\n• временные файлы будут удалены, чтобы освободить место.\n\nЧтобы заново предоставить разрешения и включить уведомления, откройте приложение."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Использовались более <xliff:g id="NUMBER">%s</xliff:g> мес. назад"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Вы открывали это приложение <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Использовалось <xliff:g id="DATE">%s</xliff:g>"</string>
