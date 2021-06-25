@@ -418,12 +418,11 @@ public final class AppPermissionsFragment extends SettingsWithHeader
         if (state == null || autoRevokeSwitch == null) {
             return;
         }
-        if (!state.isEnabledGlobal()) {
+        if (!state.isEnabledGlobal() || state.getRevocableGroupNames().isEmpty()) {
             autoRevokeSwitch.setVisible(false);
             return;
         }
         autoRevokeSwitch.setVisible(true);
-        autoRevokeSwitch.setEnabled(state.getShouldAllowUserToggle());
         autoRevokeSwitch.setChecked(state.isEnabledForApp());
     }
 
