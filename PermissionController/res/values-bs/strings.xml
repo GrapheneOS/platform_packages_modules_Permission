@@ -116,6 +116,8 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Vremenski slijed kada su aplikacije u posljednja 24 sata koristile: <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Kada je ova aplikacija koristila vaše odobrenje za: <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Saznajte više"</string>
+    <!-- no translation found for permission_usage_duration_and_proxy (573959201368716399) -->
+    <skip />
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> dan</item>
       <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> dana</item>
@@ -244,8 +246,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Uklonjena su odobrenja <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> i <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Uklonjeno je odobrenje <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> i njih još <xliff:g id="NUMBER">%2$s</xliff:g>"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Nekorištene aplikacije"</string>
-    <!-- no translation found for unused_apps_page_summary (1867593913217272155) -->
-    <skip />
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Ako se aplikacija ne koristi nekoliko mjeseci:\n\n• odobrenja će se ukloniti radi zaštite vaših podataka\n• obavještenja će se zaustaviti radi uštede baterije\n• privremeni fajlovi će se ukloniti radi oslobađanja prostora\n\nDa ponovo dozvolite odobrenja i obavještenja, otvorite aplikaciju."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Posljednji put otvoreno prije više od <xliff:g id="NUMBER">%s</xliff:g> mj."</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Aplikacija je posljednji put otvorena na dan <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Posljednji put otvoreno na dan <xliff:g id="DATE">%s</xliff:g>"</string>

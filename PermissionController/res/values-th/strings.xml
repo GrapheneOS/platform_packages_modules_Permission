@@ -115,6 +115,8 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"ไทม์ไลน์เวลาที่แอปใช้<xliff:g id="PERMGROUP">%1$s</xliff:g>ในช่วง 24 ชั่วโมงที่ผ่านมา"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"เมื่อแอปนี้ใช้สิทธิ์เข้าถึง<xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"ดูข้อมูลเพิ่มเติม"</string>
+    <!-- no translation found for permission_usage_duration_and_proxy (573959201368716399) -->
+    <skip />
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> วัน</item>
       <item quantity="one">1 วัน</item>
@@ -232,8 +234,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"มีการนำสิทธิ์เข้าถึง<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>และ<xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>ออก"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"มีการนำสิทธิ์เข้าถึง<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>และสิทธิ์อีก <xliff:g id="NUMBER">%2$s</xliff:g> รายการออก"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"แอปที่ไม่ได้ใช้"</string>
-    <!-- no translation found for unused_apps_page_summary (1867593913217272155) -->
-    <skip />
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"จะมีการดำเนินการต่อไปนี้หากไม่ได้ใช้แอปเป็นเวลา 2-3 เดือน\n\n• สิทธิ์จะถูกนำออกเพื่อปกป้องข้อมูลของคุณ\n• การแจ้งเตือนจะหยุดลงเพื่อประหยัดแบตเตอรี่\n• ไฟล์ชั่วคราวจะถูกนำออกเพื่อเพิ่มพื้นที่ว่าง\n\nเปิดแอปเพื่ออนุญาตสิทธิ์และการแจ้งเตือนอีกครั้ง"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"เปิดล่าสุดนานกว่า <xliff:g id="NUMBER">%s</xliff:g> เดือนที่ผ่านมา"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"เปิดแอปล่าสุดเมื่อวันที่ <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"เปิดล่าสุดเมื่อวันที่ <xliff:g id="DATE">%s</xliff:g>"</string>

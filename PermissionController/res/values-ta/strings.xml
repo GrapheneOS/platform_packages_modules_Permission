@@ -51,8 +51,7 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"ஆப்ஸ்"</string>
     <string name="app_permissions" msgid="3369917736607944781">"ஆப்ஸ் அனுமதிகள்"</string>
     <string name="unused_apps" msgid="2058057455175955094">"பயன்படுத்தாத ஆப்ஸ்"</string>
-    <!-- no translation found for no_unused_apps (12809387670415295) -->
-    <skip />
+    <string name="no_unused_apps" msgid="12809387670415295">"பயன்படுத்தாத ஆப்ஸ் எதுவுமில்லை"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"ஆப்ஸை முடக்கு"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"இந்த ஆப்ஸை முடக்கினால் Android மற்றும் பிற ஆப்ஸ் முறையாக செயல்படாமல் போகக்கூடும். கவனத்திற்கு: இந்த ஆப்ஸ் சாதனத்தில் நிறுவப்பட்ட நிலையிலேயே வந்ததால் இதை நீக்க முடியாது. முடக்குவதன் மூலம் இந்த ஆப்ஸ் ஆஃப் செய்யப்படுவதோடு சாதனத்தில் மறைக்கப்படும்."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"அனுமதி நிர்வாகம்"</string>
@@ -116,6 +115,8 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"கடந்த 24 மணிநேரத்தில் <xliff:g id="PERMGROUP">%1$s</xliff:g> ஐ ஆப்ஸ் பயன்படுத்தியதற்கான காலப்பதிவு"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"இந்த ஆப்ஸ் <xliff:g id="PERMGROUP">%1$s</xliff:g> அனுமதியைப் பயன்படுத்தியபோது"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"மேலும் அறிக"</string>
+    <!-- no translation found for permission_usage_duration_and_proxy (573959201368716399) -->
+    <skip />
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> நாட்கள்</item>
       <item quantity="one">1 நாள்</item>
@@ -233,8 +234,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> மற்றும் <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> தொடர்பான அனுமதிகள் அகற்றப்பட்டன"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> மற்றும் பிற <xliff:g id="NUMBER">%2$s</xliff:g> அனுமதிகள் அகற்றப்பட்டன"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"பயன்படுத்தாத ஆப்ஸ்"</string>
-    <!-- no translation found for unused_apps_page_summary (1867593913217272155) -->
-    <skip />
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"ஆப்ஸைச் சில மாதங்கள் பயன்படுத்தாமல் இருந்தால்:\n\n• உங்கள் தரவைப் பாதுகாக்க அனுமதிகள் அகற்றப்படும்\n• பேட்டரியைச் சேமிக்க அறிவிப்புகள் நிறுத்தப்படும்\n• சேமிப்பிடத்தைக் காலியாக்க தற்காலிக ஃபைல்கள் அகற்றப்படும்\n\nமீண்டும் அனுமதிகளை வழங்குவதற்கும் அறிவிப்புகளைப் பெறுவதற்கும் ஆப்ஸைத் திறக்கவும்."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"கடைசியாக <xliff:g id="NUMBER">%s</xliff:g> மாதங்களுக்கு முன்பு திறக்கப்பட்டது"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"கடைசியாக <xliff:g id="DATE">%s</xliff:g> அன்று ஆப்ஸ் திறக்கப்பட்டது"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"கடைசியாகத் திறந்தது: <xliff:g id="DATE">%s</xliff:g>"</string>
