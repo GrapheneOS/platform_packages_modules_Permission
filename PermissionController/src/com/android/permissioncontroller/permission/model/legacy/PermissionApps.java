@@ -193,10 +193,7 @@ public class PermissionApps {
             }
             return apps;
         }
-        int pkgQueryFlags = PackageManager.GET_PERMISSIONS;
-        if (SdkLevel.isAtLeastS()) {
-            pkgQueryFlags = pkgQueryFlags | PackageManager.GET_ATTRIBUTIONS;
-        }
+        int pkgQueryFlags = getPackageQueryFlags();
         if (mPackageName == null) {
             return mPm.getInstalledPackagesAsUser(pkgQueryFlags, user.getIdentifier());
         } else {
@@ -485,7 +482,7 @@ public class PermissionApps {
         public synchronized List<PackageInfo> getPackages(int userId) {
             List<PackageInfo> ret = mPackageInfoCache.get(userId);
             if (ret == null) {
-                ret = mPm.getInstalledPackagesAsUser(PackageManager.GET_PERMISSIONS, userId);
+                ret = mPm.getInstalledPackagesAsUser(getPackageQueryFlags(), userId);
                 mPackageInfoCache.put(userId, ret);
             }
             return ret;
@@ -564,5 +561,13 @@ public class PermissionApps {
         protected void onPostExecute(Void result) {
             mCallback.run();
         }
+    }
+
+    private static int getPackageQueryFlags() {
+        int pkgQueryFlags = PackageManager.GET_PERMISSIONS;
+        if (SdkLevel.isAtLeastS()) {
+            pkgQueryFlags = pkgQueryFlags | PackageManager.GET_ATTRIBUTIONS;
+        }
+        return pkgQueryFlags;
     }
 }
