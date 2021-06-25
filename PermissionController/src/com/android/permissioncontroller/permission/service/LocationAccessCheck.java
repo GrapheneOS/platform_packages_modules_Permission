@@ -591,6 +591,7 @@ public class LocationAccessCheck {
 
         Notification.Builder b = (new Notification.Builder(mContext,
                 PERMISSION_REMINDER_CHANNEL_ID))
+                .setLocalOnly(true)
                 .setContentTitle(mContext.getString(
                         R.string.background_location_access_reminder_notification_title, pkgLabel))
                 .setContentText(mContext.getString(
