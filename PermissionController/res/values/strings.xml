@@ -326,6 +326,9 @@
     <!-- Link text for intent out to location provider [CHAR LIMIT=20] -->
     <string name="permission_usage_access_dialog_learn_more">Learn more</string>
 
+    <!-- Label which separates a proxy app name (an app which uses apermission on behalf of another app), and a usage duration, with a bullet point [CHAR LIMIT=NONE]-->
+    <string name="permission_usage_duration_and_proxy"><xliff:g id="app_name" example="Gmail">%1$s</xliff:g> \u2022 <xliff:g id="truncated_time" example="1 hr 20min">%2$s</xliff:g></string>
+
     <!-- Duration used for a permission in days -->
     <plurals name="duration_used_days">
         <item quantity="one">1 day</item>

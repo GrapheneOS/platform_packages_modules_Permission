@@ -117,6 +117,8 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Хронологія використання додатками дозволу \"<xliff:g id="PERMGROUP">%1$s</xliff:g>\" за останні 24 години"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Коли цей додаток використовував ваш дозвіл \"<xliff:g id="PERMGROUP">%1$s</xliff:g>\""</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Докладніше"</string>
+    <!-- no translation found for permission_usage_duration_and_proxy (573959201368716399) -->
+    <skip />
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> день</item>
       <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> дні</item>
@@ -256,8 +258,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Дозволи \"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>\" та \"<xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>\" скасовано"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Дозвіл \"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>\" і ще <xliff:g id="NUMBER">%2$s</xliff:g> скасовано"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Додатки, що не використовуються"</string>
-    <!-- no translation found for unused_apps_page_summary (1867593913217272155) -->
-    <skip />
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Якщо ви не користуєтеся додатком кілька місяців:\n\n• дозволи буде скасовано, щоб захистити ваші дані;\n• показ сповіщень буде припинено, щоб заощаджувати заряд акумулятора;\n• тимчасові файли буде видалено, щоб звільнити місце на диску.\n\nЩоб відновити дозволи й показ сповіщень, відкрийте додаток."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Відкривались понад <xliff:g id="NUMBER">%s</xliff:g> міс. тому"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Додаток востаннє відкрито <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Востаннє відкрито <xliff:g id="DATE">%s</xliff:g>"</string>

@@ -51,8 +51,7 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"Programos"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Programų leidimai"</string>
     <string name="unused_apps" msgid="2058057455175955094">"Nenaudojamos programos"</string>
-    <!-- no translation found for no_unused_apps (12809387670415295) -->
-    <skip />
+    <string name="no_unused_apps" msgid="12809387670415295">"Nėra nenaudojamų programų"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Išjungti programą"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Jei išjungsite šią programą, „Android“ ir kitos programos gali nebeveikti, kaip numatyta. Atminkite, kad negalite ištrinti šios programos, nes ji buvo iš anksto įdiegta įrenginyje. Išjungę išjungsite šią programą ir paslėpsite ją įrenginyje."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Leidimų tvarkytuvė"</string>
@@ -118,6 +117,8 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Laiko juosta, kurioje rodoma, kada programos naudojo leidimų grupę „<xliff:g id="PERMGROUP">%1$s</xliff:g>“ per pastarąsias 24 valandas"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Kada ši programa naudojo jūsų leidimų grupės „<xliff:g id="PERMGROUP">%1$s</xliff:g>“ leidimą"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Sužinokite daugiau"</string>
+    <!-- no translation found for permission_usage_duration_and_proxy (573959201368716399) -->
+    <skip />
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> diena</item>
       <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> dienos</item>
@@ -257,8 +258,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Leidimai „<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>“ ir „<xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>“ pašalinti"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Leidimas „<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>“ ir dar <xliff:g id="NUMBER">%2$s</xliff:g> pašalinti"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Nenaudojamos programos"</string>
-    <!-- no translation found for unused_apps_page_summary (1867593913217272155) -->
-    <skip />
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Jei programa nenaudojama kelis mėnesius:\n\n• pašalinami leidimai siekiant apsaugoti jūsų duomenis;\n• sustabdomi pranešimai, siekiant tausoti akumuliatoriaus energiją;\n• pašalinami laikinieji failai siekiant atlaisvinti vietos;\n\nNorėdami vėl suteikti leidimus ir leisti pranešimus, atidarykite programą."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Paskutinį kartą atidaryta daugiau nei prieš <xliff:g id="NUMBER">%s</xliff:g> mėn."</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Programa paskutinį kartą atidaryta <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Paskutinį kartą atidaryta <xliff:g id="DATE">%s</xliff:g>"</string>

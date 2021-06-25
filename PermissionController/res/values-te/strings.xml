@@ -51,8 +51,7 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"యాప్‌లు"</string>
     <string name="app_permissions" msgid="3369917736607944781">"యాప్ అనుమతులు"</string>
     <string name="unused_apps" msgid="2058057455175955094">"ఉపయోగించని యాప్‌లు"</string>
-    <!-- no translation found for no_unused_apps (12809387670415295) -->
-    <skip />
+    <string name="no_unused_apps" msgid="12809387670415295">"ఉపయోగించని యాప్‌లు లేవు"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"యాప్‌ను డిజేబుల్‌ చేయి"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"మీరు ఈ యాప్‌ను డిజేబుల్‌ చేస్తే, Android మరియు ఇతర యాప్‌లు ఇకపై ఉద్దేశించిన రీతిలో పని చేయకపోవచ్చు. ఈ యాప్ మీ పరికరంలో ముందుగానే ఇన్‌స్టాల్ చేసి, అందించబడింది కాబట్టి మీరు దీనిని తొలగించలేరని గుర్తుంచుకోండి. డిజేబుల్‌ చేయడం ద్వారా, మీరు ఈ యాప్‌ను ఆఫ్ చేసి, మీ పరికరంలో దానిని దాస్తున్నారు."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"అనుమతి మేనేజర్"</string>
@@ -70,8 +69,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>లో<xliff:g id="COUNT_1">%2$d</xliff:g> యాప్‌లు అనుమతించబడ్డాయి"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"సిస్టమ్‌ను చూపు"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"సిస్టమ్‌ను దాచు"</string>
-    <!-- no translation found for manage_permission (2895385393037061964) -->
-    <skip />
+    <string name="manage_permission" msgid="2895385393037061964">"అనుమతిని మేనేజ్ చేయండి"</string>
     <string name="no_apps" msgid="2412612731628386816">"యాప్‌లు లేవు"</string>
     <string name="location_settings" msgid="3624412509133422562">"లొకేషన్ సెట్టింగ్‌లు"</string>
     <string name="location_warning" msgid="2381649060929040962">"ఈ పరికరం కోసం స్థాన సేవల ప్రదాత <xliff:g id="APP_NAME">%1$s</xliff:g>. స్థాన సెట్టింగ్‌ల నుండి స్థాన యాక్సెస్‌ను సవరించవచ్చు."</string>
@@ -117,6 +115,8 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"గత 24 గంటలలో యాప్‌లు మీ <xliff:g id="PERMGROUP">%1$s</xliff:g>‌ను ఎప్పుడు ఉపయోగించాయో తెలిపే టైమ్‌లైన్"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"మీ <xliff:g id="PERMGROUP">%1$s</xliff:g> అనుమతిని యాప్ ఉపయోగించినప్పుడు"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"మరింత తెలుసుకోండి"</string>
+    <!-- no translation found for permission_usage_duration_and_proxy (573959201368716399) -->
+    <skip />
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> రోజులు</item>
       <item quantity="one">1 రోజు</item>
@@ -234,8 +234,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> మరియు <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> అనుమతులు తీసివేయబడ్డాయి"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>, మరో <xliff:g id="NUMBER">%2$s</xliff:g> ఇతర అనుమతులు తీసివేయబడ్డాయి"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"ఉపయోగించని యాప్‌లు"</string>
-    <!-- no translation found for unused_apps_page_summary (1867593913217272155) -->
-    <skip />
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"యాప్‌ను కొన్ని నెలలు ఉపయోగించకపోతే:\n\n• మీ డేటాను రక్షించడానికి అనుమతులు తీసివేయబడతాయి\n• బ్యాటరీని సేవ్ చేయడానికి నోటిఫికేషన్‌లు ఆపివేయబడతాయి\n• స్పేస్‌ను ఖాళీ చేయడానికి తాత్కాలిక ఫైల్‌లు తీసివేయబడతాయి\n\nఅనుమతులు, నోటిఫికేషన్‌లను మళ్ళీ అనుమతించడానికి యాప్‌ను తెరవండి."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"చివరిసారిగా <xliff:g id="NUMBER">%s</xliff:g> నెలల కంటే ముందు తెరవబడింది"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"యాప్ చివరిసారిగా <xliff:g id="DATE">%s</xliff:g> తేదీన తెరవబడింది"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"చివరిగా తెరిచినది <xliff:g id="DATE">%s</xliff:g>"</string>
