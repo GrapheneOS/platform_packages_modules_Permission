@@ -219,6 +219,7 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်အားလုံးကို ကြည့်ရန်"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Assistant မိုက်ကရိုဖုန်း အသုံးပြုမှုကို ပြပါ"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"အက်ပ်ကိုအသုံးမပြုလျှင် ခွင့်ပြုချက်များ ဖယ်ရှားရန်"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"ခွင့်ပြုချက်များဖယ်ရှားပြီး နေရာလွတ်ပြုလုပ်ရန်"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"အက်ပ်ကို လအနည်းငယ် အသုံးမပြုပါက သင်၏ဒေတာကိုကာကွယ်ရန် ဤအက်ပ်အတွက် ခွင့်ပြုချက်များကို ဖယ်ရှားပါမည်။"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"အက်ပ်ကို လအနည်းငယ် အသုံးမပြုပါက သင်၏ဒေတာကိုကာကွယ်ရန် အောက်ပါခွင့်ပြုချက်များကို ဖယ်ရှားပါမည်- <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"သင်၏ဒေတာကိုကာကွယ်ရန် လအနည်းငယ်အတွင်း အသုံးမပြုသော အက်ပ်များမှ ခွင့်ပြုချက်များကို ဖယ်ရှားလိုက်သည်။"</string>

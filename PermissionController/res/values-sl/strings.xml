@@ -117,8 +117,7 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Časovna os uporabe dovoljenja »<xliff:g id="PERMGROUP">%1$s</xliff:g>« po aplikacijah v zadnjih 24 urah"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Uporaba dovoljenja »<xliff:g id="PERMGROUP">%1$s</xliff:g>« za to aplikacijo"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Več o tem"</string>
-    <!-- no translation found for permission_usage_duration_and_proxy (573959201368716399) -->
-    <skip />
+    <string name="permission_usage_duration_and_proxy" msgid="573959201368716399">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> dan</item>
       <item quantity="two"><xliff:g id="NUMBER">%s</xliff:g> dneva</item>
@@ -243,6 +242,7 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Ogled vseh aplikacij s tem dovoljenjem"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Prikaz uporabe pomožnega mikrofona"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Odstrani dovoljenja, če aplikacija ni v uporabi"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"Odstrani dovoljenja in sprosti prostor"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Z namenom zaščite podatkov bodo dovoljenja za to aplikacijo odstranjena, če je več mesecev ne boste uporabljali."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Če aplikacije več mesecev ne boste uporabljali, bodo z namenom zaščite podatkov odstranjena ta dovoljenja: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Z namenom zaščite podatkov so bila odstranjena dovoljenja za aplikacije, ki jih več mesecev niste uporabljali."</string>

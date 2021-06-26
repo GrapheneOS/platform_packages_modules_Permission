@@ -231,6 +231,7 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Pogledajte sve aplikacije s tim dopuštenjem"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Prikaz korištenja mikrofona Asistenta"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Ukloni dopuštenja ako se aplikacija ne upotrebljava"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"Ukloni dopuštenja i oslobodi prostor"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Kako bi se vaši podaci zaštitili, dopuštenja za ovu aplikaciju uklonit će se ako se aplikacija ne upotrebljava nekoliko mjeseci."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Kako bi se vaši podaci zaštitili, ako se aplikacija ne upotrebljava nekoliko mjeseci, uklonit će se sljedeća dopuštenja: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Radi zaštite vaših podataka uklonjena su dopuštenja aplikacijama koje nekoliko mjeseci niste upotrebljavali."</string>

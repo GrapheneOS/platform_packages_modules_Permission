@@ -243,6 +243,7 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Wyświetl wszystkie aplikacje z tym uprawnieniem"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Pokaż użycie mikrofonu w Asystencie"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Usuń uprawnienia, jeśli aplikacja jest nieużywana"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"Usuń uprawnienia i zwolnij miejsce"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Aby chronić Twoje dane, usuniemy uprawnienia tej aplikacji, jeśli nie była używana od kilku miesięcy."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Aby chronić Twoje dane, jeśli aplikacja nie będzie używana przez kilka miesięcy, usuniemy te uprawnienia: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Aby chronić Twoje dane, usunęliśmy uprawnienia aplikacji, których nie używano od kilku miesięcy."</string>
@@ -270,7 +271,7 @@
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Aplikacje z tym uprawnieniem mogą odczytywać i zapisywać rejestr połączeń telefonicznych"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Aplikacje z tym uprawnieniem mogą robić zdjęcia i nagrywać filmy"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Aplikacje z tym uprawnieniem mają dostęp do kontaktów"</string>
-    <string name="permission_description_summary_location" msgid="2817531799933480694">"Aplikacje z tym uprawnieniem mają dostęp do lokalizacji tego urządzenia"</string>
+    <string name="permission_description_summary_location" msgid="2817531799933480694">"Aplikacje z tymi uprawnieniami mają dostęp do lokalizacji urządzenia"</string>
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Aplikacje z tymi uprawnieniami mogą znajdować urządzenia w pobliżu, określać ich względne położenie oraz łączyć się z nimi"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Aplikacje z tym uprawnieniem mogą nagrywać dźwięk"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Aplikacje z tym uprawnieniem mogą nawiązywać połączenia telefoniczne i nimi zarządzać"</string>
