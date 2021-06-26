@@ -65,7 +65,7 @@
     </plurals>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"Това приложение е създадено за по-стара версия на Android. То може да спре да функционира нормално при отказване на разрешението."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"извършване на неизвестно действие"</string>
-    <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> от <xliff:g id="COUNT_1">%2$d</xliff:g> приложения имат разрешение"</string>
+    <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> от <xliff:g id="COUNT_1">%2$d</xliff:g> приложениe(я) имат разрешение"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> приложения имат разрешение"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Показване на системн. приложения"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Скриване на системните приложения"</string>
@@ -219,6 +219,7 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Преглед на всички приложения с това разрешение"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Показване на употребата на микрофона за Асистент"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Премахване на разрешенията, ако приложението не се използва"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"Премахване на разреш. и освоб. на място"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"За да защитим данните ви, разрешенията за това приложение ще бъдат премахнати, ако не го използвате няколко месеца."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"За да защитим данните ви, следните разрешения ще бъдат премахнати, ако не използвате приложението няколко месеца: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"За да защитим данните ви, премахнахме разрешенията за приложенията, които не сте използвали от няколко месеца."</string>
