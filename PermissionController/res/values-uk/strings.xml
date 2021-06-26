@@ -117,6 +117,8 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Хронологія використання додатками дозволу \"<xliff:g id="PERMGROUP">%1$s</xliff:g>\" за останні 24 години"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Коли цей додаток використовував ваш дозвіл \"<xliff:g id="PERMGROUP">%1$s</xliff:g>\""</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Докладніше"</string>
+    <!-- no translation found for permission_usage_duration_and_proxy (573959201368716399) -->
+    <skip />
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> день</item>
       <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> дні</item>
@@ -241,6 +243,7 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Переглянути всі додатки з цим дозволом"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Показати статус мікрофона Асистента"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Відкликати дозволи, якщо додаток не використовується"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"Вилучати дозволи й звільняти місце"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Щоб захистити ваші дані, дозволи для цього додатка буде автоматично скасовано, якщо ви не будете користуватися ним кілька місяців."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Якщо додаток не використовується впродовж кількох місяців, для захисту ваших даних буде скасовано такі дозволи: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Щоб захистити ваші дані, було скасовано дозволи додатків, які не використовувалися впродовж кількох місяців."</string>

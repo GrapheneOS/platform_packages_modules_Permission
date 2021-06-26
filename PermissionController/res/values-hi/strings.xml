@@ -115,6 +115,8 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"पिछले 24 घंटों में, <xliff:g id="PERMGROUP">%1$s</xliff:g> का इस्तेमाल किए जाने की ऐप्लिकेशन की टाइमलाइन"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"जब इस ऐप्लिकेशन ने आपकी <xliff:g id="PERMGROUP">%1$s</xliff:g> अनुमति का इस्तेमाल किया"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"ज़्यादा जानें"</string>
+    <!-- no translation found for permission_usage_duration_and_proxy (573959201368716399) -->
+    <skip />
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> दिन</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> दिन</item>
@@ -217,6 +219,7 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"इस अनुमति वाले सभी ऐप्लिकेशन देखें"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Assistant माइक्रोफ़ोन के इस्तेमाल से जुड़ा डेटा दिखाएं"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"ऐप्लिकेशन का इस्तेमाल न होने पर अनुमतियां हटाएं"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"अनुमतियां हटाएं और जगह खाली करें"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"अगर इस ऐप्लिकेशन का इस्तेमाल कुछ महीनों तक नहीं किया गया, तो इसे दी गई अनुमतियां हटा दी जाएंगी. ऐसा आपके डेटा को सुरक्षित रखने के लिए किया जाएगा."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"अगर ऐप्लिकेशन कुछ महीनों से इस्तेमाल नहीं हुआ है, तो आपके डेटा को सुरक्षित रखने के लिए ये अनुमतियां हटा दी जाएंगी: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"जिन ऐप्लिकेशन का इस्तेमाल कुछ महीनों से नहीं हुआ है उन्हें दी गई अनुमतियां हटा दी गई हैं. ऐसा आपके डेटा को सुरक्षित रखने के लिए किया गया है."</string>
@@ -236,7 +239,7 @@
     <string name="last_opened_category_title" msgid="7871347400611202595">"पिछली बार इसे <xliff:g id="NUMBER">%s</xliff:g> महीने पहले खोला गया था"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ऐप्लिकेशन पिछली बार <xliff:g id="DATE">%s</xliff:g> को खोला गया था"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"पिछली बार <xliff:g id="DATE">%s</xliff:g> को खोला गया था"</string>
-    <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"अगर आप इस ऐप्लिकेशन को सभी फ़ाइलों को मैनेज करने की अनुमति देते हैं, तो यह ऐप्लिकेशन इस डिवाइस या इससे जुड़े दूसरे डिवाइस की मेमोरी में मौजूद किसी भी फ़ाइल को ऐक्सेस कर सकता है, उनमें बदलाव कर सकता है, और उन्हें मिटा भी सकता है. यह ऐप्लिकेशन आपसे पूछे बिना फ़ाइलें ऐक्सेस कर सकता है."</string>
+    <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"अगर आप इस ऐप्लिकेशन को सभी फ़ाइलों को मैनेज करने की अनुमति देते हैं, तो यह ऐप्लिकेशन इस डिवाइस या इससे जुड़े दूसरे डिवाइस के स्टोरेज में मौजूद किसी भी फ़ाइल को ऐक्सेस कर सकता है, उनमें बदलाव कर सकता है, और उन्हें मिटा भी सकता है. यह ऐप्लिकेशन आपसे पूछे बिना फ़ाइलें ऐक्सेस कर सकता है."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"क्या आप इस ऐप्लिकेशन को इस डिवाइस या इससे जुड़े दूसरे डिवाइस की मेमोरी में मौजूद फ़ाइलें ऐक्सेस करने, उनमें बदलाव करने, और उन्हें मिटाने की अनुमति देना चाहते हैं? यह ऐप्लिकेशन आपसे पूछे बिना फ़ाइलें ऐक्सेस कर सकता है."</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"इस अनुमति वाली ऐप्लिकेशन <xliff:g id="DESCRIPTION">%1$s</xliff:g> कर सकते हैं"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"इसकी अनुमति वाले ऐप्लिकेशन, आपकी शारीरिक गतिविधियों की जानकारी ऐक्सेस कर सकते हैं. इसमें पैदल चलने, बाइक चलाने, गाड़ी चलाने, और कदमों की संख्या जैसी कई जानकारी शामिल है"</string>
@@ -244,7 +247,7 @@
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"ऐसे ऐप्लिकेशन जिनके पास अनुमति है, वे फ़ोन में कॉल लॉग को पढ़ सकते हैं और लिख सकते हैं"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"इस अनुमति वाले ऐप्लिकेशन, फ़ोटो खींच सकते हैं और वीडियो रिकॉर्ड कर सकते हैं"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"इस अनुमति वाले ऐप्लिकेशन आपके संपर्कों को ऐक्सेस कर सकते हैं"</string>
-    <string name="permission_description_summary_location" msgid="2817531799933480694">"इस अनुमति वाले ऐप्लिकेशन डिवाइस की जगह की जानकारी ऐक्सेस कर सकते हैं"</string>
+    <string name="permission_description_summary_location" msgid="2817531799933480694">"जिन ऐप्लिकेशन के पास यह अनुमति होगी वे डिवाइस की जगह की जानकारी ऐक्सेस कर सकते हैं"</string>
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"ऐसे ऐप्लिकेशन जिन्हें यह अनुमति दी गई है, वे आस-पास मौजूद डिवाइसों को खोज सकते हैं, उनसे कनेक्ट कर सकते हैं, और उनकी जगह की जानकारी का पता लगा सकते हैं"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"इस अनुमति वाले ऐप्लिकेशन ऑडियो रिकॉर्ड कर सकते हैं"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"इस अनुमति वाले ऐप्लिकेशन, फ़ोन कॉल कर सकते हैं और कॉल को मैनेज कर सकते हैं"</string>
@@ -256,7 +259,7 @@
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"कभी ऐक्सेस नहीं किया गया"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"मना किया गया / कभी ऐक्सेस नहीं किया गया"</string>
     <string name="allowed_header" msgid="7769277978004790414">"इन ऐप्लिकेशन के पास अनुमति है"</string>
-    <string name="allowed_always_header" msgid="6455903312589013545">"हमेशा के लिए अनुमति"</string>
+    <string name="allowed_always_header" msgid="6455903312589013545">"हमेशा के लिए अनुमति दी गई है"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"सिर्फ़ इस्तेमाल में होने पर अनुमति है"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"ये सिर्फ़ मीडिया फ़ाइलें ऐक्सेस कर सकते हैं"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"ये ऐप्लिकेशन सभी फ़ाइलों को मैनेज कर सकते हैं"</string>
@@ -324,7 +327,7 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"सिर्फ़ ऐप्लिकेशन इस्तेमाल में होने के दौरान"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"सिर्फ़ मीडिया फ़ाइलें"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"सभी फ़ाइलें"</string>
-    <string name="permission_subtitle_background" msgid="8916750995309083180">"हमेशा के लिए मंज़ूरी दी गई है"</string>
+    <string name="permission_subtitle_background" msgid="8916750995309083180">"हमेशा के लिए अनुमति दी गई है"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"पिछली बार <xliff:g id="TIME_DATE">%1$s</xliff:g> पर ऐक्सेस किया गया"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"पिछली बार, कल <xliff:g id="TIME_DATE">%1$s</xliff:g> पर ऐक्सेस किया गया"</string>
     <string name="app_perms_content_provider" msgid="6996750793881252778">"पिछले 24 घंटे में ऐक्सेस किया गया"</string>

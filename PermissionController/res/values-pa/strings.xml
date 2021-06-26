@@ -115,6 +115,8 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"ਪਿਛਲੇ 24 ਘੰਟਿਆਂ ਵਿੱਚ ਐਪਾਂ ਵੱਲੋਂ ਤੁਹਾਡੇ <xliff:g id="PERMGROUP">%1$s</xliff:g> ਨੂੰ ਵਰਤੇ ਜਾਣ ਦੀ ਸਮਾਂਰੇਖਾ"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"ਇਸ ਐਪ ਵੱਲੋਂ ਤੁਹਾਡੀ <xliff:g id="PERMGROUP">%1$s</xliff:g> ਇਜਾਜ਼ਤ ਵਰਤੇ ਜਾਣ \'ਤੇ"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"ਹੋਰ ਜਾਣੋ"</string>
+    <!-- no translation found for permission_usage_duration_and_proxy (573959201368716399) -->
+    <skip />
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> ਦਿਨ</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ਦਿਨ</item>
@@ -217,6 +219,7 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਸਾਰੀਆਂ ਐਪਾਂ ਦੇਖੋ"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Assistant ਦੇ ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਦੀ ਵਰਤੋਂ ਦਿਖਾਓ"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"ਐਪ ਨੂੰ ਨਾ ਵਰਤੇ ਜਾਣ \'ਤੇ ਇਸ ਲਈ ਦਿੱਤੀਆਂ ਇਜਾਜ਼ਤਾਂ ਨੂੰ ਹਟਾ ਦਿਓ"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"ਇਜਾਜ਼ਤਾਂ ਹਟਾਓ ਅਤੇ ਜਗ੍ਹਾ ਖਾਲੀ ਕਰੋ"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"ਤੁਹਾਡੀ ਡਾਟਾ ਸੁਰੱਖਿਆ ਲਈ, ਜੇ ਇਹ ਐਪ ਕੁਝ ਮਹੀਨਿਆਂ ਲਈ ਵਰਤੀ ਨਹੀਂ ਗਈ, ਤਾਂ ਇਸ ਐਪ ਲਈ ਇਜਾਜ਼ਤਾਂ ਨੂੰ ਹਟਾ ਦਿੱਤਾ ਜਾਵੇਗਾ।"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"ਤੁਹਾਡੀ ਡਾਟਾ ਸੁਰੱਖਿਆ ਲਈ, ਜੇ ਇਹ ਐਪ ਕੁਝ ਮਹੀਨਿਆਂ ਲਈ ਵਰਤੀ ਨਹੀਂ ਗਈ, ਤਾਂ ਅੱਗੇ ਦਿੱਤੀਆਂ ਇਜਾਜ਼ਤਾਂ ਨੂੰ ਹਟਾ ਦਿੱਤਾ ਜਾਵੇਗਾ: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"ਤੁਹਾਡੀ ਡਾਟਾ ਸੁਰੱਖਿਆ ਲਈ, ਜੋ ਐਪਾਂ ਤੁਸੀਂ ਕੁਝ ਮਹੀਨਿਆਂ ਤੋਂ ਨਹੀਂ ਵਰਤੀਆਂ ਉਹਨਾਂ ਐਪਾਂ ਤੋਂ ਇਜਾਜ਼ਤਾਂ ਨੂੰ ਹਟਾ ਦਿੱਤਾ ਗਿਆ ਹੈ।"</string>
@@ -232,8 +235,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> ਅਤੇ <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> ਇਜਾਜ਼ਤਾਂ ਹਟਾਈਆਂ ਗਈਆਂ"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ਅਤੇ <xliff:g id="NUMBER">%2$s</xliff:g> ਹੋਰ ਇਜਾਜ਼ਤਾਂ ਹਟਾਈਆਂ ਗਈਆਂ"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"ਅਣਵਰਤੀਆਂ ਐਪਾਂ"</string>
-    <!-- no translation found for unused_apps_page_summary (1867593913217272155) -->
-    <skip />
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"ਜੇ ਕਿਸੇ ਐਪ ਨੂੰ ਕੁਝ ਮਹੀਨਿਆਂ ਤੱਕ ਵਰਤਿਆ ਨਹੀਂ ਜਾਂਦਾ ਹੈ, ਤਾਂ:\n\n• ਤੁਹਾਡੇ ਡਾਟੇ ਦੀ ਸੁਰੱਖਿਆ ਕਰਨ ਲਈ ਇਜਾਜ਼ਤਾਂ ਨੂੰ ਹਟਾ ਦਿੱਤਾ ਜਾਂਦਾ ਹੈ\n• ਬੈਟਰੀ ਬਚਾਉਣ ਲਈ ਸੂਚਨਾਵਾਂ ਬੰਦ ਕਰ ਦਿੱਤੀਆਂ ਜਾਂਦੀਆਂ ਹਨ\n• ਜਗ੍ਹਾ ਖਾਲੀ ਕਰਨ ਲਈ ਅਸਥਾਈ ਫ਼ਾਈਲਾਂ ਨੂੰ ਹਟਾ ਦਿੱਤਾ ਜਾਂਦਾ ਹੈ\n\nਦੁਬਾਰਾ ਇਜਾਜ਼ਤਾਂ ਦੇਣ ਅਤੇ ਸੂਚਨਾਵਾਂ ਪ੍ਰਾਪਤ ਕਰਨ ਲਈ, ਐਪ ਖੋਲ੍ਹੋ।"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"ਪਿਛਲੀ ਵਾਰ <xliff:g id="NUMBER">%s</xliff:g> ਤੋਂ ਵੱਧ ਮਹੀਨੇ ਪਹਿਲਾਂ ਖੋਲ੍ਹੀਆਂ ਗਈਆਂ"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ਐਪ ਨੂੰ ਆਖਰੀ ਵਾਰ <xliff:g id="DATE">%s</xliff:g> ਨੂੰ ਖੋਲ੍ਹਿਆ ਗਿਆ"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"ਆਖਰੀ ਵਾਰ <xliff:g id="DATE">%s</xliff:g> ਨੂੰ ਖੋਲ੍ਹਿਆ ਗਿਆ"</string>

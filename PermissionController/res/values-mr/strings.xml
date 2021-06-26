@@ -115,6 +115,7 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"ॲप्सनी मागील २४ तासांमध्ये तुमचे <xliff:g id="PERMGROUP">%1$s</xliff:g> वापरलेल्याची टाइमलाइन"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"या ॲपने तुमची <xliff:g id="PERMGROUP">%1$s</xliff:g> परवानगी वापरली तेव्हा"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"अधिक जाणून घ्या"</string>
+    <string name="permission_usage_duration_and_proxy" msgid="573959201368716399">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> दिवस</item>
       <item quantity="one">एक दिवस</item>
@@ -217,6 +218,7 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"ही परवानगी असलेली सर्व अ‍ॅप्स पहा"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Assistant ने मायक्रोफोनचा केलेला वापर दाखवा"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"अ‍ॅप वापरले नसल्यास, परवानग्या काढून टाका"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"परवानग्या काढा आणि जागा मोकळी करा"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"तुमच्या डेटाचे संरक्षण करण्यासाठी, अ‍ॅप काही महिन्यांत वापरले गेले नसल्यास, या अ‍ॅपच्या परवानग्या काढल्या जातील."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"तुमच्या डेटाचे संरक्षण करण्यासाठी, अ‍ॅप काही महिन्यांत वापरले गेले नसल्यास, पुढील परवानग्या काढल्या जातील: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"तुमच्या डेटाचे संरक्षण करण्यासाठी, तुम्ही काही महिन्यांत न वापरलेल्या ॲप्समधून परवानग्या काढल्या गेल्या आहेत."</string>
@@ -436,7 +438,7 @@
     <string name="incident_report_notification_text" msgid="3376480583513587923">"<xliff:g id="APP_NAME">%1$s</xliff:g> ला डीबगिंग माहिती अपलोड करायला आवडेल."</string>
     <string name="incident_report_dialog_title" msgid="669104389325204095">"डीबगिंग डेटा शेअर करायचा आहे का?"</string>
     <string name="incident_report_dialog_intro" msgid="5897733669850951832">"सिस्टममध्ये समस्या आली"</string>
-    <string name="incident_report_dialog_text" msgid="5675553296891757523">"<xliff:g id="APP_NAME_0">%1$s</xliff:g> <xliff:g id="DATE">%2$s</xliff:g> रोजी <xliff:g id="TIME">%3$s</xliff:g> वाजता घेतलेल्या या डिव्हाइसमधून बग रिपोर्ट अपलोड करण्याची विनंती करत आहे. बग रिपोर्टमध्ये तुमच्या डिव्हाइसविषयीच्या किंवा अ‍ॅप्सने लॉग केलेल्या वैयक्तिक माहितीचा समावेश अहे, उदाहरणार्थ वापरकर्ता नावे, स्थान डेटा, डिव्हाइस आयडेंटिफायर आणि नेटवर्क माहिती. या माहितीसह फक्त तुम्हाला विश्वास असलेल्या लोकांसह आणि अ‍ॅप्ससह बग रिपोर्ट शेअर करा. <xliff:g id="APP_NAME_1">%4$s</xliff:g> ला बग रिपोर्ट अपलोड करण्याची अनुमती द्यायची?"</string>
+    <string name="incident_report_dialog_text" msgid="5675553296891757523">"<xliff:g id="APP_NAME_0">%1$s</xliff:g> <xliff:g id="DATE">%2$s</xliff:g> रोजी <xliff:g id="TIME">%3$s</xliff:g> वाजता घेतलेल्या या डिव्हाइसमधून बग रिपोर्ट अपलोड करण्याची विनंती करत आहे. बग रिपोर्टमध्ये तुमच्या डिव्हाइसविषयीच्या किंवा अ‍ॅप्सने लॉग केलेल्या वैयक्तिक माहितीचा समावेश अहे, उदाहरणार्थ वापरकर्ता नावे, स्थान डेटा, डिव्हाइस आयडेंटिफायर आणि नेटवर्क माहिती. या माहितीसह फक्त तुम्हाला विश्वास असलेल्या लोकांसह आणि अ‍ॅप्ससह बग रिपोर्ट शेअर करा. <xliff:g id="APP_NAME_1">%4$s</xliff:g> ला बग रिपोर्ट अपलोड करण्याची अनुमती द्यायची का?"</string>
     <string name="incident_report_error_dialog_text" msgid="4189647113387092272">"<xliff:g id="APP_NAME">%1$s</xliff:g> च्या बग रिपोर्टवर प्रक्रिया करताना एरर आली. त्यामुळे तपशीलवार डीबगिंग डेटा शेअर करणे नाकारले गेले आहे. व्यत्ययाबद्दल क्षमस्व."</string>
     <string name="incident_report_dialog_allow_label" msgid="2970242967721155239">"अनुमती द्या"</string>
     <string name="incident_report_dialog_deny_label" msgid="3535314290677579383">"नकार द्या"</string>

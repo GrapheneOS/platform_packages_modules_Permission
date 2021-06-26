@@ -115,6 +115,8 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Cronoloxía da utilización do permiso <xliff:g id="PERMGROUP">%1$s</xliff:g> por parte das aplicacións nas últimas 24 horas"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Cando utilizou esta aplicación o permiso de <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Máis información"</string>
+    <!-- no translation found for permission_usage_duration_and_proxy (573959201368716399) -->
+    <skip />
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> días</item>
       <item quantity="one">1 día</item>
@@ -217,6 +219,7 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Ver todas as aplicacións que teñen este permiso"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Mostrar uso do micrófono do Asistente"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Quitar permisos se non se usa a aplicación"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"Quitar permisos e liberar espazo"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Para protexer os teus datos, quitaranse os permisos desta aplicación se pasas varios meses sen utilizala."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Para protexer os teus datos, se a aplicación leva varios meses sen usarse, quitaranse os seguintes permisos: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Para protexer os teus datos, quitáronse os permisos das aplicacións que levas varios meses sen usar."</string>

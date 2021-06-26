@@ -115,6 +115,8 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Tidslinje for, hvornår apps anvendte din <xliff:g id="PERMGROUP">%1$s</xliff:g> inden for de seneste 24 timer"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Da denne app brugte din tilladelse for <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Få flere oplysninger"</string>
+    <!-- no translation found for permission_usage_duration_and_proxy (573959201368716399) -->
+    <skip />
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> dag</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> dage</item>
@@ -217,6 +219,7 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Se alle apps med denne tilladelse"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Vis brug af Assistent-mikrofonen"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Fjern tilladelser, hvis appen ikke bruges"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"Fjern tilladelser, og frigør plads"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Hvis appen ikke bliver brugt i et par måneder, fjernes tilladelser for appen for at beskytte dine data."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Hvis appen ikke bliver brugt i et par måneder, fjernes følgende tilladelser for at beskytte dine data: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Tilladelserne til apps, du ikke har brugt i et par måneder, er blevet fjernet for at beskytte dine data."</string>

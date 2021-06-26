@@ -116,6 +116,8 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Vremenski slijed kada su aplikacije u posljednja 24 sata koristile: <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Kada je ova aplikacija koristila vaše odobrenje za: <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Saznajte više"</string>
+    <!-- no translation found for permission_usage_duration_and_proxy (573959201368716399) -->
+    <skip />
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> dan</item>
       <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> dana</item>
@@ -229,6 +231,7 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Prikaži sve aplikacije s ovim odobrenjem"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Prikaži korištenje mikrofona asistenta"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Ukloni odobrenja ako se aplikacija ne koristi"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"Ukloni odobrenja i oslobodi prostor"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Zbog zaštite vaših podataka, odobrenja za ovu aplikaciju će se ukloniti ako se ona ne bude koristila nekoliko mjeseci."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Radi zaštite vaših podataka, ako se aplikacija ne bude koristila nekoliko mjeseci, uklonit će se sljedeća odobrenja: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Zbog zaštite vaših podataka uklonjena su odobrenja iz aplikacija koje niste koristili nekoliko mjeseci."</string>
