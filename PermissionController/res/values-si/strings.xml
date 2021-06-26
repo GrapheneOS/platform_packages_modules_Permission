@@ -219,6 +219,7 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"මෙම අවසරය සහිත සියලුම යෙදුම් බලන්න"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"සහායක මයික්‍රෆෝන භාවිතය පෙන්වන්න"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"යෙදුම භාවිත කර නැති නම් අවසර ඉවත් කරන්න"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"අවසර ඉවත් කරන්න සහ ඉඩ හිස් කරන්න"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"ඔබගේ දත්ත ආරක්ෂා කිරීම සඳහා, යෙදුම මාස කිහිපයක් භාවිතා නොකරන්නේ නම් මෙම යෙදුම සඳහා අවසර ඉවත් කරනු ලැබේ."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"ඔබගේ දත්ත ආරක්ෂා කිරීම සඳහා, යෙදුම මාස කිහිපයක් භාවිතා නොකරන්නේ නම් පහත අවසර ඉවත් කරනු ලැබේ: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"ඔබේ දත්ත ආරක්ෂා කිරීමට, ඔබ මාස කීපයක් තුළ භාවිත කර නැති යෙදුම්වලින් අවසර ඉවත් කර ඇත"</string>
