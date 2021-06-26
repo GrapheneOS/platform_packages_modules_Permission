@@ -219,6 +219,7 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Bu izne sahip tüm uygulamaları göster"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Yardımcı mikrofon kullanımını göster"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Uygulama kullanılmıyorsa izinleri kaldır"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"İzinleri kaldırıp yer aç"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Bu uygulama birkaç ay boyunca kullanılmazsa verilerinizi korumak için uygulamanın izinleri kaldırılır."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Uygulama birkaç ay boyunca kullanılmazsa şu izinler verilerinizi korumak için kaldırılacak: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Birkaç aydır kullanmadığınız uygulamaların izinleri verilerinizi korumak için kaldırıldı."</string>

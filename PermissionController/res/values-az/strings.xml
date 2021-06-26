@@ -115,8 +115,7 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"<xliff:g id="PERMGROUP">%1$s</xliff:g> icazənizin son 24 saat ərzində tətbiqlərin nə zaman istifadə edildiyini göstərən taymlayn"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Bu tətbiqin <xliff:g id="PERMGROUP">%1$s</xliff:g> icazənizdən istifadə etdiyi vaxt"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Ətraflı məlumat"</string>
-    <!-- no translation found for permission_usage_duration_and_proxy (573959201368716399) -->
-    <skip />
+    <string name="permission_usage_duration_and_proxy" msgid="573959201368716399">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> gün</item>
       <item quantity="one">1 gün</item>
@@ -212,13 +211,14 @@
     <string name="precise_image_description" msgid="6349638632303619872">"Dəqiq məkan"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Təxmini məkan"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Məkan dəqiq aşkarlansın"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Dəqiq məkan deaktiv olduqda, tətbiqlər təxmini məkanınıza giriş edə bilər"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Məkan dəqiq aşkarlanmadıqda tətbiqlər məkanı təxmini müəyyən edir"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> üçün icazə"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Tətbiqə <xliff:g id="PERM">%1$s</xliff:g> icazəsi"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Bütün <xliff:g id="APP">%1$s</xliff:g> icazələrinə baxın"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Bu icazəyə sahib olan bütün tətbiqlərə baxın"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Assistent üçün mikrofon istifadəsini göstərin"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Tətbiq işlənməyəndə icazə ləğv edilsin"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"İcazələri silin və yer boşaldın"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Bir neçə ay istifadə etmədiyiniz tətbiqlərdən icazələr datanızın qorunması məqsədilə silinib."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Bir neçə ay istifadə etmədiyiniz tətbiqlərdən icazələr datanızın qorunması məqsədilə silinib: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Bir neçə ay istifadə etmədiyiniz tətbiqlərdən icazələr datanızın qorunması məqsədilə silinib."</string>
