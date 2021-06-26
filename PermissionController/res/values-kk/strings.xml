@@ -119,7 +119,7 @@
       <item quantity="other">Соңғы рет пайдаланылды: <xliff:g id="TIME_4">%1$s</xliff:g>\n<xliff:g id="NUM_5">%2$s</xliff:g> рет (фондық режимде <xliff:g id="NUM_6">%3$s</xliff:g> рет)\nҰзақтығы: <xliff:g id="TIME_7">%3$s</xliff:g></item>
       <item quantity="one">Соңғы рет пайдаланылды: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> рет (фондық режимде <xliff:g id="NUM_2">%3$s</xliff:g> рет)\nҰзақтығы: <xliff:g id="TIME_3">%3$s</xliff:g></item>
     </plurals>
-    <string name="permission_usage_summary_background" msgid="6136171928959340697">"Соңғы рет пайдаланылды: <xliff:g id="TIME">%1$s</xliff:g>\nСоңғы рет фондық режимде пайдаланылды."</string>
+    <string name="permission_usage_summary_background" msgid="6136171928959340697">"Соңғы рет пайдаланылуы: <xliff:g id="TIME">%1$s</xliff:g>\nСоңғы рет фондық режимде пайдаланылды."</string>
     <string name="permission_usage_any_permission" msgid="6358023078298106997">"Кез келген рұқсат"</string>
     <string name="permission_usage_any_time" msgid="3802087027301631827">"Кез келген уақытта"</string>
     <string name="permission_usage_last_7_days" msgid="7386221251886130065">"Соңғы 7 күн"</string>

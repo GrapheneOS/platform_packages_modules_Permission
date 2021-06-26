@@ -209,7 +209,7 @@
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Lietotnes, kurām ir šī atļauja, var lasīt un rakstīt tālruņa zvanu žurnālu"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Lietotnes, kurām ir šī atļauja, var uzņemt attēlus un ierakstīt videoklipus"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Lietotnes, kurām ir šī atļauja, var piekļūt jūsu kontaktpersonām"</string>
-    <string name="permission_description_summary_location" msgid="2817531799933480694">"Lietotnes, kurām ir šī atļauja, var piekļūt šīs ierīces atrašanās vietai"</string>
+    <string name="permission_description_summary_location" msgid="2817531799933480694">"Lietotnes, kurām ir šī atļauja, var piekļūt šīs ierīces atrašanās vietas datiem"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Lietotnes, kurām ir šī atļauja, var ierakstīt audio"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Lietotnes, kurām ir šī atļauja, var veikt un pārvaldīt tālruņa zvanus"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Lietotnes, kurām ir šī atļauja, var piekļūt sensoru datiem par jūsu veselības rādījumiem"</string>

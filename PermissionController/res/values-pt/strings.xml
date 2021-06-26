@@ -202,7 +202,7 @@
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Apps que têm esta permissão podem ler e gravar o registro de chamadas do smartphone"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Apps que têm esta permissão podem tirar fotos e gravar vídeos"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Apps que têm esta permissão podem acessar seus contatos"</string>
-    <string name="permission_description_summary_location" msgid="2817531799933480694">"Apps que têm esta permissão podem acessar o local deste dispositivo"</string>
+    <string name="permission_description_summary_location" msgid="2817531799933480694">"Apps que têm esta permissão podem acessar a localização deste dispositivo"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Apps que têm esta permissão podem gravar áudio"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Apps que têm esta permissão podem fazer e gerenciar chamadas telefônicas"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Apps com esta permissão têm acesso aos seus sinais vitais coletados pelo sensor"</string>
