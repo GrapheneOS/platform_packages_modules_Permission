@@ -243,6 +243,7 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Все приложения с этим разрешением"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Показывать сведения об использовании микрофона Ассистентом"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Отзывать разрешения, если приложение не используется"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"Удалять разрешения и освобождать место"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Для защиты ваших данных мы отзовем разрешения, предоставленные этому приложению, если вы не будете пользоваться им несколько месяцев."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Если вы не будете пользоваться приложением несколько месяцев, в целях защиты ваших данных мы отзовем следующие разрешения: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"В целях защиты ваших данных мы отозвали разрешения для приложений, которыми вы не пользовались несколько месяцев."</string>
@@ -271,7 +272,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Приложения с этим разрешением могут снимать фото и видео."</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Приложения с этим разрешением могут получать доступ к контактам."</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Приложения с этим разрешением могут получать доступ к местоположению устройства."</string>
-    <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Приложения с этим разрешением могут находить устройства поблизости, подключаться к ним и определять их относительное позиционирование."</string>
+    <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Приложения с этим разрешением могут находить устройства поблизости, подключаться к ним и определять их относительное местоположение."</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Приложения с этим разрешением могут записывать аудио."</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Приложения с этим разрешением могут совершать звонки и управлять ими."</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Приложения с этим разрешением могут получать доступ к данным датчиков основных показателей жизнедеятельности."</string>

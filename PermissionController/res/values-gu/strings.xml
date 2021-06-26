@@ -219,6 +219,7 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"આ પરવાનગી સાથે બધી ઍપ જુઓ"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Assistant દ્વારા વપરાયેલો માઇક્રોફોનની પરવાનગીનો ડેટા બતાવો"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"ઍપ ઉપયોગમાં ન હોવા પર પરવાનગીઓ કાઢી નાખો"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"પરવાનગીઓ કાઢી નાખો અને જગ્યા ખાલી કરો"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"તમારા ડેટાની સુરક્ષા કરવા માટે, જો ઍપનો કેટલાક મહિનાથી ઉપયોગ કરવામાં આવ્યો ન હોય, તો આ ઍપની પરવાનગીઓ કાઢી નાખવામાં આવશે."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"તમારા ડેટાની સુરક્ષા કરવા માટે, જો ઍપનો કેટલાક મહિનાથી ઉપયોગ કરવામાં આવ્યો ન હોય, તો નીચેની પરવાનગીઓ કાઢી નાખવામાં આવશે: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"તમારા ડેટાની સુરક્ષા માટે, તમારા દ્વારા કેટલાક મહિનાથી ઉપયોગમાં ન લેવાયેલી ઍપની પરવાનગીઓ કાઢી નાખવામાં આવી છે."</string>
