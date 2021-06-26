@@ -115,8 +115,7 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Isikhathi esimisiwe sokuthi ama-app asebenzise nini i-<xliff:g id="PERMGROUP">%1$s</xliff:g> emahoreni angama-24 adlule"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Lapho le app isebenzisa imvume yakho ye-<xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Funda kabanzi"</string>
-    <!-- no translation found for permission_usage_duration_and_proxy (573959201368716399) -->
-    <skip />
+    <string name="permission_usage_duration_and_proxy" msgid="573959201368716399">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="one">izinsuku <xliff:g id="NUMBER">%s</xliff:g></item>
       <item quantity="other">izinsuku <xliff:g id="NUMBER">%s</xliff:g></item>
@@ -219,6 +218,7 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Bona zonke izinhlelo zokusebenza ngale mvume"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Bonisa ukusetshenziswa kwe-microphone kamsizi"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Susa izimvume uma uhlelo lokusebenza lungasetshenziswa"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"Susa izimvume uphinde ukhulule isikhala"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Ukuze kuvikelwe idatha yakho, izimvume zalolu hlelo lokusebenza zizosuswa uma uhlelo lokusebenza lungasetshenziswa izinyanga ezimbalwa."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Ukuze kuvikelwe idatha yakho, uma uhlelo lokusebenza lungasetshenzisiwe, izimvume ezilandelayo zizosuswa: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Ukuze kuvikelwe idatha yakho, izimvume zisusiwe kusukela kuzinhlelo zokusebenza ongazange uzisebenzise ezinyangeni ezimbalwa."</string>

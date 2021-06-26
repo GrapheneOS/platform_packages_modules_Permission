@@ -231,6 +231,7 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Skatīt visas lietotnes, kam ir šī atļauja"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Rādīt Asistenta mikrofona lietojumu"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Noņemt atļaujas, ja lietotne netiek izmantota"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"Noņemt atļaujas un atbrīvot vietu"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Ja lietotni dažus mēnešus neizmantosiet, tai tiks noņemtas tālāk norādītās atļaujas, lai aizsargātu jūsu datus."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Ja lietotni dažus mēnešus neizmantosiet, tai tiks noņemtas tālāk norādītās atļaujas, lai aizsargātu jūsu datus: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Lai aizsargātu jūsu datus, tika atsauktas atļaujas tām lietotnēm, kas nav izmantotas vairākus mēnešus."</string>
@@ -258,7 +259,7 @@
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Lietotnes, kurām ir šī atļauja, var lasīt un rakstīt tālruņa zvanu žurnālu"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Lietotnes, kurām ir šī atļauja, var uzņemt attēlus un ierakstīt videoklipus"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Lietotnes, kurām ir šī atļauja, var piekļūt jūsu kontaktpersonām"</string>
-    <string name="permission_description_summary_location" msgid="2817531799933480694">"Lietotnes, kurām ir šī atļauja, var piekļūt šīs ierīces atrašanās vietai"</string>
+    <string name="permission_description_summary_location" msgid="2817531799933480694">"Lietotnes, kurām ir šī atļauja, var piekļūt šīs ierīces atrašanās vietas datiem"</string>
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Lietotnes, kurām ir šī atļauja, var atrast tuvumā esošas ierīces, veidot savienojumus ar tām un noteikt to relatīvo atrašanās vietu."</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Lietotnes, kurām ir šī atļauja, var ierakstīt audio"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Lietotnes, kurām ir šī atļauja, var veikt un pārvaldīt tālruņa zvanus"</string>

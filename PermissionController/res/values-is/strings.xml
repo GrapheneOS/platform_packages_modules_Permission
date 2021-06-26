@@ -219,6 +219,7 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Sjá öll forrit með þessa heimild"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Sýna hljóðnemanotkun hjálpara"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Fjarlægja heimildir ef forrit er ekki notað"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"Fjarlægja heimildir og losa um pláss"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Til að vernda gögnin þín verða heimildir þessa forrits fjarlægðar ef það er ekki notað í nokkra mánuði."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Til að vernda gögnin þín verða eftirfarandi heimildir fjarlægðar ef forritið er ekki notað í nokkra mánuði: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Til að vernda gögnin þín voru heimildir fjarlægðar úr forritum sem þú hefur ekki notað í nokkra mánuði."</string>
