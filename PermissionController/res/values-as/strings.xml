@@ -115,8 +115,7 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"এপে যোৱা ২৪ ঘণ্টাত আপোনাৰ <xliff:g id="PERMGROUP">%1$s</xliff:g> ব্যৱহাৰ কৰাৰ টাইমলাইন"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"এই এপ্‌টোৱে কেতিয়া আপোনাৰ <xliff:g id="PERMGROUP">%1$s</xliff:g> অনুমতি ব্যৱহাৰ কৰিছিল"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"অধিক জানক"</string>
-    <!-- no translation found for permission_usage_duration_and_proxy (573959201368716399) -->
-    <skip />
+    <string name="permission_usage_duration_and_proxy" msgid="573959201368716399">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> দিন</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> দিন</item>
@@ -219,6 +218,7 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"এই অনুমতি থকা সকলো এপ্ চাওক"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"সহায়ক মাইক্ৰ’ফ’নৰ ব্যৱহাৰ দেখুৱাওক"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"যদি এপ্‌টো ব্যৱহাৰ কৰা নাই অনুমতিসমূহ আঁতৰাওক"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"অনুমতি আঁতৰাওক আৰু ঠাই খালী কৰক"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"আপোনাৰ ডেটা সুৰক্ষিত কৰিবলৈ এই এপ্‌টো কেইমাহমান ব্যৱহাৰ নকৰিলে এইটোৰ বাবে থকা অনুমতিসমূহ আঁতৰোৱা হ\'ব।"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"আপোনাৰ ডেটা সুৰক্ষিত কৰিবলৈ এই এপ্‌টো কেইমাহমান ব্যৱহাৰ নকৰিলে তলত উল্লেখ কৰা অনুমতিসমূহ আঁতৰোৱা হ\'ব: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"আপোনাৰ ডেটা সুৰক্ষিত কৰিবলৈ আপুনি কেইমাহমান ব্যৱহাৰ নকৰা এপ্‌সমূহৰ পৰা অনুমতিসমূহ আঁতৰোৱা হ\'ব।"</string>
