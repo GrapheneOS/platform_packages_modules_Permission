@@ -25,12 +25,9 @@ package com.android.permissioncontroller.permission.model.livedatatypes
  * @param revocableGroupNames A list of which permission groups of this package are eligible for
  * auto-revoke. A permission group is auto-revocable if it does not contain a default granted
  * permission.
- * @param shouldAllowUserToggle If the hibernation/auto-revoke switch should be provided for the
- * user to control.
  */
 data class HibernationSettingState(
     val isEnabledGlobal: Boolean,
     val isEnabledForApp: Boolean,
-    val revocableGroupNames: List<String>,
-    val shouldAllowUserToggle: Boolean
+    val revocableGroupNames: List<String>
 )
