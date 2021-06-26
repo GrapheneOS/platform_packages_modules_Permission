@@ -20,23 +20,31 @@ import static android.Manifest.permission_group.MICROPHONE;
 
 import android.Manifest;
 import android.app.AppOpsManager;
+import android.app.AppOpsManager.AttributedHistoricalOps;
+import android.app.AppOpsManager.AttributedOpEntry;
 import android.app.AppOpsManager.HistoricalOp;
 import android.app.AppOpsManager.HistoricalPackageOps;
 import android.app.AppOpsManager.OpEntry;
 import android.app.AppOpsManager.OpEventProxyInfo;
 import android.app.AppOpsManager.PackageOps;
+import android.content.pm.Attribution;
 import android.media.AudioRecordingConfiguration;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import com.android.permissioncontroller.permission.model.legacy.PermissionApps.PermissionApp;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import kotlin.Triple;
 
@@ -129,7 +137,7 @@ public final class AppPermissionUsage {
      * Stats for permission usage of a permission group. This data is for a
      * given time period, i.e. does not contain the full history.
      */
-    public static class GroupUsage {
+    public static class GroupUsage implements TimelineUsage {
         private final @NonNull AppPermissionGroup mGroup;
         private final @Nullable PackageOps mLastUsage;
         private final @Nullable HistoricalPackageOps mHistoricalUsage;
@@ -219,9 +227,7 @@ public final class AppPermissionUsage {
         }
 
 
-        /**
-         * returns whether the usage has discrete data
-         */
+        @Override
         public boolean hasDiscreteData() {
             if (mHistoricalUsage == null) {
                 return false;
@@ -234,14 +240,10 @@ public final class AppPermissionUsage {
                     return true;
                 }
             }
-
             return false;
         }
 
-        /**
-         * get all discrete access time in millis
-         * Returns a list of triples of (access time, access duration, proxy)
-         */
+        @Override
         public List<Triple<Long, Long, OpEventProxyInfo>> getAllDiscreteAccessTime() {
             List<Triple<Long, Long, OpEventProxyInfo>> allDiscreteAccessTime = new ArrayList<>();
             if (!hasDiscreteData()) {
@@ -340,13 +342,17 @@ public final class AppPermissionUsage {
             return allOps;
         }
 
+        @Override
         public @NonNull AppPermissionGroup getGroup() {
             return mGroup;
         }
 
-        /**
-         * Returns attribution tags for the historical usage.
-         */
+        @Override
+        public int getLabel() {
+            return -1;
+        }
+
+        @Override
         public @Nullable ArrayList<String> getAttributionTags() {
             if (mHistoricalUsage == null || mHistoricalUsage.getAttributedOpsCount() == 0) {
                 return null;
@@ -357,6 +363,143 @@ public final class AppPermissionUsage {
                 attributionTags.add(mHistoricalUsage.getAttributedOpsAt(i).getTag());
             }
             return attributionTags;
+        }
+
+        /** Creates a lookup from the attribution tag to its label. **/
+        @RequiresApi(Build.VERSION_CODES.S)
+        private static Map<String, Integer> getAttributionTagToLabelMap(
+                Attribution[] attributions) {
+            Map<String, Integer> attributionTagToLabelMap = new HashMap<>();
+            for (Attribution attribution : attributions) {
+                attributionTagToLabelMap.put(attribution.getTag(), attribution.getLabel());
+            }
+            return attributionTagToLabelMap;
+        }
+
+        /** Partitions the usages based on the attribution tag label. */
+        @RequiresApi(Build.VERSION_CODES.S)
+        public List<AttributionLabelledGroupUsage> getAttributionLabelledGroupUsages() {
+            Map<String, Integer> attributionTagToLabelMap =
+                    getAttributionTagToLabelMap(getGroup().getApp().attributions);
+
+            Set<String> allOps = getAllOps(mGroup);
+
+            // we need to collect discreteAccessTime for each label
+            Map<Integer, AttributionLabelledGroupUsage.Builder> labelDiscreteAccessMap =
+                    new HashMap<>();
+
+            for (int i = 0; i < mHistoricalUsage.getAttributedOpsCount(); i++) {
+                AttributedHistoricalOps attributedOp = mHistoricalUsage.getAttributedOpsAt(i);
+                String attributionTag = attributedOp.getTag();
+
+                for (String opName : allOps) {
+                    final HistoricalOp historicalOp = attributedOp.getOp(opName);
+                    if (historicalOp == null) {
+                        continue;
+                    }
+
+                    int discreteAccessCount = historicalOp.getDiscreteAccessCount();
+                    for (int j = 0; j < discreteAccessCount; j++) {
+                        AttributedOpEntry opEntry = historicalOp.getDiscreteAccessAt(j);
+                        Integer label = attributionTagToLabelMap.get(attributedOp.getTag());
+                        if (!labelDiscreteAccessMap.containsKey(label)) {
+                            labelDiscreteAccessMap.put(label,
+                                    new AttributionLabelledGroupUsage.Builder(label, getGroup()));
+                        }
+                        labelDiscreteAccessMap.get(label).addAttributionTag(attributionTag);
+                        labelDiscreteAccessMap.get(label).addDiscreteAccessTime(new Triple<>(
+                                opEntry.getLastAccessTime(PRIVACY_HUB_FLAGS),
+                                opEntry.getLastDuration(PRIVACY_HUB_FLAGS),
+                                opEntry.getLastProxyInfo(PRIVACY_HUB_FLAGS)));
+                    }
+                }
+            }
+
+            return labelDiscreteAccessMap.entrySet().stream()
+                    .map(e -> e.getValue().build())
+                    .collect(Collectors.toList());
+        }
+
+        /**
+         * Represents the slice of {@link GroupUsage} with a label.
+         *
+         * <p> -1 as label means that there was no entry for the attribution tag in the
+         * manifest.</p>
+         */
+        public static class AttributionLabelledGroupUsage implements TimelineUsage {
+            private final int mLabel;
+            private final AppPermissionGroup mAppPermissionGroup;
+            private final List<String> mAttributionTags;
+            private final List<Triple<Long, Long, OpEventProxyInfo>> mDiscreteAccessTime;
+
+            AttributionLabelledGroupUsage(int label,
+                    AppPermissionGroup appPermissionGroup,
+                    List<String> attributionTags,
+                    List<Triple<Long, Long, OpEventProxyInfo>> discreteAccessTime) {
+                mLabel = label;
+                mAppPermissionGroup = appPermissionGroup;
+                mAttributionTags = attributionTags;
+                mDiscreteAccessTime = discreteAccessTime;
+            }
+
+            @Override
+            public int getLabel() {
+                return mLabel;
+            }
+
+            @Override
+            public boolean hasDiscreteData() {
+                return mDiscreteAccessTime.size() > 0;
+            }
+
+            @Override
+            public List<Triple<Long, Long, OpEventProxyInfo>> getAllDiscreteAccessTime() {
+                return mDiscreteAccessTime;
+            }
+
+            @Override
+            public List<String> getAttributionTags() {
+                return mAttributionTags;
+            }
+
+            @Override
+            public AppPermissionGroup getGroup() {
+                return mAppPermissionGroup;
+            }
+
+            static class Builder {
+                private final int mLabel;
+                private final AppPermissionGroup mAppPermissionGroup;
+                private Set<String> mAttributionTags;
+                private List<Triple<Long, Long, OpEventProxyInfo>>  mDiscreteAccessTime;
+
+                Builder(int label, AppPermissionGroup appPermissionGroup) {
+                    mLabel = label;
+                    mAppPermissionGroup = appPermissionGroup;
+                    mAttributionTags = new HashSet<>();
+                    mDiscreteAccessTime = new ArrayList<>();
+                }
+
+                @NonNull Builder addAttributionTag(String attributionTag) {
+                    mAttributionTags.add(attributionTag);
+                    return this;
+                }
+
+                @NonNull
+                Builder addDiscreteAccessTime(
+                        Triple<Long, Long, OpEventProxyInfo> discreteAccessTime) {
+                    mDiscreteAccessTime.add(discreteAccessTime);
+                    return this;
+                }
+
+                AttributionLabelledGroupUsage build() {
+                    return new AttributionLabelledGroupUsage(mLabel,
+                            mAppPermissionGroup,
+                            new ArrayList<String>() {{
+                                addAll(mAttributionTags);
+                            }}, mDiscreteAccessTime);
+                }
+            }
         }
     }
 
@@ -399,5 +542,37 @@ public final class AppPermissionUsage {
             return new AppPermissionUsage(mPermissionApp, mGroups, mLastUsage, mHistoricalUsage,
                     mAudioRecordingConfigurations);
         }
+    }
+
+    /** Usage for showing timeline view for a specific permission group with a label. */
+    public interface TimelineUsage {
+        /**
+         * Returns whether the usage has discrete data.
+         */
+        boolean hasDiscreteData();
+
+        /**
+         * Returns all discrete access time in millis.
+         * Returns a list of triples of (access time, access duration, proxy)
+         */
+        List<Triple<Long, Long, OpEventProxyInfo>> getAllDiscreteAccessTime();
+
+        /**
+         * Returns attribution tags for the usage.
+         */
+        List<String> getAttributionTags();
+
+        /**
+         * Returns the permission group of the usage.
+         */
+        AppPermissionGroup getGroup();
+
+        /**
+         * Returns the user facing string's resource id.
+         *
+         * <p> -1 means show the app name otherwise get the string resource from the app
+         * context.</p>
+         */
+        int getLabel();
     }
 }
