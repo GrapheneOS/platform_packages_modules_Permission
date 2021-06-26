@@ -115,6 +115,8 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"應用程式在過去 24 小時內使用<xliff:g id="PERMGROUP">%1$s</xliff:g>的時間軸"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"當此應用程式使用您的<xliff:g id="PERMGROUP">%1$s</xliff:g>權限時"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"瞭解詳情"</string>
+    <!-- no translation found for permission_usage_duration_and_proxy (573959201368716399) -->
+    <skip />
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> 天</item>
       <item quantity="one">1 天</item>
@@ -217,6 +219,7 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"查看擁有此權限的所有應用程式"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"顯示「Google 助理」麥克風使用情況"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"如不使用應用程式，即移除權限"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"移除權限並騰出空間"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"為保護您的資料，系統已移除您在過去幾個月未曾使用的應用程式的權限。"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"為保護您的資料，如果應用程式在過去幾個月未曾使用，系統將會移除以下權限：<xliff:g id="PERMS">%1$s</xliff:g>。"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"為保護您的資料，系統已移除您在過去幾個月未曾使用的應用程式的權限。"</string>

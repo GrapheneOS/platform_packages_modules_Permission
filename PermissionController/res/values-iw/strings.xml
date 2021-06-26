@@ -117,6 +117,8 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"ציר הזמן: מתי אפליקציות שונות השתמשו ב<xliff:g id="PERMGROUP">%1$s</xliff:g> שלך ב-24 השעות האחרונות"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"משך הזמן שהאפליקציה הזו השתמשה בהרשאה <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"מידע נוסף"</string>
+    <!-- no translation found for permission_usage_duration_and_proxy (573959201368716399) -->
+    <skip />
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="two">יומיים (<xliff:g id="NUMBER">%s</xliff:g>)</item>
       <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> ימים</item>
@@ -234,13 +236,14 @@
     <string name="precise_image_description" msgid="6349638632303619872">"מיקום מדויק"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"מיקום משוער"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"שימוש במיקום מדויק"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"כשהמיקום המדויק מושבת, אפליקציות יכולות לגשת למיקום המשוער שלך"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"כשהמיקום המדויק מושבת, אפליקציות יכולות לגשת למיקום המשוער של המכשיר"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"הרשאה: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"לאפליקציה תהיה גישה אל: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"הצגת כל ההרשאות של \'<xliff:g id="APP">%1$s</xliff:g>\'"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"הצגת כל האפליקציות עם ההרשאה הזו"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"‏הצגת השימוש במיקרופון של Assistant"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"הסרת ההרשאות אם האפליקציה לא נמצאת בשימוש"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"הסרת הרשאות ופינוי מקום אחסון"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"כדי להגן על הנתונים שלך, אם האפליקציה הזו לא תהיה בשימוש במשך מספר חודשים, ההרשאות שניתנו לה יוסרו."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"כדי להגן על הנתונים שלך, אם האפליקציה לא תהיה בשימוש במשך מספר חודשים, ההרשאות הבאות יוסרו: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"כדי להגן על הנתונים שלך, הוסרו הרשאות מאפליקציות שלא השתמשת בהן במשך מספר חודשים."</string>

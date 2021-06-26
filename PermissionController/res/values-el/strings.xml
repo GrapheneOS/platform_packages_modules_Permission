@@ -115,6 +115,8 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Χρονολόγιο των περιπτώσεων που οι εφαρμογές χρησιμοποίησαν την ομάδα αδειών \"<xliff:g id="PERMGROUP">%1$s</xliff:g>\" τις τελευταίες 24 ώρες"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Πότε η συγκεκριμένη εφαρμογή χρησιμοποίησε την άδεια <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Μάθετε περισσότερα"</string>
+    <!-- no translation found for permission_usage_duration_and_proxy (573959201368716399) -->
+    <skip />
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ημέρες</item>
       <item quantity="one">1 ημέρα</item>
@@ -217,6 +219,7 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Εμφάνιση όλων των εφαρμογών με αυτήν την άδεια"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Εμφάνιση χρήσης μικροφώνου βοηθού"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Καταργήστε τις άδειες, εάν η εφαρμογή δεν χρησιμοποιείται."</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"Κατάργηση αδειών και απελευθέρωση χώρου"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Για την προστασία των δεδομένων σας, οι άδειες για αυτήν την εφαρμογή θα καταργηθούν εάν η εφαρμογή δεν χρησιμοποιηθεί για μερικούς μήνες."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Για την προστασία των δεδομένων σας, εάν δεν έχει χρησιμοποιηθεί η εφαρμογή για μερικούς μήνες, οι παρακάτω άδειες θα καταργηθούν: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Για την προστασία των δεδομένων σας, έχουν καταργηθεί οι άδειες εφαρμογών που δεν έχετε χρησιμοποιήσει κατά τους τελευταίους μήνες."</string>

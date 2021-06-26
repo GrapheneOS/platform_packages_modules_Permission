@@ -115,6 +115,8 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"지난 24시간 동안 앱에서 <xliff:g id="PERMGROUP">%1$s</xliff:g> 권한을 사용한 타임라인입니다."</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"앱에서 <xliff:g id="PERMGROUP">%1$s</xliff:g> 권한을 사용한 시간"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"자세히 알아보기"</string>
+    <!-- no translation found for permission_usage_duration_and_proxy (573959201368716399) -->
+    <skip />
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g>일</item>
       <item quantity="one">1일</item>
@@ -217,6 +219,7 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"이 권한이 있는 앱 모두 보기"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"어시스턴트 마이크 사용 표시"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"앱이 사용되지 않는 경우 권한 삭제"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"권한을 삭제하고 여유 공간 확보"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"데이터 보호를 위해 몇 개월 동안 앱을 사용하지 않으면 앱의 권한이 삭제됩니다."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"데이터 보호를 위해 몇 개월 동안 앱을 사용하지 않으면 다음 권한이 삭제됩니다. <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"데이터 보호를 위해 몇 개월 동안 사용하지 않은 앱에서 권한이 삭제되었습니다."</string>

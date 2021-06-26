@@ -551,7 +551,7 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
         Preference autoRevokeSummary = autoRevokeCategory.findPreference(
                 AUTO_REVOKE_SUMMARY_KEY);
 
-        if (!state.isEnabledGlobal()) {
+        if (!state.isEnabledGlobal() || state.getRevocableGroupNames().isEmpty()) {
             autoRevokeCategory.setVisible(false);
             autoRevokeSwitch.setVisible(false);
             autoRevokeSummary.setVisible(false);
@@ -560,7 +560,6 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
         autoRevokeCategory.setVisible(true);
         autoRevokeSwitch.setVisible(true);
         autoRevokeSummary.setVisible(true);
-        autoRevokeSwitch.setEnabled(state.getShouldAllowUserToggle());
         autoRevokeSwitch.setChecked(state.isEnabledForApp());
 
         List<String> groupLabels = new ArrayList<>();

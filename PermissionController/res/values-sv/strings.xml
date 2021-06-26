@@ -115,6 +115,8 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Tidslinje för när appar har använt <xliff:g id="PERMGROUP">%1$s</xliff:g> under de senaste 24 timmarna"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"När denna app använde behörigheten <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Läs mer"</string>
+    <!-- no translation found for permission_usage_duration_and_proxy (573959201368716399) -->
+    <skip />
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> dagar</item>
       <item quantity="one">1 dag</item>
@@ -217,6 +219,7 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Visa alla appar med den här behörigheten"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Visa mikrofonanvändning för assistenten"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Ta bort behörigheter om en app inte används"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"Ta bort behörigheter och frigör utrymme"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Behörigheter tas bort av säkerhetsskäl från den här appen om den inte används på några månader."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Följande behörigheter tas bort av säkerhetsskäl från appen om den inte används på några månader: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Behörigheter har tagits bort av säkerhetsskäl från appar som inte har använts på några månader."</string>

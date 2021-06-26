@@ -115,6 +115,8 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Өнгөрсөн 24 цагт аппууд таны <xliff:g id="PERMGROUP">%1$s</xliff:g>-г хэзээ ашигласан болохыг харуулсан он цагийн хэлхээс"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Энэ апп таны <xliff:g id="PERMGROUP">%1$s</xliff:g>-н зөвшөөрлийг ашигласан үед"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Нэмэлт мэдээлэл авах"</string>
+    <!-- no translation found for permission_usage_duration_and_proxy (573959201368716399) -->
+    <skip />
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> өдөр</item>
       <item quantity="one">1 өдөр</item>
@@ -217,6 +219,7 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Энэ зөвшөөрөлтэй бүх аппыг харах"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Туслах микрофон ашиглалтыг харуулах"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Аппыг ашигладаггүй бол зөвшөөрлийг нь хасах"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"Зөвшөөрлийг хасаж, сул зай гаргах"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Таны өгөгдлийг хамгаалах үүднээс энэ аппыг хэдэн сарын турш ашиглахгүй бол зөвшөөрлийг нь хасах болно."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Таны өгөгдлийг хамгаалах үүднээс аппыг хэдэн сарын турш ашиглахгүй бол  дараах зөвшөөрлүүдийг хасах болно: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Таны өгөгдлийг хамгаалах үүднээс таны хэдэн сарын турш ашиглаагүй аппуудын зөвшөөрлийг нь хассан."</string>

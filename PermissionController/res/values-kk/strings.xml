@@ -115,6 +115,8 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Қолданбалардың соңғы 24 сағатта <xliff:g id="PERMGROUP">%1$s</xliff:g> рұқсатын пайдалану хронологиясы"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Бұл қолданба <xliff:g id="PERMGROUP">%1$s</xliff:g> рұқсатын қолданған кезде"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Толығырақ"</string>
+    <!-- no translation found for permission_usage_duration_and_proxy (573959201368716399) -->
+    <skip />
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> күн</item>
       <item quantity="one">1 күн</item>
@@ -147,7 +149,7 @@
       <item quantity="other">Соңғы рет пайдаланылды: <xliff:g id="TIME_4">%1$s</xliff:g>\n<xliff:g id="NUM_5">%2$s</xliff:g> рет (фондық режимде <xliff:g id="NUM_6">%3$s</xliff:g> рет)\nҰзақтығы: <xliff:g id="TIME_7">%3$s</xliff:g></item>
       <item quantity="one">Соңғы рет пайдаланылды: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> рет (фондық режимде <xliff:g id="NUM_2">%3$s</xliff:g> рет)\nҰзақтығы: <xliff:g id="TIME_3">%3$s</xliff:g></item>
     </plurals>
-    <string name="permission_usage_summary_background" msgid="6136171928959340697">"Соңғы рет пайдаланылды: <xliff:g id="TIME">%1$s</xliff:g>\nСоңғы рет фондық режимде пайдаланылды."</string>
+    <string name="permission_usage_summary_background" msgid="6136171928959340697">"Соңғы рет пайдаланылуы: <xliff:g id="TIME">%1$s</xliff:g>\nСоңғы рет фондық режимде пайдаланылды."</string>
     <string name="permission_usage_any_permission" msgid="6358023078298106997">"Кез келген рұқсат"</string>
     <string name="permission_usage_any_time" msgid="3802087027301631827">"Кез келген уақытта"</string>
     <string name="permission_usage_last_7_days" msgid="7386221251886130065">"Соңғы 7 күн"</string>
@@ -217,6 +219,7 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Осы рұқсатқа ие барлық қолданбаларды көру"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Assistant микрофонының пайдаланылуын көрсету"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Қолданба пайдаланылмаса, рұқсаттарды өшіру"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"Рұқсаттарды өшіру және орын босату"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Бұл қолданба бірнеше ай бойы пайдаланылмаса, деректеріңізді қорғау үшін оған берілген рұқсаттар өшіріледі."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Қолданба бірнеше ай бойы пайдаланылмаса, деректеріңізді қорғау үшін мына рұқсаттар өшіріледі: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Бірнеше ай бойы пайдаланылмаған қолданбаларға берілген рұқсаттар деректеріңізді қорғау үшін өшірілді."</string>
@@ -326,16 +329,16 @@
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"Барлық файлдар"</string>
     <string name="permission_subtitle_background" msgid="8916750995309083180">"Барлық уақытта рұқсат етіледі."</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"Соңғы рет пайдаланылуы: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
-    <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Соңғы пайдалану уақыты: кеше <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Соңғы рет пайдаланылуы: кеше <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_content_provider" msgid="6996750793881252778">"Соңғы 24 сағатта пайдаланылды."</string>
-    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Соңғы пайдалану уақыты: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Барлық уақытта рұқсат етіледі."</string>
-    <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Соңғы пайдалану уақыты: кеше <xliff:g id="TIME_DATE">%1$s</xliff:g> • Барлық уақытта рұқсат етіледі."</string>
+    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Соңғы рет пайдаланылуы: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Барлық уақытта рұқсат етіледі."</string>
+    <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Соңғы рет пайдаланылуы: кеше <xliff:g id="TIME_DATE">%1$s</xliff:g> • Барлық уақытта рұқсат етіледі."</string>
     <string name="app_perms_content_provider_background" msgid="7793984056711923997">"Соңғы 24 сағатта пайдаланылды. • Барлық уақытта рұқсат етіледі."</string>
-    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Соңғы пайдалану уақыты: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Мультимедиа"</string>
-    <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Соңғы пайдалану уақыты: кеше <xliff:g id="TIME_DATE">%1$s</xliff:g> • Мультимедиа"</string>
+    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Соңғы рет пайдаланылуы: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Мультимедиа"</string>
+    <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Соңғы рет пайдаланылуы: кеше <xliff:g id="TIME_DATE">%1$s</xliff:g> • Мультимедиа"</string>
     <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"Соңғы 24 сағатта пайдаланылды. • Мультимедиа"</string>
-    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"Соңғы пайдалану уақыты: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Барлық файл"</string>
-    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"Соңғы пайдалану уақыты: кеше <xliff:g id="TIME_DATE">%1$s</xliff:g> • Барлық файл"</string>
+    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"Соңғы рет пайдаланылуы: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Барлық файл"</string>
+    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"Соңғы рет пайдаланылуы: кеше <xliff:g id="TIME_DATE">%1$s</xliff:g> • Барлық файл"</string>
     <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"Соңғы 24 сағатта пайдаланылды. • Барлық файл"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Ешқандай рұқсат берілмеді"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"Ешқандай рұқсатқа тыйым салынбады"</string>
