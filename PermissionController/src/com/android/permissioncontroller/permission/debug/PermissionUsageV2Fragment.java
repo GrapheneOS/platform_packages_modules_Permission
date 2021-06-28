@@ -16,6 +16,12 @@
 
 package com.android.permissioncontroller.permission.debug;
 
+import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_USAGE_FRAGMENT_INTERACTION;
+import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__OPEN;
+import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__SEE_OTHER_PERMISSIONS_CLICKED;
+import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__SHOW_SYSTEM_CLICKED;
+import static com.android.permissioncontroller.PermissionControllerStatsLog.write;
+
 import static java.util.concurrent.TimeUnit.DAYS;
 
 import android.Manifest;
@@ -59,6 +65,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 
 /**
@@ -87,6 +94,9 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
             PERMISSION_GROUP_ORDER.size() + 1;
     private static final int EXPAND_BUTTON_ORDER = 999;
 
+    private static final String KEY_SESSION_ID = PermissionUsageV2Fragment.class.getName()
+            + "_REQUEST_ID";
+
     private @NonNull PermissionUsages mPermissionUsages;
     private @Nullable List<AppPermissionUsage> mAppPermissionUsages = new ArrayList<>();
 
@@ -104,9 +114,18 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
 
     private PermissionUsageGraphicPreference mGraphic;
 
+    /** Unique Id of a request */
+    private long mSessionId;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (savedInstanceState == null) {
+            mSessionId = new Random().nextLong();
+        } else {
+            mSessionId = savedInstanceState.getLong(KEY_SESSION_ID);
+        }
 
         mFinishedInitialLoad = false;
 
@@ -198,6 +217,9 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
     public void onStart() {
         super.onStart();
         getActivity().setTitle(R.string.permission_usage_title);
+
+        write(PERMISSION_USAGE_FRAGMENT_INTERACTION, mSessionId,
+                PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__OPEN);
     }
 
     @Override
@@ -226,6 +248,9 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
                 getActivity().finishAfterTransition();
                 return true;
             case MENU_SHOW_SYSTEM:
+                write(PERMISSION_USAGE_FRAGMENT_INTERACTION, mSessionId,
+                        PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__SHOW_SYSTEM_CLICKED);
+                // fall through
             case MENU_HIDE_SYSTEM:
                 mShowSystem = item.getItemId() == MENU_SHOW_SYSTEM;
                 // We already loaded all data, so don't reload
@@ -260,6 +285,14 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
         return R.string.no_permission_usages;
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (outState != null) {
+            outState.putLong(KEY_SESSION_ID, mSessionId);
+        }
+    }
+
     private void updateUI() {
         if (mAppPermissionUsages.isEmpty() || getActivity() == null) {
             return;
@@ -279,6 +312,10 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
             screen.setInitialExpandedChildrenCount(
                     PERMISSION_USAGE_INITIAL_EXPANDED_CHILDREN_COUNT);
         }
+        screen.setOnExpandButtonClickListener(() -> {
+            write(PERMISSION_USAGE_FRAGMENT_INTERACTION, mSessionId,
+                    PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__SEE_OTHER_PERMISSIONS_CLICKED);
+        });
 
         long curTime = System.currentTimeMillis();
         long startTime = Math.max(curTime - TIME_FILTER_MILLIS,
@@ -441,7 +478,7 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
                 Map.Entry<String, Integer> currentEntry = usages.get(i);
                 PermissionUsageV2ControlPreference permissionUsagePreference =
                         new PermissionUsageV2ControlPreference(context, currentEntry.getKey(),
-                                currentEntry.getValue(), mShowSystem);
+                                currentEntry.getValue(), mShowSystem, mSessionId);
                 category.addPreference(permissionUsagePreference);
             }
 
