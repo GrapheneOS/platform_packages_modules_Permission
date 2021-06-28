@@ -646,12 +646,26 @@
     </role>
 
     <!---
-      ~ A role for the system package that provides on-device intelligent processor for system UI
-      ~ features.
-      ~ A package holding this role must comply with requirements outlined in the Android CDD
+      ~ A role for the system package that provides privacy-preserving intelligent processor for
+      ~ system UI features.
+      ~
+      ~ A package holding this role MUST comply with requirements outlined in the Android CDD
       ~ section "9.8.6 Content Capture".
       ~ Example link for Android 11:
       ~ https://source.android.com/compatibility/11/android-11-cdd#9_8_6_content_capture
+      ~
+      ~ In addition, packages MUST NOT:
+      ~ - Request INTERNET permission. Instead packages MUST access the internet through
+      ~   well-defined APIs in an open source project.
+      ~ - Perform direct binds to other applications, except the following system packages:
+      ~   - Bluetooth
+      ~   - Contacts
+      ~   - Media
+      ~   - Telephony
+      ~   - System UI
+      ~   - Component providing internet APIs (see above)
+      ~   To achieve this packages MUST set up explicit <allow-association> configuration in the
+      ~   system config.
       -->
     <role
         name="android.app.role.SYSTEM_UI_INTELLIGENCE"
@@ -675,10 +689,24 @@
     <!---
       ~ A role for the system package that provides on-device intelligent processor for ambient
       ~ audio.
-      ~ A package holding this role must comply with requirements outlined in the Android CDD
+      ~
+      ~ A package holding this role MUST comply with requirements outlined in the Android CDD
       ~ section "9.8.6 Content Capture".
       ~ Example link for Android 11:
       ~ https://source.android.com/compatibility/11/android-11-cdd#9_8_6_content_capture
+      ~
+      ~ In addition, packages MUST NOT:
+      ~ - Request INTERNET permission. Instead packages MUST access the internet through
+      ~   well-defined APIs in an open source project.
+      ~ - Perform direct binds to other applications, except the following system packages:
+      ~   - Bluetooth
+      ~   - Contacts
+      ~   - Media
+      ~   - Telephony
+      ~   - System UI
+      ~   - Component providing internet APIs (see above)
+      ~   To achieve this packages MUST set up explicit <allow-association> configuration in the
+      ~   system config.
       -->
     <role
         name="android.app.role.SYSTEM_AMBIENT_AUDIO_INTELLIGENCE"
@@ -705,10 +733,24 @@
 
     <!---
       ~ A role for the system package that provides on-device intelligent processor for audio.
-      ~ A package holding this role must comply with requirements outlined in the Android CDD
+      ~
+      ~ A package holding this role MUST comply with requirements outlined in the Android CDD
       ~ section "9.8.6 Content Capture".
       ~ Example link for Android 11:
       ~ https://source.android.com/compatibility/11/android-11-cdd#9_8_6_content_capture
+      ~
+      ~ In addition, packages MUST NOT:
+      ~ - Request INTERNET permission. Instead packages MUST access the internet through
+      ~   well-defined APIs in an open source project.
+      ~ - Perform direct binds to other applications, except the following system packages:
+      ~   - Bluetooth
+      ~   - Contacts
+      ~   - Media
+      ~   - Telephony
+      ~   - System UI
+      ~   - Component providing internet APIs (see above)
+      ~   To achieve this packages MUST set up explicit <allow-association> configuration in the
+      ~   system config.
       -->
     <role
         name="android.app.role.SYSTEM_AUDIO_INTELLIGENCE"
@@ -732,11 +774,25 @@
 
     <!---
       ~ A role for the system package that provides on-device intelligent processor for
-      ~ notification.
-      ~ A package holding this role must comply with requirements outlined in the Android CDD
+      ~ notifications.
+      ~
+      ~ A package holding this role MUST comply with requirements outlined in the Android CDD
       ~ section "9.8.6 Content Capture".
       ~ Example link for Android 11:
       ~ https://source.android.com/compatibility/11/android-11-cdd#9_8_6_content_capture
+      ~
+      ~ In addition, packages MUST NOT:
+      ~ - Request INTERNET permission. Instead packages MUST access the internet through
+      ~   well-defined APIs in an open source project.
+      ~ - Perform direct binds to other applications, except the following system packages:
+      ~   - Bluetooth
+      ~   - Contacts
+      ~   - Media
+      ~   - Telephony
+      ~   - System UI
+      ~   - Component providing internet APIs (see above)
+      ~   To achieve this packages MUST set up explicit <allow-association> configuration in the
+      ~   system config.
       -->
     <role
         name="android.app.role.SYSTEM_NOTIFICATION_INTELLIGENCE"
@@ -754,10 +810,24 @@
 
     <!---
       ~ A role for the system package that provides on-device intelligent processor for text.
-      ~ A package holding this role must comply with requirements outlined in the Android CDD
+      ~
+      ~ A package holding this role MUST comply with requirements outlined in the Android CDD
       ~ section "9.8.6 Content Capture".
       ~ Example link for Android 11:
       ~ https://source.android.com/compatibility/11/android-11-cdd#9_8_6_content_capture
+      ~
+      ~ In addition, packages MUST NOT:
+      ~ - Request INTERNET permission. Instead packages MUST access the internet through
+      ~   well-defined APIs in an open source project.
+      ~ - Perform direct binds to other applications, except the following system packages:
+      ~   - Bluetooth
+      ~   - Contacts
+      ~   - Media
+      ~   - Telephony
+      ~   - System UI
+      ~   - Component providing internet APIs (see above)
+      ~   To achieve this packages MUST set up explicit <allow-association> configuration in the
+      ~   system config.
       -->
     <role
         name="android.app.role.SYSTEM_TEXT_INTELLIGENCE"
@@ -776,10 +846,24 @@
     <!---
       ~ A role for the system package that provides on-device intelligent processor for visual
       ~ features.
-      ~ A package holding this role must comply with requirements outlined in the Android CDD
+      ~
+      ~ A package holding this role MUST comply with requirements outlined in the Android CDD
       ~ section "9.8.6 Content Capture".
       ~ Example link for Android 11:
       ~ https://source.android.com/compatibility/11/android-11-cdd#9_8_6_content_capture
+      ~
+      ~ In addition, packages MUST NOT:
+      ~ - Request INTERNET permission. Instead packages MUST access the internet through
+      ~   well-defined APIs in an open source project.
+      ~ - Perform direct binds to other applications, except the following system packages:
+      ~   - Bluetooth
+      ~   - Contacts
+      ~   - Media
+      ~   - Telephony
+      ~   - System UI
+      ~   - Component providing internet APIs (see above)
+      ~   To achieve this packages MUST set up explicit <allow-association> configuration in the
+      ~   system config.
       -->
     <role
         name="android.app.role.SYSTEM_VISUAL_INTELLIGENCE"
