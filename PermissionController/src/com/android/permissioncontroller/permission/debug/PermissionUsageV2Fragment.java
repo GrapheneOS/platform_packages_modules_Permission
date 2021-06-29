@@ -23,6 +23,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.role.RoleManager;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.ArrayMap;
 import android.util.ArraySet;
@@ -33,6 +34,7 @@ import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceGroupAdapter;
@@ -62,6 +64,7 @@ import java.util.Set;
 /**
  * The main page for the privacy dashboard.
  */
+@RequiresApi(Build.VERSION_CODES.S)
 public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implements
         PermissionUsages.PermissionsUsagesChangeCallback {
     private static final String LOG_TAG = "PermUsageV2Fragment";
