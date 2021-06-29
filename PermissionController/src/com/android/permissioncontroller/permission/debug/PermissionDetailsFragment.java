@@ -22,6 +22,7 @@ import static java.util.concurrent.TimeUnit.MINUTES;
 
 import android.Manifest.permission_group;
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.AppOpsManager.OpEventProxyInfo;
 import android.app.role.RoleManager;
 import android.content.Context;
@@ -29,6 +30,7 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.text.format.DateFormat;
@@ -42,6 +44,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
@@ -80,6 +83,7 @@ import kotlin.Triple;
 /**
  * The permission details page showing the history/timeline of a permission
  */
+@RequiresApi(Build.VERSION_CODES.S)
 public class PermissionDetailsFragment extends SettingsWithLargeHeader implements
         PermissionUsages.PermissionsUsagesChangeCallback {
     public static final int FILTER_24_HOURS = 2;
@@ -156,20 +160,22 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
                 R.id.extended_fab);
         // Load the background tint color from the application theme
         // rather than the Material Design theme
-        final int colorAccentTertiary = getContext().getColor(
+        Activity activity = getActivity();
+        ColorStateList backgroundColor = activity.getColorStateList(
                 android.R.color.system_accent3_100);
-        extendedFab.setBackgroundTintList(ColorStateList.valueOf(colorAccentTertiary));
-
+        extendedFab.setBackgroundTintList(backgroundColor);
         extendedFab.setText(R.string.manage_permission);
-        final boolean isDarkMode = (getActivity().getResources().getConfiguration().uiMode
+        boolean isUiModeNight = (activity.getResources().getConfiguration().uiMode
                 & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES;
-        int textColor = isDarkMode ? android.R.attr.textColorPrimaryInverse
+        int textColorAttr = isUiModeNight ? android.R.attr.textColorPrimaryInverse
                 : android.R.attr.textColorPrimary;
-        TypedArray colorArray = getActivity().obtainStyledAttributes(new int[] { textColor });
-        extendedFab.setTextColor(colorArray.getColor(0, -1));
-        extendedFab.setIcon(getActivity().getDrawable(R.drawable.ic_settings_outline));
+        TypedArray typedArray = activity.obtainStyledAttributes(new int[] { textColorAttr });
+        ColorStateList textColor = typedArray.getColorStateList(0);
+        typedArray.recycle();
+        extendedFab.setTextColor(textColor);
+        extendedFab.setIcon(activity.getDrawable(R.drawable.ic_settings_outline));
         extendedFab.setVisibility(View.VISIBLE);
-        extendedFab.setOnClickListener(v -> {
+        extendedFab.setOnClickListener(view -> {
             Intent intent = new Intent(Intent.ACTION_MANAGE_PERMISSION_APPS)
                     .putExtra(Intent.EXTRA_PERMISSION_NAME, mFilterGroup);
             startActivity(intent);
