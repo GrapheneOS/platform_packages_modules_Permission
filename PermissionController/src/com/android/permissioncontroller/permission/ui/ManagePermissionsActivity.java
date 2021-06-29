@@ -30,6 +30,7 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.PermissionInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.util.Log;
@@ -158,7 +159,7 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                 break;
 
             case Intent.ACTION_REVIEW_PERMISSION_USAGE: {
-                if (!UtilsKt.isPrivacyHubEnabled()) {
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
                     finishAfterTransition();
                     return;
                 }
@@ -169,15 +170,17 @@ public final class ManagePermissionsActivity extends SettingsActivity {
             } break;
 
             case Intent.ACTION_REVIEW_PERMISSION_HISTORY: {
-                if (UtilsKt.isPrivacyHubEnabled()) {
-                    String groupName = getIntent()
-                            .getStringExtra(Intent.EXTRA_PERMISSION_GROUP_NAME);
-                    boolean showSystem = getIntent()
-                            .getBooleanExtra(EXTRA_SHOW_SYSTEM, false);
-                    androidXFragment = PermissionDetailsWrapperFragment
-                            .newInstance(groupName, Long.MAX_VALUE, showSystem);
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+                    finishAfterTransition();
+                    return;
                 }
 
+                String groupName = getIntent()
+                        .getStringExtra(Intent.EXTRA_PERMISSION_GROUP_NAME);
+                boolean showSystem = getIntent()
+                        .getBooleanExtra(EXTRA_SHOW_SYSTEM, false);
+                androidXFragment = PermissionDetailsWrapperFragment
+                        .newInstance(groupName, Long.MAX_VALUE, showSystem);
                 break;
             }
 
