@@ -42,6 +42,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
@@ -57,6 +58,8 @@ import com.android.permissioncontroller.permission.ui.handheld.PermissionHistory
 import com.android.permissioncontroller.permission.ui.handheld.SettingsWithLargeHeader;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
+
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
@@ -145,32 +148,32 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
         ViewGroup rootView = (ViewGroup) super.onCreateView(inflater, container,
                 savedInstanceState);
 
-        if (mExtendedFab != null) {
-            // Load the background tint color from the application theme
-            // rather than the Material Design theme
-            final int colorAccentTertiary = getContext().getColor(
-                    android.R.color.system_accent3_100);
-            mExtendedFab.setBackgroundTintList(ColorStateList.valueOf(colorAccentTertiary));
+        PermissionDetailsWrapperFragment parentFragment = (PermissionDetailsWrapperFragment)
+                requireParentFragment();
+        CoordinatorLayout coordinatorLayout = parentFragment.getCoordinatorLayout();
+        inflater.inflate(R.layout.permission_details_extended_fab, coordinatorLayout);
+        ExtendedFloatingActionButton extendedFab = coordinatorLayout.requireViewById(
+                R.id.extended_fab);
+        // Load the background tint color from the application theme
+        // rather than the Material Design theme
+        final int colorAccentTertiary = getContext().getColor(
+                android.R.color.system_accent3_100);
+        extendedFab.setBackgroundTintList(ColorStateList.valueOf(colorAccentTertiary));
 
-            mExtendedFab.setText(R.string.manage_permission);
-            final boolean isDarkMode = (getActivity().getResources().getConfiguration().uiMode
-                    & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES;
-            int textColor = isDarkMode ? android.R.attr.textColorPrimaryInverse
-                    : android.R.attr.textColorPrimary;
-            TypedArray colorArray = getActivity().obtainStyledAttributes(
-                    new int[]{
-                            textColor
-                    }
-            );
-            mExtendedFab.setTextColor(colorArray.getColor(0, -1));
-            mExtendedFab.setIcon(getActivity().getDrawable(R.drawable.ic_settings_outline));
-            mExtendedFab.setVisibility(View.VISIBLE);
-            mExtendedFab.setOnClickListener(v -> {
-                Intent intent = new Intent(Intent.ACTION_MANAGE_PERMISSION_APPS)
-                        .putExtra(Intent.EXTRA_PERMISSION_NAME, mFilterGroup);
-                startActivity(intent);
-            });
-        }
+        extendedFab.setText(R.string.manage_permission);
+        final boolean isDarkMode = (getActivity().getResources().getConfiguration().uiMode
+                & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES;
+        int textColor = isDarkMode ? android.R.attr.textColorPrimaryInverse
+                : android.R.attr.textColorPrimary;
+        TypedArray colorArray = getActivity().obtainStyledAttributes(new int[] { textColor });
+        extendedFab.setTextColor(colorArray.getColor(0, -1));
+        extendedFab.setIcon(getActivity().getDrawable(R.drawable.ic_settings_outline));
+        extendedFab.setVisibility(View.VISIBLE);
+        extendedFab.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_MANAGE_PERMISSION_APPS)
+                    .putExtra(Intent.EXTRA_PERMISSION_NAME, mFilterGroup);
+            startActivity(intent);
+        });
         RecyclerView recyclerView = getListView();
         int bottomPadding = getResources()
                 .getDimensionPixelSize(R.dimen.privhub_details_recycler_view_bottom_padding);
