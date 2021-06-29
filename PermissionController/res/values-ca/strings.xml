@@ -115,8 +115,7 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Cronologia de l\'ús que han fet les aplicacions del permís <xliff:g id="PERMGROUP">%1$s</xliff:g> durant les 24 darreres hores"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Quan aquesta aplicació ha utilitzat el permís <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Més informació"</string>
-    <!-- no translation found for permission_usage_duration_and_proxy (573959201368716399) -->
-    <skip />
+    <string name="permission_usage_duration_and_proxy" msgid="573959201368716399">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> dies</item>
       <item quantity="one">1 dia</item>
