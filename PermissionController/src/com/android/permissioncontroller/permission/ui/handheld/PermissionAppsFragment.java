@@ -40,6 +40,7 @@ import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -52,6 +53,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
@@ -175,6 +177,7 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
     }
 
     @Override
+    @RequiresApi(Build.VERSION_CODES.S)
     public void onPermissionUsagesChanged() {
         if (mPermissionUsages.getUsages().isEmpty()) {
             return;

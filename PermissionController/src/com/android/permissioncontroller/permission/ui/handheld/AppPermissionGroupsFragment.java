@@ -41,6 +41,7 @@ import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
 import android.icu.text.ListFormatter;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.provider.Settings;
@@ -54,6 +55,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.annotation.StringRes;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.Preference;
@@ -202,6 +204,7 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
     }
 
     @Override
+    @RequiresApi(Build.VERSION_CODES.S)
     public void onPermissionUsagesChanged() {
         if (mPermissionUsages.getUsages().isEmpty()) {
             return;
