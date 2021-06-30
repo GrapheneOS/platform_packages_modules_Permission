@@ -64,6 +64,20 @@ bootclasspath_fragment {
       "framework-permission-s",
     ],
     apex_available: ["com.android.permission"],
+
+    // The bootclasspath_fragments that provide APIs on which this depends.
+    fragments: [
+        {
+            apex: "com.android.art",
+            module: "art-bootclasspath-fragment",
+        },
+    ],
+
+    // Additional stubs libraries that this fragment's contents use which are
+    // not provided by another bootclasspath_fragment.
+    additional_stubs: [
+        "android-non-updatable",
+    ],
 }
 
 // Encapsulate the contributions made by the com.android.permission to the systemserverclasspath.
