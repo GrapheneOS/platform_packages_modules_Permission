@@ -33,6 +33,7 @@ import android.content.Loader;
 import android.content.pm.PackageInfo;
 import android.media.AudioManager;
 import android.media.AudioRecordingConfiguration;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Process;
 import android.util.ArrayMap;
@@ -42,6 +43,7 @@ import android.util.SparseArray;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.model.AppPermissionUsage;
@@ -63,6 +65,7 @@ import java.util.concurrent.atomic.AtomicReference;
 /**
  * Loads all permission usages for a set of apps and permission groups.
  */
+@RequiresApi(Build.VERSION_CODES.S)
 public final class PermissionUsages implements LoaderCallbacks<List<AppPermissionUsage>> {
     public static final int USAGE_FLAG_LAST = 1 << 0;
     public static final int USAGE_FLAG_HISTORICAL = 1 << 2;
