@@ -41,9 +41,6 @@ const val PROPERTY_LOCATION_ACCURACY_ENABLED = "location_accuracy_enabled"
 /* Default location precision */
 const val PROPERTY_LOCATION_PRECISION = "location_precision"
 
-/* Whether privacy hub feature is enabled */
-const val PROPERTY_PRIVACY_HUB_ENABLED = "privacy_hub_enabled"
-
 const val SECONDS = 1
 const val MINUTES = 2
 const val HOURS = 3
@@ -121,14 +118,6 @@ fun isLocationAccuracyEnabled(): Boolean {
 fun getDefaultPrecision(): Boolean {
     return DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
             PROPERTY_LOCATION_PRECISION, true)
-}
-
-/**
- * Whether the privacy hub feature is enabled
- */
-fun isPrivacyHubEnabled(): Boolean {
-    return DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
-            PROPERTY_PRIVACY_HUB_ENABLED, true)
 }
 
 /**
