@@ -110,15 +110,10 @@ public class PermissionUsageGraphicPreference extends Preference {
         centerLabel.setTextAppearance(R.style.PrivacyDashboardGraphicLabel);
 
         // Sample colors.
-        // TODO(b/176902658): Use proper API for sampling these colors.
-        final int colorAccentPrimary = getContext().getColor(
-                android.R.color.system_accent1_300);
-        final int colorAccentPrimaryVariant = getContext().getColor(
-                android.R.color.system_accent1_600);
-        final int colorAccentSecondary = getContext().getColor(
-                android.R.color.system_accent2_300);
-        final int colorAccentTertiary = getContext().getColor(
-                android.R.color.system_accent3_300);
+        final int colorCamera = getContext().getColor(android.R.color.system_accent1_300);
+        final int colorMicrophone = getContext().getColor(android.R.color.system_accent1_100);
+        final int colorLocation = getContext().getColor(android.R.color.system_accent3_100);
+        final int colorOther = getContext().getColor(android.R.color.system_accent2_100);
 
         // Create labels, counts, and colors.
         TextView[] labels;
@@ -129,7 +124,7 @@ public class PermissionUsageGraphicPreference extends Preference {
             labels = new TextView[] { new TextView(getContext()) };
             labels[0] = null;
             counts = new int[] { 1 };
-            colors = new int[] { colorAccentPrimaryVariant };
+            colors = new int[] { colorOther };
         } else {
             labels = new TextView[] {
                     new TextView(getContext()),
@@ -151,10 +146,10 @@ public class PermissionUsageGraphicPreference extends Preference {
                             Manifest.permission_group.LOCATION) : 0
             };
             colors = new int[] {
-                    colorAccentSecondary,
-                    colorAccentPrimary,
-                    colorAccentTertiary,
-                    colorAccentPrimaryVariant
+                    colorCamera,
+                    colorMicrophone,
+                    colorLocation,
+                    colorOther
             };
         }
 
