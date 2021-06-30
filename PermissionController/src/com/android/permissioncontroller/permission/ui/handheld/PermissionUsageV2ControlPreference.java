@@ -16,6 +16,12 @@
 
 package com.android.permissioncontroller.permission.ui.handheld;
 
+import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_USAGE_FRAGMENT_INTERACTION;
+import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__CAMERA_ACCESS_TIMELINE_VIEWED;
+import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__LOCATION_ACCESS_TIMELINE_VIEWED;
+import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__MICROPHONE_ACCESS_TIMELINE_VIEWED;
+import static com.android.permissioncontroller.PermissionControllerStatsLog.write;
+
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
@@ -47,14 +53,16 @@ public class PermissionUsageV2ControlPreference extends Preference {
     private final String mGroupName;
     private final int mCount;
     private final boolean mShowSystem;
+    private final long mSessionId;
 
     public PermissionUsageV2ControlPreference(@NonNull Context context, @NonNull String groupName,
-            int count, boolean showSystem) {
+            int count, boolean showSystem, long sessionId) {
         super(context);
         mContext = context;
         mGroupName = groupName;
         mCount = count;
         mShowSystem = showSystem;
+        mSessionId = sessionId;
 
         CharSequence permGroupLabel = KotlinUtils.INSTANCE.getPermGroupLabel(mContext, mGroupName);
         setTitle(permGroupLabel);
@@ -71,6 +79,8 @@ public class PermissionUsageV2ControlPreference extends Preference {
                 intent.putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, mGroupName);
                 intent.putExtra(ManagePermissionsActivity.EXTRA_SHOW_SYSTEM, mShowSystem);
 
+                logSensorDataTimelineViewed(mGroupName);
+
                 mContext.startActivity(intent);
                 return true;
             });
@@ -83,6 +93,18 @@ public class PermissionUsageV2ControlPreference extends Preference {
                 return true;
             });
         }
+    }
+
+    private void logSensorDataTimelineViewed(String groupName) {
+        int act = 0;
+        if (groupName.equals(Manifest.permission_group.LOCATION)) {
+            act = PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__LOCATION_ACCESS_TIMELINE_VIEWED;
+        } else if (groupName.equals(Manifest.permission_group.CAMERA)) {
+            act = PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__CAMERA_ACCESS_TIMELINE_VIEWED;
+        } else if (groupName.equals(Manifest.permission_group.MICROPHONE)) {
+            act = PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__MICROPHONE_ACCESS_TIMELINE_VIEWED;
+        }
+        write(PERMISSION_USAGE_FRAGMENT_INTERACTION, mSessionId, act);
     }
 
     @Override
