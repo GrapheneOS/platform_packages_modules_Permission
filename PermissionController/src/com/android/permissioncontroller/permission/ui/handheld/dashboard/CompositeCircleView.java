@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.ui.handheld;
+package com.android.permissioncontroller.permission.ui.handheld.dashboard;
 
 import android.content.Context;
 import android.util.AttributeSet;
