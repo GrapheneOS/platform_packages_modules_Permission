@@ -503,6 +503,7 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
 
                 PermissionHistoryPreference permissionUsagePreference = new
                         PermissionHistoryPreference(context,
+                        UserHandle.getUserHandleForUid(usage.mAppPermissionUsage.getApp().getUid()),
                         usage.mAppPermissionUsage.getPackageName(),
                         usage.mAppPermissionUsage.getApp().getIcon(),
                         usage.mAppPermissionUsage.getApp().getLabel(),
