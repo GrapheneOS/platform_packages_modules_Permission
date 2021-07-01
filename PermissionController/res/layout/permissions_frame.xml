@@ -34,6 +34,7 @@
 
             <TextView
                 android:id="@+id/no_permissions"
+                android:visibility="gone"
                 style="@style/PermissionsFrameNoPermissionsText" />
 
         </LinearLayout>
