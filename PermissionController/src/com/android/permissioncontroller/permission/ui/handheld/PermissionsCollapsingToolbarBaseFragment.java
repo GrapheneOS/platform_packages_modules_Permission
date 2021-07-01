@@ -42,7 +42,7 @@ public abstract class PermissionsCollapsingToolbarBaseFragment
         }
 
         PreferenceFragmentCompat preferenceFragment =
-                (PermissionsFrameFragment) getChildFragmentManager()
+                (PreferenceFragmentCompat) getChildFragmentManager()
                         .findFragmentById(R.id.content_frame);
 
         if (preferenceFragment == null) {

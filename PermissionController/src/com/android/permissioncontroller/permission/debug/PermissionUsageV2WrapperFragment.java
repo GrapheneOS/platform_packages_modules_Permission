@@ -17,10 +17,12 @@
 package com.android.permissioncontroller.permission.debug;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.android.permissioncontroller.permission.ui.handheld.PermissionsCollapsingToolbarBaseFragment;
@@ -28,6 +30,7 @@ import com.android.permissioncontroller.permission.ui.handheld.PermissionsCollap
 /**
  * Wrapper over PermissionUsageV2Fragment
  */
+@RequiresApi(Build.VERSION_CODES.S)
 public class PermissionUsageV2WrapperFragment extends PermissionsCollapsingToolbarBaseFragment{
     @NonNull
     @Override
