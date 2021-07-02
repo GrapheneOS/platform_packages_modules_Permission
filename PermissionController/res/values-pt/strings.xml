@@ -65,7 +65,7 @@
     </plurals>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"Este app foi projetado para uma versão anterior do Android. Negar a permissão pode fazer com que ele deixe de funcionar conforme esperado."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"executar uma ação desconhecida"</string>
-    <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> de <xliff:g id="COUNT_1">%2$d</xliff:g> app permitido"</string>
+    <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> de <xliff:g id="COUNT_1">%2$d</xliff:g> app(s) permitido(s)"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> apps permitidos"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Mostrar sistema"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Ocultar sistema"</string>
@@ -175,8 +175,8 @@
     </plurals>
     <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Permissão não usada nas últimas 24 horas"</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
-      <item quantity="one">Usada por <xliff:g id="NUMBER">%1$d</xliff:g> app</item>
-      <item quantity="other">Usada por <xliff:g id="NUMBER">%1$d</xliff:g> apps</item>
+      <item quantity="one">Dados usados por <xliff:g id="NUMBER">%1$d</xliff:g> app</item>
+      <item quantity="other">Dados usados por <xliff:g id="NUMBER">%1$d</xliff:g> apps</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Ver tudo no painel"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrado por: <xliff:g id="PERM">%1$s</xliff:g>"</string>
