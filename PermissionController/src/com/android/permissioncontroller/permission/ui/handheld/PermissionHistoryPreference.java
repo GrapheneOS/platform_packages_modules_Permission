@@ -23,6 +23,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
+import android.os.UserHandle;
 import android.text.format.DateFormat;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -58,6 +59,7 @@ public class PermissionHistoryPreference extends Preference {
     private static final String LOG_TAG = "PermissionHistoryPreference";
 
     private final Context mContext;
+    private final UserHandle mUserHandle;
     private final String mPackageName;
     private final String mPermissionGroup;
     private final String mAccessTime;
@@ -72,7 +74,8 @@ public class PermissionHistoryPreference extends Preference {
 
     private Drawable mWidgetIcon;
 
-    public PermissionHistoryPreference(@NonNull Context context, @NonNull String pkgName,
+    public PermissionHistoryPreference(@NonNull Context context,
+            @NonNull UserHandle userHandle, @NonNull String pkgName,
             @NonNull Drawable appIcon,
             @NonNull String preferenceTitle,
             @NonNull String permissionGroup, @NonNull String accessTime,
@@ -80,6 +83,7 @@ public class PermissionHistoryPreference extends Preference {
             @NonNull ArrayList<String> attributionTags, boolean isLastUsage) {
         super(context);
         mContext = context;
+        mUserHandle = userHandle;
         mPackageName = pkgName;
         mPermissionGroup = permissionGroup;
         mAccessTime = accessTime;
@@ -144,6 +148,7 @@ public class PermissionHistoryPreference extends Preference {
 
         setOnPreferenceClickListener((preference) -> {
             Intent intent = new Intent(Intent.ACTION_MANAGE_APP_PERMISSIONS);
+            intent.putExtra(Intent.EXTRA_USER, mUserHandle);
             intent.putExtra(Intent.EXTRA_PACKAGE_NAME, mPackageName);
 
             mContext.startActivity(intent);
