@@ -67,8 +67,8 @@
     <string name="menu_show_system" msgid="4254021607027872504">"सिस्टम देखाइयोस्"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"सिस्टम लुकाइयोस्"</string>
     <string name="no_apps" msgid="2412612731628386816">"कुनै पनि एप छैन"</string>
-    <string name="location_settings" msgid="3624412509133422562">"स्थानसम्बन्धी सेटिङहरू"</string>
-    <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> यस डिभाइसको लोकेसन सर्भिस प्रदायक हो। स्थानसम्बन्धी सेटिङहरूमा गई स्थानसम्बन्धी पहुँच परिमार्जन गर्न सकिन्छ।"</string>
+    <string name="location_settings" msgid="3624412509133422562">"लोकेसन सेटिङ"</string>
+    <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> यस डिभाइसको लोकेसन सर्भिस प्रदायक हो। लोकेसन सेटिङमा गई स्थानसम्बन्धी पहुँच परिमार्जन गर्न सकिन्छ।"</string>
     <string name="system_warning" msgid="1173400963234358816">"तपाईंले यो अनुमति अस्वीकार गर्नुभएमा तपाईंको डिभाइसका मूल सुविधाहरूले अब चाहेअनुसार कार्य नगर्न पनि सक्छन्।"</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"नीतिले लागू गरेको"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"नीतिले पृष्ठभूमिको प‍हुँच असक्षम पारेको छ"</string>
