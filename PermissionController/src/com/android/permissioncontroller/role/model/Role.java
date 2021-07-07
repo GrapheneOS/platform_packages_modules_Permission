@@ -383,9 +383,9 @@ public class Role {
      * @return whether this role is available based on SDK version
      */
     boolean isAvailableBySdkVersion() {
-        // Workaround to match the value 31+ for S+ in roles.xml before SDK finalization.
-        if (mMinSdkVersion >= 31) {
-            return SdkLevel.isAtLeastS();
+        // Workaround to match the value 33+ for T+ in roles.xml before SDK finalization.
+        if (mMinSdkVersion >= 33) {
+            return SdkLevel.isAtLeastT();
         } else {
             return Build.VERSION.SDK_INT >= mMinSdkVersion;
         }
