@@ -24,6 +24,8 @@ import com.android.permissioncontroller.R
 import com.android.permissioncontroller.auto.AutoSettingsFrameFragment
 import com.android.permissioncontroller.hibernation.isHibernationEnabled
 import com.android.permissioncontroller.permission.ui.UnusedAppsFragment
+import com.android.car.ui.utils.ViewUtils
+import com.android.car.ui.utils.ViewUtils.LazyLayoutView
 
 /**
  * Auto wrapper, with customizations, around [UnusedAppsFragment].
@@ -56,6 +58,12 @@ class AutoUnusedAppsFragment : AutoSettingsFrameFragment(),
                 .add(fragment, null)
                 .commit()
         }
+
+        // initially focus on focus parking view and then shift focus to recyclerview once it has
+        // loaded
+        ViewUtils.hideFocus(getListView().getRootView())
+        val lazyLayoutView = getListView() as LazyLayoutView
+        ViewUtils.initFocus(lazyLayoutView)
     }
 
     override fun createFooterPreference(context: Context): Preference {
