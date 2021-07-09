@@ -60,9 +60,9 @@ public class Permission {
      * @return whether this permission is available
      */
     public boolean isAvailable() {
-        // Workaround to match the value 31+ for S+ in roles.xml before SDK finalization.
-        if (mMinSdkVersion >= 31) {
-            return SdkLevel.isAtLeastS();
+        // Workaround to match the value 33+ for T+ in roles.xml before SDK finalization.
+        if (mMinSdkVersion >= 33) {
+            return SdkLevel.isAtLeastT();
         } else {
             return Build.VERSION.SDK_INT >= mMinSdkVersion;
         }
