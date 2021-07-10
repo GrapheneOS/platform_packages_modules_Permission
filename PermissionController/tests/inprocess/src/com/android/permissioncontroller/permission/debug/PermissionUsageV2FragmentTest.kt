@@ -18,16 +18,18 @@ package com.android.permissioncontroller.permission.debug
 
 import android.Manifest.permission.CAMERA
 import android.content.Intent
+import android.os.Build
 import android.permission.cts.PermissionUtils.grantPermission
 import android.permission.cts.PermissionUtils.install
 import android.permission.cts.PermissionUtils.uninstallApp
-import androidx.test.rule.ActivityTestRule
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.ViewMatchers.withContentDescription
 import androidx.test.espresso.matcher.ViewMatchers.withResourceName
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.filters.SdkSuppress
+import androidx.test.rule.ActivityTestRule
 import com.android.compatibility.common.util.SystemUtil.eventually
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.PermissionHub2Test
@@ -44,6 +46,7 @@ import com.android.permissioncontroller.wakeUpScreen
  * Simple tests for {@link PermissionUsageV2Fragment}
  */
 @RunWith(AndroidJUnit4::class)
+@SdkSuppress(minSdkVersion = Build.VERSION_CODES.S)
 class PermissionUsageV2FragmentTest : PermissionHub2Test() {
     private val APK =
             "/data/local/tmp/permissioncontroller/tests/inprocess/AppThatUsesCameraPermission.apk"
