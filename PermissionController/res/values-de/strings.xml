@@ -65,7 +65,7 @@
     </plurals>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"Diese App wurde für eine ältere Android-Version entwickelt. Wenn du keine Berechtigung gewährst, funktioniert sie möglicherweise nicht mehr ordnungsgemäß."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"Unbekannte Aktion durchführen"</string>
-    <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> von <xliff:g id="COUNT_1">%2$d</xliff:g> Apps mit Berechtigung"</string>
+    <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> von <xliff:g id="COUNT_1">%2$d</xliff:g> App(s) mit Berechtigung"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g> von <xliff:g id="COUNT_1">%2$d</xliff:g> Apps zugelassen"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"System-Apps anzeigen"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"System-Apps ausblenden"</string>
