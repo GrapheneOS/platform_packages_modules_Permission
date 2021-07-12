@@ -312,7 +312,7 @@
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"SMS, envoyer un SMS, messages, message"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"Appli urgences par défaut"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"Application pour les urgences"</string>
-    <string name="role_emergency_description" msgid="5051840234887686630">"Applications qui vous permettent d\'enregistrer vos informations médicales et de les rendre accessibles aux services de secours d\'urgence, de recevoir des alertes en cas d\'événements météorologiques violents ou d\'alerter d\'autres personnes lorsque vous avez besoin d\'aide"</string>
+    <string name="role_emergency_description" msgid="5051840234887686630">"Applications qui vous permettent d\'enregistrer vos informations médicales et de les rendre accessibles aux services d\'urgence, de recevoir des alertes en cas d\'événements météorologiques violents ou d\'alerter d\'autres personnes lorsque vous avez besoin d\'aide"</string>
     <string name="role_emergency_request_title" msgid="8469579020654348567">"Définir <xliff:g id="APP_NAME">%1$s</xliff:g> comme votre application par défaut pour les urgences ?"</string>
     <string name="role_emergency_request_description" msgid="131645948770262850">"Aucune autorisation nécessaire"</string>
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"en cas d\'urgence"</string>
