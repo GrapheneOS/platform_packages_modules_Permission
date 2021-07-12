@@ -46,9 +46,6 @@ import com.android.permissioncontroller.Constants;
 import com.android.permissioncontroller.DeviceUtils;
 import com.android.permissioncontroller.PermissionControllerStatsLog;
 import com.android.permissioncontroller.R;
-import com.android.permissioncontroller.permission.debug.PermissionDetailsWrapperFragment;
-import com.android.permissioncontroller.permission.debug.PermissionUsageV2WrapperFragment;
-import com.android.permissioncontroller.permission.debug.UtilsKt;
 import com.android.permissioncontroller.permission.ui.auto.AutoAllAppPermissionsFragment;
 import com.android.permissioncontroller.permission.ui.auto.AutoAppPermissionsFragment;
 import com.android.permissioncontroller.permission.ui.auto.AutoManageStandardPermissionsFragment;
@@ -58,6 +55,8 @@ import com.android.permissioncontroller.permission.ui.handheld.AppPermissionFrag
 import com.android.permissioncontroller.permission.ui.handheld.AppPermissionGroupsFragment;
 import com.android.permissioncontroller.permission.ui.handheld.HandheldUnusedAppsWrapperFragment;
 import com.android.permissioncontroller.permission.ui.handheld.PermissionAppsFragment;
+import com.android.permissioncontroller.permission.ui.handheld.dashboard.PermissionDetailsWrapperFragment;
+import com.android.permissioncontroller.permission.ui.handheld.dashboard.PermissionUsageV2WrapperFragment;
 import com.android.permissioncontroller.permission.ui.legacy.AppPermissionActivity;
 import com.android.permissioncontroller.permission.ui.wear.AppPermissionsFragmentWear;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
