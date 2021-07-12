@@ -23,7 +23,7 @@
     <string name="back" msgid="6249950659061523680">"Артка"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Чыгарып салуу же өчүрүү"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Колдонмо табылган жок"</string>
-    <string name="grant_dialog_button_deny" msgid="88262611492697192">"Тыюу салуу"</string>
+    <string name="grant_dialog_button_deny" msgid="88262611492697192">"Жок"</string>
     <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"Тыюу салам жана экинчи суралбасын"</string>
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"\"Колдонмо пайдаланылып жаткан учурда\" режимин калтыруу"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"\"Ушул жолу гана\" жөндөөсү калсын"</string>
@@ -207,7 +207,7 @@
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Бардык учурда уруксат берилет"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Колдонмо колдонулуп жатканда гана уруксат берилет"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Ар дайым суралсын"</string>
-    <string name="app_permission_button_deny" msgid="6016454069832050300">"Тыюу салуу"</string>
+    <string name="app_permission_button_deny" msgid="6016454069832050300">"Жок"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Так жайгашкан жери"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Болжолдуу жайгашкан жери"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Турган жерди так аныктоо"</string>
