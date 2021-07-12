@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.debug;
+package com.android.permissioncontroller.permission.ui.handheld.dashboard;
 
 import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_USAGE_FRAGMENT_INTERACTION;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__OPEN;
@@ -55,7 +55,6 @@ import com.android.permissioncontroller.permission.model.AppPermissionUsage.Grou
 import com.android.permissioncontroller.permission.model.legacy.PermissionApps;
 import com.android.permissioncontroller.permission.ui.handheld.PermissionUsageV2ControlPreference;
 import com.android.permissioncontroller.permission.ui.handheld.SettingsWithLargeHeader;
-import com.android.permissioncontroller.permission.ui.handheld.dashboard.PermissionUsageGraphicPreference;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.settingslib.HelpUtils;
