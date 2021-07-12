@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.debug
+package com.android.permissioncontroller.permission.ui.handheld.dashboard
 
 import android.Manifest.permission.CAMERA
 import android.content.Intent
