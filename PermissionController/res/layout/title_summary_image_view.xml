@@ -20,7 +20,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-        <com.android.permissioncontroller.permission.debug.PreferenceImageView
+        <com.android.permissioncontroller.permission.ui.handheld.dashboard.PreferenceImageView
             android:id="@+id/icon"
             style="@style/TitleSummaryImageViewIcon" />
 

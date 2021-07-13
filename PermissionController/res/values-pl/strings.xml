@@ -225,7 +225,7 @@
     <string name="app_permission_usage_title" msgid="6676802437831981822">"Użycie uprawnień aplikacji"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"Dostęp: <xliff:g id="NUM">%1$s</xliff:g> razy. Całkowity czas trwania: <xliff:g id="DURATION">%2$s</xliff:g>. Ostatnio użyto <xliff:g id="TIME">%3$s</xliff:g> temu."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"Dostęp: <xliff:g id="NUM">%1$s</xliff:g> razy. Ostatnio użyto <xliff:g id="TIME">%2$s</xliff:g> temu."</string>
-    <string name="app_permission_button_allow" msgid="5808039516494774647">"Zezwól"</string>
+    <string name="app_permission_button_allow" msgid="5808039516494774647">"Zezwalaj"</string>
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Pozwól zarządzać wszystkimi plikami"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Pozwól na dostęp tylko do multimediów"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Zawsze zezwalaj"</string>
