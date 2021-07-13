@@ -382,6 +382,28 @@ object KotlinUtils {
     }
 
     /**
+     * Determine if the given permission should be treated as split from a
+     * non-runtime permission for an application targeting the given SDK level.
+     */
+    private fun isPermissionSplitFromNonRuntime(
+        app: Application,
+        permName: String,
+        targetSdk: Int
+    ): Boolean {
+        val permissionManager = app.getSystemService(PermissionManager::class.java) ?: return false
+        val splitPerms = permissionManager.splitPermissions
+        val size = splitPerms.size
+        for (i in 0 until size) {
+            val splitPerm = splitPerms[i]
+            if (targetSdk < splitPerm.targetSdk && splitPerm.newPermissions.contains(permName)) {
+                val perm = app.packageManager.getPermissionInfo(splitPerm.splitPermission, 0)
+                return perm != null && perm.protection != PermissionInfo.PROTECTION_DANGEROUS
+            }
+        }
+        return false
+    }
+
+    /**
      * Set a list of flags for a set of permissions of a LightAppPermGroup
      *
      * @param app: The current application
@@ -522,9 +544,10 @@ object KotlinUtils {
         isOneTime: Boolean,
         group: LightAppPermGroup
     ): Pair<LightPermission, Boolean> {
-        val user = UserHandle.getUserHandleForUid(group.packageInfo.uid)
-        val supportsRuntime = group.packageInfo.targetSdkVersion >= Build.VERSION_CODES.M
-        val isGrantingAllowed = (!group.packageInfo.isInstantApp || perm.isInstantPerm) &&
+        val pkgInfo = group.packageInfo
+        val user = UserHandle.getUserHandleForUid(pkgInfo.uid)
+        val supportsRuntime = pkgInfo.targetSdkVersion >= Build.VERSION_CODES.M
+        val isGrantingAllowed = (!pkgInfo.isInstantApp || perm.isInstantPerm) &&
             (supportsRuntime || !perm.isRuntimeOnly)
         // Do not touch permissions fixed by the system, or permissions that cannot be granted
         if (!isGrantingAllowed || perm.isSystemFixed) {
@@ -539,9 +562,9 @@ object KotlinUtils {
         if (!perm.isGrantedIncludingAppOp) {
             val affectsAppOp = permissionToOp(perm.name) != null || perm.isBackgroundPermission
 
-            if (supportsRuntime) {
-                app.packageManager.grantRuntimePermission(group.packageInfo.packageName, perm.name,
-                    user)
+            if (supportsRuntime &&
+                    !isPermissionSplitFromNonRuntime(app, perm.name, pkgInfo.targetSdkVersion)) {
+                app.packageManager.grantRuntimePermission(group.packageName, perm.name, user)
                 isGranted = true
             } else if (affectsAppOp) {
                 // Legacy apps do not know that they have to retry access to a
@@ -749,16 +772,17 @@ object KotlinUtils {
             return perm to false
         }
 
-        val supportsRuntime = group.packageInfo.targetSdkVersion >= Build.VERSION_CODES.M
         val user = UserHandle.getUserHandleForUid(group.packageInfo.uid)
         var newFlags = perm.flags
         var isGranted = perm.isGrantedIncludingAppOp
+        val supportsRuntime = group.packageInfo.targetSdkVersion >= Build.VERSION_CODES.M
         var shouldKill = false
 
         val affectsAppOp = permissionToOp(perm.name) != null || perm.isBackgroundPermission
 
         if (perm.isGrantedIncludingAppOp) {
-            if (supportsRuntime) {
+            if (supportsRuntime && !isPermissionSplitFromNonRuntime(app, perm.name,
+                            group.packageInfo.targetSdkVersion)) {
                 // Revoke the permission if needed.
                 app.packageManager.revokeRuntimePermission(group.packageInfo.packageName,
                     perm.name, user)
@@ -772,6 +796,7 @@ object KotlinUtils {
                 // app. This matches the revoke runtime permission behavior.
                 shouldKill = true
                 newFlags = newFlags.setFlag(PackageManager.FLAG_PERMISSION_REVOKED_COMPAT)
+                newFlags = newFlags.clearFlag(PackageManager.FLAG_PERMISSION_REVOKE_WHEN_REQUESTED)
                 isGranted = false
             }
 
