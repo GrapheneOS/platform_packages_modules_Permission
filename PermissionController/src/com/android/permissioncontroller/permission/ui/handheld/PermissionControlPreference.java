@@ -20,9 +20,9 @@ import static android.Manifest.permission_group.CAMERA;
 import static android.Manifest.permission_group.MICROPHONE;
 
 import static com.android.permissioncontroller.Constants.EXTRA_SESSION_ID;
-import static com.android.permissioncontroller.permission.debug.UtilsKt.getUsageDurationString;
 import static com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_CALLER_NAME;
 import static com.android.permissioncontroller.permission.ui.handheld.AppPermissionFragment.GRANT_CATEGORY;
+import static com.android.permissioncontroller.permission.ui.handheld.dashboard.UtilsKt.getUsageDurationString;
 import static com.android.permissioncontroller.permission.utils.KotlinUtilsKt.navigateSafe;
 
 import android.content.Context;

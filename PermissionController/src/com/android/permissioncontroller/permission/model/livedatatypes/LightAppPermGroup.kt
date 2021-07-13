@@ -16,6 +16,8 @@
 
 package com.android.permissioncontroller.permission.model.livedatatypes
 
+import android.Manifest
+import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.os.Build
 import android.os.UserHandle
 
@@ -115,11 +117,14 @@ data class LightAppPermGroup(
     val supportsRuntimePerms = packageInfo.targetSdkVersion >= Build.VERSION_CODES.M
 
     /**
-     * Whether this App Permission Group contains any one-time permission and
-     * none of the permissions are granted (not one-time)
+     * Whether this App Permission Group is one-time. 2 cases:
+     * 1. If the perm group is not LOCATION, check if any of the permissions is one-time.
+     * 2. If the perm group is LOCATION, check if ACCESS_COARSE_LOCATION is one-time.
      */
-    val isOneTime = permissions.any { it.value.isOneTime } &&
-            !permissions.any { !it.value.isOneTime && it.value.isGrantedIncludingAppOp }
+    val isOneTime = (permGroupName != Manifest.permission_group.LOCATION &&
+            permissions.any { it.value.isOneTime }) ||
+            (permGroupName == Manifest.permission_group.LOCATION &&
+                    permissions[ACCESS_COARSE_LOCATION]?.isOneTime == true)
 
     /**
      * Whether any permissions in this group are granted by default (pregrant)
