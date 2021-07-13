@@ -697,7 +697,7 @@ object HibernationEnabledLiveData
     init {
         value = SdkLevel.isAtLeastS() &&
             DeviceConfig.getBoolean(NAMESPACE_APP_HIBERNATION,
-            Utils.PROPERTY_APP_HIBERNATION_ENABLED, false /* defaultValue */)
+            Utils.PROPERTY_APP_HIBERNATION_ENABLED, true /* defaultValue */)
         DeviceConfig.addOnPropertiesChangedListener(
             NAMESPACE_APP_HIBERNATION,
             PermissionControllerApplication.get().mainExecutor,
@@ -705,7 +705,7 @@ object HibernationEnabledLiveData
                 for (key in properties.keyset) {
                     if (key == Utils.PROPERTY_APP_HIBERNATION_ENABLED) {
                         value = SdkLevel.isAtLeastS() &&
-                            properties.getBoolean(key, false /* defaultValue */)
+                            properties.getBoolean(key, true /* defaultValue */)
                         break
                     }
                 }
