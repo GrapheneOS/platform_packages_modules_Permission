@@ -52,8 +52,8 @@
     <dimen name="grant_permissions_dialog_side_margin">24dp</dimen>
     <dimen name="grant_permissions_dialog_margin_bottom">15dp</dimen>
     <dimen name="grant_permissions_dialog_padding">40dp</dimen>
-    <dimen name="grant_permissions_dialog_blur_behind_radius">30dp</dimen>
-    <dimen name="grant_permissions_dialog_background_blur_radius">150dp</dimen>
+    <dimen name="grant_permissions_dialog_blur_behind_radius">9dp</dimen>
+    <dimen name="grant_permissions_dialog_background_blur_radius">46dp</dimen>
 
     <dimen name="settings_category_text_size">12dp</dimen>
 
