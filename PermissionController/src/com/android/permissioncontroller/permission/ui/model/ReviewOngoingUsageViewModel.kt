@@ -47,8 +47,8 @@ import com.android.permissioncontroller.permission.data.PermGroupUsageLiveData
 import com.android.permissioncontroller.permission.data.SmartAsyncMediatorLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.data.micMutedLiveData
-import com.android.permissioncontroller.permission.debug.shouldShowLocationIndicators
-import com.android.permissioncontroller.permission.debug.shouldShowPermissionsDashboard
+import com.android.permissioncontroller.permission.ui.handheld.dashboard.shouldShowLocationIndicators
+import com.android.permissioncontroller.permission.ui.handheld.dashboard.shouldShowPermissionsDashboard
 import com.android.permissioncontroller.permission.ui.handheld.ReviewOngoingUsageFragment.PHONE_CALL
 import com.android.permissioncontroller.permission.ui.handheld.ReviewOngoingUsageFragment.VIDEO_CALL
 import com.android.permissioncontroller.permission.utils.KotlinUtils

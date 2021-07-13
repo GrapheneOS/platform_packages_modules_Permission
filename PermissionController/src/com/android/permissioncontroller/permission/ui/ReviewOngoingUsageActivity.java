@@ -25,8 +25,8 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 
 import com.android.permissioncontroller.DeviceUtils;
-import com.android.permissioncontroller.permission.debug.UtilsKt;
 import com.android.permissioncontroller.permission.ui.handheld.ReviewOngoingUsageWrapperFragment;
+import com.android.permissioncontroller.permission.ui.handheld.dashboard.UtilsKt;
 
 /**
  * A dialog listing the currently uses of camera, microphone, and location.
