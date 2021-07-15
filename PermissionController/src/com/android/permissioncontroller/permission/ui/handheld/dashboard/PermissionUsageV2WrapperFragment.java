@@ -16,6 +16,8 @@
 
 package com.android.permissioncontroller.permission.ui.handheld.dashboard;
 
+import static com.android.permissioncontroller.Constants.EXTRA_SESSION_ID;
+
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -42,13 +44,14 @@ public class PermissionUsageV2WrapperFragment extends PermissionsCollapsingToolb
      * @return A new fragment
      */
     public static @NonNull PermissionUsageV2WrapperFragment newInstance(@Nullable String groupName,
-            long numMillis) {
+            long numMillis, long sessionId) {
         PermissionUsageV2WrapperFragment fragment = new PermissionUsageV2WrapperFragment();
         Bundle arguments = new Bundle();
         if (groupName != null) {
             arguments.putString(Intent.EXTRA_PERMISSION_GROUP_NAME, groupName);
         }
         arguments.putLong(Intent.EXTRA_DURATION_MILLIS, numMillis);
+        arguments.putLong(EXTRA_SESSION_ID, sessionId);
         fragment.setArguments(arguments);
         return fragment;
     }
