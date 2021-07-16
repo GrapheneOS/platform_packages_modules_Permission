@@ -25,6 +25,8 @@ import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_
 import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_GROUPS_FRAGMENT_AUTO_REVOKE_ACTION__ACTION__OPENED_FOR_AUTO_REVOKE;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_GROUPS_FRAGMENT_AUTO_REVOKE_ACTION__ACTION__OPENED_FROM_INTENT;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.AUTO_REVOKE_NOTIFICATION_CLICKED;
+import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_USAGE_FRAGMENT_INTERACTION;
+import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__OPEN;
 
 import android.app.ActionBar;
 import android.content.Intent;
@@ -163,9 +165,12 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                     return;
                 }
 
+
+                PermissionControllerStatsLog.write(PERMISSION_USAGE_FRAGMENT_INTERACTION, sessionId,
+                        PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__OPEN);
                 String groupName = getIntent().getStringExtra(Intent.EXTRA_PERMISSION_GROUP_NAME);
                 androidXFragment = PermissionUsageV2WrapperFragment.newInstance(groupName,
-                        Long.MAX_VALUE);
+                        Long.MAX_VALUE, sessionId);
             } break;
 
             case Intent.ACTION_REVIEW_PERMISSION_HISTORY: {
@@ -179,7 +184,7 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                 boolean showSystem = getIntent()
                         .getBooleanExtra(EXTRA_SHOW_SYSTEM, false);
                 androidXFragment = PermissionDetailsWrapperFragment
-                        .newInstance(groupName, Long.MAX_VALUE, showSystem);
+                        .newInstance(groupName, Long.MAX_VALUE, showSystem, sessionId);
                 break;
             }
 
