@@ -16,6 +16,10 @@
 
 package com.android.permissioncontroller.permission.ui.handheld.dashboard;
 
+import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_DETAILS_INTERACTION;
+import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_DETAILS_INTERACTION__ACTION__INFO_ICON_CLICKED;
+import static com.android.permissioncontroller.PermissionControllerStatsLog.write;
+
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -72,6 +76,8 @@ public class PermissionHistoryPreference extends Preference {
     private final boolean mIsLastUsage;
     private final Intent mIntent;
 
+    private final long mSessionId;
+
     private Drawable mWidgetIcon;
 
     public PermissionHistoryPreference(@NonNull Context context,
@@ -80,7 +86,7 @@ public class PermissionHistoryPreference extends Preference {
             @NonNull String preferenceTitle,
             @NonNull String permissionGroup, @NonNull String accessTime,
             @Nullable CharSequence summaryText, @NonNull List<Long> accessTimeList,
-            @NonNull ArrayList<String> attributionTags, boolean isLastUsage) {
+            @NonNull ArrayList<String> attributionTags, boolean isLastUsage, long sessionId) {
         super(context);
         mContext = context;
         mUserHandle = userHandle;
@@ -100,6 +106,7 @@ public class PermissionHistoryPreference extends Preference {
         mContext.getResources().getValue(R.dimen.permission_access_time_dialog_height_scalar,
                 outValue, true);
         mDialogHeightScalar = outValue.getFloat();
+        mSessionId = sessionId;
 
         setTitle(mTitle);
         if (summaryText != null) {
@@ -212,6 +219,11 @@ public class PermissionHistoryPreference extends Preference {
         if (mIntent != null) {
             widgetView.setImageDrawable(mWidgetIcon);
             widgetView.setOnClickListener(v -> {
+                write(PERMISSION_DETAILS_INTERACTION,
+                        mSessionId,
+                        mPermissionGroup,
+                        mPackageName,
+                        PERMISSION_DETAILS_INTERACTION__ACTION__INFO_ICON_CLICKED);
                 try {
                     mContext.startActivity(mIntent);
                 } catch (ActivityNotFoundException e) {
