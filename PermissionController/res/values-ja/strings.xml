@@ -52,6 +52,8 @@
     <string name="app_permissions" msgid="3369917736607944781">"アプリの権限"</string>
     <string name="unused_apps" msgid="2058057455175955094">"使用されていないアプリ"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"使用されていないアプリなし"</string>
+    <!-- no translation found for zero_unused_apps (9024448554157499748) -->
+    <skip />
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"アプリを無効にする"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"このアプリを無効にすると、Android などの他のアプリが正しく動作しなくなるおそれがあります。このアプリはデバイスにプリインストールされているため、削除できません。無効にするには、このアプリをオフにし、デバイスにアプリが表示されないようにします。"</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"権限マネージャ"</string>
@@ -211,7 +213,7 @@
     <string name="precise_image_description" msgid="6349638632303619872">"正確な現在地"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"おおよその現在地"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"正確な位置情報を使用"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"正確な位置情報がオフの場合、アプリはおおよその位置情報にアクセスできます"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"正確な位置情報が OFF の場合、アプリはおおよその位置情報にアクセスできます"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>の権限"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"このアプリによる<xliff:g id="PERM">%1$s</xliff:g>へのアクセス"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"「<xliff:g id="APP">%1$s</xliff:g>」アプリの権限をすべて表示"</string>
