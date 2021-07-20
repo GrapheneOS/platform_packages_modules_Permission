@@ -188,6 +188,11 @@ public abstract class PermissionsFrameFragment extends PreferenceFragmentCompat 
     }
 
     private void setViewShown(final View view, boolean shown, boolean animate) {
+        // Clear out previous animation listeners.
+        if (view.getAnimation() != null) {
+            view.getAnimation().setAnimationListener(null);
+        }
+        view.clearAnimation();
         if (animate) {
             Animation animation = AnimationUtils.loadAnimation(getContext(),
                     shown ? android.R.anim.fade_in : android.R.anim.fade_out);
@@ -211,7 +216,6 @@ public abstract class PermissionsFrameFragment extends PreferenceFragmentCompat 
             }
             view.startAnimation(animation);
         } else {
-            view.clearAnimation();
             view.setVisibility(shown ? View.VISIBLE : View.INVISIBLE);
         }
     }
