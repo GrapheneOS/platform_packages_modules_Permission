@@ -114,15 +114,21 @@ class UnusedAppsFragment<PF, UnusedAppPref> : PreferenceFragmentCompat()
 
         activity?.getActionBar()?.setDisplayHomeAsUpEnabled(true)
 
-        if (!viewModel.areUnusedPackagesLoaded()) {
+        if (!viewModel.unusedPackageCategoriesLiveData.isInitialized) {
             GlobalScope.launch(IPC) {
                 delay(SHOW_LOAD_DELAY_MS)
-                if (!viewModel.areUnusedPackagesLoaded()) {
+                if (!viewModel.unusedPackageCategoriesLiveData.isInitialized) {
                     GlobalScope.launch(Main) {
                         preferenceFragment.setLoadingState(loading = true, animate = true)
                     }
+                } else {
+                    GlobalScope.launch(Main) {
+                        updatePackages(viewModel.unusedPackageCategoriesLiveData.value!!)
+                    }
                 }
             }
+        } else {
+            updatePackages(viewModel.unusedPackageCategoriesLiveData.value!!)
         }
     }
 
