@@ -84,7 +84,7 @@ android_test {
         "SettingsLibCollapsingToolbarBaseActivity",
         "SettingsLibSettingsTheme",
         "SettingsLibFooterPreference",
-        "SettingsLibRadioButtonPreference",
+        "SettingsLibSelectorWithWidgetPreference",
         "SettingsLibTwoTargetPreference",
         "androidx.annotation_annotation",
         "permissioncontroller-statsd",
