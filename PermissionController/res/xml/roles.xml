@@ -677,6 +677,8 @@
         visible="false">
         <permissions>
             <permission name="android.permission.ACCESS_SHORTCUTS" />
+            <permission name="android.permission.BLUETOOTH_CONNECT" />
+            <permission name="android.permission.BLUETOOTH_SCAN" />
             <permission name="android.permission.MANAGE_APP_PREDICTIONS" />
             <permission name="android.permission.UNLIMITED_SHORTCUTS_API_CALLS" />
             <permission name="android.permission.MANAGE_SEARCH_UI" />
