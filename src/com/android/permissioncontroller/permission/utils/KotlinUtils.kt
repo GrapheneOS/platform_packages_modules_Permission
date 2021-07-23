@@ -467,7 +467,7 @@ object KotlinUtils {
         if (!perm.isGrantedIncludingAppOp) {
             val affectsAppOp = permissionToOp(perm.name) != null || perm.isBackgroundPermission
 
-            if (supportsRuntime) {
+            if (supportsRuntime || Utils.isSpecialRuntimePermission(perm.name)) {
                 app.packageManager.grantRuntimePermission(group.packageInfo.packageName, perm.name,
                     user)
                 isGranted = true
@@ -640,7 +640,7 @@ object KotlinUtils {
         val affectsAppOp = permissionToOp(perm.name) != null || perm.isBackgroundPermission
 
         if (perm.isGrantedIncludingAppOp) {
-            if (supportsRuntime) {
+            if (supportsRuntime || Utils.isSpecialRuntimePermission(perm.name)) {
                 // Revoke the permission if needed.
                 app.packageManager.revokeRuntimePermission(group.packageInfo.packageName,
                     perm.name, user)
