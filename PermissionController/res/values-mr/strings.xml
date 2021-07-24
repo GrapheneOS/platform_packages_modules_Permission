@@ -52,8 +52,7 @@
     <string name="app_permissions" msgid="3369917736607944781">"अ‍ॅप परवानग्या"</string>
     <string name="unused_apps" msgid="2058057455175955094">"न वापरलेली अ‍ॅप्स"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"न वापरलेली कोणतीही ॲप्स नाहीत"</string>
-    <!-- no translation found for zero_unused_apps (9024448554157499748) -->
-    <skip />
+    <string name="zero_unused_apps" msgid="9024448554157499748">"न वापरलेली शून्य अ‍ॅप्स"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"अ‍ॅप बंद करा"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"तुम्ही हे अ‍ॅप बंद केल्यास, Android आणि इतर अ‍ॅप्स कदाचित अपेक्षेप्रमाणे काम करणार नाहीत. लक्षात ठेवा, हे अ‍ॅप तुमच्या डिव्हाइसवर आधीच इंस्टॉल करून आलेले असल्यामुळे तुम्ही ते हटवू शकत नाही. बंद करून, तुम्ही हे अ‍ॅप बंद करता आणि तुमच्या डिव्हाइसवर ते लपवता."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"परवानगी व्यवस्थापक"</string>
