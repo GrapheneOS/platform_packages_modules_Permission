@@ -20,6 +20,7 @@ import android.Manifest;
 import android.app.admin.DevicePolicyManager;
 import android.content.Context;
 import android.os.UserHandle;
+import android.os.UserManager;
 import android.util.ArraySet;
 
 import com.android.modules.utils.build.SdkLevel;
@@ -50,14 +51,13 @@ public final class AdminRestrictedPermissionsUtils {
     }
 
     /**
-     * Returns true if the permission is one of the sensors-related permissions an admin of
-     * the device may not be able to control in certain configurations.
+     * A set of permissions that the managed Profile Owner cannot grant.
      */
-    public static boolean isPermissionRestrictedForAdmin(String permission) {
-        if (!SdkLevel.isAtLeastS()) {
-            return false;
-        }
-        return ADMIN_RESTRICTED_SENSORS_PERMISSIONS.contains(permission);
+    private static final ArraySet<String> MANAGED_PROFILE_OWNER_RESTRICTED_PERMISSIONS =
+            new ArraySet<>();
+
+    static {
+        MANAGED_PROFILE_OWNER_RESTRICTED_PERMISSIONS.add(Manifest.permission.READ_SMS);
     }
 
     /**
@@ -67,11 +67,17 @@ public final class AdminRestrictedPermissionsUtils {
         if (!SdkLevel.isAtLeastS()) {
             return true;
         }
+        Context userContext = context.createContextAsUser(UserHandle.of(userId), /* flags= */0);
+        DevicePolicyManager dpm = userContext.getSystemService(DevicePolicyManager.class);
+        UserManager um = userContext.getSystemService(UserManager.class);
+        if (um.isManagedProfile(userId)
+                && MANAGED_PROFILE_OWNER_RESTRICTED_PERMISSIONS.contains(permission)) {
+            return false;
+        }
         if (!ADMIN_RESTRICTED_SENSORS_PERMISSIONS.contains(permission)) {
             return true;
         }
-        Context userContext = context.createContextAsUser(UserHandle.of(userId), /* flags= */0);
-        DevicePolicyManager dpm = userContext.getSystemService(DevicePolicyManager.class);
+
         return dpm.canAdminGrantSensorsPermissions();
     }
 
@@ -79,9 +85,12 @@ public final class AdminRestrictedPermissionsUtils {
      * Returns true if the admin may grant this permission, false otherwise.
      */
     public static boolean mayAdminGrantPermission(String permission,
-            boolean canAdminGrantSensorsPermissions) {
+            boolean canAdminGrantSensorsPermissions, boolean isManagedProfile) {
         if (!SdkLevel.isAtLeastS()) {
             return true;
+        }
+        if (isManagedProfile && MANAGED_PROFILE_OWNER_RESTRICTED_PERMISSIONS.contains(permission)) {
+            return false;
         }
         if (!ADMIN_RESTRICTED_SENSORS_PERMISSIONS.contains(permission)) {
             return true;
