@@ -569,6 +569,7 @@
         visible="false">
         <permissions>
             <permission name="android.permission.RECORD_AUDIO" />
+            <permission name="android.permission.UPDATE_APP_OPS_STATS" />
         </permissions>
         <required-components>
             <service>
