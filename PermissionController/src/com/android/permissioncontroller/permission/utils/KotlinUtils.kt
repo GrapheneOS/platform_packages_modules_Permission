@@ -562,8 +562,8 @@ object KotlinUtils {
         if (!perm.isGrantedIncludingAppOp) {
             val affectsAppOp = permissionToOp(perm.name) != null || perm.isBackgroundPermission
 
-            if (supportsRuntime &&
-                    !isPermissionSplitFromNonRuntime(app, perm.name, pkgInfo.targetSdkVersion)) {
+            // TODO 195016052: investigate adding split permission handling
+            if (supportsRuntime) {
                 app.packageManager.grantRuntimePermission(group.packageName, perm.name, user)
                 isGranted = true
             } else if (affectsAppOp) {
