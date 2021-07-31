@@ -152,6 +152,9 @@ class HibernationOnBootReceiver : BroadcastReceiver() {
                     "and threshold ${getUnusedThresholdMs()}ms")
         }
 
+        // Write first boot time if first boot
+        context.firstBootTime
+
         val userManager = context.getSystemService(UserManager::class.java)!!
         // If this user is a profile, then its hibernation/auto-revoke will be handled by the
         // primary user
