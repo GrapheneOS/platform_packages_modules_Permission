@@ -336,9 +336,9 @@
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"<xliff:g id="TIME_DATE">%1$s</xliff:g> மணிக்குக் கடைசி அணுகல் • மீடியா"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"நேற்று <xliff:g id="TIME_DATE">%1$s</xliff:g> மணிக்குக் கடைசி அணுகல் • மீடியா"</string>
     <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"கடந்த 24 மணிநேரத்தில் அணுகியது • மீடியா"</string>
-    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"<xliff:g id="TIME_DATE">%1$s</xliff:g> மணிக்குக் கடைசி அணுகல் • அனைத்துக் கோப்புகள்"</string>
-    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"நேற்று <xliff:g id="TIME_DATE">%1$s</xliff:g> மணிக்குக் கடைசி அணுகல் • அனைத்துக் கோப்புகள்"</string>
-    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"கடந்த 24 மணிநேரத்தில் அணுகியது • அனைத்துக் கோப்புகள்"</string>
+    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"<xliff:g id="TIME_DATE">%1$s</xliff:g> மணிக்குக் கடைசி அணுகல் • அனைத்து ஃபைல்கள்"</string>
+    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"நேற்று <xliff:g id="TIME_DATE">%1$s</xliff:g> மணிக்குக் கடைசி அணுகல் • அனைத்து ஃபைல்கள்"</string>
+    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"கடந்த 24 மணிநேரத்தில் அணுகியது • அனைத்து ஃபைல்கள்"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"எந்த அனுமதிகளும் வழங்கப்படவில்லை"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"எந்த அனுமதிகளும் மறுக்கப்படவில்லை"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"எந்த ஆப்ஸும் அனுமதிக்கப்படவில்லை"</string>
