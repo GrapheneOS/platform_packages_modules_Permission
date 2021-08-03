@@ -18,6 +18,8 @@ package com.android.permissioncontroller.permission.ui.handheld.dashboard;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.res.Configuration;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.widget.TextView;
@@ -25,6 +27,7 @@ import android.widget.TextView;
 import androidx.annotation.AttrRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.annotation.StyleRes;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
@@ -40,6 +43,7 @@ import java.util.Objects;
 /**
  * A Preference for the permission usage graphic.
  */
+@RequiresApi(Build.VERSION_CODES.S)
 public class PermissionUsageGraphicPreference extends Preference {
 
     /** Permission group to count mapping. */
@@ -47,31 +51,35 @@ public class PermissionUsageGraphicPreference extends Preference {
 
     /** Whether to show the "Other" category. */
     private boolean mShowOtherCategory;
+    private boolean mIsNightMode;
 
     public PermissionUsageGraphicPreference(@NonNull Context context, @Nullable AttributeSet attrs,
             @AttrRes int defStyleAttr, @StyleRes int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        init();
+        init(context);
     }
 
     public PermissionUsageGraphicPreference(@NonNull Context context, @Nullable AttributeSet attrs,
             @AttrRes int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
+        init(context);
     }
 
     public PermissionUsageGraphicPreference(@NonNull Context context,
             @Nullable AttributeSet attrs) {
         super(context, attrs);
-        init();
+        init(context);
     }
 
     public PermissionUsageGraphicPreference(@NonNull Context context) {
         super(context);
-        init();
+        init(context);
     }
 
-    private void init() {
+    private void init(Context context) {
+        Configuration configuration = context.getResources().getConfiguration();
+        mIsNightMode = (configuration.uiMode & Configuration.UI_MODE_NIGHT_MASK)
+                == Configuration.UI_MODE_NIGHT_YES;
         setLayoutResource(R.layout.permission_usage_graphic);
         setSelectable(false);
     }
@@ -109,11 +117,20 @@ public class PermissionUsageGraphicPreference extends Preference {
         centerLabel.setText(getContext().getString(R.string.privdash_label_24h));
         centerLabel.setTextAppearance(R.style.PrivacyDashboardGraphicLabel);
 
+        int colorCameraRes = mIsNightMode ? android.R.color.system_accent1_100 :
+                R.color.privacy_dash_graphic_pref_light_camera;
+        int colorMicrophoneRes = mIsNightMode ? R.color.privacy_dash_graphic_pref_dark_mic :
+                R.color.privacy_dash_graphic_pref_light_mic;
+        int colorLocationRes = mIsNightMode ? android.R.color.system_accent3_300 :
+                R.color.privacy_dash_graphic_pref_light_location;
+        int colorOtherRes = mIsNightMode ? R.color.privacy_dash_graphic_pref_dark_others :
+                R.color.privacy_dash_graphic_pref_light_others;
+
         // Sample colors.
-        final int colorCamera = getContext().getColor(android.R.color.system_accent1_300);
-        final int colorMicrophone = getContext().getColor(android.R.color.system_accent1_100);
-        final int colorLocation = getContext().getColor(android.R.color.system_accent3_100);
-        final int colorOther = getContext().getColor(android.R.color.system_accent2_100);
+        final int colorCamera = getContext().getColor(colorCameraRes);
+        final int colorMicrophone = getContext().getColor(colorMicrophoneRes);
+        final int colorLocation = getContext().getColor(colorLocationRes);
+        final int colorOther = getContext().getColor(colorOtherRes);
 
         // Create labels, counts, and colors.
         TextView[] labels;
