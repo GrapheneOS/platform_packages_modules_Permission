@@ -28,6 +28,7 @@ import android.app.AppOpsManager.OpEntry;
 import android.app.AppOpsManager.OpEventProxyInfo;
 import android.app.AppOpsManager.PackageOps;
 import android.content.pm.Attribution;
+import android.content.res.Resources;
 import android.media.AudioRecordingConfiguration;
 import android.os.Build;
 
@@ -349,7 +350,7 @@ public final class AppPermissionUsage {
 
         @Override
         public int getLabel() {
-            return -1;
+            return Resources.ID_NULL;
         }
 
         @Override
@@ -423,8 +424,8 @@ public final class AppPermissionUsage {
         /**
          * Represents the slice of {@link GroupUsage} with a label.
          *
-         * <p> -1 as label means that there was no entry for the attribution tag in the
-         * manifest.</p>
+         * <p> {@link Resources#ID_NULL} as label means that there was no entry for the
+         * attribution tag in the manifest.</p>
          */
         public static class AttributionLabelledGroupUsage implements TimelineUsage {
             private final int mLabel;
@@ -570,8 +571,8 @@ public final class AppPermissionUsage {
         /**
          * Returns the user facing string's resource id.
          *
-         * <p> -1 means show the app name otherwise get the string resource from the app
-         * context.</p>
+         * <p> {@link Resources#ID_NULL} means show the app name otherwise get the string
+         * resource from the app context.</p>
          */
         int getLabel();
     }
