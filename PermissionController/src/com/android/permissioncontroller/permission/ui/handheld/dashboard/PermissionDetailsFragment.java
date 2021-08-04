@@ -32,6 +32,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Build;
 import android.os.Bundle;
@@ -282,11 +283,11 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
 
     private static boolean shouldShowSubattributionForApp(Context context,
             AppPermissionUsage appPermissionUsage) {
-        boolean appSupportsSubattribution = SubattributionUtils.isSubattributionSupported(context,
+        if (!UtilsKt.shouldShowSubattributionInPermissionsDashboard()) {
+            return false;
+        }
+        return SubattributionUtils.isSubattributionSupported(context,
                 appPermissionUsage.getApp().getAppInfo());
-
-        return appSupportsSubattribution
-                && UtilsKt.shouldShowSubattributionInPermissionsDashboard();
     }
 
     private List<UsageData> filterAndConvert(AppPermissionUsage appPermissionUsage,
@@ -311,7 +312,8 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
                         groupUsage.getGroup().getName().equals(filterGroup))
                 .collect(Collectors.toList());
         return Arrays.asList(
-                new UsageData(filterGroup, appPermissionUsage.getApp(), groupUsages, -1));
+                new UsageData(filterGroup, appPermissionUsage.getApp(), groupUsages,
+                        Resources.ID_NULL));
     }
 
     private void updateUI() {
@@ -546,7 +548,7 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
 
                 // fetch the subattribution label for this usage.
                 String subattributionLabel = null;
-                if (usage.mUsageData.getLabel() > 0) {
+                if (usage.mUsageData.getLabel() != Resources.ID_NULL) {
                     Map<Integer, String> attributionLabels =
                             usage.getUsageData().getApp().getAttributionLabels();
                     if (attributionLabels != null) {
