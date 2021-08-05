@@ -380,6 +380,9 @@ public final class AppPermissionUsage {
         /** Partitions the usages based on the attribution tag label. */
         @RequiresApi(Build.VERSION_CODES.S)
         public List<AttributionLabelledGroupUsage> getAttributionLabelledGroupUsages() {
+            if (mHistoricalUsage == null || mHistoricalUsage.getAttributedOpsCount() == 0) {
+                return new ArrayList<AttributionLabelledGroupUsage>();
+            }
             Map<String, Integer> attributionTagToLabelMap =
                     getAttributionTagToLabelMap(getGroup().getApp().attributions);
 
@@ -403,6 +406,9 @@ public final class AppPermissionUsage {
                     for (int j = 0; j < discreteAccessCount; j++) {
                         AttributedOpEntry opEntry = historicalOp.getDiscreteAccessAt(j);
                         Integer label = attributionTagToLabelMap.get(attributedOp.getTag());
+                        if (label == null) {
+                            label = Resources.ID_NULL;
+                        }
                         if (!labelDiscreteAccessMap.containsKey(label)) {
                             labelDiscreteAccessMap.put(label,
                                     new AttributionLabelledGroupUsage.Builder(label, getGroup()));
