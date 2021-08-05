@@ -32,6 +32,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Build;
 import android.os.Bundle;
@@ -63,6 +64,7 @@ import com.android.permissioncontroller.permission.model.legacy.PermissionApps;
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity;
 import com.android.permissioncontroller.permission.ui.handheld.SettingsWithLargeHeader;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
+import com.android.permissioncontroller.permission.utils.SubattributionUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -74,6 +76,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -278,15 +281,39 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
         return super.onOptionsItemSelected(item);
     }
 
-    private static UsageData filterAndConvert(AppPermissionUsage appPermissionUsage,
+    private static boolean shouldShowSubattributionForApp(Context context,
+            AppPermissionUsage appPermissionUsage) {
+        if (!UtilsKt.shouldShowSubattributionInPermissionsDashboard()) {
+            return false;
+        }
+        return SubattributionUtils.isSubattributionSupported(context,
+                appPermissionUsage.getApp().getAppInfo());
+    }
+
+    private List<UsageData> filterAndConvert(AppPermissionUsage appPermissionUsage,
             String filterGroup) {
+        if (shouldShowSubattributionForApp(getContext(), appPermissionUsage)) {
+            return appPermissionUsage.getGroupUsages()
+                    .stream()
+                    .filter(groupUsage ->
+                            groupUsage.getGroup().getName().equals(filterGroup))
+                    .map(AppPermissionUsage.GroupUsage::getAttributionLabelledGroupUsages)
+                    .flatMap(Collection::stream)
+                    .map(labelledGroupUsage ->
+                            new UsageData(filterGroup, appPermissionUsage.getApp(),
+                                    Arrays.asList(labelledGroupUsage),
+                                    labelledGroupUsage.getLabel())
+                    )
+                    .collect(Collectors.toList());
+        }
         List<TimelineUsage> groupUsages = appPermissionUsage.getGroupUsages()
                 .stream()
                 .filter(groupUsage ->
                         groupUsage.getGroup().getName().equals(filterGroup))
                 .collect(Collectors.toList());
-        return new UsageData(filterGroup, appPermissionUsage.getApp(),
-                groupUsages);
+        return Arrays.asList(
+                new UsageData(filterGroup, appPermissionUsage.getApp(), groupUsages,
+                        Resources.ID_NULL));
     }
 
     private void updateUI() {
@@ -321,6 +348,7 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
         List<AppPermissionUsageEntry> usages = mAppPermissionUsages.stream()
                 .filter(appUsage -> !exemptedPackages.contains(appUsage.getPackageName()))
                 .map(appUsage -> filterAndConvert(appUsage, mFilterGroup))
+                .flatMap(Collection::stream)
                 .map(usageData -> {
                     // Fetch the access time list of the app accesses mFilterGroup permission group
                     // The DiscreteAccessTime is a Triple of (access time, access duration,
@@ -518,6 +546,18 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
                     summaryLabel = proxyPackageLabel;
                 }
 
+                // fetch the subattribution label for this usage.
+                String subattributionLabel = null;
+                if (usage.mUsageData.getLabel() != Resources.ID_NULL) {
+                    Map<Integer, String> attributionLabels =
+                            usage.getUsageData().getApp().getAttributionLabels();
+                    if (attributionLabels != null) {
+                        subattributionLabel = attributionLabels.get(
+                                usage.mUsageData.getLabel());
+                    }
+                }
+
+                // TODO(b/191048348): pass subattributionLabel text to the preference.
                 PermissionHistoryPreference permissionUsagePreference = new
                         PermissionHistoryPreference(context,
                         UserHandle.getUserHandleForUid(usage.getUsageData().getApp().getUid()),
@@ -662,13 +702,16 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
         private final String mGroup;
         private final PermissionApps.PermissionApp mPermissionApp;
         private final List<TimelineUsage> mTimelineUsages;
+        private final int mLabel;
 
         UsageData(String group,
                 PermissionApps.PermissionApp permissionApp,
-                List<TimelineUsage> timelineUsages) {
+                List<TimelineUsage> timelineUsages,
+                int label) {
             mGroup = group;
             mPermissionApp = permissionApp;
             mTimelineUsages = timelineUsages;
+            mLabel = label;
         }
 
         String getGroup() {
@@ -684,6 +727,10 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
         // object and loads the icon and label information asynchronously
         PermissionApps.PermissionApp getApp() {
             return mPermissionApp;
+        }
+
+        int getLabel() {
+            return mLabel;
         }
 
         ArrayList<String> getAttributionTags() {
