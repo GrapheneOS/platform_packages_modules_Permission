@@ -538,14 +538,6 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
                     }
                 }
 
-                // if we have both a proxy and a duration, combine the two.
-                if (summaryLabel != null && proxyPackageLabel != null) {
-                    summaryLabel = context.getString(R.string.permission_usage_duration_and_proxy,
-                            proxyPackageLabel, summaryLabel);
-                } else {
-                    summaryLabel = proxyPackageLabel;
-                }
-
                 // fetch the subattribution label for this usage.
                 String subattributionLabel = null;
                 if (usage.mUsageData.getLabel() != Resources.ID_NULL) {
@@ -557,14 +549,42 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
                     }
                 }
 
-                // TODO(b/191048348): pass subattributionLabel text to the preference.
+                // create subtext string.
+                List<String> subTextStrings = new ArrayList<>();
+                boolean showingAttribution =
+                        subattributionLabel != null && subattributionLabel.length() > 0;
+                if (showingAttribution) {
+                    subTextStrings.add(subattributionLabel);
+                }
+                if (proxyPackageLabel != null) {
+                    subTextStrings.add(proxyPackageLabel);
+                }
+                if (summaryLabel != null) {
+                    subTextStrings.add(summaryLabel);
+                }
+                String subText = null;
+                if (subTextStrings.size() == 3) {
+                    subText = context.getString(
+                            R.string.history_preference_subtext_3,
+                            subTextStrings.get(0),
+                            subTextStrings.get(1),
+                            subTextStrings.get(2));
+                } else if (subTextStrings.size() == 2) {
+                    subText = context.getString(R.string.history_preference_subtext_2,
+                            subTextStrings.get(0),
+                            subTextStrings.get(1));
+                } else if (subTextStrings.size() == 1) {
+                    subText = subTextStrings.get(0);
+                }
+
                 PermissionHistoryPreference permissionUsagePreference = new
                         PermissionHistoryPreference(context,
                         UserHandle.getUserHandleForUid(usage.getUsageData().getApp().getUid()),
                         usage.getUsageData().getApp().getPackageName(),
                         usage.getUsageData().getApp().getIcon(),
                         usage.getUsageData().getApp().getLabel(),
-                        mFilterGroup, accessTime, summaryLabel, accessTimeList,
+                        mFilterGroup, accessTime, subText,
+                        showingAttribution, accessTimeList,
                         usage.getUsageData().getAttributionTags(),
                         usageNum == (numUsages - 1),
                         mSessionId

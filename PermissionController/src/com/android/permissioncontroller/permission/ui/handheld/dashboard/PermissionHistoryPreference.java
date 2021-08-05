@@ -76,7 +76,8 @@ public class PermissionHistoryPreference extends Preference {
             @NonNull Drawable appIcon,
             @NonNull String preferenceTitle,
             @NonNull String permissionGroup, @NonNull String accessTime,
-            @Nullable CharSequence summaryText, @NonNull List<Long> accessTimeList,
+            @Nullable CharSequence summaryText, boolean showingAttribution,
+            @NonNull List<Long> accessTimeList,
             @NonNull ArrayList<String> attributionTags, boolean isLastUsage, long sessionId) {
         super(context);
         mContext = context;
@@ -97,7 +98,7 @@ public class PermissionHistoryPreference extends Preference {
             setSummary(summaryText);
         }
 
-        mIntent = getViewPermissionUsageForPeriodIntent(false);
+        mIntent = getViewPermissionUsageForPeriodIntent(showingAttribution);
         if (mIntent != null) {
             mWidgetIcon = mContext.getDrawable(R.drawable.ic_info_outline);
             setWidgetLayoutResource(R.layout.image_view_with_divider);
