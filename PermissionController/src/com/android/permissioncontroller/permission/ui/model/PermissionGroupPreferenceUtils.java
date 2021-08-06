@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 The Android Open Source Project
+ * Copyright (C) 2021 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.ui.television;
+package com.android.permissioncontroller.permission.ui.model;
 
 import android.content.Context;
 
@@ -27,9 +27,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-final class PermissionGroupPreferenceUtils {
+/**
+ * Utils related to displaying permission groups in preferences.
+ */
+public final class PermissionGroupPreferenceUtils {
 
-    static void updateGroupOfPermissionPreferences(Context context, PreferenceGroup preferenceGroup,
+    /**
+     * Update a {@link PreferenceGroup} with the specified permission groups.
+     */
+    public static void updateGroupOfPermissionPreferences(Context context,
+            PreferenceGroup preferenceGroup,
             List<PermGroupPackagesUiInfo> permissionGroups) {
         if (!(permissionGroups instanceof ArrayList)) {
             permissionGroups = new ArrayList<>(permissionGroups);
