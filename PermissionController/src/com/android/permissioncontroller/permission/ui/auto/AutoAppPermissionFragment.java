@@ -16,6 +16,10 @@
 
 package com.android.permissioncontroller.permission.ui.auto;
 
+import static com.android.permissioncontroller.Constants.EXTRA_SESSION_ID;
+import static com.android.permissioncontroller.Constants.INVALID_SESSION_ID;
+import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_FRAGMENT_ACTION_REPORTED;
+import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_FRAGMENT_VIEWED;
 import static com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_RESULT_PERMISSION_INTERACTED;
 import static com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_RESULT_PERMISSION_RESULT;
 
@@ -48,6 +52,7 @@ import androidx.preference.PreferenceViewHolder;
 import androidx.preference.TwoStatePreference;
 
 import com.android.car.ui.AlertDialogBuilder;
+import com.android.permissioncontroller.PermissionControllerStatsLog;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.auto.AutoSettingsFrameFragment;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
@@ -60,7 +65,9 @@ import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.settingslib.RestrictedLockUtils;
 
 import java.lang.annotation.Retention;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /** Settings related to a particular permission for the given app. */
 public class AutoAppPermissionFragment extends AutoSettingsFrameFragment {
@@ -114,7 +121,8 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment {
      */
     @NonNull
     public static AutoAppPermissionFragment newInstance(@NonNull String packageName,
-            @NonNull String permName, @Nullable String groupName, @NonNull UserHandle userHandle) {
+            @NonNull String permName, @Nullable String groupName, @NonNull UserHandle userHandle,
+            @NonNull long sessionId) {
         AutoAppPermissionFragment fragment = new AutoAppPermissionFragment();
         Bundle arguments = new Bundle();
         arguments.putString(Intent.EXTRA_PACKAGE_NAME, packageName);
@@ -124,6 +132,7 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment {
             arguments.putString(Intent.EXTRA_PERMISSION_GROUP_NAME, groupName);
         }
         arguments.putParcelable(Intent.EXTRA_USER, userHandle);
+        arguments.putLong(EXTRA_SESSION_ID, sessionId);
         fragment.setArguments(arguments);
         return fragment;
     }
@@ -143,6 +152,7 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment {
 
         setHeaderLabel(
                 requireContext().getString(R.string.app_permission_title, mGroup.getFullLabel()));
+        logAppPermissionFragmentViewed();
     }
 
     private void setResult(@GrantPermissionsViewHandler.Result int result) {
@@ -263,6 +273,15 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment {
         // Re-create the permission group in case permissions have changed and update the UI.
         mGroup = getAppPermissionGroup();
         updateUi();
+    }
+
+    void logAppPermissionFragmentViewed() {
+        long sessionId = getArguments().getLong(EXTRA_SESSION_ID, INVALID_SESSION_ID);
+        PermissionControllerStatsLog.write(APP_PERMISSION_FRAGMENT_VIEWED, sessionId,
+                mGroup.getApp().applicationInfo.uid, mGroup.getApp().packageName, mGroup.getName());
+        Log.v(LOG_TAG, "AutoAppPermission fragment viewed with sessionId=" + sessionId + " uid="
+                + mGroup.getApp().applicationInfo.uid + " packageName="
+                + mGroup.getApp().packageName + " permissionGroupName=" + mGroup.getName());
     }
 
     @Override
@@ -588,7 +607,8 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment {
      */
     private void showAllPermissions(@NonNull String filterGroup) {
         Fragment frag = AutoAllAppPermissionsFragment.newInstance(mGroup.getApp().packageName,
-                filterGroup, UserHandle.getUserHandleForUid(mGroup.getApp().applicationInfo.uid));
+                filterGroup, UserHandle.getUserHandleForUid(mGroup.getApp().applicationInfo.uid),
+                        getArguments().getLong(EXTRA_SESSION_ID, INVALID_SESSION_ID));
         requireFragmentManager().beginTransaction()
                 .replace(android.R.id.content, frag)
                 .addToBackStack("AllPerms")
@@ -624,6 +644,8 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment {
         }
 
         if (requestGrant) {
+            ArrayList<PermissionState> stateBefore = createPermissionSnapshot();
+
             if ((changeTarget & CHANGE_FOREGROUND) != 0) {
                 if (!mGroup.areRuntimePermissionsGranted()) {
                     SafetyNetLogger.logPermissionToggled(mGroup);
@@ -640,6 +662,7 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment {
                     mGroup.getBackgroundPermissions().grantRuntimePermissions(true, false);
                 }
             }
+            logPermissionChanges(stateBefore);
         } else {
             boolean showDefaultDenyDialog = false;
 
@@ -664,6 +687,7 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment {
                 updateUi();
                 return false;
             } else {
+                ArrayList<PermissionState> stateBefore = createPermissionSnapshot();
                 if ((changeTarget & CHANGE_FOREGROUND) != 0
                         && mGroup.areRuntimePermissionsGranted()) {
                     if (mGroup.areRuntimePermissionsGranted()) {
@@ -682,6 +706,7 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment {
                         mGroup.getBackgroundPermissions().revokeRuntimePermissions(false);
                     }
                 }
+                logPermissionChanges(stateBefore);
             }
         }
 
@@ -737,6 +762,8 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment {
      */
     private void onDenyAnyWay(@ChangeTarget int changeTarget) {
         boolean hasDefaultPermissions = false;
+        ArrayList<PermissionState> stateBefore = createPermissionSnapshot();
+
         if ((changeTarget & CHANGE_FOREGROUND) != 0) {
             if (mGroup.areRuntimePermissionsGranted()) {
                 SafetyNetLogger.logPermissionToggled(mGroup);
@@ -756,6 +783,7 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment {
                         mGroup.getBackgroundPermissions().hasGrantedByDefaultPermission();
             }
         }
+        logPermissionChanges(stateBefore);
 
         if (hasDefaultPermissions || !mGroup.doesSupportRuntimePermissions()) {
             mHasConfirmedRevoke = true;
@@ -826,6 +854,83 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment {
                 mGroup = getAppPermissionGroup();
                 updateUi();
             }
+        }
+    }
+
+    private ArrayList<PermissionState> createPermissionSnapshot() {
+        ArrayList<PermissionState> permissionSnapshot = new ArrayList<>();
+        ArrayList<Permission> permissions = mGroup.getPermissions();
+        int numPermissions = permissions.size();
+
+        for (int i = 0; i < numPermissions; i++) {
+            Permission permission = permissions.get(i);
+            permissionSnapshot.add(new PermissionState(permission.getName(),
+                    permission.isGrantedIncludingAppOp()));
+        }
+
+        AppPermissionGroup permissionGroup = mGroup.getBackgroundPermissions();
+
+        if (permissionGroup == null) {
+            return permissionSnapshot;
+        }
+
+        permissions = mGroup.getBackgroundPermissions().getPermissions();
+        numPermissions = permissions.size();
+
+        for (int i = 0; i < numPermissions; i++) {
+            Permission permission = permissions.get(i);
+            permissionSnapshot.add(new PermissionState(permission.getName(),
+                    permission.isGrantedIncludingAppOp()));
+        }
+
+        return permissionSnapshot;
+    }
+
+    private void logPermissionChanges(ArrayList<PermissionState> previousPermissionSnapshot) {
+        long changeId = new Random().nextLong();
+        int numPermissions = previousPermissionSnapshot.size();
+        long sessionId = getArguments().getLong(EXTRA_SESSION_ID, INVALID_SESSION_ID);
+
+        for (int i = 0; i < numPermissions; i++) {
+            PermissionState permissionState = previousPermissionSnapshot.get(i);
+            boolean wasGranted = permissionState.permissionGranted;
+            Permission permission = mGroup.getPermission(permissionState.permissionName);
+
+            if (permission == null) {
+                if (mGroup.getBackgroundPermissions() == null) {
+                    continue;
+                }
+                permission = mGroup.getBackgroundPermissions().getPermission(
+                        permissionState.permissionName);
+            }
+
+            boolean isGranted = permission.isGrantedIncludingAppOp();
+
+            if (wasGranted != isGranted) {
+                logAppPermissionFragmentActionReported(sessionId, changeId,
+                        permissionState.permissionName, isGranted);
+            }
+        }
+    }
+
+    private void logAppPermissionFragmentActionReported(
+            long sessionId, long changeId, String permissionName, boolean isGranted) {
+        PermissionControllerStatsLog.write(APP_PERMISSION_FRAGMENT_ACTION_REPORTED, sessionId,
+                changeId, mGroup.getApp().applicationInfo.uid, mGroup.getApp().packageName,
+                permissionName, isGranted, /*flags=*/0, /*buttonPressed=*/0);
+        Log.v(LOG_TAG, "Permission changed via UI with sessionId=" + sessionId + " changeId="
+                + changeId + " uid=" + mGroup.getApp().applicationInfo.uid + " packageName="
+                + mGroup.getApp().packageName + " permission="
+                + permissionName + " isGranted=" + isGranted);
+    }
+
+    private static class PermissionState {
+        @NonNull public final String permissionName;
+        public final boolean permissionGranted;
+
+        PermissionState(@NonNull String permissionName, boolean permissionGranted) {
+            this.permissionName = permissionName;
+            this.permissionGranted = permissionGranted;
         }
     }
 }

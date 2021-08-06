@@ -17,6 +17,11 @@
 package com.android.permissioncontroller.permission.ui.auto;
 
 import static com.android.permissioncontroller.Constants.EXTRA_SESSION_ID;
+import static com.android.permissioncontroller.Constants.INVALID_SESSION_ID;
+import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSIONS_FRAGMENT_VIEWED;
+import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSIONS_FRAGMENT_VIEWED__CATEGORY__ALLOWED;
+import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSIONS_FRAGMENT_VIEWED__CATEGORY__ALLOWED_FOREGROUND;
+import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSIONS_FRAGMENT_VIEWED__CATEGORY__DENIED;
 import static com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_CALLER_NAME;
 
 import android.app.Activity;
@@ -37,6 +42,7 @@ import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceGroup;
 import androidx.preference.PreferenceScreen;
 
+import com.android.permissioncontroller.PermissionControllerStatsLog;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.auto.AutoSettingsFrameFragment;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
@@ -50,6 +56,7 @@ import java.text.Collator;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 /** Screen to show the permissions for a specific application. */
 public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment {
@@ -70,16 +77,17 @@ public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment {
      * @return A new fragment
      */
     public static AutoAppPermissionsFragment newInstance(@NonNull String packageName,
-            @NonNull UserHandle userHandle) {
+            @NonNull UserHandle userHandle, long sessionId) {
         return setPackageNameAndUserHandle(new AutoAppPermissionsFragment(), packageName,
-                userHandle);
+                userHandle, sessionId);
     }
 
     private static <T extends Fragment> T setPackageNameAndUserHandle(@NonNull T fragment,
-            @NonNull String packageName, @NonNull UserHandle userHandle) {
+            @NonNull String packageName, @NonNull UserHandle userHandle, long sessionId) {
         Bundle arguments = new Bundle();
         arguments.putString(Intent.EXTRA_PACKAGE_NAME, packageName);
         arguments.putParcelable(Intent.EXTRA_USER, userHandle);
+        arguments.putLong(EXTRA_SESSION_ID, sessionId);
         fragment.setArguments(arguments);
         return fragment;
     }
@@ -128,7 +136,8 @@ public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment {
     private void showAllPermissions() {
         Fragment frag = AutoAllAppPermissionsFragment.newInstance(
                 getArguments().getString(Intent.EXTRA_PACKAGE_NAME),
-                getArguments().getParcelable(Intent.EXTRA_USER));
+                getArguments().getParcelable(Intent.EXTRA_USER),
+                getArguments().getLong(EXTRA_SESSION_ID, INVALID_SESSION_ID));
         getFragmentManager().beginTransaction()
                 .replace(android.R.id.content, frag)
                 .addToBackStack("AllPerms")
@@ -229,7 +238,8 @@ public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment {
                         frag = new AutoAppPermissionsFragment.AdditionalPermissionsFragment();
                 setPackageNameAndUserHandle(frag,
                         getArguments().getString(Intent.EXTRA_PACKAGE_NAME),
-                        getArguments().getParcelable(Intent.EXTRA_USER));
+                        getArguments().getParcelable(Intent.EXTRA_USER),
+                        getArguments().getLong(EXTRA_SESSION_ID, INVALID_SESSION_ID));
                 frag.setTargetFragment(AutoAppPermissionsFragment.this, 0);
                 getFragmentManager().beginTransaction()
                         .replace(android.R.id.content, frag)
@@ -260,6 +270,62 @@ public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment {
         }
 
         setLoading(false);
+        logAppPermissionsFragmentView();
+    }
+
+    private void logAppPermissionsFragmentView() {
+        Context context = getPreferenceManager().getContext();
+        if (context == null) {
+            return;
+        }
+        String permissionSubtitleOnlyInForeground =
+                context.getString(R.string.permission_subtitle_only_in_foreground);
+
+
+        long sessionId = getArguments().getLong(EXTRA_SESSION_ID, INVALID_SESSION_ID);
+        long viewId = new Random().nextLong();
+
+        PreferenceCategory allowed = findPreference(KEY_ALLOWED_PERMISSIONS_GROUP);
+
+        int numAllowed = allowed.getPreferenceCount();
+        for (int i = 0; i < numAllowed; i++) {
+            Preference preference = allowed.getPreference(i);
+            if (preference.getSummary() == null) {
+                // R.string.no_permission_allowed was added to PreferenceCategory
+                continue;
+            }
+
+            int category = APP_PERMISSIONS_FRAGMENT_VIEWED__CATEGORY__ALLOWED;
+            if (permissionSubtitleOnlyInForeground.contentEquals(preference.getSummary())) {
+                category = APP_PERMISSIONS_FRAGMENT_VIEWED__CATEGORY__ALLOWED_FOREGROUND;
+            }
+
+            logAppPermissionsFragmentViewEntry(sessionId, viewId, preference.getKey(), category);
+        }
+
+        PreferenceCategory denied = findPreference(KEY_DENIED_PERMISSIONS_GROUP);
+
+        int numDenied = denied.getPreferenceCount();
+        for (int i = 0; i < numDenied; i++) {
+            Preference preference = denied.getPreference(i);
+            if (preference.getSummary() == null) {
+                // R.string.no_permission_denied was added to PreferenceCategory
+                continue;
+            }
+            logAppPermissionsFragmentViewEntry(sessionId, viewId, preference.getKey(),
+                    APP_PERMISSIONS_FRAGMENT_VIEWED__CATEGORY__DENIED);
+        }
+    }
+
+    private void logAppPermissionsFragmentViewEntry(
+            long sessionId, long viewId, String permissionGroupName, int category) {
+        PermissionControllerStatsLog.write(APP_PERMISSIONS_FRAGMENT_VIEWED, sessionId, viewId,
+                permissionGroupName, mAppPermissions.getPackageInfo().applicationInfo.uid,
+                mAppPermissions.getPackageInfo().packageName, category);
+        Log.v(LOG_TAG, "AutoAppPermissionFragment view logged with sessionId=" + sessionId
+                + " viewId=" + viewId + " permissionGroupName=" + permissionGroupName + " uid="
+                + mAppPermissions.getPackageInfo().applicationInfo.uid + " packageName="
+                + mAppPermissions.getPackageInfo().packageName + " category=" + category);
     }
 
     private Preference createPermissionPreference(Context context, AppPermissionGroup group) {
@@ -293,7 +359,7 @@ public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment {
                 return getContext().getString(R.string.permission_subtitle_only_in_foreground);
             }
         }
-        return null;
+        return "";
     }
 
     /**

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 The Android Open Source Project
+ * Copyright (C) 2021 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,23 +14,21 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.ui.television;
+package com.android.permissioncontroller.permission.ui.auto;
 
-import static com.android.permissioncontroller.permission.ui.television.DebugConfig.DEBUG;
-import static com.android.permissioncontroller.permission.ui.television.DebugConfig.TAG;
-
+import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
+import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
 
 import com.android.permissioncontroller.R;
+import com.android.permissioncontroller.auto.AutoSettingsFrameFragment;
 import com.android.permissioncontroller.permission.model.livedatatypes.PermGroupPackagesUiInfo;
 import com.android.permissioncontroller.permission.ui.model.ManagePermissionsViewModel;
 import com.android.permissioncontroller.permission.ui.model.PermissionGroupPreferenceUtils;
@@ -38,37 +36,30 @@ import com.android.permissioncontroller.permission.ui.model.PermissionGroupPrefe
 import java.util.List;
 
 /**
- * The {@link androidx.fragment.app.Fragment} implements a screen that displays the list of
- * permission groups that are not considered the most relevant to the user at the moment, and thus
- * did not make it to the "main" screen - {@link ManagePermissionsFragment}.
- * It relies on the {@link ManagePermissionsViewModel} for the data loading, maintaining and
- * monitoring for changes.
+ * Shows additional non-system permissions that can be granted/denied.
+ *
+ * Largely based on
+ * {@link com.android.permissioncontroller.permission.ui.television.ManagePermissionsOtherFragment}.
  */
-public class ManagePermissionsOtherFragment extends SettingsWithHeader {
+public class AutoManageOtherPermissionsFragment extends AutoSettingsFrameFragment {
     private static final String KEY_UNUSED_CATEGORY = "category_unused";
     private static final String KEY_ADDITIONAL_CATEGORY = "category_additional";
 
     private PreferenceCategory mUnusedCategory;
     private PreferenceCategory mAdditionalCategory;
 
-    /**
-     * @return a new instance of {@link ManagePermissionsOtherFragment}.
-     */
-    public static ManagePermissionsOtherFragment newInstance() {
-        return new ManagePermissionsOtherFragment();
-    }
-
     @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
-        final FragmentActivity activity = requireActivity();
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setLoading(true);
+        setHeaderLabel(getString(R.string.other_permissions_label));
+
+        final Application application = getActivity().getApplication();
         final ViewModelProvider.Factory factory =
-                ViewModelProvider.AndroidViewModelFactory.getInstance(activity.getApplication());
-        final ManagePermissionsViewModel viewModel = new ViewModelProvider(activity, factory)
-                        .get(ManagePermissionsViewModel.class);
-        if (DEBUG) {
-            Log.d(TAG, "ManagePermissionsOtherFragment.onCreate()\n  viewModel=" + viewModel);
-        }
+                ViewModelProvider.AndroidViewModelFactory.getInstance(application);
+        final ManagePermissionsViewModel viewModel = new ViewModelProvider(this, factory)
+                .get(ManagePermissionsViewModel.class);
+
         viewModel.getUnusedPermissionGroups().observe(this, this::onUnusedPermissionGroupsChanged);
         viewModel.getAdditionalPermissionGroups().observe(this,
                 this::onAdditionalPermissionGroupsChanged);
@@ -77,9 +68,13 @@ public class ManagePermissionsOtherFragment extends SettingsWithHeader {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+    public void onCreatePreferences(Bundle bundle, String s) {
+        setPreferenceScreen(getPreferenceManager().createPreferenceScreen(getContext()));
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setHeader(null, null, null, getString(R.string.other_permissions_label));
 
         final Context context = getPreferenceManager().getContext();
         final PreferenceScreen screen = getPreferenceScreen();
@@ -110,9 +105,6 @@ public class ManagePermissionsOtherFragment extends SettingsWithHeader {
 
     private void onHasUnusedOrAdditionalPermissionGroups(Boolean hasPGs) {
         if (!hasPGs) {
-            if (DEBUG) {
-                Log.d(TAG, "ManagePermissionsOtherFragment is \"empty\" now > go back.");
-            }
             // There are not more permissions on this screen - go back.
             getParentFragmentManager().popBackStack();
         }
@@ -129,5 +121,7 @@ public class ManagePermissionsOtherFragment extends SettingsWithHeader {
                 permissionGroups);
         // Only show the category if it's not empty.
         category.setVisible(!permissionGroups.isEmpty());
+
+        setLoading(false);
     }
 }
