@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.ui.television
+package com.android.permissioncontroller.permission.ui.model
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -23,7 +23,6 @@ import androidx.lifecycle.MediatorLiveData
 import com.android.permissioncontroller.permission.data.PermGroupsPackagesUiInfoLiveData
 import com.android.permissioncontroller.permission.data.StandardPermGroupNamesLiveData
 import com.android.permissioncontroller.permission.model.livedatatypes.PermGroupPackagesUiInfo
-import com.android.permissioncontroller.permission.ui.model.UsedCustomPermGroupNamesLiveData
 
 /**
  * A [androidx.lifecycle.ViewModel] for [ManagePermissionsFragment] and
@@ -35,6 +34,7 @@ import com.android.permissioncontroller.permission.ui.model.UsedCustomPermGroupN
  * [ManagePermissionsViewModel].
  */
 class ManagePermissionsViewModel(app: Application) : AndroidViewModel(app) {
+
     private val standardPermGroupsLiveData: LiveData<List<PermGroupPackagesUiInfo>> =
         MediatorLiveData<List<PermGroupPackagesUiInfo>>().apply {
             addSource(PermGroupsPackagesUiInfoLiveData(app, StandardPermGroupNamesLiveData)) {
