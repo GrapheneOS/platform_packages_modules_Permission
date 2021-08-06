@@ -137,6 +137,13 @@ public class GrantPermissionsActivity extends SettingsActivity
 
         getWindow().addSystemFlags(SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
 
+        mRequestedPermissions = getIntent().getStringArrayExtra(
+                PackageManager.EXTRA_REQUEST_PERMISSIONS_NAMES);
+        if (mRequestedPermissions == null || mRequestedPermissions.length == 0) {
+            setResultAndFinish();
+            return;
+        }
+
         // Cache this as this can only read on onCreate, not later.
         mCallingPackage = getCallingPackage();
         if (mCallingPackage == null) {
@@ -149,14 +156,6 @@ public class GrantPermissionsActivity extends SettingsActivity
         setFinishOnTouchOutside(false);
 
         setTitle(R.string.permission_request_title);
-
-        mRequestedPermissions = getIntent().getStringArrayExtra(
-                PackageManager.EXTRA_REQUEST_PERMISSIONS_NAMES);
-        if (mRequestedPermissions == null || mRequestedPermissions.length == 0) {
-            mRequestedPermissions = new String[0];
-            setResultAndFinish();
-            return;
-        }
 
         if (DeviceUtils.isTelevision(this)) {
             mViewHandler = new com.android.permissioncontroller.permission.ui.television
@@ -471,13 +470,15 @@ public class GrantPermissionsActivity extends SettingsActivity
                 mViewModel.logRequestedPermissionGroups();
             }
             Intent result = new Intent(PackageManager.ACTION_REQUEST_PERMISSIONS);
-            String[] resultPermissions = mRequestedPermissions;
-            int[] grantResults = new int[mRequestedPermissions.length];
+            String[] resultPermissions = mRequestedPermissions != null
+                    ? mRequestedPermissions : new String[0];
+            int[] grantResults = new int[resultPermissions.length];
 
-            if (mViewModel != null && mViewModel.shouldReturnPermissionState()) {
+            if (mViewModel != null && mViewModel.shouldReturnPermissionState()
+                    && mCallingPackage != null) {
                 PackageManager pm = getPackageManager();
-                for (int i = 0; i < mRequestedPermissions.length; i++) {
-                    grantResults[i] = pm.checkPermission(mRequestedPermissions[i], mCallingPackage);
+                for (int i = 0; i < resultPermissions.length; i++) {
+                    grantResults[i] = pm.checkPermission(resultPermissions[i], mCallingPackage);
                 }
             } else {
                 grantResults = new int[0];
