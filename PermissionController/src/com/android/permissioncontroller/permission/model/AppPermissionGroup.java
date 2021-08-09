@@ -720,14 +720,23 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
     }
 
     public boolean areRuntimePermissionsGranted(String[] filterPermissions) {
+        return areRuntimePermissionsGranted(filterPermissions, false);
+    }
+
+    /**
+     * @param filterPermissions the permissions to check for, null for all in this group
+     * @param asOneTime add the requirement that at least one of the granted permissions must have
+     *                 the ONE_TIME flag to return true
+     */
+    public boolean areRuntimePermissionsGranted(String[] filterPermissions, boolean asOneTime) {
         if (LocationUtils.isLocationGroupAndProvider(mContext, mName, mPackageInfo.packageName)) {
-            return LocationUtils.isLocationEnabled(mContext);
+            return LocationUtils.isLocationEnabled(mContext) && !asOneTime;
         }
         // The permission of the extra location controller package is determined by the status of
         // the controller package itself.
         if (LocationUtils.isLocationGroupAndControllerExtraPackage(
                 mContext, mName, mPackageInfo.packageName)) {
-            return LocationUtils.isExtraLocationControllerPackageEnabled(mContext);
+            return LocationUtils.isExtraLocationControllerPackageEnabled(mContext) && !asOneTime;
         }
         final int permissionCount = mPermissions.size();
         for (int i = 0; i < permissionCount; i++) {
@@ -736,7 +745,7 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
                     && !ArrayUtils.contains(filterPermissions, permission.getName())) {
                 continue;
             }
-            if (permission.isGrantedIncludingAppOp()) {
+            if (permission.isGrantedIncludingAppOp() && (!asOneTime || permission.isOneTime())) {
                 return true;
             }
         }
@@ -1474,13 +1483,13 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
         }
 
         String packageName = mPackageInfo.packageName;
-        if (isOneTime() && areRuntimePermissionsGranted()) {
+        if (areRuntimePermissionsGranted(null, true)) {
             mContext.getSystemService(PermissionManager.class)
                     .startOneTimePermissionSession(packageName,
                             Utils.getOneTimePermissionsTimeout(),
                             ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_RESET_TIMER,
                             ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_KEEP_SESSION_ALIVE);
-        } else if (!Utils.hasOneTimePermissions(mContext, packageName)) {
+        } else {
             mContext.getSystemService(PermissionManager.class)
                     .stopOneTimePermissionSession(packageName);
         }
