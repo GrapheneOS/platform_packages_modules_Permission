@@ -23,7 +23,7 @@
     <string name="back" msgid="6249950659061523680">"వెనుకకు"</string>
     <string name="uninstall_or_disable" msgid="5523723541310119437">"అన్‌ఇన్‌స్టాల్ చేయి లేదా డిజేబుల్ చేయి"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"యాప్ కనుగొనబడలేదు"</string>
-    <string name="grant_dialog_button_deny" msgid="5694497572414531524">"తిరస్కరించు"</string>
+    <string name="grant_dialog_button_deny" msgid="5694497572414531524">"తిరస్కరించండి"</string>
     <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1851917275643744594">"తిరస్కరించు, ఇకపై మళ్లీ అడగవద్దు"</string>
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“యాప్ వినియోగంలో ఉన్నప్పుడు” నిలిపి ఉంచు"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“కేవలం ఈసారి మాత్రమే” ఇలాగే ఉంచు"</string>
@@ -39,7 +39,7 @@
     <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g> నిలిపివేయబడ్డాయి"</string>
     <string name="permission_revoked_all" msgid="3397649017727222283">"అన్నీ నిలిపివేయబడ్డాయి"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"ఏవీ నిలిపివేయబడలేదు"</string>
-    <string name="grant_dialog_button_allow" msgid="5314677880021102550">"అనుమతించు"</string>
+    <string name="grant_dialog_button_allow" msgid="5314677880021102550">"అనుమతించండి"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"ఎల్ల‌ప్పుడూ అనుమతించు"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"యాప్‌ను ఉపయోగిస్తున్నప్పుడు"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"ఈ ఒక్కసారి మాత్రమే"</string>
@@ -164,13 +164,13 @@
     <string name="app_permission_usage_title" msgid="6676802437831981822">"యాప్ అనుమతుల వినియోగం"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"యాక్సెస్: <xliff:g id="NUM">%1$s</xliff:g> సార్లు. మొత్తం వ్యవధి: <xliff:g id="DURATION">%2$s</xliff:g>. <xliff:g id="TIME">%3$s</xliff:g> క్రితం చివరిగా ఉపయోగించబడింది."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"యాక్సెస్: <xliff:g id="NUM">%1$s</xliff:g> సార్లు. <xliff:g id="TIME">%2$s</xliff:g> క్రితం చివరిగా ఉపయోగించబడింది."</string>
-    <string name="app_permission_button_allow" msgid="5808039516494774647">"అనుమతించు"</string>
+    <string name="app_permission_button_allow" msgid="5808039516494774647">"అనుమతించండి"</string>
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"అన్ని ఫైళ్ల నిర్వహణకు అనుమతించండి"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"మీడియాకు మాత్రమే యాక్సెస్‌ను అనుమతించు"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"అన్ని సమయాలలో అనుమతించు"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"యాప్‌ను ఉపయోగిస్తున్నప్పుడు మాత్రమే అనుమతించు"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"ప్రతిసారి అడగాలి"</string>
-    <string name="app_permission_button_deny" msgid="2399316993899108824">"తిరస్కరించు"</string>
+    <string name="app_permission_button_deny" msgid="2399316993899108824">"తిరస్కరించండి"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"\'<xliff:g id="PERM">%1$s</xliff:g>\' అనుమతి"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"ఈ యాప్ కోసం \'<xliff:g id="PERM">%1$s</xliff:g>\' యాక్సెస్"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"అన్ని \'<xliff:g id="APP">%1$s</xliff:g>\' అనుమతులను చూడండి"</string>
@@ -374,8 +374,8 @@
     <string name="incident_report_notification_text" msgid="3376480583513587923">"<xliff:g id="APP_NAME">%1$s</xliff:g>డీబగ్గింగ్ సమాచారాన్ని అప్‌లో డ్ చేయదలుచుకుంటున్నారు."</string>
     <string name="incident_report_dialog_title" msgid="669104389325204095">"డీబగ్గింగ్ డేటాను షేర్ చేయమంటారా?"</string>
     <string name="incident_report_dialog_intro" msgid="5897733669850951832">"సిస్టమ్ ఒక సమస్యను గుర్తించింది."</string>
-    <string name="incident_report_dialog_text" msgid="5675553296891757523">"<xliff:g id="APP_NAME_0">%1$s</xliff:g> <xliff:g id="DATE">%2$s</xliff:g>న <xliff:g id="TIME">%3$s</xliff:g>కు ఈ డివైజ్‌లో జ‌నరేట్ అయిన‌ డీబగ్ నివేదికను అప్‌లోడ్ చేయండి అని అభ్యర్థిస్తోంది. బగ్ నివేదికలు మీ డివైజ్‌ లేదా లాగిన్ చేసిన యాప్‌ల వ్యక్తిగత సమాచారం, ఉదాహరణకు యూజ‌ర్‌ పేర్లు, లొకేష‌న్‌ డేటా, డివైజ్ గుర్తింపుల‌తో పాటు నెట్‌వర్క్ సమాచారాన్ని కలిగి ఉంటాయి. ఈ సమాచారం విషయంలో మీకు నమ్మకం ఉన్న‌ వ్యక్తులకు, యాప్‌లకు మాత్రమే బగ్ నివేదిక వివరాలను షేర్ చేయండి. బగ్ నివేదికను అప్‌లోడ్ చేయడానికి <xliff:g id="APP_NAME_1">%4$s</xliff:g>ను అనుమతించాలా?"</string>
-    <string name="incident_report_error_dialog_text" msgid="4189647113387092272">"<xliff:g id="APP_NAME">%1$s</xliff:g> కోసం బగ్ నివేదిక ప్రాసెస్ చేయడంలో ఎర్రర్ ఉంది. కాబట్టి వివరణాత్మక డీబగ్గింగ్ డేటాను షేర్ చేయడాన్ని నిరాకరించారు. అంతరాయానికి చింతిస్తున్నాము."</string>
+    <string name="incident_report_dialog_text" msgid="5675553296891757523">"<xliff:g id="APP_NAME_0">%1$s</xliff:g> <xliff:g id="DATE">%2$s</xliff:g>న <xliff:g id="TIME">%3$s</xliff:g>కు ఈ డివైజ్‌లో జ‌నరేట్ అయిన‌ డీబగ్ రిపోర్ట్‌ను అప్‌లోడ్ చేయండి అని అభ్యర్థిస్తోంది. బగ్ రిపోర్ట్‌లు మీ డివైజ్‌ లేదా లాగిన్ చేసిన యాప్‌ల వ్యక్తిగత సమాచారం, ఉదాహరణకు యూజ‌ర్‌ పేర్లు, లొకేష‌న్‌ డేటా, డివైజ్ గుర్తింపుల‌తో పాటు నెట్‌వర్క్ సమాచారాన్ని కలిగి ఉంటాయి. ఈ సమాచారం విషయంలో మీకు నమ్మకం ఉన్న‌ వ్యక్తులకు, యాప్‌లకు మాత్రమే బగ్ రిపోర్ట్‌ వివరాలను షేర్ చేయండి. బగ్ రిపోర్ట్‌ను అప్‌లోడ్ చేయడానికి <xliff:g id="APP_NAME_1">%4$s</xliff:g>ను అనుమతించాలా?"</string>
+    <string name="incident_report_error_dialog_text" msgid="4189647113387092272">"<xliff:g id="APP_NAME">%1$s</xliff:g> కోసం బగ్ రిపోర్ట్‌ ప్రాసెస్ చేయడంలో ఎర్రర్ ఉంది. కాబట్టి వివరణాత్మక డీబగ్గింగ్ డేటాను షేర్ చేయడాన్ని నిరాకరించారు. అంతరాయానికి చింతిస్తున్నాము."</string>
     <string name="incident_report_dialog_allow_label" msgid="2970242967721155239">"అనుమతించు"</string>
     <string name="incident_report_dialog_deny_label" msgid="3535314290677579383">"తిరస్కరించు"</string>
     <string name="adjust_user_sensitive_title" msgid="4196724451314280527">"అధునాతన సెట్టింగ్‌లు"</string>
@@ -395,7 +395,7 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"మీరు యాప్ ఉపయోగించనప్పుడు కూడా ఈ యాప్ మీ లొకేష‌న్‌ను ఎప్పటికప్పుడు యాక్సెస్ చేయాల‌ని అనుకుంటోంది."<annotation id="link">"సెట్టింగ్‌లలో అనుమతించండి."</annotation></string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"మీ క్యాలెండర్‌ని యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ని అనుమతించాలా?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"SMS మెసేజ్‌లు పంపడం, చూడటం చేయగలిగేలా &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
-    <string name="permgrouprequest_storage" msgid="8717773092518621602">"మీ పరికరంలోని ఫోటోలు, మీడియా మరియు ఫైళ్లను యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"మీ పరికరంలోని ఫోటోలు, మీడియా, ఫైళ్లను యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‌ను అనుమతించాలా?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"ఆడియోను రికార్డ్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"మీ భౌతిక కార్యకలాపాన్ని యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"ఫోటోలు తీయడానికి, వీడియో రికార్డ్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
