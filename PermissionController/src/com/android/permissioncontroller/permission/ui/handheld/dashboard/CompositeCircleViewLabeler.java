@@ -19,6 +19,8 @@ package com.android.permissioncontroller.permission.ui.handheld.dashboard;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.WindowMetrics;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -112,6 +114,9 @@ public class CompositeCircleViewLabeler extends RelativeLayout {
                 continue;
             }
             label.setVisibility((ccv.getValue(i) > 0) ? View.VISIBLE : View.GONE);
+            label.measure(0, 0);
+            int width = label.getMeasuredWidth();
+            int height = label.getMeasuredHeight();
 
             // For circle path, top angle is 270d. Convert to unit circle rads.
             double angle = Math.toRadians(360 - ccv.getPartialCircleCenterAngle(i));
@@ -120,13 +125,25 @@ public class CompositeCircleViewLabeler extends RelativeLayout {
 
             // Determine anchor corner for text, adjust accordingly.
             if (angle < (Math.PI * 0.5d)) {
-                y -= label.getHeight();
+                y -= height;
             } else if (angle < Math.PI) {
-                x -= label.getWidth();
-                y -= label.getHeight();
+                x -= width;
+                y -= height;
             } else if (angle < (Math.PI * 1.5d)) {
-                x -= label.getWidth();
+                x -= width;
             }
+            WindowManager wm = getContext().getSystemService(WindowManager.class);
+            WindowMetrics metrics = wm.getCurrentWindowMetrics();
+            int maxX = metrics.getBounds().right;
+
+            double offset = 0;
+            if (x < 0) {
+                x = 0;
+            } else if ((x + width) > maxX) {
+                offset = x + width - maxX;
+                x -= offset;
+            }
+
             label.setX((int) x);
             label.setY((int) y);
         }
