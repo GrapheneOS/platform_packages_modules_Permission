@@ -39,7 +39,7 @@
     <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g> నిలిపివేయబడ్డాయి"</string>
     <string name="permission_revoked_all" msgid="3397649017727222283">"అన్నీ నిలిపివేయబడ్డాయి"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"ఏవీ నిలిపివేయబడలేదు"</string>
-    <string name="grant_dialog_button_allow" msgid="5314677880021102550">"అనుమతించు"</string>
+    <string name="grant_dialog_button_allow" msgid="5314677880021102550">"అనుమతించండి"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"ఎల్ల‌ప్పుడూ అనుమతించు"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"యాప్‌ను ఉపయోగిస్తున్నప్పుడు"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"ఖచ్చితమైన లొకేషన్‌కు మార్చండి"</string>
@@ -202,7 +202,7 @@
     <string name="app_permission_usage_title" msgid="6676802437831981822">"యాప్ అనుమతుల వినియోగం"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"యాక్సెస్: <xliff:g id="NUM">%1$s</xliff:g> సార్లు. మొత్తం వ్యవధి: <xliff:g id="DURATION">%2$s</xliff:g>. <xliff:g id="TIME">%3$s</xliff:g> క్రితం చివరిగా ఉపయోగించబడింది."</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"యాక్సెస్: <xliff:g id="NUM">%1$s</xliff:g> సార్లు. <xliff:g id="TIME">%2$s</xliff:g> క్రితం చివరిగా ఉపయోగించబడింది."</string>
-    <string name="app_permission_button_allow" msgid="5808039516494774647">"అనుమతించు"</string>
+    <string name="app_permission_button_allow" msgid="5808039516494774647">"అనుమతించండి"</string>
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"అన్ని ఫైళ్ల నిర్వహణకు అనుమతించండి"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"మీడియాకు మాత్రమే యాక్సెస్‌ను అనుమతించు"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"అన్ని సమయాలలో అనుమతించు"</string>
@@ -439,8 +439,8 @@
     <string name="incident_report_notification_text" msgid="3376480583513587923">"<xliff:g id="APP_NAME">%1$s</xliff:g>డీబగ్గింగ్ సమాచారాన్ని అప్‌లో డ్ చేయదలుచుకుంటున్నారు."</string>
     <string name="incident_report_dialog_title" msgid="669104389325204095">"డీబగ్గింగ్ డేటాను షేర్ చేయమంటారా?"</string>
     <string name="incident_report_dialog_intro" msgid="5897733669850951832">"సిస్టమ్ ఒక సమస్యను గుర్తించింది."</string>
-    <string name="incident_report_dialog_text" msgid="5675553296891757523">"<xliff:g id="APP_NAME_0">%1$s</xliff:g> <xliff:g id="DATE">%2$s</xliff:g>న <xliff:g id="TIME">%3$s</xliff:g>కు ఈ డివైజ్‌లో జ‌నరేట్ అయిన‌ డీబగ్ నివేదికను అప్‌లోడ్ చేయండి అని అభ్యర్థిస్తోంది. బగ్ నివేదికలు మీ డివైజ్‌ లేదా లాగిన్ చేసిన యాప్‌ల వ్యక్తిగత సమాచారం, ఉదాహరణకు యూజ‌ర్‌ పేర్లు, లొకేష‌న్‌ డేటా, డివైజ్ గుర్తింపుల‌తో పాటు నెట్‌వర్క్ సమాచారాన్ని కలిగి ఉంటాయి. ఈ సమాచారం విషయంలో మీకు నమ్మకం ఉన్న‌ వ్యక్తులకు, యాప్‌లకు మాత్రమే బగ్ నివేదిక వివరాలను షేర్ చేయండి. బగ్ నివేదికను అప్‌లోడ్ చేయడానికి <xliff:g id="APP_NAME_1">%4$s</xliff:g>ను అనుమతించాలా?"</string>
-    <string name="incident_report_error_dialog_text" msgid="4189647113387092272">"<xliff:g id="APP_NAME">%1$s</xliff:g> కోసం బగ్ నివేదిక ప్రాసెస్ చేయడంలో ఎర్రర్ ఉంది. కాబట్టి వివరణాత్మక డీబగ్గింగ్ డేటాను షేర్ చేయడాన్ని నిరాకరించారు. అంతరాయానికి చింతిస్తున్నాము."</string>
+    <string name="incident_report_dialog_text" msgid="5675553296891757523">"<xliff:g id="APP_NAME_0">%1$s</xliff:g> <xliff:g id="DATE">%2$s</xliff:g>న <xliff:g id="TIME">%3$s</xliff:g>కు ఈ డివైజ్‌లో జ‌నరేట్ అయిన‌ డీబగ్ రిపోర్ట్‌ను అప్‌లోడ్ చేయండి అని అభ్యర్థిస్తోంది. బగ్ రిపోర్ట్‌లు మీ డివైజ్‌ లేదా లాగిన్ చేసిన యాప్‌ల వ్యక్తిగత సమాచారం, ఉదాహరణకు యూజ‌ర్‌ పేర్లు, లొకేష‌న్‌ డేటా, డివైజ్ గుర్తింపుల‌తో పాటు నెట్‌వర్క్ సమాచారాన్ని కలిగి ఉంటాయి. ఈ సమాచారం విషయంలో మీకు నమ్మకం ఉన్న‌ వ్యక్తులకు, యాప్‌లకు మాత్రమే బగ్ రిపోర్ట్‌ వివరాలను షేర్ చేయండి. బగ్ రిపోర్ట్‌ను అప్‌లోడ్ చేయడానికి <xliff:g id="APP_NAME_1">%4$s</xliff:g>ను అనుమతించాలా?"</string>
+    <string name="incident_report_error_dialog_text" msgid="4189647113387092272">"<xliff:g id="APP_NAME">%1$s</xliff:g> కోసం బగ్ రిపోర్ట్‌ ప్రాసెస్ చేయడంలో ఎర్రర్ ఉంది. కాబట్టి వివరణాత్మక డీబగ్గింగ్ డేటాను షేర్ చేయడాన్ని నిరాకరించారు. అంతరాయానికి చింతిస్తున్నాము."</string>
     <string name="incident_report_dialog_allow_label" msgid="2970242967721155239">"అనుమతించు"</string>
     <string name="incident_report_dialog_deny_label" msgid="3535314290677579383">"తిరస్కరించు"</string>
     <string name="adjust_user_sensitive_title" msgid="4196724451314280527">"అధునాతన సెట్టింగ్‌లు"</string>
@@ -466,7 +466,7 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"సుమారుగా"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"మీ క్యాలెండర్‌ని యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ని అనుమతించాలా?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"SMS మెసేజ్‌లు పంపడం, చూడటం చేయగలిగేలా &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
-    <string name="permgrouprequest_storage" msgid="8717773092518621602">"మీ పరికరంలోని ఫోటోలు, మీడియా మరియు ఫైళ్లను యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"మీ పరికరంలోని ఫోటోలు, మీడియా, ఫైళ్లను యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‌ను అనుమతించాలా?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"ఆడియోను రికార్డ్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"మీరు యాప్‌ను ఉపయోగిస్తున్నప్పుడు మాత్రమే ఈ యాప్, ఆడియోను రికార్డ్ చేయగలుగుతుంది"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"ఆడియోను రికార్డ్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
