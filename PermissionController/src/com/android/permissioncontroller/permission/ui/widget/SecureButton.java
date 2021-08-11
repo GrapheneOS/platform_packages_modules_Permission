@@ -21,6 +21,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.Button;
 
+import com.android.modules.utils.build.SdkLevel;
+
 /**
  * A button which doesn't allow clicking when any part of the window is obscured
  */
@@ -47,7 +49,11 @@ public class SecureButton extends Button {
 
     @Override
     public boolean onFilterTouchEventForSecurity(MotionEvent event) {
-        return (event.getFlags() & FLAGS_WINDOW_IS_OBSCURED) == 0
-                && super.onFilterTouchEventForSecurity(event);
+        if (SdkLevel.isAtLeastS()) {
+            return (event.getFlags() & FLAGS_WINDOW_IS_OBSCURED) == 0
+                    && super.onFilterTouchEventForSecurity(event);
+        }
+
+        return super.onFilterTouchEventForSecurity(event);
     }
 }
