@@ -372,7 +372,7 @@
     <string name="role_sms_description" msgid="3424020199148153513">"SMSలు, ఫోటోలు, వీడియోలు, మరిన్నింటిని పంపడానికి, అందుకోవడానికి మీ ఫోన్ నంబర్‌ను ఉపయోగించేందుకు మిమ్మల్ని అనుమతించే యాప్‌లు"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g>ను మీ డిఫాల్ట్ SMS యాప్‌గా సెట్ చేయాలా?"</string>
     <string name="role_sms_request_description" msgid="983371022668134198">"పరిచయాలు, SMS, ఫోన్‌కు యాక్సెస్ పొందుతుంది"</string>
-    <string name="role_sms_search_keywords" msgid="8022048144395047352">"వచన సందేశం, వచనం పంపడం, సందేశాలు, సందేశం పంపడం"</string>
+    <string name="role_sms_search_keywords" msgid="8022048144395047352">"వచన మెసేజ్‌, వచనం పంపడం, మెసేజ్‌లు, మెసేజ్‌ పంపడం"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"డిఫాల్ట్ అత్యవసర యాప్"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"అత్యవసర యాప్"</string>
     <string name="role_emergency_description" msgid="5051840234887686630">"మీ వైద్య సమాచారాన్ని రికార్డ్ చేయడానికి, అలాగే అత్యవసరంగా స్పందించాల్సిన వారు యాక్సెస్ చేయగలిగే విధంగా ఉంచడానికి; వాతావరణం తీవ్రంగా ఉన్నా, విపత్తులు సంభవించేలా ఉన్నా హెచ్చరికలను పొందడానికి; మీకు సహాయం కావాల్సినప్పుడు ఇతరులకు తెలియజేయడానికి మిమ్మల్ని అనుమతించే యాప్‌లు"</string>
@@ -392,7 +392,7 @@
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"అనుమతులు ఇవ్వనవసరం లేదు"</string>
     <string name="role_call_screening_label" msgid="883935222060878724">"కాలర్ ID &amp; స్పామ్‌ల కోసం ఆటోమేటిక్ యాప్"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"కాలర్ ID &amp; స్పామ్ యాప్"</string>
-    <string name="role_call_screening_description" msgid="2349431420497468981">"కాల్స్‌ను గుర్తించడానికి, స్పామ్, స్వయంచాలక కాల్స్‌ లేదా వద్దనుకునే నంబర్‌లను బ్లాక్ చేయడానికి మిమ్మల్ని అనుమతించే యాప్‌లు"</string>
+    <string name="role_call_screening_description" msgid="2349431420497468981">"కాల్స్‌ను గుర్తించడానికి, స్పామ్, ఆటోమేటిక్‌ కాల్స్‌ లేదా వద్దనుకునే నంబర్‌లను బ్లాక్ చేయడానికి మిమ్మల్ని అనుమతించే యాప్‌లు"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g>ను మీ డిఫాల్ట్ కాలర్ ID &amp; స్పామ్ యాప్‌గా సెట్ చేయాలా?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"అనుమతులు ఇవ్వనవసరం లేదు"</string>
     <string name="role_watch_description" msgid="267003778693177779">"మీ నోటిఫికేషన్‌లతో ఇంటరాక్ట్ అవ్వడానికి అలాగే మీ ఫోన్, SMS, కాంటాక్ట్‌లు అలాగే Calendar అనుమతులను యాక్సెస్ చేయడానికి <xliff:g id="APP_NAME">%1$s</xliff:g> అనుమతించబడుతుంది."</string>
