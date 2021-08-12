@@ -208,9 +208,8 @@ public class AutoPermissionAppsFragment extends AutoSettingsFrameFragment implem
             List<Pair<String, UserHandle>> packages = categories.get(grantCategory);
             PreferenceCategory category = findPreference(grantCategory.getCategoryName());
 
-            // If this category is empty, and this isn't the "allowed" category of the storage
-            // permission, set up the empty preference.
-            if (packages.size() == 0 && !grantCategory.equals(ALLOWED)) {
+            // If this category is empty set up the empty preference.
+            if (packages.size() == 0) {
                 Preference empty = new Preference(context);
                 empty.setSelectable(false);
                 empty.setKey(category.getKey() + KEY_EMPTY);
