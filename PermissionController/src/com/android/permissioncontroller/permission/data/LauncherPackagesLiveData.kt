@@ -19,7 +19,6 @@ package com.android.permissioncontroller.permission.data
 import android.content.Intent
 import android.content.pm.PackageManager.MATCH_DIRECT_BOOT_AWARE
 import android.content.pm.PackageManager.MATCH_DIRECT_BOOT_UNAWARE
-import android.util.Log
 import com.android.permissioncontroller.PermissionControllerApplication
 import kotlinx.coroutines.Job
 
@@ -33,8 +32,6 @@ object LauncherPackagesLiveData : SmartAsyncMediatorLiveData<Set<String>>(),
         .addCategory(Intent.CATEGORY_LAUNCHER)
 
     override suspend fun loadDataAndPostValue(job: Job) {
-        // TODO ntmyren: remove once b/154796729 is fixed
-        Log.i("LancherPackagesLiveData", "updating LauncherPackageLiveData")
         val launcherPkgs = mutableSetOf<String>()
         for (info in PermissionControllerApplication.get().packageManager.queryIntentActivities(
             LAUNCHER_INTENT, MATCH_DIRECT_BOOT_AWARE or MATCH_DIRECT_BOOT_UNAWARE)) {
@@ -45,12 +42,12 @@ object LauncherPackagesLiveData : SmartAsyncMediatorLiveData<Set<String>>(),
     }
 
     override fun onPackageUpdate(packageName: String) {
-        updateIfActive()
+        update()
     }
 
     override fun onActive() {
         super.onActive()
-        updateIfActive()
+        update()
         PackageBroadcastReceiver.addAllCallback(this)
     }
 

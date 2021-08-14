@@ -24,9 +24,6 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.ArraySet;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -36,7 +33,6 @@ import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceGroup;
 import androidx.preference.PreferenceScreen;
 
-import com.android.permissioncontroller.DeviceUtils;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.model.legacy.PermissionApps;
@@ -50,8 +46,6 @@ import com.android.permissioncontroller.permission.utils.Utils;
 public final class PermissionAppsFragment extends SettingsWithHeader implements Callback,
         OnPreferenceClickListener {
 
-    private static final int MENU_SHOW_SYSTEM = Menu.FIRST;
-    private static final int MENU_HIDE_SYSTEM = Menu.FIRST + 1;
     private static final String KEY_CATEGORY_ALLOWED = "_allowed";
     private static final String KEY_CATEGORY_DENIED = "_denied";
     private static final String KEY_NO_APPS_ALLOWED = "_noAppsAllowed";
@@ -72,15 +66,10 @@ public final class PermissionAppsFragment extends SettingsWithHeader implements 
 
     private PermissionApps mPermissionApps;
 
-    private PreferenceScreen mExtraScreen;
+    private PreferenceScreen mSystemAppsScreen;
 
     private ArraySet<AppPermissionGroup> mToggledGroups;
     private boolean mHasConfirmedRevoke;
-
-    private boolean mShowSystem;
-    private boolean mHasSystemApps;
-    private MenuItem mShowSystemMenu;
-    private MenuItem mHideSystemMenu;
 
     private Callback mOnPermissionsLoadedListener;
 
@@ -103,40 +92,6 @@ public final class PermissionAppsFragment extends SettingsWithHeader implements 
         }
 
         mPermissionApps.refresh(true);
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        if (mHasSystemApps) {
-            mShowSystemMenu = menu.add(Menu.NONE, MENU_SHOW_SYSTEM, Menu.NONE,
-                    R.string.menu_show_system);
-            mHideSystemMenu = menu.add(Menu.NONE, MENU_HIDE_SYSTEM, Menu.NONE,
-                    R.string.menu_hide_system);
-            updateMenu();
-        }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                getActivity().finish();
-                return true;
-            case MENU_SHOW_SYSTEM:
-            case MENU_HIDE_SYSTEM:
-                mShowSystem = item.getItemId() == MENU_SHOW_SYSTEM;
-                if (mPermissionApps.getApps() != null) {
-                    onPermissionsLoaded(mPermissionApps);
-                }
-                updateMenu();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void updateMenu() {
-        mShowSystemMenu.setVisible(!mShowSystem);
-        mHideSystemMenu.setVisible(mShowSystem);
     }
 
     @Override
@@ -169,8 +124,6 @@ public final class PermissionAppsFragment extends SettingsWithHeader implements 
             return;
         }
 
-        mHasSystemApps = false;
-        boolean isTelevision = DeviceUtils.isTelevision(context);
         ArraySet<PermissionApp> mainScreenApps = new ArraySet<>();
         ArraySet<PermissionApp> systemScreenApps = new ArraySet<>();
         for (PermissionApp app : permissionApps.getApps()) {
@@ -180,26 +133,19 @@ public final class PermissionAppsFragment extends SettingsWithHeader implements 
 
             boolean isSystemApp = !Utils.isGroupOrBgGroupUserSensitive(app.getPermissionGroup());
             if (isSystemApp) {
-                mHasSystemApps = true;
-            }
-
-            if (isSystemApp && isTelevision) {
                 systemScreenApps.add(app);
-            } else if (!isSystemApp || mShowSystem) {
-                mainScreenApps.add(app);
             } else {
-                // Ignoring system apps if not TV and not asked to show system apps (mShowSystem
-                // is false)
+                mainScreenApps.add(app);
             }
         }
 
         PreferenceScreen mainScreen = getPreferenceScreen();
         if (!systemScreenApps.isEmpty()) {
-            if (mExtraScreen == null) {
-                mExtraScreen = getPreferenceManager().createPreferenceScreen(context);
+            if (mSystemAppsScreen == null) {
+                mSystemAppsScreen = getPreferenceManager().createPreferenceScreen(context);
             }
         } else {
-            mExtraScreen = null;
+            mSystemAppsScreen = null;
         }
 
         // Updating "main" screen categories
@@ -209,13 +155,12 @@ public final class PermissionAppsFragment extends SettingsWithHeader implements 
                 KEY_CATEGORY_DENIED, R.string.denied_header);
         updateCategories(context, allowedCategory, deniedCategory, mainScreenApps);
 
-
         Preference showSystemAppPref = mainScreen.findPreference(KEY_SHOW_SYSTEM_PREFS);
-        if (mExtraScreen != null) {
+        if (mSystemAppsScreen != null) {
             // Updating "system" screen categories
-            allowedCategory = findOrCreateCategory(context, mExtraScreen, KEY_CATEGORY_ALLOWED,
+            allowedCategory = findOrCreateCategory(context, mSystemAppsScreen, KEY_CATEGORY_ALLOWED,
                     R.string.allowed_header);
-            deniedCategory = findOrCreateCategory(context, mExtraScreen, KEY_CATEGORY_DENIED,
+            deniedCategory = findOrCreateCategory(context, mSystemAppsScreen, KEY_CATEGORY_DENIED,
                     R.string.denied_header);
             updateCategories(context, allowedCategory, deniedCategory, systemScreenApps);
 
@@ -230,11 +175,6 @@ public final class PermissionAppsFragment extends SettingsWithHeader implements 
 
                 mainScreen.addPreference(showSystemAppPref);
             }
-
-            int allowedSystemApps = allowedCategory.findPreference(KEY_NO_APPS_ALLOWED) != null ? 0
-                    : allowedCategory.getPreferenceCount();
-            showSystemAppPref.setSummary(getString(R.string.app_permissions_group_summary,
-                    allowedSystemApps, systemScreenApps.size()));
         } else if (showSystemAppPref != null) {
             // There are not system apps, but there is a "Show system apps" button: remove the
             // button.
@@ -245,10 +185,6 @@ public final class PermissionAppsFragment extends SettingsWithHeader implements 
 
         if (mOnPermissionsLoadedListener != null) {
             mOnPermissionsLoadedListener.onPermissionsLoaded(permissionApps);
-        }
-
-        if (mHasSystemApps) {
-            getActivity().invalidateOptionsMenu();
         }
     }
 
@@ -277,12 +213,16 @@ public final class PermissionAppsFragment extends SettingsWithHeader implements 
                     // Already have this app in the right category.
                     continue;
                 }
-            } else {
+            } else if (app.getPermissionGroup().isUserSet()) {
                 hasDenied = true;
                 if (toRemoveFromDenied.remove(key)) {
                     // Already have this app in the right category.
                     continue;
                 }
+            } else {
+                // Not granted and not user set, meaning that it was never requested, so we don't
+                // need to show it.
+                continue;
             }
 
             PreferenceCategory rightCategory = isAllowed ? allowedCategory : deniedCategory;
@@ -485,7 +425,7 @@ public final class PermissionAppsFragment extends SettingsWithHeader implements 
 
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-            if (mOuterFragment.mExtraScreen != null) {
+            if (mOuterFragment.mSystemAppsScreen != null) {
                 setPreferenceScreen();
             } else {
                 mOuterFragment.setOnPermissionsLoadedListener(this);
@@ -526,7 +466,7 @@ public final class PermissionAppsFragment extends SettingsWithHeader implements 
         }
 
         private void setPreferenceScreen() {
-            setPreferenceScreen(mOuterFragment.mExtraScreen);
+            setPreferenceScreen(mOuterFragment.mSystemAppsScreen);
             setLoading(false /* loading */, true /* animate */);
         }
     }

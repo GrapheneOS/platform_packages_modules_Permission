@@ -31,6 +31,9 @@ import com.android.permissioncontroller.permission.ui.ConfirmActionDialogFragmen
 import com.android.permissioncontroller.permission.ui.handheld.ReviewPermissionsFragment;
 import com.android.permissioncontroller.permission.ui.wear.ReviewPermissionsWearFragment;
 
+/**
+ * A dialog listing which permissions are grant to an app
+ */
 public final class ReviewPermissionsActivity extends FragmentActivity
         implements OnActionConfirmedListener {
 

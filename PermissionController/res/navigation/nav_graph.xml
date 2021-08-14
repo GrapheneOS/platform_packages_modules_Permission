@@ -27,7 +27,7 @@
 
     <fragment
         android:id="@+id/manage_standard"
-        android:name="com.android.permissioncontroller.permission.ui.handheld.ManageStandardPermissionsFragment"
+        android:name="com.android.permissioncontroller.permission.ui.handheld.ManageStandardPermissionsWrapperFragment"
         android:label="ManageStandard">
 
         <!-- Represents a transition from this fragment to another that this fragment can then
@@ -36,7 +36,7 @@
             android:id="@+id/standard_to_custom"
             app:destination="@id/manage_custom"
             app:enterAnim="@anim/activity_open_enter"
-            app:popEnterAnim="@anim/activity_close_enter"
+            app:popEnterAnim="@anim/activity_open_enter"
             app:popExitAnim="@anim/activity_close_exit"/>
 
         <action
@@ -57,7 +57,7 @@
 
     <fragment
         android:id="@+id/manage_custom"
-        android:name="com.android.permissioncontroller.permission.ui.handheld.ManageCustomPermissionsFragment"
+        android:name="com.android.permissioncontroller.permission.ui.handheld.ManageCustomPermissionsWrapperFragment"
         android:label="ManageCustom">
 
         <action
@@ -71,7 +71,7 @@
 
     <fragment
         android:id="@+id/auto_revoke"
-        android:name="com.android.permissioncontroller.permission.ui.handheld.AutoRevokeFragment"
+        android:name="com.android.permissioncontroller.permission.ui.handheld.HandheldUnusedAppsWrapperFragment"
         android:label="AutoRevoke">
 
         <action
@@ -85,7 +85,7 @@
 
     <fragment
         android:id="@+id/permission_apps"
-        android:name="com.android.permissioncontroller.permission.ui.handheld.PermissionAppsFragment"
+        android:name="com.android.permissioncontroller.permission.ui.handheld.PermissionAppsWrapperFragment"
         android:label="PermissionApps">
 
         <action
@@ -98,7 +98,7 @@
 
     <fragment
         android:id="@+id/app_permission_groups"
-        android:name="com.android.permissioncontroller.permission.ui.handheld.AppPermissionGroupsFragment"
+        android:name="com.android.permissioncontroller.permission.ui.handheld.AppPermissionGroupsWrapperFragment"
         android:label="AppPermissionGroups">
 
         <action
@@ -125,7 +125,7 @@
 
     <fragment
         android:id="@+id/custom_app_permission_groups"
-        android:name="com.android.permissioncontroller.permission.ui.handheld.AppPermissionGroupsFragment"
+        android:name="com.android.permissioncontroller.permission.ui.handheld.AppPermissionGroupsWrapperFragment"
         android:label="CustomAppPermissionGroups">
 
         <action
@@ -145,12 +145,12 @@
 
     <fragment
         android:id="@+id/all_app_permissions"
-        android:name="com.android.permissioncontroller.permission.ui.handheld.AllAppPermissionsFragment"
+        android:name="com.android.permissioncontroller.permission.ui.handheld.AllAppPermissionsWrapperFragment"
         android:label="AllAppPermissions"/>
 
     <fragment
         android:id="@+id/app_permission"
-        android:name="com.android.permissioncontroller.permission.ui.handheld.AppPermissionFragment"
+        android:name="com.android.permissioncontroller.permission.ui.handheld.AppPermissionWrapperFragment"
         android:label="AppPermission">
 
         <action

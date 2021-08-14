@@ -48,18 +48,39 @@ android_app_certificate {
     certificate: "com.android.permission",
 }
 
+filegroup {
+    name: "permission-jarjar-rules",
+    srcs: ["jarjar-rules.txt"],
+}
+
 sdk {
     name: "permission-module-sdk",
-    java_sdk_libs: [
-        "framework-permission",
-    ],
+    bootclasspath_fragments: ["com.android.permission-bootclasspath-fragment"],
+    java_sdk_libs: ["service-permission"],
 }
 
 // Encapsulate the contributions made by the com.android.permission to the bootclasspath.
 bootclasspath_fragment {
     name: "com.android.permission-bootclasspath-fragment",
-    contents: ["framework-permission"],
+    contents: [
+      "framework-permission",
+      "framework-permission-s",
+    ],
     apex_available: ["com.android.permission"],
+
+    // The bootclasspath_fragments that provide APIs on which this depends.
+    fragments: [
+        {
+            apex: "com.android.art",
+            module: "art-bootclasspath-fragment",
+        },
+    ],
+
+    // Additional stubs libraries that this fragment's contents use which are
+    // not provided by another bootclasspath_fragment.
+    additional_stubs: [
+        "android-non-updatable",
+    ],
 }
 
 // Encapsulate the contributions made by the com.android.permission to the systemserverclasspath.

@@ -26,17 +26,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-            <LinearLayout
-                android:id="@+id/prefs_container"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/prefs_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/no_permissions"
-                    style="@style/PermissionsFrameNoPermissionsText" />
+            <TextView
+                android:id="@+id/no_permissions"
+                android:visibility="gone"
+                style="@style/PermissionsFrameNoPermissionsText" />
 
-            </LinearLayout>
+        </LinearLayout>
 
         <include layout="@layout/loading_container" />
 

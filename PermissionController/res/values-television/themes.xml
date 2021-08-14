@@ -24,10 +24,15 @@
         <item name="android:backgroundDimAmount">0.8</item>
     </style>
 
+    <style name="Theme.PermissionController.Settings" parent="Settings" />
+
     <style name="GrantPermissions" parent="Theme.Leanback">
         <item name="android:windowIsFloating">true</item>
         <item name="android:windowAnimationStyle">@style/Animation.Snackbar</item>
-        <item name="android:windowElevation">@dimen/action_dialog_z</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimAmount">0.2</item>
+        <item name="android:windowBackground">@drawable/dialog_background</item>
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 
     <style name="GrantPermissions.BreadcrumbText">
@@ -54,9 +59,10 @@
         <item name="android:gravity">left|center_vertical</item>
         <item name="android:fontFamily">sans-serif-condensed</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/grant_permissions_button_color</item>
+        <item name="android:textColor">@color/tv_grant_button_text_color</item>
         <item name="android:lineSpacingMultiplier">1</item>
-        <item name="android:background">@drawable/grant_permissions_action_item</item>
+        <item name="android:background">@drawable/dialog_action_button_background</item>
+        <item name="android:layout_margin">@dimen/action_dialog_button_margin</item>
         <item name="android:paddingLeft">@dimen/action_dialog_button_padding_left</item>
         <item name="android:paddingRight">@dimen/action_dialog_button_padding_right</item>
         <item name="android:paddingTop">@dimen/action_dialog_button_padding_top</item>
@@ -67,5 +73,22 @@
     <style name="Animation.Snackbar" parent="@android:style/Animation">
         <item name="android:windowEnterAnimation">@anim/snackbar_enter</item>
         <item name="android:windowExitAnimation">@anim/snackbar_exit</item>
+    </style>
+
+    <style name="RequestRole" parent="android:Theme.DeviceDefault.Settings">
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarDividerColor">@null</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:alertDialogTheme">@style/RequestRoleDialog</item>
     </style>
 </resources>

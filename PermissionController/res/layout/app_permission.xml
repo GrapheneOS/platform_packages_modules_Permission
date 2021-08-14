@@ -35,9 +35,6 @@
 
             <include layout="@layout/header_large" />
 
-            <View
-                style="@style/LargeHeaderDivider" />
-
             <LinearLayout
                 style="@style/AppPermissionSelection">
 
@@ -91,6 +88,33 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/location_accuracy"
+                    style="@style/AppPermissionLocationAccuracy">
+
+                    <LinearLayout
+                        android:duplicateParentState="true"
+                        style="@style/AppPermissionLocationAccuracyText">
+                        <TextView
+                            android:duplicateParentState="true"
+                            android:text="@string/app_permission_location_accuracy"
+                            style="@style/AppPermissionLocationAccuracyTitle" />
+                        <TextView
+                            android:duplicateParentState="true"
+                            android:text="@string/app_permission_location_accuracy_subtitle"
+                            style="@style/AppPermissionLocationAccuracySubtitle" />
+                    </LinearLayout>
+
+                    <Switch
+                        android:id="@+id/location_accuracy_switch"
+                        android:checked="true"
+                        android:duplicateParentState="true"
+                        style="@style/AppPermissionLocationAccuracySwitch" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <TextView
@@ -116,10 +140,6 @@
 
             <LinearLayout
                 style="@style/AppPermissionFooter">
-
-                <View
-                    android:id="@+id/divider"
-                    style="@style/AppPermissionFooterDivider" />
 
                 <TextView
                     android:id="@+id/footer_link_1"

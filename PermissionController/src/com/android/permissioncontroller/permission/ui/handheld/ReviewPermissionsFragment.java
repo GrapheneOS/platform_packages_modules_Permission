@@ -81,9 +81,12 @@ public final class ReviewPermissionsFragment extends PreferenceFragmentCompat
 
     private boolean mHasConfirmedRevoke;
 
+    /**
+     * @return a new fragment
+     */
     public static ReviewPermissionsFragment newInstance(PackageInfo packageInfo) {
         Bundle arguments = new Bundle();
-        arguments.putParcelable(ReviewPermissionsFragment.EXTRA_PACKAGE_INFO, packageInfo);
+        arguments.putParcelable(EXTRA_PACKAGE_INFO, packageInfo);
         ReviewPermissionsFragment instance = new ReviewPermissionsFragment();
         instance.setArguments(arguments);
         instance.setRetainInstance(true);
@@ -101,12 +104,12 @@ public final class ReviewPermissionsFragment extends PreferenceFragmentCompat
 
         PackageInfo packageInfo = getArguments().getParcelable(EXTRA_PACKAGE_INFO);
         if (packageInfo == null) {
-            activity.finish();
+            activity.finishAfterTransition();
             return;
         }
 
         mAppPermissions = new AppPermissions(activity, packageInfo, false, true,
-                () -> getActivity().finish());
+                () -> getActivity().finishAfterTransition());
 
         boolean reviewRequired = false;
         for (AppPermissionGroup group : mAppPermissions.getPermissionGroups()) {
@@ -122,7 +125,7 @@ public final class ReviewPermissionsFragment extends PreferenceFragmentCompat
             // are restricted. Hence there is nothing to review and instantly continue.
             confirmPermissionsReview();
             executeCallback(true);
-            activity.finish();
+            activity.finishAfterTransition();
         }
     }
 
@@ -165,7 +168,7 @@ public final class ReviewPermissionsFragment extends PreferenceFragmentCompat
             intent.putExtra(ManagePermissionsActivity.EXTRA_ALL_PERMISSIONS, true);
             getActivity().startActivity(intent);
         }
-        activity.finish();
+        activity.finishAfterTransition();
     }
 
     private void grantReviewedPermission(AppPermissionGroup group) {

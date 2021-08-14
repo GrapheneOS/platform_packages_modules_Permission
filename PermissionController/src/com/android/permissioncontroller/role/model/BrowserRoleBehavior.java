@@ -28,10 +28,14 @@ import android.util.ArraySet;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
+import com.android.permissioncontroller.permission.utils.CollectionUtils;
+import com.android.permissioncontroller.role.utils.PackageUtils;
 import com.android.permissioncontroller.role.utils.UserUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -43,21 +47,38 @@ import java.util.List;
  * @see com.android.server.pm.PackageManagerService#resolveAllBrowserApps(int)
  */
 public class BrowserRoleBehavior implements RoleBehavior {
-
     private static final Intent BROWSER_INTENT = new Intent()
             .setAction(Intent.ACTION_VIEW)
             .addCategory(Intent.CATEGORY_BROWSABLE)
             .setData(Uri.fromParts("http", "", null));
 
+    private static final List<String> SYSTEM_BROWSER_PERMISSIONS = Arrays.asList(
+            android.Manifest.permission.ACCESS_COARSE_LOCATION,
+            android.Manifest.permission.ACCESS_FINE_LOCATION
+    );
+
     @Nullable
     @Override
     public String getFallbackHolder(@NonNull Role role, @NonNull Context context) {
-        List<String> packageNames = role.getQualifyingPackagesAsUser(Process.myUserHandle(),
+        UserHandle user = Process.myUserHandle();
+        List<String> qualifyingPackageNames = getQualifyingPackagesAsUserInternal(null, false, user,
                 context);
-        if (packageNames.size() == 1) {
-            return packageNames.get(0);
+        if (qualifyingPackageNames.size() == 1) {
+            return qualifyingPackageNames.get(0);
         }
-        return null;
+
+        if (SdkLevel.isAtLeastS()) {
+            List<String> qualifyingSystemPackageNames = getQualifyingPackagesAsUserInternal(null,
+                    true, user, context);
+            if (qualifyingSystemPackageNames.size() == 1) {
+                return qualifyingSystemPackageNames.get(0);
+            }
+
+            List<String> defaultPackageNames = role.getDefaultHolders(context);
+            return CollectionUtils.firstOrNull(defaultPackageNames);
+        } else {
+            return null;
+        }
     }
 
     // PackageManager.queryIntentActivities() will only return the default browser if one was set.
@@ -67,21 +88,21 @@ public class BrowserRoleBehavior implements RoleBehavior {
     @Override
     public List<String> getQualifyingPackagesAsUser(@NonNull Role role, @NonNull UserHandle user,
             @NonNull Context context) {
-        return getQualifyingPackagesAsUserInternal(null, user, context);
+        return getQualifyingPackagesAsUserInternal(null, false, user, context);
     }
 
     @Nullable
     @Override
     public Boolean isPackageQualified(@NonNull Role role, @NonNull String packageName,
             @NonNull Context context) {
-        List<String> packageNames = getQualifyingPackagesAsUserInternal(packageName,
+        List<String> packageNames = getQualifyingPackagesAsUserInternal(packageName, false,
                 Process.myUserHandle(), context);
         return !packageNames.isEmpty();
     }
 
     @NonNull
     private List<String> getQualifyingPackagesAsUserInternal(@Nullable String packageName,
-            @NonNull UserHandle user, @NonNull Context context) {
+            boolean matchSystemOnly, @NonNull UserHandle user, @NonNull Context context) {
         Context userContext = UserUtils.getUserContext(context, user);
         PackageManager userPackageManager = userContext.getPackageManager();
         Intent intent = BROWSER_INTENT;
@@ -89,10 +110,13 @@ public class BrowserRoleBehavior implements RoleBehavior {
             intent = new Intent(intent)
                     .setPackage(packageName);
         }
-        List<ResolveInfo> resolveInfos = userPackageManager.queryIntentActivities(intent,
-                // To one's surprise, MATCH_ALL doesn't include MATCH_DIRECT_BOOT_*.
-                PackageManager.MATCH_ALL | PackageManager.MATCH_DIRECT_BOOT_AWARE
-                        | PackageManager.MATCH_DIRECT_BOOT_UNAWARE);
+        // To one's surprise, MATCH_ALL doesn't include MATCH_DIRECT_BOOT_*.
+        int flags = PackageManager.MATCH_ALL | PackageManager.MATCH_DIRECT_BOOT_AWARE
+                | PackageManager.MATCH_DIRECT_BOOT_UNAWARE | PackageManager.MATCH_DEFAULT_ONLY;
+        if (matchSystemOnly) {
+            flags |= PackageManager.MATCH_SYSTEM_ONLY;
+        }
+        List<ResolveInfo> resolveInfos = userPackageManager.queryIntentActivities(intent, flags);
         ArraySet<String> packageNames = new ArraySet<>();
         int resolveInfosSize = resolveInfos.size();
         for (int i = 0; i < resolveInfosSize; i++) {
@@ -104,6 +128,18 @@ public class BrowserRoleBehavior implements RoleBehavior {
             packageNames.add(resolveInfo.activityInfo.packageName);
         }
         return new ArrayList<>(packageNames);
+    }
+
+    @Override
+    public void grant(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
+        // @see com.android.server.pm.permission.DefaultPermissionGrantPolicy
+        //      #grantDefaultPermissionsToDefaultBrowser(java.lang.String, int)
+        if (SdkLevel.isAtLeastS()) {
+            if (PackageUtils.isSystemPackage(packageName, context)) {
+                Permissions.grant(packageName, SYSTEM_BROWSER_PERMISSIONS, false, false, false,
+                        true, false, context);
+            }
+        }
     }
 
     @Override

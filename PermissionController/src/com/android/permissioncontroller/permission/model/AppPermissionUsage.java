@@ -18,21 +18,35 @@ package com.android.permissioncontroller.permission.model;
 
 import static android.Manifest.permission_group.MICROPHONE;
 
+import android.Manifest;
 import android.app.AppOpsManager;
+import android.app.AppOpsManager.AttributedHistoricalOps;
+import android.app.AppOpsManager.AttributedOpEntry;
 import android.app.AppOpsManager.HistoricalOp;
 import android.app.AppOpsManager.HistoricalPackageOps;
 import android.app.AppOpsManager.OpEntry;
+import android.app.AppOpsManager.OpEventProxyInfo;
 import android.app.AppOpsManager.PackageOps;
+import android.content.pm.Attribution;
 import android.media.AudioRecordingConfiguration;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import com.android.permissioncontroller.permission.model.legacy.PermissionApps.PermissionApp;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.function.Function;
+import java.util.stream.Collectors;
+
+import kotlin.Triple;
 
 /**
  * Stats for permission usage of an app. This data is for a given time period,
@@ -41,6 +55,12 @@ import java.util.function.Function;
 public final class AppPermissionUsage {
     private final @NonNull List<GroupUsage> mGroupUsages = new ArrayList<>();
     private final @NonNull PermissionApp mPermissionApp;
+
+    // TODO: theianchen move them to SystemApi
+    private static final String OPSTR_PHONE_CALL_MICROPHONE = "android:phone_call_microphone";
+    private static final String OPSTR_PHONE_CALL_CAMERA = "android:phone_call_camera";
+    private static final int PRIVACY_HUB_FLAGS = AppOpsManager.OP_FLAG_SELF
+            | AppOpsManager.OP_FLAG_TRUSTED_PROXIED | AppOpsManager.OP_FLAG_TRUSTED_PROXY;
 
     private AppPermissionUsage(@NonNull PermissionApp permissionApp,
             @NonNull List<AppPermissionGroup> groups, @Nullable PackageOps lastUsage,
@@ -117,7 +137,7 @@ public final class AppPermissionUsage {
      * Stats for permission usage of a permission group. This data is for a
      * given time period, i.e. does not contain the full history.
      */
-    public static class GroupUsage {
+    public static class GroupUsage implements TimelineUsage {
         private final @NonNull AppPermissionGroup mGroup;
         private final @Nullable PackageOps mLastUsage;
         private final @Nullable HistoricalPackageOps mHistoricalUsage;
@@ -133,52 +153,58 @@ public final class AppPermissionUsage {
             if (mLastUsage == null) {
                 return 0;
             }
-            return lastAccessAggregate(
-                    (op) -> op.getLastAccessTime(AppOpsManager.OP_FLAGS_ALL_TRUSTED));
+
+            return lastAccessAggregate((op) -> op.getLastAccessTime(PRIVACY_HUB_FLAGS));
         }
 
         public long getLastAccessForegroundTime() {
             if (mLastUsage == null) {
                 return 0;
             }
-            return lastAccessAggregate(
-                    (op) -> op.getLastAccessForegroundTime(AppOpsManager.OP_FLAGS_ALL_TRUSTED));
+
+            return lastAccessAggregate((op) -> op.getLastAccessForegroundTime(PRIVACY_HUB_FLAGS));
         }
 
         public long getLastAccessBackgroundTime() {
             if (mLastUsage == null) {
                 return 0;
             }
-            return lastAccessAggregate(
-                    (op) -> op.getLastAccessBackgroundTime(AppOpsManager.OP_FLAGS_ALL_TRUSTED));
+
+            return lastAccessAggregate((op) -> op.getLastAccessBackgroundTime(PRIVACY_HUB_FLAGS));
         }
 
         public long getForegroundAccessCount() {
             if (mHistoricalUsage == null) {
                 return 0;
             }
+
             return extractAggregate((HistoricalOp op)
-                    -> op.getForegroundAccessCount(AppOpsManager.OP_FLAGS_ALL_TRUSTED));
+                    -> op.getForegroundAccessCount(PRIVACY_HUB_FLAGS));
         }
 
         public long getBackgroundAccessCount() {
             if (mHistoricalUsage == null) {
                 return 0;
             }
+
             return extractAggregate((HistoricalOp op)
-                    -> op.getBackgroundAccessCount(AppOpsManager.OP_FLAGS_ALL_TRUSTED));
+                    -> op.getBackgroundAccessCount(PRIVACY_HUB_FLAGS));
         }
 
         public long getAccessCount() {
             if (mHistoricalUsage == null) {
                 return 0;
             }
+
             return extractAggregate((HistoricalOp op) ->
-                    op.getForegroundAccessCount(AppOpsManager.OP_FLAGS_ALL_TRUSTED)
-                            + op.getBackgroundAccessCount(AppOpsManager.OP_FLAGS_ALL_TRUSTED)
+                    op.getForegroundAccessCount(PRIVACY_HUB_FLAGS)
+                            + op.getBackgroundAccessCount(PRIVACY_HUB_FLAGS)
             );
         }
 
+        /**
+         * Get the last access duration.
+         */
         public long getLastAccessDuration() {
             if (mLastUsage == null) {
                 return 0;
@@ -187,7 +213,9 @@ public final class AppPermissionUsage {
                     (op) -> op.getLastDuration(AppOpsManager.OP_FLAGS_ALL_TRUSTED));
         }
 
-
+        /**
+         * Get the access duration.
+         */
         public long getAccessDuration() {
             if (mHistoricalUsage == null) {
                 return 0;
@@ -198,63 +226,280 @@ public final class AppPermissionUsage {
             );
         }
 
-        public boolean isRunning() {
-            if (mLastUsage == null) {
+
+        @Override
+        public boolean hasDiscreteData() {
+            if (mHistoricalUsage == null) {
                 return false;
             }
-            final ArrayList<Permission> permissions = mGroup.getPermissions();
-            final int permissionCount = permissions.size();
-            for (int i = 0; i < permissionCount; i++) {
-                final Permission permission = permissions.get(i);
-                final String opName = permission.getAppOp();
-                final List<OpEntry> ops = mLastUsage.getOps();
-                final int opCount = ops.size();
-                for (int j = 0; j < opCount; j++) {
-                    final OpEntry op = ops.get(j);
-                    if (op.getOpStr().equals(opName) && op.isRunning()) {
-                        return true;
-                    }
+
+            Set<String> allOps = getAllOps(mGroup);
+            for (String opName : allOps) {
+                final HistoricalOp historicalOp = mHistoricalUsage.getOp(opName);
+                if (historicalOp != null && historicalOp.getDiscreteAccessCount() > 0) {
+                    return true;
                 }
             }
             return false;
         }
 
+        @Override
+        public List<Triple<Long, Long, OpEventProxyInfo>> getAllDiscreteAccessTime() {
+            List<Triple<Long, Long, OpEventProxyInfo>> allDiscreteAccessTime = new ArrayList<>();
+            if (!hasDiscreteData()) {
+                return allDiscreteAccessTime;
+            }
+
+            Set<String> allOps = getAllOps(mGroup);
+            for (String opName : allOps) {
+                final HistoricalOp historicalOp = mHistoricalUsage.getOp(opName);
+                if (historicalOp == null) {
+                    continue;
+                }
+
+                int discreteAccessCount = historicalOp.getDiscreteAccessCount();
+                for (int j = 0; j < discreteAccessCount; j++) {
+                    AppOpsManager.AttributedOpEntry opEntry = historicalOp.getDiscreteAccessAt(j);
+                    allDiscreteAccessTime.add(new Triple<>(
+                            opEntry.getLastAccessTime(PRIVACY_HUB_FLAGS),
+                            opEntry.getLastDuration(PRIVACY_HUB_FLAGS),
+                            opEntry.getLastProxyInfo(PRIVACY_HUB_FLAGS)));
+                }
+            }
+
+            return allDiscreteAccessTime;
+        }
+
+        public boolean isRunning() {
+            if (mLastUsage == null) {
+                return false;
+            }
+
+            Set<String> allOps = getAllOps(mGroup);
+            final List<OpEntry> ops = mLastUsage.getOps();
+            final int opCount = ops.size();
+            for (int j = 0; j < opCount; j++) {
+                final OpEntry op = ops.get(j);
+                if (allOps.contains(op.getOpStr()) && op.isRunning()) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         private long extractAggregate(@NonNull Function<HistoricalOp, Long> extractor) {
             long aggregate = 0;
-            final ArrayList<Permission> permissions = mGroup.getPermissions();
-            final int permissionCount = permissions.size();
-            for (int i = 0; i < permissionCount; i++) {
-                final Permission permission = permissions.get(i);
-                final String opName = permission.getAppOp();
+
+            Set<String> allOps = getAllOps(mGroup);
+            for (String opName : allOps) {
                 final HistoricalOp historicalOp = mHistoricalUsage.getOp(opName);
                 if (historicalOp != null) {
                     aggregate += extractor.apply(historicalOp);
                 }
             }
+
             return aggregate;
         }
 
         private long lastAccessAggregate(@NonNull Function<OpEntry, Long> extractor) {
             long aggregate = 0;
-            final ArrayList<Permission> permissions = mGroup.getPermissions();
+
+            Set<String> allOps = getAllOps(mGroup);
+            final List<OpEntry> ops = mLastUsage.getOps();
+            final int opCount = ops.size();
+
+            for (int opNum = 0; opNum < opCount; opNum++) {
+                final OpEntry op = ops.get(opNum);
+                if (allOps.contains(op.getOpStr())) {
+                    aggregate = Math.max(aggregate, extractor.apply(op));
+                }
+            }
+
+            return aggregate;
+        }
+
+        private static Set<String> getAllOps(AppPermissionGroup appPermissionGroup) {
+            Set<String> allOps = new HashSet<>();
+            List<Permission> permissions = appPermissionGroup.getPermissions();
             final int permissionCount = permissions.size();
             for (int permissionNum = 0; permissionNum < permissionCount; permissionNum++) {
                 final Permission permission = permissions.get(permissionNum);
                 final String opName = permission.getAppOp();
-                final List<OpEntry> ops = mLastUsage.getOps();
-                final int opCount = ops.size();
-                for (int opNum = 0; opNum < opCount; opNum++) {
-                    final OpEntry op = ops.get(opNum);
-                    if (op.getOpStr().equals(opName)) {
-                        aggregate = Math.max(aggregate, extractor.apply(op));
+                if (opName != null) {
+                    allOps.add(opName);
+                }
+            }
+
+            if (appPermissionGroup.getName().equals(Manifest.permission_group.MICROPHONE)) {
+                allOps.add(OPSTR_PHONE_CALL_MICROPHONE);
+            }
+
+            if (appPermissionGroup.getName().equals(Manifest.permission_group.CAMERA)) {
+                allOps.add(OPSTR_PHONE_CALL_CAMERA);
+            }
+
+            return allOps;
+        }
+
+        @Override
+        public @NonNull AppPermissionGroup getGroup() {
+            return mGroup;
+        }
+
+        @Override
+        public int getLabel() {
+            return -1;
+        }
+
+        @Override
+        public @Nullable ArrayList<String> getAttributionTags() {
+            if (mHistoricalUsage == null || mHistoricalUsage.getAttributedOpsCount() == 0) {
+                return null;
+            }
+            ArrayList<String> attributionTags = new ArrayList<>();
+            int count = mHistoricalUsage.getAttributedOpsCount();
+            for (int i = 0; i < count; i++) {
+                attributionTags.add(mHistoricalUsage.getAttributedOpsAt(i).getTag());
+            }
+            return attributionTags;
+        }
+
+        /** Creates a lookup from the attribution tag to its label. **/
+        @RequiresApi(Build.VERSION_CODES.S)
+        private static Map<String, Integer> getAttributionTagToLabelMap(
+                Attribution[] attributions) {
+            Map<String, Integer> attributionTagToLabelMap = new HashMap<>();
+            for (Attribution attribution : attributions) {
+                attributionTagToLabelMap.put(attribution.getTag(), attribution.getLabel());
+            }
+            return attributionTagToLabelMap;
+        }
+
+        /** Partitions the usages based on the attribution tag label. */
+        @RequiresApi(Build.VERSION_CODES.S)
+        public List<AttributionLabelledGroupUsage> getAttributionLabelledGroupUsages() {
+            Map<String, Integer> attributionTagToLabelMap =
+                    getAttributionTagToLabelMap(getGroup().getApp().attributions);
+
+            Set<String> allOps = getAllOps(mGroup);
+
+            // we need to collect discreteAccessTime for each label
+            Map<Integer, AttributionLabelledGroupUsage.Builder> labelDiscreteAccessMap =
+                    new HashMap<>();
+
+            for (int i = 0; i < mHistoricalUsage.getAttributedOpsCount(); i++) {
+                AttributedHistoricalOps attributedOp = mHistoricalUsage.getAttributedOpsAt(i);
+                String attributionTag = attributedOp.getTag();
+
+                for (String opName : allOps) {
+                    final HistoricalOp historicalOp = attributedOp.getOp(opName);
+                    if (historicalOp == null) {
+                        continue;
+                    }
+
+                    int discreteAccessCount = historicalOp.getDiscreteAccessCount();
+                    for (int j = 0; j < discreteAccessCount; j++) {
+                        AttributedOpEntry opEntry = historicalOp.getDiscreteAccessAt(j);
+                        Integer label = attributionTagToLabelMap.get(attributedOp.getTag());
+                        if (!labelDiscreteAccessMap.containsKey(label)) {
+                            labelDiscreteAccessMap.put(label,
+                                    new AttributionLabelledGroupUsage.Builder(label, getGroup()));
+                        }
+                        labelDiscreteAccessMap.get(label).addAttributionTag(attributionTag);
+                        labelDiscreteAccessMap.get(label).addDiscreteAccessTime(new Triple<>(
+                                opEntry.getLastAccessTime(PRIVACY_HUB_FLAGS),
+                                opEntry.getLastDuration(PRIVACY_HUB_FLAGS),
+                                opEntry.getLastProxyInfo(PRIVACY_HUB_FLAGS)));
                     }
                 }
             }
-            return aggregate;
+
+            return labelDiscreteAccessMap.entrySet().stream()
+                    .map(e -> e.getValue().build())
+                    .collect(Collectors.toList());
         }
 
-        public @NonNull AppPermissionGroup getGroup() {
-            return mGroup;
+        /**
+         * Represents the slice of {@link GroupUsage} with a label.
+         *
+         * <p> -1 as label means that there was no entry for the attribution tag in the
+         * manifest.</p>
+         */
+        public static class AttributionLabelledGroupUsage implements TimelineUsage {
+            private final int mLabel;
+            private final AppPermissionGroup mAppPermissionGroup;
+            private final List<String> mAttributionTags;
+            private final List<Triple<Long, Long, OpEventProxyInfo>> mDiscreteAccessTime;
+
+            AttributionLabelledGroupUsage(int label,
+                    AppPermissionGroup appPermissionGroup,
+                    List<String> attributionTags,
+                    List<Triple<Long, Long, OpEventProxyInfo>> discreteAccessTime) {
+                mLabel = label;
+                mAppPermissionGroup = appPermissionGroup;
+                mAttributionTags = attributionTags;
+                mDiscreteAccessTime = discreteAccessTime;
+            }
+
+            @Override
+            public int getLabel() {
+                return mLabel;
+            }
+
+            @Override
+            public boolean hasDiscreteData() {
+                return mDiscreteAccessTime.size() > 0;
+            }
+
+            @Override
+            public List<Triple<Long, Long, OpEventProxyInfo>> getAllDiscreteAccessTime() {
+                return mDiscreteAccessTime;
+            }
+
+            @Override
+            public List<String> getAttributionTags() {
+                return mAttributionTags;
+            }
+
+            @Override
+            public AppPermissionGroup getGroup() {
+                return mAppPermissionGroup;
+            }
+
+            static class Builder {
+                private final int mLabel;
+                private final AppPermissionGroup mAppPermissionGroup;
+                private Set<String> mAttributionTags;
+                private List<Triple<Long, Long, OpEventProxyInfo>>  mDiscreteAccessTime;
+
+                Builder(int label, AppPermissionGroup appPermissionGroup) {
+                    mLabel = label;
+                    mAppPermissionGroup = appPermissionGroup;
+                    mAttributionTags = new HashSet<>();
+                    mDiscreteAccessTime = new ArrayList<>();
+                }
+
+                @NonNull Builder addAttributionTag(String attributionTag) {
+                    mAttributionTags.add(attributionTag);
+                    return this;
+                }
+
+                @NonNull
+                Builder addDiscreteAccessTime(
+                        Triple<Long, Long, OpEventProxyInfo> discreteAccessTime) {
+                    mDiscreteAccessTime.add(discreteAccessTime);
+                    return this;
+                }
+
+                AttributionLabelledGroupUsage build() {
+                    return new AttributionLabelledGroupUsage(mLabel,
+                            mAppPermissionGroup,
+                            new ArrayList<String>() {{
+                                addAll(mAttributionTags);
+                            }}, mDiscreteAccessTime);
+                }
+            }
         }
     }
 
@@ -297,5 +542,37 @@ public final class AppPermissionUsage {
             return new AppPermissionUsage(mPermissionApp, mGroups, mLastUsage, mHistoricalUsage,
                     mAudioRecordingConfigurations);
         }
+    }
+
+    /** Usage for showing timeline view for a specific permission group with a label. */
+    public interface TimelineUsage {
+        /**
+         * Returns whether the usage has discrete data.
+         */
+        boolean hasDiscreteData();
+
+        /**
+         * Returns all discrete access time in millis.
+         * Returns a list of triples of (access time, access duration, proxy)
+         */
+        List<Triple<Long, Long, OpEventProxyInfo>> getAllDiscreteAccessTime();
+
+        /**
+         * Returns attribution tags for the usage.
+         */
+        List<String> getAttributionTags();
+
+        /**
+         * Returns the permission group of the usage.
+         */
+        AppPermissionGroup getGroup();
+
+        /**
+         * Returns the user facing string's resource id.
+         *
+         * <p> -1 means show the app name otherwise get the string resource from the app
+         * context.</p>
+         */
+        int getLabel();
     }
 }

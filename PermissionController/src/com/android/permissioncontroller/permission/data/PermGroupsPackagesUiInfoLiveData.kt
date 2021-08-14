@@ -17,10 +17,13 @@
 package com.android.permissioncontroller.permission.data
 
 import android.app.Application
+import android.app.role.RoleManager
 import android.os.UserHandle
 import androidx.lifecycle.LiveData
+import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo
 import com.android.permissioncontroller.permission.model.livedatatypes.PermGroupPackagesUiInfo
+import com.android.permissioncontroller.permission.utils.Utils
 
 /**
  * A LiveData which tracks all app permission groups for a set of permission groups, either platform
@@ -34,6 +37,7 @@ class PermGroupsPackagesUiInfoLiveData(
     groupNamesLiveData: LiveData<List<String>>
 ) : SmartUpdateMediatorLiveData<
     @kotlin.jvm.JvmSuppressWildcards Map<String, PermGroupPackagesUiInfo?>>() {
+    private val SYSTEM_SHELL = "android.app.role.SYSTEM_SHELL"
 
     /**
      * Map<permission group name, PermGroupUiLiveDatas>
@@ -47,7 +51,7 @@ class PermGroupsPackagesUiInfoLiveData(
     init {
         addSource(groupNamesLiveData) {
             groupNames = it ?: emptyList()
-            updateIfActive()
+            update()
             getPermGroupPackageLiveDatas()
         }
     }
@@ -57,28 +61,63 @@ class PermGroupsPackagesUiInfoLiveData(
         setSourcesToDifference(groupNames, permGroupPackagesLiveDatas, getLiveData)
     }
 
-    private fun getNonSystemTotal(uiInfo: Map<Pair<String, UserHandle>, AppPermGroupUiInfo>): Int {
-        var shownNonSystem = 0
-        for ((_, appPermGroup) in uiInfo) {
-            if (appPermGroup.shouldShow && !appPermGroup.isSystem) {
-                shownNonSystem++
-            }
-        }
-        return shownNonSystem
+    private fun isGranted(grantState: AppPermGroupUiInfo.PermGrantState): Boolean {
+        return grantState != AppPermGroupUiInfo.PermGrantState.PERMS_DENIED &&
+                grantState != AppPermGroupUiInfo.PermGrantState.PERMS_ASK
     }
 
-    private fun getNonSystemGranted(
-        uiInfo: Map<Pair<String, UserHandle>, AppPermGroupUiInfo>
-    ): Int {
-        var granted = 0
-        for ((_, appPermGroup) in uiInfo) {
-            if (appPermGroup.shouldShow && !appPermGroup.isSystem &&
-                appPermGroup.permGrantState != AppPermGroupUiInfo.PermGrantState.PERMS_DENIED &&
-                appPermGroup.permGrantState != AppPermGroupUiInfo.PermGrantState.PERMS_ASK) {
-                granted++
+    private fun createPermGroupPackageUiInfo(
+        groupName: String,
+        appPermGroups: Map<Pair<String, UserHandle>, AppPermGroupUiInfo>
+    ): PermGroupPackagesUiInfo {
+        var nonSystem = 0
+        var grantedNonSystem = 0
+        var userInteractedNonSystem = 0
+        var grantedSystem = 0
+        var userInteractedSystem = 0
+        var firstGrantedSystemPackageName: String? = null
+
+        for ((packageUserPair, appPermGroup) in appPermGroups) {
+            if (!appPermGroup.shouldShow) {
+                continue
+            }
+
+            if (appPermGroup.isSystem) {
+                if (isGranted(appPermGroup.permGrantState)) {
+                    if (grantedSystem == 0) {
+                        firstGrantedSystemPackageName = packageUserPair.first
+                    }
+                    grantedSystem++
+                    userInteractedSystem++
+                } else if (appPermGroup.isUserSet) {
+                    userInteractedSystem++
+                }
+            } else {
+                nonSystem++
+
+                if (isGranted(appPermGroup.permGrantState)) {
+                    grantedNonSystem++
+                    userInteractedNonSystem++
+                } else if (appPermGroup.isUserSet) {
+                    userInteractedNonSystem++
+                }
             }
         }
-        return granted
+        val onlyShellGranted = grantedNonSystem == 0 && grantedSystem == 1 &&
+                isPackageShell(firstGrantedSystemPackageName)
+        return PermGroupPackagesUiInfo(groupName, nonSystem, grantedNonSystem,
+                userInteractedNonSystem, grantedSystem, userInteractedSystem, onlyShellGranted)
+    }
+
+    private fun isPackageShell(packageName: String?): Boolean {
+        if (packageName == null) {
+            return false
+        }
+
+        // This method is only called at most once per permission group, so no need to cache value
+        val roleManager = Utils.getSystemServiceSafe(PermissionControllerApplication.get(),
+            RoleManager::class.java)
+        return roleManager.getRoleHolders(SYSTEM_SHELL).contains(packageName)
     }
 
     override fun onUpdate() {
@@ -92,8 +131,7 @@ class PermGroupsPackagesUiInfoLiveData(
         for (groupName in groupNames) {
             allPackageData[groupName] = if (haveAllLiveDatas && allInitialized) {
                 permGroupPackagesLiveDatas[groupName]?.value?.let { uiInfo ->
-                    PermGroupPackagesUiInfo(groupName,
-                        getNonSystemTotal(uiInfo), getNonSystemGranted(uiInfo))
+                    createPermGroupPackageUiInfo(groupName, uiInfo)
                 }
             } else {
                 null

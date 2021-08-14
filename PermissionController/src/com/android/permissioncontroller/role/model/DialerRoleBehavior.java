@@ -26,8 +26,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.preference.Preference;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
+import com.android.permissioncontroller.role.utils.PackageUtils;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -38,6 +42,13 @@ import java.util.Objects;
  * @see com.android.settings.applications.defaultapps.DefaultPhonePicker
  */
 public class DialerRoleBehavior implements RoleBehavior {
+
+    /**
+     * Permissions to be granted if the application fulfilling the dialer role is also a system app.
+     */
+    private static final List<String> SYSTEM_DIALER_PERMISSIONS = Arrays.asList(
+            android.Manifest.permission.ACCESS_RCS_USER_CAPABILITY_EXCHANGE
+    );
 
     @Override
     public boolean isAvailableAsUser(@NonNull Role role, @NonNull UserHandle user,
@@ -71,5 +82,23 @@ public class DialerRoleBehavior implements RoleBehavior {
     public boolean isVisibleAsUser(@NonNull Role role, @NonNull UserHandle user,
             @NonNull Context context) {
         return context.getResources().getBoolean(R.bool.config_showDialerRole);
+    }
+
+    @Override
+    public void grant(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
+        if (SdkLevel.isAtLeastS()) {
+            if (PackageUtils.isSystemPackage(packageName, context)) {
+                Permissions.grant(packageName, SYSTEM_DIALER_PERMISSIONS, false, false,
+                        true, false, false, context);
+            }
+        }
+    }
+
+    @Override
+    public void revoke(@NonNull Role role, @NonNull String packageName,
+            @NonNull Context context) {
+        if (SdkLevel.isAtLeastS()) {
+            Permissions.revoke(packageName, SYSTEM_DIALER_PERMISSIONS, true, false, false, context);
+        }
     }
 }

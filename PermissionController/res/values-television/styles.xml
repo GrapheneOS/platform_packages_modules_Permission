@@ -34,4 +34,29 @@
         <item name="layout">@layout/preference_permissions_switch</item>
     </style>
 
+    <!-- Request role dialog start -->
+    <style name="RequestRoleDialog" parent="@android:style/Theme.DeviceDefault.Dialog.Alert">
+        <item name="android:buttonBarStyle">@style/RequestRoleButtonBar</item>
+    </style>
+
+    <style name="RequestRoleButtonBar">
+        <item name="android:padding">@dimen/request_role_padding</item>
+    </style>
+
+    <style name="RequestRoleTitle" parent="@style/RequestRoleTitleBase">
+        <item name="android:paddingHorizontal">@dimen/request_role_padding</item>
+        <item name="android:paddingBottom">20dp</item>
+    </style>
+
+    <style name="RequestRoleTitleIcon">
+        <item name="android:visibility">gone</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+    </style>
+
+    <style name="RequestRoleItem" parent="RequestRoleItemBase">
+        <item name="android:paddingHorizontal">@dimen/request_role_padding</item>
+    </style>
+    <!-- Request role dialog end -->
+
 </resources>

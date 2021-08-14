@@ -31,6 +31,7 @@ import android.widget.TextView;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.settingslib.widget.ActionBarShadowController;
@@ -65,7 +66,9 @@ public abstract class PermissionsFrameFragment extends PreferenceFragmentCompat 
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
 
-        Utils.prepareSearchMenuItem(menu, requireContext());
+        if (!SdkLevel.isAtLeastS()) {
+            Utils.prepareSearchMenuItem(menu, requireContext());
+        }
     }
 
     @Override

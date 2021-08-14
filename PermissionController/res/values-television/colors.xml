@@ -26,13 +26,18 @@
 
     <color name="lb_preference_decor_list_background">#FF202124</color>
 
-    <color name="grant_permissions_background_color">#ff263238</color>
+    <color name="grant_permissions_background_color">#FF263238</color>
+    <color name="grant_permissions_background_color_with_blur">#BB263238</color>
     <color name="grant_permissions_app_color">@color/grant_permissions_white_text_alpha_100</color>
     <color name="grant_permissions_progress_color">@color/grant_permissions_white_text_alpha_100</color>
     <color name="grant_permissions_title_color">@color/grant_permissions_white_text_alpha_70</color>
     <color name="grant_permissions_body_color">@color/grant_permissions_white_text_alpha_70</color>
+    <color name="grant_permissions_button_background_color_unfocused">#1AFFFFFF</color>
+    <color name="grant_permissions_button_background_color_focused">#E8EAED</color>
     <color name="grant_permissions_button_color">@color/grant_permissions_white_text_alpha_100</color>
     <color name="grant_permissions_focus_highlight">#26eeeeee</color>
+    <color name="grant_permissions_button_text_color_unfocused">@color/grant_permissions_white_text_alpha_70</color>
+    <color name="grant_permissions_button_text_color_focused">#000000</color>
 
     <color name="grant_permissions_white_text_alpha_100">@color/off_white</color>
     <color name="grant_permissions_white_text_alpha_70">#b2eeeeee</color>

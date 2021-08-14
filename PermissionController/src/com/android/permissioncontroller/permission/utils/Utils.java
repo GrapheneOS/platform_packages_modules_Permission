@@ -16,8 +16,6 @@
 
 package com.android.permissioncontroller.permission.utils;
 
-import static android.Manifest.permission.BIND_SOUND_TRIGGER_DETECTION_SERVICE;
-import static android.Manifest.permission.CAPTURE_AUDIO_HOTWORD;
 import static android.Manifest.permission_group.ACTIVITY_RECOGNITION;
 import static android.Manifest.permission_group.CALENDAR;
 import static android.Manifest.permission_group.CALL_LOG;
@@ -25,51 +23,54 @@ import static android.Manifest.permission_group.CAMERA;
 import static android.Manifest.permission_group.CONTACTS;
 import static android.Manifest.permission_group.LOCATION;
 import static android.Manifest.permission_group.MICROPHONE;
+import static android.Manifest.permission_group.NEARBY_DEVICES;
 import static android.Manifest.permission_group.PHONE;
 import static android.Manifest.permission_group.SENSORS;
 import static android.Manifest.permission_group.SMS;
 import static android.Manifest.permission_group.STORAGE;
+import static android.app.AppOpsManager.MODE_ALLOWED;
+import static android.app.AppOpsManager.OPSTR_LEGACY_STORAGE;
 import static android.content.Context.MODE_PRIVATE;
 import static android.content.pm.PackageManager.FLAG_PERMISSION_RESTRICTION_INSTALLER_EXEMPT;
 import static android.content.pm.PackageManager.FLAG_PERMISSION_RESTRICTION_SYSTEM_EXEMPT;
 import static android.content.pm.PackageManager.FLAG_PERMISSION_RESTRICTION_UPGRADE_EXEMPT;
 import static android.content.pm.PackageManager.FLAG_PERMISSION_USER_SENSITIVE_WHEN_DENIED;
 import static android.content.pm.PackageManager.FLAG_PERMISSION_USER_SENSITIVE_WHEN_GRANTED;
-import static android.content.pm.PackageManager.GET_SERVICES;
 import static android.content.pm.PackageManager.MATCH_SYSTEM_ONLY;
-import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.os.UserHandle.myUserId;
 
 import static com.android.permissioncontroller.Constants.INVALID_SESSION_ID;
 
+import static java.lang.annotation.RetentionPolicy.SOURCE;
+
 import android.Manifest;
+import android.app.AppOpsManager;
 import android.app.Application;
 import android.app.role.RoleManager;
 import android.content.ActivityNotFoundException;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageItemInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.PermissionGroupInfo;
 import android.content.pm.PermissionInfo;
 import android.content.pm.ResolveInfo;
-import android.content.pm.ServiceInfo;
 import android.content.res.Resources;
 import android.content.res.Resources.Theme;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Parcelable;
 import android.os.Process;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.provider.DeviceConfig;
 import android.provider.Settings;
-import android.service.carrier.CarrierService;
-import android.telephony.TelephonyManager;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.format.DateFormat;
@@ -80,6 +81,7 @@ import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
@@ -87,20 +89,43 @@ import androidx.core.text.BidiFormatter;
 import androidx.core.util.Preconditions;
 
 import com.android.launcher3.icons.IconFactory;
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.Constants;
 import com.android.permissioncontroller.DeviceUtils;
 import com.android.permissioncontroller.PermissionControllerApplication;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 
+import java.lang.annotation.Retention;
+import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
+import java.util.Set;
+
+import kotlin.Pair;
 
 public final class Utils {
+
+    @Retention(SOURCE)
+    @IntDef(value = {LAST_24H_SENSOR_TODAY, LAST_24H_SENSOR_YESTERDAY,
+            LAST_24H_CONTENT_PROVIDER, NOT_IN_LAST_24H})
+    public @interface AppPermsLastAccessType {}
+    public static final int LAST_24H_SENSOR_TODAY = 1;
+    public static final int LAST_24H_SENSOR_YESTERDAY = 2;
+    public static final int LAST_24H_CONTENT_PROVIDER = 3;
+    public static final int NOT_IN_LAST_24H = 4;
+
+    private static final List<String> SENSOR_DATA_PERMISSIONS = List.of(
+            Manifest.permission_group.LOCATION,
+            Manifest.permission_group.CAMERA,
+            Manifest.permission_group.MICROPHONE
+    );
 
     private static final String LOG_TAG = "Utils";
 
@@ -108,20 +133,27 @@ public final class Utils {
 
     public static final float DEFAULT_MAX_LABEL_SIZE_PX = 500f;
 
+    /** The time an app needs to be unused in order to be hibernated */
+    public static final String PROPERTY_HIBERNATION_UNUSED_THRESHOLD_MILLIS =
+            "auto_revoke_unused_threshold_millis2";
+
+    /** The frequency of running the job for hibernating apps */
+    public static final String PROPERTY_HIBERNATION_CHECK_FREQUENCY_MILLIS =
+            "auto_revoke_check_frequency_millis";
+
+    /** Whether hibernation targets apps that target a pre-S SDK */
+    public static final String PROPERTY_HIBERNATION_TARGETS_PRE_S_APPS =
+            "app_hibernation_targets_pre_s_apps";
+
+    /** Whether or not app hibernation is enabled on the device **/
+    public static final String PROPERTY_APP_HIBERNATION_ENABLED = "app_hibernation_enabled";
+
     /** Whether to show the Permissions Hub. */
     private static final String PROPERTY_PERMISSIONS_HUB_ENABLED = "permissions_hub_enabled";
 
     /** The timeout for one-time permissions */
     private static final String PROPERTY_ONE_TIME_PERMISSIONS_TIMEOUT_MILLIS =
             "one_time_permissions_timeout_millis";
-
-    /** The timeout for auto-revoke permissions */
-    public static final String PROPERTY_AUTO_REVOKE_UNUSED_THRESHOLD_MILLIS =
-            "auto_revoke_unused_threshold_millis2";
-
-    /** The frequency of running the job for auto-revoke permissions */
-    public static final String PROPERTY_AUTO_REVOKE_CHECK_FREQUENCY_MILLIS =
-            "auto_revoke_check_frequency_millis";
 
     /** Whether to show location access check notifications. */
     private static final String PROPERTY_LOCATION_ACCESS_CHECK_ENABLED =
@@ -133,7 +165,7 @@ public final class Utils {
                     | PackageManager.FLAG_PERMISSION_WHITELIST_UPGRADE
                     | PackageManager.FLAG_PERMISSION_WHITELIST_INSTALLER;
 
-    /** All permission restriction excemptions. */
+    /** All permission restriction exemptions. */
     public static final int FLAGS_PERMISSION_RESTRICTION_ANY_EXEMPT =
             FLAG_PERMISSION_RESTRICTION_SYSTEM_EXEMPT
                     | FLAG_PERMISSION_RESTRICTION_UPGRADE_EXEMPT
@@ -164,6 +196,31 @@ public final class Utils {
             FLAG_PERMISSION_USER_SENSITIVE_WHEN_GRANTED
                     | FLAG_PERMISSION_USER_SENSITIVE_WHEN_DENIED;
 
+    private static final String SYSTEM_PKG = "android";
+
+    private static final String SYSTEM_AMBIENT_AUDIO_INTELLIGENCE =
+            "android.app.role.SYSTEM_AMBIENT_AUDIO_INTELLIGENCE";
+    private static final String SYSTEM_UI_INTELLIGENCE =
+            "android.app.role.SYSTEM_UI_INTELLIGENCE";
+    private static final String SYSTEM_AUDIO_INTELLIGENCE =
+            "android.app.role.SYSTEM_AUDIO_INTELLIGENCE";
+    private static final String SYSTEM_NOTIFICATION_INTELLIGENCE =
+            "android.app.role.SYSTEM_NOTIFICATION_INTELLIGENCE";
+    private static final String SYSTEM_TEXT_INTELLIGENCE =
+            "android.app.role.SYSTEM_TEXT_INTELLIGENCE";
+    private static final String SYSTEM_VISUAL_INTELLIGENCE =
+            "android.app.role.SYSTEM_VISUAL_INTELLIGENCE";
+
+    // TODO: theianchen Using hardcoded values here as a WIP solution for now.
+    private static final String[] EXEMPTED_ROLES = {
+            SYSTEM_AMBIENT_AUDIO_INTELLIGENCE,
+            SYSTEM_UI_INTELLIGENCE,
+            SYSTEM_AUDIO_INTELLIGENCE,
+            SYSTEM_NOTIFICATION_INTELLIGENCE,
+            SYSTEM_TEXT_INTELLIGENCE,
+            SYSTEM_VISUAL_INTELLIGENCE,
+    };
+
     static {
         PLATFORM_PERMISSIONS = new ArrayMap<>();
 
@@ -181,6 +238,8 @@ public final class Utils {
         PLATFORM_PERMISSIONS.put(Manifest.permission.RECEIVE_WAP_PUSH, SMS);
         PLATFORM_PERMISSIONS.put(Manifest.permission.READ_CELL_BROADCASTS, SMS);
 
+        // If permissions are added to the Storage group, they must be added to the
+        // STORAGE_PERMISSIONS list in PermissionManagerService in frameworks/base
         PLATFORM_PERMISSIONS.put(Manifest.permission.READ_EXTERNAL_STORAGE, STORAGE);
         PLATFORM_PERMISSIONS.put(Manifest.permission.WRITE_EXTERNAL_STORAGE, STORAGE);
         PLATFORM_PERMISSIONS.put(Manifest.permission.ACCESS_MEDIA_LOCATION, STORAGE);
@@ -188,6 +247,13 @@ public final class Utils {
         PLATFORM_PERMISSIONS.put(Manifest.permission.ACCESS_FINE_LOCATION, LOCATION);
         PLATFORM_PERMISSIONS.put(Manifest.permission.ACCESS_COARSE_LOCATION, LOCATION);
         PLATFORM_PERMISSIONS.put(Manifest.permission.ACCESS_BACKGROUND_LOCATION, LOCATION);
+
+        if (SdkLevel.isAtLeastS()) {
+            PLATFORM_PERMISSIONS.put(Manifest.permission.BLUETOOTH_ADVERTISE, NEARBY_DEVICES);
+            PLATFORM_PERMISSIONS.put(Manifest.permission.BLUETOOTH_CONNECT, NEARBY_DEVICES);
+            PLATFORM_PERMISSIONS.put(Manifest.permission.BLUETOOTH_SCAN, NEARBY_DEVICES);
+            PLATFORM_PERMISSIONS.put(Manifest.permission.UWB_RANGING, NEARBY_DEVICES);
+        }
 
         PLATFORM_PERMISSIONS.put(Manifest.permission.READ_CALL_LOG, CALL_LOG);
         PLATFORM_PERMISSIONS.put(Manifest.permission.WRITE_CALL_LOG, CALL_LOG);
@@ -202,10 +268,16 @@ public final class Utils {
         PLATFORM_PERMISSIONS.put(Manifest.permission.ACCEPT_HANDOVER, PHONE);
 
         PLATFORM_PERMISSIONS.put(Manifest.permission.RECORD_AUDIO, MICROPHONE);
+        if (SdkLevel.isAtLeastS()) {
+            PLATFORM_PERMISSIONS.put(Manifest.permission.RECORD_BACKGROUND_AUDIO, MICROPHONE);
+        }
 
         PLATFORM_PERMISSIONS.put(Manifest.permission.ACTIVITY_RECOGNITION, ACTIVITY_RECOGNITION);
 
         PLATFORM_PERMISSIONS.put(Manifest.permission.CAMERA, CAMERA);
+        if (SdkLevel.isAtLeastS()) {
+            PLATFORM_PERMISSIONS.put(Manifest.permission.BACKGROUND_CAMERA, CAMERA);
+        }
 
         PLATFORM_PERMISSIONS.put(Manifest.permission.BODY_SENSORS, SENSORS);
 
@@ -233,6 +305,7 @@ public final class Utils {
         PERM_GROUP_REQUEST_RES = new ArrayMap<>();
         PERM_GROUP_REQUEST_RES.put(CONTACTS, R.string.permgrouprequest_contacts);
         PERM_GROUP_REQUEST_RES.put(LOCATION, R.string.permgrouprequest_location);
+        PERM_GROUP_REQUEST_RES.put(NEARBY_DEVICES, R.string.permgrouprequest_nearby_devices);
         PERM_GROUP_REQUEST_RES.put(CALENDAR, R.string.permgrouprequest_calendar);
         PERM_GROUP_REQUEST_RES.put(SMS, R.string.permgrouprequest_sms);
         PERM_GROUP_REQUEST_RES.put(STORAGE, R.string.permgrouprequest_storage);
@@ -246,21 +319,37 @@ public final class Utils {
 
         PERM_GROUP_REQUEST_DETAIL_RES = new ArrayMap<>();
         PERM_GROUP_REQUEST_DETAIL_RES.put(LOCATION, R.string.permgrouprequestdetail_location);
+        PERM_GROUP_REQUEST_DETAIL_RES.put(MICROPHONE, R.string.permgrouprequestdetail_microphone);
+        PERM_GROUP_REQUEST_DETAIL_RES.put(CAMERA, R.string.permgrouprequestdetail_camera);
 
         PERM_GROUP_BACKGROUND_REQUEST_RES = new ArrayMap<>();
         PERM_GROUP_BACKGROUND_REQUEST_RES
                 .put(LOCATION, R.string.permgroupbackgroundrequest_location);
+        PERM_GROUP_BACKGROUND_REQUEST_RES
+                .put(MICROPHONE, R.string.permgroupbackgroundrequest_microphone);
+        PERM_GROUP_BACKGROUND_REQUEST_RES
+                .put(CAMERA, R.string.permgroupbackgroundrequest_camera);
 
         PERM_GROUP_BACKGROUND_REQUEST_DETAIL_RES = new ArrayMap<>();
         PERM_GROUP_BACKGROUND_REQUEST_DETAIL_RES
                 .put(LOCATION, R.string.permgroupbackgroundrequestdetail_location);
+        PERM_GROUP_BACKGROUND_REQUEST_DETAIL_RES
+                .put(MICROPHONE, R.string.permgroupbackgroundrequestdetail_microphone);
+        PERM_GROUP_BACKGROUND_REQUEST_DETAIL_RES
+                .put(CAMERA, R.string.permgroupbackgroundrequestdetail_camera);
 
         PERM_GROUP_UPGRADE_REQUEST_RES = new ArrayMap<>();
         PERM_GROUP_UPGRADE_REQUEST_RES.put(LOCATION, R.string.permgroupupgraderequest_location);
+        PERM_GROUP_UPGRADE_REQUEST_RES.put(MICROPHONE, R.string.permgroupupgraderequest_microphone);
+        PERM_GROUP_UPGRADE_REQUEST_RES.put(CAMERA, R.string.permgroupupgraderequest_camera);
 
         PERM_GROUP_UPGRADE_REQUEST_DETAIL_RES = new ArrayMap<>();
         PERM_GROUP_UPGRADE_REQUEST_DETAIL_RES
                 .put(LOCATION, R.string.permgroupupgraderequestdetail_location);
+        PERM_GROUP_UPGRADE_REQUEST_DETAIL_RES
+                .put(MICROPHONE, R.string.permgroupupgraderequestdetail_microphone);
+        PERM_GROUP_UPGRADE_REQUEST_DETAIL_RES
+                .put(CAMERA, R.string.permgroupupgraderequestdetail_camera);
     }
 
     private Utils() {
@@ -268,14 +357,6 @@ public final class Utils {
     }
 
     private static ArrayMap<UserHandle, Context> sUserContexts = new ArrayMap<>();
-
-    public enum ForegroundCapableType {
-        SOUND_TRIGGER,
-        ASSISTANT,
-        VOICE_INTERACTION,
-        CARRIER_SERVICE,
-        NONE
-    }
 
     /**
      * Creates and caches a PackageContext for the requested user, or returns the previously cached
@@ -697,7 +778,8 @@ public final class Utils {
         }
         return Manifest.permission_group.SMS.equals(group)
                 || Manifest.permission_group.PHONE.equals(group)
-                || Manifest.permission_group.CONTACTS.equals(group);
+                || Manifest.permission_group.CONTACTS.equals(group)
+                || Manifest.permission_group.CALL_LOG.equals(group);
     }
 
     public static boolean isPermissionIndividuallyControlled(Context context, String permission) {
@@ -719,15 +801,23 @@ public final class Utils {
      * Get the message shown to grant a permission group to an app.
      *
      * @param appLabel The label of the app
-     * @param group the group to be granted
+     * @param packageName The package name of the app
+     * @param groupName The name of the permission group
      * @param context A context to resolve resources
      * @param requestRes The resource id of the grant request message
      *
      * @return The formatted message to be used as title when granting permissions
      */
-    public static CharSequence getRequestMessage(CharSequence appLabel, AppPermissionGroup group,
-            Context context, @StringRes int requestRes) {
-        if (group.getName().equals(STORAGE) && !group.isNonIsolatedStorage()) {
+    public static CharSequence getRequestMessage(CharSequence appLabel, String packageName,
+            String groupName, Context context, @StringRes int requestRes) {
+
+        boolean isIsolatedStorage;
+        try {
+            isIsolatedStorage = !isNonIsolatedStorage(context, packageName);
+        } catch (NameNotFoundException e) {
+            isIsolatedStorage = false;
+        }
+        if (groupName.equals(STORAGE) && isIsolatedStorage) {
             return Html.fromHtml(
                     String.format(context.getResources().getConfiguration().getLocales().get(0),
                             context.getString(R.string.permgrouprequest_storage_isolated),
@@ -737,7 +827,43 @@ public final class Utils {
         }
 
         return Html.fromHtml(context.getString(R.string.permission_warning_template, appLabel,
-                group.getDescription()), 0);
+                loadGroupDescription(context, groupName, context.getPackageManager())), 0);
+    }
+
+    private static CharSequence loadGroupDescription(Context context, String groupName,
+            @NonNull PackageManager packageManager) {
+        PackageItemInfo groupInfo = getGroupInfo(groupName, context);
+        CharSequence description = null;
+        if (groupInfo instanceof PermissionGroupInfo) {
+            description = ((PermissionGroupInfo) groupInfo).loadDescription(packageManager);
+        } else if (groupInfo instanceof PermissionInfo) {
+            description = ((PermissionInfo) groupInfo).loadDescription(packageManager);
+        }
+
+        if (description == null || description.length() <= 0) {
+            description = context.getString(R.string.default_permission_description);
+        }
+
+        return description;
+    }
+
+    /**
+     * Whether or not the given package has non-isolated storage permissions
+     * @param context The current context
+     * @param packageName The package name to check
+     * @return True if the package has access to non-isolated storage, false otherwise
+     * @throws NameNotFoundException
+     */
+    public static boolean isNonIsolatedStorage(@NonNull Context context,
+            @NonNull String packageName) throws NameNotFoundException {
+        PackageInfo packageInfo = context.getPackageManager().getPackageInfo(packageName, 0);
+        AppOpsManager manager = context.getSystemService(AppOpsManager.class);
+
+
+        return packageInfo.applicationInfo.targetSdkVersion < Build.VERSION_CODES.P
+                || (packageInfo.applicationInfo.targetSdkVersion < Build.VERSION_CODES.R
+                && manager.unsafeCheckOpNoThrow(OPSTR_LEGACY_STORAGE,
+                packageInfo.applicationInfo.uid, packageInfo.packageName) == MODE_ALLOWED);
     }
 
     /**
@@ -850,6 +976,8 @@ public final class Utils {
                 return context.getString(R.string.permission_description_summary_location);
             case MICROPHONE:
                 return context.getString(R.string.permission_description_summary_microphone);
+            case NEARBY_DEVICES:
+                return context.getString(R.string.permission_description_summary_nearby_devices);
             case PHONE:
                 return context.getString(R.string.permission_description_summary_phone);
             case SENSORS:
@@ -1008,7 +1136,7 @@ public final class Utils {
             if ((pm.getPermissionFlags(permissionName, packageName, Process.myUserHandle())
                     & PackageManager.FLAG_PERMISSION_ONE_TIME) != 0
                     && pm.checkPermission(permissionName, packageName)
-                    == PERMISSION_GRANTED) {
+                    == PackageManager.PERMISSION_GRANTED) {
                 return true;
             }
         }
@@ -1047,74 +1175,6 @@ public final class Utils {
     }
 
     /**
-     * If an app could have foreground capabilities it is because it meets some criteria. This
-     * function returns which criteria it meets.
-     * @param context The context as the user of interest.
-     * @param packageName The package to check.
-     * @return the type of foreground capable app.
-     * @throws NameNotFoundException
-     */
-    public static @NonNull ForegroundCapableType getForegroundCapableType(@NonNull Context context,
-            @NonNull String packageName) throws NameNotFoundException {
-
-        PackageManager pm = context.getPackageManager();
-
-        // Apps which can be bound by SoundTriggerService
-        if (pm.checkPermission(CAPTURE_AUDIO_HOTWORD, packageName) == PERMISSION_GRANTED) {
-            ServiceInfo[] services = pm.getPackageInfo(packageName, GET_SERVICES).services;
-            if (services != null) {
-                for (ServiceInfo service : services) {
-                    if (BIND_SOUND_TRIGGER_DETECTION_SERVICE.equals(service.permission)) {
-                        return ForegroundCapableType.SOUND_TRIGGER;
-                    }
-                }
-            }
-        }
-
-        // VoiceInteractionService
-        if (context.getSystemService(RoleManager.class).getRoleHolders(RoleManager.ROLE_ASSISTANT)
-                .contains(packageName)) {
-            return ForegroundCapableType.ASSISTANT;
-        }
-        String voiceInteraction = Settings.Secure.getString(context.getContentResolver(),
-                "voice_interaction_service");
-        if (!TextUtils.isEmpty(voiceInteraction)) {
-            ComponentName component = ComponentName.unflattenFromString(voiceInteraction);
-            if (component != null && TextUtils.equals(packageName, component.getPackageName())) {
-                return ForegroundCapableType.VOICE_INTERACTION;
-            }
-        }
-
-        // Carrier privileged apps implementing the carrier service
-        final TelephonyManager telephonyManager =
-                context.getSystemService(TelephonyManager.class);
-        int numPhones = telephonyManager.getActiveModemCount();
-        for (int phoneId = 0; phoneId < numPhones; phoneId++) {
-            List<String> packages = telephonyManager.getCarrierPackageNamesForIntentAndPhone(
-                    new Intent(CarrierService.CARRIER_SERVICE_INTERFACE), phoneId);
-            if (packages != null && packages.contains(packageName)) {
-                return ForegroundCapableType.CARRIER_SERVICE;
-            }
-        }
-
-        return ForegroundCapableType.NONE;
-    }
-
-    /**
-     * This tells whether we should blame the app for potential background access. Intended to be
-     * used for creating Ui.
-     * @param context The context as the user of interest
-     * @param packageName The package to check
-     * @return true if the given package could possibly have foreground capabilities while in the
-     * background, otherwise false.
-     * @throws NameNotFoundException
-     */
-    public static boolean couldHaveForegroundCapabilities(@NonNull Context context,
-            @NonNull String packageName) throws NameNotFoundException {
-        return getForegroundCapableType(context, packageName) != ForegroundCapableType.NONE;
-    }
-
-    /**
      * Determines if a given user is disabled, or is a work profile.
      * @param user The user to check
      * @return true if the user is disabled, or the user is a work profile
@@ -1129,16 +1189,43 @@ public final class Utils {
     }
 
     /**
-     * @return Whether a package is an emergency app.
+     * Get all the exempted packages.
      */
-    public static boolean isEmergencyApp(@NonNull Context context,  @NonNull String packageName) {
-        try {
-            return context.getSystemService(RoleManager.class)
-                    .getRoleHolders(RoleManager.ROLE_EMERGENCY).contains(packageName);
-        } catch (Throwable t) {
-            // Avoid crashing for any reason, this isn't very well tested
-            Log.e(LOG_TAG, "Unable to check if " + packageName + " is an emergency app.", t);
-            return false;
+    public static Set<String> getExemptedPackages(@NonNull RoleManager roleManager) {
+        Set<String> exemptedPackages = new HashSet<>();
+
+        exemptedPackages.add(SYSTEM_PKG);
+        for (int i = 0; i < EXEMPTED_ROLES.length; i++) {
+            exemptedPackages.addAll(roleManager.getRoleHolders(EXEMPTED_ROLES[i]));
         }
+
+        return exemptedPackages;
+    }
+
+    /**
+     * Get the timestamp and lastAccessType for the summary text
+     * in app permission groups and permission apps screens
+     */
+    public static Pair<String, Integer> getPermissionLastAccessSummaryTimestamp(
+            Long lastAccessTime, Context context, String groupName) {
+        long midnightToday = ZonedDateTime.now().truncatedTo(ChronoUnit.DAYS).toEpochSecond()
+                * 1000L;
+
+        boolean isLastAccessToday = lastAccessTime != null
+                && midnightToday <= lastAccessTime;
+        String lastAccessTimeFormatted = "";
+        @AppPermsLastAccessType int lastAccessType = NOT_IN_LAST_24H;
+
+        if (lastAccessTime != null) {
+            lastAccessTimeFormatted = DateFormat.getTimeFormat(context)
+                    .format(lastAccessTime);
+
+            lastAccessType = !SENSOR_DATA_PERMISSIONS.contains(groupName)
+                    ? LAST_24H_CONTENT_PROVIDER : isLastAccessToday
+                    ? LAST_24H_SENSOR_TODAY :
+                    LAST_24H_SENSOR_YESTERDAY;
+        }
+
+        return new Pair<>(lastAccessTimeFormatted, lastAccessType);
     }
 }

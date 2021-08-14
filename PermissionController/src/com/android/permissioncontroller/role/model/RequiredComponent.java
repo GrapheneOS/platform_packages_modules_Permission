@@ -52,10 +52,16 @@ public abstract class RequiredComponent {
     @Nullable
     private final String mPermission;
 
+    /**
+     * The query flags to match the components with.
+     */
+    private final int mQueryFlags;
+
     public RequiredComponent(@NonNull IntentFilterData intentFilterData,
-            @Nullable String permission) {
+            @Nullable String permission, int queryFlags) {
         mIntentFilterData = intentFilterData;
         mPermission = permission;
+        mQueryFlags = queryFlags;
     }
 
     @NonNull
@@ -108,8 +114,8 @@ public abstract class RequiredComponent {
         if (packageName != null) {
             intent.setPackage(packageName);
         }
-        List<ResolveInfo> resolveInfos = queryIntentComponentsAsUser(intent,
-                PackageManager.MATCH_DIRECT_BOOT_AWARE | PackageManager.MATCH_DIRECT_BOOT_UNAWARE,
+        List<ResolveInfo> resolveInfos = queryIntentComponentsAsUser(intent, mQueryFlags
+                | PackageManager.MATCH_DIRECT_BOOT_AWARE | PackageManager.MATCH_DIRECT_BOOT_UNAWARE,
                 user, context);
 
         ArraySet<String> componentPackageNames = new ArraySet<>();

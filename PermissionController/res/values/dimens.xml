@@ -58,8 +58,20 @@
     <dimen name="incident_reason_bullet_indent">10dp</dimen>
 
     <!-- Auto related dimensions -->
-    <dimen name="car_action_bar_height">@*android:dimen/car_app_bar_height</dimen>
-    <dimen name="car_margin">@*android:dimen/car_margin</dimen>
-    <dimen name="car_icon_size">@*android:dimen/car_primary_icon_size</dimen>
+    <dimen name="car_action_bar_height">80dp</dimen>
+    <dimen name="car_margin">20dp</dimen>
+    <dimen name="car_icon_size">44dp</dimen>
+    <dimen name="car_preference_icon_size">44dp</dimen>
+    <dimen name="car_radius_1">4dp</dimen>
+    <dimen name="car_preference_row_vertical_margin">16dp</dimen>
 
+    <dimen name="location_accuracy_image_size">130dp</dimen>
+
+    <item name="permission_access_time_dialog_width_scalar" format="float" type="dimen">0.9</item>
+    <item name="permission_access_time_dialog_height_scalar" format="float" type="dimen">0.7</item>
+
+    <item name="privhub_label_radius_scalar" format="float" type="dimen">1.1</item>
+    <dimen name="privhub_circle_stroke_width">8dp</dimen>
+
+    <dimen name="privhub_details_recycler_view_bottom_padding">96dp</dimen>
 </resources>

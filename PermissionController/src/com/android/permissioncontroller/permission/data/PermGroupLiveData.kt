@@ -59,7 +59,7 @@ class PermGroupLiveData private constructor(
      * @param packageName the package which was added or changed
      */
     override fun onPackageUpdate(packageName: String) {
-        updateIfActive()
+        update()
     }
 
     /**
@@ -95,7 +95,10 @@ class PermGroupLiveData private constructor(
             is PermissionInfo -> {
                 permissionInfos[groupInfo.name] = LightPermInfo(groupInfo as PermissionInfo)
             }
-            else -> return
+            else -> {
+                value = null
+                return
+            }
         }
 
         val permGroup = PermGroup(LightPermGroupInfo(groupInfo), permissionInfos)
@@ -124,7 +127,7 @@ class PermGroupLiveData private constructor(
      * because there is currently no listener for permission changes.
      */
     override fun onActive() {
-        updateIfActive()
+        update()
 
         super.onActive()
 

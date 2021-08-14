@@ -51,12 +51,10 @@ class PermStateLiveData private constructor(
 
     private var uid: Int? = null
     private var registeredUid: Int? = null
-    private var currentPackageInfo: LightPackageInfo? = null
 
     init {
         addSource(packageInfoLiveData) {
             checkForUidUpdate(it)
-            currentPackageInfo = it
             updateAsync()
         }
 
@@ -74,7 +72,7 @@ class PermStateLiveData private constructor(
             return
         }
 
-        val packageInfo = currentPackageInfo
+        val packageInfo = packageInfoLiveData.value
         val permissionGroup = groupLiveData.value
         if (packageInfo == null || permissionGroup == null) {
             invalidateSingle(Triple(packageName, permGroupName, user))
@@ -134,7 +132,6 @@ class PermStateLiveData private constructor(
             PermissionListenerMultiplexer.addCallback(it, this)
             registeredUid = uid
         }
-        updateAsync()
     }
 
     /**

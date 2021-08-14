@@ -60,7 +60,7 @@ class SinglePermGroupPackagesUiInfoLiveData private constructor(
         }
 
         addSource(permGroupPackagesLiveData) {
-            updateIfActive()
+            update()
         }
     }
 
@@ -82,7 +82,7 @@ class SinglePermGroupPackagesUiInfoLiveData private constructor(
             AppPermGroupUiInfoLiveData[key.first, permGroupName, key.second]
         }
 
-        setSourcesToDifference(pkgs, appPermGroupLiveDatas, getLiveData) { key ->
+        val (_, removed) = setSourcesToDifference(pkgs, appPermGroupLiveDatas, getLiveData) { key ->
             val appPermGroupUiInfoLiveData = appPermGroupLiveDatas[key]
             val appPermGroupUiInfo = appPermGroupUiInfoLiveData?.value
             shownPackages.remove(key)
@@ -101,6 +101,16 @@ class SinglePermGroupPackagesUiInfoLiveData private constructor(
                 permGroupLiveData.value?.groupInfo?.let {
                     value = shownPackages.toMap()
                 }
+            }
+        }
+
+        for (removedKey in removed) {
+            shownPackages.remove(removedKey)
+        }
+
+        if (appPermGroupLiveDatas.all { entry -> entry.value.isInitialized }) {
+            permGroupLiveData.value?.groupInfo?.let {
+                value = shownPackages.toMap()
             }
         }
     }

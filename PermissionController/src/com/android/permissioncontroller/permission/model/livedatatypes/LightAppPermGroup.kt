@@ -16,6 +16,8 @@
 
 package com.android.permissioncontroller.permission.model.livedatatypes
 
+import android.Manifest
+import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.os.Build
 import android.os.UserHandle
 
@@ -78,10 +80,10 @@ data class LightAppPermGroup(
     }
 
     val foreground = AppPermSubGroup(permissions.filter { it.key in foregroundPermNames },
-        specialLocationGrant)
+        packageInfo, specialLocationGrant)
 
     val background = AppPermSubGroup(permissions.filter { it.key in backgroundPermNames },
-        specialLocationGrant)
+        packageInfo, specialLocationGrant)
 
     /**
      * Whether or not this App Permission Group has a permission which has a background mode
@@ -115,9 +117,14 @@ data class LightAppPermGroup(
     val supportsRuntimePerms = packageInfo.targetSdkVersion >= Build.VERSION_CODES.M
 
     /**
-     * Whether this App Permission Group contains any one-time permission
+     * Whether this App Permission Group is one-time. 2 cases:
+     * 1. If the perm group is not LOCATION, check if any of the permissions is one-time.
+     * 2. If the perm group is LOCATION, check if ACCESS_COARSE_LOCATION is one-time.
      */
-    val isOneTime = permissions.any { it.value.isOneTime }
+    val isOneTime = (permGroupName != Manifest.permission_group.LOCATION &&
+            permissions.any { it.value.isOneTime }) ||
+            (permGroupName == Manifest.permission_group.LOCATION &&
+                    permissions[ACCESS_COARSE_LOCATION]?.isOneTime == true)
 
     /**
      * Whether any permissions in this group are granted by default (pregrant)
@@ -129,10 +136,15 @@ data class LightAppPermGroup(
      */
     val isGrantedByRole = foreground.isGrantedByRole || background.isGrantedByRole
 
-    /*
+    /**
      * Whether any permissions in this group are user sensitive
      */
     val isUserSensitive = permissions.any { it.value.isUserSensitive }
+
+    /**
+     * Whether any permissions in this group are revoke-when-requested
+     */
+    val isRevokeWhenRequested = permissions.any { it.value.isRevokeWhenRequested }
 
     /**
      * A subset of the AppPermssionGroup, representing either the background or foreground permissions
@@ -144,6 +156,7 @@ data class LightAppPermGroup(
      */
     data class AppPermSubGroup internal constructor(
         private val permissions: Map<String, LightPermission>,
+        private val packageInfo: LightPackageInfo,
         private val specialLocationGrant: Boolean?
     ) {
         /**
@@ -180,5 +193,15 @@ data class LightAppPermGroup(
          * Whether any of this App Permission Subgroup's permissions are set by the role of this app
          */
         val isGrantedByRole = permissions.any { it.value.isGrantedByRole }
+
+        private val hasPreRuntimePerm = permissions.any { (_, perm) -> !perm.isRuntimeOnly }
+
+        private val hasInstantPerm = permissions.any { (_, perm) -> perm.isInstantPerm }
+
+        /**
+         * Whether or not any permissions in this App Permission Subgroup can be granted
+         */
+        val isGrantable = (!packageInfo.isInstantApp || hasInstantPerm) &&
+                (packageInfo.targetSdkVersion >= Build.VERSION_CODES.M || hasPreRuntimePerm)
     }
 }
