@@ -556,6 +556,8 @@
         visible="false">
         <permissions>
             <permission name="android.permission.ACCESS_RCS_USER_CAPABILITY_EXCHANGE" />
+            <permission name="android.permission.SET_DEFAULT_ACCOUNT_FOR_CONTACTS"
+                minSdkVersion="33" />
         </permissions>
     </role>
 
