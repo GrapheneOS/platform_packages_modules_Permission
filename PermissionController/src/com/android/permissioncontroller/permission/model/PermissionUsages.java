@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 The Android Open Source Project
+ * Copyright (C) 2021 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.ui.handheld.dashboard;
+package com.android.permissioncontroller.permission.model;
 
 import static android.Manifest.permission.CAMERA;
 import static android.Manifest.permission.RECORD_AUDIO;
@@ -45,10 +45,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
-import com.android.permissioncontroller.permission.model.AppPermissionGroup;
-import com.android.permissioncontroller.permission.model.AppPermissionUsage;
 import com.android.permissioncontroller.permission.model.AppPermissionUsage.Builder;
-import com.android.permissioncontroller.permission.model.Permission;
 import com.android.permissioncontroller.permission.model.legacy.PermissionApps.PermissionApp;
 import com.android.permissioncontroller.permission.model.legacy.PermissionGroup;
 import com.android.permissioncontroller.permission.model.legacy.PermissionGroups;
@@ -92,14 +89,27 @@ public final class PermissionUsages implements LoaderCallbacks<List<AppPermissio
 
     private @Nullable PermissionsUsagesChangeCallback mCallback;
 
+    /**
+     * Callback for when the permission usages has loaded or changed.
+     */
     public interface PermissionsUsagesChangeCallback {
+        /**
+         * Called when the permission usages have loaded or changed.
+         */
         void onPermissionUsagesChanged();
     }
 
+    /**
+     * Creates a new instance of {@link PermissionUsages}.
+     */
     public PermissionUsages(@NonNull Context context) {
         mContext = context;
     }
 
+    /**
+     * Start the {@link Loader} to load the permission usages in the background. Loads without a uid
+     * filter.
+     */
     public void load(@Nullable String filterPackageName,
             @Nullable String[] filterPermissionGroups, long filterBeginTimeMillis,
             long filterEndTimeMillis, int usageFlags, @NonNull LoaderManager loaderManager,
@@ -110,6 +120,10 @@ public final class PermissionUsages implements LoaderCallbacks<List<AppPermissio
                 getNonPlatformPermissions, callback, sync);
     }
 
+    /**
+     * Start the {@link Loader} to load the permission usages in the background. Loads only
+     * permissions for the specified {@code filterUid}.
+     */
     public void load(int filterUid, @Nullable String filterPackageName,
             @Nullable String[] filterPermissionGroups, long filterBeginTimeMillis,
             long filterEndTimeMillis, int usageFlags, @NonNull LoaderManager loaderManager,
@@ -155,34 +169,18 @@ public final class PermissionUsages implements LoaderCallbacks<List<AppPermissio
         mCallback.onPermissionUsagesChanged();
     }
 
+    /**
+     * Return the usages that have already been loaded.
+     */
     public @NonNull List<AppPermissionUsage> getUsages() {
         return mUsages;
     }
 
+    /**
+     * Stop the {@link Loader} from loading the usages.
+     */
     public void stopLoader(@NonNull LoaderManager loaderManager) {
         loaderManager.destroyLoader(1);
-    }
-
-    public static @Nullable AppPermissionUsage.GroupUsage loadLastGroupUsage(
-            @NonNull Context context, @NonNull AppPermissionGroup group) {
-        final ArraySet<String> opNames = new ArraySet<>();
-        final List<Permission> permissions = group.getPermissions();
-        final int permCount = permissions.size();
-        for (int i = 0; i < permCount; i++) {
-            final Permission permission = permissions.get(i);
-            final String opName = permission.getAppOp();
-            if (opName != null) {
-                opNames.add(opName);
-            }
-        }
-        final String[] opNamesArray = opNames.toArray(new String[opNames.size()]);
-        final List<PackageOps> usageOps = context.getSystemService(AppOpsManager.class)
-                .getOpsForPackage(group.getApp().applicationInfo.uid,
-                        group.getApp().packageName, opNamesArray);
-        if (usageOps == null || usageOps.isEmpty()) {
-            return null;
-        }
-        return new AppPermissionUsage.GroupUsage(group, usageOps.get(0), null);
     }
 
     private static final class UsageLoader extends AsyncTaskLoader<List<AppPermissionUsage>> {
