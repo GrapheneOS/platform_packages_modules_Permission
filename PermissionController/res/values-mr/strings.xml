@@ -44,7 +44,7 @@
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"ॲप वापरताना"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"अचूक स्थानावर बदला"</string>
     <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"अंदाजे स्थान ठेवा"</string>
-    <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"फक्त या वेळी"</string>
+    <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"फक्त यावेळी"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"सर्व वेळी अनुमती द्या"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"सर्व फाइल व्यवस्थापित करण्यासाठी अनुमती द्या"</string>
     <string name="grant_dialog_button_allow_media_only" msgid="4832877658422573832">"मीडिया फाइल ॲक्सेस करण्यासाठी अनुमती द्या"</string>
@@ -115,10 +115,8 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"ॲप्सनी मागील २४ तासांमध्ये तुमचे <xliff:g id="PERMGROUP">%1$s</xliff:g> वापरलेल्याची टाइमलाइन"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"या ॲपने तुमची <xliff:g id="PERMGROUP">%1$s</xliff:g> परवानगी वापरली तेव्हा"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"अधिक जाणून घ्या"</string>
-    <!-- no translation found for history_preference_subtext_2 (1521763591164293683) -->
-    <skip />
-    <!-- no translation found for history_preference_subtext_3 (758761785983094351) -->
-    <skip />
+    <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
+    <string name="history_preference_subtext_3" msgid="758761785983094351">"<xliff:g id="ATTRIBUTION_NAME">%1$s</xliff:g> • <xliff:g id="APP_NAME">%2$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%3$s</xliff:g>"</string>
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> दिवस</item>
       <item quantity="one">एक दिवस</item>

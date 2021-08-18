@@ -93,7 +93,7 @@
     <string name="loading" msgid="4789365003890741082">"లోడ్ చేస్తోంది…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"అన్ని అనుమతులు"</string>
     <string name="other_permissions" msgid="2901186127193849594">"ఇతర యాప్ సామర్థ్యాలు"</string>
-    <string name="permission_request_title" msgid="8790310151025020126">"అనుమతి అభ్యర్థన"</string>
+    <string name="permission_request_title" msgid="8790310151025020126">"అనుమతి రిక్వెస్ట్‌"</string>
     <string name="screen_overlay_title" msgid="6977038513913222078">"స్క్రీన్ అతివ్యాప్తి గుర్తించబడింది"</string>
     <string name="screen_overlay_message" msgid="5622563069757142102">"ఈ అనుమతి సెట్టింగ్‌ను మార్చడానికి, మీరు సెట్టింగ్‌లు &gt; యాప్‌ల నుండి స్క్రీన్ అతివ్యాప్తిని ఆఫ్ చేయాలి"</string>
     <string name="screen_overlay_button" msgid="4655005928054025250">"సెట్టింగ్‌లను తెరువు"</string>
@@ -102,7 +102,7 @@
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; యాక్సెస్ చేయడానికి అనుమతించాల్సిన వాటిని ఎంచుకోండి"</string>
     <string name="permission_review_title_template_update" msgid="3232333580548588657">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; అప్‌డేట్ చేయబడింది. ఈ యాప్ యాక్సెస్ చేయడానికి అనుమతించాల్సిన వాటిని ఎంచుకోండి."</string>
     <string name="review_button_cancel" msgid="2191147944056548886">"రద్దు చేయి"</string>
-    <string name="review_button_continue" msgid="2527918375047602199">"కొనసాగించు"</string>
+    <string name="review_button_continue" msgid="2527918375047602199">"కొనసాగించండి"</string>
     <string name="new_permissions_category" msgid="552995090178417611">"కొత్త అనుమతులు"</string>
     <string name="current_permissions_category" msgid="4292990083585728880">"ప్రస్తుత అనుమతులు"</string>
     <string name="message_staging" msgid="9110563899955511866">"యాప్‌ను అందిస్తోంది…"</string>
@@ -115,10 +115,8 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"గత 24 గంటలలో యాప్‌లు మీ <xliff:g id="PERMGROUP">%1$s</xliff:g>‌ను ఎప్పుడు ఉపయోగించాయో తెలిపే టైమ్‌లైన్"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"మీ <xliff:g id="PERMGROUP">%1$s</xliff:g> అనుమతిని యాప్ ఉపయోగించినప్పుడు"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"మరింత తెలుసుకోండి"</string>
-    <!-- no translation found for history_preference_subtext_2 (1521763591164293683) -->
-    <skip />
-    <!-- no translation found for history_preference_subtext_3 (758761785983094351) -->
-    <skip />
+    <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
+    <string name="history_preference_subtext_3" msgid="758761785983094351">"<xliff:g id="ATTRIBUTION_NAME">%1$s</xliff:g> • <xliff:g id="APP_NAME">%2$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%3$s</xliff:g>"</string>
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> రోజులు</item>
       <item quantity="one">1 రోజు</item>
@@ -475,7 +473,7 @@
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"మీరు యాప్ ఉపయోగించనప్పుడు కూడా ఈ యాప్ ఎల్లప్పుడూ ఆడియోను రికార్డ్ చేయాలనుకోవచ్చు. "<annotation id="link">"సెట్టింగ్‌లలో అనుమతించండి."</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; కోసం మైక్రోఫోన్ యాక్సెస్‌ను మార్చాలా?"</string>
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"మీరు యాప్ ఉపయోగించనప్పుడు కూడా ఈ యాప్ ఎల్లప్పుడూ ఆడియోను రికార్డ్ చేయాలనుకుంటోంది. "<annotation id="link">"సెట్టింగ్‌లలో అనుమతించండి."</annotation></string>
-    <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"మీ భౌతిక కార్యకలాపాన్ని యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
+    <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"మీ భౌతిక యాక్టివిటీని యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"ఫోటోలు తీయడానికి, వీడియో రికార్డ్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"మీరు యాప్‌ను ఉపయోగిస్తున్నప్పుడు మాత్రమే ఈ యాప్, ఫోటోలను తీయగలుగుతుంది, వీడియోను రికార్డ్ చేయగలుగుతుంది"</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"ఫోటోలు తీయడానికి, వీడియోను రికార్డ్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>

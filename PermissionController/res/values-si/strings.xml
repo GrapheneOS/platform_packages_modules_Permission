@@ -115,10 +115,8 @@
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"පසුගිය පැය 24 තුළ යෙදුම් ඔබගේ <xliff:g id="PERMGROUP">%1$s</xliff:g> භාවිත කළ විට කාලරේඛාව"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"මෙම යෙදුම ඔබගේ <xliff:g id="PERMGROUP">%1$s</xliff:g> අවසරය භාවිත කරන විට"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"තව දැන ගන්න"</string>
-    <!-- no translation found for history_preference_subtext_2 (1521763591164293683) -->
-    <skip />
-    <!-- no translation found for history_preference_subtext_3 (758761785983094351) -->
-    <skip />
+    <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
+    <string name="history_preference_subtext_3" msgid="758761785983094351">"<xliff:g id="ATTRIBUTION_NAME">%1$s</xliff:g> • <xliff:g id="APP_NAME">%2$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%3$s</xliff:g>"</string>
     <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
       <item quantity="one">දින <xliff:g id="NUMBER">%s</xliff:g></item>
       <item quantity="other">දින <xliff:g id="NUMBER">%s</xliff:g></item>
