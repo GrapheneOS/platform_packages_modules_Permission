@@ -450,7 +450,7 @@
     <string name="adjust_user_sensitive_per_app_header" msgid="4543506440989005648">"ਹੇਠਾਂ ਦਿੱਤੇ ਲਈ ਵਰਤੋਂ ਨੂੰ ਉਜਾਗਰ ਕਰੋ"</string>
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"ਸਹਾਇਕ ਟ੍ਰਿਗਰ ਦੀ ਸੂਹ ਦਿਖਾਓ"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"ਜਦੋਂ ਅਵਾਜ਼ੀ ਸਹਾਇਕ ਨੂੰ ਕਿਰਿਆਸ਼ੀਲ ਕਰਨ ਲਈ ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ ਤਾਂ ਸਥਿਤੀ ਪੱਟੀ ਵਿੱਚ ਪ੍ਰਤੀਕ ਦਿਖਾਓ"</string>
-    <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਆਪਣੇ ਡੀਵਾਈਸ \'ਤੇ ਫ਼ੋਟੋਆਂ ਅਤੇ ਮੀਡੀਆ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
+    <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਤੁਹਾਡੇ ਡੀਵਾਈਸ \'ਤੇ ਫ਼ੋਟੋਆਂ ਅਤੇ ਮੀਡੀਆ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਤੁਹਾਡੇ ਸੰਪਰਕਾਂ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਇਸ ਡੀਵਾਈਸ ਦੇ ਟਿਕਾਣੇ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"ਤੁਹਾਡੇ ਵੱਲੋਂ ਐਪ ਦੀ ਵਰਤੋਂ ਕਰਨ ਵੇਲੇ ਹੀ ਐਪ ਕੋਲ ਟਿਕਾਣੇ ਤੱਕ ਪਹੁੰਚ ਹੋਵੇਗੀ"</string>
