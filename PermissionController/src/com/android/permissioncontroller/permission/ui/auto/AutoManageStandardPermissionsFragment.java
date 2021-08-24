@@ -118,6 +118,10 @@ public class AutoManageStandardPermissionsFragment extends AutoSettingsFrameFrag
 
         screen.addPreference(otherPermissionsPreference);
 
+        // load initial auto-revoke count, if it is ready
+        Integer numAutoRevoked = mManageStandardPermissionsViewModel.getNumAutoRevoked().getValue();
+        onNumAutoRevokedChanged(numAutoRevoked);
+
         setLoading(false);
     }
 
@@ -150,7 +154,10 @@ public class AutoManageStandardPermissionsFragment extends AutoSettingsFrameFrag
     }
 
     private void onNumAutoRevokedChanged(Integer numAutoRevoked) {
-
+        // to prevent ui jank, don't display auto-revoke until categories have loaded
+        if (mManagePermissionsViewModel.getUsedPermissionGroups().getValue() == null) {
+            return;
+        }
         Preference autoRevokePreference = getPreferenceScreen().findPreference(KEY_AUTO_REVOKE);
         if (numAutoRevoked != null && numAutoRevoked != 0) {
             if (autoRevokePreference == null) {
