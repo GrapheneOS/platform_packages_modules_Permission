@@ -32,9 +32,11 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.Preference;
@@ -42,6 +44,7 @@ import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceGroup;
 import androidx.preference.PreferenceScreen;
 
+import com.android.car.ui.utils.ViewUtils;
 import com.android.permissioncontroller.PermissionControllerStatsLog;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.auto.AutoSettingsFrameFragment;
@@ -375,6 +378,16 @@ public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment {
             mOuterFragment = (AutoAppPermissionsFragment) getTargetFragment();
             super.onCreate(savedInstanceState);
             setHeaderLabel(mOuterFragment.getHeaderLabel());
+        }
+
+        @Override
+        public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+            super.onViewCreated(view, savedInstanceState);
+
+            // initially focus on focus parking view and then shift focus to recyclerview once it
+            // has loaded
+            ViewUtils.hideFocus(getListView().getRootView());
+            ViewUtils.initFocus((ViewUtils.LazyLayoutView) getListView());
         }
 
         @Override
