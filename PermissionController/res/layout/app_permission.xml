@@ -165,6 +165,31 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                style="@style/AppPermissionFooter">
+
+                <ImageView
+                    android:id="@+id/app_additional_info_icon"
+                    android:clickable="false"
+                    android:src="@drawable/ic_info_outline"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginStart="24dp"
+                    android:contentDescription="Info"
+                    style="@style/ImageViewIcon" />
+
+                <TextView
+                    android:id="@+id/app_additional_info_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="24dp"
+                    android:paddingEnd="24dp"
+                    android:clickable="true"
+                    android:textSize="14sp"
+                    android:lineHeight="20sp"
+                    style="@style/AppPermissionFooter" />
+
+            </LinearLayout>
+
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
