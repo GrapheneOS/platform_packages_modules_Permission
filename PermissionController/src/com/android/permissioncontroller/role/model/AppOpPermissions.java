@@ -20,10 +20,10 @@ import android.app.AppOpsManager;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
 
-import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.permission.utils.ArrayUtils;
 import com.android.permissioncontroller.role.utils.PackageUtils;
 
@@ -88,9 +88,15 @@ public class AppOpPermissions {
             case AppOpsManager.OPSTR_LOADER_USAGE_STATS:
                 return Permissions.setAppOpPackageMode(packageName, appOp, mode, context);
             case AppOpsManager.OPSTR_INTERACT_ACROSS_PROFILES:
-                // We fixed OP_INTERACT_ACROSS_PROFILES to use UID mode on S.
-                if (SdkLevel.isAtLeastS()) {
-                    return Permissions.setAppOpUidMode(packageName, appOp, mode, context);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                    // We fixed OP_INTERACT_ACROSS_PROFILES to use UID mode on S and backported it
+                    // to R, but still, we might have an out-of-date platform or an upgraded
+                    // platform with old state.
+                    boolean changed = false;
+                    changed |= Permissions.setAppOpUidMode(packageName, appOp, mode, context);
+                    changed |= Permissions.setAppOpPackageMode(packageName, appOp,
+                            Permissions.getDefaultAppOpMode(appOp), context);
+                    return changed;
                 } else {
                     return Permissions.setAppOpPackageMode(packageName, appOp, mode, context);
                 }
