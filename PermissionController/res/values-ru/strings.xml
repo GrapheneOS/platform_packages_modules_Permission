@@ -109,7 +109,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"Имеющиеся разрешения"</string>
     <string name="message_staging" msgid="9110563899955511866">"Подождите…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Неизвестное приложение"</string>
-    <string name="permission_usage_title" msgid="1568233336351734538">"Панель управления доступом"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"Панель управления разрешениями"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Использование разрешения \"<xliff:g id="PERMGROUP">%1$s</xliff:g>\""</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Показать другие разрешения"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
