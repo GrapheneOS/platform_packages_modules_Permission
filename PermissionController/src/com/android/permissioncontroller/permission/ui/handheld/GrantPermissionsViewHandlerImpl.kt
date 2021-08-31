@@ -326,17 +326,25 @@ class GrantPermissionsViewHandlerImpl(
             } else {
                 View.GONE
             }
-            if (pos == ALLOW_FOREGROUND_BUTTON && buttonVisibilities[pos] &&
-                    locationVisibilities[LOCATION_ACCURACY_LAYOUT] &&
-                    locationVisibilities[DIALOG_WITH_FINE_LOCATION_ONLY]) {
-                buttons[pos]?.text = mActivity.resources.getString(
-                        R.string.grant_dialog_button_change_to_precise_location)
+            if (pos == ALLOW_FOREGROUND_BUTTON && buttonVisibilities[pos]) {
+                if (locationVisibilities[LOCATION_ACCURACY_LAYOUT] &&
+                        locationVisibilities[DIALOG_WITH_FINE_LOCATION_ONLY]) {
+                    buttons[pos]?.text = mActivity.resources.getString(
+                            R.string.grant_dialog_button_change_to_precise_location)
+                } else {
+                    buttons[pos]?.text = mActivity.resources.getString(
+                            R.string.grant_dialog_button_allow_foreground)
+                }
             }
-            if ((pos == DENY_BUTTON || pos == DENY_AND_DONT_ASK_AGAIN_BUTTON) &&
-                    locationVisibilities[LOCATION_ACCURACY_LAYOUT] &&
-                    locationVisibilities[DIALOG_WITH_FINE_LOCATION_ONLY]) {
-                buttons[pos]?.text = mActivity.resources.getString(
-                        R.string.grant_dialog_button_keey_approximate_location)
+            if ((pos == DENY_BUTTON || pos == DENY_AND_DONT_ASK_AGAIN_BUTTON)) {
+                if (locationVisibilities[LOCATION_ACCURACY_LAYOUT] &&
+                        locationVisibilities[DIALOG_WITH_FINE_LOCATION_ONLY]) {
+                    buttons[pos]?.text = mActivity.resources.getString(
+                            R.string.grant_dialog_button_keey_approximate_location)
+                } else {
+                    buttons[pos]?.text = mActivity.resources.getString(
+                            R.string.grant_dialog_button_deny)
+                }
             }
             buttons[pos]?.requestLayout()
         }
