@@ -15,6 +15,88 @@
   -->
 
 <resources>
+
+    <!-- START PERMISSION GRANT DIALOG -->
+
+    <style name="PermissionGrantDialogMaterial3">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">?android:attr/windowBackground</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="PermissionGrantTitleIconMaterial3">
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:layout_marginBottom">12dp</item>
+        <item name="android:tint">@android:color/system_accent1_600</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
+    <style name="PermissionGrantButtonListMaterial3">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingBottom">22dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="PermissionGrantButtonTop"
+           parent="@android:style/Widget.DeviceDefault.Button.Borderless.Colored">
+        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:layout_marginLeft">24dp</item>
+        <item name="android:layout_marginRight">24dp</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:fontFamily">google-sans-medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/system_neutral1_900</item>
+        <item name="android:background">@drawable/grant_permissions_buttons_top</item>
+    </style>
+
+    <style name="PermissionGrantButtonMiddle"
+           parent="@android:style/Widget.DeviceDefault.Button.Borderless.Colored">
+        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:layout_marginLeft">24dp</item>
+        <item name="android:layout_marginRight">24dp</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:fontFamily">google-sans-medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/system_neutral1_900</item>
+        <item name="android:background">@drawable/grant_permissions_buttons_middle</item>
+    </style>
+
+    <style name="PermissionGrantButtonBottom"
+           parent="@android:style/Widget.DeviceDefault.Button.Borderless.Colored">
+        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:layout_marginLeft">24dp</item>
+        <item name="android:layout_marginRight">24dp</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:fontFamily">google-sans-medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/system_neutral1_900</item>
+        <item name="android:background">@drawable/grant_permissions_buttons_bottom</item>
+    </style>
+
+    <!-- for use in overlays -->
+    <style name="PermissionGrantButtonAllowMaterial3"
+           parent="@style/PermissionGrantButtonTop"></style>
+    <style name="PermissionGrantButtonAllowForegroundMaterial3"
+           parent="@style/PermissionGrantButtonTop"></style>
+    <style name="PermissionGrantButtonAllowOneTimeMaterial3"
+           parent="@style/PermissionGrantButtonMiddle"></style>
+    <style name="PermissionGrantButtonDenyMaterial3"
+           parent="@style/PermissionGrantButtonBottom"></style>
+    <style name="PermissionGrantButtonNoUpgradeMaterial3"
+           parent="@style/PermissionGrantButtonBottom"></style>
+
+    <!-- END PERMISSION GRANT DIALOG -->
+
     <style name="AppPermissionRadioButton"
            parent="@android:style/Widget.DeviceDefault.CompoundButton.RadioButton">
         <item name="android:layout_width">match_parent</item>

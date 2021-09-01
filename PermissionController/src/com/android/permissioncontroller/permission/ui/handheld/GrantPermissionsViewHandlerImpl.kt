@@ -48,6 +48,7 @@ import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
+import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_ALWAYS_BUTTON
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_BUTTON
@@ -192,8 +193,16 @@ class GrantPermissionsViewHandlerImpl(
     override fun createView(): View {
         // Make this activity be Non-IME target to prevent hiding keyboard flicker when it show up.
         mActivity.window.addFlags(LayoutParams.FLAG_ALT_FOCUSABLE_IM)
-        val rootView = LayoutInflater.from(mActivity)
-            .inflate(R.layout.grant_permissions, null) as ViewGroup
+
+        val useMaterial3PermissionGrantDialog = mActivity.resources
+                .getBoolean(R.bool.config_useMaterial3PermissionGrantDialog)
+        val rootView = if (useMaterial3PermissionGrantDialog || SdkLevel.isAtLeastT()) {
+            LayoutInflater.from(mActivity)
+                    .inflate(R.layout.grant_permissions_material3, null) as ViewGroup
+        } else {
+            LayoutInflater.from(mActivity)
+                    .inflate(R.layout.grant_permissions, null) as ViewGroup
+        }
         this.rootView = rootView
 
         val h = mActivity.resources.displayMetrics.heightPixels
