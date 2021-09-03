@@ -473,9 +473,9 @@
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"要更改&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;的麦克风使用权限吗？"</string>
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"此应用想要随时录音，即使在您未使用它的时候。"<annotation id="link">"您可以在“设置”中授权"</annotation>"。"</string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;获取您的身体活动数据吗？"</string>
-    <string name="permgrouprequest_camera" msgid="5123097035410002594">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;拍摄照片和录制视频吗？"</string>
+    <string name="permgrouprequest_camera" msgid="5123097035410002594">"要允许“&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;”拍摄照片和录制视频吗？"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"此应用将只能在您使用它时拍摄照片和录制视频"</string>
-    <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;拍摄照片和录制视频吗？"</string>
+    <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"要允许“&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;”拍摄照片和录制视频吗？"</string>
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"此应用可能想要随时拍摄照片和录制视频，即使在您未使用它的时候。"<annotation id="link">"您可以在“设置”中授权"</annotation>"。"</string>
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"要更改&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;的相机使用权限吗？"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"此应用想要随时拍摄照片和录制视频，即使在您未使用它的时候。"<annotation id="link">"您可以在“设置”中授权"</annotation>"。"</string>
