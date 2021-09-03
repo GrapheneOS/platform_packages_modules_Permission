@@ -74,6 +74,7 @@ import com.android.permissioncontroller.permission.data.DataRepositoryForPackage
 import com.android.permissioncontroller.permission.data.HasIntentAction
 import com.android.permissioncontroller.permission.data.LauncherPackagesLiveData
 import com.android.permissioncontroller.permission.data.ServiceLiveData
+import com.android.permissioncontroller.permission.data.SmartAsyncMediatorLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.data.UsageStatsLiveData
 import com.android.permissioncontroller.permission.data.get
@@ -422,16 +423,26 @@ suspend fun isPackageHibernationExemptBySystem(
     }
 
     if (SdkLevel.isAtLeastS()) {
+        val context = PermissionControllerApplication.get()
+        val hasInstallOrUpdatePermissions =
+                context.checkPermission(
+                        Manifest.permission.INSTALL_PACKAGES, -1 /* pid */, pkg.uid) ==
+                                PERMISSION_GRANTED ||
+                context.checkPermission(
+                        Manifest.permission.INSTALL_PACKAGE_UPDATES, -1 /* pid */, pkg.uid) ==
+                                PERMISSION_GRANTED
         val hasUpdatePackagesWithoutUserActionPermission =
-            PermissionControllerApplication.get().packageManager.checkPermission(
-                UPDATE_PACKAGES_WITHOUT_USER_ACTION, pkg.packageName) == PERMISSION_GRANTED
-        val installPackagesAppOpMode = AppOpLiveData[pkg.packageName,
-            AppOpsManager.OPSTR_REQUEST_INSTALL_PACKAGES, pkg.uid]
-            .getInitializedValue()
-        if (hasUpdatePackagesWithoutUserActionPermission &&
-            installPackagesAppOpMode == AppOpsManager.MODE_ALLOWED) {
+                context.checkPermission(
+                        UPDATE_PACKAGES_WITHOUT_USER_ACTION, -1 /* pid */, pkg.uid) ==
+                                PERMISSION_GRANTED
+        val isInstallerOfRecord =
+                InstallerPackagesLiveData[user].getInitializedValue().contains(pkg.packageName) &&
+                        hasUpdatePackagesWithoutUserActionPermission
+        // Grant if app w/ privileged install/update permissions or app is an installer app that
+        // updates packages without user action.
+        if (hasInstallOrUpdatePermissions || isInstallerOfRecord) {
             if (DEBUG_HIBERNATION_POLICY) {
-                DumpableLog.i(LOG_TAG, "Exempted ${pkg.packageName} - 3p app store")
+                DumpableLog.i(LOG_TAG, "Exempted ${pkg.packageName} - installer app")
             }
             return true
         }
@@ -688,6 +699,52 @@ class ExemptServicesLiveData(val user: UserHandle)
     companion object : DataRepositoryForPackage<UserHandle, ExemptServicesLiveData>() {
         override fun newValue(key: UserHandle): ExemptServicesLiveData {
             return ExemptServicesLiveData(key)
+        }
+    }
+}
+
+/**
+ * Packages that are the installer of record for some package on the device.
+ */
+class InstallerPackagesLiveData(val user: UserHandle)
+    : SmartAsyncMediatorLiveData<Set<String>>() {
+
+    init {
+        addSource(AllPackageInfosLiveData) {
+            update()
+        }
+    }
+
+    override suspend fun loadDataAndPostValue(job: Job) {
+        if (job.isCancelled) {
+            return
+        }
+        if (!AllPackageInfosLiveData.isInitialized) {
+            return
+        }
+        val userPackageInfos = AllPackageInfosLiveData.value!![user]
+        val installerPackages = mutableSetOf<String>()
+        val packageManager = PermissionControllerApplication.get().packageManager
+
+        userPackageInfos!!.forEach { pkgInfo ->
+            val installerPkg =
+                    packageManager.getInstallSourceInfo(pkgInfo.packageName).installingPackageName
+            if (installerPkg != null) {
+                installerPackages.add(installerPkg)
+            }
+        }
+
+        postValue(installerPackages)
+    }
+
+    /**
+     * Repository for installer packages
+     *
+     * <p> Key value is user
+     */
+    companion object : DataRepositoryForPackage<UserHandle, InstallerPackagesLiveData>() {
+        override fun newValue(key: UserHandle): InstallerPackagesLiveData {
+            return InstallerPackagesLiveData(key)
         }
     }
 }
