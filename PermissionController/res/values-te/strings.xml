@@ -73,7 +73,7 @@
     <string name="manage_permission" msgid="2895385393037061964">"అనుమతిని మేనేజ్ చేయండి"</string>
     <string name="no_apps" msgid="2412612731628386816">"యాప్‌లు లేవు"</string>
     <string name="location_settings" msgid="3624412509133422562">"లొకేషన్ సెట్టింగ్‌లు"</string>
-    <string name="location_warning" msgid="2381649060929040962">"ఈ పరికరం కోసం స్థాన సేవల ప్రదాత <xliff:g id="APP_NAME">%1$s</xliff:g>. స్థాన సెట్టింగ్‌ల నుండి స్థాన యాక్సెస్‌ను సవరించవచ్చు."</string>
+    <string name="location_warning" msgid="2381649060929040962">"ఈ పరికరం కోసం లొకేషన్ సర్వీస్‌ల ప్రొవైడర్ <xliff:g id="APP_NAME">%1$s</xliff:g>. లొకేషన్ సెట్టింగ్‌ల నుండి లొకేషన్ యాక్సెస్‌ను సవరించవచ్చు."</string>
     <string name="system_warning" msgid="1173400963234358816">"మీరు ఈ అనుమతిని నిరాకరిస్తే, మీ పరికర ప్రాథమిక లక్షణాలు ఇకపై ఉద్దేశించిన రీతిలో పని చేయకపోవచ్చు."</string>
     <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"మీరు ఈ అనుమతిని నిరాకరిస్తే, ఈ యాప్ ద్వారా మేనేజ్ చేయబడే మీ పరికరం తాలూకు కొన్ని ఫీచర్‌లు ఇకపై ఉద్దేశించిన విధంగా పనిచేయకపోవచ్చు."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"విధానం ద్వారా అమలు చేయబడింది"</string>
@@ -306,7 +306,7 @@
     <string name="all_unused_apps_category_title" msgid="755663524704745414">"వినియోగంలో లేని అన్ని యాప్‌లు"</string>
     <string name="months_ago" msgid="1766026492610646354">"<xliff:g id="COUNT">%1$d</xliff:g> నెలల క్రితం"</string>
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"మీ గోప్యతను రక్షించడానికి అనుమతులు తీసివేయబడ్డాయి"</string>
-    <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"మీ స్థానాన్ని <xliff:g id="APP_NAME">%s</xliff:g> నేపథ్యంలో ఉపయోగిస్తోంది"</string>
+    <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"మీ లొకేషన్‌ను <xliff:g id="APP_NAME">%s</xliff:g> బ్యాక్‌గ్రౌండ్‌లో ఉపయోగిస్తోంది"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"ఈ యాప్ మీ లొకేషన్‌ను ఎల్లప్పుడూ యాక్సెస్ చేయగలదు. మార్చడానికి ట్యాప్ చేయండి."</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"గోప్యతను కాపాడడానికి యాప్ అనుమతులు తీసివేయబడ్డాయి"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"కొన్ని నెలలుగా <xliff:g id="APP_NAME">%s</xliff:g> ఉపయోగంలో లేదు. రివ్యూ చేయడానికి నొక్కండి."</string>
@@ -372,7 +372,7 @@
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS యాప్"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"SMSలు, ఫోటోలు, వీడియోలు, మరిన్నింటిని పంపడానికి, అందుకోవడానికి మీ ఫోన్ నంబర్‌ను ఉపయోగించేందుకు మిమ్మల్ని అనుమతించే యాప్‌లు"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g>ను మీ ఆటోమేటిక్ SMS యాప్‌గా సెట్ చేయాలా?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"పరిచయాలు, SMS, ఫోన్‌కు యాక్సెస్ పొందుతుంది"</string>
+    <string name="role_sms_request_description" msgid="983371022668134198">"కాంటాక్ట్‌లు, SMS, ఫోన్‌కు యాక్సెస్ పొందుతుంది"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"వచన మెసేజ్‌, వచనం పంపడం, మెసేజ్‌లు, మెసేజ్‌ పంపడం"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"ఆటోమేటిక్ ఎమర్జెన్సీ యాప్"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"అత్యవసర యాప్"</string>
