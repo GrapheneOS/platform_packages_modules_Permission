@@ -353,7 +353,7 @@
     <string name="accessibility_service_dialog_bottom_text_single" msgid="1128666197822205958">"<xliff:g id="SERVICE_NAME">%s</xliff:g> तुमची स्क्रीन, क्रिया आणि इनपुट, करत असलेल्या क्रिया पाहू शकेल आणि डिस्प्ले नियंत्रित करू शकेल."</string>
     <string name="accessibility_service_dialog_bottom_text_multiple" msgid="7009848932395519852">"ही अ‍ॅप्स तुमची स्क्रीन, कृती आणि इनपुट पाहू शकतात, कृती करू शकतात आणि डिस्प्ले नियंत्रित करू शकतात."</string>
     <string name="role_assistant_label" msgid="4727586018198208128">"डीफॉल्ट डिजिटल साहाय्यक अ‍ॅप"</string>
-    <string name="role_assistant_short_label" msgid="3369003713187703399">"डिजिटल साहाय्यक अ‍ॅप"</string>
+    <string name="role_assistant_short_label" msgid="3369003713187703399">"डिजिटल असिस्टंट अ‍ॅप"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"साहाय्यक अ‍ॅप्स तुम्ही पाहत असलेल्या स्क्रीनवरील माहितीच्या आधारावर तुम्हाला मदत करू शकतात. काही अ‍ॅप्स तुम्हाला एकत्रित साहाय्य देण्यासाठी लाँचर आणि व्हॉइस इनपुट सेवा दोन्हींना सपोर्ट करतात."</string>
     <string name="role_assistant_request_title" msgid="5964976301922776060">"<xliff:g id="APP_NAME">%1$s</xliff:g> तुमचे डीफॉल्ट साहाय्य अ‍ॅप म्हणून सेट करायचे?"</string>
     <string name="role_assistant_request_description" msgid="6836644847620178483">"एसएमएस, कॉल लॉगचा अ‍ॅक्सेस मिळवते"</string>
