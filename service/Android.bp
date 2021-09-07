@@ -98,6 +98,7 @@ java_sdk_library {
         "modules-annotation-minsdk",
     ],
     static_libs: [
+        "modules-utils-backgroundthread",
         "modules-utils-os",
         "service-permission-shared",
     ],
