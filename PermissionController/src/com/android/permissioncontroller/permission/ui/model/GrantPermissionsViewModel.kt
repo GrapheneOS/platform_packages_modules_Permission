@@ -877,7 +877,8 @@ class GrantPermissionsViewModel(
                 KotlinUtils.revokeBackgroundRuntimePermissions(app, groupState.group,
                     userFixed = doNotAskAgain, filterPermissions = groupState.affectedPermissions)
             } else {
-                if (affectedForegroundPermissions == null) {
+                if (affectedForegroundPermissions == null ||
+                        affectedForegroundPermissions.contains(ACCESS_COARSE_LOCATION)) {
                     KotlinUtils.revokeForegroundRuntimePermissions(app, groupState.group,
                         userFixed = doNotAskAgain,
                         filterPermissions = groupState.affectedPermissions, oneTime = isOneTime)
