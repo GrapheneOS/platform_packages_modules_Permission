@@ -1228,4 +1228,11 @@ public final class Utils {
 
         return new Pair<>(lastAccessTimeFormatted, lastAccessType);
     }
+
+    /**
+     * Returns if the permission group is Camera or Microphone (status bar indicators).
+     **/
+    public static boolean isStatusBarIndicatorPermission(@NonNull String permissionGroupName) {
+        return CAMERA.equals(permissionGroupName) || MICROPHONE.equals(permissionGroupName);
+    }
 }
