@@ -383,7 +383,7 @@
     <string name="role_home_label" msgid="3871847846649769412">"ఆటోమేటిక్ హోమ్ యాప్"</string>
     <string name="role_home_short_label" msgid="8544733747952272337">"మొదటి స్క్రీన్ యాప్"</string>
     <string name="role_home_description" msgid="7997371519626556675">"త‌ర‌చుగా లాంచర్‌లు అని పిలవబడే యాప్‌లు, మీ Android పరికరంలో హోమ్ స్క్రీన్‌లను రీప్లేస్‌ చేయగలవు. మీ పరికరం కంటెంట్‌లకు, ఫీచర్‌లకు యాక్సెస్ ఇవ్వగలవు."</string>
-    <string name="role_home_request_title" msgid="738136983453341081">"<xliff:g id="APP_NAME">%1$s</xliff:g>ను మీ డిఫాల్ట్ హోమ్ యాప్‌గా సెట్ చేయాలా?"</string>
+    <string name="role_home_request_title" msgid="738136983453341081">"మొదటి స్క్రీన్ యాప్ విషయంలో <xliff:g id="APP_NAME">%1$s</xliff:g>‌ను మీ ఆటోమేటిక్ ఆప్షన్‌గా సెట్ చేయాలా?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"అనుమతులు ఇవ్వనవసరం లేదు"</string>
     <string name="role_home_search_keywords" msgid="3830755001192666285">"లాంచర్"</string>
     <string name="role_call_redirection_label" msgid="5785304207206147590">"ఆటోమేటిక్ కాల్ మళ్లింపు యాప్"</string>
