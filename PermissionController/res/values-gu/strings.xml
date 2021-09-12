@@ -497,4 +497,8 @@
     <string name="privdash_label_other" msgid="3710394147423236033">"અન્ય"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"એકપણ નહીં"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"છેલ્લા\n24 કલાક"</string>
+    <!-- no translation found for exempt_mic_camera_info_label (6273581737010902815) -->
+    <skip />
+    <!-- no translation found for exempt_info_label (6286190981253476699) -->
+    <skip />
 </resources>

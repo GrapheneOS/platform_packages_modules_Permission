@@ -371,7 +371,7 @@
     <string name="role_sms_label" msgid="8456999857547686640">"SMSetarako aplik. lehenetsia"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMSetarako aplikazioa"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Telefono-zenbakiaren bidez testu-mezu laburrak, argazkiak, bideoak eta beste zenbait gauza bidaltzea eta jasotzea ahalbidetzen dizuten aplikazioak"</string>
-    <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g> ezarri nahi duzu SMS mezuetarako aplikazio lehenetsi gisa?"</string>
+    <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g> ezarri nahi duzu SMSetarako aplikazio lehenetsi gisa?"</string>
     <string name="role_sms_request_description" msgid="983371022668134198">"Kontaktuak, SMSak ete telefonoa atzitu ahalko ditu"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"testu-mezua, testu-mezuak, mezuak, bidali"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"Larrialdietarako aplikazio lehenetsia"</string>
@@ -497,4 +497,8 @@
     <string name="privdash_label_other" msgid="3710394147423236033">"Beste bat"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"Bat ere ez"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Azken\n24 orduak"</string>
+    <!-- no translation found for exempt_mic_camera_info_label (6273581737010902815) -->
+    <skip />
+    <!-- no translation found for exempt_info_label (6286190981253476699) -->
+    <skip />
 </resources>
