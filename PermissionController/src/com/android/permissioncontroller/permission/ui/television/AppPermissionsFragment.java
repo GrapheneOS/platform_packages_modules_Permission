@@ -418,8 +418,8 @@ public final class AppPermissionsFragment extends SettingsWithHeader
                     screen.getPreferenceManager().getContext());
             unusedAppsCategory.setKey(UNUSED_APPS_KEY);
             unusedAppsCategory.setTitle(R.string.unused_apps);
-            unusedAppsCategory.addPreference(autoRevokeSwitch);
             screen.addPreference(unusedAppsCategory);
+            unusedAppsCategory.addPreference(autoRevokeSwitch);
         } else {
             screen.addPreference(autoRevokeSwitch);
         }
