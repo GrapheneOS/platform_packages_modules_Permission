@@ -64,6 +64,7 @@ import android.content.res.Resources.Theme;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.hardware.SensorPrivacyManager;
 import android.os.Build;
 import android.os.Parcelable;
 import android.os.Process;
@@ -84,6 +85,7 @@ import android.view.MenuItem;
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.annotation.StringRes;
 import androidx.core.text.BidiFormatter;
 import androidx.core.util.Preconditions;
@@ -191,6 +193,11 @@ public final class Utils {
     private static final ArrayMap<String, Integer> PERM_GROUP_BACKGROUND_REQUEST_DETAIL_RES;
     private static final ArrayMap<String, Integer> PERM_GROUP_UPGRADE_REQUEST_RES;
     private static final ArrayMap<String, Integer> PERM_GROUP_UPGRADE_REQUEST_DETAIL_RES;
+
+    /** Permission -> Sensor codes */
+    private static final ArrayMap<String, Integer> PERM_SENSOR_CODES;
+    /** Permission -> Icon res id */
+    private static final ArrayMap<String, Integer> PERM_BLOCKED_ICON;
 
     public static final int FLAGS_ALWAYS_USER_SENSITIVE =
             FLAG_PERMISSION_USER_SENSITIVE_WHEN_GRANTED
@@ -350,6 +357,17 @@ public final class Utils {
                 .put(MICROPHONE, R.string.permgroupupgraderequestdetail_microphone);
         PERM_GROUP_UPGRADE_REQUEST_DETAIL_RES
                 .put(CAMERA, R.string.permgroupupgraderequestdetail_camera);
+
+        PERM_SENSOR_CODES = new ArrayMap<>();
+        if (SdkLevel.isAtLeastS()) {
+            PERM_SENSOR_CODES.put(CAMERA, SensorPrivacyManager.Sensors.CAMERA);
+            PERM_SENSOR_CODES.put(MICROPHONE, SensorPrivacyManager.Sensors.MICROPHONE);
+        }
+
+        PERM_BLOCKED_ICON = new ArrayMap<>();
+        PERM_BLOCKED_ICON.put(CAMERA, R.drawable.ic_camera_blocked);
+        PERM_BLOCKED_ICON.put(MICROPHONE, R.drawable.ic_mic_blocked);
+        PERM_BLOCKED_ICON.put(LOCATION, R.drawable.ic_location_blocked);
     }
 
     private Utils() {
@@ -1234,5 +1252,28 @@ public final class Utils {
      **/
     public static boolean isStatusBarIndicatorPermission(@NonNull String permissionGroupName) {
         return CAMERA.equals(permissionGroupName) || MICROPHONE.equals(permissionGroupName);
+    }
+
+    /**
+     * Returns if a card should be shown if the sensor is blocked
+     **/
+    public static boolean shouldDisplayCardIfBlocked(@NonNull String permissionGroupName) {
+        return CAMERA.equals(permissionGroupName) || MICROPHONE.equals(permissionGroupName)
+                || LOCATION.equals(permissionGroupName);
+    }
+
+    /**
+     * Returns the sensor code for a permission
+     **/
+    @RequiresApi(Build.VERSION_CODES.S)
+    public static int getSensorCode(@NonNull String permissionGroupName) {
+        return PERM_SENSOR_CODES.getOrDefault(permissionGroupName, -1);
+    }
+
+    /**
+     * Returns the blocked icon code for a permission
+     **/
+    public static int getBlockedIcon(@NonNull String permissionGroupName) {
+        return PERM_BLOCKED_ICON.getOrDefault(permissionGroupName, -1);
     }
 }
