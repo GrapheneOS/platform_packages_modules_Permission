@@ -17,10 +17,14 @@
 package com.android.permissioncontroller.permission.ui.model
 
 import android.Manifest
+import android.Manifest.permission_group.LOCATION
 import android.app.Application
 import android.content.Intent
+import android.hardware.SensorPrivacyManager
+import android.os.Build
 import android.os.Bundle
 import android.os.UserHandle
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.MediatorLiveData
@@ -33,6 +37,7 @@ import com.android.permissioncontroller.permission.data.AllPackageInfosLiveData
 import com.android.permissioncontroller.permission.data.FullStoragePermissionAppsLiveData
 import com.android.permissioncontroller.permission.data.FullStoragePermissionAppsLiveData.FullStoragePackageState
 import com.android.permissioncontroller.permission.data.SinglePermGroupPackagesUiInfoLiveData
+import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo.PermGrantState
 import com.android.permissioncontroller.permission.ui.Category
 import com.android.permissioncontroller.permission.ui.LocationProviderInterceptDialog
@@ -42,6 +47,7 @@ import com.android.permissioncontroller.permission.ui.model.PermissionAppsViewMo
 import com.android.permissioncontroller.permission.ui.model.PermissionAppsViewModel.Companion.SHOW_ALWAYS_ALLOWED
 import com.android.permissioncontroller.permission.utils.LocationUtils
 import com.android.permissioncontroller.permission.utils.navigateSafe
+import com.android.permissioncontroller.permission.utils.Utils
 
 /**
  * ViewModel for the PermissionAppsFragment. Has a liveData with all of the UI info for each
@@ -70,6 +76,12 @@ class PermissionAppsViewModel(
     val showAllowAlwaysStringLiveData = state.getLiveData(SHOW_ALWAYS_ALLOWED, false)
     val categorizedAppsLiveData = CategorizedAppsLiveData(groupName)
 
+    @get:RequiresApi(Build.VERSION_CODES.S)
+    val sensorStatusLiveData: SensorStatusLiveData by lazy(LazyThreadSafetyMode.NONE)
+    @RequiresApi(Build.VERSION_CODES.S) {
+        SensorStatusLiveData()
+    }
+
     fun updateShowSystem(showSystem: Boolean) {
         if (showSystem != state.get(SHOULD_SHOW_SYSTEM_KEY)) {
             state.set(SHOULD_SHOW_SYSTEM_KEY, showSystem)
@@ -79,6 +91,65 @@ class PermissionAppsViewModel(
     var creationLogged
         get() = state.get(CREATION_LOGGED_KEY) ?: false
         set(value) = state.set(CREATION_LOGGED_KEY, value)
+
+    /**
+     * A LiveData that tracks the status (blocked or available) of a sensor
+     */
+    @RequiresApi(Build.VERSION_CODES.S)
+    inner class SensorStatusLiveData() : SmartUpdateMediatorLiveData<Boolean>() {
+        val sensorPrivacyManager = app.getSystemService(SensorPrivacyManager::class.java)!!
+        val sensor = Utils.getSensorCode(groupName)
+        val isLocation = LOCATION.equals(groupName)
+
+        init {
+            checkAndUpdateStatus()
+        }
+
+        fun checkAndUpdateStatus() {
+            var blocked: Boolean
+
+            if (isLocation) {
+                blocked = !LocationUtils.isLocationEnabled(app.getApplicationContext())
+            } else {
+                blocked = sensorPrivacyManager.isSensorPrivacyEnabled(sensor)
+            }
+
+            if (blocked) {
+                value = blocked
+            }
+        }
+
+        override fun onActive() {
+            super.onActive()
+            checkAndUpdateStatus()
+            if (isLocation) {
+                LocationUtils.addLocationListener(locListener)
+            } else {
+                sensorPrivacyManager.addSensorPrivacyListener(sensor, listener)
+            }
+        }
+
+        override fun onInactive() {
+            super.onInactive()
+            if (isLocation) {
+                LocationUtils.removeLocationListener(locListener)
+            } else {
+                sensorPrivacyManager.removeSensorPrivacyListener(sensor, listener)
+            }
+        }
+
+        private val listener = { sensor: Int, status: Boolean ->
+            value = status
+        }
+
+        private val locListener = { status: Boolean ->
+            value = !status
+        }
+
+        override fun onUpdate() {
+            // Do nothing
+        }
+    }
 
     inner class CategorizedAppsLiveData(groupName: String)
         : MediatorLiveData<@kotlin.jvm.JvmSuppressWildcards
