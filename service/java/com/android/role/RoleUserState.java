@@ -32,7 +32,7 @@ import androidx.annotation.RequiresApi;
 
 import com.android.internal.annotations.GuardedBy;
 import com.android.internal.util.dump.DualDumpOutputStream;
-import com.android.permission.util.BackgroundThread;
+import com.android.modules.utils.BackgroundThread;
 import com.android.permission.util.CollectionUtils;
 import com.android.role.persistence.RolesPersistence;
 import com.android.role.persistence.RolesState;
