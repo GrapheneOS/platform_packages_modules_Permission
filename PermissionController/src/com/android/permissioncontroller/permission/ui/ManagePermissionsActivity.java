@@ -28,6 +28,7 @@ import static com.android.permissioncontroller.PermissionControllerStatsLog.AUTO
 import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_USAGE_FRAGMENT_INTERACTION;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__OPEN;
 
+import android.Manifest;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -197,10 +198,34 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                     return;
                 }
                 String packageName = getIntent().getStringExtra(Intent.EXTRA_PACKAGE_NAME);
+
+                if (packageName == null) {
+                    Log.i(LOG_TAG, "Missing mandatory argument EXTRA_PACKAGE_NAME");
+                    finishAfterTransition();
+                    return;
+                }
                 permissionName = getIntent().getStringExtra(Intent.EXTRA_PERMISSION_NAME);
                 String groupName = getIntent().getStringExtra(Intent.EXTRA_PERMISSION_GROUP_NAME);
+
+                if (permissionName == null && groupName == null) {
+                    Log.i(LOG_TAG, "Missing mandatory argument EXTRA_PERMISSION_NAME or"
+                            + "EXTRA_PERMISSION_GROUP_NAME");
+                    finishAfterTransition();
+                    return;
+                }
+
                 UserHandle userHandle = getIntent().getParcelableExtra(Intent.EXTRA_USER);
                 String caller = getIntent().getStringExtra(EXTRA_CALLER_NAME);
+
+                if (groupName == null) {
+                    groupName = getGroupFromPermission(permissionName);
+                }
+
+                if (groupName != null
+                        && groupName.equals(Manifest.permission_group.NOTIFICATIONS)) {
+                    // Redirect notification group to notification settings
+                    Utils.navigateToAppNotificationSettings(this, packageName, userHandle);
+                }
 
                 Bundle args = AppPermissionFragment.createArgs(packageName, permissionName,
                         groupName, userHandle, caller, sessionId, null);
@@ -295,6 +320,12 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                     finishAfterTransition();
                     return;
                 }
+
+                // Redirect notification group to notification settings
+                if (permissionGroupName.equals(Manifest.permission_group.NOTIFICATIONS)) {
+                    Utils.navigateToNotificationSettings(this);
+                }
+
                 if (DeviceUtils.isAuto(this)) {
                     androidXFragment =
                             AutoPermissionAppsFragment.newInstance(permissionName, sessionId);
@@ -343,6 +374,17 @@ public final class ManagePermissionsActivity extends SettingsActivity {
             getSupportFragmentManager().beginTransaction().replace(android.R.id.content,
                     androidXFragment).commit();
         }
+    }
+
+    private String getGroupFromPermission(String permissionName) {
+        try {
+            PermissionInfo permInfo = getPackageManager().getPermissionInfo(
+                    permissionName, 0);
+            return Utils.getGroupOfPermission(permInfo);
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.i(LOG_TAG, "Permission " + permissionName + " does not exist");
+        }
+        return null;
     }
 
     private void setNavGraph(Bundle args, int startDestination) {

@@ -231,9 +231,6 @@ private suspend fun getAppsToHibernate(
     val now = System.currentTimeMillis()
     val firstBootTime = context.firstBootTime
 
-    // TODO ntmyren: remove once b/154796729 is fixed
-    Log.i(LOG_TAG, "getting UserPackageInfoLiveData for all users " +
-            "in " + HibernationJobService::class.java.simpleName)
     val allPackagesByUser = AllPackageInfosLiveData.getInitializedValue(forceUpdate = true)
     val allPackagesByUserByUid = allPackagesByUser.mapValues { (_, pkgs) ->
         pkgs.groupBy { pkg -> pkg.uid }

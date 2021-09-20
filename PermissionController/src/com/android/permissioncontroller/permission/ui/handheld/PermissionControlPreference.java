@@ -25,6 +25,7 @@ import static com.android.permissioncontroller.permission.ui.handheld.AppPermiss
 import static com.android.permissioncontroller.permission.ui.handheld.dashboard.UtilsKt.getUsageDurationString;
 import static com.android.permissioncontroller.permission.utils.KotlinUtilsKt.navigateSafe;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -48,6 +49,7 @@ import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.model.AppPermissionUsage.GroupUsage;
 import com.android.permissioncontroller.permission.ui.LocationProviderInterceptDialog;
 import com.android.permissioncontroller.permission.utils.LocationUtils;
+import com.android.permissioncontroller.permission.utils.Utils;
 
 import java.util.List;
 
@@ -250,6 +252,10 @@ public class PermissionControlPreference extends Preference {
                 // Redirect to location controller extra package settings.
                 LocationUtils.startLocationControllerExtraPackageSettings(mContext, mUser);
             } else if (mHasNavGraph) {
+                if (mPermGroupName.equals(Manifest.permission_group.NOTIFICATIONS)) {
+                    Utils.navigateToAppNotificationSettings(mContext, mPackageName, mUser);
+                    return true;
+                }
                 Bundle args = new Bundle();
                 args.putString(Intent.EXTRA_PACKAGE_NAME, mPackageName);
                 args.putString(Intent.EXTRA_PERMISSION_GROUP_NAME, mPermGroupName);
