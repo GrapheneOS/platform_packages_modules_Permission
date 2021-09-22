@@ -521,6 +521,7 @@
             <permission name="android.permission.READ_PHONE_STATE" />
             <permission name="android.permission.RECEIVE_SMS" />
             <permission name="android.permission.SEND_SMS" />
+            <permission name="android.permission.TOGGLE_AUTOMOTIVE_PROJECTION" minSdkVersion="33" />
         </permissions>
     </role>
 
