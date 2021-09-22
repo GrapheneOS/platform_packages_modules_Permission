@@ -22,6 +22,7 @@ import android.provider.DeviceConfig
 import android.text.format.DateFormat.getMediumDateFormat
 import android.text.format.DateFormat.getTimeFormat
 import android.util.Pair
+import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.model.AppPermissionUsage.GroupUsage
 import java.util.Locale
@@ -82,7 +83,7 @@ fun isPermissionsHubSubattributionFlagEnabled(): Boolean {
  * @return whether to show subattribution in the Permissions Dashboard.
  */
 fun shouldShowSubattributionInPermissionsDashboard(): Boolean {
-    return isPermissionsHubSubattributionFlagEnabled()
+    return SdkLevel.isAtLeastS() && isPermissionsHubSubattributionFlagEnabled()
 }
 
 /**
