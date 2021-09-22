@@ -259,7 +259,7 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                                 userHandle, sessionId);
                     } else {
                         androidXFragment = AutoAppPermissionsFragment.newInstance(packageName,
-                                userHandle, sessionId);
+                                userHandle, sessionId, /* isSystemPermsScreen= */ true);
                     }
                 } else if (DeviceUtils.isWear(this)) {
                     androidXFragment = AppPermissionsFragmentWear.newInstance(packageName);
@@ -268,7 +268,7 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                             .AppPermissionsFragment.newInstance(packageName, userHandle);
                 } else {
                     Bundle args = AppPermissionGroupsFragment.createArgs(packageName, userHandle,
-                            sessionId, true);
+                            sessionId, /* isSystemPermsScreen= */  true);
                     setNavGraph(args, R.id.app_permission_groups);
                     return;
                 }
