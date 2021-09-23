@@ -75,7 +75,7 @@ fun shouldShowPermissionsDashboard(): Boolean {
  */
 fun isPermissionsHubSubattributionFlagEnabled(): Boolean {
     return DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
-            PROPERTY_PERMISSIONS_HUB_SUBATTRIBUTION_ENABLED, false)
+            PROPERTY_PERMISSIONS_HUB_SUBATTRIBUTION_ENABLED, true)
 }
 /**
  * Whether to show the subattribution in the Permissions Dashboard
