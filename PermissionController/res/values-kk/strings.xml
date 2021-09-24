@@ -71,7 +71,7 @@
     <string name="menu_hide_system" msgid="3855390843744028465">"Жүйені жасыру"</string>
     <string name="manage_permission" msgid="2895385393037061964">"Рұқсатты басқару"</string>
     <string name="no_apps" msgid="2412612731628386816">"Қолданба жоқ"</string>
-    <string name="location_settings" msgid="3624412509133422562">"Орналасу параметрлері"</string>
+    <string name="location_settings" msgid="3624412509133422562">"Локация параметрлері"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> – осы құрылғыға орынды анықтау қызметтерін көрсететін қолданба. Орынды пайдалану мүмкіндігін орынды анықтау параметрлерінде өзгертуге болады."</string>
     <string name="system_warning" msgid="1173400963234358816">"Бұл рұқсатты бермесеңіз, құрылғының негізгі функциялары енді көзделгендей жұмыс істемеуі мүмкін."</string>
     <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"Бұл рұқсаттан бас тартсаңыз, осы қолданба арқылы басқарылатын құрылғыңыздың кейбір функциясы бұдан былай ойдағыдай жұмыс істемеуі мүмкін."</string>
