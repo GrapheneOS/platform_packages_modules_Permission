@@ -497,8 +497,6 @@
     <string name="privdash_label_other" msgid="3710394147423236033">"기타"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"없음"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"지난\n24시간"</string>
-    <!-- no translation found for exempt_mic_camera_info_label (6273581737010902815) -->
-    <skip />
-    <!-- no translation found for exempt_info_label (6286190981253476699) -->
-    <skip />
+    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> 앱은 Android에 의해 보호됩니다. 데이터가 이 기기에서 처리되므로 앱 권한 사용 내역이 상태 표시줄이나 개인 정보 대시보드에 표시되지 않습니다."</string>
+    <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> 앱은 Android에 의해 보호됩니다. 데이터가 이 기기에서 처리되므로 앱 권한 사용 내역이 개인 정보 대시보드에 표시되지 않습니다."</string>
 </resources>

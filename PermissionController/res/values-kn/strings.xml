@@ -497,8 +497,6 @@
     <string name="privdash_label_other" msgid="3710394147423236033">"ಇತರ"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"ಯಾವುದೂ ಅಲ್ಲ"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"ಕಳೆದ\n24 ಗಂಟೆಗಳು"</string>
-    <!-- no translation found for exempt_mic_camera_info_label (6273581737010902815) -->
-    <skip />
-    <!-- no translation found for exempt_info_label (6286190981253476699) -->
-    <skip />
+    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> ಅನ್ನು Android ನಿಂದ ರಕ್ಷಿಸಲಾಗಿದೆ. ಈ ಸಾಧನದಲ್ಲಿ ನಿಮ್ಮ ಡೇಟಾವನ್ನು ಪ್ರಕ್ರಿಯೆಗೊಳಿಸಲಾಗಿರುವುದರಿಂದ, ಈ ಆ್ಯಪ್‌ನ ಅನುಮತಿಯ ಬಳಕೆಯನ್ನು ಸ್ಥಿತಿ ಪಟ್ಟಿಯಲ್ಲಿ ಅಥವಾ ನಿಮ್ಮ ಗೌಪ್ಯತಾ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ನಲ್ಲಿ ತೋರಿಸಲಾಗುವುದಿಲ್ಲ."</string>
+    <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> ಅನ್ನು Android ನಿಂದ ರಕ್ಷಿಸಲಾಗಿದೆ. ಈ ಸಾಧನದಲ್ಲಿ ನಿಮ್ಮ ಡೇಟಾವನ್ನು ಪ್ರಕ್ರಿಯೆಗೊಳಿಸಲಾಗಿರುವುದರಿಂದ, ಈ ಆ್ಯಪ್‌ನ ಅನುಮತಿಯ ಬಳಕೆಯನ್ನು ನಿಮ್ಮ ಗೌಪ್ಯತಾ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ನಲ್ಲಿ ತೋರಿಸಲಾಗುವುದಿಲ್ಲ."</string>
 </resources>

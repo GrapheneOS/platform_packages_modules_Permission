@@ -497,8 +497,6 @@
     <string name="privdash_label_other" msgid="3710394147423236033">"ਹੋਰ"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"ਕੋਈ ਨਹੀਂ"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"ਪਿਛਲੇ\n24 ਘੰਟੇ"</string>
-    <!-- no translation found for exempt_mic_camera_info_label (6273581737010902815) -->
-    <skip />
-    <!-- no translation found for exempt_info_label (6286190981253476699) -->
-    <skip />
+    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> ਨੂੰ Android ਨਾਲ ਸੁਰੱਖਿਅਤ ਕੀਤਾ ਗਿਆ ਹੈ। ਕਿਉਂਕਿ ਇਸ ਡੀਵਾਈਸ \'ਤੇ ਤੁਹਾਡੇ ਡਾਟੇ \'ਤੇ ਪ੍ਰਕਿਰਿਆ ਕੀਤੀ ਜਾਂਦੀ ਹੈ, ਇਸ ਲਈ ਇਸ ਐਪ ਦੀ ਇਜਾਜ਼ਤ ਸੰਬੰਧੀ ਵਰਤੋਂ ਬਾਰੇ ਜਾਣਕਾਰੀ ਸਥਿਤੀ ਪੱਟੀ ਜਾਂ ਤੁਹਾਡੇ ਪਰਦੇਦਾਰੀ ਸੰਬੰਧੀ ਡੈਸ਼ਬੋਰਡ \'ਤੇ ਨਹੀਂ ਦਿਸਦੀ।"</string>
+    <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> ਨੂੰ Android ਨਾਲ ਸੁਰੱਖਿਅਤ ਕੀਤਾ ਗਿਆ ਹੈ। ਕਿਉਂਕਿ ਇਸ ਡੀਵਾਈਸ \'ਤੇ ਤੁਹਾਡੇ ਡਾਟੇ \'ਤੇ ਪ੍ਰਕਿਰਿਆ ਕੀਤੀ ਜਾਂਦੀ ਹੈ, ਇਸ ਲਈ ਇਸ ਐਪ ਦੀ ਇਜਾਜ਼ਤ ਸੰਬੰਧੀ ਵਰਤੋਂ ਬਾਰੇ ਜਾਣਕਾਰੀ ਤੁਹਾਡੇ ਪਰਦੇਦਾਰੀ ਸੰਬੰਧੀ ਡੈਸ਼ਬੋਰਡ \'ਤੇ ਨਹੀਂ ਦਿਸਦੀ।"</string>
 </resources>

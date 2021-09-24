@@ -497,8 +497,6 @@
     <string name="privdash_label_other" msgid="3710394147423236033">"Այլ"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"Չկա"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Վերջին\n24 ժամը"</string>
-    <!-- no translation found for exempt_mic_camera_info_label (6273581737010902815) -->
-    <skip />
-    <!-- no translation found for exempt_info_label (6286190981253476699) -->
-    <skip />
+    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածը պաշտպանված է Android-ի կողմից։ Քանի որ ձեր տվյալներն այս սարքում են մշակվում, հավելվածի թույլտվությունների օգտագործումը չի ցուցադրվում թույլտվությունների կառավարման վահանակի կարգավիճակի գոտում։"</string>
+    <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածը պաշտպանված է Android-ի կողմից։ Քանի որ ձեր տվյալներն այս սարքում են մշակվում, հավելվածի թույլտվությունների օգտագործումը չի ցուցադրվում թույլտվությունների կառավարման վահանակում։"</string>
 </resources>

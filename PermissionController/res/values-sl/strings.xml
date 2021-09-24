@@ -535,8 +535,6 @@
     <string name="privdash_label_other" msgid="3710394147423236033">"Drugo"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"Brez"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"V zadnjih\n24 urah"</string>
-    <!-- no translation found for exempt_mic_camera_info_label (6273581737010902815) -->
-    <skip />
-    <!-- no translation found for exempt_info_label (6286190981253476699) -->
-    <skip />
+    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Varnost aplikacije <xliff:g id="APP_NAME">%1$s</xliff:g> zagotavlja Android. Ker obdelava podatkov poteka v tej napravi, uporaba dovoljenj za to aplikacijo ni prikazana v vrstici stanja ali na nadzorni plošči za zasebnost."</string>
+    <string name="exempt_info_label" msgid="6286190981253476699">"Varnost aplikacije <xliff:g id="APP_NAME">%1$s</xliff:g> zagotavlja Android. Ker obdelava podatkov poteka v tej napravi, uporaba dovoljenj za to aplikacijo ni prikazana na nadzorni plošči za zasebnost."</string>
 </resources>

@@ -497,8 +497,6 @@
     <string name="privdash_label_other" msgid="3710394147423236033">"Башка"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"Жок"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Акыркы\n24 саат"</string>
-    <!-- no translation found for exempt_mic_camera_info_label (6273581737010902815) -->
-    <skip />
-    <!-- no translation found for exempt_info_label (6286190981253476699) -->
-    <skip />
+    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> Android тарабынан корголгон. Колдонмодогу нерселериңиз ушул түзмөктө иштетилгендиктен, бул колдонмонун уруксаттарды пайдалануу статистикасы абал тилкесинде же купуялык тактаңызда көрүнбөйт."</string>
+    <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> Android тарабынан корголгон. Колдонмодогу нерселериңиз ушул түзмөктө иштетилгендиктен, бул колдонмонун уруксаттарды пайдалануу статистикасы купуялык тактаңызда көрүнбөйт."</string>
 </resources>

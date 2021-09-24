@@ -535,8 +535,6 @@
     <string name="privdash_label_other" msgid="3710394147423236033">"Inne"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"Brak"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Ostatnie\n24 godziny"</string>
-    <!-- no translation found for exempt_mic_camera_info_label (6273581737010902815) -->
-    <skip />
-    <!-- no translation found for exempt_info_label (6286190981253476699) -->
-    <skip />
+    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Aplikacja <xliff:g id="APP_NAME">%1$s</xliff:g> jest chroniona przez Androida. Ponieważ Twoje dane są przetwarzane na tym urządzeniu, używanie uprawnień przez tę aplikację nie jest wyświetlane na pasku stanu w panelu ustawień prywatności."</string>
+    <string name="exempt_info_label" msgid="6286190981253476699">"Aplikacja <xliff:g id="APP_NAME">%1$s</xliff:g> jest chroniona przez Androida. Ponieważ Twoje dane są przetwarzane na tym urządzeniu, używanie uprawnień przez tę aplikację nie jest wyświetlane w panelu ustawień prywatności."</string>
 </resources>
