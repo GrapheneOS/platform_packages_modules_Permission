@@ -544,6 +544,7 @@
             <permission name="android.permission.OBSERVE_SENSOR_PRIVACY" />
             <permission name="android.permission.MANAGE_SENSOR_PRIVACY" />
             <permission name="android.permission.READ_GLOBAL_APP_SEARCH_DATA" />
+            <permission name="android.permission.TOGGLE_AUTOMOTIVE_PROJECTION" minSdkVersion="33" />
         </permissions>
     </role>
 
