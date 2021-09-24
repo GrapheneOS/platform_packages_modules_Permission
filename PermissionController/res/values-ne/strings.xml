@@ -497,8 +497,6 @@
     <string name="privdash_label_other" msgid="3710394147423236033">"अन्य"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"कुनै पनि होइन"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"विगत\n२४ घन्टा"</string>
-    <!-- no translation found for exempt_mic_camera_info_label (6273581737010902815) -->
-    <skip />
-    <!-- no translation found for exempt_info_label (6286190981253476699) -->
-    <skip />
+    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Android ले <xliff:g id="APP_NAME">%1$s</xliff:g> सुरक्षित राख्छ। तपाईंको जानकारी यो डिभाइसमा नै प्रोसेस गरिने भएकाले यो एपले कुन कुन अनुमति प्रयोग गर्‍यो भन्ने कुरा स्ट्याटस बार वा तपाईंको गोपनीयतासम्बन्धी ड्यासबोर्डमा देखाइँदैन।"</string>
+    <string name="exempt_info_label" msgid="6286190981253476699">"Android ले <xliff:g id="APP_NAME">%1$s</xliff:g> सुरक्षित राख्छ। तपाईंको जानकारी यो डिभाइसमा नै प्रोसेस गरिने भएकाले यो एपले कुन कुन अनुमति प्रयोग गर्‍यो भन्ने कुरा तपाईंको गोपनीयतासम्बन्धी ड्यासबोर्डमा देखाइँदैन।"</string>
 </resources>

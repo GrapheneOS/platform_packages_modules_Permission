@@ -497,8 +497,6 @@
     <string name="privdash_label_other" msgid="3710394147423236033">"ሌላ"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"ምንም"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"ባለፉት\n24 ሰዓታት"</string>
-    <!-- no translation found for exempt_mic_camera_info_label (6273581737010902815) -->
-    <skip />
-    <!-- no translation found for exempt_info_label (6286190981253476699) -->
-    <skip />
+    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> በAndroid የተጠበቀ ነው። በዚህ መሣሪያ ላይ የእርስዎ ውሂብ ስለተሰናዳ፣ የዚህ መተግበሪያ ፈቃድ አጠቃቀም በሁኔታ አሞሌ ወይም በግላዊነት ዳሽቦርድዎ ላይ አይታይም።"</string>
+    <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> በAndroid የተጠበቀ ነው። በዚህ መሣሪያ ላይ የእርስዎ ውሂብ ስለተሰናዳ፣ የዚህ መተግበሪያ ፈቃድ አጠቃቀም በግላዊነት ዳሽቦርድዎ ላይ አይታይም።"</string>
 </resources>

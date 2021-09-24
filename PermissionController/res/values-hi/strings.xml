@@ -497,8 +497,6 @@
     <string name="privdash_label_other" msgid="3710394147423236033">"दूसरी अनुमतियां"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"कोई नहीं"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"पिछले\n24 घंटे"</string>
-    <!-- no translation found for exempt_mic_camera_info_label (6273581737010902815) -->
-    <skip />
-    <!-- no translation found for exempt_info_label (6286190981253476699) -->
-    <skip />
+    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> को Android की मदद से सुरक्षित किया गया है. आपका डेटा इस डिवाइस पर प्रोसेस किया गया है. इसलिए, इस ऐप्लिकेशन की अनुमति के इस्तेमाल की जानकारी, स्टेटस बार या प्राइवसी डैशबोर्ड पर नहीं दिखती."</string>
+    <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> को Android की मदद से सुरक्षित किया गया है. आपका डेटा इस डिवाइस पर प्रोसेस किया गया है. इसलिए, इस ऐप्लिकेशन की अनुमति के इस्तेमाल की जानकारी, प्राइवसी डैशबोर्ड पर नहीं दिखती."</string>
 </resources>

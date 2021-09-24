@@ -497,8 +497,6 @@
     <string name="privdash_label_other" msgid="3710394147423236033">"Egyéb"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"Nincs"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Elmúlt\n24 óra"</string>
-    <!-- no translation found for exempt_mic_camera_info_label (6273581737010902815) -->
-    <skip />
-    <!-- no translation found for exempt_info_label (6286190981253476699) -->
-    <skip />
+    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"A(z) <xliff:g id="APP_NAME">%1$s</xliff:g> alkalmazás védelmét az Android biztosítja. Mivel adatainak feldolgozása ezen az eszközön történik, az alkalmazás engedélyhasználata nem jelenik meg az állapotsorban vagy az Ön adatvédelmi irányítópultján."</string>
+    <string name="exempt_info_label" msgid="6286190981253476699">"A(z) <xliff:g id="APP_NAME">%1$s</xliff:g> alkalmazás védelmét az Android biztosítja. Mivel adatainak feldolgozása ezen az eszközön történik, az alkalmazás engedélyhasználata nem jelenik meg az Ön adatvédelmi irányítópultján."</string>
 </resources>

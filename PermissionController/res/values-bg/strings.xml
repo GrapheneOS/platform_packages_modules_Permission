@@ -497,8 +497,6 @@
     <string name="privdash_label_other" msgid="3710394147423236033">"Друго"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"Без"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Последните\n24 часа"</string>
-    <!-- no translation found for exempt_mic_camera_info_label (6273581737010902815) -->
-    <skip />
-    <!-- no translation found for exempt_info_label (6286190981253476699) -->
-    <skip />
+    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Приложението <xliff:g id="APP_NAME">%1$s</xliff:g> е защитено от Android. Тъй като данните ви се обработват на това устройство, използването на разрешенията на приложението не се показва в лентата на състоянието, нито в таблото ви за управление на поверителността."</string>
+    <string name="exempt_info_label" msgid="6286190981253476699">"Приложението <xliff:g id="APP_NAME">%1$s</xliff:g> е защитено от Android. Тъй като данните ви се обработват на това устройство, използването на разрешенията на приложението не се показва в таблото ви за управление на поверителността."</string>
 </resources>

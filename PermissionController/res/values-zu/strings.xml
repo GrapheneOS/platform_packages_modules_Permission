@@ -497,8 +497,6 @@
     <string name="privdash_label_other" msgid="3710394147423236033">"Okunye"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"Lutho"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Emahoreni angama-\n24 adlule"</string>
-    <!-- no translation found for exempt_mic_camera_info_label (6273581737010902815) -->
-    <skip />
-    <!-- no translation found for exempt_info_label (6286190981253476699) -->
-    <skip />
+    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"I-<xliff:g id="APP_NAME">%1$s</xliff:g> ivikelwe i-Android. Ngenxa yokuthi idatha yakho icutshungulwa kule divayisi, ukusetshenziswa kwemvume yale app akuboniswa kubha yesimo noma kudeshibhodi yakho yobumfihlo"</string>
+    <string name="exempt_info_label" msgid="6286190981253476699">"I-<xliff:g id="APP_NAME">%1$s</xliff:g> ivikelwe i-Android. Ngenxa yokuthi idatha yakho icutshungulwa kule divayisi, ukusetshenziswa kwemvume yale app akuboniswa kudeshibhodi yakho yobumfihlo"</string>
 </resources>

@@ -497,8 +497,6 @@
     <string name="privdash_label_other" msgid="3710394147423236033">"Annað"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"Ekkert"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Síðasta\nsólarhringinn"</string>
-    <!-- no translation found for exempt_mic_camera_info_label (6273581737010902815) -->
-    <skip />
-    <!-- no translation found for exempt_info_label (6286190981253476699) -->
-    <skip />
+    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> er verndað af Android. Unnið er úr gögnum þínum í þessu tæki og þar af leiðandi birtist heimildarnotkun þessa forrits ekki á stöðustikunni eða persónuverndarstjórnborðinu."</string>
+    <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> er verndað af Android. Unnið er úr gögnum þínum í þessu tæki og þar af leiðandi birtist heimildarnotkun þessa forrits ekki á persónuverndarstjórnborðinu þínu."</string>
 </resources>

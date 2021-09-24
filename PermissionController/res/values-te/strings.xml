@@ -217,7 +217,7 @@
     <string name="app_permission_header" msgid="2951363137032603806">"ఈ యాప్ కోసం \'<xliff:g id="PERM">%1$s</xliff:g>\' యాక్సెస్"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"అన్ని \'<xliff:g id="APP">%1$s</xliff:g>\' అనుమతులను చూడండి"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"ఈ అనుమతి ఉన్న అన్ని యాప్‌లను చూడండి"</string>
-    <string name="assistant_mic_label" msgid="1011432357152323896">"అసిస్టెంట్ మైక్రోఫోన్ ఉపయోగాన్ని చూపు"</string>
+    <string name="assistant_mic_label" msgid="1011432357152323896">"అసిస్టెంట్ మైక్రోఫోన్ వినియోగాన్ని చూపు"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"యాప్‌ని ఉపయోగించకపోతే, అనుమతులను తీసివేయండి"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"అనుమతులను తీసివేసి స్పేస్‌ను ఖాళీ చేయండి"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"మీ డేటాను సురక్షితంగా ఉంచడానికి, ఈ యాప్ కొన్ని నెలలుగా వినియోగంలో లేకుంటే, దాని అనుమతులు తీసివేయబడతాయి."</string>
@@ -404,7 +404,7 @@
     <string name="phone_call_uses_microphone_and_camera" msgid="6291898755681748189">"&lt;b&gt;వీడియో కాల్&lt;/b&gt;లో కెమెరా, మైక్రోఫోన్ ఉపయోగించబడతాయి"</string>
     <string name="phone_call_uses_camera" msgid="2048417022147857418">"&lt;b&gt;వీడియో కాల్&lt;/b&gt;లో కెమెరా ఉపయోగించబడుతుంది"</string>
     <string name="system_uses_microphone" msgid="576672130318877143">"సిస్టమ్ సర్వీస్‌ను ఉపయోగించి మైక్రోఫోన్ యాక్సెస్ చేయబడుతుంది"</string>
-    <string name="system_uses_microphone_and_camera" msgid="5124478304275138804">"సిస్టమ్ సర్వీస్‌ను ఉపయోగించి కెమెరా, మైక్రోఫోన్ యాక్సెస్ చేయబడతాయి"</string>
+    <string name="system_uses_microphone_and_camera" msgid="5124478304275138804">"సిస్టమ్ సర్వీస్‌ను ఉపయోగించి కెమెరా, మైక్రోఫోన్‌లు యాక్సెస్ చేయబడతాయి"</string>
     <string name="system_uses_camera" msgid="1911223105234441470">"సిస్టమ్ సర్వీస్‌ను ఉపయోగించి కెమెరా యాక్సెస్ చేయబడుతుంది"</string>
     <string name="other_use" msgid="6564855051022776692">"ఇతర ఉపయోగాలు:"</string>
     <string name="ongoing_usage_dialog_ok" msgid="103556809118460072">"అర్థమైంది"</string>
@@ -433,7 +433,7 @@
     <string name="special_app_access_no_apps" msgid="4102911722787886970">"ఏ యాప్‌కి లేదు"</string>
     <string name="home_missing_work_profile_support" msgid="1756855847669387977">"కార్యాలయ ప్రొఫైల్‌కు మద్దతు ఇవ్వదు"</string>
     <string name="encryption_unaware_confirmation_message" msgid="8274491794636402484">"చిన్న గమనిక: మీరు భద్రత కోసం స్క్రీన్ లాక్‌ని సెటప్‌ చేసి పెట్టుకున్నారు పైగా మీ పరికరాన్ని పునఃప్రారంభించినట్టున్నారు కనుక స్క్రీన్ లాక్ అయ్యిపోయింది. మీరు పాస్‌వర్డ్‌ని నమోదు చేసేవరకూ ఈ యాప్ ప్రారంభం కాదు."</string>
-    <string name="assistant_confirmation_message" msgid="7476540402884416212">"మీ స్క్రీన్‌పై కనిపించే లేదా యాప్‌లలో యాక్సెస్ చేసే సమాచారంతో పాటు మీ సిస్టమ్‌లో వినియోగంలో ఉన్న యాప్‌ల గురించిన సమాచారాన్ని అసిస్టెంట్ చదవగలుగుతుంది."</string>
+    <string name="assistant_confirmation_message" msgid="7476540402884416212">"మీ స్క్రీన్‌పై కనిపించే లేదా యాప్‌లలో యాక్సెస్ చేసే సమాచారంతో పాటు మీ సిస్టమ్‌లో వినియోగంలో ఉన్న యాప్‌ల గురించిన సమాచారాన్ని Assistant చదవగలుగుతుంది."</string>
     <string name="incident_report_channel_name" msgid="3144954065936288440">"డీబగ్గింగ్ డేటాను షేర్ చేయండి"</string>
     <string name="incident_report_notification_title" msgid="4635984625656519773">"వివరణాత్మక డీబగ్గింగ్ డేటాను షేర్ చేయాలా?"</string>
     <string name="incident_report_notification_text" msgid="3376480583513587923">"<xliff:g id="APP_NAME">%1$s</xliff:g>డీబగ్గింగ్ సమాచారాన్ని అప్‌లో డ్ చేయదలుచుకుంటున్నారు."</string>
@@ -448,8 +448,8 @@
     <string name="adjust_user_sensitive_globally_title" msgid="8649190949066029174">"సిస్టమ్ యాప్ వినియోగాన్ని చూపు"</string>
     <string name="adjust_user_sensitive_globally_summary" msgid="129467818433773912">"\'స్థితి బార్‌, డ్యాష్‌బోర్డ్ &amp; మరెక్కడైనా\'లో సిస్టమ్ యాప్ వినియోగించే అనుమతులను చూపు"</string>
     <string name="adjust_user_sensitive_per_app_header" msgid="4543506440989005648">"అనుసరిస్తున్న వినియోగాన్ని హైలైట్ చేయండి"</string>
-    <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"అసిస్టెంట్ ట్రిగ్గర్ గుర్తింపును చూపించడం"</string>
-    <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"వాయిస్ అసిస్టెంట్‌ను యాక్టివేట్ చేయడానికి మైక్రోఫోన్‌ను ఉపయోగించినప్పుడు, స్థితి పట్టీలో చిహ్నాన్ని చూపు"</string>
+    <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Assistant ట్రిగ్గర్ గుర్తింపును చూపించడం"</string>
+    <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"వాయిస్ అసిస్టెంట్‌ను యాక్టివేట్ చేయడానికి మైక్రోఫోన్‌ను ఉపయోగించినప్పుడు, స్టేటస్ బార్‌లో  చిహ్నాన్ని చూపు"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"మీ పరికరంలో ఫోటోలు, మీడియా ఫైళ్లను యాక్సెస్ చేయగలిగేలా &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"మీ కాంటాక్ట్‌లను యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"ఈ పరికర లొకేషన్‌ను యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
@@ -497,8 +497,6 @@
     <string name="privdash_label_other" msgid="3710394147423236033">"ఇతరం"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"ఏదీ కాదు"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"గత \n 24 గంటలు"</string>
-    <!-- no translation found for exempt_mic_camera_info_label (6273581737010902815) -->
-    <skip />
-    <!-- no translation found for exempt_info_label (6286190981253476699) -->
-    <skip />
+    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Android ద్వారా <xliff:g id="APP_NAME">%1$s</xliff:g> సంరక్షించబడుతోంది. మీ డేటా ఈ పరికరంలో ప్రాసెస్ చేయబడినందున, ఈ యాప్‌నకు సంబంధించిన అనుమతి వినియోగ సమాచారం స్టేటస్ బార్‌లో లేదా మీ గోప్యతా డ్యాష్‌బోర్డ్‌లో చూపబడదు."</string>
+    <string name="exempt_info_label" msgid="6286190981253476699">"Android ద్వారా <xliff:g id="APP_NAME">%1$s</xliff:g> సంరక్షించబడుతోంది. మీ డేటా ఈ పరికరంలో ప్రాసెస్ చేయబడినందున, ఈ యాప్‌నకు సంబంధించిన అనుమతి వినియోగ సమాచారం మీ గోప్యతా డ్యాష్‌బోర్డ్‌లో చూపబడదు."</string>
 </resources>

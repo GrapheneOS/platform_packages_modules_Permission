@@ -535,8 +535,6 @@
     <string name="privdash_label_other" msgid="3710394147423236033">"Jiné"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"Žádné"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Posledních\n24 hodin"</string>
-    <!-- no translation found for exempt_mic_camera_info_label (6273581737010902815) -->
-    <skip />
-    <!-- no translation found for exempt_info_label (6286190981253476699) -->
-    <skip />
+    <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Aplikace <xliff:g id="APP_NAME">%1$s</xliff:g> je chráněna systémem Android. Protože se vaše data zpracovávají na tomto zařízení, oprávnění používaná touto aplikací se nezobrazují na stavovém řádku ani na panelu ochrany soukromí."</string>
+    <string name="exempt_info_label" msgid="6286190981253476699">"Aplikace <xliff:g id="APP_NAME">%1$s</xliff:g> je chráněna systémem Android. Protože se vaše data zpracovávají na tomto zařízení, oprávnění používaná touto aplikací se nezobrazují na panelu ochrany soukromí."</string>
 </resources>
