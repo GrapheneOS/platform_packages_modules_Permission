@@ -45,6 +45,7 @@ import android.view.accessibility.AccessibilityNodeInfo
 import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
@@ -196,8 +197,9 @@ class GrantPermissionsViewHandlerImpl(
             .inflate(R.layout.grant_permissions, null) as ViewGroup
         this.rootView = rootView
 
-        val h = mActivity.resources.displayMetrics.heightPixels
-        rootView.minimumHeight = h
+        // Uses the gravity of the PermissionGrantSingleton style to position the window
+        mActivity.window.setGravity(
+                rootView.requireViewById<LinearLayout>(R.id.grant_singleton).gravity)
         // Cancel dialog
         rootView.findViewById<View>(R.id.grant_singleton)!!.setOnClickListener(this)
         // Swallow click event
