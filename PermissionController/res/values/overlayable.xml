@@ -39,6 +39,23 @@
             <item type="style" name="PermissionGrantButtonList" />
             <item type="style" name="PermissionGrantButtonBarSpace" />
             <item type="style" name="PermissionGrantButton" />
+
+            <!-- IDs for V31 only -->
+
+            <item type="style" name="PermissionGrantButtonTop" />
+            <item type="style" name="PermissionGrantButtonMiddle" />
+            <item type="style" name="PermissionGrantButtonBottom" />
+            <item type="style" name="PermissionGrantDialogMaterial3" />
+            <item type="style" name="PermissionGrantTitleIconMaterial3" />
+            <item type="style" name="PermissionGrantButtonListMaterial3" />
+            <item type="style" name="PermissionGrantButtonAllowMaterial3" />
+            <item type="style" name="PermissionGrantButtonAllowForegroundMaterial3" />
+            <item type="style" name="PermissionGrantButtonAllowOneTimeMaterial3" />
+            <item type="style" name="PermissionGrantButtonDenyMaterial3" />
+            <item type="style" name="PermissionGrantButtonNoUpgradeMaterial3" />
+
+            <!-- END IDs for V31 only -->
+
             <item type="style" name="PermissionGrantButtonAllow" />
             <item type="style" name="PermissionGrantButtonAllowForeground" />
             <item type="style" name="PermissionGrantButtonDeny" />
@@ -259,6 +276,7 @@
 
             <!-- START GENERAL CONFIGS -->
             <item type="bool" name="config_useAlternativePermGroupSummary" />
+            <item type="bool" name="config_useMaterial3PermissionGrantDialog" />
             <!-- END GENERAL CONFIGS -->
 
         </policy>
