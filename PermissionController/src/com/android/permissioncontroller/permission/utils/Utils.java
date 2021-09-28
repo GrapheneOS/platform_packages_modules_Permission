@@ -24,6 +24,7 @@ import static android.Manifest.permission_group.CONTACTS;
 import static android.Manifest.permission_group.LOCATION;
 import static android.Manifest.permission_group.MICROPHONE;
 import static android.Manifest.permission_group.NEARBY_DEVICES;
+import static android.Manifest.permission_group.NOTIFICATIONS;
 import static android.Manifest.permission_group.PHONE;
 import static android.Manifest.permission_group.SENSORS;
 import static android.Manifest.permission_group.SMS;
@@ -280,6 +281,8 @@ public final class Utils {
         }
 
         PLATFORM_PERMISSIONS.put(Manifest.permission.BODY_SENSORS, SENSORS);
+
+        PLATFORM_PERMISSIONS.put(Manifest.permission.POST_NOTIFICATIONS, NOTIFICATIONS);
 
         PLATFORM_PERMISSION_GROUPS = new ArrayMap<>();
         int numPlatformPermissions = PLATFORM_PERMISSIONS.size();
@@ -1234,5 +1237,30 @@ public final class Utils {
      **/
     public static boolean isStatusBarIndicatorPermission(@NonNull String permissionGroupName) {
         return CAMERA.equals(permissionGroupName) || MICROPHONE.equals(permissionGroupName);
+    }
+
+    /**
+     * Navigate to notification settings for all apps
+     * @param context The current Context
+     */
+    public static void navigateToNotificationSettings(@NonNull Context context) {
+        Intent notificationIntent = new Intent(Settings.ACTION_ALL_APPS_NOTIFICATION_SETTINGS);
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(notificationIntent);
+    }
+
+    /**
+     * Navigate to notification settings for an app
+     * @param context The current Context
+     * @param packageName The package to navigate to
+     * @param user Specifies the user of the package which should be navigated to. If null, the
+     *             current user is used.
+     */
+    public static void navigateToAppNotificationSettings(@NonNull Context context,
+            @NonNull String packageName, @NonNull UserHandle user) {
+        Intent notificationIntent = new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+        notificationIntent.putExtra(Settings.EXTRA_APP_PACKAGE, packageName);
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivityAsUser(notificationIntent, user);
     }
 }
