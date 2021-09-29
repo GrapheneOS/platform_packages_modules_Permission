@@ -575,6 +575,7 @@ object KotlinUtils {
                 isGranted = true
             }
             newFlags = newFlags.clearFlag(PackageManager.FLAG_PERMISSION_REVOKED_COMPAT)
+            newFlags = newFlags.clearFlag(PackageManager.FLAG_PERMISSION_REVOKE_WHEN_REQUESTED)
 
             // If this permission affects an app op, ensure the permission app op is enabled
             // before the permission grant.
@@ -796,10 +797,10 @@ object KotlinUtils {
                 // app. This matches the revoke runtime permission behavior.
                 shouldKill = true
                 newFlags = newFlags.setFlag(PackageManager.FLAG_PERMISSION_REVOKED_COMPAT)
-                newFlags = newFlags.clearFlag(PackageManager.FLAG_PERMISSION_REVOKE_WHEN_REQUESTED)
                 isGranted = false
             }
 
+            newFlags = newFlags.clearFlag(PackageManager.FLAG_PERMISSION_REVOKE_WHEN_REQUESTED)
             if (affectsAppOp) {
                 disallowAppOp(app, perm, group)
             }

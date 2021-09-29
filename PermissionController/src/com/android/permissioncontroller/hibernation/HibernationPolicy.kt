@@ -32,6 +32,7 @@ import android.app.job.JobInfo
 import android.app.job.JobParameters
 import android.app.job.JobScheduler
 import android.app.job.JobService
+import android.app.role.RoleManager
 import android.app.usage.UsageStats
 import android.app.usage.UsageStatsManager.INTERVAL_DAILY
 import android.app.usage.UsageStatsManager.INTERVAL_MONTHLY
@@ -231,9 +232,6 @@ private suspend fun getAppsToHibernate(
     val now = System.currentTimeMillis()
     val firstBootTime = context.firstBootTime
 
-    // TODO ntmyren: remove once b/154796729 is fixed
-    Log.i(LOG_TAG, "getting UserPackageInfoLiveData for all users " +
-            "in " + HibernationJobService::class.java.simpleName)
     val allPackagesByUser = AllPackageInfosLiveData.getInitializedValue(forceUpdate = true)
     val allPackagesByUserByUid = allPackagesByUser.mapValues { (_, pkgs) ->
         pkgs.groupBy { pkg -> pkg.uid }
@@ -443,6 +441,15 @@ suspend fun isPackageHibernationExemptBySystem(
         if (hasInstallOrUpdatePermissions || isInstallerOfRecord) {
             if (DEBUG_HIBERNATION_POLICY) {
                 DumpableLog.i(LOG_TAG, "Exempted ${pkg.packageName} - installer app")
+            }
+            return true
+        }
+
+        val roleHolders = context.getSystemService(android.app.role.RoleManager::class.java)!!
+                .getRoleHolders(RoleManager.ROLE_SYSTEM_WELLBEING)
+        if (roleHolders.contains(pkg.packageName)) {
+            if (DEBUG_HIBERNATION_POLICY) {
+                DumpableLog.i(LOG_TAG, "Exempted ${pkg.packageName} - wellbeing app")
             }
             return true
         }
