@@ -268,6 +268,7 @@ public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment implem
             logAppPermissionsFragmentView();
             mIsFirstLoad = false;
         }
+        setLoading(false);
     }
 
     private Preference createPermissionPreference(Context context,
