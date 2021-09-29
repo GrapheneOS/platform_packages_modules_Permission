@@ -253,7 +253,7 @@
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"ఈ అనుమతులు ఉన్న యాప్‌లు ఫోన్ కాల్స్‌ చేయగలవు, మేనేజ్ చేయగలవు"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"ఈ అనుమతి ఉన్న యాప్‌లు మీ ఆరోగ్య స్థితిని తెలియజేసే గణాంకాల సెన్సార్ డేటాను యాక్సెస్ చేయగలవు"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"ఈ అనుమతి ఉన్న యాప్‌లు SMSలను పంపగలవు, అందుకోగలవు"</string>
-    <string name="permission_description_summary_storage" msgid="6575759089065303346">"మీ అనుమతితో, యాప్‌లు మీ పరికరంలోని ఫోటోలు, మీడియా మరియు ఫైళ్లను యాక్సెస్ చేయగలవు"</string>
+    <string name="permission_description_summary_storage" msgid="6575759089065303346">"మీ అనుమతితో, యాప్‌లు మీ పరికరంలోని ఫోటోలు, మీడియా అలాగే ఫైళ్లను యాక్సెస్ చేయగలవు"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"చివరిసారి యాక్సెస్ చేసింది: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"ప్రస్తుతం తిరస్కరించబడింది / చివరి యాక్సెస్: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"ఎప్పుడూ యాక్సెస్ చేయలేదు"</string>
