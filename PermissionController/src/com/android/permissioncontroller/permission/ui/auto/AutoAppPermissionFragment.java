@@ -43,6 +43,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.TypedArrayUtils;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceGroup;
@@ -54,7 +55,6 @@ import com.android.car.ui.AlertDialogBuilder;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.auto.AutoSettingsFrameFragment;
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler;
-import com.android.permissioncontroller.permission.ui.handheld.AllAppPermissionsFragment;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModelFactory;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
@@ -334,15 +334,27 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment
             return;
         }
         if (detailResIds.getSecond() != null) {
-            Bundle args = AllAppPermissionsFragment.createArgs(mPackageName, mPermGroupName, mUser);
             mDetailsPreference.setWidgetLayoutResource(R.layout.settings_preference_widget);
             mDetailsPreference.setOnSecondTargetClickListener(
-                    v -> mViewModel.showAllPermissions(this, args));
+                    v -> showAllPermissions(mPermGroupName));
             mDetailsPreference.setSummary(
                     getString(detailResIds.getFirst(), detailResIds.getSecond()));
         } else {
             mDetailsPreference.setSummary(detailResIds.getFirst());
         }
+    }
+
+    /**
+     * Show all individual permissions in this group in a new fragment.
+     */
+    private void showAllPermissions(@NonNull String filterGroup) {
+        Fragment frag = AutoAllAppPermissionsFragment.newInstance(mPackageName,
+                filterGroup, mUser,
+                getArguments().getLong(EXTRA_SESSION_ID, INVALID_SESSION_ID));
+        requireFragmentManager().beginTransaction()
+                .replace(android.R.id.content, frag)
+                .addToBackStack("AllPerms")
+                .commit();
     }
 
     private void setAdminSupportDetail(RestrictedLockUtils.EnforcedAdmin admin) {
