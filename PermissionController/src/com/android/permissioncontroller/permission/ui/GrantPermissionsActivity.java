@@ -351,6 +351,11 @@ public class GrantPermissionsActivity extends SettingsActivity
             // We are animating the top view, need to compensate for that in motion events.
             ev.setLocation(ev.getX(), ev.getY() - rootView.getTop());
         }
+        final int x = (int) ev.getX();
+        final int y = (int) ev.getY();
+        if ((x < 0) || (y < 0) || (x > (rootView.getWidth())) || (y > (rootView.getHeight()))) {
+            finishAfterTransition();
+        }
         return super.dispatchTouchEvent(ev);
     }
 
