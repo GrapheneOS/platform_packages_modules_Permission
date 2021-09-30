@@ -22,4 +22,6 @@
     <bool name="config_useAlternativePermGroupSummary">false</bool>
     <bool name="config_useWindowBlur">false</bool>
     <bool name="config_useMaterial3PermissionGrantDialog">false</bool>
+    <!-- Name of a font family to use for headlines in SettingsLib. -->
+    <string name="config_headlineFontFamily" translatable="false"></string>
 </resources>
