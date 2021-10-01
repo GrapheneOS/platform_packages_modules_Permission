@@ -277,6 +277,7 @@
             <!-- START GENERAL CONFIGS -->
             <item type="bool" name="config_useAlternativePermGroupSummary" />
             <item type="bool" name="config_useMaterial3PermissionGrantDialog" />
+            <item type="string" name="config_headlineFontFamily" />
             <!-- END GENERAL CONFIGS -->
 
         </policy>
