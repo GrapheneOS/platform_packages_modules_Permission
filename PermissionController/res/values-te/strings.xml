@@ -373,7 +373,7 @@
     <string name="role_sms_description" msgid="3424020199148153513">"SMSలు, ఫోటోలు, వీడియోలు, మరిన్నింటిని పంపడానికి, అందుకోవడానికి మీ ఫోన్ నంబర్‌ను ఉపయోగించేందుకు మిమ్మల్ని అనుమతించే యాప్‌లు"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g>ను మీ ఆటోమేటిక్ SMS యాప్‌గా సెట్ చేయాలా?"</string>
     <string name="role_sms_request_description" msgid="983371022668134198">"కాంటాక్ట్‌లు, SMS, ఫోన్‌కు యాక్సెస్ పొందుతుంది"</string>
-    <string name="role_sms_search_keywords" msgid="8022048144395047352">"వచన మెసేజ్‌, వచనం పంపడం, మెసేజ్‌లు, మెసేజ్‌ పంపడం"</string>
+    <string name="role_sms_search_keywords" msgid="8022048144395047352">"టెక్స్ట్ మెసేజ్‌, టెక్స్ట్ పంపడం, మెసేజ్‌లు, మెసేజింగ్"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"ఆటోమేటిక్ ఎమర్జెన్సీ యాప్"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"అత్యవసర యాప్"</string>
     <string name="role_emergency_description" msgid="5051840234887686630">"మీ వైద్య సమాచారాన్ని రికార్డ్ చేయడానికి, అలాగే అత్యవసరంగా స్పందించాల్సిన వారు యాక్సెస్ చేయగలిగే విధంగా ఉంచడానికి; వాతావరణం తీవ్రంగా ఉన్నా, విపత్తులు సంభవించేలా ఉన్నా హెచ్చరికలను పొందడానికి; మీకు సహాయం కావాల్సినప్పుడు ఇతరులకు తెలియజేయడానికి మిమ్మల్ని అనుమతించే యాప్‌లు"</string>
