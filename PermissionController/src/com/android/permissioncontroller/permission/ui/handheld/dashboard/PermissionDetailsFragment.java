@@ -88,7 +88,7 @@ import kotlin.Triple;
 @RequiresApi(Build.VERSION_CODES.S)
 public class PermissionDetailsFragment extends SettingsWithLargeHeader implements
         PermissionUsages.PermissionsUsagesChangeCallback {
-    public static final int FILTER_24_HOURS = 2;
+    public static final int FILTER_7_DAYS = 1;
 
     private static final List<String> ALLOW_CLUSTERING_PERMISSION_GROUPS = Arrays.asList(
             permission_group.LOCATION, permission_group.CAMERA, permission_group.MICROPHONE
@@ -127,7 +127,7 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
 
         mFinishedInitialLoad = false;
         initializeTimeFilter();
-        mFilterTimeIndex = FILTER_24_HOURS;
+        mFilterTimeIndex = FILTER_7_DAYS;
 
         if (savedInstanceState != null) {
             mShowSystem = savedInstanceState.getBoolean(SHOW_SYSTEM_KEY);
