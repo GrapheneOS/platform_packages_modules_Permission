@@ -46,7 +46,16 @@ public class PermissionUsageV2ControlPreference extends Preference {
     private static final List<String> SENSOR_DATA_PERMISSIONS = List.of(
             Manifest.permission_group.LOCATION,
             Manifest.permission_group.CAMERA,
-            Manifest.permission_group.MICROPHONE
+            Manifest.permission_group.MICROPHONE,
+            Manifest.permission_group.SENSORS,
+            Manifest.permission_group.CALENDAR,
+            Manifest.permission_group.CALL_LOG,
+            Manifest.permission_group.CONTACTS,
+            Manifest.permission_group.STORAGE,
+            Manifest.permission_group.NEARBY_DEVICES,
+            Manifest.permission_group.PHONE,
+            Manifest.permission_group.ACTIVITY_RECOGNITION,
+            Manifest.permission_group.SMS
     );
 
     private final Context mContext;
@@ -103,6 +112,8 @@ public class PermissionUsageV2ControlPreference extends Preference {
             act = PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__CAMERA_ACCESS_TIMELINE_VIEWED;
         } else if (groupName.equals(Manifest.permission_group.MICROPHONE)) {
             act = PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__MICROPHONE_ACCESS_TIMELINE_VIEWED;
+        } else {
+            return;
         }
         write(PERMISSION_USAGE_FRAGMENT_INTERACTION, mSessionId, act);
     }
