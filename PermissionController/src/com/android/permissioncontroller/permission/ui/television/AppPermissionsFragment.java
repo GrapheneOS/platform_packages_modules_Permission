@@ -17,13 +17,13 @@
 package com.android.permissioncontroller.permission.ui.television;
 
 import static com.android.permissioncontroller.Constants.INVALID_SESSION_ID;
+import static com.android.permissioncontroller.hibernation.HibernationPolicyKt.isHibernationEnabled;
 
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
@@ -43,6 +43,7 @@ import android.widget.Toast;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.PreferenceViewHolder;
 import androidx.preference.SwitchPreference;
@@ -50,11 +51,10 @@ import androidx.preference.SwitchPreference;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.model.AppPermissions;
-import com.android.permissioncontroller.permission.model.livedatatypes.AutoRevokeState;
+import com.android.permissioncontroller.permission.model.livedatatypes.HibernationSettingState;
 import com.android.permissioncontroller.permission.ui.ReviewPermissionsActivity;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModel;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModelFactory;
-import com.android.permissioncontroller.permission.ui.ReviewPermissionsActivity;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.LocationUtils;
 import com.android.permissioncontroller.permission.utils.SafetyNetLogger;
@@ -67,6 +67,7 @@ public final class AppPermissionsFragment extends SettingsWithHeader
 
     static final String EXTRA_HIDE_INFO_BUTTON = "hideInfoButton";
     private static final String AUTO_REVOKE_SWITCH_KEY = "_AUTO_REVOKE_SWITCH_KEY";
+    private static final String UNUSED_APPS_KEY = "_UNUSED_APPS_KEY";
 
     private static final int MENU_ALL_PERMS = 0;
 
@@ -389,7 +390,11 @@ public final class AppPermissionsFragment extends SettingsWithHeader
                     }
                 }
             } else {
-                preference.setSummary(R.string.permission_access_never);
+                if (group.isOneTime()) {
+                    preference.setSummary(R.string.app_permission_button_ask);
+                } else {
+                    preference.setSummary(R.string.permission_access_never);
+                }
             }
         }
     }
@@ -404,21 +409,37 @@ public final class AppPermissionsFragment extends SettingsWithHeader
             android.util.Log.w(LOG_TAG, "setAutoRevoke " + autoRevokeSwitch.isChecked());
             return true;
         });
-        autoRevokeSwitch.setTitle(R.string.auto_revoke_label);
+        autoRevokeSwitch.setTitle(isHibernationEnabled() ? R.string.unused_apps_label
+                : R.string.auto_revoke_label);
         autoRevokeSwitch.setSummary(R.string.auto_revoke_summary);
         autoRevokeSwitch.setKey(AUTO_REVOKE_SWITCH_KEY);
-        screen.addPreference(autoRevokeSwitch);
+        if (isHibernationEnabled()) {
+            PreferenceCategory unusedAppsCategory = new PreferenceCategory(
+                    screen.getPreferenceManager().getContext());
+            unusedAppsCategory.setKey(UNUSED_APPS_KEY);
+            unusedAppsCategory.setTitle(R.string.unused_apps);
+            unusedAppsCategory.addPreference(autoRevokeSwitch);
+            screen.addPreference(unusedAppsCategory);
+        } else {
+            screen.addPreference(autoRevokeSwitch);
+        }
     }
 
-    private void setAutoRevokeToggleState(AutoRevokeState state) {
+    private void setAutoRevokeToggleState(HibernationSettingState state) {
         SwitchPreference autoRevokeSwitch = getPreferenceScreen().findPreference(
                 AUTO_REVOKE_SWITCH_KEY);
         if (state == null || autoRevokeSwitch == null) {
             return;
         }
-        if (!state.isEnabledGlobal() || !state.getShouldShowSwitch()) {
+        if (!state.isEnabledGlobal() || state.getRevocableGroupNames().isEmpty()) {
+            if (isHibernationEnabled()) {
+                getPreferenceScreen().findPreference(UNUSED_APPS_KEY).setVisible(false);
+            }
             autoRevokeSwitch.setVisible(false);
             return;
+        }
+        if (isHibernationEnabled()) {
+            getPreferenceScreen().findPreference(UNUSED_APPS_KEY).setVisible(true);
         }
         autoRevokeSwitch.setVisible(true);
         autoRevokeSwitch.setChecked(state.isEnabledForApp());

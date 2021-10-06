@@ -416,7 +416,7 @@ class PermissionPreference extends MultiTargetSwitchPreference {
      * Show all individual permissions in this group in a new fragment.
      */
     private void showAllPermissions(String filterGroup) {
-        Fragment frag = AllAppPermissionsFragment.newInstance(mGroup.getApp().packageName,
+        Fragment frag = AllAppPermissionsWrapperFragment.newInstance(mGroup.getApp().packageName,
                 filterGroup, UserHandle.getUserHandleForUid(mGroup.getApp().applicationInfo.uid));
         mFragment.getFragmentManager().beginTransaction()
                 .replace(android.R.id.content, frag)
@@ -575,7 +575,8 @@ class PermissionPreference extends MultiTargetSwitchPreference {
 
         Bundle args = new Bundle();
         args.putCharSequence(BackgroundAccessChooser.TITLE,
-                getRequestMessage(getAppLabel(), mGroup, getContext(), mGroup.getRequest()));
+                getRequestMessage(getAppLabel(), mGroup.getApp().packageName, mGroup.getName(),
+                        getContext(), mGroup.getRequest()));
         args.putString(BackgroundAccessChooser.KEY, getKey());
 
 

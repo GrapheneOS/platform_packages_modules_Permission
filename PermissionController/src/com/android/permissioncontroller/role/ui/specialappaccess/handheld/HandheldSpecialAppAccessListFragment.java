@@ -16,24 +16,18 @@
 
 package com.android.permissioncontroller.role.ui.specialappaccess.handheld;
 
-import android.content.Context;
-import android.os.Bundle;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
+import androidx.preference.PreferenceFragmentCompat;
 
 import com.android.permissioncontroller.R;
-import com.android.permissioncontroller.role.ui.TwoTargetPreference;
-import com.android.permissioncontroller.role.ui.handheld.AppIconSettingsButtonPreference;
 import com.android.permissioncontroller.role.ui.handheld.SettingsFragment;
-import com.android.permissioncontroller.role.ui.specialappaccess.SpecialAppAccessListChildFragment;
 
 /**
  * Handheld fragment for the list of special app accesses.
  */
 public class HandheldSpecialAppAccessListFragment extends SettingsFragment
-        implements SpecialAppAccessListChildFragment.Parent {
+        implements HandheldSpecialAppAccessListPreferenceFragment.Parent {
 
     /**
      * Create a new instance of this fragment.
@@ -45,17 +39,10 @@ public class HandheldSpecialAppAccessListFragment extends SettingsFragment
         return new HandheldSpecialAppAccessListFragment();
     }
 
+    @NonNull
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        if (savedInstanceState == null) {
-            SpecialAppAccessListChildFragment fragment =
-                    SpecialAppAccessListChildFragment.newInstance();
-            getChildFragmentManager().beginTransaction()
-                    .add(fragment, null)
-                    .commit();
-        }
+    protected PreferenceFragmentCompat onCreatePreferenceFragment() {
+        return HandheldSpecialAppAccessListPreferenceFragment.newInstance();
     }
 
     @Override
@@ -67,16 +54,5 @@ public class HandheldSpecialAppAccessListFragment extends SettingsFragment
     @Override
     protected int getHelpUriResource() {
         return R.string.help_uri_special_app_access;
-    }
-
-    @NonNull
-    @Override
-    public TwoTargetPreference createPreference(@NonNull Context context) {
-        return new AppIconSettingsButtonPreference(context);
-    }
-
-    @Override
-    public void onPreferenceScreenChanged() {
-        updateState();
     }
 }

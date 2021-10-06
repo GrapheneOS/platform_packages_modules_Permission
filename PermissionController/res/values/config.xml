@@ -20,4 +20,5 @@
     <bool name="config_showDialerRole">true</bool>
     <bool name="config_showSmsRole">true</bool>
     <bool name="config_useAlternativePermGroupSummary">false</bool>
+    <bool name="config_useWindowBlur">false</bool>
 </resources>

@@ -22,6 +22,57 @@ filegroup {
         "java/**/*.java",
     ],
     path: "java",
+    visibility: ["//visibility:private"],
+}
+
+filegroup {
+    name: "service-permission-protos",
+    srcs: [
+        "proto/**/*.proto",
+    ],
+    visibility: ["//frameworks/base"],
+}
+
+gensrcs {
+    name: "service-permission-javastream-protos",
+    depfile: true,
+
+    tools: [
+        "aprotoc",
+        "protoc-gen-javastream",
+        "soong_zip",
+    ],
+
+    cmd: "mkdir -p $(genDir)/$(in) " +
+        "&& $(location aprotoc) " +
+        "  --plugin=$(location protoc-gen-javastream) " +
+        "  --dependency_out=$(depfile) " +
+        "  --javastream_out=$(genDir)/$(in) " +
+        "  -Iexternal/protobuf/src " +
+        "  -I . " +
+        "  $(in) " +
+        "&& $(location soong_zip) -jar -o $(out) -C $(genDir)/$(in) -D $(genDir)/$(in)",
+
+    srcs: [
+        ":service-permission-protos",
+    ],
+    output_extension: "srcjar",
+}
+
+java_library {
+    name: "service-permission-shared",
+    srcs: [":service-permission-shared-srcs"],
+    libs: [
+        "framework-annotations-lib",
+        "framework-permission-s-shared",
+    ],
+    apex_available: [
+        "com.android.permission",
+        "test_com.android.permission",
+    ],
+    installable: false,
+    min_sdk_version: "30",
+    sdk_version: "system_server_current",
 }
 
 java_sdk_library {
@@ -35,15 +86,28 @@ java_sdk_library {
     ],
     srcs: [
         ":service-permission-sources",
+        ":service-permission-javastream-protos",
     ],
     libs: [
-        "framework-permission",
+        // TODO(b/177884622): Short term solution to prevent service-permission from seeing hidden
+        //  APIs in framework-permission, as we don't actually have any dependency in it.
+        //"framework-permission",
+        "framework-permission-s.impl",
+        "androidx.annotation_annotation",
+        "framework-permission-s-shared",
+        "modules-annotation-minsdk",
     ],
+    static_libs: [
+        "modules-utils-backgroundthread",
+        "modules-utils-os",
+        "service-permission-shared",
+    ],
+    jarjar_rules: ":permission-jarjar-rules",
+    min_sdk_version: "30",
+    sdk_version: "system_server_current",
     apex_available: [
         "com.android.permission",
         "test_com.android.permission",
     ],
     installable: true,
-    // We don't have last-api tracking files for the public part of this jar's API.
-    unsafe_ignore_missing_latest_api: true,
 }

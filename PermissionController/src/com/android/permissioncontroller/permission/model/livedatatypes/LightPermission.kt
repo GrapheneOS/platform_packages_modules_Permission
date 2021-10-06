@@ -78,6 +78,8 @@ data class LightPermission(
     val isGrantedByDefault = flags and PackageManager.FLAG_PERMISSION_GRANTED_BY_DEFAULT != 0
     /** Whether this permission is granted by role */
     val isGrantedByRole = flags and PackageManager.FLAG_PERMISSION_GRANTED_BY_ROLE != 0
+    /** Whether this permission is set to be revoked upon being requested */
+    val isRevokeWhenRequested = flags and PackageManager.FLAG_PERMISSION_REVOKE_WHEN_REQUESTED != 0
     /** Whether this permission is user sensitive in its current grant state */
     val isUserSensitive = !isRuntimePlatformPermission(permInfo.name) ||
             (isGrantedIncludingAppOp &&
@@ -98,6 +100,11 @@ data class LightPermission(
     }
     /** Whether the permission is auto revoked */
     val isAutoRevoked = flags and PackageManager.FLAG_PERMISSION_AUTO_REVOKED != 0
+    /**
+     * Whether the location permission is selected as the level of granularity of location accuracy
+     */
+    val isSelectedLocationAccuracy =
+        flags and PackageManager.FLAG_PERMISSION_SELECTED_LOCATION_ACCURACY != 0
 
     override fun toString() = buildString {
         append(name)
@@ -114,5 +121,6 @@ data class LightPermission(
         if (isUserSensitive) append(", UserSensitive")
         if (isRestricted) append(", Restricted")
         if (isAutoRevoked) append(", AutoRevoked")
+        if (isSelectedLocationAccuracy) append(", SelectedLocationAccuracy")
     }
 }

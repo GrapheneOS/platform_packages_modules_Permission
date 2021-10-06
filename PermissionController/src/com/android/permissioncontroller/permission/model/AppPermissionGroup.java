@@ -281,7 +281,7 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
                 getUpgradeRequestDetail(groupInfo), groupInfo.packageName, groupInfo.icon,
                 userHandle, delayChanges, appOpsManager);
 
-        final Set<String> whitelistedRestrictedPermissions = context.getPackageManager()
+        final Set<String> exemptedRestrictedPermissions = context.getPackageManager()
                 .getWhitelistedRestrictedPermissions(packageInfo.packageName,
                         Utils.FLAGS_PERMISSION_WHITELIST_ALL);
 
@@ -380,24 +380,24 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
         for (int i = 0; i < numPermissions; i++) {
             Permission permission = allPermissions.valueAt(i);
 
-            if (permission.isBackgroundPermission()) {
-                if (group.getBackgroundPermissions() == null) {
-                    group.mBackgroundPermissions = new AppPermissionGroup(group.mContext,
-                            group.getApp(), group.getName(), group.getDeclaringPackage(),
-                            group.getLabel(), group.getFullLabel(), group.getDescription(),
-                            group.getRequest(), group.getRequestDetail(),
-                            group.getBackgroundRequest(), group.getBackgroundRequestDetail(),
-                            group.getUpgradeRequest(), group.getUpgradeRequestDetail(),
-                            group.getIconPkg(), group.getIconResId(), group.getUser(),
-                            delayChanges, appOpsManager);
-                }
+            if ((!permission.isHardRestricted()
+                    || exemptedRestrictedPermissions.contains(permission.getName()))
+                    && (!permission.isSoftRestricted()
+                    || SoftRestrictedPermissionPolicy.shouldShow(packageInfo, permission))) {
+                if (permission.isBackgroundPermission()) {
+                    if (group.getBackgroundPermissions() == null) {
+                        group.mBackgroundPermissions = new AppPermissionGroup(group.mContext,
+                                group.getApp(), group.getName(), group.getDeclaringPackage(),
+                                group.getLabel(), group.getFullLabel(), group.getDescription(),
+                                group.getRequest(), group.getRequestDetail(),
+                                group.getBackgroundRequest(), group.getBackgroundRequestDetail(),
+                                group.getUpgradeRequest(), group.getUpgradeRequestDetail(),
+                                group.getIconPkg(), group.getIconResId(), group.getUser(),
+                                delayChanges, appOpsManager);
+                    }
 
-                group.getBackgroundPermissions().addPermission(permission);
-            } else {
-                if ((!permission.isHardRestricted()
-                        || whitelistedRestrictedPermissions.contains(permission.getName()))
-                        && (!permission.isSoftRestricted()
-                        || SoftRestrictedPermissionPolicy.shouldShow(packageInfo, permission))) {
+                    group.getBackgroundPermissions().addPermission(permission);
+                } else {
                     group.addPermission(permission);
                 }
             }
@@ -1455,7 +1455,8 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
                     // a handle to state it shouldn't have, so we have to kill the app. This matches
                     // the revoke runtime permission behavior.
                     if (permission.isAppOpAllowed()) {
-                        shouldKillApp |= allowAppOp(permission, uid);
+                        boolean wasChanged = allowAppOp(permission, uid);
+                        shouldKillApp |= wasChanged && !mAppSupportsRuntimePermissions;
                     } else {
                         shouldKillApp |= disallowAppOp(permission, uid);
                     }

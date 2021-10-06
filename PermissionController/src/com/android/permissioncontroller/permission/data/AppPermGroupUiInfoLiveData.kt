@@ -17,6 +17,8 @@
 package com.android.permissioncontroller.permission.data
 
 import android.Manifest
+import android.Manifest.permission_group.STORAGE
+import android.app.AppOpsManager
 import android.app.Application
 import android.content.pm.PackageManager
 import android.content.pm.PermissionInfo
@@ -32,6 +34,7 @@ import com.android.permissioncontroller.permission.model.livedatatypes.PermState
 import com.android.permissioncontroller.permission.utils.LocationUtils
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.Utils.isModernPermissionGroup
+import kotlinx.coroutines.Job
 
 /**
  * A LiveData representing UI properties of an App Permission Group:
@@ -51,13 +54,13 @@ class AppPermGroupUiInfoLiveData private constructor(
     private val packageName: String,
     private val permGroupName: String,
     private val user: UserHandle
-) : SmartUpdateMediatorLiveData<AppPermGroupUiInfo>(), LocationUtils.LocationListener {
+) : SmartAsyncMediatorLiveData<AppPermGroupUiInfo>(), LocationUtils.LocationListener {
 
     private var isSpecialLocation = false
-    private val isMicrophone = permGroupName == Manifest.permission_group.MICROPHONE
     private val packageInfoLiveData = LightPackageInfoLiveData[packageName, user]
     private val permGroupLiveData = PermGroupLiveData[permGroupName]
     private val permissionStateLiveData = PermStateLiveData[packageName, permGroupName, user]
+    private val isStorage = permGroupName == STORAGE
 
     init {
         isSpecialLocation = LocationUtils.isLocationGroupAndProvider(app,
@@ -65,19 +68,22 @@ class AppPermGroupUiInfoLiveData private constructor(
             LocationUtils.isLocationGroupAndControllerExtraPackage(app, permGroupName, packageName)
 
         addSource(packageInfoLiveData) {
-            updateIfActive()
+            update()
         }
 
         addSource(permGroupLiveData) {
-            updateIfActive()
+            update()
         }
 
         addSource(permissionStateLiveData) {
-            updateIfActive()
+            update()
         }
     }
 
-    override fun onUpdate() {
+    override suspend fun loadDataAndPostValue(job: Job) {
+        if (job.isCancelled) {
+            return
+        }
         val packageInfo = packageInfoLiveData.value
         val permissionGroup = permGroupLiveData.value
         val permissionState = permissionStateLiveData.value
@@ -86,13 +92,13 @@ class AppPermGroupUiInfoLiveData private constructor(
             if (packageInfoLiveData.isInitialized && permGroupLiveData.isInitialized &&
                 permissionStateLiveData.isInitialized) {
                 invalidateSingle(Triple(packageName, permGroupName, user))
-                value = null
+                postValue(null)
             }
             return
         }
 
-        value = getAppPermGroupUiInfo(packageInfo, permissionGroup.groupInfo,
-            permissionGroup.permissionInfos, permissionState)
+        postValue(getAppPermGroupUiInfo(packageInfo, permissionGroup.groupInfo,
+            permissionGroup.permissionInfos, permissionState))
     }
 
     /**
@@ -123,9 +129,11 @@ class AppPermGroupUiInfoLiveData private constructor(
 
         val isSystemApp = !isUserSensitive(permissionState)
 
-        val isGranted = getGrantedIncludingBackground(permissionState, allPermInfos)
+        val isUserSet = isUserSet(permissionState)
 
-        return AppPermGroupUiInfo(shouldShow, isGranted, isSystemApp)
+        val isGranted = getGrantedIncludingBackground(permissionState, allPermInfos, packageInfo)
+
+        return AppPermGroupUiInfo(shouldShow, isGranted, isSystemApp, isUserSet)
     }
 
     /**
@@ -145,26 +153,31 @@ class AppPermGroupUiInfoLiveData private constructor(
         groupInfo: LightPermGroupInfo,
         permissionInfos: Collection<LightPermInfo>
     ): Boolean {
+        if (groupInfo.packageName == Utils.OS_PKG &&
+            !isModernPermissionGroup(groupInfo.name)) {
+            return false
+        }
+
+        var hasInstantPerm = false
         var hasPreRuntime = false
 
         for (permissionInfo in permissionInfos) {
             if (permissionInfo.protectionFlags and
                 PermissionInfo.PROTECTION_FLAG_RUNTIME_ONLY == 0) {
                 hasPreRuntime = true
-                break
+            }
+
+            if (permissionInfo.protectionFlags and PermissionInfo.PROTECTION_FLAG_INSTANT != 0) {
+                hasInstantPerm = true
             }
         }
 
-        val isGrantingAllowed = !packageInfo.isInstantApp &&
+        val isGrantingAllowed = (!packageInfo.isInstantApp || hasInstantPerm) &&
             (packageInfo.targetSdkVersion >= Build.VERSION_CODES.M || hasPreRuntime)
         if (!isGrantingAllowed) {
             return false
         }
 
-        if (groupInfo.packageName == Utils.OS_PKG &&
-            !isModernPermissionGroup(groupInfo.name)) {
-            return false
-        }
         return true
     }
 
@@ -197,6 +210,21 @@ class AppPermGroupUiInfoLiveData private constructor(
     }
 
     /**
+     * Determines if the app permission group is user set
+     *
+     * @param permissionState The permission flags and grant state corresponding to the permissions
+     * in this group requested by a given app
+     *
+     * @return Whether or not any of the permissions in this group have been set or fixed by the
+     * user
+     */
+    private fun isUserSet(permissionState: Map<String, PermState>): Boolean {
+        val flagMask = PackageManager.FLAG_PERMISSION_USER_SET or
+                PackageManager.FLAG_PERMISSION_USER_FIXED
+        return permissionState.any { (it.value.permFlags and flagMask) != 0 }
+    }
+
+    /**
      * Determines if this app permission group is granted, granted in foreground only, or denied.
      * It is granted if it either requests no background permissions, and has at least one requested
      * permission that is granted, or has granted at least one requested background permission.
@@ -214,13 +242,16 @@ class AppPermGroupUiInfoLiveData private constructor(
      */
     private fun getGrantedIncludingBackground(
         permissionState: Map<String, PermState>,
-        allPermInfos: Map<String, LightPermInfo>
+        allPermInfos: Map<String, LightPermInfo>,
+        pkg: LightPackageInfo
     ): PermGrantState {
         val specialLocationState = getIsSpecialLocationState()
+        if (isStorage && isFullFilesAccessGranted(pkg)) {
+            return PermGrantState.PERMS_ALLOWED
+        }
 
         var hasPermWithBackground = false
         var isUserFixed = false
-        var isOneTime = false
         for ((permName, permState) in permissionState) {
             val permInfo = allPermInfos[permName] ?: continue
             permInfo.backgroundPermission?.let { backgroundPerm ->
@@ -232,28 +263,27 @@ class AppPermGroupUiInfoLiveData private constructor(
             }
             isUserFixed = isUserFixed ||
                     permState.permFlags and PackageManager.FLAG_PERMISSION_USER_FIXED != 0
-            isOneTime = isOneTime ||
-                    permState.permFlags and PackageManager.FLAG_PERMISSION_ONE_TIME != 0
         }
+        // isOneTime indicates whether permission states contain any one-time permission and
+        // none of the permissions are granted (not one-time)
+        val isOneTime = permissionState.any {
+            it.value.permFlags and PackageManager.FLAG_PERMISSION_ONE_TIME != 0 } &&
+                !permissionState.any {
+                    it.value.permFlags and PackageManager.FLAG_PERMISSION_ONE_TIME == 0 &&
+                            it.value.granted }
 
         val anyAllowed = specialLocationState ?: permissionState.any { it.value.granted }
         if (anyAllowed && (hasPermWithBackground || shouldShowAsForegroundGroup())) {
-            if (isOneTime) {
-                return PermGrantState.PERMS_ASK
+            return if (isOneTime) {
+                PermGrantState.PERMS_ASK
             } else {
-                if (Utils.couldHaveForegroundCapabilities(
-                                Utils.getUserContext(app, user), packageName) ||
-                        Utils.isEmergencyApp(Utils.getUserContext(app, user), packageName)) {
-                    return PermGrantState.PERMS_ALLOWED_ALWAYS
-                } else {
-                    return PermGrantState.PERMS_ALLOWED_FOREGROUND_ONLY
-                }
+                PermGrantState.PERMS_ALLOWED_FOREGROUND_ONLY
             }
         } else if (anyAllowed) {
-            if (isOneTime) {
-                return PermGrantState.PERMS_ASK
+            return if (isOneTime) {
+                PermGrantState.PERMS_ASK
             } else {
-                return PermGrantState.PERMS_ALLOWED
+                PermGrantState.PERMS_ALLOWED
             }
         }
         if (isUserFixed) {
@@ -283,6 +313,21 @@ class AppPermGroupUiInfoLiveData private constructor(
         return null
     }
 
+    private fun isFullFilesAccessGranted(pkg: LightPackageInfo): Boolean {
+        val packageState = if (!FullStoragePermissionAppsLiveData.isStale) {
+            val fullStoragePackages = FullStoragePermissionAppsLiveData.value ?: return false
+            fullStoragePackages.find {
+                it.packageName == packageName && it.user == user
+            } ?: return false
+        } else {
+            val appOpsManager = Utils.getUserContext(app, UserHandle.getUserHandleForUid(pkg.uid))
+                .getSystemService(AppOpsManager::class.java)!!
+            FullStoragePermissionAppsLiveData.getFullStorageStateForPackage(
+                appOpsManager, pkg) ?: return false
+        }
+        return !packageState.isLegacy && packageState.isGranted
+    }
+
     // TODO moltmann-team: Actually change mic/camera to be a foreground only permission
     private fun shouldShowAsForegroundGroup(): Boolean {
         return permGroupName.equals(Manifest.permission_group.CAMERA) ||
@@ -290,14 +335,14 @@ class AppPermGroupUiInfoLiveData private constructor(
     }
 
     override fun onLocationStateChange(enabled: Boolean) {
-        updateIfActive()
+        update()
     }
 
     override fun onActive() {
         super.onActive()
         if (isSpecialLocation) {
             LocationUtils.addLocationListener(this)
-            updateIfActive()
+            update()
         }
     }
 

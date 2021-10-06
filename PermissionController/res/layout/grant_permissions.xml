@@ -56,6 +56,38 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/permission_location_accuracy">
+
+                <RadioGroup
+                    android:id="@+id/permission_location_accuracy_radio_group"
+                    style="@style/PermissionLocationAccuracyRadioGroup">
+
+                    <RadioButton
+                        android:id="@+id/permission_location_accuracy_radio_fine"
+                        android:text="@string/permgrouprequest_finelocation_imagetext"
+                        style="@style/PermissionLocationAccuracyRadioFine"/>
+
+                    <RadioButton
+                        android:id="@+id/permission_location_accuracy_radio_coarse"
+                        android:text="@string/permgrouprequest_coarselocation_imagetext"
+                        style="@style/PermissionLocationAccuracyRadioCoarse" />
+                </RadioGroup>
+
+                <ImageView
+                    android:id="@+id/permission_location_accuracy_fine_only"
+                    android:contentDescription="@string/precise_image_description"
+                    style="@style/PermissionLocationAccuracyFineImageView" />
+
+                <ImageView
+                    android:id="@+id/permission_location_accuracy_coarse_only"
+                    android:contentDescription="@string/approximate_image_description"
+                    style="@style/PermissionLocationAccuracyCoarseImageView" />
+
+            </LinearLayout>
+
             <!-- Buttons on bottom of dialog -->
             <LinearLayout
                 style="@style/PermissionGrantButtonList">
@@ -63,52 +95,47 @@
                 <Space
                     style="@style/PermissionGrantButtonBarSpace"/>
 
-                <Button
+                <com.android.permissioncontroller.permission.ui.widget.SecureButton
                     android:id="@+id/permission_allow_button"
                     android:text="@string/grant_dialog_button_allow"
                     style="@style/PermissionGrantButtonAllow" />
 
-                <Button
-                    android:id="@+id/permission_allow_always_button"
-                    android:text="@string/grant_dialog_button_allow_always"
-                    style="@style/PermissionGrantButtonAllowAlways" />
-
-                <Button
+                <com.android.permissioncontroller.permission.ui.widget.SecureButton
                     android:id="@+id/permission_allow_foreground_only_button"
                     android:text="@string/grant_dialog_button_allow_foreground"
                     style="@style/PermissionGrantButtonAllowForeground" />
 
-                <Button
+                <com.android.permissioncontroller.permission.ui.widget.SecureButton
                     android:id="@+id/permission_allow_one_time_button"
                     android:text="@string/grant_dialog_button_allow_one_time"
                     style="@style/PermissionGrantButtonAllowOneTime" />
 
-                <Button
+                <com.android.permissioncontroller.permission.ui.widget.SecureButton
                     android:id="@+id/permission_deny_button"
                     android:text="@string/grant_dialog_button_deny"
                     style="@style/PermissionGrantButtonDeny" />
 
-                <Button
+                <com.android.permissioncontroller.permission.ui.widget.SecureButton
                     android:id="@+id/permission_deny_and_dont_ask_again_button"
                     android:text="@string/grant_dialog_button_deny"
                     style="@style/PermissionGrantButtonDeny" />
 
-                <Button
+                <com.android.permissioncontroller.permission.ui.widget.SecureButton
                     android:id="@+id/permission_no_upgrade_button"
                     android:text="@string/grant_dialog_button_no_upgrade"
                     style="@style/PermissionGrantButtonNoUpgrade" />
 
-                <Button
+                <com.android.permissioncontroller.permission.ui.widget.SecureButton
                     android:id="@+id/permission_no_upgrade_and_dont_ask_again_button"
                     android:text="@string/grant_dialog_button_no_upgrade"
                     style="@style/PermissionGrantButtonNoUpgrade" />
 
-                <Button
+                <com.android.permissioncontroller.permission.ui.widget.SecureButton
                     android:id="@+id/permission_no_upgrade_one_time_button"
                     android:text="@string/grant_dialog_button_no_upgrade_one_time"
                     style="@style/PermissionGrantButtonNoUpgrade" />
 
-                <Button
+                <com.android.permissioncontroller.permission.ui.widget.SecureButton
                     android:id="@+id/permission_no_upgrade_one_time_and_dont_ask_again_button"
                     android:text="@string/grant_dialog_button_no_upgrade_one_time"
                     style="@style/PermissionGrantButtonNoUpgrade" />

@@ -18,7 +18,6 @@ package com.android.permissioncontroller.permission.data
 
 import android.app.Application
 import android.content.pm.PermissionInfo
-import android.util.Log
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.utils.Utils
 
@@ -33,11 +32,8 @@ object CustomPermGroupNamesLiveData : SmartUpdateMediatorLiveData<List<String>>(
     private val packagesLiveData = AllPackageInfosLiveData
 
     init {
-        // TODO ntmyren: remove once b/154796729 is fixed
-        Log.i("CustomPermGroupNames", "observing UserPackageInfoLiveData for all " +
-            "users in CustomPermGroupNamesLiveData")
         addSource(packagesLiveData) {
-            updateIfActive()
+            update()
         }
     }
 

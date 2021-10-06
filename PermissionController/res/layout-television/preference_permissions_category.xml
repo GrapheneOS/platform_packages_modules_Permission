@@ -16,14 +16,29 @@
   -->
 
 <!-- Layout used for PreferenceCategory in a PreferenceActivity. -->
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-          android:id="@+android:id/title"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:textColor="@color/settings_category_text_color"
-          android:textSize="@dimen/settings_category_text_size"
-          android:textStyle="bold"
-          android:paddingStart="?android:attr/listPreferredItemPaddingStart"
-          android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
-          android:paddingTop="16dp"
-          android:paddingBottom="16dp" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+              android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+              android:paddingTop="16dp"
+              android:paddingBottom="16dp">
+    <TextView
+        android:id="@+android:id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/settings_category_text_color"
+        android:textSize="@dimen/settings_category_text_size"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+android:id/summary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textAppearance="?android:attr/textAppearanceListItemSecondary"
+        android:textColor="?android:attr/textColorSecondary"
+        android:maxLines="10"/>
+
+</LinearLayout>

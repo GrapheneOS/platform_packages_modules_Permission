@@ -20,9 +20,9 @@ import static android.Manifest.permission_group.CAMERA;
 import static android.Manifest.permission_group.MICROPHONE;
 
 import static com.android.permissioncontroller.Constants.EXTRA_SESSION_ID;
-import static com.android.permissioncontroller.permission.debug.UtilsKt.getUsageDurationString;
 import static com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_CALLER_NAME;
 import static com.android.permissioncontroller.permission.ui.handheld.AppPermissionFragment.GRANT_CATEGORY;
+import static com.android.permissioncontroller.permission.ui.handheld.dashboard.UtilsKt.getUsageDurationString;
 import static com.android.permissioncontroller.permission.utils.KotlinUtilsKt.navigateSafe;
 
 import android.content.Context;
@@ -43,9 +43,9 @@ import androidx.navigation.Navigation;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
+import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.model.AppPermissionUsage.GroupUsage;
-import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.ui.LocationProviderInterceptDialog;
 import com.android.permissioncontroller.permission.utils.LocationUtils;
 
@@ -57,6 +57,7 @@ import java.util.List;
 public class PermissionControlPreference extends Preference {
     private final @NonNull Context mContext;
     private @Nullable Drawable mWidgetIcon;
+    private @Nullable View.OnClickListener mWidgetIconOnClickListener;
     private @Nullable String mGranted;
     private boolean mUseSmallerIcon;
     private boolean mEllipsizeEnd;
@@ -109,6 +110,20 @@ public class PermissionControlPreference extends Preference {
     public void setRightIcon(@NonNull Drawable widgetIcon) {
         mWidgetIcon = widgetIcon;
         setWidgetLayoutResource(R.layout.image_view);
+    }
+
+    /**
+     * Sets this preference's right icon with an onClickListener.
+     *
+     * Note that this must be called before preference layout to take effect.
+     *
+     * @param widgetIcon the icon to use.
+     * @param listener the onClickListener attached to the icon.
+     */
+    public void setRightIcon(@NonNull Drawable widgetIcon, @NonNull View.OnClickListener listener) {
+        mWidgetIcon = widgetIcon;
+        setWidgetLayoutResource(R.layout.image_view_with_divider);
+        mWidgetIconOnClickListener = listener;
     }
 
     /**
@@ -210,6 +225,9 @@ public class PermissionControlPreference extends Preference {
         if (mWidgetIcon != null) {
             View widgetFrame = holder.findViewById(android.R.id.widget_frame);
             ((ImageView) widgetFrame.findViewById(R.id.icon)).setImageDrawable(mWidgetIcon);
+            if (mWidgetIconOnClickListener != null) {
+                widgetFrame.findViewById(R.id.icon).setOnClickListener(mWidgetIconOnClickListener);
+            }
         }
 
         if (mEllipsizeEnd) {

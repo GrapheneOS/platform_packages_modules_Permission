@@ -23,6 +23,7 @@ import android.os.Build
 import android.os.UserHandle
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.utils.Utils
+import kotlinx.coroutines.Job
 
 /**
  * LiveData with a map representing the runtime permissions a group requests and all of the
@@ -38,7 +39,7 @@ class PackagePermissionsLiveData private constructor(
     private val app: Application,
     packageName: String,
     user: UserHandle
-) : SmartUpdateMediatorLiveData<Map<String, List<String>>?>() {
+) : SmartAsyncMediatorLiveData<Map<String, List<String>>?>() {
 
     private val packageInfoLiveData = LightPackageInfoLiveData[packageName, user]
 
@@ -49,54 +50,56 @@ class PackagePermissionsLiveData private constructor(
                 value = null
                 return@addSource
             }
-            updateIfActive()
+            update()
         }
     }
 
-    override fun onUpdate() {
+    override suspend fun loadDataAndPostValue(job: Job) {
         val packageInfo = packageInfoLiveData.value ?: return
         val permissionMap = mutableMapOf<String, MutableList<String>>()
         for (permName in packageInfo.requestedPermissions) {
-            val permInfo = try {
-                app.packageManager.getPermissionInfo(permName, 0)
-            } catch (e: PackageManager.NameNotFoundException) {
-                continue
-            }
-
-            if (permInfo.flags and PermissionInfo.FLAG_INSTALLED == 0 ||
-                permInfo.flags and PermissionInfo.FLAG_REMOVED != 0) {
-                continue
-            }
-
-            if (packageInfo.isInstantApp && permInfo.protectionFlags and
-                PermissionInfo.PROTECTION_FLAG_INSTANT == 0) {
-                continue
-            }
-
-            if (packageInfo.targetSdkVersion < Build.VERSION_CODES.M &&
-                (permInfo.protectionFlags and PermissionInfo.PROTECTION_FLAG_RUNTIME_ONLY) != 0) {
-                continue
-            }
-
-            // If this permission is a non-runtime, normal permission, add it to the "non runtime"
-            // group
-            if (permInfo.protection != PermissionInfo.PROTECTION_DANGEROUS) {
-                if (permInfo.protection == PermissionInfo.PROTECTION_NORMAL) {
-                    val otherPermsList =
-                        permissionMap.getOrPut(NON_RUNTIME_NORMAL_PERMS) { mutableListOf() }
-                    otherPermsList.add(permInfo.name)
+            var groupName = Utils.getGroupOfPlatformPermission(permName)
+            if (groupName == null) {
+                val permInfo = try {
+                    app.packageManager.getPermissionInfo(permName, 0)
+                } catch (e: PackageManager.NameNotFoundException) {
+                    continue
                 }
-                continue
+
+                if (permInfo.flags and PermissionInfo.FLAG_INSTALLED == 0 ||
+                    permInfo.flags and PermissionInfo.FLAG_REMOVED != 0) {
+                    continue
+                }
+
+                if (packageInfo.isInstantApp && permInfo.protectionFlags and
+                    PermissionInfo.PROTECTION_FLAG_INSTANT == 0) {
+                    continue
+                }
+
+                if (packageInfo.targetSdkVersion < Build.VERSION_CODES.M &&
+                    (permInfo.protectionFlags and PermissionInfo.PROTECTION_FLAG_RUNTIME_ONLY) !=
+                    0) {
+                    continue
+                }
+
+                // If this permission is a non-runtime, normal permission, add it to the
+                // "non runtime" group
+                if (permInfo.protection != PermissionInfo.PROTECTION_DANGEROUS) {
+                    if (permInfo.protection == PermissionInfo.PROTECTION_NORMAL) {
+                        val otherPermsList =
+                            permissionMap.getOrPut(NON_RUNTIME_NORMAL_PERMS) { mutableListOf() }
+                        otherPermsList.add(permInfo.name)
+                    }
+                    continue
+                }
+
+                groupName = Utils.getGroupOfPermission(permInfo) ?: permName
             }
 
-            val groupName = Utils.getGroupOfPermission(permInfo) ?: permInfo.name
-            if (!permissionMap.containsKey(groupName)) {
-                permissionMap[groupName] = mutableListOf()
-            }
-            permissionMap[groupName]?.add(permInfo.name)
+            permissionMap.getOrPut(groupName) { mutableListOf() }.add(permName)
         }
 
-        value = permissionMap
+        postValue(permissionMap)
     }
 
     /**

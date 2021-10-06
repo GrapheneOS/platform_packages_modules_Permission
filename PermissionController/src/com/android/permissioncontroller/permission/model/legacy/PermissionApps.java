@@ -36,6 +36,7 @@ import android.util.SparseArray;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.utils.Utils;
@@ -192,13 +193,12 @@ public class PermissionApps {
             }
             return apps;
         }
+        int pkgQueryFlags = getPackageQueryFlags();
         if (mPackageName == null) {
-            return mPm.getInstalledPackagesAsUser(PackageManager.GET_PERMISSIONS,
-                    user.getIdentifier());
+            return mPm.getInstalledPackagesAsUser(pkgQueryFlags, user.getIdentifier());
         } else {
             try {
-                final PackageInfo packageInfo = mPm.getPackageInfo(mPackageName,
-                        PackageManager.GET_PERMISSIONS);
+                final PackageInfo packageInfo = mPm.getPackageInfo(mPackageName, pkgQueryFlags);
                 apps = new ArrayList<>(1);
                 apps.add(packageInfo);
                 return apps;
@@ -482,7 +482,7 @@ public class PermissionApps {
         public synchronized List<PackageInfo> getPackages(int userId) {
             List<PackageInfo> ret = mPackageInfoCache.get(userId);
             if (ret == null) {
-                ret = mPm.getInstalledPackagesAsUser(PackageManager.GET_PERMISSIONS, userId);
+                ret = mPm.getInstalledPackagesAsUser(getPackageQueryFlags(), userId);
                 mPackageInfoCache.put(userId, ret);
             }
             return ret;
@@ -561,5 +561,13 @@ public class PermissionApps {
         protected void onPostExecute(Void result) {
             mCallback.run();
         }
+    }
+
+    private static int getPackageQueryFlags() {
+        int pkgQueryFlags = PackageManager.GET_PERMISSIONS;
+        if (SdkLevel.isAtLeastS()) {
+            pkgQueryFlags = pkgQueryFlags | PackageManager.GET_ATTRIBUTIONS;
+        }
+        return pkgQueryFlags;
     }
 }

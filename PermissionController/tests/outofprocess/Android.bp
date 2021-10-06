@@ -28,6 +28,9 @@ package {
 android_test {
     name: "PermissionControllerOutOfProcessTests",
 
+    target_sdk_version: "30",
+    min_sdk_version: "30",
+
     srcs: [
         "src/**/*.kt",
         ":permissioncontroller-protos",
@@ -50,5 +53,8 @@ android_test {
         type: "lite",
     },
 
-    test_suites: ["device-tests"]
+    test_suites: [
+        "device-tests",
+        "mts",
+    ],
 }

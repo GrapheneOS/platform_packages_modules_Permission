@@ -36,6 +36,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Process;
 import android.os.UserHandle;
+import android.os.UserManager;
+import android.permission.AdminPermissionControlParams;
 import android.permission.PermissionManager;
 import android.permission.RuntimePermissionPresentationInfo;
 import android.permission.RuntimePermissionUsageInfo;
@@ -55,10 +57,13 @@ import com.android.permissioncontroller.permission.model.Permission;
 import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo;
 import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo.PermGrantState;
 import com.android.permissioncontroller.permission.ui.AutoGrantPermissionsNotifier;
+import com.android.permissioncontroller.permission.utils.AdminRestrictedPermissionsUtils;
 import com.android.permissioncontroller.permission.utils.ArrayUtils;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.UserSensitiveFlagsUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
+import com.android.permissioncontroller.role.model.Role;
+import com.android.permissioncontroller.role.model.Roles;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlSerializer;
@@ -78,6 +83,7 @@ import java.util.Set;
 import java.util.concurrent.Executor;
 import java.util.function.Consumer;
 import java.util.function.IntConsumer;
+import java.util.stream.Collectors;
 
 import kotlin.Pair;
 import kotlinx.coroutines.BuildersKt;
@@ -491,11 +497,24 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
             @NonNull String packageName, @NonNull String unexpandedPermission, int grantState,
             @NonNull Consumer<Boolean> callback) {
         AsyncTask.execute(() -> callback.accept(onSetRuntimePermissionGrantStateByDeviceAdmin(
-                callerPackageName, packageName, unexpandedPermission, grantState)));
+                callerPackageName, packageName, unexpandedPermission, grantState, true)));
+    }
+
+    /**
+     * Admin control based on params.
+     */
+    @Override
+    public void onSetRuntimePermissionGrantStateByDeviceAdmin(
+            @NonNull String callerPackageName, @NonNull AdminPermissionControlParams params,
+            @NonNull Consumer<Boolean> callback) {
+        AsyncTask.execute(() -> callback.accept(onSetRuntimePermissionGrantStateByDeviceAdmin(
+                callerPackageName, params.getGranteePackageName(), params.getPermission(),
+                params.getGrantState(), params.canAdminGrantSensorsPermissions())));
     }
 
     private boolean onSetRuntimePermissionGrantStateByDeviceAdmin(@NonNull String callerPackageName,
-            @NonNull String packageName, @NonNull String unexpandedPermission, int grantState) {
+            @NonNull String packageName, @NonNull String unexpandedPermission, int grantState,
+            boolean canAdminGrantSensorsPermissions) {
         PackageInfo callerPkgInfo = getPkgInfo(callerPackageName);
         if (callerPkgInfo == null) {
             Log.w(LOG_TAG, "Cannot fix " + unexpandedPermission + " as admin "
@@ -518,6 +537,8 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
         AutoGrantPermissionsNotifier autoGrantPermissionsNotifier =
                 new AutoGrantPermissionsNotifier(this, pkgInfo);
 
+        final boolean isManagedProfile = getSystemService(UserManager.class).isManagedProfile();
+
         int numPerms = expandedPermissions.size();
         for (int i = 0; i < numPerms; i++) {
             String permName = expandedPermissions.get(i);
@@ -533,9 +554,15 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
 
             switch (grantState) {
                 case PERMISSION_GRANT_STATE_GRANTED:
-                    perm.setPolicyFixed(true);
-                    group.grantRuntimePermissions(false, false, new String[]{permName});
-                    autoGrantPermissionsNotifier.onPermissionAutoGranted(permName);
+                    if (AdminRestrictedPermissionsUtils.mayAdminGrantPermission(perm.getName(),
+                            canAdminGrantSensorsPermissions, isManagedProfile)) {
+                        perm.setPolicyFixed(true);
+                        group.grantRuntimePermissions(false, false, new String[]{permName});
+                        autoGrantPermissionsNotifier.onPermissionAutoGranted(permName);
+                    } else {
+                        // similar to PERMISSION_GRANT_STATE_DEFAULT
+                        perm.setPolicyFixed(false);
+                    }
                     break;
                 case PERMISSION_GRANT_STATE_DENIED:
                     perm.setPolicyFixed(true);
@@ -633,7 +660,16 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
         for (AppPermissionGroup group : groups) {
             if (group.areRuntimePermissionsGranted()) {
                 logOneTimeSessionRevoke(packageName, uid, group, requestId);
-                group.revokeRuntimePermissions(false);
+                // Revoke only one time granted permissions if not all
+                List<String> oneTimeGrantedPermissions = group.getPermissions().stream()
+                        .filter(Permission::isOneTime).filter(Permission::isGranted)
+                        .map(Permission::getName).collect(Collectors.toList());
+                if (group.getPermissions().size() == oneTimeGrantedPermissions.size()) {
+                    group.revokeRuntimePermissions(false);
+                } else {
+                    group.revokeRuntimePermissions(false,
+                            oneTimeGrantedPermissions.toArray(new String[0]));
+                }
             }
             group.setUserSet(false);
             group.persistChanges(false, ONE_TIME_PERMISSION_REVOKED_REASON);
@@ -658,5 +694,26 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
                         requestId, uid, packageName, permName, false, r);
             }
         }
+    }
+
+    @Override
+    public String getPrivilegesDescriptionStringForProfile(@NonNull String deviceProfileName) {
+        Role role = Roles.get(this).get(deviceProfileName);
+        if (role == null) {
+            throw new IllegalArgumentException("No such role: " + deviceProfileName);
+        }
+        return getString(role.getDescriptionResource(), "APP_NAME");
+    }
+
+    @Override
+    public void onGetPlatformPermissionsForGroup(@NonNull String permissionGroupName,
+            @NonNull Consumer<List<String>> callback) {
+        callback.accept(Utils.getPlatformPermissionNamesOfGroup(permissionGroupName));
+    }
+
+    @Override
+    public void onGetGroupOfPlatformPermission(@NonNull String permissionName,
+            @NonNull Consumer<String> callback) {
+        callback.accept(Utils.getGroupOfPlatformPermission(permissionName));
     }
 }

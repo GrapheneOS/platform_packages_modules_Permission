@@ -43,6 +43,8 @@ import java.util.ArrayList;
 public class LocationUtils {
 
     public static final String LOCATION_PERMISSION = Manifest.permission_group.LOCATION;
+    public static final String ACTIVITY_RECOGNITION_PERMISSION =
+            Manifest.permission_group.ACTIVITY_RECOGNITION;
 
     private static final String TAG = LocationUtils.class.getSimpleName();
     private static final long LOCATION_UPDATE_DELAY_MS = 1000;
@@ -90,7 +92,8 @@ public class LocationUtils {
 
     public static boolean isLocationGroupAndControllerExtraPackage(@NonNull Context context,
             @NonNull String groupName, @NonNull String packageName) {
-        return LOCATION_PERMISSION.equals(groupName)
+        return (LOCATION_PERMISSION.equals(groupName)
+            || ACTIVITY_RECOGNITION_PERMISSION.equals(groupName))
                 && packageName.equals(context.getSystemService(LocationManager.class)
                         .getExtraLocationControllerPackage());
     }

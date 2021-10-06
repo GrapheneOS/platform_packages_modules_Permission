@@ -88,6 +88,13 @@ public class AssistantRoleBehavior implements RoleBehavior {
     @Override
     public Intent getManageIntentAsUser(@NonNull Role role, @NonNull UserHandle user,
             @NonNull Context context) {
+        boolean isAutomotive =
+                context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE);
+
+        if (isAutomotive) {
+            return null;
+        }
+
         return new Intent(Settings.ACTION_VOICE_INPUT_SETTINGS);
     }
 

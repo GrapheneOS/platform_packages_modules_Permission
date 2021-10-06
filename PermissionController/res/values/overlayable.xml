@@ -40,7 +40,6 @@
             <item type="style" name="PermissionGrantButtonBarSpace" />
             <item type="style" name="PermissionGrantButton" />
             <item type="style" name="PermissionGrantButtonAllow" />
-            <item type="style" name="PermissionGrantButtonAllowAlways" />
             <item type="style" name="PermissionGrantButtonAllowForeground" />
             <item type="style" name="PermissionGrantButtonDeny" />
             <item type="style" name="PermissionGrantButtonNoUpgrade" />
@@ -238,7 +237,17 @@
             <item type="dimen" name="car_action_bar_height" />
             <item type="dimen" name="car_margin" />
             <item type="dimen" name="car_icon_size" />
+            <item type="dimen" name="car_preference_icon_size" />
+            <item type="dimen" name="car_preference_row_vertical_margin" />
+            <item type="dimen" name="car_radius_1" />
             <!-- END CAR DIMENS -->
+
+            <!-- START CAR COLORS -->
+            <item type="color" name="car_accent" />
+            <item type="color" name="car_card_ripple_background" />
+            <item type="color" name="car_tint" />
+            <item type="color" name="car_divider_color" />
+            <!-- END CAR COLORS -->
 
             <!-- START CAR THEMES -->
             <item type="style" name="CarSettings" />

@@ -20,6 +20,7 @@
     <option name="test-suite-tag" value="apct" />
     <option name="test-suite-tag" value="apct-instrumentation" />
     <option name="test-tag" value="PermissionControllerMockingTests" />
+    <object type="module_controller" class="com.android.tradefed.testtype.suite.module.Sdk30ModuleController" />
 
     <!-- Install test -->
     <target_preparer class="com.android.tradefed.targetprep.TestAppInstallSetup">

@@ -16,45 +16,41 @@
 
 package com.android.permissioncontroller.permission.data
 
+import android.content.pm.PackageManager
+import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.utils.Utils
+import kotlinx.coroutines.Job
 
 /**
  * LiveData for a map of background permission name -> list of foreground permission names for every
  * installed, runtime permission in every platform permission group. This LiveData's value is
  * static, since the background/foreground permission relationships are defined by the system.
  */
-object ForegroundPermNamesLiveData : SmartUpdateMediatorLiveData<Map<String, List<String>>>() {
+object ForegroundPermNamesLiveData : SmartAsyncMediatorLiveData<Map<String, List<String>>>(true) {
+    private val app = PermissionControllerApplication.get()
 
     // Since the value will be static, initialize the value upon creating the LiveData.
     init {
         onUpdate()
     }
 
-    override fun onUpdate() {
+    override suspend fun loadDataAndPostValue(job: Job) {
         val systemGroups = Utils.getPlatformPermissionGroups()
-        val groupLiveDatas = systemGroups.map { PermGroupLiveData[it] }
         val permMap = mutableMapOf<String, MutableList<String>>()
-        var numLiveDatasSeen = 0
-        for (groupLiveData in groupLiveDatas) {
-            addSource(groupLiveData) { permGroup ->
-                if (permGroup == null) {
-                    if (groupLiveData.isInitialized) {
-                        numLiveDatasSeen ++
-                    }
-                    return@addSource
-                }
-                for (permInfo in permGroup.permissionInfos.values) {
-                    val backgroundPerm: String? = permInfo.backgroundPermission
-                    if (backgroundPerm != null) {
-                        val foregroundPerms = permMap.getOrPut(backgroundPerm) { mutableListOf() }
-                        foregroundPerms.add(permInfo.name)
-                    }
-                }
-                numLiveDatasSeen ++
-                if (numLiveDatasSeen == groupLiveDatas.size) {
-                    value = permMap
+        for (groupName in systemGroups) {
+            val permInfos = try {
+                Utils.getInstalledRuntimePermissionInfosForGroup(app.packageManager, groupName)
+            } catch (e: PackageManager.NameNotFoundException) {
+                continue
+            }
+            for (permInfo in permInfos) {
+                val backgroundPerm: String? = permInfo.backgroundPermission
+                if (backgroundPerm != null) {
+                    val foregroundPerms = permMap.getOrPut(backgroundPerm) { mutableListOf() }
+                    foregroundPerms.add(permInfo.name)
                 }
             }
         }
+        postValue(permMap)
     }
 }

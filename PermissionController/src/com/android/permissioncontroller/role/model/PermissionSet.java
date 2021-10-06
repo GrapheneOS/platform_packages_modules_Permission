@@ -36,9 +36,9 @@ public class PermissionSet {
      * The permissions of this permission set.
      */
     @NonNull
-    private final List<String> mPermissions;
+    private final List<Permission> mPermissions;
 
-    public PermissionSet(@NonNull String name, @NonNull List<String> permissions) {
+    public PermissionSet(@NonNull String name, @NonNull List<Permission> permissions) {
         mName = name;
         mPermissions = permissions;
     }
@@ -49,7 +49,7 @@ public class PermissionSet {
     }
 
     @NonNull
-    public List<String> getPermissions() {
+    public List<Permission> getPermissions() {
         return mPermissions;
     }
 

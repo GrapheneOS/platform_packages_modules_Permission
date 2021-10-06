@@ -39,6 +39,7 @@ import android.content.pm.PermissionInfo.PROTECTION_FLAG_INSTANT
 import android.content.pm.PermissionInfo.PROTECTION_FLAG_RUNTIME_ONLY
 import android.os.Build
 import android.os.UserHandle
+import android.permission.PermissionManager
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPermGroupInfo
@@ -89,8 +90,8 @@ class GrantRevokeTests {
         private val TEST_USER = UserHandle.getUserHandleForUid(TEST_UID)
         private const val NO_FLAGS = 0
         private val FG_PERM_NAMES = listOf(FG_PERM_NAME, FG_PERM_2_NAME, FG_PERM_NAME_NO_APP_OP)
-        private val OP_NAME = permissionToOp(FG_PERM_NAME)
-        private val OP_2_NAME = permissionToOp(FG_PERM_2_NAME)
+        private val OP_NAME = permissionToOp(FG_PERM_NAME)!!
+        private val OP_2_NAME = permissionToOp(FG_PERM_2_NAME)!!
 
         @BeforeClass
         @JvmStatic
@@ -120,6 +121,9 @@ class GrantRevokeTests {
 
         `when`(app.getSystemService(ActivityManager::class.java)).thenReturn(
             mock(ActivityManager::class.java))
+
+        `when`(app.getSystemService(PermissionManager::class.java)).thenReturn(
+            mock(PermissionManager::class.java))
     }
 
     /**
@@ -742,7 +746,7 @@ class GrantRevokeTests {
     fun revokeTwoPermTest() {
         val pkg = createMockPackage(mapOf(FG_PERM_NAME to true, FG_PERM_2_NAME to true))
         val perms = mutableMapOf<String, LightPermission>()
-        perms[FG_PERM_NAME] = createMockPerm(pkg,FG_PERM_NAME)
+        perms[FG_PERM_NAME] = createMockPerm(pkg, FG_PERM_NAME)
         perms[FG_PERM_2_NAME] = createMockPerm(pkg, FG_PERM_2_NAME)
         val group = createMockGroup(pkg, perms)
         resetMockAppState()

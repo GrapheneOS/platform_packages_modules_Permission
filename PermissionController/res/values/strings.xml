@@ -31,7 +31,7 @@
     <string name="back">Back</string>
 
     <!-- Button label for uninstall or disable actions [CHAR LIMIT=none] -->
-    <string name="uninstall_or_disable">Unintstall or disable</string>
+    <string name="uninstall_or_disable">Uninstall or disable</string>
 
     <!--  [CHAR LIMIT=30] -->
     <string name="app_not_found_dlg_title">App not found</string>
@@ -106,6 +106,12 @@
     <!-- Title for the dialog button to allow a permission grant only when the app is in the foreground. [CHAR LIMIT=60] -->
     <string name="grant_dialog_button_allow_foreground">While using the app</string>
 
+    <!-- Title for the dialog button to change to precise location. [CHAR LIMIT=60] -->
+    <string name="grant_dialog_button_change_to_precise_location">Change to precise location</string>
+
+    <!-- Title for the dialog button to keep approximate location. [CHAR LIMIT=60] -->
+    <string name="grant_dialog_button_keey_approximate_location">Keep approximate location</string>
+
     <!-- Title for the dialog button to allow a permission grant temporarily in teh foreground. [CHAR LIMIT=60] -->
     <string name="grant_dialog_button_allow_one_time">Only this time</string>
 
@@ -126,6 +132,9 @@
 
     <!-- Title for the page of manage unused apps [CHAR LIMIT=30] -->
     <string name="unused_apps">Unused apps</string>
+
+    <!-- Label when there are no unused apps [CHAR LIMIT=30] -->
+    <string name="no_unused_apps">No unused apps</string>
 
     <!-- [CHAR LIMIT=30] Manage applications, label for option to disable app -->
     <string name="app_disable_dlg_positive">Disable app</string>
@@ -172,6 +181,9 @@
    <!-- [CHAR LIMIT=NONE] Menu for manage permissions to control whether system apps are hidden -->
    <string name="menu_hide_system">Hide system</string>
 
+    <!-- FAB text of permission usage fragment [CHAR LIMIT=30] -->
+    <string name="manage_permission">Manage permission</string>
+
    <!-- [CHAR LIMIT=NONE] Label when no apps requesting this permission -->
    <string name="no_apps">No apps</string>
 
@@ -183,6 +195,9 @@
 
    <!-- [CHAR LIMIT=NONE] Warning message when turning off permission for system apps -->
    <string name="system_warning">If you deny this permission, basic features of your device may no longer function as intended.</string>
+
+    <!-- [CHAR LIMIT=NONE] Warning message when turning off permission for an app managing a companion device -->
+    <string name="cdm_profile_revoke_warning">If you deny this permission, some features of your device managed by this app may no longer function as intended.</string>
 
    <!-- [CHAR LIMIT=NONE] Summary of a permission switch when it's enforced by policy -->
    <string name="permission_summary_enforced_by_policy">Enforced by policy</string>
@@ -288,7 +303,56 @@
     <string name="help_app_permissions" translatable="false"></string>
 
     <!-- Title for permission usage [CHAR LIMIT=30] -->
-    <string name="permission_usage_title">Dashboard</string>
+    <string name="permission_usage_title">Privacy dashboard</string>
+
+    <!-- Title for permission group usage [CHAR LIMIT=30] -->
+    <string name="permission_group_usage_title"><xliff:g id="permgroup" example="Location">%1$s</xliff:g> usage</string>
+
+    <!-- Title for permission usage advanced info [CHAR LIMIT=30] -->
+    <string name="perm_usage_adv_info_title">See other permissions</string>
+
+    <!-- Summary for permission usage advanced info for 2 items [CHAR LIMIT=60] -->
+    <string name="perm_usage_adv_info_summary_2_items"><xliff:g id="permgroup" example="Location">%1$s</xliff:g>,\u0020<xliff:g id="permgroup" example="Location">%2$s</xliff:g></string>
+
+    <!-- Summary for permission usage advanced info for 3 or more items [CHAR LIMIT=60] -->
+    <string name="perm_usage_adv_info_summary_more_items"><xliff:g id="permgroup" example="Location">%1$s</xliff:g>,\u0020<xliff:g id="permgroup" example="Location">%2$s</xliff:g>, and\u0020<xliff:g id="num" example="7">%3$s</xliff:g> more</string>
+
+    <!-- Subtitle for permission group usage [CHAR LIMIT=100] -->
+    <string name="permission_group_usage_subtitle">Timeline of when apps used your <xliff:g id="permgroup" example="Location">%1$s</xliff:g> in the past 24 hours</string>
+
+    <!-- Subtitle for access time list dialog [CHAR LIMIT=100] -->
+    <string name="permission_usage_access_dialog_subtitle">When this app used your <xliff:g id="permgroup" example="Location">%1$s</xliff:g> permission</string>
+
+    <!-- Link text for intent out to location provider [CHAR LIMIT=20] -->
+    <string name="permission_usage_access_dialog_learn_more">Learn more</string>
+
+    <!-- Label which separates a proxy app name (an app which uses apermission on behalf of another app), and a usage duration, with a bullet point [CHAR LIMIT=NONE]-->
+    <string name="permission_usage_duration_and_proxy"><xliff:g id="app_name" example="Gmail">%1$s</xliff:g> \u2022 <xliff:g id="truncated_time" example="1 hr 20min">%2$s</xliff:g></string>
+
+    <!-- Duration used for a permission in days -->
+    <plurals name="duration_used_days">
+        <item quantity="one">1 day</item>
+        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> days</item>
+    </plurals>
+
+    <!-- Duration used for a permission in hours -->
+    <plurals name="duration_used_hours">
+        <item quantity="one">1 hour</item>
+        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> hours</item>
+    </plurals>
+
+    <!-- Duration used for a permission in minutes -->
+    <plurals name="duration_used_minutes">
+        <item quantity="one">1 min</item>
+        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> mins</item>
+    </plurals>
+
+    <!-- Duration used for a permission in seconds -->
+    <plurals name="duration_used_seconds">
+        <item quantity="one">1 sec</item>
+        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> secs</item>
+    </plurals>
+
 
     <!-- Summary for showing a single permission access and the number of accesses [CHAR LIMIT=80] -->
     <plurals name="permission_usage_summary">
@@ -383,6 +447,15 @@
         <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> apps</item>
     </plurals>
 
+    <!-- Summary text if a permission usage is not used [CHAR LIMIT=60] -->
+    <string name="permission_usage_preference_summary_not_used">Not used in past 24 hours</string>
+
+    <!-- Label for the permission usage preference that shows how many apps have used various permissions [CHAR LIMIT=50] -->
+    <plurals name="permission_usage_preference_label">
+        <item quantity="one">Used by 1 app</item>
+        <item quantity="other">Used by <xliff:g id="number" example="7">%1$d</xliff:g> apps</item>
+    </plurals>
+
     <!-- Label for the button to bring the user to view the details of recent permission accesses [CHAR LIMIT=42] -->
     <string name="permission_usage_view_details">See all in Dashboard</string>
 
@@ -431,6 +504,15 @@
         <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> apps</item>
     </plurals>
 
+    <!-- Label for the title of permission history. [CHAR LIMIT=20] -->
+    <string name="permission_history_title">Permission history</string>
+
+    <!-- Label for the category title of permission history of today. [CHAR LIMIT=20] -->
+    <string name="permission_history_category_today">Today</string>
+
+    <!-- Label for the category title of permission history of yesterday. [CHAR LIMIT=20] -->
+    <string name="permission_history_category_yesterday">Yesterday</string>
+
     <!-- Help URL, permission usage [DO NOT TRANSLATE] -->
     <string name="help_permission_usage" translatable="false"></string>
 
@@ -464,6 +546,18 @@
     <!-- Title for the dialog button to deny with prejudice a permission grant. [CHAR LIMIT=60] -->
     <string name="app_permission_button_deny">Don\u2019t allow</string>
 
+    <!-- Content description for precise location image. [CHAR LIMIT=50] -->
+    <string name="precise_image_description">Precise location</string>
+
+    <!-- Content description for approximate location image. [CHAR LIMIT=50] -->
+    <string name="approximate_image_description">Approximate location</string>
+
+    <!-- Title for location accuracy switch in location settings. [CHAR LIMIT=60] -->
+    <string name="app_permission_location_accuracy">Use precise location</string>
+
+    <!-- Subtitle for location accuracy switch in location settings. [CHAR LIMIT=none] -->
+    <string name="app_permission_location_accuracy_subtitle">When precise location is off, apps can access your approximate location</string>
+
     <!-- Title for app permission [CHAR LIMIT=30] -->
     <string name="app_permission_title"><xliff:g id="perm" example="location">%1$s</xliff:g> permission</string>
 
@@ -479,8 +573,11 @@
     <!-- Label for the assistant mic display switch [CHAR LIMIT=60] -->
     <string name="assistant_mic_label">Show assistant microphone usage</string>
 
-    <!-- Label for the auto revoke switch [CHAR LIMIT=60] -->
+    <!-- Label for the auto revoke switch on pre-S devices [CHAR LIMIT=60] -->
     <string name="auto_revoke_label">Remove permissions if app isn\u2019t used</string>
+
+    <!-- Label for the hibernation / auto revoke switch on S+ devices [CHAR LIMIT=40] -->
+    <string name="unused_apps_label">Remove permissions and free up space</string>
 
     <!-- Summary for stating that permissions will be removed [CHAR LIMIT=none] -->
     <string name="auto_revoke_summary">To protect your data, permissions for this app will be removed if the app is unused for a few months.</string>
@@ -524,6 +621,12 @@
     <!-- Summary describing the permissions that have been removed from an app, when more than two permissions are removed [CHAR LIMIT=none] -->
     <string name="auto_revoked_app_summary_many"><xliff:g id="permission_name" example="Microphone">%1$s</xliff:g> and <xliff:g id="number" example="2">%2$s</xliff:g> other permissions removed</string>
 
+    <!-- The title of a page showing unused apps that have been hibernated [CHAR LIMIT=60]-->
+    <string name="unused_apps_page_title">Unused apps</string>
+
+    <!-- Summary for the screen that shows all unused apps that have been hibernated [CHAR LIMIT=none] -->
+    <string name="unused_apps_page_summary">If an app is unused for a few months:\n\n\u2022 Permissions are removed to protect your data\n\u2022 Notifications are stopped to save battery\n\u2022 Temporary files are removed to free up space\n\nTo allow permissions and notifications again, open the app.</string>
+
     <!-- Title for a category of apps that were last used several months ago [CHAR LIMIT=none] -->
     <string name="last_opened_category_title">Last opened more than <xliff:g id="number" example="3">%s</xliff:g> months ago</string>
 
@@ -559,6 +662,9 @@
 
     <!-- Label for showing a permission group's description in the header of the list of apps that have the location permission [CHAR LIMIT=none] -->
     <string name="permission_description_summary_location">Apps with this permission can access this device\'s location</string>
+
+    <!-- Label for showing a permission group's description in the header of the list of apps that have the nearby devices permission [CHAR LIMIT=none] -->
+    <string name="permission_description_summary_nearby_devices">Apps with this permission can find, connect to, and determine the relative position of nearby devices</string>
 
     <!-- Label for showing a permission group's description in the header of the list of apps that have the microphone permission [CHAR LIMIT=none] -->
     <string name="permission_description_summary_microphone">Apps with this permission can record audio</string>
@@ -656,6 +762,15 @@
         <item quantity="other"><xliff:g id="count" example="2">%1$d</xliff:g> apps haven\u2019t been used in a few months. Tap to review</item>
     </plurals>
 
+    <!-- The notification title for the notification that app hibernation has happened [CHAR LIMIT=60] -->
+    <plurals name="unused_apps_notification_title">
+        <item quantity="one"><xliff:g id="count" example="1">%1$d</xliff:g> unused app</item>
+        <item quantity="other"><xliff:g id="count" example="2">%1$d</xliff:g> unused apps</item>
+    </plurals>
+
+    <!-- The notification content for the hibernation reminder notification [CHAR LIMIT=none] -->
+    <string name="unused_apps_notification_content">Permissions and temporary files have been removed and notifications were stopped. Tap to review.</string>
+
     <!-- The subtitle for the auto revoke settings card [CHAR LIMIT=none] -->
     <string name="auto_revoke_setting_subtitle">Some apps haven\u2019t been used in a few months</string>
 
@@ -742,6 +857,45 @@
 
     <!-- Subtitle for a storage preference that is currently granted for all files. [CHAR LIMIT=60] -->
     <string name="permission_subtitle_all_files">All Files</string>
+
+    <!-- Subtitle for the preference that the permission is currently always granted. [CHAR LIMIT=60] -->
+    <string name="permission_subtitle_background">Allowed all the time</string>
+
+    <!-- Summary for showing the last access text for sensor data permissions for today [CHAR LIMIT=70] -->
+    <string name="app_perms_24h_access">Last accessed <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g></string>
+
+    <!-- Summary for showing the last access text for sensor data permissions for yesterday [CHAR LIMIT=70] -->
+    <string name="app_perms_24h_access_yest">Last accessed yesterday at <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g></string>
+
+    <!-- Summary for showing the last access text for content provider permissions [CHAR LIMIT=70] -->
+    <string name="app_perms_content_provider">Accessed in past 24 hours</string>
+
+    <!-- Subtitle for the preference that the permission is currently always granted. [CHAR LIMIT=70] -->
+    <string name="app_perms_24h_access_background">Last accessed <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g> \u2022 Allowed all the time</string>
+
+    <!-- Subtitle for the preference that the permission is currently always granted. [CHAR LIMIT=70] -->
+    <string name="app_perms_24h_access_yest_background">Last accessed yesterday at <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g> \u2022 Allowed all the time</string>
+
+    <!-- Subtitle for the preference that the permission is currently always granted. [CHAR LIMIT=70] -->
+    <string name="app_perms_content_provider_background">Accessed in past 24 hours \u2022 Allowed all the time</string>
+
+    <!-- Subtitle for a storage preference that is currently granted for Media files only. [CHAR LIMIT=70] -->
+    <string name="app_perms_24h_access_media_only">Last accessed <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g> \u2022 Media</string>
+
+    <!-- Subtitle for a storage preference that is currently granted for Media files only. [CHAR LIMIT=70] -->
+    <string name="app_perms_24h_access_yest_media_only">Last accessed yesterday at <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g> \u2022 Media</string>
+
+    <!-- Subtitle for a storage preference that is currently granted for Media files only. [CHAR LIMIT=70] -->
+    <string name="app_perms_content_provider_media_only">Accessed in past 24 hours \u2022 Media</string>
+
+    <!-- Subtitle for a storage preference that is currently granted for all files. [CHAR LIMIT=70] -->
+    <string name="app_perms_24h_access_all_files">Last accessed <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g> \u2022 All Files</string>
+
+    <!-- Subtitle for a storage preference that is currently granted for all files. [CHAR LIMIT=70] -->
+    <string name="app_perms_24h_access_yest_all_files">Last accessed yesterday at <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g> \u2022 All Files</string>
+
+    <!-- Subtitle for a storage preference that is currently granted for all files. [CHAR LIMIT=70] -->
+    <string name="app_perms_content_provider_all_files">Accessed in past 24 hours \u2022 All Files</string>
 
     <!-- Label when app has been granted no permissions [CHAR LIMIT=none] -->
     <string name="no_permissions_allowed">No permissions allowed</string>
@@ -875,6 +1029,9 @@
     <!-- Description when an app requests to become the default call screening app. [CHAR LIMIT=60] -->
     <string name="role_call_screening_request_description">No permissions needed</string>
 
+    <!-- Description for the watch profile role. [CHAR LIMIT=NONE] -->
+    <string name="role_watch_description"><xliff:g id="app_name" example="Wear">%1$s</xliff:g> will be allowed to interact with your notifications and access your Phone, SMS, Contacts and Calendar permissions.</string>
+
     <!-- Subtitle for the application that is the current default application [CHAR LIMIT=30] -->
     <string name="request_role_current_default">Current default</string>
 
@@ -906,6 +1063,15 @@
 
     <!-- Title for Ongoing usage dialog title when multiple apps are using app ops [CHAR LIMIT=NONE] -->
     <string name="ongoing_usage_dialog_title">Recent use of <xliff:g id="types_list" example="camera( and location)">%s</xliff:g></string>
+
+    <!-- Title for Ongoing usage dialog title when apps are using microphone [CHAR LIMIT=NONE] -->
+    <string name="ongoing_usage_dialog_title_mic">Recent use of Microphone</string>
+
+    <!-- Title for Ongoing usage dialog title when apps are using camera [CHAR LIMIT=NONE] -->
+    <string name="ongoing_usage_dialog_title_camera">Recent use of Camera</string>
+
+    <!-- Title for Ongoing usage dialog title when apps are using camera and microphone [CHAR LIMIT=NONE] -->
+    <string name="ongoing_usage_dialog_title_mic_camera">Recent use of Microphone &amp; Camera</string>
 
     <!-- Separator for permissions. Include spaces before and after if needed [CHAR LIMIT=10] -->
     <string name="ongoing_usage_dialog_separator">,\u0020</string>
@@ -976,7 +1142,7 @@
     <!-- Dialog message explaining that the app just selected by the user will not work after a reboot until the user enters their credentials, such as a PIN or password. [CHAR LIMIT=NONE] -->
     <string name="encryption_unaware_confirmation_message">Note: If you restart your device and have a screen lock set, this app can\u2019t start until you unlock your device.</string>
 
-    <!-- Dialog message warning about security implications of setting an assistant, displayed when the user selects an assistant. [CHAR LIMIT=NONE] -->
+    <!-- Dialog message warning about security implications of setting an assistant, displayed when the user selects an assistant. The assitant app here is a generic concept and can be any assistant app. [CHAR LIMIT=NONE] -->
     <string name="assistant_confirmation_message">The assistant will be able to read information about apps in use on your system, including information visible on your screen or accessible within the apps.</string>
 
     <!-- Name for the notification channel for incident / bug report confirmation. Appears in
@@ -1033,7 +1199,7 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="adjust_user_sensitive_per_app_header">Highlight usage for the following</string>
 
     <!-- Title for switch that enables/disables the microphone status bar icon for the currently selected assistant. [CHAR LIMIT=60] -->
-    <string name="assistant_record_audio_user_sensitive_title">Show Assistant trigger detection</string>
+    <string name="assistant_record_audio_user_sensitive_title">Show assistant trigger detection</string>
 
     <!-- Subtitle for switch that enables/disables the microphone status bar icon for the currently selected assistant. [CHAR LIMIT=none] -->
     <string name="assistant_record_audio_user_sensitive_summary">Show icon in status bar when microphone is used to activate voice assistant</string>
@@ -1062,6 +1228,21 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="permgroupupgraderequestdetail_location">This app wants to access your location all the time, even when you\u2019re not using the app. <annotation id="link">Allow in settings.</annotation></string>
 
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
+    <string name="permgrouprequest_nearby_devices">Allow
+        &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to find, connect to, and determine the relative position of nearby devices?</string>
+    <!-- Subtitle of the message shown to the user when the apps requests permission to discovery and connect to nearby devices while app is in foreground and background. Try to keep the link annotation at the end of the string [CHAR LIMIT=150] -->
+    <string name="permgroupupgraderequestdetail_nearby_devices">Allow &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to find, connect to, and determine the relative position of nearby devices? <annotation id="link">Allow in settings.</annotation></string>
+
+    <!-- Message shown to the user when the app requests permission to upgrade to fine location [CHAR LIMIT=120] -->
+    <string name="permgrouprequest_fineupgrade">Change <xliff:g id="app_name" example="Gmail">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>\u2019s location access from approximate to precise?</string>
+    <!-- Message shown to the user when the app requests permission to use coarse location [CHAR LIMIT=120] -->
+    <string name="permgrouprequest_coarselocation">Allow &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access this device\u2019s approximate location?</string>
+    <!-- Text for the FINE location image [CHAR LIMIT=20] -->
+    <string name="permgrouprequest_finelocation_imagetext">Precise</string>
+    <!-- Text for the COARSE location image [CHAR LIMIT=20] -->
+    <string name="permgrouprequest_coarselocation_imagetext">Approximate</string>
+
+    <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
     <string name="permgrouprequest_calendar">Allow
         &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access your calendar?</string>
 
@@ -1076,6 +1257,17 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
     <string name="permgrouprequest_microphone">Allow
         &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to record audio?</string>
+    <!-- Subtitle of the message shown to the user when the apps requests permission to use the microphone only while app is in foreground [CHAR LIMIT=150]-->
+    <string name="permgrouprequestdetail_microphone">The app will only be able to record audio while you\u2019re using the app</string>
+    <!-- Message shown to the user when the apps requests permission to use the microphone while app is in foreground and background. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
+    <string name="permgroupbackgroundrequest_microphone">Allow
+        &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to record audio?</string>
+    <!-- Subtitle of the message shown to the user when the apps requests permission to use the microphone while app is in foreground and background. Try to keep the link annotation at the end of the string [CHAR LIMIT=150] -->
+    <string name="permgroupbackgroundrequestdetail_microphone">This app may want to record audio all the time, even when you\u2019re not using the app. <annotation id="link">Allow in settings.</annotation></string>
+    <!-- Message shown to the user when the apps requests permission to use the microphone while app is in foreground and background. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
+    <string name="permgroupupgraderequest_microphone">Change microphone access for &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b>?</string>
+    <!-- Subtitle of the message shown to the user when the apps requests permission to use the microphone while app is in foreground and background. Try to keep the link annotation at the end of the string [CHAR LIMIT=150] -->
+    <string name="permgroupupgraderequestdetail_microphone">This app wants to record audio all the time, even when you\u2019re not using the app. <annotation id="link">Allow in settings.</annotation></string>
 
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
     <string name="permgrouprequest_activityRecognition">Allow
@@ -1084,6 +1276,17 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
     <string name="permgrouprequest_camera">Allow
         &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to take pictures and record video?</string>
+    <!-- Subtitle of the message shown to the user when the apps requests permission to use the camera only while app is in foreground [CHAR LIMIT=150]-->
+    <string name="permgrouprequestdetail_camera">The app will only be able to take pictures and record video while you\u2019re using the app</string>
+    <!-- Message shown to the user when the apps requests permission to use the camera while app is in foreground and background. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
+    <string name="permgroupbackgroundrequest_camera">Allow
+        &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to take pictures and record video?</string>
+    <!-- Subtitle of the message shown to the user when the apps requests permission to use the camera while app is in foreground and background. Try to keep the link annotation at the end of the string [CHAR LIMIT=150] -->
+    <string name="permgroupbackgroundrequestdetail_camera">This app may want to take pictures and record video all the time, even when you\u2019re not using the app. <annotation id="link">Allow in settings.</annotation></string>
+    <!-- Message shown to the user when the apps requests permission to use the camera while app is in foreground and background. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
+    <string name="permgroupupgraderequest_camera">Change camera access for &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b>?</string>
+    <!-- Subtitle of the message shown to the user when the apps requests permission to use the camera while app is in foreground and background. Try to keep the link annotation at the end of the string [CHAR LIMIT=150] -->
+    <string name="permgroupupgraderequestdetail_camera">This app wants to take pictures and record video all the time, even when you\u2019re not using the app. <annotation id="link">Allow in settings.</annotation></string>
 
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
     <string name="permgrouprequest_calllog">Allow
@@ -1104,12 +1307,29 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <!-- Body of the notification, that does not include the app name and is specific to location permissions. [CHAR LIMIT=120]-->
     <string name="auto_granted_permission_notification_body">Your IT admin is allowing <xliff:g id="app_name" example="Gmail">%s</xliff:g> to access your location</string>
 
-    <!-- Detail message explaining why foreground options aren't available. [CHAR LIMIT=160] -->
-    <string name="fg_capabilities_sound_trigger">Some options aren\u2019t available because this app needs to detect sound</string>
-    <!-- Detail message explaining why foreground options aren't available. Try to match translation for "default digital assistant" in this string to role_assistant_label. [CHAR LIMIT=160] -->
-    <string name="fg_capabilities_assistant">Some options aren\u2019t available because this app is your default digital assistant</string>
-    <!-- Detail message explaining why foreground options aren't available. [CHAR LIMIT=160] -->
-    <string name="fg_capabilities_voice_interaction">Some options aren\u2019t available because this app is used for voice input</string>
-    <!-- Detail message explaining why foreground options aren't available. [CHAR LIMIT=160] -->
-    <string name="fg_capabilities_carrier">Some options aren\u2019t available because this app is managed by your carrier</string>
+    <!-- The title of (and the button label for a link to) the screen that lists permissions that aren't considered the most relevant to the user at the moment, and thus did not make to the "main" screen. [CHAR LIMIT=80] -->
+    <string name="other_permissions_label">Other permissions</string>
+
+    <!-- Title for a list of permissions that are not requested by any of the installed applications. [CHAR LIMIT=80] -->
+    <string name="not_used_permissions_label">Permission used by the system</string>
+    <!-- Subtitle for a list of permissions that are not requested by any of the installed applications. [CHAR LIMIT=none] -->
+    <string name="not_used_permissions_description">Permissions used only by the system applications.</string>
+
+    <!-- Title for a list of "custom" permissions (defined by applications, not the platform). [CHAR LIMIT=80] -->
+    <string name="additional_permissions_label">Additional permissions</string>
+    <!-- Subtitle for a list of "custom" permissions (defined by applications, not the platform). [CHAR LIMIT=none] -->
+    <string name="additional_permissions_description">Permissions defined by applications.</string>
+
+    <!-- Permission label for camera. [CHAR LIMIT=20] -->
+    <string name="privdash_label_camera">Camera</string>
+    <!-- Permission label for microphone. [CHAR LIMIT=20] -->
+    <string name="privdash_label_microphone">Microphone</string>
+    <!-- Permission label for location. [CHAR LIMIT=20] -->
+    <string name="privdash_label_location">Location</string>
+    <!-- Permission label for "other" (not camera, microphone, or location). [CHAR LIMIT=20] -->
+    <string name="privdash_label_other">Other</string>
+    <!-- Permission label for "none" (not anything). [CHAR LIMIT=20] -->
+    <string name="privdash_label_none">None</string>
+    <!-- Label that describes a "last 24 hours" time window, prefer two lines. [CHAR LIMIT=20] -->
+    <string name="privdash_label_24h">Past\n24 hours</string>
 </resources>

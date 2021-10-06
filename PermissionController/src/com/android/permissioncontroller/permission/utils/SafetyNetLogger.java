@@ -44,11 +44,34 @@ public final class SafetyNetLogger {
         /* do nothing */
     }
 
+    /**
+     * Log that permission groups have been requested for the purpose of safety net.
+     *
+     * <p>The groups might refer to different permission groups and different apps.
+     *
+     * @param packageInfo The info about the package for which permissions were requested
+     * @param groups The permission groups which were requested
+     */
     public static void logPermissionsRequested(PackageInfo packageInfo,
             List<AppPermissionGroup> groups) {
         EventLog.writeEvent(SNET_NET_EVENT_LOG_TAG, PERMISSIONS_REQUESTED,
                 packageInfo.applicationInfo.uid, buildChangedPermissionForPackageMessage(
                         packageInfo.packageName, groups));
+    }
+
+    /**
+     * Log that permission groups have been requested for the purpose of safety net.
+     *
+     * <p>The groups might refer to different permission groups and different apps.
+     *
+     * @param packageName The name of the package for which permissions were requested
+     * @param uid The uid of the package
+     * @param groups The permission groups which were requested
+     */
+    public static void logPermissionsRequested(String packageName, int uid,
+            List<LightAppPermGroup> groups) {
+        EventLog.writeEvent(SNET_NET_EVENT_LOG_TAG, PERMISSIONS_REQUESTED, uid,
+                buildChangedPermissionForPackageMessageNew(packageName, groups));
     }
 
     /**
@@ -106,9 +129,10 @@ public final class SafetyNetLogger {
      * background
      */
     public static void logPermissionToggled(LightAppPermGroup group, boolean logOnlyBackground) {
+        StringBuilder builder = new StringBuilder();
+        buildChangedPermissionForGroup(group, logOnlyBackground, builder);
         EventLog.writeEvent(SNET_NET_EVENT_LOG_TAG, PERMISSIONS_TOGGLED,
-                android.os.Process.myUid(), buildChangedPermissionForPackageMessage(group,
-                        logOnlyBackground));
+                android.os.Process.myUid(), builder.toString());
     }
 
     /**
@@ -122,9 +146,8 @@ public final class SafetyNetLogger {
         logPermissionToggled(group, false);
     }
 
-    private static String buildChangedPermissionForPackageMessage(
-            LightAppPermGroup group, boolean logOnlyBackground) {
-        StringBuilder builder = new StringBuilder();
+    private static void buildChangedPermissionForGroup(LightAppPermGroup group,
+            boolean logOnlyBackground, StringBuilder builder) {
 
         builder.append(group.getPackageInfo().getPackageName()).append(':');
 
@@ -142,8 +165,6 @@ public final class SafetyNetLogger {
             builder.append(permission.isGrantedIncludingAppOp()).append('|');
             builder.append(permission.getFlags());
         }
-
-        return builder.toString();
     }
 
     private static void buildChangedPermissionForGroup(AppPermissionGroup group,
@@ -160,6 +181,17 @@ public final class SafetyNetLogger {
             builder.append(permission.isGrantedIncludingAppOp()).append('|');
             builder.append(permission.getFlags());
         }
+    }
+
+    private static String buildChangedPermissionForPackageMessageNew(String packageName,
+            List<LightAppPermGroup> groups) {
+        StringBuilder builder = new StringBuilder();
+
+        builder.append(packageName).append(':');
+        for (LightAppPermGroup group: groups) {
+            buildChangedPermissionForGroup(group, false, builder);
+        }
+        return builder.toString();
     }
 
     private static String buildChangedPermissionForPackageMessage(String packageName,

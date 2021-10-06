@@ -46,16 +46,20 @@ role behavior in Java code, e.g. `SmsRoleBehavior`. This can be useful when the 
 express certain behavior specific to the role.
 - `defaultHolders`: Optional name of a system config resource that designates the default holders of
 the role, e.g. `config_defaultSms`. If the role is not exclusive, multiple package names can be
-specified by separating them with semicolon (`;`).
+specified by separating them with a semicolon (`;`).
 - `description`: The string resource for the description of the role, e.g.
 `@string/role_sms_description`, which says "Apps that allow you to use your phone number to send and
 receive short text messages, photos, videos, and more". For default apps, this string will appear in
 the default app detail page as a footer. This attribute is required if the role is `visible`.
 - `exclusive`: Whether the role is exclusive. If a role is exclusive, at most one application is
 allowed to be its holder.
+- `fallBackToDefaultHolder`: Whether the role should fall back to the default holder. This attribute
+is optional and defaults to `false`.
 - `label`: The string resource for the label of the role, e.g. `@string/role_sms_label`, which says
 "Default SMS app". For default apps, this string will appear in the default app detail page as the
 title. This attribute is required if the role is `visible`.
+- `minSdkVersion`: The minimum SDK version for the role to be available, e.g. `31` for Android S.
+This attribute is optional and defaults to `Build.VERSION_CODES.BASE`.
 - `requestDescription`: The string resource for the description in the request role dialog, e.g.
 `@string/role_sms_request_description`, which says "Gets access to contacts, SMS, phone". This
 description should describe to the user the privileges that are going to be granted, and should not
@@ -76,6 +80,8 @@ role is `visible`.
 - `showNone`: Whether this role will show a "None" option. This allows user to explicitly select
 none of the apps for a role. This attribute is optional, only applies to `exclusive` roles and
 defaults to `false`.
+- `static`: Whether this role is static, i.e. the role will always be assigned to its default
+holders. This attribute is optional and defaults to `false`.
 - `systemOnly`: Whether this role only allows system apps to hold it. This attribute is optional and
 defaults to `false.
 - `visible`: Whether this role is visible to users. If a role is invisible (a.k.a. hidden) to users,

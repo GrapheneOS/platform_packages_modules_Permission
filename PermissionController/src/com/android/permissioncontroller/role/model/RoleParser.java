@@ -71,25 +71,29 @@ public class RoleParser {
     private static final String TAG_PREFERRED_ACTIVITIES = "preferred-activities";
     private static final String TAG_PREFERRED_ACTIVITY = "preferred-activity";
     private static final String ATTRIBUTE_NAME = "name";
+    private static final String ATTRIBUTE_ALLOW_BYPASSING_QUALIFICATION =
+            "allowBypassingQualification";
     private static final String ATTRIBUTE_BEHAVIOR = "behavior";
     private static final String ATTRIBUTE_DEFAULT_HOLDERS = "defaultHolders";
     private static final String ATTRIBUTE_DESCRIPTION = "description";
     private static final String ATTRIBUTE_EXCLUSIVE = "exclusive";
     private static final String ATTRIBUTE_FALL_BACK_TO_DEFAULT_HOLDER = "fallBackToDefaultHolder";
     private static final String ATTRIBUTE_LABEL = "label";
+    private static final String ATTRIBUTE_MIN_SDK_VERSION = "minSdkVersion";
+    private static final String ATTRIBUTE_OVERRIDE_USER_WHEN_GRANTING = "overrideUserWhenGranting";
+    private static final String ATTRIBUTE_QUERY_FLAGS = "queryFlags";
     private static final String ATTRIBUTE_REQUEST_TITLE = "requestTitle";
     private static final String ATTRIBUTE_REQUEST_DESCRIPTION = "requestDescription";
     private static final String ATTRIBUTE_REQUESTABLE = "requestable";
     private static final String ATTRIBUTE_SEARCH_KEYWORDS = "searchKeywords";
     private static final String ATTRIBUTE_SHORT_LABEL = "shortLabel";
     private static final String ATTRIBUTE_SHOW_NONE = "showNone";
+    private static final String ATTRIBUTE_STATIC = "static";
     private static final String ATTRIBUTE_SYSTEM_ONLY = "systemOnly";
     private static final String ATTRIBUTE_VISIBLE = "visible";
     private static final String ATTRIBUTE_PERMISSION = "permission";
     private static final String ATTRIBUTE_SCHEME = "scheme";
     private static final String ATTRIBUTE_MIME_TYPE = "mimeType";
-    private static final String ATTRIBUTE_VALUE = "value";
-    private static final String ATTRIBUTE_OPTIONAL = "optional";
     private static final String ATTRIBUTE_MAX_TARGET_SDK_VERSION = "maxTargetSdkVersion";
     private static final String ATTRIBUTE_MODE = "mode";
 
@@ -231,7 +235,7 @@ public class RoleParser {
             return null;
         }
 
-        List<String> permissions = new ArrayList<>();
+        List<Permission> permissions = new ArrayList<>();
 
         int type;
         int depth;
@@ -244,7 +248,7 @@ public class RoleParser {
             }
 
             if (parser.getName().equals(TAG_PERMISSION)) {
-                String permission = requireAttributeValue(parser, ATTRIBUTE_NAME, TAG_PERMISSION);
+                Permission permission = parsePermission(parser);
                 if (permission == null) {
                     continue;
                 }
@@ -260,6 +264,19 @@ public class RoleParser {
     }
 
     @Nullable
+    private Permission parsePermission(@NonNull XmlResourceParser parser) throws IOException,
+            XmlPullParserException {
+        String name = requireAttributeValue(parser, ATTRIBUTE_NAME, TAG_PERMISSION);
+        if (name == null) {
+            skipCurrentTag(parser);
+            return null;
+        }
+        int minSdkVersion = getAttributeIntValue(parser, ATTRIBUTE_MIN_SDK_VERSION,
+                Build.VERSION_CODES.BASE);
+        return new Permission(name, minSdkVersion);
+    }
+
+    @Nullable
     private Role parseRole(@NonNull XmlResourceParser parser,
             @NonNull ArrayMap<String, PermissionSet> permissionSets) throws IOException,
             XmlPullParserException {
@@ -268,6 +285,9 @@ public class RoleParser {
             skipCurrentTag(parser);
             return null;
         }
+
+        boolean allowBypassingQualification = getAttributeBooleanValue(parser,
+                ATTRIBUTE_ALLOW_BYPASSING_QUALIFICATION, false);
 
         String behaviorClassSimpleName = getAttributeValue(parser, ATTRIBUTE_BEHAVIOR);
         RoleBehavior behavior;
@@ -287,14 +307,13 @@ public class RoleParser {
 
         String defaultHoldersResourceName = getAttributeValue(parser, ATTRIBUTE_DEFAULT_HOLDERS);
 
+        int descriptionResource = getAttributeResourceValue(parser, ATTRIBUTE_DESCRIPTION, 0);
+
         boolean visible = getAttributeBooleanValue(parser, ATTRIBUTE_VISIBLE, true);
-        Integer descriptionResource;
         Integer labelResource;
         Integer shortLabelResource;
         if (visible) {
-            descriptionResource = requireAttributeResourceValue(parser,
-                    ATTRIBUTE_DESCRIPTION, 0, TAG_ROLE);
-            if (descriptionResource == null) {
+            if (descriptionResource == 0) {
                 skipCurrentTag(parser);
                 return null;
             }
@@ -312,7 +331,6 @@ public class RoleParser {
                 return null;
             }
         } else {
-            descriptionResource = 0;
             labelResource = 0;
             shortLabelResource = 0;
         }
@@ -326,6 +344,12 @@ public class RoleParser {
 
         boolean fallBackToDefaultHolder = getAttributeBooleanValue(parser,
                 ATTRIBUTE_FALL_BACK_TO_DEFAULT_HOLDER, false);
+
+        int minSdkVersion = getAttributeIntValue(parser, ATTRIBUTE_MIN_SDK_VERSION,
+                Build.VERSION_CODES.BASE);
+
+        boolean overrideUserWhenGranting = getAttributeBooleanValue(parser,
+                ATTRIBUTE_OVERRIDE_USER_WHEN_GRANTING, true);
 
         boolean requestable = getAttributeBooleanValue(parser, ATTRIBUTE_REQUESTABLE, visible);
         Integer requestDescriptionResource;
@@ -359,10 +383,18 @@ public class RoleParser {
             return null;
         }
 
+        boolean statik = getAttributeBooleanValue(parser, ATTRIBUTE_STATIC, false);
+        if (statik && (visible || requestable)) {
+            throwOrLogMessage("static=\"true\" is invalid for a visible or requestable role: "
+                    + name);
+            skipCurrentTag(parser);
+            return null;
+        }
+
         boolean systemOnly = getAttributeBooleanValue(parser, ATTRIBUTE_SYSTEM_ONLY, false);
 
         List<RequiredComponent> requiredComponents = null;
-        List<String> permissions = null;
+        List<Permission> permissions = null;
         List<String> appOpPermissions = null;
         List<AppOp> appOps = null;
         List<PreferredActivity> preferredActivities = null;
@@ -439,11 +471,12 @@ public class RoleParser {
         if (preferredActivities == null) {
             preferredActivities = Collections.emptyList();
         }
-        return new Role(name, behavior, defaultHoldersResourceName, descriptionResource, exclusive,
-                fallBackToDefaultHolder, labelResource, requestDescriptionResource,
+        return new Role(name, allowBypassingQualification, behavior, defaultHoldersResourceName,
+                descriptionResource, exclusive, fallBackToDefaultHolder, labelResource,
+                minSdkVersion, overrideUserWhenGranting, requestDescriptionResource,
                 requestTitleResource, requestable, searchKeywordsResource, shortLabelResource,
-                showNone, systemOnly, visible, requiredComponents, permissions, appOpPermissions,
-                appOps, preferredActivities);
+                showNone, statik, systemOnly, visible, requiredComponents, permissions,
+                appOpPermissions, appOps, preferredActivities);
     }
 
     @NonNull
@@ -489,6 +522,7 @@ public class RoleParser {
     private RequiredComponent parseRequiredComponent(@NonNull XmlResourceParser parser,
             @NonNull String name) throws IOException, XmlPullParserException {
         String permission = getAttributeValue(parser, ATTRIBUTE_PERMISSION);
+        int queryFlags = getAttributeIntValue(parser, ATTRIBUTE_QUERY_FLAGS, 0);
         IntentFilterData intentFilterData = null;
 
         int type;
@@ -522,13 +556,13 @@ public class RoleParser {
         }
         switch (name) {
             case TAG_ACTIVITY:
-                return new RequiredActivity(intentFilterData, permission);
+                return new RequiredActivity(intentFilterData, permission, queryFlags);
             case TAG_PROVIDER:
-                return new RequiredContentProvider(intentFilterData, permission);
+                return new RequiredContentProvider(intentFilterData, permission, queryFlags);
             case TAG_RECEIVER:
-                return new RequiredBroadcastReceiver(intentFilterData, permission);
+                return new RequiredBroadcastReceiver(intentFilterData, permission, queryFlags);
             case TAG_SERVICE:
-                return new RequiredService(intentFilterData, permission);
+                return new RequiredService(intentFilterData, permission, queryFlags);
             default:
                 throwOrLogMessage("Unknown tag <" + name + ">");
                 return null;
@@ -619,10 +653,10 @@ public class RoleParser {
     }
 
     @NonNull
-    private List<String> parsePermissions(@NonNull XmlResourceParser parser,
+    private List<Permission> parsePermissions(@NonNull XmlResourceParser parser,
             @NonNull ArrayMap<String, PermissionSet> permissionSets) throws IOException,
             XmlPullParserException {
-        List<String> permissions = new ArrayList<>();
+        List<Permission> permissions = new ArrayList<>();
 
         int type;
         int depth;
@@ -651,8 +685,7 @@ public class RoleParser {
                     break;
                 }
                 case TAG_PERMISSION: {
-                    String permission = requireAttributeValue(parser, ATTRIBUTE_NAME,
-                            TAG_PERMISSION);
+                    Permission permission = parsePermission(parser);
                     if (permission == null) {
                         continue;
                     }
@@ -692,7 +725,6 @@ public class RoleParser {
                 }
                 validateNoDuplicateElement(appOpPermission, appOpPermissions, "app op permission");
                 appOpPermissions.add(appOpPermission);
-                break;
             } else {
                 throwOrLogForUnknownTag(parser);
                 skipCurrentTag(parser);
@@ -946,10 +978,10 @@ public class RoleParser {
                 permissionSetsIndex++) {
             PermissionSet permissionSet = permissionSets.valueAt(permissionSetsIndex);
 
-            List<String> permissions = permissionSet.getPermissions();
+            List<Permission> permissions = permissionSet.getPermissions();
             int permissionsSize = permissions.size();
             for (int permissionsIndex = 0; permissionsIndex < permissionsSize; permissionsIndex++) {
-                String permission = permissions.get(permissionsIndex);
+                Permission permission = permissions.get(permissionsIndex);
 
                 validatePermission(permission);
             }
@@ -958,6 +990,10 @@ public class RoleParser {
         int rolesSize = roles.size();
         for (int rolesIndex = 0; rolesIndex < rolesSize; rolesIndex++) {
             Role role = roles.valueAt(rolesIndex);
+
+            if (!role.isAvailableBySdkVersion()) {
+                continue;
+            }
 
             List<RequiredComponent> requiredComponents = role.getRequiredComponents();
             int requiredComponentsSize = requiredComponents.size();
@@ -972,10 +1008,10 @@ public class RoleParser {
                 }
             }
 
-            List<String> permissions = role.getPermissions();
+            List<Permission> permissions = role.getPermissions();
             int permissionsSize = permissions.size();
             for (int i = 0; i < permissionsSize; i++) {
-                String permission = permissions.get(i);
+                Permission permission = permissions.get(i);
 
                 validatePermission(permission);
             }
@@ -1013,12 +1049,39 @@ public class RoleParser {
         }
     }
 
+    private void validatePermission(@NonNull Permission permission) {
+        if (!permission.isAvailable()) {
+            return;
+        }
+        validatePermission(permission.getName(), true);
+    }
+
     private void validatePermission(@NonNull String permission) {
+        validatePermission(permission, false);
+    }
+
+    private void validatePermission(@NonNull String permission, boolean enforceIsRuntimeOrRole) {
         PackageManager packageManager = mContext.getPackageManager();
+        boolean isAutomotive = packageManager.hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE);
+        // Skip validation for car permissions which may not be available on all build targets.
+        if (!isAutomotive && permission.startsWith("android.car")) {
+            return;
+        }
+
+        PermissionInfo permissionInfo;
         try {
-            packageManager.getPermissionInfo(permission, 0);
+            permissionInfo = packageManager.getPermissionInfo(permission, 0);
         } catch (PackageManager.NameNotFoundException e) {
             throw new IllegalArgumentException("Unknown permission: " + permission, e);
+        }
+
+        if (enforceIsRuntimeOrRole) {
+            if (!(permissionInfo.getProtection() == PermissionInfo.PROTECTION_DANGEROUS
+                    || (permissionInfo.getProtectionFlags() & PermissionInfo.PROTECTION_FLAG_ROLE)
+                            == PermissionInfo.PROTECTION_FLAG_ROLE)) {
+                throw new IllegalArgumentException(
+                        "Permission is not a runtime or role permission: " + permission);
+            }
         }
     }
 

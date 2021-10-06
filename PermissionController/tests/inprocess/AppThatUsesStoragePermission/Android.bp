@@ -28,7 +28,10 @@ package {
 android_test_helper_app {
     name: "AppThatUsesStoragePermission",
 
-    sdk_version: "current",
+    sdk_version: "30",
 
-    test_suites: [ "device-tests" ],
+    test_suites: [
+        "device-tests",
+        "mts",
+    ],
 }

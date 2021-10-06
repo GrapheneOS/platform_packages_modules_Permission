@@ -21,6 +21,7 @@ import android.util.AttributeSet;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.preference.Preference;
 
 import com.android.permissioncontroller.role.ui.TwoTargetPreference;
 
@@ -28,7 +29,7 @@ import com.android.permissioncontroller.role.ui.TwoTargetPreference;
  * Preference for use in auto lists. Extends {@link TwoTargetPreference} in order to make sure of
  * shared logic between phone and auto settings UI.
  */
-public class AutoSettingsPreference extends TwoTargetPreference {
+public class AutoSettingsPreference extends Preference implements TwoTargetPreference {
 
     public AutoSettingsPreference(@NonNull Context context,
             @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {

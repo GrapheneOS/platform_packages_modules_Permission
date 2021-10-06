@@ -20,24 +20,23 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 
 import com.android.permissioncontroller.DeviceUtils;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.role.model.Role;
 import com.android.permissioncontroller.role.model.Roles;
+import com.android.permissioncontroller.role.ui.SettingsActivity;
 import com.android.permissioncontroller.role.ui.auto.AutoSpecialAppAccessFragment;
 import com.android.permissioncontroller.role.ui.specialappaccess.handheld.HandheldSpecialAppAccessFragment;
 
 /**
  * Activity for a special app access.
  */
-public class SpecialAppAccessActivity extends FragmentActivity {
+public class SpecialAppAccessActivity extends SettingsActivity {
 
     private static final String LOG_TAG = SpecialAppAccessActivity.class.getSimpleName();
 
@@ -62,9 +61,6 @@ public class SpecialAppAccessActivity extends FragmentActivity {
             setTheme(R.style.CarSettings);
         }
         super.onCreate(savedInstanceState);
-
-        getWindow().addSystemFlags(
-                WindowManager.LayoutParams.SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
 
         String roleName = getIntent().getStringExtra(Intent.EXTRA_ROLE_NAME);
 

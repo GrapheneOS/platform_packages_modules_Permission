@@ -25,6 +25,6 @@ import androidx.navigation.fragment.findNavController
 fun Fragment.pressBack() {
     val wasBackExecuted = findNavController().popBackStack()
     if (!wasBackExecuted) {
-        activity?.let { it.finish() }
+        activity?.let { it.finishAfterTransition() }
     }
 }
