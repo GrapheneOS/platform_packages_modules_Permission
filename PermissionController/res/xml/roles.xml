@@ -978,4 +978,21 @@
         </permissions>
     </role>
 
+    <role
+        name="android.app.role.COMPANION_DEVICE_APP_STREAMING"
+        behavior="CompanionDeviceAppStreamingRoleBehavior"
+        description="@string/role_app_streaming_description"
+        exclusive="false"
+        minSdkVersion="33"
+        overrideUserWhenGranting="false"
+        systemOnly="true"
+        visible="false">
+        <permissions>
+            <!--TODO(b/194949534) For calling VirtualDevice API-->
+            <!--<permission name="android.permission.CREATE_VIRTUAL_DEVICE" />-->
+
+            <!--TODO(b/201605314) For calling Telecom framework API for audio streaming-->
+            <!--<permission name="android.permission.PROVIDE_CALL_ENDPOINTS" />-->
+        </permissions>
+    </role>
 </roles>
