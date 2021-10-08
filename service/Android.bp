@@ -77,7 +77,10 @@ java_library {
 
 java_sdk_library {
     name: "service-permission",
-    defaults: ["framework-system-server-module-defaults"],
+    defaults: [
+        "framework-system-server-module-defaults",
+        "framework-system-server-module-optimize-defaults",
+    ],
     impl_library_visibility: [
         "//frameworks/base/apex/permission/tests",
         "//frameworks/base/services/tests/mockingservicestests",

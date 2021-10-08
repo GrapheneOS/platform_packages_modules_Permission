@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 The Android Open Source Project
+ * Copyright (C) 2021 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,9 +23,9 @@ import androidx.annotation.NonNull;
 import com.android.permissioncontroller.role.utils.NotificationUtils;
 
 /**
- * Class for behavior of the "watch" Companion device profile role.
+ * Class for behavior of the "App Streaming" Companion device profile role.
  */
-public class CompanionDeviceWatchRoleBehavior implements RoleBehavior {
+public class CompanionDeviceAppStreamingRoleBehavior implements RoleBehavior {
 
     @Override
     public void grant(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {

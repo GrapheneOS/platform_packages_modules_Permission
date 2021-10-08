@@ -50,6 +50,7 @@ import android.util.Log;
 import android.util.SparseArray;
 import android.util.proto.ProtoOutputStream;
 
+import androidx.annotation.Keep;
 import androidx.annotation.RequiresApi;
 
 import com.android.internal.annotations.GuardedBy;
@@ -83,6 +84,7 @@ import java.util.concurrent.TimeoutException;
  *
  * @see RoleManager
  */
+@Keep
 @RequiresApi(Build.VERSION_CODES.S)
 public class RoleService extends SystemService implements RoleUserState.Callback {
     private static final String LOG_TAG = RoleService.class.getSimpleName();
