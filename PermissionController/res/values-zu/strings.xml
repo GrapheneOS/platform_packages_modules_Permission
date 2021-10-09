@@ -398,6 +398,8 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Setha i-<xliff:g id="APP_NAME">%1$s</xliff:g> njengobunikazi bakho bekholi obuzenzakalelayo nohlelo lokusebenza logaxekile?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Azikho izimvume ezidingwayo"</string>
     <string name="role_watch_description" msgid="267003778693177779">"I-<xliff:g id="APP_NAME">%1$s</xliff:g> izovunyelwa ukuxhumana nezaziso zakho futhi ifinyelele izimvume Zefoni yakho, -SMS, Abathintwayo kanye Nekhalenda."</string>
+    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
+    <skip />
     <string name="request_role_current_default" msgid="738722892438247184">"Okuzenzakalelayo kwamanje"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Ungabuzi futhi"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Setha njengokuzenzekelayo"</string>

@@ -398,6 +398,8 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> तुमचे डीफॉल्ट कॉलर आयडी आणि स्पॅम अ‍ॅप म्हणून सेट करायचे?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"परवानगीची गरज नाही"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> ला तुमच्या सूचनांशी संवाद साधण्याची आणि तुमचा फोन, एसएमएस, संपर्क आणि Calendar च्या परवानग्या अ‍ॅक्सेस करण्याची अनुमती मिळेल."</string>
+    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
+    <skip />
     <string name="request_role_current_default" msgid="738722892438247184">"सद्य डीफॉल्ट"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"पुन्हा विचारू नका"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"डीफॉल्ट सेट करा"</string>
