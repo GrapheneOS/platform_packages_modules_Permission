@@ -398,6 +398,8 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g>କୁ ଆପଣଙ୍କର ଡିଫଲ୍ଟ କଲର୍ ଆଇଡି &amp; ସ୍ପାମ୍ ଆପ୍ ଭାବ୍ ସେଟ୍ କରିବେ କି?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"କୌଣସି ଅନୁମତି ଆବଶ୍ୟକ ନାହିଁ"</string>
     <string name="role_watch_description" msgid="267003778693177779">"ଆପଣଙ୍କ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକ ସହ ଇଣ୍ଟରାକ୍ଟ କରିବା ଏବଂ ଆପଣଙ୍କ ଫୋନ୍, SMS, ଯୋଗାଯୋଗ ଓ କ୍ୟାଲେଣ୍ଡର ଅନୁମତିଗୁଡ଼ିକୁ ଆକ୍ସେସ୍ କରିବା ପାଇଁ <xliff:g id="APP_NAME">%1$s</xliff:g>କୁ ଅନୁମତି ଦିଆଯିବ।"</string>
+    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
+    <skip />
     <string name="request_role_current_default" msgid="738722892438247184">"ସମ୍ପ୍ରତ୍ତି ଡିଫଲ୍ଟ"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"ଆଉ ପଚାରନ୍ତୁ ନାହିଁ"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"ଡିଫଲ୍ଟ ଭାବେ ସେଟ୍ କରନ୍ତୁ"</string>

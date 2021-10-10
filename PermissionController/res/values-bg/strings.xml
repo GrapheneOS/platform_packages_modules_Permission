@@ -398,6 +398,8 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Да се зададе ли <xliff:g id="APP_NAME">%1$s</xliff:g> като стандартно приложение за идентификатор на обаждащия се и спам?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Не са необходими разрешения"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> ще получи разрешение да взаимодейства с известията ви и ще получи достъп до разрешенията за телефона, SMS съобщенията, контактите и календара."</string>
+    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
+    <skip />
     <string name="request_role_current_default" msgid="738722892438247184">"Текущо стандартно приложение"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Без повторно питане"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Задаване"</string>

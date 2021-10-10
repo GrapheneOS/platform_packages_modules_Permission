@@ -398,6 +398,8 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g>ஐ இயல்பான அழைப்பாளர் ஐடி &amp; ஸ்பேம் ஆப்ஸாக அமைக்கவா?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"அனுமதிகள் தேவையில்லை"</string>
     <string name="role_watch_description" msgid="267003778693177779">"உங்கள் அறிவிப்புகளைப் பயன்படுத்துவதற்கான அனுமதியையும் மொபைல், மெசேஜ், தொடர்புகள், கேலெண்டர் ஆகியவற்றின் அனுமதிகளுக்கான அணுகலையும் <xliff:g id="APP_NAME">%1$s</xliff:g> ஆப்ஸ் பெறும்."</string>
+    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
+    <skip />
     <string name="request_role_current_default" msgid="738722892438247184">"தற்போதைய இயல்பான ஆப்ஸ்"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"மீண்டும் கேட்காதே"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"இயல்பு ஆப்ஸாக அமை"</string>

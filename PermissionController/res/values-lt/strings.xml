@@ -436,6 +436,8 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Nustatyti „<xliff:g id="APP_NAME">%1$s</xliff:g>“ kaip numatytąją skambintojo ID ir šlamšto programą?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Nereikia jokių leidimų"</string>
     <string name="role_watch_description" msgid="267003778693177779">"„<xliff:g id="APP_NAME">%1$s</xliff:g>“ galės sąveikauti su pranešimų funkcija ir pasiekti telefoną, SMS, kontaktus ir kalendorių."</string>
+    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
+    <skip />
     <string name="request_role_current_default" msgid="738722892438247184">"Dabartinė numatytoji"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Daugiau neklausti"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Nustatyti numatytąja"</string>
