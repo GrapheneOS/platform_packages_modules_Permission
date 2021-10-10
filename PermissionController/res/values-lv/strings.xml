@@ -417,6 +417,8 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Vai vēlaties iestatīt <xliff:g id="APP_NAME">%1$s</xliff:g> kā noklusējuma lietotni zvanītāja ID rādīšanai un nevēlamu zvanu bloķēšanai?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Atļaujas nav nepieciešamas"</string>
     <string name="role_watch_description" msgid="267003778693177779">"Lietotnei <xliff:g id="APP_NAME">%1$s</xliff:g> tiks atļauts mijiedarboties ar jūsu paziņojumiem un piekļūt šādām atļaujām: Tālrunis, Īsziņas, Kontaktpersonas un Kalendārs."</string>
+    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
+    <skip />
     <string name="request_role_current_default" msgid="738722892438247184">"Pašreizējais noklusējums"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Nejautāt atkārtoti"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Iest. kā noklusējumu"</string>

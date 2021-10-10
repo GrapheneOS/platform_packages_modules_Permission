@@ -398,6 +398,8 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Stel <xliff:g id="APP_NAME">%1$s</xliff:g> as jou verstekbeller-ID en -strooiposprogram?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Geen toestemmings is nodig nie"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> sal interaksie met jou kennisgewings mag hê en toegang kry tot jou Foon-, SMS-, Kontakte- en Kalender-toestemmings."</string>
+    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
+    <skip />
     <string name="request_role_current_default" msgid="738722892438247184">"Huidige verstek"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Moenie weer vra nie"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Stel as verstek"</string>

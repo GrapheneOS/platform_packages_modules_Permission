@@ -343,10 +343,10 @@
     <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"上次存取時間：過去 24 小時內 • 所有檔案"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"未授予任何權限"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"未拒絕授予任何權限"</string>
-    <string name="no_apps_allowed" msgid="7718822655254468631">"未授權給任何應用程式"</string>
+    <string name="no_apps_allowed" msgid="7718822655254468631">"未允許任何應用程式"</string>
     <string name="no_apps_allowed_full" msgid="8011716991498934104">"未授予任何應用程式「允許存取所有檔案」的權限"</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"未授予任何應用程式「僅允許存取媒體檔案」的權限"</string>
-    <string name="no_apps_denied" msgid="7663435886986784743">"未拒絕授權給任何應用程式"</string>
+    <string name="no_apps_denied" msgid="7663435886986784743">"未拒絕任何應用程式"</string>
     <string name="car_permission_selected" msgid="180837028920791596">"已選取"</string>
     <string name="settings" msgid="5409109923158713323">"設定"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"「<xliff:g id="SERVICE_NAME">%s</xliff:g>」可完整存取你的裝置"</string>
@@ -398,6 +398,8 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"要將「<xliff:g id="APP_NAME">%1$s</xliff:g>」設為預設的來電顯示與騷擾/廣告電話過濾應用程式嗎？"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"無需任何權限"</string>
     <string name="role_watch_description" msgid="267003778693177779">"「<xliff:g id="APP_NAME">%1$s</xliff:g>」將可存取通知、電話、簡訊、聯絡人和日曆資料。"</string>
+    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
+    <skip />
     <string name="request_role_current_default" msgid="738722892438247184">"目前的預設應用程式"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"不要再詢問"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"設為預設"</string>
