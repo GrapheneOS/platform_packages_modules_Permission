@@ -474,6 +474,8 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"هل تريد ضبط <xliff:g id="APP_NAME">%1$s</xliff:g> باعتباره التطبيق التلقائي لإظهار رقم المتّصل والرسائل غير المرغوب فيها؟"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"لا يجب تقديم أذونات."</string>
     <string name="role_watch_description" msgid="267003778693177779">"سيتم السماح لتطبيق <xliff:g id="APP_NAME">%1$s</xliff:g> بالتفاعل مع الإشعارات والوصول إلى أذونات الهاتف والرسائل القصيرة وجهات الاتصال والتقويم."</string>
+    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
+    <skip />
     <string name="request_role_current_default" msgid="738722892438247184">"التطبيق التلقائي الحالي"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"لا تسألني مرة أخرى."</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"ضبط كتطبيق تلقائي"</string>

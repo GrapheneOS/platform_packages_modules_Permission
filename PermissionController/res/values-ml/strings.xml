@@ -398,6 +398,8 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> എന്നതിനെ നിങ്ങളുടെ ഡിഫോൾട്ട് കോളർ ഐഡി സ്‌പാം ആപ്പായി സജ്ജീകരിക്കണോ?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"അനുമതികൾ ആവശ്യമില്ല"</string>
     <string name="role_watch_description" msgid="267003778693177779">"നിങ്ങളുടെ അറിയിപ്പുകളുമായി സംവദിക്കാനും നിങ്ങളുടെ ഫോൺ, SMS, കോൺടാക്റ്റുകൾ, കലണ്ടർ അനുമതികൾ എന്നിവ ആക്‌സസ് ചെയ്യാനും <xliff:g id="APP_NAME">%1$s</xliff:g> എന്നതിനെ അനുവദിക്കും."</string>
+    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
+    <skip />
     <string name="request_role_current_default" msgid="738722892438247184">"നിലവിലെ ഡിഫോൾട്ട്"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"വീണ്ടും ആവശ്യപ്പെടരുത്"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"ഡിഫോൾട്ടായി സജ്ജമാക്കൂ"</string>

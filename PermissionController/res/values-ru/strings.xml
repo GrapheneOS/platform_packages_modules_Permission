@@ -436,6 +436,8 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Сделать \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" приложением для автоматического определения номеров и защиты от спама по умолчанию?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Разрешения не требуются"</string>
     <string name="role_watch_description" msgid="267003778693177779">"Приложению \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" будет предоставлен доступ к уведомлениям, а также следующие разрешения: телефон, SMS, контакты и календарь."</string>
+    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
+    <skip />
     <string name="request_role_current_default" msgid="738722892438247184">"Используется по умолчанию"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Больше не спрашивать"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"По умолчанию"</string>
