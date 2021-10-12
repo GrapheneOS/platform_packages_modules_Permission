@@ -35,9 +35,9 @@ import java.util.List;
  */
 public class RequiredActivity extends RequiredComponent {
 
-    public RequiredActivity(@NonNull IntentFilterData intentFilterData,
+    public RequiredActivity(@NonNull IntentFilterData intentFilterData, int minTargetSdkVersion,
             @Nullable String permission, int queryFlags) {
-        super(intentFilterData, permission, queryFlags);
+        super(intentFilterData, minTargetSdkVersion, permission, queryFlags);
     }
 
     @NonNull

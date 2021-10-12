@@ -36,8 +36,8 @@ import java.util.List;
 public class RequiredContentProvider extends RequiredComponent {
 
     public RequiredContentProvider(@NonNull IntentFilterData intentFilterData,
-            @Nullable String permission, int queryFlags) {
-        super(intentFilterData, permission, queryFlags);
+            int minTargetSdkVersion, @Nullable String permission, int queryFlags) {
+        super(intentFilterData, minTargetSdkVersion, permission, queryFlags);
     }
 
     @NonNull
