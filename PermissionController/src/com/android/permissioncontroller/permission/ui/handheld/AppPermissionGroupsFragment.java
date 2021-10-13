@@ -24,6 +24,7 @@ import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_
 import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSIONS_FRAGMENT_VIEWED__CATEGORY__DENIED;
 import static com.android.permissioncontroller.hibernation.HibernationPolicyKt.isHibernationEnabled;
 import static com.android.permissioncontroller.permission.ui.handheld.UtilsKt.pressBack;
+import static com.android.permissioncontroller.permission.ui.handheld.dashboard.UtilsKt.is7DayToggleEnabled;
 
 import static java.util.concurrent.TimeUnit.DAYS;
 
@@ -83,8 +84,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
-
-import kotlin.Pair;
 
 /**
  * Show and manage permission groups for an app.
@@ -181,9 +180,12 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
             Context context = getPreferenceManager().getContext();
             mPermissionUsages = new PermissionUsages(context);
 
+            long aggregateDataFilterBeginDays = is7DayToggleEnabled()
+                    ? AppPermissionGroupsViewModel.AGGREGATE_DATA_FILTER_BEGIN_DAYS_7 :
+                    AppPermissionGroupsViewModel.AGGREGATE_DATA_FILTER_BEGIN_DAYS_1;
+
             long filterTimeBeginMillis = Math.max(System.currentTimeMillis()
-                            - DAYS.toMillis(
-                    AppPermissionGroupsViewModel.AGGREGATE_DATA_FILTER_BEGIN_DAYS),
+                            - DAYS.toMillis(aggregateDataFilterBeginDays),
                     Instant.EPOCH.toEpochMilli());
             mPermissionUsages.load(null, null, filterTimeBeginMillis, Long.MAX_VALUE,
                     PermissionUsages.USAGE_FLAG_LAST, getActivity().getLoaderManager(),
@@ -320,11 +322,6 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
 
             for (GroupUiInfo groupInfo : groupMap.get(grantCategory)) {
                 String groupName = groupInfo.getGroupName();
-                Long lastAccessTime = groupUsageLastAccessTime.get(groupName);
-                Pair<String, Integer> summaryTimestamp = Utils
-                        .getPermissionLastAccessSummaryTimestamp(
-                                lastAccessTime, context, groupName);
-                @Utils.AppPermsLastAccessType int lastAccessType = summaryTimestamp.getSecond();
 
                 PermissionControlPreference preference = new PermissionControlPreference(context,
                         mPackageName, groupName, mUser, AppPermissionGroupsFragment.class.getName(),

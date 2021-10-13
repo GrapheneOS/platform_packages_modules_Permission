@@ -52,6 +52,8 @@ public class PermissionUsageGraphicPreference extends Preference {
     /** Whether to show the "Other" category. */
     private boolean mShowOtherCategory;
     private boolean mIsNightMode;
+    /** True if we want to show usage data for the past 7 days; otherwise show for past 24h*/
+    private boolean mShow7Days;
 
     public PermissionUsageGraphicPreference(@NonNull Context context, @Nullable AttributeSet attrs,
             @AttrRes int defStyleAttr, @StyleRes int defStyleRes) {
@@ -69,6 +71,11 @@ public class PermissionUsageGraphicPreference extends Preference {
             @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(context);
+    }
+
+    public PermissionUsageGraphicPreference(@NonNull Context context, boolean show7Days) {
+        this(context);
+        mShow7Days = show7Days;
     }
 
     public PermissionUsageGraphicPreference(@NonNull Context context) {
@@ -114,7 +121,9 @@ public class PermissionUsageGraphicPreference extends Preference {
         // TODO(b/176902658): Fix text appearance.
         TextView centerLabel = new TextView(getContext());
         centerLabel.setTextAlignment(TextView.TEXT_ALIGNMENT_CENTER);
-        centerLabel.setText(getContext().getString(R.string.privdash_label_24h));
+
+        int privdashLabel = mShow7Days ? R.string.privdash_label_7d : R.string.privdash_label_24h;
+        centerLabel.setText(getContext().getString(privdashLabel));
         centerLabel.setTextAppearance(R.style.PrivacyDashboardGraphicLabel);
 
         int colorCameraRes = mIsNightMode ? android.R.color.system_accent1_100 :

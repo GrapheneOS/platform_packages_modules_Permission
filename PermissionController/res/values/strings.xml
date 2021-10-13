@@ -179,10 +179,17 @@
     <!-- Summary of number of apps currently granted a single permission [CHAR LIMIT=45] -->
     <string name="app_permissions_group_summary2"><xliff:g id="count" example="10">%1$d</xliff:g>/<xliff:g id="count" example="10">%2$d</xliff:g> apps allowed</string>
 
-   <!-- [CHAR LIMIT=NONE] Menu for manage permissions to control whether system apps are shown -->
-   <string name="menu_show_system">Show system</string>
-   <!-- [CHAR LIMIT=NONE] Menu for manage permissions to control whether system apps are hidden -->
-   <string name="menu_hide_system">Hide system</string>
+    <!-- [CHAR LIMIT=NONE] Menu for manage permissions to control whether system apps are shown -->
+    <string name="menu_show_system">Show system</string>
+
+    <!-- [CHAR LIMIT=NONE] Menu for manage permissions to control whether system apps are hidden -->
+    <string name="menu_hide_system">Hide system</string>
+
+    <!-- [CHAR LIMIT=NONE] Menu for showing permission usages for the past 7 days in privacy dashboard-->
+    <string name="menu_show_7_days_data">Show 7 days</string>
+
+    <!-- [CHAR LIMIT=NONE] Menu for showing permission usages for the past 24 hours in privacy dashboard-->
+    <string name="menu_show_24_hours_data">Show 24 hours</string>
 
     <!-- FAB text of permission usage fragment [CHAR LIMIT=30] -->
     <string name="manage_permission">Manage permission</string>
@@ -320,8 +327,11 @@
     <!-- Summary for permission usage advanced info for 3 or more items [CHAR LIMIT=60] -->
     <string name="perm_usage_adv_info_summary_more_items"><xliff:g id="permgroup" example="Location">%1$s</xliff:g>,\u0020<xliff:g id="permgroup" example="Location">%2$s</xliff:g>, and\u0020<xliff:g id="num" example="7">%3$s</xliff:g> more</string>
 
-    <!-- Subtitle for permission group usage [CHAR LIMIT=100] -->
-    <string name="permission_group_usage_subtitle">Timeline of when apps used your <xliff:g id="permgroup" example="Location">%1$s</xliff:g> in the past 24 hours</string>
+    <!-- Subtitle for permission group usage for the past 24 hours[CHAR LIMIT=100] -->
+    <string name="permission_group_usage_subtitle_24h">Timeline of when apps used your <xliff:g id="permgroup" example="Location">%1$s</xliff:g> in the past 24 hours</string>
+
+    <!-- Subtitle for permission group usage for the past 7 days [CHAR LIMIT=100] -->
+    <string name="permission_group_usage_subtitle_7d">Timeline of when apps used your <xliff:g id="permgroup" example="Location">%1$s</xliff:g> in the past 7 days</string>
 
     <!-- Subtitle for access time list dialog [CHAR LIMIT=100] -->
     <string name="permission_usage_access_dialog_subtitle">When this app used your <xliff:g id="permgroup" example="Location">%1$s</xliff:g> permission</string>
@@ -453,8 +463,11 @@
         <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> apps</item>
     </plurals>
 
-    <!-- Summary text if a permission usage is not used [CHAR LIMIT=60] -->
-    <string name="permission_usage_preference_summary_not_used">Not used in past 24 hours</string>
+    <!-- Summary text if a permission usage is not used in past 24 hours [CHAR LIMIT=60] -->
+    <string name="permission_usage_preference_summary_not_used_24h">Not used in past 24 hours</string>
+
+    <!-- Summary text if a permission usage is not used in past 7 days [CHAR LIMIT=60] -->
+    <string name="permission_usage_preference_summary_not_used_7d">Not used in past 7 days</string>
 
     <!-- Label for the permission usage preference that shows how many apps have used various permissions [CHAR LIMIT=50] -->
     <plurals name="permission_usage_preference_label">
@@ -873,8 +886,14 @@
     <!-- Summary for showing the last access text for sensor data permissions for yesterday [CHAR LIMIT=70] -->
     <string name="app_perms_24h_access_yest">Last accessed yesterday at <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g></string>
 
+    <!-- Summary for showing the last access text for sensor data permissions for yesterday [CHAR LIMIT=70] -->
+    <string name="app_perms_7d_access">Last accessed <xliff:g id="time_date" example="Jan 3">%1$s</xliff:g> at <xliff:g id="time_date" example="12:42 PM">%2$s</xliff:g></string>
+
     <!-- Summary for showing the last access text for content provider permissions [CHAR LIMIT=70] -->
-    <string name="app_perms_content_provider">Accessed in past 24 hours</string>
+    <string name="app_perms_content_provider_24h">Accessed in past 24 hours</string>
+
+    <!-- Summary for showing the last access text for content provider permissions [CHAR LIMIT=70] -->
+    <string name="app_perms_content_provider_7d">Accessed in past 7 days</string>
 
     <!-- Subtitle for the preference that the permission is currently always granted. [CHAR LIMIT=70] -->
     <string name="app_perms_24h_access_background">Last accessed <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g> \u2022 Allowed all the time</string>
@@ -883,7 +902,13 @@
     <string name="app_perms_24h_access_yest_background">Last accessed yesterday at <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g> \u2022 Allowed all the time</string>
 
     <!-- Subtitle for the preference that the permission is currently always granted. [CHAR LIMIT=70] -->
-    <string name="app_perms_content_provider_background">Accessed in past 24 hours \u2022 Allowed all the time</string>
+    <string name="app_perms_7d_access_background">Last accessed <xliff:g id="time_date" example="Jan 3">%1$s</xliff:g> at <xliff:g id="time_date" example="12:42 PM">%2$s</xliff:g> \u2022 Allowed all the time</string>
+
+    <!-- Subtitle for the preference that the permission is currently always granted. [CHAR LIMIT=70] -->
+    <string name="app_perms_content_provider_24h_background">Accessed in past 24 hours \u2022 Allowed all the time</string>
+
+    <!-- Subtitle for the preference that the permission is currently always granted. [CHAR LIMIT=70] -->
+    <string name="app_perms_content_provider_7d_background">Accessed in past 7 days \u2022 Allowed all the time</string>
 
     <!-- Subtitle for a storage preference that is currently granted for Media files only. [CHAR LIMIT=70] -->
     <string name="app_perms_24h_access_media_only">Last accessed <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g> \u2022 Media</string>
@@ -892,7 +917,13 @@
     <string name="app_perms_24h_access_yest_media_only">Last accessed yesterday at <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g> \u2022 Media</string>
 
     <!-- Subtitle for a storage preference that is currently granted for Media files only. [CHAR LIMIT=70] -->
-    <string name="app_perms_content_provider_media_only">Accessed in past 24 hours \u2022 Media</string>
+    <string name="app_perms_7d_access_media_only">Last accessed <xliff:g id="time_date" example="Jan 3">%1$s</xliff:g> at <xliff:g id="time_date" example="12:42 PM">%2$s</xliff:g> \u2022 Media</string>
+
+    <!-- Subtitle for a storage preference that is currently granted for Media files only. [CHAR LIMIT=70] -->
+    <string name="app_perms_content_provider_24h_media_only">Accessed in past 24 hours \u2022 Media</string>
+
+    <!-- Subtitle for a storage preference that is currently granted for Media files only. [CHAR LIMIT=70] -->
+    <string name="app_perms_content_provider_7d_media_only">Accessed in past 7 days \u2022 Media</string>
 
     <!-- Subtitle for a storage preference that is currently granted for all files. [CHAR LIMIT=70] -->
     <string name="app_perms_24h_access_all_files">Last accessed <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g> \u2022 All Files</string>
@@ -901,7 +932,13 @@
     <string name="app_perms_24h_access_yest_all_files">Last accessed yesterday at <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g> \u2022 All Files</string>
 
     <!-- Subtitle for a storage preference that is currently granted for all files. [CHAR LIMIT=70] -->
-    <string name="app_perms_content_provider_all_files">Accessed in past 24 hours \u2022 All Files</string>
+    <string name="app_perms_7d_access_all_files">Last accessed <xliff:g id="time_date" example="Jan 3">%1$s</xliff:g> at <xliff:g id="time_date" example="12:42 PM">%2$s</xliff:g> \u2022 All Files</string>
+
+    <!-- Subtitle for a storage preference that is currently granted for all files. [CHAR LIMIT=70] -->
+    <string name="app_perms_content_provider_24h_all_files">Accessed in past 24 hours \u2022 All Files</string>
+
+    <!-- Subtitle for a storage preference that is currently granted for all files. [CHAR LIMIT=70] -->
+    <string name="app_perms_content_provider_7d_all_files">Accessed in past 7 days \u2022 All Files</string>
 
     <!-- Label when app has been granted no permissions [CHAR LIMIT=none] -->
     <string name="no_permissions_allowed">No permissions allowed</string>
@@ -1339,9 +1376,10 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="privdash_label_other">Other</string>
     <!-- Permission label for "none" (not anything). [CHAR LIMIT=20] -->
     <string name="privdash_label_none">None</string>
-    <!-- Label that describes a "last 24 hours" time window, prefer two lines. [CHAR LIMIT=20] -->
+    <!-- Label that describes a "past 24 hours" time window, prefer two lines. [CHAR LIMIT=20] -->
     <string name="privdash_label_24h">Past\n24 hours</string>
-
+    <!-- Label that describes a "past 7 days" time window, prefer two lines. [CHAR LIMIT=20] -->
+    <string name="privdash_label_7d">Past\n7 days</string>
 
     <!-- Info label for status bar indicator permissions (Mic and Camera) for apps holding special exempted roles. [CHAR LIMIT=none] -->
     <string name="exempt_mic_camera_info_label"><xliff:g id="app_name" example="Gmail">%1$s</xliff:g> is protected by Android. Because your data is processed on this device, this app’s permission usage isn’t shown on the status bar or your privacy dashboard. </string>

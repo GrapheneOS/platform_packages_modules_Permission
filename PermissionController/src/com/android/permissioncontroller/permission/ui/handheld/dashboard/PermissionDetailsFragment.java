@@ -18,6 +18,7 @@ package com.android.permissioncontroller.permission.ui.handheld.dashboard;
 
 import static com.android.permissioncontroller.Constants.EXTRA_SESSION_ID;
 import static com.android.permissioncontroller.Constants.INVALID_SESSION_ID;
+import static com.android.permissioncontroller.permission.ui.handheld.dashboard.UtilsKt.is7DayToggleEnabled;
 
 import static java.util.concurrent.TimeUnit.DAYS;
 import static java.util.concurrent.TimeUnit.HOURS;
@@ -70,6 +71,8 @@ import com.android.permissioncontroller.permission.utils.Utils;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
+import java.time.Clock;
+import java.time.Instant;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -93,7 +96,9 @@ import kotlin.Triple;
 @RequiresApi(Build.VERSION_CODES.S)
 public class PermissionDetailsFragment extends SettingsWithLargeHeader implements
         PermissionUsages.PermissionsUsagesChangeCallback {
-    public static final int FILTER_24_HOURS = 2;
+    public static final int FILTER_7_DAYS = 1;
+    private static final long TIME_7_DAYS_DURATION = DAYS.toMillis(7);
+    private static final long TIME_24_HOURS_DURATION = DAYS.toMillis(1);
 
     private static final List<String> ALLOW_CLUSTERING_PERMISSION_GROUPS = Arrays.asList(
             permission_group.LOCATION, permission_group.CAMERA, permission_group.MICROPHONE
@@ -110,6 +115,9 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
     private static final String SESSION_ID_KEY = PermissionDetailsFragment.class.getName()
             + KEY_SESSION_ID;
 
+    private static final int MENU_SHOW_7_DAYS_DATA = Menu.FIRST + 4;
+    private static final int MENU_SHOW_24_HOURS_DATA = Menu.FIRST + 5;
+
     private @Nullable String mFilterGroup;
     private @Nullable List<AppPermissionUsage> mAppPermissionUsages = new ArrayList<>();
     private @NonNull List<TimeFilterItem> mFilterTimes;
@@ -119,9 +127,12 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
 
     private boolean mShowSystem;
     private boolean mHasSystemApps;
+    private boolean mShow7Days;
 
     private MenuItem mShowSystemMenu;
     private MenuItem mHideSystemMenu;
+    private MenuItem mShow7DaysDataMenu;
+    private MenuItem mShow24HoursDataMenu;
     private @NonNull RoleManager mRoleManager;
 
     private long mSessionId;
@@ -132,7 +143,7 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
 
         mFinishedInitialLoad = false;
         initializeTimeFilter();
-        mFilterTimeIndex = FILTER_24_HOURS;
+        mFilterTimeIndex = FILTER_7_DAYS;
 
         if (savedInstanceState != null) {
             mShowSystem = savedInstanceState.getBoolean(SHOW_SYSTEM_KEY);
@@ -140,6 +151,8 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
         } else {
             mShowSystem = getArguments().getBoolean(
                     ManagePermissionsActivity.EXTRA_SHOW_SYSTEM, false);
+            mShow7Days = is7DayToggleEnabled() && getArguments().getBoolean(
+                    ManagePermissionsActivity.EXTRA_SHOW_7_DAYS, false);
             mSessionId = getArguments().getLong(EXTRA_SESSION_ID, INVALID_SESSION_ID);
         }
 
@@ -244,6 +257,12 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
                 R.string.menu_show_system);
         mHideSystemMenu = menu.add(Menu.NONE, MENU_HIDE_SYSTEM, Menu.NONE,
                 R.string.menu_hide_system);
+        if (is7DayToggleEnabled()) {
+            mShow7DaysDataMenu = menu.add(Menu.NONE, MENU_SHOW_7_DAYS_DATA, Menu.NONE,
+                    R.string.menu_show_7_days_data);
+            mShow24HoursDataMenu = menu.add(Menu.NONE, MENU_SHOW_24_HOURS_DATA, Menu.NONE,
+                    R.string.menu_show_24_hours_data);
+        }
 
         updateMenu();
     }
@@ -262,18 +281,33 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
             mHideSystemMenu.setVisible(false);
             mHideSystemMenu.setEnabled(false);
         }
+
+        if (mShow7DaysDataMenu != null) {
+            mShow7DaysDataMenu.setVisible(!mShow7Days);
+        }
+
+        if (mShow24HoursDataMenu != null) {
+            mShow24HoursDataMenu.setVisible(mShow7Days);
+        }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
+        int itemId = item.getItemId();
+        switch (itemId) {
             case android.R.id.home:
                 getActivity().finishAfterTransition();
                 return true;
             case MENU_SHOW_SYSTEM:
             case MENU_HIDE_SYSTEM:
-                mShowSystem = item.getItemId() == MENU_SHOW_SYSTEM;
+                mShowSystem = itemId == MENU_SHOW_SYSTEM;
                 // We already loaded all data, so don't reload
+                updateUI();
+                updateMenu();
+                break;
+            case MENU_SHOW_7_DAYS_DATA:
+            case MENU_SHOW_24_HOURS_DATA:
+                mShow7Days = is7DayToggleEnabled() && itemId == MENU_SHOW_7_DAYS_DATA;
                 updateUI();
                 updateMenu();
                 break;
@@ -329,16 +363,21 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
         }
         screen.removeAll();
 
-        final TimeFilterItem timeFilterItem = mFilterTimes.get(mFilterTimeIndex);
         long curTime = System.currentTimeMillis();
-        long startTime = Math.max(timeFilterItem == null ? 0 : (curTime - timeFilterItem.getTime()),
-                0);
+        long showPermissionUsagesDuration = is7DayToggleEnabled() && mShow7Days
+                ? TIME_7_DAYS_DURATION : TIME_24_HOURS_DURATION;
+        long startTime = Math.max(curTime - showPermissionUsagesDuration,
+                Instant.EPOCH.toEpochMilli());
 
         Set<String> exemptedPackages = Utils.getExemptedPackages(mRoleManager);
 
         Preference subtitlePreference = new Preference(context);
+
+        int usageSubtitle = mShow7Days
+                ? R.string.permission_group_usage_subtitle_7d
+                : R.string.permission_group_usage_subtitle_24h;
         subtitlePreference.setSummary(
-                getResources().getString(R.string.permission_group_usage_subtitle,
+                getResources().getString(usageSubtitle,
                         KotlinUtils.INSTANCE.getPermGroupLabel(getActivity(), mFilterGroup)));
         subtitlePreference.setSelectable(false);
         screen.addPreference(subtitlePreference);
@@ -455,17 +494,8 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
         // Truncate to midnight in current timezone.
         final long midnightToday = ZonedDateTime.now().truncatedTo(ChronoUnit.DAYS).toEpochSecond()
                 * 1000L;
-        AppPermissionUsageEntry midnightTodayEntry = new AppPermissionUsageEntry(
-                null, midnightToday, null);
-
-        // Use the placeholder pair midnightTodayPair to get
-        // the index of the first usage entry from yesterday
-        int todayCategoryIndex = 0;
-        int yesterdayCategoryIndex = Collections.binarySearch(usages,
-                midnightTodayEntry, (e1, e2) -> Long.compare(e2.getEndTime(), e1.getEndTime()));
-        if (yesterdayCategoryIndex < 0) {
-            yesterdayCategoryIndex = -1 * (yesterdayCategoryIndex + 1);
-        }
+        final long midnightYesterday = ZonedDateTime.now().minusDays(1).truncatedTo(ChronoUnit.DAYS)
+                .toEpochSecond() * 1000L;
 
         // Make these variables effectively final so that
         // we can use these captured variables in the below lambda expression
@@ -473,24 +503,37 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
                 createDayCategoryPreference(context));
         screen.addPreference(category.get());
         PreferenceScreen finalScreen = screen;
-        int finalYesterdayCategoryIndex = yesterdayCategoryIndex;
 
         new PermissionApps.AppDataLoader(context, () -> {
             final int numUsages = usages.size();
+            boolean hasADateLabel = false;
+            long lastDateLabel = 0L;
             for (int usageNum = 0; usageNum < numUsages; usageNum++) {
                 AppPermissionUsageEntry usage = usages.get(usageNum);
-                if (finalYesterdayCategoryIndex == usageNum) {
-                    if (finalYesterdayCategoryIndex != todayCategoryIndex) {
-                        // We create a new category only when we need it.
-                        // We will not create a new category if we only need one category for
-                        // either today's or yesterday's usage
+                long usageTimestamp = usage.getEndTime();
+                long usageDateLabel = ZonedDateTime.ofInstant(Instant.ofEpochMilli(usageTimestamp),
+                        Clock.systemDefaultZone().getZone())
+                        .truncatedTo(ChronoUnit.DAYS).toEpochSecond() * 1000L;
+                if (!hasADateLabel || usageDateLabel != lastDateLabel) {
+                    if (hasADateLabel) {
                         category.set(createDayCategoryPreference(context));
                         finalScreen.addPreference(category.get());
                     }
-                    category.get().setTitle(R.string.permission_history_category_yesterday);
-                } else if (todayCategoryIndex == usageNum) {
-                    category.get().setTitle(R.string.permission_history_category_today);
+
+                    String formattedDateTitle = DateFormat.getDateFormat(context)
+                            .format(usageDateLabel);
+                    if (usageTimestamp > midnightToday) {
+                        category.get().setTitle(R.string.permission_history_category_today);
+                    } else if (usageTimestamp > midnightYesterday) {
+                        category.get().setTitle(R.string.permission_history_category_yesterday);
+                    } else {
+                        category.get().setTitle(formattedDateTitle);
+                    }
+
+                    hasADateLabel = true;
                 }
+
+                lastDateLabel = usageDateLabel;
 
                 String accessTime = DateFormat.getTimeFormat(context).format(usage.mEndTime);
                 Long durationLong = usage.mClusteredAccessTimeList

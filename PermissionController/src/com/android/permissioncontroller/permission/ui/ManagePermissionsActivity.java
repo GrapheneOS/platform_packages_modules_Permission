@@ -101,6 +101,12 @@ public final class ManagePermissionsActivity extends SettingsActivity {
             + ".permissioncontroller.extra.SHOW_SYSTEM";
 
     /**
+     * Whether to show 7 days permission usage data in UI receiving an intent containing this extra.
+     */
+    public static final String EXTRA_SHOW_7_DAYS = "com.android"
+            + ".permissioncontroller.extra.SHOW_7_DAYS";
+
+    /**
      * The requestCode used when we decide not to use this activity, but instead launch
      * another activity in our place. When that activity finishes, we set it's result
      * as our result and then finish.
@@ -184,8 +190,10 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                         .getStringExtra(Intent.EXTRA_PERMISSION_GROUP_NAME);
                 boolean showSystem = getIntent()
                         .getBooleanExtra(EXTRA_SHOW_SYSTEM, false);
+                boolean show7Days = getIntent()
+                        .getBooleanExtra(EXTRA_SHOW_7_DAYS, false);
                 androidXFragment = PermissionDetailsWrapperFragment
-                        .newInstance(groupName, Long.MAX_VALUE, showSystem, sessionId);
+                        .newInstance(groupName, Long.MAX_VALUE, showSystem, sessionId, show7Days);
                 break;
             }
 

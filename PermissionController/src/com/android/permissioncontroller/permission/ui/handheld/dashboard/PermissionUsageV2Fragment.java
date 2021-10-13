@@ -22,6 +22,7 @@ import static com.android.permissioncontroller.PermissionControllerStatsLog.PERM
 import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__SEE_OTHER_PERMISSIONS_CLICKED;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__SHOW_SYSTEM_CLICKED;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.write;
+import static com.android.permissioncontroller.permission.ui.handheld.dashboard.UtilsKt.is7DayToggleEnabled;
 
 import static java.util.concurrent.TimeUnit.DAYS;
 
@@ -75,10 +76,10 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
         PermissionUsages.PermissionsUsagesChangeCallback {
     private static final String LOG_TAG = "PermUsageV2Fragment";
 
-    private static final int MENU_REFRESH = MENU_HIDE_SYSTEM + 1;
-
     /** TODO(ewol): Use the config setting to determine amount of time to show. */
-    private static final long TIME_FILTER_MILLIS = DAYS.toMillis(1);
+    private static final long TIME_FILTER_MILLIS = DAYS.toMillis(7);
+    private static final long TIME_7_DAYS_DURATION = DAYS.toMillis(7);
+    private static final long TIME_24_HOURS_DURATION = DAYS.toMillis(1);
 
     private static final Map<String, Integer> PERMISSION_GROUP_ORDER = Map.of(
             Manifest.permission_group.LOCATION, 0,
@@ -97,6 +98,10 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
     private static final String SESSION_ID_KEY = PermissionUsageV2Fragment.class.getName()
             + KEY_SESSION_ID;
 
+    private static final int MENU_SHOW_7_DAYS_DATA = Menu.FIRST + 4;
+    private static final int MENU_SHOW_24_HOURS_DATA = Menu.FIRST + 5;
+    private static final int MENU_REFRESH = Menu.FIRST + 6;
+
     private @NonNull PermissionUsages mPermissionUsages;
     private @Nullable List<AppPermissionUsage> mAppPermissionUsages = new ArrayList<>();
 
@@ -104,6 +109,9 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
     private boolean mHasSystemApps;
     private MenuItem mShowSystemMenu;
     private MenuItem mHideSystemMenu;
+    private boolean mShow7Days;
+    private MenuItem mShow7DaysDataMenu;
+    private MenuItem mShow24HoursDataMenu;
     private boolean mOtherExpanded;
 
     private ArrayMap<String, Integer> mGroupAppCounts = new ArrayMap<>();
@@ -131,6 +139,9 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
 
         // By default, do not show system app usages.
         mShowSystem = false;
+
+        // By default, show permission usages for the past 24 hours.
+        mShow7Days = false;
 
         // Start out with 'other' permissions not expanded.
         mOtherExpanded = false;
@@ -228,6 +239,13 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
                     R.string.menu_hide_system);
         }
 
+        if (is7DayToggleEnabled()) {
+            mShow7DaysDataMenu = menu.add(Menu.NONE, MENU_SHOW_7_DAYS_DATA, Menu.NONE,
+                    R.string.menu_show_7_days_data);
+            mShow24HoursDataMenu = menu.add(Menu.NONE, MENU_SHOW_24_HOURS_DATA, Menu.NONE,
+                    R.string.menu_show_24_hours_data);
+        }
+
         HelpUtils.prepareHelpMenuItem(getActivity(), menu, R.string.help_permission_usage,
                 getClass().getName());
         MenuItem refresh = menu.add(Menu.NONE, MENU_REFRESH, Menu.NONE,
@@ -239,7 +257,8 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
+        int itemId = item.getItemId();
+        switch (itemId) {
             case android.R.id.home:
                 getActivity().finishAfterTransition();
                 return true;
@@ -248,8 +267,14 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
                         PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__SHOW_SYSTEM_CLICKED);
                 // fall through
             case MENU_HIDE_SYSTEM:
-                mShowSystem = item.getItemId() == MENU_SHOW_SYSTEM;
+                mShowSystem = itemId == MENU_SHOW_SYSTEM;
                 // We already loaded all data, so don't reload
+                updateUI();
+                updateMenu();
+                break;
+            case MENU_SHOW_7_DAYS_DATA:
+            case MENU_SHOW_24_HOURS_DATA:
+                mShow7Days = is7DayToggleEnabled() && itemId == MENU_SHOW_7_DAYS_DATA;
                 updateUI();
                 updateMenu();
                 break;
@@ -264,6 +289,14 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
         if (mHasSystemApps) {
             mShowSystemMenu.setVisible(!mShowSystem);
             mHideSystemMenu.setVisible(mShowSystem);
+        }
+
+        if (mShow7DaysDataMenu != null) {
+            mShow7DaysDataMenu.setVisible(!mShow7Days);
+        }
+
+        if (mShow24HoursDataMenu != null) {
+            mShow24HoursDataMenu.setVisible(mShow7Days);
         }
     }
 
@@ -314,7 +347,9 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
         });
 
         long curTime = System.currentTimeMillis();
-        long startTime = Math.max(curTime - TIME_FILTER_MILLIS,
+        long showPermissionUsagesDuration = is7DayToggleEnabled() && mShow7Days
+                ? TIME_7_DAYS_DURATION : TIME_24_HOURS_DURATION;
+        long startTime = Math.max(curTime - showPermissionUsagesDuration,
                 Instant.EPOCH.toEpochMilli());
 
         mGroupAppCounts.clear();
@@ -336,7 +371,7 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
             getActivity().invalidateOptionsMenu();
         }
 
-        mGraphic = new PermissionUsageGraphicPreference(context);
+        mGraphic = new PermissionUsageGraphicPreference(context, mShow7Days);
         screen.addPreference(mGraphic);
         mGraphic.setUsages(usages);
 
@@ -474,7 +509,7 @@ public class PermissionUsageV2Fragment extends SettingsWithLargeHeader implement
                 Map.Entry<String, Integer> currentEntry = usages.get(i);
                 PermissionUsageV2ControlPreference permissionUsagePreference =
                         new PermissionUsageV2ControlPreference(context, currentEntry.getKey(),
-                                currentEntry.getValue(), mShowSystem, mSessionId);
+                                currentEntry.getValue(), mShowSystem, mSessionId, mShow7Days);
                 category.addPreference(permissionUsagePreference);
             }
 
