@@ -90,10 +90,11 @@ class PermissionAppsViewModel(
     val hasSystemAppsLiveData = state.getLiveData(HAS_SYSTEM_APPS_KEY, true)
     val showAllowAlwaysStringLiveData = state.getLiveData(SHOW_ALWAYS_ALLOWED, false)
     val categorizedAppsLiveData = CategorizedAppsLiveData(groupName)
+    val sensorLiveData = mutableMapOf<String, SensorStatusLiveData>()
 
     @RequiresApi(Build.VERSION_CODES.S)
     fun getSensorStatusLiveData(): SensorStatusLiveData {
-        return SensorStatusLiveData()
+        return sensorLiveData.getOrPut(groupName) { SensorStatusLiveData() }
     }
 
     fun updateShowSystem(showSystem: Boolean) {
@@ -108,8 +109,6 @@ class PermissionAppsViewModel(
 
     /**
      * A LiveData that tracks the status (blocked or available) of a sensor
-     *
-     * @param permGroupName Permission group name for the sensor
      */
     @RequiresApi(Build.VERSION_CODES.S)
     inner class SensorStatusLiveData() : SmartUpdateMediatorLiveData<Boolean>() {
