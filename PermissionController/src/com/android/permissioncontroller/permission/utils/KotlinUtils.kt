@@ -547,6 +547,7 @@ object KotlinUtils {
         val pkgInfo = group.packageInfo
         val user = UserHandle.getUserHandleForUid(pkgInfo.uid)
         val supportsRuntime = pkgInfo.targetSdkVersion >= Build.VERSION_CODES.M
+                || Utils.isSpecialRuntimePermission(perm.name)
         val isGrantingAllowed = (!pkgInfo.isInstantApp || perm.isInstantPerm) &&
             (supportsRuntime || !perm.isRuntimeOnly)
         // Do not touch permissions fixed by the system, or permissions that cannot be granted
@@ -776,6 +777,7 @@ object KotlinUtils {
         var newFlags = perm.flags
         var isGranted = perm.isGrantedIncludingAppOp
         val supportsRuntime = group.packageInfo.targetSdkVersion >= Build.VERSION_CODES.M
+                || Utils.isSpecialRuntimePermission(perm.name)
         var shouldKill = false
 
         val affectsAppOp = permissionToOp(perm.name) != null || perm.isBackgroundPermission
