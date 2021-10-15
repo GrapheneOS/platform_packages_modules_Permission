@@ -398,8 +398,7 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Pretende definir o <xliff:g id="APP_NAME">%1$s</xliff:g> como a app de identificação de chamadas e spam predefinida?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Não são necessárias autorizações."</string>
     <string name="role_watch_description" msgid="267003778693177779">"A app <xliff:g id="APP_NAME">%1$s</xliff:g> poderá interagir com as suas notificações e aceder às autorizações do Telefone, SMS, Contactos e Calendário."</string>
-    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
-    <skip />
+    <string name="role_app_streaming_description" msgid="7341638576226183992">"A app <xliff:g id="APP_NAME">%1$s</xliff:g> poderá interagir com as suas notificações e fazer stream das suas apps para o dispositivo ligado."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Predefinição atual"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Não perguntar novamente"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Definir como predef."</string>
@@ -502,4 +501,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Últimas\n24 horas"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"A app <xliff:g id="APP_NAME">%1$s</xliff:g> está protegida pelo Android. Uma vez que os seus dados são processados neste dispositivo, a utilização da autorização desta app não é apresentada na barra de estado ou no seu painel de privacidade."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"A app <xliff:g id="APP_NAME">%1$s</xliff:g> está protegida pelo Android. Uma vez que os seus dados são processados neste dispositivo, a utilização da autorização desta app não é apresentada no seu painel de privacidade."</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"O sensor de <xliff:g id="SENSOR_NAME">%1$s</xliff:g> do dispositivo está bloqueado"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"O sensor de <xliff:g id="SENSOR_NAME">%1$s</xliff:g> do dispositivo está desativado"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Para apps e serviços"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Os dados do microfone ainda podem ser partilhados quando ligar para um número de emergência."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Alterar"</string>
 </resources>

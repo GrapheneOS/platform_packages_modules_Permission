@@ -398,8 +398,7 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"გახდეს <xliff:g id="APP_NAME">%1$s</xliff:g> თქვენი ნაგულისხმევი აბონენტის ID და სპამის აპი?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"ნებართვები არ არის საჭირო"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> შეძლებს თქვენს შეტყობინებებთან ინტერაქციას და თქვენი ტელეფონის, SMS-ების, კონტაქტებისა და კალენდრის ნებართვებზე წვდომას."</string>
-    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
-    <skip />
+    <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> შეძლებს თქვენს შეტყობინებებთან ინტერაქციას და თქვენი აპების სტრიმინგს დაკავშირებულ მოწყობილობაზე."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"ამჟამინდელი ნაგულისხმევი"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"აღარ მკითხოთ"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"ნაგულისხმ. დაყენება"</string>
@@ -502,4 +501,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"გასული\n24 საათი"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> დაცულია Android-ის მიერ. ვინაიდან თქვენი მონაცემები მუშავდება ამ მოწყობილობაზე, ამ აპის ნებართვის გამოყენება არ აისახება სტატუსის ზოლში ან კონფიდენციალურობის საინფორმაციო დაფაზე."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> დაცულია Android-ის მიერ. ვინაიდან თქვენი მონაცემები მუშავდება ამ მოწყობილობაზე, ამ აპის ნებართვის გამოყენება არ აისახება კონფიდენციალურობის საინფორმაციო დაფაზე."</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"მოწყობილობის <xliff:g id="SENSOR_NAME">%1$s</xliff:g> დაბლოკილია"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"მოწყობილობის <xliff:g id="SENSOR_NAME">%1$s</xliff:g> გამორთულია"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"აპებისა და სერვისებისთვის"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"მიკროფონის მონაცემები, შესაძლოა, მაინც გაზიარდეს გადაუდებელი დახმარების სამსახურის ნომერზე დარეკვისას."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"შეცვლა"</string>
 </resources>

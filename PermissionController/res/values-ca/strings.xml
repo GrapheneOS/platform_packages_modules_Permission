@@ -398,8 +398,7 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Vols establir <xliff:g id="APP_NAME">%1$s</xliff:g> com a aplicació predeterminada per identificar trucades i filtrar trucades brossa?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"No calen permisos"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> tindrà permís per interaccionar amb les teves notificacions i accedir al telèfon, SMS, contactes i calendari."</string>
-    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
-    <skip />
+    <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> tindrà permís per interaccionar amb les teves notificacions i reproduir en continu les teves aplicacions al dispositiu connectat."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Predeterminada actualment"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"No m\'ho tornis a preguntar"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Estableix com a predeterminada"</string>
@@ -502,4 +501,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"24 darreres\nhores"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"L\'aplicació <xliff:g id="APP_NAME">%1$s</xliff:g> està protegida per Android. Com que les teves dades es tracten en aquest dispositiu, l\'ús del permís d\'aquesta aplicació no es mostra a la barra d\'estat ni al tauler de privadesa."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"L\'aplicació <xliff:g id="APP_NAME">%1$s</xliff:g> està protegida per Android. Com que les teves dades es tracten en aquest dispositiu, l\'ús del permís d\'aquesta aplicació no es mostra al tauler de privadesa."</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"La <xliff:g id="SENSOR_NAME">%1$s</xliff:g> del dispositiu està bloquejada"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"La <xliff:g id="SENSOR_NAME">%1$s</xliff:g> del dispositiu està desactivada"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Per a aplicacions i serveis"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"És possible que les dades del micròfon es continuïn compartint quan truquis a un número d\'emergència."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Canvia"</string>
 </resources>

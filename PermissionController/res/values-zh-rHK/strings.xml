@@ -398,8 +398,7 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"要將「<xliff:g id="APP_NAME">%1$s</xliff:g>」設為預設來電顯示與垃圾郵件應用程式嗎？"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"無需任何權限"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> 將可與您的通知互動，並可存取電話、短訊、聯絡人和日曆。"</string>
-    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
-    <skip />
+    <string name="role_app_streaming_description" msgid="7341638576226183992">"「<xliff:g id="APP_NAME">%1$s</xliff:g>」將可存取通知，並可在已連結的裝置上串流播放應用程式。"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"目前預設"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"不要再詢問"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"設定為預設"</string>
@@ -502,4 +501,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"過去\n24 小時"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> 受 Android 保護。系統會在此裝置上處理您的資料，因此狀態列或私隱資訊主頁不會顯示此應用程式的權限使用情況。"</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> 受 Android 保護。系統會在此裝置上處理您的資料，因此私隱資訊主頁不會顯示此應用程式的權限使用情況。"</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"裝置 <xliff:g id="SENSOR_NAME">%1$s</xliff:g> 已封鎖"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"裝置 <xliff:g id="SENSOR_NAME">%1$s</xliff:g> 已關閉"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"應用程式和服務"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"撥打緊急電話號碼時，系統仍可能會分享麥克風資料。"</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"變更"</string>
 </resources>
