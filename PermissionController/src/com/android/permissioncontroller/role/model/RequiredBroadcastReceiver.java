@@ -36,8 +36,8 @@ import java.util.List;
 public class RequiredBroadcastReceiver extends RequiredComponent {
 
     public RequiredBroadcastReceiver(@NonNull IntentFilterData intentFilterData,
-            @Nullable String permission, int queryFlags) {
-        super(intentFilterData, permission, queryFlags);
+            int minTargetSdkVersion, @Nullable String permission, int queryFlags) {
+        super(intentFilterData, minTargetSdkVersion, permission, queryFlags);
     }
 
     @NonNull

@@ -19,14 +19,18 @@ package com.android.permissioncontroller.role.model;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.os.Build;
 import android.os.Process;
 import android.os.UserHandle;
 import android.util.ArraySet;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.android.modules.utils.build.SdkLevel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +48,13 @@ public abstract class RequiredComponent {
     private final IntentFilterData mIntentFilterData;
 
     /**
+     * The minimum target SDK version for this component to be required.
+     * <p>
+     * This also implies a minimum platform SDK version for this component to be required.
+     */
+    private final int mMinTargetSdkVersion;
+
+    /**
      * Optional permission required on a component for match to succeed.
      *
      * @see android.content.pm.ActivityInfo#permission
@@ -57,9 +68,10 @@ public abstract class RequiredComponent {
      */
     private final int mQueryFlags;
 
-    public RequiredComponent(@NonNull IntentFilterData intentFilterData,
+    public RequiredComponent(@NonNull IntentFilterData intentFilterData, int minTargetSdkVersion,
             @Nullable String permission, int queryFlags) {
         mIntentFilterData = intentFilterData;
+        mMinTargetSdkVersion = minTargetSdkVersion;
         mPermission = permission;
         mQueryFlags = queryFlags;
     }
@@ -67,6 +79,34 @@ public abstract class RequiredComponent {
     @NonNull
     public IntentFilterData getIntentFilterData() {
         return mIntentFilterData;
+    }
+
+    public int getMinTargetSdkVersion() {
+        return mMinTargetSdkVersion;
+    }
+
+    /**
+     * Check whether this required component is available.
+     *
+     * @return whether this required component is available
+     */
+    public boolean isAvailable() {
+        // Workaround to match the value 33+ for T+ in roles.xml before SDK finalization.
+        if (mMinTargetSdkVersion >= 33) {
+            return SdkLevel.isAtLeastT();
+        } else {
+            return Build.VERSION.SDK_INT >= mMinTargetSdkVersion;
+        }
+    }
+
+    /**
+     * Check whether this required component is required for a package.
+     *
+     * @param applicationInfo the {@link ApplicationInfo} for the package
+     * @return whether this required component is required
+     */
+    public boolean isRequired(@NonNull ApplicationInfo applicationInfo) {
+        return isAvailable() && applicationInfo.targetSdkVersion >= mMinTargetSdkVersion;
     }
 
     @Nullable
@@ -182,7 +222,9 @@ public abstract class RequiredComponent {
     public String toString() {
         return "RequiredComponent{"
                 + "mIntentFilterData=" + mIntentFilterData
+                + ", mMinTargetSdkVersion=" + mMinTargetSdkVersion
                 + ", mPermission='" + mPermission + '\''
+                + ", mQueryFlags=" + mQueryFlags
                 + '}';
     }
 
@@ -196,11 +238,13 @@ public abstract class RequiredComponent {
         }
         RequiredComponent that = (RequiredComponent) object;
         return Objects.equals(mIntentFilterData, that.mIntentFilterData)
-                && Objects.equals(mPermission, that.mPermission);
+                && Objects.equals(mMinTargetSdkVersion, that.mMinTargetSdkVersion)
+                && Objects.equals(mPermission, that.mPermission)
+                && mQueryFlags == that.mQueryFlags;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mIntentFilterData, mPermission);
+        return Objects.hash(mIntentFilterData, mMinTargetSdkVersion, mPermission, mQueryFlags);
     }
 }
