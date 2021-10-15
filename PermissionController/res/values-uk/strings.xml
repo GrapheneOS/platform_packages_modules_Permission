@@ -537,4 +537,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Минулі\n24 години"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Додаток <xliff:g id="APP_NAME">%1$s</xliff:g> захищено системою Android. Оскільки ваші дані обробляються на цьому пристрої, інформація про те, як додаток використовує дозволи, не відображається на відповідній панелі керування чи в рядку стану."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Додаток <xliff:g id="APP_NAME">%1$s</xliff:g> захищено системою Android. Оскільки ваші дані обробляються на цьому пристрої, інформація про те, як додаток використовує дозволи, не відображається на відповідній панелі керування."</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"<xliff:g id="SENSOR_NAME">%1$s</xliff:g> пристрою: заблоковано"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"<xliff:g id="SENSOR_NAME">%1$s</xliff:g> пристрою: вимкнено"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Для додатків і сервісів"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Дані мікрофона можуть усе одно передаватися під час виклику екстреного номера."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Змінити"</string>
 </resources>

@@ -499,4 +499,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Ötən\n24 saat"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> Android tərəfindən qorunur. Məlumatlarınız bu cihazda işləndiyinə görə bu tətbiqin icazə istifadəsi status panelində və ya məxfilik panelinizdə göstərilmir."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> Android tərəfindən qorunur. Məlumatlarınız bu cihazda işləndiyinə görə bu tətbiqin icazə istifadəsi məxfilik panelində göstərilmir."</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"Cihazın <xliff:g id="SENSOR_NAME">%1$s</xliff:g> funksiyası bloklanıb"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"Cihazın <xliff:g id="SENSOR_NAME">%1$s</xliff:g> funksiyası deaktivdir"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Tətbiqlər və xidmətlər üçün"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Fövqəladə hallar nömrəsinə zəng etdiyiniz zaman mikrofon datası yenə də paylaşıla bilər."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Dəyişin"</string>
 </resources>

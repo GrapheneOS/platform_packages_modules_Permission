@@ -499,4 +499,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Emahoreni angama-\n24 adlule"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"I-<xliff:g id="APP_NAME">%1$s</xliff:g> ivikelwe i-Android. Ngenxa yokuthi idatha yakho icutshungulwa kule divayisi, ukusetshenziswa kwemvume yale app akuboniswa kubha yesimo noma kudeshibhodi yakho yobumfihlo"</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"I-<xliff:g id="APP_NAME">%1$s</xliff:g> ivikelwe i-Android. Ngenxa yokuthi idatha yakho icutshungulwa kule divayisi, ukusetshenziswa kwemvume yale app akuboniswa kudeshibhodi yakho yobumfihlo"</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"Idivayisi ye-<xliff:g id="SENSOR_NAME">%1$s</xliff:g> ivinjelwe"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"Idivayisi ye-<xliff:g id="SENSOR_NAME">%1$s</xliff:g> ivaliwe"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Okwama-app namasevisi"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Idatha yemakrofoni isengabiwa lapho wenza ikholi yenombolo yezimo eziphuthumayo"</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Shintsha"</string>
 </resources>

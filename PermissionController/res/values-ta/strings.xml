@@ -295,7 +295,7 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> பயன்படுத்தாத ஆப்ஸ்</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> பயன்படுத்தாத ஆப்ஸ்</item>
     </plurals>
-    <string name="unused_apps_notification_content" msgid="9195026773244581246">"அனுமதிகளும் தற்காலிகக் கோப்புகளும் அகற்றப்பட்டன, அறிவிப்புகள் நிறுத்தப்பட்டன. பார்க்கத் தட்டவும்."</string>
+    <string name="unused_apps_notification_content" msgid="9195026773244581246">"அனுமதிகளும் தற்காலிக ஃபைல்களும் அகற்றப்பட்டன, அறிவிப்புகள் நிறுத்தப்பட்டன. பார்க்கத் தட்டவும்."</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"கடந்த சில மாதங்களாக சில ஆப்ஸ் பயன்படுத்தப்படவில்லை"</string>
     <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
       <item quantity="other">கடந்த சில மாதங்களாக <xliff:g id="COUNT_1">%1$d</xliff:g> ஆப்ஸ் பயன்படுத்தப்படவில்லை</item>
@@ -499,4 +499,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"கடந்த\n24 மணிநேரம்"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> ஆப்ஸ் Android மூலம் பாதுகாக்கப்படுகிறது. இந்தச் சாதனத்தில் உங்கள் தரவு செயலாக்கப்படுவதால் நிலைப் பட்டியிலோ தனியுரிமை டாஷ்போர்டிலோ இந்த ஆப்ஸின் அனுமதி உபயோகம் காட்டப்படவில்லை."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> ஆப்ஸ் Android மூலம் பாதுகாக்கப்படுகிறது. இந்தச் சாதனத்தில் உங்கள் தரவு செயலாக்கப்படுவதால் தனியுரிமை டாஷ்போர்டில் இந்த ஆப்ஸின் அனுமதி உபயோகம் காட்டப்படவில்லை."</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"சாதனத்தின் <xliff:g id="SENSOR_NAME">%1$s</xliff:g> தடுக்கப்பட்டுள்ளது"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"சாதனத்தின் <xliff:g id="SENSOR_NAME">%1$s</xliff:g> முடக்கப்பட்டுள்ளது"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"ஆப்ஸ் &amp; சேவைகளுக்கு"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"எனினும் அவசர உதவி எண்ணைத் தொடர்பு கொள்ளும்போது மைக்ரோஃபோன் தரவு பகிரப்படலாம்."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"மாற்று"</string>
 </resources>

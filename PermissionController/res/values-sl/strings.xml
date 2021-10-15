@@ -537,4 +537,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"V zadnjih\n24 urah"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Varnost aplikacije <xliff:g id="APP_NAME">%1$s</xliff:g> zagotavlja Android. Ker obdelava podatkov poteka v tej napravi, uporaba dovoljenj za to aplikacijo ni prikazana v vrstici stanja ali na nadzorni plošči za zasebnost."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Varnost aplikacije <xliff:g id="APP_NAME">%1$s</xliff:g> zagotavlja Android. Ker obdelava podatkov poteka v tej napravi, uporaba dovoljenj za to aplikacijo ni prikazana na nadzorni plošči za zasebnost."</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"Dovoljenje »<xliff:g id="SENSOR_NAME">%1$s</xliff:g>« je za napravo blokirano"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"Dovoljenje »<xliff:g id="SENSOR_NAME">%1$s</xliff:g>« je za napravo izklopljeno"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Za aplikacije in storitve"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Podatki mikrofona bodo morda še vedno deljeni, ko pokličete številko za klic v sili."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Spremeni"</string>
 </resources>

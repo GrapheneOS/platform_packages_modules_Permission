@@ -499,4 +499,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Последните\n24 часа"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Приложението <xliff:g id="APP_NAME">%1$s</xliff:g> е защитено от Android. Тъй като данните ви се обработват на това устройство, използването на разрешенията на приложението не се показва в лентата на състоянието, нито в таблото ви за управление на поверителността."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Приложението <xliff:g id="APP_NAME">%1$s</xliff:g> е защитено от Android. Тъй като данните ви се обработват на това устройство, използването на разрешенията на приложението не се показва в таблото ви за управление на поверителността."</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"Функцията за <xliff:g id="SENSOR_NAME">%1$s</xliff:g> на устройството е блокирана"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"Функцията за <xliff:g id="SENSOR_NAME">%1$s</xliff:g> на устройството е изключена"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"За приложения и услуги"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Данните от микрофона пак могат да се споделят, когато се обадите на номер за спешни случаи."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Промяна"</string>
 </resources>
