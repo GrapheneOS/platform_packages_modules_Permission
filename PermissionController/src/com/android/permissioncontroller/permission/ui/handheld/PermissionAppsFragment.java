@@ -233,12 +233,13 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
         }
     }
 
-
+    @RequiresApi(Build.VERSION_CODES.S)
     private void setSensorStatus(Boolean sensorStatus) {
         mSensorStatus = sensorStatus;
         displaySensorCard();
     }
 
+    @RequiresApi(Build.VERSION_CODES.S)
     private void displaySensorCard() {
         if (Utils.shouldDisplayCardIfBlocked(mPermGroupName)) {
             if (mSensorStatus) {
@@ -249,7 +250,7 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
         }
     }
 
-
+    @RequiresApi(Build.VERSION_CODES.S)
     private void setSensorCard() {
         CardViewPreference sensorCard = findPreference(BLOCKED_SENSOR_PREF_KEY);
         if (sensorCard == null) {
@@ -259,6 +260,7 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
         sensorCard.setVisible(true);
     }
 
+    @RequiresApi(Build.VERSION_CODES.S)
     private CardViewPreference createSensorCard() {
         String label = KotlinUtils.INSTANCE.getPermGroupLabel(getPreferenceManager().getContext(),
                 mPermGroupName).toString().toLowerCase(
@@ -282,13 +284,13 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
         return sensorCard;
     }
 
+    @RequiresApi(Build.VERSION_CODES.S)
     private void removeSensorCard() {
         CardViewPreference sensorCard = findPreference(BLOCKED_SENSOR_PREF_KEY);
         if (sensorCard != null) {
             sensorCard.setVisible(false);
         }
     }
-
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
