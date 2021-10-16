@@ -30,6 +30,7 @@ import android.os.Process;
 import android.os.UserHandle;
 import android.text.TextUtils;
 import android.util.ArrayMap;
+import android.util.ArraySet;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -619,7 +620,12 @@ public class Role {
             return true;
         }
 
-        if (!isPackageMinimallyQualifiedAsUser(packageName, Process.myUserHandle(), context)) {
+        ApplicationInfo applicationInfo = PackageUtils.getApplicationInfo(packageName, context);
+        if (applicationInfo == null) {
+            Log.w(LOG_TAG, "Cannot get ApplicationInfo for package: " + packageName);
+            return false;
+        }
+        if (!isPackageMinimallyQualifiedAsUser(applicationInfo, Process.myUserHandle(), context)) {
             return false;
         }
 
@@ -633,6 +639,11 @@ public class Role {
         int requiredComponentsSize = mRequiredComponents.size();
         for (int i = 0; i < requiredComponentsSize; i++) {
             RequiredComponent requiredComponent = mRequiredComponents.get(i);
+
+            if (!requiredComponent.isRequired(applicationInfo)) {
+                continue;
+            }
+
             if (requiredComponent.getQualifyingComponentForPackage(packageName, context) == null) {
                 Log.i(LOG_TAG, packageName + " not qualified for " + mName
                         + " due to missing " + requiredComponent);
@@ -665,13 +676,19 @@ public class Role {
             qualifyingPackages = mBehavior.getQualifyingPackagesAsUser(this, user, context);
         }
 
+        ArrayMap<String, ApplicationInfo> packageApplicationInfoMap = new ArrayMap<>();
         if (qualifyingPackages == null) {
-            ArrayMap<String, Integer> packageComponentCountMap = new ArrayMap<>();
+            ArrayMap<String, ArraySet<RequiredComponent>> packageRequiredComponentsMap =
+                    new ArrayMap<>();
             int requiredComponentsSize = mRequiredComponents.size();
             for (int requiredComponentsIndex = 0; requiredComponentsIndex < requiredComponentsSize;
                     requiredComponentsIndex++) {
                 RequiredComponent requiredComponent = mRequiredComponents.get(
                         requiredComponentsIndex);
+
+                if (!requiredComponent.isAvailable()) {
+                    continue;
+                }
 
                 // This returns at most one component per package.
                 List<ComponentName> qualifyingComponents =
@@ -684,22 +701,58 @@ public class Role {
                             qualifyingComponentsIndex);
 
                     String packageName = componentName.getPackageName();
-                    Integer componentCount = packageComponentCountMap.get(packageName);
-                    packageComponentCountMap.put(packageName, componentCount == null ? 1
-                            : componentCount + 1);
+                    ArraySet<RequiredComponent> packageRequiredComponents =
+                            packageRequiredComponentsMap.get(packageName);
+                    if (packageRequiredComponents == null) {
+                        packageRequiredComponents = new ArraySet<>();
+                        packageRequiredComponentsMap.put(packageName, packageRequiredComponents);
+                    }
+                    packageRequiredComponents.add(requiredComponent);
                 }
             }
 
             qualifyingPackages = new ArrayList<>();
-            int packageComponentCountMapSize = packageComponentCountMap.size();
-            for (int i = 0; i < packageComponentCountMapSize; i++) {
-                int componentCount = packageComponentCountMap.valueAt(i);
+            int packageRequiredComponentsMapSize = packageRequiredComponentsMap.size();
+            for (int packageRequiredComponentsMapIndex = 0;
+                    packageRequiredComponentsMapIndex < packageRequiredComponentsMapSize;
+                    packageRequiredComponentsMapIndex++) {
+                String packageName = packageRequiredComponentsMap.keyAt(
+                        packageRequiredComponentsMapIndex);
+                ArraySet<RequiredComponent> packageRequiredComponents =
+                        packageRequiredComponentsMap.valueAt(packageRequiredComponentsMapIndex);
 
-                if (componentCount != requiredComponentsSize) {
-                    continue;
+                ApplicationInfo applicationInfo = packageApplicationInfoMap.get(packageName);
+                if (applicationInfo == null) {
+                    applicationInfo = PackageUtils.getApplicationInfoAsUser(packageName, user,
+                            context);
+                    if (applicationInfo == null) {
+                        Log.w(LOG_TAG, "Cannot get ApplicationInfo for package: " + packageName
+                                + ", user: " + user.getIdentifier());
+                        continue;
+                    }
+                    packageApplicationInfoMap.put(packageName, applicationInfo);
                 }
-                String packageName = packageComponentCountMap.keyAt(i);
-                qualifyingPackages.add(packageName);
+
+                boolean hasAllRequiredComponents = true;
+                for (int requiredComponentsIndex = 0;
+                        requiredComponentsIndex < requiredComponentsSize;
+                        requiredComponentsIndex++) {
+                    RequiredComponent requiredComponent = mRequiredComponents.get(
+                            requiredComponentsIndex);
+
+                    if (!requiredComponent.isRequired(applicationInfo)) {
+                        continue;
+                    }
+
+                    if (!packageRequiredComponents.contains(requiredComponent)) {
+                        hasAllRequiredComponents = false;
+                        break;
+                    }
+                }
+
+                if (hasAllRequiredComponents) {
+                    qualifyingPackages.add(packageName);
+                }
             }
         }
 
@@ -707,7 +760,19 @@ public class Role {
         for (int i = 0; i < qualifyingPackagesSize; ) {
             String packageName = qualifyingPackages.get(i);
 
-            if (!isPackageMinimallyQualifiedAsUser(packageName, user, context)) {
+            ApplicationInfo applicationInfo = packageApplicationInfoMap.get(packageName);
+            if (applicationInfo == null) {
+                applicationInfo = PackageUtils.getApplicationInfoAsUser(packageName, user,
+                        context);
+                if (applicationInfo == null) {
+                    Log.w(LOG_TAG, "Cannot get ApplicationInfo for package: " + packageName
+                            + ", user: " + user.getIdentifier());
+                    continue;
+                }
+                packageApplicationInfoMap.put(packageName, applicationInfo);
+            }
+
+            if (!isPackageMinimallyQualifiedAsUser(applicationInfo, user, context)) {
                 qualifyingPackages.remove(i);
                 qualifyingPackagesSize--;
             } else {
@@ -718,17 +783,11 @@ public class Role {
         return qualifyingPackages;
     }
 
-    private boolean isPackageMinimallyQualifiedAsUser(
-            @NonNull String packageName, @NonNull UserHandle user, @NonNull Context context) {
+    private boolean isPackageMinimallyQualifiedAsUser(@NonNull ApplicationInfo applicationInfo,
+                                                      @NonNull UserHandle user,
+                                                      @NonNull Context context) {
+        String packageName = applicationInfo.packageName;
         if (Objects.equals(packageName, PACKAGE_NAME_ANDROID_SYSTEM)) {
-            return false;
-        }
-
-        ApplicationInfo applicationInfo = PackageUtils.getApplicationInfoAsUser(packageName, user,
-                context);
-        if (applicationInfo == null) {
-            Log.w(LOG_TAG, "Cannot get ApplicationInfo for package: " + packageName + ", user: "
-                    + user.getIdentifier());
             return false;
         }
 
