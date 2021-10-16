@@ -35,9 +35,9 @@ import java.util.List;
  */
 public class RequiredService extends RequiredComponent {
 
-    public RequiredService(@NonNull IntentFilterData intentFilterData,
+    public RequiredService(@NonNull IntentFilterData intentFilterData, int minTargetSdkVersion,
             @Nullable String permission, int queryFlags) {
-        super(intentFilterData, permission, queryFlags);
+        super(intentFilterData, minTargetSdkVersion, permission, queryFlags);
     }
 
     @NonNull

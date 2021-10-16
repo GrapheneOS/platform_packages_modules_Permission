@@ -91,6 +91,7 @@ public class RoleParser {
     private static final String ATTRIBUTE_STATIC = "static";
     private static final String ATTRIBUTE_SYSTEM_ONLY = "systemOnly";
     private static final String ATTRIBUTE_VISIBLE = "visible";
+    private static final String ATTRIBUTE_MIN_TARGET_SDK_VERSION = "minTargetSdkVersion";
     private static final String ATTRIBUTE_PERMISSION = "permission";
     private static final String ATTRIBUTE_SCHEME = "scheme";
     private static final String ATTRIBUTE_MIME_TYPE = "mimeType";
@@ -521,6 +522,8 @@ public class RoleParser {
     @Nullable
     private RequiredComponent parseRequiredComponent(@NonNull XmlResourceParser parser,
             @NonNull String name) throws IOException, XmlPullParserException {
+        int minTargetSdkVersion = getAttributeIntValue(parser, ATTRIBUTE_MIN_TARGET_SDK_VERSION,
+                Build.VERSION_CODES.BASE);
         String permission = getAttributeValue(parser, ATTRIBUTE_PERMISSION);
         int queryFlags = getAttributeIntValue(parser, ATTRIBUTE_QUERY_FLAGS, 0);
         IntentFilterData intentFilterData = null;
@@ -556,13 +559,17 @@ public class RoleParser {
         }
         switch (name) {
             case TAG_ACTIVITY:
-                return new RequiredActivity(intentFilterData, permission, queryFlags);
+                return new RequiredActivity(intentFilterData, minTargetSdkVersion, permission,
+                        queryFlags);
             case TAG_PROVIDER:
-                return new RequiredContentProvider(intentFilterData, permission, queryFlags);
+                return new RequiredContentProvider(intentFilterData, minTargetSdkVersion,
+                        permission, queryFlags);
             case TAG_RECEIVER:
-                return new RequiredBroadcastReceiver(intentFilterData, permission, queryFlags);
+                return new RequiredBroadcastReceiver(intentFilterData, minTargetSdkVersion,
+                        permission, queryFlags);
             case TAG_SERVICE:
-                return new RequiredService(intentFilterData, permission, queryFlags);
+                return new RequiredService(intentFilterData, minTargetSdkVersion, permission,
+                        queryFlags);
             default:
                 throwOrLogMessage("Unknown tag <" + name + ">");
                 return null;
