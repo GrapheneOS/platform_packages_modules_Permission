@@ -106,15 +106,19 @@
                  android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <activity android:name="com.android.permissioncontroller.permission.ui.GrantPermissionsActivity"
-                android:configChanges="keyboardHidden|screenSize"
-                android:excludeFromRecents="true"
-                android:exported="true"
-                android:theme="@style/GrantPermissions.FilterTouches"
-                android:visibleToInstantApps="true"
-                android:inheritShowWhenLocked="true"
-                android:hardwareAccelerated="false">
+                  android:configChanges="keyboardHidden|screenSize"
+                  android:excludeFromRecents="true"
+                  android:exported="true"
+                  android:theme="@style/GrantPermissions.FilterTouches"
+                  android:visibleToInstantApps="true"
+                  android:inheritShowWhenLocked="true"
+                  android:hardwareAccelerated="false">
             <intent-filter android:priority="1">
                 <action android:name="android.content.pm.action.REQUEST_PERMISSIONS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter android:priority="1">
+                <action android:name="android.content.pm.action.REQUEST_PERMISSIONS_FOR_OTHER" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

@@ -922,6 +922,9 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
                         permission.setUserSet(false);
                     }
                 }
+                if (permission.isReviewRequired()) {
+                    permission.unsetReviewRequired();
+                }
             } else {
                 // Legacy apps cannot have a not granted permission but just in case.
                 if (!permission.isGranted()) {
