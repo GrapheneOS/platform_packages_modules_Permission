@@ -398,8 +398,7 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> എന്നതിനെ നിങ്ങളുടെ ഡിഫോൾട്ട് കോളർ ഐഡി സ്‌പാം ആപ്പായി സജ്ജീകരിക്കണോ?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"അനുമതികൾ ആവശ്യമില്ല"</string>
     <string name="role_watch_description" msgid="267003778693177779">"നിങ്ങളുടെ അറിയിപ്പുകളുമായി സംവദിക്കാനും നിങ്ങളുടെ ഫോൺ, SMS, കോൺടാക്റ്റുകൾ, കലണ്ടർ അനുമതികൾ എന്നിവ ആക്‌സസ് ചെയ്യാനും <xliff:g id="APP_NAME">%1$s</xliff:g> എന്നതിനെ അനുവദിക്കും."</string>
-    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
-    <skip />
+    <string name="role_app_streaming_description" msgid="7341638576226183992">"നിങ്ങളുടെ അറിയിപ്പുകളുമായി സംവദിക്കാനും കണക്‌റ്റ് ചെയ്‌ത ഉപകരണത്തിലേക്ക് നിങ്ങളുടെ ആപ്പുകൾ സ്ട്രീം ചെയ്യാനും <xliff:g id="APP_NAME">%1$s</xliff:g> ആപ്പിനെ അനുവദിക്കും."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"നിലവിലെ ഡിഫോൾട്ട്"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"വീണ്ടും ആവശ്യപ്പെടരുത്"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"ഡിഫോൾട്ടായി സജ്ജമാക്കൂ"</string>
@@ -502,4 +501,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"കഴിഞ്ഞ\n24 മണിക്കൂർ"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> ആപ്പിനെ Android പരിരക്ഷിക്കുന്നു. നിങ്ങളുടെ ഡാറ്റ ഈ ഉപകരണത്തിൽ പ്രോസസ് ചെയ്യുന്നതിനാൽ, ഈ ആപ്പിന്റെ അനുമതി ഉപയോഗം നിങ്ങളുടെ സ്വകാര്യതാ ഡാഷ്ബോർഡിലെ സ്റ്റാറ്റസ് ബാറിൽ കാണിക്കില്ല."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> ആപ്പിനെ Android പരിരക്ഷിക്കുന്നു. നിങ്ങളുടെ ഡാറ്റ ഈ ഉപകരണത്തിൽ പ്രോസസ് ചെയ്യുന്നതിനാൽ ഈ ആപ്പിന്റെ അനുമതി ഉപയോഗം നിങ്ങളുടെ സ്വകാര്യതാ ഡാഷ്ബോർഡിൽ കാണിക്കില്ല."</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"ഉപകരണത്തിന്റെ <xliff:g id="SENSOR_NAME">%1$s</xliff:g> ബ്ലോക്ക് ചെയ്‌തിരിക്കുന്നു"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"ഉപകരണത്തിന്റെ <xliff:g id="SENSOR_NAME">%1$s</xliff:g> ഓഫാണ്"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"ആപ്പുകൾക്കും സേവനങ്ങൾക്കും"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"നിങ്ങൾ ഒരു അടിയന്തര നമ്പറിലേക്ക് കോൾ ചെയ്യുമ്പോൾ തുടർന്നും മൈക്രോഫോൺ ഡാറ്റ പങ്കിട്ടേക്കാം."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"മാറ്റുക"</string>
 </resources>

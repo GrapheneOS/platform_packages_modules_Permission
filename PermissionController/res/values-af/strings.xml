@@ -398,8 +398,7 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Stel <xliff:g id="APP_NAME">%1$s</xliff:g> as jou verstekbeller-ID en -strooiposprogram?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Geen toestemmings is nodig nie"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> sal interaksie met jou kennisgewings mag hê en toegang kry tot jou Foon-, SMS-, Kontakte- en Kalender-toestemmings."</string>
-    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
-    <skip />
+    <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> sal toegelaat word om interaksie met jou kennisgewings te hê en jou programme na die gekoppelde toestel te stroom."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Huidige verstek"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Moenie weer vra nie"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Stel as verstek"</string>
@@ -502,4 +501,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Afgelope\n24 uur"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> word deur Android beskerm. Hierdie program se toestemminggebruik word nie op die statusbalk of jou privaatheidkontroleskerm gewys nie omdat jou data op hierdie toestel verwerk word."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> word deur Android beskerm. Hierdie program se toestemminggebruik word nie op jou privaatheidkontroleskerm gewys nie omdat jou data op hierdie toestel verwerk word."</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"Toestel <xliff:g id="SENSOR_NAME">%1$s</xliff:g> is geblokkeer"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"Toestel <xliff:g id="SENSOR_NAME">%1$s</xliff:g> is af"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Vir programme en dienste"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Mikrofoondata kan steeds gedeel word wanneer jy \'n noodnommer bel."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Verander"</string>
 </resources>

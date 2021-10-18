@@ -398,8 +398,7 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> ကို သင့်မူရင်း ခေါ်ဆိုသူ ID နှင့် စပမ်းအက်ပ်အဖြစ် သတ်မှတ်လိုပါသလား။"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"ခွင့်ပြုချက် မလိုပါ"</string>
     <string name="role_watch_description" msgid="267003778693177779">"သင်၏ ‘ဖုန်း’၊ ‘SMS စာတိုစနစ်’၊ ‘အဆက်အသွယ်များ’ နှင့် ‘ပြက္ခဒိန်’ ခွင့်ပြုချက်များကို သုံးရန်နှင့် အကြောင်းကြားချက်များကို ပြန်လှန်တုံ့ပြန်ရန် <xliff:g id="APP_NAME">%1$s</xliff:g> ကို ခွင့်ပြုပါမည်။"</string>
-    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
-    <skip />
+    <string name="role_app_streaming_description" msgid="7341638576226183992">"သင့်အကြောင်းကြားချက်များကို ပြန်လှန်တုံ့ပြန်ရန်နှင့် သင့်အက်ပ်များကို ချိတ်ဆက်ထားသောစက်သို့ တိုက်ရိုက်လွှင့်ရန် <xliff:g id="APP_NAME">%1$s</xliff:g> ကို ခွင့်ပြုပါမည်။"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"လက်ရှိ မူရင်း"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"ထပ်မမေးပါနှင့်"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"မူရင်း သတ်မှတ်ရန်"</string>
@@ -502,4 +501,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"ပြီးခဲ့သော\n၂၄ နာရီ"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> ကို Android က ကာကွယ်ပေးထားသည်။ သင့်ဒေတာကို ဤစက်ပစ္စည်းပေါ်တွင် စီမံနေခြင်းကြောင့် ဤအက်ပ်၏ ခွင့်ပြုချက်အသုံးပြုမှုကို သင့်ကိုယ်ရေးအချက်အလက် လုံခြုံမှု ဒက်ရှ်ဘုတ်ပေါ်တွင် ပြသမထားပါ။"</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> ကို Android က ကာကွယ်ပေးထားသည်။ သင့်ဒေတာကို ဤစက်ပစ္စည်းပေါ်တွင် စီမံနေခြင်းကြောင့် ဤအက်ပ်၏ ခွင့်ပြုချက်အသုံးပြုမှုကို သင့်ကိုယ်ရေးအချက်အလက် လုံခြုံမှု ဒက်ရှ်ဘုတ်ပေါ်တွင် ပြသမထားပါ။"</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"စက် <xliff:g id="SENSOR_NAME">%1$s</xliff:g> ပိတ်ပင်ထားသည်"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"စက် <xliff:g id="SENSOR_NAME">%1$s</xliff:g> ပိတ်ထားသည်"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"အက်ပ်နှင့် ဝန်ဆောင်မှုများအတွက်"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"အရေးပေါ် နံပါတ်ကို သင်ခေါ်ဆိုချိန်တွင် မိုက်ခရိုဖုန်းဒေတာကို မျှဝေနိုင်သေးသည်။"</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"ပြောင်းရန်"</string>
 </resources>
