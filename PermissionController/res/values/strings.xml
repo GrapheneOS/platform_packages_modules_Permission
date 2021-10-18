@@ -2049,4 +2049,7 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
 
     <!-- Text asking the user if they want to retry connecting to the paired phone -->
     <string name="wear_phone_connection_should_retry">Retry?</string>
+
+    <!-- Summary text if tracking permission usage is not supported [CHAR LIMIT=60] -->
+    <string name="permission_usage_preference_summary_not_supported">Tracking usage not yet supported</string>
 </resources>
