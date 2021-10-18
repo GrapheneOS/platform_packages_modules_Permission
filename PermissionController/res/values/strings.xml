@@ -450,6 +450,9 @@
         <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> apps</item>
     </plurals>
 
+    <!-- Summary text if tracking permission usage is not supported [CHAR LIMIT=60] -->
+    <string name="permission_usage_preference_summary_not_supported">Tracking usage not yet supported</string>
+
     <!-- Summary text if a permission usage is not used [CHAR LIMIT=60] -->
     <string name="permission_usage_preference_summary_not_used">Not used in past 24 hours</string>
 
