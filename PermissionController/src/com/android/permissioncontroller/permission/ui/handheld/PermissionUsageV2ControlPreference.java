@@ -81,7 +81,11 @@ public class PermissionUsageV2ControlPreference extends Preference {
 
         if (mCount == 0) {
             this.setEnabled(false);
-            setSummary(R.string.permission_usage_preference_summary_not_used);
+            if (groupName.equals(Manifest.permission_group.NETWORK) || groupName.equals(Manifest.permission_group.OTHER_SENSORS)) {
+                setSummary(R.string.permission_usage_preference_summary_not_supported);
+            } else {
+                setSummary(R.string.permission_usage_preference_summary_not_used);
+            }
         } else if (SENSOR_DATA_PERMISSIONS.contains(groupName)) {
             setOnPreferenceClickListener((preference) -> {
                 Intent intent = new Intent(Intent.ACTION_REVIEW_PERMISSION_HISTORY);
