@@ -1850,4 +1850,7 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="safety_label_changes_gear_description">Settings</string>
 
     <!-- Safety Label Change Notifications End -->
+
+    <!-- Summary text if tracking permission usage is not supported [CHAR LIMIT=60] -->
+    <string name="permission_usage_preference_summary_not_supported">Tracking usage not yet supported</string>
 </resources>
