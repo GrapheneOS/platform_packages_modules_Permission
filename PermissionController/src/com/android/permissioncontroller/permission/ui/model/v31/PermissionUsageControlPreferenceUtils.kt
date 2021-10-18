@@ -60,7 +60,12 @@ object PermissionUsageControlPreferenceUtils {
                 R.string.permission_usage_preference_label, count)
             if (count == 0) {
                 isEnabled = false
-                val permissionUsageSummaryNotUsed = if (show7Days) {
+                val permissionUsageSummaryNotUsed = if (
+                        groupName == Manifest.permission_group.NETWORK
+                        || groupName == Manifest.permission_group.OTHER_SENSORS)
+                {
+                    context.getString(R.string.permission_usage_preference_summary_not_supported)
+                } else if (show7Days) {
                     StringUtils.getIcuPluralsString(context,
                             R.string.permission_usage_preference_summary_not_used_in_past_n_days,
                             7)
