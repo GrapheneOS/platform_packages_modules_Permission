@@ -63,7 +63,7 @@ object PermissionUsageControlPreferenceUtils {
                     R.string.permission_usage_preference_label,
                     count,
                 )
-            if (count == 0) {
+            if (count == 0 && !PermissionMapping.isSpecialRuntimePermissionGroup(groupName)) {
                 isEnabled = false
                 val permissionUsageSummaryNotUsed =
                     if (show7Days) {
@@ -91,6 +91,9 @@ object PermissionUsageControlPreferenceUtils {
                     true
                 }
             } else {
+                if (PermissionMapping.isSpecialRuntimePermissionGroup(groupName)) {
+                    setSummary(null)
+                }
                 onPreferenceClickListener = OnPreferenceClickListener {
                     val intent = Intent(Intent.ACTION_MANAGE_PERMISSION_APPS)
                     intent.putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, groupName)
