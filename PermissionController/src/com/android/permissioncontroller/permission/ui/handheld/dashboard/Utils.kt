@@ -91,7 +91,7 @@ fun shouldShowCameraMicIndicators(): Boolean {
  */
 fun isLocationIndicatorsFlagEnabled(): Boolean {
     return DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
-            PROPERTY_LOCATION_INDICATORS_ENABLED, false)
+            PROPERTY_LOCATION_INDICATORS_ENABLED, true)
 }
 
 /**
