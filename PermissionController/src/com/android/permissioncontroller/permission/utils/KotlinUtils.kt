@@ -222,7 +222,7 @@ object KotlinUtils {
     @ChecksSdkIntAtLeast(Build.VERSION_CODES.S)
     fun isLocationIndicatorsFlagEnabled(): Boolean {
         return SdkLevel.isAtLeastS() && DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
-            PROPERTY_LOCATION_INDICATORS_ENABLED, false)
+            PROPERTY_LOCATION_INDICATORS_ENABLED, true)
     }
 
     /**
