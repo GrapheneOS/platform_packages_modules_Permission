@@ -499,4 +499,14 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Últimas\n24 horas"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Android protege <xliff:g id="APP_NAME">%1$s</xliff:g>. Dado que tus datos se procesan en este dispositivo, el uso de permisos de esta app no se muestra en la barra de estado ni en el panel de privacidad."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Android protege <xliff:g id="APP_NAME">%1$s</xliff:g>. Dado que tus datos se procesan en este dispositivo, el uso de permisos de esta app no se muestra en el panel de privacidad."</string>
+    <!-- no translation found for blocked_sensor_title (4946499097784258613) -->
+    <skip />
+    <!-- no translation found for blocked_location_title (1651982726048750742) -->
+    <skip />
+    <!-- no translation found for blocked_sensor_summary (4443707628305027375) -->
+    <skip />
+    <!-- no translation found for blocked_mic_summary (8960466941528458347) -->
+    <skip />
+    <!-- no translation found for blocked_sensor_button_label (6742092634984289658) -->
+    <skip />
 </resources>

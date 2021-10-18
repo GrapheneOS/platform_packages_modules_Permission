@@ -537,4 +537,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"ב-24 השעות\nהאחרונות"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"‏האפליקציה <xliff:g id="APP_NAME">%1$s</xliff:g> מוגנת על ידי Android. השימוש של האפליקציה הזו בהרשאות לא מוצג בשורת הסטטוס או במרכז הבקרה להגדרות הפרטיות כי הנתונים שלך מעובדים במכשיר הזה."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"‏האפליקציה <xliff:g id="APP_NAME">%1$s</xliff:g> מוגנת על ידי Android. השימוש של האפליקציה הזו בהרשאות לא מוצג במרכז הבקרה להגדרות הפרטיות כי הנתונים שלך מעובדים במכשיר הזה."</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"המכשיר <xliff:g id="SENSOR_NAME">%1$s</xliff:g> חסום"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"המכשיר <xliff:g id="SENSOR_NAME">%1$s</xliff:g> כבוי"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"לאפליקציות ולשירותים"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"יכול להיות שהנתונים מהמיקרופון ישותפו בכל זאת בשיחה עם מספר חירום."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"שינוי"</string>
 </resources>

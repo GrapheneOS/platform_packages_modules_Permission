@@ -499,4 +499,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Elmúlt\n24 óra"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"A(z) <xliff:g id="APP_NAME">%1$s</xliff:g> alkalmazás védelmét az Android biztosítja. Mivel adatainak feldolgozása ezen az eszközön történik, az alkalmazás engedélyhasználata nem jelenik meg az állapotsorban vagy az Ön adatvédelmi irányítópultján."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"A(z) <xliff:g id="APP_NAME">%1$s</xliff:g> alkalmazás védelmét az Android biztosítja. Mivel adatainak feldolgozása ezen az eszközön történik, az alkalmazás engedélyhasználata nem jelenik meg az Ön adatvédelmi irányítópultján."</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"Az eszközön le van tiltva a következő: <xliff:g id="SENSOR_NAME">%1$s</xliff:g>"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"Az eszközön ki van kapcsolva a következő: <xliff:g id="SENSOR_NAME">%1$s</xliff:g>"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Alkalmazásoknál és szolgáltatásoknál"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Segélyhívó szám hívásakor a rendszer továbbra is megoszthatja a mikrofonadatokat."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Módosítás"</string>
 </resources>

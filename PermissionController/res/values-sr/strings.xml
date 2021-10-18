@@ -518,4 +518,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Претходна\n24 сата"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Android штити<xliff:g id="APP_NAME">%1$s</xliff:g>. Пошто се подаци обрађују на овом уређају, коришћење дозвола за ову апликацију се не приказује на статусној траци или контролној табли за приватност."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Android штити<xliff:g id="APP_NAME">%1$s</xliff:g>. Пошто се подаци обрађују на овом уређају, коришћење дозвола за ову апликацију се не приказује на контролној табли за приватност."</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"Уређај <xliff:g id="SENSOR_NAME">%1$s</xliff:g> је блокиран"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"Уређај <xliff:g id="SENSOR_NAME">%1$s</xliff:g> је искључен"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"За апликације и услуге"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Подаци микрофона могу и даље да се деле када позовете број за хитне случајеве."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Промени"</string>
 </resources>

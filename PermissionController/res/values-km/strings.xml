@@ -499,4 +499,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"24 ម៉ោង\nចុងក្រោយ"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> ត្រូវបានការពារ​ដោយ Android។ ដោយសារ​ទិន្នន័យរបស់អ្នក​ត្រូវបានដំណើរការ​នៅលើឧបករណ៍នេះ ការប្រើប្រាស់​ការអនុញ្ញាត​របស់កម្មវិធីនេះ​មិនបង្ហាញនៅលើ​របារស្ថានភាព ឬផ្ទាំងគ្រប់គ្រង​ឯកជនភាព​របស់អ្នកទេ។"</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> ត្រូវបានការពារ​ដោយ Android។ ដោយសារ​ទិន្នន័យរបស់អ្នក​ត្រូវបានដំណើរការ​នៅលើឧបករណ៍នេះ ការប្រើប្រាស់​ការអនុញ្ញាត​របស់កម្មវិធីនេះ​មិនបង្ហាញនៅលើ​ផ្ទាំងគ្រប់គ្រង​ឯកជនភាព​របស់អ្នកទេ។"</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"ឧបករណ៍ <xliff:g id="SENSOR_NAME">%1$s</xliff:g> ត្រូវបាន​ទប់ស្កាត់"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"ឧបករណ៍ <xliff:g id="SENSOR_NAME">%1$s</xliff:g> ត្រូវបានបិទ"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"សម្រាប់កម្មវិធី និងសេវាកម្ម"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"ទិន្នន័យមីក្រូហ្វូន​នៅតែអាចត្រូវ​បានចែករំលែក​ដដែល នៅពេលអ្នក​ហៅទៅលេខសង្គ្រោះបន្ទាន់។"</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"ផ្លាស់ប្ដូរ"</string>
 </resources>
