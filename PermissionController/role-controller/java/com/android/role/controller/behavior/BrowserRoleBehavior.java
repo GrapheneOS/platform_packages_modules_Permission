@@ -54,11 +54,6 @@ public class BrowserRoleBehavior implements RoleBehavior {
             .addCategory(Intent.CATEGORY_BROWSABLE)
             .setData(Uri.fromParts("http", "", null));
 
-    private static final List<String> SYSTEM_BROWSER_PERMISSIONS = Arrays.asList(
-            android.Manifest.permission.ACCESS_COARSE_LOCATION,
-            android.Manifest.permission.ACCESS_FINE_LOCATION
-    );
-
     @Nullable
     @Override
     public String getFallbackHolderAsUser(@NonNull Role role, @NonNull UserHandle user,
@@ -130,30 +125,6 @@ public class BrowserRoleBehavior implements RoleBehavior {
             packageNames.add(resolveInfo.activityInfo.packageName);
         }
         return new ArrayList<>(packageNames);
-    }
-
-    @Override
-    public void grantAsUser(@NonNull Role role, @NonNull String packageName,
-            @NonNull UserHandle user, @NonNull Context context) {
-        // @see com.android.server.pm.permission.DefaultPermissionGrantPolicy
-        //      #grantDefaultPermissionsToDefaultBrowser(java.lang.String, int)
-        if (SdkLevel.isAtLeastS()) {
-            if (PackageUtils.isSystemPackageAsUser(packageName, user, context)) {
-                Permissions.grantAsUser(packageName, SYSTEM_BROWSER_PERMISSIONS, false, false,
-                        true, false, false, user, context);
-            }
-        }
-    }
-
-    @Override
-    public void revokeAsUser(@NonNull Role role, @NonNull String packageName,
-            @NonNull UserHandle user, @NonNull Context context) {
-        if (SdkLevel.isAtLeastT()) {
-            if (PackageUtils.isSystemPackageAsUser(packageName, user, context)) {
-                Permissions.revokeAsUser(packageName, SYSTEM_BROWSER_PERMISSIONS, true, false,
-                        false, user, context);
-            }
-        }
     }
 
     @Override
