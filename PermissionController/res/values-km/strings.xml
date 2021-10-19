@@ -398,8 +398,7 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"កំណត់​ <xliff:g id="APP_NAME">%1$s</xliff:g> ជាកម្មវិធីសារឥតបាន​ការ និង​​អត្តសញ្ញាណអ្នកហៅទូរសព្ទលំនាំដើមរបស់​អ្នក?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"មិន​ត្រូវការការអនុញ្ញាត​ទេ"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> នឹងត្រូវបានអនុញ្ញាតឱ្យ​ធ្វើអន្តរកម្មជាមួយ​ការជូនដំណឹងរបស់អ្នក និងចូលប្រើទូរសព្ទ, SMS, ទំនាក់ទំនង និងការអនុញ្ញាត​ប្រតិទិនរបស់អ្នក។"</string>
-    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
-    <skip />
+    <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> នឹងត្រូវបាន​អនុញ្ញាតឱ្យ​ធ្វើអន្តរកម្មជាមួយ​ការជូនដំណឹងរបស់អ្នក និងចាក់កម្មវិធី​របស់អ្នកទៅឧបករណ៍​ដែលបានភ្ជាប់។"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"លំនាំដើម​បច្ចុប្បន្ន"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"កុំសួរទៀត"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"កំណត់ជាលំនាំដើម"</string>
@@ -502,4 +501,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"24 ម៉ោង\nចុងក្រោយ"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> ត្រូវបានការពារ​ដោយ Android។ ដោយសារ​ទិន្នន័យរបស់អ្នក​ត្រូវបានដំណើរការ​នៅលើឧបករណ៍នេះ ការប្រើប្រាស់​ការអនុញ្ញាត​របស់កម្មវិធីនេះ​មិនបង្ហាញនៅលើ​របារស្ថានភាព ឬផ្ទាំងគ្រប់គ្រង​ឯកជនភាព​របស់អ្នកទេ។"</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> ត្រូវបានការពារ​ដោយ Android។ ដោយសារ​ទិន្នន័យរបស់អ្នក​ត្រូវបានដំណើរការ​នៅលើឧបករណ៍នេះ ការប្រើប្រាស់​ការអនុញ្ញាត​របស់កម្មវិធីនេះ​មិនបង្ហាញនៅលើ​ផ្ទាំងគ្រប់គ្រង​ឯកជនភាព​របស់អ្នកទេ។"</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"ឧបករណ៍ <xliff:g id="SENSOR_NAME">%1$s</xliff:g> ត្រូវបាន​ទប់ស្កាត់"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"ឧបករណ៍ <xliff:g id="SENSOR_NAME">%1$s</xliff:g> ត្រូវបានបិទ"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"សម្រាប់កម្មវិធី និងសេវាកម្ម"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"ទិន្នន័យមីក្រូហ្វូន​នៅតែអាចត្រូវ​បានចែករំលែក​ដដែល នៅពេលអ្នក​ហៅទៅលេខសង្គ្រោះបន្ទាន់។"</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"ផ្លាស់ប្ដូរ"</string>
 </resources>

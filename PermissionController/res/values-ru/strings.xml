@@ -436,8 +436,7 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Сделать \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" приложением для автоматического определения номеров и защиты от спама по умолчанию?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Разрешения не требуются"</string>
     <string name="role_watch_description" msgid="267003778693177779">"Приложению \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" будет предоставлен доступ к уведомлениям, а также следующие разрешения: телефон, SMS, контакты и календарь."</string>
-    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
-    <skip />
+    <string name="role_app_streaming_description" msgid="7341638576226183992">"Приложение \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" сможет взаимодействовать с уведомлениями и транслировать приложения на подключенное устройство."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Используется по умолчанию"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Больше не спрашивать"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"По умолчанию"</string>
@@ -540,4 +539,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Последние\n24 часа"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Приложение \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" защищено Android. Поскольку ваши данные обрабатываются на устройстве, разрешения, используемые приложением, не показываются в строке состояния на панели управления разрешениями."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Приложение \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" защищено Android. Поскольку ваши данные обрабатываются на устройстве, разрешения, используемые приложением, не показываются на панели управления разрешениями."</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"Доступ к этому типу данных устройства заблокирован (<xliff:g id="SENSOR_NAME">%1$s</xliff:g>)"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"Доступ к этому типу данных устройства отключен (<xliff:g id="SENSOR_NAME">%1$s</xliff:g>)"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Для приложений и сервисов"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Данные микрофона могут передаваться при звонке на номер экстренной службы"</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Изменить"</string>
 </resources>

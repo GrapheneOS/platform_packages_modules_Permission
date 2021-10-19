@@ -398,8 +398,7 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> به‌عنوان شناسه تماس‌گیرنده و برنامه هرزنامه‌ پیش‌فرض تنظیم شود؟"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"مجوز نیاز نیست"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> می‌تواند با اعلان‌های شما تعامل داشته باشد و به اجازه‌های تلفن، پیامک، مخاطبین، و «تقویم» دسترسی یابد."</string>
-    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
-    <skip />
+    <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> می‌تواند با اعلان‌های شما تعامل داشته باشد و برنامه‌هایتان را در دستگاه متصل جاری‌سازی کند."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"برنامه پیش‌فرض کنونی"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"دوباره سؤال نشود"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"تنظیم برای پیش‌فرض"</string>
@@ -502,4 +501,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"۲۴\nساعت گذشته"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"‏<xliff:g id="APP_NAME">%1$s</xliff:g> با Android محافظت می‌شود. چون داده‌هایتان در این دستگاه پردازش می‌شود، استفاده این برنامه از اجازه در نوار وضعیت یا داشبورد حریم‌خصوصی‌تان نشان داده نمی‌شود."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"‏<xliff:g id="APP_NAME">%1$s</xliff:g> با Android محافظت می‌شود. چون داده‌هایتان در این دستگاه پردازش می‌شود، استفاده این برنامه از اجازه در داشبورد حریم‌خصوصی‌تان نشان داده نمی‌شود."</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"دستگاه <xliff:g id="SENSOR_NAME">%1$s</xliff:g> مسدود است"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"دستگاه <xliff:g id="SENSOR_NAME">%1$s</xliff:g> خاموش است"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"برای برنامه‌ها و سرویس‌ها"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"هنگام تماس با شماره‌های اضطراری، ممکن است همچنان داده‌های میکروفون هم‌رسانی شود."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"تغییر"</string>
 </resources>

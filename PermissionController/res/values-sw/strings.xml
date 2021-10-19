@@ -398,8 +398,7 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Je, ungependa kuweka <xliff:g id="APP_NAME">%1$s</xliff:g> iwe programu chaguomsingi ya kukagua kitambulisho cha anayepiga na taka?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Hakuna ruhusa zinazohitajika"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> itaruhusiwa kushirikiana na arifa zako na kufikia ruhusa za Simu, SMS, Anwani na Kalenda yako."</string>
-    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
-    <skip />
+    <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> itaruhusiwa kufikia arifa zako na kutiririsha programu zako kwenye kifaa kilichounganishwa."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Chaguomsingi ya sasa"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Isiniulize tena"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Weka iwe chaguomsingi"</string>
@@ -502,4 +501,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Saa 24\nzilizopita"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> inalindwa na Android. Kwa sababu data yako inachakatwa kwenye kifaa hiki, matumizi ya ruhusa ya programu hii hayaonyeshwi kwenye sehemu ya kuonyesha hali au dashibodi yako ya faragha."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> inalindwa na Android. Kwa sababu data yako inachakatwa kwenye kifaa hiki, matumizi ya ruhusa ya programu hii hayaonyeshwi kwenye dashibodi yako ya faragha."</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"Kipengele cha <xliff:g id="SENSOR_NAME">%1$s</xliff:g> kwenye kifaa kimezuiwa"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"Kipengele cha <xliff:g id="SENSOR_NAME">%1$s</xliff:g> kwenye kifaa kimezimwa"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Kwa ajili ya programu na huduma"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Huenda bado data ya maikrofoni ikashirikiwa unapopigia nambari ya dharura."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Badilisha"</string>
 </resources>

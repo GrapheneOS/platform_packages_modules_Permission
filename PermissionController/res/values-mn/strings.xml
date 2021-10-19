@@ -398,8 +398,7 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g>-г дуудлага хийгчийн ID болон спамын өгөгдмөл аппаар тохируулах уу?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Ямар ч зөвшөөрөл шаардлагагүй"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g>-г таны мэдэгдлүүдтэй харилцаж, таны Утас, SMS, Харилцагчид болон Календарийн зөвшөөрөлд хандахыг зөвшөөрнө."</string>
-    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
-    <skip />
+    <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g>-д таны мэдэгдэлтэй харилцах болон таны аппуудыг холбогдсон төхөөрөмжид дамжуулахыг зөвшөөрөх болно."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Одоогийн өгөгдмөл апп"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Дахиж бүү асуу"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Өгөгдмөлөөр тохируулах"</string>
@@ -502,4 +501,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Өнгөрсөн\n24 цагт"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> нь Android-р хамгаалагдсан. Таны өгөгдлийг энэ төхөөрөмж дээр боловсруулдаг тул энэ аппын зөвшөөрлийн ашиглалтыг статус самбар эсвэл таны нууцлалын хяналтын самбарт харуулаагүй."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> нь Android-р хамгаалагдсан. Таны өгөгдлийг энэ төхөөрөмж дээр боловсруулдаг тул энэ аппын зөвшөөрлийн ашиглалтыг таны нууцлалын хяналтын самбарт харуулаагүй."</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"Төхөөрөмжийн <xliff:g id="SENSOR_NAME">%1$s</xliff:g>-г блоклосон байна"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"Төхөөрөмжийн <xliff:g id="SENSOR_NAME">%1$s</xliff:g> унтраалттай байна"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Апп болон үйлчилгээнд"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Яаралтай тусламжийн утасны дугаар луу залгах үед микрофоны өгөгдлийг хуваалцсан хэвээр байж болзошгүй."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Өөрчлөх"</string>
 </resources>

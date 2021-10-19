@@ -398,8 +398,7 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Definir <xliff:g id="APP_NAME">%1$s</xliff:g> como app padrão identificador de chamadas e spam?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Nenhuma permissão necessária"</string>
     <string name="role_watch_description" msgid="267003778693177779">"O app <xliff:g id="APP_NAME">%1$s</xliff:g> poderá interagir com suas notificações e acessar as permissões do Telefone, de SMS, de Contatos e da Agenda."</string>
-    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
-    <skip />
+    <string name="role_app_streaming_description" msgid="7341638576226183992">"O app <xliff:g id="APP_NAME">%1$s</xliff:g> poderá interagir com suas notificações e fazer streaming de outros apps para os dispositivos conectados."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Padrão atual"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Não perguntar novamente"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Definir como padrão"</string>
@@ -502,4 +501,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Últimas\n24 horas"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"O app <xliff:g id="APP_NAME">%1$s</xliff:g> é protegido pelo Android. Como seus dados são processados no dispositivo, o uso da permissão do app não é mostrado na barra de status nem no painel de privacidade."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"O app <xliff:g id="APP_NAME">%1$s</xliff:g> é protegido pelo Android. Como seus dados são processados no dispositivo, o uso da permissão do app não é mostrado no painel de privacidade."</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"A <xliff:g id="SENSOR_NAME">%1$s</xliff:g> do dispositivo está bloqueada"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"A <xliff:g id="SENSOR_NAME">%1$s</xliff:g> do dispositivo está desativada"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Para apps e serviços"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Os dados do microfone ainda poderão ser compartilhados quando você ligar para um número de emergência."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Mudar"</string>
 </resources>

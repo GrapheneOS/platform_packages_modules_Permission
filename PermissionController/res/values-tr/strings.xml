@@ -398,8 +398,7 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g>, varsayılan arayan kimliği ve spam uygulamanız olarak ayarlansın mı?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Herhangi bir izin gerekli değil"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> adlı uygulamanın bildirimlerinizle etkileşimde bulunup Telefon, SMS, Kişiler ve Takvim izinlerinize erişmesine izin verilir."</string>
-    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
-    <skip />
+    <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> adlı uygulamanın bildirimlerinizle etkileşimde bulunup uygulamalarınızı bağlı cihazda canlı oynatmasına izin verilecek."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Mevcut varsayılan"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Tekrar sorma"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Varsayılan olarak ayarla"</string>
@@ -502,4 +501,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Son\n24 saat"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g>, Android korumalıdır. Verileriniz bu cihazda işlendiği için bu uygulamanın izin kullanımı durum çubuğunda veya gizlilik kontrol panelinizde gösterilmez."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g>, Android korumalıdır. Verileriniz bu cihazda işlendiği için bu uygulamanın izin kullanımı gizlilik kontrol panelinizde gösterilmez."</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"Cihazın <xliff:g id="SENSOR_NAME">%1$s</xliff:g> sensörü engellendi"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"Cihazın <xliff:g id="SENSOR_NAME">%1$s</xliff:g> sensörü kapalı"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Uygulamalar ve hizmetler için"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Mikrofon verileri, bir acil durum numarasını aradığınızda paylaşılmaya devam edebilir."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Değiştir"</string>
 </resources>

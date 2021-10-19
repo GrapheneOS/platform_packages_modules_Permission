@@ -398,8 +398,7 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Tetapkan <xliff:g id="APP_NAME">%1$s</xliff:g> sebagai apl ID pemanggil &amp; spam lalai anda?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Kebenaran tidak diperlukan"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> akan dibenarkan berinteraksi dengan pemberitahuan anda dan mengakses kebenaran Telefon, SMS, Kenalan dan Kalendar anda."</string>
-    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
-    <skip />
+    <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> akan dibenarkan untuk berinteraksi dengan pemberitahuan anda dan menstrim apl anda pada peranti tersambung."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Lalai semasa"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Jangan tanya lagi"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Tetapkan sbg lalai"</string>
@@ -502,4 +501,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"24 jam\nyang lalu"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> dilindungi oleh Android. Oleh sebab data anda diproses pada peranti ini, penggunaan kebenaran apl ini tidak ditunjukkan pada bar status atau papan pemuka privasi anda."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> dilindungi oleh Android. Oleh sebab data anda diproses pada peranti ini, penggunaan kebenaran apl ini tidak ditunjukkan pada papan pemuka privasi anda."</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"<xliff:g id="SENSOR_NAME">%1$s</xliff:g> peranti disekat"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"Peranti <xliff:g id="SENSOR_NAME">%1$s</xliff:g> dimatikan"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Untuk apl dan perkhidmatan"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Data mikrofon mungkin masih dikongsi apabila anda memanggil nombor kecemasan."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Tukar"</string>
 </resources>

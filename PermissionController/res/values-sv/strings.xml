@@ -398,8 +398,7 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Vill du ställa in <xliff:g id="APP_NAME">%1$s</xliff:g> som din standardapp för spam och nummerpresentatör?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Inga behörigheter krävs"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> får behörighet att interagera med dina aviseringar och komma åt behörigheterna för Telefon, Sms, Kontakter och Kalender."</string>
-    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
-    <skip />
+    <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> får behörighet att interagera med dina aviseringar och streama dina appar till den anslutna enheten."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Nuvarande standardapp"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Fråga inte igen"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Ange som standard"</string>
@@ -502,4 +501,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Senaste\n24 timmarna"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> skyddas av Android. Appens användning av behörigheter visas inte i statusfältet eller integritetsöversikten eftersom din data bearbetas på enheten."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> skyddas av Android. Appens användning av behörigheter visas inte i integritetsöversikten eftersom din data bearbetas på enheten."</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"Enhetens <xliff:g id="SENSOR_NAME">%1$s</xliff:g> blockeras"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"Enhetens <xliff:g id="SENSOR_NAME">%1$s</xliff:g> är av"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"För appar och tjänster"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Mikrofondata kan fortfarande delas när du ringer ett nödnummer."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Ändra"</string>
 </resources>

@@ -417,8 +417,7 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Vai vēlaties iestatīt <xliff:g id="APP_NAME">%1$s</xliff:g> kā noklusējuma lietotni zvanītāja ID rādīšanai un nevēlamu zvanu bloķēšanai?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Atļaujas nav nepieciešamas"</string>
     <string name="role_watch_description" msgid="267003778693177779">"Lietotnei <xliff:g id="APP_NAME">%1$s</xliff:g> tiks atļauts mijiedarboties ar jūsu paziņojumiem un piekļūt šādām atļaujām: Tālrunis, Īsziņas, Kontaktpersonas un Kalendārs."</string>
-    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
-    <skip />
+    <string name="role_app_streaming_description" msgid="7341638576226183992">"Lietotnei <xliff:g id="APP_NAME">%1$s</xliff:g> tiks atļauts mijiedarboties ar jūsu paziņojumiem un straumēt jūsu lietotņu saturu uz pievienoto ierīci."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Pašreizējais noklusējums"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Nejautāt atkārtoti"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Iest. kā noklusējumu"</string>
@@ -521,4 +520,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Pēdējās\n24 stundās"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Lietotnes <xliff:g id="APP_NAME">%1$s</xliff:g> aizsardzību nodrošina Android. Tā kā jūsu dati tiek apstrādāti šajā ierīcē, šīs lietotnes atļauju lietojums netiek rādīts statusa joslā vai jūsu konfidencialitātes informācijas panelī."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Lietotnes <xliff:g id="APP_NAME">%1$s</xliff:g> aizsardzību nodrošina Android. Tā kā jūsu dati tiek apstrādāti šajā ierīcē, šīs lietotnes atļauju lietojums netiek rādīts jūsu konfidencialitātes informācijas panelī."</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"Ierīces <xliff:g id="SENSOR_NAME">%1$s</xliff:g> ir bloķēta"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"Ierīces <xliff:g id="SENSOR_NAME">%1$s</xliff:g> ir izslēgta"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Lietotnēm un pakalpojumiem"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Mikrofona dati joprojām var tikt kopīgoti, kad zvanīsiet uz ārkārtas numuru."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Mainīt"</string>
 </resources>
