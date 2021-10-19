@@ -398,8 +398,7 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g>କୁ ଆପଣଙ୍କର ଡିଫଲ୍ଟ କଲର୍ ଆଇଡି &amp; ସ୍ପାମ୍ ଆପ୍ ଭାବ୍ ସେଟ୍ କରିବେ କି?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"କୌଣସି ଅନୁମତି ଆବଶ୍ୟକ ନାହିଁ"</string>
     <string name="role_watch_description" msgid="267003778693177779">"ଆପଣଙ୍କ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକ ସହ ଇଣ୍ଟରାକ୍ଟ କରିବା ଏବଂ ଆପଣଙ୍କ ଫୋନ୍, SMS, ଯୋଗାଯୋଗ ଓ କ୍ୟାଲେଣ୍ଡର ଅନୁମତିଗୁଡ଼ିକୁ ଆକ୍ସେସ୍ କରିବା ପାଇଁ <xliff:g id="APP_NAME">%1$s</xliff:g>କୁ ଅନୁମତି ଦିଆଯିବ।"</string>
-    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
-    <skip />
+    <string name="role_app_streaming_description" msgid="7341638576226183992">"ଆପଣଙ୍କ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକ ସହ ଇଣ୍ଟରାକ୍ଟ କରିବା ଏବଂ ସଂଯୋଗ କରାଯାଇଥିବା ଡିଭାଇସଗୁଡ଼ିକରେ ଆପଣଙ୍କର ଆପଗୁଡ଼ିକ ଷ୍ଟ୍ରିମ କରିବା ପାଇଁ <xliff:g id="APP_NAME">%1$s</xliff:g>କୁ ଅନୁମତି ଦିଆଯିବ।"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"ସମ୍ପ୍ରତ୍ତି ଡିଫଲ୍ଟ"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"ଆଉ ପଚାରନ୍ତୁ ନାହିଁ"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"ଡିଫଲ୍ଟ ଭାବେ ସେଟ୍ କରନ୍ତୁ"</string>
@@ -502,4 +501,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"ଗତ\n24 ଘଣ୍ଟା"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g>କୁ Android ଦ୍ୱାରା ସୁରକ୍ଷିତ କରାଯାଇଛି। ଏହି ଡିଭାଇସରେ ଆପଣଙ୍କ ଡାଟା ପ୍ରକ୍ରିୟାକରଣ କରାଯାଇଥିବା ଯୋଗୁଁ ଏହି ଆପର ଅନୁମତି ବ୍ୟବହାରର ସୂଚନା ଷ୍ଟାଟସ୍ ବାରରେ କିମ୍ବା ଆପଣଙ୍କ ଗୋପନୀୟତା ଡ୍ୟାସବୋର୍ଡରେ ଦେଖାଯାଉ ନାହିଁ।"</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g>କୁ Android ଦ୍ୱାରା ସୁରକ୍ଷିତ କରାଯାଇଛି। ଏହି ଡିଭାଇସରେ ଆପଣଙ୍କ ଡାଟା ପ୍ରକ୍ରିୟାକରଣ କରାଯାଇଥିବା ଯୋଗୁଁ ଏହି ଆପର ଅନୁମତି ବ୍ୟବହାରର ସୂଚନା ଆପଣଙ୍କ ଗୋପନୀୟତା ଡ୍ୟାସବୋର୍ଡରେ ଦେଖାଯାଉ ନାହିଁ।"</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"ଡିଭାଇସ <xliff:g id="SENSOR_NAME">%1$s</xliff:g>କୁ ବ୍ଲକ କରାଯାଇଛି"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"ଡିଭାଇସ <xliff:g id="SENSOR_NAME">%1$s</xliff:g> ବନ୍ଦ ଅଛି"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"ଆପ ଓ ସେବାଗୁଡ଼ିକ ପାଇଁ"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"ଆପଣ ଏକ ଜରୁରୀକାଳୀନ ନମ୍ବରକୁ କଲ କରିବା ସମୟରେ ମାଇକ୍ରୋଫୋନ ଡାଟା ଏବେ ବି ସେୟାର କରାଯାଇପାରେ।"</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"ପରିବର୍ତ୍ତନ କରନ୍ତୁ"</string>
 </resources>

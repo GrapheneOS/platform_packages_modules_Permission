@@ -398,8 +398,7 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> ಆ್ಯಪ್ ಅನ್ನು ನಿಮ್ಮ ಡೀಫಾಲ್ಟ್ ಕರೆಮಾಡುವವರ ID ಮತ್ತು ಸ್ಪ್ಯಾಮ್ ಆ್ಯಪ್ ಆಗಿ ಹೊಂದಿಸುವುದೇ?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"ಯಾವುದೇ ಅನುಮತಿಗಳ ಅಗತ್ಯವಿಲ್ಲ"</string>
     <string name="role_watch_description" msgid="267003778693177779">"ನಿಮ್ಮ ಅಧಿಸೂಚನೆಗಳೊಂದಿಗೆ ಸಂವಹನ ನಡೆಸಲು ಮತ್ತು ನಿಮ್ಮ ಫೋನ್, ಎಸ್ಎಂಎಸ್, ಸಂಪರ್ಕಗಳು ಮತ್ತು Calendar ಅನುಮತಿಗಳನ್ನು ಪ್ರವೇಶಿಸಲು <xliff:g id="APP_NAME">%1$s</xliff:g> ಗೆ ಅನುಮತಿಸಲಾಗುತ್ತದೆ."</string>
-    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
-    <skip />
+    <string name="role_app_streaming_description" msgid="7341638576226183992">"ನಿಮ್ಮ ಅಧಿಸೂಚನೆಗಳೊಂದಿಗೆ ಸಂವಹನ ನಡೆಸಲು ಮತ್ತು ನಿಮ್ಮ ಆ್ಯಪ್‌ಗಳನ್ನು ಸಂಪರ್ಕಿತ ಸಾಧನಕ್ಕೆ ಸ್ಟ್ರೀಮ್ ಮಾಡಲು <xliff:g id="APP_NAME">%1$s</xliff:g> ಗೆ ಅನುಮತಿಸಲಾಗುತ್ತದೆ."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"ಪ್ರಸ್ತುತ ಡೀಫಾಲ್ಟ್"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"ಮತ್ತೆ ಕೇಳಬೇಡ"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"ಡೀಫಾಲ್ಟ್ ಆಗಿ ಹೊಂದಿಸಿ"</string>
@@ -502,4 +501,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"ಕಳೆದ\n24 ಗಂಟೆಗಳು"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> ಅನ್ನು Android ನಿಂದ ರಕ್ಷಿಸಲಾಗಿದೆ. ಈ ಸಾಧನದಲ್ಲಿ ನಿಮ್ಮ ಡೇಟಾವನ್ನು ಪ್ರಕ್ರಿಯೆಗೊಳಿಸಲಾಗಿರುವುದರಿಂದ, ಈ ಆ್ಯಪ್‌ನ ಅನುಮತಿಯ ಬಳಕೆಯನ್ನು ಸ್ಥಿತಿ ಪಟ್ಟಿಯಲ್ಲಿ ಅಥವಾ ನಿಮ್ಮ ಗೌಪ್ಯತಾ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ನಲ್ಲಿ ತೋರಿಸಲಾಗುವುದಿಲ್ಲ."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> ಅನ್ನು Android ನಿಂದ ರಕ್ಷಿಸಲಾಗಿದೆ. ಈ ಸಾಧನದಲ್ಲಿ ನಿಮ್ಮ ಡೇಟಾವನ್ನು ಪ್ರಕ್ರಿಯೆಗೊಳಿಸಲಾಗಿರುವುದರಿಂದ, ಈ ಆ್ಯಪ್‌ನ ಅನುಮತಿಯ ಬಳಕೆಯನ್ನು ನಿಮ್ಮ ಗೌಪ್ಯತಾ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ನಲ್ಲಿ ತೋರಿಸಲಾಗುವುದಿಲ್ಲ."</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"ಸಾಧನದ <xliff:g id="SENSOR_NAME">%1$s</xliff:g> ಅನ್ನು ನಿರ್ಬಂಧಿಸಲಾಗಿದೆ"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"ಸಾಧನದ <xliff:g id="SENSOR_NAME">%1$s</xliff:g> ಆಫ್ ಆಗಿದೆ"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"ಆ್ಯಪ್‌ಗಳು ಮತ್ತು ಸೇವೆಗಳಿಗಾಗಿ"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"ನೀವು ತುರ್ತು ಸಂಖ್ಯೆಗೆ ಕರೆ ಮಾಡಿದಾಗ ನಿಮ್ಮ ಮೈಕ್ರೊಫೋನ್ ಡೇಟಾವನ್ನು ಹಂಚಿಕೊಳ್ಳಬಹುದು."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"ಬದಲಾಯಿಸಿ"</string>
 </resources>

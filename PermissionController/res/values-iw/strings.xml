@@ -436,8 +436,7 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"להגדיר את <xliff:g id="APP_NAME">%1$s</xliff:g> כאפליקציית ברירת המחדל לשיחות מזוהות וחסימת ספאם?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"אין צורך בהרשאות"</string>
     <string name="role_watch_description" msgid="267003778693177779">"‏האפליקציה <xliff:g id="APP_NAME">%1$s</xliff:g> תוכל לבצע פעולות בהתראות ותקבל הרשאות גישה לטלפון, ל-SMS לאנשי הקשר וליומן."</string>
-    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
-    <skip />
+    <string name="role_app_streaming_description" msgid="7341638576226183992">"לאפליקציה <xliff:g id="APP_NAME">%1$s</xliff:g> יהיו הרשאות לביצוע פעולות בהתראות שלך ולביצוע סטרימינג של האפליקציות למכשיר המחובר."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"ברירת המחדל הנוכחית"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"לא לשאול שוב"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"הגדרה כברירת מחדל"</string>
@@ -540,4 +539,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"ב-24 השעות\nהאחרונות"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"‏האפליקציה <xliff:g id="APP_NAME">%1$s</xliff:g> מוגנת על ידי Android. השימוש של האפליקציה הזו בהרשאות לא מוצג בשורת הסטטוס או במרכז הבקרה להגדרות הפרטיות כי הנתונים שלך מעובדים במכשיר הזה."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"‏האפליקציה <xliff:g id="APP_NAME">%1$s</xliff:g> מוגנת על ידי Android. השימוש של האפליקציה הזו בהרשאות לא מוצג במרכז הבקרה להגדרות הפרטיות כי הנתונים שלך מעובדים במכשיר הזה."</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"המכשיר <xliff:g id="SENSOR_NAME">%1$s</xliff:g> חסום"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"המכשיר <xliff:g id="SENSOR_NAME">%1$s</xliff:g> כבוי"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"לאפליקציות ולשירותים"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"יכול להיות שהנתונים מהמיקרופון ישותפו בכל זאת בשיחה עם מספר חירום."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"שינוי"</string>
 </resources>

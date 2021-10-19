@@ -398,8 +398,7 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> als standardmäßige Anrufer-ID- und Spam-App festlegen?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Keine Berechtigungen erforderlich"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> darf mit deinen Benachrichtigungen interagieren und auf die Berechtigungen „Telefon“, „SMS“, „Kontakte“ und „Kalender“ zugreifen."</string>
-    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
-    <skip />
+    <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> darf mit deinen Benachrichtigungen interagieren und Apps auf deinen verbundenen Geräten streamen."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Aktueller Standard"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Nicht mehr fragen"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Als Standard festlegen"</string>
@@ -502,4 +501,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Letzte\n24 Stunden"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> ist durch Android geschützt. Weil deine Daten direkt auf diesem Gerät verarbeitet werden, wird weder in der Statusleiste noch auf deinem Privatsphäredashboard die Nutzung der Berechtigungen durch diese App angezeigt."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> ist durch Android geschützt. Weil deine Daten direkt auf diesem Gerät verarbeitet werden, wird auf deinem Privatsphäredashboard die Nutzung der Berechtigungen durch diese App nicht angezeigt."</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"Das Gerät „<xliff:g id="SENSOR_NAME">%1$s</xliff:g>“ ist gesperrt"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"Das Gerät <xliff:g id="SENSOR_NAME">%1$s</xliff:g> ist aus"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Für Apps und Dienste"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Die Mikrofondaten können immer noch geteilt werden, wenn du den Notruf wählst."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Ändern"</string>
 </resources>

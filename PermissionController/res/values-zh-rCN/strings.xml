@@ -398,8 +398,7 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"要将<xliff:g id="APP_NAME">%1$s</xliff:g>设为您的默认来电显示和骚扰电话屏蔽应用吗？"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"无需任何权限"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g>将能与通知互动，并可访问电话、短信、通讯录和日历。"</string>
-    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
-    <skip />
+    <string name="role_app_streaming_description" msgid="7341638576226183992">"“<xliff:g id="APP_NAME">%1$s</xliff:g>”将能够与通知互动，并可将应用流式传输到已连接的设备。"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"当前默认应用"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"不再询问"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"设为默认应用"</string>
@@ -502,4 +501,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"过去 24 小时\n"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Android 会为<xliff:g id="APP_NAME">%1$s</xliff:g>提供保护。系统是在这个设备上处理您的数据，因此状态栏或隐私信息中心不会显示这个应用的权限使用情况。"</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Android 会为<xliff:g id="APP_NAME">%1$s</xliff:g>提供保护。系统是在这个设备上处理您的数据，因此隐私信息中心不会显示这个应用的权限使用情况。"</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"设备的<xliff:g id="SENSOR_NAME">%1$s</xliff:g>已被屏蔽"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"设备的<xliff:g id="SENSOR_NAME">%1$s</xliff:g>已停用"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"对于应用和服务"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"当您拨打紧急电话号码时，系统可能仍会分享麦克风数据。"</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"更改"</string>
 </resources>

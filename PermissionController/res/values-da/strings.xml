@@ -398,8 +398,7 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Vil du angive <xliff:g id="APP_NAME">%1$s</xliff:g> som din standardapp til Vis nummer og spam?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Der kræves ingen tilladelser"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> får tilladelse til at interagere med dine notifikationer og får adgang til dine tilladelser for Opkald, Sms, Kontakter og Kalender."</string>
-    <!-- no translation found for role_app_streaming_description (7341638576226183992) -->
-    <skip />
+    <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> får tilladelse til at interagere med dine notifikationer og streame dine apps til forbundne enheder."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Nuværende standardapp"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Spørg ikke igen"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Angiv som standard"</string>
@@ -502,4 +501,9 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Seneste\n24 timer"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> beskyttes af Android. Da dine data behandles på denne enhed, vises denne apps anvendelse af tilladelser ikke i statusbjælken i dit privatlivspanel."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> beskyttes af Android. Da dine data behandles på denne enhed, vises denne apps anvendelse af tilladelser ikke i dit privatlivspanel."</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"Enhedens <xliff:g id="SENSOR_NAME">%1$s</xliff:g> er blokeret"</string>
+    <string name="blocked_location_title" msgid="1651982726048750742">"Enhedens <xliff:g id="SENSOR_NAME">%1$s</xliff:g> er deaktiveret"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"For apps og tjenester"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Mikrofondata deles muligvis stadig, når du ringer til et alarmnummer."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Skift"</string>
 </resources>
