@@ -52,11 +52,6 @@ public class BrowserRoleBehavior implements RoleBehavior {
             .addCategory(Intent.CATEGORY_BROWSABLE)
             .setData(Uri.fromParts("http", "", null));
 
-    private static final List<String> SYSTEM_BROWSER_PERMISSIONS = Arrays.asList(
-            android.Manifest.permission.ACCESS_COARSE_LOCATION,
-            android.Manifest.permission.ACCESS_FINE_LOCATION
-    );
-
     @Nullable
     @Override
     public String getFallbackHolder(@NonNull Role role, @NonNull Context context) {
@@ -128,18 +123,6 @@ public class BrowserRoleBehavior implements RoleBehavior {
             packageNames.add(resolveInfo.activityInfo.packageName);
         }
         return new ArrayList<>(packageNames);
-    }
-
-    @Override
-    public void grant(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
-        // @see com.android.server.pm.permission.DefaultPermissionGrantPolicy
-        //      #grantDefaultPermissionsToDefaultBrowser(java.lang.String, int)
-        if (SdkLevel.isAtLeastS()) {
-            if (PackageUtils.isSystemPackage(packageName, context)) {
-                Permissions.grant(packageName, SYSTEM_BROWSER_PERMISSIONS, false, false, false,
-                        true, false, context);
-            }
-        }
     }
 
     @Override
