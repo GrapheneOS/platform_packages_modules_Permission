@@ -65,8 +65,8 @@ class AutoUnusedAppsFragment : AutoSettingsFrameFragment(),
 
         // initially focus on focus parking view and then shift focus to recyclerview once it has
         // loaded
-        ViewUtils.hideFocus(getListView().getRootView())
-        val lazyLayoutView = getListView() as LazyLayoutView
+        ViewUtils.hideFocus(getCarUiRecyclerView().getView().getRootView())
+        val lazyLayoutView = getCarUiRecyclerView() as LazyLayoutView
         ViewUtils.initFocus(lazyLayoutView)
     }
 
