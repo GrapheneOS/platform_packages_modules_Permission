@@ -499,7 +499,7 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Ultime\n24 ore"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"L\'app <xliff:g id="APP_NAME">%1$s</xliff:g> è protetta da Android. I tuoi dati vengono elaborati su questo dispositivo, pertanto l\'utilizzo delle autorizzazioni di questa app non viene mostrato nella barra di stato o nella dashboard della privacy."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"L\'app <xliff:g id="APP_NAME">%1$s</xliff:g> è protetta da Android. I tuoi dati vengono elaborati su questo dispositivo, pertanto l\'utilizzo delle autorizzazioni di questa app non viene mostrato nella dashboard della privacy."</string>
-    <string name="blocked_sensor_title" msgid="4946499097784258613">"La <xliff:g id="SENSOR_NAME">%1$s</xliff:g> del dispositivo è bloccata"</string>
+    <string name="blocked_sensor_title" msgid="4946499097784258613">"Il sensore <xliff:g id="SENSOR_NAME">%1$s</xliff:g> del dispositivo è bloccato"</string>
     <string name="blocked_location_title" msgid="1651982726048750742">"La <xliff:g id="SENSOR_NAME">%1$s</xliff:g> del dispositivo è disattivata"</string>
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Per app e servizi"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"I dati del microfono potrebbero comunque essere condivisi quando chiami un numero di emergenza."</string>
