@@ -993,7 +993,6 @@
         description="@string/role_app_streaming_description"
         exclusive="false"
         minSdkVersion="33"
-        overrideUserWhenGranting="false"
         systemOnly="true"
         visible="false">
         <permissions>
