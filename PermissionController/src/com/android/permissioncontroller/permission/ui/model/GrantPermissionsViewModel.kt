@@ -303,7 +303,7 @@ class GrantPermissionsViewModel(
                 var detailMessage = RequestMessage.NO_MESSAGE
 
                 if (groupState.group.packageInfo.targetSdkVersion >= Build.VERSION_CODES.R) {
-                    if (isBackground || groupState.group.hasPermWithBackgroundMode) {
+                    if (isBackground || Utils.hasPermWithBackgroundModeCompat(groupState.group)) {
                         if (needFgPermissions) {
                             if (needBgPermissions) {
                                 if (groupState.group.permGroupName
@@ -362,7 +362,7 @@ class GrantPermissionsViewModel(
                         buttonVisibilities[DENY_AND_DONT_ASK_AGAIN_BUTTON] = isFgUserSet
                     }
                 } else {
-                    if (isBackground || groupState.group.hasPermWithBackgroundMode) {
+                    if (isBackground || Utils.hasPermWithBackgroundModeCompat(groupState.group)) {
                         if (needFgPermissions) {
                             // Case: sdk < R, BG/FG permission requesting both or FG only
                             buttonVisibilities[ALLOW_BUTTON] = false
