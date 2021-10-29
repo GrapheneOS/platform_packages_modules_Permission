@@ -97,10 +97,10 @@ Edit `frameworks/base/core/res/res/values/public.xml` to expose the new config r
 API:
 
 ```xml
-<public-group type="string" first-id="0xXXXXXXXX">
+<staging-public-group type="string" first-id="0xXXXXXXXX">
     <!-- @hide @SystemApi -->
     <public name="config_systemYourRoleName" />
-</public-group>
+</staging-public-group>
 ```
 
 Then run `m update-api` to update the API text files.
