@@ -452,16 +452,16 @@
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"使用麦克风激活语音助理后，在状态栏中显示相关图标"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问您设备上的照片和媒体吗？"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问您的通讯录吗？"</string>
-    <string name="permgrouprequest_location" msgid="6990232580121067883">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;获取此设备的位置信息吗？"</string>
+    <string name="permgrouprequest_location" msgid="6990232580121067883">"要允许“&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;”获取此设备的位置信息吗？"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"只有当您使用该应用时，该应用才有权访问位置信息"</string>
-    <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;获取此设备的位置信息吗？"</string>
+    <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"要允许“&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;”获取此设备的位置信息吗？"</string>
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"该应用可能想要随时获取您的位置信息（即使您并未使用该应用）。"<annotation id="link">"在“设置”中允许"</annotation>"。"</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"要更改&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;的位置信息访问权限吗？"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"该应用想要随时获取您的位置信息（即使您并未使用该应用）。"<annotation id="link">"在“设置”中允许"</annotation>"。"</string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;查找、连接附近设备以及确定附近设备的相对位置吗？"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;查找、连接附近设备以及确定附近设备的相对位置吗？"<annotation id="link">"您可以在“设置”中允许。"</annotation></string>
     <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"要将“<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>”可以使用的位置信息从大致位置改为确切位置吗？"</string>
-    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;获取此设备的粗略位置吗？"</string>
+    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"要允许“&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;”获取此设备的大致位置信息吗？"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"确切位置"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"大致位置"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问您的日历吗？"</string>
