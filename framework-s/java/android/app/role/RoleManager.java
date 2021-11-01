@@ -136,6 +136,14 @@ public final class RoleManager {
     public static final String ROLE_SYSTEM_WELLBEING = "android.app.role.SYSTEM_WELLBEING";
 
     /**
+     * The name of the system supervision role.
+     *
+     * @hide
+     */
+    @SystemApi
+    public static final String ROLE_SYSTEM_SUPERVISION = "android.app.role.SYSTEM_SUPERVISION";
+
+    /**
      * The name of the system activity recognizer role.
      *
      * @hide
