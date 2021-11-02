@@ -24,6 +24,7 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.SharedLibraryInfo;
+import android.content.pm.Signature;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Process;
@@ -76,7 +77,9 @@ public class Role {
 
     private static final String PACKAGE_NAME_ANDROID_SYSTEM = "android";
 
-    private static final String PACKAGE_NAME_SEPARATOR = ";";
+    private static final String DEFAULT_HOLDER_SEPARATOR = ";";
+
+    private static final String CERTIFICATE_SEPARATOR = ":";
 
     /**
      * The name of this role. Must be unique.
@@ -432,28 +435,29 @@ public class Role {
             return Collections.emptyList();
         }
 
-        String resourceValue;
+        String defaultHolders;
         try {
-            resourceValue = resources.getString(resourceId);
+            defaultHolders = resources.getString(resourceId);
         } catch (Resources.NotFoundException e) {
             Log.w(LOG_TAG, "Cannot get resource for default holder: " + mDefaultHoldersResourceName,
                     e);
             return Collections.emptyList();
         }
-        if (TextUtils.isEmpty(resourceValue)) {
+        if (TextUtils.isEmpty(defaultHolders)) {
             return Collections.emptyList();
         }
 
         if (isExclusive()) {
-            if (!isDefaultHolderQualified(resourceValue, context)) {
+            String packageName = getQualifiedDefaultHolderPackageName(defaultHolders, context);
+            if (packageName == null) {
                 return Collections.emptyList();
             }
-            return Collections.singletonList(resourceValue);
+            return Collections.singletonList(packageName);
         } else {
-            String[] resourcePackageNames = resourceValue.split(PACKAGE_NAME_SEPARATOR);
             List<String> packageNames = new ArrayList<>();
-            for (String packageName : resourcePackageNames) {
-                if (isDefaultHolderQualified(packageName, context)) {
+            for (String defaultHolder : defaultHolders.split(DEFAULT_HOLDER_SEPARATOR)) {
+                String packageName = getQualifiedDefaultHolderPackageName(defaultHolders, context);
+                if (packageName != null) {
                     packageNames.add(packageName);
                 }
             }
@@ -461,20 +465,48 @@ public class Role {
         }
     }
 
-    private boolean isDefaultHolderQualified(@NonNull String packageName,
+    @Nullable
+    private String getQualifiedDefaultHolderPackageName(@NonNull String defaultHolder,
             @NonNull Context context) {
-        ApplicationInfo applicationInfo = PackageUtils.getApplicationInfo(packageName, context);
-        if (applicationInfo == null) {
-            Log.w(LOG_TAG, "Cannot get ApplicationInfo for default holder: " + packageName);
-            return false;
+        String packageName;
+        byte[] certificate;
+        int certificateSeparatorIndex = defaultHolder.indexOf(CERTIFICATE_SEPARATOR);
+        if (certificateSeparatorIndex != -1) {
+            packageName = defaultHolder.substring(0, certificateSeparatorIndex);
+            String certificateString = defaultHolder.substring(certificateSeparatorIndex + 1);
+            try {
+                certificate = new Signature(certificateString).toByteArray();
+            } catch (IllegalArgumentException e) {
+                Log.w(LOG_TAG, "Cannot parse signing certificate: " + defaultHolder, e);
+                return null;
+            }
+        } else {
+            packageName = defaultHolder;
+            certificate = null;
         }
 
-        if ((applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
-            Log.w(LOG_TAG, "Default holder is not a system app: " + packageName);
-            return false;
+        if (certificate != null) {
+            PackageManager packageManager = context.getPackageManager();
+            if (!packageManager.hasSigningCertificate(packageName, certificate,
+                    PackageManager.CERT_INPUT_SHA256)) {
+                Log.w(LOG_TAG, "Default holder doesn't have required signing certificate: "
+                        + defaultHolder);
+                return null;
+            }
+        } else {
+            ApplicationInfo applicationInfo = PackageUtils.getApplicationInfo(packageName, context);
+            if (applicationInfo == null) {
+                Log.w(LOG_TAG, "Cannot get ApplicationInfo for default holder: " + packageName);
+                return null;
+            }
+            if ((applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
+                Log.w(LOG_TAG, "Default holder didn't specify a signing certificate and isn't a"
+                        + " system app: " + packageName);
+                return null;
+            }
         }
 
-        return true;
+        return packageName;
     }
 
     /**
