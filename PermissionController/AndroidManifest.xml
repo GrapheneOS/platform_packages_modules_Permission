@@ -325,7 +325,12 @@
                   android:exported="false" />
 
         <activity android:name="com.android.permissioncontroller.safetycenter.SafetyCenterActivity"
-                  android:theme="@style/Theme.PermissionController.Settings.FilterTouches" />
+                  android:theme="@style/Theme.PermissionController.Settings.FilterTouches">
+            <intent-filter android:priority="1">
+                <action android:name="android.intent.action.SAFETY_CENTER"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
 
     </application>
 
