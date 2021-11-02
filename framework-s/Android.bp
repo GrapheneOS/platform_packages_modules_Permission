@@ -49,8 +49,8 @@ java_sdk_library {
         ":framework-permission-s-sources",
     ],
     libs: [
+        "androidx.annotation_annotation",
         "framework-annotations-lib",
-        "modules-annotation-minsdk",
     ],
     static_libs: [
         "framework-permission-s-shared",
