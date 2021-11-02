@@ -1002,6 +1002,21 @@
 
             <!--TODO(b/201605314) For calling Telecom framework API for audio streaming-->
             <!--<permission name="android.permission.PROVIDE_CALL_ENDPOINTS" />-->
+       </permissions>
+    </role>
+
+     <role
+        name="android.app.role.SYSTEM_SUPERVISION"
+        defaultHolders="config_systemSupervision"
+        exclusive="true"
+        minSdkVersion="33"
+        static="true"
+        systemOnly="true"
+        visible="false" >
+        <permissions>
+            <permission name="android.permission.ACCESS_INSTANT_APPS"/>
+            <permission name="android.permission.SUSPEND_APPS"/>
+            <permission name="android.permission.SYSTEM_APPLICATION_OVERLAY"/>
         </permissions>
     </role>
 </roles>
