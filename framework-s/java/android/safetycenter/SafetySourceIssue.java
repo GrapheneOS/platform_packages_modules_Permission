@@ -24,6 +24,7 @@ import static java.util.Objects.requireNonNull;
 
 import android.annotation.IntDef;
 import android.annotation.NonNull;
+import android.annotation.SystemApi;
 import android.app.PendingIntent;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -48,30 +49,9 @@ import java.util.Objects;
  *
  * @hide
  */
-// @SystemApi -- Add this line back when ready for API council review.
+@SystemApi
 @RequiresApi(TIRAMISU)
 public final class SafetySourceIssue implements Parcelable {
-
-    /**
-     * All possible severity levels for the safety source issue.
-     *
-     * <p>The severity level is meant to convey the severity of the individual issue.
-     *
-     * <p>The higher the severity level, the worse the safety level of the source and the higher
-     * the threat to the user.
-     *
-     * <p>The numerical values of the levels are not used directly, rather they are used to build
-     * a continuum of levels which support relative comparison.
-     *
-     * @hide
-     */
-    @IntDef(prefix = { "SEVERITY_LEVEL_" }, value = {
-            SEVERITY_LEVEL_INFORMATION,
-            SEVERITY_LEVEL_RECOMMENDATION,
-            SEVERITY_LEVEL_CRITICAL_WARNING
-    })
-    @Retention(RetentionPolicy.SOURCE)
-    public @interface SeverityLevel {}
 
     /**
      * Indicates an informational message. This severity will be reflected in the UI through a
@@ -90,161 +70,6 @@ public final class SafetySourceIssue implements Parcelable {
      * severity will be reflected in the UI through a red icon.
      */
     public static final int SEVERITY_LEVEL_CRITICAL_WARNING = 400;
-
-    /**
-     * Data for an action supported from a safety issue {@link SafetySourceIssue} in the Safety
-     * Center page.
-     *
-     * <p>The purpose of the action is to allow the user to address the safety issue, either by
-     * performing a fix suggested in the issue, or by navigating the user to the source of the issue
-     * where they can be exposed to details about the issue and further suggestions to resolve it.
-     *
-     * <p>The user will be allowed to invoke the action from the UI by clicking on a UI element and
-     * consequently resolve the issue.
-     *
-     * @hide
-     */
-    // @SystemApi -- Add this line back when ready for API council review.
-    public static final class Action implements Parcelable {
-
-        @NonNull
-        public static final Parcelable.Creator<Action> CREATOR =
-                new Parcelable.Creator<Action>() {
-                    @Override
-                    public Action createFromParcel(Parcel in) {
-                        CharSequence label =
-                                requireNonNull(
-                                        TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in));
-                        PendingIntent clickPendingIntent =
-                                requireNonNull(PendingIntent.readPendingIntentOrNullFromParcel(in));
-                        boolean resolving = in.readBoolean();
-                        return new Action(label, clickPendingIntent, resolving);
-                    }
-
-                    @Override
-                    public Action[] newArray(int size) {
-                        return new Action[size];
-                    }
-                };
-
-        @NonNull
-        private final CharSequence mLabel;
-
-        @NonNull
-        private final PendingIntent mClickPendingIntent;
-
-        private final boolean mResolving;
-
-        private Action(@NonNull CharSequence label, @NonNull PendingIntent clickPendingIntent,
-                boolean resolving) {
-            this.mLabel = label;
-            this.mClickPendingIntent = clickPendingIntent;
-            this.mResolving = resolving;
-        }
-
-        /**
-         * Returns the localized label of the action to be displayed in the UI.
-         *
-         * <p>The label should indicate what action will be performed if when invoked.
-         */
-        @NonNull
-        public CharSequence getLabel() {
-            return mLabel;
-        }
-
-        /**
-         * Returns a {@link PendingIntent} to be fired when the action is clicked on.
-         *
-         * <p>The {@link PendingIntent} should perform the action referred to by
-         * {@link #getLabel()}.
-         */
-        @NonNull
-        public PendingIntent getClickPendingIntent() {
-            return mClickPendingIntent;
-        }
-
-        /**
-         * Returns whether invoking this action will fix or address the issue sufficiently for it
-         * to be considered resolved i.e. the issue will no longer need to be conveyed to the user
-         * in the UI.
-         */
-        public boolean isResolving() {
-            return mResolving;
-        }
-
-        @Override
-        public int describeContents() {
-            return 0;
-        }
-
-        @Override
-        public void writeToParcel(@NonNull Parcel dest, int flags) {
-            TextUtils.writeToParcel(mLabel, dest, flags);
-            mClickPendingIntent.writeToParcel(dest, flags);
-            dest.writeBoolean(mResolving);
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (!(o instanceof Action)) return false;
-            Action that = (Action) o;
-            return mResolving == that.mResolving
-                    && TextUtils.equals(mLabel, that.mLabel)
-                    && mClickPendingIntent.equals(that.mClickPendingIntent);
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(mLabel, mClickPendingIntent, mResolving);
-        }
-
-        @Override
-        public String toString() {
-            return "Action{"
-                    + "mLabel="
-                    + mLabel
-                    + ", mClickPendingIntent="
-                    + mClickPendingIntent
-                    + ", mResolving="
-                    + mResolving
-                    + '}';
-        }
-
-        /** Builder class for {@link Action}. */
-        public static final class Builder {
-            @NonNull
-            private final CharSequence mLabel;
-
-            @NonNull
-            private final PendingIntent mClickPendingIntent;
-
-            private boolean mResolving = false;
-
-            /** Creates a {@link Builder} for an {@link Action}. */
-            public Builder(@NonNull CharSequence label, @NonNull PendingIntent clickPendingIntent) {
-                this.mLabel = requireNonNull(label);
-                this.mClickPendingIntent = requireNonNull(clickPendingIntent);
-            }
-
-            /**
-             * Sets whether the action will resolve the safety issue.
-             *
-             * @see #isResolving()
-             */
-            @NonNull
-            public Builder setResolving(boolean resolving) {
-                this.mResolving = resolving;
-                return this;
-            }
-
-            /** Creates the {@link Action} defined by this {@link Builder}. */
-            @NonNull
-            public Action build() {
-                return new Action(mLabel, mClickPendingIntent, mResolving);
-            }
-        }
-    }
 
     @NonNull
     public static final Parcelable.Creator<SafetySourceIssue> CREATOR =
@@ -269,12 +94,10 @@ public final class SafetySourceIssue implements Parcelable {
 
     @NonNull
     private final CharSequence mTitle;
-
     @NonNull
     private final CharSequence mSummary;
-
-    private final @SeverityLevel int mSeverityLevel;
-
+    @SeverityLevel
+    private final int mSeverityLevel;
     @NonNull
     private final List<Action> mActions;
 
@@ -361,15 +184,187 @@ public final class SafetySourceIssue implements Parcelable {
                 + '}';
     }
 
+    /**
+     * All possible severity levels for the safety source issue.
+     *
+     * <p>The severity level is meant to convey the severity of the individual issue.
+     *
+     * <p>The higher the severity level, the worse the safety level of the source and the higher
+     * the threat to the user.
+     *
+     * <p>The numerical values of the levels are not used directly, rather they are used to build
+     * a continuum of levels which support relative comparison.
+     *
+     * @hide
+     */
+    @IntDef(prefix = {"SEVERITY_LEVEL_"}, value = {
+            SEVERITY_LEVEL_INFORMATION,
+            SEVERITY_LEVEL_RECOMMENDATION,
+            SEVERITY_LEVEL_CRITICAL_WARNING
+    })
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface SeverityLevel {
+    }
+
+    /**
+     * Data for an action supported from a safety issue {@link SafetySourceIssue} in the Safety
+     * Center page.
+     *
+     * <p>The purpose of the action is to allow the user to address the safety issue, either by
+     * performing a fix suggested in the issue, or by navigating the user to the source of the issue
+     * where they can be exposed to details about the issue and further suggestions to resolve it.
+     *
+     * <p>The user will be allowed to invoke the action from the UI by clicking on a UI element and
+     * consequently resolve the issue.
+     *
+     * @hide
+     */
+    @SystemApi
+    public static final class Action implements Parcelable {
+
+        @NonNull
+        public static final Parcelable.Creator<Action> CREATOR =
+                new Parcelable.Creator<Action>() {
+                    @Override
+                    public Action createFromParcel(Parcel in) {
+                        CharSequence label =
+                                requireNonNull(
+                                        TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in));
+                        PendingIntent pendingIntent =
+                                requireNonNull(PendingIntent.readPendingIntentOrNullFromParcel(in));
+                        boolean resolving = in.readBoolean();
+                        return new Action(label, pendingIntent, resolving);
+                    }
+
+                    @Override
+                    public Action[] newArray(int size) {
+                        return new Action[size];
+                    }
+                };
+
+        @NonNull
+        private final CharSequence mLabel;
+        @NonNull
+        private final PendingIntent mPendingIntent;
+        private final boolean mResolving;
+
+        private Action(@NonNull CharSequence label, @NonNull PendingIntent pendingIntent,
+                boolean resolving) {
+            this.mLabel = label;
+            this.mPendingIntent = pendingIntent;
+            this.mResolving = resolving;
+        }
+
+        /**
+         * Returns the localized label of the action to be displayed in the UI.
+         *
+         * <p>The label should indicate what action will be performed if when invoked.
+         */
+        @NonNull
+        public CharSequence getLabel() {
+            return mLabel;
+        }
+
+        /**
+         * Returns a {@link PendingIntent} to be fired when the action is clicked on.
+         *
+         * <p>The {@link PendingIntent} should perform the action referred to by
+         * {@link #getLabel()}.
+         */
+        @NonNull
+        public PendingIntent getPendingIntent() {
+            return mPendingIntent;
+        }
+
+        /**
+         * Returns whether invoking this action will fix or address the issue sufficiently for it
+         * to be considered resolved i.e. the issue will no longer need to be conveyed to the user
+         * in the UI.
+         */
+        public boolean isResolving() {
+            return mResolving;
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(@NonNull Parcel dest, int flags) {
+            TextUtils.writeToParcel(mLabel, dest, flags);
+            mPendingIntent.writeToParcel(dest, flags);
+            dest.writeBoolean(mResolving);
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof Action)) return false;
+            Action that = (Action) o;
+            return mResolving == that.mResolving
+                    && TextUtils.equals(mLabel, that.mLabel)
+                    && mPendingIntent.equals(that.mPendingIntent);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(mLabel, mPendingIntent, mResolving);
+        }
+
+        @Override
+        public String toString() {
+            return "Action{"
+                    + "mLabel="
+                    + mLabel
+                    + ", mPendingIntent="
+                    + mPendingIntent
+                    + ", mResolving="
+                    + mResolving
+                    + '}';
+        }
+
+        /** Builder class for {@link Action}. */
+        public static final class Builder {
+            @NonNull
+            private final CharSequence mLabel;
+            @NonNull
+            private final PendingIntent mPendingIntent;
+            private boolean mResolving = false;
+
+            /** Creates a {@link Builder} for an {@link Action}. */
+            public Builder(@NonNull CharSequence label, @NonNull PendingIntent pendingIntent) {
+                this.mLabel = requireNonNull(label);
+                this.mPendingIntent = requireNonNull(pendingIntent);
+            }
+
+            /**
+             * Sets whether the action will resolve the safety issue.
+             *
+             * @see #isResolving()
+             */
+            @NonNull
+            public Builder setResolving(boolean resolving) {
+                this.mResolving = resolving;
+                return this;
+            }
+
+            /** Creates the {@link Action} defined by this {@link Builder}. */
+            @NonNull
+            public Action build() {
+                return new Action(mLabel, mPendingIntent, mResolving);
+            }
+        }
+    }
+
     /** Builder class for {@link SafetySourceIssue}. */
     public static final class Builder {
         @NonNull
         private final CharSequence mTitle;
-
         @NonNull
         private final CharSequence mSummary;
-
-        private @SeverityLevel final int mSeverityLevel;
+        @SeverityLevel
+        private final int mSeverityLevel;
 
         @NonNull
         private final List<Action> mActions = new ArrayList<>();

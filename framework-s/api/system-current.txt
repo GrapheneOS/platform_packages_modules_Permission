@@ -42,3 +42,83 @@ package android.app.role {
 
 }
 
+package android.safetycenter {
+
+  public final class SafetyCenterManager {
+    method @Nullable @RequiresPermission(android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE) public android.safetycenter.SafetySourceData getLastSafetyCenterUpdate(@NonNull String);
+    method @RequiresPermission(android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE) public void sendSafetyCenterUpdate(@NonNull android.safetycenter.SafetySourceData);
+  }
+
+  public final class SafetySourceData implements android.os.Parcelable {
+    method public int describeContents();
+    method @NonNull public String getId();
+    method @NonNull public java.util.List<android.safetycenter.SafetySourceIssue> getIssues();
+    method @Nullable public android.safetycenter.SafetySourceStatus getStatus();
+    method public void writeToParcel(@NonNull android.os.Parcel, int);
+    field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetySourceData> CREATOR;
+  }
+
+  public static final class SafetySourceData.Builder {
+    ctor public SafetySourceData.Builder(@NonNull String);
+    method @NonNull public android.safetycenter.SafetySourceData.Builder addIssue(@NonNull android.safetycenter.SafetySourceIssue);
+    method @NonNull public android.safetycenter.SafetySourceData build();
+    method @NonNull public android.safetycenter.SafetySourceData.Builder clearIssues();
+    method @NonNull public android.safetycenter.SafetySourceData.Builder setStatus(@Nullable android.safetycenter.SafetySourceStatus);
+  }
+
+  public final class SafetySourceIssue implements android.os.Parcelable {
+    method public int describeContents();
+    method @NonNull public java.util.List<android.safetycenter.SafetySourceIssue.Action> getActions();
+    method public int getSeverityLevel();
+    method @NonNull public CharSequence getSummary();
+    method @NonNull public CharSequence getTitle();
+    method public void writeToParcel(@NonNull android.os.Parcel, int);
+    field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetySourceIssue> CREATOR;
+    field public static final int SEVERITY_LEVEL_CRITICAL_WARNING = 400; // 0x190
+    field public static final int SEVERITY_LEVEL_INFORMATION = 200; // 0xc8
+    field public static final int SEVERITY_LEVEL_RECOMMENDATION = 300; // 0x12c
+  }
+
+  public static final class SafetySourceIssue.Action implements android.os.Parcelable {
+    method public int describeContents();
+    method @NonNull public CharSequence getLabel();
+    method @NonNull public android.app.PendingIntent getPendingIntent();
+    method public boolean isResolving();
+    method public void writeToParcel(@NonNull android.os.Parcel, int);
+    field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetySourceIssue.Action> CREATOR;
+  }
+
+  public static final class SafetySourceIssue.Action.Builder {
+    ctor public SafetySourceIssue.Action.Builder(@NonNull CharSequence, @NonNull android.app.PendingIntent);
+    method @NonNull public android.safetycenter.SafetySourceIssue.Action build();
+    method @NonNull public android.safetycenter.SafetySourceIssue.Action.Builder setResolving(boolean);
+  }
+
+  public static final class SafetySourceIssue.Builder {
+    ctor public SafetySourceIssue.Builder(@NonNull CharSequence, @NonNull CharSequence, int);
+    method @NonNull public android.safetycenter.SafetySourceIssue.Builder addAction(@NonNull android.safetycenter.SafetySourceIssue.Action);
+    method @NonNull public android.safetycenter.SafetySourceIssue build();
+    method @NonNull public android.safetycenter.SafetySourceIssue.Builder clearActions();
+  }
+
+  public final class SafetySourceStatus implements android.os.Parcelable {
+    method public int describeContents();
+    method @NonNull public android.app.PendingIntent getPendingIntent();
+    method public int getStatusLevel();
+    method @NonNull public CharSequence getSummary();
+    method @NonNull public CharSequence getTitle();
+    method public void writeToParcel(@NonNull android.os.Parcel, int);
+    field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetySourceStatus> CREATOR;
+    field public static final int STATUS_LEVEL_CRITICAL_WARNING = 400; // 0x190
+    field public static final int STATUS_LEVEL_NONE = 100; // 0x64
+    field public static final int STATUS_LEVEL_NO_ISSUES = 200; // 0xc8
+    field public static final int STATUS_LEVEL_RECOMMENDATION = 300; // 0x12c
+  }
+
+  public static final class SafetySourceStatus.Builder {
+    ctor public SafetySourceStatus.Builder(@NonNull CharSequence, @NonNull CharSequence, int, @NonNull android.app.PendingIntent);
+    method @NonNull public android.safetycenter.SafetySourceStatus build();
+  }
+
+}
+

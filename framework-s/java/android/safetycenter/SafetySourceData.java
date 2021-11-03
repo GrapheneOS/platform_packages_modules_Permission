@@ -22,6 +22,7 @@ import static java.util.Objects.requireNonNull;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
+import android.annotation.SystemApi;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -37,7 +38,7 @@ import java.util.Objects;
  *
  * @hide
  */
-// @SystemApi -- Add this line back when ready for API council review.
+@SystemApi
 // TODO(b/207399899): Add timestamp field(s) to data model classes.
 @RequiresApi(TIRAMISU)
 public final class SafetySourceData implements Parcelable {
@@ -55,6 +56,7 @@ public final class SafetySourceData implements Parcelable {
                     in.readParcelableList(issues, SafetySourceIssue.class.getClassLoader());
                     return new SafetySourceData(id, status, issues);
                 }
+
                 @Override
                 public SafetySourceData[] newArray(int size) {
                     return new SafetySourceData[size];
@@ -63,10 +65,8 @@ public final class SafetySourceData implements Parcelable {
 
     @NonNull
     private final String mId;
-
     @Nullable
     private final SafetySourceStatus mStatus;
-
     @NonNull
     private final List<SafetySourceIssue> mIssues;
 
@@ -143,17 +143,16 @@ public final class SafetySourceData implements Parcelable {
     public static final class Builder {
         @NonNull
         private final String mId;
-
+        @NonNull
+        private final List<SafetySourceIssue> mIssues = new ArrayList<>();
         @Nullable
         private SafetySourceStatus mStatus;
 
-        @NonNull
-        private final List<SafetySourceIssue> mIssues = new ArrayList<>();
-
-        /** Creates a {@link Builder} for a {@link SafetySourceData}.
+        /**
+         * Creates a {@link Builder} for a {@link SafetySourceData}.
          *
-         *  @param id uniquely identifies this safety source, scoped within the
-         *            application that is creating the safety source.
+         * @param id uniquely identifies the associated safety source, scoped within the application
+         *           that is creating the associated safety source.
          */
         public Builder(@NonNull String id) {
             this.mId = requireNonNull(id);

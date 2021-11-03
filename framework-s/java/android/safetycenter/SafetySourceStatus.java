@@ -22,6 +22,7 @@ import static java.util.Objects.requireNonNull;
 
 import android.annotation.IntDef;
 import android.annotation.NonNull;
+import android.annotation.SystemApi;
 import android.app.PendingIntent;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -39,35 +40,9 @@ import java.util.Objects;
  *
  * @hide
  */
-// @SystemApi -- Add this line back when ready for API council review.
+@SystemApi
 @RequiresApi(TIRAMISU)
 public final class SafetySourceStatus implements Parcelable {
-
-    /**
-     * All possible status levels for the safety source status.
-     *
-     * <p>The status level is meant to convey the overall state of the safety source and contributes
-     * to the top-level safety status of the user. Choose the status level to represent the most
-     * severe of all the safety source's issues.
-     *
-     * <p>The numerical values of the levels are not used directly, rather they are used to build
-     * a continuum of levels which support relative comparison.
-     *
-     * <p>The higher the status level, the worse the safety level of the source and the higher
-     * the threat to the user.
-     *
-     * @hide
-     */
-    // TODO(b/205806500): Determine full list of status levels. We may add a new one to signify
-    //  that there was an error retrieving data.
-    @IntDef(prefix = { "STATUS_LEVEL_" }, value = {
-            STATUS_LEVEL_NONE,
-            STATUS_LEVEL_NO_ISSUES,
-            STATUS_LEVEL_RECOMMENDATION,
-            STATUS_LEVEL_CRITICAL_WARNING
-    })
-    @Retention(RetentionPolicy.SOURCE)
-    public @interface StatusLevel {}
 
     /**
      * Indicates that no status is associated with the information. This status will be reflected in
@@ -103,9 +78,9 @@ public final class SafetySourceStatus implements Parcelable {
                     CharSequence summary =
                             requireNonNull(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in));
                     int statusLevel = in.readInt();
-                    PendingIntent clickPendingIntent =
+                    PendingIntent pendingIntent =
                             requireNonNull(PendingIntent.readPendingIntentOrNullFromParcel(in));
-                    return new SafetySourceStatus(title, summary, statusLevel, clickPendingIntent);
+                    return new SafetySourceStatus(title, summary, statusLevel, pendingIntent);
                 }
 
                 @Override
@@ -116,20 +91,19 @@ public final class SafetySourceStatus implements Parcelable {
 
     @NonNull
     private final CharSequence mTitle;
-
     @NonNull
     private final CharSequence mSummary;
-
-    private final @StatusLevel int mStatusLevel;
-
-    @NonNull final PendingIntent mClickPendingIntent;
+    @StatusLevel
+    private final int mStatusLevel;
+    @NonNull
+    private final PendingIntent mPendingIntent;
 
     private SafetySourceStatus(@NonNull CharSequence title, @NonNull CharSequence summary,
-            @StatusLevel int statusLevel, @NonNull PendingIntent clickPendingIntent) {
+            @StatusLevel int statusLevel, @NonNull PendingIntent pendingIntent) {
         this.mTitle = title;
         this.mSummary = summary;
         this.mStatusLevel = statusLevel;
-        this.mClickPendingIntent = clickPendingIntent;
+        this.mPendingIntent = pendingIntent;
     }
 
     /** Returns the localized title of the safety source status to be displayed in the UI. */
@@ -155,8 +129,8 @@ public final class SafetySourceStatus implements Parcelable {
      * clicked on.
      */
     @NonNull
-    public PendingIntent getClickPendingIntent() {
-        return mClickPendingIntent;
+    public PendingIntent getPendingIntent() {
+        return mPendingIntent;
     }
 
     @Override
@@ -169,7 +143,7 @@ public final class SafetySourceStatus implements Parcelable {
         TextUtils.writeToParcel(mTitle, dest, flags);
         TextUtils.writeToParcel(mSummary, dest, flags);
         dest.writeInt(mStatusLevel);
-        mClickPendingIntent.writeToParcel(dest, flags);
+        mPendingIntent.writeToParcel(dest, flags);
     }
 
     @Override
@@ -180,12 +154,12 @@ public final class SafetySourceStatus implements Parcelable {
         return mStatusLevel == that.mStatusLevel
                 && TextUtils.equals(mTitle, that.mTitle)
                 && TextUtils.equals(mSummary, that.mSummary)
-                && mClickPendingIntent.equals(that.mClickPendingIntent);
+                && mPendingIntent.equals(that.mPendingIntent);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mTitle, mSummary, mStatusLevel, mClickPendingIntent);
+        return Objects.hash(mTitle, mSummary, mStatusLevel, mPendingIntent);
     }
 
     @Override
@@ -197,37 +171,62 @@ public final class SafetySourceStatus implements Parcelable {
                 + mSummary
                 + ", mStatusLevel="
                 + mStatusLevel
-                + ", mClickPendingIntent="
-                + mClickPendingIntent
+                + ", mPendingIntent="
+                + mPendingIntent
                 + '}';
+    }
+
+    /**
+     * All possible status levels for the safety source status.
+     *
+     * <p>The status level is meant to convey the overall state of the safety source and contributes
+     * to the top-level safety status of the user. Choose the status level to represent the most
+     * severe of all the safety source's issues.
+     *
+     * <p>The numerical values of the levels are not used directly, rather they are used to build
+     * a continuum of levels which support relative comparison.
+     *
+     * <p>The higher the status level, the worse the safety level of the source and the higher
+     * the threat to the user.
+     *
+     * @hide
+     */
+    // TODO(b/205806500): Determine full list of status levels. We may add a new one to signify
+    //  that there was an error retrieving data.
+    @IntDef(prefix = {"STATUS_LEVEL_"}, value = {
+            STATUS_LEVEL_NONE,
+            STATUS_LEVEL_NO_ISSUES,
+            STATUS_LEVEL_RECOMMENDATION,
+            STATUS_LEVEL_CRITICAL_WARNING
+    })
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface StatusLevel {
     }
 
     /** Builder class for {@link SafetySourceStatus}. */
     public static final class Builder {
         @NonNull
         private final CharSequence mTitle;
-
         @NonNull
         private final CharSequence mSummary;
-
-        private @StatusLevel final int mStatusLevel;
-
+        @StatusLevel
+        private final int mStatusLevel;
         @NonNull
-        private final PendingIntent mClickPendingIntent;
+        private final PendingIntent mPendingIntent;
 
         /** Creates a {@link Builder} for a {@link SafetySourceStatus}. */
         public Builder(@NonNull CharSequence title, @NonNull CharSequence summary,
-                @StatusLevel int statusLevel, @NonNull PendingIntent clickPendingIntent) {
+                @StatusLevel int statusLevel, @NonNull PendingIntent pendingIntent) {
             this.mTitle = requireNonNull(title);
             this.mSummary = requireNonNull(summary);
             this.mStatusLevel = statusLevel;
-            this.mClickPendingIntent = requireNonNull(clickPendingIntent);
+            this.mPendingIntent = requireNonNull(pendingIntent);
         }
 
         /** Creates the {@link SafetySourceStatus} defined by this {@link Builder}. */
         @NonNull
         public SafetySourceStatus build() {
-            return new SafetySourceStatus(mTitle, mSummary, mStatusLevel, mClickPendingIntent);
+            return new SafetySourceStatus(mTitle, mSummary, mStatusLevel, mPendingIntent);
         }
     }
 }
