@@ -114,7 +114,7 @@ public final class SafetyIssueData implements Parcelable {
         return mSummary;
     }
 
-    /** Returns the {@link SeverityLevel} of the safety issues. */
+    /** Returns the {@link SeverityLevel} of the safety issue. */
     @SeverityLevel
     public int getSeverityLevel() {
         return mSeverityLevel;
@@ -149,7 +149,7 @@ public final class SafetyIssueData implements Parcelable {
 
     @Override
     public String toString() {
-        return "SafetyIssue{"
+        return "SafetyIssueData{"
                 + "mTitle='"
                 + mTitle
                 + '\''
