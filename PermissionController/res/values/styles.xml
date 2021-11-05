@@ -1152,7 +1152,8 @@
     </style>
 
     <style name="WarningBannerButton">
-        <item name="android:layout_height">36dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:minWidth">48dp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_alignParentBottom">true</item>
         <item name="android:layout_alignParentEnd">true</item>
