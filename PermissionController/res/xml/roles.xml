@@ -544,6 +544,7 @@
         visible="false">
         <permissions>
             <!-- Used for CTS testing -->
+            <permission name="android.permission.CREATE_VIRTUAL_DEVICE" minSdkVersion="33" />
             <permission name="android.permission.ACCESS_RCS_USER_CAPABILITY_EXCHANGE" />
             <permission name="android.permission.PERFORM_IMS_SINGLE_REGISTRATION" />
             <permission name="android.permission.BACKGROUND_CAMERA" />
@@ -997,8 +998,7 @@
         systemOnly="true"
         visible="false">
         <permissions>
-            <!--TODO(b/194949534) For calling VirtualDevice API-->
-            <!--<permission name="android.permission.CREATE_VIRTUAL_DEVICE" />-->
+            <permission name="android.permission.CREATE_VIRTUAL_DEVICE" minSdkVersion="33" />
 
             <!--TODO(b/201605314) For calling Telecom framework API for audio streaming-->
             <!--<permission name="android.permission.PROVIDE_CALL_ENDPOINTS" />-->
