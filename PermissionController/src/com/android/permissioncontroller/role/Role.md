@@ -46,7 +46,10 @@ role behavior in Java code, e.g. `SmsRoleBehavior`. This can be useful when the 
 express certain behavior specific to the role.
 - `defaultHolders`: Optional name of a system config resource that designates the default holders of
 the role, e.g. `config_defaultSms`. If the role is not exclusive, multiple package names can be
-specified by separating them with a semicolon (`;`).
+specified by separating them with a semicolon (`;`). Each package name can also be optionally
+followed by a SHA-256 digest of the expected signing certificate to allow specifying non-system
+apps, separated by a colon (`:`) with the package name, for instance
+`com.example.normalapp:sha256;com.example.systemapp`.
 - `description`: The string resource for the description of the role, e.g.
 `@string/role_sms_description`, which says "Apps that allow you to use your phone number to send and
 receive short text messages, photos, videos, and more". For default apps, this string will appear in
