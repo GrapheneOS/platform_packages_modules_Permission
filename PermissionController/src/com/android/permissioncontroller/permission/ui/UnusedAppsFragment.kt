@@ -26,6 +26,7 @@ import android.os.Bundle
 import android.os.UserHandle
 import android.util.Log
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.Preference
@@ -52,9 +53,9 @@ import java.text.Collator
  * A fragment displaying all applications that are unused as well as the option to remove them
  * and to open them.
  */
-class UnusedAppsFragment<PF, UnusedAppPref> : PreferenceFragmentCompat()
+class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
     where PF : PreferenceFragmentCompat, PF : UnusedAppsFragment.Parent<UnusedAppPref>,
-          UnusedAppPref : Preference, UnusedAppPref : RemovablePref {
+        UnusedAppPref : Preference, UnusedAppPref : RemovablePref {
 
     private lateinit var viewModel: UnusedAppsViewModel
     private lateinit var collator: Collator
@@ -88,10 +89,6 @@ class UnusedAppsFragment<PF, UnusedAppPref> : PreferenceFragmentCompat()
             bundle.putLong(EXTRA_SESSION_ID, sessionId)
             return bundle
         }
-    }
-
-    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        // empty
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -152,14 +149,15 @@ class UnusedAppsFragment<PF, UnusedAppPref> : PreferenceFragmentCompat()
      */
     private fun createPreferenceScreen() {
         val preferenceFragment: PF = requirePreferenceFragment()
-        val preferenceScreen = preferenceManager.inflateFromResource(
+        val preferenceScreen = preferenceFragment.preferenceManager.inflateFromResource(
             context,
             R.xml.unused_app_categories,
             /* rootPreferences= */ null)
         preferenceFragment.preferenceScreen = preferenceScreen
 
         val infoMsgCategory = preferenceScreen.findPreference<PreferenceCategory>(INFO_MSG_CATEGORY)
-        val footerPreference = preferenceFragment.createFooterPreference(context!!)
+        val footerPreference = preferenceFragment.createFooterPreference(
+                preferenceFragment.preferenceManager.context)
         footerPreference.key = INFO_MSG_KEY
         infoMsgCategory?.addPreference(footerPreference)
     }
@@ -210,7 +208,8 @@ class UnusedAppsFragment<PF, UnusedAppPref> : PreferenceFragmentCompat()
                 var pref = category.findPreference<UnusedAppPref>(key)
                 if (pref == null) {
                     pref = removedPrefs[key] ?: preferenceFragment.createUnusedAppPref(
-                        activity!!.application, pkgName, user, preferenceManager.context!!)
+                        activity!!.application, pkgName, user,
+                        preferenceFragment.preferenceManager.context)
                     pref.key = key
                     pref.title = KotlinUtils.getPackageLabel(activity!!.application, pkgName, user)
                 }
