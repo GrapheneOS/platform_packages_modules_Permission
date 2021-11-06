@@ -45,6 +45,7 @@ public class CardViewPreference extends Preference {
         super.onBindViewHolder(holder);
         Button button = (Button) holder.findViewById(R.id.button_id);
         button.setText(R.string.blocked_sensor_button_label);
+        button.setContentDescription(getContext().getString(R.string.blocked_sensor_button_label));
         button.setVisibility(View.VISIBLE);
         button.setOnClickListener(v -> {
             getContext().startActivity(new Intent(mAction));
