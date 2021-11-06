@@ -39,6 +39,7 @@
             <Button
                 android:id="@+id/button_id"
                 android:layout_below="@android:id/summary"
+                android:focusable="true"
                 style="@style/WarningBannerButton" />
 
         </RelativeLayout>
