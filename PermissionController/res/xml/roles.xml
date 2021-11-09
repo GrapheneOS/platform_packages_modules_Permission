@@ -1016,6 +1016,10 @@
         </permissions>
     </role>
 
+    <!---
+      ~ A role for the companion device package that create and manage connections to connected
+      ~ devices and perform app streaming to the devices.
+      -->
     <role
         name="android.app.role.COMPANION_DEVICE_APP_STREAMING"
         allowBypassingQualification="true"
@@ -1027,6 +1031,8 @@
         visible="false">
         <permissions>
             <permission-set name="notifications" />
+            <!-- For capturing audio from the app on the device. -->
+            <permission name="android.permission.RECORD_AUDIO" />
             <permission name="android.permission.CREATE_VIRTUAL_DEVICE" minSdkVersion="33" />
 
             <!--TODO(b/201605314) For calling Telecom framework API for audio streaming-->
