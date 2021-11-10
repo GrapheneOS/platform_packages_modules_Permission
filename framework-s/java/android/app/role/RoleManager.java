@@ -37,9 +37,10 @@ import android.os.UserHandle;
 import android.util.ArrayMap;
 import android.util.SparseArray;
 
+import androidx.annotation.RequiresApi;
+
 import com.android.internal.annotations.GuardedBy;
 import com.android.internal.util.Preconditions;
-import com.android.modules.annotation.MinSdk;
 
 import java.util.List;
 import java.util.Objects;
@@ -550,7 +551,7 @@ public final class RoleManager {
      *
      * @hide
      */
-    @MinSdk(Build.VERSION_CODES.S)
+    @RequiresApi(Build.VERSION_CODES.S)
     @RequiresPermission(Manifest.permission.MANAGE_ROLE_HOLDERS)
     @SystemApi
     public boolean isBypassingRoleQualification() {
@@ -572,7 +573,7 @@ public final class RoleManager {
      *
      * @hide
      */
-    @MinSdk(Build.VERSION_CODES.S)
+    @RequiresApi(Build.VERSION_CODES.S)
     @RequiresPermission(Manifest.permission.BYPASS_ROLE_QUALIFICATION)
     @SystemApi
     public void setBypassingRoleQualification(boolean bypassRoleQualification) {
@@ -715,7 +716,7 @@ public final class RoleManager {
      *
      * @hide
      */
-    @MinSdk(Build.VERSION_CODES.S)
+    @RequiresApi(Build.VERSION_CODES.S)
     @Nullable
     @SystemApi(client = SystemApi.Client.MODULE_LIBRARIES)
     public String getBrowserRoleHolder(@UserIdInt int userId) {
@@ -738,7 +739,7 @@ public final class RoleManager {
      *
      * @hide
      */
-    @MinSdk(Build.VERSION_CODES.S)
+    @RequiresApi(Build.VERSION_CODES.S)
     @Nullable
     @RequiresPermission(Manifest.permission.SET_PREFERRED_APPLICATIONS)
     @SystemApi(client = SystemApi.Client.MODULE_LIBRARIES)
@@ -760,7 +761,7 @@ public final class RoleManager {
      *
      * @hide
      */
-    @MinSdk(Build.VERSION_CODES.S)
+    @RequiresApi(Build.VERSION_CODES.S)
     @Nullable
     @SystemApi(client = SystemApi.Client.MODULE_LIBRARIES)
     public String getSmsRoleHolder(@UserIdInt int userId) {
@@ -780,7 +781,7 @@ public final class RoleManager {
      *
      * @hide
      */
-    @MinSdk(Build.VERSION_CODES.S)
+    @RequiresApi(Build.VERSION_CODES.S)
     @RequiresPermission(Manifest.permission.MANAGE_ROLE_HOLDERS)
     @SystemApi
     public void isRoleVisible(@NonNull String roleName,
@@ -802,7 +803,7 @@ public final class RoleManager {
      *
      * @hide
      */
-    @MinSdk(Build.VERSION_CODES.S)
+    @RequiresApi(Build.VERSION_CODES.S)
     @RequiresPermission(Manifest.permission.MANAGE_ROLE_HOLDERS)
     @SystemApi
     public void isApplicationVisibleForRole(@NonNull String roleName, @NonNull String packageName,
