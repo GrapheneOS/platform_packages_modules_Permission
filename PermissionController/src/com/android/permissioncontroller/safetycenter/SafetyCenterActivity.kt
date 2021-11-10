@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.android.permissioncontroller.securityhub
+package com.android.permissioncontroller.safetycenter
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -21,16 +21,16 @@ import android.os.Bundle
 import android.widget.TextView
 
 /**
- * Entry-point activity for SecurityHub.
+ * Entry-point activity for SafetyCenter.
  */
-// TODO(b/200665463): Implement SecurityHub UI on Android T.
-class SecurityHubActivity : Activity() {
+// TODO(b/200665463): Implement SafetyCenter UI on Android T.
+class SafetyCenterActivity : Activity() {
 
     @SuppressLint("SetTextI18n") // This is just a skeleton for now.
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val securityHubText = TextView(this)
-        securityHubText.text = "SecurityHub"
-        setContentView(securityHubText)
+        val safetyCenterText = TextView(this)
+        safetyCenterText.text = "SafetyCenter"
+        setContentView(safetyCenterText)
     }
 }
