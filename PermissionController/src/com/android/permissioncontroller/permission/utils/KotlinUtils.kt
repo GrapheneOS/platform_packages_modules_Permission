@@ -510,6 +510,18 @@ object KotlinUtils {
                 shouldKillForAnyPermission = shouldKillForAnyPermission || shouldKill
             }
         }
+        if (!newPerms.isEmpty()) {
+            val user = UserHandle.getUserHandleForUid(group.packageInfo.uid)
+            for (groupPerm in group.allPermissions.values) {
+                var permFlags = groupPerm!!.flags
+                permFlags = permFlags.clearFlag(PackageManager.FLAG_PERMISSION_AUTO_REVOKED)
+                if (groupPerm!!.flags != permFlags) {
+                    app.packageManager.updatePermissionFlags(groupPerm!!.name,
+                        group.packageInfo.packageName, PERMISSION_CONTROLLER_CHANGED_FLAG_MASK,
+                        permFlags, user)
+                }
+            }
+        }
 
         if (shouldKillForAnyPermission) {
             (app.getSystemService(ActivityManager::class.java) as ActivityManager).killUid(
