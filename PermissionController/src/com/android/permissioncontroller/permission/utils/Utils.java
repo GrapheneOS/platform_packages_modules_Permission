@@ -200,6 +200,8 @@ public final class Utils {
     private static final ArrayMap<String, Integer> PERM_SENSOR_CODES;
     /** Permission -> Icon res id */
     private static final ArrayMap<String, Integer> PERM_BLOCKED_ICON;
+    /** Permission -> Title res id */
+    private static final ArrayMap<String, Integer> PERM_BLOCKED_TITLE;
 
     public static final int FLAGS_ALWAYS_USER_SENSITIVE =
             FLAG_PERMISSION_USER_SENSITIVE_WHEN_GRANTED
@@ -377,6 +379,12 @@ public final class Utils {
         PERM_BLOCKED_ICON.put(CAMERA, R.drawable.ic_camera_blocked);
         PERM_BLOCKED_ICON.put(MICROPHONE, R.drawable.ic_mic_blocked);
         PERM_BLOCKED_ICON.put(LOCATION, R.drawable.ic_location_blocked);
+
+        PERM_BLOCKED_TITLE = new ArrayMap<>();
+        PERM_BLOCKED_TITLE.put(CAMERA, R.string.blocked_camera_title);
+        PERM_BLOCKED_TITLE.put(MICROPHONE, R.string.blocked_microphone_title);
+        PERM_BLOCKED_TITLE.put(LOCATION, R.string.blocked_location_title);
+
     }
 
     private Utils() {
@@ -1309,6 +1317,13 @@ public final class Utils {
      **/
     public static int getBlockedIcon(@NonNull String permissionGroupName) {
         return PERM_BLOCKED_ICON.getOrDefault(permissionGroupName, -1);
+    }
+
+    /**
+     * Returns the blocked title code for a permission
+     **/
+    public static int getBlockedTitle(@NonNull String permissionGroupName) {
+        return PERM_BLOCKED_TITLE.getOrDefault(permissionGroupName, -1);
     }
 
     /**
