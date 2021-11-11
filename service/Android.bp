@@ -92,13 +92,12 @@ java_sdk_library {
         ":service-permission-javastream-protos",
     ],
     libs: [
+        "androidx.annotation_annotation",
         // TODO(b/177884622): Short term solution to prevent service-permission from seeing hidden
         //  APIs in framework-permission, as we don't actually have any dependency in it.
         //"framework-permission",
         "framework-permission-s.impl",
-        "androidx.annotation_annotation",
         "framework-permission-s-shared",
-        "modules-annotation-minsdk",
     ],
     static_libs: [
         "modules-utils-backgroundthread",
