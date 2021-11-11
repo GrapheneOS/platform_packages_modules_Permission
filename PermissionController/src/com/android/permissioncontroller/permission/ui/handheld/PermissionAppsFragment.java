@@ -63,7 +63,6 @@ import com.android.settingslib.utils.applications.AppUtils;
 import java.text.Collator;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
 
@@ -262,9 +261,6 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
 
     @RequiresApi(Build.VERSION_CODES.S)
     private CardViewPreference createSensorCard() {
-        String label = KotlinUtils.INSTANCE.getPermGroupLabel(getPreferenceManager().getContext(),
-                mPermGroupName).toString().toLowerCase(
-                Locale.ROOT);
         boolean isLocation = Manifest.permission_group.LOCATION.equals(mPermGroupName);
         Context context = getPreferenceManager().getContext();
         String action = isLocation ? Settings.ACTION_LOCATION_SOURCE_SETTINGS
@@ -272,9 +268,7 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
         CardViewPreference sensorCard = new CardViewPreference(context, action);
         sensorCard.setKey(BLOCKED_SENSOR_PREF_KEY);
         sensorCard.setIcon(Utils.getBlockedIcon(mPermGroupName));
-        int cardTitle =
-                isLocation ? R.string.blocked_location_title : R.string.blocked_sensor_title;
-        sensorCard.setTitle(context.getString(cardTitle, label));
+        sensorCard.setTitle(Utils.getBlockedTitle(mPermGroupName));
         boolean isMicrophone = Manifest.permission_group.MICROPHONE.equals(mPermGroupName);
         int cardSummary =
                 isMicrophone ? R.string.blocked_mic_summary : R.string.blocked_sensor_summary;
