@@ -20,7 +20,6 @@ import android.Manifest.permission_group
 import android.app.AlertDialog
 import android.app.Application
 import android.app.Dialog
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.UserHandle
@@ -162,8 +161,7 @@ class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
         preferenceFragment.preferenceScreen = preferenceScreen
 
         val infoMsgCategory = preferenceScreen.findPreference<PreferenceCategory>(INFO_MSG_CATEGORY)
-        val footerPreference = preferenceFragment.createFooterPreference(
-                preferenceFragment.preferenceManager.context)
+        val footerPreference = preferenceFragment.createFooterPreference()
         footerPreference.key = INFO_MSG_KEY
         infoMsgCategory?.addPreference(footerPreference)
     }
@@ -214,8 +212,7 @@ class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
                 var pref = category.findPreference<UnusedAppPref>(key)
                 if (pref == null) {
                     pref = removedPrefs[key] ?: preferenceFragment.createUnusedAppPref(
-                        activity!!.application, pkgName, user,
-                        preferenceFragment.preferenceManager.context)
+                        activity!!.application, pkgName, user)
                     pref.key = key
                     pref.title = KotlinUtils.getPackageLabel(activity!!.application, pkgName, user)
                 }
@@ -351,10 +348,8 @@ class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
         /**
          * Creates the footer preference that explains why permissions have been re-used and how an
          * app can re-request them.
-         *
-         * @param context The current context
          */
-        fun createFooterPreference(context: Context): Preference
+        fun createFooterPreference(): Preference
 
         /**
          * Sets the loading state of the view.
@@ -371,13 +366,11 @@ class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
          * @param app The current application
          * @param packageName The name of the package whose icon this preference will retrieve
          * @param user The user whose package icon will be retrieved
-         * @param context The current context
          */
         fun createUnusedAppPref(
             app: Application,
             packageName: String,
-            user: UserHandle,
-            context: Context
+            user: UserHandle
         ): UnusedAppPref
 
         /**

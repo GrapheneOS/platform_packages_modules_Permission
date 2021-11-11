@@ -165,7 +165,7 @@ public class DefaultAppListChildFragment<PF extends PreferenceFragmentCompat
             Role role = roleItem.getRole();
             Preference preference = oldPreferences.get(role.getName());
             if (preference == null) {
-                preference = (Preference) preferenceFragment.createPreference(context);
+                preference = (Preference) preferenceFragment.createPreference();
                 preference.setKey(role.getName());
                 preference.setIconSpaceReserved(true);
                 preference.setTitle(role.getShortLabelResource());
@@ -276,12 +276,10 @@ public class DefaultAppListChildFragment<PF extends PreferenceFragmentCompat
         /**
          * Create a new preference for a default app.
          *
-         * @param context the {@code Context} to use when creating the preference.
-         *
          * @return a new preference for a default app
          */
         @NonNull
-        TwoTargetPreference createPreference(@NonNull Context context);
+        TwoTargetPreference createPreference();
 
         /**
          * Callback when changes have been made to the {@link PreferenceScreen} of the parent
