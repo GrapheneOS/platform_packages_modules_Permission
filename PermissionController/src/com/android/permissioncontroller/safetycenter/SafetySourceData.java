@@ -25,6 +25,8 @@ import android.os.Parcelable;
 
 import androidx.annotation.RequiresApi;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -33,17 +35,24 @@ import java.util.Objects;
  *
  * @hide
  */
-// @SystemApi
+// @SystemApi -- Add this line back when ready for API council review.
 @RequiresApi(TIRAMISU)
 // TODO(b/205551986): Move this to the right place and add back the NonNull annotations once
-// b/205289292 is fixed.
+//  b/205289292 is fixed.
+// TODO(b/206089303): Add Builders as more fields are added to this class.
 public final class SafetySourceData implements Parcelable {
     public static final Parcelable.Creator<SafetySourceData> CREATOR =
             new Parcelable.Creator<SafetySourceData>() {
                 @Override
                 public SafetySourceData createFromParcel(Parcel in) {
-                    String id = requireNonNull(in.readString());
-                    return new SafetySourceData(id);
+                    String safetySourceId = requireNonNull(in.readString());
+                    SafetyPreferenceData safetyPreferenceData =
+                            requireNonNull(
+                                    in.readParcelable(SafetyPreferenceData.class.getClassLoader()));
+                    List<SafetyIssueData> safetyIssuesData = new ArrayList<>();
+                    in.readParcelableList(safetyIssuesData, SafetyIssueData.class.getClassLoader());
+                    return new SafetySourceData(safetySourceId,
+                            safetyPreferenceData, safetyIssuesData);
                 }
 
                 @Override
@@ -52,18 +61,34 @@ public final class SafetySourceData implements Parcelable {
                 }
             };
 
-    private final String mId;
+    private final String mSafetySourceId;
 
-    /**
-     * Creates a new {@link SafetySourceData} based on the id of the associated source.
-     */
-    public SafetySourceData(String id) {
-        this.mId = id;
+    private final SafetyPreferenceData mSafetyPreferenceData;
+
+    private final List<SafetyIssueData> mSafetyIssuesData;
+
+    /** Creates a new {@link SafetySourceData}. */
+    public SafetySourceData(String safetySourceId,
+            SafetyPreferenceData safetyPreferenceData,
+            List<SafetyIssueData> safetyIssuesData) {
+        this.mSafetySourceId = safetySourceId;
+        this.mSafetyPreferenceData = safetyPreferenceData;
+        this.mSafetyIssuesData = new ArrayList<>(safetyIssuesData);
     }
 
-    /** Returns the id of the associated source. */
-    public String getId() {
-        return mId;
+    /** Returns the id of the associated safety source. */
+    public String getSafetySourceId() {
+        return mSafetySourceId;
+    }
+
+    /** Returns the data for the safety preference to be shown in UI. */
+    public SafetyPreferenceData getSafetyPreferenceData() {
+        return mSafetyPreferenceData;
+    }
+
+    /** Returns the data for the list of safety issues to be shown in UI. */
+    public List<SafetyIssueData> getSafetyIssuesData() {
+        return new ArrayList<>(mSafetyIssuesData);
     }
 
     @Override
@@ -73,7 +98,9 @@ public final class SafetySourceData implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(mId);
+        dest.writeString(mSafetySourceId);
+        dest.writeParcelable(mSafetyPreferenceData, flags);
+        dest.writeParcelableList(mSafetyIssuesData, flags);
     }
 
     @Override
@@ -81,20 +108,26 @@ public final class SafetySourceData implements Parcelable {
         if (this == o) return true;
         if (!(o instanceof SafetySourceData)) return false;
         SafetySourceData that = (SafetySourceData) o;
-        return mId.equals(that.mId);
+        return mSafetySourceId.equals(that.mSafetySourceId)
+                && mSafetyPreferenceData.equals(that.mSafetyPreferenceData)
+                && mSafetyIssuesData.equals(that.mSafetyIssuesData);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mId);
+        return Objects.hash(mSafetySourceId, mSafetyPreferenceData, mSafetyIssuesData);
     }
 
     @Override
     public String toString() {
         return "SafetySourceData{"
-                + "mId='"
-                + mId
+                + "mSafetySourceId='"
+                + mSafetySourceId
                 + '\''
+                + ", mSafetyPreferenceData="
+                + mSafetyPreferenceData
+                + ", mSafetyIssuesData="
+                + mSafetyIssuesData
                 + '}';
     }
 }
