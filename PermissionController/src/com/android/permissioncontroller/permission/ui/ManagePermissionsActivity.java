@@ -304,6 +304,7 @@ public final class ManagePermissionsActivity extends SettingsActivity {
 
                 String permissionGroupName = getIntent().getStringExtra(
                         Intent.EXTRA_PERMISSION_GROUP_NAME);
+
                 if (permissionGroupName == null) {
                     try {
                         PermissionInfo permInfo = getPackageManager().getPermissionInfo(
@@ -312,6 +313,10 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                     } catch (PackageManager.NameNotFoundException e) {
                         Log.i(LOG_TAG, "Permission " + permissionName + " does not exist");
                     }
+                }
+
+                if (permissionGroupName == null) {
+                    permissionGroupName = permissionName;
                 }
 
                 if (permissionName == null && permissionGroupName == null) {
@@ -328,14 +333,12 @@ public final class ManagePermissionsActivity extends SettingsActivity {
 
                 if (DeviceUtils.isAuto(this)) {
                     androidXFragment =
-                            AutoPermissionAppsFragment.newInstance(permissionName, sessionId);
+                            AutoPermissionAppsFragment.newInstance(permissionGroupName, sessionId);
                 } else if (DeviceUtils.isTelevision(this)) {
                     androidXFragment = com.android.permissioncontroller.permission.ui.television
-                            .PermissionAppsFragment.newInstance(permissionName);
+                            .PermissionAppsFragment.newInstance(permissionGroupName);
                 } else {
-
                     Bundle args = PermissionAppsFragment.createArgs(permissionGroupName, sessionId);
-                    args.putString(Intent.EXTRA_PERMISSION_NAME, permissionName);
                     setNavGraph(args, R.id.permission_apps);
                     return;
                 }
