@@ -1342,15 +1342,4 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <!-- Info label for permissions for apps holding special exempted roles. [CHAR LIMIT=none] -->
     <string name="exempt_info_label"><xliff:g id="app_name" example="Gmail">%1$s</xliff:g> is protected by Android. Because your data is processed on this device, this app’s permission usage isn’t shown on your privacy dashboard. </string>
 
-    <!-- Info label for the warning banner title if sensor is blocked [CHAR LIMIT=none] -->
-    <string name="blocked_sensor_title">Device <xliff:g id="sensor_name" example="camera">%1$s</xliff:g> is blocked</string>
-    <!-- Info label for the warning banner title if location is off [CHAR LIMIT=none] -->
-    <string name="blocked_location_title">Device <xliff:g id="sensor_name" example="location">%1$s</xliff:g> is off</string>
-    <!-- Info label to display that the sensor is blocked for apps and services [CHAR LIMIT=none] -->
-    <string name="blocked_sensor_summary">For apps and services</string>
-    <!-- Info label to display that the mic is blocked for apps and services [CHAR LIMIT=none] -->
-    <string name="blocked_mic_summary">Microphone data may still be shared when you call an emergency number.</string>
-    <!-- Label for the button to change the sensor status  [CHAR LIMIT=none] -->
-    <string name="blocked_sensor_button_label">Change</string>
-
 </resources>
