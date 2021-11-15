@@ -269,7 +269,17 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
     }
 
     private void updatePreferences(Map<Category, List<GroupUiInfo>> groupMap) {
-        if (groupMap == null) {
+        if (groupMap == null && mViewModel.getPackagePermGroupsLiveData().isInitialized()) {
+            // null because explicitly set to null
+            Toast.makeText(
+                    getActivity(), R.string.app_not_found_dlg_title, Toast.LENGTH_LONG).show();
+            Log.w(LOG_TAG, "invalid package " + mPackageName);
+
+            pressBack(this);
+
+            return;
+        } else if (groupMap == null) {
+            // null because uninitialized
             return;
         }
 
@@ -280,15 +290,6 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
             return;
         }
 
-        if (groupMap == null && mViewModel.getPackagePermGroupsLiveData().isInitialized()) {
-            Toast.makeText(
-                    getActivity(), R.string.app_not_found_dlg_title, Toast.LENGTH_LONG).show();
-            Log.w(LOG_TAG, "invalid package " + mPackageName);
-
-            pressBack(this);
-
-            return;
-        }
 
         Map<String, Long> groupUsageLastAccessTime = new HashMap<>();
         mViewModel.extractGroupUsageLastAccessTime(groupUsageLastAccessTime, mAppPermissionUsages,
