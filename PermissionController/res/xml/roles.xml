@@ -568,6 +568,7 @@
 
     <role
         name="android.app.role.SYSTEM_SPEECH_RECOGNIZER"
+        allowBypassingQualification="true"
         defaultHolders="config_systemSpeechRecognizer"
         exclusive="true"
         minSdkVersion="31"
