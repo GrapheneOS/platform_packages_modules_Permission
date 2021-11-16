@@ -571,7 +571,7 @@ class AppPermissionViewModel(
                 (wasBackgroundGranted || group.background.isUserFixed ||
                         group.isOneTime != setOneTime)) {
             newGroup = KotlinUtils
-                    .revokeBackgroundRuntimePermissions(app, newGroup)
+                    .revokeBackgroundRuntimePermissions(app, newGroup, oneTime = setOneTime)
 
             // only log if we have actually denied permissions, not if we switch from
             // "ask every time" to denied
