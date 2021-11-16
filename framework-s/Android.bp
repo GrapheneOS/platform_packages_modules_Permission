@@ -74,6 +74,7 @@ java_sdk_library {
     permitted_packages: [
         "android.permission",
         "android.app.role",
+        "android.safetycenter",
         // For com.android.permission.jarjar.
         "com.android.permission",
     ],

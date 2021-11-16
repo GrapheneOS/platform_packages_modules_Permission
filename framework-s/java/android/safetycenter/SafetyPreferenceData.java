@@ -14,16 +14,17 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.safetycenter;
+package android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
 import static java.util.Objects.requireNonNull;
 
+import android.annotation.IntDef;
+import android.annotation.NonNull;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import androidx.annotation.IntDef;
 import androidx.annotation.RequiresApi;
 
 import java.lang.annotation.Retention;
@@ -39,7 +40,6 @@ import java.util.Objects;
 // @SystemApi -- Add this line back when ready for API council review.
 // TODO(b/205551986): Move this class into `framework-s`, add NonNull annotations, replace usages of
 //  `androidx.annotation.IntDef` with `android.annotation.IntDef` and add prefixes to IntDefs.
-// TODO(b/206089303): Add Builders as more fields are added to this class.
 @RequiresApi(TIRAMISU)
 public final class SafetyPreferenceData implements Parcelable {
 
@@ -50,7 +50,7 @@ public final class SafetyPreferenceData implements Parcelable {
      */
     // TODO(b/205806500): Determine full list of severity levels. We may add a new one to signify
     //  that there was an error retrieving data.
-    @IntDef({
+    @IntDef(prefix = { "SEVERITY_LEVEL_" }, value = {
             SEVERITY_LEVEL_NONE,
             SEVERITY_LEVEL_NO_ISSUES,
             SEVERITY_LEVEL_RECOMMENDATION,
@@ -83,6 +83,7 @@ public final class SafetyPreferenceData implements Parcelable {
      */
     public static final int SEVERITY_LEVEL_CRITICAL_WARNING = 400;
 
+    @NonNull
     public static final Parcelable.Creator<SafetyPreferenceData> CREATOR =
             new Parcelable.Creator<SafetyPreferenceData>() {
                 @Override
@@ -99,14 +100,16 @@ public final class SafetyPreferenceData implements Parcelable {
                 }
             };
 
+    @NonNull
     private final String mTitle;
 
+    @NonNull
     private final String mSummary;
 
     private final @SeverityLevel int mSeverityLevel;
 
     /** Creates a {@link SafetyPreferenceData}. */
-    public SafetyPreferenceData(String title, String summary,
+    public SafetyPreferenceData(@NonNull String title, @NonNull String summary,
             @SeverityLevel int severityLevel) {
         this.mTitle = title;
         this.mSummary = summary;
@@ -114,11 +117,13 @@ public final class SafetyPreferenceData implements Parcelable {
     }
 
     /** Returns the localized title of the safety preference to be displayed in the UI. */
+    @NonNull
     public String getTitle() {
         return mTitle;
     }
 
     /** Returns the localized summary of the safety preference to be displayed in the UI. */
+    @NonNull
     public String getSummary() {
         return mSummary;
     }
@@ -135,7 +140,7 @@ public final class SafetyPreferenceData implements Parcelable {
     }
 
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeString(mTitle);
         dest.writeString(mSummary);
         dest.writeInt(mSeverityLevel);
@@ -170,4 +175,3 @@ public final class SafetyPreferenceData implements Parcelable {
                 + '}';
     }
 }
-
