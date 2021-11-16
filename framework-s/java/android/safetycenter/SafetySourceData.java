@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.safetycenter;
+package android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
 import static java.util.Objects.requireNonNull;
 
+import android.annotation.NonNull;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -41,6 +42,8 @@ import java.util.Objects;
 //  b/205289292 is fixed.
 // TODO(b/206089303): Add Builders as more fields are added to this class.
 public final class SafetySourceData implements Parcelable {
+
+    @NonNull
     public static final Parcelable.Creator<SafetySourceData> CREATOR =
             new Parcelable.Creator<SafetySourceData>() {
                 @Override
@@ -54,39 +57,44 @@ public final class SafetySourceData implements Parcelable {
                     return new SafetySourceData(safetySourceId,
                             safetyPreferenceData, safetyIssuesData);
                 }
-
                 @Override
                 public SafetySourceData[] newArray(int size) {
                     return new SafetySourceData[size];
                 }
             };
 
+    @NonNull
     private final String mSafetySourceId;
 
+    @NonNull
     private final SafetyPreferenceData mSafetyPreferenceData;
 
+    @NonNull
     private final List<SafetyIssueData> mSafetyIssuesData;
 
     /** Creates a new {@link SafetySourceData}. */
-    public SafetySourceData(String safetySourceId,
-            SafetyPreferenceData safetyPreferenceData,
-            List<SafetyIssueData> safetyIssuesData) {
+    public SafetySourceData(@NonNull String safetySourceId,
+            @NonNull SafetyPreferenceData safetyPreferenceData,
+            @NonNull List<SafetyIssueData> safetyIssuesData) {
         this.mSafetySourceId = safetySourceId;
         this.mSafetyPreferenceData = safetyPreferenceData;
         this.mSafetyIssuesData = new ArrayList<>(safetyIssuesData);
     }
 
     /** Returns the id of the associated safety source. */
+    @NonNull
     public String getSafetySourceId() {
         return mSafetySourceId;
     }
 
     /** Returns the data for the safety preference to be shown in UI. */
+    @NonNull
     public SafetyPreferenceData getSafetyPreferenceData() {
         return mSafetyPreferenceData;
     }
 
     /** Returns the data for the list of safety issues to be shown in UI. */
+    @NonNull
     public List<SafetyIssueData> getSafetyIssuesData() {
         return new ArrayList<>(mSafetyIssuesData);
     }

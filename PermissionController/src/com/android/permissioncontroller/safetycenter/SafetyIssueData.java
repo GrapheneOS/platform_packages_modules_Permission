@@ -39,6 +39,7 @@ import java.util.Objects;
 // @SystemApi -- Add this line back when ready for API council review.
 // TODO(b/205551986): Move this class into `framework-s`, add NonNull annotations, replace usages of
 //  `androidx.annotation.IntDef` with `android.annotation.IntDef` and add prefixes to IntDefs.
+// TODO(b/206089303): Add Builders as more fields are added to this class.
 @RequiresApi(TIRAMISU)
 public final class SafetyIssueData implements Parcelable {
 
@@ -113,7 +114,7 @@ public final class SafetyIssueData implements Parcelable {
         return mSummary;
     }
 
-    /** Returns the {@link SeverityLevel} of the safety issues. */
+    /** Returns the {@link SeverityLevel} of the safety issue. */
     @SeverityLevel
     public int getSeverityLevel() {
         return mSeverityLevel;
@@ -148,7 +149,7 @@ public final class SafetyIssueData implements Parcelable {
 
     @Override
     public String toString() {
-        return "SafetyIssue{"
+        return "SafetyIssueData{"
                 + "mTitle='"
                 + mTitle
                 + '\''
