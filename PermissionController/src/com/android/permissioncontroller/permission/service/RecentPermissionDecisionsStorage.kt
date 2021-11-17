@@ -54,6 +54,14 @@ interface RecentPermissionDecisionsStorage {
      */
     suspend fun clearPermissionDecisions()
 
+    /**
+     * Remove all the permission decisions for a particular package.
+     *
+     * @param packageName of the package to remove
+     * @return whether the storage was successful
+     */
+    suspend fun removePermissionDecisionsForPackage(packageName: String): Boolean
+
     companion object {
 
         @Volatile
@@ -74,13 +82,17 @@ interface RecentPermissionDecisionsStorage {
             permGroupName: String,
             isGranted: Boolean
         ) {
-            if (DeviceUtils.isAuto(context)) {
+            if (isRecordPermissionsSupported(context)) {
                 GlobalScope.launch(Dispatchers.IO) {
                     getInstance().storePermissionDecision(
                         PermissionDecision(packageName, permGroupName, System.currentTimeMillis(),
                             isGranted))
                 }
             }
+        }
+
+        fun isRecordPermissionsSupported(context: Context): Boolean {
+            return DeviceUtils.isAuto(context)
         }
     }
 }
