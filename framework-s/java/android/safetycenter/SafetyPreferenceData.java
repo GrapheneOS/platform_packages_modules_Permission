@@ -24,6 +24,7 @@ import android.annotation.IntDef;
 import android.annotation.NonNull;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.text.TextUtils;
 
 import androidx.annotation.RequiresApi;
 
@@ -88,8 +89,10 @@ public final class SafetyPreferenceData implements Parcelable {
             new Parcelable.Creator<SafetyPreferenceData>() {
                 @Override
                 public SafetyPreferenceData createFromParcel(Parcel in) {
-                    String title = requireNonNull(in.readString());
-                    String summary = requireNonNull(in.readString());
+                    CharSequence title =
+                            requireNonNull(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in));
+                    CharSequence summary =
+                            requireNonNull(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in));
                     @SeverityLevel int severityLevel = in.readInt();
                     return new SafetyPreferenceData(title, summary, severityLevel);
                 }
@@ -101,15 +104,15 @@ public final class SafetyPreferenceData implements Parcelable {
             };
 
     @NonNull
-    private final String mTitle;
+    private final CharSequence mTitle;
 
     @NonNull
-    private final String mSummary;
+    private final CharSequence mSummary;
 
     private final @SeverityLevel int mSeverityLevel;
 
     /** Creates a {@link SafetyPreferenceData}. */
-    public SafetyPreferenceData(@NonNull String title, @NonNull String summary,
+    public SafetyPreferenceData(@NonNull CharSequence title, @NonNull CharSequence summary,
             @SeverityLevel int severityLevel) {
         this.mTitle = title;
         this.mSummary = summary;
@@ -118,13 +121,13 @@ public final class SafetyPreferenceData implements Parcelable {
 
     /** Returns the localized title of the safety preference to be displayed in the UI. */
     @NonNull
-    public String getTitle() {
+    public CharSequence getTitle() {
         return mTitle;
     }
 
     /** Returns the localized summary of the safety preference to be displayed in the UI. */
     @NonNull
-    public String getSummary() {
+    public CharSequence getSummary() {
         return mSummary;
     }
 
@@ -141,8 +144,8 @@ public final class SafetyPreferenceData implements Parcelable {
 
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeString(mTitle);
-        dest.writeString(mSummary);
+        TextUtils.writeToParcel(mTitle, dest, flags);
+        TextUtils.writeToParcel(mSummary, dest, flags);
         dest.writeInt(mSeverityLevel);
     }
 
