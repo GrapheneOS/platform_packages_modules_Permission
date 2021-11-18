@@ -24,6 +24,7 @@ import android.annotation.IntDef;
 import android.annotation.NonNull;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.text.TextUtils;
 
 import androidx.annotation.RequiresApi;
 
@@ -79,8 +80,10 @@ public final class SafetyIssueData implements Parcelable {
             new Parcelable.Creator<SafetyIssueData>() {
                 @Override
                 public SafetyIssueData createFromParcel(Parcel in) {
-                    String title = requireNonNull(in.readString());
-                    String summary = requireNonNull(in.readString());
+                    CharSequence title =
+                            requireNonNull(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in));
+                    CharSequence summary =
+                            requireNonNull(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in));
                     int severityLevel = in.readInt();
                     return new SafetyIssueData(title, summary, severityLevel);
                 }
@@ -92,15 +95,15 @@ public final class SafetyIssueData implements Parcelable {
             };
 
     @NonNull
-    private final String mTitle;
+    private final CharSequence mTitle;
 
     @NonNull
-    private final String mSummary;
+    private final CharSequence mSummary;
 
     private final @SeverityLevel int mSeverityLevel;
 
     /** Creates a {@link SafetyIssueData}. */
-    public SafetyIssueData(@NonNull String title, @NonNull String summary,
+    public SafetyIssueData(@NonNull CharSequence title, @NonNull CharSequence summary,
             @SeverityLevel int severityLevel) {
         this.mTitle = title;
         this.mSummary = summary;
@@ -132,8 +135,8 @@ public final class SafetyIssueData implements Parcelable {
 
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeString(mTitle);
-        dest.writeString(mSummary);
+        TextUtils.writeToParcel(mTitle, dest, flags);
+        TextUtils.writeToParcel(mSummary, dest, flags);
         dest.writeInt(mSeverityLevel);
     }
 
