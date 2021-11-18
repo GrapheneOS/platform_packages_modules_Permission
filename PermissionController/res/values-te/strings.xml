@@ -446,7 +446,7 @@
     <string name="adjust_user_sensitive_title" msgid="4196724451314280527">"అధునాతన సెట్టింగ్‌లు"</string>
     <string name="menu_adjust_user_sensitive" msgid="6497923610654425780">"అధునాతన సెట్టింగ్‌లు"</string>
     <string name="adjust_user_sensitive_globally_title" msgid="8649190949066029174">"సిస్టమ్ యాప్ వినియోగాన్ని చూపు"</string>
-    <string name="adjust_user_sensitive_globally_summary" msgid="129467818433773912">"\'స్థితి బార్‌, డ్యాష్‌బోర్డ్ &amp; మరెక్కడైనా\'లో సిస్టమ్ యాప్ వినియోగించే అనుమతులను చూపు"</string>
+    <string name="adjust_user_sensitive_globally_summary" msgid="129467818433773912">"\'స్టేటస్‌ బార్‌, డ్యాష్‌బోర్డ్ &amp; మరెక్కడైనా\'లో సిస్టమ్ యాప్ వినియోగించే అనుమతులను చూపు"</string>
     <string name="adjust_user_sensitive_per_app_header" msgid="4543506440989005648">"అనుసరిస్తున్న వినియోగాన్ని హైలైట్ చేయండి"</string>
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Assistant ట్రిగ్గర్ గుర్తింపును చూపించడం"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"వాయిస్ అసిస్టెంట్‌ను యాక్టివేట్ చేయడానికి మైక్రోఫోన్‌ను ఉపయోగించినప్పుడు, స్టేటస్ బార్‌లో  చిహ్నాన్ని చూపు"</string>

@@ -260,7 +260,7 @@
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"প্ৰত্যাখ্যান কৰা হৈছে / কেতিয়াও এক্সেছ কৰা নাই"</string>
     <string name="allowed_header" msgid="7769277978004790414">"অনুমতি দিয়া হৈছে"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"সকলো সময়তে অনুমতি দিয়া হৈছে"</string>
-    <string name="allowed_foreground_header" msgid="6845655788447833353">"কেৱল ব্যৱহাৰ হৈ থকা সময়ত অনুমতি দিয়া হয়"</string>
+    <string name="allowed_foreground_header" msgid="6845655788447833353">"কেৱল ব্যৱহাৰ হৈ থকা সময়ত অনুমতি দিয়া হৈছে"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"কেৱল মিডিয়ালৈ এক্সেছৰ অনুমতি আছে"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"আটাইবোৰ ফাইল পৰিচালনা কৰিবলৈ অনুমতি আছে"</string>
     <string name="ask_header" msgid="2633816846459944376">"প্ৰতিবাৰতে সোধক"</string>
