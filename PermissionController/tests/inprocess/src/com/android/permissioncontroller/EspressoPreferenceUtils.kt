@@ -18,7 +18,6 @@ package com.android.permissioncontroller
 
 import android.view.View
 import android.widget.TextView
-import androidx.preference.R
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.UiController

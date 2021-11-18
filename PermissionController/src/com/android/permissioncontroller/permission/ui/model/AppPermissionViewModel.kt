@@ -18,14 +18,14 @@ package com.android.permissioncontroller.permission.ui.model
 
 import android.Manifest
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
+import android.Manifest.permission.ACCESS_FINE_LOCATION
+import android.Manifest.permission_group.LOCATION
 import android.app.AppOpsManager
 import android.app.AppOpsManager.MODE_ALLOWED
 import android.app.AppOpsManager.MODE_ERRORED
 import android.app.AppOpsManager.OPSTR_MANAGE_EXTERNAL_STORAGE
 import android.app.Application
 import android.content.Intent
-import android.Manifest.permission_group.LOCATION
-import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.os.Build
 import android.os.Bundle
 import android.os.UserHandle
@@ -45,30 +45,28 @@ import com.android.permissioncontroller.permission.data.FullStoragePermissionApp
 import com.android.permissioncontroller.permission.data.LightAppPermGroupLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.data.get
-
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPermission
-import com.android.permissioncontroller.permission.utils.KotlinUtils
-import com.android.permissioncontroller.permission.utils.LocationUtils
-import com.android.permissioncontroller.permission.utils.SafetyNetLogger
+import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsStorage
 import com.android.permissioncontroller.permission.ui.handheld.dashboard.getDefaultPrecision
 import com.android.permissioncontroller.permission.ui.handheld.dashboard.isLocationAccuracyEnabled
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.ALLOW
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.ALLOW_ALWAYS
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.ALLOW_FOREGROUND
-import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.ASK_ONCE
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.ASK
+import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.ASK_ONCE
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.DENY
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.DENY_FOREGROUND
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.LOCATION_ACCURACY
+import com.android.permissioncontroller.permission.utils.KotlinUtils
+import com.android.permissioncontroller.permission.utils.LocationUtils
+import com.android.permissioncontroller.permission.utils.SafetyNetLogger
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.navigateSafe
 import com.android.settingslib.RestrictedLockUtils
 import java.util.Random
 import kotlin.collections.component1
 import kotlin.collections.component2
-import kotlin.collections.filter
-import kotlin.collections.iterator
 
 /**
  * ViewModel for the AppPermissionFragment. Determines button state and detail text strings, logs
@@ -770,6 +768,8 @@ class AppPermissionViewModel(
             if (permission.isGrantedIncludingAppOp != newPermission.isGrantedIncludingAppOp ||
                 permission.flags != newPermission.flags) {
                 logAppPermissionFragmentActionReported(changeId, newPermission, buttonPressed)
+                RecentPermissionDecisionsStorage.recordPermissionDecision(app.applicationContext,
+                    packageName, permGroupName, newPermission.isGrantedIncludingAppOp)
             }
         }
     }

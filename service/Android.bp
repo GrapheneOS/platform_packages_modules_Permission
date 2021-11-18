@@ -20,6 +20,7 @@ filegroup {
     name: "service-permission-sources",
     srcs: [
         "java/**/*.java",
+        "java/**/*.kt",
     ],
     path: "java",
     visibility: ["//visibility:private"],
@@ -100,11 +101,18 @@ java_sdk_library {
         "framework-permission-s-shared",
     ],
     static_libs: [
+        "kotlin-stdlib",
         "modules-utils-backgroundthread",
         "modules-utils-os",
         "service-permission-shared",
     ],
     jarjar_rules: ":permission-jarjar-rules",
+    kotlincflags: [
+        "-Xjvm-default=all",
+        "-Xno-call-assertions",
+        "-Xno-param-assertions",
+        "-Xno-receiver-assertions",
+    ],
     lint: {
         strict_updatability_linting: true,
     },
