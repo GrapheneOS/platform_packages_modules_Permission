@@ -21,6 +21,7 @@ import static android.os.Build.VERSION_CODES.TIRAMISU;
 import static java.util.Objects.requireNonNull;
 
 import android.annotation.NonNull;
+import android.annotation.Nullable;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -66,15 +67,14 @@ public final class SafetySourceData implements Parcelable {
     @NonNull
     private final String mSafetySourceId;
 
-    @NonNull
+    @Nullable
     private final SafetyPreferenceData mSafetyPreferenceData;
 
     @NonNull
     private final List<SafetyIssueData> mSafetyIssuesData;
 
-    /** Creates a new {@link SafetySourceData}. */
-    public SafetySourceData(@NonNull String safetySourceId,
-            @NonNull SafetyPreferenceData safetyPreferenceData,
+    private SafetySourceData(@NonNull String safetySourceId,
+            @Nullable SafetyPreferenceData safetyPreferenceData,
             @NonNull List<SafetyIssueData> safetyIssuesData) {
         this.mSafetySourceId = safetySourceId;
         this.mSafetyPreferenceData = safetyPreferenceData;
@@ -88,7 +88,7 @@ public final class SafetySourceData implements Parcelable {
     }
 
     /** Returns the data for the safety preference to be shown in UI. */
-    @NonNull
+    @Nullable
     public SafetyPreferenceData getSafetyPreferenceData() {
         return mSafetyPreferenceData;
     }
@@ -105,7 +105,7 @@ public final class SafetySourceData implements Parcelable {
     }
 
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeString(mSafetySourceId);
         dest.writeParcelable(mSafetyPreferenceData, flags);
         dest.writeParcelableList(mSafetyIssuesData, flags);
@@ -137,5 +137,57 @@ public final class SafetySourceData implements Parcelable {
                 + ", mSafetyIssuesData="
                 + mSafetyIssuesData
                 + '}';
+    }
+
+    /** Builder class for {@link SafetySourceData}. */
+    public static final class Builder {
+        @NonNull
+        private final String mId;
+
+        @Nullable
+        private SafetyPreferenceData mSafetyPreferenceData;
+
+        @NonNull
+        private List<SafetyIssueData> mSafetyIssuesData = new ArrayList<>();
+
+        /**
+         * Creates a {@link Builder} for a {@link SafetySourceData} using the id of the associated
+         * safety source.
+         */
+        public Builder(@NonNull String id) {
+            this.mId = requireNonNull(id);
+        }
+
+        /** Sets data for the safety preference to be shown in UI. */
+        @NonNull
+        public Builder setSafetyPreferenceData(
+                @Nullable SafetyPreferenceData safetyPreferenceData) {
+            mSafetyPreferenceData = safetyPreferenceData;
+            return this;
+        }
+
+        /** Adds data for a safety issue to be shown in UI. */
+        @NonNull
+        // @SuppressWarnings("MissingGetterMatchingBuilder")
+        //  The MissingGetterMatchingBuilder warning has been suppressed as it expects the
+        //  corresponding getter to be named `getSafetyIssueDatas()` which would be grammatically
+        //  incorrect.
+        public Builder addSafetyIssueData(@NonNull SafetyIssueData safetyIssueData) {
+            mSafetyIssuesData.add(requireNonNull(safetyIssueData));
+            return this;
+        }
+
+        /** Clears data for all the safety issues that were added to this {@link Builder}. */
+        @NonNull
+        public Builder clearSafetyIssuesData() {
+            mSafetyIssuesData.clear();
+            return this;
+        }
+
+        /** Creates the {@link SafetySourceData} defined by this {@link Builder}. */
+        @NonNull
+        public SafetySourceData build() {
+            return new SafetySourceData(mId, mSafetyPreferenceData, mSafetyIssuesData);
+        }
     }
 }

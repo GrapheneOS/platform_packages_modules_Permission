@@ -102,8 +102,7 @@ public final class SafetyIssueData implements Parcelable {
 
     private final @SeverityLevel int mSeverityLevel;
 
-    /** Creates a {@link SafetyIssueData}. */
-    public SafetyIssueData(@NonNull CharSequence title, @NonNull CharSequence summary,
+    private SafetyIssueData(@NonNull CharSequence title, @NonNull CharSequence summary,
             @SeverityLevel int severityLevel) {
         this.mTitle = title;
         this.mSummary = summary;
@@ -167,5 +166,30 @@ public final class SafetyIssueData implements Parcelable {
                 + ", mSeverityLevel="
                 + mSeverityLevel
                 + '}';
+    }
+
+    /** Builder class for {@link SafetyIssueData}. */
+    public static final class Builder {
+        @NonNull
+        private final CharSequence mTitle;
+
+        @NonNull
+        private final CharSequence mSummary;
+
+        private @SeverityLevel final int mSeverityLevel;
+
+        /** Creates a {@link Builder} for a {@link SafetyIssueData}. */
+        public Builder(@NonNull CharSequence title, @NonNull CharSequence summary,
+                @SeverityLevel int severityLevel) {
+            this.mTitle = requireNonNull(title);
+            this.mSummary = requireNonNull(summary);
+            this.mSeverityLevel = severityLevel;
+        }
+
+        /** Creates the {@link SafetyIssueData} defined by this {@link Builder}. */
+        @NonNull
+        public SafetyIssueData build() {
+            return new SafetyIssueData(mTitle, mSummary, mSeverityLevel);
+        }
     }
 }
