@@ -499,9 +499,4 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Nakalipas\nna 24 oras"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Pinoprotektahan ng Android ang <xliff:g id="APP_NAME">%1$s</xliff:g>. Dahil pinoproseso sa device na ito ang iyong data, hindi ipinapakita sa status bar o sa privacy dashboard mo ang paggamit ng pahintulot ng app na ito."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Pinoprotektahan ng Android ang <xliff:g id="APP_NAME">%1$s</xliff:g>. Dahil pinoproseso sa device na ito ang iyong data, hindi ipinapakita sa privacy dashboard mo ang paggamit ng pahintulot ng app na ito."</string>
-    <string name="blocked_sensor_title" msgid="4946499097784258613">"Naka-block ang <xliff:g id="SENSOR_NAME">%1$s</xliff:g> ng device"</string>
-    <string name="blocked_location_title" msgid="1651982726048750742">"Naka-off ang <xliff:g id="SENSOR_NAME">%1$s</xliff:g> ng device"</string>
-    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Para sa mga app at serbisyo"</string>
-    <string name="blocked_mic_summary" msgid="8960466941528458347">"Posible pa ring ibahagi ang data ng mikropono kapag tumawag ka sa isang pang-emergency na numero."</string>
-    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Baguhin"</string>
 </resources>

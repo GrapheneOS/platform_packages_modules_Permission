@@ -518,9 +518,4 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Ultimele\n24 de ore"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> este protejată de Android. Întrucât datele dvs. sunt procesate pe dispozitiv, folosirea permisiunilor de către aplicație nu apare în bara de stare sau în tabloul de bord de confidențialitate."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> este protejată de Android. Întrucât datele dvs. sunt procesate pe dispozitiv, folosirea permisiunilor de către aplicație nu apare în tabloul de bord de confidențialitate."</string>
-    <string name="blocked_sensor_title" msgid="4946499097784258613">"<xliff:g id="SENSOR_NAME">%1$s</xliff:g> a dispozitivului este blocată"</string>
-    <string name="blocked_location_title" msgid="1651982726048750742">"<xliff:g id="SENSOR_NAME">%1$s</xliff:g> dispozitivului este dezactivată"</string>
-    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Pentru aplicații și servicii"</string>
-    <string name="blocked_mic_summary" msgid="8960466941528458347">"Datele de la microfon pot fi trimise când apelați un număr de urgență."</string>
-    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Modificați"</string>
 </resources>

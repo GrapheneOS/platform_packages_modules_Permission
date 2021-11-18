@@ -499,9 +499,4 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Өнгөрсөн\n24 цагт"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> нь Android-р хамгаалагдсан. Таны өгөгдлийг энэ төхөөрөмж дээр боловсруулдаг тул энэ аппын зөвшөөрлийн ашиглалтыг статус самбар эсвэл таны нууцлалын хяналтын самбарт харуулаагүй."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> нь Android-р хамгаалагдсан. Таны өгөгдлийг энэ төхөөрөмж дээр боловсруулдаг тул энэ аппын зөвшөөрлийн ашиглалтыг таны нууцлалын хяналтын самбарт харуулаагүй."</string>
-    <string name="blocked_sensor_title" msgid="4946499097784258613">"Төхөөрөмжийн <xliff:g id="SENSOR_NAME">%1$s</xliff:g>-г блоклосон байна"</string>
-    <string name="blocked_location_title" msgid="1651982726048750742">"Төхөөрөмжийн <xliff:g id="SENSOR_NAME">%1$s</xliff:g> унтраалттай байна"</string>
-    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Апп болон үйлчилгээнд"</string>
-    <string name="blocked_mic_summary" msgid="8960466941528458347">"Яаралтай тусламжийн утасны дугаар луу залгах үед микрофоны өгөгдлийг хуваалцсан хэвээр байж болзошгүй."</string>
-    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Өөрчлөх"</string>
 </resources>

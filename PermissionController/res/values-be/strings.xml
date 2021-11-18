@@ -537,9 +537,4 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"За апошнія\n24 гадзіны"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Праграма \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" абаронена Android. З прычыны таго, што вашы даныя апрацоўваюцца на гэтай прыладзе, на панэлі стану і панэлі кіравання доступам не паказваецца інфармацыя пра выкарыстанне дазволаў гэтай праграмай."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Праграма \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" абаронена Android. З прычыны таго, што вашы даныя апрацоўваюцца на гэтай прыладзе, на панэлі кіравання доступам не паказваецца інфармацыя пра выкарыстанне дазволаў гэтай праграмай."</string>
-    <string name="blocked_sensor_title" msgid="4946499097784258613">"Прылада \"<xliff:g id="SENSOR_NAME">%1$s</xliff:g>\" заблакіравана"</string>
-    <string name="blocked_location_title" msgid="1651982726048750742">"Прылада \"<xliff:g id="SENSOR_NAME">%1$s</xliff:g>\" выключана"</string>
-    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Для праграм і сэрвісаў"</string>
-    <string name="blocked_mic_summary" msgid="8960466941528458347">"Даныя з мікрафона па-ранейшаму могуць абагульвацца падчас выкліку нумара экстраннай службы."</string>
-    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Змяніць"</string>
 </resources>

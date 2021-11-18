@@ -499,9 +499,4 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"24 giờ\nqua"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> được Android bảo vệ. Vì dữ liệu của bạn được xử lý trên thiết bị này nên hoạt động sử dụng quyền của ứng dụng này không hiện trên thanh trạng thái hoặc bảng tổng quan về quyền riêng tư."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> được Android bảo vệ. Vì dữ liệu của bạn được xử lý trên thiết bị này nên hoạt động sử dụng quyền của ứng dụng này không hiện trên bảng tổng quan về quyền riêng tư."</string>
-    <string name="blocked_sensor_title" msgid="4946499097784258613">"Thiết bị <xliff:g id="SENSOR_NAME">%1$s</xliff:g> đã bị chặn"</string>
-    <string name="blocked_location_title" msgid="1651982726048750742">"Thiết bị <xliff:g id="SENSOR_NAME">%1$s</xliff:g> đã tắt"</string>
-    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Đối với các ứng dụng và dịch vụ"</string>
-    <string name="blocked_mic_summary" msgid="8960466941528458347">"Dữ liệu thu được qua micrô vẫn có thể được chia sẻ khi bạn gọi đến số khẩn cấp."</string>
-    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Thay đổi"</string>
 </resources>

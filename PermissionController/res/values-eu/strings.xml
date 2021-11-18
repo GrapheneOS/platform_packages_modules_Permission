@@ -499,9 +499,4 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Azken\n24 orduak"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Android-ek babesten du <xliff:g id="APP_NAME">%1$s</xliff:g>. Datuak gailuan prozesatzen direnez, aplikazioaren baimenen erabilera ez da agertzen ez egoera-barran ezta pribatutasun-panelean ere."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Android-ek babesten du <xliff:g id="APP_NAME">%1$s</xliff:g>. Datuak gailuan prozesatzen direnez, aplikazioaren baimenen erabilera ez da agertzen pribatutasun-panelean."</string>
-    <string name="blocked_sensor_title" msgid="4946499097784258613">"Gailuaren <xliff:g id="SENSOR_NAME">%1$s</xliff:g> blokeatuta dago"</string>
-    <string name="blocked_location_title" msgid="1651982726048750742">"Gailuaren <xliff:g id="SENSOR_NAME">%1$s</xliff:g> desaktibatuta dago"</string>
-    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Aplikazio eta zerbitzuetarako"</string>
-    <string name="blocked_mic_summary" msgid="8960466941528458347">"Agian mikrofonotik lortutako datuak larrialdietarako zenbaki batera deitzen duzunean partekatuko dira."</string>
-    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Aldatu"</string>
 </resources>
