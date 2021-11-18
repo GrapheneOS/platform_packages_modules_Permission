@@ -499,9 +499,4 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"पिछले\n24 घंटे"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> को Android की मदद से सुरक्षित किया गया है. आपका डेटा इस डिवाइस पर प्रोसेस किया गया है. इसलिए, इस ऐप्लिकेशन की अनुमति के इस्तेमाल की जानकारी, स्टेटस बार या प्राइवसी डैशबोर्ड पर नहीं दिखती."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> को Android की मदद से सुरक्षित किया गया है. आपका डेटा इस डिवाइस पर प्रोसेस किया गया है. इसलिए, इस ऐप्लिकेशन की अनुमति के इस्तेमाल की जानकारी, प्राइवसी डैशबोर्ड पर नहीं दिखती."</string>
-    <string name="blocked_sensor_title" msgid="4946499097784258613">"डिवाइस का <xliff:g id="SENSOR_NAME">%1$s</xliff:g> ब्लॉक है"</string>
-    <string name="blocked_location_title" msgid="1651982726048750742">"डिवाइस का <xliff:g id="SENSOR_NAME">%1$s</xliff:g> बंद है"</string>
-    <string name="blocked_sensor_summary" msgid="4443707628305027375">"ऐप्लिकेशन और सेवाओं के लिए"</string>
-    <string name="blocked_mic_summary" msgid="8960466941528458347">"जब आपातकालीन नंबर पर कॉल किया जाता है, तो माइक ब्लॉक होने के बावजूद माइक्रोफ़ोन का डेटा शेयर किया जा सकता है."</string>
-    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"बदलें"</string>
 </resources>

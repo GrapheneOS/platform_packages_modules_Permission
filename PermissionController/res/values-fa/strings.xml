@@ -499,9 +499,4 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"۲۴\nساعت گذشته"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"‏<xliff:g id="APP_NAME">%1$s</xliff:g> با Android محافظت می‌شود. چون داده‌هایتان در این دستگاه پردازش می‌شود، استفاده این برنامه از اجازه در نوار وضعیت یا داشبورد حریم‌خصوصی‌تان نشان داده نمی‌شود."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"‏<xliff:g id="APP_NAME">%1$s</xliff:g> با Android محافظت می‌شود. چون داده‌هایتان در این دستگاه پردازش می‌شود، استفاده این برنامه از اجازه در داشبورد حریم‌خصوصی‌تان نشان داده نمی‌شود."</string>
-    <string name="blocked_sensor_title" msgid="4946499097784258613">"دستگاه <xliff:g id="SENSOR_NAME">%1$s</xliff:g> مسدود است"</string>
-    <string name="blocked_location_title" msgid="1651982726048750742">"دستگاه <xliff:g id="SENSOR_NAME">%1$s</xliff:g> خاموش است"</string>
-    <string name="blocked_sensor_summary" msgid="4443707628305027375">"برای برنامه‌ها و سرویس‌ها"</string>
-    <string name="blocked_mic_summary" msgid="8960466941528458347">"هنگام تماس با شماره‌های اضطراری، ممکن است همچنان داده‌های میکروفون هم‌رسانی شود."</string>
-    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"تغییر"</string>
 </resources>

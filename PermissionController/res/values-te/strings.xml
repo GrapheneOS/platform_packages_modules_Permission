@@ -446,7 +446,7 @@
     <string name="adjust_user_sensitive_title" msgid="4196724451314280527">"అధునాతన సెట్టింగ్‌లు"</string>
     <string name="menu_adjust_user_sensitive" msgid="6497923610654425780">"అధునాతన సెట్టింగ్‌లు"</string>
     <string name="adjust_user_sensitive_globally_title" msgid="8649190949066029174">"సిస్టమ్ యాప్ వినియోగాన్ని చూపు"</string>
-    <string name="adjust_user_sensitive_globally_summary" msgid="129467818433773912">"\'స్థితి బార్‌, డ్యాష్‌బోర్డ్ &amp; మరెక్కడైనా\'లో సిస్టమ్ యాప్ వినియోగించే అనుమతులను చూపు"</string>
+    <string name="adjust_user_sensitive_globally_summary" msgid="129467818433773912">"\'స్టేటస్‌ బార్‌, డ్యాష్‌బోర్డ్ &amp; మరెక్కడైనా\'లో సిస్టమ్ యాప్ వినియోగించే అనుమతులను చూపు"</string>
     <string name="adjust_user_sensitive_per_app_header" msgid="4543506440989005648">"అనుసరిస్తున్న వినియోగాన్ని హైలైట్ చేయండి"</string>
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Assistant ట్రిగ్గర్ గుర్తింపును చూపించడం"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"వాయిస్ అసిస్టెంట్‌ను యాక్టివేట్ చేయడానికి మైక్రోఫోన్‌ను ఉపయోగించినప్పుడు, స్టేటస్ బార్‌లో  చిహ్నాన్ని చూపు"</string>
@@ -499,9 +499,4 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"గత \n 24 గంటలు"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Android ద్వారా <xliff:g id="APP_NAME">%1$s</xliff:g> సంరక్షించబడుతోంది. మీ డేటా ఈ పరికరంలో ప్రాసెస్ చేయబడినందున, ఈ యాప్‌నకు సంబంధించిన అనుమతి వినియోగ సమాచారం స్టేటస్ బార్‌లో లేదా మీ గోప్యతా డ్యాష్‌బోర్డ్‌లో చూపబడదు."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Android ద్వారా <xliff:g id="APP_NAME">%1$s</xliff:g> సంరక్షించబడుతోంది. మీ డేటా ఈ పరికరంలో ప్రాసెస్ చేయబడినందున, ఈ యాప్‌నకు సంబంధించిన అనుమతి వినియోగ సమాచారం మీ గోప్యతా డ్యాష్‌బోర్డ్‌లో చూపబడదు."</string>
-    <string name="blocked_sensor_title" msgid="4946499097784258613">"పరికర <xliff:g id="SENSOR_NAME">%1$s</xliff:g> బ్లాక్ చేయబడింది"</string>
-    <string name="blocked_location_title" msgid="1651982726048750742">"పరికర <xliff:g id="SENSOR_NAME">%1$s</xliff:g> ఆఫ్‌లో ఉంది"</string>
-    <string name="blocked_sensor_summary" msgid="4443707628305027375">"యాప్‌లు, సర్వీస్‌ల కోసం"</string>
-    <string name="blocked_mic_summary" msgid="8960466941528458347">"మీరు ఎమర్జెన్సీ నంబర్‌కు కాల్ చేసినప్పుడు, మైక్రోఫోన్ డేటా ఇప్పటికీ షేర్ చేయబడవచ్చు."</string>
-    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"మార్చండి"</string>
 </resources>

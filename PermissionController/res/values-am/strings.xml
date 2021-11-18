@@ -499,9 +499,4 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"ባለፉት\n24 ሰዓታት"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> በAndroid የተጠበቀ ነው። በዚህ መሣሪያ ላይ የእርስዎ ውሂብ ስለተሰናዳ፣ የዚህ መተግበሪያ ፈቃድ አጠቃቀም በሁኔታ አሞሌ ወይም በግላዊነት ዳሽቦርድዎ ላይ አይታይም።"</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> በAndroid የተጠበቀ ነው። በዚህ መሣሪያ ላይ የእርስዎ ውሂብ ስለተሰናዳ፣ የዚህ መተግበሪያ ፈቃድ አጠቃቀም በግላዊነት ዳሽቦርድዎ ላይ አይታይም።"</string>
-    <string name="blocked_sensor_title" msgid="4946499097784258613">"መሣሪያ <xliff:g id="SENSOR_NAME">%1$s</xliff:g> ታግዷል"</string>
-    <string name="blocked_location_title" msgid="1651982726048750742">"መሣሪያ <xliff:g id="SENSOR_NAME">%1$s</xliff:g> ጠፍቷል"</string>
-    <string name="blocked_sensor_summary" msgid="4443707628305027375">"ለመተግበሪያዎች እና አገልግሎቶች"</string>
-    <string name="blocked_mic_summary" msgid="8960466941528458347">"እርስዎ ወደ አንድ የአደጋ ጊዜ ቁጥር ሲደውሉ የማይክሮፎን ውሂብ አሁንም ሊጋራ ይችላል።"</string>
-    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"ቀይር"</string>
 </resources>
