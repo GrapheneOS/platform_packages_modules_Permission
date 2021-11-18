@@ -398,7 +398,7 @@
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"¿Quieres establecer a <xliff:g id="APP_NAME">%1$s</xliff:g> como tu aplicación predeterminada de filtro de identificación de llamada y spam?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"No se necesita ningún permiso"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> podrá interactuar con tus notificaciones y acceder a tu teléfono, SMS, contactos y calendario."</string>
-    <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> podrá interactuar con tus notificaciones y emitir tus aplicaciones en el dispositivo conectado."</string>
+    <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> podrá interactuar con tus notificaciones y reproducir tus aplicaciones en el dispositivo conectado."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Predeterminada"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"No volver a preguntar"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Establecer como predeterminado"</string>
@@ -501,8 +501,12 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Últimas\n24 horas"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> está protegido por Android. Como tus datos están procesados en este dispositivo, el uso de los permisos de esta aplicación no se muestra ni en la barra de estado ni en tu panel de privacidad."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> está protegido por Android. Como tus datos están procesados en este dispositivo, el uso de los permisos de esta aplicación no se muestra en tu panel de privacidad."</string>
-    <string name="blocked_sensor_title" msgid="4946499097784258613">"La <xliff:g id="SENSOR_NAME">%1$s</xliff:g> del dispositivo está bloqueada"</string>
-    <string name="blocked_location_title" msgid="1651982726048750742">"La <xliff:g id="SENSOR_NAME">%1$s</xliff:g> del dispositivo está desactivada"</string>
+    <!-- no translation found for blocked_camera_title (1128510551791284384) -->
+    <skip />
+    <!-- no translation found for blocked_microphone_title (1631517143648232585) -->
+    <skip />
+    <!-- no translation found for blocked_location_title (2005608279812892383) -->
+    <skip />
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Para aplicaciones y servicios"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Pueden compartirse datos del micrófono cuando llames a un número de emergencia."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Cambiar"</string>
