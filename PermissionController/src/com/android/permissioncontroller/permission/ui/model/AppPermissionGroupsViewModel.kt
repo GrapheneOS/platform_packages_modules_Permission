@@ -21,6 +21,7 @@ import android.app.AppOpsManager
 import android.app.AppOpsManager.MODE_ALLOWED
 import android.app.AppOpsManager.MODE_IGNORED
 import android.app.AppOpsManager.OPSTR_AUTO_REVOKE_PERMISSIONS_IF_UNUSED
+import android.apphibernation.AppHibernationManager
 import android.content.Context
 import android.os.Bundle
 import android.os.UserHandle
@@ -35,6 +36,7 @@ import com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISS
 import com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_GROUPS_FRAGMENT_AUTO_REVOKE_ACTION__ACTION__SWITCH_DISABLED
 import com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_GROUPS_FRAGMENT_AUTO_REVOKE_ACTION__ACTION__SWITCH_ENABLED
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.hibernation.isHibernationEnabled
 import com.android.permissioncontroller.permission.data.AppPermGroupUiInfoLiveData
 import com.android.permissioncontroller.permission.data.FullStoragePermissionAppsLiveData
 import com.android.permissioncontroller.permission.data.HibernationSettingStateLiveData
@@ -216,6 +218,11 @@ class AppPermissionGroupsViewModel(
                     MODE_IGNORED
                 }
                 aom.setUidMode(OPSTR_AUTO_REVOKE_PERMISSIONS_IF_UNUSED, uid, mode)
+                if (isHibernationEnabled() && !enabled) {
+                    val ahm = app.getSystemService(AppHibernationManager::class.java)!!
+                    ahm.setHibernatingForUser(packageName, false)
+                    ahm.setHibernatingGlobally(packageName, false)
+                }
             }
         }
     }
