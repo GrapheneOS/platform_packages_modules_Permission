@@ -108,6 +108,15 @@ class RecentPermissionDecisionsStorageImpl(
         }
     }
 
+    override suspend fun removePermissionDecisionsForPackage(packageName: String): Boolean {
+        synchronized(fileLock) {
+            val existingDecisions = readData()
+
+            val newDecisions = existingDecisions.filter { it.packageName != packageName }
+            return writeData(newDecisions)
+        }
+    }
+
     private fun writeData(decisions: List<PermissionDecision>): Boolean {
         val stream: FileOutputStream = try {
             dbFile.startWrite()

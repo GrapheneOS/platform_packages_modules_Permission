@@ -36,12 +36,16 @@ class RecentPermissionDecisionsStorageImplTest {
     private val jan12020 = Date(2020, 0, 1).time
     private val jan22020 = Date(2020, 0, 2).time
 
+    private val mapPackageName = "package.test.map"
+
     private val musicCalendarGrant = PermissionDecision(
         "package.test.music", "calendar", jan12020, false)
     private val mapLocationGrant = PermissionDecision(
-        "package.test.map", "location", jan12020, true)
+        mapPackageName, "location", jan12020, true)
     private val mapLocationDenied = PermissionDecision(
-        "package.test.map", "location", jan12020, false)
+        mapPackageName, "location", jan12020, false)
+    private val mapMicrophoneGrant = PermissionDecision(
+        mapPackageName, "microphone", jan12020, true)
     private val parkingLocationGrant = PermissionDecision(
         "package.test.parking", "location", jan22020, true)
     private val podcastMicrophoneGrant = PermissionDecision(
@@ -88,8 +92,11 @@ class RecentPermissionDecisionsStorageImplTest {
         runBlocking {
             storage.storePermissionDecision(mapLocationGrant)
             storage.storePermissionDecision(musicCalendarGrant)
+            storage.storePermissionDecision(parkingLocationGrant)
+            storage.storePermissionDecision(podcastMicrophoneGrant)
             assertThat(storage.loadPermissionDecisions())
-                .containsExactly(musicCalendarGrant, mapLocationGrant)
+                .containsExactly(musicCalendarGrant, mapLocationGrant, parkingLocationGrant,
+                    podcastMicrophoneGrant)
         }
     }
 
@@ -117,6 +124,17 @@ class RecentPermissionDecisionsStorageImplTest {
             storage.storePermissionDecision(mapLocationGrant)
             storage.clearPermissionDecisions()
             assertThat(storage.loadPermissionDecisions()).isEmpty()
+        }
+    }
+
+    @Test
+    fun removePermissionDecisionsForPackage_removesDecisions() {
+        runBlocking {
+            storage.storePermissionDecision(mapLocationGrant)
+            storage.storePermissionDecision(musicCalendarGrant)
+            storage.storePermissionDecision(mapMicrophoneGrant)
+            storage.removePermissionDecisionsForPackage(mapPackageName)
+            assertThat(storage.loadPermissionDecisions()).containsExactly(musicCalendarGrant)
         }
     }
 }
