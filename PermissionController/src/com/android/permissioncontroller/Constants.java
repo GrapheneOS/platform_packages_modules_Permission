@@ -42,6 +42,12 @@ public class Constants {
     public static final int HIBERNATION_JOB_ID = 2;
 
     /**
+     * ID of the periodic job
+     * {@link com.android.permissioncontroller.permission.service.RecentPermissionDecisionsStorageImpl}
+     */
+    public static final int OLD_PERMISSION_DECISION_CLEANUP_JOB_ID = 3;
+
+    /**
      * Name of file to containing the packages we already showed a notificaiton for.
      *
      * @see com.android.permissioncontroller.permission.service.LocationAccessCheck
