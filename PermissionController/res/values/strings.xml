@@ -1361,4 +1361,6 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <!-- Label for the button to change the sensor status  [CHAR LIMIT=none] -->
     <string name="blocked_sensor_button_label">Change</string>
 
+    <!-- Title for page containing overall view of device safety status [CHAR LIMIT=30] -->
+    <string name="safety_center_dashboard_page_title">Security &amp; Privacy</string>
 </resources>

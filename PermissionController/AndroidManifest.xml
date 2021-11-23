@@ -332,8 +332,9 @@
         <receiver android:name="com.android.permissioncontroller.permission.service.ExemptRestrictedPermission"
                   android:exported="false" />
 
-        <activity android:name="com.android.permissioncontroller.safetycenter.SafetyCenterActivity"
-                  android:theme="@style/Theme.PermissionController.Settings.FilterTouches" />
+        <activity
+            android:name="com.android.permissioncontroller.safetycenter.ui.SafetyCenterActivity"
+            android:theme="@style/Theme.PermissionController.Settings.FilterTouches" />
 
     </application>
 
