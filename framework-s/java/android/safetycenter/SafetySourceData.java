@@ -32,16 +32,14 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Data class used by safety sources to propagate safety information such as a generic status,
- * potential warnings and other related metadata.
+ * Data class used by safety sources to propagate safety information such as their safety status and
+ * safety issues.
  *
  * @hide
  */
 // @SystemApi -- Add this line back when ready for API council review.
+// TODO(b/207399899): Add timestamp field(s) to data model classes.
 @RequiresApi(TIRAMISU)
-// TODO(b/205551986): Move this to the right place and add back the NonNull annotations once
-//  b/205289292 is fixed.
-// TODO(b/206089303): Add Builders as more fields are added to this class.
 public final class SafetySourceData implements Parcelable {
 
     @NonNull
@@ -49,14 +47,13 @@ public final class SafetySourceData implements Parcelable {
             new Parcelable.Creator<SafetySourceData>() {
                 @Override
                 public SafetySourceData createFromParcel(Parcel in) {
-                    String safetySourceId = requireNonNull(in.readString());
-                    SafetyPreferenceData safetyPreferenceData =
-                            requireNonNull(
-                                    in.readParcelable(SafetyPreferenceData.class.getClassLoader()));
-                    List<SafetyIssueData> safetyIssuesData = new ArrayList<>();
-                    in.readParcelableList(safetyIssuesData, SafetyIssueData.class.getClassLoader());
-                    return new SafetySourceData(safetySourceId,
-                            safetyPreferenceData, safetyIssuesData);
+                    String id = requireNonNull(in.readString());
+                    SafetySourceStatus status =
+                            in.readParcelable(SafetySourceStatus.class.getClassLoader(),
+                                    SafetySourceStatus.class);
+                    List<SafetySourceIssue> issues = new ArrayList<>();
+                    in.readParcelableList(issues, SafetySourceIssue.class.getClassLoader());
+                    return new SafetySourceData(id, status, issues);
                 }
                 @Override
                 public SafetySourceData[] newArray(int size) {
@@ -65,38 +62,42 @@ public final class SafetySourceData implements Parcelable {
             };
 
     @NonNull
-    private final String mSafetySourceId;
+    private final String mId;
 
     @Nullable
-    private final SafetyPreferenceData mSafetyPreferenceData;
+    private final SafetySourceStatus mStatus;
 
     @NonNull
-    private final List<SafetyIssueData> mSafetyIssuesData;
+    private final List<SafetySourceIssue> mIssues;
 
-    private SafetySourceData(@NonNull String safetySourceId,
-            @Nullable SafetyPreferenceData safetyPreferenceData,
-            @NonNull List<SafetyIssueData> safetyIssuesData) {
-        this.mSafetySourceId = safetySourceId;
-        this.mSafetyPreferenceData = safetyPreferenceData;
-        this.mSafetyIssuesData = new ArrayList<>(safetyIssuesData);
+    private SafetySourceData(@NonNull String id, @Nullable SafetySourceStatus status,
+            @NonNull List<SafetySourceIssue> issues) {
+        this.mId = id;
+        this.mStatus = status;
+        this.mIssues = new ArrayList<>(issues);
     }
 
-    /** Returns the id of the associated safety source. */
+    /**
+     * Returns the id of the associated safety source.
+     *
+     * <p>The id uniquely identifies a safety source within the scope of the application that is
+     * creating the source.
+     */
     @NonNull
-    public String getSafetySourceId() {
-        return mSafetySourceId;
+    public String getId() {
+        return mId;
     }
 
-    /** Returns the data for the safety preference to be shown in UI. */
+    /** Returns the data for the safety source status to be shown in UI. */
     @Nullable
-    public SafetyPreferenceData getSafetyPreferenceData() {
-        return mSafetyPreferenceData;
+    public SafetySourceStatus getStatus() {
+        return mStatus;
     }
 
-    /** Returns the data for the list of safety issues to be shown in UI. */
+    /** Returns the data for the list of safety source issues to be shown in UI. */
     @NonNull
-    public List<SafetyIssueData> getSafetyIssuesData() {
-        return new ArrayList<>(mSafetyIssuesData);
+    public List<SafetySourceIssue> getIssues() {
+        return new ArrayList<>(mIssues);
     }
 
     @Override
@@ -106,9 +107,9 @@ public final class SafetySourceData implements Parcelable {
 
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeString(mSafetySourceId);
-        dest.writeParcelable(mSafetyPreferenceData, flags);
-        dest.writeParcelableList(mSafetyIssuesData, flags);
+        dest.writeString(mId);
+        dest.writeParcelable(mStatus, flags);
+        dest.writeParcelableList(mIssues, flags);
     }
 
     @Override
@@ -116,26 +117,25 @@ public final class SafetySourceData implements Parcelable {
         if (this == o) return true;
         if (!(o instanceof SafetySourceData)) return false;
         SafetySourceData that = (SafetySourceData) o;
-        return mSafetySourceId.equals(that.mSafetySourceId)
-                && mSafetyPreferenceData.equals(that.mSafetyPreferenceData)
-                && mSafetyIssuesData.equals(that.mSafetyIssuesData);
+        return mId.equals(that.mId) && Objects.equals(mStatus, that.mStatus)
+                && mIssues.equals(that.mIssues);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mSafetySourceId, mSafetyPreferenceData, mSafetyIssuesData);
+        return Objects.hash(mId, mStatus, mIssues);
     }
 
     @Override
     public String toString() {
         return "SafetySourceData{"
-                + "mSafetySourceId='"
-                + mSafetySourceId
+                + "mId='"
+                + mId
                 + '\''
-                + ", mSafetyPreferenceData="
-                + mSafetyPreferenceData
-                + ", mSafetyIssuesData="
-                + mSafetyIssuesData
+                + ", mStatus="
+                + mStatus
+                + ", mIssues="
+                + mIssues
                 + '}';
     }
 
@@ -145,49 +145,49 @@ public final class SafetySourceData implements Parcelable {
         private final String mId;
 
         @Nullable
-        private SafetyPreferenceData mSafetyPreferenceData;
+        private SafetySourceStatus mStatus;
 
         @NonNull
-        private List<SafetyIssueData> mSafetyIssuesData = new ArrayList<>();
+        private final List<SafetySourceIssue> mIssues = new ArrayList<>();
 
-        /**
-         * Creates a {@link Builder} for a {@link SafetySourceData} using the id of the associated
-         * safety source.
+        /** Creates a {@link Builder} for a {@link SafetySourceData}.
+         *
+         *  @param id uniquely identifies this safety source, scoped within the
+         *            application that is creating the safety source.
          */
         public Builder(@NonNull String id) {
             this.mId = requireNonNull(id);
         }
 
-        /** Sets data for the safety preference to be shown in UI. */
+        /** Sets data for the safety source status to be shown in UI. */
         @NonNull
-        public Builder setSafetyPreferenceData(
-                @Nullable SafetyPreferenceData safetyPreferenceData) {
-            mSafetyPreferenceData = safetyPreferenceData;
+        public Builder setStatus(@Nullable SafetySourceStatus status) {
+            mStatus = status;
             return this;
         }
 
-        /** Adds data for a safety issue to be shown in UI. */
+        /** Adds data for a safety source issue to be shown in UI. */
         @NonNull
-        // @SuppressWarnings("MissingGetterMatchingBuilder")
-        //  The MissingGetterMatchingBuilder warning has been suppressed as it expects the
-        //  corresponding getter to be named `getSafetyIssueDatas()` which would be grammatically
-        //  incorrect.
-        public Builder addSafetyIssueData(@NonNull SafetyIssueData safetyIssueData) {
-            mSafetyIssuesData.add(requireNonNull(safetyIssueData));
+        public Builder addIssue(@NonNull SafetySourceIssue safetySourceIssue) {
+            mIssues.add(requireNonNull(safetySourceIssue));
             return this;
         }
 
-        /** Clears data for all the safety issues that were added to this {@link Builder}. */
+        /**
+         * Clears data for all the safety source issues that were added to this {@link Builder}.
+         */
         @NonNull
-        public Builder clearSafetyIssuesData() {
-            mSafetyIssuesData.clear();
+        public Builder clearIssues() {
+            mIssues.clear();
             return this;
         }
 
         /** Creates the {@link SafetySourceData} defined by this {@link Builder}. */
         @NonNull
         public SafetySourceData build() {
-            return new SafetySourceData(mId, mSafetyPreferenceData, mSafetyIssuesData);
+            // TODO(b/207329841): Validate data matches validation in S, for eg that the status
+            //  and severity levels of the settings and issues are compatible.
+            return new SafetySourceData(mId, mStatus, mIssues);
         }
     }
 }
