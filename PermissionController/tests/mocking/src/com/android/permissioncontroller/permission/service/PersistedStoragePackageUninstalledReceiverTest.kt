@@ -16,13 +16,15 @@
 
 package com.android.permissioncontroller.permission.service
 
+import android.app.job.JobScheduler
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.provider.DeviceConfig
+import android.provider.DeviceConfig.NAMESPACE_PERMISSIONS
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.platform.app.InstrumentationRegistry
 import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.PermissionControllerApplication
@@ -34,9 +36,12 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.ArgumentMatchers.anyString
+import org.mockito.ArgumentMatchers.eq
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.Mockito.`when`
+import org.mockito.Mockito.any
 import org.mockito.Mockito.doReturn
 import org.mockito.Mockito.spy
 import org.mockito.Mockito.verifyZeroInteractions
@@ -64,6 +69,9 @@ class PersistedStoragePackageUninstalledReceiverTest {
     @Mock
     lateinit var packageManager: PackageManager
 
+    @Mock
+    lateinit var jobScheduler: JobScheduler
+
     private lateinit var mockitoSession: MockitoSession
     private lateinit var filesDir: File
     private lateinit var recentPermissionDecisionsStorage: RecentPermissionDecisionsStorage
@@ -74,19 +82,23 @@ class PersistedStoragePackageUninstalledReceiverTest {
         MockitoAnnotations.initMocks(this)
         mockitoSession = ExtendedMockito.mockitoSession()
             .mockStatic(PermissionControllerApplication::class.java)
+            .mockStatic(DeviceConfig::class.java)
             .strictness(Strictness.LENIENT).startMocking()
         `when`(PermissionControllerApplication.get()).thenReturn(application)
-        filesDir = InstrumentationRegistry.getInstrumentation().getTargetContext().getCacheDir()
+        val context: Context = ApplicationProvider.getApplicationContext()
+        filesDir = context.cacheDir
         `when`(application.filesDir).thenReturn(filesDir)
+        `when`(jobScheduler.schedule(any())).thenReturn(JobScheduler.RESULT_SUCCESS)
+        `when`(DeviceConfig.getProperty(eq(NAMESPACE_PERMISSIONS), anyString())).thenReturn(null)
 
         recentPermissionDecisionsStorage = spy(
-            RecentPermissionDecisionsStorageImpl(ApplicationProvider.getApplicationContext()))
+            RecentPermissionDecisionsStorageImpl(context, jobScheduler))
         receiver = spy(PersistedStoragePackageUninstalledReceiver(recentPermissionDecisionsStorage))
     }
 
     @After
     fun finish() {
-        mockitoSession?.finishMocking()
+        mockitoSession.finishMocking()
         val logFile = File(filesDir, Constants.LOGS_TO_DUMP_FILE)
         logFile.delete()
     }
