@@ -147,6 +147,22 @@
     <!-- Label when there are zero unused apps [CHAR LIMIT=30] -->
     <string name="zero_unused_apps">0 unused apps</string>
 
+    <!-- Title for the page to review permission decisions [CHAR LIMIT=30] -->
+    <string name="review_permission_decisions">Recent permissions</string>
+
+    <!-- Label for reviewing a permission decision grant [CHAR LIMIT=80] -->
+    <string name="granted_permission_decision">You granted <xliff:g id="app_name" example="Google Maps">%1$s</xliff:g> access to <xliff:g id="permission_name" example="contacts">%2$s</xliff:g></string>
+
+    <!-- Label for reviewing a permission decision denial [CHAR LIMIT=80] -->
+    <string name="denied_permission_decision">You denied <xliff:g id="app_name" example="Google Maps">%1$s</xliff:g> access to <xliff:g id="permission_name" example="contacts">%2$s</xliff:g></string>
+
+    <!-- The number of days ago [CHAR LIMIT=NONE] -->
+    <string name="days_ago">{count, plural,
+        =0    {Today}
+        =1    {1 day ago}
+        other {# days ago}
+        }</string>
+
     <!-- [CHAR LIMIT=30] Manage applications, label for option to disable app -->
     <string name="app_disable_dlg_positive">Disable app</string>
 
