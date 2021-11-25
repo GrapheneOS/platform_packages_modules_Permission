@@ -98,6 +98,8 @@
         <service android:name="com.android.permissioncontroller.permission.service.AutoRevokeReGrantService"
                  android:permission="android.permission.BIND_JOB_SERVICE" />
 
+        <service android:name="com.android.permissioncontroller.permission.service.DecisionCleanupJobService"
+                 android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <activity android:name="com.android.permissioncontroller.permission.ui.GrantPermissionsActivity"
                 android:configChanges="keyboardHidden|screenSize"
@@ -334,7 +336,12 @@
 
         <activity
             android:name="com.android.permissioncontroller.safetycenter.ui.SafetyCenterActivity"
-            android:theme="@style/Theme.PermissionController.Settings.FilterTouches" />
+            android:theme="@style/Theme.PermissionController.Settings.FilterTouches">
+            <intent-filter android:priority="1">
+                <action android:name="android.intent.action.SAFETY_CENTER"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
 
     </application>
 

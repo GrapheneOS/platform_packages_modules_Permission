@@ -16,13 +16,17 @@
 
 package com.android.permissioncontroller.permission.service
 
+import android.app.job.JobScheduler
 import android.content.Context
+import android.provider.DeviceConfig
 import com.android.permissioncontroller.DeviceUtils
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.data.PermissionDecision
+import com.android.permissioncontroller.permission.utils.Utils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.util.concurrent.TimeUnit
 
 /**
  * Persistent storage for retrieving recent permission decisions.
@@ -55,6 +59,13 @@ interface RecentPermissionDecisionsStorage {
     suspend fun clearPermissionDecisions()
 
     /**
+     * Remove permission data older than [DEFAULT_MAX_DATA_AGE_MS] milliseconds ago.
+     *
+     * @return whether the storage was successful
+     */
+    suspend fun removeOldData(): Boolean
+
+    /**
      * Remove all the permission decisions for a particular package.
      *
      * @param packageName of the package to remove
@@ -63,6 +74,8 @@ interface RecentPermissionDecisionsStorage {
     suspend fun removePermissionDecisionsForPackage(packageName: String): Boolean
 
     companion object {
+
+        val DEFAULT_MAX_DATA_AGE_MS = TimeUnit.DAYS.toMillis(7)
 
         @Volatile
         private var INSTANCE: RecentPermissionDecisionsStorage? = null
@@ -73,7 +86,8 @@ interface RecentPermissionDecisionsStorage {
             }
 
         private fun createInstance(): RecentPermissionDecisionsStorage {
-            return RecentPermissionDecisionsStorageImpl(PermissionControllerApplication.get())
+            return RecentPermissionDecisionsStorageImpl(PermissionControllerApplication.get(),
+                PermissionControllerApplication.get().getSystemService(JobScheduler::class.java)!!)
         }
 
         fun recordPermissionDecision(
@@ -94,5 +108,10 @@ interface RecentPermissionDecisionsStorage {
         fun isRecordPermissionsSupported(context: Context): Boolean {
             return DeviceUtils.isAuto(context)
         }
+
+        fun getMaxDataAgeMs() =
+            DeviceConfig.getLong(DeviceConfig.NAMESPACE_PERMISSIONS,
+                Utils.PROPERTY_PERMISSION_DECISIONS_MAX_DATA_AGE_MILLIS,
+                DEFAULT_MAX_DATA_AGE_MS)
     }
 }
