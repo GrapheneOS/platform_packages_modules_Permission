@@ -237,6 +237,11 @@ public final class ReviewPermissionsFragment extends PreferenceFragmentCompat
         PackageInfo pkg = mAppPermissions.getPackageInfo();
         UserHandle user = UserHandle.getUserHandleForUid(pkg.applicationInfo.uid);
 
+        if (pkg.requestedPermissions == null) {
+            // No flag updating to do
+            return;
+        }
+
         for (String perm : pkg.requestedPermissions) {
             try {
                 pm.updatePermissionFlags(perm, pkg.packageName, FLAG_PERMISSION_REVIEW_REQUIRED,
