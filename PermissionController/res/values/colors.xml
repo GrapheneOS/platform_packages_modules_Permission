@@ -29,4 +29,8 @@
     <color name="car_accent">#ff60a8f0</color>
     <color name="car_divider_color">#1fffffff</color>
 
+    <!-- Safety center colors -->
+    <color name="safety_center_info">#1E8E3E</color>
+    <color name="safety_center_recommend">#F9AB00</color>
+    <color name="safety_center_warn">#D93025</color>
 </resources>
