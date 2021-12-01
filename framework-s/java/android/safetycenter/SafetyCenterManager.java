@@ -16,6 +16,7 @@
 
 package android.safetycenter;
 
+import static android.Manifest.permission.READ_SAFETY_CENTER_STATUS;
 import static android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE;
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
@@ -93,6 +94,21 @@ public final class SafetyCenterManager {
         try {
             return mService.getLastSafetyCenterUpdate(mContext.getPackageName(),
                     mContext.getUser().getIdentifier(), safetySourceId);
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
+    /**
+     * Returns whether the SafetyCenter page is enabled.
+     */
+    @RequiresPermission(anyOf = {
+            READ_SAFETY_CENTER_STATUS,
+            SEND_SAFETY_CENTER_UPDATE
+    })
+    public boolean isSafetyCenterEnabled() {
+        try {
+            return mService.isSafetyCenterEnabled();
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }
