@@ -22,6 +22,8 @@ import static java.util.Objects.requireNonNull;
 
 import android.annotation.IntDef;
 import android.annotation.NonNull;
+import android.annotation.Nullable;
+import android.annotation.StringDef;
 import android.annotation.SystemApi;
 import android.app.PendingIntent;
 import android.os.Parcel;
@@ -80,7 +82,10 @@ public final class SafetySourceStatus implements Parcelable {
                     int statusLevel = in.readInt();
                     PendingIntent pendingIntent =
                             requireNonNull(PendingIntent.readPendingIntentOrNullFromParcel(in));
-                    return new SafetySourceStatus(title, summary, statusLevel, pendingIntent);
+                    IconAction iconAction = in.readParcelable(IconAction.class.getClassLoader(),
+                            IconAction.class);
+                    return new SafetySourceStatus(title, summary, statusLevel, pendingIntent,
+                            iconAction);
                 }
 
                 @Override
@@ -97,13 +102,17 @@ public final class SafetySourceStatus implements Parcelable {
     private final int mStatusLevel;
     @NonNull
     private final PendingIntent mPendingIntent;
+    @Nullable
+    private final IconAction mIconAction;
 
     private SafetySourceStatus(@NonNull CharSequence title, @NonNull CharSequence summary,
-            @StatusLevel int statusLevel, @NonNull PendingIntent pendingIntent) {
+            @StatusLevel int statusLevel, @NonNull PendingIntent pendingIntent,
+            @Nullable IconAction iconAction) {
         this.mTitle = title;
         this.mSummary = summary;
         this.mStatusLevel = statusLevel;
         this.mPendingIntent = pendingIntent;
+        this.mIconAction = iconAction;
     }
 
     /** Returns the localized title of the safety source status to be displayed in the UI. */
@@ -133,6 +142,17 @@ public final class SafetySourceStatus implements Parcelable {
         return mPendingIntent;
     }
 
+    /**
+     * Returns an optional icon action to be displayed in the safety source status UI.
+     *
+     * <p>The icon action will be a clickable icon which performs an action as indicated by the
+     * icon.
+     */
+    @Nullable
+    public IconAction getIconAction() {
+        return mIconAction;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -144,6 +164,7 @@ public final class SafetySourceStatus implements Parcelable {
         TextUtils.writeToParcel(mSummary, dest, flags);
         dest.writeInt(mStatusLevel);
         mPendingIntent.writeToParcel(dest, flags);
+        dest.writeParcelable(mIconAction, flags);
     }
 
     @Override
@@ -154,12 +175,13 @@ public final class SafetySourceStatus implements Parcelable {
         return mStatusLevel == that.mStatusLevel
                 && TextUtils.equals(mTitle, that.mTitle)
                 && TextUtils.equals(mSummary, that.mSummary)
-                && mPendingIntent.equals(that.mPendingIntent);
+                && mPendingIntent.equals(that.mPendingIntent)
+                && Objects.equals(mIconAction, that.mIconAction);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mTitle, mSummary, mStatusLevel, mPendingIntent);
+        return Objects.hash(mTitle, mSummary, mStatusLevel, mPendingIntent, mIconAction);
     }
 
     @Override
@@ -173,7 +195,127 @@ public final class SafetySourceStatus implements Parcelable {
                 + mStatusLevel
                 + ", mPendingIntent="
                 + mPendingIntent
+                + ", mIconAction="
+                + mIconAction
                 + '}';
+    }
+
+    /**
+     * Data for an action supported from a safety source status {@link SafetySourceStatus} in the
+     * Safety Center page.
+     *
+     * <p>The purpose of the action is to add a surface to allow the user to perform an action
+     * relating to the safety source status.
+     *
+     * <p>The action will be shown as a clickable icon chosen from a predefined set of icons (see
+     * {@link IconType}). The icon should indicate to the user what action will be performed on
+     * clicking on it.
+     *
+     * @hide
+     */
+    @SystemApi
+    public static final class IconAction implements Parcelable {
+
+        @NonNull
+        public static final Parcelable.Creator<IconAction> CREATOR =
+                new Parcelable.Creator<IconAction>() {
+                    @Override
+                    public IconAction createFromParcel(Parcel in) {
+                        String iconType = requireNonNull(in.readString());
+                        PendingIntent pendingIntent =
+                                requireNonNull(PendingIntent.readPendingIntentOrNullFromParcel(in));
+                        return new IconAction(iconType, pendingIntent);
+                    }
+
+                    @Override
+                    public IconAction[] newArray(int size) {
+                        return new IconAction[size];
+                    }
+                };
+
+        @NonNull
+        @IconType
+        private final String mIconType;
+        @NonNull
+        private final PendingIntent mPendingIntent;
+
+        public IconAction(@NonNull @IconType String iconType,
+                @NonNull PendingIntent pendingIntent) {
+            this.mIconType = iconType;
+            this.mPendingIntent = pendingIntent;
+        }
+
+        /**
+         * Returns the type of icon to be displayed in the UI.
+         *
+         * <p>The icon type should indicate what action will be performed if when invoked.
+         */
+        @NonNull
+        @IconType
+        public String getIconType() {
+            return mIconType;
+        }
+
+        /** Returns a {@link PendingIntent} to be invoked when the icon action is clicked on. */
+        @NonNull
+        public PendingIntent getPendingIntent() {
+            return mPendingIntent;
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(@NonNull Parcel dest, int flags) {
+            dest.writeString(mIconType);
+            mPendingIntent.writeToParcel(dest, flags);
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof IconAction)) return false;
+            IconAction that = (IconAction) o;
+            return TextUtils.equals(mIconType, that.mIconType)
+                    && mPendingIntent.equals(that.mPendingIntent);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(mIconType, mPendingIntent);
+        }
+
+        @Override
+        public String toString() {
+            return "IconAction{"
+                    + "mIconType="
+                    + mIconType
+                    + ", mPendingIntent="
+                    + mPendingIntent
+                    + '}';
+        }
+
+        /** Indicates a gear (cog) icon. */
+        public static final String ICON_TYPE_GEAR = "icon_type_gear";
+
+        /** Indicates an information icon. */
+        public static final String ICON_TYPE_INFO = "icon_type_info";
+
+        /**
+         * All possible icons which can be displayed in an {@link IconAction}.
+         *
+         * @hide
+         */
+        @StringDef(prefix = {"ICON_TYPE_"}, value = {
+                ICON_TYPE_GEAR,
+                ICON_TYPE_INFO,
+
+        })
+        @Retention(RetentionPolicy.SOURCE)
+        public @interface IconType {
+        }
     }
 
     /**
@@ -213,6 +355,8 @@ public final class SafetySourceStatus implements Parcelable {
         private final int mStatusLevel;
         @NonNull
         private final PendingIntent mPendingIntent;
+        @Nullable
+        private IconAction mIconAction;
 
         /** Creates a {@link Builder} for a {@link SafetySourceStatus}. */
         public Builder(@NonNull CharSequence title, @NonNull CharSequence summary,
@@ -223,10 +367,22 @@ public final class SafetySourceStatus implements Parcelable {
             this.mPendingIntent = requireNonNull(pendingIntent);
         }
 
+        /**
+         * Sets an optional icon action for the safety source status.
+         *
+         * @see #getIconAction()
+         */
+        @NonNull
+        public Builder setIconAction(@Nullable IconAction iconAction) {
+            this.mIconAction = iconAction;
+            return this;
+        }
+
         /** Creates the {@link SafetySourceStatus} defined by this {@link Builder}. */
         @NonNull
         public SafetySourceStatus build() {
-            return new SafetySourceStatus(mTitle, mSummary, mStatusLevel, mPendingIntent);
+            return new SafetySourceStatus(mTitle, mSummary, mStatusLevel, mPendingIntent,
+                    mIconAction);
         }
     }
 }
