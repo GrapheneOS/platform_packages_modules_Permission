@@ -36,6 +36,7 @@ import android.text.method.LinkMovementMethod
 import android.transition.ChangeBounds
 import android.transition.TransitionManager
 import android.util.SparseIntArray
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
@@ -206,9 +207,11 @@ class GrantPermissionsViewHandlerImpl(
         }
         this.rootView = rootView
 
-        // Uses the gravity of the PermissionGrantSingleton style to position the window
-        mActivity.window.setGravity(
-                rootView.requireViewById<LinearLayout>(R.id.grant_singleton).gravity)
+        // Uses the vertical gravity of the PermissionGrantSingleton style to position the window
+        val gravity = rootView.requireViewById<LinearLayout>(R.id.grant_singleton).gravity
+        val verticalGravity = Gravity.VERTICAL_GRAVITY_MASK and gravity
+        mActivity.window.setGravity(Gravity.CENTER_HORIZONTAL or verticalGravity)
+
         // Cancel dialog
         rootView.findViewById<View>(R.id.grant_singleton)!!.setOnClickListener(this)
         // Swallow click event
