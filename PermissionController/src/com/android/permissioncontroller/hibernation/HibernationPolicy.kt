@@ -737,10 +737,14 @@ class InstallerPackagesLiveData(val user: UserHandle)
         val packageManager = PermissionControllerApplication.get().packageManager
 
         userPackageInfos!!.forEach { pkgInfo ->
-            val installerPkg =
+            try {
+                val installerPkg =
                     packageManager.getInstallSourceInfo(pkgInfo.packageName).installingPackageName
-            if (installerPkg != null) {
-                installerPackages.add(installerPkg)
+                if (installerPkg != null) {
+                    installerPackages.add(installerPkg)
+                }
+            } catch (e: PackageManager.NameNotFoundException) {
+                DumpableLog.w(LOG_TAG, "Unable to find installer source info", e)
             }
         }
 
