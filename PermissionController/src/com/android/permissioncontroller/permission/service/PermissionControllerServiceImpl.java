@@ -716,4 +716,9 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
             @NonNull Consumer<String> callback) {
         callback.accept(Utils.getGroupOfPlatformPermission(permissionName));
     }
+
+    @Override
+    public void onGetUnusedAppCount(@NonNull IntConsumer callback) {
+        mServiceModel.onCountUnusedApps(callback);
+    }
 }
