@@ -541,7 +541,7 @@
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"دقيق"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"تقريبي"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بالدخول إلى التقويم؟"</string>
-    <string name="permgrouprequest_sms" msgid="5672063688745420991">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بتوجيه رسائل SMS وعرضها؟"</string>
+    <string name="permgrouprequest_sms" msgid="5672063688745420991">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بإرسال رسائل SMS وعرضها؟"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بالوصول إلى الصور والوسائط والملفات على جهازك؟"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بتسجيل الصوت؟"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"لن يتمكن هذا التطبيق من تسجيل الصوت إلا عندما يكون قيد الاستخدام"</string>
