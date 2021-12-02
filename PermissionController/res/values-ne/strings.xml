@@ -507,4 +507,5 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"एप र सेवाहरूका लागि"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"तपाईंले आपत्‍कालीन नम्बरमा कल गर्नुभयो भने माइक्रोफोनसम्बन्धी डेटा सेयर गरिन पनि सक्छ।"</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"बदल्नुहोस्"</string>
+    <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"सुरक्षा तथा गोपनीयता"</string>
 </resources>

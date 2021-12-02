@@ -507,4 +507,5 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"За апликации и услуги"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Податоците за микрофонот може сепак да се споделат кога се јавувате на бројот за итни случаи."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Измени"</string>
+    <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Безбедност и приватност"</string>
 </resources>
