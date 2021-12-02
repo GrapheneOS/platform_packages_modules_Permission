@@ -466,8 +466,8 @@
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder à la position approximative de cet appareil ?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Exacte"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Approximative"</string>
-    <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Permettre à &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; d\'accéder à votre agenda ?"</string>
-    <string name="permgrouprequest_sms" msgid="5672063688745420991">"Autoriser l\'application &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à envoyer et afficher des SMS ?"</string>
+    <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder à votre agenda ?"</string>
+    <string name="permgrouprequest_sms" msgid="5672063688745420991">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à envoyer et afficher des SMS ?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder aux photos, contenus multimédias et fichiers sur votre appareil ?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à enregistrer de l\'audio ?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Cette application ne pourra réaliser des enregistrements audio que lorsque vous l\'utiliserez"</string>
@@ -501,13 +501,11 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Dernières\n24 heures"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> est protégé par Android. Comme vos données sont traitées sur cet appareil, l\'utilisation des autorisations de cette appli n\'est pas affichée sur la barre d\'état, ni sur votre tableau de bord Confidentialité."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> est protégé par Android. Comme vos données sont traitées sur cet appareil, l\'utilisation des autorisations de cette appli n\'est pas affichée sur votre tableau de bord Confidentialité."</string>
-    <!-- no translation found for blocked_camera_title (1128510551791284384) -->
-    <skip />
-    <!-- no translation found for blocked_microphone_title (1631517143648232585) -->
-    <skip />
-    <!-- no translation found for blocked_location_title (2005608279812892383) -->
-    <skip />
+    <string name="blocked_camera_title" msgid="1128510551791284384">"La caméra de l\'appareil est bloquée"</string>
+    <string name="blocked_microphone_title" msgid="1631517143648232585">"Le micro de l\'appareil est bloqué"</string>
+    <string name="blocked_location_title" msgid="2005608279812892383">"La localisation de l\'appareil est désactivée"</string>
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Pour les applis et services"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Il est cependant possible que les données du micro soient partagées lorsque vous appelez un numéro d\'urgence."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Modifier"</string>
+    <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Sécurité et confidentialité"</string>
 </resources>

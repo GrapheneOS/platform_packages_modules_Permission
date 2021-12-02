@@ -507,4 +507,5 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"యాప్‌లు, సర్వీస్‌ల కోసం"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"మీరు ఎమర్జెన్సీ నంబర్‌కు కాల్ చేసినప్పుడు, మైక్రోఫోన్ డేటా ఇప్పటికీ షేర్ చేయబడవచ్చు."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"మార్చండి"</string>
+    <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"సెక్యూరిటీ &amp; గోప్యత"</string>
 </resources>
