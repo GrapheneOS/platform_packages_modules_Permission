@@ -98,6 +98,11 @@ class AppPermissionGroupsViewModel(
     // Auto-revoke and hibernation share the same settings
     val autoRevokeLiveData = HibernationSettingStateLiveData[packageName, user]
 
+    private val packagePermsLiveData =
+            PackagePermissionsLiveData[packageName, user]
+    private val appPermGroupUiInfoLiveDatas = mutableMapOf<String, AppPermGroupUiInfoLiveData>()
+    private val fullStoragePermsLiveData = FullStoragePermissionAppsLiveData
+
     /**
      * LiveData whose data is a map of grant category (either allowed or denied) to a list
      * of permission group names that match the key, and two booleans representing if this is a
@@ -105,11 +110,6 @@ class AppPermissionGroupsViewModel(
      */
     val packagePermGroupsLiveData = object : SmartUpdateMediatorLiveData<@JvmSuppressWildcards
     Map<Category, List<GroupUiInfo>>>() {
-
-        private val packagePermsLiveData =
-            PackagePermissionsLiveData[packageName, user]
-        private val appPermGroupUiInfoLiveDatas = mutableMapOf<String, AppPermGroupUiInfoLiveData>()
-        private val fullStoragePermsLiveData = FullStoragePermissionAppsLiveData
 
         init {
             addSource(packagePermsLiveData) {
@@ -192,6 +192,27 @@ class AppPermissionGroupsViewModel(
             }
 
             value = groupGrantStates
+        }
+    }
+
+    // TODO 206455664: remove once issue is identified
+    fun logLiveDataState() {
+        Log.i(LOG_TAG, "Overall liveData isStale: ${packagePermGroupsLiveData.isStale}, " +
+                "isInitialized: ${packagePermGroupsLiveData.isInitialized}, " +
+                "value: ${packagePermGroupsLiveData.value}")
+        Log.i(LOG_TAG, "AutoRevoke liveData isStale: ${autoRevokeLiveData.isStale}, " +
+                "isInitialized: ${autoRevokeLiveData.isInitialized}, " +
+                "value: ${autoRevokeLiveData.value}")
+        Log.i(LOG_TAG, "PackagePerms liveData isStale: ${packagePermsLiveData.isStale}, " +
+                "isInitialized: ${packagePermsLiveData.isInitialized}, " +
+                "value: ${packagePermsLiveData.value}")
+        Log.i(LOG_TAG, "FullStorage liveData isStale: ${fullStoragePermsLiveData.isStale}, " +
+                "isInitialized: ${fullStoragePermsLiveData.isInitialized}, " +
+                "value size: ${fullStoragePermsLiveData.value?.size}")
+        for ((group, liveData) in appPermGroupUiInfoLiveDatas) {
+            Log.i(LOG_TAG, "$group ui liveData isStale: ${liveData.isStale}, " +
+                    "isInitialized: ${liveData.isInitialized}, " +
+                    "value size: ${liveData.value}")
         }
     }
 
