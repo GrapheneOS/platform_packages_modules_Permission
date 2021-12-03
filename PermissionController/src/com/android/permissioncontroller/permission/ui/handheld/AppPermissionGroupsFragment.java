@@ -40,6 +40,8 @@ import android.icu.text.ListFormatter;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.UserHandle;
 import android.provider.Settings;
 import android.util.Log;
@@ -188,9 +190,26 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
             mPermissionUsages.load(null, null, filterTimeBeginMillis, Long.MAX_VALUE,
                     PermissionUsages.USAGE_FLAG_LAST, getActivity().getLoaderManager(),
                     false, false, this, false);
+            // TODO 206455664: remove once issue is identified
+            new Handler(Looper.getMainLooper()).postDelayed(this::printState, 3000);
         }
 
         updatePreferences(mViewModel.getPackagePermGroupsLiveData().getValue());
+
+    }
+
+    @RequiresApi(Build.VERSION_CODES.S)
+    private void printState() {
+        int numPrefs =
+                getPreferenceScreen() != null ? getPreferenceScreen().getPreferenceCount() : -1;
+        if (numPrefs > 0) {
+            return;
+        }
+
+        Log.i(LOG_TAG, "number of prefs: " + numPrefs);
+        Log.i(LOG_TAG, "Has created screen: " + (getPreferenceScreen() != null));
+        Log.i(LOG_TAG, "Has usages: " + (!mPermissionUsages.getUsages().isEmpty()));
+        mViewModel.logLiveDataState();
     }
 
     @Override
