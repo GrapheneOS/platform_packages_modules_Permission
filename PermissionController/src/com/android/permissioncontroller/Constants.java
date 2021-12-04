@@ -68,6 +68,12 @@ public class Constants {
     public static final int UNUSED_APPS_NOTIFICATION_ID = 1;
 
     /**
+     * ID for notification shown by
+     * {@link com.android.permissioncontroller.auto.DrivingDecisionReminderService}.
+     */
+    public static final int PERMISSION_DECISION_REMINDER_NOTIFICATION_ID = 2;
+
+    /**
      * String action for navigating to the auto revoke screen.
      */
     public static final String ACTION_MANAGE_AUTO_REVOKE = "manageAutoRevoke";
@@ -89,7 +95,9 @@ public class Constants {
 
     /**
      * Channel of the notifications shown by
-     * {@link com.android.permissioncontroller.permission.service.LocationAccessCheck}.
+     * {@link com.android.permissioncontroller.permission.service.LocationAccessCheck},
+     * {@link com.android.permissioncontroller.hibernation.HibernationPolicyKt}, and
+     * {@link com.android.permissioncontroller.auto.DrivingDecisionReminderService}
      */
     public static final String PERMISSION_REMINDER_CHANNEL_ID = "permission reminders";
 

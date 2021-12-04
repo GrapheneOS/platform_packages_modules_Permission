@@ -777,6 +777,9 @@
     <!-- The notification content for the hibernation reminder notification [CHAR LIMIT=none] -->
     <string name="unused_apps_notification_content">Permissions and temporary files have been removed and notifications were stopped. Tap to review.</string>
 
+    <!-- The notification title for the notification that shows up at the end of a drive where the user made a permission decision [CHAR LIMIT=60] -->
+    <string name="post_drive_permission_decision_reminder_title">Recent permissions</string>
+
     <!-- The subtitle for the auto revoke settings card [CHAR LIMIT=none] -->
     <string name="auto_revoke_setting_subtitle">Some apps haven\u2019t been used in a few months</string>
 
