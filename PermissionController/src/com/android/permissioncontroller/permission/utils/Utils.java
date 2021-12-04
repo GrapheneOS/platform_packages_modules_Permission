@@ -62,8 +62,6 @@ import android.content.pm.PermissionInfo;
 import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
 import android.content.res.Resources.Theme;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.hardware.SensorPrivacyManager;
 import android.os.Build;
@@ -986,9 +984,12 @@ public final class Utils {
             @NonNull ApplicationInfo appInfo) {
         UserHandle user = UserHandle.getUserHandleForUid(appInfo.uid);
         try (IconFactory iconFactory = IconFactory.obtain(context)) {
-            Bitmap iconBmp = iconFactory.createBadgedIconBitmap(
-                    appInfo.loadUnbadgedIcon(context.getPackageManager()), user, false).icon;
-            return new BitmapDrawable(context.getResources(), iconBmp);
+            return iconFactory.createBadgedIconBitmap(
+                    appInfo.loadUnbadgedIcon(context.getPackageManager()),
+                    new IconFactory.IconOptions()
+                            .setShrinkNonAdaptiveIcons(false)
+                            .setUser(user))
+                    .newIcon(context);
         }
     }
 
