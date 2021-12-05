@@ -298,6 +298,8 @@
             </intent-filter>
         </service>
 
+        <service android:name="com.android.permissioncontroller.auto.DrivingDecisionReminderService" />
+
         <receiver android:name="com.android.permissioncontroller.role.service.ClearUserDeniedReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_DATA_CLEARED" />
