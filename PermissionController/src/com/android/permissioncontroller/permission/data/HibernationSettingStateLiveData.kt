@@ -21,7 +21,9 @@ import android.app.AppOpsManager.OPSTR_AUTO_REVOKE_PERMISSIONS_IF_UNUSED
 import android.app.Application
 import android.content.pm.PackageManager.FLAG_PERMISSION_GRANTED_BY_DEFAULT
 import android.content.pm.PackageManager.FLAG_PERMISSION_GRANTED_BY_ROLE
+import android.os.Handler
 import android.os.UserHandle
+import android.util.Log
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData.Companion.NON_RUNTIME_NORMAL_PERMS
 import com.android.permissioncontroller.permission.model.livedatatypes.HibernationSettingState
@@ -52,6 +54,13 @@ class HibernationSettingStateLiveData private constructor(
     private val exemptServicesLiveData = ExemptServicesLiveData[user]
     private val appOpsManager = app.getSystemService(AppOpsManager::class.java)!!
 
+    // TODO 206455664: remove these once issue is identified
+    private val LOG_TAG = "HibernationSettingStateLiveData"
+    private val DELAY_MS = 3000L
+    private var gotPermLiveDatas: Boolean = false
+    private var gotPastIsUserExempt: Boolean = false
+    private var gotPastIsSystemExempt: Boolean = false
+
     init {
         addSource(packagePermsLiveData) {
             update()
@@ -65,6 +74,9 @@ class HibernationSettingStateLiveData private constructor(
         addSource(HibernationEnabledLiveData) {
             update()
         }
+        Handler(app.mainLooper).postDelayed({
+            logState()
+        }, DELAY_MS)
     }
 
     override suspend fun loadDataAndPostValue(job: Job) {
@@ -82,14 +94,17 @@ class HibernationSettingStateLiveData private constructor(
 
         val getLiveData = { groupName: String -> PermStateLiveData[packageName, groupName, user] }
         setSourcesToDifference(groups, permStateLiveDatas, getLiveData)
+        gotPermLiveDatas = true
 
         if (!permStateLiveDatas.all { it.value.isInitialized }) {
             return
         }
 
         val canHibernate = !isPackageHibernationExemptByUser(app, packageLiveData.value!!)
+        gotPastIsUserExempt = true
         val revocableGroups = mutableListOf<String>()
         if (!isPackageHibernationExemptBySystem(packageLiveData.value!!, user)) {
+            gotPastIsSystemExempt = true
             permStateLiveDatas.forEach { (groupName, liveData) ->
                 val default = liveData.value?.any { (_, permState) ->
                     permState.permFlags and (FLAG_PERMISSION_GRANTED_BY_DEFAULT or
@@ -100,6 +115,7 @@ class HibernationSettingStateLiveData private constructor(
                 }
             }
         }
+        gotPastIsSystemExempt = true
 
         postValue(HibernationSettingState(isHibernationJobEnabled(), canHibernate, revocableGroups))
     }
@@ -118,6 +134,25 @@ class HibernationSettingStateLiveData private constructor(
     override fun onInactive() {
         super.onInactive()
         appOpsManager.stopWatchingMode(this)
+    }
+
+    // TODO 206455664: remove these once issue is identified
+    private fun logState() {
+        if (!isStale) {
+            return
+        }
+        Log.i(LOG_TAG, "overall state: isStale:$isStale, isInitialized:$isInitialized, " +
+                "value:$value, got perm LiveDatas:$gotPermLiveDatas, " +
+                "got isUserExempt$gotPastIsUserExempt, got isSystemExempt$gotPastIsSystemExempt")
+        Log.i(LOG_TAG, "packagePermsLivedata isStale:${packagePermsLiveData.isStale}, " +
+                "isInitialized:${packagePermsLiveData.isInitialized}")
+        Log.i(LOG_TAG, "ExemptServicesLiveData isStale:${exemptServicesLiveData.isStale}, " +
+                "isInitialized:${exemptServicesLiveData.isInitialized}")
+        Log.i(LOG_TAG, "HibernationEnabledLivedata value:${HibernationEnabledLiveData.value}")
+        for ((group, liveData) in permStateLiveDatas) {
+            Log.i(LOG_TAG, "permStateLivedata $group isStale:${liveData.isStale}, " +
+                    "isInitialized:${liveData.isInitialized}")
+        }
     }
     /**
      * Repository for HibernationSettingStateLiveDatas.
