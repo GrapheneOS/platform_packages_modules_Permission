@@ -34,4 +34,5 @@
     <color name="safety_center_info">#1E8E3E</color>
     <color name="safety_center_recommend">#F9AB00</color>
     <color name="safety_center_warn">#D93025</color>
+    <color name="safety_center_status_unfilled_wedge">#DADCE0</color> <!-- Material Gray 300 -->
 </resources>
