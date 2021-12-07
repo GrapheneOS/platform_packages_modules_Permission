@@ -67,6 +67,7 @@ import java.util.Map;
 import java.util.Random;
 
 import kotlin.Pair;
+import kotlin.Triple;
 
 /**
  * Show and manage apps which request a single permission group.
@@ -393,7 +394,7 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
                 String key = user + packageName;
 
                 Long lastAccessTime = groupUsageLastAccessTime.get(key);
-                Pair<String, Integer> summaryTimestamp = Utils
+                Triple<String, Integer, String> summaryTimestamp = Utils
                         .getPermissionLastAccessSummaryTimestamp(
                                 lastAccessTime, context, mPermGroupName);
 
@@ -467,7 +468,7 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
     }
 
     private void updatePreferenceSummary(Preference preference,
-            Pair<String, Integer> summaryTimestamp) {
+            Triple<String, Integer, String> summaryTimestamp) {
         String summary = mViewModel.getPreferenceSummary(getResources(), summaryTimestamp);
         if (!summary.isEmpty()) {
             preference.setSummary(summary);
