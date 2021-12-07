@@ -606,7 +606,7 @@ public class LocationAccessCheck {
                 .setDeleteIntent(getBroadcast(mContext, 0, deleteIntent,
                         FLAG_ONE_SHOT | FLAG_UPDATE_CURRENT | FLAG_IMMUTABLE))
                 .setContentIntent(getBroadcast(mContext, 0, clickIntent,
-                        FLAG_ONE_SHOT | FLAG_UPDATE_CURRENT));
+                        FLAG_ONE_SHOT | FLAG_UPDATE_CURRENT | FLAG_IMMUTABLE));
 
         if (appName != null) {
             Bundle extras = new Bundle();
