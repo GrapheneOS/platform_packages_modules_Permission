@@ -18,15 +18,48 @@ package com.android.permissioncontroller.safetycenter.ui;
 
 import android.os.Bundle;
 
+import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
 
 import com.android.permissioncontroller.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /** Dashboard fragment for the Safety Center **/
 public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompat {
 
+    private SafetyCenterContentManager mSafetyCenterContentManager;
+    private List<Preference> mSafetyEntryPreferences = new ArrayList<Preference>();
+
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.safety_center_dashboard, rootKey);
+        mSafetyCenterContentManager = SafetyCenterContentManager.getInstance();
+        updateSafetyEntries();
+    }
+
+    // TODO(b/208212820): Add groups and move to separate controller
+    private void updateSafetyEntries() {
+        PreferenceScreen preferenceScreen = getPreferenceScreen();
+
+        // TODO(b/208212820): Only update entries that have changed since last update, rather
+        // than deleting and re-adding all.
+        mSafetyEntryPreferences.forEach(preference -> {
+            preferenceScreen.removePreference(preference);
+        });
+        mSafetyEntryPreferences.clear();
+
+        List<SafetyEntry> entries = mSafetyCenterContentManager.getSafetyEntries();
+        entries.forEach(entry -> {
+            Preference pref = new Preference(getContext());
+            pref.setTitle(entry.getTitle());
+            pref.setSummary(entry.getSummary());
+            pref.setIcon(entry.getSeverityLevel().getEntryIconResId());
+            pref.setOrder(entry.getOrder());
+            mSafetyEntryPreferences.add(pref);
+            preferenceScreen.addPreference(pref);
+        });
     }
 }

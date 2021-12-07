@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright (C) 2021 The Android Open Source Project
   ~
@@ -14,12 +13,9 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources>
-    <color name="warning_surface">#333124</color>
-    <color name="warning_onsurface">#FDD663</color>
 
-    <!-- Safety center colors -->
-    <color name="safety_center_info">#5BB974</color>
-    <color name="safety_center_recommend">#FCC934</color>
-    <color name="safety_center_warn">#EE675C</color>
-</resources>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+       android:shape="rectangle">
+    <solid android:color="?android:attr/colorAccent"/>
+    <corners android:radius="20dp" />
+</shape>

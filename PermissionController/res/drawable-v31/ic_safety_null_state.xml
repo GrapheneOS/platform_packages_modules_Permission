@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2021 The Android Open Source Project
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,12 +13,19 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources>
-    <color name="warning_surface">#333124</color>
-    <color name="warning_onsurface">#FDD663</color>
 
-    <!-- Safety center colors -->
-    <color name="safety_center_info">#5BB974</color>
-    <color name="safety_center_recommend">#FCC934</color>
-    <color name="safety_center_warn">#EE675C</color>
-</resources>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:height="24dp"
+    android:width="24dp"
+    android:viewportHeight="24"
+    android:viewportWidth="24">
+
+    <path
+        android:pathData="M10,10m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"
+        android:fillColor="?android:attr/textColorSecondary"/>
+
+    <path
+        android:pathData="M4.0179,10V9.0079H10,15.9821V10,10.9921H10,4.0179Z"
+        android:strokeWidth="0.0198413"
+        android:fillColor="?android:attr/colorBackground"/>
+</vector>

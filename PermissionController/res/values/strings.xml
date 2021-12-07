@@ -30,6 +30,14 @@
     <!-- Button label for back action [CHAR LIMIT=20] -->
     <string name="back">Back</string>
 
+    <!-- Label indicating access is allowed. If you update this string, please
+    update the string "quick_settings_camera_mic_available" in System Ui [CHAR LIMIT=NONE] -->
+    <string name="available">Available</string>
+
+    <!-- Label indicating access is blocked. If you update this string, please
+    update the string "quick_settings_camera_mic_blocked" in SystemUi [CHAR LIMIT=NONE] -->
+    <string name="blocked">Blocked</string>
+
     <!-- Button label for uninstall or disable actions [CHAR LIMIT=none] -->
     <string name="uninstall_or_disable">Uninstall or disable</string>
 
@@ -1366,4 +1374,7 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
 
     <!-- Title for page containing overall view of device safety status [CHAR LIMIT=30] -->
     <string name="safety_center_dashboard_page_title">Security &amp; Privacy</string>
+    <!-- Label for the button that takes the user to the settings page for Android Security  [CHAR LIMIT=60] -->
+    <string name="security_settings">Security Settings</string>
+
 </resources>
