@@ -22,4 +22,5 @@
     <color name="safety_center_info">#5BB974</color>
     <color name="safety_center_recommend">#FCC934</color>
     <color name="safety_center_warn">#EE675C</color>
+    <color name="safety_center_status_unfilled_wedge">#3C4043</color> <!-- Material Gray 800 @ 75% opacity -->
 </resources>
