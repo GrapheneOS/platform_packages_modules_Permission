@@ -16,6 +16,7 @@
 
 package com.android.permissioncontroller.hibernation
 
+import android.annotation.SuppressLint
 import android.Manifest
 import android.Manifest.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION
 import android.accessibilityservice.AccessibilityService
@@ -158,10 +159,9 @@ class HibernationOnBootReceiver : BroadcastReceiver() {
         // Write first boot time if first boot
         context.firstBootTime
 
-        val userManager = context.getSystemService(UserManager::class.java)!!
         // If this user is a profile, then its hibernation/auto-revoke will be handled by the
         // primary user
-        if (userManager.isProfile) {
+        if (isProfile(context)) {
             if (DEBUG_HIBERNATION_POLICY) {
                 DumpableLog.i(LOG_TAG, "user ${Process.myUserHandle().identifier} is a profile." +
                         " Not running hibernation job.")
@@ -188,6 +188,14 @@ class HibernationOnBootReceiver : BroadcastReceiver() {
                     "Could not schedule ${HibernationJobService::class.java.simpleName}: $status")
             }
         }
+    }
+
+    // UserManager#isProfile was already a systemAPI, linter started complaining after it
+    // was exposed as a public API thinking it was a newly exposed API.
+    @SuppressLint("NewApi")
+    private fun isProfile(context: Context): Boolean {
+        val userManager = context.getSystemService(UserManager::class.java)!!
+        return userManager.isProfile
     }
 
     /**
