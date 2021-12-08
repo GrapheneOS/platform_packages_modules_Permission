@@ -54,15 +54,17 @@ public class PermissionUsageV2ControlPreference extends Preference {
     private final int mCount;
     private final boolean mShowSystem;
     private final long mSessionId;
+    private final boolean mShow7Days;
 
     public PermissionUsageV2ControlPreference(@NonNull Context context, @NonNull String groupName,
-            int count, boolean showSystem, long sessionId) {
+            int count, boolean showSystem, long sessionId, boolean show7Days) {
         super(context);
         mContext = context;
         mGroupName = groupName;
         mCount = count;
         mShowSystem = showSystem;
         mSessionId = sessionId;
+        mShow7Days = show7Days;
 
         CharSequence permGroupLabel = KotlinUtils.INSTANCE.getPermGroupLabel(mContext, mGroupName);
         setTitle(permGroupLabel);
@@ -72,12 +74,16 @@ public class PermissionUsageV2ControlPreference extends Preference {
 
         if (mCount == 0) {
             this.setEnabled(false);
-            setSummary(R.string.permission_usage_preference_summary_not_used);
+            int permissionUsageSummaryNotUsed = show7Days
+                    ? R.string.permission_usage_preference_summary_not_used_7d :
+                    R.string.permission_usage_preference_summary_not_used_24h;
+            setSummary(permissionUsageSummaryNotUsed);
         } else if (SENSOR_DATA_PERMISSIONS.contains(groupName)) {
             setOnPreferenceClickListener((preference) -> {
                 Intent intent = new Intent(Intent.ACTION_REVIEW_PERMISSION_HISTORY);
                 intent.putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, mGroupName);
                 intent.putExtra(ManagePermissionsActivity.EXTRA_SHOW_SYSTEM, mShowSystem);
+                intent.putExtra(ManagePermissionsActivity.EXTRA_SHOW_7_DAYS, mShow7Days);
 
                 logSensorDataTimelineViewed(mGroupName);
 

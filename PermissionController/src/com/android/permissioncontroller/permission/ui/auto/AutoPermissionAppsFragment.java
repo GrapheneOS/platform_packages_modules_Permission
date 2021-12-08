@@ -59,6 +59,7 @@ import java.util.Map;
 import java.util.Random;
 
 import kotlin.Pair;
+import kotlin.Triple;
 
 /** Shows the list of applications which have (or do not have) the given permission. */
 public class AutoPermissionAppsFragment extends AutoSettingsFrameFragment implements
@@ -239,7 +240,7 @@ public class AutoPermissionAppsFragment extends AutoSettingsFrameFragment implem
                 String key = user + packageName;
 
                 Long lastAccessTime = groupUsageLastAccessTime.get(key);
-                Pair<String, Integer> summaryTimestamp = Utils
+                Triple<String, Integer, String> summaryTimestamp = Utils
                         .getPermissionLastAccessSummaryTimestamp(
                                 lastAccessTime, context, mPermGroupName);
 
@@ -298,7 +299,7 @@ public class AutoPermissionAppsFragment extends AutoSettingsFrameFragment implem
     }
 
     private void updatePreferenceSummary(Preference preference,
-            Pair<String, Integer> summaryTimestamp) {
+            Triple<String, Integer, String> summaryTimestamp) {
         String summary = mViewModel.getPreferenceSummary(getResources(), summaryTimestamp);
         if (!summary.isEmpty()) {
             preference.setSummary(summary);

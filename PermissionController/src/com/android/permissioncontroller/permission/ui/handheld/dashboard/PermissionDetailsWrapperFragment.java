@@ -45,7 +45,7 @@ public class PermissionDetailsWrapperFragment extends PermissionsCollapsingToolb
      * Construct a new instance of PermissionDetailsFragment
      */
     public static @NonNull PermissionDetailsWrapperFragment newInstance(@Nullable String groupName,
-            long numMillis, boolean showSystem, long sessionId) {
+            long numMillis, boolean showSystem, long sessionId, boolean show7Days) {
         PermissionDetailsWrapperFragment fragment = new PermissionDetailsWrapperFragment();
         Bundle arguments = new Bundle();
         if (groupName != null) {
@@ -53,6 +53,7 @@ public class PermissionDetailsWrapperFragment extends PermissionsCollapsingToolb
         }
         arguments.putLong(Intent.EXTRA_DURATION_MILLIS, numMillis);
         arguments.putBoolean(ManagePermissionsActivity.EXTRA_SHOW_SYSTEM, showSystem);
+        arguments.putBoolean(ManagePermissionsActivity.EXTRA_SHOW_7_DAYS, show7Days);
         arguments.putLong(EXTRA_SESSION_ID, sessionId);
         fragment.setArguments(arguments);
         return fragment;
