@@ -110,18 +110,20 @@ import java.util.Locale;
 import java.util.Random;
 import java.util.Set;
 
-import kotlin.Pair;
+import kotlin.Triple;
 
 public final class Utils {
 
     @Retention(SOURCE)
     @IntDef(value = {LAST_24H_SENSOR_TODAY, LAST_24H_SENSOR_YESTERDAY,
-            LAST_24H_CONTENT_PROVIDER, NOT_IN_LAST_24H})
+            LAST_24H_CONTENT_PROVIDER, NOT_IN_LAST_7D})
     public @interface AppPermsLastAccessType {}
     public static final int LAST_24H_SENSOR_TODAY = 1;
     public static final int LAST_24H_SENSOR_YESTERDAY = 2;
     public static final int LAST_24H_CONTENT_PROVIDER = 3;
-    public static final int NOT_IN_LAST_24H = 4;
+    public static final int LAST_7D_SENSOR = 4;
+    public static final int LAST_7D_CONTENT_PROVIDER = 5;
+    public static final int NOT_IN_LAST_7D = 6;
 
     private static final List<String> SENSOR_DATA_PERMISSIONS = List.of(
             Manifest.permission_group.LOCATION,
@@ -1252,28 +1254,49 @@ public final class Utils {
     /**
      * Get the timestamp and lastAccessType for the summary text
      * in app permission groups and permission apps screens
+     * @return Triple<String, Integer, String> with the first being the formatted time
+     * the second being lastAccessType and the third being the formatted date.
      */
-    public static Pair<String, Integer> getPermissionLastAccessSummaryTimestamp(
+    public static Triple<String, Integer, String> getPermissionLastAccessSummaryTimestamp(
             Long lastAccessTime, Context context, String groupName) {
         long midnightToday = ZonedDateTime.now().truncatedTo(ChronoUnit.DAYS).toEpochSecond()
                 * 1000L;
+        long midnightYesterday = ZonedDateTime.now().minusDays(1).truncatedTo(ChronoUnit.DAYS)
+                .toEpochSecond() * 1000L;
+        long yesterdayAtThisTime = ZonedDateTime.now().minusDays(1).toEpochSecond() * 1000L;
 
         boolean isLastAccessToday = lastAccessTime != null
                 && midnightToday <= lastAccessTime;
+        boolean isLastAccessWithinPast24h = lastAccessTime != null
+                && yesterdayAtThisTime <= lastAccessTime;
+        boolean isLastAccessTodayOrYesterday = lastAccessTime != null
+                && midnightYesterday <= lastAccessTime;
+
         String lastAccessTimeFormatted = "";
-        @AppPermsLastAccessType int lastAccessType = NOT_IN_LAST_24H;
+        String lastAccessDateFormatted = "";
+        @AppPermsLastAccessType int lastAccessType = NOT_IN_LAST_7D;
 
         if (lastAccessTime != null) {
             lastAccessTimeFormatted = DateFormat.getTimeFormat(context)
                     .format(lastAccessTime);
+            lastAccessDateFormatted = DateFormat.getDateFormat(context)
+                    .format(lastAccessTime);
 
-            lastAccessType = !SENSOR_DATA_PERMISSIONS.contains(groupName)
-                    ? LAST_24H_CONTENT_PROVIDER : isLastAccessToday
-                    ? LAST_24H_SENSOR_TODAY :
-                    LAST_24H_SENSOR_YESTERDAY;
+            if (!SENSOR_DATA_PERMISSIONS.contains(groupName)) {
+                // For content providers we show either the last access is within
+                // past 24 hours or past 7 days
+                lastAccessType = isLastAccessWithinPast24h
+                        ? LAST_24H_CONTENT_PROVIDER : LAST_7D_CONTENT_PROVIDER;
+            } else {
+                // For sensor data permissions we show if the last access
+                // is today, yesterday or older than yesterday
+                lastAccessType = isLastAccessToday
+                        ? LAST_24H_SENSOR_TODAY : isLastAccessTodayOrYesterday
+                        ? LAST_24H_SENSOR_YESTERDAY : LAST_7D_SENSOR;
+            }
         }
 
-        return new Pair<>(lastAccessTimeFormatted, lastAccessType);
+        return new Triple<>(lastAccessTimeFormatted, lastAccessType, lastAccessDateFormatted);
     }
 
     /**
