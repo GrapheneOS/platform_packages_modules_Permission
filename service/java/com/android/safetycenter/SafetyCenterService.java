@@ -16,10 +16,16 @@
 
 package com.android.safetycenter;
 
+import static android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE;
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
+import static java.util.Objects.requireNonNull;
+
 import android.annotation.Nullable;
+import android.annotation.UserIdInt;
+import android.app.AppOpsManager;
 import android.content.Context;
+import android.os.Binder;
 import android.safetycenter.ISafetyCenterManager;
 import android.safetycenter.SafetySourceData;
 
@@ -27,6 +33,8 @@ import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
+import com.android.internal.annotations.GuardedBy;
+import com.android.permission.util.PermissionUtils;
 import com.android.server.SystemService;
 
 import java.util.HashMap;
@@ -42,11 +50,19 @@ import java.util.Objects;
 @RequiresApi(TIRAMISU)
 public final class SafetyCenterService extends SystemService {
 
+    @NonNull
+    private final Object mLock = new Object();
     // TODO(b/206789604): Use persistent storage instead.
+    @GuardedBy("mLock")
+    @NonNull
     private final Map<Key, SafetySourceData> mSafetySourceDataForKey = new HashMap<>();
+
+    @NonNull
+    private final AppOpsManager mAppOpsManager;
 
     public SafetyCenterService(@NonNull Context context) {
         super(context);
+        mAppOpsManager = requireNonNull(context.getSystemService(AppOpsManager.class));
     }
 
     @Override
@@ -57,9 +73,7 @@ public final class SafetyCenterService extends SystemService {
     private static final class Key {
         @NonNull
         private final String mPackageName;
-
         private final int mUserId;
-
         @NonNull
         private final String mSafetySourceId;
 
@@ -106,22 +120,35 @@ public final class SafetyCenterService extends SystemService {
 
     private final class Stub extends ISafetyCenterManager.Stub {
         @Override
-        public void sendSafetyCenterUpdate(@NonNull String packageName, int userId,
+        public void sendSafetyCenterUpdate(@NonNull String packageName, @UserIdInt int userId,
                 @NonNull SafetySourceData safetySourceData) {
-            // TODO(b/205706756): Security: check SafetySourceData ID, enforce permissions, check
-            //  package name and/or certs?
+            mAppOpsManager.checkPackage(Binder.getCallingUid(), packageName);
+            PermissionUtils.enforceCrossUserPermission(userId, false, "sendSafetyCenterUpdate",
+                    getContext());
+            getContext().enforceCallingOrSelfPermission(SEND_SAFETY_CENTER_UPDATE,
+                    "sendSafetyCenterUpdate");
+            // TODO(b/205706756): Security: check certs?
             // TODO(b/203098016): Implement merging logic.
-            mSafetySourceDataForKey.put(Key.of(packageName, userId, safetySourceData.getId()),
-                    safetySourceData);
+            synchronized (mLock) {
+                mSafetySourceDataForKey.put(Key.of(packageName, userId, safetySourceData.getId()),
+                        safetySourceData);
+            }
         }
 
         @Override
         @Nullable
-        public SafetySourceData getLastSafetyCenterUpdate(@NonNull String packageName, int userId,
+        public SafetySourceData getLastSafetyCenterUpdate(@NonNull String packageName,
+                @UserIdInt int userId,
                 @NonNull String safetySourceId) {
-            // TODO(b/205706756): Security: check SafetySourceData ID, enforce permissions, check
-            //  package name and/or certs?
-            return mSafetySourceDataForKey.get(Key.of(packageName, userId, safetySourceId));
+            mAppOpsManager.checkPackage(Binder.getCallingUid(), packageName);
+            PermissionUtils.enforceCrossUserPermission(userId, false, "getLastSafetyCenterUpdate",
+                    getContext());
+            getContext().enforceCallingOrSelfPermission(SEND_SAFETY_CENTER_UPDATE,
+                    "getLastSafetyCenterUpdate");
+            // TODO(b/205706756): Security: check certs?
+            synchronized (mLock) {
+                return mSafetySourceDataForKey.get(Key.of(packageName, userId, safetySourceId));
+            }
         }
     }
 }
