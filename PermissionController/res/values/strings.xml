@@ -1437,4 +1437,9 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <!-- Label for the button that takes the user to the settings page for Android Security  [CHAR LIMIT=60] -->
     <string name="security_settings">Security Settings</string>
 
+    <!-- Title of the safety and privacy quick settings tile [CHAR LIMIT=NONE] -->
+    <string name="safety_privacy_qs_tile_title">Security &amp; Privacy</string>
+    <!-- Subtitle of the safety and privacy quick settings tile [CHAR LIMIT=NONE] -->
+    <string name="safety_privacy_qs_tile_subtitle">Check status</string>
+
 </resources>
