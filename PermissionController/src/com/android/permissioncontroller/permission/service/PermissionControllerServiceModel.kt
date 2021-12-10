@@ -20,14 +20,21 @@ import android.content.pm.PackageManager
 import android.os.Process
 import android.permission.PermissionControllerManager.COUNT_ONLY_WHEN_GRANTED
 import android.permission.PermissionControllerManager.COUNT_WHEN_SYSTEM
+import android.permission.PermissionControllerManager.HIBERNATION_ELIGIBILITY_ELIGIBLE
+import android.permission.PermissionControllerManager.HIBERNATION_ELIGIBILITY_EXEMPT_BY_SYSTEM
+import android.permission.PermissionControllerManager.HIBERNATION_ELIGIBILITY_EXEMPT_BY_USER
 import androidx.core.util.Consumer
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.Transformations
 import com.android.permissioncontroller.DumpableLog
+import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.PermissionControllerProto.PermissionControllerDumpProto
+import com.android.permissioncontroller.hibernation.isPackageHibernationExemptBySystem
+import com.android.permissioncontroller.hibernation.isPackageHibernationExemptByUser
 import com.android.permissioncontroller.permission.data.AppPermGroupUiInfoLiveData
+import com.android.permissioncontroller.permission.data.LightPackageInfoLiveData
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.data.UserPackageInfosLiveData
@@ -290,6 +297,34 @@ class PermissionControllerServiceModel(private val service: PermissionController
         }
         observeAndCheckForLifecycleState(unusedAppsCount) { unusedAppsCount ->
             callback.accept(unusedAppsCount ?: 0)
+        }
+    }
+
+    /**
+     * Gets whether the package is eligible for hibernation. The logic is the same logic used by
+     * the app hibernation job when determining which apps to hibernate.
+     *
+     * @param packageName The package to check eligibility for
+     * @param callback The callback the result will be returned to
+     */
+    fun onGetHibernationEligibility(
+        packageName: String,
+        callback: IntConsumer
+    ) {
+        val user = Process.myUserHandle()
+        val packageLiveData = LightPackageInfoLiveData[packageName, user]
+        observeAndCheckForLifecycleState(packageLiveData) { pkg ->
+            GlobalScope.launch(Main.immediate) {
+                val exemptBySystem = isPackageHibernationExemptBySystem(pkg!!, user)
+                val exemptByUser = isPackageHibernationExemptByUser(
+                    PermissionControllerApplication.get(), pkg!!)
+                val eligibility = when {
+                    !exemptBySystem && !exemptByUser -> HIBERNATION_ELIGIBILITY_ELIGIBLE
+                    exemptBySystem -> HIBERNATION_ELIGIBILITY_EXEMPT_BY_SYSTEM
+                    else -> HIBERNATION_ELIGIBILITY_EXEMPT_BY_USER
+                }
+                callback.accept(eligibility)
+            }
         }
     }
 
