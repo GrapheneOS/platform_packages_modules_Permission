@@ -32,12 +32,19 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
 
     private SafetyCenterContentManager mSafetyCenterContentManager;
     private List<Preference> mSafetyEntryPreferences = new ArrayList<Preference>();
+    private SafetyStatusPreference mSafetyStatusPreference;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.safety_center_dashboard, rootKey);
         mSafetyCenterContentManager = SafetyCenterContentManager.getInstance();
         updateSafetyEntries();
+        mSafetyStatusPreference = getPreferenceScreen().findPreference("safety_status_wheel");
+
+        // TODO(b/206775474): Replace this with fetching real data from SafetyCenterContentManager.
+        mSafetyStatusPreference.setSafetyStatus(
+                new OverallSafetyStatus(OverallSafetyStatus.Level.RECOMMENDATION,
+                        "Something's wrong", "Can you please fix it?"));
     }
 
     // TODO(b/208212820): Add groups and move to separate controller
@@ -46,9 +53,7 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
 
         // TODO(b/208212820): Only update entries that have changed since last update, rather
         // than deleting and re-adding all.
-        mSafetyEntryPreferences.forEach(preference -> {
-            preferenceScreen.removePreference(preference);
-        });
+        mSafetyEntryPreferences.forEach(preferenceScreen::removePreference);
         mSafetyEntryPreferences.clear();
 
         List<SafetyEntry> entries = mSafetyCenterContentManager.getSafetyEntries();
