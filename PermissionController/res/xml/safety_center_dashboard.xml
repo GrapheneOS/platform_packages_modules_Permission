@@ -16,9 +16,14 @@
   -->
 
 <PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- TODO(b/205999070): Add safety status indicator. -->
+    <com.android.permissioncontroller.safetycenter.ui.SafetyStatusPreference
+        android:key="safety_status_wheel"
+        android:order="-3"
+        app:selectable="false" />
+
     <!-- TODO(b/205996247): Add primary safety warning. -->
     <!-- TODO(b/205999071): Add link to more warnings page. -->
     <!-- TODO(b/205971026): Add safety entries. -->

@@ -23,19 +23,24 @@ enum SeverityLevel {
 
     SEVERITY_LEVEL_UNKNOWN(
             R.drawable.ic_safety_empty,
-            R.drawable.ic_safety_empty),
+            R.drawable.ic_safety_empty
+    ),
     NONE(
             R.drawable.ic_safety_null_state,
-            R.drawable.ic_safety_null_state),
+            R.drawable.ic_safety_null_state
+    ),
     INFORMATION(
             R.drawable.ic_safety_info,
-            R.drawable.ic_safety_info_outline),
+            R.drawable.ic_safety_info_outline
+    ),
     RECOMMENDATION(
             R.drawable.ic_safety_recommendation,
-            R.drawable.ic_safety_recommendation_outline),
+            R.drawable.ic_safety_recommendation_outline
+    ),
     CRITICAL_WARNING(
             R.drawable.ic_safety_warn,
-            R.drawable.ic_safety_warn_outline);
+            R.drawable.ic_safety_warn_outline
+    );
 
     private final int mEntryIconResId;
     private final int mWarningCardIconResId;
@@ -45,13 +50,14 @@ enum SeverityLevel {
         mWarningCardIconResId = warningCardIconResId;
     }
 
-    /** Returns the res id of the icon that should be used for a safety entry of this severity */
+    /** Returns the res id of the icon that should be used for a safety entry of this severity. */
     public int getEntryIconResId() {
         return mEntryIconResId;
     }
 
-    /** Returns the res id of the icon that should be used for a warning card of this severity */
+    /** Returns the res id of the icon that should be used for a warning card of this severity. */
     public int getWarningCardIconResId() {
         return mWarningCardIconResId;
     }
+
 }

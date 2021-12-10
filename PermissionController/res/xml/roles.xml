@@ -1063,4 +1063,17 @@
             <permission name="android.permission.CHANGE_CONFIGURATION" />
         </permissions>
     </role>
+
+    <role
+        name="android.app.role.SYSTEM_APP_PROTECTION_SERVICE"
+        defaultHolders="config_systemAppProtectionService"
+        exclusive="true"
+        minSdkVersion="33"
+        static="true"
+        systemOnly="true"
+        visible="false">
+        <permissions>
+            <permission name="android.permission.GET_HISTORICAL_APP_OPS_STATS" />
+        </permissions>
+    </role>
 </roles>
