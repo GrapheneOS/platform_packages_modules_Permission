@@ -316,6 +316,14 @@
             </intent-filter>
         </receiver>
 
+        <receiver android:name="com.android.permissioncontroller.permission.service.RecentPermissionDecisionsTimeChangeReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.TIME_SET" />
+            </intent-filter>
+        </receiver>
+
         <!-- Debug report authorization (bugreport and incident report) -->
         <receiver android:name="com.android.permissioncontroller.incident.ConfirmationReceiver"
             android:exported="true">

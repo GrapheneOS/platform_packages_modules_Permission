@@ -73,6 +73,18 @@ interface RecentPermissionDecisionsStorage {
      */
     suspend fun removePermissionDecisionsForPackage(packageName: String): Boolean
 
+    /**
+     * Update decision timestamps based on the delta in system time. Since
+     * [storePermissionDecision] rounds timestamps down to day-level granularity, we only update
+     * the date if [diffSystemTimeMillis] is greater than 1 day.
+     *
+     * @param diffSystemTimeMillis the difference between the current and old system times. Positive
+     * values mean that the time has changed in the future and negative means the time was changed
+     * into the past.
+     * @return whether the storage was successful
+     */
+    suspend fun updateDecisionsBySystemTimeDelta(diffSystemTimeMillis: Long): Boolean
+
     companion object {
 
         val DEFAULT_MAX_DATA_AGE_MS = TimeUnit.DAYS.toMillis(7)
