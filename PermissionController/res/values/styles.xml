@@ -1122,7 +1122,10 @@
         <item name="card_view:contentPaddingRight">20dp</item>
     </style>
 
-    <style name="WarningBannerIcon" parent="@style/ImageViewIcon">
+    <style name="WarningBannerIcon">
+        <item name="android:layout_width">24dp</item>
+        <item name="android:layout_height">24dp</item>
+        <item name="android:scaleType">fitCenter</item>
         <item name="android:layout_marginBottom">8dp</item>
         <item name="android:tint">@color/warning_onsurface</item>
     </style>
