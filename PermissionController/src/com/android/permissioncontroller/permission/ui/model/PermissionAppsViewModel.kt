@@ -92,11 +92,11 @@ class PermissionAppsViewModel(
     val hasSystemAppsLiveData = state.getLiveData(HAS_SYSTEM_APPS_KEY, true)
     val showAllowAlwaysStringLiveData = state.getLiveData(SHOW_ALWAYS_ALLOWED, false)
     val categorizedAppsLiveData = CategorizedAppsLiveData(groupName)
-    val sensorLiveData = mutableMapOf<String, SensorStatusLiveData>()
 
-    @RequiresApi(Build.VERSION_CODES.S)
-    fun getSensorStatusLiveData(): SensorStatusLiveData {
-        return sensorLiveData.getOrPut(groupName) { SensorStatusLiveData() }
+    @get:RequiresApi(Build.VERSION_CODES.S)
+    val sensorStatusLiveData: SensorStatusLiveData by lazy(LazyThreadSafetyMode.NONE)
+    @RequiresApi(Build.VERSION_CODES.S) {
+        SensorStatusLiveData()
     }
 
     fun updateShowSystem(showSystem: Boolean) {
@@ -126,8 +126,7 @@ class PermissionAppsViewModel(
             var blocked: Boolean
 
             if (isLocation) {
-                val userContext = Utils.getUserContext(app, android.os.Process.myUserHandle())
-                blocked = !LocationUtils.isLocationEnabled(userContext)
+                blocked = !LocationUtils.isLocationEnabled(app.getApplicationContext())
             } else {
                 blocked = sensorPrivacyManager.isSensorPrivacyEnabled(sensor)
             }
