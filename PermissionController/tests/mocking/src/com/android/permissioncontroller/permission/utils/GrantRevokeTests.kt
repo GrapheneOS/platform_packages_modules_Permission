@@ -486,6 +486,32 @@ class GrantRevokeTests {
     }
 
     /**
+     * Test the granting of a permission which has been auto-revoked along with others in the group.
+     * Granting one permission should also clear the [FLAG_PERMISSION_AUTO_REVOKED] flag on others
+     * in the group.
+     */
+    @Test
+    fun grantAutoRevokedPermInGroupTest() {
+        val pkg = createMockPackage(mapOf(FG_PERM_NAME to false, BG_PERM_NAME to false))
+        val perms = mutableMapOf<String, LightPermission>()
+        val origBgFlags = FLAG_PERMISSION_AUTO_REVOKED
+        perms[FG_PERM_NAME] = createMockPerm(
+            pkg, FG_PERM_NAME, BG_PERM_NAME, null, FLAG_PERMISSION_AUTO_REVOKED)
+        perms[BG_PERM_NAME] = createMockPerm(
+            pkg, BG_PERM_NAME, null, listOf(FG_PERM_NAME), origBgFlags)
+        val group = createMockGroup(pkg, perms)
+        resetMockAppState()
+
+        KotlinUtils.grantForegroundRuntimePermissions(app, group)
+
+        val newFlags = FLAG_PERMISSION_USER_SET
+        verifyPermissionState(permName = FG_PERM_NAME, expectPermChange = true,
+            expectPermGranted = true, expectedFlags = newFlags)
+        verifyPermissionState(permName = BG_PERM_NAME, expectPermChange = false,
+            expectedFlags = NO_FLAGS, originalFlags = origBgFlags)
+    }
+
+    /**
      * Test granting a group with a foreground permission that is system fixed, and another that
      * isn't. The system fixed permission should not change.
      */
