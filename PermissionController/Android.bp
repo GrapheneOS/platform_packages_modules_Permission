@@ -70,6 +70,9 @@ filegroup {
 
 android_app {
     name: "PermissionController",
+    // Compiling against "module_current" would allow using non-APIs within the permission APEX
+    // boundaries, which may be unsafe because PermissionController is also shipped as a standalone
+    // artifact. See also b/209458854.
     sdk_version: "system_current",
     target_sdk_version: "system_current",
     min_sdk_version: "30",
