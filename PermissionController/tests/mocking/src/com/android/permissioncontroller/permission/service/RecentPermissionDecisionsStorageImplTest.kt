@@ -255,4 +255,45 @@ class RecentPermissionDecisionsStorageImplTest {
                 .containsExactly(todayDecision.packageName, sixDaysAgoDecision.packageName)
         }
     }
+
+    @Test
+    fun updateDecisionsBySystemTimeDelta_lessThanOneDay_noChange() {
+        init()
+        runBlocking {
+            storage.storePermissionDecision(musicCalendarGrant)
+            storage.updateDecisionsBySystemTimeDelta(TimeUnit.HOURS.toMillis(12))
+
+            assertThat(storage.loadPermissionDecisions()).containsExactly(musicCalendarGrant)
+        }
+    }
+
+    @Test
+    fun updateDecisionsBySystemTimeDelta_oneDayForward_shiftsData() {
+        init()
+        runBlocking {
+            storage.storePermissionDecision(musicCalendarGrant)
+            storage.updateDecisionsBySystemTimeDelta(TimeUnit.DAYS.toMillis(1))
+
+            assertThat(storage.loadPermissionDecisions()).containsExactly(
+                musicCalendarGrant.copy(
+                    decisionTime = musicCalendarGrant.decisionTime + TimeUnit.DAYS.toMillis(1)
+                )
+            )
+        }
+    }
+
+    @Test
+    fun updateDecisionsBySystemTimeDelta_oneDayBackward_shiftsData() {
+        init()
+        runBlocking {
+            storage.storePermissionDecision(musicCalendarGrant)
+            storage.updateDecisionsBySystemTimeDelta(-TimeUnit.DAYS.toMillis(1))
+
+            assertThat(storage.loadPermissionDecisions()).containsExactly(
+                musicCalendarGrant.copy(
+                    decisionTime = musicCalendarGrant.decisionTime - TimeUnit.DAYS.toMillis(1)
+                )
+            )
+        }
+    }
 }
