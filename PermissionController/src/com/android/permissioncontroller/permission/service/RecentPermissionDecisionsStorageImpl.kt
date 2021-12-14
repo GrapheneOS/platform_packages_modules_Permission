@@ -48,6 +48,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import java.util.concurrent.TimeUnit
+import kotlin.math.abs
 
 /**
  * Thread-safe implementation of [RecentPermissionDecisionsStorage] using an XML file as the
@@ -193,6 +194,23 @@ class RecentPermissionDecisionsStorageImpl(
             val existingDecisions = readData()
 
             val newDecisions = existingDecisions.filter { it.packageName != packageName }
+            return writeData(newDecisions)
+        }
+    }
+
+    override suspend fun updateDecisionsBySystemTimeDelta(diffSystemTimeMillis: Long): Boolean {
+        if (abs(diffSystemTimeMillis) < TimeUnit.DAYS.toMillis(1)) {
+            DumpableLog.i(LOG_TAG, "Ignoring time change - less than one day")
+            return true
+        }
+
+        synchronized(fileLock) {
+            val existingDecisions = readData()
+
+            val newDecisions = existingDecisions.map {
+                // delta will be rounded down to the nearest day in writeData
+                it.copy(decisionTime = it.decisionTime + diffSystemTimeMillis)
+            }
             return writeData(newDecisions)
         }
     }
