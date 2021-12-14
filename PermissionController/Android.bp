@@ -130,6 +130,10 @@ android_app {
         type: "lite",
     },
 
+    lint: {
+        strict_updatability_linting: true,
+    },
+
     optimize: {
         proguard_flags_files: ["proguard.flags"],
     },
