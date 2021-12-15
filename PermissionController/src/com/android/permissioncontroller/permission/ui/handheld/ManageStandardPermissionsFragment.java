@@ -20,7 +20,7 @@ import static androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory;
 import static com.android.permissioncontroller.Constants.EXTRA_SESSION_ID;
 import static com.android.permissioncontroller.Constants.INVALID_SESSION_ID;
 import static com.android.permissioncontroller.permission.ui.handheld.UtilsKt.pressBack;
-import static com.android.permissioncontroller.permission.ui.handheld.dashboard.UtilsKt.shouldShowPermissionsDashboard;
+import static com.android.permissioncontroller.permission.ui.handheld.dashboard.DashboardUtilsKt.shouldShowPermissionsDashboard;
 
 import android.app.Application;
 import android.content.Intent;

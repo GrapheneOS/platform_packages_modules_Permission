@@ -354,28 +354,28 @@
     <string name="history_preference_subtext_3"><xliff:g id="attribution_name" example="Nearby Share">%1$s</xliff:g> \u2022 <xliff:g id="app_name" example="Gmail">%2$s</xliff:g> \u2022 <xliff:g id="truncated_time" example="1 hr 20min">%3$s</xliff:g></string>
 
     <!-- Duration used for a permission in days -->
-    <plurals name="duration_used_days">
-        <item quantity="one">1 day</item>
-        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> days</item>
-    </plurals>
+    <string name="duration_used_days">{count, plural,
+        =1      {1 day}
+        other   {# days}
+    }</string>
 
     <!-- Duration used for a permission in hours -->
-    <plurals name="duration_used_hours">
-        <item quantity="one">1 hour</item>
-        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> hours</item>
-    </plurals>
+    <string name="duration_used_hours">{count, plural,
+        =1      {1 hour}
+        other   {# hours}
+    }</string>
 
     <!-- Duration used for a permission in minutes -->
-    <plurals name="duration_used_minutes">
-        <item quantity="one">1 min</item>
-        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> mins</item>
-    </plurals>
+    <string name="duration_used_minutes">{count, plural,
+        =1      {1 min}
+        other   {# mins}
+    }</string>
 
     <!-- Duration used for a permission in seconds -->
-    <plurals name="duration_used_seconds">
-        <item quantity="one">1 sec</item>
-        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> secs</item>
-    </plurals>
+    <string name="duration_used_seconds">{count, plural,
+        =1      {1 sec}
+        other   {# secs}
+    }</string>
 
     <!-- Description for showing permission accesses with any permission [CHAR LIMIT=30] -->
     <string name="permission_usage_any_permission">Any permission</string>
@@ -702,28 +702,28 @@
     <string name="denied_header">Not allowed</string>
 
     <!-- Time in days -->
-    <plurals name="days">
-        <item quantity="one">1 day</item>
-        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> days</item>
-    </plurals>
+    <string name="days">{count, plural,
+        =1      {1 day}
+        other   {# days}
+    }</string>
 
     <!-- Time in hours -->
-    <plurals name="hours">
-        <item quantity="one">1 hour</item>
-        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> hours</item>
-    </plurals>
+    <string name="hours">{count, plural,
+        =1      {1 hour}
+        other   {# hours}
+    }</string>
 
     <!-- Time in minutes -->
-    <plurals name="minutes">
-        <item quantity="one">1 minute</item>
-        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> minutes</item>
-    </plurals>
+    <string name="minutes">{count, plural,
+        =1      {1 minute}
+        other   {# minutes}
+    }</string>
 
     <!-- Time in seconds -->
-    <plurals name="seconds">
-        <item quantity="one">1 second</item>
-        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> seconds</item>
-    </plurals>
+    <string name="seconds">{count, plural,
+        =1      {1 second}
+        other   {# seconds}
+    }</string>
 
     <!-- The name of the notification channel containing reminders about permission [CHAR LIMIT=60]-->
     <string name="permission_reminders">Permission reminders</string>
