@@ -82,6 +82,10 @@
         <permission name="android.permission.BLUETOOTH_SCAN" minSdkVersion="31" />
     </permission-set>
 
+    <permission-set name="notifications">
+        <permission name="android.permission.POST_NOTIFICATIONS" minSdkVersion="33" />
+    </permission-set>
+
     <role
         name="android.app.role.ASSISTANT"
         behavior="AssistantRoleBehavior"
@@ -209,6 +213,7 @@
             <permission-set name="sms" />
             <permission-set name="microphone" />
             <permission-set name="camera" />
+            <permission-set name="notifications" />
         </permissions>
         <app-op-permissions>
             <app-op-permission name="android.permission.SYSTEM_ALERT_WINDOW" />
@@ -297,6 +302,7 @@
             <permission-set name="storage" />
             <permission-set name="microphone" />
             <permission-set name="camera" />
+            <permission-set name="notifications" />
             <permission name="android.permission.START_FOREGROUND_SERVICES_FROM_BACKGROUND" minSdkVersion="31" />
         </permissions>
         <app-ops>
@@ -362,6 +368,7 @@
             </activity>
         </required-components>
         <permissions>
+            <permission-set name="notifications" />
             <permission name="android.permission.START_FOREGROUND_SERVICES_FROM_BACKGROUND" minSdkVersion="31" />
             <permission name="android.permission.OBSERVE_SENSOR_PRIVACY" minSdkVersion="31" />
         </permissions>
@@ -448,6 +455,9 @@
                 </intent-filter>
             </service>
         </required-components>
+        <permissions>
+            <permission-set name="notifications" />
+        </permissions>
         <app-op-permissions>
             <app-op-permission name="android.permission.SYSTEM_ALERT_WINDOW" />
         </app-op-permissions>
@@ -969,6 +979,7 @@
         systemOnly="true"
         visible="false">
         <permissions>
+            <permission-set name="notifications" />
             <permission name="android.permission.MANAGE_SENSOR_PRIVACY" />
             <permission name="android.permission.OBSERVE_SENSOR_PRIVACY" />
         </permissions>
@@ -1000,6 +1011,7 @@
         systemOnly="true"
         visible="false">
         <permissions>
+            <permission-set name="notifications" />
             <permission name="android.permission.CREATE_VIRTUAL_DEVICE" minSdkVersion="33" />
 
             <!--TODO(b/201605314) For calling Telecom framework API for audio streaming-->
