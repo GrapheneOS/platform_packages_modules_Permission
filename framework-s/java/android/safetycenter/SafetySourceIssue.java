@@ -24,6 +24,8 @@ import static java.util.Objects.requireNonNull;
 
 import android.annotation.IntDef;
 import android.annotation.NonNull;
+import android.annotation.Nullable;
+import android.annotation.StringDef;
 import android.annotation.SystemApi;
 import android.app.PendingIntent;
 import android.os.Parcel;
@@ -56,34 +58,59 @@ public final class SafetySourceIssue implements Parcelable {
     /**
      * Indicates an informational message. This severity will be reflected in the UI through a
      * green icon.
+     *
+     * <p>Issues with this severity will be dismissible by the user from the UI, and will not
+     * trigger a confirmation dialog upon a user attempting to dismiss the warning.
      */
     public static final int SEVERITY_LEVEL_INFORMATION = 200;
 
     /**
      * Indicates a medium-severity issue which the user is encouraged to act on. This severity will
      * be reflected in the UI through a yellow icon.
+     *
+     * <p>Issues with this severity will be dismissible by the user from the UI, and will trigger a
+     * confirmation dialog upon a user attempting to dismiss the warning.
      */
     public static final int SEVERITY_LEVEL_RECOMMENDATION = 300;
 
     /**
      * Indicates a critical or urgent safety issue that should be addressed by the user. This
      * severity will be reflected in the UI through a red icon.
+     *
+     * <p>Issues with this severity will be dismissible by the user from the UI, and will trigger a
+     * confirmation dialog upon a user attempting to dismiss the warning.
      */
     public static final int SEVERITY_LEVEL_CRITICAL_WARNING = 400;
+
+    /** Indicates that the risk associated with the issue is related to a user's device safety. */
+    public static final String ISSUE_CATEGORY_DEVICE = "issue_category_device";
+
+    /** Indicates that the risk associated with the issue is related to a user's account safety. */
+    public static final String ISSUE_CATEGORY_ACCOUNT = "issue_category_account";
+
+    /** Indicates that the risk associated with the issue is related to a user's general safety. */
+    public static final String ISSUE_CATEGORY_GENERAL = "issue_category_general";
 
     @NonNull
     public static final Parcelable.Creator<SafetySourceIssue> CREATOR =
             new Parcelable.Creator<SafetySourceIssue>() {
                 @Override
                 public SafetySourceIssue createFromParcel(Parcel in) {
+                    String id = in.readString();
                     CharSequence title =
                             requireNonNull(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in));
+                    CharSequence subtitle =
+                            TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
                     CharSequence summary =
                             requireNonNull(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in));
                     int severityLevel = in.readInt();
+                    String issueCategory = in.readString();
                     List<Action> actions = new ArrayList<>();
                     in.readParcelableList(actions, Action.class.getClassLoader());
-                    return new SafetySourceIssue(title, summary, severityLevel, actions);
+                    PendingIntent onDismissPendingIntent =
+                            PendingIntent.readPendingIntentOrNullFromParcel(in);
+                    return new SafetySourceIssue(id, title, subtitle, summary, severityLevel,
+                            issueCategory, actions, onDismissPendingIntent);
                 }
 
                 @Override
@@ -93,26 +120,64 @@ public final class SafetySourceIssue implements Parcelable {
             };
 
     @NonNull
+    private final String mId;
+    @NonNull
     private final CharSequence mTitle;
+    @Nullable
+    private final CharSequence mSubtitle;
     @NonNull
     private final CharSequence mSummary;
     @SeverityLevel
     private final int mSeverityLevel;
-    @NonNull
     private final List<Action> mActions;
+    @Nullable
+    private final PendingIntent mOnDismissPendingIntent;
+    @NonNull
+    @IssueCategory
+    private final String mIssueCategory;
 
-    private SafetySourceIssue(@NonNull CharSequence title, @NonNull CharSequence summary,
-            @SeverityLevel int severityLevel, @NonNull List<Action> actions) {
+    private SafetySourceIssue(@NonNull String id,
+            @NonNull CharSequence title,
+            @Nullable CharSequence subtitle,
+            @NonNull CharSequence summary,
+            @SeverityLevel int severityLevel,
+            @NonNull @IssueCategory String issueCategory,
+            @NonNull List<Action> actions,
+            @Nullable PendingIntent onDismissPendingIntent) {
+        this.mId = id;
         this.mTitle = title;
+        this.mSubtitle = subtitle;
         this.mSummary = summary;
         this.mSeverityLevel = severityLevel;
+        this.mIssueCategory = issueCategory;
         this.mActions = actions;
+        this.mOnDismissPendingIntent = onDismissPendingIntent;
+    }
+
+    /**
+     * Returns the identifier for this issue.
+     *
+     * <p>This id should uniquely identify the safety risk represented by this issue. Safety issues
+     * will be deduped by this id to be shown in the UI.
+     *
+     * <p>On multiple instances of providing the same issue to be represented in Safety Center,
+     * provide the same id across all instances.
+     */
+    @NonNull
+    public String getId() {
+        return mId;
     }
 
     /** Returns the localized title of the issue to be displayed in the UI. */
     @NonNull
     public CharSequence getTitle() {
         return mTitle;
+    }
+
+    /** Returns the localized subtitle of the issue to be displayed in the UI. */
+    @Nullable
+    public CharSequence getSubtitle() {
+        return mSubtitle;
     }
 
     /** Returns the localized summary of the issue to be displayed in the UI. */
@@ -125,6 +190,17 @@ public final class SafetySourceIssue implements Parcelable {
     @SeverityLevel
     public int getSeverityLevel() {
         return mSeverityLevel;
+    }
+
+    /**
+     * Returns the category of the risk associated with the issue.
+     *
+     * <p>The default category will be {@link #ISSUE_CATEGORY_GENERAL}.
+     */
+    @NonNull
+    @IssueCategory
+    public String getIssueCategory() {
+        return mIssueCategory;
     }
 
     /**
@@ -141,6 +217,18 @@ public final class SafetySourceIssue implements Parcelable {
         return new ArrayList<>(mActions);
     }
 
+    /**
+     * Returns the optional {@link PendingIntent} that will be invoked when an issue is dismissed.
+     *
+     * <p>When a safety issue is dismissed in Safety Center page, the issue is removed from view in
+     * Safety Center page. This method returns an additional optional action specified by the safety
+     * source that should be invoked on issue dismissal.
+     */
+    @Nullable
+    public PendingIntent getOnDismissPendingIntent() {
+        return mOnDismissPendingIntent;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -148,10 +236,14 @@ public final class SafetySourceIssue implements Parcelable {
 
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeString(mId);
         TextUtils.writeToParcel(mTitle, dest, flags);
+        TextUtils.writeToParcel(mSubtitle, dest, flags);
         TextUtils.writeToParcel(mSummary, dest, flags);
         dest.writeInt(mSeverityLevel);
+        dest.writeString(mIssueCategory);
         dest.writeParcelableList(mActions, flags);
+        PendingIntent.writePendingIntentOrNullToParcel(mOnDismissPendingIntent, dest);
     }
 
     @Override
@@ -160,27 +252,40 @@ public final class SafetySourceIssue implements Parcelable {
         if (!(o instanceof SafetySourceIssue)) return false;
         SafetySourceIssue that = (SafetySourceIssue) o;
         return mSeverityLevel == that.mSeverityLevel
+                && TextUtils.equals(mId, that.mId)
                 && TextUtils.equals(mTitle, that.mTitle)
+                && Objects.equals(mSubtitle, that.mSubtitle)
                 && TextUtils.equals(mSummary, that.mSummary)
-                && mActions.equals(that.mActions);
+                && TextUtils.equals(mIssueCategory, that.mIssueCategory)
+                && mActions.equals(that.mActions)
+                && Objects.equals(mOnDismissPendingIntent, that.mOnDismissPendingIntent);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mTitle, mSummary, mSeverityLevel, mActions);
+        return Objects.hash(mId, mTitle, mSubtitle, mSummary, mSeverityLevel, mIssueCategory,
+                mActions, mOnDismissPendingIntent);
     }
 
     @Override
     public String toString() {
         return "SafetySourceIssue{"
+                + "mId="
+                + mId
                 + "mTitle="
                 + mTitle
                 + ", mSummary="
+                + mSubtitle
+                + ", mSubtitle="
                 + mSummary
                 + ", mSeverityLevel="
                 + mSeverityLevel
+                + ", mIssueCategory="
+                + mIssueCategory
                 + ", mActions="
                 + mActions
+                + ", mOnDismissPendingIntent="
+                + mOnDismissPendingIntent
                 + '}';
     }
 
@@ -195,6 +300,9 @@ public final class SafetySourceIssue implements Parcelable {
      * <p>The numerical values of the levels are not used directly, rather they are used to build
      * a continuum of levels which support relative comparison.
      *
+     * <p>The severity also determines how the issue is "dismissible" by the user, i.e. how
+     * the user can choose to ignore the issue and remove it from view in the Safety Center.
+     *
      * @hide
      */
     @IntDef(prefix = {"SEVERITY_LEVEL_"}, value = {
@@ -204,6 +312,27 @@ public final class SafetySourceIssue implements Parcelable {
     })
     @Retention(RetentionPolicy.SOURCE)
     public @interface SeverityLevel {
+    }
+
+    /**
+     * All possible issue categories.
+     *
+     * <p>An issue's category represents a specific area of safety that the issue relates to.
+     *
+     * <p>An issue can only have one associated category. If the issue relates to multiple areas of
+     * safety, then choose the closest area or default to {@link #ISSUE_CATEGORY_GENERAL}.
+     *
+     * @hide
+     * @see Builder#setIssueCategory(String)
+     */
+    @StringDef(prefix = {"ISSUE_CATEGORY_"}, value = {
+            ISSUE_CATEGORY_DEVICE,
+            ISSUE_CATEGORY_ACCOUNT,
+            ISSUE_CATEGORY_GENERAL,
+
+    })
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface IssueCategory {
     }
 
     /**
@@ -360,21 +489,49 @@ public final class SafetySourceIssue implements Parcelable {
     /** Builder class for {@link SafetySourceIssue}. */
     public static final class Builder {
         @NonNull
+        private final String mId;
+        @NonNull
         private final CharSequence mTitle;
+        @Nullable
+        private CharSequence mSubtitle;
         @NonNull
         private final CharSequence mSummary;
         @SeverityLevel
         private final int mSeverityLevel;
-
+        @NonNull
+        @IssueCategory
+        private String mIssueCategory = ISSUE_CATEGORY_GENERAL;
+        @Nullable
+        private PendingIntent mOnDismissPendingIntent;
         @NonNull
         private final List<Action> mActions = new ArrayList<>();
 
         /** Creates a {@link Builder} for a {@link SafetySourceIssue}. */
-        public Builder(@NonNull CharSequence title, @NonNull CharSequence summary,
+        public Builder(@NonNull String id, @NonNull CharSequence title,
+                @NonNull CharSequence summary,
                 @SeverityLevel int severityLevel) {
+            mId = id;
             this.mTitle = requireNonNull(title);
             this.mSummary = requireNonNull(summary);
             this.mSeverityLevel = severityLevel;
+        }
+
+        /** Sets the localized subtitle. */
+        @NonNull
+        public Builder setSubtitle(@Nullable CharSequence subtitle) {
+            mSubtitle = subtitle;
+            return this;
+        }
+
+        /**
+         * Sets the category of the risk associated with the issue.
+         *
+         * <p>The default category will be {@link #ISSUE_CATEGORY_GENERAL}.
+         */
+        @NonNull
+        public Builder setIssueCategory(@NonNull @IssueCategory String issueCategory) {
+            mIssueCategory = issueCategory;
+            return this;
         }
 
         /** Adds data for an action to be shown in UI. */
@@ -391,15 +548,31 @@ public final class SafetySourceIssue implements Parcelable {
             return this;
         }
 
+        /**
+         * Sets an optional {@link PendingIntent} to be invoked when an issue is dismissed from
+         * the UI.
+         *
+         * In particular, if the source would like to be notified of issue dismissals in Safety
+         * Center in order to be able to dismiss or ignore issues at the source, then set this
+         * field.
+         *
+         * @see #getOnDismissPendingIntent()
+         */
+        @NonNull
+        public Builder setOnDismissPendingIntent(@Nullable PendingIntent onDismissPendingIntent) {
+            mOnDismissPendingIntent = onDismissPendingIntent;
+            return this;
+        }
+
         /** Creates the {@link SafetySourceIssue} defined by this {@link Builder}. */
         @NonNull
         public SafetySourceIssue build() {
-            // TODO(b/207402324): Check with UX whether issues without any actions are permitted.
             checkArgument(!mActions.isEmpty(),
                     "Safety source issue must contain at least 1 action");
             checkArgument(mActions.size() <= 2,
                     "Safety source issue must not contain more than 2 actions");
-            return new SafetySourceIssue(mTitle, mSummary, mSeverityLevel, mActions);
+            return new SafetySourceIssue(mId, mTitle, mSubtitle, mSummary, mSeverityLevel,
+                    mIssueCategory, mActions, mOnDismissPendingIntent);
         }
     }
 }
