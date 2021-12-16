@@ -74,6 +74,7 @@ import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsV
 import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModel.GroupUiInfo;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModelFactory;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
+import com.android.permissioncontroller.permission.utils.StringUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.settingslib.HelpUtils;
 import com.android.settingslib.widget.FooterPreference;
@@ -502,8 +503,8 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
                     mPackageName, mUser, getArguments().getLong(EXTRA_SESSION_ID), false));
             return true;
         });
-        extraPerms.setSummary(getResources().getQuantityString(
-                R.plurals.additional_permissions_more, count, count));
+        extraPerms.setSummary(StringUtils.getIcuPluralsString(getContext(),
+                R.string.additional_permissions_more, count));
         return extraPerms;
     }
 

@@ -39,6 +39,7 @@ import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity;
 import com.android.permissioncontroller.permission.ui.UnusedAppsFragment;
 import com.android.permissioncontroller.permission.ui.model.ManageStandardPermissionsViewModel;
+import com.android.permissioncontroller.permission.utils.StringUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.settingslib.widget.FooterPreference;
 
@@ -156,9 +157,8 @@ public final class ManageStandardPermissionsFragment extends ManagePermissionsFr
                 screen.addPreference(additionalPermissionsPreference);
             }
 
-            additionalPermissionsPreference.setSummary(getResources().getQuantityString(
-                    R.plurals.additional_permissions_more, numExtraPermissions,
-                    numExtraPermissions));
+            additionalPermissionsPreference.setSummary(StringUtils.getIcuPluralsString(getContext(),
+                    R.string.additional_permissions_more, numExtraPermissions));
         }
 
         Integer numAutoRevoked = mViewModel.getNumAutoRevoked().getValue();

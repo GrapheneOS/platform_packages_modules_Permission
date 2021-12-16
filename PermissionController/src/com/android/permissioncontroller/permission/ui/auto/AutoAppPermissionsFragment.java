@@ -56,6 +56,7 @@ import com.android.permissioncontroller.permission.ui.Category;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModel;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModelFactory;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
+import com.android.permissioncontroller.permission.utils.StringUtils;
 
 import java.text.Collator;
 import java.time.Instant;
@@ -319,9 +320,8 @@ public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment implem
                     .commit();
             return true;
         });
-        extraPerms.setSummary(getResources().getQuantityString(
-                R.plurals.additional_permissions_more, numExtraPerms,
-                numExtraPerms));
+        extraPerms.setSummary(StringUtils.getIcuPluralsString(getContext(),
+                R.string.additional_permissions_more, numExtraPerms));
         category.addPreference(extraPerms);
     }
 
