@@ -658,6 +658,7 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
         }
         long requestId = Utils.getValidSessionId();
         for (AppPermissionGroup group : groups) {
+            AppPermissionGroup bgGroup = group.getBackgroundPermissions();
             if (group.areRuntimePermissionsGranted()) {
                 logOneTimeSessionRevoke(packageName, uid, group, requestId);
                 // Revoke only one time granted permissions if not all
@@ -670,9 +671,24 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
                     group.revokeRuntimePermissions(false,
                             oneTimeGrantedPermissions.toArray(new String[0]));
                 }
+                if (bgGroup != null) {
+                    // We also revoke background permissions if all foreground permissions are
+                    // getting revoked.
+                    if (group.getPermissions().size() == oneTimeGrantedPermissions.size()) {
+                        bgGroup.revokeRuntimePermissions(false);
+                    } else {
+                        bgGroup.revokeRuntimePermissions(false,
+                                bgGroup.getPermissions().stream()
+                                        .filter(Permission::isOneTime).filter(Permission::isGranted)
+                                        .map(Permission::getName).toArray(String[]::new));
+                    }
+                }
             }
             group.setUserSet(false);
             group.persistChanges(false, ONE_TIME_PERMISSION_REVOKED_REASON);
+            if (bgGroup != null) {
+                bgGroup.persistChanges(false, ONE_TIME_PERMISSION_REVOKED_REASON);
+            }
         }
     }
 
