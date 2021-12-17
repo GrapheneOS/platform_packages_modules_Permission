@@ -557,6 +557,8 @@
             <permission name="android.permission.TOGGLE_AUTOMOTIVE_PROJECTION" minSdkVersion="33" />
             <permission name="android.permission.SET_DEFAULT_ACCOUNT_FOR_CONTACTS"
                 minSdkVersion="33" />
+            <permission name="android.permission.REQUEST_COMPANION_PROFILE_AUTOMOTIVE_PROJECTION"
+                minSdkVersion="33" />
         </permissions>
     </role>
 
