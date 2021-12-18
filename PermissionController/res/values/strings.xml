@@ -377,34 +377,6 @@
         <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> secs</item>
     </plurals>
 
-
-    <!-- Summary for showing a single permission access and the number of accesses [CHAR LIMIT=80] -->
-    <plurals name="permission_usage_summary">
-        <item quantity="one">Last access: <xliff:g id="time" example="12:10 PM">%1$s</xliff:g>\n<xliff:g id="num" example="42">%2$s</xliff:g> access</item>
-        <item quantity="other">Last access: <xliff:g id="time" example="12:10 PM">%1$s</xliff:g>\n<xliff:g id="num" example="42">%2$s</xliff:g> accesses</item>
-    </plurals>
-
-    <!-- Summary for showing a single permission access and the number of accesses, including those in the background [CHAR LIMIT=80] -->
-    <plurals name="permission_usage_summary_background">
-        <item quantity="one">Last access: <xliff:g id="time" example="12:10 PM">%1$s</xliff:g>\n<xliff:g id="num" example="42">%2$s</xliff:g> access (<xliff:g id="num" example="7">%3$s</xliff:g> in background)</item>
-        <item quantity="other">Last access: <xliff:g id="time" example="12:10 PM">%1$s</xliff:g>\n<xliff:g id="num" example="42">%2$s</xliff:g> accesses (<xliff:g id="num" example="7">%3$s</xliff:g> in background)</item>
-    </plurals>
-
-    <!-- Summary for showing a single permission access and the number of accesses [CHAR LIMIT=120] -->
-    <plurals name="permission_usage_summary_duration">
-        <item quantity="one">Last access: <xliff:g id="time" example="12:10 PM">%1$s</xliff:g>\n<xliff:g id="num" example="42">%2$s</xliff:g> access\nDuration: <xliff:g id="time" example="2 hours">%3$s</xliff:g></item>
-        <item quantity="other">Last access: <xliff:g id="time" example="12:10 PM">%1$s</xliff:g>\n<xliff:g id="num" example="42">%2$s</xliff:g> accesses\nDuration: <xliff:g id="time" example="2 hours">%3$s</xliff:g></item>
-    </plurals>
-
-    <!-- Summary for showing a single permission access and the number of accesses, including those in the background [CHAR LIMIT=120] -->
-    <plurals name="permission_usage_summary_background_duration">
-        <item quantity="one">Last access: <xliff:g id="time" example="12:10 PM">%1$s</xliff:g>\n<xliff:g id="num" example="42">%2$s</xliff:g> access (<xliff:g id="num" example="7">%3$s</xliff:g> in background)\nDuration: <xliff:g id="time" example="2 hours">%3$s</xliff:g></item>
-        <item quantity="other">Last access: <xliff:g id="time" example="12:10 PM">%1$s</xliff:g>\n<xliff:g id="num" example="42">%2$s</xliff:g> accesses (<xliff:g id="num" example="7">%3$s</xliff:g> in background)\nDuration: <xliff:g id="time" example="2 hours">%3$s</xliff:g></item>
-    </plurals>
-
-    <!-- Summary for showing a single permission access and the time of the last access when it was in the background [CHAR LIMIT=80] -->
-    <string name="permission_usage_summary_background">Last access: <xliff:g id="time" example="12:10 PM">%1$s</xliff:g>\nLast accessed in the background</string>
-
     <!-- Description for showing permission accesses with any permission [CHAR LIMIT=30] -->
     <string name="permission_usage_any_permission">Any permission</string>
 
@@ -465,12 +437,6 @@
     <!-- Label for the title of the permission bar chart showing how often the most common permissions are used [CHAR LIMIT=50] -->
     <string name="permission_usage_bar_chart_title_last_minute">Permission usage in last 1 minute</string>
 
-    <!-- Label for the bars on the chart that shows how many apps have used various permissions [CHAR LIMIT=10] -->
-    <plurals name="permission_usage_bar_label">
-        <item quantity="one">1 app</item>
-        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> apps</item>
-    </plurals>
-
     <!-- Summary text if a permission usage is not used in past 24 hours [CHAR LIMIT=60] -->
     <string name="permission_usage_preference_summary_not_used_24h">Not used in past 24 hours</string>
 
@@ -524,12 +490,6 @@
 
     <!-- Label for refreshing the list of permission usages. [CHAR LIMIT=30] -->
     <string name="permission_usage_refresh">Refresh</string>
-
-    <!-- Subtitle for showing how many apps have accessed a given permission [CHAR LIMIT=20] -->
-    <plurals name="permission_usage_permission_filter_subtitle">
-        <item quantity="one">1 app</item>
-        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> apps</item>
-    </plurals>
 
     <!-- Label for the title of permission history. [CHAR LIMIT=20] -->
     <string name="permission_history_title">Permission history</string>
@@ -783,12 +743,6 @@
     <!-- The notification content for the auto revoke reminder notification [CHAR LIMIT=none] -->
     <string name="auto_revoke_permission_notification_content">Some apps haven\u2019t been used in a few months. Tap to review.</string>
 
-    <!-- The subtitle for the auto revoke reminder notification, including the number of apps [CHAR LIMIT=none] -->
-    <plurals name="auto_revoke_permission_notification_content_count">
-        <item quantity="one"><xliff:g id="count" example="1">%1$d</xliff:g> app hasn\u2019t been used in a few months. Tap to review</item>
-        <item quantity="other"><xliff:g id="count" example="2">%1$d</xliff:g> apps haven\u2019t been used in a few months. Tap to review</item>
-    </plurals>
-
     <!-- The notification title for the notification that app hibernation has happened [CHAR LIMIT=60] -->
     <plurals name="unused_apps_notification_title">
         <item quantity="one"><xliff:g id="count" example="1">%1$d</xliff:g> unused app</item>
@@ -803,12 +757,6 @@
 
     <!-- The subtitle for the auto revoke settings card [CHAR LIMIT=none] -->
     <string name="auto_revoke_setting_subtitle">Some apps haven\u2019t been used in a few months</string>
-
-    <!-- The subtitle for the auto revoke settings card, including the number of apps [CHAR LIMIT=none] -->
-    <plurals name="auto_revoke_setting_subtitle_count">
-        <item quantity="one"><xliff:g id="count" example="1">%1$d</xliff:g> app hasn\u2019t been used in a few months</item>
-        <item quantity="other"><xliff:g id="count" example="2">%1$d</xliff:g> apps haven\u2019t been used in a few months</item>
-    </plurals>
 
     <!-- The title of the category showing apps with removed permissions [CHAR LIMIT=60] -->
     <string name="permissions_removed_category_title">Removed permissions</string>
