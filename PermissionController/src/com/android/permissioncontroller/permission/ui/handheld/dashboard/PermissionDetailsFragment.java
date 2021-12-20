@@ -18,7 +18,7 @@ package com.android.permissioncontroller.permission.ui.handheld.dashboard;
 
 import static com.android.permissioncontroller.Constants.EXTRA_SESSION_ID;
 import static com.android.permissioncontroller.Constants.INVALID_SESSION_ID;
-import static com.android.permissioncontroller.permission.ui.handheld.dashboard.UtilsKt.is7DayToggleEnabled;
+import static com.android.permissioncontroller.permission.ui.handheld.dashboard.DashboardUtilsKt.is7DayToggleEnabled;
 
 import static java.util.concurrent.TimeUnit.DAYS;
 import static java.util.concurrent.TimeUnit.HOURS;
@@ -318,7 +318,7 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
 
     private static boolean shouldShowSubattributionForApp(Context context,
             AppPermissionUsage appPermissionUsage) {
-        if (!UtilsKt.shouldShowSubattributionInPermissionsDashboard()) {
+        if (!DashboardUtilsKt.shouldShowSubattributionInPermissionsDashboard()) {
             return false;
         }
         return SubattributionUtils.isSubattributionSupported(context,
@@ -558,7 +558,8 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
                         // than the clustering granularity.
                         if (durationLong
                                 >= (MINUTES.toMillis(CLUSTER_MINUTES_APART) + 1)) {
-                            summaryLabel = UtilsKt.getDurationUsedStr(context, durationLong);
+                            summaryLabel =
+                                    DashboardUtilsKt.getDurationUsedStr(context, durationLong);
                         }
                     }
                 } else {
@@ -567,7 +568,7 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
                     // information.
                     if ((durationLong != null)
                             && durationLong >= MINUTES.toMillis(CLUSTER_MINUTES_APART + 1)) {
-                        summaryLabel = UtilsKt.getDurationUsedStr(context, durationLong);
+                        summaryLabel = DashboardUtilsKt.getDurationUsedStr(context, durationLong);
                     }
                 }
 
