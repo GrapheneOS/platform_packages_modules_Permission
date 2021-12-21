@@ -82,6 +82,7 @@ import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.data.getUnusedPackages
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 import com.android.permissioncontroller.permission.service.revokeAppPermissions
+import com.android.permissioncontroller.permission.utils.StringUtils
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.forEachInParallel
 import kotlinx.coroutines.Dispatchers.Main
@@ -595,8 +596,8 @@ class HibernationJobService : JobService() {
         var notifTitle: String
         var notifContent: String
         if (isHibernationEnabled()) {
-            notifTitle = getResources().getQuantityString(
-                R.plurals.unused_apps_notification_title, numUnused, numUnused)
+            notifTitle = StringUtils.getIcuPluralsString(this,
+                R.string.unused_apps_notification_title, numUnused)
             notifContent = getString(R.string.unused_apps_notification_content)
         } else {
             notifTitle = getString(R.string.auto_revoke_permission_notification_title)

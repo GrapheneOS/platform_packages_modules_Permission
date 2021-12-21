@@ -58,6 +58,7 @@ import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsV
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.LocationUtils;
 import com.android.permissioncontroller.permission.utils.SafetyNetLogger;
+import com.android.permissioncontroller.permission.utils.StringUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
 
 public final class AppPermissionsFragment extends SettingsWithHeader
@@ -267,8 +268,8 @@ public final class AppPermissionsFragment extends SettingsWithHeader
                 return true;
             });
             int count = mExtraScreen.getPreferenceCount() - 1;
-            extraPerms.setSummary(getResources().getQuantityString(
-                    R.plurals.additional_permissions_more, count, count));
+            extraPerms.setSummary(StringUtils.getIcuPluralsString(getContext(),
+                    R.string.additional_permissions_more, count));
             screen.addPreference(extraPerms);
         }
 
