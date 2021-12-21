@@ -170,10 +170,10 @@
     <string name="app_permissions_info_button_label">Open app info</string>
 
     <!-- Description of how many more permissions to view on next page [CHAR LIMIT=30] -->
-    <plurals name="additional_permissions_more">
-        <item quantity="one"><xliff:g id="count" example="1">%1$d</xliff:g> more</item>
-        <item quantity="other"><xliff:g id="count" example="2">%1$d</xliff:g> more</item>
-    </plurals>
+    <string name="additional_permissions_more">{count, plural,
+        =1      {# more}
+        other   {# more}
+    }</string>
 
     <!-- Warning for turning off permissions on older apps [CHAR LIMIT=none] -->
     <string name="old_sdk_deny_warning">This app was designed for an older version of Android. Denying permission may cause it to no longer function as intended.</string>
@@ -354,28 +354,28 @@
     <string name="history_preference_subtext_3"><xliff:g id="attribution_name" example="Nearby Share">%1$s</xliff:g> \u2022 <xliff:g id="app_name" example="Gmail">%2$s</xliff:g> \u2022 <xliff:g id="truncated_time" example="1 hr 20min">%3$s</xliff:g></string>
 
     <!-- Duration used for a permission in days -->
-    <plurals name="duration_used_days">
-        <item quantity="one">1 day</item>
-        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> days</item>
-    </plurals>
+    <string name="duration_used_days">{count, plural,
+        =1      {1 day}
+        other   {# days}
+    }</string>
 
     <!-- Duration used for a permission in hours -->
-    <plurals name="duration_used_hours">
-        <item quantity="one">1 hour</item>
-        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> hours</item>
-    </plurals>
+    <string name="duration_used_hours">{count, plural,
+        =1      {1 hour}
+        other   {# hours}
+    }</string>
 
     <!-- Duration used for a permission in minutes -->
-    <plurals name="duration_used_minutes">
-        <item quantity="one">1 min</item>
-        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> mins</item>
-    </plurals>
+    <string name="duration_used_minutes">{count, plural,
+        =1      {1 min}
+        other   {# mins}
+    }</string>
 
     <!-- Duration used for a permission in seconds -->
-    <plurals name="duration_used_seconds">
-        <item quantity="one">1 sec</item>
-        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> secs</item>
-    </plurals>
+    <string name="duration_used_seconds">{count, plural,
+        =1      {1 sec}
+        other   {# secs}
+    }</string>
 
     <!-- Description for showing permission accesses with any permission [CHAR LIMIT=30] -->
     <string name="permission_usage_any_permission">Any permission</string>
@@ -444,10 +444,10 @@
     <string name="permission_usage_preference_summary_not_used_7d">Not used in past 7 days</string>
 
     <!-- Label for the permission usage preference that shows how many apps have used various permissions [CHAR LIMIT=50] -->
-    <plurals name="permission_usage_preference_label">
-        <item quantity="one">Used by 1 app</item>
-        <item quantity="other">Used by <xliff:g id="number" example="7">%1$d</xliff:g> apps</item>
-    </plurals>
+    <string name="permission_usage_preference_label">{count, plural,
+        =1      {Used by 1 app}
+        other   {Used by # apps}
+    }</string>
 
     <!-- Label for the button to bring the user to view the details of recent permission accesses [CHAR LIMIT=42] -->
     <string name="permission_usage_view_details">See all in Dashboard</string>
@@ -702,28 +702,28 @@
     <string name="denied_header">Not allowed</string>
 
     <!-- Time in days -->
-    <plurals name="days">
-        <item quantity="one">1 day</item>
-        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> days</item>
-    </plurals>
+    <string name="days">{count, plural,
+        =1      {1 day}
+        other   {# days}
+    }</string>
 
     <!-- Time in hours -->
-    <plurals name="hours">
-        <item quantity="one">1 hour</item>
-        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> hours</item>
-    </plurals>
+    <string name="hours">{count, plural,
+        =1      {1 hour}
+        other   {# hours}
+    }</string>
 
     <!-- Time in minutes -->
-    <plurals name="minutes">
-        <item quantity="one">1 minute</item>
-        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> minutes</item>
-    </plurals>
+    <string name="minutes">{count, plural,
+        =1      {1 minute}
+        other   {# minutes}
+    }</string>
 
     <!-- Time in seconds -->
-    <plurals name="seconds">
-        <item quantity="one">1 second</item>
-        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> seconds</item>
-    </plurals>
+    <string name="seconds">{count, plural,
+        =1      {1 second}
+        other   {# seconds}
+    }</string>
 
     <!-- The name of the notification channel containing reminders about permission [CHAR LIMIT=60]-->
     <string name="permission_reminders">Permission reminders</string>
@@ -744,10 +744,10 @@
     <string name="auto_revoke_permission_notification_content">Some apps haven\u2019t been used in a few months. Tap to review.</string>
 
     <!-- The notification title for the notification that app hibernation has happened [CHAR LIMIT=60] -->
-    <plurals name="unused_apps_notification_title">
-        <item quantity="one"><xliff:g id="count" example="1">%1$d</xliff:g> unused app</item>
-        <item quantity="other"><xliff:g id="count" example="2">%1$d</xliff:g> unused apps</item>
-    </plurals>
+    <string name="unused_apps_notification_title">{count, plural,
+        =1      {# unused app}
+        other   {# unused apps}
+    }</string>
 
     <!-- The notification content for the hibernation reminder notification [CHAR LIMIT=none] -->
     <string name="unused_apps_notification_content">Permissions and temporary files have been removed and notifications were stopped. Tap to review.</string>

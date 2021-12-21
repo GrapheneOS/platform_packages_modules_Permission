@@ -36,6 +36,7 @@ import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
+import com.android.permissioncontroller.permission.utils.StringUtils;
 
 import java.util.List;
 
@@ -69,8 +70,8 @@ public class PermissionUsageV2ControlPreference extends Preference {
         CharSequence permGroupLabel = KotlinUtils.INSTANCE.getPermGroupLabel(mContext, mGroupName);
         setTitle(permGroupLabel);
         setIcon(KotlinUtils.INSTANCE.getPermGroupIcon(mContext, mGroupName));
-        setSummary(mContext.getResources().getQuantityString(
-                R.plurals.permission_usage_preference_label, mCount, mCount));
+        setSummary(StringUtils.getIcuPluralsString(mContext,
+                R.string.permission_usage_preference_label, mCount));
 
         if (mCount == 0) {
             this.setEnabled(false);
