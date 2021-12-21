@@ -647,6 +647,7 @@
         visible="false" >
         <permissions>
             <permission name="android.permission.ACCESS_INSTANT_APPS"/>
+            <permission name="android.permission.START_CROSS_PROFILE_ACTIVITIES" minSdkVersion="33"/>
             <permission name="android.permission.SUSPEND_APPS"/>
             <permission name="android.permission.SYSTEM_APPLICATION_OVERLAY"/>
         </permissions>
