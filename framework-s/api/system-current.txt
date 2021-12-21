@@ -46,6 +46,7 @@ package android.safetycenter {
 
   public final class SafetyCenterManager {
     method @Nullable @RequiresPermission(android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE) public android.safetycenter.SafetySourceData getLastSafetyCenterUpdate(@NonNull String);
+    method @RequiresPermission(anyOf={android.Manifest.permission.READ_SAFETY_CENTER_STATUS, android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE}) public boolean isSafetyCenterEnabled();
     method @RequiresPermission(android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE) public void sendSafetyCenterUpdate(@NonNull android.safetycenter.SafetySourceData);
   }
 

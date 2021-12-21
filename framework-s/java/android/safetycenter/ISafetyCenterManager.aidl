@@ -41,4 +41,9 @@ interface ISafetyCenterManager {
      */
     SafetySourceData getLastSafetyCenterUpdate(in String packageName, int userId,
             in String safetySourceId);
+
+    /**
+     * Returns whether the SafetyCenter page is enabled.
+     */
+    boolean isSafetyCenterEnabled();
 }

@@ -16,6 +16,7 @@
 
 package com.android.safetycenter;
 
+import static android.Manifest.permission.READ_SAFETY_CENTER_STATUS;
 import static android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE;
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
@@ -25,7 +26,10 @@ import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.app.AppOpsManager;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.os.Binder;
+import android.provider.DeviceConfig;
 import android.safetycenter.ISafetyCenterManager;
 import android.safetycenter.SafetySourceData;
 
@@ -49,6 +53,9 @@ import java.util.Objects;
 @Keep
 @RequiresApi(TIRAMISU)
 public final class SafetyCenterService extends SystemService {
+
+    /** Phenotype flag that determines whether SafetyCenter is enabled. */
+    private static final String PROPERTY_SAFETY_CENTER_ENABLED = "safety_center_is_enabled";
 
     @NonNull
     private final Object mLock = new Object();
@@ -148,6 +155,41 @@ public final class SafetyCenterService extends SystemService {
             // TODO(b/205706756): Security: check certs?
             synchronized (mLock) {
                 return mSafetySourceDataForKey.get(Key.of(packageName, userId, safetySourceId));
+            }
+        }
+
+        @Override
+        public boolean isSafetyCenterEnabled() {
+            enforceIsSafetyCenterEnabledPermissions("isSafetyCenterEnabled");
+
+            // We don't require the caller to have READ_DEVICE_CONFIG permission.
+            final long callingId = Binder.clearCallingIdentity();
+            try {
+                return DeviceConfig.getBoolean(
+                        DeviceConfig.NAMESPACE_PRIVACY,
+                        PROPERTY_SAFETY_CENTER_ENABLED,
+                        /* defaultValue = */ false)
+                        && getSafetyCenterConfigValue();
+            } finally {
+                Binder.restoreCallingIdentity(callingId);
+            }
+        }
+
+        private boolean getSafetyCenterConfigValue() {
+            return getContext().getResources().getBoolean(Resources.getSystem().getIdentifier(
+                    "config_enableSafetyCenter",
+                    "bool",
+                    "android"));
+        }
+
+        private void enforceIsSafetyCenterEnabledPermissions(@NonNull String message) {
+            if (getContext().checkCallingOrSelfPermission(READ_SAFETY_CENTER_STATUS)
+                        != PackageManager.PERMISSION_GRANTED
+                    && getContext().checkCallingOrSelfPermission(SEND_SAFETY_CENTER_UPDATE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                throw new SecurityException(message + " requires "
+                        + READ_SAFETY_CENTER_STATUS + " or "
+                        + SEND_SAFETY_CENTER_UPDATE);
             }
         }
     }
