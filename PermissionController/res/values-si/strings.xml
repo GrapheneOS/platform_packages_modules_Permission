@@ -21,6 +21,8 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"අවසර"</string>
     <string name="cancel" msgid="8943320028373963831">"අවලංගු කරන්න"</string>
     <string name="back" msgid="6249950659061523680">"ආපසු යන්න"</string>
+    <string name="available" msgid="6007778121920339498">"තිබේ"</string>
+    <string name="blocked" msgid="9195547604866033708">"අවහිරයි"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"අස්ථාපනය කරන්න නැතහොත් අබල කරන්න"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"යෙදුම හමුවී නැත"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"ඉඩ නොදෙන්න"</string>
@@ -60,16 +62,16 @@
     <string name="no_permissions" msgid="3881676756371148563">"අවසර නොමැත"</string>
     <string name="additional_permissions" msgid="5801285469338873430">"අතිරේක අවසර"</string>
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"යෙදුම් තොරතුරු විවෘත කරන්න"</string>
-    <plurals name="additional_permissions_more" formatted="false" msgid="5297511511961335277">
-      <item quantity="one">.තව <xliff:g id="COUNT_1">%1$d</xliff:g></item>
-      <item quantity="other">.තව <xliff:g id="COUNT_1">%1$d</xliff:g></item>
-    </plurals>
+    <!-- no translation found for additional_permissions_more (5681220714755304407) -->
+    <skip />
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"මෙම යෙදුම නිර්මාණය කර ඇත්තේ Android වල පැරණි අනුවාදයකට වේ. අවසර නොදීම මඟින් එය බලාපොරොත්තු වන ආකාරයට වැඩ නොකිරීමට හැක."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"නොදන්නා ක්‍රියාවක් සිදු කරන්න"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"යෙදුම් <xliff:g id="COUNT_0">%1$d</xliff:g>කින් <xliff:g id="COUNT_1">%2$d</xliff:g>කට ඉඩ දෙන ලදී"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"යෙදුම් <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>කට ඉඩ දී ඇත"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"පද්ධතිය පෙන්වන්න"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"පද්ධතිය සඟවන්න"</string>
+    <string name="menu_show_7_days_data" msgid="8979611198508523706">"දින 7 පෙන්වන්න"</string>
+    <string name="menu_show_24_hours_data" msgid="8228054833323380780">"පැය 24 පෙන්වන්න"</string>
     <string name="manage_permission" msgid="2895385393037061964">"අවසරය කළමනාකරණය කරන්න"</string>
     <string name="no_apps" msgid="2412612731628386816">"යෙදුම් නොමැත"</string>
     <string name="location_settings" msgid="3624412509133422562">"ස්ථාන සැකසීම්"</string>
@@ -113,44 +115,20 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"වෙනත් අවසර බලන්න"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> සහ තව <xliff:g id="NUM">%3$s</xliff:g>"</string>
-    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"පසුගිය පැය 24 තුළ යෙදුම් ඔබගේ <xliff:g id="PERMGROUP">%1$s</xliff:g> භාවිත කළ විට කාලරේඛාව"</string>
+    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"පසුගිය පැය 24 තුළ යෙදුම් ඔබගේ <xliff:g id="PERMGROUP">%1$s</xliff:g> භාවිත කළ විට කාලරේඛාව"</string>
+    <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"පසුගිය දින 7 තුළ යෙදුම් ඔබගේ <xliff:g id="PERMGROUP">%1$s</xliff:g> භාවිත කළ විට කාලරේඛාව"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"මෙම යෙදුම ඔබගේ <xliff:g id="PERMGROUP">%1$s</xliff:g> අවසරය භාවිත කරන විට"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"තව දැන ගන්න"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_3" msgid="758761785983094351">"<xliff:g id="ATTRIBUTION_NAME">%1$s</xliff:g> • <xliff:g id="APP_NAME">%2$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%3$s</xliff:g>"</string>
-    <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
-      <item quantity="one">දින <xliff:g id="NUMBER">%s</xliff:g></item>
-      <item quantity="other">දින <xliff:g id="NUMBER">%s</xliff:g></item>
-    </plurals>
-    <plurals name="duration_used_hours" formatted="false" msgid="1020075479447003242">
-      <item quantity="one">පැය <xliff:g id="NUMBER">%s</xliff:g></item>
-      <item quantity="other">පැය <xliff:g id="NUMBER">%s</xliff:g></item>
-    </plurals>
-    <plurals name="duration_used_minutes" formatted="false" msgid="3422338854436291744">
-      <item quantity="one">මිනි <xliff:g id="NUMBER">%s</xliff:g></item>
-      <item quantity="other">මිනි <xliff:g id="NUMBER">%s</xliff:g></item>
-    </plurals>
-    <plurals name="duration_used_seconds" formatted="false" msgid="2726799598314248110">
-      <item quantity="one">තත් <xliff:g id="NUMBER">%s</xliff:g></item>
-      <item quantity="other">තත් <xliff:g id="NUMBER">%s</xliff:g></item>
-    </plurals>
-    <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
-      <item quantity="one">අවසන් ප්‍රවේශය: ප්‍රවේශ <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g>ක්</item>
-      <item quantity="other">අවසන් ප්‍රවේශය: ප්‍රවේශ <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g>ක්</item>
-    </plurals>
-    <plurals name="permission_usage_summary_background" formatted="false" msgid="8810001960357233836">
-      <item quantity="one">අවසන් ප්‍රවේශය: ප්‍රවේශ <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g>ක් (පසුබිම තුළ <xliff:g id="NUM_5">%3$s</xliff:g>)</item>
-      <item quantity="other">අවසන් ප්‍රවේශය: ප්‍රවේශ <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g>ක් (පසුබිම තුළ <xliff:g id="NUM_5">%3$s</xliff:g>)</item>
-    </plurals>
-    <plurals name="permission_usage_summary_duration" formatted="false" msgid="2223071401812931873">
-      <item quantity="one">අවසන් ප්‍රවේශය: ප්‍රවේශ <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g>ක්\nකාලය: <xliff:g id="TIME_5">%3$s</xliff:g></item>
-      <item quantity="other">අවසන් ප්‍රවේශය: ප්‍රවේශ <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g>ක්\nකාලය: <xliff:g id="TIME_5">%3$s</xliff:g></item>
-    </plurals>
-    <plurals name="permission_usage_summary_background_duration" formatted="false" msgid="6893924292010006727">
-      <item quantity="one">අවසන් ප්‍රවේශය: ප්‍රවේශ <xliff:g id="TIME_4">%1$s</xliff:g>\n<xliff:g id="NUM_5">%2$s</xliff:g>ක් (පසුබිම තුළ <xliff:g id="NUM_6">%3$s</xliff:g>)\nකාලය: <xliff:g id="TIME_7">%3$s</xliff:g></item>
-      <item quantity="other">අවසන් ප්‍රවේශය: ප්‍රවේශ <xliff:g id="TIME_4">%1$s</xliff:g>\n<xliff:g id="NUM_5">%2$s</xliff:g>ක් (පසුබිම තුළ <xliff:g id="NUM_6">%3$s</xliff:g>)\nකාලය: <xliff:g id="TIME_7">%3$s</xliff:g></item>
-    </plurals>
-    <string name="permission_usage_summary_background" msgid="6136171928959340697">"අවසන් ප්‍රවේශය: <xliff:g id="TIME">%1$s</xliff:g>\nඅවසන් වරට පසුබිමේ ප්‍රවේශ විය"</string>
+    <!-- no translation found for duration_used_days (8293010131040301793) -->
+    <skip />
+    <!-- no translation found for duration_used_hours (1128716208752263576) -->
+    <skip />
+    <!-- no translation found for duration_used_minutes (5335824115042576567) -->
+    <skip />
+    <!-- no translation found for duration_used_seconds (6543746449171675028) -->
+    <skip />
     <string name="permission_usage_any_permission" msgid="6358023078298106997">"ඕනෑම අවසරයක්"</string>
     <string name="permission_usage_any_time" msgid="3802087027301631827">"ඕනෑම වේලාවක"</string>
     <string name="permission_usage_last_7_days" msgid="7386221251886130065">"පසුගිය දින 7"</string>
@@ -171,15 +149,10 @@
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"අවසාන 1 පැයක් තුළ අවසර භාවිතය"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"අවසාන විනාඩි 15 තුළ අවසර භාවිතය"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"අවසාන 1 විනාඩිය තුළ අවසර භාවිතය"</string>
-    <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
-      <item quantity="one">යෙදුම් <xliff:g id="NUMBER">%s</xliff:g>ක්</item>
-      <item quantity="other">යෙදුම් <xliff:g id="NUMBER">%s</xliff:g>ක්</item>
-    </plurals>
-    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"පසුගිය පැය 24 තුළ භාවිත කර නැත"</string>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
-      <item quantity="one">යෙදුම් <xliff:g id="NUMBER">%1$d</xliff:g>කින් භාවිත කෙරේ</item>
-      <item quantity="other">යෙදුම් <xliff:g id="NUMBER">%1$d</xliff:g>කින් භාවිත කෙරේ</item>
-    </plurals>
+    <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"පසුගිය පැය 24 තුළ භාවිත කර නැත"</string>
+    <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"පසුගිය දින 7 තුළ භාවිත කර නැත"</string>
+    <!-- no translation found for permission_usage_preference_label (8343167938128676378) -->
+    <skip />
     <string name="permission_usage_view_details" msgid="6675335735468752787">"උපකරණ පුවරුවේ ඇති සියල්ල බලන්න"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"මේ අනුව පෙරහන්න: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"පෙරහන ඉවත් කරන්න"</string>
@@ -193,10 +166,6 @@
     <string name="sort_by_time" msgid="5435045320002150456">"කාලයට අනුව පෙළගස්වන්න"</string>
     <string name="item_separator" msgid="4030255389809224513">", "</string>
     <string name="permission_usage_refresh" msgid="2264056346561305420">"නැවුම් කරන්න"</string>
-    <plurals name="permission_usage_permission_filter_subtitle" formatted="false" msgid="2452104463317798268">
-      <item quantity="one">යෙදුම් <xliff:g id="NUMBER">%s</xliff:g>ක්</item>
-      <item quantity="other">යෙදුම් <xliff:g id="NUMBER">%s</xliff:g>ක්</item>
-    </plurals>
     <string name="permission_history_title" msgid="8340081285133025225">"අවසර ඉතිහාසය"</string>
     <string name="permission_history_category_today" msgid="7496389369158806620">"අද"</string>
     <string name="permission_history_category_yesterday" msgid="7242517121222012521">"ඊයේ"</string>
@@ -266,42 +235,25 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"සියලු පාලන කළමනාකරණය කිරීමට ඉඩ දී ඇත"</string>
     <string name="ask_header" msgid="2633816846459944376">"සෑම විටම ඉල්ලන්න"</string>
     <string name="denied_header" msgid="903209608358177654">"ඉඩ නොදේ"</string>
-    <plurals name="days" formatted="false" msgid="7882807103511175827">
-      <item quantity="one">දින <xliff:g id="NUMBER">%s</xliff:g></item>
-      <item quantity="other">දින <xliff:g id="NUMBER">%s</xliff:g></item>
-    </plurals>
-    <plurals name="hours" formatted="false" msgid="2100550424145061396">
-      <item quantity="one">පැය <xliff:g id="NUMBER">%s</xliff:g></item>
-      <item quantity="other">පැය <xliff:g id="NUMBER">%s</xliff:g></item>
-    </plurals>
-    <plurals name="minutes" formatted="false" msgid="2154398822027154606">
-      <item quantity="one">මිනිත්තු <xliff:g id="NUMBER">%s</xliff:g></item>
-      <item quantity="other">මිනිත්තු <xliff:g id="NUMBER">%s</xliff:g></item>
-    </plurals>
-    <plurals name="seconds" formatted="false" msgid="1564519426522404832">
-      <item quantity="one">තත්පර <xliff:g id="NUMBER">%s</xliff:g></item>
-      <item quantity="other">තත්පර <xliff:g id="NUMBER">%s</xliff:g></item>
-    </plurals>
+    <!-- no translation found for days (609563020985571393) -->
+    <skip />
+    <!-- no translation found for hours (3447767892295843282) -->
+    <skip />
+    <!-- no translation found for minutes (4408293038068503157) -->
+    <skip />
+    <!-- no translation found for seconds (5397771912131132690) -->
+    <skip />
     <string name="permission_reminders" msgid="6528257957664832636">"අවසර සිහි කැඳවීම්"</string>
     <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"භාවිත නොකළ යෙදුම් 1"</string>
     <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"භාවිත නොකළ යෙදුම් <xliff:g id="NUMBER_OF_APPS">%s</xliff:g>"</string>
     <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"ඔබේ රහස්‍යතාව ආරක්ෂා කිරීමට අවසර ඉවත් කර ඇත. සමාලෝචනය කිරීමට තට්ටු කරන්න"</string>
     <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"භාවිත නොකළ යෙදුම් සඳහා අවසර ඉවත් කළා"</string>
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"සමහර යෙදුම් මාස කිහිපයක් තුළ භාවිත කර නැත. සමාලෝචනය කිරීමට තට්ටු කරන්න."</string>
-    <plurals name="auto_revoke_permission_notification_content_count" formatted="false" msgid="9159794096518540350">
-      <item quantity="one">යෙදුම් <xliff:g id="COUNT_1">%1$d</xliff:g>ක් මාස කිහිපයක් තුළ භාවිත කර නැත. සමාලෝචනය කිරීමට තට්ටු කරන්න</item>
-      <item quantity="other">යෙදුම් <xliff:g id="COUNT_1">%1$d</xliff:g>ක් මාස කිහිපයක් තුළ භාවිත කර නැත. සමාලෝචනය කිරීමට තට්ටු කරන්න</item>
-    </plurals>
-    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
-      <item quantity="one">භාවිත නොකළ යෙදුම් <xliff:g id="COUNT_1">%1$d</xliff:g></item>
-      <item quantity="other">භාවිත නොකළ යෙදුම් <xliff:g id="COUNT_1">%1$d</xliff:g></item>
-    </plurals>
+    <!-- no translation found for unused_apps_notification_title (4314832015894238019) -->
+    <skip />
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"අවසර සහ තාවකාලික ගොනු ඉවත් කර ඇති අතර දැනුම්දීම් නවත්වන ලදි. සමාලෝචනය කිරීමට තට්ටු කරන්න."</string>
+    <string name="post_drive_permission_decision_reminder_title" msgid="5541572128394226308">"මෑත අවසර"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"සමහර යෙදුම් මාස කිහිපයක් තුළ භාවිත කර නැත"</string>
-    <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
-      <item quantity="one">යෙදුම් <xliff:g id="COUNT_1">%1$d</xliff:g>ක් මාස කිහිපයක් තුළ භාවිත කර නැත</item>
-      <item quantity="other">යෙදුම් <xliff:g id="COUNT_1">%1$d</xliff:g>ක් මාස කිහිපයක් තුළ භාවිත කර නැත</item>
-    </plurals>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"ඉවත් කළ අවසර"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"අවසර ඉවත් කළ"</string>
     <string name="all_unused_apps_category_title" msgid="755663524704745414">"සියලු භාවිත නොකළ යෙදුම්"</string>
@@ -331,16 +283,24 @@
     <string name="permission_subtitle_background" msgid="8916750995309083180">"සැම විට ඉඩ දී ඇත"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"අවසන් වරට ප්‍රවේශ වූයේ <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"අවසන් වරට ප්‍රවේශ වූයේ ඊයේ <xliff:g id="TIME_DATE">%1$s</xliff:g>ට"</string>
-    <string name="app_perms_content_provider" msgid="6996750793881252778">"පසුගිය පැය 24 තුළ ප්‍රවේශ විය"</string>
+    <string name="app_perms_7d_access" msgid="4945055548894683751">"අවසන් වරට ප්‍රවේශ වූයේ <xliff:g id="TIME_DATE_0">%1$s</xliff:g> <xliff:g id="TIME_DATE_1">%2$s</xliff:g>ට"</string>
+    <string name="app_perms_content_provider_24h" msgid="1055526027667508972">"පසුගිය පැය 24 තුළ ප්‍රවේශ විය"</string>
+    <string name="app_perms_content_provider_7d" msgid="3215454898257814868">"පසුගිය දින 7 තුළ ප්‍රවේශ විය"</string>
     <string name="app_perms_24h_access_background" msgid="3413674718969576843">"අවසන් වරට ප්‍රවේශ වූයේ <xliff:g id="TIME_DATE">%1$s</xliff:g> • සැම විට ඉඩ දී ඇත"</string>
     <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"අවසන් වරට ප්‍රවේශ වූයේ ඊයේ <xliff:g id="TIME_DATE">%1$s</xliff:g> • සැම විට ඉඩ දී ඇත"</string>
-    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"පසුගිය පැය 24 තුළ ප්‍රවේශ විය • සැම විට ඉඩ දී ඇත"</string>
+    <string name="app_perms_7d_access_background" msgid="408099213372185627">"අවසන් වරට ප්‍රවේශ වූයේ <xliff:g id="TIME_DATE_0">%1$s</xliff:g> <xliff:g id="TIME_DATE_1">%2$s</xliff:g>ට • සැම විට ඉඩ දී ඇත"</string>
+    <string name="app_perms_content_provider_24h_background" msgid="3825902995186961496">"පසුගිය පැය 24 තුළ ප්‍රවේශ විය • සැම විට ඉඩ දී ඇත"</string>
+    <string name="app_perms_content_provider_7d_background" msgid="4818839672116463542">"පසුගිය දින 7 තුළ ප්‍රවේශ විය • සැම විට ඉඩ දී ඇත"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"අවසන් වරට ප්‍රවේශ වූයේ <xliff:g id="TIME_DATE">%1$s</xliff:g> • මාධ්‍ය"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"අවසන් වරට ප්‍රවේශ වූයේ <xliff:g id="TIME_DATE">%1$s</xliff:g>ට • මාධ්‍ය"</string>
-    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"පසුගිය පැය 24 තුළ ප්‍රවේශ විය • මාධ්‍ය"</string>
+    <string name="app_perms_7d_access_media_only" msgid="1031096653668235200">"අවසන් වරට ප්‍රවේශ වූයේ <xliff:g id="TIME_DATE_0">%1$s</xliff:g> <xliff:g id="TIME_DATE_1">%2$s</xliff:g>ට • මාධ්‍ය"</string>
+    <string name="app_perms_content_provider_24h_media_only" msgid="7797963000596179491">"පසුගිය පැය 24 තුළ ප්‍රවේශ විය • මාධ්‍ය"</string>
+    <string name="app_perms_content_provider_7d_media_only" msgid="8446239884570262243">"පසුගිය දින 7 තුළ ප්‍රවේශ විය • මාධ්‍ය"</string>
     <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"අවසන් වරට ප්‍රවේශ වූයේ <xliff:g id="TIME_DATE">%1$s</xliff:g> • සියලු ගොනු"</string>
     <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"අවසන් වරට ප්‍රවේශ වූයේ ඊයේ <xliff:g id="TIME_DATE">%1$s</xliff:g>ට • සියලු ගොනු"</string>
-    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"පසුගිය පැය 24 තුළ ප්‍රවේශ විය • සියලු ගොනු"</string>
+    <string name="app_perms_7d_access_all_files" msgid="8246193786397635824">"අවසන් වරට ප්‍රවේශ වූයේ <xliff:g id="TIME_DATE_0">%1$s</xliff:g> <xliff:g id="TIME_DATE_1">%2$s</xliff:g>ට • සියලු ගොනු"</string>
+    <string name="app_perms_content_provider_24h_all_files" msgid="573104317727770850">"පසුගිය පැය 24 තුළ ප්‍රවේශ විය • සියලු ගොනු"</string>
+    <string name="app_perms_content_provider_7d_all_files" msgid="7962416229708835558">"පසුගිය දින 7 තුළ ප්‍රවේශ විය • සියලු ගොනු"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"අවසරවලට ඉඩ නොදේ"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"අවසර ප්‍රතික්ෂේප නොකෙරේ"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"යෙදුම්වලට ඉඩ නොදේ"</string>
@@ -499,6 +459,7 @@
     <string name="privdash_label_other" msgid="3710394147423236033">"වෙනත්"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"කිසිවක් නැත"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"පසුගිය\nපැය 24"</string>
+    <string name="privdash_label_7d" msgid="5645301995348656931">"පසුගිය\nදින 7"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> Android මගින් ආරක්ෂා කර ඇත. ඔබගේ දත්ත මෙම උපාංගයේ සකසා ඇති බැවින්, මෙම යෙදුමේ අවසර භාවිතය තත්ත්ව තීරුව හෝ ඔබගේ පෞද්ගලිකත්ව උපකරණ පුවරුව තුළ නොපෙන්වයි."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> Android මගින් ආරක්ෂා කර ඇත. ඔබගේ දත්ත මෙම උපාංගයේ සකසා ඇති බැවින්, මෙම යෙදුමේ අවසර භාවිතය ඔබගේ පෞද්ගලිකත්ව උපකරණ පුවරුව තුළ නොපෙන්වයි."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"උපාංග කැමරාව අවහිර කර ඇත"</string>
@@ -508,4 +469,5 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"ඔබ හදිසි ඇමතුම් අංකයක් අමතන විට මයික්‍රෆෝනයේ දත්ත තවම බෙදා ගත හැකිය."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"වෙනස් කරන්න"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"ආරක්ෂාව සහ පෞද්ගලිකත්වය"</string>
+    <string name="security_settings" msgid="3808106921175271317">"ආරක්ෂක සැකසීම්"</string>
 </resources>

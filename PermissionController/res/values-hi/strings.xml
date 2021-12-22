@@ -21,6 +21,8 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"अनुमतियां"</string>
     <string name="cancel" msgid="8943320028373963831">"रद्द करें"</string>
     <string name="back" msgid="6249950659061523680">"वापस जाएं"</string>
+    <string name="available" msgid="6007778121920339498">"उपलब्ध है"</string>
+    <string name="blocked" msgid="9195547604866033708">"ब्लॉक किया गया"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"अनइंस्टॉल करें या बंद करें"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"ऐप्लिकेशन नहीं मिला"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"अनुमति न दें"</string>
@@ -60,16 +62,16 @@
     <string name="no_permissions" msgid="3881676756371148563">"किसी अनुमति की ज़रूरत नहीं है"</string>
     <string name="additional_permissions" msgid="5801285469338873430">"दूसरी अनुमतियां"</string>
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"ऐप्लिकेशन के बारे में जानकारी देखें"</string>
-    <plurals name="additional_permissions_more" formatted="false" msgid="5297511511961335277">
-      <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> और अनुमतियां</item>
-      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> और अनुमतियां</item>
-    </plurals>
+    <!-- no translation found for additional_permissions_more (5681220714755304407) -->
+    <skip />
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"यह ऐप्लिकेशन Android के पुराने वर्शन के लिए बनाया गया था. अगर आप अनुमति नहीं देते हैं, तो हो सकता है कि यह ठीक तरह से काम न करे."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"ऐसी कार्रवाई करें जिसकी जानकारी नहीं है"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_1">%2$d</xliff:g> में से <xliff:g id="COUNT_0">%1$d</xliff:g> ऐप्लिकेशन को अनुमति मिली है"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> ऐप्लिकेशन को अनुमति दी गई है"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"सिस्टम के ऐप्लिकेशन दिखाएं"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"सिस्टम के ऐप्लिकेशन छिपाएं"</string>
+    <string name="menu_show_7_days_data" msgid="8979611198508523706">"पिछले सात दिनों का डेटा दिखाओ"</string>
+    <string name="menu_show_24_hours_data" msgid="8228054833323380780">"पिछले 24 घंटे का डेटा दिखाओ"</string>
     <string name="manage_permission" msgid="2895385393037061964">"अनुमति मैनेज करें"</string>
     <string name="no_apps" msgid="2412612731628386816">"किसी ऐप्लिकेशन को इस अनुमति की ज़रूरत नहीं है"</string>
     <string name="location_settings" msgid="3624412509133422562">"जगह की जानकारी की सेटिंग"</string>
@@ -113,44 +115,20 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"अन्य अनुमतियां देखें"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>, और अन्य <xliff:g id="NUM">%3$s</xliff:g> अनुमतियां"</string>
-    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"पिछले 24 घंटों में, <xliff:g id="PERMGROUP">%1$s</xliff:g> का इस्तेमाल किए जाने की ऐप्लिकेशन की टाइमलाइन"</string>
+    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"पिछले 24 घंटे में, ऐप्लिकेशन ने आपकी <xliff:g id="PERMGROUP">%1$s</xliff:g> का इस्तेमाल कब किया, इसकी टाइमलाइन"</string>
+    <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"पिछले सात दिनों में, ऐप्लिकेशन ने आपकी <xliff:g id="PERMGROUP">%1$s</xliff:g> का इस्तेमाल कब किया, इसकी टाइमलाइन"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"जब इस ऐप्लिकेशन ने आपकी <xliff:g id="PERMGROUP">%1$s</xliff:g> अनुमति का इस्तेमाल किया"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"ज़्यादा जानें"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_3" msgid="758761785983094351">"<xliff:g id="ATTRIBUTION_NAME">%1$s</xliff:g> • <xliff:g id="APP_NAME">%2$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%3$s</xliff:g>"</string>
-    <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> दिन</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> दिन</item>
-    </plurals>
-    <plurals name="duration_used_hours" formatted="false" msgid="1020075479447003242">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> घंटा</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> घंटे</item>
-    </plurals>
-    <plurals name="duration_used_minutes" formatted="false" msgid="3422338854436291744">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> मिनट</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> मिनट</item>
-    </plurals>
-    <plurals name="duration_used_seconds" formatted="false" msgid="2726799598314248110">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> सेकंड</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> सेकंड</item>
-    </plurals>
-    <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
-      <item quantity="one">पिछले ऐक्सेस की जानकारी: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> बार ऐक्सेस किया गया</item>
-      <item quantity="other">पिछले ऐक्सेस की जानकारी: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> बार ऐक्सेस किया गया</item>
-    </plurals>
-    <plurals name="permission_usage_summary_background" formatted="false" msgid="8810001960357233836">
-      <item quantity="one">पिछले ऐक्सेस की जानकारी: <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> बार ऐक्सेस किया गया (बैकग्राउंड में <xliff:g id="NUM_5">%3$s</xliff:g> बार)</item>
-      <item quantity="other">पिछले ऐक्सेस की जानकारी: <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> बार ऐक्सेस किया गया (बैकग्राउंड में <xliff:g id="NUM_5">%3$s</xliff:g> बार)</item>
-    </plurals>
-    <plurals name="permission_usage_summary_duration" formatted="false" msgid="2223071401812931873">
-      <item quantity="one">पिछले ऐक्सेस की जानकारी: <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> बार ऐक्सेस किया गया\nअवधि: <xliff:g id="TIME_5">%3$s</xliff:g></item>
-      <item quantity="other">पिछले ऐक्सेस की जानकारी: <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> बार ऐक्सेस किया गया\nअवधि: <xliff:g id="TIME_5">%3$s</xliff:g></item>
-    </plurals>
-    <plurals name="permission_usage_summary_background_duration" formatted="false" msgid="6893924292010006727">
-      <item quantity="one">पिछले ऐक्सेस की जानकारी: <xliff:g id="TIME_4">%1$s</xliff:g>\n<xliff:g id="NUM_5">%2$s</xliff:g> बार ऐक्सेस किया गया (बैकग्राउंड में <xliff:g id="NUM_6">%3$s</xliff:g> बार)\nअवधि:<xliff:g id="TIME_7">%3$s</xliff:g></item>
-      <item quantity="other">पिछले ऐक्सेस की जानकारी: <xliff:g id="TIME_4">%1$s</xliff:g>\n<xliff:g id="NUM_5">%2$s</xliff:g> बार ऐक्सेस किया गया (बैकग्राउंड में <xliff:g id="NUM_6">%3$s</xliff:g> बार)\nअवधि:<xliff:g id="TIME_7">%3$s</xliff:g></item>
-    </plurals>
-    <string name="permission_usage_summary_background" msgid="6136171928959340697">"आखिरी बार ऐक्सेस: <xliff:g id="TIME">%1$s</xliff:g>\nको आखिरी बार बैकग्राउंड में ऐक्सेस किया गया था"</string>
+    <!-- no translation found for duration_used_days (8293010131040301793) -->
+    <skip />
+    <!-- no translation found for duration_used_hours (1128716208752263576) -->
+    <skip />
+    <!-- no translation found for duration_used_minutes (5335824115042576567) -->
+    <skip />
+    <!-- no translation found for duration_used_seconds (6543746449171675028) -->
+    <skip />
     <string name="permission_usage_any_permission" msgid="6358023078298106997">"कोई भी अनुमति"</string>
     <string name="permission_usage_any_time" msgid="3802087027301631827">"किसी भी समय"</string>
     <string name="permission_usage_last_7_days" msgid="7386221251886130065">"पिछले सात दिनों में"</string>
@@ -171,15 +149,10 @@
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"पिछले एक घंटे में अनुमति का इस्तेमाल"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"पिछले 15 मिनटों में अनुमति का इस्तेमाल"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"पिछले एक मिनट में अनुमति का इस्तेमाल"</string>
-    <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> ऐप्लिकेशन</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ऐप्लिकेशन</item>
-    </plurals>
-    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"पिछले 24 घंटों में इस्तेमाल नहीं किया गया"</string>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
-      <item quantity="one"><xliff:g id="NUMBER">%1$d</xliff:g> ऐप्लिकेशन ने इस्तेमाल किया</item>
-      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> ऐप्लिकेशन ने इस्तेमाल किया</item>
-    </plurals>
+    <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"पिछले 24 घंटों में इस्तेमाल नहीं किया गया"</string>
+    <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"पिछले सात दिनों में इस्तेमाल नहीं किया गया"</string>
+    <!-- no translation found for permission_usage_preference_label (8343167938128676378) -->
+    <skip />
     <string name="permission_usage_view_details" msgid="6675335735468752787">"डैशबोर्ड में सभी को देखें"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"इससे फ़िल्टर किया गया: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"फ़िल्टर हटाएं"</string>
@@ -193,10 +166,6 @@
     <string name="sort_by_time" msgid="5435045320002150456">"समय के मुताबिक क्रम में लगाएं"</string>
     <string name="item_separator" msgid="4030255389809224513">", "</string>
     <string name="permission_usage_refresh" msgid="2264056346561305420">"रीफ़्रेश करें"</string>
-    <plurals name="permission_usage_permission_filter_subtitle" formatted="false" msgid="2452104463317798268">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> ऐप्लिकेशन</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ऐप्लिकेशन</item>
-    </plurals>
     <string name="permission_history_title" msgid="8340081285133025225">"अनुमति का इतिहास"</string>
     <string name="permission_history_category_today" msgid="7496389369158806620">"आज"</string>
     <string name="permission_history_category_yesterday" msgid="7242517121222012521">"बीता हुआ कल"</string>
@@ -266,42 +235,25 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"ये ऐप्लिकेशन सभी फ़ाइलों को मैनेज कर सकते हैं"</string>
     <string name="ask_header" msgid="2633816846459944376">"हर बार पूछें"</string>
     <string name="denied_header" msgid="903209608358177654">"अनुमति नहीं है"</string>
-    <plurals name="days" formatted="false" msgid="7882807103511175827">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> दिन</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> दिन</item>
-    </plurals>
-    <plurals name="hours" formatted="false" msgid="2100550424145061396">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> घंटे</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> घंटे</item>
-    </plurals>
-    <plurals name="minutes" formatted="false" msgid="2154398822027154606">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> मिनट</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> मिनट</item>
-    </plurals>
-    <plurals name="seconds" formatted="false" msgid="1564519426522404832">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> सेकंड</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> सेकंड</item>
-    </plurals>
+    <!-- no translation found for days (609563020985571393) -->
+    <skip />
+    <!-- no translation found for hours (3447767892295843282) -->
+    <skip />
+    <!-- no translation found for minutes (4408293038068503157) -->
+    <skip />
+    <!-- no translation found for seconds (5397771912131132690) -->
+    <skip />
     <string name="permission_reminders" msgid="6528257957664832636">"अनुमति रिमाइंडर"</string>
     <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"एक ऐप्लिकेशन इस्तेमाल नहीं किया जा रहा"</string>
     <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> ऐप्लिकेशन इस्तेमाल नहीं किए जा रहे"</string>
     <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"आपकी निजता की सुरक्षा के लिए अनुमतियां हटाई गई हैं. देखने के लिए टैप करें"</string>
     <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"जो ऐप इस्तेमाल नहीं किए गए उन्हें मिली अनुमतियां हटाई गई हैं"</string>
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"कुछ ऐप्लिकेशन का इस्तेमाल कुछ महीनों से नहीं किया गया है. देखने के लिए टैप करें."</string>
-    <plurals name="auto_revoke_permission_notification_content_count" formatted="false" msgid="9159794096518540350">
-      <item quantity="one">कुछ महीनों से <xliff:g id="COUNT_1">%1$d</xliff:g> ऐप्लिकेशन इस्तेमाल नहीं किया गया है. देखने के लिए टैप करें</item>
-      <item quantity="other">कुछ महीनों से <xliff:g id="COUNT_1">%1$d</xliff:g> ऐप्लिकेशन इस्तेमाल नहीं किए गए हैं. देखने के लिए टैप करें</item>
-    </plurals>
-    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
-      <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> ऐप्लिकेशन इस्तेमाल नहीं किया जा रहा</item>
-      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> ऐप्लिकेशन इस्तेमाल नहीं किए जा रहे</item>
-    </plurals>
+    <!-- no translation found for unused_apps_notification_title (4314832015894238019) -->
+    <skip />
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"ऐप्लिकेशन को दी गई अनुमतियां और डिवाइस पर कुछ समय तक रहने वाली फ़ाइलें हटा दी गई हैं. साथ ही, सूचनाएं रोक दी गई हैं. देखने के लिए टैप करें."</string>
+    <string name="post_drive_permission_decision_reminder_title" msgid="5541572128394226308">"हाल ही में दी गई अनुमतियां"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"कुछ ऐप्लिकेशन का इस्तेमाल कुछ महीनों से नहीं किया गया है"</string>
-    <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
-      <item quantity="one">कुछ महीनों से <xliff:g id="COUNT_1">%1$d</xliff:g> ऐप्लिकेशन इस्तेमाल नहीं किया गया है</item>
-      <item quantity="other">कुछ महीनों से <xliff:g id="COUNT_1">%1$d</xliff:g> ऐप्लिकेशन इस्तेमाल नहीं किए गए हैं</item>
-    </plurals>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"वे ऐप्लिकेशन जिनकी अनुमतियां हटाई गई हैं"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"वे ऐप्लिकेशन जिनकी अनुमतियां हटाई गई हैं"</string>
     <string name="all_unused_apps_category_title" msgid="755663524704745414">"ऐसे सभी ऐप्लिकेशन जो इस्तेमाल नहीं किए गए हैं"</string>
@@ -331,16 +283,24 @@
     <string name="permission_subtitle_background" msgid="8916750995309083180">"हमेशा के लिए अनुमति दी गई है"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"पिछली बार <xliff:g id="TIME_DATE">%1$s</xliff:g> पर ऐक्सेस किया गया"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"पिछली बार, कल <xliff:g id="TIME_DATE">%1$s</xliff:g> पर ऐक्सेस किया गया"</string>
-    <string name="app_perms_content_provider" msgid="6996750793881252778">"पिछले 24 घंटे में ऐक्सेस किया गया"</string>
+    <string name="app_perms_7d_access" msgid="4945055548894683751">"आखिरी बार <xliff:g id="TIME_DATE_0">%1$s</xliff:g> को <xliff:g id="TIME_DATE_1">%2$s</xliff:g> बजे ऐक्सेस किया गया"</string>
+    <string name="app_perms_content_provider_24h" msgid="1055526027667508972">"पिछले 24 घंटे में ऐक्सेस किया गया"</string>
+    <string name="app_perms_content_provider_7d" msgid="3215454898257814868">"पिछले सात दिनों में ऐक्सेस किया गया"</string>
     <string name="app_perms_24h_access_background" msgid="3413674718969576843">"पिछली बार <xliff:g id="TIME_DATE">%1$s</xliff:g> पर ऐक्सेस किया गया • हमेशा के लिए मंज़ूरी दी गई है"</string>
     <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"पिछली बार, कल <xliff:g id="TIME_DATE">%1$s</xliff:g> पर ऐक्सेस किया गया • हमेशा के लिए मंज़ूरी दी गई है"</string>
-    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"पिछले 24 घंटे में ऐक्सेस किया गया • हमेशा के लिए मंज़ूरी दी गई है"</string>
+    <string name="app_perms_7d_access_background" msgid="408099213372185627">"आखिरी बार <xliff:g id="TIME_DATE_0">%1$s</xliff:g> को <xliff:g id="TIME_DATE_1">%2$s</xliff:g> बजे हमेशा के लिए मंज़ूरी वाली फ़ाइलें ऐक्सेस की गईं"</string>
+    <string name="app_perms_content_provider_24h_background" msgid="3825902995186961496">"पिछले 24 घंटे में ऐक्सेस की गईं • हमेशा के लिए मंज़ूरी वाली फ़ाइलें"</string>
+    <string name="app_perms_content_provider_7d_background" msgid="4818839672116463542">"पिछले सात दिनों में ऐक्सेस की गईं • हमेशा के लिए मंज़ूरी वाली फ़ाइलें"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"पिछली बार <xliff:g id="TIME_DATE">%1$s</xliff:g> पर ऐक्सेस किया गया • मीडिया"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"पिछली बार, कल <xliff:g id="TIME_DATE">%1$s</xliff:g> पर ऐक्सेस किया गया • मीडिया"</string>
-    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"पिछले 24 घंटे में ऐक्सेस किया गया • मीडिया"</string>
+    <string name="app_perms_7d_access_media_only" msgid="1031096653668235200">"आखिरी बार <xliff:g id="TIME_DATE_0">%1$s</xliff:g> को <xliff:g id="TIME_DATE_1">%2$s</xliff:g> बजे • मीडिया फ़ाइलें ऐक्सेस की गईं"</string>
+    <string name="app_perms_content_provider_24h_media_only" msgid="7797963000596179491">"पिछले 24 घंटे में ऐक्सेस की गईं • मीडिया फ़ाइलें"</string>
+    <string name="app_perms_content_provider_7d_media_only" msgid="8446239884570262243">"पिछले सात दिनों में ऐक्सेस की गईं • मीडिया फ़ाइलें"</string>
     <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"पिछली बार <xliff:g id="TIME_DATE">%1$s</xliff:g> पर ऐक्सेस की गई • सभी फ़ाइलें"</string>
     <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"पिछली बार, कल <xliff:g id="TIME_DATE">%1$s</xliff:g> पर ऐक्सेस की गई • सभी फ़ाइलें"</string>
-    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"पिछले 24 घंटे में ऐक्सेस की गई • सभी फ़ाइलें"</string>
+    <string name="app_perms_7d_access_all_files" msgid="8246193786397635824">"आखिरी बार <xliff:g id="TIME_DATE_0">%1$s</xliff:g> को <xliff:g id="TIME_DATE_1">%2$s</xliff:g> बजे • सभी फ़ाइलें ऐक्सेस की गईं"</string>
+    <string name="app_perms_content_provider_24h_all_files" msgid="573104317727770850">"पिछले 24 घंटे में ऐक्सेस की गईं • सभी फ़ाइलें"</string>
+    <string name="app_perms_content_provider_7d_all_files" msgid="7962416229708835558">"पिछले सात दिनों में ऐक्सेस की गईं • सभी फ़ाइलें"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"कोई अनुमति नहीं मिली है"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"इस ऐप्लिकेशन के पास सभी अनुमतियां हैं"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"किसी ऐप्लिकेशन को अनुमति नहीं है"</string>
@@ -499,6 +459,7 @@
     <string name="privdash_label_other" msgid="3710394147423236033">"दूसरी अनुमतियां"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"कोई नहीं"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"पिछले\n24 घंटे"</string>
+    <string name="privdash_label_7d" msgid="5645301995348656931">"पिछले\nसात दिन"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> को Android की मदद से सुरक्षित किया गया है. आपका डेटा इस डिवाइस पर प्रोसेस किया गया है. इसलिए, इस ऐप्लिकेशन की अनुमति के इस्तेमाल की जानकारी, स्टेटस बार या प्राइवसी डैशबोर्ड पर नहीं दिखती."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> को Android की मदद से सुरक्षित किया गया है. आपका डेटा इस डिवाइस पर प्रोसेस किया गया है. इसलिए, इस ऐप्लिकेशन की अनुमति के इस्तेमाल की जानकारी, प्राइवसी डैशबोर्ड पर नहीं दिखती."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"डिवाइस का कैमरा ब्लॉक किया गया है"</string>
@@ -508,4 +469,5 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"जब आपातकालीन नंबर पर कॉल किया जाता है, तो माइक ब्लॉक होने के बावजूद माइक्रोफ़ोन का डेटा शेयर किया जा सकता है."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"बदलें"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"सुरक्षा और निजता"</string>
+    <string name="security_settings" msgid="3808106921175271317">"सुरक्षा सेटिंग"</string>
 </resources>
