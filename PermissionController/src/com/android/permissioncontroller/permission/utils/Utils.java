@@ -308,6 +308,7 @@ public final class Utils {
 
         if (SdkLevel.isAtLeastT()) {
             PLATFORM_PERMISSIONS.put(Manifest.permission.POST_NOTIFICATIONS, NOTIFICATIONS);
+            PLATFORM_PERMISSIONS.put(Manifest.permission.BODY_SENSORS_BACKGROUND, SENSORS);
         }
 
         PLATFORM_PERMISSION_GROUPS = new ArrayMap<>();
@@ -358,6 +359,8 @@ public final class Utils {
                 .put(MICROPHONE, R.string.permgroupbackgroundrequest_microphone);
         PERM_GROUP_BACKGROUND_REQUEST_RES
                 .put(CAMERA, R.string.permgroupbackgroundrequest_camera);
+        PERM_GROUP_BACKGROUND_REQUEST_RES
+                .put(SENSORS, R.string.permgroupbackgroundrequest_sensors);
 
         PERM_GROUP_BACKGROUND_REQUEST_DETAIL_RES = new ArrayMap<>();
         PERM_GROUP_BACKGROUND_REQUEST_DETAIL_RES
@@ -366,11 +369,14 @@ public final class Utils {
                 .put(MICROPHONE, R.string.permgroupbackgroundrequestdetail_microphone);
         PERM_GROUP_BACKGROUND_REQUEST_DETAIL_RES
                 .put(CAMERA, R.string.permgroupbackgroundrequestdetail_camera);
+        PERM_GROUP_BACKGROUND_REQUEST_DETAIL_RES
+                .put(SENSORS, R.string.permgroupbackgroundrequestdetail_sensors);
 
         PERM_GROUP_UPGRADE_REQUEST_RES = new ArrayMap<>();
         PERM_GROUP_UPGRADE_REQUEST_RES.put(LOCATION, R.string.permgroupupgraderequest_location);
         PERM_GROUP_UPGRADE_REQUEST_RES.put(MICROPHONE, R.string.permgroupupgraderequest_microphone);
         PERM_GROUP_UPGRADE_REQUEST_RES.put(CAMERA, R.string.permgroupupgraderequest_camera);
+        PERM_GROUP_UPGRADE_REQUEST_RES.put(SENSORS, R.string.permgroupupgraderequest_sensors);
 
         PERM_GROUP_UPGRADE_REQUEST_DETAIL_RES = new ArrayMap<>();
         PERM_GROUP_UPGRADE_REQUEST_DETAIL_RES
@@ -379,6 +385,8 @@ public final class Utils {
                 .put(MICROPHONE, R.string.permgroupupgraderequestdetail_microphone);
         PERM_GROUP_UPGRADE_REQUEST_DETAIL_RES
                 .put(CAMERA, R.string.permgroupupgraderequestdetail_camera);
+        PERM_GROUP_UPGRADE_REQUEST_DETAIL_RES
+                .put(SENSORS,  R.string.permgroupupgraderequestdetail_sensors);
 
         PERM_SENSOR_CODES = new ArrayMap<>();
         if (SdkLevel.isAtLeastS()) {
