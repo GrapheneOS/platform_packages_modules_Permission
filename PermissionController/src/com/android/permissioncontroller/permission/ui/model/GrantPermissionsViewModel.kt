@@ -142,6 +142,8 @@ class GrantPermissionsViewModel(
     // filtering system fixed, auto grant, etc.
     private var unfilteredAffectedPermissions = requestedPermissions
 
+    private val splitPermissionTargetSdkMap = mutableMapOf<String, Int>()
+
     /**
      * A class which represents a correctly requested permission group, and the buttons and messages
      * which should be shown with it.
@@ -195,6 +197,11 @@ class GrantPermissionsViewModel(
                 getAppPermGroups(groups.toMutableMap().apply {
                         remove(PackagePermissionsLiveData.NON_RUNTIME_NORMAL_PERMS)
                     })
+
+                for (splitPerm in app.getSystemService(
+                        PermissionManager::class.java)!!.splitPermissions) {
+                    splitPermissionTargetSdkMap[splitPerm.splitPermission] = splitPerm.targetSdk
+                }
             }
         }
 
@@ -266,17 +273,18 @@ class GrantPermissionsViewModel(
                 if (groupState.state != STATE_UNKNOWN) {
                     continue
                 }
-
                 val fgState = groupStates[groupName to false]
                 val bgState = groupStates[groupName to true]
                 var needFgPermissions = false
                 var needBgPermissions = false
                 var isFgUserSet = false
                 var isBgUserSet = false
-
+                var minSdkForOrderedSplitPermissions = Build.VERSION_CODES.R
                 if (fgState?.group != null) {
                     val fgGroup = fgState.group
                     for (perm in fgState.affectedPermissions) {
+                        minSdkForOrderedSplitPermissions = maxOf(minSdkForOrderedSplitPermissions,
+                                splitPermissionTargetSdkMap.getOrDefault(perm, 0))
                         if (fgGroup.permissions[perm]?.isGrantedIncludingAppOp == false) {
                             // If any of the requested permissions is not granted,
                             // needFgPermissions = true
@@ -289,7 +297,6 @@ class GrantPermissionsViewModel(
                         }
                     }
                 }
-
                 if (bgState?.group?.background?.isGranted == false) {
                     needBgPermissions = true
                     isBgUserSet = bgState.group.background.isUserSet
@@ -304,8 +311,8 @@ class GrantPermissionsViewModel(
                 // Whether or not to use the foreground, background, or no detail message.
                 // null ==
                 var detailMessage = RequestMessage.NO_MESSAGE
-
-                if (groupState.group.packageInfo.targetSdkVersion >= Build.VERSION_CODES.R) {
+                if (groupState.group.packageInfo.targetSdkVersion >=
+                        minSdkForOrderedSplitPermissions) {
                     if (isBackground || Utils.hasPermWithBackgroundModeCompat(groupState.group)) {
                         if (needFgPermissions) {
                             if (needBgPermissions) {
