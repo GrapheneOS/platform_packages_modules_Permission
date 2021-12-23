@@ -21,6 +21,8 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"ခွင့်ပြုချက်များ"</string>
     <string name="cancel" msgid="8943320028373963831">"မလုပ်တော့"</string>
     <string name="back" msgid="6249950659061523680">"နောက်သို့"</string>
+    <string name="available" msgid="6007778121920339498">"ရနိုင်သည်"</string>
+    <string name="blocked" msgid="9195547604866033708">"ပိတ်ထားသည်"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"ပရိုဂရမ်ကို ဖယ်ရှားရန် သို့မဟုတ် ပိတ်ရန်"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"အက်ပ် မတွေ့ပါ"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"ခွင့်မပြုပါ"</string>
@@ -60,16 +62,16 @@
     <string name="no_permissions" msgid="3881676756371148563">"ခွင့်ပြုချက်မရှိပါ"</string>
     <string name="additional_permissions" msgid="5801285469338873430">"ထပ်ဆောင်း ခွင့်ပြုချက်များ"</string>
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"အက်ပ်အချက်အလက် ဖွင့်ရန်"</string>
-    <plurals name="additional_permissions_more" formatted="false" msgid="5297511511961335277">
-      <item quantity="other"> နောက်ထပ် <xliff:g id="COUNT_1">%1$d</xliff:g> ခု</item>
-      <item quantity="one"> နောက်ထပ် <xliff:g id="COUNT_0">%1$d</xliff:g> ခု</item>
-    </plurals>
+    <!-- no translation found for additional_permissions_more (5681220714755304407) -->
+    <skip />
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"ဤအက်ပ်ကို Android ဗားရှင်းအဟောင်းတွင် သုံးရန် ရေးဆွဲထားပါသည်။ ခွင့်ပြုချက်ပေးရန် ငြင်းပယ်ပါက ရည်ရွယ်ထားသကဲ့သို့ ဆောင်ရွက်မည် မဟုတ်ပါ။"</string>
     <string name="default_permission_description" msgid="4624464917726285203">"အမျိုးအမည်မသိ ဆောင်ရွက်ချက်တစ်ခု လုပ်ရန်"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"အက်ပ် <xliff:g id="COUNT_1">%2$d</xliff:g> ခုထဲမှ <xliff:g id="COUNT_0">%1$d</xliff:g> ခု ခွင့်ပြုသည်"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"အက်ပ် <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> ခု ခွင့်ပြုသည်"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"စနစ်ကိုပြရန်"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"စနစ်ကို ဖျောက်ရန်"</string>
+    <string name="menu_show_7_days_data" msgid="8979611198508523706">"၇ ရက်အတွက် ပြခြင်း"</string>
+    <string name="menu_show_24_hours_data" msgid="8228054833323380780">"၂၄ နာရီအတွက် ပြခြင်း"</string>
     <string name="manage_permission" msgid="2895385393037061964">"ခွင့်ပြုချက် စီမံရန်"</string>
     <string name="no_apps" msgid="2412612731628386816">"အက်ပ် မရှိပါ"</string>
     <string name="location_settings" msgid="3624412509133422562">"တည်နေရာ ဆက်တင်များ"</string>
@@ -113,44 +115,20 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"အခြားခွင့်ပြုချက်များ ကြည့်ပါ"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>၊ <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>၊ <xliff:g id="PERMGROUP_1">%2$s</xliff:g> နှင့် နောက်ထပ် <xliff:g id="NUM">%3$s</xliff:g> ခု"</string>
-    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"ပြီးခဲ့သော ၂၄ နာရီအတွင်း အက်ပ်များက သင့် <xliff:g id="PERMGROUP">%1$s</xliff:g> ကို အသုံးပြုသည့် အချိန်မှတ်တမ်း"</string>
+    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"ပြီးခဲ့သည့် ၂၄ နာရီအတွင်း <xliff:g id="PERMGROUP">%1$s</xliff:g> ကို အက်ပ်များအသုံးပြုသည့် အချိန်မှတ်တမ်း"</string>
+    <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"ပြီးခဲ့သည့် ၇ ရက်အတွင်း <xliff:g id="PERMGROUP">%1$s</xliff:g> ကို အက်ပ်များအသုံးပြုသည့် အချိန်မှတ်တမ်း"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"ဤအက်ပ်က သင့် <xliff:g id="PERMGROUP">%1$s</xliff:g> ခွင့်ပြုချက်ကို သုံးသောအခါ"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"ပိုမိုလေ့လာရန်"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_3" msgid="758761785983094351">"<xliff:g id="ATTRIBUTION_NAME">%1$s</xliff:g> • <xliff:g id="APP_NAME">%2$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%3$s</xliff:g>"</string>
-    <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ရက်</item>
-      <item quantity="one">1 ရက်</item>
-    </plurals>
-    <plurals name="duration_used_hours" formatted="false" msgid="1020075479447003242">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> နာရီ</item>
-      <item quantity="one">1 နာရီ</item>
-    </plurals>
-    <plurals name="duration_used_minutes" formatted="false" msgid="3422338854436291744">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> မိနစ်</item>
-      <item quantity="one">1 မိနစ်</item>
-    </plurals>
-    <plurals name="duration_used_seconds" formatted="false" msgid="2726799598314248110">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> စက္ကန့်</item>
-      <item quantity="one">၁ စက္ကန့်</item>
-    </plurals>
-    <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
-      <item quantity="other">နောက်ဆုံးအသုံးပြုမှု- <xliff:g id="TIME_2">%1$s</xliff:g>\nအသုံးပြုမှု <xliff:g id="NUM_3">%2$s</xliff:g> ခု</item>
-      <item quantity="one">နောက်ဆုံးအသုံးပြုမှု- <xliff:g id="TIME_0">%1$s</xliff:g>\nအသုံးပြုမှု <xliff:g id="NUM_1">%2$s</xliff:g> ခု</item>
-    </plurals>
-    <plurals name="permission_usage_summary_background" formatted="false" msgid="8810001960357233836">
-      <item quantity="other">နောက်ဆုံးအသုံးပြုမှု- <xliff:g id="TIME_3">%1$s</xliff:g>\nအသုံးပြုမှု <xliff:g id="NUM_4">%2$s</xliff:g> ခု (နောက်ခံတွင် <xliff:g id="NUM_5">%3$s</xliff:g> ခု)</item>
-      <item quantity="one">နောက်ဆုံးအသုံးပြုမှု- <xliff:g id="TIME_0">%1$s</xliff:g>\nအသုံးပြုမှု <xliff:g id="NUM_1">%2$s</xliff:g> ခု (နောက်ခံတွင် <xliff:g id="NUM_2">%3$s</xliff:g> ခု)</item>
-    </plurals>
-    <plurals name="permission_usage_summary_duration" formatted="false" msgid="2223071401812931873">
-      <item quantity="other">နောက်ဆုံးအသုံးပြုမှု- <xliff:g id="TIME_3">%1$s</xliff:g>\nအသုံးပြုမှု <xliff:g id="NUM_4">%2$s</xliff:g> ခု\nကြာချိန်- <xliff:g id="TIME_5">%3$s</xliff:g></item>
-      <item quantity="one">နောက်ဆုံးအသုံးပြုမှု- <xliff:g id="TIME_0">%1$s</xliff:g>\nအသုံးပြုမှု <xliff:g id="NUM_1">%2$s</xliff:g> ခု\nကြာချိန်- <xliff:g id="TIME_2">%3$s</xliff:g></item>
-    </plurals>
-    <plurals name="permission_usage_summary_background_duration" formatted="false" msgid="6893924292010006727">
-      <item quantity="other">နောက်ဆုံးအသုံးပြုမှု- <xliff:g id="TIME_4">%1$s</xliff:g>\nအသုံးပြုမှု <xliff:g id="NUM_5">%2$s</xliff:g> ခု (နောက်ခံတွင် <xliff:g id="NUM_6">%3$s</xliff:g> ခု)\nကြာချိန်- <xliff:g id="TIME_7">%3$s</xliff:g></item>
-      <item quantity="one">နောက်ဆုံးအသုံးပြုမှု- <xliff:g id="TIME_0">%1$s</xliff:g>\nအသုံးပြုမှု <xliff:g id="NUM_1">%2$s</xliff:g> ခု (နောက်ခံတွင် <xliff:g id="NUM_2">%3$s</xliff:g> ခု)\nကြာချိန်- <xliff:g id="TIME_3">%3$s</xliff:g></item>
-    </plurals>
-    <string name="permission_usage_summary_background" msgid="6136171928959340697">"နောက်ဆုံးအသုံးပြုမှု- <xliff:g id="TIME">%1$s</xliff:g>\nနောက်ခံတွင် နောက်ဆုံးအသုံးပြုထားသည်"</string>
+    <!-- no translation found for duration_used_days (8293010131040301793) -->
+    <skip />
+    <!-- no translation found for duration_used_hours (1128716208752263576) -->
+    <skip />
+    <!-- no translation found for duration_used_minutes (5335824115042576567) -->
+    <skip />
+    <!-- no translation found for duration_used_seconds (6543746449171675028) -->
+    <skip />
     <string name="permission_usage_any_permission" msgid="6358023078298106997">"မည်သည့် ခွင့်ပြုချက်မဆို"</string>
     <string name="permission_usage_any_time" msgid="3802087027301631827">"အချိန်မရွေး"</string>
     <string name="permission_usage_last_7_days" msgid="7386221251886130065">"ပြီးခဲ့သော ၇ ရက်"</string>
@@ -171,15 +149,10 @@
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"ပြီးခဲ့သော ၁ မိနစ်အတွင်း ခွင့်ပြုချက်သုံးစွဲမှု"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"ပြီးခဲ့သော ၁၅ မိနစ်အတွင်း ခွင့်ပြုချက်သုံးစွဲမှု"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"ပြီးခဲ့သော ၁ မိနစ်အတွင်း ခွင့်ပြုချက်သုံးစွဲမှု"</string>
-    <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
-      <item quantity="other">အက်ပ် <xliff:g id="NUMBER">%s</xliff:g> ခု</item>
-      <item quantity="one">အက်ပ် ၁ ခု</item>
-    </plurals>
-    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"ပြီးခဲ့သော ၂၄ နာရီအတွင်း အသုံးမပြုပါ"</string>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
-      <item quantity="other">အက်ပ် <xliff:g id="NUMBER">%1$d</xliff:g> ခုက အသုံးပြုထားသည်</item>
-      <item quantity="one">အက်ပ် 1 ခုက အသုံးပြုထားသည်</item>
-    </plurals>
+    <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"ပြီးခဲ့သည့် ၂၄ နာရီအတွင်း အသုံးမပြုပါ"</string>
+    <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"ပြီးခဲ့သည့် ၇ ရက်အတွင်း အသုံးမပြုပါ"</string>
+    <!-- no translation found for permission_usage_preference_label (8343167938128676378) -->
+    <skip />
     <string name="permission_usage_view_details" msgid="6675335735468752787">"အားလုံးကို \'ဒက်ရှ်ဘုတ်\' တွင်ကြည့်ရန်"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"စစ်ထုတ်စနစ်- <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"စစ်ထုတ်ခြင်းကို ဖယ်ရှားရန်"</string>
@@ -193,10 +166,6 @@
     <string name="sort_by_time" msgid="5435045320002150456">"အချိန်အလိုက် စီရန်"</string>
     <string name="item_separator" msgid="4030255389809224513">"၊ "</string>
     <string name="permission_usage_refresh" msgid="2264056346561305420">"ပြန်စရန်"</string>
-    <plurals name="permission_usage_permission_filter_subtitle" formatted="false" msgid="2452104463317798268">
-      <item quantity="other">အက်ပ် <xliff:g id="NUMBER">%s</xliff:g> ခု</item>
-      <item quantity="one">အက်ပ် ၁ ခု</item>
-    </plurals>
     <string name="permission_history_title" msgid="8340081285133025225">"ခွင့်ပြုချက်မှတ်တမ်း"</string>
     <string name="permission_history_category_today" msgid="7496389369158806620">"ယနေ့"</string>
     <string name="permission_history_category_yesterday" msgid="7242517121222012521">"မနေ့က"</string>
@@ -266,42 +235,25 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"ဖိုင်အားလုံးကို စီမံခွင့်ပြုထားသည်"</string>
     <string name="ask_header" msgid="2633816846459944376">"အမြဲမေးရန်"</string>
     <string name="denied_header" msgid="903209608358177654">"ခွင့်ပြုမထားပါ"</string>
-    <plurals name="days" formatted="false" msgid="7882807103511175827">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ရက်</item>
-      <item quantity="one">၁ ရက်</item>
-    </plurals>
-    <plurals name="hours" formatted="false" msgid="2100550424145061396">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> နာရီ</item>
-      <item quantity="one">၁ နာရီ</item>
-    </plurals>
-    <plurals name="minutes" formatted="false" msgid="2154398822027154606">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> မိနစ်</item>
-      <item quantity="one">၁ မိနစ်</item>
-    </plurals>
-    <plurals name="seconds" formatted="false" msgid="1564519426522404832">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> စက္ကန့်</item>
-      <item quantity="one">၁ စက္ကန့်</item>
-    </plurals>
+    <!-- no translation found for days (609563020985571393) -->
+    <skip />
+    <!-- no translation found for hours (3447767892295843282) -->
+    <skip />
+    <!-- no translation found for minutes (4408293038068503157) -->
+    <skip />
+    <!-- no translation found for seconds (5397771912131132690) -->
+    <skip />
     <string name="permission_reminders" msgid="6528257957664832636">"ခွင့်ပြုချက် သတိပေးမှုများ"</string>
     <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"အသုံးမပြုသောအက်ပ် 1 ခု"</string>
     <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"အသုံးမပြုသောအက်ပ် <xliff:g id="NUMBER_OF_APPS">%s</xliff:g> ခု"</string>
     <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"သင့်ပုဂ္ဂိုလ်ရေးလုံခြုံမှုကို ကာကွယ်ရန် ခွင့်ပြုချက်များ ဖယ်ရှားလိုက်သည်။ ပြန်ကြည့်ရန် တို့ပါ"</string>
     <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"မသုံးသောအက်ပ်အတွက် ခွင့်ပြုချက်ဖယ်လိုက်သည်"</string>
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"အက်ပ်အချို့ကို အသုံးမပြုသည်မှာ လအနည်းငယ် ရှိပါပြီ။ ပြန်ကြည့်ရန် တို့ပါ။"</string>
-    <plurals name="auto_revoke_permission_notification_content_count" formatted="false" msgid="9159794096518540350">
-      <item quantity="other">အက်ပ် <xliff:g id="COUNT_1">%1$d</xliff:g> ခုကို အသုံးမပြုသည်မှာ လအနည်းငယ်ရှိပါပြီ။ ပြန်ကြည့်ရန် တို့ပါ</item>
-      <item quantity="one">အက်ပ် <xliff:g id="COUNT_0">%1$d</xliff:g> ခုကို အသုံးမပြုသည်မှာ လအနည်းငယ် ရှိပါပြီ။ ပြန်ကြည့်ရန် တို့ပါ</item>
-    </plurals>
-    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
-      <item quantity="other">အသုံးမပြုသောအက်ပ် <xliff:g id="COUNT_1">%1$d</xliff:g> ခု</item>
-      <item quantity="one">အသုံးမပြုသောအက်ပ် <xliff:g id="COUNT_0">%1$d</xliff:g> ခု</item>
-    </plurals>
+    <!-- no translation found for unused_apps_notification_title (4314832015894238019) -->
+    <skip />
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"ခွင့်ပြုချက်နှင့် ယာယီဖိုင်များကို ဖယ်ရှားလိုက်ပြီး အကြောင်းကြားချက်များကို ရပ်ထားသည်။ ပြန်ကြည့်ရန် တို့ပါ။"</string>
+    <string name="post_drive_permission_decision_reminder_title" msgid="5541572128394226308">"မကြာသေးမီက ခွင့်ပြုချက်များ"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"အက်ပ်အချို့ကို အသုံးမပြုသည်မှာ လအနည်းငယ် ရှိပါပြီ"</string>
-    <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
-      <item quantity="other">အက်ပ် <xliff:g id="COUNT_1">%1$d</xliff:g> ခုကို အသုံးမပြုသည်မှာ လအနည်းငယ်ရှိပါပြီ</item>
-      <item quantity="one">အက်ပ် <xliff:g id="COUNT_0">%1$d</xliff:g> ခုကို အသုံးမပြုသည်မှာ လအနည်းငယ် ရှိပါပြီ</item>
-    </plurals>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"ခွင့်ပြုချက် ဖယ်ထားသည်များ"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"ခွင့်ပြုချက် ဖယ်ထားသည်များ"</string>
     <string name="all_unused_apps_category_title" msgid="755663524704745414">"အသုံးမပြုသော အက်ပ်အားလုံး"</string>
@@ -331,16 +283,24 @@
     <string name="permission_subtitle_background" msgid="8916750995309083180">"အမြဲ ခွင့်ပြုထားသည်"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"<xliff:g id="TIME_DATE">%1$s</xliff:g> တွင် နောက်ဆုံး အသုံးပြုခဲ့သည်"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"မနေ့က <xliff:g id="TIME_DATE">%1$s</xliff:g> တွင် နောက်ဆုံးအသုံးပြုခဲ့သည်"</string>
-    <string name="app_perms_content_provider" msgid="6996750793881252778">"ပြီးခဲ့သော ၂၄ နာရီအတွင်း အသုံးပြုခဲ့သည်"</string>
+    <string name="app_perms_7d_access" msgid="4945055548894683751">"<xliff:g id="TIME_DATE_0">%1$s</xliff:g> နေ့ <xliff:g id="TIME_DATE_1">%2$s</xliff:g> တွင် နောက်ဆုံး သုံးသည်"</string>
+    <string name="app_perms_content_provider_24h" msgid="1055526027667508972">"ပြီးခဲ့သည့် ၂၄ နာရီအတွင်း သုံးထားသည်"</string>
+    <string name="app_perms_content_provider_7d" msgid="3215454898257814868">"ပြီးခဲ့သည့် ၇ ရက်အတွင်း သုံးထားသည်"</string>
     <string name="app_perms_24h_access_background" msgid="3413674718969576843">"<xliff:g id="TIME_DATE">%1$s</xliff:g> တွင် နောက်ဆုံး အသုံးပြုခဲ့သည် • အမြဲ ခွင့်ပြုထားသည်"</string>
     <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"မနေ့က <xliff:g id="TIME_DATE">%1$s</xliff:g> တွင် နောက်ဆုံး အသုံးပြုခဲ့သည် • အမြဲ ခွင့်ပြုထားသည်"</string>
-    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"ပြီးခဲ့သော ၂၄ နာရီအတွင်း အသုံးပြုခဲ့သည် • အမြဲ ခွင့်ပြုထားသည်"</string>
+    <string name="app_perms_7d_access_background" msgid="408099213372185627">"<xliff:g id="TIME_DATE_0">%1$s</xliff:g> နေ့ <xliff:g id="TIME_DATE_1">%2$s</xliff:g> တွင် နောက်ဆုံး သုံးသည် • အမြဲ ခွင့်ပြုထားသည်"</string>
+    <string name="app_perms_content_provider_24h_background" msgid="3825902995186961496">"ပြီးခဲ့သည့် ၂၄ နာရီအတွင်း သုံးထားသည် • အမြဲ ခွင့်ပြုထားသည်"</string>
+    <string name="app_perms_content_provider_7d_background" msgid="4818839672116463542">"ပြီးခဲ့သည့် ၇ ရက်အတွင်း သုံးထားသည် • အမြဲ ခွင့်ပြုထားသည်"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"<xliff:g id="TIME_DATE">%1$s</xliff:g> တွင် နောက်ဆုံး အသုံးပြုခဲ့သည် • မီဒီယာ"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"မနေ့က <xliff:g id="TIME_DATE">%1$s</xliff:g> တွင် နောက်ဆုံးအသုံးပြုခဲ့သည် • မီဒီယာ"</string>
-    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"ပြီးခဲ့သော ၂၄ နာရီအတွင်း အသုံးပြုခဲ့သည် • မီဒီယာ"</string>
+    <string name="app_perms_7d_access_media_only" msgid="1031096653668235200">"<xliff:g id="TIME_DATE_0">%1$s</xliff:g> နေ့ <xliff:g id="TIME_DATE_1">%2$s</xliff:g> တွင် နောက်ဆုံး သုံးသည် • မီဒီယာ"</string>
+    <string name="app_perms_content_provider_24h_media_only" msgid="7797963000596179491">"ပြီးခဲ့သည့် ၂၄ နာရီအတွင်း သုံးထားသည် • မီဒီယာ"</string>
+    <string name="app_perms_content_provider_7d_media_only" msgid="8446239884570262243">"ပြီးခဲ့သည့် ၇ ရက်အတွင်း သုံးထားသည် • Media"</string>
     <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"<xliff:g id="TIME_DATE">%1$s</xliff:g> တွင် နောက်ဆုံး အသုံးပြုခဲ့သည် • ဖိုင်အားလုံး"</string>
     <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"မနေ့က <xliff:g id="TIME_DATE">%1$s</xliff:g> တွင် နောက်ဆုံးအသုံးပြုခဲ့သည် • ဖိုင်အားလုံး"</string>
-    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"ပြီးခဲ့သော ၂၄ နာရီအတွင်း အသုံးပြုခဲ့သည် • ဖိုင်အားလုံး"</string>
+    <string name="app_perms_7d_access_all_files" msgid="8246193786397635824">"<xliff:g id="TIME_DATE_0">%1$s</xliff:g> နေ့ <xliff:g id="TIME_DATE_1">%2$s</xliff:g> တွင် နောက်ဆုံး သုံးသည် • ဖိုင်အားလုံး"</string>
+    <string name="app_perms_content_provider_24h_all_files" msgid="573104317727770850">"ပြီးခဲ့သည့် ၂၄ နာရီအတွင်း သုံးထားသည် • ဖိုင်အားလုံး"</string>
+    <string name="app_perms_content_provider_7d_all_files" msgid="7962416229708835558">"ပြီးခဲ့သည့် ၇ ရက်အတွင်း သုံးထားသည် • ဖိုင်အားလုံး"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"ခွင့်ပြုချက်များ ပေးမထားပါ"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"ငြင်းပယ်ထားသည့် ခွင့်ပြုချက် မရှိပါ"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"ခွင့်ပြုထားသည့် အက်ပ်မရှိပါ"</string>
@@ -499,6 +459,7 @@
     <string name="privdash_label_other" msgid="3710394147423236033">"အခြား"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"မရှိ"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"ပြီးခဲ့သော\n၂၄ နာရီ"</string>
+    <string name="privdash_label_7d" msgid="5645301995348656931">"ပြီးခဲ့သည့်\n၇ ရက်"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> ကို Android က ကာကွယ်ပေးထားသည်။ သင့်ဒေတာကို ဤစက်ပစ္စည်းပေါ်တွင် စီမံနေခြင်းကြောင့် ဤအက်ပ်၏ ခွင့်ပြုချက်အသုံးပြုမှုကို သင့်ကိုယ်ရေးအချက်အလက် လုံခြုံမှု ဒက်ရှ်ဘုတ်ပေါ်တွင် ပြသမထားပါ။"</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> ကို Android က ကာကွယ်ပေးထားသည်။ သင့်ဒေတာကို ဤစက်ပစ္စည်းပေါ်တွင် စီမံနေခြင်းကြောင့် ဤအက်ပ်၏ ခွင့်ပြုချက်အသုံးပြုမှုကို သင့်ကိုယ်ရေးအချက်အလက် လုံခြုံမှု ဒက်ရှ်ဘုတ်ပေါ်တွင် ပြသမထားပါ။"</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"စက်ကင်မရာကို ပိတ်ထားသည်"</string>
@@ -508,4 +469,5 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"အရေးပေါ် နံပါတ်ကို သင်ခေါ်ဆိုချိန်တွင် မိုက်ခရိုဖုန်းဒေတာကို မျှဝေနိုင်သေးသည်။"</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"ပြောင်းရန်"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"ပုဂ္ဂိုလ်ရေးနှင့် လုံခြုံရေး"</string>
+    <string name="security_settings" msgid="3808106921175271317">"လုံခြုံရေး ဆက်တင်များ"</string>
 </resources>

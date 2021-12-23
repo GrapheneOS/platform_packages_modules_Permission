@@ -21,6 +21,8 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"مجوزها"</string>
     <string name="cancel" msgid="8943320028373963831">"لغو"</string>
     <string name="back" msgid="6249950659061523680">"برگشت"</string>
+    <string name="available" msgid="6007778121920339498">"دردسترس"</string>
+    <string name="blocked" msgid="9195547604866033708">"مسدود"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"حذف نصب یا غیرفعال کردن"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"برنامه یافت نشد"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"اجازه داده نشود"</string>
@@ -60,16 +62,16 @@
     <string name="no_permissions" msgid="3881676756371148563">"مجوزی موجود نیست"</string>
     <string name="additional_permissions" msgid="5801285469338873430">"اجازه‌های تکمیلی"</string>
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"باز کردن اطلاعات برنامه"</string>
-    <plurals name="additional_permissions_more" formatted="false" msgid="5297511511961335277">
-      <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> مجوز دیگر</item>
-      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> مجوز دیگر</item>
-    </plurals>
+    <!-- no translation found for additional_permissions_more (5681220714755304407) -->
+    <skip />
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"‏این برنامه برای نسخه قدیمی‌تری از Android طراحی شده بود. رد کردن مجوز ممکن است باعث شود که برنامه دیگر عملکرد موردانتظار را نداشته باشند."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"انجام یک اقدام ناشناس"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> برنامه از <xliff:g id="COUNT_1">%2$d</xliff:g> برنامه مجاز است"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g> برنامه از <xliff:g id="COUNT_1">%2$d</xliff:g> برنامه مجاز است"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"نمایش سیستم"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"پنهان کردن سیستم"</string>
+    <string name="menu_show_7_days_data" msgid="8979611198508523706">"نمایش ۷ روز گذشته"</string>
+    <string name="menu_show_24_hours_data" msgid="8228054833323380780">"نمایش ۲۴ ساعت گذشته"</string>
     <string name="manage_permission" msgid="2895385393037061964">"مدیریت اجازه"</string>
     <string name="no_apps" msgid="2412612731628386816">"برنامه‌ای موجود نیست"</string>
     <string name="location_settings" msgid="3624412509133422562">"تنظیمات مکان"</string>
@@ -113,44 +115,20 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"دیدن اجازه‌های دیگر"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>،<xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>، <xliff:g id="PERMGROUP_1">%2$s</xliff:g> و <xliff:g id="NUM">%3$s</xliff:g> مورد دیگر"</string>
-    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"خط زمان مدتی که برنامه‌ها در ۲۴ ساعت گذشته از <xliff:g id="PERMGROUP">%1$s</xliff:g> شما استفاده کرده‌اند"</string>
+    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"خط زمان مواقعی که برنامه‌ها در ۲۴ ساعت گذشته از <xliff:g id="PERMGROUP">%1$s</xliff:g> استفاده کرده‌اند"</string>
+    <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"خط زمان مواقعی که برنامه‌ها در ۷ روز گذشته از <xliff:g id="PERMGROUP">%1$s</xliff:g> استفاده کرده‌اند"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"زمانی که این برنامه از اجازه <xliff:g id="PERMGROUP">%1$s</xliff:g> استفاده کرده است"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"بیشتر بدانید"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_3" msgid="758761785983094351">"<xliff:g id="ATTRIBUTION_NAME">%1$s</xliff:g> • <xliff:g id="APP_NAME">%2$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%3$s</xliff:g>"</string>
-    <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> روز</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> روز</item>
-    </plurals>
-    <plurals name="duration_used_hours" formatted="false" msgid="1020075479447003242">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> ساعت</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ساعت</item>
-    </plurals>
-    <plurals name="duration_used_minutes" formatted="false" msgid="3422338854436291744">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> دقیقه</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> دقیقه</item>
-    </plurals>
-    <plurals name="duration_used_seconds" formatted="false" msgid="2726799598314248110">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> ثانیه</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ثانیه</item>
-    </plurals>
-    <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
-      <item quantity="one">آخرین دسترسی: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> دسترسی</item>
-      <item quantity="other">آخرین دسترسی: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> دسترسی</item>
-    </plurals>
-    <plurals name="permission_usage_summary_background" formatted="false" msgid="8810001960357233836">
-      <item quantity="one">آخرین دسترسی: <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> دسترسی (<xliff:g id="NUM_5">%3$s</xliff:g> دسترسی در پس‌زمینه)</item>
-      <item quantity="other">آخرین دسترسی: <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> دسترسی (<xliff:g id="NUM_5">%3$s</xliff:g> دسترسی در پس‌زمینه)</item>
-    </plurals>
-    <plurals name="permission_usage_summary_duration" formatted="false" msgid="2223071401812931873">
-      <item quantity="one">آخرین دسترسی: <xliff:g id="TIME_3">%1$s</xliff:g>\n مدت\n<xliff:g id="NUM_4">%2$s</xliff:g> دسترسی: <xliff:g id="TIME_5">%3$s</xliff:g></item>
-      <item quantity="other">آخرین دسترسی: <xliff:g id="TIME_3">%1$s</xliff:g>\n مدت\n<xliff:g id="NUM_4">%2$s</xliff:g> دسترسی: <xliff:g id="TIME_5">%3$s</xliff:g></item>
-    </plurals>
-    <plurals name="permission_usage_summary_background_duration" formatted="false" msgid="6893924292010006727">
-      <item quantity="one">آخرین دسترسی: <xliff:g id="TIME_4">%1$s</xliff:g>\n<xliff:g id="NUM_5">%2$s</xliff:g> دسترسی (<xliff:g id="NUM_6">%3$s</xliff:g> دسترسی در پس‌زمینه)\nمدت: <xliff:g id="TIME_7">%3$s</xliff:g></item>
-      <item quantity="other">آخرین دسترسی: <xliff:g id="TIME_4">%1$s</xliff:g>\n<xliff:g id="NUM_5">%2$s</xliff:g> دسترسی (<xliff:g id="NUM_6">%3$s</xliff:g> دسترسی در پس‌زمینه)\nمدت: <xliff:g id="TIME_7">%3$s</xliff:g></item>
-    </plurals>
-    <string name="permission_usage_summary_background" msgid="6136171928959340697">"آخرین دسترسی: <xliff:g id="TIME">%1$s</xliff:g>\nآخرین دسترسی در پس‌زمینه"</string>
+    <!-- no translation found for duration_used_days (8293010131040301793) -->
+    <skip />
+    <!-- no translation found for duration_used_hours (1128716208752263576) -->
+    <skip />
+    <!-- no translation found for duration_used_minutes (5335824115042576567) -->
+    <skip />
+    <!-- no translation found for duration_used_seconds (6543746449171675028) -->
+    <skip />
     <string name="permission_usage_any_permission" msgid="6358023078298106997">"همه مجوزها"</string>
     <string name="permission_usage_any_time" msgid="3802087027301631827">"هر زمانی"</string>
     <string name="permission_usage_last_7_days" msgid="7386221251886130065">"۷ روز گذشته"</string>
@@ -171,15 +149,10 @@
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"پراستفاده‌ترین مجوزها در ۱ ساعت گذشته"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"پراستفاده‌ترین مجوزها در ۱۵ دقیقه گذشته"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"پراستفاده‌ترین مجوزها در ۱ دقیقه گذشته"</string>
-    <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> برنامه</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> برنامه</item>
-    </plurals>
-    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"در ۲۴ ساعت گذشته استفاده نشده است"</string>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
-      <item quantity="one"><xliff:g id="NUMBER">%1$d</xliff:g> برنامه از آن استفاده کرده است</item>
-      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> برنامه از آن استفاده کرده‌اند</item>
-    </plurals>
+    <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"در ۲۴ ساعت گذشته استفاده نشده است"</string>
+    <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"در ۷ روز گذشته استفاده نشده است"</string>
+    <!-- no translation found for permission_usage_preference_label (8343167938128676378) -->
+    <skip />
     <string name="permission_usage_view_details" msgid="6675335735468752787">"دیدن همه موارد در داشبورد"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"فیلترشده براساس: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"حذف فیلتر"</string>
@@ -193,10 +166,6 @@
     <string name="sort_by_time" msgid="5435045320002150456">"به‌ترتیب زمان"</string>
     <string name="item_separator" msgid="4030255389809224513">"، "</string>
     <string name="permission_usage_refresh" msgid="2264056346561305420">"بازخوانی"</string>
-    <plurals name="permission_usage_permission_filter_subtitle" formatted="false" msgid="2452104463317798268">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> برنامه</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> برنامه</item>
-    </plurals>
     <string name="permission_history_title" msgid="8340081285133025225">"سابقه اجازه"</string>
     <string name="permission_history_category_today" msgid="7496389369158806620">"امروز"</string>
     <string name="permission_history_category_yesterday" msgid="7242517121222012521">"دیروز"</string>
@@ -266,42 +235,25 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"مجاز برای مدیریت همه فایل‌ها"</string>
     <string name="ask_header" msgid="2633816846459944376">"هربار پرسیده شود"</string>
     <string name="denied_header" msgid="903209608358177654">"اجازه داده نشود"</string>
-    <plurals name="days" formatted="false" msgid="7882807103511175827">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> روز</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> روز</item>
-    </plurals>
-    <plurals name="hours" formatted="false" msgid="2100550424145061396">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> ساعت</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ساعت</item>
-    </plurals>
-    <plurals name="minutes" formatted="false" msgid="2154398822027154606">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> دقیقه</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> دقیقه</item>
-    </plurals>
-    <plurals name="seconds" formatted="false" msgid="1564519426522404832">
-      <item quantity="one">‏<xliff:g id="NUMBER">%s</xliff:g> ثانیه</item>
-      <item quantity="other">‏<xliff:g id="NUMBER">%s</xliff:g> ثانیه</item>
-    </plurals>
+    <!-- no translation found for days (609563020985571393) -->
+    <skip />
+    <!-- no translation found for hours (3447767892295843282) -->
+    <skip />
+    <!-- no translation found for minutes (4408293038068503157) -->
+    <skip />
+    <!-- no translation found for seconds (5397771912131132690) -->
+    <skip />
     <string name="permission_reminders" msgid="6528257957664832636">"یادآوری‌های مجوز"</string>
     <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"۱ برنامه استفاده‌نشده"</string>
     <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> برنامه استفاده‌نشده"</string>
     <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"برای محافظت از حریم‌خصوصی شما، اجازه‌ها برداشته شد. برای مرور، ضربه بزنید"</string>
     <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"اجازه‌های مربوط به برنامه‌های استفاده‌نشده برداشته شد"</string>
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"برخی از برنامه‌ها به‌مدت چند ماه استفاده نشده‌اند. برای مرور، ضربه بزنید."</string>
-    <plurals name="auto_revoke_permission_notification_content_count" formatted="false" msgid="9159794096518540350">
-      <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> برنامه به‌مدت چند ماه استفاده نشده است. برای مرور، ضربه بزنید</item>
-      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> برنامه به‌مدت چند ماه استفاده نشده است. برای مرور، ضربه بزنید</item>
-    </plurals>
-    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
-      <item quantity="one">‏<xliff:g id="COUNT_1">%1$d</xliff:g>برنامه استفاده‌نشده</item>
-      <item quantity="other">‏<xliff:g id="COUNT_1">%1$d</xliff:g>برنامه استفاده‌نشده</item>
-    </plurals>
+    <!-- no translation found for unused_apps_notification_title (4314832015894238019) -->
+    <skip />
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"اجازه‌ها و فایل‌های موقت حذف شده‌اند و اعلان‌ها متوقف شده‌اند. برای مرور، ضربه بزنید."</string>
+    <string name="post_drive_permission_decision_reminder_title" msgid="5541572128394226308">"اجازه‌های اخیر"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"برخی از برنامه‌ها به‌مدت چند ماه استفاده نشده‌اند"</string>
-    <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
-      <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> برنامه به‌مدت چند ماه استفاده نشده است</item>
-      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> برنامه به‌مدت چند ماه استفاده نشده است</item>
-    </plurals>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"اجازه‌های برداشته‌شده"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"اجازه‌ها برداشته شد"</string>
     <string name="all_unused_apps_category_title" msgid="755663524704745414">"همه برنامه‌های استفاده‌نشده"</string>
@@ -331,16 +283,24 @@
     <string name="permission_subtitle_background" msgid="8916750995309083180">"همیشه مجاز بودن"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"آخرین زمان دسترسی: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"آخرین زمان دسترسی دیروز ساعت <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
-    <string name="app_perms_content_provider" msgid="6996750793881252778">"آخرین دسترسی: در ۲۴ ساعت گذشته"</string>
+    <string name="app_perms_7d_access" msgid="4945055548894683751">"آخرین دسترسی: <xliff:g id="TIME_DATE_0">%1$s</xliff:g> ساعت <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
+    <string name="app_perms_content_provider_24h" msgid="1055526027667508972">"آخرین دسترسی: در ۲۴ ساعت گذشته"</string>
+    <string name="app_perms_content_provider_7d" msgid="3215454898257814868">"آخرین دسترسی: در ۷ روز گذشته"</string>
     <string name="app_perms_24h_access_background" msgid="3413674718969576843">"آخرین دسترسی ساعت <xliff:g id="TIME_DATE">%1$s</xliff:g> • همیشه مجاز است"</string>
     <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"آخرین دسترسی دیروز ساعت <xliff:g id="TIME_DATE">%1$s</xliff:g> • همیشه مجاز است"</string>
-    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"آخرین دسترسی: در ۲۴ ساعت گذشته • همیشه مجاز است"</string>
+    <string name="app_perms_7d_access_background" msgid="408099213372185627">"آخرین دسترسی: <xliff:g id="TIME_DATE_0">%1$s</xliff:g> ساعت <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • همیشه مجاز است"</string>
+    <string name="app_perms_content_provider_24h_background" msgid="3825902995186961496">"آخرین دسترسی: در ۲۴ ساعت گذشته • همیشه مجاز است"</string>
+    <string name="app_perms_content_provider_7d_background" msgid="4818839672116463542">"آخرین دسترسی: در ۷ روز گذشته • همیشه مجاز است"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"آخرین زمان دسترسی: <xliff:g id="TIME_DATE">%1$s</xliff:g> • رسانه‌ها"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"آخرین زمان دسترسی دیروز ساعت <xliff:g id="TIME_DATE">%1$s</xliff:g> • رسانه‌ها"</string>
-    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"آخرین دسترسی: در ۲۴ ساعت گذشته • رسانه‌ها"</string>
+    <string name="app_perms_7d_access_media_only" msgid="1031096653668235200">"آخرین دسترسی: <xliff:g id="TIME_DATE_0">%1$s</xliff:g> ساعت <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • رسانه‌ها"</string>
+    <string name="app_perms_content_provider_24h_media_only" msgid="7797963000596179491">"آخرین دسترسی: در ۲۴ ساعت گذشته • رسانه‌ها"</string>
+    <string name="app_perms_content_provider_7d_media_only" msgid="8446239884570262243">"آخرین دسترسی: در ۷ روز گذشته • رسانه‌ها"</string>
     <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"آخرین زمان دسترسی: <xliff:g id="TIME_DATE">%1$s</xliff:g> • همه فایل‌ها"</string>
     <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"آخرین زمان دسترسی دیروز ساعت <xliff:g id="TIME_DATE">%1$s</xliff:g> • همه فایل‌ها"</string>
-    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"آخرین دسترسی: در ۲۴ ساعت گذشته • همه فایل‌ها"</string>
+    <string name="app_perms_7d_access_all_files" msgid="8246193786397635824">"آخرین دسترسی: <xliff:g id="TIME_DATE_0">%1$s</xliff:g> ساعت <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • همه فایل‌ها"</string>
+    <string name="app_perms_content_provider_24h_all_files" msgid="573104317727770850">"آخرین دسترسی: در ۲۴ ساعت گذشته • همه فایل‌ها"</string>
+    <string name="app_perms_content_provider_7d_all_files" msgid="7962416229708835558">"آخرین دسترسی: در ۷ روز گذشته • همه فایل‌ها"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"هیچ مجوزی اعطا نشده است"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"هیچ اجازه‌ای رد نشده"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"برنامه‌ای مجاز نشده"</string>
@@ -499,6 +459,7 @@
     <string name="privdash_label_other" msgid="3710394147423236033">"موارد دیگر"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"هیچ‌کدام"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"۲۴\nساعت گذشته"</string>
+    <string name="privdash_label_7d" msgid="5645301995348656931">"۷ روز\nگذشته"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"‏<xliff:g id="APP_NAME">%1$s</xliff:g> با Android محافظت می‌شود. چون داده‌هایتان در این دستگاه پردازش می‌شود، استفاده این برنامه از اجازه در نوار وضعیت یا داشبورد حریم‌خصوصی‌تان نشان داده نمی‌شود."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"‏<xliff:g id="APP_NAME">%1$s</xliff:g> با Android محافظت می‌شود. چون داده‌هایتان در این دستگاه پردازش می‌شود، استفاده این برنامه از اجازه در داشبورد حریم‌خصوصی‌تان نشان داده نمی‌شود."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"دوربین دستگاه مسدود شده است"</string>
@@ -508,4 +469,5 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"هنگام تماس با شماره‌های اضطراری، ممکن است همچنان داده‌های میکروفون هم‌رسانی شود."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"تغییر"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"امنیت و حریم‌خصوصی"</string>
+    <string name="security_settings" msgid="3808106921175271317">"تنظیمات امنیتی"</string>
 </resources>
