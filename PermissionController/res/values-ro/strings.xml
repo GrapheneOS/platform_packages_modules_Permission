@@ -231,7 +231,7 @@
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Vedeți toate aplicațiile cu această permisiune"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Afișează datele de utilizare a microfonului cu Asistentul"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Eliminați permisiunile dacă aplicația nu este folosită"</string>
-    <string name="unused_apps_label" msgid="2595428768404901064">"Eliminați permisiuni și eliberați spațiu"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"Revocă permisiunile și eliberează spațiu"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Pentru a vă proteja datele, se vor elimina permisiunile pentru această aplicație dacă nu este folosită câteva luni."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Pentru a vă proteja datele, dacă aplicația nu este folosită câteva luni, se vor elimina următoarele permisiuni: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Pentru a vă proteja datele, s-au eliminat permisiunile din aplicațiile pe care nu le-ați folosit de câteva luni."</string>
