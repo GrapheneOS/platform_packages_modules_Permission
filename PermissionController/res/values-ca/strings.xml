@@ -21,6 +21,8 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"permisos"</string>
     <string name="cancel" msgid="8943320028373963831">"Cancel·la"</string>
     <string name="back" msgid="6249950659061523680">"Enrere"</string>
+    <string name="available" msgid="6007778121920339498">"Disponible"</string>
+    <string name="blocked" msgid="9195547604866033708">"Bloquejat"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Desinstal·la o Desactiva"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"No s\'ha trobat l\'aplicació"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"No permetis"</string>
@@ -60,16 +62,16 @@
     <string name="no_permissions" msgid="3881676756371148563">"Sense permisos"</string>
     <string name="additional_permissions" msgid="5801285469338873430">"Permisos addicionals"</string>
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"Obre la informació de l\'aplicació"</string>
-    <plurals name="additional_permissions_more" formatted="false" msgid="5297511511961335277">
-      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> més</item>
-      <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> més</item>
-    </plurals>
+    <!-- no translation found for additional_permissions_more (5681220714755304407) -->
+    <skip />
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"Aquesta aplicació es va dissenyar per a una versió anterior d\'Android. És possible que no funcioni com està previst si li denegues el permís."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"dur a terme una acció desconeguda"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> de <xliff:g id="COUNT_1">%2$d</xliff:g> aplicacions permeses"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> aplicacions permeses"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Mostra el sistema"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Amaga el sistema"</string>
+    <string name="menu_show_7_days_data" msgid="8979611198508523706">"Mostra els 7 darrers dies"</string>
+    <string name="menu_show_24_hours_data" msgid="8228054833323380780">"Mostra les 24 darreres hores"</string>
     <string name="manage_permission" msgid="2895385393037061964">"Gestiona el permís"</string>
     <string name="no_apps" msgid="2412612731628386816">"Cap aplicació"</string>
     <string name="location_settings" msgid="3624412509133422562">"Configuració d\'ubicació"</string>
@@ -113,44 +115,20 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Mostra altres permisos"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> i <xliff:g id="NUM">%3$s</xliff:g> més"</string>
-    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Cronologia de l\'ús que han fet les aplicacions del permís <xliff:g id="PERMGROUP">%1$s</xliff:g> durant les 24 darreres hores"</string>
+    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"Cronologia de l\'ús que han fet les aplicacions del permís <xliff:g id="PERMGROUP">%1$s</xliff:g> durant les 24 darreres hores"</string>
+    <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Cronologia de l\'ús que han fet les aplicacions del permís <xliff:g id="PERMGROUP">%1$s</xliff:g> durant els 7 darrers dies"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Quan aquesta aplicació ha utilitzat el permís <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Més informació"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_3" msgid="758761785983094351">"<xliff:g id="ATTRIBUTION_NAME">%1$s</xliff:g> • <xliff:g id="APP_NAME">%2$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%3$s</xliff:g>"</string>
-    <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> dies</item>
-      <item quantity="one">1 dia</item>
-    </plurals>
-    <plurals name="duration_used_hours" formatted="false" msgid="1020075479447003242">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> hores</item>
-      <item quantity="one">1 hora</item>
-    </plurals>
-    <plurals name="duration_used_minutes" formatted="false" msgid="3422338854436291744">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> min</item>
-      <item quantity="one">1 min</item>
-    </plurals>
-    <plurals name="duration_used_seconds" formatted="false" msgid="2726799598314248110">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> s</item>
-      <item quantity="one">1 s</item>
-    </plurals>
-    <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
-      <item quantity="other">Últim accés: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> accessos</item>
-      <item quantity="one">Últim accés: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> accés</item>
-    </plurals>
-    <plurals name="permission_usage_summary_background" formatted="false" msgid="8810001960357233836">
-      <item quantity="other">Últim accés: <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> accessos (<xliff:g id="NUM_5">%3$s</xliff:g> en segon pla)</item>
-      <item quantity="one">Últim accés: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> accés (<xliff:g id="NUM_2">%3$s</xliff:g> en segon pla)</item>
-    </plurals>
-    <plurals name="permission_usage_summary_duration" formatted="false" msgid="2223071401812931873">
-      <item quantity="other">Últim accés: <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> accessos\nDurada: <xliff:g id="TIME_5">%3$s</xliff:g></item>
-      <item quantity="one">Últim accés: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> accés\nDurada: <xliff:g id="TIME_2">%3$s</xliff:g></item>
-    </plurals>
-    <plurals name="permission_usage_summary_background_duration" formatted="false" msgid="6893924292010006727">
-      <item quantity="other">Últim accés: <xliff:g id="TIME_4">%1$s</xliff:g>\n<xliff:g id="NUM_5">%2$s</xliff:g> accessos (<xliff:g id="NUM_6">%3$s</xliff:g> en segon pla)\nDurada: <xliff:g id="TIME_7">%3$s</xliff:g></item>
-      <item quantity="one">Últim accés: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> accés (<xliff:g id="NUM_2">%3$s</xliff:g> en segon pla)\nDurada: <xliff:g id="TIME_3">%3$s</xliff:g></item>
-    </plurals>
-    <string name="permission_usage_summary_background" msgid="6136171928959340697">"Últim accés: <xliff:g id="TIME">%1$s</xliff:g>\nÚltim accés en segon pla"</string>
+    <!-- no translation found for duration_used_days (8293010131040301793) -->
+    <skip />
+    <!-- no translation found for duration_used_hours (1128716208752263576) -->
+    <skip />
+    <!-- no translation found for duration_used_minutes (5335824115042576567) -->
+    <skip />
+    <!-- no translation found for duration_used_seconds (6543746449171675028) -->
+    <skip />
     <string name="permission_usage_any_permission" msgid="6358023078298106997">"Qualsevol permís"</string>
     <string name="permission_usage_any_time" msgid="3802087027301631827">"En qualsevol moment"</string>
     <string name="permission_usage_last_7_days" msgid="7386221251886130065">"7 darrers dies"</string>
@@ -171,15 +149,10 @@
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Ús de permisos durant l\'última hora"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Ús de permisos durant els últims 15 minuts"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Ús de permisos durant l\'últim minut"</string>
-    <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> aplicacions</item>
-      <item quantity="one">1 aplicació</item>
-    </plurals>
-    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"No s\'ha utilitzat en les 24 darreres hores"</string>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
-      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> aplicacions l\'han utilitzat</item>
-      <item quantity="one">1 aplicació l\'ha utilitzat</item>
-    </plurals>
+    <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"No s\'ha utilitzat en les 24 darreres hores"</string>
+    <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"No s\'ha utilitzat en els 7 darrers dies"</string>
+    <!-- no translation found for permission_usage_preference_label (8343167938128676378) -->
+    <skip />
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Mostra-ho tot al tauler"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrats per: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Suprimeix el filtre"</string>
@@ -193,10 +166,6 @@
     <string name="sort_by_time" msgid="5435045320002150456">"Ordena per hora"</string>
     <string name="item_separator" msgid="4030255389809224513">", "</string>
     <string name="permission_usage_refresh" msgid="2264056346561305420">"Actualitza"</string>
-    <plurals name="permission_usage_permission_filter_subtitle" formatted="false" msgid="2452104463317798268">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> aplicacions</item>
-      <item quantity="one">1 aplicació</item>
-    </plurals>
     <string name="permission_history_title" msgid="8340081285133025225">"Historial de permisos"</string>
     <string name="permission_history_category_today" msgid="7496389369158806620">"Avui"</string>
     <string name="permission_history_category_yesterday" msgid="7242517121222012521">"Ahir"</string>
@@ -266,42 +235,25 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Poden gestionar tots els fitxers"</string>
     <string name="ask_header" msgid="2633816846459944376">"Pregunta sempre"</string>
     <string name="denied_header" msgid="903209608358177654">"Sense permís"</string>
-    <plurals name="days" formatted="false" msgid="7882807103511175827">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> dies</item>
-      <item quantity="one">1 dia</item>
-    </plurals>
-    <plurals name="hours" formatted="false" msgid="2100550424145061396">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> hores</item>
-      <item quantity="one">1 hora</item>
-    </plurals>
-    <plurals name="minutes" formatted="false" msgid="2154398822027154606">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> minuts</item>
-      <item quantity="one">1 minut</item>
-    </plurals>
-    <plurals name="seconds" formatted="false" msgid="1564519426522404832">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> segons</item>
-      <item quantity="one">1 segon</item>
-    </plurals>
+    <!-- no translation found for days (609563020985571393) -->
+    <skip />
+    <!-- no translation found for hours (3447767892295843282) -->
+    <skip />
+    <!-- no translation found for minutes (4408293038068503157) -->
+    <skip />
+    <!-- no translation found for seconds (5397771912131132690) -->
+    <skip />
     <string name="permission_reminders" msgid="6528257957664832636">"Recordatoris de permisos"</string>
     <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"1 aplicació no utilitzada"</string>
     <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> aplicacions no utilitzades"</string>
     <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"S\'han suprimit els permisos per protegir la teva privadesa. Toca per revisar-ho."</string>
     <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"S\'han suprimit permisos de les aplicacions no utilitzades"</string>
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Durant els darrers mesos, no has utilitzat algunes aplicacions. Toca per revisar-ho."</string>
-    <plurals name="auto_revoke_permission_notification_content_count" formatted="false" msgid="9159794096518540350">
-      <item quantity="other">Durant els darrers mesos, no has utilitzat <xliff:g id="COUNT_1">%1$d</xliff:g> aplicacions. Toca per revisar-ho.</item>
-      <item quantity="one">Durant els darrers mesos, no has utilitzat <xliff:g id="COUNT_0">%1$d</xliff:g> aplicació. Toca per revisar-ho.</item>
-    </plurals>
-    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
-      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> aplicacions no utilitzades</item>
-      <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> aplicació no utilitzada</item>
-    </plurals>
+    <!-- no translation found for unused_apps_notification_title (4314832015894238019) -->
+    <skip />
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"S\'han suprimit els permisos i els fitxers temporals, i s\'han aturat les notificacions. Toca per revisar-ho."</string>
+    <string name="post_drive_permission_decision_reminder_title" msgid="5541572128394226308">"Permisos recents"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Durant els darrers mesos, no has utilitzat algunes aplicacions"</string>
-    <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
-      <item quantity="other">Durant els darrers mesos, no has utilitzat <xliff:g id="COUNT_1">%1$d</xliff:g> aplicacions</item>
-      <item quantity="one">Durant els darrers mesos, no has utilitzat <xliff:g id="COUNT_0">%1$d</xliff:g> aplicació</item>
-    </plurals>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Permisos suprimits"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"S\'han suprimit els permisos"</string>
     <string name="all_unused_apps_category_title" msgid="755663524704745414">"Totes les aplicacions no utilitzades"</string>
@@ -331,16 +283,24 @@
     <string name="permission_subtitle_background" msgid="8916750995309083180">"Permès sempre"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"Darrer accés: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Darrer accés ahir a les <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
-    <string name="app_perms_content_provider" msgid="6996750793881252778">"S\'hi ha accedit durant les 24 darreres hores"</string>
+    <string name="app_perms_7d_access" msgid="4945055548894683751">"Darrer accés: <xliff:g id="TIME_DATE_0">%1$s</xliff:g> a les <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
+    <string name="app_perms_content_provider_24h" msgid="1055526027667508972">"S\'hi ha accedit durant les 24 darreres hores"</string>
+    <string name="app_perms_content_provider_7d" msgid="3215454898257814868">"S\'hi ha accedit durant els 7 darrers dies"</string>
     <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Darrer accés: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Permès sempre"</string>
     <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Darrer accés ahir a les <xliff:g id="TIME_DATE">%1$s</xliff:g> • Permès sempre"</string>
-    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"S\'hi ha accedit durant les 24 darreres hores • Permès sempre"</string>
+    <string name="app_perms_7d_access_background" msgid="408099213372185627">"Darrer accés: <xliff:g id="TIME_DATE_0">%1$s</xliff:g> a les <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Permès sempre"</string>
+    <string name="app_perms_content_provider_24h_background" msgid="3825902995186961496">"S\'hi ha accedit durant les 24 darreres hores • Permès sempre"</string>
+    <string name="app_perms_content_provider_7d_background" msgid="4818839672116463542">"S\'hi ha accedit durant els 7 darrers dies • Permès sempre"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Darrer accés: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Contingut multimèdia"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Darrer accés ahir a les <xliff:g id="TIME_DATE">%1$s</xliff:g> • Contingut multimèdia"</string>
-    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"S\'hi ha accedit durant les 24 darreres hores • Contingut multimèdia"</string>
+    <string name="app_perms_7d_access_media_only" msgid="1031096653668235200">"Darrer accés: <xliff:g id="TIME_DATE_0">%1$s</xliff:g> a les <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Contingut multimèdia"</string>
+    <string name="app_perms_content_provider_24h_media_only" msgid="7797963000596179491">"S\'hi ha accedit durant les 24 darreres hores • Contingut multimèdia"</string>
+    <string name="app_perms_content_provider_7d_media_only" msgid="8446239884570262243">"S\'hi ha accedit durant els 7 darrers dies • Contingut multimèdia"</string>
     <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"Darrer accés: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Tots els fitxers"</string>
     <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"Darrer accés ahir a les <xliff:g id="TIME_DATE">%1$s</xliff:g> • Tots els fitxers"</string>
-    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"S\'hi ha accedit durant les 24 darreres hores • Tots els fitxers"</string>
+    <string name="app_perms_7d_access_all_files" msgid="8246193786397635824">"Darrer accés: <xliff:g id="TIME_DATE_0">%1$s</xliff:g> a les <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Tots els fitxers"</string>
+    <string name="app_perms_content_provider_24h_all_files" msgid="573104317727770850">"S\'hi ha accedit durant les 24 darreres hores • Tots els fitxers"</string>
+    <string name="app_perms_content_provider_7d_all_files" msgid="7962416229708835558">"S\'hi ha accedit durant els 7 darrers dies • Tots els fitxers"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"No s\'ha concedit cap permís"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"No s\'ha denegat cap permís"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"Cap aplicació amb permís"</string>
@@ -499,6 +459,7 @@
     <string name="privdash_label_other" msgid="3710394147423236033">"Altres"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"Cap"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"24 darreres\nhores"</string>
+    <string name="privdash_label_7d" msgid="5645301995348656931">"7\ndarrers dies"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"L\'aplicació <xliff:g id="APP_NAME">%1$s</xliff:g> està protegida per Android. Com que les teves dades es tracten en aquest dispositiu, l\'ús del permís d\'aquesta aplicació no es mostra a la barra d\'estat ni al tauler de privadesa."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"L\'aplicació <xliff:g id="APP_NAME">%1$s</xliff:g> està protegida per Android. Com que les teves dades es tracten en aquest dispositiu, l\'ús del permís d\'aquesta aplicació no es mostra al tauler de privadesa."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"La càmera del dispositiu està bloquejada"</string>
@@ -508,4 +469,5 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"És possible que les dades del micròfon es continuïn compartint quan truquis a un número d\'emergència."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Canvia"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Seguretat i privadesa"</string>
+    <string name="security_settings" msgid="3808106921175271317">"Configuració de seguretat"</string>
 </resources>
