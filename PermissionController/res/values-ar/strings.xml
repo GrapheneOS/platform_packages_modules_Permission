@@ -21,6 +21,8 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"أذونات"</string>
     <string name="cancel" msgid="8943320028373963831">"إلغاء"</string>
     <string name="back" msgid="6249950659061523680">"رجوع"</string>
+    <string name="available" msgid="6007778121920339498">"متاح"</string>
+    <string name="blocked" msgid="9195547604866033708">"محظور"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"إلغاء التثبيت أو الإيقاف"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"لم يتمّ العثور على التطبيق."</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"عدم السماح"</string>
@@ -60,20 +62,16 @@
     <string name="no_permissions" msgid="3881676756371148563">"ليس هناك أيّ أذونات."</string>
     <string name="additional_permissions" msgid="5801285469338873430">"أذونات إضافية"</string>
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"فتح معلومات التطبيق"</string>
-    <plurals name="additional_permissions_more" formatted="false" msgid="5297511511961335277">
-      <item quantity="zero"><xliff:g id="COUNT_1">%1$d</xliff:g>لا أذونات أخرى</item>
-      <item quantity="two">إذنان آخران (<xliff:g id="COUNT_1">%1$d</xliff:g>)</item>
-      <item quantity="few"><xliff:g id="COUNT_1">%1$d</xliff:g> أذونات أخرى</item>
-      <item quantity="many"><xliff:g id="COUNT_1">%1$d</xliff:g> إذنًا آخر</item>
-      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> من الأذونات الأخرى</item>
-      <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g>إذن واحد آخر</item>
-    </plurals>
+    <!-- no translation found for additional_permissions_more (5681220714755304407) -->
+    <skip />
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"‏تمّ تصميم هذا التطبيق لإصدار قديم من Android. وقد يؤدي رفض الإذن إلى عدم العمل على النحو المطلوب مرة أخرى."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"تنفيذ إجراء غير معروف"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"تمّ السماح لـ <xliff:g id="COUNT_0">%1$d</xliff:g> من أصل <xliff:g id="COUNT_1">%2$d</xliff:g> تطبيق."</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"التطبيقات التي تم منحها الإذن: <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"إظهار تطبيقات النظام"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"إخفاء تطبيقات النظام"</string>
+    <string name="menu_show_7_days_data" msgid="8979611198508523706">"إظهار الاستخدام في آخر 7 أيام"</string>
+    <string name="menu_show_24_hours_data" msgid="8228054833323380780">"إظهار الاستخدام في آخر 24 ساعة"</string>
     <string name="manage_permission" msgid="2895385393037061964">"إدارة الإذن"</string>
     <string name="no_apps" msgid="2412612731628386816">"ليس هناك أيّ تطبيقات."</string>
     <string name="location_settings" msgid="3624412509133422562">"إعدادات الموقع الجغرافي"</string>
@@ -117,76 +115,20 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"عرض الأذونات الأخرى"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>، <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g> و<xliff:g id="PERMGROUP_1">%2$s</xliff:g> و<xliff:g id="NUM">%3$s</xliff:g> عنصر إضافي"</string>
-    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"المخطط الزمني لاستخدام التطبيقات لـ <xliff:g id="PERMGROUP">%1$s</xliff:g> في آخر 24 ساعة"</string>
+    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"المخطط الزمني لاستخدام التطبيقات لـ <xliff:g id="PERMGROUP">%1$s</xliff:g> في آخر 24 ساعة"</string>
+    <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"المخطط الزمني لاستخدام التطبيقات لـ <xliff:g id="PERMGROUP">%1$s</xliff:g> في آخر 7 أيام"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"وقت استخدام هذا التطبيق لإذن <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"مزيد من المعلومات"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_3" msgid="758761785983094351">"<xliff:g id="ATTRIBUTION_NAME">%1$s</xliff:g> • <xliff:g id="APP_NAME">%2$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%3$s</xliff:g>"</string>
-    <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
-      <item quantity="zero"><xliff:g id="NUMBER">%s</xliff:g> يوم</item>
-      <item quantity="two">يومان (<xliff:g id="NUMBER">%s</xliff:g>)</item>
-      <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> أيام</item>
-      <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> يومًا</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> يوم</item>
-      <item quantity="one">يوم واحد</item>
-    </plurals>
-    <plurals name="duration_used_hours" formatted="false" msgid="1020075479447003242">
-      <item quantity="zero"><xliff:g id="NUMBER">%s</xliff:g> ساعة</item>
-      <item quantity="two">ساعتان (<xliff:g id="NUMBER">%s</xliff:g>)</item>
-      <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> ساعات</item>
-      <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> ساعة</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ساعة</item>
-      <item quantity="one">ساعة واحدة</item>
-    </plurals>
-    <plurals name="duration_used_minutes" formatted="false" msgid="3422338854436291744">
-      <item quantity="zero"><xliff:g id="NUMBER">%s</xliff:g> دقيقة</item>
-      <item quantity="two">دقيقتان (<xliff:g id="NUMBER">%s</xliff:g>)</item>
-      <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> دقائق</item>
-      <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> دقيقة</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> دقيقة</item>
-      <item quantity="one">دقيقة واحدة</item>
-    </plurals>
-    <plurals name="duration_used_seconds" formatted="false" msgid="2726799598314248110">
-      <item quantity="zero"><xliff:g id="NUMBER">%s</xliff:g> ثانية</item>
-      <item quantity="two">ثانيتان (<xliff:g id="NUMBER">%s</xliff:g>)</item>
-      <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> ثوانٍ</item>
-      <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> ثانية</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ثانية</item>
-      <item quantity="one">ثانية واحدة</item>
-    </plurals>
-    <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
-      <item quantity="zero">آخر إذن وصول: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> إذن وصول</item>
-      <item quantity="two">آخر إذن وصول: <xliff:g id="TIME_2">%1$s</xliff:g>\nإذنا وصول (<xliff:g id="NUM_3">%2$s</xliff:g>)</item>
-      <item quantity="few">آخر إذن وصول: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> أذونات وصول</item>
-      <item quantity="many">آخر إذن وصول: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> إذن وصول</item>
-      <item quantity="other">آخر إذن وصول: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> إذن وصول</item>
-      <item quantity="one">آخر إذن وصول: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> إذن وصول</item>
-    </plurals>
-    <plurals name="permission_usage_summary_background" formatted="false" msgid="8810001960357233836">
-      <item quantity="zero">آخر إذن وصول: <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> إذن وصول (<xliff:g id="NUM_5">%3$s</xliff:g> في الخلفية)</item>
-      <item quantity="two">آخر إذن وصول: <xliff:g id="TIME_3">%1$s</xliff:g>\nإذنا وصول (<xliff:g id="NUM_4">%2$s</xliff:g>) (<xliff:g id="NUM_5">%3$s</xliff:g> في الخلفية)</item>
-      <item quantity="few">آخر إذن وصول: <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> أذونات وصول (<xliff:g id="NUM_5">%3$s</xliff:g> في الخلفية)</item>
-      <item quantity="many">آخر إذن وصول: <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> إذن وصول (<xliff:g id="NUM_5">%3$s</xliff:g> في الخلفية)</item>
-      <item quantity="other">آخر إذن وصول: <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> إذن وصول (<xliff:g id="NUM_5">%3$s</xliff:g> في الخلفية)</item>
-      <item quantity="one">آخر إذن وصول: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> إذن وصول (<xliff:g id="NUM_2">%3$s</xliff:g> في الخلفية)</item>
-    </plurals>
-    <plurals name="permission_usage_summary_duration" formatted="false" msgid="2223071401812931873">
-      <item quantity="zero">آخر إذن وصول: <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> إذن وصول\nالمدة: <xliff:g id="TIME_5">%3$s</xliff:g></item>
-      <item quantity="two">آخر إذن وصول: <xliff:g id="TIME_3">%1$s</xliff:g>\nإذنا وصول (<xliff:g id="NUM_4">%2$s</xliff:g>)\nالمدة: <xliff:g id="TIME_5">%3$s</xliff:g></item>
-      <item quantity="few">آخر إذن وصول: <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> أذونات وصول\nالمدة: <xliff:g id="TIME_5">%3$s</xliff:g></item>
-      <item quantity="many">آخر إذن وصول: <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> إذن وصول\nالمدة: <xliff:g id="TIME_5">%3$s</xliff:g></item>
-      <item quantity="other">آخر إذن وصول: <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> إذن وصول\nالمدة: <xliff:g id="TIME_5">%3$s</xliff:g></item>
-      <item quantity="one">آخر إذن وصول: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> إذن وصول\nالمدة: <xliff:g id="TIME_2">%3$s</xliff:g></item>
-    </plurals>
-    <plurals name="permission_usage_summary_background_duration" formatted="false" msgid="6893924292010006727">
-      <item quantity="zero">آخر إذن وصول: <xliff:g id="TIME_4">%1$s</xliff:g>\n<xliff:g id="NUM_5">%2$s</xliff:g> إذن وصول (<xliff:g id="NUM_6">%3$s</xliff:g> في الخلفية)\nالمدة: <xliff:g id="TIME_7">%3$s</xliff:g></item>
-      <item quantity="two">آخر إذن وصول: <xliff:g id="TIME_4">%1$s</xliff:g>\nإذنا وصول (<xliff:g id="NUM_5">%2$s</xliff:g>) (<xliff:g id="NUM_6">%3$s</xliff:g> في الخلفية)\nالمدة: <xliff:g id="TIME_7">%3$s</xliff:g></item>
-      <item quantity="few">آخر إذن وصول: <xliff:g id="TIME_4">%1$s</xliff:g>\n<xliff:g id="NUM_5">%2$s</xliff:g> أذونات وصول (<xliff:g id="NUM_6">%3$s</xliff:g> في الخلفية)\nالمدة: <xliff:g id="TIME_7">%3$s</xliff:g></item>
-      <item quantity="many">آخر إذن وصول: <xliff:g id="TIME_4">%1$s</xliff:g>\n<xliff:g id="NUM_5">%2$s</xliff:g> إذن وصول (<xliff:g id="NUM_6">%3$s</xliff:g> في الخلفية)\nالمدة: <xliff:g id="TIME_7">%3$s</xliff:g></item>
-      <item quantity="other">آخر إذن وصول: <xliff:g id="TIME_4">%1$s</xliff:g>\n<xliff:g id="NUM_5">%2$s</xliff:g> إذن وصول (<xliff:g id="NUM_6">%3$s</xliff:g> في الخلفية)\nالمدة: <xliff:g id="TIME_7">%3$s</xliff:g></item>
-      <item quantity="one">آخر إذن وصول: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> إذن وصول (<xliff:g id="NUM_2">%3$s</xliff:g> في الخلفية)\nالمدة: <xliff:g id="TIME_3">%3$s</xliff:g></item>
-    </plurals>
-    <string name="permission_usage_summary_background" msgid="6136171928959340697">"آخر استخدام للإذن: <xliff:g id="TIME">%1$s</xliff:g>\nتم استخدام الإذن آخر مرة في الخلفية"</string>
+    <!-- no translation found for duration_used_days (8293010131040301793) -->
+    <skip />
+    <!-- no translation found for duration_used_hours (1128716208752263576) -->
+    <skip />
+    <!-- no translation found for duration_used_minutes (5335824115042576567) -->
+    <skip />
+    <!-- no translation found for duration_used_seconds (6543746449171675028) -->
+    <skip />
     <string name="permission_usage_any_permission" msgid="6358023078298106997">"أيّ إذن"</string>
     <string name="permission_usage_any_time" msgid="3802087027301631827">"أي وقت"</string>
     <string name="permission_usage_last_7_days" msgid="7386221251886130065">"آخر 7 أيام"</string>
@@ -207,23 +149,10 @@
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"استخدام الإذن خلال الساعة الأخيرة"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"استخدام الإذن خلال آخر 15 دقيقة"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"استخدام الإذن خلال الدقيقة الماضية"</string>
-    <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
-      <item quantity="zero"><xliff:g id="NUMBER">%s</xliff:g> تطبيق</item>
-      <item quantity="two">تطبيقان (<xliff:g id="NUMBER">%s</xliff:g>)</item>
-      <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> تطبيقات</item>
-      <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> تطبيقًا</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> تطبيق</item>
-      <item quantity="one">تطبيق واحد</item>
-    </plurals>
-    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"لم يتم استخدام الإذن في آخر 24 ساعة."</string>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
-      <item quantity="zero">يستخدمه <xliff:g id="NUMBER">%1$d</xliff:g> تطبيق.</item>
-      <item quantity="two">يستخدمه تطبيقان (<xliff:g id="NUMBER">%1$d</xliff:g>).</item>
-      <item quantity="few">يستخدمه <xliff:g id="NUMBER">%1$d</xliff:g> تطبيقات.</item>
-      <item quantity="many">يستخدمه <xliff:g id="NUMBER">%1$d</xliff:g> تطبيقًا.</item>
-      <item quantity="other">يستخدمه <xliff:g id="NUMBER">%1$d</xliff:g> تطبيق.</item>
-      <item quantity="one">يستخدمه تطبيق واحد.</item>
-    </plurals>
+    <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"لم يتم استخدام الإذن في آخر 24 ساعة."</string>
+    <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"لم يتم استخدام الإذن في آخر 7 أيام."</string>
+    <!-- no translation found for permission_usage_preference_label (8343167938128676378) -->
+    <skip />
     <string name="permission_usage_view_details" msgid="6675335735468752787">"الاطّلاع على الكل في \"لوحة البيانات\""</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"تمّت الفلترة حسب: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"إزالة الفلتر"</string>
@@ -237,14 +166,6 @@
     <string name="sort_by_time" msgid="5435045320002150456">"الترتيب حسب الوقت"</string>
     <string name="item_separator" msgid="4030255389809224513">"، "</string>
     <string name="permission_usage_refresh" msgid="2264056346561305420">"إعادة تحميل"</string>
-    <plurals name="permission_usage_permission_filter_subtitle" formatted="false" msgid="2452104463317798268">
-      <item quantity="zero"><xliff:g id="NUMBER">%s</xliff:g> تطبيق</item>
-      <item quantity="two">تطبيقان (<xliff:g id="NUMBER">%s</xliff:g>)</item>
-      <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> تطبيقات</item>
-      <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> تطبيقًا</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> تطبيق</item>
-      <item quantity="one">تطبيق واحد</item>
-    </plurals>
     <string name="permission_history_title" msgid="8340081285133025225">"سجلّ الأذونات"</string>
     <string name="permission_history_category_today" msgid="7496389369158806620">"اليوم"</string>
     <string name="permission_history_category_yesterday" msgid="7242517121222012521">"أمس"</string>
@@ -308,76 +229,31 @@
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"لم يستخدم الإذن مطلقًا"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"تم الرفض / لم يسبق الحصول على الإذن"</string>
     <string name="allowed_header" msgid="7769277978004790414">"التطبيقات المسموح بها"</string>
-    <string name="allowed_always_header" msgid="6455903312589013545">"التطبيقات المسموح لها طوال الوقت"</string>
-    <string name="allowed_foreground_header" msgid="6845655788447833353">"التطبيقات المسموح لها فقط أثناء استخدامها"</string>
+    <string name="allowed_always_header" msgid="6455903312589013545">"تطبيقات مسموح لها بالوصول طوال الوقت"</string>
+    <string name="allowed_foreground_header" msgid="6845655788447833353">"تطبيقات يمكنها الوصول عند استخدامها فقط"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"التطبيقات المسموح لها بالوصول إلى الوسائط فقط"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"التطبيقات المسموح لها بإدارة كل الملفات"</string>
     <string name="ask_header" msgid="2633816846459944376">"الطلب في كل مرة"</string>
-    <string name="denied_header" msgid="903209608358177654">"التطبيقات/الأذونات غير المسموح بها"</string>
-    <plurals name="days" formatted="false" msgid="7882807103511175827">
-      <item quantity="zero"><xliff:g id="NUMBER">%s</xliff:g> يوم</item>
-      <item quantity="two">يومان (<xliff:g id="NUMBER">%s</xliff:g>)</item>
-      <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> أيام</item>
-      <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> يومًا</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> يوم</item>
-      <item quantity="one">يوم واحد</item>
-    </plurals>
-    <plurals name="hours" formatted="false" msgid="2100550424145061396">
-      <item quantity="zero"><xliff:g id="NUMBER">%s</xliff:g> ساعة</item>
-      <item quantity="two">ساعتان (<xliff:g id="NUMBER">%s</xliff:g>)</item>
-      <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> ساعات</item>
-      <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> ساعة</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ساعة</item>
-      <item quantity="one">ساعة واحدة</item>
-    </plurals>
-    <plurals name="minutes" formatted="false" msgid="2154398822027154606">
-      <item quantity="zero"><xliff:g id="NUMBER">%s</xliff:g> دقيقة</item>
-      <item quantity="two">دقيقتان (<xliff:g id="NUMBER">%s</xliff:g>)</item>
-      <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> دقائق</item>
-      <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> دقيقة</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> دقيقة</item>
-      <item quantity="one">دقيقة واحدة</item>
-    </plurals>
-    <plurals name="seconds" formatted="false" msgid="1564519426522404832">
-      <item quantity="zero"><xliff:g id="NUMBER">%s</xliff:g> ثانية</item>
-      <item quantity="two">ثانيتان (<xliff:g id="NUMBER">%s</xliff:g>)</item>
-      <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> ثوانٍ</item>
-      <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> ثانية</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ثانية</item>
-      <item quantity="one">ثانية واحدة</item>
-    </plurals>
+    <string name="denied_header" msgid="903209608358177654">"التطبيقات غير المسموح لها بالوصول"</string>
+    <!-- no translation found for days (609563020985571393) -->
+    <skip />
+    <!-- no translation found for hours (3447767892295843282) -->
+    <skip />
+    <!-- no translation found for minutes (4408293038068503157) -->
+    <skip />
+    <!-- no translation found for seconds (5397771912131132690) -->
+    <skip />
     <string name="permission_reminders" msgid="6528257957664832636">"تذكيرات الأذونات"</string>
     <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"تطبيق واحد غير مستخدم"</string>
     <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"عدد التطبيقات غير المُستخدمة: <xliff:g id="NUMBER_OF_APPS">%s</xliff:g>"</string>
     <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"تمت إزالة الأذونات لحماية خصوصيتك. انقر لمراجعة الأذونات."</string>
     <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"تمت إزالة الأذونات من التطبيقات غير المستخدمة"</string>
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"لم يتم استخدام بعض التطبيقات منذ عدة أشهر. انقر لمراجعة الأذونات."</string>
-    <plurals name="auto_revoke_permission_notification_content_count" formatted="false" msgid="9159794096518540350">
-      <item quantity="zero">لم يتم استخدام <xliff:g id="COUNT_1">%1$d</xliff:g> تطبيق منذ عدة شهور. انقر لمراجعة الأذونات.</item>
-      <item quantity="two">لم يتم استخدام تطبيقين (<xliff:g id="COUNT_1">%1$d</xliff:g>) منذ عدة أشهر. انقر لمراجعة الأذونات.</item>
-      <item quantity="few">لم يتم استخدام <xliff:g id="COUNT_1">%1$d</xliff:g> تطبيقات منذ عدة شهور. انقر لمراجعة الأذونات.</item>
-      <item quantity="many">لم يتم استخدام <xliff:g id="COUNT_1">%1$d</xliff:g> تطبيقًا منذ عدة شهور. انقر لمراجعة الأذونات.</item>
-      <item quantity="other">لم يتم استخدام <xliff:g id="COUNT_1">%1$d</xliff:g> تطبيق منذ عدة شهور. انقر لمراجعة الأذونات.</item>
-      <item quantity="one">لم يتم استخدام تطبيق واحد (<xliff:g id="COUNT_0">%1$d</xliff:g>) منذ عدة أشهر. انقر لمراجعة الأذونات.</item>
-    </plurals>
-    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
-      <item quantity="zero"><xliff:g id="COUNT_1">%1$d</xliff:g> تطبيق غير مستخدم</item>
-      <item quantity="two">تطبيقان (<xliff:g id="COUNT_1">%1$d</xliff:g>) غير مستخدمين</item>
-      <item quantity="few"><xliff:g id="COUNT_1">%1$d</xliff:g> تطبيقات غير مستخدمة</item>
-      <item quantity="many"><xliff:g id="COUNT_1">%1$d</xliff:g> تطبيقًا غير مستخدم</item>
-      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> تطبيق غير مستخدم</item>
-      <item quantity="one">تطبيق واحد (<xliff:g id="COUNT_0">%1$d</xliff:g>) غير مستخدم</item>
-    </plurals>
+    <!-- no translation found for unused_apps_notification_title (4314832015894238019) -->
+    <skip />
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"تمت إزالة الأذونات والملفات المؤقتة وتم إيقاف الإشعارات. انقر لمراجعة الإعدادات."</string>
+    <string name="post_drive_permission_decision_reminder_title" msgid="5541572128394226308">"الأذونات الحديثة"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"لم يتم استخدام بعض التطبيقات منذ عدة أشهر"</string>
-    <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
-      <item quantity="zero">لم يتم استخدام <xliff:g id="COUNT_1">%1$d</xliff:g> تطبيق منذ عدة شهور.</item>
-      <item quantity="two">لم يتم استخدام تطبيقين (<xliff:g id="COUNT_1">%1$d</xliff:g>) منذ عدة أشهر.</item>
-      <item quantity="few">لم يتم استخدام <xliff:g id="COUNT_1">%1$d</xliff:g> تطبيقات منذ عدة شهور.</item>
-      <item quantity="many">لم يتم استخدام <xliff:g id="COUNT_1">%1$d</xliff:g> تطبيقًا منذ عدة شهور.</item>
-      <item quantity="other">لم يتم استخدام <xliff:g id="COUNT_1">%1$d</xliff:g> تطبيق منذ عدة شهور.</item>
-      <item quantity="one">لم يتم استخدام تطبيق واحد (<xliff:g id="COUNT_0">%1$d</xliff:g>) منذ عدة أشهر.</item>
-    </plurals>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"الأذونات التي تمت إزالتها"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"تمت إزالة الأذونات"</string>
     <string name="all_unused_apps_category_title" msgid="755663524704745414">"كل التطبيقات غير المستخدمة"</string>
@@ -407,16 +283,24 @@
     <string name="permission_subtitle_background" msgid="8916750995309083180">"تم السماح بالوصول طوال الوقت"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"تم استخدام إذن الوصول آخر مرة في <xliff:g id="TIME_DATE">%1$s</xliff:g>."</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"تم الوصول آخر مرة للأذونات أمس في <xliff:g id="TIME_DATE">%1$s</xliff:g>."</string>
-    <string name="app_perms_content_provider" msgid="6996750793881252778">"تم الوصول للأذونات في آخر 24 ساعة."</string>
+    <string name="app_perms_7d_access" msgid="4945055548894683751">"تم الوصول آخر مرة بتاريخ <xliff:g id="TIME_DATE_0">%1$s</xliff:g> في <xliff:g id="TIME_DATE_1">%2$s</xliff:g>."</string>
+    <string name="app_perms_content_provider_24h" msgid="1055526027667508972">"تم الوصول للأذونات في آخر 24 ساعة."</string>
+    <string name="app_perms_content_provider_7d" msgid="3215454898257814868">"تم الوصول للأذونات في آخر 7 أيام."</string>
     <string name="app_perms_24h_access_background" msgid="3413674718969576843">"تم الوصول آخر مرة في <xliff:g id="TIME_DATE">%1$s</xliff:g> • تم السماح بالوصول طوال الوقت"</string>
     <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"تم الوصول آخر مرة أمس في <xliff:g id="TIME_DATE">%1$s</xliff:g> • تم السماح بالوصول طوال الوقت"</string>
-    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"تم الوصول خلال آخر 24 ساعة • تم السماح بالوصول طوال الوقت"</string>
+    <string name="app_perms_7d_access_background" msgid="408099213372185627">"تم الوصول آخر مرة بتاريخ <xliff:g id="TIME_DATE_0">%1$s</xliff:g> في <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • تم السماح بالوصول طوال الوقت"</string>
+    <string name="app_perms_content_provider_24h_background" msgid="3825902995186961496">"تم الوصول خلال آخر 24 ساعة • تم السماح بالوصول طوال الوقت"</string>
+    <string name="app_perms_content_provider_7d_background" msgid="4818839672116463542">"تم الوصول في آخر 7 أيام • تم السماح بالوصول طوال الوقت"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"تم الوصول آخر مرة للأذونات في <xliff:g id="TIME_DATE">%1$s</xliff:g> • الوسائط"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"تم الوصول آخر مرة للأذونات أمس في <xliff:g id="TIME_DATE">%1$s</xliff:g> • الوسائط"</string>
-    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"تم الوصول للأذونات في آخر 24 ساعة • الوسائط"</string>
+    <string name="app_perms_7d_access_media_only" msgid="1031096653668235200">"تم الوصول آخر مرة بتاريخ <xliff:g id="TIME_DATE_0">%1$s</xliff:g> في <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • الوسائط"</string>
+    <string name="app_perms_content_provider_24h_media_only" msgid="7797963000596179491">"تم الوصول في آخر 24 ساعة • الوسائط"</string>
+    <string name="app_perms_content_provider_7d_media_only" msgid="8446239884570262243">"تم الوصول في آخر 7 أيام • الوسائط"</string>
     <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"تم الوصول آخر مرة للأذونات في <xliff:g id="TIME_DATE">%1$s</xliff:g> • كل الملفات"</string>
     <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"تم الوصول آخر مرة للأذونات أمس في <xliff:g id="TIME_DATE">%1$s</xliff:g> • كل الملفات"</string>
-    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"تم الوصول للأذونات في آخر 24 ساعة • كل الملفات"</string>
+    <string name="app_perms_7d_access_all_files" msgid="8246193786397635824">"تم الوصول آخر مرة بتاريخ <xliff:g id="TIME_DATE_0">%1$s</xliff:g> في <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • جميع الملفات"</string>
+    <string name="app_perms_content_provider_24h_all_files" msgid="573104317727770850">"تم الوصول في آخر 24 ساعة • كل الملفات"</string>
+    <string name="app_perms_content_provider_7d_all_files" msgid="7962416229708835558">"تم الوصول في آخر 7 أيام • جميع الملفات"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"لم يتم منح أي أذونات."</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"لم يتم رفض أي أذونات."</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"لم يتم السماح لأي تطبيقات."</string>
@@ -575,6 +459,7 @@
     <string name="privdash_label_other" msgid="3710394147423236033">"غير ذلك"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"بلا أذونات"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"آخر\n24 ساعة"</string>
+    <string name="privdash_label_7d" msgid="5645301995348656931">"آخر\n7 أيام"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"‏تطبيق <xliff:g id="APP_NAME">%1$s</xliff:g> محمي بواسطة Android. لأن بياناتك تتم معالجتها على هذا الجهاز، لا يظهر استخدام إذن هذا التطبيق في شريط الحالة أو لوحة بيانات الخصوصية."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"‏تطبيق <xliff:g id="APP_NAME">%1$s</xliff:g> محمي بواسطة Android. لأن بياناتك تتم معالجتها على هذا الجهاز، لا يظهر استخدام إذن هذا التطبيق في لوحة بيانات الخصوصية."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"كاميرا الجهاز محظورة"</string>
@@ -584,4 +469,5 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"لا يزال يمكن مشاركة بيانات الميكروفون عند الاتصال برقم طوارئ."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"تغيير"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"الأمان والخصوصية"</string>
+    <string name="security_settings" msgid="3808106921175271317">"إعدادات الأمان"</string>
 </resources>

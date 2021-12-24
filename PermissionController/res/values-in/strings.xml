@@ -21,6 +21,8 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"izin"</string>
     <string name="cancel" msgid="8943320028373963831">"Batal"</string>
     <string name="back" msgid="6249950659061523680">"Kembali"</string>
+    <string name="available" msgid="6007778121920339498">"Tersedia"</string>
+    <string name="blocked" msgid="9195547604866033708">"Diblokir"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Uninstal atau nonaktifkan"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Apl tidak ditemukan"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"Jangan izinkan"</string>
@@ -60,16 +62,16 @@
     <string name="no_permissions" msgid="3881676756371148563">"Tidak ada izin"</string>
     <string name="additional_permissions" msgid="5801285469338873430">"Izin tambahan"</string>
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"Buka info aplikasi"</string>
-    <plurals name="additional_permissions_more" formatted="false" msgid="5297511511961335277">
-      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> lainnya</item>
-      <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> lainnya</item>
-    </plurals>
+    <!-- no translation found for additional_permissions_more (5681220714755304407) -->
+    <skip />
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"Aplikasi ini dirancang untuk versi lama Android. Menolak izin dapat menyebabkan aplikasi tidak berfungsi lagi sesuai harapan."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"melakukan tindakan yang tidak dikenal"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> dari <xliff:g id="COUNT_1">%2$d</xliff:g> aplikasi diizinkan"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> aplikasi diizinkan"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Tampilkan sistem"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Sembunyikan sistem"</string>
+    <string name="menu_show_7_days_data" msgid="8979611198508523706">"Tampilkan 7 hari"</string>
+    <string name="menu_show_24_hours_data" msgid="8228054833323380780">"Tampilkan 24 jam"</string>
     <string name="manage_permission" msgid="2895385393037061964">"Kelola Izin"</string>
     <string name="no_apps" msgid="2412612731628386816">"Tidak ada aplikasi"</string>
     <string name="location_settings" msgid="3624412509133422562">"Setelan Lokasi"</string>
@@ -113,44 +115,20 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Lihat izin lainnya"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>, dan <xliff:g id="NUM">%3$s</xliff:g> lainnya"</string>
-    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Linimasa penggunaan <xliff:g id="PERMGROUP">%1$s</xliff:g> Anda oleh aplikasi dalam 24 jam terakhir"</string>
+    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"Linimasa penggunaan <xliff:g id="PERMGROUP">%1$s</xliff:g> Anda oleh aplikasi dalam 24 jam terakhir"</string>
+    <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Linimasa penggunaan <xliff:g id="PERMGROUP">%1$s</xliff:g> Anda oleh aplikasi dalam 7 hari terakhir"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Saat aplikasi ini menggunakan izin <xliff:g id="PERMGROUP">%1$s</xliff:g> Anda"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Pelajari lebih lanjut"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_3" msgid="758761785983094351">"<xliff:g id="ATTRIBUTION_NAME">%1$s</xliff:g> • <xliff:g id="APP_NAME">%2$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%3$s</xliff:g>"</string>
-    <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> hari</item>
-      <item quantity="one">1 hari</item>
-    </plurals>
-    <plurals name="duration_used_hours" formatted="false" msgid="1020075479447003242">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> jam</item>
-      <item quantity="one">1 jam</item>
-    </plurals>
-    <plurals name="duration_used_minutes" formatted="false" msgid="3422338854436291744">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> menit</item>
-      <item quantity="one">1 menit</item>
-    </plurals>
-    <plurals name="duration_used_seconds" formatted="false" msgid="2726799598314248110">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> detik</item>
-      <item quantity="one">1 detik</item>
-    </plurals>
-    <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
-      <item quantity="other">Akses terakhir: Akses <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g></item>
-      <item quantity="one">Akses terakhir: Akses <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g></item>
-    </plurals>
-    <plurals name="permission_usage_summary_background" formatted="false" msgid="8810001960357233836">
-      <item quantity="other">Akses terakhir: Akses <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> (<xliff:g id="NUM_5">%3$s</xliff:g> di latar belakang)</item>
-      <item quantity="one">Akses terakhir: Akses <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> (<xliff:g id="NUM_2">%3$s</xliff:g> di latar belakang)</item>
-    </plurals>
-    <plurals name="permission_usage_summary_duration" formatted="false" msgid="2223071401812931873">
-      <item quantity="other">Akses terakhir: Akses <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> \nDurasi: <xliff:g id="TIME_5">%3$s</xliff:g></item>
-      <item quantity="one">Akses terakhir: Akses <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> \nDurasi: <xliff:g id="TIME_2">%3$s</xliff:g></item>
-    </plurals>
-    <plurals name="permission_usage_summary_background_duration" formatted="false" msgid="6893924292010006727">
-      <item quantity="other">Akses terakhir: Akses <xliff:g id="TIME_4">%1$s</xliff:g>\n<xliff:g id="NUM_5">%2$s</xliff:g> (<xliff:g id="NUM_6">%3$s</xliff:g> di latar belakang)\nDurasi: <xliff:g id="TIME_7">%3$s</xliff:g></item>
-      <item quantity="one">Akses terakhir: Akses <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> (<xliff:g id="NUM_2">%3$s</xliff:g> di latar belakang)\nDurasi: <xliff:g id="TIME_3">%3$s</xliff:g></item>
-    </plurals>
-    <string name="permission_usage_summary_background" msgid="6136171928959340697">"Akses terakhir: <xliff:g id="TIME">%1$s</xliff:g>\nTerakhir diakses di latar belakang"</string>
+    <!-- no translation found for duration_used_days (8293010131040301793) -->
+    <skip />
+    <!-- no translation found for duration_used_hours (1128716208752263576) -->
+    <skip />
+    <!-- no translation found for duration_used_minutes (5335824115042576567) -->
+    <skip />
+    <!-- no translation found for duration_used_seconds (6543746449171675028) -->
+    <skip />
     <string name="permission_usage_any_permission" msgid="6358023078298106997">"Izin apa pun"</string>
     <string name="permission_usage_any_time" msgid="3802087027301631827">"Kapan saja"</string>
     <string name="permission_usage_last_7_days" msgid="7386221251886130065">"7 hari terakhir"</string>
@@ -171,15 +149,10 @@
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Penggunaan izin dalam 1 jam terakhir"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Penggunaan izin dalam 15 menit terakhir"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Penggunaan izin dalam 1 menit terakhir"</string>
-    <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> aplikasi</item>
-      <item quantity="one">1 aplikasi</item>
-    </plurals>
-    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Tidak digunakan dalam 24 jam terakhir"</string>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
-      <item quantity="other">Digunakan oleh <xliff:g id="NUMBER">%1$d</xliff:g> aplikasi</item>
-      <item quantity="one">Digunakan oleh 1 aplikasi</item>
-    </plurals>
+    <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"Tidak digunakan dalam 24 jam terakhir"</string>
+    <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"Tidak digunakan dalam 7 hari terakhir"</string>
+    <!-- no translation found for permission_usage_preference_label (8343167938128676378) -->
+    <skip />
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Lihat semua di Dasbor"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Difilter menurut: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Hapus filter"</string>
@@ -193,10 +166,6 @@
     <string name="sort_by_time" msgid="5435045320002150456">"Urutkan menurut waktu"</string>
     <string name="item_separator" msgid="4030255389809224513">", "</string>
     <string name="permission_usage_refresh" msgid="2264056346561305420">"Refresh"</string>
-    <plurals name="permission_usage_permission_filter_subtitle" formatted="false" msgid="2452104463317798268">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> aplikasi</item>
-      <item quantity="one">1 aplikasi</item>
-    </plurals>
     <string name="permission_history_title" msgid="8340081285133025225">"Histori izin"</string>
     <string name="permission_history_category_today" msgid="7496389369158806620">"Hari ini"</string>
     <string name="permission_history_category_yesterday" msgid="7242517121222012521">"Kemarin"</string>
@@ -266,42 +235,25 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Diizinkan untuk mengelola semua file"</string>
     <string name="ask_header" msgid="2633816846459944376">"Selalu tanya"</string>
     <string name="denied_header" msgid="903209608358177654">"Tidak diizinkan"</string>
-    <plurals name="days" formatted="false" msgid="7882807103511175827">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> hari</item>
-      <item quantity="one">1 hari</item>
-    </plurals>
-    <plurals name="hours" formatted="false" msgid="2100550424145061396">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> jam</item>
-      <item quantity="one">1 jam</item>
-    </plurals>
-    <plurals name="minutes" formatted="false" msgid="2154398822027154606">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> menit</item>
-      <item quantity="one">1 menit</item>
-    </plurals>
-    <plurals name="seconds" formatted="false" msgid="1564519426522404832">
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> detik</item>
-      <item quantity="one">1 detik</item>
-    </plurals>
+    <!-- no translation found for days (609563020985571393) -->
+    <skip />
+    <!-- no translation found for hours (3447767892295843282) -->
+    <skip />
+    <!-- no translation found for minutes (4408293038068503157) -->
+    <skip />
+    <!-- no translation found for seconds (5397771912131132690) -->
+    <skip />
     <string name="permission_reminders" msgid="6528257957664832636">"Pengingat izin"</string>
     <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"1 aplikasi yang tidak digunakan"</string>
     <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> aplikasi tidak digunakan"</string>
     <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"Izin dihapus untuk melindungi privasi Anda. Ketuk untuk meninjau"</string>
     <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"Izin dihapus untuk aplikasi yang tidak digunakan"</string>
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Beberapa aplikasi tidak digunakan dalam beberapa bulan. Ketuk untuk meninjau."</string>
-    <plurals name="auto_revoke_permission_notification_content_count" formatted="false" msgid="9159794096518540350">
-      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> aplikasi tidak digunakan dalam beberapa bulan. Ketuk untuk meninjau</item>
-      <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> aplikasi tidak digunakan dalam beberapa bulan. Ketuk untuk meninjau</item>
-    </plurals>
-    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
-      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> aplikasi tidak digunakan</item>
-      <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> aplikasi tidak digunakan</item>
-    </plurals>
+    <!-- no translation found for unused_apps_notification_title (4314832015894238019) -->
+    <skip />
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Izin dan file sementara telah dihapus dan notifikasi dihentikan. Ketuk untuk meninjau."</string>
+    <string name="post_drive_permission_decision_reminder_title" msgid="5541572128394226308">"Izin terbaru"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Beberapa aplikasi tidak digunakan dalam beberapa bulan"</string>
-    <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
-      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> aplikasi tidak digunakan dalam beberapa bulan</item>
-      <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> tidak digunakan dalam beberapa bulan</item>
-    </plurals>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Izin yang dihapus"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Izin dihapus"</string>
     <string name="all_unused_apps_category_title" msgid="755663524704745414">"Semua aplikasi yang tidak digunakan"</string>
@@ -331,16 +283,24 @@
     <string name="permission_subtitle_background" msgid="8916750995309083180">"Diizinkan sepanjang waktu"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"Terakhir diakses pada <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Terakhir diakses kemarin pada <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
-    <string name="app_perms_content_provider" msgid="6996750793881252778">"Diakses dalam 24 jam terakhir"</string>
+    <string name="app_perms_7d_access" msgid="4945055548894683751">"Terakhir diakses pada <xliff:g id="TIME_DATE_0">%1$s</xliff:g> pukul <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
+    <string name="app_perms_content_provider_24h" msgid="1055526027667508972">"Diakses dalam 24 jam terakhir"</string>
+    <string name="app_perms_content_provider_7d" msgid="3215454898257814868">"Diakses dalam 7 hari terakhir"</string>
     <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Terakhir diakses pada <xliff:g id="TIME_DATE">%1$s</xliff:g> • Diizinkan sepanjang waktu"</string>
     <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Terakhir diakses kemarin pada <xliff:g id="TIME_DATE">%1$s</xliff:g> • Diizinkan sepanjang waktu"</string>
-    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"Diakses dalam 24 jam terakhir • Diizinkan sepanjang waktu"</string>
+    <string name="app_perms_7d_access_background" msgid="408099213372185627">"Terakhir diakses pada <xliff:g id="TIME_DATE_0">%1$s</xliff:g> pukul <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Diizinkan sepanjang waktu"</string>
+    <string name="app_perms_content_provider_24h_background" msgid="3825902995186961496">"Diakses dalam 24 jam terakhir • Diizinkan sepanjang waktu"</string>
+    <string name="app_perms_content_provider_7d_background" msgid="4818839672116463542">"Diakses dalam 7 hari terakhir • Diizinkan sepanjang waktu"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Terakhir diakses pada <xliff:g id="TIME_DATE">%1$s</xliff:g> • Media"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Terakhir diakses kemarin pada <xliff:g id="TIME_DATE">%1$s</xliff:g> • Media"</string>
-    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"Diakses dalam 24 jam terakhir • Media"</string>
+    <string name="app_perms_7d_access_media_only" msgid="1031096653668235200">"Terakhir diakses pada <xliff:g id="TIME_DATE_0">%1$s</xliff:g> pukul <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Media"</string>
+    <string name="app_perms_content_provider_24h_media_only" msgid="7797963000596179491">"Diakses dalam 24 jam terakhir • Media"</string>
+    <string name="app_perms_content_provider_7d_media_only" msgid="8446239884570262243">"Diakses dalam 7 hari terakhir • Media"</string>
     <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"Terakhir diakses pada <xliff:g id="TIME_DATE">%1$s</xliff:g> • Semua File"</string>
     <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"Terakhir diakses kemarin pada <xliff:g id="TIME_DATE">%1$s</xliff:g> • Semua File"</string>
-    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"Diakses dalam 24 jam terakhir • Semua File"</string>
+    <string name="app_perms_7d_access_all_files" msgid="8246193786397635824">"Terakhir diakses pada <xliff:g id="TIME_DATE_0">%1$s</xliff:g> pukul <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Semua File"</string>
+    <string name="app_perms_content_provider_24h_all_files" msgid="573104317727770850">"Diakses dalam 24 jam terakhir • Semua File"</string>
+    <string name="app_perms_content_provider_7d_all_files" msgid="7962416229708835558">"Diakses dalam 7 hari terakhir • Semua File"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Tidak ada izin"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"Tidak ada izin yang ditolak"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"Tidak ada aplikasi yang diizinkan"</string>
@@ -499,6 +459,7 @@
     <string name="privdash_label_other" msgid="3710394147423236033">"Lainnya"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"Tidak ada"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"24 jam\nterakhir"</string>
+    <string name="privdash_label_7d" msgid="5645301995348656931">"7 hari\nterakhir"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> dilindungi oleh Android. Karena data Anda diproses di perangkat ini, penggunaan izin aplikasi ini tidak ditampilkan di status bar atau dasbor privasi Anda."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> dilindungi oleh Android. Karena data Anda diproses di perangkat ini, penggunaan izin aplikasi ini tidak ditampilkan di dasbor privasi Anda."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Kamera perangkat diblokir"</string>
@@ -508,4 +469,5 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Data mikrofon mungkin tetap dibagikan saat Anda menelepon nomor darurat."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Ubah"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Keamanan &amp; Privasi"</string>
+    <string name="security_settings" msgid="3808106921175271317">"Setelan Keamanan"</string>
 </resources>

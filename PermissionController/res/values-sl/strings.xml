@@ -21,6 +21,8 @@
     <string name="permission_search_keyword" msgid="1214451577494730543">"dovoljenja"</string>
     <string name="cancel" msgid="8943320028373963831">"Prekliči"</string>
     <string name="back" msgid="6249950659061523680">"Nazaj"</string>
+    <string name="available" msgid="6007778121920339498">"Na voljo"</string>
+    <string name="blocked" msgid="9195547604866033708">"Blokirano"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Odmesti ali onemogoči"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Aplikacije ni mogoče najti"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"Ne dovoli"</string>
@@ -60,18 +62,16 @@
     <string name="no_permissions" msgid="3881676756371148563">"Ni dovoljenj"</string>
     <string name="additional_permissions" msgid="5801285469338873430">"Dodatna dovoljenja"</string>
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"Odpri podatke o aplikaciji"</string>
-    <plurals name="additional_permissions_more" formatted="false" msgid="5297511511961335277">
-      <item quantity="one">Še <xliff:g id="COUNT_1">%1$d</xliff:g></item>
-      <item quantity="two">Še <xliff:g id="COUNT_1">%1$d</xliff:g></item>
-      <item quantity="few">Še <xliff:g id="COUNT_1">%1$d</xliff:g></item>
-      <item quantity="other">Še <xliff:g id="COUNT_1">%1$d</xliff:g></item>
-    </plurals>
+    <!-- no translation found for additional_permissions_more (5681220714755304407) -->
+    <skip />
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"Ta aplikacija je bila zasnovana za starejšo različico sistema Android. Če dovoljenje zavrnete, lahko preneha delovati, kot bi morala."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"izvedba neznanega dejanja"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"Dovoljene aplikacije: <xliff:g id="COUNT_0">%1$d</xliff:g> od <xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"Dovoljene aplikacije: <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Prikaži sistemske procese"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Skrivanje sistemskih procesov"</string>
+    <string name="menu_show_7_days_data" msgid="8979611198508523706">"Pokaži 7 dni"</string>
+    <string name="menu_show_24_hours_data" msgid="8228054833323380780">"Pokaži 24 ur"</string>
     <string name="manage_permission" msgid="2895385393037061964">"Upravljanje dovoljenja"</string>
     <string name="no_apps" msgid="2412612731628386816">"Ni aplikacij"</string>
     <string name="location_settings" msgid="3624412509133422562">"Nastavitve lokacije"</string>
@@ -115,60 +115,20 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Ogled drugih dovoljenj"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> in še <xliff:g id="NUM">%3$s</xliff:g>"</string>
-    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Časovna os uporabe dovoljenja »<xliff:g id="PERMGROUP">%1$s</xliff:g>« po aplikacijah v zadnjih 24 urah"</string>
+    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"Časovna os uporabe dovoljenja »<xliff:g id="PERMGROUP">%1$s</xliff:g>« po aplikacijah v zadnjih 24 urah."</string>
+    <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Časovna os uporabe dovoljenja »<xliff:g id="PERMGROUP">%1$s</xliff:g>« po aplikacijah v zadnjih 7 dneh."</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Uporaba dovoljenja »<xliff:g id="PERMGROUP">%1$s</xliff:g>« za to aplikacijo"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Več o tem"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_3" msgid="758761785983094351">"<xliff:g id="ATTRIBUTION_NAME">%1$s</xliff:g> • <xliff:g id="APP_NAME">%2$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%3$s</xliff:g>"</string>
-    <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> dan</item>
-      <item quantity="two"><xliff:g id="NUMBER">%s</xliff:g> dneva</item>
-      <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> dni</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> dni</item>
-    </plurals>
-    <plurals name="duration_used_hours" formatted="false" msgid="1020075479447003242">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> ura</item>
-      <item quantity="two"><xliff:g id="NUMBER">%s</xliff:g> uri</item>
-      <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> ure</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ur</item>
-    </plurals>
-    <plurals name="duration_used_minutes" formatted="false" msgid="3422338854436291744">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> min</item>
-      <item quantity="two"><xliff:g id="NUMBER">%s</xliff:g> min</item>
-      <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> min</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> min</item>
-    </plurals>
-    <plurals name="duration_used_seconds" formatted="false" msgid="2726799598314248110">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> s</item>
-      <item quantity="two"><xliff:g id="NUMBER">%s</xliff:g> s</item>
-      <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> s</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> s</item>
-    </plurals>
-    <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
-      <item quantity="one">Zadnji dostop: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> dostop</item>
-      <item quantity="two">Zadnji dostop: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> dostopa</item>
-      <item quantity="few">Zadnji dostop: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> dostopi</item>
-      <item quantity="other">Zadnji dostop: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> dostopov</item>
-    </plurals>
-    <plurals name="permission_usage_summary_background" formatted="false" msgid="8810001960357233836">
-      <item quantity="one">Zadnji dostop: <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> dostop (<xliff:g id="NUM_5">%3$s</xliff:g> v ozadju)</item>
-      <item quantity="two">Zadnji dostop: <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> dostopa (<xliff:g id="NUM_5">%3$s</xliff:g> v ozadju)</item>
-      <item quantity="few">Zadnji dostop: <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> dostopi (<xliff:g id="NUM_5">%3$s</xliff:g> v ozadju)</item>
-      <item quantity="other">Zadnji dostop: <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> dostopov (<xliff:g id="NUM_5">%3$s</xliff:g> v ozadju)</item>
-    </plurals>
-    <plurals name="permission_usage_summary_duration" formatted="false" msgid="2223071401812931873">
-      <item quantity="one">Zadnji dostop: <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> dostop\nTrajanje: <xliff:g id="TIME_5">%3$s</xliff:g></item>
-      <item quantity="two">Zadnji dostop: <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> dostopa\nTrajanje: <xliff:g id="TIME_5">%3$s</xliff:g></item>
-      <item quantity="few">Zadnji dostop: <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> dostopi\nTrajanje: <xliff:g id="TIME_5">%3$s</xliff:g></item>
-      <item quantity="other">Zadnji dostop: <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> dostopov\nTrajanje: <xliff:g id="TIME_5">%3$s</xliff:g></item>
-    </plurals>
-    <plurals name="permission_usage_summary_background_duration" formatted="false" msgid="6893924292010006727">
-      <item quantity="one">Zadnji dostop: <xliff:g id="TIME_4">%1$s</xliff:g>\n<xliff:g id="NUM_5">%2$s</xliff:g> dostop (<xliff:g id="NUM_6">%3$s</xliff:g> v ozadju)\nTrajanje: <xliff:g id="TIME_7">%3$s</xliff:g></item>
-      <item quantity="two">Zadnji dostop: <xliff:g id="TIME_4">%1$s</xliff:g>\n<xliff:g id="NUM_5">%2$s</xliff:g> dostopa (<xliff:g id="NUM_6">%3$s</xliff:g> v ozadju)\nTrajanje: <xliff:g id="TIME_7">%3$s</xliff:g></item>
-      <item quantity="few">Zadnji dostop: <xliff:g id="TIME_4">%1$s</xliff:g>\n<xliff:g id="NUM_5">%2$s</xliff:g> dostopi (<xliff:g id="NUM_6">%3$s</xliff:g> v ozadju)\nTrajanje: <xliff:g id="TIME_7">%3$s</xliff:g></item>
-      <item quantity="other">Zadnji dostop: <xliff:g id="TIME_4">%1$s</xliff:g>\n<xliff:g id="NUM_5">%2$s</xliff:g> dostopov (<xliff:g id="NUM_6">%3$s</xliff:g> v ozadju)\nTrajanje: <xliff:g id="TIME_7">%3$s</xliff:g></item>
-    </plurals>
-    <string name="permission_usage_summary_background" msgid="6136171928959340697">"Zadnja uporaba: <xliff:g id="TIME">%1$s</xliff:g>\nZadnja uporaba v ozadju"</string>
+    <!-- no translation found for duration_used_days (8293010131040301793) -->
+    <skip />
+    <!-- no translation found for duration_used_hours (1128716208752263576) -->
+    <skip />
+    <!-- no translation found for duration_used_minutes (5335824115042576567) -->
+    <skip />
+    <!-- no translation found for duration_used_seconds (6543746449171675028) -->
+    <skip />
     <string name="permission_usage_any_permission" msgid="6358023078298106997">"Katero koli dovoljenje"</string>
     <string name="permission_usage_any_time" msgid="3802087027301631827">"Kadar koli"</string>
     <string name="permission_usage_last_7_days" msgid="7386221251886130065">"Zadnjih 7 dni"</string>
@@ -189,19 +149,10 @@
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Uporaba dovoljenj v zadnji uri"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Uporaba dovoljenj v zadnjih 15 minutah"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Uporaba dovoljenj v zadnji minuti"</string>
-    <plurals name="permission_usage_bar_label" formatted="false" msgid="2316692513662993785">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> aplikacija</item>
-      <item quantity="two"><xliff:g id="NUMBER">%s</xliff:g> aplikaciji</item>
-      <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> aplikacije</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> aplikacij</item>
-    </plurals>
-    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Brez uporabe v zadnjih 24 urah"</string>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
-      <item quantity="one">Uporablja <xliff:g id="NUMBER">%1$d</xliff:g> aplikacija</item>
-      <item quantity="two">Uporabljata <xliff:g id="NUMBER">%1$d</xliff:g> aplikaciji</item>
-      <item quantity="few">Uporabljajo <xliff:g id="NUMBER">%1$d</xliff:g> aplikacije</item>
-      <item quantity="other">Uporablja <xliff:g id="NUMBER">%1$d</xliff:g> aplikacij</item>
-    </plurals>
+    <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"Brez uporabe v zadnjih 24 urah."</string>
+    <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"Brez uporabe v zadnjih 7 dneh."</string>
+    <!-- no translation found for permission_usage_preference_label (8343167938128676378) -->
+    <skip />
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Prikaži vse na nadzorni plošči"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrirano po: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Odstrani filter"</string>
@@ -215,12 +166,6 @@
     <string name="sort_by_time" msgid="5435045320002150456">"Razvrsti po času"</string>
     <string name="item_separator" msgid="4030255389809224513">", "</string>
     <string name="permission_usage_refresh" msgid="2264056346561305420">"Osveži"</string>
-    <plurals name="permission_usage_permission_filter_subtitle" formatted="false" msgid="2452104463317798268">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> aplikacija</item>
-      <item quantity="two"><xliff:g id="NUMBER">%s</xliff:g> aplikaciji</item>
-      <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> aplikacije</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> aplikacij</item>
-    </plurals>
     <string name="permission_history_title" msgid="8340081285133025225">"Zgodovina dovoljenj"</string>
     <string name="permission_history_category_today" msgid="7496389369158806620">"Danes"</string>
     <string name="permission_history_category_yesterday" msgid="7242517121222012521">"Včeraj"</string>
@@ -290,56 +235,25 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Dovoljeno je upravljanje vseh datotek"</string>
     <string name="ask_header" msgid="2633816846459944376">"Vedno vprašaj"</string>
     <string name="denied_header" msgid="903209608358177654">"Ni dovoljeno"</string>
-    <plurals name="days" formatted="false" msgid="7882807103511175827">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> dnevom</item>
-      <item quantity="two"><xliff:g id="NUMBER">%s</xliff:g> dnevoma</item>
-      <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> dnevi</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> dnevi</item>
-    </plurals>
-    <plurals name="hours" formatted="false" msgid="2100550424145061396">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> uro</item>
-      <item quantity="two"><xliff:g id="NUMBER">%s</xliff:g> urama</item>
-      <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> urami</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> urami</item>
-    </plurals>
-    <plurals name="minutes" formatted="false" msgid="2154398822027154606">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> minuto</item>
-      <item quantity="two"><xliff:g id="NUMBER">%s</xliff:g> minutama</item>
-      <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> minutami</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> minutami</item>
-    </plurals>
-    <plurals name="seconds" formatted="false" msgid="1564519426522404832">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> sekundo</item>
-      <item quantity="two"><xliff:g id="NUMBER">%s</xliff:g> sekundama</item>
-      <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> sekundami</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> sekundami</item>
-    </plurals>
+    <!-- no translation found for days (609563020985571393) -->
+    <skip />
+    <!-- no translation found for hours (3447767892295843282) -->
+    <skip />
+    <!-- no translation found for minutes (4408293038068503157) -->
+    <skip />
+    <!-- no translation found for seconds (5397771912131132690) -->
+    <skip />
     <string name="permission_reminders" msgid="6528257957664832636">"Opomniki za dovoljenja"</string>
     <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"1 neuporabljena aplikacija"</string>
     <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"Št. neuporabljenih aplikacij: <xliff:g id="NUMBER_OF_APPS">%s</xliff:g>"</string>
     <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"Dovoljenja so bila odstranjena za zaščito vaše zasebnosti. Dotaknite se za pregled"</string>
     <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"Dovoljenja odstranjena za neuporabljene aplikacije"</string>
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Nekatere aplikacije niso bile uporabljene več mesecev. Dotaknite se za pregled."</string>
-    <plurals name="auto_revoke_permission_notification_content_count" formatted="false" msgid="9159794096518540350">
-      <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> aplikacije niste uporabljali več mesecev. Dotaknite se za pregled</item>
-      <item quantity="two"><xliff:g id="COUNT_1">%1$d</xliff:g> aplikacij niste uporabljali več mesecev. Dotaknite se za pregled</item>
-      <item quantity="few"><xliff:g id="COUNT_1">%1$d</xliff:g> aplikacij niste uporabljali več mesecev. Dotaknite se za pregled</item>
-      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> aplikacij niste uporabljali več mesecev. Dotaknite se za pregled</item>
-    </plurals>
-    <plurals name="unused_apps_notification_title" formatted="false" msgid="8046612559038762856">
-      <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> neuporabljena aplikacija</item>
-      <item quantity="two"><xliff:g id="COUNT_1">%1$d</xliff:g> neuporabljeni aplikaciji</item>
-      <item quantity="few"><xliff:g id="COUNT_1">%1$d</xliff:g> neuporabljene aplikacije</item>
-      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> neuporabljenih aplikacij</item>
-    </plurals>
+    <!-- no translation found for unused_apps_notification_title (4314832015894238019) -->
+    <skip />
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Dovoljenja in začasne datoteke so odstranjeni, obvestila so zaustavljena. Dotaknite se za pregled."</string>
+    <string name="post_drive_permission_decision_reminder_title" msgid="5541572128394226308">"Nedavna dovoljenja"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Nekatere aplikacije niso bile uporabljene več mesecev"</string>
-    <plurals name="auto_revoke_setting_subtitle_count" formatted="false" msgid="85594789277193087">
-      <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> aplikacije niste uporabljali več mesecev</item>
-      <item quantity="two"><xliff:g id="COUNT_1">%1$d</xliff:g> aplikacij niste uporabljali več mesecev</item>
-      <item quantity="few"><xliff:g id="COUNT_1">%1$d</xliff:g> aplikacij niste uporabljali več mesecev</item>
-      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> aplikacij niste uporabljali več mesecev</item>
-    </plurals>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Odstranjena dovoljenja"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Dovoljenja so bila odstranjena"</string>
     <string name="all_unused_apps_category_title" msgid="755663524704745414">"Vse neuporabljene aplikacije"</string>
@@ -369,16 +283,24 @@
     <string name="permission_subtitle_background" msgid="8916750995309083180">"Vedno dovoljeno"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"Zadnji dostop: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Zadnji dostop: včeraj ob <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
-    <string name="app_perms_content_provider" msgid="6996750793881252778">"Dostop v zadnjih 24 urah"</string>
+    <string name="app_perms_7d_access" msgid="4945055548894683751">"Zadnji dostop: <xliff:g id="TIME_DATE_0">%1$s</xliff:g> ob <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
+    <string name="app_perms_content_provider_24h" msgid="1055526027667508972">"Dostop v zadnjih 24 urah"</string>
+    <string name="app_perms_content_provider_7d" msgid="3215454898257814868">"Dostop v zadnjih 7 dneh"</string>
     <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Zadnji dostop: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Vedno dovoljeno"</string>
     <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Zadnji dostop včeraj ob <xliff:g id="TIME_DATE">%1$s</xliff:g> • Vedno dovoljeno"</string>
-    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"Dostop v zadnjih 24 urah • Vedno dovoljeno"</string>
+    <string name="app_perms_7d_access_background" msgid="408099213372185627">"Zadnji dostop: <xliff:g id="TIME_DATE_0">%1$s</xliff:g> ob <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Vedno dovoljeno"</string>
+    <string name="app_perms_content_provider_24h_background" msgid="3825902995186961496">"Dostop v zadnjih 24 urah • Vedno dovoljeno"</string>
+    <string name="app_perms_content_provider_7d_background" msgid="4818839672116463542">"Dostop v zadnjih 7 dneh • Vedno dovoljeno"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Zadnji dostop: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Predstavnost"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Zadnji dostop: včeraj ob <xliff:g id="TIME_DATE">%1$s</xliff:g> • Predstavnost"</string>
-    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"Dostop v zadnjih 24 urah • Predstavnost"</string>
+    <string name="app_perms_7d_access_media_only" msgid="1031096653668235200">"Zadnji dostop: <xliff:g id="TIME_DATE_0">%1$s</xliff:g> ob <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Predstavnost"</string>
+    <string name="app_perms_content_provider_24h_media_only" msgid="7797963000596179491">"Dostop v zadnjih 24 urah • Predstavnost"</string>
+    <string name="app_perms_content_provider_7d_media_only" msgid="8446239884570262243">"Dostop v zadnjih 7 dneh • Predstavnost"</string>
     <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"Zadnji dostop: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Vse datoteke"</string>
     <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"Zadnji dostop: včeraj ob <xliff:g id="TIME_DATE">%1$s</xliff:g> • Vse datoteke"</string>
-    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"Dostop v zadnjih 24 urah • Vse datoteke"</string>
+    <string name="app_perms_7d_access_all_files" msgid="8246193786397635824">"Zadnji dostop: <xliff:g id="TIME_DATE_0">%1$s</xliff:g> ob <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Vse datoteke"</string>
+    <string name="app_perms_content_provider_24h_all_files" msgid="573104317727770850">"Dostop v zadnjih 24 urah • Vse datoteke"</string>
+    <string name="app_perms_content_provider_7d_all_files" msgid="7962416229708835558">"Dostop v zadnjih 7 dneh • Vse datoteke"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"Aplikacija nima nobenih dovoljenj"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"Nobeno dovoljenje ni zavrnjeno"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"Nobena aplikacija nima dovoljenja."</string>
@@ -537,6 +459,7 @@
     <string name="privdash_label_other" msgid="3710394147423236033">"Drugo"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"Brez"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"V zadnjih\n24 urah"</string>
+    <string name="privdash_label_7d" msgid="5645301995348656931">"Zadnjih\n7 dni"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Varnost aplikacije <xliff:g id="APP_NAME">%1$s</xliff:g> zagotavlja Android. Ker obdelava podatkov poteka v tej napravi, uporaba dovoljenj za to aplikacijo ni prikazana v vrstici stanja ali na nadzorni plošči za zasebnost."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Varnost aplikacije <xliff:g id="APP_NAME">%1$s</xliff:g> zagotavlja Android. Ker obdelava podatkov poteka v tej napravi, uporaba dovoljenj za to aplikacijo ni prikazana na nadzorni plošči za zasebnost."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Fotoaparat naprave je blokiran"</string>
@@ -546,4 +469,5 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Podatki mikrofona bodo morda še vedno deljeni, ko pokličete številko za klic v sili."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Spremeni"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Varnost in zasebnost"</string>
+    <string name="security_settings" msgid="3808106921175271317">"Varnostne nastavitve"</string>
 </resources>
