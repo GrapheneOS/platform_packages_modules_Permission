@@ -129,6 +129,8 @@
             <permission-set name="sms" />
             <permission name="android.permission.READ_CALL_LOG" />
             <permission name="android.permission.ACCESS_BLOBS_ACROSS_USERS" minSdkVersion="31" />
+            <permission name="android.permission.READ_ASSISTANT_APP_SEARCH_DATA"
+                minSdkVersion="33"/>
         </permissions>
         <app-op-permissions>
             <app-op-permission name="android.permission.SYSTEM_ALERT_WINDOW" />
@@ -424,6 +426,9 @@
                 </intent-filter>
             </preferred-activity>
         </preferred-activities>
+        <permissions>
+            <permission name="android.permission.READ_HOME_APP_SEARCH_DATA" minSdkVersion="33"/>
+        </permissions>
     </role>
 
     <!--- @see android.telecom.CallRedirectionService -->
