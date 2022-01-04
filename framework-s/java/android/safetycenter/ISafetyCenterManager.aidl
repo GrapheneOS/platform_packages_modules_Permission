@@ -16,6 +16,8 @@
 
 package android.safetycenter;
 
+import android.safetycenter.IOnSafetyCenterDataChangedListener;
+import android.safetycenter.SafetyCenterData;
 import android.safetycenter.SafetySourceData;
 
 /**
@@ -52,4 +54,13 @@ interface ISafetyCenterManager {
      * for all packages and users.
      */
     void clearSafetyCenterData();
+
+    /**
+     * Returns the current SafetyCenterData, assembled from the SafetySourceData from all sources.
+     */
+    SafetyCenterData getSafetyCenterData();
+
+    void addOnSafetyCenterDataChangedListener(in IOnSafetyCenterDataChangedListener listener);
+
+    void removeOnSafetyCenterDataChangedListener(in IOnSafetyCenterDataChangedListener listener);
 }
