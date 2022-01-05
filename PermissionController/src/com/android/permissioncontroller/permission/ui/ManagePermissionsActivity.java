@@ -35,7 +35,9 @@ import android.content.pm.PackageManager;
 import android.content.pm.PermissionInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Process;
 import android.os.UserHandle;
+import android.permission.PermissionManager;
 import android.util.Log;
 import android.view.MenuItem;
 
@@ -53,6 +55,7 @@ import com.android.permissioncontroller.permission.ui.auto.AutoAllAppPermissions
 import com.android.permissioncontroller.permission.ui.auto.AutoAppPermissionsFragment;
 import com.android.permissioncontroller.permission.ui.auto.AutoManageStandardPermissionsFragment;
 import com.android.permissioncontroller.permission.ui.auto.AutoPermissionAppsFragment;
+import com.android.permissioncontroller.permission.ui.auto.AutoReviewPermissionDecisionsFragment;
 import com.android.permissioncontroller.permission.ui.auto.AutoUnusedAppsFragment;
 import com.android.permissioncontroller.permission.ui.handheld.AppPermissionFragment;
 import com.android.permissioncontroller.permission.ui.handheld.AppPermissionGroupsFragment;
@@ -251,7 +254,7 @@ public final class ManagePermissionsActivity extends SettingsActivity {
 
                 UserHandle userHandle = getIntent().getParcelableExtra(Intent.EXTRA_USER);
                 if (userHandle == null) {
-                    userHandle = UserHandle.of(UserHandle.myUserId());
+                    userHandle = Process.myUserHandle();
                 }
 
                 try {
@@ -367,6 +370,22 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                     androidXFragment.setArguments(UnusedAppsFragment.createArgs(sessionId));
                 } else {
                     setNavGraph(UnusedAppsFragment.createArgs(sessionId), R.id.auto_revoke);
+                    return;
+                }
+            } break;
+            case PermissionManager.ACTION_REVIEW_PERMISSION_DECISIONS: {
+
+                UserHandle userHandle = getIntent().getParcelableExtra(Intent.EXTRA_USER);
+                if (userHandle == null) {
+                    userHandle = Process.myUserHandle();
+                }
+                if (DeviceUtils.isAuto(this)) {
+                    androidXFragment = AutoReviewPermissionDecisionsFragment.Companion
+                            .newInstance(sessionId, userHandle);
+                } else {
+                    Log.e(LOG_TAG, "ACTION_REVIEW_PERMISSION_DECISIONS is not "
+                            + "supported on this device type");
+                    finishAfterTransition();
                     return;
                 }
             } break;
