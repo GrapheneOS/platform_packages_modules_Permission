@@ -604,7 +604,7 @@ public class LocationAccessCheck {
                 .setColor(mContext.getColor(android.R.color.system_notification_accent_color))
                 .setAutoCancel(true)
                 .setDeleteIntent(getBroadcast(mContext, 0, deleteIntent,
-                        FLAG_ONE_SHOT | FLAG_UPDATE_CURRENT))
+                        FLAG_ONE_SHOT | FLAG_UPDATE_CURRENT | FLAG_IMMUTABLE))
                 .setContentIntent(getBroadcast(mContext, 0, clickIntent,
                         FLAG_ONE_SHOT | FLAG_UPDATE_CURRENT | FLAG_IMMUTABLE));
 
