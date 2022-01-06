@@ -47,6 +47,11 @@ interface ISafetyCenterManager {
      */
     boolean isSafetyCenterEnabled();
 
+   /**
+     * Requests safety sources to send a SafetySourceData update to Safety Center.
+    */
+    void refreshSafetySources(in int refreshReason);
+
     /**
      * Clears all SafetySourceData updates sent to the safety center using sendSafetyCenterUpdate,
      * for all packages and users.
