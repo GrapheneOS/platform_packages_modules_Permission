@@ -17,20 +17,30 @@
 package com.android.permissioncontroller.permission.ui.model
 
 import android.app.Application
+import android.content.Intent
+import android.graphics.drawable.Drawable
+import android.icu.lang.UCharacter
 import android.os.UserHandle
+import android.text.BidiFormatter
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.android.permissioncontroller.DumpableLog
+import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.data.PermissionDecision
 import com.android.permissioncontroller.permission.data.RecentPermissionDecisionsLiveData
 import com.android.permissioncontroller.permission.data.SmartAsyncMediatorLiveData
 import com.android.permissioncontroller.permission.data.UserPackageInfosLiveData
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
+import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity
+import com.android.permissioncontroller.permission.ui.auto.AutoReviewPermissionDecisionsFragment
+import com.android.permissioncontroller.permission.utils.KotlinUtils
+import com.android.permissioncontroller.permission.utils.StringUtils
 import com.android.permissioncontroller.permission.utils.Utils
 import kotlinx.coroutines.Job
+import java.util.concurrent.TimeUnit
 
 /** Viewmodel for [ReviewPermissionDecisionsFragment] */
-class ReviewPermissionDecisionsViewModel(app: Application, user: UserHandle) : ViewModel() {
+class ReviewPermissionDecisionsViewModel(val app: Application, val user: UserHandle) : ViewModel() {
 
     val LOG_TAG = "ReviewPermissionDecisionsViewModel"
 
@@ -96,6 +106,40 @@ class ReviewPermissionDecisionsViewModel(app: Application, user: UserHandle) : V
 
             postValue(decisionsToReview)
         }
+    }
+
+    fun getAppIcon(packageName: String): Drawable? {
+        return KotlinUtils.getBadgedPackageIcon(app, packageName, user)
+    }
+
+    fun createPreferenceTitle(permissionDecision: PermissionDecision): String {
+        val packageLabel = BidiFormatter.getInstance().unicodeWrap(
+            KotlinUtils.getPackageLabel(app, permissionDecision.packageName, user))
+        val permissionGroupLabel = KotlinUtils.getPermGroupLabel(app,
+            permissionDecision.permissionGroupName).toString()
+        return if (permissionDecision.isGranted) {
+            app.getString(R.string.granted_permission_decision, packageLabel,
+                UCharacter.toLowerCase(permissionGroupLabel))
+        } else {
+            app.getString(R.string.denied_permission_decision, packageLabel,
+                UCharacter.toLowerCase(permissionGroupLabel))
+        }
+    }
+
+    fun createManageAppPermissionIntent(permissionDecision: PermissionDecision): Intent {
+        return Intent(Intent.ACTION_MANAGE_APP_PERMISSION).apply {
+            putExtra(Intent.EXTRA_PACKAGE_NAME, permissionDecision.packageName)
+            putExtra(Intent.EXTRA_PERMISSION_NAME, permissionDecision.permissionGroupName)
+            putExtra(Intent.EXTRA_USER, user)
+            putExtra(ManagePermissionsActivity.EXTRA_CALLER_NAME,
+                AutoReviewPermissionDecisionsFragment::class.java.name)
+        }
+    }
+
+    fun createSummaryText(permissionDecision: PermissionDecision): String {
+        val diff = System.currentTimeMillis() - permissionDecision.decisionTime
+        val daysAgo = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS).toInt()
+        return StringUtils.getIcuPluralsString(app, R.string.days_ago, daysAgo)
     }
 }
 

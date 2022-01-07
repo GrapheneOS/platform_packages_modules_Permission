@@ -148,10 +148,19 @@
     <string name="zero_unused_apps">0 unused apps</string>
 
     <!-- Title for the page to review permission decisions [CHAR LIMIT=30] -->
-    <string name="review_permission_decisions">Recent permissions</string>
+    <string name="review_permission_decisions">Recent permission decisions</string>
+
+    <!-- Title for the preference row to view all recent permission decisions. [CHAR LIMIT=80] -->
+    <string name="review_permission_decisions_view_all">View all recent permission decisions</string>
+
+    <!-- Title for the preference row describing that the user hasn't made any recent permission decisions. [CHAR LIMIT=80] -->
+    <string name="review_permission_decisions_empty">No recent permission decisions</string>
+
+    <!-- Summary of the row linking to permission manager on Auto devices [CHAR LIMIT=80] -->
+    <string name="auto_permission_manager_summary">Manage data access to calendar, call logs, and more</string>
 
     <!-- Label for reviewing a permission decision grant [CHAR LIMIT=80] -->
-    <string name="granted_permission_decision">You granted <xliff:g id="app_name" example="Google Maps">%1$s</xliff:g> access to <xliff:g id="permission_name" example="contacts">%2$s</xliff:g></string>
+    <string name="granted_permission_decision">You gave <xliff:g id="app_name" example="Google Maps">%1$s</xliff:g> access to <xliff:g id="permission_name" example="contacts">%2$s</xliff:g></string>
 
     <!-- Label for reviewing a permission decision denial [CHAR LIMIT=80] -->
     <string name="denied_permission_decision">You denied <xliff:g id="app_name" example="Google Maps">%1$s</xliff:g> access to <xliff:g id="permission_name" example="contacts">%2$s</xliff:g></string>
