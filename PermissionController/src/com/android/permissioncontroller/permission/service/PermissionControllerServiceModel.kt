@@ -24,6 +24,7 @@ import androidx.core.util.Consumer
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import androidx.lifecycle.Transformations
 import com.android.permissioncontroller.DumpableLog
 import com.android.permissioncontroller.PermissionControllerProto.PermissionControllerDumpProto
 import com.android.permissioncontroller.permission.data.AppPermGroupUiInfoLiveData
@@ -31,10 +32,10 @@ import com.android.permissioncontroller.permission.data.PackagePermissionsLiveDa
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.data.UserPackageInfosLiveData
 import com.android.permissioncontroller.permission.data.get
+import com.android.permissioncontroller.permission.data.getUnusedPackages
 import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo
 import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo.PermGrantState
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
-import com.android.permissioncontroller.permission.utils.IPC
 import com.android.permissioncontroller.permission.utils.Utils
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
@@ -272,6 +273,23 @@ class PermissionControllerServiceModel(private val service: PermissionController
                     }
                 }
             }
+        }
+    }
+
+    /**
+     * Counts the number of unused, hibernating apps. This data is gathered from a series of
+     * LiveData objects.
+     *
+     * @param callback The callback our result will be returned to
+     */
+    fun onCountUnusedApps(
+        callback: IntConsumer
+    ) {
+        val unusedAppsCount = Transformations.map(getUnusedPackages()) {
+            it?.size ?: 0
+        }
+        observeAndCheckForLifecycleState(unusedAppsCount) { unusedAppsCount ->
+            callback.accept(unusedAppsCount ?: 0)
         }
     }
 
