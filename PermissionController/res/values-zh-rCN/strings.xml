@@ -55,6 +55,20 @@
     <string name="unused_apps" msgid="2058057455175955094">"未使用的应用"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"没有未使用的应用"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"没有未使用的应用"</string>
+    <!-- no translation found for review_permission_decisions (309559429150613632) -->
+    <skip />
+    <!-- no translation found for review_permission_decisions_view_all (90391040431566130) -->
+    <skip />
+    <!-- no translation found for review_permission_decisions_empty (8120775336417279806) -->
+    <skip />
+    <!-- no translation found for auto_permission_manager_summary (9157438376234301354) -->
+    <skip />
+    <!-- no translation found for granted_permission_decision (7824827491551861365) -->
+    <skip />
+    <!-- no translation found for denied_permission_decision (5308961501779563781) -->
+    <skip />
+    <!-- no translation found for days_ago (6650359081551335629) -->
+    <skip />
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"停用应用"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"如果您停用此应用，Android 及其他应用可能会无法再正常运行。请注意，您无法删除此应用，因为它是设备预装应用。停用后，系统将关闭此应用并在设备上将其隐藏。"</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"权限管理器"</string>
@@ -62,8 +76,7 @@
     <string name="no_permissions" msgid="3881676756371148563">"没有权限"</string>
     <string name="additional_permissions" msgid="5801285469338873430">"其他权限"</string>
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"打开应用信息"</string>
-    <!-- no translation found for additional_permissions_more (5681220714755304407) -->
-    <skip />
+    <string name="additional_permissions_more" msgid="5681220714755304407">"{count,plural, =1{另外 # 项}other{另外 # 项}}"</string>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"此应用专为旧版 Android 系统打造。拒绝权限可能会导致该应用无法正常运行。"</string>
     <string name="default_permission_description" msgid="4624464917726285203">"执行未知操作"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"已授权 <xliff:g id="COUNT_0">%1$d</xliff:g> 个应用（共 <xliff:g id="COUNT_1">%2$d</xliff:g> 个）"</string>
@@ -121,14 +134,10 @@
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"了解详情"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_3" msgid="758761785983094351">"<xliff:g id="ATTRIBUTION_NAME">%1$s</xliff:g> • <xliff:g id="APP_NAME">%2$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%3$s</xliff:g>"</string>
-    <!-- no translation found for duration_used_days (8293010131040301793) -->
-    <skip />
-    <!-- no translation found for duration_used_hours (1128716208752263576) -->
-    <skip />
-    <!-- no translation found for duration_used_minutes (5335824115042576567) -->
-    <skip />
-    <!-- no translation found for duration_used_seconds (6543746449171675028) -->
-    <skip />
+    <string name="duration_used_days" msgid="8293010131040301793">"{count,plural, =1{1 天}other{# 天}}"</string>
+    <string name="duration_used_hours" msgid="1128716208752263576">"{count,plural, =1{1 小时}other{# 小时}}"</string>
+    <string name="duration_used_minutes" msgid="5335824115042576567">"{count,plural, =1{1 分钟}other{# 分钟}}"</string>
+    <string name="duration_used_seconds" msgid="6543746449171675028">"{count,plural, =1{1 秒}other{# 秒}}"</string>
     <string name="permission_usage_any_permission" msgid="6358023078298106997">"不限权限"</string>
     <string name="permission_usage_any_time" msgid="3802087027301631827">"不限时间"</string>
     <string name="permission_usage_last_7_days" msgid="7386221251886130065">"过去 7 天"</string>
@@ -151,8 +160,7 @@
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"过去 1 分钟内的权限使用频率"</string>
     <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"过去 24 小时内未使用过"</string>
     <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"过去 7 天内未使用过"</string>
-    <!-- no translation found for permission_usage_preference_label (8343167938128676378) -->
-    <skip />
+    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{有 1 个应用使用过}other{有 # 个应用使用过}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"在信息中心查看全部详细信息"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"过滤条件：<xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"移除过滤条件"</string>
@@ -235,22 +243,17 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"获准管理所有文件"</string>
     <string name="ask_header" msgid="2633816846459944376">"每次都询问"</string>
     <string name="denied_header" msgid="903209608358177654">"不允许"</string>
-    <!-- no translation found for days (609563020985571393) -->
-    <skip />
-    <!-- no translation found for hours (3447767892295843282) -->
-    <skip />
-    <!-- no translation found for minutes (4408293038068503157) -->
-    <skip />
-    <!-- no translation found for seconds (5397771912131132690) -->
-    <skip />
+    <string name="days" msgid="609563020985571393">"{count,plural, =1{1 天}other{# 天}}"</string>
+    <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 小时}other{# 小时}}"</string>
+    <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 分钟}other{# 分钟}}"</string>
+    <string name="seconds" msgid="5397771912131132690">"{count,plural, =1{1 秒}other{# 秒}}"</string>
     <string name="permission_reminders" msgid="6528257957664832636">"权限提醒"</string>
     <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"1 个未使用的应用"</string>
     <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> 个未使用的应用"</string>
     <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"为保护您的隐私，系统已移除这些权限。点按即可查看"</string>
     <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"已移除未使用应用的权限"</string>
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"一些应用已连续几个月未使用过。点按即可查看。"</string>
-    <!-- no translation found for unused_apps_notification_title (4314832015894238019) -->
-    <skip />
+    <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# 个未使用的应用}other{# 个未使用的应用}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"系统已移除权限和临时文件，并停止通知功能。点按即可查看。"</string>
     <string name="post_drive_permission_decision_reminder_title" msgid="5541572128394226308">"近期的权限"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"一些应用已连续几个月未使用过"</string>
@@ -445,6 +448,10 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问您的手机通话记录吗？"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"允许“&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;”拨打电话和管理通话吗？"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问与您的生命体征相关的传感器数据吗？"</string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="5239219356063824373">"此应用想要随时访问与您的生命体征相关的传感器数据（即使在您未使用此应用时）。"<annotation id="link">"您可以在“设置”中允许。"</annotation></string>
+    <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问与您的生命体征相关的传感器数据吗？"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"此应用可能想要随时访问与您的生命体征相关的传感器数据（即使在您未使用此应用时）。"<annotation id="link">"您可以在“设置”中允许。"</annotation></string>
+    <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"要更改&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;对与您的生命体征相关的传感器数据的访问权限吗？"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"受控权限"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"应用可使用位置信息"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"您的 IT 管理员允许“<xliff:g id="APP_NAME">%s</xliff:g>”使用您的位置信息"</string>
