@@ -287,7 +287,7 @@
     <string name="allowed_foreground_header" msgid="6845655788447833353">"Разрешено только при использовании"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Приложения с доступом только к медиафайлам"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Приложения с доступом ко всем файлам"</string>
-    <string name="ask_header" msgid="2633816846459944376">"Разрешение запрашивается каждый раз"</string>
+    <string name="ask_header" msgid="2633816846459944376">"Спрашивать каждый раз"</string>
     <string name="denied_header" msgid="903209608358177654">"Доступ запрещен"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> день</item>

@@ -370,7 +370,7 @@
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"โทรศัพท์"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"แอป SMS เริ่มต้น"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"แอป SMS"</string>
-    <string name="role_sms_description" msgid="3424020199148153513">"แอปที่ให้คุณใช้หมายเลขโทรศัพท์เพื่อส่งและรับ SMS, รูปภาพ, วิดีโอ และอื่นๆ"</string>
+    <string name="role_sms_description" msgid="3424020199148153513">"แอปที่ให้คุณใช้หมายเลขโทรศัพท์เพื่อส่งและรับ SMS, รูปภาพ วิดีโอ และอื่นๆ"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"ตั้งค่า <xliff:g id="APP_NAME">%1$s</xliff:g> เป็นแอป SMS เริ่มต้น"</string>
     <string name="role_sms_request_description" msgid="983371022668134198">"มีสิทธิ์เข้าถึงรายชื่อติดต่อ SMS และโทรศัพท์"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"ข้อความ, การส่งข้อความ, ข้อความ, การส่งข้อความ"</string>

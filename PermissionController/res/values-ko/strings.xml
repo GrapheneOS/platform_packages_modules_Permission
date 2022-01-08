@@ -215,7 +215,7 @@
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"정확한 위치가 사용 중지된 경우 앱이 대략적인 위치 정보에 액세스할 수 있습니다"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> 액세스 권한"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"이 앱의 <xliff:g id="PERM">%1$s</xliff:g> 액세스 권한"</string>
-    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g> 앱 권한 모두 보기"</string>
+    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g> 권한 모두 보기"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"이 권한이 있는 앱 모두 보기"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"어시스턴트 마이크 사용 표시"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"앱이 사용되지 않는 경우 권한 삭제"</string>
