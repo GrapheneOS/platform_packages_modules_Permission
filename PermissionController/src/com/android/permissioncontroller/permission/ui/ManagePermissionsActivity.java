@@ -57,6 +57,7 @@ import com.android.permissioncontroller.permission.ui.auto.AutoManageStandardPer
 import com.android.permissioncontroller.permission.ui.auto.AutoPermissionAppsFragment;
 import com.android.permissioncontroller.permission.ui.auto.AutoReviewPermissionDecisionsFragment;
 import com.android.permissioncontroller.permission.ui.auto.AutoUnusedAppsFragment;
+import com.android.permissioncontroller.permission.ui.auto.dashboard.AutoPermissionUsageFragment;
 import com.android.permissioncontroller.permission.ui.handheld.AppPermissionFragment;
 import com.android.permissioncontroller.permission.ui.handheld.AppPermissionGroupsFragment;
 import com.android.permissioncontroller.permission.ui.handheld.HandheldUnusedAppsWrapperFragment;
@@ -175,12 +176,14 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                     return;
                 }
 
-
                 PermissionControllerStatsLog.write(PERMISSION_USAGE_FRAGMENT_INTERACTION, sessionId,
                         PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__OPEN);
-                String groupName = getIntent().getStringExtra(Intent.EXTRA_PERMISSION_GROUP_NAME);
-                androidXFragment = PermissionUsageV2WrapperFragment.newInstance(groupName,
-                        Long.MAX_VALUE, sessionId);
+                if (DeviceUtils.isAuto(this)) {
+                    androidXFragment = new AutoPermissionUsageFragment();
+                } else {
+                    androidXFragment = PermissionUsageV2WrapperFragment.newInstance(
+                            Long.MAX_VALUE, sessionId);
+                }
             } break;
 
             case Intent.ACTION_REVIEW_PERMISSION_HISTORY: {
