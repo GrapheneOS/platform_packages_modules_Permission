@@ -23,19 +23,19 @@
     <string name="back" msgid="6249950659061523680">"返回"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"卸载或停用"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"未找到应用"</string>
-    <string name="grant_dialog_button_deny" msgid="5694497572414531524">"拒绝"</string>
-    <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1851917275643744594">"拒绝，不要再询问"</string>
+    <string name="grant_dialog_button_deny" msgid="88262611492697192">"不允许"</string>
+    <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"不允许且不要再询问"</string>
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"保留“在使用该应用期间”"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"继续使用“仅限这一次”设置"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"更多信息"</string>
-    <string name="grant_dialog_button_deny_anyway" msgid="3221644923954258179">"仍然拒绝"</string>
+    <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"仍然不允许"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"关闭"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"第 <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> 项权限（共 <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g> 项）"</string>
     <string name="permission_warning_template" msgid="2247087781222679458">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;<xliff:g id="ACTION">%2$s</xliff:g>吗？"</string>
     <string name="permission_add_background_warning_template" msgid="1812914855915092273">"要一律允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;<xliff:g id="ACTION">%2$s</xliff:g>吗？"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"仅限使用应用时"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"始终"</string>
-    <string name="deny_permission_deny_and_dont_ask_again" msgid="766882021426214510">"拒绝，不要再询问"</string>
+    <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"不允许且不要再询问"</string>
     <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g> 项已停用"</string>
     <string name="permission_revoked_all" msgid="3397649017727222283">"全部已停用"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"均未停用"</string>
@@ -43,7 +43,7 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"始终允许"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"仅在使用该应用时允许"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"更改为确切位置"</string>
-    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"继续使用大概位置"</string>
+    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"继续使用大致位置"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"仅限这一次"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"一律允许"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"允许管理所有文件"</string>
@@ -51,6 +51,7 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"应用"</string>
     <string name="app_permissions" msgid="3369917736607944781">"应用权限"</string>
     <string name="unused_apps" msgid="2058057455175955094">"未使用的应用"</string>
+    <string name="no_unused_apps" msgid="12809387670415295">"没有未使用的应用"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"停用应用"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"如果您停用此应用，Android 及其他应用可能会无法再正常运行。请注意，您无法删除此应用，因为它是设备预装应用。停用后，系统将关闭此应用并在设备上将其隐藏。"</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"权限管理器"</string>
@@ -68,6 +69,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"已授权 <xliff:g id="COUNT_0">%1$d</xliff:g> 个应用/共 <xliff:g id="COUNT_1">%2$d</xliff:g> 个"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"显示系统应用"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"隐藏系统应用"</string>
+    <string name="manage_permission" msgid="2895385393037061964">"管理权限"</string>
     <string name="no_apps" msgid="2412612731628386816">"没有应用"</string>
     <string name="location_settings" msgid="3624412509133422562">"位置信息设置"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g>是此设备的一个位置信息服务提供程序。您可以在位置信息设置中修改位置信息使用权。"</string>
@@ -87,7 +89,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"一律允许"</string>
     <string name="permission_access_only_foreground" msgid="7801170728159326195">"仅在使用该应用时允许"</string>
-    <string name="permission_access_never" msgid="1029877154284995424">"拒绝"</string>
+    <string name="permission_access_never" msgid="4647014230217936900">"不允许"</string>
     <string name="loading" msgid="4789365003890741082">"正在加载…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"所有权限"</string>
     <string name="other_permissions" msgid="2901186127193849594">"其他应用功能"</string>
@@ -105,26 +107,30 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"当前权限"</string>
     <string name="message_staging" msgid="9110563899955511866">"正在准备安装应用…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"未知"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"信息中心"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"隐私信息中心"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g>使用情况"</string>
-    <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"<xliff:g id="PERMGROUP">%1$s</xliff:g>在过去 24 个小时内的使用情况时间轴"</string>
-    <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"该应用使用您的<xliff:g id="PERMGROUP">%1$s</xliff:g>时："</string>
+    <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"查看其他权限"</string>
+    <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_1">%2$s</xliff:g>、<xliff:g id="PERMGROUP_0">%1$s</xliff:g>"</string>
+    <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>、<xliff:g id="PERMGROUP_1">%2$s</xliff:g>和另外 <xliff:g id="NUM">%3$s</xliff:g> 项权限"</string>
+    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"过去 24 小时内应用使用“<xliff:g id="PERMGROUP">%1$s</xliff:g>”权限的时间轴"</string>
+    <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"该应用何时使用了您的<xliff:g id="PERMGROUP">%1$s</xliff:g>权限"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"了解详情"</string>
-    <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
-      <item quantity="other">使用时间：<xliff:g id="NUMBER">%s</xliff:g> 天</item>
-      <item quantity="one">使用时间：1 天</item>
+    <string name="permission_usage_duration_and_proxy" msgid="573959201368716399">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
+    <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> 天</item>
+      <item quantity="one">1 天</item>
     </plurals>
-    <plurals name="duration_used_hours" formatted="false" msgid="2934347147156813767">
-      <item quantity="other">使用时间：<xliff:g id="NUMBER">%s</xliff:g> 小时</item>
-      <item quantity="one">使用时间：1 小时</item>
+    <plurals name="duration_used_hours" formatted="false" msgid="1020075479447003242">
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> 小时</item>
+      <item quantity="one">1 小时</item>
     </plurals>
-    <plurals name="duration_used_minutes" formatted="false" msgid="1871095305219275611">
-      <item quantity="other">使用时间：<xliff:g id="NUMBER">%s</xliff:g> 分钟</item>
-      <item quantity="one">使用时间：1 分钟</item>
+    <plurals name="duration_used_minutes" formatted="false" msgid="3422338854436291744">
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> 分钟</item>
+      <item quantity="one">1 分钟</item>
     </plurals>
-    <plurals name="duration_used_seconds" formatted="false" msgid="4036612197985123365">
-      <item quantity="other">使用时间：<xliff:g id="NUMBER">%s</xliff:g> 秒</item>
-      <item quantity="one">使用时间：1 秒</item>
+    <plurals name="duration_used_seconds" formatted="false" msgid="2726799598314248110">
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> 秒</item>
+      <item quantity="one">1 秒</item>
     </plurals>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">上次访问时间：<xliff:g id="TIME_2">%1$s</xliff:g>\n访问次数：<xliff:g id="NUM_3">%2$s</xliff:g> 次</item>
@@ -167,9 +173,10 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> 个应用</item>
       <item quantity="one">1 个应用</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
-      <item quantity="other"><xliff:g id="NUMBER">%1$d</xliff:g> 个应用使用了<xliff:g id="PERMGROUP_1">%2$s</xliff:g></item>
-      <item quantity="one">1 个应用使用了<xliff:g id="PERMGROUP_0">%2$s</xliff:g></item>
+    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"过去 24 小时内未使用"</string>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
+      <item quantity="other">有 <xliff:g id="NUMBER">%1$d</xliff:g> 个应用使用过</item>
+      <item quantity="one">有 1 个应用使用过</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"在信息中心查看全部详细信息"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"过滤条件：<xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -200,17 +207,18 @@
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"始终允许"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"仅在使用该应用时允许"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"每次都询问"</string>
-    <string name="app_permission_button_deny" msgid="2399316993899108824">"拒绝"</string>
+    <string name="app_permission_button_deny" msgid="6016454069832050300">"不允许"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"确切位置"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"大致位置"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"使用确切位置"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"如果此设置处于关闭状态，应用只能确定您的粗略位置范围"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"确切位置关闭时，应用可以获取您的大致位置"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>权限"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"是否允许这个应用访问<xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"查看“<xliff:g id="APP">%1$s</xliff:g>”的所有权限"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"查看具有此权限的所有应用"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"显示 Google 助理麦克风使用情况"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"如果未使用此应用，则移除相关权限"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"撤消权限并释放空间"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"为了保护您的数据，如果您连续几个月未使用此应用，系统会移除它的权限。"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"为了保护您的数据，如果您连续几个月未使用此应用，系统会移除其以下权限：<xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"为了保护您的数据，对于您连续几个月未使用过的应用，系统已将其权限移除。"</string>
@@ -226,7 +234,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"已移除<xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g>以及<xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g>权限"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"已移除<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>权限及另外 <xliff:g id="NUMBER">%2$s</xliff:g> 项权限"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"未使用的应用"</string>
-    <string name="unused_apps_page_summary" msgid="4644643299214625298">"如果您连续数月未使用某个应用，系统将对该应用采取以下措施：\n\n• 移除应用权限以保护您的数据\n• 停止通知功能以节省电量\n• 移除临时文件以释放空间"</string>
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"如果您连续几个月未使用某个应用，系统将对该应用采取以下措施：\n\n• 移除权限以保护您的数据\n• 停止通知功能以节省电量\n• 移除临时文件以释放空间\n\n如需重新授予权限以继续接收通知，请打开该应用。"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"距上次打开已超过 <xliff:g id="NUMBER">%s</xliff:g> 个月"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"应用上次打开时间是 <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"上次打开时间是 <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -239,7 +247,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"具有此权限的应用可以拍摄照片和录制视频"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"具有此权限的应用可以访问您的通讯录"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"具有此权限的应用可以使用此设备的位置信息"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"具有这项权限的应用不但可以发现并连接到附近的设备，还能确定附近设备间的相对位置"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"具有这项权限的应用可以查找、连接附近设备以及确定附近设备的相对位置"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"具有此权限的应用可以录制音频"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"具有此权限的应用可以拨打电话及管理通话"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"具有此权限的应用可以获取与您的生命体征相关的传感器数据"</string>
@@ -255,7 +263,7 @@
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"仅获准访问媒体文件"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"获准管理所有文件"</string>
     <string name="ask_header" msgid="2633816846459944376">"每次都询问"</string>
-    <string name="denied_header" msgid="2253955654228120835">"已拒绝"</string>
+    <string name="denied_header" msgid="903209608358177654">"不允许"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> 天</item>
       <item quantity="one">1 天</item>
@@ -318,30 +326,19 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"仅在使用该应用期间允许"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"媒体文件"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"所有文件"</string>
-    <!-- no translation found for app_perms_24h_access (99069906850627181) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_yest (5411926024794555022) -->
-    <skip />
-    <!-- no translation found for app_perms_content_provider (6996750793881252778) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_only_in_foreground (8590228656172893995) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_yest_only_in_foreground (8491319626462867381) -->
-    <skip />
-    <!-- no translation found for app_perms_content_provider_only_in_foreground (7111427348979322476) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_media_only (6651699644199132054) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_yest_media_only (7213187706424998792) -->
-    <skip />
-    <!-- no translation found for app_perms_content_provider_media_only (6206759230589923421) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_all_files (8902360456978159091) -->
-    <skip />
-    <!-- no translation found for app_perms_24h_access_yest_all_files (5708424073126844909) -->
-    <skip />
-    <!-- no translation found for app_perms_content_provider_all_files (3315281519230304799) -->
-    <skip />
+    <string name="permission_subtitle_background" msgid="8916750995309083180">"一律允许"</string>
+    <string name="app_perms_24h_access" msgid="99069906850627181">"<xliff:g id="TIME_DATE">%1$s</xliff:g> 访问过"</string>
+    <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"上次授予时间：昨天<xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_content_provider" msgid="6996750793881252778">"过去 24 小时内访问过"</string>
+    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"上次授予时间：<xliff:g id="TIME_DATE">%1$s</xliff:g> • 一律允许"</string>
+    <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"上次授予时间：昨天<xliff:g id="TIME_DATE">%1$s</xliff:g> • 一律允许"</string>
+    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"过去 24 小时内访问过 • 一律允许"</string>
+    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"上次授予时间：<xliff:g id="TIME_DATE">%1$s</xliff:g> • 媒体"</string>
+    <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"上次授予时间：昨天<xliff:g id="TIME_DATE">%1$s</xliff:g> • 媒体"</string>
+    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"过去 24 小时内访问过 • 媒体"</string>
+    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"上次授予时间：<xliff:g id="TIME_DATE">%1$s</xliff:g> • 所有文件"</string>
+    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"上次授予时间：昨天<xliff:g id="TIME_DATE">%1$s</xliff:g> • 所有文件"</string>
+    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"过去 24 小时内访问过 • 所有文件"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"未允许任何权限"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"未拒绝任何权限"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"未允许任何应用"</string>
@@ -452,22 +449,22 @@
     <string name="adjust_user_sensitive_per_app_header" msgid="4543506440989005648">"突出显示以下应用的权限使用情况"</string>
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"显示智能助理应用触发检测"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"使用麦克风激活语音助理后，在状态栏中显示相关图标"</string>
-    <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问您设备上的照片和媒体吗？"</string>
+    <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问您设备上的照片和媒体吗？"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问您的通讯录吗？"</string>
-    <string name="permgrouprequest_location" msgid="6990232580121067883">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;获取此设备的位置信息吗？"</string>
+    <string name="permgrouprequest_location" msgid="6990232580121067883">"要允许“&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;”获取此设备的位置信息吗？"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"只有当您使用该应用时，该应用才有权访问位置信息"</string>
-    <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;获取此设备的位置信息吗？"</string>
+    <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"要允许“&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;”获取此设备的位置信息吗？"</string>
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"该应用可能想要随时获取您的位置信息（即使您并未使用该应用）。"<annotation id="link">"在“设置”中允许"</annotation>"。"</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"要更改&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;的位置信息访问权限吗？"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"该应用想要随时获取您的位置信息（即使您并未使用该应用）。"<annotation id="link">"在“设置”中允许"</annotation>"。"</string>
-    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;发现并连接到附近的设备吗？"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;发现并连接到附近的设备吗？"<annotation id="link">"您可以在“设置”中允许。"</annotation></string>
-    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"要将“<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>”可以使用的位置信息从大概位置改为确切位置吗？"</string>
-    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;获取此设备的粗略位置吗？"</string>
+    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;查找、连接附近设备以及确定附近设备的相对位置吗？"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;查找、连接附近设备以及确定附近设备的相对位置吗？"<annotation id="link">"您可以在“设置”中允许。"</annotation></string>
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"要将“<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>”可以使用的位置信息从大致位置改为确切位置吗？"</string>
+    <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"要允许“&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;”获取此设备的大致位置信息吗？"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"确切位置"</string>
-    <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"粗略位置"</string>
+    <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"大致位置"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问您的日历吗？"</string>
-    <string name="permgrouprequest_sms" msgid="5672063688745420991">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;发送和查看短信吗？"</string>
+    <string name="permgrouprequest_sms" msgid="5672063688745420991">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;发送和查看短信吗？"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"允许“<xliff:g id="APP_NAME">%1$s</xliff:g>”&lt;b&gt;&lt;/b&gt;访问您设备上的照片、媒体内容和文件吗？"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;录音吗？"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"此应用将只能在您使用它时录音"</string>
@@ -476,9 +473,9 @@
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"要更改&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;的麦克风使用权限吗？"</string>
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"此应用想要随时录音，即使在您未使用它的时候。"<annotation id="link">"您可以在“设置”中授权"</annotation>"。"</string>
     <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;获取您的身体活动数据吗？"</string>
-    <string name="permgrouprequest_camera" msgid="5123097035410002594">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;拍摄照片和录制视频吗？"</string>
+    <string name="permgrouprequest_camera" msgid="5123097035410002594">"要允许“&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;”拍摄照片和录制视频吗？"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"此应用将只能在您使用它时拍摄照片和录制视频"</string>
-    <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;拍摄照片和录制视频吗？"</string>
+    <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"要允许“&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;”拍摄照片和录制视频吗？"</string>
     <string name="permgroupbackgroundrequestdetail_camera" msgid="4458783509089859078">"此应用可能想要随时拍摄照片和录制视频，即使在您未使用它的时候。"<annotation id="link">"您可以在“设置”中授权"</annotation>"。"</string>
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"要更改&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;的相机使用权限吗？"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"此应用想要随时拍摄照片和录制视频，即使在您未使用它的时候。"<annotation id="link">"您可以在“设置”中授权"</annotation>"。"</string>
@@ -493,4 +490,10 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"仅限系统应用使用的权限"</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"其他权限"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"应用定义的权限"</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"摄像头"</string>
+    <string name="privdash_label_microphone" msgid="8415035835803511693">"麦克风"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"位置信息"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"其他"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"无"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"过去 24 小时\n"</string>
 </resources>
