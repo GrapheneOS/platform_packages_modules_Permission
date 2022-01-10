@@ -532,6 +532,7 @@
 
     <role
         name="android.app.role.SYSTEM_AUTOMOTIVE_PROJECTION"
+        allowBypassingQualification="true"
         defaultHolders="config_systemAutomotiveProjection"
         exclusive="false"
         minSdkVersion="31"
@@ -1017,6 +1018,7 @@
 
     <role
         name="android.app.role.COMPANION_DEVICE_APP_STREAMING"
+        allowBypassingQualification="true"
         behavior="CompanionDeviceAppStreamingRoleBehavior"
         description="@string/role_app_streaming_description"
         exclusive="false"
