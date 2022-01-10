@@ -223,6 +223,11 @@ public final class SafetyCenterService extends SystemService {
             mSafetyCenterDataChangedListeners.remove(listener);
         }
 
+        @Override
+        public void dismissSafetyIssue(String issueId) {
+            // TODO(b/203098016): Implement this with real data.
+        }
+
         private boolean getSafetyCenterConfigValue() {
             return getContext().getResources().getBoolean(Resources.getSystem().getIdentifier(
                     "config_enableSafetyCenter",

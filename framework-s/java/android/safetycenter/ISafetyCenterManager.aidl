@@ -63,4 +63,9 @@ interface ISafetyCenterManager {
     void addOnSafetyCenterDataChangedListener(in IOnSafetyCenterDataChangedListener listener);
 
     void removeOnSafetyCenterDataChangedListener(in IOnSafetyCenterDataChangedListener listener);
+
+    /**
+     * Dismisses the issue corresponding to the given issue ID.
+     */
+    void dismissSafetyIssue(in String issueId);
 }
