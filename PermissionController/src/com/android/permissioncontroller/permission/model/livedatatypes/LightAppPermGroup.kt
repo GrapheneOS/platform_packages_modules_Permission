@@ -147,6 +147,13 @@ data class LightAppPermGroup(
     val isRevokeWhenRequested = permissions.any { it.value.isRevokeWhenRequested }
 
     /**
+     * Whether a runtime permission request dialog must be shown on behalf of the app, rather than
+     * the app requesting explicitly
+     */
+    val isRuntimePermReviewRequired = supportsRuntimePerms &&
+            permissions.any { it.value.isReviewRequired }
+
+    /**
      * A subset of the AppPermssionGroup, representing either the background or foreground permissions
      * of the full group.
      *
