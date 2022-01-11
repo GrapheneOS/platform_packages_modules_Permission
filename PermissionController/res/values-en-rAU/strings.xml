@@ -55,6 +55,13 @@
     <string name="unused_apps" msgid="2058057455175955094">"Unused apps"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"No unused apps"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"Zero unused apps"</string>
+    <string name="review_permission_decisions" msgid="309559429150613632">"Recent permission decisions"</string>
+    <string name="review_permission_decisions_view_all" msgid="90391040431566130">"View all recent permission decisions"</string>
+    <string name="review_permission_decisions_empty" msgid="8120775336417279806">"No recent permission decisions"</string>
+    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Manage data access to calendar, call logs and more"</string>
+    <string name="granted_permission_decision" msgid="7824827491551861365">"You gave <xliff:g id="APP_NAME">%1$s</xliff:g> access to <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="denied_permission_decision" msgid="5308961501779563781">"You denied <xliff:g id="APP_NAME">%1$s</xliff:g> access to <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Today}=1{1 day ago}other{# days ago}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Disable app"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"If you disable this app, Android and other apps may no longer function as intended. Remember that you can’t delete this app as it came pre-installed on your device. By disabling it, you turn this app off and hide it on your device."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Permission manager"</string>
@@ -62,8 +69,7 @@
     <string name="no_permissions" msgid="3881676756371148563">"No permissions"</string>
     <string name="additional_permissions" msgid="5801285469338873430">"Additional permissions"</string>
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"Open app info"</string>
-    <!-- no translation found for additional_permissions_more (5681220714755304407) -->
-    <skip />
+    <string name="additional_permissions_more" msgid="5681220714755304407">"{count,plural, =1{# more}other{# more}}"</string>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"This app was designed for an older version of Android. Denying permission may cause it to no longer function as intended."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"perform an unknown action"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> of <xliff:g id="COUNT_1">%2$d</xliff:g> apps allowed"</string>
@@ -121,14 +127,10 @@
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Learn more"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_3" msgid="758761785983094351">"<xliff:g id="ATTRIBUTION_NAME">%1$s</xliff:g> • <xliff:g id="APP_NAME">%2$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%3$s</xliff:g>"</string>
-    <!-- no translation found for duration_used_days (8293010131040301793) -->
-    <skip />
-    <!-- no translation found for duration_used_hours (1128716208752263576) -->
-    <skip />
-    <!-- no translation found for duration_used_minutes (5335824115042576567) -->
-    <skip />
-    <!-- no translation found for duration_used_seconds (6543746449171675028) -->
-    <skip />
+    <string name="duration_used_days" msgid="8293010131040301793">"{count,plural, =1{1 day}other{# days}}"</string>
+    <string name="duration_used_hours" msgid="1128716208752263576">"{count,plural, =1{1 hour}other{# hours}}"</string>
+    <string name="duration_used_minutes" msgid="5335824115042576567">"{count,plural, =1{1 min}other{# mins}}"</string>
+    <string name="duration_used_seconds" msgid="6543746449171675028">"{count,plural, =1{1 sec}other{# secs}}"</string>
     <string name="permission_usage_any_permission" msgid="6358023078298106997">"Any permission"</string>
     <string name="permission_usage_any_time" msgid="3802087027301631827">"Any time"</string>
     <string name="permission_usage_last_7_days" msgid="7386221251886130065">"Last 7 days"</string>
@@ -151,8 +153,7 @@
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Permission usage in last 1 minute"</string>
     <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"Not used in past 24 hours"</string>
     <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"Not used in past 7 days"</string>
-    <!-- no translation found for permission_usage_preference_label (8343167938128676378) -->
-    <skip />
+    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Used by 1 app}other{Used by # apps}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"See all in Dashboard"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtered by: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Remove filter"</string>
@@ -235,22 +236,17 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Allowed to manage all files"</string>
     <string name="ask_header" msgid="2633816846459944376">"Ask every time"</string>
     <string name="denied_header" msgid="903209608358177654">"Not allowed"</string>
-    <!-- no translation found for days (609563020985571393) -->
-    <skip />
-    <!-- no translation found for hours (3447767892295843282) -->
-    <skip />
-    <!-- no translation found for minutes (4408293038068503157) -->
-    <skip />
-    <!-- no translation found for seconds (5397771912131132690) -->
-    <skip />
+    <string name="days" msgid="609563020985571393">"{count,plural, =1{1 day}other{# days}}"</string>
+    <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 hour}other{# hours}}"</string>
+    <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 minute}other{# minutes}}"</string>
+    <string name="seconds" msgid="5397771912131132690">"{count,plural, =1{1 second}other{# seconds}}"</string>
     <string name="permission_reminders" msgid="6528257957664832636">"Permission reminders"</string>
     <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"1 unused app"</string>
     <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> unused apps"</string>
     <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"Permissions removed to protect your privacy. Tap to review"</string>
     <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"Permissions removed for unused apps"</string>
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Some apps haven’t been used for a few months. Tap to review."</string>
-    <!-- no translation found for unused_apps_notification_title (4314832015894238019) -->
-    <skip />
+    <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# unused app}other{# unused apps}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Permissions and temporary files have been removed and notifications were stopped. Tap to review."</string>
     <string name="post_drive_permission_decision_reminder_title" msgid="5541572128394226308">"Recent permissions"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Some apps haven’t been used for a few months"</string>
@@ -445,6 +441,10 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access your phone call logs?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to make and manage phone calls?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access sensor data about your vital signs?"</string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="5239219356063824373">"This app wants to access sensor data about your vital signs all the time, even when you’re not using the app. "<annotation id="link">"Allow in settings."</annotation></string>
+    <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access the sensor data about your vital signs?"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"This app may want to access the sensor data about your vital signs all the time, even when you’re not using the app. "<annotation id="link">"Allow in settings."</annotation></string>
+    <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Change access to sensor data about your vital signs for &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Controlled permissions"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Location can be accessed"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Your IT admin is allowing <xliff:g id="APP_NAME">%s</xliff:g> to access your location"</string>
