@@ -248,7 +248,7 @@ class GrantPermissionsViewModel(
                     for ((key, state) in states) {
                         val allAffectedGranted = state.affectedPermissions.all { perm ->
                             appPermGroup.permissions[perm]?.isGrantedIncludingAppOp == true
-                        }
+                        } && !appPermGroup.isRuntimePermReviewRequired
                         if (allAffectedGranted) {
                             groupStates[key]!!.state = STATE_ALLOWED
                         }
@@ -675,8 +675,9 @@ class GrantPermissionsViewModel(
             return STATE_SKIPPED
         }
 
-        if (isBackground && group.background.isGranted ||
-            !isBackground && group.foreground.isGranted) {
+        if ((isBackground && group.background.isGranted ||
+            !isBackground && group.foreground.isGranted) &&
+            !group.isRuntimePermReviewRequired) {
             // If FINE location is not granted, do not grant it automatically when COARSE
             // location is already granted.
             if (group.permGroupName == LOCATION &&

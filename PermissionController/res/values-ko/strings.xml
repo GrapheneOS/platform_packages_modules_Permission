@@ -55,6 +55,20 @@
     <string name="unused_apps" msgid="2058057455175955094">"사용하지 않는 앱"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"사용하지 않는 앱 없음"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"사용하지 않는 앱 0개"</string>
+    <!-- no translation found for review_permission_decisions (309559429150613632) -->
+    <skip />
+    <!-- no translation found for review_permission_decisions_view_all (90391040431566130) -->
+    <skip />
+    <!-- no translation found for review_permission_decisions_empty (8120775336417279806) -->
+    <skip />
+    <!-- no translation found for auto_permission_manager_summary (9157438376234301354) -->
+    <skip />
+    <!-- no translation found for granted_permission_decision (7824827491551861365) -->
+    <skip />
+    <!-- no translation found for denied_permission_decision (5308961501779563781) -->
+    <skip />
+    <!-- no translation found for days_ago (6650359081551335629) -->
+    <skip />
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"앱 사용 중지"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"앱을 사용 중지하면 Android와 다른 앱이 제대로 작동하지 않을 수도 있습니다. 또한 기기에 사전 설치된 앱이므로 삭제할 수 없습니다. 비활성화하면 앱이 사용 중지되고 기기에서 숨겨집니다."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"권한 관리자"</string>
@@ -62,8 +76,7 @@
     <string name="no_permissions" msgid="3881676756371148563">"권한 없음"</string>
     <string name="additional_permissions" msgid="5801285469338873430">"추가 권한"</string>
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"앱 정보 열기"</string>
-    <!-- no translation found for additional_permissions_more (5681220714755304407) -->
-    <skip />
+    <string name="additional_permissions_more" msgid="5681220714755304407">"{count,plural, =1{#개 더보기}other{#개 더보기}}"</string>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"이 앱은 Android 이전 버전에 맞게 설계되었습니다. 권한을 거부하면 정상적으로 작동하지 않을 수 있습니다."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"알 수 없는 작업 실행"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>개 앱 허용됨"</string>
@@ -121,14 +134,10 @@
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"자세히 알아보기"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_3" msgid="758761785983094351">"<xliff:g id="ATTRIBUTION_NAME">%1$s</xliff:g> • <xliff:g id="APP_NAME">%2$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%3$s</xliff:g>"</string>
-    <!-- no translation found for duration_used_days (8293010131040301793) -->
-    <skip />
-    <!-- no translation found for duration_used_hours (1128716208752263576) -->
-    <skip />
-    <!-- no translation found for duration_used_minutes (5335824115042576567) -->
-    <skip />
-    <!-- no translation found for duration_used_seconds (6543746449171675028) -->
-    <skip />
+    <string name="duration_used_days" msgid="8293010131040301793">"{count,plural, =1{1일}other{#일}}"</string>
+    <string name="duration_used_hours" msgid="1128716208752263576">"{count,plural, =1{1시간}other{#시간}}"</string>
+    <string name="duration_used_minutes" msgid="5335824115042576567">"{count,plural, =1{1분}other{#분}}"</string>
+    <string name="duration_used_seconds" msgid="6543746449171675028">"{count,plural, =1{1초}other{#초}}"</string>
     <string name="permission_usage_any_permission" msgid="6358023078298106997">"모든 권한"</string>
     <string name="permission_usage_any_time" msgid="3802087027301631827">"전체 기간"</string>
     <string name="permission_usage_last_7_days" msgid="7386221251886130065">"최근 7일"</string>
@@ -151,8 +160,7 @@
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"지난 1분 동안 사용된 권한"</string>
     <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"지난 24시간 이내에 사용하지 않음"</string>
     <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"지난 7일 이내에 사용하지 않음"</string>
-    <!-- no translation found for permission_usage_preference_label (8343167938128676378) -->
-    <skip />
+    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{앱 1개에서 사용}other{앱 #개에서 사용}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"대시보드에서 모두 보기"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"필터링 기준: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"필터 삭제"</string>
@@ -185,7 +193,7 @@
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"정확한 위치가 사용 중지된 경우 앱이 대략적인 위치 정보에 액세스할 수 있습니다"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> 액세스 권한"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"이 앱의 <xliff:g id="PERM">%1$s</xliff:g> 액세스 권한"</string>
-    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g> 앱 권한 모두 보기"</string>
+    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g> 권한 모두 보기"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"이 권한이 있는 앱 모두 보기"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"어시스턴트 마이크 사용 표시"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"앱이 사용되지 않는 경우 권한 삭제"</string>
@@ -235,22 +243,17 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"모든 파일을 관리하도록 허용됨"</string>
     <string name="ask_header" msgid="2633816846459944376">"항상 확인"</string>
     <string name="denied_header" msgid="903209608358177654">"허용되지 않음"</string>
-    <!-- no translation found for days (609563020985571393) -->
-    <skip />
-    <!-- no translation found for hours (3447767892295843282) -->
-    <skip />
-    <!-- no translation found for minutes (4408293038068503157) -->
-    <skip />
-    <!-- no translation found for seconds (5397771912131132690) -->
-    <skip />
+    <string name="days" msgid="609563020985571393">"{count,plural, =1{1일}other{#일}}"</string>
+    <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1시간}other{#시간}}"</string>
+    <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1분}other{#분}}"</string>
+    <string name="seconds" msgid="5397771912131132690">"{count,plural, =1{1초}other{#초}}"</string>
     <string name="permission_reminders" msgid="6528257957664832636">"권한 알림"</string>
     <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"사용하지 않는 앱 1개"</string>
     <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"사용하지 않는 앱 <xliff:g id="NUMBER_OF_APPS">%s</xliff:g>개"</string>
     <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"개인정보 보호를 위해 권한이 삭제되었습니다. 검토하려면 탭하세요."</string>
     <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"사용하지 않는 앱의 권한이 삭제됨"</string>
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"일부 앱을 몇 개월 동안 사용하지 않았습니다. 검토하려면 탭하세요."</string>
-    <!-- no translation found for unused_apps_notification_title (4314832015894238019) -->
-    <skip />
+    <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{사용하지 않는 앱 #개}other{사용하지 않는 앱 #개}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"권한 및 임시 파일이 삭제되었으며 알림이 중단되었습니다. 확인하려면 탭하세요."</string>
     <string name="post_drive_permission_decision_reminder_title" msgid="5541572128394226308">"최근 사용 권한"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"일부 앱을 몇 개월 동안 사용하지 않았습니다."</string>
@@ -445,6 +448,10 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 통화 기록에 액세스하도록 허용하시겠습니까?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 전화를 걸고 관리하도록 허용하시겠습니까?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 생체 신호에 관한 센서 데이터에 액세스하도록 허용하시겠습니까?"</string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="5239219356063824373">"앱을 사용하고 있지 않을 때도 앱에서 생체 신호 센서 데이터에 항상 액세스하려고 합니다. "<annotation id="link">"설정에서 액세스 허용하기"</annotation></string>
+    <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 생체 신호에 관한 센서 데이터에 액세스하도록 허용하시겠습니까?"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"앱을 사용하고 있지 않을 때도 앱에서 항상 센서 데이터에 액세스하고자 할 수 있습니다. "<annotation id="link">"설정에서 액세스 허용하기"</annotation></string>
+    <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;의 생체 신호 센서 데이터 액세스를 변경하시겠습니까?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"관리 대상 권한"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"앱이 위치 정보에 액세스할 수 있음"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"IT 관리자가 <xliff:g id="APP_NAME">%s</xliff:g>에서 내 위치 정보에 액세스하도록 허용합니다."</string>
