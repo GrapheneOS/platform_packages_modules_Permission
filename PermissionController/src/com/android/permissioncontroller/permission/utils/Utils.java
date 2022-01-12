@@ -206,6 +206,7 @@ public final class Utils {
     private static final ArrayMap<String, Integer> PERM_GROUP_BACKGROUND_REQUEST_DETAIL_RES;
     private static final ArrayMap<String, Integer> PERM_GROUP_UPGRADE_REQUEST_RES;
     private static final ArrayMap<String, Integer> PERM_GROUP_UPGRADE_REQUEST_DETAIL_RES;
+    private static final ArrayMap<String, Integer> PERM_GROUP_CONTINUE_REQUEST_RES;
 
     /** Permission -> Sensor codes */
     private static final ArrayMap<String, Integer> PERM_SENSOR_CODES;
@@ -346,6 +347,7 @@ public final class Utils {
         PERM_GROUP_REQUEST_RES.put(CALL_LOG, R.string.permgrouprequest_calllog);
         PERM_GROUP_REQUEST_RES.put(PHONE, R.string.permgrouprequest_phone);
         PERM_GROUP_REQUEST_RES.put(SENSORS, R.string.permgrouprequest_sensors);
+        PERM_GROUP_REQUEST_RES.put(NOTIFICATIONS, R.string.permgrouprequest_notifications);
 
         PERM_GROUP_REQUEST_DETAIL_RES = new ArrayMap<>();
         PERM_GROUP_REQUEST_DETAIL_RES.put(LOCATION, R.string.permgrouprequestdetail_location);
@@ -387,6 +389,10 @@ public final class Utils {
                 .put(CAMERA, R.string.permgroupupgraderequestdetail_camera);
         PERM_GROUP_UPGRADE_REQUEST_DETAIL_RES
                 .put(SENSORS,  R.string.permgroupupgraderequestdetail_sensors);
+
+        PERM_GROUP_CONTINUE_REQUEST_RES = new ArrayMap<>();
+        PERM_GROUP_CONTINUE_REQUEST_RES
+                .put(NOTIFICATIONS, R.string.permgrouprequestcontinue_notifications);
 
         PERM_SENSOR_CODES = new ArrayMap<>();
         if (SdkLevel.isAtLeastS()) {
@@ -1166,6 +1172,15 @@ public final class Utils {
      */
     public static int getUpgradeRequestDetail(String groupName) {
         return PERM_GROUP_UPGRADE_REQUEST_DETAIL_RES.getOrDefault(groupName, 0);
+    }
+
+    /**
+     * The resource id for the "continue allowing" message for a permission group
+     * @param groupName Permission group name
+     * @return The id or 0 if the permission group doesn't exist or have a message
+     */
+    public static int getContinueRequest(String groupName) {
+        return PERM_GROUP_CONTINUE_REQUEST_RES.getOrDefault(groupName, 0);
     }
 
     /**

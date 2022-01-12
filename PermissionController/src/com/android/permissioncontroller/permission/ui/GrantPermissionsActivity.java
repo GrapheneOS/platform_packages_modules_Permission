@@ -370,6 +370,9 @@ public class GrantPermissionsActivity extends SettingsActivity
                 break;
             case UPGRADE_MESSAGE:
                 messageId = Utils.getUpgradeRequest(info.getGroupName());
+                break;
+            case CONTINUE_MESSAGE:
+                messageId = Utils.getContinueRequest(info.getGroupName());
         }
 
         CharSequence message = getRequestMessage(appLabel, mTargetPackage,
