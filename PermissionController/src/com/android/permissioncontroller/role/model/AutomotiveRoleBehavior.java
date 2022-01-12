@@ -23,14 +23,13 @@ import android.os.UserHandle;
 import androidx.annotation.NonNull;
 
 /**
- * Class for behavior of the Automotive Cluster role.
+ * Class for behavior of the Automotive role.
  */
-public class SystemAutomotiveClusterRoleBehavior implements RoleBehavior {
+public class AutomotiveRoleBehavior implements RoleBehavior {
 
     @Override
     public boolean isAvailableAsUser(@NonNull Role role, @NonNull UserHandle user,
             @NonNull Context context) {
-        // Cluster role is only available on Automotive
         return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE);
     }
 }
