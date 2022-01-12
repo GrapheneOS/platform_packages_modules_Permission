@@ -106,6 +106,7 @@ java_sdk_library {
         "modules-utils-os",
         "service-permission-shared",
     ],
+    exclude_kotlinc_generated_files: true,
     jarjar_rules: ":permission-jarjar-rules",
     kotlincflags: [
         "-Xjvm-default=all",
