@@ -60,7 +60,9 @@ class AutoPermissionUsageFragment : AutoSettingsFrameFragment(), PermissionsUsag
     private var permissionGroups: List<PermGroupPackagesUiInfo> = listOf()
     private var showSystem = false
 
-    // TODO(b/193446466) properly support toggle for 24-hour/7day switching
+    // Auto currently doesn't show last 7 days due to the UX constraint that there is no pattern to
+    // support multiple actions (showSystem & show7Days). Support will likely be added once this
+    // pattern is resolved.
     private val show7Days = false
     private var finishedInitialLoad = false
     private var hasSystemApps = false
@@ -177,18 +179,21 @@ class AutoPermissionUsageFragment : AutoSettingsFrameFragment(), PermissionsUsag
         permApps: java.util.ArrayList<PermissionApp>
     ) {
         AppDataLoader(context) {
+            // Show permission groups with permissions granted to an app, including groups
+            // where the permission is only granted to a system app. This still excludes groups
+            // that don't have grants from any apps. Showing the same groups regardless of
+            // whether showSystem is selected avoids permission groups hiding and appearing,
+            // which is a confusing user experience.
+            val usedPermissionGroups = permissionGroups
+                .filter {
+                    (it.nonSystemUserSetOrPreGranted > 0) or
+                        (it.systemUserSetOrPreGranted > 0)
+                }
+                .filterNot { it.onlyShellPackageGranted }
+
             for (i in usages.indices) {
                 val (groupName, count) = usages[i]
-                // Only show permission groups with permissions granted to an app. Only show groups
-                // that are only granted to system apps if show system apps is enabled.
-                if ((permissionGroups
-                        .filter {
-                            (it.nonSystemUserSetOrPreGranted > 0) or
-                                (showSystem && it.systemUserSetOrPreGranted > 0)
-                        }
-                        .filterNot { it.onlyShellPackageGranted }
-                        .filter { it.name == groupName })
-                        .isEmpty()) {
+                if ((usedPermissionGroups.filter { it.name == groupName }).isEmpty()) {
                     continue
                 }
                 val permissionUsagePreference = CarUiPreference(requireContext())
