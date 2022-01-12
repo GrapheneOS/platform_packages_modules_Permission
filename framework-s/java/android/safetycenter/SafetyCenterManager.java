@@ -16,6 +16,7 @@
 
 package android.safetycenter;
 
+import static android.Manifest.permission.MANAGE_SAFETY_CENTER;
 import static android.Manifest.permission.READ_SAFETY_CENTER_STATUS;
 import static android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE;
 import static android.os.Build.VERSION_CODES.TIRAMISU;
@@ -109,6 +110,19 @@ public final class SafetyCenterManager {
     public boolean isSafetyCenterEnabled() {
         try {
             return mService.isSafetyCenterEnabled();
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
+    /**
+     * Clears all {@link SafetySourceData} updates sent to the safety center using {@link
+     * #sendSafetyCenterUpdate(SafetySourceData)}, for all packages and users.
+     */
+    @RequiresPermission(MANAGE_SAFETY_CENTER)
+    public void clearSafetyCenterData() {
+        try {
+            mService.clearSafetyCenterData();
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }
