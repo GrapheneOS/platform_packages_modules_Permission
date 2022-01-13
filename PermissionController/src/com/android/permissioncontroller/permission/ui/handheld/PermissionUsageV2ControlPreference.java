@@ -81,7 +81,7 @@ public class PermissionUsageV2ControlPreference extends Preference {
 
         if (mCount == 0) {
             this.setEnabled(false);
-            if (groupName.equals(Manifest.permission_group.NETWORK) || groupName.equals(Manifest.permission_group.OTHER_SENSORS)) {
+            if (groupName.equals(Manifest.permission_group.NETWORK) || groupName.equals(Manifest.permission_group.OTHER_SENSORS) || groupName.equals(Manifest.permission_group.MEDIADRM_IDENTIFIER)) {
                 setSummary(R.string.permission_usage_preference_summary_not_supported);
             } else {
                 setSummary(R.string.permission_usage_preference_summary_not_used);
