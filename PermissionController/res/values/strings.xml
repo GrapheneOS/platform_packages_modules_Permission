@@ -781,7 +781,22 @@
     <string name="unused_apps_notification_content">Permissions and temporary files have been removed and notifications were stopped. Tap to review.</string>
 
     <!-- The notification title for the notification that shows up at the end of a drive where the user made a permission decision [CHAR LIMIT=60] -->
-    <string name="post_drive_permission_decision_reminder_title">Recent permissions</string>
+    <string name="post_drive_permission_decision_reminder_title">Check recent permissions</string>
+
+    <!-- The notification summary for the notification that shows up at the end of a drive where the user made a permission decision for a single app [CHAR LIMIT=90] -->
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission">While driving, you gave <xliff:g id="app" example="Waze">%1$s</xliff:g> access to <xliff:g id="permission" example="location">%2$s</xliff:g></string>
+
+    <!-- The notification summary for the notification that shows up at the end of a drive where the user made 2 permission decisions for a single app [CHAR LIMIT=90] -->
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions">While driving, you gave <xliff:g id="app" example="Waze">%1$s</xliff:g> access to <xliff:g id="permission_1" example="location">%2$s</xliff:g> &amp; <xliff:g id="permission_2" example="microphone">%3$s</xliff:g></string>
+
+    <!-- The notification summary for the notification that shows up at the end of a drive where the user made 3 or more permission decisions for a single app [CHAR LIMIT=90] -->
+    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission">While driving, you granted <xliff:g id="count" example="2">%1$d</xliff:g> permissions to <xliff:g id="app" example="Waze">%2$s</xliff:g></string>
+
+    <!-- The notification summary for the notification that shows up at the end of a drive where the user made permission decisions for multiple apps [CHAR LIMIT=NONE] -->
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps">{count, plural,
+        =1      {While driving, you gave <xliff:g id="app" example="Waze">%1$s</xliff:g> &amp; # other app access}
+        other   {While driving, you gave <xliff:g id="app" example="Waze">%1$s</xliff:g> &amp; # other apps access}
+        }</string>
 
     <!-- The subtitle for the auto revoke settings card [CHAR LIMIT=none] -->
     <string name="auto_revoke_setting_subtitle">Some apps haven\u2019t been used in a few months</string>
