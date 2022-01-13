@@ -1,5 +1,4 @@
-//
-// Copyright (C) 2021 The Android Open Source Project
+// Copyright (C) 2022 The Android Open Source Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,32 +11,25 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-//
+
 package {
     default_applicable_licenses: ["Android-Apache-2.0"],
 }
 
-xsd_config {
-    name: "safety-center-config-parser",
-    srcs: ["safety_center_config.xsd"],
-    package_name: "com.android.safetycenter.config.parser",
-    boolean_getter: true,
-}
-
-java_library {
-    name: "safety-center-config",
-    srcs: [
-        "java/**/*.java",
-        ":safety-center-config-parser",
-    ],
-    libs: [
-        "framework-annotations-lib",
-    ],
-    apex_available: [
-        "com.android.permission",
-        "test_com.android.permission",
-    ],
-    installable: false,
+android_test {
+    name: "SafetyCenterConfigTests",
+    defaults: ["mts-target-sdk-version-current"],
+    sdk_version: "test_current",
     min_sdk_version: "30",
-    sdk_version: "module_current",
+    srcs: [
+        "java/**/*.kt",
+    ],
+    static_libs: [
+        "safety-center-config",
+        "compatibility-device-util-axt",
+    ],
+    test_suites: [
+        "general-tests",
+        "mts-permission",
+    ],
 }
