@@ -307,7 +307,11 @@ class GrantPermissionsViewModel(
                 buttonVisibilities[DENY_BUTTON] = true
                 buttonVisibilities[ALLOW_ONE_TIME_BUTTON] =
                     Utils.supportsOneTimeGrant(groupName)
-                var message = RequestMessage.FG_MESSAGE
+                var message = if (groupState.group.isRuntimePermReviewRequired) {
+                    RequestMessage.CONTINUE_MESSAGE
+                } else {
+                    RequestMessage.FG_MESSAGE
+                }
                 // Whether or not to use the foreground, background, or no detail message.
                 // null ==
                 var detailMessage = RequestMessage.NO_MESSAGE
@@ -1202,7 +1206,8 @@ class GrantPermissionsViewModel(
             UPGRADE_MESSAGE(2),
             NO_MESSAGE(3),
             FG_FINE_LOCATION_MESSAGE(4),
-            FG_COARSE_LOCATION_MESSAGE(5)
+            FG_COARSE_LOCATION_MESSAGE(5),
+            CONTINUE_MESSAGE(6);
         }
     }
 }
