@@ -1056,6 +1056,17 @@
     <!-- Description when an app requests to become the default call screening app. [CHAR LIMIT=60] -->
     <string name="role_call_screening_request_description">No permissions needed</string>
 
+    <!-- Label for the automotive navigation role. [CHAR LIMIT=45] -->
+    <string name="role_automotive_navigation_label">Default navigation app</string>
+    <!-- Short label for the automotive navigation role. [CHAR LIMIT=30] -->
+    <string name="role_automotive_navigation_short_label">Navigation app</string>
+    <!-- Description for the automotive navigation role. [CHAR LIMIT=NONE] -->
+    <string name="role_automotive_navigation_description">Apps that can provide point-of-interest search and turn-by-turn navigation guidance</string>
+    <!-- Template for the title when an app requests to become the default automotive navigation app. [CHAR LIMIT=100] -->
+    <string name="role_automotive_navigation_request_title">Set <xliff:g id="app_name" example="Super Navigation">%1$s</xliff:g> as your default navigation app?</string>
+    <!-- Description when an app requests to become the default automotive navigation app. [CHAR LIMIT=60] -->
+    <string name="role_automotive_navigation_request_description">No permissions needed</string>
+
     <!-- Description for the watch profile role. [CHAR LIMIT=NONE] -->
     <string name="role_watch_description"><xliff:g id="app_name" example="Wear">%1$s</xliff:g> will be allowed to interact with your notifications and access your Phone, SMS, Contacts and Calendar permissions.</string>
 
