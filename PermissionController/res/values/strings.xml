@@ -348,6 +348,9 @@
     <!-- Title for permission usage [CHAR LIMIT=30] -->
     <string name="permission_usage_title">Privacy dashboard</string>
 
+    <!-- Summary for permission usage preference row [CHAR LIMIT=60] -->
+    <string name="auto_permission_usage_summary">View which apps recently used permissions</string>
+
     <!-- Title for permission group usage [CHAR LIMIT=30] -->
     <string name="permission_group_usage_title"><xliff:g id="permgroup" example="Location">%1$s</xliff:g> usage</string>
 
