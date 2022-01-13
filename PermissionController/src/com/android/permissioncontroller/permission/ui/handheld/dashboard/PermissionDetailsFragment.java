@@ -20,26 +20,16 @@ import static com.android.permissioncontroller.Constants.EXTRA_SESSION_ID;
 import static com.android.permissioncontroller.Constants.INVALID_SESSION_ID;
 import static com.android.permissioncontroller.permission.ui.handheld.dashboard.DashboardUtilsKt.is7DayToggleEnabled;
 
-import static java.util.concurrent.TimeUnit.DAYS;
-import static java.util.concurrent.TimeUnit.HOURS;
-import static java.util.concurrent.TimeUnit.MINUTES;
-
-import android.Manifest.permission_group;
 import android.app.ActionBar;
 import android.app.Activity;
-import android.app.AppOpsManager.OpEventProxyInfo;
 import android.app.role.RoleManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.UserHandle;
-import android.text.format.DateFormat;
-import android.util.ArraySet;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -51,6 +41,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
@@ -58,37 +49,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.permissioncontroller.PermissionControllerApplication;
 import com.android.permissioncontroller.R;
-import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.model.AppPermissionUsage;
-import com.android.permissioncontroller.permission.model.AppPermissionUsage.TimelineUsage;
 import com.android.permissioncontroller.permission.model.PermissionUsages;
 import com.android.permissioncontroller.permission.model.legacy.PermissionApps;
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity;
 import com.android.permissioncontroller.permission.ui.handheld.SettingsWithLargeHeader;
+import com.android.permissioncontroller.permission.ui.model.PermissionUsageDetailsViewModel;
+import com.android.permissioncontroller.permission.ui.model.PermissionUsageDetailsViewModelFactory;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
-import com.android.permissioncontroller.permission.utils.SubattributionUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
-import java.time.Clock;
-import java.time.Instant;
-import java.time.ZonedDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import kotlin.Triple;
 
 /**
  * The permission details page showing the history/timeline of a permission
@@ -96,17 +73,8 @@ import kotlin.Triple;
 @RequiresApi(Build.VERSION_CODES.S)
 public class PermissionDetailsFragment extends SettingsWithLargeHeader implements
         PermissionUsages.PermissionsUsagesChangeCallback {
+
     public static final int FILTER_7_DAYS = 1;
-    private static final long TIME_7_DAYS_DURATION = DAYS.toMillis(7);
-    private static final long TIME_24_HOURS_DURATION = DAYS.toMillis(1);
-
-    private static final List<String> ALLOW_CLUSTERING_PERMISSION_GROUPS = Arrays.asList(
-            permission_group.LOCATION, permission_group.CAMERA, permission_group.MICROPHONE
-    );
-    private static final int ONE_HOUR_MS = 3600000;
-    private static final int ONE_MINUTE_MS = 60000;
-    private static final int CLUSTER_MINUTES_APART = 1;
-
     private static final String KEY_SHOW_SYSTEM_PREFS = "_show_system";
     private static final String SHOW_SYSTEM_KEY = PermissionDetailsFragment.class.getName()
             + KEY_SHOW_SYSTEM_PREFS;
@@ -119,9 +87,8 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
     private static final int MENU_SHOW_24_HOURS_DATA = Menu.FIRST + 5;
 
     private @Nullable String mFilterGroup;
-    private @Nullable List<AppPermissionUsage> mAppPermissionUsages = new ArrayList<>();
-    private @NonNull List<TimeFilterItem> mFilterTimes;
     private int mFilterTimeIndex;
+    private @Nullable List<AppPermissionUsage> mAppPermissionUsages = new ArrayList<>();
     private @NonNull PermissionUsages mPermissionUsages;
     private boolean mFinishedInitialLoad;
 
@@ -135,6 +102,8 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
     private MenuItem mShow24HoursDataMenu;
     private @NonNull RoleManager mRoleManager;
 
+    private PermissionUsageDetailsViewModel mViewModel;
+
     private long mSessionId;
 
     @Override
@@ -142,7 +111,6 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
         super.onCreate(savedInstanceState);
 
         mFinishedInitialLoad = false;
-        initializeTimeFilter();
         mFilterTimeIndex = FILTER_7_DAYS;
 
         if (savedInstanceState != null) {
@@ -170,6 +138,11 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
 
         mPermissionUsages = new PermissionUsages(context);
         mRoleManager = Utils.getSystemServiceSafe(context, RoleManager.class);
+
+        PermissionUsageDetailsViewModelFactory factory = new PermissionUsageDetailsViewModelFactory(
+                PermissionControllerApplication.get(), mRoleManager, mFilterGroup, mSessionId);
+        mViewModel = new ViewModelProvider(this, factory).get(
+                PermissionUsageDetailsViewModel.class);
 
         reloadData();
     }
@@ -237,7 +210,7 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
         mAppPermissionUsages = new ArrayList<>(mPermissionUsages.getUsages());
 
         // Ensure the group name is valid.
-        if (getGroup(mFilterGroup) == null) {
+        if (mViewModel.getGroup(mFilterGroup, mAppPermissionUsages) == null) {
             mFilterGroup = null;
         }
 
@@ -316,41 +289,6 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
         return super.onOptionsItemSelected(item);
     }
 
-    private static boolean shouldShowSubattributionForApp(Context context,
-            AppPermissionUsage appPermissionUsage) {
-        if (!DashboardUtilsKt.shouldShowSubattributionInPermissionsDashboard()) {
-            return false;
-        }
-        return SubattributionUtils.isSubattributionSupported(context,
-                appPermissionUsage.getApp().getAppInfo());
-    }
-
-    private List<UsageData> filterAndConvert(AppPermissionUsage appPermissionUsage,
-            String filterGroup) {
-        if (shouldShowSubattributionForApp(getContext(), appPermissionUsage)) {
-            return appPermissionUsage.getGroupUsages()
-                    .stream()
-                    .filter(groupUsage ->
-                            groupUsage.getGroup().getName().equals(filterGroup))
-                    .map(AppPermissionUsage.GroupUsage::getAttributionLabelledGroupUsages)
-                    .flatMap(Collection::stream)
-                    .map(labelledGroupUsage ->
-                            new UsageData(filterGroup, appPermissionUsage.getApp(),
-                                    Arrays.asList(labelledGroupUsage),
-                                    labelledGroupUsage.getLabel())
-                    )
-                    .collect(Collectors.toList());
-        }
-        List<TimelineUsage> groupUsages = appPermissionUsage.getGroupUsages()
-                .stream()
-                .filter(groupUsage ->
-                        groupUsage.getGroup().getName().equals(filterGroup))
-                .collect(Collectors.toList());
-        return Arrays.asList(
-                new UsageData(filterGroup, appPermissionUsage.getApp(), groupUsages,
-                        Resources.ID_NULL));
-    }
-
     private void updateUI() {
         if (mAppPermissionUsages.isEmpty() || getActivity() == null) {
             return;
@@ -362,12 +300,6 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
             setPreferenceScreen(screen);
         }
         screen.removeAll();
-
-        long curTime = System.currentTimeMillis();
-        long showPermissionUsagesDuration = is7DayToggleEnabled() && mShow7Days
-                ? TIME_7_DAYS_DURATION : TIME_24_HOURS_DURATION;
-        long startTime = Math.max(curTime - showPermissionUsagesDuration,
-                Instant.EPOCH.toEpochMilli());
 
         Set<String> exemptedPackages = Utils.getExemptedPackages(mRoleManager);
 
@@ -385,258 +317,25 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
         AtomicBoolean seenSystemApp = new AtomicBoolean(false);
 
         ArrayList<PermissionApps.PermissionApp> permApps = new ArrayList<>();
-        List<AppPermissionUsageEntry> usages = mAppPermissionUsages.stream()
-                .filter(appUsage -> !exemptedPackages.contains(appUsage.getPackageName()))
-                .map(appUsage -> filterAndConvert(appUsage, mFilterGroup))
-                .flatMap(Collection::stream)
-                .map(usageData -> {
-                    // Fetch the access time list of the app accesses mFilterGroup permission group
-                    // The DiscreteAccessTime is a Triple of (access time, access duration,
-                    // proxy) of that app
-                    List<Triple<Long, Long, OpEventProxyInfo>> discreteAccessTimeList =
-                            new ArrayList<>();
-                    List<TimelineUsage> timelineUsages = usageData.getTimelineUsages();
-                    int numGroups = timelineUsages.size();
-                    for (int groupIndex = 0; groupIndex < numGroups; groupIndex++) {
-                        TimelineUsage timelineUsage = timelineUsages.get(groupIndex);
-                        if (!timelineUsage.hasDiscreteData()) {
-                            continue;
-                        }
-
-                        final boolean isSystemApp = !Utils.isGroupOrBgGroupUserSensitive(
-                                timelineUsage.getGroup());
-                        seenSystemApp.set(seenSystemApp.get() || isSystemApp);
-                        if (isSystemApp && !mShowSystem) {
-                            continue;
-                        }
-
-                        List<Triple<Long, Long, OpEventProxyInfo>> allDiscreteAccessTime =
-                                timelineUsage.getAllDiscreteAccessTime();
-                        int numAllDiscreteAccessTime = allDiscreteAccessTime.size();
-                        for (int discreteAccessTimeIndex = 0;
-                                discreteAccessTimeIndex < numAllDiscreteAccessTime;
-                                discreteAccessTimeIndex++) {
-                            Triple<Long, Long, OpEventProxyInfo> discreteAccessTime =
-                                    allDiscreteAccessTime.get(discreteAccessTimeIndex);
-                            if (discreteAccessTime.getFirst() == 0
-                                    || discreteAccessTime.getFirst() < startTime) {
-                                continue;
-                            }
-
-                            discreteAccessTimeList.add(discreteAccessTime);
-                        }
-                    }
-
-                    Collections.sort(
-                            discreteAccessTimeList, (x, y) -> y.getFirst().compareTo(x.getFirst()));
-
-                    if (discreteAccessTimeList.size() > 0) {
-                        permApps.add(usageData.getApp());
-                    }
-
-                    // If the current permission group is not LOCATION or there's only one access
-                    // for the app, return individual entry early.
-                    if (!ALLOW_CLUSTERING_PERMISSION_GROUPS.contains(mFilterGroup)
-                            || discreteAccessTimeList.size() <= 1) {
-                        return discreteAccessTimeList.stream().map(
-                                time -> new AppPermissionUsageEntry(usageData, time.getFirst(),
-                                        Collections.singletonList(time)))
-                                .collect(Collectors.toList());
-                    }
-
-                    // Group access time list
-                    List<AppPermissionUsageEntry> usageEntries = new ArrayList<>();
-                    AppPermissionUsageEntry ongoingEntry = null;
-                    for (Triple<Long, Long, OpEventProxyInfo> time : discreteAccessTimeList) {
-                        if (ongoingEntry == null) {
-                            ongoingEntry = new AppPermissionUsageEntry(usageData, time.getFirst(),
-                                    Stream.of(time)
-                                            .collect(Collectors.toCollection(ArrayList::new)));
-                        } else {
-                            List<Triple<Long, Long, OpEventProxyInfo>> ongoingAccessTimeList =
-                                    ongoingEntry.mClusteredAccessTimeList;
-                            if (time.getFirst() / ONE_HOUR_MS
-                                    != ongoingAccessTimeList.get(0).getFirst() / ONE_HOUR_MS
-                                    || ongoingAccessTimeList.get(ongoingAccessTimeList.size() - 1)
-                                    .getFirst()
-                                    / ONE_MINUTE_MS - time.getFirst() / ONE_MINUTE_MS
-                                    > CLUSTER_MINUTES_APART) {
-                                // If the current access time is not in the same hour nor within
-                                // CLUSTER_MINUTES_APART, add the ongoing entry to the usage list
-                                // and start a new ongoing entry.
-                                usageEntries.add(ongoingEntry);
-                                ongoingEntry = new AppPermissionUsageEntry(usageData,
-                                        time.getFirst(), Stream.of(time)
-                                        .collect(Collectors.toCollection(ArrayList::new)));
-                            } else {
-                                ongoingAccessTimeList.add(time);
-                            }
-                        }
-                    }
-                    usageEntries.add(ongoingEntry);
-
-                    return usageEntries;
-                }).flatMap(Collection::stream).sorted((x, y) -> {
-                    // Sort all usage entries by startTime desc, and then by app name.
-                    int timeCompare = Long.compare(y.mEndTime, x.mEndTime);
-                    if (timeCompare != 0) {
-                        return timeCompare;
-                    }
-                    return x.getUsageData().getApp().getLabel().compareTo(
-                            y.getUsageData().getApp().getLabel());
-                }).collect(Collectors.toList());
+        List<PermissionUsageDetailsViewModel.AppPermissionUsageEntry> usages =
+                mViewModel.parseUsages(mAppPermissionUsages, exemptedPackages, permApps,
+                        seenSystemApp, mShowSystem, mShow7Days);
 
         if (mHasSystemApps != seenSystemApp.get()) {
             mHasSystemApps = seenSystemApp.get();
             getActivity().invalidateOptionsMenu();
         }
 
-        // Truncate to midnight in current timezone.
-        final long midnightToday = ZonedDateTime.now().truncatedTo(ChronoUnit.DAYS).toEpochSecond()
-                * 1000L;
-        final long midnightYesterday = ZonedDateTime.now().minusDays(1).truncatedTo(ChronoUnit.DAYS)
-                .toEpochSecond() * 1000L;
-
         // Make these variables effectively final so that
         // we can use these captured variables in the below lambda expression
+        PreferenceFactory preferenceFactory = new PreferenceFactory(requireActivity());
         AtomicReference<PreferenceCategory> category = new AtomicReference<>(
-                createDayCategoryPreference(context));
+                preferenceFactory.createDayCategoryPreference());
         screen.addPreference(category.get());
         PreferenceScreen finalScreen = screen;
 
         new PermissionApps.AppDataLoader(context, () -> {
-            final int numUsages = usages.size();
-            boolean hasADateLabel = false;
-            long lastDateLabel = 0L;
-            for (int usageNum = 0; usageNum < numUsages; usageNum++) {
-                AppPermissionUsageEntry usage = usages.get(usageNum);
-                long usageTimestamp = usage.getEndTime();
-                long usageDateLabel = ZonedDateTime.ofInstant(Instant.ofEpochMilli(usageTimestamp),
-                        Clock.systemDefaultZone().getZone())
-                        .truncatedTo(ChronoUnit.DAYS).toEpochSecond() * 1000L;
-                if (!hasADateLabel || usageDateLabel != lastDateLabel) {
-                    if (hasADateLabel) {
-                        category.set(createDayCategoryPreference(context));
-                        finalScreen.addPreference(category.get());
-                    }
-
-                    String formattedDateTitle = DateFormat.getDateFormat(context)
-                            .format(usageDateLabel);
-                    if (usageTimestamp > midnightToday) {
-                        category.get().setTitle(R.string.permission_history_category_today);
-                    } else if (usageTimestamp > midnightYesterday) {
-                        category.get().setTitle(R.string.permission_history_category_yesterday);
-                    } else {
-                        category.get().setTitle(formattedDateTitle);
-                    }
-
-                    hasADateLabel = true;
-                }
-
-                lastDateLabel = usageDateLabel;
-
-                String accessTime = DateFormat.getTimeFormat(context).format(usage.mEndTime);
-                Long durationLong = usage.mClusteredAccessTimeList
-                        .stream()
-                        .map(p -> p.getSecond())
-                        .filter(dur -> dur > 0)
-                        .reduce(0L, (dur1, dur2) -> dur1 + dur2);
-
-                List<Long> accessTimeList = usage.mClusteredAccessTimeList
-                        .stream().map(p -> p.getFirst()).collect(Collectors.toList());
-
-                // Determine the preference summary. Start with the duration string
-                String summaryLabel = null;
-                // Since Location accesses are atomic, we manually calculate the access duration
-                // by comparing the first and last access within the cluster
-                if (mFilterGroup.equals(permission_group.LOCATION)) {
-                    if (accessTimeList.size() > 1) {
-                        durationLong = accessTimeList.get(0)
-                                - accessTimeList.get(accessTimeList.size() - 1);
-
-                        // Similar to other history items, only show the duration if it's longer
-                        // than the clustering granularity.
-                        if (durationLong
-                                >= (MINUTES.toMillis(CLUSTER_MINUTES_APART) + 1)) {
-                            summaryLabel =
-                                    DashboardUtilsKt.getDurationUsedStr(context, durationLong);
-                        }
-                    }
-                } else {
-                    // Only show the duration if it is at least (cluster + 1) minutes. Displaying
-                    // times that are the same as the cluster granularity does not convey useful
-                    // information.
-                    if ((durationLong != null)
-                            && durationLong >= MINUTES.toMillis(CLUSTER_MINUTES_APART + 1)) {
-                        summaryLabel = DashboardUtilsKt.getDurationUsedStr(context, durationLong);
-                    }
-                }
-
-                String proxyPackageLabel = null;
-                for (int i = 0; i < usage.mClusteredAccessTimeList.size(); i++) {
-                    OpEventProxyInfo proxy = usage.mClusteredAccessTimeList.get(i).getThird();
-                    if (proxy != null && proxy.getPackageName() != null) {
-                        proxyPackageLabel = KotlinUtils.INSTANCE.getPackageLabel(
-                                PermissionControllerApplication.get(), proxy.getPackageName(),
-                                UserHandle.getUserHandleForUid(proxy.getUid()));
-                        break;
-                    }
-                }
-
-                // fetch the subattribution label for this usage.
-                String subattributionLabel = null;
-                if (usage.mUsageData.getLabel() != Resources.ID_NULL) {
-                    Map<Integer, String> attributionLabels =
-                            usage.getUsageData().getApp().getAttributionLabels();
-                    if (attributionLabels != null) {
-                        subattributionLabel = attributionLabels.get(
-                                usage.mUsageData.getLabel());
-                    }
-                }
-
-                // create subtext string.
-                List<String> subTextStrings = new ArrayList<>();
-                boolean showingAttribution =
-                        subattributionLabel != null && subattributionLabel.length() > 0;
-                if (showingAttribution) {
-                    subTextStrings.add(subattributionLabel);
-                }
-                if (proxyPackageLabel != null) {
-                    subTextStrings.add(proxyPackageLabel);
-                }
-                if (summaryLabel != null) {
-                    subTextStrings.add(summaryLabel);
-                }
-                String subText = null;
-                if (subTextStrings.size() == 3) {
-                    subText = context.getString(
-                            R.string.history_preference_subtext_3,
-                            subTextStrings.get(0),
-                            subTextStrings.get(1),
-                            subTextStrings.get(2));
-                } else if (subTextStrings.size() == 2) {
-                    subText = context.getString(R.string.history_preference_subtext_2,
-                            subTextStrings.get(0),
-                            subTextStrings.get(1));
-                } else if (subTextStrings.size() == 1) {
-                    subText = subTextStrings.get(0);
-                }
-
-                PermissionHistoryPreference permissionUsagePreference = new
-                        PermissionHistoryPreference(context,
-                        UserHandle.getUserHandleForUid(usage.getUsageData().getApp().getUid()),
-                        usage.getUsageData().getApp().getPackageName(),
-                        usage.getUsageData().getApp().getIcon(),
-                        usage.getUsageData().getApp().getLabel(),
-                        mFilterGroup, accessTime, subText,
-                        showingAttribution, accessTimeList,
-                        usage.getUsageData().getAttributionTags(),
-                        usageNum == (numUsages - 1),
-                        mSessionId
-                );
-
-                category.get().addPreference(permissionUsagePreference);
-            }
+            mViewModel.renderTimelinePreferences(usages, category, finalScreen, preferenceFactory);
 
             setLoading(false, true);
             mFinishedInitialLoad = true;
@@ -646,192 +345,48 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
         }).execute(permApps.toArray(new PermissionApps.PermissionApp[permApps.size()]));
     }
 
-    private PreferenceCategory createDayCategoryPreference(Context context) {
-        PreferenceCategory category = new PreferenceCategory(context);
-        // Do not reserve icon space, so that the text moves all the way left.
-        category.setIconSpaceReserved(false);
-        return category;
-    }
+    private static class PreferenceFactory implements
+            PermissionUsageDetailsViewModel.HistoryPreferenceFactory {
 
-    /**
-     * Get an AppPermissionGroup that represents the given permission group (and an arbitrary app).
-     *
-     * @param groupName The name of the permission group.
-     *
-     * @return an AppPermissionGroup representing the given permission group or null if no such
-     * AppPermissionGroup is found.
-     */
-    private @Nullable AppPermissionGroup getGroup(@NonNull String groupName) {
-        List<AppPermissionGroup> groups = getOSPermissionGroups();
-        int numGroups = groups.size();
-        for (int i = 0; i < numGroups; i++) {
-            if (groups.get(i).getName().equals(groupName)) {
-                return groups.get(i);
-            }
-        }
-        return null;
-    }
+        private Context mContext;
 
-    /**
-     * Get the permission groups declared by the OS.
-     *
-     * TODO: theianchen change the method name to make that clear,
-     * and return a list of string group names, not AppPermissionGroups.
-     * @return a list of the permission groups declared by the OS.
-     */
-    private @NonNull List<AppPermissionGroup> getOSPermissionGroups() {
-        final List<AppPermissionGroup> groups = new ArrayList<>();
-        final Set<String> seenGroups = new ArraySet<>();
-        final int numGroups = mAppPermissionUsages.size();
-        for (int i = 0; i < numGroups; i++) {
-            final AppPermissionUsage appUsage = mAppPermissionUsages.get(i);
-            final List<AppPermissionUsage.GroupUsage> groupUsages = appUsage.getGroupUsages();
-            final int groupUsageCount = groupUsages.size();
-            for (int j = 0; j < groupUsageCount; j++) {
-                final AppPermissionUsage.GroupUsage groupUsage = groupUsages.get(j);
-                if (Utils.isModernPermissionGroup(groupUsage.getGroup().getName())) {
-                    if (seenGroups.add(groupUsage.getGroup().getName())) {
-                        groups.add(groupUsage.getGroup());
-                    }
-                }
-            }
+        PreferenceFactory(Context context) {
+            mContext = context;
         }
-        return groups;
+
+        @Override
+        public PreferenceCategory createDayCategoryPreference() {
+            PreferenceCategory category = new PreferenceCategory(mContext);
+            // Do not reserve icon space, so that the text moves all the way left.
+            category.setIconSpaceReserved(false);
+            return category;
+        }
+
+        @Override
+        public Preference createPermissionHistoryPreference(
+                PermissionUsageDetailsViewModel.HistoryPreferenceData historyPreferenceData) {
+            return new PermissionHistoryPreference(mContext,
+                    historyPreferenceData.getUserHandle(),
+                    historyPreferenceData.getPkgName(),
+                    historyPreferenceData.getAppIcon(),
+                    historyPreferenceData.getPreferenceTitle(),
+                    historyPreferenceData.getPermissionGroup(),
+                    historyPreferenceData.getAccessTime(),
+                    historyPreferenceData.getSummaryText(),
+                    historyPreferenceData.getShowingAttribution(),
+                    historyPreferenceData.getAccessTimeList(),
+                    historyPreferenceData.getAttributionTags(),
+                    historyPreferenceData.isLastUsage(),
+                    historyPreferenceData.getSessionId()
+            );
+        }
     }
 
     private void reloadData() {
-        final TimeFilterItem timeFilterItem = mFilterTimes.get(mFilterTimeIndex);
-        final long filterTimeBeginMillis = Math.max(System.currentTimeMillis()
-                - timeFilterItem.getTime(), 0);
-        mPermissionUsages.load(null /*filterPackageName*/, null /*filterPermissionGroups*/,
-                filterTimeBeginMillis, Long.MAX_VALUE, PermissionUsages.USAGE_FLAG_LAST
-                        | PermissionUsages.USAGE_FLAG_HISTORICAL, getActivity().getLoaderManager(),
-                false /*getUiInfo*/, false /*getNonPlatformPermissions*/, this /*callback*/,
-                false /*sync*/);
+        mViewModel.loadPermissionUsages(getActivity().getLoaderManager(),
+                mPermissionUsages, this, mFilterTimeIndex);
         if (mFinishedInitialLoad) {
             setProgressBarVisible(true);
-        }
-    }
-
-    /**
-     * Initialize the time filter to show the smallest entry greater than the time passed in as an
-     * argument.  If nothing is passed, this simply initializes the possible values.
-     */
-    private void initializeTimeFilter() {
-        Context context = getPreferenceManager().getContext();
-        mFilterTimes = new ArrayList<>();
-        mFilterTimes.add(new TimeFilterItem(Long.MAX_VALUE,
-                context.getString(R.string.permission_usage_any_time)));
-        mFilterTimes.add(new TimeFilterItem(DAYS.toMillis(7),
-                context.getString(R.string.permission_usage_last_7_days)));
-        mFilterTimes.add(new TimeFilterItem(DAYS.toMillis(1),
-                context.getString(R.string.permission_usage_last_day)));
-        mFilterTimes.add(new TimeFilterItem(HOURS.toMillis(1),
-                context.getString(R.string.permission_usage_last_hour)));
-        mFilterTimes.add(new TimeFilterItem(MINUTES.toMillis(15),
-                context.getString(R.string.permission_usage_last_15_minutes)));
-        mFilterTimes.add(new TimeFilterItem(MINUTES.toMillis(1),
-                context.getString(R.string.permission_usage_last_minute)));
-
-        // TODO: theianchen add code for filtering by time here.
-    }
-
-    /**
-     * A class representing a given time, e.g., "in the last hour".
-     */
-    private static class TimeFilterItem {
-        private final long mTime;
-        private final @NonNull String mLabel;
-
-        TimeFilterItem(long time, @NonNull String label) {
-            mTime = time;
-            mLabel = label;
-        }
-
-        /**
-         * Get the time represented by this object in milliseconds.
-         *
-         * @return the time represented by this object.
-         */
-        public long getTime() {
-            return mTime;
-        }
-
-        public @NonNull String getLabel() {
-            return mLabel;
-        }
-    }
-
-    /** A class representing an app's usage for a group. */
-    private static class UsageData {
-        private final String mGroup;
-        private final PermissionApps.PermissionApp mPermissionApp;
-        private final List<TimelineUsage> mTimelineUsages;
-        private final int mLabel;
-
-        UsageData(String group,
-                PermissionApps.PermissionApp permissionApp,
-                List<TimelineUsage> timelineUsages,
-                int label) {
-            mGroup = group;
-            mPermissionApp = permissionApp;
-            mTimelineUsages = timelineUsages;
-            mLabel = label;
-        }
-
-        String getGroup() {
-            return mGroup;
-        }
-
-        // All GroupUsage(s) have group name as filterGroup.
-        List<TimelineUsage> getTimelineUsages() {
-            return mTimelineUsages;
-        }
-
-        // we need a PermissionApp because the loader takes the PermissionApp
-        // object and loads the icon and label information asynchronously
-        PermissionApps.PermissionApp getApp() {
-            return mPermissionApp;
-        }
-
-        int getLabel() {
-            return mLabel;
-        }
-
-        ArrayList<String> getAttributionTags() {
-            return getTimelineUsages().stream().map(
-                    TimelineUsage::getAttributionTags).filter(
-                    Objects::nonNull).flatMap(Collection::stream).collect(
-                    Collectors.toCollection(ArrayList::new));
-        }
-    }
-
-
-    /**
-     * A class representing an app usage entry in Permission Usage.
-     */
-    private static class AppPermissionUsageEntry {
-        private final UsageData mUsageData;
-        private final List<Triple<Long, Long, OpEventProxyInfo>> mClusteredAccessTimeList;
-        private long mEndTime;
-
-        AppPermissionUsageEntry(UsageData usageData, long endTime,
-                List<Triple<Long, Long, OpEventProxyInfo>> clusteredAccessTimeList) {
-            mUsageData = usageData;
-            mEndTime = endTime;
-            mClusteredAccessTimeList = clusteredAccessTimeList;
-        }
-
-        public UsageData getUsageData() {
-            return mUsageData;
-        }
-
-        public long getEndTime() {
-            return mEndTime;
-        }
-
-        public List<Triple<Long, Long, OpEventProxyInfo>> getAccessTime() {
-            return mClusteredAccessTimeList;
         }
     }
 }
