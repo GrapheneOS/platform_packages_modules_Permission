@@ -638,6 +638,15 @@ class GrantPermissionsViewModel(
             // Skip showing groups that we know cannot be granted.
             return false
         } else if (subGroup.isUserFixed) {
+            if (perm == ACCESS_COARSE_LOCATION) {
+                val coarsePerm = group.permissions[perm]
+                if (coarsePerm != null && !coarsePerm.isUserFixed) {
+                    // If the location group is user fixed but ACCESS_COARSE_LOCATION is not, then
+                    // ACCESS_FINE_LOCATION must be user fixed. In this case ACCESS_COARSE_LOCATION
+                    // is still grantable.
+                    return true
+                }
+            }
             reportRequestResult(perm,
                 PERMISSION_GRANT_REQUEST_RESULT_REPORTED__RESULT__IGNORED_USER_FIXED)
             return false

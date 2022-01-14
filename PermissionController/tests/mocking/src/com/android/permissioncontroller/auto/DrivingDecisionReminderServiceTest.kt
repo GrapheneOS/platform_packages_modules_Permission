@@ -16,6 +16,7 @@
 
 package com.android.permissioncontroller.auto
 
+import android.Manifest
 import android.app.Service.START_NOT_STICKY
 import android.app.Service.START_STICKY
 import android.car.Car
@@ -48,6 +49,7 @@ import org.mockito.Mockito.`when`
 import org.mockito.Mockito.any
 import org.mockito.Mockito.anyLong
 import org.mockito.Mockito.doNothing
+import org.mockito.Mockito.doReturn
 import org.mockito.Mockito.never
 import org.mockito.Mockito.verify
 import org.mockito.MockitoAnnotations
@@ -60,8 +62,15 @@ class DrivingDecisionReminderServiceTest {
 
     companion object {
         val application = Mockito.mock(PermissionControllerApplication::class.java)
-        const val TEST_PACKAGE = "com.package.test"
-        const val TEST_PERMISSION_GROUP = "android.permission-group.LOCATION"
+        const val TEST_PACKAGE_1 = "com.package.test1"
+        const val TEST_PACKAGE_1_LABEL = "App1"
+        const val TEST_PACKAGE_2 = "com.package.test2"
+        const val TEST_PACKAGE_2_LABEL = "App2"
+        const val TEST_PACKAGE_3 = "com.package.test3"
+        const val TEST_PACKAGE_3_LABEL = "App3"
+        const val LOCATION_PERMISSION_GROUP = Manifest.permission_group.LOCATION
+        const val MICROPHONE_PERMISSION_GROUP = Manifest.permission_group.MICROPHONE
+        const val CALENDAR_PERMISSION_GROUP = Manifest.permission_group.CALENDAR
     }
 
     @Mock
@@ -102,17 +111,32 @@ class DrivingDecisionReminderServiceTest {
         `when`(application.filesDir).thenReturn(filesDir)
         `when`(car.getCarManager(eq(Car.CAR_UX_RESTRICTION_SERVICE)))
             .thenReturn(carUxRestrictionsManager)
-        testIntent = DrivingDecisionReminderService.createIntent(
-            ApplicationProvider.getApplicationContext(),
-            TEST_PACKAGE,
-            TEST_PERMISSION_GROUP,
-            userHandle)
+        testIntent = createIntent(TEST_PACKAGE_1, LOCATION_PERMISSION_GROUP)
         reminderService = Mockito.spy(DrivingDecisionReminderService())
         doNothing().`when`(reminderService).showRecentGrantDecisionsPostDriveNotification()
+        doReturn(InstrumentationRegistry.getInstrumentation().getTargetContext().resources)
+            .`when`(reminderService).resources
+        doReturn(ApplicationProvider.getApplicationContext()).`when`(reminderService)
+            .applicationContext
+
+        doReturn(TEST_PACKAGE_1_LABEL).`when`(reminderService)
+            .getLabelForPackage(TEST_PACKAGE_1, userHandle)
+        doReturn(TEST_PACKAGE_2_LABEL).`when`(reminderService)
+            .getLabelForPackage(TEST_PACKAGE_2, userHandle)
+        doReturn(TEST_PACKAGE_3_LABEL).`when`(reminderService)
+            .getLabelForPackage(TEST_PACKAGE_3, userHandle)
 
         // TODO(b/209026677) - move this to @BeforeClass
         // only run tests on Auto. Placed after all lateinit variables have been created
         assumeTrue(isAutomotiveDevice())
+    }
+
+    private fun createIntent(packageName: String, permissionGroup: String): Intent {
+        return DrivingDecisionReminderService.createIntent(
+            ApplicationProvider.getApplicationContext(),
+            packageName,
+            permissionGroup,
+            userHandle)
     }
 
     private fun isAutomotiveDevice(): Boolean {
@@ -130,9 +154,9 @@ class DrivingDecisionReminderServiceTest {
     @Test
     fun createIntent_success() {
         assertThat(testIntent.getStringExtra(DrivingDecisionReminderService.EXTRA_PACKAGE_NAME))
-            .isEqualTo(TEST_PACKAGE)
+            .isEqualTo(TEST_PACKAGE_1)
         assertThat(testIntent.getStringExtra(DrivingDecisionReminderService.EXTRA_PERMISSION_GROUP))
-            .isEqualTo(TEST_PERMISSION_GROUP)
+            .isEqualTo(LOCATION_PERMISSION_GROUP)
         assertThat(testIntent
             .getParcelableExtra<UserHandle>(DrivingDecisionReminderService.EXTRA_USER))
             .isEqualTo(userHandle)
@@ -195,6 +219,58 @@ class DrivingDecisionReminderServiceTest {
         uxRestrictionsChangedListener?.value?.onUxRestrictionsChanged(fullRestrictions)
 
         verify(reminderService, never()).showRecentGrantDecisionsPostDriveNotification()
+    }
+
+    @Test
+    fun createNotificationContent_1_app_1_permission() {
+        reminderService.onStartCommand(testIntent, /* flags= */ 0, /* startId= */ 0)
+
+        assertThat(reminderService.createNotificationContent())
+            .isEqualTo("While driving, you gave App1 access to Location")
+    }
+
+    @Test
+    fun createNotificationContent_1_app_2_permissions() {
+        reminderService.onStartCommand(testIntent, /* flags= */ 0, /* startId= */ 0)
+        reminderService.onStartCommand(createIntent(TEST_PACKAGE_1, MICROPHONE_PERMISSION_GROUP),
+            /* flags= */ 0, /* startId= */ 0)
+
+        assertThat(reminderService.createNotificationContent())
+            .isEqualTo("While driving, you gave App1 access to Location & Microphone")
+    }
+
+    @Test
+    fun createNotificationContent_1_app_3_permissions() {
+        reminderService.onStartCommand(testIntent, /* flags= */ 0, /* startId= */ 0)
+        reminderService.onStartCommand(createIntent(TEST_PACKAGE_1, MICROPHONE_PERMISSION_GROUP),
+            /* flags= */ 0, /* startId= */ 0)
+        reminderService.onStartCommand(createIntent(TEST_PACKAGE_1, CALENDAR_PERMISSION_GROUP),
+            /* flags= */ 0, /* startId= */ 0)
+
+        assertThat(reminderService.createNotificationContent())
+            .isEqualTo("While driving, you granted 3 permissions to App1")
+    }
+
+    @Test
+    fun createNotificationContent_2_apps() {
+        reminderService.onStartCommand(testIntent, /* flags= */ 0, /* startId= */ 0)
+        reminderService.onStartCommand(createIntent(TEST_PACKAGE_2, MICROPHONE_PERMISSION_GROUP),
+            /* flags= */ 0, /* startId= */ 0)
+
+        assertThat(reminderService.createNotificationContent())
+            .isEqualTo("While driving, you gave App1 & 1 other app access")
+    }
+
+    @Test
+    fun createNotificationContent_3_apps() {
+        reminderService.onStartCommand(testIntent, /* flags= */ 0, /* startId= */ 0)
+        reminderService.onStartCommand(createIntent(TEST_PACKAGE_2, MICROPHONE_PERMISSION_GROUP),
+            /* flags= */ 0, /* startId= */ 0)
+        reminderService.onStartCommand(createIntent(TEST_PACKAGE_3, MICROPHONE_PERMISSION_GROUP),
+            /* flags= */ 0, /* startId= */ 0)
+
+        assertThat(reminderService.createNotificationContent())
+            .isEqualTo("While driving, you gave App1 & 2 other apps access")
     }
 
     private fun captureCreateCarLifecycleListener() {

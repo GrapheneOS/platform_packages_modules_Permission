@@ -1,12 +1,7 @@
 {
   "presubmit": [
     {
-      "name": "CtsSafetyCenterTestCases",
-      "options": [
-        {
-          "include-filter": "android.safetycenter.cts.SafetyCenterManagerTest"
-        }
-      ]
+      "name": "CtsSafetyCenterTestCases"
     }
   ]
 }

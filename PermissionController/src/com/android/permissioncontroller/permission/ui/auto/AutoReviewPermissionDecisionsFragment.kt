@@ -86,6 +86,7 @@ class AutoReviewPermissionDecisionsFragment : AutoSettingsFrameFragment() {
         viewModel = ViewModelProvider(this,
             factory)[ReviewPermissionDecisionsViewModel::class.java]
 
+        addPrivacyDashboardPreference()
         addPermissionManagerPreference()
         preferenceScreen.addPreference(AutoDividerPreference(context))
         recentPermissionsGroup = PreferenceCategory(context).apply {
@@ -114,6 +115,21 @@ class AutoReviewPermissionDecisionsFragment : AutoSettingsFrameFragment() {
         if (recentDecisions.size > MAX_DECISIONS) {
             addViewAllPreference(recentPermissionsGroup)
         }
+    }
+
+    private fun addPrivacyDashboardPreference() {
+        val preference = CarUiPreference(context).apply {
+            title = getString(R.string.permission_usage_title)
+            summary = getString(R.string.auto_permission_usage_summary)
+            onPreferenceClickListener = Preference.OnPreferenceClickListener { _ ->
+                val intent = Intent(Intent.ACTION_REVIEW_PERMISSION_USAGE).apply {
+                    putExtra(Constants.EXTRA_SESSION_ID, sessionId!!)
+                }
+                startActivity(intent)
+                true
+            }
+        }
+        preferenceScreen.addPreference(preference)
     }
 
     private fun addPermissionManagerPreference() {
