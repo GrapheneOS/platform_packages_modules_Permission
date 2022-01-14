@@ -37,6 +37,7 @@ import com.android.permissioncontroller.DumpableLog
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPackageLabel
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPermGroupLabel
+import com.android.permissioncontroller.permission.utils.StringUtils
 import com.android.permissioncontroller.permission.utils.Utils
 import java.util.Random
 
@@ -203,21 +204,44 @@ class DrivingDecisionReminderService : Service() {
             .getString(R.string.post_drive_permission_decision_reminder_title)
     }
 
-    // TODO(b/194240664) - update notification content after UX writing review
-    private fun createNotificationContent(): String {
-        val packageLabels: MutableSet<String> = mutableSetOf()
-        val permissionGroupNames: MutableSet<String> = mutableSetOf()
+    @VisibleForTesting
+    fun createNotificationContent(): String {
+        val packageLabels: MutableList<String> = mutableListOf()
+        val permissionGroupNames: MutableList<String> = mutableListOf()
         for (permissionReminder in permissionReminders) {
-            val packageLabel = BidiFormatter.getInstance().unicodeWrap(
-                getPackageLabel(application, permissionReminder.packageName,
-                    permissionReminder.user))
+            val packageLabel = getLabelForPackage(permissionReminder.packageName,
+                permissionReminder.user)
             val permissionGroupLabel = getPermGroupLabel(applicationContext,
                 permissionReminder.permissionGroup).toString()
             packageLabels.add(packageLabel)
             permissionGroupNames.add(permissionGroupLabel)
         }
-        return "You granted " + packageLabels.joinToString() +
-            " access to " + permissionGroupNames.joinToString()
+        val packageLabelsDistinct = packageLabels.distinct()
+        val permissionGroupNamesDistinct = permissionGroupNames.distinct()
+        return if (packageLabelsDistinct.size > 1) {
+            StringUtils.getIcuPluralsString(applicationContext,
+                R.string.post_drive_permission_decision_reminder_summary_multi_apps,
+                (packageLabels.size - 1), packageLabelsDistinct[0])
+        } else if (permissionGroupNamesDistinct.size == 2) {
+            getString(
+                R.string.post_drive_permission_decision_reminder_summary_1_app_2_permissions,
+                packageLabelsDistinct[0], permissionGroupNamesDistinct[0],
+                permissionGroupNamesDistinct[1])
+        } else if (permissionGroupNamesDistinct.size > 2) {
+            getString(
+                R.string.post_drive_permission_decision_reminder_summary_1_app_multi_permission,
+                permissionGroupNamesDistinct.size, packageLabelsDistinct[0])
+        } else {
+            getString(
+                R.string.post_drive_permission_decision_reminder_summary_1_app_1_permission,
+                packageLabelsDistinct[0], permissionGroupNamesDistinct[0])
+        }
+    }
+
+    @VisibleForTesting
+    fun getLabelForPackage(packageName: String, user: UserHandle): String {
+        return BidiFormatter.getInstance().unicodeWrap(
+            getPackageLabel(application, packageName, user))
     }
 
     private fun createNotification(title: String, body: String): Notification {

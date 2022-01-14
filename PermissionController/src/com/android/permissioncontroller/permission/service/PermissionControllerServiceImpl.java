@@ -77,6 +77,7 @@ import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -671,6 +672,13 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
                     group.revokeRuntimePermissions(false,
                             oneTimeGrantedPermissions.toArray(new String[0]));
                 }
+                for (String permissionName : oneTimeGrantedPermissions) {
+                    // We only reset the USER_SET flag if the permission was granted.
+                    Permission permission = group.getPermission(permissionName);
+                    if (permission != null) {
+                        permission.setUserSet(false);
+                    }
+                }
                 if (bgGroup != null) {
                     // We also revoke background permissions if all foreground permissions are
                     // getting revoked.
@@ -684,10 +692,15 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
                     }
                 }
             }
-            group.setUserSet(false);
+            if (!group.supportsOneTimeGrant()) {
+                group.setOneTime(false);
+            }
             group.persistChanges(false, ONE_TIME_PERMISSION_REVOKED_REASON);
             if (bgGroup != null) {
                 bgGroup.persistChanges(false, ONE_TIME_PERMISSION_REVOKED_REASON);
+                if (!bgGroup.supportsOneTimeGrant()) {
+                    bgGroup.setOneTime(false);
+                }
             }
         }
     }
@@ -736,5 +749,42 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
     @Override
     public void onGetUnusedAppCount(@NonNull IntConsumer callback) {
         mServiceModel.onCountUnusedApps(callback);
+    }
+
+    @Override
+    public void onSelfRevokePermissions(@NonNull String packageName,
+            @NonNull List<String> permissions, @NonNull Runnable callback) {
+        PackageInfo pkgInfo = getPkgInfo(packageName);
+        if (pkgInfo == null) {
+            throw new SecurityException("Cannot revoke permission " + String.join(",", permissions)
+                    + " for package " + packageName);
+        }
+        Set<AppPermissionGroup> groups = new HashSet<>();
+        AppPermissions app = new AppPermissions(this, pkgInfo, false, true, null);
+        for (String permName : permissions) {
+            AppPermissionGroup group = app.getGroupForPermission(permName);
+            if (groups.contains(group)) {
+                continue;
+            }
+            if (group == null) {
+                throw new SecurityException("Cannot revoke permission " + permName + " for package "
+                        + packageName + " since " + permName + " does not belong to a permission "
+                        + "group");
+            }
+            if (!group.getPermission(permName).isGrantedIncludingAppOp()) {
+                throw new SecurityException("Cannot revoke permission " + permName + " for package "
+                        + packageName + " since " + packageName + " does not hold it");
+            }
+            if (!group.doesSupportRuntimePermissions()) {
+                throw new SecurityException("Cannot revoke permission " + permName + " for package "
+                        + packageName + " since it is not a runtime permission");
+            }
+            groups.add(group);
+        }
+        for (AppPermissionGroup group : groups) {
+            group.setOneTime(true);
+            group.persistChanges(false);
+        }
+        getMainExecutor().execute(callback);
     }
 }
