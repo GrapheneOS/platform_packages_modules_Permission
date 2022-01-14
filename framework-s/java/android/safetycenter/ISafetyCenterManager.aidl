@@ -46,4 +46,10 @@ interface ISafetyCenterManager {
      * Returns whether the SafetyCenter page is enabled.
      */
     boolean isSafetyCenterEnabled();
+
+    /**
+     * Clears all SafetySourceData updates sent to the safety center using sendSafetyCenterUpdate,
+     * for all packages and users.
+     */
+    void clearSafetyCenterData();
 }
