@@ -19,7 +19,7 @@ package android.safetycenter;
 import android.safetycenter.SafetyCenterData;
 
 /**
- * Listener for changes in {@link SafetyCenterData}.
+ * Listener for changes to {@link SafetyCenterData}.
  *
  * @hide
  */
