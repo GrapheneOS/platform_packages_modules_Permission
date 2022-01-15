@@ -548,6 +548,7 @@
             <permission-set name="microphone" />
             <permission-set name="location" />
             <permission-set name="nearby_devices" />
+            <permission name="android.permission.ADD_ALWAYS_UNLOCKED_DISPLAY" minSdkVersion="33" />
             <permission name="android.permission.CALL_PHONE" />
             <permission name="android.permission.CREATE_VIRTUAL_DEVICE" minSdkVersion="33" />
             <permission name="android.permission.READ_CALENDAR" />
@@ -588,6 +589,8 @@
                 minSdkVersion="33" />
             <permission name="android.permission.MANAGE_SAFETY_CENTER"
                 minSdkVersion="33" />
+            <permission name="android.permission.ADD_TRUSTED_DISPLAY" minSdkVersion="33" />
+            <permission name="android.permission.ADD_ALWAYS_UNLOCKED_DISPLAY" minSdkVersion="33" />
         </permissions>
     </role>
 
@@ -1044,6 +1047,8 @@
             <!-- For capturing audio from the app on the device. -->
             <permission name="android.permission.RECORD_AUDIO" />
             <permission name="android.permission.CREATE_VIRTUAL_DEVICE" minSdkVersion="33" />
+            <permission name="android.permission.ADD_TRUSTED_DISPLAY" minSdkVersion="33" />
+            <permission name="android.permission.ADD_ALWAYS_UNLOCKED_DISPLAY" minSdkVersion="33" />
 
             <!--TODO(b/201605314) For calling Telecom framework API for audio streaming-->
             <!--<permission name="android.permission.PROVIDE_CALL_ENDPOINTS" />-->
