@@ -16,6 +16,7 @@
 
 package com.android.safetycenter;
 
+import static android.Manifest.permission.MANAGE_SAFETY_CENTER;
 import static android.Manifest.permission.READ_SAFETY_CENTER_STATUS;
 import static android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE;
 import static android.os.Build.VERSION_CODES.TIRAMISU;
@@ -175,6 +176,16 @@ public final class SafetyCenterService extends SystemService {
             }
         }
 
+        @Override
+        public void clearSafetyCenterData() {
+            getContext().enforceCallingOrSelfPermission(MANAGE_SAFETY_CENTER,
+                    "clearSafetyCenterData");
+
+            synchronized (mLock) {
+                mSafetySourceDataForKey.clear();
+            }
+        }
+
         private boolean getSafetyCenterConfigValue() {
             return getContext().getResources().getBoolean(Resources.getSystem().getIdentifier(
                     "config_enableSafetyCenter",
@@ -184,9 +195,9 @@ public final class SafetyCenterService extends SystemService {
 
         private void enforceIsSafetyCenterEnabledPermissions(@NonNull String message) {
             if (getContext().checkCallingOrSelfPermission(READ_SAFETY_CENTER_STATUS)
-                        != PackageManager.PERMISSION_GRANTED
+                    != PackageManager.PERMISSION_GRANTED
                     && getContext().checkCallingOrSelfPermission(SEND_SAFETY_CENTER_UPDATE)
-                        != PackageManager.PERMISSION_GRANTED) {
+                    != PackageManager.PERMISSION_GRANTED) {
                 throw new SecurityException(message + " requires "
                         + READ_SAFETY_CENTER_STATUS + " or "
                         + SEND_SAFETY_CENTER_UPDATE);
