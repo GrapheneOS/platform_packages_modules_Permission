@@ -55,20 +55,13 @@
     <string name="unused_apps" msgid="2058057455175955094">"Programu zisizotumika"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"Hakuna programu zisizotumika"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"Hakuna programu zisizotumika"</string>
-    <!-- no translation found for review_permission_decisions (309559429150613632) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_view_all (90391040431566130) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_empty (8120775336417279806) -->
-    <skip />
-    <!-- no translation found for auto_permission_manager_summary (9157438376234301354) -->
-    <skip />
-    <!-- no translation found for granted_permission_decision (7824827491551861365) -->
-    <skip />
-    <!-- no translation found for denied_permission_decision (5308961501779563781) -->
-    <skip />
-    <!-- no translation found for days_ago (6650359081551335629) -->
-    <skip />
+    <string name="review_permission_decisions" msgid="309559429150613632">"Uamuzi wa ruhusa za hivi majuzi"</string>
+    <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Angalia uamuzi wa ruhusa zote za hivi majuzi"</string>
+    <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Hakuna uamuzi wa ruhusa za hivi majuzi"</string>
+    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Dhibiti ufikiaji wa data kwenye kalenda, rekodi za nambari za simu na zaidi"</string>
+    <string name="granted_permission_decision" msgid="7824827491551861365">"Umeipa <xliff:g id="APP_NAME">%1$s</xliff:g> ruhusa ya kufikia <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="denied_permission_decision" msgid="5308961501779563781">"Umeinyima <xliff:g id="APP_NAME">%1$s</xliff:g> ruhusa ya kufikia<xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Leo}=1{Siku moja iliyopita}other{Siku # zilizopita}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Zima programu"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Ukizima programu hii, huenda Android na programu zingine zikakosa kufanya kazi tena kama zilivyokusudiwa. Kumbuka, huwezi kufuta programu hii kwa kuwa ilisakinishwa mapema kwenye kifaa chako. Kwa kuizima, unazima programu hii na kuificha kwenye kifaa chako."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Kidhibiti cha ruhusa"</string>
@@ -124,6 +117,8 @@
     <string name="message_staging" msgid="9110563899955511866">"Inatayarisha programu…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Haijulikani"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Dashibodi ya faragha"</string>
+    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
+    <skip />
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Matumizi ya <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Angalia ruhusa zingine"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -255,7 +250,16 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Baadhi ya programu hazijatumiwa kwa miezi michache. Gusa ili ukague."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{Programu # isiyotumika}other{Programu # zisizotumika}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Ruhusa na faili za muda zimeondolewa na arifa zimesimamishwa. Gusa ili ukague."</string>
-    <string name="post_drive_permission_decision_reminder_title" msgid="5541572128394226308">"Ruhusa za hivi majuzi"</string>
+    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Baadhi ya programu hazijatumiwa kwa miezi michache"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Zilizoondolewa ruhusa"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Zilizoondolewa ruhusa"</string>
@@ -452,6 +456,10 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie data ya vitambuzi inayohusu viashiria muhimu vya mwili wako?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Huenda programu hii ikataka kufikia data ya vitambuzi inayohusu viashiria muhimu vya mwili wako kila wakati, hata wakati huitumii."<annotation id="link">"Iruhusu katika mipangilio."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Ungependa kubadilisha ufikiaji wa data ya vitambuzi inayohusu viashiria muhimu vya mwili wako kwenye &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_notifications (6396739062335106181) -->
+    <skip />
+    <!-- no translation found for permgrouprequestcontinue_notifications (3895098107355024027) -->
+    <skip />
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Ruhusa zinazodhibitiwa"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Maelezo ya mahali yanaweza kufikiwa"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Msimamizi wako wa TEHAMA anaruhusu <xliff:g id="APP_NAME">%s</xliff:g> kufikia maelezo ya mahali ulipo"</string>

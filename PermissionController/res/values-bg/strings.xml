@@ -55,20 +55,13 @@
     <string name="unused_apps" msgid="2058057455175955094">"Неизползвани приложения"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"Няма неизползвани приложения"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"0 неизползвани приложения"</string>
-    <!-- no translation found for review_permission_decisions (309559429150613632) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_view_all (90391040431566130) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_empty (8120775336417279806) -->
-    <skip />
-    <!-- no translation found for auto_permission_manager_summary (9157438376234301354) -->
-    <skip />
-    <!-- no translation found for granted_permission_decision (7824827491551861365) -->
-    <skip />
-    <!-- no translation found for denied_permission_decision (5308961501779563781) -->
-    <skip />
-    <!-- no translation found for days_ago (6650359081551335629) -->
-    <skip />
+    <string name="review_permission_decisions" msgid="309559429150613632">"Скорошни решения за разрешения"</string>
+    <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Преглед на всички скорошни решения за разрешения"</string>
+    <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Няма скорошни решения за разрешения"</string>
+    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Управление на достъпа до данните за календара, списъците с обажданията и др."</string>
+    <string name="granted_permission_decision" msgid="7824827491551861365">"Предоставихте на <xliff:g id="APP_NAME">%1$s</xliff:g> достъп до <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="denied_permission_decision" msgid="5308961501779563781">"Отказахте на <xliff:g id="APP_NAME">%1$s</xliff:g> достъп до <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Днес}=1{Преди 1 ден}other{Преди # дни}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Деактивиране на приложението"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Ако деактивирате това приложение, Android и други приложения може да спрат да работят както трябва. Имайте предвид, че не можете да изтриете това приложение, тъй като е предварително инсталирано на устройството ви. Като деактивирате приложението, го изключвате и скривате на устройството си."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Мениджър на разрешенията"</string>
@@ -124,6 +117,8 @@
     <string name="message_staging" msgid="9110563899955511866">"Приложението се подготвя…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Неизвестно"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Управление на поверителността"</string>
+    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
+    <skip />
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Използване на <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Вижте други разрешения"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -255,7 +250,16 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Някои приложения не са използвани от няколко месеца. Докоснете за преглед."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# неизползвано приложение}other{# неизползвани приложения}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Разрешенията и временните файлове бяха премахнати, а известията – спрени. Докоснете за преглед."</string>
-    <string name="post_drive_permission_decision_reminder_title" msgid="5541572128394226308">"Скорошни разрешения"</string>
+    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Някои приложения не са използвани от няколко месеца"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Премахнати разрешения"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Разрешенията са премахнати"</string>
@@ -452,6 +456,10 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Да се разреши ли на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да осъществява достъп до данните от сензорите за жизнените ви показатели?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Това прил. може да иска достъп до данните от сензорите за жизн. ви показатели по всяко време – дори когато не го използвате. "<annotation id="link">"Разрешете от настройките."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Да се промени ли достъпът до данните от сензорите за жизнените ви показатели за &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_notifications (6396739062335106181) -->
+    <skip />
+    <!-- no translation found for permgrouprequestcontinue_notifications (3895098107355024027) -->
+    <skip />
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Контролирани разрешения"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Разрешен достъп до местопол."</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Системният ви администратор разрешава на <xliff:g id="APP_NAME">%s</xliff:g> да осъществява достъп до местоположението ви"</string>
