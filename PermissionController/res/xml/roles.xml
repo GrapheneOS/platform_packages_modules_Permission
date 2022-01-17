@@ -1098,6 +1098,11 @@
             <permission name="android.permission.CONFIGURE_INTERACT_ACROSS_PROFILES" />
             <permission name="android.permission.WRITE_SETTINGS" />
             <permission name="android.permission.CHANGE_CONFIGURATION" />
+            <permission name="android.permission.LAUNCH_DEVICE_MANAGER_SETUP" />
+            <permission name="android.permission.INSTALL_DPC_PACKAGES" />
+            <permission name="android.permission.QUERY_USERS" />
+            <permission name="android.permission.UPDATE_DEVICE_MANAGEMENT_RESOURCES" />
+            <permission name="android.permission.QUERY_ADMIN_POLICY" />
         </permissions>
     </role>
 
