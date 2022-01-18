@@ -816,6 +816,7 @@
             <permission name="android.permission.MODIFY_PHONE_STATE" />
             <permission name="android.permission.RECORD_AUDIO" />
             <permission name="android.permission.SYSTEM_APPLICATION_OVERLAY" />
+            <permission name="android.permission.SET_SYSTEM_AUDIO_CAPTION" />
         </permissions>
     </role>
 
