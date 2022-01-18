@@ -206,6 +206,7 @@ public final class SafetyCenterService extends SystemService {
                             .setSummary("This should be implemented.")
                             .build(),
                     new ArrayList<>(),
+                    new ArrayList<>(),
                     new ArrayList<>());
         }
 

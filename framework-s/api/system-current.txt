@@ -45,10 +45,11 @@ package android.app.role {
 package android.safetycenter {
 
   public final class SafetyCenterData implements android.os.Parcelable {
-    ctor public SafetyCenterData(@NonNull android.safetycenter.SafetyCenterStatus, @NonNull java.util.List<android.safetycenter.SafetyCenterIssue>, @NonNull java.util.List<android.safetycenter.SafetyCenterEntryOrGroup>);
+    ctor public SafetyCenterData(@NonNull android.safetycenter.SafetyCenterStatus, @NonNull java.util.List<android.safetycenter.SafetyCenterIssue>, @NonNull java.util.List<android.safetycenter.SafetyCenterEntryOrGroup>, @NonNull java.util.List<android.safetycenter.SafetyCenterStaticEntryGroup>);
     method public int describeContents();
     method @NonNull public java.util.List<android.safetycenter.SafetyCenterEntryOrGroup> getEntriesOrGroups();
     method @NonNull public java.util.List<android.safetycenter.SafetyCenterIssue> getIssues();
+    method @NonNull public java.util.List<android.safetycenter.SafetyCenterStaticEntryGroup> getStaticEntryGroups();
     method @NonNull public android.safetycenter.SafetyCenterStatus getStatus();
     method public void writeToParcel(@NonNull android.os.Parcel, int);
     field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetyCenterData> CREATOR;
@@ -187,6 +188,25 @@ package android.safetycenter {
     method @Nullable @RequiresPermission(android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE) public android.safetycenter.SafetySourceData getLastSafetyCenterUpdate(@NonNull String);
     method @RequiresPermission(anyOf={android.Manifest.permission.READ_SAFETY_CENTER_STATUS, android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE}) public boolean isSafetyCenterEnabled();
     method @RequiresPermission(android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE) public void sendSafetyCenterUpdate(@NonNull android.safetycenter.SafetySourceData);
+  }
+
+  public final class SafetyCenterStaticEntry implements android.os.Parcelable {
+    ctor public SafetyCenterStaticEntry(@NonNull CharSequence, @Nullable CharSequence, @NonNull android.app.PendingIntent);
+    method public int describeContents();
+    method @NonNull public android.app.PendingIntent getPendingIntent();
+    method @Nullable public CharSequence getSummary();
+    method @NonNull public CharSequence getTitle();
+    method public void writeToParcel(@NonNull android.os.Parcel, int);
+    field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetyCenterStaticEntry> CREATOR;
+  }
+
+  public final class SafetyCenterStaticEntryGroup implements android.os.Parcelable {
+    ctor public SafetyCenterStaticEntryGroup(@NonNull CharSequence, @NonNull java.util.List<android.safetycenter.SafetyCenterStaticEntry>);
+    method public int describeContents();
+    method @NonNull public java.util.List<android.safetycenter.SafetyCenterStaticEntry> getStaticEntries();
+    method @NonNull public CharSequence getTitle();
+    method public void writeToParcel(@NonNull android.os.Parcel, int);
+    field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetyCenterStaticEntryGroup> CREATOR;
   }
 
   public final class SafetyCenterStatus implements android.os.Parcelable {
