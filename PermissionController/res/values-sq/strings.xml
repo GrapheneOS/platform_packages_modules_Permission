@@ -55,20 +55,13 @@
     <string name="unused_apps" msgid="2058057455175955094">"Aplikacionet e papërdorura"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"Nuk ka aplikacione të papërdorura"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"0 aplikacione të papërdorura"</string>
-    <!-- no translation found for review_permission_decisions (309559429150613632) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_view_all (90391040431566130) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_empty (8120775336417279806) -->
-    <skip />
-    <!-- no translation found for auto_permission_manager_summary (9157438376234301354) -->
-    <skip />
-    <!-- no translation found for granted_permission_decision (7824827491551861365) -->
-    <skip />
-    <!-- no translation found for denied_permission_decision (5308961501779563781) -->
-    <skip />
-    <!-- no translation found for days_ago (6650359081551335629) -->
-    <skip />
+    <string name="review_permission_decisions" msgid="309559429150613632">"Vendimet e fundit për lejet"</string>
+    <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Shiko të gjitha vendimet e fundit për lejet"</string>
+    <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Nuk ka vendime të fundit për lejet"</string>
+    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Menaxho qasjen te të dhënat e kalendarit, evidencave të telefonatave etj."</string>
+    <string name="granted_permission_decision" msgid="7824827491551861365">"I dhe <xliff:g id="APP_NAME">%1$s</xliff:g> qasje në <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="denied_permission_decision" msgid="5308961501779563781">"I refuzove <xliff:g id="APP_NAME">%1$s</xliff:g> qasje në <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Sot}=1{1 ditë më parë}other{# ditë më parë}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Çaktivizo aplikacionin"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Nëse e çaktivizon këtë aplikacion, Android dhe aplikacionet e tjera mund të mos funksionojnë më siç pritet. Ki parasysh se nuk mund ta fshish këtë aplikacion pasi ai ka ardhur i instaluar paraprakisht në pajisjen tënde. Duke e çaktivizuar, mund ta kalosh këtë aplikacion në joaktiv dhe ta fshehësh në pajisjen tënde."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Menaxheri i lejeve"</string>
@@ -124,6 +117,8 @@
     <string name="message_staging" msgid="9110563899955511866">"Po vihet në përdorim aplikacioni..."</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"I panjohur"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Paneli i privatësisë"</string>
+    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
+    <skip />
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Përdorimi i lejeve: <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Shiko lejet e tjera"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -255,7 +250,16 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Disa aplikacione nuk janë përdorur për disa muaj. Trokit për t\'i rishikuar."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# aplikacion i papërdorur}other{# aplikacione të papërdorura}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Lejet dhe skedarët e përkohshëm janë hequr dhe njoftimet janë ndaluar. Trokit për t\'i rishikuar."</string>
-    <string name="post_drive_permission_decision_reminder_title" msgid="5541572128394226308">"Lejet e fundit"</string>
+    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Disa aplikacione nuk janë përdorur për disa muaj"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Me leje të hequra"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Leje të hequra"</string>
@@ -452,6 +456,10 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Të lejohet që &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të ketë qasje te të dhënat e sensorëve rreth shenjave të tua jetësore?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Aplikacioni mund të kërkojë qasje te të dhënat e sensorëve rreth shenjave jetësore, edhe nëse nuk e përdor aplikacionin. "<annotation id="link">"Lejo te cilësimet."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Të ndryshohet qasja te të dhënat e sensorëve rreth shenjave të tua jetësore për &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_notifications (6396739062335106181) -->
+    <skip />
+    <!-- no translation found for permgrouprequestcontinue_notifications (3895098107355024027) -->
+    <skip />
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Lejet e kontrolluara"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Lejohet qasja te vendndodhja"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Administratori yt i TI-së e lejon aplikacionin \"<xliff:g id="APP_NAME">%s</xliff:g>\" të ketë qasje te vendndodhja jote"</string>

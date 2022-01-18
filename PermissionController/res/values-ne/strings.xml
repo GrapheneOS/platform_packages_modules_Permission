@@ -55,20 +55,13 @@
     <string name="unused_apps" msgid="2058057455175955094">"प्रयोग नगरिएका एपहरू"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"सबै एप चलाइएका छन्"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"प्रयोग नगरिएका एउटा पनि एप छैन"</string>
-    <!-- no translation found for review_permission_decisions (309559429150613632) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_view_all (90391040431566130) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_empty (8120775336417279806) -->
-    <skip />
-    <!-- no translation found for auto_permission_manager_summary (9157438376234301354) -->
-    <skip />
-    <!-- no translation found for granted_permission_decision (7824827491551861365) -->
-    <skip />
-    <!-- no translation found for denied_permission_decision (5308961501779563781) -->
-    <skip />
-    <!-- no translation found for days_ago (6650359081551335629) -->
-    <skip />
+    <string name="review_permission_decisions" msgid="309559429150613632">"हालै दिइएका अनुमतिसम्बन्धी निर्णयहरू"</string>
+    <string name="review_permission_decisions_view_all" msgid="90391040431566130">"हालै दिइएका सबै अनुमतिसम्बन्धी निर्णय हेर्नुहोस्"</string>
+    <string name="review_permission_decisions_empty" msgid="8120775336417279806">"हालै नदिइएका अनुमतिसम्बन्धी निर्णयहरू"</string>
+    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"पात्रो, कल लग र थप कुरा हेर्न डेटा व्यवस्थापन गर्नुहोस्"</string>
+    <string name="granted_permission_decision" msgid="7824827491551861365">"तपाईंले <xliff:g id="APP_NAME">%1$s</xliff:g> लाई <xliff:g id="PERMISSION_NAME">%2$s</xliff:g> प्रयोग गर्न दिनुभएको छ"</string>
+    <string name="denied_permission_decision" msgid="5308961501779563781">"तपाईंले <xliff:g id="PERMISSION_NAME">%2$s</xliff:g> प्रयोग गर्न <xliff:g id="APP_NAME">%1$s</xliff:g> ले मागेको अनुमति अस्वीकार गर्नुभएको छ"</string>
+    <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{आज}=1{१ दिनअघि}other{# दिनअघि}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"एप असक्षम पार्नुहोस्"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"तपाईंले यो एप असक्षम पार्नुभयो भने Android र अन्य एपहरूले अब उप्रान्त अपेक्षाअनुसार कार्य नगर्न सक्छन्। स्मरण रहोस्, तपाईं यो एप तपाईंको यन्त्रसँग पहिल्यै स्थापना भएर आएको हुँदा तपाईं यसलाई मेटाउन सक्नुहुन्न। यो एप असक्षम पारेर, तपाईं यसलाई निष्क्रिय पार्नुहुन्छ तथा यसलाई आफ्नो डिभाइसमा लुकाउनुहुन्छ।"</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"पर्मिसन म्यानेजर"</string>
@@ -124,6 +117,8 @@
     <string name="message_staging" msgid="9110563899955511866">"एप स्थापना गर्न तयारी गर्दै…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"अज्ञात"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"गोपनीयतासम्बन्धी ड्यासबोर्ड"</string>
+    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
+    <skip />
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> को प्रयोग"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"अन्य अनुमति हेर्नुहोस्"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -255,7 +250,16 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"तपाईंले केही महिनादेखि केही एपहरू प्रयोग गर्नुभएका छैन। समीक्षा गर्न ट्याप गर्नुहोस्।"</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{प्रयोग नगरिएको # वटा एप}other{प्रयोग नगरिएका # वटा एप}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"एपलाई दिइएका अनुमति तथा अस्थायी फाइलहरू हटाइएका छन् र सूचनाहरू बन्द गरिएका छन्। समीक्षा गर्न ट्याप गर्नुहोस्।"</string>
-    <string name="post_drive_permission_decision_reminder_title" msgid="5541572128394226308">"हालसालै दिइएका अनुमति"</string>
+    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"तपाईंले केही महिनादेखि केही एपहरू प्रयोग गर्नुभएका छैन"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"अनुमति रद्द गरिएका एपहरू"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"अनुमति रद्द गरिएका एपहरू"</string>
@@ -452,6 +456,8 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई तपाईंको स्वास्थ्यसम्बन्धी आधारभूत विवरण उपलब्ध गराउने सेन्सर डेटामाथि पहुँच राख्ने अनुमति दिने हो?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"यो एपले जुनसुकै बेला (तपाईंले यसको प्रयोग नगरेका अवस्थामा पनि) स्वास्थ्यसम्बन्धी आधारभूत विवरण उपलब्ध गराउने सेन्सर डेटामाथि पहुँच राख्न सक्छ। "<annotation id="link">"सेटिङमा गई यसो गर्ने अनुमति दिनुहोस्।"</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"तपाईंको स्वास्थ्यसम्बन्धी आधारभूत विवरण उपलब्ध गराउने सेन्सर डेटामाथि पहुँच राख्न &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई दिइएको अनुमति बदल्ने हो?"</string>
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई तपाईंलाई सूचना पठाउन दिने हो?"</string>
+    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई तपाईंलाई सूचना पठाइराख्न दिने हो?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"नियन्त्रित अनुमतिहरू"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"स्थानसम्बन्धी जानकारी हेरिन सक्छ"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"तपाईंका IT एडमिनले <xliff:g id="APP_NAME">%s</xliff:g> लाई तपाईंको स्थान हेर्ने अनुमति दिनुभएको छ"</string>
