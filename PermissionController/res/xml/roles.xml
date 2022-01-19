@@ -69,7 +69,7 @@
 
     <permission-set name="sensors">
         <permission name="android.permission.BODY_SENSORS" />
-        <permission name="android.permission.BODY_SENSORS_BACKGROUND" />
+        <permission name="android.permission.BODY_SENSORS_BACKGROUND" minSdkVersion="33" />
     </permission-set>
 
     <permission-set name="storage">
