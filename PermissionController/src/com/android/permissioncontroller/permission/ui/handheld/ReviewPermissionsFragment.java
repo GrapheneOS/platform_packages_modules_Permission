@@ -17,6 +17,7 @@
 package com.android.permissioncontroller.permission.ui.handheld;
 
 import static android.content.pm.PackageManager.FLAG_PERMISSION_REVIEW_REQUIRED;
+import static android.content.pm.PackageManager.FLAG_PERMISSION_USER_SET;
 
 import static com.android.permissioncontroller.PermissionControllerStatsLog.REVIEW_PERMISSIONS_FRAGMENT_RESULT_REPORTED;
 
@@ -244,8 +245,9 @@ public final class ReviewPermissionsFragment extends PreferenceFragmentCompat
 
         for (String perm : pkg.requestedPermissions) {
             try {
-                pm.updatePermissionFlags(perm, pkg.packageName, FLAG_PERMISSION_REVIEW_REQUIRED,
-                        0, user);
+                pm.updatePermissionFlags(perm, pkg.packageName,
+                        FLAG_PERMISSION_REVIEW_REQUIRED | FLAG_PERMISSION_USER_SET,
+                        FLAG_PERMISSION_USER_SET, user);
             } catch (IllegalArgumentException e) {
                 Log.e(LOG_TAG, "Cannot unmark " + perm + " requested by " + pkg.packageName
                         + " as review required", e);
