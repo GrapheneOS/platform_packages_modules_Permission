@@ -55,20 +55,13 @@
     <string name="unused_apps" msgid="2058057455175955094">"未使用的应用"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"没有未使用的应用"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"没有未使用的应用"</string>
-    <!-- no translation found for review_permission_decisions (309559429150613632) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_view_all (90391040431566130) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_empty (8120775336417279806) -->
-    <skip />
-    <!-- no translation found for auto_permission_manager_summary (9157438376234301354) -->
-    <skip />
-    <!-- no translation found for granted_permission_decision (7824827491551861365) -->
-    <skip />
-    <!-- no translation found for denied_permission_decision (5308961501779563781) -->
-    <skip />
-    <!-- no translation found for days_ago (6650359081551335629) -->
-    <skip />
+    <string name="review_permission_decisions" msgid="309559429150613632">"最近的权限决策"</string>
+    <string name="review_permission_decisions_view_all" msgid="90391040431566130">"查看最近的所有权限决策"</string>
+    <string name="review_permission_decisions_empty" msgid="8120775336417279806">"最近没有任何权限决策"</string>
+    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"管理日历、通话记录等的数据访问权限"</string>
+    <string name="granted_permission_decision" msgid="7824827491551861365">"您为“<xliff:g id="APP_NAME">%1$s</xliff:g>”授予了<xliff:g id="PERMISSION_NAME">%2$s</xliff:g>访问权限"</string>
+    <string name="denied_permission_decision" msgid="5308961501779563781">"您拒绝为“<xliff:g id="APP_NAME">%1$s</xliff:g>”授予<xliff:g id="PERMISSION_NAME">%2$s</xliff:g>访问权限"</string>
+    <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{今天}=1{1 天前}other{# 天前}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"停用应用"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"如果您停用此应用，Android 及其他应用可能会无法再正常运行。请注意，您无法删除此应用，因为它是设备预装应用。停用后，系统将关闭此应用并在设备上将其隐藏。"</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"权限管理器"</string>
@@ -124,6 +117,8 @@
     <string name="message_staging" msgid="9110563899955511866">"正在准备安装应用…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"未知"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"隐私信息中心"</string>
+    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
+    <skip />
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g>使用情况"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"查看其他权限"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_1">%2$s</xliff:g>、<xliff:g id="PERMGROUP_0">%1$s</xliff:g>"</string>
@@ -255,7 +250,16 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"一些应用已连续几个月未使用过。点按即可查看。"</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# 个未使用的应用}other{# 个未使用的应用}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"系统已移除权限和临时文件，并停止通知功能。点按即可查看。"</string>
-    <string name="post_drive_permission_decision_reminder_title" msgid="5541572128394226308">"近期的权限"</string>
+    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"一些应用已连续几个月未使用过"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"已移除权限的应用"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"已移除权限的应用"</string>
@@ -452,6 +456,8 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问与您的生命体征相关的传感器数据吗？"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"此应用可能想要随时访问与您的生命体征相关的传感器数据（即使在您未使用此应用时）。"<annotation id="link">"您可以在“设置”中允许。"</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"要更改&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;对与您的生命体征相关的传感器数据的访问权限吗？"</string>
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"允许 &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 向您发送通知吗？"</string>
+    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"允许 &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 继续向您发送通知吗？"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"受控权限"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"应用可使用位置信息"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"您的 IT 管理员允许“<xliff:g id="APP_NAME">%s</xliff:g>”使用您的位置信息"</string>

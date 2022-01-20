@@ -55,20 +55,13 @@
     <string name="unused_apps" msgid="2058057455175955094">"Nekorištene aplikacije"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"Nema nekorištenih aplikacija"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"0 nekorištenih aplikacija"</string>
-    <!-- no translation found for review_permission_decisions (309559429150613632) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_view_all (90391040431566130) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_empty (8120775336417279806) -->
-    <skip />
-    <!-- no translation found for auto_permission_manager_summary (9157438376234301354) -->
-    <skip />
-    <!-- no translation found for granted_permission_decision (7824827491551861365) -->
-    <skip />
-    <!-- no translation found for denied_permission_decision (5308961501779563781) -->
-    <skip />
-    <!-- no translation found for days_ago (6650359081551335629) -->
-    <skip />
+    <string name="review_permission_decisions" msgid="309559429150613632">"Nedavne odluke o odobrenjima"</string>
+    <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Pregledajte sve nedavne odluke o odobrenjima"</string>
+    <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Nema nedavnih odluka o odobrenjima"</string>
+    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Upravljajte pristupom podacima u kalendaru, zapisnicima poziva i drugom sadržaju"</string>
+    <string name="granted_permission_decision" msgid="7824827491551861365">"Odobrili ste aplikaciji <xliff:g id="APP_NAME">%1$s</xliff:g> pristup za: <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="denied_permission_decision" msgid="5308961501779563781">"Odbili ste aplikaciji <xliff:g id="APP_NAME">%1$s</xliff:g> pristup za: <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Danas}=1{Prije 1 dan}one{Prije # dan}few{Prije # dana}other{Prije # dana}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Onemogući aplikaciju"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Ako onemogućite ovu aplikaciju, moguće je da Android i druge aplikacije više neće funkcionirati ispravno. Imajte na umu da ovu aplikaciju ne možete izbrisati jer je unaprijed instalirana na vašem uređaju. Ako onemogućite aplikaciju, isključit ćete je i sakriti na uređaju."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Upravitelj odobrenja"</string>
@@ -124,6 +117,8 @@
     <string name="message_staging" msgid="9110563899955511866">"Pripremanje aplikacije…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Nepoznato"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Kontrolna tabla za privatnost"</string>
+    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
+    <skip />
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Korištenje odobrenja za: <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Vidite druga odobrenja"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -255,7 +250,16 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Neke aplikacije nisu korištene nekoliko mjeseci. Dodirnite za pregled."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# nekorištena aplikacija}one{# nekorištena aplikacija}few{# nekorištene aplikacije}other{# nekorištenih aplikacija}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Odobrenja i privremeni fajlovi su uklonjeni, a obavještenja zaustavljena. Dodirnite da pregledate."</string>
-    <string name="post_drive_permission_decision_reminder_title" msgid="5541572128394226308">"Nedavna odobrenja"</string>
+    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Neke aplikacije nisu korištene nekoliko mjeseci"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Uklonjena odobrenja"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Uklonjena odobrenja"</string>
@@ -452,6 +456,8 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa podacima senzora o vašim vitalnim znakovima?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Ova aplikacija može tražiti pristup podacima senzora o vašim vitalnim znakovima sve vrijeme, čak i kada je ne koristite. "<annotation id="link">"Dozvolite u postavkama."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Promijeniti pristup podacima senzora o vašim vitalnim znakovima za aplikaciju &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Dozvoliti da vam aplikacija &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; šalje obavještenja?"</string>
+    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Dozvoliti da vam aplikacija &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; nastavi slati obavještenja?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Kontrolirana odobrenja"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Lokaciji se može pristupiti"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Vaš IT administrator dozvoljava aplikaciji <xliff:g id="APP_NAME">%s</xliff:g> da pristupa vašoj lokaciji"</string>

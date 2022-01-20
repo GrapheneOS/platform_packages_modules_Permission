@@ -55,20 +55,13 @@
     <string name="unused_apps" msgid="2058057455175955094">"កម្មវិធី​ដែលមិន​ប្រើ"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"មិនមានកម្មវិធីដែលមិនបានប្រើទេ"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"កម្មវិធី​ដែលមិន​ប្រើ 0"</string>
-    <!-- no translation found for review_permission_decisions (309559429150613632) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_view_all (90391040431566130) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_empty (8120775336417279806) -->
-    <skip />
-    <!-- no translation found for auto_permission_manager_summary (9157438376234301354) -->
-    <skip />
-    <!-- no translation found for granted_permission_decision (7824827491551861365) -->
-    <skip />
-    <!-- no translation found for denied_permission_decision (5308961501779563781) -->
-    <skip />
-    <!-- no translation found for days_ago (6650359081551335629) -->
-    <skip />
+    <string name="review_permission_decisions" msgid="309559429150613632">"ការសម្រេចថ្មីៗលើការអនុញ្ញាត"</string>
+    <string name="review_permission_decisions_view_all" msgid="90391040431566130">"មើលការសម្រេចថ្មីៗលើការអនុញ្ញាតទាំងអស់"</string>
+    <string name="review_permission_decisions_empty" msgid="8120775336417279806">"មិនមានការសម្រេចថ្មីៗលើការអនុញ្ញាតទេ"</string>
+    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"គ្រប់គ្រងការចូលប្រើទិន្នន័យនៃប្រតិទិន កំណត់ហេតុហៅទូរសព្ទ និងអ្វីៗជាច្រើនទៀត"</string>
+    <string name="granted_permission_decision" msgid="7824827491551861365">"អ្នកបានផ្ដល់សិទ្ធិឱ្យ <xliff:g id="APP_NAME">%1$s</xliff:g> ចូលប្រើ <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="denied_permission_decision" msgid="5308961501779563781">"អ្នកបានបដិសេធមិនឱ្យ <xliff:g id="APP_NAME">%1$s</xliff:g> ចូលប្រើ <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{ថ្ងៃនេះ}=1{1 ថ្ងៃមុន}other{# ថ្ងៃមុន}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"បិទកម្មវិធី"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"ប្រសិន​បើ​អ្នក​បិទ​កម្មវិធីនេះ កម្មវិធី Android និង​កម្មវិធី​ផ្សេង​ទៀត​អាច​នឹង​លែង​ដំណើរការដូច​ដែលអ្វី​​ចង់បាន​។ សូមចាំថា អ្នក​មិនអាច​លុបកម្មវិធី​នេះ​បាន​ទេ ដោយសារកម្មវិធី​នេះត្រូវបាន​ដំឡើងជាស្រេច​នៅលើឧបករណ៍​របស់អ្នក។ ប្រសិនបើ​បិទ មានន័យថាអ្នក​បិទកម្មវិធីនេះ ហើយលាក់វានៅលើឧបករណ៍​របស់អ្នក។"</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"កម្មវិធីគ្រប់គ្រង​ការអនុញ្ញាត"</string>
@@ -124,6 +117,8 @@
     <string name="message_staging" msgid="9110563899955511866">"កំពុងសាកល្បងកម្មវិធី…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"មិនស្គាល់"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"ផ្ទាំងគ្រប់គ្រង​ឯកជនភាព"</string>
+    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
+    <skip />
     <string name="permission_group_usage_title" msgid="2595013198075285173">"ការប្រើប្រាស់ <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"មើលការអនុញ្ញាត​ផ្សេងទៀត"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -255,7 +250,16 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"កម្មវិធី​មួយចំនួន​មិនត្រូវបាន​ប្រើប្រាស់​រយៈពេល​ពីរបីខែហើយ។ សូមចុច ដើម្បី​ពិនិត្យមើល។"</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{កម្មវិធី​ដែលមិនប្រើ​ចំនួន #}other{កម្មវិធី​ដែលមិនប្រើ​ចំនួន #}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"ការអនុញ្ញាត និងឯកសារបណ្ដោះអាសន្ន​ត្រូវបានលុបចេញ ហើយការជូនដំណឹងត្រូវបានបញ្ឈប់។ សូមចុច ដើម្បី​ពិនិត្យមើល។"</string>
-    <string name="post_drive_permission_decision_reminder_title" msgid="5541572128394226308">"ការអនុញ្ញាតថ្មីៗ"</string>
+    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"កម្មវិធី​មួយចំនួន​មិនត្រូវបាន​ប្រើប្រាស់​រយៈពេល​ពីរបីខែ​ហើយ"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"ការអនុញ្ញាត​ដែលបានដក"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"បានដក​ការអនុញ្ញាត"</string>
@@ -452,6 +456,8 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ចូលប្រើទិន្នន័យ​ឧបករណ៍ចាប់សញ្ញា​អំពីស្ថានភាពសុខភាព​របស់អ្នកឬ?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"កម្មវិធីនេះប្រហែលជាចង់ចូលប្រើទិន្នន័យឧបករណ៍ចាប់សញ្ញាអំពីស្ថានភាពសុខភាពរបស់អ្នកគ្រប់ពេល ទោះបីជានៅពេលអ្នកមិនកំពុងប្រើកម្មវិធីនេះក៏ដោយ។ "<annotation id="link">"អនុញ្ញាតនៅក្នុងការកំណត់។"</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"ប្ដូរសិទ្ធិចូលប្រើទិន្នន័យឧបករណ៍​ចាប់សញ្ញាអំពី​ស្ថានភាពសុខភាព​របស់អ្នកសម្រាប់ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ឬ?"</string>
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ផ្ញើ​ការជូនដំណឹង​ឱ្យអ្នកឬ?"</string>
+    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; បន្តផ្ញើការជូនដំណឹងឱ្យអ្នកឬ?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"ការអនុញ្ញាត​ដែលស្ថិតក្រោម​ការគ្រប់គ្រង"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"អាចចូលប្រើទីតាំងបាន"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"អ្នកគ្រប់គ្រងផ្នែកព័ត៌មានវិទ្យារបស់អ្នកកំពុងអនុញ្ញាតឱ្យ <xliff:g id="APP_NAME">%s</xliff:g> ចូលប្រើទីតាំងរបស់អ្នក"</string>

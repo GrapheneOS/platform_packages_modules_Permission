@@ -55,20 +55,13 @@
     <string name="unused_apps" msgid="2058057455175955094">"App inutilizzate"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"Nessuna app inutilizzata"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"0 app inutilizzate"</string>
-    <!-- no translation found for review_permission_decisions (309559429150613632) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_view_all (90391040431566130) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_empty (8120775336417279806) -->
-    <skip />
-    <!-- no translation found for auto_permission_manager_summary (9157438376234301354) -->
-    <skip />
-    <!-- no translation found for granted_permission_decision (7824827491551861365) -->
-    <skip />
-    <!-- no translation found for denied_permission_decision (5308961501779563781) -->
-    <skip />
-    <!-- no translation found for days_ago (6650359081551335629) -->
-    <skip />
+    <string name="review_permission_decisions" msgid="309559429150613632">"Decisioni autorizzaz. recenti"</string>
+    <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Visualizza tutte le decisioni recenti relative all\'autorizzazione"</string>
+    <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Nessuna decisione recente relativa all\'autorizzazione"</string>
+    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Gestisci l\'accesso ai dati relativi a calendario, registri chiamate e non solo"</string>
+    <string name="granted_permission_decision" msgid="7824827491551861365">"Hai consentito l\'accesso dell\'app <xliff:g id="APP_NAME">%1$s</xliff:g> a: <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="denied_permission_decision" msgid="5308961501779563781">"Hai negato l\'accesso dell\'app <xliff:g id="APP_NAME">%1$s</xliff:g> a: <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Oggi}=1{1 giorno fa}one{# giorno fa}other{# giorni fa}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Disattiva app"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Se disattivi questa app, Android e altre app potrebbero non funzionare più come previsto. Tieni presente che non puoi eliminare questa app perché è preinstallata sul tuo dispositivo. Puoi scegliere di disattivare l\'app e nasconderla sul tuo dispositivo."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Gestione autorizzazioni"</string>
@@ -124,6 +117,8 @@
     <string name="message_staging" msgid="9110563899955511866">"App in preparazione…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Sconosciuto"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Dashboard della privacy"</string>
+    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
+    <skip />
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Uso di <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Vedi altre autorizzazioni"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -255,7 +250,16 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Alcune app non sono state usate per alcuni mesi. Tocca per controllare."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# app inutilizzata}one{# app inutilizzata}other{# app inutilizzate}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Le autorizzazioni e i file temporanei sono stati rimossi; le notifiche sono state interrotte. Tocca per controllare."</string>
-    <string name="post_drive_permission_decision_reminder_title" msgid="5541572128394226308">"Autorizzazioni recenti"</string>
+    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Alcune app non sono state usate per alcuni mesi"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Autorizzazioni rimosse"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Autorizzazioni rimosse"</string>
@@ -452,6 +456,10 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere ai dati dei sensori relativi ai parametri vitali?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Questa app potrebbe voler accedere sempre ai dati dei sensori relativi ai parametri vitali, anche quando non la usi. "<annotation id="link">"Consenti accesso in impostazioni."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Cambiare l\'accesso ai dati dei sensori relativi ai parametri vitali per &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgrouprequest_notifications (6396739062335106181) -->
+    <skip />
+    <!-- no translation found for permgrouprequestcontinue_notifications (3895098107355024027) -->
+    <skip />
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Autorizzazioni controllate"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"È possibile accedere alla posizione"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"L\'amministratore IT consentirà all\'app <xliff:g id="APP_NAME">%s</xliff:g> di accedere alla tua posizione"</string>
