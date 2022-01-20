@@ -1132,4 +1132,81 @@
             <permission name="android.permission.WRITE_CALENDAR" />
         </permissions>
     </role>
+
+    <!---
+      ~ A role for the package that handles navigation on the Automotive.
+      ~ This is the application that provides point-of-interest search and
+      ~ turn-by-turn navigation guidance.
+      -->
+    <role
+        name="android.app.role.AUTOMOTIVE_NAVIGATION"
+        behavior="AutomotiveRoleBehavior"
+        defaultHolders="config_defaultAutomotiveNavigation"
+        description="@string/role_automotive_navigation_description"
+        exclusive="true"
+        label="@string/role_automotive_navigation_label"
+        minSdkVersion="33"
+        overrideUserWhenGranting="true"
+        requestDescription="@string/role_automotive_navigation_request_description"
+        requestTitle="@string/role_automotive_navigation_request_title"
+        shortLabel="@string/role_automotive_navigation_short_label">
+        <required-components>
+            <activity>
+                <intent-filter>
+                    <action name="android.intent.action.MAIN" />
+                    <category name="android.intent.category.APP_MAPS" />
+                </intent-filter>
+            </activity>
+            <activity>
+                <intent-filter>
+                    <action name="android.intent.action.NAVIGATE" />
+                    <data scheme="geo" />
+                </intent-filter>
+            </activity>
+            <activity>
+                <intent-filter>
+                    <action name="android.intent.action.MAIN" />
+                    <category name="android.car.cluster.NAVIGATION" />
+                </intent-filter>
+            </activity>
+        </required-components>
+        <preferred-activities>
+            <preferred-activity>
+                <activity>
+                    <intent-filter>
+                        <action name="android.intent.action.MAIN" />
+                        <category name="android.intent.category.APP_MAPS" />
+                    </intent-filter>
+                </activity>
+                <intent-filter>
+                    <action name="android.intent.action.MAIN" />
+                    <category name="android.intent.category.APP_MAPS" />
+                </intent-filter>
+            </preferred-activity>
+            <preferred-activity>
+                <activity>
+                    <intent-filter>
+                        <action name="android.intent.action.NAVIGATE" />
+                        <data scheme="geo" />
+                    </intent-filter>
+                </activity>
+                <intent-filter>
+                    <action name="android.intent.action.NAVIGATE" />
+                    <data scheme="geo" />
+                </intent-filter>
+            </preferred-activity>
+            <preferred-activity>
+                <activity>
+                    <intent-filter>
+                        <action name="android.intent.action.MAIN" />
+                        <category name="android.car.cluster.NAVIGATION" />
+                    </intent-filter>
+                </activity>
+                <intent-filter>
+                    <action name="android.intent.action.MAIN" />
+                    <category name="android.car.cluster.NAVIGATION" />
+                </intent-filter>
+            </preferred-activity>
+        </preferred-activities>
+    </role>
 </roles>
