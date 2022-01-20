@@ -1,0 +1,46 @@
+// Signature format: 2.0
+package com.android.safetycenter.config.parser {
+
+  public class SafetyCenterConfig {
+    ctor public SafetyCenterConfig();
+    method @NonNull public com.android.safetycenter.config.parser.SafetySourcesConfig getSafetySourcesConfig();
+    method public void setSafetySourcesConfig(@NonNull com.android.safetycenter.config.parser.SafetySourcesConfig);
+  }
+
+  public class SafetySource {
+    ctor public SafetySource();
+    method @Nullable public String getBroadcastReceiverClassName();
+    method @NonNull public String getId();
+    method @Nullable public String getPackageName();
+    method public int getType();
+    method public void setBroadcastReceiverClassName(@Nullable String);
+    method public void setId(@NonNull String);
+    method public void setPackageName(@Nullable String);
+    method public void setType(int);
+  }
+
+  public class SafetySourcesConfig {
+    ctor public SafetySourcesConfig();
+    method @NonNull public java.util.List<com.android.safetycenter.config.parser.SafetySourcesGroup> getSafetySourcesGroup();
+  }
+
+  public class SafetySourcesGroup {
+    ctor public SafetySourcesGroup();
+    method @NonNull public String getId();
+    method @NonNull public java.util.List<com.android.safetycenter.config.parser.SafetySource> getSafetySource();
+    method @NonNull public String getSummary();
+    method @NonNull public String getTitle();
+    method public void setId(@NonNull String);
+    method public void setSummary(@NonNull String);
+    method public void setTitle(@NonNull String);
+  }
+
+  public class XmlParser {
+    ctor public XmlParser();
+    method public static com.android.safetycenter.config.parser.SafetyCenterConfig read(java.io.InputStream) throws javax.xml.datatype.DatatypeConfigurationException, java.io.IOException, org.xmlpull.v1.XmlPullParserException;
+    method public static String readText(org.xmlpull.v1.XmlPullParser) throws java.io.IOException, org.xmlpull.v1.XmlPullParserException;
+    method public static void skip(org.xmlpull.v1.XmlPullParser) throws java.io.IOException, org.xmlpull.v1.XmlPullParserException;
+  }
+
+}
+
