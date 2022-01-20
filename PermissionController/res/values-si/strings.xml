@@ -55,20 +55,13 @@
     <string name="unused_apps" msgid="2058057455175955094">"භාවිත නොකළ යෙදුම්"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"භාවිත නොකළ යෙදුම් නැත"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"භාවිත නොකළ යෙදුම් 0"</string>
-    <!-- no translation found for review_permission_decisions (309559429150613632) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_view_all (90391040431566130) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_empty (8120775336417279806) -->
-    <skip />
-    <!-- no translation found for auto_permission_manager_summary (9157438376234301354) -->
-    <skip />
-    <!-- no translation found for granted_permission_decision (7824827491551861365) -->
-    <skip />
-    <!-- no translation found for denied_permission_decision (5308961501779563781) -->
-    <skip />
-    <!-- no translation found for days_ago (6650359081551335629) -->
-    <skip />
+    <string name="review_permission_decisions" msgid="309559429150613632">"මෑත අවසර තීරණ"</string>
+    <string name="review_permission_decisions_view_all" msgid="90391040431566130">"සියලු මෑත අවසර තීරණ බලන්න"</string>
+    <string name="review_permission_decisions_empty" msgid="8120775336417279806">"මෑත අවසර තීරණ නැත"</string>
+    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"දින දර්ශනය, ඇමතුම් ලොග සහ තවත් දේ වෙත දත්ත ප්‍රවේශය කළමනාකරණය කරන්න"</string>
+    <string name="granted_permission_decision" msgid="7824827491551861365">"ඔබ <xliff:g id="PERMISSION_NAME">%2$s</xliff:g> වෙත <xliff:g id="APP_NAME">%1$s</xliff:g> ප්‍රවේශය ලබා දුන්නේය"</string>
+    <string name="denied_permission_decision" msgid="5308961501779563781">"ඔබ <xliff:g id="PERMISSION_NAME">%2$s</xliff:g> වෙත <xliff:g id="APP_NAME">%1$s</xliff:g> ප්‍රවේශය ප්‍රතික්ෂේප කළේය"</string>
+    <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{අද}=1{දින 1කට පෙර}one{දින #කට පෙර}other{දින #කට පෙර}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"යෙදුම අබල කරන්න"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"ඔබ මෙම යෙදුම අබල කළහොත්, Android සහ වෙනත් යෙදුම් තවදුරටත් අපේක්ෂා කළ පරිදි ක්‍රියා නොකළ හැකිය. මෙය ඔබගේ උපාංගයේ පූර්ව ස්ථාපිතව පැමිණි නිසා ඔබට මෙම යෙදුම මැකිය නොහැකි බව මතක තබා ගන්න. අබල කිරීමෙන්, ඔබ මෙම යෙදුම අබල කර එය ඔබගේ උපාංගයේ සඟවයි."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"අවසර කළමනාකරු"</string>
@@ -124,6 +117,8 @@
     <string name="message_staging" msgid="9110563899955511866">"යෙදුම වේදිකාගත කරමින්..."</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"නොදනී"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"පෞද්ගලිකත්ව උපකරණ පුවරුව"</string>
+    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
+    <skip />
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> භාවිතය"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"වෙනත් අවසර බලන්න"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -255,7 +250,16 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"සමහර යෙදුම් මාස කිහිපයක් තුළ භාවිත කර නැත. සමාලෝචනය කිරීමට තට්ටු කරන්න."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{භාවිත නොකළ යෙදුම් #ක්}one{භාවිත නොකළ යෙදුම් #ක්}other{භාවිත නොකළ යෙදුම් #ක්}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"අවසර සහ තාවකාලික ගොනු ඉවත් කර ඇති අතර දැනුම්දීම් නවත්වන ලදි. සමාලෝචනය කිරීමට තට්ටු කරන්න."</string>
-    <string name="post_drive_permission_decision_reminder_title" msgid="5541572128394226308">"මෑත අවසර"</string>
+    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"සමහර යෙදුම් මාස කිහිපයක් තුළ භාවිත කර නැත"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"ඉවත් කළ අවසර"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"අවසර ඉවත් කළ"</string>
@@ -452,6 +456,10 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&gt; හට ඔබගේ ජෛව ලක්ෂණ පිළිබඳ සංවේදක දත්ත වෙත ප්‍රවේශ වීමට ඉඩ දෙන්නද?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"මෙම යෙදුමට සෑම විටම ඔබගේ ජෛව ලක්ෂණ පිළිබඳ සංවේදක දත්තවලට ප්‍රවේශ වීමට අවශ්‍ය විය හැකිය. "<annotation id="link">"සැකසීම් තුළ ඉඩ දෙන්න."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"ඔබගේ ජජව ලක්ෂණ පිළිබඳ දත්ත වෙත ප්‍රවේශය <xliff:g id="APP_NAME">%1$s</xliff:g> සඳහා වෙනස් කරන්නද?"</string>
+    <!-- no translation found for permgrouprequest_notifications (6396739062335106181) -->
+    <skip />
+    <!-- no translation found for permgrouprequestcontinue_notifications (3895098107355024027) -->
+    <skip />
     <string name="auto_granted_permissions" msgid="6009452264824455892">"පාලිත අවසර"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"ස්ථානය ප්‍රවේශ විය හැකිය"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"ඔබේ IT පරිපාලක <xliff:g id="APP_NAME">%s</xliff:g> හට ඔබේ ස්ථානය වෙත ප්‍රවේශ වීමට ඉඩ දෙයි"</string>

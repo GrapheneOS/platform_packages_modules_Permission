@@ -55,20 +55,13 @@
     <string name="unused_apps" msgid="2058057455175955094">"ጥቅም ላይ ያልዋሉ መተግበሪያዎች"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"አገልግሎት ላይ ያልዋሉ መተግበሪያዎች የሉም"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"0 ሥራ ላይ ያልዋሉ መተግበሪያዎች"</string>
-    <!-- no translation found for review_permission_decisions (309559429150613632) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_view_all (90391040431566130) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_empty (8120775336417279806) -->
-    <skip />
-    <!-- no translation found for auto_permission_manager_summary (9157438376234301354) -->
-    <skip />
-    <!-- no translation found for granted_permission_decision (7824827491551861365) -->
-    <skip />
-    <!-- no translation found for denied_permission_decision (5308961501779563781) -->
-    <skip />
-    <!-- no translation found for days_ago (6650359081551335629) -->
-    <skip />
+    <string name="review_permission_decisions" msgid="309559429150613632">"የቅርብ ጊዜ የፈቃድ ውሳኔዎች"</string>
+    <string name="review_permission_decisions_view_all" msgid="90391040431566130">"ሁሉንም የቅርብ ጊዜ የፈቃድ ውሳኔዎችን ይመልከቱ"</string>
+    <string name="review_permission_decisions_empty" msgid="8120775336417279806">"ምንም የቅርብ ጊዜ የፈቃድ ውሳኔዎች የሉም"</string>
+    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"ለቀን መቁጠሪያ፣ ለጥሪ ምዝግብ ማስታወሻዎች እና ተጨማሪ የውሂብ መዳረሻን ያቀናብሩ"</string>
+    <string name="granted_permission_decision" msgid="7824827491551861365">"ለ<xliff:g id="APP_NAME">%1$s</xliff:g> ወደ <xliff:g id="PERMISSION_NAME">%2$s</xliff:g> መዳረሻን ሰጥተዋል"</string>
+    <string name="denied_permission_decision" msgid="5308961501779563781">"ለ<xliff:g id="APP_NAME">%1$s</xliff:g> ወደ <xliff:g id="PERMISSION_NAME">%2$s</xliff:g> መዳረሻን ከልክለዋል"</string>
+    <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{ዛሬ}=1{ከ1 ቀን በፊት}one{ከ# ቀኖች በፊት}other{ከ# ቀኖች በፊት}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"መተግበሪያን አሰናክል"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"ይህን መተግበሪያ ካሰናከሉት ከዚህ በኋላ Android እና ሌሎች መተግበሪያዎች እንደተፈለገው ላይሠሩ ይችላሉ። ያስታውሱ፣ በእርስዎ መሣሪያ ላይ አስቀድሞ ተጭኖ ስለሚመጣ ይህን መተግበሪያ መሰረዝ አይችሉም። በማሰናከልዎት፣ ይህን መተግበሪያ ያጠፉታል እና በእርስዎ መሣሪያ ላይ ይደብቁታል።"</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"የፈቃድ አቀናባሪ"</string>
@@ -124,6 +117,8 @@
     <string name="message_staging" msgid="9110563899955511866">"መተግበሪያን በማዘጋጀት ላይ…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"ያልታወቀ"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"የግላዊነት ዳሽቦርድ"</string>
+    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
+    <skip />
     <string name="permission_group_usage_title" msgid="2595013198075285173">"የ<xliff:g id="PERMGROUP">%1$s</xliff:g> አጠቃቀም"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"ሌሎች ፈቃዶችን ይመልከቱ"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>፣ <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -255,7 +250,16 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"አንዳንድ መተግበሪያዎች ለጥቂት ወሮች ስራ ላይ አልዋሉም። ለመገምገም መታ ያድርጉ።"</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# ስራ ላይ ያልዋለ መተግበሪያ}one{# ስራ ላይ ያልዋሉ መተግበሪያዎች}other{# ስራ ላይ ያልዋሉ መተግበሪያዎች}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"ፈቃዶች እና ጊዜያዊ ፋይሎች ተወግደዋል እንዲሁም ማሳወቂያዎች ቆመዋል። ለመገምገም መታ ያድርጉ።"</string>
-    <string name="post_drive_permission_decision_reminder_title" msgid="5541572128394226308">"የቅርብ ጊዜ ፈቃዶች"</string>
+    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"አንዳንድ መተግበሪያዎች ለጥቂት ወሮች ስራ ላይ አልዋሉም።"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"ፈቃዶች የተወገዱባቸው"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"ፈቃዶች የተወገዱባቸው"</string>
@@ -452,6 +456,8 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; የሰውነትዎ መሠረታዊ ምልክቶች የዳሳሽ ውሂብ እንዲደርስ ይፈቀድለት?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"መተግበሪያውን በማይጠቀሙበት ጊዜም እንኳ ይህ መተግበሪያ ስለእርስዎ መሠረታዊ ምልክቶች ሁልጊዜ የዳሳሽ ውሂቡን መድረስ ሊፈልግ ይችላል። "<annotation id="link">"በቅንብሮች ውስጥ ይፍቀዱ።"</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"ለ&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ስለእርስዎ መሠረታዊ ምልክቶች የዳሳሽ ውሂብ መዳረሻ ይቀየር?"</string>
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ለእርስዎ ማሳወቂያዎች እንዲልክ ይፈቀድለት?"</string>
+    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ለእርስዎ ማሳወቂያዎችን መላክ እንዲቀጥል ይፈቀድለት?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"ቁጥጥር የሚደረግባችድው ፈቃዶች"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"የመገኛ አካባቢ ሊደርስበት ይችላል"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"የእርስዎ አይቲ አስተዳዳሪ <xliff:g id="APP_NAME">%s</xliff:g> የእርስዎን መገኛ አካባቢን እንዲደርስ እየፈቀደ ነው"</string>

@@ -55,20 +55,13 @@
     <string name="unused_apps" msgid="2058057455175955094">"Ongebruikte programme"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"Geen ongebruikte programme nie"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"0 ongebruikte programme"</string>
-    <!-- no translation found for review_permission_decisions (309559429150613632) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_view_all (90391040431566130) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_empty (8120775336417279806) -->
-    <skip />
-    <!-- no translation found for auto_permission_manager_summary (9157438376234301354) -->
-    <skip />
-    <!-- no translation found for granted_permission_decision (7824827491551861365) -->
-    <skip />
-    <!-- no translation found for denied_permission_decision (5308961501779563781) -->
-    <skip />
-    <!-- no translation found for days_ago (6650359081551335629) -->
-    <skip />
+    <string name="review_permission_decisions" msgid="309559429150613632">"Onlangse toestemmingbesluite"</string>
+    <string name="review_permission_decisions_view_all" msgid="90391040431566130">"Bekyk alle onlangse toestemmingbesluite"</string>
+    <string name="review_permission_decisions_empty" msgid="8120775336417279806">"Geen onlangse toestemmingbesluite nie"</string>
+    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Bestuur datatoegang tot kalender, oproeprekords, en meer"</string>
+    <string name="granted_permission_decision" msgid="7824827491551861365">"Jy het vir <xliff:g id="APP_NAME">%1$s</xliff:g> toegang tot <xliff:g id="PERMISSION_NAME">%2$s</xliff:g> gegee"</string>
+    <string name="denied_permission_decision" msgid="5308961501779563781">"Jy het <xliff:g id="APP_NAME">%1$s</xliff:g> toegang tot <xliff:g id="PERMISSION_NAME">%2$s</xliff:g> geweier"</string>
+    <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Vandag}=1{1 dag gelede}other{# dae gelede}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Deaktiveer program"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"As jy hierdie program deaktiveer, sal Android en ander programme dalk nie meer soos bedoel werk nie. Hou in gedagte dat jy nie hierdie program kan uitvee nie, want dit is vooraf op jou toestel geïnstalleer. Deur dit te deaktiveer, skakel jy hierdie program af en versteek jy dit op jou toestel."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Toestemmingbestuurder"</string>
@@ -124,6 +117,8 @@
     <string name="message_staging" msgid="9110563899955511866">"Voer tans program uit …"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Onbekend"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Privaatheidkontroleskerm"</string>
+    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
+    <skip />
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g>-gebruik"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Sien ander toestemmings"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -255,7 +250,16 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Sommige programme is \'n paar maande laas gebruik. Tik om te na te gaan."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# ongebruikte program}other{# ongebruikte programme}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Toestemmings en tydelike lêers is verwyder en kennisgewings is gestop. Tik om na te gaan."</string>
-    <string name="post_drive_permission_decision_reminder_title" msgid="5541572128394226308">"Onlangse toestemmings"</string>
+    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Sommige programme is \'n paar maande laas gebruik"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Toestemmings wat verwyder is"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Toestemmings is verwyder"</string>
@@ -452,6 +456,8 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Gee &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang tot die sensordata oor jou lewenstekens?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Dié program wil dalk deurentyd toegang tot sensordata oor jou lewenstekens hê, selfs wanneer jy nie die program gebruik nie. "<annotation id="link">"Laat toe in instellings."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Verander toegang tot sensordata oor jou lewenstekens vir &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Laat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toe om vir jou kennisgewings te stuur?"</string>
+    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Laat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toe om steeds vir jou kennisgewings te stuur?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Beheerde toestemmings"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Kan toegang tot ligging kry"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Jou IT-admin laat <xliff:g id="APP_NAME">%s</xliff:g> toe om toegang tot jou ligging te kry"</string>

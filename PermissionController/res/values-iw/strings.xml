@@ -55,20 +55,13 @@
     <string name="unused_apps" msgid="2058057455175955094">"אפליקציות שמזמן לא השתמשת בהן"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"אין אפליקציות שאינן בשימוש"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"אין אפליקציות שאינן בשימוש"</string>
-    <!-- no translation found for review_permission_decisions (309559429150613632) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_view_all (90391040431566130) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_empty (8120775336417279806) -->
-    <skip />
-    <!-- no translation found for auto_permission_manager_summary (9157438376234301354) -->
-    <skip />
-    <!-- no translation found for granted_permission_decision (7824827491551861365) -->
-    <skip />
-    <!-- no translation found for denied_permission_decision (5308961501779563781) -->
-    <skip />
-    <!-- no translation found for days_ago (6650359081551335629) -->
-    <skip />
+    <string name="review_permission_decisions" msgid="309559429150613632">"ההחלטות האחרונות לגבי הרשאות"</string>
+    <string name="review_permission_decisions_view_all" msgid="90391040431566130">"הצגת כל ההחלטות האחרונות לגבי הרשאות"</string>
+    <string name="review_permission_decisions_empty" msgid="8120775336417279806">"לא נמצאו החלטות אחרונות לגבי הרשאות"</string>
+    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"ניהול של נתוני הגישה ליומן, ליומני השיחות ועוד"</string>
+    <string name="granted_permission_decision" msgid="7824827491551861365">"הסכמת להעניק לאפליקציה <xliff:g id="APP_NAME">%1$s</xliff:g> גישה אל <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="denied_permission_decision" msgid="5308961501779563781">"סירבת להעניק לאפליקציה <xliff:g id="APP_NAME">%1$s</xliff:g> גישה אל <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
+    <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{היום}=1{אתמול}two{שלשום}many{לפני # ימים}other{לפני # ימים}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"השבתת האפליקציה"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"‏אם האפליקציה הזו תושבת, ייתכן ש-Android ואפליקציות אחרות לא יפעלו כצפוי. חשוב לזכור שלא ניתן למחוק את האפליקציה, כי היא הותקנה מראש במכשיר. ההשבתה מכבה את האפליקציה ומסתירה אותה במכשיר."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"מנהל ההרשאות"</string>
@@ -124,6 +117,8 @@
     <string name="message_staging" msgid="9110563899955511866">"האפליקציה בהכנה להתקנה…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"לא ידוע"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"מרכז בקרת הפרטיות"</string>
+    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
+    <skip />
     <string name="permission_group_usage_title" msgid="2595013198075285173">"שימוש ב<xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"צפייה בהרשאות נוספות"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -255,7 +250,16 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"יש אפליקציות שלא נעשה בהן שימוש כבר כמה חודשים. אפשר להקיש כדי לבדוק."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{אפליקציה אחת שמזמן לא השתמשת בה}two{# אפליקציות שמזמן לא השתמשת בהן}many{# אפליקציות שמזמן לא השתמשת בהן}other{# אפליקציות שמזמן לא השתמשת בהן}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"ההרשאות בוטלו, הקבצים הזמניים הוסרו וההתראות הופסקו. יש להקיש כדי לבדוק."</string>
-    <string name="post_drive_permission_decision_reminder_title" msgid="5541572128394226308">"ההרשאות האחרונות"</string>
+    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"יש אפליקציות שלא נעשה בהן שימוש כבר כמה חודשים"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"ההרשאות שהוסרו"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"הוסרו הרשאות"</string>
@@ -452,6 +456,10 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"‏להעניק לאפליקציה &lt;b‏/&gt;‏<xliff:g id="APP_NAME">%1$s</xliff:g>‏&lt;b&gt; הרשאת גישה לנתוני החיישנים שמודדים את הסימנים החיוניים שלך?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"יכול להיות שהאפליקציה תבקש לגשת לנתוני החיישנים המודדים את הסימנים החיוניים שלך כל הזמן, גם כשהיא לא בשימוש. "<annotation id="link">"יש לך אפשרות לאשר זאת בהגדרות."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"‏לשנות את הרשאת הגישה של &lt;b‏/&gt;‏<xliff:g id="APP_NAME">%1$s</xliff:g>‏&lt;b&gt; לנתוני החיישנים המודדים את הסימנים החיוניים שלך?"</string>
+    <!-- no translation found for permgrouprequest_notifications (6396739062335106181) -->
+    <skip />
+    <!-- no translation found for permgrouprequestcontinue_notifications (3895098107355024027) -->
+    <skip />
     <string name="auto_granted_permissions" msgid="6009452264824455892">"הרשאות בבקרה"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"ניתן לגשת למיקום"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"‏לאפליקציה <xliff:g id="APP_NAME">%s</xliff:g> ניתנה הרשאה ממנהל ה-IT לגשת למיקום שלך"</string>

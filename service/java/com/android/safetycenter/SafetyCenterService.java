@@ -31,7 +31,10 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Binder;
 import android.provider.DeviceConfig;
+import android.safetycenter.IOnSafetyCenterDataChangedListener;
 import android.safetycenter.ISafetyCenterManager;
+import android.safetycenter.SafetyCenterData;
+import android.safetycenter.SafetyCenterStatus;
 import android.safetycenter.SafetySourceData;
 
 import androidx.annotation.Keep;
@@ -42,7 +45,9 @@ import com.android.internal.annotations.GuardedBy;
 import com.android.permission.util.PermissionUtils;
 import com.android.server.SystemService;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -67,6 +72,10 @@ public final class SafetyCenterService extends SystemService {
 
     @NonNull
     private final AppOpsManager mAppOpsManager;
+
+    @NonNull
+    private final List<IOnSafetyCenterDataChangedListener> mSafetyCenterDataChangedListeners =
+            new ArrayList<>();
 
     public SafetyCenterService(@NonNull Context context) {
         super(context);
@@ -184,6 +193,39 @@ public final class SafetyCenterService extends SystemService {
             synchronized (mLock) {
                 mSafetySourceDataForKey.clear();
             }
+        }
+
+        @Override
+        public SafetyCenterData getSafetyCenterData() {
+            // TODO(b/203098016): Implement this with real data.
+            return new SafetyCenterData(
+                    new SafetyCenterStatus.Builder()
+                            .setSeverityLevel(
+                                    SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_RECOMMENDATION)
+                            .setTitle("Safety Center Unimplemented")
+                            .setSummary("This should be implemented.")
+                            .build(),
+                    new ArrayList<>(),
+                    new ArrayList<>());
+        }
+
+        @Override
+        public void addOnSafetyCenterDataChangedListener(
+                IOnSafetyCenterDataChangedListener listener) {
+            // TODO(b/203098016): Protect this with a permission so only PC can use.
+            mSafetyCenterDataChangedListeners.add(listener);
+        }
+
+        @Override
+        public void removeOnSafetyCenterDataChangedListener(
+                IOnSafetyCenterDataChangedListener listener) {
+            // TODO(b/203098016): Protect this with a permission so only PC can use.
+            mSafetyCenterDataChangedListeners.remove(listener);
+        }
+
+        @Override
+        public void dismissSafetyIssue(String issueId) {
+            // TODO(b/203098016): Implement this with real data.
         }
 
         private boolean getSafetyCenterConfigValue() {

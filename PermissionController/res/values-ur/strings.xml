@@ -55,20 +55,13 @@
     <string name="unused_apps" msgid="2058057455175955094">"غیر مستعمل ایپس"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"کوئی غیر مستعمل ایپ نہیں ہے"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"0 غیر مستعمل ایپس"</string>
-    <!-- no translation found for review_permission_decisions (309559429150613632) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_view_all (90391040431566130) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_empty (8120775336417279806) -->
-    <skip />
-    <!-- no translation found for auto_permission_manager_summary (9157438376234301354) -->
-    <skip />
-    <!-- no translation found for granted_permission_decision (7824827491551861365) -->
-    <skip />
-    <!-- no translation found for denied_permission_decision (5308961501779563781) -->
-    <skip />
-    <!-- no translation found for days_ago (6650359081551335629) -->
-    <skip />
+    <string name="review_permission_decisions" msgid="309559429150613632">"اجازت کے حالیہ فیصلے"</string>
+    <string name="review_permission_decisions_view_all" msgid="90391040431566130">"اجازت کے تمام حالیہ فیصلے دیکھیں"</string>
+    <string name="review_permission_decisions_empty" msgid="8120775336417279806">"اجازت کا کوئی حالیہ فیصلہ نہیں"</string>
+    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"کیلنڈر، کال لاگز اور مزید تک رسائی کے ڈیٹا کا نظم کریں"</string>
+    <string name="granted_permission_decision" msgid="7824827491551861365">"آپ نے <xliff:g id="APP_NAME">%1$s</xliff:g> کو <xliff:g id="PERMISSION_NAME">%2$s</xliff:g> تک رسائی دی"</string>
+    <string name="denied_permission_decision" msgid="5308961501779563781">"آپ نے <xliff:g id="APP_NAME">%1$s</xliff:g> کو <xliff:g id="PERMISSION_NAME">%2$s</xliff:g> تک رسائی سے منع کر دیا"</string>
+    <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{آج}=1{1 دن پہلے}other{# دن پہلے}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"ایپ کو غیر فعال کریں"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"‏اگر آپ اس ایپ کو غیر فعال کرتے ہیں تو ہو سکتا ہے Android اور دیگر ایپس ٹھیک سے کام نہ کریں۔ ذہن نشین رکھیں کہ آپ اس ایپ کو حذف نہیں کر سکتے ہیں کیونکہ یہ آپ کے آلہ پر پہلے سے انسٹال ہے۔ غیر فعال کر کے، آپ اس ایپ کو آف کر دیتے ہیں اور اس کو اپنے آلہ پر چھپا دیتے ہیں۔"</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"اجازتوں کا مینیجر"</string>
@@ -124,6 +117,8 @@
     <string name="message_staging" msgid="9110563899955511866">"ایپ کی مرحلہ بندی ہو رہی ہے…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"نامعلوم"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"پرائیویسی ڈیش بورڈ"</string>
+    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
+    <skip />
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> کا استعمال"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"دیگر اجازتیں دیکھیں"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>، <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -255,7 +250,16 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"کچھ ایپس کا استعمال کچھ مہینوں سے نہیں کیا گیا ہے۔ جائزے کے لیے تھپتھپائیں۔"</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# غیر مستعمل ایپ}other{# غیر مستعمل ایپس}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"اجازتوں اور عارضی فائلز کو ہٹا دیا گیا ہے اور اطلاعات کو روک دیا گیا۔ جائزے کے لیے تھپتھپائیں۔"</string>
-    <string name="post_drive_permission_decision_reminder_title" msgid="5541572128394226308">"حالیہ اجازتیں"</string>
+    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"کچھ ایپس کا استعمال کچھ مہینوں سے نہیں کیا گیا ہے"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"ہٹائی گئی اجازتیں"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"اجازتیں ہٹا دی گئیں"</string>
@@ -452,6 +456,8 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&amp;gt کو آپ کے اہم اشاروں کے متعلق سینسر ڈیٹا تک رسائی کی اجازت دیں؟"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"ممکن ہے یہ ایپ ہر وقت آپ کے اہم اشاروں کے بارے میں سینسر ڈیٹا تک رسائی حاصل کرنا چاہے، اگرچہ جب آپ ایپ استعمال نہ کر رہے ہوں۔ "<annotation id="link">"ترتیبات میں اجازت دیں۔"</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;? کے لیے اپنے اہم اشاروں کے بارے میں سینسر ڈیٹا تک رسائی کو تبدیل کریں؟"</string>
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>‏&lt;/b&gt; کو آپ کو اطلاعات بھیجنے کی اجازت دیں؟"</string>
+    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>‏&lt;/b&gt; کو آپ کو اطلاعات بھیجنا جاری رکھنے کی اجازت دیں؟"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"کنٹرول کی گئی اجازتیں"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"مقام تک رسائی حاصل کی جا سکتی ہے"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"‏آپ کا IT منتظم <xliff:g id="APP_NAME">%s</xliff:g> کو آپ کے مقام تک رسائی کی اجازت دے رہا ہے"</string>

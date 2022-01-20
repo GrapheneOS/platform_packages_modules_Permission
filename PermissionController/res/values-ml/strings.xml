@@ -55,20 +55,13 @@
     <string name="unused_apps" msgid="2058057455175955094">"ഉപയോഗിക്കാത്ത ആപ്പുകൾ"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"ഉപയോഗിക്കാത്ത ആപ്പുകൾ ഇല്ല"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"ഉപയോഗിക്കാത്ത 0 ആപ്പുകൾ"</string>
-    <!-- no translation found for review_permission_decisions (309559429150613632) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_view_all (90391040431566130) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_empty (8120775336417279806) -->
-    <skip />
-    <!-- no translation found for auto_permission_manager_summary (9157438376234301354) -->
-    <skip />
-    <!-- no translation found for granted_permission_decision (7824827491551861365) -->
-    <skip />
-    <!-- no translation found for denied_permission_decision (5308961501779563781) -->
-    <skip />
-    <!-- no translation found for days_ago (6650359081551335629) -->
-    <skip />
+    <string name="review_permission_decisions" msgid="309559429150613632">"സമീപകാല അനുമതി തീരുമാനങ്ങൾ"</string>
+    <string name="review_permission_decisions_view_all" msgid="90391040431566130">"അനുമതിയുമായി ബന്ധപ്പെട്ട സമീപകാലത്തെ എല്ലാ തീരുമാനങ്ങളും കാണുക"</string>
+    <string name="review_permission_decisions_empty" msgid="8120775336417279806">"അനുമതിയുമായി ബന്ധപ്പെട്ട സമീപകാല തീരുമാനമൊന്നുമില്ല"</string>
+    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"കലണ്ടർ, കോൾ ചരിത്രങ്ങൾ എന്നിവയിലേക്കും മറ്റുമുള്ള ഡാറ്റാ ആക്‌സസ് മാനേജ് ചെയ്യുക"</string>
+    <string name="granted_permission_decision" msgid="7824827491551861365">"നിങ്ങൾ <xliff:g id="APP_NAME">%1$s</xliff:g> എന്നതിന് <xliff:g id="PERMISSION_NAME">%2$s</xliff:g> ആക്‌സസ് നൽകി"</string>
+    <string name="denied_permission_decision" msgid="5308961501779563781">"നിങ്ങൾ <xliff:g id="APP_NAME">%1$s</xliff:g> എന്നതിനുള്ള <xliff:g id="PERMISSION_NAME">%2$s</xliff:g> ആക്‌സസ് നിരസിച്ചു"</string>
+    <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{ഇന്ന്}=1{1 ദിവസം മുമ്പ്}other{# ദിവസം മുമ്പ്}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"ആപ്പ് പ്രവർത്തനരഹിതമാക്കുക"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"നിങ്ങൾ ഈ ആപ്പ് പ്രവർത്തനരഹിതമാക്കിയാൽ, Android-ഉം മറ്റ് ആപ്പുകളും ഇനി ഉദ്ദേശിച്ചത് പോലെ പ്രവർത്തിച്ചേക്കില്ല. ശ്രദ്ധിക്കുക, നിങ്ങളുടെ ഉപകരണത്തിൽ മുമ്പേ ഇൻസ്‌റ്റാൾ ചെയ്‌തതായതിനാൽ ഈ ആപ്പ് നിങ്ങൾക്ക് ഇല്ലാതാക്കാനാവില്ല. പ്രവർത്തനരഹിതമാക്കുന്നത് വഴി, ഈ ആപ്പ് ഓഫാക്കി നിങ്ങൾക്കിത് ഉപകരണത്തിൽ മറച്ചു വയ്ക്കാം."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"അനുമതി മാനേജർ"</string>
@@ -124,6 +117,8 @@
     <string name="message_staging" msgid="9110563899955511866">"ആപ്പ് തയ്യാറാക്കുന്നു…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"അജ്ഞാതം"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"സ്വകാര്യതാ ഡാഷ്ബോർഡ്"</string>
+    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
+    <skip />
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> ഉപയോഗം"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"മറ്റ് അനുമതികൾ കാണുക"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -255,7 +250,16 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"കുറച്ച് മാസങ്ങളായി ചില ആപ്പുകൾ ഉപയോഗിച്ചിട്ടില്ല. അവലോകനം ചെയ്യാൻ ടാപ്പ് ചെയ്യുക."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{ഉപയോഗിക്കാത്ത # ആപ്പ്}other{ഉപയോഗിക്കാത്ത # ആപ്പുകൾ}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"അനുമതികളും താൽക്കാലിക ഫയലുകളും നീക്കം ചെയ്‌തു, അറിയിപ്പുകൾ നിർത്തി. അവലോകനം ചെയ്യാൻ ടാപ്പ് ചെയ്യുക."</string>
-    <string name="post_drive_permission_decision_reminder_title" msgid="5541572128394226308">"അടുത്തിടെയുള്ള അനുമതികൾ"</string>
+    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"കുറച്ച് മാസങ്ങളായി ചില ആപ്പുകൾ ഉപയോഗിച്ചിട്ടില്ല"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"അനുമതികൾ നീക്കം ചെയ്‌തവ"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"അനുമതികൾ നീക്കം ചെയ്‌തവ"</string>
@@ -452,6 +456,8 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"നിങ്ങളുടെ വൈറ്റൽ സൈനുകളെ കുറിച്ചുള്ള സെൻസർ ഡാറ്റ ആക്സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"ആപ്പ് ഉപയോഗിക്കാത്തപ്പോഴും, നിങ്ങളുടെ വൈറ്റൽ സൈനുകൾ സംബന്ധിച്ച സെൻസർ ഡാറ്റ എപ്പോഴും ഈ ആപ്പിന് ആക്സ് ചെയ്യേണ്ടി വന്നേക്കാം. "<annotation id="link">"ക്രമീകരണത്തിൽ അനുവദിക്കുക."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"നിങ്ങളുടെ വൈറ്റൽ സൈനുകളെ കുറിച്ചുള്ള സെൻസർ ഡാറ്റയിലേക്ക് &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനുള്ള ആക്‌സസ് മാറ്റണോ?"</string>
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"നിങ്ങൾക്ക് അറിയിപ്പുകൾ അയയ്ക്കാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കണോ?"</string>
+    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"നിങ്ങൾക്ക് അറിയിപ്പുകൾ അയക്കുന്നത് തുടരാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കണോ?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"നിയന്ത്രിത അനുമതികൾ"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"ലൊക്കേഷൻ ആക്‌സസ് ചെയ്യാൻ കഴിയും"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"നിങ്ങളുടെ ലൊക്കേഷൻ ആക്‌സസ് ചെയ്യാൻ നിങ്ങളുടെ ഐടി അഡ്‌മിൻ <xliff:g id="APP_NAME">%s</xliff:g> എന്നതിനെ അനുവദിക്കുന്നു"</string>

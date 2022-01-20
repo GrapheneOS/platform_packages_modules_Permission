@@ -55,20 +55,13 @@
     <string name="unused_apps" msgid="2058057455175955094">"ఉపయోగించని యాప్‌లు"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"ఉపయోగించని యాప్‌లు లేవు"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"0 ఉపయోగించని యాప్‌లు"</string>
-    <!-- no translation found for review_permission_decisions (309559429150613632) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_view_all (90391040431566130) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_empty (8120775336417279806) -->
-    <skip />
-    <!-- no translation found for auto_permission_manager_summary (9157438376234301354) -->
-    <skip />
-    <!-- no translation found for granted_permission_decision (7824827491551861365) -->
-    <skip />
-    <!-- no translation found for denied_permission_decision (5308961501779563781) -->
-    <skip />
-    <!-- no translation found for days_ago (6650359081551335629) -->
-    <skip />
+    <string name="review_permission_decisions" msgid="309559429150613632">"ఇటీవలి అనుమతి నిర్ణయాలు"</string>
+    <string name="review_permission_decisions_view_all" msgid="90391040431566130">"ఇటీవలి అన్ని అనుమతి నిర్ణయాలను చూడండి"</string>
+    <string name="review_permission_decisions_empty" msgid="8120775336417279806">"ఇటీవలి అనుమతి నిర్ణయాలు లేవు"</string>
+    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"క్యాలెండర్, కాల్ లాగ్‌లు, ఇంకా మరిన్నింటికి డేటా యాక్సెస్‌ను మేనేజ్ చేయండి"</string>
+    <string name="granted_permission_decision" msgid="7824827491551861365">"మీరు <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>కు <xliff:g id="APP_NAME">%1$s</xliff:g> యాక్సెస్‌ను ఇచ్చారు"</string>
+    <string name="denied_permission_decision" msgid="5308961501779563781">"మీరు <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>కు <xliff:g id="APP_NAME">%1$s</xliff:g> యాక్సెస్‌ను తిరస్కరించారు"</string>
+    <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{ఈరోజు}=1{1 రోజు క్రితం}other{# రోజుల క్రితం}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"యాప్‌ను డిజేబుల్‌ చేయి"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"మీరు ఈ యాప్‌ను డిజేబుల్‌ చేస్తే, Android మరియు ఇతర యాప్‌లు ఇకపై ఉద్దేశించిన రీతిలో పని చేయకపోవచ్చు. ఈ యాప్ మీ పరికరంలో ముందుగానే ఇన్‌స్టాల్ చేసి, అందించబడింది కాబట్టి మీరు దీనిని తొలగించలేరని గుర్తుంచుకోండి. డిజేబుల్‌ చేయడం ద్వారా, మీరు ఈ యాప్‌ను ఆఫ్ చేసి, మీ పరికరంలో దానిని దాస్తున్నారు."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"అనుమతి మేనేజర్"</string>
@@ -124,6 +117,8 @@
     <string name="message_staging" msgid="9110563899955511866">"యాప్‌ను అందిస్తోంది…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"తెలియదు"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"గోప్యతా డ్యాష్‌బోర్డ్"</string>
+    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
+    <skip />
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> వినియోగం"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"ఇతర అనుమతులను చూడండి"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -255,7 +250,16 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"కొన్ని యాప్‌లు గత కొన్ని నెలలుగా వినియోగంలో లేవు. రివ్యూ చేయడానికి ట్యాప్ చేయండి."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# ఉపయోగించని యాప్}other{# ఉపయోగించని యాప్‌లు}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"అనుమతులు, తాత్కాలిక ఫైళ్లు తీసివేయబడ్డాయి అలాగే నోటిఫికేషన్‌లు ఆపివేయబడ్డాయి. రివ్యూ చేయడానికి ట్యాప్ చేయండి."</string>
-    <string name="post_drive_permission_decision_reminder_title" msgid="5541572128394226308">"ఇటీవలి అనుమతులు"</string>
+    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"గత కొన్ని నెలలుగా కొన్ని యాప్‌లు వినియోగంలో లేవు"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"అనుమతులు తీసివేసినవి"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"అనుమతులు తీసివేయబడ్డాయి"</string>
@@ -452,6 +456,8 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"మీ కీలక ఆరోగ్య కొలమాన గుర్తుల గురించి సెన్సార్ డేటాను యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"మీరు యాప్‌ను ఉపయోగించనప్పటికీ, ఈ యాప్ మీ కీలక ఆరోగ్య కొలమాన గుర్తుల సెన్సార్ డేటాను ఎప్పటికప్పుడు యాక్సెస్ చేయాలనుకోవచ్చు. "<annotation id="link">"సెట్టింగ్‌లలో అనుమతించండి."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; కోసం మీ కీలక ఆరోగ్య కొలమాన గుర్తులకు సంబంధించిన సెన్సార్ డేటాకు యాక్సెస్‌ను మార్చాలా?"</string>
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"మీకు నోటిఫికేషన్‌లను పంపడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
+    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"మీకు నోటిఫికేషన్‌లు పంపడాన్ని కొనసాగించడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"నియంత్రణలో ఉన్న అనుమతులు"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"లొకేషన్‌ను యాక్సెస్ చేయవచ్చు"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"మీ IT అడ్మిన్ మీ లొకేషన్‌ను యాక్సెస్ చేయడానికి <xliff:g id="APP_NAME">%s</xliff:g>‌ని అనుమతిస్తున్నారు"</string>

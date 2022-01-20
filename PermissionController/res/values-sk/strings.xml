@@ -117,6 +117,8 @@
     <string name="message_staging" msgid="9110563899955511866">"Aplikácia je zavádzaná po etapách…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Neznáme"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Panel na ochranu súkromia"</string>
+    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
+    <skip />
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> – používanie"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Zobraziť ostatné povolenia"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -248,7 +250,16 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Niektoré aplikácie ste niekoľko mesiacov nepoužili. Skontrolujte to klepnutím."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# nepoužívaná aplikácia}few{# nepoužívané aplikácie}many{# unused apps}other{# nepoužívaných aplikácií}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Povolenia a dočasné súbory boli odstránené a upozornenia boli zastavené. Skontrolujte to klepnutím."</string>
-    <string name="post_drive_permission_decision_reminder_title" msgid="5541572128394226308">"Nedávne povolenia"</string>
+    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Niektoré aplikácie neboli niekoľko mesiacov používané"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Odstránené povolenia"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Povolenia boli odstránené"</string>
@@ -445,6 +456,8 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; používať dáta senzorov o vašich životných funkciách?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Táto aplikácia môže požadovať nepretržitý prístup k dátam senzorov o vašich životných funkciách, aj keď ju nepoužívate. "<annotation id="link">"Povolíte ho v nastaveniach."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Chcete zmeniť prístup aplikácie &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; k dátam senzorov o vašich životných funkciách?"</string>
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; posielať vám upozornenia?"</string>
+    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; posielať vám ďalej upozornenia?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Ovládané povolenia"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Polohu je možné používať"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Váš správca IT povoľuje aplikácii <xliff:g id="APP_NAME">%s</xliff:g> používať vašu polohu"</string>

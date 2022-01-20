@@ -55,20 +55,13 @@
     <string name="unused_apps" msgid="2058057455175955094">"ແອັບທີ່ບໍ່ໄດ້ໃຊ້"</string>
     <string name="no_unused_apps" msgid="12809387670415295">"ບໍ່ມີແອັບທີ່ບໍ່ໄດ້ໃຊ້"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"0 ແອັບທີ່ບໍ່ໄດ້ໃຊ້"</string>
-    <!-- no translation found for review_permission_decisions (309559429150613632) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_view_all (90391040431566130) -->
-    <skip />
-    <!-- no translation found for review_permission_decisions_empty (8120775336417279806) -->
-    <skip />
-    <!-- no translation found for auto_permission_manager_summary (9157438376234301354) -->
-    <skip />
-    <!-- no translation found for granted_permission_decision (7824827491551861365) -->
-    <skip />
-    <!-- no translation found for denied_permission_decision (5308961501779563781) -->
-    <skip />
-    <!-- no translation found for days_ago (6650359081551335629) -->
-    <skip />
+    <string name="review_permission_decisions" msgid="309559429150613632">"ການຕັດສິນໃຈການອະນຸຍາດຫຼ້າສຸດ"</string>
+    <string name="review_permission_decisions_view_all" msgid="90391040431566130">"ເບິ່ງການຕັດສິນໃຈການອະນຸຍາດຫຼ້າສຸດທັງໝົດ"</string>
+    <string name="review_permission_decisions_empty" msgid="8120775336417279806">"ບໍ່ມີການຕັດສິນໃຈການອະນຸຍາດຫຼ້າສຸດ"</string>
+    <string name="auto_permission_manager_summary" msgid="9157438376234301354">"ຈັດການການເຂົ້າເຖິງຂໍ້ມູນຫາປະຕິທິນ, ບັນທຶກການໂທ ແລະ ອື່ນໆ"</string>
+    <string name="granted_permission_decision" msgid="7824827491551861365">"ທ່ານໃຫ້ສິດອະນຸຍາດ <xliff:g id="APP_NAME">%1$s</xliff:g> ເຂົ້າເຖິງ <xliff:g id="PERMISSION_NAME">%2$s</xliff:g> ແລ້ວ"</string>
+    <string name="denied_permission_decision" msgid="5308961501779563781">"ທ່ານປະຕິເສດ <xliff:g id="APP_NAME">%1$s</xliff:g> ບໍ່ໃຫ້ເຂົ້າເຖິງ <xliff:g id="PERMISSION_NAME">%2$s</xliff:g> ແລ້ວ"</string>
+    <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{ມື້ນີ້}=1{1 ມື້ກ່ອນ}other{# ມື້ກ່ອນ}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"ປິດນຳໃຊ້ແອັບ"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"ຖ້າທ່ານປິດນຳໃຊ້ແອັບນີ້, Android ແລະ ແອັບອື່ນອາດບໍ່ເຮັດວຽກຕາມທີ່ຖືກອອກແບບມາໄດ້. ກະລຸນາຮັບຊາບວ່າ: ທ່ານບໍ່ສາມາດລຶບແອັບນີ້ເນື່ອງຈາກມັນຖືກຕິດຕັ້ງມາພ້ອມກັບອຸປະກອນທ່ານ. ໂດຍການປິດການນຳໃຊ້, ທ່ານຈະປິດແອັບນີ້ໄວ້ ແລະ ເຊື່ອງມັນຈາກອຸປະກອນຂອງທ່ານ."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"ຕົວຈັດການສິດອະນຸຍາດ"</string>
@@ -124,6 +117,8 @@
     <string name="message_staging" msgid="9110563899955511866">"ກຳລັງຮຽງແອັບ…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"ບໍ່ຮູ້ຈັກ"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"ແຜງໜ້າປັດຄວາມເປັນສ່ວນຕົວ"</string>
+    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
+    <skip />
     <string name="permission_group_usage_title" msgid="2595013198075285173">"ການນໍາໃຊ້ <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"ເບິ່ງການອະນຸຍາດອື່ນໆ"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -255,7 +250,16 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"ບາງແອັບບໍ່ໄດ້ໃຊ້ມາສອງສາມເດືອນແລ້ວ. ແຕະເພື່ອກວດສອບ."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# ແອັບທີ່ບໍ່ໄດ້ໃຊ້}other{# ແອັບທີ່ບໍ່ໄດ້ໃຊ້}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"ລຶບການອະນຸຍາດ ແລະ ໄຟລ໌ຊົ່ວຄາວອອກແລ້ວ ແລະ ຢຸດການແຈ້ງເຕືອນແລ້ວ. ແຕະເພື່ອກວດສອບ."</string>
-    <string name="post_drive_permission_decision_reminder_title" msgid="5541572128394226308">"ການອະນຸຍາດຫຼ້າສຸດ"</string>
+    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
+    <skip />
+    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"ບາງແອັບບໍ່ໄດ້ໃຊ້ມາສອງສາມເດືອນແລ້ວ"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"ລຶບສິດອະນຸຍາດອອກແລ້ວ"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"ລຶບສິດອະນຸຍາດອອກແລ້ວ"</string>
@@ -452,6 +456,10 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"ອະນຸຍາດ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ໃຫ້ເຂົ້າເຖິງຂໍ້ມູນເຊັນເຊີກ່ຽວກັບສັນຍານຊີບຂອງທ່ານບໍ?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"ແອັບນີ້ອາດຕ້ອງການເຂົ້າເຖິງຂໍ້ມູນເຊັນເຊີກ່ຽວກັບສັນຍານຊີບຂອງທ່ານຕະຫຼອດເວລາ, ເຖິງແມ່ນວ່າທ່ານຈະບໍ່ໄດ້ກຳລັງໃຊ້ແອັບຢູ່ກໍຕາມ. "<annotation id="link">"ອະນຸຍາດໃນການຕັ້ງຄ່າ."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"ປ່ຽນການເຂົ້າເຖິງຂໍ້ມູນເຊັນເຊີກ່ຽວກັບສັນຍານຊີບຂອງທ່ານສຳລັບ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ບໍ?"</string>
+    <!-- no translation found for permgrouprequest_notifications (6396739062335106181) -->
+    <skip />
+    <!-- no translation found for permgrouprequestcontinue_notifications (3895098107355024027) -->
+    <skip />
     <string name="auto_granted_permissions" msgid="6009452264824455892">"ສິດອະນຸຍາດທີ່ມີການຄວບຄຸມ"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"ສາມາດເຂົ້າເຖິງສະຖານທີ່ໄດ້ແລ້ວ"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"ຜູ້ເບິ່ງແຍງໄອທີຂອງທ່ານອະນຸຍາດໃຫ້ <xliff:g id="APP_NAME">%s</xliff:g> ເຂົ້າເຖິງສະຖານທີ່ຂອງທ່ານໄດ້"</string>
