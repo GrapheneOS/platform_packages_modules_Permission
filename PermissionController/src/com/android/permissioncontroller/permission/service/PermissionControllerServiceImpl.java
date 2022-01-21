@@ -752,7 +752,7 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
     }
 
     @Override
-    public void onSelfRevokePermissions(@NonNull String packageName,
+    public void onRevokeOwnPermissionsOnKill(@NonNull String packageName,
             @NonNull List<String> permissions, @NonNull Runnable callback) {
         PackageInfo pkgInfo = getPkgInfo(packageName);
         if (pkgInfo == null) {
