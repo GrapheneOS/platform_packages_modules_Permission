@@ -239,6 +239,12 @@
    <!-- [CHAR LIMIT=NONE] Warning message when turning off permission for system apps -->
    <string name="system_warning">If you deny this permission, basic features of your device may no longer function as intended.</string>
 
+    <!-- [CHAR LIMIT=NONE] Warning message when turning off permission for system apps -->
+    <string name="deny_read_media_visual_warning">This app was designed for an older version of Android. If you deny this app access to photos &amp; videos, access to music &amp; other audio will also be denied.</string>
+
+    <!-- [CHAR LIMIT=NONE] Warning message when turning off permission for system apps -->
+    <string name="deny_read_media_aural_warning">This app was designed for an older version of Android. If you deny this app access to music &amp; other audio, access to photos &amp; videos will also be denied.</string>
+
     <!-- [CHAR LIMIT=NONE] Warning message when turning off permission for an app managing a companion device -->
     <string name="cdm_profile_revoke_warning">If you deny this permission, some features of your device managed by this app may no longer function as intended.</string>
 
@@ -701,6 +707,12 @@
 
     <!-- Label for showing a permission group's description in the header of the list of apps that have the Storage permission [CHAR LIMIT=none] -->
     <string name="permission_description_summary_storage">Apps with this permission can access photos, media, and files on your device</string>
+
+    <!-- Label for showing a permission group's description in the header of the list of apps that have the nearby devices permission [CHAR LIMIT=none] -->
+    <string name="permission_description_summary_read_media_aural">Apps with this permission can access music and other audio files on your device</string>
+
+    <!-- Label for showing a permission group's description in the header of the list of apps that have the nearby devices permission [CHAR LIMIT=none] -->
+    <string name="permission_description_summary_read_media_visual">Apps with this permission can access photos and videos on your device</string>
 
     <!-- Summary for showing the time and/or date of the most recent access of a permission by an app [CHAR LIMIT=60] -->
     <string name="app_permission_most_recent_summary">Last access: <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g></string>
@@ -1321,6 +1333,12 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
     <string name="permgrouprequest_storage">Allow
         &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access photos, media, and files on your device?</string>
+
+    <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
+    <string name="permgrouprequest_read_media_aural">Allow &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access music and other audio files on this device?</string>
+
+    <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
+    <string name="permgrouprequest_read_media_visual">Allow &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access this device\u2019s photos and videos?</string>
 
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
     <string name="permgrouprequest_microphone">Allow
