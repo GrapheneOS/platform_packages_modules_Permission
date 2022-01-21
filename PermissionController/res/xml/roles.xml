@@ -1109,6 +1109,7 @@
             <permission name="android.permission.QUERY_USERS" />
             <permission name="android.permission.UPDATE_DEVICE_MANAGEMENT_RESOURCES" />
             <permission name="android.permission.QUERY_ADMIN_POLICY" />
+            <permission name="android.permission.TRIGGER_LOST_MODE" />
         </permissions>
     </role>
 
