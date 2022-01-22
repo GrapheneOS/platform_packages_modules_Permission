@@ -28,9 +28,6 @@ android_test {
         "safety-center-config",
         "compatibility-device-util-axt",
     ],
-    data: [
-        ":SafetyCenterConfigTestResources",
-    ],
     test_suites: [
         "general-tests",
         "mts-permission",

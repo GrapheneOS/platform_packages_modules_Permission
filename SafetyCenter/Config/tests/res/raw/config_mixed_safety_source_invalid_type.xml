@@ -1,0 +1,12 @@
+<safety-center-config>
+    <safety-sources-config>
+        <safety-sources-group
+            id="id"
+            title="@string/reference"
+            summary="@string/reference">
+            <safety-source
+                type="9"
+                id="id"/>
+        </safety-sources-group>
+    </safety-sources-config>
+</safety-center-config>

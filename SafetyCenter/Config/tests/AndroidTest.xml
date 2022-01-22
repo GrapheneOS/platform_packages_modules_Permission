@@ -22,10 +22,9 @@
     <option name="test-tag" value="SafetyCenterConfigTests" />
     <object type="module_controller" class="com.android.tradefed.testtype.suite.module.Sdk30ModuleController" />
 
-    <!-- Install test and resources -->
+    <!-- Install test -->
     <target_preparer class="com.android.tradefed.targetprep.TestAppInstallSetup">
         <option name="test-file-name" value="SafetyCenterConfigTests.apk" />
-        <option name="test-file-name" value="SafetyCenterConfigTestResources.apk" />
         <option name="cleanup-apks" value="true" />
     </target_preparer>
 
