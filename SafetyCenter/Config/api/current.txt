@@ -11,17 +11,30 @@ package com.android.safetycenter.config.parser {
     ctor public SafetySource();
     method @Nullable public String getBroadcastReceiverClassName();
     method @NonNull public String getId();
+    method @Nullable public String getIntentAction();
     method @Nullable public String getPackageName();
+    method public int getProfile();
+    method @Nullable public String getSearchTerms();
+    method @Nullable public String getSummary();
+    method @Nullable public String getTitle();
     method public int getType();
+    method public boolean isDisallowLogging();
     method public void setBroadcastReceiverClassName(@Nullable String);
+    method public void setDisallowLogging(boolean);
     method public void setId(@NonNull String);
+    method public void setIntentAction(@Nullable String);
     method public void setPackageName(@Nullable String);
+    method public void setProfile(int);
+    method public void setSearchTerms(@Nullable String);
+    method public void setSummary(@Nullable String);
+    method public void setTitle(@Nullable String);
     method public void setType(int);
   }
 
   public class SafetySourcesConfig {
     ctor public SafetySourcesConfig();
     method @NonNull public java.util.List<com.android.safetycenter.config.parser.SafetySourcesGroup> getSafetySourcesGroup();
+    method @NonNull public java.util.List<com.android.safetycenter.config.parser.StaticSafetySourcesGroup> getStaticSafetySourcesGroup();
   }
 
   public class SafetySourcesGroup {
@@ -32,6 +45,15 @@ package com.android.safetycenter.config.parser {
     method @NonNull public String getTitle();
     method public void setId(@NonNull String);
     method public void setSummary(@NonNull String);
+    method public void setTitle(@NonNull String);
+  }
+
+  public class StaticSafetySourcesGroup {
+    ctor public StaticSafetySourcesGroup();
+    method @NonNull public String getId();
+    method public java.util.List<com.android.safetycenter.config.parser.SafetySource> getStaticSafetySource();
+    method @NonNull public String getTitle();
+    method public void setId(@NonNull String);
     method public void setTitle(@NonNull String);
   }
 
