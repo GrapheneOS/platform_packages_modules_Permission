@@ -36,7 +36,6 @@ import android.safetycenter.ISafetyCenterManager;
 import android.safetycenter.SafetyCenterData;
 import android.safetycenter.SafetyCenterStatus;
 import android.safetycenter.SafetySourceData;
-import android.util.Log;
 
 import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
@@ -44,12 +43,8 @@ import androidx.annotation.RequiresApi;
 
 import com.android.internal.annotations.GuardedBy;
 import com.android.permission.util.PermissionUtils;
-import com.android.safetycenter.config.Parser;
-import com.android.safetycenter.config.parser.SafetyCenterConfig;
-import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 import com.android.server.SystemService;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -64,19 +59,16 @@ import java.util.Objects;
 @Keep
 @RequiresApi(TIRAMISU)
 public final class SafetyCenterService extends SystemService {
-    private static final String TAG = "SafetyCenterService";
 
     /** Phenotype flag that determines whether SafetyCenter is enabled. */
     private static final String PROPERTY_SAFETY_CENTER_ENABLED = "safety_center_is_enabled";
 
     @NonNull
     private final Object mLock = new Object();
-    // TODO(b/202386571): Create a new data model to store both config and dynamic data in memory.
+    // TODO(b/206789604): Use persistent storage instead.
     @GuardedBy("mLock")
     @NonNull
     private final Map<Key, SafetySourceData> mSafetySourceDataForKey = new HashMap<>();
-    @Nullable
-    private SafetyCenterConfig mSafetyCenterConfig;
 
     @NonNull
     private final AppOpsManager mAppOpsManager;
@@ -85,41 +77,14 @@ public final class SafetyCenterService extends SystemService {
     private final List<IOnSafetyCenterDataChangedListener> mSafetyCenterDataChangedListeners =
             new ArrayList<>();
 
-    @NonNull
-    private final SafetyCenterResourcesContext mSafetyCenterResourcesContext;
-
     public SafetyCenterService(@NonNull Context context) {
         super(context);
         mAppOpsManager = requireNonNull(context.getSystemService(AppOpsManager.class));
-        mSafetyCenterResourcesContext = new SafetyCenterResourcesContext(context);
     }
 
     @Override
     public void onStart() {
         publishBinderService(Context.SAFETY_CENTER_SERVICE, new Stub());
-        readSafetyCenterConfig();
-    }
-
-    private void readSafetyCenterConfig() {
-        // TODO(b/214568975): Decide if we should disable Safety Center if there is a problem
-        // reading the config.
-        String resoursePkgName = mSafetyCenterResourcesContext.getResourcesApkPkgName();
-        if (resoursePkgName == null) {
-            Log.e(TAG, "Cannot get Safety Center resources");
-            return;
-        }
-        InputStream in = mSafetyCenterResourcesContext.getSafetyCenterConfig();
-        if (in == null) {
-            Log.e(TAG, "Cannot get Safety Center config");
-            return;
-        }
-        try {
-            mSafetyCenterConfig = Parser.parse(in, resoursePkgName,
-                    mSafetyCenterResourcesContext.getResources());
-            Log.i(TAG, "Safety Center config read successfully");
-        } catch (Parser.ParseException e) {
-            Log.e(TAG, "Cannot read Safety Center config", e);
-        }
     }
 
     private static final class Key {
