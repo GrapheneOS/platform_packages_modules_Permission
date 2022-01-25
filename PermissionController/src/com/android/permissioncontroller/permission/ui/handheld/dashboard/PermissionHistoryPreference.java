@@ -21,6 +21,7 @@ import static com.android.permissioncontroller.PermissionControllerStatsLog.PERM
 import static com.android.permissioncontroller.PermissionControllerStatsLog.write;
 
 import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -41,6 +42,7 @@ import androidx.annotation.Nullable;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.compat.IntentCompat;
 
@@ -66,6 +68,8 @@ public class PermissionHistoryPreference extends Preference {
     private final ArrayList<String> mAttributionTags;
     private final boolean mIsLastUsage;
     private final Intent mIntent;
+    private final boolean mShowingAttribution;
+    private final PackageManager mPackageManager;
 
     private final long mSessionId;
 
@@ -92,6 +96,8 @@ public class PermissionHistoryPreference extends Preference {
         mAttributionTags = attributionTags;
         mIsLastUsage = isLastUsage;
         mSessionId = sessionId;
+        mShowingAttribution = showingAttribution;
+        mPackageManager = context.getPackageManager();
 
         setTitle(mTitle);
         if (summaryText != null) {
@@ -138,12 +144,14 @@ public class PermissionHistoryPreference extends Preference {
         View dashLine = widget.findViewById(R.id.permission_history_dash_line);
         dashLine.setVisibility(mIsLastUsage ? View.GONE : View.VISIBLE);
 
-        setOnPreferenceClickListener((preference) -> {
-            Intent intent = new Intent(Intent.ACTION_MANAGE_APP_PERMISSIONS);
-            intent.putExtra(Intent.EXTRA_USER, mUserHandle);
-            intent.putExtra(Intent.EXTRA_PACKAGE_NAME, mPackageName);
+        Intent intent = getManagePermissionUsageIntent();
+        if (intent == null) {
+            intent = getDefaultManageAppPermissionsIntent();
+        }
 
-            mContext.startActivity(intent);
+        Intent finalIntent = intent;
+        setOnPreferenceClickListener((preference) -> {
+            mContext.startActivity(finalIntent);
             return true;
         });
     }
@@ -166,6 +174,48 @@ public class PermissionHistoryPreference extends Preference {
         }
     }
 
+    private Intent getDefaultManageAppPermissionsIntent() {
+        Intent intent = new Intent(Intent.ACTION_MANAGE_APP_PERMISSIONS);
+        intent.putExtra(Intent.EXTRA_USER, mUserHandle);
+        intent.putExtra(Intent.EXTRA_PACKAGE_NAME, mPackageName);
+
+        return intent;
+    }
+
+    /**
+     * Get a {@link Intent#ACTION_MANAGE_PERMISSION_USAGE} intent, or null if the intent
+     * can't be handled.
+     *
+     * Suppressing the NewApi warning since we already have a isAtLeastT() check.
+     */
+    @Nullable
+    @SuppressWarnings("NewApi")
+    private Intent getManagePermissionUsageIntent() {
+        if (!mShowingAttribution || !SdkLevel.isAtLeastT() || mPackageName == null) {
+            return null;
+        }
+
+        Intent intent = new Intent(Intent.ACTION_MANAGE_PERMISSION_USAGE);
+        intent.setPackage(mPackageName);
+        intent.putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, mPermissionGroup);
+        intent.putExtra(Intent.EXTRA_ATTRIBUTION_TAGS, mAttributionTags.toArray(new String[0]));
+        intent.putExtra(Intent.EXTRA_START_TIME, mAccessTimeList.get(mAccessTimeList.size() - 1));
+        intent.putExtra(Intent.EXTRA_END_TIME, mAccessTimeList.get(0));
+        intent.putExtra(IntentCompat.EXTRA_SHOWING_ATTRIBUTION, mShowingAttribution);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        ResolveInfo resolveInfo = mPackageManager.resolveActivity(intent,
+                PackageManager.ResolveInfoFlags.of(0));
+        if (resolveInfo == null || resolveInfo.activityInfo == null || !Objects.equals(
+                resolveInfo.activityInfo.permission,
+                android.Manifest.permission.START_VIEW_PERMISSION_USAGE)) {
+            return null;
+        }
+        intent.setComponent(new ComponentName(mPackageName, resolveInfo.activityInfo.name));
+
+        return intent;
+    }
+
     /**
      * Get a {@link Intent#ACTION_VIEW_PERMISSION_USAGE_FOR_PERIOD} intent, or null if the intent
      * can't be handled.
@@ -184,8 +234,7 @@ public class PermissionHistoryPreference extends Preference {
         viewUsageIntent.putExtra(IntentCompat.EXTRA_SHOWING_ATTRIBUTION, showingAttribution);
         viewUsageIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-        PackageManager packageManager = mContext.getPackageManager();
-        ResolveInfo resolveInfo = packageManager.resolveActivity(viewUsageIntent,
+        ResolveInfo resolveInfo = mPackageManager.resolveActivity(viewUsageIntent,
                 PackageManager.MATCH_INSTANT);
         if (resolveInfo != null && resolveInfo.activityInfo != null && Objects.equals(
                 resolveInfo.activityInfo.permission,
