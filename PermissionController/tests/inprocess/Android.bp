@@ -57,7 +57,7 @@ android_test {
 
     test_suites: [
         "device-tests",
-        "mts",
+        "mts-permission",
     ],
 
     required: ["CtsAppThatRequestsLocationPermission29"]
