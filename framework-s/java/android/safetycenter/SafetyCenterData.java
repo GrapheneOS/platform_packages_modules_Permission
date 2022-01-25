@@ -46,6 +46,8 @@ public final class SafetyCenterData implements Parcelable {
     private final List<SafetyCenterIssue> mIssues;
     @NonNull
     private final List<SafetyCenterEntryOrGroup> mEntriesOrGroups;
+    @NonNull
+    private final List<SafetyCenterStaticEntryGroup> mStaticEntryGroups;
 
     //TODO(b/208415162): Add support for static/advanced entries.
 
@@ -53,10 +55,12 @@ public final class SafetyCenterData implements Parcelable {
     public SafetyCenterData(
             @NonNull SafetyCenterStatus status,
             @NonNull List<SafetyCenterIssue> issues,
-            @NonNull List<SafetyCenterEntryOrGroup> entriesOrGroups) {
+            @NonNull List<SafetyCenterEntryOrGroup> entriesOrGroups,
+            @NonNull List<SafetyCenterStaticEntryGroup> staticEntryGroups) {
         mStatus = requireNonNull(status);
         mIssues = new ArrayList<>(issues);
         mEntriesOrGroups = new ArrayList<>(entriesOrGroups);
+        mStaticEntryGroups = new ArrayList<>(staticEntryGroups);
     }
 
     /** Returns the overall {@link SafetyCenterStatus} of the Safety Center. */
@@ -80,6 +84,14 @@ public final class SafetyCenterData implements Parcelable {
         return mEntriesOrGroups;
     }
 
+    /**
+     * Returns the list of {@link SafetyCenterStaticEntryGroup} objects in the Safety Center.
+     */
+    @NonNull
+    public List<SafetyCenterStaticEntryGroup> getStaticEntryGroups() {
+        return mStaticEntryGroups;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -87,12 +99,13 @@ public final class SafetyCenterData implements Parcelable {
         SafetyCenterData that = (SafetyCenterData) o;
         return Objects.equals(mStatus, that.mStatus)
                 && Objects.equals(mIssues, that.mIssues)
-                && Objects.equals(mEntriesOrGroups, that.mEntriesOrGroups);
+                && Objects.equals(mEntriesOrGroups, that.mEntriesOrGroups)
+                && Objects.equals(mStaticEntryGroups, that.mStaticEntryGroups);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mStatus, mIssues, mEntriesOrGroups);
+        return Objects.hash(mStatus, mIssues, mEntriesOrGroups, mStaticEntryGroups);
     }
 
     @Override
@@ -101,6 +114,7 @@ public final class SafetyCenterData implements Parcelable {
                 + "mStatus=" + mStatus
                 + ", mIssues=" + mIssues
                 + ", mEntriesOrGroups=" + mEntriesOrGroups
+                + ", mStaticEntryGroups=" + mStaticEntryGroups
                 + '}';
     }
 
@@ -114,6 +128,7 @@ public final class SafetyCenterData implements Parcelable {
         dest.writeParcelable(mStatus, flags);
         dest.writeTypedList(mIssues);
         dest.writeTypedList(mEntriesOrGroups);
+        dest.writeTypedList(mStaticEntryGroups);
     }
 
     @NonNull
@@ -124,7 +139,8 @@ public final class SafetyCenterData implements Parcelable {
                     in.readParcelable(
                             SafetyCenterStatus.class.getClassLoader(), SafetyCenterStatus.class),
                     in.createTypedArrayList(SafetyCenterIssue.CREATOR),
-                    in.createTypedArrayList(SafetyCenterEntryOrGroup.CREATOR));
+                    in.createTypedArrayList(SafetyCenterEntryOrGroup.CREATOR),
+                    in.createTypedArrayList(SafetyCenterStaticEntryGroup.CREATOR));
         }
 
         @Override

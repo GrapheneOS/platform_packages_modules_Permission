@@ -23,3 +23,21 @@ xsd_config {
     package_name: "com.android.safetycenter.config.parser",
     boolean_getter: true,
 }
+
+java_library {
+    name: "safety-center-config",
+    srcs: [
+        "java/**/*.java",
+        ":safety-center-config-parser",
+    ],
+    libs: [
+        "framework-annotations-lib",
+    ],
+    apex_available: [
+        "com.android.permission",
+        "test_com.android.permission",
+    ],
+    installable: false,
+    min_sdk_version: "30",
+    sdk_version: "module_current",
+}
