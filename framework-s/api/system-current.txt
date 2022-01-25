@@ -212,6 +212,7 @@ package android.safetycenter {
 
   public final class SafetyCenterStatus implements android.os.Parcelable {
     method public int describeContents();
+    method public int getRefreshStatus();
     method public int getSeverityLevel();
     method @NonNull public CharSequence getSummary();
     method @NonNull public CharSequence getTitle();
@@ -221,12 +222,16 @@ package android.safetycenter {
     field public static final int OVERALL_SEVERITY_LEVEL_OK = 1100; // 0x44c
     field public static final int OVERALL_SEVERITY_LEVEL_RECOMMENDATION = 1200; // 0x4b0
     field public static final int OVERALL_SEVERITY_LEVEL_UNKNOWN = 1000; // 0x3e8
+    field public static final int REFRESH_STATUS_DATA_FETCH_IN_PROGRESS = 10100; // 0x2774
+    field public static final int REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS = 10200; // 0x27d8
+    field public static final int REFRESH_STATUS_NONE = 0; // 0x0
   }
 
   public static final class SafetyCenterStatus.Builder {
     ctor public SafetyCenterStatus.Builder();
     ctor public SafetyCenterStatus.Builder(@NonNull android.safetycenter.SafetyCenterStatus);
     method @NonNull public android.safetycenter.SafetyCenterStatus build();
+    method @NonNull public android.safetycenter.SafetyCenterStatus.Builder setRefreshStatus(int);
     method @NonNull public android.safetycenter.SafetyCenterStatus.Builder setSeverityLevel(int);
     method @NonNull public android.safetycenter.SafetyCenterStatus.Builder setSummary(@NonNull CharSequence);
     method @NonNull public android.safetycenter.SafetyCenterStatus.Builder setTitle(@NonNull CharSequence);
