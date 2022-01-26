@@ -60,7 +60,7 @@ public class HomeRoleBehavior implements RoleBehavior {
     @Override
     public boolean isAvailableAsUser(@NonNull Role role, @NonNull UserHandle user,
             @NonNull Context context) {
-        return !UserUtils.isWorkProfile(user, context);
+        return !UserUtils.isProfile(user, context);
     }
 
     /**
