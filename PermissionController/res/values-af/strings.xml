@@ -117,8 +117,7 @@
     <string name="message_staging" msgid="9110563899955511866">"Voer tans program uit …"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Onbekend"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Privaatheidkontroleskerm"</string>
-    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
-    <skip />
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Bekyk watter programme onlangs toestemmings gebruik het"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g>-gebruik"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Sien ander toestemmings"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -250,16 +249,11 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Sommige programme is \'n paar maande laas gebruik. Tik om te na te gaan."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# ongebruikte program}other{# ongebruikte programme}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Toestemmings en tydelike lêers is verwyder en kennisgewings is gestop. Tik om na te gaan."</string>
-    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
-    <skip />
+    <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Gaan onlangse toestemmings na"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Terwyl jy bestuur het, het jy <xliff:g id="APP">%1$s</xliff:g> toegang gegee tot <xliff:g id="PERMISSION">%2$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Terwyl jy bestuur het, het jy <xliff:g id="APP">%1$s</xliff:g> toegang gegee tot <xliff:g id="PERMISSION_1">%2$s</xliff:g> en <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Terwyl jy bestuur het, het jy <xliff:g id="COUNT">%1$d</xliff:g> toestemmings aan <xliff:g id="APP">%2$s</xliff:g> gegee"</string>
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Terwyl jy bestuur het, het jy <xliff:g id="APP_0">%1$s</xliff:g> en # ander program toegang gegee}other{Terwyl jy bestuur het, het jy <xliff:g id="APP_1">%1$s</xliff:g> en # ander programme toegang gegee}}"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Sommige programme is \'n paar maande laas gebruik"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Toestemmings wat verwyder is"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Toestemmings is verwyder"</string>
@@ -364,6 +358,11 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Programme wat dit vir jou moontlik maak om oproepe te identifiseer en strooipos, robotoproepe en ongewenste nommers te blokkeer"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Stel <xliff:g id="APP_NAME">%1$s</xliff:g> as jou verstekbeller-ID en -strooiposprogram?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Geen toestemmings is nodig nie"</string>
+    <string name="role_automotive_navigation_label" msgid="2701890757955474751">"Versteknavigasieprogram"</string>
+    <string name="role_automotive_navigation_short_label" msgid="5165823092506922457">"Navigasieprogram"</string>
+    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"Programme wat besienswaardighede kan soek en draai-vir-draai-aanwysings kan verskaf"</string>
+    <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Stel <xliff:g id="APP_NAME">%1$s</xliff:g> as jou navigasieprogram?"</string>
+    <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Geen toestemmings is nodig nie"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> sal interaksie met jou kennisgewings mag hê en toegang kry tot jou Foon-, SMS-, Kontakte- en Kalender-toestemmings."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> sal toegelaat word om interaksie met jou kennisgewings te hê en jou programme na die gekoppelde toestel te stroom."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Huidige verstek"</string>

@@ -117,8 +117,7 @@
     <string name="message_staging" msgid="9110563899955511866">"Promovendo app…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Desconhecido"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Painel de privacidade"</string>
-    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
-    <skip />
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Ver quais apps usaram as permissões recentemente"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Uso de <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Ver outras permissões"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -250,16 +249,11 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Alguns apps não foram usados nos últimos meses. Toque para revisar."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# app não usado}one{# app não usado}other{# apps não usados}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"As permissões e os arquivos temporários foram removidos, e as notificações foram interrompidas. Toque para revisar."</string>
-    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
-    <skip />
+    <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Conferir as permissões recentes"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Enquanto dirigia, você deu ao app <xliff:g id="APP">%1$s</xliff:g> acesso à permissão de <xliff:g id="PERMISSION">%2$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Enquanto dirigia, você deu ao app <xliff:g id="APP">%1$s</xliff:g> acesso à permissão de <xliff:g id="PERMISSION_1">%2$s</xliff:g> e <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Enquanto dirigia, você concedeu <xliff:g id="COUNT">%1$d</xliff:g> permissões ao app <xliff:g id="APP">%2$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Enquanto dirigia, você concedeu acesso ao <xliff:g id="APP_0">%1$s</xliff:g> e # outro app}one{Enquanto dirigia, você concedeu acesso ao <xliff:g id="APP_1">%1$s</xliff:g> e # outro app}other{Enquanto dirigia, você concedeu acesso ao <xliff:g id="APP_1">%1$s</xliff:g> e # outros apps}}"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Alguns apps não foram usados nos últimos meses"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Permissões removidas"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Permissões removidas"</string>
@@ -364,6 +358,11 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Apps que permitem identificar chamadas e bloquear spam, ligações automáticas ou números indesejados."</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Definir <xliff:g id="APP_NAME">%1$s</xliff:g> como app padrão identificador de chamadas e spam?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Nenhuma permissão necessária"</string>
+    <string name="role_automotive_navigation_label" msgid="2701890757955474751">"App de navegação padrão"</string>
+    <string name="role_automotive_navigation_short_label" msgid="5165823092506922457">"App de navegação"</string>
+    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"Apps que oferecem pesquisa de pontos de interesse e navegação passo a passo"</string>
+    <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Definir <xliff:g id="APP_NAME">%1$s</xliff:g> como o app de navegação padrão?"</string>
+    <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Nenhuma permissão necessária"</string>
     <string name="role_watch_description" msgid="267003778693177779">"O app <xliff:g id="APP_NAME">%1$s</xliff:g> poderá interagir com suas notificações e acessar as permissões do Telefone, de SMS, de Contatos e da Agenda."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"O app <xliff:g id="APP_NAME">%1$s</xliff:g> poderá interagir com suas notificações e fazer streaming de outros apps para os dispositivos conectados."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Padrão atual"</string>

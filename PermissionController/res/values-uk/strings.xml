@@ -117,8 +117,7 @@
     <string name="message_staging" msgid="9110563899955511866">"Підготовка додатка…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Невідомо"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Панель керування доступом"</string>
-    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
-    <skip />
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Показувати додатки, які нещодавно використовували дозволи"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Використання дозволу \"<xliff:g id="PERMGROUP">%1$s</xliff:g>\""</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Переглянути інші дозволи"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -250,16 +249,11 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Деякі додатки не використовувалися кілька місяців. Натисніть, щоб переглянути."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# додаток, що не використовується}one{# додаток, що не використовується}few{# додатки, що не використовуються}many{# додатків, що не використовуються}other{# додатка, що не використовується}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Дозволи й тимчасові файли вилучено, і показ сповіщень припинено. Натисніть, щоб переглянути."</string>
-    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
-    <skip />
+    <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Перевірте нещодавні дозволи"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Під час руху ви надали додатку <xliff:g id="APP">%1$s</xliff:g> дозвіл на доступ до такого об’єкта: <xliff:g id="PERMISSION">%2$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Під час руху ви надали додатку <xliff:g id="APP">%1$s</xliff:g> дозвіл на доступ до таких об’єктів: <xliff:g id="PERMISSION_1">%2$s</xliff:g> і <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Під час руху ви надали додатку <xliff:g id="APP">%2$s</xliff:g> стільки дозволів: <xliff:g id="COUNT">%1$d</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Під час руху ви надали дозвіл на доступ додатку <xliff:g id="APP_0">%1$s</xliff:g> і ще одному додатку}one{Під час руху ви надали дозвіл на доступ додатку <xliff:g id="APP_1">%1$s</xliff:g> і ще # додатку}few{Під час руху ви надали дозвіл на доступ додатку <xliff:g id="APP_1">%1$s</xliff:g> і ще # додаткам}many{Під час руху ви надали дозвіл на доступ додатку <xliff:g id="APP_1">%1$s</xliff:g> і ще # додаткам}other{Під час руху ви надали дозвіл на доступ додатку <xliff:g id="APP_1">%1$s</xliff:g> і ще # додатка}}"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Деякі додатки не використовувалися кілька місяців"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Скасовані дозволи"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Дозволи скасовано"</string>
@@ -364,6 +358,16 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Додатки для керування вхідними викликами, за допомогою яких можна визначати, хто та навіщо вам телефонує, а також блокувати спам, автоматичні виклики або дзвінки з небажаних номерів"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Зробити <xliff:g id="APP_NAME">%1$s</xliff:g> додатком для автоматичного визначення номерів і захисту від спаму за умовчанням?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Дозволи не потрібні"</string>
+    <!-- no translation found for role_automotive_navigation_label (2701890757955474751) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_short_label (5165823092506922457) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_description (7834601873792870134) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_request_title (7525693151489384300) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_request_description (7073023813249245540) -->
+    <skip />
     <string name="role_watch_description" msgid="267003778693177779">"Додаток <xliff:g id="APP_NAME">%1$s</xliff:g> зможе взаємодіяти з вашими сповіщеннями та отримає дозволи \"Телефон\", \"SMS\", \"Контакти\" й \"Календар\"."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"Додаток <xliff:g id="APP_NAME">%1$s</xliff:g> зможе взаємодіяти з вашими сповіщеннями та транслювати ваші додатки на підключений пристрій."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Поточний за умовчанням"</string>
@@ -456,10 +460,8 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до життєвих показників із датчиків?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Цей додаток може постійно отримувати дані життєвих показників із датчиків, навіть коли ви не використовуєте його. "<annotation id="link">"Надайте дозвіл у налаштуваннях."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Змінити доступ до життєвих показників із датчиків для додатка &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
-    <!-- no translation found for permgrouprequest_notifications (6396739062335106181) -->
-    <skip />
-    <!-- no translation found for permgrouprequestcontinue_notifications (3895098107355024027) -->
-    <skip />
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; надсилати вам сповіщення?"</string>
+    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; і надалі надсилати вам сповіщення?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Керовані дозволи"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Відкрито доступ до місцезнаходження"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Ваш ІТ-адміністратор дозволяє додатку <xliff:g id="APP_NAME">%s</xliff:g> отримувати доступ до вашого місцезнаходження"</string>

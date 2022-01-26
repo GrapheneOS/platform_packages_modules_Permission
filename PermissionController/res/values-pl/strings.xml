@@ -117,8 +117,7 @@
     <string name="message_staging" msgid="9110563899955511866">"Przygotowuję aplikację…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Inny"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Panel ustawień prywatności"</string>
-    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
-    <skip />
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Wyświetl aplikacje, które ostatnio używały uprawnień"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> – korzystanie z uprawnień"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Zobacz inne uprawnienia"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -250,16 +249,11 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Niektóre aplikacje nie były używane od kilku miesięcy. Kliknij, by sprawdzić."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# nieużywana aplikacja}few{# nieużywane aplikacje}many{# nieużywanych aplikacji}other{# nieużywanej aplikacji}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Uprawnienia i pliki tymczasowe zostały usunięte, a powiadomienia zostały zatrzymane. Kliknij, aby sprawdzić."</string>
-    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
-    <skip />
+    <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Sprawdź ostatnie uprawnienia"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Podczas jazdy przyznałeś(-aś) aplikacji <xliff:g id="APP">%1$s</xliff:g> te uprawnienia: <xliff:g id="PERMISSION">%2$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Podczas jazdy przyznałeś(-aś) aplikacji <xliff:g id="APP">%1$s</xliff:g> te uprawnienia: <xliff:g id="PERMISSION_1">%2$s</xliff:g> i <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Podczas jazdy przyznałeś(-aś) uprawnienia (<xliff:g id="COUNT">%1$d</xliff:g>) aplikacji <xliff:g id="APP">%2$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Podczas jazdy przyznałeś(-aś) uprawnienia aplikacji <xliff:g id="APP_0">%1$s</xliff:g> i # innej aplikacji}few{Podczas jazdy przyznałeś(-aś) uprawnienia aplikacji <xliff:g id="APP_1">%1$s</xliff:g> i # innym aplikacjom}many{Podczas jazdy przyznałeś(-aś) uprawnienia aplikacji <xliff:g id="APP_1">%1$s</xliff:g> i # innym aplikacjom}other{Podczas jazdy przyznałeś(-aś) uprawnienia aplikacji <xliff:g id="APP_1">%1$s</xliff:g> i # innej aplikacji}}"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Niektóre aplikacje nie były używane od kilku miesięcy"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Usunięte uprawnienia"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Usunięto uprawnienia"</string>
@@ -364,6 +358,11 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Aplikacje, które mogą identyfikować połączenia oraz blokować spam, automatyczne wiadomości telefoniczne i niechciane numery"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Czy aplikacja <xliff:g id="APP_NAME">%1$s</xliff:g> ma być domyślną aplikacją do identyfikacji rozmówcy i spamu?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Nie potrzebuje uprawnień"</string>
+    <string name="role_automotive_navigation_label" msgid="2701890757955474751">"Domyślna aplikacja do nawigacji"</string>
+    <string name="role_automotive_navigation_short_label" msgid="5165823092506922457">"Aplikacja do nawigacji"</string>
+    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"Aplikacje oferujące wyszukiwanie ważnych miejsc i szczegółowe wskazówki dojazdu"</string>
+    <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Czy aplikacja <xliff:g id="APP_NAME">%1$s</xliff:g> ma być domyślną aplikacją do nawigacji?"</string>
+    <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Nie potrzebuje uprawnień"</string>
     <string name="role_watch_description" msgid="267003778693177779">"Aplikacja <xliff:g id="APP_NAME">%1$s</xliff:g> będzie mogła korzystać z powiadomień oraz uprawnień dotyczących Telefonu, SMS-ów, Kontaktów i Kalendarza."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"Aplikacja <xliff:g id="APP_NAME">%1$s</xliff:g> będzie mogła korzystać z powiadomień oraz odtwarzać strumieniowo dane z aplikacji na połączonych urządzeniach."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Bieżąca aplikacja domyślna"</string>
@@ -456,10 +455,8 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na dostęp do danych z czujnika podstawowych funkcji życiowych?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Aplikacja chce mieć dostęp do danych z czujnika podstawowych funkcji życiowych przez cały czas, nawet gdy jej nie używasz. "<annotation id="link">"Zezwól w ustawieniach"</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Zmienić dostęp aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; do danych z czujnika podstawowych funkcji życiowych?"</string>
-    <!-- no translation found for permgrouprequest_notifications (6396739062335106181) -->
-    <skip />
-    <!-- no translation found for permgrouprequestcontinue_notifications (3895098107355024027) -->
-    <skip />
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na wysyłanie powiadomień?"</string>
+    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na dalsze wysyłanie powiadomień?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Pozwolenia kontrolowane"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Można użyć lokalizacji"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Administrator IT zezwala aplikacji <xliff:g id="APP_NAME">%s</xliff:g> na dostęp do Twojej lokalizacji"</string>

@@ -117,8 +117,7 @@
     <string name="message_staging" msgid="9110563899955511866">"ଆପ୍‍ ପର୍ଯ୍ୟାୟଭୁକ୍ତ କରାଯାଉଛି…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"ଅଜଣା"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"ଗୋପନୀୟତା ଡ୍ୟାସବୋର୍ଡ"</string>
-    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
-    <skip />
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"କେଉଁ ଆପଗୁଡ଼ିକ ଏବେ ଅନୁମତିଗୁଡ଼ିକ ବ୍ୟବହାର କରିଛି ତାହା ଦେଖନ୍ତୁ"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> ବ୍ୟବହାର"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"ଅନ୍ୟ ଅନୁମତିଗୁଡ଼ିକୁ ଦେଖନ୍ତୁ"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -250,16 +249,11 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"କିଛି ଆପକୁ କିଛି ମାସ ହେଲା ବ୍ୟବହାର କରାଯାଇନାହିଁ। ସମୀକ୍ଷା କରିବାକୁ ଟାପ୍ କରନ୍ତୁ।"</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{#ଟି ଅବ୍ୟବହୃତ ଆପ}other{#ଟି ଅବ୍ୟବହୃତ ଆପ}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"ଅନୁମତି ଓ ଅସ୍ଥାୟୀ ଫାଇଲଗୁଡ଼ିକୁ କାଢ଼ି ଦିଆଯାଇଛି ଏବଂ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକ ବନ୍ଦ କରାଯାଇଛି। ସମୀକ୍ଷା କରିବାକୁ ଟାପ୍ କରନ୍ତୁ।"</string>
-    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
-    <skip />
+    <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"ବର୍ତ୍ତମାନର ଅନୁମତିଗୁଡ଼ିକୁ ଦେଖନ୍ତୁ"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"ଡ୍ରାଇଭ କରିବା ସମୟରେ ଆପଣ <xliff:g id="APP">%1$s</xliff:g>କୁ <xliff:g id="PERMISSION">%2$s</xliff:g> ଆକ୍ସେସ ଦେଇଛନ୍ତି"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"ଡ୍ରାଇଭ କରିବା ସମୟରେ ଆପଣ <xliff:g id="APP">%1$s</xliff:g>କୁ <xliff:g id="PERMISSION_1">%2$s</xliff:g> ଓ <xliff:g id="PERMISSION_2">%3$s</xliff:g> ଆକ୍ସେସ ଦେଇଛନ୍ତି"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"ଡ୍ରାଇଭ କରିବା ସମୟରେ ଆପଣ <xliff:g id="APP">%2$s</xliff:g>କୁ <xliff:g id="COUNT">%1$d</xliff:g>ଟି ଅନୁମତି ଦେଇଛନ୍ତି"</string>
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{ଡ୍ରାଇଭ କରିବା ସମୟରେ ଆପଣ <xliff:g id="APP_0">%1$s</xliff:g> ଓ #ଟି ଅନ୍ୟ ଆପକୁ ଆକ୍ସେସ ଦେଇଛନ୍ତି}other{ଡ୍ରାଇଭ କରିବା ସମୟରେ ଆପଣ <xliff:g id="APP_1">%1$s</xliff:g> ଓ #ଟି ଅନ୍ୟ ଆପକୁ ଆକ୍ସେସ ଦେଇଛନ୍ତି}}"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"କିଛି ଆପକୁ କିଛି ମାସ ହେଲା ବ୍ୟବହାର କରାଯାଇନାହିଁ"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"କାଢ଼ି ଦିଆଯାଇଥିବା ଅନୁମତିଗୁଡ଼ିକ"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"ଅନୁମତିଗୁଡ଼ିକୁ କାଢ଼ି ଦିଆଯାଇଛି"</string>
@@ -364,6 +358,16 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"ସେହି ଆପ୍ସ ଯାହା କଲଗୁଡ଼ିକୁ ଚିହ୍ନଟ କରିବା, ସ୍ପାମ୍ ଓ ରୋବୋକଲ୍ ବା ଅଦରକାରୀ ନମ୍ବରଗୁଡ଼ିକୁ ବ୍ଲକ୍ କରିବାକୁ ଅନୁମତି ଦିଏ"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g>କୁ ଆପଣଙ୍କର ଡିଫଲ୍ଟ କଲର୍ ଆଇଡି &amp; ସ୍ପାମ୍ ଆପ୍ ଭାବ୍ ସେଟ୍ କରିବେ କି?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"କୌଣସି ଅନୁମତି ଆବଶ୍ୟକ ନାହିଁ"</string>
+    <!-- no translation found for role_automotive_navigation_label (2701890757955474751) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_short_label (5165823092506922457) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_description (7834601873792870134) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_request_title (7525693151489384300) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_request_description (7073023813249245540) -->
+    <skip />
     <string name="role_watch_description" msgid="267003778693177779">"ଆପଣଙ୍କ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକ ସହ ଇଣ୍ଟରାକ୍ଟ କରିବା ଏବଂ ଆପଣଙ୍କ ଫୋନ୍, SMS, ଯୋଗାଯୋଗ ଓ କ୍ୟାଲେଣ୍ଡର ଅନୁମତିଗୁଡ଼ିକୁ ଆକ୍ସେସ୍ କରିବା ପାଇଁ <xliff:g id="APP_NAME">%1$s</xliff:g>କୁ ଅନୁମତି ଦିଆଯିବ।"</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"ଆପଣଙ୍କ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକ ସହ ଇଣ୍ଟରାକ୍ଟ କରିବା ଏବଂ ସଂଯୋଗ କରାଯାଇଥିବା ଡିଭାଇସଗୁଡ଼ିକରେ ଆପଣଙ୍କର ଆପଗୁଡ଼ିକ ଷ୍ଟ୍ରିମ କରିବା ପାଇଁ <xliff:g id="APP_NAME">%1$s</xliff:g>କୁ ଅନୁମତି ଦିଆଯିବ।"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"ସମ୍ପ୍ରତ୍ତି ଡିଫଲ୍ଟ"</string>
@@ -456,10 +460,8 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"ଆପଣଙ୍କ ମହତ୍ତ୍ୱପୂର୍ଣ୍ଣ ଲକ୍ଷଣଗୁଡ଼ିକ ବିଷୟରେ ସେନ୍ସର ଡାଟାକୁ ଆକ୍ସେସ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ କି?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"ଆପଣ ଆପ ବ୍ୟବହାର କରୁନଥିଲେ ମଧ୍ୟ, ଏହି ଆପ ସବୁ ସମୟରେ ଆପଣଙ୍କ ମହତ୍ତ୍ୱପୂର୍ଣ୍ଣ ଲକ୍ଷଣଗୁଡ଼ିକ ବିଷୟରେ ସେନ୍ସର ଡାଟା ଆକ୍ସେସ କରିବାକୁ ଚାହିଁପାରେ। "<annotation id="link">"ସେଟିଂସରେ ଅନୁମତି ଦିଅନ୍ତୁ।"</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ପାଇଁ ଆପଣଙ୍କ ମହତ୍ତ୍ୱପୂର୍ଣ୍ଣ ଲକ୍ଷଣଗୁଡ଼ିକ ବିଷୟରେ ସେନ୍ସର ଡାଟାକୁ ଆକ୍ସେସ ପରିବର୍ତ୍ତନ କରିବେ କି?"</string>
-    <!-- no translation found for permgrouprequest_notifications (6396739062335106181) -->
-    <skip />
-    <!-- no translation found for permgrouprequestcontinue_notifications (3895098107355024027) -->
-    <skip />
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"ଆପଣଙ୍କୁ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକ ପଠାଇବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ?"</string>
+    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"ଆପଣଙ୍କୁ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକ ପଠାଇବା ଜାରି ରଖିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; କୁ ଅନୁମତି ଦେବେ?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"ନିୟନ୍ତ୍ରିତ ଅନୁରୋଧଗୁଡ଼ିକ"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"ଲୋକେସନ୍ ଆକ୍ସେସ୍ କରାଯାଇପାରିବ"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"ଆପଣଙ୍କ IT ଆଡମିନ୍ <xliff:g id="APP_NAME">%s</xliff:g>କୁ ଆପଣଙ୍କ ଲୋକେସନ୍ ଆକ୍ସେସ୍ କରିବାକୁ ଅନୁମତି ଦେଉଛନ୍ତି"</string>

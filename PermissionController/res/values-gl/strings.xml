@@ -117,8 +117,7 @@
     <string name="message_staging" msgid="9110563899955511866">"Preparando aplicación…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Nome descoñecido"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Panel privado"</string>
-    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
-    <skip />
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Mira as aplicacións que utilizaron permisos recentemente"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Uso do permiso (<xliff:g id="PERMGROUP">%1$s</xliff:g>)"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Ver outros permisos"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -250,16 +249,11 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Algunhas aplicacións levan varios meses sen usarse. Toca para revisar a utilización."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# aplicación que non se usa}other{# aplicacións que non se usan}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Quitáronse os permisos e os ficheiros temporais, e detivéronse as notificacións. Toca para revisalo."</string>
-    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
-    <skip />
+    <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Consulta os permisos recentes"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Mentres conducías, décheslle á aplicación <xliff:g id="APP">%1$s</xliff:g> acceso ao seguinte: <xliff:g id="PERMISSION">%2$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Mentres conducías, décheslle á aplicación <xliff:g id="APP">%1$s</xliff:g> acceso ao seguinte: <xliff:g id="PERMISSION_1">%2$s</xliff:g> e <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Mentres conducías, décheslle <xliff:g id="COUNT">%1$d</xliff:g> permisos á aplicación <xliff:g id="APP">%2$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Mentres conducías, décheslles acceso a <xliff:g id="APP_0">%1$s</xliff:g> e a # aplicación máis}other{Mentres conducías, décheslles acceso a <xliff:g id="APP_1">%1$s</xliff:g> e a # aplicacións máis}}"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Algunhas aplicacións levan varios meses sen usarse"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Permisos quitados"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Permisos quitados"</string>
@@ -364,6 +358,16 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Aplicacións que che permiten identificar as chamadas e bloquear o spam, as chamadas automatizadas ou os números non desexados."</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Queres definir <xliff:g id="APP_NAME">%1$s</xliff:g> como a túa aplicación predeterminada de identificación de chamadas e spam?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Non se necesita ningún permiso"</string>
+    <!-- no translation found for role_automotive_navigation_label (2701890757955474751) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_short_label (5165823092506922457) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_description (7834601873792870134) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_request_title (7525693151489384300) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_request_description (7073023813249245540) -->
+    <skip />
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> poderá interactuar coas túas notificacións e acceder aos permisos do teu teléfono, das mensaxes, dos contactos e do calendario."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"Permitirase que <xliff:g id="APP_NAME">%1$s</xliff:g> interactúe coas túas notificacións e emita as túas aplicacións ao dispositivo conectado."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"App predeterminada actual"</string>
@@ -456,10 +460,8 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda aos datos dos sensores sobre as túas constantes vitais?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Quizais esta aplicación requira acceso a datos dos sensores sobre as constantes vitais, mesmo cando non a usas. "<annotation id="link">"Podes permitilo na configuración"</annotation>"."</string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Queres cambiar o acceso aos datos dos sensores sobre as constantes vitais para &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
-    <!-- no translation found for permgrouprequest_notifications (6396739062335106181) -->
-    <skip />
-    <!-- no translation found for permgrouprequestcontinue_notifications (3895098107355024027) -->
-    <skip />
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Queres permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; che envíe notificacións?"</string>
+    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Queres permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; siga enviándoche notificacións?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Permisos controlados"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Pódese acceder á localización"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"O teu administrador de TI permite que <xliff:g id="APP_NAME">%s</xliff:g> acceda á túa localización"</string>

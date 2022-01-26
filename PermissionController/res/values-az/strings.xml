@@ -117,8 +117,7 @@
     <string name="message_staging" msgid="9110563899955511866">"Tətbiq hazırlanır..."</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Naməlum"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Məxfilik paneli"</string>
-    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
-    <skip />
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Hansı tətbiqlərin bu yaxınlarda icazələri istifadə etdiyinə baxın"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> istifadəsi"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Digər icazələrə baxın"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -250,16 +249,11 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Bəzi tətbiqlər bir neçə aydır ki, istifadə edilməyib. Nəzərdən keçirmək üçün toxunun."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# istifadə olunmayan tətbiq}other{# istifadə olunmayan tətbiq}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"İcazə ləğv edildi, müvəqqəti fayllar silindi və bildirişlər söndürüldü. Ətraflı məlumat üçün toxunun."</string>
-    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
-    <skip />
+    <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Son icazələri yoxlayın"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Avtomobil sürərkən <xliff:g id="APP">%1$s</xliff:g> tətbiqinə <xliff:g id="PERMISSION">%2$s</xliff:g> icazəsi vermisiniz"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Avtomobil sürərkən <xliff:g id="APP">%1$s</xliff:g> tətbiqinə <xliff:g id="PERMISSION_1">%2$s</xliff:g> və <xliff:g id="PERMISSION_2">%3$s</xliff:g> icazəsi vermisiniz"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Avtomobil sürərkən <xliff:g id="APP">%2$s</xliff:g> tətbiqinə <xliff:g id="COUNT">%1$d</xliff:g> icazə vermisiniz"</string>
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Avtomobil sürərkən <xliff:g id="APP_0">%1$s</xliff:g> tətbiqinə və digər # tətbiqə giriş icazəsi vermisiniz}other{Avtomobil sürərkən <xliff:g id="APP_1">%1$s</xliff:g> tətbiqinə və digər # tətbiqə giriş icazəsi vermisiniz}}"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Bəzi tətbiqlər bir neçə aydır ki, istifadə edilməyib"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Silinmiş icazələr"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"İcazələr silinib"</string>
@@ -364,6 +358,16 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Nömrələri aşkarlamağa, spam, avtomatik zəng və arzuolunmaz nömrələri blok etməyə imkan verən tətbiqlər"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> defolt zəng edənin ID-si və spam tətbiqi olaraq ayarlansın?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"İcazəyə ehtiyac yoxdur"</string>
+    <!-- no translation found for role_automotive_navigation_label (2701890757955474751) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_short_label (5165823092506922457) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_description (7834601873792870134) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_request_title (7525693151489384300) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_request_description (7073023813249245540) -->
+    <skip />
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> bildirişlərinizə, Telefon, SMS, Kontaktlar və Təqvimə giriş əldə edəcək."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> bildirişlərinizə giriş əldə edəcək və tətbiqlərinizi qoşulmuş cihazda yayımlaya biləcək"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Cari defolt"</string>
@@ -456,10 +460,8 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə sağlamlıq göstəriciləriniz haqqında sensor datasına giriş icazəsi verilsin?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Bu tətbiq hər zaman, hətta ondan istifadə etmədiyiniz zaman belə sağlamlıq göstəriciləriniz haqqında sensor datasına giriş etmək istəyə bilər. "<annotation id="link">"Ayarlarda icazə verin."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; üçün sağlamlıq göstəriciləriniz haqqında sensor datasına giriş dəyişdirilsin?"</string>
-    <!-- no translation found for permgrouprequest_notifications (6396739062335106181) -->
-    <skip />
-    <!-- no translation found for permgrouprequestcontinue_notifications (3895098107355024027) -->
-    <skip />
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə sizə bildiriş göndərmək icazəsi verilsin?"</string>
+    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tətbiqinə sizə yenə də bildiriş göndərmək icazəsi verilsin?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"İdarə edilən icazələr"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Məkana giriş edilə bilər"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"İT admininiz <xliff:g id="APP_NAME">%s</xliff:g> tətbiqinə məkanınıza giriş icazəsi verir"</string>

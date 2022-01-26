@@ -117,8 +117,7 @@
     <string name="message_staging" msgid="9110563899955511866">"ആപ്പ് തയ്യാറാക്കുന്നു…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"അജ്ഞാതം"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"സ്വകാര്യതാ ഡാഷ്ബോർഡ്"</string>
-    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
-    <skip />
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"ഏതെല്ലാം ആപ്പുകൾ അടുത്തിടെ അനുമതികൾ ഉപയോഗിച്ചുവെന്ന് കാണുക"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> ഉപയോഗം"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"മറ്റ് അനുമതികൾ കാണുക"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -250,16 +249,11 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"കുറച്ച് മാസങ്ങളായി ചില ആപ്പുകൾ ഉപയോഗിച്ചിട്ടില്ല. അവലോകനം ചെയ്യാൻ ടാപ്പ് ചെയ്യുക."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{ഉപയോഗിക്കാത്ത # ആപ്പ്}other{ഉപയോഗിക്കാത്ത # ആപ്പുകൾ}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"അനുമതികളും താൽക്കാലിക ഫയലുകളും നീക്കം ചെയ്‌തു, അറിയിപ്പുകൾ നിർത്തി. അവലോകനം ചെയ്യാൻ ടാപ്പ് ചെയ്യുക."</string>
-    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
-    <skip />
+    <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"അടുത്തിടെ നൽകിയ അനുമതികൾ പരിശോധിക്കുക"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"ഡ്രൈവ് ചെയ്യുന്നതിനിടെ നിങ്ങൾ <xliff:g id="APP">%1$s</xliff:g> ആപ്പിന് <xliff:g id="PERMISSION">%2$s</xliff:g> ആക്‌സസ് നൽകി"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"ഡ്രൈവ് ചെയ്യുന്നതിനിടെ നിങ്ങൾ <xliff:g id="APP">%1$s</xliff:g> ആപ്പിന് <xliff:g id="PERMISSION_1">%2$s</xliff:g>, <xliff:g id="PERMISSION_2">%3$s</xliff:g> എന്നിവയിലേക്ക് ആക്‌സസ് നൽകി"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"ഡ്രൈവ് ചെയ്യുന്നതിനിടെ നിങ്ങൾ <xliff:g id="APP">%2$s</xliff:g> ആപ്പിന് <xliff:g id="COUNT">%1$d</xliff:g> അനുമതികൾ നൽകി"</string>
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{ഡ്രൈവ് ചെയ്യുന്നതിനിടെ നിങ്ങൾ <xliff:g id="APP_0">%1$s</xliff:g> എന്നതിനും മറ്റ് # ആപ്പിനും ആക്‌സസ് നൽകി}other{ഡ്രൈവ് ചെയ്യുന്നതിനിടെ നിങ്ങൾ <xliff:g id="APP_1">%1$s</xliff:g> എന്നതിനും മറ്റ് # ആപ്പുകൾക്കും ആക്‌സസ് നൽകി}}"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"കുറച്ച് മാസങ്ങളായി ചില ആപ്പുകൾ ഉപയോഗിച്ചിട്ടില്ല"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"അനുമതികൾ നീക്കം ചെയ്‌തവ"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"അനുമതികൾ നീക്കം ചെയ്‌തവ"</string>
@@ -364,6 +358,11 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"കോളുകൾ തിരിച്ചറിയാനും സ്‌പാം, റോബോകോൾ, ആവശ്യമില്ലാത്ത നമ്പറുകൾ എന്നിവ ബ്ലോക്ക് ചെയ്യാനും നിങ്ങളെ അനുവദിക്കുന്ന ആപ്പുകൾ"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> എന്നതിനെ നിങ്ങളുടെ ഡിഫോൾട്ട് കോളർ ഐഡി സ്‌പാം ആപ്പായി സജ്ജീകരിക്കണോ?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"അനുമതികൾ ആവശ്യമില്ല"</string>
+    <string name="role_automotive_navigation_label" msgid="2701890757955474751">"ഡിഫോൾട്ട് നാവിഗേഷൻ ആപ്പ്"</string>
+    <string name="role_automotive_navigation_short_label" msgid="5165823092506922457">"നാവിഗേഷൻ ആപ്പ്"</string>
+    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"പ്രധാനപ്പെട്ട ഇടങ്ങൾ തിരയലും ടേൺ-ബൈ-ടേൺ നാവിഗേഷൻ മാർഗ്ഗനിർദ്ദേശവും നൽകാനാകുന്ന ആപ്പുകൾ"</string>
+    <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g> എന്നതിനെ നിങ്ങളുടെ ഡിഫോൾട്ട് നാവിഗേഷൻ ആപ്പ് ആയി സജ്ജീകരിക്കണോ?"</string>
+    <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"അനുമതികളൊന്നും ആവശ്യമില്ല"</string>
     <string name="role_watch_description" msgid="267003778693177779">"നിങ്ങളുടെ അറിയിപ്പുകളുമായി സംവദിക്കാനും നിങ്ങളുടെ ഫോൺ, SMS, കോൺടാക്റ്റുകൾ, കലണ്ടർ അനുമതികൾ എന്നിവ ആക്‌സസ് ചെയ്യാനും <xliff:g id="APP_NAME">%1$s</xliff:g> എന്നതിനെ അനുവദിക്കും."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"നിങ്ങളുടെ അറിയിപ്പുകളുമായി സംവദിക്കാനും കണക്‌റ്റ് ചെയ്‌ത ഉപകരണത്തിലേക്ക് നിങ്ങളുടെ ആപ്പുകൾ സ്ട്രീം ചെയ്യാനും <xliff:g id="APP_NAME">%1$s</xliff:g> ആപ്പിനെ അനുവദിക്കും."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"നിലവിലെ ഡിഫോൾട്ട്"</string>

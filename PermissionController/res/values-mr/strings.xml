@@ -117,8 +117,7 @@
     <string name="message_staging" msgid="9110563899955511866">"अ‍ॅप सुरुवातीच्या स्थितीत आहे…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"अज्ञात"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"गोपनीयता डॅशबोर्ड"</string>
-    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
-    <skip />
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"कोणत्या ॲप्सनी अलीकडे परवानग्या वापरल्या ते पहा"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> वापर"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"इतर परवानग्या पाहणे"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -250,16 +249,11 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"काही ॲप्‍स काही महिन्यांत वापरलेली नाहीत. परीक्षण करण्यासाठी टॅप करा."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# न वापरलेले ॲप}other{# न वापरलेली ॲप्स}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"परवानग्या आणि तात्पुरत्या फाइल काढून टाकल्या व सूचना थांबवल्या होत्या. पुनरावलोकन करण्यासाठी टॅप करा."</string>
-    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
-    <skip />
+    <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"अलीकडील परवानग्या तपासा"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"ड्राइव्ह करताना, तुम्ही <xliff:g id="APP">%1$s</xliff:g> ला <xliff:g id="PERMISSION">%2$s</xliff:g> चा अ‍ॅक्सेस दिला आहे"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"ड्राइव्ह करताना, तुम्ही <xliff:g id="APP">%1$s</xliff:g> ला <xliff:g id="PERMISSION_1">%2$s</xliff:g> &amp; <xliff:g id="PERMISSION_2">%3$s</xliff:g> चा अ‍ॅक्सेस दिला आहे"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"ड्राइव्ह करताना, तुम्ही <xliff:g id="APP">%2$s</xliff:g> ला <xliff:g id="COUNT">%1$d</xliff:g> परवानग्या दिल्या आहेत"</string>
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{ड्राइव्ह करताना, तुम्ही <xliff:g id="APP_0">%1$s</xliff:g> &amp; आणखी # ॲपला अ‍ॅक्सेस दिला आहे}other{ड्राइव्ह करताना, तुम्ही <xliff:g id="APP_1">%1$s</xliff:g> &amp; आणि आणखी # ॲप्सना अ‍ॅक्सेस दिला आहे}}"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"काही ॲप्‍स काही महिन्यांत वापरलेली नाहीत"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"काढून टाकलेल्या परवानग्या"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"परवानग्या काढून टाकल्या आहेत"</string>
@@ -364,6 +358,11 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"तुम्हाला कॉल ओळखण्याची आणि स्पॅम, रोबोकॉल किंवा नको असलेले नंबर ब्लॉक करण्याची अनुमती देणारी ॲप्स"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> तुमचे डीफॉल्ट कॉलर आयडी आणि स्पॅम अ‍ॅप म्हणून सेट करायचे?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"परवानगीची गरज नाही"</string>
+    <string name="role_automotive_navigation_label" msgid="2701890757955474751">"डीफॉल्ट नेव्हिगेशन ॲप"</string>
+    <string name="role_automotive_navigation_short_label" msgid="5165823092506922457">"नेव्हिगेशन ॲप"</string>
+    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"आवडते ठिकाण शोध आणि टर्न बाय टर्न नेव्हिगेशन यासंबंधित मार्गदर्शन करू शकणारी ॲप्स"</string>
+    <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g> ला तुमचे डीफॉल्ट नेव्हिगेशन ॲप म्हणून सेट करायचे आहे का?"</string>
+    <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"परवानगीची गरज नाही"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> ला तुमच्या सूचनांशी संवाद साधण्याची आणि तुमचा फोन, एसएमएस, संपर्क आणि Calendar च्या परवानग्या अ‍ॅक्सेस करण्याची अनुमती मिळेल."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> ला तुमच्या सूचनांशी संवाद साधण्याची आणि कनेक्‍ट केलेल्या डिव्हाइसवर तुमची ॲप्स स्ट्रीम करण्याची अनुमती दिली जाईल."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"सद्य डीफॉल्ट"</string>
