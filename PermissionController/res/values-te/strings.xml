@@ -117,8 +117,7 @@
     <string name="message_staging" msgid="9110563899955511866">"యాప్‌ను అందిస్తోంది…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"తెలియదు"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"గోప్యతా డ్యాష్‌బోర్డ్"</string>
-    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
-    <skip />
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"ఇటీవల ఏ యాప్‌లు అనుమతులను ఉపయోగించాయో చూడండి"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> వినియోగం"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"ఇతర అనుమతులను చూడండి"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -213,7 +212,7 @@
     <string name="last_opened_summary" msgid="5248984030024968808">"యాప్ చివరిసారిగా <xliff:g id="DATE">%s</xliff:g> తేదీన తెరవబడింది"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"చివరిగా తెరిచినది <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"మీరు అన్ని ఫైళ్ల మేనేజ్‌మెంట్‌కు అనుమతిస్తే,ఈ పరికరంలో లేదా కనెక్ట్ చేయబడిన స్టోరేజ్ పరికరాలలో ఉమ్మడి స్టోరేజ్‌లోని ఏ ఫైళ్లను అయినా ఈ యాప్ యాక్సెస్ చేయగలదు, సవరించగలదు, లేదా తొలగించగలదు. యాప్ మీ అనుమతి తీసుకోకుండానే ఫైళ్లను యాక్సెస్ చేయవచ్చు."</string>
-    <string name="special_file_access_dialog" msgid="583804114020740610">"ఈ పరికరంలో లేదా ఏవైనా కనెక్ట్ చేయబడిన స్టోరేజ్ పరికరాలలో ఫైళ్లను యాక్సెస్ చేయడానికి, సవరించడానికి, లేదా తొలగించడానికి ఈ యాప్‌నకు అనుమతి ఇవ్వాలా? ఈ యాప్ మీ అనుమతి తీసుకోకుండానే ఫైళ్లను యాక్సెస్ చేయవచ్చు."</string>
+    <string name="special_file_access_dialog" msgid="583804114020740610">"ఈ పరికరంలో లేదా ఏవైనా కనెక్ట్ చేయబడిన స్టోరేజ్ పరికరాలలో ఫైళ్లను యాక్సెస్ చేయడానికి, ఎడిట్ చేయడానికి, లేదా తొలగించడానికి ఈ యాప్‌నకు అనుమతి ఇవ్వాలా? ఈ యాప్ మీ అనుమతి తీసుకోకుండానే ఫైళ్లను యాక్సెస్ చేయవచ్చు."</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"ఈ యాప్‌ల‌కు ఈ అనుమ‌తి ఇస్తుంది- <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"వాకింగ్, బైకింగ్, సైక్లింగ్, అడుగులను లెక్కించడం మొదలైన శారీరక శ్రమను, ఇంకా మరిన్నింటిని ఈ అనుమతి ఉన్న యాప్‌లు యాక్సెస్ చేయగలవు"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"ఈ అనుమతి ఉన్న యాప్‌లు మీ క్యాలెండర్‌ను యాక్సెస్ చేయగలవు"</string>
@@ -250,16 +249,11 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"కొన్ని యాప్‌లు గత కొన్ని నెలలుగా వినియోగంలో లేవు. రివ్యూ చేయడానికి ట్యాప్ చేయండి."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# ఉపయోగించని యాప్}other{# ఉపయోగించని యాప్‌లు}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"అనుమతులు, తాత్కాలిక ఫైళ్లు తీసివేయబడ్డాయి అలాగే నోటిఫికేషన్‌లు ఆపివేయబడ్డాయి. రివ్యూ చేయడానికి ట్యాప్ చేయండి."</string>
-    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
-    <skip />
+    <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"ఇటీవలి అనుమతులను చెక్ చేయండి"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"డ్రైవింగ్‌లో ఉన్నప్పుడు, మీరు <xliff:g id="APP">%1$s</xliff:g> యాప్‌నకు <xliff:g id="PERMISSION">%2$s</xliff:g>‌కు యాక్సెస్‌ను ఇచ్చారు"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"డ్రైవింగ్‌లో ఉన్నప్పుడు, మీరు <xliff:g id="APP">%1$s</xliff:g> యాప్‌నకు <xliff:g id="PERMISSION_1">%2$s</xliff:g>, <xliff:g id="PERMISSION_2">%3$s</xliff:g>‌కు యాక్సెస్‌ను ఇచ్చారు"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"డ్రైవింగ్‌లో ఉన్నప్పుడు, మీరు <xliff:g id="APP">%2$s</xliff:g> యాప్‌నకు <xliff:g id="COUNT">%1$d</xliff:g> అనుమతులను ఇచ్చారు"</string>
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{డ్రైవింగ్‌లో ఉన్నప్పుడు, మీరు <xliff:g id="APP_0">%1$s</xliff:g>, మరో # ఇతర యాప్‌నకు యాక్సెస్‌ను ఇచ్చారు}other{డ్రైవింగ్‌లో ఉన్నప్పుడు, మీరు <xliff:g id="APP_1">%1$s</xliff:g>, మరో # ఇతర యాప్‌లకు యాక్సెస్‌ను ఇచ్చారు}}"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"గత కొన్ని నెలలుగా కొన్ని యాప్‌లు వినియోగంలో లేవు"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"అనుమతులు తీసివేసినవి"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"అనుమతులు తీసివేయబడ్డాయి"</string>
@@ -364,6 +358,11 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"కాల్స్‌ను గుర్తించడానికి, స్పామ్, ఆటోమేటిక్‌ కాల్స్‌ లేదా వద్దనుకునే నంబర్‌లను బ్లాక్ చేయడానికి మిమ్మల్ని అనుమతించే యాప్‌లు"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g>ను మీ ఆటోమేటిక్ కాలర్ ID &amp; స్పామ్ యాప్‌గా సెట్ చేయాలా?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"అనుమతులు ఇవ్వనవసరం లేదు"</string>
+    <string name="role_automotive_navigation_label" msgid="2701890757955474751">"ఆటోమేటిక్ సెట్టింగ్ నావిగేషన్ యాప్"</string>
+    <string name="role_automotive_navigation_short_label" msgid="5165823092506922457">"నావిగేషన్ యాప్"</string>
+    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"చూడదగిన ప్రదేశానికి సంబంధించిన సెర్చ్, సులువైన దిశల నావిగేషన్ గైడెన్స్‌ను అందించే యాప్‌లు"</string>
+    <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g> యాప్‌ను మీ ఆటోమేటిక్ సెట్టింగ్ నావిగేషన్ యాప్‌గా సెటప్ చేయాలా?"</string>
+    <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"అనుమతులు అవసరం లేదు"</string>
     <string name="role_watch_description" msgid="267003778693177779">"మీ నోటిఫికేషన్‌లతో ఇంటరాక్ట్ అవ్వడానికి అలాగే మీ ఫోన్, SMS, కాంటాక్ట్‌లు అలాగే Calendar అనుమతులను యాక్సెస్ చేయడానికి <xliff:g id="APP_NAME">%1$s</xliff:g> అనుమతించబడుతుంది."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"మీ నోటిఫికేషన్‌లతో ఇంటరాక్ట్ అవ్వడానికి, కనెక్ట్ అయిన పరికరానికి మీ యాప్‌లను స్ట్రీమ్ చేయడానికి <xliff:g id="APP_NAME">%1$s</xliff:g> అనుమతించబడుతుంది."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"ప్రస్తుతం ఆటోమేటిక్‌గా ఉంది"</string>

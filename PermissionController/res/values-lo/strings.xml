@@ -117,8 +117,7 @@
     <string name="message_staging" msgid="9110563899955511866">"ກຳລັງຮຽງແອັບ…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"ບໍ່ຮູ້ຈັກ"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"ແຜງໜ້າປັດຄວາມເປັນສ່ວນຕົວ"</string>
-    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
-    <skip />
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"ເບິ່ງວ່າແອັບໃດໃຊ້ການອະນຸຍາດຫຼ້າສຸດ"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"ການນໍາໃຊ້ <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"ເບິ່ງການອະນຸຍາດອື່ນໆ"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -250,16 +249,11 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"ບາງແອັບບໍ່ໄດ້ໃຊ້ມາສອງສາມເດືອນແລ້ວ. ແຕະເພື່ອກວດສອບ."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# ແອັບທີ່ບໍ່ໄດ້ໃຊ້}other{# ແອັບທີ່ບໍ່ໄດ້ໃຊ້}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"ລຶບການອະນຸຍາດ ແລະ ໄຟລ໌ຊົ່ວຄາວອອກແລ້ວ ແລະ ຢຸດການແຈ້ງເຕືອນແລ້ວ. ແຕະເພື່ອກວດສອບ."</string>
-    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
-    <skip />
+    <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"ກວດສອບການອະນຸຍາດຫຼ້າສຸດ"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"ໃນຂະນະກຳລັງຂັບລົດ, ທ່ານໃຫ້ການເຂົ້າເຖິງ <xliff:g id="PERMISSION">%2$s</xliff:g> ໃຫ້ກັບ <xliff:g id="APP">%1$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"ໃນຂະນະກຳລັງຂັບລົດ, ທ່ານໃຫ້ການເຂົ້າເຖິງ <xliff:g id="PERMISSION_1">%2$s</xliff:g> ແລະ <xliff:g id="PERMISSION_2">%3$s</xliff:g> ໃຫ້ກັບ <xliff:g id="APP">%1$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"ໃນຂະນະກຳລັງຂັບລົດ, ທ່ານໃຫ້ການອະນຸຍາດ <xliff:g id="COUNT">%1$d</xliff:g> ລາຍການໃຫ້ກັບ <xliff:g id="APP">%2$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{ໃນຂະນະກຳລັງຂັບລົດ, ທ່ານໃຫ້ສິດເຂົ້າເຖິງ <xliff:g id="APP_0">%1$s</xliff:g> ແລະ ແອັບອື່ນໆອີກ # ແອັບ}other{ໃນຂະນະກຳລັງຂັບລົດ, ທ່ານໃຫ້ສິດເຂົ້າເຖິງ <xliff:g id="APP_1">%1$s</xliff:g> ແລະ ແອັບອື່ນໆອີກ # ແອັບ}}"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"ບາງແອັບບໍ່ໄດ້ໃຊ້ມາສອງສາມເດືອນແລ້ວ"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"ລຶບສິດອະນຸຍາດອອກແລ້ວ"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"ລຶບສິດອະນຸຍາດອອກແລ້ວ"</string>
@@ -364,6 +358,16 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"ແອັບທີ່ອະນຸຍາດໃຫ້ທ່ານລະບຸການໂທ ແລະ ບລັອກເບີສະແປມ, ເບີບັນທຶກສຽງຄົນເວົ້າອັດຕະໂນມັດ ຫຼື ເບີທີ່ບໍ່ຕ້ອງການ"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"ຕັ້ງ <xliff:g id="APP_NAME">%1$s</xliff:g> ເປັນໝາຍເລກຜູ້ໂທເລີ່ມຕົ້ນ ແລະ ແອັບສະແປມເລີ່ມຕົ້ນຂອງທ່ານບໍ?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"ບໍ່ຈຳເປັນຕ້ອງມີສິດອະນຸຍາດ"</string>
+    <!-- no translation found for role_automotive_navigation_label (2701890757955474751) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_short_label (5165823092506922457) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_description (7834601873792870134) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_request_title (7525693151489384300) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_request_description (7073023813249245540) -->
+    <skip />
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> ຈະໄດ້ຮັບອະນຸຍາດໃຫ້ໂຕ້ຕອບກັບການແຈ້ງເຕືອນຂອງທ່ານ ແລະ ເຂົ້າເຖິງການອະນຸຍາດໂທລະສັບ, SMS, ລາຍຊື່ຜູ້ຕິດຕໍ່ ແລະ ປະຕິທິນຂອງທ່ານໄດ້."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> ຈະໄດ້ຮັບອະນຸຍາດໃຫ້ໂຕ້ຕອບກັບການແຈ້ງເຕືອນຂອງທ່ານ ແລະ ສະຕຣີມແອັບຂອງທ່ານຫາອຸປະກອນທີ່ເຊື່ອມແລ້ວໄດ້."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"ຄ່າເລີ່ມຕົ້ນປັດຈຸບັນ"</string>
@@ -456,10 +460,8 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"ອະນຸຍາດ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ໃຫ້ເຂົ້າເຖິງຂໍ້ມູນເຊັນເຊີກ່ຽວກັບສັນຍານຊີບຂອງທ່ານບໍ?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"ແອັບນີ້ອາດຕ້ອງການເຂົ້າເຖິງຂໍ້ມູນເຊັນເຊີກ່ຽວກັບສັນຍານຊີບຂອງທ່ານຕະຫຼອດເວລາ, ເຖິງແມ່ນວ່າທ່ານຈະບໍ່ໄດ້ກຳລັງໃຊ້ແອັບຢູ່ກໍຕາມ. "<annotation id="link">"ອະນຸຍາດໃນການຕັ້ງຄ່າ."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"ປ່ຽນການເຂົ້າເຖິງຂໍ້ມູນເຊັນເຊີກ່ຽວກັບສັນຍານຊີບຂອງທ່ານສຳລັບ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ບໍ?"</string>
-    <!-- no translation found for permgrouprequest_notifications (6396739062335106181) -->
-    <skip />
-    <!-- no translation found for permgrouprequestcontinue_notifications (3895098107355024027) -->
-    <skip />
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"ອະນຸຍາດໃຫ້ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ສົ່ງການແຈ້ງເຕືອນຫາທ່ານບໍ?"</string>
+    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"ອະນຸຍາດໃຫ້ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ສືບຕໍ່ສົ່ງການແຈ້ງເຕືອນຫາທ່ານບໍ?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"ສິດອະນຸຍາດທີ່ມີການຄວບຄຸມ"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"ສາມາດເຂົ້າເຖິງສະຖານທີ່ໄດ້ແລ້ວ"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"ຜູ້ເບິ່ງແຍງໄອທີຂອງທ່ານອະນຸຍາດໃຫ້ <xliff:g id="APP_NAME">%s</xliff:g> ເຂົ້າເຖິງສະຖານທີ່ຂອງທ່ານໄດ້"</string>

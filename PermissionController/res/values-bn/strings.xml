@@ -117,8 +117,7 @@
     <string name="message_staging" msgid="9110563899955511866">"অ্যাপ স্টেজ করা হচ্ছে…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"অজানা"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"প্রাইভেসি ড্যাশবোর্ড"</string>
-    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
-    <skip />
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"সম্প্রতি কোন কোন অ্যাপ অনুমতি ব্যবহার করেছে দেখুন"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> ব্যবহার"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"অন্য অনুমতি দেখুন"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -250,16 +249,11 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"কয়েক মাস ধরে কিছু অ্যাপ ব্যবহার করা হয়নি। পর্যালোচনা করতে ট্যাপ করুন।"</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{ব্যবহার করা হয়নি এমন #টি অ্যাপ}one{ব্যবহার করা হয়নি এমন #টি অ্যাপ}other{ব্যবহার করা হয়নি এমন #টি অ্যাপ}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"অনুমতি এবং অস্থায়ী ফাইল সরানো হয়েছে এবং বিজ্ঞপ্তি বন্ধ করা আছে। পর্যালোচনা করতে ট্যাপ করুন।"</string>
-    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
-    <skip />
+    <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"সাম্প্রতিক অনুমতিগুলি দেখুন"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"ড্রাইভ করার সময়, আপনি <xliff:g id="APP">%1$s</xliff:g>-কে <xliff:g id="PERMISSION">%2$s</xliff:g>-এর অ্যাক্সেস দিয়েছেন"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"ড্রাইভ করার সময়, আপনি <xliff:g id="APP">%1$s</xliff:g>-কে <xliff:g id="PERMISSION_1">%2$s</xliff:g>এবং <xliff:g id="PERMISSION_2">%3$s</xliff:g>-এর অ্যাক্সেস দিয়েছেন"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"ড্রাইভ করার সময়, আপনি <xliff:g id="APP">%2$s</xliff:g>-কে <xliff:g id="COUNT">%1$d</xliff:g>টি অনুমতি দিয়েছেন"</string>
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{ড্রাইভ করার সময়, আপনি <xliff:g id="APP_0">%1$s</xliff:g> ও আরও #টি অ্যাপকে অ্যাক্সেস দিয়েছেন}one{ড্রাইভ করার সময়, আপনি <xliff:g id="APP_1">%1$s</xliff:g> ও আরও #টি অ্যাপকে অ্যাক্সেস দিয়েছেন}other{ড্রাইভ করার সময়, আপনি <xliff:g id="APP_1">%1$s</xliff:g> ও আরও #টি অ্যাপকে অ্যাক্সেস দিয়েছেন}}"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"কয়েক মাস ধরে কিছু অ্যাপ ব্যবহার করা হয়নি"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"যেসব অ্যাপের জন্য অনুমতি সরিয়ে নেওয়া হয়েছে"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"এই অ্যাপগুলির জন্য অনুমতি সরিয়ে নেওয়া হয়েছে"</string>
@@ -364,6 +358,11 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"সেই সমস্ত অ্যাপ যেগুলির সাহায্যে আপনি ফোনে ইনকামিং কল শনাক্ত করতে এবং স্প্যাম, রোবোকল বা অবাঞ্ছিত নম্বর ব্লক করে দিতে পারেন"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> অ্যাপকে আপনার ডিফল্ট কলার আইডি ও স্প্যাম অ্যাপ হিসেবে সেট করতে চান?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"কোনও অনুমতির প্রয়োজন নেই"</string>
+    <string name="role_automotive_navigation_label" msgid="2701890757955474751">"নেভিগেশনের জন্য ডিফল্ট অ্যাপ"</string>
+    <string name="role_automotive_navigation_short_label" msgid="5165823092506922457">"নেভিগেশন অ্যাপ"</string>
+    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"এমন অ্যাপ যা জনপ্রিয় জায়গা খোঁজা ও ধাপে ধাপে নেভিগেশনের দিকনির্দেশের সুবিধা দেয়"</string>
+    <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"আপনার ডিফল্ট নেভিগেশন অ্যাপ হিসেবে <xliff:g id="APP_NAME">%1$s</xliff:g> সেট করতে চান?"</string>
+    <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"কোনও অনুমতির প্রয়োজন নেই"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> আপনার বিজ্ঞপ্তির সাথে ইন্টার‌্যাক্ট করতে পারবে, তার সাথে আপনার ফোন, এমএসএস, পরিচিতি এবং ক্যালেন্ডারের অনুমতিও অ্যাক্সেস করতে পারবে।"</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g>-কে আপনার বিজ্ঞপ্তির সাথে কথোপকথন এবং কানেক্ট করা ডিভাইসের অ্যাপ স্ট্রিম করতে অনুমতি দেওয়া হবে।"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"বর্তমান ডিফল্ট"</string>

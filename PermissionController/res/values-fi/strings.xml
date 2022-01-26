@@ -117,8 +117,7 @@
     <string name="message_staging" msgid="9110563899955511866">"Valmistellaan sovellusta…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Tuntematon"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Yksityisyydenhallintapaneeli"</string>
-    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
-    <skip />
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Katso, mitkä sovellukset ovat käyttäneet lupia äskettäin"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> käytössä"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Katso muut luvat"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -250,16 +249,11 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Joitain sovelluksia ei ole käytetty muutamaan kuukauteen. Tarkista napauttamalla."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# käyttämätön sovellus}other{# käyttämätöntä sovellusta}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Luvat ja väliaikaiset tiedostot on poistettu ja ilmoitukset lopetettu. Tarkista napauttamalla."</string>
-    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
-    <skip />
+    <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Tarkista viimeaikaiset luvat"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"<xliff:g id="APP">%1$s</xliff:g> sai ajon aikana tämän luvan: <xliff:g id="PERMISSION">%2$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"<xliff:g id="APP">%1$s</xliff:g> sai ajon aikana nämä luvat: <xliff:g id="PERMISSION_1">%2$s</xliff:g> ja <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"<xliff:g id="COUNT">%1$d</xliff:g> sai ajon aikana <xliff:g id="APP">%2$s</xliff:g> lupaa"</string>
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{<xliff:g id="APP_0">%1$s</xliff:g> ja # muu sovellus saivat pääsyn ajon aikana}other{<xliff:g id="APP_1">%1$s</xliff:g> ja # muuta sovellusta saivat pääsyn ajon aikana}}"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Joitain sovelluksia ei ole käytetty muutamaan kuukauteen"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Poistetut luvat"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Luvat poistettu"</string>
@@ -364,6 +358,16 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Sovellukset, joiden avulla voit tunnistaa puhelut ja estää häirikkö- ja robottipuhelut tai ei-toivotut numerot"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Asetetaanko <xliff:g id="APP_NAME">%1$s</xliff:g> soittajan tunnuksen ja häiriköinnin eston oletussovellukseksi?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Käyttöoikeuksia ei tarvita"</string>
+    <!-- no translation found for role_automotive_navigation_label (2701890757955474751) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_short_label (5165823092506922457) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_description (7834601873792870134) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_request_title (7525693151489384300) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_request_description (7073023813249245540) -->
+    <skip />
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> saa luvan hallinnoida ilmoituksiasi sekä pääsyn puhelimeesi, tekstiviesteihisi, kontakteihisi ja kalenteriisi."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> saa reagoida ilmoituksiin ja striimata sovelluksiasi yhdistetylle laitteelle."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Nykyinen oletus"</string>
@@ -436,7 +440,7 @@
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; kalenterisi käyttöoikeuden?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; lähettää ja lukea tekstiviestejä?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; käyttää laitteellasi olevia kuvia, mediaa ja tiedostoja?"</string>
-    <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; nauhoittaa ääntä?"</string>
+    <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; nauhoittaa audiota?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Sovellus voi tallentaa audiota vain silloin, kun käytät sitä"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tallentaa audiota?"</string>
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"Sovellus voi haluta tallentaa audiota aina, myös silloin kun et käytä sitä. "<annotation id="link">"Myönnä lupa asetuksista"</annotation>"."</string>
@@ -456,10 +460,8 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; käyttää anturidataa elintoiminnoistasi?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Sovellus voi haluta pääsyn elintoimintojesi anturidataan aina, myös silloin kun et käytä sitä. "<annotation id="link">"Myönnä lupa asetuksista"</annotation>"."</string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Muutetaanko pääsyoikeutta, jonka &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; on saanut elintoimintojesi anturidataan?"</string>
-    <!-- no translation found for permgrouprequest_notifications (6396739062335106181) -->
-    <skip />
-    <!-- no translation found for permgrouprequestcontinue_notifications (3895098107355024027) -->
-    <skip />
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; lähettää sinulle ilmoituksia?"</string>
+    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; jatkaa ilmoitusten lähettämistä?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Automaattisesti myönnetyt käyttöoikeudet"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Pääsy sijaintiin myönnetty"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"<xliff:g id="APP_NAME">%s</xliff:g> on saanut pääsyn sijaintiisi järjestelmänvalvojalta"</string>

@@ -117,8 +117,7 @@
     <string name="message_staging" msgid="9110563899955511866">"Lietotne tiek izstādīta…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Nezināma"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Konfidenc. panelis"</string>
-    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
-    <skip />
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Skatiet, kuras lietotnes nesen izmantoja atļaujas."</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> — lietojums"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Skatiet citas atļaujas"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -250,16 +249,11 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Dažas lietotnes nav izmantotas vairākus mēnešus. Pieskarieties, lai tās skatītu."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# neizmantota lietotne}zero{# neizmantotu lietotņu}one{# neizmantota lietotne}other{# neizmantotas lietotnes}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Atļaujas un pagaidu faili ir noņemti, un paziņojumi ir apturēti. Pieskarieties, lai to pārskatītu."</string>
-    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
-    <skip />
+    <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Skatiet nesen piešķirtās atļaujas"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Braukšanas laikā jūs piešķīrāt lietotnei <xliff:g id="APP">%1$s</xliff:g> atļauju “<xliff:g id="PERMISSION">%2$s</xliff:g>”."</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Braukšanas laikā jūs piešķīrāt lietotnei <xliff:g id="APP">%1$s</xliff:g> atļaujas “<xliff:g id="PERMISSION_1">%2$s</xliff:g>” un “<xliff:g id="PERMISSION_2">%3$s</xliff:g>”."</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Braukšanas laikā jūs piešķīrāt atļaujas (<xliff:g id="COUNT">%1$d</xliff:g>) lietotnei <xliff:g id="APP">%2$s</xliff:g>."</string>
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Braukšanas laikā jūs piešķīrāt atļaujas lietotnei <xliff:g id="APP_0">%1$s</xliff:g> un vēl # lietotnei.}zero{Braukšanas laikā jūs piešķīrāt atļaujas lietotnei <xliff:g id="APP_1">%1$s</xliff:g> un vēl # lietotnēm.}one{Braukšanas laikā jūs piešķīrāt atļaujas lietotnei <xliff:g id="APP_1">%1$s</xliff:g> un vēl # lietotnei.}other{Braukšanas laikā jūs piešķīrāt atļaujas lietotnei <xliff:g id="APP_1">%1$s</xliff:g> un vēl # lietotnēm.}}"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Dažas lietotnes nav izmantotas vairākus mēnešus."</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Noņemtās atļaujas"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Atļaujas noņemtas"</string>
@@ -364,6 +358,16 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Lietotnes, kas ļauj jums identificēt zvanus un bloķēt mēstules, robota zvanus vai nevēlamus numurus."</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Vai vēlaties iestatīt <xliff:g id="APP_NAME">%1$s</xliff:g> kā noklusējuma lietotni zvanītāja ID rādīšanai un nevēlamu zvanu bloķēšanai?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Atļaujas nav nepieciešamas"</string>
+    <!-- no translation found for role_automotive_navigation_label (2701890757955474751) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_short_label (5165823092506922457) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_description (7834601873792870134) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_request_title (7525693151489384300) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_request_description (7073023813249245540) -->
+    <skip />
     <string name="role_watch_description" msgid="267003778693177779">"Lietotnei <xliff:g id="APP_NAME">%1$s</xliff:g> tiks atļauts mijiedarboties ar jūsu paziņojumiem un piekļūt šādām atļaujām: Tālrunis, Īsziņas, Kontaktpersonas un Kalendārs."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"Lietotnei <xliff:g id="APP_NAME">%1$s</xliff:g> tiks atļauts mijiedarboties ar jūsu paziņojumiem un straumēt jūsu lietotņu saturu uz pievienoto ierīci."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Pašreizējais noklusējums"</string>
@@ -456,10 +460,8 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt veselības rādītāju sensoru datiem?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Šī lietotne var pieprasīt atļauju vienmēr piekļūt veselības rādītāju sensoru datiem (arī kad tā netiek lietota). "<annotation id="link">"Atļauju varat piešķirt iestatījumos."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Vai mainīt lietotnes &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļuvi veselības rādītāju sensoru datiem?"</string>
-    <!-- no translation found for permgrouprequest_notifications (6396739062335106181) -->
-    <skip />
-    <!-- no translation found for permgrouprequestcontinue_notifications (3895098107355024027) -->
-    <skip />
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; sūtīt jums paziņojumus?"</string>
+    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; turpināt sūtīt jums paziņojumus?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Kontrolētās atļaujas"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Atrašanās vietas datiem var piekļūt."</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"IT administrators ir atļāvis lietotnei <xliff:g id="APP_NAME">%s</xliff:g> piekļūt jūsu atrašanās vietas datiem."</string>

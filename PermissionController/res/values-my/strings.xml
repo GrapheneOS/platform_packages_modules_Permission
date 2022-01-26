@@ -117,8 +117,7 @@
     <string name="message_staging" msgid="9110563899955511866">"အက်ပ်ကို ပြင်ဆင်နေသည်…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"အမည်မသိ"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"ပုဂ္ဂိုလ်ရေးလုံခြုံမှု ဒက်ရှ်ဘုတ်"</string>
-    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
-    <skip />
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"ခွင့်ပြုချက်များ လတ်တလောသုံးထားသည့် အက်ပ်ကိုကြည့်နိုင်သည်"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> အသုံးပြုမှု"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"အခြားခွင့်ပြုချက်များ ကြည့်ပါ"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>၊ <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -250,16 +249,11 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"အက်ပ်အချို့ကို အသုံးမပြုသည်မှာ လအနည်းငယ် ရှိပါပြီ။ ပြန်ကြည့်ရန် တို့ပါ။"</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{အသုံးမပြုသောအက်ပ် # ခု}other{အသုံးမပြုသောအက်ပ် # ခု}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"ခွင့်ပြုချက်နှင့် ယာယီဖိုင်များကို ဖယ်ရှားလိုက်ပြီး အကြောင်းကြားချက်များကို ရပ်ထားသည်။ ပြန်ကြည့်ရန် တို့ပါ။"</string>
-    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
-    <skip />
+    <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"လတ်တလောခွင့်ပြုချက်များ စစ်ဆေးခြင်း"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"မောင်းနှင်နေစဉ် <xliff:g id="APP">%1$s</xliff:g> ကို <xliff:g id="PERMISSION">%2$s</xliff:g> သုံးခွင့်ပေးထားသည်"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"မောင်းနှင်နေစဉ် <xliff:g id="APP">%1$s</xliff:g> ကို <xliff:g id="PERMISSION_1">%2$s</xliff:g> နှင့် <xliff:g id="PERMISSION_2">%3$s</xliff:g> သုံးခွင့်ပေးထားသည်"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"မောင်းနှင်နေစဉ် <xliff:g id="APP">%2$s</xliff:g> ကို ခွင့်ပြုချက် <xliff:g id="COUNT">%1$d</xliff:g> ခု ပေးထားသည်"</string>
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{မောင်းနှင်နေစဉ် <xliff:g id="APP_0">%1$s</xliff:g> နှင့် အခြားအက်ပ် # ခုကို သုံးခွင့်ပေးထားသည်}other{မောင်းနှင်နေစဉ် <xliff:g id="APP_1">%1$s</xliff:g> နှင့် အခြားအက်ပ် # ခုကို သုံးခွင့်ပေးထားသည်}}"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"အက်ပ်အချို့ကို အသုံးမပြုသည်မှာ လအနည်းငယ် ရှိပါပြီ"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"ခွင့်ပြုချက် ဖယ်ထားသည်များ"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"ခွင့်ပြုချက် ဖယ်ထားသည်များ"</string>
@@ -364,6 +358,16 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"ခေါ်ဆိုမှုများကို ခွဲခြားသိရှိရန်နှင့် စပမ်း၊ အလိုအလျောက် ခေါ်ဆိုမှုစနစ်များ သို့မဟုတ် မလိုလားအပ်သည့် နံပါတ်များကိုပိတ်ရန် ပြုလုပ်ခွင့်ပေးသည့် အက်ပ်များ"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> ကို သင့်မူရင်း ခေါ်ဆိုသူ ID နှင့် စပမ်းအက်ပ်အဖြစ် သတ်မှတ်လိုပါသလား။"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"ခွင့်ပြုချက် မလိုပါ"</string>
+    <!-- no translation found for role_automotive_navigation_label (2701890757955474751) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_short_label (5165823092506922457) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_description (7834601873792870134) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_request_title (7525693151489384300) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_request_description (7073023813249245540) -->
+    <skip />
     <string name="role_watch_description" msgid="267003778693177779">"သင်၏ ‘ဖုန်း’၊ ‘SMS စာတိုစနစ်’၊ ‘အဆက်အသွယ်များ’ နှင့် ‘ပြက္ခဒိန်’ ခွင့်ပြုချက်များကို သုံးရန်နှင့် အကြောင်းကြားချက်များကို ပြန်လှန်တုံ့ပြန်ရန် <xliff:g id="APP_NAME">%1$s</xliff:g> ကို ခွင့်ပြုပါမည်။"</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"သင့်အကြောင်းကြားချက်များကို ပြန်လှန်တုံ့ပြန်ရန်နှင့် သင့်အက်ပ်များကို ချိတ်ဆက်ထားသောစက်သို့ တိုက်ရိုက်လွှင့်ရန် <xliff:g id="APP_NAME">%1$s</xliff:g> ကို ခွင့်ပြုပါမည်။"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"လက်ရှိ မူရင်း"</string>
@@ -456,10 +460,8 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သင်၏ အရေးကြီးသောလက္ခဏာ အာရုံခံစနစ် ဒေတာကို သုံးခွင့်ပေးလိုပါသလား။"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"ဤအက်ပ်သည် သင်၏ အရေးကြီးသောလက္ခဏာ အာရုံခံစနစ်ဒေတာကို အက်ပ်အသုံးမပြုနေလျှင်ပင် အချိန်ပြည့်သုံးခွင့် ရယူလိုပါသည်။ "<annotation id="link">"ဆက်တင်များတွင် ခွင့်ပြုနိုင်သည်။"</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အတွက် အရေးကြီးသောလက္ခဏာ အာရုံခံစနစ် ဒေတာသုံးခွင့်ကို ပြောင်းလိုပါသလား။"</string>
-    <!-- no translation found for permgrouprequest_notifications (6396739062335106181) -->
-    <skip />
-    <!-- no translation found for permgrouprequestcontinue_notifications (3895098107355024027) -->
-    <skip />
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ကို သင့်ထံ အကြောင်းကြားချက်များ ပို့ခွင့်ပြုမလား။"</string>
+    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ကို သင့်ထံ အကြောင်းကြားချက်များ ဆက်ပို့ခွင့်ပြုမလား။"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"ထိန်းချုပ်ထားသော ခွင့်ပြုချက်များ"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"တည်နေရာကို ဝင်ကြည့်နိုင်သည်"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"သင့် IT စီမံခန့်ခွဲသူက <xliff:g id="APP_NAME">%s</xliff:g> အား သင်၏တည်နေရာကို ဝင်ကြည့်ခွင့်ပြုထားသည်"</string>

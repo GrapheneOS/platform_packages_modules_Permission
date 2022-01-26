@@ -117,8 +117,7 @@
     <string name="message_staging" msgid="9110563899955511866">"ਐਪ ਨੂੰ ਸਟੇਜ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"ਅਗਿਆਤ"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"ਪਰਦੇਦਾਰੀ ਸੰਬੰਧੀ ਡੈਸ਼ਬੋਰਡ"</string>
-    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
-    <skip />
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"ਦੇਖੋ ਕਿ ਕਿਹੜੀਆਂ ਐਪਾਂ ਨੇ ਹਾਲ ਹੀ ਵਿੱਚ ਇਜਾਜ਼ਤਾਂ ਵਰਤੀਆਂ ਹਨ"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> ਵਰਤੋਂ"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"ਹੋਰ ਇਜਾਜ਼ਤਾਂ ਦੇਖੋ"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -250,16 +249,11 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"ਕੁਝ ਐਪਾਂ ਨੂੰ ਕਈ ਮਹੀਨਿਆਂ ਤੋਂ ਵਰਤਿਆ ਨਹੀਂ ਗਿਆ। ਸਮੀਖਿਆ ਲਈ ਟੈਪ ਕਰੋ।"</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# ਅਣਵਰਤੀ ਐਪ}one{# ਅਣਵਰਤੀ ਐਪ}other{# ਅਣਵਰਤੀਆਂ ਐਪਾਂ}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"ਇਜਾਜ਼ਤਾਂ ਅਤੇ ਅਸਥਾਈ ਫ਼ਾਈਲਾਂ ਨੂੰ ਹਟਾ ਦਿੱਤਾ ਗਿਆ ਹੈ ਅਤੇ ਸੂਚਨਾਵਾਂ ਨੂੰ ਬੰਦ ਕੀਤਾ ਗਿਆ ਹੈ। ਸਮੀਖਿਆ ਕਰਨ ਲਈ ਟੈਪ ਕਰੋ।"</string>
-    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
-    <skip />
+    <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"ਹਾਲੀਆ ਇਜਾਜ਼ਤਾਂ ਦੀ ਜਾਂਚ ਕਰੋ"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"ਗੱਡੀ ਚਲਾਉਂਦੇ ਸਮੇਂ, ਤੁਸੀਂ <xliff:g id="APP">%1$s</xliff:g> ਨੂੰ <xliff:g id="PERMISSION">%2$s</xliff:g> ਤੱਕ ਪਹੁੰਚ ਦਿੱਤੀ ਹੈ"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"ਗੱਡੀ ਚਲਾਉਂਦੇ ਸਮੇਂ, ਤੁਸੀਂ <xliff:g id="APP">%1$s</xliff:g> ਨੂੰ <xliff:g id="PERMISSION_1">%2$s</xliff:g> ਅਤੇ <xliff:g id="PERMISSION_2">%3$s</xliff:g> ਤੱਕ ਪਹੁੰਚ ਦਿੱਤੀ ਹੈ"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"ਗੱਡੀ ਚਲਾਉਂਦੇ ਸਮੇਂ, ਤੁਸੀਂ <xliff:g id="APP">%2$s</xliff:g> ਨੂੰ <xliff:g id="COUNT">%1$d</xliff:g> ਇਜਾਜ਼ਤਾਂ ਦਿੱਤੀਆਂ ਹਨ"</string>
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{ਗੱਡੀ ਚਲਾਉਂਦੇ ਸਮੇਂ, ਤੁਸੀਂ <xliff:g id="APP_0">%1$s</xliff:g> ਅਤੇ # ਹੋਰ ਐਪ ਨੂੰ ਪਹੁੰਚ ਦਿੱਤੀ ਹੈ}one{ਗੱਡੀ ਚਲਾਉਂਦੇ ਸਮੇਂ, ਤੁਸੀਂ <xliff:g id="APP_1">%1$s</xliff:g> ਅਤੇ # ਹੋਰ ਐਪ ਨੂੰ ਪਹੁੰਚ ਦਿੱਤੀ ਹੈ}other{ਗੱਡੀ ਚਲਾਉਂਦੇ ਸਮੇਂ, ਤੁਸੀਂ <xliff:g id="APP_1">%1$s</xliff:g> ਅਤੇ # ਹੋਰ ਐਪਾਂ ਨੂੰ ਪਹੁੰਚ ਦਿੱਤੀ ਹੈ}}"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"ਕੁਝ ਐਪਾਂ ਨੂੰ ਕਈ ਮਹੀਨਿਆਂ ਤੋਂ ਵਰਤਿਆ ਨਹੀਂ ਗਿਆ"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"ਹਟਾਈਆਂ ਗਈਆਂ ਇਜਾਜ਼ਤਾਂ"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"ਇਜਾਜ਼ਤਾਂ ਨੂੰ ਹਟਾਇਆ ਗਿਆ"</string>
@@ -364,6 +358,11 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"ਐਪਾਂ ਜਿਨ੍ਹਾਂ ਨਾਲ ਤੁਸੀਂ ਕਾਲਾਂ ਦੀ ਪਛਾਣ ਕਰ ਸਕਦੇ ਹੋ ਅਤੇ ਸਪੈਮ, ਰੋਬੋਕਾਲਾਂ ਜਾਂ ਅਣਚਾਹੇ ਨੰਬਰਾਂ ਨੂੰ ਬਲਾਕ ਕਰ ਸਕਦੇ ਹੋ"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"ਕੀ <xliff:g id="APP_NAME">%1$s</xliff:g> ਨੂੰ ਤੁਹਾਡੀ ਪੂਰਵ-ਨਿਰਧਾਰਤ ਕਾਲਰ ਆਈ.ਡੀ. ਅਤੇ ਸਪੈਮ ਐਪ ਵਜੋਂ ਸੈੱਟ ਕਰਨਾ ਹੈ?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"ਕਿਸੇ ਇਜਾਜ਼ਤ ਦੀ ਲੋੜ ਨਹੀਂ ਹੈ"</string>
+    <string name="role_automotive_navigation_label" msgid="2701890757955474751">"ਪੂਰਵ-ਨਿਰਧਾਰਿਤ ਨੈਵੀਗੇਸ਼ਨ ਐਪ"</string>
+    <string name="role_automotive_navigation_short_label" msgid="5165823092506922457">"ਨੈਵੀਗੇਸ਼ਨ ਐਪ"</string>
+    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"ਉਹ ਐਪਾਂ ਜੋ ਦਿਲਚਸਪ ਸਥਾਨ ਦੀ ਖੋਜ ਅਤੇ ਮੋੜ-ਦਰ-ਮੋੜ ਨੈਵੀਗੇਸ਼ਨ ਸੇਧਾਂ ਮੁਹੱਈਆ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
+    <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"ਕੀ <xliff:g id="APP_NAME">%1$s</xliff:g> ਨੂੰ ਤੁਹਾਡੀ ਪੂਰਵ-ਨਿਰਧਾਰਿਤ ਨੈਵੀਗੇਸ਼ਨ ਐਪ ਵਜੋਂ ਸੈੱਟ ਕਰਨਾ ਹੈ?"</string>
+    <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"ਕਿਸੇ ਇਜਾਜ਼ਤ ਦੀ ਲੋੜ ਨਹੀਂ ਹੈ"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> ਨੂੰ ਤੁਹਾਡੀਆਂ ਸੂਚਨਾਵਾਂ ਨਾਲ ਅੰਤਰਕਿਰਿਆ ਕਰਨ ਅਤੇ ਤੁਹਾਡੇ ਫ਼ੋਨ, SMS, ਸੰਪਰਕ ਅਤੇ ਕੈਲੰਡਰ ਦੀਆਂ ਇਜਾਜ਼ਤਾਂ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੀ ਇਜਾਜ਼ਤ ਹੋਵੇਗੀ।"</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> ਨੂੰ ਤੁਹਾਡੀਆਂ ਸੂਚਨਾਵਾਂ ਨਾਲ ਅੰਤਰਕਿਰਿਆ ਕਰਨ ਅਤੇ ਤੁਹਾਡੀਆਂ ਐਪਾਂ ਨੂੰ ਕਨੈਕਟ ਕੀਤੇ ਡੀਵਾਈਸ \'ਤੇ ਸਟ੍ਰੀਮ ਕਰਨ ਦੀ ਆਗਿਆ ਹੋਵੇਗੀ।"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"ਮੌਜੂਦਾ ਪੂਰਵ-ਨਿਰਧਾਰਤ"</string>
@@ -456,10 +455,8 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਤੁਹਾਡੇ ਸਰੀਰ ਦੇ ਅਹਿਮ ਲੱਛਣਾਂ ਸੰਬੰਧੀ ਸੈਂਸਰ ਡਾਟੇ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"ਸ਼ਾਇਦ ਇਸ ਐਪ ਨੂੰ ਹਰ ਵੇਲੇ ਤੁਹਾਡੇ ਸਰੀਰ ਦੇ ਅਹਿਮ ਲੱਛਣਾਂ ਸੰਬੰਧੀ ਸੈਂਸਰ ਡਾਟੇ ਤੱਕ ਪਹੁੰਚ ਹੋਵੇ, ਭਾਵੇਂ ਤੁਸੀਂ ਐਪ ਦੀ ਵਰਤੋਂ ਕਰ ਰਹੇ ਹੋ ਜਾਂ ਨਾ। "<annotation id="link">"ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਆਗਿਆ ਦਿਓ।"</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਦੇ ਲਈ ਤੁਹਾਡੇ ਸਰੀਰ ਦੇ ਅਹਿਮ ਲੱਛਣਾਂ ਸੰਬੰਧੀ ਸੈਂਸਰ ਡਾਟੇ ਤੱਕ ਪਹੁੰਚ ਬਦਲਣੀ ਹੈ?"</string>
-    <!-- no translation found for permgrouprequest_notifications (6396739062335106181) -->
-    <skip />
-    <!-- no translation found for permgrouprequestcontinue_notifications (3895098107355024027) -->
-    <skip />
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਤੁਹਾਨੂੰ ਸੂਚਨਾਵਾਂ ਭੇਜਣ ਦੀ ਆਗਿਆ ਦੇਣੀ ਹੈ?"</string>
+    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਤੁਹਾਨੂੰ ਸੂਚਨਾਵਾਂ ਭੇਜਣਾ ਜਾਰੀ ਰੱਖਣ ਦੀ ਆਗਿਆ ਦੇਣੀ ਹੈ?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"ਨਿਯੰਤਰਿਤ ਇਜਾਜ਼ਤਾਂ"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"ਟਿਕਾਣੇ ਤੱਕ ਪਹੁੰਚ ਕੀਤੀ ਜਾ ਸਕਦੀ ਹੈ"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"ਤੁਹਾਡਾ ਆਈ.ਟੀ. ਪ੍ਰਸ਼ਾਸਕ <xliff:g id="APP_NAME">%s</xliff:g> ਨੂੰ ਤੁਹਾਡੇ ਟਿਕਾਣੇ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇ ਰਿਹਾ ਹੈ"</string>

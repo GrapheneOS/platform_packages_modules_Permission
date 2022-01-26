@@ -117,8 +117,7 @@
     <string name="message_staging" msgid="9110563899955511866">"正在準備安裝應用程式…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"不明"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"私隱資訊主頁"</string>
-    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
-    <skip />
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"查看最近曾使用權限的應用程式"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g>使用情況"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"查看其他權限"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>，<xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -250,16 +249,11 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"部分應用程式在過去幾個月都沒有用過。輕按即可查看。"</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# 個未使用的應用程式}other{# 個未使用的應用程式}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"系統已移除權限和暫存檔案，並已停止顯示通知。輕按即可查看。"</string>
-    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
-    <skip />
+    <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"查看最近授予的權限"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"您在駕駛時已將<xliff:g id="PERMISSION">%2$s</xliff:g>的存取權授予「<xliff:g id="APP">%1$s</xliff:g>」"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"您在駕駛時已將<xliff:g id="PERMISSION_1">%2$s</xliff:g>和<xliff:g id="PERMISSION_2">%3$s</xliff:g>的存取權授予「<xliff:g id="APP">%1$s</xliff:g>」"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"您在駕駛時已將 <xliff:g id="COUNT">%1$d</xliff:g> 項權限授予「<xliff:g id="APP">%2$s</xliff:g>」"</string>
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{您在駕駛時已將存取權授予「<xliff:g id="APP_0">%1$s</xliff:g>」和另外 # 個應用程式}other{您在駕駛時已將存取權授予「<xliff:g id="APP_1">%1$s</xliff:g>」和另外 # 個應用程式}}"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"部分應用程式在過去幾個月都沒有用過。"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"已移除權限的應用程式"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"權限已移除的應用程式"</string>
@@ -364,6 +358,16 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"此類應用程式讓您識別來電，並封鎖垃圾電話、錄音電話或騷擾電話號碼"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"要將「<xliff:g id="APP_NAME">%1$s</xliff:g>」設為預設來電顯示與垃圾郵件應用程式嗎？"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"無需任何權限"</string>
+    <!-- no translation found for role_automotive_navigation_label (2701890757955474751) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_short_label (5165823092506922457) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_description (7834601873792870134) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_request_title (7525693151489384300) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_request_description (7073023813249245540) -->
+    <skip />
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> 將可與您的通知互動，並可存取電話、短訊、聯絡人和日曆。"</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"「<xliff:g id="APP_NAME">%1$s</xliff:g>」將可存取通知，並可在已連結的裝置上串流播放應用程式。"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"目前預設"</string>
