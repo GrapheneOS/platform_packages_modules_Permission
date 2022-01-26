@@ -272,7 +272,11 @@ class AppPermGroupUiInfoLiveData private constructor(
                     it.value.permFlags and PackageManager.FLAG_PERMISSION_ONE_TIME == 0 &&
                             it.value.granted }
 
-        val anyAllowed = specialLocationState ?: permissionState.any { it.value.granted }
+        val supportsRuntime = pkg.targetSdkVersion >= Build.VERSION_CODES.M
+        val anyAllowed = specialLocationState ?: permissionState.any { (_, state) ->
+            state.granted || (supportsRuntime &&
+                (state.permFlags and PackageManager.FLAG_PERMISSION_REVIEW_REQUIRED) != 0)
+        }
         if (anyAllowed && (hasPermWithBackground || shouldShowAsForegroundGroup())) {
             return if (isOneTime) {
                 PermGrantState.PERMS_ASK

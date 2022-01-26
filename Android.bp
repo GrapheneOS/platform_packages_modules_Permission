@@ -31,10 +31,7 @@ apex_defaults {
     prebuilts: ["current_sdkinfo"],
     key: "com.android.permission.key",
     certificate: ":com.android.permission.certificate",
-    apps: [
-        "PermissionController",
-        "SafetyCenterResources",
-    ],
+    apps: ["PermissionController"],
     // Indicates that pre-installed version of this apex can be compressed.
     // Whether it actually will be compressed is controlled on per-device basis.
     compressible: true,
