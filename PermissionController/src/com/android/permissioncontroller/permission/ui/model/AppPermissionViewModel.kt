@@ -36,6 +36,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.PermissionControllerStatsLog
 import com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_FRAGMENT_ACTION_REPORTED
 import com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_FRAGMENT_VIEWED
@@ -129,7 +130,8 @@ class AppPermissionViewModel(
         LOCATION_ACCURACY(7);
     }
 
-    private val isStorage = permGroupName == Manifest.permission_group.STORAGE
+    private val isStorageAndLessThanT =
+        permGroupName == Manifest.permission_group.STORAGE && !SdkLevel.isAtLeastT()
     private var hasConfirmedRevoke = false
     private var lightAppPermGroup: LightAppPermGroup? = null
 
@@ -152,7 +154,7 @@ class AppPermissionViewModel(
      */
     val fullStorageStateLiveData = object : SmartUpdateMediatorLiveData<FullStoragePackageState>() {
         init {
-            if (isStorage) {
+            if (isStorageAndLessThanT) {
                 addSource(FullStoragePermissionAppsLiveData) {
                     update()
                 }
@@ -201,7 +203,7 @@ class AppPermissionViewModel(
                 if (appPermGroupLiveData.isInitialized && appPermGroup == null) {
                     value = null
                 } else if (appPermGroup != null) {
-                    if (isStorage && !fullStorageStateLiveData.isInitialized) {
+                    if (isStorageAndLessThanT && !fullStorageStateLiveData.isInitialized) {
                         return@addSource
                     }
                     if (value == null) {
@@ -211,7 +213,7 @@ class AppPermissionViewModel(
                 }
             }
 
-            if (isStorage) {
+            if (isStorageAndLessThanT) {
                 addSource(fullStorageStateLiveData) {
                     update()
                 }
@@ -333,7 +335,7 @@ class AppPermissionViewModel(
             }
 
             val storageState = fullStorageStateLiveData.value
-            if (isStorage && storageState?.isLegacy != true) {
+            if (isStorageAndLessThanT && storageState?.isLegacy != true) {
                 val allowedAllFilesState = allowedAlwaysState
                 val allowedMediaOnlyState = allowedForegroundState
                 if (storageState != null) {

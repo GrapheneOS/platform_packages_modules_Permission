@@ -310,9 +310,10 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
     }
 
     private void onPackagesLoaded(Map<Category, List<Pair<String, UserHandle>>> categories) {
-        boolean isStorage = mPermGroupName.equals(Manifest.permission_group.STORAGE);
+        boolean isStorageAndLessThanT = !SdkLevel.isAtLeastT()
+                && mPermGroupName.equals(Manifest.permission_group.STORAGE);
         if (getPreferenceScreen() == null) {
-            if (isStorage) {
+            if (isStorageAndLessThanT) {
                 addPreferencesFromResource(R.xml.allowed_denied_storage);
             } else {
                 addPreferencesFromResource(R.xml.allowed_denied);
@@ -347,7 +348,7 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
         long sessionId = getArguments().getLong(EXTRA_SESSION_ID, INVALID_SESSION_ID);
 
         Boolean showAlways = mViewModel.getShowAllowAlwaysStringLiveData().getValue();
-        if (!isStorage) {
+        if (!isStorageAndLessThanT) {
             if (showAlways != null && showAlways) {
                 findPreference(ALLOWED.getCategoryName()).setTitle(R.string.allowed_always_header);
             } else {
@@ -366,7 +367,7 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
 
             // If this category is empty, and this isn't the "allowed" category of the storage
             // permission, set up the empty preference.
-            if (packages.size() == 0 && (!isStorage || !grantCategory.equals(ALLOWED))) {
+            if (packages.size() == 0 && (!isStorageAndLessThanT || !grantCategory.equals(ALLOWED))) {
                 Preference empty = new Preference(context);
                 empty.setSelectable(false);
                 empty.setKey(category.getKey() + KEY_EMPTY);
@@ -398,7 +399,7 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
                         .getPermissionLastAccessSummaryTimestamp(
                                 lastAccessTime, context, mPermGroupName);
 
-                if (isStorage && grantCategory.equals(ALLOWED)) {
+                if (isStorageAndLessThanT && grantCategory.equals(ALLOWED)) {
                     category = mViewModel.packageHasFullStorage(packageName, user)
                             ? findPreference(STORAGE_ALLOWED_FULL)
                             : findPreference(STORAGE_ALLOWED_SCOPED);
@@ -437,7 +438,7 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
                 }
             }
 
-            if (isStorage && grantCategory.equals(ALLOWED)) {
+            if (isStorageAndLessThanT && grantCategory.equals(ALLOWED)) {
                 PreferenceCategory full = findPreference(STORAGE_ALLOWED_FULL);
                 PreferenceCategory scoped = findPreference(STORAGE_ALLOWED_SCOPED);
                 if (full.getPreferenceCount() == 0) {
