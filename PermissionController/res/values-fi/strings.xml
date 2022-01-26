@@ -467,7 +467,7 @@
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; kalenterisi käyttöoikeuden?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; lähettää ja lukea tekstiviestejä?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; käyttää laitteellasi olevia kuvia, mediaa ja tiedostoja?"</string>
-    <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; nauhoittaa ääntä?"</string>
+    <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; nauhoittaa audiota?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Sovellus voi tallentaa audiota vain silloin, kun käytät sitä"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Saako &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tallentaa audiota?"</string>
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"Sovellus voi haluta tallentaa audiota aina, myös silloin kun et käytä sitä. "<annotation id="link">"Myönnä lupa asetuksista"</annotation>"."</string>
