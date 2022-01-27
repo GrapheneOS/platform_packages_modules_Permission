@@ -1091,6 +1091,9 @@
     <!-- Description for the app streaming profile role. [CHAR LIMIT=NONE] -->
     <string name="role_app_streaming_description"><xliff:g id="app_name" example="Cross-Device Communciation">%1$s</xliff:g> will be allowed to interact with your notifications and stream your apps to the connected device.</string>
 
+    <!-- Description for the companion device computer profile role. [CHAR LIMIT=NONE] -->
+    <string name="role_companion_device_computer_description">This service shares your photos, media, and notifications from your phone to other devices.</string>
+
     <!-- Subtitle for the application that is the current default application [CHAR LIMIT=30] -->
     <string name="request_role_current_default">Current default</string>
 
