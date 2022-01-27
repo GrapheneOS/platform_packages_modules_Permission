@@ -19,17 +19,30 @@ package com.android.safetycenter;
 import static android.Manifest.permission.MANAGE_SAFETY_CENTER;
 import static android.Manifest.permission.READ_SAFETY_CENTER_STATUS;
 import static android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE;
+import static android.content.Intent.FLAG_RECEIVER_FOREGROUND;
 import static android.os.Build.VERSION_CODES.TIRAMISU;
+import static android.os.PowerExemptionManager.REASON_REFRESH_SAFETY_SOURCES;
+import static android.os.PowerExemptionManager.TEMPORARY_ALLOW_LIST_TYPE_FOREGROUND_SERVICE_ALLOWED;
+import static android.safetycenter.SafetyCenterManager.ACTION_REFRESH_SAFETY_SOURCES;
+import static android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_REQUEST_TYPE_FETCH_FRESH_DATA;
+import static android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_REQUEST_TYPE_GET_DATA;
+import static android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE;
+import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_PAGE_OPEN;
+import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK;
+import static android.safetycenter.SafetyCenterManager.RefreshReason;
 
 import static java.util.Objects.requireNonNull;
 
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.app.AppOpsManager;
+import android.app.BroadcastOptions;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Binder;
+import android.os.UserHandle;
 import android.provider.DeviceConfig;
 import android.safetycenter.IOnSafetyCenterDataChangedListener;
 import android.safetycenter.ISafetyCenterManager;
@@ -68,6 +81,11 @@ public final class SafetyCenterService extends SystemService {
 
     /** Phenotype flag that determines whether SafetyCenter is enabled. */
     private static final String PROPERTY_SAFETY_CENTER_ENABLED = "safety_center_is_enabled";
+    /**
+     * Time for which an app, upon receiving a particular broadcast, will be placed on a temporary
+     * power allowlist allowing it to start a foreground service from the background.
+     */
+    private static final Long ALLOWLIST_DURATION_MILLIS = 20000L;
 
     @NonNull
     private final Object mLock = new Object();
@@ -215,6 +233,54 @@ public final class SafetyCenterService extends SystemService {
                         PROPERTY_SAFETY_CENTER_ENABLED,
                         /* defaultValue = */ false)
                         && getSafetyCenterConfigValue();
+            } finally {
+                Binder.restoreCallingIdentity(callingId);
+            }
+        }
+
+        @Override
+        public void refreshSafetySources(@RefreshReason int refreshReason) {
+            getContext().enforceCallingPermission(MANAGE_SAFETY_CENTER,
+                    "refreshSafetySources");
+
+            int requestType;
+            switch (refreshReason) {
+                case REFRESH_REASON_RESCAN_BUTTON_CLICK:
+                    requestType = EXTRA_REFRESH_REQUEST_TYPE_FETCH_FRESH_DATA;
+                    break;
+                case REFRESH_REASON_PAGE_OPEN:
+                    requestType = EXTRA_REFRESH_REQUEST_TYPE_GET_DATA;
+                    break;
+                default:
+                    throw new IllegalArgumentException("Invalid refresh reason: " + refreshReason);
+            }
+
+            // TODO(b/215145516): Send explicit intents to safety sources instead.
+            Intent broadcastIntent = new Intent(ACTION_REFRESH_SAFETY_SOURCES)
+                    .putExtra(EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE, requestType)
+                    .setFlags(FLAG_RECEIVER_FOREGROUND);
+
+            // We don't require the caller to have INTERACT_ACROSS_USERS and
+            // START_FOREGROUND_SERVICES_FROM_BACKGROUND permissions.
+            final long callingId = Binder.clearCallingIdentity();
+            try {
+                BroadcastOptions broadcastOptions = BroadcastOptions.makeBasic();
+                // The following operation requires START_FOREGROUND_SERVICES_FROM_BACKGROUND
+                // permission.
+                broadcastOptions.setTemporaryAppAllowlist(ALLOWLIST_DURATION_MILLIS,
+                        TEMPORARY_ALLOW_LIST_TYPE_FOREGROUND_SERVICE_ALLOWED,
+                        REASON_REFRESH_SAFETY_SOURCES,
+                        "Safety Center is requesting data from safety sources");
+
+                // TODO(b/215144069): Add cross profile support for safety sources which support
+                //  both personal and work profile. This implementation invokes
+                //  `sendBroadcastAsUser` in order to invoke the permission.
+                // TODO(b/215165724): Add receiver permission `SEND_SAFETY_CENTER_UPDATE`.
+                // The following operation requires INTERACT_ACROSS_USERS permission.
+                getContext().sendBroadcastAsUser(broadcastIntent,
+                        UserHandle.CURRENT,
+                        null /* receiverPermission */,
+                        broadcastOptions.toBundle());
             } finally {
                 Binder.restoreCallingIdentity(callingId);
             }
