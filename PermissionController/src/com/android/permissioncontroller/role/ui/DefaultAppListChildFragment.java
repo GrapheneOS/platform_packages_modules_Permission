@@ -16,6 +16,8 @@
 
 package com.android.permissioncontroller.role.ui;
 
+import android.app.admin.DevicePolicyManager;
+import android.app.admin.DevicePolicyResources.Strings.PermissionController;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -37,6 +39,7 @@ import androidx.preference.PreferenceGroup;
 import androidx.preference.PreferenceManager;
 import androidx.preference.PreferenceScreen;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.permissioncontroller.role.model.Role;
@@ -132,7 +135,7 @@ public class DefaultAppListChildFragment<PF extends PreferenceFragmentCompat
             if (workPreferenceCategory == null) {
                 workPreferenceCategory = new PreferenceCategory(context);
                 workPreferenceCategory.setKey(PREFERENCE_KEY_WORK_CATEGORY);
-                workPreferenceCategory.setTitle(R.string.default_apps_for_work);
+                workPreferenceCategory.setTitle(getDefaultAppsForWorkTitle(context));
             }
             preferenceScreen.addPreference(workPreferenceCategory);
             addPreferences(workPreferenceCategory, workRoleItems, oldWorkPreferences, this,
@@ -140,6 +143,19 @@ public class DefaultAppListChildFragment<PF extends PreferenceFragmentCompat
         }
 
         preferenceFragment.onPreferenceScreenChanged();
+    }
+
+    @NonNull
+    private String getDefaultAppsForWorkTitle(@NonNull Context context) {
+        if (SdkLevel.isAtLeastT()) {
+            DevicePolicyManager devicePolicyManager = context.getSystemService(
+                    DevicePolicyManager.class);
+            return devicePolicyManager.getString(
+                    PermissionController.WORK_PROFILE_DEFAULT_APPS_TITLE,
+                    () -> context.getString(R.string.default_apps_for_work));
+        } else {
+            return context.getString(R.string.default_apps_for_work);
+        }
     }
 
     private static void clearPreferences(@NonNull PreferenceGroup preferenceGroup,
