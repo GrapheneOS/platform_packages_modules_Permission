@@ -72,7 +72,7 @@ public final class SafetyCenterData implements Parcelable {
     /** Returns the list of active {@link SafetyCenterIssue} objects in the Safety Center. */
     @NonNull
     public List<SafetyCenterIssue> getIssues() {
-        return mIssues;
+        return new ArrayList<>(mIssues);
     }
 
     /**
@@ -81,7 +81,7 @@ public final class SafetyCenterData implements Parcelable {
      */
     @NonNull
     public List<SafetyCenterEntryOrGroup> getEntriesOrGroups() {
-        return mEntriesOrGroups;
+        return new ArrayList<>(mEntriesOrGroups);
     }
 
     /**
@@ -89,7 +89,7 @@ public final class SafetyCenterData implements Parcelable {
      */
     @NonNull
     public List<SafetyCenterStaticEntryGroup> getStaticEntryGroups() {
-        return mStaticEntryGroups;
+        return new ArrayList<>(mStaticEntryGroups);
     }
 
     @Override
