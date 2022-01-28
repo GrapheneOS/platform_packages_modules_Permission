@@ -203,6 +203,12 @@
     <!-- Warning for turning off permissions on older apps [CHAR LIMIT=none] -->
     <string name="old_sdk_deny_warning">This app was designed for an older version of Android. Denying permission may cause it to no longer function as intended.</string>
 
+    <!-- Warning for allowing storage permissions on older apps [CHAR LIMIT=none] -->
+    <string name="storage_supergroup_warning_allow">This app was designed for an older version of Android. If you allow this permission, then access to all storage (including photos, videos, music, audio, and other files) will be allowed.</string>
+
+    <!-- Warning for denying storage permissions on older apps [CHAR LIMIT=none] -->
+    <string name="storage_supergroup_warning_deny">This app was designed for an older version of Android. If you deny this permission, then access to all storage (including photos, videos, music, audio, and other files) will be denied.</string>
+
     <!-- The default description of a permission, i.e. what it does.  [CHAR LIMIT=40] -->
     <string name="default_permission_description">perform an unknown action</string>
 

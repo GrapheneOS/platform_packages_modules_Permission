@@ -112,7 +112,8 @@ class AppPermissionViewModel(
         GRANT_FOREGROUND_ONLY(GRANT_FOREGROUND.value or REVOKE_BACKGROUND.value),
         GRANT_All_FILE_ACCESS(16),
         GRANT_FINE_LOCATION(32),
-        REVOKE_FINE_LOCATION(64);
+        REVOKE_FINE_LOCATION(64),
+        GRANT_STORAGE_SUPERGROUP(128);
 
         infix fun andValue(other: ChangeRequest): Int {
             return value and other.value
@@ -598,6 +599,18 @@ class AppPermissionViewModel(
             return
         }
 
+        if (isPartOfStorageSupergroup(group)) {
+            if (changeRequest == ChangeRequest.GRANT_FOREGROUND) {
+                defaultDeny.showConfirmDialog(ChangeRequest.GRANT_STORAGE_SUPERGROUP,
+                        R.string.storage_supergroup_warning_allow, buttonClicked, false)
+                return
+            } else if (changeRequest == ChangeRequest.REVOKE_BOTH) {
+                defaultDeny.showConfirmDialog(changeRequest,
+                        R.string.storage_supergroup_warning_deny, buttonClicked, false)
+                return
+            }
+        }
+
         val groupsToUpdate = expandToSupergroup(group)
         for (group in groupsToUpdate) {
             var newGroup = group
@@ -655,6 +668,13 @@ class AppPermissionViewModel(
             }
         }
 
+    }
+
+    private fun isPartOfStorageSupergroup(group: LightAppPermGroup): Boolean {
+        val mediaSupergroup = Utils.STORAGE_SUPERGROUP_PERMISSIONS
+                .mapNotNull { mediaStorageSupergroupPermGroups[it] }
+        val targetSdk = group.packageInfo.targetSdkVersion
+        return targetSdk < Build.VERSION_CODES.TIRAMISU && group in mediaSupergroup
     }
 
     private fun expandToSupergroup(group: LightAppPermGroup): List<LightAppPermGroup> {
