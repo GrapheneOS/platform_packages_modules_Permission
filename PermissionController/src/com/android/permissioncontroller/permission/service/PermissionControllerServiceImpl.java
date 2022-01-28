@@ -777,7 +777,7 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
                         + packageName + " since " + permName + " does not belong to a permission "
                         + "group");
             }
-            if (!group.getPermission(permName).isGrantedIncludingAppOp()) {
+            if (!group.getPermission(permName).isGranted()) {
                 throw new SecurityException("Cannot revoke permission " + permName + " for package "
                         + packageName + " since " + packageName + " does not hold it");
             }
@@ -790,6 +790,15 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
         for (AppPermissionGroup group : groups) {
             group.setOneTime(true);
             group.persistChanges(false);
+
+            // We cannot call persistChanges for the background AppPermissionGroup if there is no
+            // granted background permission, as this would stop the ongoing one time permission
+            // session that was started when the (foreground) group persisted changes
+            AppPermissionGroup bgGroup = group.getBackgroundPermissions();
+            if (bgGroup != null && bgGroup.areRuntimePermissionsGranted()) {
+                bgGroup.setOneTime(true);
+                bgGroup.persistChanges(false);
+            }
         }
         getMainExecutor().execute(callback);
     }

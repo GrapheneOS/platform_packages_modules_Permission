@@ -117,8 +117,7 @@
     <string name="message_staging" msgid="9110563899955511866">"Սպասեք…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Անհայտ"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Հասանելիության կառավարման վահանակ"</string>
-    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
-    <skip />
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Տեսնել՝ որ հավելվածներն են վերջերս թույլտվություն օգտագործել"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Թույլտվության օգտագործումը (<xliff:g id="PERMGROUP">%1$s</xliff:g>)"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Տեսնել այլ թույլտվություններ"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -250,16 +249,11 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Որոշ հավելվածներ մի քանի ամիս է, ինչ չեն օգտագործվել։ Հպեք՝ մանրամասները տեսնելու համար։"</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# չօգտագործվող հավելված}one{# օգտագործվող հավելված}other{# օգտագործվող հավելված}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Թույլտվություններն ու ժամանակավոր ֆայլերը հեռացվել են, իսկ ծանուցումների ուղարկումը դադարեցվել է։ Հպեք՝ մանրամասներն իմանալու համար։"</string>
-    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
-    <skip />
+    <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Ստուգեք վերջին տրամադրած թույլտվությունները"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Մեքենան վարելիս դուք <xliff:g id="APP">%1$s</xliff:g> հավելվածին տրամադրել եք <xliff:g id="PERMISSION">%2$s</xliff:g>ն օգտագործելու թույլտվություն"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Մեքենան վարելիս դուք <xliff:g id="APP">%1$s</xliff:g> հավելվածին տրամադրել եք <xliff:g id="PERMISSION_1">%2$s</xliff:g>ն ու <xliff:g id="PERMISSION_2">%3$s</xliff:g>ն օգտագործելու թույլտվություն"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Մեքենան վարելիս դուք <xliff:g id="COUNT">%1$d</xliff:g> թույլտվություն եք տրամադրել <xliff:g id="APP">%2$s</xliff:g> հավելվածին"</string>
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Մեքենան վարելիս դուք տրամադրել եք <xliff:g id="APP_0">%1$s</xliff:g> ու ևս # հավելվածի օգտագործման թույլտվություն}one{Մեքենան վարելիս դուք տրամադրել եք <xliff:g id="APP_1">%1$s</xliff:g> ու ևս # հավելվածի օգտագործման թույլտվություն}other{Մեքենան վարելիս դուք տրամադրել եք <xliff:g id="APP_1">%1$s</xliff:g> ու ևս # հավելվածի օգտագործման թույլտվություն}}"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Որոշ հավելվածներ մի քանի ամիս է, ինչ չեն օգտագործվել"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Հավելվածներ, որոնց թույլտվությունները հեռացվել են"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Հավելվածներ, որոնց թույլտվությունները հեռացվել են"</string>
@@ -364,6 +358,11 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Հավելվածներ, որոնք թույլ են տալիս ճանաչել հեռախոսահամարները, արգելափակել սպամը, ավտոմատ զանգերը և անցանկալի համարները"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Ընտրե՞լ <xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածը որպես համարների ավտոմատ որոշման և սպամից պաշտպանվելու կանխադված հավելված"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Թույլտվություններ հարկավոր չեն"</string>
+    <string name="role_automotive_navigation_label" msgid="2701890757955474751">"Նավիգացիայի կանխադրված հավելված"</string>
+    <string name="role_automotive_navigation_short_label" msgid="5165823092506922457">"Նավիգացիայի հավելված"</string>
+    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"Հավելվածներ, որոնք տալիս են տեսարժան վայրերի որոնման և քայլ առ քայլ նավիգացիայի հնարավորություն"</string>
+    <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Նշե՞լ <xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածը որպես նավիգացիայի կանխադրված հավելված"</string>
+    <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Թույլտվություններ հարկավոր չեն"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածը կկարողանա փոխազդել ձեր ծանուցումների հետ և կստանա «Հեռախոս», «SMS», «Կոնտակտներ» և «Օրացույց» ծառայությունների թույլտվությունները։"</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածը կկարողանա փոխազդել ձեր ծանուցումների հետ և հեռարձակել ձեր հավելվածները միացված սարքին։"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Օգտագործվում է ըստ կանխադրման"</string>
@@ -456,10 +455,8 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին սենսորներից ստանալ ձեր կենսագործունեության հիմնական տվյալները։"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Հավելվածին կարող են անհրաժեշտ լինել ձեր կենսագործունեության հիմնական տվյալները, նույնիսկ երբ չեք օգտվում դրանից։ "<annotation id="link">"Թույլտվությունը տրամադրեք այստեղ։"</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Փոխե՞լ մարմնի սենսորներից կենսագործունեության տվյալներն օգտագործելու թույլտվությունը &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածի համար"</string>
-    <!-- no translation found for permgrouprequest_notifications (6396739062335106181) -->
-    <skip />
-    <!-- no translation found for permgrouprequestcontinue_notifications (3895098107355024027) -->
-    <skip />
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին ծանուցումներ ուղարկել ձեզ։"</string>
+    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին շարունակել ծանուցումներ ուղարկել ձեզ։"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Կառավարվող թույլտվություններ"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Հավելվածին հասանելի են ձեր տեղադրության մասին տվյալները"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Ձեր ՏՏ ադմինիստրատորը <xliff:g id="APP_NAME">%s</xliff:g> հավելվածին թույլատրել է օգտագործել ձեր տեղադրության մասին տվյալները։"</string>

@@ -117,8 +117,7 @@
     <string name="message_staging" msgid="9110563899955511866">"යෙදුම වේදිකාගත කරමින්..."</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"නොදනී"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"පෞද්ගලිකත්ව උපකරණ පුවරුව"</string>
-    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
-    <skip />
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"මෑතකදී අවසර භාවිත කළ යෙදුම් බලන්න"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> භාවිතය"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"වෙනත් අවසර බලන්න"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -250,16 +249,11 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"සමහර යෙදුම් මාස කිහිපයක් තුළ භාවිත කර නැත. සමාලෝචනය කිරීමට තට්ටු කරන්න."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{භාවිත නොකළ යෙදුම් #ක්}one{භාවිත නොකළ යෙදුම් #ක්}other{භාවිත නොකළ යෙදුම් #ක්}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"අවසර සහ තාවකාලික ගොනු ඉවත් කර ඇති අතර දැනුම්දීම් නවත්වන ලදි. සමාලෝචනය කිරීමට තට්ටු කරන්න."</string>
-    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
-    <skip />
+    <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"මෑත අවසර පරීක්ෂා කරන්න"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"ධාවනය අතරතුර, ඔබ <xliff:g id="APP">%1$s</xliff:g> ප්‍රවේශයට <xliff:g id="PERMISSION">%2$s</xliff:g> දුන්නේය"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"ධාවනය අතරතුර, ඔබ <xliff:g id="APP">%1$s</xliff:g> ප්‍රවේශයට <xliff:g id="PERMISSION_1">%2$s</xliff:g> සහ <xliff:g id="PERMISSION_2">%3$s</xliff:g> දුන්නේය"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"ධාවනය අතරතුර, ඔබ <xliff:g id="APP">%2$s</xliff:g> හට අවසර <xliff:g id="COUNT">%1$d</xliff:g>ක් දුන්නේය"</string>
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{ධාවනය අතරතුර, ඔබ <xliff:g id="APP_0">%1$s</xliff:g> සහ තවත් යෙදුම් #කට ප්‍රවේශය දුන්නේය}one{ධාවනය අතරතුර, ඔබ <xliff:g id="APP_1">%1$s</xliff:g> සහ තවත් යෙදුම් #කට ප්‍රවේශය දුන්නේය}other{ධාවනය අතරතුර, ඔබ <xliff:g id="APP_1">%1$s</xliff:g> සහ තවත් යෙදුම් #කට ප්‍රවේශය දුන්නේය}}"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"සමහර යෙදුම් මාස කිහිපයක් තුළ භාවිත කර නැත"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"ඉවත් කළ අවසර"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"අවසර ඉවත් කළ"</string>
@@ -364,6 +358,16 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"ඇමතුම් හඳුනා ගැනීමට සහ අයාචිත තැපැල්, රොබෝ ඇමතුම් හෝ අනවශ්‍ය අංක අවහිර කිරීමට ඔබට ඉඩ දෙන යෙදුම්"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> ඔබේ පෙරනිමි අමතන්නා හැඳුනුම සහ අයාචිත යෙදුම ලෙස සකසන්නේද?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"අවසර අවශ්‍ය නැත"</string>
+    <!-- no translation found for role_automotive_navigation_label (2701890757955474751) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_short_label (5165823092506922457) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_description (7834601873792870134) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_request_title (7525693151489384300) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_request_description (7073023813249245540) -->
+    <skip />
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> ඔබගේ දැනුම්දීම් සමඟ අන්තර්ක්‍රියා කිරීමට සහ ඔබගේ දුරකථනය, කෙටි පණිවුඩ, සම්බන්ධතා සහ දින දර්ශන අවසර වෙත ප්‍රවේශ වීමට ඉඩ දෙනු ඇත."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> හට ඔබගේ දැනුම්දීම් සමඟ අන්තර්ක්‍රියා කිරීමට සහ ඔබගේ යෙදුම් සම්බන්ධිත උපාංගයට ප්‍රවාහ කිරීමට ඉඩ දෙනු ඇත."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"වත්මන් පෙරනිමිය"</string>
@@ -456,10 +460,8 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&gt; හට ඔබගේ ජෛව ලක්ෂණ පිළිබඳ සංවේදක දත්ත වෙත ප්‍රවේශ වීමට ඉඩ දෙන්නද?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"මෙම යෙදුමට සෑම විටම ඔබගේ ජෛව ලක්ෂණ පිළිබඳ සංවේදක දත්තවලට ප්‍රවේශ වීමට අවශ්‍ය විය හැකිය. "<annotation id="link">"සැකසීම් තුළ ඉඩ දෙන්න."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"ඔබගේ ජජව ලක්ෂණ පිළිබඳ දත්ත වෙත ප්‍රවේශය <xliff:g id="APP_NAME">%1$s</xliff:g> සඳහා වෙනස් කරන්නද?"</string>
-    <!-- no translation found for permgrouprequest_notifications (6396739062335106181) -->
-    <skip />
-    <!-- no translation found for permgrouprequestcontinue_notifications (3895098107355024027) -->
-    <skip />
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"ඔබට දැනුම්දීම් එවීමට &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&gt; හට ඉඩ දෙන්නද?"</string>
+    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"ඔබට දැනුම්දීම් එවීම දිගටම සිදු කිරීමට &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&gt; හට ඉඩ දෙන්නද?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"පාලිත අවසර"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"ස්ථානය ප්‍රවේශ විය හැකිය"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"ඔබේ IT පරිපාලක <xliff:g id="APP_NAME">%s</xliff:g> හට ඔබේ ස්ථානය වෙත ප්‍රවේශ වීමට ඉඩ දෙයි"</string>

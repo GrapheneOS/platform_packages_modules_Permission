@@ -117,8 +117,7 @@
     <string name="message_staging" msgid="9110563899955511866">"Đang thử nghiệm ứng dụng…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Không xác định"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Bảng tổng quan về quyền riêng tư"</string>
-    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
-    <skip />
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Xem những ứng dụng nào gần đây đã sử dụng các quyền"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Hoạt động sử dụng <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Xem các quyền khác"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -250,16 +249,11 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Bạn không dùng một số ứng dụng trong vài tháng qua. Nhấn để xem."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# ứng dụng không dùng đến}other{# ứng dụng không dùng đến}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Các quyền và tệp tạm thời đã bị xóa. Thông báo đã bị chặn. Hãy nhấn để xem lại."</string>
-    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
-    <skip />
+    <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Kiểm tra các quyền đã cấp gần đây"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Trong khi lái xe, bạn đã cấp cho <xliff:g id="APP">%1$s</xliff:g> quyền truy cập vào <xliff:g id="PERMISSION">%2$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Trong khi lái xe, bạn đã cấp cho <xliff:g id="APP">%1$s</xliff:g> quyền truy cập vào <xliff:g id="PERMISSION_1">%2$s</xliff:g> và <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Trong khi lái xe, bạn đã cấp <xliff:g id="COUNT">%1$d</xliff:g> quyền cho <xliff:g id="APP">%2$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Trong khi lái xe, bạn đã cấp quyền truy cập cho <xliff:g id="APP_0">%1$s</xliff:g> và # ứng dụng khác}other{Trong khi lái xe, bạn đã cấp quyền truy cập cho <xliff:g id="APP_1">%1$s</xliff:g> và # ứng dụng khác}}"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Bạn không dùng một số ứng dụng trong vài tháng qua"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Các quyền bị xóa"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Các quyền đã thu hồi"</string>
@@ -364,6 +358,16 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Các ứng dụng cho phép bạn xác định cuộc gọi và chặn cuộc gọi làm phiền, cuộc gọi tự động hoặc số điện thoại không mong muốn"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Bạn muốn đặt <xliff:g id="APP_NAME">%1$s</xliff:g> làm ứng dụng nhận dạng người gọi và chặn cuộc gọi làm phiền mặc định?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Không cần quyền"</string>
+    <!-- no translation found for role_automotive_navigation_label (2701890757955474751) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_short_label (5165823092506922457) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_description (7834601873792870134) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_request_title (7525693151489384300) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_request_description (7073023813249245540) -->
+    <skip />
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> sẽ được phép tương tác với thông báo cũng như truy cập vào Điện thoại, SMS, Danh bạ và Lịch."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> sẽ được phép tương tác với thông báo cũng như truyền trực tuyến các ứng dụng đến thiết bị đã kết nối."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Ứng dụng mặc định hiện tại"</string>
@@ -456,10 +460,8 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào dữ liệu cảm biến về các dấu hiệu sinh tồn của bạn?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Ứng dụng này muốn truy cập dữ liệu cảm biến về dấu hiệu sinh tồn của bạn mọi lúc, ngay cả khi bạn không dùng ứng dụng. "<annotation id="link">"Cho phép trong phần cài đặt."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Thay đổi quyền truy cập của &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; vào dữ liệu cảm biến về các dấu hiệu sinh tồn của bạn?"</string>
-    <!-- no translation found for permgrouprequest_notifications (6396739062335106181) -->
-    <skip />
-    <!-- no translation found for permgrouprequestcontinue_notifications (3895098107355024027) -->
-    <skip />
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; gửi thông báo cho bạn?"</string>
+    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tiếp tục gửi thông báo cho bạn?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Các quyền bị kiểm soát"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Ứng dụng có thể truy cập thông tin vị trí"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Quản trị viên CNTT đang cho phép ứng dụng <xliff:g id="APP_NAME">%s</xliff:g> truy cập vào thông tin vị trí của bạn"</string>
