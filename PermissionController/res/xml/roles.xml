@@ -1050,6 +1050,25 @@
        </permissions>
     </role>
 
+    <!---
+      ~ A role for the companion device package that allows connected computers to mirror
+      ~ notifications and access photos and media from the phone.
+      -->
+    <role
+        name="android.app.role.COMPANION_DEVICE_COMPUTER"
+        allowBypassingQualification="true"
+        behavior="CompanionDeviceComputerRoleBehavior"
+        description="@string/role_companion_device_computer_description"
+        exclusive="false"
+        minSdkVersion="33"
+        systemOnly="true"
+        visible="false">
+        <permissions>
+            <permission-set name="notifications" />
+            <permission-set name="storage" />
+       </permissions>
+    </role>
+
      <role
         name="android.app.role.SYSTEM_SUPERVISION"
         defaultHolders="config_systemSupervision"

@@ -117,8 +117,7 @@
     <string name="message_staging" msgid="9110563899955511866">"Қолданба реттелуде…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Белгісіз"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Құпиялылық тақтасы"</string>
-    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
-    <skip />
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Қандай қолданбалар рұқсаттарды пайдаланғанын көріңіз."</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> деректерінің пайдаланылуы"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Басқа рұқсаттарды көру"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -250,16 +249,11 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Кейбір қолданбалар бірнеше ай бойы пайдаланылмаған. Көру үшін түртіңіз."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# пайдаланылмайтын қолданба}other{# пайдаланылмайтын қолданба}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Рұқсаттар мен уақытша файлдар өшірілді және хабарландырулар тоқтатылды. Көру үшін түртіңіз."</string>
-    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
-    <skip />
+    <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Ағымдағы рұқсаттарды тексеру"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Көлік жүргізген кезде, <xliff:g id="APP">%1$s</xliff:g> қолданбасына <xliff:g id="PERMISSION">%2$s</xliff:g> рұқсатын бердіңіз."</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Көлік жүргізген кезде, <xliff:g id="APP">%1$s</xliff:g> қолданбасына <xliff:g id="PERMISSION_1">%2$s</xliff:g> және <xliff:g id="PERMISSION_2">%3$s</xliff:g> рұқсаттарын бердіңіз."</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Көлік жүргізген кезде, <xliff:g id="APP">%2$s</xliff:g> қолданбасына <xliff:g id="COUNT">%1$d</xliff:g> рұқсат бердіңіз."</string>
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Көлік жүргізген кезде, <xliff:g id="APP_0">%1$s</xliff:g> және басқа # қолданбаға рұқсат бердіңіз.}other{Көлік жүргізген кезде, <xliff:g id="APP_1">%1$s</xliff:g> және басқа # қолданбаға рұқсат бердіңіз.}}"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Кейбір қолданбалар бірнеше ай бойы пайдаланылмаған."</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Өшірілген рұқсаттар"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Рұқсаттары өшірілген"</string>
@@ -364,6 +358,11 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Қоңырау шалушыны анықтауға, спамды және автоматты қоңырауларды және қажетсіз нөмірлерді бөгеуге мүмкіндік беретін қолданбалар"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> нөмірді автоматты анықтау қызметі мен спам анықтау қолданбасы болып орнатылсын ба?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Ешқандай рұқсат қажет емес."</string>
+    <string name="role_automotive_navigation_label" msgid="2701890757955474751">"Әдепкі навигация қолданбасы"</string>
+    <string name="role_automotive_navigation_short_label" msgid="5165823092506922457">"Навигация қолданбасы"</string>
+    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"Көрнекі орын іздеуді және навигация бойынша қадамдық нұсқауларды орындауды ұсынатын қолданбалар."</string>
+    <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасы әдепкі навигация қолданбасы етіп орнатылсын ба?"</string>
+    <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Ешқандай рұқсат қажет емес."</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасы хабарландыруларды, телефонды, SMS, контактілерді және күнтізбе рұқсаттарын пайдалана алады."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> қолданбасы хабарландыруларды пайдаланып, қолданбаларыңызды жалғанған құрылғыға трансляциялай алатын болады."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Ағымдағы әдепкі қолданба"</string>
@@ -456,10 +455,8 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына тіршілік көрсеткіштеріне қатысты датчик деректерін пайдалануға рұқсат берілсін бе?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Қолданбаны пайдаланбасаңыз да, ол үнемі датчик деректерін пайдаланғысы келуі мүмкін. "<annotation id="link">"Параметрлерден рұқсат беріңіз."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Тіршілік көрсеткіштеріне қатысты датчик деректерін &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасының пайдалану жолы өзгертілсін бе?"</string>
-    <!-- no translation found for permgrouprequest_notifications (6396739062335106181) -->
-    <skip />
-    <!-- no translation found for permgrouprequestcontinue_notifications (3895098107355024027) -->
-    <skip />
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасы хабарландыру жіберсін бе?"</string>
+    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасы хабарландыру жібере берсін бе?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Басқарылатын рұқсаттар"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Локация пайдаланылады."</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Әкімшіңіз <xliff:g id="APP_NAME">%s</xliff:g> қолданбасына геодерегіңізді пайдалануға рұқсат береді."</string>

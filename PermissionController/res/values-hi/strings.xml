@@ -117,8 +117,7 @@
     <string name="message_staging" msgid="9110563899955511866">"ऐप्लिकेशन तैयार किया जा रहा है…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"ऐप्लिकेशन के बारे में कोई जानकारी नहीं है"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"प्राइवसी डैशबोर्ड"</string>
-    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
-    <skip />
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"देखें कि हाल ही में, किन ऐप ने अनुमतियों का इस्तेमाल किया है"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> का इस्तेमाल"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"अन्य अनुमतियां देखें"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -250,16 +249,11 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"कुछ ऐप्लिकेशन का इस्तेमाल कुछ महीनों से नहीं किया गया है. देखने के लिए टैप करें."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{इस्तेमाल न होने वाला # ऐप्लिकेशन}one{इस्तेमाल न होने वाला # ऐप्लिकेशन}other{इस्तेमाल न होने वाले # ऐप्लिकेशन}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"ऐप्लिकेशन को दी गई अनुमतियां और डिवाइस पर कुछ समय तक रहने वाली फ़ाइलें हटा दी गई हैं. साथ ही, सूचनाएं रोक दी गई हैं. देखने के लिए टैप करें."</string>
-    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
-    <skip />
+    <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"हाल ही में दी गई अनुमतियां देखें"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"आपने गाड़ी चलाते समय, <xliff:g id="APP">%1$s</xliff:g> को <xliff:g id="PERMISSION">%2$s</xliff:g> का ऐक्सेस दिया था"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"आपने गाड़ी चलाते समय, <xliff:g id="APP">%1$s</xliff:g> को <xliff:g id="PERMISSION_1">%2$s</xliff:g> और <xliff:g id="PERMISSION_2">%3$s</xliff:g> का ऐक्सेस दिया था"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"आपने गाड़ी चलाते समय, <xliff:g id="APP">%2$s</xliff:g> को <xliff:g id="COUNT">%1$d</xliff:g> अनुमतियां दी थीं"</string>
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{आपने गाड़ी चलाते समय, <xliff:g id="APP_0">%1$s</xliff:g> और # अन्य ऐप्लिकेशन को ऐक्सेस दिया था}one{आपने गाड़ी चलाते समय, <xliff:g id="APP_1">%1$s</xliff:g> और # अन्य ऐप्लिकेशन को ऐक्सेस दिया था}other{आपने गाड़ी चलाते समय, <xliff:g id="APP_1">%1$s</xliff:g> और # अन्य ऐप्लिकेशन को ऐक्सेस दिया था}}"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"कुछ ऐप्लिकेशन का इस्तेमाल कुछ महीनों से नहीं किया गया है"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"वे ऐप्लिकेशन जिनकी अनुमतियां हटाई गई हैं"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"वे ऐप्लिकेशन जिनकी अनुमतियां हटाई गई हैं"</string>
@@ -364,6 +358,11 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"ऐसे ऐप्लिकेशन जो कॉल करने वाले की पहचान करने और स्पैम कॉल, रोबोकॉल या अनचाहे नंबर से आ रहे कॉल को ब्लॉक करने में आपकी मदद करते हैं"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"क्या <xliff:g id="APP_NAME">%1$s</xliff:g> को अपना डिफ़ॉल्ट कॉलर आईडी और स्पैम आईडी के तौर पर सेट करना चाहते हैं?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"अनुमति की ज़रूरत नहीं है"</string>
+    <string name="role_automotive_navigation_label" msgid="2701890757955474751">"नेविगेशन के लिए डिफ़ॉल्ट ऐप्लिकेशन"</string>
+    <string name="role_automotive_navigation_short_label" msgid="5165823092506922457">"नेविगेशन ऐप्लिकेशन"</string>
+    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"ऐसे ऐप्लिकेशन जो लोकप्रिय जगह खोजने और मोड़-दर-मोड़ नेविगेट करने में मदद कर सकें"</string>
+    <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g> को डिफ़ॉल्ट नेविगेशन ऐप्लिकेशन के तौर पर सेट करें?"</string>
+    <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"अनुमति की ज़रूरत नहीं है"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> आपकी सूचनाओं को पढ़ सकेगा और उन पर कार्रवाई कर पाएगा. साथ ही, यह आपके फ़ोन, एसएमएस, संपर्कों, और कैलेंडर की अनुमतियों को भी ऐक्सेस कर पाएगा."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> आपकी सूचनाओं पर कार्रवाई कर पाएगा. साथ ही, यह आपके कनेक्ट किए गए डिवाइस पर, आपके ऐप्लिकेशन का कॉन्टेंट चला पाएगा."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"मौजूदा डिफ़ॉल्ट"</string>
@@ -456,10 +455,8 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को अपने शरीर के बारे में जानकारी देने वाले लक्षणों के सेंसर डेटा को ऐक्सेस करने की अनुमति दें?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"यह ऐप्लिकेशन आपके शरीर के बारे में जानकारी देने वाले लक्षणों के सेंसर डेटा को हमेशा ऐक्सेस करने की अनुमति मांग सकता है. ऐप्लिकेशन का इस्तेमाल न किए जाने पर भी ऐसा होता है. "<annotation id="link">"सेटिंग में जाकर अनुमति दें."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; के लिए, अपने शरीर से जुड़ी जानकारी देने वाले लक्षणों के सेंसर डेटा का ऐक्सेस बदलें?"</string>
-    <!-- no translation found for permgrouprequest_notifications (6396739062335106181) -->
-    <skip />
-    <!-- no translation found for permgrouprequestcontinue_notifications (3895098107355024027) -->
-    <skip />
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को, आपको सूचनाएं भेजने की अनुमति दें?"</string>
+    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को, आपको सूचनाएं भेजना जारी रखने की अनुमति दें?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"कंट्रोल की गई अनुमतियां"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"जगह की जानकारी देखी जा सकती है"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"आपका आईटी एडमिन <xliff:g id="APP_NAME">%s</xliff:g> को आपकी जगह की जानकारी देखने की अनुमति दे रहा है"</string>

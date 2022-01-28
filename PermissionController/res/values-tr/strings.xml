@@ -117,8 +117,7 @@
     <string name="message_staging" msgid="9110563899955511866">"Uygulama hazırlanıyor…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Bilinmiyor"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Gizlilik kontrol paneli"</string>
-    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
-    <skip />
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"İzinleri son kullanan uygulamaları görüntüleyin"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> kullanımı"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Diğer izinleri göster"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -250,16 +249,11 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Bazı uygulamalar birkaç aydır kullanılmadı. İncelemek için dokunun."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# kullanılmayan uygulama}other{# kullanılmayan uygulama}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"İzinler ve geçici dosyalar kaldırıldı, bildirimler durduruldu. İncelemek için dokunun."</string>
-    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
-    <skip />
+    <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Son izinleri kontrol edin"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Sürüş sırasında <xliff:g id="APP">%1$s</xliff:g> uygulamasına <xliff:g id="PERMISSION">%2$s</xliff:g> erişim izni verdiniz"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Sürüş sırasında <xliff:g id="APP">%1$s</xliff:g> uygulamasına <xliff:g id="PERMISSION_1">%2$s</xliff:g> ve <xliff:g id="PERMISSION_2">%3$s</xliff:g> erişim izni verdiniz"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Sürüş sırasında <xliff:g id="APP">%2$s</xliff:g> uygulamasına <xliff:g id="COUNT">%1$d</xliff:g> izin verdiniz"</string>
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Sürüş sırasında <xliff:g id="APP_0">%1$s</xliff:g> uygulamasına ve # uygulamaya daha erişim izni verdiniz}other{Sürüş sırasında <xliff:g id="APP_1">%1$s</xliff:g> uygulamasına ve # uygulamaya daha erişim izni verdiniz}}"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Bazı uygulamalar birkaç aydır kullanılmadı"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"İzinleri kaldırılmış"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"İzinleri kaldırılmış"</string>
@@ -364,6 +358,11 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Hem gelen aramaları tanımlamaya hem de spam, otomatik çağrıları veya istenmeyen numaraları engellemeye olanak tanıyan uygulamalar"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g>, varsayılan arayan kimliği ve spam uygulamanız olarak ayarlansın mı?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Herhangi bir izin gerekli değil"</string>
+    <string name="role_automotive_navigation_label" msgid="2701890757955474751">"Varsayılan navigasyon uygulaması"</string>
+    <string name="role_automotive_navigation_short_label" msgid="5165823092506922457">"Navigasyon uygulaması"</string>
+    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"Önemli yer araması ve adım adım navigasyon yardımı sunan uygulamalar"</string>
+    <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g>, varsayılan navigasyon uygulamanız olarak ayarlansın mı?"</string>
+    <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Herhangi bir izin gerekli değil"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> adlı uygulamanın bildirimlerinizle etkileşimde bulunup Telefon, SMS, Kişiler ve Takvim izinlerinize erişmesine izin verilir."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> adlı uygulamanın bildirimlerinizle etkileşimde bulunup uygulamalarınızı bağlı cihazda canlı oynatmasına izin verilecek."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Mevcut varsayılan"</string>
@@ -456,10 +455,8 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının hayati belirtilerinizle ilgili sensör verilerine erişmesine izin verilsin mi?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Bu uygulama, kullanmadığınız sırada bile hayati belirtilerinizle ilgili sensör verilerine sürekli olarak erişmek isteyebilir. "<annotation id="link">"Ayarlar\'da izin verin."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının hayati belirtilerinizle ilgili sensör verilerine erişimi değiştirilsin mi?"</string>
-    <!-- no translation found for permgrouprequest_notifications (6396739062335106181) -->
-    <skip />
-    <!-- no translation found for permgrouprequestcontinue_notifications (3895098107355024027) -->
-    <skip />
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının size bildirim göndermesine izin verilsin mi?"</string>
+    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının size bildirim göndermeye devam etmesine izin verilsin mi?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Kontrol edilen izinler"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Konuma erişilebilir"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"BT yöneticiniz, <xliff:g id="APP_NAME">%s</xliff:g> uygulamasının konumunuza erişmesine izin veriyor"</string>

@@ -117,8 +117,7 @@
     <string name="message_staging" msgid="9110563899955511866">"Rakenduse koondamine …"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Tundmatu"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Privaatsuse juhtpaneel"</string>
-    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
-    <skip />
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Vaadake, millised rakendused hiljuti lube kasutasid"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Loa <xliff:g id="PERMGROUP">%1$s</xliff:g> kasutus"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Muude lubade vaatamine"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -250,16 +249,11 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Mõningaid rakendusi ei ole mõne kuu jooksul kasutatud. Puudutage ülevaatamiseks."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# kasutamata rakendus}other{# kasutamata rakendust}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Load ja ajutised failid eemaldati ning märguanded peatati. Puudutage ülevaatamiseks."</string>
-    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
-    <skip />
+    <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Vaadake hiljutisi lube"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Andsite sõidu ajal rakendusele <xliff:g id="APP">%1$s</xliff:g> juurdepääsu loale <xliff:g id="PERMISSION">%2$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Andsite sõidu ajal rakendusele <xliff:g id="APP">%1$s</xliff:g> juurdepääsu lubadele <xliff:g id="PERMISSION_1">%2$s</xliff:g> ja <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Andsite sõidu ajal rakendusele <xliff:g id="APP">%2$s</xliff:g> <xliff:g id="COUNT">%1$d</xliff:g> luba"</string>
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Andsite sõidu ajal rakendusele <xliff:g id="APP_0">%1$s</xliff:g> ja veel # rakendusele juurdepääsu}other{Andsite sõidu ajal rakendusele <xliff:g id="APP_1">%1$s</xliff:g> ja veel # rakendusele juurdepääsu}}"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Mõningaid rakendusi ei ole mõne kuu jooksul kasutatud"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Eemaldatud load"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Eemaldatud load"</string>
@@ -364,6 +358,16 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Rakendused, mis võimaldavad teil kõnesid tuvastada ning rämps- ja robotkõnesid ning soovimatuid numbreid blokeerida"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Kas soovite määrata rakenduse <xliff:g id="APP_NAME">%1$s</xliff:g> helistaja ID ja rämpskõnede vaikerakenduseks?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Lube ei ole vaja"</string>
+    <!-- no translation found for role_automotive_navigation_label (2701890757955474751) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_short_label (5165823092506922457) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_description (7834601873792870134) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_request_title (7525693151489384300) -->
+    <skip />
+    <!-- no translation found for role_automotive_navigation_request_description (7073023813249245540) -->
+    <skip />
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> saab kasutada teie märguandeid ning hankida teie telefoni, SMS-ide, kontaktide ja kalendri load."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"Rakendusel <xliff:g id="APP_NAME">%1$s</xliff:g> lubatakse kasutada teie märguandeid ja voogesitada teie rakenduste kuva ühendatud seadmesse."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Praegune vaikeseade"</string>
@@ -456,10 +460,8 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; juurdepääs anduri andmetele teie eluliste näitajate kohta?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"See rakendus võib soovida pidevat juurdepääsu anduri andmetele teie eluliste näitajate kohta, isegi kui te rakendust ei kasuta. "<annotation id="link">"Lubage see seadetes."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Kas muuta rakenduse &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; jaoks juurdepääsu anduri andmetele teie eluliste näitajate kohta?"</string>
-    <!-- no translation found for permgrouprequest_notifications (6396739062335106181) -->
-    <skip />
-    <!-- no translation found for permgrouprequestcontinue_notifications (3895098107355024027) -->
-    <skip />
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; teile märguandeid saata?"</string>
+    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; teile jätkuvalt märguandeid saata?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Hallatud load"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Asukohale pääseb juurde"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"IT-administraator lubab rakendusel <xliff:g id="APP_NAME">%s</xliff:g> teie asukohale juurde pääseda"</string>

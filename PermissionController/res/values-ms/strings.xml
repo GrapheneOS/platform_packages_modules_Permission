@@ -117,8 +117,7 @@
     <string name="message_staging" msgid="9110563899955511866">"Pemeringkatan apl…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Tidak diketahui"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Papan pemuka privasi"</string>
-    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
-    <skip />
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Lihat apl yang menggunakan kebenaran baru-baru ini"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Penggunaan <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Lihat kebenaran lain"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -250,16 +249,11 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Sesetengah apl tidak digunakan selama beberapa bulan. Ketik untuk menyemak."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# apl yang tidak digunakan}other{# apl yang tidak digunakan}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Kebenaran dan fail sementara telah dialih keluar dan pemberitahuan telah dihentikan. Ketik untuk menyemak."</string>
-    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
-    <skip />
+    <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Semak kebenaran terbaharu"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Semasa memandu, anda memberi <xliff:g id="APP">%1$s</xliff:g> akses kepada <xliff:g id="PERMISSION">%2$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Semasa memandu, anda memberi <xliff:g id="APP">%1$s</xliff:g> akses kepada <xliff:g id="PERMISSION_1">%2$s</xliff:g> &amp; <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Semasa memandu, anda memberikan <xliff:g id="COUNT">%1$d</xliff:g> kebenaran kepada <xliff:g id="APP">%2$s</xliff:g>"</string>
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Semasa memandu, anda memberikan akses kepada <xliff:g id="APP_0">%1$s</xliff:g> &amp; # apl lain}other{Semasa memandu, anda memberikan akses kepada <xliff:g id="APP_1">%1$s</xliff:g> &amp; # apl lain}}"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Sesetengah apl tidak digunakan selama beberapa bulan"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Kebenaran dialih keluar"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Kebenaran dialih keluar"</string>
@@ -364,6 +358,11 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Apl yang membenarkan anda mengenal pasti panggilan dan menyekat spam, robopanggilan atau nombor yang tidak dikehendaki"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Tetapkan <xliff:g id="APP_NAME">%1$s</xliff:g> sebagai apl ID pemanggil &amp; spam lalai anda?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Kebenaran tidak diperlukan"</string>
+    <string name="role_automotive_navigation_label" msgid="2701890757955474751">"Apl navigasi lalai"</string>
+    <string name="role_automotive_navigation_short_label" msgid="5165823092506922457">"Apl navigasi"</string>
+    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"Apl yang boleh menyediakan carian tempat menarik dan panduan navigasi belokan demi belokan"</string>
+    <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Tetapkan <xliff:g id="APP_NAME">%1$s</xliff:g> sebagai apl navigasi lalai anda?"</string>
+    <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Kebenaran tidak diperlukan"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> akan dibenarkan berinteraksi dengan pemberitahuan anda dan mengakses kebenaran Telefon, SMS, Kenalan dan Kalendar anda."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> akan dibenarkan untuk berinteraksi dengan pemberitahuan anda dan menstrim apl anda pada peranti tersambung."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Lalai semasa"</string>
@@ -456,10 +455,8 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses data penderia tentang tanda vital anda?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Apl ini mungkin mahu mengakses data penderia tentang tanda vital anda pada setiap masa, meskipun apabila anda tidak menggunakan apl. "<annotation id="link">"Benarkan dalam tetapan."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Tukar akses kepada data penderia tentang tanda vital anda untuk &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
-    <!-- no translation found for permgrouprequest_notifications (6396739062335106181) -->
-    <skip />
-    <!-- no translation found for permgrouprequestcontinue_notifications (3895098107355024027) -->
-    <skip />
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; menghantar pemberitahuan kepada anda?"</string>
+    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; terus menghantar pemberitahuan kepada anda?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Kebenaran terkawal"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Lokasi dapat diakses"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Pentadbir IT anda membenarkan <xliff:g id="APP_NAME">%s</xliff:g> mengakses lokasi anda"</string>

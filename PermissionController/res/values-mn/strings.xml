@@ -117,8 +117,7 @@
     <string name="message_staging" msgid="9110563899955511866">"Аппыг байршуулж байна…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Тодорхойгүй"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Нууцлалын хяналтын самбар"</string>
-    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
-    <skip />
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Зөвшөөрлийг саяхан аль аппууд ашигласан болохыг харна уу"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g>-н ашиглалт"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Бусад зөвшөөрлийг харах"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -250,16 +249,11 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Зарим аппыг хэдэн сарын турш ашиглаагүй байна. Шалгахын тулд товшино уу."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{Ашиглаагүй # апп}other{Ашиглаагүй # апп}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Зөвшөөрөл болон түр зуурын файлуудыг хассан бөгөөд мэдэгдлийг зогсоосон. Хянахын тулд товшино уу."</string>
-    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
-    <skip />
+    <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Саяхны зөвшөөрлүүдийг шалгана уу"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Та жолоо барих үедээ <xliff:g id="APP">%1$s</xliff:g>-д <xliff:g id="PERMISSION">%2$s</xliff:g>-т хандах эрх өгсөн"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Та жолоо барих үедээ <xliff:g id="APP">%1$s</xliff:g>-д <xliff:g id="PERMISSION_1">%2$s</xliff:g> болон <xliff:g id="PERMISSION_2">%3$s</xliff:g>-т хандах эрх өгсөн"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Та жолоо барих үедээ <xliff:g id="COUNT">%1$d</xliff:g> зөвшөөрлийг <xliff:g id="APP">%2$s</xliff:g>-д олгосон"</string>
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Та жолоо барих үедээ <xliff:g id="APP_0">%1$s</xliff:g> болон бусад аппуудад хандах эрх өгсөн}other{Та жолоо барих үедээ <xliff:g id="APP_1">%1$s</xliff:g> болон # бусад аппад хандах эрх өгсөн}}"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Зарим аппыг хэдэн сарын турш ашиглаагүй байна"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Зөвшөөрлүүдийг хассан"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Зөвшөөрлийг хассан"</string>
@@ -364,6 +358,11 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Танд дуудлага таних болон спам, роботын дуудлага эсвэл хүсээгүй дугаарыг блоклох боломжийг олгодог аппууд"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g>-г дуудлага хийгчийн ID болон спамын өгөгдмөл аппаар тохируулах уу?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Ямар ч зөвшөөрөл шаардлагагүй"</string>
+    <string name="role_automotive_navigation_label" msgid="2701890757955474751">"Өгөгдмөл зам заагч апп"</string>
+    <string name="role_automotive_navigation_short_label" msgid="5165823092506922457">"Зам заагч апп"</string>
+    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"Анхаарал татсан газрын хайлт болон эргэлт эргэлтээр зам заагч хөтчийн үйлчилгээ үзүүлэх боломжтой аппууд"</string>
+    <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g>-г өгөгдмөл зам заагч аппаарaa тохируулах уу?"</string>
+    <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Ямар ч зөвшөөрөл шаардлагагүй"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g>-г таны мэдэгдлүүдтэй харилцаж, таны Утас, SMS, Харилцагчид болон Календарийн зөвшөөрөлд хандахыг зөвшөөрнө."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g>-д таны мэдэгдэлтэй харилцах болон таны аппуудыг холбогдсон төхөөрөмжид дамжуулахыг зөвшөөрөх болно."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Одоогийн өгөгдмөл апп"</string>

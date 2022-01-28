@@ -117,8 +117,7 @@
     <string name="message_staging" msgid="9110563899955511866">"Kutib turing…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Noaniq"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Maxfiylik boshqaruv paneli"</string>
-    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
-    <skip />
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Ruxsatlardan yaqinda foydalangan ilovalarni koʻrish"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> axborotidan foydalanish"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Boshqa ruxsatlarni koʻrish"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -250,16 +249,11 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Ayrim ilovalar bir necha oydan beri ishlatilmadi. Tekshirish uchun bosing."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# ta ishlatilmagan ilova}other{# ta ishlatilmagan ilova}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Ruxsatlar va vaqtinchalik fayllar olib tashlandi hamda bildirishnomalar toʻxtatildi. Tekshirish uchun bosing."</string>
-    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
-    <skip />
+    <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Oxirgi ruxsatlarni tekshirish"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Haydash vaqtida <xliff:g id="APP">%1$s</xliff:g> ilovasiga <xliff:g id="PERMISSION">%2$s</xliff:g> ruxsatini bergansiz"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Haydash vaqtida <xliff:g id="APP">%1$s</xliff:g> ilovasiga <xliff:g id="PERMISSION_1">%2$s</xliff:g> va <xliff:g id="PERMISSION_2">%3$s</xliff:g> ruxsatlarini bergansiz"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Haydash vaqtida <xliff:g id="APP">%2$s</xliff:g> ilovasiga <xliff:g id="COUNT">%1$d</xliff:g> ta ruxsat bergansiz"</string>
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Haydash vaqtida <xliff:g id="APP_0">%1$s</xliff:g> va yana # ta ilovaga ruxsat bergansiz}other{Haydash vaqtida <xliff:g id="APP_1">%1$s</xliff:g> va yana # ta ilovaga ruxsat bergansiz}}"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Ayrim ilovalar bir necha oydan beri ishlatilmagan."</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Olib tashlangan ruxsatlar"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Ruxsatlar olib tashlandi"</string>
@@ -364,6 +358,11 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Spam, avtomat chaqiruvlar yoki keraksiz raqamlarni aniqlash va bloklash imkonini beruvchi ilovalar"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> asosiy raqamni aniqlash xizmati va spam sifatida sozlansinmi?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Hech qanday ruxsat zarur emas"</string>
+    <string name="role_automotive_navigation_label" msgid="2701890757955474751">"Asosiy navigatsiya ilovasi"</string>
+    <string name="role_automotive_navigation_short_label" msgid="5165823092506922457">"Navigatsiya ilovasi"</string>
+    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"Diqqatga sazovor joylarni qidirish va navbatma-navbat navigatsiyaga oid koʻrsatmalarni taqdim eta oladigan ilovalar"</string>
+    <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"<xliff:g id="APP_NAME">%1$s</xliff:g> asosiy navigatsiya ilovasida sifatida sozlansinmi?"</string>
+    <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Hech qanday ruxsat zarur emas"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> ilovasiga bildirishnomalar bilan ishlash va telefon, SMS, kontaktlar va taqvimga kirishga ruxsat beriladi"</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> ilovasiga bildirishnomalar bilan ishlash va ulangan qurilmalarga ilovalarni translatsiya qilishga ruxsat beriladi"</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Hozirda asosiy ilova"</string>
@@ -456,10 +455,8 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun organizm holati haqidagi sensor axborotlariga ruxsat berilsinmi?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Bu ilova doimo, hatto ishlatilmaganida ham organizm holati haqidagi sensor axborotlaridan foydalanmoqchi. "<annotation id="link">"Sozlamalar orqali ruxsat bering."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun organizm holati haqidagi sensor axborotlariga ruxsat oʻzgartirilsinmi?"</string>
-    <!-- no translation found for permgrouprequest_notifications (6396739062335106181) -->
-    <skip />
-    <!-- no translation found for permgrouprequestcontinue_notifications (3895098107355024027) -->
-    <skip />
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ilovasiga sizga bildirishnomalar yuborishi uchun ruxsat berilsinmi?"</string>
+    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ilovasiga sizga bildirishnomalar yuborishda davom etishi uchun ruxsat berilsinmi?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Boshqariluvchi ruxsatlar"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Joylashuv axborotiga ruxsati bor"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"AT administratori <xliff:g id="APP_NAME">%s</xliff:g> ilovasiga joylashuvingiz haqidagi axborotdan foydalanishga ruxsat bergan"</string>

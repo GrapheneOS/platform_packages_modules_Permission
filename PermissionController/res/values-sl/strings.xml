@@ -117,8 +117,7 @@
     <string name="message_staging" msgid="9110563899955511866">"Priprava aplikacije …"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Neznano"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Nadzorna plošča za zasebnost"</string>
-    <!-- no translation found for auto_permission_usage_summary (7335667266743337075) -->
-    <skip />
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Prikaz aplikacij, ki so pred kratkim uporabile dovoljenja."</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Uporaba dovoljenja »<xliff:g id="PERMGROUP">%1$s</xliff:g>«"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Ogled drugih dovoljenj"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -250,16 +249,11 @@
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Nekatere aplikacije niso bile uporabljene več mesecev. Dotaknite se za pregled."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# neuporabljena aplikacija}one{# neuporabljena aplikacija}two{# neuporabljeni aplikaciji}few{# neuporabljene aplikacije}other{# neuporabljenih aplikacij}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Dovoljenja in začasne datoteke so odstranjeni, obvestila so zaustavljena. Dotaknite se za pregled."</string>
-    <!-- no translation found for post_drive_permission_decision_reminder_title (1290697371418139976) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_1_permission (670521503734140711) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_2_permissions (671791184670801301) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_1_app_multi_permission (4080701771111456927) -->
-    <skip />
-    <!-- no translation found for post_drive_permission_decision_reminder_summary_multi_apps (5253882771252863902) -->
-    <skip />
+    <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Preverite nedavna dovoljenja"</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Med vožnjo ste aplikaciji <xliff:g id="APP">%1$s</xliff:g> odobrili dostop do tega dovoljenja: <xliff:g id="PERMISSION">%2$s</xliff:g>."</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Med vožnjo ste aplikaciji <xliff:g id="APP">%1$s</xliff:g> odobrili dostop do teh dovoljenj: <xliff:g id="PERMISSION_1">%2$s</xliff:g> in <xliff:g id="PERMISSION_2">%3$s</xliff:g>."</string>
+    <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Med vožnjo ste aplikaciji <xliff:g id="APP">%2$s</xliff:g> odobrili toliko dovoljenj: <xliff:g id="COUNT">%1$d</xliff:g>."</string>
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Med vožnjo ste odobrili dostop aplikaciji <xliff:g id="APP_0">%1$s</xliff:g> in še # aplikaciji.}one{Med vožnjo ste odobrili dostop aplikaciji <xliff:g id="APP_1">%1$s</xliff:g> in še # aplikaciji.}two{Med vožnjo ste odobrili dostop aplikaciji <xliff:g id="APP_1">%1$s</xliff:g> in še # aplikacijam.}few{Med vožnjo ste odobrili dostop aplikaciji <xliff:g id="APP_1">%1$s</xliff:g> in še # aplikacijam.}other{Med vožnjo ste odobrili dostop aplikaciji <xliff:g id="APP_1">%1$s</xliff:g> in še # aplikacijam.}}"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Nekatere aplikacije niso bile uporabljene več mesecev"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Odstranjena dovoljenja"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Dovoljenja so bila odstranjena"</string>
@@ -364,6 +358,11 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Aplikacije, ki vam omogočajo prepoznavo klicev ter blokiranje reklamnih, avtomatiziranih ali neželenih klicev."</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Želite aplikacijo <xliff:g id="APP_NAME">%1$s</xliff:g> nastaviti kot privzeto aplikacijo za ID-je klicateljev in neželene klice?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Nobeno dovoljenje ni potrebno"</string>
+    <string name="role_automotive_navigation_label" msgid="2701890757955474751">"Privzeta aplikacija za navigacijo"</string>
+    <string name="role_automotive_navigation_short_label" msgid="5165823092506922457">"Aplikacija za navigacijo"</string>
+    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"Aplikacije, v katerih sta na voljo iskanje interesnih točk in podrobna navigacija."</string>
+    <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Želite nastaviti aplikacijo <xliff:g id="APP_NAME">%1$s</xliff:g> kot privzeto aplikacijo za navigacijo?"</string>
+    <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Nobeno dovoljenje ni potrebno"</string>
     <string name="role_watch_description" msgid="267003778693177779">"Aplikaciji <xliff:g id="APP_NAME">%1$s</xliff:g> bosta omogočena interakcija z obvestili in dostop do dovoljenj za telefon, sporočila SMS, stike in koledar."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"Aplikaciji <xliff:g id="APP_NAME">%1$s</xliff:g> bosta omogočena interakcija z obvestili in pretočno izvajanje aplikacij v povezano napravo."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Trenutna privzeta nastavitev"</string>
