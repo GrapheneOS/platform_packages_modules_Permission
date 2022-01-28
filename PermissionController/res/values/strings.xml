@@ -1338,7 +1338,15 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
 
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
     <string name="permgrouprequest_storage">Allow
-        &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access photos, media, and files on your device?</string>
+        &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access &lt;b>files and documents&lt;/b> on your device?</string>
+
+    <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
+    <string name="permgrouprequest_storage_q_to_s">Allow
+        &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access &lt;b>photos, videos, music, and audio&lt;/b> on your device?</string>
+
+    <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
+    <string name="permgrouprequest_storage_pre_q">Allow
+        &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access &lt;b>photos, videos, music, audio, and other files&lt;/b> on your device?</string>
 
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
     <string name="permgrouprequest_read_media_aural">Allow &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access music and other audio files on this device?</string>
