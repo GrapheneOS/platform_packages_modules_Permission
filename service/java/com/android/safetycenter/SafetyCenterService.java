@@ -89,6 +89,7 @@ public final class SafetyCenterService extends SystemService {
 
     @NonNull
     private final Object mLock = new Object();
+
     // TODO(b/202386571): Create a new data model to store both config and dynamic data in memory.
     @GuardedBy("mLock")
     @NonNull
@@ -96,12 +97,13 @@ public final class SafetyCenterService extends SystemService {
     @Nullable
     private SafetyCenterConfig mSafetyCenterConfig;
 
-    @NonNull
-    private final AppOpsManager mAppOpsManager;
-
-    @NonNull
+    // TODO(b/202387070): Send updates to SafetyCenterData out to listeners.
+    @GuardedBy("mLock")
     private final List<IOnSafetyCenterDataChangedListener> mSafetyCenterDataChangedListeners =
             new ArrayList<>();
+
+    @NonNull
+    private final AppOpsManager mAppOpsManager;
 
     @NonNull
     private final SafetyCenterResourcesContext mSafetyCenterResourcesContext;
@@ -298,7 +300,9 @@ public final class SafetyCenterService extends SystemService {
 
         @Override
         public SafetyCenterData getSafetyCenterData() {
-            // TODO(b/203098016): Implement this with real data.
+            getContext().enforceCallingOrSelfPermission(MANAGE_SAFETY_CENTER,
+                    "getSafetyCenterData");
+            // TODO(b/202386935): Implement this with real merged data.
             return new SafetyCenterData(
                     new SafetyCenterStatus.Builder()
                             .setSeverityLevel(
@@ -314,20 +318,28 @@ public final class SafetyCenterService extends SystemService {
         @Override
         public void addOnSafetyCenterDataChangedListener(
                 IOnSafetyCenterDataChangedListener listener) {
-            // TODO(b/203098016): Protect this with a permission so only PC can use.
-            mSafetyCenterDataChangedListeners.add(listener);
+            getContext().enforceCallingOrSelfPermission(MANAGE_SAFETY_CENTER,
+                    "addOnSafetyCenterDataChangedListener");
+            synchronized (mLock) {
+                mSafetyCenterDataChangedListeners.add(listener);
+            }
         }
 
         @Override
         public void removeOnSafetyCenterDataChangedListener(
                 IOnSafetyCenterDataChangedListener listener) {
-            // TODO(b/203098016): Protect this with a permission so only PC can use.
-            mSafetyCenterDataChangedListeners.remove(listener);
+            getContext().enforceCallingOrSelfPermission(MANAGE_SAFETY_CENTER,
+                    "removeOnSafetyCenterDataChangedListener");
+            synchronized (mLock) {
+                mSafetyCenterDataChangedListeners.remove(listener);
+            }
         }
 
         @Override
         public void dismissSafetyIssue(String issueId) {
-            // TODO(b/203098016): Implement this with real data.
+            getContext().enforceCallingOrSelfPermission(MANAGE_SAFETY_CENTER,
+                    "dismissSafetyIssue");
+            // TODO(b/202387059): Implement issue dismissal
         }
 
         private boolean getSafetyCenterConfigValue() {
