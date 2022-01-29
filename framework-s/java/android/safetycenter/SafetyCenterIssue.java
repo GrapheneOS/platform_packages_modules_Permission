@@ -163,7 +163,7 @@ public final class SafetyCenterIssue implements Parcelable {
      */
     @NonNull
     public List<Action> getActions() {
-        return mActions;
+        return new ArrayList<>(mActions);
     }
 
     @Override

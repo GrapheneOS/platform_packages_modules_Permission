@@ -48,7 +48,7 @@ public final class SafetyCenterStatus implements Parcelable {
      * <p>The overall severity level is calculated from the severity level and statuses of all
      * issues and entries in the Safety Center.
      *
-     * @see SafetyCenterStatus#getSeverityLevel()
+     * @see #getSeverityLevel()
      * @see Builder#setSeverityLevel(int)
      */
     @Retention(RetentionPolicy.SOURCE)
@@ -75,20 +75,61 @@ public final class SafetyCenterStatus implements Parcelable {
     /** Indicates the presence of critical safety warnings on the device. */
     public static final int OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING = 1300;
 
+    /**
+     * All possible refresh states for the Safety Center.
+     *
+     * @see #getRefreshStatus()
+     * @see Builder#setRefreshStatus(int)
+     */
+    @Retention(RetentionPolicy.SOURCE)
+    @IntDef(prefix = "REFRESH_STATUS_", value = {
+            REFRESH_STATUS_NONE,
+            REFRESH_STATUS_DATA_FETCH_IN_PROGRESS,
+            REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS,
+    })
+    @interface RefreshStatus {
+    }
+
+    /** Indicates that no refresh is ongoing. */
+    public static final int REFRESH_STATUS_NONE = 0;
+
+    /**
+     * Indicates that a data fetch is ongoing, and Safety Sources are being asked for their current
+     * safety state.
+     *
+     * <p>If sources already have their safety data cached, they may provide it without triggering a
+     * process to fetch or recompute state which may be expensive and/or slow.
+     */
+    public static final int REFRESH_STATUS_DATA_FETCH_IN_PROGRESS = 10100;
+
+    /**
+     * Indicates that a full rescan is ongoing, and Safety Sources are being asked to fetch fresh
+     * data for their safety state.
+     *
+     * <p>The term "fresh" here means that the sources should ensure that the safety data is
+     * accurate as possible at the time of providing it to Safety Center, even if it involves
+     * performing an expensive and/or slow process.
+     */
+    public static final int REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS = 10200;
+
     @NonNull
     private final CharSequence mTitle;
     @NonNull
     private final CharSequence mSummary;
     @OverallSeverityLevel
     private final int mSeverityLevel;
+    @RefreshStatus
+    private final int mRefreshStatus;
 
     private SafetyCenterStatus(
             @NonNull CharSequence title,
             @NonNull CharSequence summary,
-            @OverallSeverityLevel int severityLevel) {
+            @OverallSeverityLevel int severityLevel,
+            @RefreshStatus int refreshStatus) {
         mTitle = requireNonNull(title);
         mSummary = requireNonNull(summary);
         mSeverityLevel = severityLevel;
+        mRefreshStatus = refreshStatus;
     }
 
     /** Returns the title which describes the overall safety state of the device. */
@@ -109,19 +150,26 @@ public final class SafetyCenterStatus implements Parcelable {
         return mSeverityLevel;
     }
 
+    /** Returns the current {@link RefreshStatus} of the Safety Center */
+    @RefreshStatus
+    public int getRefreshStatus() {
+        return mRefreshStatus;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SafetyCenterStatus that = (SafetyCenterStatus) o;
         return mSeverityLevel == that.mSeverityLevel
+                && mRefreshStatus == that.mRefreshStatus
                 && TextUtils.equals(mTitle, that.mTitle)
                 && TextUtils.equals(mSummary, that.mSummary);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mTitle, mSummary, mSeverityLevel);
+        return Objects.hash(mTitle, mSummary, mSeverityLevel, mRefreshStatus);
     }
 
     @Override
@@ -130,6 +178,7 @@ public final class SafetyCenterStatus implements Parcelable {
                 + "mTitle=" + mTitle
                 + ", mSummary=" + mSummary
                 + ", mSeverityLevel=" + mSeverityLevel
+                + ", mRefreshStatus=" + mRefreshStatus
                 + '}';
     }
 
@@ -143,6 +192,7 @@ public final class SafetyCenterStatus implements Parcelable {
         TextUtils.writeToParcel(mTitle, dest, flags);
         TextUtils.writeToParcel(mSummary, dest, flags);
         dest.writeInt(mSeverityLevel);
+        dest.writeInt(mRefreshStatus);
     }
 
     @NonNull
@@ -153,6 +203,7 @@ public final class SafetyCenterStatus implements Parcelable {
                     .setTitle(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in))
                     .setSummary(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in))
                     .setSeverityLevel(in.readInt())
+                    .setRefreshStatus(in.readInt())
                     .build();
         }
 
@@ -168,6 +219,8 @@ public final class SafetyCenterStatus implements Parcelable {
         private CharSequence mSummary;
         @OverallSeverityLevel
         private int mSeverityLevel = OVERALL_SEVERITY_LEVEL_UNKNOWN;
+        @RefreshStatus
+        private int mRefreshStatus = REFRESH_STATUS_NONE;
 
         /** Creates an empty {@link Builder} for {@link SafetyCenterStatus}*/
         public Builder() {}
@@ -180,6 +233,7 @@ public final class SafetyCenterStatus implements Parcelable {
             mTitle = safetyCenterStatus.mTitle;
             mSummary = safetyCenterStatus.mSummary;
             mSeverityLevel = safetyCenterStatus.mSeverityLevel;
+            mRefreshStatus = safetyCenterStatus.mRefreshStatus;
         }
 
         /** Sets the title for this status. */
@@ -203,10 +257,17 @@ public final class SafetyCenterStatus implements Parcelable {
             return this;
         }
 
+        /** Sets the {@link RefreshStatus} of this status. */
+        @NonNull
+        public Builder setRefreshStatus(@RefreshStatus int refreshStatus) {
+            mRefreshStatus = refreshStatus;
+            return this;
+        }
+
         /** Creates the {@link SafetyCenterStatus} defined by this {@link Builder}. */
         @NonNull
         public SafetyCenterStatus build() {
-            return new SafetyCenterStatus(mTitle, mSummary, mSeverityLevel);
+            return new SafetyCenterStatus(mTitle, mSummary, mSeverityLevel, mRefreshStatus);
         }
     }
 }

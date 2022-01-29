@@ -24,6 +24,7 @@ import static android.os.Build.VERSION_CODES.TIRAMISU;
 
 import static java.util.Objects.requireNonNull;
 
+import android.annotation.CallbackExecutor;
 import android.annotation.IntDef;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
@@ -32,12 +33,18 @@ import android.annotation.SdkConstant;
 import android.annotation.SystemApi;
 import android.annotation.SystemService;
 import android.content.Context;
+import android.os.Binder;
 import android.os.RemoteException;
+import android.util.ArrayMap;
 
 import androidx.annotation.RequiresApi;
 
+import com.android.internal.annotations.GuardedBy;
+
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.util.Map;
+import java.util.concurrent.Executor;
 
 /**
  * Interface for communicating with the safety center.
@@ -162,10 +169,26 @@ public final class SafetyCenterManager {
     public @interface RefreshReason {
     }
 
+    /** Listener for changes to {@link SafetyCenterData}. */
+    public interface OnSafetyCenterDataChangedListener {
+
+        /**
+         * Called when {@link SafetyCenterData} tracked by the manager changes.
+         *
+         * @param data the updated data
+         */
+        void onSafetyCenterDataChanged(@NonNull SafetyCenterData data);
+    }
+
     @NonNull
     private final Context mContext;
     @NonNull
     private final ISafetyCenterManager mService;
+
+    @GuardedBy("mListenersLock")
+    private final Map<OnSafetyCenterDataChangedListener, ListenerDelegate>
+            mListenersToDelegates = new ArrayMap<>(1); // only one expected listener
+    private final Object mListenersLock = new Object();
 
     /**
      * Creates a new instance of the {@link SafetyCenterManager}.
@@ -264,6 +287,112 @@ public final class SafetyCenterManager {
             mService.clearSafetyCenterData();
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
+        }
+    }
+
+    /**
+     * Returns the current {@link SafetyCenterData}, assembled from {@link SafetySourceData} from
+     * all sources.
+     */
+    @RequiresPermission(MANAGE_SAFETY_CENTER)
+    @NonNull
+    public SafetyCenterData getSafetyCenterData() {
+        try {
+            return mService.getSafetyCenterData();
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
+    /**
+     * Adds a listener for changes to {@link SafetyCenterData}.
+     *
+     * @see #removeOnSafetyCenterDataChangedListener(OnSafetyCenterDataChangedListener)
+     */
+    @RequiresPermission(MANAGE_SAFETY_CENTER)
+    public void addOnSafetyCenterDataChangedListener(
+            @NonNull @CallbackExecutor Executor executor,
+            @NonNull OnSafetyCenterDataChangedListener listener) {
+        requireNonNull(executor, "executor cannot be null");
+        requireNonNull(listener, "listener cannot be null");
+
+        synchronized (mListenersLock) {
+            if (mListenersToDelegates.containsKey(listener)) return;
+
+            ListenerDelegate delegate = new ListenerDelegate(executor, listener);
+
+            try {
+                mService.addOnSafetyCenterDataChangedListener(delegate);
+            } catch (RemoteException e) {
+                throw e.rethrowFromSystemServer();
+            }
+            mListenersToDelegates.put(listener, delegate);
+        }
+    }
+
+    /**
+     * Removes a listener for changes to {@link SafetyCenterData}.
+     *
+     * @see #addOnSafetyCenterDataChangedListener(Executor, OnSafetyCenterDataChangedListener)
+     */
+    @RequiresPermission(MANAGE_SAFETY_CENTER)
+    public void removeOnSafetyCenterDataChangedListener(
+            @NonNull OnSafetyCenterDataChangedListener listener) {
+        requireNonNull(listener, "listener cannot be null");
+
+        synchronized (mListenersLock) {
+            ListenerDelegate delegate = mListenersToDelegates.get(listener);
+            if (delegate == null) return;
+
+            try {
+                mService.removeOnSafetyCenterDataChangedListener(delegate);
+            } catch (RemoteException e) {
+                throw e.rethrowFromSystemServer();
+            }
+            mListenersToDelegates.remove(listener);
+        }
+    }
+
+    /**
+     * Dismiss an active safety issue and prevent it from appearing in the Safety Center or
+     * affecting the overall safety status.
+     *
+     * @param issueId the target issue ID returned by {@link SafetyCenterIssue#getId()}
+     */
+    @RequiresPermission(MANAGE_SAFETY_CENTER)
+    public void dismissSafetyIssue(@NonNull String issueId) {
+        try {
+            mService.dismissSafetyIssue(issueId);
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
+    private static final class ListenerDelegate
+            extends IOnSafetyCenterDataChangedListener.Stub {
+        @NonNull
+        private final Executor mExecutor;
+        @NonNull
+        private final OnSafetyCenterDataChangedListener mOriginalListener;
+
+        private ListenerDelegate(
+                @NonNull Executor executor,
+                @NonNull OnSafetyCenterDataChangedListener originalListener) {
+            mExecutor = executor;
+            mOriginalListener = originalListener;
+        }
+
+        @Override
+        public void onSafetyCenterDataChanged(@NonNull SafetyCenterData safetyCenterData)
+                throws RemoteException {
+            final long token = Binder.clearCallingIdentity();
+
+            try {
+                mExecutor.execute(
+                        () -> mOriginalListener.onSafetyCenterDataChanged(safetyCenterData));
+            } finally {
+                Binder.restoreCallingIdentity(token);
+            }
         }
     }
 }
