@@ -107,7 +107,7 @@ public final class SafetyCenterEntryGroup implements Parcelable {
     /** Returns the entries that comprise this entry group. */
     @NonNull
     public List<SafetyCenterEntry> getEntries() {
-        return mEntries;
+        return new ArrayList<>(mEntries);
     }
 
     @Override
