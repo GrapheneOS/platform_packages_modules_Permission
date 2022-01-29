@@ -788,7 +788,7 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
             groups.add(group);
         }
         for (AppPermissionGroup group : groups) {
-            group.setOneTime(true);
+            group.setSelfRevoked();
             group.persistChanges(false);
 
             // We cannot call persistChanges for the background AppPermissionGroup if there is no
@@ -796,7 +796,7 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
             // session that was started when the (foreground) group persisted changes
             AppPermissionGroup bgGroup = group.getBackgroundPermissions();
             if (bgGroup != null && bgGroup.areRuntimePermissionsGranted()) {
-                bgGroup.setOneTime(true);
+                bgGroup.setSelfRevoked();
                 bgGroup.persistChanges(false);
             }
         }

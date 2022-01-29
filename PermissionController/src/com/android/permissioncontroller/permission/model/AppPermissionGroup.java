@@ -141,6 +141,8 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
      */
     private boolean mTriggerLocationAccessCheckOnPersist;
 
+    private boolean mIsSelfRevoked;
+
     /**
      * Create the app permission group.
      *
@@ -1172,6 +1174,14 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
     }
 
     /**
+     * Mark this group as having been self-revoked. This also sets all permissions as one-time.
+     */
+    public void setSelfRevoked() {
+        mIsSelfRevoked = true;
+        setOneTime(true);
+    }
+
+    /**
      * Set the one-time flag for all permissions in this group.
      *
      * @param isOneTime if the flag should be set or not
@@ -1504,6 +1514,7 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
             mContext.getSystemService(PermissionManager.class)
                     .startOneTimePermissionSession(packageName,
                             Utils.getOneTimePermissionsTimeout(),
+                            Utils.getOneTimePermissionsKilledDelay(mIsSelfRevoked),
                             ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_RESET_TIMER,
                             ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_KEEP_SESSION_ALIVE);
         } else {

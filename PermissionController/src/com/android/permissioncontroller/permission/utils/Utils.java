@@ -159,6 +159,10 @@ public final class Utils {
     private static final String PROPERTY_ONE_TIME_PERMISSIONS_TIMEOUT_MILLIS =
             "one_time_permissions_timeout_millis";
 
+    /** The delay before ending a one-time permission session when all processes are dead */
+    private static final String PROPERTY_ONE_TIME_PERMISSIONS_KILLED_DELAY_MILLIS =
+            "one_time_permissions_killed_delay_millis";
+
     /** Whether to show location access check notifications. */
     private static final String PROPERTY_LOCATION_ACCESS_CHECK_ENABLED =
             "location_access_check_enabled";
@@ -190,6 +194,12 @@ public final class Utils {
      * The default length of the timeout for one-time permissions
      */
     public static final long ONE_TIME_PERMISSIONS_TIMEOUT_MILLIS = 1 * 60 * 1000; // 1 minute
+
+    /**
+     * The default length to wait before ending a one-time permission session after all processes
+     * are dead.
+     */
+    public static final long ONE_TIME_PERMISSIONS_KILLED_DELAY_MILLIS = 5 * 1000;
 
     /** Mapping permission -> group for all dangerous platform permissions */
     private static final ArrayMap<String, String> PLATFORM_PERMISSIONS;
@@ -1082,6 +1092,25 @@ public final class Utils {
     public static long getOneTimePermissionsTimeout() {
         return DeviceConfig.getLong(DeviceConfig.NAMESPACE_PERMISSIONS,
                 PROPERTY_ONE_TIME_PERMISSIONS_TIMEOUT_MILLIS, ONE_TIME_PERMISSIONS_TIMEOUT_MILLIS);
+    }
+
+    /**
+     * Returns the delay in milliseconds before revoking permissions at the end of a one-time
+     * permission session if all processes have been killed.
+     * If the session was triggered by a self-revocation, then revocation should happen
+     * immediately. For a regular one-time permission session, a grace period allows a quick
+     * app restart without losing the permission.
+     * @param isSelfRevoked If true, return the delay for a self-revocation session. Otherwise,
+     *                      return delay for a regular one-time permission session.
+     */
+    public static long getOneTimePermissionsKilledDelay(boolean isSelfRevoked) {
+        if (isSelfRevoked) {
+            // For a self-revoked session, we revoke immediately when the process dies.
+            return 0;
+        }
+        return DeviceConfig.getLong(DeviceConfig.NAMESPACE_PERMISSIONS,
+                PROPERTY_ONE_TIME_PERMISSIONS_KILLED_DELAY_MILLIS,
+                ONE_TIME_PERMISSIONS_KILLED_DELAY_MILLIS);
     }
 
     /**
