@@ -35,6 +35,9 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.UserHandle;
 import android.provider.Settings;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.style.ClickableSpan;
 import android.util.ArrayMap;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -46,6 +49,7 @@ import androidx.annotation.RequiresApi;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
+import androidx.preference.PreferenceScreen;
 
 import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
@@ -59,6 +63,7 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.settingslib.HelpUtils;
 import com.android.settingslib.utils.applications.AppUtils;
+import com.android.settingslib.widget.FooterPreference;
 
 import java.text.Collator;
 import java.util.ArrayList;
@@ -85,6 +90,8 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
     private static final String STORAGE_ALLOWED_FULL = "allowed_storage_full";
     private static final String STORAGE_ALLOWED_SCOPED = "allowed_storage_scoped";
     private static final String BLOCKED_SENSOR_PREF_KEY = "sensor_card";
+    private static final String STORAGE_FOOTER_CATEGORY_KEY = "storage_footer_category";
+    private static final String STORAGE_FOOTER_PREFERENCE_KEY = "storage_footer_preference";
     private static final int SHOW_LOAD_DELAY_MS = 200;
 
     private static final int MENU_PERMISSION_USAGE = MENU_HIDE_SYSTEM + 1;
@@ -279,6 +286,41 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
         return sensorCard;
     }
 
+    private SpannableString getLinkToAllFilesAccess(Context context) {
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View widget) {
+                context.startActivity(
+                        new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION));
+            }
+        };
+        SpannableString spannableString =
+                new SpannableString(getString(R.string.storage_footer_hyperlink_text));
+        spannableString.setSpan(clickableSpan, 0, spannableString.length(), 0);
+        return spannableString;
+    }
+
+    private void addStorageFooterSeeAllFilesAccess() {
+        PreferenceScreen screen = getPreferenceScreen();
+        Context context = screen.getPreferenceManager().getContext();
+        PreferenceCategory preferenceCategory = findPreference(STORAGE_FOOTER_CATEGORY_KEY);
+        Preference existingPreference = findPreference(STORAGE_FOOTER_PREFERENCE_KEY);
+
+        if (preferenceCategory == null || existingPreference != null) {
+            return;
+        }
+
+        FooterPreference preference = new FooterPreference(context);
+        preference.setKey(STORAGE_FOOTER_PREFERENCE_KEY);
+        preference.setIcon(Utils.applyTint(getActivity(), R.drawable.ic_info_outline,
+                android.R.attr.colorControlNormal));
+        preference.setSummary(new SpannableStringBuilder(
+                getString(R.string.storage_footer_warning_text))
+                .append("\n\n")
+                .append(getLinkToAllFilesAccess(context)));
+        preferenceCategory.addPreference(preference);
+    }
+
     @RequiresApi(Build.VERSION_CODES.S)
     private void removeSensorCard() {
         CardViewPreference sensorCard = findPreference(BLOCKED_SENSOR_PREF_KEY);
@@ -461,6 +503,10 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
             } else {
                 KotlinUtils.INSTANCE.sortPreferenceGroup(category, this::comparePreference, false);
             }
+        }
+
+        if (SdkLevel.isAtLeastT() && Manifest.permission_group.STORAGE.equals(mPermGroupName)) {
+            addStorageFooterSeeAllFilesAccess();
         }
 
         mViewModel.setCreationLogged(true);
