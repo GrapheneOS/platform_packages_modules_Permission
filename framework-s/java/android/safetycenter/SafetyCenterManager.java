@@ -215,8 +215,10 @@ public final class SafetyCenterManager {
     public void sendSafetyCenterUpdate(@NonNull SafetySourceData safetySourceData) {
         requireNonNull(safetySourceData, "safetySourceData cannot be null");
         try {
-            mService.sendSafetyCenterUpdate(mContext.getPackageName(),
-                    mContext.getUser().getIdentifier(), safetySourceData);
+            mService.sendSafetyCenterUpdate(
+                    safetySourceData,
+                    mContext.getPackageName(),
+                    mContext.getUser().getIdentifier());
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }
@@ -235,8 +237,10 @@ public final class SafetyCenterManager {
     public SafetySourceData getLastSafetyCenterUpdate(@NonNull String safetySourceId) {
         requireNonNull(safetySourceId, "safetySourceId cannot be null");
         try {
-            return mService.getLastSafetyCenterUpdate(mContext.getPackageName(),
-                    mContext.getUser().getIdentifier(), safetySourceId);
+            return mService.getLastSafetyCenterUpdate(
+                    safetySourceId,
+                    mContext.getPackageName(),
+                    mContext.getUser().getIdentifier());
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }
@@ -271,7 +275,7 @@ public final class SafetyCenterManager {
     @RequiresPermission(MANAGE_SAFETY_CENTER)
     public void refreshSafetySources(@RefreshReason int refreshReason) {
         try {
-            mService.refreshSafetySources(refreshReason);
+            mService.refreshSafetySources(refreshReason, mContext.getUser().getIdentifier());
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }
@@ -298,7 +302,7 @@ public final class SafetyCenterManager {
     @NonNull
     public SafetyCenterData getSafetyCenterData() {
         try {
-            return mService.getSafetyCenterData();
+            return mService.getSafetyCenterData(mContext.getUser().getIdentifier());
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }
@@ -320,9 +324,9 @@ public final class SafetyCenterManager {
             if (mListenersToDelegates.containsKey(listener)) return;
 
             ListenerDelegate delegate = new ListenerDelegate(executor, listener);
-
             try {
-                mService.addOnSafetyCenterDataChangedListener(delegate);
+                mService.addOnSafetyCenterDataChangedListener(
+                        delegate, mContext.getUser().getIdentifier());
             } catch (RemoteException e) {
                 throw e.rethrowFromSystemServer();
             }
@@ -345,7 +349,8 @@ public final class SafetyCenterManager {
             if (delegate == null) return;
 
             try {
-                mService.removeOnSafetyCenterDataChangedListener(delegate);
+                mService.removeOnSafetyCenterDataChangedListener(
+                        delegate, mContext.getUser().getIdentifier());
             } catch (RemoteException e) {
                 throw e.rethrowFromSystemServer();
             }
@@ -362,7 +367,7 @@ public final class SafetyCenterManager {
     @RequiresPermission(MANAGE_SAFETY_CENTER)
     public void dismissSafetyIssue(@NonNull String issueId) {
         try {
-            mService.dismissSafetyIssue(issueId);
+            mService.dismissSafetyIssue(issueId, mContext.getUser().getIdentifier());
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }
