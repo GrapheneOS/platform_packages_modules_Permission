@@ -50,6 +50,8 @@ public final class SafetyCenterStatus implements Parcelable {
      *
      * @see #getSeverityLevel()
      * @see Builder#setSeverityLevel(int)
+     *
+     * @hide
      */
     @Retention(RetentionPolicy.SOURCE)
     @IntDef(prefix = "OVERALL_SEVERITY_LEVEL_", value = {
@@ -58,7 +60,7 @@ public final class SafetyCenterStatus implements Parcelable {
             OVERALL_SEVERITY_LEVEL_RECOMMENDATION,
             OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING,
     })
-    @interface OverallSeverityLevel {
+    public @interface OverallSeverityLevel {
     }
 
     /** Indicates the overall severity level of the Safety Center is not currently known. */
@@ -80,6 +82,8 @@ public final class SafetyCenterStatus implements Parcelable {
      *
      * @see #getRefreshStatus()
      * @see Builder#setRefreshStatus(int)
+     *
+     * @hide
      */
     @Retention(RetentionPolicy.SOURCE)
     @IntDef(prefix = "REFRESH_STATUS_", value = {
@@ -87,7 +91,7 @@ public final class SafetyCenterStatus implements Parcelable {
             REFRESH_STATUS_DATA_FETCH_IN_PROGRESS,
             REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS,
     })
-    @interface RefreshStatus {
+    public @interface RefreshStatus {
     }
 
     /** Indicates that no refresh is ongoing. */
