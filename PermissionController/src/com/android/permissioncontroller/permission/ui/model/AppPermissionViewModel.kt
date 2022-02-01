@@ -237,9 +237,10 @@ class AppPermissionViewModel(
                 }
 
                 allowedAlwaysState.isChecked = group.background.isGranted &&
-                    group.foreground.isGranted && !group.isOneTime
+                    group.foreground.isGranted && !group.background.isOneTime
                 allowedForegroundState.isChecked = group.foreground.isGranted &&
-                    !group.background.isGranted && !group.isOneTime
+                        (!group.background.isGranted || group.background.isOneTime) &&
+                        !group.foreground.isOneTime
                 askState.isChecked = !group.foreground.isGranted && group.isOneTime
                 askOneTimeState.isChecked = group.foreground.isGranted && group.isOneTime
                 askOneTimeState.isShown = askOneTimeState.isChecked
@@ -266,7 +267,7 @@ class AppPermissionViewModel(
                 // Allow / Deny case
                 allowedState.isShown = true
 
-                allowedState.isChecked = group.foreground.isGranted
+                allowedState.isChecked = group.foreground.isGranted && !group.foreground.isOneTime
                 askState.isChecked = !group.foreground.isGranted && group.isOneTime
                 askOneTimeState.isChecked = group.foreground.isGranted && group.isOneTime
                 askOneTimeState.isShown = askOneTimeState.isChecked
