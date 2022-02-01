@@ -281,11 +281,10 @@ public final class SafetyCenterService extends SystemService {
                 // TODO(b/215144069): Add cross profile support for safety sources which support
                 //  both personal and work profile. This implementation invokes
                 //  `sendBroadcastAsUser` in order to invoke the permission.
-                // TODO(b/215165724): Add receiver permission `SEND_SAFETY_CENTER_UPDATE`.
                 // The following operation requires INTERACT_ACROSS_USERS permission.
                 getContext().sendBroadcastAsUser(broadcastIntent,
                         UserHandle.CURRENT,
-                        null /* receiverPermission */,
+                        SEND_SAFETY_CENTER_UPDATE,
                         broadcastOptions.toBundle());
             } finally {
                 Binder.restoreCallingIdentity(callingId);
