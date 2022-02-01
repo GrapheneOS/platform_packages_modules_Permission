@@ -404,13 +404,16 @@ public final class SafetyCenterEntry implements Parcelable {
     /** An optional additional action with an icon for a {@link SafetyCenterEntry}. */
     public static final class IconAction implements Parcelable {
 
-        /** All possible icon action types. */
+        /**
+         * All possible icon action types.
+         * @hide
+         */
         @Retention(RetentionPolicy.SOURCE)
         @IntDef(prefix = "ICON_ACTION_TYPE_", value = {
                 ICON_ACTION_TYPE_GEAR,
                 ICON_ACTION_TYPE_INFO,
         })
-        @interface IconActionType {
+        public @interface IconActionType {
         }
 
         /** A gear-type icon action, e.g. that links to a settings page for a specific entry. */
