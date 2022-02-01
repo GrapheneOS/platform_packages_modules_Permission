@@ -57,6 +57,7 @@ import com.android.permissioncontroller.permission.ui.auto.AutoManageStandardPer
 import com.android.permissioncontroller.permission.ui.auto.AutoPermissionAppsFragment;
 import com.android.permissioncontroller.permission.ui.auto.AutoReviewPermissionDecisionsFragment;
 import com.android.permissioncontroller.permission.ui.auto.AutoUnusedAppsFragment;
+import com.android.permissioncontroller.permission.ui.auto.dashboard.AutoPermissionUsageDetailsFragment;
 import com.android.permissioncontroller.permission.ui.auto.dashboard.AutoPermissionUsageFragment;
 import com.android.permissioncontroller.permission.ui.handheld.AppPermissionFragment;
 import com.android.permissioncontroller.permission.ui.handheld.AppPermissionGroupsFragment;
@@ -198,8 +199,14 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                         .getBooleanExtra(EXTRA_SHOW_SYSTEM, false);
                 boolean show7Days = getIntent()
                         .getBooleanExtra(EXTRA_SHOW_7_DAYS, false);
-                androidXFragment = PermissionDetailsWrapperFragment
-                        .newInstance(groupName, Long.MAX_VALUE, showSystem, sessionId, show7Days);
+                if (DeviceUtils.isAuto(this)) {
+                    androidXFragment = AutoPermissionUsageDetailsFragment.Companion.newInstance(
+                            groupName, showSystem, sessionId);
+                } else {
+                    androidXFragment = PermissionDetailsWrapperFragment
+                            .newInstance(groupName, Long.MAX_VALUE, showSystem, sessionId,
+                                    show7Days);
+                }
                 break;
             }
 
