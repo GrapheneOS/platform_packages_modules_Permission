@@ -375,6 +375,12 @@
     <!-- Link text for intent out to location provider [CHAR LIMIT=20] -->
     <string name="permission_usage_access_dialog_learn_more">Learn more</string>
 
+    <!-- Summary for preference to manage a permission for a group like location or microphone [CHAR LIMIT=60] -->
+    <string name="manage_permission_summary">Control app access to your <xliff:g id="permgroup" example="Location">%1$s</xliff:g></string>
+
+    <!-- Summary for preference about microphone usage on Auto. On Auto, the access time is combined with the summary text. [CHAR LIMIT=60] -->
+    <string name="auto_permission_usage_timeline_summary"><xliff:g id="access_time" example="12:23am">%1$s</xliff:g> \u2022 <xliff:g id="summary_text" example="2 mins">%2$s</xliff:g></string>
+
     <!-- Label which separates a combination of 2 of the following 3 in order : an attribution text, proxy app name (an app which uses a permission on behalf of another app), and a usage duration, with a bullet point [CHAR LIMIT=NONE]-->
     <string name="history_preference_subtext_2"><xliff:g id="app_name" example="Gmail">%1$s</xliff:g> \u2022 <xliff:g id="truncated_time" example="1 hr 20min">%2$s</xliff:g></string>
 
