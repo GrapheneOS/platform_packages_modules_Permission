@@ -37,6 +37,7 @@ import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.app.AppOpsManager;
 import android.app.BroadcastOptions;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -257,9 +258,12 @@ public final class SafetyCenterService extends SystemService {
                     throw new IllegalArgumentException("Invalid refresh reason: " + refreshReason);
             }
 
-            // TODO(b/215145516): Send explicit intents to safety sources instead.
+            // TODO(b/215145516): Send explicit intents to safety sources inferred from the xml
+            //  config. For now, an explicit intent to a hard-coded components has been used.
             Intent broadcastIntent = new Intent(ACTION_REFRESH_SAFETY_SOURCES)
                     .putExtra(EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE, requestType)
+                    .setComponent(new ComponentName("android.safetycenter.cts",
+                            "android.safetycenter.cts.SafetySourceBroadcastReceiver"))
                     .setFlags(FLAG_RECEIVER_FOREGROUND);
 
             // We don't require the caller to have INTERACT_ACROSS_USERS and
