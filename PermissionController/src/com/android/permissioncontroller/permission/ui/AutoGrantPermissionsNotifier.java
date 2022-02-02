@@ -19,6 +19,7 @@ package com.android.permissioncontroller.permission.ui;
 import static android.app.PendingIntent.FLAG_IMMUTABLE;
 import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
 import static android.app.PendingIntent.getActivity;
+import static android.app.admin.DevicePolicyResources.Strings.PermissionController.LOCATION_AUTO_GRANTED_MESSAGE;
 import static android.content.Intent.ACTION_MANAGE_APP_PERMISSION;
 import static android.content.Intent.EXTRA_PACKAGE_NAME;
 import static android.content.Intent.EXTRA_PERMISSION_GROUP_NAME;
@@ -40,6 +41,7 @@ import android.Manifest;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.admin.DevicePolicyManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -57,6 +59,7 @@ import android.util.ArraySet;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
 
 import java.util.ArrayList;
@@ -155,8 +158,18 @@ public class AutoGrantPermissionsNotifier {
 
         String title = mContext.getString(
                 R.string.auto_granted_location_permission_notification_title);
-        String messageText = mContext.getString(R.string.auto_granted_permission_notification_body,
-                pkgLabel);
+        String messageText;
+        if (SdkLevel.isAtLeastT()) {
+            DevicePolicyManager dpm = getSystemServiceSafe(mContext, DevicePolicyManager.class);
+            messageText = dpm.getString(
+                    LOCATION_AUTO_GRANTED_MESSAGE,
+                    () -> mContext.getString(
+                            R.string.auto_granted_permission_notification_body, pkgLabel),
+                    pkgLabel);
+        } else {
+            messageText = mContext.getString(
+                    R.string.auto_granted_permission_notification_body, pkgLabel);
+        }
         Notification.Builder b = (new Notification.Builder(mContext,
                 getNotificationChannelId(shouldNotifySilently))).setContentTitle(title)
                 .setContentText(messageText)

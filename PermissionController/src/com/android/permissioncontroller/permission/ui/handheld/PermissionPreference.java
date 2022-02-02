@@ -16,13 +16,19 @@
 
 package com.android.permissioncontroller.permission.ui.handheld;
 
+import static android.app.admin.DevicePolicyResources.Strings.PermissionController.BACKGROUND_ACCESS_DISABLED_BY_ADMIN_MESSAGE;
+import static android.app.admin.DevicePolicyResources.Strings.PermissionController.BACKGROUND_ACCESS_ENABLED_BY_ADMIN_MESSAGE;
+import static android.app.admin.DevicePolicyResources.Strings.PermissionController.FOREGROUND_ACCESS_ENABLED_BY_ADMIN_MESSAGE;
+
 import static com.android.permissioncontroller.permission.utils.Utils.DEFAULT_MAX_LABEL_SIZE_PX;
 import static com.android.permissioncontroller.permission.utils.Utils.getRequestMessage;
+import static com.android.permissioncontroller.permission.utils.Utils.getSystemServiceSafe;
 
 import static java.lang.annotation.RetentionPolicy.SOURCE;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.admin.DevicePolicyManager;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.UserHandle;
@@ -36,6 +42,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceFragmentCompat;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.model.Permission;
@@ -391,26 +398,40 @@ class PermissionPreference extends MultiTargetSwitchPreference {
             if (isBackgroundPolicyFixed()) {
                 if (backgroundGroup.areRuntimePermissionsGranted()) {
                     if (hasAdmin) {
-                        setSummary(R.string.permission_summary_enabled_by_admin_background_only);
+                        setSummary(getEnterpriseString(
+                                BACKGROUND_ACCESS_ENABLED_BY_ADMIN_MESSAGE,
+                                R.string.permission_summary_enabled_by_admin_background_only));
                     } else {
                         setSummary(R.string.permission_summary_enabled_by_policy_background_only);
                     }
                 } else {
                     if (hasAdmin) {
-                        setSummary(R.string.permission_summary_disabled_by_admin_background_only);
+                        setSummary(getEnterpriseString(
+                                BACKGROUND_ACCESS_DISABLED_BY_ADMIN_MESSAGE,
+                                R.string.permission_summary_disabled_by_admin_background_only));
                     } else {
                         setSummary(R.string.permission_summary_disabled_by_policy_background_only);
                     }
                 }
             } else if (isForegroundPolicyFixed()) {
                 if (hasAdmin) {
-                    setSummary(R.string.permission_summary_enabled_by_admin_foreground_only);
+                    setSummary(getEnterpriseString(
+                            FOREGROUND_ACCESS_ENABLED_BY_ADMIN_MESSAGE,
+                            R.string.permission_summary_enabled_by_admin_foreground_only));
                 } else {
                     setSummary(R.string.permission_summary_enabled_by_policy_foreground_only);
                 }
             }
         }
     }
+
+    private String getEnterpriseString(String updatableStringId, int defaultStringId) {
+        DevicePolicyManager dpm = getSystemServiceSafe(getContext(), DevicePolicyManager.class);
+        return SdkLevel.isAtLeastT()
+                ? dpm.getString(updatableStringId, () -> getContext().getString(defaultStringId))
+                : getContext().getString(defaultStringId);
+    }
+
 
     /**
      * Show all individual permissions in this group in a new fragment.
