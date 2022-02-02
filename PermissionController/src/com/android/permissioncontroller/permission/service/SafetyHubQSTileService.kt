@@ -33,12 +33,16 @@ class SafetyHubQSTileService : TileService() {
     private var disabled = false
 
     override fun onBind(intent: Intent?): IBinder? {
+        /*
+        TODO ntmyren: open permissions to permissioncontroller
         val scManager = getSystemService(SafetyCenterManager::class.java)!!
         if (!scManager.isSafetyCenterEnabled) {
             packageManager.setComponentEnabledSetting(ComponentName(this, this::class.java),
                 PackageManager.COMPONENT_ENABLED_STATE_DISABLED, 0)
             disabled = true
         }
+
+         */
 
         return super.onBind(intent)
     }
