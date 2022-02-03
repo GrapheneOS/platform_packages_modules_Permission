@@ -56,6 +56,8 @@ public final class SafetyCenterEntry implements Parcelable {
      *
      * @see SafetyCenterEntry#getSeverityLevel()
      * @see Builder#setSeverityLevel(int)
+     *
+     * @hide
      */
     @Retention(RetentionPolicy.SOURCE)
     @IntDef(prefix = "ENTRY_SEVERITY_LEVEL_", value = {
@@ -66,7 +68,7 @@ public final class SafetyCenterEntry implements Parcelable {
             ENTRY_SEVERITY_LEVEL_RECOMMENDATION,
             ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING,
     })
-    @interface EntrySeverityLevel {
+    public @interface EntrySeverityLevel {
     }
 
     /** Indicates the severity level of this entry is not currently known. */
@@ -100,13 +102,15 @@ public final class SafetyCenterEntry implements Parcelable {
      * <p>The stateless icon type indicates which icon should be used for a specific stateless entry
      * or entry group, and is only relevant when the entry's severity level is {@link
      * #ENTRY_SEVERITY_LEVEL_STATELESS}.
+     *
+     * @hide
      */
     @Retention(RetentionPolicy.SOURCE)
     @IntDef(prefix = "STATELESS_ICON_TYPE_", value = {
             STATELESS_ICON_TYPE_NONE,
             STATELESS_ICON_TYPE_PRIVACY
     })
-    @interface StatelessIconType {
+    public @interface StatelessIconType {
     }
 
     /** Indicates the stateless entry should not use an icon. */
@@ -400,13 +404,16 @@ public final class SafetyCenterEntry implements Parcelable {
     /** An optional additional action with an icon for a {@link SafetyCenterEntry}. */
     public static final class IconAction implements Parcelable {
 
-        /** All possible icon action types. */
+        /**
+         * All possible icon action types.
+         * @hide
+         */
         @Retention(RetentionPolicy.SOURCE)
         @IntDef(prefix = "ICON_ACTION_TYPE_", value = {
                 ICON_ACTION_TYPE_GEAR,
                 ICON_ACTION_TYPE_INFO,
         })
-        @interface IconActionType {
+        public @interface IconActionType {
         }
 
         /** A gear-type icon action, e.g. that links to a settings page for a specific entry. */

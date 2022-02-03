@@ -157,7 +157,9 @@ public final class SafetyCenterService extends SystemService {
         }
 
         @NonNull
-        private static Key of(@NonNull String packageName, int userId,
+        private static Key of(
+                @NonNull String packageName,
+                @UserIdInt int userId,
                 @NonNull String safetySourceId) {
             return new Key(packageName, userId, safetySourceId);
         }
@@ -165,14 +167,9 @@ public final class SafetyCenterService extends SystemService {
         @Override
         public String toString() {
             return "Key{"
-                    + "mPackageName='"
-                    + mPackageName
-                    + '\''
-                    + ", mUserId="
-                    + mUserId
-                    + ", mSafetySourceId='"
-                    + mSafetySourceId
-                    + '\''
+                    + "mPackageName='" + mPackageName + '\''
+                    + ", mUserId=" + mUserId
+                    + ", mSafetySourceId='" + mSafetySourceId + '\''
                     + '}';
         }
 
@@ -193,31 +190,35 @@ public final class SafetyCenterService extends SystemService {
 
     private final class Stub extends ISafetyCenterManager.Stub {
         @Override
-        public void sendSafetyCenterUpdate(@NonNull String packageName, @UserIdInt int userId,
-                @NonNull SafetySourceData safetySourceData) {
+        public void sendSafetyCenterUpdate(
+                @NonNull SafetySourceData safetySourceData,
+                @NonNull String packageName,
+                @UserIdInt int userId) {
             mAppOpsManager.checkPackage(Binder.getCallingUid(), packageName);
-            PermissionUtils.enforceCrossUserPermission(userId, false, "sendSafetyCenterUpdate",
-                    getContext());
+            PermissionUtils.enforceCrossUserPermission(
+                    userId, false, "sendSafetyCenterUpdate", getContext());
             getContext().enforceCallingOrSelfPermission(SEND_SAFETY_CENTER_UPDATE,
                     "sendSafetyCenterUpdate");
             // TODO(b/205706756): Security: check certs?
             // TODO(b/203098016): Implement merging logic.
             synchronized (mLock) {
-                mSafetySourceDataForKey.put(Key.of(packageName, userId, safetySourceData.getId()),
+                mSafetySourceDataForKey.put(
+                        Key.of(packageName, userId, safetySourceData.getId()),
                         safetySourceData);
             }
         }
 
         @Override
         @Nullable
-        public SafetySourceData getLastSafetyCenterUpdate(@NonNull String packageName,
-                @UserIdInt int userId,
-                @NonNull String safetySourceId) {
+        public SafetySourceData getLastSafetyCenterUpdate(
+                @NonNull String safetySourceId,
+                @NonNull String packageName,
+                @UserIdInt int userId) {
             mAppOpsManager.checkPackage(Binder.getCallingUid(), packageName);
-            PermissionUtils.enforceCrossUserPermission(userId, false, "getLastSafetyCenterUpdate",
-                    getContext());
-            getContext().enforceCallingOrSelfPermission(SEND_SAFETY_CENTER_UPDATE,
-                    "getLastSafetyCenterUpdate");
+            PermissionUtils.enforceCrossUserPermission(
+                    userId, false, "getLastSafetyCenterUpdate", getContext());
+            getContext().enforceCallingOrSelfPermission(
+                    SEND_SAFETY_CENTER_UPDATE, "getLastSafetyCenterUpdate");
             // TODO(b/205706756): Security: check certs?
             synchronized (mLock) {
                 return mSafetySourceDataForKey.get(Key.of(packageName, userId, safetySourceId));
@@ -242,9 +243,13 @@ public final class SafetyCenterService extends SystemService {
         }
 
         @Override
-        public void refreshSafetySources(@RefreshReason int refreshReason) {
-            getContext().enforceCallingPermission(MANAGE_SAFETY_CENTER,
-                    "refreshSafetySources");
+        public void refreshSafetySources(@RefreshReason int refreshReason, @UserIdInt int userId) {
+            // TODO(b/217235899): Finalize cross-user behavior
+            PermissionUtils.enforceCrossUserPermission(
+                    userId, false, "refreshSafetySources", getContext());
+
+            getContext().enforceCallingPermission(
+                    MANAGE_SAFETY_CENTER, "refreshSafetySources");
 
             int requestType;
             switch (refreshReason) {
@@ -294,8 +299,8 @@ public final class SafetyCenterService extends SystemService {
 
         @Override
         public void clearSafetyCenterData() {
-            getContext().enforceCallingOrSelfPermission(MANAGE_SAFETY_CENTER,
-                    "clearSafetyCenterData");
+            getContext().enforceCallingOrSelfPermission(
+                    MANAGE_SAFETY_CENTER, "clearSafetyCenterData");
 
             synchronized (mLock) {
                 mSafetySourceDataForKey.clear();
@@ -303,9 +308,13 @@ public final class SafetyCenterService extends SystemService {
         }
 
         @Override
-        public SafetyCenterData getSafetyCenterData() {
-            getContext().enforceCallingOrSelfPermission(MANAGE_SAFETY_CENTER,
-                    "getSafetyCenterData");
+        public SafetyCenterData getSafetyCenterData(@UserIdInt int userId) {
+            // TODO(b/217235899): Finalize cross-user behavior
+            PermissionUtils.enforceCrossUserPermission(
+                    userId, false, "getSafetyCenterData", getContext());
+
+            getContext().enforceCallingOrSelfPermission(
+                    MANAGE_SAFETY_CENTER, "getSafetyCenterData");
             // TODO(b/202386935): Implement this with real merged data.
             return new SafetyCenterData(
                     new SafetyCenterStatus.Builder()
@@ -321,9 +330,14 @@ public final class SafetyCenterService extends SystemService {
 
         @Override
         public void addOnSafetyCenterDataChangedListener(
-                IOnSafetyCenterDataChangedListener listener) {
-            getContext().enforceCallingOrSelfPermission(MANAGE_SAFETY_CENTER,
-                    "addOnSafetyCenterDataChangedListener");
+                IOnSafetyCenterDataChangedListener listener,
+                @UserIdInt int userId) {
+            // TODO(b/217235899): Finalize cross-user behavior
+            PermissionUtils.enforceCrossUserPermission(
+                    userId, false, "addOnSafetyCenterDataChangedListener", getContext());
+
+            getContext().enforceCallingOrSelfPermission(
+                    MANAGE_SAFETY_CENTER, "addOnSafetyCenterDataChangedListener");
             synchronized (mLock) {
                 mSafetyCenterDataChangedListeners.add(listener);
             }
@@ -331,18 +345,26 @@ public final class SafetyCenterService extends SystemService {
 
         @Override
         public void removeOnSafetyCenterDataChangedListener(
-                IOnSafetyCenterDataChangedListener listener) {
-            getContext().enforceCallingOrSelfPermission(MANAGE_SAFETY_CENTER,
-                    "removeOnSafetyCenterDataChangedListener");
+                IOnSafetyCenterDataChangedListener listener,
+                @UserIdInt int userId) {
+            // TODO(b/217235899): Finalize cross-user behavior
+            PermissionUtils.enforceCrossUserPermission(
+                    userId, false, "removeOnSafetyCenterDataChangedListener", getContext());
+            getContext().enforceCallingOrSelfPermission(
+                    MANAGE_SAFETY_CENTER, "removeOnSafetyCenterDataChangedListener");
             synchronized (mLock) {
                 mSafetyCenterDataChangedListeners.remove(listener);
             }
         }
 
         @Override
-        public void dismissSafetyIssue(String issueId) {
-            getContext().enforceCallingOrSelfPermission(MANAGE_SAFETY_CENTER,
-                    "dismissSafetyIssue");
+        public void dismissSafetyIssue(String issueId, @UserIdInt int userId) {
+            // TODO(b/217235899): Finalize cross-user behavior
+            PermissionUtils.enforceCrossUserPermission(
+                    userId, false, "dismissSafetyIssue", getContext());
+
+            getContext().enforceCallingOrSelfPermission(
+                    MANAGE_SAFETY_CENTER, "dismissSafetyIssue");
             // TODO(b/202387059): Implement issue dismissal
         }
 

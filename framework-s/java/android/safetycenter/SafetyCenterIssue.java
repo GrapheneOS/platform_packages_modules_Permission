@@ -59,6 +59,8 @@ public final class SafetyCenterIssue implements Parcelable {
      *
      * @see SafetyCenterIssue#getSeverityLevel()
      * @see Builder#setSeverityLevel(int)
+     *
+     * @hide
      */
     @Retention(RetentionPolicy.SOURCE)
     @IntDef(prefix = "ISSUE_SEVERITY_LEVEL_", value = {
@@ -66,7 +68,7 @@ public final class SafetyCenterIssue implements Parcelable {
             ISSUE_SEVERITY_LEVEL_RECOMMENDATION,
             ISSUE_SEVERITY_LEVEL_CRITICAL_WARNING,
     })
-    @interface IssueSeverityLevel {
+    public @interface IssueSeverityLevel {
     }
 
     /** Indicates that this is low-severity, and informational. */

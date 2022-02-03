@@ -34,15 +34,19 @@ interface ISafetyCenterManager {
     /**
      * Called by a safety source to send a SafetySourceData update to the safety center.
      */
-    void sendSafetyCenterUpdate(in String packageName, int userId,
-            in SafetySourceData safetySourceData);
+    void sendSafetyCenterUpdate(
+            in SafetySourceData safetySourceData,
+            String packageName,
+            int userId);
 
     /**
      * Returns the last SafetySourceData update received by the safety center for the given safety
      * source id.
      */
-    SafetySourceData getLastSafetyCenterUpdate(in String packageName, int userId,
-            in String safetySourceId);
+    SafetySourceData getLastSafetyCenterUpdate(
+            String safetySourceId,
+            String packageName,
+            int userId);
 
     /**
      * Returns whether the SafetyCenter page is enabled.
@@ -52,7 +56,7 @@ interface ISafetyCenterManager {
    /**
      * Requests safety sources to send a SafetySourceData update to Safety Center.
     */
-    void refreshSafetySources(in int refreshReason);
+    void refreshSafetySources(int refreshReason, int userId);
 
     /**
      * Clears all SafetySourceData updates sent to the safety center using sendSafetyCenterUpdate,
@@ -63,14 +67,18 @@ interface ISafetyCenterManager {
     /**
      * Returns the current SafetyCenterData, assembled from the SafetySourceData from all sources.
      */
-    SafetyCenterData getSafetyCenterData();
+    SafetyCenterData getSafetyCenterData(int userId);
 
-    void addOnSafetyCenterDataChangedListener(in IOnSafetyCenterDataChangedListener listener);
+    void addOnSafetyCenterDataChangedListener(
+            IOnSafetyCenterDataChangedListener listener,
+            int userId);
 
-    void removeOnSafetyCenterDataChangedListener(in IOnSafetyCenterDataChangedListener listener);
+    void removeOnSafetyCenterDataChangedListener(
+            IOnSafetyCenterDataChangedListener listener,
+            int userId);
 
     /**
      * Dismisses the issue corresponding to the given issue ID.
      */
-    void dismissSafetyIssue(in String issueId);
+    void dismissSafetyIssue(String issueId, int userId);
 }
