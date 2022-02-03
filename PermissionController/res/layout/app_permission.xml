@@ -174,7 +174,6 @@
                     android:src="@drawable/ic_info_outline"
                     android:layout_marginBottom="16dp"
                     android:layout_marginStart="24dp"
-                    android:contentDescription="Info"
                     style="@style/ImageViewIcon" />
 
                 <TextView
