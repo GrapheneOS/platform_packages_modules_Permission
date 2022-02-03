@@ -1359,7 +1359,7 @@ public final class Utils {
      **/
     public static boolean shouldDisplayCardIfBlocked(@NonNull String permissionGroupName) {
         return DeviceConfig.getBoolean(
-                DeviceConfig.NAMESPACE_PRIVACY, PROPERTY_WARNING_BANNER_DISPLAY_ENABLED, false) && (
+                DeviceConfig.NAMESPACE_PRIVACY, PROPERTY_WARNING_BANNER_DISPLAY_ENABLED, true) && (
                 CAMERA.equals(permissionGroupName) || MICROPHONE.equals(permissionGroupName)
                         || LOCATION.equals(permissionGroupName));
     }
