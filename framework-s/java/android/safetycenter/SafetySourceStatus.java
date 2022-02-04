@@ -47,8 +47,9 @@ import java.util.Objects;
 public final class SafetySourceStatus implements Parcelable {
 
     /**
-     * Indicates that no status is associated with the information. This status will be reflected in
-     * the UI through the absence of an icon.
+     * Indicates that no status is currently associated with the information. This may be due to the
+     * source not having sufficient information or opinion on the status level.
+     * This status will be reflected in the UI through a grey icon.
      */
     public static final int STATUS_LEVEL_NONE = 100;
 
@@ -56,7 +57,7 @@ public final class SafetySourceStatus implements Parcelable {
      * Indicates that no issues were detected. This status will be reflected in the UI through a
      * green icon.
      */
-    public static final int STATUS_LEVEL_NO_ISSUES = 200;
+    public static final int STATUS_LEVEL_OK = 200;
 
     /**
      * Indicates the presence of a medium-status issue which the user is encouraged to act on.
@@ -337,7 +338,7 @@ public final class SafetySourceStatus implements Parcelable {
     //  that there was an error retrieving data.
     @IntDef(prefix = {"STATUS_LEVEL_"}, value = {
             STATUS_LEVEL_NONE,
-            STATUS_LEVEL_NO_ISSUES,
+            STATUS_LEVEL_OK,
             STATUS_LEVEL_RECOMMENDATION,
             STATUS_LEVEL_CRITICAL_WARNING
     })
