@@ -1102,6 +1102,7 @@
         systemOnly="false"
         visible="false">
         <permissions>
+            <permission-set name="notifications" />
             <permission name="android.permission.BIND_DEVICE_ADMIN" />
             <permission name="android.permission.MANAGE_DEVICE_ADMINS" />
             <permission name="android.permission.NETWORK_MANAGED_PROVISIONING" />
