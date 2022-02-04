@@ -589,8 +589,10 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
             AppPermissionFragment fragment = (AppPermissionFragment) getParentFragment();
             boolean isGrantFileAccess = getArguments().getSerializable(CHANGE_REQUEST)
                     == ChangeRequest.GRANT_All_FILE_ACCESS;
+            boolean isGrantStorageSupergroup = getArguments().getSerializable(CHANGE_REQUEST)
+                    == ChangeRequest.GRANT_STORAGE_SUPERGROUP;
             int positiveButtonStringResId = R.string.grant_dialog_button_deny_anyway;
-            if (isGrantFileAccess) {
+            if (isGrantFileAccess || isGrantStorageSupergroup) {
                 positiveButtonStringResId = R.string.grant_dialog_button_allow;
             }
             AlertDialog.Builder b = new AlertDialog.Builder(getContext())
@@ -601,6 +603,9 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
                             (DialogInterface dialog, int which) -> {
                                 if (isGrantFileAccess) {
                                     fragment.mViewModel.setAllFilesAccess(true);
+                                    fragment.mViewModel.requestChange(false, fragment,
+                                            fragment, ChangeRequest.GRANT_BOTH, sCode);
+                                } else if (isGrantStorageSupergroup) {
                                     fragment.mViewModel.requestChange(false, fragment,
                                             fragment, ChangeRequest.GRANT_BOTH, sCode);
                                 } else {

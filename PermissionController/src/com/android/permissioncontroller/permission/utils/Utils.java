@@ -26,6 +26,8 @@ import static android.Manifest.permission_group.MICROPHONE;
 import static android.Manifest.permission_group.NEARBY_DEVICES;
 import static android.Manifest.permission_group.NOTIFICATIONS;
 import static android.Manifest.permission_group.PHONE;
+import static android.Manifest.permission_group.READ_MEDIA_AURAL;
+import static android.Manifest.permission_group.READ_MEDIA_VISUAL;
 import static android.Manifest.permission_group.SENSORS;
 import static android.Manifest.permission_group.SMS;
 import static android.Manifest.permission_group.STORAGE;
@@ -130,6 +132,13 @@ public final class Utils {
             Manifest.permission_group.CAMERA,
             Manifest.permission_group.MICROPHONE
     );
+
+    public static final List<String> STORAGE_SUPERGROUP_PERMISSIONS =
+            !SdkLevel.isAtLeastT() ? List.of() : List.of(
+                    Manifest.permission_group.STORAGE,
+                    Manifest.permission_group.READ_MEDIA_AURAL,
+                    Manifest.permission_group.READ_MEDIA_VISUAL
+            );
 
     private static final String LOG_TAG = "Utils";
 
@@ -277,6 +286,12 @@ public final class Utils {
         PLATFORM_PERMISSIONS.put(Manifest.permission.WRITE_EXTERNAL_STORAGE, STORAGE);
         PLATFORM_PERMISSIONS.put(Manifest.permission.ACCESS_MEDIA_LOCATION, STORAGE);
 
+        if (SdkLevel.isAtLeastT()) {
+            PLATFORM_PERMISSIONS.put(Manifest.permission.READ_MEDIA_AUDIO, READ_MEDIA_AURAL);
+            PLATFORM_PERMISSIONS.put(Manifest.permission.READ_MEDIA_IMAGE, READ_MEDIA_VISUAL);
+            PLATFORM_PERMISSIONS.put(Manifest.permission.READ_MEDIA_VIDEO, READ_MEDIA_VISUAL);
+        }
+
         PLATFORM_PERMISSIONS.put(Manifest.permission.ACCESS_FINE_LOCATION, LOCATION);
         PLATFORM_PERMISSIONS.put(Manifest.permission.ACCESS_COARSE_LOCATION, LOCATION);
         PLATFORM_PERMISSIONS.put(Manifest.permission.ACCESS_BACKGROUND_LOCATION, LOCATION);
@@ -350,6 +365,8 @@ public final class Utils {
         PERM_GROUP_REQUEST_RES.put(CALENDAR, R.string.permgrouprequest_calendar);
         PERM_GROUP_REQUEST_RES.put(SMS, R.string.permgrouprequest_sms);
         PERM_GROUP_REQUEST_RES.put(STORAGE, R.string.permgrouprequest_storage);
+        PERM_GROUP_REQUEST_RES.put(READ_MEDIA_AURAL, R.string.permgrouprequest_read_media_aural);
+        PERM_GROUP_REQUEST_RES.put(READ_MEDIA_VISUAL, R.string.permgrouprequest_read_media_visual);
         PERM_GROUP_REQUEST_RES.put(MICROPHONE, R.string.permgrouprequest_microphone);
         PERM_GROUP_REQUEST_RES
                 .put(ACTIVITY_RECOGNITION, R.string.permgrouprequest_activityRecognition);
@@ -1053,6 +1070,10 @@ public final class Utils {
                 return context.getString(R.string.permission_description_summary_nearby_devices);
             case PHONE:
                 return context.getString(R.string.permission_description_summary_phone);
+            case READ_MEDIA_AURAL:
+                return context.getString(R.string.permission_description_summary_read_media_aural);
+            case READ_MEDIA_VISUAL:
+                return context.getString(R.string.permission_description_summary_read_media_visual);
             case SENSORS:
                 return context.getString(R.string.permission_description_summary_sensors);
             case SMS:
