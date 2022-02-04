@@ -327,6 +327,7 @@ package android.safetycenter {
     method public int getStatusLevel();
     method @NonNull public CharSequence getSummary();
     method @NonNull public CharSequence getTitle();
+    method public boolean isEnabled();
     method public void writeToParcel(@NonNull android.os.Parcel, int);
     field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetySourceStatus> CREATOR;
     field public static final int STATUS_LEVEL_CRITICAL_WARNING = 400; // 0x190
@@ -338,6 +339,7 @@ package android.safetycenter {
   public static final class SafetySourceStatus.Builder {
     ctor public SafetySourceStatus.Builder(@NonNull CharSequence, @NonNull CharSequence, int, @NonNull android.app.PendingIntent);
     method @NonNull public android.safetycenter.SafetySourceStatus build();
+    method @NonNull public android.safetycenter.SafetySourceStatus.Builder setEnabled(boolean);
     method @NonNull public android.safetycenter.SafetySourceStatus.Builder setIconAction(@Nullable android.safetycenter.SafetySourceStatus.IconAction);
   }
 
