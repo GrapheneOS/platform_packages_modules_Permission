@@ -17,22 +17,25 @@
 package com.android.permissioncontroller.safetycenter.ui;
 
 import android.content.Context;
+import android.safetycenter.SafetyCenterStatus;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
 import com.android.permissioncontroller.R;
 
-/** Preference which displays a visual representation of {@link OverallSafetyStatus}. */
+/** Preference which displays a visual representation of {@link SafetyCenterStatus}. */
 public class SafetyStatusPreference extends Preference {
 
-    // Default status will be overwritten before displaying to the user. This is just here to avoid
-    // NPEs if this preference is misused.
-    private OverallSafetyStatus mStatus = new OverallSafetyStatus(
-            OverallSafetyStatus.Level.SAFETY_STATUS_LEVEL_UNKNOWN, "", "");
+    @Nullable
+    private SafetyCenterStatus mStatus;
+    @Nullable
+    private View.OnClickListener mRescanButtonOnClickListener;
 
     public SafetyStatusPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -43,15 +46,45 @@ public class SafetyStatusPreference extends Preference {
     public void onBindViewHolder(PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
 
-        ((ImageView) holder.findViewById(R.id.status_image)).setImageResource(
-                mStatus.getImageResId());
+        if (mStatus == null) {
+            return;
+        }
+
+        ((ImageView) holder.findViewById(R.id.status_image))
+                .setImageResource(toStatusImageResId(mStatus.getSeverityLevel()));
+
         ((TextView) holder.findViewById(R.id.status_title)).setText(mStatus.getTitle());
         ((TextView) holder.findViewById(R.id.status_summary)).setText(mStatus.getSummary());
+
+        if (mRescanButtonOnClickListener != null) {
+            holder.findViewById(R.id.rescan_button)
+                    .setOnClickListener(mRescanButtonOnClickListener);
+        }
     }
 
-    /** Set the {@link OverallSafetyStatus} to display. */
-    public void setSafetyStatus(OverallSafetyStatus status) {
+    void setSafetyStatus(SafetyCenterStatus status) {
         mStatus = status;
         notifyChanged();
+    }
+
+    void setRescanButtonOnClickListener(View.OnClickListener listener) {
+        mRescanButtonOnClickListener = listener;
+        notifyChanged();
+    }
+
+    private static int toStatusImageResId(int overallSeverityLevel) {
+        switch (overallSeverityLevel) {
+            case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN:
+                return R.drawable.safety_status_info;
+            case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK:
+                return R.drawable.safety_status_info;
+            case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_RECOMMENDATION:
+                return R.drawable.safety_status_recommendation;
+            case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING:
+                return R.drawable.safety_status_warn;
+        }
+        throw new IllegalArgumentException(
+                String.format("Unexpected SafetyCenterStatus.OverallSeverityLevel: %s",
+                        overallSeverityLevel));
     }
 }

@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/summary_placeholder"
-        android:textAppearance="@style/TextAppearance.SafetyStatusTitle"/>
+        android:textAppearance="@style/TextAppearance.SafetyStatusTitle" />
 
     <TextView
         android:id="@+id/status_summary"
@@ -45,5 +45,12 @@
         android:layout_height="wrap_content"
         android:paddingBottom="8dp"
         android:text="@string/summary_placeholder"
-        android:textAppearance="@style/TextAppearance.SafetyStatusSummary"/>
+        android:textAppearance="@style/TextAppearance.SafetyStatusSummary" />
+
+    <Button
+        android:id="@+id/rescan_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/safety_center_rescan_button"
+        style="@style/SafetyCenter.RescanButton"  />
 </LinearLayout>

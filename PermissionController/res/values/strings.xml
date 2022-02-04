@@ -1440,6 +1440,8 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
 
     <!-- Title for page containing overall view of device safety status [CHAR LIMIT=30] -->
     <string name="safety_center_dashboard_page_title">Security &amp; Privacy</string>
+    <!-- Label for the button that triggers a new scan for safety center data [CHAR LIMIT=60] -->
+    <string name="safety_center_rescan_button">Scan</string>
     <!-- Content description for the button dismisses a safety center issue [CHAR LIMIT=NONE] -->
     <string name="safety_center_issue_card_dismiss_button">Dismiss</string>
     <!-- Label for the button that takes the user to the settings page for Android Security  [CHAR LIMIT=60] -->
