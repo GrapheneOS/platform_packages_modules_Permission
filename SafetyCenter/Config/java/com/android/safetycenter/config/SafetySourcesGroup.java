@@ -16,12 +16,16 @@
 
 package com.android.safetycenter.config;
 
+import static com.android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_INTERNAL;
+import static com.android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY;
+
 import static java.util.Objects.requireNonNull;
 
 import android.annotation.IdRes;
 import android.annotation.IntDef;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
+import android.content.res.Resources;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -34,19 +38,50 @@ import java.util.Objects;
 public final class SafetySourcesGroup {
 
     /**
-     * Indicates that the primary safety sources group will not be displayed with any special icon
-     * when all the sources contained in it are stateless.
+     * Indicates that the safety sources group should be displayed as a collapsible group with an
+     * icon (stateless or stateful) and an optional default summary
+     */
+    public static final int SAFETY_SOURCES_GROUP_TYPE_COLLAPSIBLE = 0;
+
+    /**
+     * Indicates that the safety sources group should be displayed as a rigid group with no icon and
+     * no summary
+     */
+    public static final int SAFETY_SOURCES_GROUP_TYPE_RIGID = 1;
+
+    /**
+     * Indicates that the safety sources group should not be displayed.
+     */
+    public static final int SAFETY_SOURCES_GROUP_TYPE_HIDDEN = 2;
+
+    /**
+     * All possible types for a safety sources group.
+     *
+     * @hide
+     */
+    @Retention(RetentionPolicy.SOURCE)
+    @IntDef(prefix = "SAFETY_SOURCES_GROUP_TYPE_", value = {
+            SAFETY_SOURCES_GROUP_TYPE_COLLAPSIBLE,
+            SAFETY_SOURCES_GROUP_TYPE_RIGID,
+            SAFETY_SOURCES_GROUP_TYPE_HIDDEN
+    })
+    public @interface SafetySourceGroupType {
+    }
+
+    /**
+     * Indicates that the safety sources group will not be displayed with any special icon when all
+     * the sources contained in it are stateless.
      */
     public static final int STATELESS_ICON_TYPE_NONE = 0;
 
     /**
-     * Indicates that the primary safety sources group will be displayed with the privacy icon when
-     * all the sources contained in it are stateless.
+     * Indicates that the safety sources group will be displayed with the privacy icon when all the
+     * sources contained in it are stateless.
      */
     public static final int STATELESS_ICON_TYPE_PRIVACY = 1;
 
     /**
-     * All possible stateless icon types for a primary safety sources group.
+     * All possible stateless icon types for a safety sources group.
      *
      * @hide
      */
@@ -76,6 +111,18 @@ public final class SafetySourcesGroup {
         mSummaryResId = summaryResId;
         mStatelessIconType = statelessIconType;
         mSafetySources = safetySources;
+    }
+
+    /** Returns the type of this safety sources group. */
+    @SafetySourceGroupType
+    public int getType() {
+        if (mTitleResId == Resources.ID_NULL) {
+            return SAFETY_SOURCES_GROUP_TYPE_HIDDEN;
+        }
+        if (mSummaryResId != Resources.ID_NULL || mStatelessIconType != STATELESS_ICON_TYPE_NONE) {
+            return SAFETY_SOURCES_GROUP_TYPE_COLLAPSIBLE;
+        }
+        return SAFETY_SOURCES_GROUP_TYPE_RIGID;
     }
 
     /** Returns the id of this safety sources group. */
@@ -153,7 +200,8 @@ public final class SafetySourcesGroup {
         private final List<SafetySource> mSafetySources = new ArrayList<>();
 
         /** Creates a {@link Builder} for a {@link SafetySourcesGroup}. */
-        public Builder() {}
+        public Builder() {
+        }
 
         /** Sets the id of this safety sources group. */
         @NonNull
@@ -194,14 +242,23 @@ public final class SafetySourcesGroup {
         @NonNull
         public SafetySourcesGroup build() {
             BuilderUtils.validateAttribute(mId, "id", true, false);
-            int titleResId = BuilderUtils.validateResId(mTitleResId, "title", true, false);
-            int summaryResId = BuilderUtils.validateResId(mSummaryResId, "summary", true, false);
-            int statelessIconType = BuilderUtils.validateIntDef(mStatelessIconType,
-                    "statelessIconType", false, false, STATELESS_ICON_TYPE_NONE,
-                    STATELESS_ICON_TYPE_NONE, STATELESS_ICON_TYPE_PRIVACY);
             if (mSafetySources.isEmpty()) {
                 throw new IllegalStateException("Safety sources group empty");
             }
+            boolean titleRequired = false;
+            int safetySourcesSize = mSafetySources.size();
+            for (int i = 0; i < safetySourcesSize; i++) {
+                int type = mSafetySources.get(i).getType();
+                if (type != SAFETY_SOURCE_TYPE_ISSUE_ONLY && type != SAFETY_SOURCE_TYPE_INTERNAL) {
+                    titleRequired = true;
+                    break;
+                }
+            }
+            int titleResId = BuilderUtils.validateResId(mTitleResId, "title", titleRequired, false);
+            int summaryResId = BuilderUtils.validateResId(mSummaryResId, "summary", false, false);
+            int statelessIconType = BuilderUtils.validateIntDef(mStatelessIconType,
+                    "statelessIconType", false, false, STATELESS_ICON_TYPE_NONE,
+                    STATELESS_ICON_TYPE_NONE, STATELESS_ICON_TYPE_PRIVACY);
             return new SafetySourcesGroup(mId, titleResId, summaryResId, statelessIconType,
                     Collections.unmodifiableList(mSafetySources));
         }

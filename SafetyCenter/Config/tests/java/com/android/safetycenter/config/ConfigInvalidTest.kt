@@ -196,6 +196,66 @@ class ConfigInvalidTest {
                 "Prohibited attribute titleForWork present"
             ),
             Params(
+                "ConfigIssueOnlySafetySourceDuplicateKey",
+                R.raw.config_issue_only_safety_source_duplicate_key,
+                "Element safety-sources-config invalid",
+                "Duplicate id id among safety sources"
+            ),
+            Params(
+                "ConfigIssueOnlySafetySourceInvalidProfile",
+                R.raw.config_issue_only_safety_source_invalid_profile,
+                "Element safety-source invalid",
+                "Attribute profile invalid"
+            ),
+            Params(
+                "ConfigIssueOnlySafetySourceNoId",
+                R.raw.config_issue_only_safety_source_no_id,
+                "Element safety-source invalid",
+                "Required attribute id missing"
+            ),
+            Params(
+                "ConfigIssueOnlySafetySourceNoPackage",
+                R.raw.config_issue_only_safety_source_no_package,
+                "Element safety-source invalid",
+                "Required attribute packageName missing"
+            ),
+            Params(
+                "ConfigIssueOnlySafetySourceNoProfile",
+                R.raw.config_issue_only_safety_source_no_profile,
+                "Element safety-source invalid",
+                "Required attribute profile missing"
+            ),
+            Params(
+                "ConfigIssueOnlySafetySourceWithIntent",
+                R.raw.config_issue_only_safety_source_with_intent,
+                "Element safety-source invalid",
+                "Prohibited attribute intentAction present"
+            ),
+            Params(
+                "ConfigIssueOnlySafetySourceWithSearch",
+                R.raw.config_issue_only_safety_source_with_search,
+                "Element safety-source invalid",
+                "Prohibited attribute searchTerms present"
+            ),
+            Params(
+                "ConfigIssueOnlySafetySourceWithSummary",
+                R.raw.config_issue_only_safety_source_with_summary,
+                "Element safety-source invalid",
+                "Prohibited attribute summary present"
+            ),
+            Params(
+                "ConfigIssueOnlySafetySourceWithTitle",
+                R.raw.config_issue_only_safety_source_with_title,
+                "Element safety-source invalid",
+                "Prohibited attribute title present"
+            ),
+            Params(
+                "ConfigIssueOnlySafetySourceWithWork",
+                R.raw.config_issue_only_safety_source_with_work,
+                "Element safety-source invalid",
+                "Prohibited attribute titleForWork present"
+            ),
+            Params(
                 "ConfigMixedSafetySourceDuplicateKey",
                 R.raw.config_mixed_safety_source_duplicate_key,
                 "Element safety-sources-config invalid",
@@ -212,12 +272,6 @@ class ConfigInvalidTest {
                 R.raw.config_mixed_safety_source_no_type,
                 "Element safety-source invalid",
                 "Required attribute type missing"
-            ),
-            Params(
-                "ConfigMixedSafetySourcesGroupDuplicateId",
-                R.raw.config_mixed_safety_sources_group_duplicate_id,
-                "Element safety-sources-config invalid",
-                "Duplicate id id among safety sources groups"
             ),
             Params(
                 "ConfigReferenceInvalid",
@@ -274,12 +328,6 @@ class ConfigInvalidTest {
                 "Required attribute id missing"
             ),
             Params(
-                "ConfigSafetySourcesGroupNoSummary",
-                R.raw.config_safety_sources_group_no_summary,
-                "Element safety-sources-group invalid",
-                "Required attribute summary missing"
-            ),
-            Params(
                 "ConfigSafetySourcesGroupNoTitle",
                 R.raw.config_safety_sources_group_no_title,
                 "Element safety-sources-group invalid",
@@ -325,36 +373,6 @@ class ConfigInvalidTest {
                 "ConfigStaticSafetySourceNoTitle",
                 R.raw.config_static_safety_source_no_title,
                 "Element safety-source invalid",
-                "Required attribute title missing"
-            ),
-            Params(
-                "ConfigStaticSafetySourcesGroupDuplicateId",
-                R.raw.config_static_safety_sources_group_duplicate_id,
-                "Element safety-sources-config invalid",
-                "Duplicate id id among safety sources groups"
-            ),
-            Params(
-                "ConfigStaticSafetySourcesGroupEmpty",
-                R.raw.config_static_safety_sources_group_empty,
-                "Element static-safety-sources-group invalid",
-                "Static safety sources group empty"
-            ),
-            Params(
-                "ConfigStaticSafetySourcesGroupInvalidType",
-                R.raw.config_static_safety_sources_group_invalid_type,
-                "Element static-safety-sources-group invalid",
-                "Invalid safety source type 3 in safety sources group"
-            ),
-            Params(
-                "ConfigStaticSafetySourcesGroupNoId",
-                R.raw.config_static_safety_sources_group_no_id,
-                "Element static-safety-sources-group invalid",
-                "Required attribute id missing"
-            ),
-            Params(
-                "ConfigStaticSafetySourcesGroupNoTitle",
-                R.raw.config_static_safety_sources_group_no_title,
-                "Element static-safety-sources-group invalid",
                 "Required attribute title missing"
             ),
             Params(

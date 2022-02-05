@@ -16,6 +16,8 @@
 
 package com.android.safetycenter.config;
 
+import static  java.util.Objects.requireNonNull;
+
 import android.annotation.IdRes;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
@@ -56,7 +58,9 @@ public final class Parser {
     @Nullable
     public static SafetyCenterConfig parse(@NonNull InputStream in, @NonNull String resourcePkgName,
             @NonNull Resources resources) throws ParseException {
-        validateInput(in, resourcePkgName, resources);
+        requireNonNull(in);
+        requireNonNull(resourcePkgName);
+        requireNonNull(resources);
         com.android.safetycenter.config.parser.SafetyCenterConfig safetyCenterConfig;
         try {
             safetyCenterConfig = XmlParser.read(in);
@@ -81,8 +85,7 @@ public final class Parser {
             throw new ParseException("Element safety-sources-config missing");
         }
         SafetyCenterConfig.Builder builder = new SafetyCenterConfig.Builder();
-        if (parserSafetySourcesConfig.getSafetySourcesGroup() == null
-                || parserSafetySourcesConfig.getStaticSafetySourcesGroup() == null) {
+        if (parserSafetySourcesConfig.getSafetySourcesGroup() == null) {
             throw new ParseException("Element safety-sources-config invalid");
         }
         int safetySourcesGroupSize = parserSafetySourcesConfig.getSafetySourcesGroup().size();
@@ -91,15 +94,6 @@ public final class Parser {
                     parserSafetySourcesConfig.getSafetySourcesGroup().get(i);
             builder.addSafetySourcesGroup(
                     convert(parserSafetySourcesGroup, resourcePkgName, resources));
-        }
-        int staticSafetySourcesGroupSize =
-                parserSafetySourcesConfig.getStaticSafetySourcesGroup().size();
-        for (int i = 0; i < staticSafetySourcesGroupSize; i++) {
-            com.android.safetycenter.config.parser.StaticSafetySourcesGroup
-                    parserStaticSafetySourcesGroup =
-                    parserSafetySourcesConfig.getStaticSafetySourcesGroup().get(i);
-            builder.addStaticSafetySourcesGroup(
-                    convert(parserStaticSafetySourcesGroup, resourcePkgName, resources));
         }
         try {
             return builder.build();
@@ -139,7 +133,7 @@ public final class Parser {
             com.android.safetycenter.config.parser.SafetySource parserSafetySource =
                     parserSafetySourceList.get(i);
             builder.addSafetySource(
-                    convert(parserSafetySource, resourcePkgName, resources, "safety-source"));
+                    convert(parserSafetySource, resourcePkgName, resources));
         }
         try {
             return builder.build();
@@ -149,45 +143,12 @@ public final class Parser {
     }
 
     @NonNull
-    static StaticSafetySourcesGroup convert(
-            @Nullable com.android.safetycenter.config.parser.StaticSafetySourcesGroup
-                    parserStaticSafetySourcesGroup,
-            @NonNull String resourcePkgName, @NonNull Resources resources)
-            throws Parser.ParseException {
-        if (parserStaticSafetySourcesGroup == null) {
-            throw new Parser.ParseException("Element static-safety-sources-group invalid");
-        }
-        StaticSafetySourcesGroup.Builder builder = new StaticSafetySourcesGroup.Builder();
-        builder.setId(parserStaticSafetySourcesGroup.getId());
-        if (parserStaticSafetySourcesGroup.getTitle() != null) {
-            builder.setTitleResId(
-                    parseReference(parserStaticSafetySourcesGroup.getTitle(), resourcePkgName,
-                            resources, "static-safety-sources-group", "title"));
-        }
-        List<com.android.safetycenter.config.parser.SafetySource> parserStaticSafetySourceList =
-                parserStaticSafetySourcesGroup.getStaticSafetySource();
-        int parserStaticSafetySourceListSize = parserStaticSafetySourceList.size();
-        for (int i = 0; i < parserStaticSafetySourceListSize; i++) {
-            com.android.safetycenter.config.parser.SafetySource parserSafetySource =
-                    parserStaticSafetySourceList.get(i);
-            builder.addStaticSafetySource(
-                    convert(parserSafetySource, resourcePkgName, resources,
-                            "static-safety-source"));
-        }
-        try {
-            return builder.build();
-        } catch (IllegalStateException e) {
-            throw new ParseException("Element static-safety-sources-group invalid", e);
-        }
-    }
-
-    @NonNull
     static SafetySource convert(
             @Nullable com.android.safetycenter.config.parser.SafetySource parserSafetySource,
-            @NonNull String resourcePkgName, @NonNull Resources resources, @NonNull String name)
+            @NonNull String resourcePkgName, @NonNull Resources resources)
             throws Parser.ParseException {
         if (parserSafetySource == null) {
-            throw new Parser.ParseException(String.format("Element %s invalid", name));
+            throw new Parser.ParseException("Element safety-source invalid");
         }
         SafetySource.Builder builder = new SafetySource.Builder();
         if (parserSafetySource.getType() != 0) {
@@ -197,18 +158,18 @@ public final class Parser {
         builder.setPackageName(parserSafetySource.getPackageName());
         if (parserSafetySource.getTitle() != null) {
             builder.setTitleResId(
-                    parseReference(parserSafetySource.getTitle(), resourcePkgName, resources, name,
-                            "title"));
+                    parseReference(parserSafetySource.getTitle(), resourcePkgName, resources,
+                            "safety-source", "title"));
         }
         if (parserSafetySource.getTitleForWork() != null) {
             builder.setTitleForWorkResId(
                     parseReference(parserSafetySource.getTitleForWork(), resourcePkgName, resources,
-                            name, "titleForWork"));
+                            "safety-source", "titleForWork"));
         }
         if (parserSafetySource.getSummary() != null) {
             builder.setSummaryResId(
                     parseReference(parserSafetySource.getSummary(), resourcePkgName, resources,
-                            name, "summary"));
+                            "safety-source", "summary"));
         }
         builder.setIntentAction(parserSafetySource.getIntentAction());
         if (parserSafetySource.getProfile() != 0) {
@@ -220,7 +181,7 @@ public final class Parser {
         if (parserSafetySource.getSearchTerms() != null) {
             builder.setSearchTermsResId(
                     parseReference(parserSafetySource.getSearchTerms(), resourcePkgName, resources,
-                            name, "searchTerms"));
+                            "safety-source", "searchTerms"));
         }
         builder.setBroadcastReceiverClassName(parserSafetySource.getBroadcastReceiverClassName());
         if (parserSafetySource.isDisallowLogging()) {
@@ -232,20 +193,7 @@ public final class Parser {
         try {
             return builder.build();
         } catch (IllegalStateException e) {
-            throw new ParseException(String.format("Element %s invalid", name), e);
-        }
-    }
-
-    static void validateInput(@NonNull InputStream in, @NonNull String resourcePkgName,
-            @NonNull Resources resources) throws ParseException {
-        if (in == null) {
-            throw new ParseException("Input stream must be defined");
-        }
-        if (resourcePkgName == null || resourcePkgName.isEmpty()) {
-            throw new ParseException("Resource package name must be defined");
-        }
-        if (resources == null) {
-            throw new ParseException("Resources must be defined");
+            throw new ParseException("Element safety-source invalid", e);
         }
     }
 

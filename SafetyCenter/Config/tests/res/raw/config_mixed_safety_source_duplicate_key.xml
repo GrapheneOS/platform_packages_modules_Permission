@@ -8,16 +8,16 @@
                 type="3"
                 id="id"/>
         </safety-sources-group>
-        <static-safety-sources-group
+        <safety-sources-group
             id="id2"
             title="@string/reference">
-            <static-safety-source
+            <safety-source
                 type="1"
                 id="id"
                 title="@string/reference"
                 summary="@string/reference"
                 intentAction="intent"
                 profile="1"/>
-        </static-safety-sources-group>
+        </safety-sources-group>
     </safety-sources-config>
 </safety-center-config>

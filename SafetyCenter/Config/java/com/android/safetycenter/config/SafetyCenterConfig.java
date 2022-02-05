@@ -31,13 +31,9 @@ import java.util.Set;
 public final class SafetyCenterConfig {
     @NonNull
     private final List<SafetySourcesGroup> mSafetySourcesGroups;
-    @NonNull
-    private final List<StaticSafetySourcesGroup> mStaticSafetySourcesGroups;
 
-    private SafetyCenterConfig(@NonNull List<SafetySourcesGroup> safetySourcesGroups,
-            @NonNull List<StaticSafetySourcesGroup> staticSafetySourcesGroups) {
+    private SafetyCenterConfig(@NonNull List<SafetySourcesGroup> safetySourcesGroups) {
         mSafetySourcesGroups = safetySourcesGroups;
-        mStaticSafetySourcesGroups = staticSafetySourcesGroups;
     }
 
     /** Returns the list of safety sources groups in the configuration. */
@@ -46,31 +42,23 @@ public final class SafetyCenterConfig {
         return mSafetySourcesGroups;
     }
 
-    /** Returns the list of static safety sources groups in the configuration. */
-    @NonNull
-    public List<StaticSafetySourcesGroup> getStaticSafetySourcesGroups() {
-        return mStaticSafetySourcesGroups;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof SafetyCenterConfig)) return false;
         SafetyCenterConfig that = (SafetyCenterConfig) o;
-        return Objects.equals(mSafetySourcesGroups, that.mSafetySourcesGroups)
-                && Objects.equals(mStaticSafetySourcesGroups, that.mStaticSafetySourcesGroups);
+        return Objects.equals(mSafetySourcesGroups, that.mSafetySourcesGroups);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mSafetySourcesGroups, mStaticSafetySourcesGroups);
+        return Objects.hash(mSafetySourcesGroups);
     }
 
     @Override
     public String toString() {
         return "SafetyCenterConfig{"
                 + "mSafetySourcesGroups=" + mSafetySourcesGroups
-                + ", mStaticSafetySourcesGroups=" + mStaticSafetySourcesGroups
                 + '}';
     }
 
@@ -78,8 +66,6 @@ public final class SafetyCenterConfig {
     public static final class Builder {
         @NonNull
         private final List<SafetySourcesGroup> mSafetySourcesGroups = new ArrayList<>();
-        @NonNull
-        private final List<StaticSafetySourcesGroup> mStaticSafetySourcesGroups = new ArrayList<>();
 
         /** Creates a {@link Builder} for a {@link SafetyCenterConfig}. */
         public Builder() {
@@ -92,18 +78,10 @@ public final class SafetyCenterConfig {
             return this;
         }
 
-        /** Adds a static safety source group to the configuration. */
-        @NonNull
-        public Builder addStaticSafetySourcesGroup(
-                @NonNull StaticSafetySourcesGroup staticSafetySourcesGroup) {
-            mStaticSafetySourcesGroups.add(requireNonNull(staticSafetySourcesGroup));
-            return this;
-        }
-
         /** Creates the {@link SafetyCenterConfig} defined by this {@link Builder}. */
         @NonNull
         public SafetyCenterConfig build() {
-            if (mSafetySourcesGroups.isEmpty() && mStaticSafetySourcesGroups.isEmpty()) {
+            if (mSafetySourcesGroups.isEmpty()) {
                 throw new IllegalStateException("No safety sources groups present");
             }
             Set<String> safetySourceIds = new HashSet<>();
@@ -117,37 +95,19 @@ public final class SafetyCenterConfig {
                             String.format("Duplicate id %s among safety sources groups", groupId));
                 }
                 safetySourcesGroupsIds.add(groupId);
-                checkForDuplicateSourceIds(safetySourcesGroup.getSafetySources(), safetySourceIds);
-            }
-            int staticSafetySourcesGroupsSize = mStaticSafetySourcesGroups.size();
-            for (int i = 0; i < staticSafetySourcesGroupsSize; i++) {
-                StaticSafetySourcesGroup staticSafetySourcesGroup = mStaticSafetySourcesGroups.get(
-                        i);
-                String groupId = staticSafetySourcesGroup.getId();
-                if (safetySourcesGroupsIds.contains(groupId)) {
-                    throw new IllegalStateException(
-                            String.format("Duplicate id %s among safety sources groups", groupId));
+                List<SafetySource> safetySources = safetySourcesGroup.getSafetySources();
+                int safetySourcesSize = safetySources.size();
+                for (int j = 0; j < safetySourcesSize; j++) {
+                    SafetySource staticSafetySource = safetySources.get(j);
+                    String sourceId = staticSafetySource.getId();
+                    if (safetySourceIds.contains(sourceId)) {
+                        throw new IllegalStateException(
+                                String.format("Duplicate id %s among safety sources", sourceId));
+                    }
+                    safetySourceIds.add(sourceId);
                 }
-                safetySourcesGroupsIds.add(groupId);
-                checkForDuplicateSourceIds(staticSafetySourcesGroup.getStaticSafetySources(),
-                        safetySourceIds);
             }
-            return new SafetyCenterConfig(Collections.unmodifiableList(mSafetySourcesGroups),
-                    Collections.unmodifiableList(mStaticSafetySourcesGroups));
-        }
-
-        private static void checkForDuplicateSourceIds(List<SafetySource> safetySources,
-                Set<String> safetySourceIds) {
-            int safetySourcesSize = safetySources.size();
-            for (int i = 0; i < safetySourcesSize; i++) {
-                SafetySource staticSafetySource = safetySources.get(i);
-                String sourceId = staticSafetySource.getId();
-                if (safetySourceIds.contains(sourceId)) {
-                    throw new IllegalStateException(
-                            String.format("Duplicate id %s among safety sources", sourceId));
-                }
-                safetySourceIds.add(sourceId);
-            }
+            return new SafetyCenterConfig(Collections.unmodifiableList(mSafetySourcesGroups));
         }
     }
 

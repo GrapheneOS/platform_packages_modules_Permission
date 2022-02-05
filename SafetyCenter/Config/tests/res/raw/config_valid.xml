@@ -56,17 +56,17 @@
                 intentAction="intent"
                 profile="2"/>
         </safety-sources-group>
-        <static-safety-sources-group
+        <safety-sources-group
             id="oem"
             title="@string/reference">
-            <static-safety-source
+            <safety-source
                 type="1"
                 id="oem_setting_1"
                 title="@string/reference"
                 summary="@string/reference"
                 intentAction="intent"
                 profile="1"/>
-            <static-safety-source
+            <safety-source
                 type="1"
                 id="oem_setting_2"
                 title="@string/reference"
@@ -74,18 +74,18 @@
                 intentAction="intent"
                 profile="1"
                 searchTerms="@string/reference"/>
-        </static-safety-sources-group>
-        <static-safety-sources-group
+        </safety-sources-group>
+        <safety-sources-group
             id="advanced"
             title="@string/reference">
-            <static-safety-source
+            <safety-source
                 type="1"
                 id="advanced_security"
                 title="@string/reference"
                 summary="@string/reference"
                 intentAction="intent"
                 profile="1"/>
-            <static-safety-source
+            <safety-source
                 type="1"
                 id="advanced_privacy"
                 title="@string/reference"
@@ -93,6 +93,24 @@
                 intentAction="intent"
                 profile="1"
                 searchTerms="@string/reference"/>
-        </static-safety-sources-group>
+        </safety-sources-group>
+        <safety-sources-group
+            id="issue_only">
+            <safety-source
+                type="4"
+                id="accessibility_warnings"
+                packageName="package"
+                profile="1"/>
+            <safety-source
+                type="4"
+                id="privacy_warnings"
+                packageName="package"
+                profile="2"
+                broadcastReceiverClassName="broadcast"
+                disallowLogging="true"/>
+            <safety-source
+                type="3"
+                id="extra_warnings"/>
+        </safety-sources-group>
     </safety-sources-config>
 </safety-center-config>
