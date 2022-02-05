@@ -71,6 +71,10 @@
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"Åpne info om appen"</string>
     <string name="additional_permissions_more" msgid="5681220714755304407">"{count,plural, =1{# til}other{# til}}"</string>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"Denne appen er laget for en eldre versjon av Android. Hvis du ikke gir tillatelse, kan det føre til at den ikke lenger fungerer som den skal."</string>
+    <!-- no translation found for storage_supergroup_warning_allow (103093462784523190) -->
+    <skip />
+    <!-- no translation found for storage_supergroup_warning_deny (6420765672683284347) -->
+    <skip />
     <string name="default_permission_description" msgid="4624464917726285203">"utføre en ukjent handling"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> av <xliff:g id="COUNT_1">%2$d</xliff:g> apper har denne tillatelsen"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> apper er tillatt"</string>
@@ -83,6 +87,10 @@
     <string name="location_settings" msgid="3624412509133422562">"Posisjonsinnstillinger"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> er en leverandør av posisjonstjenester for denne enheten. Tilgang til posisjon kan endres fra posisjonsinnstillingene."</string>
     <string name="system_warning" msgid="1173400963234358816">"Hvis du ikke gir denne tillatelsen, kan grunnleggende funksjoner på enheten slutte å fungere som de skal."</string>
+    <!-- no translation found for deny_read_media_visual_warning (3982586279917232827) -->
+    <skip />
+    <!-- no translation found for deny_read_media_aural_warning (8928699919508646732) -->
+    <skip />
     <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"Hvis du ikke gir denne tillatelsen, kan noen funksjoner på enheten som administreres av denne appen, slutte å fungere som de skal."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Påkrevd ifølge retningslinjene"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Tilgang i bakgrunnen er slått av pga. retningslinjene"</string>
@@ -126,6 +134,10 @@
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Tidslinje over når apper har brukt <xliff:g id="PERMGROUP">%1$s</xliff:g> i løpet av de siste 7 dagene"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Når denne appen har brukt <xliff:g id="PERMGROUP">%1$s</xliff:g>-tillatelsen"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Finn ut mer"</string>
+    <!-- no translation found for manage_permission_summary (4117555482684114317) -->
+    <skip />
+    <!-- no translation found for auto_permission_usage_timeline_summary (2713135806453218703) -->
+    <skip />
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_3" msgid="758761785983094351">"<xliff:g id="ATTRIBUTION_NAME">%1$s</xliff:g> • <xliff:g id="APP_NAME">%2$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%3$s</xliff:g>"</string>
     <string name="duration_used_days" msgid="8293010131040301793">"{count,plural, =1{1 dag}other{# dager}}"</string>
@@ -226,6 +238,10 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Apper med denne tillatelsen har tilgang til sensordata om de vitale tegnene dine"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Apper med denne tillatelsen kan sende og se SMS-meldinger"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Apper med denne tillatelsen har tilgang til bilder, medier og filer på enheten din"</string>
+    <!-- no translation found for permission_description_summary_read_media_aural (2789020637856210454) -->
+    <skip />
+    <!-- no translation found for permission_description_summary_read_media_visual (4210569227927436735) -->
+    <skip />
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Siste tilgang: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"For øyeblikket nektet / forrige tilgang: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Aldri brukt"</string>
@@ -237,6 +253,10 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Kan administrere alle filer"</string>
     <string name="ask_header" msgid="2633816846459944376">"Spør hver gang"</string>
     <string name="denied_header" msgid="903209608358177654">"Ikke tillatt"</string>
+    <!-- no translation found for storage_footer_warning_text (2242258357752432337) -->
+    <skip />
+    <!-- no translation found for storage_footer_hyperlink_text (7759955324552930974) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 dag}other{# dager}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 time}other{# timer}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 minutt}other{# minutter}}"</string>
@@ -358,18 +378,14 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Apper som lar deg identifisere innkommende anrop og blokkere useriøse anrop, automatoppringing eller uønskede numre"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Vil du angi <xliff:g id="APP_NAME">%1$s</xliff:g> som standardapp for anrops-ID og håndtering av useriøse anrop?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Ingen tillatelser er nødvendige"</string>
-    <!-- no translation found for role_automotive_navigation_label (2701890757955474751) -->
-    <skip />
-    <!-- no translation found for role_automotive_navigation_short_label (5165823092506922457) -->
-    <skip />
-    <!-- no translation found for role_automotive_navigation_description (7834601873792870134) -->
-    <skip />
-    <!-- no translation found for role_automotive_navigation_request_title (7525693151489384300) -->
-    <skip />
-    <!-- no translation found for role_automotive_navigation_request_description (7073023813249245540) -->
-    <skip />
+    <string name="role_automotive_navigation_label" msgid="2701890757955474751">"Standard navigeringsnapp"</string>
+    <string name="role_automotive_navigation_short_label" msgid="5165823092506922457">"Navigeringsapp"</string>
+    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"Apper som kan levere søk etter interessepunkter og trinnvis navigering"</string>
+    <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"Vil du angi <xliff:g id="APP_NAME">%1$s</xliff:g> som standardapp for navigering?"</string>
+    <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Ingen tillatelser er nødvendige"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> får tillatelse til å samhandle med varslene dine og får tilgang til Telefon, SMS, kontakter og Kalender."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> får tillatelse til å samhandle med varslene dine og strømme appene dine til den tilkoblede enheten."</string>
+    <string name="role_companion_device_computer_description" msgid="416099879217066377">"Denne tjenesten deler bildene, mediene og varslene dine fra telefonen din til andre enheter."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Gjeldende standard"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Ikke spør igjen"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Angi som standard"</string>
@@ -439,7 +455,16 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Omtrentlig"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Vil du gi &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tilgang til kalenderen din?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; sende og se tekstmeldinger?"</string>
-    <string name="permgrouprequest_storage" msgid="8717773092518621602">"Vil du gi &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tilgang til bilder, medier og filer på enheten din?"</string>
+    <!-- no translation found for permgrouprequest_storage (7426990523173124539) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_storage_q_to_s (3942779386983426698) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_storage_pre_q (1681166745228672009) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_aural (5948278590400297839) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_visual (4188474766470776052) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ta opp lyd?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Appen kan bare ta opp lyd mens du bruker den."</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ta opp lyd?"</string>
@@ -487,4 +512,8 @@
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Endre"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Sikkerhet og personvern"</string>
     <string name="security_settings" msgid="3808106921175271317">"Sikkerhetsinnstillinger"</string>
+    <!-- no translation found for safety_privacy_qs_tile_title (5431148204168066203) -->
+    <skip />
+    <!-- no translation found for safety_privacy_qs_tile_subtitle (3621544532041936749) -->
+    <skip />
 </resources>
