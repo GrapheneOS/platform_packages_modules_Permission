@@ -256,6 +256,12 @@ class ConfigInvalidTest {
                 "Safety sources group empty"
             ),
             Params(
+                "ConfigSafetySourcesGroupInvalidIcon",
+                R.raw.config_safety_sources_group_invalid_icon,
+                "Element safety-sources-group invalid",
+                "Attribute statelessIconType invalid"
+            ),
+            Params(
                 "ConfigSafetySourcesGroupNoId",
                 R.raw.config_safety_sources_group_no_id,
                 "Element safety-sources-group invalid",

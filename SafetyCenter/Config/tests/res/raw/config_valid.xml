@@ -32,7 +32,8 @@
         <safety-sources-group
             id="privacy"
             title="@string/reference"
-            summary="@string/reference">
+            summary="@string/reference"
+            statelessIconType="1">
             <safety-source
                 type="3"
                 id="privacy_dashboard"/>

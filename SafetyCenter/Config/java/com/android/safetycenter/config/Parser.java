@@ -129,6 +129,9 @@ public final class Parser {
                     parseReference(parserSafetySourcesGroup.getSummary(), resourcePkgName,
                             resources, "safety-sources-group", "summary"));
         }
+        if (parserSafetySourcesGroup.getStatelessIconType() != 0) {
+            builder.setStatelessIconType(parserSafetySourcesGroup.getStatelessIconType());
+        }
         List<com.android.safetycenter.config.parser.SafetySource> parserSafetySourceList =
                 parserSafetySourcesGroup.getSafetySource();
         int parserSafetySourceListSize = parserSafetySourceList.size();

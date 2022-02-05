@@ -68,6 +68,7 @@ class ConfigValidTest {
                 .setId("privacy")
                 .setTitleResId(R.string.reference)
                 .setSummaryResId(R.string.reference)
+                .setStatelessIconType(SafetySourcesGroup.STATELESS_ICON_TYPE_PRIVACY)
                 .addSafetySource(SafetySource.Builder()
                     .setType(SafetySource.SAFETY_SOURCE_TYPE_INTERNAL)
                     .setId("privacy_dashboard")
