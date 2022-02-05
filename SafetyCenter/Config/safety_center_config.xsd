@@ -86,7 +86,7 @@
 
     <xsd:complexType name="safety-source">
         <xsd:attribute name="type" type="sourceType" use="required"/>
-        <!-- the combination of id and packageName (when required) must be unique -->
+        <!-- id must be unique among safety sources -->
         <xsd:attribute name="id" type="xsd:string" use="required">
             <xsd:annotation name="nonnull"/>
         </xsd:attribute>

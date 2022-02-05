@@ -253,26 +253,28 @@ class AppPermGroupUiInfoLiveData private constructor(
         var hasPermWithBackground = false
         var isUserFixed = false
 
-        // isOneTime indicates whether permission states contain any one-time permission and
-        // none of the permissions are granted (not one-time)
-        val isOneTime = permissionState.any {
-            it.value.permFlags and PackageManager.FLAG_PERMISSION_ONE_TIME != 0 } &&
-                !permissionState.any {
-                    it.value.permFlags and PackageManager.FLAG_PERMISSION_ONE_TIME == 0 &&
-                            it.value.granted }
-
         for ((permName, permState) in permissionState) {
             val permInfo = allPermInfos[permName] ?: continue
             permInfo.backgroundPermission?.let { backgroundPerm ->
                 hasPermWithBackground = true
-                if (permissionState[backgroundPerm]?.granted == true && !isOneTime &&
-                    specialLocationState != false) {
+                if (permissionState[backgroundPerm]?.granted == true &&
+                        (permissionState[backgroundPerm]!!.permFlags and
+                                PackageManager.FLAG_PERMISSION_ONE_TIME == 0) &&
+                        specialLocationState != false) {
                     return PermGrantState.PERMS_ALLOWED_ALWAYS
                 }
             }
             isUserFixed = isUserFixed ||
                     permState.permFlags and PackageManager.FLAG_PERMISSION_USER_FIXED != 0
         }
+
+        // isOneTime indicates whether all granted permissions in permission states are one-time
+        // permissions
+        val isOneTime = permissionState.any {
+            it.value.permFlags and PackageManager.FLAG_PERMISSION_ONE_TIME != 0 } &&
+                !permissionState.any {
+                    it.value.permFlags and PackageManager.FLAG_PERMISSION_ONE_TIME == 0 &&
+                            it.value.granted }
 
         val supportsRuntime = pkg.targetSdkVersion >= Build.VERSION_CODES.M
         val anyAllowed = specialLocationState ?: permissionState.any { (_, state) ->

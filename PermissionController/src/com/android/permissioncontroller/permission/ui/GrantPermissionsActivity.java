@@ -373,6 +373,13 @@ public class GrantPermissionsActivity extends SettingsActivity
                 break;
             case CONTINUE_MESSAGE:
                 messageId = Utils.getContinueRequest(info.getGroupName());
+                break;
+            case STORAGE_SUPERGROUP_MESSAGE_Q_TO_S:
+                messageId = R.string.permgrouprequest_storage_q_to_s;
+                break;
+            case STORAGE_SUPERGROUP_MESSAGE_PRE_Q:
+                messageId = R.string.permgrouprequest_storage_pre_q;
+                break;
         }
 
         CharSequence message = getRequestMessage(appLabel, mTargetPackage,
