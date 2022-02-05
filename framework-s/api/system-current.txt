@@ -277,6 +277,7 @@ package android.safetycenter {
     method @NonNull public java.util.List<android.safetycenter.SafetySourceIssue.Action> getActions();
     method @NonNull public String getId();
     method @NonNull public String getIssueCategory();
+    method @NonNull public String getIssueTypeId();
     method @Nullable public android.app.PendingIntent getOnDismissPendingIntent();
     method public int getSeverityLevel();
     method @Nullable public CharSequence getSubtitle();
@@ -296,6 +297,7 @@ package android.safetycenter {
     method public int describeContents();
     method @NonNull public CharSequence getLabel();
     method @NonNull public android.app.PendingIntent getPendingIntent();
+    method @Nullable public CharSequence getSuccessMessage();
     method public boolean isResolving();
     method public void writeToParcel(@NonNull android.os.Parcel, int);
     field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetySourceIssue.Action> CREATOR;
@@ -305,10 +307,11 @@ package android.safetycenter {
     ctor public SafetySourceIssue.Action.Builder(@NonNull CharSequence, @NonNull android.app.PendingIntent);
     method @NonNull public android.safetycenter.SafetySourceIssue.Action build();
     method @NonNull public android.safetycenter.SafetySourceIssue.Action.Builder setResolving(boolean);
+    method @NonNull public android.safetycenter.SafetySourceIssue.Action.Builder setSuccessMessage(@Nullable CharSequence);
   }
 
   public static final class SafetySourceIssue.Builder {
-    ctor public SafetySourceIssue.Builder(@NonNull String, @NonNull CharSequence, @NonNull CharSequence, int);
+    ctor public SafetySourceIssue.Builder(@NonNull String, @NonNull CharSequence, @NonNull CharSequence, int, @NonNull String);
     method @NonNull public android.safetycenter.SafetySourceIssue.Builder addAction(@NonNull android.safetycenter.SafetySourceIssue.Action);
     method @NonNull public android.safetycenter.SafetySourceIssue build();
     method @NonNull public android.safetycenter.SafetySourceIssue.Builder clearActions();
@@ -328,7 +331,7 @@ package android.safetycenter {
     field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetySourceStatus> CREATOR;
     field public static final int STATUS_LEVEL_CRITICAL_WARNING = 400; // 0x190
     field public static final int STATUS_LEVEL_NONE = 100; // 0x64
-    field public static final int STATUS_LEVEL_NO_ISSUES = 200; // 0xc8
+    field public static final int STATUS_LEVEL_OK = 200; // 0xc8
     field public static final int STATUS_LEVEL_RECOMMENDATION = 300; // 0x12c
   }
 

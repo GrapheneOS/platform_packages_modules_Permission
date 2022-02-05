@@ -1,0 +1,17 @@
+<safety-center-config>
+    <safety-sources-config>
+        <safety-sources-group
+            id="id"
+            title="@string/reference"
+            summary="@string/reference">
+            <safety-source
+                type="1"
+                id="id"
+                title="@string/reference"
+                summary="@string/reference"
+                intentAction="intent"
+                profile="1"
+                broadcastReceiverClassName="broadcast"/>
+        </safety-sources-group>
+    </safety-sources-config>
+</safety-center-config>

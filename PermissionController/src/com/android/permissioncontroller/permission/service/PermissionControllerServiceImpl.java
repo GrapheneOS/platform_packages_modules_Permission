@@ -28,6 +28,7 @@ import static com.android.permissioncontroller.PermissionControllerStatsLog.PERM
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -769,15 +770,13 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
         AppPermissions app = new AppPermissions(this, pkgInfo, false, true, null);
         for (String permName : permissions) {
             AppPermissionGroup group = app.getGroupForPermission(permName);
-            if (groups.contains(group)) {
-                continue;
-            }
             if (group == null) {
                 throw new SecurityException("Cannot revoke permission " + permName + " for package "
                         + packageName + " since " + permName + " does not belong to a permission "
                         + "group");
             }
-            if (!group.getPermission(permName).isGranted()) {
+            Permission perm = group.getPermission(permName);
+            if (!perm.isGranted()) {
                 throw new SecurityException("Cannot revoke permission " + permName + " for package "
                         + packageName + " since " + packageName + " does not hold it");
             }
@@ -785,20 +784,32 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
                 throw new SecurityException("Cannot revoke permission " + permName + " for package "
                         + packageName + " since it is not a runtime permission");
             }
+            perm.setOneTime(true);
             groups.add(group);
+
+            if (permName.equals(Manifest.permission.ACCESS_COARSE_LOCATION)) {
+                group.getPermission(Manifest.permission.ACCESS_FINE_LOCATION).setOneTime(true);
+            } else if (permName.equals(Manifest.permission.ACCESS_FINE_LOCATION)) {
+                // Set coarse as the selected location accuracy
+                perm.setSelectedLocationAccuracy(false);
+                group.getPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
+                        .setSelectedLocationAccuracy(true);
+            }
+
+            if (group.isStrictlyOneTime()) {
+                // All remaining permissions in the group are one-time, we should also revoke
+                // the background permissions if there are any
+                Permission bgPerm = perm.getBackgroundPermission();
+                if (bgPerm != null && bgPerm.isGranted()) {
+                    bgPerm.setOneTime(true);
+                    AppPermissionGroup bgGroup = group.getBackgroundPermissions();
+                    groups.add(bgGroup);
+                }
+            }
         }
         for (AppPermissionGroup group : groups) {
-            group.setOneTime(true);
+            group.setSelfRevoked();
             group.persistChanges(false);
-
-            // We cannot call persistChanges for the background AppPermissionGroup if there is no
-            // granted background permission, as this would stop the ongoing one time permission
-            // session that was started when the (foreground) group persisted changes
-            AppPermissionGroup bgGroup = group.getBackgroundPermissions();
-            if (bgGroup != null && bgGroup.areRuntimePermissionsGranted()) {
-                bgGroup.setOneTime(true);
-                bgGroup.persistChanges(false);
-            }
         }
         getMainExecutor().execute(callback);
     }

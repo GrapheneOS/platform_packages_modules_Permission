@@ -59,7 +59,7 @@ import androidx.annotation.RequiresApi;
 import com.android.internal.annotations.GuardedBy;
 import com.android.permission.util.PermissionUtils;
 import com.android.safetycenter.config.Parser;
-import com.android.safetycenter.config.parser.SafetyCenterConfig;
+import com.android.safetycenter.config.SafetyCenterConfig;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 import com.android.server.SystemService;
 

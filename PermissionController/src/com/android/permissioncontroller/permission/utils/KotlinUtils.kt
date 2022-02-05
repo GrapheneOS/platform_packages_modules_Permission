@@ -539,6 +539,7 @@ object KotlinUtils {
         if (newGroup.permissions.any { it.value.isOneTime && it.value.isGrantedIncludingAppOp }) {
             app.getSystemService(PermissionManager::class.java)!!.startOneTimePermissionSession(
                 group.packageName, Utils.getOneTimePermissionsTimeout(),
+                Utils.getOneTimePermissionsKilledDelay(false),
                 ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_RESET_TIMER,
                 ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_KEEP_SESSION_ALIVE)
         }

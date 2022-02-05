@@ -141,6 +141,8 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
      */
     private boolean mTriggerLocationAccessCheckOnPersist;
 
+    private boolean mIsSelfRevoked;
+
     /**
      * Create the app permission group.
      *
@@ -1172,6 +1174,13 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
     }
 
     /**
+     * Mark this group as having been self-revoked.
+     */
+    public void setSelfRevoked() {
+        mIsSelfRevoked = true;
+    }
+
+    /**
      * Set the one-time flag for all permissions in this group.
      *
      * @param isOneTime if the flag should be set or not
@@ -1322,17 +1331,25 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
                 return true;
             }
         }
-        if (mBackgroundPermissions != null) {
-            ArrayList<Permission> bgPerms = mBackgroundPermissions.getPermissions();
-            final int bgPermissionCount = bgPerms.size();
-            for (int i = 0; i < bgPermissionCount; i++) {
-                Permission permission = bgPerms.get(i);
-                if (permission.isOneTime()) {
-                    return true;
+        return false;
+    }
+
+    /**
+     * @return Whether at least one permission is granted and every granted permission is one-time
+     */
+    public boolean isStrictlyOneTime() {
+        boolean oneTimePermissionFound = false;
+        final int permissionCount = mPermissions.size();
+        for (int i = 0; i < permissionCount; i++) {
+            Permission permission = mPermissions.valueAt(i);
+            if (permission.isGranted()) {
+                if (!permission.isOneTime()) {
+                    return false;
                 }
+                oneTimePermissionFound = true;
             }
         }
-        return false;
+        return oneTimePermissionFound;
     }
 
     @Override
@@ -1461,7 +1478,9 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
                     | (permission.isPolicyFixed() ? PackageManager.FLAG_PERMISSION_POLICY_FIXED : 0)
                     | (permission.isReviewRequired()
                     ? PackageManager.FLAG_PERMISSION_REVIEW_REQUIRED : 0)
-                    | (permission.isOneTime() ? PackageManager.FLAG_PERMISSION_ONE_TIME : 0);
+                    | (permission.isOneTime() ? PackageManager.FLAG_PERMISSION_ONE_TIME : 0)
+                    | (permission.isSelectedLocationAccuracy()
+                    ? PackageManager.FLAG_PERMISSION_SELECTED_LOCATION_ACCURACY : 0);
 
             mPackageManager.updatePermissionFlags(permission.getName(),
                     mPackageInfo.packageName,
@@ -1472,7 +1491,8 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
                             | (permission.isReviewRequired()
                             ? 0 : PackageManager.FLAG_PERMISSION_REVIEW_REQUIRED)
                             | PackageManager.FLAG_PERMISSION_ONE_TIME
-                            | PackageManager.FLAG_PERMISSION_AUTO_REVOKED, // clear auto revoke
+                            | PackageManager.FLAG_PERMISSION_AUTO_REVOKED // clear auto revoke
+                            | PackageManager.FLAG_PERMISSION_SELECTED_LOCATION_ACCURACY,
                     flags, mUserHandle);
 
             if (permission.affectsAppOp()) {
@@ -1504,6 +1524,7 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
             mContext.getSystemService(PermissionManager.class)
                     .startOneTimePermissionSession(packageName,
                             Utils.getOneTimePermissionsTimeout(),
+                            Utils.getOneTimePermissionsKilledDelay(mIsSelfRevoked),
                             ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_RESET_TIMER,
                             ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_KEEP_SESSION_ALIVE);
         } else {

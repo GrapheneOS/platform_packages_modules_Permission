@@ -144,6 +144,8 @@ class GrantPermissionsViewModel(
 
     private val splitPermissionTargetSdkMap = mutableMapOf<String, Int>()
 
+    private var appPermGroupLiveDatasCache = mutableMapOf<String, LightAppPermGroupLiveData>()
+
     /**
      * A class which represents a correctly requested permission group, and the buttons and messages
      * which should be shown with it.
@@ -228,6 +230,7 @@ class GrantPermissionsViewModel(
             if (appPermGroupLiveDatas.any { it.value.isStale }) {
                 return
             }
+            appPermGroupLiveDatasCache = appPermGroupLiveDatas
             var newGroups = false
             for ((groupName, groupLiveData) in appPermGroupLiveDatas) {
                 val appPermGroup = groupLiveData.value
@@ -488,6 +491,15 @@ class GrantPermissionsViewModel(
                             locationVisibilities[DIALOG_WITH_COARSE_LOCATION_ONLY] = true
                             message = RequestMessage.FG_COARSE_LOCATION_MESSAGE
                         }
+                    }
+                }
+
+                // If group is a storage group, legacy apps will need special text
+                if (groupState.group.permGroupName in Utils.STORAGE_SUPERGROUP_PERMISSIONS) {
+                    if (packageInfo.targetSdkVersion < Build.VERSION_CODES.Q) {
+                        message = RequestMessage.STORAGE_SUPERGROUP_MESSAGE_PRE_Q
+                    } else if (packageInfo.targetSdkVersion <= Build.VERSION_CODES.S_V2) {
+                        message = RequestMessage.STORAGE_SUPERGROUP_MESSAGE_Q_TO_S
                     }
                 }
 
@@ -785,9 +797,30 @@ class GrantPermissionsViewModel(
         affectedForegroundPermissions: List<String>?,
         result: Int
     ) {
+        onPermissionGrantResult(groupName, affectedForegroundPermissions, result, true)
+    }
+
+    private fun onPermissionGrantResult(
+        groupName: String?,
+        affectedForegroundPermissions: List<String>?,
+        result: Int,
+        canRecurse: Boolean
+    ) {
         if (groupName == null) {
             return
         }
+
+        // If this is a legacy app, and a storage group is requested: request all storage groups
+        if (canRecurse && groupName in Utils.STORAGE_SUPERGROUP_PERMISSIONS &&
+                packageInfo.targetSdkVersion <= Build.VERSION_CODES.S_V2) {
+            for (groupName in Utils.STORAGE_SUPERGROUP_PERMISSIONS) {
+                val groupPerms = appPermGroupLiveDatasCache[groupName]
+                        ?.value?.allPermissions?.keys?.toList()
+                onPermissionGrantResult(groupName, groupPerms, result, false)
+            }
+            return
+        }
+
         val foregroundGroupState = groupStates[groupName to false]
         val backgroundGroupState = groupStates[groupName to true]
         when (result) {
@@ -1225,7 +1258,9 @@ class GrantPermissionsViewModel(
             NO_MESSAGE(3),
             FG_FINE_LOCATION_MESSAGE(4),
             FG_COARSE_LOCATION_MESSAGE(5),
-            CONTINUE_MESSAGE(6);
+            CONTINUE_MESSAGE(6),
+            STORAGE_SUPERGROUP_MESSAGE_Q_TO_S(7),
+            STORAGE_SUPERGROUP_MESSAGE_PRE_Q(8);
         }
     }
 }

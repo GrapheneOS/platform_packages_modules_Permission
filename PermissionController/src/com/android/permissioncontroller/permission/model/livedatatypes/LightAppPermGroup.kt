@@ -118,11 +118,13 @@ data class LightAppPermGroup(
 
     /**
      * Whether this App Permission Group is one-time. 2 cases:
-     * 1. If the perm group is not LOCATION, check if any of the permissions is one-time.
+     * 1. If the perm group is not LOCATION, check if any of the permissions is one-time and none of
+     * the granted permissions are not one-time.
      * 2. If the perm group is LOCATION, check if ACCESS_COARSE_LOCATION is one-time.
      */
     val isOneTime = (permGroupName != Manifest.permission_group.LOCATION &&
-            permissions.any { it.value.isOneTime }) ||
+            permissions.any { it.value.isOneTime } &&
+            permissions.none { !it.value.isOneTime && it.value.isGrantedIncludingAppOp }) ||
             (permGroupName == Manifest.permission_group.LOCATION &&
                     permissions[ACCESS_COARSE_LOCATION]?.isOneTime == true)
 
@@ -175,6 +177,13 @@ data class LightAppPermGroup(
          * Whether any of this App Permission SubGroup's permissions are granted by default
          */
         val isGrantedByDefault = permissions.any { it.value.isGrantedByDefault }
+
+        /**
+         * Whether at least one of this App Permission SubGroup's permissions is one-time and
+         * none of the granted permissions are not one-time.
+         */
+        val isOneTime = permissions.any { it.value.isOneTime } &&
+                permissions.none { it.value.isGrantedIncludingAppOp && !it.value.isOneTime }
 
         /**
          * Whether any of this App Permission Subgroup's foreground permissions are fixed by policy
