@@ -499,4 +499,10 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Dernières\n24 heures"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"L\'application <xliff:g id="APP_NAME">%1$s</xliff:g> est protégée par Android. Comme vos données sont traitées sur cet appareil, l\'utilisation de l\'autorisation de celle-ci ne s\'affiche pas sur la barre d\'état de votre tableau de bord de confidentialité."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"L\'application <xliff:g id="APP_NAME">%1$s</xliff:g> est protégée par Android. Comme vos données sont traitées sur cet appareil, l\'utilisation de l\'autorisation de celle-ci ne s\'affiche pas sur votre tableau de bord de confidentialité."</string>
+    <string name="blocked_camera_title" msgid="1128510551791284384">"L\'appareil photo de l\'appareil est bloqué"</string>
+    <string name="blocked_microphone_title" msgid="1631517143648232585">"Le microphone de l\'appareil est bloqué"</string>
+    <string name="blocked_location_title" msgid="2005608279812892383">"La localisation de l\'appareil est désactivée"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Pour les applications et les services"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Il est possible que les données du microphone soient partagées lorsque vous appelez un numéro d\'urgence."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Modifier"</string>
 </resources>

@@ -537,4 +537,10 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Pastarosios\n24 val."</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Programa „<xliff:g id="APP_NAME">%1$s</xliff:g>“ apsaugota „Android“. Kadangi duomenys apdorojami šiame įrenginyje, šios programos leidimo naudojimas nerodomas būsenos juostoje ar privatumo informacijos suvestinėje."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Programa „<xliff:g id="APP_NAME">%1$s</xliff:g>“ apsaugota „Android“. Kadangi duomenys apdorojami šiame įrenginyje, šios programos leidimo naudojimas nerodomas privatumo informacijos suvestinėje."</string>
+    <string name="blocked_camera_title" msgid="1128510551791284384">"Įrenginio vaizdo kamera užblokuota"</string>
+    <string name="blocked_microphone_title" msgid="1631517143648232585">"Įrenginio mikrofonas užblokuotas"</string>
+    <string name="blocked_location_title" msgid="2005608279812892383">"Įrenginio vietovės nustatymas išjungtas"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Programos ir paslaugos"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Mikrofono duomenys vis tiek gali būti bendrinami, skambinant pagalbos numeriu."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Pakeisti"</string>
 </resources>

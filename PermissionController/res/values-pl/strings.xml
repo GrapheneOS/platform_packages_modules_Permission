@@ -537,4 +537,10 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Ostatnie\n24 godziny"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Aplikacja <xliff:g id="APP_NAME">%1$s</xliff:g> jest chroniona przez Androida. Ponieważ Twoje dane są przetwarzane na tym urządzeniu, używanie uprawnień przez tę aplikację nie jest wyświetlane na pasku stanu w panelu ustawień prywatności."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Aplikacja <xliff:g id="APP_NAME">%1$s</xliff:g> jest chroniona przez Androida. Ponieważ Twoje dane są przetwarzane na tym urządzeniu, używanie uprawnień przez tę aplikację nie jest wyświetlane w panelu ustawień prywatności."</string>
+    <string name="blocked_camera_title" msgid="1128510551791284384">"Aparat urządzenia jest zablokowany"</string>
+    <string name="blocked_microphone_title" msgid="1631517143648232585">"Mikrofon urządzenia jest zablokowany"</string>
+    <string name="blocked_location_title" msgid="2005608279812892383">"Lokalizacja urządzenia jest wyłączona"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"dla aplikacji i usług"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Dane z mikrofonu mogą być udostępniane, kiedy dzwonisz na numer alarmowy."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Zmień"</string>
 </resources>

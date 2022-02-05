@@ -499,4 +499,10 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"છેલ્લા\n24 કલાક"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g>ને Android વડે સુરક્ષિત કરવામાં આવી છે. આ ડિવાઇસમાં તમારા ડેટા પર પ્રક્રિયા કરવામાં આવતી હોવાથી, આ ઍપની પરવાનગીના વપરાશની માહિતી સ્ટેટસ બાર અથવા તમારા પ્રાઇવસી ડૅશબોર્ડ પર બતાવવામાં આવતી નથી."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g>ને Android વડે સુરક્ષિત કરવામાં આવી છે. આ ડિવાઇસમાં તમારા ડેટા પર પ્રક્રિયા કરવામાં આવતી હોવાથી, આ ઍપની પરવાનગીના વપરાશની માહિતી તમારા પ્રાઇવસી ડૅશબોર્ડ પર બતાવવામાં આવતી નથી."</string>
+    <string name="blocked_camera_title" msgid="1128510551791284384">"ડિવાઇસનો કૅમેરા બ્લૉક કરેલો છે"</string>
+    <string name="blocked_microphone_title" msgid="1631517143648232585">"ડિવાઇસનું માઇક્રોફોન બ્લૉક કરેલું છે"</string>
+    <string name="blocked_location_title" msgid="2005608279812892383">"ડિવાઇસનું સ્થાન બંધ છે"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"ઍપ અને સેવાઓ માટે"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"જ્યારે તમે ઇમર્જન્સી નંબર પર કૉલ કરો ત્યારે કદાચ માઇક્રોફોનનો ડેટા હજી પણ શેર કરવામાં આવી શકે છે."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"બદલો"</string>
 </resources>

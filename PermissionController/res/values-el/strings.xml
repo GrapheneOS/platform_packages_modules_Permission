@@ -499,4 +499,10 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Τελευταίες\n24 ώρες"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Η εφαρμογή <xliff:g id="APP_NAME">%1$s</xliff:g> προστατεύεται από το Android. Επειδή η επεξεργασία των δεδομένων σας πραγματοποιείται σε αυτήν τη συσκευή, η χρήση αδειών αυτής της εφαρμογής δεν εμφανίζεται στη γραμμή κατάστασης ή στον πίνακα ελέγχου απορρήτου σας."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Η εφαρμογή <xliff:g id="APP_NAME">%1$s</xliff:g> προστατεύεται από το Android. Επειδή η επεξεργασία των δεδομένων σας πραγματοποιείται σε αυτήν τη συσκευή, η χρήση αδειών αυτής της εφαρμογής δεν εμφανίζεται στον πίνακα ελέγχου απορρήτου σας."</string>
+    <string name="blocked_camera_title" msgid="1128510551791284384">"Η κάμερα συσκευής αποκλείστηκε"</string>
+    <string name="blocked_microphone_title" msgid="1631517143648232585">"Το μικρόφωνο συσκευής αποκλείστηκε"</string>
+    <string name="blocked_location_title" msgid="2005608279812892383">"Η τοποθεσία συσκευής είναι ανενεργή"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Για εφαρμογές και υπηρεσίες"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Ενδέχεται να κοινοποιηθούν δεδομένα μικροφώνου κατά την κλήση ενός αριθμού έκτακτης ανάγκης."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Αλλαγή"</string>
 </resources>

@@ -499,4 +499,10 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Oxirgi\n24 soat"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> ilovasi Android himoyasida. Maʼlumotlaringiz qurilmada qayta ishlanishi sababli ilovaning ruxsatlardan foydalanish statistikasi maxfiylik boshqaruv panelida chiqmaydi."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> ilovasi Android himoyasida. Maʼlumotlaringiz qurilmada qayta ishlanishi sababli ilovaning ruxsatlardan foydalanish statistikasi maxfiylik boshqaruv panelida chiqmaydi."</string>
+    <string name="blocked_camera_title" msgid="1128510551791284384">"Qurilma kamerasi bloklandi"</string>
+    <string name="blocked_microphone_title" msgid="1631517143648232585">"Qurilma mikrofoni bloklandi"</string>
+    <string name="blocked_location_title" msgid="2005608279812892383">"Qurilmada joylashuv axboroti yoqilmagan"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Ilovalar va xizmatlar uchun"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Favqulodda xizmat raqamiga telefon qilganingizda mikrofon maʼlumotlari hamon ulashilishi mumkin."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Oʻzgartirish"</string>
 </resources>

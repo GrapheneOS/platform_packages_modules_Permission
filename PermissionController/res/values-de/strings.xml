@@ -499,4 +499,10 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Letzte\n24 Stunden"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> ist durch Android geschützt. Weil deine Daten direkt auf diesem Gerät verarbeitet werden, wird weder in der Statusleiste noch auf deinem Privatsphäredashboard die Nutzung der Berechtigungen durch diese App angezeigt."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> ist durch Android geschützt. Weil deine Daten direkt auf diesem Gerät verarbeitet werden, wird auf deinem Privatsphäredashboard die Nutzung der Berechtigungen durch diese App nicht angezeigt."</string>
+    <string name="blocked_camera_title" msgid="1128510551791284384">"Gerätekamera ist blockiert"</string>
+    <string name="blocked_microphone_title" msgid="1631517143648232585">"Gerätemikrofon ist blockiert"</string>
+    <string name="blocked_location_title" msgid="2005608279812892383">"Standortzugriff ist deaktiviert"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Für Apps und Dienste"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Die Mikrofondaten können immer noch geteilt werden, wenn du den Notruf wählst."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Ändern"</string>
 </resources>

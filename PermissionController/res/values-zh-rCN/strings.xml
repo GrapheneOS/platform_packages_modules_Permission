@@ -499,4 +499,10 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"过去 24 小时\n"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Android 会为<xliff:g id="APP_NAME">%1$s</xliff:g>提供保护。系统是在这个设备上处理您的数据，因此状态栏或隐私信息中心不会显示这个应用的权限使用情况。"</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Android 会为<xliff:g id="APP_NAME">%1$s</xliff:g>提供保护。系统是在这个设备上处理您的数据，因此隐私信息中心不会显示这个应用的权限使用情况。"</string>
+    <string name="blocked_camera_title" msgid="1128510551791284384">"设备摄像头已被屏蔽"</string>
+    <string name="blocked_microphone_title" msgid="1631517143648232585">"设备麦克风已被屏蔽"</string>
+    <string name="blocked_location_title" msgid="2005608279812892383">"设备位置信息功能已关闭"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"针对应用和服务"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"当您拨打紧急电话号码时，系统可能仍会分享麦克风数据。"</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"更改"</string>
 </resources>

@@ -499,4 +499,10 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Últimas\n24 horas"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"Android protege <xliff:g id="APP_NAME">%1$s</xliff:g>. Dado que tus datos se procesan en este dispositivo, el uso de permisos de esta app no se muestra en la barra de estado ni en el panel de privacidad."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"Android protege <xliff:g id="APP_NAME">%1$s</xliff:g>. Dado que tus datos se procesan en este dispositivo, el uso de permisos de esta app no se muestra en el panel de privacidad."</string>
+    <string name="blocked_camera_title" msgid="1128510551791284384">"La cámara del dispositivo está bloqueada"</string>
+    <string name="blocked_microphone_title" msgid="1631517143648232585">"El micrófono del dispositivo está bloqueado"</string>
+    <string name="blocked_location_title" msgid="2005608279812892383">"La ubicación del dispositivo está desactivada"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Para apps y servicios"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Es posible que se sigan compartiendo los datos del micrófono cuando llames a un número de emergencia."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Cambiar"</string>
 </resources>

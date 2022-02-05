@@ -499,4 +499,10 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Акыркы\n24 саат"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> Android тарабынан корголгон. Колдонмодогу нерселериңиз ушул түзмөктө иштетилгендиктен, бул колдонмонун уруксаттарды пайдалануу статистикасы абал тилкесинде же купуялык тактаңызда көрүнбөйт."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> Android тарабынан корголгон. Колдонмодогу нерселериңиз ушул түзмөктө иштетилгендиктен, бул колдонмонун уруксаттарды пайдалануу статистикасы купуялык тактаңызда көрүнбөйт."</string>
+    <string name="blocked_camera_title" msgid="1128510551791284384">"Түзмөктүн камерасы бөгөттөлгөн"</string>
+    <string name="blocked_microphone_title" msgid="1631517143648232585">"Түзмөктүн микрофону бөгөттөлгөн"</string>
+    <string name="blocked_location_title" msgid="2005608279812892383">"Түзмөктүн жайгашкан жери өчүк"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Колдонмолор жана кызматтар үчүн"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Кырсыктаганда жардамга келчү кызматтын номерине чалганыңызда микрофондогу нерселер өткөрүлүшү мүмкүн."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Өзгөртүү"</string>
 </resources>

@@ -328,17 +328,17 @@
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"میڈیا"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"سبھی فائلز"</string>
     <string name="permission_subtitle_background" msgid="8916750995309083180">"ہر وقت اجازت یافتہ"</string>
-    <string name="app_perms_24h_access" msgid="99069906850627181">"<xliff:g id="TIME_DATE">%1$s</xliff:g> پر آخری بار رسائی حاصل کی گئی"</string>
+    <string name="app_perms_24h_access" msgid="99069906850627181">"‫<xliff:g id="TIME_DATE">%1$s</xliff:g> پر آخری بار رسائی حاصل کی گئی"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"گزشتہ کل <xliff:g id="TIME_DATE">%1$s</xliff:g> پر آخری بار رسائی حاصل کی گئی"</string>
     <string name="app_perms_content_provider" msgid="6996750793881252778">"گزشتہ 24 گھنٹے میں رسائی حاصل کی گئی"</string>
-    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"<xliff:g id="TIME_DATE">%1$s</xliff:g> پر آخری بار رسائی حاصل کی گئی • ہر وقت اجازت یافتہ"</string>
+    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"‫<xliff:g id="TIME_DATE">%1$s</xliff:g> پر آخری بار رسائی حاصل کی گئی • ہر وقت اجازت یافتہ"</string>
     <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"گزشتہ کل <xliff:g id="TIME_DATE">%1$s</xliff:g> پر آخری بار رسائی حاصل کی گئی • ہر وقت اجازت یافتہ"</string>
     <string name="app_perms_content_provider_background" msgid="7793984056711923997">"گزشتہ 24 گھنٹے میں رسائی حاصل کی گئی • ہر وقت اجازت یافتہ"</string>
-    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"<xliff:g id="TIME_DATE">%1$s</xliff:g> پر آخری بار رسائی حاصل کی گئی • میڈیا"</string>
+    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"‫<xliff:g id="TIME_DATE">%1$s</xliff:g> پر آخری بار رسائی حاصل کی گئی • میڈیا"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"گزشتہ کل <xliff:g id="TIME_DATE">%1$s</xliff:g> پر آخری بار رسائی حاصل کی گئی • میڈیا"</string>
     <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"گزشتہ 24 گھنٹے میں رسائی حاصل کی گئی • میڈیا"</string>
-    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"<xliff:g id="TIME_DATE">%1$s</xliff:g> پر آخری بار رسائی حاصل کی گئی • سبھی فائلز"</string>
-    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"<xliff:g id="TIME_DATE">%1$s</xliff:g> پر آخری بار رسائی حاصل کی گئی • سبھی فائلز"</string>
+    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"‫<xliff:g id="TIME_DATE">%1$s</xliff:g> پر آخری بار رسائی حاصل کی گئی • سبھی فائلز"</string>
+    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"‫<xliff:g id="TIME_DATE">%1$s</xliff:g> پر آخری بار رسائی حاصل کی گئی • سبھی فائلز"</string>
     <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"گزشتہ 24 گھنٹے میں رسائی حاصل کی گئی • سبھی فائلز"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"کوئی اجازت نہیں دی گئی"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"کوئی بھی اجازت مسترد نہیں ہے"</string>
@@ -499,4 +499,10 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"گزشتہ\n24 گھنٹے"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"‏Android <xliff:g id="APP_NAME">%1$s</xliff:g> کی حفاظت کرتا ہے۔ کیونکہ آپ کے ڈیٹا پر اس آلے پر کارروائی کی جاتی ہے، اس ایپ کی اجازت کا استعمال اسٹیٹس بار یا آپ کے پرائیویسی ڈیش بورڈ پر دکھائی نہیں دیتا ہے۔"</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"‏Android <xliff:g id="APP_NAME">%1$s</xliff:g> کی حفاظت کرتا ہے۔ کیونکہ آپ کے ڈیٹا پر اس آلے پر کارروائی کی جاتی ہے، اس ایپ کی اجازت کا استعمال آپ کے پرائیویسی ڈیش بورڈ پر دکھائی نہیں دیتا ہے۔"</string>
+    <string name="blocked_camera_title" msgid="1128510551791284384">"آلے کا کیمرا مسدود ہے"</string>
+    <string name="blocked_microphone_title" msgid="1631517143648232585">"آلے کا مائیکروفون مسدود ہے"</string>
+    <string name="blocked_location_title" msgid="2005608279812892383">"آلے کا مقام آف ہے"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"ایپس اور سروسز کے لیے"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"جب آپ ایمرجنسی نمبر پر کال کرتے ہیں تو مائیکروفون کے ڈیٹا کا اب بھی اشتراک کیا جا سکتا ہے۔"</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"تبدیل کریں"</string>
 </resources>
