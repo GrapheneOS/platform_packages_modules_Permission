@@ -106,6 +106,12 @@ class ConfigInvalidTest {
                 "Required attribute title missing"
             ),
             Params(
+                "ConfigDynamicSafetySourceWithPrimaryAndWork",
+                R.raw.config_dynamic_safety_source_with_primary_and_work,
+                "Element safety-source invalid",
+                "Prohibited attribute titleForWork present"
+            ),
+            Params(
                 "ConfigFileCorrupted",
                 R.raw.config_file_corrupted,
                 "Exception while reading XML",
@@ -176,6 +182,12 @@ class ConfigInvalidTest {
                 R.raw.config_internal_safety_source_with_title,
                 "Element safety-source invalid",
                 "Prohibited attribute title present"
+            ),
+            Params(
+                "ConfigInternalSafetySourceWithWork",
+                R.raw.config_internal_safety_source_with_work,
+                "Element safety-source invalid",
+                "Prohibited attribute titleForWork present"
             ),
             Params(
                 "ConfigMixedSafetySourceDuplicateKey",
@@ -350,6 +362,12 @@ class ConfigInvalidTest {
                 R.raw.config_static_safety_source_with_package,
                 "Element safety-source invalid",
                 "Prohibited attribute packageName present"
+            ),
+            Params(
+                "ConfigStaticSafetySourceWithPrimaryAndWork",
+                R.raw.config_static_safety_source_with_primary_and_work,
+                "Element safety-source invalid",
+                "Prohibited attribute titleForWork present"
             ),
             Params(
                 "ConfigStaticSafetySourceWithRefresh",

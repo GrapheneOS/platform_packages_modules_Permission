@@ -9,6 +9,7 @@
                 id="app_security"
                 packageName="package"
                 title="@string/reference"
+                titleForWork="@string/reference"
                 summary="@string/reference"
                 intentAction="intent"
                 profile="2"
@@ -39,6 +40,7 @@
                 type="1"
                 id="permissions"
                 title="@string/reference"
+                titleForWork="@string/reference"
                 summary="@string/reference"
                 intentAction="intent"
                 profile="2"/>
@@ -47,6 +49,7 @@
                 id="privacy_controls"
                 packageName="package"
                 title="@string/reference"
+                titleForWork="@string/reference"
                 summary="@string/reference"
                 intentAction="intent"
                 profile="2"/>

@@ -92,6 +92,8 @@ public final class SafetySource {
     @IdRes
     private final int mTitleResId;
     @IdRes
+    private final int mTitleForWorkResId;
+    @IdRes
     private final int mSummaryResId;
     @Nullable
     private final String mIntentAction;
@@ -110,6 +112,7 @@ public final class SafetySource {
             @NonNull String id,
             @Nullable String packageName,
             @IdRes int titleResId,
+            @IdRes int titleForWorkResId,
             @IdRes int summaryResId,
             @Nullable String intentAction,
             @Profile int profile,
@@ -121,6 +124,7 @@ public final class SafetySource {
         mId = id;
         mPackageName = packageName;
         mTitleResId = titleResId;
+        mTitleForWorkResId = titleForWorkResId;
         mSummaryResId = summaryResId;
         mIntentAction = intentAction;
         mProfile = profile;
@@ -164,6 +168,20 @@ public final class SafetySource {
                     "getTitleResId unsupported for internal safety source");
         }
         return mTitleResId;
+    }
+
+    /** Returns the resource id of the title for work of this safety source. */
+    @IdRes
+    public int getTitleForWorkResId() {
+        if (mType == SAFETY_SOURCE_TYPE_INTERNAL) {
+            throw new UnsupportedOperationException(
+                    "getTitleForWorkResId unsupported for internal safety source");
+        }
+        if (mProfile == PROFILE_PRIMARY) {
+            throw new UnsupportedOperationException(
+                    "getTitleForWorkResId unsupported for primary profile safety source");
+        }
+        return mTitleForWorkResId;
     }
 
     /** Returns the resource id of the summary of this safety source. */
@@ -305,6 +323,9 @@ public final class SafetySource {
         private Integer mTitleResId;
         @Nullable
         @IdRes
+        private Integer mTitleForWorkResId;
+        @Nullable
+        @IdRes
         private Integer mSummaryResId;
         @Nullable
         private String mIntentAction;
@@ -350,6 +371,13 @@ public final class SafetySource {
         @NonNull
         public Builder setTitleResId(@IdRes int titleResId) {
             mTitleResId = titleResId;
+            return this;
+        }
+
+        /** Sets the resource id of the title for work of this safety source. */
+        @NonNull
+        public Builder setTitleForWorkResId(@IdRes int titleForWorkResId) {
+            mTitleForWorkResId = titleForWorkResId;
             return this;
         }
 
@@ -422,6 +450,9 @@ public final class SafetySource {
                     isInternal);
             int profile = BuilderUtils.validateIntDef(mProfile, "profile", isDynamic || isStatic,
                     isInternal, PROFILE_NONE, PROFILE_PRIMARY, PROFILE_ALL);
+            int titleForWorkResId = BuilderUtils.validateResId(mTitleForWorkResId, "titleForWork",
+                    (isDynamic || isStatic) && profile == PROFILE_ALL,
+                    isInternal || profile == PROFILE_PRIMARY);
             int searchTermsResId = BuilderUtils.validateResId(mSearchTermsResId, "searchTerms",
                     false, isInternal);
             BuilderUtils.validateAttribute(mBroadcastReceiverClassName,
@@ -430,9 +461,9 @@ public final class SafetySource {
                     "disallowLogging", false, isStatic || isInternal, false);
             boolean allowRefreshOnPageOpen = BuilderUtils.validateBoolean(mAllowRefreshOnPageOpen,
                     "allowRefreshOnPageOpen", false, isStatic || isInternal, false);
-            return new SafetySource(type, mId, mPackageName, titleResId, summaryResId,
-                    mIntentAction, profile, searchTermsResId, mBroadcastReceiverClassName,
-                    disallowLogging, allowRefreshOnPageOpen);
+            return new SafetySource(type, mId, mPackageName, titleResId, titleForWorkResId,
+                    summaryResId, mIntentAction, profile, searchTermsResId,
+                    mBroadcastReceiverClassName, disallowLogging, allowRefreshOnPageOpen);
         }
     }
 

@@ -197,6 +197,11 @@ public final class Parser {
                     parseReference(parserSafetySource.getTitle(), resourcePkgName, resources, name,
                             "title"));
         }
+        if (parserSafetySource.getTitleForWork() != null) {
+            builder.setTitleForWorkResId(
+                    parseReference(parserSafetySource.getTitleForWork(), resourcePkgName, resources,
+                            name, "titleForWork"));
+        }
         if (parserSafetySource.getSummary() != null) {
             builder.setSummaryResId(
                     parseReference(parserSafetySource.getSummary(), resourcePkgName, resources,
