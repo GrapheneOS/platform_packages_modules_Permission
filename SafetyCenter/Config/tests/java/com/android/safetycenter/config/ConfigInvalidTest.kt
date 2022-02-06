@@ -172,6 +172,12 @@ class ConfigInvalidTest {
                 "Prohibited attribute searchTerms present"
             ),
             Params(
+                "ConfigInternalSafetySourceWithSeverity",
+                R.raw.config_internal_safety_source_with_severity,
+                "Element safety-source invalid",
+                "Prohibited attribute maxSeverityLevel present"
+            ),
+            Params(
                 "ConfigInternalSafetySourceWithSummary",
                 R.raw.config_internal_safety_source_with_summary,
                 "Element safety-source invalid",
@@ -380,6 +386,12 @@ class ConfigInvalidTest {
                 R.raw.config_static_safety_source_with_refresh,
                 "Element safety-source invalid",
                 "Prohibited attribute allowRefreshOnPageOpen present"
+            ),
+            Params(
+                "ConfigStaticSafetySourceWithSeverity",
+                R.raw.config_static_safety_source_with_severity,
+                "Element safety-source invalid",
+                "Prohibited attribute maxSeverityLevel present"
             )
         )
     }

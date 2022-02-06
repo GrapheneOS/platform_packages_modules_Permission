@@ -45,6 +45,7 @@ class ConfigValidTest {
                     .setSummaryResId(R.string.reference)
                     .setIntentAction("intent")
                     .setProfile(SafetySource.PROFILE_ALL)
+                    .setMaxSeverityLevel(300)
                     .setSearchTermsResId(R.string.reference)
                     .setBroadcastReceiverClassName("broadcast")
                     .setDisallowLogging(true)

@@ -214,6 +214,9 @@ public final class Parser {
         if (parserSafetySource.getProfile() != 0) {
             builder.setProfile(parserSafetySource.getProfile());
         }
+        if (parserSafetySource.getMaxSeverityLevel() != 0) {
+            builder.setMaxSeverityLevel(parserSafetySource.getMaxSeverityLevel());
+        }
         if (parserSafetySource.getSearchTerms() != null) {
             builder.setSearchTermsResId(
                     parseReference(parserSafetySource.getSearchTerms(), resourcePkgName, resources,

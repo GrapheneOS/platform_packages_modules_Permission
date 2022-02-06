@@ -99,6 +99,7 @@ public final class SafetySource {
     private final String mIntentAction;
     @Profile
     private final int mProfile;
+    private final int mMaxSeverityLevel;
     @IdRes
     private final int mSearchTermsResId;
     @Nullable
@@ -116,6 +117,7 @@ public final class SafetySource {
             @IdRes int summaryResId,
             @Nullable String intentAction,
             @Profile int profile,
+            int maxSeverityLevel,
             @IdRes int searchTermsResId,
             @Nullable String broadcastReceiverClassName,
             boolean disallowLogging,
@@ -128,6 +130,7 @@ public final class SafetySource {
         mSummaryResId = summaryResId;
         mIntentAction = intentAction;
         mProfile = profile;
+        mMaxSeverityLevel = maxSeverityLevel;
         mSearchTermsResId = searchTermsResId;
         mBroadcastReceiverClassName = broadcastReceiverClassName;
         mDisallowLogging = disallowLogging;
@@ -214,6 +217,20 @@ public final class SafetySource {
         return mProfile;
     }
 
+    /** Returns the maximum severity level of this safety source. */
+    @Profile
+    public int getMaxSeverityLevel() {
+        if (mType == SAFETY_SOURCE_TYPE_STATIC) {
+            throw new UnsupportedOperationException(
+                    "getMaxSeverityLevel unsupported for static safety source");
+        }
+        if (mType == SAFETY_SOURCE_TYPE_INTERNAL) {
+            throw new UnsupportedOperationException(
+                    "getMaxSeverityLevel unsupported for internal safety source");
+        }
+        return mMaxSeverityLevel;
+    }
+
     /**
      * Returns the resource id of the search terms of this safety source if set; otherwise
      * {@link Resources#ID_NULL}.
@@ -279,6 +296,7 @@ public final class SafetySource {
                 && mSummaryResId == that.mSummaryResId
                 && Objects.equals(mIntentAction, that.mIntentAction)
                 && mProfile == that.mProfile
+                && mMaxSeverityLevel == that.mMaxSeverityLevel
                 && mSearchTermsResId == that.mSearchTermsResId
                 && Objects.equals(mBroadcastReceiverClassName, that.mBroadcastReceiverClassName)
                 && mDisallowLogging == that.mDisallowLogging
@@ -288,8 +306,8 @@ public final class SafetySource {
     @Override
     public int hashCode() {
         return Objects.hash(mType, mId, mPackageName, mTitleResId, mSummaryResId, mIntentAction,
-                mProfile, mSearchTermsResId, mBroadcastReceiverClassName, mDisallowLogging,
-                mAllowRefreshOnPageOpen);
+                mProfile, mMaxSeverityLevel, mSearchTermsResId, mBroadcastReceiverClassName,
+                mDisallowLogging, mAllowRefreshOnPageOpen);
     }
 
     @Override
@@ -302,6 +320,7 @@ public final class SafetySource {
                 + ", mSummaryResId=" + mSummaryResId
                 + ", mIntentAction='" + mIntentAction + '\''
                 + ", mProfile=" + mProfile
+                + ", mMaxSeverityLevel=" + mMaxSeverityLevel
                 + ", mSearchTermsResId=" + mSearchTermsResId
                 + ", mBroadcastReceiverClassName='" + mBroadcastReceiverClassName + '\''
                 + ", mDisallowLogging=" + mDisallowLogging
@@ -332,6 +351,8 @@ public final class SafetySource {
         @Nullable
         @Profile
         private Integer mProfile;
+        @Nullable
+        private Integer mMaxSeverityLevel;
         @Nullable
         @IdRes
         private Integer mSearchTermsResId;
@@ -402,6 +423,13 @@ public final class SafetySource {
             return this;
         }
 
+        /** Sets the maximum severity level of this safety source. */
+        @NonNull
+        public Builder setMaxSeverityLevel(int maxSeverityLevel) {
+            mMaxSeverityLevel = maxSeverityLevel;
+            return this;
+        }
+
         /** Sets the resource id of the search terms of this safety source. */
         @NonNull
         public Builder setSearchTermsResId(@IdRes int searchTermsResId) {
@@ -453,6 +481,8 @@ public final class SafetySource {
             int titleForWorkResId = BuilderUtils.validateResId(mTitleForWorkResId, "titleForWork",
                     (isDynamic || isStatic) && profile == PROFILE_ALL,
                     isInternal || profile == PROFILE_PRIMARY);
+            int maxSeverityLevel = BuilderUtils.validateInteger(mMaxSeverityLevel,
+                    "maxSeverityLevel", false, isStatic || isInternal, Integer.MAX_VALUE);
             int searchTermsResId = BuilderUtils.validateResId(mSearchTermsResId, "searchTerms",
                     false, isInternal);
             BuilderUtils.validateAttribute(mBroadcastReceiverClassName,
@@ -462,7 +492,7 @@ public final class SafetySource {
             boolean allowRefreshOnPageOpen = BuilderUtils.validateBoolean(mAllowRefreshOnPageOpen,
                     "allowRefreshOnPageOpen", false, isStatic || isInternal, false);
             return new SafetySource(type, mId, mPackageName, titleResId, titleForWorkResId,
-                    summaryResId, mIntentAction, profile, searchTermsResId,
+                    summaryResId, mIntentAction, profile, maxSeverityLevel, searchTermsResId,
                     mBroadcastReceiverClassName, disallowLogging, allowRefreshOnPageOpen);
         }
     }

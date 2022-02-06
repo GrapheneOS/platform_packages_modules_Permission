@@ -13,6 +13,7 @@
                 summary="@string/reference"
                 intentAction="intent"
                 profile="2"
+                maxSeverityLevel="300"
                 searchTerms="@string/reference"
                 broadcastReceiverClassName="broadcast"
                 disallowLogging="true"
