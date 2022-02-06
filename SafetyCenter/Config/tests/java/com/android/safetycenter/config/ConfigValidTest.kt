@@ -47,6 +47,7 @@ class ConfigValidTest {
                     .setSearchTermsResId(R.string.reference)
                     .setBroadcastReceiverClassName("broadcast")
                     .setDisallowLogging(true)
+                    .setAllowRefreshOnPageOpen(true)
                     .build())
                 .addSafetySource(SafetySource.Builder()
                     .setType(SafetySource.SAFETY_SOURCE_TYPE_INTERNAL)

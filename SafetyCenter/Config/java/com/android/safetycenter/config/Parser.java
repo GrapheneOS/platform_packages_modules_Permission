@@ -215,6 +215,9 @@ public final class Parser {
         if (parserSafetySource.isDisallowLogging()) {
             builder.setDisallowLogging(parserSafetySource.isDisallowLogging());
         }
+        if (parserSafetySource.isAllowRefreshOnPageOpen()) {
+            builder.setAllowRefreshOnPageOpen(parserSafetySource.isAllowRefreshOnPageOpen());
+        }
         try {
             return builder.build();
         } catch (IllegalStateException e) {

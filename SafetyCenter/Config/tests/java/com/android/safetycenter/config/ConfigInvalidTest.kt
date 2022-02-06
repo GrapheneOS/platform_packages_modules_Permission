@@ -154,6 +154,12 @@ class ConfigInvalidTest {
                 "Prohibited attribute profile present"
             ),
             Params(
+                "ConfigInternalSafetySourceWithRefresh",
+                R.raw.config_internal_safety_source_with_refresh,
+                "Element safety-source invalid",
+                "Prohibited attribute allowRefreshOnPageOpen present"
+            ),
+            Params(
                 "ConfigInternalSafetySourceWithSearch",
                 R.raw.config_internal_safety_source_with_search,
                 "Element safety-source invalid",
@@ -344,6 +350,12 @@ class ConfigInvalidTest {
                 R.raw.config_static_safety_source_with_package,
                 "Element safety-source invalid",
                 "Prohibited attribute packageName present"
+            ),
+            Params(
+                "ConfigStaticSafetySourceWithRefresh",
+                R.raw.config_static_safety_source_with_refresh,
+                "Element safety-source invalid",
+                "Prohibited attribute allowRefreshOnPageOpen present"
             )
         )
     }

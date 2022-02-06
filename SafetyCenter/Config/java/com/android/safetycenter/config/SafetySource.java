@@ -102,6 +102,7 @@ public final class SafetySource {
     @Nullable
     private final String mBroadcastReceiverClassName;
     private final boolean mDisallowLogging;
+    private final boolean mAllowRefreshOnPageOpen;
 
     /** Returns the id of this safety source. */
     private SafetySource(
@@ -114,7 +115,8 @@ public final class SafetySource {
             @Profile int profile,
             @IdRes int searchTermsResId,
             @Nullable String broadcastReceiverClassName,
-            @Nullable Boolean disallowLogging) {
+            boolean disallowLogging,
+            boolean allowRefreshOnPageOpen) {
         mType = type;
         mId = id;
         mPackageName = packageName;
@@ -125,6 +127,7 @@ public final class SafetySource {
         mSearchTermsResId = searchTermsResId;
         mBroadcastReceiverClassName = broadcastReceiverClassName;
         mDisallowLogging = disallowLogging;
+        mAllowRefreshOnPageOpen = allowRefreshOnPageOpen;
     }
 
     /** Returns the type of this safety source. */
@@ -233,6 +236,19 @@ public final class SafetySource {
         return mDisallowLogging;
     }
 
+    /** Returns the allow refresh on page open property of this safety source. */
+    public boolean isAllowRefreshOnPageOpen() {
+        if (mType == SAFETY_SOURCE_TYPE_STATIC) {
+            throw new UnsupportedOperationException(
+                    "isAllowRefreshOnPageOpen unsupported for static safety source");
+        }
+        if (mType == SAFETY_SOURCE_TYPE_INTERNAL) {
+            throw new UnsupportedOperationException(
+                    "isAllowRefreshOnPageOpen unsupported for internal safety source");
+        }
+        return mAllowRefreshOnPageOpen;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -247,13 +263,15 @@ public final class SafetySource {
                 && mProfile == that.mProfile
                 && mSearchTermsResId == that.mSearchTermsResId
                 && Objects.equals(mBroadcastReceiverClassName, that.mBroadcastReceiverClassName)
-                && mDisallowLogging == that.mDisallowLogging;
+                && mDisallowLogging == that.mDisallowLogging
+                && mAllowRefreshOnPageOpen == that.mAllowRefreshOnPageOpen;
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(mType, mId, mPackageName, mTitleResId, mSummaryResId, mIntentAction,
-                mProfile, mSearchTermsResId, mBroadcastReceiverClassName, mDisallowLogging);
+                mProfile, mSearchTermsResId, mBroadcastReceiverClassName, mDisallowLogging,
+                mAllowRefreshOnPageOpen);
     }
 
     @Override
@@ -269,6 +287,7 @@ public final class SafetySource {
                 + ", mSearchTermsResId=" + mSearchTermsResId
                 + ", mBroadcastReceiverClassName='" + mBroadcastReceiverClassName + '\''
                 + ", mDisallowLogging=" + mDisallowLogging
+                + ", mAllowRefreshOnPageOpen=" + mAllowRefreshOnPageOpen
                 + '}';
     }
 
@@ -299,6 +318,8 @@ public final class SafetySource {
         private String mBroadcastReceiverClassName;
         @Nullable
         private Boolean mDisallowLogging;
+        @Nullable
+        private Boolean mAllowRefreshOnPageOpen;
 
         /** Creates a {@link Builder} for a {@link SafetySource}. */
         public Builder() {
@@ -374,6 +395,13 @@ public final class SafetySource {
             return this;
         }
 
+        /** Sets the allow refresh on page open property of this safety source. */
+        @NonNull
+        public Builder setAllowRefreshOnPageOpen(boolean allowRefreshOnPageOpen) {
+            mAllowRefreshOnPageOpen = allowRefreshOnPageOpen;
+            return this;
+        }
+
         /** Creates the {@link SafetySource} defined by this {@link Builder}. */
         @NonNull
         public SafetySource build() {
@@ -398,11 +426,13 @@ public final class SafetySource {
                     false, isInternal);
             BuilderUtils.validateAttribute(mBroadcastReceiverClassName,
                     "broadcastReceiverClassName", false, isStatic || isInternal);
-            Boolean disallowLogging = BuilderUtils.validateBoolean(mDisallowLogging,
+            boolean disallowLogging = BuilderUtils.validateBoolean(mDisallowLogging,
                     "disallowLogging", false, isStatic || isInternal, false);
+            boolean allowRefreshOnPageOpen = BuilderUtils.validateBoolean(mAllowRefreshOnPageOpen,
+                    "allowRefreshOnPageOpen", false, isStatic || isInternal, false);
             return new SafetySource(type, mId, mPackageName, titleResId, summaryResId,
                     mIntentAction, profile, searchTermsResId, mBroadcastReceiverClassName,
-                    disallowLogging);
+                    disallowLogging, allowRefreshOnPageOpen);
         }
     }
 

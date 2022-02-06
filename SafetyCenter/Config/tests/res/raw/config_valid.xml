@@ -14,7 +14,8 @@
                 profile="2"
                 searchTerms="@string/reference"
                 broadcastReceiverClassName="broadcast"
-                disallowLogging="true"/>
+                disallowLogging="true"
+                allowRefreshOnPageOpen="true"/>
             <safety-source
                 type="3"
                 id="device_security"/>
