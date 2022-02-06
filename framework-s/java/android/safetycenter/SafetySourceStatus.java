@@ -85,8 +85,9 @@ public final class SafetySourceStatus implements Parcelable {
                             requireNonNull(PendingIntent.readPendingIntentOrNullFromParcel(in));
                     IconAction iconAction = in.readParcelable(IconAction.class.getClassLoader(),
                             IconAction.class);
+                    boolean enabled = in.readBoolean();
                     return new SafetySourceStatus(title, summary, statusLevel, pendingIntent,
-                            iconAction);
+                            iconAction, enabled);
                 }
 
                 @Override
@@ -105,15 +106,17 @@ public final class SafetySourceStatus implements Parcelable {
     private final PendingIntent mPendingIntent;
     @Nullable
     private final IconAction mIconAction;
+    private final boolean mEnabled;
 
     private SafetySourceStatus(@NonNull CharSequence title, @NonNull CharSequence summary,
             @StatusLevel int statusLevel, @NonNull PendingIntent pendingIntent,
-            @Nullable IconAction iconAction) {
+            @Nullable IconAction iconAction, boolean enabled) {
         this.mTitle = title;
         this.mSummary = summary;
         this.mStatusLevel = statusLevel;
         this.mPendingIntent = pendingIntent;
         this.mIconAction = iconAction;
+        this.mEnabled = enabled;
     }
 
     /** Returns the localized title of the safety source status to be displayed in the UI. */
@@ -154,6 +157,18 @@ public final class SafetySourceStatus implements Parcelable {
         return mIconAction;
     }
 
+    /**
+     * Returns whether the safety source status is enabled.
+     *
+     * <p>A safety source status should be disabled if it is currently unavailable on the device.
+     *
+     * <p>If disabled, the status will show as grayed out in the UI, and interactions with it may
+     * be limited.
+     */
+    public boolean isEnabled() {
+        return mEnabled;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -166,6 +181,7 @@ public final class SafetySourceStatus implements Parcelable {
         dest.writeInt(mStatusLevel);
         mPendingIntent.writeToParcel(dest, flags);
         dest.writeParcelable(mIconAction, flags);
+        dest.writeBoolean(mEnabled);
     }
 
     @Override
@@ -174,6 +190,7 @@ public final class SafetySourceStatus implements Parcelable {
         if (!(o instanceof SafetySourceStatus)) return false;
         SafetySourceStatus that = (SafetySourceStatus) o;
         return mStatusLevel == that.mStatusLevel
+                && mEnabled == that.mEnabled
                 && TextUtils.equals(mTitle, that.mTitle)
                 && TextUtils.equals(mSummary, that.mSummary)
                 && mPendingIntent.equals(that.mPendingIntent)
@@ -182,7 +199,8 @@ public final class SafetySourceStatus implements Parcelable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(mTitle, mSummary, mStatusLevel, mPendingIntent, mIconAction);
+        return Objects.hash(mTitle, mSummary, mStatusLevel, mPendingIntent, mIconAction,
+                mEnabled);
     }
 
     @Override
@@ -198,6 +216,8 @@ public final class SafetySourceStatus implements Parcelable {
                 + mPendingIntent
                 + ", mIconAction="
                 + mIconAction
+                + ", mEnabled="
+                + mEnabled
                 + '}';
     }
 
@@ -358,6 +378,7 @@ public final class SafetySourceStatus implements Parcelable {
         private final PendingIntent mPendingIntent;
         @Nullable
         private IconAction mIconAction;
+        private boolean mEnabled = true;
 
         /** Creates a {@link Builder} for a {@link SafetySourceStatus}. */
         public Builder(@NonNull CharSequence title, @NonNull CharSequence summary,
@@ -379,11 +400,24 @@ public final class SafetySourceStatus implements Parcelable {
             return this;
         }
 
+        /**
+         * Sets whether the safety source status is enabled.
+         *
+         * <p>By default, the safety source status will be enabled.
+         *
+         * @see #isEnabled()
+         */
+        @NonNull
+        public Builder setEnabled(boolean enabled) {
+            this.mEnabled = enabled;
+            return this;
+        }
+
         /** Creates the {@link SafetySourceStatus} defined by this {@link Builder}. */
         @NonNull
         public SafetySourceStatus build() {
             return new SafetySourceStatus(mTitle, mSummary, mStatusLevel, mPendingIntent,
-                    mIconAction);
+                    mIconAction, mEnabled);
         }
     }
 }
