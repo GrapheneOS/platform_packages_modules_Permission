@@ -37,8 +37,8 @@
     </permission-set>
 
     <permission-set name="location">
-        <permission name="android.permission.ACCESS_FINE_LOCATION" />
         <permission name="android.permission.ACCESS_COARSE_LOCATION" />
+        <permission name="android.permission.ACCESS_FINE_LOCATION" />
     </permission-set>
 
     <permission-set name="coarse_location">
