@@ -28,9 +28,6 @@ import java.util.Objects;
 
 /** Data class used to represent a generic safety source */
 public final class SafetySource {
-    /** Invalid safety source. We never expect this value to be set. */
-    private static final int SAFETY_SOURCE_TYPE_INVALID = 0;
-
     /** Static safety source. */
     public static final int SAFETY_SOURCE_TYPE_STATIC = 1;
 
@@ -349,9 +346,8 @@ public final class SafetySource {
 
     /** Builder class for {@link SafetySource}. */
     public static final class Builder {
-        @Nullable
         @SafetySourceType
-        private Integer mType;
+        private final int mType;
         @Nullable
         private String mId;
         @Nullable
@@ -386,14 +382,8 @@ public final class SafetySource {
         private Boolean mAllowRefreshOnPageOpen;
 
         /** Creates a {@link Builder} for a {@link SafetySource}. */
-        public Builder() {
-        }
-
-        /** Sets the type of this safety source. */
-        @NonNull
-        public Builder setType(@SafetySourceType int type) {
+        public Builder(@SafetySourceType int type) {
             mType = type;
-            return this;
         }
 
         /** Sets the id of this safety source. */
@@ -490,12 +480,14 @@ public final class SafetySource {
         /** Creates the {@link SafetySource} defined by this {@link Builder}. */
         @NonNull
         public SafetySource build() {
-            int type = BuilderUtils.validateIntDef(mType, "type", true, false,
-                    SAFETY_SOURCE_TYPE_INVALID, SAFETY_SOURCE_TYPE_STATIC,
-                    SAFETY_SOURCE_TYPE_DYNAMIC, SAFETY_SOURCE_TYPE_ISSUE_ONLY);
-            boolean isStatic = type == SAFETY_SOURCE_TYPE_STATIC;
-            boolean isDynamic = type == SAFETY_SOURCE_TYPE_DYNAMIC;
-            boolean isIssueOnly = type == SAFETY_SOURCE_TYPE_ISSUE_ONLY;
+            if (mType != SAFETY_SOURCE_TYPE_STATIC
+                    && mType != SAFETY_SOURCE_TYPE_DYNAMIC
+                    && mType != SAFETY_SOURCE_TYPE_ISSUE_ONLY) {
+                throw new IllegalStateException("Unexpected type");
+            }
+            boolean isStatic = mType == SAFETY_SOURCE_TYPE_STATIC;
+            boolean isDynamic = mType == SAFETY_SOURCE_TYPE_DYNAMIC;
+            boolean isIssueOnly = mType == SAFETY_SOURCE_TYPE_ISSUE_ONLY;
             BuilderUtils.validateAttribute(mId, "id", true, false);
             BuilderUtils.validateAttribute(mPackageName, "packageName", isDynamic || isIssueOnly,
                     isStatic);
@@ -526,7 +518,7 @@ public final class SafetySource {
                     "disallowLogging", false, isStatic, false);
             boolean allowRefreshOnPageOpen = BuilderUtils.validateBoolean(mAllowRefreshOnPageOpen,
                     "allowRefreshOnPageOpen", false, isStatic, false);
-            return new SafetySource(type, mId, mPackageName, titleResId, titleForWorkResId,
+            return new SafetySource(mType, mId, mPackageName, titleResId, titleForWorkResId,
                     summaryResId, mIntentAction, profile, initialDisplayState, maxSeverityLevel,
                     searchTermsResId, mBroadcastReceiverClassName, disallowLogging,
                     allowRefreshOnPageOpen);

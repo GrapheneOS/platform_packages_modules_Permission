@@ -4,8 +4,7 @@
             id="id1"
             title="@string/reference"
             summary="@string/reference">
-            <safety-source
-                type="2"
+            <dynamic-safety-source
                 id="id"
                 packageName="package"
                 title="@string/reference"
@@ -17,8 +16,7 @@
             id="id2"
             title="@string/reference"
             summary="@string/reference">
-            <safety-source
-                type="2"
+            <dynamic-safety-source
                 id="id"
                 packageName="package"
                 title="@string/reference"

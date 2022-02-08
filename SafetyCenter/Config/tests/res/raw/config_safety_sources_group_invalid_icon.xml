@@ -5,8 +5,7 @@
             title="@string/reference"
             summary="@string/reference"
             statelessIconType="9">
-            <safety-source
-                type="1"
+            <static-safety-source
                 id="id"
                 title="@string/reference"
                 summary="@string/reference"

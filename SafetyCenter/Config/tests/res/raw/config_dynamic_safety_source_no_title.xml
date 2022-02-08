@@ -4,8 +4,7 @@
             id="id"
             title="@string/reference"
             summary="@string/reference">
-            <safety-source
-                type="2"
+            <dynamic-safety-source
                 id="id"
                 packageName="package"
                 summary="@string/reference"

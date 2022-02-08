@@ -5,16 +5,14 @@
             title="@string/reference"
             summary="@string/reference"
             statelessIconType="1">
-            <safety-source
-                type="2"
+            <dynamic-safety-source
                 id="dynamic_barebone"
                 packageName="package"
                 title="@string/reference"
                 summary="@string/reference"
                 intentAction="intent"
                 profile="1"/>
-            <safety-source
-                type="2"
+            <dynamic-safety-source
                 id="dynamic_all_optional"
                 packageName="package"
                 title="@string/reference"
@@ -28,8 +26,7 @@
                 broadcastReceiverClassName="broadcast"
                 disallowLogging="true"
                 allowRefreshOnPageOpen="true"/>
-            <safety-source
-                type="2"
+            <dynamic-safety-source
                 id="dynamic_hidden"
                 packageName="package"
                 profile="2"
@@ -38,15 +35,13 @@
         <safety-sources-group
             id="static"
             title="@string/reference">
-            <safety-source
-                type="1"
+            <static-safety-source
                 id="static_barebone"
                 title="@string/reference"
                 summary="@string/reference"
                 intentAction="intent"
                 profile="1"/>
-            <safety-source
-                type="1"
+            <static-safety-source
                 id="static_all_optional"
                 title="@string/reference"
                 titleForWork="@string/reference"
@@ -57,13 +52,11 @@
         </safety-sources-group>
         <safety-sources-group
             id="issue_only">
-            <safety-source
-                type="3"
+            <issue-only-safety-source
                 id="issue_only_barebone"
                 packageName="package"
                 profile="1"/>
-            <safety-source
-                type="3"
+            <issue-only-safety-source
                 id="issue_only_all_optional"
                 packageName="package"
                 profile="2"
@@ -74,21 +67,18 @@
         <safety-sources-group
             id="mixed"
             title="@string/reference">
-            <safety-source
-                type="2"
+            <dynamic-safety-source
                 id="mixed_dynamic_barebone"
                 packageName="package"
                 title="@string/reference"
                 summary="@string/reference"
                 intentAction="intent"
                 profile="1"/>
-            <safety-source
-                type="3"
+            <issue-only-safety-source
                 id="mixed_issue_only_barebone"
                 packageName="package"
                 profile="1"/>
-            <safety-source
-                type="1"
+            <static-safety-source
                 id="mixed_static_barebone"
                 title="@string/reference"
                 summary="@string/reference"

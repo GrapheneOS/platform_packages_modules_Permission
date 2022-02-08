@@ -29,6 +29,8 @@ import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.content.res.Resources;
 
+import com.android.safetycenter.config.SafetySource.SafetySourceType;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -44,14 +46,15 @@ public final class Parser {
     private static final String TAG_SAFETY_CENTER_CONFIG = "safety-center-config";
     private static final String TAG_SAFETY_SOURCES_CONFIG = "safety-sources-config";
     private static final String TAG_SAFETY_SOURCES_GROUP = "safety-sources-group";
-    private static final String TAG_SAFETY_SOURCE = "safety-source";
+    private static final String TAG_STATIC_SAFETY_SOURCE = "static-safety-source";
+    private static final String TAG_DYNAMIC_SAFETY_SOURCE = "dynamic-safety-source";
+    private static final String TAG_ISSUE_ONLY_SAFETY_SOURCE = "issue-only-safety-source";
 
     private static final String ATTR_SAFETY_SOURCES_GROUP_ID = "id";
     private static final String ATTR_SAFETY_SOURCES_GROUP_TITLE = "title";
     private static final String ATTR_SAFETY_SOURCES_GROUP_SUMMARY = "summary";
     private static final String ATTR_SAFETY_SOURCES_GROUP_STATELESS_ICON_TYPE = "statelessIconType";
 
-    private static final String ATTR_SAFETY_SOURCE_TYPE = "type";
     private static final String ATTR_SAFETY_SOURCE_ID = "id";
     private static final String ATTR_SAFETY_SOURCE_PACKAGE_NAME = "packageName";
     private static final String ATTR_SAFETY_SOURCE_TITLE = "title";
@@ -171,8 +174,24 @@ public final class Parser {
             }
         }
         parser.nextTag();
-        while (parser.getEventType() == START_TAG && parser.getName().equals(TAG_SAFETY_SOURCE)) {
-            builder.addSafetySource(parseSafetySource(parser, resourcePkgName, resources));
+        loop:
+        while (parser.getEventType() == START_TAG) {
+            int type;
+            switch (parser.getName()) {
+                case TAG_STATIC_SAFETY_SOURCE:
+                    type = SafetySource.SAFETY_SOURCE_TYPE_STATIC;
+                    break;
+                case TAG_DYNAMIC_SAFETY_SOURCE:
+                    type = SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC;
+                    break;
+                case TAG_ISSUE_ONLY_SAFETY_SOURCE:
+                    type = SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY;
+                    break;
+                default:
+                    break loop;
+            }
+            builder.addSafetySource(
+                    parseSafetySource(parser, resourcePkgName, resources, type, parser.getName()));
         }
         validateElementEnd(parser, name);
         parser.nextTag();
@@ -186,16 +205,12 @@ public final class Parser {
 
     @NonNull
     private static SafetySource parseSafetySource(@NonNull XmlPullParser parser,
-            @NonNull String resourcePkgName, @NonNull Resources resources)
+            @NonNull String resourcePkgName, @NonNull Resources resources,
+            @SafetySourceType int type, @NonNull String name)
             throws XmlPullParserException, IOException, ParseException {
-        String name = TAG_SAFETY_SOURCE;
-        SafetySource.Builder builder = new SafetySource.Builder();
+        SafetySource.Builder builder = new SafetySource.Builder(type);
         for (int i = 0; i < parser.getAttributeCount(); i++) {
             switch (parser.getAttributeName(i)) {
-                case ATTR_SAFETY_SOURCE_TYPE:
-                    builder.setType(parseInteger(parser.getAttributeValue(i), name,
-                            parser.getAttributeName(i)));
-                    break;
                 case ATTR_SAFETY_SOURCE_ID:
                     builder.setId(parser.getAttributeValue(i));
                     break;

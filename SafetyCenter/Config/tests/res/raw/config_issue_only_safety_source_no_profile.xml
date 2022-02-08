@@ -2,8 +2,7 @@
     <safety-sources-config>
         <safety-sources-group
             id="id">
-            <safety-source
-                type="3"
+            <issue-only-safety-source
                 id="id"
                 packageName="package"/>
         </safety-sources-group>

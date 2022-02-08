@@ -4,8 +4,7 @@
             id="id"
             title="@string/reference"
             summary="@string/reference">
-            <safety-source
-                type="1"
+            <static-safety-source
                 title="@string/reference"
                 summary="@string/reference"
                 intentAction="intent"
