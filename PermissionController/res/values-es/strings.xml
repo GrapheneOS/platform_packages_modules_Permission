@@ -71,6 +71,10 @@
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"Abrir la información de la aplicación"</string>
     <string name="additional_permissions_more" msgid="5681220714755304407">"{count,plural, =1{# más}other{# más}}"</string>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"Esta aplicación está diseñada para una versión anterior de Android. Si se le deniega el permiso, puede dejar de funcionar de la forma prevista."</string>
+    <!-- no translation found for storage_supergroup_warning_allow (103093462784523190) -->
+    <skip />
+    <!-- no translation found for storage_supergroup_warning_deny (6420765672683284347) -->
+    <skip />
     <string name="default_permission_description" msgid="4624464917726285203">"realizar una acción desconocida"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> de <xliff:g id="COUNT_1">%2$d</xliff:g> aplicaciones permitidas"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g> de <xliff:g id="COUNT_1">%2$d</xliff:g> aplicaciones permitidas"</string>
@@ -83,6 +87,10 @@
     <string name="location_settings" msgid="3624412509133422562">"Ajustes de ubicación"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> es un proveedor de servicios de ubicación de este dispositivo. El acceso a la ubicación se puede modificar en los ajustes de ubicación."</string>
     <string name="system_warning" msgid="1173400963234358816">"Si rechazas este permiso, es posible que algunas funciones básicas de tu dispositivo dejen de funcionar correctamente."</string>
+    <!-- no translation found for deny_read_media_visual_warning (3982586279917232827) -->
+    <skip />
+    <!-- no translation found for deny_read_media_aural_warning (8928699919508646732) -->
+    <skip />
     <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"Si rechazas este permiso, puede que algunas funciones del dispositivo gestionado por esta aplicación no puedan usarse como estaba previsto."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Aplicado por política"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Acceso en segundo plano inhabilitado por política"</string>
@@ -126,6 +134,10 @@
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Cronología de cuándo han usado las aplicaciones tu <xliff:g id="PERMGROUP">%1$s</xliff:g> en los últimos 7 días"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Cuándo ha utilizado esta aplicación tu permiso de <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Más información"</string>
+    <!-- no translation found for manage_permission_summary (4117555482684114317) -->
+    <skip />
+    <!-- no translation found for auto_permission_usage_timeline_summary (2713135806453218703) -->
+    <skip />
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_3" msgid="758761785983094351">"<xliff:g id="ATTRIBUTION_NAME">%1$s</xliff:g> • <xliff:g id="APP_NAME">%2$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%3$s</xliff:g>"</string>
     <string name="duration_used_days" msgid="8293010131040301793">"{count,plural, =1{1 día}other{# días}}"</string>
@@ -226,6 +238,10 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Las aplicaciones con este permiso pueden acceder a los datos de los sensores sobre tus constantes vitales"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Las aplicaciones con este permiso pueden ver y enviar mensajes SMS"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Las aplicaciones con este permiso pueden acceder a fotos, contenido multimedia y archivos de tu dispositivo"</string>
+    <!-- no translation found for permission_description_summary_read_media_aural (2789020637856210454) -->
+    <skip />
+    <!-- no translation found for permission_description_summary_read_media_visual (4210569227927436735) -->
+    <skip />
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Último acceso: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Actualmente denegado / Último acceso: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"No ha accedido nunca"</string>
@@ -237,6 +253,10 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Pueden gestionar todos los archivos"</string>
     <string name="ask_header" msgid="2633816846459944376">"Preguntar siempre"</string>
     <string name="denied_header" msgid="903209608358177654">"No permitido"</string>
+    <!-- no translation found for storage_footer_warning_text (2242258357752432337) -->
+    <skip />
+    <!-- no translation found for storage_footer_hyperlink_text (7759955324552930974) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 día}other{# días}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 hora}other{# horas}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 minuto}other{# minutos}}"</string>
@@ -358,18 +378,14 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"Aplicaciones que te permiten identificar llamadas y bloquear spam, llamadas automatizadas o números no deseados"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"¿Quieres establecer a <xliff:g id="APP_NAME">%1$s</xliff:g> como tu aplicación predeterminada de filtro de identificación de llamada y spam?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"No se necesita ningún permiso"</string>
-    <!-- no translation found for role_automotive_navigation_label (2701890757955474751) -->
-    <skip />
-    <!-- no translation found for role_automotive_navigation_short_label (5165823092506922457) -->
-    <skip />
-    <!-- no translation found for role_automotive_navigation_description (7834601873792870134) -->
-    <skip />
-    <!-- no translation found for role_automotive_navigation_request_title (7525693151489384300) -->
-    <skip />
-    <!-- no translation found for role_automotive_navigation_request_description (7073023813249245540) -->
-    <skip />
+    <string name="role_automotive_navigation_label" msgid="2701890757955474751">"Aplicación de navegación predeterminada"</string>
+    <string name="role_automotive_navigation_short_label" msgid="5165823092506922457">"Aplicación de navegación"</string>
+    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"Las aplicaciones pueden ofrecer búsquedas de lugares de interés y guías de navegación detalladas"</string>
+    <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"¿Definir <xliff:g id="APP_NAME">%1$s</xliff:g> como tu aplicación de navegación predeterminada?"</string>
+    <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"No se necesita ningún permiso"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> podrá interactuar con tus notificaciones y acceder a tu teléfono, SMS, contactos y calendario."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> podrá interactuar con tus notificaciones y reproducir tus aplicaciones en el dispositivo conectado."</string>
+    <string name="role_companion_device_computer_description" msgid="416099879217066377">"Este servicio comparte las fotos, el contenido multimedia y las notificaciones de tu teléfono con otros dispositivos."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Predeterminada"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"No volver a preguntar"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Establecer como predeterminado"</string>
@@ -439,7 +455,16 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Aproximada"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a tu calendario?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; envíe y lea mensajes SMS?"</string>
-    <string name="permgrouprequest_storage" msgid="8717773092518621602">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a las fotos, al contenido multimedia y a los archivos de tu dispositivo?"</string>
+    <!-- no translation found for permgrouprequest_storage (7426990523173124539) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_storage_q_to_s (3942779386983426698) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_storage_pre_q (1681166745228672009) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_aural (5948278590400297839) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_visual (4188474766470776052) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; grabe audio?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"La aplicación solo podrá grabar audio mientras la estés usando."</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"¿Quieres permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; grabe audio?"</string>
@@ -487,4 +512,8 @@
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Cambiar"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Seguridad y privacidad"</string>
     <string name="security_settings" msgid="3808106921175271317">"Ajustes de seguridad"</string>
+    <!-- no translation found for safety_privacy_qs_tile_title (5431148204168066203) -->
+    <skip />
+    <!-- no translation found for safety_privacy_qs_tile_subtitle (3621544532041936749) -->
+    <skip />
 </resources>
