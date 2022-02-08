@@ -155,4 +155,49 @@
         <item name="android:textColor">?android:attr/textColorSecondary</item>
     </style>
 
+    <style name="SafetyCenter.IssueCard"
+        parent="android:Widget.DeviceDefault">
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingEnd">20dp</item>
+        <item name="android:paddingTop">20dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:background">@drawable/safety_center_card_background</item>
+    </style>
+
+    <style name="SafetyCenter.IssueCard.TopRow"
+        parent="android:Widget.DeviceDefault">
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+
+    <style name="SafetyCenter.IssueCard.Dismiss"
+        parent="android:Widget.DeviceDefault.ImageButton">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="SafetyCenter.IssueCard.Title"
+        parent="@android:style/TextAppearance.Material.Subhead">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@string/settingslib_config_headlineFontFamily</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="SafetyCenter.IssueCard.Subtitle"
+        parent="@android:style/TextAppearance.DeviceDefault">
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="SafetyCenter.IssueCard.Summary"
+        parent="@android:style/TextAppearance.DeviceDefault">
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="SafetyCenter.IssueCard.ActionButton"
+        parent="android:Widget.DeviceDefault.Button.Colored" />
+
 </resources>
