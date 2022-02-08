@@ -40,9 +40,8 @@ import com.android.permissioncontroller.R;
 /** A preference that displays a card representing a {@link SafetyCenterIssue}. */
 public class IssueCardPreference extends Preference {
 
-    public static final String TAG = "IssueCardPreference";
+    public static final String TAG = IssueCardPreference.class.getSimpleName();
 
-    // TODO: support recycling an isue card for a new issue.
     private final SafetyCenterIssue mIssue;
 
     public IssueCardPreference(Context context, SafetyCenterIssue issue) {
@@ -68,9 +67,11 @@ public class IssueCardPreference extends Preference {
         ((TextView) holder.findViewById(R.id.issue_card_subtitle)).setText(mIssue.getSubtitle());
         ((TextView) holder.findViewById(R.id.issue_card_summary)).setText(mIssue.getSummary());
 
-        LinearLayout root = ((LinearLayout) holder.itemView);
+        LinearLayout buttonList =
+                ((LinearLayout) holder.findViewById(R.id.issue_card_action_button_list));
+        buttonList.removeAllViews(); // This view may be recycled from another issue
         for (SafetyCenterIssue.Action action : mIssue.getActions()) {
-            root.addView(buildActionButton(action, holder.itemView.getContext()));
+            buttonList.addView(buildActionButton(action, holder.itemView.getContext()));
         }
     }
 
