@@ -499,4 +499,10 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"கடந்த\n24 மணிநேரம்"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> ஆப்ஸ் Android மூலம் பாதுகாக்கப்படுகிறது. இந்தச் சாதனத்தில் உங்கள் தரவு செயலாக்கப்படுவதால் நிலைப் பட்டியிலோ தனியுரிமை டாஷ்போர்டிலோ இந்த ஆப்ஸின் அனுமதி உபயோகம் காட்டப்படவில்லை."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> ஆப்ஸ் Android மூலம் பாதுகாக்கப்படுகிறது. இந்தச் சாதனத்தில் உங்கள் தரவு செயலாக்கப்படுவதால் தனியுரிமை டாஷ்போர்டில் இந்த ஆப்ஸின் அனுமதி உபயோகம் காட்டப்படவில்லை."</string>
+    <string name="blocked_camera_title" msgid="1128510551791284384">"சாதனத்தின் கேமரா தடைசெய்யப்பட்டுள்ளது"</string>
+    <string name="blocked_microphone_title" msgid="1631517143648232585">"சாதனத்தின் மைக்ரோஃபோன் தடைசெய்யப்பட்டுள்ளது"</string>
+    <string name="blocked_location_title" msgid="2005608279812892383">"சாதனத்தின் இருப்பிடம் முடக்கப்பட்டுள்ளது"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"ஆப்ஸ் &amp; சேவைகளுக்கு"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"எனினும் அவசர உதவி எண்ணைத் தொடர்பு கொள்ளும்போது மைக்ரோஃபோன் தரவு பகிரப்படலாம்."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"மாற்று"</string>
 </resources>

@@ -499,4 +499,10 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"Në 24 orët\ne kaluara"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> mbrohet nga Android. Duke qenë se të dhënat e tua përpunohen në këtë pajisje, përdorimi i lejes së aplikacionit nuk shfaqet në shiritin e statusit ose në panelin tënd të privatësisë."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> mbrohet nga Android. Duke qenë se të dhënat e tua përpunohen në këtë pajisje, përdorimi i lejes së aplikacionit nuk shfaqet në panelin tënd të privatësisë."</string>
+    <string name="blocked_camera_title" msgid="1128510551791284384">"Kamera e pajisjes është bllokuar"</string>
+    <string name="blocked_microphone_title" msgid="1631517143648232585">"Mikrofoni i pajisjes është bllokuar"</string>
+    <string name="blocked_location_title" msgid="2005608279812892383">"Vendndodhja e pajisjes është joaktive"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"Për aplikacionet dhe shërbimet"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Të dhënat e mikrofonit mund të vazhdojnë të ndahen kur telefonon një numër urgjence."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Ndrysho"</string>
 </resources>

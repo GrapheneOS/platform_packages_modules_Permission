@@ -499,4 +499,10 @@
     <string name="privdash_label_24h" msgid="1512532123865375319">"मागील\n२४ तास"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> हे Android द्वारे संरक्षित आहे. तुमच्या या डिव्हाइसवरील डेटावर प्रक्रिया केली जात असल्यामुळे या अ‍ॅपच्या परवानगीचा वापर तुमच्या गोपनीयता डॅशबोर्डवरील स्टेटस बारवर दाखवण्यात आलेला नाही."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> हे Android द्वारे संरक्षित आहे. तुमच्या या डिव्हाइसवरील डेटावर प्रक्रिया केली जात असल्यामुळे या अ‍ॅपच्या परवानगीचा वापर तुमच्या गोपनीयता डॅशबोर्डवर दाखवण्यात आलेला नाही."</string>
+    <string name="blocked_camera_title" msgid="1128510551791284384">"डिव्हाइसचा कॅमेरा ब्लॉक केला आहे"</string>
+    <string name="blocked_microphone_title" msgid="1631517143648232585">"डिव्हाइसचा मायक्रोफोन ब्लॉक केला आहे"</string>
+    <string name="blocked_location_title" msgid="2005608279812892383">"डिव्हाइसचे स्थान बंद आहे"</string>
+    <string name="blocked_sensor_summary" msgid="4443707628305027375">"ॲप्स आणि सेवांसाठी"</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"तुम्ही आणीबाणी नंबरवर कॉल करता तेव्हा, मायक्रोफोन डेटा तरीही कदाचित शेअर केला जाईल."</string>
+    <string name="blocked_sensor_button_label" msgid="6742092634984289658">"बदला"</string>
 </resources>
