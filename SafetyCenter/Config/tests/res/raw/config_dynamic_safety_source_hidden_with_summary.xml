@@ -8,8 +8,8 @@
                 id="id"
                 packageName="package"
                 summary="@string/reference"
-                profile="1"
-                initialDisplayState="2"/>
+                profile="primary_profile_only"
+                initialDisplayState="hidden"/>
         </safety-sources-group>
     </safety-sources-config>
 </safety-center-config>

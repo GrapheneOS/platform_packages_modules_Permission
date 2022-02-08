@@ -45,7 +45,7 @@
         <!-- title is required unless the group contains issue only and/or internal sources -->
         <xsd:attribute name="title" type="reference"/>
         <xsd:attribute name="summary" type="reference"/>
-        <xsd:attribute name="statelessIconType" type="statelessIconType"/>
+        <xsd:attribute name="statelessIconType" type="statelessIconType" default="none"/>
     </xsd:complexType>
 
     <xsd:complexType name="dynamic-safety-source">
@@ -66,11 +66,11 @@
         <!-- intentAction is prohibited if initialDisplayState is set to hidden -->
         <xsd:attribute name="intentAction" type="xsd:string"/>
         <xsd:attribute name="profile" type="profile" use="required"/>
-        <xsd:attribute name="initialDisplayState" type="initialDisplayState"/>
+        <xsd:attribute name="initialDisplayState" type="initialDisplayState" default="enabled"/>
         <xsd:attribute name="maxSeverityLevel" type="xsd:int" default="2147483647"/>
         <xsd:attribute name="searchTerms" type="xsd:string"/>
         <xsd:attribute name="broadcastReceiverClassName" type="xsd:string"/>
-        <xsd:attribute name="disallowLogging" type="xsd:boolean" default="false"/>
+        <xsd:attribute name="allowLogging" type="xsd:boolean" default="true"/>
         <xsd:attribute name="allowRefreshOnPageOpen" type="xsd:boolean" default="false"/>
     </xsd:complexType>
 
@@ -98,40 +98,25 @@
         <xsd:attribute name="searchTerms" type="xsd:string"/>
     </xsd:complexType>
 
-    <!--
-      ~ Possible stateless icon values are:
-      ~ 0: none (default)
-      ~ 1: privacy icon
-      -->
     <xsd:simpleType name="statelessIconType">
-        <xsd:restriction base="xsd:int">
-            <xsd:minInclusive value="0"/>
-            <xsd:maxInclusive value="1"/>
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="none"/>
+            <xsd:enumeration value="privacy"/>
         </xsd:restriction>
     </xsd:simpleType>
 
-    <!--
-      ~ Possible profile values are:
-      ~ 1: primary_profile_only
-      ~ 2: all_profiles
-      -->
     <xsd:simpleType name="profile">
-        <xsd:restriction base="xsd:int">
-            <xsd:minInclusive value="1"/>
-            <xsd:maxInclusive value="2"/>
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="primary_profile_only"/>
+            <xsd:enumeration value="all_profiles"/>
         </xsd:restriction>
     </xsd:simpleType>
 
-    <!--
-      ~ Possible profile values are:
-      ~ 0: enabled (default)
-      ~ 1: disabled
-      ~ 2: hidden
-      -->
     <xsd:simpleType name="initialDisplayState">
-        <xsd:restriction base="xsd:int">
-            <xsd:minInclusive value="0"/>
-            <xsd:maxInclusive value="2"/>
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="enabled"/>
+            <xsd:enumeration value="disabled"/>
+            <xsd:enumeration value="hidden"/>
         </xsd:restriction>
     </xsd:simpleType>
 

@@ -9,8 +9,8 @@
                 title="@string/reference"
                 summary="@string/reference"
                 intentAction="intent"
-                profile="1"
-                initialDisplayState="1"/>
+                profile="primary_profile_only"
+                initialDisplayState="disabled"/>
         </safety-sources-group>
     </safety-sources-config>
 </safety-center-config>

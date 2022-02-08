@@ -10,7 +10,7 @@
                 title="@string/reference"
                 summary="@string/reference"
                 intentAction="intent"
-                profile="2"/>
+                profile="all_profiles"/>
         </safety-sources-group>
     </safety-sources-config>
 </safety-center-config>

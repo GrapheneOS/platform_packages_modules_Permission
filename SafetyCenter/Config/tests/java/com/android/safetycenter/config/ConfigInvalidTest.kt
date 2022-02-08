@@ -106,10 +106,16 @@ class ConfigInvalidTest {
                 "Prohibited attribute title present"
             ),
             Params(
+                "ConfigDynamicSafetySourceInvalidDisplay",
+                R.raw.config_dynamic_safety_source_invalid_display,
+                "Attribute dynamic-safety-source.initialDisplayState invalid",
+                null
+            ),
+            Params(
                 "ConfigDynamicSafetySourceInvalidProfile",
                 R.raw.config_dynamic_safety_source_invalid_profile,
-                "Element dynamic-safety-source invalid",
-                "Attribute profile invalid"
+                "Attribute dynamic-safety-source.profile invalid",
+                null
             ),
             Params(
                 "ConfigDynamicSafetySourceNoId",
@@ -174,8 +180,8 @@ class ConfigInvalidTest {
             Params(
                 "ConfigIssueOnlySafetySourceInvalidProfile",
                 R.raw.config_issue_only_safety_source_invalid_profile,
-                "Element issue-only-safety-source invalid",
-                "Attribute profile invalid"
+                "Attribute issue-only-safety-source.profile invalid",
+                null
             ),
             Params(
                 "ConfigIssueOnlySafetySourceNoId",
@@ -282,8 +288,8 @@ class ConfigInvalidTest {
             Params(
                 "ConfigSafetySourcesGroupInvalidIcon",
                 R.raw.config_safety_sources_group_invalid_icon,
-                "Element safety-sources-group invalid",
-                "Attribute statelessIconType invalid"
+                "Attribute safety-sources-group.statelessIconType invalid",
+                null
             ),
             Params(
                 "ConfigSafetySourcesGroupNoId",
@@ -306,8 +312,8 @@ class ConfigInvalidTest {
             Params(
                 "ConfigStaticSafetySourceInvalidProfile",
                 R.raw.config_static_safety_source_invalid_profile,
-                "Element static-safety-source invalid",
-                "Attribute profile invalid"
+                "Attribute static-safety-source.profile invalid",
+                null
             ),
             Params(
                 "ConfigStaticSafetySourceNoId",
@@ -355,7 +361,7 @@ class ConfigInvalidTest {
                 "ConfigStaticSafetySourceWithLogging",
                 R.raw.config_static_safety_source_with_logging,
                 "Element static-safety-source invalid",
-                "Prohibited attribute disallowLogging present"
+                "Prohibited attribute allowLogging present"
             ),
             Params(
                 "ConfigStaticSafetySourceWithPackage",

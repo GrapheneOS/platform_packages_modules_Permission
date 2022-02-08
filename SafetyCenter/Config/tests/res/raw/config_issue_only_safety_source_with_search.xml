@@ -5,7 +5,7 @@
             <issue-only-safety-source
                 id="id"
                 packageName="package"
-                profile="1"
+                profile="primary_profile_only"
                 searchTerms="@string/reference"/>
         </safety-sources-group>
     </safety-sources-config>
