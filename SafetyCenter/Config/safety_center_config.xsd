@@ -67,6 +67,7 @@
         <xsd:attribute name="summary" type="reference" use="required">
             <xsd:annotation name="nonnull"/>
         </xsd:attribute>
+        <xsd:attribute name="statelessIconType" type="statelessIconType"/>
     </xsd:complexType>
 
     <xsd:complexType name="static-safety-sources-group">
@@ -102,6 +103,14 @@
         <xsd:attribute name="title" type="reference" use="required">
             <xsd:annotation name="nullable"/>
         </xsd:attribute>
+        <!-- titleForWork is required for a dynamic safety source if profile is set to all_profiles -->
+        <!-- titleForWork is prohibited for a dynamic safety source if profile is set to primary_profile_only -->
+        <!-- titleForWork is required for a static safety source if profile is set to all_profiles -->
+        <!-- titleForWork is prohibited for a static safety source if profile is set to primary_profile_only -->
+        <!-- titleForWork is prohibited for an internal safety source -->
+        <xsd:attribute name="titleForWork" type="reference">
+            <xsd:annotation name="nullable"/>
+        </xsd:attribute>
         <!-- summary is required for a dynamic safety source and it represents the fallback value used when no dynamic value is provided -->
         <!-- summary is required for a static safety source -->
         <!-- summary is prohibited for an internal safety source -->
@@ -118,6 +127,11 @@
         <!-- profile is required for a static safety source -->
         <!-- profile is prohibited for an internal safety source -->
         <xsd:attribute name="profile" type="profile" use="required"/>
+        <!-- maxSeverityLevel defaults to 2147483647 -->
+        <!-- maxSeverityLevel must be strictly greater than 0 -->
+        <!-- maxSeverityLevel is prohibited for a static safety source -->
+        <!-- maxSeverityLevel is prohibited for an internal safety source -->
+        <xsd:attribute name="maxSeverityLevel" type="xsd:int"/>
         <!-- searchTerms is prohibited for an internal safety source -->
         <xsd:attribute name="searchTerms" type="reference">
             <xsd:annotation name="nullable"/>
@@ -129,7 +143,23 @@
         </xsd:attribute>
         <!-- disallowLogging defaults to false -->
         <xsd:attribute name="disallowLogging" type="xsd:boolean"/>
+        <!-- allowRefreshOnPageOpen defaults to false -->
+        <!-- allowRefreshOnPageOpen is prohibited for a static safety source -->
+        <!-- allowRefreshOnPageOpen is prohibited for an internal safety source -->
+        <xsd:attribute name="allowRefreshOnPageOpen" type="xsd:boolean"/>
     </xsd:complexType>
+
+    <!--
+      ~ Possible stateless icon values are:
+      ~ 0: none (default)
+      ~ 1: privacy icon
+      -->
+    <xsd:simpleType name="statelessIconType">
+        <xsd:restriction base="xsd:int">
+            <xsd:minInclusive value="0"/>
+            <xsd:maxInclusive value="1"/>
+        </xsd:restriction>
+    </xsd:simpleType>
 
     <!--
       ~ Possible safety source types are:

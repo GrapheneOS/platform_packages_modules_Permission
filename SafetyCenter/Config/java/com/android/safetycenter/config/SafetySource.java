@@ -92,16 +92,20 @@ public final class SafetySource {
     @IdRes
     private final int mTitleResId;
     @IdRes
+    private final int mTitleForWorkResId;
+    @IdRes
     private final int mSummaryResId;
     @Nullable
     private final String mIntentAction;
     @Profile
     private final int mProfile;
+    private final int mMaxSeverityLevel;
     @IdRes
     private final int mSearchTermsResId;
     @Nullable
     private final String mBroadcastReceiverClassName;
     private final boolean mDisallowLogging;
+    private final boolean mAllowRefreshOnPageOpen;
 
     /** Returns the id of this safety source. */
     private SafetySource(
@@ -109,22 +113,28 @@ public final class SafetySource {
             @NonNull String id,
             @Nullable String packageName,
             @IdRes int titleResId,
+            @IdRes int titleForWorkResId,
             @IdRes int summaryResId,
             @Nullable String intentAction,
             @Profile int profile,
+            int maxSeverityLevel,
             @IdRes int searchTermsResId,
             @Nullable String broadcastReceiverClassName,
-            @Nullable Boolean disallowLogging) {
+            boolean disallowLogging,
+            boolean allowRefreshOnPageOpen) {
         mType = type;
         mId = id;
         mPackageName = packageName;
         mTitleResId = titleResId;
+        mTitleForWorkResId = titleForWorkResId;
         mSummaryResId = summaryResId;
         mIntentAction = intentAction;
         mProfile = profile;
+        mMaxSeverityLevel = maxSeverityLevel;
         mSearchTermsResId = searchTermsResId;
         mBroadcastReceiverClassName = broadcastReceiverClassName;
         mDisallowLogging = disallowLogging;
+        mAllowRefreshOnPageOpen = allowRefreshOnPageOpen;
     }
 
     /** Returns the type of this safety source. */
@@ -163,6 +173,20 @@ public final class SafetySource {
         return mTitleResId;
     }
 
+    /** Returns the resource id of the title for work of this safety source. */
+    @IdRes
+    public int getTitleForWorkResId() {
+        if (mType == SAFETY_SOURCE_TYPE_INTERNAL) {
+            throw new UnsupportedOperationException(
+                    "getTitleForWorkResId unsupported for internal safety source");
+        }
+        if (mProfile == PROFILE_PRIMARY) {
+            throw new UnsupportedOperationException(
+                    "getTitleForWorkResId unsupported for primary profile safety source");
+        }
+        return mTitleForWorkResId;
+    }
+
     /** Returns the resource id of the summary of this safety source. */
     @IdRes
     public int getSummaryResId() {
@@ -191,6 +215,20 @@ public final class SafetySource {
                     "getProfile unsupported for internal safety source");
         }
         return mProfile;
+    }
+
+    /** Returns the maximum severity level of this safety source. */
+    @Profile
+    public int getMaxSeverityLevel() {
+        if (mType == SAFETY_SOURCE_TYPE_STATIC) {
+            throw new UnsupportedOperationException(
+                    "getMaxSeverityLevel unsupported for static safety source");
+        }
+        if (mType == SAFETY_SOURCE_TYPE_INTERNAL) {
+            throw new UnsupportedOperationException(
+                    "getMaxSeverityLevel unsupported for internal safety source");
+        }
+        return mMaxSeverityLevel;
     }
 
     /**
@@ -233,6 +271,19 @@ public final class SafetySource {
         return mDisallowLogging;
     }
 
+    /** Returns the allow refresh on page open property of this safety source. */
+    public boolean isAllowRefreshOnPageOpen() {
+        if (mType == SAFETY_SOURCE_TYPE_STATIC) {
+            throw new UnsupportedOperationException(
+                    "isAllowRefreshOnPageOpen unsupported for static safety source");
+        }
+        if (mType == SAFETY_SOURCE_TYPE_INTERNAL) {
+            throw new UnsupportedOperationException(
+                    "isAllowRefreshOnPageOpen unsupported for internal safety source");
+        }
+        return mAllowRefreshOnPageOpen;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -245,15 +296,18 @@ public final class SafetySource {
                 && mSummaryResId == that.mSummaryResId
                 && Objects.equals(mIntentAction, that.mIntentAction)
                 && mProfile == that.mProfile
+                && mMaxSeverityLevel == that.mMaxSeverityLevel
                 && mSearchTermsResId == that.mSearchTermsResId
                 && Objects.equals(mBroadcastReceiverClassName, that.mBroadcastReceiverClassName)
-                && mDisallowLogging == that.mDisallowLogging;
+                && mDisallowLogging == that.mDisallowLogging
+                && mAllowRefreshOnPageOpen == that.mAllowRefreshOnPageOpen;
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(mType, mId, mPackageName, mTitleResId, mSummaryResId, mIntentAction,
-                mProfile, mSearchTermsResId, mBroadcastReceiverClassName, mDisallowLogging);
+                mProfile, mMaxSeverityLevel, mSearchTermsResId, mBroadcastReceiverClassName,
+                mDisallowLogging, mAllowRefreshOnPageOpen);
     }
 
     @Override
@@ -266,9 +320,11 @@ public final class SafetySource {
                 + ", mSummaryResId=" + mSummaryResId
                 + ", mIntentAction='" + mIntentAction + '\''
                 + ", mProfile=" + mProfile
+                + ", mMaxSeverityLevel=" + mMaxSeverityLevel
                 + ", mSearchTermsResId=" + mSearchTermsResId
                 + ", mBroadcastReceiverClassName='" + mBroadcastReceiverClassName + '\''
                 + ", mDisallowLogging=" + mDisallowLogging
+                + ", mAllowRefreshOnPageOpen=" + mAllowRefreshOnPageOpen
                 + '}';
     }
 
@@ -286,6 +342,9 @@ public final class SafetySource {
         private Integer mTitleResId;
         @Nullable
         @IdRes
+        private Integer mTitleForWorkResId;
+        @Nullable
+        @IdRes
         private Integer mSummaryResId;
         @Nullable
         private String mIntentAction;
@@ -293,12 +352,16 @@ public final class SafetySource {
         @Profile
         private Integer mProfile;
         @Nullable
+        private Integer mMaxSeverityLevel;
+        @Nullable
         @IdRes
         private Integer mSearchTermsResId;
         @Nullable
         private String mBroadcastReceiverClassName;
         @Nullable
         private Boolean mDisallowLogging;
+        @Nullable
+        private Boolean mAllowRefreshOnPageOpen;
 
         /** Creates a {@link Builder} for a {@link SafetySource}. */
         public Builder() {
@@ -332,6 +395,13 @@ public final class SafetySource {
             return this;
         }
 
+        /** Sets the resource id of the title for work of this safety source. */
+        @NonNull
+        public Builder setTitleForWorkResId(@IdRes int titleForWorkResId) {
+            mTitleForWorkResId = titleForWorkResId;
+            return this;
+        }
+
         /** Sets the resource id of the summary of this safety source. */
         @NonNull
         public Builder setSummaryResId(@IdRes int summaryResId) {
@@ -350,6 +420,13 @@ public final class SafetySource {
         @NonNull
         public Builder setProfile(@Profile int profile) {
             mProfile = profile;
+            return this;
+        }
+
+        /** Sets the maximum severity level of this safety source. */
+        @NonNull
+        public Builder setMaxSeverityLevel(int maxSeverityLevel) {
+            mMaxSeverityLevel = maxSeverityLevel;
             return this;
         }
 
@@ -374,6 +451,13 @@ public final class SafetySource {
             return this;
         }
 
+        /** Sets the allow refresh on page open property of this safety source. */
+        @NonNull
+        public Builder setAllowRefreshOnPageOpen(boolean allowRefreshOnPageOpen) {
+            mAllowRefreshOnPageOpen = allowRefreshOnPageOpen;
+            return this;
+        }
+
         /** Creates the {@link SafetySource} defined by this {@link Builder}. */
         @NonNull
         public SafetySource build() {
@@ -394,15 +478,22 @@ public final class SafetySource {
                     isInternal);
             int profile = BuilderUtils.validateIntDef(mProfile, "profile", isDynamic || isStatic,
                     isInternal, PROFILE_NONE, PROFILE_PRIMARY, PROFILE_ALL);
+            int titleForWorkResId = BuilderUtils.validateResId(mTitleForWorkResId, "titleForWork",
+                    (isDynamic || isStatic) && profile == PROFILE_ALL,
+                    isInternal || profile == PROFILE_PRIMARY);
+            int maxSeverityLevel = BuilderUtils.validateInteger(mMaxSeverityLevel,
+                    "maxSeverityLevel", false, isStatic || isInternal, Integer.MAX_VALUE);
             int searchTermsResId = BuilderUtils.validateResId(mSearchTermsResId, "searchTerms",
                     false, isInternal);
             BuilderUtils.validateAttribute(mBroadcastReceiverClassName,
                     "broadcastReceiverClassName", false, isStatic || isInternal);
-            Boolean disallowLogging = BuilderUtils.validateBoolean(mDisallowLogging,
+            boolean disallowLogging = BuilderUtils.validateBoolean(mDisallowLogging,
                     "disallowLogging", false, isStatic || isInternal, false);
-            return new SafetySource(type, mId, mPackageName, titleResId, summaryResId,
-                    mIntentAction, profile, searchTermsResId, mBroadcastReceiverClassName,
-                    disallowLogging);
+            boolean allowRefreshOnPageOpen = BuilderUtils.validateBoolean(mAllowRefreshOnPageOpen,
+                    "allowRefreshOnPageOpen", false, isStatic || isInternal, false);
+            return new SafetySource(type, mId, mPackageName, titleResId, titleForWorkResId,
+                    summaryResId, mIntentAction, profile, maxSeverityLevel, searchTermsResId,
+                    mBroadcastReceiverClassName, disallowLogging, allowRefreshOnPageOpen);
         }
     }
 

@@ -62,6 +62,15 @@ final class BuilderUtils {
         return value;
     }
 
+    static int validateInteger(@Nullable Integer value, @NonNull String name,
+            boolean required, boolean prohibited, int defaultValue) {
+        validateAttribute(value, name, required, prohibited);
+        if (value == null) {
+            return defaultValue;
+        }
+        return value;
+    }
+
     static boolean validateBoolean(@Nullable Boolean value, @NonNull String name,
             boolean required, boolean prohibited, boolean defaultValue) {
         validateAttribute(value, name, required, prohibited);

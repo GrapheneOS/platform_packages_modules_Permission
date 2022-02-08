@@ -106,6 +106,12 @@ class ConfigInvalidTest {
                 "Required attribute title missing"
             ),
             Params(
+                "ConfigDynamicSafetySourceWithPrimaryAndWork",
+                R.raw.config_dynamic_safety_source_with_primary_and_work,
+                "Element safety-source invalid",
+                "Prohibited attribute titleForWork present"
+            ),
+            Params(
                 "ConfigFileCorrupted",
                 R.raw.config_file_corrupted,
                 "Exception while reading XML",
@@ -154,10 +160,22 @@ class ConfigInvalidTest {
                 "Prohibited attribute profile present"
             ),
             Params(
+                "ConfigInternalSafetySourceWithRefresh",
+                R.raw.config_internal_safety_source_with_refresh,
+                "Element safety-source invalid",
+                "Prohibited attribute allowRefreshOnPageOpen present"
+            ),
+            Params(
                 "ConfigInternalSafetySourceWithSearch",
                 R.raw.config_internal_safety_source_with_search,
                 "Element safety-source invalid",
                 "Prohibited attribute searchTerms present"
+            ),
+            Params(
+                "ConfigInternalSafetySourceWithSeverity",
+                R.raw.config_internal_safety_source_with_severity,
+                "Element safety-source invalid",
+                "Prohibited attribute maxSeverityLevel present"
             ),
             Params(
                 "ConfigInternalSafetySourceWithSummary",
@@ -170,6 +188,12 @@ class ConfigInvalidTest {
                 R.raw.config_internal_safety_source_with_title,
                 "Element safety-source invalid",
                 "Prohibited attribute title present"
+            ),
+            Params(
+                "ConfigInternalSafetySourceWithWork",
+                R.raw.config_internal_safety_source_with_work,
+                "Element safety-source invalid",
+                "Prohibited attribute titleForWork present"
             ),
             Params(
                 "ConfigMixedSafetySourceDuplicateKey",
@@ -236,6 +260,12 @@ class ConfigInvalidTest {
                 R.raw.config_safety_sources_group_empty,
                 "Element safety-sources-group invalid",
                 "Safety sources group empty"
+            ),
+            Params(
+                "ConfigSafetySourcesGroupInvalidIcon",
+                R.raw.config_safety_sources_group_invalid_icon,
+                "Element safety-sources-group invalid",
+                "Attribute statelessIconType invalid"
             ),
             Params(
                 "ConfigSafetySourcesGroupNoId",
@@ -344,6 +374,24 @@ class ConfigInvalidTest {
                 R.raw.config_static_safety_source_with_package,
                 "Element safety-source invalid",
                 "Prohibited attribute packageName present"
+            ),
+            Params(
+                "ConfigStaticSafetySourceWithPrimaryAndWork",
+                R.raw.config_static_safety_source_with_primary_and_work,
+                "Element safety-source invalid",
+                "Prohibited attribute titleForWork present"
+            ),
+            Params(
+                "ConfigStaticSafetySourceWithRefresh",
+                R.raw.config_static_safety_source_with_refresh,
+                "Element safety-source invalid",
+                "Prohibited attribute allowRefreshOnPageOpen present"
+            ),
+            Params(
+                "ConfigStaticSafetySourceWithSeverity",
+                R.raw.config_static_safety_source_with_severity,
+                "Element safety-source invalid",
+                "Prohibited attribute maxSeverityLevel present"
             )
         )
     }
