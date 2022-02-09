@@ -20,6 +20,7 @@ import android.os.Bundle;
 
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceGroup;
 import androidx.preference.PreferenceScreen;
 
 import com.android.permissioncontroller.R;
@@ -33,6 +34,7 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
     private SafetyCenterContentManager mSafetyCenterContentManager;
     private List<Preference> mSafetyEntryPreferences = new ArrayList<Preference>();
     private SafetyStatusPreference mSafetyStatusPreference;
+    private PreferenceGroup mIssuesGroup;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -45,6 +47,8 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
         mSafetyStatusPreference.setSafetyStatus(
                 new OverallSafetyStatus(OverallSafetyStatus.Level.RECOMMENDATION,
                         "Something's wrong", "Can you please fix it?"));
+
+        mIssuesGroup = getPreferenceScreen().findPreference("issues_group");
     }
 
     // TODO(b/208212820): Add groups and move to separate controller

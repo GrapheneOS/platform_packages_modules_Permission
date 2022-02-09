@@ -26,6 +26,11 @@
 
     <!-- TODO(b/205996247): Add primary safety warning. -->
     <!-- TODO(b/205999071): Add link to more warnings page. -->
+    <PreferenceCategory
+        android:key="issues_group"
+        app:title="Issues"
+        app:selectable="false" />
+
     <!-- TODO(b/205971026): Add safety entries. -->
 
 </PreferenceScreen>
