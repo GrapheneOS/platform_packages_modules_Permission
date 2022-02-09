@@ -5,16 +5,24 @@
             title="@string/reference"
             summary="@string/reference">
             <safety-source
-                type="3"
-                id="id1"/>
+                type="1"
+                id="id1"
+                title="@string/reference"
+                summary="@string/reference"
+                intentAction="intent"
+                profile="1"/>
         </safety-sources-group>
         <safety-sources-group
             id="id"
             title="@string/reference"
             summary="@string/reference">
             <safety-source
-                type="3"
-                id="id2"/>
+                type="1"
+                id="id2"
+                title="@string/reference"
+                summary="@string/reference"
+                intentAction="intent"
+                profile="1"/>
         </safety-sources-group>
     </safety-sources-config>
 </safety-center-config>

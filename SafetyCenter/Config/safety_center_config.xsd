@@ -51,7 +51,7 @@
         <xsd:attribute name="id" type="xsd:string" use="required">
             <xsd:annotation name="nonnull"/>
         </xsd:attribute>
-        <!-- title is required unless the group contains issue only and/or internal sources -->
+        <!-- title is required unless the group contains issue only sources -->
         <xsd:attribute name="title" type="reference">
             <xsd:annotation name="nullable"/>
         </xsd:attribute>
@@ -69,14 +69,12 @@
         </xsd:attribute>
         <!-- packageName is required for a dynamic safety source -->
         <!-- packageName is prohibited for a static safety source -->
-        <!-- packageName is prohibited for an internal safety source -->
         <!-- packageName is required for an issue only safety source -->
         <xsd:attribute name="packageName" type="xsd:string">
             <xsd:annotation name="nullable"/>
         </xsd:attribute>
         <!-- title is required for a dynamic safety source and it represents the fallback value used when no dynamic value is provided -->
         <!-- title is required for a static safety source -->
-        <!-- title is prohibited for an internal safety source -->
         <!-- title is prohibited for an issue only safety source -->
         <xsd:attribute name="title" type="reference" use="required">
             <xsd:annotation name="nullable"/>
@@ -85,52 +83,43 @@
         <!-- titleForWork is prohibited for a dynamic safety source if profile is set to primary_profile_only -->
         <!-- titleForWork is required for a static safety source if profile is set to all_profiles -->
         <!-- titleForWork is prohibited for a static safety source if profile is set to primary_profile_only -->
-        <!-- titleForWork is prohibited for an internal safety source -->
         <!-- titleForWork is prohibited for an issue only safety source -->
         <xsd:attribute name="titleForWork" type="reference">
             <xsd:annotation name="nullable"/>
         </xsd:attribute>
         <!-- summary is required for a dynamic safety source and it represents the fallback value used when no dynamic value is provided -->
         <!-- summary is required for a static safety source -->
-        <!-- summary is prohibited for an internal safety source -->
         <!-- summary is prohibited for an issue only safety source -->
         <xsd:attribute name="summary" type="reference" use="required">
             <xsd:annotation name="nullable"/>
         </xsd:attribute>
         <!-- intentAction is required for a dynamic safety source and it represents the fallback value used when no dynamic value is provided -->
         <!-- intentAction is required for a static safety source -->
-        <!-- intentAction is prohibited for an internal safety source -->
         <!-- intentAction is prohibited for an issue only safety source -->
         <xsd:attribute name="intentAction" type="xsd:string" use="required">
             <xsd:annotation name="nullable"/>
         </xsd:attribute>
         <!-- profile is required for a dynamic safety source -->
         <!-- profile is required for a static safety source -->
-        <!-- profile is prohibited for an internal safety source -->
         <!-- profile is required for an issue only safety source -->
         <xsd:attribute name="profile" type="profile" use="required"/>
         <!-- maxSeverityLevel defaults to 2147483647 -->
         <!-- maxSeverityLevel must be strictly greater than 0 -->
         <!-- maxSeverityLevel is prohibited for a static safety source -->
-        <!-- maxSeverityLevel is prohibited for an internal safety source -->
         <xsd:attribute name="maxSeverityLevel" type="xsd:int"/>
-        <!-- searchTerms is prohibited for an internal safety source -->
         <!-- searchTerms is prohibited for an issue only safety source -->
         <xsd:attribute name="searchTerms" type="reference">
             <xsd:annotation name="nullable"/>
         </xsd:attribute>
         <!-- broadcastReceiverClassName is prohibited for a static safety source -->
-        <!-- broadcastReceiverClassName is prohibited for an internal safety source -->
         <xsd:attribute name="broadcastReceiverClassName" type="xsd:string">
             <xsd:annotation name="nullable"/>
         </xsd:attribute>
         <!-- disallowLogging defaults to false -->
         <!-- disallowLogging is prohibited for a static safety source -->
-        <!-- disallowLogging is prohibited for an internal safety source -->
         <xsd:attribute name="disallowLogging" type="xsd:boolean"/>
         <!-- allowRefreshOnPageOpen defaults to false -->
         <!-- allowRefreshOnPageOpen is prohibited for a static safety source -->
-        <!-- allowRefreshOnPageOpen is prohibited for an internal safety source -->
         <xsd:attribute name="allowRefreshOnPageOpen" type="xsd:boolean"/>
     </xsd:complexType>
 
@@ -150,13 +139,12 @@
       ~ Possible safety source types are:
       ~ 1: static safety source
       ~ 2: dynamic safety source
-      ~ 3: internal safety source
-      ~ 4: issue_only safety source
+      ~ 3: issue_only safety source
       -->
     <xsd:simpleType name="sourceType">
         <xsd:restriction base="xsd:int">
             <xsd:minInclusive value="1"/>
-            <xsd:maxInclusive value="4"/>
+            <xsd:maxInclusive value="3"/>
         </xsd:restriction>
     </xsd:simpleType>
 

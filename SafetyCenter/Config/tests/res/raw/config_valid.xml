@@ -19,9 +19,6 @@
                 disallowLogging="true"
                 allowRefreshOnPageOpen="true"/>
             <safety-source
-                type="3"
-                id="device_security"/>
-            <safety-source
                 type="1"
                 id="lockscreen"
                 title="@string/reference"
@@ -35,9 +32,6 @@
             title="@string/reference"
             summary="@string/reference"
             statelessIconType="1">
-            <safety-source
-                type="3"
-                id="privacy_dashboard"/>
             <safety-source
                 type="1"
                 id="permissions"
@@ -97,20 +91,17 @@
         <safety-sources-group
             id="issue_only">
             <safety-source
-                type="4"
+                type="3"
                 id="accessibility_warnings"
                 packageName="package"
                 profile="1"/>
             <safety-source
-                type="4"
+                type="3"
                 id="privacy_warnings"
                 packageName="package"
                 profile="2"
                 broadcastReceiverClassName="broadcast"
                 disallowLogging="true"/>
-            <safety-source
-                type="3"
-                id="extra_warnings"/>
         </safety-sources-group>
     </safety-sources-config>
 </safety-center-config>

@@ -16,7 +16,6 @@
 
 package com.android.safetycenter.config;
 
-import static com.android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_INTERNAL;
 import static com.android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY;
 
 import static java.util.Objects.requireNonNull;
@@ -249,7 +248,7 @@ public final class SafetySourcesGroup {
             int safetySourcesSize = mSafetySources.size();
             for (int i = 0; i < safetySourcesSize; i++) {
                 int type = mSafetySources.get(i).getType();
-                if (type != SAFETY_SOURCE_TYPE_ISSUE_ONLY && type != SAFETY_SOURCE_TYPE_INTERNAL) {
+                if (type != SAFETY_SOURCE_TYPE_ISSUE_ONLY) {
                     titleRequired = true;
                     break;
                 }
