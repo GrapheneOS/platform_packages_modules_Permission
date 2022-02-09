@@ -359,15 +359,18 @@ public final class SafetyCenterIssue implements Parcelable {
         private final CharSequence mLabel;
         @NonNull
         private final PendingIntent mPendingIntent;
+        private final boolean mResolving;
         @Nullable
         private final CharSequence mSuccessMessage;
 
         private Action(
                 @NonNull CharSequence label,
                 @NonNull PendingIntent pendingIntent,
+                boolean resolving,
                 @Nullable CharSequence successMessage) {
             mLabel = requireNonNull(label);
             mPendingIntent = requireNonNull(pendingIntent);
+            mResolving = resolving;
             mSuccessMessage = successMessage;
         }
 
@@ -381,6 +384,15 @@ public final class SafetyCenterIssue implements Parcelable {
         @NonNull
         public PendingIntent getPendingIntent() {
             return mPendingIntent;
+        }
+
+        /**
+         * Returns whether invoking this action will fix or address the issue sufficiently for it
+         * to be considered resolved i.e. the issue will no longer need to be conveyed to the user
+         * in the UI.
+         */
+        public boolean isResolving() {
+            return mResolving;
         }
 
         /**
@@ -399,19 +411,21 @@ public final class SafetyCenterIssue implements Parcelable {
             Action action = (Action) o;
             return TextUtils.equals(mLabel, action.mLabel)
                     && Objects.equals(mPendingIntent, action.mPendingIntent)
+                    && mResolving == action.mResolving
                     && TextUtils.equals(mSuccessMessage, action.mSuccessMessage);
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(mLabel, mSuccessMessage, mPendingIntent);
+            return Objects.hash(mLabel, mSuccessMessage, mResolving, mPendingIntent);
         }
 
         @Override
         public String toString() {
             return "Action{"
                     + "mLabel=" + mLabel
-                    + ", mAction=" + mPendingIntent
+                    + ", mPendingIntent=" + mPendingIntent
+                    + ", mResolving=" + mResolving
                     + ", mSuccessMessage=" + mSuccessMessage
                     + '}';
         }
@@ -425,6 +439,7 @@ public final class SafetyCenterIssue implements Parcelable {
         public void writeToParcel(@NonNull Parcel dest, int flags) {
             TextUtils.writeToParcel(mLabel, dest, flags);
             dest.writeParcelable(mPendingIntent, flags);
+            dest.writeBoolean(mResolving);
             TextUtils.writeToParcel(mSuccessMessage, dest, flags);
         }
 
@@ -437,6 +452,7 @@ public final class SafetyCenterIssue implements Parcelable {
                         .setPendingIntent(
                                 in.readParcelable(
                                         PendingIntent.class.getClassLoader(), PendingIntent.class))
+                        .setResolving(in.readBoolean())
                         .setSuccessMessage(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in))
                         .build();
             }
@@ -451,6 +467,7 @@ public final class SafetyCenterIssue implements Parcelable {
         public static final class Builder {
             private CharSequence mLabel;
             private PendingIntent mPendingIntent;
+            private boolean mResolving;
             private CharSequence mSuccessMessage;
 
             /** Sets the label of this {@link Action}. */
@@ -468,6 +485,17 @@ public final class SafetyCenterIssue implements Parcelable {
             }
 
             /**
+             * Sets whether or not this action is resolving. Defaults to false.
+             *
+             * @see #isResolving()
+             */
+            @NonNull
+            public Builder setResolving(boolean resolving) {
+                mResolving = resolving;
+                return this;
+            }
+
+            /**
              * Sets or clears the success message to be displayed when this {@link Action}
              * completes.
              */
@@ -480,7 +508,7 @@ public final class SafetyCenterIssue implements Parcelable {
             /** Creates the {@link Action} defined by this {@link Builder}. */
             @NonNull
             public Action build() {
-                return new Action(mLabel, mPendingIntent, mSuccessMessage);
+                return new Action(mLabel, mPendingIntent, mResolving, mSuccessMessage);
             }
         }
     }
