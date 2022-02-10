@@ -3,7 +3,7 @@
         <safety-sources-group
             id="id">
             <safety-source
-                type="4"
+                type="3"
                 id="id"
                 packageName="package"
                 profile="1"

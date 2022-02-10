@@ -6,8 +6,12 @@
             summary="@string/reference"
             statelessIconType="9">
             <safety-source
-                type="3"
-                id="id"/>
+                type="1"
+                id="id"
+                title="@string/reference"
+                summary="@string/reference"
+                intentAction="intent"
+                profile="1"/>
         </safety-sources-group>
     </safety-sources-config>
 </safety-center-config>
