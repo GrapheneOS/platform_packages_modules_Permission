@@ -19,9 +19,12 @@ package com.android.safetycenter.config;
 import static java.util.Objects.requireNonNull;
 
 import android.annotation.IdRes;
+import android.annotation.IntDef;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -29,20 +32,49 @@ import java.util.Objects;
 
 /** Data class used to represent a group of mixed safety sources */
 public final class SafetySourcesGroup {
+
+    /**
+     * Indicates that the primary safety sources group will not be displayed with any special icon
+     * when all the sources contained in it are stateless.
+     */
+    public static final int STATELESS_ICON_TYPE_NONE = 0;
+
+    /**
+     * Indicates that the primary safety sources group will be displayed with the privacy icon when
+     * all the sources contained in it are stateless.
+     */
+    public static final int STATELESS_ICON_TYPE_PRIVACY = 1;
+
+    /**
+     * All possible stateless icon types for a primary safety sources group.
+     *
+     * @hide
+     */
+    @Retention(RetentionPolicy.SOURCE)
+    @IntDef(prefix = "STATELESS_ICON_TYPE_", value = {
+            STATELESS_ICON_TYPE_NONE,
+            STATELESS_ICON_TYPE_PRIVACY
+    })
+    public @interface StatelessIconType {
+    }
+
     @NonNull
     private final String mId;
     @IdRes
     private final int mTitleResId;
     @IdRes
     private final int mSummaryResId;
+    @StatelessIconType
+    private final int mStatelessIconType;
     @NonNull
     private final List<SafetySource> mSafetySources;
 
     private SafetySourcesGroup(@NonNull String id, @IdRes int titleResId, @IdRes int summaryResId,
-            @NonNull List<SafetySource> safetySources) {
+            @StatelessIconType int statelessIconType, @NonNull List<SafetySource> safetySources) {
         mId = id;
         mTitleResId = titleResId;
         mSummaryResId = summaryResId;
+        mStatelessIconType = statelessIconType;
         mSafetySources = safetySources;
     }
 
@@ -64,6 +96,12 @@ public final class SafetySourcesGroup {
         return mSummaryResId;
     }
 
+    /** Returns the stateless icon type of this safety sources group. */
+    @StatelessIconType
+    public int getStatelessIconType() {
+        return mStatelessIconType;
+    }
+
     /** Returns the list of safety sources in this safety sources group. */
     @NonNull
     public List<SafetySource> getSafetySources() {
@@ -78,12 +116,13 @@ public final class SafetySourcesGroup {
         return Objects.equals(mId, that.mId)
                 && mTitleResId == that.mTitleResId
                 && mSummaryResId == that.mSummaryResId
+                && mStatelessIconType == that.mStatelessIconType
                 && Objects.equals(mSafetySources, that.mSafetySources);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mId, mTitleResId, mSummaryResId, mSafetySources);
+        return Objects.hash(mId, mTitleResId, mSummaryResId, mStatelessIconType, mSafetySources);
     }
 
     @Override
@@ -92,6 +131,7 @@ public final class SafetySourcesGroup {
                 + "mId='" + mId + '\''
                 + ", mTitleResId=" + mTitleResId
                 + ", mSummaryResId=" + mSummaryResId
+                + ", mStatelessIconType=" + mStatelessIconType
                 + ", mSafetySources=" + mSafetySources
                 + '}';
     }
@@ -106,6 +146,9 @@ public final class SafetySourcesGroup {
         @Nullable
         @IdRes
         private Integer mSummaryResId;
+        @Nullable
+        @StatelessIconType
+        private Integer mStatelessIconType;
         @NonNull
         private final List<SafetySource> mSafetySources = new ArrayList<>();
 
@@ -133,6 +176,13 @@ public final class SafetySourcesGroup {
             return this;
         }
 
+        /** Sets the stateless icon type of this safety sources group. */
+        @NonNull
+        public Builder setStatelessIconType(@StatelessIconType int statelessIconType) {
+            mStatelessIconType = statelessIconType;
+            return this;
+        }
+
         /** Adds a safety source to this safety sources group. */
         @NonNull
         public Builder addSafetySource(@NonNull SafetySource safetySource) {
@@ -146,10 +196,13 @@ public final class SafetySourcesGroup {
             BuilderUtils.validateAttribute(mId, "id", true, false);
             int titleResId = BuilderUtils.validateResId(mTitleResId, "title", true, false);
             int summaryResId = BuilderUtils.validateResId(mSummaryResId, "summary", true, false);
+            int statelessIconType = BuilderUtils.validateIntDef(mStatelessIconType,
+                    "statelessIconType", false, false, STATELESS_ICON_TYPE_NONE,
+                    STATELESS_ICON_TYPE_NONE, STATELESS_ICON_TYPE_PRIVACY);
             if (mSafetySources.isEmpty()) {
                 throw new IllegalStateException("Safety sources group empty");
             }
-            return new SafetySourcesGroup(mId, titleResId, summaryResId,
+            return new SafetySourcesGroup(mId, titleResId, summaryResId, statelessIconType,
                     Collections.unmodifiableList(mSafetySources));
         }
     }

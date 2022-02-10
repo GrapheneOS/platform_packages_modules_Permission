@@ -129,6 +129,9 @@ public final class Parser {
                     parseReference(parserSafetySourcesGroup.getSummary(), resourcePkgName,
                             resources, "safety-sources-group", "summary"));
         }
+        if (parserSafetySourcesGroup.getStatelessIconType() != 0) {
+            builder.setStatelessIconType(parserSafetySourcesGroup.getStatelessIconType());
+        }
         List<com.android.safetycenter.config.parser.SafetySource> parserSafetySourceList =
                 parserSafetySourcesGroup.getSafetySource();
         int parserSafetySourceListSize = parserSafetySourceList.size();
@@ -197,6 +200,11 @@ public final class Parser {
                     parseReference(parserSafetySource.getTitle(), resourcePkgName, resources, name,
                             "title"));
         }
+        if (parserSafetySource.getTitleForWork() != null) {
+            builder.setTitleForWorkResId(
+                    parseReference(parserSafetySource.getTitleForWork(), resourcePkgName, resources,
+                            name, "titleForWork"));
+        }
         if (parserSafetySource.getSummary() != null) {
             builder.setSummaryResId(
                     parseReference(parserSafetySource.getSummary(), resourcePkgName, resources,
@@ -206,6 +214,9 @@ public final class Parser {
         if (parserSafetySource.getProfile() != 0) {
             builder.setProfile(parserSafetySource.getProfile());
         }
+        if (parserSafetySource.getMaxSeverityLevel() != 0) {
+            builder.setMaxSeverityLevel(parserSafetySource.getMaxSeverityLevel());
+        }
         if (parserSafetySource.getSearchTerms() != null) {
             builder.setSearchTermsResId(
                     parseReference(parserSafetySource.getSearchTerms(), resourcePkgName, resources,
@@ -214,6 +225,9 @@ public final class Parser {
         builder.setBroadcastReceiverClassName(parserSafetySource.getBroadcastReceiverClassName());
         if (parserSafetySource.isDisallowLogging()) {
             builder.setDisallowLogging(parserSafetySource.isDisallowLogging());
+        }
+        if (parserSafetySource.isAllowRefreshOnPageOpen()) {
+            builder.setAllowRefreshOnPageOpen(parserSafetySource.isAllowRefreshOnPageOpen());
         }
         try {
             return builder.build();

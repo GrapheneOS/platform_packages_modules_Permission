@@ -71,6 +71,10 @@
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"פתיחה של פרטי האפליקציה"</string>
     <string name="additional_permissions_more" msgid="5681220714755304407">"{count,plural, =1{עוד אחת}two{עוד #}many{עוד #}other{עוד #}}"</string>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"‏האפליקציה הזו תוכננה לגרסה ישנה יותר של Android. דחיית ההרשאה עשויה לגרום לה לתפקד בצורה לקויה."</string>
+    <!-- no translation found for storage_supergroup_warning_allow (103093462784523190) -->
+    <skip />
+    <!-- no translation found for storage_supergroup_warning_deny (6420765672683284347) -->
+    <skip />
     <string name="default_permission_description" msgid="4624464917726285203">"ביצוע פעולה לא ידועה"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> מתוך <xliff:g id="COUNT_1">%2$d</xliff:g> אפליקציות קיבלו הרשאה"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> אפליקציות שקיבלו הרשאה"</string>
@@ -83,6 +87,10 @@
     <string name="location_settings" msgid="3624412509133422562">"הגדרות מיקום"</string>
     <string name="location_warning" msgid="2381649060929040962">"האפליקציה <xliff:g id="APP_NAME">%1$s</xliff:g> מספקת שירותי מיקום בשביל המכשיר הזה. אפשר לשנות את גישת המיקום בהגדרות המיקום."</string>
     <string name="system_warning" msgid="1173400963234358816">"אם ההרשאה הזו תידחה, ייתכן שתכונות בסיסיות במכשיר לא יפעלו כראוי."</string>
+    <!-- no translation found for deny_read_media_visual_warning (3982586279917232827) -->
+    <skip />
+    <!-- no translation found for deny_read_media_aural_warning (8928699919508646732) -->
+    <skip />
     <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"אם ההרשאה הזו לא תאושר, ייתכן שחלק מהתכונות של המכשיר אשר מנוהלות על ידי האפליקציה הזו לא יפעלו כצפוי."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"נאכפה על ידי מדיניות"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"הגישה ברקע מושבתת על ידי מדיניות"</string>
@@ -126,6 +134,10 @@
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"ציר הזמן: מתי אפליקציות שונות השתמשו ב<xliff:g id="PERMGROUP">%1$s</xliff:g> שלך ב-7 הימים האחרונים"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"משך הזמן שהאפליקציה הזו השתמשה בהרשאה <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"מידע נוסף"</string>
+    <!-- no translation found for manage_permission_summary (4117555482684114317) -->
+    <skip />
+    <!-- no translation found for auto_permission_usage_timeline_summary (2713135806453218703) -->
+    <skip />
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_3" msgid="758761785983094351">"<xliff:g id="ATTRIBUTION_NAME">%1$s</xliff:g> • <xliff:g id="APP_NAME">%2$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%3$s</xliff:g>"</string>
     <string name="duration_used_days" msgid="8293010131040301793">"{count,plural, =1{יום אחד}two{יומיים}many{# ימים}other{# ימים}}"</string>
@@ -226,6 +238,10 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"אפליקציות עם ההרשאה הזו יכולות לגשת אל נתונים של חיישנים שמודדים את הסימנים החיוניים שלך"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"‏אפליקציות עם ההרשאה הזו יכולות לשלוח ולהציג הודעות SMS"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"אפליקציות עם ההרשאה הזו יכולות לגשת לתמונות, למדיה ולקבצים במכשיר שלך"</string>
+    <!-- no translation found for permission_description_summary_read_media_aural (2789020637856210454) -->
+    <skip />
+    <!-- no translation found for permission_description_summary_read_media_visual (4210569227927436735) -->
+    <skip />
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"גישה אחרונה: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"חסומה כרגע / גישה אחרונה: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"אף פעם לא הופעלה"</string>
@@ -237,6 +253,10 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"הרשאה לניהול כל הקבצים"</string>
     <string name="ask_header" msgid="2633816846459944376">"יש לשאול בכל פעם"</string>
     <string name="denied_header" msgid="903209608358177654">"אין הרשאה"</string>
+    <!-- no translation found for storage_footer_warning_text (2242258357752432337) -->
+    <skip />
+    <!-- no translation found for storage_footer_hyperlink_text (7759955324552930974) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{יום אחד}two{יומיים}many{# ימים}other{# ימים}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{שעה אחת}two{שעתיים}many{# שעות}other{# שעות}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{דקה אחת}two{# דקות}many{# דקות}other{# דקות}}"</string>
@@ -358,18 +378,14 @@
     <string name="role_call_screening_description" msgid="2349431420497468981">"אפליקציות שמאפשרות לך לזהות שיחות ולחסום ספאם, שיחות אוטומטיות או מספרים לא רצויים"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"להגדיר את <xliff:g id="APP_NAME">%1$s</xliff:g> כאפליקציית ברירת המחדל לשיחות מזוהות וחסימת ספאם?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"אין צורך בהרשאות"</string>
-    <!-- no translation found for role_automotive_navigation_label (2701890757955474751) -->
-    <skip />
-    <!-- no translation found for role_automotive_navigation_short_label (5165823092506922457) -->
-    <skip />
-    <!-- no translation found for role_automotive_navigation_description (7834601873792870134) -->
-    <skip />
-    <!-- no translation found for role_automotive_navigation_request_title (7525693151489384300) -->
-    <skip />
-    <!-- no translation found for role_automotive_navigation_request_description (7073023813249245540) -->
-    <skip />
+    <string name="role_automotive_navigation_label" msgid="2701890757955474751">"אפליקציית הניווט שמוגדרת כברירת מחדל"</string>
+    <string name="role_automotive_navigation_short_label" msgid="5165823092506922457">"אפליקציית הניווט"</string>
+    <string name="role_automotive_navigation_description" msgid="7834601873792870134">"אפליקציות שיכולות לספק חיפוש של נקודות עניין והנחיות לניווט במסלול מפורט"</string>
+    <string name="role_automotive_navigation_request_title" msgid="7525693151489384300">"להגדיר את <xliff:g id="APP_NAME">%1$s</xliff:g> כאפליקציית ברירת המחדל לניווט?"</string>
+    <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"אין צורך בהרשאות"</string>
     <string name="role_watch_description" msgid="267003778693177779">"‏האפליקציה <xliff:g id="APP_NAME">%1$s</xliff:g> תוכל לבצע פעולות בהתראות ותקבל הרשאות גישה לטלפון, ל-SMS לאנשי הקשר וליומן."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"לאפליקציה <xliff:g id="APP_NAME">%1$s</xliff:g> יהיו הרשאות לביצוע פעולות בהתראות שלך ולביצוע סטרימינג של האפליקציות למכשיר המחובר."</string>
+    <string name="role_companion_device_computer_description" msgid="416099879217066377">"התמונות, המדיה וההתראות מהטלפון שלך ישותפו למכשירים אחרים על ידי השירות הזה."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"ברירת המחדל הנוכחית"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"לא לשאול שוב"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"הגדרה כברירת מחדל"</string>
@@ -439,7 +455,16 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"משוער"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה ליומן?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאה לשלוח הודעות SMS ולהציג אותן?"</string>
-    <string name="permgrouprequest_storage" msgid="8717773092518621602">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה לתמונות, למדיה ולקבצים במכשיר?"</string>
+    <!-- no translation found for permgrouprequest_storage (7426990523173124539) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_storage_q_to_s (3942779386983426698) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_storage_pre_q (1681166745228672009) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_aural (5948278590400297839) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_visual (4188474766470776052) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"‏לאשר לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; להקליט אודיו?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"האפליקציה תוכל להקליט אודיו רק כאשר היא בשימוש"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאה להקליט אודיו?"</string>
@@ -487,4 +512,8 @@
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"שינוי"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"אבטחה ופרטיות"</string>
     <string name="security_settings" msgid="3808106921175271317">"הגדרות האבטחה"</string>
+    <!-- no translation found for safety_privacy_qs_tile_title (5431148204168066203) -->
+    <skip />
+    <!-- no translation found for safety_privacy_qs_tile_subtitle (3621544532041936749) -->
+    <skip />
 </resources>

@@ -56,6 +56,8 @@
     <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.MANAGE_SAFETY_CENTER" />
+    <uses-permission android:name="android.permission.READ_SAFETY_CENTER_STATUS" />
+    <uses-permission android:name="android.permission.SEND_SAFETY_CENTER_UPDATE" />
 
     <application android:name="com.android.permissioncontroller.PermissionControllerApplication"
             android:label="@string/app_name"
@@ -114,7 +116,8 @@
                   android:theme="@style/GrantPermissions.FilterTouches"
                   android:visibleToInstantApps="true"
                   android:inheritShowWhenLocked="true"
-                  android:hardwareAccelerated="false">
+                  android:hardwareAccelerated="false"
+                  android:canDisplayOnRemoteDevices="false">
             <intent-filter android:priority="1">
                 <action android:name="android.content.pm.action.REQUEST_PERMISSIONS" />
                 <category android:name="android.intent.category.DEFAULT" />
