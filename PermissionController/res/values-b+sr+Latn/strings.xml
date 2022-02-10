@@ -71,6 +71,10 @@
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"Otvori informacije o aplikaciji"</string>
     <string name="additional_permissions_more" msgid="5681220714755304407">"{count,plural, =1{još #}one{još #}few{još #}other{još #}}"</string>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"Ova aplikacija je dizajnirana za stariju verziju Android-a. Ako odbijete dozvolu, možda neće raditi ispravno."</string>
+    <!-- no translation found for storage_supergroup_warning_allow (103093462784523190) -->
+    <skip />
+    <!-- no translation found for storage_supergroup_warning_deny (6420765672683284347) -->
+    <skip />
     <string name="default_permission_description" msgid="4624464917726285203">"obavlja nepoznatu radnju"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"Aplikacije sa dozvolom: <xliff:g id="COUNT_0">%1$d</xliff:g> od <xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"Dozvoljeno aplikacija: <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
@@ -83,6 +87,10 @@
     <string name="location_settings" msgid="3624412509133422562">"Podešavanja lokacije"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> pruža usluge lokacije za ovaj uređaj. Pristup lokaciji možete da izmenite u podešavanjima lokacije."</string>
     <string name="system_warning" msgid="1173400963234358816">"Ako odbijete ovu dozvolu, osnovne funkcije uređaja možda neće više ispravno raditi."</string>
+    <!-- no translation found for deny_read_media_visual_warning (3982586279917232827) -->
+    <skip />
+    <!-- no translation found for deny_read_media_aural_warning (8928699919508646732) -->
+    <skip />
     <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"Ako odbijete ovu dozvolu, neke funkcije uređaja kojima upravlja ova aplikacija možda neće više ispravno raditi."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Primenjuje se u skladu sa smernicama"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Pristup u pozadini je onemogućen smernicama"</string>
@@ -126,6 +134,8 @@
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Hronologija korišćenja grupe dozvola <xliff:g id="PERMGROUP">%1$s</xliff:g> od strane aplikacija u poslednjih 7 dana"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Kada je ova aplikacija koristila dozvolu <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Saznajte više"</string>
+    <string name="manage_permission_summary" msgid="4117555482684114317">"Kontrolišite pristup aplikacije dozvoli <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
+    <string name="auto_permission_usage_timeline_summary" msgid="2713135806453218703">"<xliff:g id="ACCESS_TIME">%1$s</xliff:g> • <xliff:g id="SUMMARY_TEXT">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_3" msgid="758761785983094351">"<xliff:g id="ATTRIBUTION_NAME">%1$s</xliff:g> • <xliff:g id="APP_NAME">%2$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%3$s</xliff:g>"</string>
     <string name="duration_used_days" msgid="8293010131040301793">"{count,plural, =1{1 dan}one{# dan}few{# dana}other{# dana}}"</string>
@@ -226,6 +236,10 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Aplikacije sa ovom dozvolom mogu da pristupaju podacima senzora o vitalnim funkcijama"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Aplikacije sa ovom dozvolom mogu da šalju i pregledaju SMS-ove"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Aplikacije sa ovom dozvolom mogu da pristupaju slikama, medijskom sadržaju i fajlovima na uređaju"</string>
+    <!-- no translation found for permission_description_summary_read_media_aural (2789020637856210454) -->
+    <skip />
+    <!-- no translation found for permission_description_summary_read_media_visual (4210569227927436735) -->
+    <skip />
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Poslednji pristup: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Trenutno odbijeno/poslednji pristup: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Bez pristupa"</string>
@@ -237,6 +251,10 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Imaju dozvolu za upravljanje svim datotekama"</string>
     <string name="ask_header" msgid="2633816846459944376">"Pitaj svaki put"</string>
     <string name="denied_header" msgid="903209608358177654">"Nije dozvoljeno"</string>
+    <!-- no translation found for storage_footer_warning_text (2242258357752432337) -->
+    <skip />
+    <!-- no translation found for storage_footer_hyperlink_text (7759955324552930974) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 dan}one{# dan}few{# dana}other{# dana}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 sat}one{# sat}few{# sata}other{# sati}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 minut}one{# minut}few{# minuta}other{# minuta}}"</string>
@@ -365,6 +383,7 @@
     <string name="role_automotive_navigation_request_description" msgid="7073023813249245540">"Nije potrebna nijedna dozvola"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> će dobiti dozvolu za interakciju sa obaveštenjima i pristup dozvolama za telefon, SMS poruke, kontakte i kalendar."</string>
     <string name="role_app_streaming_description" msgid="7341638576226183992">"<xliff:g id="APP_NAME">%1$s</xliff:g> će dobiti dozvolu za interakciju sa obaveštenjima i strimovanje aplikacija na povezanom uređaju."</string>
+    <string name="role_companion_device_computer_description" msgid="416099879217066377">"Ova usluga deli slike, medijski sadržaj i obaveštenja sa telefona na drugim uređajima."</string>
     <string name="request_role_current_default" msgid="738722892438247184">"Trenutno podrazumevana"</string>
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Ne pitaj ponovo"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Podesi kao podrazum."</string>
@@ -434,7 +453,16 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Približna"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Želite da dozvolite da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa kalendaru?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Želite da dozvolite da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; šalje i pregleda SMS-ove?"</string>
-    <string name="permgrouprequest_storage" msgid="8717773092518621602">"Želite da dozvolite da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa slikama, medijskim i drugim fajlovima na uređaju?"</string>
+    <!-- no translation found for permgrouprequest_storage (7426990523173124539) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_storage_q_to_s (3942779386983426698) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_storage_pre_q (1681166745228672009) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_aural (5948278590400297839) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_visual (4188474766470776052) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Želite da dozvolite da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; snima zvuk?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Aplikacija će moći da snima zvuk samo dok koristite aplikaciju"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Želite da dozvolite da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; snima zvuk?"</string>
@@ -482,4 +510,6 @@
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Promeni"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Bezbednost i privatnost"</string>
     <string name="security_settings" msgid="3808106921175271317">"Bezbednosna podešavanja"</string>
+    <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Bezbednost i privatnost"</string>
+    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Proverite status"</string>
 </resources>

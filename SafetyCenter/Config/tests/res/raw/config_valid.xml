@@ -9,12 +9,15 @@
                 id="app_security"
                 packageName="package"
                 title="@string/reference"
+                titleForWork="@string/reference"
                 summary="@string/reference"
                 intentAction="intent"
                 profile="2"
+                maxSeverityLevel="300"
                 searchTerms="@string/reference"
                 broadcastReceiverClassName="broadcast"
-                disallowLogging="true"/>
+                disallowLogging="true"
+                allowRefreshOnPageOpen="true"/>
             <safety-source
                 type="3"
                 id="device_security"/>
@@ -30,7 +33,8 @@
         <safety-sources-group
             id="privacy"
             title="@string/reference"
-            summary="@string/reference">
+            summary="@string/reference"
+            statelessIconType="1">
             <safety-source
                 type="3"
                 id="privacy_dashboard"/>
@@ -38,6 +42,7 @@
                 type="1"
                 id="permissions"
                 title="@string/reference"
+                titleForWork="@string/reference"
                 summary="@string/reference"
                 intentAction="intent"
                 profile="2"/>
@@ -46,6 +51,7 @@
                 id="privacy_controls"
                 packageName="package"
                 title="@string/reference"
+                titleForWork="@string/reference"
                 summary="@string/reference"
                 intentAction="intent"
                 profile="2"/>
