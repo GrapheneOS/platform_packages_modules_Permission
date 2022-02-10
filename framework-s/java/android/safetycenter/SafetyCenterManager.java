@@ -33,7 +33,6 @@ import android.annotation.SdkConstant;
 import android.annotation.SystemApi;
 import android.annotation.SystemService;
 import android.content.Context;
-import android.os.Binder;
 import android.os.RemoteException;
 import android.util.ArrayMap;
 
@@ -121,12 +120,13 @@ public final class SafetyCenterManager {
      *
      * @hide
      */
-    @IntDef(prefix = { "EXTRA_REFRESH_REQUEST_TYPE_" }, value = {
+    @IntDef(prefix = {"EXTRA_REFRESH_REQUEST_TYPE_"}, value = {
             EXTRA_REFRESH_REQUEST_TYPE_FETCH_FRESH_DATA,
             EXTRA_REFRESH_REQUEST_TYPE_GET_DATA,
     })
     @Retention(RetentionPolicy.SOURCE)
-    public @interface RefreshRequestType {}
+    public @interface RefreshRequestType {
+    }
 
     /**
      * Used as an int value for {@link #EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE} to indicate that
@@ -151,11 +151,6 @@ public final class SafetyCenterManager {
      */
     public static final int EXTRA_REFRESH_REQUEST_TYPE_GET_DATA = 1;
 
-    /** Indicates that the Safety Center UI has been opened by the user. */
-    public static final int REFRESH_REASON_PAGE_OPEN = 100;
-    /** Indicates that the rescan button in the Safety Center UI has been clicked on by the user. */
-    public static final int REFRESH_REASON_RESCAN_BUTTON_CLICK = 200;
-
     /**
      * The reason for requesting a refresh of {@link SafetySourceData} from safety sources.
      *
@@ -169,6 +164,12 @@ public final class SafetyCenterManager {
     public @interface RefreshReason {
     }
 
+    /** Indicates that the Safety Center UI has been opened by the user. */
+    public static final int REFRESH_REASON_PAGE_OPEN = 100;
+
+    /** Indicates that the rescan button in the Safety Center UI has been clicked on by the user. */
+    public static final int REFRESH_REASON_RESCAN_BUTTON_CLICK = 200;
+
     /** Listener for changes to {@link SafetyCenterData}. */
     public interface OnSafetyCenterDataChangedListener {
 
@@ -180,15 +181,14 @@ public final class SafetyCenterManager {
         void onSafetyCenterDataChanged(@NonNull SafetyCenterData data);
     }
 
+    private final Object mListenersLock = new Object();
+    @GuardedBy("mListenersLock")
+    private final Map<OnSafetyCenterDataChangedListener, ListenerDelegate> mListenersToDelegates =
+            new ArrayMap<>();
     @NonNull
     private final Context mContext;
     @NonNull
     private final ISafetyCenterManager mService;
-
-    @GuardedBy("mListenersLock")
-    private final Map<OnSafetyCenterDataChangedListener, ListenerDelegate>
-            mListenersToDelegates = new ArrayMap<>(1); // only one expected listener
-    private final Object mListenersLock = new Object();
 
     /**
      * Creates a new instance of the {@link SafetyCenterManager}.
@@ -270,25 +270,12 @@ public final class SafetyCenterManager {
      * to receiving these broadcasts.
      *
      * @param refreshReason the reason for the refresh, either {@link #REFRESH_REASON_PAGE_OPEN} or
-     * {@link #REFRESH_REASON_RESCAN_BUTTON_CLICK}
+     *                      {@link #REFRESH_REASON_RESCAN_BUTTON_CLICK}
      */
     @RequiresPermission(MANAGE_SAFETY_CENTER)
     public void refreshSafetySources(@RefreshReason int refreshReason) {
         try {
             mService.refreshSafetySources(refreshReason, mContext.getUser().getIdentifier());
-        } catch (RemoteException e) {
-            throw e.rethrowFromSystemServer();
-        }
-    }
-
-    /**
-     * Clears all {@link SafetySourceData} updates sent to the safety center using {@link
-     * #sendSafetyCenterUpdate(SafetySourceData)}, for all packages and users.
-     */
-    @RequiresPermission(MANAGE_SAFETY_CENTER)
-    public void clearSafetyCenterData() {
-        try {
-            mService.clearSafetyCenterData();
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }
@@ -374,6 +361,19 @@ public final class SafetyCenterManager {
     }
 
     /**
+     * Clears all {@link SafetySourceData} updates sent to the safety center using {@link
+     * #sendSafetyCenterUpdate(SafetySourceData)}, for all packages and users.
+     */
+    @RequiresPermission(MANAGE_SAFETY_CENTER)
+    public void clearSafetyCenterData() {
+        try {
+            mService.clearSafetyCenterData();
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
+    /**
      * Add a safety source dynamically to be used in addition to the sources in the Safety Center
      * xml configuration.
      *
@@ -423,16 +423,9 @@ public final class SafetyCenterManager {
         }
 
         @Override
-        public void onSafetyCenterDataChanged(@NonNull SafetyCenterData safetyCenterData)
-                throws RemoteException {
-            final long token = Binder.clearCallingIdentity();
-
-            try {
-                mExecutor.execute(
-                        () -> mOriginalListener.onSafetyCenterDataChanged(safetyCenterData));
-            } finally {
-                Binder.restoreCallingIdentity(token);
-            }
+        public void onSafetyCenterDataChanged(@NonNull SafetyCenterData safetyCenterData) {
+            mExecutor.execute(
+                    () -> mOriginalListener.onSafetyCenterDataChanged(safetyCenterData));
         }
     }
 }
