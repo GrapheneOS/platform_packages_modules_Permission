@@ -112,6 +112,7 @@ public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment implem
         super.onCreate(savedInstanceState);
         setLoading(true);
 
+        mIsFirstLoad = true;
         mPackageName = getArguments().getString(Intent.EXTRA_PACKAGE_NAME);
         mUser = getArguments().getParcelable(Intent.EXTRA_USER);
         mIsSystemPermsScreen = getArguments().getBoolean(IS_SYSTEM_PERMS_SCREEN, true);
