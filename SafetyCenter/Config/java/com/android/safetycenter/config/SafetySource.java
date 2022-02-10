@@ -40,6 +40,9 @@ public final class SafetySource {
     /** Internal safety source. */
     public static final int SAFETY_SOURCE_TYPE_INTERNAL = 3;
 
+    /** Issue only safety source. */
+    public static final int SAFETY_SOURCE_TYPE_ISSUE_ONLY = 4;
+
     /**
      * All possible safety source types.
      *
@@ -48,7 +51,8 @@ public final class SafetySource {
     @IntDef(prefix = {"SAFETY_SOURCE_TYPE_"}, value = {
             SAFETY_SOURCE_TYPE_STATIC,
             SAFETY_SOURCE_TYPE_DYNAMIC,
-            SAFETY_SOURCE_TYPE_INTERNAL
+            SAFETY_SOURCE_TYPE_INTERNAL,
+            SAFETY_SOURCE_TYPE_ISSUE_ONLY
     })
     @Retention(RetentionPolicy.SOURCE)
     public @interface SafetySourceType {
@@ -170,6 +174,10 @@ public final class SafetySource {
             throw new UnsupportedOperationException(
                     "getTitleResId unsupported for internal safety source");
         }
+        if (mType == SAFETY_SOURCE_TYPE_ISSUE_ONLY) {
+            throw new UnsupportedOperationException(
+                    "getTitleResId unsupported for issue only safety source");
+        }
         return mTitleResId;
     }
 
@@ -179,6 +187,10 @@ public final class SafetySource {
         if (mType == SAFETY_SOURCE_TYPE_INTERNAL) {
             throw new UnsupportedOperationException(
                     "getTitleForWorkResId unsupported for internal safety source");
+        }
+        if (mType == SAFETY_SOURCE_TYPE_ISSUE_ONLY) {
+            throw new UnsupportedOperationException(
+                    "getTitleForWorkResId unsupported for issue only safety source");
         }
         if (mProfile == PROFILE_PRIMARY) {
             throw new UnsupportedOperationException(
@@ -194,6 +206,10 @@ public final class SafetySource {
             throw new UnsupportedOperationException(
                     "getSummaryResId unsupported for internal safety source");
         }
+        if (mType == SAFETY_SOURCE_TYPE_ISSUE_ONLY) {
+            throw new UnsupportedOperationException(
+                    "getSummaryResId unsupported for issue only safety source");
+        }
         return mSummaryResId;
     }
 
@@ -203,6 +219,10 @@ public final class SafetySource {
         if (mType == SAFETY_SOURCE_TYPE_INTERNAL) {
             throw new UnsupportedOperationException(
                     "getIntentAction unsupported for internal safety source");
+        }
+        if (mType == SAFETY_SOURCE_TYPE_ISSUE_ONLY) {
+            throw new UnsupportedOperationException(
+                    "getIntentAction unsupported for issue only safety source");
         }
         return mIntentAction;
     }
@@ -240,6 +260,10 @@ public final class SafetySource {
         if (mType == SAFETY_SOURCE_TYPE_INTERNAL) {
             throw new UnsupportedOperationException(
                     "getSearchTermsResId unsupported for internal safety source");
+        }
+        if (mType == SAFETY_SOURCE_TYPE_ISSUE_ONLY) {
+            throw new UnsupportedOperationException(
+                    "getSearchTermsResId unsupported for issue only safety source");
         }
         return mSearchTermsResId;
     }
@@ -463,28 +487,31 @@ public final class SafetySource {
         public SafetySource build() {
             int type = BuilderUtils.validateIntDef(mType, "type", true, false,
                     SAFETY_SOURCE_TYPE_INVALID, SAFETY_SOURCE_TYPE_STATIC,
-                    SAFETY_SOURCE_TYPE_DYNAMIC, SAFETY_SOURCE_TYPE_INTERNAL);
+                    SAFETY_SOURCE_TYPE_DYNAMIC, SAFETY_SOURCE_TYPE_INTERNAL,
+                    SAFETY_SOURCE_TYPE_ISSUE_ONLY);
             boolean isStatic = type == SAFETY_SOURCE_TYPE_STATIC;
             boolean isDynamic = type == SAFETY_SOURCE_TYPE_DYNAMIC;
             boolean isInternal = type == SAFETY_SOURCE_TYPE_INTERNAL;
+            boolean isIssueOnly = type == SAFETY_SOURCE_TYPE_ISSUE_ONLY;
             BuilderUtils.validateAttribute(mId, "id", true, false);
-            BuilderUtils.validateAttribute(mPackageName, "packageName", isDynamic,
+            BuilderUtils.validateAttribute(mPackageName, "packageName", isDynamic || isIssueOnly,
                     isStatic || isInternal);
             int titleResId = BuilderUtils.validateResId(mTitleResId, "title", isDynamic || isStatic,
-                    isInternal);
+                    isInternal || isIssueOnly);
             int summaryResId = BuilderUtils.validateResId(mSummaryResId, "summary",
-                    isDynamic || isStatic, isInternal);
+                    isDynamic || isStatic, isInternal || isIssueOnly);
             BuilderUtils.validateAttribute(mIntentAction, "intentAction", isDynamic || isStatic,
-                    isInternal);
-            int profile = BuilderUtils.validateIntDef(mProfile, "profile", isDynamic || isStatic,
-                    isInternal, PROFILE_NONE, PROFILE_PRIMARY, PROFILE_ALL);
+                    isInternal || isIssueOnly);
+            int profile = BuilderUtils.validateIntDef(mProfile, "profile",
+                    isDynamic || isStatic || isIssueOnly, isInternal, PROFILE_NONE, PROFILE_PRIMARY,
+                    PROFILE_ALL);
             int titleForWorkResId = BuilderUtils.validateResId(mTitleForWorkResId, "titleForWork",
                     (isDynamic || isStatic) && profile == PROFILE_ALL,
-                    isInternal || profile == PROFILE_PRIMARY);
+                    isInternal || isIssueOnly || profile == PROFILE_PRIMARY);
             int maxSeverityLevel = BuilderUtils.validateInteger(mMaxSeverityLevel,
                     "maxSeverityLevel", false, isStatic || isInternal, Integer.MAX_VALUE);
             int searchTermsResId = BuilderUtils.validateResId(mSearchTermsResId, "searchTerms",
-                    false, isInternal);
+                    false, isInternal || isIssueOnly);
             BuilderUtils.validateAttribute(mBroadcastReceiverClassName,
                     "broadcastReceiverClassName", false, isStatic || isInternal);
             boolean disallowLogging = BuilderUtils.validateBoolean(mDisallowLogging,
