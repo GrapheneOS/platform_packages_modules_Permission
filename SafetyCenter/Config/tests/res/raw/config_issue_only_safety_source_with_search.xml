@@ -1,13 +1,13 @@
 <safety-center-config>
     <safety-sources-config>
         <safety-sources-group
-            id="id"
-            title="@string/reference"
-            summary="@string/reference">
+            id="id">
             <safety-source
                 type="3"
                 id="id"
-                intentAction="intent"/>
+                packageName="package"
+                profile="1"
+                searchTerms="@string/reference"/>
         </safety-sources-group>
     </safety-sources-config>
 </safety-center-config>

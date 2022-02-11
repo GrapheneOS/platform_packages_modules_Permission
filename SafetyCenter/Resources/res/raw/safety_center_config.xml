@@ -22,8 +22,12 @@
             title="@string/reference"
             summary="@string/reference">
             <safety-source
-                type="3"
-                id="TODO"/>
+                type="1"
+                id="TODO"
+                title="@string/reference"
+                summary="@string/reference"
+                intentAction="intent"
+                profile="1"/>
         </safety-sources-group>
     </safety-sources-config>
 </safety-center-config>
