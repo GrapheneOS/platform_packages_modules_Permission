@@ -83,6 +83,29 @@ public final class SafetySource {
     public @interface Profile {
     }
 
+    /** This dynamic source will create an enabled entry in the UI until an update is received. */
+    public static final int INITIAL_DISPLAY_STATE_ENABLED = 0;
+
+    /** This dynamic source will create a disabled entry in the UI until an update is received. */
+    public static final int INITIAL_DISPLAY_STATE_DISABLED = 1;
+
+    /** This dynamic source will have no entry in the UI until an update is received. */
+    public static final int INITIAL_DISPLAY_STATE_HIDDEN = 2;
+
+    /**
+     * All possible initial display states for a dynamic safety source.
+     *
+     * @hide
+     */
+    @IntDef(prefix = {"INITIAL_DISPLAY_STATE_"}, value = {
+            INITIAL_DISPLAY_STATE_ENABLED,
+            INITIAL_DISPLAY_STATE_DISABLED,
+            INITIAL_DISPLAY_STATE_HIDDEN
+    })
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface InitialDisplayState {
+    }
+
     @SafetySourceType
     private final int mType;
     @NonNull
@@ -99,6 +122,8 @@ public final class SafetySource {
     private final String mIntentAction;
     @Profile
     private final int mProfile;
+    @InitialDisplayState
+    private final int mInitialDisplayState;
     private final int mMaxSeverityLevel;
     @IdRes
     private final int mSearchTermsResId;
@@ -117,6 +142,7 @@ public final class SafetySource {
             @IdRes int summaryResId,
             @Nullable String intentAction,
             @Profile int profile,
+            @InitialDisplayState int initialDisplayState,
             int maxSeverityLevel,
             @IdRes int searchTermsResId,
             @Nullable String broadcastReceiverClassName,
@@ -130,6 +156,7 @@ public final class SafetySource {
         mSummaryResId = summaryResId;
         mIntentAction = intentAction;
         mProfile = profile;
+        mInitialDisplayState = initialDisplayState;
         mMaxSeverityLevel = maxSeverityLevel;
         mSearchTermsResId = searchTermsResId;
         mBroadcastReceiverClassName = broadcastReceiverClassName;
@@ -209,6 +236,20 @@ public final class SafetySource {
         return mProfile;
     }
 
+    /** Returns the initial display state of this safety source. */
+    @InitialDisplayState
+    public int getInitialDisplayState() {
+        if (mType == SAFETY_SOURCE_TYPE_STATIC) {
+            throw new UnsupportedOperationException(
+                    "getInitialDisplayState unsupported for static safety source");
+        }
+        if (mType == SAFETY_SOURCE_TYPE_ISSUE_ONLY) {
+            throw new UnsupportedOperationException(
+                    "getInitialDisplayState unsupported for issue only safety source");
+        }
+        return mInitialDisplayState;
+    }
+
     /** Returns the maximum severity level of this safety source. */
     @Profile
     public int getMaxSeverityLevel() {
@@ -272,6 +313,7 @@ public final class SafetySource {
                 && mSummaryResId == that.mSummaryResId
                 && Objects.equals(mIntentAction, that.mIntentAction)
                 && mProfile == that.mProfile
+                && mInitialDisplayState == that.mInitialDisplayState
                 && mMaxSeverityLevel == that.mMaxSeverityLevel
                 && mSearchTermsResId == that.mSearchTermsResId
                 && Objects.equals(mBroadcastReceiverClassName, that.mBroadcastReceiverClassName)
@@ -282,8 +324,8 @@ public final class SafetySource {
     @Override
     public int hashCode() {
         return Objects.hash(mType, mId, mPackageName, mTitleResId, mSummaryResId, mIntentAction,
-                mProfile, mMaxSeverityLevel, mSearchTermsResId, mBroadcastReceiverClassName,
-                mDisallowLogging, mAllowRefreshOnPageOpen);
+                mProfile, mInitialDisplayState, mMaxSeverityLevel, mSearchTermsResId,
+                mBroadcastReceiverClassName, mDisallowLogging, mAllowRefreshOnPageOpen);
     }
 
     @Override
@@ -296,6 +338,7 @@ public final class SafetySource {
                 + ", mSummaryResId=" + mSummaryResId
                 + ", mIntentAction='" + mIntentAction + '\''
                 + ", mProfile=" + mProfile
+                + ", mInitialDisplayState=" + mInitialDisplayState
                 + ", mMaxSeverityLevel=" + mMaxSeverityLevel
                 + ", mSearchTermsResId=" + mSearchTermsResId
                 + ", mBroadcastReceiverClassName='" + mBroadcastReceiverClassName + '\''
@@ -327,6 +370,9 @@ public final class SafetySource {
         @Nullable
         @Profile
         private Integer mProfile;
+        @Nullable
+        @InitialDisplayState
+        private Integer mInitialDisplayState;
         @Nullable
         private Integer mMaxSeverityLevel;
         @Nullable
@@ -399,6 +445,13 @@ public final class SafetySource {
             return this;
         }
 
+        /** Sets the initial display state of this safety source. */
+        @NonNull
+        public Builder setInitialDisplayState(@InitialDisplayState int initialDisplayState) {
+            mInitialDisplayState = initialDisplayState;
+            return this;
+        }
+
         /** Sets the maximum severity level of this safety source. */
         @NonNull
         public Builder setMaxSeverityLevel(int maxSeverityLevel) {
@@ -446,17 +499,23 @@ public final class SafetySource {
             BuilderUtils.validateAttribute(mId, "id", true, false);
             BuilderUtils.validateAttribute(mPackageName, "packageName", isDynamic || isIssueOnly,
                     isStatic);
-            int titleResId = BuilderUtils.validateResId(mTitleResId, "title", isDynamic || isStatic,
-                    isIssueOnly);
+            int initialDisplayState = BuilderUtils.validateIntDef(mInitialDisplayState,
+                    "initialDisplayState", false, isStatic || isIssueOnly,
+                    INITIAL_DISPLAY_STATE_ENABLED, INITIAL_DISPLAY_STATE_ENABLED,
+                    INITIAL_DISPLAY_STATE_DISABLED, INITIAL_DISPLAY_STATE_HIDDEN);
+            boolean isEnabled = initialDisplayState == INITIAL_DISPLAY_STATE_ENABLED;
+            boolean isHidden = initialDisplayState == INITIAL_DISPLAY_STATE_HIDDEN;
+            int titleResId = BuilderUtils.validateResId(mTitleResId, "title",
+                    (isDynamic && !isHidden) || isStatic, isIssueOnly || isHidden);
             int summaryResId = BuilderUtils.validateResId(mSummaryResId, "summary",
-                    isDynamic || isStatic, isIssueOnly);
-            BuilderUtils.validateAttribute(mIntentAction, "intentAction", isDynamic || isStatic,
-                    isIssueOnly);
+                    (isDynamic && !isHidden) || isStatic, isIssueOnly || isHidden);
+            BuilderUtils.validateAttribute(mIntentAction, "intentAction",
+                    (isDynamic && isEnabled) || isStatic, isIssueOnly || isHidden);
             int profile = BuilderUtils.validateIntDef(mProfile, "profile", true, false,
                     PROFILE_NONE, PROFILE_PRIMARY, PROFILE_ALL);
             int titleForWorkResId = BuilderUtils.validateResId(mTitleForWorkResId, "titleForWork",
-                    (isDynamic || isStatic) && profile == PROFILE_ALL,
-                    isIssueOnly || profile == PROFILE_PRIMARY);
+                    ((isDynamic && !isHidden) || isStatic) && profile == PROFILE_ALL,
+                    isIssueOnly || isHidden || profile == PROFILE_PRIMARY);
             int maxSeverityLevel = BuilderUtils.validateInteger(mMaxSeverityLevel,
                     "maxSeverityLevel", false, isStatic, Integer.MAX_VALUE);
             int searchTermsResId = BuilderUtils.validateResId(mSearchTermsResId, "searchTerms",
@@ -468,8 +527,9 @@ public final class SafetySource {
             boolean allowRefreshOnPageOpen = BuilderUtils.validateBoolean(mAllowRefreshOnPageOpen,
                     "allowRefreshOnPageOpen", false, isStatic, false);
             return new SafetySource(type, mId, mPackageName, titleResId, titleForWorkResId,
-                    summaryResId, mIntentAction, profile, maxSeverityLevel, searchTermsResId,
-                    mBroadcastReceiverClassName, disallowLogging, allowRefreshOnPageOpen);
+                    summaryResId, mIntentAction, profile, initialDisplayState, maxSeverityLevel,
+                    searchTermsResId, mBroadcastReceiverClassName, disallowLogging,
+                    allowRefreshOnPageOpen);
         }
     }
 
