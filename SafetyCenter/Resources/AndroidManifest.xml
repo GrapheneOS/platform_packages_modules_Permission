@@ -18,8 +18,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.android.safetycenter.resources"
           coreApp="true"
-          android:versionCode="319999900"
-          android:versionName="31 system image">
+          android:versionCode="339999900"
+          android:versionName="33 system image">
     <application
         android:label="@string/safetyCenterResourcesAppLabel"
         android:defaultToDeviceProtectedStorage="true"
