@@ -118,6 +118,7 @@ class GrantPermissionsViewModel(
     private val app: Application,
     private val packageName: String,
     private val requestedPermissions: List<String>,
+    private val legacyAccessPermissions: List<String>,
     private val sessionId: Long,
     private val storedState: Bundle?
 ) : ViewModel() {
@@ -312,7 +313,8 @@ class GrantPermissionsViewModel(
                 buttonVisibilities[DENY_BUTTON] = true
                 buttonVisibilities[ALLOW_ONE_TIME_BUTTON] =
                     Utils.supportsOneTimeGrant(groupName)
-                var message = if (groupState.group.isRuntimePermReviewRequired) {
+                var message = if (
+                    legacyAccessPermissions.any { it in groupState.affectedPermissions }) {
                     RequestMessage.CONTINUE_MESSAGE
                 } else {
                     RequestMessage.FG_MESSAGE
@@ -1275,12 +1277,13 @@ class GrantPermissionsViewModelFactory(
     private val app: Application,
     private val packageName: String,
     private val requestedPermissions: Array<String>,
+    private val legacyAccessPermissions: Array<String>,
     private val sessionId: Long,
     private val savedState: Bundle?
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         @Suppress("UNCHECKED_CAST")
-        return GrantPermissionsViewModel(app, packageName, requestedPermissions.toList(), sessionId,
-            savedState) as T
+        return GrantPermissionsViewModel(app, packageName, requestedPermissions.toList(),
+            legacyAccessPermissions.toList(), sessionId, savedState) as T
     }
 }

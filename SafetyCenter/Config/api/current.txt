@@ -40,7 +40,6 @@ package com.android.safetycenter.config.parser {
   public class SafetySourcesConfig {
     ctor public SafetySourcesConfig();
     method @NonNull public java.util.List<com.android.safetycenter.config.parser.SafetySourcesGroup> getSafetySourcesGroup();
-    method @NonNull public java.util.List<com.android.safetycenter.config.parser.StaticSafetySourcesGroup> getStaticSafetySourcesGroup();
   }
 
   public class SafetySourcesGroup {
@@ -48,21 +47,12 @@ package com.android.safetycenter.config.parser {
     method @NonNull public String getId();
     method @NonNull public java.util.List<com.android.safetycenter.config.parser.SafetySource> getSafetySource();
     method public int getStatelessIconType();
-    method @NonNull public String getSummary();
-    method @NonNull public String getTitle();
+    method @Nullable public String getSummary();
+    method @Nullable public String getTitle();
     method public void setId(@NonNull String);
     method public void setStatelessIconType(int);
-    method public void setSummary(@NonNull String);
-    method public void setTitle(@NonNull String);
-  }
-
-  public class StaticSafetySourcesGroup {
-    ctor public StaticSafetySourcesGroup();
-    method @NonNull public String getId();
-    method public java.util.List<com.android.safetycenter.config.parser.SafetySource> getStaticSafetySource();
-    method @NonNull public String getTitle();
-    method public void setId(@NonNull String);
-    method public void setTitle(@NonNull String);
+    method public void setSummary(@Nullable String);
+    method public void setTitle(@Nullable String);
   }
 
   public class XmlParser {
