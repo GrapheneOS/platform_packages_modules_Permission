@@ -188,8 +188,8 @@
     <string name="sort_spinner_most_permissions" msgid="1704349738096822836">"Maior número de permissões"</string>
     <string name="sort_spinner_most_accesses" msgid="5283913004357220161">"Maior número de acessos"</string>
     <string name="sort_spinner_recent" msgid="7513845273076525203">"Recentes"</string>
-    <string name="sort_by_app" msgid="4055799843051138087">"Classificar por uso de app"</string>
-    <string name="sort_by_time" msgid="5435045320002150456">"Classificar por tempo"</string>
+    <string name="sort_by_app" msgid="4055799843051138087">"Ordenar por uso de app"</string>
+    <string name="sort_by_time" msgid="5435045320002150456">"Ordenar por tempo"</string>
     <string name="item_separator" msgid="4030255389809224513">", "</string>
     <string name="permission_usage_refresh" msgid="2264056346561305420">"Atualizar"</string>
     <plurals name="permission_usage_permission_filter_subtitle" formatted="false" msgid="2452104463317798268">
