@@ -71,10 +71,8 @@
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"অ্যাপের তথ্য দেখুন"</string>
     <string name="additional_permissions_more" msgid="5681220714755304407">"{count,plural, =1{আরও #টি}one{আরও #টি}other{আরও #টি}}"</string>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"এই অ্যাপটি Android-এর একটি পুরনো ভার্সনের জন্য ডিজাইন করা হয়েছিল৷ অনুমতি না দিলে এটি ঠিকভাবে কাজ নাও করতে পারে।"</string>
-    <!-- no translation found for storage_supergroup_warning_allow (103093462784523190) -->
-    <skip />
-    <!-- no translation found for storage_supergroup_warning_deny (6420765672683284347) -->
-    <skip />
+    <string name="storage_supergroup_warning_allow" msgid="103093462784523190">"Android-এর পুরনো ভার্সনের জন্য এই অ্যাপ ডিজাইন করা হয়েছে। আপনি এটিতে অনুমতি দিলে, স্টোরেজের সবকিছু (ফটো, ভিডিও, মিউজিক, অডিও ও অন্যান্য ফাইল এর অন্তর্ভুক্ত) অ্যাক্সেস করা যাবে।"</string>
+    <string name="storage_supergroup_warning_deny" msgid="6420765672683284347">"Android-এর পুরনো ভার্সনের জন্য এই অ্যাপ ডিজাইন করা হয়েছে। আপনি এটিতে অনুমতি না দিলে, স্টোরেজের কোনও কিছু (ফটো, ভিডিও, মিউজিক, অডিও ও অন্যান্য ফাইল এর অন্তর্ভুক্ত) অ্যাক্সেস করা যাবে না।"</string>
     <string name="default_permission_description" msgid="4624464917726285203">"কোনও অজানা অ্যাকশন নিন"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_1">%2$d</xliff:g>টি অ্যাপের মধ্যে <xliff:g id="COUNT_0">%1$d</xliff:g>টি অনুমোদিত"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_1">%2$d</xliff:g>টি অ্যাপের মধ্যে <xliff:g id="COUNT_0">%1$d</xliff:g>টি অনুমোদিত"</string>
@@ -87,10 +85,8 @@
     <string name="location_settings" msgid="3624412509133422562">"লোকেশন সেটিংস"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> এই ডিভাইসের জন্য লোকেশন পরিষেবা প্রদান করে। লোকেশন সেটিংস থেকে লোকেশনের অ্যাক্সেস পরিবর্তন করা যায়।"</string>
     <string name="system_warning" msgid="1173400963234358816">"আপনি যদি এই অনুমতিটি না দেন তাহলে আপনার ডিভাইসের প্রাথমিক ফিচারগুলি ঠিকভাবে কাজ নাও করতে পারে।"</string>
-    <!-- no translation found for deny_read_media_visual_warning (3982586279917232827) -->
-    <skip />
-    <!-- no translation found for deny_read_media_aural_warning (8928699919508646732) -->
-    <skip />
+    <string name="deny_read_media_visual_warning" msgid="3982586279917232827">"Android-এর পুরনো ভার্সনের জন্য এই অ্যাপ ডিজাইন করা হয়েছে। এছাড়াও, আপনি এই অ্যাপে ফটো ও ভিডিও অ্যাক্সেসের অনুমতি না দিলে, মিউজিক ও অন্যান্য অডিও অ্যাক্সেস করা যাবে না।"</string>
+    <string name="deny_read_media_aural_warning" msgid="8928699919508646732">"Android-এর পুরনো ভার্সনের জন্য এই অ্যাপ ডিজাইন করা হয়েছে। আপনি এই অ্যাপে মিউজিক ও অন্যান্য অডিও অ্যাক্সেসের অনুমতি না দিলে, ফটো ও ভিডিও অ্যাক্সেস করা যাবে না।"</string>
     <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"আপনি এই অনুমতি না দিলে, এই অ্যাপের মাধ্যমে ম্যানেজ করা কিছু অ্যাপ প্রয়োজন অনুসারে ঠিকভাবে কাজ নাও করতে পারে।"</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"নীতি অনুযায়ী এটি প্রয়োজন"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"নীতি অনুযায়ী ব্যাকগ্রাউন্ড অ্যাক্সেস বন্ধ করা আছে"</string>
@@ -134,10 +130,8 @@
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"গত ৭ দিনে অ্যাপ কখন আপনার <xliff:g id="PERMGROUP">%1$s</xliff:g> ব্যবহার করেছে তার টাইমলাইন"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"যখন এই অ্যাপ আপনার <xliff:g id="PERMGROUP">%1$s</xliff:g> সংক্রান্ত অনুমতি ব্যবহার করেছে"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"আরও জানুন"</string>
-    <!-- no translation found for manage_permission_summary (4117555482684114317) -->
-    <skip />
-    <!-- no translation found for auto_permission_usage_timeline_summary (2713135806453218703) -->
-    <skip />
+    <string name="manage_permission_summary" msgid="4117555482684114317">"কোন কোন অ্যাপ আপনার <xliff:g id="PERMGROUP">%1$s</xliff:g> ব্যবহার করতে পারবে তা নিয়ন্ত্রণ করুন"</string>
+    <string name="auto_permission_usage_timeline_summary" msgid="2713135806453218703">"<xliff:g id="ACCESS_TIME">%1$s</xliff:g> • <xliff:g id="SUMMARY_TEXT">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_3" msgid="758761785983094351">"<xliff:g id="ATTRIBUTION_NAME">%1$s</xliff:g> • <xliff:g id="APP_NAME">%2$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%3$s</xliff:g>"</string>
     <string name="duration_used_days" msgid="8293010131040301793">"{count,plural, =1{১ দিন}one{# দিন}other{# দিন}}"</string>
@@ -238,10 +232,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"যেসব অ্যাপের এই অনুমতি আছে সেগুলি আপনার স্বাস্থ্য সম্পর্কে সেন্সর ডেটা অ্যাক্সেস করতে পারে"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"যেসব অ্যাপের এই অনুমতি আছে সেগুলি মেসেজ পড়তে ও পাঠাতে পারে"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"এই অনুমতি আছে এমন অ্যাপ ডিভাইসের ফটো, মিডিয়া এবং ফাইল অ্যাক্সেস করতে পারবে"</string>
-    <!-- no translation found for permission_description_summary_read_media_aural (2789020637856210454) -->
-    <skip />
-    <!-- no translation found for permission_description_summary_read_media_visual (4210569227927436735) -->
-    <skip />
+    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"এই অনুমতি থাকলে অ্যাপ আপনার ডিভাইসে মিউজিক ও অন্যান্য অডিও ফাইল অ্যাক্সেস করতে পারবে"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"এই অনুমতি থাকলে অ্যাপ আপনার ডিভাইসে ফটো ও ভিডিও অ্যাক্সেস করতে পারবে"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"শেষবার অ্যাক্সেস করা হয়েছে: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"বর্তমানে খারিজ করা হয়েছে / শেষবার অ্যাক্সেস করা হয়েছে: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"কখনও অ্যাক্সেস করা হয়নি"</string>
@@ -253,10 +245,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"সমস্ত ফাইল ম্যানেজ করার অনুমতি দেওয়া হয়েছে"</string>
     <string name="ask_header" msgid="2633816846459944376">"প্রতিবার জিজ্ঞাসা করে"</string>
     <string name="denied_header" msgid="903209608358177654">"অনুমোদিত নয়"</string>
-    <!-- no translation found for storage_footer_warning_text (2242258357752432337) -->
-    <skip />
-    <!-- no translation found for storage_footer_hyperlink_text (7759955324552930974) -->
-    <skip />
+    <string name="storage_footer_warning_text" msgid="2242258357752432337">"কিছু অ্যাপের সহায়তায় আপনার ডিভাইসে আবশ্যিক কার্যকলাপ করতে পারে, আপনার সব ফাইলে সেইসব অ্যাপের বিশেষ অ্যাক্সেস থাকতে পারে"</string>
+    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"সব ফাইলে অ্যাক্সেস রয়েছে এমন অ্যাপ দেখুন"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{১ দিন}one{# দিন}other{# দিন}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{১ ঘণ্টা}one{# ঘণ্টা}other{# ঘণ্টা}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{১ মিনিট}one{# মিনিট}other{# মিনিট}}"</string>
@@ -455,16 +445,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"নিকটবর্তী"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে আপনার ক্যালেন্ডারে অ্যাক্সেস দেবেন?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে এসএমএস দেখতে ও পাঠাতে দেবেন?"</string>
-    <!-- no translation found for permgrouprequest_storage (7426990523173124539) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_q_to_s (3942779386983426698) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_pre_q (1681166745228672009) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_aural (5948278590400297839) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_visual (4188474766470776052) -->
-    <skip />
+    <string name="permgrouprequest_storage" msgid="7426990523173124539">"আপনার ডিভাইসে কি &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;কে &lt;b&gt;ফাইল ও ডকুমেন্ট&lt;/b&gt; অ্যাক্সেসের অনুমতি দেবেন?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"আপনার ডিভাইসে কি &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;কে &lt;b&gt;ফটো, ভিডিও, মিউজিক, ও অডিও&lt;/b&gt; অ্যাক্সেসের অনুমতি দেবেন?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"আপনার ডিভাইসে কি &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;কে &lt;b&gt;ফটো, ভিডিও, মিউজিক, অডিও ও অন্য ফাইল&lt;/b&gt; অ্যাক্সেসের অনুমতি দেবেন?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"এই ডিভাইস কি &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;কে মিউজিক ও অন্যান্য অডিও ফাইল অ্যাক্সেসের অনুমতি দেবেন?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"এই ডিভাইসে কি &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;কে ফটো ও ভিডিও অ্যাক্সেসের অনুমতি দেবেন?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে অডিও রেকর্ড করার অনুমতি দেবেন?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"আপনি এই অ্যাপ ব্যবহার করার সময়েই শুধুমাত্র সেটি অডিও রেকর্ড করতে পারবে"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে অডিও রেকর্ড করার অনুমতি দিতে চান?"</string>
@@ -511,9 +496,9 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"আপনি জরুরি নম্বরে কল করার সময় মাইক্রোফোন ডেটা এখনও শেয়ার করা হতে পারে।"</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"পরিবর্তন করুন"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"নিরাপত্তা এবং গোপনীয়তা"</string>
+    <string name="safety_center_rescan_button" msgid="8047036829052958144">"স্ক্যান করুন"</string>
+    <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"বাতিল করুন"</string>
     <string name="security_settings" msgid="3808106921175271317">"নিরাপত্তা সংক্রান্ত সেটিংস"</string>
-    <!-- no translation found for safety_privacy_qs_tile_title (5431148204168066203) -->
-    <skip />
-    <!-- no translation found for safety_privacy_qs_tile_subtitle (3621544532041936749) -->
-    <skip />
+    <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"নিরাপত্তা এবং গোপনীয়তা"</string>
+    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"স্ট্যাটাস চেক করুন"</string>
 </resources>

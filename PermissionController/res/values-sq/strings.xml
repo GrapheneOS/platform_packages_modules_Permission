@@ -134,10 +134,8 @@
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Kronologjia se kur e kanë përdorur aplikacionet \"<xliff:g id="PERMGROUP">%1$s</xliff:g>\" gjatë 7 ditëve të fundit"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Kur ky aplikacion ka përdorur lejen për: <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Mëso më shumë"</string>
-    <!-- no translation found for manage_permission_summary (4117555482684114317) -->
-    <skip />
-    <!-- no translation found for auto_permission_usage_timeline_summary (2713135806453218703) -->
-    <skip />
+    <string name="manage_permission_summary" msgid="4117555482684114317">"Kontrollo qasjen e aplikacionit në <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
+    <string name="auto_permission_usage_timeline_summary" msgid="2713135806453218703">"<xliff:g id="ACCESS_TIME">%1$s</xliff:g> • <xliff:g id="SUMMARY_TEXT">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_3" msgid="758761785983094351">"<xliff:g id="ATTRIBUTION_NAME">%1$s</xliff:g> • <xliff:g id="APP_NAME">%2$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%3$s</xliff:g>"</string>
     <string name="duration_used_days" msgid="8293010131040301793">"{count,plural, =1{1 ditë}other{# ditë}}"</string>
@@ -511,9 +509,11 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Të dhënat e mikrofonit mund të vazhdojnë të ndahen kur telefonon një numër urgjence."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Ndrysho"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Siguria dhe privatësia"</string>
+    <!-- no translation found for safety_center_rescan_button (8047036829052958144) -->
+    <skip />
+    <!-- no translation found for safety_center_issue_card_dismiss_button (5113965506144222402) -->
+    <skip />
     <string name="security_settings" msgid="3808106921175271317">"Cilësimet e sigurisë"</string>
-    <!-- no translation found for safety_privacy_qs_tile_title (5431148204168066203) -->
-    <skip />
-    <!-- no translation found for safety_privacy_qs_tile_subtitle (3621544532041936749) -->
-    <skip />
+    <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Siguria dhe privatësia"</string>
+    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Kontrollo statusin"</string>
 </resources>
