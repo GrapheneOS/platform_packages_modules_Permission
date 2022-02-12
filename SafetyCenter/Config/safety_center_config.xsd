@@ -73,36 +73,43 @@
         <xsd:attribute name="packageName" type="xsd:string">
             <xsd:annotation name="nullable"/>
         </xsd:attribute>
-        <!-- title is required for a dynamic safety source and it represents the fallback value used when no dynamic value is provided -->
+        <!-- title is required for a dynamic safety source if initialDisplayState is not set to hidden -->
+        <!-- title is prohibited for a dynamic safety source if initialDisplayState is set to hidden -->
         <!-- title is required for a static safety source -->
         <!-- title is prohibited for an issue only safety source -->
-        <xsd:attribute name="title" type="reference" use="required">
+        <xsd:attribute name="title" type="reference">
             <xsd:annotation name="nullable"/>
         </xsd:attribute>
-        <!-- titleForWork is required for a dynamic safety source if profile is set to all_profiles -->
-        <!-- titleForWork is prohibited for a dynamic safety source if profile is set to primary_profile_only -->
+        <!-- titleForWork is required for a dynamic safety source if profile is set to all_profiles and initialDisplayState is not set to hidden -->
+        <!-- titleForWork is prohibited for a dynamic safety source if profile is set to primary_profile_only or initialDisplayState is set to hidden -->
         <!-- titleForWork is required for a static safety source if profile is set to all_profiles -->
         <!-- titleForWork is prohibited for a static safety source if profile is set to primary_profile_only -->
         <!-- titleForWork is prohibited for an issue only safety source -->
         <xsd:attribute name="titleForWork" type="reference">
             <xsd:annotation name="nullable"/>
         </xsd:attribute>
-        <!-- summary is required for a dynamic safety source and it represents the fallback value used when no dynamic value is provided -->
+        <!-- summary is required for a dynamic safety source if initialDisplayState is not set to hidden -->
+        <!-- summary is prohibited for a dynamic safety source if initialDisplayState is set to hidden -->
         <!-- summary is required for a static safety source -->
         <!-- summary is prohibited for an issue only safety source -->
-        <xsd:attribute name="summary" type="reference" use="required">
+        <xsd:attribute name="summary" type="reference">
             <xsd:annotation name="nullable"/>
         </xsd:attribute>
-        <!-- intentAction is required for a dynamic safety source and it represents the fallback value used when no dynamic value is provided -->
+        <!-- intentAction is required for a dynamic safety source if initialDisplayState is set to enabled -->
+        <!-- intentAction is optional for a dynamic safety source if initialDisplayState is set to disabled -->
+        <!-- intentAction is prohibited for a dynamic safety source if initialDisplayState is set to hidden -->
         <!-- intentAction is required for a static safety source -->
         <!-- intentAction is prohibited for an issue only safety source -->
-        <xsd:attribute name="intentAction" type="xsd:string" use="required">
+        <xsd:attribute name="intentAction" type="xsd:string">
             <xsd:annotation name="nullable"/>
         </xsd:attribute>
         <!-- profile is required for a dynamic safety source -->
         <!-- profile is required for a static safety source -->
         <!-- profile is required for an issue only safety source -->
         <xsd:attribute name="profile" type="profile" use="required"/>
+        <!-- initialDisplayState is prohibited for a static safety source -->
+        <!-- initialDisplayState is prohibited for an issue only safety source -->
+        <xsd:attribute name="initialDisplayState" type="initialDisplayState"/>
         <!-- maxSeverityLevel defaults to 2147483647 -->
         <!-- maxSeverityLevel must be strictly greater than 0 -->
         <!-- maxSeverityLevel is prohibited for a static safety source -->
@@ -156,6 +163,19 @@
     <xsd:simpleType name="profile">
         <xsd:restriction base="xsd:int">
             <xsd:minInclusive value="1"/>
+            <xsd:maxInclusive value="2"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--
+      ~ Possible profile values are:
+      ~ 0: enabled (default)
+      ~ 1: disabled
+      ~ 2: hidden
+      -->
+    <xsd:simpleType name="initialDisplayState">
+        <xsd:restriction base="xsd:int">
+            <xsd:minInclusive value="0"/>
             <xsd:maxInclusive value="2"/>
         </xsd:restriction>
     </xsd:simpleType>

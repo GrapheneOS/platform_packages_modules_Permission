@@ -175,6 +175,9 @@ public final class Parser {
         if (parserSafetySource.getProfile() != 0) {
             builder.setProfile(parserSafetySource.getProfile());
         }
+        if (parserSafetySource.getInitialDisplayState() != 0) {
+            builder.setInitialDisplayState(parserSafetySource.getInitialDisplayState());
+        }
         if (parserSafetySource.getMaxSeverityLevel() != 0) {
             builder.setMaxSeverityLevel(parserSafetySource.getMaxSeverityLevel());
         }
