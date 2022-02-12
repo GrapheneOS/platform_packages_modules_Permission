@@ -62,7 +62,6 @@ public final class SafetyCenterEntry implements Parcelable {
     @Retention(RetentionPolicy.SOURCE)
     @IntDef(prefix = "ENTRY_SEVERITY_LEVEL_", value = {
             ENTRY_SEVERITY_LEVEL_UNKNOWN,
-            ENTRY_SEVERITY_LEVEL_STATELESS,
             ENTRY_SEVERITY_LEVEL_NONE,
             ENTRY_SEVERITY_LEVEL_OK,
             ENTRY_SEVERITY_LEVEL_RECOMMENDATION,
@@ -75,49 +74,53 @@ public final class SafetyCenterEntry implements Parcelable {
     public static final int ENTRY_SEVERITY_LEVEL_UNKNOWN = 3000;
 
     /**
-     * Indicates that this entry is stateless, and will not have a severity level now or in the
-     * future.
-     */
-    public static final int ENTRY_SEVERITY_LEVEL_STATELESS = 3100;
-
-    /**
      * Indicates this entry does not currently have a severity level, but may change in the future.
      * This may be because there is some information missing, or that the Safety Center currently
      * has no opinion on the state of this entry.
      */
-    public static final int ENTRY_SEVERITY_LEVEL_NONE = 3200;
+    public static final int ENTRY_SEVERITY_LEVEL_NONE = 3100;
 
     /** Indicates that there are no problems present with this entry. */
-    public static final int ENTRY_SEVERITY_LEVEL_OK = 3300;
+    public static final int ENTRY_SEVERITY_LEVEL_OK = 3200;
 
     /** Indicates there are safety recommendations for this entry. */
-    public static final int ENTRY_SEVERITY_LEVEL_RECOMMENDATION = 3400;
+    public static final int ENTRY_SEVERITY_LEVEL_RECOMMENDATION = 3300;
 
     /** Indicates there are critical safety warnings for this entry. */
-    public static final int ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING = 3500;
+    public static final int ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING = 3400;
 
     /**
-     * All possible stateless icon types for a {@link SafetyCenterEntry}.
+     * All possible icon types for a {@link SafetyCenterEntry} to use when its severity level is
+     * {@link #ENTRY_SEVERITY_LEVEL_NONE}.
      *
-     * <p>The stateless icon type indicates which icon should be used for a specific stateless entry
-     * or entry group, and is only relevant when the entry's severity level is {@link
-     * #ENTRY_SEVERITY_LEVEL_STATELESS}.
+     * <p>It is only relevant when the entry's severity level is {@link #ENTRY_SEVERITY_LEVEL_NONE}.
      *
      * @hide
      */
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef(prefix = "STATELESS_ICON_TYPE_", value = {
-            STATELESS_ICON_TYPE_NONE,
-            STATELESS_ICON_TYPE_PRIVACY
+    @IntDef(prefix = "SEVERITY_NONE_ICON_TYPE_", value = {
+            SEVERITY_NONE_ICON_TYPE_NO_ICON,
+            SEVERITY_NONE_ICON_TYPE_PRIVACY,
+            SEVERITY_NONE_ICON_TYPE_NO_RECOMMENDATION,
     })
-    public @interface StatelessIconType {
+    public @interface SeverityNoneIconType {
     }
 
-    /** Indicates the stateless entry should not use an icon. */
-    public static final int STATELESS_ICON_TYPE_NONE = 0;
+    /** Indicates an entry with {@link #ENTRY_SEVERITY_LEVEL_NONE} should not use an icon. */
+    public static final int SEVERITY_NONE_ICON_TYPE_NO_ICON = 0;
 
-    /** Indicates the stateless entry should use the privacy icon, for privacy features. */
-    public static final int STATELESS_ICON_TYPE_PRIVACY = 1;
+    /**
+     * Indicates an entry with {@link #ENTRY_SEVERITY_LEVEL_NONE} should use the privacy icon, for
+     * privacy features.
+     */
+    public static final int SEVERITY_NONE_ICON_TYPE_PRIVACY = 1;
+
+    /**
+     * Indicates an entry with {@link #ENTRY_SEVERITY_LEVEL_NONE} should use an icon indicating it
+     * has no current recommendation or is missing data to provide one.
+     */
+    public static final int SEVERITY_NONE_ICON_TYPE_NO_RECOMMENDATION = 2;
+
 
     @NonNull
     private final String mId;
@@ -127,8 +130,8 @@ public final class SafetyCenterEntry implements Parcelable {
     private final CharSequence mSummary;
     @EntrySeverityLevel
     private final int mSeverityLevel;
-    @StatelessIconType
-    private final int mStatelessIconType;
+    @SeverityNoneIconType
+    private final int mSeverityNoneIconType;
     private final boolean mEnabled;
     @NonNull
     private final PendingIntent mPendingIntent;
@@ -140,7 +143,7 @@ public final class SafetyCenterEntry implements Parcelable {
             @NonNull CharSequence title,
             @Nullable CharSequence summary,
             @EntrySeverityLevel int severityLevel,
-            @StatelessIconType int statelessIconType,
+            @SeverityNoneIconType int severityNoneIconType,
             boolean enabled,
             @NonNull PendingIntent pendingIntent,
             @Nullable IconAction iconAction) {
@@ -148,7 +151,7 @@ public final class SafetyCenterEntry implements Parcelable {
         mTitle = requireNonNull(title);
         mSummary = summary;
         mSeverityLevel = severityLevel;
-        mStatelessIconType = statelessIconType;
+        mSeverityNoneIconType = severityNoneIconType;
         mEnabled = enabled;
         mPendingIntent = requireNonNull(pendingIntent);
         mIconAction = iconAction;
@@ -181,10 +184,10 @@ public final class SafetyCenterEntry implements Parcelable {
         return mSeverityLevel;
     }
 
-    /** Returns the {@link StatelessIconType} of this entry. */
-    @StatelessIconType
-    public int getStatelessIconType() {
-        return mStatelessIconType;
+    /** Returns the {@link SeverityNoneIconType} of this entry. */
+    @SeverityNoneIconType
+    public int getSeverityNoneIconType() {
+        return mSeverityNoneIconType;
     }
 
     /** Returns whether or not this entry is enabled. */
@@ -213,7 +216,7 @@ public final class SafetyCenterEntry implements Parcelable {
         if (o == null || getClass() != o.getClass()) return false;
         SafetyCenterEntry that = (SafetyCenterEntry) o;
         return mSeverityLevel == that.mSeverityLevel
-                && mStatelessIconType == that.mStatelessIconType
+                && mSeverityNoneIconType == that.mSeverityNoneIconType
                 && mEnabled == that.mEnabled
                 && Objects.equals(mId, that.mId)
                 && TextUtils.equals(mTitle, that.mTitle)
@@ -224,7 +227,7 @@ public final class SafetyCenterEntry implements Parcelable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(mId, mTitle, mSummary, mSeverityLevel, mStatelessIconType, mEnabled,
+        return Objects.hash(mId, mTitle, mSummary, mSeverityLevel, mSeverityNoneIconType, mEnabled,
                 mPendingIntent, mIconAction);
     }
 
@@ -235,7 +238,7 @@ public final class SafetyCenterEntry implements Parcelable {
                 + ", mTitle=" + mTitle
                 + ", mSummary=" + mSummary
                 + ", mSeverityLevel=" + mSeverityLevel
-                + ", mStatelessIconType=" + mStatelessIconType
+                + ", mSeverityNoneIconType=" + mSeverityNoneIconType
                 + ", mEnabled=" + mEnabled
                 + ", mAction=" + mPendingIntent
                 + ", mIconAction=" + mIconAction
@@ -253,7 +256,7 @@ public final class SafetyCenterEntry implements Parcelable {
         TextUtils.writeToParcel(mTitle, dest, flags);
         TextUtils.writeToParcel(mSummary, dest, flags);
         dest.writeInt(mSeverityLevel);
-        dest.writeInt(mStatelessIconType);
+        dest.writeInt(mSeverityNoneIconType);
         dest.writeBoolean(mEnabled);
         dest.writeParcelable(mPendingIntent, flags);
         dest.writeParcelable(mIconAction, flags);
@@ -267,7 +270,7 @@ public final class SafetyCenterEntry implements Parcelable {
                     .setTitle(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in))
                     .setSummary(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in))
                     .setSeverityLevel(in.readInt())
-                    .setStatelessIconType(in.readInt())
+                    .setSeverityNoneIconType(in.readInt())
                     .setEnabled(in.readBoolean())
                     .setPendingIntent(
                             in.readParcelable(
@@ -292,8 +295,8 @@ public final class SafetyCenterEntry implements Parcelable {
         private CharSequence mSummary;
         @EntrySeverityLevel
         private int mSeverityLevel = ENTRY_SEVERITY_LEVEL_UNKNOWN;
-        @StatelessIconType
-        private int mStatelessIconType = STATELESS_ICON_TYPE_NONE;
+        @SeverityNoneIconType
+        private int mSeverityNoneIconType = SEVERITY_NONE_ICON_TYPE_NO_ICON;
         private boolean mEnabled = true;
         private PendingIntent mPendingIntent;
         private IconAction mIconAction;
@@ -316,7 +319,7 @@ public final class SafetyCenterEntry implements Parcelable {
             mTitle = safetyCenterEntry.mTitle;
             mSummary = safetyCenterEntry.mSummary;
             mSeverityLevel = safetyCenterEntry.mSeverityLevel;
-            mStatelessIconType = safetyCenterEntry.mStatelessIconType;
+            mSeverityNoneIconType = safetyCenterEntry.mSeverityNoneIconType;
             mEnabled = safetyCenterEntry.mEnabled;
             mPendingIntent = safetyCenterEntry.mPendingIntent;
             mIconAction = safetyCenterEntry.mIconAction;
@@ -350,10 +353,10 @@ public final class SafetyCenterEntry implements Parcelable {
             return this;
         }
 
-        /** Sets the {@link StatelessIconType} for this entry. */
+        /** Sets the {@link SeverityNoneIconType} for this entry. */
         @NonNull
-        public Builder setStatelessIconType(@StatelessIconType int statelessIconType) {
-            mStatelessIconType = statelessIconType;
+        public Builder setSeverityNoneIconType(@SeverityNoneIconType int severityNoneIconType) {
+            mSeverityNoneIconType = severityNoneIconType;
             return this;
         }
 
@@ -394,7 +397,7 @@ public final class SafetyCenterEntry implements Parcelable {
                     mTitle,
                     mSummary,
                     mSeverityLevel,
-                    mStatelessIconType,
+                    mSeverityNoneIconType,
                     mEnabled,
                     mPendingIntent,
                     mIconAction);

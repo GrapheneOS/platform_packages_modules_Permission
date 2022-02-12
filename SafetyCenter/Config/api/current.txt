@@ -11,6 +11,7 @@ package com.android.safetycenter.config.parser {
     ctor public SafetySource();
     method @Nullable public String getBroadcastReceiverClassName();
     method @NonNull public String getId();
+    method public int getInitialDisplayState();
     method @Nullable public String getIntentAction();
     method public int getMaxSeverityLevel();
     method @Nullable public String getPackageName();
@@ -26,6 +27,7 @@ package com.android.safetycenter.config.parser {
     method public void setBroadcastReceiverClassName(@Nullable String);
     method public void setDisallowLogging(boolean);
     method public void setId(@NonNull String);
+    method public void setInitialDisplayState(int);
     method public void setIntentAction(@Nullable String);
     method public void setMaxSeverityLevel(int);
     method public void setPackageName(@Nullable String);
