@@ -71,10 +71,8 @@
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"Odpri podatke o aplikaciji"</string>
     <string name="additional_permissions_more" msgid="5681220714755304407">"{count,plural, =1{in še #}one{in še #}two{in še #}few{in še #}other{in še #}}"</string>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"Ta aplikacija je bila zasnovana za starejšo različico sistema Android. Če dovoljenje zavrnete, lahko preneha delovati, kot bi morala."</string>
-    <!-- no translation found for storage_supergroup_warning_allow (103093462784523190) -->
-    <skip />
-    <!-- no translation found for storage_supergroup_warning_deny (6420765672683284347) -->
-    <skip />
+    <string name="storage_supergroup_warning_allow" msgid="103093462784523190">"Ta aplikacija je bila zasnovana za starejšo različico sistema Android. Če odobrite to dovoljenje, bo dovoljen dostop do celotne shrambe (vključno s fotografijami, videoposnetki, glasbo ter zvočnimi in drugimi datotekami)."</string>
+    <string name="storage_supergroup_warning_deny" msgid="6420765672683284347">"Ta aplikacija je bila zasnovana za starejšo različico sistema Android. Če zavrnete to dovoljenje, bo zavrnjen dostop do celotne shrambe (vključno s fotografijami, videoposnetki, glasbo ter zvočnimi in drugimi datotekami)."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"izvedba neznanega dejanja"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"Dovoljene aplikacije: <xliff:g id="COUNT_0">%1$d</xliff:g> od <xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"Dovoljene aplikacije: <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
@@ -87,10 +85,8 @@
     <string name="location_settings" msgid="3624412509133422562">"Nastavitve lokacije"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> je ponudnik lokacijskih storitev za to napravo. Dostop do lokacije je mogoče spremeniti v nastavitvah lokacije."</string>
     <string name="system_warning" msgid="1173400963234358816">"Če zavrnete to dovoljenje, osnovne funkcije naprave morda ne bodo več delovale, kot bi morale."</string>
-    <!-- no translation found for deny_read_media_visual_warning (3982586279917232827) -->
-    <skip />
-    <!-- no translation found for deny_read_media_aural_warning (8928699919508646732) -->
-    <skip />
+    <string name="deny_read_media_visual_warning" msgid="3982586279917232827">"Ta aplikacija je bila zasnovana za starejšo različico sistema Android. Če tej aplikaciji zavrnete dovoljenje do fotografij in videoposnetkov, bo zavrnjen tudi dostop do glasbe in drugih zvočnih datotek."</string>
+    <string name="deny_read_media_aural_warning" msgid="8928699919508646732">"Ta aplikacija je bila zasnovana za starejšo različico sistema Android. Če tej aplikaciji zavrnete dovoljenje do glasbe in drugih zvočnih datotek, bo zavrnjen tudi dostop do fotografij in videoposnetkov."</string>
     <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"Če zavrnete to dovoljenje, nekatere funkcije naprave, ki jo upravlja ta aplikacija, morda ne bodo več delovale, kot bi morale."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Uveljavlja pravilnik"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Dostop iz ozadja je onemogočen s pravilnikom"</string>
@@ -236,10 +232,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Aplikacije s tem dovoljenjem lahko dostopajo do podatkov tipal o vaših vitalnih znakih."</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Aplikacije s tem dovoljenjem lahko pošiljajo in berejo sporočila SMS."</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Aplikacije s tem dovoljenjem lahko dostopajo do fotografij, predstavnostnih vsebin in datotek v napravi."</string>
-    <!-- no translation found for permission_description_summary_read_media_aural (2789020637856210454) -->
-    <skip />
-    <!-- no translation found for permission_description_summary_read_media_visual (4210569227927436735) -->
-    <skip />
+    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"Aplikacije s tem dovoljenjem lahko dostopajo do glasbe in drugih zvočnih datotek v napravi."</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"Aplikacije s tem dovoljenjem lahko dostopajo do fotografij in videoposnetkov v napravi."</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Zadnja uporaba: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Trenutno zavrnjeno / zadnja uporaba: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Še brez uporabe"</string>
@@ -251,10 +245,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Dovoljeno je upravljanje vseh datotek"</string>
     <string name="ask_header" msgid="2633816846459944376">"Vedno vprašaj"</string>
     <string name="denied_header" msgid="903209608358177654">"Ni dovoljeno"</string>
-    <!-- no translation found for storage_footer_warning_text (2242258357752432337) -->
-    <skip />
-    <!-- no translation found for storage_footer_hyperlink_text (7759955324552930974) -->
-    <skip />
+    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Nekatere aplikacije, ki skrbijo za ključne funkcije naprave, imajo lahko poseben dostop do vseh datotek."</string>
+    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Ogled aplikacij z dostopom do vseh datotek"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 dan}one{# dan}two{# dneva}few{# dni}other{# dni}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 ura}one{# ura}two{# uri}few{# ure}other{# ur}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 minuta}one{# minuta}two{# minuti}few{# minute}other{# minut}}"</string>
@@ -453,16 +445,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Približna"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Dovolite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dostop do koledarja?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Dovolite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pošiljanje in ogled sporočil SMS?"</string>
-    <!-- no translation found for permgrouprequest_storage (7426990523173124539) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_q_to_s (3942779386983426698) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_pre_q (1681166745228672009) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_aural (5948278590400297839) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_visual (4188474766470776052) -->
-    <skip />
+    <string name="permgrouprequest_storage" msgid="7426990523173124539">"Želite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dovoliti, da dostopa do &lt;b&gt;datotek in dokumentov&lt;/b&gt; v napravi?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"Želite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dovoliti, da dostopa do &lt;b&gt;fotografij, videoposnetkov, glasbe in zvočnih datotek&lt;/b&gt; v napravi?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"Želite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dovoliti, da dostopa do &lt;b&gt;fotografij, videoposnetkov, glasbe ter zvočnih in drugih datotek&lt;/b&gt; v napravi?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"Želite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dovoliti, da dostopa do glasbe in drugih zvočnih datotek v tej napravi?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"Želite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dovoliti, da dostopa do fotografij in videoposnetkov v tej napravi?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Dovolite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; snemanje zvoka?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Aplikacija bo lahko snemala zvok le med vašo uporabo aplikacije."</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Želite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; omogočiti snemanje zvoka?"</string>
@@ -509,6 +496,8 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Podatki mikrofona bodo morda še vedno deljeni, ko pokličete številko za klic v sili."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Spremeni"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Varnost in zasebnost"</string>
+    <string name="safety_center_rescan_button" msgid="8047036829052958144">"Išči"</string>
+    <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Opusti"</string>
     <string name="security_settings" msgid="3808106921175271317">"Varnostne nastavitve"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Varnost in zasebnost"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Preverjanje stanja"</string>

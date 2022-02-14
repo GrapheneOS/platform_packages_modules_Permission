@@ -71,10 +71,8 @@
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"Vula ulwazi nge-app"</string>
     <string name="additional_permissions_more" msgid="5681220714755304407">"{count,plural, =1{eziningi #}one{eziningi #}other{eziningi #}}"</string>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"Lolu hlelo lokusebenza ludizayinelwe inguqulo endala ye-Android. Ukwala imvume kungalibangela ukuthi lingasasebenzi njengoba kuhlosiwe."</string>
-    <!-- no translation found for storage_supergroup_warning_allow (103093462784523190) -->
-    <skip />
-    <!-- no translation found for storage_supergroup_warning_deny (6420765672683284347) -->
-    <skip />
+    <string name="storage_supergroup_warning_allow" msgid="103093462784523190">"Le app iklanyelwe uhlobo lwakudala le-Android. Uma uvumela le mvume, khona-ke ukufinyelela kuso sonke isitoreji (okuhlanganisa izithombe, amavidiyo, umculo, okulalelwayo, namanye amafayela) kuzovunyelwa."</string>
+    <string name="storage_supergroup_warning_deny" msgid="6420765672683284347">"Le app iklanyelwe uhlobo lwakudala le-Android. Uma wenqabela le mvume, khona-ke ukufinyelela kuso sonke isitoreji (okuhlanganisa izithombe, amavidiyo, umculo, okulalelwayo, namanye amafayela) kuzonqatshelwa."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"Yenza isenzo esingaziwa"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> kuzinhlelo zokusebenza ezingu-<xliff:g id="COUNT_1">%2$d</xliff:g> ezivunyelwe"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> izinhlelo zokusebenza ezivunyelwe"</string>
@@ -87,10 +85,8 @@
     <string name="location_settings" msgid="3624412509133422562">"Izilungiselelo Zendawo"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> ingumhlinzeki wamasevisi wendawo kule divayisi. Ukufinyelela kwendawo kungashintshwa kusuka kuzilungiselelo zendawo."</string>
     <string name="system_warning" msgid="1173400963234358816">"Uma unqabela le mvume, izici eziyisisekelo zedivayisi yakho zingahle zingasasebenzi njengoba zihlosiwe."</string>
-    <!-- no translation found for deny_read_media_visual_warning (3982586279917232827) -->
-    <skip />
-    <!-- no translation found for deny_read_media_aural_warning (8928699919508646732) -->
-    <skip />
+    <string name="deny_read_media_visual_warning" msgid="3982586279917232827">"Le app iklanyelwe uhlobo lwakudala le-Android. Uma unqabela le app ukufinyelela izithombe namavidiyo, ukufinyelela kumculo nokunye okulalelwayo nakho kuzonqatshelwa."</string>
+    <string name="deny_read_media_aural_warning" msgid="8928699919508646732">"Le app iklanyelwe uhlobo lwakudala le-Android. Uma wenqabela le app ukufinyelela emculweni nokunye okulalelwayo, ukufinyelela izithombe namavidiyo nakho kuzonqatshelwa."</string>
     <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"Uma unqabela le mvume, ezinye izici zedivayisi yakho eziphethwe yile app zingase zingasasebenzi njengoba kuhlosiwe."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Isetshenziswe yinqubomgomo"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Ukufinyelela kwangemuva kukhutshazwe inqubomgomo"</string>
@@ -236,10 +232,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Izinhlelo zokusebenza ezinale mvume zingafinyelela kudatha yenzwa emayelana nezimpawu zakho ezibalulekile"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Izinhlelo zokusebenza ezinale mvume zingathumela ziphinde zibuke i-SMS"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Izinhlelo zokusebenza ezinale mvume zingafinyelela izithombe, imidiya, namafayela kudivayisi yakho"</string>
-    <!-- no translation found for permission_description_summary_read_media_aural (2789020637856210454) -->
-    <skip />
-    <!-- no translation found for permission_description_summary_read_media_visual (4210569227927436735) -->
-    <skip />
+    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"Ama-app anale mvume angafinyelela umculo namanye amafayela wokulalewayo kudivayisi yakho"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"Ama-app anale mvume angafinyelela izithombe namavidiyo kudivayisi yakho"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Kugcine ukufinyelelwa: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Kunqatshelwe manje / Kugcinwe ukufinyelela: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Akukaze kwafinyelelwa"</string>
@@ -251,10 +245,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Kuvumelekile ukuphatha wonke amafayela"</string>
     <string name="ask_header" msgid="2633816846459944376">"Buza njalo"</string>
     <string name="denied_header" msgid="903209608358177654">"Akuvumelekile"</string>
-    <!-- no translation found for storage_footer_warning_text (2242258357752432337) -->
-    <skip />
-    <!-- no translation found for storage_footer_hyperlink_text (7759955324552930974) -->
-    <skip />
+    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Amanye ama-app ahlinzeka ngokusebenza okubalulekile kwedivayisi yakho angaba nokufinyelela okukhethekile kuwo wonke amafayela akho"</string>
+    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Bona ama-app anokufinyelela kwawo wonke amafayela"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{usuku 1}one{izinsuku #}other{izinsuku #}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{ihora 1}one{amahora #}other{amahora #}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{umzuzu 1}one{imizuzu #}other{imizuzu #}}"</string>
@@ -453,16 +445,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Cishe"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi ifinyelele kukhalenda yakho?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi ithumele iphinde ibuke imilayezo ye-SMS?"</string>
-    <!-- no translation found for permgrouprequest_storage (7426990523173124539) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_q_to_s (3942779386983426698) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_pre_q (1681166745228672009) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_aural (5948278590400297839) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_visual (4188474766470776052) -->
-    <skip />
+    <string name="permgrouprequest_storage" msgid="7426990523173124539">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuba ifinyelele &lt;b&gt; amafayela namadokhumenti &lt;/b&gt; kudivayisi yakho?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"Vumela i-&lt;b&gt;;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuba ifinyelele &lt;b&gt; izithombe, amavidiyo, umculo, nokulalelwayo &lt;/b&gt; kudivayisi yakho?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuba ifinyelele &lt;b&gt; izithombe, amavidiyo, umculo, umsindo, namanye amafayela &lt;/b&gt; kudivayisi yakho?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuba ifinyelele umculo namanye amafayela wokulalelwayo kule divayisi?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"Vumela i-&lt;b&gt;;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuba ifinyelele izithombe namavidiyo wale divayisi"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi irekhode umsindo?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Uhlelo lokusebenza luzokwazi ukurekhoda imisindo kuphela kuyilapho usebenzisa uhlelo lokusebenza"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi irekhode umsindo?"</string>
@@ -509,6 +496,8 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Idatha yemakrofoni isengabiwa lapho wenza ikholi yenombolo yezimo eziphuthumayo"</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Shintsha"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Ukuphepha Nobumfihlo"</string>
+    <string name="safety_center_rescan_button" msgid="8047036829052958144">"Skena"</string>
+    <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Chitha"</string>
     <string name="security_settings" msgid="3808106921175271317">"Amasethingi wokuvikeleka"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Ukuphepha Nobumfihlo"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Hlola isimo"</string>

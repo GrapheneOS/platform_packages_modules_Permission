@@ -71,10 +71,8 @@
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"ஆப்ஸ் தகவலைத் திற"</string>
     <string name="additional_permissions_more" msgid="5681220714755304407">"{count,plural, =1{மேலும் #}other{மேலும் #}}"</string>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"Androidன் பழைய பதிப்புக்காக இந்த ஆப்ஸ் வடிவமைக்கப்பட்டது. அனுமதியை மறுத்தால் அது சரியாகச் செயல்படாமல் போகலாம்."</string>
-    <!-- no translation found for storage_supergroup_warning_allow (103093462784523190) -->
-    <skip />
-    <!-- no translation found for storage_supergroup_warning_deny (6420765672683284347) -->
-    <skip />
+    <string name="storage_supergroup_warning_allow" msgid="103093462784523190">"இந்த ஆப்ஸ் Androidன் பழைய பதிப்பிற்காக வடிவமைக்கப்பட்டது. இந்த அனுமதியை வழங்கினால் சேமிப்பகம் முழுவதற்குமான (படங்கள், வீடியோக்கள், இசை, ஆடியோ மற்றும் பிற ஃபைல்கள் உட்பட) அணுகல் வழங்கப்படும்."</string>
+    <string name="storage_supergroup_warning_deny" msgid="6420765672683284347">"இந்த ஆப்ஸ் Androidன் பழைய பதிப்பிற்காக வடிவமைக்கப்பட்டது. இந்த அனுமதியை நிராகரித்தால் சேமிப்பகம் முழுவதற்குமான (படங்கள், வீடியோக்கள், இசை, ஆடியோ மற்றும் பிற ஃபைல்கள் உட்பட) அணுகல் நிராகரிக்கப்படும்."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"அறியப்படாத செயலைச் செய்யும்"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"அனுமதிக்கப்பட்ட ஆப்ஸ்: <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> ஆப்ஸ் அனுமதிக்கப்பட்டன"</string>
@@ -87,10 +85,8 @@
     <string name="location_settings" msgid="3624412509133422562">"இருப்பிட அமைப்புகள்"</string>
     <string name="location_warning" msgid="2381649060929040962">"இந்தச் சாதனத்திற்கான இருப்பிடச் சேவைகளை <xliff:g id="APP_NAME">%1$s</xliff:g> வழங்குகிறது. \'இருப்பிட அமைப்புகளுக்குச்\' சென்று \'இருப்பிட அணுகலை\' மாற்றலாம்."</string>
     <string name="system_warning" msgid="1173400963234358816">"இந்த அனுமதியை நிராகரித்தால் சாதனத்தின் அடிப்படை அம்சங்கள் சரியாகச் செயல்படாமல் போகலாம்."</string>
-    <!-- no translation found for deny_read_media_visual_warning (3982586279917232827) -->
-    <skip />
-    <!-- no translation found for deny_read_media_aural_warning (8928699919508646732) -->
-    <skip />
+    <string name="deny_read_media_visual_warning" msgid="3982586279917232827">"இந்த ஆப்ஸ் Androidன் பழைய பதிப்பிற்காக வடிவமைக்கப்பட்டது. படங்களையும் வீடியோக்களையும் அணுக இந்த ஆப்ஸை அனுமதிக்கவில்லை எனில் இசை மற்றும் பிற ஆடியோவிற்கான அணுகலும் நிராகரிக்கப்படும்."</string>
+    <string name="deny_read_media_aural_warning" msgid="8928699919508646732">"இந்த ஆப்ஸ் Androidன் பழைய பதிப்பிற்காக வடிவமைக்கப்பட்டது. இசையையும் பிற ஆடியோவையும் அணுக இந்த ஆப்ஸை அனுமதிக்கவில்லை எனில் படங்கள் மற்றும் வீடியோக்களுக்கான அணுகலும் நிராகரிக்கப்படும்."</string>
     <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"இந்த அனுமதியை நிராகரித்தால், இந்த ஆப்ஸால் நிர்வகிக்கப்படும் உங்கள் சாதனத்தின் சில அம்சங்கள் சரியாகச் செயல்படாமல் போகக்கூடும்."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"கொள்கையின்படி செயல்படுத்தப்பட்டது"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"கொள்கையின்படி \'பின்புல அணுகல்’ முடக்கப்பட்டது"</string>
@@ -236,10 +232,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"இந்த அனுமதியைக் கொண்டுள்ள ஆப்ஸ் உங்கள் உடலியக்கக் குறிகள் பற்றிய சென்சார் தரவை அணுகலாம்"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"இந்த அனுமதியைக் கொண்டுள்ள ஆப்ஸால் மெசேஜ்களை அனுப்பவும் பார்க்கவும் இயலும்"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"இந்த அனுமதியைக் கொண்டுள்ள ஆப்ஸால் உங்கள் சாதனத்திலுள்ள படங்கள், மீடியா மற்றும் ஃபைல்களை அணுக இயலும்"</string>
-    <!-- no translation found for permission_description_summary_read_media_aural (2789020637856210454) -->
-    <skip />
-    <!-- no translation found for permission_description_summary_read_media_visual (4210569227927436735) -->
-    <skip />
+    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"இந்த அனுமதியைக் கொண்டுள்ள ஆப்ஸால் உங்கள் சாதனத்திலுள்ள இசையையும் பிற ஆடியோ ஃபைல்களையும் அணுக முடியும்"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"இந்த அனுமதியைக் கொண்டுள்ள ஆப்ஸால் உங்கள் சாதனத்திலுள்ள படங்களையும் வீடியோக்களையும் அணுக முடியும்"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"கடைசியாகப் பயன்படுத்தியது: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"தற்போது மறுக்கப்பட்டுள்ளது / கடைசி அணுகல்: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"பயன்படுத்தியதில்லை"</string>
@@ -251,10 +245,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"எல்லா ஃபைல்களையும் நிர்வகிக்கும் அணுகலுள்ளவை"</string>
     <string name="ask_header" msgid="2633816846459944376">"ஒவ்வொரு முறையும் கேள்"</string>
     <string name="denied_header" msgid="903209608358177654">"அனுமதிக்கப்படாதவை"</string>
-    <!-- no translation found for storage_footer_warning_text (2242258357752432337) -->
-    <skip />
-    <!-- no translation found for storage_footer_hyperlink_text (7759955324552930974) -->
-    <skip />
+    <string name="storage_footer_warning_text" msgid="2242258357752432337">"உங்கள் சாதனத்திற்கு இன்றியமையாத செயல்பாடுகளை வழங்கும் சில ஆப்ஸுக்கு உங்கள் ஃபைல்களுக்கான பிரத்தியேக அணுகல் இருக்கலாம்"</string>
+    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"அனைத்து ஃபைல்களுக்கான அணுகலைக் கொண்ட ஆப்ஸைக் காண்க"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 நாள்}other{# நாட்கள்}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 மணிநேரம்}other{# மணிநேரம்}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 நிமிடம்}other{# நிமிடங்கள்}}"</string>
@@ -453,16 +445,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"தோராயமானது"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"கேலெண்டரை அணுகுவதற்கு &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"மெசேஜ்களை அனுப்பவும், பார்க்கவும் &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
-    <!-- no translation found for permgrouprequest_storage (7426990523173124539) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_q_to_s (3942779386983426698) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_pre_q (1681166745228672009) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_aural (5948278590400297839) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_visual (4188474766470776052) -->
-    <skip />
+    <string name="permgrouprequest_storage" msgid="7426990523173124539">"சாதனத்திலுள்ள &lt;b&gt;ஃபைல்கள் &amp; ஆவணங்களுக்கான&lt;/b&gt; அணுகலை &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸுக்கு வழங்கவா?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"சாதனத்திலுள்ள &lt;b&gt;படங்கள், வீடியோக்கள், இசை &amp; ஆடியோவிற்கான&lt;/b&gt; அணுகலை &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸுக்கு வழங்கவா?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"சாதனத்திலுள்ள &lt;b&gt;படங்கள், இசை, வீடியோ, ஆடியோ &amp; பிற ஃபைல்களுக்கான&lt;/b&gt; அணுகலை &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;க்கு வழங்கவா?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"இந்தச் சாதனத்திலுள்ள இசை மற்றும் பிற ஆடியோ ஃபைல்களுக்கான அணுகலை &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸுக்கு வழங்கவா?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"இந்தச் சாதனத்திலுள்ள படங்கள் &amp; வீடியோக்களுக்கான அணுகலை &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸுக்கு வழங்கவா?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"ஆடியோ ரெக்கார்டு செய்ய &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"இந்த ஆப்ஸை நீங்கள் உபயோகிக்கும்போது மட்டுமே ஆடியோ ரெக்கார்டு செய்யும்"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"ஆடியோ ரெக்கார்டு செய்ய &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
@@ -509,6 +496,8 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"எனினும் அவசர உதவி எண்ணைத் தொடர்பு கொள்ளும்போது மைக்ரோஃபோன் தரவு பகிரப்படலாம்."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"மாற்று"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"பாதுகாப்பு &amp; தனியுரிமை"</string>
+    <string name="safety_center_rescan_button" msgid="8047036829052958144">"ஸ்கேன் செய்"</string>
+    <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"நிராகரிக்கும்"</string>
     <string name="security_settings" msgid="3808106921175271317">"பாதுகாப்பு அமைப்புகள்"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"பாதுகாப்பு &amp; தனியுரிமை"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"நிலையைச் சரிபாருங்கள்"</string>

@@ -71,10 +71,8 @@
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"Open app info"</string>
     <string name="additional_permissions_more" msgid="5681220714755304407">"{count,plural, =1{# more}other{# more}}"</string>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"This app was designed for an older version of Android. Denying permission may cause it to no longer function as intended."</string>
-    <!-- no translation found for storage_supergroup_warning_allow (103093462784523190) -->
-    <skip />
-    <!-- no translation found for storage_supergroup_warning_deny (6420765672683284347) -->
-    <skip />
+    <string name="storage_supergroup_warning_allow" msgid="103093462784523190">"This app was designed for an older version of Android. If you allow this permission, then access to all storage (including photos, videos, music, audio and other files) will be allowed."</string>
+    <string name="storage_supergroup_warning_deny" msgid="6420765672683284347">"This app was designed for an older version of Android. If you deny this permission, then access to all storage (including photos, videos, music, audio and other files) will be denied."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"perform an unknown action"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> of <xliff:g id="COUNT_1">%2$d</xliff:g> apps allowed"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> apps allowed"</string>
@@ -87,10 +85,8 @@
     <string name="location_settings" msgid="3624412509133422562">"Location Settings"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> is a provider of location services for this device. Location access can be modified from location settings."</string>
     <string name="system_warning" msgid="1173400963234358816">"If you deny this permission, basic features of your device may no longer function as intended."</string>
-    <!-- no translation found for deny_read_media_visual_warning (3982586279917232827) -->
-    <skip />
-    <!-- no translation found for deny_read_media_aural_warning (8928699919508646732) -->
-    <skip />
+    <string name="deny_read_media_visual_warning" msgid="3982586279917232827">"This app was designed for an older version of Android. If you deny this app access to photos &amp; videos, access to music &amp; other audio will also be denied."</string>
+    <string name="deny_read_media_aural_warning" msgid="8928699919508646732">"This app was designed for an older version of Android. If you deny this app access to music &amp; other audio, access to photos &amp; videos will also be denied."</string>
     <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"If you deny this permission, some features of your device managed by this app may no longer function as intended."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Enforced by policy"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Background access disabled by policy"</string>
@@ -236,10 +232,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Apps with this permission can access sensor data about your vital signs"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Apps with this permission can send and view SMS messages"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Apps with this permission can access photos, media and files on your device"</string>
-    <!-- no translation found for permission_description_summary_read_media_aural (2789020637856210454) -->
-    <skip />
-    <!-- no translation found for permission_description_summary_read_media_visual (4210569227927436735) -->
-    <skip />
+    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"Apps with this permission can access music and other audio files on your device"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"Apps with this permission can access photos and videos on your device"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Last access: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Currently denied/Last access: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Never accessed"</string>
@@ -251,10 +245,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Allowed to manage all files"</string>
     <string name="ask_header" msgid="2633816846459944376">"Ask every time"</string>
     <string name="denied_header" msgid="903209608358177654">"Not allowed"</string>
-    <!-- no translation found for storage_footer_warning_text (2242258357752432337) -->
-    <skip />
-    <!-- no translation found for storage_footer_hyperlink_text (7759955324552930974) -->
-    <skip />
+    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Some apps that provide essential functionality for your device can have a special access to all of your files"</string>
+    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"See apps with all files access"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 day}other{# days}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 hour}other{# hours}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 minute}other{# minutes}}"</string>
@@ -453,16 +445,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Approximate"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access your calendar?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to send and view SMS messages?"</string>
-    <!-- no translation found for permgrouprequest_storage (7426990523173124539) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_q_to_s (3942779386983426698) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_pre_q (1681166745228672009) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_aural (5948278590400297839) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_visual (4188474766470776052) -->
-    <skip />
+    <string name="permgrouprequest_storage" msgid="7426990523173124539">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access &lt;b&gt;files and documents&lt;/b&gt; on your device?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access &lt;b&gt;photos, videos, music and audio&lt;/b&gt; on your device?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access &lt;b&gt;photos, videos, music, audio and other files&lt;/b&gt; on your device?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access music and other audio files on this device?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to access this device’s photos and videos?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to record audio?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"The app will only be able to record audio while you’re using the app"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Allow &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; to record audio?"</string>
@@ -509,6 +496,8 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Microphone data may still be shared when you call an emergency number."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Change"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Security &amp; privacy"</string>
+    <string name="safety_center_rescan_button" msgid="8047036829052958144">"Scan"</string>
+    <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Dismiss"</string>
     <string name="security_settings" msgid="3808106921175271317">"Security settings"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Security &amp; privacy"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Check status"</string>
