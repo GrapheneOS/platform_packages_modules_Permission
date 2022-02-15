@@ -160,6 +160,7 @@ package android.safetycenter {
     method @NonNull public CharSequence getLabel();
     method @NonNull public android.app.PendingIntent getPendingIntent();
     method @Nullable public CharSequence getSuccessMessage();
+    method public boolean isResolving();
     method public void writeToParcel(@NonNull android.os.Parcel, int);
     field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetyCenterIssue.Action> CREATOR;
   }
@@ -169,6 +170,7 @@ package android.safetycenter {
     method @NonNull public android.safetycenter.SafetyCenterIssue.Action build();
     method @NonNull public android.safetycenter.SafetyCenterIssue.Action.Builder setLabel(@NonNull CharSequence);
     method @NonNull public android.safetycenter.SafetyCenterIssue.Action.Builder setPendingIntent(@NonNull android.app.PendingIntent);
+    method @NonNull public android.safetycenter.SafetyCenterIssue.Action.Builder setResolving(boolean);
     method @NonNull public android.safetycenter.SafetyCenterIssue.Action.Builder setSuccessMessage(@Nullable CharSequence);
   }
 

@@ -509,6 +509,10 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"જ્યારે તમે ઇમર્જન્સી નંબર પર કૉલ કરો ત્યારે કદાચ માઇક્રોફોનનો ડેટા હજી પણ શેર કરવામાં આવી શકે છે."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"બદલો"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"સુરક્ષા અને પ્રાઇવસી"</string>
+    <!-- no translation found for safety_center_rescan_button (8047036829052958144) -->
+    <skip />
+    <!-- no translation found for safety_center_issue_card_dismiss_button (5113965506144222402) -->
+    <skip />
     <string name="security_settings" msgid="3808106921175271317">"સુરક્ષા સેટિંગ"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"સુરક્ષા અને પ્રાઇવસી"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"સ્ટેટસ ચેક કરો"</string>

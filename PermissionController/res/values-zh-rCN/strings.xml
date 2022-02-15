@@ -71,10 +71,8 @@
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"打开应用信息"</string>
     <string name="additional_permissions_more" msgid="5681220714755304407">"{count,plural, =1{另外 # 项}other{另外 # 项}}"</string>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"此应用专为旧版 Android 系统打造。拒绝权限可能会导致该应用无法正常运行。"</string>
-    <!-- no translation found for storage_supergroup_warning_allow (103093462784523190) -->
-    <skip />
-    <!-- no translation found for storage_supergroup_warning_deny (6420765672683284347) -->
-    <skip />
+    <string name="storage_supergroup_warning_allow" msgid="103093462784523190">"此应用专为旧版 Android 系统打造。如果您同意授予这项权限，即会允许访问所有存储空间（包括照片、视频、音乐、音频和其他文件）。"</string>
+    <string name="storage_supergroup_warning_deny" msgid="6420765672683284347">"此应用专为旧版 Android 系统打造。如果您拒绝授予这项权限，则会禁止访问所有存储空间（包括照片、视频、音乐、音频和其他文件）。"</string>
     <string name="default_permission_description" msgid="4624464917726285203">"执行未知操作"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"已授权 <xliff:g id="COUNT_0">%1$d</xliff:g> 个应用（共 <xliff:g id="COUNT_1">%2$d</xliff:g> 个）"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"已授权 <xliff:g id="COUNT_0">%1$d</xliff:g> 个应用/共 <xliff:g id="COUNT_1">%2$d</xliff:g> 个"</string>
@@ -87,10 +85,8 @@
     <string name="location_settings" msgid="3624412509133422562">"位置信息设置"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g>是此设备的一个位置信息服务提供程序。您可以在位置信息设置中修改位置信息使用权。"</string>
     <string name="system_warning" msgid="1173400963234358816">"如果您拒绝此权限，您设备的基本功能可能会无法正常使用。"</string>
-    <!-- no translation found for deny_read_media_visual_warning (3982586279917232827) -->
-    <skip />
-    <!-- no translation found for deny_read_media_aural_warning (8928699919508646732) -->
-    <skip />
+    <string name="deny_read_media_visual_warning" msgid="3982586279917232827">"此应用专为旧版 Android 系统打造。如果您拒绝向此应用授予对照片和视频的访问权限，此应用也无法获得对音乐和其他音频的访问权限。"</string>
+    <string name="deny_read_media_aural_warning" msgid="8928699919508646732">"此应用专为旧版 Android 系统打造。如果您拒绝向此应用授予对音乐和其他音频的访问权限，此应用也无法获得对照片和视频的访问权限。"</string>
     <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"如果您拒绝此权限，设备上受此应用管理的部分功能可能无法正常使用。"</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"依据相关政策强制执行"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"已根据相关政策停用后台使用权"</string>
@@ -236,10 +232,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"具有此权限的应用可以获取与您的生命体征相关的传感器数据"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"具有此权限的应用可以发送和查看短信"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"具有此权限的应用可以访问您设备上的照片、媒体内容和文件"</string>
-    <!-- no translation found for permission_description_summary_read_media_aural (2789020637856210454) -->
-    <skip />
-    <!-- no translation found for permission_description_summary_read_media_visual (4210569227927436735) -->
-    <skip />
+    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"具有此权限的应用可以访问您设备上的音乐和其他音频文件"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"具有此权限的应用可以访问您设备上的照片和视频"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"上次访问时间：<xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"目前已拒绝授权/上次访问时间：<xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"从未访问"</string>
@@ -251,10 +245,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"获准管理所有文件"</string>
     <string name="ask_header" msgid="2633816846459944376">"每次都询问"</string>
     <string name="denied_header" msgid="903209608358177654">"不允许"</string>
-    <!-- no translation found for storage_footer_warning_text (2242258357752432337) -->
-    <skip />
-    <!-- no translation found for storage_footer_hyperlink_text (7759955324552930974) -->
-    <skip />
+    <string name="storage_footer_warning_text" msgid="2242258357752432337">"某些为您的设备提供基本功能的应用可能具有对您所有文件的特殊访问权限"</string>
+    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"查看有权访问所有文件的应用"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 天}other{# 天}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 小时}other{# 小时}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 分钟}other{# 分钟}}"</string>
@@ -453,16 +445,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"大致位置"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问您的日历吗？"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;发送和查看短信吗？"</string>
-    <!-- no translation found for permgrouprequest_storage (7426990523173124539) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_q_to_s (3942779386983426698) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_pre_q (1681166745228672009) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_aural (5948278590400297839) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_visual (4188474766470776052) -->
-    <skip />
+    <string name="permgrouprequest_storage" msgid="7426990523173124539">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问您设备上的&lt;b&gt;文件和文档&lt;/b&gt;？"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问您设备上的&lt;b&gt;照片、视频、音乐和音频&lt;/b&gt;？"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问您设备上的&lt;b&gt;照片、视频、音乐、音频和其他文件&lt;/b&gt;？"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问此设备上的音乐和其他音频文件？"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问此设备上的照片和视频？"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;录音吗？"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"此应用将只能在您使用它时录音"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;录音吗？"</string>
@@ -509,6 +496,8 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"当您拨打紧急电话号码时，系统可能仍会分享麦克风数据。"</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"更改"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"安全性和隐私权"</string>
+    <string name="safety_center_rescan_button" msgid="8047036829052958144">"扫描"</string>
+    <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"关闭"</string>
     <string name="security_settings" msgid="3808106921175271317">"安全设置"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"安全和隐私设置"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"查看状态"</string>
