@@ -30,7 +30,7 @@ class ConfigValidTest {
 
     @Test
     fun validConfig_matchesExpected() {
-        val inputStream = context.resources.openRawResource(R.raw.config_valid)
+        val parser = context.resources.getXml(R.xml.config_valid)
         val expected = SafetyCenterConfig.Builder()
             .addSafetySourcesGroup(SafetySourcesGroup.Builder()
                 .setId("dynamic")
@@ -128,6 +128,6 @@ class ConfigValidTest {
                     .build())
                 .build())
             .build()
-        assertEquals(expected, Parser.parse(inputStream, context.packageName, context.resources))
+        assertEquals(expected, Parser.parseXmlResource(parser))
     }
 }
