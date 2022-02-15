@@ -71,10 +71,8 @@
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"ಆ್ಯಪ್ ಮಾಹಿತಿಯನ್ನು ತೆರೆಯಿರಿ"</string>
     <string name="additional_permissions_more" msgid="5681220714755304407">"{count,plural, =1{# ಇನ್ನಷ್ಟು}one{# ಇನ್ನಷ್ಟು}other{# ಇನ್ನಷ್ಟು}}"</string>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"ಈ ಆ್ಯಪ್‌ Android ನ ಹಳೆಯ ಆವೃತ್ತಿಗೆ ವಿನ್ಯಾಸಗೊಳಿಸಲಾಗಿತ್ತು. ಅನುಮತಿ ನಿರಾಕರಿಸುವಿಕೆ ಇನ್ನು ಮುಂದೆ ಉದ್ದೇಶಿಸಿದಂತೆ ಕಾರ್ಯನಿರ್ವಹಿಸದೆ ಇರುವುದಕ್ಕೆ ಇದು ಕಾರಣವಾಗಬಹುದು."</string>
-    <!-- no translation found for storage_supergroup_warning_allow (103093462784523190) -->
-    <skip />
-    <!-- no translation found for storage_supergroup_warning_deny (6420765672683284347) -->
-    <skip />
+    <string name="storage_supergroup_warning_allow" msgid="103093462784523190">"ಈ ಆ್ಯಪ್‌ ಅನ್ನು Android ನ ಹಳೆಯ ಆವೃತ್ತಿಗೆ ವಿನ್ಯಾಸಗೊಳಿಸಲಾಗಿದೆ. ನೀವು ಈ ಅನುಮತಿಯನ್ನು ಅನುಮೋದಿಸಿದರೆ, ನಂತರ ಎಲ್ಲಾ ಸಂಗ್ರಹಣೆಗೆ (ಫೋಟೋಗಳು, ವೀಡಿಯೊಗಳು, ಸಂಗೀತ, ಆಡಿಯೊ ಮತ್ತು ಇತರ ಫೈಲ್‌ಗಳು ಸೇರಿದಂತೆ) ಪ್ರವೇಶವನ್ನು ಅನುಮತಿಸಲಾಗುತ್ತದೆ."</string>
+    <string name="storage_supergroup_warning_deny" msgid="6420765672683284347">"ಈ ಆ್ಯಪ್‌ ಅನ್ನು Android ನ ಹಳೆಯ ಆವೃತ್ತಿಗೆ ವಿನ್ಯಾಸಗೊಳಿಸಲಾಗಿದೆ. ನೀವು ಈ ಅನುಮತಿಯನ್ನು ನಿರಾಕರಿಸಿದರೆ, ನಂತರ ಎಲ್ಲಾ ಸಂಗ್ರಹಣೆಗೆ (ಫೋಟೋಗಳು, ವೀಡಿಯೊಗಳು, ಸಂಗೀತ, ಆಡಿಯೊ ಮತ್ತು ಇತರ ಫೈಲ್‌ಗಳು ಸೇರಿದಂತೆ) ಪ್ರವೇಶವನ್ನು ನಿರಾಕರಿಸಲಾಗುತ್ತದೆ."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"ಅಪರಿಚಿತ ಕ್ರಿಯೆಯನ್ನು ಮಾಡಿ"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_1">%2$d</xliff:g> ರಲ್ಲಿ <xliff:g id="COUNT_0">%1$d</xliff:g> ಆ್ಯಪ್‌ಗಳನ್ನು ಅನುಮತಿಸಲಾಗಿದೆ"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> ಆ್ಯಪ್‌ಗಳನ್ನು ಅನುಮತಿಸಲಾಗಿದೆ"</string>
@@ -87,10 +85,8 @@
     <string name="location_settings" msgid="3624412509133422562">"ಸ್ಥಳ ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> ಆ್ಯಪ್ ಈ ಸಾಧನಕ್ಕೆ ಸ್ಥಳ ಸೇವೆಗಳನ್ನು ಒದಗಿಸುತ್ತದೆ. ಸ್ಥಳ ಪ್ರವೇಶವನ್ನು ಸ್ಥಳ ಸೆಟ್ಟಿಂಗ್‌ಗಳಿಂದ ಮಾರ್ಪಡಿಸಬಹುದು."</string>
     <string name="system_warning" msgid="1173400963234358816">"ನೀವು ಈ ಅನುಮತಿಯನ್ನು ನಿರಾಕರಿಸಿದರೆ, ಇನ್ನು ಮುಂದೆ ನಿಮ್ಮ ಸಾಧನದ ಮೂಲ ವೈಶಿಷ್ಟ್ಯಗಳು ಉದ್ದೇಶಿಸಿದಂತೆ ಕಾರ್ಯನಿರ್ವಹಿಸದಿರಬಹುದು."</string>
-    <!-- no translation found for deny_read_media_visual_warning (3982586279917232827) -->
-    <skip />
-    <!-- no translation found for deny_read_media_aural_warning (8928699919508646732) -->
-    <skip />
+    <string name="deny_read_media_visual_warning" msgid="3982586279917232827">"ಈ ಆ್ಯಪ್‌ ಅನ್ನು Android ನ ಹಳೆಯ ಆವೃತ್ತಿಗೆ ವಿನ್ಯಾಸಗೊಳಿಸಲಾಗಿದೆ. ನೀವು ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳಿಗೆ ಪ್ರವೇಶಿಸಲು ಈ ಆ್ಯಪ್‌ಗೆ ನಿರಾಕರಿಸಿದರೆ, ಸಂಗೀತ ಮತ್ತು ಇತರ ಆಡಿಯೊಗೂ ಸಹ ಪ್ರವೇಶವನ್ನು ನಿರಾಕರಿಸಲಾಗುತ್ತದೆ."</string>
+    <string name="deny_read_media_aural_warning" msgid="8928699919508646732">"ಈ ಆ್ಯಪ್‌ ಅನ್ನು Android ನ ಹಳೆಯ ಆವೃತ್ತಿಗೆ ವಿನ್ಯಾಸಗೊಳಿಸಲಾಗಿದೆ. ನೀವು ಸಂಗೀತ ಮತ್ತು ಇತರ ಆಡಿಯೊಗೆ ಪ್ರವೇಶಿಸಲು ಈ ಆ್ಯಪ್‌ಗೆ ನಿರಾಕರಿಸಿದರೆ, ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳಿಗೂ ಸಹ ಪ್ರವೇಶವನ್ನು ನಿರಾಕರಿಸಲಾಗುತ್ತದೆ."</string>
     <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"ನೀವು ಈ ಅನುಮತಿಗಳನ್ನು ನಿರಾಕರಿಸಿದರೆ, ಈ ಆ್ಯಪ್‌ನ ಮೂಲಕ ನಿರ್ವಹಿಸಲಾಗುತ್ತಿರುವ ನಿಮ್ಮ ಸಾಧನದ ಕೆಲವು ವೈಶಿಷ್ಟ್ಯಗಳು ಉದ್ದೇಶಿಸಿದಂತೆ ಕಾರ್ಯನಿರ್ವಹಿಸದಿರಬಹುದು."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"ನೀತಿಯ ಮೂಲಕ ಜಾರಿಗೊಳಿಸಲಾಗಿದೆ"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"ನೀತಿಯ ಮೂಲಕ ಹಿನ್ನೆಲೆ ಪ್ರವೇಶವನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ"</string>
@@ -236,10 +232,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ನಿಮ್ಮ ಪ್ರಮುಖ ವೈದ್ಯಕೀಯ ಮಾಪನಗಳ ಕುರಿತ ಸೆನ್ಸರ್ ಡೇಟಾವನ್ನು ಪ್ರವೇಶಿಸಬಹುದು"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು SMS ಸಂದೇಶಗಳನ್ನು ಕಳುಹಿಸಬಹುದು ಮತ್ತು ವೀಕ್ಷಿಸಬಹುದು"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"ಈ ಅನುಮತಿಯ ಜೊತೆಗೆ ಆ್ಯಪ್‌ಗಳು ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿ ಫೋಟೋಗಳು, ಮಾಧ್ಯಮ ಮತ್ತು ಫೈಲ್‌ಗಳನ್ನು ಪ್ರವೇಶಿಸಬಹುದು"</string>
-    <!-- no translation found for permission_description_summary_read_media_aural (2789020637856210454) -->
-    <skip />
-    <!-- no translation found for permission_description_summary_read_media_visual (4210569227927436735) -->
-    <skip />
+    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿ ಸಂಗೀತ ಮತ್ತು ಇತರ ಆಡಿಯೊ ಫೈಲ್‌ಗಳನ್ನು ಪ್ರವೇಶಿಸಬಹುದು"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳು ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿ ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳನ್ನು ಪ್ರವೇಶಿಸಬಹುದು"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"ಕೊನೆಯ ಪ್ರವೇಶ:<xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"ಪ್ರಸ್ತುತ ನಿರಾಕರಿಸಿರುವುದು / ಕೊನೆಯದಾಗಿ ಪ್ರವೇಶಿಸಿರುವುದು: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"ಎಂದಿಗೂ ಪ್ರವೇಶಿಸಿಲ್ಲ"</string>
@@ -251,10 +245,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"ಎಲ್ಲಾ ಫೈಲ್‌ಗಳನ್ನು ನಿರ್ವಹಿಸಲು ಅನುಮತಿಸಲಾಗಿದೆ"</string>
     <string name="ask_header" msgid="2633816846459944376">"ಪ್ರತಿ ಬಾರಿ ಕೇಳಿ"</string>
     <string name="denied_header" msgid="903209608358177654">"ಅನುಮತಿಸಿಲ್ಲದಿರುವುದು"</string>
-    <!-- no translation found for storage_footer_warning_text (2242258357752432337) -->
-    <skip />
-    <!-- no translation found for storage_footer_hyperlink_text (7759955324552930974) -->
-    <skip />
+    <string name="storage_footer_warning_text" msgid="2242258357752432337">"ನಿಮ್ಮ ಸಾಧನಕ್ಕೆ ಅಗತ್ಯವಾದ ಫಂಕ್ಷನಾಲಿಟಿಯನ್ನು ಒದಗಿಸುವ ಕೆಲವು ಆ್ಯಪ್‌ಗಳು ನಿಮ್ಮ ಎಲ್ಲಾ ಫೈಲ್‌ಗಳಿಗೆ ವಿಶೇಷ ಪ್ರವೇಶವನ್ನು ಹೊಂದಿರಬಹುದು"</string>
+    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"ಎಲ್ಲಾ ಫೈಲ್‌ಗಳಿಗೆ ಪ್ರವೇಶ ಹೊಂದಿರುವ ಆ್ಯಪ್‌ಗಳನ್ನು ನೋಡಿ"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 ದಿನ}one{# ದಿನಗಳು}other{# ದಿನಗಳು}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 ಗಂಟೆ}one{# ಗಂಟೆಗಳು}other{# ಗಂಟೆಗಳು}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 ನಿಮಿಷ}one{# ನಿಮಿಷಗಳು}other{# ನಿಮಿಷಗಳು}}"</string>
@@ -453,16 +445,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"ಅಂದಾಜು"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"ನಿಮ್ಮ ಕ್ಯಾಲೆಂಡರ್ ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"ಎಸ್‌ಎಂಎಸ್‌ ಸಂದೇಶಗಳನ್ನು ಕಳುಹಿಸಲು ಮತ್ತು ವೀಕ್ಷಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
-    <!-- no translation found for permgrouprequest_storage (7426990523173124539) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_q_to_s (3942779386983426698) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_pre_q (1681166745228672009) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_aural (5948278590400297839) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_visual (4188474766470776052) -->
-    <skip />
+    <string name="permgrouprequest_storage" msgid="7426990523173124539">"ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿರುವ &lt;b&gt;ಫೈಲ್‌ಗಳು ಮತ್ತು ಡಾಕ್ಯುಮೆಂಟ್‌ಗಳಿಗೆ&lt;/b&gt; ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೆ?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿರುವ &lt;b&gt;ಫೋಟೋಗಳು, ವೀಡಿಯೊಗಳು, ಸಂಗೀತ, ಆಡಿಯೊ&lt;/b&gt; ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೆ?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿರುವ &lt;b&gt;ಫೋಟೋಗಳು, ವೀಡಿಯೊಗಳು, ಸಂಗೀತ, ಆಡಿಯೊ, ಇತರ ಫೈಲ್&lt;/b&gt; ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೆ?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"ಈ ಸಾಧನದಲ್ಲಿರುವ ಸಂಗೀತ ಮತ್ತು ಇತರ ಆಡಿಯೊ ಫೈಲ್‌ಗಳಿಗೆ ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೆ?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"ಈ ಸಾಧನದಲ್ಲಿರುವ ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳಿಗೆ ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೆ?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"ಆಡಿಯೋ ರೆಕಾರ್ಡ್‌ ಮಾಡಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"ನೀವು ಆ್ಯಪ್ ಬಳಸುತ್ತಿರುವಾಗ ಮಾತ್ರ ಆ್ಯಪ್‌ಗೆ ಆಡಿಯೊ ರೆಕಾರ್ಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗುತ್ತದೆ"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"ಆಡಿಯೋ ರೆಕಾರ್ಡ್‌ ಮಾಡಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಆ್ಯಪ್‌ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
@@ -509,6 +496,8 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"ನೀವು ತುರ್ತು ಸಂಖ್ಯೆಗೆ ಕರೆ ಮಾಡಿದಾಗ ಈಗಲೂ ನಿಮ್ಮ ಮೈಕ್ರೋಫೋನ್ ಡೇಟಾವನ್ನು ಹಂಚಿಕೊಳ್ಳಬಹುದಾದ ಸಾಧ್ಯತೆಯಿದೆ."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"ಬದಲಾಯಿಸಿ"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"ಭದ್ರತೆ ಮತ್ತು ಗೌಪ್ಯತೆ"</string>
+    <string name="safety_center_rescan_button" msgid="8047036829052958144">"ಸ್ಕ್ಯಾನ್ ಮಾಡಿ"</string>
+    <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"ವಜಾಗೊಳಿಸಿ"</string>
     <string name="security_settings" msgid="3808106921175271317">"ಭದ್ರತಾ ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"ಭದ್ರತೆ ಮತ್ತು ಗೌಪ್ಯತೆ"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"ಸ್ಥಿತಿ ಪರಿಶೀಲಿಸಿ"</string>

@@ -515,7 +515,7 @@ public final class SafetySourceIssue implements Parcelable {
             }
 
             /**
-             * Sets whether the action will resolve the safety issue.
+             * Sets whether the action will resolve the safety issue. Defaults to false.
              *
              * @see #isResolving()
              */

@@ -71,10 +71,8 @@
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"Otvoriť informácie o aplikácii"</string>
     <string name="additional_permissions_more" msgid="5681220714755304407">"{count,plural, =1{# ďalšie}few{# ďalšie}many{# more}other{# ďalších}}"</string>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"Táto aplikácia bola navrhnutá pre staršiu verziu Androidu. Odmietnutie povolenia môže spôsobiť, že nebude optimálne fungovať."</string>
-    <!-- no translation found for storage_supergroup_warning_allow (103093462784523190) -->
-    <skip />
-    <!-- no translation found for storage_supergroup_warning_deny (6420765672683284347) -->
-    <skip />
+    <string name="storage_supergroup_warning_allow" msgid="103093462784523190">"Táto aplikácia bola navrhnutá pre staršiu verziu Androidu. Ak zapnete toto povolenie, povolíte prístup k celému svojmu ukladaciemu priestoru (vrátane fotiek, videí, hudby, zvuku a ďalších súborov)."</string>
+    <string name="storage_supergroup_warning_deny" msgid="6420765672683284347">"Táto aplikácia bola navrhnutá pre staršiu verziu Androidu. Ak toto povolenie odmietnete, zakážete prístup k celému svojmu ukladaciemu priestoru (vrátane fotiek, videí, hudby, zvuku a ďalších súborov)."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"umožňuje vykonať neznámu akciu"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"Povolené pri <xliff:g id="COUNT_0">%1$d</xliff:g> z <xliff:g id="COUNT_1">%2$d</xliff:g> aplik."</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"Počet povolených aplikácií: <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
@@ -87,10 +85,8 @@
     <string name="location_settings" msgid="3624412509133422562">"Nastavenia polohy"</string>
     <string name="location_warning" msgid="2381649060929040962">"Aplikácia <xliff:g id="APP_NAME">%1$s</xliff:g> je poskytovateľ služieb určovania polohy tohto zariadenia. Prístup k polohe môžete upraviť v nastaveniach polohy."</string>
     <string name="system_warning" msgid="1173400963234358816">"Ak toto povolenie zamietnete, základné funkcie vášho zariadenia nemusia pracovať podľa očakávaní."</string>
-    <!-- no translation found for deny_read_media_visual_warning (3982586279917232827) -->
-    <skip />
-    <!-- no translation found for deny_read_media_aural_warning (8928699919508646732) -->
-    <skip />
+    <string name="deny_read_media_visual_warning" msgid="3982586279917232827">"Táto aplikácia bola navrhnutá pre staršiu verziu Androidu. Ak jej zakážete prístup k fotkám a videám, zakážete tým aj prístup k hudbe a ďalším zvukom."</string>
+    <string name="deny_read_media_aural_warning" msgid="8928699919508646732">"Táto aplikácia bola navrhnutá pre staršiu verziu Androidu. Ak jej zakážete prístup k hudbe a ďalším zvukom, zakážete tým aj prístup k fotkám a videám."</string>
     <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"Ak toto povolenie zamietnete, niektoré funkcie vášho zariadenia spravované touto aplikáciou nemusia pracovať podľa očakávaní."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Vynútené pravidlom"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Prístup na pozadí je zakázaný pravidlom"</string>
@@ -134,10 +130,8 @@
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"<xliff:g id="PERMGROUP">%1$s</xliff:g> – časová os používania aplikáciami za posledných 7 dní"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Keď táto aplikácia používala povolenie <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Ďalšie informácie"</string>
-    <!-- no translation found for manage_permission_summary (4117555482684114317) -->
-    <skip />
-    <!-- no translation found for auto_permission_usage_timeline_summary (2713135806453218703) -->
-    <skip />
+    <string name="manage_permission_summary" msgid="4117555482684114317">"Ovládanie prístupu aplikácií k skupine <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
+    <string name="auto_permission_usage_timeline_summary" msgid="2713135806453218703">"<xliff:g id="ACCESS_TIME">%1$s</xliff:g> • <xliff:g id="SUMMARY_TEXT">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_3" msgid="758761785983094351">"<xliff:g id="ATTRIBUTION_NAME">%1$s</xliff:g> • <xliff:g id="APP_NAME">%2$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%3$s</xliff:g>"</string>
     <string name="duration_used_days" msgid="8293010131040301793">"{count,plural, =1{1 deň}few{# dni}many{# dňa}other{# dní}}"</string>
@@ -238,10 +232,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Aplikácie s týmto povolením majú prístup k dátam senzorov o vašich životných funkciách"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Aplikácie s týmto povolením môžu odosielať a zobrazovať správy SMS"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Aplikácie s týmto povolením majú prístup k fotkám, médiám a súborom vo vašom zariadení"</string>
-    <!-- no translation found for permission_description_summary_read_media_aural (2789020637856210454) -->
-    <skip />
-    <!-- no translation found for permission_description_summary_read_media_visual (4210569227927436735) -->
-    <skip />
+    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"Aplikácie s týmto povolením majú prístup k hudbe a ďalším zvukovým súborom vo vašom zariadení"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"Aplikácie s týmto povolením majú prístup k fotkám a videám vo vašom zariadení"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Posledný prístup: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Momentálne zamietnuté / posledný prístup <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Nikdy nebolo použité"</string>
@@ -253,10 +245,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"S povolením spravovať všetky súbory"</string>
     <string name="ask_header" msgid="2633816846459944376">"Vždy sa opýtať"</string>
     <string name="denied_header" msgid="903209608358177654">"Nepovolené"</string>
-    <!-- no translation found for storage_footer_warning_text (2242258357752432337) -->
-    <skip />
-    <!-- no translation found for storage_footer_hyperlink_text (7759955324552930974) -->
-    <skip />
+    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Niektoré aplikácie, ktoré vášmu zariadeniu poskytujú základné funkcie, môžu mať špeciálny prístup k všetkým vašim súborom"</string>
+    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Zobraziť aplikácie s prístupom k všetkým súborom"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 deň}few{# dni}many{# dňa}other{# dní}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 hodina}few{# hodiny}many{# hodiny}other{# hodín}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 minúta}few{# minúty}many{# minúty}other{# minút}}"</string>
@@ -455,16 +445,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Približná"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup ku kalendáru?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; odosielať a zobrazovať správy SMS?"</string>
-    <!-- no translation found for permgrouprequest_storage (7426990523173124539) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_q_to_s (3942779386983426698) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_pre_q (1681166745228672009) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_aural (5948278590400297839) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_visual (4188474766470776052) -->
-    <skip />
+    <string name="permgrouprequest_storage" msgid="7426990523173124539">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k &lt;b&gt;súborom a dokumentom&lt;/b&gt; vo vašom zariadení?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k &lt;b&gt;fotkám, videám, hudbe a zvuku&lt;/b&gt; vo vašom zariadení?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k &lt;b&gt;fotkám, videám, hudbe, zvuku a ďalším súborom&lt;/b&gt; vo vašom zariadení?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k hudbe a ďalším zvukovým súborom v tomto zariadení?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k fotkám a videám tohto zariadenia?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; nahrávať zvuk?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Táto aplikácia bude môcť nahrávať zvuk iba vtedy, keď ju budete používať"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; nahrávať zvuk?"</string>
@@ -511,9 +496,9 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Keď zavoláte na tiesňovú linku, môžu sa stále zdieľať údaje mikrofónu."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Zmeniť"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Zabezpeč. a ochrana súkromia"</string>
+    <string name="safety_center_rescan_button" msgid="8047036829052958144">"Skontrolovať"</string>
+    <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Zavrieť"</string>
     <string name="security_settings" msgid="3808106921175271317">"Nastavenia zabezpečenia"</string>
-    <!-- no translation found for safety_privacy_qs_tile_title (5431148204168066203) -->
-    <skip />
-    <!-- no translation found for safety_privacy_qs_tile_subtitle (3621544532041936749) -->
-    <skip />
+    <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Zabezpečenie a ochrana súkromia"</string>
+    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Skontrolovať stav"</string>
 </resources>
