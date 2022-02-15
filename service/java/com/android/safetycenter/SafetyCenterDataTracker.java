@@ -286,7 +286,7 @@ final class SafetyCenterDataTracker {
             SafetySourceIssue.Action safetySourceIssueAction = safetySourceIssueActions.get(i);
 
             safetyCenterIssueActions.add(
-                    new SafetyCenterIssue.Action.Builder()
+                    new SafetyCenterIssue.Action.Builder(safetySourceIssue.getId())
                             .setLabel(safetySourceIssueAction.getLabel())
                             .setSuccessMessage(safetySourceIssueAction.getSuccessMessage())
                             .setPendingIntent(safetySourceIssueAction.getPendingIntent())

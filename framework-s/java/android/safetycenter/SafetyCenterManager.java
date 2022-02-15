@@ -179,6 +179,13 @@ public final class SafetyCenterManager {
          * @param data the updated data
          */
         void onSafetyCenterDataChanged(@NonNull SafetyCenterData data);
+
+        /**
+         * Called when the Safety Center should display an error related to changes in its data.
+         *
+         * @param error an error that should be displayed to the user
+         */
+        default void onError(@NonNull SafetyCenterError error) {}
     }
 
     private final Object mListenersLock = new Object();
@@ -244,6 +251,21 @@ public final class SafetyCenterManager {
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }
+    }
+
+    /**
+     * Notifies the SafetyCenter of an error related to a given safety source.
+     *
+     * <p>Safety sources should use this API to notify SafetyCenter when SafetyCenter requested or
+     * expected them to perform an action or provide data, but they were unable to do so.
+     *
+     * @param safetySourceId the id of the safety source that provided the issue
+     * @param error the error that occurred
+     */
+    @RequiresPermission(SEND_SAFETY_CENTER_UPDATE)
+    public void reportSafetySourceError(
+            @NonNull String safetySourceId, @NonNull SafetySourceError error) {
+        // TODO(b/218379298): add implementation
     }
 
     /**
@@ -349,12 +371,12 @@ public final class SafetyCenterManager {
      * Dismiss an active safety issue and prevent it from appearing in the Safety Center or
      * affecting the overall safety status.
      *
-     * @param issueId the target issue ID returned by {@link SafetyCenterIssue#getId()}
+     * @param safetyCenterIssueId the target issue ID returned by {@link SafetyCenterIssue#getId()}
      */
     @RequiresPermission(MANAGE_SAFETY_CENTER)
-    public void dismissSafetyIssue(@NonNull String issueId) {
+    public void dismissSafetyIssue(@NonNull String safetyCenterIssueId) {
         try {
-            mService.dismissSafetyIssue(issueId, mContext.getUser().getIdentifier());
+            mService.dismissSafetyIssue(safetyCenterIssueId, mContext.getUser().getIdentifier());
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }
@@ -371,6 +393,20 @@ public final class SafetyCenterManager {
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }
+    }
+
+    /**
+     * Executes the specified action on the specified issue.
+     *
+     * @param safetyCenterIssueId the target issue ID returned by {@link SafetyCenterIssue#getId()}
+     * @param safetyCenterActionId the target action ID returned by {@link
+     *                             SafetyCenterIssue.Action#getId()}
+     */
+    @RequiresPermission(MANAGE_SAFETY_CENTER)
+    public void executeAction(
+            @NonNull String safetyCenterIssueId,
+            @NonNull String safetyCenterActionId) {
+        // TODO(b/218379298): Add implementation
     }
 
     /**
