@@ -26,6 +26,8 @@ import static android.Manifest.permission_group.MICROPHONE;
 import static android.Manifest.permission_group.NEARBY_DEVICES;
 import static android.Manifest.permission_group.NOTIFICATIONS;
 import static android.Manifest.permission_group.PHONE;
+import static android.Manifest.permission_group.READ_MEDIA_AURAL;
+import static android.Manifest.permission_group.READ_MEDIA_VISUAL;
 import static android.Manifest.permission_group.SENSORS;
 import static android.Manifest.permission_group.SMS;
 import static android.Manifest.permission_group.STORAGE;
@@ -131,6 +133,13 @@ public final class Utils {
             Manifest.permission_group.MICROPHONE
     );
 
+    public static final List<String> STORAGE_SUPERGROUP_PERMISSIONS =
+            !SdkLevel.isAtLeastT() ? List.of() : List.of(
+                    Manifest.permission_group.STORAGE,
+                    Manifest.permission_group.READ_MEDIA_AURAL,
+                    Manifest.permission_group.READ_MEDIA_VISUAL
+            );
+
     private static final String LOG_TAG = "Utils";
 
     public static final String OS_PKG = "android";
@@ -158,6 +167,10 @@ public final class Utils {
     /** The timeout for one-time permissions */
     private static final String PROPERTY_ONE_TIME_PERMISSIONS_TIMEOUT_MILLIS =
             "one_time_permissions_timeout_millis";
+
+    /** The delay before ending a one-time permission session when all processes are dead */
+    private static final String PROPERTY_ONE_TIME_PERMISSIONS_KILLED_DELAY_MILLIS =
+            "one_time_permissions_killed_delay_millis";
 
     /** Whether to show location access check notifications. */
     private static final String PROPERTY_LOCATION_ACCESS_CHECK_ENABLED =
@@ -191,6 +204,12 @@ public final class Utils {
      */
     public static final long ONE_TIME_PERMISSIONS_TIMEOUT_MILLIS = 1 * 60 * 1000; // 1 minute
 
+    /**
+     * The default length to wait before ending a one-time permission session after all processes
+     * are dead.
+     */
+    public static final long ONE_TIME_PERMISSIONS_KILLED_DELAY_MILLIS = 5 * 1000;
+
     /** Mapping permission -> group for all dangerous platform permissions */
     private static final ArrayMap<String, String> PLATFORM_PERMISSIONS;
 
@@ -206,6 +225,7 @@ public final class Utils {
     private static final ArrayMap<String, Integer> PERM_GROUP_BACKGROUND_REQUEST_DETAIL_RES;
     private static final ArrayMap<String, Integer> PERM_GROUP_UPGRADE_REQUEST_RES;
     private static final ArrayMap<String, Integer> PERM_GROUP_UPGRADE_REQUEST_DETAIL_RES;
+    private static final ArrayMap<String, Integer> PERM_GROUP_CONTINUE_REQUEST_RES;
 
     /** Permission -> Sensor codes */
     private static final ArrayMap<String, Integer> PERM_SENSOR_CODES;
@@ -266,6 +286,12 @@ public final class Utils {
         PLATFORM_PERMISSIONS.put(Manifest.permission.WRITE_EXTERNAL_STORAGE, STORAGE);
         PLATFORM_PERMISSIONS.put(Manifest.permission.ACCESS_MEDIA_LOCATION, STORAGE);
 
+        if (SdkLevel.isAtLeastT()) {
+            PLATFORM_PERMISSIONS.put(Manifest.permission.READ_MEDIA_AUDIO, READ_MEDIA_AURAL);
+            PLATFORM_PERMISSIONS.put(Manifest.permission.READ_MEDIA_IMAGE, READ_MEDIA_VISUAL);
+            PLATFORM_PERMISSIONS.put(Manifest.permission.READ_MEDIA_VIDEO, READ_MEDIA_VISUAL);
+        }
+
         PLATFORM_PERMISSIONS.put(Manifest.permission.ACCESS_FINE_LOCATION, LOCATION);
         PLATFORM_PERMISSIONS.put(Manifest.permission.ACCESS_COARSE_LOCATION, LOCATION);
         PLATFORM_PERMISSIONS.put(Manifest.permission.ACCESS_BACKGROUND_LOCATION, LOCATION);
@@ -308,6 +334,7 @@ public final class Utils {
 
         if (SdkLevel.isAtLeastT()) {
             PLATFORM_PERMISSIONS.put(Manifest.permission.POST_NOTIFICATIONS, NOTIFICATIONS);
+            PLATFORM_PERMISSIONS.put(Manifest.permission.BODY_SENSORS_BACKGROUND, SENSORS);
         }
 
         PLATFORM_PERMISSION_GROUPS = new ArrayMap<>();
@@ -338,6 +365,8 @@ public final class Utils {
         PERM_GROUP_REQUEST_RES.put(CALENDAR, R.string.permgrouprequest_calendar);
         PERM_GROUP_REQUEST_RES.put(SMS, R.string.permgrouprequest_sms);
         PERM_GROUP_REQUEST_RES.put(STORAGE, R.string.permgrouprequest_storage);
+        PERM_GROUP_REQUEST_RES.put(READ_MEDIA_AURAL, R.string.permgrouprequest_read_media_aural);
+        PERM_GROUP_REQUEST_RES.put(READ_MEDIA_VISUAL, R.string.permgrouprequest_read_media_visual);
         PERM_GROUP_REQUEST_RES.put(MICROPHONE, R.string.permgrouprequest_microphone);
         PERM_GROUP_REQUEST_RES
                 .put(ACTIVITY_RECOGNITION, R.string.permgrouprequest_activityRecognition);
@@ -345,6 +374,7 @@ public final class Utils {
         PERM_GROUP_REQUEST_RES.put(CALL_LOG, R.string.permgrouprequest_calllog);
         PERM_GROUP_REQUEST_RES.put(PHONE, R.string.permgrouprequest_phone);
         PERM_GROUP_REQUEST_RES.put(SENSORS, R.string.permgrouprequest_sensors);
+        PERM_GROUP_REQUEST_RES.put(NOTIFICATIONS, R.string.permgrouprequest_notifications);
 
         PERM_GROUP_REQUEST_DETAIL_RES = new ArrayMap<>();
         PERM_GROUP_REQUEST_DETAIL_RES.put(LOCATION, R.string.permgrouprequestdetail_location);
@@ -358,6 +388,8 @@ public final class Utils {
                 .put(MICROPHONE, R.string.permgroupbackgroundrequest_microphone);
         PERM_GROUP_BACKGROUND_REQUEST_RES
                 .put(CAMERA, R.string.permgroupbackgroundrequest_camera);
+        PERM_GROUP_BACKGROUND_REQUEST_RES
+                .put(SENSORS, R.string.permgroupbackgroundrequest_sensors);
 
         PERM_GROUP_BACKGROUND_REQUEST_DETAIL_RES = new ArrayMap<>();
         PERM_GROUP_BACKGROUND_REQUEST_DETAIL_RES
@@ -366,11 +398,14 @@ public final class Utils {
                 .put(MICROPHONE, R.string.permgroupbackgroundrequestdetail_microphone);
         PERM_GROUP_BACKGROUND_REQUEST_DETAIL_RES
                 .put(CAMERA, R.string.permgroupbackgroundrequestdetail_camera);
+        PERM_GROUP_BACKGROUND_REQUEST_DETAIL_RES
+                .put(SENSORS, R.string.permgroupbackgroundrequestdetail_sensors);
 
         PERM_GROUP_UPGRADE_REQUEST_RES = new ArrayMap<>();
         PERM_GROUP_UPGRADE_REQUEST_RES.put(LOCATION, R.string.permgroupupgraderequest_location);
         PERM_GROUP_UPGRADE_REQUEST_RES.put(MICROPHONE, R.string.permgroupupgraderequest_microphone);
         PERM_GROUP_UPGRADE_REQUEST_RES.put(CAMERA, R.string.permgroupupgraderequest_camera);
+        PERM_GROUP_UPGRADE_REQUEST_RES.put(SENSORS, R.string.permgroupupgraderequest_sensors);
 
         PERM_GROUP_UPGRADE_REQUEST_DETAIL_RES = new ArrayMap<>();
         PERM_GROUP_UPGRADE_REQUEST_DETAIL_RES
@@ -379,6 +414,12 @@ public final class Utils {
                 .put(MICROPHONE, R.string.permgroupupgraderequestdetail_microphone);
         PERM_GROUP_UPGRADE_REQUEST_DETAIL_RES
                 .put(CAMERA, R.string.permgroupupgraderequestdetail_camera);
+        PERM_GROUP_UPGRADE_REQUEST_DETAIL_RES
+                .put(SENSORS,  R.string.permgroupupgraderequestdetail_sensors);
+
+        PERM_GROUP_CONTINUE_REQUEST_RES = new ArrayMap<>();
+        PERM_GROUP_CONTINUE_REQUEST_RES
+                .put(NOTIFICATIONS, R.string.permgrouprequestcontinue_notifications);
 
         PERM_SENSOR_CODES = new ArrayMap<>();
         if (SdkLevel.isAtLeastS()) {
@@ -1029,6 +1070,10 @@ public final class Utils {
                 return context.getString(R.string.permission_description_summary_nearby_devices);
             case PHONE:
                 return context.getString(R.string.permission_description_summary_phone);
+            case READ_MEDIA_AURAL:
+                return context.getString(R.string.permission_description_summary_read_media_aural);
+            case READ_MEDIA_VISUAL:
+                return context.getString(R.string.permission_description_summary_read_media_visual);
             case SENSORS:
                 return context.getString(R.string.permission_description_summary_sensors);
             case SMS:
@@ -1068,6 +1113,25 @@ public final class Utils {
     public static long getOneTimePermissionsTimeout() {
         return DeviceConfig.getLong(DeviceConfig.NAMESPACE_PERMISSIONS,
                 PROPERTY_ONE_TIME_PERMISSIONS_TIMEOUT_MILLIS, ONE_TIME_PERMISSIONS_TIMEOUT_MILLIS);
+    }
+
+    /**
+     * Returns the delay in milliseconds before revoking permissions at the end of a one-time
+     * permission session if all processes have been killed.
+     * If the session was triggered by a self-revocation, then revocation should happen
+     * immediately. For a regular one-time permission session, a grace period allows a quick
+     * app restart without losing the permission.
+     * @param isSelfRevoked If true, return the delay for a self-revocation session. Otherwise,
+     *                      return delay for a regular one-time permission session.
+     */
+    public static long getOneTimePermissionsKilledDelay(boolean isSelfRevoked) {
+        if (isSelfRevoked) {
+            // For a self-revoked session, we revoke immediately when the process dies.
+            return 0;
+        }
+        return DeviceConfig.getLong(DeviceConfig.NAMESPACE_PERMISSIONS,
+                PROPERTY_ONE_TIME_PERMISSIONS_KILLED_DELAY_MILLIS,
+                ONE_TIME_PERMISSIONS_KILLED_DELAY_MILLIS);
     }
 
     /**
@@ -1158,6 +1222,15 @@ public final class Utils {
      */
     public static int getUpgradeRequestDetail(String groupName) {
         return PERM_GROUP_UPGRADE_REQUEST_DETAIL_RES.getOrDefault(groupName, 0);
+    }
+
+    /**
+     * The resource id for the "continue allowing" message for a permission group
+     * @param groupName Permission group name
+     * @return The id or 0 if the permission group doesn't exist or have a message
+     */
+    public static int getContinueRequest(String groupName) {
+        return PERM_GROUP_CONTINUE_REQUEST_RES.getOrDefault(groupName, 0);
     }
 
     /**
@@ -1336,7 +1409,7 @@ public final class Utils {
      **/
     public static boolean shouldDisplayCardIfBlocked(@NonNull String permissionGroupName) {
         return DeviceConfig.getBoolean(
-                DeviceConfig.NAMESPACE_PRIVACY, PROPERTY_WARNING_BANNER_DISPLAY_ENABLED, false) && (
+                DeviceConfig.NAMESPACE_PRIVACY, PROPERTY_WARNING_BANNER_DISPLAY_ENABLED, true) && (
                 CAMERA.equals(permissionGroupName) || MICROPHONE.equals(permissionGroupName)
                         || LOCATION.equals(permissionGroupName));
     }

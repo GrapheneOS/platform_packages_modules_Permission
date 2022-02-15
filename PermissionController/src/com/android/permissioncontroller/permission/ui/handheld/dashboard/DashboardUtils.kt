@@ -25,6 +25,7 @@ import android.util.Pair
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.model.AppPermissionUsage.GroupUsage
+import com.android.permissioncontroller.permission.utils.StringUtils
 import java.util.Locale
 
 /** Whether to show the Permissions Hub.  */
@@ -214,14 +215,14 @@ fun getUsageDurationString(context: Context, groupUsage: GroupUsage?): String? {
 fun getTimeDiffStr(context: Context, duration: Long): String {
     val timeDiffAndUnit = calculateTimeDiffAndUnit(duration)
     return when (timeDiffAndUnit.second) {
-        SECONDS -> context.resources.getQuantityString(R.plurals.seconds,
-                timeDiffAndUnit.first.toInt(), timeDiffAndUnit.first)
-        MINUTES -> context.resources.getQuantityString(R.plurals.minutes,
-                timeDiffAndUnit.first.toInt(), timeDiffAndUnit.first)
-        HOURS -> context.resources.getQuantityString(R.plurals.hours,
-                timeDiffAndUnit.first.toInt(), timeDiffAndUnit.first)
-        else -> context.resources.getQuantityString(R.plurals.days,
-                timeDiffAndUnit.first.toInt(), timeDiffAndUnit.first)
+        SECONDS -> StringUtils.getIcuPluralsString(context,
+            R.string.seconds, timeDiffAndUnit.first.toInt())
+        MINUTES -> StringUtils.getIcuPluralsString(context,
+            R.string.minutes, timeDiffAndUnit.first.toInt())
+        HOURS -> StringUtils.getIcuPluralsString(context,
+            R.string.hours, timeDiffAndUnit.first.toInt())
+        else -> StringUtils.getIcuPluralsString(context,
+            R.string.days, timeDiffAndUnit.first.toInt())
     }
 }
 
@@ -232,14 +233,14 @@ fun getTimeDiffStr(context: Context, duration: Long): String {
 fun getDurationUsedStr(context: Context, duration: Long): String {
     val timeDiffAndUnit = calculateTimeDiffAndUnit(duration)
     return when (timeDiffAndUnit.second) {
-        SECONDS -> context.resources.getQuantityString(R.plurals.duration_used_seconds,
-                timeDiffAndUnit.first.toInt(), timeDiffAndUnit.first)
-        MINUTES -> context.resources.getQuantityString(R.plurals.duration_used_minutes,
-                timeDiffAndUnit.first.toInt(), timeDiffAndUnit.first)
-        HOURS -> context.resources.getQuantityString(R.plurals.duration_used_hours,
-                timeDiffAndUnit.first.toInt(), timeDiffAndUnit.first)
-        else -> context.resources.getQuantityString(R.plurals.duration_used_days,
-                timeDiffAndUnit.first.toInt(), timeDiffAndUnit.first)
+        SECONDS -> StringUtils.getIcuPluralsString(context,
+            R.string.duration_used_seconds, timeDiffAndUnit.first.toInt())
+        MINUTES -> StringUtils.getIcuPluralsString(context,
+            R.string.duration_used_minutes, timeDiffAndUnit.first.toInt())
+        HOURS -> StringUtils.getIcuPluralsString(context,
+            R.string.duration_used_hours, timeDiffAndUnit.first.toInt())
+        else -> StringUtils.getIcuPluralsString(context,
+            R.string.duration_used_days, timeDiffAndUnit.first.toInt())
     }
 }
 

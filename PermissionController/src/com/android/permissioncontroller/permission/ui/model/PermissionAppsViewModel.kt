@@ -35,6 +35,7 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import androidx.savedstate.SavedStateRegistryOwner
+import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.PermissionControllerStatsLog
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_APPS_FRAGMENT_VIEWED__CATEGORY__ALLOWED
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_APPS_FRAGMENT_VIEWED__CATEGORY__UNDEFINED
@@ -252,7 +253,7 @@ class PermissionAppsViewModel(
                     PermGrantState.PERMS_ASK -> Category.ASK
                 }
 
-                if (groupName == Manifest.permission_group.STORAGE &&
+                if (!SdkLevel.isAtLeastT() && groupName == Manifest.permission_group.STORAGE &&
                     packagesWithFullFileAccess.any { !it.isLegacy && it.isGranted &&
                         it.packageName to it.user == packageUserPair }) {
                     category = Category.ALLOWED

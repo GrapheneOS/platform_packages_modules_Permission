@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 The Android Open Source Project
+ * Copyright (C) 2022 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,20 +17,23 @@
 package com.android.permissioncontroller.role.model;
 
 import android.content.Context;
-import android.content.pm.PackageManager;
-import android.os.UserHandle;
 
 import androidx.annotation.NonNull;
 
+import com.android.permissioncontroller.role.utils.NotificationUtils;
+
 /**
- * Class for behavior of the Automotive Cluster role.
+ * Class for behavior of the "Computer" Companion device profile role.
  */
-public class SystemAutomotiveClusterRoleBehavior implements RoleBehavior {
+public class CompanionDeviceComputerRoleBehavior implements RoleBehavior {
 
     @Override
-    public boolean isAvailableAsUser(@NonNull Role role, @NonNull UserHandle user,
-            @NonNull Context context) {
-        // Cluster role is only available on Automotive
-        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE);
+    public void grant(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
+        NotificationUtils.grantNotificationAccessForPackage(context, packageName);
+    }
+
+    @Override
+    public void revoke(@NonNull Role role, @NonNull String packageName, @NonNull Context context) {
+        NotificationUtils.revokeNotificationAccessForPackage(context, packageName);
     }
 }

@@ -19,6 +19,7 @@ package com.android.permissioncontroller.auto
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.app.Service
 import android.car.Car
 import android.car.drivingstate.CarUxRestrictionsManager
@@ -28,6 +29,7 @@ import android.os.Bundle
 import android.os.IBinder
 import android.os.Process
 import android.os.UserHandle
+import android.permission.PermissionManager
 import android.text.BidiFormatter
 import androidx.annotation.VisibleForTesting
 import com.android.permissioncontroller.Constants
@@ -35,7 +37,9 @@ import com.android.permissioncontroller.DumpableLog
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPackageLabel
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPermGroupLabel
+import com.android.permissioncontroller.permission.utils.StringUtils
 import com.android.permissioncontroller.permission.utils.Utils
+import java.util.Random
 
 /**
  * Service that collects permissions decisions made while driving and when the vehicle is no longer
@@ -200,32 +204,66 @@ class DrivingDecisionReminderService : Service() {
             .getString(R.string.post_drive_permission_decision_reminder_title)
     }
 
-    // TODO(b/194240664) - update notification content after UX writing review
-    private fun createNotificationContent(): String {
-        val packageLabels: MutableSet<String> = mutableSetOf()
-        val permissionGroupNames: MutableSet<String> = mutableSetOf()
+    @VisibleForTesting
+    fun createNotificationContent(): String {
+        val packageLabels: MutableList<String> = mutableListOf()
+        val permissionGroupNames: MutableList<String> = mutableListOf()
         for (permissionReminder in permissionReminders) {
-            val packageLabel = BidiFormatter.getInstance().unicodeWrap(
-                getPackageLabel(application, permissionReminder.packageName,
-                    permissionReminder.user))
+            val packageLabel = getLabelForPackage(permissionReminder.packageName,
+                permissionReminder.user)
             val permissionGroupLabel = getPermGroupLabel(applicationContext,
                 permissionReminder.permissionGroup).toString()
             packageLabels.add(packageLabel)
             permissionGroupNames.add(permissionGroupLabel)
         }
-        return "You granted " + packageLabels.joinToString() +
-            " access to " + permissionGroupNames.joinToString()
+        val packageLabelsDistinct = packageLabels.distinct()
+        val permissionGroupNamesDistinct = permissionGroupNames.distinct()
+        return if (packageLabelsDistinct.size > 1) {
+            StringUtils.getIcuPluralsString(applicationContext,
+                R.string.post_drive_permission_decision_reminder_summary_multi_apps,
+                (packageLabels.size - 1), packageLabelsDistinct[0])
+        } else if (permissionGroupNamesDistinct.size == 2) {
+            getString(
+                R.string.post_drive_permission_decision_reminder_summary_1_app_2_permissions,
+                packageLabelsDistinct[0], permissionGroupNamesDistinct[0],
+                permissionGroupNamesDistinct[1])
+        } else if (permissionGroupNamesDistinct.size > 2) {
+            getString(
+                R.string.post_drive_permission_decision_reminder_summary_1_app_multi_permission,
+                permissionGroupNamesDistinct.size, packageLabelsDistinct[0])
+        } else {
+            getString(
+                R.string.post_drive_permission_decision_reminder_summary_1_app_1_permission,
+                packageLabelsDistinct[0], permissionGroupNamesDistinct[0])
+        }
+    }
+
+    @VisibleForTesting
+    fun getLabelForPackage(packageName: String, user: UserHandle): String {
+        return BidiFormatter.getInstance().unicodeWrap(
+            getPackageLabel(application, packageName, user))
     }
 
     private fun createNotification(title: String, body: String): Notification {
-        // TODO(b/194240664) - intent out to review permission decisions screen on click. Be sure
-        // to include sessionId
+        var sessionId = Constants.INVALID_SESSION_ID
+        while (sessionId == Constants.INVALID_SESSION_ID) {
+            sessionId = Random().nextLong()
+        }
+        val clickIntent = Intent(PermissionManager.ACTION_REVIEW_PERMISSION_DECISIONS).apply {
+            putExtra(Constants.EXTRA_SESSION_ID, sessionId)
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        }
+        val pendingIntent = PendingIntent.getActivity(this, 0, clickIntent,
+            PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_UPDATE_CURRENT or
+            PendingIntent.FLAG_IMMUTABLE)
+
         val b = Notification.Builder(this, Constants.PERMISSION_REMINDER_CHANNEL_ID)
             .setContentTitle(title)
             .setContentText(body)
             .setSmallIcon(R.drawable.ic_settings_24dp)
             .setColor(getColor(android.R.color.system_notification_accent_color))
             .setAutoCancel(true)
+            .setContentIntent(pendingIntent)
         Utils.getSettingsLabelForNotifications(applicationContext.packageManager)?.let { label ->
             val extras = Bundle()
             extras.putString(Notification.EXTRA_SUBSTITUTE_APP_NAME, label.toString())

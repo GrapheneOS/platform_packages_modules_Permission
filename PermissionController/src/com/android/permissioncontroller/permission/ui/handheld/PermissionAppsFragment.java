@@ -22,7 +22,7 @@ import static com.android.permissioncontroller.permission.ui.Category.ALLOWED_FO
 import static com.android.permissioncontroller.permission.ui.Category.ASK;
 import static com.android.permissioncontroller.permission.ui.Category.DENIED;
 import static com.android.permissioncontroller.permission.ui.handheld.UtilsKt.pressBack;
-import static com.android.permissioncontroller.permission.ui.handheld.dashboard.UtilsKt.shouldShowPermissionsDashboard;
+import static com.android.permissioncontroller.permission.ui.handheld.dashboard.DashboardUtilsKt.shouldShowPermissionsDashboard;
 
 import android.Manifest;
 import android.app.ActionBar;
@@ -35,6 +35,9 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.UserHandle;
 import android.provider.Settings;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.style.ClickableSpan;
 import android.util.ArrayMap;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -46,6 +49,7 @@ import androidx.annotation.RequiresApi;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
+import androidx.preference.PreferenceScreen;
 
 import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
@@ -59,6 +63,7 @@ import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.settingslib.HelpUtils;
 import com.android.settingslib.utils.applications.AppUtils;
+import com.android.settingslib.widget.FooterPreference;
 
 import java.text.Collator;
 import java.util.ArrayList;
@@ -85,6 +90,8 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
     private static final String STORAGE_ALLOWED_FULL = "allowed_storage_full";
     private static final String STORAGE_ALLOWED_SCOPED = "allowed_storage_scoped";
     private static final String BLOCKED_SENSOR_PREF_KEY = "sensor_card";
+    private static final String STORAGE_FOOTER_CATEGORY_KEY = "storage_footer_category";
+    private static final String STORAGE_FOOTER_PREFERENCE_KEY = "storage_footer_preference";
     private static final int SHOW_LOAD_DELAY_MS = 200;
 
     private static final int MENU_PERMISSION_USAGE = MENU_HIDE_SYSTEM + 1;
@@ -279,6 +286,41 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
         return sensorCard;
     }
 
+    private SpannableString getLinkToAllFilesAccess(Context context) {
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View widget) {
+                context.startActivity(
+                        new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION));
+            }
+        };
+        SpannableString spannableString =
+                new SpannableString(getString(R.string.storage_footer_hyperlink_text));
+        spannableString.setSpan(clickableSpan, 0, spannableString.length(), 0);
+        return spannableString;
+    }
+
+    private void addStorageFooterSeeAllFilesAccess() {
+        PreferenceScreen screen = getPreferenceScreen();
+        Context context = screen.getPreferenceManager().getContext();
+        PreferenceCategory preferenceCategory = findPreference(STORAGE_FOOTER_CATEGORY_KEY);
+        Preference existingPreference = findPreference(STORAGE_FOOTER_PREFERENCE_KEY);
+
+        if (preferenceCategory == null || existingPreference != null) {
+            return;
+        }
+
+        FooterPreference preference = new FooterPreference(context);
+        preference.setKey(STORAGE_FOOTER_PREFERENCE_KEY);
+        preference.setIcon(Utils.applyTint(getActivity(), R.drawable.ic_info_outline,
+                android.R.attr.colorControlNormal));
+        preference.setSummary(new SpannableStringBuilder(
+                getString(R.string.storage_footer_warning_text))
+                .append("\n\n")
+                .append(getLinkToAllFilesAccess(context)));
+        preferenceCategory.addPreference(preference);
+    }
+
     @RequiresApi(Build.VERSION_CODES.S)
     private void removeSensorCard() {
         CardViewPreference sensorCard = findPreference(BLOCKED_SENSOR_PREF_KEY);
@@ -310,9 +352,10 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
     }
 
     private void onPackagesLoaded(Map<Category, List<Pair<String, UserHandle>>> categories) {
-        boolean isStorage = mPermGroupName.equals(Manifest.permission_group.STORAGE);
+        boolean isStorageAndLessThanT = !SdkLevel.isAtLeastT()
+                && mPermGroupName.equals(Manifest.permission_group.STORAGE);
         if (getPreferenceScreen() == null) {
-            if (isStorage) {
+            if (isStorageAndLessThanT) {
                 addPreferencesFromResource(R.xml.allowed_denied_storage);
             } else {
                 addPreferencesFromResource(R.xml.allowed_denied);
@@ -347,7 +390,7 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
         long sessionId = getArguments().getLong(EXTRA_SESSION_ID, INVALID_SESSION_ID);
 
         Boolean showAlways = mViewModel.getShowAllowAlwaysStringLiveData().getValue();
-        if (!isStorage) {
+        if (!isStorageAndLessThanT) {
             if (showAlways != null && showAlways) {
                 findPreference(ALLOWED.getCategoryName()).setTitle(R.string.allowed_always_header);
             } else {
@@ -366,7 +409,7 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
 
             // If this category is empty, and this isn't the "allowed" category of the storage
             // permission, set up the empty preference.
-            if (packages.size() == 0 && (!isStorage || !grantCategory.equals(ALLOWED))) {
+            if (packages.size() == 0 && (!isStorageAndLessThanT || !grantCategory.equals(ALLOWED))) {
                 Preference empty = new Preference(context);
                 empty.setSelectable(false);
                 empty.setKey(category.getKey() + KEY_EMPTY);
@@ -398,7 +441,7 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
                         .getPermissionLastAccessSummaryTimestamp(
                                 lastAccessTime, context, mPermGroupName);
 
-                if (isStorage && grantCategory.equals(ALLOWED)) {
+                if (isStorageAndLessThanT && grantCategory.equals(ALLOWED)) {
                     category = mViewModel.packageHasFullStorage(packageName, user)
                             ? findPreference(STORAGE_ALLOWED_FULL)
                             : findPreference(STORAGE_ALLOWED_SCOPED);
@@ -437,7 +480,7 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
                 }
             }
 
-            if (isStorage && grantCategory.equals(ALLOWED)) {
+            if (isStorageAndLessThanT && grantCategory.equals(ALLOWED)) {
                 PreferenceCategory full = findPreference(STORAGE_ALLOWED_FULL);
                 PreferenceCategory scoped = findPreference(STORAGE_ALLOWED_SCOPED);
                 if (full.getPreferenceCount() == 0) {
@@ -460,6 +503,10 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
             } else {
                 KotlinUtils.INSTANCE.sortPreferenceGroup(category, this::comparePreference, false);
             }
+        }
+
+        if (SdkLevel.isAtLeastT() && Manifest.permission_group.STORAGE.equals(mPermGroupName)) {
+            addStorageFooterSeeAllFilesAccess();
         }
 
         mViewModel.setCreationLogged(true);

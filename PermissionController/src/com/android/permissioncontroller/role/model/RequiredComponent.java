@@ -23,6 +23,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Process;
 import android.os.UserHandle;
 import android.util.ArraySet;
@@ -68,12 +69,21 @@ public abstract class RequiredComponent {
      */
     private final int mQueryFlags;
 
+    /**
+     * The meta data required on a component for match to succeed.
+     *
+     * @see android.content.pm.PackageItemInfo#metaData
+     */
+    @NonNull
+    private final List<RequiredMetaData> mMetaData;
+
     public RequiredComponent(@NonNull IntentFilterData intentFilterData, int minTargetSdkVersion,
-            @Nullable String permission, int queryFlags) {
+            @Nullable String permission, int queryFlags, @NonNull List<RequiredMetaData> metaData) {
         mIntentFilterData = intentFilterData;
         mMinTargetSdkVersion = minTargetSdkVersion;
         mPermission = permission;
         mQueryFlags = queryFlags;
+        mMetaData = metaData;
     }
 
     @NonNull
@@ -112,6 +122,11 @@ public abstract class RequiredComponent {
     @Nullable
     public String getPermission() {
         return mPermission;
+    }
+
+    @NonNull
+    public List<RequiredMetaData> getMetaData() {
+        return mMetaData;
     }
 
     /**
@@ -154,9 +169,13 @@ public abstract class RequiredComponent {
         if (packageName != null) {
             intent.setPackage(packageName);
         }
-        List<ResolveInfo> resolveInfos = queryIntentComponentsAsUser(intent, mQueryFlags
-                | PackageManager.MATCH_DIRECT_BOOT_AWARE | PackageManager.MATCH_DIRECT_BOOT_UNAWARE,
-                user, context);
+        int flags = mQueryFlags | PackageManager.MATCH_DIRECT_BOOT_AWARE
+                | PackageManager.MATCH_DIRECT_BOOT_UNAWARE;
+        boolean hasMetaData = !mMetaData.isEmpty();
+        if (hasMetaData) {
+            flags |= PackageManager.GET_META_DATA;
+        }
+        List<ResolveInfo> resolveInfos = queryIntentComponentsAsUser(intent, flags, user, context);
 
         ArraySet<String> componentPackageNames = new ArraySet<>();
         List<ComponentName> componentNames = new ArrayList<>();
@@ -167,6 +186,26 @@ public abstract class RequiredComponent {
             if (mPermission != null) {
                 String componentPermission = getComponentPermission(resolveInfo);
                 if (!Objects.equals(componentPermission, mPermission)) {
+                    continue;
+                }
+            }
+
+            if (hasMetaData) {
+                Bundle componentMetaData = getComponentMetaData(resolveInfo);
+                if (componentMetaData == null) {
+                    componentMetaData = Bundle.EMPTY;
+                }
+                boolean isMetaDataQualified = true;
+                int metaDataSize = mMetaData.size();
+                for (int metaDataIndex = 0; metaDataIndex < metaDataSize; metaDataIndex++) {
+                    RequiredMetaData metaData = mMetaData.get(metaDataIndex);
+
+                    if (!metaData.isQualified(componentMetaData)) {
+                        isMetaDataQualified = false;
+                        break;
+                    }
+                }
+                if (!isMetaDataQualified) {
                     continue;
                 }
             }
@@ -218,6 +257,16 @@ public abstract class RequiredComponent {
     @Nullable
     protected abstract String getComponentPermission(@NonNull ResolveInfo resolveInfo);
 
+    /**
+     * Get the meta data associated with a component.
+     *
+     * @param resolveInfo the {@code ResolveInfo} of the component
+     *
+     * @return the meta data associated with a component
+     */
+    @Nullable
+    protected abstract Bundle getComponentMetaData(@NonNull ResolveInfo resolveInfo);
+
     @Override
     public String toString() {
         return "RequiredComponent{"
@@ -225,6 +274,7 @@ public abstract class RequiredComponent {
                 + ", mMinTargetSdkVersion=" + mMinTargetSdkVersion
                 + ", mPermission='" + mPermission + '\''
                 + ", mQueryFlags=" + mQueryFlags
+                + ", mMetaData=" + mMetaData
                 + '}';
     }
 
@@ -240,11 +290,13 @@ public abstract class RequiredComponent {
         return Objects.equals(mIntentFilterData, that.mIntentFilterData)
                 && Objects.equals(mMinTargetSdkVersion, that.mMinTargetSdkVersion)
                 && Objects.equals(mPermission, that.mPermission)
-                && mQueryFlags == that.mQueryFlags;
+                && mQueryFlags == that.mQueryFlags
+                && Objects.equals(mMetaData, that.mMetaData);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mIntentFilterData, mMinTargetSdkVersion, mPermission, mQueryFlags);
+        return Objects.hash(mIntentFilterData, mMinTargetSdkVersion, mPermission, mQueryFlags,
+                mMetaData);
     }
 }

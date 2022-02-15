@@ -1,0 +1,41 @@
+/*
+ * Copyright (C) 2021 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.android.permissioncontroller.permission.data
+
+import androidx.annotation.VisibleForTesting
+import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsStorage
+import kotlinx.coroutines.Job
+
+/** Gets all recent permission decisions made by the user. */
+class RecentPermissionDecisionsLiveData(
+    @get:VisibleForTesting
+    val recentDecisionsStorage: RecentPermissionDecisionsStorage =
+        RecentPermissionDecisionsStorage.getInstance()
+) : SmartAsyncMediatorLiveData<List<PermissionDecision>>() {
+
+    override suspend fun loadDataAndPostValue(job: Job) {
+        if (job.isCancelled) {
+            return
+        }
+
+        // no need to subscribe to decision changes, since those will also be bubbled up through
+        // package info changes
+        recentDecisionsStorage.loadPermissionDecisions().also {
+            postValue(it)
+        }
+    }
+}

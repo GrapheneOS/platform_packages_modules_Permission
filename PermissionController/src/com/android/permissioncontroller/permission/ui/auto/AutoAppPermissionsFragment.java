@@ -23,7 +23,7 @@ import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_
 import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSIONS_FRAGMENT_VIEWED__CATEGORY__ALLOWED_FOREGROUND;
 import static com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSIONS_FRAGMENT_VIEWED__CATEGORY__DENIED;
 import static com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_CALLER_NAME;
-import static com.android.permissioncontroller.permission.ui.handheld.dashboard.UtilsKt.is7DayToggleEnabled;
+import static com.android.permissioncontroller.permission.ui.handheld.dashboard.DashboardUtilsKt.is7DayToggleEnabled;
 
 import static java.util.concurrent.TimeUnit.DAYS;
 
@@ -56,6 +56,7 @@ import com.android.permissioncontroller.permission.ui.Category;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModel;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModelFactory;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
+import com.android.permissioncontroller.permission.utils.StringUtils;
 
 import java.text.Collator;
 import java.time.Instant;
@@ -111,6 +112,7 @@ public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment implem
         super.onCreate(savedInstanceState);
         setLoading(true);
 
+        mIsFirstLoad = true;
         mPackageName = getArguments().getString(Intent.EXTRA_PACKAGE_NAME);
         mUser = getArguments().getParcelable(Intent.EXTRA_USER);
         mIsSystemPermsScreen = getArguments().getBoolean(IS_SYSTEM_PERMS_SCREEN, true);
@@ -319,9 +321,8 @@ public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment implem
                     .commit();
             return true;
         });
-        extraPerms.setSummary(getResources().getQuantityString(
-                R.plurals.additional_permissions_more, numExtraPerms,
-                numExtraPerms));
+        extraPerms.setSummary(StringUtils.getIcuPluralsString(getContext(),
+                R.string.additional_permissions_more, numExtraPerms));
         category.addPreference(extraPerms);
     }
 

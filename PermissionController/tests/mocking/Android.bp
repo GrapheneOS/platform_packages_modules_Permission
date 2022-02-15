@@ -34,6 +34,7 @@ android_test {
 
     resource_dirs: [
         "main_res",
+        "test_res",
     ],
 
     srcs: [

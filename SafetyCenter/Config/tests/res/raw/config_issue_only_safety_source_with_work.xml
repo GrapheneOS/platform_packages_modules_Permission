@@ -1,0 +1,13 @@
+<safety-center-config>
+    <safety-sources-config>
+        <safety-sources-group
+            id="id">
+            <safety-source
+                type="3"
+                id="id"
+                packageName="package"
+                profile="2"
+                titleForWork="@string/reference"/>
+        </safety-sources-group>
+    </safety-sources-config>
+</safety-center-config>

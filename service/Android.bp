@@ -104,8 +104,11 @@ java_sdk_library {
         "kotlin-stdlib",
         "modules-utils-backgroundthread",
         "modules-utils-os",
+        "safety-center-config",
+        "safety-center-resources-lib",
         "service-permission-shared",
     ],
+    exclude_kotlinc_generated_files: true,
     jarjar_rules: ":permission-jarjar-rules",
     kotlincflags: [
         "-Xjvm-default=all",

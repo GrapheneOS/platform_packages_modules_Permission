@@ -1,0 +1,12 @@
+<safety-center-config>
+    <safety-sources-config>
+        <safety-sources-group
+            id="id">
+            <safety-source
+                type="3"
+                id="id"
+                packageName="package"
+                profile="9"/>
+        </safety-sources-group>
+    </safety-sources-config>
+</safety-center-config>

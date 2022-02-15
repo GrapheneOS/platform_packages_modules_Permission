@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (C) 2021 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<!-- This file contains comments that define constraints that cannot be covered by the XSD language -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            version="1.0">
+
+    <xsd:element name="safety-center-config" type="safety-center-config">
+        <xsd:annotation name="nonnull"/>
+    </xsd:element>
+
+    <xsd:complexType name="safety-center-config">
+        <xsd:sequence>
+            <xsd:element name="safety-sources-config" type="safety-sources-config">
+                <xsd:annotation name="nonnull"/>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="safety-sources-config">
+        <xsd:sequence>
+            <xsd:element
+                name="safety-sources-group" type="safety-sources-group"
+                minOccurs="1" maxOccurs="unbounded">
+                <xsd:annotation name="nonnull"/>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="safety-sources-group">
+        <xsd:sequence>
+            <xsd:element name="safety-source" type="safety-source"
+                         minOccurs="1" maxOccurs="unbounded">
+                <xsd:annotation name="nonnull"/>
+            </xsd:element>
+        </xsd:sequence>
+        <!-- id must be unique among safety sources groups -->
+        <xsd:attribute name="id" type="xsd:string" use="required">
+            <xsd:annotation name="nonnull"/>
+        </xsd:attribute>
+        <!-- title is required unless the group contains issue only sources -->
+        <xsd:attribute name="title" type="reference">
+            <xsd:annotation name="nullable"/>
+        </xsd:attribute>
+        <xsd:attribute name="summary" type="reference">
+            <xsd:annotation name="nullable"/>
+        </xsd:attribute>
+        <xsd:attribute name="statelessIconType" type="statelessIconType"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="safety-source">
+        <xsd:attribute name="type" type="sourceType" use="required"/>
+        <!-- id must be unique among safety sources -->
+        <xsd:attribute name="id" type="xsd:string" use="required">
+            <xsd:annotation name="nonnull"/>
+        </xsd:attribute>
+        <!-- packageName is required for a dynamic safety source -->
+        <!-- packageName is prohibited for a static safety source -->
+        <!-- packageName is required for an issue only safety source -->
+        <xsd:attribute name="packageName" type="xsd:string">
+            <xsd:annotation name="nullable"/>
+        </xsd:attribute>
+        <!-- title is required for a dynamic safety source if initialDisplayState is not set to hidden -->
+        <!-- title is prohibited for a dynamic safety source if initialDisplayState is set to hidden -->
+        <!-- title is required for a static safety source -->
+        <!-- title is prohibited for an issue only safety source -->
+        <xsd:attribute name="title" type="reference">
+            <xsd:annotation name="nullable"/>
+        </xsd:attribute>
+        <!-- titleForWork is required for a dynamic safety source if profile is set to all_profiles and initialDisplayState is not set to hidden -->
+        <!-- titleForWork is prohibited for a dynamic safety source if profile is set to primary_profile_only or initialDisplayState is set to hidden -->
+        <!-- titleForWork is required for a static safety source if profile is set to all_profiles -->
+        <!-- titleForWork is prohibited for a static safety source if profile is set to primary_profile_only -->
+        <!-- titleForWork is prohibited for an issue only safety source -->
+        <xsd:attribute name="titleForWork" type="reference">
+            <xsd:annotation name="nullable"/>
+        </xsd:attribute>
+        <!-- summary is required for a dynamic safety source if initialDisplayState is not set to hidden -->
+        <!-- summary is prohibited for a dynamic safety source if initialDisplayState is set to hidden -->
+        <!-- summary is required for a static safety source -->
+        <!-- summary is prohibited for an issue only safety source -->
+        <xsd:attribute name="summary" type="reference">
+            <xsd:annotation name="nullable"/>
+        </xsd:attribute>
+        <!-- intentAction is required for a dynamic safety source if initialDisplayState is set to enabled -->
+        <!-- intentAction is optional for a dynamic safety source if initialDisplayState is set to disabled -->
+        <!-- intentAction is prohibited for a dynamic safety source if initialDisplayState is set to hidden -->
+        <!-- intentAction is required for a static safety source -->
+        <!-- intentAction is prohibited for an issue only safety source -->
+        <xsd:attribute name="intentAction" type="xsd:string">
+            <xsd:annotation name="nullable"/>
+        </xsd:attribute>
+        <!-- profile is required for a dynamic safety source -->
+        <!-- profile is required for a static safety source -->
+        <!-- profile is required for an issue only safety source -->
+        <xsd:attribute name="profile" type="profile" use="required"/>
+        <!-- initialDisplayState is prohibited for a static safety source -->
+        <!-- initialDisplayState is prohibited for an issue only safety source -->
+        <xsd:attribute name="initialDisplayState" type="initialDisplayState"/>
+        <!-- maxSeverityLevel defaults to 2147483647 -->
+        <!-- maxSeverityLevel must be strictly greater than 0 -->
+        <!-- maxSeverityLevel is prohibited for a static safety source -->
+        <xsd:attribute name="maxSeverityLevel" type="xsd:int"/>
+        <!-- searchTerms is prohibited for an issue only safety source -->
+        <xsd:attribute name="searchTerms" type="reference">
+            <xsd:annotation name="nullable"/>
+        </xsd:attribute>
+        <!-- broadcastReceiverClassName is prohibited for a static safety source -->
+        <xsd:attribute name="broadcastReceiverClassName" type="xsd:string">
+            <xsd:annotation name="nullable"/>
+        </xsd:attribute>
+        <!-- disallowLogging defaults to false -->
+        <!-- disallowLogging is prohibited for a static safety source -->
+        <xsd:attribute name="disallowLogging" type="xsd:boolean"/>
+        <!-- allowRefreshOnPageOpen defaults to false -->
+        <!-- allowRefreshOnPageOpen is prohibited for a static safety source -->
+        <xsd:attribute name="allowRefreshOnPageOpen" type="xsd:boolean"/>
+    </xsd:complexType>
+
+    <!--
+      ~ Possible stateless icon values are:
+      ~ 0: none (default)
+      ~ 1: privacy icon
+      -->
+    <xsd:simpleType name="statelessIconType">
+        <xsd:restriction base="xsd:int">
+            <xsd:minInclusive value="0"/>
+            <xsd:maxInclusive value="1"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--
+      ~ Possible safety source types are:
+      ~ 1: static safety source
+      ~ 2: dynamic safety source
+      ~ 3: issue_only safety source
+      -->
+    <xsd:simpleType name="sourceType">
+        <xsd:restriction base="xsd:int">
+            <xsd:minInclusive value="1"/>
+            <xsd:maxInclusive value="3"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--
+      ~ Possible profile values are:
+      ~ 1: primary_profile_only
+      ~ 2: all_profiles
+      -->
+    <xsd:simpleType name="profile">
+        <xsd:restriction base="xsd:int">
+            <xsd:minInclusive value="1"/>
+            <xsd:maxInclusive value="2"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--
+      ~ Possible profile values are:
+      ~ 0: enabled (default)
+      ~ 1: disabled
+      ~ 2: hidden
+      -->
+    <xsd:simpleType name="initialDisplayState">
+        <xsd:restriction base="xsd:int">
+            <xsd:minInclusive value="0"/>
+            <xsd:maxInclusive value="2"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!-- NOTE: string references will be ignored for any attribute not explicitly marked as reference in this schema -->
+    <xsd:simpleType name="reference">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="@string/.+"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

@@ -16,6 +16,8 @@
 
 package android.safetycenter;
 
+import android.safetycenter.IOnSafetyCenterDataChangedListener;
+import android.safetycenter.SafetyCenterData;
 import android.safetycenter.SafetySourceData;
 
 /**
@@ -32,13 +34,51 @@ interface ISafetyCenterManager {
     /**
      * Called by a safety source to send a SafetySourceData update to the safety center.
      */
-    void sendSafetyCenterUpdate(in String packageName, int userId,
-            in SafetySourceData safetySourceData);
+    void sendSafetyCenterUpdate(
+            in SafetySourceData safetySourceData,
+            String packageName,
+            int userId);
 
     /**
      * Returns the last SafetySourceData update received by the safety center for the given safety
      * source id.
      */
-    SafetySourceData getLastSafetyCenterUpdate(in String packageName, int userId,
-            in String safetySourceId);
+    SafetySourceData getLastSafetyCenterUpdate(
+            String safetySourceId,
+            String packageName,
+            int userId);
+
+    /**
+     * Returns whether the SafetyCenter page is enabled.
+     */
+    boolean isSafetyCenterEnabled();
+
+   /**
+     * Requests safety sources to send a SafetySourceData update to Safety Center.
+    */
+    void refreshSafetySources(int refreshReason, int userId);
+
+    /**
+     * Clears all SafetySourceData updates sent to the safety center using sendSafetyCenterUpdate,
+     * for all packages and users.
+     */
+    void clearSafetyCenterData();
+
+    /**
+     * Returns the current SafetyCenterData, assembled from the SafetySourceData from all sources.
+     */
+    SafetyCenterData getSafetyCenterData(int userId);
+
+    void addOnSafetyCenterDataChangedListener(
+            IOnSafetyCenterDataChangedListener listener,
+            int userId);
+
+    void removeOnSafetyCenterDataChangedListener(
+            IOnSafetyCenterDataChangedListener listener,
+            int userId);
+
+    /**
+     * Dismisses the issue corresponding to the given issue ID.
+     */
+    void dismissSafetyIssue(String issueId, int userId);
 }

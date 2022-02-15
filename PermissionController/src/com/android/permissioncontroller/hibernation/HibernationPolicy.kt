@@ -16,6 +16,7 @@
 
 package com.android.permissioncontroller.hibernation
 
+import android.annotation.SuppressLint
 import android.Manifest
 import android.Manifest.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION
 import android.accessibilityservice.AccessibilityService
@@ -82,6 +83,7 @@ import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.data.getUnusedPackages
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 import com.android.permissioncontroller.permission.service.revokeAppPermissions
+import com.android.permissioncontroller.permission.utils.StringUtils
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.forEachInParallel
 import kotlinx.coroutines.Dispatchers.Main
@@ -157,10 +159,9 @@ class HibernationOnBootReceiver : BroadcastReceiver() {
         // Write first boot time if first boot
         context.firstBootTime
 
-        val userManager = context.getSystemService(UserManager::class.java)!!
         // If this user is a profile, then its hibernation/auto-revoke will be handled by the
         // primary user
-        if (userManager.isProfile) {
+        if (isProfile(context)) {
             if (DEBUG_HIBERNATION_POLICY) {
                 DumpableLog.i(LOG_TAG, "user ${Process.myUserHandle().identifier} is a profile." +
                         " Not running hibernation job.")
@@ -187,6 +188,14 @@ class HibernationOnBootReceiver : BroadcastReceiver() {
                     "Could not schedule ${HibernationJobService::class.java.simpleName}: $status")
             }
         }
+    }
+
+    // UserManager#isProfile was already a systemAPI, linter started complaining after it
+    // was exposed as a public API thinking it was a newly exposed API.
+    @SuppressLint("NewApi")
+    private fun isProfile(context: Context): Boolean {
+        val userManager = context.getSystemService(UserManager::class.java)!!
+        return userManager.isProfile
     }
 
     /**
@@ -595,8 +604,8 @@ class HibernationJobService : JobService() {
         var notifTitle: String
         var notifContent: String
         if (isHibernationEnabled()) {
-            notifTitle = getResources().getQuantityString(
-                R.plurals.unused_apps_notification_title, numUnused, numUnused)
+            notifTitle = StringUtils.getIcuPluralsString(this,
+                R.string.unused_apps_notification_title, numUnused)
             notifContent = getString(R.string.unused_apps_notification_content)
         } else {
             notifTitle = getString(R.string.auto_revoke_permission_notification_title)

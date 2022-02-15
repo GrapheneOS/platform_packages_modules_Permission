@@ -154,6 +154,14 @@ public final class RoleManager {
             "android.app.role.SYSTEM_ACTIVITY_RECOGNIZER";
 
     /**
+     * The name of the device manager role.
+     *
+     * @hide
+     */
+    @SystemApi
+    public static final String ROLE_DEVICE_MANAGER = "android.app.role.DEVICE_MANAGER";
+
+    /**
      * @hide
      */
     @IntDef(flag = true, value = { MANAGE_HOLDERS_FLAG_DONT_KILL_APP })
