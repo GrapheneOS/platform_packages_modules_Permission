@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.safetycenter.config;
+package android.safetycenter.config;
 
 import android.annotation.IdRes;
 import android.annotation.NonNull;
