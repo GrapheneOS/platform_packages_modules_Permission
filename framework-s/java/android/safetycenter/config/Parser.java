@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-package com.android.safetycenter.config;
+package android.safetycenter.config;
+
+import static android.os.Build.VERSION_CODES.TIRAMISU;
 
 import static org.xmlpull.v1.XmlPullParser.END_DOCUMENT;
 import static org.xmlpull.v1.XmlPullParser.END_TAG;
@@ -27,20 +29,27 @@ import static java.util.Objects.requireNonNull;
 
 import android.annotation.IdRes;
 import android.annotation.NonNull;
-import android.annotation.Nullable;
+import android.annotation.SystemApi;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
+import android.safetycenter.config.SafetySource.InitialDisplayState;
+import android.safetycenter.config.SafetySource.Profile;
+import android.safetycenter.config.SafetySource.SafetySourceType;
+import android.safetycenter.config.SafetySourcesGroup.StatelessIconType;
 
-import com.android.safetycenter.config.SafetySource.InitialDisplayState;
-import com.android.safetycenter.config.SafetySource.Profile;
-import com.android.safetycenter.config.SafetySource.SafetySourceType;
-import com.android.safetycenter.config.SafetySourcesGroup.StatelessIconType;
+import androidx.annotation.RequiresApi;
 
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 
-/** Utility class to parse and validate a Safety Center Config */
+/**
+ * Utility class to parse and validate a Safety Center Config
+ *
+ * @hide
+ */
+@SystemApi
+@RequiresApi(TIRAMISU)
 public final class Parser {
     private Parser() {
     }
@@ -97,9 +106,12 @@ public final class Parser {
     /**
      * Parses and validates the given XML resource into a {@link SafetyCenterConfig} object.
      *
+     * <p>It throws a {@link ParseException} if the given XML resource does not comply with the
+     * safety_center_config.xsd schema.
+     *
      * @param parser the XML resource parsing interface
      */
-    @Nullable
+    @NonNull
     public static SafetyCenterConfig parseXmlResource(@NonNull XmlResourceParser parser)
             throws ParseException {
         requireNonNull(parser);

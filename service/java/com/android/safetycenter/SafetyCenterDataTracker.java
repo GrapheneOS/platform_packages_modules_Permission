@@ -39,13 +39,12 @@ import android.safetycenter.SafetyCenterStatus;
 import android.safetycenter.SafetySourceData;
 import android.safetycenter.SafetySourceIssue;
 import android.safetycenter.SafetySourceStatus;
+import android.safetycenter.config.SafetyCenterConfig;
+import android.safetycenter.config.SafetySource;
+import android.safetycenter.config.SafetySourcesGroup;
 import android.util.Log;
 
 import androidx.annotation.RequiresApi;
-
-import com.android.safetycenter.config.SafetyCenterConfig;
-import com.android.safetycenter.config.SafetySource;
-import com.android.safetycenter.config.SafetySourcesGroup;
 
 import java.util.ArrayList;
 import java.util.HashMap;

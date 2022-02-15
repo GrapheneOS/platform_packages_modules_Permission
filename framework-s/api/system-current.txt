@@ -360,3 +360,103 @@ package android.safetycenter {
 
 }
 
+package android.safetycenter.config {
+
+  public final class Parser {
+    method @NonNull public static android.safetycenter.config.SafetyCenterConfig parseXmlResource(@NonNull android.content.res.XmlResourceParser) throws android.safetycenter.config.Parser.ParseException;
+  }
+
+  public static final class Parser.ParseException extends java.lang.Exception {
+    ctor public Parser.ParseException(@NonNull String);
+    ctor public Parser.ParseException(@NonNull String, @NonNull Throwable);
+  }
+
+  public final class SafetyCenterConfig implements android.os.Parcelable {
+    method public int describeContents();
+    method @NonNull public java.util.List<android.safetycenter.config.SafetySourcesGroup> getSafetySourcesGroups();
+    method public void writeToParcel(@NonNull android.os.Parcel, int);
+    field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.config.SafetyCenterConfig> CREATOR;
+  }
+
+  public static final class SafetyCenterConfig.Builder {
+    ctor public SafetyCenterConfig.Builder();
+    method @NonNull public android.safetycenter.config.SafetyCenterConfig.Builder addSafetySourcesGroup(@NonNull android.safetycenter.config.SafetySourcesGroup);
+    method @NonNull public android.safetycenter.config.SafetyCenterConfig build();
+  }
+
+  public final class SafetySource implements android.os.Parcelable {
+    method public int describeContents();
+    method @Nullable public String getBroadcastReceiverClassName();
+    method @NonNull public String getId();
+    method public int getInitialDisplayState();
+    method @NonNull public String getIntentAction();
+    method public int getMaxSeverityLevel();
+    method @NonNull public String getPackageName();
+    method public int getProfile();
+    method @IdRes public int getSearchTermsResId();
+    method @IdRes public int getSummaryResId();
+    method @IdRes public int getTitleForWorkResId();
+    method @IdRes public int getTitleResId();
+    method public int getType();
+    method public boolean isAllowLogging();
+    method public boolean isAllowRefreshOnPageOpen();
+    method public void writeToParcel(@NonNull android.os.Parcel, int);
+    field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.config.SafetySource> CREATOR;
+    field public static final int INITIAL_DISPLAY_STATE_DISABLED = 1; // 0x1
+    field public static final int INITIAL_DISPLAY_STATE_ENABLED = 0; // 0x0
+    field public static final int INITIAL_DISPLAY_STATE_HIDDEN = 2; // 0x2
+    field public static final int PROFILE_ALL = 2; // 0x2
+    field public static final int PROFILE_NONE = 0; // 0x0
+    field public static final int PROFILE_PRIMARY = 1; // 0x1
+    field public static final int SAFETY_SOURCE_TYPE_DYNAMIC = 2; // 0x2
+    field public static final int SAFETY_SOURCE_TYPE_ISSUE_ONLY = 3; // 0x3
+    field public static final int SAFETY_SOURCE_TYPE_STATIC = 1; // 0x1
+  }
+
+  public static final class SafetySource.Builder {
+    ctor public SafetySource.Builder(int);
+    method @NonNull public android.safetycenter.config.SafetySource build();
+    method @NonNull public android.safetycenter.config.SafetySource.Builder setAllowLogging(boolean);
+    method @NonNull public android.safetycenter.config.SafetySource.Builder setAllowRefreshOnPageOpen(boolean);
+    method @NonNull public android.safetycenter.config.SafetySource.Builder setBroadcastReceiverClassName(@Nullable String);
+    method @NonNull public android.safetycenter.config.SafetySource.Builder setId(@Nullable String);
+    method @NonNull public android.safetycenter.config.SafetySource.Builder setInitialDisplayState(int);
+    method @NonNull public android.safetycenter.config.SafetySource.Builder setIntentAction(@Nullable String);
+    method @NonNull public android.safetycenter.config.SafetySource.Builder setMaxSeverityLevel(int);
+    method @NonNull public android.safetycenter.config.SafetySource.Builder setPackageName(@Nullable String);
+    method @NonNull public android.safetycenter.config.SafetySource.Builder setProfile(int);
+    method @NonNull public android.safetycenter.config.SafetySource.Builder setSearchTermsResId(@IdRes int);
+    method @NonNull public android.safetycenter.config.SafetySource.Builder setSummaryResId(@IdRes int);
+    method @NonNull public android.safetycenter.config.SafetySource.Builder setTitleForWorkResId(@IdRes int);
+    method @NonNull public android.safetycenter.config.SafetySource.Builder setTitleResId(@IdRes int);
+  }
+
+  public final class SafetySourcesGroup implements android.os.Parcelable {
+    method public int describeContents();
+    method @NonNull public String getId();
+    method @NonNull public java.util.List<android.safetycenter.config.SafetySource> getSafetySources();
+    method public int getStatelessIconType();
+    method @IdRes public int getSummaryResId();
+    method @IdRes public int getTitleResId();
+    method public int getType();
+    method public void writeToParcel(@NonNull android.os.Parcel, int);
+    field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.config.SafetySourcesGroup> CREATOR;
+    field public static final int SAFETY_SOURCES_GROUP_TYPE_COLLAPSIBLE = 0; // 0x0
+    field public static final int SAFETY_SOURCES_GROUP_TYPE_HIDDEN = 2; // 0x2
+    field public static final int SAFETY_SOURCES_GROUP_TYPE_RIGID = 1; // 0x1
+    field public static final int STATELESS_ICON_TYPE_NONE = 0; // 0x0
+    field public static final int STATELESS_ICON_TYPE_PRIVACY = 1; // 0x1
+  }
+
+  public static final class SafetySourcesGroup.Builder {
+    ctor public SafetySourcesGroup.Builder();
+    method @NonNull public android.safetycenter.config.SafetySourcesGroup.Builder addSafetySource(@NonNull android.safetycenter.config.SafetySource);
+    method @NonNull public android.safetycenter.config.SafetySourcesGroup build();
+    method @NonNull public android.safetycenter.config.SafetySourcesGroup.Builder setId(@Nullable String);
+    method @NonNull public android.safetycenter.config.SafetySourcesGroup.Builder setStatelessIconType(int);
+    method @NonNull public android.safetycenter.config.SafetySourcesGroup.Builder setSummaryResId(@IdRes int);
+    method @NonNull public android.safetycenter.config.SafetySourcesGroup.Builder setTitleResId(@IdRes int);
+  }
+
+}
+
