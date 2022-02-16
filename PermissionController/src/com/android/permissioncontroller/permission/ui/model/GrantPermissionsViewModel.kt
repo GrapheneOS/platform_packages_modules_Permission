@@ -145,7 +145,7 @@ class GrantPermissionsViewModel(
 
     private val splitPermissionTargetSdkMap = mutableMapOf<String, Int>()
 
-    private var appPermGroupLiveDatasCache = mutableMapOf<String, LightAppPermGroupLiveData>()
+    private var appPermGroupLiveDatas = mutableMapOf<String, LightAppPermGroupLiveData>()
 
     /**
      * A class which represents a correctly requested permission group, and the buttons and messages
@@ -171,7 +171,6 @@ class GrantPermissionsViewModel(
         SmartUpdateMediatorLiveData<List<RequestInfo>>() {
         private val LOG_TAG = GrantPermissionsViewModel::class.java.simpleName
         private val packagePermissionsLiveData = PackagePermissionsLiveData[packageName, user]
-        private val appPermGroupLiveDatas = mutableMapOf<String, LightAppPermGroupLiveData>()
 
         init {
             GlobalScope.launch(Main.immediate) {
@@ -231,7 +230,6 @@ class GrantPermissionsViewModel(
             if (appPermGroupLiveDatas.any { it.value.isStale }) {
                 return
             }
-            appPermGroupLiveDatasCache = appPermGroupLiveDatas
             var newGroups = false
             for ((groupName, groupLiveData) in appPermGroupLiveDatas) {
                 val appPermGroup = groupLiveData.value
@@ -799,26 +797,27 @@ class GrantPermissionsViewModel(
         affectedForegroundPermissions: List<String>?,
         result: Int
     ) {
-        onPermissionGrantResult(groupName, affectedForegroundPermissions, result, true)
+        onPermissionGrantResult(groupName, affectedForegroundPermissions, result, false)
     }
 
     private fun onPermissionGrantResult(
         groupName: String?,
         affectedForegroundPermissions: List<String>?,
         result: Int,
-        canRecurse: Boolean
+        alreadyRequestedStorageGroupsIfNeeded: Boolean
     ) {
         if (groupName == null) {
             return
         }
 
         // If this is a legacy app, and a storage group is requested: request all storage groups
-        if (canRecurse && groupName in Utils.STORAGE_SUPERGROUP_PERMISSIONS &&
-                packageInfo.targetSdkVersion <= Build.VERSION_CODES.S_V2) {
+        if (!alreadyRequestedStorageGroupsIfNeeded &&
+            groupName in Utils.STORAGE_SUPERGROUP_PERMISSIONS &&
+            packageInfo.targetSdkVersion <= Build.VERSION_CODES.S_V2) {
             for (groupName in Utils.STORAGE_SUPERGROUP_PERMISSIONS) {
-                val groupPerms = appPermGroupLiveDatasCache[groupName]
-                        ?.value?.allPermissions?.keys?.toList()
-                onPermissionGrantResult(groupName, groupPerms, result, false)
+                val groupPerms = appPermGroupLiveDatas[groupName]
+                    ?.value?.allPermissions?.keys?.toList()
+                onPermissionGrantResult(groupName, groupPerms, result, true)
             }
             return
         }
