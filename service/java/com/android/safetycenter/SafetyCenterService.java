@@ -28,6 +28,7 @@ import static java.util.Objects.requireNonNull;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.app.AppOpsManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
@@ -317,6 +318,22 @@ public final class SafetyCenterService extends SystemService {
             getContext().enforceCallingOrSelfPermission(
                     MANAGE_SAFETY_CENTER, "dismissSafetyIssue");
             // TODO(b/202387059): Implement issue dismissal
+        }
+
+        @Override
+        public void addAdditionalSafetySource(@NonNull String sourceId, @NonNull String packageName,
+                @NonNull String broadcastReceiverName) {
+            getContext().enforceCallingOrSelfPermission(MANAGE_SAFETY_CENTER,
+                    "addAdditionalSafetySource");
+            mSafetyCenterRefreshManager.addAdditionalSafetySourceBroadcastReceiverComponent(
+                    new ComponentName(packageName, broadcastReceiverName));
+        }
+
+        @Override
+        public void clearAdditionalSafetySources() {
+            getContext().enforceCallingOrSelfPermission(
+                    MANAGE_SAFETY_CENTER, "clearAdditionalSafetySources");
+            mSafetyCenterRefreshManager.clearAdditionalSafetySourceBroadcastReceiverComponents();
         }
 
         private boolean getSafetyCenterConfigValue() {
