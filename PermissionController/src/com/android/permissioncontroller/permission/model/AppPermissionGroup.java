@@ -45,6 +45,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.service.LocationAccessCheck;
 import com.android.permissioncontroller.permission.utils.ArrayUtils;
@@ -1521,12 +1522,20 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
 
         String packageName = mPackageInfo.packageName;
         if (areRuntimePermissionsGranted(null, true)) {
-            mContext.getSystemService(PermissionManager.class)
-                    .startOneTimePermissionSession(packageName,
-                            Utils.getOneTimePermissionsTimeout(),
-                            Utils.getOneTimePermissionsKilledDelay(mIsSelfRevoked),
-                            ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_RESET_TIMER,
-                            ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_KEEP_SESSION_ALIVE);
+            if (SdkLevel.isAtLeastT()) {
+                mContext.getSystemService(PermissionManager.class)
+                        .startOneTimePermissionSession(packageName,
+                                Utils.getOneTimePermissionsTimeout(),
+                                Utils.getOneTimePermissionsKilledDelay(mIsSelfRevoked),
+                                ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_RESET_TIMER,
+                                ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_KEEP_SESSION_ALIVE);
+            } else {
+                mContext.getSystemService(PermissionManager.class)
+                        .startOneTimePermissionSession(packageName,
+                                Utils.getOneTimePermissionsTimeout(),
+                                ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_RESET_TIMER,
+                                ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_KEEP_SESSION_ALIVE);
+            }
         } else {
             mContext.getSystemService(PermissionManager.class)
                     .stopOneTimePermissionSession(packageName);

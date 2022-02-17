@@ -54,6 +54,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.preference.Preference
 import androidx.preference.PreferenceGroup
+import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.data.LightPackageInfoLiveData
 import com.android.permissioncontroller.permission.data.get
@@ -537,11 +538,18 @@ object KotlinUtils {
             group.hasInstallToRuntimeSplit, group.specialLocationGrant)
         // If any permission in the group is one time granted, start one time permission session.
         if (newGroup.permissions.any { it.value.isOneTime && it.value.isGrantedIncludingAppOp }) {
-            app.getSystemService(PermissionManager::class.java)!!.startOneTimePermissionSession(
-                group.packageName, Utils.getOneTimePermissionsTimeout(),
-                Utils.getOneTimePermissionsKilledDelay(false),
-                ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_RESET_TIMER,
-                ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_KEEP_SESSION_ALIVE)
+            if (SdkLevel.isAtLeastT()) {
+                app.getSystemService(PermissionManager::class.java)!!.startOneTimePermissionSession(
+                        group.packageName, Utils.getOneTimePermissionsTimeout(),
+                        Utils.getOneTimePermissionsKilledDelay(false),
+                        ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_RESET_TIMER,
+                        ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_KEEP_SESSION_ALIVE)
+            } else {
+                app.getSystemService(PermissionManager::class.java)!!.startOneTimePermissionSession(
+                        group.packageName, Utils.getOneTimePermissionsTimeout(),
+                        ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_RESET_TIMER,
+                        ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_KEEP_SESSION_ALIVE)
+            }
         }
         return newGroup
     }
