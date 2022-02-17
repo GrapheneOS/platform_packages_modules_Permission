@@ -35,7 +35,7 @@ package android.app.role {
     method @RequiresPermission(android.Manifest.permission.BYPASS_ROLE_QUALIFICATION) public void setBypassingRoleQualification(boolean);
     method @Deprecated @RequiresPermission("com.android.permissioncontroller.permission.MANAGE_ROLES_FROM_CONTROLLER") public void setRoleNamesFromController(@NonNull java.util.List<java.lang.String>);
     field public static final int MANAGE_HOLDERS_FLAG_DONT_KILL_APP = 1; // 0x1
-    field public static final String ROLE_DEVICE_MANAGER = "android.app.role.DEVICE_MANAGER";
+    field public static final String ROLE_DEVICE_POLICY_MANAGEMENT = "android.app.role.DEVICE_POLICY_MANAGEMENT";
     field public static final String ROLE_SYSTEM_ACTIVITY_RECOGNIZER = "android.app.role.SYSTEM_ACTIVITY_RECOGNIZER";
     field public static final String ROLE_SYSTEM_SUPERVISION = "android.app.role.SYSTEM_SUPERVISION";
     field public static final String ROLE_SYSTEM_WELLBEING = "android.app.role.SYSTEM_WELLBEING";
