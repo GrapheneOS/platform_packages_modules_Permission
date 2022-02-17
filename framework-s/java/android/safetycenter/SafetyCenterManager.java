@@ -265,7 +265,15 @@ public final class SafetyCenterManager {
     @RequiresPermission(SEND_SAFETY_CENTER_UPDATE)
     public void reportSafetySourceError(
             @NonNull String safetySourceId, @NonNull SafetySourceError error) {
-        // TODO(b/218379298): add implementation
+        try {
+            mService.reportSafetySourceError(
+                    safetySourceId,
+                    error,
+                    mContext.getPackageName(),
+                    mContext.getUser().getIdentifier());
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
     }
 
     /**
@@ -406,7 +414,14 @@ public final class SafetyCenterManager {
     public void executeAction(
             @NonNull String safetyCenterIssueId,
             @NonNull String safetyCenterActionId) {
-        // TODO(b/218379298): Add implementation
+        try {
+            mService.executeAction(
+                    safetyCenterIssueId,
+                    safetyCenterActionId,
+                    mContext.getUser().getIdentifier());
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
     }
 
     /**
@@ -462,6 +477,12 @@ public final class SafetyCenterManager {
         public void onSafetyCenterDataChanged(@NonNull SafetyCenterData safetyCenterData) {
             mExecutor.execute(
                     () -> mOriginalListener.onSafetyCenterDataChanged(safetyCenterData));
+        }
+
+        @Override
+        public void onError(@NonNull SafetyCenterError safetyCenterError) {
+            mExecutor.execute(
+                    () -> mOriginalListener.onError(safetyCenterError));
         }
     }
 }
