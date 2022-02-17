@@ -26,7 +26,7 @@
                 title="@string/reference"
                 summary="@string/reference"
                 intentAction="intent"
-                profile="1"/>
+                profile="primary_profile_only"/>
         </safety-sources-group>
     </safety-sources-config>
 </safety-center-config>
