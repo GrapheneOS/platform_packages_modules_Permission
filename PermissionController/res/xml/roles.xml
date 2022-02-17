@@ -548,6 +548,7 @@
             <permission-set name="microphone" />
             <permission-set name="location" />
             <permission-set name="nearby_devices" />
+            <permission-set name="notifications" />
             <permission name="android.permission.ADD_ALWAYS_UNLOCKED_DISPLAY" minSdkVersion="33" />
             <permission name="android.permission.CALL_PHONE" />
             <permission name="android.permission.CREATE_VIRTUAL_DEVICE" minSdkVersion="33" />
@@ -654,6 +655,7 @@
         systemOnly="true"
         visible="false" >
         <permissions>
+            <permission-set name="notifications" />
             <permission name="android.permission.ACCESS_AMBIENT_CONTEXT_EVENT" minSdkVersion="33"/>
             <permission name="android.permission.ACCESS_INSTANT_APPS"/>
             <permission name="android.permission.START_CROSS_PROFILE_ACTIVITIES" minSdkVersion="33"/>
@@ -818,6 +820,7 @@
         systemOnly="true"
         visible="false">
         <permissions>
+            <permission-set name="notifications" />
             <permission name="android.permission.CAPTURE_AUDIO_OUTPUT" />
             <permission name="android.permission.CAPTURE_MEDIA_OUTPUT" />
             <permission name="android.permission.CAPTURE_VOICE_COMMUNICATION_OUTPUT" />
@@ -1148,6 +1151,7 @@
         systemOnly="true"
         visible="false">
         <permissions>
+            <permission-set name="notifications" />
             <permission name="android.permission.GET_HISTORICAL_APP_OPS_STATS" />
         </permissions>
     </role>
