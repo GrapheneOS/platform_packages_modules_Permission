@@ -23,6 +23,7 @@ import android.annotation.Nullable;
 import android.annotation.StringRes;
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.res.XmlResourceParser;
 import android.util.Log;
 
 import androidx.annotation.RequiresApi;
@@ -30,8 +31,6 @@ import androidx.annotation.RequiresApi;
 import com.android.safetycenter.config.Parser;
 import com.android.safetycenter.config.SafetyCenterConfig;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
-
-import java.io.InputStream;
 
 /**
  * A class that reads the {@link SafetyCenterConfig} from the associated {@link
@@ -101,26 +100,14 @@ final class SafetyCenterConfigReader {
 
     @Nullable
     private SafetyCenterConfig readSafetyCenterConfig() {
-        InputStream in = mSafetyCenterResourcesContext.getSafetyCenterConfig();
-        if (in == null) {
+        XmlResourceParser parser = mSafetyCenterResourcesContext.getSafetyCenterConfig();
+        if (parser == null) {
             Log.e(TAG, "Cannot get safety center config file");
             return null;
         }
 
-        String resourcesPkgName = mSafetyCenterResourcesContext.getResourcesApkPkgName();
-        if (resourcesPkgName == null) {
-            Log.e(TAG, "Cannot get safety center resources APK package name");
-            return null;
-        }
-
-        Resources resources = mSafetyCenterResourcesContext.getResources();
-        if (resources == null) {
-            Log.e(TAG, "Cannot get safety center resources");
-            return null;
-        }
-
         try {
-            SafetyCenterConfig safetyCenterConfig = Parser.parse(in, resourcesPkgName, resources);
+            SafetyCenterConfig safetyCenterConfig = Parser.parseXmlResource(parser);
             Log.i(TAG, "SafetyCenterConfig read successfully");
             return safetyCenterConfig;
         } catch (Parser.ParseException e) {

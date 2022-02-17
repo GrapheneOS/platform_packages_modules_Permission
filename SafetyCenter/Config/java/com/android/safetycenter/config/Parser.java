@@ -18,6 +18,7 @@ package com.android.safetycenter.config;
 
 import static org.xmlpull.v1.XmlPullParser.END_DOCUMENT;
 import static org.xmlpull.v1.XmlPullParser.END_TAG;
+import static org.xmlpull.v1.XmlPullParser.START_DOCUMENT;
 import static org.xmlpull.v1.XmlPullParser.START_TAG;
 import static org.xmlpull.v1.XmlPullParser.TEXT;
 
@@ -28,18 +29,16 @@ import android.annotation.IdRes;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.content.res.Resources;
+import android.content.res.XmlResourceParser;
 
 import com.android.safetycenter.config.SafetySource.InitialDisplayState;
 import com.android.safetycenter.config.SafetySource.Profile;
 import com.android.safetycenter.config.SafetySource.SafetySourceType;
 import com.android.safetycenter.config.SafetySourcesGroup.StatelessIconType;
 
-import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.IOException;
-import java.io.InputStream;
 
 /** Utility class to parse and validate a Safety Center Config */
 public final class Parser {
@@ -96,27 +95,22 @@ public final class Parser {
     }
 
     /**
-     * Parses and validates the given raw XML resource into a {@link SafetyCenterConfig} object.
+     * Parses and validates the given XML resource into a {@link SafetyCenterConfig} object.
      *
-     * @param in              the raw XML resource representing the Safety Center configuration
-     * @param resourcePkgName the name of the package that contains the Safety Center configuration
-     * @param resources       the {@link Resources} retrieved from the package that contains the
-     *                        Safety Center configuration
+     * @param parser the XML resource parsing interface
      */
     @Nullable
-    public static SafetyCenterConfig parse(@NonNull InputStream in, @NonNull String resourcePkgName,
-            @NonNull Resources resources) throws ParseException {
-        requireNonNull(in);
-        requireNonNull(resourcePkgName);
-        requireNonNull(resources);
+    public static SafetyCenterConfig parseXmlResource(@NonNull XmlResourceParser parser)
+            throws ParseException {
+        requireNonNull(parser);
         try {
-            XmlPullParser parser = XmlPullParserFactory.newInstance().newPullParser();
-            parser.setFeature(org.xmlpull.v1.XmlPullParser.FEATURE_PROCESS_NAMESPACES, true);
-            parser.setInput(in, null);
+            parser.next();
+            if (parser.getEventType() != START_DOCUMENT) {
+                throw new ParseException("Unexpected parser state");
+            }
             parser.nextTag();
             validateElementStart(parser, TAG_SAFETY_CENTER_CONFIG);
-            SafetyCenterConfig safetyCenterConfig =
-                    parseSafetyCenterConfig(parser, resourcePkgName, resources);
+            SafetyCenterConfig safetyCenterConfig = parseSafetyCenterConfig(parser);
             if (parser.getEventType() == TEXT && parser.isWhitespace()) {
                 parser.next();
             }
@@ -125,13 +119,12 @@ public final class Parser {
             }
             return safetyCenterConfig;
         } catch (XmlPullParserException | IOException e) {
-            throw new ParseException("Exception while reading XML", e);
+            throw new ParseException("Exception while parsing the XML resource", e);
         }
     }
 
     @NonNull
-    private static SafetyCenterConfig parseSafetyCenterConfig(@NonNull XmlPullParser parser,
-            @NonNull String resourcePkgName, @NonNull Resources resources)
+    private static SafetyCenterConfig parseSafetyCenterConfig(@NonNull XmlResourceParser parser)
             throws XmlPullParserException, IOException, ParseException {
         validateElementHasNoAttribute(parser, TAG_SAFETY_CENTER_CONFIG);
         parser.nextTag();
@@ -141,8 +134,7 @@ public final class Parser {
         parser.nextTag();
         while (parser.getEventType() == START_TAG
                 && parser.getName().equals(TAG_SAFETY_SOURCES_GROUP)) {
-            builder.addSafetySourcesGroup(
-                    parseSafetySourcesGroup(parser, resourcePkgName, resources));
+            builder.addSafetySourcesGroup(parseSafetySourcesGroup(parser));
         }
         validateElementEnd(parser, TAG_SAFETY_SOURCES_CONFIG);
         parser.nextTag();
@@ -157,8 +149,7 @@ public final class Parser {
     }
 
     @NonNull
-    private static SafetySourcesGroup parseSafetySourcesGroup(@NonNull XmlPullParser parser,
-            @NonNull String resourcePkgName, @NonNull Resources resources)
+    private static SafetySourcesGroup parseSafetySourcesGroup(@NonNull XmlResourceParser parser)
             throws XmlPullParserException, IOException, ParseException {
         String name = TAG_SAFETY_SOURCES_GROUP;
         SafetySourcesGroup.Builder builder = new SafetySourcesGroup.Builder();
@@ -168,14 +159,10 @@ public final class Parser {
                     builder.setId(parser.getAttributeValue(i));
                     break;
                 case ATTR_SAFETY_SOURCES_GROUP_TITLE:
-                    builder.setTitleResId(
-                            parseReference(parser.getAttributeValue(i), resourcePkgName, resources,
-                                    name, parser.getAttributeName(i)));
+                    builder.setTitleResId(parseReference(parser, i, name));
                     break;
                 case ATTR_SAFETY_SOURCES_GROUP_SUMMARY:
-                    builder.setSummaryResId(
-                            parseReference(parser.getAttributeValue(i), resourcePkgName, resources,
-                                    name, parser.getAttributeName(i)));
+                    builder.setSummaryResId(parseReference(parser, i, name));
                     break;
                 case ATTR_SAFETY_SOURCES_GROUP_STATELESS_ICON_TYPE:
                     builder.setStatelessIconType(
@@ -203,8 +190,7 @@ public final class Parser {
                 default:
                     break loop;
             }
-            builder.addSafetySource(
-                    parseSafetySource(parser, resourcePkgName, resources, type, parser.getName()));
+            builder.addSafetySource(parseSafetySource(parser, type, parser.getName()));
         }
         validateElementEnd(parser, name);
         parser.nextTag();
@@ -217,8 +203,7 @@ public final class Parser {
     }
 
     @NonNull
-    private static SafetySource parseSafetySource(@NonNull XmlPullParser parser,
-            @NonNull String resourcePkgName, @NonNull Resources resources,
+    private static SafetySource parseSafetySource(@NonNull XmlResourceParser parser,
             @SafetySourceType int type, @NonNull String name)
             throws XmlPullParserException, IOException, ParseException {
         SafetySource.Builder builder = new SafetySource.Builder(type);
@@ -231,19 +216,13 @@ public final class Parser {
                     builder.setPackageName(parser.getAttributeValue(i));
                     break;
                 case ATTR_SAFETY_SOURCE_TITLE:
-                    builder.setTitleResId(
-                            parseReference(parser.getAttributeValue(i), resourcePkgName,
-                                    resources, name, parser.getAttributeName(i)));
+                    builder.setTitleResId(parseReference(parser, i, name));
                     break;
                 case ATTR_SAFETY_SOURCE_TITLE_FOR_WORK:
-                    builder.setTitleForWorkResId(
-                            parseReference(parser.getAttributeValue(i), resourcePkgName,
-                                    resources, name, parser.getAttributeName(i)));
+                    builder.setTitleForWorkResId(parseReference(parser, i, name));
                     break;
                 case ATTR_SAFETY_SOURCE_SUMMARY:
-                    builder.setSummaryResId(
-                            parseReference(parser.getAttributeValue(i), resourcePkgName,
-                                    resources, name, parser.getAttributeName(i)));
+                    builder.setSummaryResId(parseReference(parser, i, name));
                     break;
                 case ATTR_SAFETY_SOURCE_INTENT_ACTION:
                     builder.setIntentAction(parser.getAttributeValue(i));
@@ -262,9 +241,7 @@ public final class Parser {
                             parser.getAttributeName(i)));
                     break;
                 case ATTR_SAFETY_SOURCE_SEARCH_TERMS:
-                    builder.setSearchTermsResId(
-                            parseReference(parser.getAttributeValue(i), resourcePkgName,
-                                    resources, name, parser.getAttributeName(i)));
+                    builder.setSearchTermsResId(parseReference(parser, i, name));
                     break;
                 case ATTR_SAFETY_SOURCE_BROADCAST_RECEIVER_CLASS_NAME:
                     builder.setBroadcastReceiverClassName(parser.getAttributeValue(i));
@@ -293,21 +270,21 @@ public final class Parser {
         return null; // Unreachable
     }
 
-    private static void validateElementStart(@NonNull XmlPullParser parser, @NonNull String name)
-            throws XmlPullParserException, ParseException {
+    private static void validateElementStart(@NonNull XmlResourceParser parser,
+            @NonNull String name) throws XmlPullParserException, ParseException {
         if (parser.getEventType() != START_TAG || !parser.getName().equals(name)) {
             throwElementMissing(name);
         }
     }
 
-    private static void validateElementEnd(@NonNull XmlPullParser parser, @NonNull String name)
+    private static void validateElementEnd(@NonNull XmlResourceParser parser, @NonNull String name)
             throws XmlPullParserException, ParseException {
         if (parser.getEventType() != END_TAG || !parser.getName().equals(name)) {
             throwElementNotClosed(name);
         }
     }
 
-    private static void validateElementHasNoAttribute(@NonNull XmlPullParser parser,
+    private static void validateElementHasNoAttribute(@NonNull XmlResourceParser parser,
             @NonNull String name) throws ParseException {
         if (parser.getAttributeCount() != 0) {
             throwElementInvalid(name);
@@ -364,18 +341,12 @@ public final class Parser {
     }
 
     @IdRes
-    private static int parseReference(@NonNull String reference, @NonNull String resourcePkgName,
-            @NonNull Resources resources, @NonNull String parent, @NonNull String name)
-            throws ParseException {
-        if (!reference.startsWith("@string/")) {
-            throw new ParseException(
-                    String.format("String %s in %s.%s is not a reference", reference, parent,
-                            name));
-        }
-        int id = resources.getIdentifier(reference.substring(1), null, resourcePkgName);
+    private static int parseReference(@NonNull XmlResourceParser parser, int index,
+            @NonNull String parent) throws ParseException {
+        int id = parser.getAttributeResourceValue(index, Resources.ID_NULL);
         if (id == Resources.ID_NULL) {
-            throw new ParseException(
-                    String.format("Reference %s in %s.%s missing", reference, parent, name));
+            throw new ParseException(String.format("Reference %s in %s.%s missing or invalid",
+                    parser.getAttributeValue(index), parent, parser.getAttributeName(index)));
         }
         return id;
     }
