@@ -349,45 +349,59 @@ final class SafetyCenterDataTracker {
     @Nullable
     private SafetyCenterEntry toSafetyCenterEntry(@NonNull SafetySource safetySource,
             @UserIdInt int userId) {
-        if (safetySource.getType() == SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY) {
-            Log.w(TAG, "Issue only safety source found in collapsible group");
+        switch (safetySource.getType()) {
+            case SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY: {
+                Log.w(TAG, "Issue only safety source found in collapsible group");
+                return null;
+            }
+            case SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC: {
+                Key key = Key.of(safetySource.getId(), safetySource.getPackageName(), userId);
+                SafetySourceStatus safetySourceStatus = getSafetySourceStatus(
+                        mSafetySourceDataForKey.get(key));
+                // TODO(b/218817233): Add missing fields like: iconAction, statelessIconType.
+                if (safetySourceStatus != null) {
+                    return new SafetyCenterEntry.Builder(safetySource.getId())
+                            .setSeverityLevel(sourceToSafetyCenterEntrySeverityLevel(
+                                    safetySourceStatus.getStatusLevel()))
+                            .setTitle(safetySourceStatus.getTitle())
+                            .setSummary(safetySourceStatus.getSummary())
+                            .setEnabled(safetySourceStatus.isEnabled())
+                            .setPendingIntent(safetySourceStatus.getPendingIntent()).build();
+                }
+                return toDefaultSafetyCenterEntry(safetySource, safetySource.getPackageName(),
+                        SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_NONE);
+            }
+            case SafetySource.SAFETY_SOURCE_TYPE_STATIC: {
+                return toDefaultSafetyCenterEntry(safetySource, null,
+                        SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN);
+            }
+        }
+        Log.w(TAG, String.format("Unknown safety source type found in collapsible group: %s",
+                safetySource.getType()));
+        return null;
+    }
+
+    @Nullable
+    private SafetyCenterEntry toDefaultSafetyCenterEntry(
+            @NonNull SafetySource safetySource,
+            @Nullable String packageName,
+            @SafetyCenterEntry.EntrySeverityLevel int entrySeverityLevel) {
+        PendingIntent pendingIntent = toPendingIntent(safetySource.getIntentAction(), packageName);
+
+        if (pendingIntent == null) {
+            // TODO(b/218817241): We may make the PendingIntent nullable, in which case
+            //  we won't want to skip here.
             return null;
         }
 
-        Key key = Key.of(safetySource.getId(), safetySource.getPackageName(), userId);
-        SafetySourceStatus safetySourceStatus = getSafetySourceStatus(
-                mSafetySourceDataForKey.get(key));
-        SafetyCenterEntry.Builder safetyCenterEntryBuilder = new SafetyCenterEntry.Builder(
-                safetySource.getId());
-        // TODO(b/218817233): Add missing fields like: iconAction, statelessIconType.
-        if (safetySourceStatus != null) {
-            safetyCenterEntryBuilder
-                    .setSeverityLevel(sourceToSafetyCenterEntrySeverityLevel(
-                            safetySourceStatus.getStatusLevel()))
-                    .setTitle(safetySourceStatus.getTitle())
-                    .setSummary(safetySourceStatus.getSummary())
-                    .setEnabled(safetySourceStatus.isEnabled())
-                    .setPendingIntent(safetySourceStatus.getPendingIntent());
-        } else {
-            PendingIntent pendingIntent = toPendingIntent(safetySource.getIntentAction(),
-                    safetySource.getPackageName());
-            if (pendingIntent == null) {
-                // TODO(b/218817241): We may make the PendingIntent nullable, in which case
-                //  we won't want to skip here.
-                return null;
-            }
-
-            // TODO(b/218817233): Add missing fields like: enabled.
-            safetyCenterEntryBuilder
-                    .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_NONE)
-                    .setTitle(mSafetyCenterConfigReader.readStringResource(
-                            safetySource.getTitleResId()))
-                    .setSummary(mSafetyCenterConfigReader.readStringResource(
-                            safetySource.getSummaryResId()))
-                    .setPendingIntent(pendingIntent);
-        }
-
-        return safetyCenterEntryBuilder.build();
+        // TODO(b/218817233): Add missing fields like: enabled.
+        return new SafetyCenterEntry.Builder(safetySource.getId())
+                .setSeverityLevel(entrySeverityLevel)
+                .setTitle(mSafetyCenterConfigReader.readStringResource(
+                        safetySource.getTitleResId()))
+                .setSummary(mSafetyCenterConfigReader.readStringResource(
+                        safetySource.getSummaryResId()))
+                .setPendingIntent(pendingIntent).build();
     }
 
     private void addSafetyCenterStaticEntryGroup(
