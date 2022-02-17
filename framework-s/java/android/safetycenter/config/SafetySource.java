@@ -14,20 +14,33 @@
  * limitations under the License.
  */
 
-package com.android.safetycenter.config;
+package android.safetycenter.config;
+
+import static android.os.Build.VERSION_CODES.TIRAMISU;
 
 import android.annotation.IdRes;
 import android.annotation.IntDef;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
+import android.annotation.SystemApi;
 import android.content.res.Resources;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.RequiresApi;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.Objects;
 
-/** Data class used to represent a generic safety source */
-public final class SafetySource {
+/**
+ * Data class used to represent the initial configuration of a safety source
+ *
+ * @hide
+ */
+@SystemApi
+@RequiresApi(TIRAMISU)
+public final class SafetySource implements Parcelable {
     /** Static safety source. */
     public static final int SAFETY_SOURCE_TYPE_STATIC = 1;
 
@@ -248,7 +261,6 @@ public final class SafetySource {
     }
 
     /** Returns the maximum severity level of this safety source. */
-    @Profile
     public int getMaxSeverityLevel() {
         if (mType == SAFETY_SOURCE_TYPE_STATIC) {
             throw new UnsupportedOperationException(
@@ -307,6 +319,7 @@ public final class SafetySource {
                 && Objects.equals(mId, that.mId)
                 && Objects.equals(mPackageName, that.mPackageName)
                 && mTitleResId == that.mTitleResId
+                && mTitleForWorkResId == that.mTitleForWorkResId
                 && mSummaryResId == that.mSummaryResId
                 && Objects.equals(mIntentAction, that.mIntentAction)
                 && mProfile == that.mProfile
@@ -320,9 +333,10 @@ public final class SafetySource {
 
     @Override
     public int hashCode() {
-        return Objects.hash(mType, mId, mPackageName, mTitleResId, mSummaryResId, mIntentAction,
-                mProfile, mInitialDisplayState, mMaxSeverityLevel, mSearchTermsResId,
-                mBroadcastReceiverClassName, mAllowLogging, mAllowRefreshOnPageOpen);
+        return Objects.hash(mType, mId, mPackageName, mTitleResId, mTitleForWorkResId,
+                mSummaryResId, mIntentAction, mProfile, mInitialDisplayState, mMaxSeverityLevel,
+                mSearchTermsResId, mBroadcastReceiverClassName, mAllowLogging,
+                mAllowRefreshOnPageOpen);
     }
 
     @Override
@@ -332,6 +346,7 @@ public final class SafetySource {
                 + ", mId='" + mId + '\''
                 + ", mPackageName='" + mPackageName + '\''
                 + ", mTitleResId=" + mTitleResId
+                + ", mTitleForWorkResId=" + mTitleForWorkResId
                 + ", mSummaryResId=" + mSummaryResId
                 + ", mIntentAction='" + mIntentAction + '\''
                 + ", mProfile=" + mProfile
@@ -343,6 +358,60 @@ public final class SafetySource {
                 + ", mAllowRefreshOnPageOpen=" + mAllowRefreshOnPageOpen
                 + '}';
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeInt(mType);
+        dest.writeString(mId);
+        dest.writeString(mPackageName);
+        dest.writeInt(mTitleResId);
+        dest.writeInt(mTitleForWorkResId);
+        dest.writeInt(mSummaryResId);
+        dest.writeString(mIntentAction);
+        dest.writeInt(mProfile);
+        dest.writeInt(mInitialDisplayState);
+        dest.writeInt(mMaxSeverityLevel);
+        dest.writeInt(mSearchTermsResId);
+        dest.writeString(mBroadcastReceiverClassName);
+        dest.writeBoolean(mAllowLogging);
+        dest.writeBoolean(mAllowRefreshOnPageOpen);
+    }
+
+    @NonNull
+    public static final Parcelable.Creator<SafetySource> CREATOR =
+            new Parcelable.Creator<SafetySource>() {
+                @Override
+                public SafetySource createFromParcel(Parcel in) {
+                    int type = in.readInt();
+                    String id = in.readString();
+                    String packageName = in.readString();
+                    int titleResId = in.readInt();
+                    int titleForWorkResId = in.readInt();
+                    int summaryResId = in.readInt();
+                    String intentAction = in.readString();
+                    int profile = in.readInt();
+                    int initialDisplayState = in.readInt();
+                    int maxSeverityLevel = in.readInt();
+                    int searchTermsResId = in.readInt();
+                    String broadcastReceiverClassName = in.readString();
+                    boolean allowLogging = in.readBoolean();
+                    boolean allowRefreshOnPageOpen = in.readBoolean();
+                    return new SafetySource(type, id, packageName, titleResId, titleForWorkResId,
+                            summaryResId, intentAction, profile, initialDisplayState,
+                            maxSeverityLevel, searchTermsResId, broadcastReceiverClassName,
+                            allowLogging, allowRefreshOnPageOpen);
+                }
+
+                @Override
+                public SafetySource[] newArray(int size) {
+                    return new SafetySource[size];
+                }
+            };
 
     /** Builder class for {@link SafetySource}. */
     public static final class Builder {
