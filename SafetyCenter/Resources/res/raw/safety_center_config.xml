@@ -21,8 +21,7 @@
             id="TODO"
             title="@string/reference"
             summary="@string/reference">
-            <safety-source
-                type="1"
+            <static-safety-source
                 id="TODO"
                 title="@string/reference"
                 summary="@string/reference"

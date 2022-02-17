@@ -4,14 +4,13 @@
             id="id"
             title="@string/reference"
             summary="@string/reference">
-            <safety-source
-                type="2"
+            <dynamic-safety-source
                 id="id"
                 packageName="package"
                 title="@string/reference"
                 intentAction="intent"
-                profile="1"
-                initialDisplayState="1"/>
+                profile="primary_profile_only"
+                initialDisplayState="disabled"/>
         </safety-sources-group>
     </safety-sources-config>
 </safety-center-config>

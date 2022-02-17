@@ -29,6 +29,11 @@ import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.content.res.Resources;
 
+import com.android.safetycenter.config.SafetySource.InitialDisplayState;
+import com.android.safetycenter.config.SafetySource.Profile;
+import com.android.safetycenter.config.SafetySource.SafetySourceType;
+import com.android.safetycenter.config.SafetySourcesGroup.StatelessIconType;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -44,14 +49,15 @@ public final class Parser {
     private static final String TAG_SAFETY_CENTER_CONFIG = "safety-center-config";
     private static final String TAG_SAFETY_SOURCES_CONFIG = "safety-sources-config";
     private static final String TAG_SAFETY_SOURCES_GROUP = "safety-sources-group";
-    private static final String TAG_SAFETY_SOURCE = "safety-source";
+    private static final String TAG_STATIC_SAFETY_SOURCE = "static-safety-source";
+    private static final String TAG_DYNAMIC_SAFETY_SOURCE = "dynamic-safety-source";
+    private static final String TAG_ISSUE_ONLY_SAFETY_SOURCE = "issue-only-safety-source";
 
     private static final String ATTR_SAFETY_SOURCES_GROUP_ID = "id";
     private static final String ATTR_SAFETY_SOURCES_GROUP_TITLE = "title";
     private static final String ATTR_SAFETY_SOURCES_GROUP_SUMMARY = "summary";
     private static final String ATTR_SAFETY_SOURCES_GROUP_STATELESS_ICON_TYPE = "statelessIconType";
 
-    private static final String ATTR_SAFETY_SOURCE_TYPE = "type";
     private static final String ATTR_SAFETY_SOURCE_ID = "id";
     private static final String ATTR_SAFETY_SOURCE_PACKAGE_NAME = "packageName";
     private static final String ATTR_SAFETY_SOURCE_TITLE = "title";
@@ -64,9 +70,19 @@ public final class Parser {
     private static final String ATTR_SAFETY_SOURCE_SEARCH_TERMS = "searchTerms";
     private static final String ATTR_SAFETY_SOURCE_BROADCAST_RECEIVER_CLASS_NAME =
             "broadcastReceiverClassName";
-    private static final String ATTR_SAFETY_SOURCE_DISALLOW_LOGGING = "disallowLogging";
+    private static final String ATTR_SAFETY_SOURCE_ALLOW_LOGGING = "allowLogging";
     private static final String ATTR_SAFETY_SOURCE_ALLOW_REFRESH_ON_PAGE_OPEN =
             "allowRefreshOnPageOpen";
+
+    private static final String ENUM_STATELESS_ICON_TYPE_NONE = "none";
+    private static final String ENUM_STATELESS_ICON_TYPE_PRIVACY = "privacy";
+
+    private static final String ENUM_PROFILE_PRIMARY = "primary_profile_only";
+    private static final String ENUM_PROFILE_ALL = "all_profiles";
+
+    private static final String ENUM_INITIAL_DISPLAY_STATE_ENABLED = "enabled";
+    private static final String ENUM_INITIAL_DISPLAY_STATE_DISABLED = "disabled";
+    private static final String ENUM_INITIAL_DISPLAY_STATE_HIDDEN = "hidden";
 
     /** Thrown when there is an error parsing the Safety Center Config */
     public static final class ParseException extends Exception {
@@ -137,7 +153,7 @@ public final class Parser {
         } catch (IllegalStateException e) {
             throwElementInvalid(TAG_SAFETY_SOURCES_CONFIG, e);
         }
-        return null;
+        return null; // Unreachable
     }
 
     @NonNull
@@ -163,7 +179,7 @@ public final class Parser {
                     break;
                 case ATTR_SAFETY_SOURCES_GROUP_STATELESS_ICON_TYPE:
                     builder.setStatelessIconType(
-                            parseInteger(parser.getAttributeValue(i), name,
+                            parseStatelessIconType(parser.getAttributeValue(i), name,
                                     parser.getAttributeName(i)));
                     break;
                 default:
@@ -171,8 +187,24 @@ public final class Parser {
             }
         }
         parser.nextTag();
-        while (parser.getEventType() == START_TAG && parser.getName().equals(TAG_SAFETY_SOURCE)) {
-            builder.addSafetySource(parseSafetySource(parser, resourcePkgName, resources));
+        loop:
+        while (parser.getEventType() == START_TAG) {
+            int type;
+            switch (parser.getName()) {
+                case TAG_STATIC_SAFETY_SOURCE:
+                    type = SafetySource.SAFETY_SOURCE_TYPE_STATIC;
+                    break;
+                case TAG_DYNAMIC_SAFETY_SOURCE:
+                    type = SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC;
+                    break;
+                case TAG_ISSUE_ONLY_SAFETY_SOURCE:
+                    type = SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY;
+                    break;
+                default:
+                    break loop;
+            }
+            builder.addSafetySource(
+                    parseSafetySource(parser, resourcePkgName, resources, type, parser.getName()));
         }
         validateElementEnd(parser, name);
         parser.nextTag();
@@ -181,21 +213,17 @@ public final class Parser {
         } catch (IllegalStateException e) {
             throwElementInvalid(name, e);
         }
-        return null;
+        return null; // Unreachable
     }
 
     @NonNull
     private static SafetySource parseSafetySource(@NonNull XmlPullParser parser,
-            @NonNull String resourcePkgName, @NonNull Resources resources)
+            @NonNull String resourcePkgName, @NonNull Resources resources,
+            @SafetySourceType int type, @NonNull String name)
             throws XmlPullParserException, IOException, ParseException {
-        String name = TAG_SAFETY_SOURCE;
-        SafetySource.Builder builder = new SafetySource.Builder();
+        SafetySource.Builder builder = new SafetySource.Builder(type);
         for (int i = 0; i < parser.getAttributeCount(); i++) {
             switch (parser.getAttributeName(i)) {
-                case ATTR_SAFETY_SOURCE_TYPE:
-                    builder.setType(parseInteger(parser.getAttributeValue(i), name,
-                            parser.getAttributeName(i)));
-                    break;
                 case ATTR_SAFETY_SOURCE_ID:
                     builder.setId(parser.getAttributeValue(i));
                     break;
@@ -221,12 +249,13 @@ public final class Parser {
                     builder.setIntentAction(parser.getAttributeValue(i));
                     break;
                 case ATTR_SAFETY_SOURCE_PROFILE:
-                    builder.setProfile(parseInteger(parser.getAttributeValue(i), name,
+                    builder.setProfile(parseProfile(parser.getAttributeValue(i), name,
                             parser.getAttributeName(i)));
                     break;
                 case ATTR_SAFETY_SOURCE_INITIAL_DISPLAY_STATE:
-                    builder.setInitialDisplayState(parseInteger(parser.getAttributeValue(i), name,
-                            parser.getAttributeName(i)));
+                    builder.setInitialDisplayState(
+                            parseInitialDisplayState(parser.getAttributeValue(i), name,
+                                    parser.getAttributeName(i)));
                     break;
                 case ATTR_SAFETY_SOURCE_MAX_SEVERITY_LEVEL:
                     builder.setMaxSeverityLevel(parseInteger(parser.getAttributeValue(i), name,
@@ -240,8 +269,8 @@ public final class Parser {
                 case ATTR_SAFETY_SOURCE_BROADCAST_RECEIVER_CLASS_NAME:
                     builder.setBroadcastReceiverClassName(parser.getAttributeValue(i));
                     break;
-                case ATTR_SAFETY_SOURCE_DISALLOW_LOGGING:
-                    builder.setDisallowLogging(parseBoolean(parser.getAttributeValue(i), name,
+                case ATTR_SAFETY_SOURCE_ALLOW_LOGGING:
+                    builder.setAllowLogging(parseBoolean(parser.getAttributeValue(i), name,
                             parser.getAttributeName(i)));
                     break;
                 case ATTR_SAFETY_SOURCE_ALLOW_REFRESH_ON_PAGE_OPEN:
@@ -261,7 +290,7 @@ public final class Parser {
         } catch (IllegalStateException e) {
             throwElementInvalid(name, e);
         }
-        return null;
+        return null; // Unreachable
     }
 
     private static void validateElementStart(@NonNull XmlPullParser parser, @NonNull String name)
@@ -307,6 +336,11 @@ public final class Parser {
         throw new ParseException(String.format("Unexpected attribute %s.%s", parent, name));
     }
 
+    private static void throwAttributeInvalid(@NonNull String parent, @NonNull String name)
+            throws ParseException {
+        throw new ParseException(String.format("Attribute %s.%s invalid", parent, name));
+    }
+
     private static int parseInteger(@NonNull String valueString, @NonNull String parent,
             @NonNull String name) throws ParseException {
         try {
@@ -346,4 +380,47 @@ public final class Parser {
         return id;
     }
 
+    @StatelessIconType
+    private static int parseStatelessIconType(@NonNull String valueString, @NonNull String parent,
+            @NonNull String name) throws ParseException {
+        switch (valueString) {
+            case ENUM_STATELESS_ICON_TYPE_NONE:
+                return SafetySourcesGroup.STATELESS_ICON_TYPE_NONE;
+            case ENUM_STATELESS_ICON_TYPE_PRIVACY:
+                return SafetySourcesGroup.STATELESS_ICON_TYPE_PRIVACY;
+            default:
+                throwAttributeInvalid(parent, name);
+        }
+        return 0; // Unreachable
+    }
+
+    @Profile
+    private static int parseProfile(@NonNull String valueString, @NonNull String parent,
+            @NonNull String name) throws ParseException {
+        switch (valueString) {
+            case ENUM_PROFILE_PRIMARY:
+                return SafetySource.PROFILE_PRIMARY;
+            case ENUM_PROFILE_ALL:
+                return SafetySource.PROFILE_ALL;
+            default:
+                throwAttributeInvalid(parent, name);
+        }
+        return 0; // Unreachable
+    }
+
+    @InitialDisplayState
+    private static int parseInitialDisplayState(@NonNull String valueString, @NonNull String parent,
+            @NonNull String name) throws ParseException {
+        switch (valueString) {
+            case ENUM_INITIAL_DISPLAY_STATE_ENABLED:
+                return SafetySource.INITIAL_DISPLAY_STATE_ENABLED;
+            case ENUM_INITIAL_DISPLAY_STATE_DISABLED:
+                return SafetySource.INITIAL_DISPLAY_STATE_DISABLED;
+            case ENUM_INITIAL_DISPLAY_STATE_HIDDEN:
+                return SafetySource.INITIAL_DISPLAY_STATE_HIDDEN;
+            default:
+                throwAttributeInvalid(parent, name);
+        }
+        return 0; // Unreachable
+    }
 }

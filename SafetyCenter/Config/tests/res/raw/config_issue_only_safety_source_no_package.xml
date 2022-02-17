@@ -2,10 +2,9 @@
     <safety-sources-config>
         <safety-sources-group
             id="id">
-            <safety-source
-                type="3"
+            <issue-only-safety-source
                 id="id"
-                profile="1"/>
+                profile="primary_profile_only"/>
         </safety-sources-group>
     </safety-sources-config>
 </safety-center-config>

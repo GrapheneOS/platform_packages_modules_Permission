@@ -60,25 +60,25 @@ class ConfigInvalidTest {
             Params(
                 "ConfigDynamicSafetySourceAllDisabledNoWork",
                 R.raw.config_dynamic_safety_source_all_disabled_no_work,
-                "Element safety-source invalid",
+                "Element dynamic-safety-source invalid",
                 "Required attribute titleForWork missing"
             ),
             Params(
                 "ConfigDynamicSafetySourceAllNoWork",
                 R.raw.config_dynamic_safety_source_all_no_work,
-                "Element safety-source invalid",
+                "Element dynamic-safety-source invalid",
                 "Required attribute titleForWork missing"
             ),
             Params(
                 "ConfigDynamicSafetySourceDisabledNoSummary",
                 R.raw.config_dynamic_safety_source_disabled_no_summary,
-                "Element safety-source invalid",
+                "Element dynamic-safety-source invalid",
                 "Required attribute summary missing"
             ),
             Params(
                 "ConfigDynamicSafetySourceDisabledNoTitle",
                 R.raw.config_dynamic_safety_source_disabled_no_title,
-                "Element safety-source invalid",
+                "Element dynamic-safety-source invalid",
                 "Required attribute title missing"
             ),
             Params(
@@ -90,73 +90,79 @@ class ConfigInvalidTest {
             Params(
                 "ConfigDynamicSafetySourceHiddenWithIntent",
                 R.raw.config_dynamic_safety_source_hidden_with_intent,
-                "Element safety-source invalid",
+                "Element dynamic-safety-source invalid",
                 "Prohibited attribute intentAction present"
             ),
             Params(
                 "ConfigDynamicSafetySourceHiddenWithSummary",
                 R.raw.config_dynamic_safety_source_hidden_with_summary,
-                "Element safety-source invalid",
+                "Element dynamic-safety-source invalid",
                 "Prohibited attribute summary present"
             ),
             Params(
                 "ConfigDynamicSafetySourceHiddenWithTitle",
                 R.raw.config_dynamic_safety_source_hidden_with_title,
-                "Element safety-source invalid",
+                "Element dynamic-safety-source invalid",
                 "Prohibited attribute title present"
+            ),
+            Params(
+                "ConfigDynamicSafetySourceInvalidDisplay",
+                R.raw.config_dynamic_safety_source_invalid_display,
+                "Attribute dynamic-safety-source.initialDisplayState invalid",
+                null
             ),
             Params(
                 "ConfigDynamicSafetySourceInvalidProfile",
                 R.raw.config_dynamic_safety_source_invalid_profile,
-                "Element safety-source invalid",
-                "Attribute profile invalid"
+                "Attribute dynamic-safety-source.profile invalid",
+                null
             ),
             Params(
                 "ConfigDynamicSafetySourceNoId",
                 R.raw.config_dynamic_safety_source_no_id,
-                "Element safety-source invalid",
+                "Element dynamic-safety-source invalid",
                 "Required attribute id missing"
             ),
             Params(
                 "ConfigDynamicSafetySourceNoIntent",
                 R.raw.config_dynamic_safety_source_no_intent,
-                "Element safety-source invalid",
+                "Element dynamic-safety-source invalid",
                 "Required attribute intentAction missing"
             ),
             Params(
                 "ConfigDynamicSafetySourceNoPackage",
                 R.raw.config_dynamic_safety_source_no_package,
-                "Element safety-source invalid",
+                "Element dynamic-safety-source invalid",
                 "Required attribute packageName missing"
             ),
             Params(
                 "ConfigDynamicSafetySourceNoProfile",
                 R.raw.config_dynamic_safety_source_no_profile,
-                "Element safety-source invalid",
+                "Element dynamic-safety-source invalid",
                 "Required attribute profile missing"
             ),
             Params(
                 "ConfigDynamicSafetySourceNoSummary",
                 R.raw.config_dynamic_safety_source_no_summary,
-                "Element safety-source invalid",
+                "Element dynamic-safety-source invalid",
                 "Required attribute summary missing"
             ),
             Params(
                 "ConfigDynamicSafetySourceNoTitle",
                 R.raw.config_dynamic_safety_source_no_title,
-                "Element safety-source invalid",
+                "Element dynamic-safety-source invalid",
                 "Required attribute title missing"
             ),
             Params(
                 "ConfigDynamicSafetySourcePrimaryHiddenWithWork",
                 R.raw.config_dynamic_safety_source_primary_hidden_with_work,
-                "Element safety-source invalid",
+                "Element dynamic-safety-source invalid",
                 "Prohibited attribute titleForWork present"
             ),
             Params(
                 "ConfigDynamicSafetySourcePrimaryWithWork",
                 R.raw.config_dynamic_safety_source_primary_with_work,
-                "Element safety-source invalid",
+                "Element dynamic-safety-source invalid",
                 "Prohibited attribute titleForWork present"
             ),
             Params(
@@ -174,61 +180,61 @@ class ConfigInvalidTest {
             Params(
                 "ConfigIssueOnlySafetySourceInvalidProfile",
                 R.raw.config_issue_only_safety_source_invalid_profile,
-                "Element safety-source invalid",
-                "Attribute profile invalid"
+                "Attribute issue-only-safety-source.profile invalid",
+                null
             ),
             Params(
                 "ConfigIssueOnlySafetySourceNoId",
                 R.raw.config_issue_only_safety_source_no_id,
-                "Element safety-source invalid",
+                "Element issue-only-safety-source invalid",
                 "Required attribute id missing"
             ),
             Params(
                 "ConfigIssueOnlySafetySourceNoPackage",
                 R.raw.config_issue_only_safety_source_no_package,
-                "Element safety-source invalid",
+                "Element issue-only-safety-source invalid",
                 "Required attribute packageName missing"
             ),
             Params(
                 "ConfigIssueOnlySafetySourceNoProfile",
                 R.raw.config_issue_only_safety_source_no_profile,
-                "Element safety-source invalid",
+                "Element issue-only-safety-source invalid",
                 "Required attribute profile missing"
             ),
             Params(
                 "ConfigIssueOnlySafetySourceWithDisplay",
                 R.raw.config_issue_only_safety_source_with_display,
-                "Element safety-source invalid",
+                "Element issue-only-safety-source invalid",
                 "Prohibited attribute initialDisplayState present"
             ),
             Params(
                 "ConfigIssueOnlySafetySourceWithIntent",
                 R.raw.config_issue_only_safety_source_with_intent,
-                "Element safety-source invalid",
+                "Element issue-only-safety-source invalid",
                 "Prohibited attribute intentAction present"
             ),
             Params(
                 "ConfigIssueOnlySafetySourceWithSearch",
                 R.raw.config_issue_only_safety_source_with_search,
-                "Element safety-source invalid",
+                "Element issue-only-safety-source invalid",
                 "Prohibited attribute searchTerms present"
             ),
             Params(
                 "ConfigIssueOnlySafetySourceWithSummary",
                 R.raw.config_issue_only_safety_source_with_summary,
-                "Element safety-source invalid",
+                "Element issue-only-safety-source invalid",
                 "Prohibited attribute summary present"
             ),
             Params(
                 "ConfigIssueOnlySafetySourceWithTitle",
                 R.raw.config_issue_only_safety_source_with_title,
-                "Element safety-source invalid",
+                "Element issue-only-safety-source invalid",
                 "Prohibited attribute title present"
             ),
             Params(
                 "ConfigIssueOnlySafetySourceWithWork",
                 R.raw.config_issue_only_safety_source_with_work,
-                "Element safety-source invalid",
+                "Element issue-only-safety-source invalid",
                 "Prohibited attribute titleForWork present"
             ),
             Params(
@@ -236,18 +242,6 @@ class ConfigInvalidTest {
                 R.raw.config_mixed_safety_source_duplicate_key,
                 "Element safety-sources-config invalid",
                 "Duplicate id id among safety sources"
-            ),
-            Params(
-                "ConfigMixedSafetySourceInvalidType",
-                R.raw.config_mixed_safety_source_invalid_type,
-                "Element safety-source invalid",
-                "Attribute type invalid"
-            ),
-            Params(
-                "ConfigMixedSafetySourceNoType",
-                R.raw.config_mixed_safety_source_no_type,
-                "Element safety-source invalid",
-                "Required attribute type missing"
             ),
             Params(
                 "ConfigReferenceInvalid",
@@ -294,8 +288,8 @@ class ConfigInvalidTest {
             Params(
                 "ConfigSafetySourcesGroupInvalidIcon",
                 R.raw.config_safety_sources_group_invalid_icon,
-                "Element safety-sources-group invalid",
-                "Attribute statelessIconType invalid"
+                "Attribute safety-sources-group.statelessIconType invalid",
+                null
             ),
             Params(
                 "ConfigSafetySourcesGroupNoId",
@@ -318,79 +312,79 @@ class ConfigInvalidTest {
             Params(
                 "ConfigStaticSafetySourceInvalidProfile",
                 R.raw.config_static_safety_source_invalid_profile,
-                "Element safety-source invalid",
-                "Attribute profile invalid"
+                "Attribute static-safety-source.profile invalid",
+                null
             ),
             Params(
                 "ConfigStaticSafetySourceNoId",
                 R.raw.config_static_safety_source_no_id,
-                "Element safety-source invalid",
+                "Element static-safety-source invalid",
                 "Required attribute id missing"
             ),
             Params(
                 "ConfigStaticSafetySourceNoIntent",
                 R.raw.config_static_safety_source_no_intent,
-                "Element safety-source invalid",
+                "Element static-safety-source invalid",
                 "Required attribute intentAction missing"
             ),
             Params(
                 "ConfigStaticSafetySourceNoProfile",
                 R.raw.config_static_safety_source_no_profile,
-                "Element safety-source invalid",
+                "Element static-safety-source invalid",
                 "Required attribute profile missing"
             ),
             Params(
                 "ConfigStaticSafetySourceNoSummary",
                 R.raw.config_static_safety_source_no_summary,
-                "Element safety-source invalid",
+                "Element static-safety-source invalid",
                 "Required attribute summary missing"
             ),
             Params(
                 "ConfigStaticSafetySourceNoTitle",
                 R.raw.config_static_safety_source_no_title,
-                "Element safety-source invalid",
+                "Element static-safety-source invalid",
                 "Required attribute title missing"
             ),
             Params(
                 "ConfigStaticSafetySourceWithBroadcast",
                 R.raw.config_static_safety_source_with_broadcast,
-                "Element safety-source invalid",
+                "Element static-safety-source invalid",
                 "Prohibited attribute broadcastReceiverClassName present"
             ),
             Params(
                 "ConfigStaticSafetySourceWithDisplay",
                 R.raw.config_static_safety_source_with_display,
-                "Element safety-source invalid",
+                "Element static-safety-source invalid",
                 "Prohibited attribute initialDisplayState present"
             ),
             Params(
                 "ConfigStaticSafetySourceWithLogging",
                 R.raw.config_static_safety_source_with_logging,
-                "Element safety-source invalid",
-                "Prohibited attribute disallowLogging present"
+                "Element static-safety-source invalid",
+                "Prohibited attribute allowLogging present"
             ),
             Params(
                 "ConfigStaticSafetySourceWithPackage",
                 R.raw.config_static_safety_source_with_package,
-                "Element safety-source invalid",
+                "Element static-safety-source invalid",
                 "Prohibited attribute packageName present"
             ),
             Params(
                 "ConfigStaticSafetySourceWithPrimaryAndWork",
                 R.raw.config_static_safety_source_with_primary_and_work,
-                "Element safety-source invalid",
+                "Element static-safety-source invalid",
                 "Prohibited attribute titleForWork present"
             ),
             Params(
                 "ConfigStaticSafetySourceWithRefresh",
                 R.raw.config_static_safety_source_with_refresh,
-                "Element safety-source invalid",
+                "Element static-safety-source invalid",
                 "Prohibited attribute allowRefreshOnPageOpen present"
             ),
             Params(
                 "ConfigStaticSafetySourceWithSeverity",
                 R.raw.config_static_safety_source_with_severity,
-                "Element safety-source invalid",
+                "Element static-safety-source invalid",
                 "Prohibited attribute maxSeverityLevel present"
             )
         )
