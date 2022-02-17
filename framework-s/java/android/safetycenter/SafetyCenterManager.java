@@ -373,6 +373,41 @@ public final class SafetyCenterManager {
         }
     }
 
+    /**
+     * Add a safety source dynamically to be used in addition to the sources in the Safety Center
+     * xml configuration.
+     *
+     * <p>Note: This API serves to facilitate CTS testing and should not be used for other purposes.
+     */
+    // TODO(b/217944317): Modify the parameters to be a SafetySource or SafetyCenterConfig once
+    //  these classes are Parcelable and part of the API surface.
+    @RequiresPermission(MANAGE_SAFETY_CENTER)
+    public void addAdditionalSafetySource(@NonNull String sourceId, @NonNull String packageName,
+            @NonNull String broadcastReceiverName) {
+        try {
+            mService.addAdditionalSafetySource(sourceId, packageName, broadcastReceiverName);
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
+    /**
+     * Clears additional safety sources added dynamically to be used in addition to the sources in
+     * the Safety Center xml configuration.
+     *
+     * <p>Note: This API serves to facilitate CTS testing and should not be used for other purposes.
+     */
+    // TODO(b/217944317): Modify the parameters to be a SafetySource or SafetyCenterConfig once
+    //  these classes are Parcelable and part of the API surface.
+    @RequiresPermission(MANAGE_SAFETY_CENTER)
+    public void clearAdditionalSafetySources() {
+        try {
+            mService.clearAdditionalSafetySources();
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
     private static final class ListenerDelegate
             extends IOnSafetyCenterDataChangedListener.Stub {
         @NonNull

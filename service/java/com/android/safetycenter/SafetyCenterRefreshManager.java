@@ -44,6 +44,7 @@ import com.android.safetycenter.config.SafetyCenterConfig;
 import com.android.safetycenter.config.SafetySource;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -63,6 +64,9 @@ final class SafetyCenterRefreshManager {
     private final Context mContext;
     @Nullable
     private SafetyCenterConfig mSafetyCenterConfig;
+    @Nullable
+    private final List<ComponentName> mAdditionalSafetySourceBroadcastReceiverComponents =
+            new ArrayList<>();
 
     /** Creates a {@link SafetyCenterRefreshManager} using the given {@link Context}. */
     SafetyCenterRefreshManager(Context context) {
@@ -74,6 +78,20 @@ final class SafetyCenterRefreshManager {
     /** Sets the {@link SafetyCenterConfig} to use to determine which sources to refresh. */
     void setSafetyCenterConfig(SafetyCenterConfig safetyCenterConfig) {
         mSafetyCenterConfig = safetyCenterConfig;
+    }
+
+    // TODO(b/218157907): Remove this method and use a SafetyCenterConfigReader field in
+    //  SafetyCenterRefreshManager instead once ag/16834483 is submitted.
+    /** Adds a broadcast receiver component representing a source to refresh. */
+    void addAdditionalSafetySourceBroadcastReceiverComponent(ComponentName componentName) {
+        mAdditionalSafetySourceBroadcastReceiverComponents.add(componentName);
+    }
+
+    // TODO(b/218157907): Remove this method and use a SafetyCenterConfigReader field in
+    //  SafetyCenterRefreshManager instead once ag/16834483 is submitted.
+    /** Removes all additional broadcast receiver components representing sources to refresh. */
+    void clearAdditionalSafetySourceBroadcastReceiverComponents() {
+        mAdditionalSafetySourceBroadcastReceiverComponents.clear();
     }
 
     /**
@@ -105,12 +123,7 @@ final class SafetyCenterRefreshManager {
                         .collect(Collectors.toList());
 
         sendRefreshBroadcastToSafetySources(safetySourcesToRefresh, requestType);
-
-        // TODO(b/217944317): Remove this hardcoded broadcast to the cts app. Currently this is
-        //  hardcoded as we don't have an API to add/remove safety sources at runtime in tests.
-        //  We will add such an API as soon as we have API council feedback to determine the best
-        //  approach.
-        sendRefreshBroadcastToCtsAppForTest(requestType);
+        sendRefreshBroadcastToAdditionalSafetySourceReceivers(requestType);
     }
 
     private void sendRefreshBroadcastToSafetySources(List<SafetySource> safetySources,
@@ -141,7 +154,7 @@ final class SafetyCenterRefreshManager {
         }
     }
 
-    private void sendRefreshBroadcastToCtsAppForTest(int requestType) {
+    private void sendRefreshBroadcastToAdditionalSafetySourceReceivers(int requestType) {
         Intent broadcastIntent = new Intent(ACTION_REFRESH_SAFETY_SOURCES)
                 .putExtra(EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE, requestType)
                 .setFlags(FLAG_RECEIVER_FOREGROUND);
@@ -153,13 +166,12 @@ final class SafetyCenterRefreshManager {
                 REASON_REFRESH_SAFETY_SOURCES,
                 "Safety Center is requesting data from safety sources");
 
-        Intent broadcastIntentForSource = new Intent(broadcastIntent).setComponent(
-                new ComponentName("android.safetycenter.cts",
-                        "android.safetycenter.cts.SafetySourceBroadcastReceiver"));
-        // The following operation requires INTERACT_ACROSS_USERS permission.
-        mContext.sendBroadcastAsUser(broadcastIntentForSource,
-                UserHandle.CURRENT,
-                SEND_SAFETY_CENTER_UPDATE,
-                broadcastOptions.toBundle());
+        for (ComponentName componentName : mAdditionalSafetySourceBroadcastReceiverComponents) {
+            // The following operation requires INTERACT_ACROSS_USERS permission.
+            mContext.sendBroadcastAsUser(new Intent(broadcastIntent).setComponent(componentName),
+                    UserHandle.CURRENT,
+                    SEND_SAFETY_CENTER_UPDATE,
+                    broadcastOptions.toBundle());
+        }
     }
 }
