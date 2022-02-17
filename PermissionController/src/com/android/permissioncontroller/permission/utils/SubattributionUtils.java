@@ -33,10 +33,14 @@ import com.android.modules.utils.build.SdkLevel;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Utils related to subattribution. */
+/**
+ * Utils related to subattribution.
+ */
 public class SubattributionUtils {
 
-    /** Returns true if the app supports subattribution. */
+    /**
+     * Returns true if the app supports subattribution.
+     */
     public static boolean isSubattributionSupported(Context context, ApplicationInfo appInfo) {
         if (!SdkLevel.isAtLeastS()) {
             return false;
