@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.android.safetycenter.config;
+package android.safetycenter.config;
 
-import static com.android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY;
+import static android.os.Build.VERSION_CODES.TIRAMISU;
 
 import static java.util.Objects.requireNonNull;
 
@@ -24,7 +24,12 @@ import android.annotation.IdRes;
 import android.annotation.IntDef;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
+import android.annotation.SystemApi;
 import android.content.res.Resources;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.RequiresApi;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -33,8 +38,14 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-/** Data class used to represent a group of mixed safety sources */
-public final class SafetySourcesGroup {
+/**
+ * Data class used to represent the initial configuration of a group of safety sources
+ *
+ * @hide
+ */
+@SystemApi
+@RequiresApi(TIRAMISU)
+public final class SafetySourcesGroup implements Parcelable {
 
     /**
      * Indicates that the safety sources group should be displayed as a collapsible group with an
@@ -182,6 +193,41 @@ public final class SafetySourcesGroup {
                 + '}';
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeString(mId);
+        dest.writeInt(mTitleResId);
+        dest.writeInt(mSummaryResId);
+        dest.writeInt(mStatelessIconType);
+        dest.writeParcelableList(mSafetySources, flags);
+    }
+
+    @NonNull
+    public static final Parcelable.Creator<SafetySourcesGroup> CREATOR =
+            new Parcelable.Creator<SafetySourcesGroup>() {
+                @Override
+                public SafetySourcesGroup createFromParcel(Parcel in) {
+                    String id = in.readString();
+                    int titleResId = in.readInt();
+                    int summaryResId = in.readInt();
+                    int statelessIconType = in.readInt();
+                    List<SafetySource> safetySources = new ArrayList<>();
+                    in.readParcelableList(safetySources, SafetySource.class.getClassLoader());
+                    return new SafetySourcesGroup(id, titleResId, summaryResId, statelessIconType,
+                            Collections.unmodifiableList(safetySources));
+                }
+
+                @Override
+                public SafetySourcesGroup[] newArray(int size) {
+                    return new SafetySourcesGroup[size];
+                }
+            };
+
     /** Builder class for {@link SafetySourcesGroup}. */
     public static final class Builder {
         @Nullable
@@ -248,7 +294,7 @@ public final class SafetySourcesGroup {
             int safetySourcesSize = mSafetySources.size();
             for (int i = 0; i < safetySourcesSize; i++) {
                 int type = mSafetySources.get(i).getType();
-                if (type != SAFETY_SOURCE_TYPE_ISSUE_ONLY) {
+                if (type != SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY) {
                     titleRequired = true;
                     break;
                 }
