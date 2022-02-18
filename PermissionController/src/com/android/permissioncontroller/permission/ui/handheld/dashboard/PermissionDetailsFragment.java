@@ -335,6 +335,10 @@ public class PermissionDetailsFragment extends SettingsWithLargeHeader implement
         PreferenceScreen finalScreen = screen;
 
         new PermissionApps.AppDataLoader(context, () -> {
+            if (getActivity() == null) {
+                // Fragment has no Activity, return.
+                return;
+            }
             mViewModel.renderTimelinePreferences(usages, category, finalScreen, preferenceFactory);
 
             setLoading(false, true);
