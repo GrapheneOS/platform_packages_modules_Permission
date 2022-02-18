@@ -409,7 +409,8 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
 
             // If this category is empty, and this isn't the "allowed" category of the storage
             // permission, set up the empty preference.
-            if (packages.size() == 0 && (!isStorageAndLessThanT || !grantCategory.equals(ALLOWED))) {
+            if (packages.size() == 0
+                    && (!isStorageAndLessThanT || !grantCategory.equals(ALLOWED))) {
                 Preference empty = new Preference(context);
                 empty.setSelectable(false);
                 empty.setKey(category.getKey() + KEY_EMPTY);
