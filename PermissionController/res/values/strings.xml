@@ -1484,6 +1484,38 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="safety_center_issue_card_dismiss_button">Dismiss</string>
     <!-- Label for the button that takes the user to the settings page for Android Security  [CHAR LIMIT=60] -->
     <string name="security_settings">Security Settings</string>
+    <!-- Label for the permission usage section of safety hub QS page[CHAR LIMIT=30] -->
+    <string name="sensor_permissions_qs">Sensor Permissions</string>
+    <!-- Label for the privacy controls section of safety hub QS page [CHAR LIMIT=30] -->
+    <string name="privacy_controls_qs">Privacy Controls</string>
+    <!-- Label when permissions were removed via safety center QS page [CHAR LIMIT=30] -->
+    <string name="permissions_removed_qs">Permission removed</string>
+    <!-- Label to see camera usage in safety center QS page [CHAR LIMIT=50] -->
+    <string name="camera_usage_qs">See more camera usage</string>
+    <!-- Label to see microphone usage in safety center QS page [CHAR LIMIT=50] -->
+    <string name="microphone_usage_qs">See more microphone usage</string>
+    <!-- Label to remove camera permission in safety center QS page [CHAR LIMIT=50] -->
+    <string name="remove_camera_qs">Remove camera permission</string>
+    <!-- Label to remove microphone permission in safety center QS page [CHAR LIMIT=50] -->
+    <string name="remove_microphone_qs">Remove microphone permission</string>
+    <!-- Label to manage service in safety center QS page [CHAR LIMIT=50] -->
+    <string name="manage_service_qs">Manage service</string>
+    <!-- Label for active usage by phone call in safety center QS page [CHAR LIMIT=50] -->
+    <string name="active_call_usage_qs">Being used by phone call</string>
+    <!-- Label for recent usage by phone call in safety center QS page [CHAR LIMIT=50] -->
+    <string name="recent_call_usage_qs">Recently used in phone call</string>
+    <!-- Label for active app usage in safety center QS page [CHAR LIMIT=50] -->
+    <string name="active_app_usage_qs">Being used by <xliff:g id="app_name" example="Gmail">%1$s</xliff:g></string>
+    <!-- Label for recent app usage in safety center QS page [CHAR LIMIT=50] -->
+    <string name="recent_app_usage_qs">Recently used by <xliff:g id="app_name" example="Gmail">%1$s</xliff:g></string>
+    <!-- Label for active app usage with sub-attribution or proxy label in safety center QS page [CHAR LIMIT=NONE] -->
+    <string name="active_app_usage_1_qs">Being used by <xliff:g id="app_name" example="Gmail">%1$s</xliff:g> (<xliff:g id="attribution_label" example="For Wallet">%2$s</xliff:g>)</string>
+    <!-- Label for recent app usage with sub-attribution or proxy label in safety center QS page [CHAR LIMIT=NONE] -->
+    <string name="recent_app_usage_1_qs">Recently used by <xliff:g id="app_name" example="Gmail">%1$s</xliff:g> (<xliff:g id="attribution_label" example="For Wallet">%2$s</xliff:g>)</string>
+    <!-- Label for active app usage with sub-attribution and proxy label in safety center QS page [CHAR LIMIT=NONE] -->
+    <string name="active_app_usage_2_qs">Being used by <xliff:g id="app_name" example="Gmail">%1$s</xliff:g> (<xliff:g id="attribution_label" example="For Wallet">%2$s</xliff:g>  \u2022 <xliff:g id="proxy_label" example="Speech services">%3$s</xliff:g>)</string>
+    <!-- Label for recent app usage with sub-attribution and proxy label in safety center QS page [CHAR LIMIT=NONE] -->
+    <string name="recent_app_usage_2_qs">Recently used by <xliff:g id="app_name" example="Gmail">%1$s</xliff:g> (<xliff:g id="attribution_label" example="For Wallet">%2$s</xliff:g>  \u2022 <xliff:g id="proxy_label" example="Speech services">%3$s</xliff:g>)</string>
 
     <!-- Title of the safety and privacy quick settings tile [CHAR LIMIT=NONE] -->
     <string name="safety_privacy_qs_tile_title">Security &amp; Privacy</string>

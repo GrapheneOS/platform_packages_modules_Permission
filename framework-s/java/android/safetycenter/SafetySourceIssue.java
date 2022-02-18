@@ -383,6 +383,7 @@ public final class SafetySourceIssue implements Parcelable {
                 new Parcelable.Creator<Action>() {
                     @Override
                     public Action createFromParcel(Parcel in) {
+                        String id = requireNonNull(in.readString());
                         CharSequence label =
                                 requireNonNull(
                                         TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in));
@@ -391,7 +392,7 @@ public final class SafetySourceIssue implements Parcelable {
                         boolean resolving = in.readBoolean();
                         CharSequence successMessage =
                                 TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
-                        return new Action(label, pendingIntent, resolving, successMessage);
+                        return new Action(id, label, pendingIntent, resolving, successMessage);
                     }
 
                     @Override
@@ -401,6 +402,8 @@ public final class SafetySourceIssue implements Parcelable {
                 };
 
         @NonNull
+        private final String mId;
+        @NonNull
         private final CharSequence mLabel;
         @NonNull
         private final PendingIntent mPendingIntent;
@@ -408,12 +411,25 @@ public final class SafetySourceIssue implements Parcelable {
         @Nullable
         private final CharSequence mSuccessMessage;
 
-        private Action(@NonNull CharSequence label, @NonNull PendingIntent pendingIntent,
-                boolean resolving, @Nullable CharSequence successMessage) {
-            this.mLabel = label;
-            this.mPendingIntent = pendingIntent;
-            this.mResolving = resolving;
-            this.mSuccessMessage = successMessage;
+        private Action(
+                String id,
+                @NonNull CharSequence label,
+                @NonNull PendingIntent pendingIntent,
+                boolean resolving,
+                @Nullable CharSequence successMessage) {
+            mId = id;
+            mLabel = label;
+            mPendingIntent = pendingIntent;
+            mResolving = resolving;
+            mSuccessMessage = successMessage;
+        }
+
+        /**
+         * Returns the ID of the action, unique among actions in a given {@link SafetySourceIssue}.
+         */
+        @NonNull
+        public String getId() {
+            return mId;
         }
 
         /**
@@ -462,6 +478,7 @@ public final class SafetySourceIssue implements Parcelable {
 
         @Override
         public void writeToParcel(@NonNull Parcel dest, int flags) {
+            dest.writeString(mId);
             TextUtils.writeToParcel(mLabel, dest, flags);
             mPendingIntent.writeToParcel(dest, flags);
             dest.writeBoolean(mResolving);
@@ -473,33 +490,33 @@ public final class SafetySourceIssue implements Parcelable {
             if (this == o) return true;
             if (!(o instanceof Action)) return false;
             Action that = (Action) o;
-            return mResolving == that.mResolving
+            return mId.equals(that.mId)
                     && TextUtils.equals(mLabel, that.mLabel)
                     && mPendingIntent.equals(that.mPendingIntent)
+                    && mResolving == that.mResolving
                     && Objects.equals(mSuccessMessage, that.mSuccessMessage);
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(mLabel, mPendingIntent, mResolving, mSuccessMessage);
+            return Objects.hash(mId, mLabel, mPendingIntent, mResolving, mSuccessMessage);
         }
 
         @Override
         public String toString() {
             return "Action{"
-                    + "mLabel="
-                    + mLabel
-                    + ", mPendingIntent="
-                    + mPendingIntent
-                    + ", mResolving="
-                    + mResolving
-                    + ", mSuccessMessage="
-                    + mSuccessMessage
+                    + "mId=" + mId
+                    + ", mLabel=" + mLabel
+                    + ", mPendingIntent=" + mPendingIntent
+                    + ", mResolving=" + mResolving
+                    + ", mSuccessMessage=" + mSuccessMessage
                     + '}';
         }
 
         /** Builder class for {@link Action}. */
         public static final class Builder {
+            @NonNull
+            private final String mId;
             @NonNull
             private final CharSequence mLabel;
             @NonNull
@@ -509,9 +526,13 @@ public final class SafetySourceIssue implements Parcelable {
             private CharSequence mSuccessMessage;
 
             /** Creates a {@link Builder} for an {@link Action}. */
-            public Builder(@NonNull CharSequence label, @NonNull PendingIntent pendingIntent) {
-                this.mLabel = requireNonNull(label);
-                this.mPendingIntent = requireNonNull(pendingIntent);
+            public Builder(
+                    @NonNull String id,
+                    @NonNull CharSequence label,
+                    @NonNull PendingIntent pendingIntent) {
+                mId = requireNonNull(id);
+                mLabel = requireNonNull(label);
+                mPendingIntent = requireNonNull(pendingIntent);
             }
 
             /**
@@ -521,7 +542,7 @@ public final class SafetySourceIssue implements Parcelable {
              */
             @NonNull
             public Builder setResolving(boolean resolving) {
-                this.mResolving = resolving;
+                mResolving = resolving;
                 return this;
             }
 
@@ -531,14 +552,14 @@ public final class SafetySourceIssue implements Parcelable {
              */
             @NonNull
             public Builder setSuccessMessage(@Nullable CharSequence successMessage) {
-                this.mSuccessMessage = successMessage;
+                mSuccessMessage = successMessage;
                 return this;
             }
 
             /** Creates the {@link Action} defined by this {@link Builder}. */
             @NonNull
             public Action build() {
-                return new Action(mLabel, mPendingIntent, mResolving, mSuccessMessage);
+                return new Action(mId, mLabel, mPendingIntent, mResolving, mSuccessMessage);
             }
         }
     }
@@ -566,7 +587,9 @@ public final class SafetySourceIssue implements Parcelable {
         private final String mIssueTypeId;
 
         /** Creates a {@link Builder} for a {@link SafetySourceIssue}. */
-        public Builder(@NonNull String id, @NonNull CharSequence title,
+        public Builder(
+                @NonNull String id,
+                @NonNull CharSequence title,
                 @NonNull CharSequence summary,
                 @SeverityLevel int severityLevel,
                 @NonNull String issueTypeId) {

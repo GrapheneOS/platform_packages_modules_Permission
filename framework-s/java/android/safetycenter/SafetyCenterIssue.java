@@ -356,22 +356,35 @@ public final class SafetyCenterIssue implements Parcelable {
     @SystemApi
     public static final class Action implements Parcelable {
         @NonNull
+        private final String mId;
+        @NonNull
         private final CharSequence mLabel;
         @NonNull
         private final PendingIntent mPendingIntent;
         private final boolean mResolving;
+        private final boolean mInFlight;
         @Nullable
         private final CharSequence mSuccessMessage;
 
         private Action(
+                @NonNull String id,
                 @NonNull CharSequence label,
                 @NonNull PendingIntent pendingIntent,
                 boolean resolving,
+                boolean inFlight,
                 @Nullable CharSequence successMessage) {
+            mId = requireNonNull(id);
             mLabel = requireNonNull(label);
             mPendingIntent = requireNonNull(pendingIntent);
             mResolving = resolving;
+            mInFlight = inFlight;
             mSuccessMessage = successMessage;
+        }
+
+        /** Returns the ID of this action. */
+        @NonNull
+        public String getId() {
+            return mId;
         }
 
         /** Returns a label describing this {@link Action}. */
@@ -395,6 +408,11 @@ public final class SafetyCenterIssue implements Parcelable {
             return mResolving;
         }
 
+        /** Returns whether or not this action is currently being executed. */
+        public boolean isInFlight() {
+            return mInFlight;
+        }
+
         /**
          * Returns the success message to display after successfully completing this {@link Action}
          * or {@code null} if none should be displayed.
@@ -409,23 +427,28 @@ public final class SafetyCenterIssue implements Parcelable {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             Action action = (Action) o;
-            return TextUtils.equals(mLabel, action.mLabel)
+            return Objects.equals(mId, action.mId)
+                    && TextUtils.equals(mLabel, action.mLabel)
                     && Objects.equals(mPendingIntent, action.mPendingIntent)
                     && mResolving == action.mResolving
+                    && mInFlight == action.mInFlight
                     && TextUtils.equals(mSuccessMessage, action.mSuccessMessage);
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(mLabel, mSuccessMessage, mResolving, mPendingIntent);
+            return Objects.hash(
+                    mId, mLabel, mSuccessMessage, mResolving, mInFlight, mPendingIntent);
         }
 
         @Override
         public String toString() {
             return "Action{"
-                    + "mLabel=" + mLabel
+                    + "mId=" + mId
+                    + ", mLabel=" + mLabel
                     + ", mPendingIntent=" + mPendingIntent
                     + ", mResolving=" + mResolving
+                    + ", mInFlight=" + mInFlight
                     + ", mSuccessMessage=" + mSuccessMessage
                     + '}';
         }
@@ -437,9 +460,11 @@ public final class SafetyCenterIssue implements Parcelable {
 
         @Override
         public void writeToParcel(@NonNull Parcel dest, int flags) {
+            dest.writeString(mId);
             TextUtils.writeToParcel(mLabel, dest, flags);
             dest.writeParcelable(mPendingIntent, flags);
             dest.writeBoolean(mResolving);
+            dest.writeBoolean(mInFlight);
             TextUtils.writeToParcel(mSuccessMessage, dest, flags);
         }
 
@@ -447,12 +472,13 @@ public final class SafetyCenterIssue implements Parcelable {
         public static final Creator<Action> CREATOR = new Creator<Action>() {
             @Override
             public Action createFromParcel(Parcel in) {
-                return new Action.Builder()
+                return new Action.Builder(in.readString())
                         .setLabel(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in))
                         .setPendingIntent(
                                 in.readParcelable(
                                         PendingIntent.class.getClassLoader(), PendingIntent.class))
                         .setResolving(in.readBoolean())
+                        .setInFlight(in.readBoolean())
                         .setSuccessMessage(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in))
                         .build();
             }
@@ -465,10 +491,16 @@ public final class SafetyCenterIssue implements Parcelable {
 
         /** Builder class for {@link Action}. */
         public static final class Builder {
+            private String mId;
             private CharSequence mLabel;
             private PendingIntent mPendingIntent;
             private boolean mResolving;
+            private boolean mInFlight;
             private CharSequence mSuccessMessage;
+
+            public Builder(@NonNull String id) {
+                mId = id;
+            }
 
             /** Sets the label of this {@link Action}. */
             @NonNull
@@ -496,6 +528,17 @@ public final class SafetyCenterIssue implements Parcelable {
             }
 
             /**
+             * Sets whether or not this action is in flight. Defaults to false.
+             *
+             * @see #isInFlight()
+             */
+            @NonNull
+            public Builder setInFlight(boolean inFlight) {
+                mInFlight = inFlight;
+                return this;
+            }
+
+            /**
              * Sets or clears the success message to be displayed when this {@link Action}
              * completes.
              */
@@ -508,7 +551,8 @@ public final class SafetyCenterIssue implements Parcelable {
             /** Creates the {@link Action} defined by this {@link Builder}. */
             @NonNull
             public Action build() {
-                return new Action(mLabel, mPendingIntent, mResolving, mSuccessMessage);
+                return new Action(
+                        mId, mLabel, mPendingIntent, mResolving, mInFlight, mSuccessMessage);
             }
         }
     }

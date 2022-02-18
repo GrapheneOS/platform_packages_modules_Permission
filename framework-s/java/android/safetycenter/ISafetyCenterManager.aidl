@@ -81,4 +81,23 @@ interface ISafetyCenterManager {
      * Dismisses the issue corresponding to the given issue ID.
      */
     void dismissSafetyIssue(String issueId, int userId);
+
+   /**
+    * Add a safety source dynamically to be used in addition to the sources in the Safety Center
+    * xml configuration.
+    *
+    * <p>Note: This API serves to facilitate CTS testing and should not be used for other purposes.
+    */
+    void addAdditionalSafetySource(
+            String sourceId,
+            String packageName,
+            String broadcastReceiverName);
+
+    /**
+     * Clears additional safety sources added dynamically to be used in addition to the sources in
+     * the Safety Center xml configuration.
+     *
+     * <p>Note: This API serves to facilitate CTS testing and should not be used for other purposes.
+     */
+    void clearAdditionalSafetySources();
 }
