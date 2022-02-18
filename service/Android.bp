@@ -20,7 +20,8 @@ filegroup {
     name: "service-permission-sources",
     srcs: [
         "java/**/*.java",
-        "java/**/*.kt",
+        // Exclude Kotlin sources for T.
+        //"java/**/*.kt",
     ],
     path: "java",
     visibility: ["//visibility:private"],
