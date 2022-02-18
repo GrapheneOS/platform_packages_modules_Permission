@@ -17,18 +17,10 @@ package {
     default_applicable_licenses: ["Android-Apache-2.0"],
 }
 
-xsd_config {
-    name: "safety-center-config-parser",
-    srcs: ["safety_center_config.xsd"],
-    package_name: "com.android.safetycenter.config.parser",
-    boolean_getter: true,
-}
-
 java_library {
     name: "safety-center-config",
     srcs: [
         "java/**/*.java",
-        ":safety-center-config-parser",
     ],
     libs: [
         "framework-annotations-lib",

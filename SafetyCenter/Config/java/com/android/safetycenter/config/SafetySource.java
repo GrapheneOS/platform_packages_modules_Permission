@@ -28,9 +28,6 @@ import java.util.Objects;
 
 /** Data class used to represent a generic safety source */
 public final class SafetySource {
-    /** Invalid safety source. We never expect this value to be set. */
-    private static final int SAFETY_SOURCE_TYPE_INVALID = 0;
-
     /** Static safety source. */
     public static final int SAFETY_SOURCE_TYPE_STATIC = 1;
 
@@ -129,7 +126,7 @@ public final class SafetySource {
     private final int mSearchTermsResId;
     @Nullable
     private final String mBroadcastReceiverClassName;
-    private final boolean mDisallowLogging;
+    private final boolean mAllowLogging;
     private final boolean mAllowRefreshOnPageOpen;
 
     /** Returns the id of this safety source. */
@@ -146,7 +143,7 @@ public final class SafetySource {
             int maxSeverityLevel,
             @IdRes int searchTermsResId,
             @Nullable String broadcastReceiverClassName,
-            boolean disallowLogging,
+            boolean allowLogging,
             boolean allowRefreshOnPageOpen) {
         mType = type;
         mId = id;
@@ -160,7 +157,7 @@ public final class SafetySource {
         mMaxSeverityLevel = maxSeverityLevel;
         mSearchTermsResId = searchTermsResId;
         mBroadcastReceiverClassName = broadcastReceiverClassName;
-        mDisallowLogging = disallowLogging;
+        mAllowLogging = allowLogging;
         mAllowRefreshOnPageOpen = allowRefreshOnPageOpen;
     }
 
@@ -283,13 +280,13 @@ public final class SafetySource {
         return mBroadcastReceiverClassName;
     }
 
-    /** Returns the disallow logging property of this safety source. */
-    public boolean isDisallowLogging() {
+    /** Returns the allow logging property of this safety source. */
+    public boolean isAllowLogging() {
         if (mType == SAFETY_SOURCE_TYPE_STATIC) {
             throw new UnsupportedOperationException(
-                    "isDisallowLogging unsupported for static safety source");
+                    "isAllowLogging unsupported for static safety source");
         }
-        return mDisallowLogging;
+        return mAllowLogging;
     }
 
     /** Returns the allow refresh on page open property of this safety source. */
@@ -317,7 +314,7 @@ public final class SafetySource {
                 && mMaxSeverityLevel == that.mMaxSeverityLevel
                 && mSearchTermsResId == that.mSearchTermsResId
                 && Objects.equals(mBroadcastReceiverClassName, that.mBroadcastReceiverClassName)
-                && mDisallowLogging == that.mDisallowLogging
+                && mAllowLogging == that.mAllowLogging
                 && mAllowRefreshOnPageOpen == that.mAllowRefreshOnPageOpen;
     }
 
@@ -325,7 +322,7 @@ public final class SafetySource {
     public int hashCode() {
         return Objects.hash(mType, mId, mPackageName, mTitleResId, mSummaryResId, mIntentAction,
                 mProfile, mInitialDisplayState, mMaxSeverityLevel, mSearchTermsResId,
-                mBroadcastReceiverClassName, mDisallowLogging, mAllowRefreshOnPageOpen);
+                mBroadcastReceiverClassName, mAllowLogging, mAllowRefreshOnPageOpen);
     }
 
     @Override
@@ -342,16 +339,15 @@ public final class SafetySource {
                 + ", mMaxSeverityLevel=" + mMaxSeverityLevel
                 + ", mSearchTermsResId=" + mSearchTermsResId
                 + ", mBroadcastReceiverClassName='" + mBroadcastReceiverClassName + '\''
-                + ", mDisallowLogging=" + mDisallowLogging
+                + ", mAllowLogging=" + mAllowLogging
                 + ", mAllowRefreshOnPageOpen=" + mAllowRefreshOnPageOpen
                 + '}';
     }
 
     /** Builder class for {@link SafetySource}. */
     public static final class Builder {
-        @Nullable
         @SafetySourceType
-        private Integer mType;
+        private final int mType;
         @Nullable
         private String mId;
         @Nullable
@@ -381,19 +377,13 @@ public final class SafetySource {
         @Nullable
         private String mBroadcastReceiverClassName;
         @Nullable
-        private Boolean mDisallowLogging;
+        private Boolean mAllowLogging;
         @Nullable
         private Boolean mAllowRefreshOnPageOpen;
 
         /** Creates a {@link Builder} for a {@link SafetySource}. */
-        public Builder() {
-        }
-
-        /** Sets the type of this safety source. */
-        @NonNull
-        public Builder setType(@SafetySourceType int type) {
+        public Builder(@SafetySourceType int type) {
             mType = type;
-            return this;
         }
 
         /** Sets the id of this safety source. */
@@ -473,10 +463,10 @@ public final class SafetySource {
             return this;
         }
 
-        /** Sets the disallow logging property of this safety source. */
+        /** Sets the allow logging property of this safety source. */
         @NonNull
-        public Builder setDisallowLogging(boolean disallowLogging) {
-            mDisallowLogging = disallowLogging;
+        public Builder setAllowLogging(boolean allowLogging) {
+            mAllowLogging = allowLogging;
             return this;
         }
 
@@ -490,12 +480,14 @@ public final class SafetySource {
         /** Creates the {@link SafetySource} defined by this {@link Builder}. */
         @NonNull
         public SafetySource build() {
-            int type = BuilderUtils.validateIntDef(mType, "type", true, false,
-                    SAFETY_SOURCE_TYPE_INVALID, SAFETY_SOURCE_TYPE_STATIC,
-                    SAFETY_SOURCE_TYPE_DYNAMIC, SAFETY_SOURCE_TYPE_ISSUE_ONLY);
-            boolean isStatic = type == SAFETY_SOURCE_TYPE_STATIC;
-            boolean isDynamic = type == SAFETY_SOURCE_TYPE_DYNAMIC;
-            boolean isIssueOnly = type == SAFETY_SOURCE_TYPE_ISSUE_ONLY;
+            if (mType != SAFETY_SOURCE_TYPE_STATIC
+                    && mType != SAFETY_SOURCE_TYPE_DYNAMIC
+                    && mType != SAFETY_SOURCE_TYPE_ISSUE_ONLY) {
+                throw new IllegalStateException("Unexpected type");
+            }
+            boolean isStatic = mType == SAFETY_SOURCE_TYPE_STATIC;
+            boolean isDynamic = mType == SAFETY_SOURCE_TYPE_DYNAMIC;
+            boolean isIssueOnly = mType == SAFETY_SOURCE_TYPE_ISSUE_ONLY;
             BuilderUtils.validateAttribute(mId, "id", true, false);
             BuilderUtils.validateAttribute(mPackageName, "packageName", isDynamic || isIssueOnly,
                     isStatic);
@@ -522,13 +514,13 @@ public final class SafetySource {
                     false, isIssueOnly);
             BuilderUtils.validateAttribute(mBroadcastReceiverClassName,
                     "broadcastReceiverClassName", false, isStatic);
-            boolean disallowLogging = BuilderUtils.validateBoolean(mDisallowLogging,
-                    "disallowLogging", false, isStatic, false);
+            boolean allowLogging = BuilderUtils.validateBoolean(mAllowLogging, "allowLogging",
+                    false, isStatic, true);
             boolean allowRefreshOnPageOpen = BuilderUtils.validateBoolean(mAllowRefreshOnPageOpen,
                     "allowRefreshOnPageOpen", false, isStatic, false);
-            return new SafetySource(type, mId, mPackageName, titleResId, titleForWorkResId,
+            return new SafetySource(mType, mId, mPackageName, titleResId, titleForWorkResId,
                     summaryResId, mIntentAction, profile, initialDisplayState, maxSeverityLevel,
-                    searchTermsResId, mBroadcastReceiverClassName, disallowLogging,
+                    searchTermsResId, mBroadcastReceiverClassName, allowLogging,
                     allowRefreshOnPageOpen);
         }
     }

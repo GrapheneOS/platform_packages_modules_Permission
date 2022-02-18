@@ -16,12 +16,20 @@
 
 package com.android.permissioncontroller.permission.ui;
 
+import static com.android.permissioncontroller.Constants.INVALID_SESSION_ID;
+
 import android.os.Bundle;
+import android.permission.PermissionGroupUsage;
+import android.permission.PermissionManager;
 
 import androidx.fragment.app.FragmentActivity;
 
 import com.android.modules.utils.build.SdkLevel;
+import com.android.permissioncontroller.Constants;
 import com.android.permissioncontroller.permission.ui.handheld.SafetyHubQSFragment;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Activity for the Safety Hub Quick Settings Activity
@@ -29,13 +37,22 @@ import com.android.permissioncontroller.permission.ui.handheld.SafetyHubQSFragme
 public class SafetyHubQSActivity extends FragmentActivity {
 
     @Override
+    @SuppressWarnings("NewApi")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (SdkLevel.isAtLeastS()) {
-            getSupportFragmentManager().beginTransaction().replace(android.R.id.content,
-                    new SafetyHubQSFragment()).commit();
-        } else {
+
+        if (!SdkLevel.isAtLeastT()) {
             finish();
+            return;
         }
+
+        long sessionId = getIntent().getLongExtra(Constants.EXTRA_SESSION_ID, INVALID_SESSION_ID);
+        while (sessionId == INVALID_SESSION_ID) {
+            sessionId = new Random().nextLong();
+        }
+        ArrayList<PermissionGroupUsage> permissionUsages = getIntent().getParcelableArrayListExtra(
+                PermissionManager.EXTRA_PERMISSION_USAGES);
+        getSupportFragmentManager().beginTransaction().replace(android.R.id.content,
+                SafetyHubQSFragment.newInstance(sessionId, permissionUsages)).commit();
     }
 }
