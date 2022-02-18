@@ -27,10 +27,12 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
+import android.content.res.XmlResourceParser;
 import android.util.Log;
 
+import com.android.internal.annotations.VisibleForTesting;
+
 import java.io.File;
-import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -100,8 +102,9 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
     }
 
     /** Get the package name of the Safety Center resources APK. */
+    @VisibleForTesting
     @Nullable
-    public String getResourcesApkPkgName() {
+    String getResourcesApkPkgName() {
         if (mResourcesApkPkgName != null) {
             return mResourcesApkPkgName;
         }
@@ -149,9 +152,9 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
         return mResourcesApkPkgName;
     }
 
-    /** Get the Safety Center config in the Safety Center resources APK. */
+    /** Get the Safety Center config XML parser interface from the Safety Center resources APK. */
     @Nullable
-    public InputStream getSafetyCenterConfig() {
+    public XmlResourceParser getSafetyCenterConfig() {
         String resoursePkgName = getResourcesApkPkgName();
         if (resoursePkgName == null) {
             return null;
@@ -160,11 +163,11 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
         if (resources == null) {
             return null;
         }
-        int id = resources.getIdentifier(mConfigName, "raw", resoursePkgName);
-        if (id == 0) {
+        int id = resources.getIdentifier(mConfigName, "xml", resoursePkgName);
+        if (id == Resources.ID_NULL) {
             return null;
         }
-        return resources.openRawResource(id);
+        return resources.getXml(id);
     }
 
     @Nullable

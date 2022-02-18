@@ -33,7 +33,6 @@ import android.annotation.SdkConstant;
 import android.annotation.SystemApi;
 import android.annotation.SystemService;
 import android.content.Context;
-import android.os.Binder;
 import android.os.RemoteException;
 import android.util.ArrayMap;
 
@@ -121,12 +120,13 @@ public final class SafetyCenterManager {
      *
      * @hide
      */
-    @IntDef(prefix = { "EXTRA_REFRESH_REQUEST_TYPE_" }, value = {
+    @IntDef(prefix = {"EXTRA_REFRESH_REQUEST_TYPE_"}, value = {
             EXTRA_REFRESH_REQUEST_TYPE_FETCH_FRESH_DATA,
             EXTRA_REFRESH_REQUEST_TYPE_GET_DATA,
     })
     @Retention(RetentionPolicy.SOURCE)
-    public @interface RefreshRequestType {}
+    public @interface RefreshRequestType {
+    }
 
     /**
      * Used as an int value for {@link #EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE} to indicate that
@@ -151,11 +151,6 @@ public final class SafetyCenterManager {
      */
     public static final int EXTRA_REFRESH_REQUEST_TYPE_GET_DATA = 1;
 
-    /** Indicates that the Safety Center UI has been opened by the user. */
-    public static final int REFRESH_REASON_PAGE_OPEN = 100;
-    /** Indicates that the rescan button in the Safety Center UI has been clicked on by the user. */
-    public static final int REFRESH_REASON_RESCAN_BUTTON_CLICK = 200;
-
     /**
      * The reason for requesting a refresh of {@link SafetySourceData} from safety sources.
      *
@@ -169,6 +164,12 @@ public final class SafetyCenterManager {
     public @interface RefreshReason {
     }
 
+    /** Indicates that the Safety Center UI has been opened by the user. */
+    public static final int REFRESH_REASON_PAGE_OPEN = 100;
+
+    /** Indicates that the rescan button in the Safety Center UI has been clicked on by the user. */
+    public static final int REFRESH_REASON_RESCAN_BUTTON_CLICK = 200;
+
     /** Listener for changes to {@link SafetyCenterData}. */
     public interface OnSafetyCenterDataChangedListener {
 
@@ -178,17 +179,23 @@ public final class SafetyCenterManager {
          * @param data the updated data
          */
         void onSafetyCenterDataChanged(@NonNull SafetyCenterData data);
+
+        /**
+         * Called when the Safety Center should display an error related to changes in its data.
+         *
+         * @param error an error that should be displayed to the user
+         */
+        default void onError(@NonNull SafetyCenterError error) {}
     }
 
+    private final Object mListenersLock = new Object();
+    @GuardedBy("mListenersLock")
+    private final Map<OnSafetyCenterDataChangedListener, ListenerDelegate> mListenersToDelegates =
+            new ArrayMap<>();
     @NonNull
     private final Context mContext;
     @NonNull
     private final ISafetyCenterManager mService;
-
-    @GuardedBy("mListenersLock")
-    private final Map<OnSafetyCenterDataChangedListener, ListenerDelegate>
-            mListenersToDelegates = new ArrayMap<>(1); // only one expected listener
-    private final Object mListenersLock = new Object();
 
     /**
      * Creates a new instance of the {@link SafetyCenterManager}.
@@ -247,6 +254,21 @@ public final class SafetyCenterManager {
     }
 
     /**
+     * Notifies the SafetyCenter of an error related to a given safety source.
+     *
+     * <p>Safety sources should use this API to notify SafetyCenter when SafetyCenter requested or
+     * expected them to perform an action or provide data, but they were unable to do so.
+     *
+     * @param safetySourceId the id of the safety source that provided the issue
+     * @param error the error that occurred
+     */
+    @RequiresPermission(SEND_SAFETY_CENTER_UPDATE)
+    public void reportSafetySourceError(
+            @NonNull String safetySourceId, @NonNull SafetySourceError error) {
+        // TODO(b/218379298): add implementation
+    }
+
+    /**
      * Returns whether the SafetyCenter page is enabled.
      */
     @RequiresPermission(anyOf = {
@@ -270,25 +292,12 @@ public final class SafetyCenterManager {
      * to receiving these broadcasts.
      *
      * @param refreshReason the reason for the refresh, either {@link #REFRESH_REASON_PAGE_OPEN} or
-     * {@link #REFRESH_REASON_RESCAN_BUTTON_CLICK}
+     *                      {@link #REFRESH_REASON_RESCAN_BUTTON_CLICK}
      */
     @RequiresPermission(MANAGE_SAFETY_CENTER)
     public void refreshSafetySources(@RefreshReason int refreshReason) {
         try {
             mService.refreshSafetySources(refreshReason, mContext.getUser().getIdentifier());
-        } catch (RemoteException e) {
-            throw e.rethrowFromSystemServer();
-        }
-    }
-
-    /**
-     * Clears all {@link SafetySourceData} updates sent to the safety center using {@link
-     * #sendSafetyCenterUpdate(SafetySourceData)}, for all packages and users.
-     */
-    @RequiresPermission(MANAGE_SAFETY_CENTER)
-    public void clearSafetyCenterData() {
-        try {
-            mService.clearSafetyCenterData();
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }
@@ -362,12 +371,74 @@ public final class SafetyCenterManager {
      * Dismiss an active safety issue and prevent it from appearing in the Safety Center or
      * affecting the overall safety status.
      *
-     * @param issueId the target issue ID returned by {@link SafetyCenterIssue#getId()}
+     * @param safetyCenterIssueId the target issue ID returned by {@link SafetyCenterIssue#getId()}
      */
     @RequiresPermission(MANAGE_SAFETY_CENTER)
-    public void dismissSafetyIssue(@NonNull String issueId) {
+    public void dismissSafetyIssue(@NonNull String safetyCenterIssueId) {
         try {
-            mService.dismissSafetyIssue(issueId, mContext.getUser().getIdentifier());
+            mService.dismissSafetyIssue(safetyCenterIssueId, mContext.getUser().getIdentifier());
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
+    /**
+     * Clears all {@link SafetySourceData} updates sent to the safety center using {@link
+     * #sendSafetyCenterUpdate(SafetySourceData)}, for all packages and users.
+     */
+    @RequiresPermission(MANAGE_SAFETY_CENTER)
+    public void clearSafetyCenterData() {
+        try {
+            mService.clearSafetyCenterData();
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
+    /**
+     * Executes the specified action on the specified issue.
+     *
+     * @param safetyCenterIssueId the target issue ID returned by {@link SafetyCenterIssue#getId()}
+     * @param safetyCenterActionId the target action ID returned by {@link
+     *                             SafetyCenterIssue.Action#getId()}
+     */
+    @RequiresPermission(MANAGE_SAFETY_CENTER)
+    public void executeAction(
+            @NonNull String safetyCenterIssueId,
+            @NonNull String safetyCenterActionId) {
+        // TODO(b/218379298): Add implementation
+    }
+
+    /**
+     * Add a safety source dynamically to be used in addition to the sources in the Safety Center
+     * xml configuration.
+     *
+     * <p>Note: This API serves to facilitate CTS testing and should not be used for other purposes.
+     */
+    // TODO(b/217944317): Modify the parameters to be a SafetySource or SafetyCenterConfig once
+    //  these classes are Parcelable and part of the API surface.
+    @RequiresPermission(MANAGE_SAFETY_CENTER)
+    public void addAdditionalSafetySource(@NonNull String sourceId, @NonNull String packageName,
+            @NonNull String broadcastReceiverName) {
+        try {
+            mService.addAdditionalSafetySource(sourceId, packageName, broadcastReceiverName);
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
+    /**
+     * Clears additional safety sources added dynamically to be used in addition to the sources in
+     * the Safety Center xml configuration.
+     *
+     * <p>Note: This API serves to facilitate CTS testing and should not be used for other purposes.
+     */
+    // TODO(b/217944317): Modify the parameters to be a SafetySource or SafetyCenterConfig once
+    //  these classes are Parcelable and part of the API surface.
+    @RequiresPermission(MANAGE_SAFETY_CENTER)
+    public void clearAdditionalSafetySources() {
+        try {
+            mService.clearAdditionalSafetySources();
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }
@@ -388,16 +459,9 @@ public final class SafetyCenterManager {
         }
 
         @Override
-        public void onSafetyCenterDataChanged(@NonNull SafetyCenterData safetyCenterData)
-                throws RemoteException {
-            final long token = Binder.clearCallingIdentity();
-
-            try {
-                mExecutor.execute(
-                        () -> mOriginalListener.onSafetyCenterDataChanged(safetyCenterData));
-            } finally {
-                Binder.restoreCallingIdentity(token);
-            }
+        public void onSafetyCenterDataChanged(@NonNull SafetyCenterData safetyCenterData) {
+            mExecutor.execute(
+                    () -> mOriginalListener.onSafetyCenterDataChanged(safetyCenterData));
         }
     }
 }
