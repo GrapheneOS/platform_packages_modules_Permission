@@ -71,10 +71,8 @@
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"ऐप्लिकेशन के बारे में जानकारी देखें"</string>
     <string name="additional_permissions_more" msgid="5681220714755304407">"{count,plural, =1{# और अनुमति}one{# और अनुमति}other{# और अनुमतियां}}"</string>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"यह ऐप्लिकेशन Android के पुराने वर्शन के लिए बनाया गया था. अगर आप अनुमति नहीं देते हैं, तो हो सकता है कि यह ठीक तरह से काम न करे."</string>
-    <!-- no translation found for storage_supergroup_warning_allow (103093462784523190) -->
-    <skip />
-    <!-- no translation found for storage_supergroup_warning_deny (6420765672683284347) -->
-    <skip />
+    <string name="storage_supergroup_warning_allow" msgid="103093462784523190">"यह ऐप्लिकेशन, Android के पुराने वर्शन के लिए बनाया गया था. यह अनुमति देने पर, ऐप्लिकेशन को आपके डिवाइस में मौजूद सभी फ़ाइलों का ऐक्सेस मिल जाएगा. इसमें फ़ोटो, वीडियो, संगीत, ऑडियो, और दूसरी फ़ाइलें शामिल हैं."</string>
+    <string name="storage_supergroup_warning_deny" msgid="6420765672683284347">"यह ऐप्लिकेशन, Android के पुराने वर्शन के लिए बनाया गया था. यह अनुमति न देने पर, ऐप्लिकेशन को आपके डिवाइस में मौजूद किसी भी फ़ाइल का ऐक्सेस नहीं मिलेगा. इसमें फ़ोटो, वीडियो, संगीत, ऑडियो, और दूसरी फ़ाइलें शामिल हैं."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"ऐसी कार्रवाई करें जिसकी जानकारी नहीं है"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_1">%2$d</xliff:g> में से <xliff:g id="COUNT_0">%1$d</xliff:g> ऐप्लिकेशन को अनुमति मिली है"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> ऐप्लिकेशन को अनुमति दी गई है"</string>
@@ -87,10 +85,8 @@
     <string name="location_settings" msgid="3624412509133422562">"जगह की जानकारी की सेटिंग"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> से इस डिवाइस पर जगह की जानकारी मिलती है. जगह की जानकारी की सेटिंग में जाकर जगह की जानकरी ऐक्सेस करने की अनुमति में बदलाव किया जा सकता है."</string>
     <string name="system_warning" msgid="1173400963234358816">"अगर आप यह अनुमति नहीं देते हैं, तो हो सकता है कि आपके डिवाइस की बुनियादी सुविधाएं ठीक तरह से काम न करें."</string>
-    <!-- no translation found for deny_read_media_visual_warning (3982586279917232827) -->
-    <skip />
-    <!-- no translation found for deny_read_media_aural_warning (8928699919508646732) -->
-    <skip />
+    <string name="deny_read_media_visual_warning" msgid="3982586279917232827">"यह ऐप्लिकेशन, Android के पुराने वर्शन के लिए बनाया गया था. यह ऐप्लिकेशन, फ़ोटो और वीडियो का ऐक्सेस न मिलने पर, संगीत और दूसरे ऑडियो को भी ऐक्सेस नहीं कर पाएगा."</string>
+    <string name="deny_read_media_aural_warning" msgid="8928699919508646732">"यह ऐप्लिकेशन, Android के पुराने वर्शन के लिए बनाया गया था. यह ऐप्लिकेशन, संगीत और दूसरे ऑडियो का ऐक्सेस न मिलने पर, फ़ोटो और वीडियो को भी ऐक्सेस नहीं कर पाएगा."</string>
     <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"अगर आप यह अनुमति नहीं देते हैं, तो आपके डिवाइस पर इस ऐप्लिकेशन के ज़रिए मैनेज की जाने वाली कुछ सुविधाएं, ठीक तरह से काम नहीं करेंगी."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"नीति के मुताबिक चालू किया गया"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"नीति के मुताबिक बैकग्राउंड में चलने का ऐक्सेस बंद है"</string>
@@ -236,10 +232,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"इस अनुमति वाले ऐप्लिकेशन, आपके बारे में खास जानकारी देने वाली चीज़ों को बताने वाले सेंसर डेटा को ऐक्सेस कर सकते हैं"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"इस अनुमति वाले ऐप्लिकेशन, मैसेज (एसएमएस) भेज और देख सकते हैं"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"इसकी अनुमति वाले ऐप्लिकेशन आपके डिवाइस की फ़ोटो, मीडिया, और फ़ाइलें ऐक्सेस कर सकते हैं"</string>
-    <!-- no translation found for permission_description_summary_read_media_aural (2789020637856210454) -->
-    <skip />
-    <!-- no translation found for permission_description_summary_read_media_visual (4210569227927436735) -->
-    <skip />
+    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"जिन ऐप्लिकेशन को यह अनुमति मिलेगी वे आपके डिवाइस में मौजूद, संगीत और दूसरी ऑडियो फ़ाइलें ऐक्सेस कर पाएंगे"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"जिन ऐप्लिकेशन को यह अनुमति मिलेगी वे आपके डिवाइस में मौजूद, फ़ोटो और वीडियो ऐक्सेस कर पाएंगे"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"पिछली बार ऐक्सेस किया गया: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"इस समय मना किया गया / आखिरी बार ऐक्सेस किया गया: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"कभी ऐक्सेस नहीं किया गया"</string>
@@ -251,10 +245,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"ये ऐप्लिकेशन सभी फ़ाइलों को मैनेज कर सकते हैं"</string>
     <string name="ask_header" msgid="2633816846459944376">"हर बार पूछें"</string>
     <string name="denied_header" msgid="903209608358177654">"अनुमति नहीं है"</string>
-    <!-- no translation found for storage_footer_warning_text (2242258357752432337) -->
-    <skip />
-    <!-- no translation found for storage_footer_hyperlink_text (7759955324552930974) -->
-    <skip />
+    <string name="storage_footer_warning_text" msgid="2242258357752432337">"कुछ ऐप्लिकेशन आपके डिवाइस के लिए ज़रूरी सुविधाएं उपलब्ध कराते हैं. इन ऐप्लिकेशन को, खास तौर पर आपकी सभी फ़ाइलों का ऐक्सेस मिल सकता है"</string>
+    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"वे ऐप्लिकेशन देखें जिन्हें सभी फ़ाइलों का ऐक्सेस दिया गया है"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 दिन}one{# दिन}other{# दिन}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 घंटा}one{# घंटा}other{# घंटे}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 मिनट}one{# मिनट}other{# मिनट}}"</string>
@@ -453,16 +445,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"अनुमानित जगह"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को अपना कैलेंडर देखने की अनुमति देना चाहते हैं?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को एसएमएस (मैसेज) भेजने और देखने की अनुमति देना चाहते हैं?"</string>
-    <!-- no translation found for permgrouprequest_storage (7426990523173124539) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_q_to_s (3942779386983426698) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_pre_q (1681166745228672009) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_aural (5948278590400297839) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_visual (4188474766470776052) -->
-    <skip />
+    <string name="permgrouprequest_storage" msgid="7426990523173124539">"क्या &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को डिवाइस में मौजूद &lt;b&gt;फ़ाइलों और दस्तावेज़ों&lt;/b&gt; का ऐक्सेस देना है?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"क्या &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को डिवाइस में मौजूद &lt;b&gt;फ़ोटो, वीडियो, संगीत, और ऑडियो&lt;/b&gt; का ऐक्सेस देना है?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को डिवाइस में मौजूद &lt;b&gt;फ़ोटो, वीडियो, संगीत, ऑडियो, और दूसरी फ़ाइलों&lt;/b&gt; का ऐक्सेस दें?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"क्या &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को इस डिवाइस में मौजूद संगीत और दूसरी ऑडियो फ़ाइलों का ऐक्सेस देना है?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"क्या &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को इस डिवाइस में मौजूद फ़ोटो और वीडियो का ऐक्सेस देना है?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को ऑडियो रिकॉर्ड करने की अनुमति देना चाहते हैं?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"ऐप्लिकेशन सिर्फ़ तब ही ऑडियो रिकॉर्ड कर पाएगा, जब आप ऐप्लिकेशन इस्तेमाल कर रहे हों"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"क्या आप &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को ऑडियो रिकॉर्ड करने की अनुमति देना चाहते हैं?"</string>
@@ -509,10 +496,8 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"जब आपातकालीन नंबर पर कॉल किया जाता है, तो माइक ब्लॉक होने के बावजूद माइक्रोफ़ोन का डेटा शेयर किया जा सकता है."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"बदलें"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"सुरक्षा और निजता"</string>
-    <!-- no translation found for safety_center_rescan_button (8047036829052958144) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_dismiss_button (5113965506144222402) -->
-    <skip />
+    <string name="safety_center_rescan_button" msgid="8047036829052958144">"स्कैन करें"</string>
+    <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"खारिज करें"</string>
     <string name="security_settings" msgid="3808106921175271317">"सुरक्षा सेटिंग"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"सुरक्षा और निजता"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"स्थिति देखें"</string>
