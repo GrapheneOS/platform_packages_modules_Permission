@@ -27,8 +27,7 @@ import static android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_REQUEST_TYP
 import static android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE;
 import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_PAGE_OPEN;
 import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK;
-
-import static com.android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_STATIC;
+import static android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_STATIC;
 
 import android.annotation.NonNull;
 import android.app.BroadcastOptions;
@@ -37,12 +36,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.UserHandle;
 import android.safetycenter.SafetyCenterManager.RefreshReason;
+import android.safetycenter.config.SafetyCenterConfig;
+import android.safetycenter.config.SafetySource;
 import android.util.Log;
 
 import androidx.annotation.RequiresApi;
-
-import com.android.safetycenter.config.SafetyCenterConfig;
-import com.android.safetycenter.config.SafetySource;
 
 import java.time.Duration;
 import java.util.ArrayList;
