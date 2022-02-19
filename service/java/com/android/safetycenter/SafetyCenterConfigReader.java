@@ -24,12 +24,12 @@ import android.annotation.StringRes;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
+import android.safetycenter.config.Parser;
+import android.safetycenter.config.SafetyCenterConfig;
 import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
-import com.android.safetycenter.config.Parser;
-import com.android.safetycenter.config.SafetyCenterConfig;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 
 /**

@@ -14,11 +14,18 @@
  * limitations under the License.
  */
 
-package com.android.safetycenter.config;
+package android.safetycenter.config;
+
+import static android.os.Build.VERSION_CODES.TIRAMISU;
 
 import static java.util.Objects.requireNonNull;
 
 import android.annotation.NonNull;
+import android.annotation.SystemApi;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.RequiresApi;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,8 +34,14 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-/** Data class used to represent the initial configuration and current state of the Safety Center */
-public final class SafetyCenterConfig {
+/**
+ * Data class used to represent the initial configuration of the Safety Center
+ *
+ * @hide
+ */
+@SystemApi
+@RequiresApi(TIRAMISU)
+public final class SafetyCenterConfig implements Parcelable {
     @NonNull
     private final List<SafetySourcesGroup> mSafetySourcesGroups;
 
@@ -61,6 +74,34 @@ public final class SafetyCenterConfig {
                 + "mSafetySourcesGroups=" + mSafetySourcesGroups
                 + '}';
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeParcelableList(mSafetySourcesGroups, flags);
+    }
+
+    @NonNull
+    public static final Parcelable.Creator<SafetyCenterConfig> CREATOR =
+            new Parcelable.Creator<SafetyCenterConfig>() {
+                @Override
+                public SafetyCenterConfig createFromParcel(Parcel in) {
+                    List<SafetySourcesGroup> safetySourcesGroups = new ArrayList<>();
+                    in.readParcelableList(safetySourcesGroups,
+                            SafetySourcesGroup.class.getClassLoader());
+                    return new SafetyCenterConfig(
+                            Collections.unmodifiableList(safetySourcesGroups));
+                }
+
+                @Override
+                public SafetyCenterConfig[] newArray(int size) {
+                    return new SafetyCenterConfig[size];
+                }
+            };
 
     /** Builder class for {@link SafetyCenterConfig}. */
     public static final class Builder {
