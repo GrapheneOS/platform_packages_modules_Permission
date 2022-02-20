@@ -26,6 +26,13 @@ filegroup {
     visibility: ["//frameworks/base"],
 }
 
+filegroup {
+    name: "safetycenter-config-api-sources",
+    srcs: ["java/android/safetycenter/config/*.java"],
+    path: "java",
+    visibility: ["//packages/modules/Permission/SafetyCenter/ConfigLintChecker"],
+}
+
 java_library {
     name: "framework-permission-s-shared",
     srcs: [":framework-permission-s-shared-srcs"],
