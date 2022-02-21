@@ -21,6 +21,7 @@ import static android.Manifest.permission.READ_SAFETY_CENTER_STATUS;
 import static android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE;
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 import static android.safetycenter.SafetyCenterManager.RefreshReason;
+import static android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_STATIC;
 
 import static java.util.Objects.requireNonNull;
 
@@ -38,8 +39,12 @@ import android.provider.DeviceConfig;
 import android.safetycenter.IOnSafetyCenterDataChangedListener;
 import android.safetycenter.ISafetyCenterManager;
 import android.safetycenter.SafetyCenterData;
+import android.safetycenter.SafetyEvent;
 import android.safetycenter.SafetySourceData;
 import android.safetycenter.SafetySourceError;
+import android.safetycenter.config.SafetyCenterConfig;
+import android.safetycenter.config.SafetySource;
+import android.safetycenter.config.SafetySourcesGroup;
 
 import androidx.annotation.Keep;
 import androidx.annotation.RequiresApi;
@@ -99,24 +104,50 @@ public final class SafetyCenterService extends SystemService {
     /** Service implementation of {@link ISafetyCenterManager.Stub}. */
     private final class Stub extends ISafetyCenterManager.Stub {
         @Override
-        public void sendSafetyCenterUpdate(
-                @NonNull SafetySourceData safetySourceData,
+        public boolean isSafetyCenterEnabled() {
+            enforceAnyCallingOrSelfPermissions("isSafetyCenterEnabled",
+                    READ_SAFETY_CENTER_STATUS,
+                    SEND_SAFETY_CENTER_UPDATE);
+            // TODO(b/214568975): Decide if we should disable safety center if there is a problem
+            //  reading the config.
+
+            // We don't require the caller to have READ_DEVICE_CONFIG permission.
+            final long callingId = Binder.clearCallingIdentity();
+            try {
+                return DeviceConfig.getBoolean(
+                        DeviceConfig.NAMESPACE_PRIVACY,
+                        PROPERTY_SAFETY_CENTER_ENABLED,
+                        /* defaultValue = */ false)
+                        && getSafetyCenterConfigValue();
+            } finally {
+                Binder.restoreCallingIdentity(callingId);
+            }
+        }
+
+        @Override
+        public void setSafetySourceData(
+                @NonNull String safetySourceId,
+                @Nullable SafetySourceData safetySourceData,
+                @NonNull SafetyEvent safetyEvent,
                 @NonNull String packageName,
                 @UserIdInt int userId) {
             mAppOpsManager.checkPackage(Binder.getCallingUid(), packageName);
             // TODO(b/217235899): Finalize cross-user behavior.
             PermissionUtils.enforceCrossUserPermission(
-                    userId, false, "sendSafetyCenterUpdate", getContext());
+                    userId, false, "setSafetySourceData", getContext());
             // TODO(b/205706756): Security: check certs?
             getContext().enforceCallingOrSelfPermission(SEND_SAFETY_CENTER_UPDATE,
-                    "sendSafetyCenterUpdate");
+                    "setSafetySourceData");
             // TODO(b/218812582): Validate the SafetySourceData.
 
             SafetyCenterData safetyCenterData;
             RemoteCallbackList<IOnSafetyCenterDataChangedListener> listeners;
             synchronized (mApiLock) {
-                safetyCenterData = mSafetyCenterDataTracker.addSafetySourceData(safetySourceData,
-                        packageName, userId);
+                safetyCenterData = mSafetyCenterDataTracker.setSafetySourceData(
+                        safetySourceId,
+                        safetySourceData,
+                        packageName,
+                        userId);
                 listeners = mSafetyCenterListeners.getListeners(userId);
             }
             // This doesn't need to be done while holding the lock, as RemoteCallbackList already
@@ -125,7 +156,7 @@ public final class SafetyCenterService extends SystemService {
             // doing this while holding the lock could also potentially lead to deadlocks.
             if (listeners != null && safetyCenterData != null) {
                 // TODO(b/218811189): This should be called on all listeners associated with the
-                //  userId, i.e. if #sendSafetyCenterUpdate is called with a work profile userId,
+                //  userId, i.e. if #setSafetySourceData is called with a work profile userId,
                 //  we should also let the personal profile listeners know about the update.
                 SafetyCenterListeners.deliverUpdate(listeners, safetyCenterData);
             }
@@ -133,17 +164,17 @@ public final class SafetyCenterService extends SystemService {
 
         @Override
         @Nullable
-        public SafetySourceData getLastSafetyCenterUpdate(
+        public SafetySourceData getSafetySourceData(
                 @NonNull String safetySourceId,
                 @NonNull String packageName,
                 @UserIdInt int userId) {
             mAppOpsManager.checkPackage(Binder.getCallingUid(), packageName);
             // TODO(b/217235899): Finalize cross-user behavior.
             PermissionUtils.enforceCrossUserPermission(
-                    userId, false, "getLastSafetyCenterUpdate", getContext());
+                    userId, false, "getSafetySourceData", getContext());
             // TODO(b/205706756): Security: check certs?
             getContext().enforceCallingOrSelfPermission(
-                    SEND_SAFETY_CENTER_UPDATE, "getLastSafetyCenterUpdate");
+                    SEND_SAFETY_CENTER_UPDATE, "getSafetySourceData");
 
             synchronized (mApiLock) {
                 return mSafetyCenterDataTracker.getSafetySourceData(safetySourceId, packageName,
@@ -164,27 +195,6 @@ public final class SafetyCenterService extends SystemService {
             getContext().enforceCallingOrSelfPermission(
                     SEND_SAFETY_CENTER_UPDATE, "reportSafetySourceError");
             // TODO(b/218379298): Add implementation
-        }
-
-        @Override
-        public boolean isSafetyCenterEnabled() {
-            enforceAnyCallingOrSelfPermissions("isSafetyCenterEnabled",
-                    READ_SAFETY_CENTER_STATUS,
-                    SEND_SAFETY_CENTER_UPDATE);
-            // TODO(b/214568975): Decide if we should disable safety center if there is a problem
-            //  reading the config.
-
-            // We don't require the caller to have READ_DEVICE_CONFIG permission.
-            final long callingId = Binder.clearCallingIdentity();
-            try {
-                return DeviceConfig.getBoolean(
-                        DeviceConfig.NAMESPACE_PRIVACY,
-                        PROPERTY_SAFETY_CENTER_ENABLED,
-                        /* defaultValue = */ false)
-                        && getSafetyCenterConfigValue();
-            } finally {
-                Binder.restoreCallingIdentity(callingId);
-            }
         }
 
         @Override
@@ -271,16 +281,6 @@ public final class SafetyCenterService extends SystemService {
         }
 
         @Override
-        public void clearSafetyCenterData() {
-            getContext().enforceCallingOrSelfPermission(
-                    MANAGE_SAFETY_CENTER, "clearSafetyCenterData");
-
-            synchronized (mApiLock) {
-                mSafetyCenterDataTracker.clear();
-            }
-        }
-
-        @Override
         public void executeAction(
                 @NonNull String safetyCenterIssueId,
                 @NonNull String safetyCenterActionId,
@@ -294,23 +294,47 @@ public final class SafetyCenterService extends SystemService {
         }
 
         @Override
-        public void addAdditionalSafetySource(
-                @NonNull String sourceId,
-                @NonNull String packageName,
-                @NonNull String broadcastReceiverName) {
-            getContext().enforceCallingOrSelfPermission(MANAGE_SAFETY_CENTER,
-                    "addAdditionalSafetySource");
+        public void clearAllSafetySourceData() {
+            getContext().enforceCallingOrSelfPermission(
+                    MANAGE_SAFETY_CENTER, "clearAllSafetySourceData");
 
-            synchronized (mRefreshLock) {
-                mSafetyCenterRefreshManager.addAdditionalSafetySourceBroadcastReceiverComponent(
-                        new ComponentName(packageName, broadcastReceiverName));
+            synchronized (mApiLock) {
+                mSafetyCenterDataTracker.clear();
             }
         }
 
         @Override
-        public void clearAdditionalSafetySources() {
+        public void setSafetyCenterConfigOverride(
+                @NonNull SafetyCenterConfig safetyCenterConfig) {
+            getContext().enforceCallingOrSelfPermission(MANAGE_SAFETY_CENTER,
+                    "setSafetyCenterConfigOverride");
+
+            synchronized (mRefreshLock) {
+                // TODO(b/217944317): Implement properly by overriding config in
+                //  SafetyCenterConfigReader instead. This placeholder impl serves to allow this
+                //  API to be merged in tm-dev, and final impl will be in tm-mainline-prod.
+                for (int i = 0; i < safetyCenterConfig.getSafetySourcesGroups().size(); i++) {
+                    SafetySourcesGroup group = safetyCenterConfig.getSafetySourcesGroups().get(i);
+                    for (int j = 0; j < group.getSafetySources().size(); j++) {
+                        SafetySource safetySource = group.getSafetySources().get(j);
+                        if (safetySource.getType() != SAFETY_SOURCE_TYPE_STATIC
+                                && safetySource.getBroadcastReceiverClassName() != null) {
+                            mSafetyCenterRefreshManager
+                                    .addAdditionalSafetySourceBroadcastReceiverComponent(
+                                            new ComponentName(
+                                                    safetySource.getPackageName(),
+                                                    safetySource.getBroadcastReceiverClassName()
+                                            ));
+                        }
+                    }
+                }
+            }
+        }
+
+        @Override
+        public void clearSafetyCenterConfigOverride() {
             getContext().enforceCallingOrSelfPermission(
-                    MANAGE_SAFETY_CENTER, "clearAdditionalSafetySources");
+                    MANAGE_SAFETY_CENTER, "clearSafetyCenterConfigOverride");
 
             synchronized (mRefreshLock) {
                 mSafetyCenterRefreshManager
