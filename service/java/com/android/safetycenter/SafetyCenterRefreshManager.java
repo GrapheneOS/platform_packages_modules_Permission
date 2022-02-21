@@ -27,25 +27,24 @@ import static android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_REQUEST_TYP
 import static android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE;
 import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_PAGE_OPEN;
 import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK;
-import static android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_STATIC;
 
 import android.annotation.NonNull;
 import android.app.BroadcastOptions;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.os.UserHandle;
+import android.os.Binder;
 import android.safetycenter.SafetyCenterManager.RefreshReason;
-import android.safetycenter.config.SafetyCenterConfig;
-import android.safetycenter.config.SafetySource;
+import android.safetycenter.SafetyCenterManager.RefreshRequestType;
 import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
+import com.android.safetycenter.SafetyCenterConfigReader.Broadcast;
+
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Class to manage and track refresh broadcasts sent by {@link SafetyCenterService}.
@@ -65,7 +64,6 @@ final class SafetyCenterRefreshManager {
     //  easily adjusted.
     private static final Duration ALLOWLIST_DURATION = Duration.ofSeconds(20);
 
-    @NonNull
     private final List<ComponentName> mAdditionalSafetySourceBroadcastReceiverComponents =
             new ArrayList<>();
     @NonNull
@@ -103,87 +101,75 @@ final class SafetyCenterRefreshManager {
      * {@link android.safetycenter.SafetyCenterManager#ACTION_REFRESH_SAFETY_SOURCES}.
      */
     void refreshSafetySources(@RefreshReason int refreshReason) {
-        int requestType;
-        switch (refreshReason) {
-            case REFRESH_REASON_RESCAN_BUTTON_CLICK:
-                requestType = EXTRA_REFRESH_REQUEST_TYPE_FETCH_FRESH_DATA;
-                break;
-            case REFRESH_REASON_PAGE_OPEN:
-                requestType = EXTRA_REFRESH_REQUEST_TYPE_GET_DATA;
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid refresh reason: " + refreshReason);
-        }
-
-        SafetyCenterConfig safetyCenterConfig = mSafetyCenterConfigReader.getSafetyCenterConfig();
-        if (safetyCenterConfig == null) {
-            Log.w(TAG, "SafetyCenterConfig unavailable, ignoring refresh");
+        SafetyCenterConfigReader.Config config = mSafetyCenterConfigReader.getConfig();
+        if (config == null) {
+            Log.w(TAG, "SafetyCenterConfigReader.Config unavailable, ignoring refresh");
             return;
         }
 
-        // TODO(b/219702252): Use a more efficient data structure for this (and map broadcast
-        //  receiver to source ids).
-        List<SafetySource> safetySourcesToRefresh =
-                safetyCenterConfig.getSafetySourcesGroups()
-                        .stream()
-                        .flatMap(group -> group.getSafetySources().stream())
-                        .filter(
-                                // Only send broadcasts to dynamic safety sources that have
-                                // specified a broadcast receiver component.
-                                source -> source.getType() != SAFETY_SOURCE_TYPE_STATIC
-                                        && source.getBroadcastReceiverClassName() != null)
-                        .collect(Collectors.toList());
+        // TODO(b/218157907): Do not recompute this, SafetyCenterConfigReader needs to be the
+        // source of truth for additional sources.
+        List<Broadcast> broadcasts = new ArrayList<>(config.getBroadcasts());
+        for (int i = 0; i < mAdditionalSafetySourceBroadcastReceiverComponents.size(); i++) {
+            ComponentName componentName = mAdditionalSafetySourceBroadcastReceiverComponents.get(i);
 
-        sendRefreshBroadcastToSafetySources(safetySourcesToRefresh, requestType);
-        sendRefreshBroadcastToAdditionalSafetySourceReceivers(requestType);
+            broadcasts.add(Broadcast.from(componentName));
+        }
+
+        sendRefreshBroadcasts(broadcasts, toRefreshRequestType(refreshReason));
     }
 
-    private void sendRefreshBroadcastToSafetySources(List<SafetySource> safetySources,
-            int requestType) {
-        Intent broadcastIntent = new Intent(ACTION_REFRESH_SAFETY_SOURCES)
-                .putExtra(EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE, requestType)
-                .setFlags(FLAG_RECEIVER_FOREGROUND);
+    private void sendRefreshBroadcasts(
+            @NonNull List<Broadcast> broadcasts,
+            @RefreshRequestType int requestType) {
         BroadcastOptions broadcastOptions = BroadcastOptions.makeBasic();
         // The following operation requires START_FOREGROUND_SERVICES_FROM_BACKGROUND
         // permission.
-        broadcastOptions.setTemporaryAppAllowlist(ALLOWLIST_DURATION.toMillis(),
-                TEMPORARY_ALLOW_LIST_TYPE_FOREGROUND_SERVICE_ALLOWED,
-                REASON_REFRESH_SAFETY_SOURCES,
-                "Safety Center is requesting data from safety sources");
+        final long callingId = Binder.clearCallingIdentity();
+        try {
+            broadcastOptions.setTemporaryAppAllowlist(ALLOWLIST_DURATION.toMillis(),
+                    TEMPORARY_ALLOW_LIST_TYPE_FOREGROUND_SERVICE_ALLOWED,
+                    REASON_REFRESH_SAFETY_SOURCES,
+                    "Safety Center is requesting data from safety sources");
+        } finally {
+            Binder.restoreCallingIdentity(callingId);
+        }
+        for (int i = 0; i < broadcasts.size(); i++) {
+            Broadcast broadcast = broadcasts.get(i);
 
-        for (SafetySource source : safetySources) {
-            Intent broadcastIntentForSource = new Intent(broadcastIntent).setComponent(
-                    new ComponentName(source.getPackageName(),
-                            source.getBroadcastReceiverClassName()));
-            // TODO(b/215144069): Add cross profile support for safety sources which support
-            //  both personal and work profile. This implementation invokes
-            //  `sendBroadcastAsUser` in order to invoke the permission.
-            // The following operation requires INTERACT_ACROSS_USERS permission.
-            mContext.sendBroadcastAsUser(broadcastIntentForSource,
-                    UserHandle.CURRENT,
-                    SEND_SAFETY_CENTER_UPDATE,
-                    broadcastOptions.toBundle());
+            sendRefreshBroadcast(broadcast, broadcastOptions, requestType);
         }
     }
 
-    private void sendRefreshBroadcastToAdditionalSafetySourceReceivers(int requestType) {
+    private void sendRefreshBroadcast(
+            @NonNull Broadcast broadcast,
+            @NonNull BroadcastOptions broadcastOptions,
+            @RefreshRequestType int requestType) {
+        // TODO(b/220826153): Add source ids to intent.
         Intent broadcastIntent = new Intent(ACTION_REFRESH_SAFETY_SOURCES)
                 .putExtra(EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE, requestType)
-                .setFlags(FLAG_RECEIVER_FOREGROUND);
-        BroadcastOptions broadcastOptions = BroadcastOptions.makeBasic();
-        // The following operation requires START_FOREGROUND_SERVICES_FROM_BACKGROUND
-        // permission.
-        broadcastOptions.setTemporaryAppAllowlist(ALLOWLIST_DURATION.toMillis(),
-                TEMPORARY_ALLOW_LIST_TYPE_FOREGROUND_SERVICE_ALLOWED,
-                REASON_REFRESH_SAFETY_SOURCES,
-                "Safety Center is requesting data from safety sources");
-
-        for (ComponentName componentName : mAdditionalSafetySourceBroadcastReceiverComponents) {
-            // The following operation requires INTERACT_ACROSS_USERS permission.
-            mContext.sendBroadcastAsUser(new Intent(broadcastIntent).setComponent(componentName),
-                    UserHandle.CURRENT,
+                .setFlags(FLAG_RECEIVER_FOREGROUND)
+                .setComponent(broadcast.getComponentName());
+        // The following operation requires INTERACT_ACROSS_USERS permission.
+        final long callingId = Binder.clearCallingIdentity();
+        try {
+            mContext.sendBroadcastAsUser(broadcastIntent,
+                    broadcast.getUserHandle(),
                     SEND_SAFETY_CENTER_UPDATE,
                     broadcastOptions.toBundle());
+        } finally {
+            Binder.restoreCallingIdentity(callingId);
         }
+    }
+
+    @RefreshRequestType
+    private static int toRefreshRequestType(@RefreshReason int refreshReason) {
+        switch (refreshReason) {
+            case REFRESH_REASON_RESCAN_BUTTON_CLICK:
+                return EXTRA_REFRESH_REQUEST_TYPE_FETCH_FRESH_DATA;
+            case REFRESH_REASON_PAGE_OPEN:
+                return EXTRA_REFRESH_REQUEST_TYPE_GET_DATA;
+        }
+        throw new IllegalArgumentException("Invalid refresh reason: " + refreshReason);
     }
 }
