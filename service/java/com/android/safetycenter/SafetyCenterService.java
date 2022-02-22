@@ -39,6 +39,7 @@ import android.safetycenter.IOnSafetyCenterDataChangedListener;
 import android.safetycenter.ISafetyCenterManager;
 import android.safetycenter.SafetyCenterData;
 import android.safetycenter.SafetySourceData;
+import android.safetycenter.SafetySourceError;
 
 import androidx.annotation.Keep;
 import androidx.annotation.RequiresApi;
@@ -148,6 +149,21 @@ public final class SafetyCenterService extends SystemService {
                 return mSafetyCenterDataTracker.getSafetySourceData(safetySourceId, packageName,
                         userId);
             }
+        }
+
+        @Override
+        public void reportSafetySourceError(
+                @NonNull String safetySourceId,
+                @NonNull SafetySourceError error,
+                @NonNull String packageName,
+                @UserIdInt int userId) {
+            mAppOpsManager.checkPackage(Binder.getCallingUid(), packageName);
+            // TODO(b/217235899): Finalize cross-user behavior.
+            PermissionUtils.enforceCrossUserPermission(
+                    userId, false, "reportSafetySourceError", getContext());
+            getContext().enforceCallingOrSelfPermission(
+                    SEND_SAFETY_CENTER_UPDATE, "reportSafetySourceError");
+            // TODO(b/218379298): Add implementation
         }
 
         @Override
@@ -262,6 +278,19 @@ public final class SafetyCenterService extends SystemService {
             synchronized (mApiLock) {
                 mSafetyCenterDataTracker.clear();
             }
+        }
+
+        @Override
+        public void executeAction(
+                @NonNull String safetyCenterIssueId,
+                @NonNull String safetyCenterActionId,
+                @UserIdInt int userId) {
+            // TODO(b/217235899): Finalize cross-user behavior.
+            PermissionUtils.enforceCrossUserPermission(
+                    userId, false, "executeAction", getContext());
+            getContext().enforceCallingOrSelfPermission(MANAGE_SAFETY_CENTER,
+                    "executeAction");
+            // TODO(b/218379298): Add implementation
         }
 
         @Override
