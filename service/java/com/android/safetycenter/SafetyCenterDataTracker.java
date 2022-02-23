@@ -42,14 +42,15 @@ import android.safetycenter.SafetySourceStatus;
 import android.safetycenter.config.SafetyCenterConfig;
 import android.safetycenter.config.SafetySource;
 import android.safetycenter.config.SafetySourcesGroup;
+import android.util.ArrayMap;
 import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
+import com.android.safetycenter.SafetyCenterConfigReader.SourceId;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -63,7 +64,7 @@ final class SafetyCenterDataTracker {
 
     private static final String TAG = "SafetyCenterDataTracker";
 
-    private final Map<Key, SafetySourceData> mSafetySourceDataForKey = new HashMap<>();
+    private final ArrayMap<Key, SafetySourceData> mSafetySourceDataForKey = new ArrayMap<>();
 
     @NonNull
     private final Context mContext;
@@ -82,37 +83,47 @@ final class SafetyCenterDataTracker {
     }
 
     /**
-     * Adds a {@link SafetySourceData} update for the given {@code packageName} and {@code userId},
-     * and returns the updated {@link SafetyCenterData} of the {@code userId}.
+     * Sets the {@link SafetySourceData} for the given {@code safetySourceId}, {@code packageName}
+     * and {@code userId}, and returns the updated {@link SafetyCenterData} of the {@code userId}.
      *
-     * <p>Returns {@code null} if there was no update to the underlying {@link SafetyCenterData}, or
-     * if the {@link SafetyCenterConfig} is not available.
+     * <p>Setting a {@code null} {@link SafetySourceData} evicts the current {@link
+     * SafetySourceData} entry.
+     *
+     * <p>Returns {@code null} if there was no change to the underlying {@link SafetyCenterData},
+     * or if the {@link SafetyCenterConfig} is not available.
      */
     @Nullable
-    SafetyCenterData addSafetySourceData(
-            @NonNull SafetySourceData safetySourceData,
+    SafetyCenterData setSafetySourceData(
+            @Nullable SafetySourceData safetySourceData,
+            @NonNull String safetySourceId,
             @NonNull String packageName,
             @UserIdInt int userId) {
-        if (!configContains(safetySourceData.getId(), packageName)) {
+        if (!configContains(safetySourceId, packageName)) {
             // TODO(b/218801292): Should this be hard error for the caller?
             return null;
         }
 
-        Key key = Key.of(safetySourceData.getId(), packageName, userId);
+        Key key = Key.of(safetySourceId, packageName, userId);
         SafetySourceData existingSafetySourceData = mSafetySourceDataForKey.get(key);
-        if (safetySourceData.equals(existingSafetySourceData)) {
+        if (Objects.equals(safetySourceData, existingSafetySourceData)) {
             return null;
         }
 
-        mSafetySourceDataForKey.put(key, safetySourceData);
+        if (safetySourceData == null) {
+            mSafetySourceDataForKey.remove(key);
+        } else {
+            mSafetySourceDataForKey.put(key, safetySourceData);
+        }
+
         return getSafetyCenterData(userId);
     }
 
     /**
-     * Returns the latest {@link SafetySourceData} update for the given {@code safetySourceId},
-     * {@code packageName} and {@code userId}.
+     * Returns the latest {@link SafetySourceData} that was set by {@link #setSafetySourceData} for
+     * the given {@code safetySourceId}, {@code packageName} and {@code userId}.
      *
-     * <p>Returns {@code null} if there was no update.
+     * <p>Returns {@code null} if it was never set since boot, or if the entry was evicted using
+     * {@link #setSafetySourceData} with a {@code null} value.
      */
     @Nullable
     SafetySourceData getSafetySourceData(
@@ -134,31 +145,35 @@ final class SafetyCenterDataTracker {
 
     /**
      * Returns the current {@link SafetyCenterData} for the given {@code userId}, aggregated from
-     * all the {@link SafetySourceData} updates received so far.
+     * all the {@link SafetySourceData} received so far.
      *
-     * <p>Returns an arbitrary default value if no data has been received for the user so far, or if
-     * the {@link SafetyCenterConfig} is not available.
+     * <p>Returns an arbitrary default value if the {@link SafetyCenterConfig} is not available.
+     *
+     * <p>If a {@link SafetySourceData} was not set, the default value from the {@link
+     * SafetyCenterConfig} is used.
      */
     @NonNull
     SafetyCenterData getSafetyCenterData(@UserIdInt int userId) {
-        SafetyCenterConfig safetyCenterConfig = mSafetyCenterConfigReader.getSafetyCenterConfig();
-        if (safetyCenterConfig == null) {
-            Log.w(TAG, "SafetyCenterConfig unavailable, returning default SafetyCenterData");
+        SafetyCenterConfigReader.Config config = mSafetyCenterConfigReader.getConfig();
+        if (config == null) {
+            Log.w(TAG,
+                    "SafetyCenterConfigReader.Config unavailable, returning default "
+                            + "SafetyCenterData");
             return getDefaultSafetyCenterData();
         }
 
         // TODO(b/218819144): Merge for all profiles.
-        return getSafetyCenterData(safetyCenterConfig, userId);
+        return getSafetyCenterData(config.getSafetySourcesGroups(), userId);
     }
 
-    // TODO(b/219702252): Create a more efficient data structure for this, and update it when the
-    //  config changes.
     private boolean configContains(
             @NonNull String safetySourceId,
             @NonNull String packageName) {
-        SafetyCenterConfig safetyCenterConfig = mSafetyCenterConfigReader.getSafetyCenterConfig();
-        if (safetyCenterConfig == null) {
-            Log.w(TAG, "SafetyCenterConfig unavailable, assuming no sources can send/get data");
+        SafetyCenterConfigReader.Config config = mSafetyCenterConfigReader.getConfig();
+        if (config == null) {
+            Log.w(TAG,
+                    "SafetyCenterConfigReader.Config unavailable, assuming no sources can "
+                            + "send/get data");
             return false;
         }
 
@@ -168,38 +183,19 @@ final class SafetyCenterDataTracker {
             return true;
         }
 
-        List<SafetySourcesGroup> safetySourcesGroups = safetyCenterConfig.getSafetySourcesGroups();
-        for (int i = 0; i < safetySourcesGroups.size(); i++) {
-            SafetySourcesGroup safetySourcesGroup = safetySourcesGroups.get(i);
-
-            List<SafetySource> safetySources = safetySourcesGroup.getSafetySources();
-            for (int j = 0; j < safetySources.size(); j++) {
-                SafetySource safetySource = safetySources.get(j);
-
-                if (safetySource.getType() == SafetySource.SAFETY_SOURCE_TYPE_STATIC) {
-                    continue;
-                }
-
-                if (safetySourceId.equals(safetySource.getId()) && packageName.equals(
-                        safetySource.getPackageName())) {
-                    return true;
-                }
-            }
-        }
-
-        return false;
+        return config.getExternalSafetySources().contains(
+                SourceId.of(safetySourceId, packageName));
     }
 
     @NonNull
     private SafetyCenterData getSafetyCenterData(
-            @NonNull SafetyCenterConfig safetyCenterConfig,
+            @NonNull List<SafetySourcesGroup> safetySourcesGroups,
             @UserIdInt int userId) {
         int maxSafetyCenterEntryLevel = SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN;
         List<SafetyCenterIssue> safetyCenterIssues = new ArrayList<>();
         List<SafetyCenterEntryOrGroup> safetyCenterEntryOrGroups = new ArrayList<>();
         List<SafetyCenterStaticEntryGroup> safetyCenterStaticEntryGroups = new ArrayList<>();
 
-        List<SafetySourcesGroup> safetySourcesGroups = safetyCenterConfig.getSafetySourcesGroups();
         for (int i = 0; i < safetySourcesGroups.size(); i++) {
             SafetySourcesGroup safetySourcesGroup = safetySourcesGroups.get(i);
 
@@ -251,7 +247,7 @@ final class SafetyCenterDataTracker {
         for (int i = 0; i < safetySources.size(); i++) {
             SafetySource safetySource = safetySources.get(i);
 
-            if (safetySource.getType() == SafetySource.SAFETY_SOURCE_TYPE_STATIC) {
+            if (!SafetySources.isExternal(safetySource)) {
                 continue;
             }
 
@@ -411,8 +407,8 @@ final class SafetyCenterDataTracker {
         for (int i = 0; i < safetySources.size(); i++) {
             SafetySource safetySource = safetySources.get(i);
 
-            if (safetySource.getType() != SafetySource.SAFETY_SOURCE_TYPE_STATIC) {
-                Log.w(TAG, "Non-static safety source found in rigid group");
+            if (SafetySources.isExternal(safetySource)) {
+                Log.w(TAG, "External safety source found in rigid group");
                 continue;
             }
 
