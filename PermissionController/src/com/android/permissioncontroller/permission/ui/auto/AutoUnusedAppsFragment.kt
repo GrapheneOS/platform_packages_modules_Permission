@@ -71,7 +71,7 @@ class AutoUnusedAppsFragment : AutoSettingsFrameFragment(),
     }
 
     override fun createFooterPreference(context: Context): Preference {
-        val preference = Preference(context)
+        val preference = Preference(context!!)
         if (isHibernationEnabled()) {
             preference.summary = getString(R.string.unused_apps_page_summary)
         } else {
@@ -115,7 +115,7 @@ class AutoUnusedAppsFragment : AutoSettingsFrameFragment(),
     }
 
     private fun createNoUnusedAppsPreference(): Preference {
-        val preference = Preference(context)
+        val preference = Preference(context!!)
         preference.title = getString(R.string.zero_unused_apps)
         preference.key = UNUSED_PREFERENCE_KEY
         preference.isSelectable = false
