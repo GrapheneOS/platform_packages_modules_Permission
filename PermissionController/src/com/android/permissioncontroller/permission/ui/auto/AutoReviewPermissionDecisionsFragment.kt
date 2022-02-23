@@ -103,7 +103,7 @@ class AutoReviewPermissionDecisionsFragment : AutoSettingsFrameFragment() {
         addPrivacyDashboardPreference()
         addPermissionManagerPreference()
         preferenceScreen.addPreference(AutoDividerPreference(context))
-        recentPermissionsGroup = PreferenceCategory(context).apply {
+        recentPermissionsGroup = PreferenceCategory(context!!).apply {
             title = getString(R.string.review_permission_decisions)
         }
         preferenceScreen.addPreference(recentPermissionsGroup)
@@ -117,7 +117,7 @@ class AutoReviewPermissionDecisionsFragment : AutoSettingsFrameFragment() {
     }
 
     override fun onCreatePreferences(bundle: Bundle?, s: String?) {
-        preferenceScreen = preferenceManager.createPreferenceScreen(context)
+        preferenceScreen = preferenceManager.createPreferenceScreen(context!!)
     }
 
     private fun onRecentDecisionsChanged(recentDecisions: List<PermissionDecision>) {
