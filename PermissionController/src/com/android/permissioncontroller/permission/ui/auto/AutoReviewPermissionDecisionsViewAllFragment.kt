@@ -79,7 +79,7 @@ class AutoReviewPermissionDecisionsViewAllFragment : AutoSettingsFrameFragment()
     }
 
     override fun onCreatePreferences(bundle: Bundle?, s: String?) {
-        preferenceScreen = preferenceManager.createPreferenceScreen(context)
+        preferenceScreen = preferenceManager.createPreferenceScreen(context!!)
     }
 
     private fun onRecentDecisionsChanged(recentDecisions: List<PermissionDecision>) {

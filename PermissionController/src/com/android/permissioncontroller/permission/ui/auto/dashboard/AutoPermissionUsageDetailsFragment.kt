@@ -129,7 +129,7 @@ class AutoPermissionUsageDetailsFragment : AutoSettingsFrameFragment(),
     }
 
     override fun onCreatePreferences(bundlle: Bundle?, s: String?) {
-        preferenceScreen = preferenceManager.createPreferenceScreen(context)
+        preferenceScreen = preferenceManager.createPreferenceScreen(context!!)
     }
 
     private fun setupHeaderPreferences() {
