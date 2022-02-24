@@ -240,28 +240,33 @@ public final class SafetyCenterStatus implements Parcelable {
             mRefreshStatus = safetyCenterStatus.mRefreshStatus;
         }
 
-        /** Sets the title for this status. */
+        /** Sets the title for this status. Required. */
         @NonNull
         public Builder setTitle(@NonNull CharSequence title) {
             mTitle = requireNonNull(title);
             return this;
         }
 
-        /** Sets the summary text for this status. */
+        /** Sets the summary text for this status. Required. */
         @NonNull
         public Builder setSummary(@NonNull CharSequence summary) {
             mSummary = requireNonNull(summary);
             return this;
         }
 
-        /** Sets the {@link OverallSeverityLevel} of this status. */
+        /**
+         * Sets the {@link OverallSeverityLevel} of this status. Defaults to {@link
+         * #OVERALL_SEVERITY_LEVEL_UNKNOWN}.
+         */
         @NonNull
         public Builder setSeverityLevel(@OverallSeverityLevel int severityLevel) {
             mSeverityLevel = severityLevel;
             return this;
         }
 
-        /** Sets the {@link RefreshStatus} of this status. */
+        /**
+         * Sets the {@link RefreshStatus} of this status. Defaults to {@link #REFRESH_STATUS_NONE}.
+         */
         @NonNull
         public Builder setRefreshStatus(@RefreshStatus int refreshStatus) {
             mRefreshStatus = refreshStatus;
