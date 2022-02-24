@@ -29,7 +29,7 @@ import com.android.permissioncontroller.R
 /**
  * The service backing a Quick Settings Tile which will take users to the Safety Hub QS Fragment.
  */
-class SafetyHubQSTileService : TileService() {
+class SafetyHubQsTileService : TileService() {
     private var disabled = false
 
     override fun onBind(intent: Intent?): IBinder? {
@@ -54,8 +54,6 @@ class SafetyHubQSTileService : TileService() {
 
         qsTile.label = getString(R.string.safety_privacy_qs_tile_title)
         qsTile.subtitle = getString(R.string.safety_privacy_qs_tile_subtitle)
-        qsTile.icon = Icon.createWithResource(this,
-                R.drawable.safety_shield)
         qsTile.state = Tile.STATE_ACTIVE
         qsTile.updateTile()
     }
