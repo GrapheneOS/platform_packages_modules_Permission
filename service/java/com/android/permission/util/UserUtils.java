@@ -27,10 +27,10 @@ import android.os.UserManager;
 import com.android.internal.util.Preconditions;
 import com.android.permission.compat.UserHandleCompat;
 
-/** Utility class to deal with Android permissions. */
-public final class PermissionUtils {
+/** Utility class to deal with Android users. */
+public final class UserUtils {
 
-    private PermissionUtils() {}
+    private UserUtils() {}
 
     /** Enforces cross user permission for the calling UID and the given {@code userId}. */
     public static void enforceCrossUserPermission(@UserIdInt int userId, boolean allowAll,
@@ -44,13 +44,25 @@ public final class PermissionUtils {
                 || (allowAll && userId == UserHandleCompat.USER_ALL), "Invalid user " + userId);
         context.enforceCallingOrSelfPermission(
                 android.Manifest.permission.INTERACT_ACROSS_USERS_FULL, message);
-        if (callingUid == Process.SHELL_UID && userId >= UserHandleCompat.USER_SYSTEM) {
-            UserManager userManager = context.getSystemService(UserManager.class);
-            if (userManager.hasUserRestrictionForUser(UserManager.DISALLOW_DEBUGGING_FEATURES,
-                    UserHandle.of(userId))) {
-                throw new SecurityException("Shell does not have permission to access user "
-                        + userId);
-            }
+        if (callingUid != Process.SHELL_UID || userId < UserHandleCompat.USER_SYSTEM) {
+            return;
+        }
+        UserManager userManager = context.getSystemService(UserManager.class);
+        if (userManager.hasUserRestrictionForUser(UserManager.DISALLOW_DEBUGGING_FEATURES,
+                UserHandle.of(userId))) {
+            throw new SecurityException("Shell does not have permission to access user "
+                    + userId);
+        }
+    }
+
+    /** Returns whether a given {@code userId} corresponds to an existing user. */
+    public static boolean isUserExistent(@UserIdInt int userId, @NonNull Context context) {
+        UserManager userManager = context.getSystemService(UserManager.class);
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return userManager.getUserHandles(true).contains(UserHandle.of(userId));
+        } finally {
+            Binder.restoreCallingIdentity(identity);
         }
     }
 }
