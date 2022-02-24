@@ -93,7 +93,7 @@ public final class SafetyCenterService extends SystemService {
     @Override
     public void onStart() {
         publishBinderService(Context.SAFETY_CENTER_SERVICE, new Stub());
-        mSafetyCenterConfigReader.loadSafetyCenterConfig();
+        mSafetyCenterConfigReader.loadConfig();
     }
 
     /** Service implementation of {@link ISafetyCenterManager.Stub}. */
@@ -115,10 +115,11 @@ public final class SafetyCenterService extends SystemService {
             SafetyCenterData safetyCenterData;
             RemoteCallbackList<IOnSafetyCenterDataChangedListener> listeners;
             synchronized (mApiLock) {
-                safetyCenterData = mSafetyCenterDataTracker.addSafetySourceData(safetySourceData,
-                        packageName, userId);
+                safetyCenterData = mSafetyCenterDataTracker.setSafetySourceData(
+                        safetySourceData, safetySourceData.getId(), packageName, userId);
                 listeners = mSafetyCenterListeners.getListeners(userId);
             }
+
             // This doesn't need to be done while holding the lock, as RemoteCallbackList already
             // handles concurrent calls.
             // If the listener uses SafetyCenterManager and is executed on #directExecutor(),
@@ -197,15 +198,8 @@ public final class SafetyCenterService extends SystemService {
             getContext().enforceCallingPermission(
                     MANAGE_SAFETY_CENTER, "refreshSafetySources");
 
-            // We don't require the caller to have INTERACT_ACROSS_USERS and
-            // START_FOREGROUND_SERVICES_FROM_BACKGROUND permissions.
-            final long callingId = Binder.clearCallingIdentity();
-            try {
-                synchronized (mRefreshLock) {
-                    mSafetyCenterRefreshManager.refreshSafetySources(refreshReason);
-                }
-            } finally {
-                Binder.restoreCallingIdentity(callingId);
+            synchronized (mRefreshLock) {
+                mSafetyCenterRefreshManager.refreshSafetySources(refreshReason);
             }
         }
 
@@ -233,15 +227,19 @@ public final class SafetyCenterService extends SystemService {
             getContext().enforceCallingOrSelfPermission(
                     MANAGE_SAFETY_CENTER, "addOnSafetyCenterDataChangedListener");
 
+            boolean registered;
             SafetyCenterData safetyCenterData;
             synchronized (mApiLock) {
-                mSafetyCenterListeners.addListener(listener, userId);
+                registered = mSafetyCenterListeners.addListener(listener, userId);
                 safetyCenterData = mSafetyCenterDataTracker.getSafetyCenterData(userId);
             }
+
             // This doesn't need to be done while holding the lock.
             // If the listener uses SafetyCenterManager and is executed on #directExecutor(),
             // doing this while holding the lock could also potentially lead to deadlocks.
-            SafetyCenterListeners.deliverUpdate(listener, safetyCenterData);
+            if (registered) {
+                SafetyCenterListeners.deliverUpdate(listener, safetyCenterData);
+            }
         }
 
         @Override
