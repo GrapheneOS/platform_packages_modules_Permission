@@ -85,8 +85,13 @@ final class SafetyCenterListeners {
         listeners.finishBroadcast();
     }
 
-    /** Adds a {@link IOnSafetyCenterDataChangedListener} for the given {@code userId}. */
-    void addListener(
+    /**
+     * Adds a {@link IOnSafetyCenterDataChangedListener} for the given {@code userId}.
+     *
+     * <p>Returns whether the callback was successfully registered. Returns {@code true} if
+     * the callback was already registered.
+     */
+    boolean addListener(
             @NonNull IOnSafetyCenterDataChangedListener listener,
             @UserIdInt int userId) {
         RemoteCallbackList<IOnSafetyCenterDataChangedListener> listeners =
@@ -95,22 +100,28 @@ final class SafetyCenterListeners {
             listeners = new RemoteCallbackList<>();
             mSafetyCenterDataChangedListeners.put(userId, listeners);
         }
-        listeners.register(listener);
+        return listeners.register(listener);
     }
 
-    /** Removes a {@link IOnSafetyCenterDataChangedListener} for the given {@code userId}. */
-    void removeListener(
+    /**
+     * Removes a {@link IOnSafetyCenterDataChangedListener} for the given {@code userId}.
+     *
+     * <p>Returns whether the callback was unregistered. Returns {@code false} if the callback was
+     * never registered.
+     */
+    boolean removeListener(
             @NonNull IOnSafetyCenterDataChangedListener listener,
             @UserIdInt int userId) {
         RemoteCallbackList<IOnSafetyCenterDataChangedListener> listeners =
                 mSafetyCenterDataChangedListeners.get(userId);
         if (listeners == null) {
-            return;
+            return false;
         }
-        listeners.unregister(listener);
+        boolean unregistered = listeners.unregister(listener);
         if (listeners.getRegisteredCallbackCount() == 0) {
-            mSafetyCenterDataChangedListeners.put(userId, null);
+            mSafetyCenterDataChangedListeners.remove(userId);
         }
+        return unregistered;
     }
 
     /**
