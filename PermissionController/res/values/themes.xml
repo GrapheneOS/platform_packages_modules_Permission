@@ -134,7 +134,7 @@
         <item name="android:filterTouchesWhenObscured">true</item>
     </style>
 
-    <style name="SafetyHub" parent="@android:style/Theme.DeviceDefault.NoActionBar">
+    <style name="SafetyCenter" parent="@android:style/Theme.DeviceDefault.NoActionBar">
         <item name="android:filterTouchesWhenObscured">true</item>
     </style>
 

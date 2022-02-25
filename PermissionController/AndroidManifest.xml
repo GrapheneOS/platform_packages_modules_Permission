@@ -177,13 +177,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.android.permissioncontroller.permission.ui.SafetyHubQSActivity"
+        <activity android:name="com.android.permissioncontroller.permission.ui.SafetyCenterQSActivity"
                   android:excludeFromRecents="true"
                   android:exported="true"
-                  android:theme="@style/SafetyHub"
+                  android:theme="@style/SafetyCenter"
                   android:permission="android.permission.REVOKE_RUNTIME_PERMISSIONS">
             <intent-filter android:priority="1">
-                <action android:name="android.intent.action.VIEW_SAFETY_HUB" />
+                <action android:name="android.intent.action.VIEW_SAFETY_CENTER_QS" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -341,7 +341,7 @@
             </intent-filter>
         </service>
 
-         <service android:name="com.android.permissioncontroller.permission.service.SafetyHubQsTileService"
+         <service android:name="com.android.permissioncontroller.permission.service.SafetyCenterQSTileService"
                   android:exported="true"
                   android:label="@string/safety_privacy_qs_tile_title"
                   android:icon ="@drawable/safety_shield"
