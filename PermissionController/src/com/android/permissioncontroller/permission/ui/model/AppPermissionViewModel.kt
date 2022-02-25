@@ -192,14 +192,15 @@ class AppPermissionViewModel(
 
         private val appPermGroupLiveData = LightAppPermGroupLiveData[packageName, permGroupName,
             user]
-        private val mediaStorageSupergroupLiveData = mutableMapOf<String,LightAppPermGroupLiveData>()
+        private val mediaStorageSupergroupLiveData =
+            mutableMapOf<String, LightAppPermGroupLiveData>()
 
         init {
 
             addSource(appPermGroupLiveData) { appPermGroup ->
                 lightAppPermGroup = appPermGroup
                 if (permGroupName in Utils.STORAGE_SUPERGROUP_PERMISSIONS) {
-                    observeMediaPermGroup(permGroupName, appPermGroup)
+                    onMediaPermGroupUpdate(permGroupName, appPermGroup)
                 }
                 if (appPermGroupLiveData.isInitialized && appPermGroup == null) {
                     value = null
@@ -228,14 +229,13 @@ class AppPermissionViewModel(
                 for (permGroupName in mediaStorageSupergroupLiveData.keys) {
                     val liveData = mediaStorageSupergroupLiveData[permGroupName]!!
                     addSource(liveData) { permGroup ->
-                        observeMediaPermGroup(permGroupName, permGroup)
+                        onMediaPermGroupUpdate(permGroupName, permGroup)
                     }
                 }
             }
-
         }
 
-        private fun observeMediaPermGroup(permGroupName: String, permGroup: LightAppPermGroup?) {
+        private fun onMediaPermGroupUpdate(permGroupName: String, permGroup: LightAppPermGroup?) {
             if (permGroup == null) {
                 mediaStorageSupergroupPermGroups.remove(permGroupName)
                 value = null
@@ -248,7 +248,9 @@ class AppPermissionViewModel(
         override fun onUpdate() {
             val group = appPermGroupLiveData.value ?: return
             for (mediaGroupLiveData in mediaStorageSupergroupLiveData.values) {
-                mediaGroupLiveData.isInitialized || return
+                if (!mediaGroupLiveData.isInitialized) {
+                    return
+                }
             }
 
             val admin = RestrictedLockUtils.getProfileOrDeviceOwner(app, user)
@@ -600,7 +602,7 @@ class AppPermissionViewModel(
             return
         }
 
-        if (isPartOfStorageSupergroup(group)) {
+        if (expandsToStorageSupergroup(group)) {
             if (changeRequest == ChangeRequest.GRANT_FOREGROUND) {
                 defaultDeny.showConfirmDialog(ChangeRequest.GRANT_STORAGE_SUPERGROUP,
                         R.string.storage_supergroup_warning_allow, buttonClicked, false)
@@ -668,21 +670,17 @@ class AppPermissionViewModel(
                 FullStoragePermissionAppsLiveData.recalculate()
             }
         }
-
     }
 
-    private fun isPartOfStorageSupergroup(group: LightAppPermGroup): Boolean {
-        val mediaSupergroup = Utils.STORAGE_SUPERGROUP_PERMISSIONS
-                .mapNotNull { mediaStorageSupergroupPermGroups[it] }
-        val targetSdk = group.packageInfo.targetSdkVersion
-        return targetSdk < Build.VERSION_CODES.TIRAMISU && group in mediaSupergroup
+    private fun expandsToStorageSupergroup(group: LightAppPermGroup): Boolean {
+        return group.packageInfo.targetSdkVersion < Build.VERSION_CODES.TIRAMISU &&
+            group.permGroupName in Utils.STORAGE_SUPERGROUP_PERMISSIONS
     }
 
     private fun expandToSupergroup(group: LightAppPermGroup): List<LightAppPermGroup> {
         val mediaSupergroup = Utils.STORAGE_SUPERGROUP_PERMISSIONS
                 .mapNotNull { mediaStorageSupergroupPermGroups[it] }
-        val targetSdk = group.packageInfo.targetSdkVersion
-        return if (targetSdk < Build.VERSION_CODES.TIRAMISU && group in mediaSupergroup) {
+        return if (expandsToStorageSupergroup(group)) {
             mediaSupergroup
         } else {
             listOf(group)
@@ -713,7 +711,8 @@ class AppPermissionViewModel(
 
             if (changeRequest andValue ChangeRequest.REVOKE_BACKGROUND != 0 &&
                     group.hasBackgroundGroup) {
-                newGroup = KotlinUtils.revokeBackgroundRuntimePermissions(app, newGroup, false, oneTime)
+                newGroup =
+                    KotlinUtils.revokeBackgroundRuntimePermissions(app, newGroup, false, oneTime)
 
                 if (wasBackgroundGranted) {
                     SafetyNetLogger.logPermissionToggled(newGroup)
@@ -723,7 +722,8 @@ class AppPermissionViewModel(
             }
 
             if (changeRequest andValue ChangeRequest.REVOKE_FOREGROUND != 0) {
-                newGroup = KotlinUtils.revokeForegroundRuntimePermissions(app, newGroup, false, oneTime)
+                newGroup =
+                    KotlinUtils.revokeForegroundRuntimePermissions(app, newGroup, false, oneTime)
                 if (wasForegroundGranted) {
                     SafetyNetLogger.logPermissionToggled(newGroup)
                 }
@@ -739,7 +739,6 @@ class AppPermissionViewModel(
                 FullStoragePermissionAppsLiveData.recalculate()
             }
         }
-
     }
 
     /**
