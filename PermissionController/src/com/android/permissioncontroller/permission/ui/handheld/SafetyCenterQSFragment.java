@@ -51,8 +51,8 @@ import androidx.transition.AutoTransition;
 import androidx.transition.TransitionManager;
 
 import com.android.permissioncontroller.R;
-import com.android.permissioncontroller.permission.ui.model.SafetyHubViewModel;
-import com.android.permissioncontroller.permission.ui.model.SafetyHubViewModelFactory;
+import com.android.permissioncontroller.permission.ui.model.SafetyCenterViewModel;
+import com.android.permissioncontroller.permission.ui.model.SafetyCenterViewModelFactory;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
 
@@ -63,17 +63,17 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * The Quick Settings fragment for the safety hub. Displays information to the user about the
+ * The Quick Settings fragment for the safety center. Displays information to the user about the
  * current safety and privacy status of their device, including showing mic/camera usage, and having
  * mic/camera/location toggles.
  */
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
-public class SafetyHubQSFragment extends Fragment {
+public class SafetyCenterQSFragment extends Fragment {
     private static final ArrayMap<String, Integer> sToggleButtons = new ArrayMap<>();
 
     private long mSessionId;
     private List<PermissionGroupUsage> mPermGroupUsages;
-    private SafetyHubViewModel mViewModel;
+    private SafetyCenterViewModel mViewModel;
 
     static {
         sToggleButtons.put(CAMERA, R.id.camera_toggle);
@@ -87,12 +87,12 @@ public class SafetyHubQSFragment extends Fragment {
      * @param sessionId The current session Id
      * @return A bundle with the required arguments
      */
-    public static SafetyHubQSFragment newInstance(long sessionId,
+    public static SafetyCenterQSFragment newInstance(long sessionId,
             ArrayList<PermissionGroupUsage> usages) {
         Bundle args = new Bundle();
         args.putLong(EXTRA_SESSION_ID, sessionId);
         args.putParcelableArrayList(PermissionManager.EXTRA_PERMISSION_USAGES, usages);
-        SafetyHubQSFragment frag = new SafetyHubQSFragment();
+        SafetyCenterQSFragment frag = new SafetyCenterQSFragment();
         frag.setArguments(args);
         return frag;
     }
@@ -112,11 +112,11 @@ public class SafetyHubQSFragment extends Fragment {
             mPermGroupUsages = new ArrayList<>();
         }
 
-        getActivity().setTheme(R.style.SafetyHub);
+        getActivity().setTheme(R.style.SafetyCenter);
 
-        SafetyHubViewModelFactory factory = new SafetyHubViewModelFactory(
+        SafetyCenterViewModelFactory factory = new SafetyCenterViewModelFactory(
                 getActivity().getApplication(), mSessionId, mPermGroupUsages);
-        mViewModel = new ViewModelProvider(this, factory).get(SafetyHubViewModel.class);
+        mViewModel = new ViewModelProvider(this, factory).get(SafetyCenterViewModel.class);
         mViewModel.getSensorPrivacyLiveData()
                 .observe(this, (v) -> setSensorToggleState(v, getView()));
         //LightAppPermGroupLiveDatas are kept track of in the view model,
@@ -127,7 +127,7 @@ public class SafetyHubQSFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.safety_hub_qs, container, false);
+        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.safety_center_qs, container, false);
         root.findViewById(R.id.security_settings_button).setOnClickListener(
                 (v) -> mViewModel.navigateToSecuritySettings(this));
         setSensorToggleState(new ArrayMap<>(), root);
@@ -422,12 +422,12 @@ public class SafetyHubQSFragment extends Fragment {
             Drawable icon;
             if (sensorEnabled) {
                 blockedStatus.setText(R.string.available);
-                toggle.setBackgroundResource(R.drawable.safety_hub_button_background);
+                toggle.setBackgroundResource(R.drawable.safety_center_button_background);
                 icon = KotlinUtils.INSTANCE.getPermGroupIcon(getContext(), groupName, Color.BLACK);
                 groupLabel.setTextColor(Color.BLACK);
             } else {
                 blockedStatus.setText(R.string.blocked);
-                toggle.setBackgroundResource(R.drawable.safety_hub_button_background_dark);
+                toggle.setBackgroundResource(R.drawable.safety_center_button_background_dark);
                 icon = getContext().getDrawable(getBlockedIconResId(groupName));
                 icon.setTint(Color.LTGRAY);
                 groupLabel.setTextColor(Color.LTGRAY);
