@@ -27,9 +27,9 @@ import android.service.quicksettings.TileService
 import com.android.permissioncontroller.R
 
 /**
- * The service backing a Quick Settings Tile which will take users to the Safety Hub QS Fragment.
+ * The service backing a Quick Settings Tile which will take users to the Safety Center QS Fragment.
  */
-class SafetyHubQsTileService : TileService() {
+class SafetyCenterQSTileService : TileService() {
     private var disabled = false
 
     override fun onBind(intent: Intent?): IBinder? {
@@ -59,7 +59,7 @@ class SafetyHubQsTileService : TileService() {
     }
 
     override fun onClick() {
-        val intent = Intent(Intent.ACTION_VIEW_SAFETY_HUB)
+        val intent = Intent(Intent.ACTION_VIEW_SAFETY_CENTER_QS)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         startActivityAndCollapse(intent)
     }

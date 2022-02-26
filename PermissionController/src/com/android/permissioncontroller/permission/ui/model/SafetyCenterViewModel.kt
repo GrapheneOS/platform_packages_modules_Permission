@@ -46,7 +46,7 @@ import com.android.permissioncontroller.permission.utils.LocationUtils
 import kotlin.collections.set
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
-class SafetyHubViewModel(
+class SafetyCenterViewModel(
     private val app: Application,
     private val sessionId: Long,
     private val permGroupUsages: List<PermissionGroupUsage>
@@ -174,19 +174,19 @@ class SafetyHubViewModel(
 }
 
 /**
- * Factory for a SafetyHubFragment
+ * Factory for a SafetyCenterViewModel
  *
  * @param app The current application
  * @param sessionId A session ID used in logs to identify this particular session
  */
 @RequiresApi(Build.VERSION_CODES.S)
-class SafetyHubViewModelFactory(
+class SafetyCenterViewModelFactory(
     private val app: Application,
     private val sessionId: Long,
     private val permGroupUsages: List<PermissionGroupUsage>
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         @Suppress("UNCHECKED_CAST")
-        return SafetyHubViewModel(app, sessionId, permGroupUsages) as T
+        return SafetyCenterViewModel(app, sessionId, permGroupUsages) as T
     }
 }

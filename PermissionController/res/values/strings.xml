@@ -1484,9 +1484,9 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="safety_center_issue_card_dismiss_button">Dismiss</string>
     <!-- Label for the button that takes the user to the settings page for Android Security  [CHAR LIMIT=60] -->
     <string name="security_settings">Security Settings</string>
-    <!-- Label for the permission usage section of safety hub QS page[CHAR LIMIT=30] -->
+    <!-- Label for the permission usage section of safety center QS page[CHAR LIMIT=30] -->
     <string name="sensor_permissions_qs">Sensor Permissions</string>
-    <!-- Label for the privacy controls section of safety hub QS page [CHAR LIMIT=30] -->
+    <!-- Label for the privacy controls section of safety center QS page [CHAR LIMIT=30] -->
     <string name="privacy_controls_qs">Privacy Controls</string>
     <!-- Label when permissions were removed via safety center QS page [CHAR LIMIT=30] -->
     <string name="permissions_removed_qs">Permission removed</string>
