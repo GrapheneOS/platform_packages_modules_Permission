@@ -20,9 +20,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    style="@style/SafetyHub"
+    style="@style/SafetyCenter"
     android:background="?android:colorBackground"
-    android:id="@+id/safety_hub_root">
+    android:id="@+id/safety_center_root">
 
 
 
@@ -72,13 +72,13 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp">
                 <include android:id="@+id/camera_toggle"
-                         layout="@layout/safety_hub_toggle_button" />
+                         layout="@layout/safety_center_toggle_button" />
 
                 <include android:id="@+id/mic_toggle"
-                         layout="@layout/safety_hub_toggle_button" />
+                         layout="@layout/safety_center_toggle_button" />
 
                 <include android:id="@+id/location_toggle"
-                         layout="@layout/safety_hub_toggle_button" />
+                         layout="@layout/safety_center_toggle_button" />
             </LinearLayout>
 
             <Button
@@ -88,7 +88,7 @@
                 android:layout_width="300dp"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/oval_outline_button"
-                style="@style/SafetyHubLinkText"
+                style="@style/SafetyCenterLinkText"
                 android:textColor="#ffffffff"
                 android:text="@string/security_settings"/>
 
