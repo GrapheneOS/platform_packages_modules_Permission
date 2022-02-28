@@ -81,7 +81,7 @@
         <xsd:attribute name="profile" type="profile" use="required"/>
         <xsd:attribute name="maxSeverityLevel" type="xsd:int" default="2147483647"/>
         <xsd:attribute name="broadcastReceiverClassName" type="xsd:string"/>
-        <xsd:attribute name="disallowLogging" type="xsd:boolean" default="false"/>
+        <xsd:attribute name="allowLogging" type="xsd:boolean" default="true"/>
         <xsd:attribute name="allowRefreshOnPageOpen" type="xsd:boolean" default="false"/>
     </xsd:complexType>
 
