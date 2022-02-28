@@ -395,17 +395,14 @@ package android.safetycenter {
 
 package android.safetycenter.config {
 
-  public final class Parser {
-    method @NonNull public static android.safetycenter.config.SafetyCenterConfig parseXmlResource(@NonNull android.content.res.XmlResourceParser) throws android.safetycenter.config.Parser.ParseException;
-  }
-
-  public static final class Parser.ParseException extends java.lang.Exception {
-    ctor public Parser.ParseException(@NonNull String);
-    ctor public Parser.ParseException(@NonNull String, @NonNull Throwable);
+  public final class ParseException extends java.lang.Exception {
+    ctor public ParseException(@NonNull String);
+    ctor public ParseException(@NonNull String, @NonNull Throwable);
   }
 
   public final class SafetyCenterConfig implements android.os.Parcelable {
     method public int describeContents();
+    method @NonNull public static android.safetycenter.config.SafetyCenterConfig fromXml(@NonNull android.content.res.XmlResourceParser) throws android.safetycenter.config.ParseException;
     method @NonNull public java.util.List<android.safetycenter.config.SafetySourcesGroup> getSafetySourcesGroups();
     method public void writeToParcel(@NonNull android.os.Parcel, int);
     field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.config.SafetyCenterConfig> CREATOR;
@@ -431,8 +428,8 @@ package android.safetycenter.config {
     method @StringRes public int getTitleForWorkResId();
     method @StringRes public int getTitleResId();
     method public int getType();
-    method public boolean isAllowLogging();
-    method public boolean isAllowRefreshOnPageOpen();
+    method public boolean isLoggingAllowed();
+    method public boolean isRefreshOnPageOpenAllowed();
     method public void writeToParcel(@NonNull android.os.Parcel, int);
     field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.config.SafetySource> CREATOR;
     field public static final int INITIAL_DISPLAY_STATE_DISABLED = 1; // 0x1
@@ -449,15 +446,15 @@ package android.safetycenter.config {
   public static final class SafetySource.Builder {
     ctor public SafetySource.Builder(int);
     method @NonNull public android.safetycenter.config.SafetySource build();
-    method @NonNull public android.safetycenter.config.SafetySource.Builder setAllowLogging(boolean);
-    method @NonNull public android.safetycenter.config.SafetySource.Builder setAllowRefreshOnPageOpen(boolean);
     method @NonNull public android.safetycenter.config.SafetySource.Builder setBroadcastReceiverClassName(@Nullable String);
     method @NonNull public android.safetycenter.config.SafetySource.Builder setId(@Nullable String);
     method @NonNull public android.safetycenter.config.SafetySource.Builder setInitialDisplayState(int);
     method @NonNull public android.safetycenter.config.SafetySource.Builder setIntentAction(@Nullable String);
+    method @NonNull public android.safetycenter.config.SafetySource.Builder setLoggingAllowed(boolean);
     method @NonNull public android.safetycenter.config.SafetySource.Builder setMaxSeverityLevel(int);
     method @NonNull public android.safetycenter.config.SafetySource.Builder setPackageName(@Nullable String);
     method @NonNull public android.safetycenter.config.SafetySource.Builder setProfile(int);
+    method @NonNull public android.safetycenter.config.SafetySource.Builder setRefreshOnPageOpenAllowed(boolean);
     method @NonNull public android.safetycenter.config.SafetySource.Builder setSearchTermsResId(@StringRes int);
     method @NonNull public android.safetycenter.config.SafetySource.Builder setSummaryResId(@StringRes int);
     method @NonNull public android.safetycenter.config.SafetySource.Builder setTitleForWorkResId(@StringRes int);
