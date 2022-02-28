@@ -18,10 +18,10 @@ package android.safetycenter.config;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
-import android.annotation.IdRes;
 import android.annotation.IntDef;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
+import android.annotation.StringRes;
 import android.annotation.SystemApi;
 import android.content.res.Resources;
 import android.os.Parcel;
@@ -122,11 +122,11 @@ public final class SafetySource implements Parcelable {
     private final String mId;
     @Nullable
     private final String mPackageName;
-    @IdRes
+    @StringRes
     private final int mTitleResId;
-    @IdRes
+    @StringRes
     private final int mTitleForWorkResId;
-    @IdRes
+    @StringRes
     private final int mSummaryResId;
     @Nullable
     private final String mIntentAction;
@@ -135,7 +135,7 @@ public final class SafetySource implements Parcelable {
     @InitialDisplayState
     private final int mInitialDisplayState;
     private final int mMaxSeverityLevel;
-    @IdRes
+    @StringRes
     private final int mSearchTermsResId;
     @Nullable
     private final String mBroadcastReceiverClassName;
@@ -147,14 +147,14 @@ public final class SafetySource implements Parcelable {
             @SafetySourceType int type,
             @NonNull String id,
             @Nullable String packageName,
-            @IdRes int titleResId,
-            @IdRes int titleForWorkResId,
-            @IdRes int summaryResId,
+            @StringRes int titleResId,
+            @StringRes int titleForWorkResId,
+            @StringRes int summaryResId,
             @Nullable String intentAction,
             @Profile int profile,
             @InitialDisplayState int initialDisplayState,
             int maxSeverityLevel,
-            @IdRes int searchTermsResId,
+            @StringRes int searchTermsResId,
             @Nullable String broadcastReceiverClassName,
             boolean allowLogging,
             boolean allowRefreshOnPageOpen) {
@@ -197,7 +197,7 @@ public final class SafetySource implements Parcelable {
     }
 
     /** Returns the resource id of the title of this safety source. */
-    @IdRes
+    @StringRes
     public int getTitleResId() {
         if (mType == SAFETY_SOURCE_TYPE_ISSUE_ONLY) {
             throw new UnsupportedOperationException(
@@ -207,7 +207,7 @@ public final class SafetySource implements Parcelable {
     }
 
     /** Returns the resource id of the title for work of this safety source. */
-    @IdRes
+    @StringRes
     public int getTitleForWorkResId() {
         if (mType == SAFETY_SOURCE_TYPE_ISSUE_ONLY) {
             throw new UnsupportedOperationException(
@@ -221,7 +221,7 @@ public final class SafetySource implements Parcelable {
     }
 
     /** Returns the resource id of the summary of this safety source. */
-    @IdRes
+    @StringRes
     public int getSummaryResId() {
         if (mType == SAFETY_SOURCE_TYPE_ISSUE_ONLY) {
             throw new UnsupportedOperationException(
@@ -231,7 +231,7 @@ public final class SafetySource implements Parcelable {
     }
 
     /** Returns the intent action of this safety source. */
-    @NonNull
+    @Nullable
     public String getIntentAction() {
         if (mType == SAFETY_SOURCE_TYPE_ISSUE_ONLY) {
             throw new UnsupportedOperationException(
@@ -273,7 +273,7 @@ public final class SafetySource implements Parcelable {
      * Returns the resource id of the search terms of this safety source if set; otherwise
      * {@link Resources#ID_NULL}.
      */
-    @IdRes
+    @StringRes
     public int getSearchTermsResId() {
         if (mType == SAFETY_SOURCE_TYPE_ISSUE_ONLY) {
             throw new UnsupportedOperationException(
@@ -422,13 +422,13 @@ public final class SafetySource implements Parcelable {
         @Nullable
         private String mPackageName;
         @Nullable
-        @IdRes
+        @StringRes
         private Integer mTitleResId;
         @Nullable
-        @IdRes
+        @StringRes
         private Integer mTitleForWorkResId;
         @Nullable
-        @IdRes
+        @StringRes
         private Integer mSummaryResId;
         @Nullable
         private String mIntentAction;
@@ -441,7 +441,7 @@ public final class SafetySource implements Parcelable {
         @Nullable
         private Integer mMaxSeverityLevel;
         @Nullable
-        @IdRes
+        @StringRes
         private Integer mSearchTermsResId;
         @Nullable
         private String mBroadcastReceiverClassName;
@@ -471,21 +471,21 @@ public final class SafetySource implements Parcelable {
 
         /** Sets the resource id of the title of this safety source. */
         @NonNull
-        public Builder setTitleResId(@IdRes int titleResId) {
+        public Builder setTitleResId(@StringRes int titleResId) {
             mTitleResId = titleResId;
             return this;
         }
 
         /** Sets the resource id of the title for work of this safety source. */
         @NonNull
-        public Builder setTitleForWorkResId(@IdRes int titleForWorkResId) {
+        public Builder setTitleForWorkResId(@StringRes int titleForWorkResId) {
             mTitleForWorkResId = titleForWorkResId;
             return this;
         }
 
         /** Sets the resource id of the summary of this safety source. */
         @NonNull
-        public Builder setSummaryResId(@IdRes int summaryResId) {
+        public Builder setSummaryResId(@StringRes int summaryResId) {
             mSummaryResId = summaryResId;
             return this;
         }
@@ -520,7 +520,7 @@ public final class SafetySource implements Parcelable {
 
         /** Sets the resource id of the search terms of this safety source. */
         @NonNull
-        public Builder setSearchTermsResId(@IdRes int searchTermsResId) {
+        public Builder setSearchTermsResId(@StringRes int searchTermsResId) {
             mSearchTermsResId = searchTermsResId;
             return this;
         }

@@ -20,10 +20,10 @@ import static android.os.Build.VERSION_CODES.TIRAMISU;
 
 import static java.util.Objects.requireNonNull;
 
-import android.annotation.IdRes;
 import android.annotation.IntDef;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
+import android.annotation.StringRes;
 import android.annotation.SystemApi;
 import android.content.res.Resources;
 import android.os.Parcel;
@@ -105,17 +105,21 @@ public final class SafetySourcesGroup implements Parcelable {
 
     @NonNull
     private final String mId;
-    @IdRes
+    @StringRes
     private final int mTitleResId;
-    @IdRes
+    @StringRes
     private final int mSummaryResId;
     @StatelessIconType
     private final int mStatelessIconType;
     @NonNull
     private final List<SafetySource> mSafetySources;
 
-    private SafetySourcesGroup(@NonNull String id, @IdRes int titleResId, @IdRes int summaryResId,
-            @StatelessIconType int statelessIconType, @NonNull List<SafetySource> safetySources) {
+    private SafetySourcesGroup(
+            @NonNull String id,
+            @StringRes int titleResId,
+            @StringRes int summaryResId,
+            @StatelessIconType int statelessIconType,
+            @NonNull List<SafetySource> safetySources) {
         mId = id;
         mTitleResId = titleResId;
         mSummaryResId = summaryResId;
@@ -142,13 +146,13 @@ public final class SafetySourcesGroup implements Parcelable {
     }
 
     /** Returns the resource id of the title of this safety sources group. */
-    @IdRes
+    @StringRes
     public int getTitleResId() {
         return mTitleResId;
     }
 
     /** Returns the resource id of the summary of this safety sources group. */
-    @IdRes
+    @StringRes
     public int getSummaryResId() {
         return mSummaryResId;
     }
@@ -233,10 +237,10 @@ public final class SafetySourcesGroup implements Parcelable {
         @Nullable
         private String mId;
         @Nullable
-        @IdRes
+        @StringRes
         private Integer mTitleResId;
         @Nullable
-        @IdRes
+        @StringRes
         private Integer mSummaryResId;
         @Nullable
         @StatelessIconType
@@ -257,14 +261,14 @@ public final class SafetySourcesGroup implements Parcelable {
 
         /** Sets the resource id of the title of this safety sources group. */
         @NonNull
-        public Builder setTitleResId(@IdRes int titleResId) {
+        public Builder setTitleResId(@StringRes int titleResId) {
             mTitleResId = titleResId;
             return this;
         }
 
         /** Sets the resource id of the summary of this safety sources group. */
         @NonNull
-        public Builder setSummaryResId(@IdRes int summaryResId) {
+        public Builder setSummaryResId(@StringRes int summaryResId) {
             mSummaryResId = summaryResId;
             return this;
         }
