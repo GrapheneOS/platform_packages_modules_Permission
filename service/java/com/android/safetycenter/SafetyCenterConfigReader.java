@@ -29,7 +29,6 @@ import android.safetycenter.config.SafetyCenterConfig;
 import android.safetycenter.config.SafetySource;
 import android.safetycenter.config.SafetySourcesGroup;
 import android.util.ArrayMap;
-import android.util.ArraySet;
 import android.util.Log;
 
 import androidx.annotation.RequiresApi;
@@ -147,13 +146,13 @@ final class SafetyCenterConfigReader {
         @NonNull
         private final List<SafetySourcesGroup> mSafetySourcesGroups;
         @NonNull
-        private final ArraySet<SourceId> mExternalSafetySources;
+        private final ArrayMap<String, SafetySource> mExternalSafetySources;
         @NonNull
         private final List<Broadcast> mBroadcasts;
 
         private Config(
                 @NonNull List<SafetySourcesGroup> safetySourcesGroups,
-                @NonNull ArraySet<SourceId> externalSafetySources,
+                @NonNull ArrayMap<String, SafetySource> externalSafetySources,
                 @NonNull List<Broadcast> broadcasts) {
             mSafetySourcesGroups = safetySourcesGroups;
             mExternalSafetySources = externalSafetySources;
@@ -168,8 +167,8 @@ final class SafetyCenterConfigReader {
             return mSafetySourcesGroups;
         }
 
-        /** Returns the set of safety source IDs that can provide data externally. */
-        ArraySet<SourceId> getExternalSafetySources() {
+        /** Returns the map of safety source IDs that can provide data externally. */
+        ArrayMap<String, SafetySource> getExternalSafetySources() {
             return mExternalSafetySources;
         }
 
@@ -219,9 +218,9 @@ final class SafetyCenterConfigReader {
         }
 
         @NonNull
-        private static ArraySet<SourceId> extractExternalSafetySources(
+        private static ArrayMap<String, SafetySource> extractExternalSafetySources(
                 @NonNull SafetyCenterConfig safetyCenterConfig) {
-            ArraySet<SourceId> externalSafetySources = new ArraySet<>();
+            ArrayMap<String, SafetySource> externalSafetySources = new ArrayMap<>();
             List<SafetySourcesGroup> safetySourcesGroups =
                     safetyCenterConfig.getSafetySourcesGroups();
             for (int i = 0; i < safetySourcesGroups.size(); i++) {
@@ -235,8 +234,7 @@ final class SafetyCenterConfigReader {
                         continue;
                     }
 
-                    externalSafetySources.add(
-                            SourceId.of(safetySource.getId(), safetySource.getPackageName()));
+                    externalSafetySources.put(safetySource.getId(), safetySource);
                 }
             }
 
@@ -294,66 +292,6 @@ final class SafetyCenterConfigReader {
             }
 
             return broadcasts;
-        }
-    }
-
-    /** A class that represents a unique source id for a given package name. */
-    static final class SourceId {
-
-        @NonNull
-        private final String mId;
-        @NonNull
-        private final String mPackageName;
-
-        private SourceId(@NonNull String id, @NonNull String packageName) {
-            mId = id;
-            mPackageName = packageName;
-        }
-
-        /** Creates a {@link SourceId} for the given {@code id} and {@code packageName}. */
-        @NonNull
-        static SourceId of(@NonNull String id, @NonNull String packageName) {
-            return new SourceId(id, packageName);
-        }
-
-        /**
-         * Returns the safety source id.
-         *
-         * <p>This is already a unique ID as defined by the XML config, but this class still keeps
-         * track of the package name to ensure callers cannot impersonate the source.
-         */
-        String getId() {
-            return mId;
-        }
-
-        /** Returns the package name that owns the safety source id. */
-        String getPackageName() {
-            return mPackageName;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (!(o instanceof SourceId)) return false;
-            SourceId that = (SourceId) o;
-            return mId.equals(that.mId) && mPackageName.equals(that.mPackageName);
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(mId, mPackageName);
-        }
-
-        @Override
-        public String toString() {
-            return "SourceId{"
-                    + "mId='"
-                    + mId
-                    + '\''
-                    + ", mPackageName='"
-                    + mPackageName
-                    + '\''
-                    + '}';
         }
     }
 
