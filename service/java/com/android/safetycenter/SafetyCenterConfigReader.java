@@ -26,7 +26,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.os.UserHandle;
-import android.safetycenter.config.Parser;
+import android.safetycenter.config.ParseException;
 import android.safetycenter.config.SafetyCenterConfig;
 import android.safetycenter.config.SafetySource;
 import android.safetycenter.config.SafetySourcesGroup;
@@ -117,10 +117,10 @@ final class SafetyCenterConfigReader {
         }
 
         try {
-            SafetyCenterConfig safetyCenterConfig = Parser.parseXmlResource(parser);
+            SafetyCenterConfig safetyCenterConfig = SafetyCenterConfig.fromXml(parser);
             Log.i(TAG, "SafetyCenterConfig read successfully");
             return safetyCenterConfig;
-        } catch (Parser.ParseException e) {
+        } catch (ParseException e) {
             Log.e(TAG, "Cannot read SafetyCenterConfig", e);
             return null;
         }
