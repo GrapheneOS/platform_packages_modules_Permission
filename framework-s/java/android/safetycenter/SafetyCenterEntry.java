@@ -70,13 +70,18 @@ public final class SafetyCenterEntry implements Parcelable {
     public @interface EntrySeverityLevel {
     }
 
-    /** Indicates the severity level of this entry is not currently known. */
+    /**
+     * Indicates the severity level of this entry is not currently known. This may be because of an
+     * error or because some information is missing.
+     */
     public static final int ENTRY_SEVERITY_LEVEL_UNKNOWN = 3000;
 
     /**
-     * Indicates this entry does not currently have a severity level, but may change in the future.
-     * This may be because there is some information missing, or that the Safety Center currently
-     * has no opinion on the state of this entry.
+     * Indicates this entry does not have a severity level.
+     *
+     * <p>This is used when the Safety Center has no opinion on the severity of this entry (e.g.
+     * a security setting isn't configured but it's not considered a risk, or for privacy-related
+     * entries).
      */
     public static final int ENTRY_SEVERITY_LEVEL_NONE = 3100;
 
