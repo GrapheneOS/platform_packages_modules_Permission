@@ -250,8 +250,8 @@ public final class SafetyCenterIssue implements Parcelable {
         private CharSequence mSummary;
         @IssueSeverityLevel
         private int mSeverityLevel = ISSUE_SEVERITY_LEVEL_OK;
-        private boolean mDismissible;
-        private boolean mShouldConfirmDismissal;
+        private boolean mDismissible = true;
+        private boolean mShouldConfirmDismissal = true;
         private List<Action> mActions = new ArrayList<>();
 
         /**
@@ -274,14 +274,14 @@ public final class SafetyCenterIssue implements Parcelable {
             mActions = new ArrayList<>(issue.mActions);
         }
 
-        /** Sets the ID for this issue. */
+        /** Sets the ID for this issue. Required. */
         @NonNull
         public Builder setId(@NonNull String id) {
             mId = requireNonNull(id);
             return this;
         }
 
-        /** Sets the title for this issue. */
+        /** Sets the title for this issue. Required. */
         @NonNull
         public Builder setTitle(@NonNull CharSequence title) {
             mTitle = requireNonNull(title);
@@ -295,35 +295,44 @@ public final class SafetyCenterIssue implements Parcelable {
             return this;
         }
 
-        /** Sets the summary for this issue. */
+        /** Sets the summary for this issue. Required. */
         @NonNull
         public Builder setSummary(@NonNull CharSequence summary) {
             mSummary = requireNonNull(summary);
             return this;
         }
 
-        /** Sets {@link IssueSeverityLevel} for this issue. */
+        /**
+         * Sets {@link IssueSeverityLevel} for this issue. Defaults to {@link
+         * #ISSUE_SEVERITY_LEVEL_OK}.
+         */
         @NonNull
         public Builder setSeverityLevel(@IssueSeverityLevel int severityLevel) {
             mSeverityLevel = severityLevel;
             return this;
         }
 
-        /** Sets whether or not this issue can be dismissed. */
+        /** Sets whether or not this issue can be dismissed. Defaults to {@code true}. */
         @NonNull
         public Builder setDismissible(boolean dismissible) {
             mDismissible = dismissible;
             return this;
         }
 
-        /** Sets whether or not this issue should have its dismissal confirmed. */
+        /**
+         * Sets whether or not this issue should have its dismissal confirmed. Defaults to {@code
+         * true}.
+         */
         @NonNull
         public Builder setShouldConfirmDismissal(boolean confirmDismissal) {
             mShouldConfirmDismissal = confirmDismissal;
             return this;
         }
 
-        /** Sets the list of potential actions to be taken to resolve this issue. */
+        /**
+         * Sets the list of potential actions to be taken to resolve this issue. Defaults to an
+         * empty list.
+         */
         @NonNull
         public Builder setActions(@NonNull List<Action> actions) {
             mActions = requireNonNull(actions);
@@ -502,14 +511,17 @@ public final class SafetyCenterIssue implements Parcelable {
                 mId = id;
             }
 
-            /** Sets the label of this {@link Action}. */
+            /** Sets the label of this {@link Action}. Required. */
             @NonNull
             public Builder setLabel(@NonNull CharSequence label) {
                 mLabel = requireNonNull(label);
                 return this;
             }
 
-            /** Sets the {@link PendingIntent} to be sent when this {@link Action} is taken. */
+            /**
+             * Sets the {@link PendingIntent} to be sent when this {@link Action} is taken.
+             * Required.
+             */
             @NonNull
             public Builder setPendingIntent(@NonNull PendingIntent pendingIntent) {
                 mPendingIntent = requireNonNull(pendingIntent);
@@ -539,7 +551,7 @@ public final class SafetyCenterIssue implements Parcelable {
             }
 
             /**
-             * Sets or clears the success message to be displayed when this {@link Action}
+             * Sets or clears the optional success message to be displayed when this {@link Action}
              * completes.
              */
             @NonNull
