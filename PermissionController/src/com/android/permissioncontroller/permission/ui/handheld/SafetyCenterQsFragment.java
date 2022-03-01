@@ -51,7 +51,7 @@ import androidx.transition.AutoTransition;
 import androidx.transition.TransitionManager;
 
 import com.android.permissioncontroller.R;
-import com.android.permissioncontroller.permission.ui.model.SafetyCenterViewModel;
+import com.android.permissioncontroller.permission.ui.model.SafetyCenterQSViewModel;
 import com.android.permissioncontroller.permission.ui.model.SafetyCenterViewModelFactory;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
@@ -73,7 +73,7 @@ public class SafetyCenterQsFragment extends Fragment {
 
     private long mSessionId;
     private List<PermissionGroupUsage> mPermGroupUsages;
-    private SafetyCenterViewModel mViewModel;
+    private SafetyCenterQSViewModel mViewModel;
 
     static {
         sToggleButtons.put(CAMERA, R.id.camera_toggle);
@@ -116,7 +116,7 @@ public class SafetyCenterQsFragment extends Fragment {
 
         SafetyCenterViewModelFactory factory = new SafetyCenterViewModelFactory(
                 getActivity().getApplication(), mSessionId, mPermGroupUsages);
-        mViewModel = new ViewModelProvider(this, factory).get(SafetyCenterViewModel.class);
+        mViewModel = new ViewModelProvider(this, factory).get(SafetyCenterQSViewModel.class);
         mViewModel.getSensorPrivacyLiveData()
                 .observe(this, (v) -> setSensorToggleState(v, getView()));
         //LightAppPermGroupLiveDatas are kept track of in the view model,
