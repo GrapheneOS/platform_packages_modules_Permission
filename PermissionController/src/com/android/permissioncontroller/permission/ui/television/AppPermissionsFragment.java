@@ -432,7 +432,7 @@ public final class AppPermissionsFragment extends SettingsWithHeader
         if (state == null || autoRevokeSwitch == null) {
             return;
         }
-        if (!state.isEnabledGlobal() || state.getRevocableGroupNames().isEmpty()) {
+        if (state.getRevocableGroupNames().isEmpty()) {
             if (isHibernationEnabled()) {
                 getPreferenceScreen().findPreference(UNUSED_APPS_KEY).setVisible(false);
             }

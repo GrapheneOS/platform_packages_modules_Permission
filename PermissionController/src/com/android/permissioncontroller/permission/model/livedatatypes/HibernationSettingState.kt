@@ -19,7 +19,6 @@ package com.android.permissioncontroller.permission.model.livedatatypes
 /**
  * Tracks the setting state of hibernation and auto revoke for a package
  *
- * @param isEnabledGlobal Whether or not the hibernation/auto-revoke job runs
  * @param isEnabledForApp Whether or not the OPSTR_AUTO_REVOKE_PERMISSIONS_IF_UNUSED is set to
  * MODE_ALLOWED for this package
  * @param revocableGroupNames A list of which permission groups of this package are eligible for
@@ -27,7 +26,6 @@ package com.android.permissioncontroller.permission.model.livedatatypes
  * permission.
  */
 data class HibernationSettingState(
-    val isEnabledGlobal: Boolean,
     val isEnabledForApp: Boolean,
     val revocableGroupNames: List<String>
 )

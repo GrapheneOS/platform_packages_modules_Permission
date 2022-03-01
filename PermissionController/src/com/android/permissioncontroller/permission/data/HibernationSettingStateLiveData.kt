@@ -29,7 +29,6 @@ import com.android.permissioncontroller.permission.data.PackagePermissionsLiveDa
 import com.android.permissioncontroller.permission.model.livedatatypes.HibernationSettingState
 import com.android.permissioncontroller.hibernation.ExemptServicesLiveData
 import com.android.permissioncontroller.hibernation.HibernationEnabledLiveData
-import com.android.permissioncontroller.hibernation.isHibernationJobEnabled
 import com.android.permissioncontroller.hibernation.isPackageHibernationExemptByUser
 import com.android.permissioncontroller.hibernation.isPackageHibernationExemptBySystem
 import kotlinx.coroutines.Job
@@ -116,7 +115,7 @@ class HibernationSettingStateLiveData private constructor(
         }
         gotPastIsSystemExempt = true
 
-        postValue(HibernationSettingState(isHibernationJobEnabled(), canHibernate, revocableGroups))
+        postValue(HibernationSettingState(canHibernate, revocableGroups))
     }
 
     override fun onOpChanged(op: String?, packageName: String?) {

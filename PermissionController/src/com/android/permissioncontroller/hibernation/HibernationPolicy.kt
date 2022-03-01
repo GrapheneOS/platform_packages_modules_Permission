@@ -100,15 +100,12 @@ const val DEBUG_OVERRIDE_THRESHOLDS = false
 // TODO eugenesusla: temporarily enabled for extra logs during dogfooding
 const val DEBUG_HIBERNATION_POLICY = true || DEBUG_OVERRIDE_THRESHOLDS
 
-private const val AUTO_REVOKE_ENABLED = true
-
 private var SKIP_NEXT_RUN = false
 
 private val DEFAULT_UNUSED_THRESHOLD_MS = TimeUnit.DAYS.toMillis(90)
 
 fun getUnusedThresholdMs() = when {
     DEBUG_OVERRIDE_THRESHOLDS -> TimeUnit.SECONDS.toMillis(1)
-    !isHibernationEnabled() && !AUTO_REVOKE_ENABLED -> Long.MAX_VALUE
     else -> DeviceConfig.getLong(DeviceConfig.NAMESPACE_PERMISSIONS,
             Utils.PROPERTY_HIBERNATION_UNUSED_THRESHOLD_MILLIS,
             DEFAULT_UNUSED_THRESHOLD_MS)
@@ -137,12 +134,6 @@ fun hibernationTargetsPreSApps(): Boolean {
     return DeviceConfig.getBoolean(NAMESPACE_APP_HIBERNATION,
         Utils.PROPERTY_HIBERNATION_TARGETS_PRE_S_APPS,
         false /* defaultValue */)
-}
-
-fun isHibernationJobEnabled(): Boolean {
-    return getCheckFrequencyMs() > 0 &&
-            getUnusedThresholdMs() > 0 &&
-            getUnusedThresholdMs() != Long.MAX_VALUE
 }
 
 /**
@@ -235,10 +226,6 @@ class HibernationOnBootReceiver : BroadcastReceiver() {
 private suspend fun getAppsToHibernate(
     context: Context
 ): Map<UserHandle, List<LightPackageInfo>> {
-    if (!isHibernationJobEnabled()) {
-        return emptyMap()
-    }
-
     val now = System.currentTimeMillis()
     val firstBootTime = context.firstBootTime
 
