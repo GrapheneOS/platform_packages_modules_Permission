@@ -154,12 +154,13 @@ public final class RoleManager {
             "android.app.role.SYSTEM_ACTIVITY_RECOGNIZER";
 
     /**
-     * The name of the device manager role.
+     * The name of the device policy management role.
      *
      * @hide
      */
     @SystemApi
-    public static final String ROLE_DEVICE_MANAGER = "android.app.role.DEVICE_MANAGER";
+    public static final String ROLE_DEVICE_POLICY_MANAGEMENT =
+            "android.app.role.DEVICE_POLICY_MANAGEMENT";
 
     /**
      * @hide
