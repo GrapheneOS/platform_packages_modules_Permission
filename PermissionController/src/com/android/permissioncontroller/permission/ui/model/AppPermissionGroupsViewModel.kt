@@ -21,6 +21,7 @@ import android.app.AppOpsManager
 import android.app.AppOpsManager.MODE_ALLOWED
 import android.app.AppOpsManager.MODE_IGNORED
 import android.app.AppOpsManager.OPSTR_AUTO_REVOKE_PERMISSIONS_IF_UNUSED
+import android.apphibernation.AppHibernationManager
 import android.os.Bundle
 import android.os.UserHandle
 import android.util.Log
@@ -28,12 +29,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.PermissionControllerStatsLog
 import com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_GROUPS_FRAGMENT_AUTO_REVOKE_ACTION
 import com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_GROUPS_FRAGMENT_AUTO_REVOKE_ACTION__ACTION__SWITCH_DISABLED
 import com.android.permissioncontroller.PermissionControllerStatsLog.APP_PERMISSION_GROUPS_FRAGMENT_AUTO_REVOKE_ACTION__ACTION__SWITCH_ENABLED
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.hibernation.isHibernationEnabled
 import com.android.permissioncontroller.permission.data.AppPermGroupUiInfoLiveData
 import com.android.permissioncontroller.permission.data.FullStoragePermissionAppsLiveData
 import com.android.permissioncontroller.permission.data.HibernationSettingStateLiveData
@@ -209,6 +212,14 @@ class AppPermissionGroupsViewModel(
                     MODE_IGNORED
                 }
                 aom.setUidMode(OPSTR_AUTO_REVOKE_PERMISSIONS_IF_UNUSED, uid, mode)
+                if (isHibernationEnabled() &&
+                    SdkLevel.isAtLeastSv2() &&
+                    !enabled) {
+                    // Only unhibernate on S_V2+ to have consistent toggle behavior w/ Settings
+                    val ahm = app.getSystemService(AppHibernationManager::class.java)!!
+                    ahm.setHibernatingForUser(packageName, false)
+                    ahm.setHibernatingGlobally(packageName, false)
+                }
             }
         }
     }
