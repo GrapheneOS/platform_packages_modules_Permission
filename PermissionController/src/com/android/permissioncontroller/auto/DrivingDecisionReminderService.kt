@@ -264,6 +264,9 @@ class DrivingDecisionReminderService : Service() {
             .setColor(getColor(android.R.color.system_notification_accent_color))
             .setAutoCancel(true)
             .setContentIntent(pendingIntent)
+            // Auto doesn't show icons for actions
+            .addAction(Notification.Action.Builder(/* icon= */ null,
+                getString(R.string.go_to_settings), pendingIntent).build())
         Utils.getSettingsLabelForNotifications(applicationContext.packageManager)?.let { label ->
             val extras = Bundle()
             extras.putString(Notification.EXTRA_SUBSTITUTE_APP_NAME, label.toString())
