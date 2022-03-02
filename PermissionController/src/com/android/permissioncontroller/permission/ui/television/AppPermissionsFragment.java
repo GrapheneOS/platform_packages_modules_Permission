@@ -443,7 +443,7 @@ public final class AppPermissionsFragment extends SettingsWithHeader
             getPreferenceScreen().findPreference(UNUSED_APPS_KEY).setVisible(true);
         }
         autoRevokeSwitch.setVisible(true);
-        autoRevokeSwitch.setChecked(state.isEnabledForApp());
+        autoRevokeSwitch.setChecked(state.isEligibleForHibernation());
     }
 
     private static PackageInfo getPackageInfo(Activity activity, String packageName) {

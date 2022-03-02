@@ -16,10 +16,10 @@
 
 package com.android.permissioncontroller.hibernation
 
-import android.annotation.SuppressLint
 import android.Manifest
 import android.Manifest.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION
 import android.accessibilityservice.AccessibilityService
+import android.annotation.SuppressLint
 import android.app.ActivityManager
 import android.app.ActivityManager.RunningAppProcessInfo.IMPORTANCE_CANT_SAVE_STATE
 import android.app.AppOpsManager
@@ -65,7 +65,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.preference.PreferenceManager
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.Constants
-import com.android.permissioncontroller.DeviceUtils
 import com.android.permissioncontroller.DumpableLog
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.R
@@ -775,9 +774,9 @@ class InstallerPackagesLiveData(val user: UserHandle)
 object HibernationEnabledLiveData
     : MutableLiveData<Boolean>() {
     init {
-        value = SdkLevel.isAtLeastS() &&
+        postValue(SdkLevel.isAtLeastS() &&
             DeviceConfig.getBoolean(NAMESPACE_APP_HIBERNATION,
-            Utils.PROPERTY_APP_HIBERNATION_ENABLED, true /* defaultValue */)
+            Utils.PROPERTY_APP_HIBERNATION_ENABLED, true /* defaultValue */))
         DeviceConfig.addOnPropertiesChangedListener(
             NAMESPACE_APP_HIBERNATION,
             PermissionControllerApplication.get().mainExecutor,
