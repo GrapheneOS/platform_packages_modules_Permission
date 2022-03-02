@@ -828,6 +828,9 @@
         other   {While driving, you gave <xliff:g id="app" example="Waze">%1$s</xliff:g> &amp; # other apps access}
         }</string>
 
+    <!-- The text of a button for an action in a notification that opens the Settings app [CHAR LIMIT=60] -->
+    <string name="go_to_settings">Go to Settings</string>
+
     <!-- The subtitle for the auto revoke settings card [CHAR LIMIT=none] -->
     <string name="auto_revoke_setting_subtitle">Some apps haven\u2019t been used in a few months</string>
 
