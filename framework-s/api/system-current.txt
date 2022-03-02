@@ -35,7 +35,7 @@ package android.app.role {
     method @RequiresPermission(android.Manifest.permission.BYPASS_ROLE_QUALIFICATION) public void setBypassingRoleQualification(boolean);
     method @Deprecated @RequiresPermission("com.android.permissioncontroller.permission.MANAGE_ROLES_FROM_CONTROLLER") public void setRoleNamesFromController(@NonNull java.util.List<java.lang.String>);
     field public static final int MANAGE_HOLDERS_FLAG_DONT_KILL_APP = 1; // 0x1
-    field public static final String ROLE_DEVICE_MANAGER = "android.app.role.DEVICE_MANAGER";
+    field public static final String ROLE_DEVICE_POLICY_MANAGEMENT = "android.app.role.DEVICE_POLICY_MANAGEMENT";
     field public static final String ROLE_SYSTEM_ACTIVITY_RECOGNIZER = "android.app.role.SYSTEM_ACTIVITY_RECOGNIZER";
     field public static final String ROLE_SYSTEM_SUPERVISION = "android.app.role.SYSTEM_SUPERVISION";
     field public static final String ROLE_SYSTEM_WELLBEING = "android.app.role.SYSTEM_WELLBEING";
@@ -422,14 +422,14 @@ package android.safetycenter.config {
     method @Nullable public String getBroadcastReceiverClassName();
     method @NonNull public String getId();
     method public int getInitialDisplayState();
-    method @NonNull public String getIntentAction();
+    method @Nullable public String getIntentAction();
     method public int getMaxSeverityLevel();
     method @NonNull public String getPackageName();
     method public int getProfile();
-    method @IdRes public int getSearchTermsResId();
-    method @IdRes public int getSummaryResId();
-    method @IdRes public int getTitleForWorkResId();
-    method @IdRes public int getTitleResId();
+    method @StringRes public int getSearchTermsResId();
+    method @StringRes public int getSummaryResId();
+    method @StringRes public int getTitleForWorkResId();
+    method @StringRes public int getTitleResId();
     method public int getType();
     method public boolean isAllowLogging();
     method public boolean isAllowRefreshOnPageOpen();
@@ -458,10 +458,10 @@ package android.safetycenter.config {
     method @NonNull public android.safetycenter.config.SafetySource.Builder setMaxSeverityLevel(int);
     method @NonNull public android.safetycenter.config.SafetySource.Builder setPackageName(@Nullable String);
     method @NonNull public android.safetycenter.config.SafetySource.Builder setProfile(int);
-    method @NonNull public android.safetycenter.config.SafetySource.Builder setSearchTermsResId(@IdRes int);
-    method @NonNull public android.safetycenter.config.SafetySource.Builder setSummaryResId(@IdRes int);
-    method @NonNull public android.safetycenter.config.SafetySource.Builder setTitleForWorkResId(@IdRes int);
-    method @NonNull public android.safetycenter.config.SafetySource.Builder setTitleResId(@IdRes int);
+    method @NonNull public android.safetycenter.config.SafetySource.Builder setSearchTermsResId(@StringRes int);
+    method @NonNull public android.safetycenter.config.SafetySource.Builder setSummaryResId(@StringRes int);
+    method @NonNull public android.safetycenter.config.SafetySource.Builder setTitleForWorkResId(@StringRes int);
+    method @NonNull public android.safetycenter.config.SafetySource.Builder setTitleResId(@StringRes int);
   }
 
   public final class SafetySourcesGroup implements android.os.Parcelable {
@@ -469,8 +469,8 @@ package android.safetycenter.config {
     method @NonNull public String getId();
     method @NonNull public java.util.List<android.safetycenter.config.SafetySource> getSafetySources();
     method public int getStatelessIconType();
-    method @IdRes public int getSummaryResId();
-    method @IdRes public int getTitleResId();
+    method @StringRes public int getSummaryResId();
+    method @StringRes public int getTitleResId();
     method public int getType();
     method public void writeToParcel(@NonNull android.os.Parcel, int);
     field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.config.SafetySourcesGroup> CREATOR;
@@ -487,8 +487,8 @@ package android.safetycenter.config {
     method @NonNull public android.safetycenter.config.SafetySourcesGroup build();
     method @NonNull public android.safetycenter.config.SafetySourcesGroup.Builder setId(@Nullable String);
     method @NonNull public android.safetycenter.config.SafetySourcesGroup.Builder setStatelessIconType(int);
-    method @NonNull public android.safetycenter.config.SafetySourcesGroup.Builder setSummaryResId(@IdRes int);
-    method @NonNull public android.safetycenter.config.SafetySourcesGroup.Builder setTitleResId(@IdRes int);
+    method @NonNull public android.safetycenter.config.SafetySourcesGroup.Builder setSummaryResId(@StringRes int);
+    method @NonNull public android.safetycenter.config.SafetySourcesGroup.Builder setTitleResId(@StringRes int);
   }
 
 }

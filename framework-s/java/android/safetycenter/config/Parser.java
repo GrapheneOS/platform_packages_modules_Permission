@@ -27,8 +27,8 @@ import static org.xmlpull.v1.XmlPullParser.TEXT;
 import static java.util.Locale.ROOT;
 import static java.util.Objects.requireNonNull;
 
-import android.annotation.IdRes;
 import android.annotation.NonNull;
+import android.annotation.StringRes;
 import android.annotation.SystemApi;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
@@ -171,10 +171,10 @@ public final class Parser {
                     builder.setId(parser.getAttributeValue(i));
                     break;
                 case ATTR_SAFETY_SOURCES_GROUP_TITLE:
-                    builder.setTitleResId(parseReference(parser, i, name));
+                    builder.setTitleResId(parseStringReference(parser, i, name));
                     break;
                 case ATTR_SAFETY_SOURCES_GROUP_SUMMARY:
-                    builder.setSummaryResId(parseReference(parser, i, name));
+                    builder.setSummaryResId(parseStringReference(parser, i, name));
                     break;
                 case ATTR_SAFETY_SOURCES_GROUP_STATELESS_ICON_TYPE:
                     builder.setStatelessIconType(
@@ -228,13 +228,13 @@ public final class Parser {
                     builder.setPackageName(parser.getAttributeValue(i));
                     break;
                 case ATTR_SAFETY_SOURCE_TITLE:
-                    builder.setTitleResId(parseReference(parser, i, name));
+                    builder.setTitleResId(parseStringReference(parser, i, name));
                     break;
                 case ATTR_SAFETY_SOURCE_TITLE_FOR_WORK:
-                    builder.setTitleForWorkResId(parseReference(parser, i, name));
+                    builder.setTitleForWorkResId(parseStringReference(parser, i, name));
                     break;
                 case ATTR_SAFETY_SOURCE_SUMMARY:
-                    builder.setSummaryResId(parseReference(parser, i, name));
+                    builder.setSummaryResId(parseStringReference(parser, i, name));
                     break;
                 case ATTR_SAFETY_SOURCE_INTENT_ACTION:
                     builder.setIntentAction(parser.getAttributeValue(i));
@@ -253,7 +253,7 @@ public final class Parser {
                             parser.getAttributeName(i)));
                     break;
                 case ATTR_SAFETY_SOURCE_SEARCH_TERMS:
-                    builder.setSearchTermsResId(parseReference(parser, i, name));
+                    builder.setSearchTermsResId(parseStringReference(parser, i, name));
                     break;
                 case ATTR_SAFETY_SOURCE_BROADCAST_RECEIVER_CLASS_NAME:
                     builder.setBroadcastReceiverClassName(parser.getAttributeValue(i));
@@ -352,8 +352,8 @@ public final class Parser {
         return false;
     }
 
-    @IdRes
-    private static int parseReference(@NonNull XmlResourceParser parser, int index,
+    @StringRes
+    private static int parseStringReference(@NonNull XmlResourceParser parser, int index,
             @NonNull String parent) throws ParseException {
         int id = parser.getAttributeResourceValue(index, Resources.ID_NULL);
         if (id == Resources.ID_NULL) {
