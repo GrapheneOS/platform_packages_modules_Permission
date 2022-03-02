@@ -49,6 +49,7 @@ import static java.lang.annotation.RetentionPolicy.SOURCE;
 import android.Manifest;
 import android.app.AppOpsManager;
 import android.app.Application;
+import android.app.admin.DevicePolicyManager;
 import android.app.role.RoleManager;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -1446,5 +1447,26 @@ public final class Utils {
         return group.getHasPermWithBackgroundMode()
                 || Manifest.permission_group.CAMERA.equals(groupName)
                 || Manifest.permission_group.MICROPHONE.equals(groupName);
+    }
+
+    /**
+     * Returns the appropriate enterprise string for the provided IDs
+     */
+    @NonNull
+    public static String getEnterpriseString(@NonNull Context context,
+            @NonNull String updatableStringId, int defaultStringId, @NonNull Object... formatArgs) {
+        return SdkLevel.isAtLeastT()
+                ? getUpdatableEnterpriseString(
+                        context, updatableStringId, defaultStringId, formatArgs)
+                : context.getString(defaultStringId);
+    }
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    @NonNull
+    private static String getUpdatableEnterpriseString(@NonNull Context context,
+            @NonNull String updatableStringId, int defaultStringId, @NonNull Object... formatArgs) {
+        DevicePolicyManager dpm = getSystemServiceSafe(context, DevicePolicyManager.class);
+        return  dpm.getString(updatableStringId, () -> context.getString(
+                defaultStringId, formatArgs), formatArgs);
     }
 }

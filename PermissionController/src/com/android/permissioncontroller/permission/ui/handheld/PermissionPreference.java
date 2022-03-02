@@ -21,11 +21,9 @@ import static android.app.admin.DevicePolicyResources.Strings.PermissionControll
 import static android.app.admin.DevicePolicyResources.Strings.PermissionController.FOREGROUND_ACCESS_ENABLED_BY_ADMIN_MESSAGE;
 
 import static com.android.permissioncontroller.permission.utils.Utils.getRequestMessage;
-import static com.android.permissioncontroller.permission.utils.Utils.getSystemServiceSafe;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.admin.DevicePolicyManager;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.UserHandle;
@@ -36,7 +34,6 @@ import androidx.annotation.LayoutRes;
 import androidx.fragment.app.DialogFragment;
 import androidx.preference.PreferenceFragmentCompat;
 
-import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup;
 import com.android.permissioncontroller.permission.ui.model.ReviewPermissionsViewModel;
@@ -277,15 +274,21 @@ class PermissionPreference extends MultiTargetSwitchPreference {
         if (summary.isEnterprise()) {
             switch (summary.getMsg()) {
                 case ENABLED_BY_ADMIN_BACKGROUND_ONLY:
-                    setSummary(getEnterpriseString(BACKGROUND_ACCESS_ENABLED_BY_ADMIN_MESSAGE,
+                    setSummary(Utils.getEnterpriseString(
+                            getContext(),
+                            BACKGROUND_ACCESS_ENABLED_BY_ADMIN_MESSAGE,
                             getResource(summary.getMsg())));
                     break;
                 case DISABLED_BY_ADMIN_BACKGROUND_ONLY:
-                    setSummary(getEnterpriseString(BACKGROUND_ACCESS_DISABLED_BY_ADMIN_MESSAGE,
+                    setSummary(Utils.getEnterpriseString(
+                            getContext(),
+                            BACKGROUND_ACCESS_DISABLED_BY_ADMIN_MESSAGE,
                             getResource(summary.getMsg())));
                     break;
                 case ENABLED_BY_ADMIN_FOREGROUND_ONLY:
-                    setSummary(getEnterpriseString(FOREGROUND_ACCESS_ENABLED_BY_ADMIN_MESSAGE,
+                    setSummary(Utils.getEnterpriseString(
+                            getContext(),
+                            FOREGROUND_ACCESS_ENABLED_BY_ADMIN_MESSAGE,
                             getResource(summary.getMsg())));
                     break;
                 default:
@@ -295,13 +298,6 @@ class PermissionPreference extends MultiTargetSwitchPreference {
         } else {
             setSummary(getResource(summary.getMsg()));
         }
-    }
-
-    private String getEnterpriseString(String updatableStringId, int defaultStringId) {
-        DevicePolicyManager dpm = getSystemServiceSafe(getContext(), DevicePolicyManager.class);
-        return SdkLevel.isAtLeastT()
-                ? dpm.getString(updatableStringId, () -> getContext().getString(defaultStringId))
-                : getContext().getString(defaultStringId);
     }
 
     int getResource(SummaryMessage summary) {
