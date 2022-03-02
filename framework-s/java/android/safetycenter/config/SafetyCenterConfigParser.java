@@ -29,7 +29,6 @@ import static java.util.Objects.requireNonNull;
 
 import android.annotation.NonNull;
 import android.annotation.StringRes;
-import android.annotation.SystemApi;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.safetycenter.config.SafetySource.InitialDisplayState;
@@ -43,15 +42,9 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 
-/**
- * Utility class to parse and validate a Safety Center Config
- *
- * @hide
- */
-@SystemApi
 @RequiresApi(TIRAMISU)
-public final class Parser {
-    private Parser() {
+final class SafetyCenterConfigParser {
+    private SafetyCenterConfigParser() {
     }
 
     private static final String TAG_SAFETY_CENTER_CONFIG = "safety-center-config";
@@ -78,9 +71,9 @@ public final class Parser {
     private static final String ATTR_SAFETY_SOURCE_SEARCH_TERMS = "searchTerms";
     private static final String ATTR_SAFETY_SOURCE_BROADCAST_RECEIVER_CLASS_NAME =
             "broadcastReceiverClassName";
-    private static final String ATTR_SAFETY_SOURCE_ALLOW_LOGGING = "allowLogging";
-    private static final String ATTR_SAFETY_SOURCE_ALLOW_REFRESH_ON_PAGE_OPEN =
-            "allowRefreshOnPageOpen";
+    private static final String ATTR_SAFETY_SOURCE_LOGGING_ALLOWED = "loggingAllowed";
+    private static final String ATTR_SAFETY_SOURCE_REFRESH_ON_PAGE_OPEN_ALLOWED =
+            "refreshOnPageOpenAllowed";
 
     private static final String ENUM_STATELESS_ICON_TYPE_NONE = "none";
     private static final String ENUM_STATELESS_ICON_TYPE_PRIVACY = "privacy";
@@ -92,27 +85,8 @@ public final class Parser {
     private static final String ENUM_INITIAL_DISPLAY_STATE_DISABLED = "disabled";
     private static final String ENUM_INITIAL_DISPLAY_STATE_HIDDEN = "hidden";
 
-    /** Thrown when there is an error parsing the Safety Center Config */
-    public static final class ParseException extends Exception {
-        public ParseException(@NonNull String message) {
-            super(message);
-        }
-
-        public ParseException(@NonNull String message, @NonNull Throwable ex) {
-            super(message, ex);
-        }
-    }
-
-    /**
-     * Parses and validates the given XML resource into a {@link SafetyCenterConfig} object.
-     *
-     * <p>It throws a {@link ParseException} if the given XML resource does not comply with the
-     * safety_center_config.xsd schema.
-     *
-     * @param parser the XML resource parsing interface
-     */
     @NonNull
-    public static SafetyCenterConfig parseXmlResource(@NonNull XmlResourceParser parser)
+    static SafetyCenterConfig parseXmlResource(@NonNull XmlResourceParser parser)
             throws ParseException {
         requireNonNull(parser);
         try {
@@ -258,12 +232,12 @@ public final class Parser {
                 case ATTR_SAFETY_SOURCE_BROADCAST_RECEIVER_CLASS_NAME:
                     builder.setBroadcastReceiverClassName(parser.getAttributeValue(i));
                     break;
-                case ATTR_SAFETY_SOURCE_ALLOW_LOGGING:
-                    builder.setAllowLogging(parseBoolean(parser.getAttributeValue(i), name,
+                case ATTR_SAFETY_SOURCE_LOGGING_ALLOWED:
+                    builder.setLoggingAllowed(parseBoolean(parser.getAttributeValue(i), name,
                             parser.getAttributeName(i)));
                     break;
-                case ATTR_SAFETY_SOURCE_ALLOW_REFRESH_ON_PAGE_OPEN:
-                    builder.setAllowRefreshOnPageOpen(
+                case ATTR_SAFETY_SOURCE_REFRESH_ON_PAGE_OPEN_ALLOWED:
+                    builder.setRefreshOnPageOpenAllowed(
                             parseBoolean(parser.getAttributeValue(i), name,
                                     parser.getAttributeName(i)));
                     break;
