@@ -264,6 +264,8 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"እየነዱ ሳለ የ<xliff:g id="PERMISSION_1">%2$s</xliff:g> &amp; <xliff:g id="PERMISSION_2">%3$s</xliff:g> መዳረሻን ለ<xliff:g id="APP">%1$s</xliff:g> ሰጥተዋል"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"እየነዱ ሳለ <xliff:g id="COUNT">%1$d</xliff:g> ፈቃዶችን ለ<xliff:g id="APP">%2$s</xliff:g> ሰጥተዋል"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{እየነዱ ሳለ የ<xliff:g id="APP_0">%1$s</xliff:g> &amp; # ሌላ መተግበሪያ መዳረሻ ሰጥተዋል}one{እየነዱ ሳለ የ<xliff:g id="APP_1">%1$s</xliff:g> &amp; # ሌላ መተግበሪያ መዳረሻ ሰጥተዋል}other{እየነዱ ሳለ የ<xliff:g id="APP_1">%1$s</xliff:g> &amp; # ሌላ መተግበሪያ መዳረሻ ሰጥተዋል}}"</string>
+    <!-- no translation found for go_to_settings (1053735612211228335) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"አንዳንድ መተግበሪያዎች ለጥቂት ወሮች ስራ ላይ አልዋሉም።"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"ፈቃዶች የተወገዱባቸው"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"ፈቃዶች የተወገዱባቸው"</string>
@@ -499,6 +501,22 @@
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"ቃኝ"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"አሰናብት"</string>
     <string name="security_settings" msgid="3808106921175271317">"የደህንነት ቅንብሮች"</string>
+    <string name="sensor_permissions_qs" msgid="4365989229426201877">"የዳሳሽ ፈቃዶች"</string>
+    <string name="privacy_controls_qs" msgid="471793881466080745">"የግላዊነት ቁጥጥሮች"</string>
+    <string name="permissions_removed_qs" msgid="8957319130625294572">"ፈቃድ ተወግዷል"</string>
+    <string name="camera_usage_qs" msgid="7943349178368641820">"ተጨማሪ የካሜራ አጠቃቀምን ይመልከቱ"</string>
+    <string name="microphone_usage_qs" msgid="2393193350541830472">"ተጨማሪ የማይክሮፎን አጠቃቀም ይመልከቱ"</string>
+    <string name="remove_camera_qs" msgid="8209716677879809162">"የካሜራ ፈቃድ ያስወግዱ"</string>
+    <string name="remove_microphone_qs" msgid="2893536836641560183">"የማይክሮፎን ፈቃድ ያስወግዱ"</string>
+    <string name="manage_service_qs" msgid="7862555549364153805">"አገልግሎት ያስተዳድሩ"</string>
+    <string name="active_call_usage_qs" msgid="8559974395932523391">"በስልክ ጥሪ ስራ ላይ እየዋለ ነው"</string>
+    <string name="recent_call_usage_qs" msgid="743044899599410935">"በቅርብ ጊዜ በስልክ ጥሪ ውስጥ ስራ ላይ ውሏል"</string>
+    <string name="active_app_usage_qs" msgid="4063912870936464727">"በ<xliff:g id="APP_NAME">%1$s</xliff:g> ስራ ላይ እየዋለ ነው"</string>
+    <string name="recent_app_usage_qs" msgid="6650259601306212327">"በቅርብ ጊዜ በ<xliff:g id="APP_NAME">%1$s</xliff:g> ስራ ላይ ውሏል"</string>
+    <string name="active_app_usage_1_qs" msgid="4325136375823357052">"በ<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>) ስራ ላይ እየዋለ ነው"</string>
+    <string name="recent_app_usage_1_qs" msgid="261450184773310741">"በቅርብ ጊዜ በ<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>) ስራ ላይ ውሏል"</string>
+    <string name="active_app_usage_2_qs" msgid="6107866785243565283">"በ<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) ስራ ላይ እየዋለ ነው"</string>
+    <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"በቅርብ ጊዜ በ<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) ስራ ላይ ውሏል"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"ደህንነት &amp; ግላዊነት"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"ሁኔታ አረጋግጥ"</string>
 </resources>

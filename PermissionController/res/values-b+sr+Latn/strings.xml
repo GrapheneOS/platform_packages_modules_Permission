@@ -264,6 +264,8 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Tokom vožnje ste dali aplikaciji <xliff:g id="APP">%1$s</xliff:g> pristup dozvolama <xliff:g id="PERMISSION_1">%2$s</xliff:g> i <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Tokom vožnje ste dali dozvole (<xliff:g id="COUNT">%1$d</xliff:g>) aplikaciji <xliff:g id="APP">%2$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Tokom vožnje ste omogućili pristup za <xliff:g id="APP_0">%1$s</xliff:g> i još # drugu aplikaciju}one{Tokom vožnje ste omogućili pristup za <xliff:g id="APP_1">%1$s</xliff:g> i još # aplikaciju}few{Tokom vožnje ste omogućili pristup za <xliff:g id="APP_1">%1$s</xliff:g> i još # aplikacije}other{Tokom vožnje ste omogućili pristup za <xliff:g id="APP_1">%1$s</xliff:g> i još # aplikacija}}"</string>
+    <!-- no translation found for go_to_settings (1053735612211228335) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Neke aplikacije nisu korišćene par meseci"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Uklonjene dozvole"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Uklonjene dozvole"</string>
@@ -406,8 +408,8 @@
     <string name="default_app_no_apps" msgid="115720991680586885">"Nema aplikacija"</string>
     <string name="car_default_app_selected" msgid="5416420830430644174">"Izabrano"</string>
     <string name="car_default_app_selected_with_info" msgid="1932204186080593500">"Izabrano – <xliff:g id="ADDITIONAL_INFO">%1$s</xliff:g>"</string>
-    <string name="special_app_access_search_keyword" msgid="8032347212290774210">"poseban pristup aplikaciji"</string>
-    <string name="special_app_access" msgid="5019319067120213797">"Poseban pristup aplikaciji"</string>
+    <string name="special_app_access_search_keyword" msgid="8032347212290774210">"poseban pristup aplikacija"</string>
+    <string name="special_app_access" msgid="5019319067120213797">"Poseban pristup aplikacija"</string>
     <string name="no_special_app_access" msgid="6950277571805106247">"Nema posebnog pristupa apl."</string>
     <string name="special_app_access_no_apps" msgid="4102911722787886970">"Nema aplikacija"</string>
     <string name="home_missing_work_profile_support" msgid="1756855847669387977">"Ne podržava poslovni profil"</string>
@@ -499,6 +501,22 @@
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Skeniraj"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Odbaci"</string>
     <string name="security_settings" msgid="3808106921175271317">"Bezbednosna podešavanja"</string>
+    <string name="sensor_permissions_qs" msgid="4365989229426201877">"Dozvole za senzore"</string>
+    <string name="privacy_controls_qs" msgid="471793881466080745">"Kontrole privatnosti"</string>
+    <string name="permissions_removed_qs" msgid="8957319130625294572">"Dozvola je uklonjena"</string>
+    <string name="camera_usage_qs" msgid="7943349178368641820">"Prikaži još korišćenja kamere"</string>
+    <string name="microphone_usage_qs" msgid="2393193350541830472">"Prikaži još korišćenja mikrofona"</string>
+    <string name="remove_camera_qs" msgid="8209716677879809162">"Ukloni dozvolu za kameru"</string>
+    <string name="remove_microphone_qs" msgid="2893536836641560183">"Ukloni dozvolu za mikrofon"</string>
+    <string name="manage_service_qs" msgid="7862555549364153805">"Upravljajte uslugom"</string>
+    <string name="active_call_usage_qs" msgid="8559974395932523391">"Koristi ga telefonski poziv"</string>
+    <string name="recent_call_usage_qs" msgid="743044899599410935">"Nedavno korišćeno u telefonskom pozivu"</string>
+    <string name="active_app_usage_qs" msgid="4063912870936464727">"Koristi aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
+    <string name="recent_app_usage_qs" msgid="6650259601306212327">"Nedavno koristila aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
+    <string name="active_app_usage_1_qs" msgid="4325136375823357052">"Koristi aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
+    <string name="recent_app_usage_1_qs" msgid="261450184773310741">"Nedavno koristila aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
+    <string name="active_app_usage_2_qs" msgid="6107866785243565283">"Koristi aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
+    <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Nedavno koristila aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Bezbednost i privatnost"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Proverite status"</string>
 </resources>
