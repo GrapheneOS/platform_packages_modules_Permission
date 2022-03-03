@@ -21,7 +21,6 @@ import static android.os.Build.VERSION_CODES.TIRAMISU;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
-import android.os.Binder;
 import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 import android.safetycenter.IOnSafetyCenterDataChangedListener;
@@ -56,13 +55,10 @@ final class SafetyCenterListeners {
     static void deliverUpdate(
             @NonNull IOnSafetyCenterDataChangedListener listener,
             @NonNull SafetyCenterData safetyCenterData) {
-        final long identity = Binder.clearCallingIdentity();
         try {
             listener.onSafetyCenterDataChanged(safetyCenterData);
         } catch (RemoteException e) {
             Log.e(TAG, "Error delivering SafetyCenterData update to listener", e);
-        } finally {
-            Binder.restoreCallingIdentity(identity);
         }
     }
 
