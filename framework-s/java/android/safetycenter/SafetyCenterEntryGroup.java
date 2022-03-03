@@ -211,35 +211,41 @@ public final class SafetyCenterEntryGroup implements Parcelable {
             mEntries = new ArrayList<>(safetyCenterEntryGroup.mEntries);
         }
 
-        /** Sets the ID for this entry group. */
+        /** Sets the ID for this entry group. Required. */
         @NonNull
         public Builder setId(@NonNull String id) {
             mId = requireNonNull(id);
             return this;
         }
 
-        /** Sets the title for this entry group. */
+        /** Sets the title for this entry group. Required. */
         @NonNull
         public Builder setTitle(@NonNull CharSequence title) {
             mTitle = requireNonNull(title);
             return this;
         }
 
-        /** Sets the summary text for this entry group. */
+        /** Sets the optional summary text for this entry group. */
         @NonNull
         public Builder setSummary(@Nullable CharSequence summary) {
             mSummary = summary;
             return this;
         }
 
-        /** Sets the {@link SafetyCenterEntry.EntrySeverityLevel} of this entry group. */
+        /**
+         * Sets the {@link SafetyCenterEntry.EntrySeverityLevel} of this entry group. Defaults to
+         * {@link SafetyCenterEntry#ENTRY_SEVERITY_LEVEL_UNKNOWN}.
+         */
         @NonNull
         public Builder setSeverityLevel(@SafetyCenterEntry.EntrySeverityLevel int severityLevel) {
             mSeverityLevel = severityLevel;
             return this;
         }
 
-        /** Sets the {@link SafetyCenterEntry.SeverityNoneIconType} of this entry group. */
+        /**
+         * Sets the {@link SafetyCenterEntry.SeverityNoneIconType} of this entry group. Defaults to
+         * {@link SafetyCenterEntry#SEVERITY_NONE_ICON_TYPE_NO_ICON}.
+         */
         @NonNull
         public Builder setSeverityNoneIconType(
                 @SafetyCenterEntry.SeverityNoneIconType int severityNoneIconType) {
@@ -247,7 +253,10 @@ public final class SafetyCenterEntryGroup implements Parcelable {
             return this;
         }
 
-        /** Sets the list of {@link SafetyCenterEntry} contained by this entry group. */
+        /**
+         * Sets the list of {@link SafetyCenterEntry} contained by this entry group. Defaults to
+         * an empty list.
+         */
         @NonNull
         public Builder setEntries(@NonNull List<SafetyCenterEntry> entries) {
             mEntries = requireNonNull(entries);
