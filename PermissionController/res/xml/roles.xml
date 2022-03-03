@@ -1102,8 +1102,8 @@
       ~ including during provisioning.
       -->
     <role
-        name="android.app.role.DEVICE_MANAGER"
-        defaultHolders="config_deviceManager"
+        name="android.app.role.DEVICE_POLICY_MANAGEMENT"
+        defaultHolders="config_devicePolicyManagement"
         exclusive="true"
         minSdkVersion="33"
         static="true"
