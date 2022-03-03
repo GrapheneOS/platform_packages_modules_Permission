@@ -330,14 +330,14 @@ public final class SafetyCenterEntry implements Parcelable {
             mIconAction = safetyCenterEntry.mIconAction;
         }
 
-        /** Sets the ID for this entry. */
+        /** Sets the ID for this entry. Required. */
         @NonNull
         public Builder setId(@NonNull String id) {
             mId = requireNonNull(id);
             return this;
         }
 
-        /** Sets the title for this entry. */
+        /** Sets the title for this entry. Required. */
         @NonNull
         public Builder setTitle(@NonNull CharSequence title) {
             mTitle = requireNonNull(title);
@@ -351,28 +351,34 @@ public final class SafetyCenterEntry implements Parcelable {
             return this;
         }
 
-        /** Sets the {@link EntrySeverityLevel} for this entry. */
+        /**
+         * Sets the {@link EntrySeverityLevel} for this entry. Defaults to {@link
+         * #ENTRY_SEVERITY_LEVEL_UNKNOWN}.
+         */
         @NonNull
         public Builder setSeverityLevel(@EntrySeverityLevel int severityLevel) {
             mSeverityLevel = severityLevel;
             return this;
         }
 
-        /** Sets the {@link SeverityNoneIconType} for this entry. */
+        /**
+         * Sets the {@link SeverityNoneIconType} for this entry. Defaults to {@link
+         * #SEVERITY_NONE_ICON_TYPE_NO_ICON}.
+         */
         @NonNull
         public Builder setSeverityNoneIconType(@SeverityNoneIconType int severityNoneIconType) {
             mSeverityNoneIconType = severityNoneIconType;
             return this;
         }
 
-        /** Sets whether or not this entry is enabled. Defaults to {@code true} if not set. */
+        /** Sets whether or not this entry is enabled. Defaults to {@code true}. */
         @NonNull
         public Builder setEnabled(boolean enabled) {
             mEnabled = enabled;
             return this;
         }
 
-        /** Sets the {@link PendingIntent} to execute when this entry is selected. */
+        /** Sets the {@link PendingIntent} to execute when this entry is selected. Required. */
         @NonNull
         public Builder setPendingIntent(@NonNull PendingIntent pendingIntent) {
             mPendingIntent = requireNonNull(pendingIntent);
