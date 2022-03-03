@@ -55,6 +55,7 @@ import com.android.permission.util.UserUtils;
 import com.android.server.SystemService;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Service for the safety center.
@@ -140,25 +141,21 @@ public final class SafetyCenterService extends SystemService {
             }
             // TODO(b/218812582): Validate the SafetySourceData.
 
-            SafetyCenterData safetyCenterData;
-            RemoteCallbackList<IOnSafetyCenterDataChangedListener> listeners;
+            UserProfiles userProfiles = UserProfiles.from(getContext(), userId);
+            SafetyCenterData safetyCenterData = null;
+            List<RemoteCallbackList<IOnSafetyCenterDataChangedListener>> listeners = null;
             synchronized (mApiLock) {
-                safetyCenterData = mSafetyCenterDataTracker.setSafetySourceData(
-                        safetySourceData,
-                        safetySourceId,
-                        packageName,
-                        userId);
-                listeners = mSafetyCenterListeners.getListeners(userId);
+                boolean hasUpdate = mSafetyCenterDataTracker.setSafetySourceData(
+                        safetySourceData, safetySourceId, packageName, userId);
+                if (hasUpdate) {
+                    safetyCenterData = mSafetyCenterDataTracker.getSafetyCenterData(userProfiles);
+                    listeners = mSafetyCenterListeners.getListeners(userProfiles);
+                }
             }
 
             // This doesn't need to be done while holding the lock, as RemoteCallbackList already
             // handles concurrent calls.
-            // If the listener uses SafetyCenterManager and is executed on #directExecutor(),
-            // doing this while holding the lock could also potentially lead to deadlocks.
             if (listeners != null && safetyCenterData != null) {
-                // TODO(b/218811189): This should be called on all listeners associated with the
-                //  userId, i.e. if #setSafetySourceData is called with a work profile userId,
-                //  we should also let the personal profile listeners know about the update.
                 SafetyCenterListeners.deliverUpdate(listeners, safetyCenterData);
             }
         }
@@ -207,8 +204,9 @@ public final class SafetyCenterService extends SystemService {
                 return;
             }
 
+            UserProfiles userProfiles = UserProfiles.from(getContext(), userId);
             synchronized (mRefreshLock) {
-                mSafetyCenterRefreshManager.refreshSafetySources(refreshReason);
+                mSafetyCenterRefreshManager.refreshSafetySources(refreshReason, userProfiles);
             }
         }
 
@@ -218,12 +216,12 @@ public final class SafetyCenterService extends SystemService {
             getContext().enforceCallingOrSelfPermission(MANAGE_SAFETY_CENTER,
                     "getSafetyCenterData");
             if (!enforceCrossUserPermission("getSafetyCenterData", userId)) {
-                // TODO(b/203098016): Return default value here instead. This is marked as @NonNull.
-                return null;
+                return SafetyCenterDataTracker.getDefaultSafetyCenterData();
             }
 
+            UserProfiles userProfiles = UserProfiles.from(getContext(), userId);
             synchronized (mApiLock) {
-                return mSafetyCenterDataTracker.getSafetyCenterData(userId);
+                return mSafetyCenterDataTracker.getSafetyCenterData(userProfiles);
             }
         }
 
@@ -237,17 +235,17 @@ public final class SafetyCenterService extends SystemService {
                 return;
             }
 
-            boolean registered;
-            SafetyCenterData safetyCenterData;
+            UserProfiles userProfiles = UserProfiles.from(getContext(), userId);
+            SafetyCenterData safetyCenterData = null;
             synchronized (mApiLock) {
-                registered = mSafetyCenterListeners.addListener(listener, userId);
-                safetyCenterData = mSafetyCenterDataTracker.getSafetyCenterData(userId);
+                boolean registered = mSafetyCenterListeners.addListener(listener, userId);
+                if (registered) {
+                    safetyCenterData = mSafetyCenterDataTracker.getSafetyCenterData(userProfiles);
+                }
             }
 
             // This doesn't need to be done while holding the lock.
-            // If the listener uses SafetyCenterManager and is executed on #directExecutor(),
-            // doing this while holding the lock could also potentially lead to deadlocks.
-            if (registered) {
+            if (safetyCenterData != null) {
                 SafetyCenterListeners.deliverUpdate(listener, safetyCenterData);
             }
         }
