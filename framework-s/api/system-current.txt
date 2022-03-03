@@ -200,22 +200,23 @@ package android.safetycenter {
   }
 
   public final class SafetyCenterManager {
-    method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void addAdditionalSafetySource(@NonNull String, @NonNull String, @NonNull String);
     method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void addOnSafetyCenterDataChangedListener(@NonNull java.util.concurrent.Executor, @NonNull android.safetycenter.SafetyCenterManager.OnSafetyCenterDataChangedListener);
-    method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void clearAdditionalSafetySources();
-    method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void clearSafetyCenterData();
+    method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void clearAllSafetySourceData();
+    method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void clearSafetyCenterConfigOverride();
     method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void dismissSafetyIssue(@NonNull String);
     method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void executeAction(@NonNull String, @NonNull String);
-    method @Nullable @RequiresPermission(android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE) public android.safetycenter.SafetySourceData getLastSafetyCenterUpdate(@NonNull String);
     method @NonNull @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public android.safetycenter.SafetyCenterData getSafetyCenterData();
+    method @Nullable @RequiresPermission(android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE) public android.safetycenter.SafetySourceData getSafetySourceData(@NonNull String);
     method @RequiresPermission(anyOf={android.Manifest.permission.READ_SAFETY_CENTER_STATUS, android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE}) public boolean isSafetyCenterEnabled();
     method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void refreshSafetySources(int);
     method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void removeOnSafetyCenterDataChangedListener(@NonNull android.safetycenter.SafetyCenterManager.OnSafetyCenterDataChangedListener);
     method @RequiresPermission(android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE) public void reportSafetySourceError(@NonNull String, @NonNull android.safetycenter.SafetySourceError);
-    method @RequiresPermission(android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE) public void sendSafetyCenterUpdate(@NonNull android.safetycenter.SafetySourceData);
+    method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void setSafetyCenterConfigOverride(@NonNull android.safetycenter.config.SafetyCenterConfig);
+    method @RequiresPermission(android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE) public void setSafetySourceData(@NonNull String, @Nullable android.safetycenter.SafetySourceData, @NonNull android.safetycenter.SafetyEvent);
     field public static final String ACTION_REFRESH_SAFETY_SOURCES = "android.safetycenter.action.REFRESH_SAFETY_SOURCES";
     field public static final int EXTRA_REFRESH_REQUEST_TYPE_FETCH_FRESH_DATA = 0; // 0x0
     field public static final int EXTRA_REFRESH_REQUEST_TYPE_GET_DATA = 1; // 0x1
+    field public static final String EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID = "android.safetycenter.extra.REFRESH_SAFETY_SOURCES_BROADCAST_ID";
     field public static final String EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE = "android.safetycenter.extra.REFRESH_SAFETY_SOURCES_REQUEST_TYPE";
     field public static final String EXTRA_REFRESH_SAFETY_SOURCE_IDS = "android.safetycenter.extra.REFRESH_SAFETY_SOURCE_IDS";
     field public static final int REFRESH_REASON_PAGE_OPEN = 100; // 0x64
@@ -273,9 +274,32 @@ package android.safetycenter {
     method @NonNull public android.safetycenter.SafetyCenterStatus.Builder setTitle(@NonNull CharSequence);
   }
 
+  public final class SafetyEvent implements android.os.Parcelable {
+    method public int describeContents();
+    method @Nullable public String getRefreshBroadcastId();
+    method public int getSafetyEventType();
+    method @Nullable public String getSafetySourceIssueActionId();
+    method @Nullable public String getSafetySourceIssueId();
+    method public void writeToParcel(@NonNull android.os.Parcel, int);
+    field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetyEvent> CREATOR;
+    field public static final int SAFETY_EVENT_TYPE_DEVICE_LOCALE_CHANGED = 500; // 0x1f4
+    field public static final int SAFETY_EVENT_TYPE_DEVICE_REBOOTED = 500; // 0x1f4
+    field public static final int SAFETY_EVENT_TYPE_REFRESH_REQUESTED = 200; // 0xc8
+    field public static final int SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED = 400; // 0x190
+    field public static final int SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED = 300; // 0x12c
+    field public static final int SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED = 100; // 0x64
+  }
+
+  public static final class SafetyEvent.Builder {
+    ctor public SafetyEvent.Builder(int);
+    method @NonNull public android.safetycenter.SafetyEvent build();
+    method @NonNull public android.safetycenter.SafetyEvent.Builder setRefreshBroadcastId(@Nullable String);
+    method @NonNull public android.safetycenter.SafetyEvent.Builder setSafetySourceIssueActionId(@Nullable String);
+    method @NonNull public android.safetycenter.SafetyEvent.Builder setSafetySourceIssueId(@Nullable String);
+  }
+
   public final class SafetySourceData implements android.os.Parcelable {
     method public int describeContents();
-    method @NonNull public String getId();
     method @NonNull public java.util.List<android.safetycenter.SafetySourceIssue> getIssues();
     method @Nullable public android.safetycenter.SafetySourceStatus getStatus();
     method public void writeToParcel(@NonNull android.os.Parcel, int);
@@ -283,7 +307,7 @@ package android.safetycenter {
   }
 
   public static final class SafetySourceData.Builder {
-    ctor public SafetySourceData.Builder(@NonNull String);
+    ctor public SafetySourceData.Builder();
     method @NonNull public android.safetycenter.SafetySourceData.Builder addIssue(@NonNull android.safetycenter.SafetySourceIssue);
     method @NonNull public android.safetycenter.SafetySourceData build();
     method @NonNull public android.safetycenter.SafetySourceData.Builder clearIssues();
@@ -291,21 +315,11 @@ package android.safetycenter {
   }
 
   public final class SafetySourceError implements android.os.Parcelable {
+    ctor public SafetySourceError(@NonNull android.safetycenter.SafetyEvent);
     method public int describeContents();
-    method @Nullable public String getActionId();
-    method @Nullable public String getIssueId();
-    method public int getType();
+    method @NonNull public android.safetycenter.SafetyEvent getSafetyEvent();
     method public void writeToParcel(@NonNull android.os.Parcel, int);
     field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetySourceError> CREATOR;
-    field public static final int SOURCE_ERROR_TYPE_ACTION_ERROR = 10; // 0xa
-    field public static final int SOURCE_ERROR_TYPE_UNKNOWN = 0; // 0x0
-  }
-
-  public static final class SafetySourceError.Builder {
-    ctor public SafetySourceError.Builder(int);
-    method @NonNull public android.safetycenter.SafetySourceError build();
-    method @NonNull public android.safetycenter.SafetySourceError.Builder setActionId(@Nullable String);
-    method @NonNull public android.safetycenter.SafetySourceError.Builder setIssueId(@Nullable String);
   }
 
   public final class SafetySourceIssue implements android.os.Parcelable {
