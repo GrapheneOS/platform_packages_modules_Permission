@@ -264,6 +264,8 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"您在行车期间向“<xliff:g id="APP">%1$s</xliff:g>”授予了<xliff:g id="PERMISSION_1">%2$s</xliff:g>和<xliff:g id="PERMISSION_2">%3$s</xliff:g>权限"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"您在行车期间向“<xliff:g id="APP">%2$s</xliff:g>”授予了 <xliff:g id="COUNT">%1$d</xliff:g> 项权限"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{您在行车期间向“<xliff:g id="APP_0">%1$s</xliff:g>”和另外 # 个应用授予了权限}other{您在行车期间向“<xliff:g id="APP_1">%1$s</xliff:g>”和另外 # 个应用授予了权限}}"</string>
+    <!-- no translation found for go_to_settings (1053735612211228335) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"一些应用已连续几个月未使用过"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"已移除权限的应用"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"已移除权限的应用"</string>
@@ -499,6 +501,22 @@
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"扫描"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"关闭"</string>
     <string name="security_settings" msgid="3808106921175271317">"安全设置"</string>
+    <string name="sensor_permissions_qs" msgid="4365989229426201877">"传感器权限"</string>
+    <string name="privacy_controls_qs" msgid="471793881466080745">"隐私控制"</string>
+    <string name="permissions_removed_qs" msgid="8957319130625294572">"已移除权限"</string>
+    <string name="camera_usage_qs" msgid="7943349178368641820">"查看更多相机使用信息"</string>
+    <string name="microphone_usage_qs" msgid="2393193350541830472">"查看更多麦克风使用信息"</string>
+    <string name="remove_camera_qs" msgid="8209716677879809162">"移除相机权限"</string>
+    <string name="remove_microphone_qs" msgid="2893536836641560183">"移除麦克风权限"</string>
+    <string name="manage_service_qs" msgid="7862555549364153805">"管理服务"</string>
+    <string name="active_call_usage_qs" msgid="8559974395932523391">"通话正在使用"</string>
+    <string name="recent_call_usage_qs" msgid="743044899599410935">"最近在通话中使用过"</string>
+    <string name="active_app_usage_qs" msgid="4063912870936464727">"“<xliff:g id="APP_NAME">%1$s</xliff:g>”正在使用"</string>
+    <string name="recent_app_usage_qs" msgid="6650259601306212327">"“<xliff:g id="APP_NAME">%1$s</xliff:g>”最近使用过"</string>
+    <string name="active_app_usage_1_qs" msgid="4325136375823357052">"“<xliff:g id="APP_NAME">%1$s</xliff:g>”正在使用（<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>）"</string>
+    <string name="recent_app_usage_1_qs" msgid="261450184773310741">"“<xliff:g id="APP_NAME">%1$s</xliff:g>”最近使用过（<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>）"</string>
+    <string name="active_app_usage_2_qs" msgid="6107866785243565283">"“<xliff:g id="APP_NAME">%1$s</xliff:g>”正在使用（<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>）"</string>
+    <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"“<xliff:g id="APP_NAME">%1$s</xliff:g>”最近使用过（<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>）"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"安全和隐私设置"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"查看状态"</string>
 </resources>

@@ -71,10 +71,8 @@
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"Opna upplýsingar um forrit"</string>
     <string name="additional_permissions_more" msgid="5681220714755304407">"{count,plural, =1{# til viðbótar}one{# til viðbótar}other{# til viðbótar}}"</string>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"Þetta forrit var hannað fyrir eldri útgáfu af Android. Ef ekki er veitt heimild fyrir því er hugsanlegt að það virki ekki rétt."</string>
-    <!-- no translation found for storage_supergroup_warning_allow (103093462784523190) -->
-    <skip />
-    <!-- no translation found for storage_supergroup_warning_deny (6420765672683284347) -->
-    <skip />
+    <string name="storage_supergroup_warning_allow" msgid="103093462784523190">"Þetta forrit var hannað fyrir eldri útgáfu af Android. Ef þú veitir þessa heimild verður aðgangur að öllu geymslurými (þ.m.t. myndum, myndskeiðum, tónlist, hljóði og öðrum skrám) leyfður."</string>
+    <string name="storage_supergroup_warning_deny" msgid="6420765672683284347">"Þetta forrit var hannað fyrir eldri útgáfu af Android. Ef þú hafnar þessari heimild verður aðgangi að öllu geymslurými (þ.m.t. myndum, myndskeiðum, tónlist, hljóði og öðrum skrám) hafnað."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"framkvæma óþekkta aðgerð"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> af <xliff:g id="COUNT_1">%2$d</xliff:g> forritum leyfð"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> forrit leyfð"</string>
@@ -87,10 +85,8 @@
     <string name="location_settings" msgid="3624412509133422562">"Staðsetningarstillingar"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> býður upp á staðsetningarþjónustu fyrir þetta tæki. Hægt er að breyta aðgangi að staðsetningu í stillingum staðsetningar."</string>
     <string name="system_warning" msgid="1173400963234358816">"Ef þú veitir ekki þessa heimild getur verið að grunneiginleikar tækisins virki ekki lengur sem skyldi."</string>
-    <!-- no translation found for deny_read_media_visual_warning (3982586279917232827) -->
-    <skip />
-    <!-- no translation found for deny_read_media_aural_warning (8928699919508646732) -->
-    <skip />
+    <string name="deny_read_media_visual_warning" msgid="3982586279917232827">"Þetta forrit var hannað fyrir eldri útgáfu af Android. Ef þú hafnar aðgangi þessa forrits að myndum og myndskeiðum verður aðgangi að tónlist og öðru hljóði einnig hafnað."</string>
+    <string name="deny_read_media_aural_warning" msgid="8928699919508646732">"Þetta forrit var hannað fyrir eldri útgáfu af Android. Ef þú hafnar aðgangi þessa forrits að tónlist og öðru hljóði verður aðgangi að myndum og myndskeiðum einnig hafnað."</string>
     <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"Ef þú veitir ekki þessa heimild er óvíst að tilteknir eiginleikar í tækinu sem er stjórnað af þessu forriti virki sem skyldi."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Stjórnað af reglu"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Bakgrunnsaðgangur óvirkur vegna reglu"</string>
@@ -236,10 +232,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Forrit með þessa heimild hafa aðgang að skynjaragögnum um lífsmörk þín"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Forrit með þessa heimild geta sent og skoðað SMS-skilaboð"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Forrit sem hafa þessa heimild hafa aðgang að myndum, efni og skrám í tækinu þínu"</string>
-    <!-- no translation found for permission_description_summary_read_media_aural (2789020637856210454) -->
-    <skip />
-    <!-- no translation found for permission_description_summary_read_media_visual (4210569227927436735) -->
-    <skip />
+    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"Forrit með þessa heimild hafa aðgang að tónlist og öðrum hljóðskrám í tækinu þínu"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"Forrit með þessa heimild hafa aðgang að myndum og myndskeiðum í tækinu þínu"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Síðast notuð: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Hafnað eins og er / síðast notuð: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Aldrei notuð"</string>
@@ -251,10 +245,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Leyfði stjórnun á öllum skrám"</string>
     <string name="ask_header" msgid="2633816846459944376">"Spyrja alltaf"</string>
     <string name="denied_header" msgid="903209608358177654">"Ekki heimilað"</string>
-    <!-- no translation found for storage_footer_warning_text (2242258357752432337) -->
-    <skip />
-    <!-- no translation found for storage_footer_hyperlink_text (7759955324552930974) -->
-    <skip />
+    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Sum forrit sem eru nauðsynleg fyrir virkni tækisins geta verið með sértækan aðgang að öllum skránum þínum"</string>
+    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Sjá forrit með aðgang að öllum skrám"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 dagur}one{# dagur}other{# dagar}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 klukkustund}one{# klukkustund}other{# klukkustundir}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 mínúta}one{# mínúta}other{# mínútur}}"</string>
@@ -272,6 +264,8 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Þú veittir <xliff:g id="APP">%1$s</xliff:g> aðgang að <xliff:g id="PERMISSION_1">%2$s</xliff:g> og <xliff:g id="PERMISSION_2">%3$s</xliff:g> við akstur"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Þú veittir <xliff:g id="APP">%2$s</xliff:g> <xliff:g id="COUNT">%1$d</xliff:g> heimildir við akstur"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Þú veittir <xliff:g id="APP_0">%1$s</xliff:g> og # forriti í viðbót aðgang við akstur}one{Þú veittir <xliff:g id="APP_1">%1$s</xliff:g> og # forriti í viðbót aðgang við akstur}other{Þú veittir <xliff:g id="APP_1">%1$s</xliff:g> og # forritum í viðbót aðgang við akstur}}"</string>
+    <!-- no translation found for go_to_settings (1053735612211228335) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Sum forrit hafa ekki verið notuð í nokkra mánuði"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Heimildir fjarlægðar"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Heimildir voru fjarlægðar"</string>
@@ -453,16 +447,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Áætluð"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Viltu veita &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aðgang að dagatalinu þínu?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Viltu leyfa &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; að senda og skoða SMS-skilaboð?"</string>
-    <!-- no translation found for permgrouprequest_storage (7426990523173124539) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_q_to_s (3942779386983426698) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_pre_q (1681166745228672009) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_aural (5948278590400297839) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_visual (4188474766470776052) -->
-    <skip />
+    <string name="permgrouprequest_storage" msgid="7426990523173124539">"Veita &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aðgang að &lt;b&gt;skrám og skjölum&lt;/b&gt; í tækinu?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"Veita &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aðgang að &lt;b&gt;myndum, myndskeiðum, tónlist og hljóði&lt;/b&gt; í tækinu?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"Veita &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aðgang að &lt;b&gt;myndum, myndskeiðum, tónlist, hljóði og öðrum skrám&lt;/b&gt; í tækinu?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"Veita &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aðgang að tónlist og öðrum hljóðskrám í þessu tæki?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"Veita &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aðgang að myndum og myndskeiðum í þessu tæki?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Leyfa forritinu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; að taka upp hljóð?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Forritið mun aðeins geta tekið upp hljóð þegar þú ert að nota forritið"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Viltu leyfa &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; að taka upp hljóð?"</string>
@@ -509,11 +498,25 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Hljóðnemagögnum er þó hugsanlega deilt þegar hringt er í neyðarnúmer."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Breyta"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Öryggi og persónuvernd"</string>
-    <!-- no translation found for safety_center_rescan_button (8047036829052958144) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_dismiss_button (5113965506144222402) -->
-    <skip />
+    <string name="safety_center_rescan_button" msgid="8047036829052958144">"Leita"</string>
+    <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Hunsa"</string>
     <string name="security_settings" msgid="3808106921175271317">"Öryggisstillingar"</string>
+    <string name="sensor_permissions_qs" msgid="4365989229426201877">"Skynjaraheimildir"</string>
+    <string name="privacy_controls_qs" msgid="471793881466080745">"Persónuverndarstillingar"</string>
+    <string name="permissions_removed_qs" msgid="8957319130625294572">"Heimild fjarlægð"</string>
+    <string name="camera_usage_qs" msgid="7943349178368641820">"Sjá meiri myndavélarnotkun"</string>
+    <string name="microphone_usage_qs" msgid="2393193350541830472">"Sjá meiri hljóðnemanotkun"</string>
+    <string name="remove_camera_qs" msgid="8209716677879809162">"Fjarlægja myndavélarheimild"</string>
+    <string name="remove_microphone_qs" msgid="2893536836641560183">"Fjarlægja hljóðnemaheimild"</string>
+    <string name="manage_service_qs" msgid="7862555549364153805">"Stjórna þjónustu"</string>
+    <string name="active_call_usage_qs" msgid="8559974395932523391">"Notað í símtali"</string>
+    <string name="recent_call_usage_qs" msgid="743044899599410935">"Nýlega notað í símtali"</string>
+    <string name="active_app_usage_qs" msgid="4063912870936464727">"Notað af <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
+    <string name="recent_app_usage_qs" msgid="6650259601306212327">"Nýlega notað af <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
+    <string name="active_app_usage_1_qs" msgid="4325136375823357052">"Notað af <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
+    <string name="recent_app_usage_1_qs" msgid="261450184773310741">"Nýlega notað af <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
+    <string name="active_app_usage_2_qs" msgid="6107866785243565283">"Notað af <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
+    <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Nýlega notað af <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Öryggi og persónuvernd"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Athuga stöðu"</string>
 </resources>

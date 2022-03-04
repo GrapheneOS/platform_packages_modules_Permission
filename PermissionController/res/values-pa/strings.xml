@@ -71,10 +71,8 @@
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"ਐਪ ਜਾਣਕਾਰੀ ਖੋਲ੍ਹੋ"</string>
     <string name="additional_permissions_more" msgid="5681220714755304407">"{count,plural, =1{# ਹੋਰ}one{# ਹੋਰ}other{# ਹੋਰ}}"</string>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"ਇਹ ਐਪ Android ਦੇ ਕਿਸੇ ਪੁਰਾਣੇ ਵਰਜਨ ਲਈ ਬਣਾਈ ਗਈ ਸੀ। ਇਜਾਜ਼ਤ ਨੂੰ ਅਸਵੀਕਾਰ ਕਰਨ ਨਾਲ ਹੋ ਸਕਦਾ ਹੈ ਕਿ ਇਹ ਇਸਦੇ ਨਿਯਤ ਤਰੀਕੇ ਨਾਲ ਕੰਮ ਨਾ ਕਰੇ।"</string>
-    <!-- no translation found for storage_supergroup_warning_allow (103093462784523190) -->
-    <skip />
-    <!-- no translation found for storage_supergroup_warning_deny (6420765672683284347) -->
-    <skip />
+    <string name="storage_supergroup_warning_allow" msgid="103093462784523190">"ਇਹ ਐਪ Android ਦੇ ਕਿਸੇ ਪੁਰਾਣੇ ਵਰਜਨ ਲਈ ਬਣਾਈ ਗਈ ਸੀ। ਜੇ ਤੁਸੀਂ ਇਸਦੀ ਇਜਾਜ਼ਤ ਦੀ ਆਗਿਆ ਦਿੰਦੇ ਹੋ, ਤਾਂ ਸਾਰੀ ਸਟੋਰੇਜ (ਫ਼ੋਟੋਆਂ, ਵੀਡੀਓ, ਸੰਗੀਤ, ਆਡੀਓ ਅਤੇ ਹੋਰ ਫ਼ਾਈਲਾਂ ਸਮੇਤ) ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੀ ਆਗਿਆ ਹੋਵੇਗੀ।"</string>
+    <string name="storage_supergroup_warning_deny" msgid="6420765672683284347">"ਇਹ ਐਪ Android ਦੇ ਕਿਸੇ ਪੁਰਾਣੇ ਵਰਜਨ ਲਈ ਬਣਾਈ ਗਈ ਸੀ। ਜੇ ਤੁਸੀਂ ਇਸ ਇਜਾਜ਼ਤ ਨੂੰ ਅਸਵੀਕਾਰ ਕਰਦੇ ਹੋ, ਤਾਂ ਸਾਰੀ ਸਟੋਰੇਜ (ਫ਼ੋਟੋਆਂ, ਵੀਡੀਓ, ਸੰਗੀਤ, ਆਡੀਓ ਅਤੇ ਹੋਰ ਫ਼ਾਈਲਾਂ ਸਮੇਤ) ਤੱਕ ਪਹੁੰਚ ਨੂੰ ਅਸਵੀਕਾਰ ਕੀਤਾ ਜਾਵੇਗਾ।"</string>
     <string name="default_permission_description" msgid="4624464917726285203">"ਕੋਈ ਅਗਿਆਤ ਕਾਰਵਾਈ ਕਰੋ"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_1">%2$d</xliff:g> ਵਿੱਚੋਂ <xliff:g id="COUNT_0">%1$d</xliff:g> ਐਪਾਂ ਨੂੰ ਆਗਿਆ ਦਿੱਤੀ"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> ਐਪਾਂ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿੱਤੀ"</string>
@@ -87,10 +85,8 @@
     <string name="location_settings" msgid="3624412509133422562">"ਟਿਕਾਣਾ ਸੈਟਿੰਗਾਂ"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> ਇਸ ਡੀਵਾਈਸ ਲਈ ਟਿਕਾਣਾ ਸੇਵਾਵਾਂ ਦਾ ਇੱਕ ਪ੍ਰਦਾਨਕ ਹੈ। ਟਿਕਾਣਾ ਪਹੁੰਚ ਨੂੰ ਟਿਕਾਣਾ ਸੈਟਿੰਗਾਂ ਤੋਂ ਸੋਧਿਆ ਜਾ ਸਕਦਾ ਹੈ।"</string>
     <string name="system_warning" msgid="1173400963234358816">"ਜੇਕਰ ਤੁਸੀਂ ਇਸ ਇਜਾਜ਼ਤ ਨੂੰ ਅਸਵੀਕਾਰ ਕਰਦੇ ਹੋ, ਤਾਂ ਹੋ ਸਕਦਾ ਹੈ ਤੁਹਾਡੇ ਡੀਵਾਈਸ ਦੀਆਂ ਮੂਲ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ ਉਹਨਾਂ ਦੇ ਨਿਯਤ ਤਰੀਕੇ ਨਾਲ ਕੰਮ ਨਾ ਕਰਨ।"</string>
-    <!-- no translation found for deny_read_media_visual_warning (3982586279917232827) -->
-    <skip />
-    <!-- no translation found for deny_read_media_aural_warning (8928699919508646732) -->
-    <skip />
+    <string name="deny_read_media_visual_warning" msgid="3982586279917232827">"ਇਹ ਐਪ Android ਦੇ ਕਿਸੇ ਪੁਰਾਣੇ ਵਰਜਨ ਲਈ ਬਣਾਈ ਗਈ ਸੀ। ਜੇ ਤੁਸੀਂ ਫ਼ੋਟੋਆਂ ਅਤੇ ਵੀਡੀਓ ਤੱਕ ਇਸ ਐਪ ਦੀ ਪਹੁੰਚ ਨੂੰ ਅਸਵੀਕਾਰ ਕਰਦੇ ਹੋ, ਤਾਂ ਸੰਗੀਤ ਅਤੇ ਹੋਰ ਆਡੀਓ ਤੱਕ ਵੀ ਪਹੁੰਚ ਨੂੰ ਅਸਵੀਕਾਰ ਕਰ ਦਿੱਤਾ ਜਾਵੇਗਾ।"</string>
+    <string name="deny_read_media_aural_warning" msgid="8928699919508646732">"ਇਹ ਐਪ Android ਦੇ ਕਿਸੇ ਪੁਰਾਣੇ ਵਰਜਨ ਲਈ ਬਣਾਈ ਗਈ ਸੀ। ਜੇ ਤੁਸੀਂ ਸੰਗੀਤ ਅਤੇ ਹੋਰ ਆਡੀਓ ਤੱਕ ਇਸ ਐਪ ਦੀ ਪਹੁੰਚ ਨੂੰ ਅਸਵੀਕਾਰ ਕਰਦੇ ਹੋ, ਤਾਂ ਫ਼ੋਟੋਆਂ ਅਤੇ ਵੀਡੀਓ ਤੱਕ ਵੀ ਪਹੁੰਚ ਨੂੰ ਅਸਵੀਕਾਰ ਕਰ ਦਿੱਤਾ ਜਾਵੇਗਾ।"</string>
     <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"ਜੇ ਤੁਸੀਂ ਇਸ ਇਜਾਜ਼ਤ ਨੂੰ ਅਸਵੀਕਾਰ ਕਰਦੇ ਹੋ, ਤਾਂ ਹੋ ਸਕਦਾ ਹੈ ਕਿ ਇਸ ਐਪ ਵੱਲੋਂ ਪ੍ਰਬੰਧਨ ਕੀਤੀਆਂ ਜਾਂਦੀਆਂ ਤੁਹਾਡੇ ਡੀਵਾਈਸ ਦੀਆਂ ਕੁਝ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ ਉਹਨਾਂ ਦੇ ਨਿਯਤ ਤਰੀਕੇ ਮੁਤਾਬਕ ਕੰਮ ਨਾ ਕਰਨ।"</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"ਨੀਤੀ ਮੁਤਾਬਕ ਲਾਗੂ ਕੀਤਾ ਗਿਆ"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"ਨੀਤੀ ਵੱਲੋਂ ਬੈਕਗ੍ਰਾਊਂਡ ਪਹੁੰਚ ਨੂੰ ਬੰਦ ਕੀਤਾ ਗਿਆ"</string>
@@ -236,10 +232,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਤੁਹਾਡੇ ਸਰੀਰ ਦੇ ਅਹਿਮ ਲੱਛਣਾਂ ਸੰਬੰਧੀ ਸੈਂਸਰ ਡਾਟੇ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ SMS ਸੁਨੇਹੇ ਭੇਜ ਅਤੇ ਦੇਖ ਸਕਦੀਆਂ ਹਨ"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਤੁਹਾਡੇ ਡੀਵਾਈਸ \'ਤੇ ਫ਼ੋਟੋਆਂ, ਮੀਡੀਆ ਅਤੇ ਫ਼ਾਈਲਾਂ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
-    <!-- no translation found for permission_description_summary_read_media_aural (2789020637856210454) -->
-    <skip />
-    <!-- no translation found for permission_description_summary_read_media_visual (4210569227927436735) -->
-    <skip />
+    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਤੁਹਾਡੇ ਡੀਵਾਈਸ \'ਤੇ ਸੰਗੀਤ ਅਤੇ ਹੋਰ ਆਡੀਓ ਫ਼ਾਈਲਾਂ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਤੁਹਾਡੇ ਡੀਵਾਈਸ \'ਤੇ ਫ਼ੋਟੋਆਂ ਅਤੇ ਵੀਡੀਓ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"ਪਿਛਲੀ ਵਾਰ ਪਹੁੰਚ: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"ਫਿਲਹਾਲ ਮਨ੍ਹਾ ਕੀਤਾ ਗਿਆ / ਪਿਛਲੀ ਵਾਰ ਪਹੁੰਚ ਕਰਨ ਦਾ ਸਮਾਂ: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"ਕਦੇ ਪਹੁੰਚ ਨਹੀਂ ਕੀਤੀ"</string>
@@ -251,10 +245,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"ਸਾਰੀਆਂ ਫ਼ਾਈਲਾਂ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰਨ ਦਿੱਤਾ ਗਿਆ"</string>
     <string name="ask_header" msgid="2633816846459944376">"ਹਰ ਵਾਰ ਪੁੱਛੋ"</string>
     <string name="denied_header" msgid="903209608358177654">"ਗੈਰ-ਮਨਜ਼ੂਰਸ਼ੁਦਾ"</string>
-    <!-- no translation found for storage_footer_warning_text (2242258357752432337) -->
-    <skip />
-    <!-- no translation found for storage_footer_hyperlink_text (7759955324552930974) -->
-    <skip />
+    <string name="storage_footer_warning_text" msgid="2242258357752432337">"ਤੁਹਾਡੇ ਡੀਵਾਈਸ ਲਈ ਅਹਿਮ ਪ੍ਰਕਾਰਜਾਤਮਕਤਾ ਮੁਹੱਈਆ ਕਰਵਾਉਣ ਵਾਲੀਆਂ ਕੁਝ ਐਪਾਂ ਤੁਹਾਡੀਆਂ ਸਾਰੀਆਂ ਫ਼ਾਈਲਾਂ ਤੱਕ ਖਾਸ ਪਹੁੰਚ ਰੱਖ ਸਕਦੀਆਂ ਹਨ"</string>
+    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"ਉਹ ਐਪਾਂ ਦੇਖੋ ਜਿਨ੍ਹਾਂ ਨੂੰ ਸਾਰੀਆਂ ਫ਼ਾਈਲਾਂ ਤੱਕ ਪਹੁੰਚ ਹੈ"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 ਦਿਨ}one{# ਦਿਨ}other{# ਦਿਨ}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 ਘੰਟਾ}one{# ਘੰਟਾ}other{# ਘੰਟੇ}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 ਮਿੰਟ}one{# ਮਿੰਟ}other{# ਮਿੰਟ}}"</string>
@@ -272,6 +264,8 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"ਗੱਡੀ ਚਲਾਉਂਦੇ ਸਮੇਂ, ਤੁਸੀਂ <xliff:g id="APP">%1$s</xliff:g> ਨੂੰ <xliff:g id="PERMISSION_1">%2$s</xliff:g> ਅਤੇ <xliff:g id="PERMISSION_2">%3$s</xliff:g> ਤੱਕ ਪਹੁੰਚ ਦਿੱਤੀ ਹੈ"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"ਗੱਡੀ ਚਲਾਉਂਦੇ ਸਮੇਂ, ਤੁਸੀਂ <xliff:g id="APP">%2$s</xliff:g> ਨੂੰ <xliff:g id="COUNT">%1$d</xliff:g> ਇਜਾਜ਼ਤਾਂ ਦਿੱਤੀਆਂ ਹਨ"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{ਗੱਡੀ ਚਲਾਉਂਦੇ ਸਮੇਂ, ਤੁਸੀਂ <xliff:g id="APP_0">%1$s</xliff:g> ਅਤੇ # ਹੋਰ ਐਪ ਨੂੰ ਪਹੁੰਚ ਦਿੱਤੀ ਹੈ}one{ਗੱਡੀ ਚਲਾਉਂਦੇ ਸਮੇਂ, ਤੁਸੀਂ <xliff:g id="APP_1">%1$s</xliff:g> ਅਤੇ # ਹੋਰ ਐਪ ਨੂੰ ਪਹੁੰਚ ਦਿੱਤੀ ਹੈ}other{ਗੱਡੀ ਚਲਾਉਂਦੇ ਸਮੇਂ, ਤੁਸੀਂ <xliff:g id="APP_1">%1$s</xliff:g> ਅਤੇ # ਹੋਰ ਐਪਾਂ ਨੂੰ ਪਹੁੰਚ ਦਿੱਤੀ ਹੈ}}"</string>
+    <!-- no translation found for go_to_settings (1053735612211228335) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"ਕੁਝ ਐਪਾਂ ਨੂੰ ਕਈ ਮਹੀਨਿਆਂ ਤੋਂ ਵਰਤਿਆ ਨਹੀਂ ਗਿਆ"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"ਹਟਾਈਆਂ ਗਈਆਂ ਇਜਾਜ਼ਤਾਂ"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"ਇਜਾਜ਼ਤਾਂ ਨੂੰ ਹਟਾਇਆ ਗਿਆ"</string>
@@ -453,16 +447,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"ਅੰਦਾਜ਼ਨ"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਤੁਹਾਡੇ ਕੈਲੰਡਰ ਤੱਕ ਪਹੁੰਚ ਕਰਨੀ ਦੇਣੀ ਹੈ?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ SMS ਸੁਨੇਹੇ ਭੇਜਣ ਅਤੇ ਦੇਖਣ ਦੇਣੇ ਹਨ?"</string>
-    <!-- no translation found for permgrouprequest_storage (7426990523173124539) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_q_to_s (3942779386983426698) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_pre_q (1681166745228672009) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_aural (5948278590400297839) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_visual (4188474766470776052) -->
-    <skip />
+    <string name="permgrouprequest_storage" msgid="7426990523173124539">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਤੁਹਾਡੇ ਡੀਵਾਈਸ \'ਤੇ &lt;b&gt;ਫ਼ਾਈਲਾਂ ਅਤੇ ਦਸਤਾਵੇਜ਼ਾਂ&lt;/b&gt; ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਤੁਹਾਡੇ ਡੀਵਾਈਸ \'ਤੇ &lt;b&gt;ਫ਼ੋਟੋਆਂ, ਵੀਡੀਓ, ਸੰਗੀਤ, ਅਤੇ ਆਡੀਓ&lt;/b&gt; ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਤੁਹਾਡੇ ਡੀਵਾਈਸ \'ਤੇ &lt;b&gt;ਫ਼ੋਟੋਆਂ, ਵੀਡੀਓ, ਸੰਗੀਤ, ਆਡੀਓ ਅਤੇ ਹੋਰ ਫ਼ਾਈਲਾਂ&lt;/b&gt; ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਤੁਹਾਡੇ ਡੀਵਾਈਸ \'ਤੇ ਸੰਗੀਤ ਅਤੇ ਹੋਰ ਆਡੀਓ ਫ਼ਾਈਲਾਂ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਇਸ ਡੀਵਾਈਸ ਦੀਆਂ ਫ਼ੋਟੋਆਂ ਅਤੇ ਵੀਡੀਓ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਆਡੀਓ ਰਿਕਾਰਡ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"ਤੁਹਾਡੇ ਵੱਲੋਂ ਐਪ ਦੀ ਵਰਤੋਂ ਕਰਨ ਵੇਲੇ ਹੀ ਐਪ ਆਡੀਓ ਰਿਕਾਰਡ ਕਰ ਸਕੇਗੀ"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਆਡੀਓ ਰਿਕਾਰਡ ਕਰਨ ਦੀ ਇਜਾਜ਼ਤ ਦੇਣੀ ਹੈ?"</string>
@@ -509,11 +498,25 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"ਜਦੋਂ ਤੁਸੀਂ ਐਮਰਜੈਂਸੀ ਨੰਬਰ \'ਤੇ ਕਾਲ ਕਰਦੇ ਹੋ ਤਾਂ ਸ਼ਾਇਦ ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਡਾਟਾ ਹਾਲੇ ਵੀ ਸਾਂਝਾ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ।"</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"ਬਦਲੋ"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"ਸੁਰੱਖਿਆ ਅਤੇ ਪਰਦੇਦਾਰੀ"</string>
-    <!-- no translation found for safety_center_rescan_button (8047036829052958144) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_dismiss_button (5113965506144222402) -->
-    <skip />
+    <string name="safety_center_rescan_button" msgid="8047036829052958144">"ਸਕੈਨ ਕਰੋ"</string>
+    <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"ਖਾਰਜ ਕਰੋ"</string>
     <string name="security_settings" msgid="3808106921175271317">"ਸੁਰੱਖਿਆ ਸੈਟਿੰਗਾਂ"</string>
+    <string name="sensor_permissions_qs" msgid="4365989229426201877">"ਸੈਂਸਰ ਇਜਾਜ਼ਤਾਂ"</string>
+    <string name="privacy_controls_qs" msgid="471793881466080745">"ਪਰਦੇਦਾਰੀ ਕੰਟਰੋਲ"</string>
+    <string name="permissions_removed_qs" msgid="8957319130625294572">"ਇਜਾਜ਼ਤ ਹਟਾਈ ਗਈ"</string>
+    <string name="camera_usage_qs" msgid="7943349178368641820">"ਕੈਮਰੇ ਦੀ ਜ਼ਿਆਦਾ ਵਰਤੋਂ ਬਾਰੇ ਦੇਖੋ"</string>
+    <string name="microphone_usage_qs" msgid="2393193350541830472">"ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਦੀ ਜ਼ਿਆਦਾ ਵਰਤੋਂ ਬਾਰੇ ਦੇਖੋ"</string>
+    <string name="remove_camera_qs" msgid="8209716677879809162">"ਕੈਮਰਾ ਇਜਾਜ਼ਤ ਹਟਾਓ"</string>
+    <string name="remove_microphone_qs" msgid="2893536836641560183">"ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਇਜਾਜ਼ਤ ਹਟਾਓ"</string>
+    <string name="manage_service_qs" msgid="7862555549364153805">"ਸੇਵਾ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰੋ"</string>
+    <string name="active_call_usage_qs" msgid="8559974395932523391">"ਫ਼ੋਨ ਕਾਲ ਦੁਆਰਾ ਵਰਤਿਆ ਜਾ ਰਿਹਾ ਹੈ"</string>
+    <string name="recent_call_usage_qs" msgid="743044899599410935">"ਹਾਲ ਹੀ ਵਿੱਚ ਫ਼ੋਨ ਕਾਲ ਵਿੱਚ ਵਰਤਿਆ ਗਿਆ"</string>
+    <string name="active_app_usage_qs" msgid="4063912870936464727">"<xliff:g id="APP_NAME">%1$s</xliff:g> ਵੱਲੋਂ ਵਰਤਿਆ ਜਾ ਰਿਹਾ ਹੈ"</string>
+    <string name="recent_app_usage_qs" msgid="6650259601306212327">"ਹਾਲ ਹੀ ਵਿੱਚ <xliff:g id="APP_NAME">%1$s</xliff:g> ਵੱਲੋਂ ਵਰਤਿਆ ਗਿਆ"</string>
+    <string name="active_app_usage_1_qs" msgid="4325136375823357052">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>) ਵੱਲੋਂ ਵਰਤਿਆ ਜਾ ਰਿਹਾ ਹੈ"</string>
+    <string name="recent_app_usage_1_qs" msgid="261450184773310741">"ਹਾਲ ਹੀ ਵਿੱਚ <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>) ਵੱਲੋਂ ਵਰਤਿਆ ਗਿਆ"</string>
+    <string name="active_app_usage_2_qs" msgid="6107866785243565283">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) ਵੱਲੋਂ ਵਰਤਿਆ ਜਾ ਰਿਹਾ ਹੈ"</string>
+    <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"ਹਾਲ ਹੀ ਵਿੱਚ <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) ਵੱਲੋਂ ਵਰਤਿਆ ਗਿਆ"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"ਸੁਰੱਖਿਆ ਅਤੇ ਪਰਦੇਦਾਰੀ"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"ਸਥਿਤੀ ਦੀ ਜਾਂਚ ਕਰੋ"</string>
 </resources>
