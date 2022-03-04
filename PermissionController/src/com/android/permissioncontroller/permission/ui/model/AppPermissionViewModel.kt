@@ -673,7 +673,7 @@ class AppPermissionViewModel(
     }
 
     private fun expandsToStorageSupergroup(group: LightAppPermGroup): Boolean {
-        return group.packageInfo.targetSdkVersion < Build.VERSION_CODES.TIRAMISU &&
+        return group.packageInfo.targetSdkVersion <= Build.VERSION_CODES.S_V2 &&
             group.permGroupName in Utils.STORAGE_SUPERGROUP_PERMISSIONS
     }
 
