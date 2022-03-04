@@ -63,17 +63,17 @@ class RecentPermissionDecisionsStorageImplTest {
     private val mapPackageName = "package.test.map"
 
     private val musicCalendarGrant = PermissionDecision(
-        "package.test.music", "calendar", jan12020, false)
+        "package.test.music", jan12020, "calendar", false)
     private val mapLocationGrant = PermissionDecision(
-        mapPackageName, "location", jan12020, true)
+        mapPackageName, jan12020, "location", true)
     private val mapLocationDenied = PermissionDecision(
-        mapPackageName, "location", jan12020, false)
+        mapPackageName, jan12020, "location", false)
     private val mapMicrophoneGrant = PermissionDecision(
-        mapPackageName, "microphone", jan12020, true)
+        mapPackageName, jan12020, "microphone", true)
     private val parkingLocationGrant = PermissionDecision(
-        "package.test.parking", "location", jan22020, true)
+        "package.test.parking", jan22020, "location", true)
     private val podcastMicrophoneGrant = PermissionDecision(
-        "package.test.podcast", "microphone", jan22020, true)
+        "package.test.podcast", jan22020, "microphone", true)
 
     @Mock
     lateinit var jobScheduler: JobScheduler
@@ -175,7 +175,7 @@ class RecentPermissionDecisionsStorageImplTest {
         init()
         runBlocking {
             val laterInTheDayGrant = musicCalendarGrant.copy(
-                decisionTime = (musicCalendarGrant.decisionTime + (5 * 60 * 60 * 1000)))
+                eventTime = (musicCalendarGrant.eventTime + (5 * 60 * 60 * 1000)))
             assertThat(storage.storePermissionDecision(laterInTheDayGrant)).isTrue()
             assertThat(storage.loadPermissionDecisions()).containsExactly(musicCalendarGrant)
         }
@@ -240,11 +240,11 @@ class RecentPermissionDecisionsStorageImplTest {
     @Test
     fun removeOldData_removesOnlyOldData() {
         init()
-        val todayDecision = parkingLocationGrant.copy(decisionTime = System.currentTimeMillis())
+        val todayDecision = parkingLocationGrant.copy(eventTime = System.currentTimeMillis())
         val sixDaysAgoDecision = podcastMicrophoneGrant.copy(
-            decisionTime = System.currentTimeMillis() - TimeUnit.DAYS.toMillis(6))
+            eventTime = System.currentTimeMillis() - TimeUnit.DAYS.toMillis(6))
         val eightDaysAgoDecision = parkingLocationGrant.copy(
-            decisionTime = System.currentTimeMillis() - TimeUnit.DAYS.toMillis(8))
+            eventTime = System.currentTimeMillis() - TimeUnit.DAYS.toMillis(8))
         runBlocking {
             storage.storePermissionDecision(eightDaysAgoDecision)
             storage.storePermissionDecision(sixDaysAgoDecision)
@@ -278,7 +278,7 @@ class RecentPermissionDecisionsStorageImplTest {
 
             assertThat(storage.loadPermissionDecisions()).containsExactly(
                 musicCalendarGrant.copy(
-                    decisionTime = musicCalendarGrant.decisionTime + TimeUnit.DAYS.toMillis(1)
+                    eventTime = musicCalendarGrant.eventTime + TimeUnit.DAYS.toMillis(1)
                 )
             )
         }
@@ -293,7 +293,7 @@ class RecentPermissionDecisionsStorageImplTest {
 
             assertThat(storage.loadPermissionDecisions()).containsExactly(
                 musicCalendarGrant.copy(
-                    decisionTime = musicCalendarGrant.decisionTime - TimeUnit.DAYS.toMillis(1)
+                    eventTime = musicCalendarGrant.eventTime - TimeUnit.DAYS.toMillis(1)
                 )
             )
         }
