@@ -33,6 +33,7 @@ import android.annotation.SdkConstant;
 import android.annotation.SystemApi;
 import android.annotation.SystemService;
 import android.content.Context;
+import android.os.Binder;
 import android.os.RemoteException;
 import android.safetycenter.config.SafetyCenterConfig;
 import android.util.ArrayMap;
@@ -295,7 +296,7 @@ public final class SafetyCenterManager {
      * expected them to perform an action or provide data, but they were unable to do so.
      *
      * @param safetySourceId the id of the safety source that provided the issue
-     * @param error the error that occurred
+     * @param error          the error that occurred
      */
     @RequiresPermission(SEND_SAFETY_CENTER_UPDATE)
     public void reportSafetySourceError(
@@ -413,7 +414,7 @@ public final class SafetyCenterManager {
     /**
      * Executes the specified action on the specified issue.
      *
-     * @param safetyCenterIssueId the target issue ID returned by {@link SafetyCenterIssue#getId()}
+     * @param safetyCenterIssueId  the target issue ID returned by {@link SafetyCenterIssue#getId()}
      * @param safetyCenterActionId the target action ID returned by {@link
      *                             SafetyCenterIssue.Action#getId()}
      */
@@ -497,14 +498,24 @@ public final class SafetyCenterManager {
 
         @Override
         public void onSafetyCenterDataChanged(@NonNull SafetyCenterData safetyCenterData) {
-            mExecutor.execute(
-                    () -> mOriginalListener.onSafetyCenterDataChanged(safetyCenterData));
+            final long identity = Binder.clearCallingIdentity();
+            try {
+                mExecutor.execute(
+                        () -> mOriginalListener.onSafetyCenterDataChanged(safetyCenterData));
+            } finally {
+                Binder.restoreCallingIdentity(identity);
+            }
         }
 
         @Override
         public void onError(@NonNull SafetyCenterError safetyCenterError) {
-            mExecutor.execute(
-                    () -> mOriginalListener.onError(safetyCenterError));
+            final long identity = Binder.clearCallingIdentity();
+            try {
+                mExecutor.execute(
+                        () -> mOriginalListener.onError(safetyCenterError));
+            } finally {
+                Binder.restoreCallingIdentity(identity);
+            }
         }
     }
 }
