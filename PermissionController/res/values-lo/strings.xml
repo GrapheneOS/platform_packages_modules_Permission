@@ -264,6 +264,8 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"ໃນຂະນະກຳລັງຂັບລົດ, ທ່ານໃຫ້ການເຂົ້າເຖິງ <xliff:g id="PERMISSION_1">%2$s</xliff:g> ແລະ <xliff:g id="PERMISSION_2">%3$s</xliff:g> ໃຫ້ກັບ <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"ໃນຂະນະກຳລັງຂັບລົດ, ທ່ານໃຫ້ການອະນຸຍາດ <xliff:g id="COUNT">%1$d</xliff:g> ລາຍການໃຫ້ກັບ <xliff:g id="APP">%2$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{ໃນຂະນະກຳລັງຂັບລົດ, ທ່ານໃຫ້ສິດເຂົ້າເຖິງ <xliff:g id="APP_0">%1$s</xliff:g> ແລະ ແອັບອື່ນໆອີກ # ແອັບ}other{ໃນຂະນະກຳລັງຂັບລົດ, ທ່ານໃຫ້ສິດເຂົ້າເຖິງ <xliff:g id="APP_1">%1$s</xliff:g> ແລະ ແອັບອື່ນໆອີກ # ແອັບ}}"</string>
+    <!-- no translation found for go_to_settings (1053735612211228335) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"ບາງແອັບບໍ່ໄດ້ໃຊ້ມາສອງສາມເດືອນແລ້ວ"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"ລຶບສິດອະນຸຍາດອອກແລ້ວ"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"ລຶບສິດອະນຸຍາດອອກແລ້ວ"</string>
@@ -499,6 +501,22 @@
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"ສະແກນ"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"ປິດໄວ້"</string>
     <string name="security_settings" msgid="3808106921175271317">"ການຕັ້ງຄ່າຄວາມປອດໄພ"</string>
+    <string name="sensor_permissions_qs" msgid="4365989229426201877">"ການອະນຸຍາດເຊັນເຊີ"</string>
+    <string name="privacy_controls_qs" msgid="471793881466080745">"ການຄວບຄຸມຄວາມເປັນສ່ວນຕົວ"</string>
+    <string name="permissions_removed_qs" msgid="8957319130625294572">"ລຶບການອະນຸຍາດອອກແລ້ວ"</string>
+    <string name="camera_usage_qs" msgid="7943349178368641820">"ເບິ່ງການນຳໃຊ້ກ້ອງຖ່າຍຮູບເພີ່ມເຕີມ"</string>
+    <string name="microphone_usage_qs" msgid="2393193350541830472">"ເບິ່ງການນຳໃຊ້ໄມໂຄຣໂຟນເພີ່ມເຕີມ"</string>
+    <string name="remove_camera_qs" msgid="8209716677879809162">"ລຶບການອະນຸຍາດກ້ອງຖ່າຍຮູບອອກ"</string>
+    <string name="remove_microphone_qs" msgid="2893536836641560183">"ລຶບການອະນຸຍາດໄມໂຄຣໂຟນອອກ"</string>
+    <string name="manage_service_qs" msgid="7862555549364153805">"ຈັດການບໍລິການ"</string>
+    <string name="active_call_usage_qs" msgid="8559974395932523391">"ກຳລັງຖືກໃຊ້ໂດຍການໂທລະສັບ"</string>
+    <string name="recent_call_usage_qs" msgid="743044899599410935">"ໃຊ້ຫຼ້າສຸດໃນການໂທລະສັບ"</string>
+    <string name="active_app_usage_qs" msgid="4063912870936464727">"ກຳລັງຖືກໃຊ້ໂດຍ <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
+    <string name="recent_app_usage_qs" msgid="6650259601306212327">"ໃຊ້ຫຼ້າສຸດໂດຍ <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
+    <string name="active_app_usage_1_qs" msgid="4325136375823357052">"ກຳລັງຖືກໃຊ້ໂດຍ <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
+    <string name="recent_app_usage_1_qs" msgid="261450184773310741">"ໃຊ້ຫຼ້າສຸດໂດຍ <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
+    <string name="active_app_usage_2_qs" msgid="6107866785243565283">"ກຳລັງຖືກໃຊ້ໂດຍ <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
+    <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"ໃຊ້ຫຼ້າສຸດໂດຍ <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"ຄວາມປອດໄພ ແລະ ຄວາມເປັນສ່ວນຕົວ"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"ກວດສອບສະຖານະ"</string>
 </resources>

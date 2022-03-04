@@ -264,6 +264,8 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Ngenkathi ushayela, unikeze i-<xliff:g id="APP">%1$s</xliff:g> ukufinyelela ku-<xliff:g id="PERMISSION_1">%2$s</xliff:g> ne-<xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Ngenkathi ushayela, unikeze izimvume ezingu-<xliff:g id="COUNT">%1$d</xliff:g> ku-<xliff:g id="APP">%2$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Ngenkathi ushayela, unikeze i-<xliff:g id="APP_0">%1$s</xliff:g> namanye ama-app angu-# ukufinyelela}one{Ngenkathi ushayela, unikeze i-<xliff:g id="APP_1">%1$s</xliff:g> namanye ama-app angu-# ukufinyelela}other{Ngenkathi ushayela, unikeze i-<xliff:g id="APP_1">%1$s</xliff:g> namanye ama-app angu-# ukufinyelela}}"</string>
+    <!-- no translation found for go_to_settings (1053735612211228335) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Ezinye izinhlelo zokusebenza azisetshenziswanga ezinyangeni ezimbalwa"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Izimvume ezisusiwe"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Izimvume zisusiwe"</string>
@@ -499,6 +501,22 @@
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Skena"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Chitha"</string>
     <string name="security_settings" msgid="3808106921175271317">"Amasethingi wokuvikeleka"</string>
+    <string name="sensor_permissions_qs" msgid="4365989229426201877">"Izimvume Zenzwa"</string>
+    <string name="privacy_controls_qs" msgid="471793881466080745">"Izilawuli Zokwemfihlo"</string>
+    <string name="permissions_removed_qs" msgid="8957319130625294572">"Imvume isusiwe"</string>
+    <string name="camera_usage_qs" msgid="7943349178368641820">"Bona ukusetshenziswa okwengeziwe kwekhamera"</string>
+    <string name="microphone_usage_qs" msgid="2393193350541830472">"Bona ukusetshenziswa okwengeziwe kwemakrofoni"</string>
+    <string name="remove_camera_qs" msgid="8209716677879809162">"Susa imvume yekhamera"</string>
+    <string name="remove_microphone_qs" msgid="2893536836641560183">"Susa imvume yemakrofoni"</string>
+    <string name="manage_service_qs" msgid="7862555549364153805">"Phatha isevisi"</string>
+    <string name="active_call_usage_qs" msgid="8559974395932523391">"Bekusetshenziswa yikholi yefoni"</string>
+    <string name="recent_call_usage_qs" msgid="743044899599410935">"Kusetshenziswa kamuva kwikholi yefoni"</string>
+    <string name="active_app_usage_qs" msgid="4063912870936464727">"Kusetshenziswa yi-<xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
+    <string name="recent_app_usage_qs" msgid="6650259601306212327">"Kusetshenziswe kamuva yi-<xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
+    <string name="active_app_usage_1_qs" msgid="4325136375823357052">"Kusetshenziswa yi-<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
+    <string name="recent_app_usage_1_qs" msgid="261450184773310741">"Kusetshenziswe kamuva yi-<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
+    <string name="active_app_usage_2_qs" msgid="6107866785243565283">"Kusetshenziswa yi-<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
+    <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Kusetshenziswe kamuva yi-<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Ukuphepha Nobumfihlo"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Hlola isimo"</string>
 </resources>

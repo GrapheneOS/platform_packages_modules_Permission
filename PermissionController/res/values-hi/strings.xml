@@ -264,6 +264,8 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"आपने गाड़ी चलाते समय, <xliff:g id="APP">%1$s</xliff:g> को <xliff:g id="PERMISSION_1">%2$s</xliff:g> और <xliff:g id="PERMISSION_2">%3$s</xliff:g> का ऐक्सेस दिया था"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"आपने गाड़ी चलाते समय, <xliff:g id="APP">%2$s</xliff:g> को <xliff:g id="COUNT">%1$d</xliff:g> अनुमतियां दी थीं"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{आपने गाड़ी चलाते समय, <xliff:g id="APP_0">%1$s</xliff:g> और # अन्य ऐप्लिकेशन को ऐक्सेस दिया था}one{आपने गाड़ी चलाते समय, <xliff:g id="APP_1">%1$s</xliff:g> और # अन्य ऐप्लिकेशन को ऐक्सेस दिया था}other{आपने गाड़ी चलाते समय, <xliff:g id="APP_1">%1$s</xliff:g> और # अन्य ऐप्लिकेशन को ऐक्सेस दिया था}}"</string>
+    <!-- no translation found for go_to_settings (1053735612211228335) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"कुछ ऐप्लिकेशन का इस्तेमाल कुछ महीनों से नहीं किया गया है"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"वे ऐप्लिकेशन जिनकी अनुमतियां हटाई गई हैं"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"वे ऐप्लिकेशन जिनकी अनुमतियां हटाई गई हैं"</string>
@@ -499,6 +501,22 @@
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"स्कैन करें"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"खारिज करें"</string>
     <string name="security_settings" msgid="3808106921175271317">"सुरक्षा सेटिंग"</string>
+    <string name="sensor_permissions_qs" msgid="4365989229426201877">"सेंसर ऐक्सेस करने की अनुमति"</string>
+    <string name="privacy_controls_qs" msgid="471793881466080745">"निजता सेटिंग"</string>
+    <string name="permissions_removed_qs" msgid="8957319130625294572">"अनुमति हटाई गई"</string>
+    <string name="camera_usage_qs" msgid="7943349178368641820">"कैमरे के और इस्तेमाल देखें"</string>
+    <string name="microphone_usage_qs" msgid="2393193350541830472">"माइक्रोफ़ोन के और इस्तेमाल देखें"</string>
+    <string name="remove_camera_qs" msgid="8209716677879809162">"कैमरा ऐक्सेस करने की अनुमति हटाई गई"</string>
+    <string name="remove_microphone_qs" msgid="2893536836641560183">"माइक्रोफ़ोन ऐक्सेस करने की अनुमति हटाई गई"</string>
+    <string name="manage_service_qs" msgid="7862555549364153805">"सेवा मैनेज करें"</string>
+    <string name="active_call_usage_qs" msgid="8559974395932523391">"किसी खास फ़ोन कॉल के लिए इस्तेमाल हो रहा है"</string>
+    <string name="recent_call_usage_qs" msgid="743044899599410935">"हाल ही में, फ़ोन कॉल में इस्तेमाल किया"</string>
+    <string name="active_app_usage_qs" msgid="4063912870936464727">"<xliff:g id="APP_NAME">%1$s</xliff:g> इस्तेमाल कर रहा है"</string>
+    <string name="recent_app_usage_qs" msgid="6650259601306212327">"हाल ही में, <xliff:g id="APP_NAME">%1$s</xliff:g> ने इस्तेमाल किया"</string>
+    <string name="active_app_usage_1_qs" msgid="4325136375823357052">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>) इस्तेमाल कर रहा है"</string>
+    <string name="recent_app_usage_1_qs" msgid="261450184773310741">"हाल ही में, <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>) ने इस्तेमाल किया"</string>
+    <string name="active_app_usage_2_qs" msgid="6107866785243565283">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) इस्तेमाल कर रहा है"</string>
+    <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"हाल ही में, <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) ने इस्तेमाल किया"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"सुरक्षा और निजता"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"स्थिति देखें"</string>
 </resources>

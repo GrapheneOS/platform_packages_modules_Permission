@@ -264,6 +264,8 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"ධාවනය අතරතුර, ඔබ <xliff:g id="APP">%1$s</xliff:g> ප්‍රවේශයට <xliff:g id="PERMISSION_1">%2$s</xliff:g> සහ <xliff:g id="PERMISSION_2">%3$s</xliff:g> දුන්නේය"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"ධාවනය අතරතුර, ඔබ <xliff:g id="APP">%2$s</xliff:g> හට අවසර <xliff:g id="COUNT">%1$d</xliff:g>ක් දුන්නේය"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{ධාවනය අතරතුර, ඔබ <xliff:g id="APP_0">%1$s</xliff:g> සහ තවත් යෙදුම් #කට ප්‍රවේශය දුන්නේය}one{ධාවනය අතරතුර, ඔබ <xliff:g id="APP_1">%1$s</xliff:g> සහ තවත් යෙදුම් #කට ප්‍රවේශය දුන්නේය}other{ධාවනය අතරතුර, ඔබ <xliff:g id="APP_1">%1$s</xliff:g> සහ තවත් යෙදුම් #කට ප්‍රවේශය දුන්නේය}}"</string>
+    <!-- no translation found for go_to_settings (1053735612211228335) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"සමහර යෙදුම් මාස කිහිපයක් තුළ භාවිත කර නැත"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"ඉවත් කළ අවසර"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"අවසර ඉවත් කළ"</string>
@@ -499,6 +501,22 @@
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"ස්කෑන් කරන්න"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"ඉවත ලන්න"</string>
     <string name="security_settings" msgid="3808106921175271317">"ආරක්ෂක සැකසීම්"</string>
+    <string name="sensor_permissions_qs" msgid="4365989229426201877">"සංවේදක අවසර"</string>
+    <string name="privacy_controls_qs" msgid="471793881466080745">"පෞද්ගලිකත්ව පාලන"</string>
+    <string name="permissions_removed_qs" msgid="8957319130625294572">"අවසරය ඉවත් කරන ලදි"</string>
+    <string name="camera_usage_qs" msgid="7943349178368641820">"තවත් කැමරා භාවිතය බලන්න"</string>
+    <string name="microphone_usage_qs" msgid="2393193350541830472">"තවත් මයික්‍රෆෝන භාවිතය බලන්න"</string>
+    <string name="remove_camera_qs" msgid="8209716677879809162">"කැමරා අවසරය ඉවත් කරන්න"</string>
+    <string name="remove_microphone_qs" msgid="2893536836641560183">"මයික්‍රෆෝන අවසරය ඉවත් කරන්න"</string>
+    <string name="manage_service_qs" msgid="7862555549364153805">"සේවය කළමනාකරණය කරන්න"</string>
+    <string name="active_call_usage_qs" msgid="8559974395932523391">"දුරකථන ඇමතුම මගින් භාවිත කරමින් ඇත"</string>
+    <string name="recent_call_usage_qs" msgid="743044899599410935">"දුරකථන ඇමතුම තුළ මෑතකදී භාවිත කරන ලදී"</string>
+    <string name="active_app_usage_qs" msgid="4063912870936464727">"<xliff:g id="APP_NAME">%1$s</xliff:g> මගින් භාවිත කරමින් ඇත"</string>
+    <string name="recent_app_usage_qs" msgid="6650259601306212327">"මෑතකදී <xliff:g id="APP_NAME">%1$s</xliff:g> මගින් භාවිත කරන ලදි"</string>
+    <string name="active_app_usage_1_qs" msgid="4325136375823357052">"<xliff:g id="APP_NAME">%1$s</xliff:g> මගින් භාවිත කරමින් ඇත (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
+    <string name="recent_app_usage_1_qs" msgid="261450184773310741">"මෑතකදී <xliff:g id="APP_NAME">%1$s</xliff:g> මගින් භාවිත කරන ලදි (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
+    <string name="active_app_usage_2_qs" msgid="6107866785243565283">"<xliff:g id="APP_NAME">%1$s</xliff:g> මගින් භාවිත කරමින් ඇත (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
+    <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"මෑතකදී <xliff:g id="APP_NAME">%1$s</xliff:g> මගින් භාවිත කරන ලදි (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"ආරක්ෂාව සහ පෞද්ගලිකත්වය"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"තත්ත්වය පරික්ෂා කරන්න"</string>
 </resources>
