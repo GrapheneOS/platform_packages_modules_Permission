@@ -34,6 +34,7 @@ import android.annotation.SystemApi;
 import android.annotation.SystemService;
 import android.content.Context;
 import android.os.RemoteException;
+import android.safetycenter.config.SafetyCenterConfig;
 import android.util.ArrayMap;
 
 import androidx.annotation.RequiresApi;
@@ -70,7 +71,7 @@ public final class SafetyCenterManager {
      *
      * <p>On receiving this broadcast, safety sources should determine their safety state according
      * to the parameters specified in the intent extras (see below) and send Safety Center data
-     * about their safety state using {@link #sendSafetyCenterUpdate(SafetySourceData)}.
+     * about their safety state using {@link #setSafetySourceData}.
      *
      * <p class="note">This is a protected intent that can only be sent by the system.
      *
@@ -113,6 +114,14 @@ public final class SafetyCenterManager {
      */
     public static final String EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE =
             "android.safetycenter.extra.REFRESH_SAFETY_SOURCES_REQUEST_TYPE";
+
+    /**
+     * Used as an {@code String} extra field in {@link #ACTION_REFRESH_SAFETY_SOURCES} intents to
+     * specify a string identifier for the broadcast.
+     *
+     */
+    public static final String EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID =
+            "android.safetycenter.extra.REFRESH_SAFETY_SOURCES_BROADCAST_ID";
 
     /**
      * All possible types of data refresh requests in broadcasts with intent action
@@ -210,20 +219,47 @@ public final class SafetyCenterManager {
     }
 
     /**
-     * Sends a {@link SafetySourceData} update to the safety center.
+     * Returns whether the SafetyCenter page is enabled.
+     */
+    @RequiresPermission(anyOf = {
+            READ_SAFETY_CENTER_STATUS,
+            SEND_SAFETY_CENTER_UPDATE
+    })
+    public boolean isSafetyCenterEnabled() {
+        try {
+            return mService.isSafetyCenterEnabled();
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
+    /**
+     * Set the latest {@link SafetySourceData} for a safety source, to be displayed in
+     * SafetyCenter UI.
      *
-     * <p>Each {@link SafetySourceData#getId()} uniquely identifies the {@link SafetySourceData} for
-     * the current package and user.
+     * <p>Each {@code safetySourceId} uniquely identifies the {@link SafetySourceData} for the
+     * calling user.
      *
-     * <p>This call will override any existing {@link SafetySourceData} already present for the
-     * given {@link SafetySourceData#getId()} for the current package and user.
+     * <p>This call will rewrite any existing {@link SafetySourceData} already set for the given
+     * {@code safetySourceId} for the calling user.
+     *
+     * @param safetySourceId the unique identifier for a safety source in the calling user
+     * @param safetySourceData the latest safety data for the safety source in the calling user. If
+     *                        a safety source does not have any data to set, it can set its
+     *                        {@link SafetySourceData} to {@code null}, in which case Safety Center
+     *                        will fall back to any placeholder data specified in the safety source
+     *                        xml configuration.
+     * @param safetyEvent the event that triggered the safety source to set safety data
      */
     @RequiresPermission(SEND_SAFETY_CENTER_UPDATE)
-    public void sendSafetyCenterUpdate(@NonNull SafetySourceData safetySourceData) {
-        requireNonNull(safetySourceData, "safetySourceData cannot be null");
+    public void setSafetySourceData(@NonNull String safetySourceId,
+            @Nullable SafetySourceData safetySourceData,
+            @NonNull SafetyEvent safetyEvent) {
         try {
-            mService.sendSafetyCenterUpdate(
+            mService.setSafetySourceData(
+                    safetySourceId,
                     safetySourceData,
+                    safetyEvent,
                     mContext.getPackageName(),
                     mContext.getUser().getIdentifier());
         } catch (RemoteException e) {
@@ -232,19 +268,18 @@ public final class SafetyCenterManager {
     }
 
     /**
-     * Returns the last {@link SafetySourceData} update received through {@link
-     * #sendSafetyCenterUpdate(SafetySourceData)} for the given
-     * {@code safetySourceId}, package and user.
+     * Returns the latest {@link SafetySourceData} set through {@link #setSafetySourceData}
+     * for the given {@code safetySourceId} and calling user.
      *
-     * <p>Returns {@code null} if there never was any update for the given {@code safetySourceId},
-     * package and user.
+     * <p>Returns {@code null} if there never was any data sent for the given {@code safetySourceId}
+     * and user.
      */
     @RequiresPermission(SEND_SAFETY_CENTER_UPDATE)
     @Nullable
-    public SafetySourceData getLastSafetyCenterUpdate(@NonNull String safetySourceId) {
+    public SafetySourceData getSafetySourceData(@NonNull String safetySourceId) {
         requireNonNull(safetySourceId, "safetySourceId cannot be null");
         try {
-            return mService.getLastSafetyCenterUpdate(
+            return mService.getSafetySourceData(
                     safetySourceId,
                     mContext.getPackageName(),
                     mContext.getUser().getIdentifier());
@@ -277,22 +312,7 @@ public final class SafetyCenterManager {
     }
 
     /**
-     * Returns whether the SafetyCenter page is enabled.
-     */
-    @RequiresPermission(anyOf = {
-            READ_SAFETY_CENTER_STATUS,
-            SEND_SAFETY_CENTER_UPDATE
-    })
-    public boolean isSafetyCenterEnabled() {
-        try {
-            return mService.isSafetyCenterEnabled();
-        } catch (RemoteException e) {
-            throw e.rethrowFromSystemServer();
-        }
-    }
-
-    /**
-     * Requests safety sources to send a {@link SafetySourceData} update to Safety Center.
+     * Requests safety sources to send their latest {@link SafetySourceData} to Safety Center.
      *
      * <p>This API sends a broadcast to all safety sources with action
      * {@link #ACTION_REFRESH_SAFETY_SOURCES}.
@@ -391,19 +411,6 @@ public final class SafetyCenterManager {
     }
 
     /**
-     * Clears all {@link SafetySourceData} updates sent to the safety center using {@link
-     * #sendSafetyCenterUpdate(SafetySourceData)}, for all packages and users.
-     */
-    @RequiresPermission(MANAGE_SAFETY_CENTER)
-    public void clearSafetyCenterData() {
-        try {
-            mService.clearSafetyCenterData();
-        } catch (RemoteException e) {
-            throw e.rethrowFromSystemServer();
-        }
-    }
-
-    /**
      * Executes the specified action on the specified issue.
      *
      * @param safetyCenterIssueId the target issue ID returned by {@link SafetyCenterIssue#getId()}
@@ -425,35 +432,50 @@ public final class SafetyCenterManager {
     }
 
     /**
-     * Add a safety source dynamically to be used in addition to the sources in the Safety Center
-     * xml configuration.
+     * Clears all {@link SafetySourceData} set by safety sources using {@link #setSafetySourceData}.
      *
      * <p>Note: This API serves to facilitate CTS testing and should not be used for other purposes.
      */
-    // TODO(b/217944317): Modify the parameters to be a SafetySource or SafetyCenterConfig once
-    //  these classes are Parcelable and part of the API surface.
     @RequiresPermission(MANAGE_SAFETY_CENTER)
-    public void addAdditionalSafetySource(@NonNull String sourceId, @NonNull String packageName,
-            @NonNull String broadcastReceiverName) {
+    public void clearAllSafetySourceData() {
         try {
-            mService.addAdditionalSafetySource(sourceId, packageName, broadcastReceiverName);
+            mService.clearAllSafetySourceData();
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }
     }
 
     /**
-     * Clears additional safety sources added dynamically to be used in addition to the sources in
-     * the Safety Center xml configuration.
+     * Sets an override of the {@link SafetyCenterConfig} set through XML.
+     *
+     * When set, the override {@link SafetyCenterConfig} will be used instead of the
+     * {@link SafetyCenterConfig} parsed from the XML file to read configured safety sources.
+     *
+     * <p>Note: This API serves to facilitate CTS testing and should not be used to configure safety
+     * sources dynamically for production. Once used for testing, the override should be cleared.
+     *
+     * @see #clearSafetyCenterConfigOverride()
+     */
+    @RequiresPermission(MANAGE_SAFETY_CENTER)
+    public void setSafetyCenterConfigOverride(@NonNull SafetyCenterConfig safetyCenterConfig) {
+        try {
+            mService.setSafetyCenterConfigOverride(safetyCenterConfig);
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
+    /**
+     * Clears the override of the {@link SafetyCenterConfig} set through XML.
      *
      * <p>Note: This API serves to facilitate CTS testing and should not be used for other purposes.
+     *
+     * @see #setSafetyCenterConfigOverride(SafetyCenterConfig)
      */
-    // TODO(b/217944317): Modify the parameters to be a SafetySource or SafetyCenterConfig once
-    //  these classes are Parcelable and part of the API surface.
     @RequiresPermission(MANAGE_SAFETY_CENTER)
-    public void clearAdditionalSafetySources() {
+    public void clearSafetyCenterConfigOverride() {
         try {
-            mService.clearAdditionalSafetySources();
+            mService.clearSafetyCenterConfigOverride();
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }
