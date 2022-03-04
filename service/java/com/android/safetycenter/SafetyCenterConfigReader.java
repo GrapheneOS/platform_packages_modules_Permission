@@ -25,7 +25,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
-import android.os.UserHandle;
 import android.safetycenter.config.ParseException;
 import android.safetycenter.config.SafetyCenterConfig;
 import android.safetycenter.config.SafetySource;
@@ -39,6 +38,7 @@ import androidx.annotation.RequiresApi;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -267,7 +267,7 @@ final class SafetyCenterConfigReader {
                 ComponentName componentName = broadcastReceivers.keyAt(i);
                 List<String> sourceIds = broadcastReceivers.valueAt(i);
                 // TODO(b/215144069): Handle work profile broadcasts.
-                broadcasts.add(new Broadcast(componentName, sourceIds, UserHandle.CURRENT));
+                broadcasts.add(new Broadcast(componentName, sourceIds, new ArrayList<>()));
             }
 
             return broadcasts;
@@ -312,8 +312,8 @@ final class SafetyCenterConfigReader {
         public boolean equals(Object o) {
             if (this == o) return true;
             if (!(o instanceof SourceId)) return false;
-            SourceId sourceId = (SourceId) o;
-            return mId.equals(sourceId.mId) && mPackageName.equals(sourceId.mPackageName);
+            SourceId that = (SourceId) o;
+            return mId.equals(that.mId) && mPackageName.equals(that.mPackageName);
         }
 
         @Override
@@ -341,25 +341,28 @@ final class SafetyCenterConfigReader {
         private final ComponentName mComponentName;
 
         @NonNull
-        private final List<String> mSourceIds;
+        private final List<String> mSourceIdsForProfileOwner;
 
-        private final UserHandle mUserHandle;
+        @NonNull
+        private final List<String> mSourceIdsForWorkProfiles;
 
 
         private Broadcast(
                 @NonNull ComponentName componentName,
-                @NonNull List<String> sourceIds,
-                @NonNull UserHandle userHandle) {
+                @NonNull List<String> sourceIdsForProfileOwner,
+                @NonNull List<String> sourceIdsForWorkProfiles) {
             mComponentName = componentName;
-            mSourceIds = sourceIds;
-            mUserHandle = userHandle;
+            mSourceIdsForProfileOwner = sourceIdsForProfileOwner;
+            mSourceIdsForWorkProfiles = sourceIdsForWorkProfiles;
         }
 
         /** Creates a {@link Broadcast} for the given {@link ComponentName}. */
         @NonNull
         static Broadcast from(@NonNull ComponentName componentName) {
             // TODO(b/215144069): Handle work profile broadcasts.
-            return new Broadcast(componentName, new ArrayList<>(), UserHandle.CURRENT);
+            return new Broadcast(componentName,
+                    Collections.singletonList("Remove this once test config is available"),
+                    new ArrayList<>());
         }
 
         /** Returns the {@link ComponentName} to dispatch the broadcast to. */
@@ -367,28 +370,38 @@ final class SafetyCenterConfigReader {
             return mComponentName;
         }
 
-        /** Returns the safety source ids associated with this broadcast. */
-        public List<String> getSourceIds() {
-            return mSourceIds;
+        /**
+         * Returns the safety source ids associated with this broadcast in the profile owner.
+         *
+         * <p>If this list is empty, there are no sources to dispatch to in the profile owner.
+         */
+        public List<String> getSourceIdsForProfileOwner() {
+            return mSourceIdsForProfileOwner;
         }
 
-        /** Returns the {@link UserHandle} on which this broadcast should be dispatched. */
-        public UserHandle getUserHandle() {
-            return mUserHandle;
+        /**
+         * Returns the safety source ids associated with this broadcast in the work profile(s).
+         *
+         * <p>If this list is empty, there are no sources to dispatch to in the work profile(s).
+         */
+        public List<String> getSourceIdsForWorkProfiles() {
+            return mSourceIdsForWorkProfiles;
         }
 
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;
             if (!(o instanceof Broadcast)) return false;
-            Broadcast broadcast = (Broadcast) o;
-            return mComponentName.equals(broadcast.mComponentName) && mSourceIds.equals(
-                    broadcast.mSourceIds) && mUserHandle.equals(broadcast.mUserHandle);
+            Broadcast that = (Broadcast) o;
+            return mComponentName.equals(that.mComponentName) && mSourceIdsForProfileOwner.equals(
+                    that.mSourceIdsForProfileOwner) && mSourceIdsForWorkProfiles.equals(
+                    that.mSourceIdsForWorkProfiles);
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(mComponentName, mSourceIds, mUserHandle);
+            return Objects.hash(mComponentName, mSourceIdsForProfileOwner,
+                    mSourceIdsForWorkProfiles);
         }
 
         @Override
@@ -396,10 +409,10 @@ final class SafetyCenterConfigReader {
             return "Broadcast{"
                     + "mComponentName="
                     + mComponentName
-                    + ", mSourceIds="
-                    + mSourceIds
-                    + ", mUserHandle="
-                    + mUserHandle
+                    + ", mSourceIdsForProfileOwner="
+                    + mSourceIdsForProfileOwner
+                    + ", mSourceIdsForWorkProfiles="
+                    + mSourceIdsForWorkProfiles
                     + '}';
         }
     }
