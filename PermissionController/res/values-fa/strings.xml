@@ -191,7 +191,7 @@
     <string name="sort_by_app" msgid="4055799843051138087">"به‌ترتیب استفاده برنامه"</string>
     <string name="sort_by_time" msgid="5435045320002150456">"به‌ترتیب زمان"</string>
     <string name="item_separator" msgid="4030255389809224513">"، "</string>
-    <string name="permission_usage_refresh" msgid="2264056346561305420">"بازخوانی"</string>
+    <string name="permission_usage_refresh" msgid="2264056346561305420">"بازآوری کردن"</string>
     <plurals name="permission_usage_permission_filter_subtitle" formatted="false" msgid="2452104463317798268">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> برنامه</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> برنامه</item>
