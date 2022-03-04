@@ -103,9 +103,6 @@
         <service android:name="com.android.permissioncontroller.hibernation.HibernationJobService"
                  android:permission="android.permission.BIND_JOB_SERVICE" />
 
-        <service android:name="com.android.permissioncontroller.permission.service.AutoRevokeReGrantService"
-                 android:permission="android.permission.BIND_JOB_SERVICE" />
-
         <service android:name="com.android.permissioncontroller.permission.service.DecisionCleanupJobService"
                  android:permission="android.permission.BIND_JOB_SERVICE" />
 
