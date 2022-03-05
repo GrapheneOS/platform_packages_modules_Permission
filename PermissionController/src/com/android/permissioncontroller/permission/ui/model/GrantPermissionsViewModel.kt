@@ -19,6 +19,7 @@ package com.android.permissioncontroller.permission.ui.model
 import android.Manifest
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
+import android.Manifest.permission.POST_NOTIFICATIONS
 import android.Manifest.permission_group.LOCATION
 import android.app.Activity
 import android.app.Application
@@ -38,6 +39,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.DeviceUtils
+import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.PermissionControllerStatsLog
 import com.android.permissioncontroller.PermissionControllerStatsLog.GRANT_PERMISSIONS_ACTIVITY_BUTTON_ACTIONS
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_GRANT_REQUEST_RESULT_REPORTED__RESULT__AUTO_DENIED
@@ -1262,6 +1264,27 @@ class GrantPermissionsViewModel(
             CONTINUE_MESSAGE(6),
             STORAGE_SUPERGROUP_MESSAGE_Q_TO_S(7),
             STORAGE_SUPERGROUP_MESSAGE_PRE_Q(8);
+        }
+
+        fun filterNotificationPermissionIfNeededSync(
+            packageName: String,
+            permissions: Array<String>?
+        ): Array<String>? {
+            if (permissions == null) {
+                return null
+            }
+
+            try {
+                val targetSdk = PermissionControllerApplication.get().packageManager
+                        .getPackageInfo(packageName, 0).applicationInfo.targetSdkVersion
+                if (targetSdk > Build.VERSION_CODES.S_V2) {
+                    return permissions
+                }
+            } catch (e: PackageManager.NameNotFoundException) {
+                return permissions
+            }
+
+            return permissions.toList().filter { it != POST_NOTIFICATIONS }.toTypedArray()
         }
     }
 }
