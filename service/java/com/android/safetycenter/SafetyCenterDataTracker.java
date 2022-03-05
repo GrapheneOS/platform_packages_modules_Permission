@@ -53,7 +53,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * A class that keeps track of all the {@link SafetySourceData} updates received by safety center,
+ * A class that keeps track of all the {@link SafetySourceData} set by safety sources,
  * and aggregates them into a {@link SafetyCenterData} object to be used by permission controller.
  *
  * <p>This class isn't thread safe. Thread safety must be handled by the caller.
@@ -82,23 +82,24 @@ final class SafetyCenterDataTracker {
     }
 
     /**
-     * Adds a {@link SafetySourceData} update for the given {@code packageName} and {@code userId},
-     * and returns the updated {@link SafetyCenterData} of the {@code userId}.
+     * Sets the latest {@link SafetySourceData} for the given {@code safetySourceId} and
+     * {@code userId}, and returns the updated {@link SafetyCenterData} of the {@code userId}.
      *
      * <p>Returns {@code null} if there was no update to the underlying {@link SafetyCenterData}, or
      * if the {@link SafetyCenterConfig} is not available.
      */
     @Nullable
-    SafetyCenterData addSafetySourceData(
+    SafetyCenterData setSafetySourceData(
+            @NonNull String safetySourceId,
             @NonNull SafetySourceData safetySourceData,
             @NonNull String packageName,
             @UserIdInt int userId) {
-        if (!configContains(safetySourceData.getId(), packageName)) {
+        if (!configContains(safetySourceId, packageName)) {
             // TODO(b/218801292): Should this be hard error for the caller?
             return null;
         }
 
-        Key key = Key.of(safetySourceData.getId(), packageName, userId);
+        Key key = Key.of(safetySourceId, packageName, userId);
         SafetySourceData existingSafetySourceData = mSafetySourceDataForKey.get(key);
         if (safetySourceData.equals(existingSafetySourceData)) {
             return null;
@@ -109,10 +110,10 @@ final class SafetyCenterDataTracker {
     }
 
     /**
-     * Returns the latest {@link SafetySourceData} update for the given {@code safetySourceId},
-     * {@code packageName} and {@code userId}.
+     * Returns the latest {@link SafetySourceData} for the given {@code safetySourceId} and
+     * {@code userId}.
      *
-     * <p>Returns {@code null} if there was no update.
+     * <p>Returns {@code null} if there was no data set.
      */
     @Nullable
     SafetySourceData getSafetySourceData(
@@ -127,14 +128,14 @@ final class SafetyCenterDataTracker {
         return mSafetySourceDataForKey.get(Key.of(safetySourceId, packageName, userId));
     }
 
-    /** Clears all the {@link SafetySourceData} updates received so far, for all users. */
+    /** Clears all the {@link SafetySourceData} set received so far, for all users. */
     void clear() {
         mSafetySourceDataForKey.clear();
     }
 
     /**
      * Returns the current {@link SafetyCenterData} for the given {@code userId}, aggregated from
-     * all the {@link SafetySourceData} updates received so far.
+     * all the {@link SafetySourceData} set so far.
      *
      * <p>Returns an arbitrary default value if no data has been received for the user so far, or if
      * the {@link SafetyCenterConfig} is not available.
@@ -616,7 +617,7 @@ final class SafetyCenterDataTracker {
     }
 
     /**
-     * A key for {@link SafetySourceData} updates; based on the {@code safetySourceId}, {@code
+     * A key for {@link SafetySourceData}; based on the {@code safetySourceId}, {@code
      * packageName} and {@code userId}.
      */
     // TODO(b/219697341): Look into using AutoValue for this data class.
