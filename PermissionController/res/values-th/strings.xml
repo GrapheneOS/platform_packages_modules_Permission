@@ -264,6 +264,8 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"คุณอนุญาตให้ <xliff:g id="APP">%1$s</xliff:g> เข้าถึง<xliff:g id="PERMISSION_1">%2$s</xliff:g>และ<xliff:g id="PERMISSION_2">%3$s</xliff:g>ในขณะขับรถ"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"คุณให้สิทธิ์ <xliff:g id="COUNT">%1$d</xliff:g> รายการแก่ <xliff:g id="APP">%2$s</xliff:g> ในขณะขับรถ"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{คุณอนุญาตให้ <xliff:g id="APP_0">%1$s</xliff:g> และแอปอื่นอีก # แอปเข้าถึงได้ในขณะขับรถ}other{คุณอนุญาตให้ <xliff:g id="APP_1">%1$s</xliff:g> และแอปอื่นอีก # แอปเข้าถึงได้ในขณะขับรถ}}"</string>
+    <!-- no translation found for go_to_settings (1053735612211228335) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"บางแอปไม่มีการใช้งานมา 2-3 เดือนแล้ว"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"นำสิทธิ์ออกแล้ว"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"นำสิทธิ์ออกแล้ว"</string>
@@ -499,6 +501,22 @@
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"สแกน"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"ปิด"</string>
     <string name="security_settings" msgid="3808106921175271317">"การตั้งค่าการรักษาความปลอดภัย"</string>
+    <string name="sensor_permissions_qs" msgid="4365989229426201877">"สิทธิ์ใช้เซ็นเซอร์"</string>
+    <string name="privacy_controls_qs" msgid="471793881466080745">"การควบคุมความเป็นส่วนตัว"</string>
+    <string name="permissions_removed_qs" msgid="8957319130625294572">"นำสิทธิ์ออกแล้ว"</string>
+    <string name="camera_usage_qs" msgid="7943349178368641820">"ดูการใช้งานกล้องเพิ่มเติม"</string>
+    <string name="microphone_usage_qs" msgid="2393193350541830472">"ดูการใช้งานไมโครโฟนเพิ่มเติม"</string>
+    <string name="remove_camera_qs" msgid="8209716677879809162">"นำสิทธิ์เข้าถึงกล้องออก"</string>
+    <string name="remove_microphone_qs" msgid="2893536836641560183">"นำสิทธิ์เข้าถึงไมโครโฟนออก"</string>
+    <string name="manage_service_qs" msgid="7862555549364153805">"จัดการบริการ"</string>
+    <string name="active_call_usage_qs" msgid="8559974395932523391">"ใช้อยู่โดยการโทร"</string>
+    <string name="recent_call_usage_qs" msgid="743044899599410935">"ใช้ล่าสุดโดยการโทร"</string>
+    <string name="active_app_usage_qs" msgid="4063912870936464727">"ใช้อยู่โดย <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
+    <string name="recent_app_usage_qs" msgid="6650259601306212327">"ใช้ล่าสุดโดย <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
+    <string name="active_app_usage_1_qs" msgid="4325136375823357052">"ใช้อยู่โดย <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
+    <string name="recent_app_usage_1_qs" msgid="261450184773310741">"ใช้ล่าสุดโดย <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
+    <string name="active_app_usage_2_qs" msgid="6107866785243565283">"ใช้อยู่โดย <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
+    <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"ใช้ล่าสุดโดย <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"ความปลอดภัยและความเป็นส่วนตัว"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"ตรวจสอบสถานะ"</string>
 </resources>

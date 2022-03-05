@@ -34,6 +34,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Binder;
+import android.os.UserHandle;
 import android.safetycenter.SafetyCenterManager.RefreshReason;
 import android.safetycenter.SafetyCenterManager.RefreshRequestType;
 import android.util.Log;
@@ -100,7 +101,9 @@ final class SafetyCenterRefreshManager {
      * Triggers a refresh of safety sources by sending them broadcasts with action
      * {@link android.safetycenter.SafetyCenterManager#ACTION_REFRESH_SAFETY_SOURCES}.
      */
-    void refreshSafetySources(@RefreshReason int refreshReason) {
+    void refreshSafetySources(
+            @RefreshReason int refreshReason,
+            @NonNull UserProfiles userProfiles) {
         SafetyCenterConfigReader.Config config = mSafetyCenterConfigReader.getConfig();
         if (config == null) {
             Log.w(TAG, "SafetyCenterConfigReader.Config unavailable, ignoring refresh");
@@ -116,12 +119,13 @@ final class SafetyCenterRefreshManager {
             broadcasts.add(Broadcast.from(componentName));
         }
 
-        sendRefreshBroadcasts(broadcasts, toRefreshRequestType(refreshReason));
+        sendRefreshBroadcasts(broadcasts, toRefreshRequestType(refreshReason), userProfiles);
     }
 
     private void sendRefreshBroadcasts(
             @NonNull List<Broadcast> broadcasts,
-            @RefreshRequestType int requestType) {
+            @RefreshRequestType int requestType,
+            @NonNull UserProfiles userProfiles) {
         BroadcastOptions broadcastOptions = BroadcastOptions.makeBasic();
         // The following operation requires START_FOREGROUND_SERVICES_FROM_BACKGROUND
         // permission.
@@ -137,29 +141,59 @@ final class SafetyCenterRefreshManager {
         for (int i = 0; i < broadcasts.size(); i++) {
             Broadcast broadcast = broadcasts.get(i);
 
-            sendRefreshBroadcast(broadcast, broadcastOptions, requestType);
+            sendRefreshBroadcast(broadcast, broadcastOptions, requestType, userProfiles);
         }
     }
 
     private void sendRefreshBroadcast(
             @NonNull Broadcast broadcast,
             @NonNull BroadcastOptions broadcastOptions,
-            @RefreshRequestType int requestType) {
-        // TODO(b/220826153): Add source ids to intent.
-        Intent broadcastIntent = new Intent(ACTION_REFRESH_SAFETY_SOURCES)
-                .putExtra(EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE, requestType)
-                .setFlags(FLAG_RECEIVER_FOREGROUND)
-                .setComponent(broadcast.getComponentName());
+            @RefreshRequestType int requestType,
+            @NonNull UserProfiles userProfiles) {
+        if (!broadcast.getSourceIdsForProfileOwner().isEmpty()) {
+            // TODO(b/220826153): Add source ids to intent.
+            Intent broadcastIntent = createBaseIntent(requestType, broadcast);
+
+            sendRefreshBroadcast(broadcastIntent, broadcastOptions,
+                    UserHandle.of(userProfiles.getProfileOwnerUserId()));
+        }
+        if (!broadcast.getSourceIdsForWorkProfiles().isEmpty()) {
+            // TODO(b/220826153): Add source ids to intent.
+            Intent broadcastIntent = createBaseIntent(requestType, broadcast);
+
+            int[] workProfilesUserIds = userProfiles.getWorkProfilesUserIds();
+            for (int i = 0; i < workProfilesUserIds.length; i++) {
+                UserHandle userHandle = UserHandle.of(workProfilesUserIds[i]);
+
+                sendRefreshBroadcast(broadcastIntent, broadcastOptions, userHandle);
+            }
+        }
+    }
+
+    private void sendRefreshBroadcast(
+            @NonNull Intent broadcastIntent,
+            @NonNull BroadcastOptions broadcastOptions,
+            @NonNull UserHandle userHandle) {
         // The following operation requires INTERACT_ACROSS_USERS permission.
         final long callingId = Binder.clearCallingIdentity();
         try {
             mContext.sendBroadcastAsUser(broadcastIntent,
-                    broadcast.getUserHandle(),
+                    userHandle,
                     SEND_SAFETY_CENTER_UPDATE,
                     broadcastOptions.toBundle());
         } finally {
             Binder.restoreCallingIdentity(callingId);
         }
+    }
+
+    @NonNull
+    private static Intent createBaseIntent(
+            @RefreshRequestType int requestType,
+            @NonNull Broadcast broadcast) {
+        return new Intent(ACTION_REFRESH_SAFETY_SOURCES)
+                .putExtra(EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE, requestType)
+                .setFlags(FLAG_RECEIVER_FOREGROUND)
+                .setComponent(broadcast.getComponentName());
     }
 
     @RefreshRequestType

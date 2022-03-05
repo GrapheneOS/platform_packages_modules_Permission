@@ -18,10 +18,10 @@ package com.android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
+import static java.util.Collections.unmodifiableList;
+
 import android.annotation.NonNull;
-import android.annotation.Nullable;
 import android.annotation.UserIdInt;
-import android.os.Binder;
 import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 import android.safetycenter.IOnSafetyCenterDataChangedListener;
@@ -30,6 +30,9 @@ import android.util.Log;
 import android.util.SparseArray;
 
 import androidx.annotation.RequiresApi;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A class that keeps track of all the registered {@link IOnSafetyCenterDataChangedListener}
@@ -56,25 +59,30 @@ final class SafetyCenterListeners {
     static void deliverUpdate(
             @NonNull IOnSafetyCenterDataChangedListener listener,
             @NonNull SafetyCenterData safetyCenterData) {
-        final long identity = Binder.clearCallingIdentity();
         try {
             listener.onSafetyCenterDataChanged(safetyCenterData);
         } catch (RemoteException e) {
             Log.e(TAG, "Error delivering SafetyCenterData update to listener", e);
-        } finally {
-            Binder.restoreCallingIdentity(identity);
         }
     }
 
     /**
-     * Delivers a {@link SafetyCenterData} update to a {@link RemoteCallbackList} of {@link
+     * Delivers a {@link SafetyCenterData} update to all the {@link RemoteCallbackList} of {@link
      * IOnSafetyCenterDataChangedListener}.
      *
-     * <p>Registering or unregistering {@link IOnSafetyCenterDataChangedListener} on the underlying
-     * {@link RemoteCallbackList} on another thread while an update is happening is safe as this is
-     * handled by the {@link RemoteCallbackList} already (as well as listeners death).
+     * <p>Registering or unregistering {@link IOnSafetyCenterDataChangedListener} on any of the
+     * underlying {@link RemoteCallbackList} on another thread while an update is happening is safe
+     * as this is handled by the {@link RemoteCallbackList} already (as well as listeners death).
      */
     static void deliverUpdate(
+            @NonNull List<RemoteCallbackList<IOnSafetyCenterDataChangedListener>> listeners,
+            @NonNull SafetyCenterData safetyCenterData) {
+        for (int i = 0; i < listeners.size(); i++) {
+            deliverUpdate(listeners.get(i), safetyCenterData);
+        }
+    }
+
+    private static void deliverUpdate(
             @NonNull RemoteCallbackList<IOnSafetyCenterDataChangedListener> listeners,
             @NonNull SafetyCenterData safetyCenterData) {
         int i = listeners.beginBroadcast();
@@ -125,11 +133,28 @@ final class SafetyCenterListeners {
     }
 
     /**
-     * Returns the {@link RemoteCallbackList} of {@link IOnSafetyCenterDataChangedListener} for the
-     * given {@code userId}.
+     * Returns all the {@link RemoteCallbackList} of {@link IOnSafetyCenterDataChangedListener} for
+     * the given {@link UserProfiles}.
      */
-    @Nullable
-    RemoteCallbackList<IOnSafetyCenterDataChangedListener> getListeners(@UserIdInt int userId) {
-        return mSafetyCenterDataChangedListeners.get(userId);
+    @NonNull
+    List<RemoteCallbackList<IOnSafetyCenterDataChangedListener>> getListeners(
+            @NonNull UserProfiles userProfiles) {
+        List<RemoteCallbackList<IOnSafetyCenterDataChangedListener>> listeners = new ArrayList<>();
+        addToListIfNotNull(listeners, userProfiles.getProfileOwnerUserId());
+        int[] workProfilesUserIds = userProfiles.getWorkProfilesUserIds();
+        for (int i = 0; i < workProfilesUserIds.length; i++) {
+            addToListIfNotNull(listeners, workProfilesUserIds[i]);
+        }
+        return unmodifiableList(listeners);
+    }
+
+    private void addToListIfNotNull(
+            @NonNull List<RemoteCallbackList<IOnSafetyCenterDataChangedListener>> listeners,
+            @UserIdInt int userId) {
+        RemoteCallbackList<IOnSafetyCenterDataChangedListener> listenersForUserId =
+                mSafetyCenterDataChangedListeners.get(userId);
+        if (listenersForUserId != null) {
+            listeners.add(listenersForUserId);
+        }
     }
 }

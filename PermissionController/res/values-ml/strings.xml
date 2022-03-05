@@ -264,6 +264,8 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"ഡ്രൈവ് ചെയ്യുന്നതിനിടെ നിങ്ങൾ <xliff:g id="APP">%1$s</xliff:g> ആപ്പിന് <xliff:g id="PERMISSION_1">%2$s</xliff:g>, <xliff:g id="PERMISSION_2">%3$s</xliff:g> എന്നിവയിലേക്ക് ആക്‌സസ് നൽകി"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"ഡ്രൈവ് ചെയ്യുന്നതിനിടെ നിങ്ങൾ <xliff:g id="APP">%2$s</xliff:g> ആപ്പിന് <xliff:g id="COUNT">%1$d</xliff:g> അനുമതികൾ നൽകി"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{ഡ്രൈവ് ചെയ്യുന്നതിനിടെ നിങ്ങൾ <xliff:g id="APP_0">%1$s</xliff:g> എന്നതിനും മറ്റ് # ആപ്പിനും ആക്‌സസ് നൽകി}other{ഡ്രൈവ് ചെയ്യുന്നതിനിടെ നിങ്ങൾ <xliff:g id="APP_1">%1$s</xliff:g> എന്നതിനും മറ്റ് # ആപ്പുകൾക്കും ആക്‌സസ് നൽകി}}"</string>
+    <!-- no translation found for go_to_settings (1053735612211228335) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"കുറച്ച് മാസങ്ങളായി ചില ആപ്പുകൾ ഉപയോഗിച്ചിട്ടില്ല"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"അനുമതികൾ നീക്കം ചെയ്‌തവ"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"അനുമതികൾ നീക്കം ചെയ്‌തവ"</string>
@@ -499,6 +501,22 @@
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"സ്‌കാൻ ചെയ്യുക"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"ഡിസ്‌മിസ് ചെയ്യുക"</string>
     <string name="security_settings" msgid="3808106921175271317">"സുരക്ഷാ ക്രമീകരണം"</string>
+    <string name="sensor_permissions_qs" msgid="4365989229426201877">"സെൻസർ അനുമതികൾ"</string>
+    <string name="privacy_controls_qs" msgid="471793881466080745">"സ്വകാര്യതാ നിയന്ത്രണങ്ങൾ"</string>
+    <string name="permissions_removed_qs" msgid="8957319130625294572">"അനുമതി നീക്കം ചെയ്തു"</string>
+    <string name="camera_usage_qs" msgid="7943349178368641820">"കൂടുതൽ ക്യാമറാ ഉപയോഗം കാണുക"</string>
+    <string name="microphone_usage_qs" msgid="2393193350541830472">"കൂടുതൽ മൈക്രോഫോൺ ഉപയോഗം കാണുക"</string>
+    <string name="remove_camera_qs" msgid="8209716677879809162">"ക്യാമറാ അനുമതി നീക്കം ചെയ്യുക"</string>
+    <string name="remove_microphone_qs" msgid="2893536836641560183">"മൈക്രോഫോൺ അനുമതി നീക്കം ചെയ്യുക"</string>
+    <string name="manage_service_qs" msgid="7862555549364153805">"സേവനം മാനേജ് ചെയ്യുക"</string>
+    <string name="active_call_usage_qs" msgid="8559974395932523391">"ഫോൺ കോൾ ഉപയോഗിക്കുന്നു"</string>
+    <string name="recent_call_usage_qs" msgid="743044899599410935">"ഫോൺ കോളിൽ അടുത്തിടെ ഉപയോഗിച്ചു"</string>
+    <string name="active_app_usage_qs" msgid="4063912870936464727">"<xliff:g id="APP_NAME">%1$s</xliff:g> ഉപയോഗിക്കുന്നു"</string>
+    <string name="recent_app_usage_qs" msgid="6650259601306212327">"<xliff:g id="APP_NAME">%1$s</xliff:g> അടുത്തിടെ ഉപയോഗിച്ചു"</string>
+    <string name="active_app_usage_1_qs" msgid="4325136375823357052">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>) ഉപയോഗിക്കുന്നു"</string>
+    <string name="recent_app_usage_1_qs" msgid="261450184773310741">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>) അടുത്തിടെ ഉപയോഗിച്ചു"</string>
+    <string name="active_app_usage_2_qs" msgid="6107866785243565283">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) ഉപയോഗിക്കുന്നു"</string>
+    <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) അടുത്തിടെ ഉപയോഗിച്ചു"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"സുരക്ഷയും സ്വകാര്യതയും"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"നില പരിശോധിക്കുക"</string>
 </resources>
