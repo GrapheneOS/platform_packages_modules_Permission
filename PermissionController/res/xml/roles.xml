@@ -1255,4 +1255,20 @@
             </preferred-activity>
         </preferred-activities>
     </role>
+
+    <!---
+      ~ A role for the package that handles AI features for the settings app
+      -->
+    <role
+        name="android.app.role.SETTINGS_INTELLIGENCE"
+        defaultHolders="config_settingsIntelligencePackageName"
+        exclusive="true"
+        minSdkVersion="33"
+        systemOnly="true"
+        visible="false"
+        overrideUserWhenGranting="true">
+        <permissions>
+            <permission-set name="notifications" />
+        </permissions>
+    </role>
 </roles>
