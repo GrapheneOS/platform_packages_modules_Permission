@@ -71,10 +71,8 @@
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"Отвори информации за апликацијата"</string>
     <string name="additional_permissions_more" msgid="5681220714755304407">"{count,plural, =1{Уште #}one{Уште #}other{Уште #}}"</string>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"Оваа апликација е дизајнирана за постара верзија на Android. Одбивањето на дозволата може да предизвика веќе да не функционира како што треба."</string>
-    <!-- no translation found for storage_supergroup_warning_allow (103093462784523190) -->
-    <skip />
-    <!-- no translation found for storage_supergroup_warning_deny (6420765672683284347) -->
-    <skip />
+    <string name="storage_supergroup_warning_allow" msgid="103093462784523190">"Оваа апликација е дизајнирана за постара верзија на Android. Ако ја одобрите дозволава, тогаш ќе биде дозволен пристапот до целиот капацитет (вклучувајќи ги фотографиите, видеата, музиката, аудиото и другите датотеки)."</string>
+    <string name="storage_supergroup_warning_deny" msgid="6420765672683284347">"Оваа апликација е дизајнирана за постара верзија на Android. Ако ја одбиете дозволава, тогаш ќе биде одбиен пристапот до целиот капацитет (вклучувајќи ги фотографиите, видеата, музиката, аудиото и другите датотеки)."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"изврши непознато дејство"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"Со дозвола: <xliff:g id="COUNT_0">%1$d</xliff:g> од <xliff:g id="COUNT_1">%2$d</xliff:g> апликации"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> дозволени апликации"</string>
@@ -87,10 +85,8 @@
     <string name="location_settings" msgid="3624412509133422562">"Поставки за локација"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> е давател на услуги според локација за овој уред. Пристапот до локацијата може да се смени од поставките за локација."</string>
     <string name="system_warning" msgid="1173400963234358816">"Ако ја одбиете дозволава, основните функции на уредот можеби веќе нема да функционираат како што треба."</string>
-    <!-- no translation found for deny_read_media_visual_warning (3982586279917232827) -->
-    <skip />
-    <!-- no translation found for deny_read_media_aural_warning (8928699919508646732) -->
-    <skip />
+    <string name="deny_read_media_visual_warning" msgid="3982586279917232827">"Оваа апликација е дизајнирана за постара верзија на Android. Ако го одбиете пристапот на апликацијава до фотографиите и видеата, пристапот до музиката и другото аудио исто така ќе се одбие."</string>
+    <string name="deny_read_media_aural_warning" msgid="8928699919508646732">"Оваа апликација е дизајнирана за постара верзија на Android. Ако го одбиете пристапот на апликацијава до музиката и другото аудио, пристапот до фотографиите и видеата исто така ќе се одбие."</string>
     <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"Ако ја одбиете дозволава, некои функции на уредот управувани од апликацијава можеби веќе нема да функционираат како што треба."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Наметнато со правило"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Пристапот во заднина е оневозможен со правило"</string>
@@ -236,10 +232,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Апликациите со оваа дозвола може да пристапуваат до податоци од сензорите за виталните знаци"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Апликациите со оваа дозвола може да испраќаат и прегледуваат SMS-пораки"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Апликациите со оваа дозвола може да пристапуваат до фотографии, аудиовизуелни содржини и датотеки на вашиот уред"</string>
-    <!-- no translation found for permission_description_summary_read_media_aural (2789020637856210454) -->
-    <skip />
-    <!-- no translation found for permission_description_summary_read_media_visual (4210569227927436735) -->
-    <skip />
+    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"Апликациите со оваа дозвола може да пристапуваат до музиката и другите аудиодатотеки на уредот"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"Апликациите со оваа дозвола може да пристапуваат до фотографиите и видеата на уредот"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Последен пристап: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Моментално одбиена/Последен пристап: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Никогаш не е пристапено"</string>
@@ -251,10 +245,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Со дозвола за управување со сите датотеки"</string>
     <string name="ask_header" msgid="2633816846459944376">"Прашувај секогаш"</string>
     <string name="denied_header" msgid="903209608358177654">"Без дозвола"</string>
-    <!-- no translation found for storage_footer_warning_text (2242258357752432337) -->
-    <skip />
-    <!-- no translation found for storage_footer_hyperlink_text (7759955324552930974) -->
-    <skip />
+    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Некои апликации што обезбедуваат основна функционалност за вашиот уред може да имаат посебен пристап до сите ваши датотеки"</string>
+    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Видете ги апликациите со пристап до сите датотеки"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 ден}one{# ден}other{# дена}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 час}one{# час}other{# часа}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 минута}one{# минута}other{# минути}}"</string>
@@ -272,6 +264,8 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Додека возевте, дадовте пристап на <xliff:g id="APP">%1$s</xliff:g> за <xliff:g id="PERMISSION_1">%2$s</xliff:g> и <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Додека возевте, дадовте <xliff:g id="COUNT">%1$d</xliff:g> дозволи на <xliff:g id="APP">%2$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Додека возевте, дадовте пристап на <xliff:g id="APP_0">%1$s</xliff:g> и # друга апликација}one{Додека возевте, дадовте пристап на <xliff:g id="APP_1">%1$s</xliff:g> и # друга апликација}other{Додека возевте, дадовте пристап на <xliff:g id="APP_1">%1$s</xliff:g> и # други апликации}}"</string>
+    <!-- no translation found for go_to_settings (1053735612211228335) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Некои апликации не се користени неколку месеци"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Одземени дозволи"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Отстранети дозволи"</string>
@@ -453,16 +447,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Приближна"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до календарот?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да испраќа и прегледува SMS-пораки?"</string>
-    <!-- no translation found for permgrouprequest_storage (7426990523173124539) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_q_to_s (3942779386983426698) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_pre_q (1681166745228672009) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_aural (5948278590400297839) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_visual (4188474766470776052) -->
-    <skip />
+    <string name="permgrouprequest_storage" msgid="7426990523173124539">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до &lt;b&gt;датотеките и документите&lt;/b&gt; на уредот?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до &lt;b&gt;фотографии, видеа, музика и аудио&lt;/b&gt; на уредот?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до &lt;b&gt;фотографии, видеа, музика, аудио и други датотеки&lt;/b&gt; на уредот?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до музика и други аудиодатотеки на уредов?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до фотографиите и видеата на уредов?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да снима аудио?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Апликацијава ќе може да снима аудио само додека ја користите"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да снима аудио?"</string>
@@ -509,11 +498,25 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Податоците за микрофонот може сепак да се споделат кога се јавувате на бројот за итни случаи."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Измени"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Безбедност и приватност"</string>
-    <!-- no translation found for safety_center_rescan_button (8047036829052958144) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_dismiss_button (5113965506144222402) -->
-    <skip />
+    <string name="safety_center_rescan_button" msgid="8047036829052958144">"Скенирај"</string>
+    <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Отфрли"</string>
     <string name="security_settings" msgid="3808106921175271317">"Поставки за безбедноста"</string>
+    <string name="sensor_permissions_qs" msgid="4365989229426201877">"Дозволи за сензор"</string>
+    <string name="privacy_controls_qs" msgid="471793881466080745">"Контроли на приватноста"</string>
+    <string name="permissions_removed_qs" msgid="8957319130625294572">"Дозволата е отстранета"</string>
+    <string name="camera_usage_qs" msgid="7943349178368641820">"Видете повеќе начини на користење на камерата"</string>
+    <string name="microphone_usage_qs" msgid="2393193350541830472">"Видете повеќе начини на користење на микрофонот"</string>
+    <string name="remove_camera_qs" msgid="8209716677879809162">"Отстранете ја дозволата за камерата"</string>
+    <string name="remove_microphone_qs" msgid="2893536836641560183">"Отстранете ја дозволата за микрофонот"</string>
+    <string name="manage_service_qs" msgid="7862555549364153805">"Управувајте со услугата"</string>
+    <string name="active_call_usage_qs" msgid="8559974395932523391">"Се користи од телефонски повик"</string>
+    <string name="recent_call_usage_qs" msgid="743044899599410935">"Неодамна користено од телефонски повик"</string>
+    <string name="active_app_usage_qs" msgid="4063912870936464727">"Се користи од <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
+    <string name="recent_app_usage_qs" msgid="6650259601306212327">"Неодамна користено од <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
+    <string name="active_app_usage_1_qs" msgid="4325136375823357052">"Се користи од <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
+    <string name="recent_app_usage_1_qs" msgid="261450184773310741">"Неодамна користено од <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
+    <string name="active_app_usage_2_qs" msgid="6107866785243565283">"Се користи од <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
+    <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Неодамна користено од <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Безбедност и приватност"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Проверете го статусот"</string>
 </resources>

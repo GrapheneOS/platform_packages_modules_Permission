@@ -71,10 +71,8 @@
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"Buka info aplikasi"</string>
     <string name="additional_permissions_more" msgid="5681220714755304407">"{count,plural, =1{# lainnya}other{# lainnya}}"</string>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"Aplikasi ini dirancang untuk versi lama Android. Menolak izin dapat menyebabkan aplikasi tidak berfungsi lagi sesuai harapan."</string>
-    <!-- no translation found for storage_supergroup_warning_allow (103093462784523190) -->
-    <skip />
-    <!-- no translation found for storage_supergroup_warning_deny (6420765672683284347) -->
-    <skip />
+    <string name="storage_supergroup_warning_allow" msgid="103093462784523190">"Aplikasi ini dirancang untuk versi lama Android. Jika Anda memberikan izin ini, akses ke semua penyimpanan (termasuk foto, video, musik, audio, dan file lainnya) akan diizinkan."</string>
+    <string name="storage_supergroup_warning_deny" msgid="6420765672683284347">"Aplikasi ini dirancang untuk versi lama Android. Jika Anda menolak izin ini, akses ke semua penyimpanan (termasuk foto, video, musik, audio, dan file lainnya) akan ditolak."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"melakukan tindakan yang tidak dikenal"</string>
     <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> dari <xliff:g id="COUNT_1">%2$d</xliff:g> aplikasi diizinkan"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> aplikasi diizinkan"</string>
@@ -87,10 +85,8 @@
     <string name="location_settings" msgid="3624412509133422562">"Setelan Lokasi"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> adalah penyedia layanan lokasi untuk perangkat ini. Akses lokasi dapat diubah dari setelan lokasi."</string>
     <string name="system_warning" msgid="1173400963234358816">"Jika Anda menolak izin ini, fitur dasar perangkat mungkin tidak berfungsi lagi sesuai harapan."</string>
-    <!-- no translation found for deny_read_media_visual_warning (3982586279917232827) -->
-    <skip />
-    <!-- no translation found for deny_read_media_aural_warning (8928699919508646732) -->
-    <skip />
+    <string name="deny_read_media_visual_warning" msgid="3982586279917232827">"Aplikasi ini dirancang untuk versi lama Android. Jika Anda menolak akses aplikasi ini ke foto &amp; video, akses ke musik &amp; audio lainnya juga akan ditolak."</string>
+    <string name="deny_read_media_aural_warning" msgid="8928699919508646732">"Aplikasi ini dirancang untuk versi lama Android. Jika Anda menolak akses aplikasi ini ke musik &amp; audio lainnya, akses ke foto &amp; video juga akan ditolak."</string>
     <string name="cdm_profile_revoke_warning" msgid="4443893270719106700">"Jika Anda menolak izin ini, beberapa fitur perangkat yang dikelola oleh aplikasi ini mungkin tidak berfungsi lagi sebagaimana mestinya."</string>
     <string name="permission_summary_enforced_by_policy" msgid="4443598170942950519">"Diterapkan menurut kebijakan"</string>
     <string name="permission_summary_disabled_by_policy_background_only" msgid="221995005556362660">"Akses latar belakang dinonaktifkan oleh kebijakan"</string>
@@ -236,10 +232,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Aplikasi dengan izin ini dapat mengakses data sensor tentang tanda-tanda vital Anda"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Aplikasi dengan izin ini dapat mengirim dan menampilkan pesan SMS"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Aplikasi dengan izin ini dapat mengakses foto, media, dan file di perangkat Anda"</string>
-    <!-- no translation found for permission_description_summary_read_media_aural (2789020637856210454) -->
-    <skip />
-    <!-- no translation found for permission_description_summary_read_media_visual (4210569227927436735) -->
-    <skip />
+    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"Aplikasi yang memiliki izin ini dapat mengakses file musik dan audio lainnya di perangkat Anda"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"Aplikasi yang memiliki izin ini dapat mengakses foto dan video di perangkat Anda"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Akses terakhir: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Saat ini ditolak / Akses terakhir: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Tidak pernah mengakses"</string>
@@ -251,10 +245,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Diizinkan untuk mengelola semua file"</string>
     <string name="ask_header" msgid="2633816846459944376">"Selalu tanya"</string>
     <string name="denied_header" msgid="903209608358177654">"Tidak diizinkan"</string>
-    <!-- no translation found for storage_footer_warning_text (2242258357752432337) -->
-    <skip />
-    <!-- no translation found for storage_footer_hyperlink_text (7759955324552930974) -->
-    <skip />
+    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Beberapa aplikasi yang memberikan fungsi penting untuk perangkat Anda dapat memiliki akses khusus ke semua file Anda"</string>
+    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Lihat aplikasi dengan akses semua file"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 hari}other{# hari}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 jam}other{# jam}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 menit}other{# menit}}"</string>
@@ -272,6 +264,8 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Saat mengemudi, Anda memberikan akses <xliff:g id="APP">%1$s</xliff:g> ke <xliff:g id="PERMISSION_1">%2$s</xliff:g> &amp; <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Saat mengemudi, Anda memberikan <xliff:g id="COUNT">%1$d</xliff:g> izin ke <xliff:g id="APP">%2$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Saat mengemudi, Anda memberikan akses ke <xliff:g id="APP_0">%1$s</xliff:g> &amp; # aplikasi lain}other{Saat mengemudi, Anda memberikan akses ke <xliff:g id="APP_1">%1$s</xliff:g> &amp; # aplikasi lain}}"</string>
+    <!-- no translation found for go_to_settings (1053735612211228335) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Beberapa aplikasi tidak digunakan dalam beberapa bulan"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Izin yang dihapus"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Izin dihapus"</string>
@@ -453,16 +447,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Perkiraan"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses kalender?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengirim dan melihat SMS?"</string>
-    <!-- no translation found for permgrouprequest_storage (7426990523173124539) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_q_to_s (3942779386983426698) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_storage_pre_q (1681166745228672009) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_aural (5948278590400297839) -->
-    <skip />
-    <!-- no translation found for permgrouprequest_read_media_visual (4188474766470776052) -->
-    <skip />
+    <string name="permgrouprequest_storage" msgid="7426990523173124539">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses &lt;b&gt;file dan dokumen&lt;/b&gt; di perangkat Anda?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses &lt;b&gt;foto, video, musik, dan audio&lt;/b&gt; di perangkat Anda?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses &lt;b&gt;foto, video, musik, audio, dan file lainnya&lt;/b&gt; di perangkat Anda?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses file musik dan audio lainnya di perangkat ini?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses foto dan video di perangkat ini?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; merekam audio?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Aplikasi hanya dapat merekam audio saat aplikasi sedang digunakan"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Izinkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; merekam audio?"</string>
@@ -509,11 +498,25 @@
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Data mikrofon mungkin tetap dibagikan saat Anda menelepon nomor darurat."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Ubah"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Keamanan &amp; Privasi"</string>
-    <!-- no translation found for safety_center_rescan_button (8047036829052958144) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_dismiss_button (5113965506144222402) -->
-    <skip />
+    <string name="safety_center_rescan_button" msgid="8047036829052958144">"Pindai"</string>
+    <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Tutup"</string>
     <string name="security_settings" msgid="3808106921175271317">"Setelan Keamanan"</string>
+    <string name="sensor_permissions_qs" msgid="4365989229426201877">"Izin Sensor"</string>
+    <string name="privacy_controls_qs" msgid="471793881466080745">"Kontrol Privasi"</string>
+    <string name="permissions_removed_qs" msgid="8957319130625294572">"Izin dihapus"</string>
+    <string name="camera_usage_qs" msgid="7943349178368641820">"Lihat penggunaan kamera lainnya"</string>
+    <string name="microphone_usage_qs" msgid="2393193350541830472">"Lihat penggunaan mikrofon lainnya"</string>
+    <string name="remove_camera_qs" msgid="8209716677879809162">"Hapus izin kamera"</string>
+    <string name="remove_microphone_qs" msgid="2893536836641560183">"Hapus izin mikrofon"</string>
+    <string name="manage_service_qs" msgid="7862555549364153805">"Kelola layanan"</string>
+    <string name="active_call_usage_qs" msgid="8559974395932523391">"Sedang digunakan untuk panggilan telepon"</string>
+    <string name="recent_call_usage_qs" msgid="743044899599410935">"Baru-baru ini digunakan untuk panggilan telepon"</string>
+    <string name="active_app_usage_qs" msgid="4063912870936464727">"Sedang digunakan oleh <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
+    <string name="recent_app_usage_qs" msgid="6650259601306212327">"Baru-baru ini digunakan oleh <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
+    <string name="active_app_usage_1_qs" msgid="4325136375823357052">"Sedang digunakan oleh <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
+    <string name="recent_app_usage_1_qs" msgid="261450184773310741">"Baru-baru ini digunakan oleh <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
+    <string name="active_app_usage_2_qs" msgid="6107866785243565283">"Sedang digunakan oleh <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
+    <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Baru-baru ini digunakan oleh <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Keamanan &amp; Privasi"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Periksa status"</string>
 </resources>
