@@ -31,16 +31,18 @@ public class StaticSafetyEntryPreference extends Preference {
         super(context);
         setTitle(entry.getTitle());
         setSummary(entry.getSummary());
-        setOnPreferenceClickListener(unused -> {
-            try {
-                entry.getPendingIntent().send();
-            } catch (Exception ex) {
-                Log.e(TAG,
-                        String.format(
-                                "Failed to execute pending intent for static entry: %s", entry),
-                        ex);
-            }
-            return true;
-        });
+        if (entry.getPendingIntent() != null) {
+            setOnPreferenceClickListener(unused -> {
+                try {
+                    entry.getPendingIntent().send();
+                } catch (Exception ex) {
+                    Log.e(TAG,
+                            String.format(
+                                    "Failed to execute pending intent for static entry: %s", entry),
+                            ex);
+                }
+                return true;
+            });
+        }
     }
 }
