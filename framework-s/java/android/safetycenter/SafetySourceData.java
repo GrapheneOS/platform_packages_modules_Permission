@@ -39,7 +39,6 @@ import java.util.Objects;
  * @hide
  */
 @SystemApi
-// TODO(b/207399899): Add timestamp field(s) to data model classes.
 @RequiresApi(TIRAMISU)
 public final class SafetySourceData implements Parcelable {
 
@@ -48,11 +47,9 @@ public final class SafetySourceData implements Parcelable {
             new Parcelable.Creator<SafetySourceData>() {
                 @Override
                 public SafetySourceData createFromParcel(Parcel in) {
-                    SafetySourceStatus status =
-                            in.readParcelable(SafetySourceStatus.class.getClassLoader(),
-                                    SafetySourceStatus.class);
-                    List<SafetySourceIssue> issues = new ArrayList<>();
-                    in.readParcelableList(issues, SafetySourceIssue.class.getClassLoader());
+                    SafetySourceStatus status = in.readTypedObject(SafetySourceStatus.CREATOR);
+                    List<SafetySourceIssue> issues =
+                            in.createTypedArrayList(SafetySourceIssue.CREATOR);
                     return new SafetySourceData(status, issues);
                 }
 
@@ -92,8 +89,8 @@ public final class SafetySourceData implements Parcelable {
 
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeParcelable(mStatus, flags);
-        dest.writeParcelableList(mIssues, flags);
+        dest.writeTypedObject(mStatus, flags);
+        dest.writeTypedList(mIssues);
     }
 
     @Override
