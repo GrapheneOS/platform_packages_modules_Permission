@@ -170,19 +170,8 @@ public class GrantPermissionsActivity extends SettingsActivity
 
         getWindow().addSystemFlags(SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
 
-        mRequestedPermissions = getIntent().getStringArrayExtra(
-                PackageManager.EXTRA_REQUEST_PERMISSIONS_NAMES);
-        if (mRequestedPermissions == null || mRequestedPermissions.length == 0) {
-            setResultAndFinish();
-            return;
-        }
-        mOriginalRequestedPermissions = mRequestedPermissions;
-
-        mLegacyAccessPermissions = getIntent().getStringArrayExtra(
-                PackageManager.EXTRA_REQUEST_PERMISSIONS_LEGACY_ACCESS_PERMISSION_NAMES);
-        if (mLegacyAccessPermissions == null) {
-            mLegacyAccessPermissions = new String[0];
-        }
+        mRequestedPermissions = getIntent()
+                .getStringArrayExtra(PackageManager.EXTRA_REQUEST_PERMISSIONS_NAMES);
 
         if (PackageManager.ACTION_REQUEST_PERMISSIONS_FOR_OTHER.equals(getIntent().getAction())) {
             mTargetPackage = getIntent().getStringExtra(Intent.EXTRA_PACKAGE_NAME);
@@ -200,6 +189,25 @@ public class GrantPermissionsActivity extends SettingsActivity
         } else {
             // Cache this as this can only read on onCreate, not later.
             mTargetPackage = getCallingPackage();
+
+            // If this app is below the android T targetSdk, filter out the POST_NOTIFICATIONS
+            // permission, if present
+            mRequestedPermissions = GrantPermissionsViewModel.Companion
+                    .filterNotificationPermissionIfNeededSync(
+                            mTargetPackage, mRequestedPermissions);
+        }
+
+
+        if (mRequestedPermissions == null || mRequestedPermissions.length == 0) {
+            setResultAndFinish();
+            return;
+        }
+        mOriginalRequestedPermissions = mRequestedPermissions;
+
+        mLegacyAccessPermissions = getIntent().getStringArrayExtra(
+                PackageManager.EXTRA_REQUEST_PERMISSIONS_LEGACY_ACCESS_PERMISSION_NAMES);
+        if (mLegacyAccessPermissions == null) {
+            mLegacyAccessPermissions = new String[0];
         }
 
         synchronized (sCurrentGrantRequests) {

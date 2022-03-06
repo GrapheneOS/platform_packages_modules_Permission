@@ -264,6 +264,8 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"ನೀವು ವಾಹನ ಚಲಾಯಿಸುವಾಗ, <xliff:g id="APP">%1$s</xliff:g> ಗೆ <xliff:g id="PERMISSION_1">%2$s</xliff:g> ಮತ್ತು <xliff:g id="PERMISSION_2">%3$s</xliff:g> ಪ್ರವೇಶವನ್ನು ನೀಡಿದ್ದೀರಿ"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"ನೀವು ವಾಹನ ಚಲಾಯಿಸುವಾಗ, <xliff:g id="APP">%2$s</xliff:g> ಗೆ <xliff:g id="COUNT">%1$d</xliff:g> ಅನುಮತಿಗಳನ್ನು ನೀಡಿದ್ದೀರಿ"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{ನೀವು ವಾಹನ ಚಲಾಯಿಸುವಾಗ, <xliff:g id="APP_0">%1$s</xliff:g> ಮತ್ತು # ಇತರ ಆ್ಯಪ್‌ಗೆ ಪ್ರವೇಶವನ್ನು ನೀಡಿದ್ದೀರಿ}one{ನೀವು ವಾಹನ ಚಲಾಯಿಸುವಾಗ, <xliff:g id="APP_1">%1$s</xliff:g> ಮತ್ತು # ಇತರ ಆ್ಯಪ್‌ಗಳಿಗೆ ಪ್ರವೇಶವನ್ನು ನೀಡಿದ್ದೀರಿ}other{ನೀವು ವಾಹನ ಚಲಾಯಿಸುವಾಗ, <xliff:g id="APP_1">%1$s</xliff:g> ಮತ್ತು # ಇತರ ಆ್ಯಪ್‌ಗಳಿಗೆ ಪ್ರವೇಶವನ್ನು ನೀಡಿದ್ದೀರಿ}}"</string>
+    <!-- no translation found for go_to_settings (1053735612211228335) -->
+    <skip />
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"ಹಲವಾರು ತಿಂಗಳುಗಳಿಂದ ಕೆಲವು ಆ್ಯಪ್‌ಗಳನ್ನು ಬಳಸಲಾಗಿಲ್ಲ"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"ತೆಗೆದುಹಾಕಲಾದ ಅನುಮತಿಗಳು"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"ಅನುಮತಿಗಳನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ"</string>
@@ -499,6 +501,22 @@
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"ಸ್ಕ್ಯಾನ್ ಮಾಡಿ"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"ವಜಾಗೊಳಿಸಿ"</string>
     <string name="security_settings" msgid="3808106921175271317">"ಭದ್ರತಾ ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
+    <string name="sensor_permissions_qs" msgid="4365989229426201877">"ಸೆನ್ಸರ್ ಅನುಮತಿಗಳು"</string>
+    <string name="privacy_controls_qs" msgid="471793881466080745">"ಗೌಪ್ಯತೆ ನಿಯಂತ್ರಣಗಳು"</string>
+    <string name="permissions_removed_qs" msgid="8957319130625294572">"ಅನುಮತಿಯನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ"</string>
+    <string name="camera_usage_qs" msgid="7943349178368641820">"ಕ್ಯಾಮರಾ ಬಳಕೆಯ ಕುರಿತು ಇನ್ನೂ ಹೆಚ್ಚಿನವನ್ನು ನೋಡಿ"</string>
+    <string name="microphone_usage_qs" msgid="2393193350541830472">"ಮೈಕ್ರೊಫೋನ್ ಬಳಕೆಯ ಕುರಿತು ಇನ್ನೂ ಹೆಚ್ಚಿನವನ್ನು ನೋಡಿ"</string>
+    <string name="remove_camera_qs" msgid="8209716677879809162">"ಕ್ಯಾಮರಾ ಅನುಮತಿಯನ್ನು ತೆಗೆದುಹಾಕಿ"</string>
+    <string name="remove_microphone_qs" msgid="2893536836641560183">"ಮೈಕ್ರೊಫೋನ್ ಅನುಮತಿಯನ್ನು ತೆಗೆದುಹಾಕಿ"</string>
+    <string name="manage_service_qs" msgid="7862555549364153805">"ಸೇವೆಯನ್ನು ನಿರ್ವಹಿಸಿ"</string>
+    <string name="active_call_usage_qs" msgid="8559974395932523391">"ಫೋನ್ ಕರೆಯು ಇದನ್ನು ಬಳಸುತ್ತಿದೆ"</string>
+    <string name="recent_call_usage_qs" msgid="743044899599410935">"ಫೋನ್ ಕರೆಯಲ್ಲಿ ಇತ್ತೀಚಿಗೆ ಬಳಸಲಾಗಿದೆ"</string>
+    <string name="active_app_usage_qs" msgid="4063912870936464727">"<xliff:g id="APP_NAME">%1$s</xliff:g> ಇದನ್ನು ಬಳಸುತ್ತಿದೆ"</string>
+    <string name="recent_app_usage_qs" msgid="6650259601306212327">"ಇತ್ತೀಚೆಗೆ <xliff:g id="APP_NAME">%1$s</xliff:g> ಇದನ್ನು ಬಳಸಿದೆ"</string>
+    <string name="active_app_usage_1_qs" msgid="4325136375823357052">"<xliff:g id="APP_NAME">%1$s</xliff:g> ಇದನ್ನು ಬಳಸುತ್ತಿದೆ (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
+    <string name="recent_app_usage_1_qs" msgid="261450184773310741">"ಇತ್ತೀಚೆಗೆ <xliff:g id="APP_NAME">%1$s</xliff:g> ಇದನ್ನು ಬಳಸಿದೆ (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
+    <string name="active_app_usage_2_qs" msgid="6107866785243565283">"<xliff:g id="APP_NAME">%1$s</xliff:g> ಇದನ್ನು ಬಳಸುತ್ತಿದೆ (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
+    <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"ಇತ್ತೀಚೆಗೆ <xliff:g id="APP_NAME">%1$s</xliff:g> ಇದನ್ನು ಬಳಸಿದೆ (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"ಭದ್ರತೆ ಮತ್ತು ಗೌಪ್ಯತೆ"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"ಸ್ಥಿತಿ ಪರಿಶೀಲಿಸಿ"</string>
 </resources>
