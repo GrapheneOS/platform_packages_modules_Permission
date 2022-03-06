@@ -32,15 +32,18 @@ public class SafetyEntryPreference extends Preference {
         setTitle(entry.getTitle());
         setSummary(entry.getSummary());
         setIcon(toSeverityLevel(entry.getSeverityLevel()).getEntryIconResId());
-        setOnPreferenceClickListener(unused -> {
-            try {
-                entry.getPendingIntent().send();
-            } catch (Exception ex) {
-                Log.e(TAG, String.format("Failed to execute pending intent for entry: %s", entry),
-                        ex);
-            }
-            return true;
-        });
+        if (entry.getPendingIntent() != null) {
+            setOnPreferenceClickListener(unused -> {
+                try {
+                    entry.getPendingIntent().send();
+                } catch (Exception ex) {
+                    Log.e(TAG,
+                            String.format("Failed to execute pending intent for entry: %s", entry),
+                            ex);
+                }
+                return true;
+            });
+        }
     }
 
     private static SeverityLevel toSeverityLevel(int entrySeverityLevel) {

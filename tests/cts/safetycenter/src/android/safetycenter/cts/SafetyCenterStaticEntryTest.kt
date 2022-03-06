@@ -51,8 +51,17 @@ class SafetyCenterStaticEntryTest {
     private val summary1 = "a summary"
     private val summary2 = "another summary"
 
-    private val staticEntry1 = SafetyCenterStaticEntry(title1, summary1, pendingIntent1)
-    private val staticEntry2 = SafetyCenterStaticEntry(title2, summary2, pendingIntent2)
+    private val staticEntry1 = SafetyCenterStaticEntry.Builder()
+            .setTitle(title1)
+            .setSummary(summary1)
+            .setPendingIntent(pendingIntent1)
+            .build()
+    private val staticEntry2 = SafetyCenterStaticEntry.Builder()
+            .setTitle(title2)
+            .setSummary(summary2)
+            .setPendingIntent(pendingIntent2)
+            .build()
+    private val staticEntryMinimal = SafetyCenterStaticEntry.Builder().setTitle("").build()
 
     @Test
     fun getTitle_returnsTitle() {
@@ -64,13 +73,14 @@ class SafetyCenterStaticEntryTest {
     fun getSummary_returnsSummary() {
         assertThat(staticEntry1.summary).isEqualTo(summary1)
         assertThat(staticEntry2.summary).isEqualTo(summary2)
-        assertThat(SafetyCenterStaticEntry("", null, pendingIntent1).summary).isNull()
+        assertThat(staticEntryMinimal.summary).isNull()
     }
 
     @Test
     fun getPendingIntent_returnsPendingIntent() {
         assertThat(staticEntry1.pendingIntent).isEqualTo(pendingIntent1)
         assertThat(staticEntry2.pendingIntent).isEqualTo(pendingIntent2)
+        assertThat(staticEntryMinimal.pendingIntent).isNull()
     }
 
     @Test
@@ -79,7 +89,7 @@ class SafetyCenterStaticEntryTest {
     }
 
     @Test
-    fun createFromParcel_withWriteToParcel_returnsEquivalentObject() {
+    fun createFromParcel_withWriteToParcel_withAllFields_returnsEquivalentObject() {
         val parcel: Parcel = Parcel.obtain()
 
         staticEntry1.writeToParcel(parcel, 0 /* flags */)
@@ -91,6 +101,18 @@ class SafetyCenterStaticEntryTest {
     }
 
     @Test
+    fun createFromParcel_withWriteToParcel_withMinimalFields_returnsEquivalentObject() {
+        val parcel: Parcel = Parcel.obtain()
+
+        staticEntryMinimal.writeToParcel(parcel, 0 /* flags */)
+        parcel.setDataPosition(0)
+        val fromParcel = SafetyCenterStaticEntry.CREATOR.createFromParcel(parcel)
+        parcel.recycle()
+
+        assertThat(fromParcel).isEqualTo(staticEntryMinimal)
+    }
+
+    @Test
     fun equals_hashCode_toString_equalByReference_areEqual() {
         assertThat(staticEntry1).isEqualTo(staticEntry1)
         assertThat(staticEntry1.hashCode()).isEqualTo(staticEntry1.hashCode())
@@ -99,8 +121,16 @@ class SafetyCenterStaticEntryTest {
 
     @Test
     fun equals_hashCode_toString_equalByValue_areEqual() {
-        val staticEntry = SafetyCenterStaticEntry("titlee", "sumaree", pendingIntent1)
-        val equivalentStaticEntry = SafetyCenterStaticEntry("titlee", "sumaree", pendingIntent1)
+        val staticEntry = SafetyCenterStaticEntry.Builder()
+                .setTitle("titlee")
+                .setSummary("sumaree")
+                .setPendingIntent(pendingIntent1)
+                .build()
+        val equivalentStaticEntry = SafetyCenterStaticEntry.Builder()
+                .setTitle("titlee")
+                .setSummary("sumaree")
+                .setPendingIntent(pendingIntent1)
+                .build()
 
         assertThat(staticEntry).isEqualTo(equivalentStaticEntry)
         assertThat(staticEntry.hashCode()).isEqualTo(equivalentStaticEntry.hashCode())
@@ -109,9 +139,16 @@ class SafetyCenterStaticEntryTest {
 
     @Test
     fun equals_toString_withDifferentTitles_areNotEqual() {
-        val staticEntry = SafetyCenterStaticEntry("a title", "a summary", pendingIntent1)
-        val differentStaticEntry =
-                SafetyCenterStaticEntry("a different title", "a summary", pendingIntent1)
+        val staticEntry = SafetyCenterStaticEntry.Builder()
+                .setTitle("a title")
+                .setSummary("a summary")
+                .setPendingIntent(pendingIntent1)
+                .build()
+        val differentStaticEntry = SafetyCenterStaticEntry.Builder()
+                .setTitle("a different title")
+                .setSummary("a summary")
+                .setPendingIntent(pendingIntent1)
+                .build()
 
         assertThat(staticEntry).isNotEqualTo(differentStaticEntry)
         assertThat(staticEntry.toString()).isNotEqualTo(differentStaticEntry.toString())
@@ -119,9 +156,16 @@ class SafetyCenterStaticEntryTest {
 
     @Test
     fun equals_toString_withDifferentSummaries_areNotEqual() {
-        val staticEntry = SafetyCenterStaticEntry("a title", "a summary", pendingIntent1)
-        val differentStaticEntry =
-                SafetyCenterStaticEntry("a title", "a different summary", pendingIntent1)
+        val staticEntry = SafetyCenterStaticEntry.Builder()
+                .setTitle("a title")
+                .setSummary("a summary")
+                .setPendingIntent(pendingIntent1)
+                .build()
+        val differentStaticEntry = SafetyCenterStaticEntry.Builder()
+                .setTitle("a title")
+                .setSummary("a different summary")
+                .setPendingIntent(pendingIntent1)
+                .build()
 
         assertThat(staticEntry).isNotEqualTo(differentStaticEntry)
         assertThat(staticEntry.toString()).isNotEqualTo(differentStaticEntry.toString())
@@ -129,8 +173,16 @@ class SafetyCenterStaticEntryTest {
 
     @Test
     fun equals_toString_withDifferentPendingIntents_areNotEqual() {
-        val staticEntry = SafetyCenterStaticEntry("a title", "a summary", pendingIntent1)
-        val differentStaticEntry = SafetyCenterStaticEntry("a title", "a summary", pendingIntent2)
+        val staticEntry = SafetyCenterStaticEntry.Builder()
+                .setTitle("a title")
+                .setSummary("a summary")
+                .setPendingIntent(pendingIntent1)
+                .build()
+        val differentStaticEntry = SafetyCenterStaticEntry.Builder()
+                .setTitle("a title")
+                .setSummary("a summary")
+                .setPendingIntent(pendingIntent2)
+                .build()
 
         assertThat(staticEntry).isNotEqualTo(differentStaticEntry)
         assertThat(staticEntry.toString()).isNotEqualTo(differentStaticEntry.toString())
