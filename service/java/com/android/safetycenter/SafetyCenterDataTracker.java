@@ -22,6 +22,7 @@ import static java.util.Collections.emptyList;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
+import android.annotation.StringRes;
 import android.annotation.UserIdInt;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -48,7 +49,9 @@ import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
+import com.android.safetycenter.SafetyCenterConfigReader.Config;
 import com.android.safetycenter.SafetyCenterConfigReader.SourceId;
+import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,33 +73,33 @@ final class SafetyCenterDataTracker {
     @NonNull
     private final Context mContext;
     @NonNull
-    private final SafetyCenterConfigReader mSafetyCenterConfigReader;
+    private final SafetyCenterResourcesContext mSafetyCenterResourcesContext;
 
     /**
      * Creates a {@link SafetyCenterDataTracker} using the given {@link Context} and
-     * {@link SafetyCenterConfigReader}.
+     * {@link SafetyCenterResourcesContext}.
      */
-    SafetyCenterDataTracker(
-            @NonNull Context context,
-            @NonNull SafetyCenterConfigReader safetyCenterConfigReader) {
+    SafetyCenterDataTracker(@NonNull Context context,
+            @NonNull SafetyCenterResourcesContext safetyCenterResourcesContext) {
         mContext = context;
-        mSafetyCenterConfigReader = safetyCenterConfigReader;
+        mSafetyCenterResourcesContext = safetyCenterResourcesContext;
     }
 
     /**
      * Sets the latest {@link SafetySourceData} for the given {@code safetySourceId}, {@code
      * packageName} and {@code userId}, and returns whether there was a change to the underlying
-     * {@link SafetyCenterData}.
+     * {@link SafetyCenterData} against the given {@link Config}.
      *
      * <p>Setting a {@code null} {@link SafetySourceData} evicts the current {@link
      * SafetySourceData} entry.
      */
     boolean setSafetySourceData(
+            @NonNull Config config,
             @Nullable SafetySourceData safetySourceData,
             @NonNull String safetySourceId,
             @NonNull String packageName,
             @UserIdInt int userId) {
-        if (!configContains(safetySourceId, packageName)) {
+        if (!configContains(config, safetySourceId, packageName)) {
             // TODO(b/218801292): Should this be hard error for the caller?
             return false;
         }
@@ -118,17 +121,19 @@ final class SafetyCenterDataTracker {
 
     /**
      * Returns the latest {@link SafetySourceData} that was set by {@link #setSafetySourceData}
-     * for the given {@code safetySourceId}, {@code packageName} and {@code userId}.
+     * for the given {@code safetySourceId}, {@code packageName} and {@code userId} against the
+     * given {@link Config}.
      *
      * <p>Returns {@code null} if it was never set since boot, or if the entry was evicted using
      * {@link #setSafetySourceData} with a {@code null} value.
      */
     @Nullable
     SafetySourceData getSafetySourceData(
+            @NonNull Config config,
             @NonNull String safetySourceId,
             @NonNull String packageName,
             @UserIdInt int userId) {
-        if (!configContains(safetySourceId, packageName)) {
+        if (!configContains(config, safetySourceId, packageName)) {
             // TODO(b/218801292): Should this be hard error for the caller?
             return null;
         }
@@ -143,7 +148,7 @@ final class SafetyCenterDataTracker {
 
     /**
      * Returns the current {@link SafetyCenterData} for the given {@link UserProfileGroup},
-     * aggregated from all the {@link SafetySourceData} set so far.
+     * aggregated from all the {@link SafetySourceData} set so far against the given {@link Config}.
      *
      * <p>Returns an arbitrary default value if the {@link SafetyCenterConfig} is not available.
      *
@@ -151,8 +156,8 @@ final class SafetyCenterDataTracker {
      * SafetyCenterConfig} is used.
      */
     @NonNull
-    SafetyCenterData getSafetyCenterData(@NonNull UserProfileGroup userProfileGroup) {
-        SafetyCenterConfigReader.Config config = mSafetyCenterConfigReader.getConfig();
+    SafetyCenterData getSafetyCenterData(@NonNull Config config,
+            @NonNull UserProfileGroup userProfileGroup) {
         return getSafetyCenterData(config.getSafetySourcesGroups(), userProfileGroup);
     }
 
@@ -176,16 +181,9 @@ final class SafetyCenterDataTracker {
     }
 
     private boolean configContains(
+            @NonNull Config config,
             @NonNull String safetySourceId,
             @NonNull String packageName) {
-        SafetyCenterConfigReader.Config config = mSafetyCenterConfigReader.getConfig();
-
-        // TODO(b/217944317): Remove this allowlisting once the test API for the config is
-        //  available.
-        if (packageName.equals("android.safetycenter.cts")) {
-            return true;
-        }
-
         return config.getExternalSafetySources().contains(
                 SourceId.of(safetySourceId, packageName));
     }
@@ -369,10 +367,8 @@ final class SafetyCenterDataTracker {
                 new SafetyCenterEntryOrGroup(
                         new SafetyCenterEntryGroup.Builder(safetySourcesGroup.getId())
                                 .setSeverityLevel(maxSafetyCenterEntryLevel)
-                                .setTitle(mSafetyCenterConfigReader.readStringResource(
-                                        safetySourcesGroup.getTitleResId()))
-                                .setSummary(mSafetyCenterConfigReader.readStringResource(
-                                        safetySourcesGroup.getSummaryResId()))
+                                .setTitle(getString(safetySourcesGroup.getTitleResId()))
+                                .setSummary(getString(safetySourcesGroup.getSummaryResId()))
                                 .setEntries(entries)
                                 .build()
                 )
@@ -453,11 +449,9 @@ final class SafetyCenterDataTracker {
         // TODO(b/218817233): Add missing fields like: enabled.
         return new SafetyCenterEntry.Builder(safetySource.getId())
                 .setSeverityLevel(entrySeverityLevel)
-                .setTitle(mSafetyCenterConfigReader.readStringResource(
-                        isUserManaged ? safetySource.getTitleForWorkResId()
+                .setTitle(getString(isUserManaged ? safetySource.getTitleForWorkResId()
                                 : safetySource.getTitleResId()))
-                .setSummary(mSafetyCenterConfigReader.readStringResource(
-                        safetySource.getSummaryResId()))
+                .setSummary(getString(safetySource.getSummaryResId()))
                 .setPendingIntent(pendingIntent).build();
     }
 
@@ -492,8 +486,7 @@ final class SafetyCenterDataTracker {
 
         safetyCenterStaticEntryGroups.add(
                 new SafetyCenterStaticEntryGroup(
-                        mSafetyCenterConfigReader.readStringResource(
-                                safetySourcesGroup.getTitleResId()),
+                        getString(safetySourcesGroup.getTitleResId()),
                         staticEntries
                 )
         );
@@ -514,11 +507,9 @@ final class SafetyCenterDataTracker {
 
         staticEntries.add(
                 new SafetyCenterStaticEntry(
-                        mSafetyCenterConfigReader.readStringResource(
-                                isUserManaged ? safetySource.getTitleForWorkResId()
+                        getString(isUserManaged ? safetySource.getTitleForWorkResId()
                                         : safetySource.getTitleResId()),
-                        mSafetyCenterConfigReader.readStringResource(
-                                safetySource.getSummaryResId()),
+                        getString(safetySource.getSummaryResId()),
                         pendingIntent
                 )
         );
@@ -733,5 +724,16 @@ final class SafetyCenterDataTracker {
         public int hashCode() {
             return Objects.hash(mSafetySourceId, mPackageName, mUserId);
         }
+    }
+
+    /**
+     * Returns a {@link String} resource from the given {@code stringId}, using the {@link
+     * SafetyCenterResourcesContext}.
+     *
+     * <p>Throws a {@link NullPointerException} if the resource cannot be accessed.
+     */
+    @NonNull
+    private String getString(@StringRes int stringId) {
+        return mSafetyCenterResourcesContext.getString(stringId);
     }
 }
