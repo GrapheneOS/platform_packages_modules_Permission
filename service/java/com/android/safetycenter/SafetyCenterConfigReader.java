@@ -266,7 +266,7 @@ final class SafetyCenterConfigReader {
             for (int i = 0; i < broadcastReceivers.size(); i++) {
                 ComponentName componentName = broadcastReceivers.keyAt(i);
                 List<String> sourceIds = broadcastReceivers.valueAt(i);
-                // TODO(b/215144069): Handle work profile broadcasts.
+                // TODO(b/215144069): Handle managed profile broadcasts.
                 broadcasts.add(new Broadcast(componentName, sourceIds, new ArrayList<>()));
             }
 
@@ -344,22 +344,22 @@ final class SafetyCenterConfigReader {
         private final List<String> mSourceIdsForProfileOwner;
 
         @NonNull
-        private final List<String> mSourceIdsForWorkProfiles;
+        private final List<String> mSourceIdsForManagedProfiles;
 
 
         private Broadcast(
                 @NonNull ComponentName componentName,
                 @NonNull List<String> sourceIdsForProfileOwner,
-                @NonNull List<String> sourceIdsForWorkProfiles) {
+                @NonNull List<String> sourceIdsForManagedProfiles) {
             mComponentName = componentName;
             mSourceIdsForProfileOwner = sourceIdsForProfileOwner;
-            mSourceIdsForWorkProfiles = sourceIdsForWorkProfiles;
+            mSourceIdsForManagedProfiles = sourceIdsForManagedProfiles;
         }
 
         /** Creates a {@link Broadcast} for the given {@link ComponentName}. */
         @NonNull
         static Broadcast from(@NonNull ComponentName componentName) {
-            // TODO(b/215144069): Handle work profile broadcasts.
+            // TODO(b/215144069): Handle managed profile broadcasts.
             return new Broadcast(componentName,
                     Collections.singletonList("Remove this once test config is available"),
                     new ArrayList<>());
@@ -380,12 +380,12 @@ final class SafetyCenterConfigReader {
         }
 
         /**
-         * Returns the safety source ids associated with this broadcast in the work profile(s).
+         * Returns the safety source ids associated with this broadcast in the managed profile(s).
          *
-         * <p>If this list is empty, there are no sources to dispatch to in the work profile(s).
+         * <p>If this list is empty, there are no sources to dispatch to in the managed profile(s).
          */
-        public List<String> getSourceIdsForWorkProfiles() {
-            return mSourceIdsForWorkProfiles;
+        public List<String> getSourceIdsForManagedProfiles() {
+            return mSourceIdsForManagedProfiles;
         }
 
         @Override
@@ -394,14 +394,14 @@ final class SafetyCenterConfigReader {
             if (!(o instanceof Broadcast)) return false;
             Broadcast that = (Broadcast) o;
             return mComponentName.equals(that.mComponentName) && mSourceIdsForProfileOwner.equals(
-                    that.mSourceIdsForProfileOwner) && mSourceIdsForWorkProfiles.equals(
-                    that.mSourceIdsForWorkProfiles);
+                    that.mSourceIdsForProfileOwner) && mSourceIdsForManagedProfiles.equals(
+                    that.mSourceIdsForManagedProfiles);
         }
 
         @Override
         public int hashCode() {
             return Objects.hash(mComponentName, mSourceIdsForProfileOwner,
-                    mSourceIdsForWorkProfiles);
+                    mSourceIdsForManagedProfiles);
         }
 
         @Override
@@ -411,8 +411,8 @@ final class SafetyCenterConfigReader {
                     + mComponentName
                     + ", mSourceIdsForProfileOwner="
                     + mSourceIdsForProfileOwner
-                    + ", mSourceIdsForWorkProfiles="
-                    + mSourceIdsForWorkProfiles
+                    + ", mSourceIdsForManagedProfiles="
+                    + mSourceIdsForManagedProfiles
                     + '}';
         }
     }

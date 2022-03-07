@@ -141,15 +141,16 @@ public final class SafetyCenterService extends SystemService {
             }
             // TODO(b/218812582): Validate the SafetySourceData.
 
-            UserProfiles userProfiles = UserProfiles.from(getContext(), userId);
+            UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
             SafetyCenterData safetyCenterData = null;
             List<RemoteCallbackList<IOnSafetyCenterDataChangedListener>> listeners = null;
             synchronized (mApiLock) {
                 boolean hasUpdate = mSafetyCenterDataTracker.setSafetySourceData(
                         safetySourceData, safetySourceId, packageName, userId);
                 if (hasUpdate) {
-                    safetyCenterData = mSafetyCenterDataTracker.getSafetyCenterData(userProfiles);
-                    listeners = mSafetyCenterListeners.getListeners(userProfiles);
+                    safetyCenterData = mSafetyCenterDataTracker.getSafetyCenterData(
+                            userProfileGroup);
+                    listeners = mSafetyCenterListeners.getListeners(userProfileGroup);
                 }
             }
 
@@ -204,9 +205,9 @@ public final class SafetyCenterService extends SystemService {
                 return;
             }
 
-            UserProfiles userProfiles = UserProfiles.from(getContext(), userId);
+            UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
             synchronized (mRefreshLock) {
-                mSafetyCenterRefreshManager.refreshSafetySources(refreshReason, userProfiles);
+                mSafetyCenterRefreshManager.refreshSafetySources(refreshReason, userProfileGroup);
             }
         }
 
@@ -219,9 +220,9 @@ public final class SafetyCenterService extends SystemService {
                 return SafetyCenterDataTracker.getDefaultSafetyCenterData();
             }
 
-            UserProfiles userProfiles = UserProfiles.from(getContext(), userId);
+            UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
             synchronized (mApiLock) {
-                return mSafetyCenterDataTracker.getSafetyCenterData(userProfiles);
+                return mSafetyCenterDataTracker.getSafetyCenterData(userProfileGroup);
             }
         }
 
@@ -235,12 +236,13 @@ public final class SafetyCenterService extends SystemService {
                 return;
             }
 
-            UserProfiles userProfiles = UserProfiles.from(getContext(), userId);
+            UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
             SafetyCenterData safetyCenterData = null;
             synchronized (mApiLock) {
                 boolean registered = mSafetyCenterListeners.addListener(listener, userId);
                 if (registered) {
-                    safetyCenterData = mSafetyCenterDataTracker.getSafetyCenterData(userProfiles);
+                    safetyCenterData = mSafetyCenterDataTracker.getSafetyCenterData(
+                            userProfileGroup);
                 }
             }
 
@@ -363,10 +365,12 @@ public final class SafetyCenterService extends SystemService {
         private boolean enforceCrossUserPermission(@NonNull String message, @UserIdInt int userId) {
             UserUtils.enforceCrossUserPermission(userId, false, message, getContext());
             if (!UserUtils.isUserExistent(userId, getContext())) {
-                Log.e(TAG, String.format("User id %s does not correspond to an existing user",
-                        userId));
+                Log.e(TAG, String.format(
+                        "Called %s with user id %s, which does not correspond to an existing user",
+                        message, userId));
                 return false;
             }
+            // TODO(b/223132917): Check if user is enabled, running and if quiet mode is enabled?
             return true;
         }
     }
