@@ -26,7 +26,7 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.Constants;
-import com.android.permissioncontroller.permission.ui.handheld.SafetyCenterQSFragment;
+import com.android.permissioncontroller.permission.ui.handheld.SafetyCenterQsFragment;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -34,7 +34,7 @@ import java.util.Random;
 /**
  * Activity for the Safety Center Quick Settings Activity
  */
-public class SafetyCenterQSActivity extends FragmentActivity {
+public class SafetyCenterQsActivity extends FragmentActivity {
 
     @Override
     @SuppressWarnings("NewApi")
@@ -53,6 +53,6 @@ public class SafetyCenterQSActivity extends FragmentActivity {
         ArrayList<PermissionGroupUsage> permissionUsages = getIntent().getParcelableArrayListExtra(
                 PermissionManager.EXTRA_PERMISSION_USAGES);
         getSupportFragmentManager().beginTransaction().replace(android.R.id.content,
-                SafetyCenterQSFragment.newInstance(sessionId, permissionUsages)).commit();
+                SafetyCenterQsFragment.newInstance(sessionId, permissionUsages)).commit();
     }
 }
