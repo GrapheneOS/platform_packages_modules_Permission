@@ -138,12 +138,12 @@ package android.safetycenter {
     field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetyCenterEntryOrGroup> CREATOR;
   }
 
-  public final class SafetyCenterError implements android.os.Parcelable {
-    ctor public SafetyCenterError(@NonNull CharSequence);
+  public final class SafetyCenterErrorDetails implements android.os.Parcelable {
+    ctor public SafetyCenterErrorDetails(@NonNull CharSequence);
     method public int describeContents();
     method @NonNull public CharSequence getErrorMessage();
     method public void writeToParcel(@NonNull android.os.Parcel, int);
-    field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetyCenterError> CREATOR;
+    field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetyCenterErrorDetails> CREATOR;
   }
 
   public final class SafetyCenterIssue implements android.os.Parcelable {
@@ -210,7 +210,7 @@ package android.safetycenter {
     method @RequiresPermission(anyOf={android.Manifest.permission.READ_SAFETY_CENTER_STATUS, android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE}) public boolean isSafetyCenterEnabled();
     method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void refreshSafetySources(int);
     method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void removeOnSafetyCenterDataChangedListener(@NonNull android.safetycenter.SafetyCenterManager.OnSafetyCenterDataChangedListener);
-    method @RequiresPermission(android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE) public void reportSafetySourceError(@NonNull String, @NonNull android.safetycenter.SafetySourceError);
+    method @RequiresPermission(android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE) public void reportSafetySourceError(@NonNull String, @NonNull android.safetycenter.SafetySourceErrorDetails);
     method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void setSafetyCenterConfigOverride(@NonNull android.safetycenter.config.SafetyCenterConfig);
     method @RequiresPermission(android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE) public void setSafetySourceData(@NonNull String, @Nullable android.safetycenter.SafetySourceData, @NonNull android.safetycenter.SafetyEvent);
     field public static final String ACTION_REFRESH_SAFETY_SOURCES = "android.safetycenter.action.REFRESH_SAFETY_SOURCES";
@@ -228,7 +228,7 @@ package android.safetycenter {
   }
 
   public static interface SafetyCenterManager.OnSafetyCenterDataChangedListener {
-    method public default void onError(@NonNull android.safetycenter.SafetyCenterError);
+    method public default void onError(@NonNull android.safetycenter.SafetyCenterErrorDetails);
     method public void onSafetyCenterDataChanged(@NonNull android.safetycenter.SafetyCenterData);
   }
 
@@ -318,12 +318,12 @@ package android.safetycenter {
     method @NonNull public android.safetycenter.SafetySourceData.Builder setStatus(@Nullable android.safetycenter.SafetySourceStatus);
   }
 
-  public final class SafetySourceError implements android.os.Parcelable {
-    ctor public SafetySourceError(@NonNull android.safetycenter.SafetyEvent);
+  public final class SafetySourceErrorDetails implements android.os.Parcelable {
+    ctor public SafetySourceErrorDetails(@NonNull android.safetycenter.SafetyEvent);
     method public int describeContents();
     method @NonNull public android.safetycenter.SafetyEvent getSafetyEvent();
     method public void writeToParcel(@NonNull android.os.Parcel, int);
-    field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetySourceError> CREATOR;
+    field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetySourceErrorDetails> CREATOR;
   }
 
   public final class SafetySourceIssue implements android.os.Parcelable {

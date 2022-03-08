@@ -17,8 +17,8 @@
 package android.safetycenter;
 
 /**
- * Parcelable AIDL SafetyCenterError.
+ * Parcelable AIDL SafetyCenterErrorDetails.
  *
  * @hide
  */
-parcelable SafetyCenterError;
+parcelable SafetyCenterErrorDetails;
