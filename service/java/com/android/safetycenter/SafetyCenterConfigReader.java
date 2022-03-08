@@ -70,6 +70,9 @@ final class SafetyCenterConfigReader {
      *
      * <p>Returns {@code null} if {@link #loadConfig()} was never called or if there was
      * an issue when reading the {@link Config}.
+     *
+     * <p>The returned value is {@code @MonotonicNonNull}: if it is checked to be non-null once, it
+     * can be assumed that it won't be {@code null} ever after.
      */
     @Nullable
     Config getConfig() {

@@ -40,7 +40,6 @@ import android.os.Binder;
 import android.os.UserHandle;
 import android.safetycenter.SafetyCenterManager.RefreshReason;
 import android.safetycenter.SafetyCenterManager.RefreshRequestType;
-import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
@@ -109,10 +108,6 @@ final class SafetyCenterRefreshManager {
             @RefreshReason int refreshReason,
             @NonNull UserProfileGroup userProfileGroup) {
         SafetyCenterConfigReader.Config config = mSafetyCenterConfigReader.getConfig();
-        if (config == null) {
-            Log.w(TAG, "SafetyCenterConfigReader.Config unavailable, ignoring refresh");
-            return;
-        }
 
         // TODO(b/218157907): Do not recompute this, SafetyCenterConfigReader needs to be the
         // source of truth for additional sources.

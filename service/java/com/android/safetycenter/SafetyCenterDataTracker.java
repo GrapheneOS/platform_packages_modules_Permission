@@ -85,13 +85,11 @@ final class SafetyCenterDataTracker {
 
     /**
      * Sets the latest {@link SafetySourceData} for the given {@code safetySourceId}, {@code
-     * packageName} and {@code userId}, and returns the updated {@link SafetyCenterData} of the
-     * {@code userId}.
+     * packageName} and {@code userId}, and returns whether there was a change to the underlying
+     * {@link SafetyCenterData}.
      *
      * <p>Setting a {@code null} {@link SafetySourceData} evicts the current {@link
      * SafetySourceData} entry.
-     *
-     * <p>Returns whether there was a change to the underlying {@link SafetyCenterData}.
      */
     boolean setSafetySourceData(
             @Nullable SafetySourceData safetySourceData,
@@ -155,16 +153,12 @@ final class SafetyCenterDataTracker {
     @NonNull
     SafetyCenterData getSafetyCenterData(@NonNull UserProfileGroup userProfileGroup) {
         SafetyCenterConfigReader.Config config = mSafetyCenterConfigReader.getConfig();
-        if (config == null) {
-            Log.w(TAG,
-                    "SafetyCenterConfigReader.Config unavailable, returning default "
-                            + "SafetyCenterData");
-            return getDefaultSafetyCenterData();
-        }
-
         return getSafetyCenterData(config.getSafetySourcesGroups(), userProfileGroup);
     }
 
+    /**
+     * Returns a default {@link SafetyCenterData} object to be returned when the API is disabled.
+     */
     @NonNull
     static SafetyCenterData getDefaultSafetyCenterData() {
         return new SafetyCenterData(
@@ -185,12 +179,6 @@ final class SafetyCenterDataTracker {
             @NonNull String safetySourceId,
             @NonNull String packageName) {
         SafetyCenterConfigReader.Config config = mSafetyCenterConfigReader.getConfig();
-        if (config == null) {
-            Log.w(TAG,
-                    "SafetyCenterConfigReader.Config unavailable, assuming no sources can "
-                            + "send/get data");
-            return false;
-        }
 
         // TODO(b/217944317): Remove this allowlisting once the test API for the config is
         //  available.
