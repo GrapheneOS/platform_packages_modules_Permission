@@ -855,6 +855,24 @@
     <!-- The notification content for background location access reminder notification [CHAR LIMIT=none] -->
     <string name="background_location_access_reminder_notification_content">This app can always access your location. Tap to change.</string>
 
+    <!-- The notification title for background location access reminder notification [DO NOT TRANSLATE] [CHAR LIMIT=60] -->
+    <string name="notification_listener_reminder_notification_title">Review app with notification listener access</string>
+
+    <!-- The notification title for background location access reminder notification [DO NOT TRANSLATE] [CHAR LIMIT=60] -->
+    <string name="notification_listener_reminder_notification_title_plural">{count, plural,
+        =1      {Review app with notification listener access}
+        other   {Review apps with notification listener access}
+        }</string>
+
+    <!-- The notification content for background location access reminder notification [DO NOT TRANSLATE] [CHAR LIMIT=none] -->
+    <string name="notification_listener_reminder_notification_content"><xliff:g id="app_name" example="Gmail">%s</xliff:g> can read all your notifications.</string>
+
+    <!-- The notification content for background location access reminder notification [DO NOT TRANSLATE] [CHAR LIMIT=none] -->
+    <string name="notification_listener_reminder_notification_content_plural">{count, plural,
+        =1      {<xliff:g id="app_name" example="Gmail">%s</xliff:g> can read all your notifications.}
+        other   {# apps can read all your notifications.}
+        }</string>
+
     <!-- The notification title for the notification that a permission auto revoke has happened [CHAR LIMIT=60] -->
     <string name="auto_revoke_after_notification_title">App permissions removed to protect privacy</string>
 
