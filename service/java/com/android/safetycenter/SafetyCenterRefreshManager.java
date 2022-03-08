@@ -161,14 +161,14 @@ final class SafetyCenterRefreshManager {
                     UserHandle.of(profileOwnerUserId));
         }
         if (!broadcast.getSourceIdsForManagedProfiles().isEmpty()) {
-            int[] workProfilesUserIds = userProfileGroup.getManagedProfilesUserIds();
-            for (int i = 0; i < workProfilesUserIds.length; i++) {
-                int workProfileUserId = workProfilesUserIds[i];
+            int[] managedProfileUserIds = userProfileGroup.getManagedProfilesUserIds();
+            for (int i = 0; i < managedProfileUserIds.length; i++) {
+                int managedProfileUserId = managedProfileUserIds[i];
                 Intent broadcastIntent = createBroadcastIntent(
                         requestType,
                         broadcast.getComponentName(),
                         broadcast.getSourceIdsForManagedProfiles(),
-                        workProfileUserId);
+                        managedProfileUserId);
 
                 sendRefreshBroadcast(broadcastIntent, broadcastOptions,
                         UserHandle.of(userProfileGroup.getProfileOwnerUserId()));
