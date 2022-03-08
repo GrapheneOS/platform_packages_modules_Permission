@@ -68,7 +68,7 @@ import java.util.Map;
  * mic/camera/location toggles.
  */
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
-public class SafetyCenterQSFragment extends Fragment {
+public class SafetyCenterQsFragment extends Fragment {
     private static final ArrayMap<String, Integer> sToggleButtons = new ArrayMap<>();
 
     private long mSessionId;
@@ -87,12 +87,12 @@ public class SafetyCenterQSFragment extends Fragment {
      * @param sessionId The current session Id
      * @return A bundle with the required arguments
      */
-    public static SafetyCenterQSFragment newInstance(long sessionId,
+    public static SafetyCenterQsFragment newInstance(long sessionId,
             ArrayList<PermissionGroupUsage> usages) {
         Bundle args = new Bundle();
         args.putLong(EXTRA_SESSION_ID, sessionId);
         args.putParcelableArrayList(PermissionManager.EXTRA_PERMISSION_USAGES, usages);
-        SafetyCenterQSFragment frag = new SafetyCenterQSFragment();
+        SafetyCenterQsFragment frag = new SafetyCenterQsFragment();
         frag.setArguments(args);
         return frag;
     }

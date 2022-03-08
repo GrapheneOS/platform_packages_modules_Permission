@@ -29,7 +29,7 @@ import com.android.permissioncontroller.R
 /**
  * The service backing a Quick Settings Tile which will take users to the Safety Center QS Fragment.
  */
-class SafetyCenterQSTileService : TileService() {
+class SafetyCenterQsTileService : TileService() {
     private var disabled = false
 
     override fun onBind(intent: Intent?): IBinder? {
