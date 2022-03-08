@@ -21,6 +21,10 @@
          the list of system apps. [CHAR LIMIT=40] -->
     <string name="safetyCenterResourcesAppLabel">Safety Center Resources</string>
 
-    <!-- Temporary reference -->
-    <string name="reference" translatable="false">Reference</string>
+    <!-- Lock Screen -->
+    <string name="lock_screen_sources_title" description="The title of the group of safety settings relating to screen lock and biometrics">Screen lock</string>
+    <string name="lock_screen_title" description="The default title of the setting for managing the screen lock on the device">Screen lock</string>
+    <string name="lock_screen_summary_disabled" description="The default summary of the setting for managing screen lock on the device before the current state is known to safety center">Details available soon</string>
+
+    <string name="summary_placeholder" description="DO NOT TRANSLATE" translatable="false">&#160;</string>
 </resources>
