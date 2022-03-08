@@ -46,7 +46,7 @@ import com.android.permissioncontroller.permission.utils.LocationUtils
 import kotlin.collections.set
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
-class SafetyCenterViewModel(
+class SafetyCenterQSViewModel(
     private val app: Application,
     private val sessionId: Long,
     private val permGroupUsages: List<PermissionGroupUsage>
@@ -187,6 +187,6 @@ class SafetyCenterViewModelFactory(
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         @Suppress("UNCHECKED_CAST")
-        return SafetyCenterViewModel(app, sessionId, permGroupUsages) as T
+        return SafetyCenterQSViewModel(app, sessionId, permGroupUsages) as T
     }
 }

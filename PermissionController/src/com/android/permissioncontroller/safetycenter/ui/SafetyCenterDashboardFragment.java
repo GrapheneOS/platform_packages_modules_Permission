@@ -18,23 +18,21 @@ package com.android.permissioncontroller.safetycenter.ui;
 
 import static java.util.Objects.requireNonNull;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.safetycenter.SafetyCenterData;
 import android.safetycenter.SafetyCenterEntryOrGroup;
 import android.safetycenter.SafetyCenterIssue;
-import android.safetycenter.SafetyCenterManager;
-import android.safetycenter.SafetyCenterManager.OnSafetyCenterDataChangedListener;
 import android.safetycenter.SafetyCenterStaticEntryGroup;
 import android.safetycenter.SafetyCenterStatus;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceGroup;
 
 import com.android.permissioncontroller.R;
+import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -49,38 +47,18 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
     private static final String ENTRIES_GROUP_KEY = "entries_group";
     private static final String STATIC_ENTRIES_GROUP_KEY = "static_entries_group";
 
-    private SafetyCenterManager mSafetyCenterManager;
-
     private SafetyStatusPreference mSafetyStatusPreference;
     private PreferenceGroup mIssuesGroup;
     private PreferenceGroup mEntriesGroup;
     private PreferenceGroup mStaticEntriesGroup;
 
-    private final OnSafetyCenterDataChangedListener mOnSafetyCenterDataChangedListener =
-            new OnSafetyCenterDataChangedListener() {
-                @Override
-                public void onSafetyCenterDataChanged(@NonNull SafetyCenterData data) {
-                    Log.i(TAG, String.format(
-                            "onSafetyCenterDataChanged called with: %s", data.toString()));
-
-                    mSafetyStatusPreference.setSafetyStatus(data.getStatus());
-
-                    // TODO(b/208212820): Only update entries that have changed since last
-                    // update, rather than deleting and re-adding all.
-
-                    updateIssues(data.getIssues());
-                    updateSafetyEntries(data.getEntriesOrGroups());
-                    updateStaticSafetyEntries(data.getStaticEntryGroups());
-                }
-            };
+    private SafetyCenterViewModel mViewModel;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.safety_center_dashboard, rootKey);
 
-        Context context = requireNonNull(getContext());
-
-        mSafetyCenterManager = requireNonNull(context.getSystemService(SafetyCenterManager.class));
+        mViewModel = new ViewModelProvider(getActivity()).get(SafetyCenterViewModel.class);
 
         mSafetyStatusPreference = requireNonNull(
                 getPreferenceScreen().findPreference(SAFETY_STATUS_KEY));
@@ -90,24 +68,29 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
                 .setTitle("Looks good")
                 .setSummary("")
                 .build());
-        mSafetyStatusPreference.setRescanButtonOnClickListener(unused ->
-                mSafetyCenterManager.refreshSafetySources(
-                        SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK));
+        mSafetyStatusPreference.setRescanButtonOnClickListener(unused -> mViewModel.rescan());
 
         mIssuesGroup = getPreferenceScreen().findPreference(ISSUES_GROUP_KEY);
         mEntriesGroup = getPreferenceScreen().findPreference(ENTRIES_GROUP_KEY);
         mStaticEntriesGroup = getPreferenceScreen().findPreference(STATIC_ENTRIES_GROUP_KEY);
 
-        mSafetyCenterManager.addOnSafetyCenterDataChangedListener(
-                ContextCompat.getMainExecutor(context), mOnSafetyCenterDataChangedListener);
-        mSafetyCenterManager.refreshSafetySources(SafetyCenterManager.REFRESH_REASON_PAGE_OPEN);
+        mViewModel.getSafetyCenterLiveData().observe(this, this::renderSafetyCenterData);
+        getLifecycle().addObserver(mViewModel.getAutoRefreshManager());
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        mSafetyCenterManager.removeOnSafetyCenterDataChangedListener(
-                mOnSafetyCenterDataChangedListener);
+    private void renderSafetyCenterData(@Nullable SafetyCenterData data) {
+        if (data == null) return;
+
+        Log.i(TAG, String.format("renderSafetyCenterData called with: %s", data.toString()));
+
+        mSafetyStatusPreference.setSafetyStatus(data.getStatus());
+
+        // TODO(b/208212820): Only update entries that have changed since last
+        // update, rather than deleting and re-adding all.
+
+        updateIssues(data.getIssues());
+        updateSafetyEntries(data.getEntriesOrGroups());
+        updateStaticSafetyEntries(data.getStaticEntryGroups());
     }
 
     private void updateIssues(List<SafetyCenterIssue> issues) {
