@@ -58,9 +58,22 @@ public final class UserUtils {
     /** Returns whether a given {@code userId} corresponds to an existing user. */
     public static boolean isUserExistent(@UserIdInt int userId, @NonNull Context context) {
         UserManager userManager = context.getSystemService(UserManager.class);
+        // This call requires the MANAGE_USERS permission.
         final long identity = Binder.clearCallingIdentity();
         try {
             return userManager.getUserHandles(true).contains(UserHandle.of(userId));
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /** Returns whether a given {@code userId} corresponds to a managed profile. */
+    public static boolean isManagedProfile(@UserIdInt int userId, @NonNull Context context) {
+        UserManager userManager = context.getSystemService(UserManager.class);
+        // This call requires the QUERY_USERS permission.
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return userManager.isManagedProfile(userId);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
