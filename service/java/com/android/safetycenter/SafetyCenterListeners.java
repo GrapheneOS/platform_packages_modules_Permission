@@ -134,16 +134,16 @@ final class SafetyCenterListeners {
 
     /**
      * Returns all the {@link RemoteCallbackList} of {@link IOnSafetyCenterDataChangedListener} for
-     * the given {@link UserProfiles}.
+     * the given {@link UserProfileGroup}.
      */
     @NonNull
     List<RemoteCallbackList<IOnSafetyCenterDataChangedListener>> getListeners(
-            @NonNull UserProfiles userProfiles) {
+            @NonNull UserProfileGroup userProfileGroup) {
         List<RemoteCallbackList<IOnSafetyCenterDataChangedListener>> listeners = new ArrayList<>();
-        addToListIfNotNull(listeners, userProfiles.getProfileOwnerUserId());
-        int[] workProfilesUserIds = userProfiles.getWorkProfilesUserIds();
-        for (int i = 0; i < workProfilesUserIds.length; i++) {
-            addToListIfNotNull(listeners, workProfilesUserIds[i]);
+        addToListIfNotNull(listeners, userProfileGroup.getProfileOwnerUserId());
+        int[] managedProfilesUserIds = userProfileGroup.getManagedProfilesUserIds();
+        for (int i = 0; i < managedProfilesUserIds.length; i++) {
+            addToListIfNotNull(listeners, managedProfilesUserIds[i]);
         }
         return unmodifiableList(listeners);
     }

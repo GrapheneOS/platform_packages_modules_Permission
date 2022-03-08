@@ -107,7 +107,7 @@ final class SafetyCenterRefreshManager {
      */
     void refreshSafetySources(
             @RefreshReason int refreshReason,
-            @NonNull UserProfiles userProfiles) {
+            @NonNull UserProfileGroup userProfileGroup) {
         SafetyCenterConfigReader.Config config = mSafetyCenterConfigReader.getConfig();
         if (config == null) {
             Log.w(TAG, "SafetyCenterConfigReader.Config unavailable, ignoring refresh");
@@ -123,13 +123,13 @@ final class SafetyCenterRefreshManager {
             broadcasts.add(Broadcast.from(componentName));
         }
 
-        sendRefreshBroadcasts(broadcasts, toRefreshRequestType(refreshReason), userProfiles);
+        sendRefreshBroadcasts(broadcasts, toRefreshRequestType(refreshReason), userProfileGroup);
     }
 
     private void sendRefreshBroadcasts(
             @NonNull List<Broadcast> broadcasts,
             @RefreshRequestType int requestType,
-            @NonNull UserProfiles userProfiles) {
+            @NonNull UserProfileGroup userProfileGroup) {
         BroadcastOptions broadcastOptions = BroadcastOptions.makeBasic();
         // The following operation requires START_FOREGROUND_SERVICES_FROM_BACKGROUND
         // permission.
@@ -145,7 +145,7 @@ final class SafetyCenterRefreshManager {
         for (int i = 0; i < broadcasts.size(); i++) {
             Broadcast broadcast = broadcasts.get(i);
 
-            sendRefreshBroadcast(broadcast, broadcastOptions, requestType, userProfiles);
+            sendRefreshBroadcast(broadcast, broadcastOptions, requestType, userProfileGroup);
         }
     }
 
@@ -153,9 +153,9 @@ final class SafetyCenterRefreshManager {
             @NonNull Broadcast broadcast,
             @NonNull BroadcastOptions broadcastOptions,
             @RefreshRequestType int requestType,
-            @NonNull UserProfiles userProfiles) {
+            @NonNull UserProfileGroup userProfileGroup) {
         if (!broadcast.getSourceIdsForProfileOwner().isEmpty()) {
-            int profileOwnerUserId = userProfiles.getProfileOwnerUserId();
+            int profileOwnerUserId = userProfileGroup.getProfileOwnerUserId();
             Intent broadcastIntent = createBroadcastIntent(
                     requestType,
                     broadcast.getComponentName(),
@@ -165,18 +165,18 @@ final class SafetyCenterRefreshManager {
             sendRefreshBroadcast(broadcastIntent, broadcastOptions,
                     UserHandle.of(profileOwnerUserId));
         }
-        if (!broadcast.getSourceIdsForWorkProfiles().isEmpty()) {
-            int[] workProfilesUserIds = userProfiles.getWorkProfilesUserIds();
+        if (!broadcast.getSourceIdsForManagedProfiles().isEmpty()) {
+            int[] workProfilesUserIds = userProfileGroup.getManagedProfilesUserIds();
             for (int i = 0; i < workProfilesUserIds.length; i++) {
                 int workProfileUserId = workProfilesUserIds[i];
                 Intent broadcastIntent = createBroadcastIntent(
                         requestType,
                         broadcast.getComponentName(),
-                        broadcast.getSourceIdsForWorkProfiles(),
+                        broadcast.getSourceIdsForManagedProfiles(),
                         workProfileUserId);
 
                 sendRefreshBroadcast(broadcastIntent, broadcastOptions,
-                        UserHandle.of(workProfileUserId));
+                        UserHandle.of(userProfileGroup.getProfileOwnerUserId()));
             }
         }
     }
@@ -207,10 +207,10 @@ final class SafetyCenterRefreshManager {
                 Objects.hash(sourceIdsToRefresh, userId, System.currentTimeMillis()));
         return new Intent(ACTION_REFRESH_SAFETY_SOURCES)
                 .putExtra(EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE, requestType)
-                 // TODO(b/220826153): Test source ids in refresh broadcasts.
+                // TODO(b/220826153): Test source ids in refresh broadcasts.
                 .putExtra(EXTRA_REFRESH_SAFETY_SOURCE_IDS,
                         sourceIdsToRefresh.toArray(new String[0]))
-                 // TODO(b/222677992): Test refresh broadcast id in refresh broadcasts.
+                // TODO(b/222677992): Test refresh broadcast id in refresh broadcasts.
                 .putExtra(EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID, refreshBroadcastId)
                 .setFlags(FLAG_RECEIVER_FOREGROUND)
                 .setComponent(componentName);
