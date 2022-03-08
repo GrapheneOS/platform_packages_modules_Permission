@@ -81,9 +81,8 @@ public final class SafetyCenterManager {
      * <p>On receiving this broadcast, safety sources should determine their safety state according
      * to the parameters specified in the intent extras (see below) and set {@link SafetySourceData}
      * using {@link #setSafetySourceData}, along with a {@link SafetyEvent} with
-     * {@link SafetyEvent#getSafetyEventType()} set to
-     * {@link SafetyEvent#SAFETY_EVENT_TYPE_REFRESH_REQUESTED} and
-     * {@link SafetyEvent#getRefreshBroadcastId()} set to the value of broadcast intent extra
+     * {@link SafetyEvent#getType()} set to {@link SafetyEvent#SAFETY_EVENT_TYPE_REFRESH_REQUESTED}
+     * and {@link SafetyEvent#getRefreshBroadcastId()} set to the value of broadcast intent extra
      * {@link #EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID}. If the safety source is unable to provide
      * data, it can set a {@code null} {@link SafetySourceData}, which will clear any existing
      * {@link SafetySourceData} stored by Safety Center, and Safety Center will fall back to any
