@@ -23,7 +23,6 @@ import static java.util.Objects.requireNonNull;
 import android.annotation.IntDef;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
-import android.annotation.StringDef;
 import android.annotation.SystemApi;
 import android.app.PendingIntent;
 import android.os.Parcel;
@@ -49,25 +48,30 @@ public final class SafetySourceStatus implements Parcelable {
     /**
      * Indicates that no status is currently associated with the information. This may be due to the
      * source not having sufficient information or opinion on the status level.
-     * This status will be reflected in the UI through a grey icon.
+     *
+     * <p>This status will be reflected in the UI through a grey icon.
      */
     public static final int STATUS_LEVEL_NONE = 100;
 
     /**
-     * Indicates that no issues were detected. This status will be reflected in the UI through a
-     * green icon.
+     * Indicates that no issues were detected.
+     *
+     * <p>This status will be reflected in the UI through a green icon.
      */
     public static final int STATUS_LEVEL_OK = 200;
 
     /**
-     * Indicates the presence of a medium-status issue which the user is encouraged to act on.
-     * This status will be reflected in the UI through a yellow icon.
+     * Indicates the presence of a medium-level issue which the user is encouraged to act on.
+     *
+     * <p>This status will be reflected in the UI through a yellow icon.
      */
     public static final int STATUS_LEVEL_RECOMMENDATION = 300;
 
     /**
      * Indicates the presence of a critical or urgent safety issue that should be addressed by the
-     * user. This status will be reflected in the UI through a red icon.
+     * user.
+     *
+     * <p>This status will be reflected in the UI through a red icon.
      */
     public static final int STATUS_LEVEL_CRITICAL_WARNING = 400;
 
@@ -83,8 +87,7 @@ public final class SafetySourceStatus implements Parcelable {
                     int statusLevel = in.readInt();
                     PendingIntent pendingIntent =
                             requireNonNull(PendingIntent.readPendingIntentOrNullFromParcel(in));
-                    IconAction iconAction = in.readParcelable(IconAction.class.getClassLoader(),
-                            IconAction.class);
+                    IconAction iconAction = in.readTypedObject(IconAction.CREATOR);
                     boolean enabled = in.readBoolean();
                     return new SafetySourceStatus(title, summary, statusLevel, pendingIntent,
                             iconAction, enabled);
@@ -180,7 +183,7 @@ public final class SafetySourceStatus implements Parcelable {
         TextUtils.writeToParcel(mSummary, dest, flags);
         dest.writeInt(mStatusLevel);
         mPendingIntent.writeToParcel(dest, flags);
-        dest.writeParcelable(mIconAction, flags);
+        dest.writeTypedObject(mIconAction, flags);
         dest.writeBoolean(mEnabled);
     }
 
@@ -242,7 +245,7 @@ public final class SafetySourceStatus implements Parcelable {
                 new Parcelable.Creator<IconAction>() {
                     @Override
                     public IconAction createFromParcel(Parcel in) {
-                        String iconType = requireNonNull(in.readString());
+                        int iconType = in.readInt();
                         PendingIntent pendingIntent =
                                 requireNonNull(PendingIntent.readPendingIntentOrNullFromParcel(in));
                         return new IconAction(iconType, pendingIntent);
@@ -254,14 +257,12 @@ public final class SafetySourceStatus implements Parcelable {
                     }
                 };
 
-        @NonNull
         @IconType
-        private final String mIconType;
+        private final int mIconType;
         @NonNull
         private final PendingIntent mPendingIntent;
 
-        public IconAction(@NonNull @IconType String iconType,
-                @NonNull PendingIntent pendingIntent) {
+        public IconAction(@IconType int iconType, @NonNull PendingIntent pendingIntent) {
             this.mIconType = iconType;
             this.mPendingIntent = pendingIntent;
         }
@@ -271,9 +272,8 @@ public final class SafetySourceStatus implements Parcelable {
          *
          * <p>The icon type should indicate what action will be performed if when invoked.
          */
-        @NonNull
         @IconType
-        public String getIconType() {
+        public int getIconType() {
             return mIconType;
         }
 
@@ -290,7 +290,7 @@ public final class SafetySourceStatus implements Parcelable {
 
         @Override
         public void writeToParcel(@NonNull Parcel dest, int flags) {
-            dest.writeString(mIconType);
+            dest.writeInt(mIconType);
             mPendingIntent.writeToParcel(dest, flags);
         }
 
@@ -299,8 +299,7 @@ public final class SafetySourceStatus implements Parcelable {
             if (this == o) return true;
             if (!(o instanceof IconAction)) return false;
             IconAction that = (IconAction) o;
-            return TextUtils.equals(mIconType, that.mIconType)
-                    && mPendingIntent.equals(that.mPendingIntent);
+            return mIconType == that.mIconType && mPendingIntent.equals(that.mPendingIntent);
         }
 
         @Override
@@ -319,17 +318,17 @@ public final class SafetySourceStatus implements Parcelable {
         }
 
         /** Indicates a gear (cog) icon. */
-        public static final String ICON_TYPE_GEAR = "icon_type_gear";
+        public static final int ICON_TYPE_GEAR = 100;
 
         /** Indicates an information icon. */
-        public static final String ICON_TYPE_INFO = "icon_type_info";
+        public static final int ICON_TYPE_INFO = 200;
 
         /**
          * All possible icons which can be displayed in an {@link IconAction}.
          *
          * @hide
          */
-        @StringDef(prefix = {"ICON_TYPE_"}, value = {
+        @IntDef(prefix = {"ICON_TYPE_"}, value = {
                 ICON_TYPE_GEAR,
                 ICON_TYPE_INFO,
 
@@ -354,8 +353,6 @@ public final class SafetySourceStatus implements Parcelable {
      *
      * @hide
      */
-    // TODO(b/205806500): Determine full list of status levels. We may add a new one to signify
-    //  that there was an error retrieving data.
     @IntDef(prefix = {"STATUS_LEVEL_"}, value = {
             STATUS_LEVEL_NONE,
             STATUS_LEVEL_OK,
