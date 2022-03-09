@@ -246,7 +246,7 @@ final class SafetyCenterConfigReader {
         @NonNull
         private static List<Broadcast> extractBroadcasts(
                 @NonNull SafetyCenterConfig safetyCenterConfig) {
-            ArrayMap<ComponentName, List<String>> broadcastReceivers = new ArrayMap<>();
+            ArrayMap<ComponentName, Broadcast> componentNameToBroadcast = new ArrayMap<>();
             List<SafetySourcesGroup> safetySourcesGroups =
                     safetyCenterConfig.getSafetySourcesGroups();
             for (int i = 0; i < safetySourcesGroups.size(); i++) {
@@ -260,29 +260,37 @@ final class SafetyCenterConfigReader {
                         continue;
                     }
 
-                    String broadcastReceiver = safetySource.getBroadcastReceiverClassName();
-                    if (broadcastReceiver == null) {
+                    String broadcastReceiverClassName =
+                            safetySource.getBroadcastReceiverClassName();
+                    if (broadcastReceiverClassName == null) {
                         continue;
                     }
 
                     ComponentName componentName = new ComponentName(safetySource.getPackageName(),
-                            broadcastReceiver);
+                            broadcastReceiverClassName);
 
-                    List<String> sourceIds = broadcastReceivers.get(componentName);
-                    if (sourceIds == null) {
-                        sourceIds = new ArrayList<>();
-                        broadcastReceivers.put(componentName, sourceIds);
+                    Broadcast broadcast = componentNameToBroadcast.get(componentName);
+                    if (broadcast == null) {
+                        broadcast = new Broadcast(componentName, new ArrayList<>(),
+                                new ArrayList<>());
+                        componentNameToBroadcast.put(componentName, broadcast);
                     }
-                    sourceIds.add(safetySource.getId());
+                    broadcast.getSourceIdsForProfileOwner().add(safetySource.getId());
+                    // TODO(b/217688797): This might also be handled by the source directly.
+                    boolean needsManagedProfilesBroadcast = SafetySources.supportsManagedProfiles(
+                            safetySource);
+                    if (needsManagedProfilesBroadcast) {
+                        broadcast.getSourceIdsForManagedProfiles().add(safetySource.getId());
+                    }
                 }
             }
 
+            // TODO(b/223647746): Should we use a specific ordering for broadcasts?
             List<Broadcast> broadcasts = new ArrayList<>();
-            for (int i = 0; i < broadcastReceivers.size(); i++) {
-                ComponentName componentName = broadcastReceivers.keyAt(i);
-                List<String> sourceIds = broadcastReceivers.valueAt(i);
-                // TODO(b/215144069): Handle managed profile broadcasts.
-                broadcasts.add(new Broadcast(componentName, sourceIds, new ArrayList<>()));
+            for (int i = 0; i < componentNameToBroadcast.size(); i++) {
+                Broadcast broadcast = componentNameToBroadcast.valueAt(i);
+
+                broadcasts.add(broadcast);
             }
 
             return broadcasts;
