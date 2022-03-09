@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (C) 2021 The Android Open Source Project
+  ~ Copyright (C) 2022 The Android Open Source Project
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -14,8 +14,12 @@
   ~ limitations under the License.
   -->
 
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-       android:shape="rectangle">
-    <solid android:color="#30312B"/>
-    <corners android:radius="20dp" />
-</shape>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="12dp"
+        android:height="20dp"
+        android:viewportWidth="12.0"
+        android:viewportHeight="20.0"
+        android:tint="?android:attr/textColorPrimaryInverse">
+    <path android:pathData="M0.589966 14.59L1.99997 16L9.99997 8L1.99997 0L0.589966 1.41L7.16997 8"
+          android:fillColor="?android:attr/textColorPrimaryInverse"/>
+</vector>
