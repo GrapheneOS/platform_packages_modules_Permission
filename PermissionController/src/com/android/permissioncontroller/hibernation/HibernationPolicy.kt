@@ -429,8 +429,8 @@ suspend fun isPackageHibernationExemptBySystem(
         return true
     }
 
+    val context = PermissionControllerApplication.get()
     if (SdkLevel.isAtLeastS()) {
-        val context = PermissionControllerApplication.get()
         val hasInstallOrUpdatePermissions =
                 context.checkPermission(
                         Manifest.permission.INSTALL_PACKAGES, -1 /* pid */, pkg.uid) ==
@@ -459,6 +459,17 @@ suspend fun isPackageHibernationExemptBySystem(
         if (roleHolders.contains(pkg.packageName)) {
             if (DEBUG_HIBERNATION_POLICY) {
                 DumpableLog.i(LOG_TAG, "Exempted ${pkg.packageName} - wellbeing app")
+            }
+            return true
+        }
+    }
+
+    if (SdkLevel.isAtLeastT()) {
+        val roleHolders = context.getSystemService(android.app.role.RoleManager::class.java)!!
+            .getRoleHolders(RoleManager.ROLE_DEVICE_POLICY_MANAGEMENT)
+        if (roleHolders.contains(pkg.packageName)) {
+            if (DEBUG_HIBERNATION_POLICY) {
+                DumpableLog.i(LOG_TAG, "Exempted ${pkg.packageName} - device policy manager app")
             }
             return true
         }
