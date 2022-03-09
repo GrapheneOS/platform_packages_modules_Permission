@@ -25,19 +25,20 @@ import android.safetycenter.SafetySourceError;
 import android.safetycenter.config.SafetyCenterConfig;
 
 /**
- * AIDL service for the safety center.
+ * AIDL Interface for communicating with the Safety Center, which consolidates UI for security and
+ * privacy features on the device.
  *
- * This is the main entry point for gathering data from various safety sources. Safety sources can
- * call this service to provide new data to the safety center. This data will be aggregated and
- * merged into a single safety status, warning cards and settings preferences visible in the safety
- * center.
+ * These APIs are intended to be used by the following clients:
+ * <ul>
+ *     <li>Safety sources represented in Safety Center UI
+ *     <li>Dependents on the state of Safety Center UI
+ *     <li>Managers of Safety Center UI
+ * </ul>
  *
  * @hide
  */
 interface ISafetyCenterManager {
-    /**
-     * Returns whether the SafetyCenter page is enabled.
-     */
+    /** Returns whether the Safety Center feature is enabled. */
     boolean isSafetyCenterEnabled();
 
     /**
@@ -64,11 +65,11 @@ interface ISafetyCenterManager {
      * expected them to perform an action or provide data, but they were unable to do so.
      */
     void reportSafetySourceError(String safetySourceId,
-            in SafetySourceError error,
+            in SafetySourceError safetySourceError,
             String packageName,
             int userId);
 
-    /** Requests safety sources to send their latest SafetySourceData to Safety Center. */
+    /** Requests safety sources to set their latest SafetySourceData for Safety Center. */
     void refreshSafetySources(int refreshReason, int userId);
 
     /**
@@ -90,7 +91,7 @@ interface ISafetyCenterManager {
     void dismissSafetyIssue(String issueId, int userId);
 
     /** Executes the specified action on the specified issue. */
-    void executeAction(String safetyCenterIssueId, String safetyCenterActionId, int userId);
+    void executeAction(String safetyCenterIssueId, String safetyCenterIssueActionId, int userId);
 
     /**
      * Clears all SafetySourceData set by safety sources using setSafetySourceData.

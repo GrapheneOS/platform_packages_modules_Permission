@@ -24,11 +24,14 @@ import static android.os.PowerExemptionManager.TEMPORARY_ALLOW_LIST_TYPE_FOREGRO
 import static android.safetycenter.SafetyCenterManager.ACTION_REFRESH_SAFETY_SOURCES;
 import static android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_REQUEST_TYPE_FETCH_FRESH_DATA;
 import static android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_REQUEST_TYPE_GET_DATA;
+import static android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID;
 import static android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE;
+import static android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCE_IDS;
 import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_PAGE_OPEN;
 import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK;
 
 import android.annotation.NonNull;
+import android.annotation.UserIdInt;
 import android.app.BroadcastOptions;
 import android.content.ComponentName;
 import android.content.Context;
@@ -37,7 +40,6 @@ import android.os.Binder;
 import android.os.UserHandle;
 import android.safetycenter.SafetyCenterManager.RefreshReason;
 import android.safetycenter.SafetyCenterManager.RefreshRequestType;
-import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
@@ -46,6 +48,7 @@ import com.android.safetycenter.SafetyCenterConfigReader.Broadcast;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Class to manage and track refresh broadcasts sent by {@link SafetyCenterService}.
@@ -103,12 +106,8 @@ final class SafetyCenterRefreshManager {
      */
     void refreshSafetySources(
             @RefreshReason int refreshReason,
-            @NonNull UserProfiles userProfiles) {
+            @NonNull UserProfileGroup userProfileGroup) {
         SafetyCenterConfigReader.Config config = mSafetyCenterConfigReader.getConfig();
-        if (config == null) {
-            Log.w(TAG, "SafetyCenterConfigReader.Config unavailable, ignoring refresh");
-            return;
-        }
 
         // TODO(b/218157907): Do not recompute this, SafetyCenterConfigReader needs to be the
         // source of truth for additional sources.
@@ -119,13 +118,13 @@ final class SafetyCenterRefreshManager {
             broadcasts.add(Broadcast.from(componentName));
         }
 
-        sendRefreshBroadcasts(broadcasts, toRefreshRequestType(refreshReason), userProfiles);
+        sendRefreshBroadcasts(broadcasts, toRefreshRequestType(refreshReason), userProfileGroup);
     }
 
     private void sendRefreshBroadcasts(
             @NonNull List<Broadcast> broadcasts,
             @RefreshRequestType int requestType,
-            @NonNull UserProfiles userProfiles) {
+            @NonNull UserProfileGroup userProfileGroup) {
         BroadcastOptions broadcastOptions = BroadcastOptions.makeBasic();
         // The following operation requires START_FOREGROUND_SERVICES_FROM_BACKGROUND
         // permission.
@@ -141,7 +140,7 @@ final class SafetyCenterRefreshManager {
         for (int i = 0; i < broadcasts.size(); i++) {
             Broadcast broadcast = broadcasts.get(i);
 
-            sendRefreshBroadcast(broadcast, broadcastOptions, requestType, userProfiles);
+            sendRefreshBroadcast(broadcast, broadcastOptions, requestType, userProfileGroup);
         }
     }
 
@@ -149,23 +148,30 @@ final class SafetyCenterRefreshManager {
             @NonNull Broadcast broadcast,
             @NonNull BroadcastOptions broadcastOptions,
             @RefreshRequestType int requestType,
-            @NonNull UserProfiles userProfiles) {
+            @NonNull UserProfileGroup userProfileGroup) {
         if (!broadcast.getSourceIdsForProfileOwner().isEmpty()) {
-            // TODO(b/220826153): Add source ids to intent.
-            Intent broadcastIntent = createBaseIntent(requestType, broadcast);
+            int profileOwnerUserId = userProfileGroup.getProfileOwnerUserId();
+            Intent broadcastIntent = createBroadcastIntent(
+                    requestType,
+                    broadcast.getComponentName(),
+                    broadcast.getSourceIdsForProfileOwner(),
+                    profileOwnerUserId);
 
             sendRefreshBroadcast(broadcastIntent, broadcastOptions,
-                    UserHandle.of(userProfiles.getProfileOwnerUserId()));
+                    UserHandle.of(profileOwnerUserId));
         }
-        if (!broadcast.getSourceIdsForWorkProfiles().isEmpty()) {
-            // TODO(b/220826153): Add source ids to intent.
-            Intent broadcastIntent = createBaseIntent(requestType, broadcast);
-
-            int[] workProfilesUserIds = userProfiles.getWorkProfilesUserIds();
+        if (!broadcast.getSourceIdsForManagedProfiles().isEmpty()) {
+            int[] workProfilesUserIds = userProfileGroup.getManagedProfilesUserIds();
             for (int i = 0; i < workProfilesUserIds.length; i++) {
-                UserHandle userHandle = UserHandle.of(workProfilesUserIds[i]);
+                int workProfileUserId = workProfilesUserIds[i];
+                Intent broadcastIntent = createBroadcastIntent(
+                        requestType,
+                        broadcast.getComponentName(),
+                        broadcast.getSourceIdsForManagedProfiles(),
+                        workProfileUserId);
 
-                sendRefreshBroadcast(broadcastIntent, broadcastOptions, userHandle);
+                sendRefreshBroadcast(broadcastIntent, broadcastOptions,
+                        UserHandle.of(userProfileGroup.getProfileOwnerUserId()));
             }
         }
     }
@@ -187,13 +193,22 @@ final class SafetyCenterRefreshManager {
     }
 
     @NonNull
-    private static Intent createBaseIntent(
+    private static Intent createBroadcastIntent(
             @RefreshRequestType int requestType,
-            @NonNull Broadcast broadcast) {
+            @NonNull ComponentName componentName,
+            @NonNull List<String> sourceIdsToRefresh,
+            @UserIdInt int userId) {
+        String refreshBroadcastId = String.valueOf(
+                Objects.hash(sourceIdsToRefresh, userId, System.currentTimeMillis()));
         return new Intent(ACTION_REFRESH_SAFETY_SOURCES)
                 .putExtra(EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE, requestType)
+                // TODO(b/220826153): Test source ids in refresh broadcasts.
+                .putExtra(EXTRA_REFRESH_SAFETY_SOURCE_IDS,
+                        sourceIdsToRefresh.toArray(new String[0]))
+                // TODO(b/222677992): Test refresh broadcast id in refresh broadcasts.
+                .putExtra(EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID, refreshBroadcastId)
                 .setFlags(FLAG_RECEIVER_FOREGROUND)
-                .setComponent(broadcast.getComponentName());
+                .setComponent(componentName);
     }
 
     @RefreshRequestType

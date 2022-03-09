@@ -87,7 +87,7 @@ public final class SafetyEvent implements Parcelable {
     /**
      * Indicates that the device was rebooted.
      */
-    public static final int SAFETY_EVENT_TYPE_DEVICE_REBOOTED = 500;
+    public static final int SAFETY_EVENT_TYPE_DEVICE_REBOOTED = 600;
 
     @NonNull
     public static final Creator<SafetyEvent> CREATOR =
@@ -206,7 +206,7 @@ public final class SafetyEvent implements Parcelable {
 
     @Override
     public String toString() {
-        return "SafetySourceDataRewriteReason{"
+        return "SafetyEvent{"
                 + "mSafetyEventType="
                 + mSafetyEventType
                 + ", mRefreshBroadcastId='"

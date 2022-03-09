@@ -32,51 +32,58 @@ import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
+import com.android.permission.util.UserUtils;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
 /**
- * A class that represent all the profiles (profile owner and work profile(s)) associated with a
- * user id.
+ * A class that represent all the enabled profiles (profile owner and managed profile(s)) associated
+ * with a user id.
  */
 @RequiresApi(TIRAMISU)
-final class UserProfiles {
+final class UserProfileGroup {
 
     private static final String TAG = "UserProfiles";
 
     @UserIdInt
+    // TODO(b/223126212): Don't fork this — is there another value we could use?
     private static final int USER_NULL = -10000;
 
     @UserIdInt
     private final int mProfileOwnerUserId;
 
     @NonNull
-    private final int[] mWorkProfilesUserIds;
+    private final int[] mManagedProfilesUserIds;
 
-    private UserProfiles(@UserIdInt int profileOwnerUserId, @NonNull int[] workProfilesUserIds) {
+    private UserProfileGroup(
+            @UserIdInt int profileOwnerUserId,
+            @NonNull int[] managedProfilesUserIds) {
         mProfileOwnerUserId = profileOwnerUserId;
-        mWorkProfilesUserIds = workProfilesUserIds;
+        mManagedProfilesUserIds = managedProfilesUserIds;
     }
 
     /**
-     * Returns the {@link UserProfiles} associated with the given {@code userId}.
+     * Returns the {@link UserProfileGroup} associated with the given {@code userId}.
      *
      * <p>The given {@code userId} could be related to the profile owner or any of its associated
-     * work profile(s).
+     * managed profile(s).
      */
-    static UserProfiles from(@NonNull Context context, @UserIdInt int userId) {
+    static UserProfileGroup from(@NonNull Context context, @UserIdInt int userId) {
         Context userContext = getUserContext(context, UserHandle.of(userId));
         UserManager userManager = requireNonNull(userContext.getSystemService(UserManager.class));
-        List<UserHandle> userProfiles = getUserProfiles(userManager);
+        List<UserHandle> userProfiles = getEnabledUserProfiles(userManager);
         int profileOwnerUserId = USER_NULL;
-        int[] workProfileUserIds = new int[userProfiles.size() - 1];
-        int j = 0;
+        int[] managedProfileUserIds = new int[userProfiles.size()];
+        int managedProfileUserIdsLen = 0;
         for (int i = 0; i < userProfiles.size(); i++) {
-            int userProfileId = userProfiles.get(i).getIdentifier();
+            UserHandle userProfileHandle = userProfiles.get(i);
+            int userProfileId = userProfileHandle.getIdentifier();
 
-            if (isManagedProfile(userManager, userProfileId)) {
-                workProfileUserIds[j++] = userProfileId;
+            // TODO(b/223132917): Check if user profile is running and if quiet mode is enabled?
+            if (UserUtils.isManagedProfile(userProfileId, userContext)) {
+                managedProfileUserIds[managedProfileUserIdsLen++] = userProfileId;
             } else if (profileOwnerUserId == USER_NULL) {
                 profileOwnerUserId = userProfileId;
             } else {
@@ -89,28 +96,17 @@ final class UserProfiles {
             throw new IllegalStateException("Could not find profile owner user id");
         }
 
-        return new UserProfiles(profileOwnerUserId, workProfileUserIds);
+        return new UserProfileGroup(profileOwnerUserId,
+                Arrays.copyOf(managedProfileUserIds, managedProfileUserIdsLen));
     }
 
     @NonNull
-    private static List<UserHandle> getUserProfiles(
+    private static List<UserHandle> getEnabledUserProfiles(
             @NonNull UserManager userManager) {
         // This call requires the QUERY_USERS permission.
         final long callingIdentity = Binder.clearCallingIdentity();
         try {
             return userManager.getUserProfiles();
-        } finally {
-            Binder.restoreCallingIdentity(callingIdentity);
-        }
-    }
-
-    private static boolean isManagedProfile(
-            @NonNull UserManager userManager,
-            @UserIdInt int userId) {
-        // This call requires the QUERY_USERS permission.
-        final long callingIdentity = Binder.clearCallingIdentity();
-        try {
-            return userManager.isManagedProfile(userId);
         } finally {
             Binder.restoreCallingIdentity(callingIdentity);
         }
@@ -131,29 +127,29 @@ final class UserProfiles {
         }
     }
 
-    /** Returns the profile owner user id of the {@link UserProfiles}. */
+    /** Returns the profile owner user id of the {@link UserProfileGroup}. */
     int getProfileOwnerUserId() {
         return mProfileOwnerUserId;
     }
 
-    /** Returns the work profile user ids of the {@link UserProfiles}. */
-    int[] getWorkProfilesUserIds() {
-        return mWorkProfilesUserIds;
+    /** Returns the managed profile user ids of the {@link UserProfileGroup}. */
+    int[] getManagedProfilesUserIds() {
+        return mManagedProfilesUserIds;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof UserProfiles)) return false;
-        UserProfiles that = (UserProfiles) o;
+        if (!(o instanceof UserProfileGroup)) return false;
+        UserProfileGroup that = (UserProfileGroup) o;
         return mProfileOwnerUserId == that.mProfileOwnerUserId && Arrays.equals(
-                mWorkProfilesUserIds, that.mWorkProfilesUserIds);
+                mManagedProfilesUserIds, that.mManagedProfilesUserIds);
     }
 
     @Override
     public int hashCode() {
         int result = Objects.hash(mProfileOwnerUserId);
-        result = 31 * result + Arrays.hashCode(mWorkProfilesUserIds);
+        result = 31 * result + Arrays.hashCode(mManagedProfilesUserIds);
         return result;
     }
 
@@ -162,8 +158,8 @@ final class UserProfiles {
         return "UserProfiles{"
                 + "mProfileOwnerUserId="
                 + mProfileOwnerUserId
-                + ", mWorkProfilesUserIds="
-                + Arrays.toString(mWorkProfilesUserIds)
+                + ", mManagedProfilesUserIds="
+                + Arrays.toString(mManagedProfilesUserIds)
                 + '}';
     }
 }

@@ -85,13 +85,11 @@ final class SafetyCenterDataTracker {
 
     /**
      * Sets the latest {@link SafetySourceData} for the given {@code safetySourceId}, {@code
-     * packageName} and {@code userId}, and returns the updated {@link SafetyCenterData} of the
-     * {@code userId}.
+     * packageName} and {@code userId}, and returns whether there was a change to the underlying
+     * {@link SafetyCenterData}.
      *
      * <p>Setting a {@code null} {@link SafetySourceData} evicts the current {@link
      * SafetySourceData} entry.
-     *
-     * <p>Returns whether there was a change to the underlying {@link SafetyCenterData}.
      */
     boolean setSafetySourceData(
             @Nullable SafetySourceData safetySourceData,
@@ -144,8 +142,8 @@ final class SafetyCenterDataTracker {
     }
 
     /**
-     * Returns the current {@link SafetyCenterData} for the given {@link UserProfiles}, aggregated
-     * from all the {@link SafetySourceData} set so far.
+     * Returns the current {@link SafetyCenterData} for the given {@link UserProfileGroup},
+     * aggregated from all the {@link SafetySourceData} set so far.
      *
      * <p>Returns an arbitrary default value if the {@link SafetyCenterConfig} is not available.
      *
@@ -153,18 +151,14 @@ final class SafetyCenterDataTracker {
      * SafetyCenterConfig} is used.
      */
     @NonNull
-    SafetyCenterData getSafetyCenterData(@NonNull UserProfiles userProfiles) {
+    SafetyCenterData getSafetyCenterData(@NonNull UserProfileGroup userProfileGroup) {
         SafetyCenterConfigReader.Config config = mSafetyCenterConfigReader.getConfig();
-        if (config == null) {
-            Log.w(TAG,
-                    "SafetyCenterConfigReader.Config unavailable, returning default "
-                            + "SafetyCenterData");
-            return getDefaultSafetyCenterData();
-        }
-
-        return getSafetyCenterData(config.getSafetySourcesGroups(), userProfiles);
+        return getSafetyCenterData(config.getSafetySourcesGroups(), userProfileGroup);
     }
 
+    /**
+     * Returns a default {@link SafetyCenterData} object to be returned when the API is disabled.
+     */
     @NonNull
     static SafetyCenterData getDefaultSafetyCenterData() {
         return new SafetyCenterData(
@@ -185,12 +179,6 @@ final class SafetyCenterDataTracker {
             @NonNull String safetySourceId,
             @NonNull String packageName) {
         SafetyCenterConfigReader.Config config = mSafetyCenterConfigReader.getConfig();
-        if (config == null) {
-            Log.w(TAG,
-                    "SafetyCenterConfigReader.Config unavailable, assuming no sources can "
-                            + "send/get data");
-            return false;
-        }
 
         // TODO(b/217944317): Remove this allowlisting once the test API for the config is
         //  available.
@@ -205,7 +193,7 @@ final class SafetyCenterDataTracker {
     @NonNull
     private SafetyCenterData getSafetyCenterData(
             @NonNull List<SafetySourcesGroup> safetySourcesGroups,
-            @NonNull UserProfiles userProfiles) {
+            @NonNull UserProfileGroup userProfileGroup) {
         int maxSafetyCenterEntryLevel = SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN;
         List<SafetyCenterIssue> safetyCenterIssues = new ArrayList<>();
         List<SafetyCenterEntryOrGroup> safetyCenterEntryOrGroups = new ArrayList<>();
@@ -219,19 +207,20 @@ final class SafetyCenterDataTracker {
                 case SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_COLLAPSIBLE: {
                     groupSafetyCenterEntryLevel = Math.max(
                             addSafetyCenterIssues(safetyCenterIssues, safetySourcesGroup,
-                                    userProfiles),
+                                    userProfileGroup),
                             addSafetyCenterEntryGroup(
-                                    safetyCenterEntryOrGroups, safetySourcesGroup, userProfiles));
+                                    safetyCenterEntryOrGroups, safetySourcesGroup,
+                                    userProfileGroup));
                     break;
                 }
                 case SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_RIGID: {
                     addSafetyCenterStaticEntryGroup(safetyCenterStaticEntryGroups,
-                            safetySourcesGroup, userProfiles);
+                            safetySourcesGroup, userProfileGroup);
                     break;
                 }
                 case SafetySourcesGroup.SAFETY_SOURCES_GROUP_TYPE_HIDDEN: {
                     groupSafetyCenterEntryLevel = addSafetyCenterIssues(safetyCenterIssues,
-                            safetySourcesGroup, userProfiles);
+                            safetySourcesGroup, userProfileGroup);
                     break;
                 }
             }
@@ -257,7 +246,7 @@ final class SafetyCenterDataTracker {
     private int addSafetyCenterIssues(
             @NonNull List<SafetyCenterIssue> safetyCenterIssues,
             @NonNull SafetySourcesGroup safetySourcesGroup,
-            @NonNull UserProfiles userProfiles) {
+            @NonNull UserProfileGroup userProfileGroup) {
         int maxSafetyCenterEntrySeverityLevel = SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN;
         List<SafetySource> safetySources = safetySourcesGroup.getSafetySources();
         for (int i = 0; i < safetySources.size(); i++) {
@@ -269,7 +258,7 @@ final class SafetyCenterDataTracker {
 
             // TODO(b/218819144): Merge for all profiles.
             Key key = Key.of(safetySource.getId(), safetySource.getPackageName(),
-                    userProfiles.getProfileOwnerUserId());
+                    userProfileGroup.getProfileOwnerUserId());
             SafetySourceData safetySourceData = mSafetySourceDataForKey.get(key);
             if (safetySourceData == null) {
                 continue;
@@ -323,7 +312,7 @@ final class SafetyCenterDataTracker {
     private int addSafetyCenterEntryGroup(
             @NonNull List<SafetyCenterEntryOrGroup> safetyCenterEntryOrGroups,
             @NonNull SafetySourcesGroup safetySourcesGroup,
-            @NonNull UserProfiles userProfiles) {
+            @NonNull UserProfileGroup userProfileGroup) {
         int maxSafetyCenterEntryLevel = SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN;
 
         List<SafetySource> safetySources = safetySourcesGroup.getSafetySources();
@@ -333,7 +322,7 @@ final class SafetyCenterDataTracker {
 
             // TODO(b/218819144): Merge for all profiles.
             SafetyCenterEntry safetyCenterEntry = toSafetyCenterEntry(safetySource,
-                    userProfiles.getProfileOwnerUserId());
+                    userProfileGroup.getProfileOwnerUserId());
             if (safetyCenterEntry == null) {
                 continue;
             }
@@ -425,7 +414,7 @@ final class SafetyCenterDataTracker {
     private void addSafetyCenterStaticEntryGroup(
             @NonNull List<SafetyCenterStaticEntryGroup> safetyCenterStaticEntryGroups,
             @NonNull SafetySourcesGroup safetySourcesGroup,
-            @NonNull UserProfiles userProfiles) {
+            @NonNull UserProfileGroup userProfileGroup) {
         List<SafetySource> safetySources = safetySourcesGroup.getSafetySources();
         List<SafetyCenterStaticEntry> staticEntries = new ArrayList<>(safetySources.size());
         for (int i = 0; i < safetySources.size(); i++) {
@@ -438,7 +427,7 @@ final class SafetyCenterDataTracker {
 
             // TODO(b/218819144): Merge for all profiles.
             PendingIntent pendingIntent = toPendingIntent(safetySource.getIntentAction(),
-                    null, userProfiles.getProfileOwnerUserId());
+                    null, userProfileGroup.getProfileOwnerUserId());
             if (pendingIntent == null) {
                 // TODO(b/218817241): We may make the PendingIntent nullable, in which case we
                 //  won't want to skip here.
