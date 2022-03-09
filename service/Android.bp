@@ -17,7 +17,7 @@ package {
 }
 
 filegroup {
-    name: "service-permission-sources",
+    name: "service-permission-java-sources",
     srcs: [
         "java/**/*.java",
         // Exclude Kotlin sources for T.
@@ -28,15 +28,15 @@ filegroup {
 }
 
 filegroup {
-    name: "service-permission-protos",
+    name: "service-permission-streaming-proto-sources",
     srcs: [
-        "proto/**/*.proto",
+        "proto/role_service.proto",
     ],
     visibility: ["//frameworks/base"],
 }
 
 gensrcs {
-    name: "service-permission-javastream-protos",
+    name: "service-permission-streaming-proto-java-gen",
     depfile: true,
 
     tools: [
@@ -56,7 +56,7 @@ gensrcs {
         "&& $(location soong_zip) -jar -o $(out) -C $(genDir)/$(in) -D $(genDir)/$(in)",
 
     srcs: [
-        ":service-permission-protos",
+        ":service-permission-streaming-proto-sources",
     ],
     output_extension: "srcjar",
 }
@@ -87,11 +87,11 @@ java_sdk_library {
         "//frameworks/base/apex/permission/tests",
         "//frameworks/base/services/tests/mockingservicestests",
         "//frameworks/base/services/tests/servicestests",
-        "//packages/modules/Permission/tests",
+        "//packages/modules/Permission/tests/apex",
     ],
     srcs: [
-        ":service-permission-sources",
-        ":service-permission-javastream-protos",
+        ":service-permission-java-sources",
+        ":service-permission-streaming-proto-java-gen",
     ],
     libs: [
         "androidx.annotation_annotation",
