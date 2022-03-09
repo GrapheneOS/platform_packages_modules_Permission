@@ -47,4 +47,18 @@ final class SafetySources {
         Log.w(TAG, String.format("Unexpected safety source type: %s", safetySourceType));
         return false;
     }
+
+    /** Returns whether a {@link SafetySource} supports managed profiles. */
+    static boolean supportsManagedProfiles(@NonNull SafetySource safetySource) {
+        int safetySourceProfile = safetySource.getProfile();
+        switch (safetySourceProfile) {
+            case SafetySource.PROFILE_PRIMARY:
+            case SafetySource.PROFILE_NONE:
+                return false;
+            case SafetySource.PROFILE_ALL:
+                return true;
+        }
+        Log.w(TAG, String.format("Unexpected safety source profile: %s", safetySourceProfile));
+        return false;
+    }
 }

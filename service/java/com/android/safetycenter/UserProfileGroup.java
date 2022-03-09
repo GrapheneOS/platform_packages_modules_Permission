@@ -71,8 +71,7 @@ final class UserProfileGroup {
      * managed profile(s).
      */
     static UserProfileGroup from(@NonNull Context context, @UserIdInt int userId) {
-        Context userContext = getUserContext(context, UserHandle.of(userId));
-        UserManager userManager = requireNonNull(userContext.getSystemService(UserManager.class));
+        UserManager userManager = getUserManagerForUser(userId, context);
         List<UserHandle> userProfiles = getEnabledUserProfiles(userManager);
         int profileOwnerUserId = USER_NULL;
         int[] managedProfileUserIds = new int[userProfiles.size()];
@@ -81,8 +80,8 @@ final class UserProfileGroup {
             UserHandle userProfileHandle = userProfiles.get(i);
             int userProfileId = userProfileHandle.getIdentifier();
 
-            // TODO(b/223132917): Check if user profile is running and if quiet mode is enabled?
-            if (UserUtils.isManagedProfile(userProfileId, userContext)) {
+            // TODO(b/223132917): Check if user running and/or if quiet mode is enabled?
+            if (UserUtils.isManagedProfile(userProfileId, context)) {
                 managedProfileUserIds[managedProfileUserIdsLen++] = userProfileId;
             } else if (profileOwnerUserId == USER_NULL) {
                 profileOwnerUserId = userProfileId;
@@ -101,15 +100,11 @@ final class UserProfileGroup {
     }
 
     @NonNull
-    private static List<UserHandle> getEnabledUserProfiles(
-            @NonNull UserManager userManager) {
-        // This call requires the QUERY_USERS permission.
-        final long callingIdentity = Binder.clearCallingIdentity();
-        try {
-            return userManager.getUserProfiles();
-        } finally {
-            Binder.restoreCallingIdentity(callingIdentity);
-        }
+    private static UserManager getUserManagerForUser(
+            @UserIdInt int userId,
+            @NonNull Context context) {
+        Context userContext = getUserContext(context, UserHandle.of(userId));
+        return requireNonNull(userContext.getSystemService(UserManager.class));
     }
 
     @NonNull
@@ -124,6 +119,18 @@ final class UserProfileGroup {
             } catch (PackageManager.NameNotFoundException doesNotHappen) {
                 throw new IllegalStateException(doesNotHappen);
             }
+        }
+    }
+
+    @NonNull
+    private static List<UserHandle> getEnabledUserProfiles(
+            @NonNull UserManager userManager) {
+        // This call requires the QUERY_USERS permission.
+        final long callingIdentity = Binder.clearCallingIdentity();
+        try {
+            return userManager.getUserProfiles();
+        } finally {
+            Binder.restoreCallingIdentity(callingIdentity);
         }
     }
 
