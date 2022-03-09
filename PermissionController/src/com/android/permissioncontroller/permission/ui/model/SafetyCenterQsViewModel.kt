@@ -219,7 +219,7 @@ class SafetyCenterQsViewModel(
  * @param sessionId A session ID used in logs to identify this particular session
  */
 @RequiresApi(Build.VERSION_CODES.S)
-class SafetyCenterViewModelFactory(
+class SafetyCenterQsViewModelFactory(
     private val app: Application,
     private val sessionId: Long,
     private val permGroupUsages: List<PermissionGroupUsage>
