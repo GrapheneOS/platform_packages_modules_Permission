@@ -49,8 +49,8 @@ import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
+import com.android.permission.util.UserUtils;
 import com.android.safetycenter.SafetyCenterConfigReader.Config;
-import com.android.safetycenter.SafetyCenterConfigReader.SourceId;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 
 import java.util.ArrayList;
@@ -86,9 +86,13 @@ final class SafetyCenterDataTracker {
     }
 
     /**
-     * Sets the latest {@link SafetySourceData} for the given {@code safetySourceId}, {@code
-     * packageName} and {@code userId}, and returns whether there was a change to the underlying
-     * {@link SafetyCenterData} against the given {@link Config}.
+     * Sets the latest {@link SafetySourceData} for the given {@code safetySourceId} and {@code
+     * userId}, and returns whether there was a change to the underlying {@link SafetyCenterData}
+     * against the given {@link Config}.
+     *
+     * <p>Throws if the request is invalid based on the Safety Center config: the given {@code
+     * safetySourceId}, {@code packageName} and {@code userId} are unexpected; or the {@link
+     * SafetySourceData} does not respect all constraints defined in the config.
      *
      * <p>Setting a {@code null} {@link SafetySourceData} evicts the current {@link
      * SafetySourceData} entry.
@@ -99,12 +103,9 @@ final class SafetyCenterDataTracker {
             @NonNull String safetySourceId,
             @NonNull String packageName,
             @UserIdInt int userId) {
-        if (!configContains(config, safetySourceId, packageName)) {
-            // TODO(b/218801292): Should this be hard error for the caller?
-            return false;
-        }
+        validateRequest(config, safetySourceData, safetySourceId, packageName, userId);
 
-        Key key = Key.of(safetySourceId, packageName, userId);
+        Key key = Key.of(safetySourceId, userId);
         SafetySourceData existingSafetySourceData = mSafetySourceDataForKey.get(key);
         if (Objects.equals(safetySourceData, existingSafetySourceData)) {
             return false;
@@ -121,8 +122,10 @@ final class SafetyCenterDataTracker {
 
     /**
      * Returns the latest {@link SafetySourceData} that was set by {@link #setSafetySourceData}
-     * for the given {@code safetySourceId}, {@code packageName} and {@code userId} against the
-     * given {@link Config}.
+     * for the given {@code safetySourceId} and {@code userId} against the given {@link Config}.
+     *
+     * <p>Throws if the request is invalid based on the Safety Center config: the given {@code
+     * safetySourceId}, {@code packageName} and {@code userId} are unexpected.
      *
      * <p>Returns {@code null} if it was never set since boot, or if the entry was evicted using
      * {@link #setSafetySourceData} with a {@code null} value.
@@ -133,12 +136,8 @@ final class SafetyCenterDataTracker {
             @NonNull String safetySourceId,
             @NonNull String packageName,
             @UserIdInt int userId) {
-        if (!configContains(config, safetySourceId, packageName)) {
-            // TODO(b/218801292): Should this be hard error for the caller?
-            return null;
-        }
-
-        return mSafetySourceDataForKey.get(Key.of(safetySourceId, packageName, userId));
+        validateRequest(config, null, safetySourceId, packageName, userId);
+        return mSafetySourceDataForKey.get(Key.of(safetySourceId, userId));
     }
 
     /** Clears all the {@link SafetySourceData} set received so far, for all users. */
@@ -180,12 +179,67 @@ final class SafetyCenterDataTracker {
         );
     }
 
-    private boolean configContains(
+    private void validateRequest(
             @NonNull Config config,
+            @Nullable SafetySourceData safetySourceData,
             @NonNull String safetySourceId,
-            @NonNull String packageName) {
-        return config.getExternalSafetySources().contains(
-                SourceId.of(safetySourceId, packageName));
+            @NonNull String packageName,
+            @UserIdInt int userId) {
+        SafetySource safetySource = config.getExternalSafetySources().get(safetySourceId);
+        if (safetySource == null) {
+            throw new IllegalArgumentException(
+                    String.format("Unexpected safety source \"%s\"", safetySourceId));
+        }
+
+        // TODO(b/222330089): Security: check certs?
+        if (!packageName.equals(safetySource.getPackageName())) {
+            throw new IllegalArgumentException(
+                    String.format("Unexpected package name \"%s\" for safety source \"%s\"",
+                            packageName, safetySourceId));
+        }
+
+        // TODO(b/222327845)): Security: check package is installed for user?
+
+        if (UserUtils.isManagedProfile(userId, mContext)
+                && !SafetySources.supportsManagedProfiles(safetySource)) {
+            throw new IllegalArgumentException(
+                    String.format("Unexpected managed profile request for safety source \"%s\"",
+                            safetySourceId));
+        }
+
+        boolean retrievingOrClearingData = safetySourceData == null;
+        if (retrievingOrClearingData) {
+            return;
+        }
+
+        if (safetySource.getType() == SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY
+                && safetySourceData.getStatus() != null) {
+            throw new IllegalArgumentException(
+                    String.format("Unexpected status for issue only safety source \"%s\"",
+                            safetySourceId));
+        }
+
+        if (safetySource.getType() == SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC
+                && safetySourceData.getStatus() == null) {
+            throw new IllegalArgumentException(
+                    String.format("Missing status for dynamic safety source \"%s\"",
+                            safetySourceId));
+        }
+
+        int maxSeverityLevel = Integer.MIN_VALUE;
+        for (int i = 0; i < safetySourceData.getIssues().size(); i++) {
+            maxSeverityLevel = Math.max(maxSeverityLevel,
+                    safetySourceData.getIssues().get(i).getSeverityLevel());
+        }
+        // TODO(b/219700241): Should we also check the status level? There will probably be other
+        //  rules that enforce that status level and issue severity levels are consistent, but
+        //  should this check be independent of those rules? Will reconsider after we decide if we
+        //  can consolidate API IntDefs.
+        if (maxSeverityLevel > safetySource.getMaxSeverityLevel()) {
+            throw new IllegalArgumentException(
+                    String.format("Unexpected max severity level \"%d\" for safety source \"%s\"",
+                            maxSeverityLevel, safetySourceId));
+        }
     }
 
     @NonNull
@@ -226,6 +280,8 @@ final class SafetyCenterDataTracker {
             maxSafetyCenterEntryLevel = Math.max(maxSafetyCenterEntryLevel,
                     groupSafetyCenterEntryLevel);
         }
+
+        // TODO(b/223349473): Reorder safetyCenterIssues based on some criteria
 
         int safetyCenterOverallSeverityLevel = entryToSafetyCenterStatusOverallLevel(
                 maxSafetyCenterEntryLevel);
@@ -280,7 +336,7 @@ final class SafetyCenterDataTracker {
             @NonNull List<SafetyCenterIssue> safetyCenterIssues,
             @NonNull SafetySource safetySource,
             @UserIdInt int userId) {
-        Key key = Key.of(safetySource.getId(), safetySource.getPackageName(), userId);
+        Key key = Key.of(safetySource.getId(), userId);
         SafetySourceData safetySourceData = mSafetySourceDataForKey.get(key);
 
         if (safetySourceData == null) {
@@ -400,11 +456,11 @@ final class SafetyCenterDataTracker {
             @UserIdInt int userId) {
         switch (safetySource.getType()) {
             case SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY: {
-                Log.w(TAG, "Issue only safety source found in collapsible group");
+                Log.i(TAG, "Issue only safety source found in collapsible group");
                 return null;
             }
             case SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC: {
-                Key key = Key.of(safetySource.getId(), safetySource.getPackageName(), userId);
+                Key key = Key.of(safetySource.getId(), userId);
                 SafetySourceStatus safetySourceStatus = getSafetySourceStatus(
                         mSafetySourceDataForKey.get(key));
                 // TODO(b/218817233): Add missing fields like: iconAction, statelessIconType.
@@ -465,6 +521,7 @@ final class SafetyCenterDataTracker {
             SafetySource safetySource = safetySources.get(i);
 
             if (SafetySources.isExternal(safetySource)) {
+                // TODO(b/218629299): Where does work policy info go? do we need to relax this?
                 Log.w(TAG, "External safety source found in rigid group");
                 continue;
             }
@@ -581,6 +638,7 @@ final class SafetyCenterDataTracker {
                         safetyCenterEntrySeverityLevel));
     }
 
+    // TODO(b/219700241): Should we consolidate IntDefs? and in which parts of the API?
     @SafetyCenterEntry.EntrySeverityLevel
     private static int issueToSafetyCenterEntryLevel(
             @SafetyCenterIssue.IssueSeverityLevel int safetyCenterIssueSeverityLevel) {
@@ -673,40 +731,33 @@ final class SafetyCenterDataTracker {
     }
 
     /**
-     * A key for {@link SafetySourceData}; based on the {@code safetySourceId}, {@code
-     * packageName} and {@code userId}.
+     * A key for {@link SafetySourceData}; based on the {@code safetySourceId} and {@code userId}.
      */
     // TODO(b/219697341): Look into using AutoValue for this data class.
     private static final class Key {
         @NonNull
         private final String mSafetySourceId;
-        @NonNull
-        private final String mPackageName;
         @UserIdInt
         private final int mUserId;
 
         private Key(
                 @NonNull String safetySourceId,
-                @NonNull String packageName,
                 @UserIdInt int userId) {
             mSafetySourceId = safetySourceId;
-            mPackageName = packageName;
             mUserId = userId;
         }
 
         @NonNull
         private static Key of(
                 @NonNull String safetySourceId,
-                @NonNull String packageName,
                 @UserIdInt int userId) {
-            return new Key(safetySourceId, packageName, userId);
+            return new Key(safetySourceId, userId);
         }
 
         @Override
         public String toString() {
             return "Key{"
                     + "mSafetySourceId='" + mSafetySourceId + '\''
-                    + ", mPackageName='" + mPackageName + '\''
                     + ", mUserId=" + mUserId + '\''
                     + '}';
         }
@@ -716,13 +767,12 @@ final class SafetyCenterDataTracker {
             if (this == o) return true;
             if (!(o instanceof Key)) return false;
             Key key = (Key) o;
-            return mSafetySourceId.equals(key.mSafetySourceId) && mPackageName.equals(
-                    key.mPackageName) && mUserId == key.mUserId;
+            return mSafetySourceId.equals(key.mSafetySourceId) && mUserId == key.mUserId;
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(mSafetySourceId, mPackageName, mUserId);
+            return Objects.hash(mSafetySourceId, mUserId);
         }
     }
 

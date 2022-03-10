@@ -127,7 +127,6 @@ public final class SafetyCenterService extends SystemService {
                 @NonNull SafetyEvent safetyEvent,
                 @NonNull String packageName,
                 @UserIdInt int userId) {
-            // TODO(b/205706756): Security: check certs?
             getContext().enforceCallingOrSelfPermission(SEND_SAFETY_CENTER_UPDATE,
                     "setSafetySourceData");
             mAppOpsManager.checkPackage(Binder.getCallingUid(), packageName);
