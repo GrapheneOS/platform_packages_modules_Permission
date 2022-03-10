@@ -18,12 +18,11 @@ package com.android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
+import static java.util.Objects.requireNonNull;
+
 import android.annotation.NonNull;
 import android.annotation.Nullable;
-import android.annotation.StringRes;
 import android.content.ComponentName;
-import android.content.Context;
-import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.safetycenter.config.ParseException;
 import android.safetycenter.config.SafetyCenterConfig;
@@ -38,13 +37,14 @@ import androidx.annotation.RequiresApi;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * A class that reads the {@link Config} from the associated {@link
  * SafetyCenterResourcesContext}.
+ *
+ * <p>This class isn't thread safe. Thread safety must be handled by the caller.
  */
 @RequiresApi(TIRAMISU)
 final class SafetyCenterConfigReader {
@@ -55,60 +55,72 @@ final class SafetyCenterConfigReader {
     private final SafetyCenterResourcesContext mSafetyCenterResourcesContext;
 
     @Nullable
-    private volatile Config mConfig;
+    private Config mConfigFromXml;
 
-    /**
-     * Creates a {@link SafetyCenterConfigReader} from a {@link Context} object by wrapping it into
-     * a {@link SafetyCenterResourcesContext}.
-     */
-    SafetyCenterConfigReader(@NonNull Context context) {
-        mSafetyCenterResourcesContext = new SafetyCenterResourcesContext(context);
+    @Nullable
+    private Config mConfigOverride;
+
+    /** Creates a {@link SafetyCenterConfigReader} from a {@link SafetyCenterResourcesContext}. */
+    SafetyCenterConfigReader(@NonNull SafetyCenterResourcesContext safetyCenterResourcesContext) {
+        mSafetyCenterResourcesContext = safetyCenterResourcesContext;
     }
 
     /**
-     * Returns the {@link Config} read by {@link #loadConfig()}.
+     * Returns the {@link Config} currently active for configuring safety sources for the
+     * {@link android.safetycenter.SafetyCenterManager} APIs.
      *
-     * <p>Returns {@code null} if {@link #loadConfig()} was never called or if there was
-     * an issue when reading the {@link Config}.
-     *
-     * <p>The returned value is {@code @MonotonicNonNull}: if it is checked to be non-null once, it
-     * can be assumed that it won't be {@code null} ever after.
+     * <p>Note: Only call this method if {@link #loadConfig()} has successfully parsed the XML
+     * {@link SafetyCenterConfig} and returned {@code true}. If called before the config has been
+     * loaded successfully, this method will throw a {@link NullPointerException}.
      */
-    @Nullable
-    Config getConfig() {
-        return mConfig;
-    }
+    @NonNull
+    Config getCurrentConfig() {
+        // We require the XML config must be loaded successfully for SafetyCenterManager APIs to
+        // function, regardless of whether the config is subsequently overridden.
+        requireNonNull(mConfigFromXml);
 
-    /**
-     * Returns a {@link String} resource from the given {@code stringId}, using the {@link
-     * SafetyCenterResourcesContext}.
-     *
-     * <p>Returns {@code null} if the resource cannot be accessed.
-     */
-    @Nullable
-    String readStringResource(@StringRes int stringId) {
-        Resources resources = mSafetyCenterResourcesContext.getResources();
-        if (resources == null) {
-            return null;
+        if (mConfigOverride == null) {
+            return mConfigFromXml;
         }
 
-        return resources.getString(stringId);
+        return mConfigOverride;
     }
 
     /**
-     * Loads the {@link Config} for it to be available when calling {@link
-     * #getConfig()}.
-     *
-     * <p>This call must complete on one thread for other threads to be able to observe the value;
-     * i.e. this is meant to be called as an initialization mechanism, prior to interacting with
-     * this class on other threads.
+     * Loads the {@link Config} for it to be available when calling {@link #getCurrentConfig()} and
+     * returns whether the loading was successful.
      */
-    void loadConfig() {
+    boolean loadConfig() {
         SafetyCenterConfig safetyCenterConfig = readSafetyCenterConfig();
         if (safetyCenterConfig == null) {
-            return;
+            return false;
         }
-        mConfig = Config.from(safetyCenterConfig);
+        mConfigFromXml = Config.from(safetyCenterConfig);
+        return true;
+    }
+
+    /**
+     * Sets an override of the {@link SafetyCenterConfig} used for
+     * {@link android.safetycenter.SafetyCenterManager} APIs.
+     *
+     * <p>When set, {@link #getCurrentConfig()} will return a {@link Config} created using the
+     * override {@link SafetyCenterConfig}.
+     *
+     * <p>To return to using the {@link SafetyCenterConfig} parsed through XML, clear the override
+     * using {@link #clearConfigOverride()}.
+     */
+    void setConfigOverride(@NonNull SafetyCenterConfig safetyCenterConfig) {
+        mConfigOverride = Config.from(safetyCenterConfig);
+    }
+
+    /**
+     * Clears the override of the {@link SafetyCenterConfig} used for
+     * {@link android.safetycenter.SafetyCenterManager} APIs.
+     *
+     * @see #setConfigOverride
+     */
+    void clearConfigOverride() {
+        mConfigOverride = null;
     }
 
     @Nullable
@@ -357,15 +369,6 @@ final class SafetyCenterConfigReader {
             mComponentName = componentName;
             mSourceIdsForProfileOwner = sourceIdsForProfileOwner;
             mSourceIdsForManagedProfiles = sourceIdsForManagedProfiles;
-        }
-
-        /** Creates a {@link Broadcast} for the given {@link ComponentName}. */
-        @NonNull
-        static Broadcast from(@NonNull ComponentName componentName) {
-            // TODO(b/215144069): Handle managed profile broadcasts.
-            return new Broadcast(componentName,
-                    Collections.singletonList("Remove this once test config is available"),
-                    new ArrayList<>());
         }
 
         /** Returns the {@link ComponentName} to dispatch the broadcast to. */
