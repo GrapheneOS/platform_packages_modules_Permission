@@ -247,6 +247,7 @@ final class SafetyCenterConfigReader {
         private static List<Broadcast> extractBroadcasts(
                 @NonNull SafetyCenterConfig safetyCenterConfig) {
             ArrayMap<ComponentName, Broadcast> componentNameToBroadcast = new ArrayMap<>();
+            List<Broadcast> broadcasts = new ArrayList<>();
             List<SafetySourcesGroup> safetySourcesGroups =
                     safetyCenterConfig.getSafetySourcesGroups();
             for (int i = 0; i < safetySourcesGroups.size(); i++) {
@@ -274,6 +275,7 @@ final class SafetyCenterConfigReader {
                         broadcast = new Broadcast(componentName, new ArrayList<>(),
                                 new ArrayList<>());
                         componentNameToBroadcast.put(componentName, broadcast);
+                        broadcasts.add(broadcast);
                     }
                     broadcast.getSourceIdsForProfileOwner().add(safetySource.getId());
                     // TODO(b/217688797): This might also be handled by the source directly.
@@ -283,14 +285,6 @@ final class SafetyCenterConfigReader {
                         broadcast.getSourceIdsForManagedProfiles().add(safetySource.getId());
                     }
                 }
-            }
-
-            // TODO(b/223647746): Should we use a specific ordering for broadcasts?
-            List<Broadcast> broadcasts = new ArrayList<>();
-            for (int i = 0; i < componentNameToBroadcast.size(); i++) {
-                Broadcast broadcast = componentNameToBroadcast.valueAt(i);
-
-                broadcasts.add(broadcast);
             }
 
             return broadcasts;
