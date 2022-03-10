@@ -270,26 +270,26 @@ public final class SafetyCenterService extends SystemService {
         }
 
         @Override
-        public void dismissSafetyIssue(String issueId, @UserIdInt int userId) {
+        public void dismissSafetyCenterIssue(String issueId, @UserIdInt int userId) {
             // TODO(b/217235899): Finalize cross-user behavior.
             PermissionUtils.enforceCrossUserPermission(
-                    userId, false, "dismissSafetyIssue", getContext());
+                    userId, false, "dismissSafetyCenterIssue", getContext());
             getContext().enforceCallingOrSelfPermission(
-                    MANAGE_SAFETY_CENTER, "dismissSafetyIssue");
+                    MANAGE_SAFETY_CENTER, "dismissSafetyCenterIssue");
             // TODO(b/202387059): Implement issue dismissal.
 
         }
 
         @Override
-        public void executeAction(
+        public void executeSafetyCenterIssueAction(
                 @NonNull String safetyCenterIssueId,
                 @NonNull String safetyCenterActionId,
                 @UserIdInt int userId) {
             // TODO(b/217235899): Finalize cross-user behavior.
             PermissionUtils.enforceCrossUserPermission(
-                    userId, false, "executeAction", getContext());
+                    userId, false, "executeSafetyCenterIssueAction", getContext());
             getContext().enforceCallingOrSelfPermission(MANAGE_SAFETY_CENTER,
-                    "executeAction");
+                    "executeSafetyCenterIssueAction");
             // TODO(b/218379298): Add implementation
         }
 

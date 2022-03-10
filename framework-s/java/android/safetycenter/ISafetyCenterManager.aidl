@@ -86,12 +86,16 @@ interface ISafetyCenterManager {
             int userId);
 
     /**
-     * Dismisses the issue corresponding to the given issue ID.
+     * Dismiss a Safety Center issue and prevent it from appearing in the Safety Center or affecting
+     * the overall safety status.
      */
-    void dismissSafetyIssue(String issueId, int userId);
+    void dismissSafetyCenterIssue(String issueId, int userId);
 
-    /** Executes the specified action on the specified issue. */
-    void executeAction(String safetyCenterIssueId, String safetyCenterIssueActionId, int userId);
+    /** Executes the specified Safety Center issue action on the specified Safety Center issue. */
+    void executeSafetyCenterIssueAction(
+            String safetyCenterIssueId,
+            String safetyCenterIssueActionId,
+            int userId);
 
     /**
      * Clears all SafetySourceData set by safety sources using setSafetySourceData.
