@@ -396,7 +396,7 @@ public final class SafetyCenterService extends SystemService {
                         message, userId));
                 return false;
             }
-            // TODO(b/223132917): Check if user is enabled, running and if quiet mode is enabled?
+            // TODO(b/223132917): Check if user is enabled, running and/or if quiet mode is enabled?
             return true;
         }
 
