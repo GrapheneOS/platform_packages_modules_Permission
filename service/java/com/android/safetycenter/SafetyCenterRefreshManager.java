@@ -84,7 +84,6 @@ final class SafetyCenterRefreshManager {
             @NonNull UserProfileGroup userProfileGroup) {
         List<Broadcast> broadcasts = config.getBroadcasts();
         int requestType = toRefreshRequestType(refreshReason);
-
         BroadcastOptions broadcastOptions = BroadcastOptions.makeBasic();
         // The following operation requires START_FOREGROUND_SERVICES_FROM_BACKGROUND
         // permission.
@@ -97,6 +96,7 @@ final class SafetyCenterRefreshManager {
         } finally {
             Binder.restoreCallingIdentity(callingId);
         }
+
         for (int i = 0; i < broadcasts.size(); i++) {
             Broadcast broadcast = broadcasts.get(i);
 
@@ -131,7 +131,7 @@ final class SafetyCenterRefreshManager {
                         managedProfileUserId);
 
                 sendRefreshBroadcast(broadcastIntent, broadcastOptions,
-                        UserHandle.of(userProfileGroup.getProfileOwnerUserId()));
+                        UserHandle.of(managedProfileUserId));
             }
         }
     }
