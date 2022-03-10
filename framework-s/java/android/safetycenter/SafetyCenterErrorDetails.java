@@ -29,19 +29,19 @@ import androidx.annotation.RequiresApi;
 import java.util.Objects;
 
 /**
- * An error the Safety Center should display to the user.
+ * Details of an error that the Safety Center should display to the user.
  *
  * @hide
  */
 @SystemApi
 @RequiresApi(TIRAMISU)
-public final class SafetyCenterError implements Parcelable {
+public final class SafetyCenterErrorDetails implements Parcelable {
 
     @NonNull
     private final CharSequence mErrorMessage;
 
-    /** Creates a {@link SafetyCenterError} with a given error message. */
-    public SafetyCenterError(@NonNull CharSequence errorMessage) {
+    /** Creates a {@link SafetyCenterErrorDetails} with a given error message. */
+    public SafetyCenterErrorDetails(@NonNull CharSequence errorMessage) {
         mErrorMessage = errorMessage;
     }
 
@@ -55,7 +55,7 @@ public final class SafetyCenterError implements Parcelable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        SafetyCenterError that = (SafetyCenterError) o;
+        SafetyCenterErrorDetails that = (SafetyCenterErrorDetails) o;
         return TextUtils.equals(mErrorMessage, that.mErrorMessage);
     }
 
@@ -66,7 +66,7 @@ public final class SafetyCenterError implements Parcelable {
 
     @Override
     public String toString() {
-        return "SafetyCenterError{"
+        return "SafetyCenterErrorDetails{"
                 + "mErrorMessage=" + mErrorMessage
                 + '}';
     }
@@ -82,15 +82,17 @@ public final class SafetyCenterError implements Parcelable {
     }
 
     @NonNull
-    public static final Creator<SafetyCenterError> CREATOR = new Creator<SafetyCenterError>() {
+    public static final Creator<SafetyCenterErrorDetails> CREATOR =
+            new Creator<SafetyCenterErrorDetails>() {
         @Override
-        public SafetyCenterError createFromParcel(Parcel in) {
-            return new SafetyCenterError(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in));
+        public SafetyCenterErrorDetails createFromParcel(Parcel in) {
+            return new SafetyCenterErrorDetails(
+                    TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in));
         }
 
         @Override
-        public SafetyCenterError[] newArray(int size) {
-            return new SafetyCenterError[0];
+        public SafetyCenterErrorDetails[] newArray(int size) {
+            return new SafetyCenterErrorDetails[0];
         }
     };
 }

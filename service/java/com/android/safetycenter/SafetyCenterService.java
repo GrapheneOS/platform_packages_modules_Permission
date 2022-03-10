@@ -39,7 +39,7 @@ import android.safetycenter.ISafetyCenterManager;
 import android.safetycenter.SafetyCenterData;
 import android.safetycenter.SafetyEvent;
 import android.safetycenter.SafetySourceData;
-import android.safetycenter.SafetySourceError;
+import android.safetycenter.SafetySourceErrorDetails;
 import android.safetycenter.config.SafetyCenterConfig;
 import android.util.Log;
 
@@ -183,7 +183,7 @@ public final class SafetyCenterService extends SystemService {
         @Override
         public void reportSafetySourceError(
                 @NonNull String safetySourceId,
-                @NonNull SafetySourceError error,
+                @NonNull SafetySourceErrorDetails errorDetails,
                 @NonNull String packageName,
                 @UserIdInt int userId) {
             getContext().enforceCallingOrSelfPermission(
