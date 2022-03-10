@@ -224,9 +224,9 @@ public final class SafetyCenterManager {
         /**
          * Called when the Safety Center should display an error related to changes in its data.
          *
-         * @param error an error that should be displayed to the user
+         * @param errorDetails details of an error that should be displayed to the user
          */
-        default void onError(@NonNull SafetyCenterError error) {}
+        default void onError(@NonNull SafetyCenterErrorDetails errorDetails) {}
     }
 
     private final Object mListenersLock = new Object();
@@ -282,7 +282,8 @@ public final class SafetyCenterManager {
      * @param safetyEvent the event that triggered the safety source to set safety data
      */
     @RequiresPermission(SEND_SAFETY_CENTER_UPDATE)
-    public void setSafetySourceData(@NonNull String safetySourceId,
+    public void setSafetySourceData(
+            @NonNull String safetySourceId,
             @Nullable SafetySourceData safetySourceData,
             @NonNull SafetyEvent safetyEvent) {
         requireNonNull(safetySourceId, "safetySourceId cannot be null");
@@ -329,18 +330,19 @@ public final class SafetyCenterManager {
      * expected them to perform an action or provide data, but they were unable to do so.
      *
      * @param safetySourceId the id of the safety source that provided the issue
-     * @param safetySourceError the error that occurred
+     * @param safetySourceErrorDetails details of the error that occurred
      */
     @RequiresPermission(SEND_SAFETY_CENTER_UPDATE)
     public void reportSafetySourceError(
-            @NonNull String safetySourceId, @NonNull SafetySourceError safetySourceError) {
+            @NonNull String safetySourceId,
+            @NonNull SafetySourceErrorDetails safetySourceErrorDetails) {
         requireNonNull(safetySourceId, "safetySourceId cannot be null");
-        requireNonNull(safetySourceError, "safetySourceError cannot be null");
+        requireNonNull(safetySourceErrorDetails, "safetySourceErrorDetails cannot be null");
 
         try {
             mService.reportSafetySourceError(
                     safetySourceId,
-                    safetySourceError,
+                    safetySourceErrorDetails,
                     mContext.getPackageName(),
                     mContext.getUser().getIdentifier());
         } catch (RemoteException e) {
@@ -552,13 +554,12 @@ public final class SafetyCenterManager {
         }
 
         @Override
-        public void onError(@NonNull SafetyCenterError safetyCenterError) {
-            requireNonNull(safetyCenterError, "safetyCenterError cannot be null");
+        public void onError(@NonNull SafetyCenterErrorDetails safetyCenterErrorDetails) {
+            requireNonNull(safetyCenterErrorDetails, "safetyCenterErrorDetails cannot be null");
 
             final long identity = Binder.clearCallingIdentity();
             try {
-                mExecutor.execute(
-                        () -> mOriginalListener.onError(safetyCenterError));
+                mExecutor.execute(() -> mOriginalListener.onError(safetyCenterErrorDetails));
             } finally {
                 Binder.restoreCallingIdentity(identity);
             }
