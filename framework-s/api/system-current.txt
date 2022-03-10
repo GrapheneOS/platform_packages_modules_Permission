@@ -219,8 +219,12 @@ package android.safetycenter {
     field public static final String EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID = "android.safetycenter.extra.REFRESH_SAFETY_SOURCES_BROADCAST_ID";
     field public static final String EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE = "android.safetycenter.extra.REFRESH_SAFETY_SOURCES_REQUEST_TYPE";
     field public static final String EXTRA_REFRESH_SAFETY_SOURCE_IDS = "android.safetycenter.extra.REFRESH_SAFETY_SOURCE_IDS";
+    field public static final int REFRESH_REASON_DEVICE_LOCALE_CHANGE = 400; // 0x190
+    field public static final int REFRESH_REASON_DEVICE_REBOOT = 300; // 0x12c
+    field public static final int REFRESH_REASON_OTHER = 600; // 0x258
     field public static final int REFRESH_REASON_PAGE_OPEN = 100; // 0x64
     field public static final int REFRESH_REASON_RESCAN_BUTTON_CLICK = 200; // 0xc8
+    field public static final int REFRESH_REASON_SAFETY_CENTER_ENABLED = 500; // 0x1f4
   }
 
   public static interface SafetyCenterManager.OnSafetyCenterDataChangedListener {
@@ -283,7 +287,7 @@ package android.safetycenter {
     method public void writeToParcel(@NonNull android.os.Parcel, int);
     field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetyEvent> CREATOR;
     field public static final int SAFETY_EVENT_TYPE_DEVICE_LOCALE_CHANGED = 500; // 0x1f4
-    field public static final int SAFETY_EVENT_TYPE_DEVICE_REBOOTED = 500; // 0x1f4
+    field public static final int SAFETY_EVENT_TYPE_DEVICE_REBOOTED = 600; // 0x258
     field public static final int SAFETY_EVENT_TYPE_REFRESH_REQUESTED = 200; // 0xc8
     field public static final int SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED = 400; // 0x190
     field public static final int SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED = 300; // 0x12c
@@ -326,7 +330,7 @@ package android.safetycenter {
     method public int describeContents();
     method @NonNull public java.util.List<android.safetycenter.SafetySourceIssue.Action> getActions();
     method @NonNull public String getId();
-    method @NonNull public String getIssueCategory();
+    method public int getIssueCategory();
     method @NonNull public String getIssueTypeId();
     method @Nullable public android.app.PendingIntent getOnDismissPendingIntent();
     method public int getSeverityLevel();
@@ -335,9 +339,9 @@ package android.safetycenter {
     method @NonNull public CharSequence getTitle();
     method public void writeToParcel(@NonNull android.os.Parcel, int);
     field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetySourceIssue> CREATOR;
-    field public static final String ISSUE_CATEGORY_ACCOUNT = "issue_category_account";
-    field public static final String ISSUE_CATEGORY_DEVICE = "issue_category_device";
-    field public static final String ISSUE_CATEGORY_GENERAL = "issue_category_general";
+    field public static final int ISSUE_CATEGORY_ACCOUNT = 200; // 0xc8
+    field public static final int ISSUE_CATEGORY_DEVICE = 100; // 0x64
+    field public static final int ISSUE_CATEGORY_GENERAL = 300; // 0x12c
     field public static final int SEVERITY_LEVEL_CRITICAL_WARNING = 400; // 0x190
     field public static final int SEVERITY_LEVEL_INFORMATION = 200; // 0xc8
     field public static final int SEVERITY_LEVEL_RECOMMENDATION = 300; // 0x12c
@@ -366,7 +370,7 @@ package android.safetycenter {
     method @NonNull public android.safetycenter.SafetySourceIssue.Builder addAction(@NonNull android.safetycenter.SafetySourceIssue.Action);
     method @NonNull public android.safetycenter.SafetySourceIssue build();
     method @NonNull public android.safetycenter.SafetySourceIssue.Builder clearActions();
-    method @NonNull public android.safetycenter.SafetySourceIssue.Builder setIssueCategory(@NonNull String);
+    method @NonNull public android.safetycenter.SafetySourceIssue.Builder setIssueCategory(int);
     method @NonNull public android.safetycenter.SafetySourceIssue.Builder setOnDismissPendingIntent(@Nullable android.app.PendingIntent);
     method @NonNull public android.safetycenter.SafetySourceIssue.Builder setSubtitle(@Nullable CharSequence);
   }
@@ -395,14 +399,14 @@ package android.safetycenter {
   }
 
   public static final class SafetySourceStatus.IconAction implements android.os.Parcelable {
-    ctor public SafetySourceStatus.IconAction(@NonNull String, @NonNull android.app.PendingIntent);
+    ctor public SafetySourceStatus.IconAction(int, @NonNull android.app.PendingIntent);
     method public int describeContents();
-    method @NonNull public String getIconType();
+    method public int getIconType();
     method @NonNull public android.app.PendingIntent getPendingIntent();
     method public void writeToParcel(@NonNull android.os.Parcel, int);
     field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetySourceStatus.IconAction> CREATOR;
-    field public static final String ICON_TYPE_GEAR = "icon_type_gear";
-    field public static final String ICON_TYPE_INFO = "icon_type_info";
+    field public static final int ICON_TYPE_GEAR = 100; // 0x64
+    field public static final int ICON_TYPE_INFO = 200; // 0xc8
   }
 
 }

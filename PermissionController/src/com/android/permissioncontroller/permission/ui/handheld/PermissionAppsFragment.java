@@ -262,9 +262,26 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
         CardViewPreference sensorCard = findPreference(BLOCKED_SENSOR_PREF_KEY);
         if (sensorCard == null) {
             sensorCard = createSensorCard();
+            ensurePreferenceScreen();
             getPreferenceScreen().addPreference(sensorCard);
         }
         sensorCard.setVisible(true);
+    }
+
+    private void ensurePreferenceScreen() {
+        // Check if preference screen has been already loaded
+        if (getPreferenceScreen() != null) {
+            return;
+        }
+        boolean isStorageAndLessThanT = !SdkLevel.isAtLeastT()
+                && mPermGroupName.equals(Manifest.permission_group.STORAGE);
+        if (isStorageAndLessThanT) {
+            addPreferencesFromResource(R.xml.allowed_denied_storage);
+        } else {
+            addPreferencesFromResource(R.xml.allowed_denied);
+        }
+        // Hide allowed foreground label by default, to avoid briefly showing it before updating
+        findPreference(ALLOWED_FOREGROUND.getCategoryName()).setVisible(false);
     }
 
     @RequiresApi(Build.VERSION_CODES.S)
@@ -354,15 +371,7 @@ public final class PermissionAppsFragment extends SettingsWithLargeHeader implem
     private void onPackagesLoaded(Map<Category, List<Pair<String, UserHandle>>> categories) {
         boolean isStorageAndLessThanT = !SdkLevel.isAtLeastT()
                 && mPermGroupName.equals(Manifest.permission_group.STORAGE);
-        if (getPreferenceScreen() == null) {
-            if (isStorageAndLessThanT) {
-                addPreferencesFromResource(R.xml.allowed_denied_storage);
-            } else {
-                addPreferencesFromResource(R.xml.allowed_denied);
-            }
-            // Hide allowed foreground label by default, to avoid briefly showing it before updating
-            findPreference(ALLOWED_FOREGROUND.getCategoryName()).setVisible(false);
-        }
+        ensurePreferenceScreen();
         Context context = getPreferenceManager().getContext();
 
         if (context == null || getActivity() == null || categories == null) {

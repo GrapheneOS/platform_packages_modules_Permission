@@ -18,15 +18,23 @@
     <safety-sources-config>
         <!-- TODO(b/214567659): Finalize base XML config -->
         <safety-sources-group
-            id="TODO"
-            title="@string/reference"
-            summary="@string/reference">
-            <static-safety-source
-                id="TODO"
-                title="@string/reference"
-                summary="@string/reference"
-                intentAction="intent"
-                profile="primary_profile_only"/>
+            id="LockScreenSources"
+            title="@string/lock_screen_sources_title"
+            summary="@string/summary_placeholder">
+            <dynamic-safety-source
+                profile="primary_profile_only"
+                title="@string/lock_screen_title"
+                summary="@string/lock_screen_summary_disabled"
+                initialDisplayState="disabled"
+                packageName="com.android.settings"
+                broadcastReceiverClassName="com.android.settings.safetycenter.SafetySourceBroadcastReceiver"
+                id="LockScreen"/>
+            <dynamic-safety-source
+                profile="primary_profile_only"
+                packageName="com.android.settings"
+                initialDisplayState="hidden"
+                broadcastReceiverClassName="com.android.settings.safetycenter.SafetySourceBroadcastReceiver"
+                id="Biometrics"/>
         </safety-sources-group>
     </safety-sources-config>
 </safety-center-config>
