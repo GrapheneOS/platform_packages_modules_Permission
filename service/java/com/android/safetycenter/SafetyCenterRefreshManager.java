@@ -44,9 +44,9 @@ import android.safetycenter.SafetyCenterManager.RefreshRequestType;
 import androidx.annotation.RequiresApi;
 
 import com.android.safetycenter.SafetyCenterConfigReader.Broadcast;
+import com.android.safetycenter.SafetyCenterConfigReader.Config;
 
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -68,63 +68,22 @@ final class SafetyCenterRefreshManager {
     //  easily adjusted.
     private static final Duration ALLOWLIST_DURATION = Duration.ofSeconds(20);
 
-    private final List<ComponentName> mAdditionalSafetySourceBroadcastReceiverComponents =
-            new ArrayList<>();
     @NonNull
     private final Context mContext;
-    @NonNull
-    private final SafetyCenterConfigReader mSafetyCenterConfigReader;
 
-    /**
-     * Creates a {@link SafetyCenterRefreshManager} using the given {@link Context} and {@link
-     * SafetyCenterConfigReader}.
-     */
-    SafetyCenterRefreshManager(
-            @NonNull Context context,
-            @NonNull SafetyCenterConfigReader safetyCenterConfigReader) {
+    /** Creates a {@link SafetyCenterRefreshManager} using the given {@link Context}. */
+    SafetyCenterRefreshManager(@NonNull Context context) {
         mContext = context;
-        mSafetyCenterConfigReader = safetyCenterConfigReader;
-    }
-
-    /** Adds a broadcast receiver component representing a source to refresh. */
-    // TODO(b/218157907): Remove this method and use a SafetyCenterConfigReader field in
-    //  SafetyCenterRefreshManager instead once ag/16834483 is submitted.
-    void addAdditionalSafetySourceBroadcastReceiverComponent(@NonNull ComponentName componentName) {
-        mAdditionalSafetySourceBroadcastReceiverComponents.add(componentName);
-    }
-
-    /** Removes all additional broadcast receiver components representing sources to refresh. */
-    // TODO(b/218157907): Remove this method and use a SafetyCenterConfigReader field in
-    //  SafetyCenterRefreshManager instead once ag/16834483 is submitted.
-    void clearAdditionalSafetySourceBroadcastReceiverComponents() {
-        mAdditionalSafetySourceBroadcastReceiverComponents.clear();
     }
 
     /**
      * Triggers a refresh of safety sources by sending them broadcasts with action
      * {@link android.safetycenter.SafetyCenterManager#ACTION_REFRESH_SAFETY_SOURCES}.
      */
-    void refreshSafetySources(
-            @RefreshReason int refreshReason,
+    void refreshSafetySources(@NonNull Config config, @RefreshReason int refreshReason,
             @NonNull UserProfileGroup userProfileGroup) {
-        SafetyCenterConfigReader.Config config = mSafetyCenterConfigReader.getConfig();
-
-        // TODO(b/218157907): Do not recompute this, SafetyCenterConfigReader needs to be the
-        // source of truth for additional sources.
-        List<Broadcast> broadcasts = new ArrayList<>(config.getBroadcasts());
-        for (int i = 0; i < mAdditionalSafetySourceBroadcastReceiverComponents.size(); i++) {
-            ComponentName componentName = mAdditionalSafetySourceBroadcastReceiverComponents.get(i);
-
-            broadcasts.add(Broadcast.from(componentName));
-        }
-
-        sendRefreshBroadcasts(broadcasts, toRefreshRequestType(refreshReason), userProfileGroup);
-    }
-
-    private void sendRefreshBroadcasts(
-            @NonNull List<Broadcast> broadcasts,
-            @RefreshRequestType int requestType,
-            @NonNull UserProfileGroup userProfileGroup) {
+        List<Broadcast> broadcasts = config.getBroadcasts();
+        int requestType = toRefreshRequestType(refreshReason);
         BroadcastOptions broadcastOptions = BroadcastOptions.makeBasic();
         // The following operation requires START_FOREGROUND_SERVICES_FROM_BACKGROUND
         // permission.
@@ -137,6 +96,7 @@ final class SafetyCenterRefreshManager {
         } finally {
             Binder.restoreCallingIdentity(callingId);
         }
+
         for (int i = 0; i < broadcasts.size(); i++) {
             Broadcast broadcast = broadcasts.get(i);
 
@@ -171,7 +131,7 @@ final class SafetyCenterRefreshManager {
                         managedProfileUserId);
 
                 sendRefreshBroadcast(broadcastIntent, broadcastOptions,
-                        UserHandle.of(userProfileGroup.getProfileOwnerUserId()));
+                        UserHandle.of(managedProfileUserId));
             }
         }
     }

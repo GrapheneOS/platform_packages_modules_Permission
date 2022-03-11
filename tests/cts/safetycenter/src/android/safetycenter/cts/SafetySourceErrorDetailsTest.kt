@@ -18,7 +18,7 @@ package android.safetycenter.cts
 
 import android.os.Build
 import android.safetycenter.SafetyEvent
-import android.safetycenter.SafetySourceError
+import android.safetycenter.SafetySourceErrorDetails
 import android.safetycenter.testers.AnyTester.assertThatRepresentationsAreEqual
 import android.safetycenter.testers.AnyTester.assertThatRepresentationsAreNotEqual
 import android.safetycenter.testers.ParcelableTester.assertThatRoundTripReturnsOriginal
@@ -28,47 +28,47 @@ import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
 
-/** CTS tests for [SafetySourceError]. */
+/** CTS tests for [SafetySourceErrorDetails]. */
 @RunWith(AndroidJUnit4::class)
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.TIRAMISU, codeName = "Tiramisu")
-class SafetySourceErrorTest {
+class SafetySourceErrorDetailsTest {
     @Test
     fun getSafetyEvent_returnsSafetyEvent() {
-        val safetySourceError = SafetySourceError(SAFETY_EVENT)
+        val errorDetails = SafetySourceErrorDetails(SAFETY_EVENT)
 
-        assertThat(safetySourceError.safetyEvent).isEqualTo(SAFETY_EVENT)
+        assertThat(errorDetails.safetyEvent).isEqualTo(SAFETY_EVENT)
     }
 
     @Test
     fun createFromParcel_withWriteToParcel_returnsEquivalentObject() {
-        val safetySourceError = SafetySourceError(SAFETY_EVENT)
+        val errorDetails = SafetySourceErrorDetails(SAFETY_EVENT)
 
-        assertThatRoundTripReturnsOriginal(safetySourceError, SafetySourceError.CREATOR)
+        assertThatRoundTripReturnsOriginal(errorDetails, SafetySourceErrorDetails.CREATOR)
     }
 
     @Test
     fun equals_hashCode_toString_equalByReference_areEqual() {
-        val safetySourceError = SafetySourceError(SAFETY_EVENT)
+        val errorDetails = SafetySourceErrorDetails(SAFETY_EVENT)
 
-        assertThatRepresentationsAreEqual(safetySourceError, safetySourceError)
+        assertThatRepresentationsAreEqual(errorDetails, errorDetails)
     }
 
     @Test
     fun equals_hashCode_toString_equalByValue_areEqual() {
-        val safetySourceError = SafetySourceError(SAFETY_EVENT)
-        val equivalentSafetySourceError = SafetySourceError(SAFETY_EVENT)
+        val errorDetails = SafetySourceErrorDetails(SAFETY_EVENT)
+        val equivalentSafetySourceErrorDetails = SafetySourceErrorDetails(SAFETY_EVENT)
 
-        assertThatRepresentationsAreEqual(safetySourceError, equivalentSafetySourceError)
+        assertThatRepresentationsAreEqual(errorDetails, equivalentSafetySourceErrorDetails)
     }
 
     @Test
     fun equals_toString_withDifferentSafetyEvents_areNotEqual() {
-        val safetySourceError = SafetySourceError(
+        val errorDetails = SafetySourceErrorDetails(
                 SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build())
-        val otherSafetySourceError = SafetySourceError(
+        val otherErrorDetails = SafetySourceErrorDetails(
                 SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_REBOOTED).build())
 
-        assertThatRepresentationsAreNotEqual(safetySourceError, otherSafetySourceError)
+        assertThatRepresentationsAreNotEqual(errorDetails, otherErrorDetails)
     }
 
     companion object {
