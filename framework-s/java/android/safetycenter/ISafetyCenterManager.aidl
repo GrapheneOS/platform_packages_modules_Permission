@@ -18,10 +18,9 @@ package android.safetycenter;
 
 import android.safetycenter.IOnSafetyCenterDataChangedListener;
 import android.safetycenter.SafetyCenterData;
-import android.safetycenter.SafetyCenterError;
 import android.safetycenter.SafetyEvent;
 import android.safetycenter.SafetySourceData;
-import android.safetycenter.SafetySourceError;
+import android.safetycenter.SafetySourceErrorDetails;
 import android.safetycenter.config.SafetyCenterConfig;
 
 /**
@@ -64,8 +63,9 @@ interface ISafetyCenterManager {
      * <p>Safety sources should use this API to notify SafetyCenter when SafetyCenter requested or
      * expected them to perform an action or provide data, but they were unable to do so.
      */
-    void reportSafetySourceError(String safetySourceId,
-            in SafetySourceError safetySourceError,
+    void reportSafetySourceError(
+            String safetySourceId,
+            in SafetySourceErrorDetails safetySourceErrorDetails,
             String packageName,
             int userId);
 
