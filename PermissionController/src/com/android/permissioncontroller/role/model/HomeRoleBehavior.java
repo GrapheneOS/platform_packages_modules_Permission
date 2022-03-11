@@ -206,7 +206,7 @@ public class HomeRoleBehavior implements RoleBehavior {
                     true, false, true, false, false, context);
         }
 
-        // Before U, ALLOW_SLIPPERY_TOUCHES may either not exist, or may not be a role permission
+        // Before T, ALLOW_SLIPPERY_TOUCHES may either not exist, or may not be a role permission
         if (isRolePermission(android.Manifest.permission.ALLOW_SLIPPERY_TOUCHES, context)) {
             Permissions.grant(packageName,
                     Arrays.asList(android.Manifest.permission.ALLOW_SLIPPERY_TOUCHES),
@@ -220,7 +220,7 @@ public class HomeRoleBehavior implements RoleBehavior {
             Permissions.revoke(packageName, AUTOMOTIVE_PERMISSIONS, true, false, false, context);
         }
 
-        // Before U, ALLOW_SLIPPERY_TOUCHES may either not exist, or may not be a role permission
+        // Before T, ALLOW_SLIPPERY_TOUCHES may either not exist, or may not be a role permission
         if (isRolePermission(android.Manifest.permission.ALLOW_SLIPPERY_TOUCHES, context)) {
             Permissions.revoke(packageName,
                     Arrays.asList(android.Manifest.permission.ALLOW_SLIPPERY_TOUCHES),
