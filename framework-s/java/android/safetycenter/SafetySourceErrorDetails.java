@@ -28,17 +28,17 @@ import androidx.annotation.RequiresApi;
 import java.util.Objects;
 
 /**
- * An error that a Safety Source may report to the Safety Center.
+ * Details of an error that a Safety Source may report to the Safety Center.
  *
  * @hide
  */
 @SystemApi
 @RequiresApi(TIRAMISU)
-public final class SafetySourceError implements Parcelable {
+public final class SafetySourceErrorDetails implements Parcelable {
     @NonNull
     private final SafetyEvent mSafetyEvent;
 
-    public SafetySourceError(@NonNull SafetyEvent safetyEvent) {
+    public SafetySourceErrorDetails(@NonNull SafetyEvent safetyEvent) {
         mSafetyEvent = safetyEvent;
     }
 
@@ -53,7 +53,7 @@ public final class SafetySourceError implements Parcelable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        SafetySourceError that = (SafetySourceError) o;
+        SafetySourceErrorDetails that = (SafetySourceErrorDetails) o;
         return mSafetyEvent.equals(that.mSafetyEvent);
     }
 
@@ -64,7 +64,7 @@ public final class SafetySourceError implements Parcelable {
 
     @Override
     public String toString() {
-        return "SafetySourceError{"
+        return "SafetySourceErrorDetails{"
                 + "mSafetyEvent="
                 + mSafetyEvent
                 + '}';
@@ -81,16 +81,17 @@ public final class SafetySourceError implements Parcelable {
     }
 
     @NonNull
-    public static final Creator<SafetySourceError> CREATOR = new Creator<SafetySourceError>() {
+    public static final Creator<SafetySourceErrorDetails> CREATOR =
+            new Creator<SafetySourceErrorDetails>() {
         @Override
-        public SafetySourceError createFromParcel(Parcel in) {
-            return new SafetySourceError(in.readParcelable(SafetyEvent.class.getClassLoader(),
-                    SafetyEvent.class));
+        public SafetySourceErrorDetails createFromParcel(Parcel in) {
+            return new SafetySourceErrorDetails(
+                    in.readParcelable(SafetyEvent.class.getClassLoader(), SafetyEvent.class));
         }
 
         @Override
-        public SafetySourceError[] newArray(int size) {
-            return new SafetySourceError[0];
+        public SafetySourceErrorDetails[] newArray(int size) {
+            return new SafetySourceErrorDetails[0];
         }
     };
 }
