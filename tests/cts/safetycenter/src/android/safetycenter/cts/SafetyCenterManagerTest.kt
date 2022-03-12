@@ -39,6 +39,7 @@ import android.safetycenter.SafetySourceIssue
 import android.safetycenter.SafetySourceIssue.SEVERITY_LEVEL_CRITICAL_WARNING
 import android.safetycenter.SafetySourceStatus
 import android.safetycenter.SafetySourceStatus.STATUS_LEVEL_CRITICAL_WARNING
+import android.safetycenter.SafetySourceStatus.STATUS_LEVEL_NONE
 import android.safetycenter.config.SafetyCenterConfig
 import android.safetycenter.config.SafetySource
 import android.safetycenter.config.SafetySourcesGroup
@@ -70,6 +71,17 @@ class SafetyCenterManagerTest {
         Intent(ACTION_SAFETY_CENTER).addFlags(FLAG_ACTIVITY_NEW_TASK),
         FLAG_IMMUTABLE
     )
+    private val simpleSafetySourceData = SafetySourceData.Builder()
+            .setStatus(
+                    SafetySourceStatus.Builder(
+                        "Status title",
+                        "Summary of the status",
+                        STATUS_LEVEL_NONE,
+                        somePendingIntent
+                    )
+                        .build()
+            )
+            .build()
     private val safetySourceDataOnPageOpen = SafetySourceData.Builder()
         .setStatus(
             SafetySourceStatus.Builder(
@@ -118,36 +130,34 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    fun getSafetySourceData_unknownId_returnsNull() {
-        val safetySourceData =
+    fun getSafetySourceData_unknownId_throwsIllegalArgumentException() {
+        assertFailsWith(IllegalArgumentException::class,
+            "Unexpected safety source \"some_unknown_id\"") {
             safetyCenterManager.getSafetySourceDataWithPermission("some_unknown_id")
-
-        assertThat(safetySourceData).isNull()
+        }
     }
 
     @Test
     fun setSafetySourceData_getSafetySourceDataReturnsNewValue() {
         safetyCenterManager.setSafetyCenterConfigOverrideWithPermission(CTS_ONLY_CONFIG)
-        val safetySourceData = SafetySourceData.Builder().build()
         safetyCenterManager.setSafetySourceDataWithPermission(
             CTS_SOURCE_ID,
-            safetySourceData,
+            simpleSafetySourceData,
             EVENT_SOURCE_STATE_CHANGED
         )
 
         val safetySourceDataResult =
             safetyCenterManager.getSafetySourceDataWithPermission(CTS_SOURCE_ID)
 
-        assertThat(safetySourceDataResult).isEqualTo(safetySourceData)
+        assertThat(safetySourceDataResult).isEqualTo(simpleSafetySourceData)
     }
 
     @Test
     fun setSafetySourceData_withSameId_replacesValue() {
         safetyCenterManager.setSafetyCenterConfigOverrideWithPermission(CTS_ONLY_CONFIG)
-        val firstSafetySourceData = SafetySourceData.Builder().build()
         safetyCenterManager.setSafetySourceDataWithPermission(
             CTS_SOURCE_ID,
-            firstSafetySourceData,
+            simpleSafetySourceData,
             EVENT_SOURCE_STATE_CHANGED
         )
 
@@ -308,10 +318,9 @@ class SafetyCenterManagerTest {
         // Receive initial data.
         receiveListenerUpdate()
 
-        val safetySourceData = SafetySourceData.Builder().build()
         safetyCenterManager.setSafetySourceDataWithPermission(
             CTS_SOURCE_ID,
-            safetySourceData,
+            simpleSafetySourceData,
             EVENT_SOURCE_STATE_CHANGED
         )
         val safetyCenterDataFromListener = receiveListenerUpdate()
@@ -330,10 +339,9 @@ class SafetyCenterManagerTest {
         receiveListenerUpdate()
 
         safetyCenterManager.removeOnSafetyCenterDataChangedListenerWithPermission(listener)
-        val safetySourceData = SafetySourceData.Builder().build()
         safetyCenterManager.setSafetySourceDataWithPermission(
             CTS_SOURCE_ID,
-            safetySourceData,
+            simpleSafetySourceData,
             EVENT_SOURCE_STATE_CHANGED
         )
 
