@@ -368,7 +368,7 @@ final class SafetyCenterDataTracker {
             SafetySourceIssue.Action safetySourceIssueAction = safetySourceIssueActions.get(i);
 
             safetyCenterIssueActions.add(
-                    new SafetyCenterIssue.Action.Builder(safetySourceIssue.getId())
+                    new SafetyCenterIssue.Action.Builder(safetySourceIssueAction.getId())
                             .setLabel(safetySourceIssueAction.getLabel())
                             .setSuccessMessage(safetySourceIssueAction.getSuccessMessage())
                             .setPendingIntent(safetySourceIssueAction.getPendingIntent())
@@ -506,7 +506,7 @@ final class SafetyCenterDataTracker {
         return new SafetyCenterEntry.Builder(safetySource.getId())
                 .setSeverityLevel(entrySeverityLevel)
                 .setTitle(getString(isUserManaged ? safetySource.getTitleForWorkResId()
-                                : safetySource.getTitleResId()))
+                        : safetySource.getTitleResId()))
                 .setSummary(getString(safetySource.getSummaryResId()))
                 .setPendingIntent(pendingIntent).build();
     }
@@ -565,7 +565,7 @@ final class SafetyCenterDataTracker {
         staticEntries.add(
                 new SafetyCenterStaticEntry(
                         getString(isUserManaged ? safetySource.getTitleForWorkResId()
-                                        : safetySource.getTitleResId()),
+                                : safetySource.getTitleResId()),
                         getString(safetySource.getSummaryResId()),
                         pendingIntent
                 )
@@ -585,19 +585,24 @@ final class SafetyCenterDataTracker {
         if (packageName == null) {
             context = mContext;
         } else {
+            // This call requires the INTERACT_ACROSS_USERS permission.
+            final long identity = Binder.clearCallingIdentity();
             try {
                 context = mContext.createPackageContextAsUser(packageName, 0,
                         UserHandle.of(userId));
             } catch (NameNotFoundException e) {
                 Log.w(TAG, String.format("Package name %s not found", packageName), e);
                 return null;
+            } finally {
+                Binder.restoreCallingIdentity(identity);
             }
         }
 
         // TODO(b/219699223): Is it safe to create a PendingIntent as system server here?
+        // This call is required for getIntentSender() to be allowed to send as another package.
         final long identity = Binder.clearCallingIdentity();
         try {
-            // TODO(b/218816518): May need to create a unique requestCode per PendingIntent.
+            // TODO(b/218816518): May need to create a unique requestCode per PendingIntent?
             return PendingIntent.getActivity(
                     context,
                     0,

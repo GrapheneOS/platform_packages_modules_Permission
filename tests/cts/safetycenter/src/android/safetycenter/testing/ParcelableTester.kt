@@ -1,4 +1,4 @@
-package android.safetycenter.testers
+package android.safetycenter.testing
 
 import android.os.Parcel
 import android.os.Parcelable

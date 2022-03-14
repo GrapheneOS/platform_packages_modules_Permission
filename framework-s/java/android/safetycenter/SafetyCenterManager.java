@@ -133,7 +133,6 @@ public final class SafetyCenterManager {
     /**
      * Used as an {@code String} extra field in {@link #ACTION_REFRESH_SAFETY_SOURCES} intents to
      * specify a string identifier for the broadcast.
-     *
      */
     public static final String EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID =
             "android.safetycenter.extra.REFRESH_SAFETY_SOURCES_BROADCAST_ID";
@@ -225,7 +224,8 @@ public final class SafetyCenterManager {
          *
          * @param errorDetails details of an error that should be displayed to the user
          */
-        default void onError(@NonNull SafetyCenterErrorDetails errorDetails) {}
+        default void onError(@NonNull SafetyCenterErrorDetails errorDetails) {
+        }
     }
 
     private final Object mListenersLock = new Object();
@@ -249,7 +249,12 @@ public final class SafetyCenterManager {
         this.mService = service;
     }
 
-    /** Returns whether the Safety Center feature is enabled. */
+    /**
+     * Returns whether the Safety Center feature is enabled.
+     *
+     * <p>If this returns {@code false}, all the other methods in this class will no-op and/or
+     * return default values.
+     */
     @RequiresPermission(anyOf = {
             READ_SAFETY_CENTER_STATUS,
             SEND_SAFETY_CENTER_UPDATE
@@ -272,13 +277,13 @@ public final class SafetyCenterManager {
      * <p>This call will rewrite any existing {@link SafetySourceData} already set for the given
      * {@code safetySourceId} for the calling user.
      *
-     * @param safetySourceId the unique identifier for a safety source in the calling user
+     * @param safetySourceId   the unique identifier for a safety source in the calling user
      * @param safetySourceData the latest safety data for the safety source in the calling user. If
-     *                        a safety source does not have any data to set, it can set its
-     *                        {@link SafetySourceData} to {@code null}, in which case Safety Center
-     *                        will fall back to any placeholder data specified in the safety source
-     *                        xml configuration.
-     * @param safetyEvent the event that triggered the safety source to set safety data
+     *                         a safety source does not have any data to set, it can set its
+     *                         {@link SafetySourceData} to {@code null}, in which case Safety Center
+     *                         will fall back to any placeholder data specified in the safety source
+     *                         xml configuration.
+     * @param safetyEvent      the event that triggered the safety source to set safety data
      */
     @RequiresPermission(SEND_SAFETY_CENTER_UPDATE)
     public void setSafetySourceData(
@@ -328,7 +333,7 @@ public final class SafetyCenterManager {
      * <p>Safety sources should use this API to notify Safety Center when Safety Center requested or
      * expected them to perform an action or provide data, but they were unable to do so.
      *
-     * @param safetySourceId the id of the safety source that provided the issue
+     * @param safetySourceId           the id of the safety source that provided the issue
      * @param safetySourceErrorDetails details of the error that occurred
      */
     @RequiresPermission(SEND_SAFETY_CENTER_UPDATE)
@@ -453,9 +458,10 @@ public final class SafetyCenterManager {
     /**
      * Executes the specified Safety Center issue action on the specified Safety Center issue.
      *
-     * @param safetyCenterIssueId the target issue ID returned by {@link SafetyCenterIssue#getId()}
+     * @param safetyCenterIssueId       the target issue ID returned by
+     *                                  {@link SafetyCenterIssue#getId()}
      * @param safetyCenterIssueActionId the target action ID returned by {@link
-     *                             SafetyCenterIssue.Action#getId()}
+     *                                  SafetyCenterIssue.Action#getId()}
      */
     @RequiresPermission(MANAGE_SAFETY_CENTER)
     public void executeSafetyCenterIssueAction(
