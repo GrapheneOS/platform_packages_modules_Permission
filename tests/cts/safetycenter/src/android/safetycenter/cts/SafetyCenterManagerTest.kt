@@ -371,9 +371,9 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    fun dismissSafetyIssue_whenAppDoesNotHoldPermission_methodThrows() {
+    fun dismissSafetyCenterIssue_whenAppDoesNotHoldPermission_methodThrows() {
         assertFailsWith(SecurityException::class) {
-            safetyCenterManager.dismissSafetyIssue("bleh")
+            safetyCenterManager.dismissSafetyCenterIssue("bleh")
         }
     }
 
