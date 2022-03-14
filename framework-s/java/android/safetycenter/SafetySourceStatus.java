@@ -18,6 +18,8 @@ package android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
+import static com.android.internal.util.Preconditions.checkArgument;
+
 import static java.util.Objects.requireNonNull;
 
 import android.annotation.IntDef;
@@ -111,6 +113,8 @@ public final class SafetySourceStatus implements Parcelable {
      * Returns an optional {@link PendingIntent} that will start an activity when the safety source
      * status UI is clicked on.
      *
+     * <p> The action contained in the {@link PendingIntent} must start an activity.
+     *
      * <p>If {@code null} the intent action defined in the Safety Center configuration will be
      * invoked when the safety source status UI is clicked on. If the intent action is undefined
      * or disabled the source is considered as disabled.
@@ -134,7 +138,7 @@ public final class SafetySourceStatus implements Parcelable {
     /**
      * Returns whether the safety source status is enabled.
      *
-     * <p>A safety source status should be disabled if it is currently unavailable on the device.
+     * <p>A safety source status should be disabled if it is currently unavailable on the device.aga
      *
      * <p>If disabled, the status will show as grayed out in the UI, and interactions with it may
      * be limited.
@@ -234,8 +238,8 @@ public final class SafetySourceStatus implements Parcelable {
         private final PendingIntent mPendingIntent;
 
         public IconAction(@IconType int iconType, @NonNull PendingIntent pendingIntent) {
-            this.mIconType = iconType;
-            this.mPendingIntent = pendingIntent;
+            this.mIconType = validateIconType(iconType);
+            this.mPendingIntent = requireNonNull(pendingIntent);
         }
 
         /**
@@ -310,6 +314,16 @@ public final class SafetySourceStatus implements Parcelable {
         @Retention(RetentionPolicy.SOURCE)
         public @interface IconType {
         }
+
+        @IconType
+        private static int validateIconType(int value) {
+            switch (value) {
+                case ICON_TYPE_GEAR:
+                case ICON_TYPE_INFO:
+                    return value;
+            }
+            throw new IllegalArgumentException(String.format("Unexpected IconType: %s", value));
+        }
     }
 
     /** Builder class for {@link SafetySourceStatus}. */
@@ -331,16 +345,20 @@ public final class SafetySourceStatus implements Parcelable {
                 @SafetySourceSeverity.Level int severityLevel) {
             this.mTitle = requireNonNull(title);
             this.mSummary = requireNonNull(summary);
-            this.mSeverityLevel = severityLevel;
+            this.mSeverityLevel = SafetySourceSeverity.validateLevelForSource(severityLevel);
         }
 
         /**
          * Sets an optional {@link PendingIntent} for the safety source status.
          *
+         * <p>The action contained in the {@link PendingIntent} must start an activity.
+         *
          * @see #getPendingIntent()
          */
         @NonNull
         public Builder setPendingIntent(@Nullable PendingIntent pendingIntent) {
+            checkArgument(pendingIntent == null || pendingIntent.isActivity(),
+                    "Safety source status pending intent must start an activity");
             this.mPendingIntent = pendingIntent;
             return this;
         }
@@ -359,12 +377,16 @@ public final class SafetySourceStatus implements Parcelable {
         /**
          * Sets whether the safety source status is enabled.
          *
-         * <p>By default, the safety source status will be enabled.
+         * <p>By default, the safety source status will be enabled. If disabled, the status severity
+         * level must be set to {@link SafetySourceSeverity#LEVEL_UNSPECIFIED}.
          *
          * @see #isEnabled()
          */
         @NonNull
         public Builder setEnabled(boolean enabled) {
+            checkArgument(enabled || mSeverityLevel == SafetySourceSeverity.LEVEL_UNSPECIFIED,
+                    "Safety source status must have a severity level of LEVEL_UNSPECIFIED when "
+                            + "disabled");
             this.mEnabled = enabled;
             return this;
         }
