@@ -433,38 +433,39 @@ public final class SafetyCenterManager {
     }
 
     /**
-     * Dismiss an active safety issue and prevent it from appearing in the Safety Center or
-     * affecting the overall safety status.
+     * Dismiss a Safety Center issue and prevent it from appearing in the Safety Center or affecting
+     * the overall safety status.
      *
      * @param safetyCenterIssueId the target issue ID returned by {@link SafetyCenterIssue#getId()}
      */
     @RequiresPermission(MANAGE_SAFETY_CENTER)
-    public void dismissSafetyIssue(@NonNull String safetyCenterIssueId) {
+    public void dismissSafetyCenterIssue(@NonNull String safetyCenterIssueId) {
         requireNonNull(safetyCenterIssueId, "safetyCenterIssueId cannot be null");
 
         try {
-            mService.dismissSafetyIssue(safetyCenterIssueId, mContext.getUser().getIdentifier());
+            mService.dismissSafetyCenterIssue(
+                    safetyCenterIssueId, mContext.getUser().getIdentifier());
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }
     }
 
     /**
-     * Executes the specified action on the specified issue.
+     * Executes the specified Safety Center issue action on the specified Safety Center issue.
      *
      * @param safetyCenterIssueId the target issue ID returned by {@link SafetyCenterIssue#getId()}
      * @param safetyCenterIssueActionId the target action ID returned by {@link
      *                             SafetyCenterIssue.Action#getId()}
      */
     @RequiresPermission(MANAGE_SAFETY_CENTER)
-    public void executeAction(
+    public void executeSafetyCenterIssueAction(
             @NonNull String safetyCenterIssueId,
             @NonNull String safetyCenterIssueActionId) {
         requireNonNull(safetyCenterIssueId, "safetyCenterIssueId cannot be null");
         requireNonNull(safetyCenterIssueActionId, "safetyCenterIssueActionId cannot be null");
 
         try {
-            mService.executeAction(
+            mService.executeSafetyCenterIssueAction(
                     safetyCenterIssueId,
                     safetyCenterIssueActionId,
                     mContext.getUser().getIdentifier());
