@@ -33,7 +33,7 @@ import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import com.google.common.truth.Truth.assertThat
-import org.junit.Assert.assertThrows
+import kotlin.test.assertFailsWith
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -429,10 +429,13 @@ class SafetySourceIssueTest {
             SEVERITY_LEVEL_INFORMATION,
             "issue_type_id"
         )
-        assertThrows(
-            "Safety source issue must contain at least 1 action",
-            IllegalArgumentException::class.java
-        ) { safetySourceIssueBuilder.build() }
+
+        val exception = assertFailsWith(IllegalArgumentException::class) {
+            safetySourceIssueBuilder.build()
+        }
+        assertThat(exception)
+            .hasMessageThat()
+            .isEqualTo("Safety source issue must contain at least 1 action")
     }
 
     @Test
@@ -447,10 +450,12 @@ class SafetySourceIssueTest {
             .addAction(action2)
             .addAction(action1)
 
-        assertThrows(
-            "Safety source issue must not contain more than 2 actions",
-            IllegalArgumentException::class.java
-        ) { safetySourceIssueBuilder.build() }
+        val exception = assertFailsWith(IllegalArgumentException::class) {
+            safetySourceIssueBuilder.build()
+        }
+        assertThat(exception)
+            .hasMessageThat()
+            .isEqualTo("Safety source issue must not contain more than 2 actions")
     }
 
     @Test
