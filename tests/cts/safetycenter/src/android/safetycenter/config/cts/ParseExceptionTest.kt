@@ -20,8 +20,7 @@ import android.os.Build.VERSION_CODES.TIRAMISU
 import android.safetycenter.config.ParseException
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
-import kotlin.test.assertFailsWith
-import org.junit.Assert.assertEquals
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -32,26 +31,21 @@ class ParseExceptionTest {
     @Test
     fun propagatesMessage() {
         val message = "error message"
-        assertFailsWith(ParseException::class, message) {
-            throwParseException(message)
-        }
+
+        val exception = ParseException(message)
+
+        assertThat(exception).hasMessageThat().isEqualTo(message)
+        assertThat(exception).hasCauseThat().isNull()
     }
 
     @Test
-    fun propagatesCause() {
+    fun propagatesMessageAndCause() {
         val message = "error message"
         val cause = Exception("error message for cause")
-        val exception = assertFailsWith(ParseException::class, message) {
-            throwParseException(message, cause)
-        }
-        assertEquals(cause, exception.cause)
-    }
 
-    private fun throwParseException(message: String) {
-        throw ParseException(message)
-    }
+        val exception = ParseException(message, cause)
 
-    private fun throwParseException(message: String, cause: Throwable) {
-        throw ParseException(message, cause)
+        assertThat(exception).hasMessageThat().isEqualTo(message)
+        assertThat(exception).hasCauseThat().isEqualTo(cause)
     }
 }

@@ -17,10 +17,12 @@
 package android.safetycenter.config.cts
 
 import android.content.Context
+import android.os.Build.VERSION_CODES.TIRAMISU
 import android.safetycenter.config.ParseException
 import android.safetycenter.config.SafetyCenterConfig
 import android.safetycenter.cts.R
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
+import androidx.test.filters.SdkSuppress
 import com.google.common.truth.Truth.assertThat
 import org.junit.Assert.assertThrows
 import org.junit.Test
@@ -28,6 +30,7 @@ import org.junit.runners.Parameterized
 import org.junit.runner.RunWith
 
 @RunWith(Parameterized::class)
+@SdkSuppress(minSdkVersion = TIRAMISU, codeName = "Tiramisu")
 class ParserConfigInvalidTest {
     private val context: Context = getApplicationContext()
 
