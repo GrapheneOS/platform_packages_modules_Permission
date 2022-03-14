@@ -18,13 +18,13 @@ package android.safetycenter.cts
 
 import android.os.Build
 import android.safetycenter.SafetyEvent
-import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED
 import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_REBOOTED
-import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED
+import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED
 import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED
-import android.safetycenter.testers.AnyTester.assertThatRepresentationsAreEqual
-import android.safetycenter.testers.AnyTester.assertThatRepresentationsAreNotEqual
-import android.safetycenter.testers.ParcelableTester.assertThatRoundTripReturnsOriginal
+import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED
+import android.safetycenter.testing.AnyTester.assertThatRepresentationsAreEqual
+import android.safetycenter.testing.AnyTester.assertThatRepresentationsAreNotEqual
+import android.safetycenter.testing.ParcelableTester.assertThatRoundTripReturnsOriginal
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import com.google.common.truth.Truth.assertThat
@@ -45,9 +45,9 @@ class SafetyEventTest {
     @Test
     fun getRefreshBroadcastId_returnsRefreshBroadcastId() {
         val safetyEvent =
-                SafetyEvent.Builder(SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
-                        .setRefreshBroadcastId(REFRESH_BROADCAST_ID)
-                        .build()
+            SafetyEvent.Builder(SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
+                .setRefreshBroadcastId(REFRESH_BROADCAST_ID)
+                .build()
 
         assertThat(safetyEvent.refreshBroadcastId).isEqualTo(REFRESH_BROADCAST_ID)
     }
@@ -55,9 +55,9 @@ class SafetyEventTest {
     @Test
     fun getSafetySourceIssueId_returnsSafetySourceIssueId() {
         val safetyEvent =
-                SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
-                        .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
-                        .build()
+            SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
+                .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
+                .build()
 
         assertThat(safetyEvent.safetySourceIssueId).isEqualTo(SAFETY_SOURCE_ISSUE_ID)
     }
@@ -65,9 +65,9 @@ class SafetyEventTest {
     @Test
     fun getSafetySourceIssueActionId_returnsSafetySourceIssueActionId() {
         val safetyEvent =
-                SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
-                        .setSafetySourceIssueActionId(SAFETY_SOURCE_ISSUE_ACTION_ID)
-                        .build()
+            SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
+                .setSafetySourceIssueActionId(SAFETY_SOURCE_ISSUE_ACTION_ID)
+                .build()
 
         assertThat(safetyEvent.safetySourceIssueActionId).isEqualTo(SAFETY_SOURCE_ISSUE_ACTION_ID)
     }
@@ -75,10 +75,10 @@ class SafetyEventTest {
     @Test
     fun describeContents_returns0() {
         val safetyEvent =
-                SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
-                        .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
-                        .setSafetySourceIssueActionId(SAFETY_SOURCE_ISSUE_ACTION_ID)
-                        .build()
+            SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
+                .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
+                .setSafetySourceIssueActionId(SAFETY_SOURCE_ISSUE_ACTION_ID)
+                .build()
 
         assertThat(safetyEvent.describeContents()).isEqualTo(0)
     }
@@ -86,10 +86,10 @@ class SafetyEventTest {
     @Test
     fun createFromParcel_withWriteToParcel_returnsOriginalSafetySourceData() {
         val safetyEvent =
-                SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
-                        .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
-                        .setSafetySourceIssueActionId(SAFETY_SOURCE_ISSUE_ACTION_ID)
-                        .build()
+            SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
+                .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
+                .setSafetySourceIssueActionId(SAFETY_SOURCE_ISSUE_ACTION_ID)
+                .build()
 
         assertThatRoundTripReturnsOriginal(safetyEvent, SafetyEvent.CREATOR)
     }
@@ -98,9 +98,9 @@ class SafetyEventTest {
     @Test
     fun hashCode_equals_toString_withEqualByReference_areEqual() {
         val safetyEvent =
-                SafetyEvent.Builder(SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
-                        .setRefreshBroadcastId(REFRESH_BROADCAST_ID)
-                        .build()
+            SafetyEvent.Builder(SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
+                .setRefreshBroadcastId(REFRESH_BROADCAST_ID)
+                .build()
         val otherSafetyEvent = safetyEvent
 
         assertThatRepresentationsAreEqual(safetyEvent, otherSafetyEvent)
@@ -109,15 +109,15 @@ class SafetyEventTest {
     @Test
     fun hashCode_equals_toString_withAllFieldsEqual_areEqual() {
         val safetyEvent =
-                SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
-                        .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
-                        .setSafetySourceIssueActionId(SAFETY_SOURCE_ISSUE_ACTION_ID)
-                        .build()
+            SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
+                .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
+                .setSafetySourceIssueActionId(SAFETY_SOURCE_ISSUE_ACTION_ID)
+                .build()
         val otherSafetyEvent =
-                SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
-                        .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
-                        .setSafetySourceIssueActionId(SAFETY_SOURCE_ISSUE_ACTION_ID)
-                        .build()
+            SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
+                .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
+                .setSafetySourceIssueActionId(SAFETY_SOURCE_ISSUE_ACTION_ID)
+                .build()
 
         assertThatRepresentationsAreEqual(safetyEvent, otherSafetyEvent)
     }
@@ -125,11 +125,11 @@ class SafetyEventTest {
     @Test
     fun hashCode_equals_toString_withDifferentSafetyEventTypes_areNotEqual() {
         val safetyEvent =
-                SafetyEvent.Builder(SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
-                        .build()
+            SafetyEvent.Builder(SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
+                .build()
         val otherSafetyEvent =
-                SafetyEvent.Builder(SAFETY_EVENT_TYPE_DEVICE_REBOOTED)
-                        .build()
+            SafetyEvent.Builder(SAFETY_EVENT_TYPE_DEVICE_REBOOTED)
+                .build()
 
         assertThatRepresentationsAreNotEqual(safetyEvent, otherSafetyEvent)
     }
@@ -137,13 +137,13 @@ class SafetyEventTest {
     @Test
     fun hashCode_equals_toString_withDifferentRefreshBroadcastIds_areNotEqual() {
         val safetyEvent =
-                SafetyEvent.Builder(SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
-                        .setRefreshBroadcastId(REFRESH_BROADCAST_ID)
-                        .build()
+            SafetyEvent.Builder(SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
+                .setRefreshBroadcastId(REFRESH_BROADCAST_ID)
+                .build()
         val otherSafetyEvent =
-                SafetyEvent.Builder(SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
-                        .setRefreshBroadcastId(OTHER_REFRESH_BROADCAST_ID)
-                        .build()
+            SafetyEvent.Builder(SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
+                .setRefreshBroadcastId(OTHER_REFRESH_BROADCAST_ID)
+                .build()
 
         assertThatRepresentationsAreNotEqual(safetyEvent, otherSafetyEvent)
     }
@@ -151,13 +151,13 @@ class SafetyEventTest {
     @Test
     fun hashCode_equals_toString_withDifferentIssueIds_areNotEqual() {
         val safetyEvent =
-                SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
-                        .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
-                        .build()
+            SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
+                .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
+                .build()
         val otherSafetyEvent =
-                SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
-                        .setSafetySourceIssueId(OTHER_SAFETY_SOURCE_ISSUE_ID)
-                        .build()
+            SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
+                .setSafetySourceIssueId(OTHER_SAFETY_SOURCE_ISSUE_ID)
+                .build()
 
         assertThatRepresentationsAreNotEqual(safetyEvent, otherSafetyEvent)
     }
@@ -165,15 +165,15 @@ class SafetyEventTest {
     @Test
     fun hashCode_equals_toString_withDifferentActionIds_areNotEqual() {
         val safetyEvent =
-                SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
-                        .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
-                        .setSafetySourceIssueActionId(SAFETY_SOURCE_ISSUE_ACTION_ID)
-                        .build()
+            SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
+                .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
+                .setSafetySourceIssueActionId(SAFETY_SOURCE_ISSUE_ACTION_ID)
+                .build()
         val otherSafetyEvent =
-                SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
-                        .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
-                        .setSafetySourceIssueActionId(OTHER_SAFETY_SOURCE_ISSUE_ACTION_ID)
-                        .build()
+            SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
+                .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
+                .setSafetySourceIssueActionId(OTHER_SAFETY_SOURCE_ISSUE_ACTION_ID)
+                .build()
 
         assertThatRepresentationsAreNotEqual(safetyEvent, otherSafetyEvent)
     }
