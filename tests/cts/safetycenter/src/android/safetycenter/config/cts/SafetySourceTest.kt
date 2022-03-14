@@ -19,8 +19,8 @@ package android.safetycenter.config.cts
 import android.content.res.Resources
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.safetycenter.config.SafetySource
-import android.safetycenter.testers.AnyTester
-import android.safetycenter.testers.ParcelableTester
+import android.safetycenter.testing.AnyTester
+import android.safetycenter.testing.ParcelableTester
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import com.google.common.truth.Truth.assertThat
