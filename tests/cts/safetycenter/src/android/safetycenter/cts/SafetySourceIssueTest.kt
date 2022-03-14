@@ -70,19 +70,19 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    fun action_isResolving_withDefaultBuilder_returnsFalse() {
+    fun action_willResolve_withDefaultBuilder_returnsFalse() {
         val action = Action.Builder("action_id", "Action label", pendingIntent1).build()
 
-        assertThat(action.isResolving).isFalse()
+        assertThat(action.willResolve()).isFalse()
     }
 
     @Test
-    fun action_isResolving_whenSetExplicitly_returnsResolving() {
+    fun action_willResolve_whenSetExplicitly_returnsWillResolve() {
         val action = Action.Builder("action_id", "Action label", pendingIntent1)
-            .setResolving(true)
+            .setWillResolve(true)
             .build()
 
-        assertThat(action.isResolving).isTrue()
+        assertThat(action.willResolve()).isTrue()
     }
 
     @Test
@@ -172,12 +172,12 @@ class SafetySourceIssueTest {
     }
 
     @Test
-    fun action_hashCode_equals_toString_withDifferentResolving_areNotEqual() {
+    fun action_hashCode_equals_toString_withDifferentWillResolve_areNotEqual() {
         val action =
-            Action.Builder("action_id", "Action label", pendingIntent1).setResolving(false)
+            Action.Builder("action_id", "Action label", pendingIntent1).setWillResolve(false)
                 .build()
         val otherAction =
-            Action.Builder("action_id", "Action label", pendingIntent1).setResolving(true).build()
+            Action.Builder("action_id", "Action label", pendingIntent1).setWillResolve(true).build()
 
         assertThat(action.hashCode()).isNotEqualTo(otherAction.hashCode())
         assertThat(action).isNotEqualTo(otherAction)
@@ -530,7 +530,7 @@ class SafetySourceIssueTest {
             .setIssueCategory(ISSUE_CATEGORY_ACCOUNT)
             .addAction(
                 Action.Builder("action_id", "Action label 1", pendingIntent1)
-                    .setResolving(false)
+                    .setWillResolve(false)
                     .build()
             )
             .setOnDismissPendingIntent(pendingIntent1)
@@ -545,7 +545,7 @@ class SafetySourceIssueTest {
             .setIssueCategory(ISSUE_CATEGORY_ACCOUNT)
             .addAction(
                 Action.Builder("action_id", "Action label 1", pendingIntent1)
-                    .setResolving(false)
+                    .setWillResolve(false)
                     .build()
             )
             .setOnDismissPendingIntent(pendingIntent1)

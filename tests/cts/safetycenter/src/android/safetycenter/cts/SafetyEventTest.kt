@@ -36,10 +36,10 @@ import org.junit.runner.RunWith
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.TIRAMISU, codeName = "Tiramisu")
 class SafetyEventTest {
     @Test
-    fun getSafetyEventType_returnsSafetyEventType() {
+    fun getType_returnsType() {
         val safetyEvent = SafetyEvent.Builder(SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
 
-        assertThat(safetyEvent.safetyEventType).isEqualTo(SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED)
+        assertThat(safetyEvent.type).isEqualTo(SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED)
     }
 
     @Test
