@@ -50,7 +50,7 @@ public final class SafetyCenterConfig implements Parcelable {
         mSafetySourcesGroups = safetySourcesGroups;
     }
 
-    /** Returns the list of safety sources groups in the configuration. */
+    /** Returns the list of {@link SafetySourcesGroup}s in the configuration. */
     @NonNull
     public List<SafetySourcesGroup> getSafetySourcesGroups() {
         return mSafetySourcesGroups;
@@ -83,7 +83,7 @@ public final class SafetyCenterConfig implements Parcelable {
 
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeParcelableList(mSafetySourcesGroups, flags);
+        dest.writeTypedList(mSafetySourcesGroups);
     }
 
     @NonNull
@@ -91,11 +91,14 @@ public final class SafetyCenterConfig implements Parcelable {
             new Parcelable.Creator<SafetyCenterConfig>() {
                 @Override
                 public SafetyCenterConfig createFromParcel(Parcel in) {
-                    List<SafetySourcesGroup> safetySourcesGroups = new ArrayList<>();
-                    in.readParcelableList(safetySourcesGroups,
-                            SafetySourcesGroup.class.getClassLoader());
-                    return new SafetyCenterConfig(
-                            Collections.unmodifiableList(safetySourcesGroups));
+                    List<SafetySourcesGroup> safetySourcesGroups =
+                            in.createTypedArrayList(SafetySourcesGroup.CREATOR);
+                    Builder builder = new Builder();
+                    // TODO(b/224513050): Consider simplifying by adding a new API to the builder.
+                    for (int i = 0; i < safetySourcesGroups.size(); i++) {
+                        builder.addSafetySourcesGroup(safetySourcesGroups.get(i));
+                    }
+                    return builder.build();
                 }
 
                 @Override
@@ -113,7 +116,7 @@ public final class SafetyCenterConfig implements Parcelable {
         public Builder() {
         }
 
-        /** Adds a safety source group to the configuration. */
+        /** Adds a {@link SafetySourcesGroup} to the configuration. */
         @NonNull
         public Builder addSafetySourcesGroup(@NonNull SafetySourcesGroup safetySourcesGroup) {
             mSafetySourcesGroups.add(requireNonNull(safetySourcesGroup));
