@@ -137,8 +137,6 @@ public final class SafetySource implements Parcelable {
     private final int mMaxSeverityLevel;
     @StringRes
     private final int mSearchTermsResId;
-    @Nullable
-    private final String mBroadcastReceiverClassName;
     private final boolean mLoggingAllowed;
     private final boolean mRefreshOnPageOpenAllowed;
 
@@ -155,7 +153,6 @@ public final class SafetySource implements Parcelable {
             @InitialDisplayState int initialDisplayState,
             int maxSeverityLevel,
             @StringRes int searchTermsResId,
-            @Nullable String broadcastReceiverClassName,
             boolean loggingAllowed,
             boolean refreshOnPageOpenAllowed) {
         mType = type;
@@ -169,7 +166,6 @@ public final class SafetySource implements Parcelable {
         mInitialDisplayState = initialDisplayState;
         mMaxSeverityLevel = maxSeverityLevel;
         mSearchTermsResId = searchTermsResId;
-        mBroadcastReceiverClassName = broadcastReceiverClassName;
         mLoggingAllowed = loggingAllowed;
         mRefreshOnPageOpenAllowed = refreshOnPageOpenAllowed;
     }
@@ -282,16 +278,6 @@ public final class SafetySource implements Parcelable {
         return mSearchTermsResId;
     }
 
-    /** Returns the broadcast receiver class name of this safety source. */
-    @Nullable
-    public String getBroadcastReceiverClassName() {
-        if (mType == SAFETY_SOURCE_TYPE_STATIC) {
-            throw new UnsupportedOperationException(
-                    "getBroadcastReceiverClassName unsupported for static safety source");
-        }
-        return mBroadcastReceiverClassName;
-    }
-
     /** Returns the logging allowed property of this safety source. */
     public boolean isLoggingAllowed() {
         if (mType == SAFETY_SOURCE_TYPE_STATIC) {
@@ -326,7 +312,6 @@ public final class SafetySource implements Parcelable {
                 && mInitialDisplayState == that.mInitialDisplayState
                 && mMaxSeverityLevel == that.mMaxSeverityLevel
                 && mSearchTermsResId == that.mSearchTermsResId
-                && Objects.equals(mBroadcastReceiverClassName, that.mBroadcastReceiverClassName)
                 && mLoggingAllowed == that.mLoggingAllowed
                 && mRefreshOnPageOpenAllowed == that.mRefreshOnPageOpenAllowed;
     }
@@ -335,8 +320,7 @@ public final class SafetySource implements Parcelable {
     public int hashCode() {
         return Objects.hash(mType, mId, mPackageName, mTitleResId, mTitleForWorkResId,
                 mSummaryResId, mIntentAction, mProfile, mInitialDisplayState, mMaxSeverityLevel,
-                mSearchTermsResId, mBroadcastReceiverClassName, mLoggingAllowed,
-                mRefreshOnPageOpenAllowed);
+                mSearchTermsResId, mLoggingAllowed, mRefreshOnPageOpenAllowed);
     }
 
     @Override
@@ -353,7 +337,6 @@ public final class SafetySource implements Parcelable {
                 + ", mInitialDisplayState=" + mInitialDisplayState
                 + ", mMaxSeverityLevel=" + mMaxSeverityLevel
                 + ", mSearchTermsResId=" + mSearchTermsResId
-                + ", mBroadcastReceiverClassName='" + mBroadcastReceiverClassName + '\''
                 + ", mLoggingAllowed=" + mLoggingAllowed
                 + ", mRefreshOnPageOpenAllowed=" + mRefreshOnPageOpenAllowed
                 + '}';
@@ -377,7 +360,6 @@ public final class SafetySource implements Parcelable {
         dest.writeInt(mInitialDisplayState);
         dest.writeInt(mMaxSeverityLevel);
         dest.writeInt(mSearchTermsResId);
-        dest.writeString(mBroadcastReceiverClassName);
         dest.writeBoolean(mLoggingAllowed);
         dest.writeBoolean(mRefreshOnPageOpenAllowed);
     }
@@ -398,7 +380,6 @@ public final class SafetySource implements Parcelable {
                             .setInitialDisplayState(in.readInt())
                             .setMaxSeverityLevel(in.readInt())
                             .setSearchTermsResId(in.readInt())
-                            .setBroadcastReceiverClassName(in.readString())
                             .setLoggingAllowed(in.readBoolean())
                             .setRefreshOnPageOpenAllowed(in.readBoolean())
                             .build();
@@ -440,8 +421,6 @@ public final class SafetySource implements Parcelable {
         @Nullable
         @StringRes
         private Integer mSearchTermsResId;
-        @Nullable
-        private String mBroadcastReceiverClassName;
         @Nullable
         private Boolean mLoggingAllowed;
         @Nullable
@@ -522,13 +501,6 @@ public final class SafetySource implements Parcelable {
             return this;
         }
 
-        /** Sets the broadcast receiver class name of this safety source. */
-        @NonNull
-        public Builder setBroadcastReceiverClassName(@Nullable String broadcastReceiverClassName) {
-            mBroadcastReceiverClassName = broadcastReceiverClassName;
-            return this;
-        }
-
         /** Sets the logging allowed property of this safety source. */
         @NonNull
         public Builder setLoggingAllowed(boolean loggingAllowed) {
@@ -578,16 +550,13 @@ public final class SafetySource implements Parcelable {
                     "maxSeverityLevel", false, isStatic, Integer.MAX_VALUE);
             int searchTermsResId = BuilderUtils.validateResId(mSearchTermsResId, "searchTerms",
                     false, isIssueOnly);
-            BuilderUtils.validateAttribute(mBroadcastReceiverClassName,
-                    "broadcastReceiverClassName", false, isStatic);
             boolean loggingAllowed = BuilderUtils.validateBoolean(mLoggingAllowed, "loggingAllowed",
                     false, isStatic, true);
             boolean refreshOnPageOpenAllowed = BuilderUtils.validateBoolean(
                     mRefreshOnPageOpenAllowed, "refreshOnPageOpenAllowed", false, isStatic, false);
             return new SafetySource(mType, mId, mPackageName, titleResId, titleForWorkResId,
                     summaryResId, mIntentAction, profile, initialDisplayState, maxSeverityLevel,
-                    searchTermsResId, mBroadcastReceiverClassName, loggingAllowed,
-                    refreshOnPageOpenAllowed);
+                    searchTermsResId, loggingAllowed, refreshOnPageOpenAllowed);
         }
     }
 

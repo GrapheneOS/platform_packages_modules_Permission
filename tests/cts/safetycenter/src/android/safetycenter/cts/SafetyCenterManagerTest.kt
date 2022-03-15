@@ -780,7 +780,6 @@ class SafetyCenterManagerTest {
                 .setTitleResId(android.R.string.ok)
                 .setSummaryResId(android.R.string.ok)
                 .setIntentAction(ACTION_SAFETY_CENTER)
-                .setBroadcastReceiverClassName(CTS_BROADCAST_RECEIVER_NAME)
                 .setProfile(SafetySource.PROFILE_PRIMARY)
                 .build()
         private val CTS_SOURCE_GROUP =
