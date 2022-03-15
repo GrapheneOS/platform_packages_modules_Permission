@@ -434,7 +434,6 @@ package android.safetycenter.config {
 
   public final class SafetySource implements android.os.Parcelable {
     method public int describeContents();
-    method @Nullable public String getBroadcastReceiverClassName();
     method @NonNull public String getId();
     method public int getInitialDisplayState();
     method @Nullable public String getIntentAction();
@@ -464,7 +463,6 @@ package android.safetycenter.config {
   public static final class SafetySource.Builder {
     ctor public SafetySource.Builder(int);
     method @NonNull public android.safetycenter.config.SafetySource build();
-    method @NonNull public android.safetycenter.config.SafetySource.Builder setBroadcastReceiverClassName(@Nullable String);
     method @NonNull public android.safetycenter.config.SafetySource.Builder setId(@Nullable String);
     method @NonNull public android.safetycenter.config.SafetySource.Builder setInitialDisplayState(int);
     method @NonNull public android.safetycenter.config.SafetySource.Builder setIntentAction(@Nullable String);
