@@ -25,6 +25,7 @@ import static java.util.Objects.requireNonNull;
 import android.annotation.IntDef;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
+import android.annotation.SuppressLint;
 import android.annotation.SystemApi;
 import android.app.PendingIntent;
 import android.os.Parcel;
@@ -277,7 +278,7 @@ public final class SafetySourceIssue implements Parcelable {
         return mSeverityLevel == that.mSeverityLevel
                 && TextUtils.equals(mId, that.mId)
                 && TextUtils.equals(mTitle, that.mTitle)
-                && Objects.equals(mSubtitle, that.mSubtitle)
+                && TextUtils.equals(mSubtitle, that.mSubtitle)
                 && TextUtils.equals(mSummary, that.mSummary)
                 && mIssueCategory == that.mIssueCategory
                 && mActions.equals(that.mActions)
@@ -388,10 +389,10 @@ public final class SafetySourceIssue implements Parcelable {
                                         TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in));
                         PendingIntent pendingIntent =
                                 requireNonNull(PendingIntent.readPendingIntentOrNullFromParcel(in));
-                        boolean resolving = in.readBoolean();
+                        boolean willResolve = in.readBoolean();
                         CharSequence successMessage =
                                 TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
-                        return new Action(id, label, pendingIntent, resolving, successMessage);
+                        return new Action(id, label, pendingIntent, willResolve, successMessage);
                     }
 
                     @Override
@@ -406,7 +407,7 @@ public final class SafetySourceIssue implements Parcelable {
         private final CharSequence mLabel;
         @NonNull
         private final PendingIntent mPendingIntent;
-        private final boolean mResolving;
+        private final boolean mWillResolve;
         @Nullable
         private final CharSequence mSuccessMessage;
 
@@ -414,12 +415,12 @@ public final class SafetySourceIssue implements Parcelable {
                 String id,
                 @NonNull CharSequence label,
                 @NonNull PendingIntent pendingIntent,
-                boolean resolving,
+                boolean willResolve,
                 @Nullable CharSequence successMessage) {
             mId = id;
             mLabel = label;
             mPendingIntent = pendingIntent;
-            mResolving = resolving;
+            mWillResolve = willResolve;
             mSuccessMessage = successMessage;
         }
 
@@ -457,8 +458,8 @@ public final class SafetySourceIssue implements Parcelable {
          * to be considered resolved i.e. the issue will no longer need to be conveyed to the user
          * in the UI.
          */
-        public boolean isResolving() {
-            return mResolving;
+        public boolean willResolve() {
+            return mWillResolve;
         }
 
         /**
@@ -480,7 +481,7 @@ public final class SafetySourceIssue implements Parcelable {
             dest.writeString(mId);
             TextUtils.writeToParcel(mLabel, dest, flags);
             mPendingIntent.writeToParcel(dest, flags);
-            dest.writeBoolean(mResolving);
+            dest.writeBoolean(mWillResolve);
             TextUtils.writeToParcel(mSuccessMessage, dest, flags);
         }
 
@@ -492,13 +493,13 @@ public final class SafetySourceIssue implements Parcelable {
             return mId.equals(that.mId)
                     && TextUtils.equals(mLabel, that.mLabel)
                     && mPendingIntent.equals(that.mPendingIntent)
-                    && mResolving == that.mResolving
-                    && Objects.equals(mSuccessMessage, that.mSuccessMessage);
+                    && mWillResolve == that.mWillResolve
+                    && TextUtils.equals(mSuccessMessage, that.mSuccessMessage);
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(mId, mLabel, mPendingIntent, mResolving, mSuccessMessage);
+            return Objects.hash(mId, mLabel, mPendingIntent, mWillResolve, mSuccessMessage);
         }
 
         @Override
@@ -507,7 +508,7 @@ public final class SafetySourceIssue implements Parcelable {
                     + "mId=" + mId
                     + ", mLabel=" + mLabel
                     + ", mPendingIntent=" + mPendingIntent
-                    + ", mResolving=" + mResolving
+                    + ", mWillResolve=" + mWillResolve
                     + ", mSuccessMessage=" + mSuccessMessage
                     + '}';
         }
@@ -520,7 +521,7 @@ public final class SafetySourceIssue implements Parcelable {
             private final CharSequence mLabel;
             @NonNull
             private final PendingIntent mPendingIntent;
-            private boolean mResolving = false;
+            private boolean mWillResolve = false;
             @Nullable
             private CharSequence mSuccessMessage;
 
@@ -537,11 +538,12 @@ public final class SafetySourceIssue implements Parcelable {
             /**
              * Sets whether the action will resolve the safety issue. Defaults to false.
              *
-             * @see #isResolving()
+             * @see #willResolve()
              */
+            @SuppressLint("MissingGetterMatchingBuilder")
             @NonNull
-            public Builder setResolving(boolean resolving) {
-                mResolving = resolving;
+            public Builder setWillResolve(boolean willResolve) {
+                mWillResolve = willResolve;
                 return this;
             }
 
@@ -558,7 +560,7 @@ public final class SafetySourceIssue implements Parcelable {
             /** Creates the {@link Action} defined by this {@link Builder}. */
             @NonNull
             public Action build() {
-                return new Action(mId, mLabel, mPendingIntent, mResolving, mSuccessMessage);
+                return new Action(mId, mLabel, mPendingIntent, mWillResolve, mSuccessMessage);
             }
         }
     }
