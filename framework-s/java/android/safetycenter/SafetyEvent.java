@@ -53,7 +53,7 @@ public final class SafetyEvent implements Parcelable {
             SAFETY_EVENT_TYPE_DEVICE_REBOOTED
     })
     @Retention(RetentionPolicy.SOURCE)
-    public @interface SafetyEventType {
+    public @interface Type {
     }
     /**
      * Indicates that there has been a change of state for safety source, which may be independent
@@ -104,8 +104,8 @@ public final class SafetyEvent implements Parcelable {
         }
     };
 
-    @SafetyEventType
-    private final int mSafetyEventType;
+    @Type
+    private final int mType;
     @Nullable
     private final String mRefreshBroadcastId;
     @Nullable
@@ -113,30 +113,30 @@ public final class SafetyEvent implements Parcelable {
     @Nullable
     private final String mSafetySourceIssueActionId;
 
-    private SafetyEvent(@SafetyEventType int safetyEvent,
+    private SafetyEvent(@Type int type,
             @Nullable String refreshBroadcastId,
             @Nullable String safetySourceIssueId,
             @Nullable String safetySourceIssueActionId) {
-        mSafetyEventType = safetyEvent;
+        mType = type;
         mRefreshBroadcastId = refreshBroadcastId;
         mSafetySourceIssueId = safetySourceIssueId;
         mSafetySourceIssueActionId = safetySourceIssueActionId;
     }
 
     /** Returns the type of the safety event. */
-    @SafetyEventType
-    public int getSafetyEventType() {
-        return mSafetyEventType;
+    @Type
+    public int getType() {
+        return mType;
     }
 
     /**
-     * Returns an optional broadcast id provided by Safety Center when requesting a refresh, through
+     * Returns an optional id provided by Safety Center when requesting a refresh, through
      * {@link SafetyCenterManager#EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID}.
      *
      * <p>This will only be relevant for events of type
      * {@link #SAFETY_EVENT_TYPE_REFRESH_REQUESTED}.
      *
-     * @see #getSafetyEventType()
+     * @see #getType()
      */
     @Nullable
     public String getRefreshBroadcastId() {
@@ -150,7 +150,7 @@ public final class SafetyEvent implements Parcelable {
      * {@link #SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED} or
      * {@link #SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED}.
      *
-     * @see #getSafetyEventType()
+     * @see #getType()
      * @see SafetySourceIssue#getId()
      */
     @Nullable
@@ -166,7 +166,7 @@ public final class SafetyEvent implements Parcelable {
      * {@link #SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED} or
      * {@link #SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED}.
      *
-     * @see #getSafetyEventType()
+     * @see #getType()
      * @see SafetySourceIssue.Action#getId()
      */
     @Nullable
@@ -181,7 +181,7 @@ public final class SafetyEvent implements Parcelable {
 
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeInt(mSafetyEventType);
+        dest.writeInt(mType);
         dest.writeString(mRefreshBroadcastId);
         dest.writeString(mSafetySourceIssueId);
         dest.writeString(mSafetySourceIssueActionId);
@@ -192,7 +192,7 @@ public final class SafetyEvent implements Parcelable {
         if (this == o) return true;
         if (!(o instanceof SafetyEvent)) return false;
         SafetyEvent that = (SafetyEvent) o;
-        return mSafetyEventType == that.mSafetyEventType
+        return mType == that.mType
                 && Objects.equals(mRefreshBroadcastId, that.mRefreshBroadcastId)
                 && Objects.equals(mSafetySourceIssueId, that.mSafetySourceIssueId)
                 && Objects.equals(mSafetySourceIssueActionId, that.mSafetySourceIssueActionId);
@@ -200,15 +200,15 @@ public final class SafetyEvent implements Parcelable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(mSafetyEventType, mRefreshBroadcastId, mSafetySourceIssueId,
+        return Objects.hash(mType, mRefreshBroadcastId, mSafetySourceIssueId,
                 mSafetySourceIssueActionId);
     }
 
     @Override
     public String toString() {
         return "SafetyEvent{"
-                + "mSafetyEventType="
-                + mSafetyEventType
+                + "mType="
+                + mType
                 + ", mRefreshBroadcastId='"
                 + mRefreshBroadcastId
                 + '\''
@@ -223,8 +223,8 @@ public final class SafetyEvent implements Parcelable {
 
     /** Builder class for {@link SafetyEvent}. */
     public static final class Builder {
-        @SafetyEventType
-        private final int mSafetyEventType;
+        @Type
+        private final int mType;
         @Nullable
         private String mRefreshBroadcastId;
         @Nullable
@@ -233,8 +233,8 @@ public final class SafetyEvent implements Parcelable {
         private String mSafetySourceIssueActionId;
 
         /** Creates a {@link Builder} for {@link SafetyEvent}. */
-        public Builder(@SafetyEventType int safetyEventType) {
-            mSafetyEventType = safetyEventType;
+        public Builder(@Type int type) {
+            mType = type;
         }
 
         /**
@@ -244,7 +244,7 @@ public final class SafetyEvent implements Parcelable {
          * <p>This will only be relevant for events of type
          * {@link #SAFETY_EVENT_TYPE_REFRESH_REQUESTED}.
          *
-         * @see #getSafetyEventType()
+         * @see #getType()
          */
         @NonNull
         public Builder setRefreshBroadcastId(@Nullable String refreshBroadcastId) {
@@ -259,7 +259,7 @@ public final class SafetyEvent implements Parcelable {
          * {@link #SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED} or
          * {@link #SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED}.
          *
-         * @see #getSafetyEventType()
+         * @see #getType()
          * @see SafetySourceIssue#getId()
          */
         @NonNull
@@ -276,7 +276,7 @@ public final class SafetyEvent implements Parcelable {
          * {@link #SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED} or
          * {@link #SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED}.
          *
-         * @see #getSafetyEventType()
+         * @see #getType()
          * @see SafetySourceIssue.Action#getId()
          */
         @NonNull
@@ -290,7 +290,7 @@ public final class SafetyEvent implements Parcelable {
          */
         @NonNull
         public SafetyEvent build() {
-            return new SafetyEvent(mSafetyEventType, mRefreshBroadcastId, mSafetySourceIssueId,
+            return new SafetyEvent(mType, mRefreshBroadcastId, mSafetySourceIssueId,
                     mSafetySourceIssueActionId);
         }
     }

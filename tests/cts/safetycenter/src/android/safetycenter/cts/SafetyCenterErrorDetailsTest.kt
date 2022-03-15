@@ -16,14 +16,17 @@
 
 package android.safetycenter.cts
 
+import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.Parcel
 import android.safetycenter.SafetyCenterErrorDetails
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.filters.SdkSuppress
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
+@SdkSuppress(minSdkVersion = TIRAMISU, codeName = "Tiramisu")
 class SafetyCenterErrorDetailsTest {
 
     val errorDetails1 = SafetyCenterErrorDetails("an error message")

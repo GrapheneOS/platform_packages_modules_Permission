@@ -279,10 +279,11 @@ public final class SafetyCenterService extends SystemService {
         }
 
         @Override
-        public void dismissSafetyIssue(String issueId, @UserIdInt int userId) {
-            getContext().enforceCallingOrSelfPermission(MANAGE_SAFETY_CENTER, "dismissSafetyIssue");
-            if (!enforceCrossUserPermission("dismissSafetyIssue", userId)
-                    || !checkApiEnabled("dismissSafetyIssue")) {
+        public void dismissSafetyCenterIssue(String issueId, @UserIdInt int userId) {
+            getContext().enforceCallingOrSelfPermission(
+                    MANAGE_SAFETY_CENTER, "dismissSafetyCenterIssue");
+            if (!enforceCrossUserPermission("dismissSafetyCenterIssue", userId)
+                    || !checkApiEnabled("dismissSafetyCenterIssue")) {
                 return;
             }
             // TODO(b/202387059): Implement issue dismissal.
@@ -290,14 +291,14 @@ public final class SafetyCenterService extends SystemService {
         }
 
         @Override
-        public void executeAction(
+        public void executeSafetyCenterIssueAction(
                 @NonNull String safetyCenterIssueId,
                 @NonNull String safetyCenterActionId,
                 @UserIdInt int userId) {
             getContext().enforceCallingOrSelfPermission(MANAGE_SAFETY_CENTER,
-                    "executeAction");
-            if (!enforceCrossUserPermission("executeAction", userId)
-                    || !checkApiEnabled("executeAction")) {
+                    "executeSafetyCenterIssueAction");
+            if (!enforceCrossUserPermission("executeSafetyCenterIssueAction", userId)
+                    || !checkApiEnabled("executeSafetyCenterIssueAction")) {
                 return;
             }
             // TODO(b/218379298): Add implementation
