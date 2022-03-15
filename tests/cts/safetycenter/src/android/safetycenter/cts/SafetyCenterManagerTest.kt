@@ -25,6 +25,7 @@ import android.content.Intent
 import android.content.Intent.ACTION_SAFETY_CENTER
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.safetycenter.SafetyCenterData
+import android.safetycenter.SafetyCenterErrorDetails
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyCenterManager.OnSafetyCenterDataChangedListener
 import android.safetycenter.SafetyCenterManager.REFRESH_REASON_PAGE_OPEN
@@ -56,6 +57,7 @@ import android.safetycenter.testing.getSafetySourceDataWithPermission
 import android.safetycenter.testing.isSafetyCenterEnabledWithPermission
 import android.safetycenter.testing.refreshSafetySourcesWithPermission
 import android.safetycenter.testing.removeOnSafetyCenterDataChangedListenerWithPermission
+import android.safetycenter.testing.reportSafetySourceErrorWithPermission
 import android.safetycenter.testing.setSafetyCenterConfigOverrideWithPermission
 import android.safetycenter.testing.setSafetySourceDataWithPermission
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
@@ -135,13 +137,28 @@ class SafetyCenterManagerTest {
                     .build()
             )
             .build()
-    private val listenerChannel = Channel<SafetyCenterData>()
+    private val listener = object : OnSafetyCenterDataChangedListener {
+        private val dataChannel = Channel<SafetyCenterData>()
+        private val errorChannel = Channel<SafetyCenterErrorDetails>()
 
-    // The lambda has to be wrapped to the right type because kotlin wraps lambdas in a new Java
-    // functional interface implementation each time they are referenced/cast to a Java interface:
-    // b/215569072.
-    private val listener = OnSafetyCenterDataChangedListener {
-        runBlockingWithTimeout { listenerChannel.send(it) }
+        override fun onSafetyCenterDataChanged(data: SafetyCenterData) {
+            runBlockingWithTimeout { dataChannel.send(data) }
+        }
+
+        override fun onError(errorDetails: SafetyCenterErrorDetails) {
+            runBlockingWithTimeout { errorChannel.send(errorDetails) }
+        }
+
+        fun receiveSafetyCenterData(timeout: Duration = TIMEOUT_LONG) =
+            runBlockingWithTimeout(timeout) { dataChannel.receive() }
+
+        fun receiveSafetyCenterErrorDetails(timeout: Duration = TIMEOUT_LONG) =
+            runBlockingWithTimeout(timeout) { errorChannel.receive() }
+
+        fun cancelChannels() {
+            dataChannel.cancel()
+            errorChannel.cancel()
+        }
     }
 
     @Before
@@ -160,8 +177,8 @@ class SafetyCenterManagerTest {
     }
 
     @After
-    fun cancelChannelAfterTest() {
-        listenerChannel.cancel()
+    fun cancelChannelsAfterTest() {
+        listener.cancelChannels()
     }
 
     @Test
@@ -281,6 +298,23 @@ class SafetyCenterManagerTest {
         assertFailsWith(SecurityException::class) {
             safetyCenterManager.getSafetySourceData(CTS_SOURCE_ID)
         }
+    }
+
+    @Test
+    fun reportSafetySourceError_callsErrorListener() {
+        safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
+            directExecutor(),
+            listener
+        )
+
+        safetyCenterManager.reportSafetySourceErrorWithPermission(
+            CTS_SOURCE_ID,
+            SafetySourceErrorDetails(EVENT_SOURCE_STATE_CHANGED)
+        )
+        val safetyCenterErrorDetailsFromListener = listener.receiveSafetyCenterErrorDetails()
+
+        assertThat(safetyCenterErrorDetailsFromListener).isEqualTo(
+            SafetyCenterErrorDetails("Error"))
     }
 
     @Test
@@ -448,7 +482,7 @@ class SafetyCenterManagerTest {
             directExecutor(),
             listener
         )
-        val safetyCenterDataFromListener = receiveListenerUpdate()
+        val safetyCenterDataFromListener = listener.receiveSafetyCenterData()
 
         // TODO(b/218830137): Assert on content.
         assertThat(safetyCenterDataFromListener).isNotNull()
@@ -462,14 +496,14 @@ class SafetyCenterManagerTest {
             listener
         )
         // Receive initial data.
-        receiveListenerUpdate()
+        listener.receiveSafetyCenterData()
 
         safetyCenterManager.setSafetySourceDataWithPermission(
             CTS_SOURCE_ID,
             safetySourceDataOk,
             EVENT_SOURCE_STATE_CHANGED
         )
-        val safetyCenterDataFromListener = receiveListenerUpdate()
+        val safetyCenterDataFromListener = listener.receiveSafetyCenterData()
 
         // TODO(b/218830137): Assert on content.
         assertThat(safetyCenterDataFromListener).isNotNull()
@@ -483,21 +517,21 @@ class SafetyCenterManagerTest {
             listener
         )
         // Receive initial data.
-        receiveListenerUpdate()
+        listener.receiveSafetyCenterData()
         safetyCenterManager.setSafetySourceDataWithPermission(
             CTS_SOURCE_ID,
             safetySourceDataOk,
             EVENT_SOURCE_STATE_CHANGED
         )
         // Receive update from #setSafetySourceData call.
-        receiveListenerUpdate()
+        listener.receiveSafetyCenterData()
 
         safetyCenterManager.setSafetySourceDataWithPermission(
             CTS_SOURCE_ID,
             safetySourceDataCritical,
             EVENT_SOURCE_STATE_CHANGED
         )
-        val safetyCenterDataFromListener = receiveListenerUpdate()
+        val safetyCenterDataFromListener = listener.receiveSafetyCenterData()
 
         // TODO(b/218830137): Assert on content.
         assertThat(safetyCenterDataFromListener).isNotNull()
@@ -511,21 +545,21 @@ class SafetyCenterManagerTest {
             listener
         )
         // Receive initial data.
-        receiveListenerUpdate()
+        listener.receiveSafetyCenterData()
         safetyCenterManager.setSafetySourceDataWithPermission(
             CTS_SOURCE_ID,
             safetySourceDataOk,
             EVENT_SOURCE_STATE_CHANGED
         )
         // Receive update from #setSafetySourceData call.
-        receiveListenerUpdate()
+        listener.receiveSafetyCenterData()
 
         safetyCenterManager.setSafetySourceDataWithPermission(
             CTS_SOURCE_ID,
             safetySourceData = null,
             EVENT_SOURCE_STATE_CHANGED
         )
-        val safetyCenterDataFromListener = receiveListenerUpdate()
+        val safetyCenterDataFromListener = listener.receiveSafetyCenterData()
 
         // TODO(b/218830137): Assert on content.
         assertThat(safetyCenterDataFromListener).isNotNull()
@@ -539,7 +573,7 @@ class SafetyCenterManagerTest {
             listener
         )
         // Receive initial data.
-        receiveListenerUpdate()
+        listener.receiveSafetyCenterData()
 
         safetyCenterManager.setSafetySourceDataWithPermission(
             CTS_SOURCE_ID,
@@ -548,7 +582,7 @@ class SafetyCenterManagerTest {
         )
 
         assertFailsWith(TimeoutCancellationException::class) {
-            receiveListenerUpdate(TIMEOUT_SHORT)
+            listener.receiveSafetyCenterData(TIMEOUT_SHORT)
         }
     }
 
@@ -560,14 +594,14 @@ class SafetyCenterManagerTest {
             listener
         )
         // Receive initial data.
-        receiveListenerUpdate()
+        listener.receiveSafetyCenterData()
         safetyCenterManager.setSafetySourceDataWithPermission(
             CTS_SOURCE_ID,
             safetySourceDataOk,
             EVENT_SOURCE_STATE_CHANGED
         )
         // Receive update from #setSafetySourceData call.
-        receiveListenerUpdate()
+        listener.receiveSafetyCenterData()
 
         safetyCenterManager.setSafetySourceDataWithPermission(
             CTS_SOURCE_ID,
@@ -576,7 +610,7 @@ class SafetyCenterManagerTest {
         )
 
         assertFailsWith(TimeoutCancellationException::class) {
-            receiveListenerUpdate(TIMEOUT_SHORT)
+            listener.receiveSafetyCenterData(TIMEOUT_SHORT)
         }
     }
 
@@ -591,7 +625,7 @@ class SafetyCenterManagerTest {
         )
 
         assertFailsWith(TimeoutCancellationException::class) {
-            receiveListenerUpdate(TIMEOUT_SHORT)
+            listener.receiveSafetyCenterData(TIMEOUT_SHORT)
         }
     }
 
@@ -608,7 +642,7 @@ class SafetyCenterManagerTest {
             object : OnSafetyCenterDataChangedListener {
                 override fun onSafetyCenterDataChanged(safetyCenterData: SafetyCenterData) {
                     safetyCenterManager.removeOnSafetyCenterDataChangedListenerWithPermission(this)
-                    runBlockingWithTimeout { listenerChannel.send(safetyCenterData) }
+                    listener.onSafetyCenterDataChanged(safetyCenterData)
                 }
             }
         safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
@@ -619,7 +653,7 @@ class SafetyCenterManagerTest {
         // Check that we don't deadlock when using a one-shot listener: this is because adding the
         // listener could call the listener while holding a lock on the binder thread-pool; causing
         // a deadlock when attempting to call the `SafetyCenterManager` from that listener.
-        receiveListenerUpdate()
+        listener.receiveSafetyCenterData()
     }
 
     @Test
@@ -630,7 +664,7 @@ class SafetyCenterManagerTest {
             listener
         )
         // Receive initial data.
-        receiveListenerUpdate()
+        listener.receiveSafetyCenterData()
 
         safetyCenterManager.removeOnSafetyCenterDataChangedListenerWithPermission(listener)
         safetyCenterManager.setSafetySourceDataWithPermission(
@@ -640,7 +674,7 @@ class SafetyCenterManagerTest {
         )
 
         assertFailsWith(TimeoutCancellationException::class) {
-            receiveListenerUpdate(TIMEOUT_SHORT)
+            listener.receiveSafetyCenterData(TIMEOUT_SHORT)
         }
     }
 
@@ -702,9 +736,6 @@ class SafetyCenterManagerTest {
             MANAGE_SAFETY_CENTER
         )
     }
-
-    private fun receiveListenerUpdate(timeout: Duration = TIMEOUT_LONG): SafetyCenterData =
-        runBlockingWithTimeout(timeout) { listenerChannel.receive() }
 
     private fun <T> runBlockingWithTimeout(
         timeout: Duration = TIMEOUT_LONG,
