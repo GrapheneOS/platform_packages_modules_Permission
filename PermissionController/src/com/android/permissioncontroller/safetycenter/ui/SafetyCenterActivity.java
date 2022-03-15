@@ -15,7 +15,13 @@
  */
 package com.android.permissioncontroller.safetycenter.ui;
 
+import static android.content.Intent.FLAG_ACTIVITY_FORWARD_RESULT;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.safetycenter.SafetyCenterManager;
+import android.util.Log;
 
 import androidx.annotation.Keep;
 
@@ -28,9 +34,21 @@ import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 @Keep
 public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
 
+    private static final String TAG = SafetyCenterActivity.class.getSimpleName();
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SafetyCenterManager safetyCenterManager = getSystemService(SafetyCenterManager.class);
+
+        if (safetyCenterManager == null || !safetyCenterManager.isSafetyCenterEnabled()) {
+            Log.w(TAG, "Safety Center disabled, redirecting to security settings page");
+            startActivity(new Intent(Settings.ACTION_SECURITY_SETTINGS).addFlags(
+                    FLAG_ACTIVITY_FORWARD_RESULT));
+            finish();
+            return;
+        }
+
         setTitle(getString(R.string.safety_center_dashboard_page_title));
         getSupportFragmentManager()
                 .beginTransaction()
