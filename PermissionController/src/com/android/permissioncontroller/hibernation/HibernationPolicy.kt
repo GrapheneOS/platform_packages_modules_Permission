@@ -64,6 +64,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.preference.PreferenceManager
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.Constants
+import com.android.permissioncontroller.DeviceUtils
 import com.android.permissioncontroller.DumpableLog
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.R
@@ -606,6 +607,7 @@ class HibernationJobService : JobService() {
             notifContent = getString(R.string.auto_revoke_permission_notification_content)
         }
 
+        // Notification won't appear on TV, because notifications are considered distruptive on TV
         val b = Notification.Builder(this, Constants.PERMISSION_REMINDER_CHANNEL_ID)
             .setContentTitle(notifTitle)
             .setContentText(notifContent)
@@ -614,7 +616,6 @@ class HibernationJobService : JobService() {
             .setColor(getColor(android.R.color.system_notification_accent_color))
             .setAutoCancel(true)
             .setContentIntent(pendingIntent)
-            .extend(Notification.TvExtender())
         Utils.getSettingsLabelForNotifications(applicationContext.packageManager)?.let {
             settingsLabel ->
             val extras = Bundle()
