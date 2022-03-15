@@ -742,7 +742,6 @@
             <permission name="android.permission.MANAGE_APP_PREDICTIONS" />
             <permission name="android.permission.UNLIMITED_SHORTCUTS_API_CALLS" />
             <permission name="android.permission.MANAGE_SEARCH_UI" />
-            <permission name="android.permission.MANAGE_WALLPAPER_EFFECTS_GENERATION" minSdkVersion="33" />
             <permission name="android.permission.READ_EXTERNAL_STORAGE" />
             <permission name="android.permission.READ_PEOPLE_DATA" />
             <permission name="android.permission.READ_GLOBAL_APP_SEARCH_DATA" />
