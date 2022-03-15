@@ -45,7 +45,7 @@ import java.util.Objects;
 @RequiresApi(TIRAMISU)
 final class UserProfileGroup {
 
-    private static final String TAG = "UserProfiles";
+    private static final String TAG = "UserProfileGroup";
 
     @UserIdInt
     // TODO(b/223126212): Don't fork this — is there another value we could use?
