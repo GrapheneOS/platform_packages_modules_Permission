@@ -37,6 +37,7 @@ import android.provider.DeviceConfig;
 import android.safetycenter.IOnSafetyCenterDataChangedListener;
 import android.safetycenter.ISafetyCenterManager;
 import android.safetycenter.SafetyCenterData;
+import android.safetycenter.SafetyCenterErrorDetails;
 import android.safetycenter.SafetyEvent;
 import android.safetycenter.SafetySourceData;
 import android.safetycenter.SafetySourceErrorDetails;
@@ -153,7 +154,7 @@ public final class SafetyCenterService extends SystemService {
             // This doesn't need to be done while holding the lock, as RemoteCallbackList already
             // handles concurrent calls.
             if (listeners != null && safetyCenterData != null) {
-                SafetyCenterListeners.deliverUpdate(listeners, safetyCenterData);
+                SafetyCenterListeners.deliverUpdate(listeners, safetyCenterData, null);
             }
         }
 
@@ -192,7 +193,18 @@ public final class SafetyCenterService extends SystemService {
                     || !checkApiEnabled("reportSafetySourceError")) {
                 return;
             }
+
             // TODO(b/218379298): Add implementation
+            UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
+            List<RemoteCallbackList<IOnSafetyCenterDataChangedListener>> listeners;
+            synchronized (mApiLock) {
+                listeners = mSafetyCenterListeners.getListeners(userProfileGroup);
+            }
+
+            // This doesn't need to be done while holding the lock, as RemoteCallbackList already
+            // handles concurrent calls.
+            SafetyCenterListeners.deliverUpdate(listeners, null,
+                    new SafetyCenterErrorDetails("Error"));
         }
 
         @Override
@@ -258,7 +270,7 @@ public final class SafetyCenterService extends SystemService {
 
             // This doesn't need to be done while holding the lock.
             if (safetyCenterData != null) {
-                SafetyCenterListeners.deliverUpdate(listener, safetyCenterData);
+                SafetyCenterListeners.deliverUpdate(listener, safetyCenterData, null);
             }
         }
 
