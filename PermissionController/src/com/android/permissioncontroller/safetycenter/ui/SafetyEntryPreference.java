@@ -47,7 +47,7 @@ public class SafetyEntryPreference extends Preference {
         switch (entrySeverityLevel) {
             case SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN:
                 return SeverityLevel.SEVERITY_LEVEL_UNKNOWN;
-            case SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_NONE:
+            case SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED:
                 return SeverityLevel.NONE;
             case SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK:
                 return SeverityLevel.INFORMATION;
