@@ -80,17 +80,14 @@ public final class SafetySourceStatus implements Parcelable {
             new Parcelable.Creator<SafetySourceStatus>() {
                 @Override
                 public SafetySourceStatus createFromParcel(Parcel in) {
-                    CharSequence title =
-                            requireNonNull(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in));
-                    CharSequence summary =
-                            requireNonNull(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in));
-                    int statusLevel = in.readInt();
-                    PendingIntent pendingIntent =
-                            requireNonNull(PendingIntent.readPendingIntentOrNullFromParcel(in));
-                    IconAction iconAction = in.readTypedObject(IconAction.CREATOR);
-                    boolean enabled = in.readBoolean();
-                    return new SafetySourceStatus(title, summary, statusLevel, pendingIntent,
-                            iconAction, enabled);
+                    return new Builder(
+                            TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in),
+                            TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in),
+                            in.readInt(),
+                            PendingIntent.readPendingIntentOrNullFromParcel(in))
+                            .setIconAction(in.readTypedObject(IconAction.CREATOR))
+                            .setEnabled(in.readBoolean())
+                            .build();
                 }
 
                 @Override
@@ -150,7 +147,7 @@ public final class SafetySourceStatus implements Parcelable {
     }
 
     /**
-     * Returns an optional icon action to be displayed in the safety source status UI.
+     * Returns an optional {@link IconAction} to be displayed in the safety source status UI.
      *
      * <p>The icon action will be a clickable icon which performs an action as indicated by the
      * icon.
@@ -387,7 +384,7 @@ public final class SafetySourceStatus implements Parcelable {
         }
 
         /**
-         * Sets an optional icon action for the safety source status.
+         * Sets an optional {@link IconAction} for the safety source status.
          *
          * @see #getIconAction()
          */
