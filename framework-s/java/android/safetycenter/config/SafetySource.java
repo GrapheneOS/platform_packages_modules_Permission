@@ -387,24 +387,21 @@ public final class SafetySource implements Parcelable {
             new Parcelable.Creator<SafetySource>() {
                 @Override
                 public SafetySource createFromParcel(Parcel in) {
-                    int type = in.readInt();
-                    String id = in.readString();
-                    String packageName = in.readString();
-                    int titleResId = in.readInt();
-                    int titleForWorkResId = in.readInt();
-                    int summaryResId = in.readInt();
-                    String intentAction = in.readString();
-                    int profile = in.readInt();
-                    int initialDisplayState = in.readInt();
-                    int maxSeverityLevel = in.readInt();
-                    int searchTermsResId = in.readInt();
-                    String broadcastReceiverClassName = in.readString();
-                    boolean loggingAllowed = in.readBoolean();
-                    boolean refreshOnPageOpenAllowed = in.readBoolean();
-                    return new SafetySource(type, id, packageName, titleResId, titleForWorkResId,
-                            summaryResId, intentAction, profile, initialDisplayState,
-                            maxSeverityLevel, searchTermsResId, broadcastReceiverClassName,
-                            loggingAllowed, refreshOnPageOpenAllowed);
+                    return new Builder(in.readInt())
+                            .setId(in.readString())
+                            .setPackageName(in.readString())
+                            .setTitleResId(in.readInt())
+                            .setTitleForWorkResId(in.readInt())
+                            .setSummaryResId(in.readInt())
+                            .setIntentAction(in.readString())
+                            .setProfile(in.readInt())
+                            .setInitialDisplayState(in.readInt())
+                            .setMaxSeverityLevel(in.readInt())
+                            .setSearchTermsResId(in.readInt())
+                            .setBroadcastReceiverClassName(in.readString())
+                            .setLoggingAllowed(in.readBoolean())
+                            .setRefreshOnPageOpenAllowed(in.readBoolean())
+                            .build();
                 }
 
                 @Override
