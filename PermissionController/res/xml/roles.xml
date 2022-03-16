@@ -1104,6 +1104,7 @@
       -->
     <role
         name="android.app.role.DEVICE_POLICY_MANAGEMENT"
+        behavior="DevicePolicyManagementRoleBehavior"
         defaultHolders="config_devicePolicyManagement"
         exclusive="true"
         minSdkVersion="33"
