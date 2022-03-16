@@ -91,7 +91,7 @@ final class SafetyCenterDataTracker {
     @Nullable
     SafetyCenterData setSafetySourceData(
             @NonNull String safetySourceId,
-            @NonNull SafetySourceData safetySourceData,
+            @Nullable SafetySourceData safetySourceData,
             @NonNull String packageName,
             @UserIdInt int userId) {
         if (!configContains(safetySourceId, packageName)) {
@@ -101,7 +101,7 @@ final class SafetyCenterDataTracker {
 
         Key key = Key.of(safetySourceId, packageName, userId);
         SafetySourceData existingSafetySourceData = mSafetySourceDataForKey.get(key);
-        if (safetySourceData.equals(existingSafetySourceData)) {
+        if (Objects.equals(safetySourceData, existingSafetySourceData)) {
             return null;
         }
 
@@ -150,6 +150,25 @@ final class SafetyCenterDataTracker {
 
         // TODO(b/218819144): Merge for all profiles.
         return getSafetyCenterData(safetyCenterConfig, userId);
+    }
+
+    /**
+     * Returns a default {@link SafetyCenterData} object to be returned when the API is disabled.
+     */
+    @NonNull
+    static SafetyCenterData getDefaultSafetyCenterData() {
+        return new SafetyCenterData(
+                new SafetyCenterStatus.Builder()
+                        .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN)
+                        .setTitle(getSafetyCenterStatusTitle(
+                                SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN))
+                        .setSummary(getSafetyCenterStatusSummary(
+                                SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN))
+                        .build(),
+                emptyList(),
+                emptyList(),
+                emptyList()
+        );
     }
 
     // TODO(b/219702252): Create a more efficient data structure for this, and update it when the
@@ -477,22 +496,6 @@ final class SafetyCenterDataTracker {
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
-    }
-
-    @NonNull
-    private static SafetyCenterData getDefaultSafetyCenterData() {
-        return new SafetyCenterData(
-                new SafetyCenterStatus.Builder()
-                        .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN)
-                        .setTitle(getSafetyCenterStatusTitle(
-                                SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN))
-                        .setSummary(getSafetyCenterStatusSummary(
-                                SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN))
-                        .build(),
-                emptyList(),
-                emptyList(),
-                emptyList()
-        );
     }
 
     @Nullable
