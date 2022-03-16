@@ -264,8 +264,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"În timpul condusului ați permis accesul <xliff:g id="APP">%1$s</xliff:g> la <xliff:g id="PERMISSION_1">%2$s</xliff:g> și la <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"În timpul condusului ați acordat <xliff:g id="COUNT">%1$d</xliff:g> permisiuni pentru <xliff:g id="APP">%2$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{În timpul condusului ați permis accesul pentru <xliff:g id="APP_0">%1$s</xliff:g> și # altă aplicație}few{În timpul condusului ați permis accesul pentru <xliff:g id="APP_1">%1$s</xliff:g> și # alte aplicații}other{În timpul condusului ați permis accesul pentru <xliff:g id="APP_1">%1$s</xliff:g> și # de alte aplicații}}"</string>
-    <!-- no translation found for go_to_settings (1053735612211228335) -->
-    <skip />
+    <string name="go_to_settings" msgid="1053735612211228335">"Accesați Setări"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Unele aplicații nu au fost folosite de câteva luni"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Permisiuni eliminate"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Permisiuni eliminate"</string>
@@ -468,10 +467,10 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Permiteți &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să vă acceseze jurnalele de apeluri?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Permiteți &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să inițieze și să gestioneze apeluri telefonice?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Permiteți &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să acceseze datele de la senzori despre semnele dvs. vitale?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="5239219356063824373">"Aplicația solicită acces permanent la datele de la senzori despre semne vitale, chiar și când nu o folosiți. "<annotation id="link">"Acordați această permisiune din setări."</annotation></string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="3851603883489664284">"Aplicația solicită acces permanent la datele de la senzori despre semne vitale, chiar și când nu o folosiți. Pentru a face această modificare, "<annotation id="link">"accesați setările"</annotation>" sau păstrați accesul numai în timpul folosirii aplicației."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Permiteți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să acceseze datele de la senzori despre semnele dvs. vitale?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Aplicația poate să solicite acces permanent la datele de la senzori despre semne vitale, chiar și când nu o folosiți. "<annotation id="link">"Acordați permisiunea din setări"</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Schimbați permisiunea de acces la datele de la senzori despre semnele vitale pentru &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Pentru a permite accesul permanent al aplicației la datele de la senzorii corporali, chiar și atunci când nu o folosiți, "<annotation id="link">"accesați setările"</annotation>"."</string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Permiteți în continuare accesul &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; la datele de la senzorii corporali în timpul folosirii aplicației?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Permiteți &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să vă trimită notificări?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Permiteți &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să continue să vă trimită notificări?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Permisiuni controlate"</string>

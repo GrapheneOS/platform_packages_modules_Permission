@@ -264,8 +264,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Terwyl jy bestuur het, het jy <xliff:g id="APP">%1$s</xliff:g> toegang gegee tot <xliff:g id="PERMISSION_1">%2$s</xliff:g> en <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Terwyl jy bestuur het, het jy <xliff:g id="COUNT">%1$d</xliff:g> toestemmings aan <xliff:g id="APP">%2$s</xliff:g> gegee"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Terwyl jy bestuur het, het jy <xliff:g id="APP_0">%1$s</xliff:g> en # ander program toegang gegee}other{Terwyl jy bestuur het, het jy <xliff:g id="APP_1">%1$s</xliff:g> en # ander programme toegang gegee}}"</string>
-    <!-- no translation found for go_to_settings (1053735612211228335) -->
-    <skip />
+    <string name="go_to_settings" msgid="1053735612211228335">"Gaan na Instellings"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Sommige programme is \'n paar maande laas gebruik"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Toestemmings wat verwyder is"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Toestemmings is verwyder"</string>
@@ -468,10 +467,10 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Gee &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang tot jou foonoproeprekords?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Laat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toe om foonoproepe te maak en te bestuur?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Gee &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang tot sensordata oor jou lewenstekens?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="5239219356063824373">"Dié program wil dalk deurentyd toegang tot sensordata oor jou lewenstekens hê, selfs wanneer jy nie die program gebruik nie. "<annotation id="link">"Laat toe in instellings."</annotation></string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="3851603883489664284">"Dié program wil deurentyd toegang tot sensordata oor jou lewenstekens hê, selfs wanneer jy nie die program gebruik nie. "<annotation id="link">"Gaan na instellings"</annotation>" om hierdie verandering aan te bring of hou toegang net vir wanneer die program gebruik word."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Gee &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toegang tot die sensordata oor jou lewenstekens?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Dié program wil dalk deurentyd toegang tot sensordata oor jou lewenstekens hê, selfs wanneer jy nie die program gebruik nie. "<annotation id="link">"Laat toe in instellings."</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Verander toegang tot sensordata oor jou lewenstekens vir &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783"><annotation id="link">"Gaan na instellings"</annotation>" om vir hierdie program toegang tot liggaamsensordata te gee, selfs wanneer jy nie die program gebruik nie."</string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Gee &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; steeds toegang tot liggaamsensordata terwyl die program gebruik word?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Laat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toe om vir jou kennisgewings te stuur?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Laat &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toe om steeds vir jou kennisgewings te stuur?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Beheerde toestemmings"</string>

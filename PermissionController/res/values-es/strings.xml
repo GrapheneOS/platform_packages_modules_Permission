@@ -160,7 +160,7 @@
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Uso de permisos en el último minuto"</string>
     <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"No se ha usado en las últimas 24 horas"</string>
     <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"No se ha usado en los últimos 7 días"</string>
-    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Usado por 1 aplicación}other{Usado por # aplicaciones}}"</string>
+    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Se ha dado permiso a 1 aplicación}other{Se ha dado permiso a # aplicaciones}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Ver todo en el panel de control"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrados por: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Quitar filtro"</string>
@@ -264,8 +264,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Durante la conducción, has dado a <xliff:g id="APP">%1$s</xliff:g> permiso de <xliff:g id="PERMISSION_1">%2$s</xliff:g> y <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Durante la conducción, has dado <xliff:g id="COUNT">%1$d</xliff:g> permisos a <xliff:g id="APP">%2$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Durante la conducción, has dado acceso a <xliff:g id="APP_0">%1$s</xliff:g> y otra aplicación}other{Durante la conducción, has dado acceso a <xliff:g id="APP_1">%1$s</xliff:g> y otras # aplicaciones}}"</string>
-    <!-- no translation found for go_to_settings (1053735612211228335) -->
-    <skip />
+    <string name="go_to_settings" msgid="1053735612211228335">"Ir a Ajustes"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Hay varias aplicaciones que llevan meses sin usarse"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Permisos quitados"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Permisos quitados"</string>
@@ -468,10 +467,10 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a los registros de llamadas del teléfono?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; haga y gestione llamadas?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a los datos del sensor sobre tus constantes vitales?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="5239219356063824373">"Esta aplicación quiere acceder a los datos de sensores de tus constantes vitales siempre, incluso aunque no la uses. "<annotation id="link">"Puedes permitirlo en Ajustes."</annotation></string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="3851603883489664284">"Esta aplicación quiere acceder a los datos de sensores de tus constantes vitales siempre, incluso cuando no la uses. Para hacer este cambio, "<annotation id="link">"ve a los ajustes"</annotation>" o deja que acceda solo cuando la aplicación esté en uso."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"¿Quieres permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a los datos de sensores de tus constantes vitales?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Esta aplicación quiere acceder a los datos de sensores de tus constantes vitales siempre, incluso aunque no la uses. "<annotation id="link">"Puedes permitirlo en Ajustes."</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"¿Quieres cambiar el acceso de &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; a los datos de sensores sobre tus constantes vitales?"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Para permitir que esta aplicación acceda siempre a los datos del sensor corporal, incluso cuando no la uses, "<annotation id="link">"ve a los ajustes."</annotation></string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a los datos del sensor corporal mientras se usa?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"¿Quieres permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; te envíe notificaciones?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"¿Quieres permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; siga enviándote notificaciones?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Permisos controlados"</string>
