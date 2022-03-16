@@ -1521,6 +1521,8 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="remove_microphone_qs">Remove microphone permission</string>
     <!-- Label to manage service in safety center QS page [CHAR LIMIT=50] -->
     <string name="manage_service_qs">Manage service</string>
+    <!-- Label to manage permissions in safety center QS page [CHAR LIMIT=50] -->
+    <string name="manage_permissions_qs">Manage permissions</string>
     <!-- Label for active usage by phone call in safety center QS page [CHAR LIMIT=50] -->
     <string name="active_call_usage_qs">Being used by phone call</string>
     <!-- Label for recent usage by phone call in safety center QS page [CHAR LIMIT=50] -->
