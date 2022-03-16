@@ -474,7 +474,7 @@ final class SafetyCenterDataTracker {
                             .setPendingIntent(safetySourceStatus.getPendingIntent()).build();
                 }
                 return toDefaultSafetyCenterEntry(safetySource, safetySource.getPackageName(),
-                        SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_NONE, isUserManaged, userId);
+                        SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED, isUserManaged, userId);
             }
             case SafetySource.SAFETY_SOURCE_TYPE_STATIC: {
                 return toDefaultSafetyCenterEntry(safetySource, null,
@@ -629,7 +629,7 @@ final class SafetyCenterDataTracker {
         switch (safetyCenterEntrySeverityLevel) {
             case SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN:
                 return SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN;
-            case SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_NONE:
+            case SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED:
             case SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK:
                 return SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK;
             case SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_RECOMMENDATION:
@@ -666,7 +666,7 @@ final class SafetyCenterDataTracker {
             @SafetySourceStatus.StatusLevel int safetySourceStatusLevel) {
         switch (safetySourceStatusLevel) {
             case SafetySourceStatus.STATUS_LEVEL_NONE:
-                return SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_NONE;
+                return SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED;
             case SafetySourceStatus.STATUS_LEVEL_OK:
                 return SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK;
             case SafetySourceStatus.STATUS_LEVEL_RECOMMENDATION:
