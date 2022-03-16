@@ -45,6 +45,7 @@ import android.safetycenter.SafetySourceErrorDetails;
 import android.safetycenter.config.SafetyCenterConfig;
 import android.safetycenter.config.SafetySource;
 import android.safetycenter.config.SafetySourcesGroup;
+import android.util.Log;
 
 import androidx.annotation.Keep;
 import androidx.annotation.RequiresApi;
@@ -111,17 +112,7 @@ public final class SafetyCenterService extends SystemService {
             // TODO(b/214568975): Decide if we should disable safety center if there is a problem
             //  reading the config.
 
-            // We don't require the caller to have READ_DEVICE_CONFIG permission.
-            final long callingId = Binder.clearCallingIdentity();
-            try {
-                return DeviceConfig.getBoolean(
-                        DeviceConfig.NAMESPACE_PRIVACY,
-                        PROPERTY_SAFETY_CENTER_ENABLED,
-                        /* defaultValue = */ false)
-                        && getSafetyCenterConfigValue();
-            } finally {
-                Binder.restoreCallingIdentity(callingId);
-            }
+            return isApiEnabled();
         }
 
         @Override
@@ -138,6 +129,9 @@ public final class SafetyCenterService extends SystemService {
             // TODO(b/205706756): Security: check certs?
             getContext().enforceCallingOrSelfPermission(SEND_SAFETY_CENTER_UPDATE,
                     "setSafetySourceData");
+            if (!checkApiEnabled("setSafetySourceData")) {
+                return;
+            }
             // TODO(b/218812582): Validate the SafetySourceData.
 
             SafetyCenterData safetyCenterData;
@@ -175,6 +169,9 @@ public final class SafetyCenterService extends SystemService {
             // TODO(b/205706756): Security: check certs?
             getContext().enforceCallingOrSelfPermission(
                     SEND_SAFETY_CENTER_UPDATE, "getSafetySourceData");
+            if (!checkApiEnabled("getSafetySourceData")) {
+                return null;
+            }
 
             synchronized (mApiLock) {
                 return mSafetyCenterDataTracker.getSafetySourceData(safetySourceId, packageName,
@@ -194,6 +191,9 @@ public final class SafetyCenterService extends SystemService {
                     userId, false, "reportSafetySourceError", getContext());
             getContext().enforceCallingOrSelfPermission(
                     SEND_SAFETY_CENTER_UPDATE, "reportSafetySourceError");
+            if (!checkApiEnabled("reportSafetySourceError")) {
+                return;
+            }
             // TODO(b/218379298): Add implementation
         }
 
@@ -206,6 +206,9 @@ public final class SafetyCenterService extends SystemService {
                     userId, false, "refreshSafetySources", getContext());
             getContext().enforceCallingPermission(
                     MANAGE_SAFETY_CENTER, "refreshSafetySources");
+            if (!checkApiEnabled("refreshSafetySources")) {
+                return;
+            }
 
             // We don't require the caller to have INTERACT_ACROSS_USERS and
             // START_FOREGROUND_SERVICES_FROM_BACKGROUND permissions.
@@ -227,6 +230,9 @@ public final class SafetyCenterService extends SystemService {
                     userId, false, "getSafetyCenterData", getContext());
             getContext().enforceCallingOrSelfPermission(
                     MANAGE_SAFETY_CENTER, "getSafetyCenterData");
+            if (!checkApiEnabled("getSafetyCenterData")) {
+                return SafetyCenterDataTracker.getDefaultSafetyCenterData();
+            }
 
             synchronized (mApiLock) {
                 return mSafetyCenterDataTracker.getSafetyCenterData(userId);
@@ -242,6 +248,9 @@ public final class SafetyCenterService extends SystemService {
                     userId, false, "addOnSafetyCenterDataChangedListener", getContext());
             getContext().enforceCallingOrSelfPermission(
                     MANAGE_SAFETY_CENTER, "addOnSafetyCenterDataChangedListener");
+            if (!checkApiEnabled("addOnSafetyCenterDataChangedListener")) {
+                return;
+            }
 
             SafetyCenterData safetyCenterData;
             synchronized (mApiLock) {
@@ -263,6 +272,9 @@ public final class SafetyCenterService extends SystemService {
                     userId, false, "removeOnSafetyCenterDataChangedListener", getContext());
             getContext().enforceCallingOrSelfPermission(
                     MANAGE_SAFETY_CENTER, "removeOnSafetyCenterDataChangedListener");
+            if (!checkApiEnabled("removeOnSafetyCenterDataChangedListener")) {
+                return;
+            }
 
             synchronized (mApiLock) {
                 mSafetyCenterListeners.removeListener(listener, userId);
@@ -276,6 +288,9 @@ public final class SafetyCenterService extends SystemService {
                     userId, false, "dismissSafetyCenterIssue", getContext());
             getContext().enforceCallingOrSelfPermission(
                     MANAGE_SAFETY_CENTER, "dismissSafetyCenterIssue");
+            if (!checkApiEnabled("dismissSafetyCenterIssue")) {
+                return;
+            }
             // TODO(b/202387059): Implement issue dismissal.
 
         }
@@ -290,6 +305,9 @@ public final class SafetyCenterService extends SystemService {
                     userId, false, "executeSafetyCenterIssueAction", getContext());
             getContext().enforceCallingOrSelfPermission(MANAGE_SAFETY_CENTER,
                     "executeSafetyCenterIssueAction");
+            if (!checkApiEnabled("executeSafetyCenterIssueAction")) {
+                return;
+            }
             // TODO(b/218379298): Add implementation
         }
 
@@ -297,6 +315,9 @@ public final class SafetyCenterService extends SystemService {
         public void clearAllSafetySourceData() {
             getContext().enforceCallingOrSelfPermission(
                     MANAGE_SAFETY_CENTER, "clearAllSafetySourceData");
+            if (!checkApiEnabled("clearAllSafetySourceData")) {
+                return;
+            }
 
             synchronized (mApiLock) {
                 mSafetyCenterDataTracker.clear();
@@ -308,6 +329,9 @@ public final class SafetyCenterService extends SystemService {
                 @NonNull SafetyCenterConfig safetyCenterConfig) {
             getContext().enforceCallingOrSelfPermission(MANAGE_SAFETY_CENTER,
                     "setSafetyCenterConfigOverride");
+            if (!checkApiEnabled("setSafetyCenterConfigOverride")) {
+                return;
+            }
 
             synchronized (mRefreshLock) {
                 // TODO(b/217944317): Implement properly by overriding config in
@@ -335,10 +359,30 @@ public final class SafetyCenterService extends SystemService {
         public void clearSafetyCenterConfigOverride() {
             getContext().enforceCallingOrSelfPermission(
                     MANAGE_SAFETY_CENTER, "clearSafetyCenterConfigOverride");
+            if (!checkApiEnabled("clearSafetyCenterConfigOverride")) {
+                return;
+            }
 
             synchronized (mRefreshLock) {
                 mSafetyCenterRefreshManager
                         .clearAdditionalSafetySourceBroadcastReceiverComponents();
+            }
+        }
+
+        private boolean isApiEnabled() {
+            return getSafetyCenterConfigValue() && getDeviceConfigSafetyCenterEnabledProperty();
+        }
+
+        private boolean getDeviceConfigSafetyCenterEnabledProperty() {
+            // This call requires the READ_DEVICE_CONFIG permission.
+            final long callingId = Binder.clearCallingIdentity();
+            try {
+                return DeviceConfig.getBoolean(
+                        DeviceConfig.NAMESPACE_PRIVACY,
+                        PROPERTY_SAFETY_CENTER_ENABLED,
+                        /* defaultValue = */ false);
+            } finally {
+                Binder.restoreCallingIdentity(callingId);
             }
         }
 
@@ -362,6 +406,14 @@ public final class SafetyCenterService extends SystemService {
             }
             throw new SecurityException(message + " requires any of: "
                     + Arrays.toString(permissions) + ", but none were granted");
+        }
+
+        private boolean checkApiEnabled(@NonNull String message) {
+            if (!isApiEnabled()) {
+                Log.w(TAG, String.format("Called %s, but Safety Center is disabled", message));
+                return false;
+            }
+            return true;
         }
     }
 }

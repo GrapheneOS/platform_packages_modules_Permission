@@ -20,46 +20,56 @@ import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_SAFETY_CENTER
 import android.os.Build.VERSION_CODES.TIRAMISU
+import android.safetycenter.SafetyCenterManager
 import android.safetycenter.testing.SafetyCenterFlags
 import android.safetycenter.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
+import android.safetycenter.testing.isSafetyCenterEnabledWithPermission
 import android.support.test.uiautomator.By
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import com.android.compatibility.common.util.UiAutomatorUtils.waitFindObject
-import org.junit.Assume.assumeTrue
+import com.google.common.truth.Truth.assertThat
+import org.junit.Assume.assumeFalse
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 @SdkSuppress(minSdkVersion = TIRAMISU, codeName = "Tiramisu")
-class SafetyCenterActivityTest {
+class SafetyCenterUnsupportedTest {
     private val context: Context = getApplicationContext()
+    private val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)!!
 
     @Before
-    fun assumeDeviceSupportsSafetyCenterToRunTests() {
-        assumeTrue(context.deviceSupportsSafetyCenter())
+    fun assumeDeviceDoesntSupportSafetyCenterToRunTests() {
+        assumeFalse(context.deviceSupportsSafetyCenter())
     }
 
     @Test
-    fun launchActivity_withFlagEnabled_showsSecurityAndPrivacyTitle() {
-        SafetyCenterFlags.setSafetyCenterEnabled(true)
-
-        startSafetyCenterActivity()
-
-        // CollapsingToolbar title can't be found by text, so using description instead.
-        waitFindObject(By.desc("Security & Privacy"))
-    }
-
-    @Test
-    fun launchActivity_withFlagDisabled_showsSecurityTitle() {
-        SafetyCenterFlags.setSafetyCenterEnabled(false)
-
+    fun launchActivity_showsSecurityTitle() {
         startSafetyCenterActivity()
 
         // CollapsingToolbar title can't be found by text, so using description instead.
         waitFindObject(By.desc("Security"))
+    }
+
+    @Test
+    fun isSafetyCenterEnabled_withFlagEnabled_returnsFalse() {
+        SafetyCenterFlags.setSafetyCenterEnabled(true)
+
+        val isSafetyCenterEnabled = safetyCenterManager.isSafetyCenterEnabledWithPermission()
+
+        assertThat(isSafetyCenterEnabled).isFalse()
+    }
+
+    @Test
+    fun isSafetyCenterEnabled_withFlagDisabled_returnsFalse() {
+        SafetyCenterFlags.setSafetyCenterEnabled(false)
+
+        val isSafetyCenterEnabled = safetyCenterManager.isSafetyCenterEnabledWithPermission()
+
+        assertThat(isSafetyCenterEnabled).isFalse()
     }
 
     private fun startSafetyCenterActivity() {

@@ -19,9 +19,9 @@ package android.safetycenter.cts
 import android.os.Build
 import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetySourceErrorDetails
-import android.safetycenter.testers.AnyTester.assertThatRepresentationsAreEqual
-import android.safetycenter.testers.AnyTester.assertThatRepresentationsAreNotEqual
-import android.safetycenter.testers.ParcelableTester.assertThatRoundTripReturnsOriginal
+import android.safetycenter.testing.AnyTester.assertThatRepresentationsAreEqual
+import android.safetycenter.testing.AnyTester.assertThatRepresentationsAreNotEqual
+import android.safetycenter.testing.ParcelableTester.assertThatRoundTripReturnsOriginal
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import com.google.common.truth.Truth.assertThat
@@ -64,15 +64,15 @@ class SafetySourceErrorDetailsTest {
     @Test
     fun equals_toString_withDifferentSafetyEvents_areNotEqual() {
         val errorDetails = SafetySourceErrorDetails(
-                SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build())
+            SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build())
         val otherErrorDetails = SafetySourceErrorDetails(
-                SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_REBOOTED).build())
+            SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_REBOOTED).build())
 
         assertThatRepresentationsAreNotEqual(errorDetails, otherErrorDetails)
     }
 
     companion object {
         private val SAFETY_EVENT =
-                SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
+            SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
     }
 }

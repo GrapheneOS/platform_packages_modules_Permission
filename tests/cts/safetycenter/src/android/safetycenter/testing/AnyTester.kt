@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package android.safetycenter.testers
+package android.safetycenter.testing
 
 import com.google.common.truth.Truth.assertThat
 
