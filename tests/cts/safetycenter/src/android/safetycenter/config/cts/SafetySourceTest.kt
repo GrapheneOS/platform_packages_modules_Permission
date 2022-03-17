@@ -262,6 +262,22 @@ class SafetySourceTest {
     }
 
     @Test
+    fun isAutomaticNotificationFromIssueAllowed_returnsAutoNotificationFromIssueAllowedOrThrows() {
+        assertThat(DYNAMIC_BAREBONE.isAutomaticNotificationFromIssueAllowed).isEqualTo(false)
+        assertThat(DYNAMIC_ALL_OPTIONAL.isAutomaticNotificationFromIssueAllowed).isEqualTo(true)
+        assertThat(DYNAMIC_DISABLED.isAutomaticNotificationFromIssueAllowed).isEqualTo(false)
+        assertThat(DYNAMIC_HIDDEN.isAutomaticNotificationFromIssueAllowed).isEqualTo(false)
+        assertThrows(UnsupportedOperationException::class.java) {
+            STATIC_BAREBONE.isAutomaticNotificationFromIssueAllowed
+        }
+        assertThrows(UnsupportedOperationException::class.java) {
+            STATIC_ALL_OPTIONAL.isAutomaticNotificationFromIssueAllowed
+        }
+        assertThat(ISSUE_ONLY_BAREBONE.isAutomaticNotificationFromIssueAllowed).isEqualTo(false)
+        assertThat(ISSUE_ONLY_ALL_OPTIONAL.isAutomaticNotificationFromIssueAllowed).isEqualTo(true)
+    }
+
+    @Test
     fun describeContents_returns0() {
         assertThat(DYNAMIC_BAREBONE.describeContents()).isEqualTo(0)
         assertThat(DYNAMIC_ALL_OPTIONAL.describeContents()).isEqualTo(0)
@@ -329,6 +345,7 @@ class SafetySourceTest {
             .setBroadcastReceiverClassName(BROADCAST_RECEIVER_CLASS_NAME)
             .setLoggingAllowed(false)
             .setRefreshOnPageOpenAllowed(true)
+            .setAutomaticNotificationFromIssueAllowed(true)
             .build()
         AnyTester.assertThatRepresentationsAreEqual(DYNAMIC_ALL_OPTIONAL, dynamicAllOptionalCopy)
     }
@@ -362,6 +379,7 @@ class SafetySourceTest {
             .setBroadcastReceiverClassName(BROADCAST_RECEIVER_CLASS_NAME)
             .setLoggingAllowed(false)
             .setRefreshOnPageOpenAllowed(true)
+            .setAutomaticNotificationFromIssueAllowed(true)
             .build()
         AnyTester.assertThatRepresentationsAreNotEqual(DYNAMIC_ALL_OPTIONAL, dynamicAllOptionalAlt)
     }
@@ -382,6 +400,7 @@ class SafetySourceTest {
             .setBroadcastReceiverClassName(BROADCAST_RECEIVER_CLASS_NAME)
             .setLoggingAllowed(false)
             .setRefreshOnPageOpenAllowed(true)
+            .setAutomaticNotificationFromIssueAllowed(true)
             .build()
         AnyTester.assertThatRepresentationsAreNotEqual(DYNAMIC_ALL_OPTIONAL, dynamicAllOptionalAlt)
     }
@@ -402,6 +421,7 @@ class SafetySourceTest {
             .setBroadcastReceiverClassName(BROADCAST_RECEIVER_CLASS_NAME)
             .setLoggingAllowed(false)
             .setRefreshOnPageOpenAllowed(true)
+            .setAutomaticNotificationFromIssueAllowed(true)
             .build()
         AnyTester.assertThatRepresentationsAreNotEqual(DYNAMIC_ALL_OPTIONAL, dynamicAllOptionalAlt)
     }
@@ -422,6 +442,7 @@ class SafetySourceTest {
             .setBroadcastReceiverClassName(BROADCAST_RECEIVER_CLASS_NAME)
             .setLoggingAllowed(false)
             .setRefreshOnPageOpenAllowed(true)
+            .setAutomaticNotificationFromIssueAllowed(true)
             .build()
         AnyTester.assertThatRepresentationsAreNotEqual(DYNAMIC_ALL_OPTIONAL, dynamicAllOptionalAlt)
     }
@@ -442,6 +463,7 @@ class SafetySourceTest {
             .setBroadcastReceiverClassName(BROADCAST_RECEIVER_CLASS_NAME)
             .setLoggingAllowed(false)
             .setRefreshOnPageOpenAllowed(true)
+            .setAutomaticNotificationFromIssueAllowed(true)
             .build()
         AnyTester.assertThatRepresentationsAreNotEqual(DYNAMIC_ALL_OPTIONAL, dynamicAllOptionalAlt)
     }
@@ -462,6 +484,7 @@ class SafetySourceTest {
             .setBroadcastReceiverClassName(BROADCAST_RECEIVER_CLASS_NAME)
             .setLoggingAllowed(false)
             .setRefreshOnPageOpenAllowed(true)
+            .setAutomaticNotificationFromIssueAllowed(true)
             .build()
         AnyTester.assertThatRepresentationsAreNotEqual(DYNAMIC_ALL_OPTIONAL, dynamicAllOptionalAlt)
     }
@@ -493,6 +516,7 @@ class SafetySourceTest {
             .setBroadcastReceiverClassName(BROADCAST_RECEIVER_CLASS_NAME)
             .setLoggingAllowed(false)
             .setRefreshOnPageOpenAllowed(true)
+            .setAutomaticNotificationFromIssueAllowed(true)
             .build()
         AnyTester.assertThatRepresentationsAreNotEqual(DYNAMIC_ALL_OPTIONAL, dynamicAllOptionalAlt)
     }
@@ -513,6 +537,7 @@ class SafetySourceTest {
             .setBroadcastReceiverClassName(BROADCAST_RECEIVER_CLASS_NAME)
             .setLoggingAllowed(false)
             .setRefreshOnPageOpenAllowed(true)
+            .setAutomaticNotificationFromIssueAllowed(true)
             .build()
         AnyTester.assertThatRepresentationsAreNotEqual(DYNAMIC_ALL_OPTIONAL, dynamicAllOptionalAlt)
     }
@@ -533,6 +558,7 @@ class SafetySourceTest {
             .setBroadcastReceiverClassName(BROADCAST_RECEIVER_CLASS_NAME)
             .setLoggingAllowed(false)
             .setRefreshOnPageOpenAllowed(true)
+            .setAutomaticNotificationFromIssueAllowed(true)
             .build()
         AnyTester.assertThatRepresentationsAreNotEqual(DYNAMIC_ALL_OPTIONAL, dynamicAllOptionalAlt)
     }
@@ -553,12 +579,13 @@ class SafetySourceTest {
             .setBroadcastReceiverClassName("other")
             .setLoggingAllowed(false)
             .setRefreshOnPageOpenAllowed(true)
+            .setAutomaticNotificationFromIssueAllowed(true)
             .build()
         AnyTester.assertThatRepresentationsAreNotEqual(DYNAMIC_ALL_OPTIONAL, dynamicAllOptionalAlt)
     }
 
     @Test
-    fun hashCode_equals_toString_withDifferentLoggingAlloweds_areNotEqual() {
+    fun hashCode_equals_toString_withDifferentLoggingAllowed_areNotEqual() {
         val dynamicAllOptionalAlt = SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
             .setId(DYNAMIC_ALL_OPTIONAL_ID)
             .setPackageName(PACKAGE_NAME)
@@ -573,12 +600,13 @@ class SafetySourceTest {
             .setBroadcastReceiverClassName(BROADCAST_RECEIVER_CLASS_NAME)
             .setLoggingAllowed(true)
             .setRefreshOnPageOpenAllowed(true)
+            .setAutomaticNotificationFromIssueAllowed(true)
             .build()
         AnyTester.assertThatRepresentationsAreNotEqual(DYNAMIC_ALL_OPTIONAL, dynamicAllOptionalAlt)
     }
 
     @Test
-    fun hashCode_equals_toString_withDifferentRefreshOnPageOpenAlloweds_areNotEqual() {
+    fun hashCode_equals_toString_withDifferentRefreshOnPageOpenAllowed_areNotEqual() {
         val dynamicAllOptionalAlt = SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
             .setId(DYNAMIC_ALL_OPTIONAL_ID)
             .setPackageName(PACKAGE_NAME)
@@ -593,6 +621,28 @@ class SafetySourceTest {
             .setBroadcastReceiverClassName(BROADCAST_RECEIVER_CLASS_NAME)
             .setLoggingAllowed(false)
             .setRefreshOnPageOpenAllowed(false)
+            .setAutomaticNotificationFromIssueAllowed(true)
+            .build()
+        AnyTester.assertThatRepresentationsAreNotEqual(DYNAMIC_ALL_OPTIONAL, dynamicAllOptionalAlt)
+    }
+
+    @Test
+    fun hashCode_equals_toString_withDifferentAutomaticNotificationFromIssueAllowed_areNotEqual() {
+        val dynamicAllOptionalAlt = SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
+            .setId(DYNAMIC_ALL_OPTIONAL_ID)
+            .setPackageName(PACKAGE_NAME)
+            .setTitleResId(REFERENCE_RES_ID)
+            .setTitleForWorkResId(REFERENCE_RES_ID)
+            .setSummaryResId(REFERENCE_RES_ID)
+            .setIntentAction(INTENT_ACTION)
+            .setProfile(SafetySource.PROFILE_ALL)
+            .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
+            .setMaxSeverityLevel(MAX_SEVERITY_LEVEL)
+            .setSearchTermsResId(REFERENCE_RES_ID)
+            .setBroadcastReceiverClassName(BROADCAST_RECEIVER_CLASS_NAME)
+            .setLoggingAllowed(false)
+            .setRefreshOnPageOpenAllowed(true)
+            .setAutomaticNotificationFromIssueAllowed(false)
             .build()
         AnyTester.assertThatRepresentationsAreNotEqual(DYNAMIC_ALL_OPTIONAL, dynamicAllOptionalAlt)
     }
@@ -638,6 +688,7 @@ class SafetySourceTest {
                 .setBroadcastReceiverClassName(BROADCAST_RECEIVER_CLASS_NAME)
                 .setLoggingAllowed(false)
                 .setRefreshOnPageOpenAllowed(true)
+                .setAutomaticNotificationFromIssueAllowed(true)
                 .build()
 
         private val DYNAMIC_DISABLED =
@@ -694,6 +745,7 @@ class SafetySourceTest {
                 .setBroadcastReceiverClassName(BROADCAST_RECEIVER_CLASS_NAME)
                 .setLoggingAllowed(false)
                 .setRefreshOnPageOpenAllowed(true)
+                .setAutomaticNotificationFromIssueAllowed(true)
                 .build()
     }
 }

@@ -29,6 +29,7 @@ import android.os.Parcelable;
 import androidx.annotation.RequiresApi;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -50,7 +51,12 @@ public final class SafetySourceData implements Parcelable {
                     SafetySourceStatus status = in.readTypedObject(SafetySourceStatus.CREATOR);
                     List<SafetySourceIssue> issues =
                             in.createTypedArrayList(SafetySourceIssue.CREATOR);
-                    return new SafetySourceData(status, issues);
+                    Builder builder = new Builder().setStatus(status);
+                    // TODO(b/224513050): Consider simplifying by adding a new API to the builder.
+                    for (int i = 0; i < issues.size(); i++) {
+                        builder.addIssue(issues.get(i));
+                    }
+                    return builder.build();
                 }
 
                 @Override
@@ -70,13 +76,13 @@ public final class SafetySourceData implements Parcelable {
         this.mIssues = new ArrayList<>(issues);
     }
 
-    /** Returns the data for the safety source status to be shown in UI. */
+    /** Returns the data for the {@link SafetySourceStatus} to be shown in UI. */
     @Nullable
     public SafetySourceStatus getStatus() {
         return mStatus;
     }
 
-    /** Returns the data for the list of safety source issues to be shown in UI. */
+    /** Returns the data for the list of {@link SafetySourceIssue}s to be shown in UI. */
     @NonNull
     public List<SafetySourceIssue> getIssues() {
         return new ArrayList<>(mIssues);
@@ -124,14 +130,14 @@ public final class SafetySourceData implements Parcelable {
         @Nullable
         private SafetySourceStatus mStatus;
 
-        /** Sets data for the safety source status to be shown in UI. */
+        /** Sets data for the {@link SafetySourceStatus} to be shown in UI. */
         @NonNull
         public Builder setStatus(@Nullable SafetySourceStatus status) {
             mStatus = status;
             return this;
         }
 
-        /** Adds data for a safety source issue to be shown in UI. */
+        /** Adds data for a {@link SafetySourceIssue} to be shown in UI. */
         @NonNull
         public Builder addIssue(@NonNull SafetySourceIssue safetySourceIssue) {
             mIssues.add(requireNonNull(safetySourceIssue));
@@ -139,7 +145,8 @@ public final class SafetySourceData implements Parcelable {
         }
 
         /**
-         * Clears data for all the safety source issues that were added to this {@link Builder}.
+         * Clears data for all the {@link SafetySourceIssue}s that were added to this
+         * {@link Builder}.
          */
         @NonNull
         public Builder clearIssues() {
@@ -152,7 +159,7 @@ public final class SafetySourceData implements Parcelable {
         public SafetySourceData build() {
             // TODO(b/207329841): Validate data matches validation in S, for eg that the status
             //  and severity levels of the settings and issues are compatible.
-            return new SafetySourceData(mStatus, mIssues);
+            return new SafetySourceData(mStatus, Collections.unmodifiableList(mIssues));
         }
     }
 }
