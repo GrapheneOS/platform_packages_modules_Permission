@@ -231,6 +231,17 @@ public final class SafetyCenterService extends SystemService {
         }
 
         @Override
+        @Nullable
+        public SafetyCenterConfig getSafetyCenterConfig() {
+            getContext().enforceCallingOrSelfPermission(
+                    MANAGE_SAFETY_CENTER, "getSafetyCenterConfig");
+
+            synchronized (mApiLock) {
+                return mSafetyCenterConfigReader.getSafetyCenterConfig();
+            }
+        }
+
+        @Override
         @NonNull
         public SafetyCenterData getSafetyCenterData(@UserIdInt int userId) {
             // TODO(b/217235899): Finalize cross-user behavior.
