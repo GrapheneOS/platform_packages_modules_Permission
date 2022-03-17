@@ -654,8 +654,12 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
         for (String permission : permissions) {
             AppPermissionGroup group = AppPermissionGroup.create(this, packageInfo, permission,
                     true);
-            if (group != null && group.isOneTime()) {
-                groups.add(group);
+            if (group != null) {
+                AppPermissionGroup bgGroup = group.getBackgroundPermissions();
+                boolean isBgGroupOneTime = bgGroup != null && bgGroup.isOneTime();
+                if (group.isOneTime() || isBgGroupOneTime) {
+                    groups.add(group);
+                }
             }
         }
         long requestId = Utils.getValidSessionId();
