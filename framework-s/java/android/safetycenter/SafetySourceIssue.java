@@ -56,36 +56,6 @@ import java.util.Objects;
 @RequiresApi(TIRAMISU)
 public final class SafetySourceIssue implements Parcelable {
 
-    /**
-     * Indicates an informational message.
-     *
-     * <p>This severity will be reflected in the UI through a green icon.
-     *
-     * <p>Issues with this severity will be dismissible by the user from the UI, and will not
-     * trigger a confirmation dialog upon a user attempting to dismiss the warning.
-     */
-    public static final int SEVERITY_LEVEL_INFORMATION = 200;
-
-    /**
-     * Indicates a medium-severity issue which the user is encouraged to act on.
-     *
-     * <p>This severity will be reflected in the UI through a yellow icon.
-     *
-     * <p>Issues with this severity will be dismissible by the user from the UI, and will trigger a
-     * confirmation dialog upon a user attempting to dismiss the warning.
-     */
-    public static final int SEVERITY_LEVEL_RECOMMENDATION = 300;
-
-    /**
-     * Indicates a critical or urgent safety issue that should be addressed by the user.
-     *
-     * <p>This severity will be reflected in the UI through a red icon.
-     *
-     * <p>Issues with this severity will be dismissible by the user from the UI, and will trigger a
-     * confirmation dialog upon a user attempting to dismiss the warning.
-     */
-    public static final int SEVERITY_LEVEL_CRITICAL_WARNING = 400;
-
     /** Indicates that the risk associated with the issue is related to a user's device safety. */
     public static final int ISSUE_CATEGORY_DEVICE = 100;
 
@@ -138,7 +108,7 @@ public final class SafetySourceIssue implements Parcelable {
     private final CharSequence mSubtitle;
     @NonNull
     private final CharSequence mSummary;
-    @SeverityLevel
+    @SafetySourceSeverity.Level
     private final int mSeverityLevel;
     private final List<Action> mActions;
     @Nullable
@@ -152,7 +122,7 @@ public final class SafetySourceIssue implements Parcelable {
             @NonNull CharSequence title,
             @Nullable CharSequence subtitle,
             @NonNull CharSequence summary,
-            @SeverityLevel int severityLevel,
+            @SafetySourceSeverity.Level int severityLevel,
             @IssueCategory int issueCategory,
             @NonNull List<Action> actions,
             @Nullable PendingIntent onDismissPendingIntent,
@@ -200,8 +170,8 @@ public final class SafetySourceIssue implements Parcelable {
         return mSummary;
     }
 
-    /** Returns the {@link SeverityLevel} of the issue. */
-    @SeverityLevel
+    /** Returns the {@link SafetySourceSeverity.Level} of the issue. */
+    @SafetySourceSeverity.Level
     public int getSeverityLevel() {
         return mSeverityLevel;
     }
@@ -321,31 +291,6 @@ public final class SafetySourceIssue implements Parcelable {
                 + ", mIssueTypeId="
                 + mIssueTypeId
                 + '}';
-    }
-
-    /**
-     * All possible severity levels for the safety source issue.
-     *
-     * <p>The severity level is meant to convey the severity of the individual issue.
-     *
-     * <p>The higher the severity level, the worse the safety level of the source and the higher
-     * the threat to the user.
-     *
-     * <p>The numerical values of the levels are not used directly, rather they are used to build
-     * a continuum of levels which support relative comparison.
-     *
-     * <p>The severity also determines how the issue is "dismissible" by the user, i.e. how
-     * the user can choose to ignore the issue and remove it from view in the Safety Center.
-     *
-     * @hide
-     */
-    @IntDef(prefix = {"SEVERITY_LEVEL_"}, value = {
-            SEVERITY_LEVEL_INFORMATION,
-            SEVERITY_LEVEL_RECOMMENDATION,
-            SEVERITY_LEVEL_CRITICAL_WARNING
-    })
-    @Retention(RetentionPolicy.SOURCE)
-    public @interface SeverityLevel {
     }
 
     /**
@@ -580,7 +525,7 @@ public final class SafetySourceIssue implements Parcelable {
         private CharSequence mSubtitle;
         @NonNull
         private final CharSequence mSummary;
-        @SeverityLevel
+        @SafetySourceSeverity.Level
         private final int mSeverityLevel;
         @IssueCategory
         private int mIssueCategory = ISSUE_CATEGORY_GENERAL;
@@ -596,7 +541,7 @@ public final class SafetySourceIssue implements Parcelable {
                 @NonNull String id,
                 @NonNull CharSequence title,
                 @NonNull CharSequence summary,
-                @SeverityLevel int severityLevel,
+                @SafetySourceSeverity.Level int severityLevel,
                 @NonNull String issueTypeId) {
             this.mId = id;
             this.mTitle = requireNonNull(title);

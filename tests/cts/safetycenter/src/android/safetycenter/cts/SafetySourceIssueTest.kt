@@ -27,8 +27,8 @@ import android.safetycenter.SafetySourceIssue.ISSUE_CATEGORY_ACCOUNT
 import android.safetycenter.SafetySourceIssue.ISSUE_CATEGORY_DEVICE
 import android.safetycenter.SafetySourceIssue.ISSUE_CATEGORY_GENERAL
 import android.safetycenter.SafetySourceIssue.Action
-import android.safetycenter.SafetySourceIssue.SEVERITY_LEVEL_CRITICAL_WARNING
-import android.safetycenter.SafetySourceIssue.SEVERITY_LEVEL_INFORMATION
+import android.safetycenter.SafetySourceSeverity.LEVEL_CRITICAL_WARNING
+import android.safetycenter.SafetySourceSeverity.LEVEL_INFORMATION
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
@@ -232,7 +232,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         )
             .addAction(action1)
@@ -247,7 +247,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         )
             .addAction(action1)
@@ -262,7 +262,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         )
             .addAction(action1)
@@ -277,7 +277,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         )
             .setSubtitle("Issue subtitle")
@@ -293,7 +293,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         )
             .addAction(action1)
@@ -308,12 +308,12 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         ).addAction(action1)
             .build()
 
-        assertThat(safetySourceIssue.severityLevel).isEqualTo(SEVERITY_LEVEL_INFORMATION)
+        assertThat(safetySourceIssue.severityLevel).isEqualTo(LEVEL_INFORMATION)
     }
 
     @Test
@@ -322,7 +322,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         ).addAction(action1)
             .build()
@@ -336,7 +336,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         ).addAction(action1)
             .setIssueCategory(ISSUE_CATEGORY_DEVICE)
@@ -351,7 +351,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         ).addAction(action1)
             .addAction(action2)
@@ -366,7 +366,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         ).addAction(action1)
             .addAction(action2)
@@ -383,7 +383,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         ).addAction(action1)
             .build()
@@ -397,7 +397,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         ).addAction(action1)
             .setOnDismissPendingIntent(pendingIntent1)
@@ -412,7 +412,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         ).addAction(action1)
             .build()
@@ -426,7 +426,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         )
 
@@ -444,7 +444,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         ).addAction(action1)
             .addAction(action2)
@@ -464,7 +464,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         ).setSubtitle("Issue subtitle")
             .setIssueCategory(ISSUE_CATEGORY_ACCOUNT)
@@ -482,7 +482,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         ).setSubtitle("Issue subtitle")
             .setIssueCategory(ISSUE_CATEGORY_ACCOUNT)
@@ -508,7 +508,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         ).setSubtitle("Issue subtitle")
             .setIssueCategory(ISSUE_CATEGORY_ACCOUNT)
@@ -529,7 +529,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         ).setSubtitle("Issue subtitle")
             .setIssueCategory(ISSUE_CATEGORY_ACCOUNT)
@@ -544,7 +544,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         ).setSubtitle("Issue subtitle")
             .setIssueCategory(ISSUE_CATEGORY_ACCOUNT)
@@ -567,7 +567,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         ).addAction(action1)
             .build()
@@ -575,7 +575,7 @@ class SafetySourceIssueTest {
             "Other issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         ).addAction(action1)
             .build()
@@ -591,7 +591,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         ).addAction(action1)
             .build()
@@ -599,7 +599,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Other issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         ).addAction(action1)
             .build()
@@ -615,7 +615,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         ).setSubtitle("Issue subtitle")
             .addAction(action1)
@@ -624,7 +624,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         ).setSubtitle("Other issue subtitle")
             .addAction(action1)
@@ -641,7 +641,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         ).addAction(action1)
             .build()
@@ -649,7 +649,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Other issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         ).addAction(action1)
             .build()
@@ -665,7 +665,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         ).addAction(action1)
             .build()
@@ -673,7 +673,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_CRITICAL_WARNING,
+            LEVEL_CRITICAL_WARNING,
             "issue_type_id"
         )
             .addAction(action1)
@@ -690,7 +690,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         )
             .addAction(action1)
@@ -700,7 +700,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         )
             .addAction(action1)
@@ -718,7 +718,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         ).addAction(action1)
             .addAction(action2)
@@ -727,7 +727,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         ).addAction(action2)
             .addAction(action1)
@@ -744,7 +744,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         ).addAction(action1)
             .setOnDismissPendingIntent(pendingIntent1)
@@ -753,7 +753,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         ).addAction(action1)
             .setOnDismissPendingIntent(pendingIntent2)
@@ -770,7 +770,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "issue_type_id"
         ).addAction(action1)
             .build()
@@ -778,7 +778,7 @@ class SafetySourceIssueTest {
             "Issue id",
             "Issue title",
             "Issue summary",
-            SEVERITY_LEVEL_INFORMATION,
+            LEVEL_INFORMATION,
             "other_issue_type_id"
         ).addAction(action1)
             .build()
