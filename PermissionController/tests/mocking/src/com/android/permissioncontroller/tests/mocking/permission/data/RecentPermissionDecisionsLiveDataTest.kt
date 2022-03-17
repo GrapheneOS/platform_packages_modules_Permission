@@ -42,7 +42,7 @@ class RecentPermissionDecisionsLiveDataTest {
     @Mock
     lateinit var recentDecision: PermissionDecision
 
-    private val recentPermissionDecisionStorage = FakeRecentDecisionsStorage()
+    private val recentPermissionDecisionStorage = FakeEventStorage()
 
     private lateinit var recentPermissionDecisionsLiveData: RecentPermissionDecisionsLiveData
 
@@ -50,7 +50,7 @@ class RecentPermissionDecisionsLiveDataTest {
     fun setup() {
         MockitoAnnotations.initMocks(this)
         runBlocking {
-            recentPermissionDecisionStorage.storePermissionDecision(recentDecision)
+            recentPermissionDecisionStorage.storeEvent(recentDecision)
         }
         recentPermissionDecisionsLiveData = spy(RecentPermissionDecisionsLiveData(
             recentPermissionDecisionStorage))
@@ -76,19 +76,19 @@ class RecentPermissionDecisionsLiveDataTest {
         }
     }
 
-    private class FakeRecentDecisionsStorage : PermissionEventStorage {
+    private class FakeEventStorage : PermissionEventStorage<PermissionDecision> {
         val recentDecisions: MutableList<PermissionDecision> = mutableListOf()
 
-        override suspend fun storePermissionDecision(decision: PermissionDecision): Boolean {
-            recentDecisions.add(decision)
+        override suspend fun storeEvent(event: PermissionDecision): Boolean {
+            recentDecisions.add(event)
             return true
         }
 
-        override suspend fun loadPermissionDecisions(): List<PermissionDecision> {
+        override suspend fun loadEvents(): List<PermissionDecision> {
             return recentDecisions
         }
 
-        override suspend fun clearPermissionDecisions() {
+        override suspend fun clearEvents() {
             recentDecisions.clear()
         }
 
@@ -97,12 +97,12 @@ class RecentPermissionDecisionsLiveDataTest {
             return true
         }
 
-        override suspend fun removePermissionDecisionsForPackage(packageName: String): Boolean {
+        override suspend fun removeEventsForPackage(packageName: String): Boolean {
             // not implemented
             return true
         }
 
-        override suspend fun updateDecisionsBySystemTimeDelta(diffSystemTimeMillis: Long): Boolean {
+        override suspend fun updateEventsBySystemTimeDelta(diffSystemTimeMillis: Long): Boolean {
             // not implemented
             return true
         }

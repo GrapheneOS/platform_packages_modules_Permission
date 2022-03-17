@@ -25,12 +25,10 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.PermissionControllerApplication
-import com.android.permissioncontroller.permission.data.PermissionDecision
+import com.android.permissioncontroller.permission.data.PermissionEvent
 import com.android.permissioncontroller.permission.service.BasePermissionEventStorage
-import com.android.permissioncontroller.permission.service.PermissionEventStorage.Companion.DEFAULT_MAX_DATA_AGE_MS
 import com.android.permissioncontroller.permission.service.BasePermissionEventStorage.Companion.DEFAULT_CLEAR_OLD_DECISIONS_CHECK_FREQUENCY
 import com.android.permissioncontroller.permission.utils.Utils.PROPERTY_PERMISSION_DECISIONS_CHECK_OLD_FREQUENCY_MILLIS
-import com.android.permissioncontroller.permission.utils.Utils.PROPERTY_PERMISSION_DECISIONS_MAX_DATA_AGE_MILLIS
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -46,6 +44,8 @@ import org.mockito.MockitoAnnotations
 import org.mockito.MockitoSession
 import org.mockito.quality.Strictness
 import java.io.File
+import java.io.InputStream
+import java.io.OutputStream
 import java.util.Date
 import java.util.concurrent.TimeUnit
 
@@ -53,26 +53,22 @@ import java.util.concurrent.TimeUnit
 class BasePermissionEventStorageTest {
 
     companion object {
-        val application = Mockito.mock(PermissionControllerApplication::class.java)
+        private val application = Mockito.mock(PermissionControllerApplication::class.java)
+
+        private val TEST_MAX_DATA_AGE = TimeUnit.DAYS.toMillis(7)
+        private const val TEST_FILE_NAME = "test_file.xml"
+        private const val MAP_PACKAGE_NAME = "package.test.map"
     }
 
     private val jan12020 = Date(2020, 0, 1).time
     private val jan22020 = Date(2020, 0, 2).time
 
-    private val mapPackageName = "package.test.map"
-
-    private val musicCalendarGrant = PermissionDecision(
-        "package.test.music", jan12020, "calendar", false)
-    private val mapLocationGrant = PermissionDecision(
-        mapPackageName, jan12020, "location", true)
-    private val mapLocationDenied = PermissionDecision(
-        mapPackageName, jan12020, "location", false)
-    private val mapMicrophoneGrant = PermissionDecision(
-        mapPackageName, jan12020, "microphone", true)
-    private val parkingLocationGrant = PermissionDecision(
-        "package.test.parking", jan22020, "location", true)
-    private val podcastMicrophoneGrant = PermissionDecision(
-        "package.test.podcast", jan22020, "microphone", true)
+    private val musicEvent = TestPermissionEvent("package.test.music", jan12020)
+    private val mapEvent = TestPermissionEvent(MAP_PACKAGE_NAME, jan12020, /* id */ 1)
+    private val mapEventSameKey = TestPermissionEvent(MAP_PACKAGE_NAME, jan22020, /* id */ 1)
+    private val mapEventDifferentKey = TestPermissionEvent(MAP_PACKAGE_NAME, jan12020, /* id */ 2)
+    private val parkingEvent = TestPermissionEvent("package.test.parking", jan22020)
+    private val podcastEvent = TestPermissionEvent("package.test.podcast", jan22020)
 
     @Mock
     lateinit var jobScheduler: JobScheduler
@@ -81,7 +77,7 @@ class BasePermissionEventStorageTest {
     lateinit var existingJob: JobInfo
 
     private lateinit var context: Context
-    private lateinit var storage: BasePermissionEventStorage
+    private lateinit var storage: BasePermissionEventStorage<TestPermissionEvent>
     private lateinit var mockitoSession: MockitoSession
     private lateinit var filesDir: File
 
@@ -102,15 +98,10 @@ class BasePermissionEventStorageTest {
                 eq(PROPERTY_PERMISSION_DECISIONS_CHECK_OLD_FREQUENCY_MILLIS),
                 eq(DEFAULT_CLEAR_OLD_DECISIONS_CHECK_FREQUENCY)))
             .thenReturn(DEFAULT_CLEAR_OLD_DECISIONS_CHECK_FREQUENCY)
-        `when`(
-            DeviceConfig.getLong(eq(DeviceConfig.NAMESPACE_PERMISSIONS),
-                eq(PROPERTY_PERMISSION_DECISIONS_MAX_DATA_AGE_MILLIS),
-                eq(DEFAULT_MAX_DATA_AGE_MS)))
-            .thenReturn(DEFAULT_MAX_DATA_AGE_MS)
     }
 
     private fun init() {
-        storage = BasePermissionEventStorage(context, jobScheduler)
+        storage = TestPermissionEventStorage(context, jobScheduler)
     }
 
     @After
@@ -119,7 +110,7 @@ class BasePermissionEventStorageTest {
         val logFile = File(filesDir, Constants.LOGS_TO_DUMP_FILE)
         logFile.delete()
 
-        storage.clearPermissionDecisions()
+        storage.clearEvents()
     }
 
     @Test
@@ -153,148 +144,170 @@ class BasePermissionEventStorageTest {
     }
 
     @Test
-    fun loadPermissionDecisions_noData_returnsEmptyList() {
+    fun loadEvents_noData_returnsEmptyList() {
         init()
         runBlocking {
-            assertThat(storage.loadPermissionDecisions()).isEmpty()
+            assertThat(storage.loadEvents()).isEmpty()
         }
     }
 
     @Test
-    fun storePermissionDecision_singleDecision_writeSuccessAndReturnOnLoad() {
+    fun storeEvent_singleEvent_writeSuccessAndReturnOnLoad() {
         init()
         runBlocking {
-            assertThat(storage.storePermissionDecision(mapLocationGrant)).isTrue()
-            assertThat(storage.loadPermissionDecisions()).containsExactly(mapLocationGrant)
+            assertThat(storage.storeEvent(mapEvent)).isTrue()
+            assertThat(storage.loadEvents()).containsExactly(mapEvent)
         }
     }
 
     @Test
-    fun storePermissionDecision_roundsTimeDownToDate() {
+    fun storeEvent_multipleEVents_returnedOrderedByMostRecentlyAdded() {
         init()
         runBlocking {
-            val laterInTheDayGrant = musicCalendarGrant.copy(
-                eventTime = (musicCalendarGrant.eventTime + (5 * 60 * 60 * 1000)))
-            assertThat(storage.storePermissionDecision(laterInTheDayGrant)).isTrue()
-            assertThat(storage.loadPermissionDecisions()).containsExactly(musicCalendarGrant)
+            storage.storeEvent(mapEvent)
+            storage.storeEvent(musicEvent)
+            storage.storeEvent(parkingEvent)
+            storage.storeEvent(podcastEvent)
+            assertThat(storage.loadEvents())
+                .containsExactly(musicEvent, mapEvent, parkingEvent,
+                    podcastEvent)
         }
     }
 
     @Test
-    fun storePermissionDecision_multipleDecisions_returnedOrderedByMostRecentlyAdded() {
+    fun storeEvent_uniqueForPrimaryKey() {
         init()
         runBlocking {
-            storage.storePermissionDecision(mapLocationGrant)
-            storage.storePermissionDecision(musicCalendarGrant)
-            storage.storePermissionDecision(parkingLocationGrant)
-            storage.storePermissionDecision(podcastMicrophoneGrant)
-            assertThat(storage.loadPermissionDecisions())
-                .containsExactly(musicCalendarGrant, mapLocationGrant, parkingLocationGrant,
-                    podcastMicrophoneGrant)
+            storage.storeEvent(mapEvent)
+            storage.storeEvent(mapEventSameKey)
+            assertThat(storage.loadEvents()).containsExactly(mapEventSameKey)
         }
     }
 
     @Test
-    fun storePermissionDecision_uniqueForPackagePermissionGroup() {
+    fun storeEvent_ignoresExactDuplicates() {
         init()
         runBlocking {
-            storage.storePermissionDecision(mapLocationGrant)
-            storage.storePermissionDecision(mapLocationDenied)
-            assertThat(storage.loadPermissionDecisions()).containsExactly(mapLocationDenied)
+            storage.storeEvent(mapEvent)
+            storage.storeEvent(mapEvent)
+            assertThat(storage.loadEvents()).containsExactly(mapEvent)
         }
     }
 
     @Test
-    fun storePermissionDecision_ignoresExactDuplicates() {
+    fun clearEvents_clearsExistingData() {
         init()
         runBlocking {
-            storage.storePermissionDecision(mapLocationGrant)
-            storage.storePermissionDecision(mapLocationGrant)
-            assertThat(storage.loadPermissionDecisions()).containsExactly(mapLocationGrant)
+            storage.storeEvent(mapEvent)
+            storage.clearEvents()
+            assertThat(storage.loadEvents()).isEmpty()
         }
     }
 
     @Test
-    fun clearPermissionDecisions_clearsExistingData() {
+    fun removeEventsForPackage_removesEvents() {
         init()
         runBlocking {
-            storage.storePermissionDecision(mapLocationGrant)
-            storage.clearPermissionDecisions()
-            assertThat(storage.loadPermissionDecisions()).isEmpty()
-        }
-    }
-
-    @Test
-    fun removePermissionDecisionsForPackage_removesDecisions() {
-        init()
-        runBlocking {
-            storage.storePermissionDecision(mapLocationGrant)
-            storage.storePermissionDecision(musicCalendarGrant)
-            storage.storePermissionDecision(mapMicrophoneGrant)
-            storage.removePermissionDecisionsForPackage(mapPackageName)
-            assertThat(storage.loadPermissionDecisions()).containsExactly(musicCalendarGrant)
+            storage.storeEvent(mapEvent)
+            storage.storeEvent(musicEvent)
+            storage.storeEvent(mapEventDifferentKey)
+            storage.removeEventsForPackage(MAP_PACKAGE_NAME)
+            assertThat(storage.loadEvents()).containsExactly(musicEvent)
         }
     }
 
     @Test
     fun removeOldData_removesOnlyOldData() {
         init()
-        val todayDecision = parkingLocationGrant.copy(eventTime = System.currentTimeMillis())
-        val sixDaysAgoDecision = podcastMicrophoneGrant.copy(
+        val todayEvent = parkingEvent.copy(eventTime = System.currentTimeMillis())
+        val sixDaysAgoEvent = podcastEvent.copy(
             eventTime = System.currentTimeMillis() - TimeUnit.DAYS.toMillis(6))
-        val eightDaysAgoDecision = parkingLocationGrant.copy(
+        val eightDaysAgoEvent = parkingEvent.copy(
             eventTime = System.currentTimeMillis() - TimeUnit.DAYS.toMillis(8))
         runBlocking {
-            storage.storePermissionDecision(eightDaysAgoDecision)
-            storage.storePermissionDecision(sixDaysAgoDecision)
-            storage.storePermissionDecision(todayDecision)
+            storage.storeEvent(eightDaysAgoEvent)
+            storage.storeEvent(sixDaysAgoEvent)
+            storage.storeEvent(todayEvent)
             storage.removeOldData()
 
-            // the times get rounded when persisting, so just check the package names
-            val packageNames = storage.loadPermissionDecisions().map { it.packageName }
-            assertThat(packageNames)
-                .containsExactly(todayDecision.packageName, sixDaysAgoDecision.packageName)
+            assertThat(storage.loadEvents()).containsExactly(todayEvent, sixDaysAgoEvent)
         }
     }
 
     @Test
-    fun updateDecisionsBySystemTimeDelta_lessThanOneDay_noChange() {
+    fun updateEventsBySystemTimeDelta_oneDayForward_shiftsData() {
         init()
         runBlocking {
-            storage.storePermissionDecision(musicCalendarGrant)
-            storage.updateDecisionsBySystemTimeDelta(TimeUnit.HOURS.toMillis(12))
+            storage.storeEvent(musicEvent)
+            storage.updateEventsBySystemTimeDelta(TimeUnit.DAYS.toMillis(1))
 
-            assertThat(storage.loadPermissionDecisions()).containsExactly(musicCalendarGrant)
-        }
-    }
-
-    @Test
-    fun updateDecisionsBySystemTimeDelta_oneDayForward_shiftsData() {
-        init()
-        runBlocking {
-            storage.storePermissionDecision(musicCalendarGrant)
-            storage.updateDecisionsBySystemTimeDelta(TimeUnit.DAYS.toMillis(1))
-
-            assertThat(storage.loadPermissionDecisions()).containsExactly(
-                musicCalendarGrant.copy(
-                    eventTime = musicCalendarGrant.eventTime + TimeUnit.DAYS.toMillis(1)
+            assertThat(storage.loadEvents()).containsExactly(
+                musicEvent.copy(
+                    eventTime = musicEvent.eventTime + TimeUnit.DAYS.toMillis(1)
                 )
             )
         }
     }
 
     @Test
-    fun updateDecisionsBySystemTimeDelta_oneDayBackward_shiftsData() {
+    fun updateEventsBySystemTimeDelta_oneDayBackward_shiftsData() {
         init()
         runBlocking {
-            storage.storePermissionDecision(musicCalendarGrant)
-            storage.updateDecisionsBySystemTimeDelta(-TimeUnit.DAYS.toMillis(1))
+            storage.storeEvent(musicEvent)
+            storage.updateEventsBySystemTimeDelta(-TimeUnit.DAYS.toMillis(1))
 
-            assertThat(storage.loadPermissionDecisions()).containsExactly(
-                musicCalendarGrant.copy(
-                    eventTime = musicCalendarGrant.eventTime - TimeUnit.DAYS.toMillis(1)
+            assertThat(storage.loadEvents()).containsExactly(
+                musicEvent.copy(
+                    eventTime = musicEvent.eventTime - TimeUnit.DAYS.toMillis(1)
                 )
             )
+        }
+    }
+
+    /**
+     * Test event used for this test.
+     *
+     * @param id arbitrary test id used for testing uniqueness of primary keys
+     */
+    private data class TestPermissionEvent(
+        override val packageName: String,
+        override val eventTime: Long,
+        val id: Int = 1
+    ) : PermissionEvent(packageName, eventTime)
+
+    private class TestPermissionEventStorage(
+        context: Context,
+        jobScheduler: JobScheduler
+    ) : BasePermissionEventStorage<TestPermissionEvent>(context, jobScheduler) {
+        lateinit var fakeDiskStore: List<TestPermissionEvent>
+
+        override fun serialize(stream: OutputStream, events: List<TestPermissionEvent>) {
+            fakeDiskStore = events
+        }
+
+        override fun parse(inputStream: InputStream): List<TestPermissionEvent> {
+            // Don't bother using the actual input strean and just return the in-memory store
+            return fakeDiskStore
+        }
+
+        override fun getDatabaseFileName(): String {
+            return TEST_FILE_NAME
+        }
+
+        override fun getMaxDataAgeMs(): Long {
+            return TEST_MAX_DATA_AGE
+        }
+
+        override fun hasTheSamePrimaryKey(
+            first: TestPermissionEvent,
+            second: TestPermissionEvent
+        ): Boolean {
+            // use package name and id as primary key
+            return first.packageName == second.packageName && first.id == second.id
+        }
+
+        override fun TestPermissionEvent.copyWithTimeDelta(timeDelta: Long): TestPermissionEvent {
+            return this.copy(eventTime = this.eventTime + timeDelta)
         }
     }
 }

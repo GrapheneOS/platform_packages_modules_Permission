@@ -25,68 +25,39 @@ import android.content.Context
 import android.provider.DeviceConfig
 import android.util.AtomicFile
 import android.util.Log
-import android.util.Xml
 import androidx.annotation.VisibleForTesting
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.DumpableLog
 import com.android.permissioncontroller.permission.data.PermissionDecision
-import com.android.permissioncontroller.permission.service.PermissionEventStorage.Companion.getMaxDataAgeMs
+import com.android.permissioncontroller.permission.data.PermissionEvent
 import com.android.permissioncontroller.permission.utils.Utils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserException
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
-import java.nio.charset.StandardCharsets
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
 import java.util.concurrent.TimeUnit
-import kotlin.math.abs
 
 /**
  * Thread-safe implementation of [PermissionEventStorage] using an XML file as the
  * database.
  */
-class BasePermissionEventStorage(
+abstract class BasePermissionEventStorage<T : PermissionEvent>(
     private val context: Context,
     private val jobScheduler: JobScheduler
-) : PermissionEventStorage {
+) : PermissionEventStorage<T> {
 
-    private val dbFile: AtomicFile = AtomicFile(File(context.filesDir, STORE_FILE_NAME))
+    private val dbFile: AtomicFile = AtomicFile(File(context.filesDir, getDatabaseFileName()))
     private val fileLock = Object()
-
-    // We don't use namespaces
-    private val ns: String? = null
-
-    /**
-     * The format for how dates are stored.
-     */
-    private val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
 
     companion object {
         private const val LOG_TAG = "BasePermissionEventStorage"
         val DEFAULT_CLEAR_OLD_DECISIONS_CHECK_FREQUENCY = TimeUnit.DAYS.toMillis(1)
-        const val DB_VERSION = 1
-
-        /**
-         * Config store file name for general shared store file.
-         */
-        const val STORE_FILE_NAME = "recent_permission_decisions.xml"
-
-        const val TAG_RECENT_PERMISSION_DECISIONS = "recent-permission-decisions"
-        const val TAG_PERMISSION_DECISION = "permission-decision"
-        const val ATTR_VERSION = "version"
-        const val ATTR_PACKAGE_NAME = "package-name"
-        const val ATTR_PERMISSION_GROUP = "permission-group-name"
-        const val ATTR_DECISION_TIME = "decision-time"
-        const val ATTR_IS_GRANTED = "is-granted"
 
         fun getClearOldDecisionsCheckFrequencyMs() =
             DeviceConfig.getLong(DeviceConfig.NAMESPACE_PERMISSIONS,
@@ -98,34 +69,32 @@ class BasePermissionEventStorage(
         scheduleOldDataCleanupIfNecessary()
     }
 
-    override suspend fun storePermissionDecision(decision: PermissionDecision): Boolean {
+    override suspend fun storeEvent(event: T): Boolean {
         synchronized(fileLock) {
-            val existingDecisions = readData()
+            val existingEvents = readData()
 
-            val newDecisions = mutableListOf<PermissionDecision>()
-            // add new decision first to keep the list ordered
-            newDecisions.add(decision)
-            for (existingDecision in existingDecisions) {
-                // ignore any old decisions that violate the (package, permission_group) uniqueness
-                // with the database
-                if (existingDecision.packageName == decision.packageName &&
-                        existingDecision.permissionGroupName == decision.permissionGroupName) {
+            val newEvents = mutableListOf<T>()
+            // add new event first to keep the list ordered
+            newEvents.add(event)
+            for (existingEvent in existingEvents) {
+                // ignore any old events that violate the primary key uniqueness with the database
+                if (hasTheSamePrimaryKey(existingEvent, event)) {
                     continue
                 }
-                newDecisions.add(existingDecision)
+                newEvents.add(existingEvent)
             }
 
-            return writeData(newDecisions)
+            return writeData(newEvents)
         }
     }
 
-    override suspend fun loadPermissionDecisions(): List<PermissionDecision> {
+    override suspend fun loadEvents(): List<T> {
         synchronized(fileLock) {
             return readData()
         }
     }
 
-    override suspend fun clearPermissionDecisions() {
+    override suspend fun clearEvents() {
         synchronized(fileLock) {
             dbFile.delete()
         }
@@ -133,17 +102,17 @@ class BasePermissionEventStorage(
 
     override suspend fun removeOldData(): Boolean {
         synchronized(fileLock) {
-            val existingDecisions = readData()
+            val existingEvents = readData()
 
-            val originalCount = existingDecisions.size
-            val newDecisions = existingDecisions.filter {
+            val originalCount = existingEvents.size
+            val newEvents = existingEvents.filter {
                 return (System.currentTimeMillis() - it.eventTime) <= getMaxDataAgeMs()
             }
 
             DumpableLog.d(LOG_TAG,
-                "${originalCount - newDecisions.size} old permission decisions removed")
+                "${originalCount - newEvents.size} old permission events removed")
 
-            return writeData(newDecisions)
+            return writeData(newEvents)
         }
     }
 
@@ -189,33 +158,27 @@ class BasePermissionEventStorage(
         return scheduleNewJob
     }
 
-    override suspend fun removePermissionDecisionsForPackage(packageName: String): Boolean {
+    override suspend fun removeEventsForPackage(packageName: String): Boolean {
         synchronized(fileLock) {
-            val existingDecisions = readData()
+            val existingEvents = readData()
 
-            val newDecisions = existingDecisions.filter { it.packageName != packageName }
-            return writeData(newDecisions)
+            val newEvents = existingEvents.filter { it.packageName != packageName }
+            return writeData(newEvents)
         }
     }
 
-    override suspend fun updateDecisionsBySystemTimeDelta(diffSystemTimeMillis: Long): Boolean {
-        if (abs(diffSystemTimeMillis) < TimeUnit.DAYS.toMillis(1)) {
-            DumpableLog.i(LOG_TAG, "Ignoring time change - less than one day")
-            return true
-        }
-
+    override suspend fun updateEventsBySystemTimeDelta(diffSystemTimeMillis: Long): Boolean {
         synchronized(fileLock) {
-            val existingDecisions = readData()
+            val existingEvents = readData()
 
-            val newDecisions = existingDecisions.map {
-                // delta will be rounded down to the nearest day in writeData
-                it.copy(eventTime = it.eventTime + diffSystemTimeMillis)
+            val newEvents = existingEvents.map {
+                it.copyWithTimeDelta(diffSystemTimeMillis)
             }
-            return writeData(newDecisions)
+            return writeData(newEvents)
         }
     }
 
-    private fun writeData(decisions: List<PermissionDecision>): Boolean {
+    private fun writeData(events: List<T>): Boolean {
         val stream: FileOutputStream = try {
             dbFile.startWrite()
         } catch (e: IOException) {
@@ -223,7 +186,7 @@ class BasePermissionEventStorage(
             return false
         }
         try {
-            serializeData(stream, decisions)
+            serialize(stream, events)
             dbFile.finishWrite(stream)
         } catch (e: IOException) {
             Log.e(LOG_TAG, "Failed to save db file, restoring backup", e)
@@ -234,26 +197,7 @@ class BasePermissionEventStorage(
         return true
     }
 
-    private fun serializeData(stream: OutputStream, decisions: List<PermissionDecision>) {
-        val out = Xml.newSerializer()
-        out.setOutput(stream, StandardCharsets.UTF_8.name())
-        out.startDocument(/* encoding= */ null, /* standalone= */ true)
-        out.startTag(ns, TAG_RECENT_PERMISSION_DECISIONS)
-        out.attribute(null, ATTR_VERSION, DB_VERSION.toString())
-        for (decision in decisions) {
-            out.startTag(ns, TAG_PERMISSION_DECISION)
-            out.attribute(ns, ATTR_PACKAGE_NAME, decision.packageName)
-            out.attribute(ns, ATTR_PERMISSION_GROUP, decision.permissionGroupName)
-            val date = dateFormat.format(Date(decision.eventTime))
-            out.attribute(ns, ATTR_DECISION_TIME, date)
-            out.attribute(ns, ATTR_IS_GRANTED, decision.isGranted.toString())
-            out.endTag(ns, TAG_PERMISSION_DECISION)
-        }
-        out.endTag(null, TAG_RECENT_PERMISSION_DECISIONS)
-        out.endDocument()
-    }
-
-    private fun readData(): List<PermissionDecision> {
+    private fun readData(): List<T> {
         if (!dbFile.baseFile.exists()) {
             return emptyList()
         }
@@ -268,40 +212,42 @@ class BasePermissionEventStorage(
         }
     }
 
-    @Throws(XmlPullParserException::class, IOException::class)
-    fun parse(inputStream: InputStream): List<PermissionDecision> {
-        inputStream.use {
-            val parser: XmlPullParser = Xml.newPullParser()
-            parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false)
-            parser.setInput(inputStream, null)
-            parser.nextTag()
-            return readRecentDecisions(parser)
-        }
-    }
+    /**
+     * Serialize a list of permission events.
+     *
+     * @param stream output stream to serialize events to
+     * @param events list of permission events to serialize
+     */
+    abstract fun serialize(stream: OutputStream, events: List<T>)
 
+    /**
+     * Parse a list of permission events from the XML parser.
+     *
+     * @param inputStream input stream to parse events from
+     * @return the list of parsed permission events
+     */
     @Throws(XmlPullParserException::class, IOException::class)
-    private fun readRecentDecisions(parser: XmlPullParser): List<PermissionDecision> {
-        val entries = mutableListOf<PermissionDecision>()
+    abstract fun parse(inputStream: InputStream): List<T>
 
-        parser.require(XmlPullParser.START_TAG, ns, TAG_RECENT_PERMISSION_DECISIONS)
-        while (parser.next() != XmlPullParser.END_TAG) {
-            entries.add(readPermissionDecision(parser))
-        }
-        return entries
-    }
+    /**
+     * Returns file name for database.
+     */
+    abstract fun getDatabaseFileName(): String
 
-    @Throws(XmlPullParserException::class, IOException::class)
-    private fun readPermissionDecision(parser: XmlPullParser): PermissionDecision {
-        parser.require(XmlPullParser.START_TAG, ns, TAG_PERMISSION_DECISION)
-        val packageName = parser.getAttributeValue(ns, ATTR_PACKAGE_NAME)
-        val permissionGroup = parser.getAttributeValue(ns, ATTR_PERMISSION_GROUP)
-        val decisionDate = parser.getAttributeValue(ns, ATTR_DECISION_TIME)
-        val decisionTime = dateFormat.parse(decisionDate).time
-        val isGranted = parser.getAttributeValue(ns, ATTR_IS_GRANTED).toBoolean()
-        parser.nextTag()
-        parser.require(XmlPullParser.END_TAG, ns, TAG_PERMISSION_DECISION)
-        return PermissionDecision(packageName, decisionTime, permissionGroup, isGranted)
-    }
+    /**
+     * Returns max time that data should be persisted before being removed.
+     */
+    abstract fun getMaxDataAgeMs(): Long
+
+    /**
+     * Returns true if the two events have the same primary key for the database store.
+     */
+    abstract fun hasTheSamePrimaryKey(first: T, second: T): Boolean
+
+    /**
+     * Copies the event with the time delta applied to the [PermissionEvent.eventTime].
+     */
+    abstract fun T.copyWithTimeDelta(timeDelta: Long): T
 }
 
 /**
@@ -309,7 +255,8 @@ class BasePermissionEventStorage(
  */
 class DecisionCleanupJobService(
     @VisibleForTesting
-    val storage: PermissionEventStorage = PermissionEventStorage.getInstance()
+    val storage: PermissionEventStorage<PermissionDecision> =
+        PermissionDecisionStorageImpl.getInstance()
 ) : JobService() {
 
     companion object {
