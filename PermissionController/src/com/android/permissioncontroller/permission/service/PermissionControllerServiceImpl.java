@@ -775,18 +775,17 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
         for (String permName : permissions) {
             AppPermissionGroup group = app.getGroupForPermission(permName);
             if (group == null) {
-                throw new SecurityException("Cannot revoke permission " + permName + " for package "
-                        + packageName + " since " + permName + " does not belong to a permission "
-                        + "group");
+                throw new IllegalArgumentException("Cannot revoke permission " + permName
+                        + " for package " + packageName + " since " + permName
+                        + " does not belong to a permission group");
+            }
+            if (!group.doesSupportRuntimePermissions()) {
+                throw new IllegalArgumentException("Cannot revoke permission " + permName
+                        + " for package " + packageName + " since it is not a runtime permission");
             }
             Permission perm = group.getPermission(permName);
             if (!perm.isGranted()) {
-                throw new SecurityException("Cannot revoke permission " + permName + " for package "
-                        + packageName + " since " + packageName + " does not hold it");
-            }
-            if (!group.doesSupportRuntimePermissions()) {
-                throw new SecurityException("Cannot revoke permission " + permName + " for package "
-                        + packageName + " since it is not a runtime permission");
+                continue;
             }
             perm.setOneTime(true);
             groups.add(group);
