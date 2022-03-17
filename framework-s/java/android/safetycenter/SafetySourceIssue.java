@@ -37,6 +37,7 @@ import androidx.annotation.RequiresApi;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -112,8 +113,15 @@ public final class SafetySourceIssue implements Parcelable {
                     PendingIntent onDismissPendingIntent =
                             PendingIntent.readPendingIntentOrNullFromParcel(in);
                     String issueTypeId = requireNonNull(in.readString());
-                    return new SafetySourceIssue(id, title, subtitle, summary, severityLevel,
-                            issueCategory, actions, onDismissPendingIntent, issueTypeId);
+                    Builder builder = new Builder(id, title, summary, severityLevel, issueTypeId)
+                            .setSubtitle(subtitle)
+                            .setIssueCategory(issueCategory)
+                            .setOnDismissPendingIntent(onDismissPendingIntent);
+                    // TODO(b/224513050): Consider simplifying by adding a new API to the builder.
+                    for (int i = 0; i < actions.size(); i++) {
+                        builder.addAction(actions.get(i));
+                    }
+                    return builder.build();
                 }
 
                 @Override
@@ -209,8 +217,7 @@ public final class SafetySourceIssue implements Parcelable {
     }
 
     /**
-     * Returns a list of {@link Action} instances representing actions supported in the UI for this
-     * issue.
+     * Returns a list of {@link Action}s representing actions supported in the UI for this issue.
      *
      * <p>Each issue must contain at least one action, in order to help the user resolve the issue.
      *
@@ -383,16 +390,14 @@ public final class SafetySourceIssue implements Parcelable {
                 new Parcelable.Creator<Action>() {
                     @Override
                     public Action createFromParcel(Parcel in) {
-                        String id = requireNonNull(in.readString());
-                        CharSequence label =
-                                requireNonNull(
-                                        TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in));
-                        PendingIntent pendingIntent =
-                                requireNonNull(PendingIntent.readPendingIntentOrNullFromParcel(in));
-                        boolean willResolve = in.readBoolean();
-                        CharSequence successMessage =
-                                TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
-                        return new Action(id, label, pendingIntent, willResolve, successMessage);
+                        return new Builder(
+                                in.readString(),
+                                TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in),
+                                PendingIntent.readPendingIntentOrNullFromParcel(in))
+                                .setWillResolve(in.readBoolean())
+                                .setSuccessMessage(
+                                        TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in))
+                                .build();
                     }
 
                     @Override
@@ -618,14 +623,14 @@ public final class SafetySourceIssue implements Parcelable {
             return this;
         }
 
-        /** Adds data for an action to be shown in UI. */
+        /** Adds data for an {@link Action} to be shown in UI. */
         @NonNull
         public Builder addAction(@NonNull Action actionData) {
             mActions.add(requireNonNull(actionData));
             return this;
         }
 
-        /** Clears data for all the actions that were added to this {@link Builder}. */
+        /** Clears data for all the {@link Action}s that were added to this {@link Builder}. */
         @NonNull
         public Builder clearActions() {
             mActions.clear();
@@ -656,7 +661,8 @@ public final class SafetySourceIssue implements Parcelable {
             checkArgument(mActions.size() <= 2,
                     "Safety source issue must not contain more than 2 actions");
             return new SafetySourceIssue(mId, mTitle, mSubtitle, mSummary, mSeverityLevel,
-                    mIssueCategory, mActions, mOnDismissPendingIntent, mIssueTypeId);
+                    mIssueCategory, Collections.unmodifiableList(mActions), mOnDismissPendingIntent,
+                    mIssueTypeId);
         }
     }
 }

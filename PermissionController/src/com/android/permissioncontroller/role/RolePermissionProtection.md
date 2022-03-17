@@ -93,8 +93,8 @@ overlay.
 Since role is modularized, we also need to make this config resource a system API for access by
 role.
 
-Edit `frameworks/base/core/res/res/values/public.xml` to expose the new config resource as a system
-API:
+Edit `frameworks/base/core/res/res/values/public-staging.xml` to expose the new config resource as
+a system API:
 
 ```xml
 <staging-public-group type="string" first-id="0xXXXXXXXX">
