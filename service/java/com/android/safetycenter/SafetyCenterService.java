@@ -39,6 +39,7 @@ import android.provider.DeviceConfig;
 import android.safetycenter.IOnSafetyCenterDataChangedListener;
 import android.safetycenter.ISafetyCenterManager;
 import android.safetycenter.SafetyCenterData;
+import android.safetycenter.SafetyCenterErrorDetails;
 import android.safetycenter.SafetyEvent;
 import android.safetycenter.SafetySourceData;
 import android.safetycenter.SafetySourceErrorDetails;
@@ -194,7 +195,14 @@ public final class SafetyCenterService extends SystemService {
             if (!checkApiEnabled("reportSafetySourceError")) {
                 return;
             }
+
             // TODO(b/218379298): Add implementation
+            RemoteCallbackList<IOnSafetyCenterDataChangedListener> listeners;
+            synchronized (mApiLock) {
+                listeners = mSafetyCenterListeners.getListeners(userId);
+            }
+
+            SafetyCenterListeners.deliverError(listeners, new SafetyCenterErrorDetails("Error"));
         }
 
         @Override

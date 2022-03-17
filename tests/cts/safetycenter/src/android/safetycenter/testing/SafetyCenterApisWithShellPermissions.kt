@@ -57,7 +57,7 @@ fun SafetyCenterManager.getSafetySourceDataWithPermission(id: String) =
     callWithShellPermissionIdentity({ getSafetySourceData(id) }, SEND_SAFETY_CENTER_UPDATE)
 
 /**
- * Calls [SafetyCenterManager.reportSafetySourceError] adopting Shell's [MANAGE_SAFETY_CENTER]
+ * Calls [SafetyCenterManager.reportSafetySourceError] adopting Shell's [SEND_SAFETY_CENTER_UPDATE]
  * permission.
  */
 fun SafetyCenterManager.reportSafetySourceErrorWithPermission(
@@ -66,7 +66,7 @@ fun SafetyCenterManager.reportSafetySourceErrorWithPermission(
 ) =
     callWithShellPermissionIdentity(
         { reportSafetySourceError(safetySourceId, safetySourceErrorDetails) },
-        MANAGE_SAFETY_CENTER
+        SEND_SAFETY_CENTER_UPDATE
     )
 
 /**
@@ -112,7 +112,7 @@ fun SafetyCenterManager.removeOnSafetyCenterDataChangedListenerWithPermission(
  * Calls [SafetyCenterManager.dismissSafetyCenterIssue] adopting Shell's [MANAGE_SAFETY_CENTER]
  * permission.
  */
-fun SafetyCenterManager.dismissSafetyIssueWithPermission(safetyCenterIssueId: String) =
+fun SafetyCenterManager.dismissSafetyCenterIssueWithPermission(safetyCenterIssueId: String) =
     callWithShellPermissionIdentity({ dismissSafetyCenterIssue(safetyCenterIssueId) },
         MANAGE_SAFETY_CENTER)
 
@@ -120,7 +120,7 @@ fun SafetyCenterManager.dismissSafetyIssueWithPermission(safetyCenterIssueId: St
  * Calls [SafetyCenterManager.executeSafetyCenterIssueAction] adopting Shell's
  * [MANAGE_SAFETY_CENTER] permission.
  */
-fun SafetyCenterManager.executeSafetyCenterActionWithPermission(
+fun SafetyCenterManager.executeSafetyCenterIssueActionWithPermission(
     safetyCenterIssueId: String,
     safetyCenterIssueActionId: String
 ) =

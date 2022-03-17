@@ -163,7 +163,7 @@ public final class SafetySourcesGroup implements Parcelable {
         return mStatelessIconType;
     }
 
-    /** Returns the list of safety sources in this safety sources group. */
+    /** Returns the list of {@link SafetySource}s in this safety sources group. */
     @NonNull
     public List<SafetySource> getSafetySources() {
         return mSafetySources;
@@ -208,7 +208,7 @@ public final class SafetySourcesGroup implements Parcelable {
         dest.writeInt(mTitleResId);
         dest.writeInt(mSummaryResId);
         dest.writeInt(mStatelessIconType);
-        dest.writeParcelableList(mSafetySources, flags);
+        dest.writeTypedList(mSafetySources);
     }
 
     @NonNull
@@ -216,14 +216,18 @@ public final class SafetySourcesGroup implements Parcelable {
             new Parcelable.Creator<SafetySourcesGroup>() {
                 @Override
                 public SafetySourcesGroup createFromParcel(Parcel in) {
-                    String id = in.readString();
-                    int titleResId = in.readInt();
-                    int summaryResId = in.readInt();
-                    int statelessIconType = in.readInt();
-                    List<SafetySource> safetySources = new ArrayList<>();
-                    in.readParcelableList(safetySources, SafetySource.class.getClassLoader());
-                    return new SafetySourcesGroup(id, titleResId, summaryResId, statelessIconType,
-                            Collections.unmodifiableList(safetySources));
+                    Builder builder = new Builder()
+                            .setId(in.readString())
+                            .setTitleResId(in.readInt())
+                            .setSummaryResId(in.readInt())
+                            .setStatelessIconType(in.readInt());
+                    List<SafetySource> safetySources =
+                            in.createTypedArrayList(SafetySource.CREATOR);
+                    // TODO(b/224513050): Consider simplifying by adding a new API to the builder.
+                    for (int i = 0; i < safetySources.size(); i++) {
+                        builder.addSafetySource(safetySources.get(i));
+                    }
+                    return builder.build();
                 }
 
                 @Override
@@ -280,7 +284,7 @@ public final class SafetySourcesGroup implements Parcelable {
             return this;
         }
 
-        /** Adds a safety source to this safety sources group. */
+        /** Adds a {@link SafetySource} to this safety sources group. */
         @NonNull
         public Builder addSafetySource(@NonNull SafetySource safetySource) {
             mSafetySources.add(requireNonNull(safetySource));
