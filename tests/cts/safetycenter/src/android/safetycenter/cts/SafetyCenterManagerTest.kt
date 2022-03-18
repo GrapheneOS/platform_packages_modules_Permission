@@ -652,24 +652,28 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    fun addOnSafetyCenterDataChangedListener_oneShot_doesntDeadlock() {
-        val oneShotListener =
-            object : OnSafetyCenterDataChangedListener {
-                override fun onSafetyCenterDataChanged(safetyCenterData: SafetyCenterData) {
-                    safetyCenterManager.removeOnSafetyCenterDataChangedListenerWithPermission(this)
-                    listener.onSafetyCenterDataChanged(safetyCenterData)
+    // Permission is held for the entire test to avoid a racy scenario where the shell identity is
+    // dropped while it's being acquired on another thread.
+    fun addOnSafetyCenterDataChangedListener_oneShot_doesntDeadlock() =
+        callWithShellPermissionIdentity({
+            val oneShotListener =
+                object : OnSafetyCenterDataChangedListener {
+                    override fun onSafetyCenterDataChanged(safetyCenterData: SafetyCenterData) {
+                        safetyCenterManager.removeOnSafetyCenterDataChangedListener(this)
+                        listener.onSafetyCenterDataChanged(safetyCenterData)
+                    }
                 }
-            }
-        safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
-            directExecutor(),
-            oneShotListener
-        )
+            safetyCenterManager.addOnSafetyCenterDataChangedListener(
+                directExecutor(),
+                oneShotListener
+            )
 
-        // Check that we don't deadlock when using a one-shot listener: this is because adding the
-        // listener could call the listener while holding a lock on the binder thread-pool; causing
-        // a deadlock when attempting to call the `SafetyCenterManager` from that listener.
-        listener.receiveSafetyCenterData()
-    }
+            // Check that we don't deadlock when using a one-shot listener: this is because adding
+            // the listener could call the listener while holding a lock on the binder thread-pool;
+            // causing a deadlock when attempting to call the `SafetyCenterManager` from that
+            // listener.
+            listener.receiveSafetyCenterData()
+        }, MANAGE_SAFETY_CENTER)
 
     @Test
     fun removeOnSafetyCenterDataChangedListener_listenerNotCalledOnSafetySourceData() {
