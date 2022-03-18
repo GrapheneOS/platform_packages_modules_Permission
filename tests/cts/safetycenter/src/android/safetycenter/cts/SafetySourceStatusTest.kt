@@ -22,12 +22,13 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.Parcel
+import android.safetycenter.SafetySourceSeverity.LEVEL_CRITICAL_WARNING
+import android.safetycenter.SafetySourceSeverity.LEVEL_INFORMATION
+import android.safetycenter.SafetySourceSeverity.LEVEL_UNSPECIFIED
 import android.safetycenter.SafetySourceStatus
 import android.safetycenter.SafetySourceStatus.IconAction
 import android.safetycenter.SafetySourceStatus.IconAction.ICON_TYPE_GEAR
 import android.safetycenter.SafetySourceStatus.IconAction.ICON_TYPE_INFO
-import android.safetycenter.SafetySourceStatus.STATUS_LEVEL_CRITICAL_WARNING
-import android.safetycenter.SafetySourceStatus.STATUS_LEVEL_OK
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
@@ -132,8 +133,7 @@ class SafetySourceStatusTest {
         val safetySourceStatus = SafetySourceStatus.Builder(
             "Status title",
             "Status summary",
-            STATUS_LEVEL_OK,
-            pendingIntent1
+            LEVEL_INFORMATION
         )
             .build()
 
@@ -145,8 +145,7 @@ class SafetySourceStatusTest {
         val safetySourceStatus = SafetySourceStatus.Builder(
             "Status title",
             "Status summary",
-            STATUS_LEVEL_OK,
-            pendingIntent1
+            LEVEL_INFORMATION
         )
             .build()
 
@@ -154,26 +153,37 @@ class SafetySourceStatusTest {
     }
 
     @Test
-    fun getStatusLevel_returnsStatusLevel() {
+    fun getSeverityLevel_returnsSeverityLevel() {
         val safetySourceStatus = SafetySourceStatus.Builder(
             "Status title",
             "Status summary",
-            STATUS_LEVEL_OK,
-            pendingIntent1
+            LEVEL_INFORMATION
         )
             .build()
 
-        assertThat(safetySourceStatus.statusLevel).isEqualTo(STATUS_LEVEL_OK)
+        assertThat(safetySourceStatus.severityLevel).isEqualTo(LEVEL_INFORMATION)
     }
 
     @Test
-    fun getPendingIntent_returnsPendingIntent() {
+    fun getPendingIntent_withDefaultBuilder_returnsNull() {
         val safetySourceStatus = SafetySourceStatus.Builder(
             "Status title",
             "Status summary",
-            STATUS_LEVEL_OK,
-            pendingIntent1
+            LEVEL_INFORMATION
         )
+            .build()
+
+        assertThat(safetySourceStatus.pendingIntent).isNull()
+    }
+
+    @Test
+    fun getPendingIntent_whenSetExplicitly_returnsPendingIntent() {
+        val safetySourceStatus = SafetySourceStatus.Builder(
+            "Status title",
+            "Status summary",
+            LEVEL_INFORMATION
+        )
+            .setPendingIntent(pendingIntent1)
             .build()
 
         assertThat(safetySourceStatus.pendingIntent).isEqualTo(pendingIntent1)
@@ -184,8 +194,7 @@ class SafetySourceStatusTest {
         val safetySourceStatus = SafetySourceStatus.Builder(
             "Status title",
             "Status summary",
-            STATUS_LEVEL_OK,
-            pendingIntent1
+            LEVEL_INFORMATION
         )
             .build()
 
@@ -197,8 +206,7 @@ class SafetySourceStatusTest {
         val safetySourceStatus = SafetySourceStatus.Builder(
             "Status title",
             "Status summary",
-            STATUS_LEVEL_OK,
-            pendingIntent1
+            LEVEL_INFORMATION
         )
             .setIconAction(iconAction1)
             .build()
@@ -211,8 +219,7 @@ class SafetySourceStatusTest {
         val safetySourceStatus = SafetySourceStatus.Builder(
             "Status title",
             "Status summary",
-            STATUS_LEVEL_OK,
-            pendingIntent1
+            LEVEL_UNSPECIFIED
         )
             .build()
 
@@ -224,8 +231,7 @@ class SafetySourceStatusTest {
         val safetySourceStatus = SafetySourceStatus.Builder(
             "Status title",
             "Status summary",
-            STATUS_LEVEL_OK,
-            pendingIntent1
+            LEVEL_UNSPECIFIED
         )
             .setEnabled(false)
             .build()
@@ -238,9 +244,9 @@ class SafetySourceStatusTest {
         val safetySourceStatus = SafetySourceStatus.Builder(
             "Status title",
             "Status summary",
-            STATUS_LEVEL_OK,
-            pendingIntent1
+            LEVEL_INFORMATION
         )
+            .setPendingIntent(pendingIntent1)
             .setIconAction(iconAction1)
             .build()
 
@@ -248,15 +254,34 @@ class SafetySourceStatusTest {
     }
 
     @Test
-    fun createFromParcel_withWriteToParcel_returnsOriginalSafetySourceStatus() {
+    fun createFromParcel_withWriteToParcel_withAllFields_returnsOriginalSafetySourceStatus() {
         val safetySourceStatus = SafetySourceStatus.Builder(
             "Status title",
             "Status summary",
-            STATUS_LEVEL_OK,
-            pendingIntent1
+            LEVEL_INFORMATION
         )
+            .setPendingIntent(pendingIntent1)
             .setIconAction(iconAction1)
             .setEnabled(true)
+            .build()
+
+        val parcel: Parcel = Parcel.obtain()
+        safetySourceStatus.writeToParcel(parcel, 0 /* flags */)
+        parcel.setDataPosition(0)
+        val safetySourceStatusFromParcel: SafetySourceStatus =
+            SafetySourceStatus.CREATOR.createFromParcel(parcel)
+        parcel.recycle()
+
+        assertThat(safetySourceStatusFromParcel).isEqualTo(safetySourceStatus)
+    }
+
+    @Test
+    fun createFromParcel_withWriteToParcel_withMinimalFields_returnsOriginalSafetySourceStatus() {
+        val safetySourceStatus = SafetySourceStatus.Builder(
+            "Status title",
+            "Status summary",
+            LEVEL_INFORMATION
+        )
             .build()
 
         val parcel: Parcel = Parcel.obtain()
@@ -275,9 +300,9 @@ class SafetySourceStatusTest {
         val safetySourceStatus = SafetySourceStatus.Builder(
             "Status title",
             "Status summary",
-            STATUS_LEVEL_OK,
-            pendingIntent1
+            LEVEL_INFORMATION
         )
+            .setPendingIntent(pendingIntent1)
             .setIconAction(iconAction1)
             .setEnabled(true)
             .build()
@@ -293,18 +318,18 @@ class SafetySourceStatusTest {
         val safetySourceStatus = SafetySourceStatus.Builder(
             "Status title",
             "Status summary",
-            STATUS_LEVEL_OK,
-            pendingIntent1
+            LEVEL_INFORMATION
         )
+            .setPendingIntent(pendingIntent1)
             .setIconAction(iconAction1)
             .setEnabled(true)
             .build()
         val otherSafetySourceStatus = SafetySourceStatus.Builder(
             "Status title",
             "Status summary",
-            STATUS_LEVEL_OK,
-            pendingIntent1
+            LEVEL_INFORMATION
         )
+            .setPendingIntent(pendingIntent1)
             .setIconAction(iconAction1)
             .setEnabled(true)
             .build()
@@ -319,15 +344,13 @@ class SafetySourceStatusTest {
         val safetySourceStatus = SafetySourceStatus.Builder(
             "Status title",
             "Status summary",
-            STATUS_LEVEL_OK,
-            pendingIntent1
+            LEVEL_INFORMATION
         )
             .build()
         val otherSafetySourceStatus = SafetySourceStatus.Builder(
             "Other status title",
             "Status summary",
-            STATUS_LEVEL_OK,
-            pendingIntent1
+            LEVEL_INFORMATION
         )
             .build()
 
@@ -341,15 +364,13 @@ class SafetySourceStatusTest {
         val safetySourceStatus = SafetySourceStatus.Builder(
             "Status title",
             "Status summary",
-            STATUS_LEVEL_OK,
-            pendingIntent1
+            LEVEL_INFORMATION
         )
             .build()
         val otherSafetySourceStatus = SafetySourceStatus.Builder(
             "Status title",
             "Other status summary",
-            STATUS_LEVEL_OK,
-            pendingIntent1
+            LEVEL_INFORMATION
         )
             .build()
 
@@ -359,19 +380,17 @@ class SafetySourceStatusTest {
     }
 
     @Test
-    fun hashCode_equals_toString_withDifferentStatusLevels_areNotEqual() {
+    fun hashCode_equals_toString_withDifferentSeverityLevels_areNotEqual() {
         val safetySourceStatus = SafetySourceStatus.Builder(
             "Status title",
             "Status summary",
-            STATUS_LEVEL_OK,
-            pendingIntent1
+            LEVEL_INFORMATION
         )
             .build()
         val otherSafetySourceStatus = SafetySourceStatus.Builder(
             "Status title",
             "Status summary",
-            STATUS_LEVEL_CRITICAL_WARNING,
-            pendingIntent1
+            LEVEL_CRITICAL_WARNING
         )
             .build()
 
@@ -385,22 +404,16 @@ class SafetySourceStatusTest {
         val safetySourceStatus = SafetySourceStatus.Builder(
             "Status title",
             "Status summary",
-            STATUS_LEVEL_OK,
-            PendingIntent.getActivity(
-                context, 0 /* requestCode= */,
-                Intent("Status PendingIntent"), FLAG_IMMUTABLE
-            )
+            LEVEL_INFORMATION
         )
+            .setPendingIntent(pendingIntent1)
             .build()
         val otherSafetySourceStatus = SafetySourceStatus.Builder(
             "Status title",
             "Status summary",
-            STATUS_LEVEL_CRITICAL_WARNING,
-            PendingIntent.getActivity(
-                context, 0 /* requestCode= */,
-                Intent("Other status PendingIntent"), FLAG_IMMUTABLE
-            )
+            LEVEL_CRITICAL_WARNING
         )
+            .setPendingIntent(pendingIntent2)
             .build()
 
         assertThat(safetySourceStatus.hashCode()).isNotEqualTo(otherSafetySourceStatus.hashCode())
@@ -413,16 +426,14 @@ class SafetySourceStatusTest {
         val safetySourceStatus = SafetySourceStatus.Builder(
             "Status title",
             "Status summary",
-            STATUS_LEVEL_CRITICAL_WARNING,
-            pendingIntent1
+            LEVEL_CRITICAL_WARNING
         )
             .setIconAction(iconAction1)
             .build()
         val otherSafetySourceStatus = SafetySourceStatus.Builder(
             "Status title",
             "Status summary",
-            STATUS_LEVEL_CRITICAL_WARNING,
-            pendingIntent1
+            LEVEL_CRITICAL_WARNING
         )
             .setIconAction(iconAction2)
             .build()
@@ -437,16 +448,14 @@ class SafetySourceStatusTest {
         val safetySourceStatus = SafetySourceStatus.Builder(
             "Status title",
             "Status summary",
-            STATUS_LEVEL_CRITICAL_WARNING,
-            pendingIntent1
+            LEVEL_UNSPECIFIED
         )
             .setEnabled(true)
             .build()
         val otherSafetySourceStatus = SafetySourceStatus.Builder(
             "Status title",
             "Status summary",
-            STATUS_LEVEL_CRITICAL_WARNING,
-            pendingIntent1
+            LEVEL_UNSPECIFIED
         )
             .setEnabled(false)
             .build()

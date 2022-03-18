@@ -48,19 +48,19 @@ public final class SafetyCenterStaticEntry implements Parcelable {
     private final CharSequence mTitle;
     @Nullable
     private final CharSequence mSummary;
-    @NonNull
+    @Nullable
     private final PendingIntent mPendingIntent;
 
     /**
      * Creates a {@link SafetyCenterStaticEntry} with the given title, summary, and pendingIntent
      */
-    public SafetyCenterStaticEntry(
+    private SafetyCenterStaticEntry(
             @NonNull CharSequence title,
             @Nullable CharSequence summary,
-            @NonNull PendingIntent pendingIntent) {
+            @Nullable PendingIntent pendingIntent) {
         mTitle = requireNonNull(title);
         mSummary = summary;
-        mPendingIntent = requireNonNull(pendingIntent);
+        mPendingIntent = pendingIntent;
     }
 
     /** Returns the title that describes this entry. */
@@ -69,14 +69,20 @@ public final class SafetyCenterStaticEntry implements Parcelable {
         return mTitle;
     }
 
-    /** Returns the summary text that describes this entry if present, or {@code null} otherwise. */
+    /**
+     * Returns the optional summary text that describes this entry if present, or {@code null}
+     * otherwise.
+     */
     @Nullable
     public CharSequence getSummary() {
         return mSummary;
     }
 
-    /** Returns the {@link PendingIntent} to execute when this entry is selected. */
-    @NonNull
+    /**
+     * Returns the optional {@link PendingIntent} to execute when this entry is selected if present,
+     * or {@code null} otherwise.
+     */
+    @Nullable
     public PendingIntent getPendingIntent() {
         return mPendingIntent;
     }
@@ -134,4 +140,54 @@ public final class SafetyCenterStaticEntry implements Parcelable {
             return new SafetyCenterStaticEntry[size];
         }
     };
+
+    /** Builder class for {@link SafetyCenterStaticEntry}. */
+    public static final class Builder {
+        private CharSequence mTitle;
+        private CharSequence mSummary;
+        private PendingIntent mPendingIntent;
+
+        /** Creates a {@link Builder} for a {@link SafetyCenterEntry}. */
+        public Builder() {}
+
+        /**
+         * Creates a pre-populated {@link Builder} with the values from the given {@link
+         * SafetyCenterStaticEntry}.
+         */
+        public Builder(@NonNull SafetyCenterStaticEntry safetyCenterStaticEntry) {
+            mTitle = safetyCenterStaticEntry.mTitle;
+            mSummary = safetyCenterStaticEntry.mSummary;
+            mPendingIntent = safetyCenterStaticEntry.mPendingIntent;
+        }
+
+        /** Sets the title for this entry. Required. */
+        @NonNull
+        public Builder setTitle(@NonNull CharSequence title) {
+            mTitle = requireNonNull(title);
+            return this;
+        }
+
+        /** Sets the optional summary text for this entry. */
+        @NonNull
+        public Builder setSummary(@Nullable CharSequence summary) {
+            mSummary = summary;
+            return this;
+        }
+
+        /** Sets the optional {@link PendingIntent} to execute when this entry is selected. */
+        @NonNull
+        public Builder setPendingIntent(@Nullable PendingIntent pendingIntent) {
+            mPendingIntent = pendingIntent;
+            return this;
+        }
+
+        /** Creates the {@link SafetyCenterStaticEntry} defined by this {@link Builder}. */
+        @NonNull
+        public SafetyCenterStaticEntry build() {
+            return new SafetyCenterStaticEntry(
+                    mTitle,
+                    mSummary,
+                    mPendingIntent);
+        }
+    }
 }
