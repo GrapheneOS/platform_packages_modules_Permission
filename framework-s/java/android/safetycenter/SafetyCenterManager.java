@@ -395,6 +395,17 @@ public final class SafetyCenterManager {
         }
     }
 
+    /** Returns the current {@link SafetyCenterConfig}, if available. */
+    @RequiresPermission(MANAGE_SAFETY_CENTER)
+    @Nullable
+    public SafetyCenterConfig getSafetyCenterConfig() {
+        try {
+            return mService.getSafetyCenterConfig();
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
     /**
      * Returns the current {@link SafetyCenterData}, assembled from {@link SafetySourceData} from
      * all sources.

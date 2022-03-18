@@ -205,6 +205,7 @@ package android.safetycenter {
     method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void clearSafetyCenterConfigOverride();
     method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void dismissSafetyCenterIssue(@NonNull String);
     method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void executeSafetyCenterIssueAction(@NonNull String, @NonNull String);
+    method @Nullable @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public android.safetycenter.config.SafetyCenterConfig getSafetyCenterConfig();
     method @NonNull @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public android.safetycenter.SafetyCenterData getSafetyCenterData();
     method @Nullable @RequiresPermission(android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE) public android.safetycenter.SafetySourceData getSafetySourceData(@NonNull String);
     method @RequiresPermission(anyOf={android.Manifest.permission.READ_SAFETY_CENTER_STATUS, android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE}) public boolean isSafetyCenterEnabled();
