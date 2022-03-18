@@ -34,6 +34,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.PermissionGroupInfo;
 import android.content.pm.PermissionInfo;
+import android.os.Binder;
 import android.os.Build;
 import android.os.UserHandle;
 import android.permission.PermissionManager;
@@ -1522,19 +1523,25 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
 
         String packageName = mPackageInfo.packageName;
         if (areRuntimePermissionsGranted(null, true)) {
-            if (SdkLevel.isAtLeastT()) {
-                mContext.getSystemService(PermissionManager.class)
-                        .startOneTimePermissionSession(packageName,
-                                Utils.getOneTimePermissionsTimeout(),
-                                Utils.getOneTimePermissionsKilledDelay(mIsSelfRevoked),
-                                ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_RESET_TIMER,
-                                ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_KEEP_SESSION_ALIVE);
-            } else {
-                mContext.getSystemService(PermissionManager.class)
-                        .startOneTimePermissionSession(packageName,
-                                Utils.getOneTimePermissionsTimeout(),
-                                ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_RESET_TIMER,
-                                ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_KEEP_SESSION_ALIVE);
+            // Required to read device config in Utils.getOneTimePermissions*().
+            final long token = Binder.clearCallingIdentity();
+            try {
+                if (SdkLevel.isAtLeastT()) {
+                    mContext.getSystemService(PermissionManager.class)
+                            .startOneTimePermissionSession(packageName,
+                                    Utils.getOneTimePermissionsTimeout(),
+                                    Utils.getOneTimePermissionsKilledDelay(mIsSelfRevoked),
+                                    ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_RESET_TIMER,
+                                    ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_KEEP_SESSION_ALIVE);
+                } else {
+                    mContext.getSystemService(PermissionManager.class)
+                            .startOneTimePermissionSession(packageName,
+                                    Utils.getOneTimePermissionsTimeout(),
+                                    ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_RESET_TIMER,
+                                    ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_KEEP_SESSION_ALIVE);
+                }
+            } finally {
+                Binder.restoreCallingIdentity(token);
             }
         } else {
             mContext.getSystemService(PermissionManager.class)
