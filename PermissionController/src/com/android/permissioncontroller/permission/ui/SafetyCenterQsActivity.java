@@ -26,7 +26,7 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.Constants;
-import com.android.permissioncontroller.permission.ui.handheld.SafetyCenterQsFragment;
+import com.android.permissioncontroller.permission.ui.handheld.v33.SafetyCenterQsFragment;
 
 import java.util.ArrayList;
 import java.util.Random;

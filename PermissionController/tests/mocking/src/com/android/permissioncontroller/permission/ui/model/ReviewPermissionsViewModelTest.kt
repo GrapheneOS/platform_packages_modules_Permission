@@ -26,10 +26,11 @@ import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPermission
-import com.android.permissioncontroller.permission.ui.model.ReviewPermissionsViewModel.PermissionTarget.PERMISSION_BACKGROUND
-import com.android.permissioncontroller.permission.ui.model.ReviewPermissionsViewModel.PermissionTarget.PERMISSION_BOTH
-import com.android.permissioncontroller.permission.ui.model.ReviewPermissionsViewModel.PermissionTarget.PERMISSION_FOREGROUND
-import com.android.permissioncontroller.permission.ui.model.ReviewPermissionsViewModel.SummaryMessage
+import com.android.permissioncontroller.permission.ui.model.v33.ReviewPermissionsViewModel
+import com.android.permissioncontroller.permission.ui.model.v33.ReviewPermissionsViewModel.PermissionTarget.PERMISSION_BACKGROUND
+import com.android.permissioncontroller.permission.ui.model.v33.ReviewPermissionsViewModel.PermissionTarget.PERMISSION_BOTH
+import com.android.permissioncontroller.permission.ui.model.v33.ReviewPermissionsViewModel.PermissionTarget.PERMISSION_FOREGROUND
+import com.android.permissioncontroller.permission.ui.model.v33.ReviewPermissionsViewModel.SummaryMessage
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.settingslib.RestrictedLockUtils
 import org.junit.After
