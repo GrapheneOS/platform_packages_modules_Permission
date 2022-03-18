@@ -654,8 +654,12 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
         for (String permission : permissions) {
             AppPermissionGroup group = AppPermissionGroup.create(this, packageInfo, permission,
                     true);
-            if (group != null && group.isOneTime()) {
-                groups.add(group);
+            if (group != null) {
+                AppPermissionGroup bgGroup = group.getBackgroundPermissions();
+                boolean isBgGroupOneTime = bgGroup != null && bgGroup.isOneTime();
+                if (group.isOneTime() || isBgGroupOneTime) {
+                    groups.add(group);
+                }
             }
         }
         long requestId = Utils.getValidSessionId();
@@ -759,7 +763,7 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
     }
 
     @Override
-    public void onRevokeOwnPermissionsOnKill(@NonNull String packageName,
+    public void onRevokeSelfPermissionsOnKill(@NonNull String packageName,
             @NonNull List<String> permissions, @NonNull Runnable callback) {
         PackageInfo pkgInfo = getPkgInfo(packageName);
         if (pkgInfo == null) {
@@ -771,18 +775,17 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
         for (String permName : permissions) {
             AppPermissionGroup group = app.getGroupForPermission(permName);
             if (group == null) {
-                throw new SecurityException("Cannot revoke permission " + permName + " for package "
-                        + packageName + " since " + permName + " does not belong to a permission "
-                        + "group");
+                throw new IllegalArgumentException("Cannot revoke permission " + permName
+                        + " for package " + packageName + " since " + permName
+                        + " does not belong to a permission group");
+            }
+            if (!group.doesSupportRuntimePermissions()) {
+                throw new IllegalArgumentException("Cannot revoke permission " + permName
+                        + " for package " + packageName + " since it is not a runtime permission");
             }
             Permission perm = group.getPermission(permName);
             if (!perm.isGranted()) {
-                throw new SecurityException("Cannot revoke permission " + permName + " for package "
-                        + packageName + " since " + packageName + " does not hold it");
-            }
-            if (!group.doesSupportRuntimePermissions()) {
-                throw new SecurityException("Cannot revoke permission " + permName + " for package "
-                        + packageName + " since it is not a runtime permission");
+                continue;
             }
             perm.setOneTime(true);
             groups.add(group);

@@ -138,8 +138,8 @@ class SafetyCenterManagerTest {
             )
             .build()
     private val listener = object : OnSafetyCenterDataChangedListener {
-        private val dataChannel = Channel<SafetyCenterData>()
-        private val errorChannel = Channel<SafetyCenterErrorDetails>()
+        private val dataChannel = Channel<SafetyCenterData>(Channel.Factory.BUFFERED)
+        private val errorChannel = Channel<SafetyCenterErrorDetails>(Channel.Factory.BUFFERED)
 
         override fun onSafetyCenterDataChanged(data: SafetyCenterData) {
             runBlockingWithTimeout { dataChannel.send(data) }
@@ -306,6 +306,8 @@ class SafetyCenterManagerTest {
             directExecutor(),
             listener
         )
+        // Receive initial data.
+        listener.receiveSafetyCenterData()
 
         safetyCenterManager.reportSafetySourceErrorWithPermission(
             CTS_SOURCE_ID,
