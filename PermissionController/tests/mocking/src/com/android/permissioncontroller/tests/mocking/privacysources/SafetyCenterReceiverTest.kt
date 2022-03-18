@@ -18,6 +18,7 @@ package com.android.permissioncontroller.tests.mocking.privacysources
 
 import android.content.Intent
 import android.content.Intent.ACTION_BOOT_COMPLETED
+import android.content.pm.PackageManager
 import android.os.Build
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyCenterManager.ACTION_REFRESH_SAFETY_SOURCES
@@ -70,6 +71,8 @@ class SafetyCenterReceiverTest {
     @Mock
     lateinit var mockSafetyCenterManager: SafetyCenterManager
     @Mock
+    lateinit var mockPackageManager: PackageManager
+    @Mock
     lateinit var mockPrivacySource: PrivacySource
     @Mock
     lateinit var mockPrivacySource2: PrivacySource
@@ -94,6 +97,7 @@ class SafetyCenterReceiverTest {
         whenever(application.applicationContext).thenReturn(application)
         whenever(application.getSystemService(SafetyCenterManager::class.java))
             .thenReturn(mockSafetyCenterManager)
+        whenever(application.packageManager).thenReturn(mockPackageManager)
         whenever(mockSafetyCenterManager.isSafetyCenterEnabled).thenReturn(true)
 
         safetyCenterReceiver = SafetyCenterReceiver(::privacySourceMap, testCoroutineDispatcher)
