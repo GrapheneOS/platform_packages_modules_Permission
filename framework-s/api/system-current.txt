@@ -215,6 +215,7 @@ package android.safetycenter {
     method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void setSafetyCenterConfigOverride(@NonNull android.safetycenter.config.SafetyCenterConfig);
     method @RequiresPermission(android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE) public void setSafetySourceData(@NonNull String, @Nullable android.safetycenter.SafetySourceData, @NonNull android.safetycenter.SafetyEvent);
     field public static final String ACTION_REFRESH_SAFETY_SOURCES = "android.safetycenter.action.REFRESH_SAFETY_SOURCES";
+    field public static final String ACTION_SAFETY_CENTER_ENABLED_CHANGED = "android.safetycenter.action.SAFETY_CENTER_ENABLED_CHANGED";
     field public static final int EXTRA_REFRESH_REQUEST_TYPE_FETCH_FRESH_DATA = 0; // 0x0
     field public static final int EXTRA_REFRESH_REQUEST_TYPE_GET_DATA = 1; // 0x1
     field public static final String EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID = "android.safetycenter.extra.REFRESH_SAFETY_SOURCES_BROADCAST_ID";
