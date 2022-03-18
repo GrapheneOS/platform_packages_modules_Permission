@@ -74,8 +74,6 @@ final class SafetyCenterConfigParser {
     private static final String ATTR_SAFETY_SOURCE_LOGGING_ALLOWED = "loggingAllowed";
     private static final String ATTR_SAFETY_SOURCE_REFRESH_ON_PAGE_OPEN_ALLOWED =
             "refreshOnPageOpenAllowed";
-    private static final String ATTR_SAFETY_SOURCE_AUTOMATIC_NOTIFICATION_FROM_ISSUE_ALLOWED =
-            "automaticNotificationFromIssueAllowed";
 
     private static final String ENUM_STATELESS_ICON_TYPE_NONE = "none";
     private static final String ENUM_STATELESS_ICON_TYPE_PRIVACY = "privacy";
@@ -240,11 +238,6 @@ final class SafetyCenterConfigParser {
                     break;
                 case ATTR_SAFETY_SOURCE_REFRESH_ON_PAGE_OPEN_ALLOWED:
                     builder.setRefreshOnPageOpenAllowed(
-                            parseBoolean(parser.getAttributeValue(i), name,
-                                    parser.getAttributeName(i)));
-                    break;
-                case ATTR_SAFETY_SOURCE_AUTOMATIC_NOTIFICATION_FROM_ISSUE_ALLOWED:
-                    builder.setAutomaticNotificationFromIssueAllowed(
                             parseBoolean(parser.getAttributeValue(i), name,
                                     parser.getAttributeName(i)));
                     break;

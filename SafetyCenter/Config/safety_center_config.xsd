@@ -72,7 +72,6 @@
         <xsd:attribute name="broadcastReceiverClassName" type="xsd:string"/>
         <xsd:attribute name="loggingAllowed" type="xsd:boolean" default="true"/>
         <xsd:attribute name="refreshOnPageOpenAllowed" type="xsd:boolean" default="false"/>
-        <xsd:attribute name="automaticNotificationFromIssueAllowed" type="xsd:boolean" default="false"/>
     </xsd:complexType>
 
     <xsd:complexType name="issue-only-safety-source">
@@ -84,7 +83,6 @@
         <xsd:attribute name="broadcastReceiverClassName" type="xsd:string"/>
         <xsd:attribute name="loggingAllowed" type="xsd:boolean" default="true"/>
         <xsd:attribute name="refreshOnPageOpenAllowed" type="xsd:boolean" default="false"/>
-        <xsd:attribute name="automaticNotificationFromIssueAllowed" type="xsd:boolean" default="false"/>
     </xsd:complexType>
 
     <xsd:complexType name="static-safety-source">
