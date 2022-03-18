@@ -456,7 +456,6 @@ package android.safetycenter.config {
     method @StringRes public int getTitleForWorkResId();
     method @StringRes public int getTitleResId();
     method public int getType();
-    method public boolean isAutomaticNotificationFromIssueAllowed();
     method public boolean isLoggingAllowed();
     method public boolean isRefreshOnPageOpenAllowed();
     method public void writeToParcel(@NonNull android.os.Parcel, int);
@@ -475,7 +474,6 @@ package android.safetycenter.config {
   public static final class SafetySource.Builder {
     ctor public SafetySource.Builder(int);
     method @NonNull public android.safetycenter.config.SafetySource build();
-    method @NonNull public android.safetycenter.config.SafetySource.Builder setAutomaticNotificationFromIssueAllowed(boolean);
     method @NonNull public android.safetycenter.config.SafetySource.Builder setBroadcastReceiverClassName(@Nullable String);
     method @NonNull public android.safetycenter.config.SafetySource.Builder setId(@Nullable String);
     method @NonNull public android.safetycenter.config.SafetySource.Builder setInitialDisplayState(int);
