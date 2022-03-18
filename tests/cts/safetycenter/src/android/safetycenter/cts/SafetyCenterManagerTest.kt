@@ -51,6 +51,7 @@ import android.safetycenter.testing.SafetySourceBroadcastReceiver
 import android.safetycenter.testing.addOnSafetyCenterDataChangedListenerWithPermission
 import android.safetycenter.testing.clearAllSafetySourceDataWithPermission
 import android.safetycenter.testing.clearSafetyCenterConfigOverrideWithPermission
+import android.safetycenter.testing.getSafetyCenterConfigWithPermission
 import android.safetycenter.testing.getSafetyCenterDataWithPermission
 import android.safetycenter.testing.getSafetySourceDataWithPermission
 import android.safetycenter.testing.isSafetyCenterEnabledWithPermission
@@ -403,6 +404,19 @@ class SafetyCenterManagerTest {
         assertFailsWith(SecurityException::class) {
             safetyCenterManager.refreshSafetySources(REFRESH_REASON_RESCAN_BUTTON_CLICK)
         }
+    }
+
+    @Test
+    fun getSafetyCenterConfig_isNotNull() {
+        val config = safetyCenterManager.getSafetyCenterConfigWithPermission()
+
+        // TODO(b/225152057): Assert on content.
+        assertThat(config).isNotNull()
+    }
+
+    @Test
+    fun getSafetyCenterConfig_withoutPermission_throwsSecurityException() {
+        assertFailsWith(SecurityException::class) { safetyCenterManager.safetyCenterConfig }
     }
 
     @Test

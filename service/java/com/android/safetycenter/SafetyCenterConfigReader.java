@@ -59,9 +59,33 @@ final class SafetyCenterConfigReader {
     @Nullable
     private Config mConfigOverride;
 
+    // TODO(b/225173694): move SafetyCenterConfig field into Config class to avoid duplicate fields.
+    @Nullable
+    private SafetyCenterConfig mSafetyCenterConfigFromXml;
+
+    @Nullable
+    private SafetyCenterConfig mSafetyCenterConfigOverride;
+
     /** Creates a {@link SafetyCenterConfigReader} from a {@link SafetyCenterResourcesContext}. */
     SafetyCenterConfigReader(@NonNull SafetyCenterResourcesContext safetyCenterResourcesContext) {
         mSafetyCenterResourcesContext = safetyCenterResourcesContext;
+    }
+
+    /**
+     * Returns the {@link SafetyCenterConfig} currently active for configuring safety sources for
+     * the {@link android.safetycenter.SafetyCenterManager} APIs.
+     */
+    @Nullable
+    SafetyCenterConfig getSafetyCenterConfig() {
+        if (mSafetyCenterConfigFromXml == null) {
+            return null;
+        }
+
+        if (mSafetyCenterConfigOverride != null) {
+            return mSafetyCenterConfigOverride;
+        }
+
+        return mSafetyCenterConfigFromXml;
     }
 
     /**
@@ -94,6 +118,7 @@ final class SafetyCenterConfigReader {
         if (safetyCenterConfig == null) {
             return false;
         }
+        mSafetyCenterConfigFromXml = safetyCenterConfig;
         mConfigFromXml = Config.from(safetyCenterConfig);
         return true;
     }
@@ -109,6 +134,7 @@ final class SafetyCenterConfigReader {
      * using {@link #clearConfigOverride()}.
      */
     void setConfigOverride(@NonNull SafetyCenterConfig safetyCenterConfig) {
+        mSafetyCenterConfigOverride = safetyCenterConfig;
         mConfigOverride = Config.from(safetyCenterConfig);
     }
 
@@ -119,6 +145,7 @@ final class SafetyCenterConfigReader {
      * @see #setConfigOverride
      */
     void clearConfigOverride() {
+        mSafetyCenterConfigOverride = null;
         mConfigOverride = null;
     }
 
@@ -140,6 +167,7 @@ final class SafetyCenterConfigReader {
         }
     }
 
+    // TODO(b/225173694): Rename to SafetyCenterConfigInternal or ConfigInternal?
     /** A wrapper class around the parsed XML config. */
     static final class Config {
 
