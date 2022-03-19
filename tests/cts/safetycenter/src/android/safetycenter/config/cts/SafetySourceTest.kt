@@ -212,24 +212,6 @@ class SafetySourceTest {
     }
 
     @Test
-    fun getBroadcastReceiverClassName_returnsBroadcastReceiverClassNameOrThrows() {
-        assertThat(DYNAMIC_BAREBONE.broadcastReceiverClassName).isNull()
-        assertThat(DYNAMIC_ALL_OPTIONAL.broadcastReceiverClassName)
-            .isEqualTo(BROADCAST_RECEIVER_CLASS_NAME)
-        assertThat(DYNAMIC_DISABLED.broadcastReceiverClassName).isNull()
-        assertThat(DYNAMIC_HIDDEN.broadcastReceiverClassName).isNull()
-        assertThrows(UnsupportedOperationException::class.java) {
-            STATIC_BAREBONE.broadcastReceiverClassName
-        }
-        assertThrows(UnsupportedOperationException::class.java) {
-            STATIC_ALL_OPTIONAL.broadcastReceiverClassName
-        }
-        assertThat(ISSUE_ONLY_BAREBONE.broadcastReceiverClassName).isNull()
-        assertThat(ISSUE_ONLY_ALL_OPTIONAL.broadcastReceiverClassName)
-            .isEqualTo(BROADCAST_RECEIVER_CLASS_NAME)
-    }
-
-    @Test
     fun isLoggingAllowed_returnsLoggingAllowedOrThrows() {
         assertThat(DYNAMIC_BAREBONE.isLoggingAllowed).isEqualTo(true)
         assertThat(DYNAMIC_ALL_OPTIONAL.isLoggingAllowed).isEqualTo(false)
@@ -326,7 +308,6 @@ class SafetySourceTest {
             .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
             .setMaxSeverityLevel(MAX_SEVERITY_LEVEL)
             .setSearchTermsResId(REFERENCE_RES_ID)
-            .setBroadcastReceiverClassName(BROADCAST_RECEIVER_CLASS_NAME)
             .setLoggingAllowed(false)
             .setRefreshOnPageOpenAllowed(true)
             .build()
@@ -359,7 +340,6 @@ class SafetySourceTest {
             .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
             .setMaxSeverityLevel(MAX_SEVERITY_LEVEL)
             .setSearchTermsResId(REFERENCE_RES_ID)
-            .setBroadcastReceiverClassName(BROADCAST_RECEIVER_CLASS_NAME)
             .setLoggingAllowed(false)
             .setRefreshOnPageOpenAllowed(true)
             .build()
@@ -379,7 +359,6 @@ class SafetySourceTest {
             .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
             .setMaxSeverityLevel(MAX_SEVERITY_LEVEL)
             .setSearchTermsResId(REFERENCE_RES_ID)
-            .setBroadcastReceiverClassName(BROADCAST_RECEIVER_CLASS_NAME)
             .setLoggingAllowed(false)
             .setRefreshOnPageOpenAllowed(true)
             .build()
@@ -399,7 +378,6 @@ class SafetySourceTest {
             .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
             .setMaxSeverityLevel(MAX_SEVERITY_LEVEL)
             .setSearchTermsResId(REFERENCE_RES_ID)
-            .setBroadcastReceiverClassName(BROADCAST_RECEIVER_CLASS_NAME)
             .setLoggingAllowed(false)
             .setRefreshOnPageOpenAllowed(true)
             .build()
@@ -419,7 +397,6 @@ class SafetySourceTest {
             .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
             .setMaxSeverityLevel(MAX_SEVERITY_LEVEL)
             .setSearchTermsResId(REFERENCE_RES_ID)
-            .setBroadcastReceiverClassName(BROADCAST_RECEIVER_CLASS_NAME)
             .setLoggingAllowed(false)
             .setRefreshOnPageOpenAllowed(true)
             .build()
@@ -439,7 +416,6 @@ class SafetySourceTest {
             .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
             .setMaxSeverityLevel(MAX_SEVERITY_LEVEL)
             .setSearchTermsResId(REFERENCE_RES_ID)
-            .setBroadcastReceiverClassName(BROADCAST_RECEIVER_CLASS_NAME)
             .setLoggingAllowed(false)
             .setRefreshOnPageOpenAllowed(true)
             .build()
@@ -459,7 +435,6 @@ class SafetySourceTest {
             .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
             .setMaxSeverityLevel(MAX_SEVERITY_LEVEL)
             .setSearchTermsResId(REFERENCE_RES_ID)
-            .setBroadcastReceiverClassName(BROADCAST_RECEIVER_CLASS_NAME)
             .setLoggingAllowed(false)
             .setRefreshOnPageOpenAllowed(true)
             .build()
@@ -490,7 +465,6 @@ class SafetySourceTest {
             .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_ENABLED)
             .setMaxSeverityLevel(MAX_SEVERITY_LEVEL)
             .setSearchTermsResId(REFERENCE_RES_ID)
-            .setBroadcastReceiverClassName(BROADCAST_RECEIVER_CLASS_NAME)
             .setLoggingAllowed(false)
             .setRefreshOnPageOpenAllowed(true)
             .build()
@@ -510,7 +484,6 @@ class SafetySourceTest {
             .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
             .setMaxSeverityLevel(-1)
             .setSearchTermsResId(REFERENCE_RES_ID)
-            .setBroadcastReceiverClassName(BROADCAST_RECEIVER_CLASS_NAME)
             .setLoggingAllowed(false)
             .setRefreshOnPageOpenAllowed(true)
             .build()
@@ -530,27 +503,6 @@ class SafetySourceTest {
             .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
             .setMaxSeverityLevel(MAX_SEVERITY_LEVEL)
             .setSearchTermsResId(-1)
-            .setBroadcastReceiverClassName(BROADCAST_RECEIVER_CLASS_NAME)
-            .setLoggingAllowed(false)
-            .setRefreshOnPageOpenAllowed(true)
-            .build()
-        AnyTester.assertThatRepresentationsAreNotEqual(DYNAMIC_ALL_OPTIONAL, dynamicAllOptionalAlt)
-    }
-
-    @Test
-    fun hashCode_equals_toString_withDifferentBroadcastReceiverClassNames_areNotEqual() {
-        val dynamicAllOptionalAlt = SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
-            .setId(DYNAMIC_ALL_OPTIONAL_ID)
-            .setPackageName(PACKAGE_NAME)
-            .setTitleResId(REFERENCE_RES_ID)
-            .setTitleForWorkResId(REFERENCE_RES_ID)
-            .setSummaryResId(REFERENCE_RES_ID)
-            .setIntentAction(INTENT_ACTION)
-            .setProfile(SafetySource.PROFILE_ALL)
-            .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
-            .setMaxSeverityLevel(MAX_SEVERITY_LEVEL)
-            .setSearchTermsResId(REFERENCE_RES_ID)
-            .setBroadcastReceiverClassName("other")
             .setLoggingAllowed(false)
             .setRefreshOnPageOpenAllowed(true)
             .build()
@@ -570,7 +522,6 @@ class SafetySourceTest {
             .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
             .setMaxSeverityLevel(MAX_SEVERITY_LEVEL)
             .setSearchTermsResId(REFERENCE_RES_ID)
-            .setBroadcastReceiverClassName(BROADCAST_RECEIVER_CLASS_NAME)
             .setLoggingAllowed(true)
             .setRefreshOnPageOpenAllowed(true)
             .build()
@@ -590,7 +541,6 @@ class SafetySourceTest {
             .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
             .setMaxSeverityLevel(MAX_SEVERITY_LEVEL)
             .setSearchTermsResId(REFERENCE_RES_ID)
-            .setBroadcastReceiverClassName(BROADCAST_RECEIVER_CLASS_NAME)
             .setLoggingAllowed(false)
             .setRefreshOnPageOpenAllowed(false)
             .build()
@@ -601,7 +551,6 @@ class SafetySourceTest {
         private const val PACKAGE_NAME = "package"
         private const val REFERENCE_RES_ID = 9999
         private const val INTENT_ACTION = "intent"
-        private const val BROADCAST_RECEIVER_CLASS_NAME = "broadcast"
         private const val MAX_SEVERITY_LEVEL = 300
 
         private const val DYNAMIC_BAREBONE_ID = "dynamic_barebone"
@@ -635,7 +584,6 @@ class SafetySourceTest {
                 .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_DISABLED)
                 .setMaxSeverityLevel(MAX_SEVERITY_LEVEL)
                 .setSearchTermsResId(REFERENCE_RES_ID)
-                .setBroadcastReceiverClassName(BROADCAST_RECEIVER_CLASS_NAME)
                 .setLoggingAllowed(false)
                 .setRefreshOnPageOpenAllowed(true)
                 .build()
@@ -691,7 +639,6 @@ class SafetySourceTest {
                 .setPackageName(PACKAGE_NAME)
                 .setProfile(SafetySource.PROFILE_ALL)
                 .setMaxSeverityLevel(MAX_SEVERITY_LEVEL)
-                .setBroadcastReceiverClassName(BROADCAST_RECEIVER_CLASS_NAME)
                 .setLoggingAllowed(false)
                 .setRefreshOnPageOpenAllowed(true)
                 .build()

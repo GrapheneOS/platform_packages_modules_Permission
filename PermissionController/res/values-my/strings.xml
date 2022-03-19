@@ -264,8 +264,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"မောင်းနှင်နေစဉ် <xliff:g id="APP">%1$s</xliff:g> ကို <xliff:g id="PERMISSION_1">%2$s</xliff:g> နှင့် <xliff:g id="PERMISSION_2">%3$s</xliff:g> သုံးခွင့်ပေးထားသည်"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"မောင်းနှင်နေစဉ် <xliff:g id="APP">%2$s</xliff:g> ကို ခွင့်ပြုချက် <xliff:g id="COUNT">%1$d</xliff:g> ခု ပေးထားသည်"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{မောင်းနှင်နေစဉ် <xliff:g id="APP_0">%1$s</xliff:g> နှင့် အခြားအက်ပ် # ခုကို သုံးခွင့်ပေးထားသည်}other{မောင်းနှင်နေစဉ် <xliff:g id="APP_1">%1$s</xliff:g> နှင့် အခြားအက်ပ် # ခုကို သုံးခွင့်ပေးထားသည်}}"</string>
-    <!-- no translation found for go_to_settings (1053735612211228335) -->
-    <skip />
+    <string name="go_to_settings" msgid="1053735612211228335">"ဆက်တင်များသို့သွားရန်"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"အက်ပ်အချို့ကို အသုံးမပြုသည်မှာ လအနည်းငယ် ရှိပါပြီ"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"ခွင့်ပြုချက် ဖယ်ထားသည်များ"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"ခွင့်ပြုချက် ဖယ်ထားသည်များ"</string>
@@ -468,10 +467,13 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သင်၏ခေါ်ဆိုထားသော မှတ်တမ်းများကို သုံးခွင့်ပေးလိုပါသလား။"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ကို ဖုန်းခေါ်ဆိုမှုများ ပြုလုပ်ခွင့်နှင့် စီမံခွင့်ပေးလိုပါသလား။"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သင်၏ အရေးကြီးသော ကျန်းမာရေးလက္ခဏာဆိုင်ရာ အာရုံခံကိရိယာဒေတာ သုံးခွင့်ပေးလိုပါသလား။"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="5239219356063824373">"ဤအက်ပ်သည် သင်၏ အရေးကြီးသောလက္ခဏာ အာရုံခံစနစ်ဒေတာကို အက်ပ်အသုံးမပြုနေလျှင်ပင် အချိန်ပြည့်သုံးခွင့် ရယူလိုပါသည်။ "<annotation id="link">"ဆက်တင်များတွင် ခွင့်ပြုနိုင်သည်။"</annotation></string>
+    <!-- no translation found for permgroupupgraderequestdetail_sensors (3851603883489664284) -->
+    <skip />
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သင်၏ အရေးကြီးသောလက္ခဏာ အာရုံခံစနစ် ဒေတာကို သုံးခွင့်ပေးလိုပါသလား။"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"ဤအက်ပ်သည် သင်၏ အရေးကြီးသောလက္ခဏာ အာရုံခံစနစ်ဒေတာကို အက်ပ်အသုံးမပြုနေလျှင်ပင် အချိန်ပြည့်သုံးခွင့် ရယူလိုပါသည်။ "<annotation id="link">"ဆက်တင်များတွင် ခွင့်ပြုနိုင်သည်။"</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အတွက် အရေးကြီးသောလက္ခဏာ အာရုံခံစနစ် ဒေတာသုံးခွင့်ကို ပြောင်းလိုပါသလား။"</string>
+    <!-- no translation found for permgroupbackgroundrequestdetail_sensors (7649389834182449783) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequest_sensors (7576527638411370468) -->
+    <skip />
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ကို သင့်ထံ အကြောင်းကြားချက်များ ပို့ခွင့်ပြုမလား။"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ကို သင့်ထံ အကြောင်းကြားချက်များ ဆက်ပို့ခွင့်ပြုမလား။"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"ထိန်းချုပ်ထားသော ခွင့်ပြုချက်များ"</string>

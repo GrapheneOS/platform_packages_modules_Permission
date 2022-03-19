@@ -264,8 +264,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"ನೀವು ವಾಹನ ಚಲಾಯಿಸುವಾಗ, <xliff:g id="APP">%1$s</xliff:g> ಗೆ <xliff:g id="PERMISSION_1">%2$s</xliff:g> ಮತ್ತು <xliff:g id="PERMISSION_2">%3$s</xliff:g> ಪ್ರವೇಶವನ್ನು ನೀಡಿದ್ದೀರಿ"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"ನೀವು ವಾಹನ ಚಲಾಯಿಸುವಾಗ, <xliff:g id="APP">%2$s</xliff:g> ಗೆ <xliff:g id="COUNT">%1$d</xliff:g> ಅನುಮತಿಗಳನ್ನು ನೀಡಿದ್ದೀರಿ"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{ನೀವು ವಾಹನ ಚಲಾಯಿಸುವಾಗ, <xliff:g id="APP_0">%1$s</xliff:g> ಮತ್ತು # ಇತರ ಆ್ಯಪ್‌ಗೆ ಪ್ರವೇಶವನ್ನು ನೀಡಿದ್ದೀರಿ}one{ನೀವು ವಾಹನ ಚಲಾಯಿಸುವಾಗ, <xliff:g id="APP_1">%1$s</xliff:g> ಮತ್ತು # ಇತರ ಆ್ಯಪ್‌ಗಳಿಗೆ ಪ್ರವೇಶವನ್ನು ನೀಡಿದ್ದೀರಿ}other{ನೀವು ವಾಹನ ಚಲಾಯಿಸುವಾಗ, <xliff:g id="APP_1">%1$s</xliff:g> ಮತ್ತು # ಇತರ ಆ್ಯಪ್‌ಗಳಿಗೆ ಪ್ರವೇಶವನ್ನು ನೀಡಿದ್ದೀರಿ}}"</string>
-    <!-- no translation found for go_to_settings (1053735612211228335) -->
-    <skip />
+    <string name="go_to_settings" msgid="1053735612211228335">"ಸೆಟ್ಟಿಂಗ್‌ಗಳಿಗೆ ಹೋಗಿ"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"ಹಲವಾರು ತಿಂಗಳುಗಳಿಂದ ಕೆಲವು ಆ್ಯಪ್‌ಗಳನ್ನು ಬಳಸಲಾಗಿಲ್ಲ"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"ತೆಗೆದುಹಾಕಲಾದ ಅನುಮತಿಗಳು"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"ಅನುಮತಿಗಳನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ"</string>
@@ -468,10 +467,10 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"ನಿಮ್ಮ ಫೋನ್‌ ಕರೆಯ ಲಾಗ್‌ಗಳಿಗೆ ಪ್ರವೇಶ ಪಡೆಯಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"ಫೋನ್ ಕರೆಗಳನ್ನು ಮಾಡಲು ಮತ್ತು ನಿರ್ವಹಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"ನಿಮ್ಮ ಮುಖ್ಯ ಲಕ್ಷಣಗಳ ಕುರಿತು ಸೆನ್ಸರ್ ಡೇಟಾವನ್ನು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="5239219356063824373">"ನೀವು ಈ ಆ್ಯಪ್ ಅನ್ನು ಬಳಸದಿರುವಾಗಲೂ ಸಹ ಯಾವಾಗಲೂ ನಿಮ್ಮ ಮುಖ್ಯ ಲಕ್ಷಣಗಳ ಕುರಿತ ಸೆನ್ಸರ್ ಡೇಟಾವನ್ನು ಹೊಂದಲು ಆ್ಯಪ್ ಬಯಸುತ್ತದೆ. "<annotation id="link">"ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಅನುಮತಿಸಿ."</annotation></string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="3851603883489664284">"ನೀವು ಆ್ಯಪ್ ಬಳಸದಿರುವಾಗಲೂ ಸಹ, ನಿಮ್ಮ ಆರೋಗ್ಯ ಮಾಪನಗಳ ಲಕ್ಷಣಗಳ ಕುರಿತು ಎಲ್ಲಾ ಸಮಯದಲ್ಲೂ ಸೆನ್ಸರ್ ಡೇಟಾವನ್ನು ಪ್ರವೇಶಿಸಲು ಈ ಆ್ಯಪ್ ಬಯಸುತ್ತದೆ. ಈ ಬದಲಾವಣೆಯನ್ನು ಮಾಡಲು, "<annotation id="link">"ಸೆಟ್ಟಿಂಗ್‌ಗಳಿಗೆ ಹೋಗಿ"</annotation>" ಅಥವಾ ಆ್ಯಪ್ ಬಳಕೆಯಲ್ಲಿರುವಾಗ ಮಾತ್ರ ಪ್ರವೇಶವನ್ನು ಇರಿಸಿಕೊಳ್ಳಿ."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"ನಿಮ್ಮ ಮುಖ್ಯ ಲಕ್ಷಣಗಳ ಕುರಿತ ಸೆನ್ಸರ್ ಡೇಟಾವನ್ನು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"ನೀವು ಈ ಆ್ಯಪ್ ಅನ್ನು ಬಳಸದಿರುವಾಗಲೂ ಸಹ ಯಾವಾಗಲೂ ನಿಮ್ಮ ಮುಖ್ಯ ಲಕ್ಷಣಗಳ ಕುರಿತ ಸೆನ್ಸರ್ ಡೇಟಾವನ್ನು ಹೊಂದಲು ಆ್ಯಪ್ ಬಯಸಬಹುದು. "<annotation id="link">"ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಅನುಮತಿಸಿ."</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"ನಿಮ್ಮ ಮುಖ್ಯ ಲಕ್ಷಣಗಳ ಕುರಿತ ಸೆನ್ಸರ್ ಡೇಟಾವನ್ನು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಬದಲಾಯಿಸಬೇಕೇ?"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"ನೀವು ಆ್ಯಪ್ ಅನ್ನು ಬಳಸದಿರುವಾಗಲೂ ಸಹ, ಎಲ್ಲಾ ಸಮಯದಲ್ಲೂ ದೇಹದ ಸೆನ್ಸರ್‌ ಡೇಟಾವನ್ನು ಪ್ರವೇಶಿಸಲು ಈ ಆ್ಯಪ್ ಅನ್ನು ಅನುಮತಿಸಲು, "<annotation id="link">"ಸೆಟ್ಟಿಂಗ್‌ಗಳಿಗೆ ಹೋಗಿ."</annotation></string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ಆ್ಯಪ್ ಬಳಕೆಯಲ್ಲಿರುವಾಗ ದೇಹದ ಸೆನ್ಸರ್‌ ಡೇಟಾವನ್ನು ಪ್ರವೇಶಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸುತ್ತಿರಬೇಕೇ?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"ನಿಮಗೆ ಅಧಿಸೂಚನೆಗಳನ್ನು ಕಳುಹಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"ನಿಮಗೆ ಅಧಿಸೂಚನೆಗಳು ಕಳುಹಿಸುವುದನ್ನು ಮುಂದುವರಿಸಲು &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ಗೆ ಅನುಮತಿಸಬೇಕೇ?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"ನಿಯಂತ್ರಿತ ಅನುಮತಿಗಳು"</string>

@@ -264,8 +264,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"คุณอนุญาตให้ <xliff:g id="APP">%1$s</xliff:g> เข้าถึง<xliff:g id="PERMISSION_1">%2$s</xliff:g>และ<xliff:g id="PERMISSION_2">%3$s</xliff:g>ในขณะขับรถ"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"คุณให้สิทธิ์ <xliff:g id="COUNT">%1$d</xliff:g> รายการแก่ <xliff:g id="APP">%2$s</xliff:g> ในขณะขับรถ"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{คุณอนุญาตให้ <xliff:g id="APP_0">%1$s</xliff:g> และแอปอื่นอีก # แอปเข้าถึงได้ในขณะขับรถ}other{คุณอนุญาตให้ <xliff:g id="APP_1">%1$s</xliff:g> และแอปอื่นอีก # แอปเข้าถึงได้ในขณะขับรถ}}"</string>
-    <!-- no translation found for go_to_settings (1053735612211228335) -->
-    <skip />
+    <string name="go_to_settings" msgid="1053735612211228335">"ไปที่การตั้งค่า"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"บางแอปไม่มีการใช้งานมา 2-3 เดือนแล้ว"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"นำสิทธิ์ออกแล้ว"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"นำสิทธิ์ออกแล้ว"</string>
@@ -468,10 +467,10 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึงบันทึกการโทรในโทรศัพท์ไหม"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; โทรและจัดการการโทรไหม"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึงข้อมูลเซ็นเซอร์เกี่ยวกับสัญญาณชีพไหม"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="5239219356063824373">"แอปนี้ต้องการเข้าถึงข้อมูลเซ็นเซอร์เกี่ยวกับสัญญาณชีพตลอดเวลา แม้ว่าคุณไม่ได้ใช้แอปก็ตาม "<annotation id="link">"อนุญาตในการตั้งค่า"</annotation></string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="3851603883489664284">"แอปนี้ต้องการเข้าถึงข้อมูลเซ็นเซอร์เกี่ยวกับสัญญาณชีพตลอดเวลา แม้ว่าคุณจะไม่ได้ใช้แอปอยู่ก็ตาม หากจะอนุญาตตามนี้ ให้"<annotation id="link">"ไปที่การตั้งค่า"</annotation>" หรือคงการตั้งค่าไว้โดยให้เข้าถึงได้เฉพาะขณะที่ใช้แอปอยู่เท่านั้น"</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึงข้อมูลเซ็นเซอร์เกี่ยวกับสัญญาณชีพไหม"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"แอปนี้อาจต้องการเข้าถึงข้อมูลเซ็นเซอร์เกี่ยวกับสัญญาณชีพตลอดเวลา แม้ว่าคุณไม่ได้ใช้แอปก็ตาม "<annotation id="link">"อนุญาตในการตั้งค่า"</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"เปลี่ยนแปลงสิทธิ์เข้าถึงข้อมูลเซ็นเซอร์เกี่ยวกับสัญญาณชีพสำหรับ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ไหม"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"หากต้องการให้แอปนี้เข้าถึงข้อมูลเซ็นเซอร์ร่างกายได้ทุกเมื่อ แม้ว่าคุณจะไม่ได้ใช้งานแอปอยู่ ให้"<annotation id="link">"ไปที่การตั้งค่า"</annotation></string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึงข้อมูลเซ็นเซอร์ร่างกายได้ตลอดขณะใช้งานแอปไหม"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ส่งการแจ้งเตือนถึงคุณไหม"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ส่งการแจ้งเตือนถึงคุณต่อไปไหม"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"สิทธิ์ที่มีการควบคุม"</string>

@@ -264,8 +264,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Andsite sõidu ajal rakendusele <xliff:g id="APP">%1$s</xliff:g> juurdepääsu lubadele <xliff:g id="PERMISSION_1">%2$s</xliff:g> ja <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Andsite sõidu ajal rakendusele <xliff:g id="APP">%2$s</xliff:g> <xliff:g id="COUNT">%1$d</xliff:g> luba"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Andsite sõidu ajal rakendusele <xliff:g id="APP_0">%1$s</xliff:g> ja veel # rakendusele juurdepääsu}other{Andsite sõidu ajal rakendusele <xliff:g id="APP_1">%1$s</xliff:g> ja veel # rakendusele juurdepääsu}}"</string>
-    <!-- no translation found for go_to_settings (1053735612211228335) -->
-    <skip />
+    <string name="go_to_settings" msgid="1053735612211228335">"Ava seaded"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Mõningaid rakendusi ei ole mõne kuu jooksul kasutatud"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Eemaldatud load"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Eemaldatud load"</string>
@@ -468,10 +467,10 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pääseda juurde teie telefoni kõnelogidele?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; teha ja hallata telefonikõnesid?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; juurdepääs anduri andmetele teie eluliste näitajate kohta?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="5239219356063824373">"See rakendus soovib pidevat juurdepääsu anduri andmetele teie eluliste näitajate kohta, isegi kui te rakendust ei kasuta. "<annotation id="link">"Lubage see seadetes."</annotation></string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="3851603883489664284">"See rakendus soovib pidevat juurdepääsu teie elulistele näitajatele (ka siis, kui te rakendust ei kasuta). Selle muudatuse tegemiseks "<annotation id="link">"avage seaded"</annotation>" või säilitage juurdepääs ainult ajaks, kui rakendust kasutatakse."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; juurdepääs anduri andmetele teie eluliste näitajate kohta?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"See rakendus võib soovida pidevat juurdepääsu anduri andmetele teie eluliste näitajate kohta, isegi kui te rakendust ei kasuta. "<annotation id="link">"Lubage see seadetes."</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Kas muuta rakenduse &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; jaoks juurdepääsu anduri andmetele teie eluliste näitajate kohta?"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Selleks et anda rakendusele pidev juurdepääs kehaanduri andmetele (ka siis, kui rakendust ei kasutata), "<annotation id="link">"avage seaded."</annotation></string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Kas lubada jätkuvalt rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pääseda juurde kehaanduri andmetele, kui rakendust kasutatakse?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; teile märguandeid saata?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; teile jätkuvalt märguandeid saata?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Hallatud load"</string>

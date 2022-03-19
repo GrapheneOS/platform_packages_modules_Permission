@@ -264,8 +264,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Під час руху ви надали додатку <xliff:g id="APP">%1$s</xliff:g> дозвіл на доступ до таких об’єктів: <xliff:g id="PERMISSION_1">%2$s</xliff:g> і <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Під час руху ви надали додатку <xliff:g id="APP">%2$s</xliff:g> стільки дозволів: <xliff:g id="COUNT">%1$d</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Під час руху ви надали дозвіл на доступ додатку <xliff:g id="APP_0">%1$s</xliff:g> і ще одному додатку}one{Під час руху ви надали дозвіл на доступ додатку <xliff:g id="APP_1">%1$s</xliff:g> і ще # додатку}few{Під час руху ви надали дозвіл на доступ додатку <xliff:g id="APP_1">%1$s</xliff:g> і ще # додаткам}many{Під час руху ви надали дозвіл на доступ додатку <xliff:g id="APP_1">%1$s</xliff:g> і ще # додаткам}other{Під час руху ви надали дозвіл на доступ додатку <xliff:g id="APP_1">%1$s</xliff:g> і ще # додатка}}"</string>
-    <!-- no translation found for go_to_settings (1053735612211228335) -->
-    <skip />
+    <string name="go_to_settings" msgid="1053735612211228335">"Перейти до налаштувань"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Деякі додатки не використовувалися кілька місяців"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Скасовані дозволи"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Дозволи скасовано"</string>
@@ -468,10 +467,13 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до журналів викликів телефона?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; здійснювати телефонні дзвінки та керувати ними?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Надати додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до життєвих показників із датчиків?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="5239219356063824373">"Цей додаток хоче постійно отримувати дані життєвих показників із датчиків, навіть коли ви не використовуєте його. "<annotation id="link">"Надайте дозвіл у налаштуваннях."</annotation></string>
+    <!-- no translation found for permgroupupgraderequestdetail_sensors (3851603883489664284) -->
+    <skip />
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до життєвих показників із датчиків?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Цей додаток може постійно отримувати дані життєвих показників із датчиків, навіть коли ви не використовуєте його. "<annotation id="link">"Надайте дозвіл у налаштуваннях."</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Змінити доступ до життєвих показників із датчиків для додатка &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <!-- no translation found for permgroupbackgroundrequestdetail_sensors (7649389834182449783) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequest_sensors (7576527638411370468) -->
+    <skip />
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; надсилати вам сповіщення?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; і надалі надсилати вам сповіщення?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Керовані дозволи"</string>

@@ -264,8 +264,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Trong khi lái xe, bạn đã cấp cho <xliff:g id="APP">%1$s</xliff:g> quyền truy cập vào <xliff:g id="PERMISSION_1">%2$s</xliff:g> và <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Trong khi lái xe, bạn đã cấp <xliff:g id="COUNT">%1$d</xliff:g> quyền cho <xliff:g id="APP">%2$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Trong khi lái xe, bạn đã cấp quyền truy cập cho <xliff:g id="APP_0">%1$s</xliff:g> và # ứng dụng khác}other{Trong khi lái xe, bạn đã cấp quyền truy cập cho <xliff:g id="APP_1">%1$s</xliff:g> và # ứng dụng khác}}"</string>
-    <!-- no translation found for go_to_settings (1053735612211228335) -->
-    <skip />
+    <string name="go_to_settings" msgid="1053735612211228335">"Chuyển đến phần Cài đặt"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Bạn không dùng một số ứng dụng trong vài tháng qua"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Các quyền bị xóa"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Các quyền đã thu hồi"</string>
@@ -468,10 +467,10 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào nhật ký cuộc gọi điện thoại của bạn?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; thực hiện và quản lý cuộc gọi điện thoại?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào dữ liệu cảm biến về các dấu hiệu sinh tồn của bạn?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="5239219356063824373">"Ứng dụng này muốn truy cập dữ liệu cảm biến về dấu hiệu sinh tồn của bạn mọi lúc, ngay cả khi bạn không dùng ứng dụng. "<annotation id="link">"Cho phép trong phần cài đặt."</annotation></string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="3851603883489664284">"Ứng dụng này muốn truy cập vào dữ liệu cảm biến về các dấu hiệu liên quan đến chỉ số sức khoẻ bất cứ lúc nào, ngay cả khi bạn không dùng ứng dụng. Để thay đổi, hãy "<annotation id="link">"chuyển đến phần cài đặt"</annotation>" hoặc chỉ duy trì quyền truy cập khi đang dùng ứng dụng."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào dữ liệu cảm biến về các dấu hiệu sinh tồn của bạn?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Ứng dụng này muốn truy cập dữ liệu cảm biến về dấu hiệu sinh tồn của bạn mọi lúc, ngay cả khi bạn không dùng ứng dụng. "<annotation id="link">"Cho phép trong phần cài đặt."</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Thay đổi quyền truy cập của &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; vào dữ liệu cảm biến về các dấu hiệu sinh tồn của bạn?"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Để cho phép ứng dụng này truy cập vào dữ liệu cảm biến cơ thể bất cứ lúc nào, ngay cả khi bạn không dùng ứng dụng, hãy "<annotation id="link">"chuyển đến phần cài đặt."</annotation></string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Luôn cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào dữ liệu cảm biến cơ thể trong khi đang dùng ứng dụng?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; gửi thông báo cho bạn?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tiếp tục gửi thông báo cho bạn?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Các quyền bị kiểm soát"</string>

@@ -19,6 +19,8 @@ package android.safetycenter.cts
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_SAFETY_CENTER
+import android.content.pm.PackageManager
+import android.content.pm.PackageManager.FEATURE_AUTOMOTIVE
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.testing.SafetyCenterFlags
@@ -39,6 +41,7 @@ import org.junit.runner.RunWith
 @SdkSuppress(minSdkVersion = TIRAMISU, codeName = "Tiramisu")
 class SafetyCenterUnsupportedTest {
     private val context: Context = getApplicationContext()
+    private val packageManager = context.getSystemService(PackageManager::class.java)!!
     private val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)!!
 
     @Before
@@ -48,6 +51,9 @@ class SafetyCenterUnsupportedTest {
 
     @Test
     fun launchActivity_showsSecurityTitle() {
+        // The security page redirects to the cars settings page on auto devices.
+        assumeFalse(packageManager.hasSystemFeature(FEATURE_AUTOMOTIVE))
+
         startSafetyCenterActivity()
 
         // CollapsingToolbar title can't be found by text, so using description instead.
