@@ -264,8 +264,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"您在行车期间向“<xliff:g id="APP">%1$s</xliff:g>”授予了<xliff:g id="PERMISSION_1">%2$s</xliff:g>和<xliff:g id="PERMISSION_2">%3$s</xliff:g>权限"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"您在行车期间向“<xliff:g id="APP">%2$s</xliff:g>”授予了 <xliff:g id="COUNT">%1$d</xliff:g> 项权限"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{您在行车期间向“<xliff:g id="APP_0">%1$s</xliff:g>”和另外 # 个应用授予了权限}other{您在行车期间向“<xliff:g id="APP_1">%1$s</xliff:g>”和另外 # 个应用授予了权限}}"</string>
-    <!-- no translation found for go_to_settings (1053735612211228335) -->
-    <skip />
+    <string name="go_to_settings" msgid="1053735612211228335">"转到“设置”"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"一些应用已连续几个月未使用过"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"已移除权限的应用"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"已移除权限的应用"</string>
@@ -468,10 +467,10 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问您的手机通话记录吗？"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"允许“&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;”拨打电话和管理通话吗？"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问与您的生命体征相关的传感器数据吗？"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="5239219356063824373">"此应用想要随时访问与您的生命体征相关的传感器数据（即使在您未使用此应用时）。"<annotation id="link">"您可以在“设置”中允许。"</annotation></string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="3851603883489664284">"此应用想要随时访问与您的生命体征相关的传感器数据（即使在您未使用此应用时）。如要更改此权限，请"<annotation id="link">"前往设置"</annotation>"或保留仅允许此应用在使用中时访问该数据。"</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问与您的生命体征相关的传感器数据吗？"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"此应用可能想要随时访问与您的生命体征相关的传感器数据（即使在您未使用此应用时）。"<annotation id="link">"您可以在“设置”中允许。"</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"要更改&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;对与您的生命体征相关的传感器数据的访问权限吗？"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"如要允许此应用始终可以访问身体传感器数据（即使在您未使用此应用时），请"<annotation id="link">"前往设置"</annotation>"。"</string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"始终允许“<xliff:g id="APP_NAME">%1$s</xliff:g>”在使用中时访问身体传感器数据？"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"允许 &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 向您发送通知吗？"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"允许 &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 继续向您发送通知吗？"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"受控权限"</string>
@@ -509,6 +508,8 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"移除相机权限"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"移除麦克风权限"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"管理服务"</string>
+    <!-- no translation found for manage_permissions_qs (3780541819763475434) -->
+    <skip />
     <string name="active_call_usage_qs" msgid="8559974395932523391">"通话正在使用"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"最近在通话中使用过"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"“<xliff:g id="APP_NAME">%1$s</xliff:g>”正在使用"</string>
