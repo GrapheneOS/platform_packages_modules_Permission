@@ -72,6 +72,9 @@ interface ISafetyCenterManager {
     /** Requests safety sources to set their latest SafetySourceData for Safety Center. */
     void refreshSafetySources(int refreshReason, int userId);
 
+    /** Returns the current SafetyCenterConfig, if available. */
+    SafetyCenterConfig getSafetyCenterConfig();
+
     /**
      * Returns the current SafetyCenterData, assembled from the SafetySourceData from all sources.
      */

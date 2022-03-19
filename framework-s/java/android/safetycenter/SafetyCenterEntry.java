@@ -139,7 +139,7 @@ public final class SafetyCenterEntry implements Parcelable {
     @SeverityUnspecifiedIconType
     private final int mSeverityUnspecifiedIconType;
     private final boolean mEnabled;
-    @NonNull
+    @Nullable
     private final PendingIntent mPendingIntent;
     @Nullable
     private final IconAction mIconAction;
@@ -151,7 +151,7 @@ public final class SafetyCenterEntry implements Parcelable {
             @EntrySeverityLevel int severityLevel,
             @SeverityUnspecifiedIconType int severityUnspecifiedIconType,
             boolean enabled,
-            @NonNull PendingIntent pendingIntent,
+            @Nullable PendingIntent pendingIntent,
             @Nullable IconAction iconAction) {
         mId = requireNonNull(id);
         mTitle = requireNonNull(title);
@@ -159,7 +159,7 @@ public final class SafetyCenterEntry implements Parcelable {
         mSeverityLevel = severityLevel;
         mSeverityUnspecifiedIconType = severityUnspecifiedIconType;
         mEnabled = enabled;
-        mPendingIntent = requireNonNull(pendingIntent);
+        mPendingIntent = pendingIntent;
         mIconAction = iconAction;
     }
 
@@ -201,8 +201,11 @@ public final class SafetyCenterEntry implements Parcelable {
         return mEnabled;
     }
 
-    /** Returns the {@link PendingIntent} to execute when this entry is selected. */
-    @NonNull
+    /**
+     * Returns the optional {@link PendingIntent} to execute when this entry is selected if present,
+     * or {@code null} otherwise.
+     */
+    @Nullable
     public PendingIntent getPendingIntent() {
         return mPendingIntent;
     }
@@ -380,10 +383,10 @@ public final class SafetyCenterEntry implements Parcelable {
             return this;
         }
 
-        /** Sets the {@link PendingIntent} to execute when this entry is selected. Required. */
+        /** Sets the optional {@link PendingIntent} to execute when this entry is selected. */
         @NonNull
-        public Builder setPendingIntent(@NonNull PendingIntent pendingIntent) {
-            mPendingIntent = requireNonNull(pendingIntent);
+        public Builder setPendingIntent(@Nullable PendingIntent pendingIntent) {
+            mPendingIntent = pendingIntent;
             return this;
         }
 

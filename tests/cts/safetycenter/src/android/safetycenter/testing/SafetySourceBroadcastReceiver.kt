@@ -70,7 +70,7 @@ class SafetySourceBroadcastReceiver : BroadcastReceiver() {
                 .build()
 
         @Volatile
-        private var updateChannel = Channel<Unit>()
+        private var updateChannel = Channel<Unit>(Channel.Factory.BUFFERED)
 
         @Volatile
         var safetySourceId: String? = null

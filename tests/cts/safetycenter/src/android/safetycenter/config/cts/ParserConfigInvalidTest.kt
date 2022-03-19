@@ -357,12 +357,6 @@ class ParserConfigInvalidTest {
                 "Prohibited attribute loggingAllowed present"
             ),
             Params(
-                "ConfigStaticSafetySourceWithNotification",
-                R.xml.config_static_safety_source_with_notification,
-                "Element static-safety-source invalid",
-                "Prohibited attribute automaticNotificationFromIssueAllowed present"
-            ),
-            Params(
                 "ConfigStaticSafetySourceWithPackage",
                 R.xml.config_static_safety_source_with_package,
                 "Element static-safety-source invalid",

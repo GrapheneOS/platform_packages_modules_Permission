@@ -89,14 +89,16 @@ class SafetyCenterDataTest {
     val entryOrGroup1 = SafetyCenterEntryOrGroup(entry1)
     val entryOrGroup2 = SafetyCenterEntryOrGroup(entryGroup1)
 
-    val staticEntry1 = SafetyCenterStaticEntry(
-            "A static entry title",
-            "A static entry summary",
-            pendingIntent)
-    val staticEntry2 = SafetyCenterStaticEntry(
-            "Another static entry title",
-            "Another static entry summary",
-            pendingIntent)
+    private val staticEntry1 = SafetyCenterStaticEntry.Builder()
+            .setTitle("A static entry title")
+            .setSummary("A static entry summary")
+            .setPendingIntent(pendingIntent)
+            .build()
+    private val staticEntry2 = SafetyCenterStaticEntry.Builder()
+            .setTitle("Another static entry title")
+            .setSummary("Another static entry summary")
+            .setPendingIntent(pendingIntent)
+            .build()
 
     val staticEntryGroup1 = SafetyCenterStaticEntryGroup(
             "A static entry group title", listOf(staticEntry1))
