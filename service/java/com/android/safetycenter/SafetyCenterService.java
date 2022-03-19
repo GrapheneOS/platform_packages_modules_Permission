@@ -29,7 +29,6 @@ import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.app.AppOpsManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
@@ -360,14 +359,9 @@ public final class SafetyCenterService extends SystemService {
                     SafetySourcesGroup group = safetyCenterConfig.getSafetySourcesGroups().get(i);
                     for (int j = 0; j < group.getSafetySources().size(); j++) {
                         SafetySource safetySource = group.getSafetySources().get(j);
-                        if (safetySource.getType() != SAFETY_SOURCE_TYPE_STATIC
-                                && safetySource.getBroadcastReceiverClassName() != null) {
-                            mSafetyCenterRefreshManager
-                                    .addAdditionalSafetySourceBroadcastReceiverComponent(
-                                            new ComponentName(
-                                                    safetySource.getPackageName(),
-                                                    safetySource.getBroadcastReceiverClassName()
-                                            ));
+                        if (safetySource.getType() != SAFETY_SOURCE_TYPE_STATIC) {
+                            mSafetyCenterRefreshManager.addAdditionalSafetySourcePackageNames(
+                                            safetySource.getPackageName());
                         }
                     }
                 }
@@ -383,8 +377,7 @@ public final class SafetyCenterService extends SystemService {
             }
 
             synchronized (mRefreshLock) {
-                mSafetyCenterRefreshManager
-                        .clearAdditionalSafetySourceBroadcastReceiverComponents();
+                mSafetyCenterRefreshManager.clearAdditionalSafetySourcePackageNames();
             }
         }
 
