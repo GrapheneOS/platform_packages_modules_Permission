@@ -22,7 +22,6 @@ import static java.util.Objects.requireNonNull;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
-import android.content.ComponentName;
 import android.content.res.XmlResourceParser;
 import android.safetycenter.config.ParseException;
 import android.safetycenter.config.SafetyCenterConfig;
@@ -272,7 +271,7 @@ final class SafetyCenterConfigReader {
         @NonNull
         private static List<Broadcast> extractBroadcasts(
                 @NonNull SafetyCenterConfig safetyCenterConfig) {
-            ArrayMap<ComponentName, Broadcast> componentNameToBroadcast = new ArrayMap<>();
+            ArrayMap<String, Broadcast> packageNameToBroadcast = new ArrayMap<>();
             List<Broadcast> broadcasts = new ArrayList<>();
             List<SafetySourcesGroup> safetySourcesGroups =
                     safetyCenterConfig.getSafetySourcesGroups();
@@ -287,20 +286,11 @@ final class SafetyCenterConfigReader {
                         continue;
                     }
 
-                    String broadcastReceiverClassName =
-                            safetySource.getBroadcastReceiverClassName();
-                    if (broadcastReceiverClassName == null) {
-                        continue;
-                    }
-
-                    ComponentName componentName = new ComponentName(safetySource.getPackageName(),
-                            broadcastReceiverClassName);
-
-                    Broadcast broadcast = componentNameToBroadcast.get(componentName);
+                    Broadcast broadcast = packageNameToBroadcast.get(safetySource.getPackageName());
                     if (broadcast == null) {
-                        broadcast = new Broadcast(componentName, new ArrayList<>(),
+                        broadcast = new Broadcast(safetySource.getPackageName(), new ArrayList<>(),
                                 new ArrayList<>());
-                        componentNameToBroadcast.put(componentName, broadcast);
+                        packageNameToBroadcast.put(safetySource.getPackageName(), broadcast);
                         broadcasts.add(broadcast);
                     }
                     broadcast.getSourceIdsForProfileOwner().add(safetySource.getId());
@@ -321,7 +311,7 @@ final class SafetyCenterConfigReader {
     static final class Broadcast {
 
         @NonNull
-        private final ComponentName mComponentName;
+        private final String mPackageName;
 
         @NonNull
         private final List<String> mSourceIdsForProfileOwner;
@@ -331,17 +321,17 @@ final class SafetyCenterConfigReader {
 
 
         private Broadcast(
-                @NonNull ComponentName componentName,
+                @NonNull String packageName,
                 @NonNull List<String> sourceIdsForProfileOwner,
                 @NonNull List<String> sourceIdsForManagedProfiles) {
-            mComponentName = componentName;
+            mPackageName = packageName;
             mSourceIdsForProfileOwner = sourceIdsForProfileOwner;
             mSourceIdsForManagedProfiles = sourceIdsForManagedProfiles;
         }
 
-        /** Returns the {@link ComponentName} to dispatch the broadcast to. */
-        public ComponentName getComponentName() {
-            return mComponentName;
+        /** Returns the package name to dispatch the broadcast to. */
+        public String getPackageName() {
+            return mPackageName;
         }
 
         /**
@@ -367,22 +357,22 @@ final class SafetyCenterConfigReader {
             if (this == o) return true;
             if (!(o instanceof Broadcast)) return false;
             Broadcast that = (Broadcast) o;
-            return mComponentName.equals(that.mComponentName) && mSourceIdsForProfileOwner.equals(
+            return mPackageName.equals(that.mPackageName) && mSourceIdsForProfileOwner.equals(
                     that.mSourceIdsForProfileOwner) && mSourceIdsForManagedProfiles.equals(
                     that.mSourceIdsForManagedProfiles);
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(mComponentName, mSourceIdsForProfileOwner,
+            return Objects.hash(mPackageName, mSourceIdsForProfileOwner,
                     mSourceIdsForManagedProfiles);
         }
 
         @Override
         public String toString() {
             return "Broadcast{"
-                    + "mComponentName="
-                    + mComponentName
+                    + "mPackageName="
+                    + mPackageName
                     + ", mSourceIdsForProfileOwner="
                     + mSourceIdsForProfileOwner
                     + ", mSourceIdsForManagedProfiles="
