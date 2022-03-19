@@ -66,7 +66,27 @@ import java.util.concurrent.Executor;
 public final class SafetyCenterManager {
 
     /**
-     * Broadcast Action: A broadcast sent by the system to indicate that {@link SafetyCenterManager}
+     * Broadcast Action: A broadcast sent by the system to indicate that the value returned by
+     * {@link SafetyCenterManager#isSafetyCenterEnabled()} has changed.
+     *
+     * <p>This broadcast will inform sources about changes to
+     * {@link SafetyCenterManager#isSafetyCenterEnabled()},
+     * should they want to check the new value and enable/disable components accordingly.
+     *
+     * <p>This broadcast is sent explicitly to safety sources and other allowlisted packages by
+     * targeting intents to a specified set of packages in the {@link SafetyCenterConfig}. The
+     * receiving components should be manifest-declared receivers so that safety sources can be
+     * requested even if they are not running.
+     *
+     * <p class="note">This is a protected intent that can only be sent by the system.
+     */
+    @SdkConstant(BROADCAST_INTENT_ACTION)
+    public static final String ACTION_SAFETY_CENTER_ENABLED_CHANGED =
+            "android.safetycenter.action.SAFETY_CENTER_ENABLED_CHANGED";
+
+    /**
+     * Broadcast Action: A broadcast sent by the system to indicate that {@link
+     * SafetyCenterManager}
      * is requesting data from safety sources regarding their safety state.
      *
      * <p>This broadcast is sent when a user triggers a data refresh from the Safety Center UI or
@@ -74,16 +94,18 @@ public final class SafetyCenterManager {
      * updated.
      *
      * <p>This broadcast is sent explicitly to safety sources by targeting intents to a specified
-     * set of components provided by the safety sources in the {@link SafetyCenterConfig}.
-     * The receiving components should be manifest-declared receivers so that safety sources can be
+     * set of packages provided by the safety sources in the {@link SafetyCenterConfig}. The
+     * receiving components should be manifest-declared receivers so that safety sources can be
      * requested to send data even if they are not running.
      *
      * <p>On receiving this broadcast, safety sources should determine their safety state according
-     * to the parameters specified in the intent extras (see below) and set {@link SafetySourceData}
+     * to the parameters specified in the intent extras (see below) and set {@link
+     * SafetySourceData}
      * using {@link #setSafetySourceData}, along with a {@link SafetyEvent} with
      * {@link SafetyEvent#getType()} set to {@link SafetyEvent#SAFETY_EVENT_TYPE_REFRESH_REQUESTED}
      * and {@link SafetyEvent#getRefreshBroadcastId()} set to the value of broadcast intent extra
-     * {@link #EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID}. If the safety source is unable to provide
+     * {@link #EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID}. If the safety source is unable to
+     * provide
      * data, it can set a {@code null} {@link SafetySourceData}, which will clear any existing
      * {@link SafetySourceData} stored by Safety Center, and Safety Center will fall back to any
      * placeholder data specified in {@link SafetyCenterConfig}.
@@ -368,6 +390,17 @@ public final class SafetyCenterManager {
     public void refreshSafetySources(@RefreshReason int refreshReason) {
         try {
             mService.refreshSafetySources(refreshReason, mContext.getUser().getIdentifier());
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
+    /** Returns the current {@link SafetyCenterConfig}, if available. */
+    @RequiresPermission(MANAGE_SAFETY_CENTER)
+    @Nullable
+    public SafetyCenterConfig getSafetyCenterConfig() {
+        try {
+            return mService.getSafetyCenterConfig();
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }

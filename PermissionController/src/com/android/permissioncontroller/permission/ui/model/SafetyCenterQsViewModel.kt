@@ -46,7 +46,7 @@ import com.android.permissioncontroller.permission.utils.LocationUtils
 import kotlin.collections.set
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
-class SafetyCenterViewModel(
+class SafetyCenterQsViewModel(
     private val app: Application,
     private val sessionId: Long,
     private val permGroupUsages: List<PermissionGroupUsage>
@@ -62,26 +62,48 @@ class SafetyCenterViewModel(
     val lightAppPermGroupLiveData = object
         : SmartUpdateMediatorLiveData<Boolean>() {
 
+        private val lightAppPermLiveDatas = mutableMapOf<Triple<String, String, UserHandle>,
+            LightAppPermGroupLiveData>()
+
         init {
             for (permGroupUsage in permGroupUsages) {
                 val pgTriple = Triple(permGroupUsage.packageName,
                     permGroupUsage.permissionGroupName,
                     UserHandle.getUserHandleForUid(permGroupUsage.uid))
                 val appPermGroupLiveData = LightAppPermGroupLiveData[pgTriple]
-                addSource(appPermGroupLiveData) { v ->
-                    lightAppPermMap[pgTriple] = v
+                lightAppPermLiveDatas[pgTriple] = appPermGroupLiveData
+                addSource(appPermGroupLiveData) {
+                    update()
                 }
             }
         }
 
         override fun onUpdate() {
-            // Do nothing
+            if (!lightAppPermLiveDatas.all { it.value.isInitialized }) {
+                return
+            }
+            for ((pgTriple, lightAppPermLiveData) in lightAppPermLiveDatas) {
+                lightAppPermMap[pgTriple] = lightAppPermLiveData.value
+            }
+            value = true
         }
+    }
+
+    fun shouldAllowRevoke(usage: PermissionGroupUsage): Boolean {
+        val pgTriple = Triple(usage.packageName,
+                usage.permissionGroupName,
+                UserHandle.getUserHandleForUid(usage.uid))
+        val group = lightAppPermMap[pgTriple] ?: return false
+        return group.supportsRuntimePerms &&
+                !group.hasInstallToRuntimeSplit &&
+                !group.isBackgroundFixed &&
+                !group.isForegroundFixed &&
+                !group.isGrantedByDefault
     }
 
     fun revokePermission(usage: PermissionGroupUsage) {
         val group = lightAppPermMap.get(Triple(usage.packageName, usage.permissionGroupName,
-            UserHandle.getUserHandleForUid(usage.uid)))
+            UserHandle.getUserHandleForUid(usage.uid))) ?: return
 
         if (group != null) {
             KotlinUtils.revokeForegroundRuntimePermissions(app, group)
@@ -148,22 +170,39 @@ class SafetyCenterViewModel(
             }
         }
 
-    fun navigateToManageService(fragment: Fragment, context: Context, usage: PermissionGroupUsage) {
+    fun navigateToManageService(fragment: Fragment, navigationIntent: Intent) {
+        fragment.startActivity(navigationIntent)
+    }
+
+    fun navigateToManageAppPermissions(fragment: Fragment, usage: PermissionGroupUsage) {
+        fragment.startActivity(getDefaultManageAppPermissionsIntent(usage.packageName, usage.uid))
+    }
+
+    fun getStartViewPermissionUsageIntent(context: Context, usage: PermissionGroupUsage):
+        Intent? {
         var intent: Intent = Intent(Intent.ACTION_MANAGE_PERMISSION_USAGE)
         intent.setPackage(usage.packageName)
         intent.putExtra(Intent.EXTRA_PERMISSION_GROUP_NAME, usage.permissionGroupName)
         intent.putExtra(Intent.EXTRA_ATTRIBUTION_TAGS, arrayOf(usage.attributionTag.toString()))
         intent.putExtra(Intent.EXTRA_SHOWING_ATTRIBUTION, true)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         val resolveInfo: ResolveInfo? = context.packageManager.resolveActivity(
             intent, PackageManager.ResolveInfoFlags.of(0))
-        if (resolveInfo?.activityInfo == null) {
-            intent = Intent(Intent.ACTION_MANAGE_APP_PERMISSIONS)
-            intent.putExtra(Intent.EXTRA_USER, UserHandle.getUserHandleForUid(usage.uid))
-            intent.putExtra(Intent.EXTRA_PACKAGE_NAME, usage.packageName)
-        } else {
+        if (resolveInfo != null && resolveInfo.activityInfo != null &&
+            resolveInfo.activityInfo.permission ==
+            android.Manifest.permission.START_VIEW_PERMISSION_USAGE) {
             intent.component = ComponentName(usage.packageName, resolveInfo.activityInfo.name)
+            return intent
         }
-        fragment.startActivity(intent)
+        return null
+    }
+
+    private fun getDefaultManageAppPermissionsIntent(packageName: String, uid: Int): Intent {
+        val intent = Intent(Intent.ACTION_MANAGE_APP_PERMISSIONS)
+        intent.putExtra(Intent.EXTRA_PACKAGE_NAME, packageName)
+        intent.putExtra(Intent.EXTRA_USER, UserHandle.getUserHandleForUid(uid))
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        return intent
     }
 
     fun navigateToSeeUsage(fragment: Fragment, permGroupName: String) {
@@ -174,7 +213,7 @@ class SafetyCenterViewModel(
 }
 
 /**
- * Factory for a SafetyCenterViewModel
+ * Factory for a SafetyCenterQsViewModel
  *
  * @param app The current application
  * @param sessionId A session ID used in logs to identify this particular session
@@ -187,6 +226,6 @@ class SafetyCenterViewModelFactory(
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         @Suppress("UNCHECKED_CAST")
-        return SafetyCenterViewModel(app, sessionId, permGroupUsages) as T
+        return SafetyCenterQsViewModel(app, sessionId, permGroupUsages) as T
     }
 }

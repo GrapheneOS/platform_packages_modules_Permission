@@ -141,6 +141,11 @@ class SafetyCenterEntryTest {
                 .build()
                 .pendingIntent)
                 .isEqualTo(pendingIntent2)
+        assertThat(SafetyCenterEntry.Builder(entry1)
+                .setPendingIntent(null)
+                .build()
+                .pendingIntent)
+                .isNull()
     }
 
     @Test
@@ -159,7 +164,25 @@ class SafetyCenterEntryTest {
     }
 
     @Test
-    fun createFromParcel_withWriteToParcel_returnsEquivalentObject() {
+    fun createFromParcel_withWriteToParcel_withAllFields_returnsEquivalentObject() {
+        val parcel = Parcel.obtain()
+        val entryMinimal = SafetyCenterEntry.Builder(entry1)
+                .setSummary(null)
+                .setPendingIntent(null)
+                .setIconAction(null)
+                .build()
+
+        entryMinimal.writeToParcel(parcel, /* flags= */ 0)
+        parcel.setDataPosition(0)
+
+        val fromParcel = SafetyCenterEntry.CREATOR.createFromParcel(parcel)
+        parcel.recycle()
+
+        assertThat(fromParcel).isEqualTo(entryMinimal)
+    }
+
+    @Test
+    fun createFromParcel_withWriteToParcel_withMinimalFields_returnsEquivalentObject() {
         val parcel = Parcel.obtain()
 
         entry1.writeToParcel(parcel, /* flags= */ 0)

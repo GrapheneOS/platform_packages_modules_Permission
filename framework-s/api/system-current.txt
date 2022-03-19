@@ -60,7 +60,7 @@ package android.safetycenter {
     method public int describeContents();
     method @Nullable public android.safetycenter.SafetyCenterEntry.IconAction getIconAction();
     method @NonNull public String getId();
-    method @NonNull public android.app.PendingIntent getPendingIntent();
+    method @Nullable public android.app.PendingIntent getPendingIntent();
     method public int getSeverityLevel();
     method public int getSeverityUnspecifiedIconType();
     method @Nullable public CharSequence getSummary();
@@ -86,7 +86,7 @@ package android.safetycenter {
     method @NonNull public android.safetycenter.SafetyCenterEntry.Builder setIconAction(@Nullable android.safetycenter.SafetyCenterEntry.IconAction);
     method @NonNull public android.safetycenter.SafetyCenterEntry.Builder setIconAction(int, @NonNull android.app.PendingIntent);
     method @NonNull public android.safetycenter.SafetyCenterEntry.Builder setId(@NonNull String);
-    method @NonNull public android.safetycenter.SafetyCenterEntry.Builder setPendingIntent(@NonNull android.app.PendingIntent);
+    method @NonNull public android.safetycenter.SafetyCenterEntry.Builder setPendingIntent(@Nullable android.app.PendingIntent);
     method @NonNull public android.safetycenter.SafetyCenterEntry.Builder setSeverityLevel(int);
     method @NonNull public android.safetycenter.SafetyCenterEntry.Builder setSeverityUnspecifiedIconType(int);
     method @NonNull public android.safetycenter.SafetyCenterEntry.Builder setSummary(@Nullable CharSequence);
@@ -205,6 +205,7 @@ package android.safetycenter {
     method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void clearSafetyCenterConfigOverride();
     method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void dismissSafetyCenterIssue(@NonNull String);
     method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void executeSafetyCenterIssueAction(@NonNull String, @NonNull String);
+    method @Nullable @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public android.safetycenter.config.SafetyCenterConfig getSafetyCenterConfig();
     method @NonNull @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public android.safetycenter.SafetyCenterData getSafetyCenterData();
     method @Nullable @RequiresPermission(android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE) public android.safetycenter.SafetySourceData getSafetySourceData(@NonNull String);
     method @RequiresPermission(anyOf={android.Manifest.permission.READ_SAFETY_CENTER_STATUS, android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE}) public boolean isSafetyCenterEnabled();
@@ -214,6 +215,7 @@ package android.safetycenter {
     method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void setSafetyCenterConfigOverride(@NonNull android.safetycenter.config.SafetyCenterConfig);
     method @RequiresPermission(android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE) public void setSafetySourceData(@NonNull String, @Nullable android.safetycenter.SafetySourceData, @NonNull android.safetycenter.SafetyEvent);
     field public static final String ACTION_REFRESH_SAFETY_SOURCES = "android.safetycenter.action.REFRESH_SAFETY_SOURCES";
+    field public static final String ACTION_SAFETY_CENTER_ENABLED_CHANGED = "android.safetycenter.action.SAFETY_CENTER_ENABLED_CHANGED";
     field public static final int EXTRA_REFRESH_REQUEST_TYPE_FETCH_FRESH_DATA = 0; // 0x0
     field public static final int EXTRA_REFRESH_REQUEST_TYPE_GET_DATA = 1; // 0x1
     field public static final String EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID = "android.safetycenter.extra.REFRESH_SAFETY_SOURCES_BROADCAST_ID";
@@ -233,13 +235,21 @@ package android.safetycenter {
   }
 
   public final class SafetyCenterStaticEntry implements android.os.Parcelable {
-    ctor public SafetyCenterStaticEntry(@NonNull CharSequence, @Nullable CharSequence, @NonNull android.app.PendingIntent);
     method public int describeContents();
-    method @NonNull public android.app.PendingIntent getPendingIntent();
+    method @Nullable public android.app.PendingIntent getPendingIntent();
     method @Nullable public CharSequence getSummary();
     method @NonNull public CharSequence getTitle();
     method public void writeToParcel(@NonNull android.os.Parcel, int);
     field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetyCenterStaticEntry> CREATOR;
+  }
+
+  public static final class SafetyCenterStaticEntry.Builder {
+    ctor public SafetyCenterStaticEntry.Builder();
+    ctor public SafetyCenterStaticEntry.Builder(@NonNull android.safetycenter.SafetyCenterStaticEntry);
+    method @NonNull public android.safetycenter.SafetyCenterStaticEntry build();
+    method @NonNull public android.safetycenter.SafetyCenterStaticEntry.Builder setPendingIntent(@Nullable android.app.PendingIntent);
+    method @NonNull public android.safetycenter.SafetyCenterStaticEntry.Builder setSummary(@Nullable CharSequence);
+    method @NonNull public android.safetycenter.SafetyCenterStaticEntry.Builder setTitle(@NonNull CharSequence);
   }
 
   public final class SafetyCenterStaticEntryGroup implements android.os.Parcelable {
@@ -342,9 +352,6 @@ package android.safetycenter {
     field public static final int ISSUE_CATEGORY_ACCOUNT = 200; // 0xc8
     field public static final int ISSUE_CATEGORY_DEVICE = 100; // 0x64
     field public static final int ISSUE_CATEGORY_GENERAL = 300; // 0x12c
-    field public static final int SEVERITY_LEVEL_CRITICAL_WARNING = 400; // 0x190
-    field public static final int SEVERITY_LEVEL_INFORMATION = 200; // 0xc8
-    field public static final int SEVERITY_LEVEL_RECOMMENDATION = 300; // 0x12c
   }
 
   public static final class SafetySourceIssue.Action implements android.os.Parcelable {
@@ -375,27 +382,31 @@ package android.safetycenter {
     method @NonNull public android.safetycenter.SafetySourceIssue.Builder setSubtitle(@Nullable CharSequence);
   }
 
+  public class SafetySourceSeverity {
+    field public static final int LEVEL_CRITICAL_WARNING = 400; // 0x190
+    field public static final int LEVEL_INFORMATION = 200; // 0xc8
+    field public static final int LEVEL_RECOMMENDATION = 300; // 0x12c
+    field public static final int LEVEL_UNSPECIFIED = 100; // 0x64
+  }
+
   public final class SafetySourceStatus implements android.os.Parcelable {
     method public int describeContents();
     method @Nullable public android.safetycenter.SafetySourceStatus.IconAction getIconAction();
-    method @NonNull public android.app.PendingIntent getPendingIntent();
-    method public int getStatusLevel();
+    method @Nullable public android.app.PendingIntent getPendingIntent();
+    method public int getSeverityLevel();
     method @NonNull public CharSequence getSummary();
     method @NonNull public CharSequence getTitle();
     method public boolean isEnabled();
     method public void writeToParcel(@NonNull android.os.Parcel, int);
     field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetySourceStatus> CREATOR;
-    field public static final int STATUS_LEVEL_CRITICAL_WARNING = 400; // 0x190
-    field public static final int STATUS_LEVEL_NONE = 100; // 0x64
-    field public static final int STATUS_LEVEL_OK = 200; // 0xc8
-    field public static final int STATUS_LEVEL_RECOMMENDATION = 300; // 0x12c
   }
 
   public static final class SafetySourceStatus.Builder {
-    ctor public SafetySourceStatus.Builder(@NonNull CharSequence, @NonNull CharSequence, int, @NonNull android.app.PendingIntent);
+    ctor public SafetySourceStatus.Builder(@NonNull CharSequence, @NonNull CharSequence, int);
     method @NonNull public android.safetycenter.SafetySourceStatus build();
     method @NonNull public android.safetycenter.SafetySourceStatus.Builder setEnabled(boolean);
     method @NonNull public android.safetycenter.SafetySourceStatus.Builder setIconAction(@Nullable android.safetycenter.SafetySourceStatus.IconAction);
+    method @NonNull public android.safetycenter.SafetySourceStatus.Builder setPendingIntent(@Nullable android.app.PendingIntent);
   }
 
   public static final class SafetySourceStatus.IconAction implements android.os.Parcelable {
@@ -446,7 +457,6 @@ package android.safetycenter.config {
     method @StringRes public int getTitleForWorkResId();
     method @StringRes public int getTitleResId();
     method public int getType();
-    method public boolean isAutomaticNotificationFromIssueAllowed();
     method public boolean isLoggingAllowed();
     method public boolean isRefreshOnPageOpenAllowed();
     method public void writeToParcel(@NonNull android.os.Parcel, int);
@@ -465,7 +475,6 @@ package android.safetycenter.config {
   public static final class SafetySource.Builder {
     ctor public SafetySource.Builder(int);
     method @NonNull public android.safetycenter.config.SafetySource build();
-    method @NonNull public android.safetycenter.config.SafetySource.Builder setAutomaticNotificationFromIssueAllowed(boolean);
     method @NonNull public android.safetycenter.config.SafetySource.Builder setBroadcastReceiverClassName(@Nullable String);
     method @NonNull public android.safetycenter.config.SafetySource.Builder setId(@Nullable String);
     method @NonNull public android.safetycenter.config.SafetySource.Builder setInitialDisplayState(int);

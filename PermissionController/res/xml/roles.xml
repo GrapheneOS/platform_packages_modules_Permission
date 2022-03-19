@@ -905,6 +905,7 @@
         <permissions>
             <permission name="android.permission.MANAGE_UI_TRANSLATION" />
             <permission name="android.permission.SYSTEM_APPLICATION_OVERLAY" />
+            <permission name="android.permission.READ_CLIPBOARD_IN_BACKGROUND" minSdkVersion="33" />
         </permissions>
     </role>
 
