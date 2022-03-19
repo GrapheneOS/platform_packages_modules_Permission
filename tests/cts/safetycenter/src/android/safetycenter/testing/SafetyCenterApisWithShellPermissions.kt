@@ -77,6 +77,13 @@ fun SafetyCenterManager.refreshSafetySourcesWithPermission(refreshReason: Int) =
     callWithShellPermissionIdentity({ refreshSafetySources(refreshReason) }, MANAGE_SAFETY_CENTER)
 
 /**
+ * Calls [SafetyCenterManager.getSafetyCenterConfig] adopting Shell's [MANAGE_SAFETY_CENTER]
+ * permission.
+ */
+fun SafetyCenterManager.getSafetyCenterConfigWithPermission() =
+    callWithShellPermissionIdentity(::getSafetyCenterConfig, MANAGE_SAFETY_CENTER)
+
+/**
  * Calls [SafetyCenterManager.getSafetyCenterData] adopting Shell's [MANAGE_SAFETY_CENTER]
  * permission.
  */

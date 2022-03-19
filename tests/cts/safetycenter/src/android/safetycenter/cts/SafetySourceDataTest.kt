@@ -24,6 +24,9 @@ import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.Parcel
 import android.safetycenter.SafetySourceData
 import android.safetycenter.SafetySourceIssue
+import android.safetycenter.SafetySourceSeverity.LEVEL_INFORMATION
+import android.safetycenter.SafetySourceSeverity.LEVEL_RECOMMENDATION
+import android.safetycenter.SafetySourceSeverity.LEVEL_UNSPECIFIED
 import android.safetycenter.SafetySourceIssue.ISSUE_CATEGORY_ACCOUNT
 import android.safetycenter.SafetySourceStatus
 import android.safetycenter.SafetySourceStatus.IconAction.ICON_TYPE_GEAR
@@ -43,17 +46,13 @@ class SafetySourceDataTest {
     private val status1 = SafetySourceStatus.Builder(
             "Status title 1",
             "Status summary 1",
-            SafetySourceStatus.STATUS_LEVEL_NONE,
-            PendingIntent.getActivity(context, 0 /* requestCode= */,
-                    Intent("Status PendingIntent 1"), FLAG_IMMUTABLE))
+            LEVEL_UNSPECIFIED)
             .setEnabled(false)
             .build()
     private val status2 = SafetySourceStatus.Builder(
             "Status title 2",
             "Status summary 2",
-            SafetySourceStatus.STATUS_LEVEL_RECOMMENDATION,
-            PendingIntent.getActivity(context, 0 /* requestCode= */,
-                    Intent("Status PendingIntent 2"), FLAG_IMMUTABLE))
+            LEVEL_RECOMMENDATION)
             .setIconAction(SafetySourceStatus.IconAction(ICON_TYPE_GEAR,
                     PendingIntent.getActivity(context, 0 /* requestCode= */,
                             Intent("IconAction PendingIntent 2"), FLAG_IMMUTABLE)))
@@ -62,7 +61,7 @@ class SafetySourceDataTest {
         "Issue id 1",
         "Issue summary 1",
         "Issue summary 1",
-        SafetySourceIssue.SEVERITY_LEVEL_INFORMATION, "issue_type_id"
+        LEVEL_INFORMATION, "issue_type_id"
     )
         .setSubtitle("Issue subtitle 1")
         .setIssueCategory(ISSUE_CATEGORY_ACCOUNT)
@@ -82,7 +81,7 @@ class SafetySourceDataTest {
         "Issue id 2",
         "Issue title 2",
         "Issue summary 2",
-        SafetySourceIssue.SEVERITY_LEVEL_RECOMMENDATION, "issue_type_id"
+        LEVEL_RECOMMENDATION, "issue_type_id"
     )
         .addAction(
             SafetySourceIssue.Action.Builder(

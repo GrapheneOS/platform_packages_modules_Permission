@@ -46,10 +46,16 @@ class SafetyCenterStaticEntryGroupTest {
             Intent("Fake Different Data"),
             PendingIntent.FLAG_IMMUTABLE)
 
-    private val staticEntry1 =
-            SafetyCenterStaticEntry("an entry title", "an entry summary", pendingIntent1)
-    private val staticEntry2 =
-            SafetyCenterStaticEntry("another entry title", "another entry summary", pendingIntent2)
+    private val staticEntry1 = SafetyCenterStaticEntry.Builder()
+            .setTitle("an entry title")
+            .setSummary("an entry summary")
+            .setPendingIntent(pendingIntent1)
+            .build()
+    private val staticEntry2 = SafetyCenterStaticEntry.Builder()
+            .setTitle("another entry title")
+            .setSummary("another entry summary")
+            .setPendingIntent(pendingIntent2)
+            .build()
 
     private val staticEntryGroup =
             SafetyCenterStaticEntryGroup("a title", listOf(staticEntry1, staticEntry2))
