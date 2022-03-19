@@ -33,6 +33,7 @@ import android.annotation.SdkConstant;
 import android.annotation.SystemApi;
 import android.annotation.SystemService;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Binder;
 import android.os.RemoteException;
 import android.safetycenter.config.SafetyCenterConfig;
@@ -153,11 +154,45 @@ public final class SafetyCenterManager {
             "android.safetycenter.extra.REFRESH_SAFETY_SOURCES_REQUEST_TYPE";
 
     /**
-     * Used as an {@code String} extra field in {@link #ACTION_REFRESH_SAFETY_SOURCES} intents to
+     * Used as a {@code String} extra field in {@link #ACTION_REFRESH_SAFETY_SOURCES} intents to
      * specify a string identifier for the broadcast.
      */
     public static final String EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID =
             "android.safetycenter.extra.REFRESH_SAFETY_SOURCES_BROADCAST_ID";
+
+    /**
+     * Used as a {@code String} extra field in {@link Intent#ACTION_SAFETY_CENTER} intents to
+     * specify an issue ID to redirect to, if applicable.
+     *
+     * <p>This extra must be used in conjunction with {@link #EXTRA_SAFETY_SOURCE_ID} as an issue ID
+     * does not uniquely identify a {@link SafetySourceIssue}. Otherwise, no redirection will occur.
+     */
+    public static final String EXTRA_SAFETY_SOURCE_ISSUE_ID =
+            "android.safetycenter.extra.SAFETY_SOURCE_ISSUE_ID";
+
+    /**
+     * Used as a {@code String} extra field in {@link Intent#ACTION_SAFETY_CENTER} intents to
+     * specify a source ID for the {@link SafetySourceIssue} to redirect to, if applicable.
+     *
+     * <p>This extra must be used in conjunction with {@link #EXTRA_SAFETY_SOURCE_ISSUE_ID}.
+     * Otherwise, no redirection will occur.
+     */
+    public static final String EXTRA_SAFETY_SOURCE_ID =
+            "android.safetycenter.extra.SAFETY_SOURCE_ID";
+
+    /**
+     * Used as a {@link android.os.UserHandle} extra field in {@link Intent#ACTION_SAFETY_CENTER}
+     * intents to specify a user for a given {@link SafetySourceIssue} to redirect to, if
+     * applicable.
+     *
+     * <p>This extra can be used if the same issue ID is created for multiple users (e.g. to
+     * disambiguate personal profile vs. managed profiles issues).
+     *
+     * <p>This extra can be used in conjunction with {@link #EXTRA_SAFETY_SOURCE_ISSUE_ID} and
+     * {@link #EXTRA_SAFETY_SOURCE_ID}. Otherwise, no redirection will occur.
+     */
+    public static final String EXTRA_SAFETY_SOURCE_USER_HANDLE =
+            "android.safetycenter.extra.SAFETY_SOURCE_USER_HANDLE";
 
     /**
      * All possible types of data refresh requests in broadcasts with intent action
