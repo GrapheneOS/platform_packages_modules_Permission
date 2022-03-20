@@ -339,12 +339,6 @@ class ParserConfigInvalidTest {
                 "Required attribute title missing"
             ),
             Params(
-                "ConfigStaticSafetySourceWithBroadcast",
-                R.xml.config_static_safety_source_with_broadcast,
-                "Element static-safety-source invalid",
-                "Prohibited attribute broadcastReceiverClassName present"
-            ),
-            Params(
                 "ConfigStaticSafetySourceWithDisplay",
                 R.xml.config_static_safety_source_with_display,
                 "Element static-safety-source invalid",

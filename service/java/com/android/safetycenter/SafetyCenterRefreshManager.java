@@ -33,7 +33,6 @@ import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_RESCAN_BUT
 import android.annotation.NonNull;
 import android.annotation.UserIdInt;
 import android.app.BroadcastOptions;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Binder;
@@ -113,7 +112,7 @@ final class SafetyCenterRefreshManager {
             int profileOwnerUserId = userProfileGroup.getProfileOwnerUserId();
             Intent broadcastIntent = createBroadcastIntent(
                     requestType,
-                    broadcast.getComponentName(),
+                    broadcast.getPackageName(),
                     broadcast.getSourceIdsForProfileOwner(),
                     profileOwnerUserId);
 
@@ -126,7 +125,7 @@ final class SafetyCenterRefreshManager {
                 int managedProfileUserId = managedProfileUserIds[i];
                 Intent broadcastIntent = createBroadcastIntent(
                         requestType,
-                        broadcast.getComponentName(),
+                        broadcast.getPackageName(),
                         broadcast.getSourceIdsForManagedProfiles(),
                         managedProfileUserId);
 
@@ -155,7 +154,7 @@ final class SafetyCenterRefreshManager {
     @NonNull
     private static Intent createBroadcastIntent(
             @RefreshRequestType int requestType,
-            @NonNull ComponentName componentName,
+            @NonNull String packageName,
             @NonNull List<String> sourceIdsToRefresh,
             @UserIdInt int userId) {
         String refreshBroadcastId = String.valueOf(
@@ -168,7 +167,7 @@ final class SafetyCenterRefreshManager {
                 // TODO(b/222677992): Test refresh broadcast id in refresh broadcasts.
                 .putExtra(EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID, refreshBroadcastId)
                 .setFlags(FLAG_RECEIVER_FOREGROUND)
-                .setComponent(componentName);
+                .setPackage(packageName);
     }
 
     @RefreshRequestType

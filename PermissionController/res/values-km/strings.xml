@@ -264,8 +264,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"នៅពេល​បើកបរ អ្នកបានផ្ដល់​សិទ្ធិចូលប្រើ <xliff:g id="PERMISSION_1">%2$s</xliff:g> និង <xliff:g id="PERMISSION_2">%3$s</xliff:g> ដល់ <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"នៅពេល​បើកបរ អ្នកបានផ្ដល់​សិទ្ធិចូលប្រើ​ចំនួន <xliff:g id="COUNT">%1$d</xliff:g> ដល់ <xliff:g id="APP">%2$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{នៅពេល​បើកបរ អ្នកបានផ្ដល់​សិទ្ធិចូលប្រើដល់ <xliff:g id="APP_0">%1$s</xliff:g> និង​កម្មវិធី # ទៀត}other{នៅពេល​បើកបរ អ្នកបានផ្ដល់​សិទ្ធិចូលប្រើដល់ <xliff:g id="APP_1">%1$s</xliff:g> និង​កម្មវិធី # ទៀត}}"</string>
-    <!-- no translation found for go_to_settings (1053735612211228335) -->
-    <skip />
+    <string name="go_to_settings" msgid="1053735612211228335">"ចូលទៅការកំណត់"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"កម្មវិធី​មួយចំនួន​មិនត្រូវបាន​ប្រើប្រាស់​រយៈពេល​ពីរបីខែ​ហើយ"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"ការអនុញ្ញាត​ដែលបានដក"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"បានដក​ការអនុញ្ញាត"</string>
@@ -468,10 +467,13 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"អនុញ្ញាត​ឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ចូល​ប្រើ​កំណត់ហេតុ​ហៅទូរសព្ទ​របស់អ្នក?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; គ្រប់គ្រង និង​ធ្វើការហៅទូរសព្ទ?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ចូលប្រើ​ទិន្នន័យឧបករណ៍ចាប់សញ្ញាអំពីស្ថានភាពសុខភាពរបស់អ្នក?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="5239219356063824373">"កម្មវិធីនេះចង់ចូលប្រើទិន្នន័យឧបករណ៍ចាប់សញ្ញាអំពីស្ថានភាពសុខភាពរបស់អ្នកគ្រប់ពេល ទោះបីជានៅពេលអ្នកមិនកំពុងប្រើកម្មវិធីនេះក៏ដោយ។ "<annotation id="link">"អនុញ្ញាតនៅក្នុងការកំណត់។"</annotation></string>
+    <!-- no translation found for permgroupupgraderequestdetail_sensors (3851603883489664284) -->
+    <skip />
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ចូលប្រើទិន្នន័យ​ឧបករណ៍ចាប់សញ្ញា​អំពីស្ថានភាពសុខភាព​របស់អ្នកឬ?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"កម្មវិធីនេះប្រហែលជាចង់ចូលប្រើទិន្នន័យឧបករណ៍ចាប់សញ្ញាអំពីស្ថានភាពសុខភាពរបស់អ្នកគ្រប់ពេល ទោះបីជានៅពេលអ្នកមិនកំពុងប្រើកម្មវិធីនេះក៏ដោយ។ "<annotation id="link">"អនុញ្ញាតនៅក្នុងការកំណត់។"</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"ប្ដូរសិទ្ធិចូលប្រើទិន្នន័យឧបករណ៍​ចាប់សញ្ញាអំពី​ស្ថានភាពសុខភាព​របស់អ្នកសម្រាប់ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ឬ?"</string>
+    <!-- no translation found for permgroupbackgroundrequestdetail_sensors (7649389834182449783) -->
+    <skip />
+    <!-- no translation found for permgroupupgraderequest_sensors (7576527638411370468) -->
+    <skip />
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ផ្ញើ​ការជូនដំណឹង​ឱ្យអ្នកឬ?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"អនុញ្ញាតឱ្យ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; បន្តផ្ញើការជូនដំណឹងឱ្យអ្នកឬ?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"ការអនុញ្ញាត​ដែលស្ថិតក្រោម​ការគ្រប់គ្រង"</string>
@@ -509,6 +511,8 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"ដកការអនុញ្ញាតកាមេរ៉ា"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"ដកការអនុញ្ញាតមីក្រូហ្វូន"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"គ្រប់គ្រង​សេវាកម្ម"</string>
+    <!-- no translation found for manage_permissions_qs (3780541819763475434) -->
+    <skip />
     <string name="active_call_usage_qs" msgid="8559974395932523391">"កំពុងប្រើដោយការហៅទូរសព្ទ"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"បានប្រើនាពេលថ្មីៗនេះនៅក្នុងការហៅទូរសព្ទ"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"កំពុងប្រើដោយ <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>

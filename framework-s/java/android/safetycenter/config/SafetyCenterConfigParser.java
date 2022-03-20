@@ -69,8 +69,6 @@ final class SafetyCenterConfigParser {
     private static final String ATTR_SAFETY_SOURCE_INITIAL_DISPLAY_STATE = "initialDisplayState";
     private static final String ATTR_SAFETY_SOURCE_MAX_SEVERITY_LEVEL = "maxSeverityLevel";
     private static final String ATTR_SAFETY_SOURCE_SEARCH_TERMS = "searchTerms";
-    private static final String ATTR_SAFETY_SOURCE_BROADCAST_RECEIVER_CLASS_NAME =
-            "broadcastReceiverClassName";
     private static final String ATTR_SAFETY_SOURCE_LOGGING_ALLOWED = "loggingAllowed";
     private static final String ATTR_SAFETY_SOURCE_REFRESH_ON_PAGE_OPEN_ALLOWED =
             "refreshOnPageOpenAllowed";
@@ -228,9 +226,6 @@ final class SafetyCenterConfigParser {
                     break;
                 case ATTR_SAFETY_SOURCE_SEARCH_TERMS:
                     builder.setSearchTermsResId(parseStringReference(parser, i, name));
-                    break;
-                case ATTR_SAFETY_SOURCE_BROADCAST_RECEIVER_CLASS_NAME:
-                    builder.setBroadcastReceiverClassName(parser.getAttributeValue(i));
                     break;
                 case ATTR_SAFETY_SOURCE_LOGGING_ALLOWED:
                     builder.setLoggingAllowed(parseBoolean(parser.getAttributeValue(i), name,
