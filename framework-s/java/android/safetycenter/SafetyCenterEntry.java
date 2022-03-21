@@ -249,7 +249,7 @@ public final class SafetyCenterEntry implements Parcelable {
                 + ", mSeverityLevel=" + mSeverityLevel
                 + ", mSeverityUnspecifiedIconType=" + mSeverityUnspecifiedIconType
                 + ", mEnabled=" + mEnabled
-                + ", mAction=" + mPendingIntent
+                + ", mPendingIntent=" + mPendingIntent
                 + ", mIconAction=" + mIconAction
                 + '}';
     }

@@ -45,27 +45,29 @@ import android.safetycenter.config.SafetyCenterConfig
 import android.safetycenter.config.SafetySource
 import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC
 import android.safetycenter.config.SafetySourcesGroup
-import android.safetycenter.testing.SafetyCenterFlags
-import android.safetycenter.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
-import android.safetycenter.testing.SafetySourceBroadcastReceiver
-import android.safetycenter.testing.addOnSafetyCenterDataChangedListenerWithPermission
-import android.safetycenter.testing.clearAllSafetySourceDataWithPermission
-import android.safetycenter.testing.clearSafetyCenterConfigOverrideWithPermission
-import android.safetycenter.testing.getSafetyCenterConfigWithPermission
-import android.safetycenter.testing.getSafetyCenterDataWithPermission
-import android.safetycenter.testing.getSafetySourceDataWithPermission
-import android.safetycenter.testing.isSafetyCenterEnabledWithPermission
-import android.safetycenter.testing.refreshSafetySourcesWithPermission
-import android.safetycenter.testing.removeOnSafetyCenterDataChangedListenerWithPermission
-import android.safetycenter.testing.reportSafetySourceErrorWithPermission
-import android.safetycenter.testing.setSafetyCenterConfigOverrideWithPermission
-import android.safetycenter.testing.setSafetySourceDataWithPermission
+import android.safetycenter.cts.testing.SafetyCenterFlags
+import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
+import android.safetycenter.cts.testing.SafetySourceBroadcastReceiver
+import android.safetycenter.cts.testing.addOnSafetyCenterDataChangedListenerWithPermission
+import android.safetycenter.cts.testing.clearAllSafetySourceDataWithPermission
+import android.safetycenter.cts.testing.clearSafetyCenterConfigOverrideWithPermission
+import android.safetycenter.cts.testing.getSafetyCenterConfigWithPermission
+import android.safetycenter.cts.testing.getSafetyCenterDataWithPermission
+import android.safetycenter.cts.testing.getSafetySourceDataWithPermission
+import android.safetycenter.cts.testing.isSafetyCenterEnabledWithPermission
+import android.safetycenter.cts.testing.refreshSafetySourcesWithPermission
+import android.safetycenter.cts.testing.removeOnSafetyCenterDataChangedListenerWithPermission
+import android.safetycenter.cts.testing.reportSafetySourceErrorWithPermission
+import android.safetycenter.cts.testing.setSafetyCenterConfigOverrideWithPermission
+import android.safetycenter.cts.testing.setSafetySourceDataWithPermission
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import com.android.compatibility.common.util.SystemUtil.callWithShellPermissionIdentity
 import com.google.common.truth.Truth.assertThat
 import com.google.common.util.concurrent.MoreExecutors.directExecutor
+import java.time.Duration
+import kotlin.test.assertFailsWith
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.runBlocking
@@ -75,8 +77,6 @@ import org.junit.Assume.assumeTrue
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.time.Duration
-import kotlin.test.assertFailsWith
 
 @RunWith(AndroidJUnit4::class)
 @SdkSuppress(minSdkVersion = TIRAMISU, codeName = "Tiramisu")
@@ -93,11 +93,7 @@ class SafetyCenterManagerTest {
     private val safetySourceDataUnspecified =
         SafetySourceData.Builder()
             .setStatus(
-                SafetySourceStatus.Builder(
-                    "None title",
-                    "None summary",
-                    LEVEL_UNSPECIFIED
-                )
+                SafetySourceStatus.Builder("None title", "None summary", LEVEL_UNSPECIFIED)
                     .setEnabled(false)
                     .build()
             )
@@ -113,11 +109,8 @@ class SafetyCenterManagerTest {
     private val safetySourceDataCritical =
         SafetySourceData.Builder()
             .setStatus(
-                SafetySourceStatus.Builder(
-                    "Critical title",
-                    "Critical summary",
-                    LEVEL_CRITICAL_WARNING
-                )
+                SafetySourceStatus.Builder("Critical title", "Critical summary",
+                    LEVEL_CRITICAL_WARNING)
                     .setPendingIntent(somePendingIntent)
                     .build()
             )
@@ -137,29 +130,30 @@ class SafetyCenterManagerTest {
                     .build()
             )
             .build()
-    private val listener = object : OnSafetyCenterDataChangedListener {
-        private val dataChannel = Channel<SafetyCenterData>(Channel.Factory.BUFFERED)
-        private val errorChannel = Channel<SafetyCenterErrorDetails>(Channel.Factory.BUFFERED)
+    private val listener =
+        object : OnSafetyCenterDataChangedListener {
+            private val dataChannel = Channel<SafetyCenterData>(Channel.Factory.BUFFERED)
+            private val errorChannel = Channel<SafetyCenterErrorDetails>(Channel.Factory.BUFFERED)
 
-        override fun onSafetyCenterDataChanged(data: SafetyCenterData) {
-            runBlockingWithTimeout { dataChannel.send(data) }
+            override fun onSafetyCenterDataChanged(data: SafetyCenterData) {
+                runBlockingWithTimeout { dataChannel.send(data) }
+            }
+
+            override fun onError(errorDetails: SafetyCenterErrorDetails) {
+                runBlockingWithTimeout { errorChannel.send(errorDetails) }
+            }
+
+            fun receiveSafetyCenterData(timeout: Duration = TIMEOUT_LONG) =
+                runBlockingWithTimeout(timeout) { dataChannel.receive() }
+
+            fun receiveSafetyCenterErrorDetails(timeout: Duration = TIMEOUT_LONG) =
+                runBlockingWithTimeout(timeout) { errorChannel.receive() }
+
+            fun cancelChannels() {
+                dataChannel.cancel()
+                errorChannel.cancel()
+            }
         }
-
-        override fun onError(errorDetails: SafetyCenterErrorDetails) {
-            runBlockingWithTimeout { errorChannel.send(errorDetails) }
-        }
-
-        fun receiveSafetyCenterData(timeout: Duration = TIMEOUT_LONG) =
-            runBlockingWithTimeout(timeout) { dataChannel.receive() }
-
-        fun receiveSafetyCenterErrorDetails(timeout: Duration = TIMEOUT_LONG) =
-            runBlockingWithTimeout(timeout) { errorChannel.receive() }
-
-        fun cancelChannels() {
-            dataChannel.cancel()
-            errorChannel.cancel()
-        }
-    }
 
     @Before
     fun assumeDeviceSupportsSafetyCenterToRunTests() {
@@ -383,7 +377,9 @@ class SafetyCenterManagerTest {
 
         assertFailsWith(TimeoutCancellationException::class) {
             safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
-                REFRESH_REASON_PAGE_OPEN, TIMEOUT_SHORT)
+                REFRESH_REASON_PAGE_OPEN,
+                TIMEOUT_SHORT
+            )
         }
         val apiSafetySourceData =
             safetyCenterManager.getSafetySourceDataWithPermission(CTS_SOURCE_ID)
@@ -473,16 +469,19 @@ class SafetyCenterManagerTest {
 
         val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
 
-        assertThat(apiSafetyCenterData).isEqualTo(SafetyCenterData(
-            SafetyCenterStatus.Builder()
-                .setSeverityLevel(OVERALL_SEVERITY_LEVEL_UNKNOWN)
-                .setTitle("Unknown")
-                .setSummary("Unknown safety status")
-                .build(),
-            emptyList(),
-            emptyList(),
-            emptyList()
-        ))
+        assertThat(apiSafetyCenterData)
+            .isEqualTo(
+                SafetyCenterData(
+                    SafetyCenterStatus.Builder()
+                        .setSeverityLevel(OVERALL_SEVERITY_LEVEL_UNKNOWN)
+                        .setTitle("Unknown")
+                        .setSummary("Unknown safety status")
+                        .build(),
+                    emptyList(),
+                    emptyList(),
+                    emptyList()
+                )
+            )
     }
 
     @Test
@@ -655,25 +654,26 @@ class SafetyCenterManagerTest {
     // Permission is held for the entire test to avoid a racy scenario where the shell identity is
     // dropped while it's being acquired on another thread.
     fun addOnSafetyCenterDataChangedListener_oneShot_doesntDeadlock() {
-        callWithShellPermissionIdentity({
-            val oneShotListener =
-                object : OnSafetyCenterDataChangedListener {
-                    override fun onSafetyCenterDataChanged(safetyCenterData: SafetyCenterData) {
-                        safetyCenterManager.removeOnSafetyCenterDataChangedListener(this)
-                        listener.onSafetyCenterDataChanged(safetyCenterData)
+        callWithShellPermissionIdentity(
+            {
+                val oneShotListener =
+                    object : OnSafetyCenterDataChangedListener {
+                        override fun onSafetyCenterDataChanged(safetyCenterData: SafetyCenterData) {
+                            safetyCenterManager.removeOnSafetyCenterDataChangedListener(this)
+                            listener.onSafetyCenterDataChanged(safetyCenterData)
+                        }
                     }
-                }
-            safetyCenterManager.addOnSafetyCenterDataChangedListener(
-                directExecutor(),
-                oneShotListener
-            )
+                safetyCenterManager.addOnSafetyCenterDataChangedListener(directExecutor(),
+                    oneShotListener)
 
-            // Check that we don't deadlock when using a one-shot listener: this is because adding
-            // the listener could call the listener while holding a lock on the binder thread-pool;
-            // causing a deadlock when attempting to call the `SafetyCenterManager` from that
-            // listener.
-            listener.receiveSafetyCenterData()
-        }, MANAGE_SAFETY_CENTER)
+                // Check that we don't deadlock when using a one-shot listener: this is because
+                // adding the listener could call the listener while holding a lock on the binder
+                // thread-pool; causing a deadlock when attempting to call the `SafetyCenterManager`
+                // from that listener.
+                listener.receiveSafetyCenterData()
+            },
+            MANAGE_SAFETY_CENTER
+        )
     }
 
     @Test
@@ -767,10 +767,8 @@ class SafetyCenterManagerTest {
 
     companion object {
         private const val CTS_PACKAGE_NAME = "android.safetycenter.cts"
-        private const val CTS_BROADCAST_RECEIVER_NAME =
-            "android.safetycenter.testing.SafetySourceBroadcastReceiver"
-        private val TIMEOUT_LONG: Duration = Duration.ofMillis(5000)
-        private val TIMEOUT_SHORT: Duration = Duration.ofMillis(1000)
+        private val TIMEOUT_LONG = Duration.ofSeconds(5)
+        private val TIMEOUT_SHORT = Duration.ofSeconds(1)
         private val EVENT_SOURCE_STATE_CHANGED =
             SafetyEvent.Builder(SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
         private const val CTS_SOURCE_ID = "cts_source_id"

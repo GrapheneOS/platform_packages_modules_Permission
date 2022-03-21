@@ -20,8 +20,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_SAFETY_CENTER
 import android.os.Build.VERSION_CODES.TIRAMISU
-import android.safetycenter.testing.SafetyCenterFlags
-import android.safetycenter.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
+import android.safetycenter.cts.testing.SafetyCenterFlags
+import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import android.support.test.uiautomator.By
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4

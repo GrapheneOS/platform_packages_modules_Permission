@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package android.safetycenter.testing
+package android.safetycenter.cts.testing
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -27,10 +27,10 @@ import android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_REQ
 import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED
 import android.safetycenter.SafetySourceData
+import java.time.Duration
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeout
-import java.time.Duration
 
 /** Broadcast receiver to be used for testing broadcasts sent to safety source apps. */
 class SafetySourceBroadcastReceiver : BroadcastReceiver() {
