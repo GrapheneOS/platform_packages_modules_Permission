@@ -654,7 +654,7 @@ class SafetyCenterManagerTest {
     @Test
     // Permission is held for the entire test to avoid a racy scenario where the shell identity is
     // dropped while it's being acquired on another thread.
-    fun addOnSafetyCenterDataChangedListener_oneShot_doesntDeadlock() =
+    fun addOnSafetyCenterDataChangedListener_oneShot_doesntDeadlock() {
         callWithShellPermissionIdentity({
             val oneShotListener =
                 object : OnSafetyCenterDataChangedListener {
@@ -674,6 +674,7 @@ class SafetyCenterManagerTest {
             // listener.
             listener.receiveSafetyCenterData()
         }, MANAGE_SAFETY_CENTER)
+    }
 
     @Test
     fun removeOnSafetyCenterDataChangedListener_listenerNotCalledOnSafetySourceData() {
