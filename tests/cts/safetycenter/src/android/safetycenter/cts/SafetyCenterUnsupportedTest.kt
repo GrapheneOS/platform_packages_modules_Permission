@@ -19,7 +19,6 @@ package android.safetycenter.cts
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_SAFETY_CENTER
-import android.content.pm.PackageManager
 import android.content.pm.PackageManager.FEATURE_AUTOMOTIVE
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.safetycenter.SafetyCenterManager
@@ -41,7 +40,7 @@ import org.junit.runner.RunWith
 @SdkSuppress(minSdkVersion = TIRAMISU, codeName = "Tiramisu")
 class SafetyCenterUnsupportedTest {
     private val context: Context = getApplicationContext()
-    private val packageManager = context.getSystemService(PackageManager::class.java)!!
+    private val packageManager = context.packageManager
     private val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)!!
 
     @Before
