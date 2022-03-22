@@ -1458,7 +1458,7 @@ public final class Utils {
         return SdkLevel.isAtLeastT()
                 ? getUpdatableEnterpriseString(
                         context, updatableStringId, defaultStringId, formatArgs)
-                : context.getString(defaultStringId);
+                : context.getString(defaultStringId, formatArgs);
     }
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
