@@ -702,10 +702,10 @@ public final class PermissionControllerServiceImpl extends PermissionControllerL
             }
             group.persistChanges(false, ONE_TIME_PERMISSION_REVOKED_REASON);
             if (bgGroup != null) {
-                bgGroup.persistChanges(false, ONE_TIME_PERMISSION_REVOKED_REASON);
                 if (!bgGroup.supportsOneTimeGrant()) {
                     bgGroup.setOneTime(false);
                 }
+                bgGroup.persistChanges(false, ONE_TIME_PERMISSION_REVOKED_REASON);
             }
         }
     }
