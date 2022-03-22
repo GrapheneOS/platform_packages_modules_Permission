@@ -36,6 +36,7 @@ import android.content.Intent.EXTRA_COMPONENT_NAME
 import android.content.SharedPreferences
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.os.UserHandle
 import android.os.UserManager
@@ -44,6 +45,7 @@ import android.service.notification.StatusBarNotification
 import android.util.ArraySet
 import android.util.Log
 import androidx.annotation.GuardedBy
+import androidx.annotation.RequiresApi
 import androidx.annotation.VisibleForTesting
 import androidx.annotation.WorkerThread
 import androidx.core.util.Preconditions
@@ -185,7 +187,9 @@ private fun getPackageNotificationIntervalMillis(): Long {
  * @param context Used to resolve managers
  * @param shouldCancel If supplied, can be used to interrupt long-running operations
  */
-class NotificationListenerCheck(
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
+@VisibleForTesting
+internal class NotificationListenerCheckInternal(
     context: Context,
     private val shouldCancel: BooleanSupplier?
 ) {
@@ -210,7 +214,7 @@ class NotificationListenerCheck(
     @WorkerThread
     internal suspend fun getEnabledNotificationListenersAndNotifyIfNeeded(
         params: JobParameters,
-        service: NotificationListenerCheckJobService
+        service: NotificationListenerCheck.NotificationListenerCheckJobService
     ) {
         if (!checkNotificationListenerCheckEnabled()) {
             if (DEBUG) Log.d(TAG, "NotificationListenerCheck disabled, finishing job")
@@ -304,7 +308,7 @@ class NotificationListenerCheck(
      */
     @WorkerThread
     @VisibleForTesting
-    internal suspend fun loadNotifiedComponentsLocked(): ArraySet<NlsComponent> {
+    suspend fun loadNotifiedComponentsLocked(): ArraySet<NlsComponent> {
         return withContext(Dispatchers.IO) {
             try {
                 BufferedReader(
@@ -546,13 +550,15 @@ class NotificationListenerCheck(
             sessionId = Random().nextLong()
         }
 
-        val deleteIntent = Intent(parentUserContext, NotificationDeleteHandler::class.java).apply {
+        val deleteIntent = Intent(parentUserContext,
+            NotificationListenerCheck.NotificationDeleteHandler::class.java).apply {
             putExtra(EXTRA_COMPONENT_NAME, componentName)
             putExtra(EXTRA_SESSION_ID, sessionId)
             flags = Intent.FLAG_RECEIVER_FOREGROUND
         }
 
-        val clickIntent = Intent(parentUserContext, NotificationClickHandler::class.java).apply {
+        val clickIntent = Intent(parentUserContext,
+            NotificationListenerCheck.NotificationClickHandler::class.java).apply {
             putExtra(EXTRA_COMPONENT_NAME, componentName)
             putExtra(EXTRA_SESSION_ID, sessionId)
             flags = Intent.FLAG_RECEIVER_FOREGROUND
@@ -662,17 +668,34 @@ class NotificationListenerCheck(
      *
      * @return `true` if the current user is the profile parent.
      */
-    private fun isRunningInParentProfile(): Boolean {
+    internal fun isRunningInParentProfile(): Boolean {
         val user = UserHandle.of(UserHandle.myUserId())
         val parent: UserHandle? = userManager.getProfileParent(user)
         return parent == null || user == parent
     }
 
     /**
+     * An immutable data class containing a [ComponentName] and timestamps for notification and
+     * signal resolved.
+     *
+     * @param componentName The component name of the notification listener
+     * @param notificationShownTime optional named parameter to set time of notification shown
+     * @param signalResolvedTime optional named parameter to set time of signal resolved
+     */
+    @VisibleForTesting
+    data class NlsComponent(
+        val componentName: ComponentName,
+        val notificationShownTime: Long = 0L,
+        val signalResolvedTime: Long = 0L
+    )
+}
+
+class NotificationListenerCheck {
+    /**
      * Checks if a new notification should be shown.
      */
     class NotificationListenerCheckJobService : JobService() {
-        private var notificationListenerCheck: NotificationListenerCheck? = null
+        private var notificationListenerCheckInternal: NotificationListenerCheckInternal? = null
         private val jobLock = Object()
 
         /** We currently check if we should show a notification, the task executing the check  */
@@ -681,12 +704,18 @@ class NotificationListenerCheck(
 
         override fun onCreate() {
             super.onCreate()
-            notificationListenerCheck = NotificationListenerCheck(this, BooleanSupplier {
-                synchronized(jobLock) {
-                    val job = addNotificationListenerNotificationIfNeededJob
-                    return@BooleanSupplier job?.isCancelled ?: false
-                }
-            })
+
+            if (!checkNotificationListenerSupported()) {
+                return
+            }
+
+            notificationListenerCheckInternal =
+                NotificationListenerCheckInternal(this, BooleanSupplier {
+                    synchronized(jobLock) {
+                        val job = addNotificationListenerNotificationIfNeededJob
+                        return@BooleanSupplier job?.isCancelled ?: false
+                    }
+                })
         }
 
         /**
@@ -694,19 +723,25 @@ class NotificationListenerCheck(
          *
          * @param params Not used other than for interacting with job scheduling
          *
-         * @return `false` iff another check if already running
+         * @return `false` if another check is already running, or if SDK Check fails (below T)
          */
         override fun onStartJob(params: JobParameters): Boolean {
+            if (!checkNotificationListenerSupported()) {
+                // NotificationListenerCheck not supported below T. End job.
+                return false
+            }
+
             synchronized(jobLock) {
                 if (addNotificationListenerNotificationIfNeededJob != null) {
                     if (DEBUG) Log.d(TAG, "Job already running")
                     return false
                 }
                 addNotificationListenerNotificationIfNeededJob = GlobalScope.launch(Default) {
-                    notificationListenerCheck?.getEnabledNotificationListenersAndNotifyIfNeeded(
-                        params,
-                        this@NotificationListenerCheckJobService
-                    ) ?: jobFinished(params, true)
+                    notificationListenerCheckInternal
+                        ?.getEnabledNotificationListenersAndNotifyIfNeeded(
+                            params,
+                            this@NotificationListenerCheckJobService
+                        ) ?: jobFinished(params, true)
                 }
             }
             return true
@@ -748,10 +783,10 @@ class NotificationListenerCheck(
                 return
             }
 
-            val notificationListenerCheck = NotificationListenerCheck(context, null)
+            val notificationListenerCheckInternal = NotificationListenerCheckInternal(context, null)
             val jobScheduler = Utils.getSystemServiceSafe(context, JobScheduler::class.java)
 
-            if (!notificationListenerCheck.isRunningInParentProfile()) {
+            if (!notificationListenerCheckInternal.isRunningInParentProfile()) {
                 // Profile parent handles child profiles too.
                 return
             }
@@ -781,13 +816,17 @@ class NotificationListenerCheck(
     /**
      * Show the notification listener permission switch when the notification is clicked.
      */
-    class NotificationClickHandler() : BroadcastReceiver() {
+    class NotificationClickHandler : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
+            if (!checkNotificationListenerSupported()) {
+                return
+            }
+
             val componentName =
                 Utils.getParcelableExtraSafe<ComponentName>(intent, EXTRA_COMPONENT_NAME)
             val sessionId = intent.getLongExtra(EXTRA_SESSION_ID, INVALID_SESSION_ID)
             GlobalScope.launch(Default) {
-                NotificationListenerCheck(context, null).markAsNotified(componentName)
+                NotificationListenerCheckInternal(context, null).markAsNotified(componentName)
             }
             Log.v(
                 TAG,
@@ -802,13 +841,17 @@ class NotificationListenerCheck(
     /**
      * Handle the case where the notification is swiped away without further interaction.
      */
-    class NotificationDeleteHandler() : BroadcastReceiver() {
+    class NotificationDeleteHandler : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
+            if (!checkNotificationListenerSupported()) {
+                return
+            }
+
             val componentName =
                 Utils.getParcelableExtraSafe<ComponentName>(intent, EXTRA_COMPONENT_NAME)
             val sessionId = intent.getLongExtra(EXTRA_SESSION_ID, INVALID_SESSION_ID)
             GlobalScope.launch(Default) {
-                NotificationListenerCheck(context, null).markAsNotified(componentName)
+                NotificationListenerCheckInternal(context, null).markAsNotified(componentName)
             }
             Log.v(
                 TAG,
@@ -840,8 +883,8 @@ class NotificationListenerCheck(
             if (DEBUG) Log.i(TAG, "Reset " + data.schemeSpecificPart)
 
             GlobalScope.launch(Default) {
-                NotificationListenerCheck(context, null).run {
-                    if (!this.isRunningInParentProfile()) {
+                NotificationListenerCheckInternal(context, null).run {
+                    if (!isRunningInParentProfile()) {
                         if (DEBUG) {
                             Log.d(TAG, "NotificationListenerCheck only supports parent profile")
                         }
@@ -855,19 +898,4 @@ class NotificationListenerCheck(
             }
         }
     }
-
-    /**
-     * An immutable data class containing a [ComponentName] and timestamps for notification and
-     * signal resolved.
-     *
-     * @param componentName The component name of the notification listener
-     * @param notificationShownTime optional named parameter to set time of notification shown
-     * @param signalResolvedTime optional named parameter to set time of signal resolved
-     */
-    @VisibleForTesting
-    internal data class NlsComponent(
-        val componentName: ComponentName,
-        val notificationShownTime: Long = 0L,
-        val signalResolvedTime: Long = 0L
-    )
 }
