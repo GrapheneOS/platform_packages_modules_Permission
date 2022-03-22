@@ -27,15 +27,12 @@ import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.data.v33.PermissionEvent
 import com.android.permissioncontroller.permission.service.v33.BasePermissionEventStorage
-import com.android.permissioncontroller.permission.service.v33.BasePermissionEventStorage.Companion.DEFAULT_CLEAR_OLD_DECISIONS_CHECK_FREQUENCY
-import com.android.permissioncontroller.permission.utils.Utils.PROPERTY_PERMISSION_DECISIONS_CHECK_OLD_FREQUENCY_MILLIS
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.ArgumentMatchers.eq
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.Mockito.`when`
@@ -93,11 +90,6 @@ class BasePermissionEventStorageTest {
         filesDir = context.cacheDir
         `when`(application.filesDir).thenReturn(filesDir)
         `when`(jobScheduler.schedule(any())).thenReturn(JobScheduler.RESULT_SUCCESS)
-        `when`(
-            DeviceConfig.getLong(eq(DeviceConfig.NAMESPACE_PERMISSIONS),
-                eq(PROPERTY_PERMISSION_DECISIONS_CHECK_OLD_FREQUENCY_MILLIS),
-                eq(DEFAULT_CLEAR_OLD_DECISIONS_CHECK_FREQUENCY)))
-            .thenReturn(DEFAULT_CLEAR_OLD_DECISIONS_CHECK_FREQUENCY)
     }
 
     private fun init() {
@@ -111,36 +103,6 @@ class BasePermissionEventStorageTest {
         logFile.delete()
 
         storage.clearEvents()
-    }
-
-    @Test
-    fun init_noExistingJob_schedulesNewJob() {
-        `when`(jobScheduler.getPendingJob(Constants.OLD_PERMISSION_DECISION_CLEANUP_JOB_ID))
-            .thenReturn(null)
-        init()
-
-        Mockito.verify(jobScheduler).schedule(any())
-    }
-
-    @Test
-    fun init_existingJob_doesNotScheduleNewJob() {
-        `when`(existingJob.intervalMillis).thenReturn(DEFAULT_CLEAR_OLD_DECISIONS_CHECK_FREQUENCY)
-        `when`(jobScheduler.getPendingJob(Constants.OLD_PERMISSION_DECISION_CLEANUP_JOB_ID))
-            .thenReturn(existingJob)
-        init()
-
-        Mockito.verify(jobScheduler, Mockito.never()).schedule(any())
-    }
-
-    @Test
-    fun init_existingJob_differentFrequency_schedulesNewJob() {
-        `when`(existingJob.intervalMillis)
-            .thenReturn(DEFAULT_CLEAR_OLD_DECISIONS_CHECK_FREQUENCY + 1)
-        `when`(jobScheduler.getPendingJob(Constants.OLD_PERMISSION_DECISION_CLEANUP_JOB_ID))
-            .thenReturn(existingJob)
-        init()
-
-        Mockito.verify(jobScheduler).schedule(any())
     }
 
     @Test

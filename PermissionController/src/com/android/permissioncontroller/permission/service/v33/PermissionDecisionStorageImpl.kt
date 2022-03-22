@@ -48,7 +48,7 @@ import java.util.concurrent.TimeUnit
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class PermissionDecisionStorageImpl(
     context: Context,
-    jobScheduler: JobScheduler
+    jobScheduler: JobScheduler = context.getSystemService(JobScheduler::class.java)!!
 ) : BasePermissionEventStorage<PermissionDecision>(context, jobScheduler) {
 
     // We don't use namespaces
@@ -88,8 +88,7 @@ class PermissionDecisionStorageImpl(
             }
 
         private fun createInstance(): PermissionEventStorage<PermissionDecision> {
-            return PermissionDecisionStorageImpl(PermissionControllerApplication.get(),
-                PermissionControllerApplication.get().getSystemService(JobScheduler::class.java)!!)
+            return PermissionDecisionStorageImpl(PermissionControllerApplication.get())
         }
 
         fun recordPermissionDecision(

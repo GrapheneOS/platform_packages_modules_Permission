@@ -94,8 +94,7 @@ class PersistedStoragePackageUninstalledReceiverTest {
         `when`(jobScheduler.schedule(any())).thenReturn(JobScheduler.RESULT_SUCCESS)
         `when`(DeviceConfig.getProperty(eq(NAMESPACE_PERMISSIONS), anyString())).thenReturn(null)
 
-        permissionEventStorage = spy(
-            PermissionDecisionStorageImpl(context, jobScheduler))
+        permissionEventStorage = spy(PermissionDecisionStorageImpl(context, jobScheduler))
         receiver = spy(PersistedStoragePackageUninstalledReceiver(permissionEventStorage))
     }
 
