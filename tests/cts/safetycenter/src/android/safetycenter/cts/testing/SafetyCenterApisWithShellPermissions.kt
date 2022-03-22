@@ -14,11 +14,12 @@
  * limitations under the License.
  */
 
-package android.safetycenter.testing
+package android.safetycenter.cts.testing
 
 import android.Manifest.permission.MANAGE_SAFETY_CENTER
 import android.Manifest.permission.READ_SAFETY_CENTER_STATUS
 import android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE
+import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyCenterManager.OnSafetyCenterDataChangedListener
 import android.safetycenter.SafetyEvent
@@ -32,7 +33,7 @@ import java.util.concurrent.Executor
  * Calls [SafetyCenterManager.isSafetyCenterEnabled] adopting Shell's [READ_SAFETY_CENTER_STATUS]
  * permission.
  */
-fun SafetyCenterManager.isSafetyCenterEnabledWithPermission() =
+fun SafetyCenterManager.isSafetyCenterEnabledWithPermission(): Boolean =
     callWithShellPermissionIdentity({ isSafetyCenterEnabled }, READ_SAFETY_CENTER_STATUS)
 
 /**
@@ -43,17 +44,18 @@ fun SafetyCenterManager.setSafetySourceDataWithPermission(
     safetySourceId: String,
     safetySourceData: SafetySourceData?,
     safetyEvent: SafetyEvent
-) =
+) {
     callWithShellPermissionIdentity(
         { setSafetySourceData(safetySourceId, safetySourceData, safetyEvent) },
         SEND_SAFETY_CENTER_UPDATE
     )
+}
 
 /**
  * Calls [SafetyCenterManager.getSafetySourceData] adopting Shell's [SEND_SAFETY_CENTER_UPDATE]
  * permission.
  */
-fun SafetyCenterManager.getSafetySourceDataWithPermission(id: String) =
+fun SafetyCenterManager.getSafetySourceDataWithPermission(id: String): SafetySourceData? =
     callWithShellPermissionIdentity({ getSafetySourceData(id) }, SEND_SAFETY_CENTER_UPDATE)
 
 /**
@@ -63,31 +65,33 @@ fun SafetyCenterManager.getSafetySourceDataWithPermission(id: String) =
 fun SafetyCenterManager.reportSafetySourceErrorWithPermission(
     safetySourceId: String,
     safetySourceErrorDetails: SafetySourceErrorDetails
-) =
+) {
     callWithShellPermissionIdentity(
         { reportSafetySourceError(safetySourceId, safetySourceErrorDetails) },
         SEND_SAFETY_CENTER_UPDATE
     )
+}
 
 /**
  * Calls [SafetyCenterManager.refreshSafetySources] adopting Shell's [MANAGE_SAFETY_CENTER]
  * permission.
  */
-fun SafetyCenterManager.refreshSafetySourcesWithPermission(refreshReason: Int) =
+fun SafetyCenterManager.refreshSafetySourcesWithPermission(refreshReason: Int) {
     callWithShellPermissionIdentity({ refreshSafetySources(refreshReason) }, MANAGE_SAFETY_CENTER)
+}
 
 /**
  * Calls [SafetyCenterManager.getSafetyCenterConfig] adopting Shell's [MANAGE_SAFETY_CENTER]
  * permission.
  */
-fun SafetyCenterManager.getSafetyCenterConfigWithPermission() =
+fun SafetyCenterManager.getSafetyCenterConfigWithPermission(): SafetyCenterConfig? =
     callWithShellPermissionIdentity(::getSafetyCenterConfig, MANAGE_SAFETY_CENTER)
 
 /**
  * Calls [SafetyCenterManager.getSafetyCenterData] adopting Shell's [MANAGE_SAFETY_CENTER]
  * permission.
  */
-fun SafetyCenterManager.getSafetyCenterDataWithPermission() =
+fun SafetyCenterManager.getSafetyCenterDataWithPermission(): SafetyCenterData =
     callWithShellPermissionIdentity(::getSafetyCenterData, MANAGE_SAFETY_CENTER)
 
 /**
@@ -97,11 +101,12 @@ fun SafetyCenterManager.getSafetyCenterDataWithPermission() =
 fun SafetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
     executor: Executor,
     listener: OnSafetyCenterDataChangedListener
-) =
+) {
     callWithShellPermissionIdentity(
         { addOnSafetyCenterDataChangedListener(executor, listener) },
         MANAGE_SAFETY_CENTER
     )
+}
 
 /**
  * Calls [SafetyCenterManager.removeOnSafetyCenterDataChangedListener] adopting Shell's
@@ -109,19 +114,23 @@ fun SafetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
  */
 fun SafetyCenterManager.removeOnSafetyCenterDataChangedListenerWithPermission(
     listener: OnSafetyCenterDataChangedListener
-) =
+) {
     callWithShellPermissionIdentity(
         { removeOnSafetyCenterDataChangedListener(listener) },
         MANAGE_SAFETY_CENTER
     )
+}
 
 /**
  * Calls [SafetyCenterManager.dismissSafetyCenterIssue] adopting Shell's [MANAGE_SAFETY_CENTER]
  * permission.
  */
-fun SafetyCenterManager.dismissSafetyCenterIssueWithPermission(safetyCenterIssueId: String) =
-    callWithShellPermissionIdentity({ dismissSafetyCenterIssue(safetyCenterIssueId) },
-        MANAGE_SAFETY_CENTER)
+fun SafetyCenterManager.dismissSafetyCenterIssueWithPermission(safetyCenterIssueId: String) {
+    callWithShellPermissionIdentity(
+        { dismissSafetyCenterIssue(safetyCenterIssueId) },
+        MANAGE_SAFETY_CENTER
+    )
+}
 
 /**
  * Calls [SafetyCenterManager.executeSafetyCenterIssueAction] adopting Shell's
@@ -130,18 +139,20 @@ fun SafetyCenterManager.dismissSafetyCenterIssueWithPermission(safetyCenterIssue
 fun SafetyCenterManager.executeSafetyCenterIssueActionWithPermission(
     safetyCenterIssueId: String,
     safetyCenterIssueActionId: String
-) =
+) {
     callWithShellPermissionIdentity(
         { executeSafetyCenterIssueAction(safetyCenterIssueId, safetyCenterIssueActionId) },
         MANAGE_SAFETY_CENTER
     )
+}
 
 /**
  * Calls [SafetyCenterManager.clearAllSafetySourceData] adopting Shell's [MANAGE_SAFETY_CENTER]
  * permission.
  */
-fun SafetyCenterManager.clearAllSafetySourceDataWithPermission() =
+fun SafetyCenterManager.clearAllSafetySourceDataWithPermission() {
     callWithShellPermissionIdentity({ clearAllSafetySourceData() }, MANAGE_SAFETY_CENTER)
+}
 
 /**
  * Calls [SafetyCenterManager.setSafetyCenterConfigOverride] adopting Shell's [MANAGE_SAFETY_CENTER]
@@ -149,15 +160,17 @@ fun SafetyCenterManager.clearAllSafetySourceDataWithPermission() =
  */
 fun SafetyCenterManager.setSafetyCenterConfigOverrideWithPermission(
     safetyCenterConfig: SafetyCenterConfig
-) =
+) {
     callWithShellPermissionIdentity(
         { setSafetyCenterConfigOverride(safetyCenterConfig) },
         MANAGE_SAFETY_CENTER
     )
+}
 
 /**
  * Calls [SafetyCenterManager.clearSafetyCenterConfigOverride] adopting Shell's
  * [MANAGE_SAFETY_CENTER] permission.
  */
-fun SafetyCenterManager.clearSafetyCenterConfigOverrideWithPermission() =
+fun SafetyCenterManager.clearSafetyCenterConfigOverrideWithPermission() {
     callWithShellPermissionIdentity({ clearSafetyCenterConfigOverride() }, MANAGE_SAFETY_CENTER)
+}

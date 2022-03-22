@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package android.safetycenter.testing
+package android.safetycenter.cts.testing
 
 import android.Manifest.permission.WRITE_DEVICE_CONFIG
 import android.content.Context

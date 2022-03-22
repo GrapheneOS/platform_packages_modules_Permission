@@ -20,11 +20,12 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Build.VERSION_CODES.TIRAMISU
-import android.os.Parcel
 import android.safetycenter.SafetyCenterStaticEntry
 import android.safetycenter.SafetyCenterStaticEntryGroup
+import android.safetycenter.cts.testing.EqualsHashCodeToStringTester
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.ext.truth.os.ParcelableSubject.assertThat
 import androidx.test.filters.SdkSuppress
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
@@ -35,45 +36,47 @@ import org.junit.runner.RunWith
 class SafetyCenterStaticEntryGroupTest {
     private val context: Context = ApplicationProvider.getApplicationContext()
 
-    private val pendingIntent1 = PendingIntent.getActivity(
+    private val pendingIntent1 =
+        PendingIntent.getActivity(context, 0, Intent("Fake Data"), PendingIntent.FLAG_IMMUTABLE)
+    private val pendingIntent2 =
+        PendingIntent.getActivity(
             context,
-            /* requestCode= */ 0,
-            Intent("Fake Data"),
-            PendingIntent.FLAG_IMMUTABLE)
-    private val pendingIntent2 = PendingIntent.getActivity(
-            context,
-            /* requestCode= */ 0,
+            0,
             Intent("Fake Different Data"),
-            PendingIntent.FLAG_IMMUTABLE)
+            PendingIntent.FLAG_IMMUTABLE
+        )
 
-    private val staticEntry1 = SafetyCenterStaticEntry.Builder()
+    private val staticEntry1 =
+        SafetyCenterStaticEntry.Builder()
             .setTitle("an entry title")
             .setSummary("an entry summary")
             .setPendingIntent(pendingIntent1)
             .build()
-    private val staticEntry2 = SafetyCenterStaticEntry.Builder()
+    private val staticEntry2 =
+        SafetyCenterStaticEntry.Builder()
             .setTitle("another entry title")
             .setSummary("another entry summary")
             .setPendingIntent(pendingIntent2)
             .build()
 
     private val staticEntryGroup =
-            SafetyCenterStaticEntryGroup("a title", listOf(staticEntry1, staticEntry2))
+        SafetyCenterStaticEntryGroup("a title", listOf(staticEntry1, staticEntry2))
 
     @Test
     fun getTitle_returnsTitle() {
         assertThat(SafetyCenterStaticEntryGroup("a title", listOf()).title).isEqualTo("a title")
         assertThat(SafetyCenterStaticEntryGroup("another title", listOf()).title)
-                .isEqualTo("another title")
+            .isEqualTo("another title")
     }
 
     @Test
     fun getStaticEntries_returnsStaticEntries() {
         assertThat(SafetyCenterStaticEntryGroup("", listOf(staticEntry1)).staticEntries)
-                .containsExactly(staticEntry1)
+            .containsExactly(staticEntry1)
         assertThat(
-                SafetyCenterStaticEntryGroup("", listOf(staticEntry1, staticEntry2)).staticEntries)
-                .containsExactly(staticEntry1, staticEntry2)
+            SafetyCenterStaticEntryGroup("", listOf(staticEntry1, staticEntry2)).staticEntries)
+            .containsExactly(staticEntry1, staticEntry2)
+            .inOrder()
         assertThat(SafetyCenterStaticEntryGroup("", listOf()).staticEntries).isEmpty()
     }
 
@@ -83,49 +86,24 @@ class SafetyCenterStaticEntryGroupTest {
     }
 
     @Test
-    fun createFromParcel_withWriteToParcel_returnsEquivalentObject() {
-        val parcel: Parcel = Parcel.obtain()
-
-        staticEntryGroup.writeToParcel(parcel, 0 /* flags */)
-        parcel.setDataPosition(0)
-        val fromParcel = SafetyCenterStaticEntryGroup.CREATOR.createFromParcel(parcel)
-        parcel.recycle()
-
-        assertThat(fromParcel).isEqualTo(staticEntryGroup)
+    fun parcelRoundTrip_recreatesEqual() {
+        assertThat(staticEntryGroup).recreatesEqual(SafetyCenterStaticEntryGroup.CREATOR)
     }
 
     @Test
-    fun equals_hashCode_toString_equalByReference_areEqual() {
-        assertThat(staticEntryGroup).isEqualTo(staticEntryGroup)
-        assertThat(staticEntryGroup.hashCode()).isEqualTo(staticEntryGroup.hashCode())
-        assertThat(staticEntryGroup.toString()).isEqualTo(staticEntryGroup.toString())
-    }
-
-    @Test
-    fun equals_hashCode_toString_equalByValue_areEqual() {
-        val group = SafetyCenterStaticEntryGroup("a title", listOf(staticEntry1))
-        val equivalentGroup = SafetyCenterStaticEntryGroup("a title", listOf(staticEntry1))
-
-        assertThat(group).isEqualTo(equivalentGroup)
-        assertThat(group.hashCode()).isEqualTo(equivalentGroup.hashCode())
-        assertThat(group.toString()).isEqualTo(equivalentGroup.toString())
-    }
-
-    @Test
-    fun equals_toString_withDifferentTitles_areNotEqual() {
-        val group = SafetyCenterStaticEntryGroup("a title", listOf(staticEntry1))
-        val differentGroup = SafetyCenterStaticEntryGroup("a different title", listOf(staticEntry1))
-
-        assertThat(group).isNotEqualTo(differentGroup)
-        assertThat(group.toString()).isNotEqualTo(differentGroup.toString())
-    }
-
-    @Test
-    fun equals_toString_withDifferentStaticEntries_areNotEqual() {
-        val group = SafetyCenterStaticEntryGroup("a title", listOf(staticEntry1))
-        val differentGroup = SafetyCenterStaticEntryGroup("a different title", listOf(staticEntry2))
-
-        assertThat(group).isNotEqualTo(differentGroup)
-        assertThat(group.toString()).isNotEqualTo(differentGroup.toString())
+    fun equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
+        EqualsHashCodeToStringTester()
+            .addEqualityGroup(
+                staticEntryGroup,
+                SafetyCenterStaticEntryGroup("a title", listOf(staticEntry1, staticEntry2))
+            )
+            .addEqualityGroup(
+                SafetyCenterStaticEntryGroup("a title", listOf(staticEntry1)),
+                SafetyCenterStaticEntryGroup("a title", listOf(staticEntry1))
+            )
+            .addEqualityGroup(
+                SafetyCenterStaticEntryGroup("a different title", listOf(staticEntry1)))
+            .addEqualityGroup(SafetyCenterStaticEntryGroup("a title", listOf(staticEntry2)))
+            .test()
     }
 }

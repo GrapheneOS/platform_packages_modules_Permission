@@ -14,26 +14,39 @@
  * limitations under the License.
  */
 
-package android.safetycenter.cts
+package android.safetycenter.cts.config
 
 import android.os.Build.VERSION_CODES.TIRAMISU
-import android.safetycenter.config.SafetyCenterConfig
-import androidx.test.core.app.ApplicationProvider.getApplicationContext
+import android.safetycenter.config.ParseException
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
-import com.android.safetycenter.resources.SafetyCenterResourcesContext
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
 
+/** CTS tests for [ParseException]. */
 @RunWith(AndroidJUnit4::class)
 @SdkSuppress(minSdkVersion = TIRAMISU, codeName = "Tiramisu")
-class XmlConfigTest {
-    private val safetyCenterContext = SafetyCenterResourcesContext(getApplicationContext())
+class ParseExceptionTest {
 
     @Test
-    fun safetyCenterConfigResource_validConfig() {
-        // Assert that the parser validates the Safety Center config without throwing any exception
-        assertThat(SafetyCenterConfig.fromXml(safetyCenterContext.safetyCenterConfig!!)).isNotNull()
+    fun propagatesMessage() {
+        val message = "error message"
+
+        val exception = ParseException(message)
+
+        assertThat(exception).hasMessageThat().isEqualTo(message)
+        assertThat(exception).hasCauseThat().isNull()
+    }
+
+    @Test
+    fun propagatesMessageAndCause() {
+        val message = "error message"
+        val cause = Exception("error message for cause")
+
+        val exception = ParseException(message, cause)
+
+        assertThat(exception).hasMessageThat().isEqualTo(message)
+        assertThat(exception).hasCauseThat().isEqualTo(cause)
     }
 }
