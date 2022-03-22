@@ -19,10 +19,9 @@ package android.safetycenter.cts
 import android.os.Build
 import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetySourceErrorDetails
-import android.safetycenter.testing.AnyTester.assertThatRepresentationsAreEqual
-import android.safetycenter.testing.AnyTester.assertThatRepresentationsAreNotEqual
-import android.safetycenter.testing.ParcelableTester.assertThatRoundTripReturnsOriginal
+import android.safetycenter.cts.testing.EqualsHashCodeToStringTester
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.ext.truth.os.ParcelableSubject.assertThat
 import androidx.test.filters.SdkSuppress
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
@@ -40,35 +39,27 @@ class SafetySourceErrorDetailsTest {
     }
 
     @Test
-    fun createFromParcel_withWriteToParcel_returnsEquivalentObject() {
+    fun parcelRoundTrip_recreatesEqual() {
         val errorDetails = SafetySourceErrorDetails(SAFETY_EVENT)
 
-        assertThatRoundTripReturnsOriginal(errorDetails, SafetySourceErrorDetails.CREATOR)
+        assertThat(errorDetails).recreatesEqual(SafetySourceErrorDetails.CREATOR)
     }
 
     @Test
-    fun equals_hashCode_toString_equalByReference_areEqual() {
-        val errorDetails = SafetySourceErrorDetails(SAFETY_EVENT)
-
-        assertThatRepresentationsAreEqual(errorDetails, errorDetails)
-    }
-
-    @Test
-    fun equals_hashCode_toString_equalByValue_areEqual() {
-        val errorDetails = SafetySourceErrorDetails(SAFETY_EVENT)
-        val equivalentSafetySourceErrorDetails = SafetySourceErrorDetails(SAFETY_EVENT)
-
-        assertThatRepresentationsAreEqual(errorDetails, equivalentSafetySourceErrorDetails)
-    }
-
-    @Test
-    fun equals_toString_withDifferentSafetyEvents_areNotEqual() {
-        val errorDetails = SafetySourceErrorDetails(
-            SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build())
-        val otherErrorDetails = SafetySourceErrorDetails(
-            SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_REBOOTED).build())
-
-        assertThatRepresentationsAreNotEqual(errorDetails, otherErrorDetails)
+    fun equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
+        EqualsHashCodeToStringTester()
+            .addEqualityGroup(
+                SafetySourceErrorDetails(SAFETY_EVENT),
+                SafetySourceErrorDetails(
+                    SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
+                )
+            )
+            .addEqualityGroup(
+                SafetySourceErrorDetails(
+                    SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_REBOOTED).build()
+                )
+            )
+            .test()
     }
 
     companion object {
