@@ -1385,7 +1385,6 @@ public final class Utils {
      */
     public static void navigateToNotificationSettings(@NonNull Context context) {
         Intent notificationIntent = new Intent(Settings.ACTION_ALL_APPS_NOTIFICATION_SETTINGS);
-        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(notificationIntent);
     }
 
@@ -1400,7 +1399,6 @@ public final class Utils {
             @NonNull String packageName, @NonNull UserHandle user) {
         Intent notificationIntent = new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
         notificationIntent.putExtra(Settings.EXTRA_APP_PACKAGE, packageName);
-        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivityAsUser(notificationIntent, user);
     }
 
