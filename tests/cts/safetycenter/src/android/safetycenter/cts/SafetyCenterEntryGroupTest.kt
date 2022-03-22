@@ -20,11 +20,12 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Build.VERSION_CODES.TIRAMISU
-import android.os.Parcel
 import android.safetycenter.SafetyCenterEntry
 import android.safetycenter.SafetyCenterEntryGroup
+import android.safetycenter.cts.testing.EqualsHashCodeToStringTester
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.ext.truth.os.ParcelableSubject.assertThat
 import androidx.test.filters.SdkSuppress
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
@@ -35,33 +36,34 @@ import org.junit.runner.RunWith
 class SafetyCenterEntryGroupTest {
     private val context: Context = ApplicationProvider.getApplicationContext()
 
-    private val pendingIntent = PendingIntent.getActivity(
-            context,
-            /* requestCode= */ 0,
-            Intent("Fake Data"),
-            PendingIntent.FLAG_IMMUTABLE)
+    private val pendingIntent =
+        PendingIntent.getActivity(context, 0, Intent("Fake Data"), PendingIntent.FLAG_IMMUTABLE)
 
-    val entry1 = SafetyCenterEntry.Builder("eNtRy_iD_OnE")
+    private val entry1 =
+        SafetyCenterEntry.Builder("eNtRy_iD_OnE")
             .setTitle("An entry title")
             .setPendingIntent(pendingIntent)
             .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK)
             .build()
-    val entry2 = SafetyCenterEntry.Builder("eNtRy_iD_TwO")
+    private val entry2 =
+        SafetyCenterEntry.Builder("eNtRy_iD_TwO")
             .setTitle("Another entry title")
             .setPendingIntent(pendingIntent)
             .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_RECOMMENDATION)
             .build()
 
-    val groupId1 = "gRoUp_iD_oNe"
-    val groupId2 = "gRoUp_iD_tWo"
+    private val groupId1 = "gRoUp_iD_oNe"
+    private val groupId2 = "gRoUp_iD_tWo"
 
-    val entryGroup1 = SafetyCenterEntryGroup.Builder(groupId1)
+    private val entryGroup1 =
+        SafetyCenterEntryGroup.Builder(groupId1)
             .setTitle("A group title")
             .setSummary("A group summary")
             .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK)
             .setEntries(listOf(entry1))
             .build()
-    val entryGroup2 = SafetyCenterEntryGroup.Builder(groupId2)
+    private val entryGroup2 =
+        SafetyCenterEntryGroup.Builder(groupId2)
             .setTitle("Another group title")
             .setSummary("Another group summary")
             .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_RECOMMENDATION)
@@ -77,45 +79,51 @@ class SafetyCenterEntryGroupTest {
     @Test
     fun getTitle_returnsTitle() {
         assertThat(SafetyCenterEntryGroup.Builder(entryGroup1).setTitle("title one").build().title)
-                .isEqualTo("title one")
+            .isEqualTo("title one")
         assertThat(SafetyCenterEntryGroup.Builder(entryGroup1).setTitle("title two").build().title)
-                .isEqualTo("title two")
+            .isEqualTo("title two")
     }
 
     @Test
     fun getSummary_returnsSummary() {
         assertThat(SafetyCenterEntryGroup.Builder(entryGroup1).setSummary("one").build().summary)
-                .isEqualTo("one")
+            .isEqualTo("one")
         assertThat(SafetyCenterEntryGroup.Builder(entryGroup1).setSummary("two").build().summary)
-                .isEqualTo("two")
+            .isEqualTo("two")
         assertThat(SafetyCenterEntryGroup.Builder(entryGroup1).setSummary(null).build().summary)
-                .isNull()
+            .isNull()
     }
 
     @Test
     fun getSeverityLevel_returnsSeverityLevel() {
-        assertThat(SafetyCenterEntryGroup.Builder(entryGroup1)
+        assertThat(
+            SafetyCenterEntryGroup.Builder(entryGroup1)
                 .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_RECOMMENDATION)
                 .build()
-                .severityLevel)
-                .isEqualTo(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_RECOMMENDATION)
-        assertThat(SafetyCenterEntryGroup.Builder(entryGroup1)
+                .severityLevel
+        )
+            .isEqualTo(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_RECOMMENDATION)
+        assertThat(
+            SafetyCenterEntryGroup.Builder(entryGroup1)
                 .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED)
                 .build()
-                .severityLevel)
-                .isEqualTo(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED)
+                .severityLevel
+        )
+            .isEqualTo(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED)
     }
 
     @Test
     fun getSeverityUnspecifiedIconType_returnsSeverityUnspecifiedIconType() {
         assertThat(entryGroup1.severityUnspecifiedIconType)
-                .isEqualTo(SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON)
-        assertThat(SafetyCenterEntryGroup.Builder(entryGroup1)
+            .isEqualTo(SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON)
+        assertThat(
+            SafetyCenterEntryGroup.Builder(entryGroup1)
                 .setSeverityUnspecifiedIconType(
-                        SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_PRIVACY)
+                    SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_PRIVACY)
                 .build()
-                .severityUnspecifiedIconType)
-                .isEqualTo(SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_PRIVACY)
+                .severityUnspecifiedIconType
+        )
+            .isEqualTo(SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_PRIVACY)
     }
 
     @Test
@@ -129,132 +137,59 @@ class SafetyCenterEntryGroupTest {
         val mutatedEntries = entryGroup1.entries
         mutatedEntries.add(entry2)
 
-        assertThat(mutatedEntries).containsExactly(entry1, entry2)
+        assertThat(mutatedEntries).containsExactly(entry1, entry2).inOrder()
         assertThat(entryGroup1.entries).doesNotContain(entry2)
     }
 
     @Test
     fun describeContents_returns0() {
         assertThat(entryGroup1.describeContents()).isEqualTo(0)
+        assertThat(entryGroup2.describeContents()).isEqualTo(0)
     }
 
     @Test
-    fun createFromParcel_withWriteToParcel_returnsEquivalentObject() {
-        val parcel = Parcel.obtain()
-
-        entryGroup1.writeToParcel(parcel, /* flags= */ 0)
-        parcel.setDataPosition(0)
-
-        val fromParcel = SafetyCenterEntryGroup.CREATOR.createFromParcel(parcel)
-        parcel.recycle()
-
-        assertThat(fromParcel).isEqualTo(entryGroup1)
+    fun parcelRoundTrip_recreatesEqual() {
+        assertThat(entryGroup1).recreatesEqual(SafetyCenterEntryGroup.CREATOR)
+        assertThat(entryGroup2).recreatesEqual(SafetyCenterEntryGroup.CREATOR)
     }
 
     @Test
-    fun equals_hashCode_toString_equalByReference_areEqual() {
-        assertThat(entryGroup1).isEqualTo(entryGroup1)
-        assertThat(entryGroup1.hashCode()).isEqualTo(entryGroup1.hashCode())
-        assertThat(entryGroup1.toString()).isEqualTo(entryGroup1.toString())
-    }
-
-    @Test
-    fun equals_hashCode_toString_equalByValue_areEqual() {
-        val entry = SafetyCenterEntryGroup.Builder(groupId1)
-                .setTitle("A group title")
-                .setSummary("A group summary")
-                .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK)
-                .setEntries(listOf(entry1))
-                .build()
-        val equivalentEntry = SafetyCenterEntryGroup.Builder(groupId1)
-                .setTitle("A group title")
-                .setSummary("A group summary")
-                .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK)
-                .setEntries(listOf(entry1))
-                .build()
-
-        assertThat(entry).isEqualTo(equivalentEntry)
-        assertThat(entry.hashCode()).isEqualTo(equivalentEntry.hashCode())
-        assertThat(entry.toString()).isEqualTo(equivalentEntry.toString())
-    }
-
-    @Test
-    fun equals_hashCode_toString_fromCopyBuilder_areEqual() {
-        val equivalentToEntryGroup1 = SafetyCenterEntryGroup.Builder(entryGroup1).build()
-
-        assertThat(equivalentToEntryGroup1).isEqualTo(entryGroup1)
-        assertThat(equivalentToEntryGroup1.hashCode()).isEqualTo(entryGroup1.hashCode())
-        assertThat(equivalentToEntryGroup1.toString()).isEqualTo(entryGroup1.toString())
-    }
-
-    @Test
-    fun equals_toString_withDifferentIds_areNotEqual() {
-        val differentFromEntryGroup1 = SafetyCenterEntryGroup.Builder(entryGroup1)
-                .setId("different!")
-                .build()
-
-        assertThat(differentFromEntryGroup1).isNotEqualTo(entryGroup1)
-        assertThat(differentFromEntryGroup1.toString()).isNotEqualTo(entryGroup1.toString())
-    }
-
-    @Test
-    fun equals_toString_withDifferentTitles_areNotEqual() {
-        val differentFromEntryGroup1 = SafetyCenterEntryGroup.Builder(entryGroup1)
-                .setTitle("different!")
-                .build()
-
-        assertThat(differentFromEntryGroup1).isNotEqualTo(entryGroup1)
-        assertThat(differentFromEntryGroup1.toString()).isNotEqualTo(entryGroup1.toString())
-    }
-
-    @Test
-    fun equals_toString_withDifferentSummaries_areNotEqual() {
-        val differentFromEntryGroup1 = SafetyCenterEntryGroup.Builder(entryGroup1)
-                .setSummary("different!")
-                .build()
-
-        assertThat(differentFromEntryGroup1).isNotEqualTo(entryGroup1)
-        assertThat(differentFromEntryGroup1.toString()).isNotEqualTo(entryGroup1.toString())
-    }
-
-    @Test
-    fun equals_toString_withDifferentSeverityLevels_areNotEqual() {
-        val differentFromEntryGroup1 = SafetyCenterEntryGroup.Builder(entryGroup1)
-                .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN)
-                .build()
-
-        assertThat(differentFromEntryGroup1).isNotEqualTo(entryGroup1)
-        assertThat(differentFromEntryGroup1.toString()).isNotEqualTo(entryGroup1.toString())
-    }
-
-    @Test
-    fun equals_toString_withDifferentSeverityUnspecifiedIconTypes_areNotEqual() {
-        val differentFromEntryGroup1 = SafetyCenterEntryGroup.Builder(entryGroup1)
-                .setSeverityUnspecifiedIconType(
+    fun equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
+        EqualsHashCodeToStringTester()
+            .addEqualityGroup(
+                entryGroup1,
+                SafetyCenterEntryGroup.Builder(entryGroup1).build(),
+                SafetyCenterEntryGroup.Builder(groupId1)
+                    .setTitle("A group title")
+                    .setSummary("A group summary")
+                    .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK)
+                    .setEntries(listOf(entry1))
+                    .build()
+            )
+            .addEqualityGroup(entryGroup2)
+            .addEqualityGroup(
+                SafetyCenterEntryGroup.Builder(entryGroup1).setId("different!").build())
+            .addEqualityGroup(
+                SafetyCenterEntryGroup.Builder(entryGroup1).setTitle("different!").build())
+            .addEqualityGroup(
+                SafetyCenterEntryGroup.Builder(entryGroup1).setSummary("different!").build()
+            )
+            .addEqualityGroup(
+                SafetyCenterEntryGroup.Builder(entryGroup1)
+                    .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN)
+                    .build()
+            )
+            .addEqualityGroup(
+                SafetyCenterEntryGroup.Builder(entryGroup1)
+                    .setSeverityUnspecifiedIconType(
                         SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_PRIVACY)
-                .build()
-
-        assertThat(differentFromEntryGroup1).isNotEqualTo(entryGroup1)
-        assertThat(differentFromEntryGroup1.toString()).isNotEqualTo(entryGroup1.toString())
-    }
-
-    @Test
-    fun equals_toString_withDifferentEntries_areNotEqual() {
-        val differentFromEntryGroup1 = SafetyCenterEntryGroup.Builder(entryGroup1)
-                .setEntries(listOf(entry2))
-                .build()
-
-        assertThat(differentFromEntryGroup1).isNotEqualTo(entryGroup1)
-        assertThat(differentFromEntryGroup1.toString()).isNotEqualTo(entryGroup1.toString())
-    }
-
-    @Test
-    fun equals_toString_withDifferentEntries_emptyList_areNotEqual() {
-        val differentFromEntryGroup1 = SafetyCenterEntryGroup.Builder(entryGroup1)
-                .setEntries(listOf())
-                .build()
-
-        assertThat(differentFromEntryGroup1).isNotEqualTo(entryGroup1)
-        assertThat(differentFromEntryGroup1.toString()).isNotEqualTo(entryGroup1.toString())
+                    .build()
+            )
+            .addEqualityGroup(
+                SafetyCenterEntryGroup.Builder(entryGroup1).setEntries(listOf(entry2)).build()
+            )
+            .addEqualityGroup(
+                SafetyCenterEntryGroup.Builder(entryGroup1).setEntries(emptyList()).build())
+            .test()
     }
 }
