@@ -21,8 +21,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:clickable="false"
-    android:paddingTop="5dp"
-    android:paddingBottom="12dp">
+    style="@style/SafetyCenter.StatusCard">
 
     <ImageView
         android:id="@+id/status_image"
