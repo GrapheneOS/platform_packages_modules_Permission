@@ -27,10 +27,12 @@ import android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_REQ
 import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED
 import android.safetycenter.SafetySourceData
+import android.safetycenter.cts.testing.Coroutines.TIMEOUT_LONG
+import android.safetycenter.cts.testing.Coroutines.runBlockingWithTimeout
+import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.setSafetySourceDataWithPermission
 import java.time.Duration
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withTimeout
+import kotlinx.coroutines.channels.Channel.Factory.UNLIMITED
 
 /** Broadcast receiver to be used for testing broadcasts sent to safety source apps. */
 class SafetySourceBroadcastReceiver : BroadcastReceiver() {
@@ -60,7 +62,7 @@ class SafetySourceBroadcastReceiver : BroadcastReceiver() {
                 )
         }
 
-        runBlocking { updateChannel.send(Unit) }
+        runBlockingWithTimeout { updateChannel.send(Unit) }
     }
 
     companion object {
@@ -70,7 +72,7 @@ class SafetySourceBroadcastReceiver : BroadcastReceiver() {
                 .build()
 
         @Volatile
-        private var updateChannel = Channel<Unit>(Channel.Factory.BUFFERED)
+        private var updateChannel = Channel<Unit>(UNLIMITED)
 
         @Volatile
         var safetySourceId: String? = null
@@ -89,8 +91,8 @@ class SafetySourceBroadcastReceiver : BroadcastReceiver() {
             updateChannel = Channel()
         }
 
-        fun waitTillOnReceiveComplete(duration: Duration) {
-            runBlocking { withTimeout(duration.toMillis()) { updateChannel.receive() } }
+        fun waitTillOnReceiveComplete(timeout: Duration = TIMEOUT_LONG) {
+            runBlockingWithTimeout(timeout) { updateChannel.receive() }
         }
     }
 }

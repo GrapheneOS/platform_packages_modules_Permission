@@ -501,6 +501,7 @@ public final class SafetyCenterManager {
             } catch (RemoteException e) {
                 throw e.rethrowFromSystemServer();
             }
+            delegate.markAsRemoved();
             mListenersToDelegates.remove(listener);
         }
     }
@@ -607,6 +608,8 @@ public final class SafetyCenterManager {
         @NonNull
         private final OnSafetyCenterDataChangedListener mOriginalListener;
 
+        private volatile boolean mRemoved = false;
+
         private ListenerDelegate(
                 @NonNull Executor executor,
                 @NonNull OnSafetyCenterDataChangedListener originalListener) {
@@ -620,8 +623,16 @@ public final class SafetyCenterManager {
 
             final long identity = Binder.clearCallingIdentity();
             try {
-                mExecutor.execute(
-                        () -> mOriginalListener.onSafetyCenterDataChanged(safetyCenterData));
+                mExecutor.execute(() -> {
+                    if (mRemoved) {
+                        return;
+                    }
+                    // The remove call could still complete at this point, but we're ok with this
+                    // raciness on separate threads. If the listener is removed on the same thread
+                    // as `mExecutor`; the above check should ensure that the listener won't be
+                    // called after the remove call.
+                    mOriginalListener.onSafetyCenterDataChanged(safetyCenterData);
+                });
             } finally {
                 Binder.restoreCallingIdentity(identity);
             }
@@ -633,10 +644,23 @@ public final class SafetyCenterManager {
 
             final long identity = Binder.clearCallingIdentity();
             try {
-                mExecutor.execute(() -> mOriginalListener.onError(safetyCenterErrorDetails));
+                mExecutor.execute(() -> {
+                    if (mRemoved) {
+                        return;
+                    }
+                    // The remove call could still complete at this point, but we're ok with this
+                    // raciness on separate threads. If the listener is removed on the same thread
+                    // as `mExecutor`; the above check should ensure that the listener won't be
+                    // called after the remove call.
+                    mOriginalListener.onError(safetyCenterErrorDetails);
+                });
             } finally {
                 Binder.restoreCallingIdentity(identity);
             }
+        }
+
+        public void markAsRemoved() {
+            mRemoved = true;
         }
     }
 }
