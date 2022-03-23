@@ -467,7 +467,7 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к списку вызовов?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; совершать звонки и управлять ими?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным датчиков о состоянии организма?"</string>
-    <!-- no translation found for permgroupupgraderequestdetail_sensors (3851603883489664284) -->
+    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
     <skip />
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Разрешить приложению \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" доступ к данным датчиков на теле?"</string>
     <!-- no translation found for permgroupbackgroundrequestdetail_sensors (7649389834182449783) -->

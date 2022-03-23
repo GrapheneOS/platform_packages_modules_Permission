@@ -467,7 +467,8 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na dostęp do rejestrów połączeń?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na wykonywanie połączeń telefonicznych i zarządzanie nimi?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na dostęp do danych z czujnika podstawowych funkcji życiowych?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="3851603883489664284">"Ta aplikacja chce mieć dostęp do danych z czujnika dotyczących parametrów życiowych przez cały czas, nawet kiedy jej nie używasz. "<annotation id="link">"Otwórz ustawienia"</annotation>", aby wprowadzić zmiany, lub pozostaw dostęp tylko podczas używania aplikacji."</string>
+    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
+    <skip />
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Zezwolić aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na dostęp do danych z czujnika podstawowych funkcji życiowych?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Aby zezwolić tej aplikacji na dostęp do danych z czujników na ciele przez cały czas, nawet kiedy jej nie używasz, "<annotation id="link">"przejdź do ustawień"</annotation>"."</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Czy nadal zezwalać aplikacji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; na dostęp do czujników na ciele podczas jej używania?"</string>
