@@ -45,21 +45,25 @@ import android.safetycenter.config.SafetyCenterConfig
 import android.safetycenter.config.SafetySource
 import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC
 import android.safetycenter.config.SafetySourcesGroup
+import android.safetycenter.cts.testing.Coroutines.TIMEOUT_LONG
+import android.safetycenter.cts.testing.Coroutines.TIMEOUT_SHORT
+import android.safetycenter.cts.testing.Coroutines.runBlockingWithTimeout
+import android.safetycenter.cts.testing.FakeExecutor
+import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.addOnSafetyCenterDataChangedListenerWithPermission
+import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.clearAllSafetySourceDataWithPermission
+import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.clearSafetyCenterConfigOverrideWithPermission
+import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.getSafetyCenterConfigWithPermission
+import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.getSafetyCenterDataWithPermission
+import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.getSafetySourceDataWithPermission
+import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.isSafetyCenterEnabledWithPermission
+import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.refreshSafetySourcesWithPermission
+import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.removeOnSafetyCenterDataChangedListenerWithPermission
+import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.reportSafetySourceErrorWithPermission
+import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.setSafetyCenterConfigOverrideWithPermission
+import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.setSafetySourceDataWithPermission
 import android.safetycenter.cts.testing.SafetyCenterFlags
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import android.safetycenter.cts.testing.SafetySourceBroadcastReceiver
-import android.safetycenter.cts.testing.addOnSafetyCenterDataChangedListenerWithPermission
-import android.safetycenter.cts.testing.clearAllSafetySourceDataWithPermission
-import android.safetycenter.cts.testing.clearSafetyCenterConfigOverrideWithPermission
-import android.safetycenter.cts.testing.getSafetyCenterConfigWithPermission
-import android.safetycenter.cts.testing.getSafetyCenterDataWithPermission
-import android.safetycenter.cts.testing.getSafetySourceDataWithPermission
-import android.safetycenter.cts.testing.isSafetyCenterEnabledWithPermission
-import android.safetycenter.cts.testing.refreshSafetySourcesWithPermission
-import android.safetycenter.cts.testing.removeOnSafetyCenterDataChangedListenerWithPermission
-import android.safetycenter.cts.testing.reportSafetySourceErrorWithPermission
-import android.safetycenter.cts.testing.setSafetyCenterConfigOverrideWithPermission
-import android.safetycenter.cts.testing.setSafetySourceDataWithPermission
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
@@ -70,8 +74,7 @@ import java.time.Duration
 import kotlin.test.assertFailsWith
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withTimeout
+import kotlinx.coroutines.channels.Channel.Factory.UNLIMITED
 import org.junit.After
 import org.junit.Assume.assumeTrue
 import org.junit.Before
@@ -132,8 +135,8 @@ class SafetyCenterManagerTest {
             .build()
     private val listener =
         object : OnSafetyCenterDataChangedListener {
-            private val dataChannel = Channel<SafetyCenterData>(Channel.Factory.BUFFERED)
-            private val errorChannel = Channel<SafetyCenterErrorDetails>(Channel.Factory.BUFFERED)
+            private val dataChannel = Channel<SafetyCenterData>(UNLIMITED)
+            private val errorChannel = Channel<SafetyCenterErrorDetails>(UNLIMITED)
 
             override fun onSafetyCenterDataChanged(data: SafetyCenterData) {
                 runBlockingWithTimeout { dataChannel.send(data) }
@@ -699,6 +702,33 @@ class SafetyCenterManagerTest {
     }
 
     @Test
+    fun removeOnSafetyCenterDataChangedListener_listenerNeverCalledAfterRemoving() {
+        safetyCenterManager.setSafetyCenterConfigOverrideWithPermission(CTS_CONFIG)
+        val fakeExecutor = FakeExecutor()
+        safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(fakeExecutor,
+            listener)
+        // Receive initial data.
+        fakeExecutor.getNextTask().run()
+        listener.receiveSafetyCenterData()
+
+        safetyCenterManager.setSafetySourceDataWithPermission(
+            CTS_SOURCE_ID,
+            safetySourceDataInformation,
+            EVENT_SOURCE_STATE_CHANGED
+        )
+        val callListenerTask = fakeExecutor.getNextTask()
+        safetyCenterManager.removeOnSafetyCenterDataChangedListenerWithPermission(listener)
+        // Simulate the submitted task being run *after* the remove call completes. Our API should
+        // guard against this raciness, as users of this class likely don't expect their listener to
+        // be called after calling #removeOnSafetyCenterDataChangedListener.
+        callListenerTask.run()
+
+        assertFailsWith(TimeoutCancellationException::class) {
+            listener.receiveSafetyCenterData(TIMEOUT_SHORT)
+        }
+    }
+
+    @Test
     fun removeOnSafetyCenterDataChangedListener_withoutPermission_throwsSecurityException() {
         safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
             directExecutor(),
@@ -757,18 +787,8 @@ class SafetyCenterManagerTest {
         )
     }
 
-    private fun <T> runBlockingWithTimeout(
-        timeout: Duration = TIMEOUT_LONG,
-        block: suspend () -> T
-    ) =
-        runBlocking {
-            withTimeout(timeout.toMillis()) { block() }
-        }
-
     companion object {
         private const val CTS_PACKAGE_NAME = "android.safetycenter.cts"
-        private val TIMEOUT_LONG = Duration.ofSeconds(5)
-        private val TIMEOUT_SHORT = Duration.ofSeconds(1)
         private val EVENT_SOURCE_STATE_CHANGED =
             SafetyEvent.Builder(SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
         private const val CTS_SOURCE_ID = "cts_source_id"
