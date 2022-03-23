@@ -467,7 +467,8 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला तुमचे फोन कॉल लॉग अ‍ॅक्सेस करण्याची अनुमती द्यायची का?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला फोन कॉल करू आणि ते व्यवस्थापित करू द्यायचे?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला तुमच्या महत्त्वाच्या लक्षणांविषयीचा सेन्सर डेटा अ‍ॅक्सेस करू द्यायचे?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="3851603883489664284">"तुम्ही अ‍ॅप वापरत नसतानादेखील या ॲपला तुमच्या महत्त्वाच्या परिमाणांबद्दलचा सेन्सर डेटा पूर्णवेळ ॲक्सेस करायचा आहे. हा बदल करण्यासाठी, "<annotation id="link">" सेटिंग्जवर जा"</annotation>" किंवा ॲप फक्त वापरले जात असतानाच अ‍ॅक्सेस ठेवा."</string>
+    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
+    <skip />
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला तुमच्या महत्त्वाच्या परिमाणांसंबंधित सेन्सर डेटा अ‍ॅक्सेस करण्याची अनुमती द्यायची आहे का?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"तुम्ही ॲप वापरत नसतानादेखील या ॲपला शरीर सेन्सर डेटा नेहमी अ‍ॅक्सेस करू देण्यासाठी, "<annotation id="link">"सेटिंग्जवर जा."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ॲप वापरात असताना &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला शरीर सेन्सर डेटा अ‍ॅक्सेस करण्याची अनुमती देणे सुरू ठेवायचे आहे का?"</string>
@@ -508,6 +509,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"कॅमेरा परवानगी काढून टाका"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"मायक्रोफोन परवानगी काढून टाका"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"सेवा व्यवस्थापित करा"</string>
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"परवानग्या व्यवस्थापित करा"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"फोन कॉलद्वारे वापरले जात आहे"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"अलीकडे फोन कॉलमध्ये वापरले गेले"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"<xliff:g id="APP_NAME">%1$s</xliff:g> द्वारे वापरले जात आहे"</string>

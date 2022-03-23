@@ -467,13 +467,11 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သင်၏ခေါ်ဆိုထားသော မှတ်တမ်းများကို သုံးခွင့်ပေးလိုပါသလား။"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ကို ဖုန်းခေါ်ဆိုမှုများ ပြုလုပ်ခွင့်နှင့် စီမံခွင့်ပေးလိုပါသလား။"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သင်၏ အရေးကြီးသော ကျန်းမာရေးလက္ခဏာဆိုင်ရာ အာရုံခံကိရိယာဒေတာ သုံးခွင့်ပေးလိုပါသလား။"</string>
-    <!-- no translation found for permgroupupgraderequestdetail_sensors (3851603883489664284) -->
+    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
     <skip />
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သင်၏ အရေးကြီးသောလက္ခဏာ အာရုံခံစနစ် ဒေတာကို သုံးခွင့်ပေးလိုပါသလား။"</string>
-    <!-- no translation found for permgroupbackgroundrequestdetail_sensors (7649389834182449783) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequest_sensors (7576527638411370468) -->
-    <skip />
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"အက်ပ်သုံးမနေသော်လည်း ဤအက်ပ်ကို ခန္ဓာကိုယ်အာရုံခံစနစ် ဒေတာများ အမြဲသုံးခွင့်ပြုရန် "<annotation id="link">"ဆက်တင်များသို့ သွားပါ။"</annotation></string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"အက်ပ်သုံးစဉ် &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ကို ခန္ဓာကိုယ်အာရုံခံစနစ် ဒေတာ ဆက်သုံးခွင့်ပြုမလား။"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ကို သင့်ထံ အကြောင်းကြားချက်များ ပို့ခွင့်ပြုမလား။"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ကို သင့်ထံ အကြောင်းကြားချက်များ ဆက်ပို့ခွင့်ပြုမလား။"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"ထိန်းချုပ်ထားသော ခွင့်ပြုချက်များ"</string>
@@ -511,6 +509,8 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"ကင်မရာခွင့်ပြုချက် ဖယ်ရှားရန်"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"မိုက်ခရိုဖုန်းခွင့်ပြုချက် ဖယ်ရှားရန်"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"ဝန်ဆောင်မှု စီမံခန့်ခွဲရန်"</string>
+    <!-- no translation found for manage_permissions_qs (3780541819763475434) -->
+    <skip />
     <string name="active_call_usage_qs" msgid="8559974395932523391">"ဖုန်းခေါ်ဆိုမှုက အသုံးပြုနေသည်"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"ဖုန်းခေါ်ဆိုမှုတွင် မကြာသေးမီက အသုံးပြုထားသည်"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"<xliff:g id="APP_NAME">%1$s</xliff:g> က အသုံးပြုနေသည်"</string>

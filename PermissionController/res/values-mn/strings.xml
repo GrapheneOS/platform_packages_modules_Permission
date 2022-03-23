@@ -467,7 +467,7 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д таны утасны дуудлагын жагсаалтад хандахыг зөвшөөрөх үү?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д утасны дуудлага хийх, дуудлага удирдахыг зөвшөөрөх үү?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д таны биеийн ерөнхий байдлын үзүүлэлтүүдийн мэдрэгчийн өгөгдөлд хандахыг зөвшөөрөх үү?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="3851603883489664284">"Аппыг ашиглаагүй үед ч энэ апп нь таны биеийн ерөнхий байдлын үзүүлэлтүүдийн талаарх мэдрэгчийн өгөгдөлд ямар ч үед хандахыг хүсэж байна. Энэ өөрчлөлтийг хийх бол "<annotation id="link">"тохиргоо руу очих"</annotation>" эсвэл зөвхөн аппыг ашиглаж байх үедээ хандаарай."</string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Аппыг ашиглаагүй үед ч энэ нь таны биеийн ерөнхий байдлын үзүүлэлтүүдийн талаарх мэдрэгчийн өгөгдөлд үргэлж хандахыг хүсэж байна. Энэ өөрчлөлтийг хийхийн тулд "<annotation id="link">"тохиргоо руу очно уу."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д таны биеийн ерөнхий байдлын үзүүлэлтүүдийн талаарх мэдрэгчийн өгөгдөлд хандахыг зөвшөөрөх үү?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Та аппыг ашиглаагүй байсан ч ямар ч үед энэ аппын биеийн мэрэгчийн өгөгдөлд хандахыг зөвшөөрөх бол "<annotation id="link">"тохиргоо руу очно уу."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Аппыг ашиглаж байх үедээ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-г биеийн мэдрэгчийн өгөгдөлд хандахыг үргэлжлүүлэн зөвшөөрөх үү?"</string>
@@ -508,6 +508,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Камерын зөвшөөрлийг хасах"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Микрофоны зөвшөөрлийг хасах"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Үйлчилгээг удирдах"</string>
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"Зөвшөөрлийг удирдах"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Утасны дуудлага ашиглаж байна"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Саяхан утасны дуудлагад ашигласан"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"<xliff:g id="APP_NAME">%1$s</xliff:g> ашиглаж байна"</string>

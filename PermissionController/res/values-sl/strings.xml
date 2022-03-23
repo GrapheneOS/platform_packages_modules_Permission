@@ -467,7 +467,8 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Dovolite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dostop do dnevnikov klicev v telefonu?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Dovolite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; opravljanje in upravljanje telefonskih klicev?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Dovolite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dostop do podatkov tipala o vitalnih znakih?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="3851603883489664284">"Ta aplikacija želi stalen dostop do podatkov tipal vitalnih znakov, tudi ko aplikacije ne uporabljate. Če želite izvesti to spremembo, "<annotation id="link">"pojdite v nastavitve"</annotation>", ali pa ohranite dostop samo med uporabo aplikacije."</string>
+    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
+    <skip />
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Želite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; omogočiti dostop do podatkov tipal o vitalnih znakih?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Če želite tej aplikaciji omogočiti stalen dostop do podatkov tipal telesnih funkcij, tudi ko je ne uporabljate, "<annotation id="link">"pojdite v nastavitve"</annotation>"."</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Ali želite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; še naprej dovoliti dostop do podatkov tipal telesnih funkcij, ko je v uporabi?"</string>
@@ -508,6 +509,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Odstrani dovoljenje za fotoaparat"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Odstrani dovoljenje za mikrofon"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Upravljanje storitve"</string>
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"Upravljanje dovoljenj"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Trenutno se uporablja v telefonskem klicu"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Nedavno uporabljeno v telefonskem klicu"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Trenutno uporablja aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
