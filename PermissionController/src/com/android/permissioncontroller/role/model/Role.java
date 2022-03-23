@@ -259,13 +259,6 @@ public class Role {
         return mName;
     }
 
-    /**
-     * @see #mAllowBypassingQualification
-     */
-    public boolean shouldAllowBypassingQualification() {
-        return mAllowBypassingQualification;
-    }
-
     @Nullable
     public RoleBehavior getBehavior() {
         return mBehavior;
@@ -637,6 +630,24 @@ public class Role {
     }
 
     /**
+     * Check whether this role is allowed to bypass qualification, if enabled globally.
+     *
+     * @param context the {@code Context} to retrieve system services
+     *
+     * @return whether this role is allowed to bypass qualification
+     */
+    public boolean shouldAllowBypassingQualification(@NonNull Context context) {
+        if (mBehavior != null) {
+            Boolean allowBypassingQualification = mBehavior.shouldAllowBypassingQualification(this,
+                    context);
+            if (allowBypassingQualification != null) {
+                return allowBypassingQualification;
+            }
+        }
+        return mAllowBypassingQualification;
+    }
+
+    /**
      * Check whether a package is qualified for this role, i.e. whether it contains all the required
      * components (plus meeting some other general restrictions).
      *
@@ -647,7 +658,7 @@ public class Role {
      */
     public boolean isPackageQualified(@NonNull String packageName, @NonNull Context context) {
         RoleManager roleManager = context.getSystemService(RoleManager.class);
-        if (mAllowBypassingQualification
+        if (shouldAllowBypassingQualification(context)
                 && RoleManagerCompat.isBypassingRoleQualification(roleManager)) {
             return true;
         }

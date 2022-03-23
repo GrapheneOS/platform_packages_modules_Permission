@@ -18,7 +18,7 @@
           package="android.safetycenter.cts">
 
     <application>
-        <receiver android:name="android.safetycenter.testing.SafetySourceBroadcastReceiver"
+        <receiver android:name=".testing.SafetySourceBroadcastReceiver"
                   android:exported="false">
             <intent-filter>
                 <action android:name="android.safetycenter.action.REFRESH_SAFETY_SOURCES"/>

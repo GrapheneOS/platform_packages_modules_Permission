@@ -19,13 +19,15 @@ package com.android.permissioncontroller.permission.service.v33
 import android.app.job.JobParameters
 import android.content.ComponentName
 import android.content.Context
+import android.os.Build
 import android.provider.DeviceConfig
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
 import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.permissioncontroller.Constants
-import com.android.permissioncontroller.permission.service.v33.NotificationListenerCheck.NlsComponent
+import com.android.permissioncontroller.permission.service.v33.NotificationListenerCheckInternal.NlsComponent
 import com.android.permissioncontroller.permission.service.v33.NotificationListenerCheck.NotificationListenerCheckJobService
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
@@ -44,21 +46,22 @@ import org.mockito.MockitoSession
 import org.mockito.quality.Strictness
 
 /**
- * Unit tests for internal [NotificationListenerCheck]
+ * Unit tests for [NotificationListenerCheckInternal]
  *
  * <p> Does not test notification as there are conflicts with being able to mock NotifiationManager
  * and PendintIntent.getBroadcast requiring a valid context. Notifications are tested in the CTS
  * integration tests
  */
 @RunWith(AndroidJUnit4::class)
-class NotificationListenerCheckTest {
+@SdkSuppress(minSdkVersion = Build.VERSION_CODES.TIRAMISU, codeName = "Tiramisu")
+class NotificationListenerCheckInternalTest {
 
     @Mock
     lateinit var notificationListenerCheckJobService: NotificationListenerCheckJobService
 
     private lateinit var context: Context
     private lateinit var mockitoSession: MockitoSession
-    private lateinit var notificationListenerCheck: NotificationListenerCheck
+    private lateinit var notificationListenerCheck: NotificationListenerCheckInternal
 
     private var shouldCancel = false
 
@@ -72,7 +75,7 @@ class NotificationListenerCheckTest {
             .strictness(Strictness.LENIENT).startMocking()
 
         notificationListenerCheck = runWithShellPermissionIdentity {
-            NotificationListenerCheck(context) { shouldCancel }
+            NotificationListenerCheckInternal(context) { shouldCancel }
         }
 
         enableNotificationListenerChecker(true)

@@ -1103,6 +1103,7 @@
       -->
     <role
         name="android.app.role.DEVICE_POLICY_MANAGEMENT"
+        behavior="DevicePolicyManagementRoleBehavior"
         defaultHolders="config_devicePolicyManagement"
         exclusive="true"
         minSdkVersion="33"
@@ -1260,13 +1261,13 @@
       ~ A role for the package that handles AI features for the settings app
       -->
     <role
-        name="android.app.role.SETTINGS_INTELLIGENCE"
-        defaultHolders="config_settingsIntelligencePackageName"
+        name="android.app.role.SYSTEM_SETTINGS_INTELLIGENCE"
+        defaultHolders="config_systemSettingsIntelligence"
         exclusive="true"
         minSdkVersion="33"
+        static="true"
         systemOnly="true"
-        visible="false"
-        overrideUserWhenGranting="true">
+        visible="false">
         <permissions>
             <permission-set name="notifications" />
         </permissions>
