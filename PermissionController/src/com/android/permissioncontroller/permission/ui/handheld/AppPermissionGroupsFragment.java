@@ -422,8 +422,19 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
             mViewModel.setAutoRevoke(autoRevokeSwitch.isChecked());
             return true;
         });
-        autoRevokeSwitch.setTitle(isHibernationEnabled() ? R.string.unused_apps_label
-                : R.string.auto_revoke_label);
+
+        int switchTitleId;
+        if (isHibernationEnabled()) {
+            if (SdkLevel.isAtLeastT()) {
+                switchTitleId = R.string.unused_apps_label_v2;
+                autoRevokeSwitch.setSummary(R.string.unused_apps_summary);
+            } else {
+                switchTitleId = R.string.unused_apps_label;
+            }
+        } else {
+            switchTitleId = R.string.auto_revoke_label;
+        }
+        autoRevokeSwitch.setTitle(switchTitleId);
         autoRevokeSwitch.setKey(AUTO_REVOKE_SWITCH_KEY);
         autoRevokeCategory.addPreference(autoRevokeSwitch);
 
@@ -433,7 +444,9 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
                 android.R.attr.colorControlNormal));
         autoRevokeSummary.setKey(AUTO_REVOKE_SUMMARY_KEY);
         if (isHibernationEnabled()) {
-            autoRevokeCategory.setTitle(R.string.unused_apps);
+            autoRevokeCategory.setTitle(
+                    SdkLevel.isAtLeastT() ? R.string.unused_apps_category_title
+                            : R.string.unused_apps);
         }
         autoRevokeCategory.addPreference(autoRevokeSummary);
     }
