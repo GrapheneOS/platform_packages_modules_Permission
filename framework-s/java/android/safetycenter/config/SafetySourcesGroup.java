@@ -188,7 +188,7 @@ public final class SafetySourcesGroup implements Parcelable {
 
     @Override
     public String toString() {
-        return "SafetyCenterConfig{"
+        return "SafetySourcesGroup{"
                 + "mId='" + mId + '\''
                 + ", mTitleResId=" + mTitleResId
                 + ", mSummaryResId=" + mSummaryResId

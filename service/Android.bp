@@ -102,7 +102,8 @@ java_sdk_library {
         "framework-permission-s-shared",
     ],
     static_libs: [
-        "kotlin-stdlib",
+        // Exclude Kotlin sources for T.
+        //"kotlin-stdlib",
         "modules-utils-backgroundthread",
         "modules-utils-os",
         "safety-center-resources-lib",

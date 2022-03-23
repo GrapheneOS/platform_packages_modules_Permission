@@ -45,6 +45,7 @@
 
     <test class="com.android.tradefed.testtype.AndroidJUnitTest">
         <option name="package" value="android.safetycenter.cts"/>
+        <option name="exclude-annotation" value="org.junit.Ignore"/>
         <option name="runtime-hint" value="5m"/>
     </test>
 </configuration>
