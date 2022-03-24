@@ -159,8 +159,6 @@ public final class SafetySourceData implements Parcelable {
         /** Creates the {@link SafetySourceData} defined by this {@link Builder}. */
         @NonNull
         public SafetySourceData build() {
-            checkArgument(mStatus != null || !mIssues.isEmpty(),
-                    "Safety source data must have at least the status or one issue set");
             if (mStatus != null) {
                 int issuesMaxSeverityLevel = getIssuesMaxSeverityLevel();
                 if (issuesMaxSeverityLevel > SafetySourceSeverity.LEVEL_INFORMATION) {
