@@ -467,7 +467,8 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie rekodi zako za nambari za simu?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; kupiga na kudhibiti simu?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Ungependa kuiruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie data ya vitambuzi kuhusu viashiria muhimu vya mwili wako?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="3851603883489664284">"Programu hii inataka kufikia data ya vitambuzi kuhusu viashiria muhimu vya mwili wako kila wakati, hata wakati huitumii. Ili ufanye mabadiliko haya, "<annotation id="link">"nenda kwenye mipangilio"</annotation>" au ruhusu ufikiaji pale tu programu inapotumika."</string>
+    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
+    <skip />
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Ungependa kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie data ya vitambuzi inayohusu viashiria muhimu vya mwili wako?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Ili uruhusu programu hii ifikie data ya vitambuzi shughuli za mwili kila wakati, hata wakati hutumii programu, "<annotation id="link">"nenda kwenye mipangilio."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Ungependa kuendelea kuruhusu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ifikie data ya vitambuzi shughuli za mwili wakati programu inatumika?"</string>
