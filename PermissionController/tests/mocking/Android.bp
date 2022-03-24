@@ -108,6 +108,7 @@ android_test {
         "androidx.test.rules",
         "androidx.test.ext.truth",
         "androidx.test.ext.junit",
+        "kotlinx_coroutines_test",
         "mockito-target-extended-minus-junit4",
     ],
 

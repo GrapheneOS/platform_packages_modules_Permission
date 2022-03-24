@@ -22,15 +22,23 @@ import android.content.Intent
 import android.content.Intent.ACTION_BOOT_COMPLETED
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyCenterManager.ACTION_REFRESH_SAFETY_SOURCES
+import android.safetycenter.SafetyCenterManager.ACTION_SAFETY_CENTER_ENABLED_CHANGED
 import android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCE_IDS
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.utils.Utils
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Default
 import kotlinx.coroutines.launch
 
-class SafetyCenterReceiver : BroadcastReceiver() {
+private fun createMapOfSourceIdsToSources(): Map<String, PrivacySource> = emptyMap()
+
+class SafetyCenterReceiver(
+    private val getMapOfSourceIdsToSources: () -> Map<String, PrivacySource> =
+        ::createMapOfSourceIdsToSources,
+    private val dispatcher: CoroutineDispatcher = Default
+) : BroadcastReceiver() {
 
     enum class RefreshEvent {
         UNKNOWN,
@@ -38,7 +46,6 @@ class SafetyCenterReceiver : BroadcastReceiver() {
         EVENT_REFRESH_REQUESTED
     }
 
-    private val mapOfSourceIdsToSources = emptyMap<String, PrivacySource>()
     override fun onReceive(context: Context, intent: Intent) {
         if (!SdkLevel.isAtLeastT()) {
             return
@@ -47,37 +54,64 @@ class SafetyCenterReceiver : BroadcastReceiver() {
             PermissionControllerApplication.get().applicationContext,
             SafetyCenterManager::class.java
         )
-        if (!safetyCenterManager.isSafetyCenterEnabled) {
+
+        if (!safetyCenterManager.isSafetyCenterEnabled &&
+            intent.action != ACTION_SAFETY_CENTER_ENABLED_CHANGED) {
             return
         }
 
+        val mapOfSourceIdsToSources = getMapOfSourceIdsToSources()
+
         when (intent.action) {
+            ACTION_SAFETY_CENTER_ENABLED_CHANGED -> {
+                safetyCenterEnabledChanged(
+                    safetyCenterManager.isSafetyCenterEnabled,
+                    mapOfSourceIdsToSources.values)
+            }
             ACTION_REFRESH_SAFETY_SOURCES -> {
                 val sourceIdsExtra = intent.getStringArrayExtra(EXTRA_REFRESH_SAFETY_SOURCE_IDS)
                 if (sourceIdsExtra != null && sourceIdsExtra.isNotEmpty()) {
                     refreshSafetySources(
                         context,
                         intent,
-                        sourceIdsExtra.toList(),
-                        RefreshEvent.EVENT_REFRESH_REQUESTED
+                        RefreshEvent.EVENT_REFRESH_REQUESTED,
+                        mapOfSourceIdsToSources,
+                        sourceIdsExtra.toList()
                     )
                 }
             }
             ACTION_BOOT_COMPLETED -> {
-                refreshSafetySources(context, intent, mapOfSourceIdsToSources.keys.toList(),
-                    RefreshEvent.EVENT_DEVICE_REBOOTED)
+                refreshSafetySources(
+                    context,
+                    intent,
+                    RefreshEvent.EVENT_DEVICE_REBOOTED,
+                    mapOfSourceIdsToSources,
+                    mapOfSourceIdsToSources.keys.toList()
+                )
             }
         }
     }
 
-        private fun refreshSafetySources(
-            context: Context,
-            intent: Intent,
-            sourceIdList: List<String>,
-            refreshEvent: RefreshEvent
-        ) {
-        for (sourceId in sourceIdList) {
-            CoroutineScope(Default).launch {
+    private fun safetyCenterEnabledChanged(
+        enabled: Boolean,
+        privacySources: Collection<PrivacySource>
+    ) {
+        privacySources.forEach { source ->
+            CoroutineScope(dispatcher).launch {
+                source.safetyCenterEnabledChanged(enabled)
+            }
+        }
+    }
+
+    private fun refreshSafetySources(
+        context: Context,
+        intent: Intent,
+        refreshEvent: RefreshEvent,
+        mapOfSourceIdsToSources: Map<String, PrivacySource>,
+        sourceIdsToRefresh: List<String>
+    ) {
+        for (sourceId in sourceIdsToRefresh) {
+            CoroutineScope(dispatcher).launch {
                 mapOfSourceIdsToSources[sourceId]?.rescanAndPushSafetyCenterData(context, intent,
                     refreshEvent)
             }
