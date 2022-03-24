@@ -204,7 +204,8 @@ public final class SafetySourceIssue implements Parcelable {
      *
      * <p>When a safety issue is dismissed in Safety Center page, the issue is removed from view in
      * Safety Center page. This method returns an additional optional action specified by the safety
-     * source that should be invoked on issue dismissal.
+     * source that should be invoked on issue dismissal. The action contained in the
+     * {@link PendingIntent} cannot start an activity.
      */
     @Nullable
     public PendingIntent getOnDismissPendingIntent() {
@@ -314,6 +315,17 @@ public final class SafetySourceIssue implements Parcelable {
     public @interface IssueCategory {
     }
 
+    @IssueCategory
+    private static int validateIssueCategory(int value) {
+        switch (value) {
+            case ISSUE_CATEGORY_DEVICE:
+            case ISSUE_CATEGORY_ACCOUNT:
+            case ISSUE_CATEGORY_GENERAL:
+                return value;
+        }
+        throw new IllegalArgumentException(String.format("Unexpected IssueCategory: %s", value));
+    }
+
     /**
      * Data for an action supported from a safety issue {@link SafetySourceIssue} in the Safety
      * Center page.
@@ -362,7 +374,7 @@ public final class SafetySourceIssue implements Parcelable {
         private final CharSequence mSuccessMessage;
 
         private Action(
-                String id,
+                @NonNull String id,
                 @NonNull CharSequence label,
                 @NonNull PendingIntent pendingIntent,
                 boolean willResolve,
@@ -543,10 +555,10 @@ public final class SafetySourceIssue implements Parcelable {
                 @NonNull CharSequence summary,
                 @SafetySourceSeverity.Level int severityLevel,
                 @NonNull String issueTypeId) {
-            this.mId = id;
+            this.mId = requireNonNull(id);
             this.mTitle = requireNonNull(title);
             this.mSummary = requireNonNull(summary);
-            this.mSeverityLevel = severityLevel;
+            this.mSeverityLevel = SafetySourceSeverity.validateLevelForIssue(severityLevel);
             this.mIssueTypeId = requireNonNull(issueTypeId);
         }
 
@@ -564,7 +576,7 @@ public final class SafetySourceIssue implements Parcelable {
          */
         @NonNull
         public Builder setIssueCategory(@IssueCategory int issueCategory) {
-            mIssueCategory = issueCategory;
+            mIssueCategory = validateIssueCategory(issueCategory);
             return this;
         }
 
@@ -588,12 +600,14 @@ public final class SafetySourceIssue implements Parcelable {
          *
          * In particular, if the source would like to be notified of issue dismissals in Safety
          * Center in order to be able to dismiss or ignore issues at the source, then set this
-         * field.
+         * field. The action contained in the {@link PendingIntent} must not start an activity.
          *
          * @see #getOnDismissPendingIntent()
          */
         @NonNull
         public Builder setOnDismissPendingIntent(@Nullable PendingIntent onDismissPendingIntent) {
+            checkArgument(onDismissPendingIntent == null || !onDismissPendingIntent.isActivity(),
+                    "Safety source issue on dismiss pending intent must not start an activity");
             mOnDismissPendingIntent = onDismissPendingIntent;
             return this;
         }
