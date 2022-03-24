@@ -59,7 +59,7 @@ class SafetyCenterQsViewModel(
 
     val lightAppPermMap = mutableMapOf<Triple<String, String, UserHandle>, LightAppPermGroup?>()
 
-    val lightAppPermGroupLiveData = object
+    val permDataLoadedLiveData = object
         : SmartUpdateMediatorLiveData<Boolean>() {
 
         private val lightAppPermLiveDatas = mutableMapOf<Triple<String, String, UserHandle>,
