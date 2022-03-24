@@ -16,7 +16,7 @@
 
 package com.android.permissioncontroller.role.ui;
 
-import android.app.admin.DevicePolicyResources.Strings.PermissionController;
+import android.app.admin.DevicePolicyResources.Strings.DefaultAppSettings;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -134,7 +134,7 @@ public class DefaultAppListChildFragment<PF extends PreferenceFragmentCompat
                 workPreferenceCategory = new PreferenceCategory(context);
                 workPreferenceCategory.setKey(PREFERENCE_KEY_WORK_CATEGORY);
                 workPreferenceCategory.setTitle(Utils.getEnterpriseString(context,
-                        PermissionController.WORK_PROFILE_DEFAULT_APPS_TITLE,
+                        DefaultAppSettings.WORK_PROFILE_DEFAULT_APPS_TITLE,
                         R.string.default_apps_for_work));
             }
             preferenceScreen.addPreference(workPreferenceCategory);

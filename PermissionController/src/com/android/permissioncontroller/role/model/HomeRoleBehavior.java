@@ -16,7 +16,7 @@
 
 package com.android.permissioncontroller.role.model;
 
-import android.app.admin.DevicePolicyResources.Strings.PermissionController;
+import android.app.admin.DevicePolicyResources.Strings.DefaultAppSettings;
 import android.app.role.RoleManager;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -149,7 +149,7 @@ public class HomeRoleBehavior implements RoleBehavior {
         boolean missingWorkProfileSupport = isMissingWorkProfileSupport(applicationInfo, context);
         preference.setEnabled(!missingWorkProfileSupport);
         preference.setSummary(missingWorkProfileSupport ? Utils.getEnterpriseString(context,
-                PermissionController.HOME_MISSING_WORK_PROFILE_SUPPORT_MESSAGE,
+                DefaultAppSettings.HOME_MISSING_WORK_PROFILE_SUPPORT_MESSAGE,
                 R.string.home_missing_work_profile_support) : null);
     }
 

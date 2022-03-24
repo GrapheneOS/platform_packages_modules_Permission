@@ -19,7 +19,7 @@ package com.android.permissioncontroller.permission.ui;
 import static android.app.PendingIntent.FLAG_IMMUTABLE;
 import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
 import static android.app.PendingIntent.getActivity;
-import static android.app.admin.DevicePolicyResources.Strings.PermissionController.LOCATION_AUTO_GRANTED_MESSAGE;
+import static android.app.admin.DevicePolicyResources.Strings.PermissionSettings.LOCATION_AUTO_GRANTED_MESSAGE;
 import static android.content.Intent.ACTION_MANAGE_APP_PERMISSION;
 import static android.content.Intent.EXTRA_PACKAGE_NAME;
 import static android.content.Intent.EXTRA_PERMISSION_GROUP_NAME;
@@ -55,8 +55,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.android.permissioncontroller.R;
-import com.android.permissioncontroller.permission.utils.Utils;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
+import com.android.permissioncontroller.permission.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -156,7 +156,7 @@ public class AutoGrantPermissionsNotifier {
         String title = mContext.getString(
                 R.string.auto_granted_location_permission_notification_title);
         String messageText = Utils.getEnterpriseString(mContext, LOCATION_AUTO_GRANTED_MESSAGE,
-                R.string.auto_granted_permission_notification_body);
+                R.string.auto_granted_permission_notification_body, pkgLabel);
         Notification.Builder b = (new Notification.Builder(mContext,
                 getNotificationChannelId(shouldNotifySilently))).setContentTitle(title)
                 .setContentText(messageText)
