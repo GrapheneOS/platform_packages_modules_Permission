@@ -321,6 +321,10 @@ package android.safetycenter {
     method @Nullable public android.safetycenter.SafetySourceStatus getStatus();
     method public void writeToParcel(@NonNull android.os.Parcel, int);
     field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.SafetySourceData> CREATOR;
+    field public static final int SEVERITY_LEVEL_CRITICAL_WARNING = 400; // 0x190
+    field public static final int SEVERITY_LEVEL_INFORMATION = 200; // 0xc8
+    field public static final int SEVERITY_LEVEL_RECOMMENDATION = 300; // 0x12c
+    field public static final int SEVERITY_LEVEL_UNSPECIFIED = 100; // 0x64
   }
 
   public static final class SafetySourceData.Builder {
@@ -383,13 +387,6 @@ package android.safetycenter {
     method @NonNull public android.safetycenter.SafetySourceIssue.Builder setIssueCategory(int);
     method @NonNull public android.safetycenter.SafetySourceIssue.Builder setOnDismissPendingIntent(@Nullable android.app.PendingIntent);
     method @NonNull public android.safetycenter.SafetySourceIssue.Builder setSubtitle(@Nullable CharSequence);
-  }
-
-  public class SafetySourceSeverity {
-    field public static final int LEVEL_CRITICAL_WARNING = 400; // 0x190
-    field public static final int LEVEL_INFORMATION = 200; // 0xc8
-    field public static final int LEVEL_RECOMMENDATION = 300; // 0x12c
-    field public static final int LEVEL_UNSPECIFIED = 100; // 0x64
   }
 
   public final class SafetySourceStatus implements android.os.Parcelable {
