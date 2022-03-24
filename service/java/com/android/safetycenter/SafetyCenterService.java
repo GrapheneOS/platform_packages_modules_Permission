@@ -328,10 +328,10 @@ public final class SafetyCenterService extends SystemService {
         }
 
         @Override
-        public void clearAllSafetySourceData() {
+        public void clearAllSafetySourceDataForTests() {
             getContext().enforceCallingOrSelfPermission(
-                    MANAGE_SAFETY_CENTER, "clearAllSafetySourceData");
-            if (!checkApiEnabled("clearAllSafetySourceData")) {
+                    MANAGE_SAFETY_CENTER, "clearAllSafetySourceDataForTests");
+            if (!checkApiEnabled("clearAllSafetySourceDataForTests")) {
                 return;
             }
 
@@ -341,11 +341,11 @@ public final class SafetyCenterService extends SystemService {
         }
 
         @Override
-        public void setSafetyCenterConfigOverride(
+        public void setSafetyCenterConfigForTests(
                 @NonNull SafetyCenterConfig safetyCenterConfig) {
             getContext().enforceCallingOrSelfPermission(MANAGE_SAFETY_CENTER,
-                    "setSafetyCenterConfigOverride");
-            if (!checkApiEnabled("setSafetyCenterConfigOverride")) {
+                    "setSafetyCenterConfigForTests");
+            if (!checkApiEnabled("setSafetyCenterConfigForTests")) {
                 return;
             }
 
@@ -356,10 +356,10 @@ public final class SafetyCenterService extends SystemService {
         }
 
         @Override
-        public void clearSafetyCenterConfigOverride() {
+        public void clearSafetyCenterConfigForTests() {
             getContext().enforceCallingOrSelfPermission(
-                    MANAGE_SAFETY_CENTER, "clearSafetyCenterConfigOverride");
-            if (!checkApiEnabled("clearSafetyCenterConfigOverride")) {
+                    MANAGE_SAFETY_CENTER, "clearSafetyCenterConfigForTests");
+            if (!checkApiEnabled("clearSafetyCenterConfigForTests")) {
                 return;
             }
 
