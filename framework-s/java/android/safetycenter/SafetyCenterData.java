@@ -125,7 +125,7 @@ public final class SafetyCenterData implements Parcelable {
 
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeParcelable(mStatus, flags);
+        dest.writeTypedObject(mStatus, flags);
         dest.writeTypedList(mIssues);
         dest.writeTypedList(mEntriesOrGroups);
         dest.writeTypedList(mStaticEntryGroups);
@@ -135,12 +135,15 @@ public final class SafetyCenterData implements Parcelable {
     public static final Creator<SafetyCenterData> CREATOR = new Creator<SafetyCenterData>() {
         @Override
         public SafetyCenterData createFromParcel(Parcel in) {
-            return new SafetyCenterData(
-                    in.readParcelable(
-                            SafetyCenterStatus.class.getClassLoader(), SafetyCenterStatus.class),
-                    in.createTypedArrayList(SafetyCenterIssue.CREATOR),
-                    in.createTypedArrayList(SafetyCenterEntryOrGroup.CREATOR),
-                    in.createTypedArrayList(SafetyCenterStaticEntryGroup.CREATOR));
+            SafetyCenterStatus status = in.readTypedObject(SafetyCenterStatus.CREATOR);
+            List<SafetyCenterIssue> issues = in.createTypedArrayList(SafetyCenterIssue.CREATOR);
+            List<SafetyCenterEntryOrGroup> entryOrGroups =
+                    in.createTypedArrayList(SafetyCenterEntryOrGroup.CREATOR);
+            List<SafetyCenterStaticEntryGroup> staticEntryGroups =
+                    in.createTypedArrayList(SafetyCenterStaticEntryGroup.CREATOR);
+
+            return new SafetyCenterData(status, issues, entryOrGroups, staticEntryGroups);
+
         }
 
         @Override

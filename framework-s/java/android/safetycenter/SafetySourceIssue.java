@@ -71,18 +71,15 @@ public final class SafetySourceIssue implements Parcelable {
                 @Override
                 public SafetySourceIssue createFromParcel(Parcel in) {
                     String id = in.readString();
-                    CharSequence title =
-                            requireNonNull(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in));
-                    CharSequence subtitle =
-                            TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
-                    CharSequence summary =
-                            requireNonNull(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in));
+                    CharSequence title = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
+                    CharSequence subtitle = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
+                    CharSequence summary = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
                     int severityLevel = in.readInt();
                     int issueCategory = in.readInt();
                     List<Action> actions = in.createTypedArrayList(Action.CREATOR);
                     PendingIntent onDismissPendingIntent =
-                            PendingIntent.readPendingIntentOrNullFromParcel(in);
-                    String issueTypeId = requireNonNull(in.readString());
+                            in.readTypedObject(PendingIntent.CREATOR);
+                    String issueTypeId = in.readString();
                     Builder builder = new Builder(id, title, summary, severityLevel, issueTypeId)
                             .setSubtitle(subtitle)
                             .setIssueCategory(issueCategory)
@@ -244,7 +241,7 @@ public final class SafetySourceIssue implements Parcelable {
         dest.writeInt(mSeverityLevel);
         dest.writeInt(mIssueCategory);
         dest.writeTypedList(mActions);
-        PendingIntent.writePendingIntentOrNullToParcel(mOnDismissPendingIntent, dest);
+        dest.writeTypedObject(mOnDismissPendingIntent, flags);
         dest.writeString(mIssueTypeId);
     }
 
