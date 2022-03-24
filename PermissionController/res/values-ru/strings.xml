@@ -467,7 +467,7 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к списку вызовов?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; совершать звонки и управлять ими?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным датчиков о состоянии организма?"</string>
-    <!-- no translation found for permgroupupgraderequestdetail_sensors (3851603883489664284) -->
+    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
     <skip />
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Разрешить приложению \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" доступ к данным датчиков на теле?"</string>
     <!-- no translation found for permgroupbackgroundrequestdetail_sensors (7649389834182449783) -->
@@ -511,6 +511,8 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Закрыть доступ к камере"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Закрыть доступ к микрофону"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Настроить сервис"</string>
+    <!-- no translation found for manage_permissions_qs (3780541819763475434) -->
+    <skip />
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Используется во время телефонного звонка"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Недавно использовалось во время телефонного звонка"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Используется приложением \"<xliff:g id="APP_NAME">%1$s</xliff:g>\""</string>

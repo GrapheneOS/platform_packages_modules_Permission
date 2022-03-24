@@ -467,13 +467,11 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere ai registri chiamate del tuo telefono?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di effettuare e gestire telefonate?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Consentire a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere ai dati dei sensori relativi ai parametri vitali?"</string>
-    <!-- no translation found for permgroupupgraderequestdetail_sensors (3851603883489664284) -->
+    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
     <skip />
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere ai dati dei sensori relativi ai parametri vitali?"</string>
-    <!-- no translation found for permgroupbackgroundrequestdetail_sensors (7649389834182449783) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequest_sensors (7576527638411370468) -->
-    <skip />
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Per autorizzare l\'app ad accedere ai dati relativi ai sensori del corpo sempre, anche mentre non utilizzi l\'app, "<annotation id="link">"vai alle impostazioni."</annotation></string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Continuare ad autorizzare &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ad accedere ai dati relativi ai sensori del corpo mentre l\'app è in uso?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Vuoi consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di inviarti notifiche?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Vuoi consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di continuare a inviarti notifiche?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Autorizzazioni controllate"</string>
@@ -511,6 +509,8 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Rimuovi autorizzazione di accesso alla fotocamera"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Rimuovi autorizzazione di accesso al microfono"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Gestisci servizio"</string>
+    <!-- no translation found for manage_permissions_qs (3780541819763475434) -->
+    <skip />
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Attualmente in uso per la telefonata"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Recentemente in uso nella telefonata"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Attualmente in uso per <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>

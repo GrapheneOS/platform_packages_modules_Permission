@@ -467,7 +467,8 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukufinyelela kurekhodi lakho lamakholi wefoni?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi yenze iphinde iphathe amakholi efoni?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi ifinyelele kudatha yenzwa emayelana nezimpawu zakho ezibalulekile?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="3851603883489664284">"Le app ifuna ukufinyelela idatha yenzwa emayelana nezimpawu zakho ezibalulekile ngaso sonke isikhathi, nanoma ungasebenzisi i-app, "<annotation id="link">"iya kumasethingi"</annotation>" noma gcina ukufinyelela kuphela ngenkathi i-app isetshenziswa."</string>
+    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
+    <skip />
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi ifinyelele kudatha yenzwa emayelana nezimpawu zakho ezibalulekile?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Ukuze uvumele le app ukuba ifinyelele idatha yenzwa yomzimba ngaso sonke isikhathi, nanoma ungasebenzisi i-app, "<annotation id="link">"iya kumasethingi."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Qhubeka uvumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuba ifinyelele inzwa yedatha yomzimba kuyilapho i-app isebenza?"</string>
@@ -508,6 +509,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Susa imvume yekhamera"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Susa imvume yemakrofoni"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Phatha isevisi"</string>
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"Phatha izimvume"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Bekusetshenziswa yikholi yefoni"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Kusetshenziswa kamuva kwikholi yefoni"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Kusetshenziswa yi-<xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
