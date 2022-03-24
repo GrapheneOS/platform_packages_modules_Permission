@@ -99,14 +99,10 @@ class SafetySourceDataTest {
     }
 
     @Test
-    fun build_withNoStatusAndNoIssues_throwsIllegalArgumentException() {
+    fun build_withNoStatusAndNoIssues_doesNotThrow() {
         val builder = SafetySourceData.Builder()
 
-        val exception = assertFailsWith(IllegalArgumentException::class) {
-            builder.build()
-        }
-        assertThat(exception).hasMessageThat()
-            .isEqualTo("Safety source data must have at least the status or one issue set")
+        assertThat(builder.build()).isNotNull()
     }
 
     @Test
