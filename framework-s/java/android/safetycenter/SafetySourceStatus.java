@@ -72,7 +72,7 @@ public final class SafetySourceStatus implements Parcelable {
     private final CharSequence mTitle;
     @NonNull
     private final CharSequence mSummary;
-    @SafetySourceSeverity.Level
+    @SafetySourceData.SeverityLevel
     private final int mSeverityLevel;
     @Nullable
     private final PendingIntent mPendingIntent;
@@ -80,9 +80,13 @@ public final class SafetySourceStatus implements Parcelable {
     private final IconAction mIconAction;
     private final boolean mEnabled;
 
-    private SafetySourceStatus(@NonNull CharSequence title, @NonNull CharSequence summary,
-            @SafetySourceSeverity.Level int severityLevel, @Nullable PendingIntent pendingIntent,
-            @Nullable IconAction iconAction, boolean enabled) {
+    private SafetySourceStatus(
+            @NonNull CharSequence title,
+            @NonNull CharSequence summary,
+            @SafetySourceData.SeverityLevel int severityLevel,
+            @Nullable PendingIntent pendingIntent,
+            @Nullable IconAction iconAction,
+            boolean enabled) {
         this.mTitle = title;
         this.mSummary = summary;
         this.mSeverityLevel = severityLevel;
@@ -103,8 +107,8 @@ public final class SafetySourceStatus implements Parcelable {
         return mSummary;
     }
 
-    /** Returns the {@link SafetySourceSeverity.Level} of the status. */
-    @SafetySourceSeverity.Level
+    /** Returns the {@link SafetySourceData.SeverityLevel} of the status. */
+    @SafetySourceData.SeverityLevel
     public int getSeverityLevel() {
         return mSeverityLevel;
     }
@@ -332,7 +336,7 @@ public final class SafetySourceStatus implements Parcelable {
         private final CharSequence mTitle;
         @NonNull
         private final CharSequence mSummary;
-        @SafetySourceSeverity.Level
+        @SafetySourceData.SeverityLevel
         private final int mSeverityLevel;
         @Nullable
         private PendingIntent mPendingIntent;
@@ -342,10 +346,10 @@ public final class SafetySourceStatus implements Parcelable {
 
         /** Creates a {@link Builder} for a {@link SafetySourceStatus}. */
         public Builder(@NonNull CharSequence title, @NonNull CharSequence summary,
-                @SafetySourceSeverity.Level int severityLevel) {
+                @SafetySourceData.SeverityLevel int severityLevel) {
             this.mTitle = requireNonNull(title);
             this.mSummary = requireNonNull(summary);
-            this.mSeverityLevel = SafetySourceSeverity.validateLevelForSource(severityLevel);
+            this.mSeverityLevel = SafetySourceData.validateSeverityLevelForSource(severityLevel);
         }
 
         /**
@@ -384,9 +388,9 @@ public final class SafetySourceStatus implements Parcelable {
          */
         @NonNull
         public Builder setEnabled(boolean enabled) {
-            checkArgument(enabled || mSeverityLevel == SafetySourceSeverity.LEVEL_UNSPECIFIED,
-                    "Safety source status must have a severity level of LEVEL_UNSPECIFIED when "
-                            + "disabled");
+            checkArgument(enabled || mSeverityLevel == SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED,
+                    "Safety source status must have a severity level of "
+                            + "SEVERITY_LEVEL_UNSPECIFIED when disabled");
             this.mEnabled = enabled;
             return this;
         }
