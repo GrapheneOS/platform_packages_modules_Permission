@@ -264,6 +264,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"డ్రైవింగ్‌లో ఉన్నప్పుడు, మీరు <xliff:g id="APP">%1$s</xliff:g> యాప్‌నకు <xliff:g id="PERMISSION_1">%2$s</xliff:g>, <xliff:g id="PERMISSION_2">%3$s</xliff:g>‌కు యాక్సెస్‌ను ఇచ్చారు"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"డ్రైవింగ్‌లో ఉన్నప్పుడు, మీరు <xliff:g id="APP">%2$s</xliff:g> యాప్‌నకు <xliff:g id="COUNT">%1$d</xliff:g> అనుమతులను ఇచ్చారు"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{డ్రైవింగ్‌లో ఉన్నప్పుడు, మీరు <xliff:g id="APP_0">%1$s</xliff:g>, మరో # ఇతర యాప్‌నకు యాక్సెస్‌ను ఇచ్చారు}other{డ్రైవింగ్‌లో ఉన్నప్పుడు, మీరు <xliff:g id="APP_1">%1$s</xliff:g>, మరో # ఇతర యాప్‌లకు యాక్సెస్‌ను ఇచ్చారు}}"</string>
+    <string name="go_to_settings" msgid="1053735612211228335">"సెట్టింగ్‌లకు వెళ్లండి"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"గత కొన్ని నెలలుగా కొన్ని యాప్‌లు వినియోగంలో లేవు"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"అనుమతులు తీసివేసినవి"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"అనుమతులు తీసివేయబడ్డాయి"</string>
@@ -466,10 +467,11 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"మీ ఫోన్ కాల్ లాగ్‌లను యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ని అనుమతించాలా?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"ఫోన్‌ కాల్స్‌ చేయడానికి, మేనేజ్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ని అనుమతించాలా?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"మీ అత్యంత కీలకమైన గుర్తుల గురించి సెన్సార్ డేటాని యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ని అనుమతించాలా?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="5239219356063824373">"మీరు యాప్‌ను ఉపయోగించనప్పటికీ, ఈ యాప్ మీ కీలక ఆరోగ్య కొలమాన గుర్తుల సెన్సార్ డేటాను ఎప్పటికప్పుడు యాక్సెస్ చేయాలనుకుంటోంది. "<annotation id="link">"సెట్టింగ్‌లలో అనుమతించండి."</annotation></string>
+    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
+    <skip />
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"మీ కీలక ఆరోగ్య కొలమాన గుర్తుల గురించి సెన్సార్ డేటాను యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"మీరు యాప్‌ను ఉపయోగించనప్పటికీ, ఈ యాప్ మీ కీలక ఆరోగ్య కొలమాన గుర్తుల సెన్సార్ డేటాను ఎప్పటికప్పుడు యాక్సెస్ చేయాలనుకోవచ్చు. "<annotation id="link">"సెట్టింగ్‌లలో అనుమతించండి."</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; కోసం మీ కీలక ఆరోగ్య కొలమాన గుర్తులకు సంబంధించిన సెన్సార్ డేటాకు యాక్సెస్‌ను మార్చాలా?"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"మీరు యాప్‌ను ఉపయోగించనప్పటికీ, ఈ యాప్ బాడీ సెన్సార్ డేటాను ఎప్పటికప్పుడు యాక్సెస్ చేయడాన్ని అనుమతించడానికి, "<annotation id="link">"సెట్టింగ్‌లకు వెళ్లండి."</annotation></string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"యాప్ ఉపయోగంలో ఉన్నప్పుడు బాడీ సెన్సార్ డేటాను యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"మీకు నోటిఫికేషన్‌లను పంపడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"మీకు నోటిఫికేషన్‌లు పంపడాన్ని కొనసాగించడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"నియంత్రణలో ఉన్న అనుమతులు"</string>
@@ -499,6 +501,24 @@
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"స్కాన్ చేయండి"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"విస్మరించండి"</string>
     <string name="security_settings" msgid="3808106921175271317">"సెక్యూరిటీ సెట్టింగ్‌లు"</string>
+    <string name="sensor_permissions_qs" msgid="4365989229426201877">"సెన్సార్ అనుమతులు"</string>
+    <string name="privacy_controls_qs" msgid="471793881466080745">"గోప్యతా కంట్రోల్స్"</string>
+    <string name="permissions_removed_qs" msgid="8957319130625294572">"అనుమతి తీసివేయబడింది"</string>
+    <string name="camera_usage_qs" msgid="7943349178368641820">"మరింత కెమెరా వినియోగాన్ని చూడండి"</string>
+    <string name="microphone_usage_qs" msgid="2393193350541830472">"మరింత మైక్రోఫోన్ వినియోగాన్ని చూడండి"</string>
+    <string name="remove_camera_qs" msgid="8209716677879809162">"కెమెరా అనుమతిని తీసివేయండి"</string>
+    <string name="remove_microphone_qs" msgid="2893536836641560183">"మైక్రోఫోన్ అనుమతిని తీసివేయండి"</string>
+    <string name="manage_service_qs" msgid="7862555549364153805">"సర్వీస్‌ను మేనేజ్ చేయండి"</string>
+    <!-- no translation found for manage_permissions_qs (3780541819763475434) -->
+    <skip />
+    <string name="active_call_usage_qs" msgid="8559974395932523391">"ఫోన్ కాల్ ద్వారా ఉపయోగించబడుతోంది"</string>
+    <string name="recent_call_usage_qs" msgid="743044899599410935">"ఇటీవల ఫోన్ కాల్‌లో ఉపయోగించబడింది"</string>
+    <string name="active_app_usage_qs" msgid="4063912870936464727">"<xliff:g id="APP_NAME">%1$s</xliff:g> ద్వారా ఉపయోగించబడుతోంది"</string>
+    <string name="recent_app_usage_qs" msgid="6650259601306212327">"<xliff:g id="APP_NAME">%1$s</xliff:g> ద్వారా ఇటీవల ఉపయోగించబడింది"</string>
+    <string name="active_app_usage_1_qs" msgid="4325136375823357052">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>) ద్వారా ఉపయోగించబడుతోంది"</string>
+    <string name="recent_app_usage_1_qs" msgid="261450184773310741">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>) ద్వారా ఇటీవల ఉపయోగించబడింది"</string>
+    <string name="active_app_usage_2_qs" msgid="6107866785243565283">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) ద్వారా ఉపయోగించబడుతోంది"</string>
+    <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) ద్వారా ఇటీవల ఉపయోగించబడింది"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"సెక్యూరిటీ &amp; గోప్యత"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"స్టేటస్‌ను చెక్ చేయండి"</string>
 </resources>

@@ -264,6 +264,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"እየነዱ ሳለ የ<xliff:g id="PERMISSION_1">%2$s</xliff:g> &amp; <xliff:g id="PERMISSION_2">%3$s</xliff:g> መዳረሻን ለ<xliff:g id="APP">%1$s</xliff:g> ሰጥተዋል"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"እየነዱ ሳለ <xliff:g id="COUNT">%1$d</xliff:g> ፈቃዶችን ለ<xliff:g id="APP">%2$s</xliff:g> ሰጥተዋል"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{እየነዱ ሳለ የ<xliff:g id="APP_0">%1$s</xliff:g> &amp; # ሌላ መተግበሪያ መዳረሻ ሰጥተዋል}one{እየነዱ ሳለ የ<xliff:g id="APP_1">%1$s</xliff:g> &amp; # ሌላ መተግበሪያ መዳረሻ ሰጥተዋል}other{እየነዱ ሳለ የ<xliff:g id="APP_1">%1$s</xliff:g> &amp; # ሌላ መተግበሪያ መዳረሻ ሰጥተዋል}}"</string>
+    <string name="go_to_settings" msgid="1053735612211228335">"ወደ ቅንብሮች ሂድ"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"አንዳንድ መተግበሪያዎች ለጥቂት ወሮች ስራ ላይ አልዋሉም።"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"ፈቃዶች የተወገዱባቸው"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"ፈቃዶች የተወገዱባቸው"</string>
@@ -466,10 +467,11 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"የእርስዎን ስልክ የጥሪ ምዝግብ ማስታወሻዎች &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; እንዲደርስበት ይፈቀድ?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; የስልክ ጥሪዎችን እንዲያደርግ እና እንዲያቀናብር ይፈቀድለት?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; የሰውነትዎ መሠረታዊ ምልክቶች የዳሳሽ ውሂብ እንዲደርስ ይፈቀድለት?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="5239219356063824373">"መተግበሪያውን በማይጠቀሙበት ጊዜም እንኳ ይህ መተግበሪያ ስለእርስዎ መሠረታዊ ምልክቶች የዳሳሽ ውሂብን ሁልጊዜ መድረስ ይፈልጋል። "<annotation id="link">"በቅንብሮች ውስጥ ይፍቀዱ።"</annotation></string>
+    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
+    <skip />
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; የሰውነትዎ መሠረታዊ ምልክቶች የዳሳሽ ውሂብ እንዲደርስ ይፈቀድለት?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"መተግበሪያውን በማይጠቀሙበት ጊዜም እንኳ ይህ መተግበሪያ ስለእርስዎ መሠረታዊ ምልክቶች ሁልጊዜ የዳሳሽ ውሂቡን መድረስ ሊፈልግ ይችላል። "<annotation id="link">"በቅንብሮች ውስጥ ይፍቀዱ።"</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"ለ&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ስለእርስዎ መሠረታዊ ምልክቶች የዳሳሽ ውሂብ መዳረሻ ይቀየር?"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"መተግበሪያውን በማይጠቀሙበት ጊዜ እንኳን ይህ መተግበሪያ የሰውነት ዳሳሽ ውሂብን ሁልጊዜ እንዲደርስ ለመፍቀድ "<annotation id="link">"ወደ ቅንብሮች ይሂዱ።"</annotation></string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"መተግበሪያ ስራ ላይ በሚውልበት ጊዜ የሰውነት ዳሳሽ ውሂብን እንዲደርስ ለ&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; መፍቀድ ይቀጥሉ?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ለእርስዎ ማሳወቂያዎች እንዲልክ ይፈቀድለት?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ለእርስዎ ማሳወቂያዎችን መላክ እንዲቀጥል ይፈቀድለት?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"ቁጥጥር የሚደረግባችድው ፈቃዶች"</string>
@@ -499,6 +501,24 @@
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"ቃኝ"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"አሰናብት"</string>
     <string name="security_settings" msgid="3808106921175271317">"የደህንነት ቅንብሮች"</string>
+    <string name="sensor_permissions_qs" msgid="4365989229426201877">"የዳሳሽ ፈቃዶች"</string>
+    <string name="privacy_controls_qs" msgid="471793881466080745">"የግላዊነት ቁጥጥሮች"</string>
+    <string name="permissions_removed_qs" msgid="8957319130625294572">"ፈቃድ ተወግዷል"</string>
+    <string name="camera_usage_qs" msgid="7943349178368641820">"ተጨማሪ የካሜራ አጠቃቀምን ይመልከቱ"</string>
+    <string name="microphone_usage_qs" msgid="2393193350541830472">"ተጨማሪ የማይክሮፎን አጠቃቀም ይመልከቱ"</string>
+    <string name="remove_camera_qs" msgid="8209716677879809162">"የካሜራ ፈቃድ ያስወግዱ"</string>
+    <string name="remove_microphone_qs" msgid="2893536836641560183">"የማይክሮፎን ፈቃድ ያስወግዱ"</string>
+    <string name="manage_service_qs" msgid="7862555549364153805">"አገልግሎት ያስተዳድሩ"</string>
+    <!-- no translation found for manage_permissions_qs (3780541819763475434) -->
+    <skip />
+    <string name="active_call_usage_qs" msgid="8559974395932523391">"በስልክ ጥሪ ስራ ላይ እየዋለ ነው"</string>
+    <string name="recent_call_usage_qs" msgid="743044899599410935">"በቅርብ ጊዜ በስልክ ጥሪ ውስጥ ስራ ላይ ውሏል"</string>
+    <string name="active_app_usage_qs" msgid="4063912870936464727">"በ<xliff:g id="APP_NAME">%1$s</xliff:g> ስራ ላይ እየዋለ ነው"</string>
+    <string name="recent_app_usage_qs" msgid="6650259601306212327">"በቅርብ ጊዜ በ<xliff:g id="APP_NAME">%1$s</xliff:g> ስራ ላይ ውሏል"</string>
+    <string name="active_app_usage_1_qs" msgid="4325136375823357052">"በ<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>) ስራ ላይ እየዋለ ነው"</string>
+    <string name="recent_app_usage_1_qs" msgid="261450184773310741">"በቅርብ ጊዜ በ<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>) ስራ ላይ ውሏል"</string>
+    <string name="active_app_usage_2_qs" msgid="6107866785243565283">"በ<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) ስራ ላይ እየዋለ ነው"</string>
+    <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"በቅርብ ጊዜ በ<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) ስራ ላይ ውሏል"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"ደህንነት &amp; ግላዊነት"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"ሁኔታ አረጋግጥ"</string>
 </resources>
