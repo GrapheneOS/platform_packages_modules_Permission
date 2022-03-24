@@ -43,6 +43,8 @@ import android.content.pm.PackageManager.MATCH_DIRECT_BOOT_AWARE
 import android.content.pm.PackageManager.MATCH_DIRECT_BOOT_UNAWARE
 import android.content.pm.PermissionGroupInfo
 import android.content.pm.PermissionInfo
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
@@ -335,6 +337,16 @@ object KotlinUtils {
         } catch (e: PackageManager.NameNotFoundException) {
             packageName
         }
+    }
+
+    fun convertToBitmap(pkgIcon: Drawable): Bitmap {
+        val pkgIconBmp = Bitmap.createBitmap(pkgIcon.intrinsicWidth, pkgIcon.intrinsicHeight,
+            Bitmap.Config.ARGB_8888)
+        // Draw the icon so it can be displayed.
+        val canvas = Canvas(pkgIconBmp)
+        pkgIcon.setBounds(0, 0, pkgIcon.intrinsicWidth, pkgIcon.intrinsicHeight)
+        pkgIcon.draw(canvas)
+        return pkgIconBmp
     }
 
     /**
