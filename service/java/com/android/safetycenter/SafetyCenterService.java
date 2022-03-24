@@ -49,7 +49,7 @@ import androidx.annotation.RequiresApi;
 
 import com.android.internal.annotations.GuardedBy;
 import com.android.permission.util.UserUtils;
-import com.android.safetycenter.SafetyCenterConfigReader.Config;
+import com.android.safetycenter.SafetyCenterConfigReader.SafetyCenterConfigInternal;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 import com.android.server.SystemService;
 
@@ -141,12 +141,20 @@ public final class SafetyCenterService extends SystemService {
             SafetyCenterData safetyCenterData = null;
             List<RemoteCallbackList<IOnSafetyCenterDataChangedListener>> listeners = null;
             synchronized (mApiLock) {
-                Config config = mSafetyCenterConfigReader.getCurrentConfig();
+                SafetyCenterConfigInternal configInternal =
+                        mSafetyCenterConfigReader.getCurrentConfigInternal();
                 boolean hasUpdate = mSafetyCenterDataTracker.setSafetySourceData(
-                        config, safetySourceData, safetySourceId, packageName, userId);
+                        configInternal,
+                        safetySourceData,
+                        safetySourceId,
+                        packageName,
+                        userId
+                );
                 if (hasUpdate) {
-                    safetyCenterData = mSafetyCenterDataTracker.getSafetyCenterData(config,
-                            userProfileGroup);
+                    safetyCenterData = mSafetyCenterDataTracker.getSafetyCenterData(
+                            configInternal,
+                            userProfileGroup
+                    );
                     listeners = mSafetyCenterListeners.getListeners(userProfileGroup);
                 }
             }
@@ -174,9 +182,14 @@ public final class SafetyCenterService extends SystemService {
             }
 
             synchronized (mApiLock) {
-                Config config = mSafetyCenterConfigReader.getCurrentConfig();
-                return mSafetyCenterDataTracker.getSafetySourceData(config, safetySourceId,
-                        packageName, userId);
+                SafetyCenterConfigReader.SafetyCenterConfigInternal configInternal =
+                        mSafetyCenterConfigReader.getCurrentConfigInternal();
+                return mSafetyCenterDataTracker.getSafetySourceData(
+                        configInternal,
+                        safetySourceId,
+                        packageName,
+                        userId
+                );
             }
         }
 
@@ -218,14 +231,17 @@ public final class SafetyCenterService extends SystemService {
             }
 
             UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
-            Config config;
+            SafetyCenterConfigReader.SafetyCenterConfigInternal configInternal;
 
             synchronized (mApiLock) {
-                config = mSafetyCenterConfigReader.getCurrentConfig();
+                configInternal = mSafetyCenterConfigReader.getCurrentConfigInternal();
             }
             synchronized (mRefreshLock) {
-                mSafetyCenterRefreshManager.refreshSafetySources(config, refreshReason,
-                        userProfileGroup);
+                mSafetyCenterRefreshManager.refreshSafetySources(
+                        configInternal,
+                        refreshReason,
+                        userProfileGroup
+                );
             }
         }
 
@@ -236,7 +252,7 @@ public final class SafetyCenterService extends SystemService {
                     MANAGE_SAFETY_CENTER, "getSafetyCenterConfig");
 
             synchronized (mApiLock) {
-                return mSafetyCenterConfigReader.getSafetyCenterConfig();
+                return mSafetyCenterConfigReader.getCurrentConfigInternal().getSafetyCenterConfig();
             }
         }
 
@@ -253,7 +269,7 @@ public final class SafetyCenterService extends SystemService {
             UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
             synchronized (mApiLock) {
                 return mSafetyCenterDataTracker.getSafetyCenterData(
-                        mSafetyCenterConfigReader.getCurrentConfig(), userProfileGroup);
+                        mSafetyCenterConfigReader.getCurrentConfigInternal(), userProfileGroup);
             }
         }
 
@@ -274,7 +290,7 @@ public final class SafetyCenterService extends SystemService {
                 boolean registered = mSafetyCenterListeners.addListener(listener, userId);
                 if (registered) {
                     safetyCenterData = mSafetyCenterDataTracker.getSafetyCenterData(
-                            mSafetyCenterConfigReader.getCurrentConfig(),
+                            mSafetyCenterConfigReader.getCurrentConfigInternal(),
                             userProfileGroup);
                 }
             }
@@ -350,7 +366,7 @@ public final class SafetyCenterService extends SystemService {
             }
 
             synchronized (mApiLock) {
-                mSafetyCenterConfigReader.setConfigOverride(safetyCenterConfig);
+                mSafetyCenterConfigReader.setConfigOverrideForTests(safetyCenterConfig);
                 mSafetyCenterDataTracker.clear();
             }
         }
@@ -364,7 +380,7 @@ public final class SafetyCenterService extends SystemService {
             }
 
             synchronized (mApiLock) {
-                mSafetyCenterConfigReader.clearConfigOverride();
+                mSafetyCenterConfigReader.clearConfigOverrideForTests();
                 mSafetyCenterDataTracker.clear();
             }
         }

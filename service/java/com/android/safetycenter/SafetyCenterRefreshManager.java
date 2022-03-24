@@ -43,7 +43,7 @@ import android.safetycenter.SafetyCenterManager.RefreshRequestType;
 import androidx.annotation.RequiresApi;
 
 import com.android.safetycenter.SafetyCenterConfigReader.Broadcast;
-import com.android.safetycenter.SafetyCenterConfigReader.Config;
+import com.android.safetycenter.SafetyCenterConfigReader.SafetyCenterConfigInternal;
 
 import java.time.Duration;
 import java.util.List;
@@ -79,9 +79,11 @@ final class SafetyCenterRefreshManager {
      * Triggers a refresh of safety sources by sending them broadcasts with action
      * {@link android.safetycenter.SafetyCenterManager#ACTION_REFRESH_SAFETY_SOURCES}.
      */
-    void refreshSafetySources(@NonNull Config config, @RefreshReason int refreshReason,
+    void refreshSafetySources(
+            @NonNull SafetyCenterConfigInternal configInternal,
+            @RefreshReason int refreshReason,
             @NonNull UserProfileGroup userProfileGroup) {
-        List<Broadcast> broadcasts = config.getBroadcasts();
+        List<Broadcast> broadcasts = configInternal.getBroadcasts();
         int requestType = toRefreshRequestType(refreshReason);
         BroadcastOptions broadcastOptions = BroadcastOptions.makeBasic();
         // The following operation requires START_FOREGROUND_SERVICES_FROM_BACKGROUND
