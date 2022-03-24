@@ -16,9 +16,9 @@
 
 package com.android.permissioncontroller.permission.ui.handheld;
 
-import static android.app.admin.DevicePolicyResources.Strings.PermissionController.BACKGROUND_ACCESS_DISABLED_BY_ADMIN_MESSAGE;
-import static android.app.admin.DevicePolicyResources.Strings.PermissionController.BACKGROUND_ACCESS_ENABLED_BY_ADMIN_MESSAGE;
-import static android.app.admin.DevicePolicyResources.Strings.PermissionController.FOREGROUND_ACCESS_ENABLED_BY_ADMIN_MESSAGE;
+import static android.app.admin.DevicePolicyResources.Strings.PermissionSettings.BACKGROUND_ACCESS_DISABLED_BY_ADMIN_MESSAGE;
+import static android.app.admin.DevicePolicyResources.Strings.PermissionSettings.BACKGROUND_ACCESS_ENABLED_BY_ADMIN_MESSAGE;
+import static android.app.admin.DevicePolicyResources.Strings.PermissionSettings.FOREGROUND_ACCESS_ENABLED_BY_ADMIN_MESSAGE;
 
 import static com.android.permissioncontroller.permission.utils.Utils.getRequestMessage;
 
