@@ -102,7 +102,7 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
         mIssuesGroup.removeAll();
 
         issues.stream()
-                .map(issue -> new IssueCardPreference(context, issue))
+                .map(issue -> new IssueCardPreference(context, mViewModel, issue))
                 .forEachOrdered(mIssuesGroup::addPreference);
     }
 
