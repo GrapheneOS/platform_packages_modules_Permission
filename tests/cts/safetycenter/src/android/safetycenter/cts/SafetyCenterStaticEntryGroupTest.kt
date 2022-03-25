@@ -47,14 +47,12 @@ class SafetyCenterStaticEntryGroupTest {
         )
 
     private val staticEntry1 =
-        SafetyCenterStaticEntry.Builder()
-            .setTitle("an entry title")
+        SafetyCenterStaticEntry.Builder("an entry title")
             .setSummary("an entry summary")
             .setPendingIntent(pendingIntent1)
             .build()
     private val staticEntry2 =
-        SafetyCenterStaticEntry.Builder()
-            .setTitle("another entry title")
+        SafetyCenterStaticEntry.Builder("another entry title")
             .setSummary("another entry summary")
             .setPendingIntent(pendingIntent2)
             .build()

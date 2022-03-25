@@ -225,10 +225,12 @@ public final class SafetyCenterIssue implements Parcelable {
     public static final Creator<SafetyCenterIssue> CREATOR = new Creator<SafetyCenterIssue>() {
         @Override
         public SafetyCenterIssue createFromParcel(Parcel in) {
-            return new Builder(in.readString())
-                    .setTitle(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in))
-                    .setSubtitle(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in))
-                    .setSummary(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in))
+            String id = in.readString();
+            CharSequence title = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
+            CharSequence subtitle = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
+            CharSequence summary = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
+            return new Builder(id, title, summary)
+                    .setSubtitle(subtitle)
                     .setSeverityLevel(in.readInt())
                     .setDismissible(in.readBoolean())
                     .setShouldConfirmDismissal(in.readBoolean())
@@ -258,12 +260,20 @@ public final class SafetyCenterIssue implements Parcelable {
         /**
          * Creates a {@link Builder} for a {@link SafetyCenterIssue}.
          *
-         * @param id an encoded string ID to be returned by {@link #getId()}
+         * @param id a unique encoded string ID, see {@link #getId()} for details
+         * @param title a title that describes this issue
+         * @param summary a summary of this issue
          */
-        public Builder(@NonNull String id) {
+        public Builder(
+                @NonNull String id, @NonNull CharSequence title, @NonNull CharSequence summary) {
             mId = requireNonNull(id);
+            mTitle = requireNonNull(title);
+            mSummary = requireNonNull(summary);
         }
 
+        /**
+         * Creates a {@link Builder} with the values from the given {@link SafetyCenterIssue}.
+         */
         public Builder(@NonNull SafetyCenterIssue issue) {
             mId = issue.mId;
             mTitle = issue.mTitle;
@@ -275,14 +285,14 @@ public final class SafetyCenterIssue implements Parcelable {
             mActions = new ArrayList<>(issue.mActions);
         }
 
-        /** Sets the ID for this issue. Required. */
+        /** Sets the ID for this issue. */
         @NonNull
         public Builder setId(@NonNull String id) {
             mId = requireNonNull(id);
             return this;
         }
 
-        /** Sets the title for this issue. Required. */
+        /** Sets the title for this issue. */
         @NonNull
         public Builder setTitle(@NonNull CharSequence title) {
             mTitle = requireNonNull(title);
@@ -296,7 +306,7 @@ public final class SafetyCenterIssue implements Parcelable {
             return this;
         }
 
-        /** Sets the summary for this issue. Required. */
+        /** Sets the summary for this issue. */
         @NonNull
         public Builder setSummary(@NonNull CharSequence summary) {
             mSummary = requireNonNull(summary);
@@ -486,9 +496,10 @@ public final class SafetyCenterIssue implements Parcelable {
         public static final Creator<Action> CREATOR = new Creator<Action>() {
             @Override
             public Action createFromParcel(Parcel in) {
-                return new Action.Builder(in.readString())
-                        .setLabel(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in))
-                        .setPendingIntent(in.readTypedObject(PendingIntent.CREATOR))
+                String id = in.readString();
+                CharSequence label = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
+                PendingIntent pendingIntent = in.readTypedObject(PendingIntent.CREATOR);
+                return new Action.Builder(id, label, pendingIntent)
                         .setWillResolve(in.readBoolean())
                         .setIsInFlight(in.readBoolean())
                         .setSuccessMessage(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in))
@@ -510,11 +521,31 @@ public final class SafetyCenterIssue implements Parcelable {
             private boolean mInFlight;
             private CharSequence mSuccessMessage;
 
-            public Builder(@NonNull String id) {
-                mId = id;
+            /**
+             * Creates a new {@link Builder} for an {@link Action}.
+             *
+             * @param id a unique ID for this action
+             * @param label a label describing this action
+             * @param pendingIntent a {@link PendingIntent} to be sent when this action is taken
+             */
+            public Builder(
+                    @NonNull String id,
+                    @NonNull CharSequence label,
+                    @NonNull PendingIntent pendingIntent
+            ) {
+                mId = requireNonNull(id);
+                mLabel = requireNonNull(label);
+                mPendingIntent = requireNonNull(pendingIntent);
             }
 
-            /** Sets the label of this {@link Action}. Required. */
+            /** Sets the ID of this {@link Action} */
+            @NonNull
+            public Builder setId(@NonNull String id) {
+                mId = requireNonNull(id);
+                return this;
+            }
+
+            /** Sets the label of this {@link Action}. */
             @NonNull
             public Builder setLabel(@NonNull CharSequence label) {
                 mLabel = requireNonNull(label);
@@ -523,7 +554,6 @@ public final class SafetyCenterIssue implements Parcelable {
 
             /**
              * Sets the {@link PendingIntent} to be sent when this {@link Action} is taken.
-             * Required.
              */
             @NonNull
             public Builder setPendingIntent(@NonNull PendingIntent pendingIntent) {
