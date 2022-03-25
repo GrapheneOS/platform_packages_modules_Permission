@@ -373,6 +373,7 @@ public class SafetyCenterQsFragment extends Fragment {
         TextView titleText = new TextView(getContext());
         titleText.setId(titleId);
         titleText.setText(permGroupLabel);
+        titleText.setContentDescription(permGroupLabel);
         RelativeLayout.LayoutParams titleParams = new RelativeLayout.LayoutParams(
                 WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
         titleParams.setMargins(convertDpToPixel(10), 0, convertDpToPixel(4), convertDpToPixel(4));
