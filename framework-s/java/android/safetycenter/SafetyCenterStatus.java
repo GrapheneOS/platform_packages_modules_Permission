@@ -203,9 +203,9 @@ public final class SafetyCenterStatus implements Parcelable {
     public static final Creator<SafetyCenterStatus> CREATOR = new Creator<SafetyCenterStatus>() {
         @Override
         public SafetyCenterStatus createFromParcel(Parcel in) {
-            return new Builder()
-                    .setTitle(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in))
-                    .setSummary(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in))
+            CharSequence title = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
+            CharSequence summary = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
+            return new Builder(title, summary)
                     .setSeverityLevel(in.readInt())
                     .setRefreshStatus(in.readInt())
                     .build();
@@ -226,12 +226,19 @@ public final class SafetyCenterStatus implements Parcelable {
         @RefreshStatus
         private int mRefreshStatus = REFRESH_STATUS_NONE;
 
-        /** Creates an empty {@link Builder} for {@link SafetyCenterStatus}*/
-        public Builder() {}
+        /**
+         * Creates a new {@link Builder} for a {@link SafetyCenterStatus}.
+         *
+         * @param title an overall title for the status
+         * @param summary a summary for the status
+         */
+        public Builder(@NonNull CharSequence title, @NonNull CharSequence summary) {
+            mTitle = requireNonNull(title);
+            mSummary = requireNonNull(summary);
+        }
 
         /**
-         * Creates a pre-populated {@link Builder} with the values from the given {@link
-         * SafetyCenterStatus}.
+         * Creates a {@link Builder} with the values from the given {@link SafetyCenterStatus}.
          */
         public Builder(@NonNull SafetyCenterStatus safetyCenterStatus) {
             mTitle = safetyCenterStatus.mTitle;
@@ -240,14 +247,14 @@ public final class SafetyCenterStatus implements Parcelable {
             mRefreshStatus = safetyCenterStatus.mRefreshStatus;
         }
 
-        /** Sets the title for this status. Required. */
+        /** Sets the title for this status. */
         @NonNull
         public Builder setTitle(@NonNull CharSequence title) {
             mTitle = requireNonNull(title);
             return this;
         }
 
-        /** Sets the summary text for this status. Required. */
+        /** Sets the summary text for this status. */
         @NonNull
         public Builder setSummary(@NonNull CharSequence summary) {
             mSummary = requireNonNull(summary);
