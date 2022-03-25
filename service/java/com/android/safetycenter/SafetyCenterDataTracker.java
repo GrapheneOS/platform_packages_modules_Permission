@@ -227,15 +227,13 @@ final class SafetyCenterDataTracker {
                             safetySourceId));
         }
 
-        int maxSeverityLevel = Integer.MIN_VALUE;
+        int maxSeverityLevel = safetySourceData.getStatus() != null
+                ? safetySourceData.getStatus().getSeverityLevel()
+                : Integer.MIN_VALUE;
         for (int i = 0; i < safetySourceData.getIssues().size(); i++) {
             maxSeverityLevel = Math.max(maxSeverityLevel,
                     safetySourceData.getIssues().get(i).getSeverityLevel());
         }
-        // TODO(b/219700241): Should we also check the status level? There will probably be other
-        //  rules that enforce that status level and issue severity levels are consistent, but
-        //  should this check be independent of those rules? Will reconsider after we decide if we
-        //  can consolidate API IntDefs.
         if (maxSeverityLevel > safetySource.getMaxSeverityLevel()) {
             throw new IllegalArgumentException(
                     String.format("Unexpected max severity level \"%d\" for safety source \"%s\"",
