@@ -467,7 +467,8 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה ליומני השיחות של הטלפון?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאה לבצע ולנהל שיחות טלפון?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה לנתוני חיישנים העוקבים אחר הסימנים החיוניים שלך?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="3851603883489664284">"האפליקציה הזו מבקשת לקבל גישה לנתונים של החיישנים שמודדים את הסימנים החיוניים שלך כל הזמן, גם כשלא נעשה בה שימוש. כדי לשנות את ההגדרה, "<annotation id="link">"צריך להיכנס להגדרות"</annotation>" או לאשר את הגישה רק כשהאפליקציה נמצאת בשימוש."</string>
+    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
+    <skip />
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"‏להעניק לאפליקציה &lt;b‏/&gt;‏<xliff:g id="APP_NAME">%1$s</xliff:g>‏&lt;b&gt; הרשאת גישה לנתוני החיישנים שמודדים את הסימנים החיוניים שלך?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"כדי לאפשר לאפליקציה הזו לגשת לנתונים של חיישנים גופניים כל הזמן, גם כשהיא לא בשימוש, "<annotation id="link">"צריך להיכנס להגדרות."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"‏להמשיך לאפשר לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; לגשת לנתונים של חיישנים גופניים כשהיא נמצאת בשימוש?"</string>
@@ -508,6 +509,8 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"הסרה של הרשאת הגישה למצלמה"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"הסרה של הרשאת הגישה למיקרופון"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"ניהול השירות"</string>
+    <!-- no translation found for manage_permissions_qs (3780541819763475434) -->
+    <skip />
     <string name="active_call_usage_qs" msgid="8559974395932523391">"בשימוש על ידי שיחת טלפון"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"נעשה שימוש לאחרונה על ידי שיחת טלפון"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"בשימוש על ידי <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>

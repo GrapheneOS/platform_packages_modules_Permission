@@ -467,13 +467,11 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"ଆପଣଙ୍କର ଫୋନ୍‌‌ର କଲ୍‌ ଲଗ୍‌ ଆକ୍ସେସ୍‌ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ କି?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଫୋନ୍‍ କଲ୍‍ କରିବାକୁ ତଥା ପରିଚାଳନା କରିବାକୁ ଅନୁମତି ଦେବେ କି?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଆପଣଙ୍କ ଗୁରୁତ୍ୱପୂର୍ଣ୍ଣ ଲକ୍ଷଣଗୁଡ଼ିକ ବିଷୟରେ ସେନ୍ସର୍‍ ଡାଟା ଆକ୍ସେସ୍‍ କରିବା ପାଇଁ ଅନୁମତି ଦେବେ କି?"</string>
-    <!-- no translation found for permgroupupgraderequestdetail_sensors (3851603883489664284) -->
+    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
     <skip />
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"ଆପଣଙ୍କ ମହତ୍ତ୍ୱପୂର୍ଣ୍ଣ ଲକ୍ଷଣଗୁଡ଼ିକ ବିଷୟରେ ସେନ୍ସର ଡାଟାକୁ ଆକ୍ସେସ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ କି?"</string>
-    <!-- no translation found for permgroupbackgroundrequestdetail_sensors (7649389834182449783) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequest_sensors (7576527638411370468) -->
-    <skip />
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"ଆପଣ ଆପ ବ୍ୟବହାର କରୁନଥିଲେ ମଧ୍ୟ, ବଡି ସେନ୍ସର ଡାଟାକୁ ସର୍ବଦା ଆକ୍ସେସ କରିବା ନିମନ୍ତେ ଏହି ଆପକୁ ଅନୁମତି ଦେବା ପାଇଁ, "<annotation id="link">"ସେଟିଂସକୁ ଯାଆନ୍ତୁ।"</annotation></string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ଆପ ବ୍ୟବହାରରେ ଥିବା ସମୟରେ ବଡି ସେନ୍ସର ଡାଟାକୁ ଆକ୍ସେସ କରିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବା ଜାରି ରଖିବେ?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"ଆପଣଙ୍କୁ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକ ପଠାଇବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;କୁ ଅନୁମତି ଦେବେ?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"ଆପଣଙ୍କୁ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକ ପଠାଇବା ଜାରି ରଖିବା ପାଇଁ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; କୁ ଅନୁମତି ଦେବେ?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"ନିୟନ୍ତ୍ରିତ ଅନୁରୋଧଗୁଡ଼ିକ"</string>
@@ -511,6 +509,8 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"କ୍ୟାମେରା ଅନୁମତି କାଢ଼ି ଦିଅନ୍ତୁ"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"ମାଇକ୍ରୋଫୋନ ଅନୁମତି କାଢ଼ି ଦିଅନ୍ତୁ"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"ସେବା ପରିଚାଳନା କରନ୍ତୁ"</string>
+    <!-- no translation found for manage_permissions_qs (3780541819763475434) -->
+    <skip />
     <string name="active_call_usage_qs" msgid="8559974395932523391">"ଫୋନ କଲ ଦ୍ୱାରା ବ୍ୟବହାର କରାଯାଉଛି"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"ଏବେ ଫୋନ କଲରେ ବ୍ୟବହାର କରାଯାଇଛି"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"<xliff:g id="APP_NAME">%1$s</xliff:g> ଦ୍ୱାରା ବ୍ୟବହାର କରାଯାଉଛି"</string>

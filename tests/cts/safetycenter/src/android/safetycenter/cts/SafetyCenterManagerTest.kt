@@ -50,8 +50,8 @@ import android.safetycenter.cts.testing.Coroutines.TIMEOUT_SHORT
 import android.safetycenter.cts.testing.Coroutines.runBlockingWithTimeout
 import android.safetycenter.cts.testing.FakeExecutor
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.addOnSafetyCenterDataChangedListenerWithPermission
-import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.clearAllSafetySourceDataWithPermission
-import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.clearSafetyCenterConfigOverrideWithPermission
+import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.clearAllSafetySourceDataForTestsWithPermission
+import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.clearSafetyCenterConfigForTestsWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.getSafetyCenterConfigWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.getSafetyCenterDataWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.getSafetySourceDataWithPermission
@@ -59,7 +59,7 @@ import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.isS
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.refreshSafetySourcesWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.removeOnSafetyCenterDataChangedListenerWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.reportSafetySourceErrorWithPermission
-import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.setSafetyCenterConfigOverrideWithPermission
+import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.setSafetyCenterConfigForTestsWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.setSafetySourceDataWithPermission
 import android.safetycenter.cts.testing.SafetyCenterFlags
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
@@ -168,8 +168,8 @@ class SafetyCenterManagerTest {
     fun clearDataBetweenTest() {
         SafetyCenterFlags.setSafetyCenterEnabled(true)
         safetyCenterManager.removeOnSafetyCenterDataChangedListenerWithPermission(listener)
-        safetyCenterManager.clearAllSafetySourceDataWithPermission()
-        safetyCenterManager.clearSafetyCenterConfigOverrideWithPermission()
+        safetyCenterManager.clearAllSafetySourceDataForTestsWithPermission()
+        safetyCenterManager.clearSafetyCenterConfigForTestsWithPermission()
         SafetySourceBroadcastReceiver.reset()
     }
 
@@ -201,7 +201,7 @@ class SafetyCenterManagerTest {
 
     @Test
     fun setSafetySourceData_validId_setsValue() {
-        safetyCenterManager.setSafetyCenterConfigOverrideWithPermission(CTS_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_CONFIG)
 
         safetyCenterManager.setSafetySourceDataWithPermission(
             CTS_SOURCE_ID,
@@ -216,7 +216,7 @@ class SafetyCenterManagerTest {
 
     @Test
     fun setSafetySourceData_twice_replacesValue() {
-        safetyCenterManager.setSafetyCenterConfigOverrideWithPermission(CTS_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_CONFIG)
         safetyCenterManager.setSafetySourceDataWithPermission(
             CTS_SOURCE_ID,
             safetySourceDataUnspecified,
@@ -236,7 +236,7 @@ class SafetyCenterManagerTest {
 
     @Test
     fun setSafetySourceData_null_clearsValue() {
-        safetyCenterManager.setSafetyCenterConfigOverrideWithPermission(CTS_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_CONFIG)
         safetyCenterManager.setSafetySourceDataWithPermission(
             CTS_SOURCE_ID,
             safetySourceDataUnspecified,
@@ -282,7 +282,7 @@ class SafetyCenterManagerTest {
 
     @Test
     fun getSafetySourceData_validId_noData_returnsNull() {
-        safetyCenterManager.setSafetyCenterConfigOverrideWithPermission(CTS_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_CONFIG)
 
         val apiSafetySourceData =
             safetyCenterManager.getSafetySourceDataWithPermission(CTS_SOURCE_ID)
@@ -328,7 +328,7 @@ class SafetyCenterManagerTest {
 
     @Test
     fun refreshSafetySources_withRefreshReasonRescanButtonClick_sourceSendsRescanData() {
-        safetyCenterManager.setSafetyCenterConfigOverrideWithPermission(CTS_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_CONFIG)
         SafetySourceBroadcastReceiver.safetySourceId = CTS_SOURCE_ID
         SafetySourceBroadcastReceiver.safetySourceDataOnRescanClick = safetySourceDataCritical
 
@@ -343,7 +343,7 @@ class SafetyCenterManagerTest {
 
     @Test
     fun refreshSafetySources_withRefreshReasonPageOpen_sourceSendsPageOpenData() {
-        safetyCenterManager.setSafetyCenterConfigOverrideWithPermission(CTS_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_CONFIG)
         SafetySourceBroadcastReceiver.safetySourceId = CTS_SOURCE_ID
         SafetySourceBroadcastReceiver.safetySourceDataOnPageOpen = safetySourceDataInformation
 
@@ -357,7 +357,7 @@ class SafetyCenterManagerTest {
 
     @Test
     fun refreshSafetySources_whenReceiverDoesNotHaveSendingPermission_sourceDoesNotSendData() {
-        safetyCenterManager.setSafetyCenterConfigOverrideWithPermission(CTS_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_CONFIG)
         SafetySourceBroadcastReceiver.safetySourceId = CTS_SOURCE_ID
         SafetySourceBroadcastReceiver.safetySourceDataOnRescanClick = safetySourceDataCritical
 
@@ -374,7 +374,7 @@ class SafetyCenterManagerTest {
     @Test
     fun refreshSafetySources_withFlagDisabled_noOp() {
         SafetyCenterFlags.setSafetyCenterEnabled(false)
-        safetyCenterManager.setSafetyCenterConfigOverrideWithPermission(CTS_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_CONFIG)
         SafetySourceBroadcastReceiver.safetySourceId = CTS_SOURCE_ID
         SafetySourceBroadcastReceiver.safetySourceDataOnPageOpen = safetySourceDataInformation
 
@@ -420,7 +420,7 @@ class SafetyCenterManagerTest {
 
     @Test
     fun getSafetyCenterData_withoutDataProvided_returnsDataFromConfig() {
-        safetyCenterManager.setSafetyCenterConfigOverrideWithPermission(CTS_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_CONFIG)
 
         val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
 
@@ -430,7 +430,7 @@ class SafetyCenterManagerTest {
 
     @Test
     fun getSafetyCenterData_withSomeDataProvided_returnsDataProvided() {
-        safetyCenterManager.setSafetyCenterConfigOverrideWithPermission(CTS_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_CONFIG)
         safetyCenterManager.setSafetySourceDataWithPermission(
             CTS_SOURCE_ID,
             safetySourceDataUnspecified,
@@ -445,7 +445,7 @@ class SafetyCenterManagerTest {
 
     @Test
     fun getSafetyCenterData_withUpdatedData_returnsUpdatedData() {
-        safetyCenterManager.setSafetyCenterConfigOverrideWithPermission(CTS_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_CONFIG)
         safetyCenterManager.setSafetySourceDataWithPermission(
             CTS_SOURCE_ID,
             safetySourceDataInformation,
@@ -468,7 +468,7 @@ class SafetyCenterManagerTest {
     @Test
     fun getSafetyCenterData_withFlagDisabled_returnsDefaultData() {
         SafetyCenterFlags.setSafetyCenterEnabled(false)
-        safetyCenterManager.setSafetyCenterConfigOverrideWithPermission(CTS_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_CONFIG)
 
         val apiSafetyCenterData = safetyCenterManager.getSafetyCenterDataWithPermission()
 
@@ -494,7 +494,7 @@ class SafetyCenterManagerTest {
 
     @Test
     fun addOnSafetyCenterDataChangedListener_listenerCalledWithSafetyCenterDataFromConfig() {
-        safetyCenterManager.setSafetyCenterConfigOverrideWithPermission(CTS_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_CONFIG)
         safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
             directExecutor(),
             listener
@@ -507,7 +507,7 @@ class SafetyCenterManagerTest {
 
     @Test
     fun addOnSafetyCenterDataChangedListener_listenerCalledOnSafetySourceData() {
-        safetyCenterManager.setSafetyCenterConfigOverrideWithPermission(CTS_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_CONFIG)
         safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
             directExecutor(),
             listener
@@ -528,7 +528,7 @@ class SafetyCenterManagerTest {
 
     @Test
     fun addOnSafetyCenterDataChangedListener_listenerCalledWhenSafetySourceDataChanges() {
-        safetyCenterManager.setSafetyCenterConfigOverrideWithPermission(CTS_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_CONFIG)
         safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
             directExecutor(),
             listener
@@ -556,7 +556,7 @@ class SafetyCenterManagerTest {
 
     @Test
     fun addOnSafetyCenterDataChangedListener_listenerCalledWhenSafetySourceDataCleared() {
-        safetyCenterManager.setSafetyCenterConfigOverrideWithPermission(CTS_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_CONFIG)
         safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
             directExecutor(),
             listener
@@ -584,7 +584,7 @@ class SafetyCenterManagerTest {
 
     @Test
     fun addOnSafetyCenterDataChangedListener_listenerNotCalledWhenSafetySourceDataStaysNull() {
-        safetyCenterManager.setSafetyCenterConfigOverrideWithPermission(CTS_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_CONFIG)
         safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
             directExecutor(),
             listener
@@ -605,7 +605,7 @@ class SafetyCenterManagerTest {
 
     @Test
     fun addOnSafetyCenterDataChangedListener_listenerNotCalledWhenSafetySourceDataDoesntChange() {
-        safetyCenterManager.setSafetyCenterConfigOverrideWithPermission(CTS_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_CONFIG)
         safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
             directExecutor(),
             listener
@@ -634,7 +634,7 @@ class SafetyCenterManagerTest {
     @Test
     fun addOnSafetyCenterDataChangedListener_withFlagDisabled_listenerNotCalled() {
         SafetyCenterFlags.setSafetyCenterEnabled(false)
-        safetyCenterManager.setSafetyCenterConfigOverrideWithPermission(CTS_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_CONFIG)
 
         safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
             directExecutor(),
@@ -681,7 +681,7 @@ class SafetyCenterManagerTest {
 
     @Test
     fun removeOnSafetyCenterDataChangedListener_listenerNotCalledOnSafetySourceData() {
-        safetyCenterManager.setSafetyCenterConfigOverrideWithPermission(CTS_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_CONFIG)
         safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
             directExecutor(),
             listener
@@ -703,7 +703,7 @@ class SafetyCenterManagerTest {
 
     @Test
     fun removeOnSafetyCenterDataChangedListener_listenerNeverCalledAfterRemoving() {
-        safetyCenterManager.setSafetyCenterConfigOverrideWithPermission(CTS_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_CONFIG)
         val fakeExecutor = FakeExecutor()
         safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(fakeExecutor,
             listener)
@@ -755,21 +755,23 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    fun clearAllSafetySourceData_withoutPermission_throwsSecurityException() {
-        assertFailsWith(SecurityException::class) { safetyCenterManager.clearAllSafetySourceData() }
-    }
-
-    @Test
-    fun setSafetyCenterConfigOverride_withoutPermission_throwsSecurityException() {
+    fun clearAllSafetySourceDataForTests_withoutPermission_throwsSecurityException() {
         assertFailsWith(SecurityException::class) {
-            safetyCenterManager.setSafetyCenterConfigOverride(CTS_CONFIG)
+            safetyCenterManager.clearAllSafetySourceDataForTests()
         }
     }
 
     @Test
-    fun clearSafetyCenterConfigOverride_withoutPermission_throwsSecurityException() {
+    fun setSafetyCenterConfigForTests_withoutPermission_throwsSecurityException() {
         assertFailsWith(SecurityException::class) {
-            safetyCenterManager.clearSafetyCenterConfigOverride()
+            safetyCenterManager.setSafetyCenterConfigForTests(CTS_CONFIG)
+        }
+    }
+
+    @Test
+    fun clearSafetyCenterConfigForTests_withoutPermission_throwsSecurityException() {
+        assertFailsWith(SecurityException::class) {
+            safetyCenterManager.clearSafetyCenterConfigForTests()
         }
     }
 

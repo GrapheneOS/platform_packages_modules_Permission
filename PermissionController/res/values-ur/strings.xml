@@ -467,7 +467,8 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"‏‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎ کو آپ کے فون کال لاگز تک رسائی کی اجازت دیں؟"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"‏&lt;/b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو فون کالز کرنے اور ان کا نظم کرنے کی اجازت دیں؟"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو آپ کے اہم اشاروں کے متعلق سینسر ڈیٹا تک رسائی کی اجازت دیں؟"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="3851603883489664284">"آپ کے ایپ کا استعمال نہ کرنے کے باوجود یہ ایپ ہر وقت آپ کے اہم اشاروں کے متعلق سینسر ڈیٹا تک رسائی حاصل کرنا چاہتی ہے۔ یہ تبدیلی کرنے کے لیے "<annotation id="link">"ترتیبات پر جائیں"</annotation>" یا ایپ کے استعمال میں ہونے کے دوران ہی رسائی کی اجازت دیں۔"</string>
+    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
+    <skip />
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&amp;gt کو آپ کے اہم اشاروں کے متعلق سینسر ڈیٹا تک رسائی کی اجازت دیں؟"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"آپ کے ایپ کا استعمال نہ کرنے کے باوجود اس ایپ کو ہر وقت باڈی سینسر ڈیٹا تک رسائی کی اجازت دینے کے لیے "<annotation id="link">"ترتیبات پر جائیں۔"</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"‏ایپ کے استعمال میں ہونے کے دوران ‎&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‎ کو باڈی سینسر ڈیٹا تک رسائی کی اجازت دینا جاری رکھیں؟"</string>
@@ -508,6 +509,8 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"کیمرے کی اجازت کو ہٹا دیا گیا"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"مائیکروفون کی اجازت کو ہٹا دیا گیا"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"سروس کا نظم کریں"</string>
+    <!-- no translation found for manage_permissions_qs (3780541819763475434) -->
+    <skip />
     <string name="active_call_usage_qs" msgid="8559974395932523391">"فون کال کے ذریعے استعمال کیا جا رہا ہے"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"فون کال میں حال ہی میں استعمال کیا گیا"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"<xliff:g id="APP_NAME">%1$s</xliff:g> کے ذریعے استعمال کیا جا رہا ہے"</string>

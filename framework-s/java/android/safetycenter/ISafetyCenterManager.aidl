@@ -101,31 +101,31 @@ interface ISafetyCenterManager {
             int userId);
 
     /**
-     * Clears all SafetySourceData set by safety sources using setSafetySourceData.
+     * Clears all SafetySourceData (set by safety sources using setSafetySourceData) for testing.
      *
      * <p>Note: This API serves to facilitate CTS testing and should not be used for other purposes.
      */
-    void clearAllSafetySourceData();
+    void clearAllSafetySourceDataForTests();
 
     /**
-     * Sets an override of the SafetyCenterConfig set through XML.
+     * Overrides the SafetyCenterConfig for testing.
      *
-     * When set, the override SafetyCenterConfig will be used instead of the
+     * <p>When set, the overridden SafetyCenterConfig will be used instead of the
      * SafetyCenterConfig parsed from the XML file to read configured safety sources.
      *
      * <p>Note: This API serves to facilitate CTS testing and should not be used to configure safety
      * sources dynamically for production. Once used for testing, the override should be cleared.
      *
-     * See clearSafetyCenterConfigOverride.
+     * See clearSafetyCenterConfigForTests.
      */
-    void setSafetyCenterConfigOverride(in SafetyCenterConfig safetyCenterConfig);
+    void setSafetyCenterConfigForTests(in SafetyCenterConfig safetyCenterConfig);
 
     /**
-     * Clears the override of the SafetyCenterConfig set through XML.
+     * Clears the override of the SafetyCenterConfig set for testing.
      *
      * <p>Note: This API serves to facilitate CTS testing and should not be used for other purposes.
      *
-     * See setSafetyCenterConfigOverride(SafetyCenterConfig).
+     * See setSafetyCenterConfigForTests(SafetyCenterConfig).
      */
-    void clearSafetyCenterConfigOverride();
+    void clearSafetyCenterConfigForTests();
 }

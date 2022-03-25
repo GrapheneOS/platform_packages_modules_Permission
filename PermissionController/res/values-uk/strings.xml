@@ -467,13 +467,11 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до журналів викликів телефона?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; здійснювати телефонні дзвінки та керувати ними?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Надати додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до життєвих показників із датчиків?"</string>
-    <!-- no translation found for permgroupupgraderequestdetail_sensors (3851603883489664284) -->
+    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
     <skip />
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до життєвих показників із датчиків?"</string>
-    <!-- no translation found for permgroupbackgroundrequestdetail_sensors (7649389834182449783) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequest_sensors (7576527638411370468) -->
-    <skip />
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Щоб надати додатку постійний доступ до показників датчиків на тілі, навіть коли він не використовується, "<annotation id="link">"перейдіть у налаштування"</annotation>"."</string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Надавати й надалі додатку <xliff:g id="APP_NAME">%1$s</xliff:g> доступ до показників датчиків на тілі, коли він використовується?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; надсилати вам сповіщення?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; і надалі надсилати вам сповіщення?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Керовані дозволи"</string>
@@ -511,6 +509,8 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Вилучити дозвіл на доступ до камери"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Вилучити дозвіл на доступ до мікрофона"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Керувати сервісом"</string>
+    <!-- no translation found for manage_permissions_qs (3780541819763475434) -->
+    <skip />
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Використовується в телефонному дзвінку"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Нещодавно використано в телефонному дзвінку"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Використовується в додатку <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>

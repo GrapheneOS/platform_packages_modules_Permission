@@ -18,6 +18,8 @@ package android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
+import static com.android.internal.util.Preconditions.checkArgument;
+
 import static java.util.Objects.requireNonNull;
 
 import android.annotation.NonNull;
@@ -157,9 +159,24 @@ public final class SafetySourceData implements Parcelable {
         /** Creates the {@link SafetySourceData} defined by this {@link Builder}. */
         @NonNull
         public SafetySourceData build() {
-            // TODO(b/207329841): Validate data matches validation in S, for eg that the status
-            //  and severity levels of the settings and issues are compatible.
+            if (mStatus != null) {
+                int issuesMaxSeverityLevel = getIssuesMaxSeverityLevel();
+                if (issuesMaxSeverityLevel > SafetySourceSeverity.LEVEL_INFORMATION) {
+                    checkArgument(issuesMaxSeverityLevel <= mStatus.getSeverityLevel(),
+                            "Safety source data must not contain any issue with a severity level "
+                                    + "both greater than LEVEL_INFORMATION and greater than the "
+                                    + "status severity level");
+                }
+            }
             return new SafetySourceData(mStatus, Collections.unmodifiableList(mIssues));
+        }
+
+        private int getIssuesMaxSeverityLevel() {
+            int max = Integer.MIN_VALUE;
+            for (int i = 0; i < mIssues.size(); i++) {
+                max = Math.max(max, mIssues.get(i).getSeverityLevel());
+            }
+            return max;
         }
     }
 }

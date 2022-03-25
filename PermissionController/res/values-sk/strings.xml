@@ -467,7 +467,8 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k zoznamu tel. hovorov?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uskutočňovať a spravovať telefonické hovory?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; používať údaje senzorov o vašich životných funkciách?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="3851603883489664284">"Táto aplikácia požaduje nepretržitý prístup k dátam senzorov o vašich životných funkciách, a to aj vtedy, keď ju nepoužívate. Povolíte to "<annotation id="link">"v nastaveniach"</annotation>", prípadne môžete ponechať aktivovaný prístup iba počas používania aplikácie."</string>
+    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
+    <skip />
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; používať dáta senzorov o vašich životných funkciách?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Ak chcete tejto aplikácii povoliť nepretržitý prístup k údajom telového senzora, a to aj v prípade, že ju nepoužívate, "<annotation id="link">"prejdite do nastavení."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k dátam telových senzorov počas jej používania?"</string>
@@ -508,6 +509,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Odstrániť povolenie pre kameru"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Odstrániť povolenie pre mikrofón"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Spravovať službu"</string>
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"Správy povolení"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Využíva telefonický hovor"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Nedávno využil telefonický hovor"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Využíva aplikácia <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
