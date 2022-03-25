@@ -130,7 +130,9 @@ public class SafetyCenterQsFragment extends Fragment {
                 .observe(this, (v) -> setSensorToggleState(v, getView()));
         //LightAppPermGroupLiveDatas are kept track of in the view model,
         // we need to start observing them here
-        mViewModel.getLightAppPermGroupLiveData().observe(this, this::onPermissionGroupsLoaded);
+        if (!mPermGroupUsages.isEmpty()) {
+            mViewModel.getPermDataLoadedLiveData().observe(this, this::onPermissionGroupsLoaded);
+        }
     }
 
     @Override
@@ -138,7 +140,12 @@ public class SafetyCenterQsFragment extends Fragment {
             Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.safety_center_qs, container, false);
         mRootView = root;
-        mRootView.setVisibility(View.GONE);
+        if (mPermGroupUsages.isEmpty()) {
+            mRootView.setVisibility(View.VISIBLE);
+            setSensorToggleState(new ArrayMap<>(), mRootView);
+        } else {
+            mRootView.setVisibility(View.GONE);
+        }
         root.setBackgroundColor(android.R.color.background_dark);
         View securitySettings = root.findViewById(R.id.security_settings_button);
         securitySettings.setOnClickListener((v) -> mViewModel.navigateToSecuritySettings(this));
@@ -153,15 +160,11 @@ public class SafetyCenterQsFragment extends Fragment {
                 getChildFragmentManager().findFragmentById(R.id.safety_prefs);
         mPrefsFrag.addPreferencesFromResource(R.xml.safety_center_qs_prefs);
         mPrefs = mPrefsFrag.getPreferenceScreen();
-
-        setSensorToggleState(new ArrayMap<>(), root);
-        addPermissionUsageInformation(root);
         return root;
     }
 
     private void onPermissionGroupsLoaded(boolean initialized) {
-        if (mViewModel.getLightAppPermGroupLiveData().isInitialized()
-                && initialized) {
+        if (initialized) {
             mRootView.setVisibility(View.VISIBLE);
             setSensorToggleState(new ArrayMap<>(), mRootView);
             addPermissionUsageInformation(mRootView);
