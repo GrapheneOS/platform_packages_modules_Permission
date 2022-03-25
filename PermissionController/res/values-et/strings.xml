@@ -467,7 +467,8 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pääseda juurde teie telefoni kõnelogidele?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; teha ja hallata telefonikõnesid?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; juurdepääs anduri andmetele teie eluliste näitajate kohta?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="3851603883489664284">"See rakendus soovib pidevat juurdepääsu teie elulistele näitajatele (ka siis, kui te rakendust ei kasuta). Selle muudatuse tegemiseks "<annotation id="link">"avage seaded"</annotation>" või säilitage juurdepääs ainult ajaks, kui rakendust kasutatakse."</string>
+    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
+    <skip />
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; juurdepääs anduri andmetele teie eluliste näitajate kohta?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Selleks et anda rakendusele pidev juurdepääs kehaanduri andmetele (ka siis, kui rakendust ei kasutata), "<annotation id="link">"avage seaded."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Kas lubada jätkuvalt rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pääseda juurde kehaanduri andmetele, kui rakendust kasutatakse?"</string>
