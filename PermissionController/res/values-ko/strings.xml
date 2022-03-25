@@ -467,7 +467,8 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 통화 기록에 액세스하도록 허용하시겠습니까?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 전화를 걸고 관리하도록 허용하시겠습니까?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 생체 신호에 관한 센서 데이터에 액세스하도록 허용하시겠습니까?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="3851603883489664284">"앱을 사용하고 있지 않을 때도 앱이 항상 생체 신호 센서 데이터에 액세스하고자 합니다. 이를 허용하려면 "<annotation id="link">"설정으로 이동"</annotation>"하세요. 앱이 사용 중에만 생체 신호 센서 데이터에 액세스하는 설정을 유지해도 됩니다"</string>
+    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
+    <skip />
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;에서 생체 신호에 관한 센서 데이터에 액세스하도록 허용하시겠습니까?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"앱을 사용하지 않을 때도 앱이 항상 생체 신호 센서 데이터에 액세스하도록 허용하려면 "<annotation id="link">"설정으로 이동"</annotation>"하세요"</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 앱이 사용 중에 생체 신호 센서 데이터에 액세스하는 설정을 유지하시겠습니까?"</string>
@@ -508,6 +509,8 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"카메라 권한 삭제"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"마이크 권한 삭제"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"서비스 관리"</string>
+    <!-- no translation found for manage_permissions_qs (3780541819763475434) -->
+    <skip />
     <string name="active_call_usage_qs" msgid="8559974395932523391">"전화 통화에서 사용 중"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"최근 전화 통화에서 사용됨"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"<xliff:g id="APP_NAME">%1$s</xliff:g>에서 사용 중"</string>

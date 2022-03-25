@@ -467,7 +467,8 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf deine Anrufliste zuzugreifen?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, Anrufe zu starten und zu verwalten?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf Sensordaten zu deinen Vitalfunktionen zuzugreifen?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="3851603883489664284">"Die App möchte jederzeit auf die Sensordaten zu deinen Vitalfunktionen zugreifen, auch wenn du sie nicht verwendest. Wenn du diese Änderung vornehmen möchtest, "<annotation id="link">"gehe zu den Einstellungen"</annotation>" oder behalte den Zugriff nur für die Zeit bei, während die App in Benutzung ist."</string>
+    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
+    <skip />
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erlauben, auf Sensordaten zu deinen Vitalfunktionen zuzugreifen?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Wenn diese App dauerhaft auf Daten des Körpersensors zugreifen können soll, auch dann, wenn sie nicht verwendet wird, "<annotation id="link">"gehe zu den Einstellungen"</annotation>"."</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; Zugriff auf Körpersensordaten bei Benutzung weiter erlauben?"</string>
@@ -508,6 +509,8 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Kameraberechtigung entfernen"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Mikrofonberechtigung entfernen"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Dienst verwalten"</string>
+    <!-- no translation found for manage_permissions_qs (3780541819763475434) -->
+    <skip />
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Im Telefonanruf verwendet"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Kürzlich in einem Telefonanruf verwendet"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Von <xliff:g id="APP_NAME">%1$s</xliff:g> verwendet"</string>

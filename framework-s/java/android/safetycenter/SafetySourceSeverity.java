@@ -135,4 +135,32 @@ public class SafetySourceSeverity {
     @Retention(RetentionPolicy.SOURCE)
     public @interface Level {
     }
+
+    @Level
+    static int validateLevelForSource(int value) {
+        switch (value) {
+            case SafetySourceSeverity.LEVEL_UNSPECIFIED:
+            case SafetySourceSeverity.LEVEL_INFORMATION:
+            case SafetySourceSeverity.LEVEL_RECOMMENDATION:
+            case SafetySourceSeverity.LEVEL_CRITICAL_WARNING:
+                return value;
+            default:
+                throw new IllegalArgumentException(
+                        String.format("Unexpected Level for source: %s", value));
+        }
+    }
+
+    @Level
+    static int validateLevelForIssue(int value) {
+        switch (value) {
+            case SafetySourceSeverity.LEVEL_INFORMATION:
+            case SafetySourceSeverity.LEVEL_RECOMMENDATION:
+            case SafetySourceSeverity.LEVEL_CRITICAL_WARNING:
+                return value;
+            case SafetySourceSeverity.LEVEL_UNSPECIFIED:
+            default:
+                throw new IllegalArgumentException(
+                        String.format("Unexpected Level for issue: %s", value));
+        }
+    }
 }

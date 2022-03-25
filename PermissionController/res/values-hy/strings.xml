@@ -467,13 +467,11 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել ձեր հեռախոսազանգերի մատյանները"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին կատարել հեռախոսազանգեր և կառավարել դրանք"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին սենսորից ստանալ ձեր կենսագործունեության հիմնական տվյալները:"</string>
-    <!-- no translation found for permgroupupgraderequestdetail_sensors (3851603883489664284) -->
+    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
     <skip />
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին սենսորներից ստանալ ձեր կենսագործունեության հիմնական տվյալները։"</string>
-    <!-- no translation found for permgroupbackgroundrequestdetail_sensors (7649389834182449783) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequest_sensors (7576527638411370468) -->
-    <skip />
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Որպեսզի այս հավելվածին հասանելի դարձնեք մարմնի սենսորների տվյալները, անգամ երբ չեք օգտվում հավելվածից, "<annotation id="link">"անցեք կարգավորումներ"</annotation>"։"</string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Հասանելի դարձնե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին մարմնի սենսորների տվյալները աշխատանքի ընթացքում։"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին ծանուցումներ ուղարկել ձեզ։"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին շարունակել ծանուցումներ ուղարկել ձեզ։"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Կառավարվող թույլտվություններ"</string>
@@ -511,6 +509,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Հեռացնել տեսախցիկի օգտագործման թույլտվությունը"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Հեռացնել խոսափողի օգտագործման թույլտվությունը"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Կառավարել ծառայությունը"</string>
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"Կառավարել թույլտվությունները"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Օգտագործվում է հեռախոսազանգի ժամանակ"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Վերջերս օգտագործվել է հեռախոսազանգի ժամանակ"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Օգտագործվում է <xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածի կողմից"</string>

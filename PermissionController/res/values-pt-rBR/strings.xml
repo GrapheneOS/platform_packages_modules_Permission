@@ -467,7 +467,8 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Permitir que o app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acesse seu registro de chamadas telefônicas?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Permitir que o app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; gerencie e faça chamadas telefônicas?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acesse os dados do sensor sobre seus sinais vitais?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="3851603883489664284">"Este app quer acessar os dados do sensor sobre seus sinais vitais o tempo todo, mesmo quando não estiver em uso. Para fazer essa mudança, "<annotation id="link">"acesse as configurações"</annotation>" ou mantenha a permissão de acesso apenas quando o app estiver em uso."</string>
+    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
+    <skip />
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acesse os dados do sensor sobre seus sinais vitais?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Para permitir que o app tenha acesso a dados do sensor corporal a qualquer momento, mesmo quando não estiver em uso, "<annotation id="link">"acesse as configurações"</annotation>"."</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Continuar permitindo que o app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acesse dados do sensor corporal enquanto estiver em uso?"</string>
@@ -508,6 +509,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Remover permissão da câmera"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Remover permissão do microfone"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Gerenciar serviço"</string>
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"Gerenciar permissões"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Em uso pela chamada telefônica"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Usada recentemente em uma chamada telefônica"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Em uso por <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>

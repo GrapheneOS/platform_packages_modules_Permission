@@ -467,7 +467,8 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa zapisnicima poziva vašeg telefona?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da upućuje telefonske pozive i upravlja njima?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa podacima senzora o vašim vitalnim znakovima?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="3851603883489664284">"Aplikacija želi uvijek pristupati podacima senzora o vašim vitalnim znakovima, čak i kad je ne upotrebljavate. Da biste izvršili tu promjenu, "<annotation id="link">"otvorite postavke"</annotation>" ili omogućite pristup samo dok se aplikacija upotrebljava."</string>
+    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
+    <skip />
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Želite li dopustiti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa podacima senzora o vašim vitalnim znakovima?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Da biste omogućili aplikaciji da uvijek pristupa podacima s biometrijskih senzora, čak i kada je ne upotrebljavate, "<annotation id="link">"otvorite postavke."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Nastaviti dopuštati aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristup podacima s biometrijskih senzora dok je upotrebljavate?"</string>
@@ -508,6 +509,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Ukloni dopuštenje za fotoaparat"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Ukloni dopuštenje za mikrofon"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Upravljanje uslugama"</string>
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"Upravljajte dopuštenjima"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Koristi telefonski poziv"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Nedavno korišteno tijekom telefonskog poziva"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Koristi aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>

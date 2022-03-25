@@ -467,13 +467,11 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Të lejohet &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të ketë qasje në evidencat e tua të telefonatave?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Të lejohet që &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të kryejë dhe të menaxhojë telefonata?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Të lejohet që &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të ketë qasje te të dhënat e sensorëve rreth shenjave të tua jetësore?"</string>
-    <!-- no translation found for permgroupupgraderequestdetail_sensors (3851603883489664284) -->
+    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
     <skip />
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Të lejohet që &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të ketë qasje te të dhënat e sensorëve rreth shenjave të tua jetësore?"</string>
-    <!-- no translation found for permgroupbackgroundrequestdetail_sensors (7649389834182449783) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequest_sensors (7576527638411370468) -->
-    <skip />
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Për të lejuar këtë aplikacion që të ketë qasje te të dhënat e sensorit të trupit gjithmonë, edhe kur nuk e përdor aplikacionin, "<annotation id="link">"shko te cilësimet."</annotation></string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Të lejohet akoma që &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të ketë qasje te të dhënat e sensorit të trupit kur aplikacioni përdoret?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Të lejohet që &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të të dërgojë njoftime?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Të lejohet që &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të vazhdojë të të dërgojë njoftime?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Lejet e kontrolluara"</string>
@@ -511,6 +509,8 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Hiq lejen e kamerës"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Hiq lejen e mikrofonit"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Menaxho shërbimin"</string>
+    <!-- no translation found for manage_permissions_qs (3780541819763475434) -->
+    <skip />
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Po përdoret nga telefonata"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Përdorur së fundi në telefonatë"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Po përdoret nga <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>

@@ -467,7 +467,8 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да журналаў выклікаў вашага тэлефона?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; рабіць тэлефонныя выклікі і кіраваць імі?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да даных з датчыкаў пра вашы асноўныя фізіялагічныя паказчыкі?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="3851603883489664284">"Гэта праграма запытвае пастаянны доступ да даных датчыкаў з паказчыкамі вашага арганізма, нават калі яна не выкарыстоўваецца. Каб змяніць дазвол, "<annotation id="link">"перайдзіце ў налады"</annotation>", або захавайце доступ для праграмы толькі ў час яе выкарыстання."</string>
+    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
+    <skip />
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да даных датчыкаў з паказчыкамі вашага арганізма?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Каб дазволіць гэтай праграме мець пастаянны доступ да даных датчыкаў цела, нават калі яна не выкарыстоўваецца, "<annotation id="link">"перайдзіце ў налады."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Захаваць для праграмы \"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;” дазвол на доступ да даных датчыкаў цела ў час яе выкарыстання?"</string>
@@ -508,6 +509,8 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Выдаліць дазвол на доступ да камеры"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Выдаліць дазвол на доступ да мікрафона"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Кіраваць сэрвісамі"</string>
+    <!-- no translation found for manage_permissions_qs (3780541819763475434) -->
+    <skip />
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Выкарыстоўваецца падчас тэлефонных выклікаў"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Нядаўна выкарыстоўвалася ў час тэлефоннага выкліку"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Выкарыстоўваецца праграмай \"<xliff:g id="APP_NAME">%1$s</xliff:g>\""</string>

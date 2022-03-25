@@ -467,13 +467,11 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; přístup k seznamu telefonních hovorů?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uskutečňovat a spravovat telefonní hovory?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; přístup k údajům ze snímačů vašich životních funkcí?"</string>
-    <!-- no translation found for permgroupupgraderequestdetail_sensors (3851603883489664284) -->
+    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
     <skip />
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; přístup k datům ze senzorů vašich životních funkcí?"</string>
-    <!-- no translation found for permgroupbackgroundrequestdetail_sensors (7649389834182449783) -->
-    <skip />
-    <!-- no translation found for permgroupupgraderequest_sensors (7576527638411370468) -->
-    <skip />
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Pokud chcete této aplikaci povolit trvalý přístup k datům z tělesných senzorů, i když aplikaci nepoužíváte, "<annotation id="link">"přejděte do nastavení"</annotation>"."</string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Chcete, aby aplikace &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dál měla přístup k datům z tělesných senzorů během používání aplikace?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; odesílat oznámení?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Povolit aplikaci &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; nadále odesílat oznámení?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Spravovaná oprávnění"</string>
@@ -511,6 +509,8 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Odebrat oprávnění k fotoaparátu"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Odebrat oprávnění k mikrofonu"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Spravovat službu"</string>
+    <!-- no translation found for manage_permissions_qs (3780541819763475434) -->
+    <skip />
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Právě používá telefonní hovor"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Nedávno použito při telefonním hovoru"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Právě používá aplikace <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
