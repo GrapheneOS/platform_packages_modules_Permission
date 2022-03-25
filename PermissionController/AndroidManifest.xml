@@ -4,7 +4,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   package="com.android.permissioncontroller"
   coreApp="true"
-  android:versionCode="339999900"
+  android:versionCode="330000000"
   android:versionName="33 system image"
 >
 
