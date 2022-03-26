@@ -21,10 +21,12 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 import static java.util.Objects.requireNonNull;
 
+import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.safetycenter.SafetyCenterIssue;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -36,22 +38,27 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
 import com.android.permissioncontroller.R;
+import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel;
 
 /** A preference that displays a card representing a {@link SafetyCenterIssue}. */
 public class IssueCardPreference extends Preference {
 
     public static final String TAG = IssueCardPreference.class.getSimpleName();
 
+    private final SafetyCenterViewModel mSafetyCenterViewModel;
     private final SafetyCenterIssue mIssue;
 
-    public IssueCardPreference(Context context, SafetyCenterIssue issue) {
+    public IssueCardPreference(
+            Context context,
+            SafetyCenterViewModel safetyCenterViewModel,
+            SafetyCenterIssue issue) {
         super(context);
         setLayoutResource(R.layout.preference_issue_card);
 
+        mSafetyCenterViewModel = requireNonNull(safetyCenterViewModel);
         mIssue = requireNonNull(issue);
     }
 
-    // TODO: Add real todos with bug numbers once UI bug breakdown is finished.
     @Override
     public void onBindViewHolder(PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
@@ -59,9 +66,7 @@ public class IssueCardPreference extends Preference {
         ((ImageView) holder.findViewById(R.id.issue_card_banner_icon)).setImageResource(
                 toSeverityLevel(mIssue.getSeverityLevel()).getWarningCardIconResId());
 
-        // TODO: Fire off real dismissal (to the API)
-        holder.findViewById(R.id.issue_card_dismiss_btn).setOnClickListener(
-                (view) -> this.getParent().removePreference(this));
+        configureDismissButton(holder.findViewById(R.id.issue_card_dismiss_btn));
 
         ((TextView) holder.findViewById(R.id.issue_card_title)).setText(mIssue.getTitle());
         ((TextView) holder.findViewById(R.id.issue_card_subtitle)).setText(mIssue.getSubtitle());
@@ -72,6 +77,40 @@ public class IssueCardPreference extends Preference {
         buttonList.removeAllViews(); // This view may be recycled from another issue
         for (SafetyCenterIssue.Action action : mIssue.getActions()) {
             buttonList.addView(buildActionButton(action, holder.itemView.getContext()));
+        }
+    }
+
+    private void configureDismissButton(View dismissButton) {
+        if (mIssue.isDismissible()) {
+            dismissButton.setOnClickListener(
+                    mIssue.shouldConfirmDismissal()
+                            ? new ConfirmDismissalOnClickListener()
+                            : new DismissOnClickListener());
+            dismissButton.setVisibility(View.VISIBLE);
+        } else {
+            dismissButton.setVisibility(View.GONE);
+        }
+    }
+
+    private class DismissOnClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            mSafetyCenterViewModel.dismissIssue(mIssue);
+        }
+    }
+
+    private class ConfirmDismissalOnClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            new AlertDialog.Builder(getContext())
+                    .setTitle(R.string.safety_center_issue_card_dismiss_confirmation_title)
+                    .setPositiveButton(
+                            R.string.safety_center_issue_card_confirm_dismiss_button,
+                            (dialog, which) -> mSafetyCenterViewModel.dismissIssue(mIssue))
+                    .setNegativeButton(
+                            R.string.safety_center_issue_card_cancel_dismiss_button, null)
+                    .create()
+                    .show();
         }
     }
 

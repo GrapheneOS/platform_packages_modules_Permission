@@ -18,6 +18,7 @@ package com.android.permissioncontroller.safetycenter.ui.model
 
 import android.app.Application
 import android.safetycenter.SafetyCenterData
+import android.safetycenter.SafetyCenterIssue
 import android.safetycenter.SafetyCenterManager
 import androidx.core.content.ContextCompat.getMainExecutor
 import androidx.lifecycle.AndroidViewModel
@@ -31,6 +32,10 @@ class SafetyCenterViewModel(val app: Application) : AndroidViewModel(app) {
     val autoRefreshManager = AutoRefreshManager()
 
     private val safetyCenterManager = app.getSystemService(SafetyCenterManager::class.java)!!
+
+    fun dismissIssue(issue: SafetyCenterIssue) {
+        safetyCenterManager.dismissSafetyCenterIssue(issue.id)
+    }
 
     fun rescan() {
         safetyCenterManager.refreshSafetySources(
