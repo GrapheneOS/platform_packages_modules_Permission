@@ -86,8 +86,8 @@ public final class SafetyCenterErrorDetails implements Parcelable {
             new Creator<SafetyCenterErrorDetails>() {
         @Override
         public SafetyCenterErrorDetails createFromParcel(Parcel in) {
-            return new SafetyCenterErrorDetails(
-                    TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in));
+            CharSequence errorMessage = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
+            return new SafetyCenterErrorDetails(errorMessage);
         }
 
         @Override
