@@ -124,7 +124,9 @@ public class SafetyCenterQsFragment extends Fragment {
                 .observe(this, (v) -> setSensorToggleState(v, getView()));
         //LightAppPermGroupLiveDatas are kept track of in the view model,
         // we need to start observing them here
-        mViewModel.getLightAppPermGroupLiveData().observe(this, this::onPermissionGroupsLoaded);
+        if (!mPermGroupUsages.isEmpty()) {
+            mViewModel.getPermDataLoadedLiveData().observe(this, this::onPermissionGroupsLoaded);
+        }
     }
 
     @Override
@@ -134,13 +136,17 @@ public class SafetyCenterQsFragment extends Fragment {
         root.findViewById(R.id.security_settings_button).setOnClickListener(
                 (v) -> mViewModel.navigateToSecuritySettings(this));
         mRootView = root;
-        mRootView.setVisibility(View.GONE);
+        if (mPermGroupUsages.isEmpty()) {
+            mRootView.setVisibility(View.VISIBLE);
+            setSensorToggleState(new ArrayMap<>(), mRootView);
+        } else {
+            mRootView.setVisibility(View.GONE);
+        }
         return root;
     }
 
     private void onPermissionGroupsLoaded(boolean initialized) {
-        if (mViewModel.getLightAppPermGroupLiveData().isInitialized()
-                && initialized) {
+        if (initialized) {
             mRootView.setVisibility(View.VISIBLE);
             setSensorToggleState(new ArrayMap<>(), mRootView);
             addPermissionUsageInformation(mRootView);
@@ -373,6 +379,7 @@ public class SafetyCenterQsFragment extends Fragment {
         TextView titleText = new TextView(getContext());
         titleText.setId(titleId);
         titleText.setText(permGroupLabel);
+        titleText.setContentDescription(permGroupLabel);
         RelativeLayout.LayoutParams titleParams = new RelativeLayout.LayoutParams(
                 WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
         titleParams.setMargins(convertDpToPixel(10), 0, convertDpToPixel(4), convertDpToPixel(4));

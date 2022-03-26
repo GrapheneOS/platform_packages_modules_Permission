@@ -154,31 +154,32 @@ object SafetyCenterApisWithShellPermissions {
     }
 
     /**
-     * Calls [SafetyCenterManager.clearAllSafetySourceData] adopting Shell's [MANAGE_SAFETY_CENTER]
-     * permission.
-     */
-    fun SafetyCenterManager.clearAllSafetySourceDataWithPermission() {
-        callWithShellPermissionIdentity({ clearAllSafetySourceData() }, MANAGE_SAFETY_CENTER)
-    }
-
-    /**
-     * Calls [SafetyCenterManager.setSafetyCenterConfigOverride] adopting Shell's
+     * Calls [SafetyCenterManager.clearAllSafetySourceDataForTests] adopting Shell's
      * [MANAGE_SAFETY_CENTER] permission.
      */
-    fun SafetyCenterManager.setSafetyCenterConfigOverrideWithPermission(
+    fun SafetyCenterManager.clearAllSafetySourceDataForTestsWithPermission() =
+        callWithShellPermissionIdentity(
+                { clearAllSafetySourceDataForTests() }, MANAGE_SAFETY_CENTER)
+
+    /**
+     * Calls [SafetyCenterManager.setSafetyCenterConfigForTests] adopting Shell's
+     * [MANAGE_SAFETY_CENTER] permission.
+     */
+    fun SafetyCenterManager.setSafetyCenterConfigForTestsWithPermission(
         safetyCenterConfig: SafetyCenterConfig
     ) {
         callWithShellPermissionIdentity(
-            { setSafetyCenterConfigOverride(safetyCenterConfig) },
+            { setSafetyCenterConfigForTests(safetyCenterConfig) },
             MANAGE_SAFETY_CENTER
         )
     }
 
     /**
-     * Calls [SafetyCenterManager.clearSafetyCenterConfigOverride] adopting Shell's
+     * Calls [SafetyCenterManager.clearSafetyCenterConfigForTests] adopting Shell's
      * [MANAGE_SAFETY_CENTER] permission.
      */
-    fun SafetyCenterManager.clearSafetyCenterConfigOverrideWithPermission() {
-        callWithShellPermissionIdentity({ clearSafetyCenterConfigOverride() }, MANAGE_SAFETY_CENTER)
+    fun SafetyCenterManager.clearSafetyCenterConfigForTestsWithPermission() {
+        callWithShellPermissionIdentity(
+                { clearSafetyCenterConfigForTests() }, MANAGE_SAFETY_CENTER)
     }
 }

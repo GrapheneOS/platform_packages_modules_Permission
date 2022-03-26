@@ -46,6 +46,7 @@ import android.view.View;
 import android.view.View.OnAttachStateChangeListener;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 
 import androidx.annotation.GuardedBy;
 import androidx.annotation.NonNull;
@@ -496,7 +497,11 @@ public class GrantPermissionsActivity extends SettingsActivity
         }
 
         getWindow().setDimAmount(mOriginalDimAmount);
-        mRootView.setVisibility(View.VISIBLE);
+        if (mRootView.getVisibility() == View.GONE) {
+            InputMethodManager manager = getSystemService(InputMethodManager.class);
+            manager.hideSoftInputFromWindow(mRootView.getWindowToken(), 0);
+            mRootView.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

@@ -201,8 +201,8 @@ package android.safetycenter {
 
   public final class SafetyCenterManager {
     method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void addOnSafetyCenterDataChangedListener(@NonNull java.util.concurrent.Executor, @NonNull android.safetycenter.SafetyCenterManager.OnSafetyCenterDataChangedListener);
-    method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void clearAllSafetySourceData();
-    method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void clearSafetyCenterConfigOverride();
+    method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void clearAllSafetySourceDataForTests();
+    method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void clearSafetyCenterConfigForTests();
     method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void dismissSafetyCenterIssue(@NonNull String);
     method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void executeSafetyCenterIssueAction(@NonNull String, @NonNull String);
     method @Nullable @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public android.safetycenter.config.SafetyCenterConfig getSafetyCenterConfig();
@@ -212,7 +212,7 @@ package android.safetycenter {
     method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void refreshSafetySources(int);
     method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void removeOnSafetyCenterDataChangedListener(@NonNull android.safetycenter.SafetyCenterManager.OnSafetyCenterDataChangedListener);
     method @RequiresPermission(android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE) public void reportSafetySourceError(@NonNull String, @NonNull android.safetycenter.SafetySourceErrorDetails);
-    method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void setSafetyCenterConfigOverride(@NonNull android.safetycenter.config.SafetyCenterConfig);
+    method @RequiresPermission(android.Manifest.permission.MANAGE_SAFETY_CENTER) public void setSafetyCenterConfigForTests(@NonNull android.safetycenter.config.SafetyCenterConfig);
     method @RequiresPermission(android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE) public void setSafetySourceData(@NonNull String, @Nullable android.safetycenter.SafetySourceData, @NonNull android.safetycenter.SafetyEvent);
     field public static final String ACTION_REFRESH_SAFETY_SOURCES = "android.safetycenter.action.REFRESH_SAFETY_SOURCES";
     field public static final String ACTION_SAFETY_CENTER_ENABLED_CHANGED = "android.safetycenter.action.SAFETY_CENTER_ENABLED_CHANGED";
