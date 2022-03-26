@@ -196,8 +196,14 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Shiko të gjitha lejet e aplikacionit \"<xliff:g id="APP">%1$s</xliff:g>\""</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Shiko të gjitha aplikacionet me këtë leje"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Shfaq përdorimin e mikrofonit të \"Asistentit\""</string>
+    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
+    <skip />
     <string name="auto_revoke_label" msgid="5068393642936571656">"Hiq lejet nëse aplikacioni nuk është përdorur"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Hiq lejet dhe liro hapësirën"</string>
+    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
+    <skip />
+    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
+    <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Për të mbrojtur të dhënat e tua, lejet për këtë aplikacion do të hiqen nëse aplikacioni nuk përdoret për disa muaj."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Për të mbrojtur të dhënat e tua, nëse aplikacioni nuk është përdorur për disa muaj, lejet e mëposhtme do të hiqen: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Për të mbrojtur të dhënat e tua, lejet janë hequr nga aplikacionet që nuk i ke përdorur për disa muaj."</string>
@@ -467,8 +473,7 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Të lejohet &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të ketë qasje në evidencat e tua të telefonatave?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Të lejohet që &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të kryejë dhe të menaxhojë telefonata?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Të lejohet që &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të ketë qasje te të dhënat e sensorëve rreth shenjave të tua jetësore?"</string>
-    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
-    <skip />
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Aplikacioni kërkon qasje te të dhënat e sensorëve rreth shenjave të tua jetësore gjithmonë, edhe kur nuk e përdor aplikacionin. Për ta bërë këtë ndryshim, "<annotation id="link">"shko te cilësimet."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Të lejohet që &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të ketë qasje te të dhënat e sensorëve rreth shenjave të tua jetësore?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Për të lejuar këtë aplikacion që të ketë qasje te të dhënat e sensorit të trupit gjithmonë, edhe kur nuk e përdor aplikacionin, "<annotation id="link">"shko te cilësimet."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Të lejohet akoma që &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të ketë qasje te të dhënat e sensorit të trupit kur aplikacioni përdoret?"</string>
@@ -509,8 +514,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Hiq lejen e kamerës"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Hiq lejen e mikrofonit"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Menaxho shërbimin"</string>
-    <!-- no translation found for manage_permissions_qs (3780541819763475434) -->
-    <skip />
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"Menaxho lejet"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Po përdoret nga telefonata"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Përdorur së fundi në telefonatë"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Po përdoret nga <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>

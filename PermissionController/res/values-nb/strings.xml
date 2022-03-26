@@ -196,8 +196,14 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Se alle tillatelsene <xliff:g id="APP">%1$s</xliff:g> har"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Se alle apper med denne tillatelsen"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Vis bruk av assistentmikrofonen"</string>
+    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
+    <skip />
     <string name="auto_revoke_label" msgid="5068393642936571656">"Fjern tillatelser hvis appen ikke brukes"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Fjern tillatelser og frigjør plass"</string>
+    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
+    <skip />
+    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
+    <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"For å beskytte dataene dine fjernes tillatelser for denne appen hvis appen ikke brukes på noen måneder."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Hvis appen ikke brukes på noen måneder, fjernes disse tillatelsene for å beskytte dataene dine: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"For å beskytte dataene dine har tillatelser blitt fjernet fra apper du ikke har brukt på noen måneder."</string>
@@ -467,8 +473,7 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Vil du gi &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tilgang til samtaleloggene dine?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Vil du la &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ringe og administrere telefonsamtaler?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Vil du gi &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tilgang til sensordata om de vitale tegnene dine?"</string>
-    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
-    <skip />
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Denne appen vil ha tilgang til sensordata om de vitale tegnene dine hele tiden, selv når du ikke bruker den. For å gjøre denne endringen, "<annotation id="link">"gå til innstillingene."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Vil du gi &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tilgang til sensordataene om de vitale tegnene dine?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"For å gi denne appen tilgang til data fra kroppssensorer til enhver tid, selv når du ikke bruker den, "<annotation id="link">"gå til innstillingene."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Vil du fortsette å gi &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tilgang til data fra kroppssensorer mens appen er i bruk?"</string>
@@ -509,8 +514,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Fjern kameratillatelse"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Fjern mikrofontillatelse"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Administrer tjeneste"</string>
-    <!-- no translation found for manage_permissions_qs (3780541819763475434) -->
-    <skip />
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"Administrer tillatelser"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Blir brukt av telefonanrop"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Nylig brukt i telefonanrop"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Blir brukt av <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>

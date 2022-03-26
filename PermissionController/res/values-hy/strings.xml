@@ -196,8 +196,14 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Տեսնել «<xliff:g id="APP">%1$s</xliff:g>» հավելվածի բոլոր թույլտվությունները"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Դիտել այս թույլտվությունն ունեցող հավելվածների ցանկը"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Ցույց տալ օգնականի կողմից խոսափողի օգտագործման վիճակագրությունը"</string>
+    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
+    <skip />
     <string name="auto_revoke_label" msgid="5068393642936571656">"Հեռացնել թույլտվությունները, եթե հավելվածը չի օգտագործվում"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Հեռացնել թույլտվությունները և տարածք ազատել"</string>
+    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
+    <skip />
+    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
+    <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Եթե հավելվածը չի օգտագործվել մի քանի ամիս, դրա թույլտվությունները կհեռացվեն՝ ձեր տվյալները պաշտպանելու համար։"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Եթե հավելվածը չի օգտագործվել մի քանի ամիս, ձեր տվյալները պաշտպանելու համար հետևյալ թույլտվությունները կհեռացվեն՝ <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Հավելվածներից, որոնք մի քանի ամիս չեք օգտագործել, թույլտվությունները հեռացվել են՝ ձեր տվյալները պաշտպանելու համար։"</string>
@@ -467,8 +473,7 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին օգտագործել ձեր հեռախոսազանգերի մատյանները"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին կատարել հեռախոսազանգեր և կառավարել դրանք"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին սենսորից ստանալ ձեր կենսագործունեության հիմնական տվյալները:"</string>
-    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
-    <skip />
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Հավելվածին անհրաժեշտ է մարմնի սենսորների տվյալների հասանելիություն, նույնիսկ երբ չեք օգտվում դրանից։ Այս փոփոխությունը կատարելու համար "<annotation id="link">"անցեք կարգավորումներ"</annotation>"։"</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին սենսորներից ստանալ ձեր կենսագործունեության հիմնական տվյալները։"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Որպեսզի այս հավելվածին հասանելի դարձնեք մարմնի սենսորների տվյալները, անգամ երբ չեք օգտվում հավելվածից, "<annotation id="link">"անցեք կարգավորումներ"</annotation>"։"</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Հասանելի դարձնե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին մարմնի սենսորների տվյալները աշխատանքի ընթացքում։"</string>

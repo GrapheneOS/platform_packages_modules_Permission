@@ -196,8 +196,14 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Εμφάνιση όλων των αδειών της εφαρμογής <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Εμφάνιση όλων των εφαρμογών με αυτήν την άδεια"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Εμφάνιση χρήσης μικροφώνου βοηθού"</string>
+    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
+    <skip />
     <string name="auto_revoke_label" msgid="5068393642936571656">"Καταργήστε τις άδειες, εάν η εφαρμογή δεν χρησιμοποιείται."</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Κατάργηση αδειών και απελευθέρωση χώρου"</string>
+    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
+    <skip />
+    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
+    <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Για την προστασία των δεδομένων σας, οι άδειες για αυτήν την εφαρμογή θα καταργηθούν εάν η εφαρμογή δεν χρησιμοποιηθεί για μερικούς μήνες."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Για την προστασία των δεδομένων σας, εάν δεν έχει χρησιμοποιηθεί η εφαρμογή για μερικούς μήνες, οι παρακάτω άδειες θα καταργηθούν: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Για την προστασία των δεδομένων σας, έχουν καταργηθεί οι άδειες εφαρμογών που δεν έχετε χρησιμοποιήσει κατά τους τελευταίους μήνες."</string>
@@ -467,8 +473,7 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να έχει πρόσβαση στα αρχεία καταγραφής τηλεφωνικών κλήσεών σας;"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πραγματοποίηση και η διαχείριση τηλεφωνικών κλήσεων;"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να έχει πρόσβαση στα δεδομένα αισθητήρα σχετικά με τις ζωτικές ενδείξεις σας;"</string>
-    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
-    <skip />
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Αυτή η εφαρμογή θέλει πρόσβαση στα δεδομένα αισθητήρα για τις ζωτικές σας ενδείξεις, ακόμη και όταν δεν τη χρησιμοποιείτε. Για να κάνετε αυτήν την αλλαγή, "<annotation id="link">"μεταβείτε στις ρυθμίσεις."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση σε δεδομένα αισθητήρα σχετικά με τις ζωτικές ενδείξεις σας;"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Για να επιτρέψετε σε αυτήν την εφαρμογή να αποκτά πρόσβαση σε δεδομένα αισθητήρων σώματος οποιαδήποτε στιγμή, ακόμα και όταν δεν χρησιμοποιείτε την εφαρμογή, "<annotation id="link">"μεταβείτε στις ρυθμίσεις."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Να συνεχίσει να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση σε δεδομένα αισθητήρων σώματος ενώ χρησιμοποιείται;"</string>
