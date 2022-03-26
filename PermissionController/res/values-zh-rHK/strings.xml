@@ -196,8 +196,14 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"查看「<xliff:g id="APP">%1$s</xliff:g>」的所有權限"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"查看擁有此權限的所有應用程式"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"顯示「Google 助理」麥克風使用情況"</string>
+    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
+    <skip />
     <string name="auto_revoke_label" msgid="5068393642936571656">"如不使用應用程式，即移除權限"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"移除權限並騰出空間"</string>
+    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
+    <skip />
+    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
+    <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"為保護您的資料，系統已移除您在過去幾個月未曾使用的應用程式的權限。"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"為保護您的資料，如果應用程式在過去幾個月未曾使用，系統將會移除以下權限：<xliff:g id="PERMS">%1$s</xliff:g>。"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"為保護您的資料，系統已移除您在過去幾個月未曾使用的應用程式的權限。"</string>
@@ -467,8 +473,7 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取您的手機通話記錄嗎？"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;撥打電話和管理通話嗎？"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」&lt;b&gt;&lt;/b&gt;存取與您身體機能相關的感應器資料嗎？"</string>
-    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
-    <skip />
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"此應用程式要求持續存取與您生命體徵相關的感應器資料 (即使在您沒有使用此應用程式時)。如要變更，請"<annotation id="link">"前往設定。"</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"允許「<xliff:g id="APP_NAME">%1$s</xliff:g>」存取與您生命體徵相關的感應器資料嗎？"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"如要讓此應用程隨時存取人體感應器資料 (即使在您沒有使用此應用程式時)，請"<annotation id="link">"前往設定"</annotation>"。"</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"要讓「<xliff:g id="APP_NAME">%1$s</xliff:g>」應用程式&lt;b&gt;&lt;/b&gt;在使用時存取人體感應器資料嗎？"</string>
@@ -509,8 +514,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"移除相機權限"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"移除麥克風權限"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"管理服務"</string>
-    <!-- no translation found for manage_permissions_qs (3780541819763475434) -->
-    <skip />
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"管理權限"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"手機通話正在使用此權限"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"手機通話最近使用過此權限"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"「<xliff:g id="APP_NAME">%1$s</xliff:g>」正在使用此權限"</string>

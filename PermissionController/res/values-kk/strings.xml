@@ -196,8 +196,14 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Барлық <xliff:g id="APP">%1$s</xliff:g> рұқсаттарын көру"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Осы рұқсатқа ие барлық қолданбаларды көру"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Assistant микрофонының пайдаланылуын көрсету"</string>
+    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
+    <skip />
     <string name="auto_revoke_label" msgid="5068393642936571656">"Қолданба пайдаланылмаса, рұқсаттарды өшіру"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Рұқсаттарды өшіру және орын босату"</string>
+    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
+    <skip />
+    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
+    <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Бұл қолданба бірнеше ай бойы пайдаланылмаса, деректеріңізді қорғау үшін оған берілген рұқсаттар өшіріледі."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Қолданба бірнеше ай бойы пайдаланылмаса, деректеріңізді қорғау үшін мына рұқсаттар өшіріледі: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Бірнеше ай бойы пайдаланылмаған қолданбаларға берілген рұқсаттар деректеріңізді қорғау үшін өшірілді."</string>
@@ -509,8 +515,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Камера пайдалану рұқсатын өшіру"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Микрофон пайдалану рұқсатын өшіру"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Қызметті басқару"</string>
-    <!-- no translation found for manage_permissions_qs (3780541819763475434) -->
-    <skip />
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"Рұқсаттарды басқару"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Телефон қоңырауы үшін пайдаланылуда."</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Соңғы рет телефон қоңырауы үшін пайдаланылды."</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"<xliff:g id="APP_NAME">%1$s</xliff:g> пайдалануда."</string>
