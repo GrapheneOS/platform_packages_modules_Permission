@@ -56,7 +56,7 @@ public final class SafetySourceStatus implements Parcelable {
                             TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in),
                             TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in),
                             in.readInt())
-                            .setPendingIntent(PendingIntent.readPendingIntentOrNullFromParcel(in))
+                            .setPendingIntent(in.readTypedObject(PendingIntent.CREATOR))
                             .setIconAction(in.readTypedObject(IconAction.CREATOR))
                             .setEnabled(in.readBoolean())
                             .build();
@@ -157,7 +157,7 @@ public final class SafetySourceStatus implements Parcelable {
         TextUtils.writeToParcel(mTitle, dest, flags);
         TextUtils.writeToParcel(mSummary, dest, flags);
         dest.writeInt(mSeverityLevel);
-        PendingIntent.writePendingIntentOrNullToParcel(mPendingIntent, dest);
+        dest.writeTypedObject(mPendingIntent, flags);
         dest.writeTypedObject(mIconAction, flags);
         dest.writeBoolean(mEnabled);
     }
@@ -221,8 +221,7 @@ public final class SafetySourceStatus implements Parcelable {
                     @Override
                     public IconAction createFromParcel(Parcel in) {
                         int iconType = in.readInt();
-                        PendingIntent pendingIntent =
-                                requireNonNull(PendingIntent.readPendingIntentOrNullFromParcel(in));
+                        PendingIntent pendingIntent = in.readTypedObject(PendingIntent.CREATOR);
                         return new IconAction(iconType, pendingIntent);
                     }
 
@@ -269,7 +268,7 @@ public final class SafetySourceStatus implements Parcelable {
         @Override
         public void writeToParcel(@NonNull Parcel dest, int flags) {
             dest.writeInt(mIconType);
-            mPendingIntent.writeToParcel(dest, flags);
+            dest.writeTypedObject(mPendingIntent, flags);
         }
 
         @Override

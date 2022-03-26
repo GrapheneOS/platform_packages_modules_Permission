@@ -476,7 +476,7 @@ public final class SafetyCenterIssue implements Parcelable {
         public void writeToParcel(@NonNull Parcel dest, int flags) {
             dest.writeString(mId);
             TextUtils.writeToParcel(mLabel, dest, flags);
-            dest.writeParcelable(mPendingIntent, flags);
+            dest.writeTypedObject(mPendingIntent, flags);
             dest.writeBoolean(mWillResolve);
             dest.writeBoolean(mInFlight);
             TextUtils.writeToParcel(mSuccessMessage, dest, flags);
@@ -488,9 +488,7 @@ public final class SafetyCenterIssue implements Parcelable {
             public Action createFromParcel(Parcel in) {
                 return new Action.Builder(in.readString())
                         .setLabel(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in))
-                        .setPendingIntent(
-                                in.readParcelable(
-                                        PendingIntent.class.getClassLoader(), PendingIntent.class))
+                        .setPendingIntent(in.readTypedObject(PendingIntent.CREATOR))
                         .setWillResolve(in.readBoolean())
                         .setIsInFlight(in.readBoolean())
                         .setSuccessMessage(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in))
