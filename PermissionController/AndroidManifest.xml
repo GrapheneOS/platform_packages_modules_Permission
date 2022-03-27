@@ -123,6 +123,7 @@
         <receiver android:name="com.android.permissioncontroller.privacysources.SafetyCenterReceiver"
                   android:exported="true">
             <intent-filter>
+                <action android:name="android.safetycenter.action.SAFETY_CENTER_ENABLED_CHANGED"/>
                 <action android:name="android.safetycenter.action.REFRESH_SAFETY_SOURCES"/>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>

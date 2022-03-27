@@ -21,6 +21,15 @@ import android.content.Intent
 
 interface PrivacySource {
 
+    /**
+     * Indicates that permission controller has received the safety center enabled changed broadcast
+     *
+     * <p> Invoked when {@link SafetyCenterManager.ACTION_SAFETY_CENTER_ENABLED_CHANGED} received
+     *
+     * @param enabled: {@code true} if Safety Center now enabled
+     */
+    fun safetyCenterEnabledChanged(enabled: Boolean)
+
     /** Indicates that permission controller has received the safety center rescan broadcast.
      * context: Context of the broadcast
      * intent: Intent of the broadcast
