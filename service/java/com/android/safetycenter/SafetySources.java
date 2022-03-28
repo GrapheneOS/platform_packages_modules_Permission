@@ -61,4 +61,34 @@ final class SafetySources {
         Log.w(TAG, String.format("Unexpected safety source profile: %s", safetySourceProfile));
         return false;
     }
+
+    /** Returns whether a {@link SafetySource} default entry should be hidden in the UI. */
+    static boolean isDefaultEntryHidden(@NonNull SafetySource safetySource) {
+        int safetySourceType = safetySource.getType();
+        switch (safetySourceType) {
+            case SafetySource.SAFETY_SOURCE_TYPE_STATIC:
+            case SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY:
+                return false;
+            case SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC:
+                return safetySource.getInitialDisplayState()
+                        == SafetySource.INITIAL_DISPLAY_STATE_HIDDEN;
+        }
+        Log.w(TAG, String.format("Unexpected safety source type: %s", safetySourceType));
+        return false;
+    }
+
+    /** Returns whether a {@link SafetySource} default entry should be disabled in the UI. */
+    static boolean isDefaultEntryDisabled(@NonNull SafetySource safetySource) {
+        int safetySourceType = safetySource.getType();
+        switch (safetySourceType) {
+            case SafetySource.SAFETY_SOURCE_TYPE_STATIC:
+            case SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY:
+                return false;
+            case SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC:
+                return safetySource.getInitialDisplayState()
+                        == SafetySource.INITIAL_DISPLAY_STATE_DISABLED;
+        }
+        Log.w(TAG, String.format("Unexpected safety source type: %s", safetySourceType));
+        return false;
+    }
 }
