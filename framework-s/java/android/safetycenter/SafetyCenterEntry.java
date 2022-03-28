@@ -267,8 +267,8 @@ public final class SafetyCenterEntry implements Parcelable {
         dest.writeInt(mSeverityLevel);
         dest.writeInt(mSeverityUnspecifiedIconType);
         dest.writeBoolean(mEnabled);
-        dest.writeParcelable(mPendingIntent, flags);
-        dest.writeParcelable(mIconAction, flags);
+        dest.writeTypedObject(mPendingIntent, flags);
+        dest.writeTypedObject(mIconAction, flags);
     }
 
     @NonNull
@@ -281,12 +281,8 @@ public final class SafetyCenterEntry implements Parcelable {
                     .setSeverityLevel(in.readInt())
                     .setSeverityUnspecifiedIconType(in.readInt())
                     .setEnabled(in.readBoolean())
-                    .setPendingIntent(
-                            in.readParcelable(
-                                    PendingIntent.class.getClassLoader(), PendingIntent.class))
-                    .setIconAction(
-                            in.readParcelable(
-                                    IconAction.class.getClassLoader(), IconAction.class))
+                    .setPendingIntent(in.readTypedObject(PendingIntent.CREATOR))
+                    .setIconAction(in.readTypedObject(IconAction.CREATOR))
                     .build();
         }
 
@@ -496,17 +492,17 @@ public final class SafetyCenterEntry implements Parcelable {
         @Override
         public void writeToParcel(@NonNull Parcel dest, int flags) {
             dest.writeInt(mType);
-            dest.writeParcelable(mPendingIntent, flags);
+            dest.writeTypedObject(mPendingIntent, flags);
         }
 
         @NonNull
         public static final Creator<IconAction> CREATOR = new Creator<IconAction>() {
             @Override
             public IconAction createFromParcel(Parcel in) {
-                return new IconAction(
-                        in.readInt(),
-                        in.readParcelable(
-                                PendingIntent.class.getClassLoader(), PendingIntent.class));
+                int type = in.readInt();
+                PendingIntent pendingIntent = in.readTypedObject(PendingIntent.CREATOR);
+
+                return new IconAction(type, pendingIntent);
             }
 
             @Override
