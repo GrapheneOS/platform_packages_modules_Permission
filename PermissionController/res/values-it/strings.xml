@@ -23,19 +23,19 @@
     <string name="back" msgid="6249950659061523680">"Indietro"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"Disinstalla o disattiva"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"App non trovata"</string>
-    <string name="grant_dialog_button_deny" msgid="5694497572414531524">"Rifiuta"</string>
-    <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1851917275643744594">"Rifiuta e non chiedermelo più"</string>
+    <string name="grant_dialog_button_deny" msgid="88262611492697192">"Non consentire"</string>
+    <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"Non consentire e non chiedermelo più"</string>
     <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Mantieni \"Mentre l\'app è in uso\""</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Mantieni solo questa volta"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Altre info"</string>
-    <string name="grant_dialog_button_deny_anyway" msgid="3221644923954258179">"Rifiuta comunque"</string>
+    <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Non consentire comunque"</string>
     <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Ignora"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> di <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
     <string name="permission_warning_template" msgid="2247087781222679458">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
     <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Vuoi consentire sempre all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
     <string name="allow_permission_foreground_only" msgid="116465816039675404">"Solo durante l\'uso dell\'app"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"Sempre"</string>
-    <string name="deny_permission_deny_and_dont_ask_again" msgid="766882021426214510">"Rifiuta e non chiedermelo più"</string>
+    <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"Non consentire e non chiedermelo più"</string>
     <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g> disattivate"</string>
     <string name="permission_revoked_all" msgid="3397649017727222283">"tutte disattivate"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"nessuna disattivata"</string>
@@ -51,6 +51,8 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"App"</string>
     <string name="app_permissions" msgid="3369917736607944781">"Autorizzazioni app"</string>
     <string name="unused_apps" msgid="2058057455175955094">"App inutilizzate"</string>
+    <string name="no_unused_apps" msgid="12809387670415295">"Nessuna app inutilizzata"</string>
+    <string name="zero_unused_apps" msgid="9024448554157499748">"0 app inutilizzate"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Disattiva app"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Se disattivi questa app, Android e altre app potrebbero non funzionare più come previsto. Tieni presente che non puoi eliminare questa app perché è preinstallata sul tuo dispositivo. Puoi scegliere di disattivare l\'app e nasconderla sul tuo dispositivo."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Gestione autorizzazioni"</string>
@@ -68,6 +70,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> app autorizzate"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Mostra sistema"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Nascondi sistema"</string>
+    <string name="manage_permission" msgid="2895385393037061964">"Gestisci autorizzazione"</string>
     <string name="no_apps" msgid="2412612731628386816">"Nessuna app"</string>
     <string name="location_settings" msgid="3624412509133422562">"Geolocalizzazione"</string>
     <string name="location_warning" msgid="2381649060929040962">"L\'app <xliff:g id="APP_NAME">%1$s</xliff:g> è un fornitore di servizi di geolocalizzazione per questo dispositivo. È possibile modificare l\'accesso alla posizione dalle impostazioni per la geolocalizzazione."</string>
@@ -87,7 +90,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"Consenti sempre"</string>
     <string name="permission_access_only_foreground" msgid="7801170728159326195">"Consenti solo mentre l\'app è in uso"</string>
-    <string name="permission_access_never" msgid="1029877154284995424">"Rifiuta"</string>
+    <string name="permission_access_never" msgid="4647014230217936900">"Non consentire"</string>
     <string name="loading" msgid="4789365003890741082">"Caricamento…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"Tutte le autorizzazioni"</string>
     <string name="other_permissions" msgid="2901186127193849594">"Altre funzionalità dell\'app"</string>
@@ -105,26 +108,30 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"Autorizzazioni correnti"</string>
     <string name="message_staging" msgid="9110563899955511866">"App in preparazione…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Sconosciuto"</string>
-    <string name="permission_usage_title" msgid="5095876355858467390">"Dashboard"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"Dashboard della privacy"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Uso di <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
-    <string name="permission_group_usage_subtitle" msgid="2060508926529591334">"Cronologia dell\'utilizzo di <xliff:g id="PERMGROUP">%1$s</xliff:g> nelle ultime 24 ore"</string>
-    <string name="permission_usage_access_dialog_subtitle" msgid="5567142130422605829">"Quando questa app ha usato il gruppo di autorizzazioni <xliff:g id="PERMGROUP">%1$s</xliff:g>:"</string>
+    <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Vedi altre autorizzazioni"</string>
+    <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
+    <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> e altri <xliff:g id="NUM">%3$s</xliff:g>"</string>
+    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Cronologia delle volte in cui le app hanno usato <xliff:g id="PERMGROUP">%1$s</xliff:g> nelle ultime 24 ore"</string>
+    <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Quando questa app ha usato l\'autorizzazione <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Scopri di più"</string>
-    <plurals name="duration_used_days" formatted="false" msgid="6029658139201482951">
-      <item quantity="other">Usata per <xliff:g id="NUMBER">%s</xliff:g> giorni</item>
-      <item quantity="one">Usata per 1 giorno</item>
+    <string name="permission_usage_duration_and_proxy" msgid="573959201368716399">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
+    <plurals name="duration_used_days" formatted="false" msgid="1993098309578536308">
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> giorni</item>
+      <item quantity="one">1 giorno</item>
     </plurals>
-    <plurals name="duration_used_hours" formatted="false" msgid="2934347147156813767">
-      <item quantity="other">Usata per <xliff:g id="NUMBER">%s</xliff:g> ore</item>
-      <item quantity="one">Usata per 1 ora</item>
+    <plurals name="duration_used_hours" formatted="false" msgid="1020075479447003242">
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ore</item>
+      <item quantity="one">1 ora</item>
     </plurals>
-    <plurals name="duration_used_minutes" formatted="false" msgid="1871095305219275611">
-      <item quantity="other">Usata per <xliff:g id="NUMBER">%s</xliff:g> minuti</item>
-      <item quantity="one">Usata per 1 minuto</item>
+    <plurals name="duration_used_minutes" formatted="false" msgid="3422338854436291744">
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> min</item>
+      <item quantity="one">1 min</item>
     </plurals>
-    <plurals name="duration_used_seconds" formatted="false" msgid="4036612197985123365">
-      <item quantity="other">Usata per <xliff:g id="NUMBER">%s</xliff:g> secondi</item>
-      <item quantity="one">Usata per 1 secondo</item>
+    <plurals name="duration_used_seconds" formatted="false" msgid="2726799598314248110">
+      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> sec</item>
+      <item quantity="one">1 sec</item>
     </plurals>
     <plurals name="permission_usage_summary" formatted="false" msgid="2837021459986644819">
       <item quantity="other">Ultimo accesso: <xliff:g id="TIME_2">%1$s</xliff:g>\n<xliff:g id="NUM_3">%2$s</xliff:g> accessi</item>
@@ -167,9 +174,10 @@
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> app</item>
       <item quantity="one">1 app</item>
     </plurals>
-    <plurals name="permission_usage_preference_label" formatted="false" msgid="7599037764529821028">
-      <item quantity="other">Uso di <xliff:g id="PERMGROUP_1">%2$s</xliff:g>: <xliff:g id="NUMBER">%1$d</xliff:g> app</item>
-      <item quantity="one">Uso di <xliff:g id="PERMGROUP_0">%2$s</xliff:g>: 1 app</item>
+    <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Autorizzazione non utilizzata nelle ultime 24 ore"</string>
+    <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
+      <item quantity="other">Autorizzazioni utilizzate da <xliff:g id="NUMBER">%1$d</xliff:g> app</item>
+      <item quantity="one">Autorizzazione utilizzata da 1 app</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Mostra tutto nella Dashboard"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrata per: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -200,17 +208,18 @@
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Consenti sempre"</string>
     <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Consenti solo mentre l\'app è in uso"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Chiedi ogni volta"</string>
-    <string name="app_permission_button_deny" msgid="2399316993899108824">"Rifiuta"</string>
+    <string name="app_permission_button_deny" msgid="6016454069832050300">"Non consentire"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Posizione esatta"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Posizione approssimativa"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Usa posizione esatta"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="6926477966417403604">"Se questa opzione non è attiva, le app possono stabilire soltanto la posizione approssimativa dell\'area in cui ti trovi"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Quando la posizione esatta non è attiva, le app possono accedere alla tua posizione approssimativa"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Autorizzazione <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Accesso a <xliff:g id="PERM">%1$s</xliff:g> per questa app"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Mostra tutte le autorizzazioni di <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Mostra tutte le app con questa autorizzazione"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Mostra utilizzo microfono dell\'assistente"</string>
-    <string name="auto_revoke_label" msgid="5068393642936571656">"Rimuovi le autorizzazioni se l\'app non viene utilizzata"</string>
+    <string name="auto_revoke_label" msgid="5068393642936571656">"Rimuovi autorizzazioni se non in uso"</string>
+    <string name="unused_apps_label" msgid="2595428768404901064">"Rimuovi autorizzazioni e libera spazio"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Per proteggere i tuoi dati, le autorizzazioni di questa app verranno rimosse se l\'app non viene usata per alcuni mesi."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Per proteggere i tuoi dati, se l\'app non viene usata per alcuni mesi, le seguenti autorizzazioni verranno rimosse: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Per proteggere i tuoi dati, sono state rimosse le autorizzazioni dalle app che non hai utilizzato per alcuni mesi."</string>
@@ -226,7 +235,7 @@
     <string name="auto_revoked_app_summary_two" msgid="1910545340763709389">"Autorizzazioni <xliff:g id="PERMISSION_NAME_0">%1$s</xliff:g> e <xliff:g id="PERMISSION_NAME_1">%2$s</xliff:g> rimosse"</string>
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> e altre <xliff:g id="NUMBER">%2$s</xliff:g> autorizzazioni rimosse"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"App inutilizzate"</string>
-    <string name="unused_apps_page_summary" msgid="4644643299214625298">"Se un\'app non viene usata per alcuni mesi:\n\n• Vengono rimosse le autorizzazioni per proteggere i tuoi dati\n• Vengono interrotte le notifiche per risparmiare batteria\n• Vengono rimossi i file temporanei per liberare spazio"</string>
+    <string name="unused_apps_page_summary" msgid="1867593913217272155">"Se un\'app non viene usata per alcuni mesi:\n\n• Vengono rimosse le autorizzazioni per proteggere i tuoi dati\n• Vengono interrotte le notifiche per risparmiare batteria\n• Vengono rimossi i file temporanei per liberare spazio\n\nApri l\'app per consentire di nuovo autorizzazioni e notifiche."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Aperte l\'ultima volta più di <xliff:g id="NUMBER">%s</xliff:g> mesi fa"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Ultimo utilizzo dell\'app: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Ultimo utilizzo: <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -239,7 +248,7 @@
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Le app con questa autorizzazione possono scattare foto e registrare video"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Le app con questa autorizzazione possono accedere ai tuoi contatti"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Le app con questa autorizzazione possono accedere alla posizione di questo dispositivo"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="4993093121706938071">"Le app con questa autorizzazione possono rilevare dispositivi nelle vicinanze, connettersi a tali dispositivi e stabilirne la posizione relativa"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Le app con questa autorizzazione possono trovare dispositivi nelle vicinanze, connettersi a tali dispositivi e stabilirne la posizione relativa"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Le app con questa autorizzazione possono registrare l\'audio"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Le app con questa autorizzazione possono effettuare e gestire le telefonate"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Le app con questa autorizzazione possono accedere ai dati dei sensori relativi ai parametri vitali"</string>
@@ -255,7 +264,7 @@
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Autorizzate solo per contenuti multimediali"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"Autorizzate per gestire tutti i file"</string>
     <string name="ask_header" msgid="2633816846459944376">"Chiedi ogni volta"</string>
-    <string name="denied_header" msgid="2253955654228120835">"Autorizzazione negata"</string>
+    <string name="denied_header" msgid="903209608358177654">"Autorizzazione non concessa"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> giorni</item>
       <item quantity="one">1 giorno</item>
@@ -318,12 +327,13 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"Solo mentre l\'app è in uso"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"File multimediali"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"Tutti i file"</string>
+    <string name="permission_subtitle_background" msgid="8916750995309083180">"Autorizzazione sempre concessa"</string>
     <string name="app_perms_24h_access" msgid="99069906850627181">"Ultimo accesso: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Ultimo accesso: ieri alle ore <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_content_provider" msgid="6996750793881252778">"Ultimo accesso: nelle ultime 24 ore"</string>
-    <string name="app_perms_24h_access_only_in_foreground" msgid="8590228656172893995">"Ultimo accesso: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Solo mentre l\'app è in uso"</string>
-    <string name="app_perms_24h_access_yest_only_in_foreground" msgid="8491319626462867381">"Ultimo accesso: ieri alle ore <xliff:g id="TIME_DATE">%1$s</xliff:g> • Solo mentre l\'app è in uso"</string>
-    <string name="app_perms_content_provider_only_in_foreground" msgid="7111427348979322476">"Ultimo accesso: nelle ultime 24 ore • Solo mentre l\'app è in uso"</string>
+    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Ultimo accesso: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Autorizzazione sempre concessa"</string>
+    <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Ultimo accesso ieri alle ore <xliff:g id="TIME_DATE">%1$s</xliff:g> • Autorizzazione sempre concessa"</string>
+    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"Ultimo accesso nelle ultime 24 ore • Autorizzazione sempre concessa"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Ultimo accesso: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Contenuti multimediali"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Ultimo accesso: ieri alle ore <xliff:g id="TIME_DATE">%1$s</xliff:g> • Contenuti multimediali"</string>
     <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"Ultimo accesso: nelle ultime 24 ore • Contenuti multimediali"</string>
@@ -448,9 +458,9 @@
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Questa app potrebbe voler accedere sempre alla tua posizione, anche quando non la usi. "<annotation id="link">"Consenti l\'accesso nelle impostazioni"</annotation>"."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Vuoi cambiare l\'accesso alla posizione per l\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Questa app vorrebbe accedere sempre alla tua posizione, anche quando non la usi. "<annotation id="link">"Consenti l\'accesso nelle impostazioni"</annotation>"."</string>
-    <string name="permgrouprequest_nearby_devices" msgid="620046480867488546">"Vuoi consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di rilevare dispositivi nelle vicinanze e connettersi a tali dispositivi?"</string>
-    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="2560445503628306938">"Vuoi consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di rilevare dispositivi nelle vicinanze e connettersi a tali dispositivi? "<annotation id="link">"Consenti nelle impostazioni."</annotation></string>
-    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Modificare accesso alla posizione di <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> da Approssimativa a Esatta?"</string>
+    <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Consentire a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di trovare e connettersi a dispositivi vicini, nonché stabilirne la posizione relativa?"</string>
+    <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Consentire a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di trovare e connettersi a dispositivi vicini, nonché stabilirne la posizione relativa? "<annotation id="link">"Consenti nelle impostazioni."</annotation></string>
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Modificare l\'accesso alla posizione di <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> da Approssimativa a Esatta?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Consentire a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere alla posizione approssimativa di questo dispositivo?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Esatta"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Approssimativa"</string>
@@ -481,4 +491,10 @@
     <string name="not_used_permissions_description" msgid="7595514824169388718">"Autorizzazioni usate soltanto dalle applicazioni di sistema."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Altre autorizzazioni"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Autorizzazioni definite dalle applicazioni."</string>
+    <string name="privdash_label_camera" msgid="1426440033626198096">"Fotocamera"</string>
+    <string name="privdash_label_microphone" msgid="8415035835803511693">"Microfono"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"Posizione"</string>
+    <string name="privdash_label_other" msgid="3710394147423236033">"Altro"</string>
+    <string name="privdash_label_none" msgid="5991866260360484858">"Nessuna"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"Ultime\n24 ore"</string>
 </resources>
