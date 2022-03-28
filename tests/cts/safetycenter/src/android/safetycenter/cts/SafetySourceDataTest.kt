@@ -22,11 +22,11 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.safetycenter.SafetySourceData
+import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING
+import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_INFORMATION
+import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_RECOMMENDATION
+import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED
 import android.safetycenter.SafetySourceIssue
-import android.safetycenter.SafetySourceSeverity.LEVEL_CRITICAL_WARNING
-import android.safetycenter.SafetySourceSeverity.LEVEL_INFORMATION
-import android.safetycenter.SafetySourceSeverity.LEVEL_RECOMMENDATION
-import android.safetycenter.SafetySourceSeverity.LEVEL_UNSPECIFIED
 import android.safetycenter.SafetySourceStatus
 import android.safetycenter.cts.testing.EqualsHashCodeToStringTester
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
@@ -47,7 +47,7 @@ class SafetySourceDataTest {
     @Test
     fun getStatus_withDefaultBuilder_returnsNull() {
         val safetySourceData = SafetySourceData.Builder()
-            .addIssue(createIssue(LEVEL_INFORMATION))
+            .addIssue(createIssue(SEVERITY_LEVEL_INFORMATION))
             .build()
 
         assertThat(safetySourceData.status).isNull()
@@ -55,7 +55,7 @@ class SafetySourceDataTest {
 
     @Test
     fun getStatus_whenSetExplicitly_returnsStatus() {
-        val status = createStatus(LEVEL_INFORMATION)
+        val status = createStatus(SEVERITY_LEVEL_INFORMATION)
         val safetySourceData = SafetySourceData.Builder()
             .setStatus(status)
             .build()
@@ -66,7 +66,7 @@ class SafetySourceDataTest {
     @Test
     fun getIssues_withDefaultBuilder_returnsEmptyList() {
         val safetySourceData = SafetySourceData.Builder()
-            .setStatus(createStatus(LEVEL_INFORMATION))
+            .setStatus(createStatus(SEVERITY_LEVEL_INFORMATION))
             .build()
 
         assertThat(safetySourceData.issues).isEmpty()
@@ -74,8 +74,8 @@ class SafetySourceDataTest {
 
     @Test
     fun getIssues_whenSetExplicitly_returnsIssues() {
-        val firstIssue = createIssue(LEVEL_INFORMATION, 1)
-        val secondIssue = createIssue(LEVEL_INFORMATION, 2)
+        val firstIssue = createIssue(SEVERITY_LEVEL_INFORMATION, 1)
+        val secondIssue = createIssue(SEVERITY_LEVEL_INFORMATION, 2)
         val safetySourceData = SafetySourceData.Builder()
             .addIssue(firstIssue)
             .addIssue(secondIssue)
@@ -86,10 +86,10 @@ class SafetySourceDataTest {
 
     @Test
     fun clearIssues_removesAllIssues() {
-        val firstIssue = createIssue(LEVEL_INFORMATION, 1)
-        val secondIssue = createIssue(LEVEL_INFORMATION, 2)
+        val firstIssue = createIssue(SEVERITY_LEVEL_INFORMATION, 1)
+        val secondIssue = createIssue(SEVERITY_LEVEL_INFORMATION, 2)
         val safetySourceData = SafetySourceData.Builder()
-            .setStatus(createStatus(LEVEL_INFORMATION))
+            .setStatus(createStatus(SEVERITY_LEVEL_INFORMATION))
             .addIssue(firstIssue)
             .addIssue(secondIssue)
             .clearIssues()
@@ -107,7 +107,7 @@ class SafetySourceDataTest {
 
     @Test
     fun build_withNoStatusAndInfoIssues_doesNotThrow() {
-        val builder = SafetySourceData.Builder().addIssue(createIssue(LEVEL_INFORMATION))
+        val builder = SafetySourceData.Builder().addIssue(createIssue(SEVERITY_LEVEL_INFORMATION))
 
         assertThat(builder.build()).isNotNull()
     }
@@ -115,7 +115,7 @@ class SafetySourceDataTest {
     @Test
     fun build_withNoStatusAndRecommendationIssues_doesNotThrow() {
         val builder = SafetySourceData.Builder()
-            .addIssue(createIssue(LEVEL_RECOMMENDATION))
+            .addIssue(createIssue(SEVERITY_LEVEL_RECOMMENDATION))
 
         assertThat(builder.build()).isNotNull()
     }
@@ -123,14 +123,14 @@ class SafetySourceDataTest {
     @Test
     fun build_withNoStatusAndCriticalIssues_doesNotThrow() {
         val builder = SafetySourceData.Builder()
-            .addIssue(createIssue(LEVEL_CRITICAL_WARNING))
+            .addIssue(createIssue(SEVERITY_LEVEL_CRITICAL_WARNING))
 
         assertThat(builder.build()).isNotNull()
     }
 
     @Test
     fun build_withUnspecifiedStatusAndNoIssues_doesNotThrow() {
-        val builder = SafetySourceData.Builder().setStatus(createStatus(LEVEL_UNSPECIFIED))
+        val builder = SafetySourceData.Builder().setStatus(createStatus(SEVERITY_LEVEL_UNSPECIFIED))
 
         assertThat(builder.build()).isNotNull()
     }
@@ -138,15 +138,15 @@ class SafetySourceDataTest {
     @Test
     fun build_withUnspecifiedStatusAndInformationIssues_doesNotThrow() {
         val builder = SafetySourceData.Builder()
-            .setStatus(createStatus(LEVEL_UNSPECIFIED))
-            .addIssue(createIssue(LEVEL_INFORMATION))
+            .setStatus(createStatus(SEVERITY_LEVEL_UNSPECIFIED))
+            .addIssue(createIssue(SEVERITY_LEVEL_INFORMATION))
 
         assertThat(builder.build()).isNotNull()
     }
 
     @Test
     fun build_withInformationStatusAndNoIssues_doesNotThrow() {
-        val builder = SafetySourceData.Builder().setStatus(createStatus(LEVEL_INFORMATION))
+        val builder = SafetySourceData.Builder().setStatus(createStatus(SEVERITY_LEVEL_INFORMATION))
 
         assertThat(builder.build()).isNotNull()
     }
@@ -154,8 +154,8 @@ class SafetySourceDataTest {
     @Test
     fun build_withInformationStatusAndInformationIssues_doesNotThrow() {
         val builder = SafetySourceData.Builder()
-            .setStatus(createStatus(LEVEL_INFORMATION))
-            .addIssue(createIssue(LEVEL_INFORMATION))
+            .setStatus(createStatus(SEVERITY_LEVEL_INFORMATION))
+            .addIssue(createIssue(SEVERITY_LEVEL_INFORMATION))
 
         assertThat(builder.build()).isNotNull()
     }
@@ -163,8 +163,8 @@ class SafetySourceDataTest {
     @Test
     fun build_withInformationStatusAndRecommendationIssues_throwsIllegalArgumentException() {
         val builder = SafetySourceData.Builder()
-            .setStatus(createStatus(LEVEL_INFORMATION))
-            .addIssue(createIssue(LEVEL_RECOMMENDATION))
+            .setStatus(createStatus(SEVERITY_LEVEL_INFORMATION))
+            .addIssue(createIssue(SEVERITY_LEVEL_RECOMMENDATION))
 
         val exception = assertFailsWith(IllegalArgumentException::class) {
             builder.build()
@@ -172,14 +172,14 @@ class SafetySourceDataTest {
         assertThat(exception).hasMessageThat()
             .isEqualTo(
                 "Safety source data must not contain any issue with a severity level both greater" +
-                    " than LEVEL_INFORMATION and greater than the status severity level"
+                    " than SEVERITY_LEVEL_INFORMATION and greater than the status severity level"
             )
     }
 
     @Test
     fun build_withRecommendationStatusAndNoIssues_doesNotThrow() {
         val builder = SafetySourceData.Builder()
-            .setStatus(createStatus(LEVEL_RECOMMENDATION))
+            .setStatus(createStatus(SEVERITY_LEVEL_RECOMMENDATION))
 
         assertThat(builder.build()).isNotNull()
     }
@@ -187,8 +187,8 @@ class SafetySourceDataTest {
     @Test
     fun build_withRecommendationStatusAndInformationIssues_doesNotThrow() {
         val builder = SafetySourceData.Builder()
-            .setStatus(createStatus(LEVEL_RECOMMENDATION))
-            .addIssue(createIssue(LEVEL_INFORMATION))
+            .setStatus(createStatus(SEVERITY_LEVEL_RECOMMENDATION))
+            .addIssue(createIssue(SEVERITY_LEVEL_INFORMATION))
 
         assertThat(builder.build()).isNotNull()
     }
@@ -196,8 +196,8 @@ class SafetySourceDataTest {
     @Test
     fun build_withRecommendationStatusAndRecommendationIssues_doesNotThrow() {
         val builder = SafetySourceData.Builder()
-            .setStatus(createStatus(LEVEL_RECOMMENDATION))
-            .addIssue(createIssue(LEVEL_RECOMMENDATION))
+            .setStatus(createStatus(SEVERITY_LEVEL_RECOMMENDATION))
+            .addIssue(createIssue(SEVERITY_LEVEL_RECOMMENDATION))
 
         assertThat(builder.build()).isNotNull()
     }
@@ -205,8 +205,8 @@ class SafetySourceDataTest {
     @Test
     fun build_withRecommendationStatusAndCriticalIssues_throwsIllegalArgumentException() {
         val builder = SafetySourceData.Builder()
-            .setStatus(createStatus(LEVEL_RECOMMENDATION))
-            .addIssue(createIssue(LEVEL_CRITICAL_WARNING))
+            .setStatus(createStatus(SEVERITY_LEVEL_RECOMMENDATION))
+            .addIssue(createIssue(SEVERITY_LEVEL_CRITICAL_WARNING))
 
         val exception = assertFailsWith(IllegalArgumentException::class) {
             builder.build()
@@ -214,14 +214,14 @@ class SafetySourceDataTest {
         assertThat(exception).hasMessageThat()
             .isEqualTo(
                 "Safety source data must not contain any issue with a severity level both greater" +
-                    " than LEVEL_INFORMATION and greater than the status severity level"
+                    " than SEVERITY_LEVEL_INFORMATION and greater than the status severity level"
             )
     }
 
     @Test
     fun describeContents_returns0() {
         val safetySourceData = SafetySourceData.Builder()
-            .setStatus(createStatus(LEVEL_INFORMATION))
+            .setStatus(createStatus(SEVERITY_LEVEL_INFORMATION))
             .build()
 
         assertThat(safetySourceData.describeContents()).isEqualTo(0)
@@ -230,9 +230,9 @@ class SafetySourceDataTest {
     @Test
     fun parcelRoundTrip_recreatesEqual() {
         val safetySourceData = SafetySourceData.Builder()
-            .setStatus(createStatus(LEVEL_RECOMMENDATION))
-            .addIssue(createIssue(LEVEL_RECOMMENDATION, 1))
-            .addIssue(createIssue(LEVEL_INFORMATION, 2))
+            .setStatus(createStatus(SEVERITY_LEVEL_RECOMMENDATION))
+            .addIssue(createIssue(SEVERITY_LEVEL_RECOMMENDATION, 1))
+            .addIssue(createIssue(SEVERITY_LEVEL_INFORMATION, 2))
             .build()
 
         assertThat(safetySourceData).recreatesEqual(SafetySourceData.CREATOR)
@@ -240,10 +240,10 @@ class SafetySourceDataTest {
 
     @Test
     fun equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
-        val firstStatus = createStatus(LEVEL_INFORMATION, 1)
-        val secondStatus = createStatus(LEVEL_INFORMATION, 2)
-        val firstIssue = createIssue(LEVEL_INFORMATION, 1)
-        val secondIssue = createIssue(LEVEL_INFORMATION, 2)
+        val firstStatus = createStatus(SEVERITY_LEVEL_INFORMATION, 1)
+        val secondStatus = createStatus(SEVERITY_LEVEL_INFORMATION, 2)
+        val firstIssue = createIssue(SEVERITY_LEVEL_INFORMATION, 1)
+        val secondIssue = createIssue(SEVERITY_LEVEL_INFORMATION, 2)
         EqualsHashCodeToStringTester()
             .addEqualityGroup(
                 SafetySourceData.Builder().setStatus(firstStatus).build(),
