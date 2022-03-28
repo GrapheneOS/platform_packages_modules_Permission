@@ -196,8 +196,14 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g>सँग भएका सबै अनुमति हेर्नुहोस्"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"यो अनुमति पाएका सबै एपहरू हेर्नुहोस्"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"सहायकको माइक्रोफोन प्रयोगसम्बन्धी डेटा देखाउनुहोस्"</string>
+    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
+    <skip />
     <string name="auto_revoke_label" msgid="5068393642936571656">"यो एप प्रयोग नहुँदा यसलाई दिइएका अनुमतिहरू रद्द गरियोस्"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"अनुमतिहरू हटाई ठाउँ खाली गरियोस्"</string>
+    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
+    <skip />
+    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
+    <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"तपाईंका डेटाको सुरक्षार्थ यो एप केही महिनासम्म प्रयोग नगरिएका खण्डमा यसलाई दिइएका अनुमति रद्द गरिने छन्।"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"तपाईंका डेटाको सुरक्षार्थ यो एप केही महिनासम्म प्रयोग नगरिएका खण्डमा निम्न अनुमति रद्द गरिने छन्: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"तपाईंका डेटाको सुरक्षार्थ तपाईंले केही महिनादेखि प्रयोग नगरेका एपलाई दिइएका अनुमति रद्द गरिएका छन्।"</string>
@@ -467,8 +473,7 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई आफ्ना कल लग प्रयोग गर्ने अनुमति दिने हो?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई फोन कल गर्न र ती कलको व्यवस्थापन गर्न दिने हो?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई आफ्ना महत्त्वपूर्ण लक्षणहरूसम्बन्धी सेन्सर डेटामाथि पहुँच राख्न दिने हो?"</string>
-    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
-    <skip />
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"यो एप जुनसुकै बेला (तपाईंले एप प्रयोग नगरेका बेलासमेत) तपाईंका शरीरका महत्त्वपूर्ण सङ्केतहरू सेन्सर गर्नेसम्बन्धी डेटा हेर्न र प्रयोग गर्न चाहन्छ। यस्तो परिवर्तन गर्न "<annotation id="link">"सेटिङमा जानुहोस्।"</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई तपाईंको स्वास्थ्यसम्बन्धी आधारभूत विवरण उपलब्ध गराउने सेन्सर डेटामाथि पहुँच राख्ने अनुमति दिने हो?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"यो एपलाई जुनसुकै बेला (तपाईंले एप नचलाएका बेलासमेत) बडी सेन्सरसम्बन्धी डेटा हेर्न र प्रयोग गर्न दिन "<annotation id="link">"सेटिङमा जानुहोस्।"</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"यो एप प्रयोग गरिँदै गरेका बेला यसलाई &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; बडी सेन्सरसम्बन्धी डेटा हेर्ने र प्रयोग गर्ने अनुमति दिइरहने हो?"</string>
