@@ -120,19 +120,19 @@ public final class SafetyCenterStaticEntry implements Parcelable {
     public void writeToParcel(@NonNull Parcel dest, int flags) {
         TextUtils.writeToParcel(mTitle, dest, flags);
         TextUtils.writeToParcel(mSummary, dest, flags);
-        dest.writeParcelable(mPendingIntent, flags);
+        dest.writeTypedObject(mPendingIntent, flags);
     }
 
     @NonNull
     public static final Creator<SafetyCenterStaticEntry> CREATOR =
             new Creator<SafetyCenterStaticEntry>() {
         @Override
-        public SafetyCenterStaticEntry createFromParcel(Parcel source) {
-            return new SafetyCenterStaticEntry(
-                    /* title= */ TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(source),
-                    /* summary= */ TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(source),
-                    source.readParcelable(
-                            PendingIntent.class.getClassLoader(), PendingIntent.class));
+        public SafetyCenterStaticEntry createFromParcel(Parcel in) {
+            CharSequence title = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
+            CharSequence summary = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
+            PendingIntent pendingIntent = in.readTypedObject(PendingIntent.CREATOR);
+
+            return new SafetyCenterStaticEntry(title, summary, pendingIntent);
         }
 
         @Override

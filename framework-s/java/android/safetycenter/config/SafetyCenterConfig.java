@@ -92,7 +92,7 @@ public final class SafetyCenterConfig implements Parcelable {
                 @Override
                 public SafetyCenterConfig createFromParcel(Parcel in) {
                     List<SafetySourcesGroup> safetySourcesGroups =
-                            in.createTypedArrayList(SafetySourcesGroup.CREATOR);
+                            requireNonNull(in.createTypedArrayList(SafetySourcesGroup.CREATOR));
                     Builder builder = new Builder();
                     // TODO(b/224513050): Consider simplifying by adding a new API to the builder.
                     for (int i = 0; i < safetySourcesGroups.size(); i++) {
