@@ -196,8 +196,14 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Xem tất cả các quyền của <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Xem tất cả ứng dụng có quyền này"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Hiển thị việc sử dụng micrô của Trợ lý"</string>
+    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
+    <skip />
     <string name="auto_revoke_label" msgid="5068393642936571656">"Thu hồi quyền nếu không dùng ứng dụng"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Thu hồi quyền và giải phóng dung lượng"</string>
+    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
+    <skip />
+    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
+    <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Để bảo vệ dữ liệu của bạn, các quyền cấp cho ứng dụng này sẽ bị thu hồi nếu bạn không dùng ứng dụng trong vài tháng."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Để bảo vệ dữ liệu của bạn, nếu bạn không dùng ứng dụng này trong vài tháng thì các quyền sau đây sẽ bị thu hồi: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Để bảo vệ dữ liệu của bạn, quản trị viên CNTT đã thu hồi các quyền đối với những ứng dụng bạn không dùng trong vài tháng."</string>
@@ -467,8 +473,7 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào nhật ký cuộc gọi điện thoại của bạn?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; thực hiện và quản lý cuộc gọi điện thoại?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào dữ liệu cảm biến về các dấu hiệu sinh tồn của bạn?"</string>
-    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
-    <skip />
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Ứng dụng này muốn truy cập vào dữ liệu cảm biến về các dấu hiệu liên quan đến chỉ số sức khoẻ bất cứ lúc nào, ngay cả khi bạn không dùng ứng dụng. Để thay đổi, hãy "<annotation id="link">"chuyển đến phần cài đặt."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào dữ liệu cảm biến về các dấu hiệu sinh tồn của bạn?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Để cho phép ứng dụng này truy cập vào dữ liệu cảm biến cơ thể bất cứ lúc nào, ngay cả khi bạn không dùng ứng dụng, hãy "<annotation id="link">"chuyển đến phần cài đặt."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Luôn cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào dữ liệu cảm biến cơ thể trong khi đang dùng ứng dụng?"</string>
@@ -509,8 +514,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Thu hồi quyền sử dụng máy ảnh"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Thu hồi quyền sử dụng micrô"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Quản lý dịch vụ"</string>
-    <!-- no translation found for manage_permissions_qs (3780541819763475434) -->
-    <skip />
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"Quản lý quyền"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Đang được dùng cho một cuộc gọi điện thoại"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Đã dùng gần đây trong một cuộc gọi điện thoại"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"<xliff:g id="APP_NAME">%1$s</xliff:g> đang dùng"</string>

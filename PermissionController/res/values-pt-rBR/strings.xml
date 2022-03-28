@@ -196,8 +196,14 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Ver todas as permissões do app <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Ver todos os apps que têm esta permissão"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Mostrar uso de microfone pelo Assistente"</string>
+    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
+    <skip />
     <string name="auto_revoke_label" msgid="5068393642936571656">"Remover permissões se o app não for usado"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Remover permissões e liberar espaço"</string>
+    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
+    <skip />
+    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
+    <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Para proteger seus dados, as permissões serão removidas se o app não for usado por alguns meses."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Para proteger seus dados, se o app não for usado por alguns meses, as seguintes permissões serão removidas: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Para proteger seus dados, as permissões de apps que não foram usados nos últimos meses foram removidas."</string>
@@ -467,8 +473,7 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Permitir que o app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acesse seu registro de chamadas telefônicas?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Permitir que o app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; gerencie e faça chamadas telefônicas?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acesse os dados do sensor sobre seus sinais vitais?"</string>
-    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
-    <skip />
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Este app quer acessar os dados do sensor sobre seus sinais vitais o tempo todo, mesmo quando não estiver em uso. Para fazer essa mudança, "<annotation id="link">"acesse as configurações"</annotation>"."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acesse os dados do sensor sobre seus sinais vitais?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Para permitir que o app tenha acesso a dados do sensor corporal a qualquer momento, mesmo quando não estiver em uso, "<annotation id="link">"acesse as configurações"</annotation>"."</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Continuar permitindo que o app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acesse dados do sensor corporal enquanto estiver em uso?"</string>

@@ -196,8 +196,14 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g> ခွင့်ပြုချက်အားလုံး ကြည့်ရန်"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်အားလုံးကို ကြည့်ရန်"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Assistant မိုက်ကရိုဖုန်း အသုံးပြုမှုကို ပြပါ"</string>
+    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
+    <skip />
     <string name="auto_revoke_label" msgid="5068393642936571656">"အက်ပ်ကိုအသုံးမပြုလျှင် ခွင့်ပြုချက်များ ဖယ်ရှားရန်"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"ခွင့်ပြုချက်များဖယ်ရှားပြီး နေရာလွတ်ပြုလုပ်ရန်"</string>
+    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
+    <skip />
+    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
+    <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"အက်ပ်ကို လအနည်းငယ် အသုံးမပြုပါက သင်၏ဒေတာကိုကာကွယ်ရန် ဤအက်ပ်အတွက် ခွင့်ပြုချက်များကို ဖယ်ရှားပါမည်။"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"အက်ပ်ကို လအနည်းငယ် အသုံးမပြုပါက သင်၏ဒေတာကိုကာကွယ်ရန် အောက်ပါခွင့်ပြုချက်များကို ဖယ်ရှားပါမည်- <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"သင်၏ဒေတာကိုကာကွယ်ရန် လအနည်းငယ်အတွင်း အသုံးမပြုသော အက်ပ်များမှ ခွင့်ပြုချက်များကို ဖယ်ရှားလိုက်သည်။"</string>
@@ -467,8 +473,7 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သင်၏ခေါ်ဆိုထားသော မှတ်တမ်းများကို သုံးခွင့်ပေးလိုပါသလား။"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ကို ဖုန်းခေါ်ဆိုမှုများ ပြုလုပ်ခွင့်နှင့် စီမံခွင့်ပေးလိုပါသလား။"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သင်၏ အရေးကြီးသော ကျန်းမာရေးလက္ခဏာဆိုင်ရာ အာရုံခံကိရိယာဒေတာ သုံးခွင့်ပေးလိုပါသလား။"</string>
-    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
-    <skip />
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"အက်ပ်သုံးမနေသော်လည်း ဤအက်ပ်က သင်၏အဓိကကိုယ်တွင်းအင်္ဂါအခြေအနေ လက္ခဏာများနှင့်ပတ်သက်သော အာရုံခံစနစ် ဒေတာကို အမြဲသုံးခွင့် ရယူလိုသည်။ ဤအပြောင်းအလဲကို ပြုလုပ်ရန် "<annotation id="link">"ဆက်တင်များသို့ သွားပါ။"</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သင်၏ အရေးကြီးသောလက္ခဏာ အာရုံခံစနစ် ဒေတာကို သုံးခွင့်ပေးလိုပါသလား။"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"အက်ပ်သုံးမနေသော်လည်း ဤအက်ပ်ကို ခန္ဓာကိုယ်အာရုံခံစနစ် ဒေတာများ အမြဲသုံးခွင့်ပြုရန် "<annotation id="link">"ဆက်တင်များသို့ သွားပါ။"</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"အက်ပ်သုံးစဉ် &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ကို ခန္ဓာကိုယ်အာရုံခံစနစ် ဒေတာ ဆက်သုံးခွင့်ပြုမလား။"</string>
@@ -509,8 +514,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"ကင်မရာခွင့်ပြုချက် ဖယ်ရှားရန်"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"မိုက်ခရိုဖုန်းခွင့်ပြုချက် ဖယ်ရှားရန်"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"ဝန်ဆောင်မှု စီမံခန့်ခွဲရန်"</string>
-    <!-- no translation found for manage_permissions_qs (3780541819763475434) -->
-    <skip />
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"ခွင့်ပြုချက်များကို စီမံရန်"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"ဖုန်းခေါ်ဆိုမှုက အသုံးပြုနေသည်"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"ဖုန်းခေါ်ဆိုမှုတွင် မကြာသေးမီက အသုံးပြုထားသည်"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"<xliff:g id="APP_NAME">%1$s</xliff:g> က အသုံးပြုနေသည်"</string>

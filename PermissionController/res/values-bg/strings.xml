@@ -196,8 +196,14 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Преглед на всички разрешения за <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Преглед на всички приложения с това разрешение"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Показване на употребата на микрофона за Асистент"</string>
+    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
+    <skip />
     <string name="auto_revoke_label" msgid="5068393642936571656">"Премахване на разрешенията, ако приложението не се използва"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Премахване на разреш. и освоб. на място"</string>
+    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
+    <skip />
+    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
+    <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"За да защитим данните ви, разрешенията за това приложение ще бъдат премахнати, ако не го използвате няколко месеца."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"За да защитим данните ви, следните разрешения ще бъдат премахнати, ако не използвате приложението няколко месеца: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"За да защитим данните ви, премахнахме разрешенията за приложенията, които не сте използвали от няколко месеца."</string>
@@ -467,8 +473,7 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Да се разреши ли на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да осъществява достъп до списъците с телефонните ви обаждания?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Да се разреши ли на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да извършва и управлява телефонни обаждания?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Да се разреши ли на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да осъществява достъп до данните от сензорите за жизнените ви показатели?"</string>
-    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
-    <skip />
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Това приложение иска постоянен достъп до данните от сензорите за жизнените ви показатели – дори когато не го използвате. За да извършите тази промяна, "<annotation id="link">"отворете настройките"</annotation>"."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Да се разреши ли на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да осъществява достъп до данните от сензорите за жизнените ви показатели?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"За да разрешите на това приложение да осъществява достъп до данните от сензорите за тяло по всяко време – дори когато не го използвате, "<annotation id="link">"отворете настройките."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Да се предоставя ли достъп на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; до данните от сензорите за тяло, докато приложението се използва?"</string>
@@ -509,8 +514,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Премахване на разрешението за камерата"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Премахване на разрешението за микрофона"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Управление на услугата"</string>
-    <!-- no translation found for manage_permissions_qs (3780541819763475434) -->
-    <skip />
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"Управление на разрешенията"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Използва се от телефонно обаждане"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Наскоро използвано в телефонно обаждане"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Използва се от <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
