@@ -74,6 +74,9 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
 
         mViewModel.getSafetyCenterLiveData().observe(this, this::renderSafetyCenterData);
         getLifecycle().addObserver(mViewModel.getAutoRefreshManager());
+
+        getPreferenceManager().setPreferenceComparisonCallback(
+                new SafetyPreferenceComparisonCallback());
     }
 
     private void renderSafetyCenterData(@Nullable SafetyCenterData data) {
@@ -114,7 +117,7 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
                         entryOrGroup.getEntry() != null
                                 ? Stream.of(entryOrGroup.getEntry())
                                 : entryOrGroup.getEntryGroup().getEntries().stream())
-                .map(entry -> new SafetyEntryPreference(context, entry))
+                .map(entry -> new SafetyTopLevelEntryPreference(context, entry))
                 .forEachOrdered(mEntriesGroup::addPreference);
     }
 
