@@ -196,14 +196,11 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"ดูสิทธิ์ทั้งหมดของ \"<xliff:g id="APP">%1$s</xliff:g>\""</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"ดูแอปทั้งหมดที่มีสิทธิ์นี้"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"แสดงการใช้ไมโครโฟนของ Assistant"</string>
-    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
-    <skip />
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"การตั้งค่าแอปที่ไม่ได้ใช้"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"นำสิทธิ์ออกหากไม่ได้ใช้งานแอป"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"นำสิทธิ์ออกและเพิ่มพื้นที่ว่าง"</string>
-    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="2443239537162119403">"หยุดกิจกรรมบนแอปชั่วคราว"</string>
+    <string name="unused_apps_summary" msgid="4416065734063612849">"นำสิทธิ์ออก ลบไฟล์ชั่วคราว และหยุดการแจ้งเตือนหากไม่ได้ใช้"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"หากคุณไม่ได้ใช้งานแอปนาน 2-3 เดือน ระบบจะนำสิทธิ์ของแอปนี้ออกเพื่อปกป้องข้อมูลของคุณ"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"หากไม่มีการใช้งานแอปนาน 2-3 เดือน ระบบจะปกป้องข้อมูลของคุณด้วยการนำสิทธิ์ต่อไปนี้ออก ได้แก่ <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"ระบบนำสิทธิ์ออกจากแอปที่คุณไม่ได้ใช้งานนาน 2-3 เดือนเพื่อปกป้องข้อมูลของคุณ"</string>

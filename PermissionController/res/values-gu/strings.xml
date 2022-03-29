@@ -196,14 +196,11 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g>ની બધી પરવાનગીઓ જુઓ"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"આ પરવાનગી સાથે બધી ઍપ જુઓ"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"આસિસ્ટંટ દ્વારા વપરાયેલો માઇક્રોફોનની પરવાનગીનો ડેટા બતાવો"</string>
-    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
-    <skip />
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"ન વપરાયેલી ઍપના સેટિંગ"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"ઍપ ઉપયોગમાં ન હોવા પર પરવાનગીઓ કાઢી નાખો"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"પરવાનગીઓ કાઢી નાખો અને જગ્યા ખાલી કરો"</string>
-    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="2443239537162119403">"ઍપની પ્રવૃત્તિ થોભાવો"</string>
+    <string name="unused_apps_summary" msgid="4416065734063612849">"જો ઍપનો ઉપયોગ ન થતો હોય, તો પરવાનગીઓ કાઢી નાખો, હંગામી ફાઇલો ડિલીટ કરો અને નોટિફિકેશન બંધ કરો"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"તમારા ડેટાની સુરક્ષા કરવા માટે, જો ઍપનો કેટલાક મહિનાથી ઉપયોગ કરવામાં આવ્યો ન હોય, તો આ ઍપની પરવાનગીઓ કાઢી નાખવામાં આવશે."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"તમારા ડેટાની સુરક્ષા કરવા માટે, જો ઍપનો કેટલાક મહિનાથી ઉપયોગ કરવામાં આવ્યો ન હોય, તો નીચેની પરવાનગીઓ કાઢી નાખવામાં આવશે: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"તમારા ડેટાની સુરક્ષા માટે, તમારા દ્વારા કેટલાક મહિનાથી ઉપયોગમાં ન લેવાયેલી ઍપની પરવાનગીઓ કાઢી નાખવામાં આવી છે."</string>
