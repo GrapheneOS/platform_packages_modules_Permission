@@ -275,8 +275,9 @@ public final class SafetyCenterEntry implements Parcelable {
     public static final Creator<SafetyCenterEntry> CREATOR = new Creator<SafetyCenterEntry>() {
         @Override
         public SafetyCenterEntry createFromParcel(Parcel in) {
-            return new Builder(in.readString())
-                    .setTitle(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in))
+            String id = in.readString();
+            CharSequence title = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
+            return new Builder(id, title)
                     .setSummary(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in))
                     .setSeverityLevel(in.readInt())
                     .setSeverityUnspecifiedIconType(in.readInt())
@@ -309,15 +310,16 @@ public final class SafetyCenterEntry implements Parcelable {
         /**
          * Creates a {@link Builder} for a {@link SafetyCenterEntry}.
          *
-         * @param id an encoded string ID to be returned by {@link #getId()}
+         * @param id a unique encoded string ID, see {@link #getId()} for details
+         * @param title a title that describes this entry
          */
-        public Builder(@NonNull String id) {
+        public Builder(@NonNull String id, @NonNull CharSequence title) {
             mId = requireNonNull(id);
+            mTitle = requireNonNull(title);
         }
 
         /**
-         * Creates a pre-populated {@link Builder} with the values from the given {@link
-         * SafetyCenterEntry}.
+         * Creates a {@link Builder} with the values from the given {@link SafetyCenterEntry}.
          */
         public Builder(@NonNull SafetyCenterEntry safetyCenterEntry) {
             mId = safetyCenterEntry.mId;
@@ -330,14 +332,14 @@ public final class SafetyCenterEntry implements Parcelable {
             mIconAction = safetyCenterEntry.mIconAction;
         }
 
-        /** Sets the ID for this entry. Required. */
+        /** Sets the ID for this entry. */
         @NonNull
         public Builder setId(@NonNull String id) {
             mId = requireNonNull(id);
             return this;
         }
 
-        /** Sets the title for this entry. Required. */
+        /** Sets the title for this entry. */
         @NonNull
         public Builder setTitle(@NonNull CharSequence title) {
             mTitle = requireNonNull(title);

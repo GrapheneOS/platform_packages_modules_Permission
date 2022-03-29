@@ -167,13 +167,12 @@ final class SafetyCenterDataTracker {
     @NonNull
     static SafetyCenterData getDefaultSafetyCenterData() {
         return new SafetyCenterData(
-                new SafetyCenterStatus.Builder()
-                        .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN)
-                        .setTitle(getSafetyCenterStatusTitle(
+                new SafetyCenterStatus.Builder(
+                        getSafetyCenterStatusTitle(
+                                SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN),
+                        getSafetyCenterStatusSummary(
                                 SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN))
-                        .setSummary(
-                                getSafetyCenterStatusSummary(
-                                        SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN))
+                        .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN)
                         .build(),
                 emptyList(),
                 emptyList(),
@@ -290,10 +289,10 @@ final class SafetyCenterDataTracker {
         int safetyCenterOverallSeverityLevel =
                 entryToSafetyCenterStatusOverallLevel(maxSafetyCenterEntryLevel);
         return new SafetyCenterData(
-                new SafetyCenterStatus.Builder()
+                new SafetyCenterStatus.Builder(
+                        getSafetyCenterStatusTitle(safetyCenterOverallSeverityLevel),
+                        getSafetyCenterStatusSummary(safetyCenterOverallSeverityLevel))
                         .setSeverityLevel(safetyCenterOverallSeverityLevel)
-                        .setTitle(getSafetyCenterStatusTitle(safetyCenterOverallSeverityLevel))
-                        .setSummary(getSafetyCenterStatusSummary(safetyCenterOverallSeverityLevel))
                         .build(),
                 safetyCenterIssues,
                 safetyCenterEntryOrGroups,
@@ -377,18 +376,18 @@ final class SafetyCenterDataTracker {
                 new ArrayList<>(safetySourceIssueActions.size());
         for (int i = 0; i < safetySourceIssueActions.size(); i++) {
             SafetySourceIssue.Action safetySourceIssueAction = safetySourceIssueActions.get(i);
-
             safetyCenterIssueActions.add(toSafetyCenterIssueAction(safetySourceIssueAction));
         }
 
         // TODO(b/218817233): Add dismissible and shouldConfirmDismissal. Still TBD by UX: green
         // issues won't have confirm on dismiss and red might not be dismissible.
-        return new SafetyCenterIssue.Builder(safetySourceIssue.getId())
+        return new SafetyCenterIssue.Builder(
+                safetySourceIssue.getId(),
+                safetySourceIssue.getTitle(),
+                safetySourceIssue.getSummary())
                 .setSeverityLevel(
                         sourceToSafetyCenterIssueSeverityLevel(
                                 safetySourceIssue.getSeverityLevel()))
-                .setTitle(safetySourceIssue.getTitle())
-                .setSummary(safetySourceIssue.getSummary())
                 .setSubtitle(safetySourceIssue.getSubtitle())
                 .setActions(safetyCenterIssueActions)
                 .build();
@@ -398,10 +397,11 @@ final class SafetyCenterDataTracker {
     private static SafetyCenterIssue.Action toSafetyCenterIssueAction(
             @NonNull SafetySourceIssue.Action safetySourceIssueAction) {
         // TODO(b/218817233): Add whether the action is in flight.
-        return new SafetyCenterIssue.Action.Builder(safetySourceIssueAction.getId())
-                .setLabel(safetySourceIssueAction.getLabel())
+        return new SafetyCenterIssue.Action.Builder(
+                safetySourceIssueAction.getId(),
+                safetySourceIssueAction.getLabel(),
+                safetySourceIssueAction.getPendingIntent())
                 .setSuccessMessage(safetySourceIssueAction.getSuccessMessage())
-                .setPendingIntent(safetySourceIssueAction.getPendingIntent())
                 .setWillResolve(safetySourceIssueAction.willResolve())
                 .build();
     }
@@ -453,9 +453,10 @@ final class SafetyCenterDataTracker {
         // TODO(b/218817233): Revisit how severityUnspecifiedIconType is implemented.
         safetyCenterEntryOrGroups.add(
                 new SafetyCenterEntryOrGroup(
-                        new SafetyCenterEntryGroup.Builder(safetySourcesGroup.getId())
+                        new SafetyCenterEntryGroup.Builder(
+                                safetySourcesGroup.getId(),
+                                getString(safetySourcesGroup.getTitleResId()))
                                 .setSeverityLevel(maxSafetyCenterEntryLevel)
-                                .setTitle(getString(safetySourcesGroup.getTitleResId()))
                                 .setSummary(getString(safetySourcesGroup.getSummaryResId()))
                                 .setEntries(entries)
                                 .setSeverityUnspecifiedIconType(severityUnspecifiedIconType)
@@ -509,11 +510,12 @@ final class SafetyCenterDataTracker {
                     }
                     // TODO(b/218817233): Add IconAction field and revisit how
                     // severityUnspecifiedIconType is implemented.
-                    return new SafetyCenterEntry.Builder(safetySource.getId())
+                    return new SafetyCenterEntry.Builder(
+                            safetySource.getId(),
+                            safetySourceStatus.getTitle())
                             .setSeverityLevel(
                                     sourceToSafetyCenterEntrySeverityLevel(
                                             safetySourceStatus.getSeverityLevel()))
-                            .setTitle(safetySourceStatus.getTitle())
                             .setSummary(safetySourceStatus.getSummary())
                             .setEnabled(enabled)
                             .setSeverityUnspecifiedIconType(severityUnspecifiedIconType)
@@ -563,14 +565,14 @@ final class SafetyCenterDataTracker {
 
         boolean enabled = pendingIntent != null && !SafetySources.isDefaultEntryDisabled(
                 safetySource);
+        CharSequence title = getString(isUserManaged
+                ? safetySource.getTitleForWorkResId()
+                : safetySource.getTitleResId()
+        );
         // TODO(b/218817233): Add IconAction field and revisit how severityUnspecifiedIconType is
         // implemented.
-        return new SafetyCenterEntry.Builder(safetySource.getId())
+        return new SafetyCenterEntry.Builder(safetySource.getId(), title)
                 .setSeverityLevel(entrySeverityLevel)
-                .setTitle(
-                        getString(
-                                isUserManaged ? safetySource.getTitleForWorkResId()
-                                        : safetySource.getTitleResId()))
                 .setSummary(getString(safetySource.getSummaryResId()))
                 .setEnabled(enabled)
                 .setPendingIntent(pendingIntent)
@@ -639,8 +641,7 @@ final class SafetyCenterDataTracker {
                         // null.
                         return null;
                     }
-                    return new SafetyCenterStaticEntry.Builder()
-                            .setTitle(safetySourceStatus.getTitle())
+                    return new SafetyCenterStaticEntry.Builder(safetySourceStatus.getTitle())
                             .setSummary(safetySourceStatus.getSummary())
                             .setPendingIntent(pendingIntent)
                             .build();
@@ -670,18 +671,20 @@ final class SafetyCenterDataTracker {
             return null;
         }
 
-        PendingIntent pendingIntent = toPendingIntent(safetySource.getIntentAction(), packageName,
-                userId);
+        PendingIntent pendingIntent =
+                toPendingIntent(safetySource.getIntentAction(), packageName, userId);
+
         if (pendingIntent == null) {
             // TODO(b/222838784): Decide strategy for static entries when the intent is null.
             return null;
         }
 
-        return new SafetyCenterStaticEntry.Builder()
-                .setTitle(
-                        getString(
-                                isUserManaged ? safetySource.getTitleForWorkResId()
-                                        : safetySource.getTitleResId()))
+        CharSequence title = getString(isUserManaged
+                ? safetySource.getTitleForWorkResId()
+                : safetySource.getTitleResId()
+        );
+
+        return new SafetyCenterStaticEntry.Builder(title)
                 .setSummary(getString(safetySource.getSummaryResId()))
                 .setPendingIntent(pendingIntent)
                 .build();
