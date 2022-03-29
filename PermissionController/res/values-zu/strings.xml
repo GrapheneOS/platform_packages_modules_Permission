@@ -196,8 +196,14 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Bona zonke izimvume ze-<xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Bona zonke izinhlelo zokusebenza ngale mvume"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Bonisa ukusetshenziswa kwe-microphone kamsizi"</string>
+    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
+    <skip />
     <string name="auto_revoke_label" msgid="5068393642936571656">"Susa izimvume uma uhlelo lokusebenza lungasetshenziswa"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Susa izimvume uphinde ukhulule isikhala"</string>
+    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
+    <skip />
+    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
+    <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Ukuze kuvikelwe idatha yakho, izimvume zalolu hlelo lokusebenza zizosuswa uma uhlelo lokusebenza lungasetshenziswa izinyanga ezimbalwa."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Ukuze kuvikelwe idatha yakho, uma uhlelo lokusebenza lungasetshenzisiwe, izimvume ezilandelayo zizosuswa: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Ukuze kuvikelwe idatha yakho, izimvume zisusiwe kusukela kuzinhlelo zokusebenza ongazange uzisebenzise ezinyangeni ezimbalwa."</string>
@@ -467,8 +473,7 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukufinyelela kurekhodi lakho lamakholi wefoni?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi yenze iphinde iphathe amakholi efoni?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi ifinyelele kudatha yenzwa emayelana nezimpawu zakho ezibalulekile?"</string>
-    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
-    <skip />
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Le app ifuna ukufinyelela kudatha yenzwa emayelana nezimpawu zakho ezibalulekile ngaso sonke isikhathi, ngisho noma ungasebenzisi i-app. "<annotation id="link">"iya kumasethingi."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Vumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuthi ifinyelele kudatha yenzwa emayelana nezimpawu zakho ezibalulekile?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Ukuze uvumele le app ukuba ifinyelele idatha yenzwa yomzimba ngaso sonke isikhathi, nanoma ungasebenzisi i-app, "<annotation id="link">"iya kumasethingi."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Qhubeka uvumela i-&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ukuba ifinyelele inzwa yedatha yomzimba kuyilapho i-app isebenza?"</string>

@@ -107,8 +107,8 @@ public final class SafetyCenterEntryOrGroup implements Parcelable {
 
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeParcelable(mEntry, flags);
-        dest.writeParcelable(mEntryGroup, flags);
+        dest.writeTypedObject(mEntry, flags);
+        dest.writeTypedObject(mEntryGroup, flags);
     }
 
     @NonNull
@@ -117,13 +117,9 @@ public final class SafetyCenterEntryOrGroup implements Parcelable {
                 @Override
                 public SafetyCenterEntryOrGroup createFromParcel(Parcel in) {
                     SafetyCenterEntry maybeEntry =
-                            in.readParcelable(
-                                    SafetyCenterEntry.class.getClassLoader(),
-                                    SafetyCenterEntry.class);
+                            in.readTypedObject(SafetyCenterEntry.CREATOR);
                     SafetyCenterEntryGroup maybeEntryGroup =
-                            in.readParcelable(
-                                    SafetyCenterEntryGroup.class.getClassLoader(),
-                                    SafetyCenterEntryGroup.class);
+                            in.readTypedObject(SafetyCenterEntryGroup.CREATOR);
 
                     return maybeEntry != null
                             ? new SafetyCenterEntryOrGroup(maybeEntry)

@@ -77,7 +77,7 @@ public final class SafetySourceErrorDetails implements Parcelable {
 
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeParcelable(mSafetyEvent, flags);
+        dest.writeTypedObject(mSafetyEvent, flags);
     }
 
     @NonNull
@@ -85,8 +85,9 @@ public final class SafetySourceErrorDetails implements Parcelable {
             new Creator<SafetySourceErrorDetails>() {
         @Override
         public SafetySourceErrorDetails createFromParcel(Parcel in) {
-            return new SafetySourceErrorDetails(
-                    in.readParcelable(SafetyEvent.class.getClassLoader(), SafetyEvent.class));
+            SafetyEvent safetyEvent = in.readTypedObject(SafetyEvent.CREATOR);
+
+            return new SafetySourceErrorDetails(safetyEvent);
         }
 
         @Override

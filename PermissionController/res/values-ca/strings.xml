@@ -196,8 +196,14 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Mostra tots els permisos per a <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Mostra totes les aplicacions que tenen aquest permís"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Mostra l\'ús del micròfon de l\'Assistent"</string>
+    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
+    <skip />
     <string name="auto_revoke_label" msgid="5068393642936571656">"Suprimeix els permisos si no s\'utilitza l\'aplicació"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Suprimeix els permisos i allibera espai"</string>
+    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
+    <skip />
+    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
+    <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Per protegir les teves dades, els permisos d\'aquesta aplicació se suprimiran si no la utilitzes durant uns mesos."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Si l\'aplicació no s\'utilitza durant uns mesos, se suprimiran els permisos següents per protegir les teves dades: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Per protegir les teves dades, s\'han suprimit els permisos de les aplicacions que no has utilitzat durant els darrers mesos."</string>
@@ -467,8 +473,7 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi als registres de trucades del telèfon?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; faci trucades telefòniques i les gestioni?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi a les dades del sensor de constants vitals?"</string>
-    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
-    <skip />
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Aquesta aplicació vol accedir a les dades del sensor sobre les constants vitals sempre, fins i tot quan no l\'utilitzis. Per fer aquest canvi, "<annotation id="link">"ves a la configuració"</annotation>"."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi a les dades dels sensors sobre les constants vitals?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Per permetre que l\'aplicació accedeixi sempre a les dades del sensor corporal, fins i tot quan no l\'utilitzis, "<annotation id="link">"ves a la configuració"</annotation>"."</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Vols continuar permetent que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi a les dades del sensor corporal mentre s\'utilitza?"</string>
@@ -509,8 +514,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Suprimeix el permís de la càmera"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Suprimeix el permís del micròfon"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Gestiona el servei"</string>
-    <!-- no translation found for manage_permissions_qs (3780541819763475434) -->
-    <skip />
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"Gestiona els permisos"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"En ús per una trucada"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Utilitzat recentment en una trucada"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"En ús per <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>

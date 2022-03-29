@@ -71,18 +71,15 @@ public final class SafetySourceIssue implements Parcelable {
                 @Override
                 public SafetySourceIssue createFromParcel(Parcel in) {
                     String id = in.readString();
-                    CharSequence title =
-                            requireNonNull(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in));
-                    CharSequence subtitle =
-                            TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
-                    CharSequence summary =
-                            requireNonNull(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in));
+                    CharSequence title = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
+                    CharSequence subtitle = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
+                    CharSequence summary = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
                     int severityLevel = in.readInt();
                     int issueCategory = in.readInt();
                     List<Action> actions = in.createTypedArrayList(Action.CREATOR);
                     PendingIntent onDismissPendingIntent =
-                            PendingIntent.readPendingIntentOrNullFromParcel(in);
-                    String issueTypeId = requireNonNull(in.readString());
+                            in.readTypedObject(PendingIntent.CREATOR);
+                    String issueTypeId = in.readString();
                     Builder builder = new Builder(id, title, summary, severityLevel, issueTypeId)
                             .setSubtitle(subtitle)
                             .setIssueCategory(issueCategory)
@@ -108,7 +105,7 @@ public final class SafetySourceIssue implements Parcelable {
     private final CharSequence mSubtitle;
     @NonNull
     private final CharSequence mSummary;
-    @SafetySourceSeverity.Level
+    @SafetySourceData.SeverityLevel
     private final int mSeverityLevel;
     private final List<Action> mActions;
     @Nullable
@@ -122,7 +119,7 @@ public final class SafetySourceIssue implements Parcelable {
             @NonNull CharSequence title,
             @Nullable CharSequence subtitle,
             @NonNull CharSequence summary,
-            @SafetySourceSeverity.Level int severityLevel,
+            @SafetySourceData.SeverityLevel int severityLevel,
             @IssueCategory int issueCategory,
             @NonNull List<Action> actions,
             @Nullable PendingIntent onDismissPendingIntent,
@@ -170,8 +167,8 @@ public final class SafetySourceIssue implements Parcelable {
         return mSummary;
     }
 
-    /** Returns the {@link SafetySourceSeverity.Level} of the issue. */
-    @SafetySourceSeverity.Level
+    /** Returns the {@link SafetySourceData.SeverityLevel} of the issue. */
+    @SafetySourceData.SeverityLevel
     public int getSeverityLevel() {
         return mSeverityLevel;
     }
@@ -244,7 +241,7 @@ public final class SafetySourceIssue implements Parcelable {
         dest.writeInt(mSeverityLevel);
         dest.writeInt(mIssueCategory);
         dest.writeTypedList(mActions);
-        PendingIntent.writePendingIntentOrNullToParcel(mOnDismissPendingIntent, dest);
+        dest.writeTypedObject(mOnDismissPendingIntent, flags);
         dest.writeString(mIssueTypeId);
     }
 
@@ -537,7 +534,7 @@ public final class SafetySourceIssue implements Parcelable {
         private CharSequence mSubtitle;
         @NonNull
         private final CharSequence mSummary;
-        @SafetySourceSeverity.Level
+        @SafetySourceData.SeverityLevel
         private final int mSeverityLevel;
         @IssueCategory
         private int mIssueCategory = ISSUE_CATEGORY_GENERAL;
@@ -553,12 +550,12 @@ public final class SafetySourceIssue implements Parcelable {
                 @NonNull String id,
                 @NonNull CharSequence title,
                 @NonNull CharSequence summary,
-                @SafetySourceSeverity.Level int severityLevel,
+                @SafetySourceData.SeverityLevel int severityLevel,
                 @NonNull String issueTypeId) {
             this.mId = requireNonNull(id);
             this.mTitle = requireNonNull(title);
             this.mSummary = requireNonNull(summary);
-            this.mSeverityLevel = SafetySourceSeverity.validateLevelForIssue(severityLevel);
+            this.mSeverityLevel = SafetySourceData.validateSeverityLevelForIssue(severityLevel);
             this.mIssueTypeId = requireNonNull(issueTypeId);
         }
 
