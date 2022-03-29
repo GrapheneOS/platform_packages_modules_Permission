@@ -686,6 +686,7 @@
         visible="false">
         <permissions>
             <permission name="android.permission.SYSTEM_APPLICATION_OVERLAY" />
+            <permission name="android.permission.OBSERVE_SENSOR_PRIVACY" />
         </permissions>
     </role>
 
