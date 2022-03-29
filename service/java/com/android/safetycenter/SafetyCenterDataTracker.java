@@ -38,7 +38,6 @@ import android.safetycenter.SafetyCenterStaticEntryGroup;
 import android.safetycenter.SafetyCenterStatus;
 import android.safetycenter.SafetySourceData;
 import android.safetycenter.SafetySourceIssue;
-import android.safetycenter.SafetySourceSeverity;
 import android.safetycenter.SafetySourceStatus;
 import android.safetycenter.config.SafetyCenterConfig;
 import android.safetycenter.config.SafetySource;
@@ -557,15 +556,15 @@ final class SafetyCenterDataTracker {
 
     @SafetyCenterEntry.EntrySeverityLevel
     private static int sourceToSafetyCenterEntrySeverityLevel(
-            @SafetySourceSeverity.Level int safetySourceSeverityLevel) {
+            @SafetySourceData.SeverityLevel int safetySourceSeverityLevel) {
         switch (safetySourceSeverityLevel) {
-            case SafetySourceSeverity.LEVEL_UNSPECIFIED:
+            case SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED:
                 return SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED;
-            case SafetySourceSeverity.LEVEL_INFORMATION:
+            case SafetySourceData.SEVERITY_LEVEL_INFORMATION:
                 return SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK;
-            case SafetySourceSeverity.LEVEL_RECOMMENDATION:
+            case SafetySourceData.SEVERITY_LEVEL_RECOMMENDATION:
                 return SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_RECOMMENDATION;
-            case SafetySourceSeverity.LEVEL_CRITICAL_WARNING:
+            case SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING:
                 return SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING;
         }
 
@@ -576,18 +575,18 @@ final class SafetyCenterDataTracker {
 
     @SafetyCenterIssue.IssueSeverityLevel
     private static int sourceToSafetyCenterIssueSeverityLevel(
-            @SafetySourceSeverity.Level int safetySourceIssueSeverityLevel) {
+            @SafetySourceData.SeverityLevel int safetySourceIssueSeverityLevel) {
         switch (safetySourceIssueSeverityLevel) {
-            case SafetySourceSeverity.LEVEL_UNSPECIFIED:
+            case SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED:
                 Log.w(TAG,
-                        "Unexpected use of SafetySourceSeverity.LEVEL_UNSPECIFIED in "
+                        "Unexpected use of SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED in "
                                 + "SafetySourceStatus");
                 return SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_OK;
-            case SafetySourceSeverity.LEVEL_INFORMATION:
+            case SafetySourceData.SEVERITY_LEVEL_INFORMATION:
                 return SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_OK;
-            case SafetySourceSeverity.LEVEL_RECOMMENDATION:
+            case SafetySourceData.SEVERITY_LEVEL_RECOMMENDATION:
                 return SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_RECOMMENDATION;
-            case SafetySourceSeverity.LEVEL_CRITICAL_WARNING:
+            case SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING:
                 return SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_CRITICAL_WARNING;
         }
 
