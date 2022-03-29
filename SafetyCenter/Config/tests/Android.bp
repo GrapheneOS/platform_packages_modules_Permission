@@ -1,5 +1,4 @@
-//
-// Copyright (C) 2021 The Android Open Source Project
+// Copyright (C) 2022 The Android Open Source Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,39 +11,25 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-//
 
 package {
     default_applicable_licenses: ["Android-Apache-2.0"],
 }
 
 android_test {
-    name: "CtsSafetyCenterTestCases",
+    name: "SafetyCenterConfigTests",
     defaults: ["mts-target-sdk-version-current"],
     sdk_version: "test_current",
     min_sdk_version: "30",
     target_sdk_version: "32",
     srcs: [
-        "src/**/*.java",
-        "src/**/*.kt",
+        "java/**/*.kt",
     ],
     static_libs: [
-        "androidx.test.core",
-        "androidx.test.ext.junit",
-        "androidx.test.ext.truth",
-        "androidx.test.uiautomator_uiautomator",
-        "compatibility-device-util-axt",
-        "ctstestrunner-axt",
-        "guava-android-testlib",
-        "kotlin-stdlib",
-        "kotlinx-coroutines-android",
-        "kotlin-test",
         "safety-center-config",
-        "safety-center-resources-lib",
-        "truth-prebuilt",
+        "compatibility-device-util-axt",
     ],
     test_suites: [
-        "cts",
         "general-tests",
         "mts-permission",
     ],
