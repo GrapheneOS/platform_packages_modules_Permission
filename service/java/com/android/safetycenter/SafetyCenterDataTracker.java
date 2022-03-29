@@ -50,7 +50,7 @@ import android.util.Log;
 import androidx.annotation.RequiresApi;
 
 import com.android.permission.util.UserUtils;
-import com.android.safetycenter.SafetyCenterConfigReader.Config;
+import com.android.safetycenter.SafetyCenterConfigReader.SafetyCenterConfigInternal;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 
 import java.util.ArrayList;
@@ -89,7 +89,7 @@ final class SafetyCenterDataTracker {
     /**
      * Sets the latest {@link SafetySourceData} for the given {@code safetySourceId} and {@code
      * userId}, and returns whether there was a change to the underlying {@link SafetyCenterData}
-     * against the given {@link Config}.
+     * against the given {@link SafetyCenterConfigInternal}.
      *
      * <p>Throws if the request is invalid based on the Safety Center config: the given {@code
      * safetySourceId}, {@code packageName} and {@code userId} are unexpected; or the {@link
@@ -99,12 +99,18 @@ final class SafetyCenterDataTracker {
      * SafetySourceData} entry.
      */
     boolean setSafetySourceData(
-            @NonNull Config config,
+            @NonNull SafetyCenterConfigInternal configInternal,
             @Nullable SafetySourceData safetySourceData,
             @NonNull String safetySourceId,
             @NonNull String packageName,
             @UserIdInt int userId) {
-        validateRequest(config, safetySourceData, safetySourceId, packageName, userId);
+        validateRequest(
+                configInternal,
+                safetySourceData,
+                safetySourceId,
+                packageName,
+                userId
+        );
 
         Key key = Key.of(safetySourceId, userId);
         SafetySourceData existingSafetySourceData = mSafetySourceDataForKey.get(key);
@@ -122,8 +128,9 @@ final class SafetyCenterDataTracker {
     }
 
     /**
-     * Returns the latest {@link SafetySourceData} that was set by {@link #setSafetySourceData} for
-     * the given {@code safetySourceId} and {@code userId} against the given {@link Config}.
+     * Returns the latest {@link SafetySourceData} that was set by {@link #setSafetySourceData}
+     * for the given {@code safetySourceId} and {@code userId} against the given
+     * {@link SafetyCenterConfigInternal}.
      *
      * <p>Throws if the request is invalid based on the Safety Center config: the given {@code
      * safetySourceId}, {@code packageName} and {@code userId} are unexpected.
@@ -133,11 +140,11 @@ final class SafetyCenterDataTracker {
      */
     @Nullable
     SafetySourceData getSafetySourceData(
-            @NonNull Config config,
+            @NonNull SafetyCenterConfigInternal configInternal,
             @NonNull String safetySourceId,
             @NonNull String packageName,
             @UserIdInt int userId) {
-        validateRequest(config, null, safetySourceId, packageName, userId);
+        validateRequest(configInternal, null, safetySourceId, packageName, userId);
         return mSafetySourceDataForKey.get(Key.of(safetySourceId, userId));
     }
 
@@ -148,7 +155,8 @@ final class SafetyCenterDataTracker {
 
     /**
      * Returns the current {@link SafetyCenterData} for the given {@link UserProfileGroup},
-     * aggregated from all the {@link SafetySourceData} set so far against the given {@link Config}.
+     * aggregated from all the {@link SafetySourceData} set so far against the given
+     * {@link SafetyCenterConfigInternal}.
      *
      * <p>Returns an arbitrary default value if the {@link SafetyCenterConfig} is not available.
      *
@@ -157,8 +165,10 @@ final class SafetyCenterDataTracker {
      */
     @NonNull
     SafetyCenterData getSafetyCenterData(
-            @NonNull Config config, @NonNull UserProfileGroup userProfileGroup) {
-        return getSafetyCenterData(config.getSafetySourcesGroups(), userProfileGroup);
+            @NonNull SafetyCenterConfigInternal configInternal,
+            @NonNull UserProfileGroup userProfileGroup) {
+        return getSafetyCenterData(configInternal.getSafetySourcesGroups(),
+                userProfileGroup);
     }
 
     /**
@@ -180,12 +190,13 @@ final class SafetyCenterDataTracker {
     }
 
     private void validateRequest(
-            @NonNull Config config,
+            @NonNull SafetyCenterConfigInternal configInternal,
             @Nullable SafetySourceData safetySourceData,
             @NonNull String safetySourceId,
             @NonNull String packageName,
             @UserIdInt int userId) {
-        SafetySource safetySource = config.getExternalSafetySources().get(safetySourceId);
+        SafetySource safetySource =
+                configInternal.getExternalSafetySources().get(safetySourceId);
         if (safetySource == null) {
             throw new IllegalArgumentException(
                     String.format("Unexpected safety source \"%s\"", safetySourceId));
