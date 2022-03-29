@@ -159,7 +159,7 @@ object SafetyCenterApisWithShellPermissions {
      */
     fun SafetyCenterManager.clearAllSafetySourceDataForTestsWithPermission() =
         callWithShellPermissionIdentity(
-                { clearAllSafetySourceDataForTests() }, MANAGE_SAFETY_CENTER)
+            { clearAllSafetySourceDataForTests() }, MANAGE_SAFETY_CENTER)
 
     /**
      * Calls [SafetyCenterManager.setSafetyCenterConfigForTests] adopting Shell's
@@ -180,6 +180,6 @@ object SafetyCenterApisWithShellPermissions {
      */
     fun SafetyCenterManager.clearSafetyCenterConfigForTestsWithPermission() {
         callWithShellPermissionIdentity(
-                { clearSafetyCenterConfigForTests() }, MANAGE_SAFETY_CENTER)
+            { clearSafetyCenterConfigForTests() }, MANAGE_SAFETY_CENTER)
     }
 }

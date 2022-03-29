@@ -16,9 +16,9 @@
 
 package android.safetycenter.cts.testing
 
+import java.time.Duration
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeout
-import java.time.Duration
 
 /** A class that facilitates interacting with coroutines. */
 object Coroutines {
@@ -30,8 +30,8 @@ object Coroutines {
         }
 
     /** A long timeout, to be used for actions that are expected to complete. */
-    val TIMEOUT_LONG: Duration = Duration.ofSeconds(5)
+    val TIMEOUT_LONG: Duration = Duration.ofSeconds(10)
 
     /** A short timeout, to be used for actions that are expected not to complete. */
-    val TIMEOUT_SHORT: Duration = Duration.ofSeconds(1)
+    val TIMEOUT_SHORT: Duration = Duration.ofMillis(500)
 }

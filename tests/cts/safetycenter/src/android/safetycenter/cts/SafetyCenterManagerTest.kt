@@ -17,16 +17,17 @@
 package android.safetycenter.cts
 
 import android.Manifest.permission.MANAGE_SAFETY_CENTER
-import android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE
 import android.app.PendingIntent
 import android.app.PendingIntent.FLAG_IMMUTABLE
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_SAFETY_CENTER
+import android.content.IntentFilter
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterErrorDetails
 import android.safetycenter.SafetyCenterManager
+import android.safetycenter.SafetyCenterManager.ACTION_SAFETY_CENTER_ENABLED_CHANGED
 import android.safetycenter.SafetyCenterManager.OnSafetyCenterDataChangedListener
 import android.safetycenter.SafetyCenterManager.REFRESH_REASON_PAGE_OPEN
 import android.safetycenter.SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK
@@ -41,10 +42,6 @@ import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED
 import android.safetycenter.SafetySourceErrorDetails
 import android.safetycenter.SafetySourceIssue
 import android.safetycenter.SafetySourceStatus
-import android.safetycenter.config.SafetyCenterConfig
-import android.safetycenter.config.SafetySource
-import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC
-import android.safetycenter.config.SafetySourcesGroup
 import android.safetycenter.cts.testing.Coroutines.TIMEOUT_LONG
 import android.safetycenter.cts.testing.Coroutines.TIMEOUT_SHORT
 import android.safetycenter.cts.testing.Coroutines.runBlockingWithTimeout
@@ -61,9 +58,13 @@ import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.rem
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.reportSafetySourceErrorWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.setSafetyCenterConfigForTestsWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.setSafetySourceDataWithPermission
+import android.safetycenter.cts.testing.SafetyCenterCtsConfig.CTS_CONFIG
+import android.safetycenter.cts.testing.SafetyCenterCtsConfig.CTS_SOURCE_ID
+import android.safetycenter.cts.testing.SafetyCenterEnabledChangedReceiver
 import android.safetycenter.cts.testing.SafetyCenterFlags
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
-import android.safetycenter.cts.testing.SafetySourceBroadcastReceiver
+import android.safetycenter.cts.testing.SafetySourceReceiver
+import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.refreshSafetySourcesWithReceiverPermissionAndWait
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
@@ -112,8 +113,11 @@ class SafetyCenterManagerTest {
     private val safetySourceDataCritical =
         SafetySourceData.Builder()
             .setStatus(
-                SafetySourceStatus.Builder("Critical title", "Critical summary",
-                    SEVERITY_LEVEL_CRITICAL_WARNING)
+                SafetySourceStatus.Builder(
+                    "Critical title",
+                    "Critical summary",
+                    SEVERITY_LEVEL_CRITICAL_WARNING
+                )
                     .setPendingIntent(somePendingIntent)
                     .build()
             )
@@ -170,7 +174,7 @@ class SafetyCenterManagerTest {
         safetyCenterManager.removeOnSafetyCenterDataChangedListenerWithPermission(listener)
         safetyCenterManager.clearAllSafetySourceDataForTestsWithPermission()
         safetyCenterManager.clearSafetyCenterConfigForTestsWithPermission()
-        SafetySourceBroadcastReceiver.reset()
+        SafetySourceReceiver.reset()
     }
 
     @After
@@ -327,10 +331,86 @@ class SafetyCenterManagerTest {
     }
 
     @Test
+    fun safetyCenterEnabledChanged_whenImplicitReceiverHasPermission_receiverCalled() {
+        val enabledChangedReceiver = SafetyCenterEnabledChangedReceiver()
+        context.registerReceiver(enabledChangedReceiver,
+            IntentFilter(ACTION_SAFETY_CENTER_ENABLED_CHANGED))
+
+        var receiverValue =
+            enabledChangedReceiver.setSafetyCenterEnabledWithReceiverPermissionAndWait(false)
+
+        assertThat(receiverValue).isFalse()
+
+        val toggledReceiverValue =
+            enabledChangedReceiver.setSafetyCenterEnabledWithReceiverPermissionAndWait(true)
+
+        assertThat(toggledReceiverValue).isTrue()
+        context.unregisterReceiver(enabledChangedReceiver)
+    }
+
+    @Test
+    fun safetyCenterEnabledChanged_whenImplicitReceiverDoesNotHavePermission_receiverNotCalled() {
+        val enabledChangedReceiver = SafetyCenterEnabledChangedReceiver()
+        context.registerReceiver(enabledChangedReceiver,
+            IntentFilter(ACTION_SAFETY_CENTER_ENABLED_CHANGED))
+
+        SafetyCenterFlags.setSafetyCenterEnabled(false)
+
+        assertFailsWith(TimeoutCancellationException::class) {
+            enabledChangedReceiver.receiveSafetyCenterEnabledChanged(TIMEOUT_SHORT)
+        }
+        context.unregisterReceiver(enabledChangedReceiver)
+    }
+
+    @Test
+    fun safetyCenterEnabledChanged_whenSourceReceiverHasPermission_receiverCalled() {
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_CONFIG)
+
+        var receiverValue =
+            SafetySourceReceiver.setSafetyCenterEnabledWithReceiverPermissionAndWait(false)
+
+        assertThat(receiverValue).isFalse()
+
+        val toggledReceiverValue =
+            SafetySourceReceiver.setSafetyCenterEnabledWithReceiverPermissionAndWait(true)
+
+        assertThat(toggledReceiverValue).isTrue()
+    }
+
+    @Test
+    fun safetyCenterEnabledChanged_valueDoesNotChange_receiverNotCalled() {
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_CONFIG)
+
+        assertFailsWith(TimeoutCancellationException::class) {
+            SafetySourceReceiver.setSafetyCenterEnabledWithReceiverPermissionAndWait(true,
+                TIMEOUT_SHORT)
+        }
+    }
+
+    @Test
+    fun safetyCenterEnabledChanged_whenSourceReceiverDoesNotHavePermission_receiverNotCalled() {
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_CONFIG)
+
+        SafetyCenterFlags.setSafetyCenterEnabled(false)
+
+        assertFailsWith(TimeoutCancellationException::class) {
+            SafetySourceReceiver.receiveSafetyCenterEnabledChanged(TIMEOUT_SHORT)
+        }
+    }
+
+    @Test
+    fun safetyCenterEnabledChanged_whenSourceReceiverNotInConfig_receiverNotCalled() {
+        assertFailsWith(TimeoutCancellationException::class) {
+            SafetySourceReceiver.setSafetyCenterEnabledWithReceiverPermissionAndWait(false,
+                TIMEOUT_SHORT)
+        }
+    }
+
+    @Test
     fun refreshSafetySources_withRefreshReasonRescanButtonClick_sourceSendsRescanData() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_CONFIG)
-        SafetySourceBroadcastReceiver.safetySourceId = CTS_SOURCE_ID
-        SafetySourceBroadcastReceiver.safetySourceDataOnRescanClick = safetySourceDataCritical
+        SafetySourceReceiver.safetySourceId = CTS_SOURCE_ID
+        SafetySourceReceiver.safetySourceDataOnRescanClick = safetySourceDataCritical
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
             REFRESH_REASON_RESCAN_BUTTON_CLICK
@@ -344,8 +424,8 @@ class SafetyCenterManagerTest {
     @Test
     fun refreshSafetySources_withRefreshReasonPageOpen_sourceSendsPageOpenData() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_CONFIG)
-        SafetySourceBroadcastReceiver.safetySourceId = CTS_SOURCE_ID
-        SafetySourceBroadcastReceiver.safetySourceDataOnPageOpen = safetySourceDataInformation
+        SafetySourceReceiver.safetySourceId = CTS_SOURCE_ID
+        SafetySourceReceiver.safetySourceDataOnPageOpen = safetySourceDataInformation
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
             REFRESH_REASON_PAGE_OPEN)
@@ -356,15 +436,15 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    fun refreshSafetySources_whenReceiverDoesNotHaveSendingPermission_sourceDoesNotSendData() {
+    fun refreshSafetySources_whenReceiverDoesNotHavePermission_sourceDoesNotSendData() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_CONFIG)
-        SafetySourceBroadcastReceiver.safetySourceId = CTS_SOURCE_ID
-        SafetySourceBroadcastReceiver.safetySourceDataOnRescanClick = safetySourceDataCritical
+        SafetySourceReceiver.safetySourceId = CTS_SOURCE_ID
+        SafetySourceReceiver.safetySourceDataOnRescanClick = safetySourceDataCritical
 
         safetyCenterManager.refreshSafetySourcesWithPermission(REFRESH_REASON_RESCAN_BUTTON_CLICK)
 
         assertFailsWith(TimeoutCancellationException::class) {
-            SafetySourceBroadcastReceiver.waitTillOnReceiveComplete(TIMEOUT_SHORT)
+            SafetySourceReceiver.receiveRefreshSafetySources(TIMEOUT_SHORT)
         }
         val apiSafetySourceData =
             safetyCenterManager.getSafetySourceDataWithPermission(CTS_SOURCE_ID)
@@ -372,11 +452,24 @@ class SafetyCenterManagerTest {
     }
 
     @Test
+    fun refreshSafetySources_whenSourceNotInConfig_sourceDoesNotSendData() {
+        SafetySourceReceiver.safetySourceId = CTS_SOURCE_ID
+        SafetySourceReceiver.safetySourceDataOnPageOpen = safetySourceDataInformation
+
+        assertFailsWith(TimeoutCancellationException::class) {
+            safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+                REFRESH_REASON_PAGE_OPEN,
+                TIMEOUT_SHORT
+            )
+        }
+    }
+
+    @Test
     fun refreshSafetySources_withFlagDisabled_noOp() {
         SafetyCenterFlags.setSafetyCenterEnabled(false)
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_CONFIG)
-        SafetySourceBroadcastReceiver.safetySourceId = CTS_SOURCE_ID
-        SafetySourceBroadcastReceiver.safetySourceDataOnPageOpen = safetySourceDataInformation
+        SafetySourceReceiver.safetySourceId = CTS_SOURCE_ID
+        SafetySourceReceiver.safetySourceDataOnPageOpen = safetySourceDataInformation
 
         assertFailsWith(TimeoutCancellationException::class) {
             safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
@@ -393,9 +486,9 @@ class SafetyCenterManagerTest {
     fun refreshSafetySources_withInvalidRefreshSeason_throwsIllegalArgumentException() {
         val thrown =
             assertFailsWith(IllegalArgumentException::class) {
-                safetyCenterManager.refreshSafetySourcesWithPermission(500)
+                safetyCenterManager.refreshSafetySourcesWithPermission(143201)
             }
-        assertThat(thrown).hasMessageThat().isEqualTo("Invalid refresh reason: 500")
+        assertThat(thrown).hasMessageThat().isEqualTo("Invalid refresh reason: 143201")
     }
 
     @Test
@@ -773,46 +866,8 @@ class SafetyCenterManagerTest {
         }
     }
 
-    private fun SafetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
-        refreshReason: Int,
-        timeout: Duration = TIMEOUT_LONG
-    ) {
-        callWithShellPermissionIdentity(
-            {
-                refreshSafetySources(refreshReason)
-                SafetySourceBroadcastReceiver.waitTillOnReceiveComplete(timeout)
-            },
-            SEND_SAFETY_CENTER_UPDATE,
-            MANAGE_SAFETY_CENTER
-        )
-    }
-
     companion object {
-        private const val CTS_PACKAGE_NAME = "android.safetycenter.cts"
         private val EVENT_SOURCE_STATE_CHANGED =
             SafetyEvent.Builder(SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
-        private const val CTS_SOURCE_ID = "cts_source_id"
-        private const val CTS_SOURCE_GROUP_ID = "cts_source_group"
-
-        // TODO(b/217944317): Consider moving the following to a file where they can be used by
-        //  other tests.
-        private val CTS_SOURCE =
-            SafetySource.Builder(SAFETY_SOURCE_TYPE_DYNAMIC)
-                .setId(CTS_SOURCE_ID)
-                .setPackageName(CTS_PACKAGE_NAME)
-                .setTitleResId(android.R.string.ok)
-                .setSummaryResId(android.R.string.ok)
-                .setIntentAction(ACTION_SAFETY_CENTER)
-                .setProfile(SafetySource.PROFILE_PRIMARY)
-                .build()
-        private val CTS_SOURCE_GROUP =
-            SafetySourcesGroup.Builder()
-                .setId(CTS_SOURCE_GROUP_ID)
-                .setTitleResId(android.R.string.ok)
-                .setSummaryResId(android.R.string.ok)
-                .addSafetySource(CTS_SOURCE)
-                .build()
-        private val CTS_CONFIG =
-            SafetyCenterConfig.Builder().addSafetySourcesGroup(CTS_SOURCE_GROUP).build()
     }
 }
