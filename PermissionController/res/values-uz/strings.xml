@@ -505,6 +505,12 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Xavfsizlik va maxfiylik"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Qidiruv"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Yopish"</string>
+    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (1548283211993262986) -->
+    <skip />
+    <!-- no translation found for safety_center_issue_card_confirm_dismiss_button (5884137843083634556) -->
+    <skip />
+    <!-- no translation found for safety_center_issue_card_cancel_dismiss_button (2874578798877712346) -->
+    <skip />
     <string name="security_settings" msgid="3808106921175271317">"Xavfsizlik sozlamalari"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Sensorlarga ruxsatlar"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Maxfiylik boshqaruvi"</string>
