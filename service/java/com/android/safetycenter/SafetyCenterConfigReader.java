@@ -22,8 +22,7 @@ import static java.util.Objects.requireNonNull;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
-import android.content.res.XmlResourceParser;
-import android.safetycenter.config.ParseException;
+import android.content.res.Resources;
 import android.safetycenter.config.SafetyCenterConfig;
 import android.safetycenter.config.SafetySource;
 import android.safetycenter.config.SafetySourcesGroup;
@@ -32,8 +31,11 @@ import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
+import com.android.safetycenter.config.ParseException;
+import com.android.safetycenter.config.SafetyCenterConfigParser;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -123,14 +125,21 @@ final class SafetyCenterConfigReader {
 
     @Nullable
     private SafetyCenterConfig readSafetyCenterConfig() {
-        XmlResourceParser parser = mSafetyCenterResourcesContext.getSafetyCenterConfig();
-        if (parser == null) {
+        InputStream in = mSafetyCenterResourcesContext.getSafetyCenterConfig();
+        if (in == null) {
             Log.e(TAG, "Cannot get safety center config file");
             return null;
         }
 
+        Resources resources = mSafetyCenterResourcesContext.getResources();
+        if (resources == null) {
+            Log.e(TAG, "Cannot get safety center resources");
+            return null;
+        }
+
         try {
-            SafetyCenterConfig safetyCenterConfig = SafetyCenterConfig.fromXml(parser);
+            SafetyCenterConfig safetyCenterConfig =
+                    SafetyCenterConfigParser.parseXmlResource(in, resources);
             Log.i(TAG, "SafetyCenterConfig read successfully");
             return safetyCenterConfig;
         } catch (ParseException e) {
