@@ -79,7 +79,7 @@ package android.safetycenter {
   }
 
   public static final class SafetyCenterEntry.Builder {
-    ctor public SafetyCenterEntry.Builder(@NonNull String);
+    ctor public SafetyCenterEntry.Builder(@NonNull String, @NonNull CharSequence);
     ctor public SafetyCenterEntry.Builder(@NonNull android.safetycenter.SafetyCenterEntry);
     method @NonNull public android.safetycenter.SafetyCenterEntry build();
     method @NonNull public android.safetycenter.SafetyCenterEntry.Builder setEnabled(boolean);
@@ -117,7 +117,7 @@ package android.safetycenter {
   }
 
   public static final class SafetyCenterEntryGroup.Builder {
-    ctor public SafetyCenterEntryGroup.Builder(@NonNull String);
+    ctor public SafetyCenterEntryGroup.Builder(@NonNull String, @NonNull CharSequence);
     ctor public SafetyCenterEntryGroup.Builder(@NonNull android.safetycenter.SafetyCenterEntryGroup);
     method @NonNull public android.safetycenter.SafetyCenterEntryGroup build();
     method @NonNull public android.safetycenter.SafetyCenterEntryGroup.Builder setEntries(@NonNull java.util.List<android.safetycenter.SafetyCenterEntry>);
@@ -176,8 +176,9 @@ package android.safetycenter {
   }
 
   public static final class SafetyCenterIssue.Action.Builder {
-    ctor public SafetyCenterIssue.Action.Builder(@NonNull String);
+    ctor public SafetyCenterIssue.Action.Builder(@NonNull String, @NonNull CharSequence, @NonNull android.app.PendingIntent);
     method @NonNull public android.safetycenter.SafetyCenterIssue.Action build();
+    method @NonNull public android.safetycenter.SafetyCenterIssue.Action.Builder setId(@NonNull String);
     method @NonNull public android.safetycenter.SafetyCenterIssue.Action.Builder setIsInFlight(boolean);
     method @NonNull public android.safetycenter.SafetyCenterIssue.Action.Builder setLabel(@NonNull CharSequence);
     method @NonNull public android.safetycenter.SafetyCenterIssue.Action.Builder setPendingIntent(@NonNull android.app.PendingIntent);
@@ -186,7 +187,7 @@ package android.safetycenter {
   }
 
   public static final class SafetyCenterIssue.Builder {
-    ctor public SafetyCenterIssue.Builder(@NonNull String);
+    ctor public SafetyCenterIssue.Builder(@NonNull String, @NonNull CharSequence, @NonNull CharSequence);
     ctor public SafetyCenterIssue.Builder(@NonNull android.safetycenter.SafetyCenterIssue);
     method @NonNull public android.safetycenter.SafetyCenterIssue build();
     method @NonNull public android.safetycenter.SafetyCenterIssue.Builder setActions(@NonNull java.util.List<android.safetycenter.SafetyCenterIssue.Action>);
@@ -247,7 +248,7 @@ package android.safetycenter {
   }
 
   public static final class SafetyCenterStaticEntry.Builder {
-    ctor public SafetyCenterStaticEntry.Builder();
+    ctor public SafetyCenterStaticEntry.Builder(@NonNull CharSequence);
     ctor public SafetyCenterStaticEntry.Builder(@NonNull android.safetycenter.SafetyCenterStaticEntry);
     method @NonNull public android.safetycenter.SafetyCenterStaticEntry build();
     method @NonNull public android.safetycenter.SafetyCenterStaticEntry.Builder setPendingIntent(@Nullable android.app.PendingIntent);
@@ -282,7 +283,7 @@ package android.safetycenter {
   }
 
   public static final class SafetyCenterStatus.Builder {
-    ctor public SafetyCenterStatus.Builder();
+    ctor public SafetyCenterStatus.Builder(@NonNull CharSequence, @NonNull CharSequence);
     ctor public SafetyCenterStatus.Builder(@NonNull android.safetycenter.SafetyCenterStatus);
     method @NonNull public android.safetycenter.SafetyCenterStatus build();
     method @NonNull public android.safetycenter.SafetyCenterStatus.Builder setRefreshStatus(int);

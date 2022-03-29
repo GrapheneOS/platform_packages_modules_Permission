@@ -31,9 +31,7 @@ import org.junit.runner.RunWith
 class SafetyCenterStatusTest {
 
     private val baseStatus =
-        SafetyCenterStatus.Builder()
-            .setTitle("This is my title")
-            .setSummary("This is my summary")
+        SafetyCenterStatus.Builder("This is my title", "This is my summary")
             .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_RECOMMENDATION)
             .setRefreshStatus(SafetyCenterStatus.REFRESH_STATUS_DATA_FETCH_IN_PROGRESS)
             .build()
@@ -80,9 +78,11 @@ class SafetyCenterStatusTest {
     @Test
     fun getSeverityLevel_defaultUnknown() {
         assertThat(
-            SafetyCenterStatus.Builder()
-                .setTitle("This is my title")
-                .setSummary("This is my summary")
+            SafetyCenterStatus.Builder(
+                "This is my title",
+                "This is my summary"
+            )
+                .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN)
                 .build()
                 .severityLevel
         )
@@ -111,9 +111,8 @@ class SafetyCenterStatusTest {
     @Test
     fun getRefreshStatus_defaultNone() {
         assertThat(
-            SafetyCenterStatus.Builder()
-                .setTitle("This is my title")
-                .setSummary("This is my summary")
+            SafetyCenterStatus.Builder("This is my title", "This is my summary")
+                .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN)
                 .build()
                 .refreshStatus
         )
@@ -135,23 +134,17 @@ class SafetyCenterStatusTest {
         EqualsHashCodeToStringTester()
             .addEqualityGroup(
                 baseStatus,
-                SafetyCenterStatus.Builder()
-                    .setTitle("This is my title")
-                    .setSummary("This is my summary")
+                SafetyCenterStatus.Builder("This is my title", "This is my summary")
                     .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_RECOMMENDATION)
                     .setRefreshStatus(SafetyCenterStatus.REFRESH_STATUS_DATA_FETCH_IN_PROGRESS)
                     .build(),
                 SafetyCenterStatus.Builder(baseStatus).build()
             )
             .addEqualityGroup(
-                SafetyCenterStatus.Builder()
-                    .setTitle("same title")
-                    .setSummary("same summary")
+                SafetyCenterStatus.Builder("same title", "same summary")
                     .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK)
                     .build(),
-                SafetyCenterStatus.Builder()
-                    .setTitle("same title")
-                    .setSummary("same summary")
+                SafetyCenterStatus.Builder("same title", "same summary")
                     .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK)
                     .build()
             )

@@ -46,47 +46,36 @@ class SafetyCenterDataTest {
         PendingIntent.getActivity(context, 0, Intent("Fake Data"), PendingIntent.FLAG_IMMUTABLE)
 
     private val status1 =
-        SafetyCenterStatus.Builder()
-            .setTitle("This is my title")
-            .setSummary("This is my summary")
+        SafetyCenterStatus.Builder("This is my title", "This is my summary")
             .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_RECOMMENDATION)
             .build()
     private val status2 =
-        SafetyCenterStatus.Builder()
-            .setTitle("This is also my title")
-            .setSummary("This is also my summary")
+        SafetyCenterStatus.Builder("This is also my title", "This is also my summary")
             .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK)
             .build()
 
     private val issue1 =
-        SafetyCenterIssue.Builder("iSsUe_iD_oNe")
-            .setTitle("An issue title")
-            .setSummary("An issue summary")
+        SafetyCenterIssue.Builder("iSsUe_iD_oNe", "An issue title", "An issue summary")
             .setSeverityLevel(SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_OK)
             .build()
     private val issue2 =
-        SafetyCenterIssue.Builder("iSsUe_iD_tWo")
-            .setTitle("Another issue title")
-            .setSummary("Another issue summary")
+        SafetyCenterIssue.Builder("iSsUe_iD_tWo", "Another issue title", "Another issue summary")
             .setSeverityLevel(SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_RECOMMENDATION)
             .build()
 
     private val entry1 =
-        SafetyCenterEntry.Builder("eNtRy_iD_OnE")
-            .setTitle("An entry title")
+        SafetyCenterEntry.Builder("eNtRy_iD_OnE", "An entry title")
             .setPendingIntent(pendingIntent)
             .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK)
             .build()
     private val entry2 =
-        SafetyCenterEntry.Builder("eNtRy_iD_TwO")
-            .setTitle("Another entry title")
+        SafetyCenterEntry.Builder("eNtRy_iD_TwO", "Another entry title")
             .setPendingIntent(pendingIntent)
             .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_RECOMMENDATION)
             .build()
 
     private val entryGroup1 =
-        SafetyCenterEntryGroup.Builder("eNtRy_gRoUp_iD")
-            .setTitle("An entry group title")
+        SafetyCenterEntryGroup.Builder("eNtRy_gRoUp_iD", "An entry group title")
             .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_RECOMMENDATION)
             .setEntries(listOf(entry2))
             .build()
@@ -95,14 +84,12 @@ class SafetyCenterDataTest {
     private val entryOrGroup2 = SafetyCenterEntryOrGroup(entryGroup1)
 
     private val staticEntry1 =
-        SafetyCenterStaticEntry.Builder()
-            .setTitle("A static entry title")
+        SafetyCenterStaticEntry.Builder("A static entry title")
             .setSummary("A static entry summary")
             .setPendingIntent(pendingIntent)
             .build()
     private val staticEntry2 =
-        SafetyCenterStaticEntry.Builder()
-            .setTitle("Another static entry title")
+        SafetyCenterStaticEntry.Builder("Another static entry title")
             .setSummary("Another static entry summary")
             .setPendingIntent(pendingIntent)
             .build()
