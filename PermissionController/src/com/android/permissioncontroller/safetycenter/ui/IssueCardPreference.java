@@ -162,7 +162,7 @@ public class IssueCardPreference extends Preference {
     @StyleRes
     private int getStyleFromSeverity(int issueSeverityLevel, boolean isFirstButton) {
         if (!isFirstButton) {
-            return R.style.SafetyCenter_IssueCard_ActionButton;
+            return R.style.SafetyCenter_ActionButton;
         }
 
         switch (issueSeverityLevel) {
