@@ -34,5 +34,20 @@
                 initialDisplayState="hidden"
                 id="Biometrics"/>
         </safety-sources-group>
+        <safety-sources-group
+            id="PrivacySources">
+            <issue-only-safety-source
+                id="AccessibilitySource"
+                profile="primary_profile_only"
+                packageName="com.android.permissioncontroller" />
+            <issue-only-safety-source
+                id="NotificationListenerSource"
+                profile="primary_profile_only"
+                packageName="com.android.permissioncontroller" />
+            <issue-only-safety-source
+                id="BackgroundLocationSource"
+                profile="primary_profile_only"
+                packageName="com.android.permissioncontroller" />
+        </safety-sources-group>
     </safety-sources-config>
 </safety-center-config>

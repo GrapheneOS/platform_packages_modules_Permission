@@ -35,11 +35,11 @@ import android.safetycenter.SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN
 import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED
 import android.safetycenter.SafetySourceData
+import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING
+import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_INFORMATION
+import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED
 import android.safetycenter.SafetySourceErrorDetails
 import android.safetycenter.SafetySourceIssue
-import android.safetycenter.SafetySourceSeverity.LEVEL_CRITICAL_WARNING
-import android.safetycenter.SafetySourceSeverity.LEVEL_INFORMATION
-import android.safetycenter.SafetySourceSeverity.LEVEL_UNSPECIFIED
 import android.safetycenter.SafetySourceStatus
 import android.safetycenter.config.SafetyCenterConfig
 import android.safetycenter.config.SafetySource
@@ -96,7 +96,7 @@ class SafetyCenterManagerTest {
     private val safetySourceDataUnspecified =
         SafetySourceData.Builder()
             .setStatus(
-                SafetySourceStatus.Builder("None title", "None summary", LEVEL_UNSPECIFIED)
+                SafetySourceStatus.Builder("None title", "None summary", SEVERITY_LEVEL_UNSPECIFIED)
                     .setEnabled(false)
                     .build()
             )
@@ -104,7 +104,7 @@ class SafetyCenterManagerTest {
     private val safetySourceDataInformation =
         SafetySourceData.Builder()
             .setStatus(
-                SafetySourceStatus.Builder("Ok title", "Ok summary", LEVEL_INFORMATION)
+                SafetySourceStatus.Builder("Ok title", "Ok summary", SEVERITY_LEVEL_INFORMATION)
                     .setPendingIntent(somePendingIntent)
                     .build()
             )
@@ -113,7 +113,7 @@ class SafetyCenterManagerTest {
         SafetySourceData.Builder()
             .setStatus(
                 SafetySourceStatus.Builder("Critical title", "Critical summary",
-                    LEVEL_CRITICAL_WARNING)
+                    SEVERITY_LEVEL_CRITICAL_WARNING)
                     .setPendingIntent(somePendingIntent)
                     .build()
             )
@@ -122,7 +122,7 @@ class SafetyCenterManagerTest {
                     "critical_issue_id",
                     "Critical issue title",
                     "Critical issue summary",
-                    LEVEL_CRITICAL_WARNING,
+                    SEVERITY_LEVEL_CRITICAL_WARNING,
                     "issue_type_id"
                 )
                     .addAction(
