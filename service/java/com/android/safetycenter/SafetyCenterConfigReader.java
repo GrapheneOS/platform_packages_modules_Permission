@@ -39,7 +39,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * A class that reads the {@link Config} from the associated {@link
+ * A class that reads the {@link SafetyCenterConfigInternal} from the associated {@link
  * SafetyCenterResourcesContext}.
  *
  * <p>This class isn't thread safe. Thread safety must be handled by the caller.
@@ -53,17 +53,10 @@ final class SafetyCenterConfigReader {
     private final SafetyCenterResourcesContext mSafetyCenterResourcesContext;
 
     @Nullable
-    private Config mConfigFromXml;
+    private SafetyCenterConfigInternal mConfigInternalFromXml;
 
     @Nullable
-    private Config mConfigOverride;
-
-    // TODO(b/225173694): move SafetyCenterConfig field into Config class to avoid duplicate fields.
-    @Nullable
-    private SafetyCenterConfig mSafetyCenterConfigFromXml;
-
-    @Nullable
-    private SafetyCenterConfig mSafetyCenterConfigOverride;
+    private SafetyCenterConfigInternal mConfigInternalOverrideForTests;
 
     /** Creates a {@link SafetyCenterConfigReader} from a {@link SafetyCenterResourcesContext}. */
     SafetyCenterConfigReader(@NonNull SafetyCenterResourcesContext safetyCenterResourcesContext) {
@@ -71,81 +64,61 @@ final class SafetyCenterConfigReader {
     }
 
     /**
-     * Returns the {@link SafetyCenterConfig} currently active for configuring safety sources for
-     * the {@link android.safetycenter.SafetyCenterManager} APIs.
-     */
-    @Nullable
-    SafetyCenterConfig getSafetyCenterConfig() {
-        if (mSafetyCenterConfigFromXml == null) {
-            return null;
-        }
-
-        if (mSafetyCenterConfigOverride != null) {
-            return mSafetyCenterConfigOverride;
-        }
-
-        return mSafetyCenterConfigFromXml;
-    }
-
-    /**
-     * Returns the {@link Config} currently active for configuring safety sources for the
-     * {@link android.safetycenter.SafetyCenterManager} APIs.
+     * Returns the {@link SafetyCenterConfigInternal} currently active to configure safety
+     * sources for the {@link android.safetycenter.SafetyCenterManager} APIs.
      *
      * <p>Note: Only call this method if {@link #loadConfig()} has successfully parsed the XML
      * {@link SafetyCenterConfig} and returned {@code true}. If called before the config has been
      * loaded successfully, this method will throw a {@link NullPointerException}.
      */
     @NonNull
-    Config getCurrentConfig() {
+    SafetyCenterConfigInternal getCurrentConfigInternal() {
         // We require the XML config must be loaded successfully for SafetyCenterManager APIs to
         // function, regardless of whether the config is subsequently overridden.
-        requireNonNull(mConfigFromXml);
+        requireNonNull(mConfigInternalFromXml);
 
-        if (mConfigOverride == null) {
-            return mConfigFromXml;
+        if (mConfigInternalOverrideForTests == null) {
+            return mConfigInternalFromXml;
         }
 
-        return mConfigOverride;
+        return mConfigInternalOverrideForTests;
     }
 
     /**
-     * Loads the {@link Config} for it to be available when calling {@link #getCurrentConfig()} and
-     * returns whether the loading was successful.
+     * Loads the {@link SafetyCenterConfigInternal} for it to be available when calling
+     * {@link #getCurrentConfigInternal()} and returns whether the loading was successful.
      */
     boolean loadConfig() {
         SafetyCenterConfig safetyCenterConfig = readSafetyCenterConfig();
         if (safetyCenterConfig == null) {
             return false;
         }
-        mSafetyCenterConfigFromXml = safetyCenterConfig;
-        mConfigFromXml = Config.from(safetyCenterConfig);
+        mConfigInternalFromXml = SafetyCenterConfigInternal.from(safetyCenterConfig);
         return true;
     }
 
     /**
      * Sets an override of the {@link SafetyCenterConfig} used for
-     * {@link android.safetycenter.SafetyCenterManager} APIs.
+     * {@link android.safetycenter.SafetyCenterManager} APIs for tests.
      *
-     * <p>When set, {@link #getCurrentConfig()} will return a {@link Config} created using the
-     * override {@link SafetyCenterConfig}.
+     * <p>When set, {@link #getCurrentConfigInternal()} will return a
+     * {@link SafetyCenterConfigInternal} created using the override {@link SafetyCenterConfig}.
      *
      * <p>To return to using the {@link SafetyCenterConfig} parsed through XML, clear the override
-     * using {@link #clearConfigOverride()}.
+     * using {@link #clearConfigOverrideForTests()}.
      */
-    void setConfigOverride(@NonNull SafetyCenterConfig safetyCenterConfig) {
-        mSafetyCenterConfigOverride = safetyCenterConfig;
-        mConfigOverride = Config.from(safetyCenterConfig);
+    void setConfigOverrideForTests(@NonNull SafetyCenterConfig safetyCenterConfig) {
+        mConfigInternalOverrideForTests = SafetyCenterConfigInternal.from(safetyCenterConfig);
     }
 
     /**
      * Clears the override of the {@link SafetyCenterConfig} used for
-     * {@link android.safetycenter.SafetyCenterManager} APIs.
+     * {@link android.safetycenter.SafetyCenterManager} APIs for tests.
      *
-     * @see #setConfigOverride
+     * @see #setConfigOverrideForTests
      */
-    void clearConfigOverride() {
-        mSafetyCenterConfigOverride = null;
-        mConfigOverride = null;
+    void clearConfigOverrideForTests() {
+        mConfigInternalOverrideForTests = null;
     }
 
     @Nullable
@@ -166,10 +139,11 @@ final class SafetyCenterConfigReader {
         }
     }
 
-    // TODO(b/225173694): Rename to SafetyCenterConfigInternal or ConfigInternal?
     /** A wrapper class around the parsed XML config. */
-    static final class Config {
+    static final class SafetyCenterConfigInternal {
 
+        @NonNull
+        private final SafetyCenterConfig mConfig;
         @NonNull
         private final List<SafetySourcesGroup> mSafetySourcesGroups;
         @NonNull
@@ -177,13 +151,23 @@ final class SafetyCenterConfigReader {
         @NonNull
         private final List<Broadcast> mBroadcasts;
 
-        private Config(
+        private SafetyCenterConfigInternal(
+                @NonNull SafetyCenterConfig safetyCenterConfig,
                 @NonNull List<SafetySourcesGroup> safetySourcesGroups,
                 @NonNull ArrayMap<String, SafetySource> externalSafetySources,
                 @NonNull List<Broadcast> broadcasts) {
+            mConfig = safetyCenterConfig;
             mSafetySourcesGroups = safetySourcesGroups;
             mExternalSafetySources = externalSafetySources;
             mBroadcasts = broadcasts;
+        }
+
+        /**
+         * Returns the underlying {@link SafetyCenterConfig} used to create this
+         * {@link SafetyCenterConfigInternal}.
+         */
+        SafetyCenterConfig getSafetyCenterConfig() {
+            return mConfig;
         }
 
         /**
@@ -211,22 +195,21 @@ final class SafetyCenterConfigReader {
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;
-            if (!(o instanceof Config)) return false;
-            Config config = (Config) o;
-            return mSafetySourcesGroups.equals(config.mSafetySourcesGroups)
-                    && mExternalSafetySources.equals(
-                    config.mExternalSafetySources) && mBroadcasts.equals(
-                    config.mBroadcasts);
+            if (!(o instanceof SafetyCenterConfigInternal)) return false;
+            SafetyCenterConfigInternal configInternal = (SafetyCenterConfigInternal) o;
+            return mConfig.equals(configInternal.mConfig);
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(mSafetySourcesGroups, mExternalSafetySources, mBroadcasts);
+            return Objects.hash(mConfig);
         }
 
         @Override
         public String toString() {
-            return "Config{"
+            return "SafetyCenterConfigInternal{"
+                    + "mConfig="
+                    + mConfig
                     + "mSafetySourcesGroups="
                     + mSafetySourcesGroups
                     + ", mExternalSafetySources="
@@ -237,11 +220,14 @@ final class SafetyCenterConfigReader {
         }
 
         @NonNull
-        private static Config from(@NonNull SafetyCenterConfig safetyCenterConfig) {
-            return new Config(
+        private static SafetyCenterConfigInternal from(
+                @NonNull SafetyCenterConfig safetyCenterConfig) {
+            return new SafetyCenterConfigInternal(
+                    safetyCenterConfig,
                     safetyCenterConfig.getSafetySourcesGroups(),
                     extractExternalSafetySources(safetyCenterConfig),
-                    extractBroadcasts(safetyCenterConfig));
+                    extractBroadcasts(safetyCenterConfig)
+            );
         }
 
         @NonNull
@@ -318,7 +304,6 @@ final class SafetyCenterConfigReader {
 
         @NonNull
         private final List<String> mSourceIdsForManagedProfiles;
-
 
         private Broadcast(
                 @NonNull String packageName,
