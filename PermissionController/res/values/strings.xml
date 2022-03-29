@@ -616,10 +616,10 @@
     <string name="unused_apps_label">Remove permissions and free up space</string>
 
     <!-- Label for the hibernation / auto revoke switch on T+ devices [CHAR LIMIT=40] -->
-    <string name="unused_apps_label_v2">Pause app activity</string>
+    <string name="unused_apps_label_v2">Pause app activity if unused</string>
 
     <!-- Hibernation switch preference summary which describes what the toggle does on T+ devices [CHAR LIMIT=NONE] -->
-    <string name="unused_apps_summary">Remove permissions, delete temporary files, and stop notifications if unused</string>
+    <string name="unused_apps_summary">Remove permissions, delete temporary files, and stop notifications</string>
 
     <!-- Summary for stating that permissions will be removed [CHAR LIMIT=none] -->
     <string name="auto_revoke_summary">To protect your data, permissions for this app will be removed if the app is unused for a few months.</string>
