@@ -338,7 +338,7 @@
     <string name="role_assistant_request_description" msgid="6836644847620178483">"Krijgt toegang tot sms en gesprekslijst"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Standaard browser-app"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Browser-app"</string>
-    <string name="role_browser_description" msgid="3465253637499842671">"Apps die toegang tot internet geven en de links weergeven waarop je hebt getikt"</string>
+    <string name="role_browser_description" msgid="3465253637499842671">"Apps die toegang tot internet geven en de links bekijken waarop je hebt getikt"</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"Wil je <xliff:g id="APP_NAME">%1$s</xliff:g> instellen als je standaard browser-app?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"Geen rechten nodig"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"Standaard telefoon-app"</string>
@@ -505,6 +505,12 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Beveiliging en privacy"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Scannen"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Sluiten"</string>
+    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (1548283211993262986) -->
+    <skip />
+    <!-- no translation found for safety_center_issue_card_confirm_dismiss_button (5884137843083634556) -->
+    <skip />
+    <!-- no translation found for safety_center_issue_card_cancel_dismiss_button (2874578798877712346) -->
+    <skip />
     <string name="security_settings" msgid="3808106921175271317">"Beveiligingsinstellingen"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Sensorrechten"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Privacyopties"</string>
