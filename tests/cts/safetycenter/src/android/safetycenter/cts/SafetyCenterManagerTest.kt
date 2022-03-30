@@ -475,10 +475,8 @@ class SafetyCenterManagerTest {
         assertThat(apiSafetyCenterData)
             .isEqualTo(
                 SafetyCenterData(
-                    SafetyCenterStatus.Builder()
+                    SafetyCenterStatus.Builder("Unknown", "Unknown safety status")
                         .setSeverityLevel(OVERALL_SEVERITY_LEVEL_UNKNOWN)
-                        .setTitle("Unknown")
-                        .setSummary("Unknown safety status")
                         .build(),
                     emptyList(),
                     emptyList(),

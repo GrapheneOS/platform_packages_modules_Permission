@@ -1466,7 +1466,7 @@ public final class Utils {
     private static String getUpdatableEnterpriseString(@NonNull Context context,
             @NonNull String updatableStringId, int defaultStringId, @NonNull Object... formatArgs) {
         DevicePolicyManager dpm = getSystemServiceSafe(context, DevicePolicyManager.class);
-        return  dpm.getString(updatableStringId, () -> context.getString(
+        return  dpm.getResources().getString(updatableStringId, () -> context.getString(
                 defaultStringId, formatArgs), formatArgs);
     }
 }

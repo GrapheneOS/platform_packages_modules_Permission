@@ -162,8 +162,9 @@ public final class SafetyCenterEntryGroup implements Parcelable {
             new Creator<SafetyCenterEntryGroup>() {
                 @Override
                 public SafetyCenterEntryGroup createFromParcel(Parcel in) {
-                    return new SafetyCenterEntryGroup.Builder(in.readString())
-                            .setTitle(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in))
+                    String id = in.readString();
+                    CharSequence title = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
+                    return new SafetyCenterEntryGroup.Builder(id, title)
                             .setSummary(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in))
                             .setSeverityLevel(in.readInt())
                             .setSeverityUnspecifiedIconType(in.readInt())
@@ -192,17 +193,16 @@ public final class SafetyCenterEntryGroup implements Parcelable {
         /**
          * Creates a {@link Builder} for a {@link SafetyCenterEntryGroup}.
          *
-         * @param id An encoded string ID that uniquely identifies this
-         *           {@link SafetyCenterEntryGroup} among all other entry groups in a given Safety
-         *           Center.
+         * @param id a unique encoded string ID, see {@link #getId} for details
+         * @param title a title for this group of entries
          */
-        public Builder(@NonNull String id) {
+        public Builder(@NonNull String id, @NonNull CharSequence title) {
             mId = requireNonNull(id);
+            mTitle = requireNonNull(title);
         }
 
         /**
-         * Creates a pre-populated {@link Builder} with the values from the given {@link
-         * SafetyCenterEntryGroup}.
+         * Creates a {@link Builder} with the values from the given {@link SafetyCenterEntryGroup}.
          */
         public Builder(@NonNull SafetyCenterEntryGroup safetyCenterEntryGroup) {
             mId = safetyCenterEntryGroup.mId;
@@ -213,14 +213,14 @@ public final class SafetyCenterEntryGroup implements Parcelable {
             mEntries = new ArrayList<>(safetyCenterEntryGroup.mEntries);
         }
 
-        /** Sets the ID for this entry group. Required. */
+        /** Sets the ID for this entry group. */
         @NonNull
         public Builder setId(@NonNull String id) {
             mId = requireNonNull(id);
             return this;
         }
 
-        /** Sets the title for this entry group. Required. */
+        /** Sets the title for this entry group. */
         @NonNull
         public Builder setTitle(@NonNull CharSequence title) {
             mTitle = requireNonNull(title);

@@ -147,12 +147,17 @@ public final class SafetyCenterStaticEntry implements Parcelable {
         private CharSequence mSummary;
         private PendingIntent mPendingIntent;
 
-        /** Creates a {@link Builder} for a {@link SafetyCenterEntry}. */
-        public Builder() {}
+        /**
+         * Creates a {@link Builder} for a {@link SafetyCenterEntry}.
+         *
+         * @param title a title that describes this static entry
+         */
+        public Builder(@NonNull CharSequence title) {
+            mTitle = requireNonNull(title);
+        }
 
         /**
-         * Creates a pre-populated {@link Builder} with the values from the given {@link
-         * SafetyCenterStaticEntry}.
+         * Creates a {@link Builder} with the values from the given {@link SafetyCenterStaticEntry}.
          */
         public Builder(@NonNull SafetyCenterStaticEntry safetyCenterStaticEntry) {
             mTitle = safetyCenterStaticEntry.mTitle;
@@ -160,7 +165,7 @@ public final class SafetyCenterStaticEntry implements Parcelable {
             mPendingIntent = safetyCenterStaticEntry.mPendingIntent;
         }
 
-        /** Sets the title for this entry. Required. */
+        /** Sets the title for this entry. */
         @NonNull
         public Builder setTitle(@NonNull CharSequence title) {
             mTitle = requireNonNull(title);
