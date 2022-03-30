@@ -40,14 +40,12 @@ class SafetyCenterEntryGroupTest {
         PendingIntent.getActivity(context, 0, Intent("Fake Data"), PendingIntent.FLAG_IMMUTABLE)
 
     private val entry1 =
-        SafetyCenterEntry.Builder("eNtRy_iD_OnE")
-            .setTitle("An entry title")
+        SafetyCenterEntry.Builder("eNtRy_iD_OnE", "An entry title")
             .setPendingIntent(pendingIntent)
             .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK)
             .build()
     private val entry2 =
-        SafetyCenterEntry.Builder("eNtRy_iD_TwO")
-            .setTitle("Another entry title")
+        SafetyCenterEntry.Builder("eNtRy_iD_TwO", "Another entry title")
             .setPendingIntent(pendingIntent)
             .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_RECOMMENDATION)
             .build()
@@ -56,15 +54,13 @@ class SafetyCenterEntryGroupTest {
     private val groupId2 = "gRoUp_iD_tWo"
 
     private val entryGroup1 =
-        SafetyCenterEntryGroup.Builder(groupId1)
-            .setTitle("A group title")
+        SafetyCenterEntryGroup.Builder(groupId1, "A group title")
             .setSummary("A group summary")
             .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK)
             .setEntries(listOf(entry1))
             .build()
     private val entryGroup2 =
-        SafetyCenterEntryGroup.Builder(groupId2)
-            .setTitle("Another group title")
+        SafetyCenterEntryGroup.Builder(groupId2, "Another group title")
             .setSummary("Another group summary")
             .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_RECOMMENDATION)
             .setEntries(listOf(entry2))
@@ -159,8 +155,7 @@ class SafetyCenterEntryGroupTest {
             .addEqualityGroup(
                 entryGroup1,
                 SafetyCenterEntryGroup.Builder(entryGroup1).build(),
-                SafetyCenterEntryGroup.Builder(groupId1)
-                    .setTitle("A group title")
+                SafetyCenterEntryGroup.Builder(groupId1, "A group title")
                     .setSummary("A group summary")
                     .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK)
                     .setEntries(listOf(entry1))

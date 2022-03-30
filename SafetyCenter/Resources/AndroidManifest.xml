@@ -18,7 +18,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.android.safetycenter.resources"
           coreApp="true"
-          android:versionCode="339999900"
+          android:versionCode="330000000"
           android:versionName="33 system image">
     <application
         android:label="@string/safetyCenterResourcesAppLabel"
