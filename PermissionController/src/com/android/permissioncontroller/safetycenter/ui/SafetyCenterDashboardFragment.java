@@ -89,10 +89,8 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
         mSafetyStatusPreference = requireNonNull(
                 getPreferenceScreen().findPreference(SAFETY_STATUS_KEY));
         // TODO: Use real strings here, or set more sensible defaults in the layout
-        mSafetyStatusPreference.setSafetyStatus(new SafetyCenterStatus.Builder()
+        mSafetyStatusPreference.setSafetyStatus(new SafetyCenterStatus.Builder("Looks good", "")
                 .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN)
-                .setTitle("Looks good")
-                .setSummary("")
                 .build());
         mSafetyStatusPreference.setRescanButtonOnClickListener(unused ->
                 mSafetyCenterManager.refreshSafetySources(

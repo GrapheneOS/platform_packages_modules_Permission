@@ -41,28 +41,24 @@ class SafetyCenterEntryOrGroupTest {
         PendingIntent.getActivity(context, 0, Intent("Fake Data"), PendingIntent.FLAG_IMMUTABLE)
 
     private val entry1 =
-        SafetyCenterEntry.Builder("eNtRy_iD_OnE")
-            .setTitle("An entry title")
+        SafetyCenterEntry.Builder("eNtRy_iD_OnE", "An entry title")
             .setPendingIntent(pendingIntent)
             .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK)
             .build()
     private val entry2 =
-        SafetyCenterEntry.Builder("eNtRy_iD_TwO")
-            .setTitle("Another entry title")
+        SafetyCenterEntry.Builder("eNtRy_iD_TwO", "Another entry title")
             .setPendingIntent(pendingIntent)
             .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_RECOMMENDATION)
             .build()
 
     private val entryGroup1 =
-        SafetyCenterEntryGroup.Builder("gRoUp_iD_oNe")
-            .setTitle("A group title")
+        SafetyCenterEntryGroup.Builder("gRoUp_iD_oNe", "A group title")
             .setSummary("A group summary")
             .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK)
             .setEntries(listOf(entry1))
             .build()
     private val entryGroup2 =
-        SafetyCenterEntryGroup.Builder("gRoUp_iD_tWo")
-            .setTitle("Another group title")
+        SafetyCenterEntryGroup.Builder("gRoUp_iD_tWo", "Another group title")
             .setSummary("Another group summary")
             .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_RECOMMENDATION)
             .setEntries(listOf(entry2))
