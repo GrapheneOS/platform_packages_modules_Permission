@@ -70,14 +70,19 @@ public final class SafetyCenterManager {
      * Broadcast Action: A broadcast sent by the system to indicate that the value returned by
      * {@link SafetyCenterManager#isSafetyCenterEnabled()} has changed.
      *
-     * <p>This broadcast will inform sources about changes to
-     * {@link SafetyCenterManager#isSafetyCenterEnabled()},
-     * should they want to check the new value and enable/disable components accordingly.
+     * <p>This broadcast will inform receivers about changes to {@link
+     * SafetyCenterManager#isSafetyCenterEnabled()}, should they want to check the new value and
+     * enable/disable components accordingly.
      *
-     * <p>This broadcast is sent explicitly to safety sources and other allowlisted packages by
-     * targeting intents to a specified set of packages in the {@link SafetyCenterConfig}. The
-     * receiving components should be manifest-declared receivers so that safety sources can be
-     * requested even if they are not running.
+     * <p>This broadcast is sent explicitly to safety sources by targeting intents to a specified
+     * set of packages in the {@link SafetyCenterConfig}. The receiving components must hold the
+     * {@link android.Manifest.permission#SEND_SAFETY_CENTER_UPDATE} permission, and can use a
+     * manifest-registered receiver to be woken up by Safety Center.
+     *
+     * <p>This broadcast is also sent implicitly system-wide. The receiving components must hold
+     * the {@link android.Manifest.permission#READ_SAFETY_CENTER_STATUS} permission.
+     *
+     * <p>This broadcast is not sent out if the device does not support Safety Center.
      *
      * <p class="note">This is a protected intent that can only be sent by the system.
      */
@@ -87,8 +92,7 @@ public final class SafetyCenterManager {
 
     /**
      * Broadcast Action: A broadcast sent by the system to indicate that {@link
-     * SafetyCenterManager}
-     * is requesting data from safety sources regarding their safety state.
+     * SafetyCenterManager} is requesting data from safety sources regarding their safety state.
      *
      * <p>This broadcast is sent when a user triggers a data refresh from the Safety Center UI or
      * when Safety Center detects that its stored safety information is stale and needs to be
@@ -96,20 +100,19 @@ public final class SafetyCenterManager {
      *
      * <p>This broadcast is sent explicitly to safety sources by targeting intents to a specified
      * set of packages provided by the safety sources in the {@link SafetyCenterConfig}. The
-     * receiving components should be manifest-declared receivers so that safety sources can be
-     * requested to send data even if they are not running.
+     * receiving components must hold the {@link
+     * android.Manifest.permission#SEND_SAFETY_CENTER_UPDATE} permission, and can use a
+     * manifest-registered receiver to be woken up by Safety Center.
      *
      * <p>On receiving this broadcast, safety sources should determine their safety state according
      * to the parameters specified in the intent extras (see below) and set {@link
-     * SafetySourceData}
-     * using {@link #setSafetySourceData}, along with a {@link SafetyEvent} with
+     * SafetySourceData} using {@link #setSafetySourceData}, along with a {@link SafetyEvent} with
      * {@link SafetyEvent#getType()} set to {@link SafetyEvent#SAFETY_EVENT_TYPE_REFRESH_REQUESTED}
      * and {@link SafetyEvent#getRefreshBroadcastId()} set to the value of broadcast intent extra
      * {@link #EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID}. If the safety source is unable to
-     * provide
-     * data, it can set a {@code null} {@link SafetySourceData}, which will clear any existing
-     * {@link SafetySourceData} stored by Safety Center, and Safety Center will fall back to any
-     * placeholder data specified in {@link SafetyCenterConfig}.
+     * provide data, it can set a {@code null} {@link SafetySourceData}, which will clear any
+     * existing {@link SafetySourceData} stored by Safety Center, and Safety Center will fall back
+     * to any placeholder data specified in {@link SafetyCenterConfig}.
      *
      * <p class="note">This is a protected intent that can only be sent by the system.
      *
@@ -119,13 +122,13 @@ public final class SafetyCenterManager {
      * being requested. Possible values are {@link #EXTRA_REFRESH_REQUEST_TYPE_FETCH_FRESH_DATA} and
      * {@link #EXTRA_REFRESH_REQUEST_TYPE_GET_DATA}.
      * <li>{@link #EXTRA_REFRESH_SAFETY_SOURCE_IDS}: A {@code String[]} of ids representing the
-     * safety sources being requested for data. This extra exists for disambiguation in the case
-     * that a single component is responsible for receiving refresh requests for multiple safety
-     * sources.
+     * safety sources being requested for data. This extra exists for disambiguation in the
+     * case that a single component is responsible for receiving refresh requests for multiple
+     * safety sources.
      * <li>{@link #EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID}: An unique identifier for the refresh
-     * request broadcast. This extra should be used to specify
-     * {@link SafetyEvent#getRefreshBroadcastId()} when the safety source responds to the broadcast
-     * using {@link #setSafetySourceData}.
+     * request broadcast. This extra should be used to specify {@link
+     * SafetyEvent#getRefreshBroadcastId()} when the safety source responds to the broadcast using
+     * {@link #setSafetySourceData}.
      * </ul>
      */
     @SdkConstant(BROADCAST_INTENT_ACTION)
