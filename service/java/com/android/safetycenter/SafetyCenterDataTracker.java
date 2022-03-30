@@ -769,7 +769,6 @@ final class SafetyCenterDataTracker {
         return SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN;
     }
 
-    // TODO(b/219700241): Should we consolidate IntDefs? and in which parts of the API?
     @SafetyCenterEntry.EntrySeverityLevel
     private static int issueToSafetyCenterEntryLevel(
             @SafetyCenterIssue.IssueSeverityLevel int safetyCenterIssueSeverityLevel) {
@@ -805,7 +804,7 @@ final class SafetyCenterDataTracker {
 
         Log.w(TAG,
                 String.format(
-                        "Unexpected SafetySourceSeverity.Level in SafetySourceStatus: %s",
+                        "Unexpected SafetySourceData.SeverityLevel in SafetySourceStatus: %s",
                         safetySourceSeverityLevel));
         return SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN;
     }
@@ -817,7 +816,7 @@ final class SafetyCenterDataTracker {
             case SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED:
                 Log.w(
                         TAG,
-                        "Unexpected use of SafetySourceSeverity.LEVEL_UNSPECIFIED in "
+                        "Unexpected use of SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED in "
                                 + "SafetySourceStatus");
                 return SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_OK;
             case SafetySourceData.SEVERITY_LEVEL_INFORMATION:
@@ -830,7 +829,7 @@ final class SafetyCenterDataTracker {
 
         Log.w(TAG,
                 String.format(
-                        "Unexpected SafetySourceSeverity.Level in SafetySourceIssue: %s",
+                        "Unexpected SafetySourceData.SeverityLevel in SafetySourceIssue: %s",
                         safetySourceIssueSeverityLevel));
         return SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_OK;
     }
