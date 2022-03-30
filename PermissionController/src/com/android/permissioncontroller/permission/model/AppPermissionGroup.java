@@ -143,6 +143,12 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
      */
     private boolean mTriggerLocationAccessCheckOnPersist;
 
+    /**
+     * Set if {@link LocationAccessCheck#cancelBackgroundAccessWarningNotification()} should be
+     * triggered to cancel the warning once the changes are persisted.
+     */
+    private boolean mCancelLocationAccessWarningOnRevoke;
+
     private boolean mIsSelfRevoked;
 
     /**
@@ -1096,6 +1102,8 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
                 break;
             }
 
+            boolean wasGranted = permission.isGrantedIncludingAppOp();
+
             if (mAppSupportsRuntimePermissions) {
                 // Revoke the permission if needed.
                 if (permission.isGranted()) {
@@ -1140,6 +1148,33 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
                     // Mark that the permission is kept granted only for compatibility.
                     if (!permission.isRevokedCompat()) {
                         permission.setRevokedCompat(true);
+                    }
+                }
+            }
+
+            // If we revoke background access to the fine location, we trigger a check to cancel
+            // the location access check notification to avoid stale warnings
+            if (wasGranted && !permission.isGrantedIncludingAppOp()) {
+                if (permission.getName().equals(ACCESS_FINE_LOCATION)) {
+                    Permission bgPerm = permission.getBackgroundPermission();
+                    if (bgPerm != null) {
+                        if (!bgPerm.isGrantedIncludingAppOp()) {
+                            mCancelLocationAccessWarningOnRevoke = true;
+                        }
+                    }
+                } else if (permission.getName().equals(ACCESS_BACKGROUND_LOCATION)) {
+                    ArrayList<Permission> fgPerms = permission.getForegroundPermissions();
+                    if (fgPerms != null) {
+                        int numFgPerms = fgPerms.size();
+                        for (int fgPermNum = 0; fgPermNum < numFgPerms; fgPermNum++) {
+                            Permission fgPerm = fgPerms.get(fgPermNum);
+                            if (fgPerm.getName().equals(ACCESS_FINE_LOCATION)) {
+                                if (!fgPerm.isGrantedIncludingAppOp()) {
+                                    mCancelLocationAccessWarningOnRevoke = true;
+                                }
+                                break;
+                            }
+                        }
                     }
                 }
             }
@@ -1553,6 +1588,12 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
         if (mTriggerLocationAccessCheckOnPersist) {
             new LocationAccessCheck(mContext, null).checkLocationAccessSoon();
             mTriggerLocationAccessCheckOnPersist = false;
+        }
+
+        if (mCancelLocationAccessWarningOnRevoke) {
+            new LocationAccessCheck(mContext, null).cancelBackgroundAccessWarningNotification(
+                    mPackageInfo.packageName, mUserHandle);
+            mCancelLocationAccessWarningOnRevoke = false;
         }
 
         String packageName = mPackageInfo.packageName;
