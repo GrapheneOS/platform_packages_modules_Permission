@@ -20,8 +20,17 @@ import android.app.Application;
 import android.content.ComponentName;
 import android.content.pm.PackageItemInfo;
 import android.content.pm.PackageManager;
+import android.os.Build;
+import android.safetycenter.SafetyCenterManager;
 import android.util.ArrayMap;
+import android.view.accessibility.AccessibilityManager;
 
+import androidx.annotation.RequiresApi;
+
+import com.android.modules.utils.build.SdkLevel;
+import com.android.permissioncontroller.permission.utils.Utils;
+import com.android.permissioncontroller.privacysources.AccessibilitySourceService;
+import com.android.permissioncontroller.privacysources.AccessibilitySourceService.SafetyCenterAccessibilityListener;
 import com.android.permissioncontroller.role.model.Role;
 import com.android.permissioncontroller.role.model.Roles;
 import com.android.permissioncontroller.role.ui.SpecialAppAccessListActivity;
@@ -38,6 +47,9 @@ public final class PermissionControllerApplication extends Application {
 
         PackageItemInfo.forceSafeLabels();
         updateSpecialAppAccessListActivityEnabledState();
+        if (SdkLevel.isAtLeastT()) {
+            addAccessibilityListener();
+        }
     }
 
     /**
@@ -71,4 +83,24 @@ public final class PermissionControllerApplication extends Application {
         packageManager.setComponentEnabledSetting(componentName, enabledState,
                 PackageManager.DONT_KILL_APP);
     }
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    private void addAccessibilityListener() {
+        if (!AccessibilitySourceService.Companion.isAccessibilitySourceEnabled()) {
+            return;
+        }
+
+        SafetyCenterManager safetyCenterManager = Utils.getSystemServiceSafe(
+                    this, SafetyCenterManager.class);
+        if (!safetyCenterManager.isSafetyCenterEnabled()) {
+            return;
+        }
+
+        AccessibilityManager a11yManager = Utils.getSystemServiceSafe(
+                this, AccessibilityManager.class);
+        // TODO (b/227383312): add/remove a11y listener on SC enabled event.
+        a11yManager.addAccessibilityServicesStateChangeListener(
+                new SafetyCenterAccessibilityListener(this));
+    }
+
 }

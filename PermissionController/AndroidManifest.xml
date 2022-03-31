@@ -142,6 +142,33 @@
         <service android:name="com.android.permissioncontroller.permission.service.DecisionCleanupJobService"
                  android:permission="android.permission.BIND_JOB_SERVICE" />
 
+        <receiver
+            android:name="com.android.permissioncontroller.privacysources.AccessibilitySourceService$AccessibilityOnBootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name="com.android.permissioncontroller.privacysources.AccessibilitySourceService$WarningCardDismissalReceiver" />
+
+        <receiver android:name="com.android.permissioncontroller.privacysources.AccessibilitySourceService$RemoveAccessHandler" />
+
+        <receiver android:name="com.android.permissioncontroller.privacysources.AccessibilitySourceService$NotificationDeleteHandler" />
+
+        <receiver android:name="com.android.permissioncontroller.privacysources.AccessibilitySourceService$PackageResetHandler"
+                  android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_FULLY_REMOVED" />
+                <action android:name="android.intent.action.PACKAGE_DATA_CLEARED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.android.permissioncontroller.privacysources.AccessibilitySourceService$AccessibilityJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
         <activity android:name="com.android.permissioncontroller.permission.ui.GrantPermissionsActivity"
                   android:configChanges="keyboardHidden|screenSize"
                   android:excludeFromRecents="true"
