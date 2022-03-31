@@ -70,8 +70,16 @@
     <LinearLayout
         android:id="@+id/issue_card_action_button_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         style="@style/SafetyCenter.IssueCard.ActionButtonList" />
+
+    <!-- add protected by android in strings.xml TODO (b/222127412)-->
+    <TextView
+        android:id="@+id/issue_card_protected_by_android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Protected by Android"
+        style="@style/SafetyCenter.IssueCard.Footer" />
 
 </LinearLayout>
