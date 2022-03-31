@@ -199,8 +199,10 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Поставки за некористени апликации"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Отстрани ги дозволите ако апликацијата не се користи"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Отстранувај дозволи и ослободувај простор"</string>
-    <string name="unused_apps_label_v2" msgid="2443239537162119403">"Паузирај ја активноста на апликациите"</string>
-    <string name="unused_apps_summary" msgid="4416065734063612849">"Отстранува дозволи, брише привремени датотеки и запира известувања ако не се користат"</string>
+    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
+    <skip />
+    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
+    <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"За да се заштитат вашите податоци, дозволите за апликацијава ќе се отстранат ако апликацијата не се користи неколку месеци."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Ако апликацијата не се користи неколку месеци, заради заштита на податоците, ќе се отстранат следниве дозволи: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"За заштита на податоците, отстранети се дозволите од апликациите што не сте ги користеле неколку месеци."</string>
