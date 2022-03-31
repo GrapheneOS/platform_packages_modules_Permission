@@ -199,8 +199,10 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"ব্যৱহাৰ নকৰা এপৰ ছেটিং"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"যদি এপ্‌টো ব্যৱহাৰ কৰা নাই অনুমতিসমূহ আঁতৰাওক"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"অনুমতি আঁতৰাওক আৰু ঠাই খালী কৰক"</string>
-    <string name="unused_apps_label_v2" msgid="2443239537162119403">"এপৰ কাৰ্যকলাপ পজ কৰক"</string>
-    <string name="unused_apps_summary" msgid="4416065734063612849">"যদি ব্যৱহাৰ হোৱা নাই, তেন্তে অনুমতি আঁতৰাওক, অস্থায়ী ফাইল মচক আৰু জাননী বন্ধ কৰক"</string>
+    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
+    <skip />
+    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
+    <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"আপোনাৰ ডেটা সুৰক্ষিত কৰিবলৈ এই এপ্‌টো কেইমাহমান ব্যৱহাৰ নকৰিলে এইটোৰ বাবে থকা অনুমতিসমূহ আঁতৰোৱা হ\'ব।"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"আপোনাৰ ডেটা সুৰক্ষিত কৰিবলৈ এই এপ্‌টো কেইমাহমান ব্যৱহাৰ নকৰিলে তলত উল্লেখ কৰা অনুমতিসমূহ আঁতৰোৱা হ\'ব: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"আপোনাৰ ডেটা সুৰক্ষিত কৰিবলৈ আপুনি কেইমাহমান ব্যৱহাৰ নকৰা এপ্‌সমূহৰ পৰা অনুমতিসমূহ আঁতৰোৱা হ\'ব।"</string>
@@ -502,12 +504,9 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"সুৰক্ষা আৰু গোপনীয়তা"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"স্কেন কৰক"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"অগ্ৰাহ্য কৰক"</string>
-    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (1548283211993262986) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_confirm_dismiss_button (5884137843083634556) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_cancel_dismiss_button (2874578798877712346) -->
-    <skip />
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"এই সকীয়নিটো অগ্ৰাহ্য কৰিবনে?"</string>
+    <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"অগ্ৰাহ্য কৰক"</string>
+    <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"বাতিল কৰক"</string>
     <string name="security_settings" msgid="3808106921175271317">"সুৰক্ষা সম্পৰ্কীয় ছেটিং"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"ছেন্সৰৰ অনুমতি"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"গোপনীয়তাৰ নিয়ন্ত্ৰণ"</string>

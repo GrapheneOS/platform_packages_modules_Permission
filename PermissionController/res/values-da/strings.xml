@@ -196,13 +196,12 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Se alle tilladelser for <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Se alle apps med denne tilladelse"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Vis brug af Assistent-mikrofonen"</string>
-    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
-    <skip />
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"Ubrugte appindstillinger"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Fjern tilladelser, hvis appen ikke bruges"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Fjern tilladelser, og frigør plads"</string>
-    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
+    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
     <skip />
-    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
+    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
     <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Hvis appen ikke bliver brugt i et par måneder, fjernes tilladelser for appen for at beskytte dine data."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Hvis appen ikke bliver brugt i et par måneder, fjernes følgende tilladelser for at beskytte dine data: <xliff:g id="PERMS">%1$s</xliff:g>"</string>

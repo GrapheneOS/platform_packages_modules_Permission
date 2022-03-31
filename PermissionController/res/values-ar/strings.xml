@@ -200,9 +200,9 @@
     <skip />
     <string name="auto_revoke_label" msgid="5068393642936571656">"إزالة الأذونات في حال عدم استخدام التطبيق"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"إزالة الأذونات وإخلاء مساحة"</string>
-    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
+    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
     <skip />
-    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
+    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
     <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"لحماية بياناتك، ستتم إزالة أذونات هذا التطبيق إذا لم يتم استخدامه لبضعة أشهر."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"لحماية بياناتك، إذا لم يتم استخدام التطبيق لبضعة أشهر، ستتم إزالة الأذونات التالية: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
