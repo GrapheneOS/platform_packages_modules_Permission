@@ -381,7 +381,7 @@ public final class SafetySourceStatus implements Parcelable {
          * Sets whether the safety source status is enabled.
          *
          * <p>By default, the safety source status will be enabled. If disabled, the status severity
-         * level must be set to {@link SafetySourceSeverity#LEVEL_UNSPECIFIED}.
+         * level must be set to {@link SafetySourceData#SEVERITY_LEVEL_UNSPECIFIED}.
          *
          * @see #isEnabled()
          */
