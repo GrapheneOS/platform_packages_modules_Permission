@@ -26,10 +26,9 @@ import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.data.PermissionDecision
-import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsStorage
-import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsStorage.Companion.DEFAULT_MAX_DATA_AGE_MS
-import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsStorageImpl
-import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsStorageImpl.Companion.DEFAULT_CLEAR_OLD_DECISIONS_CHECK_FREQUENCY
+import com.android.permissioncontroller.permission.service.BasePermissionEventStorage
+import com.android.permissioncontroller.permission.service.PermissionEventStorage.Companion.DEFAULT_MAX_DATA_AGE_MS
+import com.android.permissioncontroller.permission.service.BasePermissionEventStorage.Companion.DEFAULT_CLEAR_OLD_DECISIONS_CHECK_FREQUENCY
 import com.android.permissioncontroller.permission.utils.Utils.PROPERTY_PERMISSION_DECISIONS_CHECK_OLD_FREQUENCY_MILLIS
 import com.android.permissioncontroller.permission.utils.Utils.PROPERTY_PERMISSION_DECISIONS_MAX_DATA_AGE_MILLIS
 import com.google.common.truth.Truth.assertThat
@@ -51,7 +50,7 @@ import java.util.Date
 import java.util.concurrent.TimeUnit
 
 @RunWith(AndroidJUnit4::class)
-class RecentPermissionDecisionsStorageImplTest {
+class BasePermissionEventStorageTest {
 
     companion object {
         val application = Mockito.mock(PermissionControllerApplication::class.java)
@@ -82,7 +81,7 @@ class RecentPermissionDecisionsStorageImplTest {
     lateinit var existingJob: JobInfo
 
     private lateinit var context: Context
-    private lateinit var storage: RecentPermissionDecisionsStorage
+    private lateinit var storage: BasePermissionEventStorage
     private lateinit var mockitoSession: MockitoSession
     private lateinit var filesDir: File
 
@@ -111,7 +110,7 @@ class RecentPermissionDecisionsStorageImplTest {
     }
 
     private fun init() {
-        storage = RecentPermissionDecisionsStorageImpl(context, jobScheduler)
+        storage = BasePermissionEventStorage(context, jobScheduler)
     }
 
     @After

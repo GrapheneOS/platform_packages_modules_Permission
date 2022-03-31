@@ -19,7 +19,7 @@ package com.android.permissioncontroller.tests.mocking.permission.data
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.permissioncontroller.permission.data.PermissionDecision
 import com.android.permissioncontroller.permission.data.RecentPermissionDecisionsLiveData
-import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsStorage
+import com.android.permissioncontroller.permission.service.PermissionEventStorage
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
@@ -76,7 +76,7 @@ class RecentPermissionDecisionsLiveDataTest {
         }
     }
 
-    private class FakeRecentDecisionsStorage : RecentPermissionDecisionsStorage {
+    private class FakeRecentDecisionsStorage : PermissionEventStorage {
         val recentDecisions: MutableList<PermissionDecision> = mutableListOf()
 
         override suspend fun storePermissionDecision(decision: PermissionDecision): Boolean {

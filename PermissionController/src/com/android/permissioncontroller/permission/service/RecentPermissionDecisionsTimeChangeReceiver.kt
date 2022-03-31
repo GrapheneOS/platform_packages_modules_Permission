@@ -38,8 +38,8 @@ import kotlin.math.abs
  * [Intent.ACTION_BOOT_COMPLETED] action.
  */
 class RecentPermissionDecisionsTimeChangeReceiver(
-    private val recentDecisionStorage: RecentPermissionDecisionsStorage =
-        RecentPermissionDecisionsStorage.getInstance(),
+    private val recentDecisionStorage: PermissionEventStorage =
+        PermissionEventStorage.getInstance(),
     private val timeSource: TimeSource = SystemTimeSource()
 ) : BroadcastReceiver() {
 
@@ -69,7 +69,7 @@ class RecentPermissionDecisionsTimeChangeReceiver(
     }
 
     override fun onReceive(context: Context, intent: Intent) {
-        if (!RecentPermissionDecisionsStorage.isRecordPermissionsSupported(context)) {
+        if (!PermissionEventStorage.isRecordPermissionsSupported(context)) {
             return
         }
         when (val action = intent.action) {

@@ -32,8 +32,8 @@ import kotlinx.coroutines.launch
  */
 class PersistedStoragePackageUninstalledReceiver(
     @VisibleForTesting
-    private val recentDecisionStorage: RecentPermissionDecisionsStorage =
-        RecentPermissionDecisionsStorage.getInstance()
+    private val recentDecisionStorage: PermissionEventStorage =
+        PermissionEventStorage.getInstance()
 ) : BroadcastReceiver() {
 
     companion object {
@@ -41,7 +41,7 @@ class PersistedStoragePackageUninstalledReceiver(
     }
 
     override fun onReceive(context: Context, intent: Intent) {
-        if (!RecentPermissionDecisionsStorage.isRecordPermissionsSupported(context)) {
+        if (!PermissionEventStorage.isRecordPermissionsSupported(context)) {
             return
         }
         val action = intent.action

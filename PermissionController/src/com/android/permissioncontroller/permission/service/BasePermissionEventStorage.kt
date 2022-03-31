@@ -30,7 +30,7 @@ import androidx.annotation.VisibleForTesting
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.DumpableLog
 import com.android.permissioncontroller.permission.data.PermissionDecision
-import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsStorage.Companion.getMaxDataAgeMs
+import com.android.permissioncontroller.permission.service.PermissionEventStorage.Companion.getMaxDataAgeMs
 import com.android.permissioncontroller.permission.utils.Utils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -51,13 +51,13 @@ import java.util.concurrent.TimeUnit
 import kotlin.math.abs
 
 /**
- * Thread-safe implementation of [RecentPermissionDecisionsStorage] using an XML file as the
+ * Thread-safe implementation of [PermissionEventStorage] using an XML file as the
  * database.
  */
-class RecentPermissionDecisionsStorageImpl(
+class BasePermissionEventStorage(
     private val context: Context,
     private val jobScheduler: JobScheduler
-) : RecentPermissionDecisionsStorage {
+) : PermissionEventStorage {
 
     private val dbFile: AtomicFile = AtomicFile(File(context.filesDir, STORE_FILE_NAME))
     private val fileLock = Object()
@@ -71,7 +71,7 @@ class RecentPermissionDecisionsStorageImpl(
     private val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
 
     companion object {
-        private const val LOG_TAG = "RecentPermissionDecisionsStorageImpl"
+        private const val LOG_TAG = "BasePermissionEventStorage"
         val DEFAULT_CLEAR_OLD_DECISIONS_CHECK_FREQUENCY = TimeUnit.DAYS.toMillis(1)
         const val DB_VERSION = 1
 
@@ -309,7 +309,7 @@ class RecentPermissionDecisionsStorageImpl(
  */
 class DecisionCleanupJobService(
     @VisibleForTesting
-    val storage: RecentPermissionDecisionsStorage = RecentPermissionDecisionsStorage.getInstance()
+    val storage: PermissionEventStorage = PermissionEventStorage.getInstance()
 ) : JobService() {
 
     companion object {

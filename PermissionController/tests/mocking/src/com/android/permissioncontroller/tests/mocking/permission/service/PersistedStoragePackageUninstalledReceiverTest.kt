@@ -29,9 +29,9 @@ import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.data.PermissionDecision
+import com.android.permissioncontroller.permission.service.BasePermissionEventStorage
+import com.android.permissioncontroller.permission.service.PermissionEventStorage
 import com.android.permissioncontroller.permission.service.PersistedStoragePackageUninstalledReceiver
-import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsStorage
-import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsStorageImpl
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
@@ -77,7 +77,7 @@ class PersistedStoragePackageUninstalledReceiverTest {
 
     private lateinit var mockitoSession: MockitoSession
     private lateinit var filesDir: File
-    private lateinit var recentPermissionDecisionsStorage: RecentPermissionDecisionsStorage
+    private lateinit var recentPermissionDecisionsStorage: PermissionEventStorage
     private lateinit var receiver: PersistedStoragePackageUninstalledReceiver
 
     @Before
@@ -95,7 +95,7 @@ class PersistedStoragePackageUninstalledReceiverTest {
         `when`(DeviceConfig.getProperty(eq(NAMESPACE_PERMISSIONS), anyString())).thenReturn(null)
 
         recentPermissionDecisionsStorage = spy(
-            RecentPermissionDecisionsStorageImpl(context, jobScheduler))
+            BasePermissionEventStorage(context, jobScheduler))
         receiver = spy(PersistedStoragePackageUninstalledReceiver(recentPermissionDecisionsStorage))
     }
 

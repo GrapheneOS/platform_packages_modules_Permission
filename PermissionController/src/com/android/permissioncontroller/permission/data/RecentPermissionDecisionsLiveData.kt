@@ -17,14 +17,14 @@
 package com.android.permissioncontroller.permission.data
 
 import androidx.annotation.VisibleForTesting
-import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsStorage
+import com.android.permissioncontroller.permission.service.PermissionEventStorage
 import kotlinx.coroutines.Job
 
 /** Gets all recent permission decisions made by the user. */
 class RecentPermissionDecisionsLiveData(
     @get:VisibleForTesting
-    val recentDecisionsStorage: RecentPermissionDecisionsStorage =
-        RecentPermissionDecisionsStorage.getInstance()
+    val recentDecisionsStorage: PermissionEventStorage =
+        PermissionEventStorage.getInstance()
 ) : SmartAsyncMediatorLiveData<List<PermissionDecision>>() {
 
     override suspend fun loadDataAndPostValue(job: Job) {

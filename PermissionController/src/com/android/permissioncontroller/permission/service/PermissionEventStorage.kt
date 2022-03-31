@@ -34,7 +34,7 @@ import java.util.concurrent.TimeUnit
  * Constraints on this database:
  * <li> Rows are unique with (package_name, permission_group) index
  */
-interface RecentPermissionDecisionsStorage {
+interface PermissionEventStorage {
     /**
      * Persist a permission decision for retrieval later. Overwrites an existing row based on
      * (package_name, permission_group) uniqueness.
@@ -90,15 +90,15 @@ interface RecentPermissionDecisionsStorage {
         val DEFAULT_MAX_DATA_AGE_MS = TimeUnit.DAYS.toMillis(7)
 
         @Volatile
-        private var INSTANCE: RecentPermissionDecisionsStorage? = null
+        private var INSTANCE: PermissionEventStorage? = null
 
-        fun getInstance(): RecentPermissionDecisionsStorage =
+        fun getInstance(): PermissionEventStorage =
             INSTANCE ?: synchronized(this) {
                 INSTANCE ?: createInstance().also { INSTANCE = it }
             }
 
-        private fun createInstance(): RecentPermissionDecisionsStorage {
-            return RecentPermissionDecisionsStorageImpl(PermissionControllerApplication.get(),
+        private fun createInstance(): PermissionEventStorage {
+            return BasePermissionEventStorage(PermissionControllerApplication.get(),
                 PermissionControllerApplication.get().getSystemService(JobScheduler::class.java)!!)
         }
 
