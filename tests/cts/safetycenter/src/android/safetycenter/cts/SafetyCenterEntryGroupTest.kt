@@ -30,6 +30,7 @@ import androidx.test.filters.SdkSuppress
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
+import kotlin.test.assertFailsWith
 
 @RunWith(AndroidJUnit4::class)
 @SdkSuppress(minSdkVersion = TIRAMISU, codeName = "Tiramisu")
@@ -129,12 +130,10 @@ class SafetyCenterEntryGroupTest {
     }
 
     @Test
-    fun getEntries_mutationsAreNotReflected() {
+    fun getEntries_mutationsAreNotAllowed() {
         val mutatedEntries = entryGroup1.entries
-        mutatedEntries.add(entry2)
 
-        assertThat(mutatedEntries).containsExactly(entry1, entry2).inOrder()
-        assertThat(entryGroup1.entries).doesNotContain(entry2)
+        assertFailsWith(UnsupportedOperationException::class) { mutatedEntries.add(entry2) }
     }
 
     @Test

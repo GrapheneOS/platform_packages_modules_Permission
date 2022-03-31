@@ -44,8 +44,6 @@ import java.io.IOException;
 
 @RequiresApi(TIRAMISU)
 final class SafetyCenterConfigParser {
-    private SafetyCenterConfigParser() {
-    }
 
     private static final String TAG_SAFETY_CENTER_CONFIG = "safety-center-config";
     private static final String TAG_SAFETY_SOURCES_CONFIG = "safety-sources-config";
@@ -53,12 +51,10 @@ final class SafetyCenterConfigParser {
     private static final String TAG_STATIC_SAFETY_SOURCE = "static-safety-source";
     private static final String TAG_DYNAMIC_SAFETY_SOURCE = "dynamic-safety-source";
     private static final String TAG_ISSUE_ONLY_SAFETY_SOURCE = "issue-only-safety-source";
-
     private static final String ATTR_SAFETY_SOURCES_GROUP_ID = "id";
     private static final String ATTR_SAFETY_SOURCES_GROUP_TITLE = "title";
     private static final String ATTR_SAFETY_SOURCES_GROUP_SUMMARY = "summary";
     private static final String ATTR_SAFETY_SOURCES_GROUP_STATELESS_ICON_TYPE = "statelessIconType";
-
     private static final String ATTR_SAFETY_SOURCE_ID = "id";
     private static final String ATTR_SAFETY_SOURCE_PACKAGE_NAME = "packageName";
     private static final String ATTR_SAFETY_SOURCE_TITLE = "title";
@@ -72,16 +68,16 @@ final class SafetyCenterConfigParser {
     private static final String ATTR_SAFETY_SOURCE_LOGGING_ALLOWED = "loggingAllowed";
     private static final String ATTR_SAFETY_SOURCE_REFRESH_ON_PAGE_OPEN_ALLOWED =
             "refreshOnPageOpenAllowed";
-
     private static final String ENUM_STATELESS_ICON_TYPE_NONE = "none";
     private static final String ENUM_STATELESS_ICON_TYPE_PRIVACY = "privacy";
-
     private static final String ENUM_PROFILE_PRIMARY = "primary_profile_only";
     private static final String ENUM_PROFILE_ALL = "all_profiles";
-
     private static final String ENUM_INITIAL_DISPLAY_STATE_ENABLED = "enabled";
     private static final String ENUM_INITIAL_DISPLAY_STATE_DISABLED = "disabled";
     private static final String ENUM_INITIAL_DISPLAY_STATE_HIDDEN = "hidden";
+
+    private SafetyCenterConfigParser() {
+    }
 
     @NonNull
     static SafetyCenterConfig parseXmlResource(@NonNull XmlResourceParser parser)
@@ -129,7 +125,7 @@ final class SafetyCenterConfigParser {
         } catch (IllegalStateException e) {
             throwElementInvalid(TAG_SAFETY_SOURCES_CONFIG, e);
         }
-        return null; // Unreachable
+        throw new AssertionError("unreachable");
     }
 
     @NonNull
@@ -150,8 +146,8 @@ final class SafetyCenterConfigParser {
                     break;
                 case ATTR_SAFETY_SOURCES_GROUP_STATELESS_ICON_TYPE:
                     builder.setStatelessIconType(
-                            parseStatelessIconType(parser.getAttributeValue(i), name,
-                                    parser.getAttributeName(i)));
+                            parseStatelessIconType(
+                                    parser.getAttributeValue(i), name, parser.getAttributeName(i)));
                     break;
                 default:
                     throwAttributeUnexpected(name, parser.getAttributeName(i));
@@ -183,12 +179,12 @@ final class SafetyCenterConfigParser {
         } catch (IllegalStateException e) {
             throwElementInvalid(name, e);
         }
-        return null; // Unreachable
+        throw new AssertionError("unreachable");
     }
 
     @NonNull
-    private static SafetySource parseSafetySource(@NonNull XmlResourceParser parser,
-            @SafetySourceType int type, @NonNull String name)
+    private static SafetySource parseSafetySource(
+            @NonNull XmlResourceParser parser, @SafetySourceType int type, @NonNull String name)
             throws XmlPullParserException, IOException, ParseException {
         SafetySource.Builder builder = new SafetySource.Builder(type);
         for (int i = 0; i < parser.getAttributeCount(); i++) {
@@ -212,24 +208,27 @@ final class SafetyCenterConfigParser {
                     builder.setIntentAction(parser.getAttributeValue(i));
                     break;
                 case ATTR_SAFETY_SOURCE_PROFILE:
-                    builder.setProfile(parseProfile(parser.getAttributeValue(i), name,
-                            parser.getAttributeName(i)));
+                    builder.setProfile(
+                            parseProfile(parser.getAttributeValue(i), name,
+                                    parser.getAttributeName(i)));
                     break;
                 case ATTR_SAFETY_SOURCE_INITIAL_DISPLAY_STATE:
                     builder.setInitialDisplayState(
-                            parseInitialDisplayState(parser.getAttributeValue(i), name,
-                                    parser.getAttributeName(i)));
+                            parseInitialDisplayState(
+                                    parser.getAttributeValue(i), name, parser.getAttributeName(i)));
                     break;
                 case ATTR_SAFETY_SOURCE_MAX_SEVERITY_LEVEL:
-                    builder.setMaxSeverityLevel(parseInteger(parser.getAttributeValue(i), name,
-                            parser.getAttributeName(i)));
+                    builder.setMaxSeverityLevel(
+                            parseInteger(parser.getAttributeValue(i), name,
+                                    parser.getAttributeName(i)));
                     break;
                 case ATTR_SAFETY_SOURCE_SEARCH_TERMS:
                     builder.setSearchTermsResId(parseStringReference(parser, i, name));
                     break;
                 case ATTR_SAFETY_SOURCE_LOGGING_ALLOWED:
-                    builder.setLoggingAllowed(parseBoolean(parser.getAttributeValue(i), name,
-                            parser.getAttributeName(i)));
+                    builder.setLoggingAllowed(
+                            parseBoolean(parser.getAttributeValue(i), name,
+                                    parser.getAttributeName(i)));
                     break;
                 case ATTR_SAFETY_SOURCE_REFRESH_ON_PAGE_OPEN_ALLOWED:
                     builder.setRefreshOnPageOpenAllowed(
@@ -248,11 +247,12 @@ final class SafetyCenterConfigParser {
         } catch (IllegalStateException e) {
             throwElementInvalid(name, e);
         }
-        return null; // Unreachable
+        throw new AssertionError("unreachable");
     }
 
     private static void validateElementStart(@NonNull XmlResourceParser parser,
-            @NonNull String name) throws XmlPullParserException, ParseException {
+            @NonNull String name)
+            throws XmlPullParserException, ParseException {
         if (parser.getEventType() != START_TAG || !parser.getName().equals(name)) {
             throwElementMissing(name);
         }
@@ -265,8 +265,8 @@ final class SafetyCenterConfigParser {
         }
     }
 
-    private static void validateElementHasNoAttribute(@NonNull XmlResourceParser parser,
-            @NonNull String name) throws ParseException {
+    private static void validateElementHasNoAttribute(
+            @NonNull XmlResourceParser parser, @NonNull String name) throws ParseException {
         if (parser.getAttributeCount() != 0) {
             throwElementInvalid(name);
         }
@@ -299,42 +299,47 @@ final class SafetyCenterConfigParser {
         throw new ParseException(String.format("Attribute %s.%s invalid", parent, name));
     }
 
-    private static int parseInteger(@NonNull String valueString, @NonNull String parent,
-            @NonNull String name) throws ParseException {
+    private static int parseInteger(
+            @NonNull String valueString, @NonNull String parent, @NonNull String name)
+            throws ParseException {
         try {
             return Integer.parseInt(valueString);
         } catch (NumberFormatException e) {
-            throw new ParseException(
-                    String.format("Attribute %s.%s invalid", parent, name), e);
+            throw new ParseException(String.format("Attribute %s.%s invalid", parent, name), e);
         }
     }
 
-    private static boolean parseBoolean(@NonNull String valueString, @NonNull String parent,
-            @NonNull String name) throws ParseException {
+    private static boolean parseBoolean(
+            @NonNull String valueString, @NonNull String parent, @NonNull String name)
+            throws ParseException {
         String valueLowerString = valueString.toLowerCase(ROOT);
         if (valueLowerString.equals("true")) {
             return true;
         } else if (!valueLowerString.equals("false")) {
-            throw new ParseException(
-                    String.format("Attribute %s.%s invalid", parent, name));
+            throw new ParseException(String.format("Attribute %s.%s invalid", parent, name));
         }
         return false;
     }
 
     @StringRes
-    private static int parseStringReference(@NonNull XmlResourceParser parser, int index,
-            @NonNull String parent) throws ParseException {
+    private static int parseStringReference(
+            @NonNull XmlResourceParser parser, int index, @NonNull String parent)
+            throws ParseException {
         int id = parser.getAttributeResourceValue(index, Resources.ID_NULL);
         if (id == Resources.ID_NULL) {
-            throw new ParseException(String.format("Reference %s in %s.%s missing or invalid",
-                    parser.getAttributeValue(index), parent, parser.getAttributeName(index)));
+            throw new ParseException(
+                    String.format(
+                            "Reference %s in %s.%s missing or invalid",
+                            parser.getAttributeValue(index), parent,
+                            parser.getAttributeName(index)));
         }
         return id;
     }
 
     @StatelessIconType
-    private static int parseStatelessIconType(@NonNull String valueString, @NonNull String parent,
-            @NonNull String name) throws ParseException {
+    private static int parseStatelessIconType(
+            @NonNull String valueString, @NonNull String parent, @NonNull String name)
+            throws ParseException {
         switch (valueString) {
             case ENUM_STATELESS_ICON_TYPE_NONE:
                 return SafetySourcesGroup.STATELESS_ICON_TYPE_NONE;
@@ -343,12 +348,13 @@ final class SafetyCenterConfigParser {
             default:
                 throwAttributeInvalid(parent, name);
         }
-        return 0; // Unreachable
+        throw new AssertionError("unreachable");
     }
 
     @Profile
-    private static int parseProfile(@NonNull String valueString, @NonNull String parent,
-            @NonNull String name) throws ParseException {
+    private static int parseProfile(
+            @NonNull String valueString, @NonNull String parent, @NonNull String name)
+            throws ParseException {
         switch (valueString) {
             case ENUM_PROFILE_PRIMARY:
                 return SafetySource.PROFILE_PRIMARY;
@@ -357,12 +363,13 @@ final class SafetyCenterConfigParser {
             default:
                 throwAttributeInvalid(parent, name);
         }
-        return 0; // Unreachable
+        throw new AssertionError("unreachable");
     }
 
     @InitialDisplayState
-    private static int parseInitialDisplayState(@NonNull String valueString, @NonNull String parent,
-            @NonNull String name) throws ParseException {
+    private static int parseInitialDisplayState(
+            @NonNull String valueString, @NonNull String parent, @NonNull String name)
+            throws ParseException {
         switch (valueString) {
             case ENUM_INITIAL_DISPLAY_STATE_ENABLED:
                 return SafetySource.INITIAL_DISPLAY_STATE_ENABLED;
@@ -373,6 +380,6 @@ final class SafetyCenterConfigParser {
             default:
                 throwAttributeInvalid(parent, name);
         }
-        return 0; // Unreachable
+        throw new AssertionError("unreachable");
     }
 }
