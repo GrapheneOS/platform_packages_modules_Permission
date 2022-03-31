@@ -30,7 +30,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -65,28 +64,25 @@ public class IssueCardPreference extends Preference {
     public void onBindViewHolder(PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
 
-        ((ImageView) holder.findViewById(R.id.issue_card_banner_icon)).setImageResource(
-                toSeverityLevel(mIssue.getSeverityLevel()).getWarningCardIconResId());
-
         configureDismissButton(holder.findViewById(R.id.issue_card_dismiss_btn));
 
         ((TextView) holder.findViewById(R.id.issue_card_title)).setText(mIssue.getTitle());
+        ((TextView) holder.findViewById(R.id.issue_card_summary)).setText(mIssue.getSummary());
+
         CharSequence subtitle = mIssue.getSubtitle();
         if (TextUtils.isEmpty(subtitle)) {
-            TextView subtitleView = (TextView) holder.findViewById(R.id.issue_card_subtitle);
-            subtitleView.setVisibility(View.GONE);
+            holder.findViewById(R.id.issue_card_subtitle).setVisibility(View.GONE);
         } else {
-            ((TextView) holder.findViewById(R.id.issue_card_subtitle))
-                    .setText(subtitle);
+            ((TextView) holder.findViewById(R.id.issue_card_subtitle)).setText(subtitle);
         }
-        ((TextView) holder.findViewById(R.id.issue_card_summary)).setText(mIssue.getSummary());
+
         LinearLayout buttonList =
                 ((LinearLayout) holder.findViewById(R.id.issue_card_action_button_list));
         buttonList.removeAllViews(); // This view may be recycled from another issue
         boolean isFirstButton = true;
         for (SafetyCenterIssue.Action action : mIssue.getActions()) {
-            buttonList.addView(buildActionButton(action,
-                    holder.itemView.getContext(), isFirstButton));
+            buttonList.addView(buildActionButton(
+                    action, holder.itemView.getContext(), isFirstButton));
             isFirstButton = false;
         }
     }
@@ -143,20 +139,6 @@ public class IssueCardPreference extends Preference {
         });
 
         return button;
-    }
-
-    private static SeverityLevel toSeverityLevel(int issueSeverityLevel) {
-        switch (issueSeverityLevel) {
-            case SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_OK:
-                return SeverityLevel.INFORMATION;
-            case SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_RECOMMENDATION:
-                return SeverityLevel.RECOMMENDATION;
-            case SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_CRITICAL_WARNING:
-                return SeverityLevel.CRITICAL_WARNING;
-        }
-        throw new IllegalArgumentException(
-                String.format("Unexpected SafetyCenterIssue.IssueSeverityLevel: %s",
-                        issueSeverityLevel));
     }
 
     @StyleRes
