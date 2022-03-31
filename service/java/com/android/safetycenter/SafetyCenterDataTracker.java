@@ -337,7 +337,7 @@ final class SafetyCenterDataTracker {
 
             int[] managedProfileUserIds = userProfileGroup.getManagedProfilesUserIds();
             for (int j = 0; j < managedProfileUserIds.length; j++) {
-                int managedProfileUserId = managedProfileUserIds[i];
+                int managedProfileUserId = managedProfileUserIds[j];
 
                 maxSafetyCenterEntrySeverityLevel =
                         Math.max(
@@ -444,7 +444,7 @@ final class SafetyCenterDataTracker {
 
             int[] managedProfileUserIds = userProfileGroup.getManagedProfilesUserIds();
             for (int j = 0; j < managedProfileUserIds.length; j++) {
-                int managedProfileUserId = managedProfileUserIds[i];
+                int managedProfileUserId = managedProfileUserIds[j];
 
                 maxSafetyCenterEntryLevel =
                         Math.max(
@@ -605,7 +605,7 @@ final class SafetyCenterDataTracker {
 
             int[] managedProfileUserIds = userProfileGroup.getManagedProfilesUserIds();
             for (int j = 0; j < managedProfileUserIds.length; j++) {
-                int managedProfileUserId = managedProfileUserIds[i];
+                int managedProfileUserId = managedProfileUserIds[j];
 
                 addSafetyCenterStaticEntry(staticEntries, safetySource, true, managedProfileUserId);
             }
