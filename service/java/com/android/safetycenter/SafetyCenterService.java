@@ -130,6 +130,9 @@ public final class SafetyCenterService extends SystemService {
                 @UserIdInt int userId) {
             getContext().enforceCallingOrSelfPermission(SEND_SAFETY_CENTER_UPDATE,
                     "setSafetySourceData");
+            requireNonNull(safetySourceId);
+            requireNonNull(safetyEvent);
+            requireNonNull(packageName);
             mAppOpsManager.checkPackage(Binder.getCallingUid(), packageName);
             if (!enforceCrossUserPermission("setSafetySourceData", userId)
                     || !checkApiEnabled("setSafetySourceData")) {
@@ -172,9 +175,10 @@ public final class SafetyCenterService extends SystemService {
                 @NonNull String safetySourceId,
                 @NonNull String packageName,
                 @UserIdInt int userId) {
-            // TODO(b/205706756): Security: check certs?
             getContext().enforceCallingOrSelfPermission(
                     SEND_SAFETY_CENTER_UPDATE, "getSafetySourceData");
+            requireNonNull(safetySourceId);
+            requireNonNull(packageName);
             mAppOpsManager.checkPackage(Binder.getCallingUid(), packageName);
             if (!enforceCrossUserPermission("getSafetySourceData", userId)
                     || !checkApiEnabled("getSafetySourceData")) {
@@ -201,6 +205,9 @@ public final class SafetyCenterService extends SystemService {
                 @UserIdInt int userId) {
             getContext().enforceCallingOrSelfPermission(
                     SEND_SAFETY_CENTER_UPDATE, "reportSafetySourceError");
+            requireNonNull(safetySourceId);
+            requireNonNull(errorDetails);
+            requireNonNull(packageName);
             mAppOpsManager.checkPackage(Binder.getCallingUid(), packageName);
             if (!enforceCrossUserPermission("reportSafetySourceError", userId)
                     || !checkApiEnabled("reportSafetySourceError")) {
@@ -279,6 +286,7 @@ public final class SafetyCenterService extends SystemService {
                 @UserIdInt int userId) {
             getContext().enforceCallingOrSelfPermission(MANAGE_SAFETY_CENTER,
                     "addOnSafetyCenterDataChangedListener");
+            requireNonNull(listener);
             if (!enforceCrossUserPermission("addOnSafetyCenterDataChangedListener", userId)
                     || !checkApiEnabled("addOnSafetyCenterDataChangedListener")) {
                 return;
@@ -307,6 +315,7 @@ public final class SafetyCenterService extends SystemService {
                 @UserIdInt int userId) {
             getContext().enforceCallingOrSelfPermission(
                     MANAGE_SAFETY_CENTER, "removeOnSafetyCenterDataChangedListener");
+            requireNonNull(listener);
             if (!enforceCrossUserPermission("removeOnSafetyCenterDataChangedListener", userId)
                     || !checkApiEnabled("removeOnSafetyCenterDataChangedListener")) {
                 return;
@@ -318,9 +327,10 @@ public final class SafetyCenterService extends SystemService {
         }
 
         @Override
-        public void dismissSafetyCenterIssue(String issueId, @UserIdInt int userId) {
+        public void dismissSafetyCenterIssue(@NonNull String issueId, @UserIdInt int userId) {
             getContext().enforceCallingOrSelfPermission(
                     MANAGE_SAFETY_CENTER, "dismissSafetyCenterIssue");
+            requireNonNull(issueId);
             if (!enforceCrossUserPermission("dismissSafetyCenterIssue", userId)
                     || !checkApiEnabled("dismissSafetyCenterIssue")) {
                 return;
@@ -336,6 +346,8 @@ public final class SafetyCenterService extends SystemService {
                 @UserIdInt int userId) {
             getContext().enforceCallingOrSelfPermission(MANAGE_SAFETY_CENTER,
                     "executeSafetyCenterIssueAction");
+            requireNonNull(safetyCenterIssueId);
+            requireNonNull(safetyCenterActionId);
             if (!enforceCrossUserPermission("executeSafetyCenterIssueAction", userId)
                     || !checkApiEnabled("executeSafetyCenterIssueAction")) {
                 return;
@@ -361,6 +373,7 @@ public final class SafetyCenterService extends SystemService {
                 @NonNull SafetyCenterConfig safetyCenterConfig) {
             getContext().enforceCallingOrSelfPermission(MANAGE_SAFETY_CENTER,
                     "setSafetyCenterConfigForTests");
+            requireNonNull(safetyCenterConfig);
             if (!checkApiEnabled("setSafetyCenterConfigForTests")) {
                 return;
             }
