@@ -18,6 +18,7 @@ package android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
+import static java.util.Collections.unmodifiableList;
 import static java.util.Objects.requireNonNull;
 
 import android.annotation.NonNull;
@@ -34,11 +35,29 @@ import java.util.Objects;
 
 /**
  * A group of related {@link SafetyCenterStaticEntry} objects in the Safety Center.
+ *
  * @hide
  */
 @SystemApi
 @RequiresApi(TIRAMISU)
 public final class SafetyCenterStaticEntryGroup implements Parcelable {
+
+    @NonNull
+    public static final Creator<SafetyCenterStaticEntryGroup> CREATOR =
+            new Creator<SafetyCenterStaticEntryGroup>() {
+                @Override
+                public SafetyCenterStaticEntryGroup createFromParcel(Parcel source) {
+                    CharSequence title = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(source);
+                    List<SafetyCenterStaticEntry> staticEntries = source.createTypedArrayList(
+                            SafetyCenterStaticEntry.CREATOR);
+                    return new SafetyCenterStaticEntryGroup(title, staticEntries);
+                }
+
+                @Override
+                public SafetyCenterStaticEntryGroup[] newArray(int size) {
+                    return new SafetyCenterStaticEntryGroup[size];
+                }
+            };
 
     @NonNull
     private final CharSequence mTitle;
@@ -49,7 +68,7 @@ public final class SafetyCenterStaticEntryGroup implements Parcelable {
     public SafetyCenterStaticEntryGroup(
             @NonNull CharSequence title, @NonNull List<SafetyCenterStaticEntry> staticEntries) {
         mTitle = requireNonNull(title);
-        mStaticEntries = new ArrayList<>(staticEntries);
+        mStaticEntries = unmodifiableList(new ArrayList<>(requireNonNull(staticEntries)));
     }
 
     /** Returns the title that describes this entry group. */
@@ -61,13 +80,13 @@ public final class SafetyCenterStaticEntryGroup implements Parcelable {
     /** Returns the entries that comprise this entry group. */
     @NonNull
     public List<SafetyCenterStaticEntry> getStaticEntries() {
-        return new ArrayList<>(mStaticEntries);
+        return mStaticEntries;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof SafetyCenterStaticEntryGroup)) return false;
         SafetyCenterStaticEntryGroup that = (SafetyCenterStaticEntryGroup) o;
         return TextUtils.equals(mTitle, that.mTitle)
                 && Objects.equals(mStaticEntries, that.mStaticEntries);
@@ -81,8 +100,10 @@ public final class SafetyCenterStaticEntryGroup implements Parcelable {
     @Override
     public String toString() {
         return "SafetyCenterStaticEntryGroup{"
-                + "mTitle=" + mTitle
-                + ", mStaticEntries=" + mStaticEntries
+                + "mTitle="
+                + mTitle
+                + ", mStaticEntries="
+                + mStaticEntries
                 + '}';
     }
 
@@ -96,20 +117,4 @@ public final class SafetyCenterStaticEntryGroup implements Parcelable {
         TextUtils.writeToParcel(mTitle, dest, flags);
         dest.writeTypedList(mStaticEntries);
     }
-
-    @NonNull
-    public static final Creator<SafetyCenterStaticEntryGroup> CREATOR =
-            new Creator<SafetyCenterStaticEntryGroup>() {
-        @Override
-        public SafetyCenterStaticEntryGroup createFromParcel(Parcel source) {
-            return new SafetyCenterStaticEntryGroup(
-                    TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(source),
-                    source.createTypedArrayList(SafetyCenterStaticEntry.CREATOR));
-        }
-
-        @Override
-        public SafetyCenterStaticEntryGroup[] newArray(int size) {
-            return new SafetyCenterStaticEntryGroup[size];
-        }
-    };
 }
