@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2021 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:androidprv="http://schemas.android.com/apk/prv/res/android">
+    <!-- Safety center colors -->
+    <color name="safety_center_info">#5BB974</color>
+    <color name="safety_center_recommend">#FCC934</color>
+    <color name="safety_center_warn">#EE675C</color>
+
+    <color name="safety_center_card_background">?androidprv:attr/colorSurface</color>
+
+    <color name="safety_center_dismiss_button">?android:attr/textColorPrimary</color>
+    <color name="safety_center_dismiss_button_background">?androidprv:attr/colorSurfaceVariant</color>
+
+    <color name="safety_center_button_text">#000000</color> <!--Black-->
+
+    <color name="safety_center_status_info">#1E8E3E</color> <!--GM Green/600-->
+    <color name="safety_center_status_recommend">#F9AB00</color> <!--GM Yellow/600-->
+    <color name="safety_center_status_warn">#C5221F</color> <!--GM Red/600-->
+
+    <color name="safety_center_done">#767676</color>
+    <color name="safety_center_qs_background">#2f3133</color>
+
+    <color name="safety_center_status_background_info">#CEEAD6</color> <!--GM Green/100-->
+    <color name="safety_center_status_background_recommend">#FEEFC3</color> <!--GM Yellow/100-->
+    <color name="safety_center_status_background_warn">#FAD2CF</color> <!--GM Red/100-->
+
+    <color name="safety_center_expand_background">#E3E4D3</color>
+    <color name="safety_center_expand_arrow">#1B1C17</color>
+</resources>

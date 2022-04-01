@@ -17,18 +17,4 @@
 <resources xmlns:androidprv="http://schemas.android.com/apk/prv/res/android">
     <color name="warning_surface">#333124</color>
     <color name="warning_onsurface">#FDD663</color>
-
-    <!-- Safety center colors -->
-    <color name="safety_center_card_background">#30312B</color>
-    <color name="safety_center_info">#5BB974</color>
-    <color name="safety_center_recommend">#FCC934</color>
-    <color name="safety_center_warn">#EE675C</color>
-
-    <color name="safety_center_status_info">#34A853</color> <!--GM Green/500-->
-    <color name="safety_center_status_recommend">#FBBC04</color> <!--GM Yellow/500-->
-    <color name="safety_center_status_warn">#EA4335</color> <!--GM Red/500-->
-
-    <color name="safety_center_status_background_info">?androidprv:attr/colorSurfaceVariant</color>
-    <color name="safety_center_status_background_recommend">?androidprv:attr/colorSurfaceVariant</color>
-    <color name="safety_center_status_background_warn">?androidprv:attr/colorSurfaceVariant</color>
 </resources>

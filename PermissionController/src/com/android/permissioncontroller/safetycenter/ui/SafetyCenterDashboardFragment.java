@@ -21,6 +21,8 @@ import static java.util.Objects.requireNonNull;
 import android.content.Context;
 import android.os.Bundle;
 import android.safetycenter.SafetyCenterData;
+import android.safetycenter.SafetyCenterEntry;
+import android.safetycenter.SafetyCenterEntryGroup;
 import android.safetycenter.SafetyCenterEntryOrGroup;
 import android.safetycenter.SafetyCenterIssue;
 import android.safetycenter.SafetyCenterStaticEntryGroup;
@@ -36,9 +38,8 @@ import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel;
 
 import java.util.List;
-import java.util.stream.Stream;
 
-/** Dashboard fragment for the Safety Center **/
+/** Dashboard fragment for the Safety Center. */
 public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompat {
 
     private static final String TAG = SafetyCenterDashboardFragment.class.getSimpleName();
@@ -60,12 +61,13 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
 
         mViewModel = new ViewModelProvider(getActivity()).get(SafetyCenterViewModel.class);
 
-        mSafetyStatusPreference = requireNonNull(
-                getPreferenceScreen().findPreference(SAFETY_STATUS_KEY));
+        mSafetyStatusPreference =
+                requireNonNull(getPreferenceScreen().findPreference(SAFETY_STATUS_KEY));
         // TODO: Use real strings here, or set more sensible defaults in the layout
-        mSafetyStatusPreference.setSafetyStatus(new SafetyCenterStatus.Builder("Looks good", "")
-                .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN)
-                .build());
+        mSafetyStatusPreference.setSafetyStatus(
+                new SafetyCenterStatus.Builder("Looks good", "")
+                        .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN)
+                        .build());
         mSafetyStatusPreference.setRescanButtonOnClickListener(unused -> mViewModel.rescan());
 
         mIssuesGroup = getPreferenceScreen().findPreference(ISSUES_GROUP_KEY);
@@ -75,8 +77,8 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
         mViewModel.getSafetyCenterLiveData().observe(this, this::renderSafetyCenterData);
         getLifecycle().addObserver(mViewModel.getAutoRefreshManager());
 
-        getPreferenceManager().setPreferenceComparisonCallback(
-                new SafetyPreferenceComparisonCallback());
+        getPreferenceManager()
+                .setPreferenceComparisonCallback(new SafetyPreferenceComparisonCallback());
     }
 
     private void renderSafetyCenterData(@Nullable SafetyCenterData data) {
@@ -108,21 +110,68 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
     }
 
     // TODO(b/208212820): Add groups and move to separate controller
-    private void updateSafetyEntries(Context context,
-            List<SafetyCenterEntryOrGroup> entriesOrGroups) {
+    private void updateSafetyEntries(
+            Context context, List<SafetyCenterEntryOrGroup> entriesOrGroups) {
         mEntriesGroup.removeAll();
 
-        entriesOrGroups.stream()
-                .flatMap(entryOrGroup ->
-                        entryOrGroup.getEntry() != null
-                                ? Stream.of(entryOrGroup.getEntry())
-                                : entryOrGroup.getEntryGroup().getEntries().stream())
-                .map(entry -> new SafetyTopLevelEntryPreference(context, entry))
-                .forEachOrdered(mEntriesGroup::addPreference);
+        for (int i = 0, size = entriesOrGroups.size(); i < size; i++) {
+            SafetyCenterEntryOrGroup entryOrGroup = entriesOrGroups.get(i);
+            SafetyCenterEntry entry = entryOrGroup.getEntry();
+            SafetyCenterEntryGroup group = entryOrGroup.getEntryGroup();
+
+            boolean isFirstElement = i == 0;
+            boolean isLastElement = i == size - 1;
+
+            if (entry != null) {
+                addTopLevelEntry(context, entry, isFirstElement, isLastElement);
+            } else if (group != null) {
+                addGroupEntries(context, group, isFirstElement, isLastElement);
+            }
+        }
     }
 
-    private void updateStaticSafetyEntries(Context context,
-            List<SafetyCenterStaticEntryGroup> staticEntryGroups) {
+    private void addTopLevelEntry(
+            Context context,
+            SafetyCenterEntry entry,
+            boolean isFirstElement,
+            boolean isLastElement) {
+        mEntriesGroup.addPreference(
+                new SafetyEntryPreference(
+                        context,
+                        entry,
+                        PositionInCardList.calculate(isFirstElement, isLastElement)));
+    }
+
+    private void addGroupEntries(
+            Context context,
+            SafetyCenterEntryGroup group,
+            boolean isFirstCard,
+            boolean isLastCard) {
+        mEntriesGroup.addPreference(
+                new SafetyGroupHeaderEntryPreference(
+                        context,
+                        group,
+                        isFirstCard
+                                ? PositionInCardList.LIST_START
+                                : PositionInCardList.CARD_START));
+
+        List<SafetyCenterEntry> entries = group.getEntries();
+        for (int j = 0, last = entries.size() - 1; j <= last; j++) {
+            boolean isCardEnd = j == last;
+            boolean isListEnd = isLastCard && isCardEnd;
+            PositionInCardList positionInCardList =
+                    PositionInCardList.calculate(
+                            /* isListStart= */ false,
+                            isListEnd,
+                            /* isCardStart= */ false,
+                            isCardEnd);
+            mEntriesGroup.addPreference(
+                    new SafetyEntryPreference(context, entries.get(j), positionInCardList));
+        }
+    }
+
+    private void updateStaticSafetyEntries(
+            Context context, List<SafetyCenterStaticEntryGroup> staticEntryGroups) {
         mStaticEntriesGroup.removeAll();
 
         staticEntryGroups.stream()
@@ -130,5 +179,4 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
                 .map(entry -> new StaticSafetyEntryPreference(context, entry))
                 .forEachOrdered(mStaticEntriesGroup::addPreference);
     }
-
 }
