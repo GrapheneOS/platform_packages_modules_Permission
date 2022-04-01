@@ -27,6 +27,7 @@ import android.graphics.Path
 import android.graphics.PixelFormat
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffXfermode
+import android.graphics.Typeface
 import android.graphics.drawable.AnimatedImageDrawable
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.Icon
@@ -420,6 +421,8 @@ class GrantPermissionsViewHandlerImpl(
                     null, null)
             coarseOffDrawable?.start()
             fineOnDrawable?.start()
+            fineRadioButton?.setTypeface(null, Typeface.BOLD)
+            coarseRadioButton?.setTypeface(null, Typeface.NORMAL)
         } else {
             coarseOffDrawable?.stop()
             fineOnDrawable?.stop()
@@ -429,6 +432,8 @@ class GrantPermissionsViewHandlerImpl(
                     null, null)
             coarseOnDrawable?.start()
             fineOffDrawable?.start()
+            coarseRadioButton?.setTypeface(null, Typeface.BOLD)
+            fineRadioButton?.setTypeface(null, Typeface.NORMAL)
         }
     }
 
