@@ -107,7 +107,6 @@ public final class SafetySourceIssue implements Parcelable {
                                     .setSubtitle(subtitle)
                                     .setIssueCategory(issueCategory)
                                     .setOnDismissPendingIntent(onDismissPendingIntent);
-                    // TODO(b/224513050): Consider simplifying by adding a new API to the builder.
                     for (int i = 0; i < actions.size(); i++) {
                         builder.addAction(actions.get(i));
                     }
