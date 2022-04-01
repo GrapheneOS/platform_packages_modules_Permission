@@ -115,7 +115,6 @@ public final class SafetySourcesGroup implements Parcelable {
                                     .setStatelessIconType(in.readInt());
                     List<SafetySource> safetySources =
                             requireNonNull(in.createTypedArrayList(SafetySource.CREATOR));
-                    // TODO(b/224513050): Consider simplifying by adding a new API to the builder.
                     for (int i = 0; i < safetySources.size(); i++) {
                         builder.addSafetySource(safetySources.get(i));
                     }

@@ -158,7 +158,6 @@ public final class SafetySourceData implements Parcelable {
                     List<SafetySourceIssue> issues =
                             requireNonNull(in.createTypedArrayList(SafetySourceIssue.CREATOR));
                     Builder builder = new Builder().setStatus(status);
-                    // TODO(b/224513050): Consider simplifying by adding a new API to the builder.
                     for (int i = 0; i < issues.size(); i++) {
                         builder.addIssue(issues.get(i));
                     }
