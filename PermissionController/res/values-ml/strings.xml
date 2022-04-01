@@ -199,8 +199,10 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"ഉപയോഗിക്കാത്ത ആപ്പ് ക്രമീകരണം"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"ഉപയോഗിക്കാത്ത ആപ്പാണെങ്കിൽ അനുമതികൾ നീക്കം ചെയ്യുക"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"അനുമതികൾ നീക്കം ചെയ്‌ത് ഇടം സൃഷ്‌ടിക്കുക"</string>
-    <string name="unused_apps_label_v2" msgid="2443239537162119403">"ആപ്പ് അക്റ്റിവിറ്റി താൽക്കാലം നിർത്തുക"</string>
-    <string name="unused_apps_summary" msgid="4416065734063612849">"ഉപയോഗിച്ചിട്ടില്ലെങ്കിൽ അനുമതികൾ നീക്കം ചെയ്യുക, താൽക്കാലിക ഫയലുകൾ ഇല്ലാതാക്കുക, അറിയിപ്പുകൾ നിർത്തുക"</string>
+    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
+    <skip />
+    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
+    <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"മാസങ്ങളായി ഈ ആപ്പ് ഉപയോഗിക്കുന്നില്ലെങ്കിൽ നിങ്ങളുടെ ഡാറ്റ സംരക്ഷിക്കുന്നതിന്, ഈ ആപ്പിനുള്ള അനുമതികൾ നീക്കം ചെയ്യുന്നതായിരിക്കും."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"കുറച്ച് മാസം ആപ്പ് ഉപയോഗിച്ചില്ലെങ്കിൽ, നിങ്ങളുടെ ഡാറ്റ സംരക്ഷിക്കുന്നതിന്, ഇനിപ്പറയുന്ന അനുമതികൾ നീക്കം ചെയ്യുന്നതായിരിക്കും: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"നിങ്ങളുടെ ഡാറ്റ സംരക്ഷിക്കുന്നതിന്, കുറച്ച് മാസങ്ങളായി ഉപയോഗിക്കാത്ത ആപ്പുകളിൽ നിന്ന് അനുമതികൾ നീക്കം ചെയ്തിരിക്കുന്നു."</string>
