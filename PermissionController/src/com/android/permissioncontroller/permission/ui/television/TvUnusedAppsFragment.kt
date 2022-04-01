@@ -63,7 +63,7 @@ class TvUnusedAppsFragment : SettingsWithHeader(),
     override fun createFooterPreference(): Preference {
         val preference = Preference(context)
         if (isHibernationEnabled()) {
-            preference.summary = getString(R.string.unused_apps_page_summary)
+            preference.summary = getString(R.string.unused_apps_page_tv_summary)
         } else {
             preference.summary =
             getString(R.string.auto_revoked_apps_page_summary)
