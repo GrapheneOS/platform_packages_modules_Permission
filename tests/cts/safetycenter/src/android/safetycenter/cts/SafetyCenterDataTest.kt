@@ -36,6 +36,7 @@ import androidx.test.filters.SdkSuppress
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
+import kotlin.test.assertFailsWith
 
 @RunWith(AndroidJUnit4::class)
 @SdkSuppress(minSdkVersion = TIRAMISU, codeName = "Tiramisu")
@@ -117,12 +118,10 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    fun getIssues_mutationsAreNotReflected() {
+    fun getIssues_mutationsAreNotAllowed() {
         val mutatedIssues = data1.issues
-        mutatedIssues.add(issue2)
 
-        assertThat(mutatedIssues).containsExactly(issue1, issue2).inOrder()
-        assertThat(data1.issues).doesNotContain(issue2)
+        assertFailsWith(UnsupportedOperationException::class) { mutatedIssues.add(issue2) }
     }
 
     @Test
@@ -132,12 +131,12 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    fun getEntriesOrGroups_mutationsAreNotReflected() {
+    fun getEntriesOrGroups_mutationsAreNotAllowed() {
         val mutatedEntriesOrGroups = data1.entriesOrGroups
-        mutatedEntriesOrGroups.add(entryOrGroup2)
 
-        assertThat(mutatedEntriesOrGroups).containsExactly(entryOrGroup1, entryOrGroup2).inOrder()
-        assertThat(data1.entriesOrGroups).doesNotContain(entryOrGroup2)
+        assertFailsWith(UnsupportedOperationException::class) {
+            mutatedEntriesOrGroups.add(entryOrGroup2)
+        }
     }
 
     @Test
@@ -147,14 +146,12 @@ class SafetyCenterDataTest {
     }
 
     @Test
-    fun getStaticEntryGroups_mutationsAreNotReflected() {
+    fun getStaticEntryGroups_mutationsAreNotAllowed() {
         val mutatedStaticEntryGroups = data1.staticEntryGroups
-        mutatedStaticEntryGroups.add(staticEntryGroup2)
 
-        assertThat(mutatedStaticEntryGroups)
-            .containsExactly(staticEntryGroup1, staticEntryGroup2)
-            .inOrder()
-        assertThat(data1.staticEntryGroups).doesNotContain(staticEntryGroup2)
+        assertFailsWith(UnsupportedOperationException::class) {
+            mutatedStaticEntryGroups.add(staticEntryGroup2)
+        }
     }
 
     @Test

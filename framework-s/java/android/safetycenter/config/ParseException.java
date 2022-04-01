@@ -24,13 +24,14 @@ import android.annotation.SystemApi;
 import androidx.annotation.RequiresApi;
 
 /**
- * Exception thrown when there is an error parsing the Safety Center configuration
+ * Exception thrown when there is an error parsing the Safety Center configuration.
  *
  * @hide
  */
 @SystemApi
 @RequiresApi(TIRAMISU)
 public final class ParseException extends Exception {
+
     public ParseException(@NonNull String message) {
         super(message);
     }

@@ -18,6 +18,8 @@ package android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
+import static java.util.Objects.requireNonNull;
+
 import android.annotation.NonNull;
 import android.annotation.SystemApi;
 import android.os.Parcel;
@@ -38,11 +40,27 @@ import java.util.Objects;
 public final class SafetyCenterErrorDetails implements Parcelable {
 
     @NonNull
+    public static final Creator<SafetyCenterErrorDetails> CREATOR =
+            new Creator<SafetyCenterErrorDetails>() {
+                @Override
+                public SafetyCenterErrorDetails createFromParcel(Parcel in) {
+                    CharSequence errorMessage = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(
+                            in);
+                    return new SafetyCenterErrorDetails(errorMessage);
+                }
+
+                @Override
+                public SafetyCenterErrorDetails[] newArray(int size) {
+                    return new SafetyCenterErrorDetails[0];
+                }
+            };
+
+    @NonNull
     private final CharSequence mErrorMessage;
 
     /** Creates a {@link SafetyCenterErrorDetails} with a given error message. */
     public SafetyCenterErrorDetails(@NonNull CharSequence errorMessage) {
-        mErrorMessage = errorMessage;
+        mErrorMessage = requireNonNull(errorMessage);
     }
 
     /** Returns an error message to display to the user. */
@@ -54,7 +72,7 @@ public final class SafetyCenterErrorDetails implements Parcelable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof SafetyCenterErrorDetails)) return false;
         SafetyCenterErrorDetails that = (SafetyCenterErrorDetails) o;
         return TextUtils.equals(mErrorMessage, that.mErrorMessage);
     }
@@ -67,7 +85,8 @@ public final class SafetyCenterErrorDetails implements Parcelable {
     @Override
     public String toString() {
         return "SafetyCenterErrorDetails{"
-                + "mErrorMessage=" + mErrorMessage
+                + "mErrorMessage="
+                + mErrorMessage
                 + '}';
     }
 
@@ -80,19 +99,4 @@ public final class SafetyCenterErrorDetails implements Parcelable {
     public void writeToParcel(@NonNull Parcel dest, int flags) {
         TextUtils.writeToParcel(mErrorMessage, dest, flags);
     }
-
-    @NonNull
-    public static final Creator<SafetyCenterErrorDetails> CREATOR =
-            new Creator<SafetyCenterErrorDetails>() {
-        @Override
-        public SafetyCenterErrorDetails createFromParcel(Parcel in) {
-            CharSequence errorMessage = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
-            return new SafetyCenterErrorDetails(errorMessage);
-        }
-
-        @Override
-        public SafetyCenterErrorDetails[] newArray(int size) {
-            return new SafetyCenterErrorDetails[0];
-        }
-    };
 }

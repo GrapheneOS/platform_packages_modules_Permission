@@ -18,6 +18,7 @@ package android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
+import static java.util.Collections.unmodifiableList;
 import static java.util.Objects.requireNonNull;
 
 import android.annotation.NonNull;
@@ -41,6 +42,27 @@ import java.util.Objects;
 public final class SafetyCenterData implements Parcelable {
 
     @NonNull
+    public static final Creator<SafetyCenterData> CREATOR =
+            new Creator<SafetyCenterData>() {
+                @Override
+                public SafetyCenterData createFromParcel(Parcel in) {
+                    SafetyCenterStatus status = in.readTypedObject(SafetyCenterStatus.CREATOR);
+                    List<SafetyCenterIssue> issues = in.createTypedArrayList(
+                            SafetyCenterIssue.CREATOR);
+                    List<SafetyCenterEntryOrGroup> entryOrGroups =
+                            in.createTypedArrayList(SafetyCenterEntryOrGroup.CREATOR);
+                    List<SafetyCenterStaticEntryGroup> staticEntryGroups =
+                            in.createTypedArrayList(SafetyCenterStaticEntryGroup.CREATOR);
+                    return new SafetyCenterData(status, issues, entryOrGroups, staticEntryGroups);
+                }
+
+                @Override
+                public SafetyCenterData[] newArray(int size) {
+                    return new SafetyCenterData[size];
+                }
+            };
+
+    @NonNull
     private final SafetyCenterStatus mStatus;
     @NonNull
     private final List<SafetyCenterIssue> mIssues;
@@ -49,8 +71,6 @@ public final class SafetyCenterData implements Parcelable {
     @NonNull
     private final List<SafetyCenterStaticEntryGroup> mStaticEntryGroups;
 
-    //TODO(b/208415162): Add support for static/advanced entries.
-
     /** Creates a {@link SafetyCenterData}. */
     public SafetyCenterData(
             @NonNull SafetyCenterStatus status,
@@ -58,9 +78,9 @@ public final class SafetyCenterData implements Parcelable {
             @NonNull List<SafetyCenterEntryOrGroup> entriesOrGroups,
             @NonNull List<SafetyCenterStaticEntryGroup> staticEntryGroups) {
         mStatus = requireNonNull(status);
-        mIssues = new ArrayList<>(issues);
-        mEntriesOrGroups = new ArrayList<>(entriesOrGroups);
-        mStaticEntryGroups = new ArrayList<>(staticEntryGroups);
+        mIssues = unmodifiableList(new ArrayList<>(requireNonNull(issues)));
+        mEntriesOrGroups = unmodifiableList(new ArrayList<>(requireNonNull(entriesOrGroups)));
+        mStaticEntryGroups = unmodifiableList(new ArrayList<>(requireNonNull(staticEntryGroups)));
     }
 
     /** Returns the overall {@link SafetyCenterStatus} of the Safety Center. */
@@ -72,7 +92,7 @@ public final class SafetyCenterData implements Parcelable {
     /** Returns the list of active {@link SafetyCenterIssue} objects in the Safety Center. */
     @NonNull
     public List<SafetyCenterIssue> getIssues() {
-        return new ArrayList<>(mIssues);
+        return mIssues;
     }
 
     /**
@@ -81,21 +101,19 @@ public final class SafetyCenterData implements Parcelable {
      */
     @NonNull
     public List<SafetyCenterEntryOrGroup> getEntriesOrGroups() {
-        return new ArrayList<>(mEntriesOrGroups);
+        return mEntriesOrGroups;
     }
 
-    /**
-     * Returns the list of {@link SafetyCenterStaticEntryGroup} objects in the Safety Center.
-     */
+    /** Returns the list of {@link SafetyCenterStaticEntryGroup} objects in the Safety Center. */
     @NonNull
     public List<SafetyCenterStaticEntryGroup> getStaticEntryGroups() {
-        return new ArrayList<>(mStaticEntryGroups);
+        return mStaticEntryGroups;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof SafetyCenterData)) return false;
         SafetyCenterData that = (SafetyCenterData) o;
         return Objects.equals(mStatus, that.mStatus)
                 && Objects.equals(mIssues, that.mIssues)
@@ -111,10 +129,14 @@ public final class SafetyCenterData implements Parcelable {
     @Override
     public String toString() {
         return "SafetyCenterData{"
-                + "mStatus=" + mStatus
-                + ", mIssues=" + mIssues
-                + ", mEntriesOrGroups=" + mEntriesOrGroups
-                + ", mStaticEntryGroups=" + mStaticEntryGroups
+                + "mStatus="
+                + mStatus
+                + ", mIssues="
+                + mIssues
+                + ", mEntriesOrGroups="
+                + mEntriesOrGroups
+                + ", mStaticEntryGroups="
+                + mStaticEntryGroups
                 + '}';
     }
 
@@ -130,25 +152,4 @@ public final class SafetyCenterData implements Parcelable {
         dest.writeTypedList(mEntriesOrGroups);
         dest.writeTypedList(mStaticEntryGroups);
     }
-
-    @NonNull
-    public static final Creator<SafetyCenterData> CREATOR = new Creator<SafetyCenterData>() {
-        @Override
-        public SafetyCenterData createFromParcel(Parcel in) {
-            SafetyCenterStatus status = in.readTypedObject(SafetyCenterStatus.CREATOR);
-            List<SafetyCenterIssue> issues = in.createTypedArrayList(SafetyCenterIssue.CREATOR);
-            List<SafetyCenterEntryOrGroup> entryOrGroups =
-                    in.createTypedArrayList(SafetyCenterEntryOrGroup.CREATOR);
-            List<SafetyCenterStaticEntryGroup> staticEntryGroups =
-                    in.createTypedArrayList(SafetyCenterStaticEntryGroup.CREATOR);
-
-            return new SafetyCenterData(status, issues, entryOrGroups, staticEntryGroups);
-
-        }
-
-        @Override
-        public SafetyCenterData[] newArray(int size) {
-            return new SafetyCenterData[size];
-        }
-    };
 }
