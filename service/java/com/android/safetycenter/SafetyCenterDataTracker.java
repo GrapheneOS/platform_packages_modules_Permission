@@ -337,7 +337,7 @@ final class SafetyCenterDataTracker {
 
             int[] managedProfileUserIds = userProfileGroup.getManagedProfilesUserIds();
             for (int j = 0; j < managedProfileUserIds.length; j++) {
-                int managedProfileUserId = managedProfileUserIds[i];
+                int managedProfileUserId = managedProfileUserIds[j];
 
                 maxSafetyCenterEntrySeverityLevel =
                         Math.max(
@@ -423,8 +423,6 @@ final class SafetyCenterDataTracker {
             @NonNull SafetySourcesGroup safetySourcesGroup,
             @NonNull UserProfileGroup userProfileGroup) {
         int maxSafetyCenterEntryLevel = SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN;
-        int severityUnspecifiedIconType =
-                toSeverityUnspecifiedIconType(safetySourcesGroup.getStatelessIconType());
 
         List<SafetySource> safetySources = safetySourcesGroup.getSafetySources();
         List<SafetyCenterEntry> entries = new ArrayList<>(safetySources.size());
@@ -437,7 +435,6 @@ final class SafetyCenterDataTracker {
                             addSafetyCenterEntry(
                                     entries,
                                     safetySource,
-                                    severityUnspecifiedIconType,
                                     false,
                                     userProfileGroup.getProfileOwnerUserId()));
 
@@ -447,7 +444,7 @@ final class SafetyCenterDataTracker {
 
             int[] managedProfileUserIds = userProfileGroup.getManagedProfilesUserIds();
             for (int j = 0; j < managedProfileUserIds.length; j++) {
-                int managedProfileUserId = managedProfileUserIds[i];
+                int managedProfileUserId = managedProfileUserIds[j];
 
                 maxSafetyCenterEntryLevel =
                         Math.max(
@@ -455,13 +452,11 @@ final class SafetyCenterDataTracker {
                                 addSafetyCenterEntry(
                                         entries,
                                         safetySource,
-                                        severityUnspecifiedIconType,
                                         true,
                                         managedProfileUserId));
             }
         }
 
-        // TODO(b/218817233): Revisit how severityUnspecifiedIconType is implemented.
         safetyCenterEntryOrGroups.add(
                 new SafetyCenterEntryOrGroup(
                         new SafetyCenterEntryGroup.Builder(
@@ -470,7 +465,8 @@ final class SafetyCenterDataTracker {
                                 .setSeverityLevel(maxSafetyCenterEntryLevel)
                                 .setSummary(getString(safetySourcesGroup.getSummaryResId()))
                                 .setEntries(entries)
-                                .setSeverityUnspecifiedIconType(severityUnspecifiedIconType)
+                                .setSeverityUnspecifiedIconType(toGroupSeverityUnspecifiedIconType(
+                                        safetySourcesGroup.getStatelessIconType()))
                                 .build()));
 
         return maxSafetyCenterEntryLevel;
@@ -480,12 +476,10 @@ final class SafetyCenterDataTracker {
     private int addSafetyCenterEntry(
             @NonNull List<SafetyCenterEntry> entries,
             @NonNull SafetySource safetySource,
-            @SafetyCenterEntry.SeverityUnspecifiedIconType int severityUnspecifiedIconType,
             boolean isUserManaged,
             @UserIdInt int userId) {
         SafetyCenterEntry safetyCenterEntry =
-                toSafetyCenterEntry(safetySource, severityUnspecifiedIconType, isUserManaged,
-                        userId);
+                toSafetyCenterEntry(safetySource, isUserManaged, userId);
         if (safetyCenterEntry == null) {
             return SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN;
         }
@@ -497,7 +491,6 @@ final class SafetyCenterDataTracker {
     @Nullable
     private SafetyCenterEntry toSafetyCenterEntry(
             @NonNull SafetySource safetySource,
-            @SafetyCenterEntry.SeverityUnspecifiedIconType int severityUnspecifiedIconType,
             boolean isUserManaged,
             @UserIdInt int userId) {
         switch (safetySource.getType()) {
@@ -519,9 +512,7 @@ final class SafetyCenterDataTracker {
                                         safetySource.getPackageName(), userId);
                         enabled = enabled && pendingIntent != null;
                     }
-                    // TODO(b/218817233): Add IconAction field and revisit how
-                    // severityUnspecifiedIconType is implemented.
-                    return new SafetyCenterEntry.Builder(
+                    SafetyCenterEntry.Builder builder = new SafetyCenterEntry.Builder(
                             safetySource.getId(),
                             safetySourceStatus.getTitle())
                             .setSeverityLevel(
@@ -529,15 +520,22 @@ final class SafetyCenterDataTracker {
                                             safetySourceStatus.getSeverityLevel()))
                             .setSummary(safetySourceStatus.getSummary())
                             .setEnabled(enabled)
-                            .setSeverityUnspecifiedIconType(severityUnspecifiedIconType)
-                            .setPendingIntent(pendingIntent)
-                            .build();
+                            .setSeverityUnspecifiedIconType(
+                                 SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION)
+                            .setPendingIntent(pendingIntent);
+                    SafetySourceStatus.IconAction iconAction = safetySourceStatus.getIconAction();
+                    if (iconAction != null) {
+                        builder.setIconAction(new SafetyCenterEntry.IconAction(
+                                sourceToSafetyCenterEntryIconActionType(iconAction.getIconType()),
+                                iconAction.getPendingIntent()));
+                    }
+                    return builder.build();
                 }
                 return toDefaultSafetyCenterEntry(
                         safetySource,
                         safetySource.getPackageName(),
                         SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN,
-                        severityUnspecifiedIconType,
+                        SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION,
                         isUserManaged,
                         userId);
             }
@@ -546,7 +544,7 @@ final class SafetyCenterDataTracker {
                         safetySource,
                         null,
                         SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED,
-                        severityUnspecifiedIconType,
+                        SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON,
                         isUserManaged,
                         userId);
             }
@@ -580,8 +578,6 @@ final class SafetyCenterDataTracker {
                 ? safetySource.getTitleForWorkResId()
                 : safetySource.getTitleResId()
         );
-        // TODO(b/218817233): Add IconAction field and revisit how severityUnspecifiedIconType is
-        // implemented.
         return new SafetyCenterEntry.Builder(safetySource.getId(), title)
                 .setSeverityLevel(entrySeverityLevel)
                 .setSummary(getString(safetySource.getSummaryResId()))
@@ -609,7 +605,7 @@ final class SafetyCenterDataTracker {
 
             int[] managedProfileUserIds = userProfileGroup.getManagedProfilesUserIds();
             for (int j = 0; j < managedProfileUserIds.length; j++) {
-                int managedProfileUserId = managedProfileUserIds[i];
+                int managedProfileUserId = managedProfileUserIds[j];
 
                 addSafetyCenterStaticEntry(staticEntries, safetySource, true, managedProfileUserId);
             }
@@ -835,11 +831,11 @@ final class SafetyCenterDataTracker {
     }
 
     @SafetyCenterEntry.SeverityUnspecifiedIconType
-    private static int toSeverityUnspecifiedIconType(
+    private static int toGroupSeverityUnspecifiedIconType(
             @SafetySourcesGroup.StatelessIconType int statelessIconType) {
         switch (statelessIconType) {
             case SafetySourcesGroup.STATELESS_ICON_TYPE_NONE:
-                return SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION;
+                return SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON;
             case SafetySourcesGroup.STATELESS_ICON_TYPE_PRIVACY:
                 return SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_PRIVACY;
         }
@@ -849,6 +845,24 @@ final class SafetyCenterDataTracker {
                         "Unexpected SafetySourcesGroup.StatelessIconType in SafetySourcesGroup: %s",
                         statelessIconType));
         return SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON;
+    }
+
+    @SafetyCenterEntry.IconAction.IconActionType
+    private static int sourceToSafetyCenterEntryIconActionType(
+            @SafetySourceStatus.IconAction.IconType int safetySourceIconActionType) {
+        switch (safetySourceIconActionType) {
+            case SafetySourceStatus.IconAction.ICON_TYPE_GEAR:
+                return SafetyCenterEntry.IconAction.ICON_ACTION_TYPE_GEAR;
+            case SafetySourceStatus.IconAction.ICON_TYPE_INFO:
+                return SafetyCenterEntry.IconAction.ICON_ACTION_TYPE_INFO;
+        }
+
+        Log.w(TAG,
+                String.format(
+                        "Unexpected SafetyCenterEntry.IconAction.IconActionType in "
+                                + "SafetySourceStatus.IconAction: %s",
+                        safetySourceIconActionType));
+        return SafetyCenterEntry.IconAction.ICON_ACTION_TYPE_INFO;
     }
 
     // TODO(b/218801295): Use the right strings and localize them.

@@ -151,8 +151,8 @@
 
     <style name="SafetyCenter.BaseCard"
         parent="android:Widget.DeviceDefault">
-        <item name="android:paddingStart">24dp</item>
-        <item name="android:paddingEnd">24dp</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingEnd">20dp</item>
         <item name="android:paddingTop">24dp</item>
         <item name="android:paddingBottom">24dp</item>
         <item name="android:layout_marginStart">16dp</item>
@@ -163,9 +163,10 @@
     </style>
 
     <style name="SafetyCenter.RescanButton"
-        parent="android:Widget.DeviceDefault.Button.Colored">
+           parent="@style/SafetyCenter.IssueCard.ActionButton">
         <item name="android:layout_marginStart">24dp</item>
         <item name="android:layout_marginEnd">24dp</item>
+        <item name="android:backgroundTint">@color/safety_center_info</item>
     </style>
 
     <style name="SafetyCenter.StatusCard"
@@ -176,7 +177,7 @@
 
     <style name="SafetyCenter.IssueCard.TopRow"
         parent="android:Widget.DeviceDefault">
-        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingBottom">4dp</item>
     </style>
 
     <style name="SafetyCenter.IssueCard.Dismiss"
@@ -199,15 +200,47 @@
 
     <style name="SafetyCenter.IssueCard.Summary"
         parent="@android:style/TextAppearance.DeviceDefault">
-        <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:textSize">14sp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">10dp</item>
     </style>
 
     <style name="SafetyCenter.IssueCard.ActionButtonList"
         parent="android:Widget.DeviceDefault" />
 
-    <style name="SafetyCenter.IssueCard.ActionButton"
-        parent="android:Widget.DeviceDefault.Button.Colored" />
+    <style name="SafetyCenter.IssueCard.ActionButton">
+        <item name="android:background">@drawable/safety_center_issue_action_button</item>
+        <item name="android:fontFamily">google-sans-medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/system_neutral1_900</item>
+        <item name="android:height">56dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="SafetyCenter.IssueCard.ActionButton.Critical"
+           parent="@style/SafetyCenter.IssueCard.ActionButton">
+        <item name="android:backgroundTint">@color/safety_center_warn</item>
+    </style>
+
+    <style name="SafetyCenter.IssueCard.ActionButton.Info"
+           parent="@style/SafetyCenter.IssueCard.ActionButton">
+        <item name="android:backgroundTint">@color/safety_center_info</item>
+    </style>
+
+    <style name="SafetyCenter.IssueCard.ActionButton.Recommendation"
+           parent="@style/SafetyCenter.IssueCard.ActionButton">
+        <item name="android:backgroundTint">@color/safety_center_recommend</item>
+    </style>
+
+    <style name="SafetyCenter.IssueCard.Footer"
+           parent="@android:style/TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:paddingTop">20dp</item>
+        <item name="android:gravity">center</item>
+    </style>
 
     <style name="IndicatorCardView"
            xmlns:card_view="http://schemas.android.com/apk/res-auto"
