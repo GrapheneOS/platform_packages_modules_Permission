@@ -33,17 +33,20 @@ import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.content.Intent.EXTRA_COMPONENT_NAME
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
+import android.content.Intent.FLAG_RECEIVER_FOREGROUND
 import android.content.SharedPreferences
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.os.UserHandle
 import android.os.UserManager
 import android.provider.DeviceConfig
+import android.safetycenter.SafetyCenterManager
 import android.service.notification.StatusBarNotification
 import android.util.ArraySet
 import android.util.Log
+import androidx.annotation.ChecksSdkIntAtLeast
 import androidx.annotation.GuardedBy
 import androidx.annotation.RequiresApi
 import androidx.annotation.VisibleForTesting
@@ -60,6 +63,7 @@ import com.android.permissioncontroller.Constants.PERIODIC_NOTIFICATION_LISTENER
 import com.android.permissioncontroller.Constants.PREFERENCES_FILE
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.utils.Utils
+import com.android.permissioncontroller.permission.utils.Utils.getSystemServiceSafe
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.Default
 import kotlinx.coroutines.GlobalScope
@@ -106,16 +110,11 @@ private val DEFAULT_NOTIFICATION_LISTENER_CHECK_INTERVAL_MILLIS = DAYS.toMillis(
 
 private val DEFAULT_NOTIFICATION_LISTENER_CHECK_PACKAGE_INTERVAL_MILLIS = DAYS.toMillis(90)
 
-private fun checkNotificationListenerCheckEnabled(): Boolean {
+private fun isNotificationListenerCheckFlagEnabled(): Boolean {
     return DeviceConfig.getBoolean(
         DeviceConfig.NAMESPACE_PRIVACY,
         PROPERTY_NOTIFICATION_LISTENER_CHECK_ENABLED,
-        false
-    )
-}
-
-private fun checkNotificationListenerSupported(): Boolean {
-    return SdkLevel.isAtLeastT()
+        false)
 }
 
 /**
@@ -198,8 +197,6 @@ internal class NotificationListenerCheckInternal(
     private val random = Random()
     private val sharedPrefs: SharedPreferences =
         parentUserContext.getSharedPreferences(PREFERENCES_FILE, MODE_PRIVATE)
-    private val userManager: UserManager =
-        Utils.getSystemServiceSafe(parentUserContext, UserManager::class.java)
 
     companion object {
         /** Lock required for all public methods */
@@ -216,18 +213,6 @@ internal class NotificationListenerCheckInternal(
         params: JobParameters,
         service: NotificationListenerCheck.NotificationListenerCheckJobService
     ) {
-        if (!checkNotificationListenerCheckEnabled()) {
-            if (DEBUG) Log.d(TAG, "NotificationListenerCheck disabled, finishing job")
-            service.jobFinished(params, false)
-            return
-        }
-
-        if (!isRunningInParentProfile()) {
-            // Profile parent handles child profiles too.
-            if (DEBUG) Log.d(TAG, "NotificationListenerCheck only supported from parent profile")
-            return
-        }
-
         nlsLock.withLock {
             try {
                 getEnabledNotificationListenersAndNotifyIfNeededLocked()
@@ -280,7 +265,7 @@ internal class NotificationListenerCheckInternal(
         // Get all enabled NotificationListenerService components for primary user. NLS from managed
         // profiles are never bound.
         val enabledNotificationListeners =
-            Utils.getSystemServiceSafe(parentUserContext, NotificationManager::class.java)
+            getSystemServiceSafe(parentUserContext, NotificationManager::class.java)
                 .enabledNotificationListeners
 
         if (DEBUG) {
@@ -430,25 +415,29 @@ internal class NotificationListenerCheckInternal(
      */
     internal suspend fun markAsNotified(componentName: ComponentName) {
         nlsLock.withLock {
-            val notifiedComponentsMap: MutableMap<ComponentName, NlsComponent> =
-                loadNotifiedComponentsLocked()
-                    .associateBy({ it.componentName }, { it })
-                    .toMutableMap()
-
-            // NlsComponent don't compare timestamps, so remove existing NlsComponent if present and
-            // then add again
-            val currentComponent: NlsComponent? = notifiedComponentsMap.remove(componentName)
-            val componentToMarkNotified: NlsComponent =
-                if (currentComponent != null) {
-                    // Copy the current notified component and only update the notificationShownTime
-                    currentComponent.copy(notificationShownTime = currentTimeMillis())
-                } else {
-                    // No previoulys notified component, create new one
-                    NlsComponent(componentName, notificationShownTime = currentTimeMillis())
-                }
-            notifiedComponentsMap[componentName] = componentToMarkNotified
-            persistNotifiedComponentsLocked(notifiedComponentsMap.values)
+            markAsNotifiedLocked(componentName)
         }
+    }
+
+    private suspend fun markAsNotifiedLocked(componentName: ComponentName) {
+        val notifiedComponentsMap: MutableMap<ComponentName, NlsComponent> =
+            loadNotifiedComponentsLocked()
+                .associateBy({ it.componentName }, { it })
+                .toMutableMap()
+
+        // NlsComponent don't compare timestamps, so remove existing NlsComponent if present and
+        // then add again
+        val currentComponent: NlsComponent? = notifiedComponentsMap.remove(componentName)
+        val componentToMarkNotified: NlsComponent =
+            if (currentComponent != null) {
+                // Copy the current notified component and only update the notificationShownTime
+                currentComponent.copy(notificationShownTime = currentTimeMillis())
+            } else {
+                // No previoulys notified component, create new one
+                NlsComponent(componentName, notificationShownTime = currentTimeMillis())
+            }
+        notifiedComponentsMap[componentName] = componentToMarkNotified
+        persistNotifiedComponentsLocked(notifiedComponentsMap.values)
     }
 
     @Throws(InterruptedException::class)
@@ -500,6 +489,7 @@ internal class NotificationListenerCheckInternal(
 
         createPermissionReminderChannel()
         createNotificationForNotificationListener(componentToNotifyFor, pkgInfo)
+        markAsNotifiedLocked(componentToNotifyFor)
     }
 
     /**
@@ -523,7 +513,7 @@ internal class NotificationListenerCheckInternal(
             NotificationManager.IMPORTANCE_LOW
         )
 
-        val notificationManager = Utils.getSystemServiceSafe(
+        val notificationManager = getSystemServiceSafe(
             parentUserContext,
             NotificationManager::class.java
         )
@@ -554,14 +544,14 @@ internal class NotificationListenerCheckInternal(
             NotificationListenerCheck.NotificationDeleteHandler::class.java).apply {
             putExtra(EXTRA_COMPONENT_NAME, componentName)
             putExtra(EXTRA_SESSION_ID, sessionId)
-            flags = Intent.FLAG_RECEIVER_FOREGROUND
+            flags = FLAG_RECEIVER_FOREGROUND
         }
 
-        val clickIntent = Intent(parentUserContext,
-            NotificationListenerCheck.NotificationClickHandler::class.java).apply {
+        val clickIntent = Intent(Intent.ACTION_SAFETY_CENTER).apply {
+            // TODO(b/217566029): update with EXTRA_SAFETY_SOURCE_ISSUE_ID and EXTRA_SAFETY_SOURCE_ID
             putExtra(EXTRA_COMPONENT_NAME, componentName)
             putExtra(EXTRA_SESSION_ID, sessionId)
-            flags = Intent.FLAG_RECEIVER_FOREGROUND
+            flags = FLAG_ACTIVITY_NEW_TASK
         }
 
         val title =
@@ -579,8 +569,7 @@ internal class NotificationListenerCheckInternal(
                 .setContentText(text)
                 // Ensure entire text can be displayed, instead of being truncated to one line
                 .setStyle(Notification.BigTextStyle().bigText(text))
-                // TODO(b/213357911): replace with Safety Center resource
-                .setSmallIcon(R.drawable.ic_pin_drop)
+                .setSmallIcon(android.R.drawable.ic_safety_protection)
                 // TODO(b/213357911): replace with Safety Center resource
                 .setColor(
                     parentUserContext.getColor(R.color.safety_center_info))
@@ -592,22 +581,19 @@ internal class NotificationListenerCheckInternal(
                     )
                 )
                 .setContentIntent(
-                    PendingIntent.getBroadcast(
+                    PendingIntent.getActivity(
                         parentUserContext, 0, clickIntent,
                         FLAG_ONE_SHOT or FLAG_UPDATE_CURRENT or FLAG_IMMUTABLE
                     )
                 )
 
-        // TODO(b/213357911): replace with Safety Center resource
-        val appName = Utils.getSettingsLabelForNotifications(packageManager)
-        if (appName != null) {
-            val extras = Bundle()
-            extras.putString(Notification.EXTRA_SUBSTITUTE_APP_NAME, appName.toString())
-            b.addExtras(extras)
-        }
+        val appName = parentUserContext.getString(android.R.string.safety_protection_display_text)
+        val appNameExtras = Bundle()
+        appNameExtras.putString(Notification.EXTRA_SUBSTITUTE_APP_NAME, appName)
+        b.addExtras(appNameExtras)
 
         val notificationManager =
-            Utils.getSystemServiceSafe(parentUserContext, NotificationManager::class.java)
+            getSystemServiceSafe(parentUserContext, NotificationManager::class.java)
         notificationManager.notify(pkgName, NOTIFICATION_LISTENER_CHECK_NOTIFICATION_ID, b.build())
 
         Log.v(TAG, "Notification listener check notification shown with sessionId=" +
@@ -629,7 +615,7 @@ internal class NotificationListenerCheckInternal(
      */
     private fun getCurrentlyShownNotificationLocked(): StatusBarNotification? {
         val notifications =
-            Utils.getSystemServiceSafe(parentUserContext, NotificationManager::class.java)
+            getSystemServiceSafe(parentUserContext, NotificationManager::class.java)
                 .activeNotifications
 
         for (notification in notifications) {
@@ -648,7 +634,7 @@ internal class NotificationListenerCheckInternal(
     private suspend fun removeNotificationsForPackage(pkg: String) {
         val notification: StatusBarNotification? = getCurrentlyShownNotificationLocked()
         if (notification != null && notification.tag == pkg) {
-            Utils.getSystemServiceSafe(parentUserContext, NotificationManager::class.java)
+            getSystemServiceSafe(parentUserContext, NotificationManager::class.java)
                 .cancel(pkg, NOTIFICATION_LISTENER_CHECK_NOTIFICATION_ID)
         }
     }
@@ -661,17 +647,6 @@ internal class NotificationListenerCheckInternal(
         if (shouldCancel != null && shouldCancel.asBoolean) {
             throw InterruptedException()
         }
-    }
-
-    /**
-     * Check if the current user is the profile parent.
-     *
-     * @return `true` if the current user is the profile parent.
-     */
-    internal fun isRunningInParentProfile(): Boolean {
-        val user = UserHandle.of(UserHandle.myUserId())
-        val parent: UserHandle? = userManager.getProfileParent(user)
-        return parent == null || user == parent
     }
 
     /**
@@ -691,6 +666,7 @@ internal class NotificationListenerCheckInternal(
 }
 
 class NotificationListenerCheck {
+
     /**
      * Checks if a new notification should be shown.
      */
@@ -705,7 +681,8 @@ class NotificationListenerCheck {
         override fun onCreate() {
             super.onCreate()
 
-            if (!checkNotificationListenerSupported()) {
+            if (!checkNotificationListenerCheckEnabled(this)) {
+                // NotificationListenerCheck not enabled. End job.
                 return
             }
 
@@ -726,8 +703,8 @@ class NotificationListenerCheck {
          * @return `false` if another check is already running, or if SDK Check fails (below T)
          */
         override fun onStartJob(params: JobParameters): Boolean {
-            if (!checkNotificationListenerSupported()) {
-                // NotificationListenerCheck not supported below T. End job.
+            if (!checkNotificationListenerCheckEnabled(this)) {
+                // NotificationListenerCheck not enabled. End job.
                 return false
             }
 
@@ -778,19 +755,19 @@ class NotificationListenerCheck {
      * On boot set up a periodic job that starts checks.
      */
     class SetupPeriodicNotificationListenerCheck : BroadcastReceiver() {
+
         override fun onReceive(context: Context, intent: Intent) {
-            if (!checkNotificationListenerSupported()) {
+            if (!checkNotificationListenerCheckSupported()) {
+                // Notification Listener Check not supported. Exit.
                 return
             }
 
-            val notificationListenerCheckInternal = NotificationListenerCheckInternal(context, null)
-            val jobScheduler = Utils.getSystemServiceSafe(context, JobScheduler::class.java)
-
-            if (!notificationListenerCheckInternal.isRunningInParentProfile()) {
+            if (isProfile(context)) {
                 // Profile parent handles child profiles too.
                 return
             }
 
+            val jobScheduler = getSystemServiceSafe(context, JobScheduler::class.java)
             if (jobScheduler.getPendingJob(PERIODIC_NOTIFICATION_LISTENER_CHECK_JOB_ID) == null) {
                 val job =
                     JobInfo.Builder(
@@ -814,36 +791,11 @@ class NotificationListenerCheck {
     }
 
     /**
-     * Show the notification listener permission switch when the notification is clicked.
-     */
-    class NotificationClickHandler : BroadcastReceiver() {
-        override fun onReceive(context: Context, intent: Intent) {
-            if (!checkNotificationListenerSupported()) {
-                return
-            }
-
-            val componentName =
-                Utils.getParcelableExtraSafe<ComponentName>(intent, EXTRA_COMPONENT_NAME)
-            val sessionId = intent.getLongExtra(EXTRA_SESSION_ID, INVALID_SESSION_ID)
-            GlobalScope.launch(Default) {
-                NotificationListenerCheckInternal(context, null).markAsNotified(componentName)
-            }
-            Log.v(
-                TAG,
-                "Notification listener check notification clicked with sessionId=$sessionId " +
-                    "component=${componentName.flattenToString()}"
-            )
-
-            // TODO(b/216365468): send users to safety center
-        }
-    }
-
-    /**
      * Handle the case where the notification is swiped away without further interaction.
      */
     class NotificationDeleteHandler : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
-            if (!checkNotificationListenerSupported()) {
+            if (!checkNotificationListenerCheckEnabled(context)) {
                 return
             }
 
@@ -874,7 +826,14 @@ class NotificationListenerCheck {
                 return
             }
 
-            if (!checkNotificationListenerSupported()) {
+            if (!checkNotificationListenerCheckEnabled(context)) {
+                return
+            }
+
+            if (isProfile(context)) {
+                if (DEBUG) {
+                    Log.d(TAG, "NotificationListenerCheck only supports parent profile")
+                }
                 return
             }
 
@@ -884,18 +843,33 @@ class NotificationListenerCheck {
 
             GlobalScope.launch(Default) {
                 NotificationListenerCheckInternal(context, null).run {
-                    if (!isRunningInParentProfile()) {
-                        if (DEBUG) {
-                            Log.d(TAG, "NotificationListenerCheck only supports parent profile")
-                        }
-                        return@run
-                    }
-
                     removePackageState(data.schemeSpecificPart)
-
                     // TODO(b/217566029): update Safety center action cards
                 }
             }
+        }
+    }
+
+    companion object {
+        /** Notification Listener Check requires Android T or later*/
+        @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.TIRAMISU)
+        private fun checkNotificationListenerCheckSupported(): Boolean {
+            return SdkLevel.isAtLeastT()
+        }
+
+        /** Returns {@code true} when Notification listener check is supported, feature flag enabled and
+         *  Safety Center enabled */
+        @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.TIRAMISU)
+        private fun checkNotificationListenerCheckEnabled(context: Context): Boolean {
+            return checkNotificationListenerCheckSupported() &&
+                isNotificationListenerCheckFlagEnabled() &&
+                getSystemServiceSafe(context, SafetyCenterManager::class.java).isSafetyCenterEnabled
+        }
+
+        @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+        private fun isProfile(context: Context): Boolean {
+            val userManager = getSystemServiceSafe(context, UserManager::class.java)
+            return userManager.isProfile
         }
     }
 }
