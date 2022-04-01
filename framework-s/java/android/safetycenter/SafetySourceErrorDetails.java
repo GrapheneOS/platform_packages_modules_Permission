@@ -18,6 +18,8 @@ package android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
+import static java.util.Objects.requireNonNull;
+
 import android.annotation.NonNull;
 import android.annotation.SystemApi;
 import android.os.Parcel;
@@ -35,11 +37,27 @@ import java.util.Objects;
 @SystemApi
 @RequiresApi(TIRAMISU)
 public final class SafetySourceErrorDetails implements Parcelable {
+
+    @NonNull
+    public static final Creator<SafetySourceErrorDetails> CREATOR =
+            new Creator<SafetySourceErrorDetails>() {
+                @Override
+                public SafetySourceErrorDetails createFromParcel(Parcel in) {
+                    SafetyEvent safetyEvent = in.readTypedObject(SafetyEvent.CREATOR);
+                    return new SafetySourceErrorDetails(safetyEvent);
+                }
+
+                @Override
+                public SafetySourceErrorDetails[] newArray(int size) {
+                    return new SafetySourceErrorDetails[0];
+                }
+            };
+
     @NonNull
     private final SafetyEvent mSafetyEvent;
 
     public SafetySourceErrorDetails(@NonNull SafetyEvent safetyEvent) {
-        mSafetyEvent = safetyEvent;
+        mSafetyEvent = requireNonNull(safetyEvent);
     }
 
     /** Returns the safety event associated with this error. */
@@ -48,11 +66,10 @@ public final class SafetySourceErrorDetails implements Parcelable {
         return mSafetyEvent;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof SafetySourceErrorDetails)) return false;
         SafetySourceErrorDetails that = (SafetySourceErrorDetails) o;
         return mSafetyEvent.equals(that.mSafetyEvent);
     }
@@ -79,20 +96,4 @@ public final class SafetySourceErrorDetails implements Parcelable {
     public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeTypedObject(mSafetyEvent, flags);
     }
-
-    @NonNull
-    public static final Creator<SafetySourceErrorDetails> CREATOR =
-            new Creator<SafetySourceErrorDetails>() {
-        @Override
-        public SafetySourceErrorDetails createFromParcel(Parcel in) {
-            SafetyEvent safetyEvent = in.readTypedObject(SafetyEvent.CREATOR);
-
-            return new SafetySourceErrorDetails(safetyEvent);
-        }
-
-        @Override
-        public SafetySourceErrorDetails[] newArray(int size) {
-            return new SafetySourceErrorDetails[0];
-        }
-    };
 }
