@@ -16,19 +16,25 @@
 
 package com.android.safetycenter;
 
+import static android.Manifest.permission.READ_SAFETY_CENTER_STATUS;
 import static android.Manifest.permission.SEND_SAFETY_CENTER_UPDATE;
 import static android.content.Intent.FLAG_RECEIVER_FOREGROUND;
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 import static android.os.PowerExemptionManager.REASON_REFRESH_SAFETY_SOURCES;
 import static android.os.PowerExemptionManager.TEMPORARY_ALLOW_LIST_TYPE_FOREGROUND_SERVICE_ALLOWED;
 import static android.safetycenter.SafetyCenterManager.ACTION_REFRESH_SAFETY_SOURCES;
+import static android.safetycenter.SafetyCenterManager.ACTION_SAFETY_CENTER_ENABLED_CHANGED;
 import static android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_REQUEST_TYPE_FETCH_FRESH_DATA;
 import static android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_REQUEST_TYPE_GET_DATA;
 import static android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID;
 import static android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE;
 import static android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCE_IDS;
+import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_DEVICE_LOCALE_CHANGE;
+import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_DEVICE_REBOOT;
+import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_OTHER;
 import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_PAGE_OPEN;
 import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK;
+import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_SAFETY_CENTER_ENABLED;
 
 import android.annotation.NonNull;
 import android.annotation.UserIdInt;
@@ -37,6 +43,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.UserHandle;
+import android.safetycenter.SafetyCenterManager;
 import android.safetycenter.SafetyCenterManager.RefreshReason;
 import android.safetycenter.SafetyCenterManager.RefreshRequestType;
 
@@ -50,14 +57,14 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Class to manage and track refresh broadcasts sent by {@link SafetyCenterService}.
+ * Class to manage and track broadcasts sent by {@link SafetyCenterService}.
  *
  * <p>This class isn't thread safe. Thread safety must be handled by the caller.
  */
 @RequiresApi(TIRAMISU)
-final class SafetyCenterRefreshManager {
+final class SafetyCenterBroadcastManager {
 
-    private static final String TAG = "SafetyCenterRefreshMana";
+    private static final String TAG = "SafetyCenterBroadcasts";
 
     /**
      * Time for which an app, upon receiving a particular broadcast, will be placed on a temporary
@@ -70,16 +77,16 @@ final class SafetyCenterRefreshManager {
     @NonNull
     private final Context mContext;
 
-    /** Creates a {@link SafetyCenterRefreshManager} using the given {@link Context}. */
-    SafetyCenterRefreshManager(@NonNull Context context) {
+    /** Creates a {@link SafetyCenterBroadcastManager} using the given {@link Context}. */
+    SafetyCenterBroadcastManager(@NonNull Context context) {
         mContext = context;
     }
 
     /**
      * Triggers a refresh of safety sources by sending them broadcasts with action
-     * {@link android.safetycenter.SafetyCenterManager#ACTION_REFRESH_SAFETY_SOURCES}.
+     * {@link SafetyCenterManager#ACTION_REFRESH_SAFETY_SOURCES}.
      */
-    void refreshSafetySources(
+    void sendRefreshSafetySources(
             @NonNull SafetyCenterConfigInternal configInternal,
             @RefreshReason int refreshReason,
             @NonNull UserProfileGroup userProfileGroup) {
@@ -101,43 +108,67 @@ final class SafetyCenterRefreshManager {
         for (int i = 0; i < broadcasts.size(); i++) {
             Broadcast broadcast = broadcasts.get(i);
 
-            sendRefreshBroadcast(broadcast, broadcastOptions, requestType, userProfileGroup);
+            sendRefreshSafetySourcesBroadcast(broadcast, broadcastOptions, requestType,
+                    userProfileGroup);
         }
     }
 
-    private void sendRefreshBroadcast(
+    /**
+     * Triggers an {@link SafetyCenterManager#ACTION_SAFETY_CENTER_ENABLED_CHANGED} broadcast for
+     * all safety sources.
+     *
+     * <p>This method also sends an implicit broadcast globally (which requires the {@link
+     * android.Manifest.permission#READ_SAFETY_CENTER_STATUS} permission).
+     */
+    // TODO(b/227310195): Consider adding a boolean extra to the intent instead of having clients
+    // rely on SafetyCenterManager#isSafetyCenterEnabled()?
+    void sendEnabledChanged(@NonNull SafetyCenterConfigInternal configInternal) {
+        List<Broadcast> broadcasts = configInternal.getBroadcasts();
+        for (int i = 0; i < broadcasts.size(); i++) {
+            Broadcast broadcast = broadcasts.get(i);
+
+            sendEnabledChangedBroadcast(
+                    createEnabledChangedBroadcastIntent(broadcast.getPackageName()),
+                    SEND_SAFETY_CENTER_UPDATE);
+        }
+
+        sendEnabledChangedBroadcast(createEnabledChangedBroadcastIntent(),
+                READ_SAFETY_CENTER_STATUS);
+    }
+
+    private void sendRefreshSafetySourcesBroadcast(
             @NonNull Broadcast broadcast,
             @NonNull BroadcastOptions broadcastOptions,
             @RefreshRequestType int requestType,
             @NonNull UserProfileGroup userProfileGroup) {
         if (!broadcast.getSourceIdsForProfileOwner().isEmpty()) {
             int profileOwnerUserId = userProfileGroup.getProfileOwnerUserId();
-            Intent broadcastIntent = createBroadcastIntent(
+            Intent broadcastIntent = createRefreshSafetySourcesBroadcastIntent(
                     requestType,
                     broadcast.getPackageName(),
                     broadcast.getSourceIdsForProfileOwner(),
                     profileOwnerUserId);
 
-            sendRefreshBroadcast(broadcastIntent, broadcastOptions,
+            sendRefreshSafetySourcesBroadcast(broadcastIntent, broadcastOptions,
                     UserHandle.of(profileOwnerUserId));
         }
         if (!broadcast.getSourceIdsForManagedProfiles().isEmpty()) {
             int[] managedProfileUserIds = userProfileGroup.getManagedProfilesUserIds();
             for (int i = 0; i < managedProfileUserIds.length; i++) {
                 int managedProfileUserId = managedProfileUserIds[i];
-                Intent broadcastIntent = createBroadcastIntent(
+                Intent broadcastIntent = createRefreshSafetySourcesBroadcastIntent(
                         requestType,
                         broadcast.getPackageName(),
                         broadcast.getSourceIdsForManagedProfiles(),
                         managedProfileUserId);
 
-                sendRefreshBroadcast(broadcastIntent, broadcastOptions,
+                sendRefreshSafetySourcesBroadcast(broadcastIntent, broadcastOptions,
                         UserHandle.of(managedProfileUserId));
             }
         }
     }
 
-    private void sendRefreshBroadcast(
+    private void sendRefreshSafetySourcesBroadcast(
             @NonNull Intent broadcastIntent,
             @NonNull BroadcastOptions broadcastOptions,
             @NonNull UserHandle userHandle) {
@@ -153,23 +184,52 @@ final class SafetyCenterRefreshManager {
         }
     }
 
+    private void sendEnabledChangedBroadcast(@NonNull Intent broadcastIntent,
+            @NonNull String permission) {
+        // The following operation requires INTERACT_ACROSS_USERS permission.
+        final long callingId = Binder.clearCallingIdentity();
+        try {
+            mContext.sendBroadcastAsUser(broadcastIntent,
+                    UserHandle.ALL,
+                    permission);
+        } finally {
+            Binder.restoreCallingIdentity(callingId);
+        }
+    }
+
     @NonNull
-    private static Intent createBroadcastIntent(
+    private static Intent createEnabledChangedBroadcastIntent(@NonNull String packageName) {
+        return createEnabledChangedBroadcastIntent().setPackage(packageName);
+    }
+
+    @NonNull
+    private static Intent createEnabledChangedBroadcastIntent() {
+        return createBroadcastIntent(ACTION_SAFETY_CENTER_ENABLED_CHANGED);
+    }
+
+    @NonNull
+    private static Intent createRefreshSafetySourcesBroadcastIntent(
             @RefreshRequestType int requestType,
             @NonNull String packageName,
             @NonNull List<String> sourceIdsToRefresh,
             @UserIdInt int userId) {
         String refreshBroadcastId = String.valueOf(
                 Objects.hash(sourceIdsToRefresh, userId, System.currentTimeMillis()));
-        return new Intent(ACTION_REFRESH_SAFETY_SOURCES)
+        return createBroadcastIntent(ACTION_REFRESH_SAFETY_SOURCES)
                 .putExtra(EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE, requestType)
                 // TODO(b/220826153): Test source ids in refresh broadcasts.
                 .putExtra(EXTRA_REFRESH_SAFETY_SOURCE_IDS,
                         sourceIdsToRefresh.toArray(new String[0]))
                 // TODO(b/222677992): Test refresh broadcast id in refresh broadcasts.
                 .putExtra(EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID, refreshBroadcastId)
-                .setFlags(FLAG_RECEIVER_FOREGROUND)
                 .setPackage(packageName);
+    }
+
+    @NonNull
+    private static Intent createBroadcastIntent(
+            @NonNull String intentAction) {
+        return new Intent(intentAction)
+                .setFlags(FLAG_RECEIVER_FOREGROUND);
     }
 
     @RefreshRequestType
@@ -178,6 +238,10 @@ final class SafetyCenterRefreshManager {
             case REFRESH_REASON_RESCAN_BUTTON_CLICK:
                 return EXTRA_REFRESH_REQUEST_TYPE_FETCH_FRESH_DATA;
             case REFRESH_REASON_PAGE_OPEN:
+            case REFRESH_REASON_DEVICE_REBOOT:
+            case REFRESH_REASON_DEVICE_LOCALE_CHANGE:
+            case REFRESH_REASON_SAFETY_CENTER_ENABLED:
+            case REFRESH_REASON_OTHER:
                 return EXTRA_REFRESH_REQUEST_TYPE_GET_DATA;
         }
         throw new IllegalArgumentException("Invalid refresh reason: " + refreshReason);
