@@ -32,7 +32,8 @@ object SafetyCenterCtsConfig {
     /** ID of the only source provided by [CTS_CONFIG]. */
     const val CTS_SOURCE_ID = "cts_source_id"
 
-    private const val CTS_SOURCE_GROUP_ID = "cts_source_group"
+    /** ID of the only [SafetySourcesGroup] provided by [CTS_CONFIG]. */
+    const val CTS_SOURCE_GROUP_ID = "cts_source_group"
 
     private val CTS_SOURCE =
         SafetySource.Builder(SAFETY_SOURCE_TYPE_DYNAMIC)
