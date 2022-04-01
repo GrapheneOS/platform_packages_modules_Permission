@@ -196,13 +196,12 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Zobraziť všetky povolenia aplikácie <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Zobraziť všetky aplikácie s týmto povolením"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Zobraziť používanie mikrofónu Asistentom"</string>
-    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
-    <skip />
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"Nastavenia nepoužívaných aplikácií"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Odstrániť povolenia, ak sa aplikácia nepoužíva"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Odstraňovať povol. a uvoľňovať priestor"</string>
-    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
+    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
     <skip />
-    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
+    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
     <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Ak túto aplikáciu niekoľko mesiacov nepoužijete, v záujme ochrany vašich údajov budú odstránené jej povolenia."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Ak túto aplikáciu niekoľko mesiacov nepoužijete, v záujme ochrany vašich údajov budú odstránené tieto povolenia: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
@@ -505,12 +504,9 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Zabezpeč. a ochrana súkromia"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Skontrolovať"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Zavrieť"</string>
-    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (1548283211993262986) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_confirm_dismiss_button (5884137843083634556) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_cancel_dismiss_button (2874578798877712346) -->
-    <skip />
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"Chcete toto upozornenie zavrieť?"</string>
+    <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Zavrieť"</string>
+    <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Zrušiť"</string>
     <string name="security_settings" msgid="3808106921175271317">"Nastavenia zabezpečenia"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Povolenia pre senzory"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Nastavenia ochrany súkromia"</string>
