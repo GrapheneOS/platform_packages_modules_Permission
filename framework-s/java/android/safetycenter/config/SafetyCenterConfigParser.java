@@ -123,9 +123,8 @@ final class SafetyCenterConfigParser {
         try {
             return builder.build();
         } catch (IllegalStateException e) {
-            throwElementInvalid(TAG_SAFETY_SOURCES_CONFIG, e);
+            throw elementInvalid(TAG_SAFETY_SOURCES_CONFIG, e);
         }
-        throw new AssertionError("unreachable");
     }
 
     @NonNull
@@ -150,7 +149,7 @@ final class SafetyCenterConfigParser {
                                     parser.getAttributeValue(i), name, parser.getAttributeName(i)));
                     break;
                 default:
-                    throwAttributeUnexpected(name, parser.getAttributeName(i));
+                    throw attributeUnexpected(name, parser.getAttributeName(i));
             }
         }
         parser.nextTag();
@@ -177,9 +176,8 @@ final class SafetyCenterConfigParser {
         try {
             return builder.build();
         } catch (IllegalStateException e) {
-            throwElementInvalid(name, e);
+            throw elementInvalid(name, e);
         }
-        throw new AssertionError("unreachable");
     }
 
     @NonNull
@@ -236,7 +234,7 @@ final class SafetyCenterConfigParser {
                                     parser.getAttributeName(i)));
                     break;
                 default:
-                    throwAttributeUnexpected(name, parser.getAttributeName(i));
+                    throw attributeUnexpected(name, parser.getAttributeName(i));
             }
         }
         parser.nextTag();
@@ -245,58 +243,55 @@ final class SafetyCenterConfigParser {
         try {
             return builder.build();
         } catch (IllegalStateException e) {
-            throwElementInvalid(name, e);
+            throw elementInvalid(name, e);
         }
-        throw new AssertionError("unreachable");
     }
 
     private static void validateElementStart(@NonNull XmlResourceParser parser,
             @NonNull String name)
             throws XmlPullParserException, ParseException {
         if (parser.getEventType() != START_TAG || !parser.getName().equals(name)) {
-            throwElementMissing(name);
+            throw elementMissing(name);
         }
     }
 
     private static void validateElementEnd(@NonNull XmlResourceParser parser, @NonNull String name)
             throws XmlPullParserException, ParseException {
         if (parser.getEventType() != END_TAG || !parser.getName().equals(name)) {
-            throwElementNotClosed(name);
+            throw elementNotClosed(name);
         }
     }
 
     private static void validateElementHasNoAttribute(
             @NonNull XmlResourceParser parser, @NonNull String name) throws ParseException {
         if (parser.getAttributeCount() != 0) {
-            throwElementInvalid(name);
+            throw elementInvalid(name);
         }
     }
 
-    private static void throwElementMissing(@NonNull String name) throws ParseException {
-        throw new ParseException(String.format("Element %s missing", name));
+    private static ParseException elementMissing(@NonNull String name) {
+        return new ParseException(String.format("Element %s missing", name));
     }
 
-    private static void throwElementNotClosed(@NonNull String name) throws ParseException {
-        throw new ParseException(String.format("Element %s not closed", name));
+    private static ParseException elementNotClosed(@NonNull String name) {
+        return new ParseException(String.format("Element %s not closed", name));
     }
 
-    private static void throwElementInvalid(@NonNull String name) throws ParseException {
-        throw new ParseException(String.format("Element %s invalid", name));
+    private static ParseException elementInvalid(@NonNull String name) {
+        return new ParseException(String.format("Element %s invalid", name));
     }
 
-    private static void throwElementInvalid(@NonNull String name, @NonNull Throwable e)
-            throws ParseException {
-        throw new ParseException(String.format("Element %s invalid", name), e);
+    private static ParseException elementInvalid(@NonNull String name, @NonNull Throwable e) {
+        return new ParseException(String.format("Element %s invalid", name), e);
     }
 
-    private static void throwAttributeUnexpected(@NonNull String parent, @NonNull String name)
-            throws ParseException {
-        throw new ParseException(String.format("Unexpected attribute %s.%s", parent, name));
+    private static ParseException attributeUnexpected(@NonNull String parent,
+            @NonNull String name) {
+        return new ParseException(String.format("Unexpected attribute %s.%s", parent, name));
     }
 
-    private static void throwAttributeInvalid(@NonNull String parent, @NonNull String name)
-            throws ParseException {
-        throw new ParseException(String.format("Attribute %s.%s invalid", parent, name));
+    private static ParseException attributeInvalid(@NonNull String parent, @NonNull String name) {
+        return new ParseException(String.format("Attribute %s.%s invalid", parent, name));
     }
 
     private static int parseInteger(
@@ -346,9 +341,8 @@ final class SafetyCenterConfigParser {
             case ENUM_STATELESS_ICON_TYPE_PRIVACY:
                 return SafetySourcesGroup.STATELESS_ICON_TYPE_PRIVACY;
             default:
-                throwAttributeInvalid(parent, name);
+                throw attributeInvalid(parent, name);
         }
-        throw new AssertionError("unreachable");
     }
 
     @Profile
@@ -361,9 +355,8 @@ final class SafetyCenterConfigParser {
             case ENUM_PROFILE_ALL:
                 return SafetySource.PROFILE_ALL;
             default:
-                throwAttributeInvalid(parent, name);
+                throw attributeInvalid(parent, name);
         }
-        throw new AssertionError("unreachable");
     }
 
     @InitialDisplayState
@@ -378,8 +371,7 @@ final class SafetyCenterConfigParser {
             case ENUM_INITIAL_DISPLAY_STATE_HIDDEN:
                 return SafetySource.INITIAL_DISPLAY_STATE_HIDDEN;
             default:
-                throwAttributeInvalid(parent, name);
+                throw attributeInvalid(parent, name);
         }
-        throw new AssertionError("unreachable");
     }
 }
