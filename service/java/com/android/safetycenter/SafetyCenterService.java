@@ -34,10 +34,12 @@ import android.content.res.Resources;
 import android.os.Binder;
 import android.os.RemoteCallbackList;
 import android.provider.DeviceConfig;
+import android.provider.DeviceConfig.OnPropertiesChangedListener;
 import android.safetycenter.IOnSafetyCenterDataChangedListener;
 import android.safetycenter.ISafetyCenterManager;
 import android.safetycenter.SafetyCenterData;
 import android.safetycenter.SafetyCenterErrorDetails;
+import android.safetycenter.SafetyCenterManager;
 import android.safetycenter.SafetyEvent;
 import android.safetycenter.SafetySourceData;
 import android.safetycenter.SafetySourceErrorDetails;
@@ -48,6 +50,7 @@ import androidx.annotation.Keep;
 import androidx.annotation.RequiresApi;
 
 import com.android.internal.annotations.GuardedBy;
+import com.android.modules.utils.BackgroundThread;
 import com.android.permission.util.UserUtils;
 import com.android.safetycenter.SafetyCenterConfigReader.SafetyCenterConfigInternal;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
@@ -55,6 +58,7 @@ import com.android.server.SystemService;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.Executor;
 
 /**
  * Service for the safety center.
@@ -71,9 +75,10 @@ public final class SafetyCenterService extends SystemService {
     private static final String PROPERTY_SAFETY_CENTER_ENABLED = "safety_center_is_enabled";
 
     private final Object mApiLock = new Object();
-    // Refresh/rescan is guarded by another lock: sending broadcasts can be a lengthy operation and
-    // the APIs that will be exercised by the receivers are already protected by `mApiLock`.
-    private final Object mRefreshLock = new Object();
+    // Broadcasts to safety sources are guarded by another lock: we may want to do this sequentially
+    // in a blocking fashion and the APIs that will be exercised by the receivers are already
+    // protected by `mApiLock`.
+    private final Object mBroadcastLock = new Object();
     @GuardedBy("mApiLock")
     private final SafetyCenterListeners mSafetyCenterListeners = new SafetyCenterListeners();
     @GuardedBy("mApiLock")
@@ -82,11 +87,12 @@ public final class SafetyCenterService extends SystemService {
     @GuardedBy("mApiLock")
     @NonNull
     private final SafetyCenterDataTracker mSafetyCenterDataTracker;
-    @GuardedBy("mRefreshLock")
+    @GuardedBy("mBroadcastLock")
     @NonNull
-    private final SafetyCenterRefreshManager mSafetyCenterRefreshManager;
+    private final SafetyCenterBroadcastManager mSafetyCenterBroadcastManager;
     @NonNull
     private final AppOpsManager mAppOpsManager;
+    private final boolean mDeviceSupportsSafetyCenter;
 
     /** Whether the {@link SafetyCenterConfig} was successfully loaded. */
     private volatile boolean mConfigAvailable;
@@ -98,15 +104,33 @@ public final class SafetyCenterService extends SystemService {
         mSafetyCenterConfigReader = new SafetyCenterConfigReader(safetyCenterResourcesContext);
         mSafetyCenterDataTracker = new SafetyCenterDataTracker(context,
                 safetyCenterResourcesContext);
-        mSafetyCenterRefreshManager = new SafetyCenterRefreshManager(context);
+        mSafetyCenterBroadcastManager = new SafetyCenterBroadcastManager(context);
         mAppOpsManager = requireNonNull(context.getSystemService(AppOpsManager.class));
+        mDeviceSupportsSafetyCenter = context.getResources().getBoolean(
+                Resources.getSystem().getIdentifier("config_enableSafetyCenter", "bool",
+                        "android"));
     }
 
     @Override
     public void onStart() {
         publishBinderService(Context.SAFETY_CENTER_SERVICE, new Stub());
-        synchronized (mApiLock) {
-            mConfigAvailable = mSafetyCenterConfigReader.loadConfig();
+        if (mDeviceSupportsSafetyCenter) {
+            synchronized (mApiLock) {
+                mConfigAvailable = mSafetyCenterConfigReader.loadConfig();
+            }
+        }
+    }
+
+    @Override
+    public void onBootPhase(int phase) {
+        if (phase == SystemService.PHASE_BOOT_COMPLETED && canUseSafetyCenter()) {
+            Executor backgroundThreadExecutor = BackgroundThread.getExecutor();
+            SafetyCenterEnabledListener listener = new SafetyCenterEnabledListener();
+            // Ensure the listener is called first with the current state on the same thread.
+            backgroundThreadExecutor.execute(
+                    () -> listener.onSafetyCenterEnabledChanged(getSafetyCenterEnabledProperty()));
+            DeviceConfig.addOnPropertiesChangedListener(DeviceConfig.NAMESPACE_PRIVACY,
+                    backgroundThreadExecutor, listener);
         }
     }
 
@@ -238,13 +262,10 @@ public final class SafetyCenterService extends SystemService {
             }
 
             UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
-            SafetyCenterConfigReader.SafetyCenterConfigInternal configInternal;
+            SafetyCenterConfigInternal configInternal = getConfigInternalLocked();
 
-            synchronized (mApiLock) {
-                configInternal = mSafetyCenterConfigReader.getCurrentConfigInternal();
-            }
-            synchronized (mRefreshLock) {
-                mSafetyCenterRefreshManager.refreshSafetySources(
+            synchronized (mBroadcastLock) {
+                mSafetyCenterBroadcastManager.sendRefreshSafetySources(
                         configInternal,
                         refreshReason,
                         userProfileGroup
@@ -365,6 +386,8 @@ public final class SafetyCenterService extends SystemService {
 
             synchronized (mApiLock) {
                 mSafetyCenterDataTracker.clear();
+                // TODO(b/223550097): Should we dispatch a new listener update here? This call can
+                // modify the SafetyCenterData.
             }
         }
 
@@ -381,6 +404,8 @@ public final class SafetyCenterService extends SystemService {
             synchronized (mApiLock) {
                 mSafetyCenterConfigReader.setConfigOverrideForTests(safetyCenterConfig);
                 mSafetyCenterDataTracker.clear();
+                // TODO(b/223550097): Should we clear the listeners here? Or should we dispatch a
+                //  new listener update since the SafetyCenterData will have changed?
             }
         }
 
@@ -395,32 +420,13 @@ public final class SafetyCenterService extends SystemService {
             synchronized (mApiLock) {
                 mSafetyCenterConfigReader.clearConfigOverrideForTests();
                 mSafetyCenterDataTracker.clear();
+                // TODO(b/223550097): Should we clear the listeners here? Or should we dispatch a
+                //  new listener update since the SafetyCenterData will have changed?
             }
         }
 
         private boolean isApiEnabled() {
-            return getSafetyCenterConfigValue() && getDeviceConfigSafetyCenterEnabledProperty()
-                    && mConfigAvailable;
-        }
-
-        private boolean getDeviceConfigSafetyCenterEnabledProperty() {
-            // This call requires the READ_DEVICE_CONFIG permission.
-            final long callingId = Binder.clearCallingIdentity();
-            try {
-                return DeviceConfig.getBoolean(
-                        DeviceConfig.NAMESPACE_PRIVACY,
-                        PROPERTY_SAFETY_CENTER_ENABLED,
-                        /* defaultValue = */ false);
-            } finally {
-                Binder.restoreCallingIdentity(callingId);
-            }
-        }
-
-        private boolean getSafetyCenterConfigValue() {
-            return getContext().getResources().getBoolean(Resources.getSystem().getIdentifier(
-                    "config_enableSafetyCenter",
-                    "bool",
-                    "android"));
+            return canUseSafetyCenter() && getSafetyCenterEnabledProperty();
         }
 
         private void enforceAnyCallingOrSelfPermissions(@NonNull String message,
@@ -457,6 +463,92 @@ public final class SafetyCenterService extends SystemService {
                 return false;
             }
             return true;
+        }
+    }
+
+    /**
+     * An {@link OnPropertiesChangedListener} for {@link #PROPERTY_SAFETY_CENTER_ENABLED} that
+     * sends broadcasts when the SafetyCenter property is enabled or disabled.
+     *
+     * <p>This listener assumes that the {@link #PROPERTY_SAFETY_CENTER_ENABLED} value maps to
+     * {@link SafetyCenterManager#isSafetyCenterEnabled()}. It should only be registered if the
+     * device supports SafetyCenter and the {@link SafetyCenterConfig} was loaded successfully.
+     *
+     * <p>This listener is not thread-safe; it should be called on a single thread.
+     */
+    private final class SafetyCenterEnabledListener implements OnPropertiesChangedListener {
+
+        private boolean mSafetyCenterEnabled;
+
+        @Override
+        public void onPropertiesChanged(DeviceConfig.Properties properties) {
+            if (!properties.getKeyset().contains(PROPERTY_SAFETY_CENTER_ENABLED)) {
+                return;
+            }
+            boolean safetyCenterEnabled = properties.getBoolean(PROPERTY_SAFETY_CENTER_ENABLED,
+                    false);
+            if (mSafetyCenterEnabled == safetyCenterEnabled) {
+                return;
+            }
+            onSafetyCenterEnabledChanged(safetyCenterEnabled);
+        }
+
+        private void onSafetyCenterEnabledChanged(boolean safetyCenterEnabled) {
+            if (safetyCenterEnabled) {
+                onApiEnabled();
+            } else {
+                onApiDisabled();
+            }
+            mSafetyCenterEnabled = safetyCenterEnabled;
+        }
+
+        private void onApiEnabled() {
+            SafetyCenterConfigInternal configInternal = getConfigInternalLocked();
+
+            synchronized (mBroadcastLock) {
+                mSafetyCenterBroadcastManager.sendEnabledChanged(configInternal);
+                // TODO(b/227342241): Look into whether we should refresh safety sources here too.
+                // Supposedly they could already be listening to
+                // `ACTION_SAFETY_CENTER_ENABLED_CHANGED`, so it might not be necessary.
+            }
+        }
+
+        private void onApiDisabled() {
+            SafetyCenterConfigInternal configInternal;
+
+            synchronized (mApiLock) {
+                configInternal = mSafetyCenterConfigReader.getCurrentConfigInternal();
+                mSafetyCenterDataTracker.clear();
+                // TODO(b/227428101): Look into clearing the listeners here as well.
+            }
+
+            synchronized (mBroadcastLock) {
+                mSafetyCenterBroadcastManager.sendEnabledChanged(configInternal);
+            }
+        }
+    }
+
+    private boolean canUseSafetyCenter() {
+        return mDeviceSupportsSafetyCenter && mConfigAvailable;
+    }
+
+    private boolean getSafetyCenterEnabledProperty() {
+        // This call requires the READ_DEVICE_CONFIG permission.
+        final long callingId = Binder.clearCallingIdentity();
+        try {
+            return DeviceConfig.getBoolean(
+                    DeviceConfig.NAMESPACE_PRIVACY,
+                    PROPERTY_SAFETY_CENTER_ENABLED,
+                    /* defaultValue = */ false);
+        } finally {
+            Binder.restoreCallingIdentity(callingId);
+        }
+    }
+
+    @NonNull
+    private SafetyCenterConfigInternal getConfigInternalLocked() {
+        synchronized (mApiLock) {
+            return mSafetyCenterConfigReader.getCurrentConfigInternal();
         }
     }
 }
