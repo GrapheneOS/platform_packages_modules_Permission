@@ -35,10 +35,7 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.ArgumentMatchers.anyBoolean
-import org.mockito.ArgumentMatchers.eq
 import org.mockito.Mock
-import org.mockito.Mockito.`when` as whenever
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
 import org.mockito.MockitoAnnotations
@@ -77,8 +74,6 @@ class NotificationListenerCheckInternalTest {
         notificationListenerCheck = runWithShellPermissionIdentity {
             NotificationListenerCheckInternal(context) { shouldCancel }
         }
-
-        enableNotificationListenerChecker(true)
     }
 
     @After
@@ -88,23 +83,6 @@ class NotificationListenerCheckInternalTest {
 
         shouldCancel = false
         mockitoSession.finishMocking()
-    }
-
-    @Test
-    fun getEnabledNotificationListenersAndNotifyIfNeeded_featureDisabled_finishJob() {
-        enableNotificationListenerChecker(false)
-
-        val jobParameters = mock(JobParameters::class.java)
-        runWithShellPermissionIdentity {
-            runBlocking {
-                notificationListenerCheck.getEnabledNotificationListenersAndNotifyIfNeeded(
-                    jobParameters,
-                    notificationListenerCheckJobService
-                )
-            }
-        }
-
-        verify(notificationListenerCheckJobService).jobFinished(jobParameters, false)
     }
 
     @Test
@@ -369,16 +347,6 @@ class NotificationListenerCheckInternalTest {
 
         // Verify no components are present
         assertThat(updatedNlsComponents).isEmpty()
-    }
-
-    private fun enableNotificationListenerChecker(enabled: Boolean) {
-        whenever(
-            DeviceConfig.getBoolean(
-                eq(DeviceConfig.NAMESPACE_PRIVACY),
-                eq(PROPERTY_NOTIFICATION_LISTENER_CHECK_ENABLED),
-                anyBoolean()
-            )
-        ).thenReturn(enabled)
     }
 
     private fun getNotifiedComponents(): Set<NlsComponent> = runBlocking {
