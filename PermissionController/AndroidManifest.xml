@@ -109,8 +109,6 @@
 
         <receiver android:name="com.android.permissioncontroller.permission.service.v33.NotificationListenerCheck$NotificationDeleteHandler" />
 
-        <receiver android:name="com.android.permissioncontroller.permission.service.v33.NotificationListenerCheck$NotificationClickHandler" />
-
         <receiver android:name="com.android.permissioncontroller.permission.service.v33.NotificationListenerCheck$PackageResetHandler"
                   android:exported="true">
             <intent-filter>
