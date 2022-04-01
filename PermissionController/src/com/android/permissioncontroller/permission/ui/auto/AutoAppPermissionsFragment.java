@@ -37,6 +37,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -109,6 +110,7 @@ public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment implem
         super.onCreate(savedInstanceState);
         setLoading(true);
 
+        mIsFirstLoad = true;
         mPackageName = getArguments().getString(Intent.EXTRA_PACKAGE_NAME);
         mUser = getArguments().getParcelable(Intent.EXTRA_USER);
         mIsSystemPermsScreen = getArguments().getBoolean(IS_SYSTEM_PERMS_SCREEN, true);
@@ -137,9 +139,7 @@ public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment implem
         createPreferenceCategories(packageInfo);
 
         mViewModel.getPackagePermGroupsLiveData().observe(this, this::updatePreferences);
-        if (mViewModel.getPackagePermGroupsLiveData().getValue() != null) {
-            updatePreferences(mViewModel.getPackagePermGroupsLiveData().getValue());
-        }
+        updatePreferences(mViewModel.getPackagePermGroupsLiveData().getValue());
 
         if (SdkLevel.isAtLeastS()) {
             mPermissionUsages = new PermissionUsages(getContext());
@@ -206,19 +206,23 @@ public class AutoAppPermissionsFragment extends AutoSettingsFrameFragment implem
         bindUi(packageInfo);
     }
 
-    private void updatePreferences(
+    private void updatePreferences(@Nullable
             Map<Category, List<AppPermissionGroupsViewModel.GroupUiInfo>> groupMap) {
-        Context context = getPreferenceManager().getContext();
-        if (context == null) {
-            return;
-        }
-
         if (groupMap == null && mViewModel.getPackagePermGroupsLiveData().isInitialized()) {
+            // null because explicitly set to null
             Toast.makeText(
                     getActivity(), R.string.app_not_found_dlg_title, Toast.LENGTH_LONG).show();
             Log.w(LOG_TAG, "invalid package " + mPackageName);
 
             getActivity().finish();
+            return;
+        } else if (groupMap == null) {
+            // null because uninitialized
+            return;
+        }
+
+        Context context = getPreferenceManager().getContext();
+        if (context == null) {
             return;
         }
 
