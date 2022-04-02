@@ -200,9 +200,9 @@
     <skip />
     <string name="auto_revoke_label" msgid="5068393642936571656">"ایپ کے استعمال نہ ہونے پر اجازتیں ہٹائیں"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"اجازتوں کو ہٹائیں اور جگہ خالی کریں"</string>
-    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
+    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
     <skip />
-    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
+    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
     <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"آپ کے ڈیٹا کی حفاظت کے لیے، اگر ایپ کو کچھ مہینوں تک استعمال نہیں کیا گیا تو اس ایپ کے لیے اجازتیں ہٹا دی جائیں گی۔"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"آپ کے ڈیٹا کی حفاظت کے لیے، اگر ایپ کو کچھ مہینوں تک استعمال نہیں کیا گيا تو درج ذیل اجازتیں ہٹا دی جائیں گی: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
