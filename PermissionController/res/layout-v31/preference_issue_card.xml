@@ -14,8 +14,9 @@
   ~ limitations under the License.
   -->
 
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/issue_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -23,40 +24,32 @@
     android:clickable="false"
     style="@style/SafetyCenter.IssueCard">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <ImageButton
+        android:id="@+id/issue_card_dismiss_btn"
+        android:src="@drawable/ic_safety_issue_dismiss"
+        android:contentDescription="@string/safety_center_issue_card_dismiss_button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        style="@style/SafetyCenter.IssueCard.TopRow">
-
-        <ImageView
-            android:id="@+id/issue_card_banner_icon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_alignParentStart="true"
-            android:importantForAccessibility="no" />
-
-        <ImageButton
-            android:id="@+id/issue_card_dismiss_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_safety_issue_dismiss"
-            android:layout_alignParentEnd="true"
-            android:contentDescription="@string/safety_center_issue_card_dismiss_button"
-            style="@style/SafetyCenter.IssueCard.Dismiss" />
-    </RelativeLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/SafetyCenter.IssueCard.Dismiss" />
 
     <TextView
         android:id="@+id/issue_card_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/summary_placeholder"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/issue_card_dismiss_btn"
+        app:layout_constraintHorizontal_bias="0"
         style="@style/SafetyCenter.IssueCard.Title" />
 
     <TextView
         android:id="@+id/issue_card_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/issue_card_title"
         android:text="@string/summary_placeholder"
         style="@style/SafetyCenter.IssueCard.Subtitle" />
 
@@ -64,6 +57,7 @@
         android:id="@+id/issue_card_summary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/issue_card_subtitle"
         android:text="@string/summary_placeholder"
         style="@style/SafetyCenter.IssueCard.Summary" />
 
@@ -71,6 +65,7 @@
         android:id="@+id/issue_card_action_button_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/issue_card_summary"
         android:orientation="vertical"
         style="@style/SafetyCenter.IssueCard.ActionButtonList" />
 
@@ -79,7 +74,8 @@
         android:id="@+id/issue_card_protected_by_android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/issue_card_action_button_list"
         android:text="Protected by Android"
         style="@style/SafetyCenter.IssueCard.Footer" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

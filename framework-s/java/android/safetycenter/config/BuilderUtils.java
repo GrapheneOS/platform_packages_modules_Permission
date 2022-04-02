@@ -16,19 +16,29 @@
 
 package android.safetycenter.config;
 
+import static android.os.Build.VERSION_CODES.TIRAMISU;
+
 import android.annotation.AnyRes;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.content.res.Resources;
 
+import androidx.annotation.RequiresApi;
+
 import java.util.Objects;
 
+@RequiresApi(TIRAMISU)
 final class BuilderUtils {
+
     private BuilderUtils() {
     }
 
-    private static void validateAttribute(@Nullable Object attribute, @NonNull String name,
-            boolean required, boolean prohibited, @Nullable Object defaultValue) {
+    private static void validateAttribute(
+            @Nullable Object attribute,
+            @NonNull String name,
+            boolean required,
+            boolean prohibited,
+            @Nullable Object defaultValue) {
         if (attribute == null && required) {
             throw new IllegalStateException(String.format("Required attribute %s missing", name));
         }
@@ -39,15 +49,17 @@ final class BuilderUtils {
         }
     }
 
-    static void validateAttribute(@Nullable Object attribute, @NonNull String name,
-            boolean required, boolean prohibited) {
+    static void validateAttribute(
+            @Nullable Object attribute, @NonNull String name, boolean required,
+            boolean prohibited) {
         validateAttribute(attribute, name, required, prohibited, null);
     }
 
     @AnyRes
-    static int validateResId(@Nullable @AnyRes Integer value, @NonNull String name,
-            boolean required, boolean prohibited) {
-        validateAttribute(value, name, required, prohibited, Integer.valueOf(Resources.ID_NULL));
+    static int validateResId(
+            @Nullable @AnyRes Integer value, @NonNull String name, boolean required,
+            boolean prohibited) {
+        validateAttribute(value, name, required, prohibited, Resources.ID_NULL);
         if (value == null) {
             return Resources.ID_NULL;
         }
@@ -57,9 +69,14 @@ final class BuilderUtils {
         return value;
     }
 
-    static int validateIntDef(@Nullable Integer value, @NonNull String name,
-            boolean required, boolean prohibited, int defaultValue, int... validValues) {
-        validateAttribute(value, name, required, prohibited, Integer.valueOf(defaultValue));
+    static int validateIntDef(
+            @Nullable Integer value,
+            @NonNull String name,
+            boolean required,
+            boolean prohibited,
+            int defaultValue,
+            int... validValues) {
+        validateAttribute(value, name, required, prohibited, defaultValue);
         if (value == null) {
             return defaultValue;
         }
@@ -74,22 +91,29 @@ final class BuilderUtils {
         return value;
     }
 
-    static int validateInteger(@Nullable Integer value, @NonNull String name,
-            boolean required, boolean prohibited, int defaultValue) {
-        validateAttribute(value, name, required, prohibited, Integer.valueOf(defaultValue));
+    static int validateInteger(
+            @Nullable Integer value,
+            @NonNull String name,
+            boolean required,
+            boolean prohibited,
+            int defaultValue) {
+        validateAttribute(value, name, required, prohibited, defaultValue);
         if (value == null) {
             return defaultValue;
         }
         return value;
     }
 
-    static boolean validateBoolean(@Nullable Boolean value, @NonNull String name,
-            boolean required, boolean prohibited, boolean defaultValue) {
-        validateAttribute(value, name, required, prohibited, Boolean.valueOf(defaultValue));
+    static boolean validateBoolean(
+            @Nullable Boolean value,
+            @NonNull String name,
+            boolean required,
+            boolean prohibited,
+            boolean defaultValue) {
+        validateAttribute(value, name, required, prohibited, defaultValue);
         if (value == null) {
             return defaultValue;
         }
         return value;
     }
-
 }

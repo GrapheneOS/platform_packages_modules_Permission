@@ -30,7 +30,6 @@
     <color name="car_divider_color">#1fffffff</color>
 
     <!-- Safety center colors -->
-    <color name="safety_center_status_unfilled_wedge">#DADCE0</color> <!-- Material Gray 300 -->
     <color name="safety_center_done">#767676</color>
     <color name="safety_center_qs_background">#2f3133</color>
 </resources>

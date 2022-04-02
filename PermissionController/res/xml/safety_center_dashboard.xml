@@ -28,18 +28,18 @@
     <!-- TODO(b/205999071): Add link to more warnings page. -->
     <PreferenceCategory
         android:key="issues_group"
-        app:title="Issues"
+        android:layout="@layout/spaced_preference_category_no_label"
         app:selectable="false" />
 
     <!-- TODO(b/205971026): Add real layouts for safety entries. -->
     <PreferenceCategory
         android:key="entries_group"
-        app:title="Entries"
+        android:layout="@layout/spaced_preference_category_no_label"
         app:selectable="false" />
 
     <PreferenceCategory
         android:key="static_entries_group"
-        app:title="Static entries"
+        android:layout="@layout/spaced_preference_category_no_label"
         app:selectable="false" />
 
 </PreferenceScreen>

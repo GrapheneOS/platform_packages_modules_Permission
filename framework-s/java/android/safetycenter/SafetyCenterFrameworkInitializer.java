@@ -32,20 +32,23 @@ import androidx.annotation.RequiresApi;
 @RequiresApi(TIRAMISU)
 @SystemApi(client = SystemApi.Client.MODULE_LIBRARIES)
 public final class SafetyCenterFrameworkInitializer {
+
     private SafetyCenterFrameworkInitializer() {
     }
 
     /**
-     * Called by {@link SystemServiceRegistry}'s static initializer and registers
-     * {@link SafetyCenterManager} to {@link Context}, so that {@link Context#getSystemService} can
-     * return it.
+     * Called by {@link SystemServiceRegistry}'s static initializer and registers {@link
+     * SafetyCenterManager} to {@link Context}, so that {@link Context#getSystemService} can return
+     * it.
      *
      * <p>If this is called from other places, it throws a {@link IllegalStateException}.
      */
     public static void registerServiceWrappers() {
-        SystemServiceRegistry.registerContextAwareService(Context.SAFETY_CENTER_SERVICE,
+        SystemServiceRegistry.registerContextAwareService(
+                Context.SAFETY_CENTER_SERVICE,
                 SafetyCenterManager.class,
-                (context, serviceBinder) -> new SafetyCenterManager(context,
-                        ISafetyCenterManager.Stub.asInterface(serviceBinder)));
+                (context, serviceBinder) ->
+                        new SafetyCenterManager(context,
+                                ISafetyCenterManager.Stub.asInterface(serviceBinder)));
     }
 }
