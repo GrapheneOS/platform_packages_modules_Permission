@@ -25,7 +25,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.PermissionControllerApplication
-import com.android.permissioncontroller.permission.data.v33.PermissionEvent
 import com.android.permissioncontroller.permission.service.v33.BasePermissionEventStorage
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
@@ -225,17 +224,6 @@ class BasePermissionEventStorageTest {
             )
         }
     }
-
-    /**
-     * Test event used for this test.
-     *
-     * @param id arbitrary test id used for testing uniqueness of primary keys
-     */
-    private data class TestPermissionEvent(
-        override val packageName: String,
-        override val eventTime: Long,
-        val id: Int = 1
-    ) : PermissionEvent(packageName, eventTime)
 
     private class TestPermissionEventStorage(
         context: Context,
