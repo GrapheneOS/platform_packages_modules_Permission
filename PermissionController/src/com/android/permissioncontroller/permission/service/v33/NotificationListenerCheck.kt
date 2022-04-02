@@ -795,6 +795,10 @@ class NotificationListenerCheck {
      */
     class NotificationDeleteHandler : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
+            if (!checkNotificationListenerCheckEnabled(context)) {
+                return
+            }
+
             val componentName =
                 Utils.getParcelableExtraSafe<ComponentName>(intent, EXTRA_COMPONENT_NAME)
             val sessionId = intent.getLongExtra(EXTRA_SESSION_ID, INVALID_SESSION_ID)
