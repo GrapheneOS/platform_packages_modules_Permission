@@ -81,7 +81,7 @@ class HandheldUnusedAppsFragment : PermissionsFrameFragment(),
     override fun createFooterPreference(): Preference {
         var preference: Preference
         if (isHibernationEnabled()) {
-            preference = Preference(requireContext())
+            preference = com.android.settingslib.widget.FooterPreference(requireContext())
             preference.summary = getString(R.string.unused_apps_page_summary)
         } else {
             preference = FooterPreference(requireContext())
