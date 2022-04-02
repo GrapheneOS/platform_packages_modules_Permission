@@ -1112,6 +1112,23 @@
         static="true"
         systemOnly="false"
         visible="false">
+        <required-components>
+            <activity permission="android.permission.LAUNCH_DEVICE_MANAGER_SETUP">
+                <intent-filter>
+                    <action name="android.app.action.ROLE_HOLDER_PROVISION_MANAGED_DEVICE_FROM_TRUSTED_SOURCE" />
+                </intent-filter>
+            </activity>
+            <activity permission="android.permission.LAUNCH_DEVICE_MANAGER_SETUP">
+                <intent-filter>
+                    <action name="android.app.action.ROLE_HOLDER_PROVISION_MANAGED_PROFILE" />
+                </intent-filter>
+            </activity>
+            <activity permission="android.permission.LAUNCH_DEVICE_MANAGER_SETUP">
+                <intent-filter>
+                    <action name="android.app.action.ROLE_HOLDER_PROVISION_FINALIZATION" />
+                </intent-filter>
+            </activity>
+        </required-components>
         <permissions>
             <permission-set name="notifications" />
             <permission name="android.permission.BIND_DEVICE_ADMIN" />

@@ -20,6 +20,7 @@ import static android.os.Build.VERSION_CODES.TIRAMISU;
 
 import static com.android.internal.util.Preconditions.checkArgument;
 
+import static java.util.Collections.unmodifiableList;
 import static java.util.Objects.requireNonNull;
 
 import android.annotation.IntDef;
@@ -34,7 +35,6 @@ import androidx.annotation.RequiresApi;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -55,11 +55,11 @@ public final class SafetySourceData implements Parcelable {
      * grey icon.
      *
      * <p>For a {@link SafetySourceStatus}, this severity level indicates that the safety source
-     * currently does not have sufficient information on the severity level of the
-     * {@link SafetySourceStatus}.
+     * currently does not have sufficient information on the severity level of the {@link
+     * SafetySourceStatus}.
      *
-     * <p>This severity level cannot be used to indicate the severity level of a
-     * {@link SafetySourceIssue}.
+     * <p>This severity level cannot be used to indicate the severity level of a {@link
+     * SafetySourceIssue}.
      */
     public static final int SEVERITY_LEVEL_UNSPECIFIED = 100;
 
@@ -73,10 +73,10 @@ public final class SafetySourceData implements Parcelable {
      * {@link SafetySourceIssue}s or the presence of only {@link SafetySourceIssue}s with the same
      * severity level.
      *
-     * <p>For a {@link SafetySourceIssue}, this severity level indicates that the
-     * {@link SafetySourceIssue} represents an informational message relating to the safety source.
-     * {@link SafetySourceIssue}s of this severity level will be dismissible by the user from the
-     * UI, and will not trigger a confirmation dialog upon a user attempting to dismiss the warning.
+     * <p>For a {@link SafetySourceIssue}, this severity level indicates that the {@link
+     * SafetySourceIssue} represents an informational message relating to the safety source. {@link
+     * SafetySourceIssue}s of this severity level will be dismissible by the user from the UI, and
+     * will not trigger a confirmation dialog upon a user attempting to dismiss the warning.
      */
     public static final int SEVERITY_LEVEL_INFORMATION = 200;
 
@@ -91,11 +91,11 @@ public final class SafetySourceData implements Parcelable {
      * one medium-severity {@link SafetySourceIssue} relating to the safety source which the user is
      * encouraged to act on, and no {@link SafetySourceIssue}s with higher severity level.
      *
-     * <p>For a {@link SafetySourceIssue}, this severity level indicates that the
-     * {@link SafetySourceIssue} represents a medium-severity safety issue relating to the safety
-     * source which the user is encouraged to act on. {@link SafetySourceIssue}s of this severity
-     * level will be dismissible by the user from the UI, and will trigger a confirmation dialog
-     * upon a user attempting to dismiss the warning.
+     * <p>For a {@link SafetySourceIssue}, this severity level indicates that the {@link
+     * SafetySourceIssue} represents a medium-severity safety issue relating to the safety source
+     * which the user is encouraged to act on. {@link SafetySourceIssue}s of this severity level
+     * will be dismissible by the user from the UI, and will trigger a confirmation dialog upon a
+     * user attempting to dismiss the warning.
      */
     public static final int SEVERITY_LEVEL_RECOMMENDATION = 300;
 
@@ -110,8 +110,8 @@ public final class SafetySourceData implements Parcelable {
      * one critical or urgent {@link SafetySourceIssue} relating to the safety source that should be
      * addressed by the user.
      *
-     * <p>For a {@link SafetySourceIssue}, this severity level indicates that the
-     * {@link SafetySourceIssue} represents a critical or urgent safety issue relating to the safety
+     * <p>For a {@link SafetySourceIssue}, this severity level indicates that the {@link
+     * SafetySourceIssue} represents a critical or urgent safety issue relating to the safety
      * source that should be addressed by the user. {@link SafetySourceIssue}s of this severity
      * level will be dismissible by the user from the UI, and will trigger a confirmation dialog
      * upon a user attempting to dismiss the warning.
@@ -137,14 +137,48 @@ public final class SafetySourceData implements Parcelable {
      *
      * @hide
      */
-    @IntDef(prefix = {"SEVERITY_LEVEL_"}, value = {
-            SEVERITY_LEVEL_UNSPECIFIED,
-            SEVERITY_LEVEL_INFORMATION,
-            SEVERITY_LEVEL_RECOMMENDATION,
-            SEVERITY_LEVEL_CRITICAL_WARNING
-    })
+    @IntDef(
+            prefix = {"SEVERITY_LEVEL_"},
+            value = {
+                    SEVERITY_LEVEL_UNSPECIFIED,
+                    SEVERITY_LEVEL_INFORMATION,
+                    SEVERITY_LEVEL_RECOMMENDATION,
+                    SEVERITY_LEVEL_CRITICAL_WARNING
+            })
     @Retention(RetentionPolicy.SOURCE)
     public @interface SeverityLevel {
+    }
+
+    @NonNull
+    public static final Creator<SafetySourceData> CREATOR =
+            new Creator<SafetySourceData>() {
+                @Override
+                public SafetySourceData createFromParcel(Parcel in) {
+                    SafetySourceStatus status = in.readTypedObject(SafetySourceStatus.CREATOR);
+                    List<SafetySourceIssue> issues =
+                            requireNonNull(in.createTypedArrayList(SafetySourceIssue.CREATOR));
+                    Builder builder = new Builder().setStatus(status);
+                    for (int i = 0; i < issues.size(); i++) {
+                        builder.addIssue(issues.get(i));
+                    }
+                    return builder.build();
+                }
+
+                @Override
+                public SafetySourceData[] newArray(int size) {
+                    return new SafetySourceData[size];
+                }
+            };
+
+    @Nullable
+    private final SafetySourceStatus mStatus;
+    @NonNull
+    private final List<SafetySourceIssue> mIssues;
+
+    private SafetySourceData(
+            @Nullable SafetySourceStatus status, @NonNull List<SafetySourceIssue> issues) {
+        this.mStatus = status;
+        this.mIssues = issues;
     }
 
     @SeverityLevel
@@ -175,39 +209,6 @@ public final class SafetySourceData implements Parcelable {
         }
     }
 
-    @NonNull
-    public static final Parcelable.Creator<SafetySourceData> CREATOR =
-            new Parcelable.Creator<SafetySourceData>() {
-                @Override
-                public SafetySourceData createFromParcel(Parcel in) {
-                    SafetySourceStatus status = in.readTypedObject(SafetySourceStatus.CREATOR);
-                    List<SafetySourceIssue> issues =
-                            requireNonNull(in.createTypedArrayList(SafetySourceIssue.CREATOR));
-                    Builder builder = new Builder().setStatus(status);
-                    // TODO(b/224513050): Consider simplifying by adding a new API to the builder.
-                    for (int i = 0; i < issues.size(); i++) {
-                        builder.addIssue(issues.get(i));
-                    }
-                    return builder.build();
-                }
-
-                @Override
-                public SafetySourceData[] newArray(int size) {
-                    return new SafetySourceData[size];
-                }
-            };
-
-    @Nullable
-    private final SafetySourceStatus mStatus;
-    @NonNull
-    private final List<SafetySourceIssue> mIssues;
-
-    private SafetySourceData(@Nullable SafetySourceStatus status,
-            @NonNull List<SafetySourceIssue> issues) {
-        this.mStatus = status;
-        this.mIssues = new ArrayList<>(issues);
-    }
-
     /** Returns the data for the {@link SafetySourceStatus} to be shown in UI. */
     @Nullable
     public SafetySourceStatus getStatus() {
@@ -217,7 +218,7 @@ public final class SafetySourceData implements Parcelable {
     /** Returns the data for the list of {@link SafetySourceIssue}s to be shown in UI. */
     @NonNull
     public List<SafetySourceIssue> getIssues() {
-        return new ArrayList<>(mIssues);
+        return mIssues;
     }
 
     @Override
@@ -236,8 +237,7 @@ public final class SafetySourceData implements Parcelable {
         if (this == o) return true;
         if (!(o instanceof SafetySourceData)) return false;
         SafetySourceData that = (SafetySourceData) o;
-        return Objects.equals(mStatus, that.mStatus)
-                && mIssues.equals(that.mIssues);
+        return Objects.equals(mStatus, that.mStatus) && mIssues.equals(that.mIssues);
     }
 
     @Override
@@ -257,8 +257,10 @@ public final class SafetySourceData implements Parcelable {
 
     /** Builder class for {@link SafetySourceData}. */
     public static final class Builder {
+
         @NonNull
         private final List<SafetySourceIssue> mIssues = new ArrayList<>();
+
         @Nullable
         private SafetySourceStatus mStatus;
 
@@ -277,8 +279,8 @@ public final class SafetySourceData implements Parcelable {
         }
 
         /**
-         * Clears data for all the {@link SafetySourceIssue}s that were added to this
-         * {@link Builder}.
+         * Clears data for all the {@link SafetySourceIssue}s that were added to this {@link
+         * Builder}.
          */
         @NonNull
         public Builder clearIssues() {
@@ -289,22 +291,24 @@ public final class SafetySourceData implements Parcelable {
         /** Creates the {@link SafetySourceData} defined by this {@link Builder}. */
         @NonNull
         public SafetySourceData build() {
+            List<SafetySourceIssue> issues = unmodifiableList(new ArrayList<>(mIssues));
             if (mStatus != null) {
-                int issuesMaxSeverityLevel = getIssuesMaxSeverityLevel();
+                int issuesMaxSeverityLevel = getIssuesMaxSeverityLevel(issues);
                 if (issuesMaxSeverityLevel > SafetySourceData.SEVERITY_LEVEL_INFORMATION) {
-                    checkArgument(issuesMaxSeverityLevel <= mStatus.getSeverityLevel(),
+                    checkArgument(
+                            issuesMaxSeverityLevel <= mStatus.getSeverityLevel(),
                             "Safety source data must not contain any issue with a severity level "
                                     + "both greater than SEVERITY_LEVEL_INFORMATION and greater "
                                     + "than the status severity level");
                 }
             }
-            return new SafetySourceData(mStatus, Collections.unmodifiableList(mIssues));
+            return new SafetySourceData(mStatus, issues);
         }
 
-        private int getIssuesMaxSeverityLevel() {
+        private static int getIssuesMaxSeverityLevel(@NonNull List<SafetySourceIssue> issues) {
             int max = Integer.MIN_VALUE;
-            for (int i = 0; i < mIssues.size(); i++) {
-                max = Math.max(max, mIssues.get(i).getSeverityLevel());
+            for (int i = 0; i < issues.size(); i++) {
+                max = Math.max(max, issues.get(i).getSeverityLevel());
             }
             return max;
         }
