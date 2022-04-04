@@ -80,7 +80,7 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name="com.android.permissioncontroller.permission.service.v33.NotificationListenerCheck$SetupPeriodicNotificationListenerCheck"
+        <receiver android:name="com.android.permissioncontroller.privacysources.NotificationListenerCheck$SetupPeriodicNotificationListenerCheck"
                   android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -107,9 +107,9 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name="com.android.permissioncontroller.permission.service.v33.NotificationListenerCheck$NotificationDeleteHandler" />
+        <receiver android:name="com.android.permissioncontroller.privacysources.NotificationListenerCheck$NotificationDeleteHandler" />
 
-        <receiver android:name="com.android.permissioncontroller.permission.service.v33.NotificationListenerCheck$PackageResetHandler"
+        <receiver android:name="com.android.permissioncontroller.privacysources.NotificationListenerCheck$PackageResetHandler"
                   android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_FULLY_REMOVED"/>
@@ -131,7 +131,7 @@
         <service android:name="com.android.permissioncontroller.permission.service.LocationAccessCheck$LocationAccessCheckJobService"
                  android:permission="android.permission.BIND_JOB_SERVICE" />
 
-        <service android:name="com.android.permissioncontroller.permission.service.v33.NotificationListenerCheck$NotificationListenerCheckJobService"
+        <service android:name="com.android.permissioncontroller.privacysources.NotificationListenerCheck$NotificationListenerCheckJobService"
                  android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <service android:name="com.android.permissioncontroller.hibernation.HibernationJobService"
