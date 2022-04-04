@@ -19,6 +19,7 @@
     <color name="warning_onsurface">#FDD663</color>
 
     <!-- Safety center colors -->
+    <color name="safety_center_card_background">#30312B</color>
     <color name="safety_center_info">#5BB974</color>
     <color name="safety_center_recommend">#FCC934</color>
     <color name="safety_center_warn">#EE675C</color>

@@ -16,30 +16,40 @@
 
 package com.android.permissioncontroller.safetycenter.ui;
 
+import android.app.PendingIntent;
 import android.content.Context;
 import android.safetycenter.SafetyCenterEntry;
+import android.text.TextUtils;
 import android.util.Log;
 
 import androidx.preference.Preference;
 
+import com.android.permissioncontroller.R;
+
 /** A preference that displays a visual representation of a {@link SafetyCenterEntry}. */
-public class SafetyEntryPreference extends Preference {
+public final class SafetyTopLevelEntryPreference extends Preference {
 
-    private static final String TAG = SafetyEntryPreference.class.getSimpleName();
+    private static final String TAG = SafetyTopLevelEntryPreference.class.getSimpleName();
 
-    public SafetyEntryPreference(Context context, SafetyCenterEntry entry) {
+    private final String mId;
+    private final int mIconResId;
+
+    public SafetyTopLevelEntryPreference(Context context, SafetyCenterEntry entry) {
         super(context);
+        mId = entry.getId();
+        mIconResId = toSeverityLevel(entry.getSeverityLevel()).getEntryIconResId();
+        setLayoutResource(R.layout.preference_top_level_entry);
         setTitle(entry.getTitle());
         setSummary(entry.getSummary());
-        setIcon(toSeverityLevel(entry.getSeverityLevel()).getEntryIconResId());
-        if (entry.getPendingIntent() != null) {
+        setIcon(mIconResId);
+        PendingIntent pendingIntent = entry.getPendingIntent();
+        if (pendingIntent != null) {
             setOnPreferenceClickListener(unused -> {
                 try {
-                    entry.getPendingIntent().send();
+                    pendingIntent.send();
                 } catch (Exception ex) {
-                    Log.e(TAG,
-                            String.format("Failed to execute pending intent for entry: %s", entry),
-                            ex);
+                    Log.e(TAG, String.format("Failed to execute pending intent for entry: %s",
+                            entry), ex);
                 }
                 return true;
             });
@@ -62,5 +72,20 @@ public class SafetyEntryPreference extends Preference {
         throw new IllegalArgumentException(
                 String.format("Unexpected SafetyCenterEntry.EntrySeverityLevel: %s",
                         entrySeverityLevel));
+    }
+
+    boolean isSameItem(Preference other) {
+        return mId != null && other instanceof SafetyTopLevelEntryPreference
+            && TextUtils.equals(mId, ((SafetyTopLevelEntryPreference) other).mId);
+    }
+
+    boolean hasSameContents(Preference other) {
+        if (other instanceof SafetyTopLevelEntryPreference) {
+            SafetyTopLevelEntryPreference o = (SafetyTopLevelEntryPreference) other;
+            // TODO: check pending intent?
+            return TextUtils.equals(getTitle(), o.getTitle()) && TextUtils
+                .equals(getSummary(), o.getSummary()) && mIconResId == o.mIconResId;
+        }
+        return false;
     }
 }

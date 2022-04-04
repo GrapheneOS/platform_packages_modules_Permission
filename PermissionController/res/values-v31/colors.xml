@@ -19,6 +19,7 @@
     <color name="warning_surface">#F0E3A8</color>
     <color name="warning_onsurface">#895900</color>
 
+    <!-- Safety center colors -->
     <color name="safety_center_info">#5BB974</color>
     <color name="safety_center_recommend">#FCC934</color>
     <color name="safety_center_warn">#EE675C</color>
@@ -33,6 +34,9 @@
     <color name="safety_center_status_info">#1E8E3E</color> <!--GM Green/600-->
     <color name="safety_center_status_recommend">#F9AB00</color> <!--GM Yellow/600-->
     <color name="safety_center_status_warn">#C5221F</color> <!--GM Red/600-->
+
+    <color name="safety_center_done">#767676</color>
+    <color name="safety_center_qs_background">#2f3133</color>
 
     <color name="safety_center_status_background_info">#CEEAD6</color> <!--GM Green/100-->
     <color name="safety_center_status_background_recommend">#FEEFC3</color> <!--GM Yellow/100-->
