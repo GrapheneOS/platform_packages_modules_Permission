@@ -795,7 +795,7 @@ class NotificationListenerCheck {
      */
     class NotificationDeleteHandler : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
-            if (!checkNotificationListenerCheckEnabled(context)) {
+            if (!checkNotificationListenerCheckSupported()) {
                 return
             }
 
