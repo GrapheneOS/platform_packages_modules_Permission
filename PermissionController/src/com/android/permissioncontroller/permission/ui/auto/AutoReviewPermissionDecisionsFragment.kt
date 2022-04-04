@@ -34,8 +34,8 @@ import com.android.permissioncontroller.R
 import com.android.permissioncontroller.auto.AutoSettingsFrameFragment
 import com.android.permissioncontroller.permission.data.PermissionDecision
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity
-import com.android.permissioncontroller.permission.ui.model.ReviewPermissionDecisionsViewModel
-import com.android.permissioncontroller.permission.ui.model.ReviewPermissionDecisionsViewModelFactory
+import com.android.permissioncontroller.permission.ui.model.v31.ReviewPermissionDecisionsViewModel
+import com.android.permissioncontroller.permission.ui.model.v31.ReviewPermissionDecisionsViewModelFactory
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPackageUid
 import com.android.permissioncontroller.permission.utils.Utils
 import kotlin.math.min

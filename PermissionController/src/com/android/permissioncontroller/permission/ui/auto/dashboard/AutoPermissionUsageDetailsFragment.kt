@@ -34,16 +34,16 @@ import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__SHOW_SYSTEM_CLICKED
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.auto.AutoSettingsFrameFragment
-import com.android.permissioncontroller.permission.model.AppPermissionUsage
-import com.android.permissioncontroller.permission.model.PermissionUsages
-import com.android.permissioncontroller.permission.model.PermissionUsages.PermissionsUsagesChangeCallback
+import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
+import com.android.permissioncontroller.permission.model.v31.PermissionUsages
+import com.android.permissioncontroller.permission.model.v31.PermissionUsages.PermissionsUsagesChangeCallback
 import com.android.permissioncontroller.permission.model.legacy.PermissionApps.AppDataLoader
 import com.android.permissioncontroller.permission.model.legacy.PermissionApps.PermissionApp
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity
 import com.android.permissioncontroller.permission.ui.auto.AutoDividerPreference
-import com.android.permissioncontroller.permission.ui.model.PermissionUsageDetailsViewModel
-import com.android.permissioncontroller.permission.ui.model.PermissionUsageDetailsViewModel.AppPermissionUsageEntry
-import com.android.permissioncontroller.permission.ui.model.PermissionUsageDetailsViewModelFactory
+import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel
+import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModel.AppPermissionUsageEntry
+import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageDetailsViewModelFactory
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPermGroupLabel
 import com.android.permissioncontroller.permission.utils.Utils
 import java.util.concurrent.atomic.AtomicBoolean
@@ -117,7 +117,10 @@ class AutoPermissionUsageDetailsFragment : AutoSettingsFrameFragment(),
             getPermGroupLabel(requireContext(), filterGroup))
 
         val context = preferenceManager.getContext()
-        permissionUsages = PermissionUsages(context)
+        permissionUsages =
+            PermissionUsages(
+                context
+            )
         roleManager = Utils.getSystemServiceSafe(context, RoleManager::class.java)
         val usageViewModelFactory = PermissionUsageDetailsViewModelFactory(
             PermissionControllerApplication.get(), roleManager,

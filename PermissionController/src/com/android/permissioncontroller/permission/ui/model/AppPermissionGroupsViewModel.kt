@@ -46,10 +46,10 @@ import com.android.permissioncontroller.permission.data.PackagePermissionsLiveDa
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData.Companion.NON_RUNTIME_NORMAL_PERMS
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.data.get
-import com.android.permissioncontroller.permission.model.AppPermissionUsage
+import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
 import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo.PermGrantState
 import com.android.permissioncontroller.permission.ui.Category
-import com.android.permissioncontroller.permission.ui.handheld.dashboard.is7DayToggleEnabled
+import com.android.permissioncontroller.permission.ui.handheld.v31.is7DayToggleEnabled
 import com.android.permissioncontroller.permission.utils.IPC
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.Utils.AppPermsLastAccessType
@@ -269,6 +269,10 @@ class AppPermissionGroupsViewModel(
         appPermissionUsages: List<AppPermissionUsage>,
         packageName: String
     ) {
+        if (!SdkLevel.isAtLeastS()) {
+            return;
+        }
+
         val aggregateDataFilterBeginDays = if (is7DayToggleEnabled())
             AGGREGATE_DATA_FILTER_BEGIN_DAYS_7 else AGGREGATE_DATA_FILTER_BEGIN_DAYS_1
 
