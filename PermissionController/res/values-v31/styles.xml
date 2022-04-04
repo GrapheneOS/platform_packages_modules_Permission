@@ -280,4 +280,14 @@
         <item name="cornerSizeBottomLeft">8dp</item>
     </style>
 
+    <style name="SafetyCenter.TopLevelEntry"
+           parent="android:Widget.DeviceDefault">
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:paddingEnd">24dp</item>
+        <item name="android:paddingTop">20dp</item>
+        <item name="android:paddingBottom">20dp</item>
+        <item name="android:background">@drawable/safety_center_top_level_entry_background</item>
+    </style>
 </resources>
