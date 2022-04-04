@@ -37,7 +37,10 @@ import android.text.BidiFormatter
 import androidx.annotation.VisibleForTesting
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.DumpableLog
+import com.android.permissioncontroller.PermissionControllerStatsLog
+import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_REMINDER_NOTIFICATION_INTERACTED__RESULT__NOTIFICATION_PRESENTED
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.permission.ui.auto.AutoReviewPermissionDecisionsFragment
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPackageLabel
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPermGroupLabel
@@ -64,6 +67,7 @@ class DrivingDecisionReminderService : Service() {
     private var carUxRestrictionsManager: CarUxRestrictionsManager? = null
     private val permissionReminders: MutableSet<PermissionReminder> = mutableSetOf()
     private var car: Car? = null
+    private var sessionId = Constants.INVALID_SESSION_ID
 
     companion object {
         private const val LOG_TAG = "DrivingDecisionReminderService"
@@ -136,6 +140,9 @@ class DrivingDecisionReminderService : Service() {
         }
         scheduleNotificationForUnrestrictedState()
         scheduled = true
+        while (sessionId == Constants.INVALID_SESSION_ID) {
+            sessionId = Random().nextLong()
+        }
         return START_STICKY
     }
 
@@ -202,6 +209,8 @@ class DrivingDecisionReminderService : Service() {
         notificationManager.notify(DrivingDecisionReminderService::class.java.simpleName,
             Constants.PERMISSION_DECISION_REMINDER_NOTIFICATION_ID,
             createNotification(createNotificationTitle(), createNotificationContent()))
+
+        logNotificationPresented()
     }
 
     private fun createNotificationTitle(): String {
@@ -250,12 +259,10 @@ class DrivingDecisionReminderService : Service() {
     }
 
     private fun createNotification(title: String, body: String): Notification {
-        var sessionId = Constants.INVALID_SESSION_ID
-        while (sessionId == Constants.INVALID_SESSION_ID) {
-            sessionId = Random().nextLong()
-        }
         val clickIntent = Intent(PermissionManager.ACTION_REVIEW_PERMISSION_DECISIONS).apply {
             putExtra(Constants.EXTRA_SESSION_ID, sessionId)
+            putExtra(AutoReviewPermissionDecisionsFragment.EXTRA_SOURCE,
+                AutoReviewPermissionDecisionsFragment.EXTRA_SOURCE_NOTIFICATION)
             flags = Intent.FLAG_ACTIVITY_NEW_TASK
         }
         val pendingIntent = PendingIntent.getActivity(this, 0, clickIntent,
@@ -298,5 +305,11 @@ class DrivingDecisionReminderService : Service() {
         val settingsIntent = Intent(Settings.ACTION_SETTINGS)
         val settingsComponent: ComponentName? = settingsIntent.resolveActivity(pm)
         return settingsComponent?.packageName ?: SETTINGS_PACKAGE_NAME_FALLBACK
+    }
+
+    private fun logNotificationPresented() {
+        PermissionControllerStatsLog.write(
+            PermissionControllerStatsLog.PERMISSION_REMINDER_NOTIFICATION_INTERACTED,
+            sessionId, PERMISSION_REMINDER_NOTIFICATION_INTERACTED__RESULT__NOTIFICATION_PRESENTED)
     }
 }
