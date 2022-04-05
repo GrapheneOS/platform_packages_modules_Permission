@@ -394,8 +394,10 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                     userHandle = Process.myUserHandle();
                 }
                 if (DeviceUtils.isAuto(this)) {
+                    String source = getIntent().getStringExtra(
+                            AutoReviewPermissionDecisionsFragment.EXTRA_SOURCE);
                     androidXFragment = AutoReviewPermissionDecisionsFragment.Companion
-                            .newInstance(sessionId, userHandle);
+                            .newInstance(sessionId, userHandle, source);
                 } else {
                     Log.e(LOG_TAG, "ACTION_REVIEW_PERMISSION_DECISIONS is not "
                             + "supported on this device type");
