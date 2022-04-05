@@ -46,12 +46,12 @@ import com.android.permissioncontroller.permission.data.AllPackageInfosLiveData
 import com.android.permissioncontroller.permission.data.FullStoragePermissionAppsLiveData
 import com.android.permissioncontroller.permission.data.FullStoragePermissionAppsLiveData.FullStoragePackageState
 import com.android.permissioncontroller.permission.data.SinglePermGroupPackagesUiInfoLiveData
-import com.android.permissioncontroller.permission.model.AppPermissionUsage
+import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.model.livedatatypes.AppPermGroupUiInfo.PermGrantState
 import com.android.permissioncontroller.permission.ui.Category
 import com.android.permissioncontroller.permission.ui.LocationProviderInterceptDialog
-import com.android.permissioncontroller.permission.ui.handheld.dashboard.is7DayToggleEnabled
+import com.android.permissioncontroller.permission.ui.handheld.v31.is7DayToggleEnabled
 import com.android.permissioncontroller.permission.ui.model.PermissionAppsViewModel.Companion.CREATION_LOGGED_KEY
 import com.android.permissioncontroller.permission.ui.model.PermissionAppsViewModel.Companion.HAS_SYSTEM_APPS_KEY
 import com.android.permissioncontroller.permission.ui.model.PermissionAppsViewModel.Companion.SHOULD_SHOW_SYSTEM_KEY
@@ -345,9 +345,13 @@ class PermissionAppsViewModel(
      */
     fun extractGroupUsageLastAccessTime(appPermissionUsages: List<AppPermissionUsage>):
             MutableMap<String, Long> {
+        val accessTime: MutableMap<String, Long> = HashMap()
+        if (!SdkLevel.isAtLeastS()) {
+            return accessTime
+        }
+
         val aggregateDataFilterBeginDays = if (is7DayToggleEnabled())
             AGGREGATE_DATA_FILTER_BEGIN_DAYS_7 else AGGREGATE_DATA_FILTER_BEGIN_DAYS_1
-        val accessTime: MutableMap<String, Long> = HashMap()
         val now = System.currentTimeMillis()
         val filterTimeBeginMillis = max(
                 now - TimeUnit.DAYS.toMillis(aggregateDataFilterBeginDays.toLong()),
