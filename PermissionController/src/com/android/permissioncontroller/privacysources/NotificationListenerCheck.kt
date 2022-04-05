@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.service.v33
+package com.android.permissioncontroller.privacysources
 
 import android.app.Notification
 import android.app.NotificationChannel
