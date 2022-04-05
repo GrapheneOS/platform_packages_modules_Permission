@@ -187,7 +187,7 @@ final class SafetyCenterConfigReader {
          * Returns the broadcasts defined in the XML config, with all the sources that they should
          * handle and the profile on which they should be dispatched.
          */
-        // TODO(b/221018937): Should we move this logic to `SafetyCenterBroadcasts`?
+        // TODO(b/221018937): Should we move this logic to `SafetyCenterBroadcastManager`?
         List<Broadcast> getBroadcasts() {
             return mBroadcasts;
         }

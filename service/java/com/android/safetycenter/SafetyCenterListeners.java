@@ -147,6 +147,19 @@ final class SafetyCenterListeners {
         return unregistered;
     }
 
+    /** Clears all {@link IOnSafetyCenterDataChangedListener}s, for all user ids. */
+    void clear() {
+        for (int i = 0; i < mSafetyCenterDataChangedListeners.size(); i++) {
+            RemoteCallbackList<IOnSafetyCenterDataChangedListener> listeners =
+                    mSafetyCenterDataChangedListeners.valueAt(i);
+            if (listeners == null) {
+                continue;
+            }
+            listeners.kill();
+        }
+        mSafetyCenterDataChangedListeners.clear();
+    }
+
     /**
      * Returns all the {@link RemoteCallbackList} of {@link IOnSafetyCenterDataChangedListener} for
      * the given {@link UserProfileGroup}.
