@@ -64,7 +64,7 @@ import java.util.Objects;
 @RequiresApi(TIRAMISU)
 final class SafetyCenterBroadcastManager {
 
-    private static final String TAG = "SafetyCenterBroadcasts";
+    private static final String TAG = "SafetyCenterBroadcastMa";
 
     /**
      * Time for which an app, upon receiving a particular broadcast, will be placed on a temporary
