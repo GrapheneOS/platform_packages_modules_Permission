@@ -381,7 +381,7 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name="com.android.permissioncontroller.permission.service.v33.RecentPermissionDecisionsTimeChangeReceiver"
+        <receiver android:name="com.android.permissioncontroller.permission.service.v33.PermissionStorageTimeChangeReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
