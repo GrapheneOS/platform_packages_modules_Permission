@@ -52,11 +52,11 @@
         <!-- id must be unique among safety sources -->
         <xsd:attribute name="id" type="xsd:string" use="required"/>
         <xsd:attribute name="packageName" type="xsd:string" use="required"/>
-        <!-- title is required if initialDisplayState is not set to hidden -->
-        <!-- title is prohibited if initialDisplayState is set to hidden -->
+        <!-- title is required if initialDisplayState is not set to hidden or if searchTerms are provided -->
+        <!-- title is prohibited if initialDisplayState is set to hidden and if searchTerms are not provided -->
         <xsd:attribute name="title" type="stringResourceName"/>
-        <!-- titleForWork is required if profile is set to all_profiles and initialDisplayState is not set to hidden -->
-        <!-- titleForWork is prohibited if profile is set to primary_profile_only or initialDisplayState is set to hidden -->
+        <!-- titleForWork is required if profile is set to all_profiles, and initialDisplayState is not set to hidden or if searchTerms are provided -->
+        <!-- titleForWork is prohibited if profile is set to primary_profile_only, or initialDisplayState is set to hidden and if searchTerms are not provided -->
         <xsd:attribute name="titleForWork" type="stringResourceName"/>
         <!-- summary is required if initialDisplayState is not set to hidden -->
         <!-- summary is prohibited if initialDisplayState is set to hidden -->
@@ -90,7 +90,7 @@
         <!-- titleForWork is required if profile is set to all_profiles -->
         <!-- titleForWork is prohibited if profile is set to primary_profile_only -->
         <xsd:attribute name="titleForWork" type="stringResourceName"/>
-        <xsd:attribute name="summary" type="stringResourceName" use="required"/>
+        <xsd:attribute name="summary" type="stringResourceName"/>
         <xsd:attribute name="intentAction" type="xsd:string" use="required"/>
         <xsd:attribute name="profile" type="profile" use="required"/>
         <xsd:attribute name="searchTerms" type="stringResourceName"/>
