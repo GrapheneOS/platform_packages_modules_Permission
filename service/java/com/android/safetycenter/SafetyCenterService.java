@@ -103,6 +103,9 @@ public final class SafetyCenterService extends SystemService {
     @NonNull private final AppOpsManager mAppOpsManager;
     private final boolean mDeviceSupportsSafetyCenter;
 
+    private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker =
+            new SafetyCenterRefreshTracker();
+
     /** Whether the {@link SafetyCenterConfig} was successfully loaded. */
     private volatile boolean mConfigAvailable;
 
@@ -112,8 +115,10 @@ public final class SafetyCenterService extends SystemService {
                 new SafetyCenterResourcesContext(context);
         mSafetyCenterConfigReader = new SafetyCenterConfigReader(safetyCenterResourcesContext);
         mSafetyCenterDataTracker =
-                new SafetyCenterDataTracker(context, safetyCenterResourcesContext);
-        mSafetyCenterBroadcastDispatcher = new SafetyCenterBroadcastDispatcher(context);
+                new SafetyCenterDataTracker(
+                        context, safetyCenterResourcesContext, mSafetyCenterRefreshTracker);
+        mSafetyCenterBroadcastDispatcher =
+                new SafetyCenterBroadcastDispatcher(context, mSafetyCenterRefreshTracker);
         mAppOpsManager = requireNonNull(context.getSystemService(AppOpsManager.class));
         mDeviceSupportsSafetyCenter =
                 context.getResources()

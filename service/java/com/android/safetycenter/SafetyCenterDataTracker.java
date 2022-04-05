@@ -77,7 +77,8 @@ final class SafetyCenterDataTracker {
 
     private static final String TAG = "SafetyCenterDataTracker";
 
-    private final ArrayMap<Key, SafetySourceData> mSafetySourceDataForKey = new ArrayMap<>();
+    private final ArrayMap<SafetySourceKey, SafetySourceData> mSafetySourceDataForKey =
+            new ArrayMap<>();
 
     // TODO(b/221406600): Add persistent storage for dismissed issues.
     private final ArraySet<SafetyCenterIssueId> mDismissedSafetyCenterIssues = new ArraySet<>();
@@ -88,16 +89,19 @@ final class SafetyCenterDataTracker {
 
     @NonNull private final Context mContext;
     @NonNull private final SafetyCenterResourcesContext mSafetyCenterResourcesContext;
+    @NonNull private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker;
 
     /**
-     * Creates a {@link SafetyCenterDataTracker} using the given {@link Context} and {@link
-     * SafetyCenterResourcesContext}.
+     * Creates a {@link SafetyCenterDataTracker} using the given {@link Context}, {@link
+     * SafetyCenterResourcesContext} and {@link SafetyCenterRefreshTracker}.
      */
     SafetyCenterDataTracker(
             @NonNull Context context,
-            @NonNull SafetyCenterResourcesContext safetyCenterResourcesContext) {
+            @NonNull SafetyCenterResourcesContext safetyCenterResourcesContext,
+            @NonNull SafetyCenterRefreshTracker safetyCenterRefreshTracker) {
         mContext = context;
         mSafetyCenterResourcesContext = safetyCenterResourcesContext;
+        mSafetyCenterRefreshTracker = safetyCenterRefreshTracker;
     }
 
     /**
@@ -123,7 +127,7 @@ final class SafetyCenterDataTracker {
         validateRequest(configInternal, safetySourceData, safetySourceId, packageName, userId);
         processSafetyEvent(safetySourceId, safetyEvent, userId);
 
-        Key key = Key.of(safetySourceId, userId);
+        SafetySourceKey key = SafetySourceKey.of(safetySourceId, userId);
         SafetySourceData existingSafetySourceData = mSafetySourceDataForKey.get(key);
         if (Objects.equals(safetySourceData, existingSafetySourceData)) {
             return false;
@@ -156,7 +160,7 @@ final class SafetyCenterDataTracker {
             @NonNull String packageName,
             @UserIdInt int userId) {
         validateRequest(configInternal, null, safetySourceId, packageName, userId);
-        return mSafetySourceDataForKey.get(Key.of(safetySourceId, userId));
+        return mSafetySourceDataForKey.get(SafetySourceKey.of(safetySourceId, userId));
     }
 
     /**
@@ -205,13 +209,14 @@ final class SafetyCenterDataTracker {
     }
 
     /**
-     * Clears all the {@link SafetySourceData}, dismissed {@link SafetyCenterIssueId} and in flight
-     * {@link SafetyCenterIssueActionId} so far, for all users.
+     * Clears all the {@link SafetySourceData}, dismissed {@link SafetyCenterIssueId}, in flight
+     * {@link SafetyCenterIssueActionId} and any refresh in progress so far, for all users.
      */
     void clear() {
         mSafetySourceDataForKey.clear();
         mDismissedSafetyCenterIssues.clear();
         mSafetyCenterIssueActionsInFlight.clear();
+        mSafetyCenterRefreshTracker.clearRefresh();
     }
 
     /**
@@ -226,7 +231,9 @@ final class SafetyCenterDataTracker {
             return null;
         }
 
-        Key key = Key.of(safetyCenterIssueId.getSafetySourceId(), safetyCenterIssueId.getUserId());
+        SafetySourceKey key =
+                SafetySourceKey.of(
+                        safetyCenterIssueId.getSafetySourceId(), safetyCenterIssueId.getUserId());
         SafetySourceData safetySourceData = mSafetySourceDataForKey.get(key);
         if (safetySourceData == null) {
             return null;
@@ -382,18 +389,47 @@ final class SafetyCenterDataTracker {
         int type = safetyEvent.getType();
         switch (type) {
             case SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED:
-                // TODO(b/218158368): Implement refresh tracking.
+                String refreshBroadcastId = safetyEvent.getRefreshBroadcastId();
+                if (refreshBroadcastId == null) {
+                    Log.w(
+                            TAG,
+                            String.format(
+                                    "Received safety event of type %d without a refresh broadcast"
+                                        + " id.",
+                                    safetyEvent.getType()));
+                    return;
+                }
+                mSafetyCenterRefreshTracker.reportSourceRefreshCompleted(
+                        safetySourceId, userId, refreshBroadcastId);
                 return;
             case SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED:
             case SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED:
                 String safetySourceIssueId = safetyEvent.getSafetySourceIssueId();
+                if (safetySourceIssueId == null) {
+                    Log.w(
+                            TAG,
+                            String.format(
+                                    "Received safety event of type %d without a safety source issue"
+                                        + " id.",
+                                    safetyEvent.getType()));
+                    return;
+                }
+                String safetySourceIssueActionId = safetyEvent.getSafetySourceIssueActionId();
+                if (safetySourceIssueActionId == null) {
+                    Log.w(
+                            TAG,
+                            String.format(
+                                    "Received safety event of type %d without a safety source issue"
+                                        + " action id.",
+                                    safetyEvent.getType()));
+                    return;
+                }
                 SafetyCenterIssueId safetyCenterIssueId =
                         SafetyCenterIssueId.newBuilder()
                                 .setSafetySourceId(safetySourceId)
                                 .setSafetySourceIssueId(safetySourceIssueId)
                                 .setUserId(userId)
                                 .build();
-                String safetySourceIssueActionId = safetyEvent.getSafetySourceIssueActionId();
                 SafetyCenterIssueActionId safetyCenterIssueActionId =
                         SafetyCenterIssueActionId.newBuilder()
                                 .setSafetyCenterIssueId(safetyCenterIssueId)
@@ -448,6 +484,8 @@ final class SafetyCenterDataTracker {
         }
 
         // TODO(b/223349473): Reorder safetyCenterIssues based on some criteria.
+        // TODO(b/229189269): Populate refresh status in SafetyCenterStatus using data from the
+        // SafetyCenterRefreshTracker.
         int safetyCenterOverallSeverityLevel =
                 entryToSafetyCenterStatusOverallLevel(maxSafetyCenterEntryLevel);
         return new SafetyCenterData(
@@ -507,7 +545,7 @@ final class SafetyCenterDataTracker {
             @NonNull List<SafetyCenterIssue> safetyCenterIssues,
             @NonNull SafetySource safetySource,
             @UserIdInt int userId) {
-        Key key = Key.of(safetySource.getId(), userId);
+        SafetySourceKey key = SafetySourceKey.of(safetySource.getId(), userId);
         SafetySourceData safetySourceData = mSafetySourceDataForKey.get(key);
 
         if (safetySourceData == null) {
@@ -677,7 +715,7 @@ final class SafetyCenterDataTracker {
                 Log.w(TAG, "Issue only safety source found in collapsible group");
                 return null;
             case SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC:
-                Key key = Key.of(safetySource.getId(), userId);
+                SafetySourceKey key = SafetySourceKey.of(safetySource.getId(), userId);
                 SafetySourceStatus safetySourceStatus =
                         getSafetySourceStatus(mSafetySourceDataForKey.get(key));
                 if (safetySourceStatus != null) {
@@ -829,7 +867,7 @@ final class SafetyCenterDataTracker {
                 Log.w(TAG, "Issue only safety source found in rigid group");
                 return null;
             case SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC:
-                Key key = Key.of(safetySource.getId(), userId);
+                SafetySourceKey key = SafetySourceKey.of(safetySource.getId(), userId);
                 SafetySourceStatus safetySourceStatus =
                         getSafetySourceStatus(mSafetySourceDataForKey.get(key));
                 if (safetySourceStatus != null) {
@@ -1132,49 +1170,5 @@ final class SafetyCenterDataTracker {
                         "Unexpected SafetyCenterStatus.OverallSeverityLevel: %s",
                         overallSeverityLevel));
         return "";
-    }
-
-    /**
-     * A key for {@link SafetySourceData}; based on the {@code safetySourceId} and {@code userId}.
-     */
-    // TODO(b/219697341): Look into using AutoValue for this data class.
-    private static final class Key {
-        @NonNull private final String mSafetySourceId;
-        @UserIdInt private final int mUserId;
-
-        private Key(@NonNull String safetySourceId, @UserIdInt int userId) {
-            mSafetySourceId = safetySourceId;
-            mUserId = userId;
-        }
-
-        @NonNull
-        private static Key of(@NonNull String safetySourceId, @UserIdInt int userId) {
-            return new Key(safetySourceId, userId);
-        }
-
-        @Override
-        public String toString() {
-            return "Key{"
-                    + "mSafetySourceId='"
-                    + mSafetySourceId
-                    + '\''
-                    + ", mUserId="
-                    + mUserId
-                    + '\''
-                    + '}';
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (!(o instanceof Key)) return false;
-            Key key = (Key) o;
-            return mSafetySourceId.equals(key.mSafetySourceId) && mUserId == key.mUserId;
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(mSafetySourceId, mUserId);
-        }
     }
 }
