@@ -196,8 +196,11 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Tingnan ang lahat ng pahintulot ng <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Tingnan ang lahat ng app na may ganitong pahintulot"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Ipakita ang paggamit ng mikropono ng assistant"</string>
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"Mga setting ng hindi ginagamit na app"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Alisin ang mga pahintulot kung hindi ginagamit ang app"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Alisin ang pahintulot, magbakante ng espasyo"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"I-pause ang aktibidad sa app kung hindi ginagamit"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Alisin ang mga pahintulot, i-delete ang mga pansamantalang file, at ihinto ang mga notification"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Para maprotektahan ang iyong data, aalisin ang mga pahintulot para sa app na ito kapag ilang buwan nang hindi ginagamit ang app."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Para maprotektahan ang iyong data, kapag ilang buwan nang hindi ginagamit ang app, aalisin ang mga sumusunod na pahintulot: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Para protektahan ang iyong data, inalis na ang mga pahintulot sa mga app na ilang buwan mo nang hindi ginagamit."</string>
@@ -273,6 +276,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Inalis ang mga pahintulot para protektahan ang iyong privacy"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"Kinuha ng <xliff:g id="APP_NAME">%s</xliff:g> ang iyong lokasyon sa background"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Maa-access ng app na ito ang iyong lokasyon anumang oras. I-tap para baguhin."</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Suriin ang app na may access sa accessibility"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"Magagawa ng <xliff:g id="APP_NAME">%s</xliff:g> na basahin ang lahat ng content sa screen, magpakita ng content sa ibabaw ng iba pang app, at subaybayan ang iyong mga pakikipag-ugnayan."</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Magagawa ng app na ito na basahin ang lahat ng content sa screen, magpakita ng content sa ibabaw ng iba pang app, at subaybayan ang mga pakikipag-ugnayan mo."</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Alisin ang access"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"Tingnan ang mga app na may access sa accessibility"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Inalis ang access"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Inalis ang pahintulot sa app para protektahan ang privacy"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"Ilang buwan nang hindi ginagamit ang <xliff:g id="APP_NAME">%s</xliff:g>. I-tap para suriin."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"Ilang buwan nang hindi ginagamit ang <xliff:g id="APP_NAME">%s</xliff:g> at 1 pang app. I-tap para suriin."</string>
@@ -499,6 +508,9 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Security at Privacy"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Mag-scan"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"I-dismiss"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"I-dismiss ang babalang ito?"</string>
+    <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"I-dismiss"</string>
+    <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Kanselahin"</string>
     <string name="security_settings" msgid="3808106921175271317">"Mga Setting ng Seguridad"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Mga Pahintulot sa Sensor"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Mga Kontrol sa Privacy"</string>
@@ -508,8 +520,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Alisin ang pahintulot sa camera"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Alisin ang pahintulot sa mikropono"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Pamahalaan ang serbisyo"</string>
-    <!-- no translation found for manage_permissions_qs (3780541819763475434) -->
-    <skip />
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"Pamahalaan ang mga pahintulot"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Ginagamit ng tawag sa telepono"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Kamakailang ginamit sa tawag sa telepono"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Ginagamit ng <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>

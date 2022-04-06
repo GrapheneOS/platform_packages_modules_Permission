@@ -196,8 +196,11 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Zobraziť všetky povolenia aplikácie <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Zobraziť všetky aplikácie s týmto povolením"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Zobraziť používanie mikrofónu Asistentom"</string>
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"Nastavenia nepoužívaných aplikácií"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Odstrániť povolenia, ak sa aplikácia nepoužíva"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Odstraňovať povol. a uvoľňovať priestor"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Pozastaviť aktivitu v nepoužívaných apl."</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Odstráňte povolenia, vymažte dočasné súbory a zastavte upozornenia"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Ak túto aplikáciu niekoľko mesiacov nepoužijete, v záujme ochrany vašich údajov budú odstránené jej povolenia."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Ak túto aplikáciu niekoľko mesiacov nepoužijete, v záujme ochrany vašich údajov budú odstránené tieto povolenia: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"V záujme ochrany vašich údajov boli odobrané povolenia aplikáciám, ktoré ste niekoľko mesiacov nepoužívali."</string>
@@ -273,6 +276,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Povolenia boli odstránené na zaistenie ochrany vášho súkromia"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"Aplikácia <xliff:g id="APP_NAME">%s</xliff:g> získala vašu polohu na pozadí"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Táto aplikácia má neobmedzený prístup k polohe. Klepnutím to zmeníte."</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Skontrolujte aplikáciu pomocou prístupu dostupnosti"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> dokáže čítať všetok obsah na obrazovke, zobrazovať obsah cez iné aplikácie a sledovať vaše interakcie."</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Táto aplikácia dokáže čítať všetok obsah na obrazovke, zobrazovať obsah cez iné aplikácie a sledovať vaše interakcie."</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Odstrániť prístup"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"Zobraziť aplikácie pomocou prístupu dostupnosti"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Prístup bol odstránený"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Povolenia apl. boli odstránené na zaistenie ochrany súkromia"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"Aplikácia <xliff:g id="APP_NAME">%s</xliff:g> nebola niekoľko mesiacov používaná. Skontrolujte to klepnutím."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> a 1 ďalšia aplikácia neboli niekoľko mesiacov používané. Skontrolujte to klepnutím."</string>
@@ -467,8 +476,7 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k zoznamu tel. hovorov?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uskutočňovať a spravovať telefonické hovory?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; používať údaje senzorov o vašich životných funkciách?"</string>
-    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
-    <skip />
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Táto aplikácia požaduje nepretržitý prístup k dátam senzorov o vašich životných funkciách, a to aj vtedy, keď ju nepoužívate. Povolíte to "<annotation id="link">"v nastaveniach"</annotation>"."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; používať dáta senzorov o vašich životných funkciách?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Ak chcete tejto aplikácii povoliť nepretržitý prístup k údajom telového senzora, a to aj v prípade, že ju nepoužívate, "<annotation id="link">"prejdite do nastavení."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k dátam telových senzorov počas jej používania?"</string>
@@ -500,6 +508,9 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Zabezpeč. a ochrana súkromia"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Skontrolovať"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Zavrieť"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"Chcete toto upozornenie zavrieť?"</string>
+    <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Zavrieť"</string>
+    <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Zrušiť"</string>
     <string name="security_settings" msgid="3808106921175271317">"Nastavenia zabezpečenia"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Povolenia pre senzory"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Nastavenia ochrany súkromia"</string>

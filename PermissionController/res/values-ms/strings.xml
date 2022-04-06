@@ -196,8 +196,11 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Lihat semua kebenaran <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Lihat semua apl dengan kebenaran ini"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Tunjukkan penggunaan mikrofon pembantu"</string>
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"Tetapan apl yang tidak digunakan"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Alih keluar kebenaran jika apl tidak digunakan"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Alih keluar kebenaran dan kosongkan ruang"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Jeda aktiviti apl jika tidak digunakan"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Alih keluar kebenaran, padamkan fail sementara dan hentikan pemberitahuan"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Untuk melindungi data anda, kebenaran apl ini akan dialih keluar jika apl tidak digunakan selama beberapa bulan."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Untuk melindungi data anda, jika apl tidak digunakan selama beberapa bulan, kebenaran berikut akan dialih keluar: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Untuk melindungi data anda, kebenaran telah dialih keluar daripada apl yang tidak anda gunakan selama beberapa bulan."</string>
@@ -273,6 +276,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Kebenaran dialih keluar untuk melindungi privasi anda"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> mendapat lokasi anda di latar belakang"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Apl ini boleh mengakses lokasi anda pada setiap masa. Ketik untuk menukar."</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Semak apl dengan akses kebolehaksesan"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> boleh membaca semua kandungan pada skrin, memaparkan kandungan melalui apl lain dan menjejaki interaksi anda."</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Apl ini boleh membaca semua kandungan pada skrin, memaparkan kandungan melalui apl lain dan menjejaki interaksi anda."</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Alih keluar akses"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"Lihat apl dengan akses kebolehaksesan"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Akses dialih keluar"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Kebenaran apl dialih keluar untuk melindungi privasi"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> tidak digunakan selama beberapa bulan. Ketik untuk menyemak."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> dan 1 apl lain tidak digunakan selama beberapa bulan. Ketik untuk menyemak."</string>
@@ -499,6 +508,9 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Keselamatan &amp; Privasi"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Imbas"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Ketepikan"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"Ketepikan amaran ini?"</string>
+    <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Ketepikan"</string>
+    <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Batal"</string>
     <string name="security_settings" msgid="3808106921175271317">"Tetapan Keselamatan"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Kebenaran Penderia"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Kawalan Privasi"</string>
