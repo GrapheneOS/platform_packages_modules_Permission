@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Nastavitve neuporabljenih aplikacij"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Odstrani dovoljenja, če aplikacija ni v uporabi"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Odstrani dovoljenja in sprosti prostor"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Zaustavi dejavnost aplikacije ob neuporabi"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Dovoljenja se odstranijo, začasne datoteke se izbrišejo in prikazovanje obvestil se ustavi."</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Z namenom zaščite podatkov bodo dovoljenja za to aplikacijo odstranjena, če je več mesecev ne boste uporabljali."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Če aplikacije več mesecev ne boste uporabljali, bodo z namenom zaščite podatkov odstranjena ta dovoljenja: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Z namenom zaščite podatkov so bila odstranjena dovoljenja za aplikacije, ki jih več mesecev niste uporabljali."</string>
@@ -278,6 +276,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Dovoljenja odstranjena za zaščito vaše zasebnosti"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"Aplikacija <xliff:g id="APP_NAME">%s</xliff:g> je podatek o lokaciji pridobila v ozadju"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Ta aplikacija lahko vedno dostopa do vaše lokacije. Dotaknite se, če želite spremeniti dovoljenje."</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Preglejte aplikacijo z dostopom do funkcij za ljudi s posebnimi potrebami"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"Aplikacija <xliff:g id="APP_NAME">%s</xliff:g> lahko bere vso vsebino na zaslonu, prikazuje vsebino nad drugimi aplikacijami in sledi vašim interakcijam."</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Ta aplikacija lahko bere vso vsebino na zaslonu, prikazuje vsebino nad drugimi aplikacijami in sledi vašim interakcijam."</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Odstrani dostop"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"Prikaži aplikacije z dostopom do funkcij za ljudi s posebnimi potrebami"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Dostop je odstranjen."</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Dovoljenja za aplikacije odstranjena za zaščito zasebnosti"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"Več mesecev niste uporabljali aplikacije <xliff:g id="APP_NAME">%s</xliff:g>. Dotaknite se za pregled."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"Več mesecev niste uporabljali aplikacije <xliff:g id="APP_NAME">%s</xliff:g> in 1 druge aplikacije. Dotaknite se za pregled."</string>

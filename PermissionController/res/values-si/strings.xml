@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"භාවිත නොකළ යෙදුම් සැකසීම්"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"යෙදුම භාවිත කර නැති නම් අවසර ඉවත් කරන්න"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"අවසර ඉවත් කරන්න සහ ඉඩ හිස් කරන්න"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"භාවිත නොකළේ නම් යෙදුම් ක්‍රියාකාරකම් විරාම කරන්න"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"අවසර ඉවත් කරන්න, තාවකාලික ගොනු මකන්න සහ දැනුම්දීම් නවත්වන්න"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"ඔබගේ දත්ත ආරක්ෂා කිරීම සඳහා, යෙදුම මාස කිහිපයක් භාවිතා නොකරන්නේ නම් මෙම යෙදුම සඳහා අවසර ඉවත් කරනු ලැබේ."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"ඔබගේ දත්ත ආරක්ෂා කිරීම සඳහා, යෙදුම මාස කිහිපයක් භාවිතා නොකරන්නේ නම් පහත අවසර ඉවත් කරනු ලැබේ: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"ඔබේ දත්ත ආරක්ෂා කිරීමට, ඔබ මාස කීපයක් තුළ භාවිත කර නැති යෙදුම්වලින් අවසර ඉවත් කර ඇත"</string>
@@ -278,6 +276,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"ඔබේ රහස්‍යතාව ආරක්ෂා කිරීමට අවසර ඉවත් කර ඇත"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> පසුබිම තුළ ඔබේ ස්ථානය ලබා ගත්තා"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"මෙම යෙදුම සැමවිටම ඔබේ ස්ථානය වෙත ප්‍රවේශ විය හැක. වෙනස් කිරීමට තට්ටු කරන්න."</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"ප්‍රවේශ්‍යතා ප්‍රවේශය සහිත යෙදුම සමාලෝචනය කරන්න"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> හට තිරයේ ඇති සියලු අන්තර්ගතය කියවීමට, අනෙකුත් යෙදුම් හරහා අන්තර්ගතය සංදර්ශනය කිරීමට සහ ඔබගේ අන්තර්ක්‍රියා නිරීක්ෂණය කිරීමට හැකිය."</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"මෙම යෙදුමට තිරයේ ඇති සියලු අන්තර්ගතය කියවීමට, අනෙකුත් යෙදුම් හරහා අන්තර්ගතය සංදර්ශනය කිරීමට සහ ඔබගේ අන්තර්ක්‍රියා නිරීක්ෂණය කිරීමට හැකිය."</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"ප්‍රවේශය ඉවත් කරන්න"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"ප්‍රවේශ්‍යතා ප්‍රවේශය සහිත යෙදුම් බලන්න"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"ප්‍රවේශය ඉවත් කරන ලදි"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"රහස්‍යතාව ආරක්ෂා කිරීමට යෙදුම් අවසර ඉවත් කර ඇත"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> මාස කීපයක් තුළ භාවිත කර නැත. සමාලෝචනය කිරීමට තට්ටු කරන්න."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> සහ තවත් යෙදුම් 1ක් මාස කීපයක් තුළ භාවිත කර නැත. සමාලෝචනය කිරීමට තට්ටු කරන්න."</string>
@@ -504,12 +508,9 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"ආරක්ෂාව සහ පෞද්ගලිකත්වය"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"ස්කෑන් කරන්න"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"ඉවත ලන්න"</string>
-    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (1548283211993262986) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_confirm_dismiss_button (5884137843083634556) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_cancel_dismiss_button (2874578798877712346) -->
-    <skip />
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"අනතුරු ඇඟවීම ඉවත ලන්නද?"</string>
+    <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"ඉවත ලන්න"</string>
+    <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"අවලංගු කරන්න"</string>
     <string name="security_settings" msgid="3808106921175271317">"ආරක්ෂක සැකසීම්"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"සංවේදක අවසර"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"පෞද්ගලිකත්ව පාලන"</string>

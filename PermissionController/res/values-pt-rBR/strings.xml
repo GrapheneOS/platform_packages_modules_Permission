@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Configurações de apps não usados"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Remover permissões se o app não for usado"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Remover permissões e liberar espaço"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Pausar atividade no app quando não usado"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Remove permissões, exclui arquivos temporários e para notificações"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Para proteger seus dados, as permissões serão removidas se o app não for usado por alguns meses."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Para proteger seus dados, se o app não for usado por alguns meses, as seguintes permissões serão removidas: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Para proteger seus dados, as permissões de apps que não foram usados nos últimos meses foram removidas."</string>
@@ -278,6 +276,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"As permissões foram removidas para proteger sua privacidade"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"O app <xliff:g id="APP_NAME">%s</xliff:g> tem acesso à sua localização em segundo plano"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Este app pode acessar sua localização a qualquer momento. Toque para alterar."</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Revisar apps com acessibilidade"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"O app <xliff:g id="APP_NAME">%s</xliff:g> pode ler todo o conteúdo na tela, mostrar conteúdos sobre outros apps e monitorar suas interações."</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Este app pode ler todo o conteúdo na tela, mostrar conteúdos sobre outros apps e monitorar suas interações."</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Remover o acesso"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"Ver apps com acessibilidade"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Acesso removido"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Permissões de apps removidas para proteger a privacidade"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"O app <xliff:g id="APP_NAME">%s</xliff:g> não foi usado nos últimos meses. Toque para analisar."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> e mais um app não foram usados nos últimos meses. Toque para analisar."</string>

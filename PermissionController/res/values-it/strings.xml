@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Impostazioni app inutilizzate"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Rimuovi autorizzazioni se non in uso"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Rimuovi autorizzazioni e libera spazio"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Sospendi attività app se inutilizzate"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Rimuovi le autorizzazioni, elimina i file temporanei e interrompi le notifiche"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Per proteggere i tuoi dati, le autorizzazioni di questa app verranno rimosse se l\'app non viene usata per alcuni mesi."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Per proteggere i tuoi dati, se l\'app non viene usata per alcuni mesi, le seguenti autorizzazioni verranno rimosse: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Per proteggere i tuoi dati, sono state rimosse le autorizzazioni dalle app che non hai utilizzato per alcuni mesi."</string>
@@ -278,6 +276,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Autorizzazioni rimosse per proteggere la tua privacy"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> ha recuperato la tua posizione in background"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Questa app può accedere sempre alla tua posizione. Tocca per modificare."</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Controlla l\'app con accesso alle funzioni di accessibilità"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> può leggere tutti i contenuti sullo schermo, visualizzare contenuti sopra altre app e monitorare le tue interazioni."</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Questa app può leggere tutti i contenuti sullo schermo, visualizzare contenuti sopra altre app e monitorare le tue interazioni."</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Rimuovi accesso"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"Visualizza le app con accesso alle funzioni di accessibilità"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Accesso rimosso"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Autorizzazioni app rimosse per proteggere la privacy"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"L\'app <xliff:g id="APP_NAME">%s</xliff:g> non è stata utilizzata per alcuni mesi. Tocca per controllare."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"L\'app <xliff:g id="APP_NAME">%s</xliff:g> e un\'altra app non sono state utilizzate per alcuni mesi. Tocca per controllare."</string>
@@ -504,12 +508,9 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Sicurezza e privacy"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Cerca"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Ignora"</string>
-    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (1548283211993262986) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_confirm_dismiss_button (5884137843083634556) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_cancel_dismiss_button (2874578798877712346) -->
-    <skip />
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"Vuoi ignorare questo avviso?"</string>
+    <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Ignora"</string>
+    <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Annulla"</string>
     <string name="security_settings" msgid="3808106921175271317">"Impostazioni di sicurezza"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Autorizzaz. accesso ai sensori"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Controlli per la privacy"</string>

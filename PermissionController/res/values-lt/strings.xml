@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Nenaudojamos programos nustatymai"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Pašalinti leidimus, jei programa nenaudojama"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Pašalinti leidimus ir atlaisvinti vietos"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Pristabdyti nenaudojamų programų veiklą"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Pašalinkite leidimus, ištrinkite laikinus failus ir sustabdykite pranešimus"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Siekiant apsaugoti duomenis, šios programos leidimai bus pašalinti, jei programos nenaudosite kelis mėnesius."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Siekiant apsaugoti duomenis, jei programos nenaudosite kelis mėnesius, bus pašalinti nurodyti leidimai: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Siekiant apsaugoti duomenis, leidimai buvo pašalinti iš programų, kurių nenaudojote kelis mėnesius"</string>
@@ -278,6 +276,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Leidimai pašalinti siekiant užtikrinti jūsų privatumą"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"Programa „<xliff:g id="APP_NAME">%s</xliff:g>“ gavo vietovės duomenis fone"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Ši programa visada gali pasiekti jūsų vietovę. Palieskite, kad pakeistumėte."</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Programos su pritaikomumo prieiga peržiūra"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"Programa „<xliff:g id="APP_NAME">%s</xliff:g>“ gali skaityti visą turinį ekrane, pateikti turinį kitose programose ir stebėti sąveikas."</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Ši programa gali skaityti visą turinį ekrane, pateikti turinį kitose programose ir stebėti jūsų sąveikas."</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Pašalinti prieigą"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"Peržiūrėti programas su pritaikomumo prieiga"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Prieiga pašalinta"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Programos leidimai pašalinti siekiant užtikrinti privatumą"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"„<xliff:g id="APP_NAME">%s</xliff:g>“ nebuvo naudojama kelis mėnesius. Palieskite ir peržiūrėkite."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"„<xliff:g id="APP_NAME">%s</xliff:g>“ ir dar viena programa nebuvo naudojamos kelis mėnesius. Palieskite ir peržiūrėkite."</string>
@@ -504,12 +508,9 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Sauga ir privatumas"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Nuskaityti"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Atsisakyti"</string>
-    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (1548283211993262986) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_confirm_dismiss_button (5884137843083634556) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_cancel_dismiss_button (2874578798877712346) -->
-    <skip />
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"Atsisakyti šio perspėjimo?"</string>
+    <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Atsisakyti"</string>
+    <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Atšaukti"</string>
     <string name="security_settings" msgid="3808106921175271317">"Saugos nustatymai"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Jutiklių leidimai"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Privatumo valdikliai"</string>

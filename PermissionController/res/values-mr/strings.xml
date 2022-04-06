@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"न वापरलेली ॲप सेटिंग्ज"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"अ‍ॅप वापरले नसल्यास, परवानग्या काढून टाका"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"परवानग्या काढा आणि जागा मोकळी करा"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"न वापरल्यास अ‍ॅप अ‍ॅक्टिव्हिटी थांबवा"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"परवानग्या काढून टाका, तात्पुरत्या फाइल हटवा आणि सूचना थांबवा"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"तुमच्या डेटाचे संरक्षण करण्यासाठी, अ‍ॅप काही महिन्यांत वापरले गेले नसल्यास, या अ‍ॅपच्या परवानग्या काढल्या जातील."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"तुमच्या डेटाचे संरक्षण करण्यासाठी, अ‍ॅप काही महिन्यांत वापरले गेले नसल्यास, पुढील परवानग्या काढल्या जातील: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"तुमच्या डेटाचे संरक्षण करण्यासाठी, तुम्ही काही महिन्यांत न वापरलेल्या ॲप्समधून परवानग्या काढल्या गेल्या आहेत."</string>
@@ -278,6 +276,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"तुमच्या गोपनीयतेचे संरक्षण करण्यासाठी परवानग्या काढून टाकल्या आहेत"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> ने बॅकग्राउंडमध्ये तुमचे स्थान मिळवले"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"हे अ‍ॅप नेहमी तुमचे स्थान अ‍ॅक्सेस करू शकते. बदलण्यासाठी टॅप करा."</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"अ‍ॅक्सेसिबिलिटी अ‍ॅक्सेससह अ‍ॅपचे पुनरावलोकन करा"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> हे स्क्रीनवरील सर्व आशय वाचू शकते, इतर अ‍ॅप्सवर आशय प्रदर्शित करू शकते आणि तुमच्या संवादाचा मागोवा ठेवू शकते."</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"हे अ‍ॅप स्क्रीनवरील सर्व आशय वाचू शकते, इतर अ‍ॅप्सवर आशय प्रदर्शित करू शकते आणि तुमच्या संवादाचा मागोवा ठेवू शकते."</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"अ‍ॅक्सेस काढून टाका"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"अ‍ॅक्सेसिबिलिटी अ‍ॅक्सेस असलेली अ‍ॅप्स पहा"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"अ‍ॅक्सेस काढून टाकला"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"गोपनीयता संरक्षित करण्यासाठी अ‍ॅप परवानग्या काढून टाकल्या"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> काही महिन्यांपासून वापरलेले नाही. परीक्षण करण्यासाठी टॅप करा."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> आणि एक इतर ॲप काही महिन्यांपासून वापरलेले नाही. परीक्षण करण्यासाठी टॅप करा."</string>
@@ -504,12 +508,9 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"सुरक्षा आणि गोपनीयता"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"स्कॅन करा"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"डिसमिस करा"</string>
-    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (1548283211993262986) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_confirm_dismiss_button (5884137843083634556) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_cancel_dismiss_button (2874578798877712346) -->
-    <skip />
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"चेतावणी डिसमिस करायची का?"</string>
+    <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"डिसमिस करा"</string>
+    <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"रद्द करा"</string>
     <string name="security_settings" msgid="3808106921175271317">"सुरक्षा सेटिंग्ज"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"सेन्सर परवानग्या"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"गोपनीयता नियंत्रणे"</string>

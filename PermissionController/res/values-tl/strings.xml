@@ -276,6 +276,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Inalis ang mga pahintulot para protektahan ang iyong privacy"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"Kinuha ng <xliff:g id="APP_NAME">%s</xliff:g> ang iyong lokasyon sa background"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Maa-access ng app na ito ang iyong lokasyon anumang oras. I-tap para baguhin."</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Suriin ang app na may access sa accessibility"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"Magagawa ng <xliff:g id="APP_NAME">%s</xliff:g> na basahin ang lahat ng content sa screen, magpakita ng content sa ibabaw ng iba pang app, at subaybayan ang iyong mga pakikipag-ugnayan."</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Magagawa ng app na ito na basahin ang lahat ng content sa screen, magpakita ng content sa ibabaw ng iba pang app, at subaybayan ang mga pakikipag-ugnayan mo."</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Alisin ang access"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"Tingnan ang mga app na may access sa accessibility"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Inalis ang access"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Inalis ang pahintulot sa app para protektahan ang privacy"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"Ilang buwan nang hindi ginagamit ang <xliff:g id="APP_NAME">%s</xliff:g>. I-tap para suriin."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"Ilang buwan nang hindi ginagamit ang <xliff:g id="APP_NAME">%s</xliff:g> at 1 pang app. I-tap para suriin."</string>

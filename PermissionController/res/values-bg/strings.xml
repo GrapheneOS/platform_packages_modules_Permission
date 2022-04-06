@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Настройки за неизползваните приложения"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Премахване на разрешенията, ако приложението не се използва"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Премахване на разреш. и освоб. на място"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Поставяне на активн. в прилож. на пауза, ако не се ползва"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Премахване на разрешенията, изтриване на временните файлове и спиране на известията"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"За да защитим данните ви, разрешенията за това приложение ще бъдат премахнати, ако не го използвате няколко месеца."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"За да защитим данните ви, следните разрешения ще бъдат премахнати, ако не използвате приложението няколко месеца: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"За да защитим данните ви, премахнахме разрешенията за приложенията, които не сте използвали от няколко месеца."</string>
@@ -278,6 +276,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Разрешенията са премахнати с цел защита на поверителността ви"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> получи достъп до местоположението ви на заден план"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Приложението винаги има достъп до местоположението ви. Докоснете, за да промените това."</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Преглед на приложението с достъп"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> може да чете цялото съдържание на екрана, да показва съдържание върху други приложения и да проследява взаимодействията ви."</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Това приложение може да чете цялото съдържание на екрана, да показва съдържание върху други приложения и да проследява взаимодействията ви."</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Премахване на достъпа"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"Вижте приложенията с достъп"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Достъпът е премахнат"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Премахнати са разр. за прил. с цел защита на поверителността"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"Приложението <xliff:g id="APP_NAME">%s</xliff:g> не е използвано от няколко месеца. Докоснете за преглед."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> и още 1 приложение не са използвани от няколко месеца. Докоснете за преглед."</string>
@@ -504,12 +508,9 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Сигурност и поверителност"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Сканиране"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Отхвърляне"</string>
-    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (1548283211993262986) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_confirm_dismiss_button (5884137843083634556) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_cancel_dismiss_button (2874578798877712346) -->
-    <skip />
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"Да се отхвърли ли това предупреждение?"</string>
+    <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Отхвърляне"</string>
+    <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Отказ"</string>
     <string name="security_settings" msgid="3808106921175271317">"Настройки за сигурност"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Разрешения за сензорите"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Контроли за поверителност"</string>

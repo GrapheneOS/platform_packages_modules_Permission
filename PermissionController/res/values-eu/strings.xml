@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Erabili gabeko aplikazio-ezarpenak"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Kendu baimenak aplikazioa ez bada erabiltzen"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Kendu baimenak eta egin tokia"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Pausatu erabiltzen ez diren aplikazioetako jarduerak"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Kendu baimenak, ezabatu aldi baterako fitxategiak eta geldiarazi jakinarazpenak"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Zure datuak babeste aldera, aplikazio honen baimenak kendu egingo dira aplikazioa ez baduzu erabiltzen zenbait hilabetez."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Zure datuak babeste aldera, kendu egingo dira honako baimen hauek zenbait hilabetez aplikazioa erabiltzen ez baduzu: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Zure datuak babeste aldera, kendu egin dira zenbait hilabetez erabili ez dituzun aplikazioen baimenak."</string>
@@ -278,6 +276,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Baimenak kendu egin dira zure pribatutasuna babesteko"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> aplikazioak kokapena atzitu du atzeko planoan"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Aplikazio honek beti atzi dezake kokapena. Sakatu aldatzeko."</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Berrikusi erabilerraztasun-sarbidea duen aplikazioa"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> aplikazioak pantailako eduki guztia irakur dezake, beste aplikazioen gainean edukia bistaratu, eta zure interakzioen jarraipena egin."</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Aplikazioak pantailako eduki guztia irakur dezake, beste aplikazioen gainean edukia bistaratu, eta zure interakzioen jarraipena egin."</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Kendu sarbidea"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"Ikusi erabilerraztasun-sarbidea duten aplikazioak"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Kendu da sarbidea"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Aplikazio-baimenak kendu dira pribatutasuna babesteko"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> aplikazioa ez da erabili hainbat hilabetean zehar. Sakatu berrikusteko."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> eta beste aplikazio bat ez dira erabili hainbat hilabetean zehar. Sakatu berrikusteko."</string>
@@ -504,12 +508,9 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Segurtasuna eta pribatutasuna"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Aztertu"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Baztertu"</string>
-    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (1548283211993262986) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_confirm_dismiss_button (5884137843083634556) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_cancel_dismiss_button (2874578798877712346) -->
-    <skip />
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"Abisua baztertu nahi duzu?"</string>
+    <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Baztertu"</string>
+    <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Utzi"</string>
     <string name="security_settings" msgid="3808106921175271317">"Segurtasun-ezarpenak"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Sentsoreen baimenak"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Pribatutasun-ezarpenak"</string>

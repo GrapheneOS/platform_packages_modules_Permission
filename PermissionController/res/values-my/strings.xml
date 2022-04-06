@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"အသုံးမပြုသော အက်ပ်ဆက်တင်များ"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"အက်ပ်ကိုအသုံးမပြုလျှင် ခွင့်ပြုချက်များ ဖယ်ရှားရန်"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"ခွင့်ပြုချက်များဖယ်ရှားပြီး နေရာလွတ်ပြုလုပ်ရန်"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"အသုံးမပြုပါက အက်ပ် အသုံးပြုမှု ခဏရပ်ရန်"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"ခွင့်ပြုချက်များ ဖယ်ရှားခြင်း၊ ယာယီဖိုင်များ ဖျက်ခြင်းနှင့် အကြောင်းကြားချက်များ ရပ်ခြင်းတို့ ပြုလုပ်နိုင်သည်"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"အက်ပ်ကို လအနည်းငယ် အသုံးမပြုပါက သင်၏ဒေတာကိုကာကွယ်ရန် ဤအက်ပ်အတွက် ခွင့်ပြုချက်များကို ဖယ်ရှားပါမည်။"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"အက်ပ်ကို လအနည်းငယ် အသုံးမပြုပါက သင်၏ဒေတာကိုကာကွယ်ရန် အောက်ပါခွင့်ပြုချက်များကို ဖယ်ရှားပါမည်- <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"သင်၏ဒေတာကိုကာကွယ်ရန် လအနည်းငယ်အတွင်း အသုံးမပြုသော အက်ပ်များမှ ခွင့်ပြုချက်များကို ဖယ်ရှားလိုက်သည်။"</string>
@@ -278,6 +276,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"သင့်ပုဂ္ဂိုလ်ရေးလုံခြုံမှုကို ကာကွယ်ရန် ခွင့်ပြုချက်များ ဖယ်ရှားလိုက်သည်"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> သည် နောက်ခံတွင် သင့်တည်နေရာကို ရရှိထားသည်"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"ဤအက်ပ်က သင်၏တည်နေရာကို အမြဲဝင်ကြည့်နိုင်ပါသည်။ ပြောင်းရန် တို့ပါ။"</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"အများသုံးနိုင်ခွင့်ရှိသည့် အက်ပ်ကို ပြန်ကြည့်ခြင်း"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> သည် ဖန်သားပြင်ရှိ အကြောင်းအရာအားလုံးကို ဖတ်ခြင်း၊ အခြားအက်ပ်များပေါ်ရှိ အကြောင်းအရာများကို ပြခြင်းနှင့် သင်၏ပြန်လှန်တုံ့ပြန်မှုများကို ခြေရာခံခြင်းတို့ ပြုလုပ်နိုင်သည်။"</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"ဤအက်ပ်သည် ဖန်သားပြင်ပေါ်ရှိ အကြောင်းအရာအားလုံးကို ဖတ်ခြင်း၊ အခြားအက်ပ်များပေါ်ရှိ အကြောင်းအရာများကို ပြခြင်းနှင့် သင်၏ပြန်လှန်တုံ့ပြန်မှုများကို ခြေရာခံခြင်းတို့ ပြုလုပ်နိုင်သည်။"</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"သုံးခွင့်ကို ဖယ်ရှားရန်"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"အများသုံးနိုင်ခွင့်ရှိသည့် အက်ပ်များကို ကြည့်ရန်"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"သုံးခွင့်ကို ဖယ်ရှားလိုက်ပြီ"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"ပုဂ္ဂိုလ်ရေးလုံခြုံစေရန် အက်ပ်ခွင့်ပြုချက်များ ဖယ်လိုက်သည်"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> ကို အသုံးမပြုသည်မှာ လအနည်းငယ် ရှိပါပြီ။ ပြန်ကြည့်ရန် တို့ပါ။"</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> နှင့် အခြားအက်ပ် ၁ ခုကို အသုံးမပြုသည်မှာ လအနည်းငယ် ရှိပါပြီ။ ပြန်ကြည့်ရန် တို့ပါ။"</string>
@@ -501,15 +505,12 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"အက်ပ်နှင့် ဝန်ဆောင်မှုများအတွက်"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"အရေးပေါ် နံပါတ်ကို သင်ခေါ်ဆိုချိန်တွင် မိုက်ခရိုဖုန်းဒေတာကို မျှဝေနိုင်သေးသည်။"</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"ပြောင်းရန်"</string>
-    <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"ပုဂ္ဂိုလ်ရေးနှင့် လုံခြုံရေး"</string>
+    <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"လုံခြုံရေးနှင့် အချက်အလက်လုံခြုံမှု"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"စကင်ဖတ်ရန်"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"ပယ်ရန်"</string>
-    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (1548283211993262986) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_confirm_dismiss_button (5884137843083634556) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_cancel_dismiss_button (2874578798877712346) -->
-    <skip />
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"ဤသတိပေးချက်ကို ပယ်မလား။"</string>
+    <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"ပယ်ရန်"</string>
+    <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"မလုပ်တော့"</string>
     <string name="security_settings" msgid="3808106921175271317">"လုံခြုံရေး ဆက်တင်များ"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"အာရုံခံကိရိယာ ခွင့်ပြုချက်များ"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"ကန့်သတ်ရန် ဆက်တင်များ"</string>
@@ -528,6 +529,6 @@
     <string name="recent_app_usage_1_qs" msgid="261450184773310741">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>) က မကြာသေးမီက အသုံးပြုထားသည်"</string>
     <string name="active_app_usage_2_qs" msgid="6107866785243565283">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) က အသုံးပြုနေသည်"</string>
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) က မကြာသေးမီက အသုံးပြုထားသည်"</string>
-    <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"ပုဂ္ဂိုလ်ရေးနှင့် လုံခြုံရေး"</string>
+    <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"လုံခြုံရေးနှင့် အချက်အလက်လုံခြုံမှု"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"အခြေအနေ စစ်ဆေးခြင်း"</string>
 </resources>

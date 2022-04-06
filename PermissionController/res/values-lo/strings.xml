@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"ການຕັ້ງຄ່າແອັບທີ່ບໍ່ໄດ້ໃຊ້"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"ລຶບສິດອະນຸຍາດຫາກບໍ່ໄດ້ໃຊ້ແອັບ"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"ລຶບການອະນຸຍາດອອກ ແລະ ສ້າງພື້ນທີ່ຫວ່າງ"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"ຢຸດການເຄື່ອນໄຫວແອັບຊົ່ວຄາວຫາກບໍ່ໄດ້ໃຊ້"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"ລຶບການອະນຸຍາດອອກ, ລຶບໄຟລ໌ຊົ່ວຄາວ ແລະ ຢຸດການແຈ້ງເຕືອນ"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"ເພື່ອປົກປ້ອງຂໍ້ມູນຂອງທ່ານ, ສິດອະນຸຍາດສຳລັບແອັບນີ້ຈະຖືກລຶບອອກຫາກບໍ່ໄດ້ໃຊ້ແອັບສອງສາມເດືອນ."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"ເພື່ອປົກປ້ອງຂໍ້ມູນຂອງທ່ານ, ຫາກບໍ່ໄດ້ໃຊ້ແອັບສອງສາມເດືອນ, ສິດອະນຸຍາດຕໍ່ໄປນີ້ຈະຖືກລຶບອອກ: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"ເພື່ອປົກປ້ອງຂໍ້ມູນຂອງທ່ານ, ລະບົບໄດ້ລຶບສິດອະນຸຍາດອອກຈາກແອັບຕ່າງໆທີ່ທ່ານບໍ່ໄດ້ໃຊ້ສອງສາມເດືອນແລ້ວ."</string>
@@ -278,6 +276,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"ລຶບສິດອະນຸຍາດອອກແລ້ວເພື່ອປົກປ້ອງຄວາມເປັນສ່ວນຕົວຂອງທ່ານ"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> ໄດ້ຂໍ້ມູນສະຖານທີ່ຂອງທ່ານໃນພື້ນຫຼັງແລ້ວ"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"ແອັບນີ້ສາມາດເຂົ້າເຖິງສະຖານທີ່ຂອງທ່ານໄດ້ຕະຫຼອດເວລາ. ແຕະເພື່ອປ່ຽນແປງ."</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"ກວດສອບແອັບທີ່ມີສິດເຂົ້າເຖິງການຊ່ວຍເຂົ້າເຖິງ"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> ສາມາດອ່ານເນື້ອຫາທັງໝົດຢູ່ໜ້າຈໍ, ສະແດງເນື້ອຫາຂ້າມແອັບອື່ນ ແລະ ຕິດຕາມການໂຕ້ຕອບຂອງທ່ານໄດ້."</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"ແອັບນີ້ສາມາດອ່ານເນື້ອຫາທັງໝົດຢູ່ໜ້າຈໍ, ສະແດງເນື້ອຫາຂ້າມແອັບອື່ນ ແລະ ຕິດຕາມການໂຕ້ຕອບຂອງທ່ານໄດ້."</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"ລຶບສິດເຂົ້າເຖິງອອກ"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"ເບິ່ງແອັບທີ່ມີສິດເຂົ້າເຖິງການຊ່ວຍເຂົ້າເຖິງ"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"ລຶບສິດເຂົ້າເຖິງອອກແລ້ວ"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"ລຶບສິດອະນຸຍາດແອັບອອກແລ້ວເພື່ອປົກປ້ອງຄວາມເປັນສ່ວນຕົວ"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"ບໍ່ໄດ້ໃຊ້ <xliff:g id="APP_NAME">%s</xliff:g> ມາສອງສາມເດືອນແລ້ວ. ແຕະເພື່ອກວດສອບ."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"ບໍ່ໄດ້ໃຊ້ <xliff:g id="APP_NAME">%s</xliff:g> ແລະ ອີກ 1 ແອັບມາສອງສາມເດືອນແລ້ວ. ແຕະເພື່ອກວດສອບ."</string>
@@ -504,12 +508,9 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"ຄວາມປອດໄພ ແລະ ຄວາມເປັນສ່ວນຕົວ"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"ສະແກນ"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"ປິດໄວ້"</string>
-    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (1548283211993262986) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_confirm_dismiss_button (5884137843083634556) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_cancel_dismiss_button (2874578798877712346) -->
-    <skip />
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"ປິດຄຳເຕືອນນີ້ໄວ້ບໍ?"</string>
+    <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"ປິດໄວ້"</string>
+    <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"ຍົກເລີກ"</string>
     <string name="security_settings" msgid="3808106921175271317">"ການຕັ້ງຄ່າຄວາມປອດໄພ"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"ການອະນຸຍາດເຊັນເຊີ"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"ການຄວບຄຸມຄວາມເປັນສ່ວນຕົວ"</string>

@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Nieużywane ustawienia aplikacji"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Usuń uprawnienia, jeśli aplikacja jest nieużywana"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Usuń uprawnienia i zwolnij miejsce"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Wstrzymaj aktywność w aplikacji, jeśli jest nieużywana"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Usuń uprawnienia i pliki tymczasowe oraz zatrzymaj powiadomienia"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Aby chronić Twoje dane, usuniemy uprawnienia tej aplikacji, jeśli nie była używana od kilku miesięcy."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Aby chronić Twoje dane, jeśli aplikacja nie będzie używana przez kilka miesięcy, usuniemy te uprawnienia: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Aby chronić Twoje dane, usunęliśmy uprawnienia aplikacji, których nie używano od kilku miesięcy."</string>
@@ -278,6 +276,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Usunięto uprawnienia, by chronić Twoją prywatność."</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"Aplikacja <xliff:g id="APP_NAME">%s</xliff:g> uzyskała dostęp do Twojej lokalizacji w tle"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Ta aplikacja może zawsze uzyskać dostęp do Twojej lokalizacji. Kliknij, by to zmienić."</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Sprawdź aplikację z dostępem"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"Aplikacja <xliff:g id="APP_NAME">%s</xliff:g> może odczytywać całą zawartość ekranu, wyświetlać treści nad innymi aplikacjami i śledzić Twoje interakcje."</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Ta aplikacja może odczytywać całą zawartość ekranu, wyświetlać treści nad innymi aplikacjami i śledzić Twoje interakcje."</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Anuluj dostęp"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"Zobacz aplikacje z dostępem"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Dostęp usunięty"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Usunięto uprawnienia aplikacji, by chronić prywatność"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"Aplikacja <xliff:g id="APP_NAME">%s</xliff:g> nie była używana od kilku miesięcy. Kliknij, by sprawdzić."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"Aplikacja <xliff:g id="APP_NAME">%s</xliff:g> i jeszcze 1 aplikacja nie były używane od kilku miesięcy. Kliknij, by sprawdzić."</string>
@@ -504,12 +508,9 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Bezpieczeństwo i prywatność"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Skanuj"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Odrzuć"</string>
-    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (1548283211993262986) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_confirm_dismiss_button (5884137843083634556) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_cancel_dismiss_button (2874578798877712346) -->
-    <skip />
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"Zamknąć to ostrzeżenie?"</string>
+    <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Zamknij"</string>
+    <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Anuluj"</string>
     <string name="security_settings" msgid="3808106921175271317">"Ustawienia zabezpieczeń"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Uprawnienia dotyczące czujnika"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Ustawienia prywatności"</string>
