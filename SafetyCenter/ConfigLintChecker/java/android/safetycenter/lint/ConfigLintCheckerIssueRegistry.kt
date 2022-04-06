@@ -25,6 +25,7 @@ import com.google.auto.service.AutoService
 @Suppress("UnstableApiUsage")
 class ConfigLintCheckerIssueRegistry : IssueRegistry() {
     override val issues = listOf(
+        ConfigSchemaDetector.ISSUE,
         ParserExceptionDetector.ISSUE
     )
 
