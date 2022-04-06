@@ -196,14 +196,11 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Տեսնել «<xliff:g id="APP">%1$s</xliff:g>» հավելվածի բոլոր թույլտվությունները"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Դիտել այս թույլտվությունն ունեցող հավելվածների ցանկը"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Ցույց տալ օգնականի կողմից խոսափողի օգտագործման վիճակագրությունը"</string>
-    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
-    <skip />
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"Չօգտագործվող հավելվածների կարգավորումներ"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Հեռացնել թույլտվությունները, եթե հավելվածը չի օգտագործվում"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Հեռացնել թույլտվությունները և տարածք ազատել"</string>
-    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Դադարեցնել աշխատանքը ոչ ակտիվ վիճակում"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Հեռացնել թույլտվությունները, ջնջել ժամանակավոր ֆայլերը և դադարեցնել ծանուցումները"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Եթե հավելվածը չի օգտագործվել մի քանի ամիս, դրա թույլտվությունները կհեռացվեն՝ ձեր տվյալները պաշտպանելու համար։"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Եթե հավելվածը չի օգտագործվել մի քանի ամիս, ձեր տվյալները պաշտպանելու համար հետևյալ թույլտվությունները կհեռացվեն՝ <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Հավելվածներից, որոնք մի քանի ամիս չեք օգտագործել, թույլտվությունները հեռացվել են՝ ձեր տվյալները պաշտպանելու համար։"</string>

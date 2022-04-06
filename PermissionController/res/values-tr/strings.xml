@@ -196,14 +196,11 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Tüm <xliff:g id="APP">%1$s</xliff:g> izinlerini göster"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Bu izne sahip tüm uygulamaları göster"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Yardımcı mikrofon kullanımını göster"</string>
-    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
-    <skip />
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"Kullanılmayan uygulama ayarları"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Uygulama kullanılmıyorsa izinleri kaldır"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"İzinleri kaldırıp yer aç"</string>
-    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Kullanılmayan uygulama etkinliğini duraklat"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"İzinleri kaldırın, geçici dosyaları silin ve bildirimleri durdurun"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Bu uygulama birkaç ay boyunca kullanılmazsa verilerinizi korumak için uygulamanın izinleri kaldırılır."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Uygulama birkaç ay boyunca kullanılmazsa şu izinler verilerinizi korumak için kaldırılacak: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Birkaç aydır kullanmadığınız uygulamaların izinleri verilerinizi korumak için kaldırıldı."</string>

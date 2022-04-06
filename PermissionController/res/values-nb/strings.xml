@@ -196,14 +196,11 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Se alle tillatelsene <xliff:g id="APP">%1$s</xliff:g> har"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Se alle apper med denne tillatelsen"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Vis bruk av assistentmikrofonen"</string>
-    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
-    <skip />
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"Innstillinger for ubrukte apper"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Fjern tillatelser hvis appen ikke brukes"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Fjern tillatelser og frigjør plass"</string>
-    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Sett appaktivitet på pause hvis ubrukt"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Fjern tillatelser, slett midlertidige filer, og stopp varsler"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"For å beskytte dataene dine fjernes tillatelser for denne appen hvis appen ikke brukes på noen måneder."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Hvis appen ikke brukes på noen måneder, fjernes disse tillatelsene for å beskytte dataene dine: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"For å beskytte dataene dine har tillatelser blitt fjernet fra apper du ikke har brukt på noen måneder."</string>

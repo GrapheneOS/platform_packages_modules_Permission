@@ -196,14 +196,11 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Sjá allar heimildir fyrir „<xliff:g id="APP">%1$s</xliff:g>“"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Sjá öll forrit með þessa heimild"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Sýna hljóðnemanotkun hjálpara"</string>
-    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
-    <skip />
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"Ónotaðar forritastillingar"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Fjarlægja heimildir ef forrit er ekki notað"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Fjarlægja heimildir og losa um pláss"</string>
-    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Gera hlé á forritavirkni ef ekki notað"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Fjarlægja heimildir, eyða tímabundnum skrám og stöðva tilkynningar"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Til að vernda gögnin þín verða heimildir þessa forrits fjarlægðar ef það er ekki notað í nokkra mánuði."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Til að vernda gögnin þín verða eftirfarandi heimildir fjarlægðar ef forritið er ekki notað í nokkra mánuði: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Til að vernda gögnin þín voru heimildir fjarlægðar úr forritum sem þú hefur ekki notað í nokkra mánuði."</string>
@@ -472,7 +469,7 @@
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Þetta forrit vill taka myndir og taka upp myndskeið hvenær sem er, jafnvel þegar þú ert ekki að nota forritið. "<annotation id="link">"Þú getur leyft það í stillingum."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Viltu veita &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aðgang að símtalaskrám símans?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Viltu leyfa &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; að hringja og stjórna símtölum?"</string>
-    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Viltu veita &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aðgang að skynjaragögnum yfir lífsmörk þín?"</string>
+    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Viltu veita &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aðgang að skynjaragögnum um lífsmörk þín?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Þetta forrit vill fá stöðugan aðgang að skynjaragögnum um lífsmörk þín, líka þegar þú ert ekki að nota forritið. Ef þú vilt gera þessa breytingu skaltu "<annotation id="link">"opna stillingar."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Viltu veita &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aðgang að skynjaragögnum um lífsmörk þín?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Til að veita þessu forriti stöðugan aðgang að gögnum líkamsskynjara skaltu "<annotation id="link">"opna stillingarnar."</annotation></string>

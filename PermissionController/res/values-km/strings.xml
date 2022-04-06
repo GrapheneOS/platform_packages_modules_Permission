@@ -196,14 +196,11 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"មើល​ការអនុញ្ញាតទាំងអស់ឱ្យទៅ <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"មើលកម្មវិធី​ទាំងអស់​ដែលមាន​ការអនុញ្ញាត​នេះ"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"បង្ហាញការប្រើប្រាស់​មីក្រូហ្វូនរបស់ជំនួយការ"</string>
-    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
-    <skip />
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"ការកំណត់កម្មវិធីដែលមិនប្រើ"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"ដកការ​អនុញ្ញាតចេញ ប្រសិនបើ​មិនប្រើប្រាស់​កម្មវិធី"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"ដក​ការអនុញ្ញាតចេញ និងបង្កើន​ទំហំផ្ទុក"</string>
-    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"ផ្អាក​សកម្មភាព​កម្មវិធី ប្រសិនបើមិនប្រើ"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"ដកការអនុញ្ញាតចេញ លុបឯកសារបណ្ដោះអាសន្ន និងបញ្ឈប់ការជូនដំណឹង"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"ដើម្បីការពារ​ទិន្នន័យរបស់អ្នក ការអនុញ្ញាត​សម្រាប់កម្មវិធីនេះ​នឹងត្រូវ​ដកចេញ ប្រសិនបើ​មិនប្រើប្រាស់​កម្មវិធីនេះ​រយៈពេល​ពីរបីខែ។"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"ដើម្បីការពារ​ទិន្នន័យរបស់អ្នក ការអនុញ្ញាត​ខាងក្រោម​នឹងត្រូវដកចេញ ប្រសិនបើ​មិនប្រើប្រាស់​កម្មវិធីនេះ​រយៈពេល​ពីរបីខែ៖ <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"ដើម្បីការពារ​ទិន្នន័យរបស់អ្នក ការអនុញ្ញាត​ត្រូវបាន​ដកចេញ​ពីកម្មវិធី​ដែល​អ្នកមិនបាន​ប្រើប្រាស់​រយៈពេល​ពីរបីខែ។"</string>

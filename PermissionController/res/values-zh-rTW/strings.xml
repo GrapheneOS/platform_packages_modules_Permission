@@ -196,14 +196,11 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"查看「<xliff:g id="APP">%1$s</xliff:g>」的所有權限"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"查看具備此權限的所有應用程式"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"顯示 Google 助理的麥克風使用狀況"</string>
-    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
-    <skip />
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"未使用的應用程式設定"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"如果應用程式未使用，讓系統移除相關權限"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"移除權限並釋出空間"</string>
-    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"如果未使用就暫停應用程式活動"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"移除權限、刪除暫存檔及停止通知"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"為了保護你的資料，如果你連續幾個月都未使用這個應用程式，系統會移除其權限。"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"為了保護你的資料，如果應用程式已有數個月未使用，系統將移除以下權限：<xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"為了保護你的資料，針對數個月未使用的應用程式，系統已移除相關權限。"</string>
