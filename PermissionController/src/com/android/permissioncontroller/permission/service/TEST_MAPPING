@@ -55,9 +55,6 @@
                     "include-filter": "android.permission.cts.LocationAccessCheckTest"
                 },
                 {
-                    "include-filter": "android.permission.cts.NotificationListenerCheckTest"
-                },
-                {
                     "exclude-annotation": "androidx.test.filters.FlakyTest"
                 }
             ]
