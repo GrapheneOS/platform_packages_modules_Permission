@@ -17,8 +17,8 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"Izvori Centra za sigurnost"</string>
-    <string name="lock_screen_sources_title" msgid="7706608329251423698">"Zaključavanje ekrana"</string>
-    <string name="lock_screen_title" msgid="4069104894527169877">"Zaključavanje ekrana"</string>
-    <string name="lock_screen_summary_disabled" msgid="6073123093607694871">"Detalji će biti uskoro dostupni"</string>
+    <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"সুরক্ষা কেন্দ্র রিসোর্স"</string>
+    <string name="lock_screen_sources_title" msgid="7706608329251423698">"স্ক্রিন লক"</string>
+    <string name="lock_screen_title" msgid="4069104894527169877">"স্ক্রিন লক"</string>
+    <string name="lock_screen_summary_disabled" msgid="6073123093607694871">"শীঘ্রই এই বিষয়ে তথ্য উপলভ্য হবে"</string>
 </resources>
