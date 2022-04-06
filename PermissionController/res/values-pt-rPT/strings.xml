@@ -482,7 +482,7 @@
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Esta app pretende tirar fotos e gravar vídeos sempre, mesmo quando não a está a utilizar. "<annotation id="link">"Permita-o nas Definições."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aceda aos registos de chamadas do seu telemóvel?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; faça e gira chamadas telefónicas?"</string>
-    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aceda aos dados do sensor acerca dos seus sinais vitais?"</string>
+    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aceda aos dados de sensores acerca dos seus sinais vitais?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Autorizações controladas"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"É possível aceder à localização"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"O seu administrador de TI está a permitir que a app <xliff:g id="APP_NAME">%s</xliff:g> aceda à sua localização"</string>

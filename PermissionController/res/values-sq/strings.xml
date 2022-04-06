@@ -113,7 +113,7 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Shiko lejet e tjera"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> dhe <xliff:g id="NUM">%3$s</xliff:g> të tjera"</string>
-    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Kronologjia se kur e kanë përdorur aplikacionet <xliff:g id="PERMGROUP">%1$s</xliff:g> tënd në 24 orët e fundit"</string>
+    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"Kronologjia se kur është përdorur \"<xliff:g id="PERMGROUP">%1$s</xliff:g>\" nga aplikacionet në 24 orët e fundit"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Kur ky aplikacion ka përdorur lejen për: <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Mëso më shumë"</string>
     <string name="permission_usage_duration_and_proxy" msgid="573959201368716399">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>

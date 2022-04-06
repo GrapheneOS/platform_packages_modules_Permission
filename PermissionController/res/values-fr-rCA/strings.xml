@@ -176,8 +176,8 @@
     </plurals>
     <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Inutilisée au cours des dernières 24 heures"</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
-      <item quantity="one">Utilisée par <xliff:g id="NUMBER">%1$d</xliff:g> application</item>
-      <item quantity="other">Utilisée par <xliff:g id="NUMBER">%1$d</xliff:g> applications</item>
+      <item quantity="one">Utilisation : <xliff:g id="NUMBER">%1$d</xliff:g> application</item>
+      <item quantity="other">Utilisation : <xliff:g id="NUMBER">%1$d</xliff:g> applications</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Tout afficher dans le tableau de bord"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtré par : <xliff:g id="PERM">%1$s</xliff:g>"</string>

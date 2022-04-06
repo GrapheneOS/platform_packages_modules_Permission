@@ -331,7 +331,7 @@
     <string name="app_perms_24h_access" msgid="99069906850627181">"Ilitumiwa mwisho <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Ilitumiwa mwisho jana <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_content_provider" msgid="6996750793881252778">"Ilifikia katika saa 24 zilizopita"</string>
-    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Ilitumiwa mara ya mwisho tarehe <xliff:g id="TIME_DATE">%1$s</xliff:g> • Inaruhusiwa kila wakati"</string>
+    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Ilitumiwa mara ya mwisho <xliff:g id="TIME_DATE">%1$s</xliff:g> • Inaruhusiwa kila wakati"</string>
     <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Ilitumiwa mara ya mwisho jana saa <xliff:g id="TIME_DATE">%1$s</xliff:g> • Inaruhusiwa kila wakati"</string>
     <string name="app_perms_content_provider_background" msgid="7793984056711923997">"Ilifikia katika saa 24 zilizopita • Inaruhusiwa kila wakati"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Ilitumiwa mwisho <xliff:g id="TIME_DATE">%1$s</xliff:g> • Maudhui"</string>

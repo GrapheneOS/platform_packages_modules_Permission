@@ -501,7 +501,7 @@
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Ova aplikacija traži da snima slike i videozapise sve vrijeme, čak i kada je ne koristite. "<annotation id="link">"Dozvolite u postavkama."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa zapisnicima poziva?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da upućuje pozive i upravlja njima?"</string>
-    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristup senzornim podacima o vašim vitalnim znacima?"</string>
+    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa senzornim podacima o vašim vitalnim znakovima?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Kontrolirana odobrenja"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Lokaciji se može pristupiti"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Vaš IT administrator dozvoljava aplikaciji <xliff:g id="APP_NAME">%s</xliff:g> da pristupa vašoj lokaciji"</string>

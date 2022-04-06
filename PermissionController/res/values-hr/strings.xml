@@ -71,7 +71,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"Aplikacija s dopuštenjem: <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Prikaži sustav"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Sakrij sustav"</string>
-    <string name="manage_permission" msgid="2895385393037061964">"Dopuštenje za upravljanje"</string>
+    <string name="manage_permission" msgid="2895385393037061964">"Upravljanje dopuštenjem"</string>
     <string name="no_apps" msgid="2412612731628386816">"Nema aplikacija"</string>
     <string name="location_settings" msgid="3624412509133422562">"Postavke lokacije"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> pruža usluge lokacije za ovaj uređaj. Pristup lokaciji može se izmijeniti u postavkama lokacije."</string>
