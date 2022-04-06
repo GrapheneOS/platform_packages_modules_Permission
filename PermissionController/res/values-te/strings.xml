@@ -42,12 +42,12 @@
     <string name="permission_revoked_all" msgid="3397649017727222283">"అన్నీ నిలిపివేయబడ్డాయి"</string>
     <string name="permission_revoked_none" msgid="9213345075484381180">"ఏవీ నిలిపివేయబడలేదు"</string>
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"అనుమతించండి"</string>
-    <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"ఎల్ల‌ప్పుడూ అనుమతించు"</string>
+    <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"ఎల్ల‌ప్పుడూ అనుమతించండి"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"యాప్‌ను ఉపయోగిస్తున్నప్పుడు"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"ఖచ్చితమైన లొకేషన్‌కు మార్చండి"</string>
     <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"లొకేషన్‌ను సుమారుగా ఉంచండి"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"ఈ ఒక్కసారి మాత్రమే"</string>
-    <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"అన్ని సమయాలలో అనుమతించు"</string>
+    <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"ఎల్లప్పుడూ అనుమతించండి"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"అన్ని ఫైళ్ల నిర్వహణకు అనుమతించండి"</string>
     <string name="grant_dialog_button_allow_media_only" msgid="4832877658422573832">"మీడియా ఫైళ్లను యాక్సెస్ చేయడానికి అనుమతించండి"</string>
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"యాప్‌లు"</string>
@@ -100,7 +100,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:0 (1351721623256561996) -->
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
-    <string name="permission_access_always" msgid="1474641821883823446">"అన్ని సమయాలలో అనుమతించు"</string>
+    <string name="permission_access_always" msgid="1474641821883823446">"ఎల్లప్పుడూ అనుమతించండి"</string>
     <string name="permission_access_only_foreground" msgid="7801170728159326195">"యాప్ వాడుతున్నప్పుడే అనుమతించు"</string>
     <string name="permission_access_never" msgid="4647014230217936900">"అనుమతించవద్దు"</string>
     <string name="loading" msgid="4789365003890741082">"లోడ్ చేస్తోంది…"</string>
@@ -183,8 +183,8 @@
     <string name="app_permission_button_allow" msgid="5808039516494774647">"అనుమతించండి"</string>
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"అన్ని ఫైళ్ల నిర్వహణకు అనుమతించండి"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"మీడియాకు మాత్రమే యాక్సెస్‌ను అనుమతించు"</string>
-    <string name="app_permission_button_allow_always" msgid="4573292371734011171">"అన్ని సమయాలలో అనుమతించు"</string>
-    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"యాప్‌ను ఉపయోగిస్తున్నప్పుడు మాత్రమే అనుమతించు"</string>
+    <string name="app_permission_button_allow_always" msgid="4573292371734011171">"ఎల్లప్పుడూ అనుమతించండి"</string>
+    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"యాప్‌ను ఉపయోగిస్తున్నప్పుడు మాత్రమే అనుమతించండి"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"ప్రతిసారి అడగాలి"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"అనుమతించవద్దు"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"ఖచ్చితమైన లొకేషన్"</string>
@@ -199,8 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"ఉపయోగించని యాప్ సెట్టింగ్‌లు"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"యాప్‌ని ఉపయోగించకపోతే, అనుమతులను తీసివేయండి"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"అనుమతులను తీసివేసి స్పేస్‌ను ఖాళీ చేయండి"</string>
-    <string name="unused_apps_label_v2" msgid="2443239537162119403">"యాప్ యాక్టివిటీని పాజ్ చేయండి"</string>
-    <string name="unused_apps_summary" msgid="4416065734063612849">"అనుమతులను తీసివేయండి, తాత్కాలిక ఫైల్స్‌ను తొలగించండి, అలాగే ఉపయోగించని పక్షంలో నోటిఫికేషన్‌లను ఆపివేయండి"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"ఉపయోగించని యాప్ యాక్టివిటీని పాజ్ చేయండి"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"అనుమతులను తీసివేయండి, తాత్కాలిక ఫైళ్లను తొలగించండి, అలాగే నోటిఫికేషన్‌లను ఆపివేయండి"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"మీ డేటాను సురక్షితంగా ఉంచడానికి, ఈ యాప్ కొన్ని నెలలుగా వినియోగంలో లేకుంటే, దాని అనుమతులు తీసివేయబడతాయి."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"మీ డేటాను సురక్షితంగా ఉంచడానికి, ఈ యాప్ కొన్ని నెలలుగా వినియోగంలో లేకుంటే, దానికి ఇచ్చిన కింది అనుమతులు తీసివేయబడతాయి: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"మీ డేటాను సురక్షితంగా ఉంచడానికి, కొన్ని నెలలుగా వినియోగంలో లేని యాప్‌ల అనుమతులు తీసివేయబడ్డాయి."</string>
