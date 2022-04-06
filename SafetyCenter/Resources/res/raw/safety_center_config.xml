@@ -35,7 +35,28 @@
                 initialDisplayState="hidden"/>
         </safety-sources-group>
         <safety-sources-group
-            id="AndroidPrivacySources">
+            id="AndroidPrivacySources"
+            title="@com.android.safetycenter.resources:string/privacy_sources_title"
+            summary="@com.android.safetycenter.resources:string/privacy_sources_summary"
+            statelessIconType="privacy">
+            <static-safety-source
+                id="AndroidPermissionUsage"
+                profile="primary_profile_only"
+                intentAction="android.intent.action.REVIEW_PERMISSION_USAGE"
+                title="@com.android.safetycenter.resources:string/permission_usage_title"
+                summary="@com.android.safetycenter.resources:string/permission_usage_summary"/>
+            <static-safety-source
+                id="AndroidPermissionManager"
+                profile="primary_profile_only"
+                intentAction="android.intent.action.MANAGE_PERMISSIONS"
+                title="@com.android.safetycenter.resources:string/permission_manager_title"
+                summary="@com.android.safetycenter.resources:string/permission_manager_summary"/>
+            <static-safety-source
+                id="AndroidPrivacyControls"
+                profile="primary_profile_only"
+                intentAction="TODO"
+                title="@com.android.safetycenter.resources:string/privacy_controls_title"
+                summary="@com.android.safetycenter.resources:string/privacy_controls_summary"/>
             <issue-only-safety-source
                 id="AndroidAccessibility"
                 packageName="com.google.android.permissioncontroller"
@@ -63,6 +84,12 @@
                 intentAction="com.android.settings.security.SECURITY_ADVANCED_SETTINGS"
                 title="@com.android.safetycenter.resources:string/advanced_security_title"
                 summary="@com.android.safetycenter.resources:string/advanced_security_summary"/>
+            <static-safety-source
+                id="AndroidAdvancedPrivacy"
+                profile="primary_profile_only"
+                intentAction="TODO"
+                title="@com.android.safetycenter.resources:string/advanced_privacy_title"
+                summary="@com.android.safetycenter.resources:string/advanced_privacy_summary"/>
         </safety-sources-group>
     </safety-sources-config>
 </safety-center-config>
