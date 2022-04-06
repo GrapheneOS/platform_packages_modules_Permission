@@ -789,7 +789,7 @@ public class Permissions {
     }
 
     @Nullable
-    private static Integer getAppOpMode(@NonNull String packageName, @NonNull String appOp,
+    static Integer getAppOpMode(@NonNull String packageName, @NonNull String appOp,
             @NonNull Context context) {
         ApplicationInfo applicationInfo = PackageUtils.getApplicationInfo(packageName, context);
         if (applicationInfo == null) {
