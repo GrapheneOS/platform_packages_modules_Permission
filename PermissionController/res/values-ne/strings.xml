@@ -482,7 +482,7 @@
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"तपाईंले यो एप प्रयोग नगरेका बेलामा पनि यसले फोटो खिच्न तथा भिडियो रेकर्ड गर्न चाहन्छ। "<annotation id="link">"सेटिङमा गई यो अनुमति दिनुहोस्।"</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई आफ्ना कल लग प्रयोग गर्ने अनुमति दिने हो?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई फोन कल गर्न र ती कलको व्यवस्थापन गर्न दिने हो?"</string>
-    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई आफ्ना महत्त्वपूर्ण लक्षणहरूसम्बन्धी सेन्सर डेटामाथि पहुँच राख्न दिने हो?"</string>
+    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई नाडी आदि जस्ता महत्त्वपूर्ण संकेतसम्बन्धी सेन्सर डेटा हेर्ने अनुमति दिने हो?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"नियन्त्रित अनुमतिहरू"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"स्थानसम्बन्धी जानकारी हेरिन सक्छ"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"तपाईंका IT एडमिनले <xliff:g id="APP_NAME">%s</xliff:g> लाई तपाईंको स्थान हेर्ने अनुमति दिनुभएको छ"</string>

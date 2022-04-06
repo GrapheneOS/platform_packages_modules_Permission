@@ -70,7 +70,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"Дозвољено апликација: <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Прикажи системске"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Сакриј системске"</string>
-    <string name="manage_permission" msgid="2895385393037061964">"Управљање дозволом"</string>
+    <string name="manage_permission" msgid="2895385393037061964">"Управљајте дозволом"</string>
     <string name="no_apps" msgid="2412612731628386816">"Нема апликација"</string>
     <string name="location_settings" msgid="3624412509133422562">"Подешавања локације"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> пружа услуге локације за овај уређај. Приступ локацији можете да измените у подешавањима локације."</string>
@@ -501,7 +501,7 @@
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Ова апликација жели да снима слике и видео снимке све време, чак и када не користите апликацију. "<annotation id="link">"Дозволите у подешавањима."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Желите да дозволите да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; приступа евиденцијама позива на телефону?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Желите да дозволите да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; упућује позиве и управља њима?"</string>
-    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Желите да дозволите да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;приступа подацима сензора о виталним функцијама?"</string>
+    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Желите да дозволите да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; приступа подацима сензора о виталним функцијама?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Контролисане дозволе"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Може да се приступи локацији"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"ИТ администратор дозвољава апликацији <xliff:g id="APP_NAME">%s</xliff:g> да приступа локацији"</string>
