@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"ಬಳಕೆಯಾಗದಿರುವ ಆ್ಯಪ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"ಆ್ಯಪ್‌ ಬಳಸದಿದ್ದರೆ ಅನುಮತಿಗಳನ್ನು ತೆಗೆದುಹಾಕಿ"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"ಅನುಮತಿಗಳನ್ನು ತೆಗೆಯಿರಿ, ಸ್ಥಳ ಮುಕ್ತಗೊಳಿಸಿ"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"ಬಳಸದಿದ್ದರೆ, ಆ್ಯಪ್‌ನ ಚಟುವಟಿಕೆಯನ್ನು ವಿರಾಮಗೊಳಿಸಿ"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"ಅನುಮತಿಗಳನ್ನು ತೆಗೆದುಹಾಕಿ, ತಾತ್ಕಾಲಿಕ ಫೈಲ್‌ಗಳನ್ನು ಅಳಿಸಿ ಹಾಗೂ ಅಧಿಸೂಚನೆಗಳನ್ನು ನಿಲ್ಲಿಸಿ"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"ಆ್ಯಪ್ ಅನ್ನು ಕೆಲವು ತಿಂಗಳುಗಳ ಕಾಲ ಬಳಸದಿದ್ದರೆ, ನಿಮ್ಮ ಡೇಟಾವನ್ನು ರಕ್ಷಿಸಲು ಈ ಆ್ಯಪ್‌ನ ಅನುಮತಿಗಳನ್ನು ತೆಗೆದುಹಾಕಲಾಗುವುದು."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"ಆ್ಯಪ್ ಅನ್ನು ಕೆಲವು ತಿಂಗಳುಗಳ ಕಾಲ ಬಳಸದಿದ್ದರೆ, ನಿಮ್ಮ ಡೇಟಾವನ್ನು ರಕ್ಷಿಸಲು, ಈ ಕೆಳಗಿನ ಅನುಮತಿಗಳನ್ನು ತೆಗೆದುಹಾಕಲಾಗುವುದು: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"ನಿಮ್ಮ ಡೇಟಾವನ್ನು ರಕ್ಷಿಸಲು, ಕೆಲವು ತಿಂಗಳುಗಳಿಂದ ನೀವು ಬಳಸದಿರುವ ಆ್ಯಪ್‌ಗಳಿಂದ ಅನುಮತಿಗಳನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ."</string>

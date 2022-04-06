@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Inställningar för appar som inte används"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Ta bort behörigheter om en app inte används"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Ta bort behörigheter och frigör utrymme"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Pausa appaktivitet om appen inte används"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Ta bort behörigheter, radera tillfälliga filer och hindra aviseringar"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Behörigheter tas bort av säkerhetsskäl från den här appen om den inte används på några månader."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Följande behörigheter tas bort av säkerhetsskäl från appen om den inte används på några månader: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Behörigheter har tagits bort av säkerhetsskäl från appar som inte har använts på några månader."</string>

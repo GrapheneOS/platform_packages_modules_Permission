@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Paramètres d\'appli inutilisés"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Supprimer les autorisations si l\'application n\'est pas utilisée"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Supprimer autorisations et libérer espace"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Suspendre activité appli si inutilisée"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Retirer les autorisations, supprimer les fichiers temporaires et arrêter les notifications"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Si cette application n\'est pas utilisée pendant plusieurs mois, ses autorisations seront supprimées afin de protéger vos données."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Pour protéger vos données, si l\'application n\'est pas utilisée pendant plusieurs mois, les autorisations suivantes seront supprimées : <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Afin de protéger vos données, les autorisations ont été supprimées pour les applications que vous n\'avez pas utilisées depuis plusieurs mois."</string>
@@ -471,9 +469,9 @@
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Cette application souhaite prendre des photos et des vidéos à tout moment, même quand vous ne l\'utilisez pas. "<annotation id="link">"Autoriser dans les paramètres"</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder aux journaux d\'appels de votre téléphone ?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à passer et gérer des appels téléphoniques ?"</string>
-    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Permettre à &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; d\'accéder aux données des capteurs relatives à vos signes vitaux ?"</string>
+    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder aux données des capteurs concernant vos signes vitaux ?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Cette application veut accéder en permanence aux données des capteurs liées aux signes vitaux, même quand vous ne l\'utilisez pas. Pour autoriser ce changement, "<annotation id="link">"accédez aux paramètres."</annotation></string>
-    <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder aux données des capteurs liées à vos signes vitaux ?"</string>
+    <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder aux données des capteurs concernant vos signes vitaux ?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Pour autoriser cette appli à accéder aux données des capteurs corporels en permanence, même quand vous ne l\'utilisez pas, "<annotation id="link">"accédez aux paramètres"</annotation>"."</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Continuer à autoriser <xliff:g id="APP_NAME">%1$s</xliff:g> à accéder aux données des capteurs corporels seulement en cours d\'utilisation ?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à vous envoyer des notifications ?"</string>

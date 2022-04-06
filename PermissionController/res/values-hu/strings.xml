@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Nem használt alkalmazások beállításai"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Engedélyek eltávolítása, ha nem használja az alkalmazást"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Engedélytörlés és tárhely-felszabadítás"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"App szüneteltetése, ha nem használja"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Engedélyek eltávolítása, ideiglenes fájlok törlése és értesítések leállítása"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Az adatok védelme érdekében az ennek az alkalmazásnak adott engedélyek visszavonásra kerülnek, ha néhány hónapon át nem használja az alkalmazást."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Ha néhány hónapon át nem használja az alkalmazást, az adatok védelme érdekében a rendszer visszavonja a következő engedélyeket: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Az adatok védelme érdekében a rendszer eltávolította a néhány hónapja nem használt alkalmazások engedélyeit."</string>

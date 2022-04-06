@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"关于未使用应用的设置"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"如果未使用此应用，则移除相关权限"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"撤消权限并释放空间"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"暂停未使用应用的活动"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"移除权限、删除临时文件并停止发送通知"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"为了保护您的数据，如果您连续几个月未使用此应用，系统会移除它的权限。"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"为了保护您的数据，如果您连续几个月未使用此应用，系统会移除其以下权限：<xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"为了保护您的数据，对于您连续几个月未使用过的应用，系统已将其权限移除。"</string>

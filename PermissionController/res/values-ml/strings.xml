@@ -78,7 +78,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> ആപ്പുകൾക്ക് അനുമതി നൽകി"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"സിസ്‌റ്റം കാണിക്കുക"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"സിസ്‌റ്റം മറയ്ക്കുക"</string>
-    <string name="menu_show_7_days_data" msgid="8979611198508523706">"7 ദിവസം കാണിക്കുക"</string>
+    <string name="menu_show_7_days_data" msgid="8979611198508523706">"7 ദിവസത്തേത് കാണിക്കുക"</string>
     <string name="menu_show_24_hours_data" msgid="8228054833323380780">"24 മണിക്കൂർ കാണിക്കുക"</string>
     <string name="manage_permission" msgid="2895385393037061964">"അനുമതി മാനേജ് ചെയ്യുക"</string>
     <string name="no_apps" msgid="2412612731628386816">"ആപ്പുകൾ ഒന്നുമില്ല"</string>
@@ -173,7 +173,7 @@
     <string name="sort_by_app" msgid="4055799843051138087">"ആപ്പ് ഉപയോഗമനുസരിച്ച് അടുക്കുക"</string>
     <string name="sort_by_time" msgid="5435045320002150456">"സമയപ്രകാരം അടുക്കുക"</string>
     <string name="item_separator" msgid="4030255389809224513">", "</string>
-    <string name="permission_usage_refresh" msgid="2264056346561305420">"പുതുക്കിയെടുക്കുക"</string>
+    <string name="permission_usage_refresh" msgid="2264056346561305420">"റീഫ്രഷ് ചെയ്യുക"</string>
     <string name="permission_history_title" msgid="8340081285133025225">"അനുമതി ചരിത്രം"</string>
     <string name="permission_history_category_today" msgid="7496389369158806620">"ഇന്ന്"</string>
     <string name="permission_history_category_yesterday" msgid="7242517121222012521">"ഇന്നലെ"</string>
@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"ഉപയോഗിക്കാത്ത ആപ്പ് ക്രമീകരണം"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"ഉപയോഗിക്കാത്ത ആപ്പാണെങ്കിൽ അനുമതികൾ നീക്കം ചെയ്യുക"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"അനുമതികൾ നീക്കം ചെയ്‌ത് ഇടം സൃഷ്‌ടിക്കുക"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"ഉപയോഗിച്ചിട്ടില്ലെങ്കിൽ ആപ്പ് ആക്റ്റിവിറ്റി പോസ് ചെയ്യുക"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"അനുമതികൾ നീക്കം ചെയ്യുക, താൽക്കാലിക ഫയലുകൾ ഇല്ലാതാക്കുക, അറിയിപ്പുകൾ നിർത്തുക"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"മാസങ്ങളായി ഈ ആപ്പ് ഉപയോഗിക്കുന്നില്ലെങ്കിൽ നിങ്ങളുടെ ഡാറ്റ സംരക്ഷിക്കുന്നതിന്, ഈ ആപ്പിനുള്ള അനുമതികൾ നീക്കം ചെയ്യുന്നതായിരിക്കും."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"കുറച്ച് മാസം ആപ്പ് ഉപയോഗിച്ചില്ലെങ്കിൽ, നിങ്ങളുടെ ഡാറ്റ സംരക്ഷിക്കുന്നതിന്, ഇനിപ്പറയുന്ന അനുമതികൾ നീക്കം ചെയ്യുന്നതായിരിക്കും: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"നിങ്ങളുടെ ഡാറ്റ സംരക്ഷിക്കുന്നതിന്, കുറച്ച് മാസങ്ങളായി ഉപയോഗിക്കാത്ത ആപ്പുകളിൽ നിന്ന് അനുമതികൾ നീക്കം ചെയ്തിരിക്കുന്നു."</string>
@@ -471,7 +469,7 @@
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"നിങ്ങൾ ആപ്പ് ഉപയോഗിക്കാത്തപ്പോൾ പോലും, ഈ ആപ്പിന് വീഡിയോ റെക്കോർഡ് ചെയ്യുക, ചിത്രമെടുക്കുക എന്നിവ ചെയ്യണം. "<annotation id="link">"ക്രമീകരണത്തിൽ അനുവദിക്കുക."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"നിങ്ങളുടെ ഫോൺ കോൾ ലോഗുകൾ ആക്സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"ഫോൺ കോളുകൾ ചെയ്യാനും അവ മാനേജ് ചെയ്യാനും &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>
-    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"നിങ്ങളുടെ ജീവധാരണ ലക്ഷണങ്ങളെ കുറിച്ചുള്ള സെൻസർ ഡാറ്റ ആക്‌സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>
+    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"നിങ്ങളുടെ പ്രധാന ആരോഗ്യ വിവരങ്ങളുടെ സെൻസർ ഡാറ്റ ആക്‌സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കണോ?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"ആപ്പ് ഉപയോഗിക്കാത്തപ്പോൾ പോലും, നിങ്ങളുടെ പ്രധാന ആരോഗ്യ വിവര സൂചനകൾ സംബന്ധിച്ച സെൻസർ ഡാറ്റ ഈ ആപ്പിന് എപ്പോഴും ആക്‌സസ് ചെയ്യേണ്ടി വന്നേക്കാം. ഇത് മാറ്റാൻ, "<annotation id="link">"ക്രമീകരണത്തിലേക്ക് പോകുക"</annotation>"."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"നിങ്ങളുടെ വൈറ്റൽ സൈനുകളെ കുറിച്ചുള്ള സെൻസർ ഡാറ്റ ആക്സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"ആപ്പ് ഉപയോഗിക്കാത്ത സമയത്ത് ഉൾപ്പെടെ, എല്ലായ്‌പ്പോഴും ബോഡി സെൻസർ ഡാറ്റ ആക്‌സസ് ചെയ്യാൻ ഈ ആപ്പിനെ അനുവദിക്കുന്നതിന് "<annotation id="link">"ക്രമീകരണത്തിലേക്ക് പോകുക."</annotation></string>
