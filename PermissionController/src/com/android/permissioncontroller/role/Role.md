@@ -175,6 +175,7 @@ You can also manage the role holders with `cmd role`:
 cmd role add-role-holder [--user USER_ID] ROLE PACKAGE [FLAGS]
 cmd role remove-role-holder [--user USER_ID] ROLE PACKAGE [FLAGS]
 cmd role clear-role-holders [--user USER_ID] ROLE [FLAGS]
+cmd role set-bypassing-role-qualification true|false
 ```
 
 The command outputs nothing and exits with `0` on success. If there was an error, the error will be
