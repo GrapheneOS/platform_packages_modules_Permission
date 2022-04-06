@@ -16,7 +16,6 @@
 
 <safety-center-config>
     <safety-sources-config>
-        <!-- TODO(b/214567659): Finalize base XML config -->
         <safety-sources-group
             id="AndroidLockScreenSources"
             title="@com.android.safetycenter.resources:string/lock_screen_sources_title"
@@ -33,6 +32,24 @@
                 packageName="com.android.settings"
                 profile="primary_profile_only"
                 initialDisplayState="hidden"/>
+        </safety-sources-group>
+        <safety-sources-group
+            id="AndroidPrivacySources"
+            title="@com.android.safetycenter.resources:string/privacy_sources_title"
+            summary="@com.android.safetycenter.resources:string/privacy_sources_summary"
+            statelessIconType="privacy">
+            <static-safety-source
+                id="AndroidPermissionUsage"
+                profile="primary_profile_only"
+                intentAction="android.intent.action.REVIEW_PERMISSION_USAGE"
+                title="@com.android.safetycenter.resources:string/permission_usage_title"
+                summary="@com.android.safetycenter.resources:string/permission_usage_summary"/>
+            <static-safety-source
+                id="AndroidPermissionManager"
+                profile="primary_profile_only"
+                intentAction="android.intent.action.MANAGE_PERMISSIONS"
+                title="@com.android.safetycenter.resources:string/permission_manager_title"
+                summary="@com.android.safetycenter.resources:string/permission_manager_summary"/>
         </safety-sources-group>
         <safety-sources-group
             id="AndroidAdvancedSources"
