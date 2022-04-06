@@ -842,7 +842,7 @@ final class SafetyCenterDataTracker {
 
         Log.w(TAG,
                 String.format(
-                        "Unexpected SafetySourcesGroup.StatelessIconType in SafetySourcesGroup: %s",
+                        "Unexpected SafetySourcesGroup.StatelessIconType: %s",
                         statelessIconType));
         return SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON;
     }
@@ -859,8 +859,7 @@ final class SafetyCenterDataTracker {
 
         Log.w(TAG,
                 String.format(
-                        "Unexpected SafetyCenterEntry.IconAction.IconActionType in "
-                                + "SafetySourceStatus.IconAction: %s",
+                        "Unexpected SafetySourceStatus.IconAction.IconActionType: %s",
                         safetySourceIconActionType));
         return SafetyCenterEntry.IconAction.ICON_ACTION_TYPE_INFO;
     }
