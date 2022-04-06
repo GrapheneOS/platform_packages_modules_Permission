@@ -196,8 +196,14 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Tüm <xliff:g id="APP">%1$s</xliff:g> izinlerini göster"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Bu izne sahip tüm uygulamaları göster"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Yardımcı mikrofon kullanımını göster"</string>
+    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
+    <skip />
     <string name="auto_revoke_label" msgid="5068393642936571656">"Uygulama kullanılmıyorsa izinleri kaldır"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"İzinleri kaldırıp yer aç"</string>
+    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
+    <skip />
+    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
+    <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Bu uygulama birkaç ay boyunca kullanılmazsa verilerinizi korumak için uygulamanın izinleri kaldırılır."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Uygulama birkaç ay boyunca kullanılmazsa şu izinler verilerinizi korumak için kaldırılacak: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Birkaç aydır kullanmadığınız uygulamaların izinleri verilerinizi korumak için kaldırıldı."</string>
@@ -264,8 +270,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Sürüş sırasında <xliff:g id="APP">%1$s</xliff:g> uygulamasına <xliff:g id="PERMISSION_1">%2$s</xliff:g> ve <xliff:g id="PERMISSION_2">%3$s</xliff:g> erişim izni verdiniz"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Sürüş sırasında <xliff:g id="APP">%2$s</xliff:g> uygulamasına <xliff:g id="COUNT">%1$d</xliff:g> izin verdiniz"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Sürüş sırasında <xliff:g id="APP_0">%1$s</xliff:g> uygulamasına ve # uygulamaya daha erişim izni verdiniz}other{Sürüş sırasında <xliff:g id="APP_1">%1$s</xliff:g> uygulamasına ve # uygulamaya daha erişim izni verdiniz}}"</string>
-    <!-- no translation found for go_to_settings (1053735612211228335) -->
-    <skip />
+    <string name="go_to_settings" msgid="1053735612211228335">"Ayarlar\'a git"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Bazı uygulamalar birkaç aydır kullanılmadı"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"İzinleri kaldırılmış"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"İzinleri kaldırılmış"</string>
@@ -468,10 +473,10 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının telefon arama kayıtlarınıza erişmesine izin verilsin mi?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının telefon etmesine ve aramaları yönetmesine izin verilsin mi?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının hayati belirtilerinizle ilgili sensör verilerine erişmesine izin verilsin mi?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="5239219356063824373">"Bu uygulama, kullanmadığınız sırada bile hayati belirtilerinizle ilgili sensör verilerine sürekli olarak erişmek istiyor. "<annotation id="link">"Ayarlar\'da izin verin."</annotation></string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Bu uygulama, kullanmadığınız sırada bile hayati belirtilerinizle ilgili sensör verilerine sürekli olarak erişmek istiyor. Bu değişikliği yapmak için "<annotation id="link">"ayarlara gidin."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının hayati belirtilerinizle ilgili sensör verilerine erişmesine izin verilsin mi?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Bu uygulama, kullanmadığınız sırada bile hayati belirtilerinizle ilgili sensör verilerine sürekli olarak erişmek isteyebilir. "<annotation id="link">"Ayarlar\'da izin verin."</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının hayati belirtilerinizle ilgili sensör verilerine erişimi değiştirilsin mi?"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Bu uygulamanın, kullanmadığınız sırada bile vücut sensörü verilerine sürekli olarak erişmesine izin vermek için "<annotation id="link">"ayarlara gidin."</annotation></string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının kullanımdayken vücut sensörü verilerine erişme izni sürdürülsün mü?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının size bildirim göndermesine izin verilsin mi?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uygulamasının size bildirim göndermeye devam etmesine izin verilsin mi?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Kontrol edilen izinler"</string>
@@ -509,6 +514,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Kamera iznini kaldır"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Mikrofon iznini kaldır"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Hizmeti yönet"</string>
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"İzinleri yönetin"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Telefon aramasında kullanılıyor"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Yakın zamanda telefon aramasında kullanıldı"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"<xliff:g id="APP_NAME">%1$s</xliff:g> tarafından kullanılıyor"</string>

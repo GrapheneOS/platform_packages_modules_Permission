@@ -61,7 +61,7 @@
     <string name="auto_permission_manager_summary" msgid="9157438376234301354">"Faça a gestão do acesso aos dados do calendário, registos de chamadas e mais"</string>
     <string name="granted_permission_decision" msgid="7824827491551861365">"Concedeu o acesso à app <xliff:g id="APP_NAME">%1$s</xliff:g> a <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
     <string name="denied_permission_decision" msgid="5308961501779563781">"Negou o acesso da app <xliff:g id="APP_NAME">%1$s</xliff:g> a <xliff:g id="PERMISSION_NAME">%2$s</xliff:g>"</string>
-    <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Hoje}=1{Há 1 dia}one{Há # dia(s)}other{Há # dias}}"</string>
+    <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Hoje}=1{Há 1 dia}other{Há # dias}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Desativar app"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Se desativar esta app, o Android e outras apps podem deixar de funcionar corretamente. Não se esqueça de que não pode eliminar esta app por ter sido pré-instalada no dispositivo. Ao desativá-la, irá ocultá-la no dispositivo."</string>
     <string name="app_permission_manager" msgid="3903811137630909550">"Gestor de autorizações"</string>
@@ -69,7 +69,7 @@
     <string name="no_permissions" msgid="3881676756371148563">"Sem autorizações"</string>
     <string name="additional_permissions" msgid="5801285469338873430">"Autorizações adicionais"</string>
     <string name="app_permissions_info_button_label" msgid="7633312050729974623">"Abrir informações da app"</string>
-    <string name="additional_permissions_more" msgid="5681220714755304407">"{count,plural, =1{Mais #}one{# more}other{Mais #}}"</string>
+    <string name="additional_permissions_more" msgid="5681220714755304407">"{count,plural, =1{Mais #}other{Mais #}}"</string>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"Esta app foi concebida para uma versão mais antiga do Android. Recusar a autorização pode fazer com que deixe de funcionar como pretendido."</string>
     <string name="storage_supergroup_warning_allow" msgid="103093462784523190">"Esta app foi concebida para uma versão mais antiga do Android. Se conceder esta autorização, será autorizado o acesso a todo o armazenamento (incluindo fotos, vídeos, música, áudio e outros ficheiros)."</string>
     <string name="storage_supergroup_warning_deny" msgid="6420765672683284347">"Esta app foi concebida para uma versão mais antiga do Android. Se recusar esta autorização, será recusado o acesso a todo o armazenamento (incluindo fotos, vídeos, música, áudio e outros ficheiros)."</string>
@@ -134,10 +134,10 @@
     <string name="auto_permission_usage_timeline_summary" msgid="2713135806453218703">"<xliff:g id="ACCESS_TIME">%1$s</xliff:g> • <xliff:g id="SUMMARY_TEXT">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
     <string name="history_preference_subtext_3" msgid="758761785983094351">"<xliff:g id="ATTRIBUTION_NAME">%1$s</xliff:g> • <xliff:g id="APP_NAME">%2$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%3$s</xliff:g>"</string>
-    <string name="duration_used_days" msgid="8293010131040301793">"{count,plural, =1{1 dia}one{# dia(s)}other{# dias}}"</string>
-    <string name="duration_used_hours" msgid="1128716208752263576">"{count,plural, =1{1 hora}one{# hora(s)}other{# horas}}"</string>
-    <string name="duration_used_minutes" msgid="5335824115042576567">"{count,plural, =1{1 min}one{# min}other{# min}}"</string>
-    <string name="duration_used_seconds" msgid="6543746449171675028">"{count,plural, =1{1 s}one{# s}other{# s}}"</string>
+    <string name="duration_used_days" msgid="8293010131040301793">"{count,plural, =1{1 dia}other{# dias}}"</string>
+    <string name="duration_used_hours" msgid="1128716208752263576">"{count,plural, =1{1 hora}other{# horas}}"</string>
+    <string name="duration_used_minutes" msgid="5335824115042576567">"{count,plural, =1{1 min}other{# min}}"</string>
+    <string name="duration_used_seconds" msgid="6543746449171675028">"{count,plural, =1{1 s}other{# s}}"</string>
     <string name="permission_usage_any_permission" msgid="6358023078298106997">"Qualquer autorização"</string>
     <string name="permission_usage_any_time" msgid="3802087027301631827">"Em qualquer altura"</string>
     <string name="permission_usage_last_7_days" msgid="7386221251886130065">"Últimos 7 dias"</string>
@@ -158,9 +158,9 @@
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Utilização das autorizações na última hora"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Utilização das autorizações nos últimos 15 minutos"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Utilização das autorizações no último minuto"</string>
-    <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"Não utilizada nas últimas 24 horas"</string>
+    <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"Não utilizado nas últimas 24 horas"</string>
     <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"Não utilizada nos últimos 7 dias"</string>
-    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Utilizadas por 1 app}one{Utilizadas por # app(s)}other{Utilizadas por # apps}}"</string>
+    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Utilizadas por 1 app}other{Utilizadas por # apps}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Ver tudo no painel de controlo"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrado por: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Remover filtro"</string>
@@ -196,8 +196,14 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Ver todas as autorizações da app <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Ver todas as apps com esta autorização"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Mostrar utilização do microfone do assistente"</string>
+    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
+    <skip />
     <string name="auto_revoke_label" msgid="5068393642936571656">"Remover autorizações se a app não for utilizada"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Remover autorizações e libertar espaço"</string>
+    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
+    <skip />
+    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
+    <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Para proteger os seus dados, as autorizações desta app serão removidas se a mesma não for utilizada durante alguns meses."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Para proteger os seus dados, se a app não for utilizada há alguns meses, serão removidas as seguintes autorizações: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Para proteger os seus dados, foram removidas as autorizações para as apps que não utiliza há alguns meses."</string>
@@ -247,25 +253,24 @@
     <string name="denied_header" msgid="903209608358177654">"Não permitidas"</string>
     <string name="storage_footer_warning_text" msgid="2242258357752432337">"Algumas apps que fornecem funcionalidades essenciais do seu dispositivo podem ter um acesso especial aos seus ficheiros"</string>
     <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Veja as apps com acesso a todos os ficheiros"</string>
-    <string name="days" msgid="609563020985571393">"{count,plural, =1{1 dia}one{# dia(s)}other{# dias}}"</string>
-    <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 hora}one{# hora(s)}other{# horas}}"</string>
-    <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 minuto}one{# minuto(s)}other{# minutos}}"</string>
-    <string name="seconds" msgid="5397771912131132690">"{count,plural, =1{1 segundo}one{# segundo(s)}other{# segundos}}"</string>
+    <string name="days" msgid="609563020985571393">"{count,plural, =1{1 dia}other{# dias}}"</string>
+    <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 hora}other{# horas}}"</string>
+    <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 minuto}other{# minutos}}"</string>
+    <string name="seconds" msgid="5397771912131132690">"{count,plural, =1{1 segundo}other{# segundos}}"</string>
     <string name="permission_reminders" msgid="6528257957664832636">"Lembretes de autorização"</string>
     <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"1 app não utilizada"</string>
     <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> apps não utilizadas"</string>
     <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"Autorizações removidas para proteger a sua privacidade. Toque para rever."</string>
     <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"Autorizações removidas para apps não utilizadas"</string>
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Algumas apps não são utilizadas há alguns meses. Toque para rever."</string>
-    <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# app não utilizada}one{# app(s) não utilizada(s)}other{# apps não utilizadas}}"</string>
+    <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# app não utilizada}other{# apps não utilizadas}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"As autorizações e os ficheiros temporários foram removidos e as notificações foram interrompidas. Toque para rever."</string>
     <string name="post_drive_permission_decision_reminder_title" msgid="1290697371418139976">"Verifique as autorizações recentes"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_1_permission" msgid="670521503734140711">"Durante a condução, deu à app <xliff:g id="APP">%1$s</xliff:g> acesso à autorização de <xliff:g id="PERMISSION">%2$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Durante a condução, deu à app <xliff:g id="APP">%1$s</xliff:g> acesso à autorização de <xliff:g id="PERMISSION_1">%2$s</xliff:g> e <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Durante a condução, concedeu <xliff:g id="COUNT">%1$d</xliff:g> autorizações à app <xliff:g id="APP">%2$s</xliff:g>"</string>
-    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Durante a condução, deu acesso à app <xliff:g id="APP_0">%1$s</xliff:g> e a mais # app}one{Durante a condução, deu acesso à app <xliff:g id="APP_1">%1$s</xliff:g> e a mais # app(s)}other{Durante a condução, deu acesso à app <xliff:g id="APP_1">%1$s</xliff:g> e a mais # apps}}"</string>
-    <!-- no translation found for go_to_settings (1053735612211228335) -->
-    <skip />
+    <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Durante a condução, deu acesso à app <xliff:g id="APP_0">%1$s</xliff:g> e a mais # app}other{Durante a condução, deu acesso à app <xliff:g id="APP_1">%1$s</xliff:g> e a mais # apps}}"</string>
+    <string name="go_to_settings" msgid="1053735612211228335">"Aceder às Definições"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Algumas apps não são utilizadas há alguns meses."</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Autorizações removidas"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Autorizações removidas"</string>
@@ -468,10 +473,10 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aceda aos registos de chamadas do seu telemóvel?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; faça e gira chamadas telefónicas?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aceda aos dados do sensor acerca dos seus sinais vitais?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="5239219356063824373">"Esta app pretende aceder sempre aos dados de sensores sobre os seus sinais vitais, mesmo quando não a estiver a usar. "<annotation id="link">"Permita-o nas definições."</annotation></string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Esta app quer aceder sempre aos dados de sensores sobre os seus sinais vitais, mesmo quando não a estiver a usar. Para fazer esta alteração, "<annotation id="link">"aceda às definições."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aceda aos dados de sensores acerca dos seus sinais vitais?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Esta app pode pretender aceder sempre aos dados de sensores sobre os seus sinais vitais, mesmo quando não a estiver a usar. "<annotation id="link">"Permita-o nas definições."</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Alterar o acesso aos dados de sensores sobre os seus sinais vitais para a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Para permitir que esta app aceda sempre aos dados de sensores de corpo, mesmo quando não está a ser usada, "<annotation id="link">"aceda às definições."</annotation></string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Continuar a permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aceda aos dados de sensores de corpo enquanto usa a app?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; lhe envie notificações?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; continue a enviar-lhe notificações?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Autorizações controladas"</string>
@@ -509,6 +514,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Remover autorização da câmara"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Remover autorização do microfone"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Gerir serviço"</string>
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"Gerir autorizações"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Em utilização pela chamada telefónica"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Utilizado recentemente na chamada telefónica"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Em utilização pela app <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>

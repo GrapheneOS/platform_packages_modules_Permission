@@ -20,11 +20,15 @@ import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_SAFETY_CENTER
 import android.os.Build.VERSION_CODES.TIRAMISU
+import android.safetycenter.cts.testing.SafetyCenterFlags
+import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import android.support.test.uiautomator.By
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import com.android.compatibility.common.util.UiAutomatorUtils.waitFindObject
+import org.junit.Assume.assumeTrue
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -33,13 +37,36 @@ import org.junit.runner.RunWith
 class SafetyCenterActivityTest {
     private val context: Context = getApplicationContext()
 
+    @Before
+    fun assumeDeviceSupportsSafetyCenterToRunTests() {
+        assumeTrue(context.deviceSupportsSafetyCenter())
+    }
+
     @Test
-    fun launchActivity_showsSecurityAndPrivacyTitle() {
-        context.startActivity(
-            Intent(ACTION_SAFETY_CENTER).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        )
+    fun launchActivity_withFlagEnabled_showsSecurityAndPrivacyTitle() {
+        SafetyCenterFlags.setSafetyCenterEnabled(true)
+
+        startSafetyCenterActivity()
 
         // CollapsingToolbar title can't be found by text, so using description instead.
         waitFindObject(By.desc("Security & Privacy"))
+    }
+
+    @Test
+    fun launchActivity_withFlagDisabled_showsSecurityTitle() {
+        SafetyCenterFlags.setSafetyCenterEnabled(false)
+
+        startSafetyCenterActivity()
+
+        // CollapsingToolbar title can't be found by text, so using description instead.
+        waitFindObject(By.desc("Security"))
+    }
+
+    private fun startSafetyCenterActivity() {
+        context.startActivity(
+            Intent(ACTION_SAFETY_CENTER)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        )
     }
 }

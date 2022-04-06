@@ -196,8 +196,14 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Kuva rakenduse <xliff:g id="APP">%1$s</xliff:g> kõik load"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Kuva kõik selle loaga rakendused"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Kuva assistendi mikrofoni kasutamine"</string>
+    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
+    <skip />
     <string name="auto_revoke_label" msgid="5068393642936571656">"Eemalda load, kui rakendust ei kasutata"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Eemalda load ja vabasta ruumi"</string>
+    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
+    <skip />
+    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
+    <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Teie andmete kaitsmiseks eemaldatakse selle rakenduse load, kui seda mõne kuu jooksul ei kasutata."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Teie andmete kaitsmiseks eemaldatakse selle rakenduse järgmised load, kui rakendust mõne kuu jooksul ei kasutata: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Teie andmete kaitsmiseks eemaldati load rakendustelt, mida te ei ole mõne kuu jooksul kasutanud."</string>
@@ -264,8 +270,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Andsite sõidu ajal rakendusele <xliff:g id="APP">%1$s</xliff:g> juurdepääsu lubadele <xliff:g id="PERMISSION_1">%2$s</xliff:g> ja <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Andsite sõidu ajal rakendusele <xliff:g id="APP">%2$s</xliff:g> <xliff:g id="COUNT">%1$d</xliff:g> luba"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Andsite sõidu ajal rakendusele <xliff:g id="APP_0">%1$s</xliff:g> ja veel # rakendusele juurdepääsu}other{Andsite sõidu ajal rakendusele <xliff:g id="APP_1">%1$s</xliff:g> ja veel # rakendusele juurdepääsu}}"</string>
-    <!-- no translation found for go_to_settings (1053735612211228335) -->
-    <skip />
+    <string name="go_to_settings" msgid="1053735612211228335">"Ava seaded"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Mõningaid rakendusi ei ole mõne kuu jooksul kasutatud"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Eemaldatud load"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Eemaldatud load"</string>
@@ -468,10 +473,10 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pääseda juurde teie telefoni kõnelogidele?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; teha ja hallata telefonikõnesid?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; juurdepääs anduri andmetele teie eluliste näitajate kohta?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="5239219356063824373">"See rakendus soovib pidevat juurdepääsu anduri andmetele teie eluliste näitajate kohta, isegi kui te rakendust ei kasuta. "<annotation id="link">"Lubage see seadetes."</annotation></string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"See rakendus soovib pidevat juurdepääsu teie elulistele näitajatele (ka siis, kui te rakendust ei kasuta). Selle muudatuse tegemiseks "<annotation id="link">"avage seaded."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Kas lubada rakendusele &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; juurdepääs anduri andmetele teie eluliste näitajate kohta?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"See rakendus võib soovida pidevat juurdepääsu anduri andmetele teie eluliste näitajate kohta, isegi kui te rakendust ei kasuta. "<annotation id="link">"Lubage see seadetes."</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Kas muuta rakenduse &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; jaoks juurdepääsu anduri andmetele teie eluliste näitajate kohta?"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Selleks et anda rakendusele pidev juurdepääs kehaanduri andmetele (ka siis, kui rakendust ei kasutata), "<annotation id="link">"avage seaded."</annotation></string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Kas lubada jätkuvalt rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pääseda juurde kehaanduri andmetele, kui rakendust kasutatakse?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; teile märguandeid saata?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Kas lubada rakendusel &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; teile jätkuvalt märguandeid saata?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Hallatud load"</string>
@@ -509,6 +514,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Eemalda kaamera luba"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Eemalda mikrofoni luba"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Teenuse haldamine"</string>
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"Lubade haldamine"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Kasutatakse telefonikõne jaoks"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Kasutati hiljuti telefonikõne jaoks"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Kasutab rakendus <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>

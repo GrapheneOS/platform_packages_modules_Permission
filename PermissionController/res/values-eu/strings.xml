@@ -196,8 +196,14 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Ikusi <xliff:g id="APP">%1$s</xliff:g> aplikazioaren baimen guztiak"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Ikusi baimen hau duten aplikazio guztiak"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Erakutsi laguntzaileak mikrofonoa erabiltzeko duen baimena"</string>
+    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
+    <skip />
     <string name="auto_revoke_label" msgid="5068393642936571656">"Kendu baimenak aplikazioa ez bada erabiltzen"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Kendu baimenak eta egin tokia"</string>
+    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
+    <skip />
+    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
+    <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Zure datuak babeste aldera, aplikazio honen baimenak kendu egingo dira aplikazioa ez baduzu erabiltzen zenbait hilabetez."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Zure datuak babeste aldera, kendu egingo dira honako baimen hauek zenbait hilabetez aplikazioa erabiltzen ez baduzu: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Zure datuak babeste aldera, kendu egin dira zenbait hilabetez erabili ez dituzun aplikazioen baimenak."</string>
@@ -264,8 +270,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Gidatu bitartean, <xliff:g id="PERMISSION_1">%2$s</xliff:g> eta <xliff:g id="PERMISSION_2">%3$s</xliff:g> atzitzeko baimena eman diozu <xliff:g id="APP">%1$s</xliff:g> aplikazioari"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Gidatu bitartean, <xliff:g id="COUNT">%1$d</xliff:g> baimen eman dizkiozu <xliff:g id="APP">%2$s</xliff:g> aplikazioari"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Gidatu bitartean, baimenak eman dizkiezu <xliff:g id="APP_0">%1$s</xliff:g> eta beste # aplikaziori}other{Gidatu bitartean, baimenak eman dizkiezu <xliff:g id="APP_1">%1$s</xliff:g> eta beste # aplikaziori}}"</string>
-    <!-- no translation found for go_to_settings (1053735612211228335) -->
-    <skip />
+    <string name="go_to_settings" msgid="1053735612211228335">"Joan ezarpenetara"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Aplikazio batzuk ez dira erabili zenbait hilabetez"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Baimenak kendu zaizkien aplikazioak"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Baimenak kendu zaizkien aplikazioak"</string>
@@ -468,10 +473,10 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Telefonoko deien erregistroa atzitzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Telefono-deiak egiteko eta kudeatzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Bizi-konstanteei buruzko sentsorearen datuak atzitzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="5239219356063824373">"Aplikazioak bizi-konstanteei buruzko sentsoreen datuak beti atzitzeko baimena behar du, baita aplikazioa erabiltzen ari ez zarenean ere. "<annotation id="link">"Eman baimen hori Ezarpenak atalean."</annotation></string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Aplikazioak bizi-konstanteei buruzko sentsoreen datuak atzitu nahi ditu, baita aplikazioa erabiltzen ari ez zarenean ere. Aldaketa hori egiteko, "<annotation id="link">"joan ezarpenetara."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Bizi-konstanteei buruzko sentsoreen datuak atzitzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Baliteke aplikazioak bizi-konstanteei buruzko sentsoreen datuak atzitzeko baimena behar izatea, baita aplikazioa erabiltzen ari ez zarenean ere. "<annotation id="link">"Eman baimena ezarpenetan."</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioak bizi-konstanteei buruzko sentsoreen datuak atzitzeko duen baimena aldatu nahi duzu?"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Aplikazioari gorputz-sentsoreen datuak beti (baita aplikazioa erabiltzen ari ez zarenean ere) atzitzeko baimena emateko, "<annotation id="link">"joan ezarpenetara."</annotation></string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erabili bitartean gorputz-sentsoreen datuak atzitzeko baimena eman nahi diozu aplikazio horri?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Zuri jakinarazpenak bidaltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Zuri jakinarazpenak bidaltzen jarraitzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Kontrolatutako baimenak"</string>
@@ -509,6 +514,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Kendu kamera atzitzeko baimena"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Kendu mikrofonoa atzitzeko baimena"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Kudeatu zerbitzua"</string>
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"Kudeatu baimenak"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Telefono-deiak darabil"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Telefono-deian erabili da duela gutxi"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"<xliff:g id="APP_NAME">%1$s</xliff:g> aplikazioak darabil"</string>

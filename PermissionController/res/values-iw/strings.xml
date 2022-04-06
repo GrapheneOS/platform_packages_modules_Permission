@@ -196,8 +196,14 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"הצגת כל ההרשאות של \'<xliff:g id="APP">%1$s</xliff:g>\'"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"הצגת כל האפליקציות עם ההרשאה הזו"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"‏הצגת השימוש במיקרופון של Assistant"</string>
+    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
+    <skip />
     <string name="auto_revoke_label" msgid="5068393642936571656">"הסרת ההרשאות כשלא בשימוש"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"הסרת הרשאות ופינוי מקום אחסון"</string>
+    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
+    <skip />
+    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
+    <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"כדי להגן על הנתונים שלך, אם האפליקציה הזו לא תהיה בשימוש במשך מספר חודשים, ההרשאות שניתנו לה יוסרו."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"כדי להגן על הנתונים שלך, אם האפליקציה לא תהיה בשימוש במשך מספר חודשים, ההרשאות הבאות יוסרו: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"כדי להגן על הנתונים שלך, הוסרו הרשאות מאפליקציות שלא השתמשת בהן במשך מספר חודשים."</string>
@@ -264,8 +270,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"במהלך הנהיגה, נתת לאפליקציה <xliff:g id="APP">%1$s</xliff:g> גישה ל<xliff:g id="PERMISSION_1">%2$s</xliff:g> ול<xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"במהלך הנהיגה, הענקת <xliff:g id="COUNT">%1$d</xliff:g> הרשאות לאפליקציה <xliff:g id="APP">%2$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{במהלך הנהיגה, נתת גישה לאפליקציה <xliff:g id="APP_0">%1$s</xliff:g> ולאפליקציה אחת נוספת}two{במהלך הנהיגה, נתת גישה לאפליקציה <xliff:g id="APP_1">%1$s</xliff:g> ול-# אפליקציות נוספות}many{במהלך הנהיגה, נתת גישה לאפליקציה <xliff:g id="APP_1">%1$s</xliff:g> ול-# אפליקציות נוספות}other{במהלך הנהיגה, נתת גישה לאפליקציה <xliff:g id="APP_1">%1$s</xliff:g> ול-# אפליקציות נוספות}}"</string>
-    <!-- no translation found for go_to_settings (1053735612211228335) -->
-    <skip />
+    <string name="go_to_settings" msgid="1053735612211228335">"להגדרות"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"יש אפליקציות שלא נעשה בהן שימוש כבר כמה חודשים"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"ההרשאות שהוסרו"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"הוסרו הרשאות"</string>
@@ -468,10 +473,10 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה ליומני השיחות של הטלפון?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאה לבצע ולנהל שיחות טלפון?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאת גישה לנתוני חיישנים העוקבים אחר הסימנים החיוניים שלך?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="5239219356063824373">"האפליקציה הזו מבקשת לקבל גישה לנתוני החיישנים המודדים את הסימנים החיוניים שלך כל הזמן, גם כשהיא לא בשימוש. "<annotation id="link">"יש לך אפשרות לאשר זאת בהגדרות."</annotation></string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"האפליקציה הזו מבקשת הרשאת גישה לנתוני החיישנים שמודדים את הסימנים החיוניים שלך כל הזמן, גם כשלא נעשה בה שימוש. כדי לשנות את ההגדרה הזו, "<annotation id="link">"צריך לעבור להגדרות"</annotation>"."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"‏להעניק לאפליקציה &lt;b‏/&gt;‏<xliff:g id="APP_NAME">%1$s</xliff:g>‏&lt;b&gt; הרשאת גישה לנתוני החיישנים שמודדים את הסימנים החיוניים שלך?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"יכול להיות שהאפליקציה תבקש לגשת לנתוני החיישנים המודדים את הסימנים החיוניים שלך כל הזמן, גם כשהיא לא בשימוש. "<annotation id="link">"יש לך אפשרות לאשר זאת בהגדרות."</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"‏לשנות את הרשאת הגישה של &lt;b‏/&gt;‏<xliff:g id="APP_NAME">%1$s</xliff:g>‏&lt;b&gt; לנתוני החיישנים המודדים את הסימנים החיוניים שלך?"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"כדי לאפשר לאפליקציה הזו לגשת לנתונים של חיישנים גופניים כל הזמן, גם כשהיא לא בשימוש, "<annotation id="link">"צריך להיכנס להגדרות."</annotation></string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"‏להמשיך לאפשר לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; לגשת לנתונים של חיישנים גופניים כשהיא נמצאת בשימוש?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאה לשלוח לך התראות?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"‏לתת לאפליקציה &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; הרשאה להמשיך לשלוח לך התראות?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"הרשאות בבקרה"</string>
@@ -509,6 +514,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"הסרה של הרשאת הגישה למצלמה"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"הסרה של הרשאת הגישה למיקרופון"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"ניהול השירות"</string>
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"ניהול הרשאות"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"בשימוש על ידי שיחת טלפון"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"נעשה שימוש לאחרונה על ידי שיחת טלפון"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"בשימוש על ידי <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>

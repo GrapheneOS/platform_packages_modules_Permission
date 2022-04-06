@@ -196,8 +196,11 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"అన్ని \'<xliff:g id="APP">%1$s</xliff:g>\' అనుమతులను చూడండి"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"ఈ అనుమతి ఉన్న అన్ని యాప్‌లను చూడండి"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"అసిస్టెంట్ మైక్రోఫోన్ వినియోగాన్ని చూపు"</string>
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"ఉపయోగించని యాప్ సెట్టింగ్‌లు"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"యాప్‌ని ఉపయోగించకపోతే, అనుమతులను తీసివేయండి"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"అనుమతులను తీసివేసి స్పేస్‌ను ఖాళీ చేయండి"</string>
+    <string name="unused_apps_label_v2" msgid="2443239537162119403">"యాప్ యాక్టివిటీని పాజ్ చేయండి"</string>
+    <string name="unused_apps_summary" msgid="4416065734063612849">"అనుమతులను తీసివేయండి, తాత్కాలిక ఫైల్స్‌ను తొలగించండి, అలాగే ఉపయోగించని పక్షంలో నోటిఫికేషన్‌లను ఆపివేయండి"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"మీ డేటాను సురక్షితంగా ఉంచడానికి, ఈ యాప్ కొన్ని నెలలుగా వినియోగంలో లేకుంటే, దాని అనుమతులు తీసివేయబడతాయి."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"మీ డేటాను సురక్షితంగా ఉంచడానికి, ఈ యాప్ కొన్ని నెలలుగా వినియోగంలో లేకుంటే, దానికి ఇచ్చిన కింది అనుమతులు తీసివేయబడతాయి: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"మీ డేటాను సురక్షితంగా ఉంచడానికి, కొన్ని నెలలుగా వినియోగంలో లేని యాప్‌ల అనుమతులు తీసివేయబడ్డాయి."</string>
@@ -264,8 +267,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"డ్రైవింగ్‌లో ఉన్నప్పుడు, మీరు <xliff:g id="APP">%1$s</xliff:g> యాప్‌నకు <xliff:g id="PERMISSION_1">%2$s</xliff:g>, <xliff:g id="PERMISSION_2">%3$s</xliff:g>‌కు యాక్సెస్‌ను ఇచ్చారు"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"డ్రైవింగ్‌లో ఉన్నప్పుడు, మీరు <xliff:g id="APP">%2$s</xliff:g> యాప్‌నకు <xliff:g id="COUNT">%1$d</xliff:g> అనుమతులను ఇచ్చారు"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{డ్రైవింగ్‌లో ఉన్నప్పుడు, మీరు <xliff:g id="APP_0">%1$s</xliff:g>, మరో # ఇతర యాప్‌నకు యాక్సెస్‌ను ఇచ్చారు}other{డ్రైవింగ్‌లో ఉన్నప్పుడు, మీరు <xliff:g id="APP_1">%1$s</xliff:g>, మరో # ఇతర యాప్‌లకు యాక్సెస్‌ను ఇచ్చారు}}"</string>
-    <!-- no translation found for go_to_settings (1053735612211228335) -->
-    <skip />
+    <string name="go_to_settings" msgid="1053735612211228335">"సెట్టింగ్‌లకు వెళ్లండి"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"గత కొన్ని నెలలుగా కొన్ని యాప్‌లు వినియోగంలో లేవు"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"అనుమతులు తీసివేసినవి"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"అనుమతులు తీసివేయబడ్డాయి"</string>
@@ -468,10 +470,10 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"మీ ఫోన్ కాల్ లాగ్‌లను యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ని అనుమతించాలా?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"ఫోన్‌ కాల్స్‌ చేయడానికి, మేనేజ్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ని అనుమతించాలా?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"మీ అత్యంత కీలకమైన గుర్తుల గురించి సెన్సార్ డేటాని యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ని అనుమతించాలా?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="5239219356063824373">"మీరు యాప్‌ను ఉపయోగించనప్పటికీ, ఈ యాప్ మీ కీలక ఆరోగ్య కొలమాన గుర్తుల సెన్సార్ డేటాను ఎప్పటికప్పుడు యాక్సెస్ చేయాలనుకుంటోంది. "<annotation id="link">"సెట్టింగ్‌లలో అనుమతించండి."</annotation></string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"మీరు యాప్‌ను ఉపయోగించనప్పటికీ, ఈ యాప్ మీ కీలక ఆరోగ్య కొలమాన గుర్తుల సెన్సార్ డేటాను ఎప్పటికప్పుడు యాక్సెస్ చేయాలనుకుంటోంది. ఈ మార్పు చేయడానికి, "<annotation id="link">"సెట్టింగ్‌లకు వెళ్లండి."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"మీ కీలక ఆరోగ్య కొలమాన గుర్తుల గురించి సెన్సార్ డేటాను యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"మీరు యాప్‌ను ఉపయోగించనప్పటికీ, ఈ యాప్ మీ కీలక ఆరోగ్య కొలమాన గుర్తుల సెన్సార్ డేటాను ఎప్పటికప్పుడు యాక్సెస్ చేయాలనుకోవచ్చు. "<annotation id="link">"సెట్టింగ్‌లలో అనుమతించండి."</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; కోసం మీ కీలక ఆరోగ్య కొలమాన గుర్తులకు సంబంధించిన సెన్సార్ డేటాకు యాక్సెస్‌ను మార్చాలా?"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"మీరు యాప్‌ను ఉపయోగించనప్పటికీ, ఈ యాప్ బాడీ సెన్సార్ డేటాను ఎప్పటికప్పుడు యాక్సెస్ చేయడాన్ని అనుమతించడానికి, "<annotation id="link">"సెట్టింగ్‌లకు వెళ్లండి."</annotation></string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"యాప్ ఉపయోగంలో ఉన్నప్పుడు బాడీ సెన్సార్ డేటాను యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"మీకు నోటిఫికేషన్‌లను పంపడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"మీకు నోటిఫికేషన్‌లు పంపడాన్ని కొనసాగించడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"నియంత్రణలో ఉన్న అనుమతులు"</string>
@@ -509,6 +511,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"కెమెరా అనుమతిని తీసివేయండి"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"మైక్రోఫోన్ అనుమతిని తీసివేయండి"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"సర్వీస్‌ను మేనేజ్ చేయండి"</string>
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"అనుమతులను మేనేజ్ చేయగలరు"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"ఫోన్ కాల్ ద్వారా ఉపయోగించబడుతోంది"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"ఇటీవల ఫోన్ కాల్‌లో ఉపయోగించబడింది"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"<xliff:g id="APP_NAME">%1$s</xliff:g> ద్వారా ఉపయోగించబడుతోంది"</string>

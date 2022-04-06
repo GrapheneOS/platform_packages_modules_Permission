@@ -578,6 +578,7 @@
             <!-- Used for CTS testing -->
             <permission name="android.permission.CREATE_VIRTUAL_DEVICE" minSdkVersion="33" />
             <permission name="android.permission.ACCESS_RCS_USER_CAPABILITY_EXCHANGE" />
+            <permission name="android.permission.ACCESS_AMBIENT_CONTEXT_EVENT" minSdkVersion="33"/>
             <permission name="android.permission.PERFORM_IMS_SINGLE_REGISTRATION" />
             <permission name="android.permission.BACKGROUND_CAMERA" />
             <permission name="android.permission.RECORD_BACKGROUND_AUDIO" />
@@ -685,6 +686,7 @@
         visible="false">
         <permissions>
             <permission name="android.permission.SYSTEM_APPLICATION_OVERLAY" />
+            <permission name="android.permission.OBSERVE_SENSOR_PRIVACY" />
         </permissions>
     </role>
 
@@ -742,7 +744,6 @@
             <permission name="android.permission.MANAGE_APP_PREDICTIONS" />
             <permission name="android.permission.UNLIMITED_SHORTCUTS_API_CALLS" />
             <permission name="android.permission.MANAGE_SEARCH_UI" />
-            <permission name="android.permission.MANAGE_WALLPAPER_EFFECTS_GENERATION" minSdkVersion="33" />
             <permission name="android.permission.READ_EXTERNAL_STORAGE" />
             <permission name="android.permission.READ_PEOPLE_DATA" />
             <permission name="android.permission.READ_GLOBAL_APP_SEARCH_DATA" />
@@ -905,6 +906,7 @@
         <permissions>
             <permission name="android.permission.MANAGE_UI_TRANSLATION" />
             <permission name="android.permission.SYSTEM_APPLICATION_OVERLAY" />
+            <permission name="android.permission.READ_CLIPBOARD_IN_BACKGROUND" minSdkVersion="33" />
         </permissions>
     </role>
 
@@ -1103,12 +1105,30 @@
       -->
     <role
         name="android.app.role.DEVICE_POLICY_MANAGEMENT"
+        behavior="DevicePolicyManagementRoleBehavior"
         defaultHolders="config_devicePolicyManagement"
         exclusive="true"
         minSdkVersion="33"
         static="true"
         systemOnly="false"
         visible="false">
+        <required-components>
+            <activity permission="android.permission.LAUNCH_DEVICE_MANAGER_SETUP">
+                <intent-filter>
+                    <action name="android.app.action.ROLE_HOLDER_PROVISION_MANAGED_DEVICE_FROM_TRUSTED_SOURCE" />
+                </intent-filter>
+            </activity>
+            <activity permission="android.permission.LAUNCH_DEVICE_MANAGER_SETUP">
+                <intent-filter>
+                    <action name="android.app.action.ROLE_HOLDER_PROVISION_MANAGED_PROFILE" />
+                </intent-filter>
+            </activity>
+            <activity permission="android.permission.LAUNCH_DEVICE_MANAGER_SETUP">
+                <intent-filter>
+                    <action name="android.app.action.ROLE_HOLDER_PROVISION_FINALIZATION" />
+                </intent-filter>
+            </activity>
+        </required-components>
         <permissions>
             <permission-set name="notifications" />
             <permission name="android.permission.BIND_DEVICE_ADMIN" />
@@ -1260,13 +1280,13 @@
       ~ A role for the package that handles AI features for the settings app
       -->
     <role
-        name="android.app.role.SETTINGS_INTELLIGENCE"
-        defaultHolders="config_settingsIntelligencePackageName"
+        name="android.app.role.SYSTEM_SETTINGS_INTELLIGENCE"
+        defaultHolders="config_systemSettingsIntelligence"
         exclusive="true"
         minSdkVersion="33"
+        static="true"
         systemOnly="true"
-        visible="false"
-        overrideUserWhenGranting="true">
+        visible="false">
         <permissions>
             <permission-set name="notifications" />
         </permissions>

@@ -23,6 +23,7 @@ import android.permission.PermissionControllerManager.COUNT_WHEN_SYSTEM
 import android.permission.PermissionControllerManager.HIBERNATION_ELIGIBILITY_ELIGIBLE
 import android.permission.PermissionControllerManager.HIBERNATION_ELIGIBILITY_EXEMPT_BY_SYSTEM
 import android.permission.PermissionControllerManager.HIBERNATION_ELIGIBILITY_EXEMPT_BY_USER
+import android.permission.PermissionControllerManager.HIBERNATION_ELIGIBILITY_UNKNOWN
 import androidx.core.util.Consumer
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LiveData
@@ -315,15 +316,20 @@ class PermissionControllerServiceModel(private val service: PermissionController
         val packageLiveData = LightPackageInfoLiveData[packageName, user]
         observeAndCheckForLifecycleState(packageLiveData) { pkg ->
             GlobalScope.launch(Main.immediate) {
-                val exemptBySystem = isPackageHibernationExemptBySystem(pkg!!, user)
-                val exemptByUser = isPackageHibernationExemptByUser(
-                    PermissionControllerApplication.get(), pkg!!)
-                val eligibility = when {
-                    !exemptBySystem && !exemptByUser -> HIBERNATION_ELIGIBILITY_ELIGIBLE
-                    exemptBySystem -> HIBERNATION_ELIGIBILITY_EXEMPT_BY_SYSTEM
-                    else -> HIBERNATION_ELIGIBILITY_EXEMPT_BY_USER
+                if (pkg == null) {
+                    // Possible that app is uninstalled or user is switched
+                    callback.accept(HIBERNATION_ELIGIBILITY_UNKNOWN)
+                } else {
+                    val exemptBySystem = isPackageHibernationExemptBySystem(pkg, user)
+                    val exemptByUser = isPackageHibernationExemptByUser(
+                        PermissionControllerApplication.get(), pkg)
+                    val eligibility = when {
+                        !exemptBySystem && !exemptByUser -> HIBERNATION_ELIGIBILITY_ELIGIBLE
+                        exemptBySystem -> HIBERNATION_ELIGIBILITY_EXEMPT_BY_SYSTEM
+                        else -> HIBERNATION_ELIGIBILITY_EXEMPT_BY_USER
+                    }
+                    callback.accept(eligibility)
                 }
-                callback.accept(eligibility)
             }
         }
     }

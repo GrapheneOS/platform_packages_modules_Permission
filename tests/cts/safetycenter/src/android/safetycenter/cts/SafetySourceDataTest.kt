@@ -21,18 +21,22 @@ import android.app.PendingIntent.FLAG_IMMUTABLE
 import android.content.Context
 import android.content.Intent
 import android.os.Build.VERSION_CODES.TIRAMISU
-import android.os.Parcel
 import android.safetycenter.SafetySourceData
+import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING
+import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_INFORMATION
+import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_RECOMMENDATION
+import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED
 import android.safetycenter.SafetySourceIssue
-import android.safetycenter.SafetySourceIssue.ISSUE_CATEGORY_ACCOUNT
 import android.safetycenter.SafetySourceStatus
-import android.safetycenter.SafetySourceStatus.IconAction.ICON_TYPE_GEAR
+import android.safetycenter.cts.testing.EqualsHashCodeToStringTester
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.ext.truth.os.ParcelableSubject.assertThat
 import androidx.test.filters.SdkSuppress
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
+import kotlin.test.assertFailsWith
 
 /** CTS tests for [SafetySourceData]. */
 @RunWith(AndroidJUnit4::class)
@@ -40,107 +44,54 @@ import org.junit.runner.RunWith
 class SafetySourceDataTest {
     private val context: Context = getApplicationContext()
 
-    private val status1 = SafetySourceStatus.Builder(
-            "Status title 1",
-            "Status summary 1",
-            SafetySourceStatus.STATUS_LEVEL_NONE,
-            PendingIntent.getActivity(context, 0 /* requestCode= */,
-                    Intent("Status PendingIntent 1"), FLAG_IMMUTABLE))
-            .setEnabled(false)
-            .build()
-    private val status2 = SafetySourceStatus.Builder(
-            "Status title 2",
-            "Status summary 2",
-            SafetySourceStatus.STATUS_LEVEL_RECOMMENDATION,
-            PendingIntent.getActivity(context, 0 /* requestCode= */,
-                    Intent("Status PendingIntent 2"), FLAG_IMMUTABLE))
-            .setIconAction(SafetySourceStatus.IconAction(ICON_TYPE_GEAR,
-                    PendingIntent.getActivity(context, 0 /* requestCode= */,
-                            Intent("IconAction PendingIntent 2"), FLAG_IMMUTABLE)))
-            .build()
-    private val issue1 = SafetySourceIssue.Builder(
-        "Issue id 1",
-        "Issue summary 1",
-        "Issue summary 1",
-        SafetySourceIssue.SEVERITY_LEVEL_INFORMATION, "issue_type_id"
-    )
-        .setSubtitle("Issue subtitle 1")
-        .setIssueCategory(ISSUE_CATEGORY_ACCOUNT)
-        .addAction(
-            SafetySourceIssue.Action.Builder(
-                "action_id_1",
-                "Action label 1",
-                PendingIntent.getActivity(
-                    context, 0 /* requestCode= */,
-                    Intent("Issue PendingIntent 1"), FLAG_IMMUTABLE
-                )
-            )
-                .build()
-        )
-        .build()
-    private val issue2 = SafetySourceIssue.Builder(
-        "Issue id 2",
-        "Issue title 2",
-        "Issue summary 2",
-        SafetySourceIssue.SEVERITY_LEVEL_RECOMMENDATION, "issue_type_id"
-    )
-        .addAction(
-            SafetySourceIssue.Action.Builder(
-                "action_id_2",
-                "Action label 2",
-                PendingIntent.getService(
-                    context, 0 /* requestCode= */,
-                    Intent("Issue PendingIntent 2"), FLAG_IMMUTABLE
-                )
-            ).build()
-        )
-        .setOnDismissPendingIntent(
-            PendingIntent.getService(
-                context,
-                0 /* requestCode= */,
-                Intent("Issue OnDismissPendingIntent 2"), FLAG_IMMUTABLE
-            )
-        )
-        .build()
-
     @Test
     fun getStatus_withDefaultBuilder_returnsNull() {
-        val safetySourceData = SafetySourceData.Builder().build()
+        val safetySourceData = SafetySourceData.Builder()
+            .addIssue(createIssue(SEVERITY_LEVEL_INFORMATION))
+            .build()
 
         assertThat(safetySourceData.status).isNull()
     }
 
     @Test
     fun getStatus_whenSetExplicitly_returnsStatus() {
+        val status = createStatus(SEVERITY_LEVEL_INFORMATION)
         val safetySourceData = SafetySourceData.Builder()
-                .setStatus(status1)
-                .build()
+            .setStatus(status)
+            .build()
 
-        assertThat(safetySourceData.status).isEqualTo(status1)
+        assertThat(safetySourceData.status).isEqualTo(status)
     }
 
     @Test
     fun getIssues_withDefaultBuilder_returnsEmptyList() {
-        val safetySourceData = SafetySourceData.Builder().build()
+        val safetySourceData = SafetySourceData.Builder()
+            .setStatus(createStatus(SEVERITY_LEVEL_INFORMATION))
+            .build()
 
         assertThat(safetySourceData.issues).isEmpty()
     }
 
     @Test
     fun getIssues_whenSetExplicitly_returnsIssues() {
+        val firstIssue = createIssue(SEVERITY_LEVEL_INFORMATION, 1)
+        val secondIssue = createIssue(SEVERITY_LEVEL_INFORMATION, 2)
         val safetySourceData = SafetySourceData.Builder()
-                .addIssue(issue1)
-                .addIssue(issue2)
-                .build()
+            .addIssue(firstIssue)
+            .addIssue(secondIssue)
+            .build()
 
-        assertThat(safetySourceData.issues).containsExactly(issue1, issue2).inOrder()
+        assertThat(safetySourceData.issues).containsExactly(firstIssue, secondIssue).inOrder()
     }
 
     @Test
     fun clearIssues_removesAllIssues() {
+        val firstIssue = createIssue(SEVERITY_LEVEL_INFORMATION, 1)
+        val secondIssue = createIssue(SEVERITY_LEVEL_INFORMATION, 2)
         val safetySourceData = SafetySourceData.Builder()
-            .addIssue(issue1)
-            .addIssue(issue2)
+            .setStatus(createStatus(SEVERITY_LEVEL_INFORMATION))
+            .addIssue(firstIssue)
+            .addIssue(secondIssue)
             .clearIssues()
             .build()
 
@@ -148,149 +99,211 @@ class SafetySourceDataTest {
     }
 
     @Test
+    fun build_withNoStatusAndNoIssues_doesNotThrow() {
+        val builder = SafetySourceData.Builder()
+
+        assertThat(builder.build()).isNotNull()
+    }
+
+    @Test
+    fun build_withNoStatusAndInfoIssues_doesNotThrow() {
+        val builder = SafetySourceData.Builder().addIssue(createIssue(SEVERITY_LEVEL_INFORMATION))
+
+        assertThat(builder.build()).isNotNull()
+    }
+
+    @Test
+    fun build_withNoStatusAndRecommendationIssues_doesNotThrow() {
+        val builder = SafetySourceData.Builder()
+            .addIssue(createIssue(SEVERITY_LEVEL_RECOMMENDATION))
+
+        assertThat(builder.build()).isNotNull()
+    }
+
+    @Test
+    fun build_withNoStatusAndCriticalIssues_doesNotThrow() {
+        val builder = SafetySourceData.Builder()
+            .addIssue(createIssue(SEVERITY_LEVEL_CRITICAL_WARNING))
+
+        assertThat(builder.build()).isNotNull()
+    }
+
+    @Test
+    fun build_withUnspecifiedStatusAndNoIssues_doesNotThrow() {
+        val builder = SafetySourceData.Builder().setStatus(createStatus(SEVERITY_LEVEL_UNSPECIFIED))
+
+        assertThat(builder.build()).isNotNull()
+    }
+
+    @Test
+    fun build_withUnspecifiedStatusAndInformationIssues_doesNotThrow() {
+        val builder = SafetySourceData.Builder()
+            .setStatus(createStatus(SEVERITY_LEVEL_UNSPECIFIED))
+            .addIssue(createIssue(SEVERITY_LEVEL_INFORMATION))
+
+        assertThat(builder.build()).isNotNull()
+    }
+
+    @Test
+    fun build_withInformationStatusAndNoIssues_doesNotThrow() {
+        val builder = SafetySourceData.Builder().setStatus(createStatus(SEVERITY_LEVEL_INFORMATION))
+
+        assertThat(builder.build()).isNotNull()
+    }
+
+    @Test
+    fun build_withInformationStatusAndInformationIssues_doesNotThrow() {
+        val builder = SafetySourceData.Builder()
+            .setStatus(createStatus(SEVERITY_LEVEL_INFORMATION))
+            .addIssue(createIssue(SEVERITY_LEVEL_INFORMATION))
+
+        assertThat(builder.build()).isNotNull()
+    }
+
+    @Test
+    fun build_withInformationStatusAndRecommendationIssues_throwsIllegalArgumentException() {
+        val builder = SafetySourceData.Builder()
+            .setStatus(createStatus(SEVERITY_LEVEL_INFORMATION))
+            .addIssue(createIssue(SEVERITY_LEVEL_RECOMMENDATION))
+
+        val exception = assertFailsWith(IllegalArgumentException::class) {
+            builder.build()
+        }
+        assertThat(exception).hasMessageThat()
+            .isEqualTo(
+                "Safety source data must not contain any issue with a severity level both greater" +
+                    " than SEVERITY_LEVEL_INFORMATION and greater than the status severity level"
+            )
+    }
+
+    @Test
+    fun build_withRecommendationStatusAndNoIssues_doesNotThrow() {
+        val builder = SafetySourceData.Builder()
+            .setStatus(createStatus(SEVERITY_LEVEL_RECOMMENDATION))
+
+        assertThat(builder.build()).isNotNull()
+    }
+
+    @Test
+    fun build_withRecommendationStatusAndInformationIssues_doesNotThrow() {
+        val builder = SafetySourceData.Builder()
+            .setStatus(createStatus(SEVERITY_LEVEL_RECOMMENDATION))
+            .addIssue(createIssue(SEVERITY_LEVEL_INFORMATION))
+
+        assertThat(builder.build()).isNotNull()
+    }
+
+    @Test
+    fun build_withRecommendationStatusAndRecommendationIssues_doesNotThrow() {
+        val builder = SafetySourceData.Builder()
+            .setStatus(createStatus(SEVERITY_LEVEL_RECOMMENDATION))
+            .addIssue(createIssue(SEVERITY_LEVEL_RECOMMENDATION))
+
+        assertThat(builder.build()).isNotNull()
+    }
+
+    @Test
+    fun build_withRecommendationStatusAndCriticalIssues_throwsIllegalArgumentException() {
+        val builder = SafetySourceData.Builder()
+            .setStatus(createStatus(SEVERITY_LEVEL_RECOMMENDATION))
+            .addIssue(createIssue(SEVERITY_LEVEL_CRITICAL_WARNING))
+
+        val exception = assertFailsWith(IllegalArgumentException::class) {
+            builder.build()
+        }
+        assertThat(exception).hasMessageThat()
+            .isEqualTo(
+                "Safety source data must not contain any issue with a severity level both greater" +
+                    " than SEVERITY_LEVEL_INFORMATION and greater than the status severity level"
+            )
+    }
+
+    @Test
     fun describeContents_returns0() {
         val safetySourceData = SafetySourceData.Builder()
-                .setStatus(status1)
-                .addIssue(issue1)
-                .addIssue(issue2)
-                .build()
+            .setStatus(createStatus(SEVERITY_LEVEL_INFORMATION))
+            .build()
 
         assertThat(safetySourceData.describeContents()).isEqualTo(0)
     }
 
     @Test
-    fun createFromParcel_withWriteToParcel_returnsOriginalSafetySourceData() {
+    fun parcelRoundTrip_recreatesEqual() {
         val safetySourceData = SafetySourceData.Builder()
-                .setStatus(status1)
-                .addIssue(issue1)
-                .addIssue(issue2)
-                .build()
+            .setStatus(createStatus(SEVERITY_LEVEL_RECOMMENDATION))
+            .addIssue(createIssue(SEVERITY_LEVEL_RECOMMENDATION, 1))
+            .addIssue(createIssue(SEVERITY_LEVEL_INFORMATION, 2))
+            .build()
 
-        val parcel: Parcel = Parcel.obtain()
-        safetySourceData.writeToParcel(parcel, 0 /* flags */)
-        parcel.setDataPosition(0)
-        val safetySourceDataFromParcel: SafetySourceData =
-                SafetySourceData.CREATOR.createFromParcel(parcel)
-        parcel.recycle()
-
-        assertThat(safetySourceDataFromParcel).isEqualTo(safetySourceData)
-    }
-
-    // TODO(b/208473675): Use `EqualsTester` for testing `hashcode` and `equals`.
-    @Test
-    fun hashCode_equals_toString_withEqualByReference_withoutStatusAndIssues_areEqual() {
-        val safetySourceData = SafetySourceData.Builder().build()
-        val otherSafetySourceData = safetySourceData
-
-        assertThat(safetySourceData.hashCode()).isEqualTo(otherSafetySourceData.hashCode())
-        assertThat(safetySourceData).isEqualTo(otherSafetySourceData)
-        assertThat(safetySourceData.toString()).isEqualTo(otherSafetySourceData.toString())
+        assertThat(safetySourceData).recreatesEqual(SafetySourceData.CREATOR)
     }
 
     @Test
-    fun hashCode_equals_toString_withEqualByReference_withoutIssues_areEqual() {
-        val safetySourceData = SafetySourceData.Builder()
-                .setStatus(status1)
-                .build()
-        val otherSafetySourceData = safetySourceData
-
-        assertThat(safetySourceData.hashCode()).isEqualTo(otherSafetySourceData.hashCode())
-        assertThat(safetySourceData).isEqualTo(otherSafetySourceData)
-        assertThat(safetySourceData.toString()).isEqualTo(otherSafetySourceData.toString())
+    fun equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
+        val firstStatus = createStatus(SEVERITY_LEVEL_INFORMATION, 1)
+        val secondStatus = createStatus(SEVERITY_LEVEL_INFORMATION, 2)
+        val firstIssue = createIssue(SEVERITY_LEVEL_INFORMATION, 1)
+        val secondIssue = createIssue(SEVERITY_LEVEL_INFORMATION, 2)
+        EqualsHashCodeToStringTester()
+            .addEqualityGroup(
+                SafetySourceData.Builder().setStatus(firstStatus).build(),
+                SafetySourceData.Builder().setStatus(firstStatus).build()
+            )
+            .addEqualityGroup(
+                SafetySourceData.Builder().addIssue(firstIssue).addIssue(secondIssue).build(),
+                SafetySourceData.Builder().addIssue(firstIssue).addIssue(secondIssue).build()
+            )
+            .addEqualityGroup(
+                SafetySourceData.Builder()
+                    .setStatus(firstStatus).addIssue(firstIssue).addIssue(secondIssue).build(),
+                SafetySourceData.Builder()
+                    .setStatus(firstStatus).addIssue(firstIssue).addIssue(secondIssue).build()
+            )
+            .addEqualityGroup(SafetySourceData.Builder().setStatus(secondStatus).build())
+            .addEqualityGroup(
+                SafetySourceData.Builder().addIssue(secondIssue).addIssue(firstIssue).build())
+            .addEqualityGroup(SafetySourceData.Builder().addIssue(firstIssue).build())
+            .addEqualityGroup(
+                SafetySourceData.Builder()
+                    .setStatus(secondStatus).addIssue(firstIssue).addIssue(secondIssue).build()
+            )
+            .test()
     }
 
-    @Test
-    fun hashCode_equals_toString_withEqualByReference_areEqual() {
-        val safetySourceData = SafetySourceData.Builder()
-                .setStatus(status1)
-                .addIssue(issue1)
-                .addIssue(issue2)
+    private fun createStatus(severityLevel: Int, id: Int = 0) = SafetySourceStatus.Builder(
+        "Status title $id",
+        "Status summary $id",
+        severityLevel
+    )
+        .setPendingIntent(
+            PendingIntent.getActivity(
+                context,
+                0 /* requestCode= */,
+                Intent("Status PendingIntent $id"),
+                FLAG_IMMUTABLE
+            )
+        )
+        .build()
+
+    private fun createIssue(severityLevel: Int, id: Int = 0) = SafetySourceIssue.Builder(
+        "Issue id $id",
+        "Issue summary $id",
+        "Issue summary $id",
+        severityLevel,
+        "Issue type id $id"
+    )
+        .addAction(
+            SafetySourceIssue.Action.Builder(
+                "Action id $id",
+                "Action label $id",
+                PendingIntent.getActivity(
+                    context,
+                    0 /* requestCode= */,
+                    Intent("Issue PendingIntent $id"),
+                    FLAG_IMMUTABLE
+                )
+            )
                 .build()
-        val otherSafetySourceData = safetySourceData
-
-        assertThat(safetySourceData.hashCode()).isEqualTo(otherSafetySourceData.hashCode())
-        assertThat(safetySourceData).isEqualTo(otherSafetySourceData)
-        assertThat(safetySourceData.toString()).isEqualTo(otherSafetySourceData.toString())
-    }
-
-    @Test
-    fun hashCode_equals_toString_withAllFieldsEqual_areEqual() {
-        val safetySourceData = SafetySourceData.Builder()
-                .setStatus(status1)
-                .addIssue(issue1)
-                .addIssue(issue2)
-                .build()
-        val otherSafetySourceData = SafetySourceData.Builder()
-                .setStatus(status1)
-                .addIssue(issue1)
-                .addIssue(issue2)
-                .build()
-
-        assertThat(safetySourceData.hashCode()).isEqualTo(otherSafetySourceData.hashCode())
-        assertThat(safetySourceData).isEqualTo(otherSafetySourceData)
-        assertThat(safetySourceData.toString()).isEqualTo(otherSafetySourceData.toString())
-    }
-
-    @Test
-    fun hashCode_equals_toString_withDifferentIssues_areNotEqual() {
-        val safetySourceData = SafetySourceData.Builder()
-                .setStatus(status1)
-                .addIssue(issue1)
-                .addIssue(issue2)
-                .build()
-        val otherSafetySourceData = SafetySourceData.Builder()
-                .setStatus(status2)
-                .addIssue(issue1)
-                .addIssue(issue2)
-                .build()
-
-        assertThat(safetySourceData.hashCode()).isNotEqualTo(otherSafetySourceData.hashCode())
-        assertThat(safetySourceData).isNotEqualTo(otherSafetySourceData)
-        assertThat(safetySourceData.toString()).isNotEqualTo(otherSafetySourceData.toString())
-    }
-
-    @Test
-    fun hashCode_equals_toString_withDifferentStatuses_areNotEqual() {
-        val safetySourceData = SafetySourceData.Builder()
-                .setStatus(status1)
-                .addIssue(issue1)
-                .addIssue(issue2)
-                .build()
-        val otherSafetySourceData = SafetySourceData.Builder()
-                .setStatus(status1)
-                .addIssue(issue1)
-                .build()
-
-        assertThat(safetySourceData.hashCode()).isNotEqualTo(otherSafetySourceData.hashCode())
-        assertThat(safetySourceData).isNotEqualTo(otherSafetySourceData)
-        assertThat(safetySourceData.toString()).isNotEqualTo(otherSafetySourceData.toString())
-    }
-
-    @Test
-    fun hashCode_equals_toString_withStatusSetInOneAndNotOther_areNotEqual() {
-        val safetySourceData = SafetySourceData.Builder()
-                .setStatus(status1)
-                .build()
-        val otherSafetySourceData = SafetySourceData.Builder().build()
-
-        assertThat(safetySourceData.hashCode()).isNotEqualTo(otherSafetySourceData.hashCode())
-        assertThat(safetySourceData).isNotEqualTo(otherSafetySourceData)
-        assertThat(safetySourceData.toString()).isNotEqualTo(otherSafetySourceData.toString())
-    }
-
-    @Test
-    fun hashCode_equals_toString_withIssuesSetInOneAndNotOther_areNotEqual() {
-        val safetySourceData = SafetySourceData.Builder()
-                .setStatus(status1)
-                .addIssue(issue1)
-                .addIssue(issue2)
-                .build()
-        val otherSafetySourceData = SafetySourceData.Builder()
-                .setStatus(status1)
-                .build()
-
-        assertThat(safetySourceData.hashCode()).isNotEqualTo(otherSafetySourceData.hashCode())
-        assertThat(safetySourceData).isNotEqualTo(otherSafetySourceData)
-        assertThat(safetySourceData.toString()).isNotEqualTo(otherSafetySourceData.toString())
-    }
+        )
+        .build()
 }

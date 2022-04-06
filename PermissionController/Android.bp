@@ -80,10 +80,16 @@ android_app {
     privileged: true,
     certificate: "platform",
     rename_resources_package: false,
+    required: ["privapp_allowlist_com.android.permissioncontroller.xml"],
 
     srcs: [":permissioncontroller-sources"],
 
-    libs: ["android.car-stubs"],
+    libs: [
+        "android.car-stubs",
+        // Soong fails to automatically add this dependency because all the
+        // *.kt sources are inside a filegroup.
+        "kotlin-annotations",
+    ],
 
     static_libs: [
         "iconloader",

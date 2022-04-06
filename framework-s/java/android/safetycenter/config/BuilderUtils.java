@@ -16,38 +16,67 @@
 
 package android.safetycenter.config;
 
-import android.annotation.IdRes;
+import static android.os.Build.VERSION_CODES.TIRAMISU;
+
+import android.annotation.AnyRes;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.content.res.Resources;
 
+import androidx.annotation.RequiresApi;
+
+import java.util.Objects;
+
+@RequiresApi(TIRAMISU)
 final class BuilderUtils {
+
     private BuilderUtils() {
     }
 
-    static void validateAttribute(@Nullable Object attribute, @NonNull String name,
-            boolean required, boolean prohibited) {
+    private static void validateAttribute(
+            @Nullable Object attribute,
+            @NonNull String name,
+            boolean required,
+            boolean prohibited,
+            @Nullable Object defaultValue) {
         if (attribute == null && required) {
             throw new IllegalStateException(String.format("Required attribute %s missing", name));
         }
-        if (attribute != null && prohibited) {
+        boolean nonDefaultValueProvided = !Objects.equals(attribute, defaultValue);
+        boolean checkProhibited = prohibited && nonDefaultValueProvided;
+        if (attribute != null && checkProhibited) {
             throw new IllegalStateException(String.format("Prohibited attribute %s present", name));
         }
     }
 
-    @IdRes
-    static int validateResId(@Nullable @IdRes Integer value, @NonNull String name, boolean required,
+    static void validateAttribute(
+            @Nullable Object attribute, @NonNull String name, boolean required,
             boolean prohibited) {
-        validateAttribute(value, name, required, prohibited);
+        validateAttribute(attribute, name, required, prohibited, null);
+    }
+
+    @AnyRes
+    static int validateResId(
+            @Nullable @AnyRes Integer value, @NonNull String name, boolean required,
+            boolean prohibited) {
+        validateAttribute(value, name, required, prohibited, Resources.ID_NULL);
         if (value == null) {
             return Resources.ID_NULL;
+        }
+        if (required && value == Resources.ID_NULL) {
+            throw new IllegalStateException(String.format("Required attribute %s invalid", name));
         }
         return value;
     }
 
-    static int validateIntDef(@Nullable Integer value, @NonNull String name,
-            boolean required, boolean prohibited, int defaultValue, int... validValues) {
-        validateAttribute(value, name, required, prohibited);
+    static int validateIntDef(
+            @Nullable Integer value,
+            @NonNull String name,
+            boolean required,
+            boolean prohibited,
+            int defaultValue,
+            int... validValues) {
+        validateAttribute(value, name, required, prohibited, defaultValue);
         if (value == null) {
             return defaultValue;
         }
@@ -62,22 +91,29 @@ final class BuilderUtils {
         return value;
     }
 
-    static int validateInteger(@Nullable Integer value, @NonNull String name,
-            boolean required, boolean prohibited, int defaultValue) {
-        validateAttribute(value, name, required, prohibited);
+    static int validateInteger(
+            @Nullable Integer value,
+            @NonNull String name,
+            boolean required,
+            boolean prohibited,
+            int defaultValue) {
+        validateAttribute(value, name, required, prohibited, defaultValue);
         if (value == null) {
             return defaultValue;
         }
         return value;
     }
 
-    static boolean validateBoolean(@Nullable Boolean value, @NonNull String name,
-            boolean required, boolean prohibited, boolean defaultValue) {
-        validateAttribute(value, name, required, prohibited);
+    static boolean validateBoolean(
+            @Nullable Boolean value,
+            @NonNull String name,
+            boolean required,
+            boolean prohibited,
+            boolean defaultValue) {
+        validateAttribute(value, name, required, prohibited, defaultValue);
         if (value == null) {
             return defaultValue;
         }
         return value;
     }
-
 }

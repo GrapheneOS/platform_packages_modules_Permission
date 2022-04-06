@@ -24,6 +24,7 @@ import static com.android.permissioncontroller.Constants.EXTRA_SESSION_ID;
 import static com.android.permissioncontroller.Constants.INVALID_SESSION_ID;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
@@ -44,6 +45,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -51,7 +53,7 @@ import androidx.transition.AutoTransition;
 import androidx.transition.TransitionManager;
 
 import com.android.permissioncontroller.R;
-import com.android.permissioncontroller.permission.ui.model.SafetyCenterViewModel;
+import com.android.permissioncontroller.permission.ui.model.SafetyCenterQsViewModel;
 import com.android.permissioncontroller.permission.ui.model.SafetyCenterViewModelFactory;
 import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.Utils;
@@ -73,7 +75,8 @@ public class SafetyCenterQsFragment extends Fragment {
 
     private long mSessionId;
     private List<PermissionGroupUsage> mPermGroupUsages;
-    private SafetyCenterViewModel mViewModel;
+    private SafetyCenterQsViewModel mViewModel;
+    private View mRootView;
 
     static {
         sToggleButtons.put(CAMERA, R.id.camera_toggle);
@@ -116,12 +119,14 @@ public class SafetyCenterQsFragment extends Fragment {
 
         SafetyCenterViewModelFactory factory = new SafetyCenterViewModelFactory(
                 getActivity().getApplication(), mSessionId, mPermGroupUsages);
-        mViewModel = new ViewModelProvider(this, factory).get(SafetyCenterViewModel.class);
+        mViewModel = new ViewModelProvider(this, factory).get(SafetyCenterQsViewModel.class);
         mViewModel.getSensorPrivacyLiveData()
                 .observe(this, (v) -> setSensorToggleState(v, getView()));
         //LightAppPermGroupLiveDatas are kept track of in the view model,
         // we need to start observing them here
-        mViewModel.getLightAppPermGroupLiveData().observe(this, v -> {});
+        if (!mPermGroupUsages.isEmpty()) {
+            mViewModel.getPermDataLoadedLiveData().observe(this, this::onPermissionGroupsLoaded);
+        }
     }
 
     @Override
@@ -130,9 +135,22 @@ public class SafetyCenterQsFragment extends Fragment {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.safety_center_qs, container, false);
         root.findViewById(R.id.security_settings_button).setOnClickListener(
                 (v) -> mViewModel.navigateToSecuritySettings(this));
-        setSensorToggleState(new ArrayMap<>(), root);
-        addPermissionUsageInformation(root);
+        mRootView = root;
+        if (mPermGroupUsages.isEmpty()) {
+            mRootView.setVisibility(View.VISIBLE);
+            setSensorToggleState(new ArrayMap<>(), mRootView);
+        } else {
+            mRootView.setVisibility(View.GONE);
+        }
         return root;
+    }
+
+    private void onPermissionGroupsLoaded(boolean initialized) {
+        if (initialized) {
+            mRootView.setVisibility(View.VISIBLE);
+            setSensorToggleState(new ArrayMap<>(), mRootView);
+            addPermissionUsageInformation(mRootView);
+        }
     }
 
     private void addPermissionUsageInformation(View rootView) {
@@ -160,18 +178,35 @@ public class SafetyCenterQsFragment extends Fragment {
                     generateUsageLabel(usage), parentIconId, parentTitleId, parentLabelId,
                     parentButtonId);
 
+            if (usage.isPhoneCall()) {
+                ImageButton expandButton = permissionParent.findViewById(parentButtonId);
+                expandButton.setVisibility(View.GONE);
+                continue;
+            }
+
             LinearLayout cardViewGroup = cardView.findViewById(R.id.full_card);
             cardViewGroup.setId(View.generateViewId());
 
             View expandedView = cardView.findViewById(R.id.expanded_view);
             expandedView.setId(View.generateViewId());
 
+            boolean shouldAllowRevoke = mViewModel.shouldAllowRevoke(usage);
+            boolean isSubAttributionUsage = isSubAttributionUsage(usage.getAttributionLabel());
+            Intent manageServiceIntent = null;
+
+            if (isSubAttributionUsage) {
+                manageServiceIntent = mViewModel.getStartViewPermissionUsageIntent(getContext(),
+                        usage);
+            }
+
+            boolean canHandleSubAttributionIntent = manageServiceIntent != null;
             int managePermissionIconResId =
-                    usage.getAttributionTag() != null ? R.drawable.ic_setting
+                    canHandleSubAttributionIntent || !shouldAllowRevoke ? R.drawable.ic_setting
                             : R.drawable.ic_block;
-            int managePermissionLabelResId =
-                    usage.getAttributionTag() != null ? R.string.manage_service_qs
-                            : getRemovePermissionText(usage.getPermissionGroupName());
+
+            int managePermissionLabelResId = getManagePermissionLabel(canHandleSubAttributionIntent,
+                    shouldAllowRevoke,
+                    usage.getPermissionGroupName());
 
             RelativeLayout manageParent = populateExpandedPermission(cardView,
                     R.id.manage_parent,
@@ -192,7 +227,7 @@ public class SafetyCenterQsFragment extends Fragment {
             MaterialCardView managePermission = cardView.findViewById(R.id.manage_permission);
             managePermission.setId(View.generateViewId());
 
-            if (usage.getAttributionTag() == null) {
+            if (shouldAllowRevoke) {
                 managePermission.setOnClickListener(l -> {
                     permissionParent.callOnClick();
                     permissionParent.setOnClickListener(null);
@@ -202,9 +237,7 @@ public class SafetyCenterQsFragment extends Fragment {
                     revokePermission(permissionParent, parentIconId, parentLabelId, usage);
                 });
             } else {
-                managePermission.setOnClickListener(l -> {
-                    mViewModel.navigateToManageService(this, getContext(), usage);
-                });
+                setManagePermissionClickListener(managePermission, usage, manageServiceIntent);
             }
 
             MaterialCardView seeUsage = cardView.findViewById(R.id.see_usage);
@@ -213,6 +246,52 @@ public class SafetyCenterQsFragment extends Fragment {
                 mViewModel.navigateToSeeUsage(this, usage.getPermissionGroupName());
             });
         }
+    }
+
+    private void setManagePermissionClickListener(MaterialCardView managePermission,
+            PermissionGroupUsage usage, Intent manageServiceIntent) {
+        if (manageServiceIntent != null) {
+            managePermission.setOnClickListener(l -> {
+                mViewModel.navigateToManageService(this, manageServiceIntent);
+            });
+        } else {
+            managePermission.setOnClickListener(l -> {
+                mViewModel.navigateToManageAppPermissions(this, usage);
+            });
+        }
+
+    }
+
+    private int getManagePermissionLabel(boolean canHandleIntent,
+            boolean shouldAllowRevoke,
+            String permissionGroupName) {
+        if (canHandleIntent) {
+            return R.string.manage_service_qs;
+        }
+        if (!shouldAllowRevoke) {
+            return R.string.manage_permissions_qs;
+        }
+        return getRemovePermissionText(permissionGroupName);
+    }
+
+    private boolean isSubAttributionUsage(@Nullable CharSequence attributionLabel) {
+        if (attributionLabel == null || attributionLabel.length() == 0) {
+            return false;
+        }
+        return true;
+    }
+
+    private void revokePermission(RelativeLayout permissionParent, int iconId, int labelId,
+            PermissionGroupUsage usage) {
+        mViewModel.revokePermission(usage);
+        ImageView iconView = permissionParent.findViewById(iconId);
+        Drawable background = getContext().getDrawable(
+                R.drawable.indicator_background_circle).mutate();
+        background.setTint(getContext().getColor(R.color.safety_center_done));
+        Drawable icon = getContext().getDrawable(R.drawable.ic_check);
+        iconView.setImageDrawable(constructIcon(icon, background));
+        TextView labelView = permissionParent.findViewById(labelId);
+        labelView.setText(R.string.permissions_removed_qs);
     }
 
     private void setExpansionClickListener(View parentView, View expandedView,
@@ -236,21 +315,6 @@ public class SafetyCenterQsFragment extends Fragment {
                         getContext().getDrawable(R.drawable.ic_expand_less));
             }
         });
-    }
-
-    private void revokePermission(RelativeLayout permissionParent, int iconId, int labelId,
-            PermissionGroupUsage usage) {
-
-        mViewModel.revokePermission(usage);
-        ImageView iconView = permissionParent.findViewById(iconId);
-        Drawable background = getContext().getDrawable(
-                R.drawable.indicator_background_circle).mutate();
-        background.setTint(getContext().getColor(R.color.safety_center_done));
-        Drawable icon = getContext().getDrawable(R.drawable.ic_check);
-        iconView.setImageDrawable(constructIcon(icon, background));
-
-        TextView labelView = permissionParent.findViewById(labelId);
-        labelView.setText(R.string.permissions_removed_qs);
     }
 
     private String generateUsageLabel(PermissionGroupUsage usage) {
@@ -315,6 +379,7 @@ public class SafetyCenterQsFragment extends Fragment {
         TextView titleText = new TextView(getContext());
         titleText.setId(titleId);
         titleText.setText(permGroupLabel);
+        titleText.setContentDescription(permGroupLabel);
         RelativeLayout.LayoutParams titleParams = new RelativeLayout.LayoutParams(
                 WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
         titleParams.setMargins(convertDpToPixel(10), 0, convertDpToPixel(4), convertDpToPixel(4));

@@ -196,8 +196,14 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Se alle tilladelser for <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Se alle apps med denne tilladelse"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Vis brug af Assistent-mikrofonen"</string>
+    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
+    <skip />
     <string name="auto_revoke_label" msgid="5068393642936571656">"Fjern tilladelser, hvis appen ikke bruges"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Fjern tilladelser, og frigør plads"</string>
+    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
+    <skip />
+    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
+    <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Hvis appen ikke bliver brugt i et par måneder, fjernes tilladelser for appen for at beskytte dine data."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Hvis appen ikke bliver brugt i et par måneder, fjernes følgende tilladelser for at beskytte dine data: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Tilladelserne til apps, du ikke har brugt i et par måneder, er blevet fjernet for at beskytte dine data."</string>
@@ -264,8 +270,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Under kørsel gav du <xliff:g id="APP">%1$s</xliff:g> adgang til <xliff:g id="PERMISSION_1">%2$s</xliff:g> og <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Under kørsel gav du <xliff:g id="APP">%2$s</xliff:g> <xliff:g id="COUNT">%1$d</xliff:g> tilladelser"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Under kørsel gav du <xliff:g id="APP_0">%1$s</xliff:g> og # anden app adgang}one{Under kørsel gav du <xliff:g id="APP_1">%1$s</xliff:g> og # anden app adgang}other{Under kørsel gav du <xliff:g id="APP_1">%1$s</xliff:g> og # andre apps adgang}}"</string>
-    <!-- no translation found for go_to_settings (1053735612211228335) -->
-    <skip />
+    <string name="go_to_settings" msgid="1053735612211228335">"Gå til Indstillinger"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Nogle apps er ikke blevet brugt i et par måneder"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Fjernede tilladelser"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Tilladelser er fjernet"</string>
@@ -468,10 +473,10 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Vil du give &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; adgang til dine opkaldslister?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Vil du give &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tilladelse til at foretage og administrere telefonopkald?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Vil du give &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; adgang til sensordata om dine livstegn?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="5239219356063824373">"Denne app vil gerne tilgå sensordataene om dine vitale værdier hele tiden, også når du ikke bruger appen. "<annotation id="link">"Giv tilladelse under Indstillinger."</annotation></string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Denne app anmoder om at tilgå sensordataene om dine vitale værdier hele tiden, også når du ikke bruger appen. Du kan foretage denne ændring ved at "<annotation id="link">"gå til indstillingerne."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Vil du give &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; adgang til sensordataene om dine vitale værdier?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Denne app vil muligvis gerne tilgå sensordataene om dine vitale værdier hele tiden, også når du ikke bruger appen. "<annotation id="link">"Giv tilladelse under Indstillinger."</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Vil du skifte adgangen til sensordataene om dine vitale værdier for &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Du kan give denne app adgang til kropssensor hele tiden, selv når du ikke bruger appen, ved at "<annotation id="link">"gå til indstillingerne."</annotation></string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Vil du fortsætte med at give &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; adgang til kropssensordata, mens appen er i brug?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Vil du give &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tilladelse til at sende dig notifikationer?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Vil du give &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tilladelse til at fortsætte med at sende dig notifikationer?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Administrerede tilladelser"</string>
@@ -509,6 +514,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Fjern kameratilladelse"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Fjern mikrofontilladelse"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Administrer tjeneste"</string>
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"Administrer tilladelser"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Anvendes i øjeblikket af telefonopkald"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Anvendt for nylig af telefonopkald"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Anvendes i øjeblikket af <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>

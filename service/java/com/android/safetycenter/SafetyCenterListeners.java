@@ -21,11 +21,11 @@ import static android.os.Build.VERSION_CODES.TIRAMISU;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
-import android.os.Binder;
 import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 import android.safetycenter.IOnSafetyCenterDataChangedListener;
 import android.safetycenter.SafetyCenterData;
+import android.safetycenter.SafetyCenterErrorDetails;
 import android.util.Log;
 import android.util.SparseArray;
 
@@ -56,13 +56,10 @@ final class SafetyCenterListeners {
     static void deliverUpdate(
             @NonNull IOnSafetyCenterDataChangedListener listener,
             @NonNull SafetyCenterData safetyCenterData) {
-        final long identity = Binder.clearCallingIdentity();
         try {
             listener.onSafetyCenterDataChanged(safetyCenterData);
         } catch (RemoteException e) {
-            Log.e(TAG, "Error delivering SafetyCenterData update to listener", e);
-        } finally {
-            Binder.restoreCallingIdentity(identity);
+            Log.e(TAG, "Error delivering SafetyCenterData to listener", e);
         }
     }
 
@@ -81,6 +78,39 @@ final class SafetyCenterListeners {
         while (i > 0) {
             i--;
             deliverUpdate(listeners.getBroadcastItem(i), safetyCenterData);
+        }
+        listeners.finishBroadcast();
+    }
+
+    /**
+     * Delivers a {@link SafetyCenterErrorDetails} update to a single {@link
+     * IOnSafetyCenterDataChangedListener}.
+     */
+    private static void deliverError(
+            @NonNull IOnSafetyCenterDataChangedListener listener,
+            @NonNull SafetyCenterErrorDetails safetyCenterErrorDetails) {
+        try {
+            listener.onError(safetyCenterErrorDetails);
+        } catch (RemoteException e) {
+            Log.e(TAG, "Error delivering SafetyCenterErrorDetails to listener", e);
+        }
+    }
+
+    /**
+     * Delivers a {@link SafetyCenterErrorDetails} update to a {@link RemoteCallbackList} of {@link
+     * IOnSafetyCenterDataChangedListener}.
+     *
+     * <p>Registering or unregistering {@link IOnSafetyCenterDataChangedListener} on the underlying
+     * {@link RemoteCallbackList} on another thread while an update is happening is safe as this is
+     * handled by the {@link RemoteCallbackList} already (as well as listeners death).
+     */
+    static void deliverError(
+            @NonNull RemoteCallbackList<IOnSafetyCenterDataChangedListener> listeners,
+            @NonNull SafetyCenterErrorDetails safetyCenterErrorDetails) {
+        int i = listeners.beginBroadcast();
+        while (i > 0) {
+            i--;
+            deliverError(listeners.getBroadcastItem(i), safetyCenterErrorDetails);
         }
         listeners.finishBroadcast();
     }

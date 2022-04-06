@@ -100,9 +100,15 @@ java_sdk_library {
         //"framework-permission",
         "framework-permission-s.impl",
         "framework-permission-s-shared",
+
+        // Soong fails to automatically add this dependency because all the
+        // *.kt sources are inside a filegroup.
+        // Exclude Kotlin sources for T.
+        //"kotlin-annotations",
     ],
     static_libs: [
-        "kotlin-stdlib",
+        // Exclude Kotlin sources for T.
+        //"kotlin-stdlib",
         "modules-utils-backgroundthread",
         "modules-utils-os",
         "safety-center-resources-lib",

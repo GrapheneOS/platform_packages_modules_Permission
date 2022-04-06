@@ -18,13 +18,14 @@
           package="android.safetycenter.cts">
 
     <application>
-        <uses-library android:name="android.test.runner"/>
-
-        <receiver android:name=".SafetySourceBroadcastReceiver" android:exported="false">
+        <receiver android:name=".testing.SafetySourceBroadcastReceiver"
+                  android:exported="false">
             <intent-filter>
                 <action android:name="android.safetycenter.action.REFRESH_SAFETY_SOURCES"/>
             </intent-filter>
         </receiver>
+
+        <uses-library android:name="android.test.runner"/>
     </application>
     <instrumentation android:name="androidx.test.runner.AndroidJUnitRunner"
                      android:label="CTS tests for SafetyCenter"

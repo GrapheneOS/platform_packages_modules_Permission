@@ -34,6 +34,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.PermissionGroupInfo;
 import android.content.pm.PermissionInfo;
+import android.os.Binder;
 import android.os.Build;
 import android.os.UserHandle;
 import android.permission.PermissionManager;
@@ -732,6 +733,21 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
      *                 the ONE_TIME flag to return true
      */
     public boolean areRuntimePermissionsGranted(String[] filterPermissions, boolean asOneTime) {
+        return areRuntimePermissionsGranted(filterPermissions, asOneTime, true);
+    }
+
+    /**
+     * Returns true if at least one of the permissions in filterPermissions (or the entire
+     * permission group if null) should be considered granted and satisfy the requirements
+     * described by asOneTime and includingAppOp.
+     *
+     * @param filterPermissions the permissions to check for, null for all in this group
+     * @param asOneTime add the requirement that the granted permission must have the ONE_TIME flag
+     * @param includingAppOp add the requirement that if the granted permissions has a
+     *                       corresponding AppOp, it must be allowed.
+     */
+    public boolean areRuntimePermissionsGranted(String[] filterPermissions, boolean asOneTime,
+            boolean includingAppOp) {
         if (LocationUtils.isLocationGroupAndProvider(mContext, mName, mPackageInfo.packageName)) {
             return LocationUtils.isLocationEnabled(mContext) && !asOneTime;
         }
@@ -748,7 +764,9 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
                     && !ArrayUtils.contains(filterPermissions, permission.getName())) {
                 continue;
             }
-            if (permission.isGrantedIncludingAppOp() && (!asOneTime || permission.isOneTime())) {
+            boolean isGranted = includingAppOp ? permission.isGrantedIncludingAppOp()
+                    : permission.isGranted();
+            if (isGranted && (!asOneTime || permission.isOneTime())) {
                 return true;
             }
         }
@@ -756,7 +774,7 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
             // If asOneTime is true and none of the foreground permissions are one-time, but some
             // background permissions are, then we still want to return true.
             return mBackgroundPermissions.areRuntimePermissionsGranted(filterPermissions,
-                    asOneTime);
+                    asOneTime, includingAppOp);
         }
         return false;
     }
@@ -1521,20 +1539,26 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
         }
 
         String packageName = mPackageInfo.packageName;
-        if (areRuntimePermissionsGranted(null, true)) {
-            if (SdkLevel.isAtLeastT()) {
-                mContext.getSystemService(PermissionManager.class)
-                        .startOneTimePermissionSession(packageName,
-                                Utils.getOneTimePermissionsTimeout(),
-                                Utils.getOneTimePermissionsKilledDelay(mIsSelfRevoked),
-                                ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_RESET_TIMER,
-                                ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_KEEP_SESSION_ALIVE);
-            } else {
-                mContext.getSystemService(PermissionManager.class)
-                        .startOneTimePermissionSession(packageName,
-                                Utils.getOneTimePermissionsTimeout(),
-                                ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_RESET_TIMER,
-                                ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_KEEP_SESSION_ALIVE);
+        if (areRuntimePermissionsGranted(null, true, false)) {
+            // Required to read device config in Utils.getOneTimePermissions*().
+            final long token = Binder.clearCallingIdentity();
+            try {
+                if (SdkLevel.isAtLeastT()) {
+                    mContext.getSystemService(PermissionManager.class)
+                            .startOneTimePermissionSession(packageName,
+                                    Utils.getOneTimePermissionsTimeout(),
+                                    Utils.getOneTimePermissionsKilledDelay(mIsSelfRevoked),
+                                    ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_RESET_TIMER,
+                                    ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_KEEP_SESSION_ALIVE);
+                } else {
+                    mContext.getSystemService(PermissionManager.class)
+                            .startOneTimePermissionSession(packageName,
+                                    Utils.getOneTimePermissionsTimeout(),
+                                    ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_RESET_TIMER,
+                                    ONE_TIME_PACKAGE_IMPORTANCE_LEVEL_TO_KEEP_SESSION_ALIVE);
+                }
+            } finally {
+                Binder.restoreCallingIdentity(token);
             }
         } else {
             mContext.getSystemService(PermissionManager.class)

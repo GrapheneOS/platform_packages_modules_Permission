@@ -196,8 +196,14 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Переглянути всі дозволи додатка <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Переглянути всі додатки з цим дозволом"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Показати статус мікрофона Асистента"</string>
+    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
+    <skip />
     <string name="auto_revoke_label" msgid="5068393642936571656">"Відкликати дозволи, якщо додаток не використовується"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Вилучати дозволи й звільняти місце"</string>
+    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
+    <skip />
+    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
+    <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Щоб захистити ваші дані, дозволи для цього додатка буде автоматично скасовано, якщо ви не будете користуватися ним кілька місяців."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Якщо додаток не використовується впродовж кількох місяців, для захисту ваших даних буде скасовано такі дозволи: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Щоб захистити ваші дані, було скасовано дозволи додатків, які не використовувалися впродовж кількох місяців."</string>
@@ -264,8 +270,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Під час руху ви надали додатку <xliff:g id="APP">%1$s</xliff:g> дозвіл на доступ до таких об’єктів: <xliff:g id="PERMISSION_1">%2$s</xliff:g> і <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Під час руху ви надали додатку <xliff:g id="APP">%2$s</xliff:g> стільки дозволів: <xliff:g id="COUNT">%1$d</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Під час руху ви надали дозвіл на доступ додатку <xliff:g id="APP_0">%1$s</xliff:g> і ще одному додатку}one{Під час руху ви надали дозвіл на доступ додатку <xliff:g id="APP_1">%1$s</xliff:g> і ще # додатку}few{Під час руху ви надали дозвіл на доступ додатку <xliff:g id="APP_1">%1$s</xliff:g> і ще # додаткам}many{Під час руху ви надали дозвіл на доступ додатку <xliff:g id="APP_1">%1$s</xliff:g> і ще # додаткам}other{Під час руху ви надали дозвіл на доступ додатку <xliff:g id="APP_1">%1$s</xliff:g> і ще # додатка}}"</string>
-    <!-- no translation found for go_to_settings (1053735612211228335) -->
-    <skip />
+    <string name="go_to_settings" msgid="1053735612211228335">"Перейти до налаштувань"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Деякі додатки не використовувалися кілька місяців"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Скасовані дозволи"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Дозволи скасовано"</string>
@@ -468,10 +473,10 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до журналів викликів телефона?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; здійснювати телефонні дзвінки та керувати ними?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Надати додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до життєвих показників із датчиків?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="5239219356063824373">"Цей додаток хоче постійно отримувати дані життєвих показників із датчиків, навіть коли ви не використовуєте його. "<annotation id="link">"Надайте дозвіл у налаштуваннях."</annotation></string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Цей додаток хоче постійно отримувати дані життєвих показників від датчиків, навіть коли ви не використовуєте його. Щоб внести зміни, "<annotation id="link">"перейдіть у налаштування"</annotation>"."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до життєвих показників із датчиків?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Цей додаток може постійно отримувати дані життєвих показників із датчиків, навіть коли ви не використовуєте його. "<annotation id="link">"Надайте дозвіл у налаштуваннях."</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Змінити доступ до життєвих показників із датчиків для додатка &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Щоб надати додатку постійний доступ до показників датчиків на тілі, навіть коли він не використовується, "<annotation id="link">"перейдіть у налаштування"</annotation>"."</string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Надавати й надалі додатку <xliff:g id="APP_NAME">%1$s</xliff:g> доступ до показників датчиків на тілі, коли він використовується?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; надсилати вам сповіщення?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; і надалі надсилати вам сповіщення?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Керовані дозволи"</string>
@@ -509,6 +514,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Вилучити дозвіл на доступ до камери"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Вилучити дозвіл на доступ до мікрофона"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Керувати сервісом"</string>
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"Керувати дозволами"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Використовується в телефонному дзвінку"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Нещодавно використано в телефонному дзвінку"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Використовується в додатку <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>

@@ -20,10 +20,11 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Build.VERSION_CODES.TIRAMISU
-import android.os.Parcel
 import android.safetycenter.SafetyCenterStaticEntry
+import android.safetycenter.cts.testing.EqualsHashCodeToStringTester
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.ext.truth.os.ParcelableSubject.assertThat
 import androidx.test.filters.SdkSuppress
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
@@ -34,16 +35,15 @@ import org.junit.runner.RunWith
 class SafetyCenterStaticEntryTest {
     private val context: Context = ApplicationProvider.getApplicationContext()
 
-    private val pendingIntent1 = PendingIntent.getActivity(
+    private val pendingIntent1 =
+        PendingIntent.getActivity(context, 0, Intent("Fake Data"), PendingIntent.FLAG_IMMUTABLE)
+    private val pendingIntent2 =
+        PendingIntent.getActivity(
             context,
-            /* requestCode= */ 0,
-            Intent("Fake Data"),
-            PendingIntent.FLAG_IMMUTABLE)
-    private val pendingIntent2 = PendingIntent.getActivity(
-            context,
-            /* requestCode= */ 0,
+            0,
             Intent("Fake Different Data"),
-            PendingIntent.FLAG_IMMUTABLE)
+            PendingIntent.FLAG_IMMUTABLE
+        )
 
     private val title1 = "a title"
     private val title2 = "another title"
@@ -51,8 +51,17 @@ class SafetyCenterStaticEntryTest {
     private val summary1 = "a summary"
     private val summary2 = "another summary"
 
-    private val staticEntry1 = SafetyCenterStaticEntry(title1, summary1, pendingIntent1)
-    private val staticEntry2 = SafetyCenterStaticEntry(title2, summary2, pendingIntent2)
+    private val staticEntry1 =
+        SafetyCenterStaticEntry.Builder(title1)
+            .setSummary(summary1)
+            .setPendingIntent(pendingIntent1)
+            .build()
+    private val staticEntry2 =
+        SafetyCenterStaticEntry.Builder(title2)
+            .setSummary(summary2)
+            .setPendingIntent(pendingIntent2)
+            .build()
+    private val staticEntryMinimal = SafetyCenterStaticEntry.Builder("").build()
 
     @Test
     fun getTitle_returnsTitle() {
@@ -64,75 +73,72 @@ class SafetyCenterStaticEntryTest {
     fun getSummary_returnsSummary() {
         assertThat(staticEntry1.summary).isEqualTo(summary1)
         assertThat(staticEntry2.summary).isEqualTo(summary2)
-        assertThat(SafetyCenterStaticEntry("", null, pendingIntent1).summary).isNull()
+        assertThat(staticEntryMinimal.summary).isNull()
     }
 
     @Test
     fun getPendingIntent_returnsPendingIntent() {
         assertThat(staticEntry1.pendingIntent).isEqualTo(pendingIntent1)
         assertThat(staticEntry2.pendingIntent).isEqualTo(pendingIntent2)
+        assertThat(staticEntryMinimal.pendingIntent).isNull()
     }
 
     @Test
     fun describeContents_returns0() {
         assertThat(staticEntry1.describeContents()).isEqualTo(0)
+        assertThat(staticEntry2.describeContents()).isEqualTo(0)
+        assertThat(staticEntryMinimal.describeContents()).isEqualTo(0)
     }
 
     @Test
-    fun createFromParcel_withWriteToParcel_returnsEquivalentObject() {
-        val parcel: Parcel = Parcel.obtain()
-
-        staticEntry1.writeToParcel(parcel, 0 /* flags */)
-        parcel.setDataPosition(0)
-        val fromParcel = SafetyCenterStaticEntry.CREATOR.createFromParcel(parcel)
-        parcel.recycle()
-
-        assertThat(fromParcel).isEqualTo(staticEntry1)
+    fun parcelRoundTrip_recreatesEqual() {
+        assertThat(staticEntry1).recreatesEqual(SafetyCenterStaticEntry.CREATOR)
+        assertThat(staticEntry2).recreatesEqual(SafetyCenterStaticEntry.CREATOR)
+        assertThat(staticEntryMinimal).recreatesEqual(SafetyCenterStaticEntry.CREATOR)
     }
 
     @Test
-    fun equals_hashCode_toString_equalByReference_areEqual() {
-        assertThat(staticEntry1).isEqualTo(staticEntry1)
-        assertThat(staticEntry1.hashCode()).isEqualTo(staticEntry1.hashCode())
-        assertThat(staticEntry1.toString()).isEqualTo(staticEntry1.toString())
-    }
-
-    @Test
-    fun equals_hashCode_toString_equalByValue_areEqual() {
-        val staticEntry = SafetyCenterStaticEntry("titlee", "sumaree", pendingIntent1)
-        val equivalentStaticEntry = SafetyCenterStaticEntry("titlee", "sumaree", pendingIntent1)
-
-        assertThat(staticEntry).isEqualTo(equivalentStaticEntry)
-        assertThat(staticEntry.hashCode()).isEqualTo(equivalentStaticEntry.hashCode())
-        assertThat(staticEntry.toString()).isEqualTo(equivalentStaticEntry.toString())
-    }
-
-    @Test
-    fun equals_toString_withDifferentTitles_areNotEqual() {
-        val staticEntry = SafetyCenterStaticEntry("a title", "a summary", pendingIntent1)
-        val differentStaticEntry =
-                SafetyCenterStaticEntry("a different title", "a summary", pendingIntent1)
-
-        assertThat(staticEntry).isNotEqualTo(differentStaticEntry)
-        assertThat(staticEntry.toString()).isNotEqualTo(differentStaticEntry.toString())
-    }
-
-    @Test
-    fun equals_toString_withDifferentSummaries_areNotEqual() {
-        val staticEntry = SafetyCenterStaticEntry("a title", "a summary", pendingIntent1)
-        val differentStaticEntry =
-                SafetyCenterStaticEntry("a title", "a different summary", pendingIntent1)
-
-        assertThat(staticEntry).isNotEqualTo(differentStaticEntry)
-        assertThat(staticEntry.toString()).isNotEqualTo(differentStaticEntry.toString())
-    }
-
-    @Test
-    fun equals_toString_withDifferentPendingIntents_areNotEqual() {
-        val staticEntry = SafetyCenterStaticEntry("a title", "a summary", pendingIntent1)
-        val differentStaticEntry = SafetyCenterStaticEntry("a title", "a summary", pendingIntent2)
-
-        assertThat(staticEntry).isNotEqualTo(differentStaticEntry)
-        assertThat(staticEntry.toString()).isNotEqualTo(differentStaticEntry.toString())
+    fun equalsHashCodeToString_usingEqualsHashCodeToStringTester() {
+        EqualsHashCodeToStringTester()
+            .addEqualityGroup(
+                staticEntry1,
+                SafetyCenterStaticEntry.Builder("a title")
+                    .setSummary("a summary")
+                    .setPendingIntent(pendingIntent1)
+                    .build(),
+                SafetyCenterStaticEntry.Builder(staticEntry1).build()
+            )
+            .addEqualityGroup(staticEntry2)
+            .addEqualityGroup(staticEntryMinimal,
+                SafetyCenterStaticEntry.Builder("").build())
+            .addEqualityGroup(
+                SafetyCenterStaticEntry.Builder("titlee")
+                    .setSummary("sumaree")
+                    .setPendingIntent(pendingIntent1)
+                    .build(),
+                SafetyCenterStaticEntry.Builder("titlee")
+                    .setSummary("sumaree")
+                    .setPendingIntent(pendingIntent1)
+                    .build()
+            )
+            .addEqualityGroup(
+                SafetyCenterStaticEntry.Builder("a different title")
+                    .setSummary("a summary")
+                    .setPendingIntent(pendingIntent1)
+                    .build()
+            )
+            .addEqualityGroup(
+                SafetyCenterStaticEntry.Builder("a title")
+                    .setSummary("a different summary")
+                    .setPendingIntent(pendingIntent1)
+                    .build()
+            )
+            .addEqualityGroup(
+                SafetyCenterStaticEntry.Builder("a title")
+                    .setSummary("a summary")
+                    .setPendingIntent(pendingIntent2)
+                    .build()
+            )
+            .test()
     }
 }

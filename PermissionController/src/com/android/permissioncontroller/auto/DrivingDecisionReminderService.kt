@@ -23,18 +23,25 @@ import android.app.PendingIntent
 import android.app.Service
 import android.car.Car
 import android.car.drivingstate.CarUxRestrictionsManager
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.IBinder
 import android.os.Process
 import android.os.UserHandle
 import android.permission.PermissionManager
+import android.provider.Settings
 import android.text.BidiFormatter
 import androidx.annotation.VisibleForTesting
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.DumpableLog
+import com.android.permissioncontroller.PermissionControllerStatsLog
+import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_REMINDER_NOTIFICATION_INTERACTED__RESULT__NOTIFICATION_PRESENTED
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.permission.ui.auto.AutoReviewPermissionDecisionsFragment
+import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPackageLabel
 import com.android.permissioncontroller.permission.utils.KotlinUtils.getPermGroupLabel
 import com.android.permissioncontroller.permission.utils.StringUtils
@@ -60,9 +67,11 @@ class DrivingDecisionReminderService : Service() {
     private var carUxRestrictionsManager: CarUxRestrictionsManager? = null
     private val permissionReminders: MutableSet<PermissionReminder> = mutableSetOf()
     private var car: Car? = null
+    private var sessionId = Constants.INVALID_SESSION_ID
 
     companion object {
         private const val LOG_TAG = "DrivingDecisionReminderService"
+        private const val SETTINGS_PACKAGE_NAME_FALLBACK = "com.android.settings"
 
         const val EXTRA_PACKAGE_NAME = "package_name"
         const val EXTRA_PERMISSION_GROUP = "permission_group"
@@ -131,6 +140,9 @@ class DrivingDecisionReminderService : Service() {
         }
         scheduleNotificationForUnrestrictedState()
         scheduled = true
+        while (sessionId == Constants.INVALID_SESSION_ID) {
+            sessionId = Random().nextLong()
+        }
         return START_STICKY
     }
 
@@ -197,6 +209,8 @@ class DrivingDecisionReminderService : Service() {
         notificationManager.notify(DrivingDecisionReminderService::class.java.simpleName,
             Constants.PERMISSION_DECISION_REMINDER_NOTIFICATION_ID,
             createNotification(createNotificationTitle(), createNotificationContent()))
+
+        logNotificationPresented()
     }
 
     private fun createNotificationTitle(): String {
@@ -245,25 +259,37 @@ class DrivingDecisionReminderService : Service() {
     }
 
     private fun createNotification(title: String, body: String): Notification {
-        var sessionId = Constants.INVALID_SESSION_ID
-        while (sessionId == Constants.INVALID_SESSION_ID) {
-            sessionId = Random().nextLong()
-        }
         val clickIntent = Intent(PermissionManager.ACTION_REVIEW_PERMISSION_DECISIONS).apply {
             putExtra(Constants.EXTRA_SESSION_ID, sessionId)
+            putExtra(AutoReviewPermissionDecisionsFragment.EXTRA_SOURCE,
+                AutoReviewPermissionDecisionsFragment.EXTRA_SOURCE_NOTIFICATION)
             flags = Intent.FLAG_ACTIVITY_NEW_TASK
         }
         val pendingIntent = PendingIntent.getActivity(this, 0, clickIntent,
             PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_UPDATE_CURRENT or
             PendingIntent.FLAG_IMMUTABLE)
 
+        val settingsDrawable = KotlinUtils.getBadgedPackageIcon(
+            application,
+            getSettingsPackageName(applicationContext.packageManager),
+            permissionReminders.first().user)
+        val settingsIcon = if (settingsDrawable != null) {
+            KotlinUtils.convertToBitmap(settingsDrawable)
+        } else {
+            null
+        }
+
         val b = Notification.Builder(this, Constants.PERMISSION_REMINDER_CHANNEL_ID)
             .setContentTitle(title)
             .setContentText(body)
             .setSmallIcon(R.drawable.ic_settings_24dp)
+            .setLargeIcon(settingsIcon)
             .setColor(getColor(android.R.color.system_notification_accent_color))
             .setAutoCancel(true)
             .setContentIntent(pendingIntent)
+            .addExtras(Bundle().apply {
+                putBoolean("com.android.car.notification.EXTRA_USE_LAUNCHER_ICON", false)
+            })
             // Auto doesn't show icons for actions
             .addAction(Notification.Action.Builder(/* icon= */ null,
                 getString(R.string.go_to_settings), pendingIntent).build())
@@ -273,5 +299,17 @@ class DrivingDecisionReminderService : Service() {
             b.addExtras(extras)
         }
         return b.build()
+    }
+
+    private fun getSettingsPackageName(pm: PackageManager): String {
+        val settingsIntent = Intent(Settings.ACTION_SETTINGS)
+        val settingsComponent: ComponentName? = settingsIntent.resolveActivity(pm)
+        return settingsComponent?.packageName ?: SETTINGS_PACKAGE_NAME_FALLBACK
+    }
+
+    private fun logNotificationPresented() {
+        PermissionControllerStatsLog.write(
+            PermissionControllerStatsLog.PERMISSION_REMINDER_NOTIFICATION_INTERACTED,
+            sessionId, PERMISSION_REMINDER_NOTIFICATION_INTERACTED__RESULT__NOTIFICATION_PRESENTED)
     }
 }

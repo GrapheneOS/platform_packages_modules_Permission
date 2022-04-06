@@ -196,8 +196,14 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Ogled vseh dovoljenj za aplikacijo <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Ogled vseh aplikacij s tem dovoljenjem"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Prikaz uporabe pomožnega mikrofona"</string>
+    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
+    <skip />
     <string name="auto_revoke_label" msgid="5068393642936571656">"Odstrani dovoljenja, če aplikacija ni v uporabi"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Odstrani dovoljenja in sprosti prostor"</string>
+    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
+    <skip />
+    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
+    <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Z namenom zaščite podatkov bodo dovoljenja za to aplikacijo odstranjena, če je več mesecev ne boste uporabljali."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Če aplikacije več mesecev ne boste uporabljali, bodo z namenom zaščite podatkov odstranjena ta dovoljenja: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Z namenom zaščite podatkov so bila odstranjena dovoljenja za aplikacije, ki jih več mesecev niste uporabljali."</string>
@@ -264,8 +270,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Med vožnjo ste aplikaciji <xliff:g id="APP">%1$s</xliff:g> odobrili dostop do teh dovoljenj: <xliff:g id="PERMISSION_1">%2$s</xliff:g> in <xliff:g id="PERMISSION_2">%3$s</xliff:g>."</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Med vožnjo ste aplikaciji <xliff:g id="APP">%2$s</xliff:g> odobrili toliko dovoljenj: <xliff:g id="COUNT">%1$d</xliff:g>."</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Med vožnjo ste odobrili dostop aplikaciji <xliff:g id="APP_0">%1$s</xliff:g> in še # aplikaciji.}one{Med vožnjo ste odobrili dostop aplikaciji <xliff:g id="APP_1">%1$s</xliff:g> in še # aplikaciji.}two{Med vožnjo ste odobrili dostop aplikaciji <xliff:g id="APP_1">%1$s</xliff:g> in še # aplikacijam.}few{Med vožnjo ste odobrili dostop aplikaciji <xliff:g id="APP_1">%1$s</xliff:g> in še # aplikacijam.}other{Med vožnjo ste odobrili dostop aplikaciji <xliff:g id="APP_1">%1$s</xliff:g> in še # aplikacijam.}}"</string>
-    <!-- no translation found for go_to_settings (1053735612211228335) -->
-    <skip />
+    <string name="go_to_settings" msgid="1053735612211228335">"Odpri nastavitve"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Nekatere aplikacije niso bile uporabljene več mesecev"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Odstranjena dovoljenja"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Dovoljenja so bila odstranjena"</string>
@@ -468,10 +473,10 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Dovolite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dostop do dnevnikov klicev v telefonu?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Dovolite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; opravljanje in upravljanje telefonskih klicev?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Dovolite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dostop do podatkov tipala o vitalnih znakih?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="5239219356063824373">"Ta aplikacija želi vseskozi dostopati do podatkov tipal o vitalnih znakih, tudi ko aplikacije ne uporabljate. "<annotation id="link">"To omogočite v nastavitvah."</annotation></string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Ta aplikacija želi stalen dostop do podatkov tipal vitalnih znakov, tudi ko aplikacije ne uporabljate. Če želite izvesti to spremembo, "<annotation id="link">"pojdite v nastavitve"</annotation>"."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Želite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; omogočiti dostop do podatkov tipal o vitalnih znakih?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Ta aplikacija bo morda želela vseskozi dostopati do podatkov tipal o vitalnih znakih, tudi ko aplikacije ne uporabljate. "<annotation id="link">"To omogočite v nastavitvah."</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Želite spremeniti dostop do podatkov tipal o vitalnih znakih za aplikacijo &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Če želite tej aplikaciji omogočiti stalen dostop do podatkov tipal telesnih funkcij, tudi ko je ne uporabljate, "<annotation id="link">"pojdite v nastavitve"</annotation>"."</string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Ali želite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; še naprej dovoliti dostop do podatkov tipal telesnih funkcij, ko je v uporabi?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Želite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; omogočiti, da vam pošilja obvestila?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Želite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; omogočiti, da vam še naprej pošilja obvestila?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Zunanje upravljana dovoljenja"</string>
@@ -509,6 +514,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Odstrani dovoljenje za fotoaparat"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Odstrani dovoljenje za mikrofon"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Upravljanje storitve"</string>
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"Upravljanje dovoljenj"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Trenutno se uporablja v telefonskem klicu"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Nedavno uporabljeno v telefonskem klicu"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Trenutno uporablja aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>

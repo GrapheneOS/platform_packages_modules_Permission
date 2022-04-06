@@ -196,8 +196,14 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Žr. visus „<xliff:g id="APP">%1$s</xliff:g>“ leidimus"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Žr. visas programas, kurioms suteiktas šis leidimas"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Rodyti Padėjėjo mikrofono naudojimą"</string>
+    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
+    <skip />
     <string name="auto_revoke_label" msgid="5068393642936571656">"Pašalinti leidimus, jei programa nenaudojama"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Pašalinti leidimus ir atlaisvinti vietos"</string>
+    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
+    <skip />
+    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
+    <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Siekiant apsaugoti duomenis, šios programos leidimai bus pašalinti, jei programos nenaudosite kelis mėnesius."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Siekiant apsaugoti duomenis, jei programos nenaudosite kelis mėnesius, bus pašalinti nurodyti leidimai: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Siekiant apsaugoti duomenis, leidimai buvo pašalinti iš programų, kurių nenaudojote kelis mėnesius"</string>
@@ -264,8 +270,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Vairuodami suteikėte programai „<xliff:g id="APP">%1$s</xliff:g>“ prieigą prie šių leidimų: <xliff:g id="PERMISSION_1">%2$s</xliff:g> ir <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Vairuodami programai „<xliff:g id="APP">%2$s</xliff:g>“ suteikėte tiek leidimų: <xliff:g id="COUNT">%1$d</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Vairuodami suteikėte prieigą programai „<xliff:g id="APP_0">%1$s</xliff:g>“ ir dar # programai}one{Vairuodami suteikėte prieigą programai „<xliff:g id="APP_1">%1$s</xliff:g>“ ir dar # programai}few{Vairuodami suteikėte prieigą programai „<xliff:g id="APP_1">%1$s</xliff:g>“ ir dar # programoms}many{Vairuodami suteikėte prieigą programai „<xliff:g id="APP_1">%1$s</xliff:g>“ ir dar # programos}other{Vairuodami suteikėte prieigą programai „<xliff:g id="APP_1">%1$s</xliff:g>“ ir dar # programų}}"</string>
-    <!-- no translation found for go_to_settings (1053735612211228335) -->
-    <skip />
+    <string name="go_to_settings" msgid="1053735612211228335">"Eiti į skiltį „Nustatymai“"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Kai kurios programos nebuvo naudojamos kelis mėnesius"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Pašalinti leidimai"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Pašalinti leidimai"</string>
@@ -468,10 +473,10 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Leisti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pasiekti jūsų telefono skambučių žurnalus?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Leisti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; skambinti ir tvarkyti telefono skambučius?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Suteikti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; galimybę pasiekti jutiklių duomenis apie gyvybinius ženklus?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="5239219356063824373">"Ši programa nori pasiekti duomenis apie jūsų gyvybinių funkcijų rodiklius visą laiką, net kai programos nenaudojate. "<annotation id="link">"Leiskite skiltyje „Nustatymai“."</annotation></string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Ši programa nori pasiekti jutiklių duomenis apie jūsų gyvybinių funkcijų rodiklius visą laiką, net kai programos nenaudojate. Kad atliktumėte šį pakeitimą, "<annotation id="link">"eikite į skiltį „Nustatymai“."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Suteikti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; galimybę pasiekti jutiklių duomenis apie gyvybinių funkcijų rodiklius?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Programa gali norėti pasiekti jutiklių duomenis apie jūsų gyvybinių funkcijų rodiklius, net kai programos nenaudojate. "<annotation id="link">"Leiskite skiltyje „Nustatymai“."</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Pakeisti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prieigą prie jutiklių duomenų apie jūsų gyvybinių funkcijų rodiklius?"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Jei norite leisti šiai programai pasiekti kūno jutiklių duomenis visą laiką, net kai nenaudojate programos, "<annotation id="link">"eikite į „Nustatymų“ skiltį."</annotation></string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Toliau leisti programai &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pasiekti kūno jutiklių duomenis, kai programa naudojama?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Leisti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; siųsti jums pranešimus?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Leisti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; toliau siųsti jums pranešimus?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Valdomi leidimai"</string>
@@ -509,6 +514,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Pašalinti vaizdo kameros leidimą"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Pašalinti mikrofono leidimą"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Tvarkyti paslaugą"</string>
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"Tvarkyti leidimus"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Naudojama telefono skambučiui"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Neseniai naudota telefono skambučiui"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Naudojama „<xliff:g id="APP_NAME">%1$s</xliff:g>“"</string>

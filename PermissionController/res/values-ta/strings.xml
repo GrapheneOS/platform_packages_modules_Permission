@@ -196,8 +196,14 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"அனைத்து <xliff:g id="APP">%1$s</xliff:g> அனுமதிகளையும் காட்டு"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"இந்த அனுமதியைக் கொண்டுள்ள அனைத்து ஆப்ஸையும் காட்டு"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"அசிஸ்டண்ட் மைக்ரோஃபோன் உபயோகத்தைக் காட்டு"</string>
+    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
+    <skip />
     <string name="auto_revoke_label" msgid="5068393642936571656">"இந்த ஆப்ஸ் பயன்படுத்தப்படவில்லை என்றால் அனுமதிகளை அகற்றவும்"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"அனுமதிகளை அகற்றி இடத்தைக் காலியாக்கு"</string>
+    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
+    <skip />
+    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
+    <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"இந்த ஆப்ஸைச் சில மாதங்கள் பயன்படுத்தவில்லை என்றால் உங்கள் தரவைப் பாதுகாப்பதற்காக இதற்கான அனுமதிகள் அகற்றப்படும்."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"இந்த ஆப்ஸைச் சில மாதங்கள் பயன்படுத்தவில்லை என்றால் உங்கள் தரவைப் பாதுகாப்பதற்காக பின்வரும் அனுமதிகள் அகற்றப்படும்: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"உங்கள் தரவைப் பாதுகாப்பதற்காக, கடந்த சில மாதங்களில் நீங்கள் பயன்படுத்தாத ஆப்ஸில் இருந்து அனுமதிகள் அகற்றப்பட்டன."</string>
@@ -264,8 +270,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"வாகனம் ஓட்டும்போது <xliff:g id="PERMISSION_1">%2$s</xliff:g> &amp; <xliff:g id="PERMISSION_2">%3$s</xliff:g> அணுகலை <xliff:g id="APP">%1$s</xliff:g> ஆப்ஸுக்கு வழங்கியுள்ளீர்கள்"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"வாகனம் ஓட்டும்போது <xliff:g id="APP">%2$s</xliff:g> ஆப்ஸுக்கு <xliff:g id="COUNT">%1$d</xliff:g> அனுமதிகளை வழங்கியுள்ளீர்கள்"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{வாகனம் ஓட்டும்போது <xliff:g id="APP_0">%1$s</xliff:g> ஆப்ஸ் &amp; # பிற ஆப்ஸுக்கு அணுகலை வழங்கியுள்ளீர்கள்}other{வாகனம் ஓட்டும்போது <xliff:g id="APP_1">%1$s</xliff:g> ஆப்ஸ் &amp; # பிற ஆப்ஸுக்கு அணுகலை வழங்கியுள்ளீர்கள்}}"</string>
-    <!-- no translation found for go_to_settings (1053735612211228335) -->
-    <skip />
+    <string name="go_to_settings" msgid="1053735612211228335">"அமைப்புகளுக்குச் செல்"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"கடந்த சில மாதங்களாக சில ஆப்ஸ் பயன்படுத்தப்படவில்லை"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"அனுமதிகள் அகற்றப்பட்டவை"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"அனுமதிகள் அகற்றப்பட்டவை"</string>
@@ -468,10 +473,10 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"உங்கள் மொபைல் அழைப்புப் பதிவுகளை அணுக, &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"மொபைல் அழைப்புகள் செய்யவும், அவற்றை நிர்வகிக்கவும், &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"உங்கள் உடலியக்கக் குறிகள் பற்றிய சென்சார் தரவை அணுகுவதற்கு &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="5239219356063824373">"இந்த ஆப்ஸை உபயோகிக்காதபோதும்கூட எந்நேரமும் உடலியக்க அளவீடுகள் பற்றிய சென்சார் தரவை அணுக அனுமதி கேட்கும். "<annotation id="link">"அமைப்புகளில் அனுமதிக்கவும்."</annotation></string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"ஆப்ஸைப் பயன்படுத்தாதபோதும் உங்கள் உடலியக்க அளவீடுகள் பற்றிய சென்சார் தரவை எப்போதும் அணுக இந்த ஆப்ஸ் விரும்புகிறது. இந்த மாற்றத்தைச் செய்ய "<annotation id="link">"அமைப்புகளுக்குச் செல்லுங்கள்."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"உடலியக்க அளவீடுகள் பற்றிய சென்சார் தரவை அணுக &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"இந்த ஆப்ஸை உபயோகிக்காதபோதும்கூட எந்நேரமும் உடலியக்க அளவீடுகள் பற்றிய சென்சார் தரவை அணுக அனுமதி கேட்கக்கூடும். "<annotation id="link">"அமைப்புகளில் அனுமதிக்கவும்."</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸுக்கு உங்கள் உடலியக்க அளவீடுகள் பற்றிய சென்சார் தரவின் அணுகலை மாற்றவா?"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"ஆப்ஸைப் பயன்படுத்தாதபோதும் இந்த ஆப்ஸ் எல்லா நேரங்களிலும் உடல் சென்சார் தரவை அணுக "<annotation id="link">"அமைப்புகளுக்குச் செல்லுங்கள்."</annotation></string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ஆப்ஸ் பயன்பாட்டில் இருக்கும்போது உடல் சென்சார் தரவை அணுக &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&amp;gt ஆப்ஸுக்குத் தொடர்ந்து அனுமதியளிக்கவா?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"உங்களுக்கு அறிவிப்புகளை அனுப்ப &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"உங்களுக்குத் தொடர்ந்து அறிவிப்புகளை அனுப்ப &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"கட்டுப்படுத்தப்பட்ட அனுமதிகள்"</string>
@@ -509,6 +514,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"கேமரா அனுமதியை அகற்று"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"மைக்ரோஃபோன் அனுமதியை அகற்று"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"சேவையை நிர்வகியுங்கள்"</string>
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"அனுமதிகளை நிர்வகியுங்கள்"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"மொபைல் அழைப்பால் பயன்படுத்தப்படுகிறது"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"மொபைல் அழைப்பால் சமீபத்தில் பயன்படுத்தப்பட்டது"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"<xliff:g id="APP_NAME">%1$s</xliff:g> ஆப்ஸால் பயன்படுத்தப்படுகிறது"</string>

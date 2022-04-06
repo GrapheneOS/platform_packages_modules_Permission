@@ -196,8 +196,11 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Lihat semua kebenaran <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Lihat semua apl dengan kebenaran ini"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Tunjukkan penggunaan mikrofon pembantu"</string>
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"Tetapan apl yang tidak digunakan"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Alih keluar kebenaran jika apl tidak digunakan"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Alih keluar kebenaran dan kosongkan ruang"</string>
+    <string name="unused_apps_label_v2" msgid="2443239537162119403">"Jeda aktiviti apl"</string>
+    <string name="unused_apps_summary" msgid="4416065734063612849">"Alih keluar kebenaran, padamkan fail sementara dan hentikan pemberitahuan jika tidak digunakan"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Untuk melindungi data anda, kebenaran apl ini akan dialih keluar jika apl tidak digunakan selama beberapa bulan."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Untuk melindungi data anda, jika apl tidak digunakan selama beberapa bulan, kebenaran berikut akan dialih keluar: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Untuk melindungi data anda, kebenaran telah dialih keluar daripada apl yang tidak anda gunakan selama beberapa bulan."</string>
@@ -264,8 +267,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Semasa memandu, anda memberi <xliff:g id="APP">%1$s</xliff:g> akses kepada <xliff:g id="PERMISSION_1">%2$s</xliff:g> &amp; <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Semasa memandu, anda memberikan <xliff:g id="COUNT">%1$d</xliff:g> kebenaran kepada <xliff:g id="APP">%2$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Semasa memandu, anda memberikan akses kepada <xliff:g id="APP_0">%1$s</xliff:g> &amp; # apl lain}other{Semasa memandu, anda memberikan akses kepada <xliff:g id="APP_1">%1$s</xliff:g> &amp; # apl lain}}"</string>
-    <!-- no translation found for go_to_settings (1053735612211228335) -->
-    <skip />
+    <string name="go_to_settings" msgid="1053735612211228335">"Pergi ke Tetapan"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Sesetengah apl tidak digunakan selama beberapa bulan"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Kebenaran dialih keluar"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Kebenaran dialih keluar"</string>
@@ -468,10 +470,10 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses log panggilan telefon anda?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; membuat dan mengurus panggilan telefon?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses data penderia tentang tanda vital anda?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="5239219356063824373">"Apl ini mahu mengakses data penderia tentang tanda vital anda pada setiap masa, meskipun apabila anda tidak menggunakan apl. "<annotation id="link">"Benarkan dalam tetapan."</annotation></string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Apl ini mahu mengakses data penderia tentang tanda vital anda pada setiap masa, meskipun apabila anda tidak menggunakan apl. Untuk membuat perubahan ini, "<annotation id="link">"pergi ke tetapan."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses data penderia tentang tanda vital anda?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Apl ini mungkin mahu mengakses data penderia tentang tanda vital anda pada setiap masa, meskipun apabila anda tidak menggunakan apl. "<annotation id="link">"Benarkan dalam tetapan."</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Tukar akses kepada data penderia tentang tanda vital anda untuk &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Untuk membenarkan apl ini mengakses data penderia tubuh pada setiap masa, meskipun apabila anda tidak menggunakan apl, "<annotation id="link">"pergi ke tetapan."</annotation></string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Terus membenarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses data penderia tubuh semasa apl digunakan?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; menghantar pemberitahuan kepada anda?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; terus menghantar pemberitahuan kepada anda?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Kebenaran terkawal"</string>
@@ -509,6 +511,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Alih keluar kebenaran kamera"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Alih keluar kebenaran mikrofon"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Urus perkhidmatan"</string>
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"Urus kebenaran"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Sedang digunakan oleh panggilan telefon"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Digunakan baru-baru ini dalam panggilan telefon"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Sedang digunakan oleh <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>

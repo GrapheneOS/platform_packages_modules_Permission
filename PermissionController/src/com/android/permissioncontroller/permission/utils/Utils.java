@@ -49,6 +49,7 @@ import static java.lang.annotation.RetentionPolicy.SOURCE;
 import android.Manifest;
 import android.app.AppOpsManager;
 import android.app.Application;
+import android.app.admin.DevicePolicyManager;
 import android.app.role.RoleManager;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -288,7 +289,7 @@ public final class Utils {
 
         if (SdkLevel.isAtLeastT()) {
             PLATFORM_PERMISSIONS.put(Manifest.permission.READ_MEDIA_AUDIO, READ_MEDIA_AURAL);
-            PLATFORM_PERMISSIONS.put(Manifest.permission.READ_MEDIA_IMAGE, READ_MEDIA_VISUAL);
+            PLATFORM_PERMISSIONS.put(Manifest.permission.READ_MEDIA_IMAGES, READ_MEDIA_VISUAL);
             PLATFORM_PERMISSIONS.put(Manifest.permission.READ_MEDIA_VIDEO, READ_MEDIA_VISUAL);
         }
 
@@ -1385,7 +1386,6 @@ public final class Utils {
      */
     public static void navigateToNotificationSettings(@NonNull Context context) {
         Intent notificationIntent = new Intent(Settings.ACTION_ALL_APPS_NOTIFICATION_SETTINGS);
-        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(notificationIntent);
     }
 
@@ -1400,7 +1400,6 @@ public final class Utils {
             @NonNull String packageName, @NonNull UserHandle user) {
         Intent notificationIntent = new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
         notificationIntent.putExtra(Settings.EXTRA_APP_PACKAGE, packageName);
-        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivityAsUser(notificationIntent, user);
     }
 
@@ -1448,5 +1447,26 @@ public final class Utils {
         return group.getHasPermWithBackgroundMode()
                 || Manifest.permission_group.CAMERA.equals(groupName)
                 || Manifest.permission_group.MICROPHONE.equals(groupName);
+    }
+
+    /**
+     * Returns the appropriate enterprise string for the provided IDs
+     */
+    @NonNull
+    public static String getEnterpriseString(@NonNull Context context,
+            @NonNull String updatableStringId, int defaultStringId, @NonNull Object... formatArgs) {
+        return SdkLevel.isAtLeastT()
+                ? getUpdatableEnterpriseString(
+                        context, updatableStringId, defaultStringId, formatArgs)
+                : context.getString(defaultStringId, formatArgs);
+    }
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    @NonNull
+    private static String getUpdatableEnterpriseString(@NonNull Context context,
+            @NonNull String updatableStringId, int defaultStringId, @NonNull Object... formatArgs) {
+        DevicePolicyManager dpm = getSystemServiceSafe(context, DevicePolicyManager.class);
+        return  dpm.getResources().getString(updatableStringId, () -> context.getString(
+                defaultStringId, formatArgs), formatArgs);
     }
 }

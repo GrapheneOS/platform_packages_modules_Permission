@@ -196,8 +196,14 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Ver todas as permissões do app <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Ver todos os apps que têm esta permissão"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Mostrar uso de microfone pelo Assistente"</string>
+    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
+    <skip />
     <string name="auto_revoke_label" msgid="5068393642936571656">"Remover permissões se o app não for usado"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Remover permissões e liberar espaço"</string>
+    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
+    <skip />
+    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
+    <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Para proteger seus dados, as permissões serão removidas se o app não for usado por alguns meses."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Para proteger seus dados, se o app não for usado por alguns meses, as seguintes permissões serão removidas: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Para proteger seus dados, as permissões de apps que não foram usados nos últimos meses foram removidas."</string>
@@ -264,8 +270,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"Enquanto dirigia, você deu ao app <xliff:g id="APP">%1$s</xliff:g> acesso à permissão de <xliff:g id="PERMISSION_1">%2$s</xliff:g> e <xliff:g id="PERMISSION_2">%3$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"Enquanto dirigia, você concedeu <xliff:g id="COUNT">%1$d</xliff:g> permissões ao app <xliff:g id="APP">%2$s</xliff:g>"</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{Enquanto dirigia, você concedeu acesso ao <xliff:g id="APP_0">%1$s</xliff:g> e # outro app}one{Enquanto dirigia, você concedeu acesso ao <xliff:g id="APP_1">%1$s</xliff:g> e # outro app}other{Enquanto dirigia, você concedeu acesso ao <xliff:g id="APP_1">%1$s</xliff:g> e # outros apps}}"</string>
-    <!-- no translation found for go_to_settings (1053735612211228335) -->
-    <skip />
+    <string name="go_to_settings" msgid="1053735612211228335">"Ir para Configurações"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"Alguns apps não foram usados nos últimos meses"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"Permissões removidas"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"Permissões removidas"</string>
@@ -468,10 +473,10 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Permitir que o app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acesse seu registro de chamadas telefônicas?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Permitir que o app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; gerencie e faça chamadas telefônicas?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acesse os dados do sensor sobre seus sinais vitais?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="5239219356063824373">"Este app quer acessar os dados do sensor sobre seus sinais vitais o tempo todo, mesmo quando não estiver em uso. "<annotation id="link">"Permita nas configurações."</annotation></string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Este app quer acessar os dados do sensor sobre seus sinais vitais o tempo todo, mesmo quando não estiver em uso. Para fazer essa mudança, "<annotation id="link">"acesse as configurações"</annotation>"."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acesse os dados do sensor sobre seus sinais vitais?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"Este app pode querer acessar os dados do sensor sobre seus sinais vitais o tempo todo, mesmo quando não estiver em uso. "<annotation id="link">"Permita nas configurações."</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"Mudar o acesso de &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aos dados do sensor sobre seus sinais vitais?"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Para permitir que o app tenha acesso a dados do sensor corporal a qualquer momento, mesmo quando não estiver em uso, "<annotation id="link">"acesse as configurações"</annotation>"."</string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Continuar permitindo que o app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acesse dados do sensor corporal enquanto estiver em uso?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Permitir que o app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; envie notificações?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Permitir que o app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; continue a enviar notificações?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Permissões controladas"</string>
@@ -509,6 +514,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Remover permissão da câmera"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Remover permissão do microfone"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Gerenciar serviço"</string>
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"Gerenciar permissões"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Em uso pela chamada telefônica"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Usada recentemente em uma chamada telefônica"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Em uso por <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>

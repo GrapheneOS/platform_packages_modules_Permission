@@ -196,8 +196,14 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"الاطّلاع على جميع أذونات <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"الاطّلاع على جميع التطبيقات التي لديها هذا الإذن"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"‏عرض أذونات استخدام ميكروفون \"مساعد Google\""</string>
+    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
+    <skip />
     <string name="auto_revoke_label" msgid="5068393642936571656">"إزالة الأذونات في حال عدم استخدام التطبيق"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"إزالة الأذونات وإخلاء مساحة"</string>
+    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
+    <skip />
+    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
+    <skip />
     <string name="auto_revoke_summary" msgid="5867548789805911683">"لحماية بياناتك، ستتم إزالة أذونات هذا التطبيق إذا لم يتم استخدامه لبضعة أشهر."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"لحماية بياناتك، إذا لم يتم استخدام التطبيق لبضعة أشهر، ستتم إزالة الأذونات التالية: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"لحماية بياناتك، تمت إزالة الأذونات من هذه التطبيقات التي لم تستخدمها منذ بضعة أشهر."</string>
@@ -264,8 +270,7 @@
     <string name="post_drive_permission_decision_reminder_summary_1_app_2_permissions" msgid="671791184670801301">"أثناء القيادة، منحت <xliff:g id="APP">%1$s</xliff:g> الإذن بالوصول إلى <xliff:g id="PERMISSION_1">%2$s</xliff:g> و<xliff:g id="PERMISSION_2">%3$s</xliff:g>."</string>
     <string name="post_drive_permission_decision_reminder_summary_1_app_multi_permission" msgid="4080701771111456927">"أثناء القيادة، منحت <xliff:g id="COUNT">%1$d</xliff:g> إذن لتطبيق <xliff:g id="APP">%2$s</xliff:g>."</string>
     <string name="post_drive_permission_decision_reminder_summary_multi_apps" msgid="5253882771252863902">"{count,plural, =1{أثناء القيادة، منحت <xliff:g id="APP_0">%1$s</xliff:g> وتطبيق واحد آخر الإذن بالوصول.}zero{أثناء القيادة، منحت <xliff:g id="APP_1">%1$s</xliff:g> و# تطبيق آخر الإذن بالوصول.}two{أثناء القيادة، منحت <xliff:g id="APP_1">%1$s</xliff:g> وتطبيقين آخرين الإذن بالوصول.}few{أثناء القيادة، منحت <xliff:g id="APP_1">%1$s</xliff:g> و# تطبيقات أخرى الإذن بالوصول.}many{أثناء القيادة، منحت <xliff:g id="APP_1">%1$s</xliff:g> و# تطبيقًا آخر الإذن بالوصول.}other{أثناء القيادة، منحت <xliff:g id="APP_1">%1$s</xliff:g> و# تطبيق آخر الإذن بالوصول.}}"</string>
-    <!-- no translation found for go_to_settings (1053735612211228335) -->
-    <skip />
+    <string name="go_to_settings" msgid="1053735612211228335">"الانتقال إلى الإعدادات"</string>
     <string name="auto_revoke_setting_subtitle" msgid="8631720570723050460">"لم يتم استخدام بعض التطبيقات منذ عدة أشهر"</string>
     <string name="permissions_removed_category_title" msgid="1064754271178447643">"الأذونات التي تمت إزالتها"</string>
     <string name="permission_removed_page_title" msgid="2627436155091001209">"تمت إزالة الأذونات"</string>
@@ -468,10 +473,10 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بالوصول إلى سجلّ مكالماتك الهاتفية؟"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"‏هل تريد السماح لـ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بإجراء المكالمات الهاتفية وإدارتها؟"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بالدخول إلى بيانات المستشعر حول علاماتك الحيوية؟"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="5239219356063824373">"يطلب هذا التطبيق الوصول إلى بيانات جهاز الاستشعار عن علاماتك الحيوية طوال الوقت، حتى عند عدم استخدامك للتطبيق. يمكنك "<annotation id="link">"السماح بذلك في الإعدادات."</annotation></string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"يطلب هذا التطبيق الوصول الدائم إلى بيانات جهاز الاستشعار المتعلّقة بالمؤشرات الحيوية، حتى في حال عدم استخدامك للتطبيق. لإجراء هذا التغيير، "<annotation id="link">"انتقِل إلى الإعدادات."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بالوصول إلى بيانات جهاز الاستشعار عن علاماتك الحيوية؟"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="4853242818919117016">"قد يحتاج هذا التطبيق إلى الوصول إلى بيانات جهاز الاستشعار عن علاماتك الحيوية طوال الوقت، حتى عند عدم استخدامك للتطبيق. يمكنك "<annotation id="link">"السماح بذلك في الإعدادات."</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="3346259833500506859">"‏هل تريد تغيير إذن وصول تطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; إلى بيانات جهاز الاستشعار عن العلامات الحيوية؟"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"للسماح لهذا التطبيق بالوصول باستمرار إلى بيانات أجهزة استشعار الجسم، وحتى في حال عدم استخدام التطبيق، "<annotation id="link">"يمكنك الانتقال إلى الإعدادات"</annotation>"."</string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"‏هل تريد مواصلة السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; عند استخدامه بالوصول إلى بيانات أجهزة استشعار الجسم؟"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بإرسال إشعارات إليك؟"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بمواصلة إرسال إشعارات إليك؟"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"الأذونات خاضعة لتحكّم المشرف"</string>
@@ -509,6 +514,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"إزالة إذن الكاميرا"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"إزالة إذن الميكروفون"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"إدارة الخدمة"</string>
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"إدارة الأذونات"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"يتم الاستخدام في المكالمة الهاتفية"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"تم الاستخدام مؤخرًا في مكالمة هاتفية"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"يتم الاستخدام من قِبل <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>

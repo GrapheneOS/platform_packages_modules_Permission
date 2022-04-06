@@ -45,22 +45,37 @@ import java.util.Objects;
 public final class SafetyCenterStaticEntry implements Parcelable {
 
     @NonNull
+    public static final Creator<SafetyCenterStaticEntry> CREATOR =
+            new Creator<SafetyCenterStaticEntry>() {
+                @Override
+                public SafetyCenterStaticEntry createFromParcel(Parcel in) {
+                    CharSequence title = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
+                    return new SafetyCenterStaticEntry.Builder(title)
+                            .setSummary(TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in))
+                            .setPendingIntent(in.readTypedObject(PendingIntent.CREATOR))
+                            .build();
+                }
+
+                @Override
+                public SafetyCenterStaticEntry[] newArray(int size) {
+                    return new SafetyCenterStaticEntry[size];
+                }
+            };
+
+    @NonNull
     private final CharSequence mTitle;
     @Nullable
     private final CharSequence mSummary;
-    @NonNull
+    @Nullable
     private final PendingIntent mPendingIntent;
 
-    /**
-     * Creates a {@link SafetyCenterStaticEntry} with the given title, summary, and pendingIntent
-     */
-    public SafetyCenterStaticEntry(
+    private SafetyCenterStaticEntry(
             @NonNull CharSequence title,
             @Nullable CharSequence summary,
-            @NonNull PendingIntent pendingIntent) {
-        mTitle = requireNonNull(title);
+            @Nullable PendingIntent pendingIntent) {
+        mTitle = title;
         mSummary = summary;
-        mPendingIntent = requireNonNull(pendingIntent);
+        mPendingIntent = pendingIntent;
     }
 
     /** Returns the title that describes this entry. */
@@ -69,14 +84,20 @@ public final class SafetyCenterStaticEntry implements Parcelable {
         return mTitle;
     }
 
-    /** Returns the summary text that describes this entry if present, or {@code null} otherwise. */
+    /**
+     * Returns the optional summary text that describes this entry if present, or {@code null}
+     * otherwise.
+     */
     @Nullable
     public CharSequence getSummary() {
         return mSummary;
     }
 
-    /** Returns the {@link PendingIntent} to execute when this entry is selected. */
-    @NonNull
+    /**
+     * Returns the optional {@link PendingIntent} to execute when this entry is selected if present,
+     * or {@code null} otherwise.
+     */
+    @Nullable
     public PendingIntent getPendingIntent() {
         return mPendingIntent;
     }
@@ -84,7 +105,7 @@ public final class SafetyCenterStaticEntry implements Parcelable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof SafetyCenterStaticEntry)) return false;
         SafetyCenterStaticEntry that = (SafetyCenterStaticEntry) o;
         return TextUtils.equals(mTitle, that.mTitle)
                 && TextUtils.equals(mSummary, that.mSummary)
@@ -99,9 +120,12 @@ public final class SafetyCenterStaticEntry implements Parcelable {
     @Override
     public String toString() {
         return "SafetyCenterStaticEntry{"
-                + "mTitle=" + mTitle
-                + ", mSummary=" + mSummary
-                + ", mPendingIntent=" + mPendingIntent
+                + "mTitle="
+                + mTitle
+                + ", mSummary="
+                + mSummary
+                + ", mPendingIntent="
+                + mPendingIntent
                 + '}';
     }
 
@@ -114,24 +138,62 @@ public final class SafetyCenterStaticEntry implements Parcelable {
     public void writeToParcel(@NonNull Parcel dest, int flags) {
         TextUtils.writeToParcel(mTitle, dest, flags);
         TextUtils.writeToParcel(mSummary, dest, flags);
-        dest.writeParcelable(mPendingIntent, flags);
+        dest.writeTypedObject(mPendingIntent, flags);
     }
 
-    @NonNull
-    public static final Creator<SafetyCenterStaticEntry> CREATOR =
-            new Creator<SafetyCenterStaticEntry>() {
-        @Override
-        public SafetyCenterStaticEntry createFromParcel(Parcel source) {
-            return new SafetyCenterStaticEntry(
-                    /* title= */ TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(source),
-                    /* summary= */ TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(source),
-                    source.readParcelable(
-                            PendingIntent.class.getClassLoader(), PendingIntent.class));
+    /** Builder class for {@link SafetyCenterStaticEntry}. */
+    public static final class Builder {
+
+        @NonNull
+        private CharSequence mTitle;
+        @Nullable
+        private CharSequence mSummary;
+        @Nullable
+        private PendingIntent mPendingIntent;
+
+        /**
+         * Creates a {@link Builder} for a {@link SafetyCenterEntry}.
+         *
+         * @param title a title that describes this static entry
+         */
+        public Builder(@NonNull CharSequence title) {
+            mTitle = requireNonNull(title);
         }
 
-        @Override
-        public SafetyCenterStaticEntry[] newArray(int size) {
-            return new SafetyCenterStaticEntry[size];
+        /**
+         * Creates a {@link Builder} with the values from the given {@link SafetyCenterStaticEntry}.
+         */
+        public Builder(@NonNull SafetyCenterStaticEntry safetyCenterStaticEntry) {
+            mTitle = safetyCenterStaticEntry.mTitle;
+            mSummary = safetyCenterStaticEntry.mSummary;
+            mPendingIntent = safetyCenterStaticEntry.mPendingIntent;
         }
-    };
+
+        /** Sets the title for this entry. */
+        @NonNull
+        public Builder setTitle(@NonNull CharSequence title) {
+            mTitle = requireNonNull(title);
+            return this;
+        }
+
+        /** Sets the optional summary text for this entry. */
+        @NonNull
+        public Builder setSummary(@Nullable CharSequence summary) {
+            mSummary = summary;
+            return this;
+        }
+
+        /** Sets the optional {@link PendingIntent} to execute when this entry is selected. */
+        @NonNull
+        public Builder setPendingIntent(@Nullable PendingIntent pendingIntent) {
+            mPendingIntent = pendingIntent;
+            return this;
+        }
+
+        /** Creates the {@link SafetyCenterStaticEntry} defined by this {@link Builder}. */
+        @NonNull
+        public SafetyCenterStaticEntry build() {
+            return new SafetyCenterStaticEntry(mTitle, mSummary, mPendingIntent);
+        }
+    }
 }

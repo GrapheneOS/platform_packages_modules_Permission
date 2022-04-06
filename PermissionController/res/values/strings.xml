@@ -606,11 +606,20 @@
     <!-- Label for the assistant mic display switch [CHAR LIMIT=60] -->
     <string name="assistant_mic_label">Show assistant microphone usage</string>
 
+    <!-- Category title for unused apps on T+ devices [CHAR LIMIT=40] -->
+    <string name="unused_apps_category_title">Unused app settings</string>
+
     <!-- Label for the auto revoke switch on pre-S devices [CHAR LIMIT=60] -->
     <string name="auto_revoke_label">Remove permissions if app isn\u2019t used</string>
 
-    <!-- Label for the hibernation / auto revoke switch on S+ devices [CHAR LIMIT=40] -->
+    <!-- Label for the hibernation / auto revoke switch on S devices [CHAR LIMIT=40] -->
     <string name="unused_apps_label">Remove permissions and free up space</string>
+
+    <!-- Label for the hibernation / auto revoke switch on T+ devices [CHAR LIMIT=40] -->
+    <string name="unused_apps_label_v2">Pause app activity if unused</string>
+
+    <!-- Hibernation switch preference summary which describes what the toggle does on T+ devices [CHAR LIMIT=NONE] -->
+    <string name="unused_apps_summary">Remove permissions, delete temporary files, and stop notifications</string>
 
     <!-- Summary for stating that permissions will be removed [CHAR LIMIT=none] -->
     <string name="auto_revoke_summary">To protect your data, permissions for this app will be removed if the app is unused for a few months.</string>
@@ -659,6 +668,9 @@
 
     <!-- Summary for the screen that shows all unused apps that have been hibernated [CHAR LIMIT=none] -->
     <string name="unused_apps_page_summary">If an app is unused for a few months:\n\n\u2022 Permissions are removed to protect your data\n\u2022 Notifications are stopped to save battery\n\u2022 Temporary files are removed to free up space\n\nTo allow permissions and notifications again, open the app.</string>
+
+    <!-- Summary for the screen on TV that shows all unused apps that have been hibernated [CHAR LIMIT=none] -->
+    <string name="unused_apps_page_tv_summary">If an app is unused for a few months:\n\n\u2022 Permissions are removed to protect your data\n\u2022 Temporary files are removed to free up space\n\nTo allow permissions again, open the app.</string>
 
     <!-- Title for a category of apps that were last used several months ago [CHAR LIMIT=none] -->
     <string name="last_opened_category_title">Last opened more than <xliff:g id="number" example="3">%s</xliff:g> months ago</string>
@@ -1427,15 +1439,15 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="permgrouprequest_sensors">Allow
         &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access sensor data about your vital signs?</string>
 
-    <!-- Subtitle of the message shown to the user when the apps requests permission to use the body sensors while app is in foreground and background. Try to keep the link annotation at the end of the string [CHAR LIMIT=150] -->
-    <string name="permgroupupgraderequestdetail_sensors">This app wants to access sensor data about your vital signs all the time, even when you\u2019re not using the app. <annotation id="link">Allow in settings.</annotation></string>
+    <!-- Subtitle of the message shown to the user when the apps requests permission to use the body sensors while app is in foreground and background. Try to keep the link annotation at the end of the string [CHAR LIMIT=NONE] -->
+    <string name="permgroupupgraderequestdetail_sensors">This app wants to access sensor data about your vital signs all the time, even when you\u2019re not using the app. To make this change, <annotation id="link">go to settings.</annotation></string>
     <!-- Message shown to the user when the apps requests permission to use the bosy sensors while app is in foreground and background. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
     <string name="permgroupbackgroundrequest_sensors">Allow
         &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access the sensor data about your vital signs?</string>
-    <!-- Subtitle of the message shown to the user when the apps requests permission to use the body sensors while app is in foreground and background. Try to keep the link annotation at the end of the string [CHAR LIMIT=150] -->
-    <string name="permgroupbackgroundrequestdetail_sensors">This app may want to access the sensor data about your vital signs all the time, even when you\u2019re not using the app. <annotation id="link">Allow in settings.</annotation></string>
+    <!-- Subtitle of the message shown to the user when the apps requests permission to use the body sensors while app is in foreground and background. Try to keep the link annotation at the end of the string [CHAR LIMIT=NONE] -->
+    <string name="permgroupbackgroundrequestdetail_sensors">To let this app access body sensor data all the time, even when you\u2019rere not using the app, <annotation id="link">go to settings.</annotation></string>
     <!-- Message shown to the user when the apps requests permission to use the body sensors while app is in foreground and background. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
-    <string name="permgroupupgraderequest_sensors">Change access to sensor data about your vital signs for &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b>?</string>
+    <string name="permgroupupgraderequest_sensors">Keep allowing &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access body sensor data while app is in use?</string>
 
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
     <string name="permgrouprequest_notifications">Allow
@@ -1521,6 +1533,8 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="remove_microphone_qs">Remove microphone permission</string>
     <!-- Label to manage service in safety center QS page [CHAR LIMIT=50] -->
     <string name="manage_service_qs">Manage service</string>
+    <!-- Label to manage permissions in safety center QS page [CHAR LIMIT=50] -->
+    <string name="manage_permissions_qs">Manage permissions</string>
     <!-- Label for active usage by phone call in safety center QS page [CHAR LIMIT=50] -->
     <string name="active_call_usage_qs">Being used by phone call</string>
     <!-- Label for recent usage by phone call in safety center QS page [CHAR LIMIT=50] -->

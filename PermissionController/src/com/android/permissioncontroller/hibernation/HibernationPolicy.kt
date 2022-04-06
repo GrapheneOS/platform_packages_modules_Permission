@@ -65,6 +65,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.preference.PreferenceManager
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.Constants
+import com.android.permissioncontroller.DeviceUtils
 import com.android.permissioncontroller.DumpableLog
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.R
@@ -429,8 +430,8 @@ suspend fun isPackageHibernationExemptBySystem(
         return true
     }
 
+    val context = PermissionControllerApplication.get()
     if (SdkLevel.isAtLeastS()) {
-        val context = PermissionControllerApplication.get()
         val hasInstallOrUpdatePermissions =
                 context.checkPermission(
                         Manifest.permission.INSTALL_PACKAGES, -1 /* pid */, pkg.uid) ==
@@ -459,6 +460,17 @@ suspend fun isPackageHibernationExemptBySystem(
         if (roleHolders.contains(pkg.packageName)) {
             if (DEBUG_HIBERNATION_POLICY) {
                 DumpableLog.i(LOG_TAG, "Exempted ${pkg.packageName} - wellbeing app")
+            }
+            return true
+        }
+    }
+
+    if (SdkLevel.isAtLeastT()) {
+        val roleHolders = context.getSystemService(android.app.role.RoleManager::class.java)!!
+            .getRoleHolders(RoleManager.ROLE_DEVICE_POLICY_MANAGEMENT)
+        if (roleHolders.contains(pkg.packageName)) {
+            if (DEBUG_HIBERNATION_POLICY) {
+                DumpableLog.i(LOG_TAG, "Exempted ${pkg.packageName} - device policy manager app")
             }
             return true
         }
@@ -612,6 +624,7 @@ class HibernationJobService : JobService() {
             notifContent = getString(R.string.auto_revoke_permission_notification_content)
         }
 
+        // Notification won't appear on TV, because notifications are considered distruptive on TV
         val b = Notification.Builder(this, Constants.PERMISSION_REMINDER_CHANNEL_ID)
             .setContentTitle(notifTitle)
             .setContentText(notifContent)
@@ -620,7 +633,6 @@ class HibernationJobService : JobService() {
             .setColor(getColor(android.R.color.system_notification_accent_color))
             .setAutoCancel(true)
             .setContentIntent(pendingIntent)
-            .extend(Notification.TvExtender())
         Utils.getSettingsLabelForNotifications(applicationContext.packageManager)?.let {
             settingsLabel ->
             val extras = Bundle()
