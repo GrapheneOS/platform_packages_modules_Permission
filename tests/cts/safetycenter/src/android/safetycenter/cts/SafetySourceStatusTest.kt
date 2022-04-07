@@ -71,7 +71,7 @@ class SafetySourceStatusTest {
         val exception = assertFailsWith(IllegalArgumentException::class) {
             IconAction(-1, pendingIntent1)
         }
-        assertThat(exception).hasMessageThat().isEqualTo("Unexpected IconType: -1")
+        assertThat(exception).hasMessageThat().isEqualTo("Unexpected IconType for IconAction: -1")
     }
 
     @Test
@@ -222,7 +222,8 @@ class SafetySourceStatusTest {
                 -1
             )
         }
-        assertThat(exception).hasMessageThat().isEqualTo("Unexpected Level for source: -1")
+        assertThat(exception).hasMessageThat()
+            .isEqualTo("Unexpected SeverityLevel for SafetySourceStatus: -1")
     }
 
     @Test

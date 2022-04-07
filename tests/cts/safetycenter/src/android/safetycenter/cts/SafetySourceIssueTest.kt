@@ -457,7 +457,8 @@ class SafetySourceIssueTest {
                 "issue_type_id"
             )
         }
-        assertThat(exception).hasMessageThat().isEqualTo("Unexpected Level for issue: 100")
+        assertThat(exception).hasMessageThat()
+            .isEqualTo("Unexpected SeverityLevel for SafetySourceIssue: 100")
     }
 
     @Test
@@ -486,7 +487,8 @@ class SafetySourceIssueTest {
         val exception = assertFailsWith(IllegalArgumentException::class) {
             builder.setIssueCategory(-1)
         }
-        assertThat(exception).hasMessageThat().isEqualTo("Unexpected IssueCategory: -1")
+        assertThat(exception).hasMessageThat()
+            .isEqualTo("Unexpected IssueCategory for SafetySourceIssue: -1")
     }
 
     @Test

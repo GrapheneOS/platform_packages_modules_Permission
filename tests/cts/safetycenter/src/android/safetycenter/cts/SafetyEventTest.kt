@@ -29,6 +29,7 @@ import androidx.test.filters.SdkSuppress
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
+import kotlin.test.assertFailsWith
 
 /** CTS tests for [SafetyEvent]. */
 @RunWith(AndroidJUnit4::class)
@@ -69,6 +70,15 @@ class SafetyEventTest {
                 .build()
 
         assertThat(safetyEvent.safetySourceIssueActionId).isEqualTo(SAFETY_SOURCE_ISSUE_ACTION_ID)
+    }
+
+    @Test
+    fun build_withInvalidType_throwsIllegalArgumentException() {
+        val exception = assertFailsWith(IllegalArgumentException::class) {
+            SafetyEvent.Builder(-1)
+        }
+
+        assertThat(exception).hasMessageThat().isEqualTo("Unexpected Type for SafetyEvent: -1")
     }
 
     @Test
