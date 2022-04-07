@@ -669,6 +669,9 @@
     <!-- Summary for the screen that shows all unused apps that have been hibernated [CHAR LIMIT=none] -->
     <string name="unused_apps_page_summary">If an app is unused for a few months:\n\n\u2022 Permissions are removed to protect your data\n\u2022 Notifications are stopped to save battery\n\u2022 Temporary files are removed to free up space\n\nTo allow permissions and notifications again, open the app.</string>
 
+    <!-- Summary for the screen on TV that shows all unused apps that have been hibernated [CHAR LIMIT=none] -->
+    <string name="unused_apps_page_tv_summary">If an app is unused for a few months:\n\n\u2022 Permissions are removed to protect your data\n\u2022 Temporary files are removed to free up space\n\nTo allow permissions again, open the app.</string>
+
     <!-- Title for a category of apps that were last used several months ago [CHAR LIMIT=none] -->
     <string name="last_opened_category_title">Last opened more than <xliff:g id="number" example="3">%s</xliff:g> months ago</string>
 
@@ -1531,7 +1534,7 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <!-- Content description for the button dismisses a safety center issue [CHAR LIMIT=NONE] -->
     <string name="safety_center_issue_card_dismiss_button">Dismiss</string>
     <!-- Title for a dialog confirming if a user wants to dismiss a safety center issue [CHAR LIMIT=NONE] -->
-    <string name="safety_center_issue_card_dismiss_confirmation_title">Dismiss this warning?</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_title">Dismiss this alert?</string>
     <!-- Label for a button to dismiss a safety center issue in a confirmation dialog [CHAR LIMIT=30] -->
     <string name="safety_center_issue_card_confirm_dismiss_button">Dismiss</string>
     <!-- Label for a button to cancel dismissing a safety center issue in a confirmation dialog [CHAR LIMIT=30] -->

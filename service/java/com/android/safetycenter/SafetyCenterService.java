@@ -162,7 +162,6 @@ public final class SafetyCenterService extends SystemService {
                     || !checkApiEnabled("setSafetySourceData")) {
                 return;
             }
-            // TODO(b/218812582): Validate the SafetySourceData.
 
             UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
             SafetyCenterData safetyCenterData = null;
@@ -238,7 +237,7 @@ public final class SafetyCenterService extends SystemService {
                 return;
             }
 
-            // TODO(b/218379298): Add implementation
+            // TODO(b/223434689): Implement this properly.
             UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
             List<RemoteCallbackList<IOnSafetyCenterDataChangedListener>> listeners;
             synchronized (mApiLock) {
@@ -356,8 +355,8 @@ public final class SafetyCenterService extends SystemService {
                     || !checkApiEnabled("dismissSafetyCenterIssue")) {
                 return;
             }
-            // TODO(b/202387059): Implement issue dismissal.
 
+            // TODO(b/202387059): Implement this properly.
         }
 
         @Override
@@ -373,7 +372,8 @@ public final class SafetyCenterService extends SystemService {
                     || !checkApiEnabled("executeSafetyCenterIssueAction")) {
                 return;
             }
-            // TODO(b/218379298): Add implementation
+
+            // TODO(b/202485277): Implement this properly.
         }
 
         @Override
