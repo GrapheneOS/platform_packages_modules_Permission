@@ -600,7 +600,7 @@ class AccessibilitySourceService(
         private const val SC_ACCESSIBILITY_ISSUE_TYPE_ID = "accessibility_privacy_issue"
         private const val KEY_LAST_ACCESSIBILITY_NOTIFICATION_SHOWN =
             "last_accessibility_notification_shown"
-        private const val SC_ACCESSIBILITY_SOURCE_ID = "AccessibilitySource"
+        private const val SC_ACCESSIBILITY_SOURCE_ID = "AndroidAccessibility"
         private const val SC_ACCESSIBILITY_REMOVE_ACCESS_ACTION_ID =
             "revoke_accessibility_app_access"
         private const val SC_ACCESSIBILITY_SHOW_ACCESSIBILITY_ACTIVITY_ACTION_ID =
