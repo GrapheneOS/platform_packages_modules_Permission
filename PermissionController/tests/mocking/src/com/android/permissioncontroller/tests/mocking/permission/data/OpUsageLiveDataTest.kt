@@ -14,11 +14,12 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.data
+package com.android.permissioncontroller.tests.mocking.permission.data
 
 import android.os.Parcel
 import android.os.UserHandle
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.android.permissioncontroller.permission.data.OpAccess
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
