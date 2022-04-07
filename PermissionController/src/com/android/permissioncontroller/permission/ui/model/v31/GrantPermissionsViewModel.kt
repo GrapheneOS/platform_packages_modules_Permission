@@ -685,6 +685,12 @@ class GrantPermissionsViewModel(
             return policyState
         }
 
+        if (perm == POST_NOTIFICATIONS &&
+            packageInfo.targetSdkVersion <= Build.VERSION_CODES.S_V2 &&
+            group.foreground.isUserSet) {
+            return STATE_SKIPPED
+        }
+
         val isBackground = perm in group.backgroundPermNames
 
         val hasForegroundRequest = groupRequestedPermissions.any {
