@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.utils
+package com.android.permissioncontroller.tests.mocking.permission.utils
 
 import android.Manifest
 import android.app.ActivityManager
@@ -45,6 +45,7 @@ import com.android.permissioncontroller.permission.model.livedatatypes.LightPack
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPermGroupInfo
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPermInfo
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPermission
+import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.google.common.truth.Truth.assertThat
 import com.google.common.truth.Truth.assertWithMessage
 import org.junit.Assume.assumeNotNull
