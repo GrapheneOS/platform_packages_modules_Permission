@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"İstifadə edilməyən tətbiq ayarları"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Tətbiq işlənməyəndə icazə ləğv edilsin"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"İcazələri silin və yer boşaldın"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"İstifadə edilmədikdə tətbiq fəaliyyətini durdurun"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"İcazələri silin, müvəqqəti faylları silin və bildirişləri dayandırın"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Bir neçə ay istifadə etmədiyiniz tətbiqlərdən icazələr datanızın qorunması məqsədilə silinib."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Bir neçə ay istifadə etmədiyiniz tətbiqlərdən icazələr datanızın qorunması məqsədilə silinib: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Bir neçə ay istifadə etmədiyiniz tətbiqlərdən icazələr datanızın qorunması məqsədilə silinib."</string>
@@ -501,7 +499,7 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Tətbiqlər və xidmətlər üçün"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Fövqəladə hallar nömrəsinə zəng etdiyiniz zaman mikrofon datası yenə də paylaşıla bilər."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Dəyişin"</string>
-    <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Təhlükəsizlik &amp; Məxfilik"</string>
+    <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Güvənlik və məxfilik"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Skan edin"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Qapadın"</string>
     <string name="security_settings" msgid="3808106921175271317">"Təhlükəsizlik Ayarları"</string>
@@ -522,6 +520,6 @@
     <string name="recent_app_usage_1_qs" msgid="261450184773310741">"Bu yaxınlarda <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>) tərəfindən istifadə edilib"</string>
     <string name="active_app_usage_2_qs" msgid="6107866785243565283">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) tərəfindən istifadə edilir"</string>
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Bu yaxınlarda <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) tərəfindən istifadə edilib"</string>
-    <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Təhlükəsizlik &amp; Məxfilik"</string>
+    <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Güvənlik və məxfilik"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Statusu yoxlayın"</string>
 </resources>
