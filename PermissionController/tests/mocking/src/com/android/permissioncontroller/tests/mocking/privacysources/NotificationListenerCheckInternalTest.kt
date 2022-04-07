@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.privacysources
+package com.android.permissioncontroller.tests.mocking.privacysources
 
 import android.app.job.JobParameters
 import android.content.ComponentName
@@ -27,6 +27,7 @@ import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
 import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.permissioncontroller.Constants
+import com.android.permissioncontroller.privacysources.NotificationListenerCheckInternal
 import com.android.permissioncontroller.privacysources.NotificationListenerCheckInternal.NlsComponent
 import com.android.permissioncontroller.privacysources.NotificationListenerCheck.NotificationListenerCheckJobService
 import com.google.common.truth.Truth.assertThat

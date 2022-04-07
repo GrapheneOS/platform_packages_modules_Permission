@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.role.model
+package com.android.permissioncontroller.tests.mocking.role.model
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import com.android.permissioncontroller.role.model.RoleParser
 import org.junit.Test
 import org.junit.runner.RunWith
 
