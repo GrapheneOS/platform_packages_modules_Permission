@@ -14,10 +14,12 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.ui.handheld.v31
+package com.android.permissioncontroller.tests.mocking.permission.ui.handheld.v31
 
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.android.permissioncontroller.permission.ui.handheld.v31.getDurationUsedStr
+import com.android.permissioncontroller.permission.ui.handheld.v31.getTimeDiffStr
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
