@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.privacysources
+package com.android.permissioncontroller.tests.mocking.privacysources
 
 import android.content.Intent
 import android.content.Intent.ACTION_BOOT_COMPLETED
@@ -27,6 +27,8 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.permissioncontroller.PermissionControllerApplication
+import com.android.permissioncontroller.privacysources.PrivacySource
+import com.android.permissioncontroller.privacysources.SafetyCenterReceiver
 import com.android.permissioncontroller.privacysources.SafetyCenterReceiver.RefreshEvent.EVENT_DEVICE_REBOOTED
 import com.android.permissioncontroller.privacysources.SafetyCenterReceiver.RefreshEvent.EVENT_REFRESH_REQUESTED
 import kotlinx.coroutines.Dispatchers

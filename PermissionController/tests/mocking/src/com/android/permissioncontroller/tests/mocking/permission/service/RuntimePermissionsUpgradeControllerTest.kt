@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.service
+package com.android.permissioncontroller.tests.mocking.permission.service
 
 import android.Manifest.permission.ACCESS_BACKGROUND_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
@@ -44,7 +44,8 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.android.dx.mockito.inline.extended.ExtendedMockito.mockitoSession
 import com.android.permissioncontroller.PermissionControllerApplication
-import com.android.permissioncontroller.permission.data.dataRepositories
+import com.android.permissioncontroller.permission.service.RuntimePermissionsUpgradeController
+import com.android.permissioncontroller.tests.mocking.permission.data.dataRepositories
 import org.junit.After
 import org.junit.Before
 import org.junit.Test

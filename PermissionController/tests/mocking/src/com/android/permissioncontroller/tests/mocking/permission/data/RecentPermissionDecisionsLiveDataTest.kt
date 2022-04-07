@@ -14,9 +14,11 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.data
+package com.android.permissioncontroller.tests.mocking.permission.data
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.android.permissioncontroller.permission.data.PermissionDecision
+import com.android.permissioncontroller.permission.data.RecentPermissionDecisionsLiveData
 import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsStorage
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.runBlocking
