@@ -43,8 +43,8 @@
         <!-- id must be unique among safety sources groups -->
         <xsd:attribute name="id" type="xsd:string" use="required"/>
         <!-- title is required unless the group contains issue only and/or internal sources -->
-        <xsd:attribute name="title" type="reference"/>
-        <xsd:attribute name="summary" type="reference"/>
+        <xsd:attribute name="title" type="stringResourceName"/>
+        <xsd:attribute name="summary" type="stringResourceName"/>
         <xsd:attribute name="statelessIconType" type="statelessIconType" default="none"/>
     </xsd:complexType>
 
@@ -118,10 +118,11 @@
         </xsd:restriction>
     </xsd:simpleType>
 
-    <!-- NOTE: string references will be ignored for any attribute not explicitly marked as reference in this schema -->
-    <xsd:simpleType name="reference">
+    <!-- NOTE: stringResourceNames will be ignored for any attribute not explicitly marked as stringResourceName in this schema. -->
+    <!-- A stringResourceNames is a fully qualified resource name of the form "@package:string/entry". Package is required. -->
+    <xsd:simpleType name="stringResourceName">
         <xsd:restriction base="xsd:string">
-            <xsd:pattern value="@string/.+"/>
+            <xsd:pattern value="@([a-z]+\.)*[a-z]+:string/.+"/>
         </xsd:restriction>
     </xsd:simpleType>
 

@@ -25,10 +25,6 @@ import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.xmlpull.v1.XmlPullParser.END_DOCUMENT
-import org.xmlpull.v1.XmlPullParser.END_TAG
-import org.xmlpull.v1.XmlPullParser.START_DOCUMENT
-import org.xmlpull.v1.XmlPullParser.START_TAG
 
 @RunWith(AndroidJUnit4::class)
 class SafetyCenterResourcesContextTest {
@@ -46,17 +42,9 @@ class SafetyCenterResourcesContextTest {
         assertThat(safetyCenterResourcesContext.resourcesApkPkgName).isEqualTo(
             RESOURCES_APK_PKG_NAME
         )
-        val parser = safetyCenterResourcesContext.safetyCenterConfig
-        assertNotNull(parser)
-        parser?.next()
-        assertThat(parser?.eventType).isEqualTo(START_DOCUMENT)
-        parser?.next()
-        assertThat(parser?.eventType).isEqualTo(START_TAG)
-        assertThat(parser?.name).isEqualTo(CONFIG_TAG)
-        parser?.next()
-        assertThat(parser?.eventType).isEqualTo(END_TAG)
-        parser?.next()
-        assertThat(parser?.eventType).isEqualTo(END_DOCUMENT)
+        val configContent =
+            safetyCenterResourcesContext.safetyCenterConfig?.bufferedReader().use { it?.readText() }
+        assertThat(configContent).isEqualTo(CONFIG_CONTENT)
         assertNotNull(safetyCenterResourcesContext.assets)
         assertNotNull(safetyCenterResourcesContext.resources)
         assertNotNull(safetyCenterResourcesContext.theme)
@@ -132,6 +120,6 @@ class SafetyCenterResourcesContextTest {
         const val RESOURCES_APK_PKG_NAME =
             "com.android.safetycenter.tests.config.safetycenterresourceslibtestresources"
         const val CONFIG_NAME = "test"
-        const val CONFIG_TAG = "test"
+        const val CONFIG_CONTENT = "TEST"
     }
 }
