@@ -70,6 +70,12 @@ class ParserConfigInvalidTest {
                     "Required attribute titleForWork missing"
                 ),
                 Params(
+                    "ConfigDynamicSafetySourceAllHiddenWithSearchNoWork",
+                    R.raw.config_dynamic_safety_source_all_hidden_with_search_no_work,
+                    "Element dynamic-safety-source invalid",
+                    "Required attribute titleForWork missing"
+                ),
+                Params(
                     "ConfigDynamicSafetySourceAllNoWork",
                     R.raw.config_dynamic_safety_source_all_no_work,
                     "Element dynamic-safety-source invalid",
@@ -98,6 +104,12 @@ class ParserConfigInvalidTest {
                     R.raw.config_dynamic_safety_source_hidden_with_intent,
                     "Element dynamic-safety-source invalid",
                     "Prohibited attribute intentAction present"
+                ),
+                Params(
+                    "ConfigDynamicSafetySourceHiddenWithSearchNoTitle",
+                    R.raw.config_dynamic_safety_source_hidden_with_search_no_title,
+                    "Element dynamic-safety-source invalid",
+                    "Required attribute title missing"
                 ),
                 Params(
                     "ConfigDynamicSafetySourceHiddenWithSummary",
@@ -326,12 +338,6 @@ class ParserConfigInvalidTest {
                     R.raw.config_static_safety_source_no_profile,
                     "Element static-safety-source invalid",
                     "Required attribute profile missing"
-                ),
-                Params(
-                    "ConfigStaticSafetySourceNoSummary",
-                    R.raw.config_static_safety_source_no_summary,
-                    "Element static-safety-source invalid",
-                    "Required attribute summary missing"
                 ),
                 Params(
                     "ConfigStaticSafetySourceNoTitle",
