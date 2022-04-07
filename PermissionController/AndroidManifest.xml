@@ -372,7 +372,7 @@
             </intent-filter>
         </service>
 
-         <service android:name="com.android.permissioncontroller.permission.service.SafetyCenterQsTileService"
+         <service android:name="com.android.permissioncontroller.permission.service.v33.SafetyCenterQsTileService"
                   android:exported="true"
                   android:label="@string/safety_privacy_qs_tile_title"
                   android:icon ="@drawable/safety_shield"

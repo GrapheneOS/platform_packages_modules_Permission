@@ -31,16 +31,16 @@ import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_USAGE_FRAGMENT_INTERACTION__ACTION__SHOW_SYSTEM_CLICKED
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.auto.AutoSettingsFrameFragment
-import com.android.permissioncontroller.permission.model.AppPermissionUsage
-import com.android.permissioncontroller.permission.model.PermissionUsages
-import com.android.permissioncontroller.permission.model.PermissionUsages.PermissionsUsagesChangeCallback
+import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage
+import com.android.permissioncontroller.permission.model.v31.PermissionUsages
+import com.android.permissioncontroller.permission.model.v31.PermissionUsages.PermissionsUsagesChangeCallback
 import com.android.permissioncontroller.permission.model.legacy.PermissionApps.AppDataLoader
 import com.android.permissioncontroller.permission.model.legacy.PermissionApps.PermissionApp
 import com.android.permissioncontroller.permission.model.livedatatypes.PermGroupPackagesUiInfo
 import com.android.permissioncontroller.permission.ui.model.ManagePermissionsViewModel
-import com.android.permissioncontroller.permission.ui.model.PermissionUsageControlPreferenceUtils
-import com.android.permissioncontroller.permission.ui.model.PermissionUsageViewModel
-import com.android.permissioncontroller.permission.ui.model.PermissionUsageViewModelFactory
+import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageControlPreferenceUtils
+import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageViewModel
+import com.android.permissioncontroller.permission.ui.model.v31.PermissionUsageViewModelFactory
 import com.android.permissioncontroller.permission.utils.Utils
 
 @RequiresApi(Build.VERSION_CODES.S)
@@ -78,7 +78,10 @@ class AutoPermissionUsageFragment : AutoSettingsFrameFragment(), PermissionsUsag
                 ?: Constants.INVALID_SESSION_ID)
 
         val context: Context = preferenceManager.getContext()
-        permissionUsages = PermissionUsages(context)
+        permissionUsages =
+            PermissionUsages(
+                context
+            )
         val roleManager = Utils.getSystemServiceSafe(context, RoleManager::class.java)
         val application: Application = requireActivity().getApplication()
         val managePermissionsViewModelFactory = ViewModelProvider.AndroidViewModelFactory
