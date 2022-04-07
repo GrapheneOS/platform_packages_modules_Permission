@@ -1291,4 +1291,29 @@
             <permission-set name="notifications" />
         </permissions>
     </role>
+
+    <!---
+      ~ A role for the package that handles Bluetooth for the device
+      -->
+    <role
+        name="android.app.role.SYSTEM_BLUETOOTH_STACK"
+        defaultHolders="config_systemBluetoothStack"
+        exclusive="true"
+        minSdkVersion="33"
+        static="true"
+        systemOnly="true"
+        visible="false">
+        <permissions>
+            <permission name="android.permission.NETWORK_FACTORY" />
+            <permission name="android.permission.BLUETOOTH_MAP" />
+            <permission name="android.permission.BLUETOOTH_STACK" />
+            <permission name="android.permission.NET_ADMIN" />
+            <permission name="android.permission.LISTEN_ALWAYS_REPORTED_SIGNAL_STRENGTH" />
+            <permission name="android.permission.MANAGE_APP_OPS_MODES" />
+            <permission name="android.permission.MANAGE_COMPANION_DEVICES" />
+            <permission name="android.permission.QUERY_AUDIO_STATE" />
+            <permission name="android.permission.DEVICE_POWER" />
+            <permission name="android.permission.NET_TUNNELING" />
+        </permissions>
+    </role>
 </roles>
