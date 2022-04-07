@@ -196,14 +196,11 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Sien al <xliff:g id="APP">%1$s</xliff:g> se toestemmings"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Sien alle programme met hierdie toestemming"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Wys Assistent-mikrofoongebruik"</string>
-    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
-    <skip />
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"Ongebruikte programinstellings"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Verwyder toestemmings as program nie gebruik word nie"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Verwyder toestemmings en maak spasie beskikbaar"</string>
-    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Onderbreek programaktiwiteit as ongebruik"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Verwyder toestemmings, vee tydelike lêers uit, en stop kennisgewings"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Om jou data te beskerm, sal toestemmings vir hierdie program verwyder word as die program \'n paar maande nie gebruik word nie."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Om jou data te beskerm, sal die volgende toestemmings verwyder word as dit vir \'n paar maande nie gebruik word nie: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Om jou data te beskerm, is toestemmings verwyder van programme wat jy \'n paar maande gelede laas gebruik het."</string>

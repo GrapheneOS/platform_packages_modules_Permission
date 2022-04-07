@@ -196,14 +196,11 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g>-এর ক্ষেত্রে দেওয়া সব অনুমতি দেখুন"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"যেসব অ্যাপের এই অনুমতি আছে সেগুলি দেখুন"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Assistant-এর মাইক্রোফোন ব্যবহার সম্পর্কিত ডেটা দেখুন"</string>
-    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
-    <skip />
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"ব্যবহার করা হয়নি এমন অ্যাপ সেটিংস"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"অ্যাপ ব্যবহার করা না হলে সেটি থেকে অনুমতি প্রত্যাহার করে নিন"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"অনুমতি সরান এবং স্পেস খালি করুন"</string>
-    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"ব্যবহার না হলে অ্যাপ অ্যাক্টিভিটি পজ করুন"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"অনুমতি সরান, অস্থায়ী ফাইল মুছুন এবং বিজ্ঞপ্তি বন্ধ করুন"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"আপনার ডেটা সুরক্ষিত রাখতে এই অ্যাপ কয়েক মাস ব্যবহার করা না হলে, এটিকে দেওয়া অনুমতি প্রত্যাহার করে নেওয়া হবে।"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"আপনার ডেটা সুরক্ষিত রাখতে অ্যাপটি কয়েক মাস ব্যবহার করা না হলে, এই অনুমতি প্রত্যাহার করে নেওয়া হবে: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"আপনার ডেটা সুরক্ষিত রাখতে যেসব অ্যাপ গত কয়েক মাস ব্যবহার করা হয়নি সেগুলি থেকে অনুমতি প্রত্যাহার করে নেওয়া হয়েছে।"</string>

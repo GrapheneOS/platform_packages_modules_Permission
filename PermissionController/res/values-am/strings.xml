@@ -196,14 +196,11 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"ሁሉንም <xliff:g id="APP">%1$s</xliff:g> ፈቃዶች ይመልከቱ"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"ከዚህ መተግበሪያ ጋር ሁሉንም መተግበሪያዎች ይመልከቱ"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"የረዳት ማይክሮፎን አጠቃቀምን አሳይ"</string>
-    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
-    <skip />
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"ስራ ላይ ያልዋሉ የመተግበሪያ ቅንብሮች"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"መተግበሪያ ጥቅም ላይ ካልዋለ ፈቃዶችን አስወግድ"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"ፈቃዶችን ያስወግዱ እና ቦታ ያስለቅቁ"</string>
-    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"የመተግበሪያ እንቅስቃሴ ስራ ላይ ካልዋለ ባለበት አቁም"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"ፈቃዶችን አስወግድ፣ ጊዜያዊ ፋይሎችን ሰርዝ እና ማሳወቂያዎችን አቁም"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"ለእርስዎ ውሂብ ጥበቃ ለማድረግ፣ ለዚህ መተግበሪያ የተሰጡ ፈቃዶች መተግበሪያው ለጥቂት ወራት ጥቅም ላይ ካልዋለ ይህ መተግበሪያ ይወገዳል።"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"የእርስዎን ውሂብ ለመጠበቅ፣ መተግበሪያው ለጥቂት ወራት ጥቅም ላይ ካልዋለ፣ የሚከተሉት ፈቃዶች ይወገዳሉ፦ <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"የእርስዎን ውሂብ ለመጠበቅ ሲባል ለጥቂት ወራት ካልተጠቀሙባቸው መተግበሪያዎች ላይ ፈቃዶች ተወግደዋል።"</string>
@@ -502,7 +499,7 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"ለመተግበሪያዎች እና አገልግሎቶች"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"እርስዎ ወደ አንድ የአደጋ ጊዜ ቁጥር ሲደውሉ የማይክሮፎን ውሂብ አሁንም ሊጋራ ይችላል።"</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"ቀይር"</string>
-    <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"ደህንነት &amp; ግላዊነት"</string>
+    <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"ደህንነት እና ግላዊነት"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"ቃኝ"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"አሰናብት"</string>
     <string name="security_settings" msgid="3808106921175271317">"የደህንነት ቅንብሮች"</string>
@@ -523,6 +520,6 @@
     <string name="recent_app_usage_1_qs" msgid="261450184773310741">"በቅርብ ጊዜ በ<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>) ስራ ላይ ውሏል"</string>
     <string name="active_app_usage_2_qs" msgid="6107866785243565283">"በ<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) ስራ ላይ እየዋለ ነው"</string>
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"በቅርብ ጊዜ በ<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) ስራ ላይ ውሏል"</string>
-    <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"ደህንነት &amp; ግላዊነት"</string>
+    <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"ደህንነት እና ግላዊነት"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"ሁኔታ አረጋግጥ"</string>
 </resources>
