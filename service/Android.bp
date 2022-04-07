@@ -112,6 +112,7 @@ java_sdk_library {
         "modules-utils-backgroundthread",
         "modules-utils-os",
         "safety-center-config",
+        "safety-center-internal-data",
         "safety-center-resources-lib",
         "service-permission-shared",
     ],

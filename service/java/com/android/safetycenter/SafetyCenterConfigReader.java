@@ -223,7 +223,7 @@ final class SafetyCenterConfigReader {
                     + mSafetySourcesGroups
                     + ", mExternalSafetySources="
                     + mExternalSafetySources
-                    + ", mBroadcastReceivers="
+                    + ", mBroadcasts="
                     + mBroadcasts
                     + '}';
         }

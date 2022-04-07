@@ -24,6 +24,7 @@ import android.content.Intent
 import android.content.Intent.ACTION_SAFETY_CENTER
 import android.content.IntentFilter
 import android.os.Build.VERSION_CODES.TIRAMISU
+import android.os.UserHandle
 import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterEntry
 import android.safetycenter.SafetyCenterEntry.SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION
@@ -71,6 +72,11 @@ import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import com.android.compatibility.common.util.SystemUtil.callWithShellPermissionIdentity
+import com.android.safetycenter.internaldata.SafetyCenterEntryGroupId
+import com.android.safetycenter.internaldata.SafetyCenterEntryId
+import com.android.safetycenter.internaldata.SafetyCenterIds
+import com.android.safetycenter.internaldata.SafetyCenterIssueActionId
+import com.android.safetycenter.internaldata.SafetyCenterIssueId
 import com.google.common.truth.Truth.assertThat
 import com.google.common.util.concurrent.MoreExecutors.directExecutor
 import java.time.Duration
@@ -155,12 +161,13 @@ class SafetyCenterManagerTest {
             emptyList(),
             listOf(
                 SafetyCenterEntryOrGroup(
-                    SafetyCenterEntryGroup.Builder(CTS_SOURCE_GROUP_ID, "OK")
+                    SafetyCenterEntryGroup.Builder(safetyCenterEntryGroupId(CTS_SOURCE_GROUP_ID),
+                        "OK")
                         .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN)
                         .setSummary("OK")
                         .setEntries(
                             listOf(
-                                SafetyCenterEntry.Builder(CTS_SOURCE_ID, "OK")
+                                SafetyCenterEntry.Builder(safetyCenterEntryId(CTS_SOURCE_ID), "OK")
                                     .setSeverityLevel(
                                         SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNKNOWN)
                                     .setSummary("OK")
@@ -183,12 +190,14 @@ class SafetyCenterManagerTest {
             emptyList(),
             listOf(
                 SafetyCenterEntryOrGroup(
-                    SafetyCenterEntryGroup.Builder(CTS_SOURCE_GROUP_ID, "OK")
+                    SafetyCenterEntryGroup.Builder(safetyCenterEntryGroupId(CTS_SOURCE_GROUP_ID),
+                        "OK")
                         .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED)
                         .setSummary("OK")
                         .setEntries(
                             listOf(
-                                SafetyCenterEntry.Builder(CTS_SOURCE_ID, "Unspecified title")
+                                SafetyCenterEntry.Builder(safetyCenterEntryId(CTS_SOURCE_ID),
+                                    "Unspecified title")
                                     .setSeverityLevel(
                                         SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_UNSPECIFIED)
                                     .setSummary("Unspecified summary")
@@ -212,12 +221,14 @@ class SafetyCenterManagerTest {
             emptyList(),
             listOf(
                 SafetyCenterEntryOrGroup(
-                    SafetyCenterEntryGroup.Builder(CTS_SOURCE_GROUP_ID, "OK")
+                    SafetyCenterEntryGroup.Builder(safetyCenterEntryGroupId(CTS_SOURCE_GROUP_ID),
+                        "OK")
                         .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK)
                         .setSummary("OK")
                         .setEntries(
                             listOf(
-                                SafetyCenterEntry.Builder(CTS_SOURCE_ID, "Ok title")
+                                SafetyCenterEntry.Builder(safetyCenterEntryId(CTS_SOURCE_ID),
+                                    "Ok title")
                                     .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK)
                                     .setSummary("Ok summary")
                                     .setPendingIntent(somePendingIntent)
@@ -238,7 +249,7 @@ class SafetyCenterManagerTest {
                 .build(),
             listOf(
                 SafetyCenterIssue.Builder(
-                    "critical_issue_id",
+                    safetyCenterIssueId(CTS_SOURCE_ID, "critical_issue_id"),
                     "Critical issue title",
                     "Critical issue summary"
                 )
@@ -246,7 +257,11 @@ class SafetyCenterManagerTest {
                     .setActions(
                         listOf(
                             SafetyCenterIssue.Action.Builder(
-                                "critical_action_id",
+                                safetyCenterIssueActionId(
+                                    CTS_SOURCE_ID,
+                                    "critical_issue_id",
+                                    "critical_action_id"
+                                ),
                                 "Solve issue",
                                 somePendingIntent
                             )
@@ -257,12 +272,14 @@ class SafetyCenterManagerTest {
             ),
             listOf(
                 SafetyCenterEntryOrGroup(
-                    SafetyCenterEntryGroup.Builder(CTS_SOURCE_GROUP_ID, "OK")
+                    SafetyCenterEntryGroup.Builder(safetyCenterEntryGroupId(CTS_SOURCE_GROUP_ID),
+                        "OK")
                         .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING)
                         .setSummary("OK")
                         .setEntries(
                             listOf(
-                                SafetyCenterEntry.Builder(CTS_SOURCE_ID, "Critical title")
+                                SafetyCenterEntry.Builder(safetyCenterEntryId(CTS_SOURCE_ID),
+                                    "Critical title")
                                     .setSeverityLevel(
                                         SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING)
                                     .setSummary("Critical summary")
@@ -465,6 +482,7 @@ class SafetyCenterManagerTest {
 
     @Test
     fun reportSafetySourceError_callsErrorListener() {
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_CONFIG)
         safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
             directExecutor(),
             listener
@@ -1028,6 +1046,7 @@ class SafetyCenterManagerTest {
     companion object {
         private val EVENT_SOURCE_STATE_CHANGED =
             SafetyEvent.Builder(SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
+
         private val DEFAULT_SAFETY_CENTER_DATA =
             SafetyCenterData(
                 SafetyCenterStatus.Builder("Unknown", "Unknown safety status")
@@ -1036,6 +1055,47 @@ class SafetyCenterManagerTest {
                 emptyList(),
                 emptyList(),
                 emptyList()
+            )
+
+        private fun safetyCenterEntryGroupId(sourcesGroupId: String) =
+            SafetyCenterIds.encodeToString(
+                SafetyCenterEntryGroupId.newBuilder().setSafetySourcesGroupId(sourcesGroupId)
+                    .build()
+            )
+
+        private fun safetyCenterEntryId(sourceId: String) =
+            SafetyCenterIds.encodeToString(
+                SafetyCenterEntryId.newBuilder()
+                    .setSafetySourceId(sourceId)
+                    .setUserId(UserHandle.myUserId())
+                    .build()
+            )
+
+        private fun safetyCenterIssueId(sourceId: String, sourceIssueId: String) =
+            SafetyCenterIds.encodeToString(
+                SafetyCenterIssueId.newBuilder()
+                    .setSafetySourceId(sourceId)
+                    .setSafetySourceIssueId(sourceIssueId)
+                    .setUserId(UserHandle.myUserId())
+                    .build()
+            )
+
+        private fun safetyCenterIssueActionId(
+            sourceId: String,
+            sourceIssueId: String,
+            sourceIssueActionId: String
+        ) =
+            SafetyCenterIds.encodeToString(
+                SafetyCenterIssueActionId.newBuilder()
+                    .setSafetyCenterIssueId(
+                        SafetyCenterIssueId.newBuilder()
+                            .setSafetySourceId(sourceId)
+                            .setSafetySourceIssueId(sourceIssueId)
+                            .setUserId(UserHandle.myUserId())
+                            .build()
+                    )
+                    .setSafetySourceIssueActionId(sourceIssueActionId)
+                    .build()
             )
     }
 }
