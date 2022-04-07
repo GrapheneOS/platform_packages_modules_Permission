@@ -131,10 +131,10 @@ public final class SafetyCenterIssue implements Parcelable {
             boolean isDismissible,
             boolean shouldConfirmDismissal,
             @NonNull List<Action> actions) {
-        mId = requireNonNull(id);
-        mTitle = requireNonNull(title);
+        mId = id;
+        mTitle = title;
         mSubtitle = subtitle;
-        mSummary = requireNonNull(summary);
+        mSummary = summary;
         mSeverityLevel = severityLevel;
         mDismissible = isDismissible;
         mShouldConfirmDismissal = shouldConfirmDismissal;
@@ -340,7 +340,7 @@ public final class SafetyCenterIssue implements Parcelable {
          */
         @NonNull
         public Builder setSeverityLevel(@IssueSeverityLevel int severityLevel) {
-            mSeverityLevel = severityLevel;
+            mSeverityLevel = validateIssueSeverityLevel(severityLevel);
             return this;
         }
 
@@ -436,9 +436,9 @@ public final class SafetyCenterIssue implements Parcelable {
                 boolean willResolve,
                 boolean inFlight,
                 @Nullable CharSequence successMessage) {
-            mId = requireNonNull(id);
-            mLabel = requireNonNull(label);
-            mPendingIntent = requireNonNull(pendingIntent);
+            mId = id;
+            mLabel = label;
+            mPendingIntent = pendingIntent;
             mWillResolve = willResolve;
             mInFlight = inFlight;
             mSuccessMessage = successMessage;
@@ -635,5 +635,18 @@ public final class SafetyCenterIssue implements Parcelable {
                         mSuccessMessage);
             }
         }
+    }
+
+    @IssueSeverityLevel
+    private static int validateIssueSeverityLevel(int value) {
+        switch (value) {
+            case ISSUE_SEVERITY_LEVEL_OK:
+            case ISSUE_SEVERITY_LEVEL_RECOMMENDATION:
+            case ISSUE_SEVERITY_LEVEL_CRITICAL_WARNING:
+                return value;
+            default:
+        }
+        throw new IllegalArgumentException(
+                String.format("Unexpected IssueSeverityLevel for SafetyCenterIssue: %s", value));
     }
 }
