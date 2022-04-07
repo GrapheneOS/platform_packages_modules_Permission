@@ -482,7 +482,7 @@
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Denne app vil gerne tage billeder og optage video hele tiden, også når du ikke bruger appen. "<annotation id="link">"Tillad dette i indstillingerne"</annotation>"."</string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Vil du give &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; adgang til dine opkaldslister?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Vil du give &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tilladelse til at foretage og administrere telefonopkald?"</string>
-    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Vil du give &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; adgang til sensordata om dine livstegn?"</string>
+    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Vil du give &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; adgang til sensordata om dine vitale værdier?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Administrerede tilladelser"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Der er adgang til din lokation"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Din it-administrator har givet <xliff:g id="APP_NAME">%s</xliff:g> adgang til din lokation"</string>

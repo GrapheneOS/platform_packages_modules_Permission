@@ -41,7 +41,7 @@
     <string name="permission_revoked_none" msgid="9213345075484381180">"hech biri o‘chirilmagan"</string>
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Ruxsat"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Har doim ruxsat"</string>
-    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Bu ilova ishlayotganda"</string>
+    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Bu ilova ishlayotganida"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Aniq joylashuvga oʻzgartirish"</string>
     <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Taxminiy joyolashuvni saqlash"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Faqat shu safar"</string>
@@ -482,7 +482,7 @@
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Bu ilova doimo, hatto undan foydalanmagan vaqtlaringizda ham rasm va videoga olishi mumkin. "<annotation id="link">"Sozlamalar orqali ruxsat bering."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun telefoningizdagi chaqiruvlar tarixiga kirish ruxsati berilsinmi?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun telefon chaqiruvlarini amalga oshirish va boshqarish ruxsati berilsinmi?"</string>
-    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun organizm holati haqidagi sezgichlar axborotlariga ruxsat berilsinmi?"</string>
+    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun tana holati haqidagi sensor axborotlariga ruxsat berilsinmi?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Boshqariluvchi ruxsatlar"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Joylashuv axborotiga ruxsati bor"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"AT administratori <xliff:g id="APP_NAME">%s</xliff:g> ilovasiga joylashuvingiz haqidagi axborotdan foydalanishga ruxsat bergan"</string>

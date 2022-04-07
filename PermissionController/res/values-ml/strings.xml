@@ -191,7 +191,7 @@
     <string name="sort_by_app" msgid="4055799843051138087">"ആപ്പ് ഉപയോഗമനുസരിച്ച് അടുക്കുക"</string>
     <string name="sort_by_time" msgid="5435045320002150456">"സമയപ്രകാരം അടുക്കുക"</string>
     <string name="item_separator" msgid="4030255389809224513">", "</string>
-    <string name="permission_usage_refresh" msgid="2264056346561305420">"പുതുക്കിയെടുക്കുക"</string>
+    <string name="permission_usage_refresh" msgid="2264056346561305420">"റീഫ്രഷ് ചെയ്യുക"</string>
     <plurals name="permission_usage_permission_filter_subtitle" formatted="false" msgid="2452104463317798268">
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ആപ്പുകൾ</item>
       <item quantity="one">ഒരു ആപ്പ്</item>
@@ -482,7 +482,7 @@
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"നിങ്ങൾ ആപ്പ് ഉപയോഗിക്കാത്തപ്പോൾ പോലും, ഈ ആപ്പിന് വീഡിയോ റെക്കോർഡ് ചെയ്യുക, ചിത്രമെടുക്കുക എന്നിവ ചെയ്യണം. "<annotation id="link">"ക്രമീകരണത്തിൽ അനുവദിക്കുക."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"നിങ്ങളുടെ ഫോൺ കോൾ ലോഗുകൾ ആക്സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"ഫോൺ കോളുകൾ ചെയ്യാനും അവ മാനേജ് ചെയ്യാനും &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>
-    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"നിങ്ങളുടെ ജീവധാരണ ലക്ഷണങ്ങളെ കുറിച്ചുള്ള സെൻസർ ഡാറ്റ ആക്‌സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>
+    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"നിങ്ങളുടെ പ്രധാന ആരോഗ്യ വിവരങ്ങളുടെ സെൻസർ ഡാറ്റ ആക്‌സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കണോ?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"നിയന്ത്രിത അനുമതികൾ"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"ലൊക്കേഷൻ ആക്‌സസ് ചെയ്യാൻ കഴിയും"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"നിങ്ങളുടെ ലൊക്കേഷൻ ആക്‌സസ് ചെയ്യാൻ നിങ്ങളുടെ ഐടി അഡ്‌മിൻ <xliff:g id="APP_NAME">%s</xliff:g> എന്നതിനെ അനുവദിക്കുന്നു"</string>

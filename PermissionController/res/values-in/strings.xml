@@ -331,7 +331,7 @@
     <string name="app_perms_24h_access" msgid="99069906850627181">"Terakhir diakses pada <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Terakhir diakses kemarin pada <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_content_provider" msgid="6996750793881252778">"Diakses dalam 24 jam terakhir"</string>
-    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Terakhir diakses pada <xliff:g id="TIME_DATE">%1$s</xliff:g> • Diizinkan sepanjang waktu"</string>
+    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Terakhir diakses <xliff:g id="TIME_DATE">%1$s</xliff:g> • Diizinkan terus-menerus"</string>
     <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Terakhir diakses kemarin pada <xliff:g id="TIME_DATE">%1$s</xliff:g> • Diizinkan sepanjang waktu"</string>
     <string name="app_perms_content_provider_background" msgid="7793984056711923997">"Diakses dalam 24 jam terakhir • Diizinkan sepanjang waktu"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Terakhir diakses pada <xliff:g id="TIME_DATE">%1$s</xliff:g> • Media"</string>

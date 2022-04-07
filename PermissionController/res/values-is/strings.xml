@@ -482,7 +482,7 @@
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Þetta forrit vill taka myndir og taka upp myndskeið hvenær sem er, jafnvel þegar þú ert ekki að nota forritið. "<annotation id="link">"Þú getur leyft það í stillingum."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Viltu veita &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aðgang að símtalaskrám símans?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Viltu leyfa &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; að hringja og stjórna símtölum?"</string>
-    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Viltu veita &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aðgang að skynjaragögnum yfir lífsmörk þín?"</string>
+    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Viltu veita &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aðgang að skynjaragögnum um lífsmörk þín?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Stýrðar heimildir"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Hægt er að nálgast upplýsingar um staðsetningu"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Kerfisstjórinn þinn leyfir forritinu „<xliff:g id="APP_NAME">%s</xliff:g>“ að fá upplýsingar um staðsetningu þína"</string>

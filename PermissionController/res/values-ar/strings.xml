@@ -558,7 +558,7 @@
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"يحتاج هذا التطبيق إلى التقاط صور وتسجيل فيديوهات طوال الوقت، حتى عند عدم استخدامك للتطبيق. يمكنك "<annotation id="link">"السماح بذلك في الإعدادات"</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بالوصول إلى سجلّ مكالماتك الهاتفية؟"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"‏هل تريد السماح لـ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بإجراء المكالمات الهاتفية وإدارتها؟"</string>
-    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بالدخول إلى بيانات المستشعر حول علاماتك الحيوية؟"</string>
+    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بالوصول إلى بيانات استشعار مؤشراتك الحيوية؟"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"الأذونات خاضعة لتحكّم المشرف"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"يمكن الوصول إلى الموقع الجغرافي"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"يسمح مشرف تكنولوجيا المعلومات لتطبيق <xliff:g id="APP_NAME">%s</xliff:g> بالوصول إلى موقعك الجغرافي."</string>
