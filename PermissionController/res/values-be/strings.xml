@@ -196,8 +196,11 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Паказаць усе дазволы праграмы \"<xliff:g id="APP">%1$s</xliff:g>\""</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Паказаць усе праграмы з гэтым дазволам"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Паказваць выкарыстанне мікрафона памочнікам"</string>
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"Налады праграм, якія не выкарыстоўваліся"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Выдаляць дазволы, калі праграма не выкарыстоўваецца"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Выдаліць дазволы і вызваліць месца"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Прыпыніць дзеянні ў неактыўнай праграме"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Выдаліць дазволы, часовыя файлы і спыніць апавяшчэнні"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Калі праграма не выкарыстоўваецца на працягу некалькіх месяцаў, то ў мэтах абароны вашых даных з яе будуць выдалены дазволы."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Калі праграма не выкарыстоўваецца на працягу некалькіх месяцаў, у мэтах абароны вашых даных будуць выдалены наступныя дазволы: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"У мэтах абароны вашых даных выдалены дазволы для праграм, якія не выкарыстоўваліся некалькі месяцаў."</string>
@@ -273,6 +276,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Дазволы выдалены ў мэтах абароны прыватнасці"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> атрымала доступ да даных месцазнаходжання ў фонавым рэжыме"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Гэта праграма заўсёды можа атрымаць доступ да даных пра ваша месцазнаходжанне. Націсніце, каб змяніць."</string>
+    <!-- no translation found for accessibility_access_reminder_notification_title (798487829152263568) -->
+    <skip />
+    <!-- no translation found for accessibility_access_reminder_notification_content (3897831796455872834) -->
+    <skip />
+    <!-- no translation found for accessibility_access_warning_card_content (3418029245041163015) -->
+    <skip />
+    <!-- no translation found for accessibility_remove_access_button_label (44145801526711640) -->
+    <skip />
+    <!-- no translation found for accessibility_show_all_apps_button_label (5027167822346195212) -->
+    <skip />
+    <!-- no translation found for accessibility_remove_access_success_label (4380995302917014670) -->
+    <skip />
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"У мэтах абароны прыватнасці дазволы праграмы выдалены"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"Праграма \"<xliff:g id="APP_NAME">%s</xliff:g>\" не выкарыстоўвалася некалькі месяцаў. Націсніце, каб праглядзець."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> і яшчэ 1 праграма не выкарыстоўваліся некалькі месяцаў. Націсніце, каб праглядзець."</string>
@@ -467,8 +482,7 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да журналаў выклікаў вашага тэлефона?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; рабіць тэлефонныя выклікі і кіраваць імі?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да даных з датчыкаў пра вашы асноўныя фізіялагічныя паказчыкі?"</string>
-    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
-    <skip />
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Гэта праграма запытвае пастаянны доступ да даных датчыкаў з паказчыкамі вашага арганізма, нават калі яна не выкарыстоўваецца. Каб змяніць дазвол, "<annotation id="link">"перайдзіце ў налады"</annotation>"."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Дазволіць праграме &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ да даных датчыкаў з паказчыкамі вашага арганізма?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Каб дазволіць гэтай праграме мець пастаянны доступ да даных датчыкаў цела, нават калі яна не выкарыстоўваецца, "<annotation id="link">"перайдзіце ў налады."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Захаваць для праграмы \"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;” дазвол на доступ да даных датчыкаў цела ў час яе выкарыстання?"</string>
@@ -500,6 +514,9 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Бяспека і прыватнасць"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Сканіраваць"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Адхіліць"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"Закрыць гэта папярэджанне?"</string>
+    <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Закрыць"</string>
+    <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Скасаваць"</string>
     <string name="security_settings" msgid="3808106921175271317">"Налады бяспекі"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Дазволы на доступ да датчыка"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Налады прыватнасці"</string>
@@ -509,8 +526,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"Выдаліць дазвол на доступ да камеры"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"Выдаліць дазвол на доступ да мікрафона"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"Кіраваць сэрвісамі"</string>
-    <!-- no translation found for manage_permissions_qs (3780541819763475434) -->
-    <skip />
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"Кіраваць дазволамі"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Выкарыстоўваецца падчас тэлефонных выклікаў"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Нядаўна выкарыстоўвалася ў час тэлефоннага выкліку"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"Выкарыстоўваецца праграмай \"<xliff:g id="APP_NAME">%1$s</xliff:g>\""</string>

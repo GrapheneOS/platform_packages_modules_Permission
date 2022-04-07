@@ -196,8 +196,11 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Прикажи ги сите дозволи за <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Прикажи ги сите апликации со оваа дозвола"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Прикажи го користењето на микрофонот на „Помошникот“"</string>
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"Поставки за некористени апликации"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Отстрани ги дозволите ако апликацијата не се користи"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Отстранувај дозволи и ослободувај простор"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Паузирај неактивна апликација"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Отстранува дозволи, брише привремени датотеки и запира известувања"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"За да се заштитат вашите податоци, дозволите за апликацијава ќе се отстранат ако апликацијата не се користи неколку месеци."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Ако апликацијата не се користи неколку месеци, заради заштита на податоците, ќе се отстранат следниве дозволи: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"За заштита на податоците, отстранети се дозволите од апликациите што не сте ги користеле неколку месеци."</string>
@@ -273,6 +276,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Дозволите се отстранети за да се заштити вашата приватност"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> ја има вашата локација во заднина"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Апликацијава секогаш може да пристапува до вашата локација. Допрете за да го промените тоа."</string>
+    <!-- no translation found for accessibility_access_reminder_notification_title (798487829152263568) -->
+    <skip />
+    <!-- no translation found for accessibility_access_reminder_notification_content (3897831796455872834) -->
+    <skip />
+    <!-- no translation found for accessibility_access_warning_card_content (3418029245041163015) -->
+    <skip />
+    <!-- no translation found for accessibility_remove_access_button_label (44145801526711640) -->
+    <skip />
+    <!-- no translation found for accessibility_show_all_apps_button_label (5027167822346195212) -->
+    <skip />
+    <!-- no translation found for accessibility_remove_access_success_label (4380995302917014670) -->
+    <skip />
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Дозволите за аплик. се отстранети за заштита на приватноста"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> не е користена неколку месеци. Допрете за да прегледате."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> и уште 1 апликација не се користени неколку месеци. Допрете за да прегледате."</string>
@@ -467,8 +482,7 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до евиденцијата на повици?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да повикува и да управува со телефонските повици?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до податоците на сензорот за витални знаци?"</string>
-    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
-    <skip />
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Апликцијава сака да пристапува до податоците од сензорите за вашите витални знаци цело време, дури и кога не се користи. За да ја извршите пормената, "<annotation id="link">"одете во „Поставки“."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Дали да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до податоците од сензорите за витални знаци?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"За да дозволите апликацијава да пристапува до податоци од телесните сензори цело време, дури и кога не ја користите, "<annotation id="link">"одете во „Поставки“."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"И понатаму да се дозволи пристап на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; до податоци од телесните сензори додека се користи апликацијата?"</string>
@@ -500,6 +514,9 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Безбедност и приватност"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Скенирај"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Отфрли"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"Да се отфрли опоменава?"</string>
+    <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Отфрли"</string>
+    <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Откажи"</string>
     <string name="security_settings" msgid="3808106921175271317">"Поставки за безбедноста"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Дозволи за сензор"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Контроли на приватноста"</string>

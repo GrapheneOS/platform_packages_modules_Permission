@@ -196,8 +196,11 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Εμφάνιση όλων των αδειών της εφαρμογής <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Εμφάνιση όλων των εφαρμογών με αυτήν την άδεια"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Εμφάνιση χρήσης μικροφώνου βοηθού"</string>
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"Ρυθμίσεις μη χρησιμοποιούμενων εφαρμογών"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Καταργήστε τις άδειες, εάν η εφαρμογή δεν χρησιμοποιείται."</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Κατάργηση αδειών και απελευθέρωση χώρου"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Παύση δραστηριότητας αδρανούς εφαρμογής"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Κατάργηση αδειών, διαγραφή προσωρινών αρχείων και διακοπή ειδοποιήσεων"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Για την προστασία των δεδομένων σας, οι άδειες για αυτήν την εφαρμογή θα καταργηθούν εάν η εφαρμογή δεν χρησιμοποιηθεί για μερικούς μήνες."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Για την προστασία των δεδομένων σας, εάν δεν έχει χρησιμοποιηθεί η εφαρμογή για μερικούς μήνες, οι παρακάτω άδειες θα καταργηθούν: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Για την προστασία των δεδομένων σας, έχουν καταργηθεί οι άδειες εφαρμογών που δεν έχετε χρησιμοποιήσει κατά τους τελευταίους μήνες."</string>
@@ -273,6 +276,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Οι άδειες καταργήθηκαν για την προστασία του απορρήτου σας"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"Η εφαρμογή <xliff:g id="APP_NAME">%s</xliff:g> έλαβε την τοποθεσία σας στο παρασκήνιο"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Αυτή η εφαρμογή μπορεί να έχει πάντα πρόσβαση στην τοποθεσία σας. Πατήστε για να αλλάξετε τη ρύθμιση."</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Έλεγχος εφαρμογής που έχει πρόσβαση σε λειτ. προσβασιμότητας"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"Η εφαρμογή <xliff:g id="APP_NAME">%s</xliff:g> μπορεί να διαβάσει όλο το περιεχόμενο της οθόνης, να προβάλλει περιεχόμενο πάνω από άλλες εφαρμογές και να παρακολουθήσει τις αλληλεπιδράσεις σας."</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Αυτή η εφαρμογή μπορεί να διαβάσει όλο το περιεχόμενο στην οθόνη, να προβάλλει περιεχόμενο πάνω από άλλες εφαρμογές και να παρακολουθεί τις αλληλεπιδράσεις σας."</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Κατάργηση πρόσβασης"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"Εμφάνιση εφαρμογών που έχουν πρόσβαση σε λειτ. προσβασιμότ."</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Η πρόσβαση καταργήθηκε"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Οι άδειες εφαρμογών καταργήθηκαν για προστασία απορρήτου."</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"Η εφαρμογή <xliff:g id="APP_NAME">%s</xliff:g> δεν έχει χρησιμοποιηθεί τους τελευταίους μήνες. Πατήστε για έλεγχο."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"Η εφαρμογή <xliff:g id="APP_NAME">%s</xliff:g> και 1 ακόμη εφαρμογή δεν έχουν χρησιμοποιηθεί τους τελευταίους μήνες. Πατήστε για έλεγχο."</string>
@@ -467,8 +476,7 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να έχει πρόσβαση στα αρχεία καταγραφής τηλεφωνικών κλήσεών σας;"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πραγματοποίηση και η διαχείριση τηλεφωνικών κλήσεων;"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; να έχει πρόσβαση στα δεδομένα αισθητήρα σχετικά με τις ζωτικές ενδείξεις σας;"</string>
-    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
-    <skip />
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Αυτή η εφαρμογή θέλει πρόσβαση στα δεδομένα αισθητήρα για τις ζωτικές σας ενδείξεις, ακόμη και όταν δεν τη χρησιμοποιείτε. Για να κάνετε αυτήν την αλλαγή, "<annotation id="link">"μεταβείτε στις ρυθμίσεις."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Να επιτρέπεται στην εφαρμογή &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση σε δεδομένα αισθητήρα σχετικά με τις ζωτικές ενδείξεις σας;"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Για να επιτρέψετε σε αυτήν την εφαρμογή να αποκτά πρόσβαση σε δεδομένα αισθητήρων σώματος οποιαδήποτε στιγμή, ακόμα και όταν δεν χρησιμοποιείτε την εφαρμογή, "<annotation id="link">"μεταβείτε στις ρυθμίσεις."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Να συνεχίσει να επιτρέπεται στο &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; η πρόσβαση σε δεδομένα αισθητήρων σώματος ενώ χρησιμοποιείται;"</string>
@@ -500,6 +508,9 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Ασφάλεια και Απόρρητο"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Σάρωση"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Παράβλεψη"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"Παράβλεψη αυτής της ειδοποίησης;"</string>
+    <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Παράβλεψη"</string>
+    <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Ακύρωση"</string>
     <string name="security_settings" msgid="3808106921175271317">"Ρυθμίσεις ασφαλείας"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Άδειες αισθητήρων"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Στοιχεία ελέγχου απορρήτου"</string>

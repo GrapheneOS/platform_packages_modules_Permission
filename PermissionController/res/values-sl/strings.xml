@@ -196,8 +196,11 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Ogled vseh dovoljenj za aplikacijo <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Ogled vseh aplikacij s tem dovoljenjem"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Prikaz uporabe pomožnega mikrofona"</string>
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"Nastavitve neuporabljenih aplikacij"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Odstrani dovoljenja, če aplikacija ni v uporabi"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Odstrani dovoljenja in sprosti prostor"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Zaustavi dejavnost aplikacije ob neuporabi"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Dovoljenja se odstranijo, začasne datoteke se izbrišejo in prikazovanje obvestil se ustavi."</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Z namenom zaščite podatkov bodo dovoljenja za to aplikacijo odstranjena, če je več mesecev ne boste uporabljali."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Če aplikacije več mesecev ne boste uporabljali, bodo z namenom zaščite podatkov odstranjena ta dovoljenja: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Z namenom zaščite podatkov so bila odstranjena dovoljenja za aplikacije, ki jih več mesecev niste uporabljali."</string>
@@ -273,6 +276,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Dovoljenja odstranjena za zaščito vaše zasebnosti"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"Aplikacija <xliff:g id="APP_NAME">%s</xliff:g> je podatek o lokaciji pridobila v ozadju"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Ta aplikacija lahko vedno dostopa do vaše lokacije. Dotaknite se, če želite spremeniti dovoljenje."</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Preglejte aplikacijo z dostopom do funkcij za ljudi s posebnimi potrebami"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"Aplikacija <xliff:g id="APP_NAME">%s</xliff:g> lahko bere vso vsebino na zaslonu, prikazuje vsebino nad drugimi aplikacijami in sledi vašim interakcijam."</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Ta aplikacija lahko bere vso vsebino na zaslonu, prikazuje vsebino nad drugimi aplikacijami in sledi vašim interakcijam."</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Odstrani dostop"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"Prikaži aplikacije z dostopom do funkcij za ljudi s posebnimi potrebami"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Dostop je odstranjen."</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Dovoljenja za aplikacije odstranjena za zaščito zasebnosti"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"Več mesecev niste uporabljali aplikacije <xliff:g id="APP_NAME">%s</xliff:g>. Dotaknite se za pregled."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"Več mesecev niste uporabljali aplikacije <xliff:g id="APP_NAME">%s</xliff:g> in 1 druge aplikacije. Dotaknite se za pregled."</string>
@@ -467,8 +476,7 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Dovolite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dostop do dnevnikov klicev v telefonu?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Dovolite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; opravljanje in upravljanje telefonskih klicev?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Dovolite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dostop do podatkov tipala o vitalnih znakih?"</string>
-    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
-    <skip />
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Ta aplikacija želi stalen dostop do podatkov tipal vitalnih znakov, tudi ko aplikacije ne uporabljate. Če želite izvesti to spremembo, "<annotation id="link">"pojdite v nastavitve"</annotation>"."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Želite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; omogočiti dostop do podatkov tipal o vitalnih znakih?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Če želite tej aplikaciji omogočiti stalen dostop do podatkov tipal telesnih funkcij, tudi ko je ne uporabljate, "<annotation id="link">"pojdite v nastavitve"</annotation>"."</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Ali želite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; še naprej dovoliti dostop do podatkov tipal telesnih funkcij, ko je v uporabi?"</string>
@@ -500,6 +508,9 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Varnost in zasebnost"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Išči"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Opusti"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"Želite opustiti to opozorilo?"</string>
+    <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Opusti"</string>
+    <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Prekliči"</string>
     <string name="security_settings" msgid="3808106921175271317">"Varnostne nastavitve"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Dovoljenja za tipala"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Nastavitve zasebnosti"</string>
