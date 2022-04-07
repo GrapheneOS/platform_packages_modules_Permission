@@ -196,14 +196,11 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Xem tất cả các quyền của <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Xem tất cả ứng dụng có quyền này"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Hiển thị việc sử dụng micrô của Trợ lý"</string>
-    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
-    <skip />
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"Các chế độ cài đặt ứng dụng chưa dùng"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Thu hồi quyền nếu không dùng ứng dụng"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Thu hồi quyền và giải phóng dung lượng"</string>
-    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Tạm dừng hoạt động trong ứng dụng nếu không dùng"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Loại bỏ quyền, xoá tệp tạm thời và dừng thông báo"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Để bảo vệ dữ liệu của bạn, các quyền cấp cho ứng dụng này sẽ bị thu hồi nếu bạn không dùng ứng dụng trong vài tháng."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Để bảo vệ dữ liệu của bạn, nếu bạn không dùng ứng dụng này trong vài tháng thì các quyền sau đây sẽ bị thu hồi: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Để bảo vệ dữ liệu của bạn, quản trị viên CNTT đã thu hồi các quyền đối với những ứng dụng bạn không dùng trong vài tháng."</string>
@@ -502,7 +499,7 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Đối với các ứng dụng và dịch vụ"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"Dữ liệu thu được qua micrô vẫn có thể được chia sẻ khi bạn gọi đến số khẩn cấp."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Thay đổi"</string>
-    <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Tính bảo mật và quyền riêng tư"</string>
+    <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Bảo mật và quyền riêng tư"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Quét"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Đóng"</string>
     <string name="security_settings" msgid="3808106921175271317">"Cài đặt bảo mật"</string>
@@ -523,6 +520,6 @@
     <string name="recent_app_usage_1_qs" msgid="261450184773310741">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>) đã dùng gần đây"</string>
     <string name="active_app_usage_2_qs" msgid="6107866785243565283">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) đang dùng"</string>
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) đã dùng gần đây"</string>
-    <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Tính bảo mật và quyền riêng tư"</string>
+    <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Bảo mật và quyền riêng tư"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Kiểm tra trạng thái"</string>
 </resources>

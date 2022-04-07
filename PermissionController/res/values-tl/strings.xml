@@ -199,8 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Mga setting ng hindi ginagamit na app"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Alisin ang mga pahintulot kung hindi ginagamit ang app"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Alisin ang pahintulot, magbakante ng espasyo"</string>
-    <string name="unused_apps_label_v2" msgid="2443239537162119403">"I-pause ang aktibidad ng app"</string>
-    <string name="unused_apps_summary" msgid="4416065734063612849">"Alisin ang mga pahintulot, i-delete ang mga pansamantalang file, at ihinto ang mga notification kung hindi ginagamit"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"I-pause ang aktibidad sa app kung hindi ginagamit"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Alisin ang mga pahintulot, i-delete ang mga pansamantalang file, at ihinto ang mga notification"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Para maprotektahan ang iyong data, aalisin ang mga pahintulot para sa app na ito kapag ilang buwan nang hindi ginagamit ang app."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Para maprotektahan ang iyong data, kapag ilang buwan nang hindi ginagamit ang app, aalisin ang mga sumusunod na pahintulot: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Para protektahan ang iyong data, inalis na ang mga pahintulot sa mga app na ilang buwan mo nang hindi ginagamit."</string>
