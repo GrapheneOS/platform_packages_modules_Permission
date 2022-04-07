@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.service
+package com.android.permissioncontroller.tests.mocking.permission.service
 
 import android.app.job.JobInfo
 import android.app.job.JobScheduler
@@ -26,7 +26,9 @@ import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.data.PermissionDecision
+import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsStorage
 import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsStorage.Companion.DEFAULT_MAX_DATA_AGE_MS
+import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsStorageImpl
 import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsStorageImpl.Companion.DEFAULT_CLEAR_OLD_DECISIONS_CHECK_FREQUENCY
 import com.android.permissioncontroller.permission.utils.Utils.PROPERTY_PERMISSION_DECISIONS_CHECK_OLD_FREQUENCY_MILLIS
 import com.android.permissioncontroller.permission.utils.Utils.PROPERTY_PERMISSION_DECISIONS_MAX_DATA_AGE_MILLIS

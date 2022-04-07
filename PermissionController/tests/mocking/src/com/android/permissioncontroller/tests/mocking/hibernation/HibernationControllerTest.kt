@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.hibernation
+package com.android.permissioncontroller.tests.mocking.hibernation
 
 import android.app.usage.UsageStatsManager
 import android.apphibernation.AppHibernationManager
@@ -28,6 +28,7 @@ import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
 import com.android.dx.mockito.inline.extended.ExtendedMockito.mockitoSession
 import com.android.permissioncontroller.Constants
+import com.android.permissioncontroller.hibernation.HibernationController
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 import org.junit.After
