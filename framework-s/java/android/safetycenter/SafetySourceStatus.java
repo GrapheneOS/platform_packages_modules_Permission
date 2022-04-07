@@ -325,8 +325,10 @@ public final class SafetySourceStatus implements Parcelable {
                 case ICON_TYPE_GEAR:
                 case ICON_TYPE_INFO:
                     return value;
+                default:
             }
-            throw new IllegalArgumentException(String.format("Unexpected IconType: %s", value));
+            throw new IllegalArgumentException(
+                    String.format("Unexpected IconType for IconAction: %s", value));
         }
     }
 
@@ -353,7 +355,7 @@ public final class SafetySourceStatus implements Parcelable {
                 @SafetySourceData.SeverityLevel int severityLevel) {
             this.mTitle = requireNonNull(title);
             this.mSummary = requireNonNull(summary);
-            this.mSeverityLevel = SafetySourceData.validateSeverityLevelForSource(severityLevel);
+            this.mSeverityLevel = validateSeverityLevel(severityLevel);
         }
 
         /**
@@ -407,5 +409,19 @@ public final class SafetySourceStatus implements Parcelable {
             return new SafetySourceStatus(
                     mTitle, mSummary, mSeverityLevel, mPendingIntent, mIconAction, mEnabled);
         }
+    }
+
+    @SafetySourceData.SeverityLevel
+    private static int validateSeverityLevel(int value) {
+        switch (value) {
+            case SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED:
+            case SafetySourceData.SEVERITY_LEVEL_INFORMATION:
+            case SafetySourceData.SEVERITY_LEVEL_RECOMMENDATION:
+            case SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING:
+                return value;
+            default:
+        }
+        throw new IllegalArgumentException(
+                String.format("Unexpected SeverityLevel for SafetySourceStatus: %s", value));
     }
 }
