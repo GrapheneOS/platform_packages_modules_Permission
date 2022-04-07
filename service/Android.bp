@@ -111,6 +111,7 @@ java_sdk_library {
         //"kotlin-stdlib",
         "modules-utils-backgroundthread",
         "modules-utils-os",
+        "safety-center-config",
         "safety-center-resources-lib",
         "service-permission-shared",
     ],
