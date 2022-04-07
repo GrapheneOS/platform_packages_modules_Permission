@@ -380,7 +380,7 @@ public final class SafetyCenterEntry implements Parcelable {
          */
         @NonNull
         public Builder setSeverityLevel(@EntrySeverityLevel int severityLevel) {
-            mSeverityLevel = severityLevel;
+            mSeverityLevel = validateEntrySeverityLevel(severityLevel);
             return this;
         }
 
@@ -391,7 +391,8 @@ public final class SafetyCenterEntry implements Parcelable {
         @NonNull
         public Builder setSeverityUnspecifiedIconType(
                 @SeverityUnspecifiedIconType int severityUnspecifiedIconType) {
-            mSeverityUnspecifiedIconType = severityUnspecifiedIconType;
+            mSeverityUnspecifiedIconType = validateSeverityUnspecifiedIconType(
+                    severityUnspecifiedIconType);
             return this;
         }
 
@@ -489,7 +490,7 @@ public final class SafetyCenterEntry implements Parcelable {
 
         /** Creates an icon action for a {@link SafetyCenterEntry}. */
         public IconAction(@IconActionType int type, @NonNull PendingIntent pendingIntent) {
-            mType = type;
+            mType = validateIconActionType(type);
             mPendingIntent = requireNonNull(pendingIntent);
         }
 
@@ -538,5 +539,48 @@ public final class SafetyCenterEntry implements Parcelable {
             dest.writeInt(mType);
             dest.writeTypedObject(mPendingIntent, flags);
         }
+
+        @IconActionType
+        private static int validateIconActionType(int value) {
+            switch (value) {
+                case ICON_ACTION_TYPE_GEAR:
+                case ICON_ACTION_TYPE_INFO:
+                    return value;
+                default:
+            }
+            throw new IllegalArgumentException(
+                    String.format("Unexpected IconActionType for IconAction: %s", value));
+        }
+    }
+
+    @EntrySeverityLevel
+    private static int validateEntrySeverityLevel(int value) {
+        switch (value) {
+            case ENTRY_SEVERITY_LEVEL_UNKNOWN:
+            case ENTRY_SEVERITY_LEVEL_UNSPECIFIED:
+            case ENTRY_SEVERITY_LEVEL_OK:
+            case ENTRY_SEVERITY_LEVEL_RECOMMENDATION:
+            case ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING:
+                return value;
+            default:
+        }
+        throw new IllegalArgumentException(
+                String.format("Unexpected EntrySeverityLevel for SafetyCenterEntry: %s",
+                        value));
+    }
+
+    @SeverityUnspecifiedIconType
+    private static int validateSeverityUnspecifiedIconType(int value) {
+        switch (value) {
+            case SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON:
+            case SEVERITY_UNSPECIFIED_ICON_TYPE_PRIVACY:
+            case SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION:
+                return value;
+            default:
+        }
+        throw new IllegalArgumentException(
+                String.format(
+                        "Unexpected SeverityUnspecifiedIconType for SafetyCenterEntry: %s",
+                        value));
     }
 }
