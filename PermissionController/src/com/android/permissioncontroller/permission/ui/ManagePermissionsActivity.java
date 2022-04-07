@@ -63,8 +63,8 @@ import com.android.permissioncontroller.permission.ui.handheld.AppPermissionFrag
 import com.android.permissioncontroller.permission.ui.handheld.AppPermissionGroupsFragment;
 import com.android.permissioncontroller.permission.ui.handheld.HandheldUnusedAppsWrapperFragment;
 import com.android.permissioncontroller.permission.ui.handheld.PermissionAppsFragment;
-import com.android.permissioncontroller.permission.ui.handheld.dashboard.PermissionDetailsWrapperFragment;
-import com.android.permissioncontroller.permission.ui.handheld.dashboard.PermissionUsageV2WrapperFragment;
+import com.android.permissioncontroller.permission.ui.handheld.v31.PermissionDetailsWrapperFragment;
+import com.android.permissioncontroller.permission.ui.handheld.v31.PermissionUsageV2WrapperFragment;
 import com.android.permissioncontroller.permission.ui.legacy.AppPermissionActivity;
 import com.android.permissioncontroller.permission.ui.television.TvUnusedAppsFragment;
 import com.android.permissioncontroller.permission.ui.wear.AppPermissionsFragmentWear;

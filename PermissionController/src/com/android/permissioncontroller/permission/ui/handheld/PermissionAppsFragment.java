@@ -22,7 +22,7 @@ import static com.android.permissioncontroller.permission.ui.Category.ALLOWED_FO
 import static com.android.permissioncontroller.permission.ui.Category.ASK;
 import static com.android.permissioncontroller.permission.ui.Category.DENIED;
 import static com.android.permissioncontroller.permission.ui.handheld.UtilsKt.pressBack;
-import static com.android.permissioncontroller.permission.ui.handheld.dashboard.DashboardUtilsKt.shouldShowPermissionsDashboard;
+import static com.android.permissioncontroller.permission.ui.handheld.v31.DashboardUtilsKt.shouldShowPermissionsDashboard;
 
 import android.Manifest;
 import android.app.ActionBar;
@@ -53,8 +53,8 @@ import androidx.preference.PreferenceScreen;
 
 import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
-import com.android.permissioncontroller.permission.model.AppPermissionUsage;
-import com.android.permissioncontroller.permission.model.PermissionUsages;
+import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage;
+import com.android.permissioncontroller.permission.model.v31.PermissionUsages;
 import com.android.permissioncontroller.permission.ui.Category;
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity;
 import com.android.permissioncontroller.permission.ui.model.PermissionAppsViewModel;
