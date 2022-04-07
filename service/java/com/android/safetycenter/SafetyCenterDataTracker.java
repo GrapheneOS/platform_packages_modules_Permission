@@ -207,7 +207,7 @@ final class SafetyCenterDataTracker {
                             packageName, safetySourceId));
         }
 
-        // TODO(b/222327845)): Security: check package is installed for user?
+        // TODO(b/222327845): Security: check package is installed for user?
 
         if (UserUtils.isManagedProfile(userId, mContext)
                 && !SafetySources.supportsManagedProfiles(safetySource)) {
@@ -398,7 +398,7 @@ final class SafetyCenterDataTracker {
         }
 
         // TODO(b/218817233): Add dismissible and shouldConfirmDismissal. Still TBD by UX: green
-        // issues won't have confirm on dismiss and red might not be dismissible.
+        //  issues won't have confirm on dismiss and red might not be dismissible.
         return new SafetyCenterIssue.Builder(
                 SafetyCenterIds.encodeToString(safetyCenterIssueId),
                 safetySourceIssue.getTitle(),
@@ -670,7 +670,7 @@ final class SafetyCenterDataTracker {
                     PendingIntent pendingIntent = safetySourceStatus.getPendingIntent();
                     if (pendingIntent == null) {
                         // TODO(b/222838784): Decide strategy for static entries when the intent is
-                        // null.
+                        //  null.
                         return null;
                     }
                     return new SafetyCenterStaticEntry.Builder(safetySourceStatus.getTitle())
