@@ -1,0 +1,53 @@
+/*
+ * Copyright (C) 2022 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+syntax = "proto2";
+
+package com.android.safetycenter.internaldata;
+
+option java_multiple_files = true;
+
+// An id for entry groups provided by the Safety Center.
+message SafetyCenterEntryGroupId {
+  // The ID of the safety sources group that the entry group originated from.
+  optional string safety_sources_group_id = 1;
+}
+
+// An id for entries provided by the Safety Center.
+message SafetyCenterEntryId {
+  // The ID of the safety source that the entry originated from.
+  optional string safety_source_id = 1;
+  // The user ID associated with this entry.
+  optional int32 user_id = 2;
+}
+
+// An id for issues provided by the Safety Center.
+message SafetyCenterIssueId {
+  // The ID of the safety source that the issue originated from.
+  optional string safety_source_id = 1;
+  // The ID of the safety source issue that the issue originated from.
+  optional string safety_source_issue_id = 2;
+  // The user ID associated with this issue.
+  optional int32 user_id = 3;
+}
+
+// An id for issue actions provided by the Safety Center.
+message SafetyCenterIssueActionId {
+  // The `SafetyCenterIssueId` associated with this action.
+  optional SafetyCenterIssueId safety_center_issue_id = 1;
+  // The ID of the safety source issue action that the action originated from.
+  optional string safety_source_issue_action_id = 2;
+}
