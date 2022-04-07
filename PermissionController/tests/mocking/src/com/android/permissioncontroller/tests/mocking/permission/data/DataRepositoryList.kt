@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.data
+package com.android.permissioncontroller.tests.mocking.permission.data
 
 import android.content.ComponentCallbacks2
 
