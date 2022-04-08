@@ -181,34 +181,6 @@ public final class SafetySourceData implements Parcelable {
         this.mIssues = issues;
     }
 
-    @SeverityLevel
-    static int validateSeverityLevelForSource(int value) {
-        switch (value) {
-            case SEVERITY_LEVEL_UNSPECIFIED:
-            case SEVERITY_LEVEL_INFORMATION:
-            case SEVERITY_LEVEL_RECOMMENDATION:
-            case SEVERITY_LEVEL_CRITICAL_WARNING:
-                return value;
-            default:
-                throw new IllegalArgumentException(
-                        String.format("Unexpected Level for source: %s", value));
-        }
-    }
-
-    @SeverityLevel
-    static int validateSeverityLevelForIssue(int value) {
-        switch (value) {
-            case SEVERITY_LEVEL_INFORMATION:
-            case SEVERITY_LEVEL_RECOMMENDATION:
-            case SEVERITY_LEVEL_CRITICAL_WARNING:
-                return value;
-            case SEVERITY_LEVEL_UNSPECIFIED:
-            default:
-                throw new IllegalArgumentException(
-                        String.format("Unexpected Level for issue: %s", value));
-        }
-    }
-
     /** Returns the data for the {@link SafetySourceStatus} to be shown in UI. */
     @Nullable
     public SafetySourceStatus getStatus() {

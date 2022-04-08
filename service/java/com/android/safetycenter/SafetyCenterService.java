@@ -387,7 +387,7 @@ public final class SafetyCenterService extends SystemService {
             synchronized (mApiLock) {
                 mSafetyCenterDataTracker.clear();
                 // TODO(b/223550097): Should we dispatch a new listener update here? This call can
-                // modify the SafetyCenterData.
+                //  modify the SafetyCenterData.
             }
         }
 
@@ -508,8 +508,8 @@ public final class SafetyCenterService extends SystemService {
             synchronized (mBroadcastLock) {
                 mSafetyCenterBroadcastManager.sendEnabledChanged(configInternal);
                 // TODO(b/227342241): Look into whether we should refresh safety sources here too.
-                // Supposedly they could already be listening to
-                // `ACTION_SAFETY_CENTER_ENABLED_CHANGED`, so it might not be necessary.
+                //  Supposedly they could already be listening to
+                //  `ACTION_SAFETY_CENTER_ENABLED_CHANGED`, so it might not be necessary.
             }
         }
 
@@ -519,7 +519,7 @@ public final class SafetyCenterService extends SystemService {
             synchronized (mApiLock) {
                 configInternal = mSafetyCenterConfigReader.getCurrentConfigInternal();
                 mSafetyCenterDataTracker.clear();
-                // TODO(b/227428101): Look into clearing the listeners here as well.
+                mSafetyCenterListeners.clear();
             }
 
             synchronized (mBroadcastLock) {

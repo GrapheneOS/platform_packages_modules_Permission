@@ -26,5 +26,10 @@
     <string name="lock_screen_title" description="The default title of the setting for managing the screen lock on the device">Screen lock</string>
     <string name="lock_screen_summary_disabled" description="The default summary of the setting for managing screen lock on the device before the current state is known to safety center">Details available soon</string>
 
+    <!-- Advanced -->
+    <string name="advanced_title" description="TODO">Advanced</string>
+    <string name="advanced_security_title" description="TODO">Advanced security</string>
+    <string name="advanced_security_summary" description="TODO">Screen lock, connected apps</string>
+
     <string name="summary_placeholder" description="DO NOT TRANSLATE" translatable="false">&#160;</string>
 </resources>

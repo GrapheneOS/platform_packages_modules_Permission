@@ -18,13 +18,13 @@
 
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.android.safetycenter.tests.resourceslib.safetycenterresourceslib">
+    package="com.android.safetycenter.resourceslib.tests">
 
     <application android:label="Safety Center ResourcesLib Tests">
         <uses-library android:name="android.test.runner" />
     </application>
 
     <instrumentation android:name="androidx.test.runner.AndroidJUnitRunner"
-                     android:targetPackage="com.android.safetycenter.tests.resourceslib.safetycenterresourceslib"
+                     android:targetPackage="com.android.safetycenter.resourceslib.tests"
                      android:label="Tests for the Safety Center ResourcesLib library" />
 </manifest>

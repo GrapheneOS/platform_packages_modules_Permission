@@ -27,12 +27,12 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
-import android.content.res.XmlResourceParser;
 import android.util.Log;
 
 import com.android.internal.annotations.VisibleForTesting;
 
 import java.io.File;
+import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -152,22 +152,25 @@ public class SafetyCenterResourcesContext extends ContextWrapper {
         return mResourcesApkPkgName;
     }
 
-    /** Get the Safety Center config XML parser interface from the Safety Center resources APK. */
+    /**
+     * Get the raw XML resource representing the Safety Center configuration from the Safety Center
+     * resources APK.
+     */
     @Nullable
-    public XmlResourceParser getSafetyCenterConfig() {
-        String resoursePkgName = getResourcesApkPkgName();
-        if (resoursePkgName == null) {
+    public InputStream getSafetyCenterConfig() {
+        String resourcePkgName = getResourcesApkPkgName();
+        if (resourcePkgName == null) {
             return null;
         }
         Resources resources = getResources();
         if (resources == null) {
             return null;
         }
-        int id = resources.getIdentifier(mConfigName, "xml", resoursePkgName);
+        int id = resources.getIdentifier(mConfigName, "raw", resourcePkgName);
         if (id == Resources.ID_NULL) {
             return null;
         }
-        return resources.getXml(id);
+        return resources.openRawResource(id);
     }
 
     @Nullable

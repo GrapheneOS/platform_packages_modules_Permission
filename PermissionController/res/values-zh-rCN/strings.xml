@@ -196,8 +196,11 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"查看“<xliff:g id="APP">%1$s</xliff:g>”的所有权限"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"查看具有此权限的所有应用"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"显示 Google 助理麦克风使用情况"</string>
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"关于未使用应用的设置"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"如果未使用此应用，则移除相关权限"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"撤消权限并释放空间"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"暂停未使用应用的活动"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"移除权限、删除临时文件并停止发送通知"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"为了保护您的数据，如果您连续几个月未使用此应用，系统会移除它的权限。"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"为了保护您的数据，如果您连续几个月未使用此应用，系统会移除其以下权限：<xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"为了保护您的数据，对于您连续几个月未使用过的应用，系统已将其权限移除。"</string>
@@ -273,6 +276,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"为保护您的隐私，系统已移除这些权限"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g>在后台获取了您的位置信息"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"此应用随时可以使用您的位置信息。点按即可更改。"</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"查看具有无障碍功能访问权限的应用"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"“<xliff:g id="APP_NAME">%s</xliff:g>”可以读取屏幕上的所有内容、在其他应用上方显示内容并跟踪您的互动情况。"</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"此应用可以读取屏幕上的所有内容、在其他应用上方显示内容并跟踪您的互动情况。"</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"移除访问权限"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"查看具有无障碍功能访问权限的应用"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"已移除访问权限"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"为保护隐私，系统已移除应用权限"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g>在几个月内未使用过。点按即可查看。"</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g>和另外 1 个应用在几个月内未使用过。点按即可查看。"</string>
@@ -467,8 +476,7 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问您的手机通话记录吗？"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"允许“&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;”拨打电话和管理通话吗？"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问与您的生命体征相关的传感器数据吗？"</string>
-    <!-- no translation found for permgroupupgraderequestdetail_sensors (6651914048792092835) -->
-    <skip />
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"此应用希望随时都能访问与您的生命体征相关的传感器数据（即使在您未使用此应用时）。如要进行这种权限更改，请"<annotation id="link">"前往设置页面"</annotation>"。"</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问与您的生命体征相关的传感器数据吗？"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"如要允许此应用始终可以访问身体传感器数据（即使在您未使用此应用时），请"<annotation id="link">"前往设置"</annotation>"。"</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"始终允许“<xliff:g id="APP_NAME">%1$s</xliff:g>”在使用中时访问身体传感器数据？"</string>
@@ -500,6 +508,9 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"安全性和隐私权"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"扫描"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"关闭"</string>
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"要关闭此警告吗？"</string>
+    <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"关闭"</string>
+    <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"取消"</string>
     <string name="security_settings" msgid="3808106921175271317">"安全设置"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"传感器权限"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"隐私控制"</string>
@@ -509,8 +520,7 @@
     <string name="remove_camera_qs" msgid="8209716677879809162">"移除相机权限"</string>
     <string name="remove_microphone_qs" msgid="2893536836641560183">"移除麦克风权限"</string>
     <string name="manage_service_qs" msgid="7862555549364153805">"管理服务"</string>
-    <!-- no translation found for manage_permissions_qs (3780541819763475434) -->
-    <skip />
+    <string name="manage_permissions_qs" msgid="3780541819763475434">"管理权限"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"通话正在使用"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"最近在通话中使用过"</string>
     <string name="active_app_usage_qs" msgid="4063912870936464727">"“<xliff:g id="APP_NAME">%1$s</xliff:g>”正在使用"</string>
