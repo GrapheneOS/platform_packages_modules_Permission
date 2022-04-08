@@ -196,14 +196,11 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Ver todos os permisos de <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Ver todas as aplicacións que teñen este permiso"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Mostrar uso do micrófono do Asistente"</string>
-    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
-    <skip />
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"Configuración das aplicacións sen uso"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Quitar permisos se non se usa a aplicación"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Quitar permisos e liberar espazo"</string>
-    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Pór en pausa actividade de apps sen uso"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Quita permisos, elimina ficheiros temporais e detén as notificacións"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Para protexer os teus datos, quitaranse os permisos desta aplicación se pasas varios meses sen utilizala."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Para protexer os teus datos, se a aplicación leva varios meses sen usarse, quitaranse os seguintes permisos: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Para protexer os teus datos, quitáronse os permisos das aplicacións que levas varios meses sen usar."</string>

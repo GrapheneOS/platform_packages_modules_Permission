@@ -151,8 +151,8 @@ public final class SafetyCenterStatus implements Parcelable {
             @NonNull CharSequence summary,
             @OverallSeverityLevel int severityLevel,
             @RefreshStatus int refreshStatus) {
-        mTitle = requireNonNull(title);
-        mSummary = requireNonNull(summary);
+        mTitle = title;
+        mSummary = summary;
         mSeverityLevel = severityLevel;
         mRefreshStatus = refreshStatus;
     }
@@ -275,7 +275,7 @@ public final class SafetyCenterStatus implements Parcelable {
          */
         @NonNull
         public Builder setSeverityLevel(@OverallSeverityLevel int severityLevel) {
-            mSeverityLevel = severityLevel;
+            mSeverityLevel = validateOverallSeverityLevel(severityLevel);
             return this;
         }
 
@@ -284,7 +284,7 @@ public final class SafetyCenterStatus implements Parcelable {
          */
         @NonNull
         public Builder setRefreshStatus(@RefreshStatus int refreshStatus) {
-            mRefreshStatus = refreshStatus;
+            mRefreshStatus = validateRefreshStatus(refreshStatus);
             return this;
         }
 
@@ -293,5 +293,32 @@ public final class SafetyCenterStatus implements Parcelable {
         public SafetyCenterStatus build() {
             return new SafetyCenterStatus(mTitle, mSummary, mSeverityLevel, mRefreshStatus);
         }
+    }
+
+    @OverallSeverityLevel
+    private static int validateOverallSeverityLevel(int value) {
+        switch (value) {
+            case OVERALL_SEVERITY_LEVEL_UNKNOWN:
+            case OVERALL_SEVERITY_LEVEL_OK:
+            case OVERALL_SEVERITY_LEVEL_RECOMMENDATION:
+            case OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING:
+                return value;
+            default:
+        }
+        throw new IllegalArgumentException(
+                String.format("Unexpected OverallSeverityLevel for SafetyCenterStatus: %s", value));
+    }
+
+    @RefreshStatus
+    private static int validateRefreshStatus(int value) {
+        switch (value) {
+            case REFRESH_STATUS_NONE:
+            case REFRESH_STATUS_DATA_FETCH_IN_PROGRESS:
+            case REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS:
+                return value;
+            default:
+        }
+        throw new IllegalArgumentException(
+                String.format("Unexpected RefreshStatus for SafetyCenterStatus: %s", value));
     }
 }

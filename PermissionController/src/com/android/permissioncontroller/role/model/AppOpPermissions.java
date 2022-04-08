@@ -39,12 +39,14 @@ public class AppOpPermissions {
      *
      * @param packageName the package name of the application
      * @param appOpPermission the name of the app op permission
+     * @param overrideNonDefaultMode whether to override the app opp mode if it isn't in the default
+     *        mode
      * @param context the {@code Context} to retrieve system services
      *
      * @return whether any app op mode has changed
      */
     public static boolean grant(@NonNull String packageName, @NonNull String appOpPermission,
-            @NonNull Context context) {
+            boolean overrideNonDefaultMode, @NonNull Context context) {
         PackageInfo packageInfo = PackageUtils.getPackageInfo(packageName,
                 PackageManager.GET_PERMISSIONS, context);
         if (packageInfo == null) {
@@ -54,6 +56,12 @@ public class AppOpPermissions {
             return false;
         }
         String appOp = AppOpsManager.permissionToOp(appOpPermission);
+        if (!overrideNonDefaultMode) {
+            Integer currentMode = Permissions.getAppOpMode(packageName, appOp, context);
+            if (currentMode != null && currentMode != Permissions.getDefaultAppOpMode(appOp)) {
+                return false;
+            }
+        }
         boolean changed = setAppOpMode(packageName, appOp, AppOpsManager.MODE_ALLOWED, context);
         if (changed) {
             Permissions.setPermissionGrantedByRole(packageName, appOpPermission, true, context);
