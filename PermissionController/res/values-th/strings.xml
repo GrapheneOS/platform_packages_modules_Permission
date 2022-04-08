@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"การตั้งค่าแอปที่ไม่ได้ใช้"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"นำสิทธิ์ออกหากไม่ได้ใช้งานแอป"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"นำสิทธิ์ออกและเพิ่มพื้นที่ว่าง"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"หยุดกิจกรรมบนแอปไว้ชั่วคราวหากไม่ได้ใช้"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"นำสิทธิ์ออก ลบไฟล์ชั่วคราว และหยุดการแจ้งเตือน"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"หากคุณไม่ได้ใช้งานแอปนาน 2-3 เดือน ระบบจะนำสิทธิ์ของแอปนี้ออกเพื่อปกป้องข้อมูลของคุณ"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"หากไม่มีการใช้งานแอปนาน 2-3 เดือน ระบบจะปกป้องข้อมูลของคุณด้วยการนำสิทธิ์ต่อไปนี้ออก ได้แก่ <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"ระบบนำสิทธิ์ออกจากแอปที่คุณไม่ได้ใช้งานนาน 2-3 เดือนเพื่อปกป้องข้อมูลของคุณ"</string>
@@ -278,6 +276,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"มีการนำสิทธิ์ออกเพื่อปกป้องความเป็นส่วนตัวของคุณ"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> เข้าถึงตำแหน่งของคุณอยู่เบื้องหลัง"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"แอปนี้เข้าถึงตำแหน่งของคุณได้ตลอดเวลา แตะเพื่อเปลี่ยน"</string>
+    <!-- no translation found for accessibility_access_reminder_notification_title (798487829152263568) -->
+    <skip />
+    <!-- no translation found for accessibility_access_reminder_notification_content (3897831796455872834) -->
+    <skip />
+    <!-- no translation found for accessibility_access_warning_card_content (3418029245041163015) -->
+    <skip />
+    <!-- no translation found for accessibility_remove_access_button_label (44145801526711640) -->
+    <skip />
+    <!-- no translation found for accessibility_show_all_apps_button_label (5027167822346195212) -->
+    <skip />
+    <!-- no translation found for accessibility_remove_access_success_label (4380995302917014670) -->
+    <skip />
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"ระบบนำสิทธิ์ของแอปออกเพื่อปกป้องความเป็นส่วนตัว"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> ไม่มีการใช้งานมา 2-3 เดือนแล้ว แตะเพื่อตรวจสอบ"</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> และอีก 1 แอปไม่มีการใช้งานมา 2-3 เดือนแล้ว แตะเพื่อตรวจสอบ"</string>

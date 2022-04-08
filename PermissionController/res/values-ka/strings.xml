@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"აპის გამოუყენებელი პარამეტრები"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"ნებართვების ამოშლა აპის გამოუყენებლობის შემთხვევაში."</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"ნებართვების ამოშლა და მეხსიერების გათავისუფლება"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"დაპაუზდეს აპში აქტივობა, თუ არ იყენებენ"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"ნებართვების ამოშლა, დროებითი ფაილების წაშლა და შეტყობინებების გამორთვა"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"თქვენი მონაცემების დასაცავად ნებართვები ამოიშლება ამ აპიდან, თუ ის რამდენიმე თვის განმავლობაში არ გამოგიყენებიათ."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"თქვენი მონაცემების დაცვის მიზნით, თუ აპს რამდენიმე თვის განმავლობაში არ გამოიყენებთ, ამოიშლება შემდეგი ნებართვები: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"თქვენი მონაცემების დასაცავად ნებართვები ამოიშალა აპებიდან, რომლებიც რამდენიმე თვის განმავლობაში არ გამოგიყენებიათ."</string>
@@ -278,6 +276,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"ნებართვები ამოიშალა თქვენი კონფიდენციალურობის დასაცავად"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g>-მა მიიღო თქვენი მდებარეობა ფონურ რეჟიმში"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"ამ აპს ყოველთვის შეუძლია თქვენს მდებარეობაზე წვდომა. შეეხეთ შესაცვლელად."</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"მიმოიხილეთ აპი მარტივი წვდომის მეშვეობით"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> აპს შეუძლია ეკრანზე არსებული კონტენტის წაკითხვა, კონტენტის სხვა აპების ინტერფეისზე ჩვენება და თქვენი ინტერაქციის თვალყურის დევნება."</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"ამ აპს შეუძლია ეკრანზე არსებული კონტენტის წაკითხვა, კონტენტის სხვა აპების ინტერფეისზე ჩვენება და თქვენი ინტერაქციის თვალყურის დევნება."</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"წვდომის გაუქმება"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"იხილეთ აპები მარტივი წვდომით"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"წვდომა გაუქმებულია"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"აპის ნებართვა ამოშლილია კონფიდენციალურობის დაცვის მიზნით"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> რამდენიმე თვის განმავლობაში არ გამოგიყენებიათ. შეეხეთ გადასახედად."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> და 1 სხვა აპი რამდენიმე თვის განმავლობაში არ გამოგიყენებიათ. შეეხეთ გადასახედად."</string>

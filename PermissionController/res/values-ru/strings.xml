@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Настройки неиспользуемых приложений"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Отзывать разрешения, если приложение не используется"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Удалять разрешения и освобождать место"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Приостановить работу в неактивный период"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Удалить разрешения и временные файлы, прекратить отправку уведомлений"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Для защиты ваших данных мы отзовем разрешения, предоставленные этому приложению, если вы не будете пользоваться им несколько месяцев."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Если вы не будете пользоваться приложением несколько месяцев, в целях защиты ваших данных мы отзовем следующие разрешения: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"В целях защиты ваших данных мы отозвали разрешения для приложений, которыми вы не пользовались несколько месяцев."</string>
@@ -278,6 +276,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Разрешения отозваны для защиты конфиденциальности ваших данных."</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"Приложению \"<xliff:g id="APP_NAME">%s</xliff:g>\" в фоновом режиме доступны геоданные"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"У этого приложения есть постоянный доступ к сведениям о вашем местоположении. Нажмите, чтобы изменить настройки."</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Проверьте приложение с доступом к специальным возможностям"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"Приложение \"<xliff:g id="APP_NAME">%s</xliff:g>\" может считывать данные с экрана, показывать материалы поверх других приложений и отслеживать ваши действия на устройстве."</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Это приложение может считывать данные с экрана, показывать материалы поверх других приложений и отслеживать ваши действия на устройстве."</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Запретить доступ"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"Показать приложение с доступом к специальным возможностям"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Доступ запрещен"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Разрешения для приложения отозваны в целях защиты данных"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"Вы уже несколько месяцев не пользовались приложением \"<xliff:g id="APP_NAME">%s</xliff:g>\". Нажмите, чтобы посмотреть подробности."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"Вы уже несколько месяцев не пользовались некоторыми приложениями: \"<xliff:g id="APP_NAME">%s</xliff:g>\" и ещё одним. Нажмите, чтобы посмотреть подробности."</string>
@@ -504,12 +508,9 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Защита и конфиденциальность"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Сканировать"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Закрыть"</string>
-    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (1548283211993262986) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_confirm_dismiss_button (5884137843083634556) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_cancel_dismiss_button (2874578798877712346) -->
-    <skip />
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"Скрыть это предупреждение?"</string>
+    <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Скрыть"</string>
+    <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Отмена"</string>
     <string name="security_settings" msgid="3808106921175271317">"Настройки безопасности"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Доступ к датчикам"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Настройки конфиденциальности"</string>

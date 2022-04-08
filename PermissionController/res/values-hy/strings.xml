@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Չօգտագործվող հավելվածների կարգավորումներ"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Հեռացնել թույլտվությունները, եթե հավելվածը չի օգտագործվում"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Հեռացնել թույլտվությունները և տարածք ազատել"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Դադարեցնել աշխատանքը ոչ ակտիվ վիճակում"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Հեռացնել թույլտվությունները, ջնջել ժամանակավոր ֆայլերը և դադարեցնել ծանուցումները"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Եթե հավելվածը չի օգտագործվել մի քանի ամիս, դրա թույլտվությունները կհեռացվեն՝ ձեր տվյալները պաշտպանելու համար։"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Եթե հավելվածը չի օգտագործվել մի քանի ամիս, ձեր տվյալները պաշտպանելու համար հետևյալ թույլտվությունները կհեռացվեն՝ <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Հավելվածներից, որոնք մի քանի ամիս չեք օգտագործել, թույլտվությունները հեռացվել են՝ ձեր տվյալները պաշտպանելու համար։"</string>
@@ -278,6 +276,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Թույլտվությունները հեռացվել են ձեր գաղտնիությունը պաշտպանելու նպատակով։"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> հավելվածը հետագծում է ձեր գտնվելու վայրը ֆոնային ռեժիմում"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Այս հավելվածին միշտ հասանելի են ձեր տեղադրության մասին տվյալները: Փոխելու համար հպեք:"</string>
+    <!-- no translation found for accessibility_access_reminder_notification_title (798487829152263568) -->
+    <skip />
+    <!-- no translation found for accessibility_access_reminder_notification_content (3897831796455872834) -->
+    <skip />
+    <!-- no translation found for accessibility_access_warning_card_content (3418029245041163015) -->
+    <skip />
+    <!-- no translation found for accessibility_remove_access_button_label (44145801526711640) -->
+    <skip />
+    <!-- no translation found for accessibility_show_all_apps_button_label (5027167822346195212) -->
+    <skip />
+    <!-- no translation found for accessibility_remove_access_success_label (4380995302917014670) -->
+    <skip />
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Հավելվածի թույլտվությունները հեռացվել են"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> հավելվածը մի քանի ամիս է, ինչ չի օգտագործվել։ Հպեք՝ մանրամասները տեսնելու համար։"</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> հավելվածն ու ևս 1 հավելված մի քանի ամիս է, ինչ չեն օգտագործվել։ Հպեք՝ մանրամասները տեսնելու համար։"</string>
@@ -504,12 +514,9 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Անվտանգություն և գաղտնիություն"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Սկանավորել"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Փակել"</string>
-    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (1548283211993262986) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_confirm_dismiss_button (5884137843083634556) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_cancel_dismiss_button (2874578798877712346) -->
-    <skip />
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"Փակե՞լ այս զգուշացումը"</string>
+    <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Փակել"</string>
+    <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Չեղարկել"</string>
     <string name="security_settings" msgid="3808106921175271317">"Անվտանգության կարգավորումներ"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Տվիչների թույլտվություններ"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Գաղտնիության կարգավորումներ"</string>

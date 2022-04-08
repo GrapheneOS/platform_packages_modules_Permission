@@ -160,7 +160,7 @@
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Utilisation des autorisat. dans la dernière minute"</string>
     <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"Inutilisée au cours des dernières 24 heures"</string>
     <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"Inutilisée au cours des 7 derniers jours"</string>
-    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Utilisée par 1 application}one{Utilisée par # application}other{Utilisée par # applications}}"</string>
+    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Utilisation : 1 application}one{Utilisation : # application}other{Utilisation : # applications}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Tout afficher dans le tableau de bord"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtré par : <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Retirer le filtre"</string>
@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Paramètres des applications inutilisées"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Retirer les autorisations si l\'application est inutilisée"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Retirer autorisations et libérer espace"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Suspendre l\'activité appli si inutilisée"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Retirez les autorisations, supprimez les fichiers temporaires et arrêtez les notifications"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Afin de protéger vos données, les autorisations pour cette application seront supprimées si elle n\'est pas utilisée pendant quelques mois."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Afin de protéger vos données, si l\'application n\'est pas utilisée pendant quelques mois, les autorisations suivantes seront supprimées : <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Afin de protéger vos données, les autorisations ont été supprimées pour les applications que vous n\'avez pas utilisées depuis quelques mois."</string>
@@ -278,6 +276,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Les autorisations ont été supprimées afin de protéger votre confidentialité"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"L\'application <xliff:g id="APP_NAME">%s</xliff:g> a accédé à votre position en arrière-plan"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Cette application peut toujours accéder à votre position. Touchez l\'écran pour modifier cela."</string>
+    <!-- no translation found for accessibility_access_reminder_notification_title (798487829152263568) -->
+    <skip />
+    <!-- no translation found for accessibility_access_reminder_notification_content (3897831796455872834) -->
+    <skip />
+    <!-- no translation found for accessibility_access_warning_card_content (3418029245041163015) -->
+    <skip />
+    <!-- no translation found for accessibility_remove_access_button_label (44145801526711640) -->
+    <skip />
+    <!-- no translation found for accessibility_show_all_apps_button_label (5027167822346195212) -->
+    <skip />
+    <!-- no translation found for accessibility_remove_access_success_label (4380995302917014670) -->
+    <skip />
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Autorisations supprimées pour protéger votre confidentialité"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"L\'application <xliff:g id="APP_NAME">%s</xliff:g> n\'a pas été utilisée depuis plusieurs mois. Touchez pour examiner."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> et une autre application n\'ont pas été utilisées depuis plusieurs mois. Touchez pour examiner."</string>
@@ -504,12 +514,9 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Sécurité et confidentialité"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Analyser"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Fermer"</string>
-    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (1548283211993262986) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_confirm_dismiss_button (5884137843083634556) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_cancel_dismiss_button (2874578798877712346) -->
-    <skip />
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"Ignorer cet avertissement?"</string>
+    <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Fermer"</string>
+    <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Annuler"</string>
     <string name="security_settings" msgid="3808106921175271317">"Paramètres de sécurité"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Autorisations du capteur"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Paramètres de confidentialité"</string>

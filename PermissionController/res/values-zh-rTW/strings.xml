@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"未使用的應用程式設定"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"如果應用程式未使用，讓系統移除相關權限"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"移除權限並釋出空間"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"如果未使用就暫停應用程式活動"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"移除權限、刪除暫存檔及停止通知"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"為了保護你的資料，如果你連續幾個月都未使用這個應用程式，系統會移除其權限。"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"為了保護你的資料，如果應用程式已有數個月未使用，系統將移除以下權限：<xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"為了保護你的資料，針對數個月未使用的應用程式，系統已移除相關權限。"</string>
@@ -278,6 +276,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"為保護你的隱私，系統已移除相關權限"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"「<xliff:g id="APP_NAME">%s</xliff:g>」在背景存取了你的位置資訊"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"這個應用程式隨時都能存取你的位置資訊。輕觸即可變更設定。"</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"檢查具有無障礙功能存取權的應用程式"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"「<xliff:g id="APP_NAME">%s</xliff:g>」應用程式可以讀取畫面上的所有內容、將內容顯示在其他應用程式上方，以及追蹤你的互動情形。"</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"這個應用程式可以讀取畫面上的所有內容、將內容顯示在其他應用程式上方，以及追蹤你的互動情形。"</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"移除存取權"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"查看具有無障礙功能存取權的應用程式"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"已移除存取權"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"為保護隱私，系統已移除應用程式權限"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"「<xliff:g id="APP_NAME">%s</xliff:g>」已有數個月未使用。輕觸即可查看。"</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"「<xliff:g id="APP_NAME">%s</xliff:g>」和另外 1 個應用程式已有數個月未使用。輕觸即可查看。"</string>
@@ -504,12 +508,9 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"安全性與隱私權"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"掃描"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"關閉"</string>
-    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (1548283211993262986) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_confirm_dismiss_button (5884137843083634556) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_cancel_dismiss_button (2874578798877712346) -->
-    <skip />
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"要關閉這項警告嗎？"</string>
+    <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"關閉"</string>
+    <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"取消"</string>
     <string name="security_settings" msgid="3808106921175271317">"安全性設定"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"感應器權限"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"隱私權控制項"</string>

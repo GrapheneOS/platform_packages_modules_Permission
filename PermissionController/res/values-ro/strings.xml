@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Setările aplicațiilor nefolosite"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Eliminați permisiunile dacă aplicația nu este folosită"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Revocă permisiunile și eliberează spațiu"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Întrerupeți activitatea în aplicațiile nefolosite"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Revocați permisiunile, ștergeți fișierele temporare și opriți notificările"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Pentru a vă proteja datele, se vor elimina permisiunile pentru această aplicație dacă nu este folosită câteva luni."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Pentru a vă proteja datele, dacă aplicația nu este folosită câteva luni, se vor elimina următoarele permisiuni: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Pentru a vă proteja datele, s-au eliminat permisiunile din aplicațiile pe care nu le-ați folosit de câteva luni."</string>
@@ -278,6 +276,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Permisiunile au fost eliminate pentru a vă proteja confidențialitatea"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> v-a obținut locația în fundal"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Această aplicație poate accesa întotdeauna locația dvs. Atingeți ca să modificați."</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Examinați aplicația cu acces la opțiunile de accesibilitate"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> poate să citească tot conținutul de pe ecran, să afișeze conținut peste alte aplicații și să vă urmărească interacțiunile."</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Aplicația poate să citească tot conținutul de pe ecran, să afișeze conținut peste alte aplicații și să vă urmărească interacțiunile."</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Eliminați accesul"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"Afișați aplicațiile cu acces la opțiunile de accesibilitate"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Acces eliminat"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Permisiunile pentru aplicație s-au eliminat pentru confidențialitate"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"Aplicația <xliff:g id="APP_NAME">%s</xliff:g> nu a fost folosită de câteva luni. Atingeți pentru a examina."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> și încă o aplicație nu au fost folosite de câteva luni. Atingeți pentru a examina."</string>
@@ -504,12 +508,9 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Securitate, confidențialitate"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Căutați"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Închideți"</string>
-    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (1548283211993262986) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_confirm_dismiss_button (5884137843083634556) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_cancel_dismiss_button (2874578798877712346) -->
-    <skip />
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"Ignorați acest avertisment?"</string>
+    <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Respingeți"</string>
+    <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Anulați"</string>
     <string name="security_settings" msgid="3808106921175271317">"Setări de securitate"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Permisiuni pentru senzori"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Opțiuni de confidențialitate"</string>

@@ -80,7 +80,7 @@
     <string name="menu_hide_system" msgid="3855390843744028465">"Сакриј системске"</string>
     <string name="menu_show_7_days_data" msgid="8979611198508523706">"Прикажи 7 дана"</string>
     <string name="menu_show_24_hours_data" msgid="8228054833323380780">"Прикажи 24 сата"</string>
-    <string name="manage_permission" msgid="2895385393037061964">"Управљање дозволом"</string>
+    <string name="manage_permission" msgid="2895385393037061964">"Управљајте дозволом"</string>
     <string name="no_apps" msgid="2412612731628386816">"Нема апликација"</string>
     <string name="location_settings" msgid="3624412509133422562">"Подешавања локације"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> пружа услуге локације за овај уређај. Приступ локацији можете да измените у подешавањима локације."</string>
@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Подешавања некоришћених апликација"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Уклони дозволе ако се апликација не користи"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Уклони дозволе и ослободи простор"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Паузирај активности ако се не користи"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Уклоните дозволе, избришите привремене фајлове и зауставите обавештења"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Ради заштите података, дозволе за ову апликацију се уклањају ако се апликација не користи пар месеци."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Ради заштите података, следеће дозволе се уклањају ако се апликација не користи пар месеци: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Ради заштите података, дозволе су уклоњене из апликација које нисте користили пар месеци."</string>
@@ -278,6 +276,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Дозволе су уклоњене ради заштите приватности"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> има вашу локацију у позадини"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Ова апликација може увек да приступа локацији. Додирните да бисте то променили."</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Прегледајте апликацију са функцијама приступачности"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> може да чита сав садржај на екрану, да приказује садржај преко других апликација и да прати интеракције."</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Ова апликација може да чита сав садржај на екрану, да приказује садржај преко других апликација и да прати интеракције."</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Уклони приступ"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"Прегледајте апликације са функцијама приступачности"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Приступ је уклоњен"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Дозволе за апликације су уклоњене ради заштите приватности"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"Апликција <xliff:g id="APP_NAME">%s</xliff:g> није коришћена пар месеци. Додирните да бисте прегледали."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> и још једна апликација нису коришћене пар месеци. Додирните да бисте прегледали."</string>
@@ -471,7 +475,7 @@
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Ова апликација жели да снима слике и видео снимке све време, чак и када не користите апликацију. "<annotation id="link">"Дозволите у подешавањима."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Желите да дозволите да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; приступа евиденцијама позива на телефону?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Желите да дозволите да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; упућује позиве и управља њима?"</string>
-    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Желите да дозволите да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;приступа подацима сензора о виталним функцијама?"</string>
+    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Желите да дозволите да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; приступа подацима сензора о виталним функцијама?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Ова апликација жели да све време приступа подацима сензора о виталним функцијама, чак и када не користите апликацију. Да бисте обавили ову измену, "<annotation id="link">"идите у подешавања."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Желите да омогућите да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; приступа подацима сензора о виталним функцијама?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Да бисте дозволили овој апликацији да све време приступа подацима сензора за тело, чак и када не користите апликацију, "<annotation id="link">"идите у подешавања."</annotation></string>
@@ -504,12 +508,9 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Безбедност и приватност"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Скенирај"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Одбаци"</string>
-    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (1548283211993262986) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_confirm_dismiss_button (5884137843083634556) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_cancel_dismiss_button (2874578798877712346) -->
-    <skip />
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"Желите ли да одбаците ово упозорење?"</string>
+    <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Одбаци"</string>
+    <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Откажи"</string>
     <string name="security_settings" msgid="3808106921175271317">"Безбедносна подешавања"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Дозволе за сензоре"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Контроле приватности"</string>

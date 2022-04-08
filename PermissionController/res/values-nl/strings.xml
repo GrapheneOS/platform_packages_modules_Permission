@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Niet-gebruikte app-instellingen"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Rechten intrekken als app niet wordt gebruikt"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Rechten intrekken en ruimte vrijmaken"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"App-activiteit onderbreken indien niet gebruikt"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Rechten verwijderen, tijdelijke bestanden verwijderen en meldingen stoppen"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Om je gegevens te beschermen worden de rechten voor deze app verwijderd als de app een aantal maanden niet is gebruikt."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Om je gegevens te beschermen worden de volgende rechten ingetrokken als de app een paar maanden niet is gebruikt: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Om je gegevens te beschermen zijn de rechten verwijderd van apps die al een paar maanden niet zijn gebruikt."</string>
@@ -278,6 +276,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"De rechten zijn verwijderd om je privacy te beschermen"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> had toegang tot je locatie op de achtergrond"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Deze app heeft altijd toegang tot je locatie. Tik om dit te wijzigen."</string>
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"App met toegankelijkheidstoegang bekijken"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> kan alle content op het scherm lezen, content weergeven bovenop andere apps en je interacties bijhouden."</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Deze app kan alle content op het scherm lezen, content weergeven bovenop andere apps en je interacties bijhouden."</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Toegang intrekken"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"Apps met toegankelijkheidstoegang bekijken"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Toegang ingetrokken"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"App-rechten verwijderd om privacy te beschermen"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> is al een paar maanden niet gebruikt. Tik om dit te bekijken."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> en één andere app zijn al een paar maanden niet gebruikt. Tik om dit te bekijken."</string>
@@ -504,12 +508,9 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Beveiliging en privacy"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Scannen"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Sluiten"</string>
-    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (1548283211993262986) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_confirm_dismiss_button (5884137843083634556) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_cancel_dismiss_button (2874578798877712346) -->
-    <skip />
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"Deze waarschuwing sluiten?"</string>
+    <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Sluiten"</string>
+    <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Annuleren"</string>
     <string name="security_settings" msgid="3808106921175271317">"Beveiligingsinstellingen"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Sensorrechten"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Privacyopties"</string>

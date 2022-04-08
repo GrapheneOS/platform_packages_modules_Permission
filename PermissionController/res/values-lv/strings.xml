@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Neizmantoto lietotņu iestatījumi"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Noņemt atļaujas, ja lietotne netiek izmantota"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Noņemt atļaujas un atbrīvot vietu"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Apturēt lietotni, ja tā netiek izmantota"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Atsaukt atļaujas, dzēst pagaidu failus un izslēgt paziņojumus"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Ja lietotni dažus mēnešus neizmantosiet, tai tiks noņemtas tālāk norādītās atļaujas, lai aizsargātu jūsu datus."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Ja lietotni dažus mēnešus neizmantosiet, tai tiks noņemtas tālāk norādītās atļaujas, lai aizsargātu jūsu datus: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Lai aizsargātu jūsu datus, tika atsauktas atļaujas tām lietotnēm, kas nav izmantotas vairākus mēnešus."</string>
@@ -278,6 +276,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Lai aizsargātu jūsu konfidencialitāti, atļaujas ir noņemtas."</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"Lietotne <xliff:g id="APP_NAME">%s</xliff:g> ieguva jūsu atrašanās vietas informāciju fonā"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Šī lietotne jebkurā laikā var piekļūt jūsu atrašanās vietai. Pieskarieties, lai mainītu šo iestatījumu."</string>
+    <!-- no translation found for accessibility_access_reminder_notification_title (798487829152263568) -->
+    <skip />
+    <!-- no translation found for accessibility_access_reminder_notification_content (3897831796455872834) -->
+    <skip />
+    <!-- no translation found for accessibility_access_warning_card_content (3418029245041163015) -->
+    <skip />
+    <!-- no translation found for accessibility_remove_access_button_label (44145801526711640) -->
+    <skip />
+    <!-- no translation found for accessibility_show_all_apps_button_label (5027167822346195212) -->
+    <skip />
+    <!-- no translation found for accessibility_remove_access_success_label (4380995302917014670) -->
+    <skip />
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Lietotņu atļaujas noņemtas, lai aizsargātu konfidencialitāti"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"Lietotne <xliff:g id="APP_NAME">%s</xliff:g> nav izmantota vairākus mēnešus. Lai pārskatītu izmaiņas, pieskarieties."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> un vēl 1 lietotne nav izmantota vairākus mēnešus. Lai pārskatītu izmaiņas, pieskarieties."</string>
@@ -504,12 +514,9 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Drošība un konfidencialitāte"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Pārbaudīt"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Noraidīt"</string>
-    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (1548283211993262986) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_confirm_dismiss_button (5884137843083634556) -->
-    <skip />
-    <!-- no translation found for safety_center_issue_card_cancel_dismiss_button (2874578798877712346) -->
-    <skip />
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"Vai nerādīt šo brīdinājumu?"</string>
+    <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Nerādīt"</string>
+    <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Atcelt"</string>
     <string name="security_settings" msgid="3808106921175271317">"Drošības iestatījumi"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Sensora atļaujas"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Konfidencialitātes vadīklas"</string>
