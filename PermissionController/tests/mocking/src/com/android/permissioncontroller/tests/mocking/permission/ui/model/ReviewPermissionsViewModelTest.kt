@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.ui.model
+package com.android.permissioncontroller.tests.mocking.permission.ui.model
 
 import android.content.Context
 import android.content.pm.PackageInfo
