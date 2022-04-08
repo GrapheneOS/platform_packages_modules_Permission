@@ -52,15 +52,15 @@
         <!-- id must be unique among safety sources -->
         <xsd:attribute name="id" type="xsd:string" use="required"/>
         <xsd:attribute name="packageName" type="xsd:string" use="required"/>
-        <!-- title is required if initialDisplayState is not set to hidden -->
-        <!-- title is prohibited if initialDisplayState is set to hidden -->
-        <xsd:attribute name="title" type="xsd:string"/>
-        <!-- titleForWork is required if profile is set to all_profiles and initialDisplayState is not set to hidden -->
-        <!-- titleForWork is prohibited if profile is set to primary_profile_only or initialDisplayState is set to hidden -->
-        <xsd:attribute name="titleForWork" type="xsd:string"/>
+        <!-- title is required if initialDisplayState is not set to hidden or if searchTerms are provided -->
+        <!-- title is prohibited if initialDisplayState is set to hidden and if searchTerms are not provided -->
+        <xsd:attribute name="title" type="stringResourceName"/>
+        <!-- titleForWork is required if profile is set to all_profiles, and initialDisplayState is not set to hidden or if searchTerms are provided -->
+        <!-- titleForWork is prohibited if profile is set to primary_profile_only, or initialDisplayState is set to hidden and if searchTerms are not provided -->
+        <xsd:attribute name="titleForWork" type="stringResourceName"/>
         <!-- summary is required if initialDisplayState is not set to hidden -->
         <!-- summary is prohibited if initialDisplayState is set to hidden -->
-        <xsd:attribute name="summary" type="xsd:string"/>
+        <xsd:attribute name="summary" type="stringResourceName"/>
         <!-- intentAction is required if initialDisplayState is set to enabled -->
         <!-- intentAction is optional if initialDisplayState is set to disabled -->
         <!-- intentAction is prohibited if initialDisplayState is set to hidden -->
@@ -68,7 +68,7 @@
         <xsd:attribute name="profile" type="profile" use="required"/>
         <xsd:attribute name="initialDisplayState" type="initialDisplayState" default="enabled"/>
         <xsd:attribute name="maxSeverityLevel" type="xsd:int" default="2147483647"/>
-        <xsd:attribute name="searchTerms" type="xsd:string"/>
+        <xsd:attribute name="searchTerms" type="stringResourceName"/>
         <xsd:attribute name="loggingAllowed" type="xsd:boolean" default="true"/>
         <xsd:attribute name="refreshOnPageOpenAllowed" type="xsd:boolean" default="false"/>
     </xsd:complexType>
@@ -86,14 +86,14 @@
     <xsd:complexType name="static-safety-source">
         <!-- id must be unique among safety sources -->
         <xsd:attribute name="id" type="xsd:string" use="required"/>
-        <xsd:attribute name="title" type="xsd:string" use="required"/>
+        <xsd:attribute name="title" type="stringResourceName" use="required"/>
         <!-- titleForWork is required if profile is set to all_profiles -->
         <!-- titleForWork is prohibited if profile is set to primary_profile_only -->
-        <xsd:attribute name="titleForWork" type="xsd:string"/>
-        <xsd:attribute name="summary" type="xsd:string" use="required"/>
+        <xsd:attribute name="titleForWork" type="stringResourceName"/>
+        <xsd:attribute name="summary" type="stringResourceName"/>
         <xsd:attribute name="intentAction" type="xsd:string" use="required"/>
         <xsd:attribute name="profile" type="profile" use="required"/>
-        <xsd:attribute name="searchTerms" type="xsd:string"/>
+        <xsd:attribute name="searchTerms" type="stringResourceName"/>
     </xsd:complexType>
 
     <xsd:simpleType name="statelessIconType">

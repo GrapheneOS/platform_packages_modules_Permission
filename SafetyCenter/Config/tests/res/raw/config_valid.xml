@@ -37,6 +37,14 @@
                 packageName="package"
                 profile="all_profiles"
                 initialDisplayState="hidden"/>
+            <dynamic-safety-source
+                id="dynamic_hidden_with_search"
+                packageName="package"
+                title="@com.android.safetycenter.config.tests:string/reference"
+                titleForWork="@com.android.safetycenter.config.tests:string/reference"
+                profile="all_profiles"
+                initialDisplayState="hidden"
+                searchTerms="@com.android.safetycenter.config.tests:string/reference"/>
         </safety-sources-group>
         <safety-sources-group
             id="static"
@@ -44,7 +52,6 @@
             <static-safety-source
                 id="static_barebone"
                 title="@com.android.safetycenter.config.tests:string/reference"
-                summary="@com.android.safetycenter.config.tests:string/reference"
                 intentAction="intent"
                 profile="primary_profile_only"/>
             <static-safety-source
@@ -87,7 +94,6 @@
             <static-safety-source
                 id="mixed_static_barebone"
                 title="@com.android.safetycenter.config.tests:string/reference"
-                summary="@com.android.safetycenter.config.tests:string/reference"
                 intentAction="intent"
                 profile="primary_profile_only"/>
         </safety-sources-group>
