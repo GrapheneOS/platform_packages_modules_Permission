@@ -557,9 +557,12 @@ public final class SafetySource implements Parcelable {
             boolean isStatic = mType == SAFETY_SOURCE_TYPE_STATIC;
             boolean isDynamic = mType == SAFETY_SOURCE_TYPE_DYNAMIC;
             boolean isIssueOnly = mType == SAFETY_SOURCE_TYPE_ISSUE_ONLY;
+
             BuilderUtils.validateAttribute(mId, "id", true, false);
+
             BuilderUtils.validateAttribute(
                     mPackageName, "packageName", isDynamic || isIssueOnly, isStatic);
+
             int initialDisplayState =
                     BuilderUtils.validateIntDef(
                             mInitialDisplayState,
@@ -572,45 +575,64 @@ public final class SafetySource implements Parcelable {
                             INITIAL_DISPLAY_STATE_HIDDEN);
             boolean isEnabled = initialDisplayState == INITIAL_DISPLAY_STATE_ENABLED;
             boolean isHidden = initialDisplayState == INITIAL_DISPLAY_STATE_HIDDEN;
+            boolean isDynamicNotHidden = isDynamic && !isHidden;
+
+            int profile =
+                    BuilderUtils.validateIntDef(
+                            mProfile, "profile", true, false, PROFILE_NONE, PROFILE_PRIMARY,
+                            PROFILE_ALL);
+            boolean hasWork = profile == PROFILE_ALL;
+
+            int searchTermsResId =
+                    BuilderUtils.validateResId(mSearchTermsResId, "searchTerms", false,
+                            isIssueOnly);
+            boolean isDynamicHiddenWithSearch =
+                    isDynamic && isHidden && searchTermsResId != Resources.ID_NULL;
+            boolean isDynamicHiddenWithoutSearch =
+                    isDynamic && isHidden && searchTermsResId == Resources.ID_NULL;
+
+            boolean titleRequired = isDynamicNotHidden || isDynamicHiddenWithSearch || isStatic;
+            boolean titleProhibited = isIssueOnly || isDynamicHiddenWithoutSearch;
             int titleResId =
                     BuilderUtils.validateResId(
-                            mTitleResId, "title", (isDynamic && !isHidden) || isStatic,
-                            isIssueOnly || isHidden);
+                            mTitleResId, "title",
+                            titleRequired,
+                            titleProhibited);
+
+            int titleForWorkResId =
+                    BuilderUtils.validateResId(
+                            mTitleForWorkResId,
+                            "titleForWork",
+                            hasWork && titleRequired,
+                            !hasWork || titleProhibited);
+
             int summaryResId =
                     BuilderUtils.validateResId(
                             mSummaryResId,
                             "summary",
-                            (isDynamic && !isHidden) || isStatic,
+                            isDynamicNotHidden,
                             isIssueOnly || isHidden);
+
             BuilderUtils.validateAttribute(
                     mIntentAction,
                     "intentAction",
                     (isDynamic && isEnabled) || isStatic,
                     isIssueOnly || isHidden);
-            int profile =
-                    BuilderUtils.validateIntDef(
-                            mProfile, "profile", true, false, PROFILE_NONE, PROFILE_PRIMARY,
-                            PROFILE_ALL);
-            int titleForWorkResId =
-                    BuilderUtils.validateResId(
-                            mTitleForWorkResId,
-                            "titleForWork",
-                            ((isDynamic && !isHidden) || isStatic) && profile == PROFILE_ALL,
-                            isIssueOnly || isHidden || profile == PROFILE_PRIMARY);
+
             int maxSeverityLevel =
                     BuilderUtils.validateInteger(
                             mMaxSeverityLevel, "maxSeverityLevel", false, isStatic,
                             Integer.MAX_VALUE);
-            int searchTermsResId =
-                    BuilderUtils.validateResId(mSearchTermsResId, "searchTerms", false,
-                            isIssueOnly);
+
             boolean loggingAllowed =
                     BuilderUtils.validateBoolean(mLoggingAllowed, "loggingAllowed", false, isStatic,
                             true);
+
             boolean refreshOnPageOpenAllowed =
                     BuilderUtils.validateBoolean(
                             mRefreshOnPageOpenAllowed, "refreshOnPageOpenAllowed", false, isStatic,
                             false);
+
             return new SafetySource(
                     mType,
                     mId,

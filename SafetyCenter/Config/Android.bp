@@ -17,13 +17,20 @@ package {
     default_applicable_licenses: ["Android-Apache-2.0"],
 }
 
+filegroup {
+    name: "safetycenter-config-parser-sources",
+    srcs: ["java/**/*.java"],
+    path: "java",
+    visibility: ["//packages/modules/Permission/SafetyCenter/ConfigLintChecker"],
+}
+
 java_library {
     name: "safety-center-config",
     sdk_version: "module_current",
     min_sdk_version: "30",
     target_sdk_version: "32",
     srcs: [
-        "java/**/*.java",
+        ":safetycenter-config-parser-sources",
     ],
     libs: [
         "androidx.annotation_annotation",

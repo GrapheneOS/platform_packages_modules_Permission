@@ -27,6 +27,9 @@ android_app {
     target_sdk_version: "32",
     apex_available: ["com.android.permission"],
     certificate: ":com.android.safetycenter.resources.certificate",
+    lint: {
+        extra_check_modules: ["ConfigLintChecker"],
+    },
 }
 
 android_app_certificate {
