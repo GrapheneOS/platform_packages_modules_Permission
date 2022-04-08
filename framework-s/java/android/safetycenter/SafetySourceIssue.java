@@ -646,6 +646,9 @@ public final class SafetySourceIssue implements Parcelable {
             case SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING:
                 return value;
             case SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED:
+                throw new IllegalArgumentException(
+                        "SeverityLevel for SafetySourceIssue must not be "
+                                + "SEVERITY_LEVEL_UNSPECIFIED");
             default:
         }
         throw new IllegalArgumentException(
