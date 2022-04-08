@@ -16,21 +16,20 @@
   ~ limitations under the License.
   -->
 
-<configuration description="Runs unit tests for the Safety Center ResourcesLib library.">
+<configuration description="Runs unit tests for the Safety Center Config library.">
     <option name="test-suite-tag" value="apct" />
     <option name="test-suite-tag" value="apct-instrumentation" />
     <option name="test-tag" value="SafetyCenterConfigTests" />
     <object type="module_controller" class="com.android.tradefed.testtype.suite.module.Sdk30ModuleController" />
 
-    <!-- Install test and resources -->
+    <!-- Install test -->
     <target_preparer class="com.android.tradefed.targetprep.TestAppInstallSetup">
-        <option name="test-file-name" value="SafetyCenterResourcesLibTests.apk" />
-        <option name="test-file-name" value="SafetyCenterResourcesLibTestResources.apk" />
+        <option name="test-file-name" value="SafetyCenterConfigTests.apk" />
         <option name="cleanup-apks" value="true" />
     </target_preparer>
 
     <test class="com.android.tradefed.testtype.AndroidJUnitTest" >
-        <option name="package" value="com.android.safetycenter.resourceslib.tests" />
+        <option name="package" value="com.android.safetycenter.config.tests" />
         <option name="runner" value="androidx.test.runner.AndroidJUnitRunner" />
     </test>
 </configuration>

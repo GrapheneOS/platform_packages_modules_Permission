@@ -425,14 +425,8 @@ package android.safetycenter {
 
 package android.safetycenter.config {
 
-  public final class ParseException extends java.lang.Exception {
-    ctor public ParseException(@NonNull String);
-    ctor public ParseException(@NonNull String, @NonNull Throwable);
-  }
-
   public final class SafetyCenterConfig implements android.os.Parcelable {
     method public int describeContents();
-    method @NonNull public static android.safetycenter.config.SafetyCenterConfig fromXml(@NonNull android.content.res.XmlResourceParser) throws android.safetycenter.config.ParseException;
     method @NonNull public java.util.List<android.safetycenter.config.SafetySourcesGroup> getSafetySourcesGroups();
     method public void writeToParcel(@NonNull android.os.Parcel, int);
     field @NonNull public static final android.os.Parcelable.Creator<android.safetycenter.config.SafetyCenterConfig> CREATOR;
