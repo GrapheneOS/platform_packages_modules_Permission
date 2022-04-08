@@ -196,14 +196,11 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g> کی سبھی اجازتیں دیکھیں"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"اس اجازت والی سبھی ایپس دیکھیں"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"اسسٹنٹ مائیکروفون کا استعمال دکھائیں"</string>
-    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
-    <skip />
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"غیر استعمال شدہ ایپ کی ترتیبات"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"ایپ کے استعمال نہ ہونے پر اجازتیں ہٹائیں"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"اجازتوں کو ہٹائیں اور جگہ خالی کریں"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"غیر استعمال شدہ ہو تو ایپ سرگرمی روکیں"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"اجازتیں ہٹائیں، عارضی فائلز حذف کریں اور اطلاعات موقوف کریں"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"آپ کے ڈیٹا کی حفاظت کے لیے، اگر ایپ کو کچھ مہینوں تک استعمال نہیں کیا گیا تو اس ایپ کے لیے اجازتیں ہٹا دی جائیں گی۔"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"آپ کے ڈیٹا کی حفاظت کے لیے، اگر ایپ کو کچھ مہینوں تک استعمال نہیں کیا گيا تو درج ذیل اجازتیں ہٹا دی جائیں گی: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"آپ کے ڈیٹا کی حفاظت کے لیے، اجازتوں کو ان ایپس سے ہٹا دیا گیا ہے جنہیں آپ نے کچھ مہینوں سے استعمال نہیں کیا ہے۔"</string>

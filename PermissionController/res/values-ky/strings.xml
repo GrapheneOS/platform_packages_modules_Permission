@@ -121,7 +121,7 @@
     <string name="message_staging" msgid="9110563899955511866">"Күтө туруңуз…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Белгисиз"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Купуялык тактасы"</string>
-    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Жакында уруксаттарды колдонгон колдонмолорду көрсөтүү"</string>
+    <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Уруксаттарды жакында кайсы колдонмолор колдонгонун көрө аласыз"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> уруксатынын колдонулушу"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Башка уруксаттарды көрүү"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Иштетилбеген колдонмолордун жөндөөлөрү"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Эгер колдонмо пайдаланылбаса, уруксаттар өчүрүлсүн"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Уруксаттарды өчүрүп, орун бошотуу"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Иштетилбесе, колдонмолордо жасалган аракеттерди тындыруу"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Уруксаттарды өчүрүү, убактылуу файлдарды жок кылуу жана билдирмелерди токтотуу"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Эгер колдонмо бир нече ай пайдаланылбаса, жеке маалыматтарыңызды коргоо үчүн бул колдонмого берилген уруксаттар өчүрүлөт."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Эгер колдонмо бир нече ай пайдаланылбаса, жеке дайын-даректериңизди коргоо максатында төмөнкү уруксаттар өчүрүлөт: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Жеке дайын-даректериңизди коргоо максатында, бир нече айдан бери ачылбаган колдонмолордогу уруксаттар өчүрүлдү."</string>
@@ -499,7 +497,7 @@
     <string name="blocked_microphone_title" msgid="1631517143648232585">"Түзмөктүн микрофону бөгөттөлгөн"</string>
     <string name="blocked_location_title" msgid="2005608279812892383">"Түзмөктүн жайгашкан жери өчүк"</string>
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Колдонмолор жана кызматтар үчүн"</string>
-    <string name="blocked_mic_summary" msgid="8960466941528458347">"Кырсыктаганда жардамга келчү кызматтын номерине чалганыңызда микрофондогу нерселер өткөрүлүшү мүмкүн."</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Кырсыктаганда жардамга келчү кызматка чалганда микрофондогу нерселер өткөрүлүшү мүмкүн"</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Өзгөртүү"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Коопсуздук жана купуялык"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Текшерүү"</string>

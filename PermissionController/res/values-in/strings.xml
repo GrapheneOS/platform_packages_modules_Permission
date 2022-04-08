@@ -160,7 +160,7 @@
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Penggunaan izin dalam 1 menit terakhir"</string>
     <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"Tidak digunakan dalam 24 jam terakhir"</string>
     <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"Tidak digunakan dalam 7 hari terakhir"</string>
-    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Digunakan oleh 1 aplikasi}other{Digunakan oleh # aplikasi}}"</string>
+    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Digunakan 1 aplikasi}other{Digunakan # aplikasi}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Lihat semua di Dasbor"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Difilter menurut: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Hapus filter"</string>
@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Setelan aplikasi yang tidak digunakan"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Hapus izin jika aplikasi tidak digunakan"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Hapus izin &amp; kosongkan ruang penyimpanan"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Jeda aktivitas aplikasi jika tak dipakai"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Menghapus izin dan file sementara, serta menghentikan notifikasi"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Untuk melindungi data Anda, izin aplikasi ini akan dihapus jika aplikasi tidak digunakan dalam beberapa bulan."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Untuk melindungi data Anda, izin dari aplikasi yang tidak digunakan dalam beberapa bulan akan dihapus: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Untuk melindungi data Anda, izin dari aplikasi yang tidak digunakan dalam beberapa bulan telah dihapus."</string>
@@ -303,7 +301,7 @@
     <string name="app_perms_7d_access" msgid="4945055548894683751">"Terakhir diakses pada <xliff:g id="TIME_DATE_0">%1$s</xliff:g> pukul <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
     <string name="app_perms_content_provider_24h" msgid="1055526027667508972">"Diakses dalam 24 jam terakhir"</string>
     <string name="app_perms_content_provider_7d" msgid="3215454898257814868">"Diakses dalam 7 hari terakhir"</string>
-    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Terakhir diakses pada <xliff:g id="TIME_DATE">%1$s</xliff:g> • Diizinkan sepanjang waktu"</string>
+    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Terakhir diakses <xliff:g id="TIME_DATE">%1$s</xliff:g> • Diizinkan terus-menerus"</string>
     <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Terakhir diakses kemarin pada <xliff:g id="TIME_DATE">%1$s</xliff:g> • Diizinkan sepanjang waktu"</string>
     <string name="app_perms_7d_access_background" msgid="408099213372185627">"Terakhir diakses pada <xliff:g id="TIME_DATE_0">%1$s</xliff:g> pukul <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Diizinkan sepanjang waktu"</string>
     <string name="app_perms_content_provider_24h_background" msgid="3825902995186961496">"Diakses dalam 24 jam terakhir • Diizinkan sepanjang waktu"</string>

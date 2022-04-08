@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Postavke za nekorištene aplikacije"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Ukloni odobrenja ako se aplikacija ne koristi"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Ukloni odobrenja i oslobodi prostor"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Pauziraj aktivnost apl. ako se ne koristi"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Uklonite odobrenja, izbrišite privremene fajlove i zaustavite obavještenja"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Zbog zaštite vaših podataka, odobrenja za ovu aplikaciju će se ukloniti ako se ona ne bude koristila nekoliko mjeseci."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Radi zaštite vaših podataka, ako se aplikacija ne bude koristila nekoliko mjeseci, uklonit će se sljedeća odobrenja: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Zbog zaštite vaših podataka uklonjena su odobrenja iz aplikacija koje niste koristili nekoliko mjeseci."</string>
@@ -471,7 +469,7 @@
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Ova aplikacija traži da snima slike i videozapise sve vrijeme, čak i kada je ne koristite. "<annotation id="link">"Dozvolite u postavkama."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa zapisnicima poziva?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da upućuje pozive i upravlja njima?"</string>
-    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristup senzornim podacima o vašim vitalnim znacima?"</string>
+    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa senzornim podacima o vašim vitalnim znakovima?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Ova aplikacija želi pristupati podacima senzora o vašim vitalnim znakovima sve vrijeme, čak i kada je ne koristite. Da to promijenite, "<annotation id="link">"idite u postavke."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa podacima senzora o vašim vitalnim znakovima?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Da dozvolite aplikaciji pristup podacima tjelesnih senzora sve vrijeme, čak i kada je ne koristite, "<annotation id="link">"idite u postavke."</annotation></string>
@@ -523,5 +521,5 @@
     <string name="active_app_usage_2_qs" msgid="6107866785243565283">"Koristi aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Nedavno je koristila aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Sigurnost i privatnost"</string>
-    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Provjeri status"</string>
+    <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Provjerite status"</string>
 </resources>

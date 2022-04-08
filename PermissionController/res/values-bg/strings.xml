@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Настройки за неизползваните приложения"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Премахване на разрешенията, ако приложението не се използва"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Премахване на разреш. и освоб. на място"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Поставяне на активн. в прилож. на пауза, ако не се ползва"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Премахване на разрешенията, изтриване на временните файлове и спиране на известията"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"За да защитим данните ви, разрешенията за това приложение ще бъдат премахнати, ако не го използвате няколко месеца."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"За да защитим данните ви, следните разрешения ще бъдат премахнати, ако не използвате приложението няколко месеца: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"За да защитим данните ви, премахнахме разрешенията за приложенията, които не сте използвали от няколко месеца."</string>

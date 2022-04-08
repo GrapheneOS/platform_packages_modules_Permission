@@ -199,10 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"사용하지 않는 앱 설정"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"앱이 사용되지 않는 경우 권한 삭제"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"권한을 삭제하고 여유 공간 확보"</string>
-    <!-- no translation found for unused_apps_label_v2 (7058776770056517980) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (8839466950318403115) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"사용하지 않을 때 앱 활동 일시중지"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"권한 제거, 임시 파일 삭제, 알림 중지"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"데이터 보호를 위해 몇 개월 동안 앱을 사용하지 않으면 앱의 권한이 삭제됩니다."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"데이터 보호를 위해 몇 개월 동안 앱을 사용하지 않으면 다음 권한이 삭제됩니다. <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"데이터 보호를 위해 몇 개월 동안 사용하지 않은 앱에서 권한이 삭제되었습니다."</string>

@@ -322,17 +322,6 @@ public final class SafetySourceIssue implements Parcelable {
                 + '}';
     }
 
-    @IssueCategory
-    private static int validateIssueCategory(int value) {
-        switch (value) {
-            case ISSUE_CATEGORY_DEVICE:
-            case ISSUE_CATEGORY_ACCOUNT:
-            case ISSUE_CATEGORY_GENERAL:
-                return value;
-        }
-        throw new IllegalArgumentException(String.format("Unexpected IssueCategory: %s", value));
-    }
-
     /**
      * Data for an action supported from a safety issue {@link SafetySourceIssue} in the Safety
      * Center page.
@@ -571,7 +560,7 @@ public final class SafetySourceIssue implements Parcelable {
             this.mId = requireNonNull(id);
             this.mTitle = requireNonNull(title);
             this.mSummary = requireNonNull(summary);
-            this.mSeverityLevel = SafetySourceData.validateSeverityLevelForIssue(severityLevel);
+            this.mSeverityLevel = validateSeverityLevel(severityLevel);
             this.mIssueTypeId = requireNonNull(issueTypeId);
         }
 
@@ -647,5 +636,32 @@ public final class SafetySourceIssue implements Parcelable {
                     mOnDismissPendingIntent,
                     mIssueTypeId);
         }
+    }
+
+    @SafetySourceData.SeverityLevel
+    private static int validateSeverityLevel(int value) {
+        switch (value) {
+            case SafetySourceData.SEVERITY_LEVEL_INFORMATION:
+            case SafetySourceData.SEVERITY_LEVEL_RECOMMENDATION:
+            case SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING:
+                return value;
+            case SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED:
+            default:
+        }
+        throw new IllegalArgumentException(
+                String.format("Unexpected SeverityLevel for SafetySourceIssue: %s", value));
+    }
+
+    @IssueCategory
+    private static int validateIssueCategory(int value) {
+        switch (value) {
+            case ISSUE_CATEGORY_DEVICE:
+            case ISSUE_CATEGORY_ACCOUNT:
+            case ISSUE_CATEGORY_GENERAL:
+                return value;
+            default:
+        }
+        throw new IllegalArgumentException(
+                String.format("Unexpected IssueCategory for SafetySourceIssue: %s", value));
     }
 }
