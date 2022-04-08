@@ -137,7 +137,7 @@ class ReviewPermissionDecisionsViewModel(val app: Application, val user: UserHan
     }
 
     fun createSummaryText(permissionDecision: PermissionDecision): String {
-        val diff = System.currentTimeMillis() - permissionDecision.decisionTime
+        val diff = System.currentTimeMillis() - permissionDecision.eventTime
         val daysAgo = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS).toInt()
         return StringUtils.getIcuPluralsString(app, R.string.days_ago, daysAgo)
     }
