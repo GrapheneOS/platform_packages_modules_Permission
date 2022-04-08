@@ -89,7 +89,7 @@ public final class SafetyCenterService extends SystemService {
     private final SafetyCenterDataTracker mSafetyCenterDataTracker;
     @GuardedBy("mBroadcastLock")
     @NonNull
-    private final SafetyCenterBroadcastManager mSafetyCenterBroadcastManager;
+    private final SafetyCenterBroadcastDispatcher mSafetyCenterBroadcastDispatcher;
     @NonNull
     private final AppOpsManager mAppOpsManager;
     private final boolean mDeviceSupportsSafetyCenter;
@@ -104,7 +104,7 @@ public final class SafetyCenterService extends SystemService {
         mSafetyCenterConfigReader = new SafetyCenterConfigReader(safetyCenterResourcesContext);
         mSafetyCenterDataTracker = new SafetyCenterDataTracker(context,
                 safetyCenterResourcesContext);
-        mSafetyCenterBroadcastManager = new SafetyCenterBroadcastManager(context);
+        mSafetyCenterBroadcastDispatcher = new SafetyCenterBroadcastDispatcher(context);
         mAppOpsManager = requireNonNull(context.getSystemService(AppOpsManager.class));
         mDeviceSupportsSafetyCenter = context.getResources().getBoolean(
                 Resources.getSystem().getIdentifier("config_enableSafetyCenter", "bool",
@@ -264,7 +264,7 @@ public final class SafetyCenterService extends SystemService {
             SafetyCenterConfigInternal configInternal = getConfigInternalLocked();
 
             synchronized (mBroadcastLock) {
-                mSafetyCenterBroadcastManager.sendRefreshSafetySources(
+                mSafetyCenterBroadcastDispatcher.sendRefreshSafetySources(
                         configInternal,
                         refreshReason,
                         userProfileGroup
@@ -506,10 +506,7 @@ public final class SafetyCenterService extends SystemService {
             SafetyCenterConfigInternal configInternal = getConfigInternalLocked();
 
             synchronized (mBroadcastLock) {
-                mSafetyCenterBroadcastManager.sendEnabledChanged(configInternal);
-                // TODO(b/227342241): Look into whether we should refresh safety sources here too.
-                //  Supposedly they could already be listening to
-                //  `ACTION_SAFETY_CENTER_ENABLED_CHANGED`, so it might not be necessary.
+                mSafetyCenterBroadcastDispatcher.sendEnabledChanged(configInternal);
             }
         }
 
@@ -523,7 +520,7 @@ public final class SafetyCenterService extends SystemService {
             }
 
             synchronized (mBroadcastLock) {
-                mSafetyCenterBroadcastManager.sendEnabledChanged(configInternal);
+                mSafetyCenterBroadcastDispatcher.sendEnabledChanged(configInternal);
             }
         }
     }
