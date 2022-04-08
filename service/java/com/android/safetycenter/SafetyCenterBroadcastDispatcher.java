@@ -37,6 +37,7 @@ import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_RESCAN_BUT
 import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_SAFETY_CENTER_ENABLED;
 
 import android.annotation.NonNull;
+import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.app.BroadcastOptions;
 import android.content.Context;
@@ -62,9 +63,9 @@ import java.util.Objects;
  * <p>This class isn't thread safe. Thread safety must be handled by the caller.
  */
 @RequiresApi(TIRAMISU)
-final class SafetyCenterBroadcastManager {
+final class SafetyCenterBroadcastDispatcher {
 
-    private static final String TAG = "SafetyCenterBroadcastMa";
+    private static final String TAG = "SafetyCenterBroadcastDi";
 
     /**
      * Time for which an app, upon receiving a particular broadcast, will be placed on a temporary
@@ -77,8 +78,8 @@ final class SafetyCenterBroadcastManager {
     @NonNull
     private final Context mContext;
 
-    /** Creates a {@link SafetyCenterBroadcastManager} using the given {@link Context}. */
-    SafetyCenterBroadcastManager(@NonNull Context context) {
+    /** Creates a {@link SafetyCenterBroadcastDispatcher} using the given {@link Context}. */
+    SafetyCenterBroadcastDispatcher(@NonNull Context context) {
         mContext = context;
     }
 
@@ -92,18 +93,7 @@ final class SafetyCenterBroadcastManager {
             @NonNull UserProfileGroup userProfileGroup) {
         List<Broadcast> broadcasts = configInternal.getBroadcasts();
         int requestType = toRefreshRequestType(refreshReason);
-        BroadcastOptions broadcastOptions = BroadcastOptions.makeBasic();
-        // The following operation requires START_FOREGROUND_SERVICES_FROM_BACKGROUND
-        // permission.
-        final long callingId = Binder.clearCallingIdentity();
-        try {
-            broadcastOptions.setTemporaryAppAllowlist(ALLOWLIST_DURATION.toMillis(),
-                    TEMPORARY_ALLOW_LIST_TYPE_FOREGROUND_SERVICE_ALLOWED,
-                    REASON_REFRESH_SAFETY_SOURCES,
-                    "Safety Center is requesting data from safety sources");
-        } finally {
-            Binder.restoreCallingIdentity(callingId);
-        }
+        BroadcastOptions broadcastOptions = createBroadcastOptions();
 
         for (int i = 0; i < broadcasts.size(); i++) {
             Broadcast broadcast = broadcasts.get(i);
@@ -121,19 +111,26 @@ final class SafetyCenterBroadcastManager {
      * android.Manifest.permission#READ_SAFETY_CENTER_STATUS} permission).
      */
     // TODO(b/227310195): Consider adding a boolean extra to the intent instead of having clients
-    // rely on SafetyCenterManager#isSafetyCenterEnabled()?
+    //  rely on SafetyCenterManager#isSafetyCenterEnabled()?
     void sendEnabledChanged(@NonNull SafetyCenterConfigInternal configInternal) {
         List<Broadcast> broadcasts = configInternal.getBroadcasts();
+        BroadcastOptions broadcastOptions = createBroadcastOptions();
+
         for (int i = 0; i < broadcasts.size(); i++) {
             Broadcast broadcast = broadcasts.get(i);
 
-            sendEnabledChangedBroadcast(
+            sendBroadcast(
                     createEnabledChangedBroadcastIntent(broadcast.getPackageName()),
-                    SEND_SAFETY_CENTER_UPDATE);
+                    UserHandle.ALL,
+                    SEND_SAFETY_CENTER_UPDATE,
+                    broadcastOptions);
         }
 
-        sendEnabledChangedBroadcast(createEnabledChangedBroadcastIntent(),
-                READ_SAFETY_CENTER_STATUS);
+        sendBroadcast(
+                createEnabledChangedBroadcastIntent(),
+                UserHandle.ALL,
+                READ_SAFETY_CENTER_STATUS,
+                null);
     }
 
     private void sendRefreshSafetySourcesBroadcast(
@@ -149,8 +146,8 @@ final class SafetyCenterBroadcastManager {
                     broadcast.getSourceIdsForProfileOwner(),
                     profileOwnerUserId);
 
-            sendRefreshSafetySourcesBroadcast(broadcastIntent, broadcastOptions,
-                    UserHandle.of(profileOwnerUserId));
+            sendBroadcast(broadcastIntent, UserHandle.of(profileOwnerUserId),
+                    SEND_SAFETY_CENTER_UPDATE, broadcastOptions);
         }
         if (!broadcast.getSourceIdsForManagedProfiles().isEmpty()) {
             int[] managedProfileUserIds = userProfileGroup.getManagedProfilesUserIds();
@@ -162,36 +159,24 @@ final class SafetyCenterBroadcastManager {
                         broadcast.getSourceIdsForManagedProfiles(),
                         managedProfileUserId);
 
-                sendRefreshSafetySourcesBroadcast(broadcastIntent, broadcastOptions,
-                        UserHandle.of(managedProfileUserId));
+                sendBroadcast(broadcastIntent, UserHandle.of(managedProfileUserId),
+                        SEND_SAFETY_CENTER_UPDATE, broadcastOptions);
             }
         }
     }
 
-    private void sendRefreshSafetySourcesBroadcast(
+    private void sendBroadcast(
             @NonNull Intent broadcastIntent,
-            @NonNull BroadcastOptions broadcastOptions,
-            @NonNull UserHandle userHandle) {
-        // The following operation requires INTERACT_ACROSS_USERS permission.
+            @NonNull UserHandle userHandle,
+            @NonNull String permission,
+            @Nullable BroadcastOptions broadcastOptions) {
+        // The following operation requires the INTERACT_ACROSS_USERS permission.
         final long callingId = Binder.clearCallingIdentity();
         try {
             mContext.sendBroadcastAsUser(broadcastIntent,
                     userHandle,
-                    SEND_SAFETY_CENTER_UPDATE,
-                    broadcastOptions.toBundle());
-        } finally {
-            Binder.restoreCallingIdentity(callingId);
-        }
-    }
-
-    private void sendEnabledChangedBroadcast(@NonNull Intent broadcastIntent,
-            @NonNull String permission) {
-        // The following operation requires INTERACT_ACROSS_USERS permission.
-        final long callingId = Binder.clearCallingIdentity();
-        try {
-            mContext.sendBroadcastAsUser(broadcastIntent,
-                    UserHandle.ALL,
-                    permission);
+                    permission,
+                    broadcastOptions == null ? null : broadcastOptions.toBundle());
         } finally {
             Binder.restoreCallingIdentity(callingId);
         }
@@ -230,6 +215,23 @@ final class SafetyCenterBroadcastManager {
             @NonNull String intentAction) {
         return new Intent(intentAction)
                 .setFlags(FLAG_RECEIVER_FOREGROUND);
+    }
+
+    @NonNull
+    private static BroadcastOptions createBroadcastOptions() {
+        BroadcastOptions broadcastOptions = BroadcastOptions.makeBasic();
+        // The following operation requires the START_FOREGROUND_SERVICES_FROM_BACKGROUND
+        // permission.
+        final long callingId = Binder.clearCallingIdentity();
+        try {
+            broadcastOptions.setTemporaryAppAllowlist(ALLOWLIST_DURATION.toMillis(),
+                    TEMPORARY_ALLOW_LIST_TYPE_FOREGROUND_SERVICE_ALLOWED,
+                    REASON_REFRESH_SAFETY_SOURCES,
+                    "Safety Center is requesting data from safety sources");
+        } finally {
+            Binder.restoreCallingIdentity(callingId);
+        }
+        return broadcastOptions;
     }
 
     @RefreshRequestType
