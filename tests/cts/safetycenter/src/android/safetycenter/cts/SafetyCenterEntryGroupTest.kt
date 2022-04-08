@@ -137,6 +137,26 @@ class SafetyCenterEntryGroupTest {
     }
 
     @Test
+    fun build_withInvalidEntrySeverityLevel_throwsIllegalArgumentException() {
+        val exception = assertFailsWith(IllegalArgumentException::class) {
+            SafetyCenterEntryGroup.Builder(entryGroup1).setSeverityLevel(-1)
+        }
+
+        assertThat(exception).hasMessageThat()
+            .isEqualTo("Unexpected EntrySeverityLevel for SafetyCenterEntryGroup: -1")
+    }
+
+    @Test
+    fun build_withInvalidSeverityUnspecifiedIconType_throwsIllegalArgumentException() {
+        val exception = assertFailsWith(IllegalArgumentException::class) {
+            SafetyCenterEntryGroup.Builder(entryGroup1).setSeverityUnspecifiedIconType(-1)
+        }
+
+        assertThat(exception).hasMessageThat()
+            .isEqualTo("Unexpected SeverityUnspecifiedIconType for SafetyCenterEntryGroup: -1")
+    }
+
+    @Test
     fun describeContents_returns0() {
         assertThat(entryGroup1.describeContents()).isEqualTo(0)
         assertThat(entryGroup2.describeContents()).isEqualTo(0)
