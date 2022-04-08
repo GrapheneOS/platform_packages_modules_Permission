@@ -240,7 +240,7 @@ public final class SafetyEvent implements Parcelable {
 
         /** Creates a {@link Builder} for {@link SafetyEvent}. */
         public Builder(@Type int type) {
-            mType = type;
+            mType = validateType(type);
         }
 
         /**
@@ -297,5 +297,21 @@ public final class SafetyEvent implements Parcelable {
             return new SafetyEvent(
                     mType, mRefreshBroadcastId, mSafetySourceIssueId, mSafetySourceIssueActionId);
         }
+    }
+
+    @Type
+    private static int validateType(int value) {
+        switch (value) {
+            case SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED:
+            case SAFETY_EVENT_TYPE_REFRESH_REQUESTED:
+            case SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED:
+            case SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED:
+            case SAFETY_EVENT_TYPE_DEVICE_LOCALE_CHANGED:
+            case SAFETY_EVENT_TYPE_DEVICE_REBOOTED:
+                return value;
+            default:
+        }
+        throw new IllegalArgumentException(
+                String.format("Unexpected Type for SafetyEvent: %s", value));
     }
 }

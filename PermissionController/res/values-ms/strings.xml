@@ -199,8 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Tetapan apl yang tidak digunakan"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Alih keluar kebenaran jika apl tidak digunakan"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Alih keluar kebenaran dan kosongkan ruang"</string>
-    <string name="unused_apps_label_v2" msgid="2443239537162119403">"Jeda aktiviti apl"</string>
-    <string name="unused_apps_summary" msgid="4416065734063612849">"Alih keluar kebenaran, padamkan fail sementara dan hentikan pemberitahuan jika tidak digunakan"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Jeda aktiviti apl jika tidak digunakan"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Alih keluar kebenaran, padamkan fail sementara dan hentikan pemberitahuan"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Untuk melindungi data anda, kebenaran apl ini akan dialih keluar jika apl tidak digunakan selama beberapa bulan."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Untuk melindungi data anda, jika apl tidak digunakan selama beberapa bulan, kebenaran berikut akan dialih keluar: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Untuk melindungi data anda, kebenaran telah dialih keluar daripada apl yang tidak anda gunakan selama beberapa bulan."</string>

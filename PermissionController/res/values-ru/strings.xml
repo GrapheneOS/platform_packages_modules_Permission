@@ -196,14 +196,11 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Все разрешения приложения \"<xliff:g id="APP">%1$s</xliff:g>\""</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Все приложения с этим разрешением"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Показывать сведения об использовании микрофона Ассистентом"</string>
-    <!-- no translation found for unused_apps_category_title (2988455616845243901) -->
-    <skip />
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"Настройки неиспользуемых приложений"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Отзывать разрешения, если приложение не используется"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Удалять разрешения и освобождать место"</string>
-    <!-- no translation found for unused_apps_label_v2 (2443239537162119403) -->
-    <skip />
-    <!-- no translation found for unused_apps_summary (4416065734063612849) -->
-    <skip />
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Приостановить работу в неактивный период"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Удалить разрешения и временные файлы, прекратить отправку уведомлений"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Для защиты ваших данных мы отзовем разрешения, предоставленные этому приложению, если вы не будете пользоваться им несколько месяцев."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Если вы не будете пользоваться приложением несколько месяцев, в целях защиты ваших данных мы отзовем следующие разрешения: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"В целях защиты ваших данных мы отозвали разрешения для приложений, которыми вы не пользовались несколько месяцев."</string>

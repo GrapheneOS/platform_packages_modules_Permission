@@ -37,7 +37,7 @@ public class SystemUiRoleBehavior implements RoleBehavior {
         if (SdkLevel.isAtLeastT()) {
             if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_WATCH)) {
                 for (String permission : WEAR_APP_OP_PERMISSIONS) {
-                    AppOpPermissions.grant(packageName, permission, context);
+                    AppOpPermissions.grant(packageName, permission, true, context);
                 }
             }
         }
