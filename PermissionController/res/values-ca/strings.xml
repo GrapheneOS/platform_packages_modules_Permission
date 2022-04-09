@@ -160,7 +160,7 @@
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Ús de permisos durant l\'últim minut"</string>
     <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"No s\'ha utilitzat en les 24 darreres hores"</string>
     <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"No s\'ha utilitzat en els 7 darrers dies"</string>
-    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Utilitzats per 1 aplicació}other{Utilitzats per # aplicacions}}"</string>
+    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Utilitzat per 1 aplicació}other{Utilitzat per # aplicacions}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Mostra-ho tot al tauler"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrats per: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Suprimeix el filtre"</string>
@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"El permís <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> i <xliff:g id="NUMBER">%2$s</xliff:g> permisos més s\'han suprimit"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Aplicacions no utilitzades"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Si una aplicació no s\'utilitza durant uns mesos:\n\n• Se suprimeixen els permisos per protegir les teves dades.\n• S\'aturen les notificacions per estalviar bateria.\n• Se suprimeixen els fitxers temporals per alliberar espai.\n\nPer tornar a permetre els permisos i les notificacions, obre l\'aplicació."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Si una aplicació no s\'utilitza durant uns mesos:\n\n• Se suprimeixen els permisos per protegir les teves dades.\n• Se suprimeixen els fitxers temporals per alliberar espai.\n\nPer tornar a permetre els permisos, obre l\'aplicació."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Obertes per darrera vegada fa més de <xliff:g id="NUMBER">%s</xliff:g> mesos"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Aplicació oberta per darrera vegada el dia <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Oberta per darrera vegada el dia <xliff:g id="DATE">%s</xliff:g>"</string>

@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ja <xliff:g id="NUMBER">%2$s</xliff:g> muuta käyttöoikeutta poistettiin"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Käyttämättömät sovellukset"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Jos sovellusta ei käytetä muutamaan kuukauteen:\n\n• Luvat poistetaan datasi suojaamiseksi\n• Ilmoitukset lopetetaan akun säästämiseksi\n• Väliaikaiset tiedostot poistetaan tilan vapauttamiseksi\n\nJos haluat sallia luvat ja ilmoitukset uudelleen, avaa sovellus."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Jos sovellusta ei käytetä muutamaan kuukauteen:\n\n• Luvat poistetaan datasi suojaamiseksi\n• Väliaikaiset tiedostot poistetaan tilan vapauttamiseksi\n\nJos haluat sallia luvat uudelleen, avaa sovellus."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Avattu viimeksi <xliff:g id="NUMBER">%s</xliff:g> kuukautta sitten"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Sovellus avattiin viimeksi <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Avattu viimeksi <xliff:g id="DATE">%s</xliff:g>"</string>

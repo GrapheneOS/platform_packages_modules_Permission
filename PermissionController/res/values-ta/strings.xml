@@ -78,7 +78,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> ஆப்ஸ் அனுமதிக்கப்பட்டன"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"சிஸ்டம் ஆப்ஸைக் காட்டு"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"சிஸ்டம் ஆப்ஸை மறை"</string>
-    <string name="menu_show_7_days_data" msgid="8979611198508523706">"7 நாட்களில் காட்டு"</string>
+    <string name="menu_show_7_days_data" msgid="8979611198508523706">"7 நாட்களைக் காட்டு"</string>
     <string name="menu_show_24_hours_data" msgid="8228054833323380780">"24 மணிநேரத்தில் காட்டு"</string>
     <string name="manage_permission" msgid="2895385393037061964">"அனுமதியை நிர்வகி"</string>
     <string name="no_apps" msgid="2412612731628386816">"எந்த ஆப்ஸிற்கும் தேவையில்லை"</string>
@@ -120,7 +120,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"தற்போதைய அனுமதிகள்"</string>
     <string name="message_staging" msgid="9110563899955511866">"ஆப்ஸ் தயாராகிறது…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"தெரியாதது"</string>
-    <string name="permission_usage_title" msgid="1568233336351734538">"பிரைவசி டாஷ்போர்டு"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"தனியுரிமை டாஷ்போர்டு"</string>
     <string name="auto_permission_usage_summary" msgid="7335667266743337075">"சமீபத்தில் அனுமதிகளைப் பயன்படுத்திய ஆப்ஸைக் காட்டும்"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> உபயோகம்"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"பிற அனுமதிகளைப் பார்த்தல்"</string>
@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> மற்றும் பிற <xliff:g id="NUMBER">%2$s</xliff:g> அனுமதிகள் அகற்றப்பட்டன"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"பயன்படுத்தாத ஆப்ஸ்"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"ஆப்ஸைச் சில மாதங்கள் பயன்படுத்தாமல் இருந்தால்:\n\n• உங்கள் தரவைப் பாதுகாக்க அனுமதிகள் அகற்றப்படும்\n• பேட்டரியைச் சேமிக்க அறிவிப்புகள் நிறுத்தப்படும்\n• சேமிப்பிடத்தைக் காலியாக்க தற்காலிக ஃபைல்கள் அகற்றப்படும்\n\nமீண்டும் அனுமதிகளை வழங்குவதற்கும் அறிவிப்புகளைப் பெறுவதற்கும் ஆப்ஸைத் திறக்கவும்."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"ஓர் ஆப்ஸைச் சில மாதங்கள் பயன்படுத்தாமல் இருந்தால்:\n\n• உங்கள் தரவைப் பாதுகாப்பதற்காக அனுமதிகள் அகற்றப்படும்\n• சேமிப்பிடத்தைக் காலியாக்குவதற்காகத் தற்காலிக ஃபைல்கள் அகற்றப்படும்\n\nமீண்டும் அனுமதிகளை வழங்க ஆப்ஸைத் திறக்கவும்."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"கடைசியாக <xliff:g id="NUMBER">%s</xliff:g> மாதங்களுக்கு முன்பு திறக்கப்பட்டது"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"கடைசியாக <xliff:g id="DATE">%s</xliff:g> அன்று ஆப்ஸ் திறக்கப்பட்டது"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"கடைசியாகத் திறந்தது: <xliff:g id="DATE">%s</xliff:g>"</string>

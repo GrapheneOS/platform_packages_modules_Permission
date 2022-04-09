@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Quitáronse os permisos (<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> e <xliff:g id="NUMBER">%2$s</xliff:g> máis)"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Aplicacións que non se usan"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Se durante uns meses non se usa unha aplicación:\n\n• Quítanselle os permisos para protexer os teus datos.\n• Detéñense as notificacións para aforrar batería.\n• Quítanse os ficheiros temporais para liberar espazo.\n\nSe queres dar permisos e recibir notificacións de novo, abre a aplicación."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Se durante uns meses non se usa unha aplicación:\n\n• Quítanselle os permisos para protexer os teus datos.\n• Quítanse os ficheiros temporais para liberar espazo.\n\nSe queres conceder permisos de novo, abre a aplicación."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Última vez que se abriu: hai máis de <xliff:g id="NUMBER">%s</xliff:g> meses"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"A aplicación abriuse por última vez o <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Abriuse por última vez o <xliff:g id="DATE">%s</xliff:g>"</string>

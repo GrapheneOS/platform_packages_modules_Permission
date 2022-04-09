@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> nezinye izimvume ezingu-<xliff:g id="NUMBER">%2$s</xliff:g> zisusiwe"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Unused apps"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Uma i-app ingasetshenziswa izinyanga ezimbalwa:\n\n• Izimvume ziyasuswa ukuze kuvikelwe idatha yakho\n• Izaziso ziyamiswa ukonga ibhethri\n• Amafayela okwesikhashana ayasuswa ukukhulula isikhala\n\nUkuze uphinde uvumele izimvume nezaziso, vula i-app."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Uma i-app ingasetshenziswa izinyanga ezimbalwa:\n\n• Izimvume ziyasuswa ukuze kuvikelwe idatha yakho\n• Amafayela esikhashana ayasuswa ukuze kuvulwe isikhala\n\nUkuze uphinde uvumele izimvume, vula i-app."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Kugcine ukuvulwa ngaphezu kwezinyanga ezingu-<xliff:g id="NUMBER">%s</xliff:g> ezedlule"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Uhlelo lokusebenza lugcine ukuvulwa ngo-<xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Kugcine ukuvulwa ngo-<xliff:g id="DATE">%s</xliff:g>"</string>

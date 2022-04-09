@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Дозволата за „<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>“ и уште <xliff:g id="NUMBER">%2$s</xliff:g> други дозволи се отстранети"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Некористени апликации"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Ако некоја апликација не се користи неколку месеци:\n\n• дозволите се отстрануваат за да се заштитат вашите податоци\n• известувањата се стопираат за да се заштеди батерија\n• привремените датотеки се отстрануваат за да се ослободи простор\n\nЗа да повторно се овозможат дозволите и известувањата, отворете ја апликацијата."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Ако некоја апликација не се користи неколку месеци:\n\n• дозволите се отстрануваат за да се заштитат вашите податоци\n• привремените датотеки се отстрануваат за да се ослободи простор\n\nЗа да повторно се овозможат дозволите, отворете ја апликацијата."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Последно отворени пред повеќе од <xliff:g id="NUMBER">%s</xliff:g> месеци"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Последно отворање на апликацијата: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Последно отворање: <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -489,7 +490,7 @@
     <string name="privdash_label_location" msgid="6882400763866489291">"Локација"</string>
     <string name="privdash_label_other" msgid="3710394147423236033">"Друго"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"Ништо"</string>
-    <string name="privdash_label_24h" msgid="1512532123865375319">"Изминативе\n24 часа"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"Минативе\n24 часа"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Изминатите\n7 дена"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> е заштитена од Android. Бидејќи вашите податоци се обработуваат на уредов, користењето на дозволата на апликацијава не е прикажано на лентата за статус или вашата контролна табла за приватност."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> е заштитена од Android. Бидејќи вашите податоци се обработуваат на уредов, користењето на дозволата на апликацијава не е прикажано на вашата контролна табла за приватност."</string>
@@ -502,9 +503,9 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Безбедност и приватност"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Скенирај"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Отфрли"</string>
-    <string name="security_settings" msgid="3808106921175271317">"Поставки за безбедноста"</string>
+    <string name="security_settings" msgid="3808106921175271317">"Поставки за безбедност"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Дозволи за сензор"</string>
-    <string name="privacy_controls_qs" msgid="471793881466080745">"Контроли на приватноста"</string>
+    <string name="privacy_controls_qs" msgid="471793881466080745">"Контроли за приватност"</string>
     <string name="permissions_removed_qs" msgid="8957319130625294572">"Дозволата е отстранета"</string>
     <string name="camera_usage_qs" msgid="7943349178368641820">"Видете повеќе начини на користење на камерата"</string>
     <string name="microphone_usage_qs" msgid="2393193350541830472">"Видете повеќе начини на користење на микрофонот"</string>

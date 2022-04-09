@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ଏବଂ ଅନ୍ୟ <xliff:g id="NUMBER">%2$s</xliff:g>ଟି ଅନୁମତି କାଢ଼ି ଦିଆଯାଇଛି"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"ଅବ୍ୟବହୃତ ଆପଗୁଡ଼ିକ"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"ଯଦି ଏକ ଆପ୍ କିଛି ମାସ ପାଇଁ ଅବ୍ୟବହୃତ ଅଛି, ତେବେ:\n\n• ଆପଣଙ୍କ ଡାଟାକୁ ସୁରକ୍ଷା ଦେବା ପାଇଁ ଅନୁମତିଗୁଡ଼ିକୁ କାଢ଼ି ଦିଆଯାଏ\n• ବ୍ୟାଟେରୀ ସେଭ୍ କରିବାକୁ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକୁ ବନ୍ଦ କରାଯାଏ\n• ସ୍ପେସ୍ ଖାଲି କରିବା ପାଇଁ ଅସ୍ଥାୟୀ ଫାଇଲଗୁଡ଼ିକୁ କାଢ଼ି ଦିଆଯାଏ\n\nଅନୁମତି ଏବଂ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକୁ ପୁଣି ଅନୁମତି ଦେବା ପାଇଁ, ଆପ୍ ଖୋଲନ୍ତୁ।"</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"ଯଦି ଏକ ଆପ କିଛି ମାସ ପାଇଁ ଅବ୍ୟବହୃତ ଅଛି, ତେବେ:\n\n• ଆପଣଙ୍କ ଡାଟାକୁ ସୁରକ୍ଷିତ ରଖିବା ପାଇଁ ଅନୁମତିଗୁଡ଼ିକୁ କାଢ଼ି ଦିଆଯାଏ\n• ସ୍ପେସ ଖାଲି କରିବା ପାଇଁ ଅସ୍ଥାୟୀ ଫାଇଲଗୁଡ଼ିକୁ କାଢ଼ି ଦିଆଯାଏ\n\n• ପୁଣି ଅନୁମତିଗୁଡ଼ିକ ଦେବା ପାଇଁ, ଆପ ଖୋଲନ୍ତୁ।"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"ଗତଥର <xliff:g id="NUMBER">%s</xliff:g> ମାସ ପୂର୍ବେ ଖୋଲାଯାଇଥିଲା"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ଗତ ଥର <xliff:g id="DATE">%s</xliff:g>ରେ ଆପକୁ ଖୋଲାଯାଇଥିଲା"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"ଗତ ଥର <xliff:g id="DATE">%s</xliff:g>ରେ ଖୋଲାଯାଇଥିଲା"</string>
