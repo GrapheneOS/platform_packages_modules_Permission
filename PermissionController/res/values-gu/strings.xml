@@ -482,7 +482,7 @@
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"તમે આ ઍપનો ઉપયોગ કરી રહ્યાં ન હો, તો પણ ઍપ હંમેશાં ફોટા લેવા અને વીડિયો રેકોર્ડ કરવા માગે છે. "<annotation id="link">"સેટિંગમાંથી મંજૂરી આપો."</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને તમારા ફોનના કૉલ લૉગ ઍક્સેસ કરવાની મંજૂરી આપીએ?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને ફોન કૉલ કરવાની અને તેને મેનેજ કરવાની મંજૂરી આપીએ?"</string>
-    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને તમારી મહત્વપૂર્ણ સહી વિશેના સેન્સર ડેટાને ઍક્સેસ કરવાની મંજૂરી આપીએ?"</string>
+    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને તમારા જીવિત હોવાના મહત્ત્વપૂર્ણ સંકેતો વિશેના સેન્સર ડેટાને ઍક્સેસ કરવાની મંજૂરી આપીએ?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"નિયંત્રિત પરવાનગીઓ"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"સ્થાન ઍક્સેસ કરી શકાય છે"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"તમારા IT વ્યવસ્થાપક <xliff:g id="APP_NAME">%s</xliff:g>ને તમારું સ્થાન ઍક્સેસ કરવાની મંજૂરી આપે છે"</string>

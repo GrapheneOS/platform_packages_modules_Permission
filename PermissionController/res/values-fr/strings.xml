@@ -482,7 +482,7 @@
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"Cette application souhaite prendre des photos et des vidéos à tout moment, même quand vous ne l\'utilisez pas. "<annotation id="link">"Autoriser dans les paramètres"</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder aux journaux d\'appels de votre téléphone ?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à passer et gérer des appels téléphoniques ?"</string>
-    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Permettre à &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; d\'accéder aux données des capteurs relatives à vos signes vitaux ?"</string>
+    <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder aux données des capteurs concernant vos signes vitaux ?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Autorisations contrôlées"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Votre position est accessible"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Votre administrateur informatique autorise <xliff:g id="APP_NAME">%s</xliff:g> à accéder à votre position"</string>
