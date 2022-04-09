@@ -27,6 +27,7 @@ import android.app.AppOpsManager.MODE_IGNORED
 import android.app.AppOpsManager.OPSTR_AUTO_REVOKE_PERMISSIONS_IF_UNUSED
 import android.app.AppOpsManager.permissionToOp
 import android.app.Application
+import android.app.compat.gms.GmsCompat
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_MAIN
@@ -621,6 +622,11 @@ object KotlinUtils {
         if (perm.flags != newFlags) {
             app.packageManager.updatePermissionFlags(perm.name, group.packageInfo.packageName,
                 PERMISSION_CONTROLLER_CHANGED_FLAG_MASK, newFlags, user)
+        }
+
+        if (GmsCompat.isGmsApp(pkgInfo.packageName, user.identifier)) {
+            // in many cases, GMS needs a restart to properly handle permission grants
+            shouldKill = true
         }
 
         val newState = PermState(newFlags, isGranted)
