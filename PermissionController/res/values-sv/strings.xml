@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> och <xliff:g id="NUMBER">%2$s</xliff:g> andra behörigheter har tagits bort"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Appar som inte används"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Följande händer om en app inte används på några månader:\n\n• Behörigheter tas bort för att skydda din data\n• Aviseringar stoppas för att spara batteri\n• Tillfälliga filer tas bort för att frigöra lagringsutrymme\n\nÖppna appen om du vill ge behörigheter och tillåta aviseringar på nytt."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Följande händer om en app inte används på några månader:\n\n• Behörigheter tas bort för att skydda din data\n• Tillfälliga filer tas bort för att frigöra lagringsutrymme\n\nÖppna appen om du vill ge behörigheter på nytt."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Öppnades senast för över <xliff:g id="NUMBER">%s</xliff:g> månader sedan"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Appen öppnades senast den <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Öppnades senast <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -276,18 +277,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Behörigheterna har tagits bort för att skydda din integritet"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> har åtkomst till din plats i bakgrunden"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Den här appen har alltid åtkomst till din plats. Tryck här om du vill ändra det."</string>
-    <!-- no translation found for accessibility_access_reminder_notification_title (798487829152263568) -->
-    <skip />
-    <!-- no translation found for accessibility_access_reminder_notification_content (3897831796455872834) -->
-    <skip />
-    <!-- no translation found for accessibility_access_warning_card_content (3418029245041163015) -->
-    <skip />
-    <!-- no translation found for accessibility_remove_access_button_label (44145801526711640) -->
-    <skip />
-    <!-- no translation found for accessibility_show_all_apps_button_label (5027167822346195212) -->
-    <skip />
-    <!-- no translation found for accessibility_remove_access_success_label (4380995302917014670) -->
-    <skip />
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Granska app med tillgänglighetsåtkomst"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> kan läsa allt som visas på skärmen, visa innehåll över andra appar och spåra hur du interagerar med enheten."</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Den här appen kan läsa allt som visas på skärmen, visa innehåll över andra appar och spåra hur du interagerar med enheten."</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Ta bort åtkomst"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"Visa appar med tillgänglighetsåtkomst"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Åtkomst har tagits bort"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Appbehörigheter har tagits bort av integritetsskäl"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> har inte använts på ett par månader. Tryck för att granska."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> och en app till har inte använts på ett par månader. Tryck för att granska."</string>
@@ -514,7 +509,8 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Säkerhet och integritet"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Sök"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Stäng"</string>
-    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"Vill du ignorera varningen?"</string>
+    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (2734809473425036382) -->
+    <skip />
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Stäng"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Avbryt"</string>
     <string name="security_settings" msgid="3808106921175271317">"Säkerhetsinställningar"</string>

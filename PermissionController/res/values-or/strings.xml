@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ଏବଂ ଅନ୍ୟ <xliff:g id="NUMBER">%2$s</xliff:g>ଟି ଅନୁମତି କାଢ଼ି ଦିଆଯାଇଛି"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"ଅବ୍ୟବହୃତ ଆପଗୁଡ଼ିକ"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"ଯଦି ଏକ ଆପ୍ କିଛି ମାସ ପାଇଁ ଅବ୍ୟବହୃତ ଅଛି, ତେବେ:\n\n• ଆପଣଙ୍କ ଡାଟାକୁ ସୁରକ୍ଷା ଦେବା ପାଇଁ ଅନୁମତିଗୁଡ଼ିକୁ କାଢ଼ି ଦିଆଯାଏ\n• ବ୍ୟାଟେରୀ ସେଭ୍ କରିବାକୁ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକୁ ବନ୍ଦ କରାଯାଏ\n• ସ୍ପେସ୍ ଖାଲି କରିବା ପାଇଁ ଅସ୍ଥାୟୀ ଫାଇଲଗୁଡ଼ିକୁ କାଢ଼ି ଦିଆଯାଏ\n\nଅନୁମତି ଏବଂ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକୁ ପୁଣି ଅନୁମତି ଦେବା ପାଇଁ, ଆପ୍ ଖୋଲନ୍ତୁ।"</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"ଯଦି ଏକ ଆପ କିଛି ମାସ ପାଇଁ ଅବ୍ୟବହୃତ ଅଛି, ତେବେ:\n\n• ଆପଣଙ୍କ ଡାଟାକୁ ସୁରକ୍ଷିତ ରଖିବା ପାଇଁ ଅନୁମତିଗୁଡ଼ିକୁ କାଢ଼ି ଦିଆଯାଏ\n• ସ୍ପେସ ଖାଲି କରିବା ପାଇଁ ଅସ୍ଥାୟୀ ଫାଇଲଗୁଡ଼ିକୁ କାଢ଼ି ଦିଆଯାଏ\n\n• ପୁଣି ଅନୁମତିଗୁଡ଼ିକ ଦେବା ପାଇଁ, ଆପ ଖୋଲନ୍ତୁ।"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"ଗତଥର <xliff:g id="NUMBER">%s</xliff:g> ମାସ ପୂର୍ବେ ଖୋଲାଯାଇଥିଲା"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ଗତ ଥର <xliff:g id="DATE">%s</xliff:g>ରେ ଆପକୁ ଖୋଲାଯାଇଥିଲା"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"ଗତ ଥର <xliff:g id="DATE">%s</xliff:g>ରେ ଖୋଲାଯାଇଥିଲା"</string>
@@ -276,18 +277,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"ଆପଣଙ୍କ ଗୋପନୀୟତାକୁ ସୁରକ୍ଷା ଦେବା ପାଇଁ ଅନୁମତିଗୁଡ଼ିକୁ କାଢ଼ି ଦିଆଯାଇଛି"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> ପୃଷ୍ଠପଟରେ ଆପଣଙ୍କ ଲୋକେସନ୍ ପାଇଛି"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"ଏହି ଆପ୍ ସବୁବେଳେ ଆପଣଙ୍କ ଲୋକେସନ୍ ଆକ୍ସେସ୍ କରିପାରିବ। ବଦଳାଇବା ପାଇଁ ଟାପ୍ କରନ୍ତୁ"</string>
-    <!-- no translation found for accessibility_access_reminder_notification_title (798487829152263568) -->
-    <skip />
-    <!-- no translation found for accessibility_access_reminder_notification_content (3897831796455872834) -->
-    <skip />
-    <!-- no translation found for accessibility_access_warning_card_content (3418029245041163015) -->
-    <skip />
-    <!-- no translation found for accessibility_remove_access_button_label (44145801526711640) -->
-    <skip />
-    <!-- no translation found for accessibility_show_all_apps_button_label (5027167822346195212) -->
-    <skip />
-    <!-- no translation found for accessibility_remove_access_success_label (4380995302917014670) -->
-    <skip />
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"ଆକ୍ସେସିବିଲିଟୀ ଆକ୍ସେସ ଥିବା ଆପର ସମୀକ୍ଷା କରନ୍ତୁ"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> ସ୍କ୍ରିନରେ ଥିବା ସମସ୍ତ ବିଷୟବସ୍ତୁକୁ ପଢ଼ିପାରିବ, ଅନ୍ୟ ଆପ୍ସରେ ବିଷୟବସ୍ତୁଗୁଡ଼ିକୁ ଡିସପ୍ଲେ କରିପାରିବ ଏବଂ ଆପଣଙ୍କ ଇଣ୍ଟରାକ୍ସନଗୁଡ଼ିକୁ ଟ୍ରାକ କରିପାରିବ।"</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"ଏହି ଆପ ସ୍କ୍ରିନରେ ଥିବା ସମସ୍ତ ବିଷୟବସ୍ତୁକୁ ପଢ଼ିପାରିବ, ଅନ୍ୟ ଆପ୍ସରେ ବିଷୟବସ୍ତୁଗୁଡ଼ିକୁ ଡିସପ୍ଲେ କରିପାରିବ ଏବଂ ଆପଣଙ୍କ ଇଣ୍ଟରାକ୍ସନଗୁଡ଼ିକୁ ଟ୍ରାକ କରିପାରିବ।"</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"ଆକ୍ସେସ କାଢ଼ି ଦିଅନ୍ତୁ"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"ଆକ୍ସେସିବିଲିଟୀ ଆକ୍ସେସ ଥିବା ଆପ୍ସକୁ ଦେଖନ୍ତୁ"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"ଆକ୍ସେସ କାଢ଼ି ଦିଆଯାଇଛି"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"ଗୋପନୀୟତାକୁ ସୁରକ୍ଷା ଦେବା ପାଇଁ ଆପ୍ ଅନୁମତିଗୁଡ଼ିକ କାଢ଼ି ଦିଆଯାଇଛି"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g>କୁ କିଛି ମାସ ହେଲା ବ୍ୟବହାର କରାଯାଇନାହିଁ। ସମୀକ୍ଷା କରିବାକୁ ଟାପ୍ କରନ୍ତୁ।"</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> ଏବଂ ଅନ୍ୟ 1ଟି ଆପ୍ କିଛି ମାସ ହେଲା ବ୍ୟବହାର କରାଯାଇନାହିଁ। ସମୀକ୍ଷା କରିବାକୁ ଟାପ୍ କରନ୍ତୁ।"</string>
@@ -514,7 +509,8 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"ସୁରକ୍ଷା ଏବଂ ଗୋପନୀୟତା"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"ସ୍କାନ କରନ୍ତୁ"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"ଖାରଜ କରନ୍ତୁ"</string>
-    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"ଏହି ଚେତାବନୀକୁ ଖାରଜ କରିବେ?"</string>
+    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (2734809473425036382) -->
+    <skip />
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"ଖାରଜ କରନ୍ତୁ"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"ବାତିଲ୍ କରନ୍ତୁ"</string>
     <string name="security_settings" msgid="3808106921175271317">"ସୁରକ୍ଷା ସେଟିଂସ"</string>
