@@ -30,7 +30,7 @@
     </target_preparer>
 
     <test class="com.android.tradefed.testtype.AndroidJUnitTest" >
-        <option name="package" value="com.android.safetycenter.tests.resourceslib.safetycenterresourceslib" />
+        <option name="package" value="com.android.safetycenter.resourceslib.tests" />
         <option name="runner" value="androidx.test.runner.AndroidJUnitRunner" />
     </test>
 </configuration>

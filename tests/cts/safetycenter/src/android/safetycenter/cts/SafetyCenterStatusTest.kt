@@ -25,6 +25,7 @@ import androidx.test.filters.SdkSuppress
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
+import kotlin.test.assertFailsWith
 
 @RunWith(AndroidJUnit4::class)
 @SdkSuppress(minSdkVersion = TIRAMISU, codeName = "Tiramisu")
@@ -117,6 +118,26 @@ class SafetyCenterStatusTest {
                 .refreshStatus
         )
             .isEqualTo(SafetyCenterStatus.REFRESH_STATUS_NONE)
+    }
+
+    @Test
+    fun build_withInvalidOverallSeverityLevel_throwsIllegalArgumentException() {
+        val exception = assertFailsWith(IllegalArgumentException::class) {
+            SafetyCenterStatus.Builder(baseStatus).setSeverityLevel(-1)
+        }
+
+        assertThat(exception).hasMessageThat()
+            .isEqualTo("Unexpected OverallSeverityLevel for SafetyCenterStatus: -1")
+    }
+
+    @Test
+    fun build_withInvalidRefreshStatus_throwsIllegalArgumentException() {
+        val exception = assertFailsWith(IllegalArgumentException::class) {
+            SafetyCenterStatus.Builder(baseStatus).setRefreshStatus(-1)
+        }
+
+        assertThat(exception).hasMessageThat()
+            .isEqualTo("Unexpected RefreshStatus for SafetyCenterStatus: -1")
     }
 
     @Test

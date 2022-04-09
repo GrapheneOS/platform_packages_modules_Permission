@@ -178,6 +178,16 @@ class SafetyCenterIssueTest {
     }
 
     @Test
+    fun build_withInvalidIssueSeverityLevel_throwsIllegalArgumentException() {
+        val exception = assertFailsWith(IllegalArgumentException::class) {
+            SafetyCenterIssue.Builder(issue1).setSeverityLevel(-1)
+        }
+
+        assertThat(exception).hasMessageThat()
+            .isEqualTo("Unexpected IssueSeverityLevel for SafetyCenterIssue: -1")
+    }
+
+    @Test
     fun describeContents_returns0() {
         assertThat(issue1.describeContents()).isEqualTo(0)
         assertThat(issueWithRequiredFieldsOnly.describeContents()).isEqualTo(0)
@@ -326,6 +336,13 @@ class SafetyCenterIssueTest {
             .addEqualityGroup(
                 SafetyCenterIssue.Action.Builder("an_id", "a label", pendingIntent1)
                     .setSuccessMessage("a different success message")
+                    .build()
+            )
+            .addEqualityGroup(
+                SafetyCenterIssue.Action.Builder("an_id", "a label", pendingIntent1)
+                    .setId("another_id")
+                    .setLabel("another_label")
+                    .setPendingIntent(pendingIntent2)
                     .build()
             )
             .test()
