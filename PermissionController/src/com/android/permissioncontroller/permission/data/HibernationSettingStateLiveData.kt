@@ -74,12 +74,11 @@ class HibernationSettingStateLiveData private constructor(
         }
 
         val groups = packagePermsLiveData.value?.keys?.filter { it != NON_RUNTIME_NORMAL_PERMS }
-
-        if (packageLiveData.value?.uid == null || groups == null) {
+        val packageInfo = packageLiveData.value
+        if (packageInfo == null || groups == null) {
             postValue(null)
             return
         }
-
         val getLiveData = { groupName: String -> PermStateLiveData[packageName, groupName, user] }
         setSourcesToDifference(groups, permStateLiveDatas, getLiveData)
 
@@ -87,9 +86,9 @@ class HibernationSettingStateLiveData private constructor(
             return
         }
 
-        val canHibernate = !isPackageHibernationExemptByUser(app, packageLiveData.value!!)
+        val canHibernate = !isPackageHibernationExemptByUser(app, packageInfo)
         val revocableGroups = mutableListOf<String>()
-        if (!isPackageHibernationExemptBySystem(packageLiveData.value!!, user)) {
+        if (!isPackageHibernationExemptBySystem(packageInfo, user)) {
             permStateLiveDatas.forEach { (groupName, liveData) ->
                 val default = liveData.value?.any { (_, permState) ->
                     permState.permFlags and (FLAG_PERMISSION_GRANTED_BY_DEFAULT or
