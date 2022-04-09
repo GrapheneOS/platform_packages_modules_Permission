@@ -147,6 +147,12 @@
                     style="@style/PermissionGrantButtonNoUpgradeMaterial3" />
             </LinearLayout>
 
+            <com.android.permissioncontroller.permission.ui.widget.SafetyProtectionSectionView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="20dp"
+                android:layout_gravity="center" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

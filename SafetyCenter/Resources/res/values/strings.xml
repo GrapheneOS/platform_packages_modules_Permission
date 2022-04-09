@@ -22,9 +22,22 @@
     <string name="safetyCenterResourcesAppLabel">Safety Center Resources</string>
 
     <!-- Lock Screen -->
-    <string name="lock_screen_sources_title" description="The title of the group of safety settings relating to screen lock and biometrics">Screen lock</string>
+    <string name="lock_screen_sources_title" description="The title of the group of safety settings relating to screen lock and biometrics">Device lock</string>
     <string name="lock_screen_title" description="The default title of the setting for managing the screen lock on the device">Screen lock</string>
-    <string name="lock_screen_summary_disabled" description="The default summary of the setting for managing screen lock on the device before the current state is known to safety center">Details available soon</string>
+    <string name="lock_screen_summary_disabled" description="The default summary of the setting for managing screen lock on the device before the current state is known to safety center">No info yet</string>
+
+    <!-- Privacy -->
+    <string name="privacy_sources_title" description="The title of the group of safety settings relating to privacy">Privacy</string>
+    <string name="privacy_sources_summary" description="The summary of the group of safety settings relating to privacy, which describes the group contents">Dashboard, permissions, controls</string>
+    <string name="permission_usage_title" description="Permission usage title">Privacy dashboard</string>
+    <string name="permission_usage_summary" description="Permission usage summary, which describes what the permissions usage does">Show which apps recently used permissions</string>
+    <string name="permission_manager_title" description="Permission manager title">Permission manager</string>
+    <string name="permission_manager_summary" description="Permission manager summary, which describes what the permission manager does">Control app access to your data</string>
+
+    <!-- Advanced -->
+    <string name="advanced_title" description="The title of the group of advanced settings">More settings</string>
+    <string name="advanced_security_title" description="The title of the entry for advanced security settings">More security settings</string>
+    <string name="advanced_security_summary" description="The summary of the entry for advanced security settings, which describes the page contents">Encryption, credentials, and more</string>
 
     <string name="summary_placeholder" description="DO NOT TRANSLATE" translatable="false">&#160;</string>
 </resources>

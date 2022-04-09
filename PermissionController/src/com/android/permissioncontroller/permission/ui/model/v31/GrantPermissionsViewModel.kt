@@ -101,9 +101,6 @@ import com.android.permissioncontroller.permission.utils.AdminRestrictedPermissi
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.SafetyNetLogger
 import com.android.permissioncontroller.permission.utils.Utils
-import kotlinx.coroutines.Dispatchers.Main
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 /**
  * ViewModel for the GrantPermissionsActivity. Tracks all permission groups that are affected by
@@ -175,37 +172,47 @@ class GrantPermissionsViewModel(
         private val packagePermissionsLiveData = PackagePermissionsLiveData[packageName, user]
 
         init {
-            GlobalScope.launch(Main.immediate) {
-                val groups = packagePermissionsLiveData.getInitializedValue()
-                if (groups == null || groups.isEmpty()) {
-                    Log.e(LOG_TAG, "Package $packageName not found")
-                    value = null
-                    return@launch
-                }
-                packageInfo = packageInfoLiveData.getInitializedValue()
+            addSource(packagePermissionsLiveData) { onPackageLoaded() }
+            addSource(packageInfoLiveData) { onPackageLoaded() }
+            // Load package state, if available
+            onPackageLoaded()
+        }
 
-                if (packageInfo.requestedPermissions.isEmpty() ||
-                    packageInfo.targetSdkVersion < Build.VERSION_CODES.M) {
-                    Log.e(LOG_TAG, "Package $packageName has no requested permissions, or " +
+        private fun onPackageLoaded() {
+            if (packageInfoLiveData.isStale || packagePermissionsLiveData.isStale) {
+                return
+            }
+
+            val groups = packagePermissionsLiveData.value
+            val pI = packageInfoLiveData.value
+            if (groups == null || groups.isEmpty() || pI == null) {
+                Log.e(LOG_TAG, "Package $packageName not found")
+                value = null
+                return
+            }
+            packageInfo = pI
+
+            if (packageInfo.requestedPermissions.isEmpty() ||
+                packageInfo.targetSdkVersion < Build.VERSION_CODES.M) {
+                Log.e(LOG_TAG, "Package $packageName has no requested permissions, or " +
                         "is a pre-M app")
-                    value = null
-                    return@launch
-                }
+                value = null
+                return
+            }
 
-                val allAffectedPermissions = requestedPermissions.toMutableSet()
-                for (requestedPerm in requestedPermissions) {
-                    allAffectedPermissions.addAll(computeAffectedPermissions(requestedPerm, groups))
-                }
-                unfilteredAffectedPermissions = allAffectedPermissions.toList()
+            val allAffectedPermissions = requestedPermissions.toMutableSet()
+            for (requestedPerm in requestedPermissions) {
+                allAffectedPermissions.addAll(computeAffectedPermissions(requestedPerm, groups))
+            }
+            unfilteredAffectedPermissions = allAffectedPermissions.toList()
 
-                getAppPermGroups(groups.toMutableMap().apply {
-                        remove(PackagePermissionsLiveData.NON_RUNTIME_NORMAL_PERMS)
-                    })
+            getAppPermGroups(groups.toMutableMap().apply {
+                remove(PackagePermissionsLiveData.NON_RUNTIME_NORMAL_PERMS)
+            })
 
-                for (splitPerm in app.getSystemService(
-                        PermissionManager::class.java)!!.splitPermissions) {
-                    splitPermissionTargetSdkMap[splitPerm.splitPermission] = splitPerm.targetSdk
-                }
+            for (splitPerm in app.getSystemService(
+                PermissionManager::class.java)!!.splitPermissions) {
+                splitPermissionTargetSdkMap[splitPerm.splitPermission] = splitPerm.targetSdk
             }
         }
 
@@ -1222,6 +1229,13 @@ class GrantPermissionsViewModel(
         presentedButtons: Int
     ) {
         if (groupName == null) {
+            return
+        }
+        if (!requestInfosLiveData.isInitialized || !packageInfoLiveData.isInitialized) {
+            Log.wtf(LOG_TAG, "Logged buttons presented and clicked permissionGroupName=" +
+                    "$groupName package=$packageName presentedButtons=$presentedButtons " +
+                    "clickedButton=$clickedButton sessionId=$sessionId, but requests were not yet" +
+                    "initialized", IllegalStateException())
             return
         }
         var selectedLocations = 0
