@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> və digər <xliff:g id="NUMBER">%2$s</xliff:g> icazə silindi"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"İstifadə olunmayan tətbiqlər"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Tətbiq bir neçə ay istifadə edilmirsə:\n\n• Datanızı qorumaq üçün icazələr silinir\n• Enerjiyə qənaət üçün bildirişlər dayandırılır\n• Yer boşaltmaq üçün müvəqqəti fayllar silinir\n\nİcazələrə və bildirişlərə yenidən icazə vermək üçün tətbiqi açın."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Tətbiq bir neçə ay istifadə edilmirsə:\n\n• Datanızı qorumaq üçün icazələr silinir\n• Yer boşaltmaq üçün müvəqqəti fayllar silinir\n\nYenidən icazə vermək üçün tətbiqi açın."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Sonuncu dəfə ən azı <xliff:g id="NUMBER">%s</xliff:g> ay əvvəl açılıb"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Tətbiq sonuncu dəfə <xliff:g id="DATE">%s</xliff:g> tarixində açılıb"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Sonuncu dəfə <xliff:g id="DATE">%s</xliff:g> tarixində açılıb"</string>

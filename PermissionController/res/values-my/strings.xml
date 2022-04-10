@@ -27,7 +27,7 @@
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"အက်ပ် မတွေ့ပါ"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"ခွင့်မပြုပါ"</string>
     <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"ခွင့်မပြုပါ၊ ထပ်မမေးပါနှင့်"</string>
-    <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"အက်ပ်ကို အသုံးပြုနေစဉ် သိမ်းထားပါ"</string>
+    <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"\"အက်ပ်ကို အသုံးပြုနေစဉ်\" ကို ဆက်ထားရန်"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"\"ဤတစ်ကြိမ်သာ\" ကို မှတ်ထားရန်"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"နောက်ထပ်"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"မည်သို့ပင်ဖြစ်စေ ခွင့်မပြုပါ"</string>
@@ -78,8 +78,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"အက်ပ် <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> ခု ခွင့်ပြုသည်"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"စနစ်ကိုပြရန်"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"စနစ်ကို ဖျောက်ရန်"</string>
-    <string name="menu_show_7_days_data" msgid="8979611198508523706">"၇ ရက်အတွက် ပြခြင်း"</string>
-    <string name="menu_show_24_hours_data" msgid="8228054833323380780">"၂၄ နာရီအတွက် ပြခြင်း"</string>
+    <string name="menu_show_7_days_data" msgid="8979611198508523706">"၇ ရက်စာ ပြရန်"</string>
+    <string name="menu_show_24_hours_data" msgid="8228054833323380780">"၂၄ နာရီအတွက် ပြရန်"</string>
     <string name="manage_permission" msgid="2895385393037061964">"ခွင့်ပြုချက် စီမံရန်"</string>
     <string name="no_apps" msgid="2412612731628386816">"အက်ပ် မရှိပါ"</string>
     <string name="location_settings" msgid="3624412509133422562">"တည်နေရာ ဆက်တင်များ"</string>
@@ -120,7 +120,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"လက်ရှိ ခွင့်ပြုချက်များ"</string>
     <string name="message_staging" msgid="9110563899955511866">"အက်ပ်ကို ပြင်ဆင်နေသည်…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"အမည်မသိ"</string>
-    <string name="permission_usage_title" msgid="1568233336351734538">"ပုဂ္ဂိုလ်ရေးလုံခြုံမှု ဒက်ရှ်ဘုတ်"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"အချက်အလက်လုံခြုံမှု ဒက်ရှ်ဘုတ်"</string>
     <string name="auto_permission_usage_summary" msgid="7335667266743337075">"ခွင့်ပြုချက်များ လတ်တလောသုံးထားသည့် အက်ပ်ကိုကြည့်နိုင်သည်"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> အသုံးပြုမှု"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"အခြားခွင့်ပြုချက်များ ကြည့်ပါ"</string>
@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> နှင့် အခြားခွင့်ပြုချက် <xliff:g id="NUMBER">%2$s</xliff:g> ခု ဖယ်ရှားလိုက်သည်"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"အသုံးမပြုသော အက်ပ်များ"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"အက်ပ်တစ်ခုကို လအနည်းငယ်ကြာ အသုံးမပြုပါက-\n\n• သင့်ဒေတာကိုကာကွယ်ရန် ခွင့်ပြုချက်များကို ဖယ်ရှားသည်\n• ဘက်ထရီချွေတာရန် အကြောင်းကြားချက်များကို ရပ်သည်\n• နေရာလွတ်ပြုလုပ်ရန် ယာယီဖိုင်များကို ဖယ်ရှားသည်\n\nခွင့်ပြုချက်နှင့် အကြောင်းကြားချက်များကို ပြန်လည်ခွင့်ပြုရန် အက်ပ်ကိုဖွင့်ပါ။"</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"အက်ပ်ကို လအနည်းငယ်ကြာ အသုံးမပြုပါက-\n\n• သင့်ဒေတာကိုကာကွယ်ရန် ခွင့်ပြုချက်များ ဖယ်ရှားသည်\n• နေရာလွတ်ပြုလုပ်ရန် ယာယီဖိုင်များ ဖယ်ရှားသည်\n\nခွင့်ပြုချက်များပြန်ပေးရန် အက်ပ်ကို ဖွင့်နိုင်သည်။"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"ပြီးခဲ့သော <xliff:g id="NUMBER">%s</xliff:g> လ ကျော်က နောက်ဆုံးဖွင့်ထားသည်"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"အက်ပ်ကို <xliff:g id="DATE">%s</xliff:g> တွင် နောက်ဆုံးဖွင့်ခဲ့သည်"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"<xliff:g id="DATE">%s</xliff:g> တွင် နောက်ဆုံး ဖွင့်ခဲ့သည်"</string>
@@ -470,8 +471,8 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သင်၏ခေါ်ဆိုထားသော မှတ်တမ်းများကို သုံးခွင့်ပေးလိုပါသလား။"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ကို ဖုန်းခေါ်ဆိုမှုများ ပြုလုပ်ခွင့်နှင့် စီမံခွင့်ပေးလိုပါသလား။"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သင်၏ အရေးကြီးသော ကျန်းမာရေးလက္ခဏာဆိုင်ရာ အာရုံခံကိရိယာဒေတာ သုံးခွင့်ပေးလိုပါသလား။"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"အက်ပ်သုံးမနေသော်လည်း ဤအက်ပ်က သင်၏အဓိကကိုယ်တွင်းအင်္ဂါအခြေအနေ လက္ခဏာများနှင့်ပတ်သက်သော အာရုံခံစနစ် ဒေတာကို အမြဲသုံးခွင့် ရယူလိုသည်။ ဤအပြောင်းအလဲကို ပြုလုပ်ရန် "<annotation id="link">"ဆက်တင်များသို့ သွားပါ။"</annotation></string>
-    <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သင်၏ အရေးကြီးသောလက္ခဏာ အာရုံခံစနစ် ဒေတာကို သုံးခွင့်ပေးလိုပါသလား။"</string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"အက်ပ်သုံးမနေသော်လည်း ဤအက်ပ်က သင်၏အရေးကြီးသည့် ကျန်းမာရေးလက္ခဏာဆိုင်ရာ အာရုံခံစနစ်ဒေတာကို အမြဲသုံးခွင့် ရယူလိုသည်။ ဤအပြောင်းအလဲကို ပြုလုပ်ရန် "<annotation id="link">"ဆက်တင်များသို့ သွားပါ။"</annotation></string>
+    <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သင်၏ အရေးကြီးသော ကျန်းမာရေးလက္ခဏာဆိုင်ရာ အာရုံခံစနစ်ဒေတာကို သုံးခွင့်ပေးလိုပါသလား။"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"အက်ပ်သုံးမနေသော်လည်း ဤအက်ပ်ကို ခန္ဓာကိုယ်အာရုံခံစနစ် ဒေတာများ အမြဲသုံးခွင့်ပြုရန် "<annotation id="link">"ဆက်တင်များသို့ သွားပါ။"</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"အက်ပ်သုံးစဉ် &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ကို ခန္ဓာကိုယ်အာရုံခံစနစ် ဒေတာ ဆက်သုံးခွင့်ပြုမလား။"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ကို သင့်ထံ အကြောင်းကြားချက်များ ပို့ခွင့်ပြုမလား။"</string>

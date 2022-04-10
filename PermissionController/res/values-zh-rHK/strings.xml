@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"已移除「<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>」及另外 <xliff:g id="NUMBER">%2$s</xliff:g> 個權限"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"不使用的應用程式"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"如果應用程式在過去幾個月未曾使用，系統將會：\n\n• 移除權限以保護您的資料\n• 停止顯示通知以節省電量\n• 移除暫存檔案以騰出空間\n\n如要重新允許權限和通知，請開啟應用程式。"</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"如果您在過去幾個月未曾使用應用程式，系統將會：\n\n• 移除權限以保護您的資料\n• 移除暫存檔案以騰出空間\n\n如要再次允許權限，請開啟應用程式。"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"上次開啟：超過 <xliff:g id="NUMBER">%s</xliff:g> 個月前"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"應用程式上次於 <xliff:g id="DATE">%s</xliff:g>開啟"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"上次開啟日期：<xliff:g id="DATE">%s</xliff:g>"</string>

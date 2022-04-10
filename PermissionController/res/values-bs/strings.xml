@@ -126,8 +126,8 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Vidite druga odobrenja"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> i još <xliff:g id="NUM">%3$s</xliff:g>"</string>
-    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"Vremenski slijed kada su aplikacije u posljednja 24 h koristile: <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
-    <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Vremenski slijed kada su aplikacije u posljednjih 7 dana koristile: <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
+    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"Vremenski slijed korištenja odobrenja za: <xliff:g id="PERMGROUP">%1$s</xliff:g> u posljednja 24 h"</string>
+    <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Vremenski slijed korištenja odobrenja za: <xliff:g id="PERMGROUP">%1$s</xliff:g> u posljednjih 7 dana"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Kada je ova aplikacija koristila vaše odobrenje za: <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Saznajte više"</string>
     <string name="manage_permission_summary" msgid="4117555482684114317">"Kontrolirajte pristup aplikacije za: <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Uklonjeno je odobrenje <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> i njih još <xliff:g id="NUMBER">%2$s</xliff:g>"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Nekorištene aplikacije"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Ako se aplikacija ne koristi nekoliko mjeseci:\n\n• odobrenja će se ukloniti radi zaštite vaših podataka\n• obavještenja će se zaustaviti radi uštede baterije\n• privremeni fajlovi će se ukloniti radi oslobađanja prostora\n\nDa ponovo dozvolite odobrenja i obavještenja, otvorite aplikaciju."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Ako se aplikacija ne koristi nekoliko mjeseci:\n\n• odobrenja će se ukloniti radi zaštite vaših podataka\n• privremeni fajlovi će se ukloniti radi oslobađanja prostora\n\nOtvorite aplikaciju da ponovo dozvolite odobrenja."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Posljednji put otvoreno prije više od <xliff:g id="NUMBER">%s</xliff:g> mj."</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Aplikacija je posljednji put otvorena na dan <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Posljednji put otvoreno na dan <xliff:g id="DATE">%s</xliff:g>"</string>

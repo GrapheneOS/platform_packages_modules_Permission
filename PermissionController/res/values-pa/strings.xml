@@ -126,8 +126,8 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"ਹੋਰ ਇਜਾਜ਼ਤਾਂ ਦੇਖੋ"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> ਅਤੇ <xliff:g id="NUM">%3$s</xliff:g> ਹੋਰ"</string>
-    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"ਪਿਛਲੇ 24 ਘੰਟਿਆਂ ਵਿੱਚ ਐਪਾਂ ਵੱਲੋਂ ਤੁਹਾਡੇ <xliff:g id="PERMGROUP">%1$s</xliff:g> ਨੂੰ ਵਰਤੇ ਜਾਣ ਦੀ ਸਮਾਂਰੇਖਾ"</string>
-    <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"ਪਿਛਲੇ 7 ਦਿਨਾਂ ਵਿੱਚ ਐਪਾਂ ਵੱਲੋਂ ਤੁਹਾਡੇ <xliff:g id="PERMGROUP">%1$s</xliff:g> ਨੂੰ ਵਰਤੇ ਜਾਣ ਦੀ ਸਮਾਂਰੇਖਾ"</string>
+    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"ਪਿਛਲੇ 24 ਘੰਟਿਆਂ ਵਿੱਚ ਐਪਾਂ ਵੱਲੋਂ ਤੁਹਾਡਾ <xliff:g id="PERMGROUP">%1$s</xliff:g> ਵਰਤੇ ਜਾਣ ਦੀ ਸਮਾਂਰੇਖਾ"</string>
+    <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"ਪਿਛਲੇ 7 ਦਿਨਾਂ ਵਿੱਚ ਐਪਾਂ ਵੱਲੋਂ ਤੁਹਾਡਾ <xliff:g id="PERMGROUP">%1$s</xliff:g> ਵਰਤੇ ਜਾਣ ਦੀ ਸਮਾਂਰੇਖਾ"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"ਇਸ ਐਪ ਵੱਲੋਂ ਤੁਹਾਡੀ <xliff:g id="PERMGROUP">%1$s</xliff:g> ਇਜਾਜ਼ਤ ਵਰਤੇ ਜਾਣ \'ਤੇ"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"ਹੋਰ ਜਾਣੋ"</string>
     <string name="manage_permission_summary" msgid="4117555482684114317">"ਆਪਣੇ <xliff:g id="PERMGROUP">%1$s</xliff:g> ਤੱਕ ਐਪ ਦੀ ਪਹੁੰਚ ਨੂੰ ਕੰਟਰੋਲ ਕਰੋ"</string>
@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ਅਤੇ <xliff:g id="NUMBER">%2$s</xliff:g> ਹੋਰ ਇਜਾਜ਼ਤਾਂ ਹਟਾਈਆਂ ਗਈਆਂ"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"ਅਣਵਰਤੀਆਂ ਐਪਾਂ"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"ਜੇ ਕਿਸੇ ਐਪ ਨੂੰ ਕੁਝ ਮਹੀਨਿਆਂ ਤੱਕ ਵਰਤਿਆ ਨਹੀਂ ਜਾਂਦਾ ਹੈ, ਤਾਂ:\n\n• ਤੁਹਾਡੇ ਡਾਟੇ ਦੀ ਸੁਰੱਖਿਆ ਕਰਨ ਲਈ ਇਜਾਜ਼ਤਾਂ ਨੂੰ ਹਟਾ ਦਿੱਤਾ ਜਾਂਦਾ ਹੈ\n• ਬੈਟਰੀ ਬਚਾਉਣ ਲਈ ਸੂਚਨਾਵਾਂ ਬੰਦ ਕਰ ਦਿੱਤੀਆਂ ਜਾਂਦੀਆਂ ਹਨ\n• ਜਗ੍ਹਾ ਖਾਲੀ ਕਰਨ ਲਈ ਅਸਥਾਈ ਫ਼ਾਈਲਾਂ ਨੂੰ ਹਟਾ ਦਿੱਤਾ ਜਾਂਦਾ ਹੈ\n\nਦੁਬਾਰਾ ਇਜਾਜ਼ਤਾਂ ਦੇਣ ਅਤੇ ਸੂਚਨਾਵਾਂ ਪ੍ਰਾਪਤ ਕਰਨ ਲਈ, ਐਪ ਖੋਲ੍ਹੋ।"</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"ਜੇ ਕਿਸੇ ਐਪ ਨੂੰ ਕੁਝ ਮਹੀਨਿਆਂ ਤੱਕ ਵਰਤਿਆ ਨਹੀਂ ਜਾਂਦਾ ਹੈ, ਤਾਂ:\n\n• ਤੁਹਾਡੇ ਡਾਟੇ ਦੀ ਸੁਰੱਖਿਆ ਕਰਨ ਲਈ ਇਜਾਜ਼ਤਾਂ ਨੂੰ ਹਟਾ ਦਿੱਤਾ ਜਾਂਦਾ ਹੈ\n• ਜਗ੍ਹਾ ਖਾਲੀ ਕਰਨ ਲਈ ਅਸਥਾਈ ਫ਼ਾਈਲਾਂ ਨੂੰ ਹਟਾ ਦਿੱਤਾ ਜਾਂਦਾ ਹੈ\n\nਦੁਬਾਰਾ ਇਜਾਜ਼ਤਾਂ ਦੇਣ ਲਈ, ਐਪ ਖੋਲ੍ਹੋ।"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"ਪਿਛਲੀ ਵਾਰ <xliff:g id="NUMBER">%s</xliff:g> ਤੋਂ ਵੱਧ ਮਹੀਨੇ ਪਹਿਲਾਂ ਖੋਲ੍ਹੀਆਂ ਗਈਆਂ"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ਐਪ ਨੂੰ ਆਖਰੀ ਵਾਰ <xliff:g id="DATE">%s</xliff:g> ਨੂੰ ਖੋਲ੍ਹਿਆ ਗਿਆ"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"ਆਖਰੀ ਵਾਰ <xliff:g id="DATE">%s</xliff:g> ਨੂੰ ਖੋਲ੍ਹਿਆ ਗਿਆ"</string>
