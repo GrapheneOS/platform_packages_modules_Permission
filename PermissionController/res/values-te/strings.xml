@@ -138,18 +138,18 @@
       <item quantity="one">చివరి యాక్సెస్: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> యాక్సెస్</item>
     </plurals>
     <plurals name="permission_usage_summary_background" formatted="false" msgid="8810001960357233836">
-      <item quantity="other">చివరి యాక్సెస్: <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> యాక్సెస్‌లు (నేపథ్యంలో <xliff:g id="NUM_5">%3$s</xliff:g>)</item>
-      <item quantity="one">చివరి యాక్సెస్: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> యాక్సెస్ (నేపథ్యంలో <xliff:g id="NUM_2">%3$s</xliff:g>)</item>
+      <item quantity="other">చివరి యాక్సెస్: <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> యాక్సెస్‌లు (బ్యాక్‌గ్రౌండ్‌లో <xliff:g id="NUM_5">%3$s</xliff:g>)</item>
+      <item quantity="one">చివరి యాక్సెస్: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> యాక్సెస్ (బ్యాక్‌గ్రౌండ్‌లో <xliff:g id="NUM_2">%3$s</xliff:g>)</item>
     </plurals>
     <plurals name="permission_usage_summary_duration" formatted="false" msgid="2223071401812931873">
       <item quantity="other">చివరి యాక్సెస్: <xliff:g id="TIME_3">%1$s</xliff:g>\n<xliff:g id="NUM_4">%2$s</xliff:g> యాక్సెస్‌లు\nవ్యవధి: <xliff:g id="TIME_5">%3$s</xliff:g></item>
       <item quantity="one">చివరి యాక్సెస్: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> యాక్సెస్\nవ్యవధి: <xliff:g id="TIME_2">%3$s</xliff:g></item>
     </plurals>
     <plurals name="permission_usage_summary_background_duration" formatted="false" msgid="6893924292010006727">
-      <item quantity="other">చివరి యాక్సెస్: <xliff:g id="TIME_4">%1$s</xliff:g>\n<xliff:g id="NUM_5">%2$s</xliff:g> యాక్సెస్‌లు (నేపథ్యంలో <xliff:g id="NUM_6">%3$s</xliff:g>)\nవ్యవధి: <xliff:g id="TIME_7">%3$s</xliff:g></item>
-      <item quantity="one">చివరి యాక్సెస్: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> యాక్సెస్ (నేపథ్యంలో <xliff:g id="NUM_2">%3$s</xliff:g>)\nవ్యవధి: <xliff:g id="TIME_3">%3$s</xliff:g></item>
+      <item quantity="other">చివరి యాక్సెస్: <xliff:g id="TIME_4">%1$s</xliff:g>\n<xliff:g id="NUM_5">%2$s</xliff:g> యాక్సెస్‌లు (బ్యాక్‌గ్రౌండ్‌లో <xliff:g id="NUM_6">%3$s</xliff:g>)\nవ్యవధి: <xliff:g id="TIME_7">%3$s</xliff:g></item>
+      <item quantity="one">చివరి యాక్సెస్: <xliff:g id="TIME_0">%1$s</xliff:g>\n<xliff:g id="NUM_1">%2$s</xliff:g> యాక్సెస్ (బ్యాక్‌గ్రౌండ్‌లో <xliff:g id="NUM_2">%3$s</xliff:g>)\nవ్యవధి: <xliff:g id="TIME_3">%3$s</xliff:g></item>
     </plurals>
-    <string name="permission_usage_summary_background" msgid="6136171928959340697">"చివరి యాక్సెస్: <xliff:g id="TIME">%1$s</xliff:g>\nచివరిసారి నేపథ్యంలో యాక్సెస్ చేయబడింది"</string>
+    <string name="permission_usage_summary_background" msgid="6136171928959340697">"చివరి యాక్సెస్: <xliff:g id="TIME">%1$s</xliff:g>\nచివరిసారి బ్యాక్‌గ్రౌండ్‌లో యాక్సెస్ చేయబడింది"</string>
     <string name="permission_usage_any_permission" msgid="6358023078298106997">"ఏ అనుమతి అయినా"</string>
     <string name="permission_usage_any_time" msgid="3802087027301631827">"ఎప్పుడైనా"</string>
     <string name="permission_usage_last_7_days" msgid="7386221251886130065">"గత 7 రోజులు"</string>

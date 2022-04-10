@@ -328,18 +328,18 @@
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"媒体文件"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"所有文件"</string>
     <string name="permission_subtitle_background" msgid="8916750995309083180">"一律允许"</string>
-    <string name="app_perms_24h_access" msgid="99069906850627181">"<xliff:g id="TIME_DATE">%1$s</xliff:g> 访问过"</string>
-    <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"上次授予时间：昨天<xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
-    <string name="app_perms_content_provider" msgid="6996750793881252778">"过去 24 小时内访问过"</string>
+    <string name="app_perms_24h_access" msgid="99069906850627181">"上次访问时间：<xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"上次访问时间：昨天<xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_content_provider" msgid="6996750793881252778">"上次授予时间：过去 24 小时内"</string>
     <string name="app_perms_24h_access_background" msgid="3413674718969576843">"上次授予时间：<xliff:g id="TIME_DATE">%1$s</xliff:g> • 一律允许"</string>
-    <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"上次授予时间：昨天<xliff:g id="TIME_DATE">%1$s</xliff:g> • 一律允许"</string>
-    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"过去 24 小时内访问过 • 一律允许"</string>
-    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"上次授予时间：<xliff:g id="TIME_DATE">%1$s</xliff:g> • 媒体"</string>
-    <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"上次授予时间：昨天<xliff:g id="TIME_DATE">%1$s</xliff:g> • 媒体"</string>
-    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"过去 24 小时内访问过 • 媒体"</string>
-    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"上次授予时间：<xliff:g id="TIME_DATE">%1$s</xliff:g> • 所有文件"</string>
-    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"上次授予时间：昨天<xliff:g id="TIME_DATE">%1$s</xliff:g> • 所有文件"</string>
-    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"过去 24 小时内访问过 • 所有文件"</string>
+    <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"上次访问时间：昨天<xliff:g id="TIME_DATE">%1$s</xliff:g> • 一律允许"</string>
+    <string name="app_perms_content_provider_background" msgid="7793984056711923997">"上次访问时间：过去 24 小时内 • 一律允许"</string>
+    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"上次访问时间：<xliff:g id="TIME_DATE">%1$s</xliff:g> • 媒体"</string>
+    <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"上次访问时间：昨天<xliff:g id="TIME_DATE">%1$s</xliff:g> • 媒体"</string>
+    <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"上次访问时间：过去 24 小时内 • 媒体"</string>
+    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"上次访问时间：<xliff:g id="TIME_DATE">%1$s</xliff:g> • 所有文件"</string>
+    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"上次访问时间：昨天<xliff:g id="TIME_DATE">%1$s</xliff:g> • 所有文件"</string>
+    <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"上次访问时间：过去 24 小时内 • 所有文件"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"未允许任何权限"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"未拒绝任何权限"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"未允许任何应用"</string>

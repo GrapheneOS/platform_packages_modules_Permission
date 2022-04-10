@@ -496,5 +496,5 @@
     <string name="privdash_label_location" msgid="6882400763866489291">"Локација"</string>
     <string name="privdash_label_other" msgid="3710394147423236033">"Друго"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"Ништо"</string>
-    <string name="privdash_label_24h" msgid="1512532123865375319">"Изминативе\n24 часа"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"Минативе\n24 часа"</string>
 </resources>
