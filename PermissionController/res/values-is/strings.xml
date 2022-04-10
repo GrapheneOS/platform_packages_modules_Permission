@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> og <xliff:g id="NUMBER">%2$s</xliff:g> heimildir í viðbót voru fjarlægðar"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Ónotuð forrit"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Ef forrit er ekki notað í nokkra mánuði:\n\n• Heimildir eru fjarlægðar til að vernda gögnin þín\n• Slökkt er á tilkynningum til að spara rafhlöðu\n• Tímabundnar skrár eru fjarlægðar til að losa um pláss\n\nOpnaðu forritið til að leyfa heimildir og tilkynningar að nýju."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Ef forrit er ekki notað í nokkra mánuði:\n\n• Heimildir eru fjarlægðar til að vernda gögnin þín\n• Tímabundnar skrár eru fjarlægðar til að losa um pláss\n\nOpnaðu forritið til að leyfa heimildir og tilkynningar að nýju."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Síðast opnað fyrir meira en <xliff:g id="NUMBER">%s</xliff:g> mánuðum"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Forrit síðast opnað <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Síðast opnað <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -276,18 +277,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Heimildir fjarlægðar til að tryggja persónuvernd þína"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> er með staðsetningu þína í bakgrunni"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Þetta forrit hefur alltaf aðgang að staðsetningu þinni. Ýttu til að breyta."</string>
-    <!-- no translation found for accessibility_access_reminder_notification_title (798487829152263568) -->
-    <skip />
-    <!-- no translation found for accessibility_access_reminder_notification_content (3897831796455872834) -->
-    <skip />
-    <!-- no translation found for accessibility_access_warning_card_content (3418029245041163015) -->
-    <skip />
-    <!-- no translation found for accessibility_remove_access_button_label (44145801526711640) -->
-    <skip />
-    <!-- no translation found for accessibility_show_all_apps_button_label (5027167822346195212) -->
-    <skip />
-    <!-- no translation found for accessibility_remove_access_success_label (4380995302917014670) -->
-    <skip />
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Yfirfara forrit með aðgang fyrir aðgengi"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> getur lesið allt efni á skjánum, birt efni yfir öðrum forritum og fylgst með virkni þinni."</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Þetta forrit getur lesið allt efni á skjánum, birt efni yfir öðrum forritum og fylgst með virkni þinni."</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Fjarlægja aðgang"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"Sjá forrit með aðgang fyrir aðgengi"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Aðgangur fjarlægður"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Heimildir forrits fjarlægðar vegna persónuverndar"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> hefur ekki verið notað í nokkra mánuði. Ýttu til að skoða."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> og eitt forrit í viðbót hafa ekki verið notuð í nokkra mánuði. Ýttu til að skoða."</string>
@@ -514,7 +509,8 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Öryggi og persónuvernd"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Leita"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Hunsa"</string>
-    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"Hunsa þessa viðvörun?"</string>
+    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (2734809473425036382) -->
+    <skip />
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Hunsa"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Hætta við"</string>
     <string name="security_settings" msgid="3808106921175271317">"Öryggisstillingar"</string>

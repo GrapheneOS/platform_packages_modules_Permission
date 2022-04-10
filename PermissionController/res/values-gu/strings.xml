@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> અને અન્ય <xliff:g id="NUMBER">%2$s</xliff:g> પરવાનગીઓ કાઢી નાખવામાં આવી"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"બિનવપરાયેલી ઍપ"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"જો થોડા મહિના માટે કોઈ ઍપનો ઉપયોગ કરવામાં ન આવે, તો:\n\n• તમારો ડેટા સુરક્ષિત રાખવા માટે પરવાનગીઓ કાઢી લેવામાં આવે છે\n• બૅટરીની બચત કરવા માટે, નોટિફિકેશન બંધ કરવામાં આવે છે\n• સ્પેસ ખાલી કરવા માટે, હંગામી ફાઇલો કાઢી નાખવામાં આવે છે\n\nપરવાનગીઓ અને નોટિફિકેશનની મંજૂરી ફરીથી આપવા માટે, ઍપ ખોલો."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"જો થોડા મહિના માટે કોઈ ઍપનો ઉપયોગ કરવામાં ન આવે, તો:\n\n• તમારો ડેટા સુરક્ષિત રાખવા માટે પરવાનગીઓ કાઢી લેવામાં આવે છે\n• સ્પેસ ખાલી કરવા માટે, હંગામી ફાઇલો કાઢી નાખવામાં આવે છે\n\nપરવાનગીઓની મંજૂરી ફરીથી આપવા માટે, ઍપ ખોલો."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"છેલ્લે <xliff:g id="NUMBER">%s</xliff:g> મહિના કરતાં પર વધારે સમય અગાઉ ખોલી હતી"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ઍપ છેલ્લે <xliff:g id="DATE">%s</xliff:g>ના રોજ ખોલી"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"છેલ્લે <xliff:g id="DATE">%s</xliff:g>ના રોજ ખોલી"</string>
@@ -276,18 +277,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"તમારી પ્રાઇવસીનું રક્ષણ કરવા માટે પરવાનગીઓ દૂર કરવામાં આવી"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g>એ બૅકગ્રાઉન્ડમાં તમારું સ્થાન ઍક્સેસ કર્યુ છે"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"આ ઍપ હંમેશાં તમારા સ્થાનને ઍક્સેસ કરી શકે છે. ફેરફાર કરવા માટે ટૅપ કરો."</string>
-    <!-- no translation found for accessibility_access_reminder_notification_title (798487829152263568) -->
-    <skip />
-    <!-- no translation found for accessibility_access_reminder_notification_content (3897831796455872834) -->
-    <skip />
-    <!-- no translation found for accessibility_access_warning_card_content (3418029245041163015) -->
-    <skip />
-    <!-- no translation found for accessibility_remove_access_button_label (44145801526711640) -->
-    <skip />
-    <!-- no translation found for accessibility_show_all_apps_button_label (5027167822346195212) -->
-    <skip />
-    <!-- no translation found for accessibility_remove_access_success_label (4380995302917014670) -->
-    <skip />
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"ઍક્સેસિબિલિટી ઍક્સેસ ધરાવતી ઍપનો રિવ્યૂ કરો"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g>, સ્ક્રીન પરનું બધું કન્ટેન્ટ વાંચી શકે છે, અન્ય ઍપ પર પોતાનું કન્ટેન્ટ બતાવી શકે છે તેમજ તમારી ક્રિયાપ્રતિક્રિયાઓ ટ્રૅક કરી શકે છે."</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"આ ઍપ સ્ક્રીન પરનું બધું કન્ટેન્ટ વાંચી શકે છે, અન્ય ઍપ પર પોતાનું કન્ટેન્ટ બતાવી શકે છે તેમજ તમારી ક્રિયાપ્રતિક્રિયાઓ ટ્રૅક કરી શકે છે."</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"ઍક્સેસ કાઢો"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"ઍક્સેસિબિલિટી ઍક્સેસ ધરાવતી બધી ઍપ જુઓ"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"ઍક્સેસ કાઢી નાખ્યો"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"પ્રાઇવસીની સુરક્ષા કરવા માટે ઍપ્લિકેશન પરવાનગીઓ કાઢી નાખી"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g>નો થોડા મહિનાથી ઉપયોગ કરવામાં આવ્યો નથી. રિવ્યૂ કરવા માટે ટૅપ કરો."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> અને 1 અન્ય ઍપનો થોડા મહિનાથી ઉપયોગ કરવામાં આવ્યો નથી. રિવ્યૂ કરવા માટે ટૅપ કરો."</string>
@@ -514,7 +509,8 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"સુરક્ષા અને પ્રાઇવસી"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"સ્કૅન કરો"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"છોડી દો"</string>
-    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"આ ચેતવણીને છોડી દઈએ?"</string>
+    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (2734809473425036382) -->
+    <skip />
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"છોડી દો"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"રદ કરો"</string>
     <string name="security_settings" msgid="3808106921175271317">"સુરક્ષા સેટિંગ"</string>

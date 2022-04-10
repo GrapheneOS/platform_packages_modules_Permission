@@ -122,7 +122,7 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Невідомо"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Панель керування доступом"</string>
     <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Показувати додатки, які нещодавно використовували дозволи"</string>
-    <string name="permission_group_usage_title" msgid="2595013198075285173">"Використання дозволу \"<xliff:g id="PERMGROUP">%1$s</xliff:g>\""</string>
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g>: використання"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Переглянути інші дозволи"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> і ще <xliff:g id="NUM">%3$s</xliff:g>"</string>
@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Дозвіл \"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>\" і ще <xliff:g id="NUMBER">%2$s</xliff:g> скасовано"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Додатки, що не використовуються"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Якщо ви не користуєтеся додатком кілька місяців:\n\n• дозволи буде скасовано, щоб захистити ваші дані;\n• показ сповіщень буде припинено, щоб заощаджувати заряд акумулятора;\n• тимчасові файли буде видалено, щоб звільнити місце на диску.\n\nЩоб відновити дозволи й показ сповіщень, відкрийте додаток."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Якщо ви не користуєтеся додатком кілька місяців:\n\n• дозволи буде скасовано, щоб захистити ваші дані;\n• тимчасові файли буде видалено, щоб звільнити місце на диску.\n\nЩоб відновити дозволи, відкрийте додаток."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Відкривались понад <xliff:g id="NUMBER">%s</xliff:g> міс. тому"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Додаток востаннє відкрито <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Востаннє відкрито <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -276,18 +277,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Дозволи відкликано, щоб захистити вашу конфіденційність"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"Додаток <xliff:g id="APP_NAME">%s</xliff:g> визначив ваше місцезнаходження у фоновому режимі"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Цей додаток завжди має доступ до геоданих пристрою. Торкніться, щоб змінити це."</string>
-    <!-- no translation found for accessibility_access_reminder_notification_title (798487829152263568) -->
-    <skip />
-    <!-- no translation found for accessibility_access_reminder_notification_content (3897831796455872834) -->
-    <skip />
-    <!-- no translation found for accessibility_access_warning_card_content (3418029245041163015) -->
-    <skip />
-    <!-- no translation found for accessibility_remove_access_button_label (44145801526711640) -->
-    <skip />
-    <!-- no translation found for accessibility_show_all_apps_button_label (5027167822346195212) -->
-    <skip />
-    <!-- no translation found for accessibility_remove_access_success_label (4380995302917014670) -->
-    <skip />
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Перегляньте додаток із доступом до спеціальних можливостей"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"Додаток <xliff:g id="APP_NAME">%s</xliff:g> може читати весь вміст на екрані, показувати його поверх інших додатків і відстежувати ваші дії."</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Цей додаток може читати весь вміст на екрані, показувати його поверх інших додатків і відстежувати ваші дії."</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Заборонити доступ"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"Переглянути додатки з доступом до спеціальних можливостей"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Доступ заборонено"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Дозволи додатка відкликано для захисту конфіденційності"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"Додаток <xliff:g id="APP_NAME">%s</xliff:g> не використовувався кілька місяців. Натисніть, щоб переглянути."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> і ще 1 додаток не використовувалися кілька місяців. Натисніть, щоб переглянути."</string>
@@ -514,7 +509,8 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Безпека й конфіденційність"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Сканувати"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Закрити"</string>
-    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"Закрити це попередження?"</string>
+    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (2734809473425036382) -->
+    <skip />
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Закрити"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Скасувати"</string>
     <string name="security_settings" msgid="3808106921175271317">"Налаштування безпеки"</string>
