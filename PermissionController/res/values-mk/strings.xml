@@ -496,7 +496,7 @@
     <string name="privdash_label_location" msgid="6882400763866489291">"Локација"</string>
     <string name="privdash_label_other" msgid="3710394147423236033">"Друго"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"Ништо"</string>
-    <string name="privdash_label_24h" msgid="1512532123865375319">"Изминативе\n24 часа"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"Минативе\n24 часа"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> е заштитена од Android. Бидејќи вашите податоци се обработуваат на уредов, користењето на дозволата на апликацијава не е прикажано на лентата за статус или вашата контролна табла за приватност."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> е заштитена од Android. Бидејќи вашите податоци се обработуваат на уредов, користењето на дозволата на апликацијава не е прикажано на вашата контролна табла за приватност."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Камерата на уредот е блокирана"</string>

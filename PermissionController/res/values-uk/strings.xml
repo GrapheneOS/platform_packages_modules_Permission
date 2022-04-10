@@ -110,7 +110,7 @@
     <string name="message_staging" msgid="9110563899955511866">"Підготовка додатка…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Невідомо"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Панель керування доступом"</string>
-    <string name="permission_group_usage_title" msgid="2595013198075285173">"Використання дозволу \"<xliff:g id="PERMGROUP">%1$s</xliff:g>\""</string>
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g>: використання"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Переглянути інші дозволи"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> і ще <xliff:g id="NUM">%3$s</xliff:g>"</string>
