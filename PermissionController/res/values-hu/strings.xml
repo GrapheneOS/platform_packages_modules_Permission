@@ -126,8 +126,8 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Más engedélyek megtekintése"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>, valamint további <xliff:g id="NUM">%3$s</xliff:g>"</string>
-    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"A következő engedélycsoport alkalmazások általi használati ideje az elmúlt 24 órában: <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
-    <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"A következő engedélycsoport alkalmazások általi használati ideje az elmúlt hét napban: <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
+    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"Mikor használták az alkalmazások a(z) <xliff:g id="PERMGROUP">%1$s</xliff:g> engedélyt az elmúlt 24 órában"</string>
+    <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Mikor használták az alkalmazások a(z) <xliff:g id="PERMGROUP">%1$s</xliff:g> engedélyt az elmúlt 7 napban"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Mikor használta ez az alkalmazás a(z) Ön <xliff:g id="PERMGROUP">%1$s</xliff:g> engedélyét?"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"További információ"</string>
     <string name="manage_permission_summary" msgid="4117555482684114317">"Alkalmazás-hozzáférés vezérlése a következőhöz: <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
@@ -158,9 +158,9 @@
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Engedélyhasználat az elmúlt egy órában"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Engedélyhasználat az elmúlt 15 percben"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Engedélyhasználat az elmúlt egy percben"</string>
-    <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"Nem használta az elmúlt 24 órában"</string>
-    <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"Nem használta az elmúlt hét napban"</string>
-    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{1 alkalmazás használja}other{# alkalmazás használja}}"</string>
+    <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"Semmi nem használta az elmúlt 24 órában"</string>
+    <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"Semmi nem használta az elmúlt hét napban"</string>
+    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{1 alkalmazás használta}other{# alkalmazás használta}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Összes megtekintése az irányítópulton"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Szűrés alapja: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Szűrő eltávolítása"</string>
@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"A(z) <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> és <xliff:g id="NUMBER">%2$s</xliff:g> másik engedély visszavonva"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Nem használt alkalmazások"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Ha az adott alkalmazást nem használja néhány hónapig:\n\n• Az engedélyeket az adatok védelme érdekében eltávolítjuk.\n• Az akkumulátor kímélése érdekében az értesítéseket leállítjuk.\n• Tárhely felszabadítása érdekében az ideiglenes fájlokat eltávolítjuk.\n\nAz engedélyek és az értesítések újbóli bekapcsolásához nyissa meg az alkalmazást."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Ha nem használja néhány hónapig az adott alkalmazást:\n\n• Az adatok védelme érdekében eltávolítjuk az engedélyeket.\n• Tárhely felszabadítása érdekében eltávolítjuk az ideiglenes fájlokat.\n\nAz engedélyek újbóli megadásához nyissa meg az alkalmazást."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Utoljára több mint <xliff:g id="NUMBER">%s</xliff:g> hónapja nyitotta meg"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Az alkalmazás legutóbbi megnyitása: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Legutóbb megnyitva ekkor: <xliff:g id="DATE">%s</xliff:g>"</string>

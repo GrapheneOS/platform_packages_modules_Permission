@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Разрешението за <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> и още <xliff:g id="NUMBER">%2$s</xliff:g> са премахнати"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Неизползвани приложения"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Ако дадено приложение не бъде използвано няколко месеца:\n\n• разрешенията ще бъдат премахнати с цел защита на данните ви;\n• известията ще бъдат спрени с цел икономия на батерията;\n• временните файлове ще бъдат премахнати, за да се освободи място.\n\nЗа да предоставите отново разрешенията и да позволите известията, отворете приложението."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Ако дадено приложение не бъде използвано няколко месеца:\n\n• разрешенията ще бъдат премахнати с цел защита на данните ви;\n• временните файлове ще бъдат премахнати, за да се освободи място.\n\nЗа да предоставите отново разрешенията, отворете приложението."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Последно отваряне преди повече от <xliff:g id="NUMBER">%s</xliff:g> месеца"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Приложението е отворено за последно на <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Последно отваряне на <xliff:g id="DATE">%s</xliff:g>"</string>

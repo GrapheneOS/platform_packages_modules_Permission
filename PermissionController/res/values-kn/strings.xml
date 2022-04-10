@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ಮತ್ತು <xliff:g id="NUMBER">%2$s</xliff:g> ಇತರ ಅನುಮತಿಗಳನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"ಬಳಕೆಯಾಗದ ಆ್ಯಪ್‌ಗಳು"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"ಆ್ಯಪ್ ಅನ್ನು ಕೆಲವು ತಿಂಗಳುಗಳ ಕಾಲ ಬಳಸದೇ ಇದ್ದರೆ:\n\n• ನಿಮ್ಮ ಡೇಟಾವನ್ನು ರಕ್ಷಿಸಲು ಅನುಮತಿಗಳನ್ನು ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ\n• ಬ್ಯಾಟರಿ ಉಳಿಸಲು ಅಧಿಸೂಚನೆಗಳನ್ನು ನಿಲ್ಲಿಸಲಾಗುತ್ತದೆ\n• ಸ್ಥಳಾವಕಾಶವನ್ನು ಮುಕ್ತಗೊಳಿಸಲು ತಾತ್ಕಾಲಿಕ ಫೈಲ್‌ಗಳನ್ನು ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ\n\nಪುನಃ ಅನುಮತಿಗಳು ಮತ್ತು ಅಧಿಸೂಚನೆಗಳನ್ನು ಅನುಮತಿಸಲು, ಆ್ಯಪ್ ಅನ್ನು ತೆರೆಯಿರಿ."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"ಆ್ಯಪ್ ಅನ್ನು ಕೆಲವು ತಿಂಗಳುಗಳ ಕಾಲ ಬಳಸದೇ ಇದ್ದರೆ:\n\n• ನಿಮ್ಮ ಡೇಟಾವನ್ನು ರಕ್ಷಿಸಲು ಅನುಮತಿಗಳನ್ನು ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ\n• ಸ್ಥಳಾವಕಾಶವನ್ನು ಮುಕ್ತಗೊಳಿಸಲು ತಾತ್ಕಾಲಿಕ ಫೈಲ್‌ಗಳನ್ನು ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ\n\nಅನುಮತಿಗಳನ್ನು ಪುನಃ ಅನುಮತಿಸಲು ಆ್ಯಪ್ ಅನ್ನು ತೆರೆಯಿರಿ."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"ಕೊನೆಯದಾಗಿ <xliff:g id="NUMBER">%s</xliff:g> ತಿಂಗಳುಗಳಿಗೂ ಹಿಂದೆ ತೆರೆಯಲಾಗಿದೆ"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ಆ್ಯಪ್ ಅನ್ನು ಕೊನೆಯದಾಗಿ ತೆರೆದಿರುವುದು: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"ಕೊನೆಯದಾಗಿ ತೆರೆದಿರುವುದು: <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -301,7 +302,7 @@
     <string name="app_perms_7d_access" msgid="4945055548894683751">"ಕೊನೆಯದಾಗಿ <xliff:g id="TIME_DATE_0">%1$s</xliff:g> ರಂದು <xliff:g id="TIME_DATE_1">%2$s</xliff:g> ಸಮಯಕ್ಕೆ ಪ್ರವೇಶಿಸಲಾಗಿದೆ"</string>
     <string name="app_perms_content_provider_24h" msgid="1055526027667508972">"ಕಳೆದ 24 ಗಂಟೆಗಳಲ್ಲಿ ಪ್ರವೇಶಿಸಲಾಗಿದೆ"</string>
     <string name="app_perms_content_provider_7d" msgid="3215454898257814868">"ಕಳೆದ 7 ದಿನಗಳಲ್ಲಿ ಪ್ರವೇಶಿಸಲಾಗಿದೆ"</string>
-    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"ಕೊನೆಯ ಬಾರಿ <xliff:g id="TIME_DATE">%1$s</xliff:g> ಗೆ ಪ್ರವೇಶಿಸಲಾಗಿದೆ • ಎಲ್ಲಾ ಸಮಯದಲ್ಲಿ ಅನುಮತಿಸಲಾಗಿದೆ"</string>
+    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"ಕೊನೆಯ ಬಾರಿ <xliff:g id="TIME_DATE">%1$s</xliff:g>ಕ್ಕೆ ಪ್ರವೇಶಿಸಲಾಗಿದೆ • ಎಲ್ಲಾ ಸಮಯದಲ್ಲಿ ಅನುಮತಿಸಲಾಗಿದೆ"</string>
     <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"ಕೊನೆಯದಾಗಿ ನಿನ್ನೆ <xliff:g id="TIME_DATE">%1$s</xliff:g> ಗೆ ಪ್ರವೇಶಿಸಲಾಗಿದೆ • ಎಲ್ಲಾ ಸಮಯದಲ್ಲಿ ಅನುಮತಿಸಲಾಗಿದೆ"</string>
     <string name="app_perms_7d_access_background" msgid="408099213372185627">"ಕೊನೆಯದಾಗಿ <xliff:g id="TIME_DATE_0">%1$s</xliff:g> ರಂದು <xliff:g id="TIME_DATE_1">%2$s</xliff:g> ಸಮಯಕ್ಕೆ ಪ್ರವೇಶಿಸಲಾಗಿದೆ • ಎಲ್ಲಾ ಸಮಯದಲ್ಲಿ ಅನುಮತಿಸಲಾಗಿದೆ"</string>
     <string name="app_perms_content_provider_24h_background" msgid="3825902995186961496">"ಕಳೆದ 24 ಗಂಟೆಗಳಲ್ಲಿ ಪ್ರವೇಶಿಸಲಾಗಿದೆ • ಎಲ್ಲಾ ಸಮಯದಲ್ಲಿ ಅನುಮತಿಸಲಾಗಿದೆ"</string>

@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Уклоњено: <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> и још <xliff:g id="NUMBER">%2$s</xliff:g> дозволе"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Апликације које се не користе"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Ако не користите апликацију неколико месеци:\n\n• дозволе се уклањају да би се заштитили подаци\n• обавештења се заустављају да би се штедела батерија\n• привремени фајлови се уклањају да би се ослободио простор\n\nДа бисте поново омогућили дозволе и обавештења, отворите апликацију."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Ако не користите апликацију неколико месеци:\n\n• дозволе се уклањају да би се заштитили подаци\n• привремени фајлови се уклањају да би се ослободио простор\n\nДа бисте поново омогућили дозволе, отворите апликацију."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Последњи пут отворено пре више од <xliff:g id="NUMBER">%s</xliff:g> мес."</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Апликација је последњи пут отворена: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Последњи пут отворено: <xliff:g id="DATE">%s</xliff:g>"</string>

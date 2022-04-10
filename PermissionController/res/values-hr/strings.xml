@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Uklonjeno je dopuštenje <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> i njih još <xliff:g id="NUMBER">%2$s</xliff:g>"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Nekorištene aplikacije"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Ako se aplikacija ne koristi nekoliko mjeseci:\n\n• Dopuštenja se uklanjaju radi zaštite vaših podataka.\n• Obavijesti se zaustavljaju radi štednje baterije.\n• Privremene se datoteke uklanjaju radi oslobađanja prostora.\n\nDa biste ponovo odobrili dopuštenja i obavijesti, otvorite aplikaciju."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Ako se aplikacija ne koristi nekoliko mjeseci:\n\n• Dopuštenja se uklanjaju radi zaštite vaših podataka.\n• Privremene datoteke uklanjaju se radi oslobađanja prostora.\n\nDa biste ponovo odobrili dopuštenja, otvorite aplikaciju."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Posljednji put otvoreno prije više od <xliff:g id="NUMBER">%s</xliff:g> mj."</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Aplikacija je posljednji put otvorena <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Posljednje otvaranje <xliff:g id="DATE">%s</xliff:g>"</string>

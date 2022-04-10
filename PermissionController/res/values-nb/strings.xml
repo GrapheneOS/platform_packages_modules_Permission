@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> og <xliff:g id="NUMBER">%2$s</xliff:g> andre tillatelser er fjernet"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Ubrukte apper"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Dette skjer hvis en app ikke brukes på noen måneder:\n\n• Tillatelser fjernes for å beskytte dataene dine.\n• Varsler stoppes for å spare batteri.\n• Midlertidige filer fjernes for å frigjøre plass.\n\nFor å gi tillatelser og tillate varsler igjen, åpne appen."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Dette skjer hvis en app ikke brukes på noen måneder:\n\n• Tillatelser fjernes for å beskytte dataene dine.\n• Midlertidige filer fjernes for å frigjøre plass.\n\nÅpne appen for å gi tillatelser igjen."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Sist åpnet for mer enn <xliff:g id="NUMBER">%s</xliff:g> måneder siden"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Appen ble sist åpnet <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Sist åpnet <xliff:g id="DATE">%s</xliff:g>"</string>
