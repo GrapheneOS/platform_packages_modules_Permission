@@ -27,7 +27,7 @@
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Application non trouvée"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"Ne pas autoriser"</string>
     <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"Ne pas autoriser et ne plus demander"</string>
-    <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Garder « Uniquement lorsque l\'appli est en cours d\'util. »"</string>
+    <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"Garder « Pendant l\'utilisation de l\'appli »"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Garder « Uniquement cette fois »"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"En savoir plus"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Ne pas autoriser quand même"</string>
@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"L\'autorisation <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> et <xliff:g id="NUMBER">%2$s</xliff:g> autres ont été supprimées"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Applications non utilisées"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Si une application n\'est pas utilisée pendant quelques mois :\n\n• Les autorisations sont retirées pour protéger vos données.\n• Les notifications sont arrêtées pour économiser la pile.\n• Les fichiers temporaires sont retirés pour libérer de l\'espace de stockage.\n\nPour permettre d\'accéder de nouveau aux autorisations et aux notifications, ouvrez l\'application."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Si une application n\'est pas utilisée pendant quelques mois :\n\n• Les autorisations sont retirées pour protéger vos données.\n• Les fichiers temporaires sont retirés pour libérer de l\'espace de stockage.\n\nPour réactiver les autorisations, ouvrez l\'application."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Dernière ouverture : il y a plus de <xliff:g id="NUMBER">%s</xliff:g> mois"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Dernière ouverture de l\'application le <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Dernière ouverture : <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -470,7 +471,7 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder à vos journaux d\'appels?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"Autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à faire et à gérer des appels téléphoniques?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Autoriser « <xliff:g id="APP_NAME">%1$s</xliff:g> » à accéder aux données des capteurs pour vos signes vitaux?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Cette application souhaite pouvoir accéder en tout temps aux données de capteurs relatives à vos signes vitaux, même lorsque vous ne l\'utilisez pas. Pour effectuer ce changement, "<annotation id="link">"accédez aux paramètres"</annotation>"."</string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Cette application souhaite pouvoir accéder en tout temps aux données des capteurs relatives à vos signes vitaux, même lorsque vous ne l\'utilisez pas. Pour effectuer ce changement, "<annotation id="link">"accédez aux paramètres"</annotation>"."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Autoriser « <xliff:g id="APP_NAME">%1$s</xliff:g> » à accéder aux données des capteurs relatives à vos signes vitaux?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Pour permettre à cette application d\'accéder aux données des capteurs corporels en tout temps, même lorsque vous n\'utilisez pas l\'application, "<annotation id="link">"accédez aux paramètres"</annotation>"."</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Voulez-vous continuer à autoriser &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; à accéder aux données des capteurs corporels pendant l\'utilisation de l\'appli?"</string>
