@@ -202,10 +202,8 @@ final class SafetyCenterBroadcastDispatcher {
                 Objects.hash(sourceIdsToRefresh, userId, System.currentTimeMillis()));
         return createBroadcastIntent(ACTION_REFRESH_SAFETY_SOURCES)
                 .putExtra(EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE, requestType)
-                // TODO(b/220826153): Test source ids in refresh broadcasts.
                 .putExtra(EXTRA_REFRESH_SAFETY_SOURCE_IDS,
                         sourceIdsToRefresh.toArray(new String[0]))
-                // TODO(b/222677992): Test refresh broadcast id in refresh broadcasts.
                 .putExtra(EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID, refreshBroadcastId)
                 .setPackage(packageName);
     }
