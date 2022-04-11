@@ -27,7 +27,9 @@ import android.safetycenter.SafetyCenterManager.ACTION_REFRESH_SAFETY_SOURCES
 import android.safetycenter.SafetyCenterManager.ACTION_SAFETY_CENTER_ENABLED_CHANGED
 import android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_REQUEST_TYPE_FETCH_FRESH_DATA
 import android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_REQUEST_TYPE_GET_DATA
+import android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID
 import android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE
+import android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCE_IDS
 import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED
 import android.safetycenter.SafetySourceData
@@ -48,63 +50,66 @@ class SafetySourceReceiver : BroadcastReceiver() {
 
         val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)!!
 
-        val action = intent.action
-        when (action) {
+        when (val action = intent.action) {
             ACTION_REFRESH_SAFETY_SOURCES -> {
-                when (intent.getIntExtra(EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE, -1)) {
-                    EXTRA_REFRESH_REQUEST_TYPE_GET_DATA ->
-                        safetyCenterManager.setSafetySourceDataWithPermission(
-                            safetySourceId!!,
-                            safetySourceDataOnPageOpen!!,
-                            EVENT_REFRESH_REQUESTED
-                        )
-                    EXTRA_REFRESH_REQUEST_TYPE_FETCH_FRESH_DATA ->
-                        safetyCenterManager.setSafetySourceDataWithPermission(
-                            safetySourceId!!,
-                            safetySourceDataOnRescanClick!!,
-                            EVENT_REFRESH_REQUESTED
-                        )
+                val broadcastId = intent.getStringExtra(EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID)
+                if (broadcastId.isNullOrEmpty()) {
+                    throw IllegalArgumentException(
+                        "Received refresh intent with no broadcast id specified"
+                    )
                 }
-                runBlockingWithTimeout { refreshSafetySourcesChannel.send(Unit) }
+                val sourceIds = intent.getStringArrayExtra(EXTRA_REFRESH_SAFETY_SOURCE_IDS)
+                if (sourceIds.isNullOrEmpty()) {
+                    throw IllegalArgumentException(
+                        "Received refresh intent with no source ids specified"
+                    )
+                }
+                val requestType = intent.getIntExtra(EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE, -1)
+                if (requestType != EXTRA_REFRESH_REQUEST_TYPE_GET_DATA &&
+                        requestType != EXTRA_REFRESH_REQUEST_TYPE_FETCH_FRESH_DATA
+                ) {
+                    throw IllegalArgumentException(
+                        "Received refresh intent with invalid request type"
+                    )
+                }
+                for (id: String in sourceIds) {
+                    safetyCenterManager.setDataForSource(id, requestType, broadcastId)
+                }
+                runBlockingWithTimeout { refreshSafetySourcesChannel.send(broadcastId) }
             }
             ACTION_SAFETY_CENTER_ENABLED_CHANGED ->
                 runBlockingWithTimeout {
                     safetyCenterEnabledChangedChannel.send(
-                        safetyCenterManager.isSafetyCenterEnabled)
+                        safetyCenterManager.isSafetyCenterEnabled
+                    )
                 }
             else -> throw IllegalArgumentException("Received intent with action: $action")
         }
     }
 
     companion object {
-        private val EVENT_REFRESH_REQUESTED =
-            SafetyEvent.Builder(SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
-                .setRefreshBroadcastId("refresh_id")
-                .build()
-
-        @Volatile private var refreshSafetySourcesChannel = Channel<Unit>(UNLIMITED)
+        @Volatile private var refreshSafetySourcesChannel = Channel<String>(UNLIMITED)
 
         @Volatile private var safetyCenterEnabledChangedChannel = Channel<Boolean>(UNLIMITED)
 
-        @Volatile var safetySourceId: String? = null
+        var safetySourceIds = mutableListOf<String>()
 
-        @Volatile var safetySourceDataOnPageOpen: SafetySourceData? = null
+        var safetySourceDataOnPageOpen = mutableMapOf<String, SafetySourceData>()
 
-        @Volatile var safetySourceDataOnRescanClick: SafetySourceData? = null
+        var safetySourceDataOnRescanClick = mutableMapOf<String, SafetySourceData>()
 
         fun reset() {
-            safetySourceId = null
-            safetySourceDataOnRescanClick = null
-            safetySourceDataOnPageOpen = null
+            safetySourceIds.clear()
+            safetySourceDataOnRescanClick.clear()
+            safetySourceDataOnPageOpen.clear()
             refreshSafetySourcesChannel.cancel()
             refreshSafetySourcesChannel = Channel()
             safetyCenterEnabledChangedChannel.cancel()
             safetyCenterEnabledChangedChannel = Channel()
         }
 
-        fun receiveRefreshSafetySources(timeout: Duration = TIMEOUT_LONG) {
+        fun receiveRefreshSafetySources(timeout: Duration = TIMEOUT_LONG): String =
             runBlockingWithTimeout(timeout) { refreshSafetySourcesChannel.receive() }
-        }
 
         fun receiveSafetyCenterEnabledChanged(timeout: Duration = TIMEOUT_LONG) =
             runBlockingWithTimeout(timeout) { safetyCenterEnabledChangedChannel.receive() }
@@ -112,16 +117,15 @@ class SafetySourceReceiver : BroadcastReceiver() {
         fun SafetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
             refreshReason: Int,
             timeout: Duration = TIMEOUT_LONG
-        ) {
+        ) =
             callWithShellPermissionIdentity(
                 {
                     refreshSafetySources(refreshReason)
-                    SafetySourceReceiver.receiveRefreshSafetySources(timeout)
+                    receiveRefreshSafetySources(timeout)
                 },
                 SEND_SAFETY_CENTER_UPDATE,
                 MANAGE_SAFETY_CENTER
             )
-        }
 
         fun setSafetyCenterEnabledWithReceiverPermissionAndWait(
             value: Boolean,
@@ -135,5 +139,34 @@ class SafetySourceReceiver : BroadcastReceiver() {
                 SEND_SAFETY_CENTER_UPDATE,
                 WRITE_DEVICE_CONFIG
             )
+
+        private fun createRefreshEvent(broadcastId: String) =
+            SafetyEvent.Builder(SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
+                .setRefreshBroadcastId(broadcastId)
+                .build()
+
+        private fun SafetyCenterManager.setDataForSource(
+            sourceId: String,
+            requestType: Int,
+            broadcastId: String
+        ) {
+            if (!safetySourceIds.contains(sourceId)) {
+                return
+            }
+            when (requestType) {
+                EXTRA_REFRESH_REQUEST_TYPE_GET_DATA ->
+                    setSafetySourceDataWithPermission(
+                        sourceId,
+                        safetySourceDataOnPageOpen[sourceId],
+                        createRefreshEvent(broadcastId)
+                    )
+                EXTRA_REFRESH_REQUEST_TYPE_FETCH_FRESH_DATA ->
+                    setSafetySourceDataWithPermission(
+                        sourceId,
+                        safetySourceDataOnRescanClick[sourceId],
+                        createRefreshEvent(broadcastId)
+                    )
+            }
+        }
     }
 }
