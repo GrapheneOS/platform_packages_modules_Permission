@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Ruhusa ya <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> na ruhusa zingine <xliff:g id="NUMBER">%2$s</xliff:g> zimeondolewa"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Programu zisizotumika"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Programu isipotumika kwa miezi kadhaa:\n\n• Ruhusa huondolewa ili kulinda data yako \n• Arifa husimamishwa ili kuokoa betri\n• Faili za muda huondolewa ili upate nafasi\n\nIli uidhinishe ruhusa na arifa tena, fungua programu."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Programu isipotumika kwa miezi kadhaa:\n\n• Ruhusa huondolewa ili kulinda data yako\n• Faili za muda huondolewa ili upate nafasi\n\nIli uidhinishe ruhusa tena, fungua programu."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Zilizofunguliwa mwisho zaidi ya miezi <xliff:g id="NUMBER">%s</xliff:g> iliyopita"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Ilifunguliwa mara ya mwisho tarehe <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Ilifunguliwa mara ya mwisho <xliff:g id="DATE">%s</xliff:g>"</string>

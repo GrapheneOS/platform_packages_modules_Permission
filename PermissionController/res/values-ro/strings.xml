@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Permisiunea <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> și încă <xliff:g id="NUMBER">%2$s</xliff:g> permisiuni au fost eliminate"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Aplicații nefolosite"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Dacă o aplicație nu este folosită timp de câteva luni:\n\n• permisiunile sunt eliminate pentru a vă proteja datele;\n• notificările sunt dezactivate pentru a economisi baterie;\n• fișierele temporare sunt eliminate pentru a elibera spațiu.\n\nPentru a acorda permisiuni și a permite notificări, deschideți aplicația."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Dacă o aplicație nu este folosită timp de câteva luni:\n\n• permisiunile sunt eliminate pentru a vă proteja datele;\n• fișierele temporare sunt eliminate pentru a elibera spațiu.\n\nPentru a acorda permisiuni din nou, deschideți aplicația."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Data ultimei deschideri: cu peste <xliff:g id="NUMBER">%s</xliff:g> luni în urmă"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Aplicația a fost deschisă ultima dată pe <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Data ultimei deschideri: <xliff:g id="DATE">%s</xliff:g>"</string>

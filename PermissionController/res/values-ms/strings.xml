@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> dan <xliff:g id="NUMBER">%2$s</xliff:g> kebenaran lain dialih keluar"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Apl yang tidak digunakan"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Jika apl tidak digunakan selama beberapa bulan:\n\n• Kebenaran dialih keluar untuk melindungi data anda\n• Pemberitahuan diberhentikan untuk menjimatkan bateri\n• Fail sementara dialih keluar untuk mengosongkan ruang\n\nUntuk memberikan kebenaran dan pemberitahuan lagi, buka apl tersebut."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Jika apl tidak digunakan selama beberapa bulan:\n\n• Kebenaran dialih keluar untuk melindungi data anda\n• Fail sementara dialih keluar untuk mengosongkan ruang\n\nUntuk memberikan kebenaran lagi, buka apl tersebut."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Terakhir dibuka lebih <xliff:g id="NUMBER">%s</xliff:g> bulan yang lalu"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Apl dibuka kali terakhir pada <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Terakhir dibuka <xliff:g id="DATE">%s</xliff:g>"</string>

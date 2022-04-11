@@ -43,7 +43,7 @@
     <string name="permission_revoked_none" msgid="9213345075484381180">"žiadne nie sú zakázané"</string>
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Povoliť"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Povoliť vždy"</string>
-    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Pri používaní aplikácie"</string>
+    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Počas používania aplikácie"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Zmeniť na presnú polohu"</string>
     <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Ponechať približnú polohu"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Iba tentokrát"</string>
@@ -120,7 +120,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"Aktuálne povolenia"</string>
     <string name="message_staging" msgid="9110563899955511866">"Aplikácia je zavádzaná po etapách…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Neznáme"</string>
-    <string name="permission_usage_title" msgid="1568233336351734538">"Panel na ochranu súkromia"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"Panel ochrany súkromia"</string>
     <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Pozrite si, ktoré aplikácie nedávno použili povolenia"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> – používanie"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Zobraziť ostatné povolenia"</string>
@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Bolo odstránené povolenie <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> a ďalšie (<xliff:g id="NUMBER">%2$s</xliff:g>)"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Nepoužívané aplikácie"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Ak aplikácia nebola používaná niekoľko mesiacov:\n\n• povolenia budú z dôvodu ochrany vašich údajov odstránené,\n• upozornenia prestanú fungovať, aby sa šetrila batéria,\n• dočasné súbory budú odstránené, aby sa uvoľnilo miesto.\n\nAk budete chcieť povolenia a upozornenia znova aktivovať, otvorte aplikáciu."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Ak aplikácia nebola používaná niekoľko mesiacov:\n\n• povolenia budú z dôvodu ochrany vašich údajov odstránené;\n• dočasné súbory budú odstránené, aby sa uvoľnilo miesto.\n\nAk budete chcieť povolenia znova udeliť, otvorte aplikáciu."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Naposledy otvorené pred viac ako <xliff:g id="NUMBER">%s</xliff:g> mesiacmi"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Aplikácia bola naposledy otvorená <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Naposledy otvorená <xliff:g id="DATE">%s</xliff:g>"</string>

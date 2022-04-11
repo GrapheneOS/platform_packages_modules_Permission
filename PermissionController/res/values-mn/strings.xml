@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>-н болон бусад <xliff:g id="NUMBER">%2$s</xliff:g> зөвшөөрлийг хассан"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Ашиглаагүй аппууд"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Хэрэв аппыг хэдэн сарын турш ашиглахгүй бол:\n\n• Таны өгөгдлийг хамгаалахын тулд зөвшөөрлийг устгана\n• Батарей хэмнэхийн тулд мэдэгдлийг зогсооно\n• Сул зай гаргахын тулд түр зуурын файлуудыг устгана\n\nЗөвшөөрөл болон мэдэгдлийг дахин зөвшөөрөхийн тулд аппыг нээнэ үү."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Хэрэв аппыг хэдэн сар ашиглаагүй бол:\n\n• Таны өгөгдлийг хамгаалахын тулд зөвшөөрлийг хасна\n• Сул зай гаргахын тулд түр зуурын файлыг хасна\n\nЗөвшөөрлийг дахин зөвшөөрөхийн тулд аппыг нээнэ үү."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Хамгийн сүүлд <xliff:g id="NUMBER">%s</xliff:g>-с олон сарын өмнө нээсэн"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Аппыг хамгийн сүүлд <xliff:g id="DATE">%s</xliff:g>-нд нээсэн"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Хамгийн сүүлд <xliff:g id="DATE">%s</xliff:g>-нд нээсэн"</string>
@@ -472,7 +473,7 @@
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д таны биеийн ерөнхий байдлын үзүүлэлтүүдийн мэдрэгчийн өгөгдөлд хандахыг зөвшөөрөх үү?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Аппыг ашиглаагүй үед ч энэ нь таны биеийн ерөнхий байдлын үзүүлэлтүүдийн талаарх мэдрэгчийн өгөгдөлд үргэлж хандахыг хүсэж байна. Энэ өөрчлөлтийг хийхийн тулд "<annotation id="link">"тохиргоо руу очно уу."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д таны биеийн ерөнхий байдлын үзүүлэлтүүдийн талаарх мэдрэгчийн өгөгдөлд хандахыг зөвшөөрөх үү?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Та аппыг ашиглаагүй байсан ч ямар ч үед энэ аппын биеийн мэрэгчийн өгөгдөлд хандахыг зөвшөөрөх бол "<annotation id="link">"тохиргоо руу очно уу."</annotation></string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Та аппыг ашиглаагүй байсан ч ямар ч үед энэ аппын биеийн мэдрэгчийн өгөгдөлд хандахыг зөвшөөрөх бол "<annotation id="link">"тохиргоо руу очно уу."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Аппыг ашиглаж байх үедээ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-г биеийн мэдрэгчийн өгөгдөлд хандахыг үргэлжлүүлэн зөвшөөрөх үү?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>-&lt;/b&gt;-д танд мэдэгдэл илгээхийг зөвшөөрөх үү?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-д танд үргэлжлүүлэн мэдэгдэл илгээхийг зөвшөөрөх үү?"</string>

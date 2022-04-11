@@ -78,7 +78,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> apps permitidos"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Mostrar sistema"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Ocultar sistema"</string>
-    <string name="menu_show_7_days_data" msgid="8979611198508523706">"Mostrar sete dias"</string>
+    <string name="menu_show_7_days_data" msgid="8979611198508523706">"Mostrar 7 dias"</string>
     <string name="menu_show_24_hours_data" msgid="8228054833323380780">"Mostrar 24 horas"</string>
     <string name="manage_permission" msgid="2895385393037061964">"Gerenciar permissão"</string>
     <string name="no_apps" msgid="2412612731628386816">"Nenhum app"</string>
@@ -160,7 +160,7 @@
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Uso da permissão no último minuto"</string>
     <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"Permissão não usada nas últimas 24 horas"</string>
     <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"Permissão não usada nos últimos sete dias"</string>
-    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Usadas por 1 app}one{Usadas por # app}other{Usadas por # apps}}"</string>
+    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Permissões usadas por 1 app}one{Permissões usadas por # app}other{Permissões usadas por # apps}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Ver tudo no painel"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrado por: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Remover filtro"</string>
@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> e mais <xliff:g id="NUMBER">%2$s</xliff:g> permissões removidas"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Apps não usados"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Se um app fica sem uso por alguns meses:\n\n• as permissões são removidas para proteger seus dados;\n• as notificações são interrompidas para economizar bateria;\n• os arquivos temporários são removidos para liberar espaço.\n\nPara retomar as permissões e notificações, abra o app."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Caso um app fique sem uso por alguns meses:\n\n• as permissões são removidas para proteger seus dados;\n• os arquivos temporários são removidos para liberar espaço.\n\nSe quiser conceder as permissões novamente, abra o app."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Abertos pela última vez há mais de <xliff:g id="NUMBER">%s</xliff:g> meses"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"App aberto pela última vez em <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Aberto pela última vez em <xliff:g id="DATE">%s</xliff:g>"</string>

@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> dhe <xliff:g id="NUMBER">%2$s</xliff:g> leje të tjera janë hequr"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Aplikacionet e papërdorura"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Nëse një aplikacion nuk përdoret për disa muaj:\n\n• Lejet hiqen për të mbrojtur të dhënat e tua\n• Njoftimet ndalohen për të kursyer baterinë\n• Skedarët e përkohshëm hiqen për të liruar hapësirën\n\nPër të lejuar përsëri lejet dhe njoftimet, hap aplikacionin."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Nëse një aplikacion nuk përdoret për disa muaj:\n\n• Lejet hiqen për të mbrojtur të dhënat e tua\n• Skedarët e përkohshëm hiqen për të liruar hapësirën\n\nPër të lejuar përsëri lejet, hap aplikacionin."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Hapur për herë të fundit më shumë se <xliff:g id="NUMBER">%s</xliff:g> muaj më parë"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Aplikacioni është hapur së fundi më <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Hapur së fundi më <xliff:g id="DATE">%s</xliff:g>"</string>
