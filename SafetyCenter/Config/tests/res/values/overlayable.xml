@@ -14,9 +14,13 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Test reference -->
-    <string name="reference" translatable="false">Reference</string>
-    <string name="reference_overlayable" translatable="false">Base</string>
-    <string name="reference_not_overlayable" translatable="false">Base</string>
+
+<resources>
+    <overlayable name="OverlayableResources">
+        <policy type="public">
+            <item type="raw" name="config_string_resource_name_invalid_overlayable"/>
+            <item type="raw" name="config_valid_overlayable"/>
+            <item type="string" name="reference_overlayable"/>
+        </policy>
+    </overlayable>
 </resources>
