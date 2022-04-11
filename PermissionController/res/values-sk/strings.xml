@@ -41,7 +41,7 @@
     <string name="permission_revoked_none" msgid="9213345075484381180">"žiadne nie sú zakázané"</string>
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Povoliť"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Povoliť vždy"</string>
-    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Pri používaní aplikácie"</string>
+    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Počas používania aplikácie"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Zmeniť na presnú polohu"</string>
     <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Ponechať približnú polohu"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Iba tentokrát"</string>
@@ -109,7 +109,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"Aktuálne povolenia"</string>
     <string name="message_staging" msgid="9110563899955511866">"Aplikácia je zavádzaná po etapách…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Neznáme"</string>
-    <string name="permission_usage_title" msgid="1568233336351734538">"Panel na ochranu súkromia"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"Panel ochrany súkromia"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> – používanie"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Zobraziť ostatné povolenia"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>

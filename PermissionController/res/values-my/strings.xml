@@ -25,7 +25,7 @@
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"အက်ပ် မတွေ့ပါ"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"ခွင့်မပြုပါ"</string>
     <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"ခွင့်မပြုပါ၊ ထပ်မမေးပါနှင့်"</string>
-    <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"အက်ပ်ကို အသုံးပြုနေစဉ် သိမ်းထားပါ"</string>
+    <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"\"အက်ပ်ကို အသုံးပြုနေစဉ်\" ကို ဆက်ထားရန်"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"\"ဤတစ်ကြိမ်သာ\" ကို မှတ်ထားရန်"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"နောက်ထပ်"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"မည်သို့ပင်ဖြစ်စေ ခွင့်မပြုပါ"</string>
@@ -107,7 +107,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"လက်ရှိ ခွင့်ပြုချက်များ"</string>
     <string name="message_staging" msgid="9110563899955511866">"အက်ပ်ကို ပြင်ဆင်နေသည်…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"အမည်မသိ"</string>
-    <string name="permission_usage_title" msgid="1568233336351734538">"ပုဂ္ဂိုလ်ရေးလုံခြုံမှု ဒက်ရှ်ဘုတ်"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"အချက်အလက်လုံခြုံမှု ဒက်ရှ်ဘုတ်"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> အသုံးပြုမှု"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"အခြားခွင့်ပြုချက်များ ကြည့်ပါ"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>၊ <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>

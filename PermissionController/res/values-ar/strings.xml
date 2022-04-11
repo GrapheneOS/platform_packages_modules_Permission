@@ -115,7 +115,7 @@
     <string name="permission_group_usage_title" msgid="2595013198075285173">"استخدام <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"عرض الأذونات الأخرى"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>، <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
-    <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g> و<xliff:g id="PERMGROUP_1">%2$s</xliff:g> و<xliff:g id="NUM">%3$s</xliff:g> عنصر إضافي"</string>
+    <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g> و<xliff:g id="PERMGROUP_1">%2$s</xliff:g> و<xliff:g id="NUM">%3$s</xliff:g> تطبيق آخر"</string>
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"المخطط الزمني لاستخدام التطبيقات لـ <xliff:g id="PERMGROUP">%1$s</xliff:g> في آخر 24 ساعة"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"وقت استخدام هذا التطبيق لإذن <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"مزيد من المعلومات"</string>
@@ -306,13 +306,13 @@
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"مرفوض حاليًا / تاريخ آخر وصول: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"لم يستخدم الإذن مطلقًا"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"تم الرفض / لم يسبق الحصول على الإذن"</string>
-    <string name="allowed_header" msgid="7769277978004790414">"التطبيقات المسموح بها"</string>
+    <string name="allowed_header" msgid="7769277978004790414">"الأذونات المسموح بها"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"تطبيقات مسموح لها بالوصول طوال الوقت"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"تطبيقات يمكنها الوصول عند استخدامها فقط"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"التطبيقات المسموح لها بالوصول إلى الوسائط فقط"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"التطبيقات المسموح لها بإدارة كل الملفات"</string>
     <string name="ask_header" msgid="2633816846459944376">"الطلب في كل مرة"</string>
-    <string name="denied_header" msgid="903209608358177654">"التطبيقات غير المسموح لها بالوصول"</string>
+    <string name="denied_header" msgid="903209608358177654">"الأذونات غير المسموح بها"</string>
     <plurals name="days" formatted="false" msgid="7882807103511175827">
       <item quantity="zero"><xliff:g id="NUMBER">%s</xliff:g> يوم</item>
       <item quantity="two">يومان (<xliff:g id="NUMBER">%s</xliff:g>)</item>
@@ -403,18 +403,18 @@
     <string name="permission_subtitle_only_in_foreground" msgid="9068389431267377564">"أثناء استخدام التطبيق فقط"</string>
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"الوسائط"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"كل الملفات"</string>
-    <string name="permission_subtitle_background" msgid="8916750995309083180">"تم السماح بالوصول طوال الوقت"</string>
-    <string name="app_perms_24h_access" msgid="99069906850627181">"تم استخدام إذن الوصول آخر مرة في <xliff:g id="TIME_DATE">%1$s</xliff:g>."</string>
-    <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"تم الوصول آخر مرة للأذونات أمس في <xliff:g id="TIME_DATE">%1$s</xliff:g>."</string>
+    <string name="permission_subtitle_background" msgid="8916750995309083180">"مسموح بالوصول إليه طوال الوقت"</string>
+    <string name="app_perms_24h_access" msgid="99069906850627181">"تم استخدامه آخر مرة في <xliff:g id="TIME_DATE">%1$s</xliff:g>."</string>
+    <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"تم استخدامه آخر مرة أمس في <xliff:g id="TIME_DATE">%1$s</xliff:g>."</string>
     <string name="app_perms_content_provider" msgid="6996750793881252778">"تم الوصول للأذونات في آخر 24 ساعة."</string>
-    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"تم الوصول آخر مرة في <xliff:g id="TIME_DATE">%1$s</xliff:g> • تم السماح بالوصول طوال الوقت"</string>
-    <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"تم الوصول آخر مرة أمس في <xliff:g id="TIME_DATE">%1$s</xliff:g> • تم السماح بالوصول طوال الوقت"</string>
+    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"تم استخدامه آخر مرة في <xliff:g id="TIME_DATE">%1$s</xliff:g> • مسموح بالوصول إليه طوال الوقت"</string>
+    <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"تم استخدامه آخر مرة أمس في <xliff:g id="TIME_DATE">%1$s</xliff:g> • مسموح بالوصول إليه طوال الوقت"</string>
     <string name="app_perms_content_provider_background" msgid="7793984056711923997">"تم الوصول خلال آخر 24 ساعة • تم السماح بالوصول طوال الوقت"</string>
-    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"تم الوصول آخر مرة للأذونات في <xliff:g id="TIME_DATE">%1$s</xliff:g> • الوسائط"</string>
-    <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"تم الوصول آخر مرة للأذونات أمس في <xliff:g id="TIME_DATE">%1$s</xliff:g> • الوسائط"</string>
+    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"تم استخدامه آخر مرة في <xliff:g id="TIME_DATE">%1$s</xliff:g> • الوسائط"</string>
+    <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"تم استخدامه آخر مرة أمس في <xliff:g id="TIME_DATE">%1$s</xliff:g> • الوسائط"</string>
     <string name="app_perms_content_provider_media_only" msgid="6206759230589923421">"تم الوصول للأذونات في آخر 24 ساعة • الوسائط"</string>
-    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"تم الوصول آخر مرة للأذونات في <xliff:g id="TIME_DATE">%1$s</xliff:g> • كل الملفات"</string>
-    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"تم الوصول آخر مرة للأذونات أمس في <xliff:g id="TIME_DATE">%1$s</xliff:g> • كل الملفات"</string>
+    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"تم استخدامه آخر مرة في <xliff:g id="TIME_DATE">%1$s</xliff:g> • كل الملفات"</string>
+    <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"تم استخدامه آخر مرة أمس في <xliff:g id="TIME_DATE">%1$s</xliff:g> • كل الملفات"</string>
     <string name="app_perms_content_provider_all_files" msgid="3315281519230304799">"تم الوصول للأذونات في آخر 24 ساعة • كل الملفات"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"لم يتم منح أي أذونات."</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"لم يتم رفض أي أذونات."</string>
