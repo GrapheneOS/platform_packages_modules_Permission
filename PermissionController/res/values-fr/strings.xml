@@ -160,7 +160,7 @@
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Autorisations utilisées (dernière minute)"</string>
     <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"Aucune utilisation au cours des dernières 24 heures"</string>
     <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"Aucune utilisation au cours des 7 derniers jours"</string>
-    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Utilisée par 1 appli}one{Utilisée par # appli}other{Utilisée par # applis}}"</string>
+    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Utilisation par 1 appli}one{Utilisation par # appli}other{Utilisation par # applis}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Tout afficher dans le tableau de bord"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Données filtrées par : <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Supprimer le filtre"</string>
@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"L\'autorisation \"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>\" et <xliff:g id="NUMBER">%2$s</xliff:g> autres ont été révoquées"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Applis inutilisées"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Si vous n\'utilisez pas une appli pendant quelques mois :\n\n• Les autorisations sont supprimées pour protéger vos données.\n• Les notifications sont désactivées pour économiser la batterie.\n• Les fichiers temporaires sont supprimés pour libérer de l\'espace.\n\nPour réactiver les autorisations et les notifications, ouvrez l\'application."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Si vous n\'utilisez pas une appli pendant quelques mois :\n\n• les autorisations sont supprimées pour protéger vos données ;\n• les fichiers temporaires sont supprimés pour libérer de l\'espace.\n\nPour réactiver les autorisations, ouvrez l\'appli."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Ouvertes pour la dernière fois il y a plus de <xliff:g id="NUMBER">%s</xliff:g> mois"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Dernière ouverture de l\'application le <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Dernière ouverture : <xliff:g id="DATE">%s</xliff:g>"</string>

@@ -122,7 +122,7 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Невідомо"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Панель керування доступом"</string>
     <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Показувати додатки, які нещодавно використовували дозволи"</string>
-    <string name="permission_group_usage_title" msgid="2595013198075285173">"Використання дозволу \"<xliff:g id="PERMGROUP">%1$s</xliff:g>\""</string>
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g>: використання"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Переглянути інші дозволи"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> і ще <xliff:g id="NUM">%3$s</xliff:g>"</string>
@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Дозвіл \"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>\" і ще <xliff:g id="NUMBER">%2$s</xliff:g> скасовано"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Додатки, що не використовуються"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Якщо ви не користуєтеся додатком кілька місяців:\n\n• дозволи буде скасовано, щоб захистити ваші дані;\n• показ сповіщень буде припинено, щоб заощаджувати заряд акумулятора;\n• тимчасові файли буде видалено, щоб звільнити місце на диску.\n\nЩоб відновити дозволи й показ сповіщень, відкрийте додаток."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Якщо ви не користуєтеся додатком кілька місяців:\n\n• дозволи буде скасовано, щоб захистити ваші дані;\n• тимчасові файли буде видалено, щоб звільнити місце на диску.\n\nЩоб відновити дозволи, відкрийте додаток."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Відкривались понад <xliff:g id="NUMBER">%s</xliff:g> міс. тому"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Додаток востаннє відкрито <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Востаннє відкрито <xliff:g id="DATE">%s</xliff:g>"</string>

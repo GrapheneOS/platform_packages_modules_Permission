@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> dan <xliff:g id="NUMBER">%2$s</xliff:g> izin lainnya dihapus"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Aplikasi yang tidak digunakan"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Jika aplikasi tidak digunakan selama beberapa bulan:\n\n• Izin akan dihapus untuk melindungi data Anda\n• Notifikasi akan dihentikan untuk menghemat daya baterai\n• File sementara akan dihapus untuk mengosongkan ruang penyimpanan\n\nUntuk kembali memberikan izin dan mengaktifkan notifikasi, buka aplikasi."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Jika aplikasi tidak digunakan selama beberapa bulan:\n\n• Izin akan dihapus untuk melindungi data Anda\n• File sementara akan dihapus untuk mengosongkan ruang penyimpanan\n\nUntuk kembali memberikan izin, buka aplikasi."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Terakhir dibuka lebih dari <xliff:g id="NUMBER">%s</xliff:g> bulan lalu"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Aplikasi terakhir dibuka pada <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Terakhir dibuka <xliff:g id="DATE">%s</xliff:g>"</string>

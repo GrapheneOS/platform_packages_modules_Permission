@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Bylo odebráno oprávnění <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> a další oprávnění (<xliff:g id="NUMBER">%2$s</xliff:g>)"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Nepoužívané aplikace"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Když aplikaci několik měsíců nepoužíváte:\n\n• Oprávnění jsou odstraněna kvůli ochraně dat\n• Oznámení se přestanou zobrazovat kvůli úspoře baterie\n• Dočasné soubory jsou odstraněny kvůli uvolnění místa\n\nPokud chcete oprávnění a oznámení znovu povolit, otevřete aplikaci."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Když aplikaci několik měsíců nepoužíváte:\n\n• Oprávnění jsou odstraněna kvůli ochraně dat\n• Dočasné soubory jsou odstraněny kvůli uvolnění místa\n\nPokud chcete oprávnění znovu povolit, otevřete aplikaci."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Naposledy otevřeno před více než <xliff:g id="NUMBER">%s</xliff:g> měsíci"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Aplikace byla naposledy otevřena <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Naposledy otevřeno <xliff:g id="DATE">%s</xliff:g>"</string>
