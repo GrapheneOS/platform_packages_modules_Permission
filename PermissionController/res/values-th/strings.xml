@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"มีการนำสิทธิ์เข้าถึง<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>และสิทธิ์อีก <xliff:g id="NUMBER">%2$s</xliff:g> รายการออก"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"แอปที่ไม่ได้ใช้"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"จะมีการดำเนินการต่อไปนี้หากไม่ได้ใช้แอปเป็นเวลา 2-3 เดือน\n\n• สิทธิ์จะถูกนำออกเพื่อปกป้องข้อมูลของคุณ\n• การแจ้งเตือนจะหยุดลงเพื่อประหยัดแบตเตอรี่\n• ไฟล์ชั่วคราวจะถูกนำออกเพื่อเพิ่มพื้นที่ว่าง\n\nเปิดแอปเพื่ออนุญาตสิทธิ์และการแจ้งเตือนอีกครั้ง"</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"จะมีการดำเนินการต่อไปนี้หากไม่ได้ใช้แอปเป็นเวลา 2-3 เดือน\n\n• สิทธิ์จะถูกนำออกเพื่อปกป้องข้อมูลของคุณ\n• ไฟล์ชั่วคราวจะถูกนำออกเพื่อเพิ่มพื้นที่ว่าง\n\nเปิดแอปเพื่ออนุญาตสิทธิ์อีกครั้ง"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"เปิดล่าสุดนานกว่า <xliff:g id="NUMBER">%s</xliff:g> เดือนที่ผ่านมา"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"เปิดแอปล่าสุดเมื่อวันที่ <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"เปิดล่าสุดเมื่อวันที่ <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -276,18 +277,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"มีการนำสิทธิ์ออกเพื่อปกป้องความเป็นส่วนตัวของคุณ"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> เข้าถึงตำแหน่งของคุณอยู่เบื้องหลัง"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"แอปนี้เข้าถึงตำแหน่งของคุณได้ตลอดเวลา แตะเพื่อเปลี่ยน"</string>
-    <!-- no translation found for accessibility_access_reminder_notification_title (798487829152263568) -->
-    <skip />
-    <!-- no translation found for accessibility_access_reminder_notification_content (3897831796455872834) -->
-    <skip />
-    <!-- no translation found for accessibility_access_warning_card_content (3418029245041163015) -->
-    <skip />
-    <!-- no translation found for accessibility_remove_access_button_label (44145801526711640) -->
-    <skip />
-    <!-- no translation found for accessibility_show_all_apps_button_label (5027167822346195212) -->
-    <skip />
-    <!-- no translation found for accessibility_remove_access_success_label (4380995302917014670) -->
-    <skip />
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"ตรวจสอบแอปที่มีสิทธิ์เข้าถึงการช่วยเหลือพิเศษ"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> สามารถอ่านเนื้อหาทั้งหมดในหน้าจอ แสดงเนื้อหาเหนือแอปอื่นๆ และติดตามการโต้ตอบของคุณได้"</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"แอปนี้สามารถอ่านเนื้อหาทั้งหมดในหน้าจอ แสดงเนื้อหาเหนือแอปอื่นๆ และติดตามการโต้ตอบของคุณได้"</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"นำสิทธิ์เข้าถึงออก"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"ดูแอปที่มีสิทธิ์เข้าถึงการช่วยเหลือพิเศษ"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"นำสิทธิ์เข้าถึงออกแล้ว"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"ระบบนำสิทธิ์ของแอปออกเพื่อปกป้องความเป็นส่วนตัว"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> ไม่มีการใช้งานมา 2-3 เดือนแล้ว แตะเพื่อตรวจสอบ"</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> และอีก 1 แอปไม่มีการใช้งานมา 2-3 เดือนแล้ว แตะเพื่อตรวจสอบ"</string>
@@ -514,7 +509,8 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"ความปลอดภัยและความเป็นส่วนตัว"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"สแกน"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"ปิด"</string>
-    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"ต้องการปิดคำเตือนนี้ใช่ไหม"</string>
+    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (2734809473425036382) -->
+    <skip />
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"ปิด"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"ยกเลิก"</string>
     <string name="security_settings" msgid="3808106921175271317">"การตั้งค่าการรักษาความปลอดภัย"</string>

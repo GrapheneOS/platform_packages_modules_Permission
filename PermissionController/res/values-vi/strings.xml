@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Đã thu hồi quyền sử dụng <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> và <xliff:g id="NUMBER">%2$s</xliff:g> quyền khác"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Ứng dụng không dùng đến"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Nếu một ứng dụng không được dùng đến trong vài tháng, hệ thống sẽ:\n\n• Thu hồi các quyền để bảo vệ dữ liệu của bạn\n• Chặn các thông báo để tiết kiệm pin\n• Xóa các tệp tạm thời để giải phóng bộ nhớ\n\nĐể cho phép lại các quyền và thông báo, hãy mở ứng dụng đó."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Nếu bạn không dùng một ứng dụng trong vài tháng, thì hệ thống sẽ:\n\n• Xoá các quyền để bảo vệ dữ liệu của bạn\n• Xoá các tệp tạm thời để giải phóng dung lượng\n\nĐể cấp lại các quyền, hãy mở ứng dụng đó."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Mở lần cuối cách đây hơn <xliff:g id="NUMBER">%s</xliff:g> tháng trước"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Lần gần đây nhất bạn mở ứng dụng này là vào <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Lần mở gần đây nhất là vào <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -276,18 +277,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Đã thu hồi các quyền để bảo vệ quyền riêng tư của bạn"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> đã truy cập thông tin vị trí của bạn trong nền"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Ứng dụng này luôn có thể truy cập vào thông tin vị trí của bạn. Hãy nhấn để thay đổi."</string>
-    <!-- no translation found for accessibility_access_reminder_notification_title (798487829152263568) -->
-    <skip />
-    <!-- no translation found for accessibility_access_reminder_notification_content (3897831796455872834) -->
-    <skip />
-    <!-- no translation found for accessibility_access_warning_card_content (3418029245041163015) -->
-    <skip />
-    <!-- no translation found for accessibility_remove_access_button_label (44145801526711640) -->
-    <skip />
-    <!-- no translation found for accessibility_show_all_apps_button_label (5027167822346195212) -->
-    <skip />
-    <!-- no translation found for accessibility_remove_access_success_label (4380995302917014670) -->
-    <skip />
+    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Xem ứng dụng có quyền sử dụng tính năng hỗ trợ tiếp cận"</string>
+    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> có thể đọc tất cả nội dung trên màn hình, hiện nội dung trên các ứng dụng khác và theo dõi hoạt động tương tác của bạn."</string>
+    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Ứng dụng này có thể đọc tất cả nội dung trên màn hình, hiện nội dung trên các ứng dụng khác và theo dõi hoạt động tương tác của bạn."</string>
+    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Xoá quyền truy cập"</string>
+    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"Xem các ứng dụng có quyền sử dụng tính năng hỗ trợ tiếp cận"</string>
+    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Đã xoá quyền truy cập"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Đã thu hồi các quyền ứng dụng nhằm bảo vệ quyền riêng tư"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"Bạn chưa dùng <xliff:g id="APP_NAME">%s</xliff:g> trong vài tháng. Nhấn để xem lại."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"Bạn chưa dùng <xliff:g id="APP_NAME">%s</xliff:g> và 1 ứng dụng khác trong vài tháng. Nhấn để xem lại."</string>
@@ -514,7 +509,8 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Bảo mật và quyền riêng tư"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Quét"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Đóng"</string>
-    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"Đóng cảnh báo này?"</string>
+    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (2734809473425036382) -->
+    <skip />
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Đóng"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Huỷ"</string>
     <string name="security_settings" msgid="3808106921175271317">"Cài đặt bảo mật"</string>
