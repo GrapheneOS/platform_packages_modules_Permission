@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> እና <xliff:g id="NUMBER">%2$s</xliff:g> ሌሎች ፈቃዶች ተወግደዋል"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"ስራ ላይ ያልዋሉ መተግበሪያዎች"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"አንድ መተግበሪያ ለጥቂት ወራት ስራ ላይ ካልዋለ፦\n\n• ውሂብዎን ለመጠበቅ ፈቃዶች ይወገዳሉ\n• ባትሪን ለመቆጠብ ማሳወቂያዎች ይቆማሉ\n• ባዶ ቦታ ለማስለቀቅ ጊዜያዊ ፋይሎች ይወገዳሉ\n\nፈቃዶችን እና ማሳወቂያዎችን እንደገና ለመፍቀድ መተግበሪያውን ይክፈቱት።"</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"አንድ መተግበሪያ ለጥቂት ወራት ጥቅም ላይ ካልዋለ፦\n\n• ውሂብዎን ለመጠበቅ ፈቃዶች ይወገዳሉ\n• ባዶ ቦታ ለማስለቀቅ ጊዜያዊ ፋይሎች ይወገዳሉ \n\nፈቃዶችን እንደገና ለመፍቀድ መተግበሪያውን ይክፈቱ።"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"መጨረሻ የተከፈተው ከ<xliff:g id="NUMBER">%s</xliff:g> ወሮች በላይ በፊት ነበር"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"መተግበሪያ ለመጨረሻ ጊዜ በ<xliff:g id="DATE">%s</xliff:g> ላይ ተከፍቷል"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"መጨረሻ የተከፈተው <xliff:g id="DATE">%s</xliff:g>"</string>

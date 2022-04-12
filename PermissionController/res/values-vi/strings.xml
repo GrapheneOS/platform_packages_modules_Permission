@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Đã thu hồi quyền sử dụng <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> và <xliff:g id="NUMBER">%2$s</xliff:g> quyền khác"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Ứng dụng không dùng đến"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Nếu một ứng dụng không được dùng đến trong vài tháng, hệ thống sẽ:\n\n• Thu hồi các quyền để bảo vệ dữ liệu của bạn\n• Chặn các thông báo để tiết kiệm pin\n• Xóa các tệp tạm thời để giải phóng bộ nhớ\n\nĐể cho phép lại các quyền và thông báo, hãy mở ứng dụng đó."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Nếu bạn không dùng một ứng dụng trong vài tháng, thì hệ thống sẽ:\n\n• Xoá các quyền để bảo vệ dữ liệu của bạn\n• Xoá các tệp tạm thời để giải phóng dung lượng\n\nĐể cấp lại các quyền, hãy mở ứng dụng đó."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Mở lần cuối cách đây hơn <xliff:g id="NUMBER">%s</xliff:g> tháng trước"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Lần gần đây nhất bạn mở ứng dụng này là vào <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Lần mở gần đây nhất là vào <xliff:g id="DATE">%s</xliff:g>"</string>

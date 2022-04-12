@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"បានដក​ការអនុញ្ញាត​<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> និង​ការអនុញ្ញាត <xliff:g id="NUMBER">%2$s</xliff:g> ទៀត"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"កម្មវិធី​ដែលមិន​ប្រើ"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"ប្រសិនបើ​កម្មវិធី​មិនត្រូវបានប្រើ​រយៈពេលពីរបីខែ៖\n\n• ការអនុញ្ញាតត្រូវបាន​ដកចេញ ដើម្បីការពារ​ទិន្នន័យ​របស់អ្នក\n• ការជូនដំណឹង​ត្រូវបានបញ្ឈប់ ដើម្បីសន្សំថ្ម\n• ឯកសារ​បណ្ដោះអាសន្នត្រូវបាន​លុបចេញ ដើម្បីបង្កើន​ទំហំផ្ទុក\n\nដើម្បីផ្ដល់​ការអនុញ្ញាត និង​អនុញ្ញាតឱ្យ​ជូនដំណឹង​ម្ដងទៀត សូមបើក​កម្មវិធីនោះ។"</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"ប្រសិនបើ​កម្មវិធីណាមួយ​មិនត្រូវបានប្រើ​រយៈពេលពីរបីខែ៖\n\n• ការអនុញ្ញាតត្រូវបានលុបចេញ ដើម្បីការពារ​ទិន្នន័យ​របស់អ្នក\n• ឯកសារ​បណ្ដោះអាសន្នត្រូវបាន​លុបចេញ ដើម្បីបង្កើន​ទំហំផ្ទុក\n\nដើម្បីផ្ដល់​ការអនុញ្ញាតម្ដងទៀត សូមបើក​កម្មវិធីនោះ។"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"បានបើក​លើកចុងក្រោយ​លើសពី <xliff:g id="NUMBER">%s</xliff:g> ខែមុន"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"បានបើក​កម្មវិធី​លើកចុងក្រោយ​នៅថ្ងៃទី <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"បានបើក​លើកចុងក្រោយ​នៅថ្ងៃទី <xliff:g id="DATE">%s</xliff:g>"</string>

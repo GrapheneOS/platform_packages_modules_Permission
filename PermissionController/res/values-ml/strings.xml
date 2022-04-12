@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> അനുമതിയും മറ്റ് <xliff:g id="NUMBER">%2$s</xliff:g> അനുമതികളും നീക്കം ചെയ്തു"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"ഉപയോഗിക്കാത്ത ആപ്പുകൾ"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"ഒരു ആപ്പ് ഏതാനും മാസങ്ങളായി ഉപയോഗിക്കുന്നില്ലെങ്കിൽ:\n\n• നിങ്ങളുടെ ഡാറ്റ സംരക്ഷിക്കാൻ, അനുമതികൾ നീക്കം ചെയ്യുന്നു\n• ബാറ്ററി ലാഭിക്കാൻ, അറിയിപ്പുകൾ നൽകുന്നത് നിർത്തുന്നു\n• ഇടമുണ്ടാക്കാൻ, താൽക്കാലിക ഫയലുകൾ നീക്കം ചെയ്യുന്നു\n\nഅനുമതികളും അറിയിപ്പുകളും വീണ്ടും അനുവദിക്കാൻ, ആപ്പ് തുറക്കുക."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"ഒരു ആപ്പ് കുറച്ച് മാസം ഉപയോഗിക്കാതിരുന്നാൽ:\n\n• നിങ്ങളുടെ ഡാറ്റ സംരക്ഷിക്കാൻ അനുമതികൾ നീക്കം ചെയ്യും\n• ഇടമുണ്ടാക്കാൻ താൽക്കാലിക ഫയലുകൾ നീക്കം ചെയ്യും\n\nവീണ്ടും അനുമതികൾ അനുവദിക്കാൻ ആപ്പ് തുറക്കുക."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"അവസാനം തുറന്നിട്ട് <xliff:g id="NUMBER">%s</xliff:g> മാസത്തിൽ കൂടുതലായവ"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ആപ്പ് അവസാനം തുറന്നത് <xliff:g id="DATE">%s</xliff:g>-നാണ്"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"അവസാനം തുറന്നത് <xliff:g id="DATE">%s</xliff:g>"</string>

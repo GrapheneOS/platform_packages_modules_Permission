@@ -78,8 +78,8 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> אפליקציות שקיבלו הרשאה"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"הצגת אפליקציות מערכת"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"הסתרת אפליקציות מערכת"</string>
-    <string name="menu_show_7_days_data" msgid="8979611198508523706">"הצגת השימוש ב-7 הימים האחרונים"</string>
-    <string name="menu_show_24_hours_data" msgid="8228054833323380780">"הצגת השימוש ב-24 השעות האחרונות"</string>
+    <string name="menu_show_7_days_data" msgid="8979611198508523706">"השימוש ב-7 הימים האחרונים"</string>
+    <string name="menu_show_24_hours_data" msgid="8228054833323380780">"השימוש ב-24 השעות האחרונות"</string>
     <string name="manage_permission" msgid="2895385393037061964">"ניהול ההרשאה"</string>
     <string name="no_apps" msgid="2412612731628386816">"אין אפליקציות"</string>
     <string name="location_settings" msgid="3624412509133422562">"הגדרות מיקום"</string>
@@ -195,7 +195,7 @@
     <string name="app_permission_header" msgid="2951363137032603806">"לאפליקציה תהיה גישה אל: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"הצגת כל ההרשאות של \'<xliff:g id="APP">%1$s</xliff:g>\'"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"הצגת כל האפליקציות עם ההרשאה הזו"</string>
-    <string name="assistant_mic_label" msgid="1011432357152323896">"‏הצגת השימוש במיקרופון של Assistant"</string>
+    <string name="assistant_mic_label" msgid="1011432357152323896">"‏השימוש במיקרופון של Assistant"</string>
     <string name="unused_apps_category_title" msgid="2988455616845243901">"הגדרות של אפליקציות שמזמן לא השתמשת בהן"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"הסרת ההרשאות כשלא בשימוש"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"הסרת הרשאות ופינוי מקום אחסון"</string>
@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ו-<xliff:g id="NUMBER">%2$s</xliff:g> הרשאות נוספות הוסרו"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"אפליקציות שמזמן לא השתמשת בהן"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"אם האפליקציה לא נמצאת בשימוש במשך מספר חודשים:\n\n• ההרשאות יבוטלו כדי להגן על הנתונים שלך\n• ההתראות יושבתו כדי לחסוך בצריכת הסוללה\n• הקבצים הזמניים יוסרו כדי לפנות מקום אחסון\n\nכדי לאשר שוב את מתן ההרשאות והפעלת ההתראות, צריך לפתוח את האפליקציה."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"אם לא האפליקציה לא בשימוש במשך מספר חודשים:\n\n• ההרשאות יבוטלו כדי להגן על הנתונים שלך\n• הקבצים הזמניים יוסרו כדי לפנות מקום אחסון\n\nכדי להעניק הרשאות שוב, צריך לפתוח את האפליקציה."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"נפתחו לאחרונה לפני יותר מ-<xliff:g id="NUMBER">%s</xliff:g> חודשים"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"האפליקציה נפתחה לאחרונה בתאריך <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"נפתחה לאחרונה: <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -299,23 +300,23 @@
     <string name="app_perms_24h_access" msgid="99069906850627181">"הגישה האחרונה: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"הגישה האחרונה בוצעה אתמול בשעה <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_7d_access" msgid="4945055548894683751">"הגישה האחרונה בוצעה בתאריך <xliff:g id="TIME_DATE_0">%1$s</xliff:g> בשעה <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
-    <string name="app_perms_content_provider_24h" msgid="1055526027667508972">"בוצעה גישה ב-24 השעות האחרונות"</string>
-    <string name="app_perms_content_provider_7d" msgid="3215454898257814868">"בוצעה גישה ב-7 הימים האחרונים"</string>
+    <string name="app_perms_content_provider_24h" msgid="1055526027667508972">"הייתה גישה ב-24 השעות האחרונות"</string>
+    <string name="app_perms_content_provider_7d" msgid="3215454898257814868">"הייתה גישה ב-7 הימים האחרונים"</string>
     <string name="app_perms_24h_access_background" msgid="3413674718969576843">"הגישה האחרונה <xliff:g id="TIME_DATE">%1$s</xliff:g> • מורשה תמיד"</string>
     <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"הגישה האחרונה בוצעה אתמול בשעה <xliff:g id="TIME_DATE">%1$s</xliff:g> • מורשה תמיד"</string>
     <string name="app_perms_7d_access_background" msgid="408099213372185627">"הגישה האחרונה בוצעה בתאריך <xliff:g id="TIME_DATE_0">%1$s</xliff:g> בשעה <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • מותרת תמיד"</string>
-    <string name="app_perms_content_provider_24h_background" msgid="3825902995186961496">"בוצעה גישה ב-24 השעות האחרונות • מותרת תמיד"</string>
-    <string name="app_perms_content_provider_7d_background" msgid="4818839672116463542">"בוצעה גישה ב-7 הימים האחרונים • מותרת תמיד"</string>
+    <string name="app_perms_content_provider_24h_background" msgid="3825902995186961496">"הייתה גישה ב-24 השעות האחרונות • מותרת תמיד"</string>
+    <string name="app_perms_content_provider_7d_background" msgid="4818839672116463542">"הייתה גישה ב-7 הימים האחרונים • מותרת תמיד"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"הגישה האחרונה: <xliff:g id="TIME_DATE">%1$s</xliff:g> • מדיה"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"הגישה האחרונה בוצעה אתמול בשעה <xliff:g id="TIME_DATE">%1$s</xliff:g> • מדיה"</string>
     <string name="app_perms_7d_access_media_only" msgid="1031096653668235200">"הגישה האחרונה בוצעה בתאריך <xliff:g id="TIME_DATE_0">%1$s</xliff:g> בשעה <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • מדיה"</string>
-    <string name="app_perms_content_provider_24h_media_only" msgid="7797963000596179491">"בוצעה גישה ב-24 השעות האחרונות • מדיה"</string>
-    <string name="app_perms_content_provider_7d_media_only" msgid="8446239884570262243">"בוצעה גישה ב-7 הימים האחרונים • מדיה"</string>
+    <string name="app_perms_content_provider_24h_media_only" msgid="7797963000596179491">"הייתה גישה ב-24 השעות האחרונות • מדיה"</string>
+    <string name="app_perms_content_provider_7d_media_only" msgid="8446239884570262243">"הייתה גישה ב-7 הימים האחרונים • מדיה"</string>
     <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"הגישה האחרונה: <xliff:g id="TIME_DATE">%1$s</xliff:g> • כל הקבצים"</string>
     <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"הגישה האחרונה בוצעה אתמול בשעה <xliff:g id="TIME_DATE">%1$s</xliff:g> • כל הקבצים"</string>
     <string name="app_perms_7d_access_all_files" msgid="8246193786397635824">"הגישה האחרונה בוצעה בתאריך <xliff:g id="TIME_DATE_0">%1$s</xliff:g> בשעה <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • כל הקבצים"</string>
-    <string name="app_perms_content_provider_24h_all_files" msgid="573104317727770850">"בוצעה גישה ב-24 השעות האחרונות • כל הקבצים"</string>
-    <string name="app_perms_content_provider_7d_all_files" msgid="7962416229708835558">"בוצעה גישה ב-7 הימים האחרונים • כל הקבצים"</string>
+    <string name="app_perms_content_provider_24h_all_files" msgid="573104317727770850">"הייתה גישה ב-24 השעות האחרונות • כל הקבצים"</string>
+    <string name="app_perms_content_provider_7d_all_files" msgid="7962416229708835558">"הייתה גישה ב-7 הימים האחרונים • כל הקבצים"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"לא ניתנו הרשאות"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"אין הרשאות שנדחו"</string>
     <string name="no_apps_allowed" msgid="7718822655254468631">"אין אפליקציות שקיבלו הרשאה"</string>
@@ -428,7 +429,7 @@
     <string name="incident_report_dialog_deny_label" msgid="3535314290677579383">"אני לא מרשה"</string>
     <string name="adjust_user_sensitive_title" msgid="4196724451314280527">"הגדרות מתקדמות"</string>
     <string name="menu_adjust_user_sensitive" msgid="6497923610654425780">"הגדרות מתקדמות"</string>
-    <string name="adjust_user_sensitive_globally_title" msgid="8649190949066029174">"הצגת השימוש באפליקציות מערכת"</string>
+    <string name="adjust_user_sensitive_globally_title" msgid="8649190949066029174">"השימוש באפליקציות מערכת"</string>
     <string name="adjust_user_sensitive_globally_summary" msgid="129467818433773912">"הצגת השימוש של אפליקציות המערכת בהרשאות בשורת הסטטוס, במרכז השליטה ובמקומות אחרים"</string>
     <string name="adjust_user_sensitive_per_app_header" msgid="4543506440989005648">"הדגשת השימוש לאפליקציות הבאות"</string>
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"הצגת הזיהוי של הפעלת האסיסטנט"</string>
