@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>、他 <xliff:g id="NUMBER">%2$s</xliff:g> 件の権限が削除されました"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"使用されていないアプリ"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"数か月使用されていないアプリがある場合:\n\n• データを保護するため、権限が削除されます\n• バッテリーを節約するため、通知が停止されます\n• 空き容量を増やすため、一時ファイルが削除されます\n\n権限と通知をもう一度許可する場合は、アプリを開いてください。"</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"数か月使用されていないアプリがある場合:\n\n• データを保護するため、権限が削除されます\n• 空き容量を増やすため、一時ファイルが削除されます\n\n権限をもう一度付与する場合は、アプリを開いてください。"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"最後に開いたのが <xliff:g id="NUMBER">%s</xliff:g> か月以上前"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"アプリ最終使用日: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"最終使用日: <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -241,13 +242,13 @@
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"現在は許可しない / 最終アクセス: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"未アクセス"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"許可しない / 未アクセス"</string>
-    <string name="allowed_header" msgid="7769277978004790414">"許可されているアプリ"</string>
+    <string name="allowed_header" msgid="7769277978004790414">"許可"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"常に許可"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"使用中のみ許可"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"メディアへのアクセスのみが許可されたアプリ"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"すべてのファイルの管理が許可されたアプリ"</string>
     <string name="ask_header" msgid="2633816846459944376">"毎回確認する"</string>
-    <string name="denied_header" msgid="903209608358177654">"許可されてないアプリ"</string>
+    <string name="denied_header" msgid="903209608358177654">"許可しない"</string>
     <string name="storage_footer_warning_text" msgid="2242258357752432337">"デバイスの基本機能を提供する一部のアプリには、すべてのファイルへの特別なアクセス権が付与されることがあります"</string>
     <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"すべてのファイルへのアクセス権を持つアプリを見る"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 日}other{# 日}}"</string>

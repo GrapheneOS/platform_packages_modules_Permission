@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> සහ තවත් අවසර <xliff:g id="NUMBER">%2$s</xliff:g>ක් ඉවත් කර ඇත"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"භාවිත නොකළ යෙදුම්"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"යෙදුමක් මාස කිහිපයක් භාවිත නොකළහොත්:\n\n• ඔබගේ දත්ත ආරක්ෂා කිරීමට අවසර ඉවත් කෙරේ\n• බැටරිය සුරැකීමට දැනුම්දීම් නවත්වනු ඇත\n• ඉඩ නිදහස් කිරීමට තාවකාලික ගොනු ඉවත් කෙරේ\n\nනැවත අවසර සහ දැනුම්දීම්වලට ඉඩ දීමට, යෙදුම විවෘත කරන්න."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"යෙදුමක් මාස කිහිපයක් භාවිත නොකළහොත්:\n\n• ඔබගේ දත්ත ආරක්ෂා කිරීමට අවසර ඉවත් කෙරේ\n• ඉඩ නිදහස් කිරීමට තාවකාලික ගොනු ඉවත් කෙරේ\n\nනැවත අවසරවලට ඉඩ දීමට, යෙදුම විවෘත කරන්න."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"අවසන් වරට විවෘත කළේ මාස <xliff:g id="NUMBER">%s</xliff:g>කට පෙරය"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"යෙදුම අවසන් වරට විවෘත කළේ <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"අවසාන විවෘත කළේ <xliff:g id="DATE">%s</xliff:g>"</string>
