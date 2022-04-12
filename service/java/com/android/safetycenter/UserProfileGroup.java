@@ -51,15 +51,12 @@ final class UserProfileGroup {
     // TODO(b/223126212): Don't fork this — is there another value we could use?
     private static final int USER_NULL = -10000;
 
-    @UserIdInt
-    private final int mProfileOwnerUserId;
+    @UserIdInt private final int mProfileOwnerUserId;
 
-    @NonNull
-    private final int[] mManagedProfilesUserIds;
+    @NonNull private final int[] mManagedProfilesUserIds;
 
     private UserProfileGroup(
-            @UserIdInt int profileOwnerUserId,
-            @NonNull int[] managedProfilesUserIds) {
+            @UserIdInt int profileOwnerUserId, @NonNull int[] managedProfilesUserIds) {
         mProfileOwnerUserId = profileOwnerUserId;
         mManagedProfilesUserIds = managedProfilesUserIds;
     }
@@ -86,8 +83,11 @@ final class UserProfileGroup {
             } else if (profileOwnerUserId == USER_NULL) {
                 profileOwnerUserId = userProfileId;
             } else {
-                Log.w(TAG, String.format("Found multiple profile owner user ids: %s, %s",
-                        profileOwnerUserId, userProfileId));
+                Log.w(
+                        TAG,
+                        String.format(
+                                "Found multiple profile owner user ids: %s, %s",
+                                profileOwnerUserId, userProfileId));
             }
         }
 
@@ -95,22 +95,20 @@ final class UserProfileGroup {
             throw new IllegalStateException("Could not find profile owner user id");
         }
 
-        return new UserProfileGroup(profileOwnerUserId,
-                Arrays.copyOf(managedProfileUserIds, managedProfileUserIdsLen));
+        return new UserProfileGroup(
+                profileOwnerUserId, Arrays.copyOf(managedProfileUserIds, managedProfileUserIdsLen));
     }
 
     @NonNull
     private static UserManager getUserManagerForUser(
-            @UserIdInt int userId,
-            @NonNull Context context) {
+            @UserIdInt int userId, @NonNull Context context) {
         Context userContext = getUserContext(context, UserHandle.of(userId));
         return requireNonNull(userContext.getSystemService(UserManager.class));
     }
 
     @NonNull
     private static Context getUserContext(
-            @NonNull Context context,
-            @NonNull UserHandle userHandle) {
+            @NonNull Context context, @NonNull UserHandle userHandle) {
         if (Process.myUserHandle().equals(userHandle)) {
             return context;
         } else {
@@ -123,8 +121,7 @@ final class UserProfileGroup {
     }
 
     @NonNull
-    private static List<UserHandle> getEnabledUserProfiles(
-            @NonNull UserManager userManager) {
+    private static List<UserHandle> getEnabledUserProfiles(@NonNull UserManager userManager) {
         // This call requires the QUERY_USERS permission.
         final long callingIdentity = Binder.clearCallingIdentity();
         try {
@@ -144,13 +141,28 @@ final class UserProfileGroup {
         return mManagedProfilesUserIds;
     }
 
+    /** Returns whether the {@link UserProfileGroup} contains the given {@code userId}. */
+    boolean contains(@UserIdInt int userId) {
+        if (userId == mProfileOwnerUserId) {
+            return true;
+        }
+
+        for (int i = 0; i < mManagedProfilesUserIds.length; i++) {
+            if (userId == mManagedProfilesUserIds[i]) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof UserProfileGroup)) return false;
         UserProfileGroup that = (UserProfileGroup) o;
-        return mProfileOwnerUserId == that.mProfileOwnerUserId && Arrays.equals(
-                mManagedProfilesUserIds, that.mManagedProfilesUserIds);
+        return mProfileOwnerUserId == that.mProfileOwnerUserId
+                && Arrays.equals(mManagedProfilesUserIds, that.mManagedProfilesUserIds);
     }
 
     @Override

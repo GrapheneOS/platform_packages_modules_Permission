@@ -17,4 +17,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Test reference -->
     <string name="reference" translatable="false">Reference</string>
+    <string name="reference_overlayable" translatable="false">Base</string>
+    <string name="reference_not_overlayable" translatable="false">Base</string>
 </resources>

@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> এবং অন্য <xliff:g id="NUMBER">%2$s</xliff:g>টি অনুমতি সরিয়ে দেওয়া হয়েছে"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"ব্যবহার করা হয়নি এমন অ্যাপ"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"কোনও অ্যাপ বেশ কয়েকমাস ধরে ব্যবহার করা না হলে:\n\n• আপনার ডেটা সুরক্ষিত রাখতে অনুমতি সরিয়ে নেওয়া হয়\n• ব্যাটারির চার্জ সাশ্রয় করতে বিজ্ঞপ্তি বন্ধ রাখা হয়\n• স্পেস খালি করতে অস্থায়ী ফাইল সরিয়ে নেওয়া হয়\n\nঅনুমতি এবং বিজ্ঞপ্তিগুলিতে আবার অনুমতি দেওয়ার জন্য অ্যাপ খুলুন।"</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"কোনও অ্যাপ বেশ কয়েকমাস ধরে ব্যবহার করা না হলে:\n\n• আপনার ডেটা সুরক্ষিত রাখতে অনুমতি সরিয়ে নেওয়া হয়\n• স্পেস খালি করতে অস্থায়ী ফাইল সরিয়ে নেওয়া হয়\n\nআবার অনুমতি দিতে, অ্যাপ খুলুন।"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"<xliff:g id="NUMBER">%s</xliff:g> মাসেরও বেশি সময় আগে শেষ খোলা হয়েছিল"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"অ্যাপ শেষ <xliff:g id="DATE">%s</xliff:g> তারিখে খোলা হয়েছে"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"শেষ <xliff:g id="DATE">%s</xliff:g> তারিখে খোলা হয়েছে"</string>
@@ -508,7 +509,8 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"নিরাপত্তা এবং গোপনীয়তা"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"স্ক্যান করুন"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"বাতিল করুন"</string>
-    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="1548283211993262986">"এই সতর্কতা বাতিল করতে চান?"</string>
+    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (2734809473425036382) -->
+    <skip />
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"বাতিল করুন"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"বাতিল করুন"</string>
     <string name="security_settings" msgid="3808106921175271317">"নিরাপত্তা সংক্রান্ত সেটিংস"</string>
