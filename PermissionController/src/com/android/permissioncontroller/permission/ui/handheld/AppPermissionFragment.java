@@ -586,6 +586,8 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
         private static int sCode =  APP_PERMISSION_FRAGMENT_ACTION_REPORTED__BUTTON_PRESSED__ALLOW;
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
+            // TODO(b/229024576): This code is duplicated, refactor ConfirmDialog for easier
+            // NFF sharing
             AppPermissionFragment fragment = (AppPermissionFragment) getParentFragment();
             boolean isGrantFileAccess = getArguments().getSerializable(CHANGE_REQUEST)
                     == ChangeRequest.GRANT_All_FILE_ACCESS;
