@@ -43,7 +43,7 @@ public class Constants {
 
     /**
      * ID of the periodic job
-     * {@link com.android.permissioncontroller.permission.service.RecentPermissionDecisionsStorageImpl}
+     * {@link com.android.permissioncontroller.permission.service.BasePermissionEventStorage}
      */
     public static final int OLD_PERMISSION_DECISION_CLEANUP_JOB_ID = 3;
 

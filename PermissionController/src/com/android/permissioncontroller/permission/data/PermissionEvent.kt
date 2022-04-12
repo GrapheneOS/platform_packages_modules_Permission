@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 The Android Open Source Project
+ * Copyright (C) 2022 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,14 +17,13 @@
 package com.android.permissioncontroller.permission.data
 
 /**
- * A record of a user's permission decision for an app.
+ * A record of a permission event caused by the user.
  *
- * @param permissionGroupName permission group name of the decision that was made
- * @param isGranted whether the permission was granted or denied
+ * @param packageName package name of the app the event is for
+ * @param eventTime the time of the event, in epoch time. Should be rounded to day-level
+ * precision for user privacy.
  */
-data class PermissionDecision(
-    override val packageName: String,
-    override val eventTime: Long,
-    val permissionGroupName: String,
-    val isGranted: Boolean
-) : PermissionEvent(packageName, eventTime)
+abstract class PermissionEvent(
+    open val packageName: String,
+    open val eventTime: Long
+)
