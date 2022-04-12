@@ -125,7 +125,7 @@
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Uso di <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Vedi altre autorizzazioni"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
-    <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> e altri <xliff:g id="NUM">%3$s</xliff:g>"</string>
+    <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> e altre <xliff:g id="NUM">%3$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"Cronologia delle volte in cui le app hanno usato <xliff:g id="PERMGROUP">%1$s</xliff:g> nelle ultime 24 ore"</string>
     <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Cronologia delle volte in cui le app hanno usato <xliff:g id="PERMGROUP">%1$s</xliff:g> negli ultimi 7 giorni"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Quando questa app ha usato l\'autorizzazione <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
@@ -160,7 +160,7 @@
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Uso autorizzazioni nell\'ultimo minuto"</string>
     <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"Autorizzazione non utilizzata nelle ultime 24 ore"</string>
     <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"Autorizzazione non utilizzata negli ultimi 7 giorni"</string>
-    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Utilizzate da 1 app}other{Utilizzate da # app}}"</string>
+    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Utilizzata da 1 app}other{Utilizzata da # app}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Mostra tutto nella Dashboard"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrata per: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Rimuovi filtro"</string>
@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> e altre <xliff:g id="NUMBER">%2$s</xliff:g> autorizzazioni rimosse"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"App inutilizzate"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Se un\'app non viene usata per alcuni mesi:\n\n• Vengono rimosse le autorizzazioni per proteggere i tuoi dati\n• Vengono interrotte le notifiche per risparmiare batteria\n• Vengono rimossi i file temporanei per liberare spazio\n\nApri l\'app per consentire di nuovo autorizzazioni e notifiche."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Se un\'app non viene usata per alcuni mesi:\n\n• Vengono rimosse le autorizzazioni per proteggere i tuoi dati\n• Vengono rimossi i file temporanei per liberare spazio\n\nApri l\'app per consentire di nuovo le autorizzazioni."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Aperte l\'ultima volta più di <xliff:g id="NUMBER">%s</xliff:g> mesi fa"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Ultimo utilizzo dell\'app: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Ultimo utilizzo: <xliff:g id="DATE">%s</xliff:g>"</string>

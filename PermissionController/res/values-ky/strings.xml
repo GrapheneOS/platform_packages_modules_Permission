@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> жана дагы <xliff:g id="NUMBER">%2$s</xliff:g> уруксат өчүрүлдү"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Колдонулбаган колдонмолор"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Эгер колдонмо бир нече ай колдонулбаса:\n\n• Маалыматыңызды коргоо үчүн уруксаттар жоюлат\n• Батареяны көбүрөөк убакытка жеткирүү үчүн билдирмелер токтотулат\n• Орун бошотуу үчүн убактылуу файлдар өчүрүлөт\n\nУруксаттарды жана билдирмелерди кайра иштетүү үчүн колдонмону ачыңыз."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Эгер колдонмо бир нече ай колдонулбаса:\n\n• Маалыматыңызды коргоо үчүн уруксаттар жоюлат\n• Орун бошотуу үчүн убактылуу файлдар өчүрүлөт\n\nУруксаттарды жана билдирмелерди кайра иштетүү үчүн колдонмону ачыңыз."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Акыркы жолу <xliff:g id="NUMBER">%s</xliff:g> ай мурда ачылган"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Колдонмо акыркы жолу <xliff:g id="DATE">%s</xliff:g> ачылган"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Акыркы жолу <xliff:g id="DATE">%s</xliff:g> ачылган"</string>

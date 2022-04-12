@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>ৰ আৰু <xliff:g id="NUMBER">%2$s</xliff:g> টা অন্য অনুমতি আঁতৰোৱা হ\'ল"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"অব্যৱহৃত এপ্‌"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"কোনো এপ্‌ কেইমাহমানৰ বাবে ব্যৱহাৰ নকৰাকৈ থাকিলে:\n\n• আপোনাৰ ডেটা সুৰক্ষিত কৰিবলৈ অনুমতিসমূহ আঁতৰোৱা হয়\n• বেটাৰী ৰাহি কৰিবলৈ জাননী বন্ধ কৰা হয়\n• ঠাই খালী কৰিবলৈ অস্থায়ী ফাইল আঁতৰোৱা হয়\n\nঅনুমতি আৰু জাননীত পুনৰ অনুমতি দিবলৈ, এপ্‌টো খোলক।"</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"কোনো এপ্‌ কেইমাহমানৰ বাবে ব্যৱহাৰ নকৰাকৈ থাকিলে:\n\n• আপোনাৰ ডেটা সুৰক্ষিত কৰিবলৈ অনুমতিসমূহ আঁতৰোৱা হয়\n• ঠাই খালী কৰিবলৈ অস্থায়ী ফাইলসমূহ আঁতৰোৱা হয়\n\nপুনৰ অনুমতি দিবলৈ এপ্‌টো খোলক।"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"<xliff:g id="NUMBER">%s</xliff:g> মাহ পূর্বে অন্তিমবাৰ খোলা হৈছিল"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"এপ্‌টো অন্তিমবাৰ <xliff:g id="DATE">%s</xliff:g>ত খোলা হৈছিল"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"অন্তিমবাৰ <xliff:g id="DATE">%s</xliff:g>ত খোলা হৈছিল"</string>

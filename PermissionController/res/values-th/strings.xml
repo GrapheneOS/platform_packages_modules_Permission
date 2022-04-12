@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"มีการนำสิทธิ์เข้าถึง<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>และสิทธิ์อีก <xliff:g id="NUMBER">%2$s</xliff:g> รายการออก"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"แอปที่ไม่ได้ใช้"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"จะมีการดำเนินการต่อไปนี้หากไม่ได้ใช้แอปเป็นเวลา 2-3 เดือน\n\n• สิทธิ์จะถูกนำออกเพื่อปกป้องข้อมูลของคุณ\n• การแจ้งเตือนจะหยุดลงเพื่อประหยัดแบตเตอรี่\n• ไฟล์ชั่วคราวจะถูกนำออกเพื่อเพิ่มพื้นที่ว่าง\n\nเปิดแอปเพื่ออนุญาตสิทธิ์และการแจ้งเตือนอีกครั้ง"</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"จะมีการดำเนินการต่อไปนี้หากไม่ได้ใช้แอปเป็นเวลา 2-3 เดือน\n\n• สิทธิ์จะถูกนำออกเพื่อปกป้องข้อมูลของคุณ\n• ไฟล์ชั่วคราวจะถูกนำออกเพื่อเพิ่มพื้นที่ว่าง\n\nเปิดแอปเพื่ออนุญาตสิทธิ์อีกครั้ง"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"เปิดล่าสุดนานกว่า <xliff:g id="NUMBER">%s</xliff:g> เดือนที่ผ่านมา"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"เปิดแอปล่าสุดเมื่อวันที่ <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"เปิดล่าสุดเมื่อวันที่ <xliff:g id="DATE">%s</xliff:g>"</string>

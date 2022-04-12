@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> og <xliff:g id="NUMBER">%2$s</xliff:g> heimildir í viðbót voru fjarlægðar"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Ónotuð forrit"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Ef forrit er ekki notað í nokkra mánuði:\n\n• Heimildir eru fjarlægðar til að vernda gögnin þín\n• Slökkt er á tilkynningum til að spara rafhlöðu\n• Tímabundnar skrár eru fjarlægðar til að losa um pláss\n\nOpnaðu forritið til að leyfa heimildir og tilkynningar að nýju."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Ef forrit er ekki notað í nokkra mánuði:\n\n• Heimildir eru fjarlægðar til að vernda gögnin þín\n• Tímabundnar skrár eru fjarlægðar til að losa um pláss\n\nOpnaðu forritið til að leyfa heimildir og tilkynningar að nýju."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Síðast opnað fyrir meira en <xliff:g id="NUMBER">%s</xliff:g> mánuðum"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Forrit síðast opnað <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Síðast opnað <xliff:g id="DATE">%s</xliff:g>"</string>

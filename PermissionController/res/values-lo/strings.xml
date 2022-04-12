@@ -217,6 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"ລຶບສິດອະນຸຍາດ <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> ແລະ ອີກ <xliff:g id="NUMBER">%2$s</xliff:g> ແອັບອອກແລ້ວ"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"ແອັບທີ່ບໍ່ໄດ້ໃຊ້"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"ຫາກບໍ່ໄດ້ໃຊ້ແອັບໃດໜຶ່ງເປັນເວລາສອງສາມເດືອນ:\n\n• ການອະນຸຍາດຈະຖືກລຶບອອກເພື່ອປົກປ້ອງຂໍ້ມູນຂອງທ່ານ\n• ການແຈ້ງເຕືອນຈະຢຸດເຮັດວຽກເພື່ອປະຢັດແບັດເຕີຣີ\n• ໄຟລ໌ຊົ່ວຄາວຈະຖືກລຶບອອກເພື່ອສ້າງພື້ນທີ່ຫວ່າງ\n\nໃຫ້ເປີດແອັບຂຶ້ນມາເພື່ອໃຫ້ການອະນຸຍາດ ແລະ ການແຈ້ງເຕືອນຄືນໃໝ່."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"ຫາກບໍ່ໄດ້ໃຊ້ແອັບໃດໜຶ່ງເປັນເວລາສອງສາມເດືອນ:\n\n• ການອະນຸຍາດຈະຖືກລຶບອອກເພື່ອປົກປ້ອງຂໍ້ມູນຂອງທ່ານ\n• ໄຟລ໌ຊົ່ວຄາວຈະຖືກລຶບອອກເພື່ອສ້າງພື້ນທີ່ຫວ່າງ\n\nເພື່ອໃຫ້ການອະນຸຍາດອີກເທື່ອໜຶ່ງ, ໃຫ້ເປີດແອັບຂຶ້ນມາ."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"ເປີດຫຼ້າສຸດຫຼາຍກວ່າ <xliff:g id="NUMBER">%s</xliff:g> ເດືອນກ່ອນ"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ເປີດແອັບຫຼ້າສຸດເມື່ອ <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"ເປີດຫຼ້າສຸດ <xliff:g id="DATE">%s</xliff:g>"</string>
