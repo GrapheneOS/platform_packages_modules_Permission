@@ -39,7 +39,7 @@ interface RecentPermissionDecisionsStorage {
      * Persist a permission decision for retrieval later. Overwrites an existing row based on
      * (package_name, permission_group) uniqueness.
      *
-     * [PermissionDecision.decisionTime] is rounded down to the day so that this isn't a granular
+     * [eventTime] is rounded down to the day so that this isn't a granular
      * record of app usage and we preserve user privacy.
      *
      * @param decision the decision to store
@@ -111,7 +111,7 @@ interface RecentPermissionDecisionsStorage {
             if (isRecordPermissionsSupported(context)) {
                 GlobalScope.launch(Dispatchers.IO) {
                     getInstance().storePermissionDecision(
-                        PermissionDecision(packageName, permGroupName, System.currentTimeMillis(),
+                        PermissionDecision(packageName, System.currentTimeMillis(), permGroupName,
                             isGranted))
                 }
             }

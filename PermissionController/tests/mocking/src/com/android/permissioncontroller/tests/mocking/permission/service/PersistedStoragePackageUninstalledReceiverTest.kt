@@ -64,7 +64,7 @@ class PersistedStoragePackageUninstalledReceiverTest {
     private val retryTimeoutMs = 200L
     private val retryAttempts = 3
     private val musicCalendarGrant = PermissionDecision(
-        "package.test.music", "calendar", Date(2020, 0, 1).time, false)
+        "package.test.music", Date(2020, 0, 1).time, "calendar", false)
 
     @Mock
     lateinit var context: Context

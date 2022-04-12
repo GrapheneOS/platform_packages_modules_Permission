@@ -137,7 +137,7 @@ class RecentPermissionDecisionsStorageImpl(
 
             val originalCount = existingDecisions.size
             val newDecisions = existingDecisions.filter {
-                return (System.currentTimeMillis() - it.decisionTime) <= getMaxDataAgeMs()
+                return (System.currentTimeMillis() - it.eventTime) <= getMaxDataAgeMs()
             }
 
             DumpableLog.d(LOG_TAG,
@@ -209,7 +209,7 @@ class RecentPermissionDecisionsStorageImpl(
 
             val newDecisions = existingDecisions.map {
                 // delta will be rounded down to the nearest day in writeData
-                it.copy(decisionTime = it.decisionTime + diffSystemTimeMillis)
+                it.copy(eventTime = it.eventTime + diffSystemTimeMillis)
             }
             return writeData(newDecisions)
         }
@@ -244,7 +244,7 @@ class RecentPermissionDecisionsStorageImpl(
             out.startTag(ns, TAG_PERMISSION_DECISION)
             out.attribute(ns, ATTR_PACKAGE_NAME, decision.packageName)
             out.attribute(ns, ATTR_PERMISSION_GROUP, decision.permissionGroupName)
-            val date = dateFormat.format(Date(decision.decisionTime))
+            val date = dateFormat.format(Date(decision.eventTime))
             out.attribute(ns, ATTR_DECISION_TIME, date)
             out.attribute(ns, ATTR_IS_GRANTED, decision.isGranted.toString())
             out.endTag(ns, TAG_PERMISSION_DECISION)
@@ -300,7 +300,7 @@ class RecentPermissionDecisionsStorageImpl(
         val isGranted = parser.getAttributeValue(ns, ATTR_IS_GRANTED).toBoolean()
         parser.nextTag()
         parser.require(XmlPullParser.END_TAG, ns, TAG_PERMISSION_DECISION)
-        return PermissionDecision(packageName, permissionGroup, decisionTime, isGranted)
+        return PermissionDecision(packageName, decisionTime, permissionGroup, isGranted)
     }
 }
 
