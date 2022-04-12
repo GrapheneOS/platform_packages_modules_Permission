@@ -740,9 +740,6 @@ class SafetyCenterManagerTest {
         val broadcastId1 =
             safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
                 REFRESH_REASON_RESCAN_BUTTON_CLICK)
-        // TODO(b/228820461): Investigate using a counter in generating broadcast ids, so we aren't
-        //  only depending on the system time. Remove this thread sleep when done.
-        Thread.sleep(5)
         val broadcastId2 =
             safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
                 REFRESH_REASON_RESCAN_BUTTON_CLICK)
