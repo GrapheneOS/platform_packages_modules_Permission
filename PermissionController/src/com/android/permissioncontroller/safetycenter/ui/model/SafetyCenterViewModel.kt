@@ -37,21 +37,25 @@ class SafetyCenterViewModel(val app: Application) : AndroidViewModel(app) {
         safetyCenterManager.dismissSafetyCenterIssue(issue.id)
     }
 
+    fun executeIssueAction(issue: SafetyCenterIssue, action: SafetyCenterIssue.Action) {
+        safetyCenterManager.executeSafetyCenterIssueAction(issue.id, action.id)
+    }
+
     fun rescan() {
         safetyCenterManager.refreshSafetySources(
-                SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK)
+            SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK)
     }
 
     private fun refresh() {
         safetyCenterManager.refreshSafetySources(SafetyCenterManager.REFRESH_REASON_PAGE_OPEN)
     }
 
-    inner class SafetyCenterLiveData : MutableLiveData<SafetyCenterData>(),
-            SafetyCenterManager.OnSafetyCenterDataChangedListener {
+    inner class SafetyCenterLiveData :
+        MutableLiveData<SafetyCenterData>(), SafetyCenterManager.OnSafetyCenterDataChangedListener {
 
         override fun onActive() {
             safetyCenterManager.addOnSafetyCenterDataChangedListener(
-                    getMainExecutor(app.applicationContext), this)
+                getMainExecutor(app.applicationContext), this)
             super.onActive()
         }
 
