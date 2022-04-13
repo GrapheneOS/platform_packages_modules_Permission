@@ -78,10 +78,16 @@ final class SafetyCenterConfigReader {
      * Returns a {@link String} resource from the given {@code stringId}, using the {@link
      * SafetyCenterResourcesContext}.
      *
-     * <p>Returns {@code null} if the resource cannot be accessed.
+     * <p>Returns {@code null} if the resources cannot be accessed or if {@code stringId} is equal
+     * to {@link Resources#ID_NULL}. Otherwise, throws a {@link Resources.NotFoundException} if the
+     * {@code stringId} is invalid.
      */
     @Nullable
     String readStringResource(@StringRes int stringId) {
+        if (stringId == Resources.ID_NULL) {
+            return null;
+        }
+
         Resources resources = mSafetyCenterResourcesContext.getResources();
         if (resources == null) {
             return null;
