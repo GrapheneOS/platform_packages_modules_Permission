@@ -29,9 +29,9 @@ import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.data.PermissionDecision
+import com.android.permissioncontroller.permission.service.PermissionDecisionStorageImpl
+import com.android.permissioncontroller.permission.service.PermissionEventStorage
 import com.android.permissioncontroller.permission.service.PersistedStoragePackageUninstalledReceiver
-import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsStorage
-import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsStorageImpl
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
@@ -64,7 +64,7 @@ class PersistedStoragePackageUninstalledReceiverTest {
     private val retryTimeoutMs = 200L
     private val retryAttempts = 3
     private val musicCalendarGrant = PermissionDecision(
-        "package.test.music", "calendar", Date(2020, 0, 1).time, false)
+        "package.test.music", Date(2020, 0, 1).time, "calendar", false)
 
     @Mock
     lateinit var context: Context
@@ -77,7 +77,7 @@ class PersistedStoragePackageUninstalledReceiverTest {
 
     private lateinit var mockitoSession: MockitoSession
     private lateinit var filesDir: File
-    private lateinit var recentPermissionDecisionsStorage: RecentPermissionDecisionsStorage
+    private lateinit var permissionEventStorage: PermissionEventStorage<PermissionDecision>
     private lateinit var receiver: PersistedStoragePackageUninstalledReceiver
 
     @Before
@@ -94,9 +94,9 @@ class PersistedStoragePackageUninstalledReceiverTest {
         `when`(jobScheduler.schedule(any())).thenReturn(JobScheduler.RESULT_SUCCESS)
         `when`(DeviceConfig.getProperty(eq(NAMESPACE_PERMISSIONS), anyString())).thenReturn(null)
 
-        recentPermissionDecisionsStorage = spy(
-            RecentPermissionDecisionsStorageImpl(context, jobScheduler))
-        receiver = spy(PersistedStoragePackageUninstalledReceiver(recentPermissionDecisionsStorage))
+        permissionEventStorage = spy(
+            PermissionDecisionStorageImpl(context, jobScheduler))
+        receiver = spy(PersistedStoragePackageUninstalledReceiver(permissionEventStorage))
     }
 
     @After
@@ -113,7 +113,7 @@ class PersistedStoragePackageUninstalledReceiverTest {
 
         receiver.onReceive(context, intent)
 
-        verifyZeroInteractions(recentPermissionDecisionsStorage)
+        verifyZeroInteractions(permissionEventStorage)
     }
 
     @Test
@@ -123,14 +123,14 @@ class PersistedStoragePackageUninstalledReceiverTest {
 
         receiver.onReceive(context, intent)
 
-        verifyZeroInteractions(recentPermissionDecisionsStorage)
+        verifyZeroInteractions(permissionEventStorage)
     }
 
     @Test
     fun onReceive_clearAction_removesDecisionsForPackage() {
         runBlocking {
-            recentPermissionDecisionsStorage.storePermissionDecision(musicCalendarGrant)
-            assertThat(recentPermissionDecisionsStorage.loadPermissionDecisions()).isNotEmpty()
+            permissionEventStorage.storeEvent(musicCalendarGrant)
+            assertThat(permissionEventStorage.loadEvents()).isNotEmpty()
         }
         setPermissionDecisionsSupported(true)
         val intent = Intent(Intent.ACTION_PACKAGE_DATA_CLEARED)
@@ -143,7 +143,7 @@ class PersistedStoragePackageUninstalledReceiverTest {
         var result: List<PermissionDecision>? = null
         for (i in 0..retryAttempts) {
             runBlocking {
-                result = recentPermissionDecisionsStorage.loadPermissionDecisions()
+                result = permissionEventStorage.loadEvents()
             }
             if (result?.isEmpty() == true) {
                 break
