@@ -43,7 +43,7 @@
     <string name="permission_revoked_none" msgid="9213345075484381180">"brak wyłączonych"</string>
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Zezwól"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Zawsze zezwalaj"</string>
-    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Podczas korzystania z aplikacji"</string>
+    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Podczas używania aplikacji"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Zmień na dokładną lokalizację"</string>
     <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Pozostaw przybliżoną lokalizację"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Tylko tym razem"</string>
@@ -509,8 +509,7 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Bezpieczeństwo i prywatność"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Skanuj"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Odrzuć"</string>
-    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (2734809473425036382) -->
-    <skip />
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Zamknąć ten alert?"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Zamknij"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Anuluj"</string>
     <string name="security_settings" msgid="3808106921175271317">"Ustawienia zabezpieczeń"</string>
