@@ -16,6 +16,7 @@
 
 package com.android.permissioncontroller.permission.ui.television;
 
+import static android.Manifest.permission_group.NOTIFICATIONS;
 import static android.Manifest.permission_group.STORAGE;
 
 import static com.android.permissioncontroller.Constants.EXTRA_SESSION_ID;
@@ -161,6 +162,12 @@ public class AppPermissionFragment extends SettingsWithHeader
             activity.finish();
             return;
         }
+
+        // Skip notification group on tv
+        if (mPermGroupName.equals(NOTIFICATIONS)) {
+            getActivity().finish();
+        }
+
         mIsStorageGroup = Objects.equals(mPermGroupName, STORAGE);
         mUser = getArguments().getParcelable(Intent.EXTRA_USER);
         mPackageLabel = BidiFormatter.getInstance().unicodeWrap(
