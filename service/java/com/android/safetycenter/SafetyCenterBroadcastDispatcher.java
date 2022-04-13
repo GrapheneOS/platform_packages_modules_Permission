@@ -38,7 +38,6 @@ import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_SAFETY_CEN
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
-import android.annotation.UserIdInt;
 import android.app.BroadcastOptions;
 import android.content.Context;
 import android.content.Intent;
@@ -75,8 +74,10 @@ final class SafetyCenterBroadcastDispatcher {
     //  easily adjusted.
     private static final Duration ALLOWLIST_DURATION = Duration.ofSeconds(20);
 
-    @NonNull
-    private final Context mContext;
+    /** Counter to distinguish refreshes happening in quick succession. */
+    private int mRefreshCounter = 0;
+
+    @NonNull private final Context mContext;
 
     /** Creates a {@link SafetyCenterBroadcastDispatcher} using the given {@link Context}. */
     SafetyCenterBroadcastDispatcher(@NonNull Context context) {
@@ -84,8 +85,8 @@ final class SafetyCenterBroadcastDispatcher {
     }
 
     /**
-     * Triggers a refresh of safety sources by sending them broadcasts with action
-     * {@link SafetyCenterManager#ACTION_REFRESH_SAFETY_SOURCES}.
+     * Triggers a refresh of safety sources by sending them broadcasts with action {@link
+     * SafetyCenterManager#ACTION_REFRESH_SAFETY_SOURCES}.
      */
     void sendRefreshSafetySources(
             @NonNull SafetyCenterConfigInternal configInternal,
@@ -94,12 +95,21 @@ final class SafetyCenterBroadcastDispatcher {
         List<Broadcast> broadcasts = configInternal.getBroadcasts();
         int requestType = toRefreshRequestType(refreshReason);
         BroadcastOptions broadcastOptions = createBroadcastOptions();
+        String broadcastId =
+                String.format(
+                        "%s_%s",
+                        Objects.hash(
+                                requestType,
+                                broadcasts,
+                                userProfileGroup,
+                                System.currentTimeMillis()),
+                        incrementRefreshCounter());
 
         for (int i = 0; i < broadcasts.size(); i++) {
             Broadcast broadcast = broadcasts.get(i);
 
-            sendRefreshSafetySourcesBroadcast(broadcast, broadcastOptions, requestType,
-                    userProfileGroup);
+            sendRefreshSafetySourcesBroadcast(
+                    broadcast, broadcastOptions, requestType, userProfileGroup, broadcastId);
         }
     }
 
@@ -137,30 +147,39 @@ final class SafetyCenterBroadcastDispatcher {
             @NonNull Broadcast broadcast,
             @NonNull BroadcastOptions broadcastOptions,
             @RefreshRequestType int requestType,
-            @NonNull UserProfileGroup userProfileGroup) {
+            @NonNull UserProfileGroup userProfileGroup,
+            @NonNull String broadcastId) {
         if (!broadcast.getSourceIdsForProfileOwner().isEmpty()) {
             int profileOwnerUserId = userProfileGroup.getProfileOwnerUserId();
-            Intent broadcastIntent = createRefreshSafetySourcesBroadcastIntent(
-                    requestType,
-                    broadcast.getPackageName(),
-                    broadcast.getSourceIdsForProfileOwner(),
-                    profileOwnerUserId);
+            Intent broadcastIntent =
+                    createRefreshSafetySourcesBroadcastIntent(
+                            requestType,
+                            broadcast.getPackageName(),
+                            broadcast.getSourceIdsForProfileOwner(),
+                            broadcastId);
 
-            sendBroadcast(broadcastIntent, UserHandle.of(profileOwnerUserId),
-                    SEND_SAFETY_CENTER_UPDATE, broadcastOptions);
+            sendBroadcast(
+                    broadcastIntent,
+                    UserHandle.of(profileOwnerUserId),
+                    SEND_SAFETY_CENTER_UPDATE,
+                    broadcastOptions);
         }
         if (!broadcast.getSourceIdsForManagedProfiles().isEmpty()) {
             int[] managedProfileUserIds = userProfileGroup.getManagedProfilesUserIds();
             for (int i = 0; i < managedProfileUserIds.length; i++) {
                 int managedProfileUserId = managedProfileUserIds[i];
-                Intent broadcastIntent = createRefreshSafetySourcesBroadcastIntent(
-                        requestType,
-                        broadcast.getPackageName(),
-                        broadcast.getSourceIdsForManagedProfiles(),
-                        managedProfileUserId);
+                Intent broadcastIntent =
+                        createRefreshSafetySourcesBroadcastIntent(
+                                requestType,
+                                broadcast.getPackageName(),
+                                broadcast.getSourceIdsForManagedProfiles(),
+                                broadcastId);
 
-                sendBroadcast(broadcastIntent, UserHandle.of(managedProfileUserId),
-                        SEND_SAFETY_CENTER_UPDATE, broadcastOptions);
+                sendBroadcast(
+                        broadcastIntent,
+                        UserHandle.of(managedProfileUserId),
+                        SEND_SAFETY_CENTER_UPDATE,
+                        broadcastOptions);
             }
         }
     }
@@ -173,7 +192,8 @@ final class SafetyCenterBroadcastDispatcher {
         // The following operation requires the INTERACT_ACROSS_USERS permission.
         final long callingId = Binder.clearCallingIdentity();
         try {
-            mContext.sendBroadcastAsUser(broadcastIntent,
+            mContext.sendBroadcastAsUser(
+                    broadcastIntent,
                     userHandle,
                     permission,
                     broadcastOptions == null ? null : broadcastOptions.toBundle());
@@ -197,22 +217,18 @@ final class SafetyCenterBroadcastDispatcher {
             @RefreshRequestType int requestType,
             @NonNull String packageName,
             @NonNull List<String> sourceIdsToRefresh,
-            @UserIdInt int userId) {
-        String refreshBroadcastId = String.valueOf(
-                Objects.hash(sourceIdsToRefresh, userId, System.currentTimeMillis()));
+            @NonNull String broadcastId) {
         return createBroadcastIntent(ACTION_REFRESH_SAFETY_SOURCES)
                 .putExtra(EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE, requestType)
-                .putExtra(EXTRA_REFRESH_SAFETY_SOURCE_IDS,
-                        sourceIdsToRefresh.toArray(new String[0]))
-                .putExtra(EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID, refreshBroadcastId)
+                .putExtra(
+                        EXTRA_REFRESH_SAFETY_SOURCE_IDS, sourceIdsToRefresh.toArray(new String[0]))
+                .putExtra(EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID, broadcastId)
                 .setPackage(packageName);
     }
 
     @NonNull
-    private static Intent createBroadcastIntent(
-            @NonNull String intentAction) {
-        return new Intent(intentAction)
-                .setFlags(FLAG_RECEIVER_FOREGROUND);
+    private static Intent createBroadcastIntent(@NonNull String intentAction) {
+        return new Intent(intentAction).setFlags(FLAG_RECEIVER_FOREGROUND);
     }
 
     @NonNull
@@ -222,7 +238,8 @@ final class SafetyCenterBroadcastDispatcher {
         // permission.
         final long callingId = Binder.clearCallingIdentity();
         try {
-            broadcastOptions.setTemporaryAppAllowlist(ALLOWLIST_DURATION.toMillis(),
+            broadcastOptions.setTemporaryAppAllowlist(
+                    ALLOWLIST_DURATION.toMillis(),
                     TEMPORARY_ALLOW_LIST_TYPE_FOREGROUND_SERVICE_ALLOWED,
                     REASON_REFRESH_SAFETY_SOURCES,
                     "Safety Center is requesting data from safety sources");
@@ -245,5 +262,13 @@ final class SafetyCenterBroadcastDispatcher {
                 return EXTRA_REFRESH_REQUEST_TYPE_GET_DATA;
         }
         throw new IllegalArgumentException("Invalid refresh reason: " + refreshReason);
+    }
+
+    /**
+     * Increments {@link #mRefreshCounter} by 1 modulus 1000, to be used to distinguish refreshes
+     * happening in quick succession.
+     */
+    private int incrementRefreshCounter() {
+        return mRefreshCounter = (mRefreshCounter + 1) % 1000;
     }
 }
