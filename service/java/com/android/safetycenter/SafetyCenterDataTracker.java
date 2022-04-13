@@ -28,6 +28,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Resources;
 import android.os.Binder;
 import android.os.UserHandle;
 import android.safetycenter.SafetyCenterData;
@@ -530,7 +531,7 @@ final class SafetyCenterDataTracker {
                                         SafetyCenterIds.encodeToString(safetyCenterEntryGroupId),
                                         getString(safetySourcesGroup.getTitleResId()))
                                 .setSeverityLevel(maxSafetyCenterEntryLevel)
-                                .setSummary(getString(safetySourcesGroup.getSummaryResId()))
+                                .setSummary(getOptionalString(safetySourcesGroup.getSummaryResId()))
                                 .setEntries(entries)
                                 .setSeverityUnspecifiedIconType(
                                         toGroupSeverityUnspecifiedIconType(
@@ -661,7 +662,7 @@ final class SafetyCenterDataTracker {
         return new SafetyCenterEntry.Builder(
                         SafetyCenterIds.encodeToString(safetyCenterEntryId), title)
                 .setSeverityLevel(entrySeverityLevel)
-                .setSummary(getString(safetySource.getSummaryResId()))
+                .setSummary(getOptionalString(safetySource.getSummaryResId()))
                 .setEnabled(enabled)
                 .setPendingIntent(pendingIntent)
                 .setSeverityUnspecifiedIconType(severityUnspecifiedIconType)
@@ -771,7 +772,7 @@ final class SafetyCenterDataTracker {
                                 : safetySource.getTitleResId());
 
         return new SafetyCenterStaticEntry.Builder(title)
-                .setSummary(getString(safetySource.getSummaryResId()))
+                .setSummary(getOptionalString(safetySource.getSummaryResId()))
                 .setPendingIntent(pendingIntent)
                 .build();
     }
@@ -821,6 +822,21 @@ final class SafetyCenterDataTracker {
     @NonNull
     private String getString(@StringRes int stringId) {
         return mSafetyCenterResourcesContext.getString(stringId);
+    }
+
+    /**
+     * Returns an optional {@link String} resource from the given {@code stringId}, using the {@link
+     * SafetyCenterResourcesContext}.
+     *
+     * <p>Returns {@code null} if {@code stringId} is equal to {@link Resources#ID_NULL}. Otherwise,
+     * throws a {@link Resources.NotFoundException} if the resource cannot be accessed.
+     */
+    @Nullable
+    private String getOptionalString(@StringRes int stringId) {
+        if (stringId == Resources.ID_NULL) {
+            return null;
+        }
+        return getString(stringId);
     }
 
     @Nullable
