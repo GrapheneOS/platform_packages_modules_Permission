@@ -27,7 +27,7 @@
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"Колдонмо табылган жок"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"Жок"</string>
     <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"Тыюу салам жана экинчи суралбасын"</string>
-    <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"\"Колдонмо пайдаланылып жаткан учурда\" режимин калтыруу"</string>
+    <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"\"Колдонмо колдонулуп жатканда\" режими кала берсин"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"\"Ушул жолу гана\" жөндөөсү калсын"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Дагы маалымат"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Баары бир тыюу салуу"</string>
@@ -472,9 +472,9 @@
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна телефон чалууга жана чалууларды башкарууга уруксат бересизби?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна организмдин абалына көз салган сенсордун көрсөткүчтөрүн көрүүгө уруксат бересизби?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Бул колдонмону иштетпей турсаңыз деле, ал такай организмдин негизги көрсөткүчтөрү тууралуу cенсордун дайындарын жаздыра алат. Муну өзгөртүү үчүн "<annotation id="link">"жөндөөлөргө өтүңүз."</annotation></string>
-    <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна организмдин абалына көз салган сенсордун дайындарын пайдаланууга уруксат берилсинби?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Бул колдонмого дене сенсорлорунун дайындарына каалаган убакта кирүү (колдонмону иштетпей жатканда да) мүмкүнчүлүгүн берүү үчүн "<annotation id="link">"жөндөөлөргө өтүңүз."</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Колдонулуп жатканда &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; дене сенсорлорунун дайындарына кире берсинби?"</string>
+    <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна дене-бой сенсорлорунун көрсөткүчтөрүн көрүүгө уруксат бересизби?"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Бул колдонмого дене бой сенсорлорунун көрсөткүчтөрүн көрүү мүмкүнчүлүгүн берүү үчүн (колдонмо колдонулбай турганда да) "<annotation id="link">"жөндөөлөрдү өзгөртүңүз"</annotation>"."</string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосу колдонулуп жатканда дене бой сенсорлорунун көрсөткүчтөрүн көрүү мүмкүнчүлүгүн бересизби?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосуна сизге билдирмелерди жөнөтүүгө уруксат бересизби?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; колдонмосу сизге билдирмелерди жөнөтө берсинби?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Көзөмөлдөнгөн уруксаттар"</string>
@@ -482,7 +482,7 @@
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"IT администраторуңуз <xliff:g id="APP_NAME">%s</xliff:g> колдонмосуна кайда жүргөнүңүздү көрүүгө уруксат берип жатат"</string>
     <string name="other_permissions_label" msgid="8986184335503271992">"Башка уруксаттар"</string>
     <string name="not_used_permissions_label" msgid="3939839426115141264">"Тутум пайдаланган уруксат"</string>
-    <string name="not_used_permissions_description" msgid="7595514824169388718">"Тутум колдонмолору гана пайдаланган уруксаттар."</string>
+    <string name="not_used_permissions_description" msgid="7595514824169388718">"Системанын колдонмолору гана пайдаланган уруксаттар."</string>
     <string name="additional_permissions_label" msgid="7693557637462569046">"Кошумча уруксаттар"</string>
     <string name="additional_permissions_description" msgid="2186611950890732112">"Колдонмолор аныктаган уруксаттар."</string>
     <string name="privdash_label_camera" msgid="1426440033626198096">"Камера"</string>
