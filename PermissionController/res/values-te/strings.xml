@@ -19,7 +19,7 @@
     <string name="app_name" msgid="6098036489833144040">"అనుమతి కంట్రోలర్"</string>
     <string name="ok" msgid="1936281769725676272">"సరే"</string>
     <string name="permission_search_keyword" msgid="1214451577494730543">"అనుమతులు"</string>
-    <string name="cancel" msgid="8943320028373963831">"రద్దు చేయి"</string>
+    <string name="cancel" msgid="8943320028373963831">"రద్దు చేయండి"</string>
     <string name="back" msgid="6249950659061523680">"వెనుకకు"</string>
     <string name="uninstall_or_disable" msgid="4496612999740858933">"అన్‌ఇన్‌స్టాల్ చేయి, లేదా డిజేబుల్ చేయి"</string>
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"యాప్ కనుగొనబడలేదు"</string>
@@ -102,7 +102,7 @@
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Wearలో ఇన్‌స్టాల్/అన్ఇన్‌స్టాల్ చర్యలకు మద్దతు లేదు."</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; యాక్సెస్ చేయడానికి అనుమతించాల్సిన వాటిని ఎంచుకోండి"</string>
     <string name="permission_review_title_template_update" msgid="3232333580548588657">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; అప్‌డేట్ చేయబడింది. ఈ యాప్ యాక్సెస్ చేయడానికి అనుమతించాల్సిన వాటిని ఎంచుకోండి."</string>
-    <string name="review_button_cancel" msgid="2191147944056548886">"రద్దు చేయి"</string>
+    <string name="review_button_cancel" msgid="2191147944056548886">"రద్దు చేయండి"</string>
     <string name="review_button_continue" msgid="2527918375047602199">"కొనసాగించండి"</string>
     <string name="new_permissions_category" msgid="552995090178417611">"కొత్త అనుమతులు"</string>
     <string name="current_permissions_category" msgid="4292990083585728880">"ప్రస్తుత అనుమతులు"</string>
