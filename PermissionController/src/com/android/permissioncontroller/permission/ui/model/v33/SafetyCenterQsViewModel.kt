@@ -160,6 +160,7 @@ class SafetyCenterQsViewModel(
                 sensorPrivacyManager.addSensorPrivacyListener(Sensors.CAMERA, this)
                 sensorPrivacyManager.addSensorPrivacyListener(Sensors.MICROPHONE, this)
                 LocationUtils.addLocationListener(this)
+                update()
             }
 
             override fun onInactive() {
