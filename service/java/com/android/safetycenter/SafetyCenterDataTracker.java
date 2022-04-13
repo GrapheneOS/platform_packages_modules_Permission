@@ -784,22 +784,11 @@ final class SafetyCenterDataTracker {
             return null;
         }
 
-        Context context;
-        if (packageName == null) {
-            context = mContext;
-        } else {
-            // This call requires the INTERACT_ACROSS_USERS permission.
-            final long identity = Binder.clearCallingIdentity();
-            try {
-                context =
-                        mContext.createPackageContextAsUser(packageName, 0, UserHandle.of(userId));
-            } catch (NameNotFoundException e) {
-                Log.w(TAG, String.format("Package name %s not found", packageName), e);
-                return null;
-            } finally {
-                Binder.restoreCallingIdentity(identity);
-            }
+        Context context = toPackageContextAsUser(packageName, userId);
+        if (context == null) {
+            return null;
         }
+
         // TODO(b/222838784): Validate that the intent action is available.
 
         // TODO(b/219699223): Is it safe to create a PendingIntent as system server here?
@@ -808,6 +797,22 @@ final class SafetyCenterDataTracker {
         try {
             return PendingIntent.getActivity(
                     context, 0, new Intent(intentAction), PendingIntent.FLAG_IMMUTABLE);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Nullable
+    private Context toPackageContextAsUser(@Nullable String packageName, @UserIdInt int userId) {
+        String contextPackageName = packageName == null ? mContext.getPackageName() : packageName;
+        // This call requires the INTERACT_ACROSS_USERS permission.
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return mContext.createPackageContextAsUser(
+                    contextPackageName, 0, UserHandle.of(userId));
+        } catch (NameNotFoundException e) {
+            Log.w(TAG, String.format("Package name %s not found", contextPackageName), e);
+            return null;
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
