@@ -18,27 +18,16 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"সুৰক্ষা কেন্দ্ৰৰ সম্পদ"</string>
-    <!-- no translation found for lock_screen_sources_title (3317906280484627707) -->
-    <skip />
+    <string name="lock_screen_sources_title" msgid="3317906280484627707">"ডিভাইচৰ লক"</string>
     <string name="lock_screen_title" msgid="4069104894527169877">"স্ক্ৰীন লক"</string>
-    <!-- no translation found for lock_screen_summary_disabled (354071230916616692) -->
-    <skip />
-    <!-- no translation found for privacy_sources_title (4061110826457365957) -->
-    <skip />
-    <!-- no translation found for privacy_sources_summary (4089719981155120864) -->
-    <skip />
-    <!-- no translation found for permission_usage_title (3633779688945350407) -->
-    <skip />
-    <!-- no translation found for permission_usage_summary (5323079206029964468) -->
-    <skip />
-    <!-- no translation found for permission_manager_title (5277347862821255015) -->
-    <skip />
-    <!-- no translation found for permission_manager_summary (8099852107340970790) -->
-    <skip />
-    <!-- no translation found for advanced_title (8745436380690561172) -->
-    <skip />
-    <!-- no translation found for advanced_security_title (1126833338772188155) -->
-    <skip />
-    <!-- no translation found for advanced_security_summary (6172253327022425123) -->
-    <skip />
+    <string name="lock_screen_summary_disabled" msgid="354071230916616692">"এতিয়ালৈকে কোনো তথ্য নাই"</string>
+    <string name="privacy_sources_title" msgid="4061110826457365957">"গোপনীয়তা"</string>
+    <string name="privacy_sources_summary" msgid="4089719981155120864">"ডেশ্বব’ৰ্ড, অনুমতি আৰু নিয়ন্ত্ৰণসমূহ"</string>
+    <string name="permission_usage_title" msgid="3633779688945350407">"গোপনীয়তাৰ ডেশ্বব’ৰ্ড"</string>
+    <string name="permission_usage_summary" msgid="5323079206029964468">"কোনসমূহ এপে শেহতীয়াকৈ অনুমতি ব্যৱহাৰ কৰিছে দেখুৱাওক"</string>
+    <string name="permission_manager_title" msgid="5277347862821255015">"অনুমতি পৰিচালক"</string>
+    <string name="permission_manager_summary" msgid="8099852107340970790">"আপোনাৰ ডেটালৈ এপৰ এক্সেছ নিয়ন্ত্ৰণ কৰক"</string>
+    <string name="advanced_title" msgid="8745436380690561172">"অধিক ছেটিং"</string>
+    <string name="advanced_security_title" msgid="1126833338772188155">"সুৰক্ষা সম্পৰ্কীয় অধিক ছেটিং"</string>
+    <string name="advanced_security_summary" msgid="6172253327022425123">"এনক্ৰিপশ্বন, ক্ৰেডেনশ্বিয়েল আৰু বহুতো"</string>
 </resources>
