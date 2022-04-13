@@ -65,7 +65,7 @@ import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPermGroupInfo
-import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsStorage
+import com.android.permissioncontroller.permission.service.PermissionDecisionStorageImpl
 import com.android.permissioncontroller.permission.ui.AutoGrantPermissionsNotifier
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity
 import com.android.permissioncontroller.permission.ui.GrantPermissionsActivity.ALLOW_BUTTON
@@ -980,7 +980,7 @@ class GrantPermissionsViewModel(
         reportRequestResult(groupState.affectedPermissions, result)
         // group state has changed, reload liveData
         requestInfosLiveData.update()
-        RecentPermissionDecisionsStorage.recordPermissionDecision(app.applicationContext,
+        PermissionDecisionStorageImpl.recordPermissionDecision(app.applicationContext,
             packageName, groupState.group.permGroupName, granted)
         if (granted) {
             startDrivingDecisionReminderServiceIfNecessary(groupState.group.permGroupName)
