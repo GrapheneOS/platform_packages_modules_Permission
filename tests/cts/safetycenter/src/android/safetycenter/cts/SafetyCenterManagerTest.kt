@@ -22,6 +22,7 @@ import android.app.PendingIntent.FLAG_IMMUTABLE
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_SAFETY_CENTER
+import android.content.Intent.FLAG_RECEIVER_FOREGROUND
 import android.content.IntentFilter
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.UserHandle
@@ -71,6 +72,13 @@ import android.safetycenter.cts.testing.SafetyCenterEnabledChangedReceiver
 import android.safetycenter.cts.testing.SafetyCenterFlags
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import android.safetycenter.cts.testing.SafetySourceReceiver
+import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.ACTION_HANDLE_INLINE_ACTION
+import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.EXTRA_INLINE_ACTION_SOURCE_ID
+import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.EXTRA_INLINE_ACTION_SOURCE_ISSUE_ACTION_ID
+import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.EXTRA_INLINE_ACTION_SOURCE_ISSUE_ID
+import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.SafetySourceDataKey
+import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.SafetySourceDataKey.Reason
+import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.executeSafetyCenterIssueActionWithReceiverPermissionAndWait
 import android.safetycenter.cts.testing.SafetySourceReceiver.Companion.refreshSafetySourcesWithReceiverPermissionAndWait
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -102,6 +110,17 @@ class SafetyCenterManagerTest {
     private val somePendingIntent =
         PendingIntent.getActivity(
             context, 0 /* requestCode */, Intent(ACTION_SAFETY_CENTER), FLAG_IMMUTABLE)
+    private val criticalIssueActionPendingIntent =
+        PendingIntent.getBroadcast(
+            context,
+            0,
+            Intent(ACTION_HANDLE_INLINE_ACTION)
+                .setFlags(FLAG_RECEIVER_FOREGROUND)
+                .setPackage(context.packageName)
+                .putExtra(EXTRA_INLINE_ACTION_SOURCE_ID, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)
+                .putExtra(EXTRA_INLINE_ACTION_SOURCE_ISSUE_ID, CRITICAL_ISSUE_ID)
+                .putExtra(EXTRA_INLINE_ACTION_SOURCE_ISSUE_ACTION_ID, CRITICAL_ISSUE_ACTION_ID),
+            FLAG_IMMUTABLE)
     private val safetySourceDataUnspecified =
         SafetySourceData.Builder()
             .setStatus(
@@ -138,7 +157,10 @@ class SafetyCenterManagerTest {
                         "issue_type_id")
                     .addAction(
                         SafetySourceIssue.Action.Builder(
-                                CRITICAL_ISSUE_ACTION_ID, "Solve issue", somePendingIntent)
+                                CRITICAL_ISSUE_ACTION_ID,
+                                "Solve issue",
+                                criticalIssueActionPendingIntent)
+                            .setWillResolve(true)
                             .build())
                     .build())
             .build()
@@ -220,17 +242,58 @@ class SafetyCenterManagerTest {
                                     .build()))
                         .build())),
             emptyList())
+    private val safetyCenterStatusCritical =
+        SafetyCenterStatus.Builder("Uh-oh", "Code red")
+            .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING)
+            .build()
+    private val safetyCenterIssueCritical =
+        SafetyCenterIssue.Builder(
+                safetyCenterIssueId(CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID, CRITICAL_ISSUE_ID),
+                "Critical issue title",
+                "Critical issue summary")
+            .setSeverityLevel(SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_CRITICAL_WARNING)
+            .setActions(
+                listOf(
+                    SafetyCenterIssue.Action.Builder(
+                            safetyCenterIssueActionId(
+                                CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID,
+                                CRITICAL_ISSUE_ID,
+                                CRITICAL_ISSUE_ACTION_ID),
+                            "Solve issue",
+                            criticalIssueActionPendingIntent)
+                        .setWillResolve(true)
+                        .build()))
+            .build()
+    private val safetyCenterEntryGroupCritical =
+        SafetyCenterEntryOrGroup(
+            SafetyCenterEntryGroup.Builder(
+                    safetyCenterEntryGroupId(CTS_SINGLE_SOURCE_GROUP_ID), "OK")
+                .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING)
+                .setSummary("OK")
+                .setEntries(
+                    listOf(
+                        SafetyCenterEntry.Builder(
+                                safetyCenterEntryId(CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID),
+                                "Critical title")
+                            .setSeverityLevel(
+                                SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING)
+                            .setSummary("Critical summary")
+                            .setPendingIntent(somePendingIntent)
+                            .setSeverityUnspecifiedIconType(
+                                SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION)
+                            .build()))
+                .build())
     private val safetyCenterDataCritical =
         SafetyCenterData(
-            SafetyCenterStatus.Builder("Uh-oh", "Code red")
-                .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING)
-                .build(),
+            safetyCenterStatusCritical,
+            listOf(safetyCenterIssueCritical),
+            listOf(safetyCenterEntryGroupCritical),
+            emptyList())
+    private val safetyCenterDataCriticalInFlightAction =
+        SafetyCenterData(
+            safetyCenterStatusCritical,
             listOf(
-                SafetyCenterIssue.Builder(
-                        safetyCenterIssueId(CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID, CRITICAL_ISSUE_ID),
-                        "Critical issue title",
-                        "Critical issue summary")
-                    .setSeverityLevel(SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_CRITICAL_WARNING)
+                SafetyCenterIssue.Builder(safetyCenterIssueCritical)
                     .setActions(
                         listOf(
                             SafetyCenterIssue.Action.Builder(
@@ -239,54 +302,18 @@ class SafetyCenterManagerTest {
                                         CRITICAL_ISSUE_ID,
                                         CRITICAL_ISSUE_ACTION_ID),
                                     "Solve issue",
-                                    somePendingIntent)
+                                    criticalIssueActionPendingIntent)
+                                .setWillResolve(true)
+                                .setIsInFlight(true)
                                 .build()))
                     .build()),
-            listOf(
-                SafetyCenterEntryOrGroup(
-                    SafetyCenterEntryGroup.Builder(
-                            safetyCenterEntryGroupId(CTS_SINGLE_SOURCE_GROUP_ID), "OK")
-                        .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING)
-                        .setSummary("OK")
-                        .setEntries(
-                            listOf(
-                                SafetyCenterEntry.Builder(
-                                        safetyCenterEntryId(CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID),
-                                        "Critical title")
-                                    .setSeverityLevel(
-                                        SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING)
-                                    .setSummary("Critical summary")
-                                    .setPendingIntent(somePendingIntent)
-                                    .setSeverityUnspecifiedIconType(
-                                        SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION)
-                                    .build()))
-                        .build())),
+            listOf(safetyCenterEntryGroupCritical),
             emptyList())
     private val safetyCenterDataCriticalWithoutIssue =
         SafetyCenterData(
-            SafetyCenterStatus.Builder("Uh-oh", "Code red")
-                .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING)
-                .build(),
+            safetyCenterStatusCritical,
             emptyList(),
-            listOf(
-                SafetyCenterEntryOrGroup(
-                    SafetyCenterEntryGroup.Builder(
-                            safetyCenterEntryGroupId(CTS_SINGLE_SOURCE_GROUP_ID), "OK")
-                        .setSeverityLevel(SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING)
-                        .setSummary("OK")
-                        .setEntries(
-                            listOf(
-                                SafetyCenterEntry.Builder(
-                                        safetyCenterEntryId(CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID),
-                                        "Critical title")
-                                    .setSeverityLevel(
-                                        SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING)
-                                    .setSummary("Critical summary")
-                                    .setPendingIntent(somePendingIntent)
-                                    .setSeverityUnspecifiedIconType(
-                                        SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION)
-                                    .build()))
-                        .build())),
+            listOf(safetyCenterEntryGroupCritical),
             emptyList())
     private val listener =
         object : OnSafetyCenterDataChangedListener {
@@ -485,6 +512,9 @@ class SafetyCenterManagerTest {
         safetyCenterManager.reportSafetySourceErrorWithPermission(
             CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID,
             SafetySourceErrorDetails(EVENT_SOURCE_STATE_CHANGED))
+        // Receive potentially modified data from error.
+        // TODO(b/228832622): Ensure listeners are called only when data changes.
+        listener.receiveSafetyCenterData()
         val safetyCenterErrorDetailsFromListener = listener.receiveSafetyCenterErrorDetails()
 
         assertThat(safetyCenterErrorDetailsFromListener)
@@ -579,8 +609,8 @@ class SafetyCenterManagerTest {
     @Test
     fun refreshSafetySources_withRefreshReasonRescanButtonClick_sourceSendsRescanData() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SINGLE_SOURCE_CONFIG)
-        SafetySourceReceiver.safetySourceIds.add(CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)
-        SafetySourceReceiver.safetySourceDataOnRescanClick[CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID] =
+        SafetySourceReceiver.safetySourceData[
+            SafetySourceDataKey(Reason.REFRESH_RESCAN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
             safetySourceDataCritical
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
@@ -595,8 +625,8 @@ class SafetyCenterManagerTest {
     @Test
     fun refreshSafetySources_withRefreshReasonPageOpen_sourceSendsPageOpenData() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SINGLE_SOURCE_CONFIG)
-        SafetySourceReceiver.safetySourceIds.add(CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)
-        SafetySourceReceiver.safetySourceDataOnPageOpen[CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID] =
+        SafetySourceReceiver.safetySourceData[
+            SafetySourceDataKey(Reason.REFRESH_PAGE_OPEN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
             safetySourceDataInformation
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
@@ -609,9 +639,10 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    fun refreshSafetySources_whenSourceDoesNotHaveData_sourceSendsNullData() {
+    fun refreshSafetySources_whenSourceClearsData_sourceSendsNullData() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SINGLE_SOURCE_CONFIG)
-        SafetySourceReceiver.safetySourceIds.add(CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)
+        SafetySourceReceiver.safetySourceData[
+            SafetySourceDataKey(Reason.REFRESH_RESCAN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] = null
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
             REFRESH_REASON_RESCAN_BUTTON_CLICK)
@@ -625,12 +656,12 @@ class SafetyCenterManagerTest {
     @Test
     fun refreshSafetySources_withMultipleSourcesInConfig_multipleSourcesSendData() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_MULTIPLE_SOURCES_CONFIG)
-        SafetySourceReceiver.safetySourceIds.add(CTS_MULTIPLE_SOURCES_CONFIG_SOURCE_ID_1)
-        SafetySourceReceiver.safetySourceDataOnRescanClick[
-            CTS_MULTIPLE_SOURCES_CONFIG_SOURCE_ID_1] = safetySourceDataCritical
-        SafetySourceReceiver.safetySourceIds.add(CTS_MULTIPLE_SOURCES_CONFIG_SOURCE_ID_2)
-        SafetySourceReceiver.safetySourceDataOnRescanClick[
-            CTS_MULTIPLE_SOURCES_CONFIG_SOURCE_ID_2] = safetySourceDataInformation
+        SafetySourceReceiver.safetySourceData[
+            SafetySourceDataKey(Reason.REFRESH_RESCAN, CTS_MULTIPLE_SOURCES_CONFIG_SOURCE_ID_1)] =
+            safetySourceDataCritical
+        SafetySourceReceiver.safetySourceData[
+            SafetySourceDataKey(Reason.REFRESH_RESCAN, CTS_MULTIPLE_SOURCES_CONFIG_SOURCE_ID_2)] =
+            safetySourceDataInformation
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
             REFRESH_REASON_RESCAN_BUTTON_CLICK)
@@ -648,10 +679,9 @@ class SafetyCenterManagerTest {
     @Test
     fun refreshSafetySources_withMultipleSources_onlyOneSourceHasData_oneSourceSendData() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_MULTIPLE_SOURCES_CONFIG)
-        SafetySourceReceiver.safetySourceIds.add(CTS_MULTIPLE_SOURCES_CONFIG_SOURCE_ID_1)
-        SafetySourceReceiver.safetySourceDataOnRescanClick[
-            CTS_MULTIPLE_SOURCES_CONFIG_SOURCE_ID_1] = safetySourceDataCritical
-        SafetySourceReceiver.safetySourceIds.add(CTS_MULTIPLE_SOURCES_CONFIG_SOURCE_ID_2)
+        SafetySourceReceiver.safetySourceData[
+            SafetySourceDataKey(Reason.REFRESH_RESCAN, CTS_MULTIPLE_SOURCES_CONFIG_SOURCE_ID_1)] =
+            safetySourceDataCritical
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
             REFRESH_REASON_RESCAN_BUTTON_CLICK)
@@ -669,13 +699,12 @@ class SafetyCenterManagerTest {
     @Test
     fun refreshSafetySources_receiverSupportsMultipleSources_onlyRequestedSourceSendsData() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SINGLE_SOURCE_CONFIG)
-        SafetySourceReceiver.safetySourceIds.add(CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)
-        SafetySourceReceiver.safetySourceDataOnRescanClick[CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID] =
+        SafetySourceReceiver.safetySourceData[
+            SafetySourceDataKey(Reason.REFRESH_RESCAN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
             safetySourceDataCritical
         val otherSourceId = "other_source_ids"
-        SafetySourceReceiver.safetySourceIds.add(otherSourceId)
-        SafetySourceReceiver.safetySourceDataOnRescanClick[otherSourceId] =
-            safetySourceDataInformation
+        SafetySourceReceiver.safetySourceData[
+            SafetySourceDataKey(Reason.REFRESH_RESCAN, otherSourceId)] = safetySourceDataInformation
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
             REFRESH_REASON_RESCAN_BUTTON_CLICK)
@@ -689,8 +718,8 @@ class SafetyCenterManagerTest {
     @Test
     fun refreshSafetySources_whenReceiverDoesNotHavePermission_sourceDoesNotSendData() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SINGLE_SOURCE_CONFIG)
-        SafetySourceReceiver.safetySourceIds.add(CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)
-        SafetySourceReceiver.safetySourceDataOnRescanClick[CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID] =
+        SafetySourceReceiver.safetySourceData[
+            SafetySourceDataKey(Reason.REFRESH_RESCAN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
             safetySourceDataCritical
 
         safetyCenterManager.refreshSafetySourcesWithPermission(REFRESH_REASON_RESCAN_BUTTON_CLICK)
@@ -706,8 +735,8 @@ class SafetyCenterManagerTest {
 
     @Test
     fun refreshSafetySources_whenSourceNotInConfig_sourceDoesNotSendData() {
-        SafetySourceReceiver.safetySourceIds.add(CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)
-        SafetySourceReceiver.safetySourceDataOnPageOpen[CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID] =
+        SafetySourceReceiver.safetySourceData[
+            SafetySourceDataKey(Reason.REFRESH_PAGE_OPEN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
             safetySourceDataInformation
 
         assertFailsWith(TimeoutCancellationException::class) {
@@ -719,8 +748,8 @@ class SafetyCenterManagerTest {
     @Test
     fun refreshSafetySources_sendsBroadcastId() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SINGLE_SOURCE_CONFIG)
-        SafetySourceReceiver.safetySourceIds.add(CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)
-        SafetySourceReceiver.safetySourceDataOnRescanClick[CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID] =
+        SafetySourceReceiver.safetySourceData[
+            SafetySourceDataKey(Reason.REFRESH_RESCAN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
             safetySourceDataCritical
 
         val lastReceivedBroadcastId =
@@ -733,8 +762,8 @@ class SafetyCenterManagerTest {
     @Test
     fun refreshSafetySources_sendsDifferentBroadcastIds_onEachMethodCall() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SINGLE_SOURCE_CONFIG)
-        SafetySourceReceiver.safetySourceIds.add(CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)
-        SafetySourceReceiver.safetySourceDataOnRescanClick[CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID] =
+        SafetySourceReceiver.safetySourceData[
+            SafetySourceDataKey(Reason.REFRESH_RESCAN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
             safetySourceDataCritical
 
         val broadcastId1 =
@@ -751,8 +780,8 @@ class SafetyCenterManagerTest {
     fun refreshSafetySources_withFlagDisabled_noOp() {
         SafetyCenterFlags.setSafetyCenterEnabled(false)
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SINGLE_SOURCE_CONFIG)
-        SafetySourceReceiver.safetySourceIds.add(CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)
-        SafetySourceReceiver.safetySourceDataOnPageOpen[CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID] =
+        SafetySourceReceiver.safetySourceData[
+            SafetySourceDataKey(Reason.REFRESH_PAGE_OPEN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
             safetySourceDataInformation
 
         assertFailsWith(TimeoutCancellationException::class) {
@@ -1064,7 +1093,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    fun dismissSafetyCenterIssue_existingIssue_callsListenerWithoutDismissedIssue() {
+    fun dismissSafetyCenterIssue_existing_callsListenerWithoutDismissedIssue() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SINGLE_SOURCE_CONFIG)
         safetyCenterManager.setSafetySourceDataWithPermission(
             CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID,
@@ -1077,13 +1106,13 @@ class SafetyCenterManagerTest {
 
         safetyCenterManager.dismissSafetyCenterIssueWithPermission(
             safetyCenterIssueId(CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID, CRITICAL_ISSUE_ID))
-        val safetyCenterDataFromListener = listener.receiveSafetyCenterData()
 
+        val safetyCenterDataFromListener = listener.receiveSafetyCenterData()
         assertThat(safetyCenterDataFromListener).isEqualTo(safetyCenterDataCriticalWithoutIssue)
     }
 
     @Test
-    fun dismissSafetyCenterIssue_nonExistingIssue_doesntCallListener() {
+    fun dismissSafetyCenterIssue_nonExisting_doesntCallListener() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SINGLE_SOURCE_CONFIG)
         safetyCenterManager.setSafetySourceDataWithPermission(
             CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID,
@@ -1103,7 +1132,7 @@ class SafetyCenterManagerTest {
     }
 
     @Test
-    fun dismissSafetyCenterIssue_issueAlreadyDismissed_doesntCallListener() {
+    fun dismissSafetyCenterIssue_alreadyDismissed_doesntCallListener() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SINGLE_SOURCE_CONFIG)
         safetyCenterManager.setSafetySourceDataWithPermission(
             CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID,
@@ -1128,6 +1157,90 @@ class SafetyCenterManagerTest {
     fun dismissSafetyCenterIssue_withoutPermission_throwsSecurityException() {
         assertFailsWith(SecurityException::class) {
             safetyCenterManager.dismissSafetyCenterIssue("bleh")
+        }
+    }
+
+    @Test
+    fun executeSafetyCenterIssueAction_existing_callsListenerWithInFlightActionAndExecutes() {
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SINGLE_SOURCE_CONFIG)
+        safetyCenterManager.setSafetySourceDataWithPermission(
+            CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID,
+            safetySourceDataCritical,
+            EVENT_SOURCE_STATE_CHANGED)
+        safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
+            directExecutor(), listener)
+        // Receive initial data.
+        listener.receiveSafetyCenterData()
+        SafetySourceReceiver.safetySourceData[
+            SafetySourceDataKey(Reason.INLINE_ACTION, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
+            safetySourceDataInformation
+
+        safetyCenterManager.executeSafetyCenterIssueActionWithReceiverPermissionAndWait(
+            safetyCenterIssueId(CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID, CRITICAL_ISSUE_ID),
+            safetyCenterIssueActionId(
+                CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID, CRITICAL_ISSUE_ID, CRITICAL_ISSUE_ACTION_ID))
+
+        val safetyCenterDataFromListenerDuringInlineAction = listener.receiveSafetyCenterData()
+        assertThat(safetyCenterDataFromListenerDuringInlineAction)
+            .isEqualTo(safetyCenterDataCriticalInFlightAction)
+        val safetyCenterDataFromListenerAfterInlineAction = listener.receiveSafetyCenterData()
+        assertThat(safetyCenterDataFromListenerAfterInlineAction).isEqualTo(safetyCenterDataOk)
+    }
+
+    @Test
+    fun executeSafetyCenterIssueAction_existing_unmarkInFlightWhenInlineActionError() {
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SINGLE_SOURCE_CONFIG)
+        safetyCenterManager.setSafetySourceDataWithPermission(
+            CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID,
+            safetySourceDataCritical,
+            EVENT_SOURCE_STATE_CHANGED)
+        safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
+            directExecutor(), listener)
+        // Receive initial data.
+        listener.receiveSafetyCenterData()
+        SafetySourceReceiver.shouldReportSafetySourceError = true
+        SafetySourceReceiver.safetySourceData[
+            SafetySourceDataKey(Reason.INLINE_ACTION, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
+            safetySourceDataInformation
+
+        safetyCenterManager.executeSafetyCenterIssueActionWithReceiverPermissionAndWait(
+            safetyCenterIssueId(CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID, CRITICAL_ISSUE_ID),
+            safetyCenterIssueActionId(
+                CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID, CRITICAL_ISSUE_ID, CRITICAL_ISSUE_ACTION_ID))
+
+        val safetyCenterDataFromListenerDuringInlineAction = listener.receiveSafetyCenterData()
+        assertThat(safetyCenterDataFromListenerDuringInlineAction)
+            .isEqualTo(safetyCenterDataCriticalInFlightAction)
+        val safetyCenterDataFromListenerAfterInlineAction = listener.receiveSafetyCenterData()
+        assertThat(safetyCenterDataFromListenerAfterInlineAction)
+            .isEqualTo(safetyCenterDataCritical)
+        val error = listener.receiveSafetyCenterErrorDetails()
+        assertThat(error).isEqualTo(SafetyCenterErrorDetails("Error"))
+    }
+
+    @Test
+    fun executeSafetyCenterIssueAction_nonExisting_doesntCallListenerOrExecute() {
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SINGLE_SOURCE_CONFIG)
+        safetyCenterManager.setSafetySourceDataWithPermission(
+            CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID,
+            safetySourceDataInformation,
+            EVENT_SOURCE_STATE_CHANGED)
+        safetyCenterManager.addOnSafetyCenterDataChangedListenerWithPermission(
+            directExecutor(), listener)
+        // Receive initial data.
+        listener.receiveSafetyCenterData()
+
+        assertFailsWith(TimeoutCancellationException::class) {
+            safetyCenterManager.executeSafetyCenterIssueActionWithReceiverPermissionAndWait(
+                safetyCenterIssueId(CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID, CRITICAL_ISSUE_ID),
+                safetyCenterIssueActionId(
+                    CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID,
+                    CRITICAL_ISSUE_ID,
+                    CRITICAL_ISSUE_ACTION_ID),
+                TIMEOUT_SHORT)
+        }
+        assertFailsWith(TimeoutCancellationException::class) {
+            listener.receiveSafetyCenterData(TIMEOUT_SHORT)
         }
     }
 

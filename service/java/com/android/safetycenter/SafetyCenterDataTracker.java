@@ -39,7 +39,9 @@ import android.safetycenter.SafetyCenterIssue;
 import android.safetycenter.SafetyCenterStaticEntry;
 import android.safetycenter.SafetyCenterStaticEntryGroup;
 import android.safetycenter.SafetyCenterStatus;
+import android.safetycenter.SafetyEvent;
 import android.safetycenter.SafetySourceData;
+import android.safetycenter.SafetySourceErrorDetails;
 import android.safetycenter.SafetySourceIssue;
 import android.safetycenter.SafetySourceStatus;
 import android.safetycenter.config.SafetyCenterConfig;
@@ -80,6 +82,10 @@ final class SafetyCenterDataTracker {
     // TODO(b/221406600): Add persistent storage for dismissed issues.
     private final ArraySet<SafetyCenterIssueId> mDismissedSafetyCenterIssues = new ArraySet<>();
 
+    // TODO(b/228942349): This should allow for timeouts by e.g. mapping to an insertion timestamp.
+    private final ArraySet<SafetyCenterIssueActionId> mSafetyCenterIssueActionsInFlight =
+            new ArraySet<>();
+
     @NonNull private final Context mContext;
     @NonNull private final SafetyCenterResourcesContext mSafetyCenterResourcesContext;
 
@@ -95,13 +101,14 @@ final class SafetyCenterDataTracker {
     }
 
     /**
-     * Sets the latest {@link SafetySourceData} for the given {@code safetySourceId} and {@code
-     * userId}, and returns whether there was a change to the underlying {@link SafetyCenterData}
-     * against the given {@link SafetyCenterConfigInternal}.
+     * Sets the latest {@link SafetySourceData} for the given {@code safetySourceId}, {@link
+     * SafetyEvent}, {@code packageName} and {@code userId}, and returns whether there was a change
+     * to the underlying {@link SafetyCenterData} against the given {@link
+     * SafetyCenterConfigInternal}.
      *
-     * <p>Throws if the request is invalid based on the Safety Center config: the given {@code
-     * safetySourceId}, {@code packageName} and {@code userId} are unexpected; or the {@link
-     * SafetySourceData} does not respect all constraints defined in the config.
+     * <p>Throws if the request is invalid based on the {@link SafetyCenterConfigInternal}: the
+     * given {@code safetySourceId}, {@code packageName} and/or {@code userId} are unexpected; or
+     * the {@link SafetySourceData} does not respect all constraints defined in the config.
      *
      * <p>Setting a {@code null} {@link SafetySourceData} evicts the current {@link
      * SafetySourceData} entry.
@@ -110,9 +117,11 @@ final class SafetyCenterDataTracker {
             @NonNull SafetyCenterConfigInternal configInternal,
             @Nullable SafetySourceData safetySourceData,
             @NonNull String safetySourceId,
+            @NonNull SafetyEvent safetyEvent,
             @NonNull String packageName,
             @UserIdInt int userId) {
         validateRequest(configInternal, safetySourceData, safetySourceId, packageName, userId);
+        processSafetyEvent(safetySourceId, safetyEvent, userId);
 
         Key key = Key.of(safetySourceId, userId);
         SafetySourceData existingSafetySourceData = mSafetySourceDataForKey.get(key);
@@ -131,11 +140,11 @@ final class SafetyCenterDataTracker {
 
     /**
      * Returns the latest {@link SafetySourceData} that was set by {@link #setSafetySourceData} for
-     * the given {@code safetySourceId} and {@code userId} against the given {@link
-     * SafetyCenterConfigInternal}.
+     * the given {@code safetySourceId}, {@code packageName} and {@code userId} against the given
+     * {@link SafetyCenterConfigInternal}.
      *
-     * <p>Throws if the request is invalid based on the Safety Center config: the given {@code
-     * safetySourceId}, {@code packageName} and {@code userId} are unexpected.
+     * <p>Throws if the request is invalid based on the {@link SafetyCenterConfigInternal}: the
+     * given {@code safetySourceId}, {@code packageName} and/or {@code userId} are unexpected.
      *
      * <p>Returns {@code null} if it was never set since boot, or if the entry was evicted using
      * {@link #setSafetySourceData} with a {@code null} value.
@@ -151,12 +160,20 @@ final class SafetyCenterDataTracker {
     }
 
     /**
-     * Clears all the {@link SafetySourceData} and dismissed {@link SafetyCenterIssueId} so far, for
-     * all users.
+     * Reports the given {@link SafetySourceErrorDetails} for the given {@code safetySourceId} and
+     * {@code userId} against the given {@link SafetyCenterConfigInternal}.
+     *
+     * <p>Throws if the request is invalid based on the {@link SafetyCenterConfigInternal}: the
+     * given {@code safetySourceId}, {@code packageName} and/or {@code userId} are unexpected.
      */
-    void clear() {
-        mSafetySourceDataForKey.clear();
-        mDismissedSafetyCenterIssues.clear();
+    void reportSafetySourceError(
+            @NonNull SafetyCenterConfigInternal configInternal,
+            @NonNull String safetySourceId,
+            @NonNull SafetySourceErrorDetails safetySourceErrorDetails,
+            @NonNull String packageName,
+            @UserIdInt int userId) {
+        validateRequest(configInternal, null, safetySourceId, packageName, userId);
+        processSafetyEvent(safetySourceId, safetySourceErrorDetails.getSafetyEvent(), userId);
     }
 
     /**
@@ -176,6 +193,27 @@ final class SafetyCenterDataTracker {
         return getSafetyCenterData(configInternal.getSafetySourcesGroups(), userProfileGroup);
     }
 
+    /** Marks the given {@link SafetyCenterIssueActionId} as in-flight. */
+    void markSafetyCenterIssueActionAsInFlight(
+            @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
+        mSafetyCenterIssueActionsInFlight.add(safetyCenterIssueActionId);
+    }
+
+    /** Dismisses the given {@link SafetyCenterIssueId}. */
+    void dismissSafetyCenterIssue(@NonNull SafetyCenterIssueId safetyCenterIssueId) {
+        mDismissedSafetyCenterIssues.add(safetyCenterIssueId);
+    }
+
+    /**
+     * Clears all the {@link SafetySourceData}, dismissed {@link SafetyCenterIssueId} and in flight
+     * {@link SafetyCenterIssueActionId} so far, for all users.
+     */
+    void clear() {
+        mSafetySourceDataForKey.clear();
+        mDismissedSafetyCenterIssues.clear();
+        mSafetyCenterIssueActionsInFlight.clear();
+    }
+
     /**
      * Returns the {@link SafetySourceIssue} associated with the given {@link SafetyCenterIssueId}.
      *
@@ -184,7 +222,7 @@ final class SafetyCenterDataTracker {
      */
     @Nullable
     SafetySourceIssue getSafetySourceIssue(@NonNull SafetyCenterIssueId safetyCenterIssueId) {
-        if (mDismissedSafetyCenterIssues.contains(safetyCenterIssueId)) {
+        if (isDismissed(safetyCenterIssueId)) {
             return null;
         }
 
@@ -206,9 +244,41 @@ final class SafetyCenterDataTracker {
         return null;
     }
 
-    /** Dismisses the given {@link SafetyCenterIssueId}. */
-    void dismissSafetyCenterIssue(@NonNull SafetyCenterIssueId safetyCenterIssueId) {
-        mDismissedSafetyCenterIssues.add(safetyCenterIssueId);
+    /**
+     * Returns the {@link SafetySourceIssue.Action} associated with the given {@link
+     * SafetyCenterIssueActionId}.
+     *
+     * <p>Returns {@code null} if there is no associated {@link SafetySourceIssue}, or if it's been
+     * dismissed.
+     *
+     * <p>Returns {@code null} if the {@link SafetySourceIssue.Action} is currently in flight.
+     */
+    @Nullable
+    SafetySourceIssue.Action getSafetySourceIssueAction(
+            @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
+        SafetySourceIssue safetySourceIssue =
+                getSafetySourceIssue(safetyCenterIssueActionId.getSafetyCenterIssueId());
+
+        if (safetySourceIssue == null) {
+            return null;
+        }
+
+        if (isInFlight(safetyCenterIssueActionId)) {
+            return null;
+        }
+
+        List<SafetySourceIssue.Action> safetySourceIssueActions = safetySourceIssue.getActions();
+        for (int i = 0; i < safetySourceIssueActions.size(); i++) {
+            SafetySourceIssue.Action safetySourceIssueAction = safetySourceIssueActions.get(i);
+
+            if (safetyCenterIssueActionId
+                    .getSafetySourceIssueActionId()
+                    .equals(safetySourceIssueAction.getId())) {
+                return safetySourceIssueAction;
+            }
+        }
+
+        return null;
     }
 
     /**
@@ -227,6 +297,14 @@ final class SafetyCenterDataTracker {
                 emptyList(),
                 emptyList(),
                 emptyList());
+    }
+
+    private boolean isDismissed(@NonNull SafetyCenterIssueId safetyCenterIssueId) {
+        return mDismissedSafetyCenterIssues.contains(safetyCenterIssueId);
+    }
+
+    private boolean isInFlight(@NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
+        return mSafetyCenterIssueActionsInFlight.contains(safetyCenterIssueActionId);
     }
 
     private void validateRequest(
@@ -294,6 +372,38 @@ final class SafetyCenterDataTracker {
                     String.format(
                             "Unexpected max severity level \"%d\" for safety source \"%s\"",
                             maxSeverityLevel, safetySourceId));
+        }
+    }
+
+    private void processSafetyEvent(
+            @NonNull String safetySourceId,
+            @NonNull SafetyEvent safetyEvent,
+            @UserIdInt int userId) {
+        int type = safetyEvent.getType();
+        switch (type) {
+            case SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED:
+                // TODO(b/218158368): Implement refresh tracking.
+                return;
+            case SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED:
+            case SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED:
+                String safetySourceIssueId = safetyEvent.getSafetySourceIssueId();
+                SafetyCenterIssueId safetyCenterIssueId =
+                        SafetyCenterIssueId.newBuilder()
+                                .setSafetySourceId(safetySourceId)
+                                .setSafetySourceIssueId(safetySourceIssueId)
+                                .setUserId(userId)
+                                .build();
+                String safetySourceIssueActionId = safetyEvent.getSafetySourceIssueActionId();
+                SafetyCenterIssueActionId safetyCenterIssueActionId =
+                        SafetyCenterIssueActionId.newBuilder()
+                                .setSafetyCenterIssueId(safetyCenterIssueId)
+                                .setSafetySourceIssueActionId(safetySourceIssueActionId)
+                                .build();
+                mSafetyCenterIssueActionsInFlight.remove(safetyCenterIssueActionId);
+                return;
+            case SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED:
+            case SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_LOCALE_CHANGED:
+            case SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_REBOOTED:
         }
     }
 
@@ -437,7 +547,7 @@ final class SafetyCenterDataTracker {
                         .setUserId(userId)
                         .build();
 
-        if (mDismissedSafetyCenterIssues.contains(safetyCenterIssueId)) {
+        if (isDismissed(safetyCenterIssueId)) {
             return null;
         }
 
@@ -466,7 +576,7 @@ final class SafetyCenterDataTracker {
     }
 
     @NonNull
-    private static SafetyCenterIssue.Action toSafetyCenterIssueAction(
+    private SafetyCenterIssue.Action toSafetyCenterIssueAction(
             @NonNull SafetySourceIssue.Action safetySourceIssueAction,
             @NonNull SafetyCenterIssueId safetyCenterIssueId) {
         SafetyCenterIssueActionId safetyCenterIssueActionId =
@@ -474,12 +584,12 @@ final class SafetyCenterDataTracker {
                         .setSafetyCenterIssueId(safetyCenterIssueId)
                         .setSafetySourceIssueActionId(safetySourceIssueAction.getId())
                         .build();
-        // TODO(b/218817233): Add whether the action is in flight.
         return new SafetyCenterIssue.Action.Builder(
                         SafetyCenterIds.encodeToString(safetyCenterIssueActionId),
                         safetySourceIssueAction.getLabel(),
                         safetySourceIssueAction.getPendingIntent())
                 .setSuccessMessage(safetySourceIssueAction.getSuccessMessage())
+                .setIsInFlight(isInFlight(safetyCenterIssueActionId))
                 .setWillResolve(safetySourceIssueAction.willResolve())
                 .build();
     }

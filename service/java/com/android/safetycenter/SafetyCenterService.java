@@ -187,6 +187,7 @@ public final class SafetyCenterService extends SystemService {
                                 configInternal,
                                 safetySourceData,
                                 safetySourceId,
+                                safetyEvent,
                                 packageName,
                                 userId);
                 if (!hasUpdate) {
@@ -198,6 +199,7 @@ public final class SafetyCenterService extends SystemService {
                 listeners = mSafetyCenterListeners.getListeners(userProfileGroup);
             }
 
+            // TODO(b/228832622): Ensure listeners are called only when data changes.
             SafetyCenterListeners.deliverUpdate(listeners, safetyCenterData, null);
         }
 
@@ -246,14 +248,25 @@ public final class SafetyCenterService extends SystemService {
 
             UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
 
-            // TODO(b/223434689): Implement this properly.
+            SafetyCenterData safetyCenterData;
             List<RemoteCallbackList<IOnSafetyCenterDataChangedListener>> listeners;
             synchronized (mApiLock) {
+                SafetyCenterConfigReader.SafetyCenterConfigInternal configInternal =
+                        mSafetyCenterConfigReader.getCurrentConfigInternal();
+                mSafetyCenterDataTracker.reportSafetySourceError(
+                        configInternal, safetySourceId, errorDetails, packageName, userId);
+                safetyCenterData =
+                        mSafetyCenterDataTracker.getSafetyCenterData(
+                                configInternal, userProfileGroup);
                 listeners = mSafetyCenterListeners.getListeners(userProfileGroup);
             }
 
+            // TODO(b/228832622): Ensure listeners are called only when data changes.
             SafetyCenterListeners.deliverUpdate(
-                    listeners, null, new SafetyCenterErrorDetails("Error"));
+                    listeners,
+                    safetyCenterData,
+                    // TODO(b/229080761): Implement proper error message.
+                    new SafetyCenterErrorDetails("Error"));
         }
 
         @Override
@@ -389,6 +402,7 @@ public final class SafetyCenterService extends SystemService {
                 listeners = mSafetyCenterListeners.getListeners(userProfileGroup);
             }
 
+            // TODO(b/228832622): Ensure listeners are called only when data changes.
             SafetyCenterListeners.deliverUpdate(listeners, safetyCenterData, null);
 
             PendingIntent onDismissPendingIntent = safetySourceIssue.getOnDismissPendingIntent();
@@ -425,7 +439,38 @@ public final class SafetyCenterService extends SystemService {
                     userProfileGroup,
                     safetyCenterIssueId.getUserId());
 
-            // TODO(b/202485277): Implement this properly.
+            SafetySourceIssue.Action safetySourceIssueAction;
+            SafetyCenterData safetyCenterData = null;
+            List<RemoteCallbackList<IOnSafetyCenterDataChangedListener>> listeners = null;
+            synchronized (mApiLock) {
+                safetySourceIssueAction =
+                        mSafetyCenterDataTracker.getSafetySourceIssueAction(
+                                safetyCenterIssueActionId);
+                if (safetySourceIssueAction == null) {
+                    Log.w(
+                            TAG,
+                            "Attempt to execute an issue action that is not provided by the source,"
+                                    + " that was dismissed, or is already in flight");
+                    return;
+                }
+                if (safetySourceIssueAction.willResolve()) {
+                    mSafetyCenterDataTracker.markSafetyCenterIssueActionAsInFlight(
+                            safetyCenterIssueActionId);
+                    safetyCenterData =
+                            mSafetyCenterDataTracker.getSafetyCenterData(
+                                    mSafetyCenterConfigReader.getCurrentConfigInternal(),
+                                    userProfileGroup);
+                    listeners = mSafetyCenterListeners.getListeners(userProfileGroup);
+                }
+            }
+
+            if (listeners != null) {
+                // TODO(b/228832622): Ensure listeners are called only when data changes.
+                SafetyCenterListeners.deliverUpdate(listeners, safetyCenterData, null);
+            }
+            // TODO(b/229080116): Unmark as in flight if there is an issue dispatching the
+            //  PendingIntent.
+            dispatchPendingIntent(safetySourceIssueAction.getPendingIntent());
         }
 
         @Override
@@ -542,6 +587,7 @@ public final class SafetyCenterService extends SystemService {
                 pendingIntent.send();
             } catch (PendingIntent.CanceledException ex) {
                 Log.w(TAG, "Couldn't dispatch PendingIntent", ex);
+                // TODO(b/229080116): Propagate error with listeners here?
             }
         }
     }

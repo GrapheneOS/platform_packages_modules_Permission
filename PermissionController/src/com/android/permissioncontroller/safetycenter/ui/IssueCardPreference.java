@@ -22,17 +22,14 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static java.util.Objects.requireNonNull;
 
 import android.app.AlertDialog;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.safetycenter.SafetyCenterIssue;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.StyleRes;
 import androidx.preference.Preference;
@@ -50,9 +47,7 @@ public class IssueCardPreference extends Preference {
     private final SafetyCenterIssue mIssue;
 
     public IssueCardPreference(
-            Context context,
-            SafetyCenterViewModel safetyCenterViewModel,
-            SafetyCenterIssue issue) {
+            Context context, SafetyCenterViewModel safetyCenterViewModel, SafetyCenterIssue issue) {
         super(context);
         setLayoutResource(R.layout.preference_issue_card);
 
@@ -81,8 +76,8 @@ public class IssueCardPreference extends Preference {
         buttonList.removeAllViews(); // This view may be recycled from another issue
         boolean isFirstButton = true;
         for (SafetyCenterIssue.Action action : mIssue.getActions()) {
-            buttonList.addView(buildActionButton(
-                    action, holder.itemView.getContext(), isFirstButton));
+            buttonList.addView(
+                    buildActionButton(action, holder.itemView.getContext(), isFirstButton));
             isFirstButton = false;
         }
     }
@@ -122,22 +117,17 @@ public class IssueCardPreference extends Preference {
     }
 
     private Button buildActionButton(
-            SafetyCenterIssue.Action action,
-            Context context,
-            boolean isFirstButton) {
-        Button button = new Button(context, null,
-                0, getStyleFromSeverity(mIssue.getSeverityLevel(), isFirstButton));
+            SafetyCenterIssue.Action action, Context context, boolean isFirstButton) {
+        Button button =
+                new Button(
+                        context,
+                        null,
+                        0,
+                        getStyleFromSeverity(mIssue.getSeverityLevel(), isFirstButton));
         button.setText(action.getLabel());
         button.setLayoutParams(new ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
-        button.setOnClickListener((view) -> {
-            try {
-                action.getPendingIntent().send();
-            } catch (PendingIntent.CanceledException e) {
-                Log.e(TAG, String.format("Executing action \"%s\" failed", action.getLabel()), e);
-                Toast.makeText(getContext(), "Action failed", Toast.LENGTH_SHORT).show();
-            }
-        });
-
+        button.setOnClickListener(
+                view -> mSafetyCenterViewModel.executeIssueAction(mIssue, action));
         return button;
     }
 
@@ -153,11 +143,10 @@ public class IssueCardPreference extends Preference {
             case SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_RECOMMENDATION:
                 return R.style.SafetyCenter_IssueCard_ActionButton_Recommendation;
             case SafetyCenterIssue.ISSUE_SEVERITY_LEVEL_CRITICAL_WARNING:
-                return  R.style.SafetyCenter_IssueCard_ActionButton_Critical;
+                return R.style.SafetyCenter_IssueCard_ActionButton_Critical;
         }
         throw new IllegalArgumentException(
-                String.format("Unexpected SafetyCenterIssue.IssueSeverityLevel: %s",
-                        issueSeverityLevel));
-
+                String.format(
+                        "Unexpected SafetyCenterIssue.IssueSeverityLevel: %s", issueSeverityLevel));
     }
 }
