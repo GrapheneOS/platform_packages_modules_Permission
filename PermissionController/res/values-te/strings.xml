@@ -19,7 +19,7 @@
     <string name="app_name" msgid="6098036489833144040">"అనుమతి కంట్రోలర్"</string>
     <string name="ok" msgid="1936281769725676272">"సరే"</string>
     <string name="permission_search_keyword" msgid="1214451577494730543">"అనుమతులు"</string>
-    <string name="cancel" msgid="8943320028373963831">"రద్దు చేయి"</string>
+    <string name="cancel" msgid="8943320028373963831">"రద్దు చేయండి"</string>
     <string name="back" msgid="6249950659061523680">"వెనుకకు"</string>
     <string name="available" msgid="6007778121920339498">"అందుబాటులో ఉంది"</string>
     <string name="blocked" msgid="9195547604866033708">"బ్లాక్ చేయబడినది"</string>
@@ -114,7 +114,7 @@
     <string name="wear_not_allowed_dlg_text" msgid="512340555334769098">"Wearలో ఇన్‌స్టాల్/అన్ఇన్‌స్టాల్ చర్యలకు మద్దతు లేదు."</string>
     <string name="permission_review_title_template_install" msgid="1284337937156289081">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; యాక్సెస్ చేయడానికి అనుమతించాల్సిన వాటిని ఎంచుకోండి"</string>
     <string name="permission_review_title_template_update" msgid="3232333580548588657">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; అప్‌డేట్ చేయబడింది. ఈ యాప్ యాక్సెస్ చేయడానికి అనుమతించాల్సిన వాటిని ఎంచుకోండి."</string>
-    <string name="review_button_cancel" msgid="2191147944056548886">"రద్దు చేయి"</string>
+    <string name="review_button_cancel" msgid="2191147944056548886">"రద్దు చేయండి"</string>
     <string name="review_button_continue" msgid="2527918375047602199">"కొనసాగించండి"</string>
     <string name="new_permissions_category" msgid="552995090178417611">"కొత్త అనుమతులు"</string>
     <string name="current_permissions_category" msgid="4292990083585728880">"ప్రస్తుత అనుమతులు"</string>
@@ -471,10 +471,10 @@
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"మీ ఫోన్ కాల్ లాగ్‌లను యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ని అనుమతించాలా?"</string>
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"ఫోన్‌ కాల్స్‌ చేయడానికి, మేనేజ్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ని అనుమతించాలా?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"మీ అత్యంత కీలకమైన గుర్తుల గురించి సెన్సార్ డేటాని యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ని అనుమతించాలా?"</string>
-    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"మీరు యాప్‌ను ఉపయోగించనప్పటికీ, ఈ యాప్ మీ కీలక ఆరోగ్య కొలమాన గుర్తుల సెన్సార్ డేటాను ఎప్పటికప్పుడు యాక్సెస్ చేయాలనుకుంటోంది. ఈ మార్పు చేయడానికి, "<annotation id="link">"సెట్టింగ్‌లకు వెళ్లండి."</annotation></string>
-    <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"మీ కీలక ఆరోగ్య కొలమాన గుర్తుల గురించి సెన్సార్ డేటాను యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"మీరు యాప్‌ను ఉపయోగించనప్పటికీ, ఈ యాప్ బాడీ సెన్సార్ డేటాను ఎప్పటికప్పుడు యాక్సెస్ చేయడాన్ని అనుమతించడానికి, "<annotation id="link">"సెట్టింగ్‌లకు వెళ్లండి."</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"యాప్ ఉపయోగంలో ఉన్నప్పుడు బాడీ సెన్సార్ డేటాను యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
+    <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"ఈ యాప్‌ను మీరు ఉపయోగించని సమయంలో కూడా మీ ఆరోగ్యానికి సంబంధించి కీలకమైన కొలమానాల గురించిన సెన్సార్ డేటాను ఎల్లప్పుడూ యాక్సెస్ చేయగలిగేలా ఈ యాప్ అనుమతి కోరుతోంది. ఈ మార్పును ఆమోదించడానికి, "<annotation id="link">"సెట్టింగ్‌లకు వెళ్లండి."</annotation></string>
+    <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"మీ ఆరోగ్యానికి సంబంధించి కీలకమైన కొలమానాల గురించిన సెన్సార్ డేటాను యాక్సెస్ చేయడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"ఈ యాప్‌ను ఉపయోగించని సమయంలో కూడా మీ బాడీ సెన్సార్ డేటాను ఈ యాప్ ఎల్లప్పుడూ యాక్సెస్ చేయగలిగేలా అనుమతించడానికి, "<annotation id="link">"సెట్టింగ్‌లకు వెళ్లండి."</annotation></string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"యాప్‌ను వినియోగిస్తున్నప్పుడు బాడీ సెన్సార్ డేటాను యాక్సెస్ చేయగలిగేలా &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;‌కు ఉన్న అనుమతిని కొనసాగించాలా?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"మీకు నోటిఫికేషన్‌లను పంపడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"మీకు నోటిఫికేషన్‌లు పంపడాన్ని కొనసాగించడానికి &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ను అనుమతించాలా?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"నియంత్రణలో ఉన్న అనుమతులు"</string>
