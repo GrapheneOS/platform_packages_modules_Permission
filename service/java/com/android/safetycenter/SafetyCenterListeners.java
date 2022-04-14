@@ -51,12 +51,11 @@ final class SafetyCenterListeners {
             mSafetyCenterDataChangedListeners = new SparseArray<>();
 
     /** Creates a {@link SafetyCenterListeners}. */
-    SafetyCenterListeners() {
-    }
+    SafetyCenterListeners() {}
 
     /**
-     * Delivers a {@link SafetyCenterData} or {@link SafetyCenterErrorDetails} update to a single
-     * {@link IOnSafetyCenterDataChangedListener}.
+     * Delivers a {@link SafetyCenterData} and/or {@link SafetyCenterErrorDetails} update to a
+     * single {@link IOnSafetyCenterDataChangedListener}.
      */
     static void deliverUpdate(
             @NonNull IOnSafetyCenterDataChangedListener listener,
@@ -79,7 +78,7 @@ final class SafetyCenterListeners {
     }
 
     /**
-     * Delivers a {@link SafetyCenterData} or {@link SafetyCenterErrorDetails} update to all the
+     * Delivers a {@link SafetyCenterData} and/or {@link SafetyCenterErrorDetails} update to all the
      * {@link RemoteCallbackList} of {@link IOnSafetyCenterDataChangedListener}.
      *
      * <p>Registering or unregistering {@link IOnSafetyCenterDataChangedListener} on any of the
@@ -102,8 +101,8 @@ final class SafetyCenterListeners {
         int i = listeners.beginBroadcast();
         while (i > 0) {
             i--;
-            deliverUpdate(listeners.getBroadcastItem(i), safetyCenterData,
-                    safetyCenterErrorDetails);
+            deliverUpdate(
+                    listeners.getBroadcastItem(i), safetyCenterData, safetyCenterErrorDetails);
         }
         listeners.finishBroadcast();
     }
@@ -111,12 +110,11 @@ final class SafetyCenterListeners {
     /**
      * Adds a {@link IOnSafetyCenterDataChangedListener} for the given {@code userId}.
      *
-     * <p>Returns whether the callback was successfully registered. Returns {@code true} if
-     * the callback was already registered.
+     * <p>Returns whether the callback was successfully registered. Returns {@code true} if the
+     * callback was already registered.
      */
     boolean addListener(
-            @NonNull IOnSafetyCenterDataChangedListener listener,
-            @UserIdInt int userId) {
+            @NonNull IOnSafetyCenterDataChangedListener listener, @UserIdInt int userId) {
         RemoteCallbackList<IOnSafetyCenterDataChangedListener> listeners =
                 mSafetyCenterDataChangedListeners.get(userId);
         if (listeners == null) {
@@ -133,8 +131,7 @@ final class SafetyCenterListeners {
      * never registered.
      */
     boolean removeListener(
-            @NonNull IOnSafetyCenterDataChangedListener listener,
-            @UserIdInt int userId) {
+            @NonNull IOnSafetyCenterDataChangedListener listener, @UserIdInt int userId) {
         RemoteCallbackList<IOnSafetyCenterDataChangedListener> listeners =
                 mSafetyCenterDataChangedListeners.get(userId);
         if (listeners == null) {

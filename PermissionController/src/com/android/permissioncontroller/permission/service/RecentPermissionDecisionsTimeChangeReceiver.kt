@@ -23,6 +23,7 @@ import android.content.SharedPreferences
 import androidx.annotation.VisibleForTesting
 import androidx.preference.PreferenceManager
 import com.android.permissioncontroller.DumpableLog
+import com.android.permissioncontroller.permission.data.PermissionDecision
 import com.android.permissioncontroller.permission.utils.SystemTimeSource
 import com.android.permissioncontroller.permission.utils.TimeSource
 import kotlinx.coroutines.Dispatchers
@@ -38,8 +39,8 @@ import kotlin.math.abs
  * [Intent.ACTION_BOOT_COMPLETED] action.
  */
 class RecentPermissionDecisionsTimeChangeReceiver(
-    private val recentDecisionStorage: RecentPermissionDecisionsStorage =
-        RecentPermissionDecisionsStorage.getInstance(),
+    private val recentDecisionStorage: PermissionEventStorage<PermissionDecision> =
+        PermissionDecisionStorageImpl.getInstance(),
     private val timeSource: TimeSource = SystemTimeSource()
 ) : BroadcastReceiver() {
 
@@ -69,7 +70,7 @@ class RecentPermissionDecisionsTimeChangeReceiver(
     }
 
     override fun onReceive(context: Context, intent: Intent) {
-        if (!RecentPermissionDecisionsStorage.isRecordPermissionsSupported(context)) {
+        if (!PermissionDecisionStorageImpl.isRecordPermissionsSupported(context)) {
             return
         }
         when (val action = intent.action) {
@@ -109,7 +110,7 @@ class RecentPermissionDecisionsTimeChangeReceiver(
     @VisibleForTesting
     fun onTimeChanged(diffSystemTime: Long) {
         GlobalScope.launch(Dispatchers.IO) {
-            recentDecisionStorage.updateDecisionsBySystemTimeDelta(diffSystemTime)
+            recentDecisionStorage.updateEventsBySystemTimeDelta(diffSystemTime)
         }
     }
 
