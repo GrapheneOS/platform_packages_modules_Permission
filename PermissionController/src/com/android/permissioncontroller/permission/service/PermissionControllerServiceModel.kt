@@ -20,9 +20,6 @@ import android.content.pm.PackageManager
 import android.os.Process
 import android.permission.PermissionControllerManager.COUNT_ONLY_WHEN_GRANTED
 import android.permission.PermissionControllerManager.COUNT_WHEN_SYSTEM
-import android.permission.PermissionControllerManager.HIBERNATION_ELIGIBILITY_ELIGIBLE
-import android.permission.PermissionControllerManager.HIBERNATION_ELIGIBILITY_EXEMPT_BY_SYSTEM
-import android.permission.PermissionControllerManager.HIBERNATION_ELIGIBILITY_EXEMPT_BY_USER
 import android.permission.PermissionControllerManager.HIBERNATION_ELIGIBILITY_UNKNOWN
 import androidx.core.util.Consumer
 import androidx.lifecycle.Lifecycle
@@ -30,12 +27,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.Transformations
 import com.android.permissioncontroller.DumpableLog
-import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.PermissionControllerProto.PermissionControllerDumpProto
-import com.android.permissioncontroller.hibernation.isPackageHibernationExemptBySystem
-import com.android.permissioncontroller.hibernation.isPackageHibernationExemptByUser
 import com.android.permissioncontroller.permission.data.AppPermGroupUiInfoLiveData
-import com.android.permissioncontroller.permission.data.LightPackageInfoLiveData
+import com.android.permissioncontroller.permission.data.HibernationSettingStateLiveData
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.data.UserPackageInfosLiveData
@@ -313,24 +307,10 @@ class PermissionControllerServiceModel(private val service: PermissionController
         callback: IntConsumer
     ) {
         val user = Process.myUserHandle()
-        val packageLiveData = LightPackageInfoLiveData[packageName, user]
-        observeAndCheckForLifecycleState(packageLiveData) { pkg ->
-            GlobalScope.launch(Main.immediate) {
-                if (pkg == null) {
-                    // Possible that app is uninstalled or user is switched
-                    callback.accept(HIBERNATION_ELIGIBILITY_UNKNOWN)
-                } else {
-                    val exemptBySystem = isPackageHibernationExemptBySystem(pkg, user)
-                    val exemptByUser = isPackageHibernationExemptByUser(
-                        PermissionControllerApplication.get(), pkg)
-                    val eligibility = when {
-                        !exemptBySystem && !exemptByUser -> HIBERNATION_ELIGIBILITY_ELIGIBLE
-                        exemptBySystem -> HIBERNATION_ELIGIBILITY_EXEMPT_BY_SYSTEM
-                        else -> HIBERNATION_ELIGIBILITY_EXEMPT_BY_USER
-                    }
-                    callback.accept(eligibility)
-                }
-            }
+        val hibernationSettingLiveData = HibernationSettingStateLiveData[packageName, user]
+        observeAndCheckForLifecycleState(hibernationSettingLiveData) { hibernationSettingState ->
+            callback.accept(
+                hibernationSettingState?.hibernationEligibility ?: HIBERNATION_ELIGIBILITY_UNKNOWN)
         }
     }
 
