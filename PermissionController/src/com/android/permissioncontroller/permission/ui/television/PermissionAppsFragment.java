@@ -15,6 +15,8 @@
  */
 package com.android.permissioncontroller.permission.ui.television;
 
+import static android.Manifest.permission_group.NOTIFICATIONS;
+
 import static com.android.permissioncontroller.Constants.INVALID_SESSION_ID;
 
 import android.app.ActionBar;
@@ -80,6 +82,10 @@ public final class PermissionAppsFragment extends SettingsWithHeader implements 
         String groupName = getArguments().getString(Intent.EXTRA_PERMISSION_GROUP_NAME);
         if (groupName == null) {
             groupName = getArguments().getString(Intent.EXTRA_PERMISSION_NAME);
+        }
+        if (groupName.equals(NOTIFICATIONS)) {
+            getActivity().onBackPressed();
+            return;
         }
         mPermissionApps = new PermissionApps(getActivity(), groupName, this);
     }

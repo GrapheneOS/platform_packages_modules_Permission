@@ -48,7 +48,7 @@ import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveD
 import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPermission
-import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsStorage
+import com.android.permissioncontroller.permission.service.PermissionDecisionStorageImpl
 import com.android.permissioncontroller.permission.ui.handheld.v31.getDefaultPrecision
 import com.android.permissioncontroller.permission.ui.handheld.v31.isLocationAccuracyEnabled
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.ALLOW
@@ -844,7 +844,7 @@ class AppPermissionViewModel(
             if (permission.isGrantedIncludingAppOp != newPermission.isGrantedIncludingAppOp ||
                 permission.flags != newPermission.flags) {
                 logAppPermissionFragmentActionReported(changeId, newPermission, buttonPressed)
-                RecentPermissionDecisionsStorage.recordPermissionDecision(app.applicationContext,
+                PermissionDecisionStorageImpl.recordPermissionDecision(app.applicationContext,
                     packageName, permGroupName, newPermission.isGrantedIncludingAppOp)
             }
         }

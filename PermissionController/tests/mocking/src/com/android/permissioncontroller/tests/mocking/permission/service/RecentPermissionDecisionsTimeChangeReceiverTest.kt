@@ -27,7 +27,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.PermissionControllerApplication
-import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsStorageImpl
+import com.android.permissioncontroller.permission.service.PermissionDecisionStorageImpl
 import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsTimeChangeReceiver
 import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsTimeChangeReceiver.Companion.PREF_KEY_ELAPSED_REALTIME_SNAPSHOT
 import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsTimeChangeReceiver.Companion.PREF_KEY_SYSTEM_TIME_SNAPSHOT
@@ -75,7 +75,7 @@ class RecentPermissionDecisionsTimeChangeReceiverTest {
     lateinit var packageManager: PackageManager
 
     @Mock
-    lateinit var recentPermissionDecisionsStorage: RecentPermissionDecisionsStorageImpl
+    lateinit var recentPermissionDecisionsStorage: PermissionDecisionStorageImpl
 
     private val fakeTimeSource = FakeTimeSource()
     private lateinit var mockitoSession: MockitoSession
