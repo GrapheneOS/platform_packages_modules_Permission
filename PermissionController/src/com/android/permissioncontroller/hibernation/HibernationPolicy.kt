@@ -16,10 +16,10 @@
 
 package com.android.permissioncontroller.hibernation
 
-import android.annotation.SuppressLint
 import android.Manifest
 import android.Manifest.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION
 import android.accessibilityservice.AccessibilityService
+import android.annotation.SuppressLint
 import android.app.ActivityManager
 import android.app.ActivityManager.RunningAppProcessInfo.IMPORTANCE_CANT_SAVE_STATE
 import android.app.AppOpsManager
@@ -65,7 +65,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.preference.PreferenceManager
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.Constants
-import com.android.permissioncontroller.DeviceUtils
 import com.android.permissioncontroller.DumpableLog
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.R
@@ -100,15 +99,12 @@ const val DEBUG_OVERRIDE_THRESHOLDS = false
 // TODO eugenesusla: temporarily enabled for extra logs during dogfooding
 const val DEBUG_HIBERNATION_POLICY = true || DEBUG_OVERRIDE_THRESHOLDS
 
-private const val AUTO_REVOKE_ENABLED = true
-
 private var SKIP_NEXT_RUN = false
 
 private val DEFAULT_UNUSED_THRESHOLD_MS = TimeUnit.DAYS.toMillis(90)
 
 fun getUnusedThresholdMs() = when {
     DEBUG_OVERRIDE_THRESHOLDS -> TimeUnit.SECONDS.toMillis(1)
-    !isHibernationEnabled() && !AUTO_REVOKE_ENABLED -> Long.MAX_VALUE
     else -> DeviceConfig.getLong(DeviceConfig.NAMESPACE_PERMISSIONS,
             Utils.PROPERTY_HIBERNATION_UNUSED_THRESHOLD_MILLIS,
             DEFAULT_UNUSED_THRESHOLD_MS)
@@ -137,12 +133,6 @@ fun hibernationTargetsPreSApps(): Boolean {
     return DeviceConfig.getBoolean(NAMESPACE_APP_HIBERNATION,
         Utils.PROPERTY_HIBERNATION_TARGETS_PRE_S_APPS,
         false /* defaultValue */)
-}
-
-fun isHibernationJobEnabled(): Boolean {
-    return getCheckFrequencyMs() > 0 &&
-            getUnusedThresholdMs() > 0 &&
-            getUnusedThresholdMs() != Long.MAX_VALUE
 }
 
 /**
@@ -235,10 +225,6 @@ class HibernationOnBootReceiver : BroadcastReceiver() {
 private suspend fun getAppsToHibernate(
     context: Context
 ): Map<UserHandle, List<LightPackageInfo>> {
-    if (!isHibernationJobEnabled()) {
-        return emptyMap()
-    }
-
     val now = System.currentTimeMillis()
     val firstBootTime = context.firstBootTime
 
@@ -788,9 +774,9 @@ class InstallerPackagesLiveData(val user: UserHandle)
 object HibernationEnabledLiveData
     : MutableLiveData<Boolean>() {
     init {
-        value = SdkLevel.isAtLeastS() &&
+        postValue(SdkLevel.isAtLeastS() &&
             DeviceConfig.getBoolean(NAMESPACE_APP_HIBERNATION,
-            Utils.PROPERTY_APP_HIBERNATION_ENABLED, true /* defaultValue */)
+            Utils.PROPERTY_APP_HIBERNATION_ENABLED, true /* defaultValue */))
         DeviceConfig.addOnPropertiesChangedListener(
             NAMESPACE_APP_HIBERNATION,
             PermissionControllerApplication.get().mainExecutor,

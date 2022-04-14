@@ -23,15 +23,17 @@ import android.content.pm.PackageManager.FLAG_PERMISSION_GRANTED_BY_DEFAULT
 import android.content.pm.PackageManager.FLAG_PERMISSION_GRANTED_BY_ROLE
 import android.os.Handler
 import android.os.UserHandle
+import android.permission.PermissionControllerManager.HIBERNATION_ELIGIBILITY_ELIGIBLE
+import android.permission.PermissionControllerManager.HIBERNATION_ELIGIBILITY_EXEMPT_BY_SYSTEM
+import android.permission.PermissionControllerManager.HIBERNATION_ELIGIBILITY_EXEMPT_BY_USER
 import android.util.Log
 import com.android.permissioncontroller.PermissionControllerApplication
-import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData.Companion.NON_RUNTIME_NORMAL_PERMS
-import com.android.permissioncontroller.permission.model.livedatatypes.HibernationSettingState
 import com.android.permissioncontroller.hibernation.ExemptServicesLiveData
 import com.android.permissioncontroller.hibernation.HibernationEnabledLiveData
-import com.android.permissioncontroller.hibernation.isHibernationJobEnabled
-import com.android.permissioncontroller.hibernation.isPackageHibernationExemptByUser
 import com.android.permissioncontroller.hibernation.isPackageHibernationExemptBySystem
+import com.android.permissioncontroller.hibernation.isPackageHibernationExemptByUser
+import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData.Companion.NON_RUNTIME_NORMAL_PERMS
+import com.android.permissioncontroller.permission.model.livedatatypes.HibernationSettingState
 import kotlinx.coroutines.Job
 
 /**
@@ -99,7 +101,13 @@ class HibernationSettingStateLiveData private constructor(
             return
         }
 
-        val canHibernate = !isPackageHibernationExemptByUser(app, packageInfo)
+        val exemptBySystem = isPackageHibernationExemptBySystem(packageInfo, user)
+        val exemptByUser = isPackageHibernationExemptByUser(app, packageInfo)
+        val eligibility = when {
+            !exemptBySystem && !exemptByUser -> HIBERNATION_ELIGIBILITY_ELIGIBLE
+            exemptBySystem -> HIBERNATION_ELIGIBILITY_EXEMPT_BY_SYSTEM
+            else -> HIBERNATION_ELIGIBILITY_EXEMPT_BY_USER
+        }
         gotPastIsUserExempt = true
         val revocableGroups = mutableListOf<String>()
         if (!isPackageHibernationExemptBySystem(packageInfo, user)) {
@@ -116,7 +124,7 @@ class HibernationSettingStateLiveData private constructor(
         }
         gotPastIsSystemExempt = true
 
-        postValue(HibernationSettingState(isHibernationJobEnabled(), canHibernate, revocableGroups))
+        postValue(HibernationSettingState(eligibility, revocableGroups))
     }
 
     override fun onOpChanged(op: String?, packageName: String?) {
