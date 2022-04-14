@@ -509,8 +509,7 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Bezbednost i privatnost"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Skeniraj"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Odbaci"</string>
-    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (2734809473425036382) -->
-    <skip />
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Želite da odbacite ovo obaveštenje?"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Odbaci"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Otkaži"</string>
     <string name="security_settings" msgid="3808106921175271317">"Bezbednosna podešavanja"</string>
