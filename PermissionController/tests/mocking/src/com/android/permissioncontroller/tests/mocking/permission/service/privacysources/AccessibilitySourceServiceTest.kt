@@ -74,7 +74,7 @@ class AccessibilitySourceServiceTest {
             .strictness(Strictness.LENIENT).startMocking()
 
         accessibilitySourceService = runWithShellPermissionIdentity {
-            AccessibilitySourceService(context, { shouldCancel })
+            AccessibilitySourceService(context)
         }
 
         setAccessibilityFeatureFlag(true)
@@ -98,7 +98,7 @@ class AccessibilitySourceServiceTest {
                 accessibilitySourceService.processAccessibilityJob(
                     jobParameters,
                     jobService
-                )
+                ) { shouldCancel }
             }
         }
 
@@ -115,7 +115,7 @@ class AccessibilitySourceServiceTest {
                 accessibilitySourceService.processAccessibilityJob(
                     jobParameters,
                     jobService
-                )
+                ) { shouldCancel }
             }
         }
         verify(jobService).jobFinished(jobParameters, true)
@@ -130,7 +130,7 @@ class AccessibilitySourceServiceTest {
                 accessibilitySourceService.processAccessibilityJob(
                     jobParameters,
                     jobService
-                )
+                ) { shouldCancel }
             }
         }
 
