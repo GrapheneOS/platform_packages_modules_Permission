@@ -261,7 +261,8 @@ public class RoleService extends SystemService implements RoleUserState.Callback
         synchronized (mLock) {
             RoleUserState userState = mUserStates.get(userId);
             if (userState == null) {
-                userState = new RoleUserState(userId, mPlatformHelper, this);
+                userState = new RoleUserState(userId, mPlatformHelper, this,
+                        mBypassingRoleQualification);
                 mUserStates.put(userId, userState);
             }
             return userState;
@@ -524,6 +525,7 @@ public class RoleService extends SystemService implements RoleUserState.Callback
         public boolean isBypassingRoleQualification() {
             getContext().enforceCallingOrSelfPermission(Manifest.permission.MANAGE_ROLE_HOLDERS,
                     "isBypassingRoleQualification");
+
             synchronized (mLock) {
                 return mBypassingRoleQualification;
             }
@@ -533,8 +535,19 @@ public class RoleService extends SystemService implements RoleUserState.Callback
         public void setBypassingRoleQualification(boolean bypassRoleQualification) {
             getContext().enforceCallingOrSelfPermission(
                     Manifest.permission.BYPASS_ROLE_QUALIFICATION, "setBypassingRoleQualification");
+
             synchronized (mLock) {
+                if (mBypassingRoleQualification == bypassRoleQualification) {
+                    return;
+                }
                 mBypassingRoleQualification = bypassRoleQualification;
+
+                final int userStatesSize = mUserStates.size();
+                for (int i = 0; i < userStatesSize; i++) {
+                    final RoleUserState userState = mUserStates.valueAt(i);
+
+                    userState.setBypassingRoleQualification(bypassRoleQualification);
+                }
             }
         }
 
