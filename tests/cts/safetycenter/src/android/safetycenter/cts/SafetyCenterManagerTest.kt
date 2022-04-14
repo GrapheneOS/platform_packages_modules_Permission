@@ -610,7 +610,7 @@ class SafetyCenterManagerTest {
     fun refreshSafetySources_withRefreshReasonRescanButtonClick_sourceSendsRescanData() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SINGLE_SOURCE_CONFIG)
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.REFRESH_RESCAN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
+                SafetySourceDataKey(Reason.REFRESH_RESCAN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
             safetySourceDataCritical
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
@@ -626,7 +626,7 @@ class SafetyCenterManagerTest {
     fun refreshSafetySources_withRefreshReasonPageOpen_sourceSendsPageOpenData() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SINGLE_SOURCE_CONFIG)
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.REFRESH_PAGE_OPEN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
+                SafetySourceDataKey(Reason.REFRESH_PAGE_OPEN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
             safetySourceDataInformation
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
@@ -642,7 +642,8 @@ class SafetyCenterManagerTest {
     fun refreshSafetySources_whenSourceClearsData_sourceSendsNullData() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SINGLE_SOURCE_CONFIG)
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.REFRESH_RESCAN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] = null
+                SafetySourceDataKey(Reason.REFRESH_RESCAN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
+            null
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
             REFRESH_REASON_RESCAN_BUTTON_CLICK)
@@ -657,10 +658,12 @@ class SafetyCenterManagerTest {
     fun refreshSafetySources_withMultipleSourcesInConfig_multipleSourcesSendData() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_MULTIPLE_SOURCES_CONFIG)
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.REFRESH_RESCAN, CTS_MULTIPLE_SOURCES_CONFIG_SOURCE_ID_1)] =
+                SafetySourceDataKey(
+                    Reason.REFRESH_RESCAN, CTS_MULTIPLE_SOURCES_CONFIG_SOURCE_ID_1)] =
             safetySourceDataCritical
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.REFRESH_RESCAN, CTS_MULTIPLE_SOURCES_CONFIG_SOURCE_ID_2)] =
+                SafetySourceDataKey(
+                    Reason.REFRESH_RESCAN, CTS_MULTIPLE_SOURCES_CONFIG_SOURCE_ID_2)] =
             safetySourceDataInformation
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
@@ -680,7 +683,8 @@ class SafetyCenterManagerTest {
     fun refreshSafetySources_withMultipleSources_onlyOneSourceHasData_oneSourceSendData() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_MULTIPLE_SOURCES_CONFIG)
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.REFRESH_RESCAN, CTS_MULTIPLE_SOURCES_CONFIG_SOURCE_ID_1)] =
+                SafetySourceDataKey(
+                    Reason.REFRESH_RESCAN, CTS_MULTIPLE_SOURCES_CONFIG_SOURCE_ID_1)] =
             safetySourceDataCritical
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
@@ -700,11 +704,12 @@ class SafetyCenterManagerTest {
     fun refreshSafetySources_receiverSupportsMultipleSources_onlyRequestedSourceSendsData() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SINGLE_SOURCE_CONFIG)
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.REFRESH_RESCAN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
+                SafetySourceDataKey(Reason.REFRESH_RESCAN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
             safetySourceDataCritical
         val otherSourceId = "other_source_ids"
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.REFRESH_RESCAN, otherSourceId)] = safetySourceDataInformation
+                SafetySourceDataKey(Reason.REFRESH_RESCAN, otherSourceId)] =
+            safetySourceDataInformation
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
             REFRESH_REASON_RESCAN_BUTTON_CLICK)
@@ -719,7 +724,7 @@ class SafetyCenterManagerTest {
     fun refreshSafetySources_whenReceiverDoesNotHavePermission_sourceDoesNotSendData() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SINGLE_SOURCE_CONFIG)
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.REFRESH_RESCAN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
+                SafetySourceDataKey(Reason.REFRESH_RESCAN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
             safetySourceDataCritical
 
         safetyCenterManager.refreshSafetySourcesWithPermission(REFRESH_REASON_RESCAN_BUTTON_CLICK)
@@ -736,7 +741,7 @@ class SafetyCenterManagerTest {
     @Test
     fun refreshSafetySources_whenSourceNotInConfig_sourceDoesNotSendData() {
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.REFRESH_PAGE_OPEN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
+                SafetySourceDataKey(Reason.REFRESH_PAGE_OPEN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
             safetySourceDataInformation
 
         assertFailsWith(TimeoutCancellationException::class) {
@@ -749,7 +754,7 @@ class SafetyCenterManagerTest {
     fun refreshSafetySources_sendsBroadcastId() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SINGLE_SOURCE_CONFIG)
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.REFRESH_RESCAN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
+                SafetySourceDataKey(Reason.REFRESH_RESCAN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
             safetySourceDataCritical
 
         val lastReceivedBroadcastId =
@@ -763,7 +768,7 @@ class SafetyCenterManagerTest {
     fun refreshSafetySources_sendsDifferentBroadcastIds_onEachMethodCall() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SINGLE_SOURCE_CONFIG)
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.REFRESH_RESCAN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
+                SafetySourceDataKey(Reason.REFRESH_RESCAN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
             safetySourceDataCritical
 
         val broadcastId1 =
@@ -781,7 +786,7 @@ class SafetyCenterManagerTest {
         SafetyCenterFlags.setSafetyCenterEnabled(false)
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SINGLE_SOURCE_CONFIG)
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.REFRESH_PAGE_OPEN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
+                SafetySourceDataKey(Reason.REFRESH_PAGE_OPEN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
             safetySourceDataInformation
 
         assertFailsWith(TimeoutCancellationException::class) {
@@ -798,7 +803,7 @@ class SafetyCenterManagerTest {
     fun refreshSafetySources_refreshAfterSuccessfulRefresh_completesSuccessfully() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SINGLE_SOURCE_CONFIG)
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.REFRESH_PAGE_OPEN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
+                SafetySourceDataKey(Reason.REFRESH_PAGE_OPEN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
             safetySourceDataInformation
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
@@ -810,7 +815,7 @@ class SafetyCenterManagerTest {
         assertThat(apiSafetySourceData1).isEqualTo(safetySourceDataInformation)
 
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.REFRESH_PAGE_OPEN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
+                SafetySourceDataKey(Reason.REFRESH_PAGE_OPEN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
             safetySourceDataCritical
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
@@ -835,7 +840,7 @@ class SafetyCenterManagerTest {
 
         // Don't wait for the ongoing refresh to timeout.
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.REFRESH_PAGE_OPEN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
+                SafetySourceDataKey(Reason.REFRESH_PAGE_OPEN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
             safetySourceDataInformation
 
         safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
@@ -1225,7 +1230,7 @@ class SafetyCenterManagerTest {
         // Receive initial data.
         listener.receiveSafetyCenterData()
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.INLINE_ACTION, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
+                SafetySourceDataKey(Reason.INLINE_ACTION, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
             safetySourceDataInformation
 
         safetyCenterManager.executeSafetyCenterIssueActionWithReceiverPermissionAndWait(
@@ -1253,7 +1258,7 @@ class SafetyCenterManagerTest {
         listener.receiveSafetyCenterData()
         SafetySourceReceiver.shouldReportSafetySourceError = true
         SafetySourceReceiver.safetySourceData[
-            SafetySourceDataKey(Reason.INLINE_ACTION, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
+                SafetySourceDataKey(Reason.INLINE_ACTION, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
             safetySourceDataInformation
 
         safetyCenterManager.executeSafetyCenterIssueActionWithReceiverPermissionAndWait(
@@ -1305,6 +1310,38 @@ class SafetyCenterManagerTest {
     }
 
     @Test
+    fun clearAllSafetySourceDataForTests_clearsAllSafetySourceData() {
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_MULTIPLE_SOURCES_CONFIG)
+        safetyCenterManager.setSafetySourceDataWithPermission(
+            CTS_MULTIPLE_SOURCES_CONFIG_SOURCE_ID_1,
+            safetySourceDataUnspecified,
+            EVENT_SOURCE_STATE_CHANGED)
+        safetyCenterManager.setSafetySourceDataWithPermission(
+            CTS_MULTIPLE_SOURCES_CONFIG_SOURCE_ID_2,
+            safetySourceDataCritical,
+            EVENT_SOURCE_STATE_CHANGED)
+        val data1 =
+            safetyCenterManager.getSafetySourceDataWithPermission(
+                CTS_MULTIPLE_SOURCES_CONFIG_SOURCE_ID_1)
+        assertThat(data1).isEqualTo(safetySourceDataUnspecified)
+        val data2 =
+            safetyCenterManager.getSafetySourceDataWithPermission(
+                CTS_MULTIPLE_SOURCES_CONFIG_SOURCE_ID_2)
+        assertThat(data2).isEqualTo(safetySourceDataCritical)
+
+        safetyCenterManager.clearAllSafetySourceDataForTestsWithPermission()
+
+        val data1AfterClearing =
+            safetyCenterManager.getSafetySourceDataWithPermission(
+                CTS_MULTIPLE_SOURCES_CONFIG_SOURCE_ID_1)
+        assertThat(data1AfterClearing).isNull()
+        val data2AfterClearing =
+            safetyCenterManager.getSafetySourceDataWithPermission(
+                CTS_MULTIPLE_SOURCES_CONFIG_SOURCE_ID_2)
+        assertThat(data2AfterClearing).isNull()
+    }
+
+    @Test
     fun clearAllSafetySourceDataForTests_withoutPermission_throwsSecurityException() {
         assertFailsWith(SecurityException::class) {
             safetyCenterManager.clearAllSafetySourceDataForTests()
@@ -1325,6 +1362,19 @@ class SafetyCenterManagerTest {
         assertFailsWith(SecurityException::class) {
             safetyCenterManager.setSafetyCenterConfigForTests(CTS_SINGLE_SOURCE_CONFIG)
         }
+    }
+
+    @Test
+    fun clearSafetyCenterConfigForTests_clearsConfigSetForTests_doesNotSetConfigToNull() {
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SINGLE_SOURCE_CONFIG)
+        assertThat(safetyCenterManager.getSafetyCenterConfigWithPermission())
+            .isEqualTo(CTS_SINGLE_SOURCE_CONFIG)
+        safetyCenterManager.clearSafetyCenterConfigForTestsWithPermission()
+
+        val config = safetyCenterManager.getSafetyCenterConfigWithPermission()
+
+        assertThat(config).isNotNull()
+        assertThat(config).isNotEqualTo(CTS_SINGLE_SOURCE_CONFIG)
     }
 
     @Test

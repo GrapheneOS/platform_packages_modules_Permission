@@ -321,6 +321,40 @@ class SafetySourceIssueTest {
     }
 
     @Test
+    fun getActions_mutationsAreNotAllowed() {
+        val safetySourceIssue =
+            SafetySourceIssue.Builder(
+                    "Issue id",
+                    "Issue title",
+                    "Issue summary",
+                    SEVERITY_LEVEL_INFORMATION,
+                    "issue_type_id")
+                .addAction(action1)
+                .addAction(action2)
+                .build()
+        val mutatedActions = safetySourceIssue.actions
+
+        assertFailsWith(UnsupportedOperationException::class) { mutatedActions.add(action3) }
+    }
+
+    @Test
+    fun builder_addAction_doesNotMutatePreviouslyBuiltInstance() {
+        val safetySourceIssueBuilder =
+            SafetySourceIssue.Builder(
+                    "Issue id",
+                    "Issue title",
+                    "Issue summary",
+                    SEVERITY_LEVEL_INFORMATION,
+                    "issue_type_id")
+                .addAction(action1)
+        val actions = safetySourceIssueBuilder.build().actions
+
+        safetySourceIssueBuilder.addAction(action2)
+
+        assertThat(actions).containsExactly(action1)
+    }
+
+    @Test
     fun clearActions_removesAllActions() {
         val safetySourceIssue =
             SafetySourceIssue.Builder(
