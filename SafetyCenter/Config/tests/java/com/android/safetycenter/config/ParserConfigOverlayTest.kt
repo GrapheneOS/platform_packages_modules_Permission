@@ -22,13 +22,13 @@ import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import com.android.compatibility.common.util.SystemUtil.runShellCommand
+import com.android.safetycenter.config.Coroutines.waitForTestToPass
 import com.android.safetycenter.config.Coroutines.waitForWithTimeout
 import com.android.safetycenter.config.tests.R
-import com.google.common.collect.Range
 import com.google.common.truth.Truth.assertThat
-import org.junit.After
+import org.junit.AfterClass
 import org.junit.Assert.assertThrows
-import org.junit.Before
+import org.junit.BeforeClass
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -37,21 +37,8 @@ import org.junit.runner.RunWith
 class ParserConfigOverlayTest {
     private val context: Context = getApplicationContext()
 
-    @Before
-    fun install() {
-        runShellCommand("pm install -r --force-sdk --force-queryable $OVERLAY_PATH")
-        waitForWithTimeout { getStateForOverlay(OVERLAY_PACKAGE) == STATE_DISABLED }
-        runShellCommand("cmd overlay enable --user 0 $OVERLAY_PACKAGE")
-        waitForWithTimeout { getStateForOverlay(OVERLAY_PACKAGE) == STATE_ENABLED }
-    }
-
-    @After
-    fun uninstall() {
-        runShellCommand("pm uninstall $OVERLAY_PACKAGE")
-    }
-
     @Test
-    fun validNotOverlayableConfig_matchesExpected() {
+    fun validNotOverlayableConfig_matchesExpected() = waitForTestToPass {
         val inputStream = context.resources.openRawResource(R.raw.config_valid_not_overlayable)
 
         val safetyCenterConfig =
@@ -85,7 +72,7 @@ class ParserConfigOverlayTest {
     }
 
     @Test
-    fun validOverlayableConfig_matchesExpected() {
+    fun validOverlayableConfig_matchesExpected() = waitForTestToPass {
         val inputStream = context.resources.openRawResource(R.raw.config_valid_overlayable)
 
         val safetyCenterConfig =
@@ -116,19 +103,20 @@ class ParserConfigOverlayTest {
     }
 
     @Test
-    fun invalidOverlayableConfig_StringResourceNameInvalid_throws() {
-        val inputStream = context.resources.openRawResource(
-            R.raw.config_string_resource_name_invalid_overlayable
-        )
+    fun invalidOverlayableConfig_StringResourceNameInvalid_throws() = waitForTestToPass {
+        val inputStream =
+            context.resources.openRawResource(R.raw.config_string_resource_name_invalid_overlayable)
 
-        val thrown = assertThrows(ParseException::class.java) {
-            SafetyCenterConfigParser.parseXmlResource(inputStream, context.resources)
-        }
+        val thrown =
+            assertThrows(ParseException::class.java) {
+                SafetyCenterConfigParser.parseXmlResource(inputStream, context.resources)
+            }
 
-        assertThat(thrown).hasMessageThat().isEqualTo(
-            "Resource name @com.android.safetycenter.config.tests:string/reference_overlay in " +
-                "static-safety-source.summary missing or invalid"
-        )
+        assertThat(thrown)
+            .hasMessageThat()
+            .isEqualTo(
+                "Resource name \"@com.android.safetycenter.config.tests:string/reference_overlay" +
+                    "\" in static-safety-source.summary missing or invalid")
     }
 
     companion object {
@@ -136,25 +124,29 @@ class ParserConfigOverlayTest {
         private const val OVERLAY_PACKAGE = "com.android.safetycenter.config.tests.overlay"
         private const val OVERLAY_PATH =
             "/data/local/tmp/com/safetycenter/config/tests/SafetyCenterConfigTestsOverlay.apk"
-        private const val OVERLAY_WAIT_TIMEOUT_MILLIS = 10000
         private const val STATE_ENABLED = "STATE_ENABLED"
-        private const val STATE_DISABLED = "STATE_DISABLED"
 
         private fun getStateForOverlay(overlayPackage: String): String? {
-            val result: String = runShellCommand("cmd overlay dump")
-            val startIndex = result.indexOf("$overlayPackage:0")
-            if (startIndex < 0) {
+            val result: String = runShellCommand("cmd overlay dump --user 0 state $overlayPackage")
+            if (!result.startsWith("STATE_")) {
                 return null
             }
-            val endIndex = result.indexOf('}', startIndex)
-            assertThat(endIndex).isGreaterThan(startIndex)
-            val stateIndex = result.indexOf("mState", startIndex)
-            assertThat(stateIndex).isIn(Range.open(startIndex, endIndex))
-            val colonIndex = result.indexOf(':', stateIndex)
-            assertThat(colonIndex).isIn(Range.open(stateIndex, endIndex))
-            val endLineIndex = result.indexOf('\n', colonIndex)
-            assertThat(endLineIndex).isIn(Range.open(colonIndex, endIndex))
-            return result.substring(colonIndex + 2, endLineIndex)
+            return result.trim()
+        }
+
+        @JvmStatic
+        @BeforeClass
+        fun install() {
+            runShellCommand("pm install -r --force-sdk --force-queryable $OVERLAY_PATH")
+            waitForWithTimeout { getStateForOverlay(OVERLAY_PACKAGE) != null }
+            runShellCommand("cmd overlay enable --user 0 $OVERLAY_PACKAGE")
+            waitForWithTimeout { getStateForOverlay(OVERLAY_PACKAGE) == STATE_ENABLED }
+        }
+
+        @JvmStatic
+        @AfterClass
+        fun uninstall() {
+            runShellCommand("pm uninstall $OVERLAY_PACKAGE")
         }
     }
 }
