@@ -18,27 +18,16 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"ਸੁਰੱਖਿਆ ਕੇਂਦਰ ਸੰਬੰਧੀ ਸਰੋਤ"</string>
-    <!-- no translation found for lock_screen_sources_title (3317906280484627707) -->
-    <skip />
+    <string name="lock_screen_sources_title" msgid="3317906280484627707">"ਡੀਵਾਈਸ ਲਾਕ"</string>
     <string name="lock_screen_title" msgid="4069104894527169877">"ਸਕ੍ਰੀਨ ਲਾਕ"</string>
-    <!-- no translation found for lock_screen_summary_disabled (354071230916616692) -->
-    <skip />
-    <!-- no translation found for privacy_sources_title (4061110826457365957) -->
-    <skip />
-    <!-- no translation found for privacy_sources_summary (4089719981155120864) -->
-    <skip />
-    <!-- no translation found for permission_usage_title (3633779688945350407) -->
-    <skip />
-    <!-- no translation found for permission_usage_summary (5323079206029964468) -->
-    <skip />
-    <!-- no translation found for permission_manager_title (5277347862821255015) -->
-    <skip />
-    <!-- no translation found for permission_manager_summary (8099852107340970790) -->
-    <skip />
-    <!-- no translation found for advanced_title (8745436380690561172) -->
-    <skip />
-    <!-- no translation found for advanced_security_title (1126833338772188155) -->
-    <skip />
-    <!-- no translation found for advanced_security_summary (6172253327022425123) -->
-    <skip />
+    <string name="lock_screen_summary_disabled" msgid="354071230916616692">"ਅਜੇ ਕੋਈ ਜਾਣਕਾਰੀ ਨਹੀਂ ਹੈ"</string>
+    <string name="privacy_sources_title" msgid="4061110826457365957">"ਪਰਦੇਦਾਰੀ"</string>
+    <string name="privacy_sources_summary" msgid="4089719981155120864">"ਡੈਸ਼ਬੋਰਡ, ਇਜਾਜ਼ਤਾਂ, ਕੰਟਰੋਲ"</string>
+    <string name="permission_usage_title" msgid="3633779688945350407">"ਪਰਦੇਦਾਰੀ ਸੰਬੰਧੀ ਡੈਸ਼ਬੋਰਡ"</string>
+    <string name="permission_usage_summary" msgid="5323079206029964468">"ਦਿਖਾਓ ਕਿ ਕਿਹੜੀਆਂ ਐਪਾਂ ਨੇ ਹਾਲ ਹੀ ਵਿੱਚ ਇਜਾਜ਼ਤਾਂ ਵਰਤੀਆਂ ਹਨ"</string>
+    <string name="permission_manager_title" msgid="5277347862821255015">"ਇਜਾਜ਼ਤ ਪ੍ਰਬੰਧਕ"</string>
+    <string name="permission_manager_summary" msgid="8099852107340970790">"ਐਪ ਦੀ ਤੁਹਾਡੇ ਡਾਟੇ ਤੱਕ ਪਹੁੰਚ ਕੰਟਰੋਲ ਕਰੋ"</string>
+    <string name="advanced_title" msgid="8745436380690561172">"ਹੋਰ ਸੈਟਿੰਗਾਂ"</string>
+    <string name="advanced_security_title" msgid="1126833338772188155">"ਹੋਰ ਸੁਰੱਖਿਆ ਸੈਟਿੰਗਾਂ"</string>
+    <string name="advanced_security_summary" msgid="6172253327022425123">"ਇਨਕ੍ਰਿਪਸ਼ਨ, ਕ੍ਰੀਡੈਂਸ਼ੀਅਲ ਅਤੇ ਹੋਰ ਬਹੁਤ ਕੁਝ"</string>
 </resources>
