@@ -27,7 +27,7 @@
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"ആപ്പ് കണ്ടെത്തിയില്ല"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"അനുവദിക്കരുത്"</string>
     <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"അനുവദിക്കരുത്, വീണ്ടും ആവശ്യപ്പെടരുത്"</string>
-    <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“ആപ്പ് ഉപയോഗത്തിലിരിക്കുമ്പോൾ” നിലനിർത്തുക"</string>
+    <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“ആപ്പ് ഉപയോഗത്തിലിരിക്കുമ്പോൾ” തുടരുക"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“ഇപ്പോഴത്തേക്ക് മാത്രം” നിലനിർത്തുക"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"കൂടുതൽ വിവരങ്ങൾ"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"എന്തായാലും അനുവദിക്കരുത്"</string>
@@ -217,7 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> അനുമതിയും മറ്റ് <xliff:g id="NUMBER">%2$s</xliff:g> അനുമതികളും നീക്കം ചെയ്തു"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"ഉപയോഗിക്കാത്ത ആപ്പുകൾ"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"ഒരു ആപ്പ് ഏതാനും മാസങ്ങളായി ഉപയോഗിക്കുന്നില്ലെങ്കിൽ:\n\n• നിങ്ങളുടെ ഡാറ്റ സംരക്ഷിക്കാൻ, അനുമതികൾ നീക്കം ചെയ്യുന്നു\n• ബാറ്ററി ലാഭിക്കാൻ, അറിയിപ്പുകൾ നൽകുന്നത് നിർത്തുന്നു\n• ഇടമുണ്ടാക്കാൻ, താൽക്കാലിക ഫയലുകൾ നീക്കം ചെയ്യുന്നു\n\nഅനുമതികളും അറിയിപ്പുകളും വീണ്ടും അനുവദിക്കാൻ, ആപ്പ് തുറക്കുക."</string>
-    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"ഒരു ആപ്പ് കുറച്ച് മാസം ഉപയോഗിക്കാതിരുന്നാൽ:\n\n• നിങ്ങളുടെ ഡാറ്റ സംരക്ഷിക്കാൻ അനുമതികൾ നീക്കം ചെയ്യും\n• ഇടമുണ്ടാക്കാൻ താൽക്കാലിക ഫയലുകൾ നീക്കം ചെയ്യും\n\nവീണ്ടും അനുമതികൾ അനുവദിക്കാൻ ആപ്പ് തുറക്കുക."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"ഒരു ആപ്പ് കുറച്ച് മാസം ഉപയോഗിക്കാതിരുന്നാൽ:\n\n• നിങ്ങളുടെ ഡാറ്റ സംരക്ഷിക്കുന്നതിന് അനുമതികൾ നീക്കം ചെയ്യും\n• ഇടമുണ്ടാക്കാൻ താൽക്കാലിക ഫയലുകൾ നീക്കം ചെയ്യും\n\nവീണ്ടും അനുമതികൾ അനുവദിക്കാൻ ആപ്പ് തുറക്കുക."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"അവസാനം തുറന്നിട്ട് <xliff:g id="NUMBER">%s</xliff:g> മാസത്തിൽ കൂടുതലായവ"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"ആപ്പ് അവസാനം തുറന്നത് <xliff:g id="DATE">%s</xliff:g>-നാണ്"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"അവസാനം തുറന്നത് <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -472,9 +472,9 @@
     <string name="permgrouprequest_phone" msgid="1829234136997316752">"ഫോൺ കോളുകൾ ചെയ്യാനും അവ മാനേജ് ചെയ്യാനും &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"നിങ്ങളുടെ പ്രധാന ആരോഗ്യ വിവരങ്ങളുടെ സെൻസർ ഡാറ്റ ആക്‌സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കണോ?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"ആപ്പ് ഉപയോഗിക്കാത്തപ്പോൾ പോലും, നിങ്ങളുടെ പ്രധാന ആരോഗ്യ വിവര സൂചനകൾ സംബന്ധിച്ച സെൻസർ ഡാറ്റ ഈ ആപ്പിന് എപ്പോഴും ആക്‌സസ് ചെയ്യേണ്ടി വന്നേക്കാം. ഇത് മാറ്റാൻ, "<annotation id="link">"ക്രമീകരണത്തിലേക്ക് പോകുക"</annotation>"."</string>
-    <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"നിങ്ങളുടെ വൈറ്റൽ സൈനുകളെ കുറിച്ചുള്ള സെൻസർ ഡാറ്റ ആക്സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>
+    <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"നിങ്ങളുടെ പ്രധാന ആരോഗ്യ വിവരങ്ങളുടെ സെൻസർ ഡാറ്റ ആക്സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കണോ?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"ആപ്പ് ഉപയോഗിക്കാത്ത സമയത്ത് ഉൾപ്പെടെ, എല്ലായ്‌പ്പോഴും ബോഡി സെൻസർ ഡാറ്റ ആക്‌സസ് ചെയ്യാൻ ഈ ആപ്പിനെ അനുവദിക്കുന്നതിന് "<annotation id="link">"ക്രമീകരണത്തിലേക്ക് പോകുക."</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ബോഡി സെൻസർ ഡാറ്റ ആക്‌സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കുന്നത് ആപ്പ് ഉപയോഗിക്കുമ്പോഴും തുടരണോ?"</string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ആപ്പ് ഉപയോഗിക്കുമ്പോഴും ബോഡി സെൻസർ ഡാറ്റ ആക്‌സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കുന്നത് തുടരണോ?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"നിങ്ങൾക്ക് അറിയിപ്പുകൾ അയയ്ക്കാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കണോ?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"നിങ്ങൾക്ക് അറിയിപ്പുകൾ അയക്കുന്നത് തുടരാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കണോ?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"നിയന്ത്രിത അനുമതികൾ"</string>
