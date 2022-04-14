@@ -25,7 +25,7 @@
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"ആപ്പ് കണ്ടെത്തിയില്ല"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"അനുവദിക്കരുത്"</string>
     <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"അനുവദിക്കരുത്, വീണ്ടും ആവശ്യപ്പെടരുത്"</string>
-    <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“ആപ്പ് ഉപയോഗത്തിലിരിക്കുമ്പോൾ” നിലനിർത്തുക"</string>
+    <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"“ആപ്പ് ഉപയോഗത്തിലിരിക്കുമ്പോൾ” തുടരുക"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"“ഇപ്പോഴത്തേക്ക് മാത്രം” നിലനിർത്തുക"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"കൂടുതൽ വിവരങ്ങൾ"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"എന്തായാലും അനുവദിക്കരുത്"</string>
