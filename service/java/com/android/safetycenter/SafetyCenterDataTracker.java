@@ -35,6 +35,7 @@ import android.safetycenter.SafetyCenterData;
 import android.safetycenter.SafetyCenterEntry;
 import android.safetycenter.SafetyCenterEntryGroup;
 import android.safetycenter.SafetyCenterEntryOrGroup;
+import android.safetycenter.SafetyCenterErrorDetails;
 import android.safetycenter.SafetyCenterIssue;
 import android.safetycenter.SafetyCenterStaticEntry;
 import android.safetycenter.SafetyCenterStaticEntryGroup;
@@ -161,12 +162,14 @@ final class SafetyCenterDataTracker {
 
     /**
      * Reports the given {@link SafetySourceErrorDetails} for the given {@code safetySourceId} and
-     * {@code userId} against the given {@link SafetyCenterConfigInternal}.
+     * {@code userId} against the given {@link SafetyCenterConfigInternal}, and returns a {@link
+     * SafetyCenterErrorDetails} describing the issue.
      *
      * <p>Throws if the request is invalid based on the {@link SafetyCenterConfigInternal}: the
      * given {@code safetySourceId}, {@code packageName} and/or {@code userId} are unexpected.
      */
-    void reportSafetySourceError(
+    @NonNull
+    SafetyCenterErrorDetails reportSafetySourceError(
             @NonNull SafetyCenterConfigInternal configInternal,
             @NonNull String safetySourceId,
             @NonNull SafetySourceErrorDetails safetySourceErrorDetails,
@@ -174,6 +177,7 @@ final class SafetyCenterDataTracker {
             @UserIdInt int userId) {
         validateRequest(configInternal, null, safetySourceId, packageName, userId);
         processSafetyEvent(safetySourceId, safetySourceErrorDetails.getSafetyEvent(), userId);
+        return toSafetyCenterErrorDetails(safetySourceId, safetySourceErrorDetails);
     }
 
     /**
@@ -952,6 +956,14 @@ final class SafetyCenterDataTracker {
             return null;
         }
         return getString(stringId);
+    }
+
+    @NonNull
+    private static SafetyCenterErrorDetails toSafetyCenterErrorDetails(
+            @NonNull String safetySourceId,
+            @NonNull SafetySourceErrorDetails safetySourceErrorDetails) {
+        // TODO(b/229080761): Implement proper error message.
+        return new SafetyCenterErrorDetails("Error");
     }
 
     @Nullable

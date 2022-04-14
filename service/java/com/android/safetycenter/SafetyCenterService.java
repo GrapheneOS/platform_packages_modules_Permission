@@ -249,12 +249,14 @@ public final class SafetyCenterService extends SystemService {
             UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
 
             SafetyCenterData safetyCenterData;
+            SafetyCenterErrorDetails safetyCenterErrorDetails;
             List<RemoteCallbackList<IOnSafetyCenterDataChangedListener>> listeners;
             synchronized (mApiLock) {
                 SafetyCenterConfigReader.SafetyCenterConfigInternal configInternal =
                         mSafetyCenterConfigReader.getCurrentConfigInternal();
-                mSafetyCenterDataTracker.reportSafetySourceError(
-                        configInternal, safetySourceId, errorDetails, packageName, userId);
+                safetyCenterErrorDetails =
+                        mSafetyCenterDataTracker.reportSafetySourceError(
+                                configInternal, safetySourceId, errorDetails, packageName, userId);
                 safetyCenterData =
                         mSafetyCenterDataTracker.getSafetyCenterData(
                                 configInternal, userProfileGroup);
@@ -263,10 +265,7 @@ public final class SafetyCenterService extends SystemService {
 
             // TODO(b/228832622): Ensure listeners are called only when data changes.
             SafetyCenterListeners.deliverUpdate(
-                    listeners,
-                    safetyCenterData,
-                    // TODO(b/229080761): Implement proper error message.
-                    new SafetyCenterErrorDetails("Error"));
+                    listeners, safetyCenterData, safetyCenterErrorDetails);
         }
 
         @Override
