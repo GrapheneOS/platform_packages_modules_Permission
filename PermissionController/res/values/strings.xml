@@ -1445,7 +1445,7 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="permgroupbackgroundrequest_sensors">Allow
         &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access the sensor data about your vital signs?</string>
     <!-- Subtitle of the message shown to the user when the apps requests permission to use the body sensors while app is in foreground and background. Try to keep the link annotation at the end of the string [CHAR LIMIT=NONE] -->
-    <string name="permgroupbackgroundrequestdetail_sensors">To let this app access body sensor data all the time, even when you\u2019rere not using the app, <annotation id="link">go to settings.</annotation></string>
+    <string name="permgroupbackgroundrequestdetail_sensors">To let this app access body sensor data all the time, even when you\u2019re not using the app, <annotation id="link">go to settings.</annotation></string>
     <!-- Message shown to the user when the apps requests permission to use the body sensors while app is in foreground and background. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
     <string name="permgroupupgraderequest_sensors">Keep allowing &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access body sensor data while app is in use?</string>
 
