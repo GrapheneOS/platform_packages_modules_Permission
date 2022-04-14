@@ -17,15 +17,18 @@
 package com.android.permissioncontroller.privacysources
 
 import android.content.BroadcastReceiver
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_BOOT_COMPLETED
+import android.content.pm.PackageManager
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyCenterManager.ACTION_REFRESH_SAFETY_SOURCES
 import android.safetycenter.SafetyCenterManager.ACTION_SAFETY_CENTER_ENABLED_CHANGED
 import android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCE_IDS
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.PermissionControllerApplication
+import com.android.permissioncontroller.permission.service.v33.SafetyCenterQsTileService
 import com.android.permissioncontroller.permission.utils.Utils
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
@@ -65,6 +68,7 @@ class SafetyCenterReceiver(
         when (intent.action) {
             ACTION_SAFETY_CENTER_ENABLED_CHANGED -> {
                 safetyCenterEnabledChanged(
+                    context,
                     safetyCenterManager.isSafetyCenterEnabled,
                     mapOfSourceIdsToSources.values)
             }
@@ -93,6 +97,7 @@ class SafetyCenterReceiver(
     }
 
     private fun safetyCenterEnabledChanged(
+        context: Context,
         enabled: Boolean,
         privacySources: Collection<PrivacySource>
     ) {
@@ -100,6 +105,20 @@ class SafetyCenterReceiver(
             CoroutineScope(dispatcher).launch {
                 source.safetyCenterEnabledChanged(enabled)
             }
+        }
+        updateTileVisibility(context, enabled)
+    }
+
+    private fun updateTileVisibility(context: Context, enabled: Boolean) {
+        val tileComponent = ComponentName(context, SafetyCenterQsTileService::class.java)
+        val wasEnabled = context.packageManager?.getComponentEnabledSetting(tileComponent) !=
+                PackageManager.COMPONENT_ENABLED_STATE_DISABLED
+        if (enabled && !wasEnabled) {
+            context.packageManager.setComponentEnabledSetting(tileComponent,
+                PackageManager.COMPONENT_ENABLED_STATE_ENABLED, 0)
+        } else if (!enabled && wasEnabled) {
+            context.packageManager.setComponentEnabledSetting(tileComponent,
+                PackageManager.COMPONENT_ENABLED_STATE_DISABLED, 0)
         }
     }
 

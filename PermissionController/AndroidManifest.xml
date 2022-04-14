@@ -127,7 +127,6 @@
             </intent-filter>
         </receiver>
 
-
         <service android:name="com.android.permissioncontroller.permission.service.LocationAccessCheck$LocationAccessCheckJobService"
                  android:permission="android.permission.BIND_JOB_SERVICE" />
 
