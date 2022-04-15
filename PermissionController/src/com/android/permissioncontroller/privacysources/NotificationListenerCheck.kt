@@ -349,7 +349,7 @@ internal class NotificationListenerCheckInternal(
     /**
      * Persist the list of [components][NlsComponent] we have already shown a notification for.
      *
-     * @param packages The list of packages we have already shown a notification for.
+     * @param nlsComponents The list of packages we have already shown a notification for.
      */
     @WorkerThread
     private suspend fun persistNotifiedComponentsLocked(
@@ -476,7 +476,8 @@ internal class NotificationListenerCheckInternal(
             try {
                 if (DEBUG) {
                     Log.v(TAG, "Attempting to get PackageInfo for " +
-                        "${componentToNotifyFor.packageName}")
+                        componentToNotifyFor.packageName
+                    )
                 }
                 pkgInfo = getPackageInfoForComponentName(componentToNotifyFor)
             } catch (e: PackageManager.NameNotFoundException) {
@@ -525,7 +526,7 @@ internal class NotificationListenerCheckInternal(
      * Create a notification reminding the user that a package has an enabled notification listener.
      * From this notification the user can directly go to Safety Center to assess issue.
      *
-     * @param component the [NlsComponent] of the Notification Listener
+     * @param componentName the [NlsComponent] of the Notification Listener
      * @param pkg The [PackageInfo] for the [ComponentName] package
      */
     private fun createNotificationForNotificationListener(
@@ -562,6 +563,24 @@ internal class NotificationListenerCheckInternal(
                 pkgLabel
             )
 
+        // Use PbA branding if available, otherwise default to more generic branding
+        val pbaLabel = parentUserContext.getString(android.R.string.safety_protection_display_text)
+        val appLabel: CharSequence?
+        val smallIconResId: Int
+        val colorResId: Int
+        if (pbaLabel != null && pbaLabel.isNotEmpty()) {
+            // PbA branding and colors
+            appLabel = pbaLabel
+            smallIconResId = android.R.drawable.ic_safety_protection
+            // TODO(b/213357911): replace with Safety Center resource
+            colorResId = R.color.safety_center_info
+        } else {
+            // Generic branding. Settings label, gear icon, and system accent color
+            appLabel = Utils.getSettingsLabelForNotifications(parentUserContext.packageManager)
+            smallIconResId = R.drawable.ic_settings_24dp
+            colorResId = android.R.color.system_notification_accent_color
+        }
+
         val b: Notification.Builder =
             Notification.Builder(parentUserContext, Constants.PERMISSION_REMINDER_CHANNEL_ID)
                 .setLocalOnly(true)
@@ -569,10 +588,8 @@ internal class NotificationListenerCheckInternal(
                 .setContentText(text)
                 // Ensure entire text can be displayed, instead of being truncated to one line
                 .setStyle(Notification.BigTextStyle().bigText(text))
-                .setSmallIcon(android.R.drawable.ic_safety_protection)
-                // TODO(b/213357911): replace with Safety Center resource
-                .setColor(
-                    parentUserContext.getColor(R.color.safety_center_info))
+                .setSmallIcon(smallIconResId)
+                .setColor(parentUserContext.getColor(colorResId))
                 .setAutoCancel(true)
                 .setDeleteIntent(
                     PendingIntent.getBroadcast(
@@ -587,10 +604,11 @@ internal class NotificationListenerCheckInternal(
                     )
                 )
 
-        val appName = parentUserContext.getString(android.R.string.safety_protection_display_text)
-        val appNameExtras = Bundle()
-        appNameExtras.putString(Notification.EXTRA_SUBSTITUTE_APP_NAME, appName)
-        b.addExtras(appNameExtras)
+        if (appLabel != null && appLabel.isNotEmpty()) {
+            val appNameExtras = Bundle()
+            appNameExtras.putString(Notification.EXTRA_SUBSTITUTE_APP_NAME, appLabel.toString())
+            b.addExtras(appNameExtras)
+        }
 
         val notificationManager =
             getSystemServiceSafe(parentUserContext, NotificationManager::class.java)

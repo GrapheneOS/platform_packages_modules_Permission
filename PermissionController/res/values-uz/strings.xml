@@ -480,7 +480,7 @@
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Bu ilova organizm holati haqidagi sensor maʼlumotlaringizdan doimiy foydalanishga ruxsat olmoqchi. Bu ruxsatni berish uchun "<annotation id="link">"sozlamalarni oching."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun organizm holati haqidagi sensor axborotlariga ruxsat berilsinmi?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Bu ilovaga tanadagi sensor maʼlumotlaridan foydalanishga (hatto ilova yopiqligida ham) doimiy ruxsat berish uchun "<annotation id="link">"sozlamalarni oching."</annotation></string>
-    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ilovasi tanadagi sensor maʼlumotlaridan foydalanishiga ruxsat berilaversinmi?"</string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ilovasining tanadagi sensor maʼlumotlaridan foydalanishiga ruxsat berilsinmi?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ilovasiga sizga bildirishnomalar yuborishi uchun ruxsat berilsinmi?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ilovasining sizga bildirishnomalar yuborishda davom etishiga ruxsat berasizmi?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Boshqariluvchi ruxsatlar"</string>
@@ -509,8 +509,7 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Xavfsizlik va maxfiylik"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Qidiruv"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Yopish"</string>
-    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (2734809473425036382) -->
-    <skip />
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Bu ogohlantirish yopilsinmi?"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Yopish"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Bekor qilish"</string>
     <string name="security_settings" msgid="3808106921175271317">"Xavfsizlik sozlamalari"</string>
