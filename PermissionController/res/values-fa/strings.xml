@@ -27,7 +27,7 @@
     <string name="app_not_found_dlg_title" msgid="6029482906093859756">"برنامه یافت نشد"</string>
     <string name="grant_dialog_button_deny" msgid="88262611492697192">"مجاز نیست"</string>
     <string name="grant_dialog_button_deny_and_dont_ask_again" msgid="1748925431574312595">"مجاز نیست و دیگر سؤال نشود"</string>
-    <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"حفظ کردن «هنگامی که از برنامه استفاده می‌شود»"</string>
+    <string name="grant_dialog_button_no_upgrade" msgid="8344732743633736625">"تغییر ندادن اجازه «هنگامی که از برنامه استفاده می‌شود»"</string>
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"«فقط این بار» نگه داشته شود"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"اطلاعات بیشتر"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"درهرصورت مجاز نیست"</string>
@@ -217,7 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"اجازه <xliff:g id="PERMISSION_NAME">%1$s</xliff:g> و <xliff:g id="NUMBER">%2$s</xliff:g> اجازه دیگر برداشته شده است"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"برنامه‌های استفاده‌نشده"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"اگر چند ماه از برنامه‌ای استفاده نشود:\n\n• اجازه‌ها برای محافظت از داده‌های شما حذف می‌شوند\n• اعلان‌ها برای صرفه‌جویی در مصرف باتری متوقف می‌شوند\n• فایل‌های موقت برای آزادسازی فضا حذف می‌شوند\n\nبرای اینکه اجازه‌ها و اعلان‌ها دوباره مجاز شود، برنامه را باز کنید."</string>
-    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"اگر چند ماه از برنامه‌ای استفاده نشود:\n\n• اجازه‌ها برای محافظت از داده‌های شما حذف می‌شوند\n• فایل‌های موقت برای آزادسازی فضا حذف می‌شوند\n\nبرای اینکه اجازه‌ها دوباره مجاز شود، برنامه را باز کنید."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"اگر چند ماه از برنامه‌ای استفاده نشود:\n\n• اجازه‌ها برای محافظت از داده‌های شما برداشته می‌شوند\n• فایل‌های موقت برای آزادسازی فضا برداشته می‌شوند\n\nبرای موافقت کردن دوباره با اجازه‌ها، برنامه را باز کنید."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"آخرین باری که باز شده: بیش‌از <xliff:g id="NUMBER">%s</xliff:g> ماه قبل"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"آخرین باری که برنامه باز شده: <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"آخرین باری که باز شده: <xliff:g id="DATE">%s</xliff:g>"</string>
