@@ -35,7 +35,7 @@
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>ৰ ভিতৰত <xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g>টা"</string>
     <string name="permission_warning_template" msgid="2247087781222679458">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক <xliff:g id="ACTION">%2$s</xliff:g>ৰ বাবে অনুমতি দিবনে?"</string>
     <string name="permission_add_background_warning_template" msgid="1812914855915092273">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ক সদায় <xliff:g id="ACTION">%2$s</xliff:g> কৰাৰ অনুমতি দিবনে?"</string>
-    <string name="allow_permission_foreground_only" msgid="116465816039675404">"এপ্ ব্য়ৱহাৰ কৰি থাকোঁতে মাত্ৰ"</string>
+    <string name="allow_permission_foreground_only" msgid="116465816039675404">"এপ্ ব্যৱহাৰ কৰি থাকোঁতে মাত্ৰ"</string>
     <string name="allow_permission_always" msgid="5194342531206054051">"সদায়"</string>
     <string name="deny_permission_deny_and_dont_ask_again" msgid="6106035221490102341">"অনুমতি নিদিব আৰু পুনৰ নুসুধিব"</string>
     <string name="permission_revoked_count" msgid="4785082705441547086">"<xliff:g id="COUNT">%1$d</xliff:g>টা অক্ষম কৰা হ’ল"</string>
@@ -68,7 +68,7 @@
     <string name="never_ask_again" msgid="4728762438198560329">"পুনৰাই নুসুধিব"</string>
     <string name="no_permissions" msgid="3881676756371148563">"কোনো অনুমতি নাই"</string>
     <string name="additional_permissions" msgid="5801285469338873430">"অতিৰিক্ত অনুমতি"</string>
-    <string name="app_permissions_info_button_label" msgid="7633312050729974623">"এপৰ তথ্য় খোলক"</string>
+    <string name="app_permissions_info_button_label" msgid="7633312050729974623">"এপৰ তথ্য খোলক"</string>
     <string name="additional_permissions_more" msgid="5681220714755304407">"{count,plural, =1{আৰু # টা}one{আৰু # টা}other{আৰু # টা}}"</string>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"এই এপটো Androidৰ এটা পুৰণা সংস্কৰণৰ বাবে প্ৰস্তুত কৰা হৈছিল। অনুমতি নিদিলে ই বিচৰা ধৰণে কাম নকৰিবও পাৰে।"</string>
     <string name="storage_supergroup_warning_allow" msgid="103093462784523190">"এই এপ্‌টো Androidৰ এটা পুৰণা সংস্কৰণৰ বাবে ডিজাইন কৰা হৈছিল। যদি আপুনি এই অনুমতিটো দিয়ে, তেন্তে আটাইবোৰ ষ্ট’ৰেজলৈ (ফট’, ভিডিঅ’, সংগীত, অডিঅ’ আৰু অন্য ফাইলসমূহকে ধৰি) এক্সেছৰ অনুমতি দিয়া হ’ব।"</string>
