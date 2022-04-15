@@ -66,9 +66,9 @@ import androidx.preference.SwitchPreference;
 import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.PermissionControllerStatsLog;
 import com.android.permissioncontroller.R;
+import com.android.permissioncontroller.permission.model.livedatatypes.HibernationSettingState;
 import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage;
 import com.android.permissioncontroller.permission.model.v31.PermissionUsages;
-import com.android.permissioncontroller.permission.model.livedatatypes.HibernationSettingState;
 import com.android.permissioncontroller.permission.ui.Category;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModel;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionGroupsViewModel.GroupUiInfo;
@@ -464,16 +464,8 @@ public final class AppPermissionGroupsFragment extends SettingsWithLargeHeader i
         Preference autoRevokeSummary = autoRevokeCategory.findPreference(
                 AUTO_REVOKE_SUMMARY_KEY);
 
-        if (!state.isEnabledGlobal() || state.getRevocableGroupNames().isEmpty()) {
-            autoRevokeCategory.setVisible(false);
-            autoRevokeSwitch.setVisible(false);
-            autoRevokeSummary.setVisible(false);
-            return;
-        }
-        autoRevokeCategory.setVisible(true);
-        autoRevokeSwitch.setVisible(true);
-        autoRevokeSummary.setVisible(true);
-        autoRevokeSwitch.setChecked(state.isEnabledForApp());
+        autoRevokeSwitch.setChecked(state.isEligibleForHibernation());
+        autoRevokeSwitch.setEnabled(!state.isExemptBySystem());
 
         List<String> groupLabels = new ArrayList<>();
         for (String groupName : state.getRevocableGroupNames()) {
