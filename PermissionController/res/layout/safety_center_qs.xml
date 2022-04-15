@@ -38,7 +38,7 @@
             android:orientation="vertical">
 
             <fragment android:id="@+id/safety_prefs"
-                      android:name="com.android.permissioncontroller.permission.ui.handheld.SafetyCenterQsFragment$SafetyPreferenceFragment"
+                      android:name="com.android.permissioncontroller.permission.ui.handheld.v33.SafetyCenterQsFragment$SafetyPreferenceFragment"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"/>
 
