@@ -18,27 +18,16 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"Zdroje Centra bezpečnosti"</string>
-    <!-- no translation found for lock_screen_sources_title (3317906280484627707) -->
-    <skip />
+    <string name="lock_screen_sources_title" msgid="3317906280484627707">"Zámka zariadenia"</string>
     <string name="lock_screen_title" msgid="4069104894527169877">"Zámka obrazovky"</string>
-    <!-- no translation found for lock_screen_summary_disabled (354071230916616692) -->
-    <skip />
-    <!-- no translation found for privacy_sources_title (4061110826457365957) -->
-    <skip />
-    <!-- no translation found for privacy_sources_summary (4089719981155120864) -->
-    <skip />
-    <!-- no translation found for permission_usage_title (3633779688945350407) -->
-    <skip />
-    <!-- no translation found for permission_usage_summary (5323079206029964468) -->
-    <skip />
-    <!-- no translation found for permission_manager_title (5277347862821255015) -->
-    <skip />
-    <!-- no translation found for permission_manager_summary (8099852107340970790) -->
-    <skip />
-    <!-- no translation found for advanced_title (8745436380690561172) -->
-    <skip />
-    <!-- no translation found for advanced_security_title (1126833338772188155) -->
-    <skip />
-    <!-- no translation found for advanced_security_summary (6172253327022425123) -->
-    <skip />
+    <string name="lock_screen_summary_disabled" msgid="354071230916616692">"Zatiaľ nie sú dostupné žiadne informácie"</string>
+    <string name="privacy_sources_title" msgid="4061110826457365957">"Ochrana súkromia"</string>
+    <string name="privacy_sources_summary" msgid="4089719981155120864">"Hlavný panel, povolenia, ovládanie"</string>
+    <string name="permission_usage_title" msgid="3633779688945350407">"Panel ochrany súkromia"</string>
+    <string name="permission_usage_summary" msgid="5323079206029964468">"Zobrazenie toho, ktoré aplikácie nedávno použili povolenia"</string>
+    <string name="permission_manager_title" msgid="5277347862821255015">"Správca povolení"</string>
+    <string name="permission_manager_summary" msgid="8099852107340970790">"Ovládanie prístupu aplikácií k vašim údajom"</string>
+    <string name="advanced_title" msgid="8745436380690561172">"Ďalšie nastavenia"</string>
+    <string name="advanced_security_title" msgid="1126833338772188155">"Ďalšie nastavenia zabezpečenia"</string>
+    <string name="advanced_security_summary" msgid="6172253327022425123">"Šifrovanie, prihlasovacie údaje a ďalšie"</string>
 </resources>
