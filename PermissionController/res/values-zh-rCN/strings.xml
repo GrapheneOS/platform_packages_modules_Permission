@@ -217,7 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"已移除<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>权限及另外 <xliff:g id="NUMBER">%2$s</xliff:g> 项权限"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"未使用的应用"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"如果您连续几个月未使用某个应用，系统将对该应用采取以下措施：\n\n• 移除权限以保护您的数据\n• 停止通知功能以节省电量\n• 移除临时文件以释放空间\n\n如需重新授予权限以继续接收通知，请打开该应用。"</string>
-    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"如果您连续几个月未使用某个应用，系统将对该应用采取以下措施：\n\n• 移除权限以保护您的数据\n• 移除临时文件以释放空间\n\n如需重新授予权限，请打开该应用。"</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"如果您连续几个月未使用某个应用，系统将对该应用采取以下措施：\n\n• 取消权限以保护您的数据\n• 移除临时文件以释放空间\n\n如需重新授予权限，请打开该应用。"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"距上次打开已超过 <xliff:g id="NUMBER">%s</xliff:g> 个月"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"应用上次打开时间是 <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"上次打开时间是 <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -473,7 +473,7 @@
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问与您的生命体征相关的传感器数据吗？"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"此应用希望随时都能访问与您的生命体征相关的传感器数据（即使在您未使用此应用时）。如要进行这种权限更改，请"<annotation id="link">"前往设置页面"</annotation>"。"</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问与您的生命体征相关的传感器数据吗？"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"如要允许此应用始终可以访问身体传感器数据（即使在您未使用此应用时），请"<annotation id="link">"前往设置"</annotation>"。"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"如要允许此应用始终可以访问身体传感器数据（即使在您未使用此应用时），请"<annotation id="link">"前往设置"</annotation>"。"</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"始终允许“<xliff:g id="APP_NAME">%1$s</xliff:g>”在使用中时访问身体传感器数据？"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"允许 &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 向您发送通知吗？"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"允许 &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; 继续向您发送通知吗？"</string>
