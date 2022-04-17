@@ -271,7 +271,7 @@
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Aplikace s tímto oprávněním mohou číst a zapisovat do seznamu hovorů v telefonu"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Aplikace s tímto oprávněním mohou fotit a nahrávat videa"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Aplikace s tímto oprávněním mají přístup ke kontaktům"</string>
-    <string name="permission_description_summary_location" msgid="2817531799933480694">"Aplikace s tímto oprávněním mají přístup k  poloze zařízení"</string>
+    <string name="permission_description_summary_location" msgid="2817531799933480694">"Aplikace s tímto oprávněním mají přístup k poloze zařízení"</string>
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Aplikace s tímto oprávněním mohou najít zařízení v okolí, připojit se k nim a zjistit jejich relativní polohu"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Aplikace s tímto oprávněním mohou nahrávat zvuk"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Aplikace s tímto oprávněním mohou realizovat a spravovat telefonické hovory"</string>
