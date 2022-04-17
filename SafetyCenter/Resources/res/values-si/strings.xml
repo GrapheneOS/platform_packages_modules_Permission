@@ -18,27 +18,16 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"ආරක්ෂක මධ්‍යස්ථාන සම්පත්"</string>
-    <!-- no translation found for lock_screen_sources_title (3317906280484627707) -->
-    <skip />
+    <string name="lock_screen_sources_title" msgid="3317906280484627707">"උපාංග අගුල"</string>
     <string name="lock_screen_title" msgid="4069104894527169877">"තිර අගුල"</string>
-    <!-- no translation found for lock_screen_summary_disabled (354071230916616692) -->
-    <skip />
-    <!-- no translation found for privacy_sources_title (4061110826457365957) -->
-    <skip />
-    <!-- no translation found for privacy_sources_summary (4089719981155120864) -->
-    <skip />
-    <!-- no translation found for permission_usage_title (3633779688945350407) -->
-    <skip />
-    <!-- no translation found for permission_usage_summary (5323079206029964468) -->
-    <skip />
-    <!-- no translation found for permission_manager_title (5277347862821255015) -->
-    <skip />
-    <!-- no translation found for permission_manager_summary (8099852107340970790) -->
-    <skip />
-    <!-- no translation found for advanced_title (8745436380690561172) -->
-    <skip />
-    <!-- no translation found for advanced_security_title (1126833338772188155) -->
-    <skip />
-    <!-- no translation found for advanced_security_summary (6172253327022425123) -->
-    <skip />
+    <string name="lock_screen_summary_disabled" msgid="354071230916616692">"තවම තොරතුරු නැත"</string>
+    <string name="privacy_sources_title" msgid="4061110826457365957">"පෞද්ගලිකත්වය"</string>
+    <string name="privacy_sources_summary" msgid="4089719981155120864">"උපකරණ පුවරුව, අවසර, පාලන"</string>
+    <string name="permission_usage_title" msgid="3633779688945350407">"පෞද්ගලිකත්ව උපකරණ පුවරුව"</string>
+    <string name="permission_usage_summary" msgid="5323079206029964468">"මෑතකදී අවසර භාවිත කළ යෙදුම් පෙන්වන්න"</string>
+    <string name="permission_manager_title" msgid="5277347862821255015">"අවසර කළමනාකරු"</string>
+    <string name="permission_manager_summary" msgid="8099852107340970790">"ඔබ‍ගේ දත්ත වෙත යෙදුම් ප්‍රවේශය පාලනය කරන්න"</string>
+    <string name="advanced_title" msgid="8745436380690561172">"තව සැකසීම්"</string>
+    <string name="advanced_security_title" msgid="1126833338772188155">"තවත් ආරක්ෂක සැකසීම්"</string>
+    <string name="advanced_security_summary" msgid="6172253327022425123">"සංකේතනය, අක්තපත්‍ර සහ තවත් දේ"</string>
 </resources>
