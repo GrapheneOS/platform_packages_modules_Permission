@@ -467,7 +467,7 @@
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Queres permitir que a aplicación &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda ao teu calendario?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Queres permitir que a aplicación &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; envíe e vexa mensaxes SMS?"</string>
     <string name="permgrouprequest_storage" msgid="8717773092518621602">"Queres permitir que a aplicación &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a fotos, contido multimedia e ficheiros no teu dispositivo?"</string>
-    <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Permitir que a aplicación &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; grave audio?"</string>
+    <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Queres permitir que a aplicación &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; grave audio?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Esta aplicación só poderá gravar audio cando a esteas utilizando"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Queres permitir que a aplicación &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; grave audio?"</string>
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"Pode que esta aplicación queira gravar audio todo o tempo, incluso cando non a esteas utilizando. "<annotation id="link">"Permitir en Configuración."</annotation></string>

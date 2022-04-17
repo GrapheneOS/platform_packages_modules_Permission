@@ -443,8 +443,8 @@
     <string name="incident_report_error_dialog_text" msgid="4189647113387092272">"<xliff:g id="APP_NAME">%1$s</xliff:g> ਦੀ ਬੱਗ ਰਿਪੋਰਟ \'ਤੇ ਪ੍ਰਕਿਰਿਆ ਕਰਨ ਵੇਲੇ ਗੜਬੜ ਹੋ ਗਈ। ਇਸ ਕਰਕੇ ਵੇਰਵੇ-ਸਹਿਤ ਡੀਬੱਗ ਡਾਟੇ ਨੂੰ ਸਾਂਝਾ ਕਰਨ ਤੋਂ ਮਨ੍ਹਾ ਕੀਤਾ ਗਿਆ। ਰੁਕਾਵਟ ਲਈ ਮਾਫ਼ੀ।"</string>
     <string name="incident_report_dialog_allow_label" msgid="2970242967721155239">"ਕਰਨ ਦਿਓ"</string>
     <string name="incident_report_dialog_deny_label" msgid="3535314290677579383">"ਨਾ ਕਰਨ ਦਿਓ"</string>
-    <string name="adjust_user_sensitive_title" msgid="4196724451314280527">"ਉੱਨਤ ਸੈਟਿੰਗਾਂ"</string>
-    <string name="menu_adjust_user_sensitive" msgid="6497923610654425780">"ਉੱਨਤ ਸੈਟਿੰਗਾਂ"</string>
+    <string name="adjust_user_sensitive_title" msgid="4196724451314280527">"ਅਡਵਾਂਸ ਸੈਟਿੰਗਾਂ"</string>
+    <string name="menu_adjust_user_sensitive" msgid="6497923610654425780">"ਅਡਵਾਂਸ ਸੈਟਿੰਗਾਂ"</string>
     <string name="adjust_user_sensitive_globally_title" msgid="8649190949066029174">"ਸਿਸਟਮ ਐਪ ਵਰਤੋਂ ਦਿਖਾਓ"</string>
     <string name="adjust_user_sensitive_globally_summary" msgid="129467818433773912">"ਸਥਿਤੀ ਪੱਟੀ, ਡੈਸ਼ਬੋਰਡ ਅਤੇ ਹੋਰ ਥਾਂਵਾਂ \'ਤੇ ਸਿਸਟਮ ਐਪ ਵੱਲੋਂ ਇਜਾਜ਼ਤਾਂ ਦੀ ਵਰਤੋਂ ਦਿਖਾਓ"</string>
     <string name="adjust_user_sensitive_per_app_header" msgid="4543506440989005648">"ਹੇਠਾਂ ਦਿੱਤੇ ਲਈ ਵਰਤੋਂ ਨੂੰ ਉਜਾਗਰ ਕਰੋ"</string>
@@ -481,7 +481,7 @@
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਲਈ ਕੈਮਰਾ ਪਹੁੰਚ ਨੂੰ ਬਦਲਣਾ ਹੈ?"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"ਇਹ ਐਪ ਹਰ ਵੇਲੇ ਤਸਵੀਰਾਂ ਖਿੱਚਣ ਅਤੇ ਵੀਡੀਓ ਰਿਕਾਰਡ ਕਰਨ ਦੀ ਇਜਾਜ਼ਤ ਮੰਗਦੀ ਹੈ, ਉਦੋਂ ਵੀ ਜਦੋਂ ਤੁਸੀਂ ਐਪ ਦੀ ਵਰਤੋਂ ਨਾ ਕਰ ਰਹੇ ਹੋਵੋ। "<annotation id="link">"ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਇਜਾਜ਼ਤ ਦਿਓ।"</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਤੁਹਾਡੇ ਫ਼ੋਨ ਦੇ ਕਾਲ ਲੌਗਾਂ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
-    <string name="permgrouprequest_phone" msgid="1829234136997316752">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਫ਼ੋਨ ਕਾਲਾਂ ਕਰਨ ਅਤੇ ਉਹਨਾਂ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰਨ ਦੇਣਾ ਹੈ?"</string>
+    <string name="permgrouprequest_phone" msgid="1829234136997316752">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਫ਼ੋਨ ਕਾਲਾਂ ਕਰਨ ਅਤੇ ਉਨ੍ਹਾਂ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰਨ ਦੇਣਾ ਹੈ?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਤੁਹਾਡੇ ਸਰੀਰ ਦੇ ਅਹਿਮ ਲੱਛਣਾਂ ਸੰਬੰਧੀ ਸੈਂਸਰ ਡਾਟੇ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"ਨਿਯੰਤਰਿਤ ਇਜਾਜ਼ਤਾਂ"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"ਟਿਕਾਣੇ ਤੱਕ ਪਹੁੰਚ ਕੀਤੀ ਜਾ ਸਕਦੀ ਹੈ"</string>
