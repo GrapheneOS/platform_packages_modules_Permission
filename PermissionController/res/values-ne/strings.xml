@@ -217,7 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> र अन्य <xliff:g id="NUMBER">%2$s</xliff:g> अनुमतिहरू हटाइए"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"प्रयोग नगरिएका एपहरू"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"कुनै एप केही महिनादेखि चलाइएको छैन भने:\n\n• तपाईंको डेटा सुरक्षित राख्न उक्त एपलाई दिइएका अनुमतिहरू रद्द गरिन्छन्\n• ब्याट्री बचत गर्न सूचनाहरू बन्द गरिन्छन्\n• ठाउँ खाली गर्न अस्थायी फाइलहरू हटाइन्छन्\n\nसो एपलाई फेरि ती अनुमतिहरू दिन र सो एपबाट सूचनाहरू प्राप्त गर्न सो एप खोल्नुहोस्।"</string>
-    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"कुनै एप केही महिनादेखि चलाइएको छैन भने:\n\n• तपाईंको डेटा सुरक्षित राख्न उक्त एपलाई दिइएका अनुमतिहरू रद्द गरिन्छन्\n• ठाउँ खाली गर्न अस्थायी फाइलहरू हटाइन्छन्\n\nउक्त एपलाई फेरि ती अनुमतिहरू दिन र सो एपबाट सूचनाहरू प्राप्त गर्न सो एप खोल्नुहोस्।"</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"कुनै एप केही महिनादेखि चलाइएको छैन भने:\n\n• तपाईंको डेटा सुरक्षित राख्न उक्त एपलाई दिइएका अनुमति रद्द गरिन्छन्\n• ठाउँ खाली गर्न अस्थायी फाइलहरू हटाइन्छन्\n\nउक्त एपलाई फेरि ती अनुमति दिन र सो एपबाट सूचनाहरू प्राप्त गर्न सो एप खोल्नुहोस्।"</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"पछिल्लो पटक <xliff:g id="NUMBER">%s</xliff:g> महिनाभन्दा पहिले प्रयोग गरिएको"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"यो एप पछिल्लो पटक <xliff:g id="DATE">%s</xliff:g> मा खोलिएको थियो"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"पछिल्लो पटक <xliff:g id="DATE">%s</xliff:g> मा खोलिएको थियो"</string>
@@ -473,7 +473,8 @@
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई नाडी आदि जस्ता महत्त्वपूर्ण संकेतसम्बन्धी सेन्सर डेटा हेर्ने अनुमति दिने हो?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"यो एप जुनसुकै बेला (तपाईंले एप प्रयोग नगरेका बेलासमेत) तपाईंका नाडी, धड्कज जस्ता सेन्सर डेटा हेर्न र प्रयोग गर्न चाहन्छ।। यस्तो परिवर्तन गर्न "<annotation id="link">"सेटिङमा जानुहोस्।"</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई नाडी, धड्कन जस्ता सेन्सर डेटा प्रयोग गर्न र हेर्न दिने हो?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"यो एपलाई जुनसुकै बेला (तपाईंले एप नचलाएका बेलासमेत) बडी सेन्सरसम्बन्धी डेटा हेर्न र प्रयोग गर्न दिन "<annotation id="link">"सेटिङमा जानुहोस्।"</annotation></string>
+    <!-- no translation found for permgroupbackgroundrequestdetail_sensors (7726767635834043501) -->
+    <skip />
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"यो एप प्रयोग गरिँदै गरेका बेला यसलाई &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; बडी सेन्सरसम्बन्धी डेटा हेर्ने र प्रयोग गर्ने अनुमति दिइरहने हो?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई तपाईंलाई सूचना पठाउन दिने हो?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; लाई तपाईंलाई सूचना पठाइराख्न दिने हो?"</string>

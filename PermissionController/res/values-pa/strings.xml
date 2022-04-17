@@ -427,8 +427,8 @@
     <string name="incident_report_error_dialog_text" msgid="4189647113387092272">"<xliff:g id="APP_NAME">%1$s</xliff:g> ਦੀ ਬੱਗ ਰਿਪੋਰਟ \'ਤੇ ਪ੍ਰਕਿਰਿਆ ਕਰਨ ਵੇਲੇ ਗੜਬੜ ਹੋ ਗਈ। ਇਸ ਕਰਕੇ ਵੇਰਵੇ-ਸਹਿਤ ਡੀਬੱਗ ਡਾਟੇ ਨੂੰ ਸਾਂਝਾ ਕਰਨ ਤੋਂ ਮਨ੍ਹਾ ਕੀਤਾ ਗਿਆ। ਰੁਕਾਵਟ ਲਈ ਮਾਫ਼ੀ।"</string>
     <string name="incident_report_dialog_allow_label" msgid="2970242967721155239">"ਕਰਨ ਦਿਓ"</string>
     <string name="incident_report_dialog_deny_label" msgid="3535314290677579383">"ਨਾ ਕਰਨ ਦਿਓ"</string>
-    <string name="adjust_user_sensitive_title" msgid="4196724451314280527">"ਉੱਨਤ ਸੈਟਿੰਗਾਂ"</string>
-    <string name="menu_adjust_user_sensitive" msgid="6497923610654425780">"ਉੱਨਤ ਸੈਟਿੰਗਾਂ"</string>
+    <string name="adjust_user_sensitive_title" msgid="4196724451314280527">"ਅਡਵਾਂਸ ਸੈਟਿੰਗਾਂ"</string>
+    <string name="menu_adjust_user_sensitive" msgid="6497923610654425780">"ਅਡਵਾਂਸ ਸੈਟਿੰਗਾਂ"</string>
     <string name="adjust_user_sensitive_globally_title" msgid="8649190949066029174">"ਸਿਸਟਮ ਐਪ ਵਰਤੋਂ ਦਿਖਾਓ"</string>
     <string name="adjust_user_sensitive_globally_summary" msgid="129467818433773912">"ਸਥਿਤੀ ਪੱਟੀ, ਡੈਸ਼ਬੋਰਡ ਅਤੇ ਹੋਰ ਥਾਂਵਾਂ \'ਤੇ ਸਿਸਟਮ ਐਪ ਵੱਲੋਂ ਇਜਾਜ਼ਤਾਂ ਦੀ ਵਰਤੋਂ ਦਿਖਾਓ"</string>
     <string name="adjust_user_sensitive_per_app_header" msgid="4543506440989005648">"ਹੇਠਾਂ ਦਿੱਤੇ ਲਈ ਵਰਤੋਂ ਨੂੰ ਉਜਾਗਰ ਕਰੋ"</string>
@@ -469,11 +469,12 @@
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਲਈ ਕੈਮਰਾ ਪਹੁੰਚ ਨੂੰ ਬਦਲਣਾ ਹੈ?"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"ਇਹ ਐਪ ਹਰ ਵੇਲੇ ਤਸਵੀਰਾਂ ਖਿੱਚਣ ਅਤੇ ਵੀਡੀਓ ਰਿਕਾਰਡ ਕਰਨ ਦੀ ਇਜਾਜ਼ਤ ਮੰਗਦੀ ਹੈ, ਉਦੋਂ ਵੀ ਜਦੋਂ ਤੁਸੀਂ ਐਪ ਦੀ ਵਰਤੋਂ ਨਾ ਕਰ ਰਹੇ ਹੋਵੋ। "<annotation id="link">"ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਇਜਾਜ਼ਤ ਦਿਓ।"</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਤੁਹਾਡੇ ਫ਼ੋਨ ਦੇ ਕਾਲ ਲੌਗਾਂ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
-    <string name="permgrouprequest_phone" msgid="1829234136997316752">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਫ਼ੋਨ ਕਾਲਾਂ ਕਰਨ ਅਤੇ ਉਹਨਾਂ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰਨ ਦੇਣਾ ਹੈ?"</string>
+    <string name="permgrouprequest_phone" msgid="1829234136997316752">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਫ਼ੋਨ ਕਾਲਾਂ ਕਰਨ ਅਤੇ ਉਨ੍ਹਾਂ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰਨ ਦੇਣਾ ਹੈ?"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਤੁਹਾਡੇ ਸਰੀਰ ਦੇ ਅਹਿਮ ਲੱਛਣਾਂ ਸੰਬੰਧੀ ਸੈਂਸਰ ਡਾਟੇ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"ਇਸ ਐਪ ਨੂੰ ਹਰ ਵੇਲੇ ਤੁਹਾਡੇ ਸਰੀਰ ਦੇ ਅਹਿਮ ਲੱਛਣਾਂ ਸੰਬੰਧੀ ਸੈਂਸਰ ਡਾਟੇ ਤੱਕ ਪਹੁੰਚ ਚਾਹੀਦੀ ਹੈ, ਭਾਵੇਂ ਤੁਸੀਂ ਐਪ ਦੀ ਵਰਤੋਂ ਕਰ ਰਹੇ ਹੋ ਜਾਂ ਨਹੀਂ। ਇਹ ਤਬਦੀਲੀ ਕਰਨ ਲਈ, "<annotation id="link">"ਸੈਟਿੰਗਾਂ \'ਤੇ ਜਾਓ।"</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਤੁਹਾਡੇ ਸਰੀਰ ਦੇ ਅਹਿਮ ਲੱਛਣਾਂ ਸੰਬੰਧੀ ਸੈਂਸਰ ਡਾਟੇ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣੀ ਹੈ?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"ਐਪ ਦੀ ਵਰਤੋਂ ਨਾ ਕਰਨ ਦੌਰਾਨ ਵੀ, ਇਸ ਐਪ ਨੂੰ ਹਰ ਸਮੇਂ ਸਰੀਰ ਸੰਬੰਧੀ ਸੈਂਸਰ ਦੇ ਡਾਟੇ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣ ਲਈ, "<annotation id="link">"ਸੈਟਿੰਗਾਂ \'ਤੇ ਜਾਓ।"</annotation></string>
+    <!-- no translation found for permgroupbackgroundrequestdetail_sensors (7726767635834043501) -->
+    <skip />
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ਕੀ ਐਪ ਦੇ ਵਰਤੋਂ ਵਿੱਚ ਹੋਣ ਵੇਲੇ ਸਰੀਰ ਸੰਬੰਧੀ ਸੈਂਸਰ ਦੇ ਡਾਟੇ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣ ਲਈ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਆਗਿਆ ਦੇਣਾ ਜਾਰੀ ਰੱਖਣੀ ਹੈ?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਤੁਹਾਨੂੰ ਸੂਚਨਾਵਾਂ ਭੇਜਣ ਦੀ ਆਗਿਆ ਦੇਣੀ ਹੈ?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"ਕੀ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ਨੂੰ ਤੁਹਾਨੂੰ ਸੂਚਨਾਵਾਂ ਭੇਜਣਾ ਜਾਰੀ ਰੱਖਣ ਦੇਣਾ ਹੈ?"</string>
