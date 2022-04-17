@@ -479,7 +479,7 @@
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին սենսորից ստանալ ձեր կենսագործունեության հիմնական տվյալները:"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Հավելվածին անհրաժեշտ է մարմնի սենսորների տվյալների հասանելիություն, նույնիսկ երբ չեք օգտվում դրանից։ Այս փոփոխությունը կատարելու համար "<annotation id="link">"անցեք կարգավորումներ"</annotation>"։"</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին ձեր կենսագործունեության տվյալները ստանալ սենսորներից"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Որպեսզի այս հավելվածին հասանելի լինեն մարմնի սենսորների տվյալները, նույնիսկ երբ չեք օգտվում հավելվածից, "<annotation id="link">"անցեք կարգավորումներ"</annotation>"։"</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Եթե ուզում եք, որ այս հավելվածին հասանելի լինեն մարմնի սենսորների տվյալները, նույնիսկ երբ չեք օգտվում հավելվածից, "<annotation id="link">"փոխեք կարգավորումները"</annotation>"։"</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Մարմնի սենսորների տվյալները հասանելի դարձնե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին, միայն երբ այն օգտագործվում է"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին ծանուցումներ ուղարկել ձեզ։"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին շարունակել ծանուցումներ ուղարկել ձեզ։"</string>
@@ -509,8 +509,7 @@
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Անվտանգություն և գաղտնիություն"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Սկանավորել"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"Փակել"</string>
-    <!-- no translation found for safety_center_issue_card_dismiss_confirmation_title (2734809473425036382) -->
-    <skip />
+    <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Փակե՞լ այս ծանուցումը"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Փակել"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Չեղարկել"</string>
     <string name="security_settings" msgid="3808106921175271317">"Անվտանգության կարգավորումներ"</string>
