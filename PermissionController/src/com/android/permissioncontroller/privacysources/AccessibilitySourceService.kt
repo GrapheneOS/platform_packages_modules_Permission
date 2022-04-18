@@ -874,7 +874,7 @@ class AccessibilitySourceService(
         }
     }
 
-    override fun safetyCenterEnabledChanged(enabled: Boolean) {
+    override fun safetyCenterEnabledChanged(context: Context, enabled: Boolean) {
         if (!enabled) { // safety center disabled event
             removeAccessibilityNotification()
         }

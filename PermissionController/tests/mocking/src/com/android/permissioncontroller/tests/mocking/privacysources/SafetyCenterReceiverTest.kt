@@ -117,8 +117,8 @@ class SafetyCenterReceiverTest {
     fun onReceive_actionSafetyCenterEnabledChanged() = runBlockingTest {
         safetyCenterReceiver.onReceive(application, Intent(ACTION_SAFETY_CENTER_ENABLED_CHANGED))
 
-        verify(mockPrivacySource).safetyCenterEnabledChanged(true)
-        verify(mockPrivacySource2).safetyCenterEnabledChanged(true)
+        verify(mockPrivacySource).safetyCenterEnabledChanged(application, true)
+        verify(mockPrivacySource2).safetyCenterEnabledChanged(application, true)
     }
 
     @Test
@@ -128,8 +128,8 @@ class SafetyCenterReceiverTest {
         safetyCenterReceiver.onReceive(application, Intent(ACTION_SAFETY_CENTER_ENABLED_CHANGED))
         advanceUntilIdle()
 
-        verify(mockPrivacySource).safetyCenterEnabledChanged(false)
-        verify(mockPrivacySource2).safetyCenterEnabledChanged(false)
+        verify(mockPrivacySource).safetyCenterEnabledChanged(application, false)
+        verify(mockPrivacySource2).safetyCenterEnabledChanged(application, false)
     }
 
     @Test

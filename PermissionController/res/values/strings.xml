@@ -880,7 +880,7 @@
     <string name="notification_listener_remove_access_button_label">Remove access</string>
 
     <!-- The label for notification listener settings button from safety center warning card [CHAR LIMIT=60] -->
-    <string name="notification_listener_review_app_button_label">Review app with notification access</string>
+    <string name="notification_listener_review_app_button_label">Review all apps with notification access</string>
 
     <!-- Success message for remove access action on safety center warning card [CHAR LIMIT=60] -->
     <string name="notification_listener_remove_access_success_label">Access removed</string>
