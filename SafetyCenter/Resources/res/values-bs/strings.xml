@@ -20,14 +20,14 @@
     <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"Izvori Centra za sigurnost"</string>
     <string name="lock_screen_sources_title" msgid="3317906280484627707">"Zaključavanje uređaja"</string>
     <string name="lock_screen_title" msgid="4069104894527169877">"Zaključavanje ekrana"</string>
-    <string name="lock_screen_summary_disabled" msgid="354071230916616692">"Još nema podataka"</string>
+    <string name="lock_screen_summary_disabled" msgid="354071230916616692">"Još uvijek nema informacija"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"Privatnost"</string>
-    <string name="privacy_sources_summary" msgid="4089719981155120864">"Nadzorna ploča, dopuštenja, kontrole"</string>
-    <string name="permission_usage_title" msgid="3633779688945350407">"Nadzorna ploča za privatnost"</string>
-    <string name="permission_usage_summary" msgid="5323079206029964468">"Prikaži aplikacije koje su nedavno upotrebljavale dopuštenja"</string>
-    <string name="permission_manager_title" msgid="5277347862821255015">"Upravitelj dopuštenja"</string>
-    <string name="permission_manager_summary" msgid="8099852107340970790">"Upravljajte pristupom aplikacija svojim podacima"</string>
+    <string name="privacy_sources_summary" msgid="4089719981155120864">"Kontrolna tabla, odobrenja, kontrole"</string>
+    <string name="permission_usage_title" msgid="3633779688945350407">"Kontrolna tabla za privatnost"</string>
+    <string name="permission_usage_summary" msgid="5323079206029964468">"Prikaz aplikacija koje su nedavno koristile odobrenja"</string>
+    <string name="permission_manager_title" msgid="5277347862821255015">"Upravitelj odobrenja"</string>
+    <string name="permission_manager_summary" msgid="8099852107340970790">"Kontrolirajte pristup aplikacija podacima"</string>
     <string name="advanced_title" msgid="8745436380690561172">"Više postavki"</string>
-    <string name="advanced_security_title" msgid="1126833338772188155">"Više sigurnosnih postavki"</string>
-    <string name="advanced_security_summary" msgid="6172253327022425123">"Šifriranje, vjerodajnice i ostalo"</string>
+    <string name="advanced_security_title" msgid="1126833338772188155">"Više postavki sigurnosti"</string>
+    <string name="advanced_security_summary" msgid="6172253327022425123">"Šifriranje, akreditivi i još mnogo toga"</string>
 </resources>
