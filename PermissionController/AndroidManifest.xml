@@ -109,6 +109,10 @@
 
         <receiver android:name="com.android.permissioncontroller.privacysources.NotificationListenerCheck$NotificationDeleteHandler" />
 
+        <receiver android:name="com.android.permissioncontroller.privacysources.NotificationListenerCheck$DisableComponentHandler" />
+
+        <receiver android:name="com.android.permissioncontroller.privacysources.NotificationListenerCheck$ActionCardDismissalReceiver" />
+
         <receiver android:name="com.android.permissioncontroller.privacysources.NotificationListenerCheck$PackageResetHandler"
                   android:exported="true">
             <intent-filter>
