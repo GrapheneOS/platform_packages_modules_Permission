@@ -114,7 +114,7 @@ class SafetySourceTest {
         assertThat(DYNAMIC_ALL_OPTIONAL.summaryResId).isEqualTo(REFERENCE_RES_ID)
         assertThat(DYNAMIC_DISABLED.summaryResId).isEqualTo(REFERENCE_RES_ID)
         assertThat(DYNAMIC_HIDDEN.summaryResId).isEqualTo(Resources.ID_NULL)
-        assertThat(DYNAMIC_HIDDEN_WITH_SEARCH.summaryResId).isEqualTo(Resources.ID_NULL)
+        assertThat(DYNAMIC_HIDDEN_WITH_SEARCH.summaryResId).isEqualTo(REFERENCE_RES_ID)
         assertThat(STATIC_BAREBONE.summaryResId).isEqualTo(Resources.ID_NULL)
         assertThat(STATIC_ALL_OPTIONAL.summaryResId).isEqualTo(REFERENCE_RES_ID)
         assertThrows(UnsupportedOperationException::class.java) { ISSUE_ONLY_BAREBONE.summaryResId }
@@ -128,7 +128,7 @@ class SafetySourceTest {
         assertThat(DYNAMIC_ALL_OPTIONAL.intentAction).isEqualTo(INTENT_ACTION)
         assertThat(DYNAMIC_DISABLED.intentAction).isNull()
         assertThat(DYNAMIC_HIDDEN.intentAction).isNull()
-        assertThat(DYNAMIC_HIDDEN_WITH_SEARCH.intentAction).isNull()
+        assertThat(DYNAMIC_HIDDEN_WITH_SEARCH.intentAction).isEqualTo(INTENT_ACTION)
         assertThat(STATIC_BAREBONE.intentAction).isEqualTo(INTENT_ACTION)
         assertThat(STATIC_ALL_OPTIONAL.intentAction).isEqualTo(INTENT_ACTION)
         assertThrows(UnsupportedOperationException::class.java) { ISSUE_ONLY_BAREBONE.intentAction }
@@ -542,6 +542,8 @@ class SafetySourceTest {
                 .setPackageName(PACKAGE_NAME)
                 .setTitleResId(REFERENCE_RES_ID)
                 .setTitleForWorkResId(REFERENCE_RES_ID)
+                .setSummaryResId(REFERENCE_RES_ID)
+                .setIntentAction(INTENT_ACTION)
                 .setProfile(SafetySource.PROFILE_ALL)
                 .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_HIDDEN)
                 .setSearchTermsResId(REFERENCE_RES_ID)
