@@ -34,7 +34,7 @@
     <!-- TODO(b/205971026): Add real layouts for safety entries. -->
     <PreferenceCategory
         android:key="entries_group"
-        android:layout="@layout/spaced_preference_category_no_label"
+        android:layout="@layout/preference_category_no_label"
         app:selectable="false" />
 
     <PreferenceCategory

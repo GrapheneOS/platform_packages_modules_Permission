@@ -25,8 +25,10 @@ class SafetyPreferenceComparisonCallback extends PreferenceComparisonCallback {
     @Override
     public boolean arePreferenceItemsTheSame(Preference oldPreference,
             Preference newPreference) {
-        if (oldPreference instanceof SafetyTopLevelEntryPreference) {
-            return ((SafetyTopLevelEntryPreference) oldPreference).isSameItem(newPreference);
+        if (oldPreference instanceof SafetyEntryPreference) {
+            return ((SafetyEntryPreference) oldPreference).isSameItem(newPreference);
+        } else if (oldPreference instanceof SafetyGroupHeaderEntryPreference) {
+            return (((SafetyGroupHeaderEntryPreference) oldPreference).isSameItem(newPreference));
         }
         return false;
     }
@@ -34,8 +36,11 @@ class SafetyPreferenceComparisonCallback extends PreferenceComparisonCallback {
     @Override
     public boolean arePreferenceContentsTheSame(Preference oldPreference,
             Preference newPreference) {
-        if (oldPreference instanceof SafetyTopLevelEntryPreference) {
-            return ((SafetyTopLevelEntryPreference) oldPreference).hasSameContents(newPreference);
+        if (oldPreference instanceof SafetyEntryPreference) {
+            return ((SafetyEntryPreference) oldPreference).hasSameContents(newPreference);
+        } else if (oldPreference instanceof SafetyGroupHeaderEntryPreference) {
+            return (((SafetyGroupHeaderEntryPreference) oldPreference).hasSameContents(
+                    newPreference));
         }
         return false;
     }
