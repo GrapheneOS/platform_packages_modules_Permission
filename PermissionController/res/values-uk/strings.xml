@@ -473,8 +473,7 @@
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Надати додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до життєвих показників із датчиків?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Цей додаток хоче постійно отримувати дані життєвих показників від датчиків, навіть коли ви не використовуєте його. Щоб внести зміни, "<annotation id="link">"перейдіть у налаштування"</annotation>"."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ до життєвих показників із датчиків?"</string>
-    <!-- no translation found for permgroupbackgroundrequestdetail_sensors (7726767635834043501) -->
-    <skip />
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Щоб надати додатку постійний доступ до показників датчиків на тілі, навіть коли він не використовується, "<annotation id="link">"перейдіть у налаштування"</annotation>"."</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Надавати й надалі додатку <xliff:g id="APP_NAME">%1$s</xliff:g> доступ до показників датчиків на тілі, коли він використовується?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; надсилати вам сповіщення?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Дозволити додатку &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; і надалі надсилати вам сповіщення?"</string>

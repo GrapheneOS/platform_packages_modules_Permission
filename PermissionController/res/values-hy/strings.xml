@@ -160,7 +160,7 @@
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Թույլտվությունների օգտագործումը վերջին 1 րոպեում"</string>
     <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"Չի օգտագործվել վերջին 24 ժամվա ընթացքում"</string>
     <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"Չի օգտագործվել վերջին 7 օրվա ընթացքում"</string>
-    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Օգտագործվել է 1 հավելվածի կողմից}one{Օգտագործվել է # հավելվածի կողմից}other{Օգտագործվել է # հավելվածի կողմից}}"</string>
+    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Օգտագործվում է 1 հավելվածի կողմից}one{Օգտագործվում է # հավելվածի կողմից}other{Օգտագործվում է # հավելվածի կողմից}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Դիտել բոլորը կառավարման վահանակում"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Զտիչ՝ <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Հեռացնել զտիչը"</string>
@@ -475,8 +475,8 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Թույլ տա՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին ձեր կենսագործունեության տվյալները ստանալ սենսորներից"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Եթե ուզում եք, որ այս հավելվածին հասանելի լինեն մարմնի սենսորների տվյալները, նույնիսկ երբ չեք օգտվում հավելվածից, "<annotation id="link">"փոխեք կարգավորումները"</annotation>"։"</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Մարմնի սենսորների տվյալները հասանելի դարձնե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին, միայն երբ այն օգտագործվում է"</string>
-    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին ծանուցումներ ուղարկել ձեզ։"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին շարունակել ծանուցումներ ուղարկել ձեզ։"</string>
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին ծանուցումներ ուղարկել ձեզ"</string>
+    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Թույլատրե՞լ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; հավելվածին շարունակել ծանուցումներ ուղարկել ձեզ"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Կառավարվող թույլտվություններ"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Հավելվածին հասանելի են ձեր տեղադրության մասին տվյալները"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Ձեր ՏՏ ադմինիստրատորը <xliff:g id="APP_NAME">%s</xliff:g> հավելվածին թույլատրել է օգտագործել ձեր տեղադրության մասին տվյալները։"</string>
