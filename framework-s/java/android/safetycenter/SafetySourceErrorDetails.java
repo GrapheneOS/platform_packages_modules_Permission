@@ -53,8 +53,7 @@ public final class SafetySourceErrorDetails implements Parcelable {
                 }
             };
 
-    @NonNull
-    private final SafetyEvent mSafetyEvent;
+    @NonNull private final SafetyEvent mSafetyEvent;
 
     public SafetySourceErrorDetails(@NonNull SafetyEvent safetyEvent) {
         mSafetyEvent = requireNonNull(safetyEvent);
@@ -81,10 +80,7 @@ public final class SafetySourceErrorDetails implements Parcelable {
 
     @Override
     public String toString() {
-        return "SafetySourceErrorDetails{"
-                + "mSafetyEvent="
-                + mSafetyEvent
-                + '}';
+        return "SafetySourceErrorDetails{" + "mSafetyEvent=" + mSafetyEvent + '}';
     }
 
     @Override

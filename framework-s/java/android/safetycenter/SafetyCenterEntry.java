@@ -86,14 +86,13 @@ public final class SafetyCenterEntry implements Parcelable {
     @IntDef(
             prefix = "ENTRY_SEVERITY_LEVEL_",
             value = {
-                    ENTRY_SEVERITY_LEVEL_UNKNOWN,
-                    ENTRY_SEVERITY_LEVEL_UNSPECIFIED,
-                    ENTRY_SEVERITY_LEVEL_OK,
-                    ENTRY_SEVERITY_LEVEL_RECOMMENDATION,
-                    ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING,
+                ENTRY_SEVERITY_LEVEL_UNKNOWN,
+                ENTRY_SEVERITY_LEVEL_UNSPECIFIED,
+                ENTRY_SEVERITY_LEVEL_OK,
+                ENTRY_SEVERITY_LEVEL_RECOMMENDATION,
+                ENTRY_SEVERITY_LEVEL_CRITICAL_WARNING,
             })
-    public @interface EntrySeverityLevel {
-    }
+    public @interface EntrySeverityLevel {}
 
     /** Indicates an entry with {@link #ENTRY_SEVERITY_LEVEL_UNSPECIFIED} should not use an icon. */
     public static final int SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON = 0;
@@ -123,12 +122,11 @@ public final class SafetyCenterEntry implements Parcelable {
     @IntDef(
             prefix = "SEVERITY_UNSPECIFIED_ICON_TYPE_",
             value = {
-                    SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON,
-                    SEVERITY_UNSPECIFIED_ICON_TYPE_PRIVACY,
-                    SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION,
+                SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON,
+                SEVERITY_UNSPECIFIED_ICON_TYPE_PRIVACY,
+                SEVERITY_UNSPECIFIED_ICON_TYPE_NO_RECOMMENDATION,
             })
-    public @interface SeverityUnspecifiedIconType {
-    }
+    public @interface SeverityUnspecifiedIconType {}
 
     @NonNull
     public static final Creator<SafetyCenterEntry> CREATOR =
@@ -153,21 +151,14 @@ public final class SafetyCenterEntry implements Parcelable {
                 }
             };
 
-    @NonNull
-    private final String mId;
-    @NonNull
-    private final CharSequence mTitle;
-    @Nullable
-    private final CharSequence mSummary;
-    @EntrySeverityLevel
-    private final int mSeverityLevel;
-    @SeverityUnspecifiedIconType
-    private final int mSeverityUnspecifiedIconType;
+    @NonNull private final String mId;
+    @NonNull private final CharSequence mTitle;
+    @Nullable private final CharSequence mSummary;
+    @EntrySeverityLevel private final int mSeverityLevel;
+    @SeverityUnspecifiedIconType private final int mSeverityUnspecifiedIconType;
     private final boolean mEnabled;
-    @Nullable
-    private final PendingIntent mPendingIntent;
-    @Nullable
-    private final IconAction mIconAction;
+    @Nullable private final PendingIntent mPendingIntent;
+    @Nullable private final IconAction mIconAction;
 
     private SafetyCenterEntry(
             @NonNull String id,
@@ -314,26 +305,22 @@ public final class SafetyCenterEntry implements Parcelable {
     /** Builder class for {@link SafetyCenterEntry}. */
     public static final class Builder {
 
-        @NonNull
-        private String mId;
-        @NonNull
-        private CharSequence mTitle;
-        @Nullable
-        private CharSequence mSummary;
-        @EntrySeverityLevel
-        private int mSeverityLevel = ENTRY_SEVERITY_LEVEL_UNKNOWN;
+        @NonNull private String mId;
+        @NonNull private CharSequence mTitle;
+        @Nullable private CharSequence mSummary;
+        @EntrySeverityLevel private int mSeverityLevel = ENTRY_SEVERITY_LEVEL_UNKNOWN;
+
         @SeverityUnspecifiedIconType
         private int mSeverityUnspecifiedIconType = SEVERITY_UNSPECIFIED_ICON_TYPE_NO_ICON;
+
         private boolean mEnabled = true;
-        @Nullable
-        private PendingIntent mPendingIntent;
-        @Nullable
-        private IconAction mIconAction;
+        @Nullable private PendingIntent mPendingIntent;
+        @Nullable private IconAction mIconAction;
 
         /**
          * Creates a {@link Builder} for a {@link SafetyCenterEntry}.
          *
-         * @param id    a unique encoded string ID, see {@link #getId()} for details
+         * @param id a unique encoded string ID, see {@link #getId()} for details
          * @param title a title that describes this entry
          */
         public Builder(@NonNull String id, @NonNull CharSequence title) {
@@ -391,8 +378,8 @@ public final class SafetyCenterEntry implements Parcelable {
         @NonNull
         public Builder setSeverityUnspecifiedIconType(
                 @SeverityUnspecifiedIconType int severityUnspecifiedIconType) {
-            mSeverityUnspecifiedIconType = validateSeverityUnspecifiedIconType(
-                    severityUnspecifiedIconType);
+            mSeverityUnspecifiedIconType =
+                    validateSeverityUnspecifiedIconType(severityUnspecifiedIconType);
             return this;
         }
 
@@ -461,11 +448,10 @@ public final class SafetyCenterEntry implements Parcelable {
         @IntDef(
                 prefix = "ICON_ACTION_TYPE_",
                 value = {
-                        ICON_ACTION_TYPE_GEAR,
-                        ICON_ACTION_TYPE_INFO,
+                    ICON_ACTION_TYPE_GEAR,
+                    ICON_ACTION_TYPE_INFO,
                 })
-        public @interface IconActionType {
-        }
+        public @interface IconActionType {}
 
         @NonNull
         public static final Creator<IconAction> CREATOR =
@@ -483,10 +469,8 @@ public final class SafetyCenterEntry implements Parcelable {
                     }
                 };
 
-        @IconActionType
-        private final int mType;
-        @NonNull
-        private final PendingIntent mPendingIntent;
+        @IconActionType private final int mType;
+        @NonNull private final PendingIntent mPendingIntent;
 
         /** Creates an icon action for a {@link SafetyCenterEntry}. */
         public IconAction(@IconActionType int type, @NonNull PendingIntent pendingIntent) {
@@ -521,12 +505,7 @@ public final class SafetyCenterEntry implements Parcelable {
 
         @Override
         public String toString() {
-            return "IconAction{"
-                    + "mType="
-                    + mType
-                    + ", mPendingIntent="
-                    + mPendingIntent
-                    + '}';
+            return "IconAction{" + "mType=" + mType + ", mPendingIntent=" + mPendingIntent + '}';
         }
 
         @Override
@@ -565,8 +544,7 @@ public final class SafetyCenterEntry implements Parcelable {
             default:
         }
         throw new IllegalArgumentException(
-                String.format("Unexpected EntrySeverityLevel for SafetyCenterEntry: %s",
-                        value));
+                String.format("Unexpected EntrySeverityLevel for SafetyCenterEntry: %s", value));
     }
 
     @SeverityUnspecifiedIconType
@@ -580,7 +558,6 @@ public final class SafetyCenterEntry implements Parcelable {
         }
         throw new IllegalArgumentException(
                 String.format(
-                        "Unexpected SeverityUnspecifiedIconType for SafetyCenterEntry: %s",
-                        value));
+                        "Unexpected SeverityUnspecifiedIconType for SafetyCenterEntry: %s", value));
     }
 }
