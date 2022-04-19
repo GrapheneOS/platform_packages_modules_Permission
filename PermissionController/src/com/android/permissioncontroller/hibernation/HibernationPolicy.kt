@@ -68,6 +68,8 @@ import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.DumpableLog
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.hibernation.v31.HibernationController
+import com.android.permissioncontroller.hibernation.v31.InstallerPackagesLiveData
 import com.android.permissioncontroller.permission.data.AllPackageInfosLiveData
 import com.android.permissioncontroller.permission.data.AppOpLiveData
 import com.android.permissioncontroller.permission.data.BroadcastReceiverLiveData
@@ -76,7 +78,6 @@ import com.android.permissioncontroller.permission.data.DataRepositoryForPackage
 import com.android.permissioncontroller.permission.data.HasIntentAction
 import com.android.permissioncontroller.permission.data.LauncherPackagesLiveData
 import com.android.permissioncontroller.permission.data.ServiceLiveData
-import com.android.permissioncontroller.permission.data.SmartAsyncMediatorLiveData
 import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveData
 import com.android.permissioncontroller.permission.data.UsageStatsLiveData
 import com.android.permissioncontroller.permission.data.get
@@ -714,56 +715,6 @@ class ExemptServicesLiveData(val user: UserHandle)
     companion object : DataRepositoryForPackage<UserHandle, ExemptServicesLiveData>() {
         override fun newValue(key: UserHandle): ExemptServicesLiveData {
             return ExemptServicesLiveData(key)
-        }
-    }
-}
-
-/**
- * Packages that are the installer of record for some package on the device.
- */
-class InstallerPackagesLiveData(val user: UserHandle)
-    : SmartAsyncMediatorLiveData<Set<String>>() {
-
-    init {
-        addSource(AllPackageInfosLiveData) {
-            update()
-        }
-    }
-
-    override suspend fun loadDataAndPostValue(job: Job) {
-        if (job.isCancelled) {
-            return
-        }
-        if (!AllPackageInfosLiveData.isInitialized) {
-            return
-        }
-        val userPackageInfos = AllPackageInfosLiveData.value!![user]
-        val installerPackages = mutableSetOf<String>()
-        val packageManager = PermissionControllerApplication.get().packageManager
-
-        userPackageInfos!!.forEach { pkgInfo ->
-            try {
-                val installerPkg =
-                    packageManager.getInstallSourceInfo(pkgInfo.packageName).installingPackageName
-                if (installerPkg != null) {
-                    installerPackages.add(installerPkg)
-                }
-            } catch (e: PackageManager.NameNotFoundException) {
-                DumpableLog.w(LOG_TAG, "Unable to find installer source info", e)
-            }
-        }
-
-        postValue(installerPackages)
-    }
-
-    /**
-     * Repository for installer packages
-     *
-     * <p> Key value is user
-     */
-    companion object : DataRepositoryForPackage<UserHandle, InstallerPackagesLiveData>() {
-        override fun newValue(key: UserHandle): InstallerPackagesLiveData {
-            return InstallerPackagesLiveData(key)
         }
     }
 }
