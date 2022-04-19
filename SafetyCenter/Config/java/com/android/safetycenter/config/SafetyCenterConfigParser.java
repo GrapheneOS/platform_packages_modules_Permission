@@ -79,8 +79,7 @@ public final class SafetyCenterConfigParser {
     private static final String ENUM_INITIAL_DISPLAY_STATE_DISABLED = "disabled";
     private static final String ENUM_INITIAL_DISPLAY_STATE_HIDDEN = "hidden";
 
-    private SafetyCenterConfigParser() {
-    }
+    private SafetyCenterConfigParser() {}
 
     /**
      * Parses and validates the given XML resource into a {@link SafetyCenterConfig} object.
@@ -88,9 +87,9 @@ public final class SafetyCenterConfigParser {
      * <p>It throws a {@link ParseException} if the given XML resource does not comply with the
      * safety_center_config.xsd schema.
      *
-     * @param in        the raw XML resource representing the Safety Center configuration
+     * @param in the raw XML resource representing the Safety Center configuration
      * @param resources the {@link Resources} retrieved from the package that contains the Safety
-     *                  Center configuration
+     *     Center configuration
      */
     @NonNull
     public static SafetyCenterConfig parseXmlResource(
@@ -106,8 +105,7 @@ public final class SafetyCenterConfigParser {
             }
             parser.nextTag();
             validateElementStart(parser, TAG_SAFETY_CENTER_CONFIG);
-            SafetyCenterConfig safetyCenterConfig =
-                    parseSafetyCenterConfig(parser, resources);
+            SafetyCenterConfig safetyCenterConfig = parseSafetyCenterConfig(parser, resources);
             if (parser.getEventType() == TEXT && parser.isWhitespace()) {
                 parser.next();
             }
@@ -132,8 +130,7 @@ public final class SafetyCenterConfigParser {
         parser.nextTag();
         while (parser.getEventType() == START_TAG
                 && parser.getName().equals(TAG_SAFETY_SOURCES_GROUP)) {
-            builder.addSafetySourcesGroup(
-                    parseSafetySourcesGroup(parser, resources));
+            builder.addSafetySourcesGroup(parseSafetySourcesGroup(parser, resources));
         }
         validateElementEnd(parser, TAG_SAFETY_SOURCES_CONFIG);
         parser.nextTag();
@@ -155,22 +152,36 @@ public final class SafetyCenterConfigParser {
         for (int i = 0; i < parser.getAttributeCount(); i++) {
             switch (parser.getAttributeName(i)) {
                 case ATTR_SAFETY_SOURCES_GROUP_ID:
-                    builder.setId(parser.getAttributeValue(i));
+                    builder.setId(
+                            parseStringResourceValue(
+                                    parser.getAttributeValue(i),
+                                    name,
+                                    parser.getAttributeName(i),
+                                    resources));
                     break;
                 case ATTR_SAFETY_SOURCES_GROUP_TITLE:
                     builder.setTitleResId(
-                            parseStringResourceName(parser.getAttributeValue(i), name,
-                                    parser.getAttributeName(i), resources));
+                            parseStringResourceName(
+                                    parser.getAttributeValue(i),
+                                    name,
+                                    parser.getAttributeName(i),
+                                    resources));
                     break;
                 case ATTR_SAFETY_SOURCES_GROUP_SUMMARY:
                     builder.setSummaryResId(
-                            parseStringResourceName(parser.getAttributeValue(i), name,
-                                    parser.getAttributeName(i), resources));
+                            parseStringResourceName(
+                                    parser.getAttributeValue(i),
+                                    name,
+                                    parser.getAttributeName(i),
+                                    resources));
                     break;
                 case ATTR_SAFETY_SOURCES_GROUP_STATELESS_ICON_TYPE:
                     builder.setStatelessIconType(
                             parseStatelessIconType(
-                                    parser.getAttributeValue(i), name, parser.getAttributeName(i)));
+                                    parser.getAttributeValue(i),
+                                    name,
+                                    parser.getAttributeName(i),
+                                    resources));
                     break;
                 default:
                     throw attributeUnexpected(name, parser.getAttributeName(i));
@@ -193,8 +204,7 @@ public final class SafetyCenterConfigParser {
                 default:
                     break loop;
             }
-            builder.addSafetySource(
-                    parseSafetySource(parser, resources, type, parser.getName()));
+            builder.addSafetySource(parseSafetySource(parser, resources, type, parser.getName()));
         }
         validateElementEnd(parser, name);
         parser.nextTag();
@@ -210,64 +220,106 @@ public final class SafetyCenterConfigParser {
             @NonNull XmlPullParser parser,
             @NonNull Resources resources,
             int safetySourceType,
-            @NonNull String name
-    ) throws XmlPullParserException, IOException, ParseException {
+            @NonNull String name)
+            throws XmlPullParserException, IOException, ParseException {
         SafetySource.Builder builder = new SafetySource.Builder(safetySourceType);
         for (int i = 0; i < parser.getAttributeCount(); i++) {
             switch (parser.getAttributeName(i)) {
                 case ATTR_SAFETY_SOURCE_ID:
-                    builder.setId(parser.getAttributeValue(i));
+                    builder.setId(
+                            parseStringResourceValue(
+                                    parser.getAttributeValue(i),
+                                    name,
+                                    parser.getAttributeName(i),
+                                    resources));
                     break;
                 case ATTR_SAFETY_SOURCE_PACKAGE_NAME:
-                    builder.setPackageName(parser.getAttributeValue(i));
+                    builder.setPackageName(
+                            parseStringResourceValue(
+                                    parser.getAttributeValue(i),
+                                    name,
+                                    parser.getAttributeName(i),
+                                    resources));
                     break;
                 case ATTR_SAFETY_SOURCE_TITLE:
                     builder.setTitleResId(
-                            parseStringResourceName(parser.getAttributeValue(i), name,
-                                    parser.getAttributeName(i), resources));
+                            parseStringResourceName(
+                                    parser.getAttributeValue(i),
+                                    name,
+                                    parser.getAttributeName(i),
+                                    resources));
                     break;
                 case ATTR_SAFETY_SOURCE_TITLE_FOR_WORK:
                     builder.setTitleForWorkResId(
-                            parseStringResourceName(parser.getAttributeValue(i), name,
-                                    parser.getAttributeName(i), resources));
+                            parseStringResourceName(
+                                    parser.getAttributeValue(i),
+                                    name,
+                                    parser.getAttributeName(i),
+                                    resources));
                     break;
                 case ATTR_SAFETY_SOURCE_SUMMARY:
                     builder.setSummaryResId(
-                            parseStringResourceName(parser.getAttributeValue(i), name,
-                                    parser.getAttributeName(i), resources));
+                            parseStringResourceName(
+                                    parser.getAttributeValue(i),
+                                    name,
+                                    parser.getAttributeName(i),
+                                    resources));
                     break;
                 case ATTR_SAFETY_SOURCE_INTENT_ACTION:
-                    builder.setIntentAction(parser.getAttributeValue(i));
+                    builder.setIntentAction(
+                            parseStringResourceValue(
+                                    parser.getAttributeValue(i),
+                                    name,
+                                    parser.getAttributeName(i),
+                                    resources));
                     break;
                 case ATTR_SAFETY_SOURCE_PROFILE:
                     builder.setProfile(
-                            parseProfile(parser.getAttributeValue(i), name,
-                                    parser.getAttributeName(i)));
+                            parseProfile(
+                                    parser.getAttributeValue(i),
+                                    name,
+                                    parser.getAttributeName(i),
+                                    resources));
                     break;
                 case ATTR_SAFETY_SOURCE_INITIAL_DISPLAY_STATE:
                     builder.setInitialDisplayState(
                             parseInitialDisplayState(
-                                    parser.getAttributeValue(i), name, parser.getAttributeName(i)));
+                                    parser.getAttributeValue(i),
+                                    name,
+                                    parser.getAttributeName(i),
+                                    resources));
                     break;
                 case ATTR_SAFETY_SOURCE_MAX_SEVERITY_LEVEL:
                     builder.setMaxSeverityLevel(
-                            parseInteger(parser.getAttributeValue(i), name,
-                                    parser.getAttributeName(i)));
+                            parseInteger(
+                                    parser.getAttributeValue(i),
+                                    name,
+                                    parser.getAttributeName(i),
+                                    resources));
                     break;
                 case ATTR_SAFETY_SOURCE_SEARCH_TERMS:
                     builder.setSearchTermsResId(
-                            parseStringResourceName(parser.getAttributeValue(i), name,
-                                    parser.getAttributeName(i), resources));
+                            parseStringResourceName(
+                                    parser.getAttributeValue(i),
+                                    name,
+                                    parser.getAttributeName(i),
+                                    resources));
                     break;
                 case ATTR_SAFETY_SOURCE_LOGGING_ALLOWED:
                     builder.setLoggingAllowed(
-                            parseBoolean(parser.getAttributeValue(i), name,
-                                    parser.getAttributeName(i)));
+                            parseBoolean(
+                                    parser.getAttributeValue(i),
+                                    name,
+                                    parser.getAttributeName(i),
+                                    resources));
                     break;
                 case ATTR_SAFETY_SOURCE_REFRESH_ON_PAGE_OPEN_ALLOWED:
                     builder.setRefreshOnPageOpenAllowed(
-                            parseBoolean(parser.getAttributeValue(i), name,
-                                    parser.getAttributeName(i)));
+                            parseBoolean(
+                                    parser.getAttributeValue(i),
+                                    name,
+                                    parser.getAttributeName(i),
+                                    resources));
                     break;
                 default:
                     throw attributeUnexpected(name, parser.getAttributeName(i));
@@ -320,109 +372,160 @@ public final class SafetyCenterConfigParser {
         return new ParseException(String.format("Element %s invalid", name), e);
     }
 
-    private static ParseException attributeUnexpected(@NonNull String parent,
-            @NonNull String name) {
+    private static ParseException attributeUnexpected(
+            @NonNull String parent, @NonNull String name) {
         return new ParseException(String.format("Unexpected attribute %s.%s", parent, name));
     }
 
-    private static ParseException attributeInvalid(@NonNull String parent, @NonNull String name) {
-        return new ParseException(String.format("Attribute %s.%s invalid", parent, name));
+    private static String attributeInvalidString(
+            @NonNull String valueString, @NonNull String parent, @NonNull String name) {
+        return String.format("Attribute value \"%s\" in %s.%s invalid", valueString, parent, name);
+    }
+
+    private static ParseException attributeInvalid(
+            @NonNull String valueString, @NonNull String parent, @NonNull String name) {
+        return new ParseException(attributeInvalidString(valueString, parent, name));
+    }
+
+    private static ParseException attributeInvalid(
+            @NonNull String valueString,
+            @NonNull String parent,
+            @NonNull String name,
+            @NonNull Throwable ex) {
+        return new ParseException(attributeInvalidString(valueString, parent, name), ex);
     }
 
     private static int parseInteger(
-            @NonNull String valueString, @NonNull String parent, @NonNull String name)
+            @NonNull String valueString,
+            @NonNull String parent,
+            @NonNull String name,
+            @NonNull Resources resources)
             throws ParseException {
+        String valueToParse = getValueToParse(valueString, parent, name, resources);
         try {
-            return Integer.parseInt(valueString);
+            return Integer.parseInt(valueToParse);
         } catch (NumberFormatException e) {
-            throw new ParseException(String.format("Attribute %s.%s invalid", parent, name), e);
+            throw attributeInvalid(valueToParse, parent, name, e);
         }
     }
 
     private static boolean parseBoolean(
-            @NonNull String valueString, @NonNull String parent, @NonNull String name)
+            @NonNull String valueString,
+            @NonNull String parent,
+            @NonNull String name,
+            @NonNull Resources resources)
             throws ParseException {
-        String valueLowerString = valueString.toLowerCase(ROOT);
-        if (valueLowerString.equals("true")) {
+        String valueToParse =
+                getValueToParse(valueString, parent, name, resources).toLowerCase(ROOT);
+        if (valueToParse.equals("true")) {
             return true;
-        } else if (!valueLowerString.equals("false")) {
-            throw new ParseException(String.format("Attribute %s.%s invalid", parent, name));
+        } else if (!valueToParse.equals("false")) {
+            throw attributeInvalid(valueToParse, parent, name);
         }
         return false;
     }
 
     @StringRes
     private static int parseStringResourceName(
-            @NonNull String valueString, @NonNull String parent, @NonNull String name,
-            @NonNull Resources resources) throws ParseException {
+            @NonNull String valueString,
+            @NonNull String parent,
+            @NonNull String name,
+            @NonNull Resources resources)
+            throws ParseException {
         if (valueString.isEmpty()) {
             throw new ParseException(
                     String.format("Resource name in %s.%s cannot be empty", parent, name));
         }
         if (valueString.charAt(0) != '@') {
             throw new ParseException(
-                    String.format("Resource name %s in %s.%s does not start with @", valueString,
-                            parent, name));
+                    String.format(
+                            "Resource name \"%s\" in %s.%s does not start with @",
+                            valueString, parent, name));
         }
         String[] colonSplit = valueString.substring(1).split(":", 2);
         if (colonSplit.length != 2 || colonSplit[0].isEmpty()) {
             throw new ParseException(
-                    String.format("Resource name %s in %s.%s does not specify a package",
+                    String.format(
+                            "Resource name \"%s\" in %s.%s does not specify a package",
                             valueString, parent, name));
         }
         String packageName = colonSplit[0];
         String[] slashSplit = colonSplit[1].split("/", 2);
         if (slashSplit.length != 2 || slashSplit[0].isEmpty()) {
             throw new ParseException(
-                    String.format("Resource name %s in %s.%s does not specify a type",
+                    String.format(
+                            "Resource name \"%s\" in %s.%s does not specify a type",
                             valueString, parent, name));
         }
         String type = slashSplit[0];
         if (!type.equals("string")) {
             throw new ParseException(
-                    String.format("Resource name %s in %s.%s is not a string", valueString, parent,
-                            name));
+                    String.format(
+                            "Resource name \"%s\" in %s.%s is not a string",
+                            valueString, parent, name));
         }
         String entry = slashSplit[1];
         int id = resources.getIdentifier(entry, type, packageName);
         if (id == Resources.ID_NULL) {
             throw new ParseException(
-                    String.format("Resource name %s in %s.%s missing or invalid", valueString,
-                            parent, name));
+                    String.format(
+                            "Resource name \"%s\" in %s.%s missing or invalid",
+                            valueString, parent, name));
         }
         return id;
     }
 
+    @NonNull
+    private static String parseStringResourceValue(
+            @NonNull String valueString,
+            @NonNull String parent,
+            @NonNull String name,
+            @NonNull Resources resources) {
+        return getValueToParse(valueString, parent, name, resources);
+    }
+
     private static int parseStatelessIconType(
-            @NonNull String valueString, @NonNull String parent, @NonNull String name)
+            @NonNull String valueString,
+            @NonNull String parent,
+            @NonNull String name,
+            @NonNull Resources resources)
             throws ParseException {
-        switch (valueString) {
+        String valueToParse = getValueToParse(valueString, parent, name, resources);
+        switch (valueToParse) {
             case ENUM_STATELESS_ICON_TYPE_NONE:
                 return SafetySourcesGroup.STATELESS_ICON_TYPE_NONE;
             case ENUM_STATELESS_ICON_TYPE_PRIVACY:
                 return SafetySourcesGroup.STATELESS_ICON_TYPE_PRIVACY;
             default:
-                throw attributeInvalid(parent, name);
+                throw attributeInvalid(valueToParse, parent, name);
         }
     }
 
     private static int parseProfile(
-            @NonNull String valueString, @NonNull String parent, @NonNull String name)
+            @NonNull String valueString,
+            @NonNull String parent,
+            @NonNull String name,
+            @NonNull Resources resources)
             throws ParseException {
-        switch (valueString) {
+        String valueToParse = getValueToParse(valueString, parent, name, resources);
+        switch (valueToParse) {
             case ENUM_PROFILE_PRIMARY:
                 return SafetySource.PROFILE_PRIMARY;
             case ENUM_PROFILE_ALL:
                 return SafetySource.PROFILE_ALL;
             default:
-                throw attributeInvalid(parent, name);
+                throw attributeInvalid(valueToParse, parent, name);
         }
     }
 
     private static int parseInitialDisplayState(
-            @NonNull String valueString, @NonNull String parent, @NonNull String name)
+            @NonNull String valueString,
+            @NonNull String parent,
+            @NonNull String name,
+            @NonNull Resources resources)
             throws ParseException {
-        switch (valueString) {
+        String valueToParse = getValueToParse(valueString, parent, name, resources);
+        switch (valueToParse) {
             case ENUM_INITIAL_DISPLAY_STATE_ENABLED:
                 return SafetySource.INITIAL_DISPLAY_STATE_ENABLED;
             case ENUM_INITIAL_DISPLAY_STATE_DISABLED:
@@ -430,7 +533,21 @@ public final class SafetyCenterConfigParser {
             case ENUM_INITIAL_DISPLAY_STATE_HIDDEN:
                 return SafetySource.INITIAL_DISPLAY_STATE_HIDDEN;
             default:
-                throw attributeInvalid(parent, name);
+                throw attributeInvalid(valueToParse, parent, name);
+        }
+    }
+
+    @NonNull
+    private static String getValueToParse(
+            @NonNull String valueString,
+            @NonNull String parent,
+            @NonNull String name,
+            @NonNull Resources resources) {
+        try {
+            int id = parseStringResourceName(valueString, parent, name, resources);
+            return resources.getString(id);
+        } catch (ParseException e) {
+            return valueString;
         }
     }
 }
