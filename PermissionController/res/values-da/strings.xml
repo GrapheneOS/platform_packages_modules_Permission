@@ -126,8 +126,8 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Se andre tilladelser"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g> <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> og <xliff:g id="NUM">%3$s</xliff:g> mere"</string>
-    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"Tidslinje over, hvornår apps har anvendt din <xliff:g id="PERMGROUP">%1$s</xliff:g> inden for de seneste 24 timer"</string>
-    <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Tidslinje over, hvornår apps har anvendt din <xliff:g id="PERMGROUP">%1$s</xliff:g> inden for de seneste 7 dage"</string>
+    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"Tidslinje over, hvornår apps har anvendt <xliff:g id="PERMGROUP">%1$s</xliff:g> inden for de seneste 24 timer"</string>
+    <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Tidslinje over, hvornår apps har anvendt <xliff:g id="PERMGROUP">%1$s</xliff:g> inden for de seneste 7 dage"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Da denne app brugte din tilladelse for <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Få flere oplysninger"</string>
     <string name="manage_permission_summary" msgid="4117555482684114317">"Administrer appadgang til din <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
@@ -217,7 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g> og <xliff:g id="NUMBER">%2$s</xliff:g> andre tilladelser blev fjernet"</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Apps, du ikke bruger"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Hvis en app ikke bruges i et par måneder, sker følgende:\n\n• Tilladelser fjernes for at beskytte dine data\n• Notifikationer stoppes for at spare på batteriet\n• Midlertidige filer fjernes for at frigøre plads\n\nHvis du vil aktivere tilladelser og notifikationer igen, skal du åbne appen."</string>
-    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Hvis en app ikke bruges i et par måneder, sker følgende:\n\n• Tilladelser fjernes for at beskytte dine data\n• Midlertidige filer fjernes for at frigøre plads\n\nHvis du vil aktivere tilladelser og notifikationer igen, skal du åbne appen."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Hvis en app ikke bruges i et par måneder, sker følgende:\n\n• Tilladelser fjernes for at beskytte dine data\n• Midlertidige filer fjernes for at frigøre plads\n\nHvis du vil aktivere tilladelserne igen, skal du åbne appen."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Sidst åbnet for mere end <xliff:g id="NUMBER">%s</xliff:g> måneder siden"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Appen blev sidst åbnet <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Sidst åbnet <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -473,7 +473,7 @@
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Vil du give &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; adgang til sensordata om dine vitale værdier?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Denne app anmoder om at tilgå sensordataene om dine vitale værdier hele tiden, også når du ikke bruger appen. Du kan foretage denne ændring ved at "<annotation id="link">"gå til indstillingerne."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Vil du give &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; adgang til sensordataene om dine vitale værdier?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Du kan give denne app adgang til kropssensor hele tiden, selv når du ikke bruger appen, ved at "<annotation id="link">"gå til indstillingerne."</annotation></string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Du kan give denne app adgang til kropssensordata hele tiden – selv når du ikke bruger appen – ved at "<annotation id="link">"gå til indstillingerne."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Vil du fortsætte med at give &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; adgang til kropssensordata, mens appen er i brug?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Vil du give &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tilladelse til at sende dig notifikationer?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Vil du give &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tilladelse til at fortsætte med at sende dig notifikationer?"</string>

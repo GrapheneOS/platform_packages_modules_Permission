@@ -473,7 +473,8 @@
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aceda aos dados de sensores acerca dos seus sinais vitais?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Esta app quer aceder sempre aos dados de sensores sobre os seus sinais vitais, mesmo quando não a estiver a usar. Para fazer esta alteração, "<annotation id="link">"aceda às definições."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aceda aos dados de sensores acerca dos seus sinais vitais?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Para permitir que esta app aceda sempre aos dados de sensores de corpo, mesmo quando não está a ser usada, "<annotation id="link">"aceda às definições."</annotation></string>
+    <!-- no translation found for permgroupbackgroundrequestdetail_sensors (7726767635834043501) -->
+    <skip />
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Continuar a permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aceda aos dados de sensores de corpo enquanto usa a app?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; lhe envie notificações?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Permitir que a app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; continue a enviar-lhe notificações?"</string>

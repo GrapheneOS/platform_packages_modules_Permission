@@ -217,7 +217,7 @@
     <string name="auto_revoked_app_summary_many" msgid="5930976230827378798">"Отозвано разрешение \"<xliff:g id="PERMISSION_NAME">%1$s</xliff:g>\" и ещё <xliff:g id="NUMBER">%2$s</xliff:g>."</string>
     <string name="unused_apps_page_title" msgid="6986983535677572559">"Неиспользуемые приложения"</string>
     <string name="unused_apps_page_summary" msgid="1867593913217272155">"Если вы не пользовались приложением несколько месяцев:\n\n• разрешения будут отозваны для защиты ваших данных;\n• уведомления будут отключены для экономии заряда батареи;\n• временные файлы будут удалены, чтобы освободить место.\n\nЧтобы заново предоставить разрешения и включить уведомления, откройте приложение."</string>
-    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Если вы не пользовались приложением несколько месяцев:\n\n• разрешения будут отозваны для защиты ваших данных;\n• временные файлы будут удалены, чтобы освободить место.\n\nЧтобы заново предоставить разрешения, откройте приложение."</string>
+    <string name="unused_apps_page_tv_summary" msgid="3685907153054355671">"Если вы не пользовались приложением несколько месяцев:\n\n• разрешения будут отключены для защиты ваших данных;\n• временные файлы будут удалены, чтобы освободить место.\n\nЧтобы заново предоставить разрешения, откройте приложение."</string>
     <string name="last_opened_category_title" msgid="7871347400611202595">"Использовались более <xliff:g id="NUMBER">%s</xliff:g> мес. назад"</string>
     <string name="last_opened_summary" msgid="5248984030024968808">"Вы открывали это приложение <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Использовалось <xliff:g id="DATE">%s</xliff:g>"</string>
@@ -473,7 +473,7 @@
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Разрешить приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным датчиков о состоянии организма?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Этому приложению требуется доступ к данным нательных датчиков, даже когда вы им не пользуетесь. Предоставить разрешение можно в "<annotation id="link">"настройках"</annotation>"."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Разрешить приложению \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" доступ к данным датчиков на теле?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Чтобы предоставить приложению доступ к данным нательных датчиков, даже когда вы им не пользуетесь, "<annotation id="link">"измените настройки"</annotation>"."</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Чтобы предоставить приложению доступ к данным нательных датчиков, даже когда вы им не пользуетесь, "<annotation id="link">"измените настройки"</annotation>"."</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Предоставлять приложению &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; доступ к данным нательных датчиков, только когда оно используется?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Разрешить \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" отправлять уведомления?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Разрешить приложению \"<xliff:g id="APP_NAME">%1$s</xliff:g>\" и дальше отправлять уведомления?"</string>
