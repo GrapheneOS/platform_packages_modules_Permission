@@ -473,7 +473,8 @@
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला तुमच्या महत्त्वाच्या लक्षणांविषयीचा सेन्सर डेटा अ‍ॅक्सेस करू द्यायचे?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"तुम्ही अ‍ॅप वापरत नसतानादेखील या ॲपला तुमच्या महत्त्वाच्या परिमाणांबद्दलचा सेन्सर डेटा पूर्णवेळ ॲक्सेस करायचा आहे. हा बदल करण्यासाठी, "<annotation id="link">" सेटिंग्जवर जा."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला तुमच्या महत्त्वाच्या परिमाणांसंबंधित सेन्सर डेटा अ‍ॅक्सेस करण्याची अनुमती द्यायची आहे का?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"तुम्ही ॲप वापरत नसतानादेखील या ॲपला शरीर सेन्सर डेटा नेहमी अ‍ॅक्सेस करू देण्यासाठी, "<annotation id="link">"सेटिंग्जवर जा."</annotation></string>
+    <!-- no translation found for permgroupbackgroundrequestdetail_sensors (7726767635834043501) -->
+    <skip />
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ॲप वापरात असताना &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला शरीर सेन्सर डेटा अ‍ॅक्सेस करण्याची अनुमती देणे सुरू ठेवायचे आहे का?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला तुम्हाला सूचना पाठवू द्यायचे का?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला तुम्हाला सूचना पाठवणे सुरू ठेवू द्यायचे का?"</string>

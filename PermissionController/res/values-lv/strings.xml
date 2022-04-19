@@ -473,7 +473,8 @@
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt sensoru uztvertajiem veselības rādījumiem?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Lietotne pieprasa atļauju piekļūt veselības rādījumu sensoru datiem vienmēr, pat ja neizmantojat lietotni. Lai veiktu šīs izmaiņas, "<annotation id="link">"pārejiet uz iestatījumiem"</annotation>"."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt veselības rādītāju sensoru datiem?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"Lai atļautu šai lietotnei piekļūt ķermeņa sensoru datiem vienmēr (pat tad, kad neizmantojat lietotni), "<annotation id="link">"pārejiet uz iestatījumiem"</annotation>"."</string>
+    <!-- no translation found for permgroupbackgroundrequestdetail_sensors (7726767635834043501) -->
+    <skip />
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Vai joprojām atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; piekļūt ķermeņa sensoru datiem, kad izmantojat lietotni?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; sūtīt jums paziņojumus?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Vai atļaut lietotnei &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; turpināt sūtīt jums paziņojumus?"</string>
