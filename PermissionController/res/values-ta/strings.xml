@@ -473,7 +473,8 @@
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"உங்கள் உடலியக்கக் குறிகள் பற்றிய சென்சார் தரவை அணுகுவதற்கு &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"ஆப்ஸைப் பயன்படுத்தாதபோதும் உங்கள் உடலியக்க அளவீடுகள் பற்றிய சென்சார் தரவை எப்போதும் அணுக இந்த ஆப்ஸ் விரும்புகிறது. இந்த மாற்றத்தைச் செய்ய "<annotation id="link">"அமைப்புகளுக்குச் செல்லுங்கள்."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"உடலியக்க அளவீடுகள் பற்றிய சென்சார் தரவை அணுக &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7649389834182449783">"ஆப்ஸைப் பயன்படுத்தாதபோதும் இந்த ஆப்ஸ் எல்லா நேரங்களிலும் உடல் சென்சார் தரவை அணுக "<annotation id="link">"அமைப்புகளுக்குச் செல்லுங்கள்."</annotation></string>
+    <!-- no translation found for permgroupbackgroundrequestdetail_sensors (7726767635834043501) -->
+    <skip />
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ஆப்ஸ் பயன்பாட்டில் இருக்கும்போது உடல் சென்சார் தரவை அணுக &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&amp;gt ஆப்ஸுக்குத் தொடர்ந்து அனுமதியளிக்கவா?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"உங்களுக்கு அறிவிப்புகளை அனுப்ப &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"உங்களுக்குத் தொடர்ந்து அறிவிப்புகளை அனுப்ப &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
