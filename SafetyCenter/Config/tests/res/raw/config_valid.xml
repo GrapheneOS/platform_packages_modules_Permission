@@ -26,6 +26,19 @@
                 loggingAllowed="false"
                 refreshOnPageOpenAllowed="true"/>
             <dynamic-safety-source
+                id="@com.android.safetycenter.config.tests:string/dynamic_all_references_id"
+                packageName="@com.android.safetycenter.config.tests:string/dynamic_all_references_package_name"
+                title="@com.android.safetycenter.config.tests:string/reference"
+                titleForWork="@com.android.safetycenter.config.tests:string/reference"
+                summary="@com.android.safetycenter.config.tests:string/reference"
+                intentAction="@com.android.safetycenter.config.tests:string/dynamic_all_references_intent_action"
+                profile="@com.android.safetycenter.config.tests:string/dynamic_all_references_profile"
+                initialDisplayState="@com.android.safetycenter.config.tests:string/dynamic_all_references_initial_display_state"
+                maxSeverityLevel="@com.android.safetycenter.config.tests:string/dynamic_all_references_max_severity_level"
+                searchTerms="@com.android.safetycenter.config.tests:string/reference"
+                loggingAllowed="@com.android.safetycenter.config.tests:string/dynamic_all_references_logging_allowed"
+                refreshOnPageOpenAllowed="@com.android.safetycenter.config.tests:string/dynamic_all_references_refresh_on_page_open_allowed"/>
+            <dynamic-safety-source
                 id="dynamic_disabled"
                 packageName="package"
                 title="@com.android.safetycenter.config.tests:string/reference"
@@ -42,6 +55,8 @@
                 packageName="package"
                 title="@com.android.safetycenter.config.tests:string/reference"
                 titleForWork="@com.android.safetycenter.config.tests:string/reference"
+                summary="@com.android.safetycenter.config.tests:string/reference"
+                intentAction="intent"
                 profile="all_profiles"
                 initialDisplayState="hidden"
                 searchTerms="@com.android.safetycenter.config.tests:string/reference"/>
