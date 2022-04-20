@@ -795,6 +795,59 @@ class SafetyCenterManagerTest {
     }
 
     @Test
+    fun refreshSafetySources_refreshAfterSuccessfulRefresh_completesSuccessfully() {
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SINGLE_SOURCE_CONFIG)
+        SafetySourceReceiver.safetySourceData[
+            SafetySourceDataKey(Reason.REFRESH_PAGE_OPEN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
+            safetySourceDataInformation
+
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+            REFRESH_REASON_PAGE_OPEN)
+
+        val apiSafetySourceData1 =
+            safetyCenterManager.getSafetySourceDataWithPermission(
+                CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)
+        assertThat(apiSafetySourceData1).isEqualTo(safetySourceDataInformation)
+
+        SafetySourceReceiver.safetySourceData[
+            SafetySourceDataKey(Reason.REFRESH_PAGE_OPEN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
+            safetySourceDataCritical
+
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+            REFRESH_REASON_PAGE_OPEN)
+
+        val apiSafetySourceData2 =
+            safetyCenterManager.getSafetySourceDataWithPermission(
+                CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)
+        assertThat(apiSafetySourceData2).isEqualTo(safetySourceDataCritical)
+    }
+
+    @Test
+    fun refreshSafetySources_withoutAllowingPreviousRefreshToTimeout_completesSuccessfully() {
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SINGLE_SOURCE_CONFIG)
+
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+            REFRESH_REASON_PAGE_OPEN)
+        val apiSafetySourceData1 =
+            safetyCenterManager.getSafetySourceDataWithPermission(
+                CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)
+        assertThat(apiSafetySourceData1).isEqualTo(null)
+
+        // Don't wait for the ongoing refresh to timeout.
+        SafetySourceReceiver.safetySourceData[
+            SafetySourceDataKey(Reason.REFRESH_PAGE_OPEN, CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)] =
+            safetySourceDataInformation
+
+        safetyCenterManager.refreshSafetySourcesWithReceiverPermissionAndWait(
+            REFRESH_REASON_PAGE_OPEN)
+
+        val apiSafetySourceData2 =
+            safetyCenterManager.getSafetySourceDataWithPermission(
+                CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)
+        assertThat(apiSafetySourceData2).isEqualTo(safetySourceDataInformation)
+    }
+
+    @Test
     fun refreshSafetySources_withInvalidRefreshSeason_throwsIllegalArgumentException() {
         val thrown =
             assertFailsWith(IllegalArgumentException::class) {

@@ -16,6 +16,7 @@
 
 package com.android.safetycenter.config
 
+import android.util.Log
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeout
@@ -51,6 +52,22 @@ object Coroutines {
         delay(checkPeriod.toMillis())
         return waitFor(checkPeriod, condition)
     }
+
+    /** Retries a test until no assertions or exceptions are thrown or a timeout occurs. */
+    fun waitForTestToPass(test: () -> Unit) {
+        waitForWithTimeout {
+            try {
+                test()
+                true
+            } catch (ex: Throwable) {
+                Log.w(TAG, "Encountered test failure, retrying until timeout: $ex")
+                false
+            }
+        }
+    }
+
+    /** A medium period, to be used for conditions that are expected to change. */
+    private val TAG = "Coroutines"
 
     /** A medium period, to be used for conditions that are expected to change. */
     private val CHECK_PERIOD = Duration.ofMillis(250)

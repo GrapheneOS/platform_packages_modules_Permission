@@ -15,8 +15,15 @@
   ~ limitations under the License.
   -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Test reference -->
     <string name="reference" translatable="false">Reference</string>
     <string name="reference_overlayable" translatable="false">Base</string>
     <string name="reference_not_overlayable" translatable="false">Base</string>
+    <string name="dynamic_all_references_id" translatable="false">dynamic_all_references</string>
+    <string name="dynamic_all_references_package_name" translatable="false">package</string>
+    <string name="dynamic_all_references_intent_action" translatable="false">intent</string>
+    <string name="dynamic_all_references_profile" translatable="false">all_profiles</string>
+    <string name="dynamic_all_references_initial_display_state" translatable="false">disabled</string>
+    <string name="dynamic_all_references_max_severity_level" translatable="false">300</string>
+    <string name="dynamic_all_references_logging_allowed" translatable="false">false</string>
+    <string name="dynamic_all_references_refresh_on_page_open_allowed" translatable="false">true</string>
 </resources>

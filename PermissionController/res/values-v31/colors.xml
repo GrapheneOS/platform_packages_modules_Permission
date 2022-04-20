@@ -14,31 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<resources xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:androidprv="http://schemas.android.com/apk/prv/res/android">
+<resources>
     <color name="warning_surface">#F0E3A8</color>
     <color name="warning_onsurface">#895900</color>
-
-    <!-- Safety center colors -->
-    <color name="safety_center_info">#5BB974</color>
-    <color name="safety_center_recommend">#FCC934</color>
-    <color name="safety_center_warn">#EE675C</color>
-
-    <color name="safety_center_card_background">?androidprv:attr/colorSurface</color>
-
-    <color name="safety_center_dismiss_button">?android:attr/textColorPrimary</color>
-    <color name="safety_center_dismiss_button_background">?androidprv:attr/colorSurfaceVariant</color>
-
-    <color name="safety_center_button_text">#000000</color> <!--Black-->
-
-    <color name="safety_center_status_info">#1E8E3E</color> <!--GM Green/600-->
-    <color name="safety_center_status_recommend">#F9AB00</color> <!--GM Yellow/600-->
-    <color name="safety_center_status_warn">#C5221F</color> <!--GM Red/600-->
-
-    <color name="safety_center_done">#767676</color>
-    <color name="safety_center_qs_background">#2f3133</color>
-
-    <color name="safety_center_status_background_info">#CEEAD6</color> <!--GM Green/100-->
-    <color name="safety_center_status_background_recommend">#FEEFC3</color> <!--GM Yellow/100-->
-    <color name="safety_center_status_background_warn">#FAD2CF</color> <!--GM Red/100-->
 </resources>

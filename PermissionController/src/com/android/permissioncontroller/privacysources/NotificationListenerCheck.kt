@@ -42,7 +42,14 @@ import android.os.Build
 import android.os.Bundle
 import android.os.UserManager
 import android.provider.DeviceConfig
+import android.provider.Settings.ACTION_NOTIFICATION_LISTENER_DETAIL_SETTINGS
+import android.provider.Settings.EXTRA_NOTIFICATION_LISTENER_COMPONENT_NAME
 import android.safetycenter.SafetyCenterManager
+import android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_ID
+import android.safetycenter.SafetyCenterManager.EXTRA_SAFETY_SOURCE_ISSUE_ID
+import android.safetycenter.SafetyEvent
+import android.safetycenter.SafetySourceData
+import android.safetycenter.SafetySourceIssue
 import android.service.notification.StatusBarNotification
 import android.util.ArraySet
 import android.util.Log
@@ -54,8 +61,6 @@ import androidx.annotation.WorkerThread
 import androidx.core.util.Preconditions
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.Constants
-import com.android.permissioncontroller.Constants.EXTRA_SESSION_ID
-import com.android.permissioncontroller.Constants.INVALID_SESSION_ID
 import com.android.permissioncontroller.Constants.KEY_LAST_NOTIFICATION_LISTENER_NOTIFICATION_SHOWN
 import com.android.permissioncontroller.Constants.NOTIFICATION_LISTENER_CHECK_ALREADY_NOTIFIED_FILE
 import com.android.permissioncontroller.Constants.NOTIFICATION_LISTENER_CHECK_NOTIFICATION_ID
@@ -83,7 +88,7 @@ import java.util.concurrent.TimeUnit.DAYS
 import java.util.function.BooleanSupplier
 import java.util.Random
 
-private val TAG = NotificationListenerCheck::class.java.simpleName
+private val TAG = "NotificationListenerCheck"
 private const val DEBUG = false
 
 /**
@@ -199,6 +204,13 @@ internal class NotificationListenerCheckInternal(
         parentUserContext.getSharedPreferences(PREFERENCES_FILE, MODE_PRIVATE)
 
     companion object {
+        private const val SC_NLS_ISSUE_TYPE_ID = "notification_listener_privacy_issue"
+        private const val SC_NLS_SOURCE_ID = "AndroidNotificationListener"
+        private const val SC_NLS_DISABLE_ACTION_ID =
+            "disable_nls_component"
+        private const val SC_SHOW_NLS_SETTINGS_ACTION_ID =
+            "show_notification_listener_settings"
+
         /** Lock required for all public methods */
         private val nlsLock = Mutex()
     }
@@ -249,9 +261,7 @@ internal class NotificationListenerCheckInternal(
         throwInterruptedExceptionIfTaskIsCanceled()
 
         postSystemNotificationIfNeeded(unNotifiedComponents)
-
-        // TODO(b/217566029): send list of components with enabled notification listeners to
-        //  Safety Center
+        sendIssuesToSafetyCenter(enabledComponents)
     }
 
     /**
@@ -396,8 +406,6 @@ internal class NotificationListenerCheckInternal(
      */
     internal suspend fun removePackageState(pkg: String) {
         nlsLock.withLock {
-            removeNotificationsForPackage(pkg)
-
             // There can be multiple NLS components per package
             // Remove all known NLS components for the specified package
             val notifiedComponents: ArraySet<NlsComponent> = loadNotifiedComponentsLocked()
@@ -534,26 +542,11 @@ internal class NotificationListenerCheckInternal(
         pkg: PackageInfo
     ) {
         val pkgLabel: CharSequence = packageManager.getApplicationLabel(pkg.applicationInfo)
-        val pkgName = pkg.packageName
 
-        var sessionId = INVALID_SESSION_ID
-        while (sessionId == INVALID_SESSION_ID) {
-            sessionId = Random().nextLong()
-        }
-
-        val deleteIntent = Intent(parentUserContext,
-            NotificationListenerCheck.NotificationDeleteHandler::class.java).apply {
-            putExtra(EXTRA_COMPONENT_NAME, componentName)
-            putExtra(EXTRA_SESSION_ID, sessionId)
-            flags = FLAG_RECEIVER_FOREGROUND
-        }
-
-        val clickIntent = Intent(Intent.ACTION_SAFETY_CENTER).apply {
-            // TODO(b/217566029): update with EXTRA_SAFETY_SOURCE_ISSUE_ID and EXTRA_SAFETY_SOURCE_ID
-            putExtra(EXTRA_COMPONENT_NAME, componentName)
-            putExtra(EXTRA_SESSION_ID, sessionId)
-            flags = FLAG_ACTIVITY_NEW_TASK
-        }
+        val deletePendingIntent =
+            getNotificationDeleteBroadcastPendingIntent(parentUserContext, componentName)
+        val clickPendingIntent =
+            getSafetyCenterActivityPendingIntent(parentUserContext, componentName)
 
         val title =
             parentUserContext.getString(R.string.notification_listener_reminder_notification_title)
@@ -591,18 +584,8 @@ internal class NotificationListenerCheckInternal(
                 .setSmallIcon(smallIconResId)
                 .setColor(parentUserContext.getColor(colorResId))
                 .setAutoCancel(true)
-                .setDeleteIntent(
-                    PendingIntent.getBroadcast(
-                        parentUserContext, 0, deleteIntent,
-                        FLAG_ONE_SHOT or FLAG_UPDATE_CURRENT or FLAG_IMMUTABLE
-                    )
-                )
-                .setContentIntent(
-                    PendingIntent.getActivity(
-                        parentUserContext, 0, clickIntent,
-                        FLAG_ONE_SHOT or FLAG_UPDATE_CURRENT or FLAG_IMMUTABLE
-                    )
-                )
+                .setDeleteIntent(deletePendingIntent)
+                .setContentIntent(clickPendingIntent)
 
         if (appLabel != null && appLabel.isNotEmpty()) {
             val appNameExtras = Bundle()
@@ -612,16 +595,62 @@ internal class NotificationListenerCheckInternal(
 
         val notificationManager =
             getSystemServiceSafe(parentUserContext, NotificationManager::class.java)
-        notificationManager.notify(pkgName, NOTIFICATION_LISTENER_CHECK_NOTIFICATION_ID, b.build())
+        notificationManager.notify(
+            componentName.flattenToString(),
+            NOTIFICATION_LISTENER_CHECK_NOTIFICATION_ID,
+            b.build())
 
-        Log.v(TAG, "Notification listener check notification shown with sessionId=" +
-            "$sessionId component=${componentName.flattenToString()}"
-        )
+        Log.v(TAG, "Notification listener check notification shown with component=" +
+            "${componentName.flattenToString()}")
 
         sharedPrefs.edit().putLong(
             KEY_LAST_NOTIFICATION_LISTENER_NOTIFICATION_SHOWN,
             currentTimeMillis()
         ).apply()
+    }
+
+    /**
+     * @return [PendingIntent] to safety center
+     */
+    private fun getNotificationDeleteBroadcastPendingIntent(
+        context: Context,
+        componentName: ComponentName
+    ): PendingIntent {
+        val intent = Intent(parentUserContext,
+            NotificationListenerCheck.NotificationDeleteHandler::class.java).apply {
+            putExtra(EXTRA_COMPONENT_NAME, componentName)
+            flags = FLAG_RECEIVER_FOREGROUND
+            identifier = componentName.flattenToString()
+        }
+        return PendingIntent.getBroadcast(
+            context,
+            0,
+            intent,
+            FLAG_ONE_SHOT or FLAG_UPDATE_CURRENT or FLAG_IMMUTABLE
+        )
+    }
+
+    /**
+     * @return [PendingIntent] to safety center
+     */
+    private fun getSafetyCenterActivityPendingIntent(
+        context: Context,
+        componentName: ComponentName
+    ): PendingIntent {
+        val intent = Intent(Intent.ACTION_SAFETY_CENTER).apply {
+            putExtra(EXTRA_SAFETY_SOURCE_ID, SC_NLS_SOURCE_ID)
+            putExtra(EXTRA_SAFETY_SOURCE_ISSUE_ID,
+                getSafetySourceIssueIdFromComponentName(componentName))
+            putExtra(EXTRA_COMPONENT_NAME, componentName)
+            flags = FLAG_ACTIVITY_NEW_TASK
+            identifier = componentName.flattenToString()
+        }
+        return PendingIntent.getActivity(
+            context,
+            0,
+            intent,
+            FLAG_ONE_SHOT or FLAG_UPDATE_CURRENT or FLAG_IMMUTABLE
+        )
     }
 
     /**
@@ -636,25 +665,179 @@ internal class NotificationListenerCheckInternal(
             getSystemServiceSafe(parentUserContext, NotificationManager::class.java)
                 .activeNotifications
 
-        for (notification in notifications) {
-            if (notification.id == NOTIFICATION_LISTENER_CHECK_NOTIFICATION_ID) {
-                return notification
-            }
+        return notifications.firstOrNull { it.id == NOTIFICATION_LISTENER_CHECK_NOTIFICATION_ID }
+    }
+
+    /** Remove any posted notifications for this feature */
+    internal fun removeAnyNotification() {
+        val notification: StatusBarNotification = getCurrentlyShownNotificationLocked() ?: return
+        cancelNotification(notification.tag)
+    }
+
+    /** Remove notification if present for a package */
+    internal fun removeNotificationsForPackage(pkg: String) {
+        val notification: StatusBarNotification = getCurrentlyShownNotificationLocked() ?: return
+        val notificationComponent = ComponentName.unflattenFromString(notification.tag)
+        if (notificationComponent == null || notificationComponent.packageName != pkg) {
+            return
         }
-        return null
+        cancelNotification(notification.tag)
+    }
+
+    /** Remove notification if present for a [ComponentName] */
+    internal fun removeNotificationsForComponent(component: ComponentName) {
+        val notification: StatusBarNotification = getCurrentlyShownNotificationLocked() ?: return
+        val notificationComponent = ComponentName.unflattenFromString(notification.tag)
+        if (notificationComponent == null || notificationComponent != component) {
+            return
+        }
+        cancelNotification(notification.tag)
+    }
+
+    private fun cancelNotification(notificationTag: String) {
+        getSystemServiceSafe(parentUserContext, NotificationManager::class.java)
+            .cancel(notificationTag, Constants.NOTIFICATION_LISTENER_CHECK_NOTIFICATION_ID)
+    }
+
+    internal fun sendIssuesToSafetyCenter() {
+        val enabledComponents = getEnabledNotificationListeners()
+        sendIssuesToSafetyCenter(enabledComponents)
+    }
+
+    private fun sendIssuesToSafetyCenter(enabledComponents: List<ComponentName>) {
+        val pendingIssues = enabledComponents.map { createSafetySourceIssue(it) }
+        val safetyEvent = SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED)
+            .build()
+        val dataBuilder = SafetySourceData.Builder()
+        pendingIssues.forEach { dataBuilder.addIssue(it) }
+        val safetySourceData = dataBuilder.build()
+        if (DEBUG) {
+            Log.v(TAG, "sending data to safety center : $safetySourceData")
+        }
+
+        val safetyCenterManager =
+            getSystemServiceSafe(parentUserContext, SafetyCenterManager::class.java)
+        safetyCenterManager.setSafetySourceData(
+            SC_NLS_SOURCE_ID,
+            safetySourceData,
+            safetyEvent
+        )
     }
 
     /**
-     * Remove notification if present for a package
-     *
-     * @param pkg name of package
+     * @param componentName enabled [NotificationListenerService]
+     * @return safety source issue, shown as the warning card in safety center
      */
-    private suspend fun removeNotificationsForPackage(pkg: String) {
-        val notification: StatusBarNotification? = getCurrentlyShownNotificationLocked()
-        if (notification != null && notification.tag == pkg) {
-            getSystemServiceSafe(parentUserContext, NotificationManager::class.java)
-                .cancel(pkg, NOTIFICATION_LISTENER_CHECK_NOTIFICATION_ID)
+    private fun createSafetySourceIssue(componentName: ComponentName): SafetySourceIssue {
+        val pkgInfo = getPackageInfoForComponentName(componentName)
+        val pkgLabel: CharSequence = packageManager.getApplicationLabel(pkgInfo.applicationInfo)
+
+        val disableNlsPendingIntent = getDisableNlsPendingIntent(parentUserContext, componentName)
+
+        val disableNlsAction = SafetySourceIssue.Action.Builder(SC_NLS_DISABLE_ACTION_ID,
+            parentUserContext.getString(R.string.notification_listener_remove_access_button_label),
+            disableNlsPendingIntent
+        )
+            .setWillResolve(true)
+            .setSuccessMessage(parentUserContext.getString(
+                R.string.notification_listener_remove_access_success_label))
+            .build()
+
+        val notificationListenerDetailsSettingsPendingIntent =
+            getNotificationListenerDetailsSettingsPendingIntent(parentUserContext, componentName)
+
+        val showNotificationListenerDetailsSettingsAction =
+            SafetySourceIssue.Action.Builder(
+                SC_SHOW_NLS_SETTINGS_ACTION_ID,
+                parentUserContext.getString(R.string.notification_listener_review_app_button_label),
+                notificationListenerDetailsSettingsPendingIntent
+        ).build()
+
+        val actionCardDismissPendingIntent =
+            getActionCardDismissalPendingIntent(parentUserContext, componentName)
+
+        val title = parentUserContext.getString(
+            R.string.notification_listener_reminder_notification_title)
+        val summary = parentUserContext.getString(
+            R.string.notification_listener_warning_card_content)
+
+        return SafetySourceIssue
+            .Builder(
+                getSafetySourceIssueIdFromComponentName(componentName),
+                title,
+                summary,
+                SafetySourceData.SEVERITY_LEVEL_INFORMATION,
+                SC_NLS_ISSUE_TYPE_ID
+            )
+            .setSubtitle(pkgLabel)
+            .addAction(disableNlsAction)
+            .addAction(showNotificationListenerDetailsSettingsAction)
+            .setOnDismissPendingIntent(actionCardDismissPendingIntent)
+            .build()
+    }
+
+    private fun getSafetySourceIssueIdFromComponentName(componentName: ComponentName): String {
+        return "notification_listener_${componentName.flattenToString()}"
+    }
+
+    /**
+     * @return [PendingIntent] for remove access button on the warning card.
+     */
+    private fun getDisableNlsPendingIntent(
+        context: Context,
+        componentName: ComponentName
+    ): PendingIntent {
+        val intent = Intent(parentUserContext,
+                NotificationListenerCheck.DisableComponentHandler::class.java).apply {
+                putExtra(Intent.EXTRA_COMPONENT_NAME, componentName)
+                flags = Intent.FLAG_RECEIVER_FOREGROUND
+                identifier = componentName.flattenToString()
+            }
+
+        return PendingIntent.getBroadcast(
+            context,
+            0,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
+    }
+
+    /**
+     * @return [PendingIntent] to Notification Listener Details Settings page for specified [ComponentName]
+     */
+    private fun getNotificationListenerDetailsSettingsPendingIntent(
+        context: Context,
+        componentName: ComponentName
+    ): PendingIntent {
+        val intent = Intent(ACTION_NOTIFICATION_LISTENER_DETAIL_SETTINGS).apply {
+            putExtra(EXTRA_NOTIFICATION_LISTENER_COMPONENT_NAME, componentName.flattenToString())
+            flags = FLAG_ACTIVITY_NEW_TASK
+            identifier = componentName.flattenToString()
         }
+        return PendingIntent.getActivity(
+            context,
+            0,
+            intent,
+            FLAG_IMMUTABLE
+        )
+    }
+
+    private fun getActionCardDismissalPendingIntent(
+        context: Context,
+        componentName: ComponentName
+    ): PendingIntent {
+        val intent = Intent(context,
+            NotificationListenerCheck.ActionCardDismissalReceiver::class.java).apply {
+                putExtra(EXTRA_COMPONENT_NAME, componentName)
+                flags = FLAG_RECEIVER_FOREGROUND
+                identifier = componentName.flattenToString()
+            }
+        return PendingIntent.getBroadcast(
+            parentUserContext,
+            0,
+            intent,
+            FLAG_IMMUTABLE
+        )
     }
 
     /**
@@ -683,6 +866,7 @@ internal class NotificationListenerCheckInternal(
     )
 }
 
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class NotificationListenerCheck {
 
     /**
@@ -819,15 +1003,58 @@ class NotificationListenerCheck {
 
             val componentName =
                 Utils.getParcelableExtraSafe<ComponentName>(intent, EXTRA_COMPONENT_NAME)
-            val sessionId = intent.getLongExtra(EXTRA_SESSION_ID, INVALID_SESSION_ID)
             GlobalScope.launch(Default) {
                 NotificationListenerCheckInternal(context, null).markAsNotified(componentName)
             }
             Log.v(
                 TAG,
-                "Notification listener check notification declined with sessionId=$sessionId " +
-                    "component=${componentName.flattenToString()}"
+                "Notification listener check notification declined with component=" +
+                    "${componentName.flattenToString()}"
             )
+        }
+    }
+
+    /** Disable a specified Notification Listener Service component */
+    class DisableComponentHandler : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            val componentName =
+                Utils.getParcelableExtraSafe<ComponentName>(intent, EXTRA_COMPONENT_NAME)
+            GlobalScope.launch(Default) {
+                if (DEBUG) {
+                    Log.v(TAG, "DisableComponentHandler: disabling $componentName")
+                }
+                val notificationManager = getSystemServiceSafe(
+                    context,
+                    NotificationManager::class.java
+                )
+                notificationManager.setNotificationListenerAccessGranted(
+                    componentName,
+                    /* granted= */ false,
+                    /* userSet= */ true)
+
+                NotificationListenerCheckInternal(context, null).run {
+                    removeNotificationsForComponent(componentName)
+                    // TODO(b/217566029): update Safety center action cards
+                }
+            }
+        }
+    }
+
+    /* A Safety Center action card for a specified component was dismissed */
+    class ActionCardDismissalReceiver : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            val componentName =
+                Utils.getParcelableExtraSafe<ComponentName>(intent, Intent.EXTRA_COMPONENT_NAME)
+            GlobalScope.launch(Default) {
+                if (DEBUG) {
+                    Log.v(TAG, "ActionCardDismissalReceiver: $componentName dismissed")
+                }
+                NotificationListenerCheckInternal(context, null).run {
+                    removeNotificationsForComponent(componentName)
+                    markAsNotified(componentName)
+                    // TODO(b/217566029): update Safety center action cards
+                }
+            }
         }
     }
 
@@ -856,13 +1083,15 @@ class NotificationListenerCheck {
             }
 
             val data = Preconditions.checkNotNull(intent.data)
+            val pkg = data.schemeSpecificPart
 
-            if (DEBUG) Log.i(TAG, "Reset " + data.schemeSpecificPart)
+            if (DEBUG) Log.i(TAG, "Reset $pkg")
 
             GlobalScope.launch(Default) {
                 NotificationListenerCheckInternal(context, null).run {
-                    removePackageState(data.schemeSpecificPart)
-                    // TODO(b/217566029): update Safety center action cards
+                    removeNotificationsForPackage(pkg)
+                    removePackageState(pkg)
+                    sendIssuesToSafetyCenter()
                 }
             }
         }
