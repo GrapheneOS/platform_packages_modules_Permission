@@ -106,13 +106,13 @@ public final class SafetyCenterManager {
      * manifest-registered receiver to be woken up by Safety Center.
      *
      * <p>On receiving this broadcast, safety sources should determine their safety state according
-     * to the parameters specified in the intent extras (see below) and set {@link
-     * SafetySourceData} using {@link #setSafetySourceData}, along with a {@link SafetyEvent} with
-     * {@link SafetyEvent#getType()} set to {@link SafetyEvent#SAFETY_EVENT_TYPE_REFRESH_REQUESTED}
-     * and {@link SafetyEvent#getRefreshBroadcastId()} set to the value of broadcast intent extra
-     * {@link #EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID}. If the safety source is unable to provide
-     * data, it can set a {@code null} {@link SafetySourceData}, which will clear any existing
-     * {@link SafetySourceData} stored by Safety Center, and Safety Center will fall back to any
+     * to the parameters specified in the intent extras (see below) and set {@link SafetySourceData}
+     * using {@link #setSafetySourceData}, along with a {@link SafetyEvent} with {@link
+     * SafetyEvent#getType()} set to {@link SafetyEvent#SAFETY_EVENT_TYPE_REFRESH_REQUESTED} and
+     * {@link SafetyEvent#getRefreshBroadcastId()} set to the value of broadcast intent extra {@link
+     * #EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID}. If the safety source is unable to provide data,
+     * it can set a {@code null} {@link SafetySourceData}, which will clear any existing {@link
+     * SafetySourceData} stored by Safety Center, and Safety Center will fall back to any
      * placeholder data specified in {@link SafetyCenterConfig}.
      *
      * <p class="note">This is a protected intent that can only be sent by the system.
@@ -121,17 +121,17 @@ public final class SafetyCenterManager {
      *
      * <ul>
      *   <li>{@link #EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE}: An int representing the type of
-     *   data being requested. Possible values are {@link
-     *   #EXTRA_REFRESH_REQUEST_TYPE_FETCH_FRESH_DATA} and {@link
-     *   #EXTRA_REFRESH_REQUEST_TYPE_GET_DATA}.
+     *       data being requested. Possible values are {@link
+     *       #EXTRA_REFRESH_REQUEST_TYPE_FETCH_FRESH_DATA} and {@link
+     *       #EXTRA_REFRESH_REQUEST_TYPE_GET_DATA}.
      *   <li>{@link #EXTRA_REFRESH_SAFETY_SOURCE_IDS}: A {@code String[]} of ids representing the
-     *   safety sources being requested for data. This extra exists for disambiguation in the case
-     *   that a single component is responsible for receiving refresh requests for multiple safety
-     *   sources.
+     *       safety sources being requested for data. This extra exists for disambiguation in the
+     *       case that a single component is responsible for receiving refresh requests for multiple
+     *       safety sources.
      *   <li>{@link #EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID}: An unique identifier for the
-     *   refresh request broadcast. This extra should be used to specify {@link
-     *   SafetyEvent#getRefreshBroadcastId()} when the safety source responds to the broadcast
-     *   using {@link #setSafetySourceData}.
+     *       refresh request broadcast. This extra should be used to specify {@link
+     *       SafetyEvent#getRefreshBroadcastId()} when the safety source responds to the broadcast
+     *       using {@link #setSafetySourceData}.
      * </ul>
      */
     @SdkConstant(BROADCAST_INTENT_ACTION)
@@ -170,9 +170,8 @@ public final class SafetyCenterManager {
      * Used as a {@code String} extra field in {@link Intent#ACTION_SAFETY_CENTER} intents to
      * specify an issue ID to redirect to, if applicable.
      *
-     * <p>This extra must be used in conjunction with {@link #EXTRA_SAFETY_SOURCE_ID} as an issue
-     * ID does not uniquely identify a {@link SafetySourceIssue}. Otherwise, no redirection will
-     * occur.
+     * <p>This extra must be used in conjunction with {@link #EXTRA_SAFETY_SOURCE_ID} as an issue ID
+     * does not uniquely identify a {@link SafetySourceIssue}. Otherwise, no redirection will occur.
      */
     public static final String EXTRA_SAFETY_SOURCE_ISSUE_ID =
             "android.safetycenter.extra.SAFETY_SOURCE_ISSUE_ID";
@@ -232,12 +231,11 @@ public final class SafetyCenterManager {
     @IntDef(
             prefix = {"EXTRA_REFRESH_REQUEST_TYPE_"},
             value = {
-                    EXTRA_REFRESH_REQUEST_TYPE_FETCH_FRESH_DATA,
-                    EXTRA_REFRESH_REQUEST_TYPE_GET_DATA,
+                EXTRA_REFRESH_REQUEST_TYPE_FETCH_FRESH_DATA,
+                EXTRA_REFRESH_REQUEST_TYPE_GET_DATA,
             })
     @Retention(RetentionPolicy.SOURCE)
-    public @interface RefreshRequestType {
-    }
+    public @interface RefreshRequestType {}
 
     /** Indicates that the Safety Center UI has been opened by the user. */
     public static final int REFRESH_REASON_PAGE_OPEN = 100;
@@ -265,16 +263,15 @@ public final class SafetyCenterManager {
     @IntDef(
             prefix = {"REFRESH_REASON_"},
             value = {
-                    REFRESH_REASON_PAGE_OPEN,
-                    REFRESH_REASON_RESCAN_BUTTON_CLICK,
-                    REFRESH_REASON_DEVICE_REBOOT,
-                    REFRESH_REASON_DEVICE_LOCALE_CHANGE,
-                    REFRESH_REASON_SAFETY_CENTER_ENABLED,
-                    REFRESH_REASON_OTHER
+                REFRESH_REASON_PAGE_OPEN,
+                REFRESH_REASON_RESCAN_BUTTON_CLICK,
+                REFRESH_REASON_DEVICE_REBOOT,
+                REFRESH_REASON_DEVICE_LOCALE_CHANGE,
+                REFRESH_REASON_SAFETY_CENTER_ENABLED,
+                REFRESH_REASON_OTHER
             })
     @Retention(RetentionPolicy.SOURCE)
-    public @interface RefreshReason {
-    }
+    public @interface RefreshReason {}
 
     /** Listener for changes to {@link SafetyCenterData}. */
     public interface OnSafetyCenterDataChangedListener {
@@ -291,18 +288,17 @@ public final class SafetyCenterManager {
          *
          * @param errorDetails details of an error that should be displayed to the user
          */
-        default void onError(@NonNull SafetyCenterErrorDetails errorDetails) {
-        }
+        default void onError(@NonNull SafetyCenterErrorDetails errorDetails) {}
     }
 
     private final Object mListenersLock = new Object();
+
     @GuardedBy("mListenersLock")
     private final Map<OnSafetyCenterDataChangedListener, ListenerDelegate> mListenersToDelegates =
             new ArrayMap<>();
-    @NonNull
-    private final Context mContext;
-    @NonNull
-    private final ISafetyCenterManager mService;
+
+    @NonNull private final Context mContext;
+    @NonNull private final ISafetyCenterManager mService;
 
     /**
      * Creates a new instance of the {@link SafetyCenterManager}.
@@ -332,8 +328,8 @@ public final class SafetyCenterManager {
     }
 
     /**
-     * Set the latest {@link SafetySourceData} for a safety source, to be displayed in Safety
-     * Center UI.
+     * Set the latest {@link SafetySourceData} for a safety source, to be displayed in Safety Center
+     * UI.
      *
      * <p>Each {@code safetySourceId} uniquely identifies the {@link SafetySourceData} for the
      * calling user.
@@ -341,13 +337,12 @@ public final class SafetyCenterManager {
      * <p>This call will rewrite any existing {@link SafetySourceData} already set for the given
      * {@code safetySourceId} for the calling user.
      *
-     * @param safetySourceId   the unique identifier for a safety source in the calling user
+     * @param safetySourceId the unique identifier for a safety source in the calling user
      * @param safetySourceData the latest safety data for the safety source in the calling user. If
-     *                         a safety source does not have any data to set, it can set its {@link
-     *                         SafetySourceData} to {@code null}, in which case Safety Center will
-     *                         fall back to any placeholder data specified in the safety source xml
-     *                         configuration.
-     * @param safetyEvent      the event that triggered the safety source to set safety data
+     *     a safety source does not have any data to set, it can set its {@link SafetySourceData} to
+     *     {@code null}, in which case Safety Center will fall back to any placeholder data
+     *     specified in the safety source xml configuration.
+     * @param safetyEvent the event that triggered the safety source to set safety data
      */
     @RequiresPermission(SEND_SAFETY_CENTER_UPDATE)
     public void setSafetySourceData(
@@ -395,7 +390,7 @@ public final class SafetyCenterManager {
      * <p>Safety sources should use this API to notify Safety Center when Safety Center requested or
      * expected them to perform an action or provide data, but they were unable to do so.
      *
-     * @param safetySourceId           the id of the safety source that provided the issue
+     * @param safetySourceId the id of the safety source that provided the issue
      * @param safetySourceErrorDetails details of the error that occurred
      */
     @RequiresPermission(SEND_SAFETY_CENTER_UPDATE)
@@ -476,8 +471,8 @@ public final class SafetyCenterManager {
 
             ListenerDelegate delegate = new ListenerDelegate(executor, listener);
             try {
-                mService.addOnSafetyCenterDataChangedListener(delegate,
-                        mContext.getUser().getIdentifier());
+                mService.addOnSafetyCenterDataChangedListener(
+                        delegate, mContext.getUser().getIdentifier());
             } catch (RemoteException e) {
                 throw e.rethrowFromSystemServer();
             }
@@ -521,8 +516,8 @@ public final class SafetyCenterManager {
         requireNonNull(safetyCenterIssueId, "safetyCenterIssueId cannot be null");
 
         try {
-            mService.dismissSafetyCenterIssue(safetyCenterIssueId,
-                    mContext.getUser().getIdentifier());
+            mService.dismissSafetyCenterIssue(
+                    safetyCenterIssueId, mContext.getUser().getIdentifier());
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }
@@ -531,10 +526,9 @@ public final class SafetyCenterManager {
     /**
      * Executes the specified Safety Center issue action on the specified Safety Center issue.
      *
-     * @param safetyCenterIssueId       the target issue ID returned by
-     *                                  {@link SafetyCenterIssue#getId()}
+     * @param safetyCenterIssueId the target issue ID returned by {@link SafetyCenterIssue#getId()}
      * @param safetyCenterIssueActionId the target action ID returned by {@link
-     *                                  SafetyCenterIssue.Action#getId()}
+     *     SafetyCenterIssue.Action#getId()}
      */
     @RequiresPermission(MANAGE_SAFETY_CENTER)
     public void executeSafetyCenterIssueAction(
@@ -544,7 +538,8 @@ public final class SafetyCenterManager {
 
         try {
             mService.executeSafetyCenterIssueAction(
-                    safetyCenterIssueId, safetyCenterIssueActionId,
+                    safetyCenterIssueId,
+                    safetyCenterIssueActionId,
                     mContext.getUser().getIdentifier());
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
@@ -555,8 +550,7 @@ public final class SafetyCenterManager {
      * Clears all {@link SafetySourceData} (set by safety sources using {@link
      * #setSafetySourceData}) for testing.
      *
-     * <p>Note: This API serves to facilitate CTS testing and should not be used for other
-     * purposes.
+     * <p>Note: This API serves to facilitate CTS testing and should not be used for other purposes.
      */
     @RequiresPermission(MANAGE_SAFETY_CENTER)
     public void clearAllSafetySourceDataForTests() {
@@ -609,10 +603,8 @@ public final class SafetyCenterManager {
     }
 
     private static final class ListenerDelegate extends IOnSafetyCenterDataChangedListener.Stub {
-        @NonNull
-        private final Executor mExecutor;
-        @NonNull
-        private final OnSafetyCenterDataChangedListener mOriginalListener;
+        @NonNull private final Executor mExecutor;
+        @NonNull private final OnSafetyCenterDataChangedListener mOriginalListener;
 
         private volatile boolean mRemoved = false;
 
