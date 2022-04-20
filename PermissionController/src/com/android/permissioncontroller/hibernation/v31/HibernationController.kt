@@ -32,9 +32,9 @@ import com.android.permissioncontroller.permission.model.livedatatypes.LightPack
  */
 @RequiresApi(Build.VERSION_CODES.S)
 class HibernationController(
-    val context: Context,
-    val unusedThreshold: Long,
-    val targetsPreS: Boolean
+    private val context: Context,
+    private val unusedThreshold: Long,
+    private val targetsPreS: Boolean
 ) {
 
     companion object {
