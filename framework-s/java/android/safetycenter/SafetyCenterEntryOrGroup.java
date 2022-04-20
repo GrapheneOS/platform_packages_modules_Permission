@@ -59,10 +59,8 @@ public final class SafetyCenterEntryOrGroup implements Parcelable {
                 }
             };
 
-    @Nullable
-    private final SafetyCenterEntry mEntry;
-    @Nullable
-    private final SafetyCenterEntryGroup mEntryGroup;
+    @Nullable private final SafetyCenterEntry mEntry;
+    @Nullable private final SafetyCenterEntryGroup mEntryGroup;
 
     /** Create for a {@link SafetyCenterEntry}. */
     public SafetyCenterEntryOrGroup(@NonNull SafetyCenterEntry entry) {

@@ -30,8 +30,7 @@ import java.util.Objects;
 @RequiresApi(TIRAMISU)
 final class BuilderUtils {
 
-    private BuilderUtils() {
-    }
+    private BuilderUtils() {}
 
     private static void validateAttribute(
             @Nullable Object attribute,
@@ -50,14 +49,18 @@ final class BuilderUtils {
     }
 
     static void validateAttribute(
-            @Nullable Object attribute, @NonNull String name, boolean required,
+            @Nullable Object attribute,
+            @NonNull String name,
+            boolean required,
             boolean prohibited) {
         validateAttribute(attribute, name, required, prohibited, null);
     }
 
     @AnyRes
     static int validateResId(
-            @Nullable @AnyRes Integer value, @NonNull String name, boolean required,
+            @Nullable @AnyRes Integer value,
+            @NonNull String name,
+            boolean required,
             boolean prohibited) {
         validateAttribute(value, name, required, prohibited, Resources.ID_NULL);
         if (value == null) {
