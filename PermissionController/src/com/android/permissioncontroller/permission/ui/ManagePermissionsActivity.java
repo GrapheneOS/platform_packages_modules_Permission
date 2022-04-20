@@ -247,6 +247,8 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                         && groupName.equals(Manifest.permission_group.NOTIFICATIONS)) {
                     // Redirect notification group to notification settings
                     Utils.navigateToAppNotificationSettings(this, packageName, userHandle);
+                    finishAfterTransition();
+                    return;
                 }
 
                 Bundle args = AppPermissionFragment.createArgs(packageName, permissionName,
@@ -351,6 +353,8 @@ public final class ManagePermissionsActivity extends SettingsActivity {
                 // Redirect notification group to notification settings
                 if (permissionGroupName.equals(Manifest.permission_group.NOTIFICATIONS)) {
                     Utils.navigateToNotificationSettings(this);
+                    finishAfterTransition();
+                    return;
                 }
 
                 if (DeviceUtils.isAuto(this)) {
