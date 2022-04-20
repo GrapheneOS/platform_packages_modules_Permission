@@ -71,12 +71,11 @@ public final class SafetySourcesGroup implements Parcelable {
     @IntDef(
             prefix = "SAFETY_SOURCES_GROUP_TYPE_",
             value = {
-                    SAFETY_SOURCES_GROUP_TYPE_COLLAPSIBLE,
-                    SAFETY_SOURCES_GROUP_TYPE_RIGID,
-                    SAFETY_SOURCES_GROUP_TYPE_HIDDEN
+                SAFETY_SOURCES_GROUP_TYPE_COLLAPSIBLE,
+                SAFETY_SOURCES_GROUP_TYPE_RIGID,
+                SAFETY_SOURCES_GROUP_TYPE_HIDDEN
             })
-    public @interface SafetySourceGroupType {
-    }
+    public @interface SafetySourceGroupType {}
 
     /**
      * Indicates that the safety sources group will not be displayed with any special icon when all
@@ -99,8 +98,7 @@ public final class SafetySourcesGroup implements Parcelable {
     @IntDef(
             prefix = "STATELESS_ICON_TYPE_",
             value = {STATELESS_ICON_TYPE_NONE, STATELESS_ICON_TYPE_PRIVACY})
-    public @interface StatelessIconType {
-    }
+    public @interface StatelessIconType {}
 
     @NonNull
     public static final Creator<SafetySourcesGroup> CREATOR =
@@ -127,16 +125,11 @@ public final class SafetySourcesGroup implements Parcelable {
                 }
             };
 
-    @NonNull
-    private final String mId;
-    @StringRes
-    private final int mTitleResId;
-    @StringRes
-    private final int mSummaryResId;
-    @StatelessIconType
-    private final int mStatelessIconType;
-    @NonNull
-    private final List<SafetySource> mSafetySources;
+    @NonNull private final String mId;
+    @StringRes private final int mTitleResId;
+    @StringRes private final int mSummaryResId;
+    @StatelessIconType private final int mStatelessIconType;
+    @NonNull private final List<SafetySource> mSafetySources;
 
     private SafetySourcesGroup(
             @NonNull String id,
@@ -246,21 +239,13 @@ public final class SafetySourcesGroup implements Parcelable {
 
         private final List<SafetySource> mSafetySources = new ArrayList<>();
 
-        @Nullable
-        private String mId;
-        @Nullable
-        @StringRes
-        private Integer mTitleResId;
-        @Nullable
-        @StringRes
-        private Integer mSummaryResId;
-        @Nullable
-        @StatelessIconType
-        private Integer mStatelessIconType;
+        @Nullable private String mId;
+        @Nullable @StringRes private Integer mTitleResId;
+        @Nullable @StringRes private Integer mSummaryResId;
+        @Nullable @StatelessIconType private Integer mStatelessIconType;
 
         /** Creates a {@link Builder} for a {@link SafetySourcesGroup}. */
-        public Builder() {
-        }
+        public Builder() {}
 
         /** Sets the id of this safety sources group. */
         @NonNull
@@ -326,11 +311,7 @@ public final class SafetySourcesGroup implements Parcelable {
                             STATELESS_ICON_TYPE_NONE,
                             STATELESS_ICON_TYPE_PRIVACY);
             return new SafetySourcesGroup(
-                    mId,
-                    titleResId,
-                    summaryResId,
-                    statelessIconType,
-                    safetySources);
+                    mId, titleResId, summaryResId, statelessIconType, safetySources);
         }
     }
 }

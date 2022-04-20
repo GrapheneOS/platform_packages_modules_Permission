@@ -47,8 +47,8 @@ public final class SafetyCenterData implements Parcelable {
                 @Override
                 public SafetyCenterData createFromParcel(Parcel in) {
                     SafetyCenterStatus status = in.readTypedObject(SafetyCenterStatus.CREATOR);
-                    List<SafetyCenterIssue> issues = in.createTypedArrayList(
-                            SafetyCenterIssue.CREATOR);
+                    List<SafetyCenterIssue> issues =
+                            in.createTypedArrayList(SafetyCenterIssue.CREATOR);
                     List<SafetyCenterEntryOrGroup> entryOrGroups =
                             in.createTypedArrayList(SafetyCenterEntryOrGroup.CREATOR);
                     List<SafetyCenterStaticEntryGroup> staticEntryGroups =
@@ -62,14 +62,10 @@ public final class SafetyCenterData implements Parcelable {
                 }
             };
 
-    @NonNull
-    private final SafetyCenterStatus mStatus;
-    @NonNull
-    private final List<SafetyCenterIssue> mIssues;
-    @NonNull
-    private final List<SafetyCenterEntryOrGroup> mEntriesOrGroups;
-    @NonNull
-    private final List<SafetyCenterStaticEntryGroup> mStaticEntryGroups;
+    @NonNull private final SafetyCenterStatus mStatus;
+    @NonNull private final List<SafetyCenterIssue> mIssues;
+    @NonNull private final List<SafetyCenterEntryOrGroup> mEntriesOrGroups;
+    @NonNull private final List<SafetyCenterStaticEntryGroup> mStaticEntryGroups;
 
     /** Creates a {@link SafetyCenterData}. */
     public SafetyCenterData(
