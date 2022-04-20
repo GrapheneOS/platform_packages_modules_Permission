@@ -27,9 +27,9 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.ext.truth.os.ParcelableSubject.assertThat
 import androidx.test.filters.SdkSuppress
 import com.google.common.truth.Truth.assertThat
+import kotlin.test.assertFailsWith
 import org.junit.Test
 import org.junit.runner.RunWith
-import kotlin.test.assertFailsWith
 
 /** CTS tests for [SafetyEvent]. */
 @RunWith(AndroidJUnit4::class)
@@ -74,9 +74,7 @@ class SafetyEventTest {
 
     @Test
     fun build_withInvalidType_throwsIllegalArgumentException() {
-        val exception = assertFailsWith(IllegalArgumentException::class) {
-            SafetyEvent.Builder(-1)
-        }
+        val exception = assertFailsWith(IllegalArgumentException::class) { SafetyEvent.Builder(-1) }
 
         assertThat(exception).hasMessageThat().isEqualTo("Unexpected Type for SafetyEvent: -1")
     }
@@ -112,8 +110,7 @@ class SafetyEventTest {
                     .build(),
                 SafetyEvent.Builder(SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
                     .setRefreshBroadcastId(REFRESH_BROADCAST_ID)
-                    .build()
-            )
+                    .build())
             .addEqualityGroup(
                 SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
                     .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
@@ -122,31 +119,26 @@ class SafetyEventTest {
                 SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
                     .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
                     .setSafetySourceIssueActionId(SAFETY_SOURCE_ISSUE_ACTION_ID)
-                    .build()
-            )
+                    .build())
             .addEqualityGroup(SafetyEvent.Builder(SAFETY_EVENT_TYPE_REFRESH_REQUESTED).build())
             .addEqualityGroup(SafetyEvent.Builder(SAFETY_EVENT_TYPE_DEVICE_REBOOTED).build())
             .addEqualityGroup(
                 SafetyEvent.Builder(SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
                     .setRefreshBroadcastId(OTHER_REFRESH_BROADCAST_ID)
-                    .build()
-            )
+                    .build())
             .addEqualityGroup(
                 SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
                     .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
-                    .build()
-            )
+                    .build())
             .addEqualityGroup(
                 SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
                     .setSafetySourceIssueId(OTHER_SAFETY_SOURCE_ISSUE_ID)
-                    .build()
-            )
+                    .build())
             .addEqualityGroup(
                 SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
                     .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
                     .setSafetySourceIssueActionId(OTHER_SAFETY_SOURCE_ISSUE_ACTION_ID)
-                    .build()
-            )
+                    .build())
             .test()
     }
 

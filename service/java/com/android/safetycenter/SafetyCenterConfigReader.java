@@ -44,11 +44,9 @@ final class SafetyCenterConfigReader {
     private static final String TAG = "SafetyCenterConfigReade";
 
     private final Object mSafetyCenterConfigLock = new Object();
-    @NonNull
-    private final SafetyCenterResourcesContext mSafetyCenterResourcesContext;
+    @NonNull private final SafetyCenterResourcesContext mSafetyCenterResourcesContext;
 
-    @Nullable
-    private SafetyCenterConfig mSafetyCenterConfig;
+    @Nullable private SafetyCenterConfig mSafetyCenterConfig;
 
     /**
      * Creates a {@link SafetyCenterConfigReader} from a {@link Context} object by wrapping it into
@@ -130,5 +128,4 @@ final class SafetyCenterConfigReader {
             return null;
         }
     }
-
 }

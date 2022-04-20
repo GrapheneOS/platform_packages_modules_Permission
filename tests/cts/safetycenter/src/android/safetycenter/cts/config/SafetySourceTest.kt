@@ -84,21 +84,25 @@ class SafetySourceTest {
         assertThat(STATIC_BAREBONE.titleResId).isEqualTo(REFERENCE_RES_ID)
         assertThat(STATIC_ALL_OPTIONAL.titleResId).isEqualTo(REFERENCE_RES_ID)
         assertThrows(UnsupportedOperationException::class.java) { ISSUE_ONLY_BAREBONE.titleResId }
-        assertThrows(
-            UnsupportedOperationException::class.java) { ISSUE_ONLY_ALL_OPTIONAL.titleResId }
+        assertThrows(UnsupportedOperationException::class.java) {
+            ISSUE_ONLY_ALL_OPTIONAL.titleResId
+        }
     }
 
     @Test
     fun getTitleForWorkResId_returnsTitleForWorkResIdOrThrows() {
-        assertThrows(
-            UnsupportedOperationException::class.java) { DYNAMIC_BAREBONE.titleForWorkResId }
+        assertThrows(UnsupportedOperationException::class.java) {
+            DYNAMIC_BAREBONE.titleForWorkResId
+        }
         assertThat(DYNAMIC_ALL_OPTIONAL.titleForWorkResId).isEqualTo(REFERENCE_RES_ID)
-        assertThrows(
-            UnsupportedOperationException::class.java) { DYNAMIC_DISABLED.titleForWorkResId }
+        assertThrows(UnsupportedOperationException::class.java) {
+            DYNAMIC_DISABLED.titleForWorkResId
+        }
         assertThat(DYNAMIC_HIDDEN.titleForWorkResId).isEqualTo(Resources.ID_NULL)
         assertThat(DYNAMIC_HIDDEN_WITH_SEARCH.titleForWorkResId).isEqualTo(REFERENCE_RES_ID)
-        assertThrows(
-            UnsupportedOperationException::class.java) { STATIC_BAREBONE.titleForWorkResId }
+        assertThrows(UnsupportedOperationException::class.java) {
+            STATIC_BAREBONE.titleForWorkResId
+        }
         assertThat(STATIC_ALL_OPTIONAL.titleForWorkResId).isEqualTo(REFERENCE_RES_ID)
         assertThrows(UnsupportedOperationException::class.java) {
             ISSUE_ONLY_BAREBONE.titleForWorkResId
@@ -118,8 +122,9 @@ class SafetySourceTest {
         assertThat(STATIC_BAREBONE.summaryResId).isEqualTo(Resources.ID_NULL)
         assertThat(STATIC_ALL_OPTIONAL.summaryResId).isEqualTo(REFERENCE_RES_ID)
         assertThrows(UnsupportedOperationException::class.java) { ISSUE_ONLY_BAREBONE.summaryResId }
-        assertThrows(
-            UnsupportedOperationException::class.java) { ISSUE_ONLY_ALL_OPTIONAL.summaryResId }
+        assertThrows(UnsupportedOperationException::class.java) {
+            ISSUE_ONLY_ALL_OPTIONAL.summaryResId
+        }
     }
 
     @Test
@@ -132,8 +137,9 @@ class SafetySourceTest {
         assertThat(STATIC_BAREBONE.intentAction).isEqualTo(INTENT_ACTION)
         assertThat(STATIC_ALL_OPTIONAL.intentAction).isEqualTo(INTENT_ACTION)
         assertThrows(UnsupportedOperationException::class.java) { ISSUE_ONLY_BAREBONE.intentAction }
-        assertThrows(
-            UnsupportedOperationException::class.java) { ISSUE_ONLY_ALL_OPTIONAL.intentAction }
+        assertThrows(UnsupportedOperationException::class.java) {
+            ISSUE_ONLY_ALL_OPTIONAL.intentAction
+        }
     }
 
     @Test
@@ -161,8 +167,9 @@ class SafetySourceTest {
             .isEqualTo(SafetySource.INITIAL_DISPLAY_STATE_HIDDEN)
         assertThat(DYNAMIC_HIDDEN_WITH_SEARCH.initialDisplayState)
             .isEqualTo(SafetySource.INITIAL_DISPLAY_STATE_HIDDEN)
-        assertThrows(
-            UnsupportedOperationException::class.java) { STATIC_BAREBONE.initialDisplayState }
+        assertThrows(UnsupportedOperationException::class.java) {
+            STATIC_BAREBONE.initialDisplayState
+        }
         assertThrows(UnsupportedOperationException::class.java) {
             STATIC_ALL_OPTIONAL.initialDisplayState
         }
@@ -182,8 +189,9 @@ class SafetySourceTest {
         assertThat(DYNAMIC_HIDDEN.maxSeverityLevel).isEqualTo(Integer.MAX_VALUE)
         assertThat(DYNAMIC_HIDDEN_WITH_SEARCH.maxSeverityLevel).isEqualTo(Integer.MAX_VALUE)
         assertThrows(UnsupportedOperationException::class.java) { STATIC_BAREBONE.maxSeverityLevel }
-        assertThrows(
-            UnsupportedOperationException::class.java) { STATIC_ALL_OPTIONAL.maxSeverityLevel }
+        assertThrows(UnsupportedOperationException::class.java) {
+            STATIC_ALL_OPTIONAL.maxSeverityLevel
+        }
         assertThat(ISSUE_ONLY_BAREBONE.maxSeverityLevel).isEqualTo(Integer.MAX_VALUE)
         assertThat(ISSUE_ONLY_ALL_OPTIONAL.maxSeverityLevel).isEqualTo(MAX_SEVERITY_LEVEL)
     }
@@ -197,8 +205,9 @@ class SafetySourceTest {
         assertThat(DYNAMIC_HIDDEN_WITH_SEARCH.searchTermsResId).isEqualTo(REFERENCE_RES_ID)
         assertThat(STATIC_BAREBONE.searchTermsResId).isEqualTo(Resources.ID_NULL)
         assertThat(STATIC_ALL_OPTIONAL.searchTermsResId).isEqualTo(REFERENCE_RES_ID)
-        assertThrows(
-            UnsupportedOperationException::class.java) { ISSUE_ONLY_BAREBONE.searchTermsResId }
+        assertThrows(UnsupportedOperationException::class.java) {
+            ISSUE_ONLY_BAREBONE.searchTermsResId
+        }
         assertThrows(UnsupportedOperationException::class.java) {
             ISSUE_ONLY_ALL_OPTIONAL.searchTermsResId
         }
@@ -212,8 +221,9 @@ class SafetySourceTest {
         assertThat(DYNAMIC_HIDDEN.isLoggingAllowed).isEqualTo(true)
         assertThat(DYNAMIC_HIDDEN_WITH_SEARCH.isLoggingAllowed).isEqualTo(true)
         assertThrows(UnsupportedOperationException::class.java) { STATIC_BAREBONE.isLoggingAllowed }
-        assertThrows(
-            UnsupportedOperationException::class.java) { STATIC_ALL_OPTIONAL.isLoggingAllowed }
+        assertThrows(UnsupportedOperationException::class.java) {
+            STATIC_ALL_OPTIONAL.isLoggingAllowed
+        }
         assertThat(ISSUE_ONLY_BAREBONE.isLoggingAllowed).isEqualTo(true)
         assertThat(ISSUE_ONLY_ALL_OPTIONAL.isLoggingAllowed).isEqualTo(false)
     }
@@ -280,8 +290,7 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
-                    .build()
-            )
+                    .build())
             .addEqualityGroup(DYNAMIC_HIDDEN)
             .addEqualityGroup(DYNAMIC_HIDDEN_WITH_SEARCH)
             .addEqualityGroup(DYNAMIC_DISABLED)
@@ -303,8 +312,7 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
-                    .build()
-            )
+                    .build())
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -319,8 +327,7 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
-                    .build()
-            )
+                    .build())
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -335,8 +342,7 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
-                    .build()
-            )
+                    .build())
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -351,8 +357,7 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
-                    .build()
-            )
+                    .build())
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -367,8 +372,7 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
-                    .build()
-            )
+                    .build())
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -383,16 +387,14 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
-                    .build()
-            )
+                    .build())
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_HIDDEN_ID)
                     .setPackageName(PACKAGE_NAME)
                     .setProfile(SafetySource.PROFILE_PRIMARY)
                     .setInitialDisplayState(SafetySource.INITIAL_DISPLAY_STATE_HIDDEN)
-                    .build()
-            )
+                    .build())
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -407,8 +409,7 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
-                    .build()
-            )
+                    .build())
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -423,8 +424,7 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
-                    .build()
-            )
+                    .build())
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -439,8 +439,7 @@ class SafetySourceTest {
                     .setSearchTermsResId(-1)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(true)
-                    .build()
-            )
+                    .build())
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -455,8 +454,7 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(true)
                     .setRefreshOnPageOpenAllowed(true)
-                    .build()
-            )
+                    .build())
             .addEqualityGroup(
                 SafetySource.Builder(SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC)
                     .setId(DYNAMIC_ALL_OPTIONAL_ID)
@@ -471,8 +469,7 @@ class SafetySourceTest {
                     .setSearchTermsResId(REFERENCE_RES_ID)
                     .setLoggingAllowed(false)
                     .setRefreshOnPageOpenAllowed(false)
-                    .build()
-            )
+                    .build())
             .test()
     }
 
