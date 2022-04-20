@@ -70,13 +70,12 @@ public final class SafetyCenterStatus implements Parcelable {
     @IntDef(
             prefix = "OVERALL_SEVERITY_LEVEL_",
             value = {
-                    OVERALL_SEVERITY_LEVEL_UNKNOWN,
-                    OVERALL_SEVERITY_LEVEL_OK,
-                    OVERALL_SEVERITY_LEVEL_RECOMMENDATION,
-                    OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING,
+                OVERALL_SEVERITY_LEVEL_UNKNOWN,
+                OVERALL_SEVERITY_LEVEL_OK,
+                OVERALL_SEVERITY_LEVEL_RECOMMENDATION,
+                OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING,
             })
-    public @interface OverallSeverityLevel {
-    }
+    public @interface OverallSeverityLevel {}
 
     /** Indicates that no refresh is ongoing. */
     public static final int REFRESH_STATUS_NONE = 0;
@@ -111,12 +110,11 @@ public final class SafetyCenterStatus implements Parcelable {
     @IntDef(
             prefix = "REFRESH_STATUS_",
             value = {
-                    REFRESH_STATUS_NONE,
-                    REFRESH_STATUS_DATA_FETCH_IN_PROGRESS,
-                    REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS,
+                REFRESH_STATUS_NONE,
+                REFRESH_STATUS_DATA_FETCH_IN_PROGRESS,
+                REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS,
             })
-    public @interface RefreshStatus {
-    }
+    public @interface RefreshStatus {}
 
     @NonNull
     public static final Creator<SafetyCenterStatus> CREATOR =
@@ -137,14 +135,10 @@ public final class SafetyCenterStatus implements Parcelable {
                 }
             };
 
-    @NonNull
-    private final CharSequence mTitle;
-    @NonNull
-    private final CharSequence mSummary;
-    @OverallSeverityLevel
-    private final int mSeverityLevel;
-    @RefreshStatus
-    private final int mRefreshStatus;
+    @NonNull private final CharSequence mTitle;
+    @NonNull private final CharSequence mSummary;
+    @OverallSeverityLevel private final int mSeverityLevel;
+    @RefreshStatus private final int mRefreshStatus;
 
     private SafetyCenterStatus(
             @NonNull CharSequence title,
@@ -227,19 +221,15 @@ public final class SafetyCenterStatus implements Parcelable {
     /** Builder class for {@link SafetyCenterStatus}. */
     public static final class Builder {
 
-        @NonNull
-        private CharSequence mTitle;
-        @NonNull
-        private CharSequence mSummary;
-        @OverallSeverityLevel
-        private int mSeverityLevel = OVERALL_SEVERITY_LEVEL_UNKNOWN;
-        @RefreshStatus
-        private int mRefreshStatus = REFRESH_STATUS_NONE;
+        @NonNull private CharSequence mTitle;
+        @NonNull private CharSequence mSummary;
+        @OverallSeverityLevel private int mSeverityLevel = OVERALL_SEVERITY_LEVEL_UNKNOWN;
+        @RefreshStatus private int mRefreshStatus = REFRESH_STATUS_NONE;
 
         /**
          * Creates a new {@link Builder} for a {@link SafetyCenterStatus}.
          *
-         * @param title   an overall title for the status
+         * @param title an overall title for the status
          * @param summary a summary for the status
          */
         public Builder(@NonNull CharSequence title, @NonNull CharSequence summary) {

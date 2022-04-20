@@ -78,16 +78,15 @@ public final class SafetyEvent implements Parcelable {
     @IntDef(
             prefix = {"SAFETY_EVENT_TYPE_"},
             value = {
-                    SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED,
-                    SAFETY_EVENT_TYPE_REFRESH_REQUESTED,
-                    SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED,
-                    SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED,
-                    SAFETY_EVENT_TYPE_DEVICE_LOCALE_CHANGED,
-                    SAFETY_EVENT_TYPE_DEVICE_REBOOTED
+                SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED,
+                SAFETY_EVENT_TYPE_REFRESH_REQUESTED,
+                SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED,
+                SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED,
+                SAFETY_EVENT_TYPE_DEVICE_LOCALE_CHANGED,
+                SAFETY_EVENT_TYPE_DEVICE_REBOOTED
             })
     @Retention(RetentionPolicy.SOURCE)
-    public @interface Type {
-    }
+    public @interface Type {}
 
     @NonNull
     public static final Creator<SafetyEvent> CREATOR =
@@ -108,14 +107,10 @@ public final class SafetyEvent implements Parcelable {
                 }
             };
 
-    @Type
-    private final int mType;
-    @Nullable
-    private final String mRefreshBroadcastId;
-    @Nullable
-    private final String mSafetySourceIssueId;
-    @Nullable
-    private final String mSafetySourceIssueActionId;
+    @Type private final int mType;
+    @Nullable private final String mRefreshBroadcastId;
+    @Nullable private final String mSafetySourceIssueId;
+    @Nullable private final String mSafetySourceIssueActionId;
 
     private SafetyEvent(
             @Type int type,
@@ -138,8 +133,8 @@ public final class SafetyEvent implements Parcelable {
      * Returns an optional id provided by Safety Center when requesting a refresh, through {@link
      * SafetyCenterManager#EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID}.
      *
-     * <p>This will only be relevant for events of type
-     * {@link #SAFETY_EVENT_TYPE_REFRESH_REQUESTED}.
+     * <p>This will only be relevant for events of type {@link
+     * #SAFETY_EVENT_TYPE_REFRESH_REQUESTED}.
      *
      * @see #getType()
      */
@@ -229,14 +224,10 @@ public final class SafetyEvent implements Parcelable {
     /** Builder class for {@link SafetyEvent}. */
     public static final class Builder {
 
-        @Type
-        private final int mType;
-        @Nullable
-        private String mRefreshBroadcastId;
-        @Nullable
-        private String mSafetySourceIssueId;
-        @Nullable
-        private String mSafetySourceIssueActionId;
+        @Type private final int mType;
+        @Nullable private String mRefreshBroadcastId;
+        @Nullable private String mSafetySourceIssueId;
+        @Nullable private String mSafetySourceIssueActionId;
 
         /** Creates a {@link Builder} for {@link SafetyEvent}. */
         public Builder(@Type int type) {

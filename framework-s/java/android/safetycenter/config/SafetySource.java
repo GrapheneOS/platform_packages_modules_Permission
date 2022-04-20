@@ -59,13 +59,12 @@ public final class SafetySource implements Parcelable {
     @IntDef(
             prefix = {"SAFETY_SOURCE_TYPE_"},
             value = {
-                    SAFETY_SOURCE_TYPE_STATIC,
-                    SAFETY_SOURCE_TYPE_DYNAMIC,
-                    SAFETY_SOURCE_TYPE_ISSUE_ONLY
+                SAFETY_SOURCE_TYPE_STATIC,
+                SAFETY_SOURCE_TYPE_DYNAMIC,
+                SAFETY_SOURCE_TYPE_ISSUE_ONLY
             })
     @Retention(RetentionPolicy.SOURCE)
-    public @interface SafetySourceType {
-    }
+    public @interface SafetySourceType {}
 
     /** Profile property unspecified. */
     public static final int PROFILE_NONE = 0;
@@ -91,8 +90,7 @@ public final class SafetySource implements Parcelable {
             prefix = {"PROFILE_"},
             value = {PROFILE_NONE, PROFILE_PRIMARY, PROFILE_ALL})
     @Retention(RetentionPolicy.SOURCE)
-    public @interface Profile {
-    }
+    public @interface Profile {}
 
     /** This dynamic source will create an enabled entry in the UI until an update is received. */
     public static final int INITIAL_DISPLAY_STATE_ENABLED = 0;
@@ -111,13 +109,12 @@ public final class SafetySource implements Parcelable {
     @IntDef(
             prefix = {"INITIAL_DISPLAY_STATE_"},
             value = {
-                    INITIAL_DISPLAY_STATE_ENABLED,
-                    INITIAL_DISPLAY_STATE_DISABLED,
-                    INITIAL_DISPLAY_STATE_HIDDEN
+                INITIAL_DISPLAY_STATE_ENABLED,
+                INITIAL_DISPLAY_STATE_DISABLED,
+                INITIAL_DISPLAY_STATE_HIDDEN
             })
     @Retention(RetentionPolicy.SOURCE)
-    public @interface InitialDisplayState {
-    }
+    public @interface InitialDisplayState {}
 
     @NonNull
     public static final Creator<SafetySource> CREATOR =
@@ -147,27 +144,17 @@ public final class SafetySource implements Parcelable {
                 }
             };
 
-    @SafetySourceType
-    private final int mType;
-    @NonNull
-    private final String mId;
-    @Nullable
-    private final String mPackageName;
-    @StringRes
-    private final int mTitleResId;
-    @StringRes
-    private final int mTitleForWorkResId;
-    @StringRes
-    private final int mSummaryResId;
-    @Nullable
-    private final String mIntentAction;
-    @Profile
-    private final int mProfile;
-    @InitialDisplayState
-    private final int mInitialDisplayState;
+    @SafetySourceType private final int mType;
+    @NonNull private final String mId;
+    @Nullable private final String mPackageName;
+    @StringRes private final int mTitleResId;
+    @StringRes private final int mTitleForWorkResId;
+    @StringRes private final int mSummaryResId;
+    @Nullable private final String mIntentAction;
+    @Profile private final int mProfile;
+    @InitialDisplayState private final int mInitialDisplayState;
     private final int mMaxSeverityLevel;
-    @StringRes
-    private final int mSearchTermsResId;
+    @StringRes private final int mSearchTermsResId;
     private final boolean mLoggingAllowed;
     private final boolean mRefreshOnPageOpenAllowed;
 
@@ -424,38 +411,19 @@ public final class SafetySource implements Parcelable {
     /** Builder class for {@link SafetySource}. */
     public static final class Builder {
 
-        @SafetySourceType
-        private final int mType;
-        @Nullable
-        private String mId;
-        @Nullable
-        private String mPackageName;
-        @Nullable
-        @StringRes
-        private Integer mTitleResId;
-        @Nullable
-        @StringRes
-        private Integer mTitleForWorkResId;
-        @Nullable
-        @StringRes
-        private Integer mSummaryResId;
-        @Nullable
-        private String mIntentAction;
-        @Nullable
-        @Profile
-        private Integer mProfile;
-        @Nullable
-        @InitialDisplayState
-        private Integer mInitialDisplayState;
-        @Nullable
-        private Integer mMaxSeverityLevel;
-        @Nullable
-        @StringRes
-        private Integer mSearchTermsResId;
-        @Nullable
-        private Boolean mLoggingAllowed;
-        @Nullable
-        private Boolean mRefreshOnPageOpenAllowed;
+        @SafetySourceType private final int mType;
+        @Nullable private String mId;
+        @Nullable private String mPackageName;
+        @Nullable @StringRes private Integer mTitleResId;
+        @Nullable @StringRes private Integer mTitleForWorkResId;
+        @Nullable @StringRes private Integer mSummaryResId;
+        @Nullable private String mIntentAction;
+        @Nullable @Profile private Integer mProfile;
+        @Nullable @InitialDisplayState private Integer mInitialDisplayState;
+        @Nullable private Integer mMaxSeverityLevel;
+        @Nullable @StringRes private Integer mSearchTermsResId;
+        @Nullable private Boolean mLoggingAllowed;
+        @Nullable private Boolean mRefreshOnPageOpenAllowed;
 
         /** Creates a {@link Builder} for a {@link SafetySource}. */
         public Builder(@SafetySourceType int type) {
@@ -579,22 +547,24 @@ public final class SafetySource implements Parcelable {
 
             int profile =
                     BuilderUtils.validateIntDef(
-                            mProfile, "profile", true, false, PROFILE_NONE, PROFILE_PRIMARY,
+                            mProfile,
+                            "profile",
+                            true,
+                            false,
+                            PROFILE_NONE,
+                            PROFILE_PRIMARY,
                             PROFILE_ALL);
             boolean hasWork = profile == PROFILE_ALL;
 
             int searchTermsResId =
-                    BuilderUtils.validateResId(mSearchTermsResId, "searchTerms", false,
-                            isIssueOnly);
+                    BuilderUtils.validateResId(
+                            mSearchTermsResId, "searchTerms", false, isIssueOnly);
             boolean isDynamicHiddenWithSearch =
                     isDynamic && isHidden && searchTermsResId != Resources.ID_NULL;
 
             boolean titleRequired = isDynamicNotHidden || isDynamicHiddenWithSearch || isStatic;
             int titleResId =
-                    BuilderUtils.validateResId(
-                            mTitleResId, "title",
-                            titleRequired,
-                            isIssueOnly);
+                    BuilderUtils.validateResId(mTitleResId, "title", titleRequired, isIssueOnly);
 
             int titleForWorkResId =
                     BuilderUtils.validateResId(
@@ -605,10 +575,7 @@ public final class SafetySource implements Parcelable {
 
             int summaryResId =
                     BuilderUtils.validateResId(
-                            mSummaryResId,
-                            "summary",
-                            isDynamicNotHidden,
-                            isIssueOnly);
+                            mSummaryResId, "summary", isDynamicNotHidden, isIssueOnly);
 
             BuilderUtils.validateAttribute(
                     mIntentAction,
@@ -618,16 +585,22 @@ public final class SafetySource implements Parcelable {
 
             int maxSeverityLevel =
                     BuilderUtils.validateInteger(
-                            mMaxSeverityLevel, "maxSeverityLevel", false, isStatic,
+                            mMaxSeverityLevel,
+                            "maxSeverityLevel",
+                            false,
+                            isStatic,
                             Integer.MAX_VALUE);
 
             boolean loggingAllowed =
-                    BuilderUtils.validateBoolean(mLoggingAllowed, "loggingAllowed", false, isStatic,
-                            true);
+                    BuilderUtils.validateBoolean(
+                            mLoggingAllowed, "loggingAllowed", false, isStatic, true);
 
             boolean refreshOnPageOpenAllowed =
                     BuilderUtils.validateBoolean(
-                            mRefreshOnPageOpenAllowed, "refreshOnPageOpenAllowed", false, isStatic,
+                            mRefreshOnPageOpenAllowed,
+                            "refreshOnPageOpenAllowed",
+                            false,
+                            isStatic,
                             false);
 
             return new SafetySource(
