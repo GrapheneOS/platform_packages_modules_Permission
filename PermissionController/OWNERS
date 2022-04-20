@@ -12,3 +12,6 @@ sergeynv@google.com
 
 # For incident report related changes
 joeo@google.com
+
+# for SafetyCenter UI changes
+per-file res/*=file:/SafetyCenter/OWNERS
