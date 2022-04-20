@@ -18,6 +18,7 @@ package com.android.permissioncontroller.safetycenter.ui.model
 
 import android.app.Application
 import android.safetycenter.SafetyCenterData
+import android.safetycenter.SafetyCenterErrorDetails
 import android.safetycenter.SafetyCenterIssue
 import android.safetycenter.SafetyCenterManager
 import androidx.core.content.ContextCompat.getMainExecutor
@@ -29,6 +30,7 @@ import androidx.lifecycle.MutableLiveData
 class SafetyCenterViewModel(val app: Application) : AndroidViewModel(app) {
 
     val safetyCenterLiveData = SafetyCenterLiveData()
+    val errorLiveData = MutableLiveData<SafetyCenterErrorDetails>()
     val autoRefreshManager = AutoRefreshManager()
 
     private val safetyCenterManager = app.getSystemService(SafetyCenterManager::class.java)!!
@@ -44,6 +46,10 @@ class SafetyCenterViewModel(val app: Application) : AndroidViewModel(app) {
     fun rescan() {
         safetyCenterManager.refreshSafetySources(
             SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK)
+    }
+
+    fun clearError() {
+        errorLiveData.value = null
     }
 
     private fun refresh() {
@@ -66,6 +72,10 @@ class SafetyCenterViewModel(val app: Application) : AndroidViewModel(app) {
 
         override fun onSafetyCenterDataChanged(data: SafetyCenterData) {
             value = data
+        }
+
+        override fun onError(errorDetails: SafetyCenterErrorDetails) {
+            errorLiveData.value = errorDetails
         }
     }
 
