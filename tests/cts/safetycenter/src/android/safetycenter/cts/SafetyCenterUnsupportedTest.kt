@@ -93,12 +93,12 @@ class SafetyCenterUnsupportedTest {
     @Test
     fun safetyCenterEnabledChanged_withImplicitReceiver_doesntCallReceiver() {
         val enabledChangedReceiver = SafetyCenterEnabledChangedReceiver()
-        context.registerReceiver(enabledChangedReceiver,
-            IntentFilter(ACTION_SAFETY_CENTER_ENABLED_CHANGED))
+        context.registerReceiver(
+            enabledChangedReceiver, IntentFilter(ACTION_SAFETY_CENTER_ENABLED_CHANGED))
 
         assertFailsWith(TimeoutCancellationException::class) {
-            enabledChangedReceiver.setSafetyCenterEnabledWithReceiverPermissionAndWait(false,
-                TIMEOUT_SHORT)
+            enabledChangedReceiver.setSafetyCenterEnabledWithReceiverPermissionAndWait(
+                false, TIMEOUT_SHORT)
         }
         context.unregisterReceiver(enabledChangedReceiver)
     }
@@ -108,8 +108,8 @@ class SafetyCenterUnsupportedTest {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SINGLE_SOURCE_CONFIG)
 
         assertFailsWith(TimeoutCancellationException::class) {
-            SafetySourceReceiver.setSafetyCenterEnabledWithReceiverPermissionAndWait(false,
-                TIMEOUT_SHORT)
+            SafetySourceReceiver.setSafetyCenterEnabledWithReceiverPermissionAndWait(
+                false, TIMEOUT_SHORT)
         }
     }
 
@@ -117,7 +117,6 @@ class SafetyCenterUnsupportedTest {
         context.startActivity(
             Intent(ACTION_SAFETY_CENTER)
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        )
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK))
     }
 }
