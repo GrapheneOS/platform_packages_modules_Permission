@@ -588,36 +588,33 @@ public final class SafetySource implements Parcelable {
                             isIssueOnly);
             boolean isDynamicHiddenWithSearch =
                     isDynamic && isHidden && searchTermsResId != Resources.ID_NULL;
-            boolean isDynamicHiddenWithoutSearch =
-                    isDynamic && isHidden && searchTermsResId == Resources.ID_NULL;
 
             boolean titleRequired = isDynamicNotHidden || isDynamicHiddenWithSearch || isStatic;
-            boolean titleProhibited = isIssueOnly || isDynamicHiddenWithoutSearch;
             int titleResId =
                     BuilderUtils.validateResId(
                             mTitleResId, "title",
                             titleRequired,
-                            titleProhibited);
+                            isIssueOnly);
 
             int titleForWorkResId =
                     BuilderUtils.validateResId(
                             mTitleForWorkResId,
                             "titleForWork",
                             hasWork && titleRequired,
-                            !hasWork || titleProhibited);
+                            !hasWork || isIssueOnly);
 
             int summaryResId =
                     BuilderUtils.validateResId(
                             mSummaryResId,
                             "summary",
                             isDynamicNotHidden,
-                            isIssueOnly || isHidden);
+                            isIssueOnly);
 
             BuilderUtils.validateAttribute(
                     mIntentAction,
                     "intentAction",
                     (isDynamic && isEnabled) || isStatic,
-                    isIssueOnly || isHidden);
+                    isIssueOnly);
 
             int maxSeverityLevel =
                     BuilderUtils.validateInteger(

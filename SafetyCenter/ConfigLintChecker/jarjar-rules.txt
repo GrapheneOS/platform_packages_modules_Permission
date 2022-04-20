@@ -7,4 +7,5 @@
 # reference by `LintJarVerifier`. To work around this, preserve the dynamically linked Android Lint
 # API references and rename any other `com.android` reference.
 rule com.android.tools.lint.** @0
+rule com.android.resources.ResourceFolderType @0
 rule com.android.** android.safetycenter.lint.jarjar.@0

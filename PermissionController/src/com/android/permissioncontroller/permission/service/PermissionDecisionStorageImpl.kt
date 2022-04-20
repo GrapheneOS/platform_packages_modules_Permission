@@ -19,6 +19,7 @@ package com.android.permissioncontroller.permission.service
 import android.app.job.JobScheduler
 import android.content.Context
 import android.provider.DeviceConfig
+import android.util.Log
 import android.util.Xml
 import com.android.permissioncontroller.DeviceUtils
 import com.android.permissioncontroller.PermissionControllerApplication
@@ -33,6 +34,7 @@ import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
 import java.nio.charset.StandardCharsets
+import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -55,6 +57,8 @@ class PermissionDecisionStorageImpl(
     private val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
 
     companion object {
+        private const val LOG_TAG = "PermissionDecisionStorageImpl"
+
         private const val DB_VERSION = 1
 
         /**
@@ -140,22 +144,44 @@ class PermissionDecisionStorageImpl(
 
         parser.require(XmlPullParser.START_TAG, ns, TAG_RECENT_PERMISSION_DECISIONS)
         while (parser.next() != XmlPullParser.END_TAG) {
-            entries.add(readPermissionDecision(parser))
+            readPermissionDecision(parser)?.let {
+                entries.add(it)
+            }
         }
         return entries
     }
 
     @Throws(XmlPullParserException::class, IOException::class)
-    private fun readPermissionDecision(parser: XmlPullParser): PermissionDecision {
+    private fun readPermissionDecision(parser: XmlPullParser): PermissionDecision? {
+        var decision: PermissionDecision? = null
         parser.require(XmlPullParser.START_TAG, ns, TAG_PERMISSION_DECISION)
-        val packageName = parser.getAttributeValue(ns, ATTR_PACKAGE_NAME)
-        val permissionGroup = parser.getAttributeValue(ns, ATTR_PERMISSION_GROUP)
-        val decisionDate = parser.getAttributeValue(ns, ATTR_DECISION_TIME)
-        val decisionTime = dateFormat.parse(decisionDate).time
-        val isGranted = parser.getAttributeValue(ns, ATTR_IS_GRANTED).toBoolean()
-        parser.nextTag()
-        parser.require(XmlPullParser.END_TAG, ns, TAG_PERMISSION_DECISION)
-        return PermissionDecision(packageName, decisionTime, permissionGroup, isGranted)
+        try {
+            val packageName = parser.getAttributeValueNullSafe(ns, ATTR_PACKAGE_NAME)
+            val permissionGroup = parser.getAttributeValueNullSafe(ns, ATTR_PERMISSION_GROUP)
+            val decisionDate = parser.getAttributeValueNullSafe(ns, ATTR_DECISION_TIME)
+            val decisionTime = dateFormat.parse(decisionDate)?.time
+                ?: throw IllegalArgumentException(
+                    "Could not parse date $decisionDate on package $packageName")
+            val isGranted = parser.getAttributeValueNullSafe(ns, ATTR_IS_GRANTED).toBoolean()
+            decision = PermissionDecision(packageName, decisionTime, permissionGroup, isGranted)
+        } catch (e: XmlPullParserException) {
+            Log.e(LOG_TAG, "Unable to parse permission decision", e)
+        } catch (e: ParseException) {
+            Log.e(LOG_TAG, "Unable to parse permission decision", e)
+        } catch (e: IllegalArgumentException) {
+            Log.e(LOG_TAG, "Unable to parse permission decision", e)
+        } finally {
+            parser.nextTag()
+            parser.require(XmlPullParser.END_TAG, ns, TAG_PERMISSION_DECISION)
+        }
+        return decision
+    }
+
+    @Throws(XmlPullParserException::class)
+    private fun XmlPullParser.getAttributeValueNullSafe(namespace: String?, name: String): String {
+        return this.getAttributeValue(namespace, name)
+            ?: throw XmlPullParserException(
+                "Could not find attribute: namespace $namespace, name $name")
     }
 
     override fun getDatabaseFileName(): String {

@@ -28,7 +28,7 @@ import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
 import com.android.dx.mockito.inline.extended.ExtendedMockito.mockitoSession
 import com.android.permissioncontroller.Constants
-import com.android.permissioncontroller.hibernation.HibernationController
+import com.android.permissioncontroller.hibernation.v31.HibernationController
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 import org.junit.After
