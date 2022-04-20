@@ -24,10 +24,12 @@ import android.safetycenter.SafetyCenterData;
 import android.safetycenter.SafetyCenterEntry;
 import android.safetycenter.SafetyCenterEntryGroup;
 import android.safetycenter.SafetyCenterEntryOrGroup;
+import android.safetycenter.SafetyCenterErrorDetails;
 import android.safetycenter.SafetyCenterIssue;
 import android.safetycenter.SafetyCenterStaticEntryGroup;
 import android.safetycenter.SafetyCenterStatus;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
@@ -59,7 +61,7 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.safety_center_dashboard, rootKey);
 
-        mViewModel = new ViewModelProvider(getActivity()).get(SafetyCenterViewModel.class);
+        mViewModel = new ViewModelProvider(requireActivity()).get(SafetyCenterViewModel.class);
 
         mSafetyStatusPreference =
                 requireNonNull(getPreferenceScreen().findPreference(SAFETY_STATUS_KEY));
@@ -75,6 +77,7 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
         mStaticEntriesGroup = getPreferenceScreen().findPreference(STATIC_ENTRIES_GROUP_KEY);
 
         mViewModel.getSafetyCenterLiveData().observe(this, this::renderSafetyCenterData);
+        mViewModel.getErrorLiveData().observe(this, this::displayErrorDetails);
         getLifecycle().addObserver(mViewModel.getAutoRefreshManager());
 
         getPreferenceManager()
@@ -99,6 +102,13 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
         updateIssues(context, data.getIssues());
         updateSafetyEntries(context, data.getEntriesOrGroups());
         updateStaticSafetyEntries(context, data.getStaticEntryGroups());
+    }
+
+    private void displayErrorDetails(@Nullable SafetyCenterErrorDetails errorDetails) {
+        Context context = getContext();
+        if (errorDetails == null || context == null) return;
+        Toast.makeText(context, errorDetails.getErrorMessage(), Toast.LENGTH_LONG).show();
+        mViewModel.clearError();
     }
 
     private void updateIssues(Context context, List<SafetyCenterIssue> issues) {
