@@ -68,9 +68,8 @@ class SafetySourceStatusTest {
 
     @Test
     fun iconAction_build_withInvalidIconType_throwsIllegalArgumentException() {
-        val exception = assertFailsWith(IllegalArgumentException::class) {
-            IconAction(-1, pendingIntent1)
-        }
+        val exception =
+            assertFailsWith(IllegalArgumentException::class) { IconAction(-1, pendingIntent1) }
         assertThat(exception).hasMessageThat().isEqualTo("Unexpected IconType for IconAction: -1")
     }
 
@@ -100,8 +99,7 @@ class SafetySourceStatusTest {
         EqualsHashCodeToStringTester()
             .addEqualityGroup(
                 IconAction(ICON_TYPE_GEAR, pendingIntent1),
-                IconAction(ICON_TYPE_GEAR, pendingIntent1)
-            )
+                IconAction(ICON_TYPE_GEAR, pendingIntent1))
             .addEqualityGroup(IconAction(ICON_TYPE_INFO, pendingIntent1))
             .addEqualityGroup(IconAction(ICON_TYPE_GEAR, pendingIntent2))
             .test()
@@ -195,73 +193,57 @@ class SafetySourceStatusTest {
     fun build_withNullTitle_throwsNullPointerException() {
         assertFailsWith(NullPointerException::class) {
             SafetySourceStatus.Builder(
-                Generic.asNull(),
-                "Status summary",
-                SEVERITY_LEVEL_INFORMATION
-            )
+                Generic.asNull(), "Status summary", SEVERITY_LEVEL_INFORMATION)
         }
     }
 
     @Test
     fun build_withNullSummary_throwsNullPointerException() {
         assertFailsWith(NullPointerException::class) {
-            SafetySourceStatus.Builder(
-                "Status title",
-                Generic.asNull(),
-                SEVERITY_LEVEL_INFORMATION
-            )
+            SafetySourceStatus.Builder("Status title", Generic.asNull(), SEVERITY_LEVEL_INFORMATION)
         }
     }
 
     @Test
     fun build_withInvalidSeverityLevel_throwsIllegalArgumentException() {
-        val exception = assertFailsWith(IllegalArgumentException::class) {
-            SafetySourceStatus.Builder(
-                "Status title",
-                "Status summary",
-                -1
-            )
-        }
-        assertThat(exception).hasMessageThat()
+        val exception =
+            assertFailsWith(IllegalArgumentException::class) {
+                SafetySourceStatus.Builder("Status title", "Status summary", -1)
+            }
+        assertThat(exception)
+            .hasMessageThat()
             .isEqualTo("Unexpected SeverityLevel for SafetySourceStatus: -1")
     }
 
     @Test
     fun build_withInvalidPendingIntent_throwsIllegalArgumentException() {
-        val builder = SafetySourceStatus.Builder(
-            "Status title",
-            "Status summary",
-            SEVERITY_LEVEL_INFORMATION
-        )
-        val exception = assertFailsWith(IllegalArgumentException::class) {
-            builder.setPendingIntent(
-                PendingIntent.getService(
-                    context,
-                    0 /* requestCode= */,
-                    Intent("PendingIntent service"),
-                    FLAG_IMMUTABLE
-                )
-            )
-        }
-        assertThat(exception).hasMessageThat()
+        val builder =
+            SafetySourceStatus.Builder("Status title", "Status summary", SEVERITY_LEVEL_INFORMATION)
+        val exception =
+            assertFailsWith(IllegalArgumentException::class) {
+                builder.setPendingIntent(
+                    PendingIntent.getService(
+                        context,
+                        /* requestCode = */ 0,
+                        Intent("PendingIntent service"),
+                        FLAG_IMMUTABLE))
+            }
+        assertThat(exception)
+            .hasMessageThat()
             .isEqualTo("Safety source status pending intent must start an activity")
     }
 
     @Test
     fun build_withInvalidEnabledState_throwsIllegalArgumentException() {
-        val builder = SafetySourceStatus.Builder(
-            "Status title",
-            "Status summary",
-            SEVERITY_LEVEL_INFORMATION
-        )
-        val exception = assertFailsWith(IllegalArgumentException::class) {
-            builder.setEnabled(false)
-        }
-        assertThat(exception).hasMessageThat()
+        val builder =
+            SafetySourceStatus.Builder("Status title", "Status summary", SEVERITY_LEVEL_INFORMATION)
+        val exception =
+            assertFailsWith(IllegalArgumentException::class) { builder.setEnabled(false) }
+        assertThat(exception)
+            .hasMessageThat()
             .isEqualTo(
                 "Safety source status must have a severity level of SEVERITY_LEVEL_UNSPECIFIED" +
-                    " when disabled"
-            )
+                    " when disabled")
     }
 
     @Test
@@ -296,83 +278,48 @@ class SafetySourceStatusTest {
         EqualsHashCodeToStringTester()
             .addEqualityGroup(
                 SafetySourceStatus.Builder(
-                    "Status title",
-                    "Status summary",
-                    SEVERITY_LEVEL_INFORMATION
-                )
+                        "Status title", "Status summary", SEVERITY_LEVEL_INFORMATION)
                     .setPendingIntent(pendingIntent1)
                     .setIconAction(iconAction1)
                     .setEnabled(true)
                     .build(),
                 SafetySourceStatus.Builder(
-                    "Status title",
-                    "Status summary",
-                    SEVERITY_LEVEL_INFORMATION
-                )
+                        "Status title", "Status summary", SEVERITY_LEVEL_INFORMATION)
                     .setPendingIntent(pendingIntent1)
                     .setIconAction(iconAction1)
                     .setEnabled(true)
-                    .build()
-            )
+                    .build())
             .addEqualityGroup(
                 SafetySourceStatus.Builder(
-                    "Status title",
-                    "Status summary",
-                    SEVERITY_LEVEL_INFORMATION
-                )
-                    .build()
-            )
+                        "Status title", "Status summary", SEVERITY_LEVEL_INFORMATION)
+                    .build())
             .addEqualityGroup(
                 SafetySourceStatus.Builder(
-                    "Other status title",
-                    "Status summary",
-                    SEVERITY_LEVEL_INFORMATION
-                )
-                    .build()
-            )
+                        "Other status title", "Status summary", SEVERITY_LEVEL_INFORMATION)
+                    .build())
             .addEqualityGroup(
                 SafetySourceStatus.Builder(
-                    "Status title",
-                    "Other status summary",
-                    SEVERITY_LEVEL_INFORMATION
-                )
-                    .build()
-            )
+                        "Status title", "Other status summary", SEVERITY_LEVEL_INFORMATION)
+                    .build())
             .addEqualityGroup(
                 SafetySourceStatus.Builder(
-                    "Status title",
-                    "Status summary",
-                    SEVERITY_LEVEL_CRITICAL_WARNING
-                )
-                    .build()
-            )
+                        "Status title", "Status summary", SEVERITY_LEVEL_CRITICAL_WARNING)
+                    .build())
             .addEqualityGroup(
                 SafetySourceStatus.Builder(
-                    "Status title",
-                    "Status summary",
-                    SEVERITY_LEVEL_CRITICAL_WARNING
-                )
+                        "Status title", "Status summary", SEVERITY_LEVEL_CRITICAL_WARNING)
                     .setPendingIntent(pendingIntent2)
-                    .build()
-            )
+                    .build())
             .addEqualityGroup(
                 SafetySourceStatus.Builder(
-                    "Status title",
-                    "Status summary",
-                    SEVERITY_LEVEL_CRITICAL_WARNING
-                )
+                        "Status title", "Status summary", SEVERITY_LEVEL_CRITICAL_WARNING)
                     .setIconAction(iconAction2)
-                    .build()
-            )
+                    .build())
             .addEqualityGroup(
                 SafetySourceStatus.Builder(
-                    "Status title",
-                    "Status summary",
-                    SEVERITY_LEVEL_UNSPECIFIED
-                )
+                        "Status title", "Status summary", SEVERITY_LEVEL_UNSPECIFIED)
                     .setEnabled(false)
-                    .build()
-            )
+                    .build())
             .test()
     }
 }

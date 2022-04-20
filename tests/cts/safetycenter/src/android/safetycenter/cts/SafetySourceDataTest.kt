@@ -34,9 +34,9 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.ext.truth.os.ParcelableSubject.assertThat
 import androidx.test.filters.SdkSuppress
 import com.google.common.truth.Truth.assertThat
+import kotlin.test.assertFailsWith
 import org.junit.Test
 import org.junit.runner.RunWith
-import kotlin.test.assertFailsWith
 
 /** CTS tests for [SafetySourceData]. */
 @RunWith(AndroidJUnit4::class)
@@ -46,9 +46,8 @@ class SafetySourceDataTest {
 
     @Test
     fun getStatus_withDefaultBuilder_returnsNull() {
-        val safetySourceData = SafetySourceData.Builder()
-            .addIssue(createIssue(SEVERITY_LEVEL_INFORMATION))
-            .build()
+        val safetySourceData =
+            SafetySourceData.Builder().addIssue(createIssue(SEVERITY_LEVEL_INFORMATION)).build()
 
         assertThat(safetySourceData.status).isNull()
     }
@@ -56,18 +55,15 @@ class SafetySourceDataTest {
     @Test
     fun getStatus_whenSetExplicitly_returnsStatus() {
         val status = createStatus(SEVERITY_LEVEL_INFORMATION)
-        val safetySourceData = SafetySourceData.Builder()
-            .setStatus(status)
-            .build()
+        val safetySourceData = SafetySourceData.Builder().setStatus(status).build()
 
         assertThat(safetySourceData.status).isEqualTo(status)
     }
 
     @Test
     fun getIssues_withDefaultBuilder_returnsEmptyList() {
-        val safetySourceData = SafetySourceData.Builder()
-            .setStatus(createStatus(SEVERITY_LEVEL_INFORMATION))
-            .build()
+        val safetySourceData =
+            SafetySourceData.Builder().setStatus(createStatus(SEVERITY_LEVEL_INFORMATION)).build()
 
         assertThat(safetySourceData.issues).isEmpty()
     }
@@ -76,10 +72,8 @@ class SafetySourceDataTest {
     fun getIssues_whenSetExplicitly_returnsIssues() {
         val firstIssue = createIssue(SEVERITY_LEVEL_INFORMATION, 1)
         val secondIssue = createIssue(SEVERITY_LEVEL_INFORMATION, 2)
-        val safetySourceData = SafetySourceData.Builder()
-            .addIssue(firstIssue)
-            .addIssue(secondIssue)
-            .build()
+        val safetySourceData =
+            SafetySourceData.Builder().addIssue(firstIssue).addIssue(secondIssue).build()
 
         assertThat(safetySourceData.issues).containsExactly(firstIssue, secondIssue).inOrder()
     }
@@ -88,12 +82,13 @@ class SafetySourceDataTest {
     fun clearIssues_removesAllIssues() {
         val firstIssue = createIssue(SEVERITY_LEVEL_INFORMATION, 1)
         val secondIssue = createIssue(SEVERITY_LEVEL_INFORMATION, 2)
-        val safetySourceData = SafetySourceData.Builder()
-            .setStatus(createStatus(SEVERITY_LEVEL_INFORMATION))
-            .addIssue(firstIssue)
-            .addIssue(secondIssue)
-            .clearIssues()
-            .build()
+        val safetySourceData =
+            SafetySourceData.Builder()
+                .setStatus(createStatus(SEVERITY_LEVEL_INFORMATION))
+                .addIssue(firstIssue)
+                .addIssue(secondIssue)
+                .clearIssues()
+                .build()
 
         assertThat(safetySourceData.issues).isEmpty()
     }
@@ -114,16 +109,16 @@ class SafetySourceDataTest {
 
     @Test
     fun build_withNoStatusAndRecommendationIssues_doesNotThrow() {
-        val builder = SafetySourceData.Builder()
-            .addIssue(createIssue(SEVERITY_LEVEL_RECOMMENDATION))
+        val builder =
+            SafetySourceData.Builder().addIssue(createIssue(SEVERITY_LEVEL_RECOMMENDATION))
 
         assertThat(builder.build()).isNotNull()
     }
 
     @Test
     fun build_withNoStatusAndCriticalIssues_doesNotThrow() {
-        val builder = SafetySourceData.Builder()
-            .addIssue(createIssue(SEVERITY_LEVEL_CRITICAL_WARNING))
+        val builder =
+            SafetySourceData.Builder().addIssue(createIssue(SEVERITY_LEVEL_CRITICAL_WARNING))
 
         assertThat(builder.build()).isNotNull()
     }
@@ -137,9 +132,10 @@ class SafetySourceDataTest {
 
     @Test
     fun build_withUnspecifiedStatusAndInformationIssues_doesNotThrow() {
-        val builder = SafetySourceData.Builder()
-            .setStatus(createStatus(SEVERITY_LEVEL_UNSPECIFIED))
-            .addIssue(createIssue(SEVERITY_LEVEL_INFORMATION))
+        val builder =
+            SafetySourceData.Builder()
+                .setStatus(createStatus(SEVERITY_LEVEL_UNSPECIFIED))
+                .addIssue(createIssue(SEVERITY_LEVEL_INFORMATION))
 
         assertThat(builder.build()).isNotNull()
     }
@@ -153,87 +149,88 @@ class SafetySourceDataTest {
 
     @Test
     fun build_withInformationStatusAndInformationIssues_doesNotThrow() {
-        val builder = SafetySourceData.Builder()
-            .setStatus(createStatus(SEVERITY_LEVEL_INFORMATION))
-            .addIssue(createIssue(SEVERITY_LEVEL_INFORMATION))
+        val builder =
+            SafetySourceData.Builder()
+                .setStatus(createStatus(SEVERITY_LEVEL_INFORMATION))
+                .addIssue(createIssue(SEVERITY_LEVEL_INFORMATION))
 
         assertThat(builder.build()).isNotNull()
     }
 
     @Test
     fun build_withInformationStatusAndRecommendationIssues_throwsIllegalArgumentException() {
-        val builder = SafetySourceData.Builder()
-            .setStatus(createStatus(SEVERITY_LEVEL_INFORMATION))
-            .addIssue(createIssue(SEVERITY_LEVEL_RECOMMENDATION))
+        val builder =
+            SafetySourceData.Builder()
+                .setStatus(createStatus(SEVERITY_LEVEL_INFORMATION))
+                .addIssue(createIssue(SEVERITY_LEVEL_RECOMMENDATION))
 
-        val exception = assertFailsWith(IllegalArgumentException::class) {
-            builder.build()
-        }
-        assertThat(exception).hasMessageThat()
+        val exception = assertFailsWith(IllegalArgumentException::class) { builder.build() }
+        assertThat(exception)
+            .hasMessageThat()
             .isEqualTo(
                 "Safety source data must not contain any issue with a severity level both greater" +
-                    " than SEVERITY_LEVEL_INFORMATION and greater than the status severity level"
-            )
+                    " than SEVERITY_LEVEL_INFORMATION and greater than the status severity level")
     }
 
     @Test
     fun build_withRecommendationStatusAndNoIssues_doesNotThrow() {
-        val builder = SafetySourceData.Builder()
-            .setStatus(createStatus(SEVERITY_LEVEL_RECOMMENDATION))
+        val builder =
+            SafetySourceData.Builder().setStatus(createStatus(SEVERITY_LEVEL_RECOMMENDATION))
 
         assertThat(builder.build()).isNotNull()
     }
 
     @Test
     fun build_withRecommendationStatusAndInformationIssues_doesNotThrow() {
-        val builder = SafetySourceData.Builder()
-            .setStatus(createStatus(SEVERITY_LEVEL_RECOMMENDATION))
-            .addIssue(createIssue(SEVERITY_LEVEL_INFORMATION))
+        val builder =
+            SafetySourceData.Builder()
+                .setStatus(createStatus(SEVERITY_LEVEL_RECOMMENDATION))
+                .addIssue(createIssue(SEVERITY_LEVEL_INFORMATION))
 
         assertThat(builder.build()).isNotNull()
     }
 
     @Test
     fun build_withRecommendationStatusAndRecommendationIssues_doesNotThrow() {
-        val builder = SafetySourceData.Builder()
-            .setStatus(createStatus(SEVERITY_LEVEL_RECOMMENDATION))
-            .addIssue(createIssue(SEVERITY_LEVEL_RECOMMENDATION))
+        val builder =
+            SafetySourceData.Builder()
+                .setStatus(createStatus(SEVERITY_LEVEL_RECOMMENDATION))
+                .addIssue(createIssue(SEVERITY_LEVEL_RECOMMENDATION))
 
         assertThat(builder.build()).isNotNull()
     }
 
     @Test
     fun build_withRecommendationStatusAndCriticalIssues_throwsIllegalArgumentException() {
-        val builder = SafetySourceData.Builder()
-            .setStatus(createStatus(SEVERITY_LEVEL_RECOMMENDATION))
-            .addIssue(createIssue(SEVERITY_LEVEL_CRITICAL_WARNING))
+        val builder =
+            SafetySourceData.Builder()
+                .setStatus(createStatus(SEVERITY_LEVEL_RECOMMENDATION))
+                .addIssue(createIssue(SEVERITY_LEVEL_CRITICAL_WARNING))
 
-        val exception = assertFailsWith(IllegalArgumentException::class) {
-            builder.build()
-        }
-        assertThat(exception).hasMessageThat()
+        val exception = assertFailsWith(IllegalArgumentException::class) { builder.build() }
+        assertThat(exception)
+            .hasMessageThat()
             .isEqualTo(
                 "Safety source data must not contain any issue with a severity level both greater" +
-                    " than SEVERITY_LEVEL_INFORMATION and greater than the status severity level"
-            )
+                    " than SEVERITY_LEVEL_INFORMATION and greater than the status severity level")
     }
 
     @Test
     fun describeContents_returns0() {
-        val safetySourceData = SafetySourceData.Builder()
-            .setStatus(createStatus(SEVERITY_LEVEL_INFORMATION))
-            .build()
+        val safetySourceData =
+            SafetySourceData.Builder().setStatus(createStatus(SEVERITY_LEVEL_INFORMATION)).build()
 
         assertThat(safetySourceData.describeContents()).isEqualTo(0)
     }
 
     @Test
     fun parcelRoundTrip_recreatesEqual() {
-        val safetySourceData = SafetySourceData.Builder()
-            .setStatus(createStatus(SEVERITY_LEVEL_RECOMMENDATION))
-            .addIssue(createIssue(SEVERITY_LEVEL_RECOMMENDATION, 1))
-            .addIssue(createIssue(SEVERITY_LEVEL_INFORMATION, 2))
-            .build()
+        val safetySourceData =
+            SafetySourceData.Builder()
+                .setStatus(createStatus(SEVERITY_LEVEL_RECOMMENDATION))
+                .addIssue(createIssue(SEVERITY_LEVEL_RECOMMENDATION, 1))
+                .addIssue(createIssue(SEVERITY_LEVEL_INFORMATION, 2))
+                .build()
 
         assertThat(safetySourceData).recreatesEqual(SafetySourceData.CREATOR)
     }
@@ -247,63 +244,60 @@ class SafetySourceDataTest {
         EqualsHashCodeToStringTester()
             .addEqualityGroup(
                 SafetySourceData.Builder().setStatus(firstStatus).build(),
-                SafetySourceData.Builder().setStatus(firstStatus).build()
-            )
+                SafetySourceData.Builder().setStatus(firstStatus).build())
             .addEqualityGroup(
                 SafetySourceData.Builder().addIssue(firstIssue).addIssue(secondIssue).build(),
-                SafetySourceData.Builder().addIssue(firstIssue).addIssue(secondIssue).build()
-            )
+                SafetySourceData.Builder().addIssue(firstIssue).addIssue(secondIssue).build())
             .addEqualityGroup(
                 SafetySourceData.Builder()
-                    .setStatus(firstStatus).addIssue(firstIssue).addIssue(secondIssue).build(),
+                    .setStatus(firstStatus)
+                    .addIssue(firstIssue)
+                    .addIssue(secondIssue)
+                    .build(),
                 SafetySourceData.Builder()
-                    .setStatus(firstStatus).addIssue(firstIssue).addIssue(secondIssue).build()
-            )
+                    .setStatus(firstStatus)
+                    .addIssue(firstIssue)
+                    .addIssue(secondIssue)
+                    .build())
             .addEqualityGroup(SafetySourceData.Builder().setStatus(secondStatus).build())
             .addEqualityGroup(
                 SafetySourceData.Builder().addIssue(secondIssue).addIssue(firstIssue).build())
             .addEqualityGroup(SafetySourceData.Builder().addIssue(firstIssue).build())
             .addEqualityGroup(
                 SafetySourceData.Builder()
-                    .setStatus(secondStatus).addIssue(firstIssue).addIssue(secondIssue).build()
-            )
+                    .setStatus(secondStatus)
+                    .addIssue(firstIssue)
+                    .addIssue(secondIssue)
+                    .build())
             .test()
     }
 
-    private fun createStatus(severityLevel: Int, id: Int = 0) = SafetySourceStatus.Builder(
-        "Status title $id",
-        "Status summary $id",
-        severityLevel
-    )
-        .setPendingIntent(
-            PendingIntent.getActivity(
-                context,
-                0 /* requestCode= */,
-                Intent("Status PendingIntent $id"),
-                FLAG_IMMUTABLE
-            )
-        )
-        .build()
-
-    private fun createIssue(severityLevel: Int, id: Int = 0) = SafetySourceIssue.Builder(
-        "Issue id $id",
-        "Issue summary $id",
-        "Issue summary $id",
-        severityLevel,
-        "Issue type id $id"
-    )
-        .addAction(
-            SafetySourceIssue.Action.Builder(
-                "Action id $id",
-                "Action label $id",
+    private fun createStatus(severityLevel: Int, id: Int = 0) =
+        SafetySourceStatus.Builder("Status title $id", "Status summary $id", severityLevel)
+            .setPendingIntent(
                 PendingIntent.getActivity(
                     context,
-                    0 /* requestCode= */,
-                    Intent("Issue PendingIntent $id"),
-                    FLAG_IMMUTABLE
-                )
-            )
-                .build()
-        )
-        .build()
+                    /* requestCode = */ 0,
+                    Intent("Status PendingIntent $id"),
+                    FLAG_IMMUTABLE))
+            .build()
+
+    private fun createIssue(severityLevel: Int, id: Int = 0) =
+        SafetySourceIssue.Builder(
+                "Issue id $id",
+                "Issue summary $id",
+                "Issue summary $id",
+                severityLevel,
+                "Issue type id $id")
+            .addAction(
+                SafetySourceIssue.Action.Builder(
+                        "Action id $id",
+                        "Action label $id",
+                        PendingIntent.getActivity(
+                            context,
+                            /* requestCode = */ 0,
+                            Intent("Issue PendingIntent $id"),
+                            FLAG_IMMUTABLE))
+                    .build())
+            .build()
 }
