@@ -18,27 +18,16 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"Burimet e \"Qendrës së sigurisë\""</string>
-    <!-- no translation found for lock_screen_sources_title (3317906280484627707) -->
-    <skip />
+    <string name="lock_screen_sources_title" msgid="3317906280484627707">"Kyçja e pajisjes"</string>
     <string name="lock_screen_title" msgid="4069104894527169877">"Kyçja e ekranit"</string>
-    <!-- no translation found for lock_screen_summary_disabled (354071230916616692) -->
-    <skip />
-    <!-- no translation found for privacy_sources_title (4061110826457365957) -->
-    <skip />
-    <!-- no translation found for privacy_sources_summary (4089719981155120864) -->
-    <skip />
-    <!-- no translation found for permission_usage_title (3633779688945350407) -->
-    <skip />
-    <!-- no translation found for permission_usage_summary (5323079206029964468) -->
-    <skip />
-    <!-- no translation found for permission_manager_title (5277347862821255015) -->
-    <skip />
-    <!-- no translation found for permission_manager_summary (8099852107340970790) -->
-    <skip />
-    <!-- no translation found for advanced_title (8745436380690561172) -->
-    <skip />
-    <!-- no translation found for advanced_security_title (1126833338772188155) -->
-    <skip />
-    <!-- no translation found for advanced_security_summary (6172253327022425123) -->
-    <skip />
+    <string name="lock_screen_summary_disabled" msgid="354071230916616692">"Nuk ka ende informacione"</string>
+    <string name="privacy_sources_title" msgid="4061110826457365957">"Privatësia"</string>
+    <string name="privacy_sources_summary" msgid="4089719981155120864">"Paneli, lejet, kontrollet"</string>
+    <string name="permission_usage_title" msgid="3633779688945350407">"Paneli i privatësisë"</string>
+    <string name="permission_usage_summary" msgid="5323079206029964468">"Shfaq se cilat aplikacione i kanë përdorur së fundi lejet"</string>
+    <string name="permission_manager_title" msgid="5277347862821255015">"Menaxheri i lejeve"</string>
+    <string name="permission_manager_summary" msgid="8099852107340970790">"Kontrollo qasjen e aplikacioneve te të dhënat e tua"</string>
+    <string name="advanced_title" msgid="8745436380690561172">"Cilësime të tjera"</string>
+    <string name="advanced_security_title" msgid="1126833338772188155">"Cilësime të tjera të privatësisë"</string>
+    <string name="advanced_security_summary" msgid="6172253327022425123">"Enkriptimi, kredencialet dhe të tjera"</string>
 </resources>
