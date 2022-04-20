@@ -36,44 +36,59 @@ class ParserExceptionDetectorTest : LintDetectorTest() {
 
     @Test
     fun validConfig_doesNotThrow() {
-        lint().files((
-            xml("res/raw/safety_center_config.xml",
-                """
+        lint()
+            .files(
+                (xml(
+                    "res/raw/safety_center_config.xml",
+                    """
 <safety-center-config>
     <safety-sources-config>
         <safety-sources-group
             id="group"
-            title="@package:string/reference"
-            summary="@package:string/reference">
+            title="@lint.test.pkg:string/reference"
+            summary="@lint.test.pkg:string/reference">
             <static-safety-source
                 id="source"
-                title="@package:string/reference"
-                summary="@package:string/reference"
+                title="@lint.test.pkg:string/reference"
+                summary="@lint.test.pkg:string/reference"
                 intentAction="intent"
                 profile="primary_profile_only"/>
         </safety-sources-group>
     </safety-sources-config>
 </safety-center-config>
-                """))).run().expectClean()
+                """)),
+                (xml(
+                    "res/values/strings.xml",
+                    """
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="reference" translatable="false">Reference</string>
+</resources>
+                """)))
+            .run()
+            .expectClean()
     }
 
     @Test
     fun invalidConfig_throws() {
-        lint().files((xml("res/raw/safety_center_config.xml", "<invalid-root/>")))
-            .run().expect("res/raw/safety_center_config.xml: Error: Parser exception: " +
-                "\"Element safety-center-config missing\", cause: \"null\" " +
-                "[InvalidSafetyCenterConfig]\n1 errors, 0 warnings")
+        lint()
+            .files((xml("res/raw/safety_center_config.xml", "<invalid-root/>")))
+            .run()
+            .expect(
+                "res/raw/safety_center_config.xml: Error: Parser exception: " +
+                    "\"Element safety-center-config missing\", cause: \"null\" " +
+                    "[InvalidSafetyCenterConfig]\n1 errors, 0 warnings")
     }
 
     @Test
     fun unrelatedFile_doesNotThrow() {
-        lint().files((xml("res/raw/some_other_config.xml", "<some-other-root/>")))
-            .run().expectClean()
+        lint()
+            .files((xml("res/raw/some_other_config.xml", "<some-other-root/>")))
+            .run()
+            .expectClean()
     }
 
     @Test
     fun unrelatedFolder_doesNotThrow() {
-        lint().files((xml("res/values/strings.xml", "<some-other-root/>")))
-            .run().expectClean()
+        lint().files((xml("res/values/strings.xml", "<some-other-root/>"))).run().expectClean()
     }
 }

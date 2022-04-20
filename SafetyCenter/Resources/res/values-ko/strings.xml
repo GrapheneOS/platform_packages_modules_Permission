@@ -18,27 +18,16 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"안전 센터 리소스"</string>
-    <!-- no translation found for lock_screen_sources_title (3317906280484627707) -->
-    <skip />
+    <string name="lock_screen_sources_title" msgid="3317906280484627707">"기기 잠금"</string>
     <string name="lock_screen_title" msgid="4069104894527169877">"화면 잠금"</string>
-    <!-- no translation found for lock_screen_summary_disabled (354071230916616692) -->
-    <skip />
-    <!-- no translation found for privacy_sources_title (4061110826457365957) -->
-    <skip />
-    <!-- no translation found for privacy_sources_summary (4089719981155120864) -->
-    <skip />
-    <!-- no translation found for permission_usage_title (3633779688945350407) -->
-    <skip />
-    <!-- no translation found for permission_usage_summary (5323079206029964468) -->
-    <skip />
-    <!-- no translation found for permission_manager_title (5277347862821255015) -->
-    <skip />
-    <!-- no translation found for permission_manager_summary (8099852107340970790) -->
-    <skip />
-    <!-- no translation found for advanced_title (8745436380690561172) -->
-    <skip />
-    <!-- no translation found for advanced_security_title (1126833338772188155) -->
-    <skip />
-    <!-- no translation found for advanced_security_summary (6172253327022425123) -->
-    <skip />
+    <string name="lock_screen_summary_disabled" msgid="354071230916616692">"아직 정보 없음"</string>
+    <string name="privacy_sources_title" msgid="4061110826457365957">"개인 정보 보호"</string>
+    <string name="privacy_sources_summary" msgid="4089719981155120864">"대시보드, 권한, 제어"</string>
+    <string name="permission_usage_title" msgid="3633779688945350407">"개인 정보 대시보드"</string>
+    <string name="permission_usage_summary" msgid="5323079206029964468">"최근에 권한을 사용한 앱 표시"</string>
+    <string name="permission_manager_title" msgid="5277347862821255015">"권한 관리자"</string>
+    <string name="permission_manager_summary" msgid="8099852107340970790">"내 데이터에 대한 앱 액세스 제어"</string>
+    <string name="advanced_title" msgid="8745436380690561172">"기타 설정"</string>
+    <string name="advanced_security_title" msgid="1126833338772188155">"기타 보안 설정"</string>
+    <string name="advanced_security_summary" msgid="6172253327022425123">"암호화, 사용자 인증 정보 등"</string>
 </resources>
