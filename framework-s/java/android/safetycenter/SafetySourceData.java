@@ -111,10 +111,10 @@ public final class SafetySourceData implements Parcelable {
      * addressed by the user.
      *
      * <p>For a {@link SafetySourceIssue}, this severity level indicates that the {@link
-     * SafetySourceIssue} represents a critical or urgent safety issue relating to the safety
-     * source that should be addressed by the user. {@link SafetySourceIssue}s of this severity
-     * level will be dismissible by the user from the UI, and will trigger a confirmation dialog
-     * upon a user attempting to dismiss the warning.
+     * SafetySourceIssue} represents a critical or urgent safety issue relating to the safety source
+     * that should be addressed by the user. {@link SafetySourceIssue}s of this severity level will
+     * be dismissible by the user from the UI, and will trigger a confirmation dialog upon a user
+     * attempting to dismiss the warning.
      */
     public static final int SEVERITY_LEVEL_CRITICAL_WARNING = 400;
 
@@ -140,14 +140,13 @@ public final class SafetySourceData implements Parcelable {
     @IntDef(
             prefix = {"SEVERITY_LEVEL_"},
             value = {
-                    SEVERITY_LEVEL_UNSPECIFIED,
-                    SEVERITY_LEVEL_INFORMATION,
-                    SEVERITY_LEVEL_RECOMMENDATION,
-                    SEVERITY_LEVEL_CRITICAL_WARNING
+                SEVERITY_LEVEL_UNSPECIFIED,
+                SEVERITY_LEVEL_INFORMATION,
+                SEVERITY_LEVEL_RECOMMENDATION,
+                SEVERITY_LEVEL_CRITICAL_WARNING
             })
     @Retention(RetentionPolicy.SOURCE)
-    public @interface SeverityLevel {
-    }
+    public @interface SeverityLevel {}
 
     @NonNull
     public static final Creator<SafetySourceData> CREATOR =
@@ -170,10 +169,8 @@ public final class SafetySourceData implements Parcelable {
                 }
             };
 
-    @Nullable
-    private final SafetySourceStatus mStatus;
-    @NonNull
-    private final List<SafetySourceIssue> mIssues;
+    @Nullable private final SafetySourceStatus mStatus;
+    @NonNull private final List<SafetySourceIssue> mIssues;
 
     private SafetySourceData(
             @Nullable SafetySourceStatus status, @NonNull List<SafetySourceIssue> issues) {
@@ -219,22 +216,15 @@ public final class SafetySourceData implements Parcelable {
 
     @Override
     public String toString() {
-        return "SafetySourceData{"
-                + ", mStatus="
-                + mStatus
-                + ", mIssues="
-                + mIssues
-                + '}';
+        return "SafetySourceData{" + ", mStatus=" + mStatus + ", mIssues=" + mIssues + '}';
     }
 
     /** Builder class for {@link SafetySourceData}. */
     public static final class Builder {
 
-        @NonNull
-        private final List<SafetySourceIssue> mIssues = new ArrayList<>();
+        @NonNull private final List<SafetySourceIssue> mIssues = new ArrayList<>();
 
-        @Nullable
-        private SafetySourceStatus mStatus;
+        @Nullable private SafetySourceStatus mStatus;
 
         /** Sets data for the {@link SafetySourceStatus} to be shown in UI. */
         @NonNull
