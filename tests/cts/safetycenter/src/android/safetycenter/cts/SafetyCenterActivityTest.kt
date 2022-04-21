@@ -66,7 +66,6 @@ class SafetyCenterActivityTest {
         context.startActivity(
             Intent(ACTION_SAFETY_CENTER)
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        )
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK))
     }
 }

@@ -16,9 +16,9 @@
 
 package android.safetycenter.cts.testing
 
+import java.time.Duration
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeout
-import java.time.Duration
 
 /** A class that facilitates interacting with coroutines. */
 object Coroutines {
