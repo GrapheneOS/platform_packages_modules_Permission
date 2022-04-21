@@ -64,6 +64,5 @@ class SafetyCenterEnabledChangedReceiver : BroadcastReceiver() {
                 receiveSafetyCenterEnabledChanged(timeout)
             },
             READ_SAFETY_CENTER_STATUS,
-            WRITE_DEVICE_CONFIG
-        )
+            WRITE_DEVICE_CONFIG)
 }

@@ -31,15 +31,12 @@ object SafetyCenterFlags {
     /** Returns whether the device supports Safety Center. */
     fun Context.deviceSupportsSafetyCenter() =
         resources.getBoolean(
-            Resources.getSystem().getIdentifier("config_enableSafetyCenter", "bool", "android")
-        )
+            Resources.getSystem().getIdentifier("config_enableSafetyCenter", "bool", "android"))
 
     /** Sets the Safety Center device config flag to the given boolean [value]. */
     fun setSafetyCenterEnabled(value: Boolean) {
         callWithShellPermissionIdentity(
-            { setSafetyCenterEnabledWithoutPermission(value) },
-            WRITE_DEVICE_CONFIG
-        )
+            { setSafetyCenterEnabledWithoutPermission(value) }, WRITE_DEVICE_CONFIG)
     }
 
     /**
@@ -55,8 +52,7 @@ object SafetyCenterFlags {
                 DeviceConfig.NAMESPACE_PRIVACY,
                 PROPERTY_SAFETY_CENTER_ENABLED,
                 /* value = */ value.toString(),
-                /* makeDefault = */ false
-            )
+                /* makeDefault = */ false)
         if (!valueWasSet) {
             throw IllegalStateException("Could not set Safety Center flag value to: $value")
         }
