@@ -46,12 +46,11 @@ final class SafetyCenterListeners {
             mSafetyCenterDataChangedListeners = new SparseArray<>();
 
     /** Creates a {@link SafetyCenterListeners}. */
-    SafetyCenterListeners() {
-    }
+    SafetyCenterListeners() {}
 
     /**
-     * Delivers a {@link SafetyCenterData} update to a single
-     * {@link IOnSafetyCenterDataChangedListener}.
+     * Delivers a {@link SafetyCenterData} update to a single {@link
+     * IOnSafetyCenterDataChangedListener}.
      */
     static void deliverUpdate(
             @NonNull IOnSafetyCenterDataChangedListener listener,
@@ -116,9 +115,7 @@ final class SafetyCenterListeners {
     }
 
     /** Adds a {@link IOnSafetyCenterDataChangedListener} for the given {@code userId}. */
-    void addListener(
-            @NonNull IOnSafetyCenterDataChangedListener listener,
-            @UserIdInt int userId) {
+    void addListener(@NonNull IOnSafetyCenterDataChangedListener listener, @UserIdInt int userId) {
         RemoteCallbackList<IOnSafetyCenterDataChangedListener> listeners =
                 mSafetyCenterDataChangedListeners.get(userId);
         if (listeners == null) {
@@ -130,8 +127,7 @@ final class SafetyCenterListeners {
 
     /** Removes a {@link IOnSafetyCenterDataChangedListener} for the given {@code userId}. */
     void removeListener(
-            @NonNull IOnSafetyCenterDataChangedListener listener,
-            @UserIdInt int userId) {
+            @NonNull IOnSafetyCenterDataChangedListener listener, @UserIdInt int userId) {
         RemoteCallbackList<IOnSafetyCenterDataChangedListener> listeners =
                 mSafetyCenterDataChangedListeners.get(userId);
         if (listeners == null) {
