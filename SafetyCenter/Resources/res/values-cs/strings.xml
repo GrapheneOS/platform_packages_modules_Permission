@@ -26,7 +26,7 @@
     <string name="permission_usage_title" msgid="3633779688945350407">"Panel ochrany soukromí"</string>
     <string name="permission_usage_summary" msgid="5323079206029964468">"Zobrazení aplikací, které v poslední době využívaly oprávnění"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"Správce oprávnění"</string>
-    <string name="permission_manager_summary" msgid="8099852107340970790">"Spravuje přístup aplikací k vašim datům"</string>
+    <string name="permission_manager_summary" msgid="8099852107340970790">"Ovládání přístupu aplikací k vašim datům"</string>
     <string name="advanced_title" msgid="8745436380690561172">"Další nastavení"</string>
     <string name="advanced_security_title" msgid="1126833338772188155">"Další nastavení zabezpečení"</string>
     <string name="advanced_security_summary" msgid="6172253327022425123">"Šifrování, přihlašovací údaje a další"</string>
