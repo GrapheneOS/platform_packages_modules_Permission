@@ -25,36 +25,8 @@ package {
     ],
 }
 
-android_test {
+android_test_helper_app {
+    name: "PermissionUiUseStoragePermissionApp",
 
-    name: "PermissionControllerInProcessTests",
-
-    sdk_version: "system_current",
-    target_sdk_version: "30",
-    min_sdk_version: "30",
-
-    srcs: ["src/**/*.kt"],
-
-    libs: [
-        "android.test.base",
-        "android.test.runner",
-    ],
-
-    static_libs: [
-        "androidx.test.rules",
-        "androidx.test.ext.truth",
-        "androidx.test.ext.junit",
-        "androidx.test.uiautomator",
-        "compatibility-device-util-axt",
-        "permission-test-util-lib",
-    ],
-
-    certificate: "platform",
-
-    instrumentation_for: "PermissionController",
-
-    test_suites: [
-        "device-tests",
-        "mts-permission",
-    ],
+    sdk_version: "30",
 }
