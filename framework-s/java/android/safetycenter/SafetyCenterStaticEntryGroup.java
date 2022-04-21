@@ -48,8 +48,8 @@ public final class SafetyCenterStaticEntryGroup implements Parcelable {
                 @Override
                 public SafetyCenterStaticEntryGroup createFromParcel(Parcel source) {
                     CharSequence title = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(source);
-                    List<SafetyCenterStaticEntry> staticEntries = source.createTypedArrayList(
-                            SafetyCenterStaticEntry.CREATOR);
+                    List<SafetyCenterStaticEntry> staticEntries =
+                            source.createTypedArrayList(SafetyCenterStaticEntry.CREATOR);
                     return new SafetyCenterStaticEntryGroup(title, staticEntries);
                 }
 
@@ -59,10 +59,8 @@ public final class SafetyCenterStaticEntryGroup implements Parcelable {
                 }
             };
 
-    @NonNull
-    private final CharSequence mTitle;
-    @NonNull
-    private final List<SafetyCenterStaticEntry> mStaticEntries;
+    @NonNull private final CharSequence mTitle;
+    @NonNull private final List<SafetyCenterStaticEntry> mStaticEntries;
 
     /** Creates a {@link SafetyCenterStaticEntryGroup} with the given title and entries. */
     public SafetyCenterStaticEntryGroup(
