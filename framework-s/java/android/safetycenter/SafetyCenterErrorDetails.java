@@ -44,8 +44,8 @@ public final class SafetyCenterErrorDetails implements Parcelable {
             new Creator<SafetyCenterErrorDetails>() {
                 @Override
                 public SafetyCenterErrorDetails createFromParcel(Parcel in) {
-                    CharSequence errorMessage = TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(
-                            in);
+                    CharSequence errorMessage =
+                            TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(in);
                     return new SafetyCenterErrorDetails(errorMessage);
                 }
 
@@ -55,8 +55,7 @@ public final class SafetyCenterErrorDetails implements Parcelable {
                 }
             };
 
-    @NonNull
-    private final CharSequence mErrorMessage;
+    @NonNull private final CharSequence mErrorMessage;
 
     /** Creates a {@link SafetyCenterErrorDetails} with a given error message. */
     public SafetyCenterErrorDetails(@NonNull CharSequence errorMessage) {
@@ -84,10 +83,7 @@ public final class SafetyCenterErrorDetails implements Parcelable {
 
     @Override
     public String toString() {
-        return "SafetyCenterErrorDetails{"
-                + "mErrorMessage="
-                + mErrorMessage
-                + '}';
+        return "SafetyCenterErrorDetails{" + "mErrorMessage=" + mErrorMessage + '}';
     }
 
     @Override

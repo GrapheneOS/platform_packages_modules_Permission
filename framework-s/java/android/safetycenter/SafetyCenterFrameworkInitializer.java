@@ -33,8 +33,7 @@ import androidx.annotation.RequiresApi;
 @SystemApi(client = SystemApi.Client.MODULE_LIBRARIES)
 public final class SafetyCenterFrameworkInitializer {
 
-    private SafetyCenterFrameworkInitializer() {
-    }
+    private SafetyCenterFrameworkInitializer() {}
 
     /**
      * Called by {@link SystemServiceRegistry}'s static initializer and registers {@link
@@ -48,7 +47,7 @@ public final class SafetyCenterFrameworkInitializer {
                 Context.SAFETY_CENTER_SERVICE,
                 SafetyCenterManager.class,
                 (context, serviceBinder) ->
-                        new SafetyCenterManager(context,
-                                ISafetyCenterManager.Stub.asInterface(serviceBinder)));
+                        new SafetyCenterManager(
+                                context, ISafetyCenterManager.Stub.asInterface(serviceBinder)));
     }
 }

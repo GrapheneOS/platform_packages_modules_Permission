@@ -31,7 +31,7 @@ import kotlinx.coroutines.Job
  * Packages that are the installer of record for some package on the device.
  */
 @RequiresApi(Build.VERSION_CODES.S)
-class InstallerPackagesLiveData(val user: UserHandle)
+class InstallerPackagesLiveData(private val user: UserHandle)
     : SmartAsyncMediatorLiveData<Set<String>>() {
 
     init {
