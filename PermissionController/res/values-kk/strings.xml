@@ -122,7 +122,7 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"Белгісіз"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Құпиялылық тақтасы"</string>
     <string name="auto_permission_usage_summary" msgid="7335667266743337075">"Қандай қолданбалар рұқсаттарды пайдаланғанын көріңіз."</string>
-    <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> деректерінің пайдаланылуы"</string>
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> рұқсатының пайдаланылуы"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Басқа рұқсаттарды көру"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> және тағы <xliff:g id="NUM">%3$s</xliff:g>"</string>
@@ -473,8 +473,7 @@
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына негізгі физиологиялық көрсеткіштерді көрсететін сенсорлық деректерді пайдалануға рұқсат берілсін бе?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Қолданбаны пайдаланбасаңыз да, ол әрдайым тіршілік көрсеткіштері туралы датчик дерегін пайдалануға рұқсат сұрайды. Мұны өзгерту үшін "<annotation id="link">"параметрлерге өтіңіз."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына тіршілік көрсеткіштеріне қатысты датчик деректерін пайдалануға рұқсат берілсін бе?"</string>
-    <!-- no translation found for permgroupbackgroundrequestdetail_sensors (7726767635834043501) -->
-    <skip />
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Бұл қолданбаға кез келген уақытта (ол пайдаланылмаған кезде де) дене датчигінен алынған деректі пайдалануға рұқсат беру үшін "<annotation id="link">"параметрлерге өтіңіз."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Жұмыс кезінде &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасы дене датчигінен алынған деректі одан әрі пайдалана берсін бе?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасы хабарландыру жіберсін бе?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасы хабарландыру жібере берсін бе?"</string>

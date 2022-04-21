@@ -160,7 +160,7 @@
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Uso autorizzazioni nell\'ultimo minuto"</string>
     <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"Autorizzazione non utilizzata nelle ultime 24 ore"</string>
     <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"Autorizzazione non utilizzata negli ultimi 7 giorni"</string>
-    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Utilizzata da 1 app}other{Utilizzata da # app}}"</string>
+    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Autorizzazione usata da 1 app}other{Autorizzazioni usate da # app}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Mostra tutto nella Dashboard"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrata per: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Rimuovi filtro"</string>
@@ -436,22 +436,22 @@
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Mostra l\'icona nella barra di stato quando viene usato il microfono per attivare l\'assistente vocale"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere alle foto e ai contenuti multimediali sul tuo dispositivo?"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere ai tuoi contatti?"</string>
-    <string name="permgrouprequest_location" msgid="6990232580121067883">"Consentire a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere alla posizione di questo dispositivo?"</string>
+    <string name="permgrouprequest_location" msgid="6990232580121067883">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere alla posizione di questo dispositivo?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"L\'app avrà accesso alla posizione soltanto quando la usi"</string>
-    <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"Consentire a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere alla posizione di questo dispositivo?"</string>
+    <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere alla posizione di questo dispositivo?"</string>
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"Questa app potrebbe voler accedere sempre alla tua posizione, anche quando non la usi. "<annotation id="link">"Consenti l\'accesso nelle impostazioni"</annotation>"."</string>
     <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"Vuoi cambiare l\'accesso alla posizione per l\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Questa app vorrebbe accedere sempre alla tua posizione, anche quando non la usi. "<annotation id="link">"Consenti l\'accesso nelle impostazioni"</annotation>"."</string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Consentire a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di trovare e connettersi a dispositivi vicini, nonché stabilirne la posizione relativa?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Consentire a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di trovare e connettersi a dispositivi vicini, nonché stabilirne la posizione relativa? "<annotation id="link">"Consenti nelle impostazioni."</annotation></string>
-    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Modificare l\'accesso alla posizione di <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> da Approssimativa a Esatta?"</string>
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Modificare l\'accesso alla posizione di <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> da approssimativa a esatta?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Consentire a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere alla posizione approssimativa di questo dispositivo?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Esatta"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Approssimativa"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere al tuo calendario?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di inviare e visualizzare SMS?"</string>
     <string name="permgrouprequest_storage" msgid="7426990523173124539">"Vuoi consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere a &lt;b&gt;file e documenti&lt;/b&gt; sul dispositivo?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"Vuoi consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere a &lt;b&gt;foto, video, musica e audio&lt;/b&gt; sul dispositivo?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere a &lt;b&gt;foto, video, musica e audio&lt;/b&gt; sul dispositivo?"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"Vuoi consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere a &lt;b&gt;foto, video, musica, audio e altri file&lt;/b&gt; sul dispositivo?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"Vuoi consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere a musica e altri file audio su questo dispositivo?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"Vuoi consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere a foto e video di questo dispositivo?"</string>
@@ -475,7 +475,7 @@
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere ai dati dei sensori relativi ai parametri vitali?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Per consentire a questa app di accedere sempre ai dati dei sensori del corpo, anche quando non la usi, "<annotation id="link">"vai alle impostazioni"</annotation>"."</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Continuare a consentire a &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di accedere ai dati dei sensori del corpo mentre l\'app è in uso?"</string>
-    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Vuoi consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di inviarti notifiche?"</string>
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di inviarti notifiche?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Vuoi consentire all\'app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; di continuare a inviarti notifiche?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Autorizzazioni controllate"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"È possibile accedere alla posizione"</string>
