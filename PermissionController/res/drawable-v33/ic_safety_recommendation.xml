@@ -21,5 +21,5 @@
     android:viewportHeight="24">
     <path
         android:pathData="M10,0C4.4772,0 0,4.4772 0,10s4.4772,10 10,10s10,-4.4772 10,-10S15.5228,0 10,0zM11,15H9v-2h2V15zM11,11H9V5h2V11z"
-        android:fillColor="@color/safety_center_recommend" />
+        android:fillColor="?attr/colorScIconRecommend" />
 </vector>
