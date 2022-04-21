@@ -489,7 +489,7 @@
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"Rodyti padėjėjo aktyviklio aptikimą"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"Rodyti piktogramą būsenos juostoje, kai naudojant mikrofoną aktyvinama pagalba balsu"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"Suteikti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; galimybę pasiekti įrenginio nuotraukas ir mediją?"</string>
-    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Suteikti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; galimybę pasiekti kontaktus?"</string>
+    <string name="permgrouprequest_contacts" msgid="8391550064551053695">"Leisti &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pasiekti kontaktus?"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"Leisti programai &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pasiekti įrenginio vietovę?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"Programa galės pasiekti vietovę, tik kai ją naudosite"</string>
     <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"Leisti programai &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pasiekti įrenginio vietovę?"</string>

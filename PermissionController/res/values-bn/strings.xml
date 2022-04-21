@@ -460,7 +460,7 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"এই অ্যাপটি সবসময় আপনার লোকেশন অ্যাক্সেস করতে চায়, এমনকি আপনার অ্যাপ চালু না থাকলেও। "<annotation id="link">"সেটিংস বিকল্প থেকে অনুমতি দিন।"</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"কাছাকাছি ডিভাইস খুঁজে দেখতে, কানেক্ট করতে এবং সেটির আপেক্ষিক অবস্থান নির্ধারণ করতে &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপকে অনুমতি দেবেন?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"কাছাকাছি ডিভাইস খুঁজে দেখতে, কানেক্ট করতে এবং সেটির আপেক্ষিক অবস্থান নির্ধারণ করতে &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; অ্যাপকে অনুমতি দেবেন? "<annotation id="link">"সেটিংস থেকে অনুমতি দিন।"</annotation></string>
-    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> অ্যাপের লোকেশন অ্যাক্সেস, আনুমানিক থেকে সুনির্দিষ্ট লোকেশনে পরিবর্তন করতে চান?"</string>
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"<xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g>-এ লোকেশন অ্যাক্সেস, আনুমানিক থেকে সুনির্দিষ্ট লোকেশনে পরিবর্তন করতে চান?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;-কে এই ডিভাইসের নিকটবর্তী লোকেশন অ্যাক্সেস করতে দেবেন?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"নির্ভুল"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"নিকটবর্তী"</string>

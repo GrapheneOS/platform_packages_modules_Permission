@@ -460,7 +460,7 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Ky aplikacion dëshiron të ketë qasje në vendndodhjen tënde gjatë gjithë kohës, edhe kur nuk po e përdor aplikacionin. "<annotation id="link">"Lejoje te cilësimet"</annotation>"."</string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Të lejohet &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të gjejë, lidhet dhe përcaktojë pozicionin relativ të pajisjeve në afërsi?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Të lejohet &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të gjejë, lidhet dhe përcaktojë pozicionin relativ të pajisjeve në afërsi? "<annotation id="link">"Lejoje te cilësimet."</annotation></string>
-    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Të ndryshohet qasja e <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> te vendndodhja nga \"e përafërt në \"e saktë\"?"</string>
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Të ndryshohet qasja që ka <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> te vendndodhja nga \"e përafërt\" në \"e saktë\"?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Të lejohet që &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; të ketë qasje te vendndodhja e përafërt e kësaj pajisjeje?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"E saktë"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"E përafërt"</string>

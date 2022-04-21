@@ -176,8 +176,8 @@
     </plurals>
     <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Չի օգտագործվել վերջին 24 ժամվա ընթացքում"</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
-      <item quantity="one">Օգտագործվել է <xliff:g id="NUMBER">%1$d</xliff:g> հավելվածի կողմից</item>
-      <item quantity="other">Օգտագործվել է <xliff:g id="NUMBER">%1$d</xliff:g> հավելվածի կողմից</item>
+      <item quantity="one">Օգտագործվում է <xliff:g id="NUMBER">%1$d</xliff:g> հավելվածի կողմից</item>
+      <item quantity="other">Օգտագործվում է <xliff:g id="NUMBER">%1$d</xliff:g> հավելվածի կողմից</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Դիտել բոլորը կառավարման վահանակում"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Զտիչ՝ <xliff:g id="PERM">%1$s</xliff:g>"</string>

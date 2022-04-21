@@ -42,7 +42,7 @@
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"ခွင့်ပြုရန်"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"အမြဲ ခွင့်ပြုရန်"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"အက်ပ်ကို သုံးနေစဉ်"</string>
-    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"နေရာအတိအကျသို့ ပြောင်းခြင်း"</string>
+    <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"နေရာအတိအကျသို့ ပြောင်းရန်"</string>
     <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"တည်နေရာခန့်မှန်းခြေကို ဆက်ထားပါ"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"ဤတစ်ကြိမ်သာ"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"အမြဲ ခွင့်ပြုရန်"</string>
@@ -177,7 +177,7 @@
     <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"ပြီးခဲ့သော ၂၄ နာရီအတွင်း အသုံးမပြုပါ"</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
       <item quantity="other">အက်ပ် <xliff:g id="NUMBER">%1$d</xliff:g> ခုက အသုံးပြုထားသည်</item>
-      <item quantity="one">အက်ပ် 1 ခုက အသုံးပြုထားသည်</item>
+      <item quantity="one">အက်ပ် ၁ ခုက အသုံးပြုထားသည်</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"အားလုံးကို \'ဒက်ရှ်ဘုတ်\' တွင်ကြည့်ရန်"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"စစ်ထုတ်စနစ်- <xliff:g id="PERM">%1$s</xliff:g>"</string>

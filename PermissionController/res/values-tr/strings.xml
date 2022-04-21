@@ -493,7 +493,7 @@
     <string name="additional_permissions_description" msgid="2186611950890732112">"Uygulamalara tanımlanan izinler."</string>
     <string name="privdash_label_camera" msgid="1426440033626198096">"Kamera"</string>
     <string name="privdash_label_microphone" msgid="8415035835803511693">"Mikrofon"</string>
-    <string name="privdash_label_location" msgid="6882400763866489291">"Yer"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"Konum"</string>
     <string name="privdash_label_other" msgid="3710394147423236033">"Diğer"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"Yok"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Son\n24 saat"</string>
