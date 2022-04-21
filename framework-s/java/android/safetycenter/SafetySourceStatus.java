@@ -68,16 +68,11 @@ public final class SafetySourceStatus implements Parcelable {
                 }
             };
 
-    @NonNull
-    private final CharSequence mTitle;
-    @NonNull
-    private final CharSequence mSummary;
-    @SafetySourceData.SeverityLevel
-    private final int mSeverityLevel;
-    @Nullable
-    private final PendingIntent mPendingIntent;
-    @Nullable
-    private final IconAction mIconAction;
+    @NonNull private final CharSequence mTitle;
+    @NonNull private final CharSequence mSummary;
+    @SafetySourceData.SeverityLevel private final int mSeverityLevel;
+    @Nullable private final PendingIntent mPendingIntent;
+    @Nullable private final IconAction mIconAction;
     private final boolean mEnabled;
 
     private SafetySourceStatus(
@@ -181,8 +176,8 @@ public final class SafetySourceStatus implements Parcelable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(mTitle, mSummary, mSeverityLevel, mPendingIntent, mIconAction,
-                mEnabled);
+        return Objects.hash(
+                mTitle, mSummary, mSeverityLevel, mPendingIntent, mIconAction, mEnabled);
     }
 
     @Override
@@ -249,17 +244,14 @@ public final class SafetySourceStatus implements Parcelable {
         @IntDef(
                 prefix = {"ICON_TYPE_"},
                 value = {
-                        ICON_TYPE_GEAR,
-                        ICON_TYPE_INFO,
+                    ICON_TYPE_GEAR,
+                    ICON_TYPE_INFO,
                 })
         @Retention(RetentionPolicy.SOURCE)
-        public @interface IconType {
-        }
+        public @interface IconType {}
 
-        @IconType
-        private final int mIconType;
-        @NonNull
-        private final PendingIntent mPendingIntent;
+        @IconType private final int mIconType;
+        @NonNull private final PendingIntent mPendingIntent;
 
         public IconAction(@IconType int iconType, @NonNull PendingIntent pendingIntent) {
             this.mIconType = validateIconType(iconType);
@@ -335,17 +327,12 @@ public final class SafetySourceStatus implements Parcelable {
     /** Builder class for {@link SafetySourceStatus}. */
     public static final class Builder {
 
-        @NonNull
-        private final CharSequence mTitle;
-        @NonNull
-        private final CharSequence mSummary;
-        @SafetySourceData.SeverityLevel
-        private final int mSeverityLevel;
+        @NonNull private final CharSequence mTitle;
+        @NonNull private final CharSequence mSummary;
+        @SafetySourceData.SeverityLevel private final int mSeverityLevel;
 
-        @Nullable
-        private PendingIntent mPendingIntent;
-        @Nullable
-        private IconAction mIconAction;
+        @Nullable private PendingIntent mPendingIntent;
+        @Nullable private IconAction mIconAction;
         private boolean mEnabled = true;
 
         /** Creates a {@link Builder} for a {@link SafetySourceStatus}. */

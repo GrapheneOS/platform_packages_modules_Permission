@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.hibernation
+package com.android.permissioncontroller.hibernation.v31
 
 import android.app.usage.UsageStatsManager
 import android.apphibernation.AppHibernationManager
@@ -23,16 +23,18 @@ import android.content.Context.APP_HIBERNATION_SERVICE
 import android.content.Context.USAGE_STATS_SERVICE
 import android.os.Build
 import android.os.UserHandle
+import androidx.annotation.RequiresApi
 import com.android.permissioncontroller.DumpableLog
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 
 /**
  * Hibernation controller that handles modifying hibernation state.
  */
+@RequiresApi(Build.VERSION_CODES.S)
 class HibernationController(
-    val context: Context,
-    val unusedThreshold: Long,
-    val targetsPreS: Boolean
+    private val context: Context,
+    private val unusedThreshold: Long,
+    private val targetsPreS: Boolean
 ) {
 
     companion object {

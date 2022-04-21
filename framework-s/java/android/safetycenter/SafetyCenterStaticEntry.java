@@ -62,12 +62,9 @@ public final class SafetyCenterStaticEntry implements Parcelable {
                 }
             };
 
-    @NonNull
-    private final CharSequence mTitle;
-    @Nullable
-    private final CharSequence mSummary;
-    @Nullable
-    private final PendingIntent mPendingIntent;
+    @NonNull private final CharSequence mTitle;
+    @Nullable private final CharSequence mSummary;
+    @Nullable private final PendingIntent mPendingIntent;
 
     private SafetyCenterStaticEntry(
             @NonNull CharSequence title,
@@ -144,12 +141,9 @@ public final class SafetyCenterStaticEntry implements Parcelable {
     /** Builder class for {@link SafetyCenterStaticEntry}. */
     public static final class Builder {
 
-        @NonNull
-        private CharSequence mTitle;
-        @Nullable
-        private CharSequence mSummary;
-        @Nullable
-        private PendingIntent mPendingIntent;
+        @NonNull private CharSequence mTitle;
+        @Nullable private CharSequence mSummary;
+        @Nullable private PendingIntent mPendingIntent;
 
         /**
          * Creates a {@link Builder} for a {@link SafetyCenterEntry}.
