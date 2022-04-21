@@ -126,8 +126,8 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Ver otros permisos"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>, <xliff:g id="NUM">%3$s</xliff:g> más"</string>
-    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"Cronología de cuándo han usado las aplicaciones tu <xliff:g id="PERMGROUP">%1$s</xliff:g> en las últimas 24 horas"</string>
-    <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Cronología de cuándo han usado las aplicaciones tu <xliff:g id="PERMGROUP">%1$s</xliff:g> en los últimos 7 días"</string>
+    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"Cronología de cuándo han usado las aplicaciones el permiso <xliff:g id="PERMGROUP">%1$s</xliff:g> en las últimas 24 horas"</string>
+    <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Cronología de cuándo han usado las aplicaciones el permiso <xliff:g id="PERMGROUP">%1$s</xliff:g> en los últimos 7 días"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Cuándo ha utilizado esta aplicación tu permiso de <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Más información"</string>
     <string name="manage_permission_summary" msgid="4117555482684114317">"Controla el acceso de la aplicación a tu <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
@@ -199,7 +199,7 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Configuración de aplicaciones sin usar"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Quitar permisos si la aplicación no se usa"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Quitar permisos y liberar espacio"</string>
-    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Pausar actividad de la app si no se usa"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Pausar actividad de la aplicación si no se usa"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"Quita permisos, elimina archivos temporales y detiene las notificaciones"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Para proteger tus datos, se quitarán los permisos de esta aplicación si no la usas durante unos meses."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Para proteger tus datos, si la aplicación no se ha utilizado durante unos meses, se quitarán los siguientes permisos: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
@@ -300,22 +300,22 @@
     <string name="app_perms_24h_access" msgid="99069906850627181">"Último acceso: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Último acceso: ayer a las <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_7d_access" msgid="4945055548894683751">"Último acceso el <xliff:g id="TIME_DATE_0">%1$s</xliff:g> a las <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
-    <string name="app_perms_content_provider_24h" msgid="1055526027667508972">"Se ha accedido durante las últimas 24 horas"</string>
+    <string name="app_perms_content_provider_24h" msgid="1055526027667508972">"Acceso durante las últimas 24 horas"</string>
     <string name="app_perms_content_provider_7d" msgid="3215454898257814868">"Acceso durante los últimos 7 días"</string>
     <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Último acceso: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Permitido siempre"</string>
     <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Último acceso: ayer a las <xliff:g id="TIME_DATE">%1$s</xliff:g> • Permitido siempre"</string>
     <string name="app_perms_7d_access_background" msgid="408099213372185627">"Último acceso el <xliff:g id="TIME_DATE_0">%1$s</xliff:g> a las <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Permitido siempre"</string>
-    <string name="app_perms_content_provider_24h_background" msgid="3825902995186961496">"Se ha accedido durante las últimas 24 horas • Permitido siempre"</string>
+    <string name="app_perms_content_provider_24h_background" msgid="3825902995186961496">"Acceso durante las últimas 24 horas • Permitido siempre"</string>
     <string name="app_perms_content_provider_7d_background" msgid="4818839672116463542">"Acceso durante los últimos 7 días • Permitido siempre"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Último acceso: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Contenido multimedia"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Último acceso: ayer a las <xliff:g id="TIME_DATE">%1$s</xliff:g> • Contenido multimedia"</string>
     <string name="app_perms_7d_access_media_only" msgid="1031096653668235200">"Último acceso el <xliff:g id="TIME_DATE_0">%1$s</xliff:g> a las <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Contenido multimedia"</string>
-    <string name="app_perms_content_provider_24h_media_only" msgid="7797963000596179491">"Se ha accedido durante las últimas 24 horas • Contenido multimedia"</string>
+    <string name="app_perms_content_provider_24h_media_only" msgid="7797963000596179491">"Acceso durante las últimas 24 horas • Contenido multimedia"</string>
     <string name="app_perms_content_provider_7d_media_only" msgid="8446239884570262243">"Acceso durante los últimos 7 días • Contenido multimedia"</string>
     <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"Último acceso: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Todos los archivos"</string>
     <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"Último acceso: ayer a las <xliff:g id="TIME_DATE">%1$s</xliff:g> • Todos los archivos"</string>
     <string name="app_perms_7d_access_all_files" msgid="8246193786397635824">"Último acceso el <xliff:g id="TIME_DATE_0">%1$s</xliff:g> a las <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Todos los archivos"</string>
-    <string name="app_perms_content_provider_24h_all_files" msgid="573104317727770850">"Se ha accedido durante las últimas 24 horas • Todos los archivos"</string>
+    <string name="app_perms_content_provider_24h_all_files" msgid="573104317727770850">"Acceso durante las últimas 24 horas • Todos los archivos"</string>
     <string name="app_perms_content_provider_7d_all_files" msgid="7962416229708835558">"Acceso durante los últimos 7 días • Todos los archivos"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"No se ha concedido ningún permiso"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"No se ha denegado ningún permiso"</string>
@@ -473,8 +473,7 @@
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a los datos del sensor sobre tus constantes vitales?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Esta aplicación quiere acceder a los datos de sensores de tus constantes vitales todo el tiempo, incluso cuando no la uses. Para hacer este cambio, "<annotation id="link">"ve a los ajustes"</annotation>"."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a los datos de sensores de tus constantes vitales?"</string>
-    <!-- no translation found for permgroupbackgroundrequestdetail_sensors (7726767635834043501) -->
-    <skip />
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Para permitir que esta aplicación acceda a datos de sensores corporales todo el tiempo, incluso cuando no la uses, "<annotation id="link">"ve a los ajustes"</annotation>"."</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a los datos de los sensores corporales mientras se usa?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; te envíe notificaciones?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; siga enviándote notificaciones?"</string>

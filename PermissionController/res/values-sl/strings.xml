@@ -45,7 +45,7 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Vedno dovoli"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Med uporabo aplikacije"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Spremeni na natančno lokacijo"</string>
-    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Ohranitev približne lokacije"</string>
+    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Ohrani približno lokacijo"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Samo tokrat"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Vedno dovoli"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Dovoli upravljanje vseh datotek"</string>
@@ -158,9 +158,9 @@
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Uporaba dovoljenj v zadnji uri"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Uporaba dovoljenj v zadnjih 15 minutah"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Uporaba dovoljenj v zadnji minuti"</string>
-    <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"Brez uporabe v zadnjih 24 urah."</string>
-    <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"Brez uporabe v zadnjih 7 dneh."</string>
-    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Uporablja ga 1 aplikacija}one{Uporablja ga # aplikacija}two{Uporabljata ga # aplikaciji}few{Uporabljajo ga # aplikacije}other{Uporablja ga # aplikacij}}"</string>
+    <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"Brez uporabe v zadnjih 24 urah"</string>
+    <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"Brez uporabe v zadnjih 7 dneh"</string>
+    <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Uporablja 1 aplikacija}one{Uporablja # aplikacija}two{Uporabljata # aplikaciji}few{Uporabljajo # aplikacije}other{Uporablja # aplikacij}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Prikaži vse na nadzorni plošči"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrirano po: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_usage_remove_filter" msgid="2926157607436428207">"Odstrani filter"</string>
@@ -451,7 +451,7 @@
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Dovolite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dostop do koledarja?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Dovolite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pošiljanje in ogled sporočil SMS?"</string>
     <string name="permgrouprequest_storage" msgid="7426990523173124539">"Želite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dovoliti, da dostopa do &lt;b&gt;datotek in dokumentov&lt;/b&gt; v napravi?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"Želite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dovoliti, da dostopa do &lt;b&gt;fotografij, videoposnetkov, glasbe in zvočnih datotek&lt;/b&gt; v napravi?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"Dovolite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dostop do &lt;b&gt;fotografij, videoposnetkov, glasbe in zvočnih datotek&lt;/b&gt; v napravi?"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"Želite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dovoliti, da dostopa do &lt;b&gt;fotografij, videoposnetkov, glasbe ter zvočnih in drugih datotek&lt;/b&gt; v napravi?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"Želite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dovoliti, da dostopa do glasbe in drugih zvočnih datotek v tej napravi?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"Želite aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; dovoliti, da dostopa do fotografij in videoposnetkov v tej napravi?"</string>
