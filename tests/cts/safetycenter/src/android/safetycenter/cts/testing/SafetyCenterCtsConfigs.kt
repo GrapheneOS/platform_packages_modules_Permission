@@ -23,8 +23,8 @@ import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC
 import android.safetycenter.config.SafetySourcesGroup
 
 /**
- * A class that provides [SafetyCenterConfig] objects and associated constants to facilitate
- * setting up safety sources for testing.
+ * A class that provides [SafetyCenterConfig] objects and associated constants to facilitate setting
+ * up safety sources for testing.
  */
 object SafetyCenterCtsConfigs {
     private const val CTS_PACKAGE_NAME = "android.safetycenter.cts"
@@ -95,12 +95,10 @@ object SafetyCenterCtsConfigs {
      * A simple [SafetyCenterConfig] for CTS tests with a single source of id
      * [CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID].
      */
-    val CTS_SINGLE_SOURCE_CONFIG = SafetyCenterConfig.Builder()
-            .addSafetySourcesGroup(CTS_SINGLE_SOURCE_GROUP)
-            .build()
+    val CTS_SINGLE_SOURCE_CONFIG =
+        SafetyCenterConfig.Builder().addSafetySourcesGroup(CTS_SINGLE_SOURCE_GROUP).build()
 
     /** A simple [SafetyCenterConfig] for CTS tests with multiple sources. */
-    val CTS_MULTIPLE_SOURCES_CONFIG = SafetyCenterConfig.Builder()
-            .addSafetySourcesGroup(CTS_MULTIPLE_SOURCES_GROUP)
-            .build()
+    val CTS_MULTIPLE_SOURCES_CONFIG =
+        SafetyCenterConfig.Builder().addSafetySourcesGroup(CTS_MULTIPLE_SOURCES_GROUP).build()
 }

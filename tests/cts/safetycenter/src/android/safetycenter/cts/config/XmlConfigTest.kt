@@ -34,9 +34,9 @@ class XmlConfigTest {
     @Test
     fun safetyCenterConfigResource_validConfig() {
         // Assert that the parser validates the Safety Center config without throwing any exception
-        assertThat(SafetyCenterConfigParser.parseXmlResource(
-            safetyCenterContext.safetyCenterConfig!!,
-            safetyCenterContext.resources!!
-        )).isNotNull()
+        assertThat(
+                SafetyCenterConfigParser.parseXmlResource(
+                    safetyCenterContext.safetyCenterConfig!!, safetyCenterContext.resources!!))
+            .isNotNull()
     }
 }
