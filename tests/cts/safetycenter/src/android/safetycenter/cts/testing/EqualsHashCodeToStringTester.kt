@@ -55,30 +55,32 @@ class EqualsHashCodeToStringTester(private val hashCodeCanCollide: Boolean = fal
          * An [Equivalence] that considers two instances of a class equivalent iff [Object.toString]
          * return the same value.
          */
-        private val TO_STRING_EQUIVALENCE = object : Equivalence<Any>() {
+        private val TO_STRING_EQUIVALENCE =
+            object : Equivalence<Any>() {
 
-            override fun doEquivalent(a: Any, b: Any): Boolean {
-                return a.toString() == b.toString()
-            }
+                override fun doEquivalent(a: Any, b: Any): Boolean {
+                    return a.toString() == b.toString()
+                }
 
-            override fun doHash(o: Any): Int {
-                return o.toString().hashCode()
+                override fun doHash(o: Any): Int {
+                    return o.toString().hashCode()
+                }
             }
-        }
 
         /**
          * An [Equivalence] that considers two instances of a class equivalent iff [Object.hashCode]
          * return the same value.
          */
-        private val HASH_CODE_EQUIVALENCE = object : Equivalence<Any>() {
+        private val HASH_CODE_EQUIVALENCE =
+            object : Equivalence<Any>() {
 
-            override fun doEquivalent(a: Any, b: Any): Boolean {
-                return a.hashCode() == b.hashCode()
-            }
+                override fun doEquivalent(a: Any, b: Any): Boolean {
+                    return a.hashCode() == b.hashCode()
+                }
 
-            override fun doHash(o: Any): Int {
-                return o.hashCode()
+                override fun doHash(o: Any): Int {
+                    return o.hashCode()
+                }
             }
-        }
     }
 }
