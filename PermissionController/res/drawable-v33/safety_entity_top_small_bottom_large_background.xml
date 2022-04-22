@@ -24,7 +24,7 @@
           android:bottomRightRadius="28dp"
           android:topLeftRadius="4dp"
           android:topRightRadius="4dp" />
-      <solid android:color="@color/safety_center_card_background" />
+      <solid android:color="?attr/colorSurface" />
     </shape>
   </item>
 

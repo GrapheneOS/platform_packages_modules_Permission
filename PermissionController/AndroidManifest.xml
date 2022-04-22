@@ -241,7 +241,7 @@
         <activity android:name="com.android.permissioncontroller.permission.ui.SafetyCenterQsActivity"
                   android:excludeFromRecents="true"
                   android:exported="true"
-                  android:theme="@style/SafetyCenter"
+                  android:theme="@style/Theme.SafetyCenterQs"
                   android:permission="android.permission.REVOKE_RUNTIME_PERMISSIONS">
             <intent-filter android:priority="1">
                 <action android:name="android.intent.action.VIEW_SAFETY_CENTER_QS" />
@@ -463,7 +463,7 @@
         <activity
             android:name="com.android.permissioncontroller.safetycenter.ui.SafetyCenterActivity"
             android:exported="true"
-            android:theme="@style/Theme.PermissionController.Settings.FilterTouches">
+            android:theme="@style/Theme.SafetyCenter">
             <intent-filter android:priority="1">
                 <action android:name="android.intent.action.SAFETY_CENTER"/>
                 <category android:name="android.intent.category.DEFAULT"/>

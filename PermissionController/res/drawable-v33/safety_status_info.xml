@@ -21,9 +21,9 @@
     android:height="56dp">
     <path
         android:pathData="M0 112C0 50.1441 50.1441 0 112 0C173.856 0 224 50.1441 224 112C224 173.856 173.856 224 112 224C50.1441 224 0 173.856 0 112Z"
-        android:fillColor="@color/safety_center_status_background_info" />
+        android:fillColor="?attr/colorScStatusBackgroundInfo" />
     <path
         android:pathData="M56 62.5333L112 42L168 63.4667V105.467C168 123.2 162.4 139.067 152.133 154C141.867 168.933 127.867 178.267 112 182C96.1333 178.267 82.1333 168.933 71.8666 154C61.6 139.067 56 123.2 56 105.467V62.5333ZM80.2637 110.058L104.53 135.258L143.73 95.1244L134.397 85.791L104.53 114.724L89.597 100.724L80.2637 110.058Z"
         android:fillType="evenOdd"
-        android:fillColor="@color/safety_center_status_info" />
+        android:fillColor="?attr/colorScStatusInfo" />
 </vector>
