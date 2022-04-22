@@ -276,10 +276,9 @@ public final class SafetyCenterService extends SystemService {
 
             List<Broadcast> broadcasts;
             String refreshBroadcastId;
+
             synchronized (mApiLock) {
                 broadcasts = mSafetyCenterConfigReader.getBroadcasts();
-                // TODO(b/229060064): Check if a refresh is currently in progress, and only start a
-                //  new refresh if it should be replaced.
                 refreshBroadcastId =
                         mSafetyCenterRefreshTracker.reportRefreshInProgress(
                                 refreshReason, userProfileGroup);
@@ -287,6 +286,11 @@ public final class SafetyCenterService extends SystemService {
                 RefreshTimeout refreshTimeout =
                         new RefreshTimeout(refreshBroadcastId, userProfileGroup);
                 mSafetyCenterTimeouts.add(refreshTimeout, REFRESH_TIMEOUT);
+
+                mSafetyCenterListeners.deliverUpdateForUserProfileGroup(
+                        userProfileGroup,
+                        mSafetyCenterDataTracker.getSafetyCenterData(userProfileGroup),
+                        null);
             }
 
             mSafetyCenterBroadcastDispatcher.sendRefreshSafetySources(
@@ -709,6 +713,10 @@ public final class SafetyCenterService extends SystemService {
                         // TODO(b/229080761): Implement proper error message.
                         new SafetyCenterErrorDetails("Refresh timeout"));
             }
+
+            Log.v(
+                    TAG,
+                    "Cleared refresh with broadcastId:" + mRefreshBroadcastId + " after a timeout");
         }
     }
 

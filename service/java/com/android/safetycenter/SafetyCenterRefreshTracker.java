@@ -17,11 +17,14 @@
 package com.android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
+import static android.safetycenter.SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.safetycenter.SafetyCenterManager.RefreshReason;
+import android.safetycenter.SafetyCenterStatus;
+import android.safetycenter.SafetyCenterStatus.RefreshStatus;
 import android.util.ArraySet;
 import android.util.Log;
 
@@ -75,7 +78,14 @@ final class SafetyCenterRefreshTracker {
         List<Broadcast> broadcasts = mSafetyCenterConfigReader.getBroadcasts();
         String refreshBroadcastId =
                 Objects.hash(refreshReason, broadcasts, userProfileGroup) + "_" + mRefreshCounter++;
-        mRefreshInProgress = new RefreshInProgress(refreshBroadcastId);
+        Log.v(
+                TAG,
+                "Starting a new refresh with refreshReason:"
+                        + refreshReason
+                        + " refreshBroadcastId:"
+                        + refreshBroadcastId);
+
+        mRefreshInProgress = new RefreshInProgress(refreshBroadcastId, refreshReason);
 
         for (int i = 0; i < broadcasts.size(); i++) {
             Broadcast broadcast = broadcasts.get(i);
@@ -102,6 +112,19 @@ final class SafetyCenterRefreshTracker {
         return refreshBroadcastId;
     }
 
+    /** Returns the current refresh status. */
+    @RefreshStatus
+    int getRefreshStatus() {
+        if (mRefreshInProgress == null) {
+            return SafetyCenterStatus.REFRESH_STATUS_NONE;
+        }
+
+        if (mRefreshInProgress.getReason() == REFRESH_REASON_RESCAN_BUTTON_CLICK) {
+            return SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS;
+        }
+        return SafetyCenterStatus.REFRESH_STATUS_DATA_FETCH_IN_PROGRESS;
+    }
+
     /**
      * Reports that a source has completed its refresh, and returns whether this caused the refresh
      * to complete.
@@ -116,6 +139,7 @@ final class SafetyCenterRefreshTracker {
         }
 
         mRefreshInProgress.markSourceRefreshAsComplete(SafetySourceKey.of(sourceId, userId));
+
         if (!mRefreshInProgress.isComplete()) {
             return false;
         }
@@ -134,7 +158,10 @@ final class SafetyCenterRefreshTracker {
     // TODO(b/229188900): Should we stop any scheduled broadcasts from going out?
     void clearRefresh() {
         if (mRefreshInProgress != null) {
+            Log.v(TAG, "Clearing refresh with refreshBroadcastId:" + mRefreshInProgress.getId());
             mRefreshInProgress = null;
+        } else {
+            Log.v(TAG, "Clear refresh called but no refresh in progress");
         }
     }
 
@@ -151,6 +178,7 @@ final class SafetyCenterRefreshTracker {
             return false;
         }
 
+        Log.v(TAG, "Clearing refresh with refreshBroadcastId:" + refreshBroadcastId);
         mRefreshInProgress = null;
         return true;
     }
@@ -173,12 +201,14 @@ final class SafetyCenterRefreshTracker {
     /** Class representing the state of a refresh in progress. */
     private static final class RefreshInProgress {
         @NonNull private final String mId;
+        @RefreshReason private final int mReason;
 
         @NonNull private final ArraySet<SafetySourceKey> mSourceRefreshInFlight = new ArraySet<>();
 
         /** Creates a {@link RefreshInProgress}. */
-        RefreshInProgress(@NonNull String id) {
+        RefreshInProgress(@NonNull String id, @RefreshReason int reason) {
             mId = id;
+            mReason = reason;
         }
 
         /**
@@ -191,12 +221,40 @@ final class SafetyCenterRefreshTracker {
             return mId;
         }
 
+        /** Returns the {@link RefreshReason} that was given for this {@link RefreshInProgress}. */
+        @RefreshReason
+        int getReason() {
+            return mReason;
+        }
+
         private void addSourceRefreshInFlight(@NonNull SafetySourceKey safetySourceKey) {
             mSourceRefreshInFlight.add(safetySourceKey);
+            Log.v(
+                    TAG,
+                    "Refresh started for sourceId:"
+                            + safetySourceKey.getSourceId()
+                            + " userId:"
+                            + safetySourceKey.getUserId()
+                            + " with refreshBroadcastId:"
+                            + mId
+                            + ", now "
+                            + mSourceRefreshInFlight.size()
+                            + " in flight.");
         }
 
         private void markSourceRefreshAsComplete(@NonNull SafetySourceKey safetySourceKey) {
             mSourceRefreshInFlight.remove(safetySourceKey);
+            Log.v(
+                    TAG,
+                    "Refresh completed for sourceId:"
+                            + safetySourceKey.getSourceId()
+                            + " userId:"
+                            + safetySourceKey.getUserId()
+                            + " with refreshBroadcastId:"
+                            + mId
+                            + ", "
+                            + mSourceRefreshInFlight.size()
+                            + " still in flight.");
         }
 
         private boolean isComplete() {
