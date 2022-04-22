@@ -399,7 +399,7 @@ final class SafetyCenterDataTracker {
                             TAG,
                             String.format(
                                     "Received safety event of type %d without a refresh broadcast"
-                                        + " id.",
+                                            + " id.",
                                     safetyEvent.getType()));
                     return;
                 }
@@ -414,7 +414,7 @@ final class SafetyCenterDataTracker {
                             TAG,
                             String.format(
                                     "Received safety event of type %d without a safety source issue"
-                                        + " id.",
+                                            + " id.",
                                     safetyEvent.getType()));
                     return;
                 }
@@ -424,7 +424,7 @@ final class SafetyCenterDataTracker {
                             TAG,
                             String.format(
                                     "Received safety event of type %d without a safety source issue"
-                                        + " action id.",
+                                            + " action id.",
                                     safetyEvent.getType()));
                     return;
                 }
