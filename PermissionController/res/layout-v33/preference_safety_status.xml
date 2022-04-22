@@ -31,6 +31,17 @@
         app:layout_constraintStart_toStartOf="parent"
         android:src="@drawable/safety_status_info" />
 
+    <ProgressBar
+        android:id="@+id/rescan_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintTop_toTopOf="@id/status_image"
+        app:layout_constraintBottom_toBottomOf="@id/status_image"
+        app:layout_constraintStart_toStartOf="@id/status_image"
+        app:layout_constraintEnd_toEndOf="@id/status_image"
+        style="?android:attr/progressBarStyle" />
+
     <TextView
         android:id="@+id/status_title"
         android:layout_width="wrap_content"
