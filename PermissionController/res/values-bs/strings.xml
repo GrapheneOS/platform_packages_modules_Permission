@@ -297,22 +297,22 @@
     <string name="permission_subtitle_media_only" msgid="8917869683764720717">"Mediji"</string>
     <string name="permission_subtitle_all_files" msgid="4982613338298067862">"Svi fajlovi"</string>
     <string name="permission_subtitle_background" msgid="8916750995309083180">"Dozvoljeno sve vrijeme"</string>
-    <string name="app_perms_24h_access" msgid="99069906850627181">"Posljednji put je pristupljeno: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
+    <string name="app_perms_24h_access" msgid="99069906850627181">"Posljednji put pristupljeno: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Posljednji put je pristupljeno jučer u <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_7d_access" msgid="4945055548894683751">"Posljednji put je pristupljeno dana <xliff:g id="TIME_DATE_0">%1$s</xliff:g> u <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
     <string name="app_perms_content_provider_24h" msgid="1055526027667508972">"Pristupljeno je u posljednja 24 sata"</string>
     <string name="app_perms_content_provider_7d" msgid="3215454898257814868">"Pristupljeno je u posljednjih 7 dana"</string>
-    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Posljednji put je pristupljeno: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Dozvoljeno sve vrijeme"</string>
+    <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Posljednji put pristupljeno: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Dozvoljeno sve vrijeme"</string>
     <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Posljednji put je pristupljeno jučer u <xliff:g id="TIME_DATE">%1$s</xliff:g> • Dozvoljeno sve vrijeme"</string>
     <string name="app_perms_7d_access_background" msgid="408099213372185627">"Posljednji put je pristupljeno dana <xliff:g id="TIME_DATE_0">%1$s</xliff:g> u <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Dozvoljeno sve vrijeme"</string>
     <string name="app_perms_content_provider_24h_background" msgid="3825902995186961496">"Pristupljeno je u posljednja 24 sata • Dozvoljeno sve vrijeme"</string>
     <string name="app_perms_content_provider_7d_background" msgid="4818839672116463542">"Pristupljeno je u posljednjih 7 dana • Dozvoljeno sve vrijeme"</string>
-    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Posljednji put je pristupljeno: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Medijski fajlovi"</string>
+    <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Posljednji put pristupljeno: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Medijski fajlovi"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Posljednji put je pristupljeno jučer u <xliff:g id="TIME_DATE">%1$s</xliff:g> • Medijski fajlovi"</string>
     <string name="app_perms_7d_access_media_only" msgid="1031096653668235200">"Posljednji put je pristupljeno dana <xliff:g id="TIME_DATE_0">%1$s</xliff:g> u <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Medijski fajlovi"</string>
     <string name="app_perms_content_provider_24h_media_only" msgid="7797963000596179491">"Pristupljeno je u posljednja 24 sata • Medijski fajlovi"</string>
     <string name="app_perms_content_provider_7d_media_only" msgid="8446239884570262243">"Pristupljeno je u posljednjih 7 dana • Medijski fajlovi"</string>
-    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"Posljednji put je pristupljeno: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Svi fajlovi"</string>
+    <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"Posljednji put pristupljeno: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Svi fajlovi"</string>
     <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"Posljednji put je pristupljeno jučer u <xliff:g id="TIME_DATE">%1$s</xliff:g> • Svi fajlovi"</string>
     <string name="app_perms_7d_access_all_files" msgid="8246193786397635824">"Posljednji put je pristupljeno dana <xliff:g id="TIME_DATE_0">%1$s</xliff:g> u <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Svi fajlovi"</string>
     <string name="app_perms_content_provider_24h_all_files" msgid="573104317727770850">"Pristupljeno je u posljednja 24 sata • Svi fajlovi"</string>
@@ -451,8 +451,8 @@
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupi vašem kalendaru?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da šalje i pregleda SMS poruke?"</string>
     <string name="permgrouprequest_storage" msgid="7426990523173124539">"Dozvoliti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa &lt;b&gt;fajlovima i dokumentima&lt;/b&gt; na vašem uređaju?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"Dozvoliti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa &lt;b&gt;slikama, video, muzičkim i audio fajlovima&lt;/b&gt; na vašem uređaju?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"Dozvoliti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa &lt;b&gt;slikama, video, muzičkim, audio i drugim fajlovima&lt;/b&gt; na uređaju?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa &lt;b&gt;slikama, video, muzičkim i audio fajlovima&lt;/b&gt; na uređaju?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da pristupa &lt;b&gt;slikama, video, muzičkim, audio i drugim fajlovima&lt;/b&gt; na uređaju?"</string>
     <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"Dozvoliti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa muzici i drugim audio fajlovima na ovom uređaju?"</string>
     <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"Dozvoliti da &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; pristupa fotografijama i videozapisima na ovom uređaju?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Dozvoliti aplikaciji &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; da snima zvuk?"</string>

@@ -64,7 +64,7 @@
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Bugun}=1{1 kun oldin}other{# kun oldin}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Ilovani faolsizlantirish"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Agar bu ilovani faolsizlantirsangiz, Android va boshqa ilovalar bundan buyon kutilganidek ishlamasligi mumkin. Yodda tuting, agar bu ilova qurilmangizga oldindan oʻrnatilgan boʻlsa, uni oʻchirib tashlash imkonsiz. Faolsizlantirish orqali bu ilova nofaol holatga keladi va qurilmangizda berkitiladi."</string>
-    <string name="app_permission_manager" msgid="3903811137630909550">"Ruxsatlar"</string>
+    <string name="app_permission_manager" msgid="3903811137630909550">"Ruxsatlar boshqaruvi"</string>
     <string name="never_ask_again" msgid="4728762438198560329">"Boshqa so‘ralmasin"</string>
     <string name="no_permissions" msgid="3881676756371148563">"Ruxsat talab qilinmaydi"</string>
     <string name="additional_permissions" msgid="5801285469338873430">"Qo‘shimcha ruxsatlar"</string>
@@ -473,8 +473,7 @@
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun tana holati haqidagi sensor axborotlariga ruxsat berilsinmi?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Bu ilova organizm holati haqidagi sensor maʼlumotlaringizdan doimiy foydalanishga ruxsat olmoqchi. Bu ruxsatni berish uchun "<annotation id="link">"sozlamalarni oching."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; uchun organizm holati haqidagi sensor axborotlariga ruxsat berilsinmi?"</string>
-    <!-- no translation found for permgroupbackgroundrequestdetail_sensors (7726767635834043501) -->
-    <skip />
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Bu ilovaga tanadagi sensor maʼlumotlaridan foydalanishga (hatto ilova yopiqligida ham) doimiy ruxsat berish uchun "<annotation id="link">"sozlamalarni oching."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ilovasining tanadagi sensor maʼlumotlaridan foydalanishiga ruxsat berilsinmi?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ilovasiga sizga bildirishnomalar yuborishi uchun ruxsat berilsinmi?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ilovasining sizga bildirishnomalar yuborishda davom etishiga ruxsat berasizmi?"</string>
