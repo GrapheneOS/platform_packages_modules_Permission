@@ -473,8 +473,7 @@
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને તમારા જીવિત હોવાના મહત્ત્વપૂર્ણ સંકેતો વિશેના સેન્સર ડેટાને ઍક્સેસ કરવાની મંજૂરી આપીએ?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"આ ઍપ તમારા આરોગ્ય વિશે મહત્ત્વપૂર્ણ સંકેતો આપતો સેન્સરનો ડેટા હંમેશાં ઍક્સેસ કરવા માગે છે, તમે ઍપ ન વાપરતા હો ત્યારે પણ. આમાં ફેરફાર કરવા માટે, "<annotation id="link">"સેટિંગ પર જાઓ."</annotation></string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને તમારા જીવિત હોવાના મહત્ત્વપૂર્ણ સંકેતો વિશેનો સેન્સરનો ડેટા ઍક્સેસ કરવાની મંજૂરી આપીએ?"</string>
-    <!-- no translation found for permgroupbackgroundrequestdetail_sensors (7726767635834043501) -->
-    <skip />
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"જ્યારે તમે ઍપનો ઉપયોગ કરી રહ્યાં ન હો, ત્યારે પણ આ ઍપને બૉડી સેન્સરનો ડેટા ઍક્સેસ કરવાની મંજૂરી આપવા માટે, "<annotation id="link">"સેટિંગ પર જાઓ."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ઍપ ઉપયોગમાં હોય ત્યારે &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને બૉડી સેન્સર ડેટા ઍક્સેસ કરવાની મંજૂરી આપવાનું ચાલુ રાખીએ?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"શું &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને તમને નોટિફિકેશન મોકલવાની મંજૂરી આપીએ?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"શું &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને તમને નોટિફિકેશન મોકલવાનું ચાલુ રાખવાની મંજૂરી આપીએ?"</string>

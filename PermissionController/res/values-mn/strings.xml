@@ -227,7 +227,7 @@
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Энэ зөвшөөрөлтэй аппууд таны алхалт, дугуй унах, жолоодлого, алхмын тоо болон бусад биеийн дасгал хөдөлгөөнд хандах боломжтой"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Энэ зөвшөөрөлтэй аппууд таны календарьт хандах боломжтой"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Энэ зөвшөөрөлтэй аппууд утасны дуудлагын жагсаалтыг унших болон бичих боломжтой"</string>
-    <string name="permission_description_summary_camera" msgid="108004375101882069">"Энэ зөвшөөрөлтэй аппууд зураг авах болон видео хийх боломжтой"</string>
+    <string name="permission_description_summary_camera" msgid="108004375101882069">"Энэ зөвшөөрөлтэй аппууд зураг авах болон видео бичих боломжтой"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Энэ зөвшөөрөлтэй аппууд таны харилцагчид хандах боломжтой"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Энэ зөвшөөрөлтэй аппууд энэ төхөөрөмжийн байршилд хандах боломжтой"</string>
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Энэ зөвшөөрөлтэй аппууд ойролцоох төхөөрөмжийг илрүүлж, тэдгээрт холбогдож мөн харгалзах байршлыг нь тодорхойлох боломжтой"</string>
