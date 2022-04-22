@@ -53,8 +53,7 @@ object SafetyCenterApisWithShellPermissions {
     ) {
         callWithShellPermissionIdentity(
             { setSafetySourceData(safetySourceId, safetySourceData, safetyEvent) },
-            SEND_SAFETY_CENTER_UPDATE
-        )
+            SEND_SAFETY_CENTER_UPDATE)
     }
 
     /**
@@ -74,8 +73,7 @@ object SafetyCenterApisWithShellPermissions {
     ) {
         callWithShellPermissionIdentity(
             { reportSafetySourceError(safetySourceId, safetySourceErrorDetails) },
-            SEND_SAFETY_CENTER_UPDATE
-        )
+            SEND_SAFETY_CENTER_UPDATE)
     }
 
     /**
@@ -83,8 +81,8 @@ object SafetyCenterApisWithShellPermissions {
      * permission.
      */
     fun SafetyCenterManager.refreshSafetySourcesWithPermission(refreshReason: Int) {
-        callWithShellPermissionIdentity({ refreshSafetySources(refreshReason) },
-            MANAGE_SAFETY_CENTER)
+        callWithShellPermissionIdentity(
+            { refreshSafetySources(refreshReason) }, MANAGE_SAFETY_CENTER)
     }
 
     /**
@@ -110,9 +108,7 @@ object SafetyCenterApisWithShellPermissions {
         listener: OnSafetyCenterDataChangedListener
     ) {
         callWithShellPermissionIdentity(
-            { addOnSafetyCenterDataChangedListener(executor, listener) },
-            MANAGE_SAFETY_CENTER
-        )
+            { addOnSafetyCenterDataChangedListener(executor, listener) }, MANAGE_SAFETY_CENTER)
     }
 
     /**
@@ -123,9 +119,7 @@ object SafetyCenterApisWithShellPermissions {
         listener: OnSafetyCenterDataChangedListener
     ) {
         callWithShellPermissionIdentity(
-            { removeOnSafetyCenterDataChangedListener(listener) },
-            MANAGE_SAFETY_CENTER
-        )
+            { removeOnSafetyCenterDataChangedListener(listener) }, MANAGE_SAFETY_CENTER)
     }
 
     /**
@@ -134,9 +128,7 @@ object SafetyCenterApisWithShellPermissions {
      */
     fun SafetyCenterManager.dismissSafetyCenterIssueWithPermission(safetyCenterIssueId: String) {
         callWithShellPermissionIdentity(
-            { dismissSafetyCenterIssue(safetyCenterIssueId) },
-            MANAGE_SAFETY_CENTER
-        )
+            { dismissSafetyCenterIssue(safetyCenterIssueId) }, MANAGE_SAFETY_CENTER)
     }
 
     /**
@@ -149,8 +141,7 @@ object SafetyCenterApisWithShellPermissions {
     ) {
         callWithShellPermissionIdentity(
             { executeSafetyCenterIssueAction(safetyCenterIssueId, safetyCenterIssueActionId) },
-            MANAGE_SAFETY_CENTER
-        )
+            MANAGE_SAFETY_CENTER)
     }
 
     /**
@@ -159,7 +150,7 @@ object SafetyCenterApisWithShellPermissions {
      */
     fun SafetyCenterManager.clearAllSafetySourceDataForTestsWithPermission() =
         callWithShellPermissionIdentity(
-                { clearAllSafetySourceDataForTests() }, MANAGE_SAFETY_CENTER)
+            { clearAllSafetySourceDataForTests() }, MANAGE_SAFETY_CENTER)
 
     /**
      * Calls [SafetyCenterManager.setSafetyCenterConfigForTests] adopting Shell's
@@ -169,9 +160,7 @@ object SafetyCenterApisWithShellPermissions {
         safetyCenterConfig: SafetyCenterConfig
     ) {
         callWithShellPermissionIdentity(
-            { setSafetyCenterConfigForTests(safetyCenterConfig) },
-            MANAGE_SAFETY_CENTER
-        )
+            { setSafetyCenterConfigForTests(safetyCenterConfig) }, MANAGE_SAFETY_CENTER)
     }
 
     /**
@@ -179,7 +168,6 @@ object SafetyCenterApisWithShellPermissions {
      * [MANAGE_SAFETY_CENTER] permission.
      */
     fun SafetyCenterManager.clearSafetyCenterConfigForTestsWithPermission() {
-        callWithShellPermissionIdentity(
-                { clearSafetyCenterConfigForTests() }, MANAGE_SAFETY_CENTER)
+        callWithShellPermissionIdentity({ clearSafetyCenterConfigForTests() }, MANAGE_SAFETY_CENTER)
     }
 }

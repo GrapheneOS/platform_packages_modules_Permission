@@ -34,9 +34,9 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.ext.truth.os.ParcelableSubject.assertThat
 import androidx.test.filters.SdkSuppress
 import com.google.common.truth.Truth.assertThat
+import kotlin.test.assertFailsWith
 import org.junit.Test
 import org.junit.runner.RunWith
-import kotlin.test.assertFailsWith
 
 @RunWith(AndroidJUnit4::class)
 @SdkSuppress(minSdkVersion = TIRAMISU, codeName = "Tiramisu")
@@ -171,34 +171,27 @@ class SafetyCenterDataTest {
         EqualsHashCodeToStringTester()
             .addEqualityGroup(
                 data1,
-                SafetyCenterData(status1, listOf(issue1), listOf(entryOrGroup1),
-                    listOf(staticEntryGroup1))
-            )
+                SafetyCenterData(
+                    status1, listOf(issue1), listOf(entryOrGroup1), listOf(staticEntryGroup1)))
             .addEqualityGroup(
                 data2,
-                SafetyCenterData(status2, listOf(issue2), listOf(entryOrGroup2),
-                    listOf(staticEntryGroup2))
-            )
+                SafetyCenterData(
+                    status2, listOf(issue2), listOf(entryOrGroup2), listOf(staticEntryGroup2)))
             .addEqualityGroup(
                 SafetyCenterData(status1, listOf(), listOf(), listOf()),
-                SafetyCenterData(status1, listOf(), listOf(), listOf())
-            )
+                SafetyCenterData(status1, listOf(), listOf(), listOf()))
             .addEqualityGroup(
-                SafetyCenterData(status2, listOf(issue1), listOf(entryOrGroup1),
-                    listOf(staticEntryGroup1))
-            )
+                SafetyCenterData(
+                    status2, listOf(issue1), listOf(entryOrGroup1), listOf(staticEntryGroup1)))
             .addEqualityGroup(
-                SafetyCenterData(status1, listOf(issue2), listOf(entryOrGroup1),
-                    listOf(staticEntryGroup1))
-            )
+                SafetyCenterData(
+                    status1, listOf(issue2), listOf(entryOrGroup1), listOf(staticEntryGroup1)))
             .addEqualityGroup(
-                SafetyCenterData(status1, listOf(issue1), listOf(entryOrGroup2),
-                    listOf(staticEntryGroup1))
-            )
+                SafetyCenterData(
+                    status1, listOf(issue1), listOf(entryOrGroup2), listOf(staticEntryGroup1)))
             .addEqualityGroup(
-                SafetyCenterData(status1, listOf(issue1), listOf(entryOrGroup1),
-                    listOf(staticEntryGroup2))
-            )
+                SafetyCenterData(
+                    status1, listOf(issue1), listOf(entryOrGroup1), listOf(staticEntryGroup2)))
             .test()
     }
 }
