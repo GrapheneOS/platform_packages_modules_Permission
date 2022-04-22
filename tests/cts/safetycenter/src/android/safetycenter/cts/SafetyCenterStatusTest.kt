@@ -23,9 +23,9 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.ext.truth.os.ParcelableSubject.assertThat
 import androidx.test.filters.SdkSuppress
 import com.google.common.truth.Truth.assertThat
+import kotlin.test.assertFailsWith
 import org.junit.Test
 import org.junit.runner.RunWith
-import kotlin.test.assertFailsWith
 
 @RunWith(AndroidJUnit4::class)
 @SdkSuppress(minSdkVersion = TIRAMISU, codeName = "Tiramisu")
@@ -52,91 +52,88 @@ class SafetyCenterStatusTest {
             .isEqualTo("summary")
 
         assertThat(
-            SafetyCenterStatus.Builder(baseStatus).setSummary("different summary").build().summary
-        )
+                SafetyCenterStatus.Builder(baseStatus)
+                    .setSummary("different summary")
+                    .build()
+                    .summary)
             .isEqualTo("different summary")
     }
 
     @Test
     fun getSeverityLevel_returnsSeverityLevel() {
         assertThat(
-            SafetyCenterStatus.Builder(baseStatus)
-                .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK)
-                .build()
-                .severityLevel
-        )
+                SafetyCenterStatus.Builder(baseStatus)
+                    .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK)
+                    .build()
+                    .severityLevel)
             .isEqualTo(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK)
 
         assertThat(
-            SafetyCenterStatus.Builder(baseStatus)
-                .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING)
-                .build()
-                .severityLevel
-        )
+                SafetyCenterStatus.Builder(baseStatus)
+                    .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING)
+                    .build()
+                    .severityLevel)
             .isEqualTo(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING)
     }
 
     @Test
     fun getSeverityLevel_defaultUnknown() {
         assertThat(
-            SafetyCenterStatus.Builder(
-                "This is my title",
-                "This is my summary"
-            )
-                .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN)
-                .build()
-                .severityLevel
-        )
+                SafetyCenterStatus.Builder("This is my title", "This is my summary")
+                    .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN)
+                    .build()
+                    .severityLevel)
             .isEqualTo(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN)
     }
 
     @Test
     fun getRefreshStatus_returnsRefreshStatus() {
         assertThat(
-            SafetyCenterStatus.Builder(baseStatus)
-                .setRefreshStatus(SafetyCenterStatus.REFRESH_STATUS_NONE)
-                .build()
-                .refreshStatus
-        )
+                SafetyCenterStatus.Builder(baseStatus)
+                    .setRefreshStatus(SafetyCenterStatus.REFRESH_STATUS_NONE)
+                    .build()
+                    .refreshStatus)
             .isEqualTo(SafetyCenterStatus.REFRESH_STATUS_NONE)
 
         assertThat(
-            SafetyCenterStatus.Builder(baseStatus)
-                .setRefreshStatus(SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS)
-                .build()
-                .refreshStatus
-        )
+                SafetyCenterStatus.Builder(baseStatus)
+                    .setRefreshStatus(SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS)
+                    .build()
+                    .refreshStatus)
             .isEqualTo(SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS)
     }
 
     @Test
     fun getRefreshStatus_defaultNone() {
         assertThat(
-            SafetyCenterStatus.Builder("This is my title", "This is my summary")
-                .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN)
-                .build()
-                .refreshStatus
-        )
+                SafetyCenterStatus.Builder("This is my title", "This is my summary")
+                    .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_UNKNOWN)
+                    .build()
+                    .refreshStatus)
             .isEqualTo(SafetyCenterStatus.REFRESH_STATUS_NONE)
     }
 
     @Test
     fun build_withInvalidOverallSeverityLevel_throwsIllegalArgumentException() {
-        val exception = assertFailsWith(IllegalArgumentException::class) {
-            SafetyCenterStatus.Builder(baseStatus).setSeverityLevel(-1)
-        }
+        val exception =
+            assertFailsWith(IllegalArgumentException::class) {
+                SafetyCenterStatus.Builder(baseStatus).setSeverityLevel(-1)
+            }
 
-        assertThat(exception).hasMessageThat()
+        assertThat(exception)
+            .hasMessageThat()
             .isEqualTo("Unexpected OverallSeverityLevel for SafetyCenterStatus: -1")
     }
 
     @Test
     fun build_withInvalidRefreshStatus_throwsIllegalArgumentException() {
-        val exception = assertFailsWith(IllegalArgumentException::class) {
-            SafetyCenterStatus.Builder(baseStatus).setRefreshStatus(-1)
-        }
+        val exception =
+            assertFailsWith(IllegalArgumentException::class) {
+                SafetyCenterStatus.Builder(baseStatus).setRefreshStatus(-1)
+            }
 
-        assertThat(exception).hasMessageThat()
+        assertThat(exception)
+            .hasMessageThat()
             .isEqualTo("Unexpected RefreshStatus for SafetyCenterStatus: -1")
     }
 
@@ -159,16 +156,14 @@ class SafetyCenterStatusTest {
                     .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_RECOMMENDATION)
                     .setRefreshStatus(SafetyCenterStatus.REFRESH_STATUS_DATA_FETCH_IN_PROGRESS)
                     .build(),
-                SafetyCenterStatus.Builder(baseStatus).build()
-            )
+                SafetyCenterStatus.Builder(baseStatus).build())
             .addEqualityGroup(
                 SafetyCenterStatus.Builder("same title", "same summary")
                     .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK)
                     .build(),
                 SafetyCenterStatus.Builder("same title", "same summary")
                     .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK)
-                    .build()
-            )
+                    .build())
             .addEqualityGroup(
                 SafetyCenterStatus.Builder(baseStatus).setTitle("that's not it").build())
             .addEqualityGroup(
@@ -176,13 +171,11 @@ class SafetyCenterStatusTest {
             .addEqualityGroup(
                 SafetyCenterStatus.Builder(baseStatus)
                     .setSeverityLevel(SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_OK)
-                    .build()
-            )
+                    .build())
             .addEqualityGroup(
                 SafetyCenterStatus.Builder(baseStatus)
                     .setRefreshStatus(SafetyCenterStatus.REFRESH_STATUS_NONE)
-                    .build()
-            )
+                    .build())
             .test()
     }
 }

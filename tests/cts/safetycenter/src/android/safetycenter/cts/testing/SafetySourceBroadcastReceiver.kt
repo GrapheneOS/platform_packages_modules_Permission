@@ -50,16 +50,10 @@ class SafetySourceBroadcastReceiver : BroadcastReceiver() {
         when (intent.getIntExtra(EXTRA_REFRESH_SAFETY_SOURCES_REQUEST_TYPE, -1)) {
             EXTRA_REFRESH_REQUEST_TYPE_GET_DATA ->
                 safetyCenterManager.setSafetySourceDataWithPermission(
-                    safetySourceId!!,
-                    safetySourceDataOnPageOpen!!,
-                    EVENT_REFRESH_REQUESTED
-                )
+                    safetySourceId!!, safetySourceDataOnPageOpen!!, EVENT_REFRESH_REQUESTED)
             EXTRA_REFRESH_REQUEST_TYPE_FETCH_FRESH_DATA ->
                 safetyCenterManager.setSafetySourceDataWithPermission(
-                    safetySourceId!!,
-                    safetySourceDataOnRescanClick!!,
-                    EVENT_REFRESH_REQUESTED
-                )
+                    safetySourceId!!, safetySourceDataOnRescanClick!!, EVENT_REFRESH_REQUESTED)
         }
 
         runBlockingWithTimeout { updateChannel.send(Unit) }
@@ -71,17 +65,13 @@ class SafetySourceBroadcastReceiver : BroadcastReceiver() {
                 .setRefreshBroadcastId("refresh_id")
                 .build()
 
-        @Volatile
-        private var updateChannel = Channel<Unit>(UNLIMITED)
+        @Volatile private var updateChannel = Channel<Unit>(UNLIMITED)
 
-        @Volatile
-        var safetySourceId: String? = null
+        @Volatile var safetySourceId: String? = null
 
-        @Volatile
-        var safetySourceDataOnPageOpen: SafetySourceData? = null
+        @Volatile var safetySourceDataOnPageOpen: SafetySourceData? = null
 
-        @Volatile
-        var safetySourceDataOnRescanClick: SafetySourceData? = null
+        @Volatile var safetySourceDataOnRescanClick: SafetySourceData? = null
 
         fun reset() {
             safetySourceId = null
