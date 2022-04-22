@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.tests.mocking.permission.service.privacysources
+package com.android.permissioncontroller.tests.mocking.privacysources
 
 import android.app.job.JobParameters
 import android.content.ComponentName
@@ -89,23 +89,6 @@ class AccessibilitySourceServiceTest {
     }
 
     @Test
-    fun processAccessibilityJobWithDisabledFlag() {
-        setAccessibilityFeatureFlag(false)
-
-        val jobParameters = mock(JobParameters::class.java)
-        runWithShellPermissionIdentity {
-            runBlocking {
-                accessibilitySourceService.processAccessibilityJob(
-                    jobParameters,
-                    jobService
-                ) { shouldCancel }
-            }
-        }
-
-        verify(jobService).jobFinished(jobParameters, false)
-    }
-
-    // @Test
     fun processAccessibilityJobWithCancellation() {
         shouldCancel = true
         val jobParameters = mock(JobParameters::class.java)
@@ -119,22 +102,6 @@ class AccessibilitySourceServiceTest {
             }
         }
         verify(jobService).jobFinished(jobParameters, true)
-    }
-
-    @Test
-    fun processAccessibilityJobWithEnabledFlag() {
-        val jobParameters = mock(JobParameters::class.java)
-
-        runWithShellPermissionIdentity {
-            runBlocking {
-                accessibilitySourceService.processAccessibilityJob(
-                    jobParameters,
-                    jobService
-                ) { shouldCancel }
-            }
-        }
-
-        verify(jobService).jobFinished(jobParameters, false)
     }
 
     @Test

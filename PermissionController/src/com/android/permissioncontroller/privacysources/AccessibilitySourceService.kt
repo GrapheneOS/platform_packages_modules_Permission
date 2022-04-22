@@ -227,10 +227,12 @@ class AccessibilitySourceService(
      */
     private fun createSafetySourceIssue(a11yService: AccessibilityServiceInfo): SafetySourceIssue {
         val componentName = ComponentName.unflattenFromString(a11yService.id)!!
+        val safetySourceIssueId = "accessibility_${componentName.flattenToString()}"
         val pkgLabel = a11yService.resolveInfo.loadLabel(packageManager).toString()
         val removeAccessPendingIntent = getRemoveAccessPendingIntent(
             context,
-            componentName
+            componentName,
+            safetySourceIssueId
         )
 
         val removeAccessAction = SafetySourceIssue.Action.Builder(
@@ -287,11 +289,13 @@ class AccessibilitySourceService(
      */
     private fun getRemoveAccessPendingIntent(
         context: Context,
-        serviceComponentName: ComponentName
+        serviceComponentName: ComponentName,
+        safetySourceIssueId: String
     ): PendingIntent {
         val intent =
             Intent(parentUserContext, RemoveAccessHandler::class.java).apply {
                 putExtra(Intent.EXTRA_COMPONENT_NAME, serviceComponentName)
+                putExtra(SafetyCenterManager.EXTRA_SAFETY_SOURCE_ISSUE_ID, safetySourceIssueId)
                 flags = Intent.FLAG_RECEIVER_FOREGROUND
                 identifier = serviceComponentName.flattenToString()
             }
