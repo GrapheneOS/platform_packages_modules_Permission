@@ -80,7 +80,7 @@
     <string name="menu_hide_system" msgid="3855390843744028465">"Sakrij sustav"</string>
     <string name="menu_show_7_days_data" msgid="8979611198508523706">"Prikaži sedam dana"</string>
     <string name="menu_show_24_hours_data" msgid="8228054833323380780">"Prikaži 24 sata"</string>
-    <string name="manage_permission" msgid="2895385393037061964">"Upravljanje dopuštenjem"</string>
+    <string name="manage_permission" msgid="2895385393037061964">"Upravljajte dopuštenjem"</string>
     <string name="no_apps" msgid="2412612731628386816">"Nema aplikacija"</string>
     <string name="location_settings" msgid="3624412509133422562">"Postavke lokacije"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> pruža usluge lokacije za ovaj uređaj. Pristup lokaciji može se izmijeniti u postavkama lokacije."</string>
