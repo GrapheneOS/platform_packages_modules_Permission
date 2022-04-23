@@ -109,7 +109,7 @@ class AutoPermissionUsageFragment : AutoSettingsFrameFragment(), PermissionsUsag
     }
 
     override fun onCreatePreferences(bundlle: Bundle?, s: String?) {
-        preferenceScreen = preferenceManager.createPreferenceScreen(context)
+        preferenceScreen = preferenceManager.createPreferenceScreen(context!!)
     }
 
     private fun updateSystemToggle() {
