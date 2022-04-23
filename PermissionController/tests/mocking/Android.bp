@@ -124,4 +124,6 @@ android_test {
         "device-tests",
         "mts-permission",
     ],
+
+    kotlincflags: ["-Xjvm-default=enable"],
 }

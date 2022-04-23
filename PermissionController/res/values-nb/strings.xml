@@ -126,8 +126,8 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Se andre tillatelser"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> og <xliff:g id="NUM">%3$s</xliff:g> til"</string>
-    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"Tidslinje over når apper har brukt <xliff:g id="PERMGROUP">%1$s</xliff:g> i løpet av de siste 24 timene"</string>
-    <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Tidslinje over når apper har brukt <xliff:g id="PERMGROUP">%1$s</xliff:g> i løpet av de siste 7 dagene"</string>
+    <string name="permission_group_usage_subtitle_24h" msgid="5120155996322114181">"Tidslinje over når apper har brukt <xliff:g id="PERMGROUP">%1$s</xliff:g> de siste 24 timene"</string>
+    <string name="permission_group_usage_subtitle_7d" msgid="1465828402260324654">"Tidslinje over når apper har brukt <xliff:g id="PERMGROUP">%1$s</xliff:g> de siste 7 dagene"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"Når denne appen har brukt <xliff:g id="PERMGROUP">%1$s</xliff:g>-tillatelsen"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"Finn ut mer"</string>
     <string name="manage_permission_summary" msgid="4117555482684114317">"Kontroller apptilgangen til <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
@@ -158,7 +158,7 @@
     <string name="permission_usage_bar_chart_title_last_hour" msgid="6571647509660009185">"Bruk av tillatelser den siste timen"</string>
     <string name="permission_usage_bar_chart_title_last_15_minutes" msgid="2743143675412824819">"Bruk av tillatelser de siste 15 minuttene"</string>
     <string name="permission_usage_bar_chart_title_last_minute" msgid="820450867183487607">"Bruk av tillatelser det siste minuttet"</string>
-    <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"Ikke brukt i løpet av de siste 24 timene"</string>
+    <string name="permission_usage_preference_summary_not_used_24h" msgid="3087783232178611025">"Ikke brukt de siste 24 timene"</string>
     <string name="permission_usage_preference_summary_not_used_7d" msgid="4592301300810120096">"Ikke brukt i løpet av de siste 7 dagene"</string>
     <string name="permission_usage_preference_label" msgid="8343167938128676378">"{count,plural, =1{Brukt av 1 app}other{Brukt av # apper}}"</string>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Se alt i oversikten"</string>

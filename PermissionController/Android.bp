@@ -149,4 +149,6 @@ android_app {
     },
 
     plugins: ["java_api_finder"],
+
+    kotlincflags: ["-Xjvm-default=enable"],
 }

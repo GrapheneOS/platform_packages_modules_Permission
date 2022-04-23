@@ -476,7 +476,7 @@
     <!-- no translation found for permgroupbackgroundrequestdetail_sensors (7726767635834043501) -->
     <skip />
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; erabili bitartean gorputz-sentsoreen datuak atzitzeko baimena eman nahi diozu aplikazio horri?"</string>
-    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Zuri jakinarazpenak bidaltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
+    <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Jakinarazpenak bidaltzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Zuri jakinarazpenak bidaltzen jarraitzeko baimena eman nahi diozu &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; aplikazioari?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Kontrolatutako baimenak"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Kokapena atzi daiteke"</string>
