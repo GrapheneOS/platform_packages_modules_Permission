@@ -43,9 +43,9 @@
     <string name="permission_revoked_none" msgid="9213345075484381180">"tidak ada yang dinonaktifkan"</string>
     <string name="grant_dialog_button_allow" msgid="5314677880021102550">"Izinkan"</string>
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Izinkan sepanjang waktu"</string>
-    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Saat aplikasinya digunakan"</string>
+    <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Saat aplikasi digunakan"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Ubah ke lokasi akurat"</string>
-    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Tetap gunakan perkiraan saja"</string>
+    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Tetap gunakan perkiraan"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Hanya kali ini"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Izinkan sepanjang waktu"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Izinkan pengelolaan semua file"</string>
@@ -190,7 +190,7 @@
     <string name="precise_image_description" msgid="6349638632303619872">"Lokasi akurat"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Perkiraan lokasi"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Gunakan lokasi akurat"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Bila lokasi akurat dinonaktifkan, aplikasi dapat mengakses perkiraan lokasi"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Saat lokasi akurat dinonaktifkan, aplikasi dapat mengakses perkiraan lokasi"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Izin <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Akses <xliff:g id="PERM">%1$s</xliff:g> untuk aplikasi ini"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Lihat semua izin <xliff:g id="APP">%1$s</xliff:g>"</string>
