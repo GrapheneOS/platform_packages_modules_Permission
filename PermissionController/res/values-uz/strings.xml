@@ -357,7 +357,7 @@
     <string name="role_assistant_description" msgid="6622458130459922952">"Yordamchi ilovalar siz koʻrayotganda ekrandagi maʼlumotlar asosida sizga yordam beradi. Baʼzi ilovalar sizga umumlashgan koʻmak berish maqsadida ham ishga tushirish paneli, ham ovoz bilan yozish xizmatlarini qoʻllab-quvvatlaydi."</string>
     <string name="role_assistant_request_title" msgid="5964976301922776060">"<xliff:g id="APP_NAME">%1$s</xliff:g> asosiy yordamchi ilova sifatida sozlansinmi?"</string>
     <string name="role_assistant_request_description" msgid="6836644847620178483">"SMS va chaqiruv qaydlaridan foydalana oladi"</string>
-    <string name="role_browser_label" msgid="2877796144554070207">"Asosiy brauzer ilovasi"</string>
+    <string name="role_browser_label" msgid="2877796144554070207">"Birlamchi brauzer ilovasi"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Brauzer ilovasi"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Internetga kirish va havolalarni ochish imkonini beruvchi ilovalar"</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"<xliff:g id="APP_NAME">%1$s</xliff:g> birlamchi brauzer sifatida belgilansinmi?"</string>

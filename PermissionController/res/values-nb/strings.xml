@@ -214,7 +214,7 @@
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Bruk nøyaktig posisjon"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Når nøyaktig posisjon er av, har apper tilgang til den omtrentlige posisjonen din"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> – tillatelse"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"Tilgang til <xliff:g id="PERM">%1$s</xliff:g> for denne appen"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"<xliff:g id="PERM">%1$s</xliff:g>: tilgang for denne appen"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Se alle tillatelsene <xliff:g id="APP">%1$s</xliff:g> har"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Se alle apper med denne tillatelsen"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Vis bruk av assistentmikrofonen"</string>
@@ -241,7 +241,7 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"Sist åpnet <xliff:g id="DATE">%s</xliff:g>"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Hvis du tillater administrering av alle filer, kan denne appen åpne, endre og slette alle filer i felles lagringsplass på denne enheten eller tilkoblede lagringsenheter. Appen kan åpne filer uten å spørre deg."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Vil du gi denne appen tillatelse til å åpne, endre og slette filer på enheten eller tilkoblede lagringsenheter? Appen kan åpne filer uten å spørre deg."</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Apper med denne tillatelsen kan <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"Apper med denne tillatelsen kan: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Apper med denne tillatelsen har tilgang til den fysiske aktiviteten din, for eksempel gåturer, sykkelturer, kjøring, skritt med mer"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Apper med denne tillatelsen har tilgang til kalenderen din"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Apper med denne tillatelsen kan lese og skrive samtaleloggen"</string>

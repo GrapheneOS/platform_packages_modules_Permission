@@ -241,16 +241,16 @@
     <string name="last_opened_summary_short" msgid="1646067226191176825">"ਆਖਰੀ ਵਾਰ <xliff:g id="DATE">%s</xliff:g> ਨੂੰ ਖੋਲ੍ਹਿਆ ਗਿਆ"</string>
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"ਜੇ ਤੁਸੀਂ ਸਾਰੀਆਂ ਫ਼ਾਈਲਾਂ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰਨ ਦਿੰਦੇ ਹੋ, ਤਾਂ ਇਹ ਐਪ ਇਸ ਡੀਵਾਈਸ ਜਾਂ ਕਨੈਕਟ ਕੀਤੇ ਸਟੋਰੇਜ ਡੀਵਾਈਸਾਂ ਦੀ ਸਾਂਝੀ ਸਟੋਰੇਜ ਵਿੱਚ ਕਿਸੇ ਵੀ ਫ਼ਾਈਲ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀ, ਉਸ ਵਿੱਚ ਸੋਧ ਕਰ ਸਕਦੀ ਅਤੇ ਉਸ ਨੂੰ ਮਿਟਾ ਸਕਦੀ ਹੈ। ਐਪ ਤੁਹਾਨੂੰ ਪੁੱਛੇ ਬਿਨਾਂ ਫ਼ਾਈਲਾਂ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀ ਹੈ।"</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"ਕੀ ਇਸ ਐਪ ਨੂੰ ਇਸ ਡੀਵਾਈਸ ਜਾਂ ਕਨੈਕਟ ਕੀਤੇ ਸਟੋਰੇਜ ਡੀਵਾਈਸਾਂ \'ਤੇ ਫ਼ਾਈਲਾਂ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੇਣੀ ਹੈ, ਉਹਨਾਂ ਨੂੰ ਸੋਧਣ ਅਤੇ ਮਿਟਾਉਣ ਦੇਣਾ ਹੈ? ਇਹ ਐਪ ਤੁਹਾਨੂੰ ਪੁੱਛੇ ਬਿਨਾਂ ਫ਼ਾਈਲਾਂ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀ ਹੈ।"</string>
-    <string name="permission_description_summary_generic" msgid="5401399408814903391">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ <xliff:g id="DESCRIPTION">%1$s</xliff:g> ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
+    <string name="permission_description_summary_generic" msgid="5401399408814903391">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਤੁਹਾਡੀ ਸਰੀਰਕ ਸਰਗਰਮੀ, ਜਿਵੇਂ ਕਿ ਪੈਦਲ-ਸੈਰ, ਸਾਈਕਲ ਚਲਾਉਣਾ, ਗੱਡੀ ਚਲਾਉਣਾ, ਕਦਮਾਂ ਦੀ ਗਿਣਤੀ ਅਤੇ ਹੋਰ ਚੀਜ਼ਾਂ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਤੁਹਾਡੇ ਕੈਲੰਡਰ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਫ਼ੋਨ ਕਾਲ ਲੌਗ ਪੜ੍ਹ-ਲਿਖ ਸਕਦੀਆਂ ਹਨ"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਤਸਵੀਰਾਂ ਖਿੱਚ ਅਤੇ ਵੀਡੀਓ ਰਿਕਾਰਡ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਤੁਹਾਡੇ ਸੰਪਰਕਾਂ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਇਸ ਡੀਵਾਈਸ ਦੇ ਟਿਕਾਣੇ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਨਜ਼ਦੀਕੀ ਡੀਵਾਈਸਾਂ ਨੂੰ ਲੱਭ ਸਕਦੀਆਂ ਹਨ, ਉਹਨਾਂ ਨਾਲ ਕਨੈਕਟ ਕਰ ਸਕਦੀਆਂ ਹਨ ਅਤੇ ਉਹਨਾਂ ਦੀ ਸੰਬੰਧਿਤ ਸਥਿਤੀ ਨੂੰ ਨਿਰਧਾਰਿਤ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਨਜ਼ਦੀਕੀ ਡੀਵਾਈਸਾਂ ਨੂੰ ਲੱਭ ਸਕਦੀਆਂ ਹਨ, ਉਨ੍ਹਾਂ ਨਾਲ ਕਨੈਕਟ ਕਰ ਸਕਦੀਆਂ ਹਨ ਅਤੇ ਉਨ੍ਹਾਂ ਦੀ ਸੰਬੰਧਿਤ ਸਥਿਤੀ ਨੂੰ ਨਿਰਧਾਰਿਤ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਆਡੀਓ ਰਿਕਾਰਡ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
-    <string name="permission_description_summary_phone" msgid="4515277217435233619">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਫ਼ੋਨ ਕਾਲਾਂ ਕਰ ਅਤੇ ਉਹਨਾਂ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
+    <string name="permission_description_summary_phone" msgid="4515277217435233619">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਫ਼ੋਨ ਕਾਲਾਂ ਕਰ ਅਤੇ ਉਨ੍ਹਾਂ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਤੁਹਾਡੇ ਸਰੀਰ ਦੇ ਅਹਿਮ ਲੱਛਣਾਂ ਸੰਬੰਧੀ ਸੈਂਸਰ ਡਾਟੇ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ SMS ਸੁਨੇਹੇ ਭੇਜ ਅਤੇ ਦੇਖ ਸਕਦੀਆਂ ਹਨ"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਤੁਹਾਡੇ ਡੀਵਾਈਸ \'ਤੇ ਫ਼ੋਟੋਆਂ, ਮੀਡੀਆ ਅਤੇ ਫ਼ਾਈਲਾਂ ਤੱਕ ਪਹੁੰਚ ਕਰ ਸਕਦੀਆਂ ਹਨ"</string>

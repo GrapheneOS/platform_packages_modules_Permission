@@ -275,7 +275,7 @@
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Programos, kurioms suteiktas šis leidimas, gali rasti netoliese esančius įrenginius, prisijungti prie jų ir nustatyti apytikslį atstumą"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Programos, kurioms suteiktas šis leidimas, gali įrašyti garsą"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Programos, kurioms suteiktas šis leidimas, gal atlikti ir tvarkyti telefonų skambučius"</string>
-    <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Programos, kurioms suteiktas šis leidimas, gali pasiekti jutiklių duomenis apie gyvybinius ženklus"</string>
+    <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Programos, kurioms suteiktas šis leidimas, gali pasiekti jutiklių duomenis apie gyvybinius požymius"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Programos, kurioms suteiktas šis leidimas, gali siųsti ir peržiūrėti SMS pranešimus"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Programos, kurioms suteiktas šis leidimas, gali pasiekti nuotraukas, mediją ir failus jūsų įrenginyje"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Paskutinį kartą pasiekta: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>

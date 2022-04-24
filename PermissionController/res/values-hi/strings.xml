@@ -364,13 +364,13 @@
     <string name="role_browser_request_description" msgid="5888803407905985941">"अनुमति की ज़रूरत नहीं है"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"डिफ़ॉल्ट फ़ोन ऐप्लिकेशन"</string>
     <string name="role_dialer_short_label" msgid="7186888549465352489">"फ़ोन ऐप्लिकेशन"</string>
-    <string name="role_dialer_description" msgid="8768708633696539612">"ऐसे ऐप्लिकेशन जिनकी मदद से आप अपने डिवाइस से टेलीफ़ोन कॉल कर सकते हैं और इनकमिंग कॉल का जवाब दे सकते हैं"</string>
+    <string name="role_dialer_description" msgid="8768708633696539612">"ऐसे ऐप्लिकेशन जिनकी मदद से, अपने डिवाइस से टेलीफ़ोन कॉल किए जा सकते हैं और इनकमिंग कॉल का जवाब दिया जा सकता है"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g> को आपके डिफ़ॉल्ट फ़ोन ऐप्लिकेशन के तौर पर सेट करें?"</string>
     <string name="role_dialer_request_description" msgid="2264219375528345270">"कॉल लॉग का ऐक्सेस मिलता है, मैसेज भेजें"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"डायलर"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"मैसेज का डिफ़ॉल्ट ऐप्लिकेशन"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"एसएमएस ऐप्लिकेशन"</string>
-    <string name="role_sms_description" msgid="3424020199148153513">"ऐसे ऐप्लिकेशन जिनकी मदद से आप अपने फ़ोन नंबर का इस्तेमाल मैसेज, फ़ोटो, वीडियो के साथ ही दूसरी चीज़ें भेजने और पाने के लिए कर सकते हैं"</string>
+    <string name="role_sms_description" msgid="3424020199148153513">"ऐसे ऐप्लिकेशन जिनकी मदद से अपने फ़ोन नंबर का इस्तेमाल मैसेज, फ़ोटो, वीडियो के साथ ही दूसरी चीज़ें भेजने और पाने के लिए किया जा सकता है"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g> को अपने डिफ़ॉल्ट मैसेज ऐप्लिकेशन के तौर पर सेट करें?"</string>
     <string name="role_sms_request_description" msgid="983371022668134198">"संपर्कों, मैसेज, फ़ोन का ऐक्सेस मिलता है"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"मैसेज, मैसेज भेजना, मैसेज करना, मैसेज भेजना या पाना."</string>

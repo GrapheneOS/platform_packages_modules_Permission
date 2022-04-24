@@ -214,7 +214,7 @@
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"使用精確位置"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"精確位置關閉時，應用程式會存取你的概略位置資訊"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>權限"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"是否允許這個應用程式存取<xliff:g id="PERM">%1$s</xliff:g>"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"是否允許這個應用程式取得「<xliff:g id="PERM">%1$s</xliff:g>」的存取權限"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"查看「<xliff:g id="APP">%1$s</xliff:g>」的所有權限"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"查看具備此權限的所有應用程式"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"顯示 Google 助理的麥克風使用狀況"</string>

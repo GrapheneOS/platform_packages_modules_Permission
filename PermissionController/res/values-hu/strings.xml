@@ -250,7 +250,7 @@
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Az ezzel az engedéllyel rendelkező alkalmazások hozzáférhetnek az eszköz helyadataihoz"</string>
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Az ezzel az engedéllyel rendelkező alkalmazások megkereshetik a közeli eszközöket, meghatározhatják relatív pozíciójukat, és csatlakozhatnak hozzájuk"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Az ezzel az engedéllyel rendelkező alkalmazások készíthetnek hangfelvételt"</string>
-    <string name="permission_description_summary_phone" msgid="4515277217435233619">"Az ezzel az engedéllyel rendelkező alkalmazások képesek a telefonhívások kezdeményezésére és kezelésére"</string>
+    <string name="permission_description_summary_phone" msgid="4515277217435233619">"Az ezzel az engedéllyel rendelkező alkalmazások telefonhívásokat kezdeményezhetnek és kezelhetnek"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Az ezzel az engedéllyel rendelkező alkalmazások hozzáférhetnek az életjelekkel kapcsolatos szenzoradatokhoz"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Az ezzel az engedéllyel rendelkező alkalmazások küldhetnek és megtekinthetnek SMS-eket"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Az ezzel az engedéllyel rendelkező alkalmazások hozzáférhetnek az eszközön található fotókhoz, médiatartalmakhoz és fájlokhoz"</string>

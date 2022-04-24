@@ -252,7 +252,7 @@
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"આ પરવાનગી ધરાવતી ઍપ ઑડિયો રેકોર્ડ કરી શકશે"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"આ પરવાનગી ધરાવતી ઍપ ફોન કૉલ કરી શકશે અને તેને મેનેજ કરી શકશે"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"આ પરવાનગી ધરાવતી ઍપ તમારા મહત્ત્વપૂર્ણ ચિહ્નો વિશેના સેન્સર ડેટાને ઍક્સેસ કરી શકશે"</string>
-    <string name="permission_description_summary_sms" msgid="725999468547768517">"આ પરવાનગી ધરાવતી ઍપ SMS સંદેશા મોકલી અને જોઈ શકે છે"</string>
+    <string name="permission_description_summary_sms" msgid="725999468547768517">"આ પરવાનગી ધરાવતી ઍપ SMS મેસેજ મોકલી અને જોઈ શકે છે"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"આ પરવાનગી ધરાવતી ઍપ તમારા ડિવાઇસ પર ફોટા, મીડિયા અને ફાઇલોને ઍક્સેસ કરી શકે છે"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"છેલ્લે થયેલો ઍક્સેસ: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"હાલમાં નકારેલી / છેલ્લો ઍક્સેસ: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
@@ -370,7 +370,7 @@
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"ડાયલર"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"ડિફૉલ્ટ SMS ઍપ"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS ઍપ"</string>
-    <string name="role_sms_description" msgid="3424020199148153513">"ઍપ કે જે તમને તમારા ફોન નંબરનો ઉપયોગ કરીને નાના ટેક્સ્ટ સંદેશા, ફોટા, વીડિયો અને ઘણું બધું મોકલવા અને પ્રાપ્ત કરવાની મંજૂરી આપે છે"</string>
+    <string name="role_sms_description" msgid="3424020199148153513">"ઍપ કે જે તમને તમારા ફોન નંબરનો ઉપયોગ કરીને નાના ટેક્સ્ટ મેસેજ, ફોટા, વીડિયો અને ઘણું બધું મોકલવા અને પ્રાપ્ત કરવાની મંજૂરી આપે છે"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g>ને તમારી ડિફૉલ્ટ SMS ઍપ તરીકે સેટ કરીએ?"</string>
     <string name="role_sms_request_description" msgid="983371022668134198">"સંપર્કો, SMS અને ફોનનો ઍક્સેસ મેળવે છે"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"ટેક્સ્ટ સંદેશ, ટેક્સ્ટિંગ, સંદેશા, મેસેજિંગ"</string>
