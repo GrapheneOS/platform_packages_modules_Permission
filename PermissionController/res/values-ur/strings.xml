@@ -277,6 +277,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"آپ کی رازداری کی حفاظت کے لیے اجازتوں کو ہٹایا گیا"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> نے پس منظر میں آپ کا مقام حاصل کر لیا ہے"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"یہ ایپ ہمیشہ آپ کے مقام تک رسائی حاصل کر سکتی ہے۔ تبدیل کرنے کے لیے تھپتھپائیں۔"</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
+    <skip />
+    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
+    <skip />
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"ایکسیسبیلٹی رسائی کے ساتھ ایپ کا جائزہ لیں"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> ایپ اسکرین پر موجود تمام مواد کو پڑھ سکتی ہے دیگر ایپس پر مواد کو ڈسپلے کر سکتی ہے اور آپ کے تعاملات کو ٹریک کر سکتی ہے۔"</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"یہ ایپ اسکرین پر موجود تمام مواد کو پڑھ سکتی ہے، دیگر ایپس پر مواد کو ڈسپلے کر سکتی ہے اور آپ کے تعاملات کو ٹریک کر سکتی ہے۔"</string>
@@ -376,7 +388,7 @@
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"کوئی اجازت درکار نہیں ہے"</string>
     <string name="role_call_screening_label" msgid="883935222060878724">"‏ڈیفالٹ کالر ID اور اسپام ایپ"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"‏کالر ID اور اسپام کی ایپ"</string>
-    <string name="role_call_screening_description" msgid="2349431420497468981">"ایسے ایپس جو آپ کی کالز کی شناخت کرنے اور اسپام، روبوکالز، یا ناپسندیدہ نمبروں کو مسدود کرنے کی اجازت دیتی ہیں"</string>
+    <string name="role_call_screening_description" msgid="2349431420497468981">"ایسی ایپس جو آپ کو کالز کی شناخت کرنے اور اسپام، روبوکالز، یا ناپسندیدہ نمبروں کو مسدود کرنے کی اجازت دیتی ہیں"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"‏<xliff:g id="APP_NAME">%1$s</xliff:g> کو کالر ID اور اسپام کی آپ کی ڈیفالٹ ایپ کے بطور سیٹ کریں؟"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"کوئی اجازت درکار نہیں ہے"</string>
     <string name="role_automotive_navigation_label" msgid="2701890757955474751">"ڈیفالٹ نیویگیشن ایپ"</string>
@@ -457,7 +469,7 @@
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو آپ کے کیلنڈر تک رسائی کی اجازت دیں؟"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو SMS پیغامات بھیجنے اور انہیں ملاحظہ کرنے کی اجازت دیں؟"</string>
     <string name="permgrouprequest_storage" msgid="7426990523173124539">"‏آپ کے آلے پر ;lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&amp;gt&amp; کو ;lt;b&amp;gt&amp;فائلز اور دستاویزات;lt;/b&amp;gt&amp; تک رسائی کی اجازت دیں؟"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"‏آپ کے آلے پر ;lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&amp;gt&amp; کو ;lt;b&amp;gt&amp;تصاویر، ویڈیوز، موسیقی اور آڈیو ;lt;/b&amp;gt&amp; تک رسائی کی اجازت دیں؟"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"‏آپ کے آلے پر &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; کو &lt;b&gt;تصاویر، ویڈیوز، موسیقی اور آڈیو&lt;/b&gt; تک رسائی کی اجازت دیں؟"</string>
     <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"‏آپ کے آلے پر ;lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&amp;gt&amp; کو ;lt;b&amp;gt&amp;تصاویر، ویڈیوز، موسیقی، آڈیو اور دیگر فائلز ;lt;/b&amp;gt&amp; تک رسائی کی اجازت دیں؟"</string>
     <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"‏;lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&amp;gt&amp; کو اس آلے پر موسیقی اور دیگر آڈیو فائلز تک رسائی کی اجازت دیں؟"</string>
     <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"‏;lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;b&amp;gt&amp; کو اس آلے پر تصاویر اور ویڈیوز تک رسائی کی اجازت دیں؟"</string>

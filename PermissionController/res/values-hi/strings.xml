@@ -277,6 +277,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"आपकी निजता की सुरक्षा के लिए अनुमतियां हटाई गई हैं"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> अब बैकग्राउंड में आपकी जगह की जानकारी ऐक्सेस कर सकता है"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"यह ऐप्लिकेशन हमेशा आपकी जगह की जानकारी ऐक्सेस कर सकता है. बदलने के लिए टैप करें."</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
+    <skip />
+    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
+    <skip />
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"ऐसे ऐप्लिकेशन की समीक्षा करें जिसके पास सुलभता का ऐक्सेस है"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g>, स्क्रीन पर मौजूद सभी कॉन्टेंट को पढ़ सकता है. इसके अलावा, यह दूसरे ऐप्लिकेशन पर कॉन्टेंट को दिखा सकता है और आपकी गतिविधि को ट्रैक कर सकता है."</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"यह ऐप्लिकेशन, स्क्रीन पर मौजूद सभी कॉन्टेंट को पढ़ सकता है. इसके अलावा, यह दूसरे ऐप्लिकेशन पर कॉन्टेंट को दिखा सकता है और आपकी गतिविधि को ट्रैक कर सकता है."</string>
@@ -347,13 +359,13 @@
     <string name="role_browser_request_description" msgid="5888803407905985941">"अनुमति की ज़रूरत नहीं है"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"डिफ़ॉल्ट फ़ोन ऐप्लिकेशन"</string>
     <string name="role_dialer_short_label" msgid="7186888549465352489">"फ़ोन ऐप्लिकेशन"</string>
-    <string name="role_dialer_description" msgid="8768708633696539612">"ऐसे ऐप्लिकेशन जिनकी मदद से आप अपने डिवाइस से टेलीफ़ोन कॉल कर सकते हैं और इनकमिंग कॉल का जवाब दे सकते हैं"</string>
+    <string name="role_dialer_description" msgid="8768708633696539612">"ऐसे ऐप्लिकेशन जिनकी मदद से, अपने डिवाइस से टेलीफ़ोन कॉल किए जा सकते हैं और इनकमिंग कॉल का जवाब दिया जा सकता है"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g> को आपके डिफ़ॉल्ट फ़ोन ऐप्लिकेशन के तौर पर सेट करें?"</string>
     <string name="role_dialer_request_description" msgid="2264219375528345270">"कॉल लॉग का ऐक्सेस मिलता है, मैसेज भेजें"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"डायलर"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"मैसेज का डिफ़ॉल्ट ऐप्लिकेशन"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"एसएमएस ऐप्लिकेशन"</string>
-    <string name="role_sms_description" msgid="3424020199148153513">"ऐसे ऐप्लिकेशन जिनकी मदद से आप अपने फ़ोन नंबर का इस्तेमाल मैसेज, फ़ोटो, वीडियो के साथ ही दूसरी चीज़ें भेजने और पाने के लिए कर सकते हैं"</string>
+    <string name="role_sms_description" msgid="3424020199148153513">"ऐसे ऐप्लिकेशन जिनकी मदद से अपने फ़ोन नंबर का इस्तेमाल मैसेज, फ़ोटो, वीडियो के साथ ही दूसरी चीज़ें भेजने और पाने के लिए किया जा सकता है"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g> को अपने डिफ़ॉल्ट मैसेज ऐप्लिकेशन के तौर पर सेट करें?"</string>
     <string name="role_sms_request_description" msgid="983371022668134198">"संपर्कों, मैसेज, फ़ोन का ऐक्सेस मिलता है"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"मैसेज, मैसेज भेजना, मैसेज करना, मैसेज भेजना या पाना."</string>

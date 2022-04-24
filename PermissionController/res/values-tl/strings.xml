@@ -277,6 +277,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Inalis ang mga pahintulot para protektahan ang iyong privacy"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"Kinuha ng <xliff:g id="APP_NAME">%s</xliff:g> ang iyong lokasyon sa background"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Maa-access ng app na ito ang iyong lokasyon anumang oras. I-tap para baguhin."</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
+    <skip />
+    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
+    <skip />
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Suriin ang app na may access sa accessibility"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"Magagawa ng <xliff:g id="APP_NAME">%s</xliff:g> na basahin ang lahat ng content sa screen, magpakita ng content sa ibabaw ng iba pang app, at subaybayan ang iyong mga pakikipag-ugnayan."</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Magagawa ng app na ito na basahin ang lahat ng content sa screen, magpakita ng content sa ibabaw ng iba pang app, at subaybayan ang mga pakikipag-ugnayan mo."</string>

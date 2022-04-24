@@ -227,13 +227,13 @@
     <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Aplikace s tímto oprávněním mají přístup k  vaší fyzické aktivitě, jako je chůze, jízda na kole, jízda autem, počet kroků a další"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Aplikace s tímto oprávněním mají přístup ke kalendáři"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Aplikace s tímto oprávněním mohou číst a zapisovat do seznamu hovorů v telefonu"</string>
-    <string name="permission_description_summary_camera" msgid="108004375101882069">"Aplikace s tímto oprávněním mohou fotit a nahrávat videa"</string>
+    <string name="permission_description_summary_camera" msgid="108004375101882069">"Aplikace s tímto oprávněním mohou fotit a nahrávat videa"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Aplikace s tímto oprávněním mají přístup ke kontaktům"</string>
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Aplikace s tímto oprávněním mají přístup k poloze zařízení"</string>
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Aplikace s tímto oprávněním mohou najít zařízení v okolí, připojit se k nim a zjistit jejich relativní polohu"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Aplikace s tímto oprávněním mohou nahrávat zvuk"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Aplikace s tímto oprávněním mohou realizovat a spravovat telefonické hovory"</string>
-    <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Aplikace s tímto oprávněním mají přístup k  datům ze snímačů vašich životních funkcí"</string>
+    <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Aplikace s tímto oprávněním mají přístup k datům ze snímačů vašich životních funkcí"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Aplikace s tímto oprávněním mohou odesílat a zobrazovat SMS"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Aplikace s tímto oprávněním mají přístup k  fotkám, médiím a souborům v zařízení"</string>
     <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"Aplikace s tímto oprávněním mají přístup k hudbě a dalším zvukovým souborům v zařízení"</string>
@@ -249,7 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Povolena správa všech souborů"</string>
     <string name="ask_header" msgid="2633816846459944376">"Pokaždé se zeptat"</string>
     <string name="denied_header" msgid="903209608358177654">"Nepovoleno"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Některé aplikace, které poskytují základní funkce zařízení, mohou mít speciální přístup ke všem souborům"</string>
+    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Některé aplikace, které poskytují základní funkce zařízení, mohou mít speciální přístup ke všem souborům."</string>
     <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Zobrazit aplikace s přístupem ke všem souborům"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 den}few{# dny}many{# dne}other{# dní}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 hodina}few{# hodiny}many{# hodiny}other{# hodin}}"</string>
@@ -277,6 +277,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Kvůli ochraně vašeho soukromí byla odebrána oprávnění"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> má přístup k poloze na pozadí"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Tato aplikace má neomezený přístup k poloze. Klepnutím to změníte."</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
+    <skip />
+    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
+    <skip />
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Zkontrolujte aplikace s přístupem k usnadnění přístupu"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"Aplikace <xliff:g id="APP_NAME">%s</xliff:g> může číst veškerý obsah na obrazovce, zobrazovat obsah před ostatními aplikacemi a sledovat vaše interakce."</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Tato aplikace může číst veškerý obsah na obrazovce, zobrazovat obsah před ostatními aplikacemi a sledovat vaše interakce."</string>
@@ -345,7 +357,7 @@
     <string name="role_browser_description" msgid="3465253637499842671">"Aplikace, které vám umožňují přístup k internetu a zobrazují odkazy, na které můžete klepnout."</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"Nastavit <xliff:g id="APP_NAME">%1$s</xliff:g> jako výchozí prohlížeč?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"Není potřeba žádné oprávnění"</string>
-    <string name="role_dialer_label" msgid="1100224146343237968">"Výchozí aplikace k volání"</string>
+    <string name="role_dialer_label" msgid="1100224146343237968">"Výchozí aplikace k volání"</string>
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Aplikace k telefonování"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Aplikace, které vám v zařízení umožňují volat a přijímat hovory."</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Nastavit <xliff:g id="APP_NAME">%1$s</xliff:g> jako výchozí aplikaci k telefonování?"</string>
@@ -364,7 +376,7 @@
     <string name="role_emergency_request_description" msgid="131645948770262850">"Není potřeba žádné oprávnění"</string>
     <string name="role_emergency_search_keywords" msgid="1920007722599213358">"v případě nouze"</string>
     <string name="role_home_label" msgid="3871847846649769412">"Výchozí aplikace pro domácnost"</string>
-    <string name="role_home_short_label" msgid="8544733747952272337">"Aplikace pro domácnost"</string>
+    <string name="role_home_short_label" msgid="8544733747952272337">"Vstupní aplikace"</string>
     <string name="role_home_description" msgid="7997371519626556675">"Aplikace (tzv. spouštěče), které nahrazují plochy na zařízení Android a dávají vám přístup k obsahu a funkcím zařízení."</string>
     <string name="role_home_request_title" msgid="738136983453341081">"Nastavit <xliff:g id="APP_NAME">%1$s</xliff:g> jako výchozí aplikaci pro domácnost?"</string>
     <string name="role_home_request_description" msgid="2658833966716057673">"Není potřeba žádné oprávnění"</string>
@@ -375,7 +387,7 @@
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"Nastavit <xliff:g id="APP_NAME">%1$s</xliff:g> jako výchozí aplikaci na přesměrování hovorů?"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Není potřeba žádné oprávnění"</string>
     <string name="role_call_screening_label" msgid="883935222060878724">"Výchozí aplikace k identifikaci volajícího a spamu"</string>
-    <string name="role_call_screening_short_label" msgid="2048465565063130834">"Aplikace na ID volajícího a spam"</string>
+    <string name="role_call_screening_short_label" msgid="2048465565063130834">"Identifikace volajících a spamu"</string>
     <string name="role_call_screening_description" msgid="2349431420497468981">"Aplikace, které umožňují identifikovat hovory a blokovat spam, automatické hovory a zakázaná čísla."</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Nastavit <xliff:g id="APP_NAME">%1$s</xliff:g> jako výchozí aplikaci k identifikaci volajícího a prevenci spamu?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Není potřeba žádné oprávnění"</string>

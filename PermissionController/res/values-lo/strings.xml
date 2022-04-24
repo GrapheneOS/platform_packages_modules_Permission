@@ -277,6 +277,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"ລຶບສິດອະນຸຍາດອອກແລ້ວເພື່ອປົກປ້ອງຄວາມເປັນສ່ວນຕົວຂອງທ່ານ"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> ໄດ້ຂໍ້ມູນສະຖານທີ່ຂອງທ່ານໃນພື້ນຫຼັງແລ້ວ"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"ແອັບນີ້ສາມາດເຂົ້າເຖິງສະຖານທີ່ຂອງທ່ານໄດ້ຕະຫຼອດເວລາ. ແຕະເພື່ອປ່ຽນແປງ."</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
+    <skip />
+    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
+    <skip />
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"ກວດສອບແອັບທີ່ມີສິດເຂົ້າເຖິງການຊ່ວຍເຂົ້າເຖິງ"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> ສາມາດອ່ານເນື້ອຫາທັງໝົດຢູ່ໜ້າຈໍ, ສະແດງເນື້ອຫາຂ້າມແອັບອື່ນ ແລະ ຕິດຕາມການໂຕ້ຕອບຂອງທ່ານໄດ້."</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"ແອັບນີ້ສາມາດອ່ານເນື້ອຫາທັງໝົດຢູ່ໜ້າຈໍ, ສະແດງເນື້ອຫາຂ້າມແອັບອື່ນ ແລະ ຕິດຕາມການໂຕ້ຕອບຂອງທ່ານໄດ້."</string>

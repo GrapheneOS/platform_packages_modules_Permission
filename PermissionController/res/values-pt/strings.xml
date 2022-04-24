@@ -190,7 +190,7 @@
     <string name="precise_image_description" msgid="6349638632303619872">"Local exato"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Local aproximado"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Usar local exato"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Apps podem acessar a localização aproximada quando a localização exata estiver desativada"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Apps podem acessar a localização aproximada quando o local exato está desativado"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Permissão para acessar <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Permitir que este app acesse: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Ver todas as permissões do app <xliff:g id="APP">%1$s</xliff:g>"</string>
@@ -277,6 +277,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"As permissões foram removidas para proteger sua privacidade"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"O app <xliff:g id="APP_NAME">%s</xliff:g> tem acesso à sua localização em segundo plano"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Este app pode acessar sua localização a qualquer momento. Toque para alterar."</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
+    <skip />
+    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
+    <skip />
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Revisar apps com acessibilidade"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"O app <xliff:g id="APP_NAME">%s</xliff:g> pode ler todo o conteúdo na tela, mostrar conteúdos sobre outros apps e monitorar suas interações."</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Este app pode ler todo o conteúdo na tela, mostrar conteúdos sobre outros apps e monitorar suas interações."</string>

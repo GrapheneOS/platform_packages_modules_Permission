@@ -80,7 +80,7 @@
     <string name="menu_hide_system" msgid="3855390843744028465">"Ukryj systemowe"</string>
     <string name="menu_show_7_days_data" msgid="8979611198508523706">"Pokaż 7 dni"</string>
     <string name="menu_show_24_hours_data" msgid="8228054833323380780">"Pokaż 24 godziny"</string>
-    <string name="manage_permission" msgid="2895385393037061964">"Zarządzaj uprawnieniami"</string>
+    <string name="manage_permission" msgid="2895385393037061964">"Zarządzaj uprawnieniem"</string>
     <string name="no_apps" msgid="2412612731628386816">"Brak aplikacji"</string>
     <string name="location_settings" msgid="3624412509133422562">"Ustawienia lokalizacji"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> jest dostawcą usług lokalizacyjnych dla tego urządzenia. Dostęp do danych lokalizacji można zmienić w ustawieniach lokalizacji."</string>
@@ -249,7 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Zezwolono na zarządzanie wszystkimi plikami"</string>
     <string name="ask_header" msgid="2633816846459944376">"Zawsze pytaj"</string>
     <string name="denied_header" msgid="903209608358177654">"Nie mają dostępu"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Niektóre aplikacje, które zapewniają niezbędną funkcjonalność urządzenia mogą mieć specjalny dostęp do wszystkich Twoich plików"</string>
+    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Niektóre aplikacje, które zapewniają niezbędną funkcjonalność urządzenia, mogą mieć specjalny dostęp do wszystkich Twoich plików"</string>
     <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Zobacz aplikacje z dostępem do wszystkich plików"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 dzień}few{# dni}many{# dni}other{# dnia}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 godzina}few{# godziny}many{# godzin}other{# godziny}}"</string>
@@ -277,6 +277,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Usunięto uprawnienia, by chronić Twoją prywatność."</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"Aplikacja <xliff:g id="APP_NAME">%s</xliff:g> uzyskała dostęp do Twojej lokalizacji w tle"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Ta aplikacja może zawsze uzyskać dostęp do Twojej lokalizacji. Kliknij, by to zmienić."</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
+    <skip />
+    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
+    <skip />
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Sprawdź aplikację z dostępem"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"Aplikacja <xliff:g id="APP_NAME">%s</xliff:g> może odczytywać całą zawartość ekranu, wyświetlać treści nad innymi aplikacjami i śledzić Twoje interakcje."</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Ta aplikacja może odczytywać całą zawartość ekranu, wyświetlać treści nad innymi aplikacjami i śledzić Twoje interakcje."</string>

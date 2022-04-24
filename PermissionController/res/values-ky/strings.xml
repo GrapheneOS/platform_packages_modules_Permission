@@ -199,8 +199,8 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Иштетилбеген колдонмолордун жөндөөлөрү"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Эгер колдонмо пайдаланылбаса, уруксаттар өчүрүлсүн"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Уруксаттарды өчүрүп, орун бошотуу"</string>
-    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Иштетилбесе, колдонмолордо жасалган аракеттерди тындыруу"</string>
-    <string name="unused_apps_summary" msgid="8839466950318403115">"Уруксаттарды өчүрүү, убактылуу файлдарды жок кылуу жана билдирмелерди токтотуу"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Колдонулбаган колдонмолордун ишин тындыруу"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Уруксаттар өчүрүлүп, убактылуу файлдар тазаланып, билдирмелер келбей калат"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Эгер колдонмо бир нече ай пайдаланылбаса, жеке маалыматтарыңызды коргоо үчүн бул колдонмого берилген уруксаттар өчүрүлөт."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Эгер колдонмо бир нече ай пайдаланылбаса, жеке дайын-даректериңизди коргоо максатында төмөнкү уруксаттар өчүрүлөт: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Жеке дайын-даректериңизди коргоо максатында, бир нече айдан бери ачылбаган колдонмолордогу уруксаттар өчүрүлдү."</string>
@@ -249,7 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Бардык файлдарды башкарууга уруксат берилген"</string>
     <string name="ask_header" msgid="2633816846459944376">"Ар дайым суралсын"</string>
     <string name="denied_header" msgid="903209608358177654">"Тыюу салынган"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Түзмөгүңүздүн колдонулушун өркүндөткөн айрым колдонмолордун бардык файлдарыңызды колдонууга атайын уруксаты бар"</string>
+    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Түзмөгүңүздүн негизги функциялары менен иштеген айрым колдонмолордун бардык файлдарыңызды колдонууга атайын уруксаты бар."</string>
     <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Бардык файлдарга мүмкүнчүлүгү бар колдонмолорду көрүү"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 күн}other{# күн}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 саат}other{# саат}}"</string>
@@ -277,6 +277,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Купуялыгыңызды коргоо максатында, уруксаттар өчүрүлөт"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> жайгашкан жериңизди фондон алды"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Бул колдонмо кайда жүргөнүңүздү ар дайым билип турат. Аны өзгөртүү үчүн таптап коюңуз."</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
+    <skip />
+    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
+    <skip />
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Кирүү мүмкүнчүлүгү бар колдонмолорду карап чыгуу"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> экрандагы бардык нерселерди окуп, контентти башка колдонмолордун үстүнөн көрсөтүп, аракеттериңизге көз сала алат."</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Бул колдонмо экрандагы бардык нерселерди окуп, контентти башка колдонмолордун үстүнөн көрсөтүп, аракеттериңизге көз сала алат."</string>

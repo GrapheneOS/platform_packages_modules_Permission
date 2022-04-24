@@ -200,7 +200,7 @@
     <string name="auto_revoke_label" msgid="5068393642936571656">"Odstrániť povolenia, ak sa aplikácia nepoužíva"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Odstraňovať povol. a uvoľňovať priestor"</string>
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"Pozastaviť aktivitu v nepoužívaných apl."</string>
-    <string name="unused_apps_summary" msgid="8839466950318403115">"Odstráňte povolenia, vymažte dočasné súbory a zastavte upozornenia"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Odstrániť povolenia, vymazať dočasné súbory a zastaviť upozornenia"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Ak túto aplikáciu niekoľko mesiacov nepoužijete, v záujme ochrany vašich údajov budú odstránené jej povolenia."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Ak túto aplikáciu niekoľko mesiacov nepoužijete, v záujme ochrany vašich údajov budú odstránené tieto povolenia: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"V záujme ochrany vašich údajov boli odobrané povolenia aplikáciám, ktoré ste niekoľko mesiacov nepoužívali."</string>
@@ -277,6 +277,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Povolenia boli odstránené na zaistenie ochrany vášho súkromia"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"Aplikácia <xliff:g id="APP_NAME">%s</xliff:g> získala vašu polohu na pozadí"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Táto aplikácia má neobmedzený prístup k polohe. Klepnutím to zmeníte."</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
+    <skip />
+    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
+    <skip />
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Skontrolujte aplikáciu pomocou prístupu dostupnosti"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> dokáže čítať všetok obsah na obrazovke, zobrazovať obsah cez iné aplikácie a sledovať vaše interakcie."</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Táto aplikácia dokáže čítať všetok obsah na obrazovke, zobrazovať obsah cez iné aplikácie a sledovať vaše interakcie."</string>

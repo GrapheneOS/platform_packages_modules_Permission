@@ -193,7 +193,7 @@
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"सटीक लोकेसन अफ हुँदा एपहरूलाई मेरो अनुमानित लोकेसन प्रयोग गर्न दिइयोस्"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>सम्बन्धी अनुमति"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"<xliff:g id="PERM">%1$s</xliff:g>लाई यो एप प्रयोग गर्ने अनुमति दिने वा नदिने"</string>
-    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g>सँग भएका सबै अनुमति हेर्नुहोस्"</string>
+    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g> सँग भएका सबै अनुमति हेर्नुहोस्"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"यो अनुमति पाएका सबै एपहरू हेर्नुहोस्"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"सहायकको माइक्रोफोन प्रयोगसम्बन्धी डेटा देखाउनुहोस्"</string>
     <string name="unused_apps_category_title" msgid="2988455616845243901">"प्रयोग नगरिएको एपसम्बन्धी सेटिङ"</string>
@@ -277,6 +277,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"तपाईंको गोपनीयताको सुरक्षार्थ अनुमतिहरू रद्द गरिए"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> ले पृष्ठभूमिमा तपाईंको स्थानमाथिको पहुँच प्राप्त गर्‍यो"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"यो एपले सधैँ तपाईंको स्थान प्रयोग गर्न सक्छ। बदल्न ट्याप गर्नुहोस्‌।"</string>
+    <string name="notification_listener_reminder_notification_title" msgid="6214106302085018939">"सूचना सुन्ने अनुमति दिइएको एपको समीक्षा गर्नुहोस्"</string>
+    <string name="notification_listener_reminder_notification_content" msgid="4740891089329946164">"<xliff:g id="APP_NAME">%s</xliff:g> ले तपाईंका सबै सूचनाहरू रिड गर्न सक्छ।"</string>
+    <string name="notification_listener_warning_card_content" msgid="8181427178654279926">"यो एपले तपाईंका सबै सूचनाहरू रिड गर्न सक्छ।"</string>
+    <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"अनुमति हटाउनुहोस्"</string>
+    <string name="notification_listener_review_app_button_label" msgid="1023909640634882973">"सूचना प्रयोग गर्ने अनुमति दिइएको एपको समीक्षा गर्नुहोस्"</string>
+    <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"अनुमति हटाइएको छ"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"सर्वसुलभता प्राप्त एपको समीक्षा गर्नुहोस्"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> स्क्रिनमा भएका सबै सामग्री रिड गर्न, अन्य एपमाथि सामग्रीहरू देखाउन र तपाईंका अन्तर्क्रियाहरू ट्र्याक गर्न सक्छ।"</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"यो एप स्क्रिनमा भएका सबै सामग्री रिड गर्न, अन्य एपमाथि सामग्रीहरू देखाउन र तपाईंका अन्तर्क्रियाहरू ट्र्याक गर्न सक्छ।"</string>

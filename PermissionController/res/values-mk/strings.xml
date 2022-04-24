@@ -74,13 +74,13 @@
     <string name="storage_supergroup_warning_allow" msgid="103093462784523190">"Оваа апликација е дизајнирана за постара верзија на Android. Ако ја одобрите дозволава, тогаш ќе биде дозволен пристапот до целиот капацитет (вклучувајќи ги фотографиите, видеата, музиката, аудиото и другите датотеки)."</string>
     <string name="storage_supergroup_warning_deny" msgid="6420765672683284347">"Оваа апликација е дизајнирана за постара верзија на Android. Ако ја одбиете дозволава, тогаш ќе биде одбиен пристапот до целиот капацитет (вклучувајќи ги фотографиите, видеата, музиката, аудиото и другите датотеки)."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"изврши непознато дејство"</string>
-    <string name="app_permissions_group_summary" msgid="8788419008958284002">"Со дозвола: <xliff:g id="COUNT_0">%1$d</xliff:g> од <xliff:g id="COUNT_1">%2$d</xliff:g> апликации"</string>
+    <string name="app_permissions_group_summary" msgid="8788419008958284002">"Апликации со дозвола: <xliff:g id="COUNT_0">%1$d</xliff:g> од <xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> дозволени апликации"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Прикажи го системот"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Сокриј го системот"</string>
     <string name="menu_show_7_days_data" msgid="8979611198508523706">"Прикажи 7 дена"</string>
     <string name="menu_show_24_hours_data" msgid="8228054833323380780">"Прикажи 24 часа"</string>
-    <string name="manage_permission" msgid="2895385393037061964">"Управувајте со дозволите"</string>
+    <string name="manage_permission" msgid="2895385393037061964">"Управувајте со дозволата"</string>
     <string name="no_apps" msgid="2412612731628386816">"Нема апликации"</string>
     <string name="location_settings" msgid="3624412509133422562">"Поставки за локација"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> е давател на услуги според локација за овој уред. Пристапот до локацијата може да се смени од поставките за локација."</string>
@@ -199,7 +199,7 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Поставки за некористени апликации"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Отстрани ги дозволите ако апликацијата не се користи"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Отстранувај дозволи и ослободувај простор"</string>
-    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Паузирај неактивна апликација"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Паузирај некористени апликации"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"Отстранува дозволи, брише привремени датотеки и запира известувања"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"За да се заштитат вашите податоци, дозволите за апликацијава ќе се отстранат ако апликацијата не се користи неколку месеци."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Ако апликацијата не се користи неколку месеци, заради заштита на податоците, ќе се отстранат следниве дозволи: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
@@ -250,7 +250,7 @@
     <string name="ask_header" msgid="2633816846459944376">"Прашувај секогаш"</string>
     <string name="denied_header" msgid="903209608358177654">"Без дозвола"</string>
     <string name="storage_footer_warning_text" msgid="2242258357752432337">"Некои апликации што обезбедуваат основна функционалност за вашиот уред може да имаат посебен пристап до сите ваши датотеки"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Видете ги апликациите со пристап до сите датотеки"</string>
+    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Прикажи ги апликациите со пристап до сите датотеки"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 ден}one{# ден}other{# дена}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 час}one{# час}other{# часа}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 минута}one{# минута}other{# минути}}"</string>
@@ -277,6 +277,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Дозволите се отстранети за да се заштити вашата приватност"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> ја има вашата локација во заднина"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Апликацијава секогаш може да пристапува до вашата локација. Допрете за да го промените тоа."</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
+    <skip />
+    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
+    <skip />
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Прегледате ја апликацијата со пристап за пристапност"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> може да ги чита сите содржини на екранот, прикажани содржини на други апликации и да ги следи вашите интеракции."</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Апликацијава може да ги чита сите содржини на екранот, прикажани содржини на други апликации и да ги следи вашите интеракции."</string>
@@ -496,7 +508,7 @@
     <string name="privdash_label_location" msgid="6882400763866489291">"Локација"</string>
     <string name="privdash_label_other" msgid="3710394147423236033">"Друго"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"Ништо"</string>
-    <string name="privdash_label_24h" msgid="1512532123865375319">"Минативе\n24 часа"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"Минатите\n24 часа"</string>
     <string name="privdash_label_7d" msgid="5645301995348656931">"Изминатите\n7 дена"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> е заштитена од Android. Бидејќи вашите податоци се обработуваат на уредов, користењето на дозволата на апликацијава не е прикажано на лентата за статус или вашата контролна табла за приватност."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> е заштитена од Android. Бидејќи вашите податоци се обработуваат на уредов, користењето на дозволата на апликацијава не е прикажано на вашата контролна табла за приватност."</string>

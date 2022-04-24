@@ -277,6 +277,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"നിങ്ങളുടെ സ്വകാര്യത പരിരക്ഷിക്കാൻ അനുമതികൾ നീക്കം ചെയ്തു"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g>-ന് നിങ്ങളുടെ ലൊക്കേഷൻ പശ്ചാത്തലത്തിൽ ലഭിച്ചു"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"ഈ ആപ്പിന് എപ്പോഴും നിങ്ങളുടെ ലൊക്കേഷൻ ആക്‌സസ് ചെയ്യാനാവും. മാറ്റാൻ ടാപ്പ് ചെയ്യുക."</string>
+    <string name="notification_listener_reminder_notification_title" msgid="6214106302085018939">"അറിയിപ്പ് ലിസണർ ആക്‌സസ് ഉപയോഗിച്ച് ആപ്പ് അവലോകനം ചെയ്യുക"</string>
+    <string name="notification_listener_reminder_notification_content" msgid="4740891089329946164">"നിങ്ങളുടെ എല്ലാ അറിയിപ്പുകളും വായിക്കാൻ <xliff:g id="APP_NAME">%s</xliff:g> ആപ്പിന് കഴിയും."</string>
+    <string name="notification_listener_warning_card_content" msgid="8181427178654279926">"നിങ്ങളുടെ എല്ലാ അറിയിപ്പുകളും വായിക്കാൻ ഈ ആപ്പിന് കഴിയും."</string>
+    <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"ആക്‌സസ് നീക്കം ചെയ്യുക"</string>
+    <string name="notification_listener_review_app_button_label" msgid="1023909640634882973">"അറിയിപ്പ് ആക്‌സസ് ഉപയോഗിച്ച് ആപ്പ് അവലോകനം ചെയ്യുക"</string>
+    <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"ആക്‌സസ് നീക്കം ചെയ്‌തു"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"ഉപയോഗസഹായി ആക്‌സസ് ഉപയോഗിച്ച് ആപ്പ് അവലോകനം ചെയ്യുക"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> എന്നതിന് സ്‌ക്രീനിലെ എല്ലാ ഉള്ളടക്കവും വായിക്കാനും മറ്റ് ആപ്പുകളിൽ ഉള്ളടക്കം പ്രദർശിപ്പിക്കാനും നിങ്ങളുടെ ഇടപഴകലുകൾ ട്രാക്ക് ചെയ്യാനും കഴിയും."</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"ഈ ആപ്പിന് സ്‌ക്രീനിലെ എല്ലാ ഉള്ളടക്കവും വായിക്കാനും മറ്റ് ആപ്പുകളിൽ ഉള്ളടക്കം പ്രദർശിപ്പിക്കാനും നിങ്ങളുടെ ഇടപഴകലുകൾ ട്രാക്ക് ചെയ്യാനും കഴിയും."</string>

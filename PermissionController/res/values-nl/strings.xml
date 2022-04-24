@@ -200,7 +200,7 @@
     <string name="auto_revoke_label" msgid="5068393642936571656">"Rechten intrekken als app niet wordt gebruikt"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Rechten intrekken en ruimte vrijmaken"</string>
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"App-activiteit onderbreken indien niet gebruikt"</string>
-    <string name="unused_apps_summary" msgid="8839466950318403115">"Rechten verwijderen, tijdelijke bestanden verwijderen en meldingen stoppen"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Verwijder rechten en tijdelijke bestanden, en stop meldingen"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Om je gegevens te beschermen worden de rechten voor deze app verwijderd als de app een aantal maanden niet is gebruikt."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Om je gegevens te beschermen worden de volgende rechten ingetrokken als de app een paar maanden niet is gebruikt: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Om je gegevens te beschermen zijn de rechten verwijderd van apps die al een paar maanden niet zijn gebruikt."</string>
@@ -249,7 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Alle bestanden beheren"</string>
     <string name="ask_header" msgid="2633816846459944376">"Altijd vragen"</string>
     <string name="denied_header" msgid="903209608358177654">"Niet toegestaan"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Sommige apps die essentiële functionaliteit voor je apparaat bieden, kunnen speciale toegang tot al je bestanden hebben"</string>
+    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Sommige apps die essentiële functionaliteit voor je apparaat bieden, kunnen speciale toegang tot al je bestanden hebben."</string>
     <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Apps met toegang tot alle bestanden bekijken"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 dag}other{# dagen}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 uur}other{# uur}}"</string>
@@ -277,6 +277,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"De rechten zijn verwijderd om je privacy te beschermen"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> had toegang tot je locatie op de achtergrond"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Deze app heeft altijd toegang tot je locatie. Tik om dit te wijzigen."</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
+    <skip />
+    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
+    <skip />
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"App met toegankelijkheidstoegang bekijken"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> kan alle content op het scherm lezen, content weergeven bovenop andere apps en je interacties bijhouden."</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Deze app kan alle content op het scherm lezen, content weergeven bovenop andere apps en je interacties bijhouden."</string>
@@ -347,13 +359,13 @@
     <string name="role_browser_request_description" msgid="5888803407905985941">"Geen rechten nodig"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"Standaard telefoon-app"</string>
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Telefoon-app"</string>
-    <string name="role_dialer_description" msgid="8768708633696539612">"Apps waarmee je kunt bellen en gebeld kunt worden op je apparaat"</string>
+    <string name="role_dialer_description" msgid="8768708633696539612">"Apps waarmee je kunt bellen en gebeld kunt worden op je apparaat."</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g> instellen als standaard telefoon-app?"</string>
     <string name="role_dialer_request_description" msgid="2264219375528345270">"Krijgt toegang tot gesprekslijst en kan sms\'jes verzenden"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"kiezer"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Standaard sms-app"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"Sms-app"</string>
-    <string name="role_sms_description" msgid="3424020199148153513">"Apps waarmee je met je telefoonnummer onder andere sms\'jes, foto\'s en video\'s kunt verzenden en ontvangen"</string>
+    <string name="role_sms_description" msgid="3424020199148153513">"Apps waarmee je met je telefoonnummer onder andere sms\'jes, foto\'s en video\'s kunt sturen en ontvangen."</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Wil je <xliff:g id="APP_NAME">%1$s</xliff:g> instellen als je standaard sms-app?"</string>
     <string name="role_sms_request_description" msgid="983371022668134198">"Krijgt toegang tot contacten, sms en telefoon"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"tekst bericht, tekstbericht, sms, sms\'en, berichten, verzenden, sturen"</string>
@@ -376,7 +388,7 @@
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Geen rechten nodig"</string>
     <string name="role_call_screening_label" msgid="883935222060878724">"Standaard-app voor beller-ID\'s en spam"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"App voor beller-ID\'s en spam"</string>
-    <string name="role_call_screening_description" msgid="2349431420497468981">"Apps waarmee je gesprekken kunt identificeren en spam, robocalls of ongewenste nummers kunt blokkeren"</string>
+    <string name="role_call_screening_description" msgid="2349431420497468981">"Apps waarmee je gesprekken kunt identificeren en spam, robocalls of ongewenste nummers kunt blokkeren."</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> instellen als standaard-app voor beller-ID\'s en spam?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Geen rechten nodig"</string>
     <string name="role_automotive_navigation_label" msgid="2701890757955474751">"Standaard navigatie-app"</string>

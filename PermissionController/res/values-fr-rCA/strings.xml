@@ -200,7 +200,7 @@
     <string name="auto_revoke_label" msgid="5068393642936571656">"Retirer les autorisations si l\'application est inutilisée"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Retirer autorisations et libérer espace"</string>
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"Suspendre l\'activité appli si inutilisée"</string>
-    <string name="unused_apps_summary" msgid="8839466950318403115">"Retirez les autorisations, supprimez les fichiers temporaires et arrêtez les notifications"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Retirer les autorisations, supprimer les fichiers temporaires et arrêter les notifications"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Afin de protéger vos données, les autorisations pour cette application seront supprimées si elle n\'est pas utilisée pendant quelques mois."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Afin de protéger vos données, si l\'application n\'est pas utilisée pendant quelques mois, les autorisations suivantes seront supprimées : <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Afin de protéger vos données, les autorisations ont été supprimées pour les applications que vous n\'avez pas utilisées depuis quelques mois."</string>
@@ -277,6 +277,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Les autorisations ont été supprimées afin de protéger votre confidentialité"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"L\'application <xliff:g id="APP_NAME">%s</xliff:g> a accédé à votre position en arrière-plan"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Cette application peut toujours accéder à votre position. Touchez l\'écran pour modifier cela."</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
+    <skip />
+    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
+    <skip />
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Examiner l\'application avec accès à l\'accessibilité"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> peut lire tout le contenu à l\'écran, afficher du contenu par-dessus d\'autres applications et suivre vos interactions."</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Cette application peut lire tout le contenu à l\'écran, afficher du contenu par-dessus d\'autres applications et suivre vos interactions."</string>

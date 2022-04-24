@@ -277,6 +277,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"మీ గోప్యతను రక్షించడానికి అనుమతులు తీసివేయబడ్డాయి"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"మీ లొకేషన్‌ను <xliff:g id="APP_NAME">%s</xliff:g> బ్యాక్‌గ్రౌండ్‌లో ఉపయోగిస్తోంది"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"ఈ యాప్ మీ లొకేషన్‌ను ఎల్లప్పుడూ యాక్సెస్ చేయగలదు. మార్చడానికి ట్యాప్ చేయండి."</string>
+    <string name="notification_listener_reminder_notification_title" msgid="6214106302085018939">"నోటిఫికేషన్ లిస్‌నర్ యాక్సెస్‌తో యాప్‌ను రివ్యూ చేయండి"</string>
+    <string name="notification_listener_reminder_notification_content" msgid="4740891089329946164">"<xliff:g id="APP_NAME">%s</xliff:g> మీ అన్ని నోటిఫికేషన్‌లను చదవగలదు."</string>
+    <string name="notification_listener_warning_card_content" msgid="8181427178654279926">"ఈ యాప్ మీ అన్ని నోటిఫికేషన్‌లను చదవగలదు."</string>
+    <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"యాక్సెస్‌ను తీసివేయండి"</string>
+    <string name="notification_listener_review_app_button_label" msgid="1023909640634882973">"నోటిఫికేషన్ యాక్సెస్‌తో యాప్‌ను రివ్యూ చేయండి"</string>
+    <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"యాక్సెస్ తీసివేయబడింది"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"యాక్సెసిబిలిటీ యాక్సెస్‌తో యాప్‌ను రివ్యూ చేయండి"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> స్క్రీన్‌పై ఉన్న అన్ని కంటెంట్‌లను చదవగలదు, ఇతర యాప్‌లలో కంటెంట్‌లను ప్రదర్శించగలదు అలాగే మీ ఇంటరాక్షన్‌లను ట్రాక్ చేయగలదు."</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"ఈ యాప్ స్క్రీన్‌పై ఉన్న అన్ని కంటెంట్‌లను చదవగలదు, ఇతర యాప్‌లలో కంటెంట్‌లను ప్రదర్శించగలదు అలాగే మీ ఇంటరాక్షన్‌లను ట్రాక్ చేయగలదు."</string>
@@ -351,7 +357,7 @@
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g>ను మీ ఆటోమేటిక్ ఫోన్ యాప్‌గా సెట్ చేయాలా?"</string>
     <string name="role_dialer_request_description" msgid="2264219375528345270">"కాల్ లాగ్, అలాగే SMSలు పంపడానికి యాక్సెస్ పొందుతుంది"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"డయలర్"</string>
-    <string name="role_sms_label" msgid="8456999857547686640">"ఆటోమాటిక్ SMS యాప్"</string>
+    <string name="role_sms_label" msgid="8456999857547686640">"ఆటోమేటిక్ SMS యాప్"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS యాప్"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"SMSలు, ఫోటోలు, వీడియోలు, మరిన్నింటిని పంపడానికి, అందుకోవడానికి మీ ఫోన్ నంబర్‌ను ఉపయోగించేందుకు మిమ్మల్ని అనుమతించే యాప్‌లు"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g>ను మీ ఆటోమేటిక్ SMS యాప్‌గా సెట్ చేయాలా?"</string>

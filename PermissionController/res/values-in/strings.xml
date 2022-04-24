@@ -96,7 +96,7 @@
     <string name="permission_summary_disabled_by_admin_background_only" msgid="3127091456731845646">"Akses latar belakang dinonaktifkan oleh admin"</string>
     <string name="permission_summary_enabled_by_admin_background_only" msgid="9132423838440275757">"Akses latar belakang diaktifkan oleh admin"</string>
     <string name="permission_summary_enabled_by_admin_foreground_only" msgid="1298432715610745358">"Akses latar depan diaktifkan oleh admin"</string>
-    <string name="permission_summary_enabled_system_fixed" msgid="2438344700184127274">"Perangkat memerlukan izin ini untuk beroperasi"</string>
+    <string name="permission_summary_enabled_system_fixed" msgid="2438344700184127274">"Izin ini diperlukan untuk fungsi perangkat"</string>
     <!-- no translation found for background_access_chooser_dialog_choices:0 (1351721623256561996) -->
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
@@ -224,7 +224,7 @@
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Jika Anda mengizinkan pengelolaan semua file, aplikasi ini dapat mengakses, mengubah, dan menghapus file di penyimpanan umum pada perangkat ini atau perangkat penyimpanan yang terhubung. Aplikasi dapat mengakses file tanpa bertanya kepada Anda."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Izinkan aplikasi ini untuk mengakses, mengubah, dan menghapus file di perangkat, atau perangkat penyimpanan yang terhubung? Aplikasi ini dapat mengakses file tanpa bertanya pada Anda."</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"Aplikasi dengan izin ini dapat <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
-    <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Aplikasi dengan izin ini dapat mengakses aktivitas fisik Anda, seperti berjalan, bersepeda, mengemudi, menghitung langkah, dan sebagainya"</string>
+    <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Aplikasi dengan izin ini dapat mengakses aktivitas fisik Anda, seperti berjalan, bersepeda, mengemudi, jumlah langkah, dan sebagainya"</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Aplikasi dengan izin ini dapat mengakses kalender Anda"</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Aplikasi dengan izin ini dapat membaca dan menulis log panggilan telepon"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Aplikasi dengan izin ini dapat mengambil foto dan merekam video"</string>
@@ -250,7 +250,7 @@
     <string name="ask_header" msgid="2633816846459944376">"Selalu tanya"</string>
     <string name="denied_header" msgid="903209608358177654">"Tidak diizinkan"</string>
     <string name="storage_footer_warning_text" msgid="2242258357752432337">"Beberapa aplikasi yang memberikan fungsi penting untuk perangkat Anda dapat memiliki akses khusus ke semua file Anda"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Lihat aplikasi dengan akses semua file"</string>
+    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Lihat aplikasi dengan akses ke semua file"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 hari}other{# hari}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 jam}other{# jam}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 menit}other{# menit}}"</string>
@@ -277,6 +277,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Izin dihapus untuk melindungi privasi Anda"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> mendapatkan lokasi Anda di latar belakang"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Aplikasi ini selalu dapat mengakses lokasi Anda. Ketuk untuk mengubah."</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
+    <skip />
+    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
+    <skip />
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Tinjau aplikasi dengan akses aksesibilitas"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> dapat membaca semua konten di layar, menampilkan konten di atas aplikasi lain, dan melacak interaksi Anda."</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Aplikasi ini dapat membaca semua konten di layar, menampilkan konten di atas aplikasi lain, dan melacak interaksi Anda."</string>
@@ -374,10 +386,10 @@
     <string name="role_call_redirection_description" msgid="6091669882014664420">"Aplikasi yang memungkinkan Anda meneruskan panggilan keluar ke nomor telepon lain"</string>
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"Tetapkan <xliff:g id="APP_NAME">%1$s</xliff:g> sebagai aplikasi pengalihan panggilan default Anda?"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Tidak ada izin yang diperlukan"</string>
-    <string name="role_call_screening_label" msgid="883935222060878724">"Aplikasi nomor penelepon &amp; spam default"</string>
-    <string name="role_call_screening_short_label" msgid="2048465565063130834">"Apl nomor penelepon &amp; spam"</string>
-    <string name="role_call_screening_description" msgid="2349431420497468981">"Aplikasi yang memungkinkan Anda mengidentifikasi panggilan telepon dan memblokir spam dan robocall, atau nomor yang tidak diinginkan"</string>
-    <string name="role_call_screening_request_title" msgid="7358309224566977290">"Tetapkan <xliff:g id="APP_NAME">%1$s</xliff:g> sebagai aplikasi nomor penelepon &amp; spam default Anda?"</string>
+    <string name="role_call_screening_label" msgid="883935222060878724">"Aplikasi ID penelepon &amp; spam default"</string>
+    <string name="role_call_screening_short_label" msgid="2048465565063130834">"Apl ID penelepon &amp; spam"</string>
+    <string name="role_call_screening_description" msgid="2349431420497468981">"Aplikasi yang memungkinkan Anda mengidentifikasi panggilan telepon dan memblokir spam, robocall, atau nomor yang tidak diinginkan"</string>
+    <string name="role_call_screening_request_title" msgid="7358309224566977290">"Tetapkan <xliff:g id="APP_NAME">%1$s</xliff:g> sebagai aplikasi ID penelepon &amp; spam default Anda?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Tidak ada izin yang diperlukan"</string>
     <string name="role_automotive_navigation_label" msgid="2701890757955474751">"Aplikasi navigasi default"</string>
     <string name="role_automotive_navigation_short_label" msgid="5165823092506922457">"Aplikasi navigasi"</string>

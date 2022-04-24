@@ -53,7 +53,7 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"アプリ"</string>
     <string name="app_permissions" msgid="3369917736607944781">"アプリの権限"</string>
     <string name="unused_apps" msgid="2058057455175955094">"使用されていないアプリ"</string>
-    <string name="no_unused_apps" msgid="12809387670415295">"使用されていないアプリなし"</string>
+    <string name="no_unused_apps" msgid="12809387670415295">"使用されていないアプリはありません"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"使用していないアプリ: 0 個"</string>
     <string name="review_permission_decisions" msgid="309559429150613632">"最近の権限の許可 / 拒否"</string>
     <string name="review_permission_decisions_view_all" msgid="90391040431566130">"最近の権限の許可 / 拒否をすべて表示"</string>
@@ -277,6 +277,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"プライバシー保護のため権限を削除しました"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> がバックグラウンドで位置情報を取得しました"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"このアプリは常に位置情報にアクセスできます。設定を変更するにはタップしてください。"</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
+    <skip />
+    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
+    <skip />
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"アクセシビリティの権限を持つアプリを確認する"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> は画面上のコンテンツをすべて読み取ったり、他のアプリの上にコンテンツを重ねて表示したり、ユーザーの操作を記録したりできます。"</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"このアプリは画面上のコンテンツをすべて読み取ったり、他のアプリの上にコンテンツを重ねて表示したり、ユーザーの操作を記録したりできます。"</string>
