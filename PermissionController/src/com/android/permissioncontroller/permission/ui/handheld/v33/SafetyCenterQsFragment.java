@@ -46,8 +46,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.ColorInt;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -121,7 +121,7 @@ public class SafetyCenterQsFragment extends Fragment {
             mPermGroupUsages = new ArrayList<>();
         }
 
-        getActivity().setTheme(R.style.SafetyCenter);
+        getActivity().setTheme(R.style.Theme_SafetyCenterQs);
 
         SafetyCenterQsViewModelFactory factory = new SafetyCenterQsViewModelFactory(
                 getActivity().getApplication(), mSessionId, mPermGroupUsages);
