@@ -1449,9 +1449,8 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
      *                                     caller has to make sure to kill the app if needed.
      */
     public void persistChanges(boolean mayKillBecauseOfAppOpsChange) {
-        persistChanges(mayKillBecauseOfAppOpsChange, null);
+        persistChanges(mayKillBecauseOfAppOpsChange, null, null);
     }
-
 
     /**
      * If the changes to this group were delayed, persist them to the platform.
@@ -1462,6 +1461,20 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
      * @param revokeReason If any permissions are getting revoked, the reason for revoking them.
      */
     public void persistChanges(boolean mayKillBecauseOfAppOpsChange, String revokeReason) {
+        persistChanges(mayKillBecauseOfAppOpsChange, revokeReason, null);
+    }
+
+    /**
+     * If the changes to this group were delayed, persist them to the platform.
+     *
+     * @param mayKillBecauseOfAppOpsChange If the app these permissions belong to may be killed if
+     *                                     app ops change. If this is set to {@code false} the
+     *                                     caller has to make sure to kill the app if needed.
+     * @param revokeReason If any permissions are getting revoked, the reason for revoking them.
+     * @param filterPermissions If provided, only persist state for the given permissions
+     */
+    public void persistChanges(boolean mayKillBecauseOfAppOpsChange, String revokeReason,
+            Set<String> filterPermissions) {
         int uid = mPackageInfo.applicationInfo.uid;
 
         int numPermissions = mPermissions.size();
@@ -1469,6 +1482,10 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
 
         for (int i = 0; i < numPermissions; i++) {
             Permission permission = mPermissions.valueAt(i);
+
+            if (filterPermissions != null && !filterPermissions.contains(permission.getName())) {
+                continue;
+            }
 
             if (!permission.isSystemFixed()) {
                 if (permission.isGranted()) {
