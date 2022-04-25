@@ -14,15 +14,17 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.service
+package com.android.permissioncontroller.permission.service.v33
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Process
+import androidx.annotation.RequiresApi
 import androidx.annotation.VisibleForTesting
 import com.android.permissioncontroller.DumpableLog
-import com.android.permissioncontroller.permission.data.PermissionDecision
+import com.android.permissioncontroller.permission.data.v33.PermissionDecision
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -31,6 +33,7 @@ import kotlinx.coroutines.launch
  * [BroadcastReceiver] to clear user decision information when a package has its data cleared or
  * is fully removed.
  */
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class PersistedStoragePackageUninstalledReceiver(
     @VisibleForTesting
     private val recentDecisionStorage: PermissionEventStorage<PermissionDecision> =
