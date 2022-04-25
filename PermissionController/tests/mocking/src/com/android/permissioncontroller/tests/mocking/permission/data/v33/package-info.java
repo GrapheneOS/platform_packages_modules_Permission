@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 The Android Open Source Project
+ * Copyright (C) 2022 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,17 +14,5 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.data
-
-/**
- * A record of a user's permission decision for an app.
- *
- * @param permissionGroupName permission group name of the decision that was made
- * @param isGranted whether the permission was granted or denied
- */
-data class PermissionDecision(
-    override val packageName: String,
-    override val eventTime: Long,
-    val permissionGroupName: String,
-    val isGranted: Boolean
-) : PermissionEvent(packageName, eventTime)
+@androidx.annotation.RequiresApi(android.os.Build.VERSION_CODES.TIRAMISU)
+package com.android.permissioncontroller.tests.mocking.permission.data.v33;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.service
+package com.android.permissioncontroller.permission.service.v33
 
 import android.app.job.JobInfo
 import android.app.job.JobParameters
@@ -22,14 +22,16 @@ import android.app.job.JobScheduler
 import android.app.job.JobService
 import android.content.ComponentName
 import android.content.Context
+import android.os.Build
 import android.provider.DeviceConfig
 import android.util.AtomicFile
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.annotation.VisibleForTesting
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.DumpableLog
-import com.android.permissioncontroller.permission.data.PermissionDecision
-import com.android.permissioncontroller.permission.data.PermissionEvent
+import com.android.permissioncontroller.permission.data.v33.PermissionDecision
+import com.android.permissioncontroller.permission.data.v33.PermissionEvent
 import com.android.permissioncontroller.permission.utils.Utils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -47,6 +49,7 @@ import java.util.concurrent.TimeUnit
  * Thread-safe implementation of [PermissionEventStorage] using an XML file as the
  * database.
  */
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 abstract class BasePermissionEventStorage<T : PermissionEvent>(
     private val context: Context,
     private val jobScheduler: JobScheduler
@@ -253,6 +256,7 @@ abstract class BasePermissionEventStorage<T : PermissionEvent>(
 /**
  * A job to clean up old permission decisions.
  */
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class DecisionCleanupJobService(
     @VisibleForTesting
     val storage: PermissionEventStorage<PermissionDecision> =
