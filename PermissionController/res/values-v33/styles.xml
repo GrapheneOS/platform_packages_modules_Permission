@@ -70,7 +70,7 @@
         parent="android:Widget.DeviceDefault.Button.Colored">
         <item name="android:background">@drawable/safety_center_issue_action_button</item>
         <item name="android:height">56dp</item>
-        <item name="android:textColor">@color/safety_center_button_text</item>
+        <item name="android:textColor">?attr/textColorScActionButton</item>
     </style>
 
     <style name="SafetyCenter.RescanButton"

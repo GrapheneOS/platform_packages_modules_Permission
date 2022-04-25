@@ -20,7 +20,7 @@
     android:viewportWidth="28"
     android:viewportHeight="28">
     <path android:pathData="M0 14C0 6.26801 6.26801 0 14 0C21.732 0 28 6.26801 28 14C28 21.732 21.732 28 14 28C6.26801 28 0 21.732 0 14Z"
-        android:fillColor="@color/safety_center_dismiss_button_background" />
+        android:fillColor="?attr/colorSurfaceVariant" />
     <path android:pathData="M18.6668 10.274L17.7268 9.33398L14.0002 13.0607L10.2735 9.33398L9.3335 10.274L13.0602 14.0007L9.3335 17.7273L10.2735 18.6673L14.0002 14.9407L17.7268 18.6673L18.6668 17.7273L14.9402 14.0007L18.6668 10.274Z"
-        android:fillColor="@color/safety_center_dismiss_button" />
+        android:fillColor="?android:attr/textColorPrimary" />
 </vector>

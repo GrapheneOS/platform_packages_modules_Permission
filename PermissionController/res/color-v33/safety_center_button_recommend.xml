@@ -15,5 +15,5 @@
   -->
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:color="#FCC934" /> <!--GM Yellow/400-->
+    <item android:color="@color/gm_yellow_400" />
 </selector>

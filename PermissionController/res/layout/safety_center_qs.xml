@@ -20,7 +20,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    style="@style/SafetyCenter"
     android:background="?android:colorBackground"
     android:id="@+id/safety_center_root">
 
