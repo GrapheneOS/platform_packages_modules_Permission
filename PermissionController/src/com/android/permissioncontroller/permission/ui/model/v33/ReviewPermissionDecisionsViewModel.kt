@@ -14,22 +14,24 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.ui.model.v31
+package com.android.permissioncontroller.permission.ui.model.v33
 
 import android.app.Application
 import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.icu.lang.UCharacter
+import android.os.Build
 import android.os.UserHandle
 import android.text.BidiFormatter
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.android.permissioncontroller.DumpableLog
 import com.android.permissioncontroller.R
-import com.android.permissioncontroller.permission.data.PermissionDecision
-import com.android.permissioncontroller.permission.data.RecentPermissionDecisionsLiveData
 import com.android.permissioncontroller.permission.data.SmartAsyncMediatorLiveData
 import com.android.permissioncontroller.permission.data.UserPackageInfosLiveData
+import com.android.permissioncontroller.permission.data.v33.PermissionDecision
+import com.android.permissioncontroller.permission.data.v33.RecentPermissionDecisionsLiveData
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
 import com.android.permissioncontroller.permission.ui.ManagePermissionsActivity
 import com.android.permissioncontroller.permission.ui.auto.AutoReviewPermissionDecisionsFragment
@@ -40,6 +42,7 @@ import kotlinx.coroutines.Job
 import java.util.concurrent.TimeUnit
 
 /** Viewmodel for [ReviewPermissionDecisionsFragment] */
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class ReviewPermissionDecisionsViewModel(val app: Application, val user: UserHandle) : ViewModel() {
 
     val LOG_TAG = "ReviewPermissionDecisionsViewModel"
@@ -146,6 +149,7 @@ class ReviewPermissionDecisionsViewModel(val app: Application, val user: UserHan
 /**
  * Factory for a [ReviewPermissionDecisionsViewModel]
  */
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class ReviewPermissionDecisionsViewModelFactory(val app: Application, val user: UserHandle) :
     ViewModelProvider.Factory {
 

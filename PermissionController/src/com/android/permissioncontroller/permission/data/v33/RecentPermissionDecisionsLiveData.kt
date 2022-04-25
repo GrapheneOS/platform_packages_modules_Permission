@@ -14,14 +14,18 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.data
+package com.android.permissioncontroller.permission.data.v33
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.annotation.VisibleForTesting
-import com.android.permissioncontroller.permission.service.PermissionDecisionStorageImpl
-import com.android.permissioncontroller.permission.service.PermissionEventStorage
+import com.android.permissioncontroller.permission.data.SmartAsyncMediatorLiveData
+import com.android.permissioncontroller.permission.service.v33.PermissionDecisionStorageImpl
+import com.android.permissioncontroller.permission.service.v33.PermissionEventStorage
 import kotlinx.coroutines.Job
 
 /** Gets all recent permission decisions made by the user. */
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class RecentPermissionDecisionsLiveData(
     @get:VisibleForTesting
     val recentDecisionsStorage: PermissionEventStorage<PermissionDecision> =

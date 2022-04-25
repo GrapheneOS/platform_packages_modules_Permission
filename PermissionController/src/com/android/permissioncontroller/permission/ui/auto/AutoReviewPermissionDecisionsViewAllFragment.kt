@@ -16,6 +16,7 @@
 
 package com.android.permissioncontroller.permission.ui.auto
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.UserHandle
@@ -26,11 +27,12 @@ import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.DumpableLog
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.auto.AutoSettingsFrameFragment
-import com.android.permissioncontroller.permission.data.PermissionDecision
-import com.android.permissioncontroller.permission.ui.model.v31.ReviewPermissionDecisionsViewModel
-import com.android.permissioncontroller.permission.ui.model.v31.ReviewPermissionDecisionsViewModelFactory
+import com.android.permissioncontroller.permission.data.v33.PermissionDecision
+import com.android.permissioncontroller.permission.ui.model.v33.ReviewPermissionDecisionsViewModel
+import com.android.permissioncontroller.permission.ui.model.v33.ReviewPermissionDecisionsViewModelFactory
 
 /** Shows all recent permission decisions. */
+@SuppressLint("NewApi")
 class AutoReviewPermissionDecisionsViewAllFragment : AutoSettingsFrameFragment() {
 
     companion object {
