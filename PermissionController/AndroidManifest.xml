@@ -140,7 +140,7 @@
         <service android:name="com.android.permissioncontroller.hibernation.HibernationJobService"
                  android:permission="android.permission.BIND_JOB_SERVICE" />
 
-        <service android:name="com.android.permissioncontroller.permission.service.v33.DecisionCleanupJobService"
+        <service android:name="com.android.permissioncontroller.permission.service.v33.PermissionEventCleanupJobService"
                  android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <receiver
@@ -432,7 +432,7 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name="com.android.permissioncontroller.permission.service.v33.RecentPermissionDecisionsTimeChangeReceiver"
+        <receiver android:name="com.android.permissioncontroller.permission.service.v33.PermissionStorageTimeChangeReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
