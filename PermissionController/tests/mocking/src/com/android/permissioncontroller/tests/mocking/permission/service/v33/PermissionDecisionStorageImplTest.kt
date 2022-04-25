@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.service
+package com.android.permissioncontroller.tests.mocking.permission.service.v33
 
 import android.app.job.JobScheduler
 import android.content.Context
@@ -24,7 +24,8 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.PermissionControllerApplication
-import com.android.permissioncontroller.permission.data.PermissionDecision
+import com.android.permissioncontroller.permission.data.v33.PermissionDecision
+import com.android.permissioncontroller.permission.service.v33.PermissionDecisionStorageImpl
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
 import org.junit.After
