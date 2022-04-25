@@ -20,6 +20,7 @@ import android.Manifest
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.Manifest.permission_group.LOCATION
+import android.annotation.SuppressLint
 import android.app.AppOpsManager
 import android.app.AppOpsManager.MODE_ALLOWED
 import android.app.AppOpsManager.MODE_ERRORED
@@ -48,7 +49,7 @@ import com.android.permissioncontroller.permission.data.SmartUpdateMediatorLiveD
 import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPermission
-import com.android.permissioncontroller.permission.service.PermissionDecisionStorageImpl
+import com.android.permissioncontroller.permission.service.v33.PermissionDecisionStorageImpl
 import com.android.permissioncontroller.permission.ui.handheld.v31.getDefaultPrecision
 import com.android.permissioncontroller.permission.ui.handheld.v31.isLocationAccuracyEnabled
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.ALLOW
@@ -831,6 +832,7 @@ class AppPermissionViewModel(
         return 0
     }
 
+    @SuppressLint("NewApi")
     private fun logPermissionChanges(
         oldGroup: LightAppPermGroup,
         newGroup: LightAppPermGroup,
