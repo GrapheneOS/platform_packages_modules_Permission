@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.tests.mocking.permission.service
+package com.android.permissioncontroller.tests.mocking.permission.service.v33
 
 import android.content.Context
 import android.content.Intent
@@ -27,11 +27,11 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.PermissionControllerApplication
-import com.android.permissioncontroller.permission.service.PermissionDecisionStorageImpl
-import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsTimeChangeReceiver
-import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsTimeChangeReceiver.Companion.PREF_KEY_ELAPSED_REALTIME_SNAPSHOT
-import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsTimeChangeReceiver.Companion.PREF_KEY_SYSTEM_TIME_SNAPSHOT
-import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsTimeChangeReceiver.Companion.SNAPSHOT_UNINITIALIZED
+import com.android.permissioncontroller.permission.service.v33.PermissionDecisionStorageImpl
+import com.android.permissioncontroller.permission.service.v33.RecentPermissionDecisionsTimeChangeReceiver
+import com.android.permissioncontroller.permission.service.v33.RecentPermissionDecisionsTimeChangeReceiver.Companion.PREF_KEY_ELAPSED_REALTIME_SNAPSHOT
+import com.android.permissioncontroller.permission.service.v33.RecentPermissionDecisionsTimeChangeReceiver.Companion.PREF_KEY_SYSTEM_TIME_SNAPSHOT
+import com.android.permissioncontroller.permission.service.v33.RecentPermissionDecisionsTimeChangeReceiver.Companion.SNAPSHOT_UNINITIALIZED
 import com.android.permissioncontroller.permission.utils.TimeSource
 import org.junit.After
 import org.junit.Before

@@ -14,13 +14,16 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.service
+package com.android.permissioncontroller.permission.service.v33
 
-import com.android.permissioncontroller.permission.data.PermissionEvent
+import android.os.Build
+import androidx.annotation.RequiresApi
+import com.android.permissioncontroller.permission.data.v33.PermissionEvent
 
 /**
  * Persistent storage for retrieving persisted permission event data.
  */
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 interface PermissionEventStorage<T : PermissionEvent> {
     /**
      * Persist a permission event for retrieval later.
