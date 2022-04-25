@@ -24,7 +24,8 @@ import android.os.Process
 import androidx.annotation.RequiresApi
 import androidx.annotation.VisibleForTesting
 import com.android.permissioncontroller.DumpableLog
-import com.android.permissioncontroller.permission.data.v33.PermissionDecision
+import com.android.permissioncontroller.permission.data.v33.PermissionEvent
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -36,8 +37,9 @@ import kotlinx.coroutines.launch
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class PersistedStoragePackageUninstalledReceiver(
     @VisibleForTesting
-    private val recentDecisionStorage: PermissionEventStorage<PermissionDecision> =
-        PermissionDecisionStorageImpl.getInstance()
+    private val storages: List<PermissionEventStorage<out PermissionEvent>> =
+        PermissionEventStorageImpls.getInstance(),
+    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : BroadcastReceiver() {
 
     companion object {
@@ -45,7 +47,7 @@ class PersistedStoragePackageUninstalledReceiver(
     }
 
     override fun onReceive(context: Context, intent: Intent) {
-        if (!PermissionDecisionStorageImpl.isRecordPermissionsSupported(context)) {
+        if (storages.isEmpty()) {
             return
         }
         val action = intent.action
@@ -58,8 +60,10 @@ class PersistedStoragePackageUninstalledReceiver(
             val userId = Process.myUserHandle().identifier
             DumpableLog.d(LOG_TAG, "Received $action for $packageName for u$userId")
 
-            GlobalScope.launch(Dispatchers.IO) {
-                recentDecisionStorage.removeEventsForPackage(packageName)
+            GlobalScope.launch(dispatcher) {
+                for (storage in storages) {
+                    storage.removeEventsForPackage(packageName)
+                }
             }
         }
     }
