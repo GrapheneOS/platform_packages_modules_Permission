@@ -177,9 +177,9 @@ public final class Utils {
     private static final String PROPERTY_LOCATION_ACCESS_CHECK_ENABLED =
             "location_access_check_enabled";
 
-    /** The time an app needs to be unused in order to be hibernated */
-    public static final String PROPERTY_PERMISSION_DECISIONS_CHECK_OLD_FREQUENCY_MILLIS =
-            "permission_decisions_check_old_frequency_millis";
+    /** How frequently to check permission event store to scrub old data */
+    public static final String PROPERTY_PERMISSION_EVENTS_CHECK_OLD_FREQUENCY_MILLIS =
+            "permission_events_check_old_frequency_millis";
 
     /** The time an app needs to be unused in order to be hibernated */
     public static final String PROPERTY_PERMISSION_DECISIONS_MAX_DATA_AGE_MILLIS =
