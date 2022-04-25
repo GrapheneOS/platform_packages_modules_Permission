@@ -30,12 +30,21 @@ import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.service.v33.SafetyCenterQsTileService
 import com.android.permissioncontroller.permission.utils.Utils
+import com.android.permissioncontroller.privacysources.NotificationListenerCheck.NotificationListenerPrivacySource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Default
 import kotlinx.coroutines.launch
 
-private fun createMapOfSourceIdsToSources(): Map<String, PrivacySource> = emptyMap()
+private fun createMapOfSourceIdsToSources(): Map<String, PrivacySource> {
+    if (!SdkLevel.isAtLeastT()) {
+        return emptyMap()
+    }
+
+    return mapOf(
+        SC_NLS_SOURCE_ID to NotificationListenerPrivacySource()
+    )
+}
 
 class SafetyCenterReceiver(
     private val getMapOfSourceIdsToSources: () -> Map<String, PrivacySource> =
@@ -103,7 +112,7 @@ class SafetyCenterReceiver(
     ) {
         privacySources.forEach { source ->
             CoroutineScope(dispatcher).launch {
-                source.safetyCenterEnabledChanged(enabled)
+                source.safetyCenterEnabledChanged(context, enabled)
             }
         }
         updateTileVisibility(context, enabled)
