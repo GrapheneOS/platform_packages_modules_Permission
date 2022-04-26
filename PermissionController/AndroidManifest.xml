@@ -351,16 +351,6 @@
             </intent-filter>
         </service>
 
-         <service android:name="com.android.permissioncontroller.permission.service.v33.SafetyCenterQsTileService"
-                  android:exported="true"
-                  android:label="@string/safety_privacy_qs_tile_title"
-                  android:icon ="@drawable/safety_shield"
-                  android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
-             <intent-filter>
-                 <action android:name="android.service.quicksettings.action.QS_TILE" />
-             </intent-filter>
-         </service>
-
         <service android:name="com.android.permissioncontroller.auto.DrivingDecisionReminderService" />
 
         <receiver android:name="com.android.permissioncontroller.role.service.ClearUserDeniedReceiver"
