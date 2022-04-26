@@ -17,6 +17,7 @@
 package com.android.permissioncontroller;
 
 import com.android.permissioncontroller.hibernation.HibernationJobService;
+import com.android.permissioncontroller.permission.service.v33.PermissionEventCleanupJobService;
 
 /**
  * App-global constants
@@ -43,9 +44,9 @@ public class Constants {
 
     /**
      * ID of the periodic job
-     * {@link com.android.permissioncontroller.permission.service.BasePermissionEventStorage}
+     * {@link PermissionEventCleanupJobService}
      */
-    public static final int OLD_PERMISSION_DECISION_CLEANUP_JOB_ID = 3;
+    public static final int OLD_PERMISSION_EVENT_CLEANUP_JOB_ID = 3;
 
     /**
      * ID for the periodic job in

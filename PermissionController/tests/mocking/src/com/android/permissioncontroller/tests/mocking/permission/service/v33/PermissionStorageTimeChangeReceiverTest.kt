@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.tests.mocking.permission.service
+package com.android.permissioncontroller.tests.mocking.permission.service.v33
 
 import android.content.Context
 import android.content.Intent
@@ -27,11 +27,12 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.PermissionControllerApplication
-import com.android.permissioncontroller.permission.service.PermissionDecisionStorageImpl
-import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsTimeChangeReceiver
-import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsTimeChangeReceiver.Companion.PREF_KEY_ELAPSED_REALTIME_SNAPSHOT
-import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsTimeChangeReceiver.Companion.PREF_KEY_SYSTEM_TIME_SNAPSHOT
-import com.android.permissioncontroller.permission.service.RecentPermissionDecisionsTimeChangeReceiver.Companion.SNAPSHOT_UNINITIALIZED
+import com.android.permissioncontroller.permission.data.v33.PermissionEvent
+import com.android.permissioncontroller.permission.service.v33.PermissionEventStorage
+import com.android.permissioncontroller.permission.service.v33.PermissionStorageTimeChangeReceiver
+import com.android.permissioncontroller.permission.service.v33.PermissionStorageTimeChangeReceiver.Companion.PREF_KEY_ELAPSED_REALTIME_SNAPSHOT
+import com.android.permissioncontroller.permission.service.v33.PermissionStorageTimeChangeReceiver.Companion.PREF_KEY_SYSTEM_TIME_SNAPSHOT
+import com.android.permissioncontroller.permission.service.v33.PermissionStorageTimeChangeReceiver.Companion.SNAPSHOT_UNINITIALIZED
 import com.android.permissioncontroller.permission.utils.TimeSource
 import org.junit.After
 import org.junit.Before
@@ -42,7 +43,6 @@ import org.mockito.ArgumentMatchers.anyLong
 import org.mockito.ArgumentMatchers.anyString
 import org.mockito.ArgumentMatchers.eq
 import org.mockito.Mock
-import org.mockito.Mockito
 import org.mockito.Mockito.`when`
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.never
@@ -56,7 +56,7 @@ import java.io.File
 import java.util.concurrent.TimeUnit
 
 @RunWith(AndroidJUnit4::class)
-class RecentPermissionDecisionsTimeChangeReceiverTest {
+class PermissionStorageTimeChangeReceiverTest {
 
     companion object {
         val application = mock(PermissionControllerApplication::class.java)
@@ -75,12 +75,12 @@ class RecentPermissionDecisionsTimeChangeReceiverTest {
     lateinit var packageManager: PackageManager
 
     @Mock
-    lateinit var recentPermissionDecisionsStorage: PermissionDecisionStorageImpl
+    lateinit var permissionEventStorage: PermissionEventStorage<out PermissionEvent>
 
     private val fakeTimeSource = FakeTimeSource()
     private lateinit var mockitoSession: MockitoSession
     private lateinit var filesDir: File
-    private lateinit var receiver: RecentPermissionDecisionsTimeChangeReceiver
+    private lateinit var receiver: PermissionStorageTimeChangeReceiver
 
     @Before
     fun setup() {
@@ -102,7 +102,7 @@ class RecentPermissionDecisionsTimeChangeReceiverTest {
         `when`(sharedPreferences.getLong(eq(PREF_KEY_ELAPSED_REALTIME_SNAPSHOT), anyLong()))
             .thenReturn(SNAPSHOT_UNINITIALIZED)
 
-        receiver = spy(RecentPermissionDecisionsTimeChangeReceiver(recentPermissionDecisionsStorage,
+        receiver = spy(PermissionStorageTimeChangeReceiver(listOf(permissionEventStorage),
             fakeTimeSource))
     }
 
@@ -115,8 +115,6 @@ class RecentPermissionDecisionsTimeChangeReceiverTest {
 
     @Test
     fun onReceive_bootCompletedReceived_savesSnapshot() {
-        setPermissionDecisionsSupported(true)
-
         receiver.onReceive(context, Intent(Intent.ACTION_BOOT_COMPLETED))
 
         verify(editor).putLong(PREF_KEY_SYSTEM_TIME_SNAPSHOT, fakeTimeSource.currentTimeMillis)
@@ -125,8 +123,6 @@ class RecentPermissionDecisionsTimeChangeReceiverTest {
 
     @Test
     fun onReceive_timeSetReceived_beforeBootCompleted_doesNothing() {
-        setPermissionDecisionsSupported(true)
-
         fakeTimeSource.currentTimeMillis = fakeTimeSource.currentTimeMillis +
             TimeUnit.DAYS.toMillis(2)
         receiver.onReceive(context, Intent(Intent.ACTION_TIME_CHANGED))
@@ -137,8 +133,6 @@ class RecentPermissionDecisionsTimeChangeReceiverTest {
 
     @Test
     fun onReceive_unknownIntent_doesNothing() {
-        setPermissionDecisionsSupported(true)
-
         receiver.onReceive(context, Intent(Intent.ACTION_MANAGE_PERMISSIONS))
 
         verify(receiver, never()).onTimeChanged(anyLong())
@@ -147,7 +141,6 @@ class RecentPermissionDecisionsTimeChangeReceiverTest {
 
     @Test
     fun onReceive_timeDiffBelowMinimum_doesNothing() {
-        setPermissionDecisionsSupported(true)
         mockBootCompletedSnapshot()
 
         fakeTimeSource.currentTimeMillis = fakeTimeSource.currentTimeMillis -
@@ -159,7 +152,6 @@ class RecentPermissionDecisionsTimeChangeReceiverTest {
 
     @Test
     fun onReceive_timeChangedAboveMinimum_callsOnTimeChanged() {
-        setPermissionDecisionsSupported(true)
         mockBootCompletedSnapshot()
 
         // in 3 days the time is set to one day from now (effectively set back by 2 days)
@@ -172,29 +164,11 @@ class RecentPermissionDecisionsTimeChangeReceiverTest {
         verify(receiver).onTimeChanged(-TimeUnit.DAYS.toMillis(2))
     }
 
-    @Test
-    fun onReceive_timeChangedAboveMinimum_unsupportedDevice_doesNothing() {
-        setPermissionDecisionsSupported(false)
-        mockBootCompletedSnapshot()
-
-        fakeTimeSource.currentTimeMillis = fakeTimeSource.currentTimeMillis -
-            TimeUnit.DAYS.toMillis(2)
-        receiver.onReceive(context, Intent(Intent.ACTION_TIME_CHANGED))
-
-        verify(receiver, never()).onTimeChanged(anyLong())
-    }
-
     private fun mockBootCompletedSnapshot() {
         `when`(sharedPreferences.getLong(eq(PREF_KEY_SYSTEM_TIME_SNAPSHOT), anyLong()))
             .thenReturn(fakeTimeSource.currentTimeMillis)
         `when`(sharedPreferences.getLong(eq(PREF_KEY_ELAPSED_REALTIME_SNAPSHOT), anyLong()))
             .thenReturn(fakeTimeSource.elapsedRealtime)
-    }
-
-    private fun setPermissionDecisionsSupported(isSupported: Boolean) {
-        Mockito.doReturn(packageManager).`when`(context).packageManager
-        Mockito.doReturn(isSupported).`when`(packageManager)
-            .hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE)
     }
 
     class FakeTimeSource(

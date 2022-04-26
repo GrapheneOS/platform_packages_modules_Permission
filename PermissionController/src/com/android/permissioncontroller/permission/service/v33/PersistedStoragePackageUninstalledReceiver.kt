@@ -14,15 +14,18 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.service
+package com.android.permissioncontroller.permission.service.v33
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Process
+import androidx.annotation.RequiresApi
 import androidx.annotation.VisibleForTesting
 import com.android.permissioncontroller.DumpableLog
-import com.android.permissioncontroller.permission.data.PermissionDecision
+import com.android.permissioncontroller.permission.data.v33.PermissionEvent
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -31,10 +34,12 @@ import kotlinx.coroutines.launch
  * [BroadcastReceiver] to clear user decision information when a package has its data cleared or
  * is fully removed.
  */
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class PersistedStoragePackageUninstalledReceiver(
     @VisibleForTesting
-    private val recentDecisionStorage: PermissionEventStorage<PermissionDecision> =
-        PermissionDecisionStorageImpl.getInstance()
+    private val storages: List<PermissionEventStorage<out PermissionEvent>> =
+        PermissionEventStorageImpls.getInstance(),
+    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : BroadcastReceiver() {
 
     companion object {
@@ -42,7 +47,7 @@ class PersistedStoragePackageUninstalledReceiver(
     }
 
     override fun onReceive(context: Context, intent: Intent) {
-        if (!PermissionDecisionStorageImpl.isRecordPermissionsSupported(context)) {
+        if (storages.isEmpty()) {
             return
         }
         val action = intent.action
@@ -55,8 +60,10 @@ class PersistedStoragePackageUninstalledReceiver(
             val userId = Process.myUserHandle().identifier
             DumpableLog.d(LOG_TAG, "Received $action for $packageName for u$userId")
 
-            GlobalScope.launch(Dispatchers.IO) {
-                recentDecisionStorage.removeEventsForPackage(packageName)
+            GlobalScope.launch(dispatcher) {
+                for (storage in storages) {
+                    storage.removeEventsForPackage(packageName)
+                }
             }
         }
     }
