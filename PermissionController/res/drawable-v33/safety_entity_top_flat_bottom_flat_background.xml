@@ -17,6 +17,6 @@
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
     android:color="?android:colorControlHighlight">
     <item>
-        <color android:color="@color/safety_center_card_background" />
+        <color android:color="?attr/colorSurface" />
     </item>
 </ripple>

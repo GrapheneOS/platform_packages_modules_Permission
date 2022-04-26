@@ -14,38 +14,30 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.tests.mocking.permission.service
+package com.android.permissioncontroller.tests.mocking.permission.service.v33
 
 import android.app.job.JobScheduler
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
-import android.provider.DeviceConfig
-import android.provider.DeviceConfig.NAMESPACE_PERMISSIONS
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.PermissionControllerApplication
-import com.android.permissioncontroller.permission.data.PermissionDecision
-import com.android.permissioncontroller.permission.service.PermissionDecisionStorageImpl
-import com.android.permissioncontroller.permission.service.PermissionEventStorage
-import com.android.permissioncontroller.permission.service.PersistedStoragePackageUninstalledReceiver
+import com.android.permissioncontroller.permission.service.v33.PersistedStoragePackageUninstalledReceiver
+import com.android.permissioncontroller.tests.mocking.permission.data.v33.FakeEventStorage
 import com.google.common.truth.Truth.assertThat
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.ArgumentMatchers.anyString
-import org.mockito.ArgumentMatchers.eq
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.Mockito.`when`
-import org.mockito.Mockito.any
-import org.mockito.Mockito.doReturn
 import org.mockito.Mockito.spy
 import org.mockito.Mockito.verifyZeroInteractions
 import org.mockito.MockitoAnnotations
@@ -61,10 +53,7 @@ class PersistedStoragePackageUninstalledReceiverTest {
         val application = Mockito.mock(PermissionControllerApplication::class.java)
     }
 
-    private val retryTimeoutMs = 200L
-    private val retryAttempts = 3
-    private val musicCalendarGrant = PermissionDecision(
-        "package.test.music", Date(2020, 0, 1).time, "calendar", false)
+    private val musicEvent = TestPermissionEvent("package.test.music", Date(2020, 0, 1).time)
 
     @Mock
     lateinit var context: Context
@@ -77,7 +66,7 @@ class PersistedStoragePackageUninstalledReceiverTest {
 
     private lateinit var mockitoSession: MockitoSession
     private lateinit var filesDir: File
-    private lateinit var permissionEventStorage: PermissionEventStorage<PermissionDecision>
+    private lateinit var permissionEventStorage: FakeEventStorage<TestPermissionEvent>
     private lateinit var receiver: PersistedStoragePackageUninstalledReceiver
 
     @Before
@@ -85,18 +74,15 @@ class PersistedStoragePackageUninstalledReceiverTest {
         MockitoAnnotations.initMocks(this)
         mockitoSession = ExtendedMockito.mockitoSession()
             .mockStatic(PermissionControllerApplication::class.java)
-            .mockStatic(DeviceConfig::class.java)
             .strictness(Strictness.LENIENT).startMocking()
         `when`(PermissionControllerApplication.get()).thenReturn(application)
         val context: Context = ApplicationProvider.getApplicationContext()
         filesDir = context.cacheDir
         `when`(application.filesDir).thenReturn(filesDir)
-        `when`(jobScheduler.schedule(any())).thenReturn(JobScheduler.RESULT_SUCCESS)
-        `when`(DeviceConfig.getProperty(eq(NAMESPACE_PERMISSIONS), anyString())).thenReturn(null)
 
-        permissionEventStorage = spy(
-            PermissionDecisionStorageImpl(context, jobScheduler))
-        receiver = spy(PersistedStoragePackageUninstalledReceiver(permissionEventStorage))
+        permissionEventStorage = spy(FakeEventStorage())
+        receiver = spy(PersistedStoragePackageUninstalledReceiver(
+            listOf(permissionEventStorage), Dispatchers.Main.immediate))
     }
 
     @After
@@ -107,18 +93,7 @@ class PersistedStoragePackageUninstalledReceiverTest {
     }
 
     @Test
-    fun onReceive_permissionDecisionsNotSupported_doesNothing() {
-        setPermissionDecisionsSupported(false)
-        val intent = Intent(Intent.ACTION_PACKAGE_DATA_CLEARED)
-
-        receiver.onReceive(context, intent)
-
-        verifyZeroInteractions(permissionEventStorage)
-    }
-
-    @Test
     fun onReceive_unsupportedAction_doesNothing() {
-        setPermissionDecisionsSupported(true)
         val intent = Intent(Intent.ACTION_PACKAGES_SUSPENDED)
 
         receiver.onReceive(context, intent)
@@ -127,38 +102,18 @@ class PersistedStoragePackageUninstalledReceiverTest {
     }
 
     @Test
-    fun onReceive_clearAction_removesDecisionsForPackage() {
+    fun onReceive_clearAction_removesEventsForPackage() {
         runBlocking {
-            permissionEventStorage.storeEvent(musicCalendarGrant)
-            assertThat(permissionEventStorage.loadEvents()).isNotEmpty()
+            permissionEventStorage.storeEvent(musicEvent)
+            assertThat(permissionEventStorage.loadEvents().isNotEmpty())
         }
-        setPermissionDecisionsSupported(true)
         val intent = Intent(Intent.ACTION_PACKAGE_DATA_CLEARED)
-        intent.data = Uri.parse(musicCalendarGrant.packageName)
+        intent.data = Uri.parse(musicEvent.packageName)
 
         receiver.onReceive(context, intent)
 
-        // we don't get a callback for when the storage write operation has succeeded, so we poll
-        // for the success result
-        var result: List<PermissionDecision>? = null
-        for (i in 0..retryAttempts) {
-            runBlocking {
-                result = permissionEventStorage.loadEvents()
-            }
-            if (result?.isEmpty() == true) {
-                break
-            }
-            runBlocking {
-                delay(retryTimeoutMs)
-            }
+        runBlocking {
+            assertThat(permissionEventStorage.loadEvents().isEmpty())
         }
-        assertThat(result).isNotNull()
-        assertThat(result).isEmpty()
-    }
-
-    private fun setPermissionDecisionsSupported(isSupported: Boolean) {
-        doReturn(packageManager).`when`(context).packageManager
-        doReturn(isSupported).`when`(packageManager)
-            .hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE)
     }
 }

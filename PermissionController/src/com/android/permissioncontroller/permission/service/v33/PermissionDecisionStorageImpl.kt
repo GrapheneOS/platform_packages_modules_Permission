@@ -14,16 +14,18 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.service
+package com.android.permissioncontroller.permission.service.v33
 
 import android.app.job.JobScheduler
 import android.content.Context
+import android.os.Build
 import android.provider.DeviceConfig
 import android.util.Log
 import android.util.Xml
+import androidx.annotation.RequiresApi
 import com.android.permissioncontroller.DeviceUtils
 import com.android.permissioncontroller.PermissionControllerApplication
-import com.android.permissioncontroller.permission.data.PermissionDecision
+import com.android.permissioncontroller.permission.data.v33.PermissionDecision
 import com.android.permissioncontroller.permission.utils.Utils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -43,9 +45,10 @@ import java.util.concurrent.TimeUnit
 /**
  * Implementation of [BasePermissionEventStorage] for storing [PermissionDecision] events.
  */
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class PermissionDecisionStorageImpl(
     context: Context,
-    jobScheduler: JobScheduler
+    jobScheduler: JobScheduler = context.getSystemService(JobScheduler::class.java)!!
 ) : BasePermissionEventStorage<PermissionDecision>(context, jobScheduler) {
 
     // We don't use namespaces
@@ -85,8 +88,7 @@ class PermissionDecisionStorageImpl(
             }
 
         private fun createInstance(): PermissionEventStorage<PermissionDecision> {
-            return PermissionDecisionStorageImpl(PermissionControllerApplication.get(),
-                PermissionControllerApplication.get().getSystemService(JobScheduler::class.java)!!)
+            return PermissionDecisionStorageImpl(PermissionControllerApplication.get())
         }
 
         fun recordPermissionDecision(
