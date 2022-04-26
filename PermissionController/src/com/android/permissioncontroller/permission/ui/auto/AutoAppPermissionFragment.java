@@ -26,6 +26,7 @@ import static com.android.permissioncontroller.permission.ui.ManagePermissionsAc
 import static com.android.permissioncontroller.permission.ui.ManagePermissionsActivity.EXTRA_RESULT_PERMISSION_RESULT;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -54,6 +55,7 @@ import androidx.preference.TwoStatePreference;
 import com.android.car.ui.AlertDialogBuilder;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.auto.AutoSettingsFrameFragment;
+import com.android.permissioncontroller.permission.ui.AdvancedConfirmDialogArgs;
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ChangeRequest;
@@ -452,5 +454,26 @@ public class AutoAppPermissionFragment extends AutoSettingsFrameFragment
             AutoAppPermissionFragment fragment = (AutoAppPermissionFragment) getTargetFragment();
             fragment.setRadioButtonsState(fragment.mViewModel.getButtonStateLiveData().getValue());
         }
+    }
+
+    @Override
+    public void showAdvancedConfirmDialog(AdvancedConfirmDialogArgs args) {
+        AlertDialog.Builder b = new AlertDialog.Builder(getContext())
+                .setIcon(args.getIconId())
+                .setMessage(args.getMessageId())
+                .setNegativeButton(args.getNegativeButtonTextId(),
+                        (DialogInterface dialog, int which) -> {
+                            setRadioButtonsState(mViewModel.getButtonStateLiveData().getValue());
+                        })
+                .setPositiveButton(args.getPositiveButtonTextId(),
+                        (DialogInterface dialog, int which) -> {
+                            mViewModel.requestChange(args.getSetOneTime(),
+                                    AutoAppPermissionFragment.this, AutoAppPermissionFragment.this,
+                                    args.getChangeRequest(), args.getButtonClicked());
+                        });
+        if (args.getTitleId() != 0) {
+            b.setTitle(args.getTitleId());
+        }
+        b.show();
     }
 }
