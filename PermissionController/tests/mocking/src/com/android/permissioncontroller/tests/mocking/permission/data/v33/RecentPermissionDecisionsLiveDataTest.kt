@@ -14,12 +14,11 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.tests.mocking.permission.data
+package com.android.permissioncontroller.tests.mocking.permission.data.v33
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.android.permissioncontroller.permission.data.PermissionDecision
-import com.android.permissioncontroller.permission.data.RecentPermissionDecisionsLiveData
-import com.android.permissioncontroller.permission.service.PermissionEventStorage
+import com.android.permissioncontroller.permission.data.v33.PermissionDecision
+import com.android.permissioncontroller.permission.data.v33.RecentPermissionDecisionsLiveData
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
@@ -42,7 +41,7 @@ class RecentPermissionDecisionsLiveDataTest {
     @Mock
     lateinit var recentDecision: PermissionDecision
 
-    private val recentPermissionDecisionStorage = FakeEventStorage()
+    private val recentPermissionDecisionStorage = FakeEventStorage<PermissionDecision>()
 
     private lateinit var recentPermissionDecisionsLiveData: RecentPermissionDecisionsLiveData
 
@@ -73,38 +72,6 @@ class RecentPermissionDecisionsLiveDataTest {
         runBlocking {
             recentPermissionDecisionsLiveData.loadDataAndPostValue(job)
             verify(recentPermissionDecisionsLiveData).postValue(eq(listOf(recentDecision)))
-        }
-    }
-
-    private class FakeEventStorage : PermissionEventStorage<PermissionDecision> {
-        val recentDecisions: MutableList<PermissionDecision> = mutableListOf()
-
-        override suspend fun storeEvent(event: PermissionDecision): Boolean {
-            recentDecisions.add(event)
-            return true
-        }
-
-        override suspend fun loadEvents(): List<PermissionDecision> {
-            return recentDecisions
-        }
-
-        override suspend fun clearEvents() {
-            recentDecisions.clear()
-        }
-
-        override suspend fun removeOldData(): Boolean {
-            // not implemented
-            return true
-        }
-
-        override suspend fun removeEventsForPackage(packageName: String): Boolean {
-            // not implemented
-            return true
-        }
-
-        override suspend fun updateEventsBySystemTimeDelta(diffSystemTimeMillis: Long): Boolean {
-            // not implemented
-            return true
         }
     }
 }
