@@ -394,6 +394,7 @@ public class GrantPermissionsActivity extends SettingsActivity
         CharSequence appLabel = KotlinUtils.INSTANCE.getPackageLabel(getApplication(),
                 mTargetPackage, Process.myUserHandle());
 
+        Icon icon = null;
         int messageId = 0;
         switch(info.getMessage()) {
             case FG_MESSAGE:
@@ -415,9 +416,11 @@ public class GrantPermissionsActivity extends SettingsActivity
                 messageId = Utils.getContinueRequest(info.getGroupName());
                 break;
             case STORAGE_SUPERGROUP_MESSAGE_Q_TO_S:
+                icon = Icon.createWithResource(getPackageName(), R.drawable.perm_group_storage);
                 messageId = R.string.permgrouprequest_storage_q_to_s;
                 break;
             case STORAGE_SUPERGROUP_MESSAGE_PRE_Q:
+                icon = Icon.createWithResource(getPackageName(), R.drawable.perm_group_storage);
                 messageId = R.string.permgrouprequest_storage_pre_q;
                 break;
         }
@@ -459,9 +462,9 @@ public class GrantPermissionsActivity extends SettingsActivity
             }
         }
 
-        Icon icon = null;
         try {
-            icon = Icon.createWithResource(info.getGroupInfo().getPackageName(),
+            icon = icon != null ? icon : Icon.createWithResource(
+                    info.getGroupInfo().getPackageName(),
                     info.getGroupInfo().getIcon());
         } catch (Resources.NotFoundException e) {
             Log.e(LOG_TAG, "Cannot load icon for group" + info.getGroupName(), e);
