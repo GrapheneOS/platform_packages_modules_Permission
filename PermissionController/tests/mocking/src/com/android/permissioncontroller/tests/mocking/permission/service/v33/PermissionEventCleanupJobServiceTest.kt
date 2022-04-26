@@ -14,8 +14,9 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.service
+package com.android.permissioncontroller.tests.mocking.permission.service.v33
 
+import android.app.job.JobInfo
 import android.app.job.JobScheduler
 import android.content.Context
 import android.provider.DeviceConfig
@@ -24,44 +25,34 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.PermissionControllerApplication
-import com.android.permissioncontroller.permission.data.PermissionDecision
-import com.google.common.truth.Truth.assertThat
-import kotlinx.coroutines.runBlocking
+import com.android.permissioncontroller.permission.service.v33.PermissionEventCleanupJobService
+import com.android.permissioncontroller.permission.service.v33.PermissionEventCleanupJobService.Companion.DEFAULT_CLEAR_OLD_EVENTS_CHECK_FREQUENCY
+import com.android.permissioncontroller.permission.utils.Utils
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.ArgumentMatchers.eq
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 import org.mockito.MockitoSession
 import org.mockito.quality.Strictness
-import java.io.ByteArrayInputStream
-import java.io.ByteArrayOutputStream
 import java.io.File
-import java.util.Date
 
 @RunWith(AndroidJUnit4::class)
-class PermissionDecisionStorageImplTest {
+class PermissionEventCleanupJobServiceTest {
+
     companion object {
-        private val application = Mockito.mock(PermissionControllerApplication::class.java)
-
-        private const val MAP_PACKAGE_NAME = "package.test.map"
-        private const val FIVE_HOURS_MS = 5 * 60 * 60 * 1000
+        val application = Mockito.mock(PermissionControllerApplication::class.java)
     }
-
-    private val jan12020 = Date(2020, 0, 1).time
-
-    private val mapLocationGrant = PermissionDecision(
-        MAP_PACKAGE_NAME, jan12020, "location", /* isGranted */ true)
-    private val parkingLocationGrant = PermissionDecision(
-        "package.test.parking", jan12020, "location", /* isGranted */ false)
 
     @Mock
     lateinit var jobScheduler: JobScheduler
+    @Mock
+    lateinit var existingJob: JobInfo
 
     private lateinit var context: Context
-    private lateinit var storage: PermissionDecisionStorageImpl
     private lateinit var mockitoSession: MockitoSession
     private lateinit var filesDir: File
 
@@ -77,36 +68,48 @@ class PermissionDecisionStorageImplTest {
         filesDir = context.cacheDir
         Mockito.`when`(application.filesDir).thenReturn(filesDir)
         Mockito.`when`(jobScheduler.schedule(Mockito.any())).thenReturn(JobScheduler.RESULT_SUCCESS)
-
-        storage = PermissionDecisionStorageImpl(context, jobScheduler)
+        Mockito.`when`(
+            DeviceConfig.getLong(eq(DeviceConfig.NAMESPACE_PERMISSIONS),
+                eq(Utils.PROPERTY_PERMISSION_EVENTS_CHECK_OLD_FREQUENCY_MILLIS),
+                eq(DEFAULT_CLEAR_OLD_EVENTS_CHECK_FREQUENCY)))
+            .thenReturn(DEFAULT_CLEAR_OLD_EVENTS_CHECK_FREQUENCY)
     }
 
     @After
-    fun cleanup() = runBlocking {
+    fun cleanup() {
         mockitoSession.finishMocking()
         val logFile = File(filesDir, Constants.LOGS_TO_DUMP_FILE)
         logFile.delete()
-
-        storage.clearEvents()
     }
 
     @Test
-    fun serialize_dataCanBeParsed() {
-        val outStream = ByteArrayOutputStream()
-        storage.serialize(outStream, listOf(mapLocationGrant, parkingLocationGrant))
+    fun scheduleOldDataCleanupIfNecessary_noExistingJob_schedulesNewJob() {
+        Mockito.`when`(jobScheduler.getPendingJob(Constants.OLD_PERMISSION_EVENT_CLEANUP_JOB_ID))
+            .thenReturn(null)
+        PermissionEventCleanupJobService.scheduleOldDataCleanupIfNecessary(context, jobScheduler)
 
-        val inStream = ByteArrayInputStream(outStream.toByteArray())
-        assertThat(storage.parse(inStream)).containsExactly(mapLocationGrant, parkingLocationGrant)
+        Mockito.verify(jobScheduler).schedule(Mockito.any())
     }
 
     @Test
-    fun serialize_roundsTimeDownToDate() {
-        val laterInTheDayGrant = mapLocationGrant.copy(
-            eventTime = (mapLocationGrant.eventTime + FIVE_HOURS_MS))
-        val outStream = ByteArrayOutputStream()
-        storage.serialize(outStream, listOf(laterInTheDayGrant))
+    fun init_existingJob_doesNotScheduleNewJob() {
+        Mockito.`when`(existingJob.intervalMillis).thenReturn(
+            DEFAULT_CLEAR_OLD_EVENTS_CHECK_FREQUENCY)
+        Mockito.`when`(jobScheduler.getPendingJob(Constants.OLD_PERMISSION_EVENT_CLEANUP_JOB_ID))
+            .thenReturn(existingJob)
+        PermissionEventCleanupJobService.scheduleOldDataCleanupIfNecessary(context, jobScheduler)
 
-        val inStream = ByteArrayInputStream(outStream.toByteArray())
-        assertThat(storage.parse(inStream)).containsExactly(mapLocationGrant)
+        Mockito.verify(jobScheduler, Mockito.never()).schedule(Mockito.any())
+    }
+
+    @Test
+    fun init_existingJob_differentFrequency_schedulesNewJob() {
+        Mockito.`when`(existingJob.intervalMillis)
+            .thenReturn(DEFAULT_CLEAR_OLD_EVENTS_CHECK_FREQUENCY + 1)
+        Mockito.`when`(jobScheduler.getPendingJob(Constants.OLD_PERMISSION_EVENT_CLEANUP_JOB_ID))
+            .thenReturn(existingJob)
+        PermissionEventCleanupJobService.scheduleOldDataCleanupIfNecessary(context, jobScheduler)
+
+        Mockito.verify(jobScheduler).schedule(Mockito.any())
     }
 }
