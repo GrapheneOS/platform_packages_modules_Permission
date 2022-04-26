@@ -19,6 +19,7 @@
 package com.android.permissioncontroller.permission.service
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager.FLAG_PERMISSION_AUTO_REVOKED
 import android.content.pm.PackageManager.FLAG_PERMISSION_USER_SET
@@ -30,11 +31,13 @@ import com.android.permissioncontroller.DumpableLog
 import com.android.permissioncontroller.PermissionControllerStatsLog
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_GRANT_REQUEST_RESULT_REPORTED
 import com.android.permissioncontroller.PermissionControllerStatsLog.PERMISSION_GRANT_REQUEST_RESULT_REPORTED__RESULT__AUTO_UNUSED_APP_PERMISSION_REVOKED
+import com.android.permissioncontroller.hibernation.getUnusedThresholdMs
 import com.android.permissioncontroller.permission.data.LightAppPermGroupLiveData
 import com.android.permissioncontroller.permission.data.PackagePermissionsLiveData
 import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
+import com.android.permissioncontroller.permission.service.v33.PermissionChangeStorageImpl
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.application
@@ -59,6 +62,7 @@ private val SERVER_LOG_ID =
  * @return list of packages that successfully had their permissions revoked
  */
 @MainThread
+@SuppressLint("NewApi")
 suspend fun revokeAppPermissions(
     apps: Map<UserHandle, List<LightPackageInfo>>,
     context: Context,
@@ -72,11 +76,22 @@ suspend fun revokeAppPermissions(
             DumpableLog.w(LOG_TAG, "Skipping $user - locked direct boot state")
             continue
         }
+        val pkgPermChanges = PermissionChangeStorageImpl.getInstance().loadEvents()
+            .associateBy { it.packageName }
         userApps.forEachInParallel(Main) { pkg: LightPackageInfo ->
             if (pkg.grantedPermissions.isEmpty()) {
                 return@forEachInParallel
             }
             val packageName = pkg.packageName
+            val pkgPermChange = pkgPermChanges[packageName]
+            val now = System.currentTimeMillis()
+            if (pkgPermChange != null && now - pkgPermChange.eventTime < getUnusedThresholdMs()) {
+                if (DEBUG_AUTO_REVOKE) {
+                    DumpableLog.i(LOG_TAG, "Not revoking because permissions were changed " +
+                        "recently for package $packageName")
+                }
+                return@forEachInParallel
+            }
             val anyPermsRevoked = AtomicBoolean(false)
             val pkgPermGroups: Map<String, List<String>>? =
                 PackagePermissionsLiveData[packageName, user]

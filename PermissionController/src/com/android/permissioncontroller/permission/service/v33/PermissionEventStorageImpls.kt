@@ -36,8 +36,8 @@ class PermissionEventStorageImpls {
             }
 
         private fun createInstance(): List<PermissionEventStorage<out PermissionEvent>> {
-            // TODO(205642821): Add storage for permission change events
             val list = mutableListOf<PermissionEventStorage<out PermissionEvent>>()
+            list.add(PermissionChangeStorageImpl.getInstance())
             val context = PermissionControllerApplication.get().applicationContext
             if (PermissionDecisionStorageImpl.isRecordPermissionsSupported(context)) {
                 list.add(PermissionDecisionStorageImpl.getInstance())
