@@ -61,7 +61,7 @@ class TvUnusedAppsFragment : SettingsWithHeader(),
     }
 
     override fun createFooterPreference(): Preference {
-        val preference = Preference(context)
+        val preference = com.android.settingslib.widget.FooterPreference(requireContext())
         if (isHibernationEnabled()) {
             preference.summary = getString(R.string.unused_apps_page_tv_summary)
         } else {
