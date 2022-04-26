@@ -72,6 +72,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.data.FullStoragePermissionAppsLiveData.FullStoragePackageState;
+import com.android.permissioncontroller.permission.ui.AdvancedConfirmDialogArgs;
 import com.android.permissioncontroller.permission.ui.GrantPermissionsViewHandler;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel;
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonState;
@@ -591,10 +592,8 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
             AppPermissionFragment fragment = (AppPermissionFragment) getParentFragment();
             boolean isGrantFileAccess = getArguments().getSerializable(CHANGE_REQUEST)
                     == ChangeRequest.GRANT_All_FILE_ACCESS;
-            boolean isGrantStorageSupergroup = getArguments().getSerializable(CHANGE_REQUEST)
-                    == ChangeRequest.GRANT_STORAGE_SUPERGROUP;
             int positiveButtonStringResId = R.string.grant_dialog_button_deny_anyway;
-            if (isGrantFileAccess || isGrantStorageSupergroup) {
+            if (isGrantFileAccess) {
                 positiveButtonStringResId = R.string.grant_dialog_button_allow;
             }
             AlertDialog.Builder b = new AlertDialog.Builder(getContext())
@@ -605,9 +604,6 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
                             (DialogInterface dialog, int which) -> {
                                 if (isGrantFileAccess) {
                                     fragment.mViewModel.setAllFilesAccess(true);
-                                    fragment.mViewModel.requestChange(false, fragment,
-                                            fragment, ChangeRequest.GRANT_BOTH, sCode);
-                                } else if (isGrantStorageSupergroup) {
                                     fragment.mViewModel.requestChange(false, fragment,
                                             fragment, ChangeRequest.GRANT_BOTH, sCode);
                                 } else {
@@ -627,5 +623,26 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
             AppPermissionFragment fragment = (AppPermissionFragment) getParentFragment();
             fragment.setRadioButtonsState(fragment.mViewModel.getButtonStateLiveData().getValue());
         }
+    }
+
+    @Override
+    public void showAdvancedConfirmDialog(AdvancedConfirmDialogArgs args) {
+        AlertDialog.Builder b = new AlertDialog.Builder(getContext())
+                .setIcon(args.getIconId())
+                .setMessage(args.getMessageId())
+                .setNegativeButton(args.getNegativeButtonTextId(),
+                        (DialogInterface dialog, int which) -> {
+                            setRadioButtonsState(mViewModel.getButtonStateLiveData().getValue());
+                        })
+                .setPositiveButton(args.getPositiveButtonTextId(),
+                        (DialogInterface dialog, int which) -> {
+                            mViewModel.requestChange(args.getSetOneTime(),
+                                    AppPermissionFragment.this, AppPermissionFragment.this,
+                                    args.getChangeRequest(), args.getButtonClicked());
+                        });
+        if (args.getTitleId() != 0) {
+            b.setTitle(args.getTitleId());
+        }
+        b.show();
     }
 }
