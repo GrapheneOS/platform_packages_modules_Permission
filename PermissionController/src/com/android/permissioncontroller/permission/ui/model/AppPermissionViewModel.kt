@@ -31,6 +31,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.UserHandle
 import android.util.Log
+import androidx.annotation.ChecksSdkIntAtLeast
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
@@ -50,6 +51,8 @@ import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPermission
 import com.android.permissioncontroller.permission.service.v33.PermissionDecisionStorageImpl
+import com.android.permissioncontroller.permission.ui.AdvancedConfirmDialogArgs
+
 import com.android.permissioncontroller.permission.ui.handheld.v31.getDefaultPrecision
 import com.android.permissioncontroller.permission.ui.handheld.v31.isLocationAccuracyEnabled
 import com.android.permissioncontroller.permission.ui.model.AppPermissionViewModel.ButtonType.ALLOW
@@ -101,6 +104,8 @@ class AppPermissionViewModel(
             buttonPressed: Int,
             oneTime: Boolean
         )
+
+        fun showAdvancedConfirmDialog(args: AdvancedConfirmDialogArgs)
     }
 
     enum class ChangeRequest(val value: Int) {
@@ -114,7 +119,11 @@ class AppPermissionViewModel(
         GRANT_All_FILE_ACCESS(16),
         GRANT_FINE_LOCATION(32),
         REVOKE_FINE_LOCATION(64),
-        GRANT_STORAGE_SUPERGROUP(128);
+        GRANT_STORAGE_SUPERGROUP(128),
+        REVOKE_STORAGE_SUPERGROUP(256),
+        GRANT_STORAGE_SUPERGROUP_CONFIRMED(
+                GRANT_STORAGE_SUPERGROUP.value or GRANT_FOREGROUND.value),
+        REVOKE_STORAGE_SUPERGROUP_CONFIRMED(REVOKE_STORAGE_SUPERGROUP.value or REVOKE_BOTH.value);
 
         infix fun andValue(other: ChangeRequest): Int {
             return value and other.value
@@ -585,6 +594,24 @@ class AppPermissionViewModel(
             showCDMWarning = showCDMWarning && heldProfiles.isNotEmpty()
         }
 
+        if (expandsToStorageSupergroup(group)) {
+            if (group.permGroupName == Manifest.permission_group.STORAGE) {
+                showDefaultDenyDialog = false
+            } else if (changeRequest == ChangeRequest.GRANT_FOREGROUND) {
+                showMediaConfirmDialog(setOneTime, defaultDeny,
+                    ChangeRequest.GRANT_STORAGE_SUPERGROUP, buttonClicked, group.permGroupName,
+                    group.packageInfo.targetSdkVersion)
+                return
+            } else if (changeRequest == ChangeRequest.REVOKE_BOTH) {
+                showMediaConfirmDialog(setOneTime, defaultDeny,
+                    ChangeRequest.REVOKE_STORAGE_SUPERGROUP, buttonClicked, group.permGroupName,
+                    group.packageInfo.targetSdkVersion)
+                return
+            } else {
+                showDefaultDenyDialog = false
+            }
+        }
+
         if (showDefaultDenyDialog && !hasConfirmedRevoke && showGrantedByDefaultWarning) {
             defaultDeny.showConfirmDialog(changeRequest, R.string.system_warning, buttonClicked,
                 setOneTime)
@@ -601,18 +628,6 @@ class AppPermissionViewModel(
             defaultDeny.showConfirmDialog(changeRequest,
                     R.string.cdm_profile_revoke_warning, buttonClicked, setOneTime)
             return
-        }
-
-        if (expandsToStorageSupergroup(group)) {
-            if (changeRequest == ChangeRequest.GRANT_FOREGROUND) {
-                defaultDeny.showConfirmDialog(ChangeRequest.GRANT_STORAGE_SUPERGROUP,
-                        R.string.storage_supergroup_warning_allow, buttonClicked, false)
-                return
-            } else if (changeRequest == ChangeRequest.REVOKE_BOTH) {
-                defaultDeny.showConfirmDialog(changeRequest,
-                        R.string.storage_supergroup_warning_deny, buttonClicked, false)
-                return
-            }
         }
 
         val groupsToUpdate = expandToSupergroup(group)
@@ -686,6 +701,86 @@ class AppPermissionViewModel(
         } else {
             listOf(group)
         }
+    }
+
+    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.TIRAMISU)
+    private fun showMediaConfirmDialog(
+        setOneTime: Boolean,
+        confirmDialog: ConfirmDialogShowingFragment,
+        changeRequest: ChangeRequest,
+        buttonClicked: Int,
+        groupName: String,
+        targetSdk: Int
+    ) {
+
+        val aural = groupName == Manifest.permission_group.READ_MEDIA_AURAL
+        val visual = groupName == Manifest.permission_group.READ_MEDIA_VISUAL
+        val allow = changeRequest === ChangeRequest.GRANT_STORAGE_SUPERGROUP
+        val deny = changeRequest === ChangeRequest.REVOKE_STORAGE_SUPERGROUP
+
+        val (iconId, titleId, messageId) = when {
+            targetSdk < Build.VERSION_CODES.Q && aural && allow ->
+                Triple(
+                    R.drawable.perm_group_storage,
+                    R.string.media_confirm_dialog_title_a_to_p_aural_allow,
+                    R.string.media_confirm_dialog_message_a_to_p_aural_allow)
+            targetSdk < Build.VERSION_CODES.Q && aural && deny ->
+                Triple(
+                    R.drawable.perm_group_storage,
+                    R.string.media_confirm_dialog_title_a_to_p_aural_deny,
+                    R.string.media_confirm_dialog_message_a_to_p_aural_deny)
+            targetSdk < Build.VERSION_CODES.Q && visual && allow ->
+                Triple(
+                    R.drawable.perm_group_storage,
+                    R.string.media_confirm_dialog_title_a_to_p_visual_allow,
+                    R.string.media_confirm_dialog_message_a_to_p_visual_allow)
+            targetSdk < Build.VERSION_CODES.Q && visual && deny ->
+                Triple(
+                    R.drawable.perm_group_storage,
+                    R.string.media_confirm_dialog_title_a_to_p_visual_deny,
+                    R.string.media_confirm_dialog_message_a_to_p_visual_deny)
+            targetSdk <= Build.VERSION_CODES.S_V2 && aural && allow ->
+                Triple(
+                    R.drawable.perm_group_visual,
+                    R.string.media_confirm_dialog_title_q_to_s_aural_allow,
+                    R.string.media_confirm_dialog_message_q_to_s_aural_allow)
+            targetSdk <= Build.VERSION_CODES.S_V2 && aural && deny ->
+                Triple(
+                    R.drawable.perm_group_visual,
+                    R.string.media_confirm_dialog_title_q_to_s_aural_deny,
+                    R.string.media_confirm_dialog_message_q_to_s_aural_deny)
+            targetSdk <= Build.VERSION_CODES.S_V2 && visual && allow ->
+                Triple(
+                    R.drawable.perm_group_aural,
+                    R.string.media_confirm_dialog_title_q_to_s_visual_allow,
+                    R.string.media_confirm_dialog_message_q_to_s_visual_allow)
+            targetSdk <= Build.VERSION_CODES.S_V2 && visual && deny ->
+                Triple(
+                    R.drawable.perm_group_aural,
+                    R.string.media_confirm_dialog_title_q_to_s_visual_deny,
+                    R.string.media_confirm_dialog_message_q_to_s_visual_deny)
+            else ->
+                Triple(0, 0, 0)
+        }
+
+        if (iconId == 0 || titleId == 0 || messageId == 0) {
+            throw UnsupportedOperationException()
+        }
+
+        confirmDialog.showAdvancedConfirmDialog(
+            AdvancedConfirmDialogArgs(
+                iconId = iconId,
+                titleId = titleId,
+                messageId = messageId,
+                negativeButtonTextId = R.string.media_confirm_dialog_negative_button,
+                positiveButtonTextId = R.string.media_confirm_dialog_positive_button,
+                changeRequest =
+                    if (allow) ChangeRequest.GRANT_STORAGE_SUPERGROUP_CONFIRMED
+                    else ChangeRequest.REVOKE_STORAGE_SUPERGROUP_CONFIRMED,
+                setOneTime = setOneTime,
+                buttonClicked = buttonClicked
+            )
+        )
     }
 
     /**
