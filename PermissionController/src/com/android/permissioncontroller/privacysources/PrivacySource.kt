@@ -28,7 +28,7 @@ interface PrivacySource {
      *
      * @param enabled: {@code true} if Safety Center now enabled
      */
-    fun safetyCenterEnabledChanged(enabled: Boolean)
+    fun safetyCenterEnabledChanged(context: Context, enabled: Boolean)
 
     /** Indicates that permission controller has received the safety center rescan broadcast.
      * context: Context of the broadcast
