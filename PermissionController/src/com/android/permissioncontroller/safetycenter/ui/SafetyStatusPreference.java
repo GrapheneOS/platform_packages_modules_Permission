@@ -22,6 +22,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -35,10 +36,8 @@ import com.android.permissioncontroller.R;
 public class SafetyStatusPreference extends Preference {
     private static final String TAG = "SafetyStatusPreference";
 
-    @Nullable
-    private SafetyCenterStatus mStatus;
-    @Nullable
-    private View.OnClickListener mRescanButtonOnClickListener;
+    @Nullable private SafetyCenterStatus mStatus;
+    @Nullable private View.OnClickListener mRescanButtonOnClickListener;
 
     public SafetyStatusPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -53,11 +52,13 @@ public class SafetyStatusPreference extends Preference {
             return;
         }
 
-        ((ImageView) holder.findViewById(R.id.status_image))
-                .setImageResource(toStatusImageResId(mStatus.getSeverityLevel()));
+        ImageView statusImage = (ImageView) holder.findViewById(R.id.status_image);
+        statusImage.setImageResource(toStatusImageResId(mStatus.getSeverityLevel()));
 
         ((TextView) holder.findViewById(R.id.status_title)).setText(mStatus.getTitle());
         ((TextView) holder.findViewById(R.id.status_summary)).setText(mStatus.getSummary());
+
+        ProgressBar rescanProgressBar = (ProgressBar) holder.findViewById(R.id.rescan_progress_bar);
 
         // TODO(b/222126886): hide rescan button once we have defined behavior from UX
         View rescanButton = holder.findViewById(R.id.rescan_button);
@@ -65,8 +66,29 @@ public class SafetyStatusPreference extends Preference {
                 ContextCompat.getColorStateList(
                         getContext(), toButtonColor(mStatus.getSeverityLevel())));
         if (mRescanButtonOnClickListener != null) {
-            rescanButton.setOnClickListener(mRescanButtonOnClickListener);
+            rescanButton.setOnClickListener(view -> mRescanButtonOnClickListener.onClick(view));
         }
+
+        if (mStatus.getRefreshStatus()
+                == SafetyCenterStatus.REFRESH_STATUS_FULL_RESCAN_IN_PROGRESS) {
+            startRescanAnimation(statusImage, rescanButton, rescanProgressBar);
+        } else {
+            endRescanAnimation(statusImage, rescanProgressBar, rescanButton);
+        }
+    }
+
+    private void startRescanAnimation(
+            ImageView statusImage, View rescanButton, ProgressBar rescanProgressBar) {
+        statusImage.setVisibility(View.INVISIBLE);
+        rescanProgressBar.setVisibility(View.VISIBLE);
+        rescanButton.setEnabled(false);
+    }
+
+    private void endRescanAnimation(
+            ImageView statusImage, ProgressBar rescanProgressBar, View rescanButton) {
+        statusImage.setVisibility(View.VISIBLE);
+        rescanProgressBar.setVisibility(View.INVISIBLE);
+        rescanButton.setEnabled(true);
     }
 
     void setSafetyStatus(SafetyCenterStatus status) {
@@ -91,7 +113,8 @@ public class SafetyStatusPreference extends Preference {
                 return R.drawable.safety_status_warn;
         }
         throw new IllegalArgumentException(
-                String.format("Unexpected SafetyCenterStatus.OverallSeverityLevel: %s",
+                String.format(
+                        "Unexpected SafetyCenterStatus.OverallSeverityLevel: %s",
                         overallSeverityLevel));
     }
 
@@ -105,7 +128,8 @@ public class SafetyStatusPreference extends Preference {
             case SafetyCenterStatus.OVERALL_SEVERITY_LEVEL_CRITICAL_WARNING:
                 return R.color.safety_center_button_warn;
             default:
-                Log.w(TAG,
+                Log.w(
+                        TAG,
                         String.format("Unexpected OverallSeverityLevel: %s", overallSeverityLevel));
                 return R.color.safety_center_button_info;
         }
