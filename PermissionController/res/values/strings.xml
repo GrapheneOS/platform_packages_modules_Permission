@@ -1536,6 +1536,8 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <string name="safety_center_issue_card_confirm_dismiss_button">Dismiss</string>
     <!-- Label for a button to cancel dismissing a safety center issue in a confirmation dialog [CHAR LIMIT=30] -->
     <string name="safety_center_issue_card_cancel_dismiss_button">Cancel</string>
+    <!-- Title for a section that contains security and privacy related settings on the Security and Privacy page [CHAR LIMIT=60] -->
+    <string name="safety_center_entries_category_title">Settings</string>
     <!-- Label for the button that takes the user to the settings page for Android Security  [CHAR LIMIT=60] -->
     <string name="security_settings">Security Settings</string>
     <!-- Label for the permission usage section of safety center QS page[CHAR LIMIT=30] -->
