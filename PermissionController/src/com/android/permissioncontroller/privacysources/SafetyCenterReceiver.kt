@@ -30,7 +30,6 @@ import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.service.v33.SafetyCenterQsTileService
 import com.android.permissioncontroller.permission.utils.Utils
-import com.android.permissioncontroller.privacysources.NotificationListenerCheck.NotificationListenerPrivacySource
 import com.android.permissioncontroller.privacysources.WorkPolicyInfo.Companion.WORK_POLICY_INFO_SOURCE_ID
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
