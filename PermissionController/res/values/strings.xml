@@ -765,11 +765,8 @@
     <!-- Header for denied permissions/apps [CHAR LIMIT=40] -->
     <string name="denied_header">Not allowed</string>
 
-    <!-- Warning text shown in storage_footer [CHAR LIMIT=none] -->
-    <string name="storage_footer_warning_text">Some apps that provide essential functionality for your device can have a special access to all your files</string>
-
     <!-- Text of hyperlink shown in storage_footer [CHAR LIMIT=60] -->
-    <string name="storage_footer_hyperlink_text">See apps with all files access</string>
+    <string name="storage_footer_hyperlink_text">See more apps that can access all files</string>
 
     <!-- Time in days -->
     <string name="days">{count, plural,
