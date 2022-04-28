@@ -277,6 +277,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Οι άδειες καταργήθηκαν για την προστασία του απορρήτου σας"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"Η εφαρμογή <xliff:g id="APP_NAME">%s</xliff:g> έλαβε την τοποθεσία σας στο παρασκήνιο"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Αυτή η εφαρμογή μπορεί να έχει πάντα πρόσβαση στην τοποθεσία σας. Πατήστε για να αλλάξετε τη ρύθμιση."</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
+    <skip />
+    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
+    <skip />
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Έλεγχος εφαρμογής που έχει πρόσβαση σε λειτ. προσβασιμότητας"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"Η εφαρμογή <xliff:g id="APP_NAME">%s</xliff:g> μπορεί να διαβάσει όλο το περιεχόμενο της οθόνης, να προβάλλει περιεχόμενο πάνω από άλλες εφαρμογές και να παρακολουθήσει τις αλληλεπιδράσεις σας."</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Αυτή η εφαρμογή μπορεί να διαβάσει όλο το περιεχόμενο στην οθόνη, να προβάλλει περιεχόμενο πάνω από άλλες εφαρμογές και να παρακολουθεί τις αλληλεπιδράσεις σας."</string>
@@ -374,7 +386,7 @@
     <string name="role_call_redirection_description" msgid="6091669882014664420">"Εφαρμογές που σας επιτρέπουν να προωθήσετε εξερχόμενες κλήσεις σε έναν άλλο αριθμό τηλεφώνου"</string>
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"Ορισμός εφαρμογής <xliff:g id="APP_NAME">%1$s</xliff:g> ως προεπιλεγμένης εφαρμογής ανακατεύθυνσης κλήσεων;"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Δεν απαιτούνται άδειες"</string>
-    <string name="role_call_screening_label" msgid="883935222060878724">"Προεπ. εφαρ. αναγνώρισης κλήσης/ανεπ. περιεχ."</string>
+    <string name="role_call_screening_label" msgid="883935222060878724">"Προεπιλεγμένη εφαρ. αναγνώρ. κλήσης/ανεπιθ."</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"Εφ. αναγν. κλήσης/προστ. από ανεπιθ. περιεχ."</string>
     <string name="role_call_screening_description" msgid="2349431420497468981">"Εφαρμογές που σας επιτρέπουν να αναγνωρίσετε κλήσεις, να αποκλείσετε ανεπιθύμητες, αυτοματοποιημένες κλήσεις και ανεπιθύμητους αριθμούς."</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Ορισμός εφαρμογής <xliff:g id="APP_NAME">%1$s</xliff:g> ως προεπιλεγμένης εφαρμογής αναγνώρισης κλήσης και ανεπιθύμητου περιεχομένου;"</string>

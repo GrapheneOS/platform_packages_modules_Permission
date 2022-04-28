@@ -196,10 +196,10 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Ver todos los permisos de <xliff:g id="APP">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Ver todas las aplicaciones con este permiso"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Mostrar el uso del micrófono del Asistente"</string>
-    <string name="unused_apps_category_title" msgid="2988455616845243901">"Configuración de aplicaciones sin usar"</string>
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"Ajustes de aplicaciones sin usar"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Quitar permisos si la aplicación no se usa"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Quitar permisos y liberar espacio"</string>
-    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Pausar actividad de la app si no se usa"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Pausar actividad de la aplicación si no se usa"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"Quita permisos, elimina archivos temporales y detiene las notificaciones"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Para proteger tus datos, se quitarán los permisos de esta aplicación si no la usas durante unos meses."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Para proteger tus datos, si la aplicación no se ha utilizado durante unos meses, se quitarán los siguientes permisos: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
@@ -277,6 +277,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Permisos quitados para proteger tu privacidad"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> ha obtenido tu ubicación en segundo plano"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Esta aplicación puede acceder siempre a tu ubicación. Toca para cambiarlo."</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
+    <skip />
+    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
+    <skip />
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Revisar aplicación con acceso a funciones de accesibilidad"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> puede leer todo el contenido de la pantalla, mostrar contenido sobre otras aplicaciones y rastrear tus interacciones."</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Esta aplicación puede leer todo el contenido de la pantalla, mostrar contenido sobre otras aplicaciones y rastrear tus interacciones."</string>
@@ -306,22 +318,22 @@
     <string name="app_perms_24h_access" msgid="99069906850627181">"Último acceso: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_24h_access_yest" msgid="5411926024794555022">"Último acceso: ayer a las <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_perms_7d_access" msgid="4945055548894683751">"Último acceso el <xliff:g id="TIME_DATE_0">%1$s</xliff:g> a las <xliff:g id="TIME_DATE_1">%2$s</xliff:g>"</string>
-    <string name="app_perms_content_provider_24h" msgid="1055526027667508972">"Se ha accedido durante las últimas 24 horas"</string>
+    <string name="app_perms_content_provider_24h" msgid="1055526027667508972">"Acceso durante las últimas 24 horas"</string>
     <string name="app_perms_content_provider_7d" msgid="3215454898257814868">"Acceso durante los últimos 7 días"</string>
     <string name="app_perms_24h_access_background" msgid="3413674718969576843">"Último acceso: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Permitido siempre"</string>
     <string name="app_perms_24h_access_yest_background" msgid="9174750810998076725">"Último acceso: ayer a las <xliff:g id="TIME_DATE">%1$s</xliff:g> • Permitido siempre"</string>
     <string name="app_perms_7d_access_background" msgid="408099213372185627">"Último acceso el <xliff:g id="TIME_DATE_0">%1$s</xliff:g> a las <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Permitido siempre"</string>
-    <string name="app_perms_content_provider_24h_background" msgid="3825902995186961496">"Se ha accedido durante las últimas 24 horas • Permitido siempre"</string>
+    <string name="app_perms_content_provider_24h_background" msgid="3825902995186961496">"Acceso durante las últimas 24 horas • Permitido siempre"</string>
     <string name="app_perms_content_provider_7d_background" msgid="4818839672116463542">"Acceso durante los últimos 7 días • Permitido siempre"</string>
     <string name="app_perms_24h_access_media_only" msgid="6651699644199132054">"Último acceso: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Contenido multimedia"</string>
     <string name="app_perms_24h_access_yest_media_only" msgid="7213187706424998792">"Último acceso: ayer a las <xliff:g id="TIME_DATE">%1$s</xliff:g> • Contenido multimedia"</string>
     <string name="app_perms_7d_access_media_only" msgid="1031096653668235200">"Último acceso el <xliff:g id="TIME_DATE_0">%1$s</xliff:g> a las <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Contenido multimedia"</string>
-    <string name="app_perms_content_provider_24h_media_only" msgid="7797963000596179491">"Se ha accedido durante las últimas 24 horas • Contenido multimedia"</string>
+    <string name="app_perms_content_provider_24h_media_only" msgid="7797963000596179491">"Acceso durante las últimas 24 horas • Contenido multimedia"</string>
     <string name="app_perms_content_provider_7d_media_only" msgid="8446239884570262243">"Acceso durante los últimos 7 días • Contenido multimedia"</string>
     <string name="app_perms_24h_access_all_files" msgid="8902360456978159091">"Último acceso: <xliff:g id="TIME_DATE">%1$s</xliff:g> • Todos los archivos"</string>
     <string name="app_perms_24h_access_yest_all_files" msgid="5708424073126844909">"Último acceso: ayer a las <xliff:g id="TIME_DATE">%1$s</xliff:g> • Todos los archivos"</string>
     <string name="app_perms_7d_access_all_files" msgid="8246193786397635824">"Último acceso el <xliff:g id="TIME_DATE_0">%1$s</xliff:g> a las <xliff:g id="TIME_DATE_1">%2$s</xliff:g> • Todos los archivos"</string>
-    <string name="app_perms_content_provider_24h_all_files" msgid="573104317727770850">"Se ha accedido durante las últimas 24 horas • Todos los archivos"</string>
+    <string name="app_perms_content_provider_24h_all_files" msgid="573104317727770850">"Acceso durante las últimas 24 horas • Todos los archivos"</string>
     <string name="app_perms_content_provider_7d_all_files" msgid="7962416229708835558">"Acceso durante los últimos 7 días • Todos los archivos"</string>
     <string name="no_permissions_allowed" msgid="6081976856354669209">"No se ha concedido ningún permiso"</string>
     <string name="no_permissions_denied" msgid="8159923922804043282">"No se ha denegado ningún permiso"</string>

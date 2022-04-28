@@ -192,7 +192,7 @@
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"使用精確位置"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"精確位置關閉時，應用程式會存取你的概略位置資訊"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>權限"</string>
-    <string name="app_permission_header" msgid="2951363137032603806">"是否允許這個應用程式存取<xliff:g id="PERM">%1$s</xliff:g>"</string>
+    <string name="app_permission_header" msgid="2951363137032603806">"是否允許這個應用程式取得「<xliff:g id="PERM">%1$s</xliff:g>」的存取權限"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"查看「<xliff:g id="APP">%1$s</xliff:g>」的所有權限"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"查看具備此權限的所有應用程式"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"顯示 Google 助理的麥克風使用狀況"</string>
@@ -249,7 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"可管理所有檔案"</string>
     <string name="ask_header" msgid="2633816846459944376">"每次都詢問"</string>
     <string name="denied_header" msgid="903209608358177654">"不允許"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"為裝置提供必要功能的某些應用程式可能會有可存取所有檔案的特殊權限"</string>
+    <string name="storage_footer_warning_text" msgid="2242258357752432337">"為裝置提供必要功能的某些應用程式可能會具備特殊權限，可存取你的所有檔案"</string>
     <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"查看有權存取所有檔案的應用程式"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 天}other{# 天}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 小時}other{# 小時}}"</string>
@@ -277,6 +277,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"為保護你的隱私，系統已移除相關權限"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"「<xliff:g id="APP_NAME">%s</xliff:g>」在背景存取了你的位置資訊"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"這個應用程式隨時都能存取你的位置資訊。輕觸即可變更設定。"</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
+    <skip />
+    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
+    <skip />
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"檢查具有無障礙功能存取權的應用程式"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"「<xliff:g id="APP_NAME">%s</xliff:g>」應用程式可以讀取畫面上的所有內容、將內容顯示在其他應用程式上方，以及追蹤你的互動情形。"</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"這個應用程式可以讀取畫面上的所有內容、將內容顯示在其他應用程式上方，以及追蹤你的互動情形。"</string>

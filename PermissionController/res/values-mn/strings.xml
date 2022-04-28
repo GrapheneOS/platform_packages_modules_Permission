@@ -277,6 +277,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Таны нууцлалыг хамгаалахын тулд зөвшөөрлийг хассан"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> таны арын байршлыг авсан"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Энэ апп таны байршилд тогтмол хандах боломжтой байна. Өөрчлөхийн тулд товшино уу."</string>
+    <string name="notification_listener_reminder_notification_title" msgid="6214106302085018939">"Мэдэгдэл сонсогчид хандах эрхтэй аппыг шалгах"</string>
+    <string name="notification_listener_reminder_notification_content" msgid="4740891089329946164">"<xliff:g id="APP_NAME">%s</xliff:g> таны бүх мэдэгдлийг унших боломжтой."</string>
+    <string name="notification_listener_warning_card_content" msgid="8181427178654279926">"Энэ апп таны бүх мэдэгдлийг унших боломжтой."</string>
+    <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Хандалтыг хасах"</string>
+    <string name="notification_listener_review_app_button_label" msgid="1023909640634882973">"Мэдэгдэлд хандах эрхтэй аппыг шалгах"</string>
+    <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Хандалтыг хассан"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Хүртээмжтэй хандалтаар аппыг хянана уу"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> нь дэлгэц дээрх бүх контентыг унших, бусад апп дээр контентыг харуулах, таны харилцааг хянах боломжтой."</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Энэ апп нь дэлгэц дээрх бүх контентыг унших, бусад апп дээр контентыг харуулах, таны харилцааг хянах боломжтой."</string>

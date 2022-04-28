@@ -277,6 +277,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Nogle tilladelser blev fjernet for at beskytte dit privatliv"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> har din lokation i baggrunden"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Denne app kan altid få adgang til din lokation. Tryk for at ændre denne indstilling."</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
+    <skip />
+    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
+    <skip />
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Gennemgå appen med adgang via hjælpefunktioner"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> kan læse alt indhold på skærmen, vise indhold over andre apps og spore dine interaktioner."</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Denne app kan læse alt indhold på skærmen, vise indhold over andre apps og spore dine interaktioner."</string>

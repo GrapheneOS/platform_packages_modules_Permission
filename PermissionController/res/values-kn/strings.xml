@@ -191,7 +191,7 @@
     <string name="approximate_image_description" msgid="938803699637069884">"ಅಂದಾಜು ಸ್ಥಳ"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"ನಿಖರವಾದ ಸ್ಥಳವನ್ನು ಬಳಸಿ"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"ನಿಖರವಾದ ಸ್ಥಳ ಆಫ್ ಆಗಿರುವಾಗ, ಆ್ಯಪ್‌ಗಳು ನಿಮ್ಮ ಅಂದಾಜು ಸ್ಥಳವನ್ನು ಪ್ರವೇಶಿಸಬಹುದು"</string>
-    <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> ಕುರಿತು ಅನುಮತಿ"</string>
+    <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> ಅನುಮತಿ"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"ಈ <xliff:g id="PERM">%1$s</xliff:g> ಆ್ಯಪ್‌ಗಾಗಿ ಪ್ರವೇಶದ ಅನುಮತಿ"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"ಎಲ್ಲಾ <xliff:g id="APP">%1$s</xliff:g> ಅನುಮತಿಗಳನ್ನು ವೀಕ್ಷಿಸಿ"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"ಈ ಅನುಮತಿಯನ್ನು ಹೊಂದಿರುವ ಎಲ್ಲಾ ಆ್ಯಪ್‌ಗಳನ್ನು ವೀಕ್ಷಿಸಿ"</string>
@@ -277,6 +277,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"ನಿಮ್ಮ ಗೌಪ್ಯತೆಯನ್ನು ರಕ್ಷಿಸಲು ಅನುಮತಿಗಳನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> ನಿಮ್ಮ ಸ್ಥಳವನ್ನು ಹಿನ್ನಲೆಯಲ್ಲಿ ಪಡೆದುಕೊಂಡಿದೆ"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"ಈ ಆ್ಯಪ್‌ ಯಾವಾಗಲೂ ನಿಮ್ಮ ಸ್ಥಳವನ್ನು ಪ್ರವೇಶಿಸಬಹುದು. ಬದಲಾಯಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ."</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
+    <skip />
+    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
+    <skip />
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"ಪ್ರವೇಶಿಸುವಿಕೆ ಪ್ರವೇಶದ ಮೂಲಕ ಆ್ಯಪ್ ಅನ್ನು ಪರಿಶೀಲಿಸಿ"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> ಸ್ಕ್ರೀನ್ ಮೇಲಿನ ಎಲ್ಲಾ ವಿಷಯಗಳನ್ನು ಓದಬಹುದು, ಇತರ ಆ್ಯಪ್‌ಗಳ ಮೇಲೆ ವಿಷಯಗಳನ್ನು ಪ್ರದರ್ಶಿಸಬಹುದು ಹಾಗೂ ನಿಮ್ಮ ಸಂವಹನಗಳನ್ನು ಟ್ರ್ಯಾಕ್ ಮಾಡಬಹುದು."</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"ಈ ಆ್ಯಪ್ ಸ್ಕ್ರೀನ್ ಮೇಲಿನ ಎಲ್ಲಾ ವಿಷಯಗಳನ್ನು ಓದಬಹುದು, ಇತರ ಆ್ಯಪ್‌ಗಳ ಮೇಲೆ ವಿಷಯಗಳನ್ನು ಪ್ರದರ್ಶಿಸಬಹುದು ಹಾಗೂ ನಿಮ್ಮ ಸಂವಹನಗಳನ್ನು ಟ್ರ್ಯಾಕ್ ಮಾಡಬಹುದು."</string>

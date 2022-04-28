@@ -277,6 +277,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"為保護您的私隱，系統已移除權限"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g>在背景存取了您的位置資訊"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"此應用程式可隨時存取您的位置資訊。輕按即可變更權限。"</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
+    <skip />
+    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
+    <skip />
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"檢查具有無障礙功能存取權的應用程式"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"「<xliff:g id="APP_NAME">%s</xliff:g>」可讀取畫面上的所有內容、將內容顯示在其他應用程式上，並追蹤您的互動情況。"</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"此應用程式可讀取畫面上的所有內容、將內容顯示在其他應用程式上，並追蹤您的互動情況。"</string>

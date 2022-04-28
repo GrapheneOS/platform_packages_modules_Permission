@@ -277,6 +277,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Behörigheterna har tagits bort för att skydda din integritet"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> har åtkomst till din plats i bakgrunden"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Den här appen har alltid åtkomst till din plats. Tryck här om du vill ändra det."</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
+    <skip />
+    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
+    <skip />
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Granska app med tillgänglighetsåtkomst"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> kan läsa allt som visas på skärmen, visa innehåll över andra appar och spåra hur du interagerar med enheten."</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Den här appen kan läsa allt som visas på skärmen, visa innehåll över andra appar och spåra hur du interagerar med enheten."</string>

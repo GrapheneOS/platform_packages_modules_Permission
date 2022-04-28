@@ -277,6 +277,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"ፈቃዶች የእርስዎን ግላዊነት ለመጠበቅ ተወግደዋል"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> በበስተጀርባ አካባቢዎን አግኝተዋል"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"ይህ መተግበሪያ በማንኛውም ጊዜ አካባቢዎን መድረስ ይችላል። ለመቀየር መታ ያድርጉ።"</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
+    <skip />
+    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
+    <skip />
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"መተግበሪያን በተደራሽነት መዳረሻ ይገምግሙ"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> በማያ ገጹ ላይ ያሉትን ሁሉም ይዘቶች ማንበብ፣ ይዘቶችን በሌሎች መተግበሪያዎች ላይ ማሳየት እና መስተጋብርዎን መከታተል ይችላል።"</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"ይህ መተግበሪያ በማያ ገጹ ላይ ያሉትን ሁሉም ይዘቶች ማንበብ፣ ይዘቶችን በሌሎች መተግበሪያዎች ላይ ማሳየት እና መስተጋብርዎን መከታተል ይችላል።"</string>
@@ -374,7 +386,7 @@
     <string name="role_call_redirection_description" msgid="6091669882014664420">"ወደ ሌላ ስልክ ቁጥር ጥሪዎችን እንዲያስተላልፉ የሚፈቀድልዎት መተግበሪያዎች"</string>
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"<xliff:g id="APP_NAME">%1$s</xliff:g> እንደ የእርስዎ ነባሪ የጥሪ ዳግም አቅጣጫ ማዞሪያ መተግበሪያ ይቀናበር?"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"ምንም ፈቃዶች አያስፈልጉም"</string>
-    <string name="role_call_screening_label" msgid="883935222060878724">"ነባሪ የደዋይ መታወቂያ እና የአይፈለጌ መልእክት መተግበሪያ"</string>
+    <string name="role_call_screening_label" msgid="883935222060878724">"ነባሪ የደዋይ መታወቂያ እና የአይፈለጌ መልዕክት መተግበሪያ"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"የደዋይ መታወቂያ እና የአይፈለጌ መልዕክት መተግበሪያ"</string>
     <string name="role_call_screening_description" msgid="2349431420497468981">"ስልክ ጥሪዎችን ለይተው እንዲያውቁ እና አይፈለጌ ጥሪን፣ የሮቦት ስልክ ጥሪን ወይም የማይፈለጉ ቁጥሮችን ማገድ የሚያስችልዎት መተግበሪያዎች"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> እንደ የእርስዎ ነባሪ የደዋይ መታወቂያ እና የአይፈልጌ መተግበሪያ ይቀናበር?"</string>

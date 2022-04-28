@@ -200,7 +200,7 @@
     <string name="auto_revoke_label" msgid="5068393642936571656">"إزالة الأذونات في حال عدم استخدام التطبيق"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"إزالة الأذونات وإخلاء مساحة"</string>
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"إيقاف نشاط تطبيق مؤقتًا عند عدم استخدامه"</string>
-    <string name="unused_apps_summary" msgid="8839466950318403115">"يؤدي تفعيل مفتاح الخصوصية إلى إزالة الأذونات وحذف الملفات المؤقتة وإيقاف الإشعارات."</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"إزالة الأذونات وحذف الملفات المؤقتة وإيقاف الإشعارات"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"لحماية بياناتك، ستتم إزالة أذونات هذا التطبيق إذا لم يتم استخدامه لبضعة أشهر."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"لحماية بياناتك، إذا لم يتم استخدام التطبيق لبضعة أشهر، ستتم إزالة الأذونات التالية: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"لحماية بياناتك، تمت إزالة الأذونات من هذه التطبيقات التي لم تستخدمها منذ بضعة أشهر."</string>
@@ -233,7 +233,7 @@
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"تتمكن التطبيقات التي لديها هذا الإذن من العثور على الأجهزة المجاورة والربط بها وتحديد موضعها النسبي."</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"يمكن للتطبيقات التي لديها هذا الإذن تسجيل الصوت."</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"يمكن للتطبيقات التي لديها هذا الإذن إجراء مكالمات هاتفية وإدارتها."</string>
-    <string name="permission_description_summary_sensors" msgid="1836045815643119949">"يمكن للتطبيقات التي لديها هذا الإذن أن تصل إلى بيانات جهاز الاستشعار عن علاماتك الحيوية."</string>
+    <string name="permission_description_summary_sensors" msgid="1836045815643119949">"يمكن للتطبيقات التي لديها هذا الإذن أن تصل إلى بيانات جهاز الاستشعار الخاصة بمؤشراتك الحيوية."</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"‏يمكن للتطبيقات التي لديها هذا الإذن إرسال رسائل قصيرة SMS وعرضها."</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"يمكن للتطبيقات التي لديها هذا الإذن الوصول إلى الصور والوسائط والملفات على جهازك."</string>
     <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"يمكن للتطبيقات التي لديها هذا الإذن الوصول إلى الموسيقى والملفات الصوتية الأخرى على جهازك."</string>
@@ -277,6 +277,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"تمت إزالة الأذونات لحماية خصوصيتك."</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"وضع <xliff:g id="APP_NAME">%s</xliff:g> الموقع الجغرافي لك في الخلفية"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"يمكن لهذا التطبيق دائمًا الوصول إلى بيانات موقعك الجغرافي. انقر لتغيير ذلك."</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
+    <skip />
+    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
+    <skip />
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"مراجعة تطبيق يملك إمكانية الوصول إلى أدوات تسهيل الاستخدام"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"يمكن لتطبيق <xliff:g id="APP_NAME">%s</xliff:g> قراءة كل المحتوى الظاهر على الشاشة وعرض المحتوى على تطبيقات أخرى وتتبُّع تفاعلاتك."</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"يمكن لهذا التطبيق قراءة كل المحتوى الظاهر على الشاشة وعرض المحتوى على تطبيقات أخرى وتتبُّع تفاعلاتك."</string>

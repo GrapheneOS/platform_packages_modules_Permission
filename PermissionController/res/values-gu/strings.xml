@@ -234,7 +234,7 @@
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"આ પરવાનગી ધરાવતી ઍપ ઑડિયો રેકોર્ડ કરી શકશે"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"આ પરવાનગી ધરાવતી ઍપ ફોન કૉલ કરી શકશે અને તેને મેનેજ કરી શકશે"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"આ પરવાનગી ધરાવતી ઍપ તમારા મહત્ત્વપૂર્ણ ચિહ્નો વિશેના સેન્સર ડેટાને ઍક્સેસ કરી શકશે"</string>
-    <string name="permission_description_summary_sms" msgid="725999468547768517">"આ પરવાનગી ધરાવતી ઍપ SMS સંદેશા મોકલી અને જોઈ શકે છે"</string>
+    <string name="permission_description_summary_sms" msgid="725999468547768517">"આ પરવાનગી ધરાવતી ઍપ SMS મેસેજ મોકલી અને જોઈ શકે છે"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"આ પરવાનગી ધરાવતી ઍપ તમારા ડિવાઇસ પર ફોટા, મીડિયા અને ફાઇલોને ઍક્સેસ કરી શકે છે"</string>
     <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"આ પરવાનગી ધરાવતી ઍપ તમારા ડિવાઇસ પરની મ્યુઝિક અને અન્ય ઑડિયો ફાઇલો ઍક્સેસ કરી શકે છે"</string>
     <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"આ પરવાનગી ધરાવતી ઍપ તમારા ડિવાઇસ પરના ફોટા અને વીડિયો ઍક્સેસ કરી શકે છે"</string>
@@ -277,6 +277,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"તમારી પ્રાઇવસીનું રક્ષણ કરવા માટે પરવાનગીઓ દૂર કરવામાં આવી"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g>એ બૅકગ્રાઉન્ડમાં તમારું સ્થાન ઍક્સેસ કર્યુ છે"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"આ ઍપ હંમેશાં તમારા સ્થાનને ઍક્સેસ કરી શકે છે. ફેરફાર કરવા માટે ટૅપ કરો."</string>
+    <string name="notification_listener_reminder_notification_title" msgid="6214106302085018939">"નોટિફિકેશન સાંભળવાનો ઍક્સેસ ધરાવતી ઍપનો રિવ્યૂ કરો"</string>
+    <string name="notification_listener_reminder_notification_content" msgid="4740891089329946164">"<xliff:g id="APP_NAME">%s</xliff:g> તમારા બધા નોટિફિકેશન વાંચી શકે છે."</string>
+    <string name="notification_listener_warning_card_content" msgid="8181427178654279926">"આ ઍપ તમારા બધા નોટિફિકેશન વાંચી શકે છે."</string>
+    <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"ઍક્સેસ કાઢી નાખો"</string>
+    <string name="notification_listener_review_app_button_label" msgid="1023909640634882973">"નોટિફિકેશનનો ઍક્સેસ ધરાવતી ઍપનો રિવ્યૂ કરો"</string>
+    <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"ઍક્સેસ કાઢી નાખ્યો"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"ઍક્સેસિબિલિટી ઍક્સેસ ધરાવતી ઍપનો રિવ્યૂ કરો"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g>, સ્ક્રીન પરનું બધું કન્ટેન્ટ વાંચી શકે છે, અન્ય ઍપ પર પોતાનું કન્ટેન્ટ બતાવી શકે છે તેમજ તમારી ક્રિયાપ્રતિક્રિયાઓ ટ્રૅક કરી શકે છે."</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"આ ઍપ સ્ક્રીન પરનું બધું કન્ટેન્ટ વાંચી શકે છે, અન્ય ઍપ પર પોતાનું કન્ટેન્ટ બતાવી શકે છે તેમજ તમારી ક્રિયાપ્રતિક્રિયાઓ ટ્રૅક કરી શકે છે."</string>
@@ -353,7 +359,7 @@
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"ડાયલર"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"ડિફૉલ્ટ SMS ઍપ"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS ઍપ"</string>
-    <string name="role_sms_description" msgid="3424020199148153513">"ઍપ કે જે તમને તમારા ફોન નંબરનો ઉપયોગ કરીને નાના ટેક્સ્ટ સંદેશા, ફોટા, વીડિયો અને ઘણું બધું મોકલવા અને પ્રાપ્ત કરવાની મંજૂરી આપે છે"</string>
+    <string name="role_sms_description" msgid="3424020199148153513">"ઍપ કે જે તમને તમારા ફોન નંબરનો ઉપયોગ કરીને નાના ટેક્સ્ટ મેસેજ, ફોટા, વીડિયો અને ઘણું બધું મોકલવા અને પ્રાપ્ત કરવાની મંજૂરી આપે છે"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g>ને તમારી ડિફૉલ્ટ SMS ઍપ તરીકે સેટ કરીએ?"</string>
     <string name="role_sms_request_description" msgid="983371022668134198">"સંપર્કો, SMS અને ફોનનો ઍક્સેસ મેળવે છે"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"ટેક્સ્ટ સંદેશ, ટેક્સ્ટિંગ, સંદેશા, મેસેજિંગ"</string>

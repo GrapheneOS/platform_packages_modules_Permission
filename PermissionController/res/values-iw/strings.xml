@@ -277,6 +277,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"הוסרו הרשאות כדי להגן על הפרטיות שלך"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"האפליקציה <xliff:g id="APP_NAME">%s</xliff:g> קיבלה גישה ברקע למיקום שלך"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"האפליקציה הזו יכולה תמיד לגשת למיקום שלך. יש להקיש כדי לשנות את ההגדרה הזו."</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
+    <skip />
+    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
+    <skip />
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"יש לבדוק את האפליקציה עם הרשאת הגישה"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"לאפליקציה <xliff:g id="APP_NAME">%s</xliff:g> יש הרשאה לקרוא את כל התכנים במסך, להציג תכנים מעל אפליקציות אחרות ולעקוב אחר האינטראקציות שלך."</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"לאפליקציה הזו יש הרשאה לקרוא את כל התכנים במסך, להציג תכנים מעל אפליקציות אחרות ולעקוב אחר האינטראקציות שלך."</string>
@@ -328,7 +340,7 @@
     <string name="no_apps_allowed" msgid="7718822655254468631">"אין אפליקציות שקיבלו הרשאה"</string>
     <string name="no_apps_allowed_full" msgid="8011716991498934104">"לאף אפליקציה אין הרשאה לכל הקבצים"</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"לאף אפליקציה אין הרשאה למדיה בלבד"</string>
-    <string name="no_apps_denied" msgid="7663435886986784743">"אין אפליקציות ללא ההרשאה"</string>
+    <string name="no_apps_denied" msgid="7663435886986784743">"אין אפליקציות שלא קיבלו ההרשאה"</string>
     <string name="car_permission_selected" msgid="180837028920791596">"נבחר"</string>
     <string name="settings" msgid="5409109923158713323">"הגדרות"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"לשירות <xliff:g id="SERVICE_NAME">%s</xliff:g> יש גישה מלאה למכשיר שלך"</string>

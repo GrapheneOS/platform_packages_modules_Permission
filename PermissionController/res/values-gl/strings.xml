@@ -277,6 +277,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Quitáronse os permisos para protexer a túa privacidade"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"A aplicación <xliff:g id="APP_NAME">%s</xliff:g> accedeu á túa localización en segundo plano"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Esta aplicación pode acceder sempre á túa localización. Toca para cambiar esta opción."</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
+    <skip />
+    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
+    <skip />
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Revisa unha aplicación con acceso de accesibilidade"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> pode ler todo o presente na pantalla, mostrar contido sobre outras aplicacións e facer un seguimento das túas interaccións."</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Esta aplicación pode ler todo o presente na pantalla, mostrar contido sobre outras aplicacións e facer un seguimento das túas interaccións."</string>

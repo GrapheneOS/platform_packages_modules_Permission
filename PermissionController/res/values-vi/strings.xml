@@ -277,6 +277,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Đã thu hồi các quyền để bảo vệ quyền riêng tư của bạn"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> đã truy cập thông tin vị trí của bạn trong nền"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Ứng dụng này luôn có thể truy cập vào thông tin vị trí của bạn. Hãy nhấn để thay đổi."</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
+    <skip />
+    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
+    <skip />
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Xem ứng dụng có quyền sử dụng tính năng hỗ trợ tiếp cận"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> có thể đọc tất cả nội dung trên màn hình, hiện nội dung trên các ứng dụng khác và theo dõi hoạt động tương tác của bạn."</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Ứng dụng này có thể đọc tất cả nội dung trên màn hình, hiện nội dung trên các ứng dụng khác và theo dõi hoạt động tương tác của bạn."</string>

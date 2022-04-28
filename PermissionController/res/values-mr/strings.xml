@@ -277,6 +277,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"तुमच्या गोपनीयतेचे संरक्षण करण्यासाठी परवानग्या काढून टाकल्या आहेत"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> ने बॅकग्राउंडमध्ये तुमचे स्थान मिळवले"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"हे अ‍ॅप नेहमी तुमचे स्थान अ‍ॅक्सेस करू शकते. बदलण्यासाठी टॅप करा."</string>
+    <string name="notification_listener_reminder_notification_title" msgid="6214106302085018939">"सूचना श्रोता अ‍ॅक्सेस असलेल्या अ‍ॅपचे पुनरावलोकन करा"</string>
+    <string name="notification_listener_reminder_notification_content" msgid="4740891089329946164">"<xliff:g id="APP_NAME">%s</xliff:g> तुमच्या सर्व सूचना वाचू शकते."</string>
+    <string name="notification_listener_warning_card_content" msgid="8181427178654279926">"हे अ‍ॅप तुमच्या सर्व सूचना वाचू शकते."</string>
+    <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"अ‍ॅक्सेस काढून टाका"</string>
+    <string name="notification_listener_review_app_button_label" msgid="1023909640634882973">"सूचना अ‍ॅक्सेस असलेल्या अ‍ॅपचे पुनरावलोकन करा"</string>
+    <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"अ‍ॅक्सेस काढून टाकला"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"अ‍ॅक्सेसिबिलिटी अ‍ॅक्सेससह अ‍ॅपचे पुनरावलोकन करा"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> हे स्क्रीनवरील सर्व आशय वाचू शकते, इतर अ‍ॅप्सवर आशय प्रदर्शित करू शकते आणि तुमच्या संवादाचा मागोवा ठेवू शकते."</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"हे अ‍ॅप स्क्रीनवरील सर्व आशय वाचू शकते, इतर अ‍ॅप्सवर आशय प्रदर्शित करू शकते आणि तुमच्या संवादाचा मागोवा ठेवू शकते."</string>

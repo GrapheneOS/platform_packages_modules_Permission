@@ -277,6 +277,18 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"S\'han suprimit els permisos per protegir la teva privadesa"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> ha obtingut la teva ubicació en segon pla"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Aquesta aplicació pot accedir a la teva ubicació en qualsevol moment. Toca per canviar-ho."</string>
+    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
+    <skip />
+    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
+    <skip />
+    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
+    <skip />
+    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
+    <skip />
+    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
+    <skip />
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Revisa l\'aplicació amb accés a funcions d\'accessibilitat"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> pot llegir tot el contingut en pantalla, mostrar contingut sobre altres aplicacions i fer un seguiment de les teves interaccions."</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Aquesta aplicació pot llegir tot el contingut en pantalla, mostrar contingut sobre altres aplicacions i fer un seguiment de les teves interaccions."</string>
@@ -479,7 +491,7 @@
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi a les dades del sensor de constants vitals?"</string>
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Aquesta aplicació vol accedir a les dades del sensor sobre les constants vitals sempre, fins i tot quan no l\'utilitzis. Per fer aquest canvi, "<annotation id="link">"ves a la configuració"</annotation>"."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi a les dades dels sensors sobre les constants vitals?"</string>
-    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Per permetre que l\'aplicació accedeixi sempre a les dades del sensor corporal, fins i tot quan no l\'utilitzis, "<annotation id="link">"ves a la configuració"</annotation>"."</string>
+    <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Per permetre que l\'aplicació accedeixi sempre a les dades del sensor corporal, fins i tot quan no la utilitzis, "<annotation id="link">"ves a la configuració"</annotation>"."</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Vols continuar permetent que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; accedeixi a les dades del sensor corporal mentre s\'utilitza?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; t\'enviï notificacions?"</string>
     <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Vols permetre que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; continuï enviant-te notificacions?"</string>
