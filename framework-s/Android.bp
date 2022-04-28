@@ -70,7 +70,7 @@ java_sdk_library {
     lint: {
         strict_updatability_linting: true,
     },
-    min_sdk_version: "30",
+    min_sdk_version: "31",
     permitted_packages: [
         "android.permission",
         "android.app.role",
