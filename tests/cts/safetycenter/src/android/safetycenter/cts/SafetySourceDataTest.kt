@@ -79,6 +79,36 @@ class SafetySourceDataTest {
     }
 
     @Test
+    fun getIssues_mutationsAreNotAllowed() {
+        val data =
+            SafetySourceData.Builder()
+                .setStatus(createStatus(SEVERITY_LEVEL_CRITICAL_WARNING))
+                .addIssue(createIssue(SEVERITY_LEVEL_CRITICAL_WARNING))
+                .addIssue(createIssue(SEVERITY_LEVEL_RECOMMENDATION))
+                .build()
+        val mutatedIssues = data.issues
+
+        assertFailsWith(UnsupportedOperationException::class) {
+            mutatedIssues.add(createIssue(SEVERITY_LEVEL_INFORMATION))
+        }
+    }
+
+    @Test
+    fun builder_addIssue_doesNotMutatePreviouslyBuiltInstance() {
+        val firstIssue = createIssue(SEVERITY_LEVEL_INFORMATION, 1)
+        val secondIssue = createIssue(SEVERITY_LEVEL_INFORMATION, 2)
+        val safetySourceDataBuilder =
+            SafetySourceData.Builder()
+                .setStatus(createStatus(SEVERITY_LEVEL_INFORMATION))
+                .addIssue(firstIssue)
+        val issues = safetySourceDataBuilder.build().issues
+
+        safetySourceDataBuilder.addIssue(secondIssue)
+
+        assertThat(issues).containsExactly(firstIssue)
+    }
+
+    @Test
     fun clearIssues_removesAllIssues() {
         val firstIssue = createIssue(SEVERITY_LEVEL_INFORMATION, 1)
         val secondIssue = createIssue(SEVERITY_LEVEL_INFORMATION, 2)
