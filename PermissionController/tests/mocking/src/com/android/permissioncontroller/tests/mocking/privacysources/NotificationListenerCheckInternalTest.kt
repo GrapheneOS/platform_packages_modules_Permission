@@ -16,20 +16,32 @@
 
 package com.android.permissioncontroller.tests.mocking.privacysources
 
+import android.app.PendingIntent
 import android.app.job.JobParameters
 import android.content.ComponentName
 import android.content.Context
+import android.content.Intent
+import android.content.pm.ApplicationInfo
+import android.content.pm.PackageInfo
 import android.os.Build
-import android.provider.DeviceConfig
+import android.provider.Settings
+import android.safetycenter.SafetyCenterManager
+import android.safetycenter.SafetySourceData
+import android.safetycenter.SafetySourceIssue
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
 import com.android.dx.mockito.inline.extended.ExtendedMockito
+import com.android.dx.mockito.inline.extended.ExtendedMockito.doReturn
 import com.android.permissioncontroller.Constants
+import com.android.permissioncontroller.R
+import com.android.permissioncontroller.permission.utils.Utils
+import com.android.permissioncontroller.privacysources.NotificationListenerCheck
+import com.android.permissioncontroller.privacysources.NotificationListenerCheck.NotificationListenerCheckJobService
 import com.android.permissioncontroller.privacysources.NotificationListenerCheckInternal
 import com.android.permissioncontroller.privacysources.NotificationListenerCheckInternal.NlsComponent
-import com.android.permissioncontroller.privacysources.NotificationListenerCheck.NotificationListenerCheckJobService
+import com.android.permissioncontroller.privacysources.SC_NLS_DISABLE_ACTION_ID
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -37,6 +49,7 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
+import org.mockito.Mockito.any
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
 import org.mockito.MockitoAnnotations
@@ -46,7 +59,7 @@ import org.mockito.quality.Strictness
 /**
  * Unit tests for [NotificationListenerCheckInternal]
  *
- * <p> Does not test notification as there are conflicts with being able to mock NotifiationManager
+ * <p> Does not test notification as there are conflicts with being able to mock NotificationManager
  * and PendintIntent.getBroadcast requiring a valid context. Notifications are tested in the CTS
  * integration tests
  */
@@ -69,7 +82,7 @@ class NotificationListenerCheckInternalTest {
         context = ApplicationProvider.getApplicationContext()
 
         mockitoSession = ExtendedMockito.mockitoSession()
-            .mockStatic(DeviceConfig::class.java)
+            .spyStatic(Utils::class.java)
             .strictness(Strictness.LENIENT).startMocking()
 
         notificationListenerCheck = runWithShellPermissionIdentity {
@@ -350,8 +363,112 @@ class NotificationListenerCheckInternalTest {
         assertThat(updatedNlsComponents).isEmpty()
     }
 
+    @Test
+    fun createSafetySourceIssue() {
+        val testComponent = ComponentName("com.test.package", "TestClass")
+        val testAppLabel: CharSequence = "TestApp Label"
+        doReturn(PackageInfo().apply {
+            applicationInfo = ApplicationInfo()
+        }).`when` {
+            Utils.getPackageInfoForComponentName(
+                any(Context::class.java),
+                any(ComponentName::class.java)
+            )
+        }
+        doReturn(testAppLabel).`when` {
+            Utils.getApplicationLabel(
+                any(Context::class.java),
+                any(ApplicationInfo::class.java))
+        }
+
+        val safetySourceIssue = notificationListenerCheck.createSafetySourceIssue(testComponent)
+
+        val expectedId = "notification_listener_${testComponent.flattenToString()}"
+        val expectedTitle = context.getString(
+                R.string.notification_listener_reminder_notification_title)
+        val expectedSubtitle: String = testAppLabel.toString()
+        val expectedSummary = context.getString(
+            R.string.notification_listener_warning_card_content)
+        val expectedSeverityLevel = SafetySourceData.SEVERITY_LEVEL_INFORMATION
+        val expectedIssueTypeId = NotificationListenerCheckInternal.SC_NLS_ISSUE_TYPE_ID
+        val expectedDismissIntent = Intent(context,
+            NotificationListenerCheck.ActionCardDismissalReceiver::class.java).apply {
+            putExtra(Intent.EXTRA_COMPONENT_NAME, testComponent)
+            flags = Intent.FLAG_RECEIVER_FOREGROUND
+            identifier = testComponent.flattenToString()
+        }
+        val expectedDismissPendingIntent = PendingIntent.getBroadcast(
+            context,
+            0,
+            expectedDismissIntent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
+        val expectedAction1 = SafetySourceIssue.Action.Builder(
+            SC_NLS_DISABLE_ACTION_ID,
+            context.getString(R.string.notification_listener_remove_access_button_label),
+            getDisableNlsPendingIntent(context, expectedId, testComponent)
+        )
+            .setWillResolve(true)
+            .setSuccessMessage(context.getString(
+                R.string.notification_listener_remove_access_success_label))
+            .build()
+        val expectedAction2 =
+            SafetySourceIssue.Action.Builder(
+                NotificationListenerCheckInternal.SC_SHOW_NLS_SETTINGS_ACTION_ID,
+                context.getString(R.string.notification_listener_review_app_button_label),
+                getNotificationListenerSettingsPendingIntent(context)
+            ).build()
+
+        assertThat(safetySourceIssue.id).isEqualTo(expectedId)
+        assertThat(safetySourceIssue.title).isEqualTo(expectedTitle)
+        assertThat(safetySourceIssue.subtitle).isEqualTo(expectedSubtitle)
+        assertThat(safetySourceIssue.summary).isEqualTo(expectedSummary)
+        assertThat(safetySourceIssue.severityLevel).isEqualTo(expectedSeverityLevel)
+        assertThat(safetySourceIssue.issueTypeId).isEqualTo(expectedIssueTypeId)
+        assertThat(safetySourceIssue.onDismissPendingIntent).isEqualTo(expectedDismissPendingIntent)
+        assertThat(safetySourceIssue.actions.size).isEqualTo(2)
+        assertThat(safetySourceIssue.actions).containsExactly(expectedAction2, expectedAction1)
+    }
+
     private fun getNotifiedComponents(): Set<NlsComponent> = runBlocking {
         notificationListenerCheck.loadNotifiedComponentsLocked()
+    }
+
+    /**
+     * @return [PendingIntent] for remove access button on the warning card.
+     */
+    private fun getDisableNlsPendingIntent(
+        context: Context,
+        safetySourceIssueId: String,
+        componentName: ComponentName
+    ): PendingIntent {
+        val intent = Intent(context,
+            NotificationListenerCheck.DisableComponentHandler::class.java).apply {
+            putExtra(SafetyCenterManager.EXTRA_SAFETY_SOURCE_ISSUE_ID, safetySourceIssueId)
+            putExtra(Intent.EXTRA_COMPONENT_NAME, componentName)
+            flags = Intent.FLAG_RECEIVER_FOREGROUND
+            identifier = componentName.flattenToString()
+        }
+
+        return PendingIntent.getBroadcast(
+            context,
+            0,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
+    }
+
+    /** @return [PendingIntent] to Notification Listener Settings page */
+    private fun getNotificationListenerSettingsPendingIntent(context: Context): PendingIntent {
+        val intent = Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        }
+        return PendingIntent.getActivity(
+            context,
+            0,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
     }
 
     private fun <R> runWithShellPermissionIdentity(block: () -> R): R {
