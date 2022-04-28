@@ -23,6 +23,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.ext.truth.os.ParcelableSubject.assertThat
 import androidx.test.filters.SdkSuppress
 import com.google.common.truth.Truth.assertThat
+import kotlin.test.assertFailsWith
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -32,8 +33,33 @@ import org.junit.runner.RunWith
 class SafetyCenterConfigTest {
 
     @Test
-    fun getSafetySources_returnsSafetySources() {
+    fun getSafetySourcesGroups_returnsSafetySourcesGroups() {
         assertThat(BASE.safetySourcesGroups)
+            .containsExactly(SafetySourcesGroupTest.RIGID, SafetySourcesGroupTest.HIDDEN)
+            .inOrder()
+    }
+
+    @Test
+    fun getSafetySourcesGroups_mutationsAreNotAllowed() {
+        val sourcesGroups = BASE.safetySourcesGroups
+
+        assertFailsWith(UnsupportedOperationException::class) {
+            sourcesGroups.add(SafetySourcesGroupTest.COLLAPSIBLE_WITH_SUMMARY)
+        }
+    }
+
+    @Test
+    fun builder_addSafetySourcesGroup_doesNotMutatePreviouslyBuiltInstance() {
+        val safetyCenterConfigBuilder =
+            SafetyCenterConfig.Builder()
+                .addSafetySourcesGroup(SafetySourcesGroupTest.RIGID)
+                .addSafetySourcesGroup(SafetySourcesGroupTest.HIDDEN)
+        val sourceGroups = safetyCenterConfigBuilder.build().safetySourcesGroups
+
+        safetyCenterConfigBuilder.addSafetySourcesGroup(
+            SafetySourcesGroupTest.COLLAPSIBLE_WITH_SUMMARY)
+
+        assertThat(sourceGroups)
             .containsExactly(SafetySourcesGroupTest.RIGID, SafetySourcesGroupTest.HIDDEN)
             .inOrder()
     }
