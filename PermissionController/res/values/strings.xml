@@ -1095,8 +1095,8 @@
     <string name="role_sms_description">Apps that allow you to use your phone number to send and receive short text messages, photos, videos, and more</string>
     <!-- Template for the title when an app requests to become the default SMS app. [CHAR LIMIT=100] -->
     <string name="role_sms_request_title">Set <xliff:g id="app_name" example="Super SMS">%1$s</xliff:g> as your default SMS app?</string>
-    <!-- Description when an app requests to become the default SMS app. [CHAR LIMIT=60] -->
-    <string name="role_sms_request_description">Gets access to contacts, SMS, phone</string>
+    <!-- Description when an app requests to become the default SMS app. [CHAR LIMIT=NONE] -->
+    <string name="role_sms_request_description">This app will be given access to your Camera, Contacts, Files and media, Microphone, Phone, and SMS</string>
     <!-- Search keywords for the SMS role. [CHAR LIMIT=NONE] -->
     <string name="role_sms_search_keywords">text message, texting, messages, messaging</string>
 
