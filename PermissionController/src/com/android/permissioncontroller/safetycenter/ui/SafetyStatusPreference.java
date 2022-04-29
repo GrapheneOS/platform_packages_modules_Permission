@@ -38,9 +38,11 @@ public class SafetyStatusPreference extends Preference {
 
     @Nullable private SafetyCenterStatus mStatus;
     @Nullable private View.OnClickListener mRescanButtonOnClickListener;
+    private boolean mHasIssues;
 
     public SafetyStatusPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
+        mHasIssues = false;
         setLayoutResource(R.layout.preference_safety_status);
     }
 
@@ -60,7 +62,6 @@ public class SafetyStatusPreference extends Preference {
 
         ProgressBar rescanProgressBar = (ProgressBar) holder.findViewById(R.id.rescan_progress_bar);
 
-        // TODO(b/222126886): hide rescan button once we have defined behavior from UX
         View rescanButton = holder.findViewById(R.id.rescan_button);
         rescanButton.setBackgroundTintList(
                 ContextCompat.getColorStateList(
@@ -79,6 +80,7 @@ public class SafetyStatusPreference extends Preference {
 
     private void startRescanAnimation(
             ImageView statusImage, View rescanButton, ProgressBar rescanProgressBar) {
+        rescanButton.setVisibility(View.VISIBLE);
         statusImage.setVisibility(View.INVISIBLE);
         rescanProgressBar.setVisibility(View.VISIBLE);
         rescanButton.setEnabled(false);
@@ -89,10 +91,16 @@ public class SafetyStatusPreference extends Preference {
         statusImage.setVisibility(View.VISIBLE);
         rescanProgressBar.setVisibility(View.INVISIBLE);
         rescanButton.setEnabled(true);
+        rescanButton.setVisibility(mHasIssues ? View.GONE : View.VISIBLE);
     }
 
     void setSafetyStatus(SafetyCenterStatus status) {
         mStatus = status;
+        notifyChanged();
+    }
+
+    void setHasIssues(boolean hasIssues) {
+        mHasIssues = hasIssues;
         notifyChanged();
     }
 

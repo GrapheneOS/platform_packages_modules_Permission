@@ -124,6 +124,7 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
         }
 
         mSafetyStatusPreference.setSafetyStatus(data.getStatus());
+        mSafetyStatusPreference.setHasIssues(!data.getIssues().isEmpty());
 
         // TODO(b/208212820): Only update entries that have changed since last
         // update, rather than deleting and re-adding all.
