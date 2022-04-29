@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"ได้รับอนุญาตให้จัดการไฟล์ทั้งหมด"</string>
     <string name="ask_header" msgid="2633816846459944376">"ถามทุกครั้ง"</string>
     <string name="denied_header" msgid="903209608358177654">"ไม่อนุญาต"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"แอปบางแอปที่มีฟังก์ชันที่จำเป็นสำหรับอุปกรณ์จะมีสิทธิ์พิเศษในการเข้าถึงไฟล์ทั้งหมดได้"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"ดูแอปที่มีสิทธิ์การเข้าถึงไฟล์ทั้งหมด"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 วัน}other{# วัน}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 ชั่วโมง}other{# ชั่วโมง}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 นาที}other{# นาที}}"</string>
@@ -277,18 +277,12 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"มีการนำสิทธิ์ออกเพื่อปกป้องความเป็นส่วนตัวของคุณ"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> เข้าถึงตำแหน่งของคุณอยู่เบื้องหลัง"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"แอปนี้เข้าถึงตำแหน่งของคุณได้ตลอดเวลา แตะเพื่อเปลี่ยน"</string>
-    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
-    <skip />
-    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
-    <skip />
-    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
-    <skip />
-    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
-    <skip />
-    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
-    <skip />
-    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
-    <skip />
+    <string name="notification_listener_reminder_notification_title" msgid="6214106302085018939">"ตรวจสอบแอปที่มีสิทธิ์เข้าถึงบริการฟังการแจ้งเตือน"</string>
+    <string name="notification_listener_reminder_notification_content" msgid="4740891089329946164">"<xliff:g id="APP_NAME">%s</xliff:g> อ่านการแจ้งเตือนทั้งหมดของคุณได้"</string>
+    <string name="notification_listener_warning_card_content" msgid="8181427178654279926">"แอปนี้อ่านการแจ้งเตือนทั้งหมดของคุณได้"</string>
+    <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"นำสิทธิ์เข้าถึงออก"</string>
+    <string name="notification_listener_review_app_button_label" msgid="4452381557379652037">"ตรวจสอบทุกแอปที่มีสิทธิ์เข้าถึงการแจ้งเตือน"</string>
+    <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"นำสิทธิ์เข้าถึงออกแล้ว"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"ตรวจสอบแอปที่มีสิทธิ์เข้าถึงการช่วยเหลือพิเศษ"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> สามารถอ่านเนื้อหาทั้งหมดในหน้าจอ แสดงเนื้อหาเหนือแอปอื่นๆ และติดตามการโต้ตอบของคุณได้"</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"แอปนี้สามารถอ่านเนื้อหาทั้งหมดในหน้าจอ แสดงเนื้อหาเหนือแอปอื่นๆ และติดตามการโต้ตอบของคุณได้"</string>
@@ -544,4 +538,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"ใช้ล่าสุดโดย <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"ความปลอดภัยและความเป็นส่วนตัว"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"ตรวจสอบสถานะ"</string>
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"ยืนยัน"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"กลับ"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"จะได้รับอนุญาตให้เข้าถึงไฟล์อื่นๆ ด้วย"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"จะไม่ได้รับอนุญาตให้เข้าถึงไฟล์อื่นๆ ด้วย"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"จะได้รับอนุญาตให้เข้าถึงไฟล์อื่นๆ ด้วย"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"จะไม่ได้รับอนุญาตให้เข้าถึงไฟล์อื่นๆ ด้วย"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"จะได้รับอนุญาตให้เข้าถึงรูปภาพและวิดีโอด้วย"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"จะไม่ได้รับอนุญาตให้เข้าถึงรูปภาพและวิดีโอด้วย"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"จะได้รับอนุญาตให้เข้าถึงไฟล์เพลงและไฟล์เสียงด้วย"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"จะไม่ได้รับอนุญาตให้เข้าถึงไฟล์เพลงและไฟล์เสียงด้วย"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"แอปนี้ไม่รองรับ Android เวอร์ชันล่าสุด หากแอปนี้เข้าถึงไฟล์เพลงและไฟล์เสียงได้ ก็จะได้รับอนุญาตให้เข้าถึงรูปภาพ วิดีโอ และไฟล์อื่นๆ ด้วย"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"แอปนี้ไม่รองรับ Android เวอร์ชันล่าสุด หากแอปนี้เข้าถึงไฟล์เพลงและไฟล์เสียงไม่ได้ ก็จะไม่ได้รับอนุญาตให้เข้าถึงรูปภาพ วิดีโอ และไฟล์อื่นๆ ด้วย"</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"แอปนี้ไม่รองรับ Android เวอร์ชันล่าสุด หากแอปนี้เข้าถึงรูปภาพและวิดีโอได้ ก็จะได้รับอนุญาตให้เข้าถึงไฟล์เพลง เสียง และไฟล์อื่นๆ ด้วย"</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"แอปนี้ไม่รองรับ Android เวอร์ชันล่าสุด หากแอปนี้เข้าถึงรูปภาพและวิดีโอไม่ได้ ก็จะไม่ได้รับอนุญาตให้เข้าถึงไฟล์เพลง เสียง และไฟล์อื่นๆ ด้วย"</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"แอปนี้ไม่รองรับ Android เวอร์ชันล่าสุด หากแอปนี้เข้าถึงไฟล์เพลงและไฟล์เสียงได้ ก็จะได้รับอนุญาตให้เข้าถึงรูปภาพและวิดีโอด้วย"</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"แอปนี้ไม่รองรับ Android เวอร์ชันล่าสุด หากแอปนี้เข้าถึงไฟล์เพลงและไฟล์เสียงไม่ได้ ก็จะไม่ได้รับอนุญาตให้เข้าถึงรูปภาพและวิดีโอด้วย"</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"แอปนี้ไม่รองรับ Android เวอร์ชันล่าสุด หากแอปนี้เข้าถึงรูปภาพและวิดีโอได้ ก็จะได้รับอนุญาตให้เข้าถึงไฟล์เพลงและไฟล์เสียงด้วย"</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"แอปนี้ไม่รองรับ Android เวอร์ชันล่าสุด หากแอปนี้เข้าถึงไฟล์เพลงและไฟล์เสียงไม่ได้ ก็จะไม่ได้รับอนุญาตให้เข้าถึงรูปภาพและวิดีโอด้วย"</string>
 </resources>
