@@ -368,21 +368,30 @@ final class SafetyCenterDataTracker {
                             "Missing status for dynamic safety source \"%s\"", safetySourceId));
         }
 
-        int maxSeverityLevel =
-                safetySourceData.getStatus() != null
-                        ? safetySourceData.getStatus().getSeverityLevel()
-                        : Integer.MIN_VALUE;
-        for (int i = 0; i < safetySourceData.getIssues().size(); i++) {
-            maxSeverityLevel =
+        if (safetySourceData.getStatus() != null) {
+            int sourceSeverityLevel = safetySourceData.getStatus().getSeverityLevel();
+            int maxSourceSeverityLevel =
                     Math.max(
-                            maxSeverityLevel,
-                            safetySourceData.getIssues().get(i).getSeverityLevel());
+                            SafetySourceData.SEVERITY_LEVEL_INFORMATION,
+                            safetySource.getMaxSeverityLevel());
+
+            if (sourceSeverityLevel > maxSourceSeverityLevel) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "Unexpected severity level \"%d\" for safety source \"%s\"",
+                                sourceSeverityLevel, safetySourceId));
+            }
         }
-        if (maxSeverityLevel > safetySource.getMaxSeverityLevel()) {
-            throw new IllegalArgumentException(
-                    String.format(
-                            "Unexpected max severity level \"%d\" for safety source \"%s\"",
-                            maxSeverityLevel, safetySourceId));
+
+        for (int i = 0; i < safetySourceData.getIssues().size(); i++) {
+            int issueSeverityLevel = safetySourceData.getIssues().get(i).getSeverityLevel();
+            if (issueSeverityLevel > safetySource.getMaxSeverityLevel()) {
+                throw new IllegalArgumentException(
+                        String.format(
+                                "Unexpected severity level \"%d\" for issue in safety source"
+                                        + " \"%s\"",
+                                issueSeverityLevel, safetySourceId));
+            }
         }
     }
 

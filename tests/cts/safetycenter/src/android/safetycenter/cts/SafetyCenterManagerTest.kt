@@ -65,6 +65,7 @@ import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.set
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.CTS_MULTIPLE_SOURCES_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.CTS_MULTIPLE_SOURCES_CONFIG_SOURCE_ID_1
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.CTS_MULTIPLE_SOURCES_CONFIG_SOURCE_ID_2
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.CTS_SEVERITY_ZERO_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.CTS_SINGLE_SOURCE_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.CTS_SINGLE_SOURCE_GROUP_ID
@@ -135,8 +136,30 @@ class SafetyCenterManagerTest {
         SafetySourceData.Builder()
             .setStatus(
                 SafetySourceStatus.Builder(
-                        "Ok title", "Ok summary", SafetySourceData.SEVERITY_LEVEL_INFORMATION)
+                    "Ok title", "Ok summary", SafetySourceData.SEVERITY_LEVEL_INFORMATION)
                     .setPendingIntent(somePendingIntent)
+                    .build())
+            .build()
+    private val safetySourceDataInformationWithIssue =
+        SafetySourceData.Builder()
+            .setStatus(
+                SafetySourceStatus.Builder(
+                    "Ok title", "Ok summary", SafetySourceData.SEVERITY_LEVEL_INFORMATION)
+                    .setPendingIntent(somePendingIntent)
+                    .build())
+            .addIssue(
+                SafetySourceIssue.Builder(
+                    INFORMATION_ISSUE_ID,
+                    "Information issue title",
+                    "Information issue summary",
+                    SafetySourceData.SEVERITY_LEVEL_INFORMATION,
+                    "issue_type_id")
+                    .addAction(
+                        SafetySourceIssue.Action.Builder(
+                            INFORMATION_ISSUE_ACTION_ID,
+                            "Review",
+                            somePendingIntent)
+                            .build())
                     .build())
             .build()
     private val safetySourceDataCritical =
@@ -444,6 +467,74 @@ class SafetyCenterManagerTest {
         assertThat(thrown)
             .hasMessageThat()
             .isEqualTo("Unexpected safety source \"$CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID\"")
+    }
+
+    @Test
+    fun setSafetySourceData_withMaxSevZeroAndSourceSevUnspecified_setsValue() {
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SEVERITY_ZERO_CONFIG)
+        safetyCenterManager.setSafetySourceDataWithPermission(
+            CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID,
+            safetySourceDataUnspecified,
+            EVENT_SOURCE_STATE_CHANGED)
+
+        val apiSafetySourceData =
+            safetyCenterManager.getSafetySourceDataWithPermission(
+                CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)
+        assertThat(apiSafetySourceData).isEqualTo(safetySourceDataUnspecified)
+    }
+
+    @Test
+    fun setSafetySourceData_withMaxSevZeroAndSourceSevInformation_setsValue() {
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SEVERITY_ZERO_CONFIG)
+        safetyCenterManager.setSafetySourceDataWithPermission(
+            CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID,
+            safetySourceDataInformation,
+            EVENT_SOURCE_STATE_CHANGED)
+
+        val apiSafetySourceData =
+            safetyCenterManager.getSafetySourceDataWithPermission(
+                CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)
+        assertThat(apiSafetySourceData).isEqualTo(safetySourceDataInformation)
+    }
+
+    @Test
+    fun setSafetySourceData_withMaxSevZeroAndSourceSevInformationWithIssue_throwsException() {
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SEVERITY_ZERO_CONFIG)
+
+        val thrown =
+            assertFailsWith(IllegalArgumentException::class) {
+                safetyCenterManager.setSafetySourceDataWithPermission(
+                    CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID,
+                    safetySourceDataInformationWithIssue,
+                    EVENT_SOURCE_STATE_CHANGED)
+            }
+
+        assertThat(thrown)
+            .hasMessageThat()
+            .isEqualTo(
+                "Unexpected severity level \"${
+                    SafetySourceData.SEVERITY_LEVEL_INFORMATION
+                }\" for issue in safety source \"$CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID\"")
+    }
+
+    @Test
+    fun setSafetySourceData_withMaxSevZeroAndSourceSevCritical_throwsException() {
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SEVERITY_ZERO_CONFIG)
+
+        val thrown =
+            assertFailsWith(IllegalArgumentException::class) {
+                safetyCenterManager.setSafetySourceDataWithPermission(
+                    CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID,
+                    safetySourceDataCritical,
+                    EVENT_SOURCE_STATE_CHANGED)
+            }
+
+        assertThat(thrown)
+            .hasMessageThat()
+            .isEqualTo(
+                "Unexpected severity level \"${
+                    SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING
+                }\" for safety source \"$CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID\"")
     }
 
     @Test
@@ -1400,6 +1491,10 @@ class SafetyCenterManagerTest {
         private const val CRITICAL_ISSUE_ID = "critical_issue_id"
 
         private const val CRITICAL_ISSUE_ACTION_ID = "critical_issue_action_id"
+
+        private const val INFORMATION_ISSUE_ID = "information_issue_id"
+
+        private const val INFORMATION_ISSUE_ACTION_ID = "information_issue_action_id"
 
         private fun safetyCenterEntryGroupId(sourcesGroupId: String) =
             SafetyCenterIds.encodeToString(
