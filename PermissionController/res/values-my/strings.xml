@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"ဖိုင်အားလုံးကို စီမံခွင့်ပြုထားသည်"</string>
     <string name="ask_header" msgid="2633816846459944376">"အမြဲမေးရန်"</string>
     <string name="denied_header" msgid="903209608358177654">"ခွင့်ပြုမထားပါ"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"သင့်စက်အတွက် အရေးပါသောလုပ်ဆောင်မှု ပံ့ပိုးသည့် အချို့အက်ပ်များသည် သင့်ဖိုင်အားလုံးကို အထူးသုံးခွင့် ရရှိနိုင်သည်"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"ဖိုင်အားလုံး သုံးခွင့်ရှိသည့် အက်ပ်များကိုကြည့်ရန်"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 ရက်}other{# ရက်}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 နာရီ}other{# နာရီ}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 မိနစ်}other{# မိနစ်}}"</string>
@@ -277,6 +277,13 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"သင့်ပုဂ္ဂိုလ်ရေးလုံခြုံမှုကို ကာကွယ်ရန် ခွင့်ပြုချက်များ ဖယ်ရှားလိုက်သည်"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> သည် နောက်ခံတွင် သင့်တည်နေရာကို ရရှိထားသည်"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"ဤအက်ပ်က သင်၏တည်နေရာကို အမြဲဝင်ကြည့်နိုင်ပါသည်။ ပြောင်းရန် တို့ပါ။"</string>
+    <string name="notification_listener_reminder_notification_title" msgid="6214106302085018939">"အကြောင်းကြားချက် နားထောင်ခွင့်ပါသော အက်ပ်ကို စိစစ်ရန်"</string>
+    <string name="notification_listener_reminder_notification_content" msgid="4740891089329946164">"<xliff:g id="APP_NAME">%s</xliff:g> က သင့်အကြောင်းကြားချက်အားလုံးကို ဖတ်နိုင်သည်။"</string>
+    <string name="notification_listener_warning_card_content" msgid="8181427178654279926">"ဤအက်ပ်က သင်၏အကြောင်းကြားချက်အားလုံးကို ဖတ်နိုင်သည်။"</string>
+    <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"သုံးခွင့် ဖယ်ရှားရန်"</string>
+    <!-- no translation found for notification_listener_review_app_button_label (4452381557379652037) -->
+    <skip />
+    <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"သုံးခွင့် ဖယ်ရှားလိုက်ပြီ"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"အများသုံးနိုင်ခွင့်ရှိသည့် အက်ပ်ကို ပြန်ကြည့်ခြင်း"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> သည် ဖန်သားပြင်ရှိ အကြောင်းအရာအားလုံးကို ဖတ်ခြင်း၊ အခြားအက်ပ်များပေါ်ရှိ အကြောင်းအရာများကို ပြခြင်းနှင့် သင်၏ပြန်လှန်တုံ့ပြန်မှုများကို ခြေရာခံခြင်းတို့ ပြုလုပ်နိုင်သည်။"</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"ဤအက်ပ်သည် ဖန်သားပြင်ပေါ်ရှိ အကြောင်းအရာအားလုံးကို ဖတ်ခြင်း၊ အခြားအက်ပ်များပေါ်ရှိ အကြောင်းအရာများကို ပြခြင်းနှင့် သင်၏ပြန်လှန်တုံ့ပြန်မှုများကို ခြေရာခံခြင်းတို့ ပြုလုပ်နိုင်သည်။"</string>
@@ -532,4 +539,40 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) က မကြာသေးမီက အသုံးပြုထားသည်"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"လုံခြုံရေးနှင့် အချက်အလက်လုံခြုံမှု"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"အခြေအနေ စစ်ဆေးခြင်း"</string>
+    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
+    <skip />
 </resources>
