@@ -27,14 +27,15 @@ package {
 
 android_test {
 
-    name: "PermissionControllerInProcessTests",
+    name: "PermissionUiTestCases",
 
-    sdk_version: "system_current",
+    sdk_version: "test_current",
     target_sdk_version: "30",
     min_sdk_version: "30",
 
-    srcs: ["src/**/*.kt"],
-
+    srcs: [
+        "src/**/*.kt",
+    ],
     libs: [
         "android.test.base",
         "android.test.runner",
@@ -49,12 +50,19 @@ android_test {
         "permission-test-util-lib",
     ],
 
-    certificate: "platform",
-
-    instrumentation_for: "PermissionController",
-
     test_suites: [
         "device-tests",
-        "mts-permission",
     ],
+
+    required: [
+        "CtsAppThatRequestsLocationPermission29",
+    ],
+
+    data: [
+        ":PermissionUiUseStoragePermissionApp",
+        ":PermissionUiUseCameraPermissionApp",
+        ":PermissionUiDefineAdditionalPermissionApp",
+        ":PermissionUiUseAdditionalPermissionApp",
+        ":PermissionUiUseTwoAdditionalPermissionsApp",
+    ]
 }
