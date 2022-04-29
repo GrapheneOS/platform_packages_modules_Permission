@@ -64,7 +64,7 @@
     <string name="days_ago" msgid="6650359081551335629">"{count,plural, =0{Bugun}=1{1 kun oldin}other{# kun oldin}}"</string>
     <string name="app_disable_dlg_positive" msgid="7418444149981904940">"Ilovani faolsizlantirish"</string>
     <string name="app_disable_dlg_text" msgid="3126943217146120240">"Agar bu ilovani faolsizlantirsangiz, Android va boshqa ilovalar bundan buyon kutilganidek ishlamasligi mumkin. Yodda tuting, agar bu ilova qurilmangizga oldindan oʻrnatilgan boʻlsa, uni oʻchirib tashlash imkonsiz. Faolsizlantirish orqali bu ilova nofaol holatga keladi va qurilmangizda berkitiladi."</string>
-    <string name="app_permission_manager" msgid="3903811137630909550">"Ruxsatlar"</string>
+    <string name="app_permission_manager" msgid="3903811137630909550">"Ruxsatlar boshqaruvi"</string>
     <string name="never_ask_again" msgid="4728762438198560329">"Boshqa so‘ralmasin"</string>
     <string name="no_permissions" msgid="3881676756371148563">"Ruxsat talab qilinmaydi"</string>
     <string name="additional_permissions" msgid="5801285469338873430">"Qo‘shimcha ruxsatlar"</string>
@@ -200,7 +200,7 @@
     <string name="auto_revoke_label" msgid="5068393642936571656">"Ishlatilmayotgan ilovalardan ruxsatlarni olib tashlash"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Ruxsatlarni olib tashlash va joy ochish"</string>
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"Ishlatilmaydigan ilovalarni toʻxtating"</string>
-    <string name="unused_apps_summary" msgid="8839466950318403115">"Ruxsatlarni olib tashlang, vaqtinchalik fayllarni oʻchiring va bildirishnomalarni toʻxtating"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Ruxsatlarni olib tashlash, vaqtinchalik fayllarni oʻchirish va bildirishnomalarni toʻxtatish"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Xavfsizlik yuzasidan, bir necha oydan beri ishlatilmagan ilovalardan ruxsatlar olib tashlanadi"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Agar bu ilova bir necha oy ishlatilmasa, quyidagi ruxsatlar olib tashlanadi: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Xavfsizlik yuzasidan, bir necha oydan beri ishlatilmagan ilovalardan ruxsatlar olib tashlanadi"</string>
@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Barcha fayllarga ruxsati bor"</string>
     <string name="ask_header" msgid="2633816846459944376">"Har safar soʻralsin"</string>
     <string name="denied_header" msgid="903209608358177654">"Ruxsat berilmagan"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Qurilmangiz uchun muhim funksiyalarni taʼminlovchi baʼzi ilovalar barcha fayllaringizga kirish huquqiga ega boʻlishi mumkin"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Barcha fayllarga kirishga ruxsat berilgan ilovalarni koʻrish"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 kun}other{# kun}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 soat}other{# soat}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 daqiqa}other{# daqiqa}}"</string>
@@ -334,7 +334,7 @@
     <string name="role_assistant_description" msgid="6622458130459922952">"Yordamchi ilovalar siz koʻrayotganda ekrandagi maʼlumotlar asosida sizga yordam beradi. Baʼzi ilovalar sizga umumlashgan koʻmak berish maqsadida ham ishga tushirish paneli, ham ovoz bilan yozish xizmatlarini qoʻllab-quvvatlaydi."</string>
     <string name="role_assistant_request_title" msgid="5964976301922776060">"<xliff:g id="APP_NAME">%1$s</xliff:g> asosiy yordamchi ilova sifatida sozlansinmi?"</string>
     <string name="role_assistant_request_description" msgid="6836644847620178483">"SMS va chaqiruv qaydlaridan foydalana oladi"</string>
-    <string name="role_browser_label" msgid="2877796144554070207">"Asosiy brauzer ilovasi"</string>
+    <string name="role_browser_label" msgid="2877796144554070207">"Birlamchi brauzer ilovasi"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Brauzer ilovasi"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Internetga kirish va havolalarni ochish imkonini beruvchi ilovalar"</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"<xliff:g id="APP_NAME">%1$s</xliff:g> birlamchi brauzer sifatida belgilansinmi?"</string>
@@ -523,4 +523,40 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Yaqinda <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) ishlatgan"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Xavfsizlik va maxfiylik"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Holatini tekshirish"</string>
+    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
+    <skip />
 </resources>

@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Επιτρέπεται η διαχείριση όλων των αρχείων"</string>
     <string name="ask_header" msgid="2633816846459944376">"Ερώτηση κάθε φορά"</string>
     <string name="denied_header" msgid="903209608358177654">"Δεν επιτρέπεται"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Ορισμένες εφαρμογές που παρέχουν βασικές λειτουργίες για τη συσκευή σας μπορούν να έχουν ειδική πρόσβαση σε όλα τα αρχεία σας"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Εμφάνιση εφαρμογών με πρόσβαση σε όλα τα αρχεία"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 ημέρα}other{# ημέρες}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 ώρα}other{# ώρες}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 λεπτό}other{# λεπτά}}"</string>
@@ -368,7 +368,7 @@
     <string name="role_call_redirection_description" msgid="6091669882014664420">"Εφαρμογές που σας επιτρέπουν να προωθήσετε εξερχόμενες κλήσεις σε έναν άλλο αριθμό τηλεφώνου"</string>
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"Ορισμός εφαρμογής <xliff:g id="APP_NAME">%1$s</xliff:g> ως προεπιλεγμένης εφαρμογής ανακατεύθυνσης κλήσεων;"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Δεν απαιτούνται άδειες"</string>
-    <string name="role_call_screening_label" msgid="883935222060878724">"Προεπ. εφαρ. αναγνώρισης κλήσης/ανεπ. περιεχ."</string>
+    <string name="role_call_screening_label" msgid="883935222060878724">"Προεπιλεγμένη εφαρ. αναγνώρ. κλήσης/ανεπιθ."</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"Εφ. αναγν. κλήσης/προστ. από ανεπιθ. περιεχ."</string>
     <string name="role_call_screening_description" msgid="2349431420497468981">"Εφαρμογές που σας επιτρέπουν να αναγνωρίσετε κλήσεις, να αποκλείσετε ανεπιθύμητες, αυτοματοποιημένες κλήσεις και ανεπιθύμητους αριθμούς."</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Ορισμός εφαρμογής <xliff:g id="APP_NAME">%1$s</xliff:g> ως προεπιλεγμένης εφαρμογής αναγνώρισης κλήσης και ανεπιθύμητου περιεχομένου;"</string>
@@ -523,4 +523,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Χρησιμοποιήθηκε πρόσφατα από την εφαρμογή <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Ασφάλεια και Απόρρητο"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Έλεγχος κατάστασης"</string>
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"Επιβεβαίωση"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"Πίσω"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"Θα επιτρέπεται επίσης η πρόσβαση σε άλλα αρχεία"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"Δεν θα επιτρέπεται επίσης η πρόσβαση σε άλλα αρχεία"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"Θα επιτρέπεται επίσης η πρόσβαση σε άλλα αρχεία"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"Δεν θα επιτρέπεται επίσης η πρόσβαση σε άλλα αρχεία"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"Θα επιτρέπεται επίσης η πρόσβαση σε φωτογραφίες και βίντεο"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"Δεν θα επιτρέπεται επίσης η πρόσβαση σε φωτογραφίες και βίντεο"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"Θα επιτρέπεται επίσης η πρόσβαση σε αρχεία μουσικής και ήχου"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"Δεν θα επιτρέπεται επίσης η πρόσβαση σε αρχεία μουσικής και ήχου"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"Αυτή η εφαρμογή δεν υποστηρίζει την πιο πρόσφατη έκδοση του Android. Εάν αυτή η εφαρμογή έχει πρόσβαση σε αρχεία μουσικής και ήχου, θα έχει επίσης πρόσβαση σε φωτογραφίες, βίντεο και άλλα αρχεία."</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"Αυτή η εφαρμογή δεν υποστηρίζει την πιο πρόσφατη έκδοση του Android. Εάν αυτή η εφαρμογή δεν έχει πρόσβαση σε αρχεία μουσικής και ήχου, δεν θα έχει επίσης πρόσβαση σε φωτογραφίες, βίντεο και άλλα αρχεία."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"Αυτή η εφαρμογή δεν υποστηρίζει την πιο πρόσφατη έκδοση του Android. Εάν αυτή η εφαρμογή έχει πρόσβαση σε φωτογραφίες και βίντεο, θα έχει επίσης πρόσβαση σε αρχεία μουσικής, ήχου και άλλα αρχεία."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"Αυτή η εφαρμογή δεν υποστηρίζει την πιο πρόσφατη έκδοση του Android. Εάν αυτή η εφαρμογή δεν έχει πρόσβαση σε φωτογραφίες και βίντεο, δεν θα έχει επίσης πρόσβαση σε αρχεία μουσικής, ήχου και άλλα αρχεία."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"Αυτή η εφαρμογή δεν υποστηρίζει την πιο πρόσφατη έκδοση του Android. Εάν αυτή η εφαρμογή έχει πρόσβαση σε αρχεία μουσικής και ήχου, θα έχει επίσης πρόσβαση σε φωτογραφίες και βίντεο."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Αυτή η εφαρμογή δεν υποστηρίζει την πιο πρόσφατη έκδοση του Android. Εάν αυτή η εφαρμογή δεν έχει πρόσβαση σε αρχεία μουσικής και ήχου, δεν θα έχει επίσης πρόσβαση σε φωτογραφίες και βίντεο."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Αυτή η εφαρμογή δεν υποστηρίζει την πιο πρόσφατη έκδοση του Android. Εάν αυτή η εφαρμογή έχει πρόσβαση σε φωτογραφίες και βίντεο, θα έχει επίσης πρόσβαση σε αρχεία μουσικής και ήχου."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Αυτή η εφαρμογή δεν υποστηρίζει την πιο πρόσφατη έκδοση του Android. Εάν αυτή η εφαρμογή δεν έχει πρόσβαση σε αρχεία μουσικής και ήχου, δεν θα έχει επίσης πρόσβαση σε φωτογραφίες και βίντεο."</string>
 </resources>

@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"ሁሉንም ፋይሎች ማስተዳደር ተፈቀዷል"</string>
     <string name="ask_header" msgid="2633816846459944376">"ሁልጊዜ ጠይቅ"</string>
     <string name="denied_header" msgid="903209608358177654">"አይፈቀድም"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"ለመሳሪያዎ ወሳኝ ተግባራትን የሚያቀርቡ አንዳንድ መተግበሪያዎች ወደ ሁሉም ፋይሎችዎ ልዩ መዳረሻ ሊኖራቸው ይችላል።"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"ወደ ሁሉም ፋይሎች መዳረሻ ያላቸው መተግበሪያዎችን ይመልከቱ"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 ቀን}one{# ቀኖች}other{# ቀኖች}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 ሰዓት}one{# ሰዓቶች}other{# ሰዓቶች}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 ደቂቃ}one{# ደቂቃዎች}other{# ደቂቃዎች}}"</string>
@@ -368,7 +368,7 @@
     <string name="role_call_redirection_description" msgid="6091669882014664420">"ወደ ሌላ ስልክ ቁጥር ጥሪዎችን እንዲያስተላልፉ የሚፈቀድልዎት መተግበሪያዎች"</string>
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"<xliff:g id="APP_NAME">%1$s</xliff:g> እንደ የእርስዎ ነባሪ የጥሪ ዳግም አቅጣጫ ማዞሪያ መተግበሪያ ይቀናበር?"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"ምንም ፈቃዶች አያስፈልጉም"</string>
-    <string name="role_call_screening_label" msgid="883935222060878724">"ነባሪ የደዋይ መታወቂያ እና የአይፈለጌ መልእክት መተግበሪያ"</string>
+    <string name="role_call_screening_label" msgid="883935222060878724">"ነባሪ የደዋይ መታወቂያ እና የአይፈለጌ መልዕክት መተግበሪያ"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"የደዋይ መታወቂያ እና የአይፈለጌ መልዕክት መተግበሪያ"</string>
     <string name="role_call_screening_description" msgid="2349431420497468981">"ስልክ ጥሪዎችን ለይተው እንዲያውቁ እና አይፈለጌ ጥሪን፣ የሮቦት ስልክ ጥሪን ወይም የማይፈለጉ ቁጥሮችን ማገድ የሚያስችልዎት መተግበሪያዎች"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> እንደ የእርስዎ ነባሪ የደዋይ መታወቂያ እና የአይፈልጌ መተግበሪያ ይቀናበር?"</string>
@@ -523,4 +523,40 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"በቅርብ ጊዜ በ<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) ስራ ላይ ውሏል"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"ደህንነት እና ግላዊነት"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"ሁኔታ አረጋግጥ"</string>
+    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
+    <skip />
 </resources>
