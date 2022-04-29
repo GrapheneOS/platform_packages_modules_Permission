@@ -261,7 +261,8 @@ class GrantPermissionsViewModel(
                     //  REVIEW_REQUIRED flag setting
                     for ((key, state) in states) {
                         val allAffectedGranted = state.affectedPermissions.all { perm ->
-                            appPermGroup.permissions[perm]?.isGrantedIncludingAppOp == true
+                            appPermGroup.permissions[perm]?.isGrantedIncludingAppOp == true &&
+                                appPermGroup.permissions[perm]?.isRevokeWhenRequested == false
                         } && !appPermGroup.isRuntimePermReviewRequired
                         if (allAffectedGranted) {
                             groupStates[key]!!.state = STATE_ALLOWED
@@ -707,7 +708,8 @@ class GrantPermissionsViewModel(
 
         // Do not attempt to grant background access if foreground access is not either already
         // granted or requested
-        if (isBackground && !group.foreground.isGranted && !hasForegroundRequest) {
+        if (isBackground && !group.foreground.isGrantedExcludeRevokeWhenRequestedPermissions &&
+            !hasForegroundRequest) {
             Log.w(LOG_TAG, "Cannot grant $perm as the matching foreground permission is not " +
                 "already granted.")
             val affectedPermissions = groupRequestedPermissions.filter {
@@ -720,8 +722,8 @@ class GrantPermissionsViewModel(
 
         // TODO(b/205888750): remove isRuntimePermReview line once confident in
         //  REVIEW_REQUIRED flag setting
-        if ((isBackground && group.background.isGranted ||
-            !isBackground && group.foreground.isGranted) &&
+        if ((isBackground && group.background.isGrantedExcludeRevokeWhenRequestedPermissions ||
+            !isBackground && group.foreground.isGrantedExcludeRevokeWhenRequestedPermissions) &&
             !group.isRuntimePermReviewRequired) {
             // If FINE location is not granted, do not grant it automatically when COARSE
             // location is already granted.
