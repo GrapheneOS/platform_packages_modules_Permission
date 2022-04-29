@@ -65,11 +65,11 @@
     </plurals>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"Оваа апликација е дизајнирана за постара верзија на Android. Одбивањето на дозволата може да предизвика веќе да не функционира како што треба."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"изврши непознато дејство"</string>
-    <string name="app_permissions_group_summary" msgid="8788419008958284002">"Со дозвола: <xliff:g id="COUNT_0">%1$d</xliff:g> од <xliff:g id="COUNT_1">%2$d</xliff:g> апликации"</string>
+    <string name="app_permissions_group_summary" msgid="8788419008958284002">"Апликации со дозвола: <xliff:g id="COUNT_0">%1$d</xliff:g> од <xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> дозволени апликации"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Прикажи го системот"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Сокриј го системот"</string>
-    <string name="manage_permission" msgid="2895385393037061964">"Управувајте со дозволите"</string>
+    <string name="manage_permission" msgid="2895385393037061964">"Управувајте со дозволата"</string>
     <string name="no_apps" msgid="2412612731628386816">"Нема апликации"</string>
     <string name="location_settings" msgid="3624412509133422562">"Поставки за локација"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> е давател на услуги според локација за овој уред. Пристапот до локацијата може да се смени од поставките за локација."</string>
@@ -496,7 +496,7 @@
     <string name="privdash_label_location" msgid="6882400763866489291">"Локација"</string>
     <string name="privdash_label_other" msgid="3710394147423236033">"Друго"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"Ништо"</string>
-    <string name="privdash_label_24h" msgid="1512532123865375319">"Минативе\n24 часа"</string>
+    <string name="privdash_label_24h" msgid="1512532123865375319">"Минатите\n24 часа"</string>
     <string name="exempt_mic_camera_info_label" msgid="6273581737010902815">"<xliff:g id="APP_NAME">%1$s</xliff:g> е заштитена од Android. Бидејќи вашите податоци се обработуваат на уредов, користењето на дозволата на апликацијава не е прикажано на лентата за статус или вашата контролна табла за приватност."</string>
     <string name="exempt_info_label" msgid="6286190981253476699">"<xliff:g id="APP_NAME">%1$s</xliff:g> е заштитена од Android. Бидејќи вашите податоци се обработуваат на уредов, користењето на дозволата на апликацијава не е прикажано на вашата контролна табла за приватност."</string>
     <string name="blocked_camera_title" msgid="1128510551791284384">"Камерата на уредот е блокирана"</string>

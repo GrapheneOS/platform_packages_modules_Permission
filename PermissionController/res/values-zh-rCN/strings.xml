@@ -450,7 +450,7 @@
     <string name="adjust_user_sensitive_per_app_header" msgid="4543506440989005648">"突出显示以下应用的权限使用情况"</string>
     <string name="assistant_record_audio_user_sensitive_title" msgid="5532123360322362378">"显示智能助理应用触发检测"</string>
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"使用麦克风激活语音助理后，在状态栏中显示相关图标"</string>
-    <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问您设备上的照片和媒体吗？"</string>
+    <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问您设备上的照片和媒体吗？"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问您的通讯录吗？"</string>
     <string name="permgrouprequest_location" msgid="6990232580121067883">"要允许“&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;”获取此设备的位置信息吗？"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"只有当您使用该应用时，该应用才有权访问位置信息"</string>
@@ -466,8 +466,8 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"大致位置"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;访问您的日历吗？"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;发送和查看短信吗？"</string>
-    <string name="permgrouprequest_storage" msgid="8717773092518621602">"允许“<xliff:g id="APP_NAME">%1$s</xliff:g>”&lt;b&gt;&lt;/b&gt;访问您设备上的照片、媒体内容和文件吗？"</string>
-    <string name="permgrouprequest_microphone" msgid="2825208549114811299">"允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;录音吗？"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"要允许“<xliff:g id="APP_NAME">%1$s</xliff:g>”&lt;b&gt;&lt;/b&gt;访问您设备上的照片、媒体内容和文件吗？"</string>
+    <string name="permgrouprequest_microphone" msgid="2825208549114811299">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;录音吗？"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"此应用将只能在您使用它时录音"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"要允许&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;录音吗？"</string>
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"此应用可能想要随时录音，即使在您未使用它的时候。"<annotation id="link">"您可以在“设置”中授权"</annotation>"。"</string>

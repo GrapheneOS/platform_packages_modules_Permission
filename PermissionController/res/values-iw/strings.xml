@@ -111,7 +111,7 @@
     <string name="app_name_unknown" msgid="1319665005754048952">"לא ידוע"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"מרכז בקרת הפרטיות"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"שימוש ב<xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
-    <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"צפייה בהרשאות נוספות"</string>
+    <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"הצגת הרשאות נוספות"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, ‏<xliff:g id="PERMGROUP_1">%2$s</xliff:g> ועוד ‏<xliff:g id="NUM">%3$s</xliff:g>"</string>
     <string name="permission_group_usage_subtitle" msgid="712843174810251274">"ציר הזמן: מתי אפליקציות שונות השתמשו ב<xliff:g id="PERMGROUP">%1$s</xliff:g> שלך ב-24 השעות האחרונות"</string>
@@ -383,7 +383,7 @@
     <string name="no_apps_allowed" msgid="7718822655254468631">"אין אפליקציות שקיבלו הרשאה"</string>
     <string name="no_apps_allowed_full" msgid="8011716991498934104">"לאף אפליקציה אין הרשאה לכל הקבצים"</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"לאף אפליקציה אין הרשאה למדיה בלבד"</string>
-    <string name="no_apps_denied" msgid="7663435886986784743">"אין אפליקציות ללא ההרשאה"</string>
+    <string name="no_apps_denied" msgid="7663435886986784743">"אין אפליקציות שלא קיבלו ההרשאה"</string>
     <string name="car_permission_selected" msgid="180837028920791596">"נבחר"</string>
     <string name="settings" msgid="5409109923158713323">"הגדרות"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"לשירות <xliff:g id="SERVICE_NAME">%s</xliff:g> יש גישה מלאה למכשיר שלך"</string>

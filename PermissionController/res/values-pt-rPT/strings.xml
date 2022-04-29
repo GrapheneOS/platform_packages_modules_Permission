@@ -211,7 +211,7 @@
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Não permitir"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Localização exata"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Localização aproximada"</string>
-    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Utilizar localização exata"</string>
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Usar localização exata"</string>
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Quando a localização exata está desativada, as apps podem aceder à sua localização aproximada"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Autorização de <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Acesso desta app a <xliff:g id="PERM">%1$s</xliff:g>"</string>

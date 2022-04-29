@@ -108,7 +108,7 @@
     <string name="message_staging" msgid="9110563899955511866">"Қолданба реттелуде…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Белгісіз"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Құпиялылық тақтасы"</string>
-    <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> деректерінің пайдаланылуы"</string>
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> рұқсатының пайдаланылуы"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Басқа рұқсаттарды көру"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> және тағы <xliff:g id="NUM">%3$s</xliff:g>"</string>
@@ -206,7 +206,7 @@
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Барлық файлдарды басқаруға рұқсат беру"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Тек медиафайлдарды пайдалануға рұқсат беру"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Біржола рұқсат беру"</string>
-    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Қолданбаны пайдалану кезінде ғана рұқсат беру"</string>
+    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Қолданбаны пайдаланғанда ғана рұқсат беру"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Әрдайым сұрау"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Рұқсат бермеу"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Нақты орын"</string>
@@ -242,7 +242,7 @@
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Егер барлық файлдарды басқаруға рұқсат берілсе, бұл қолданба құрылғының жалпы жадындағы немесе жалғанған жад құрылғыларындағы кез келген файлды пайдалана, өзгерте және жоя алатын болады. Қолданба файлдарды сіздің рұқсатыңызсыз пайдалануы мүмкін."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Қолданбаға құрылғыдағы немесе жалғанған жад құрылғыларындағы барлық файлдарды пайдалануға, өзгертуге немесе жоюға рұқсат берілсін бе? Бұл қолданба файлдарды сіздің рұқсатыңызсыз пайдалануы мүмкін."</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"Бұл рұқсатқа ие қолданбалардың мүмкіндігі: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
-    <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Рұқсатқа ие қолданбалар жаяу жүру, велосипед тебу, көлік жүргізу, қадам санау сияқты іс-қимыл туралы мәліметті пайдалана алады."</string>
+    <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Рұқсатқа ие қолданбалар жаяу жүру, велосипед тебу, көлік жүргізу, қадам санау сияқты қимыл-қозғалыс туралы мәліметті пайдалана алады."</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Бұл рұқсатқа ие қолданбалар күнтізбені пайдалана алады."</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Бұл рұқсатқа ие қолданбалар телефонның қоңыраулар журналын оқи және жаза алады."</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Бұл рұқсатқа ие қолданбалар суретке түсіріп, бейне жаза алады."</string>
@@ -473,7 +473,7 @@
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"Қолданбаны пайдаланбасаңыз да, ол кез келген уақытта бейнелерді жаза алады. "<annotation id="link">"Параметрлерден рұқсат беріңіз."</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына микрофонды пайдалануға рұқсат етілсін бе?"</string>
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"Қолданбаны пайдаланбасаңыз да, ол кез келген уақытта аудиомазмұн жазғысы келеді. "<annotation id="link">"Параметрлерден рұқсат беріңіз."</annotation></string>
-    <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына іс-қимыл дерегін алуға рұқсат етілсін бе?"</string>
+    <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына қимыл-қозғалыс дерегін алуға рұқсат етілсін бе?"</string>
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына суретке түсіруге және бейне жазуға рұқсат берілсін бе?"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"Қолданба тек жұмыс кезінде ғана суретке түсіріп, бейне жаза алады."</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына суретке түсіруге және бейне жазуға рұқсат берілсін бе?"</string>

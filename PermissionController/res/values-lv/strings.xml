@@ -70,7 +70,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"Šo atļauju saņēmušās lietotnes: <xliff:g id="COUNT_0">%1$d</xliff:g> no <xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Rādīt sistēmas lietotnes"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Slēpt sistēmas lietotnes"</string>
-    <string name="manage_permission" msgid="2895385393037061964">"Atļaujas pārvaldība"</string>
+    <string name="manage_permission" msgid="2895385393037061964">"Pārvaldīt atļauju"</string>
     <string name="no_apps" msgid="2412612731628386816">"Nav lietotņu"</string>
     <string name="location_settings" msgid="3624412509133422562">"Atrašanās vietas iestatījumi"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> nodrošina šai ierīcei atrašanās vietu pakalpojumus. Piekļuves iestatījumus atrašanās vietas datiem var mainīt atrašanās vietas iestatījumos."</string>

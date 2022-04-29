@@ -176,8 +176,8 @@
     </plurals>
     <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Չի օգտագործվել վերջին 24 ժամվա ընթացքում"</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
-      <item quantity="one">Օգտագործվել է <xliff:g id="NUMBER">%1$d</xliff:g> հավելվածի կողմից</item>
-      <item quantity="other">Օգտագործվել է <xliff:g id="NUMBER">%1$d</xliff:g> հավելվածի կողմից</item>
+      <item quantity="one">Օգտագործվում է <xliff:g id="NUMBER">%1$d</xliff:g> հավելվածի կողմից</item>
+      <item quantity="other">Օգտագործվում է <xliff:g id="NUMBER">%1$d</xliff:g> հավելվածի կողմից</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Դիտել բոլորը կառավարման վահանակում"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Զտիչ՝ <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -367,10 +367,10 @@
     <string name="role_dialer_description" msgid="8768708633696539612">"Հավելվածներ, որոնք թույլ են տալիս զանգեր կատարել և ստանալ ձեր սարքում"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Նշե՞լ <xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածը որպես հեռախոսի կանխադրված հավելված"</string>
     <string name="role_dialer_request_description" msgid="2264219375528345270">"Տրվում է զանգերի մատյանի և SMS ուղարկելու հասանելիություն"</string>
-    <string name="role_dialer_search_keywords" msgid="3324448983559188087">"համարհավաքիչ"</string>
+    <string name="role_dialer_search_keywords" msgid="3324448983559188087">"համարահավաքիչ"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"SMS-ների կանխադրված հավելվածը"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS-ների փոխանակման հավելված"</string>
-    <string name="role_sms_description" msgid="3424020199148153513">"Հավելվածներ, որոնք թույլ են տալիս ձեր հեռախոսահամարով ուղարկել և ստանալ կարճ տեքստային հաղորդագրություններ, լուսանկարներ, տեսանյութեր և այլն"</string>
+    <string name="role_sms_description" msgid="3424020199148153513">"Հավելվածներ, որոնք թույլ են տալիս ձեր հեռախոսահամարից ուղարկել և ստանալ կարճ տեքստային հաղորդագրություններ, լուսանկարներ, տեսանյութեր և այլն"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Նշե՞լ <xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածը որպես SMS-ների կանխադրված հավելված"</string>
     <string name="role_sms_request_description" msgid="983371022668134198">"Տրվում է կոնտակտների, SMS-ների և հեռախոսի հասանելիություն"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"տեքստային հաղորդագրություն, կարճ հաղորդագրությունների ուղարկում, հաղորդագրություններ, հաղորդակցում"</string>
@@ -391,7 +391,7 @@
     <string name="role_call_redirection_description" msgid="6091669882014664420">"Հավելվածներ, որոնք թույլ են տալիս վերահասցեավորել զանգերն այլ հեռախոսահամարի վրա"</string>
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"Նշե՞լ <xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածը որպես զանգերի վերահասցեավորման կանխադրված հավելված"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Թույլտվություններ հարկավոր չեն"</string>
-    <string name="role_call_screening_label" msgid="883935222060878724">"Համարների և սպամի ճանաչման կանխադրված հավելված"</string>
+    <string name="role_call_screening_label" msgid="883935222060878724">"Համարների և սպամի ճանաչում"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"Զանգողի ID-ի և սպամի հայտնաբերման հավելված"</string>
     <string name="role_call_screening_description" msgid="2349431420497468981">"Հավելվածներ, որոնք թույլ են տալիս ճանաչել հեռախոսահամարները, արգելափակել սպամը, ավտոմատ զանգերը և անցանկալի համարները"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Ընտրե՞լ <xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածը որպես համարների ավտոմատ որոշման և սպամից պաշտպանվելու կանխադված հավելված"</string>
