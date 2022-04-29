@@ -32,12 +32,14 @@ import android.safetycenter.cts.testing.SafetyCenterFlags
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import android.safetycenter.cts.testing.SimpleTestSource
 import android.support.test.uiautomator.By
+import android.support.test.uiautomator.UiObject2
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import com.android.compatibility.common.util.UiAutomatorUtils.waitFindObject
 import com.android.compatibility.common.util.UiAutomatorUtils.waitFindObjectOrNull
 import com.google.common.truth.Truth.assertThat
+import java.util.regex.Pattern
 import org.junit.After
 import org.junit.Assume.assumeTrue
 import org.junit.Before
@@ -159,7 +161,7 @@ class SafetyCenterActivityTest {
 
         waitFindObject(By.desc("Dismiss")).click()
         waitFindObject(By.text("Dismiss this alert?"))
-        waitFindObject(By.text("Dismiss")).click()
+        findButton("Dismiss").click()
 
         assertThat(waitFindObjectOrNull(By.text(criticalIssueTitle))).isNull()
     }
@@ -171,7 +173,7 @@ class SafetyCenterActivityTest {
 
         waitFindObject(By.desc("Dismiss")).click()
         waitFindObject(By.text("Dismiss this alert?"))
-        waitFindObject(By.text("Cancel")).click()
+        findButton("Cancel").click()
 
         assertThat(waitFindObjectOrNull(By.text(criticalIssueTitle))).isNotNull()
     }
@@ -193,9 +195,14 @@ class SafetyCenterActivityTest {
             findAllText(issue.title, issue.subtitle, issue.summary)
 
             for (action in issue.actions) {
-                findAllText(action.label)
+                findButton(action.label)
             }
         }
+    }
+
+    private fun findButton(label: CharSequence): UiObject2 {
+        return waitFindObject(
+            By.clickable(true).text(Pattern.compile("$label|${label.toString().uppercase()}")))
     }
 
     private fun findAllText(vararg textToFind: CharSequence?) {
