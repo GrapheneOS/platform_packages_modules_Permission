@@ -24,6 +24,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.ext.truth.os.ParcelableSubject.assertThat
 import androidx.test.filters.SdkSuppress
 import com.google.common.truth.Truth.assertThat
+import kotlin.test.assertFailsWith
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -101,6 +102,30 @@ class SafetySourcesGroupTest {
             .inOrder()
         assertThat(RIGID.safetySources).containsExactly(SafetySourceTest.STATIC_BAREBONE)
         assertThat(HIDDEN.safetySources).containsExactly(SafetySourceTest.ISSUE_ONLY_BAREBONE)
+    }
+
+    @Test
+    fun getSafetySources_mutationsAreNotAllowed() {
+        val sources = COLLAPSIBLE_WITH_SUMMARY.safetySources
+
+        assertFailsWith(UnsupportedOperationException::class) {
+            sources.add(SafetySourceTest.DYNAMIC_BAREBONE)
+        }
+    }
+
+    @Test
+    fun builder_addSafetySource_doesNotMutatePreviouslyBuiltInstance() {
+        val safetySourcesGroupBuilder =
+            SafetySourcesGroup.Builder()
+                .setId(COLLAPSIBLE_WITH_SUMMARY_ID)
+                .setTitleResId(REFERENCE_RES_ID)
+                .setSummaryResId(REFERENCE_RES_ID)
+                .addSafetySource(SafetySourceTest.DYNAMIC_BAREBONE)
+        val sources = safetySourcesGroupBuilder.build().safetySources
+
+        safetySourcesGroupBuilder.addSafetySource(SafetySourceTest.STATIC_BAREBONE)
+
+        assertThat(sources).containsExactly(SafetySourceTest.DYNAMIC_BAREBONE)
     }
 
     @Test
@@ -191,7 +216,8 @@ class SafetySourcesGroupTest {
         private const val RIGID_ID = "rigid"
         private const val HIDDEN_ID = "hidden"
 
-        private val COLLAPSIBLE_WITH_SUMMARY =
+        // TODO(b/230078826): Consider extracting shared constants to a separate file.
+        internal val COLLAPSIBLE_WITH_SUMMARY =
             SafetySourcesGroup.Builder()
                 .setId(COLLAPSIBLE_WITH_SUMMARY_ID)
                 .setTitleResId(REFERENCE_RES_ID)
