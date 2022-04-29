@@ -18,4 +18,6 @@
 <resources>
     <!-- Description when an app requests to become the default dialer app. [CHAR LIMIT=NONE] -->
     <string name="role_dialer_request_description">This app will be allowed to send you Notifications, and will be given access to your Camera, Contacts, Microphone, Phone, and SMS</string>
+    <!-- Description when an app requests to become the default SMS app. [CHAR LIMIT=NONE] -->
+    <string name="role_sms_request_description">This app will be allowed to send you Notifications, and will be given access to your Camera, Contacts, Files and documents, Microphone, Phone, and SMS</string>
 </resources>
