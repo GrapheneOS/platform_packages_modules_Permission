@@ -1044,10 +1044,6 @@
     <string name="role_assistant_short_label">Digital assistant app</string>
     <!-- Description for the assistant role. [CHAR LIMIT=NONE] -->
     <string name="role_assistant_description">Assist apps can help you based on information from the screen you\u2019re viewing. Some apps support both launcher and voice input services to give you integrated assistance.</string>
-    <!-- Template for the title when an app requests to become the default assistant app. [CHAR LIMIT=100] -->
-    <string name="role_assistant_request_title">Set <xliff:g id="app_name" example="Super Assistant">%1$s</xliff:g> as your default assist app?</string>
-    <!-- Description when an app requests to become the default assistant. [CHAR LIMIT=60] -->
-    <string name="role_assistant_request_description">Gets access to SMS, call log</string>
 
     <!-- Label for the browser role. [CHAR LIMIT=30] -->
     <string name="role_browser_label">Default browser app</string>
@@ -1068,8 +1064,8 @@
     <string name="role_dialer_description">Apps that allow you to make and receive telephone calls on your device</string>
     <!-- Template for the title when an app requests to become the default dialer app. [CHAR LIMIT=100] -->
     <string name="role_dialer_request_title">Set <xliff:g id="app_name" example="Super Phone">%1$s</xliff:g> as your default phone app?</string>
-    <!-- Description when an app requests to become the default dialer app. [CHAR LIMIT=60] -->
-    <string name="role_dialer_request_description">Gets access to call log, send SMS</string>
+    <!-- Description when an app requests to become the default dialer app. [CHAR LIMIT=NONE] -->
+    <string name="role_dialer_request_description">This app will be given access to your Camera, Contacts, Microphone, Phone, and SMS</string>
     <!-- Search keywords for the dialer role. [CHAR LIMIT=NONE] -->
     <string name="role_dialer_search_keywords">dialer</string>
 
@@ -1081,8 +1077,8 @@
     <string name="role_sms_description">Apps that allow you to use your phone number to send and receive short text messages, photos, videos, and more</string>
     <!-- Template for the title when an app requests to become the default SMS app. [CHAR LIMIT=100] -->
     <string name="role_sms_request_title">Set <xliff:g id="app_name" example="Super SMS">%1$s</xliff:g> as your default SMS app?</string>
-    <!-- Description when an app requests to become the default SMS app. [CHAR LIMIT=60] -->
-    <string name="role_sms_request_description">Gets access to contacts, SMS, phone</string>
+    <!-- Description when an app requests to become the default SMS app. [CHAR LIMIT=NONE] -->
+    <string name="role_sms_request_description">This app will be given access to your Camera, Contacts, Files and media, Microphone, Phone, and SMS</string>
     <!-- Search keywords for the SMS role. [CHAR LIMIT=NONE] -->
     <string name="role_sms_search_keywords">text message, texting, messages, messaging</string>
 
