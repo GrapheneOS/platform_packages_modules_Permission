@@ -184,7 +184,7 @@
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Барлық файлдарды басқаруға рұқсат беру"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Тек медиафайлдарды пайдалануға рұқсат беру"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Біржола рұқсат беру"</string>
-    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Қолданбаны пайдалану кезінде ғана рұқсат беру"</string>
+    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Қолданбаны пайдаланғанда ғана рұқсат беру"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Әрдайым сұрау"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Рұқсат бермеу"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Нақты орын"</string>
@@ -199,7 +199,7 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"Пайдаланылмайтын қолданба параметрлері"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Қолданба пайдаланылмаса, рұқсаттарды өшіру"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Рұқсаттарды өшіру және орын босату"</string>
-    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Қолданба белсенді емес болса, оны пайдалану тарихын кідірту"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Әрекетсіз қолданба жұмысын кідірту"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"Рұқсаттарды өшіру, уақытша файлдарды жою және хабарландыруларды тоқтату"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Бұл қолданба бірнеше ай бойы пайдаланылмаса, деректеріңізді қорғау үшін оған берілген рұқсаттар өшіріледі."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Қолданба бірнеше ай бойы пайдаланылмаса, деректеріңізді қорғау үшін мына рұқсаттар өшіріледі: <xliff:g id="PERMS">%1$s</xliff:g>."</string>
@@ -224,7 +224,7 @@
     <string name="app_permission_footer_special_file_access" msgid="1884202176147657788">"Егер барлық файлдарды басқаруға рұқсат берілсе, бұл қолданба құрылғының жалпы жадындағы немесе жалғанған жад құрылғыларындағы кез келген файлды пайдалана, өзгерте және жоя алатын болады. Қолданба файлдарды сіздің рұқсатыңызсыз пайдалануы мүмкін."</string>
     <string name="special_file_access_dialog" msgid="583804114020740610">"Қолданбаға құрылғыдағы немесе жалғанған жад құрылғыларындағы барлық файлдарды пайдалануға, өзгертуге немесе жоюға рұқсат берілсін бе? Бұл қолданба файлдарды сіздің рұқсатыңызсыз пайдалануы мүмкін."</string>
     <string name="permission_description_summary_generic" msgid="5401399408814903391">"Бұл рұқсатқа ие қолданбалардың мүмкіндігі: <xliff:g id="DESCRIPTION">%1$s</xliff:g>"</string>
-    <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Рұқсатқа ие қолданбалар жаяу жүру, велосипед тебу, көлік жүргізу, қадам санау сияқты іс-қимыл туралы мәліметті пайдалана алады."</string>
+    <string name="permission_description_summary_activity_recognition" msgid="2652850576497070146">"Рұқсатқа ие қолданбалар жаяу жүру, велосипед тебу, көлік жүргізу, қадам санау сияқты қимыл-қозғалыс туралы мәліметті пайдалана алады."</string>
     <string name="permission_description_summary_calendar" msgid="103329982944411010">"Бұл рұқсатқа ие қолданбалар күнтізбені пайдалана алады."</string>
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Бұл рұқсатқа ие қолданбалар телефонның қоңыраулар журналын оқи және жаза алады."</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Бұл рұқсатқа ие қолданбалар суретке түсіріп, бейне жаза алады."</string>
@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Барлық файлдарды басқара алатын қолданбалар"</string>
     <string name="ask_header" msgid="2633816846459944376">"Әрдайым сұрау"</string>
     <string name="denied_header" msgid="903209608358177654">"Рұқсат берілмегендер"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Құрылғыңыздың жалпы жұмысын қамтамасыз ететін кейбір қолданбаға барлық файлды арнайы пайдалану рұқсаты берілуі мүмкін."</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Барлық файлды пайдалану рұқсаты берілген қолданбаларды көру"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 күн}other{# күн}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 сағат}other{# сағат}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 минут}other{# минут}}"</string>
@@ -461,7 +461,7 @@
     <string name="permgroupbackgroundrequestdetail_microphone" msgid="553702902263681838">"Қолданбаны пайдаланбасаңыз да, ол кез келген уақытта бейнелерді жаза алады. "<annotation id="link">"Параметрлерден рұқсат беріңіз."</annotation></string>
     <string name="permgroupupgraderequest_microphone" msgid="1362781696161233341">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына микрофонды пайдалануға рұқсат етілсін бе?"</string>
     <string name="permgroupupgraderequestdetail_microphone" msgid="2870497719571464239">"Қолданбаны пайдаланбасаңыз да, ол кез келген уақытта аудиомазмұн жазғысы келеді. "<annotation id="link">"Параметрлерден рұқсат беріңіз."</annotation></string>
-    <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына іс-қимыл дерегін алуға рұқсат етілсін бе?"</string>
+    <string name="permgrouprequest_activityRecognition" msgid="5415121592794230330">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына қимыл-қозғалыс дерегін алуға рұқсат етілсін бе?"</string>
     <string name="permgrouprequest_camera" msgid="5123097035410002594">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына суретке түсіруге және бейне жазуға рұқсат берілсін бе?"</string>
     <string name="permgrouprequestdetail_camera" msgid="9085323239764667883">"Қолданба тек жұмыс кезінде ғана суретке түсіріп, бейне жаза алады."</string>
     <string name="permgroupbackgroundrequest_camera" msgid="1274286575704213875">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; қолданбасына суретке түсіруге және бейне жазуға рұқсат берілсін бе?"</string>
@@ -523,4 +523,40 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Соңғы рет <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) пайдаланды."</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Қауіпсіздік және құпиялылық"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Күйді тексеру"</string>
+    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
+    <skip />
 </resources>

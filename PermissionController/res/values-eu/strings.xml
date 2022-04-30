@@ -236,8 +236,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Bizi-konstanteen sentsoreen datuak atzi ditzakete baimen hau duten aplikazioek"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"SMS mezuak bidali eta ikus ditzakete baimen hau duten aplikazioek"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Gailuko argazkiak, multimedia-edukia eta fitxategiak atzi ditzakete baimen hau duten aplikazioek"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"Baimen hau daukaten aplikazioek gailuko musika eta bestelako audio-fitxategiak atzi ditzakete"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"Baimen hau daukaten aplikazioek gailuko argazkiak eta bideoak atzi ditzakete"</string>
+    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"Gailuko musika eta bestelako audio-fitxategiak atzi ditzakete baimen hau duten aplikazioek"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"Gailuko argazkiak eta bideoak atzi ditzakete baimen hau duten aplikazioek"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Azken sarbidea: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Une honetan ukatuta / Azken sarbide-data: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Ez da erabili inoiz"</string>
@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Fitxategi guztiak kudeatzeko baimena dutenak"</string>
     <string name="ask_header" msgid="2633816846459944376">"Galdetu beti"</string>
     <string name="denied_header" msgid="903209608358177654">"Baimendu gabe"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Baliteke gailuari funtsezko funtzioak eskaintzen dizkioten aplikazioek zure fitxategietarako sarbide berezia izatea"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Ikusi fitxategi guztiak atzi ditzaketen aplikazioak"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 egun}other{# egun}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 ordu}other{# ordu}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 minutu}other{# minutu}}"</string>
@@ -385,8 +385,8 @@
     <string name="request_role_dont_ask_again" msgid="3556017886029520306">"Ez galdetu berriro"</string>
     <string name="request_role_set_as_default" msgid="4253949643984172880">"Ezarri lehenetsi gisa"</string>
     <string name="phone_call_uses_microphone" msgid="233569591461187177">"&lt;b&gt;Dei&lt;/b&gt; batean erabiltzen ari zara mikrofonoa"</string>
-    <string name="phone_call_uses_microphone_and_camera" msgid="6291898755681748189">"&lt;b&gt;Bideo-dei&lt;/b&gt; batean erabiltzen ari zara kamera eta mikrofonoa"</string>
-    <string name="phone_call_uses_camera" msgid="2048417022147857418">"&lt;b&gt;Bideo-dei&lt;/b&gt; batean erabiltzen ari zara kamera"</string>
+    <string name="phone_call_uses_microphone_and_camera" msgid="6291898755681748189">"&lt;b&gt;Bideodei&lt;/b&gt; batean erabiltzen ari zara kamera eta mikrofonoa"</string>
+    <string name="phone_call_uses_camera" msgid="2048417022147857418">"&lt;b&gt;Bideodei&lt;/b&gt; batean erabiltzen ari zara kamera"</string>
     <string name="system_uses_microphone" msgid="576672130318877143">"Sistemaren zerbitzu bat kamera erabiltzen ari da"</string>
     <string name="system_uses_microphone_and_camera" msgid="5124478304275138804">"Sistemaren zerbitzu bat kamera eta mikrofonoa erabiltzen ari da"</string>
     <string name="system_uses_camera" msgid="1911223105234441470">"Sistemaren zerbitzu bat kamera erabiltzen ari da"</string>
@@ -523,4 +523,40 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) aplikazioak erabili du duela gutxi"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Segurtasuna eta pribatutasuna"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Egiaztatu egoera"</string>
+    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
+    <skip />
 </resources>

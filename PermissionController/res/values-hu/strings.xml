@@ -232,7 +232,7 @@
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Az ezzel az engedéllyel rendelkező alkalmazások hozzáférhetnek az eszköz helyadataihoz"</string>
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Az ezzel az engedéllyel rendelkező alkalmazások megkereshetik a közeli eszközöket, meghatározhatják relatív pozíciójukat, és csatlakozhatnak hozzájuk"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Az ezzel az engedéllyel rendelkező alkalmazások készíthetnek hangfelvételt"</string>
-    <string name="permission_description_summary_phone" msgid="4515277217435233619">"Az ezzel az engedéllyel rendelkező alkalmazások képesek a telefonhívások kezdeményezésére és kezelésére"</string>
+    <string name="permission_description_summary_phone" msgid="4515277217435233619">"Az ezzel az engedéllyel rendelkező alkalmazások telefonhívásokat kezdeményezhetnek és kezelhetnek"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Az ezzel az engedéllyel rendelkező alkalmazások hozzáférhetnek az életjelekkel kapcsolatos szenzoradatokhoz"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Az ezzel az engedéllyel rendelkező alkalmazások küldhetnek és megtekinthetnek SMS-eket"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Az ezzel az engedéllyel rendelkező alkalmazások hozzáférhetnek az eszközön található fotókhoz, médiatartalmakhoz és fájlokhoz"</string>
@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Engedélyezve az összes fájl kezeléséhez"</string>
     <string name="ask_header" msgid="2633816846459944376">"Mindig kérdezzen rá"</string>
     <string name="denied_header" msgid="903209608358177654">"Nem engedélyezett"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Előfordulhat, hogy néhány nélkülözhetetlen funkciókat biztosító alkalmazásnak különleges hozzáférése van minden fájlhoz"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"A minden fájlhoz hozzáféréssel rendelkező appok megtekintése"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 nap}other{# nap}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 óra}other{# óra}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 perc}other{# perc}}"</string>
@@ -515,12 +515,48 @@
     <string name="manage_permissions_qs" msgid="3780541819763475434">"Engedélyek kezelése"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Jelenleg telefonhívás használja"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Legutóbb telefonhívás során volt használva"</string>
-    <string name="active_app_usage_qs" msgid="4063912870936464727">"Jelenleg a következő használja: <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
-    <string name="recent_app_usage_qs" msgid="6650259601306212327">"Legutóbb a következő használta: <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
-    <string name="active_app_usage_1_qs" msgid="4325136375823357052">"Jelenleg a következő használja: <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
-    <string name="recent_app_usage_1_qs" msgid="261450184773310741">"Legutóbb a következő használta: <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
-    <string name="active_app_usage_2_qs" msgid="6107866785243565283">"Jelenleg a következő használja: <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
-    <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Legutóbb a következő használta: <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
+    <string name="active_app_usage_qs" msgid="4063912870936464727">"Jelenleg használja: <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
+    <string name="recent_app_usage_qs" msgid="6650259601306212327">"Legutóbb használta: <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
+    <string name="active_app_usage_1_qs" msgid="4325136375823357052">"Jelenleg használja: <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
+    <string name="recent_app_usage_1_qs" msgid="261450184773310741">"Legutóbb használta: <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
+    <string name="active_app_usage_2_qs" msgid="6107866785243565283">"Jelenleg használja: <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
+    <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Legutóbb használta: <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Biztonság és adatvédelem"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Állapot ellenőrzése"</string>
+    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
+    <skip />
 </resources>

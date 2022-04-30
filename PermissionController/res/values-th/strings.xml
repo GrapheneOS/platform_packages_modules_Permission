@@ -201,7 +201,7 @@
     <string name="unused_apps_label" msgid="2595428768404901064">"นำสิทธิ์ออกและเพิ่มพื้นที่ว่าง"</string>
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"หยุดกิจกรรมบนแอปไว้ชั่วคราวหากไม่ได้ใช้"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"นำสิทธิ์ออก ลบไฟล์ชั่วคราว และหยุดการแจ้งเตือน"</string>
-    <string name="auto_revoke_summary" msgid="5867548789805911683">"หากคุณไม่ได้ใช้งานแอปนาน 2-3 เดือน ระบบจะนำสิทธิ์ของแอปนี้ออกเพื่อปกป้องข้อมูลของคุณ"</string>
+    <string name="auto_revoke_summary" msgid="5867548789805911683">"หากคุณไม่ได้ใช้งานแอปนาน 2-3 เดือน ระบบจะนำสิทธิ์ของ​แอปนี้ออกเพื่อปกป้องข้อมูลของคุณ"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"หากไม่มีการใช้งานแอปนาน 2-3 เดือน ระบบจะปกป้องข้อมูลของคุณด้วยการนำสิทธิ์ต่อไปนี้ออก ได้แก่ <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"ระบบนำสิทธิ์ออกจากแอปที่คุณไม่ได้ใช้งานนาน 2-3 เดือนเพื่อปกป้องข้อมูลของคุณ"</string>
     <string name="auto_revoke_open_app_message" msgid="8075556291711205039">"โปรดเปิดแอปหากต้องการให้สิทธิ์อีกครั้ง"</string>
@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"ได้รับอนุญาตให้จัดการไฟล์ทั้งหมด"</string>
     <string name="ask_header" msgid="2633816846459944376">"ถามทุกครั้ง"</string>
     <string name="denied_header" msgid="903209608358177654">"ไม่อนุญาต"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"แอปบางแอปที่มีฟังก์ชันที่จำเป็นสำหรับอุปกรณ์จะมีสิทธิ์เข้าถึงไฟล์ทั้งหมดแบบพิเศษได้"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"ดูแอปที่มีสิทธิ์การเข้าถึงไฟล์ทั้งหมด"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 วัน}other{# วัน}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 ชั่วโมง}other{# ชั่วโมง}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 นาที}other{# นาที}}"</string>
@@ -347,7 +347,7 @@
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"โทรศัพท์"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"แอป SMS เริ่มต้น"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"แอป SMS"</string>
-    <string name="role_sms_description" msgid="3424020199148153513">"แอปที่ให้คุณใช้หมายเลขโทรศัพท์เพื่อส่งและรับ SMS, รูปภาพ วิดีโอ และอื่นๆ"</string>
+    <string name="role_sms_description" msgid="3424020199148153513">"แอปที่ให้คุณใช้หมายเลขโทรศัพท์เพื่อส่งและรับ SMS, รูปภาพ, วิดีโอ และอื่นๆ"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"ตั้งค่า <xliff:g id="APP_NAME">%1$s</xliff:g> เป็นแอป SMS เริ่มต้น"</string>
     <string name="role_sms_request_description" msgid="983371022668134198">"มีสิทธิ์เข้าถึงรายชื่อติดต่อ SMS และโทรศัพท์"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"ข้อความ, การส่งข้อความ, ข้อความ, การส่งข้อความ"</string>
@@ -370,7 +370,7 @@
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"ไม่ต้องใช้สิทธิ์"</string>
     <string name="role_call_screening_label" msgid="883935222060878724">"แอปเริ่มต้นสำหรับสกรีนหมายเลขผู้โทรและสแปม"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"แอปสกรีนหมายเลขผู้โทรและสแปม"</string>
-    <string name="role_call_screening_description" msgid="2349431420497468981">"แอปที่ให้คุณระบุสายเรียกเข้าและบล็อกสแปม สายจากระบบตอบรับอัตโนมัติ หรือหมายเลขที่ไม่พึงประสงค์"</string>
+    <string name="role_call_screening_description" msgid="2349431420497468981">"แอปที่ให้คุณระบุสายเรียกเข้าและบล็อกสแปม สายจากระบบอัตโนมัติ หรือหมายเลขที่ไม่พึงประสงค์"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"ตั้งค่า <xliff:g id="APP_NAME">%1$s</xliff:g> เป็นแอปเริ่มต้นสำหรับสกรีนหมายเลขผู้โทรและสแปมไหม"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"ไม่ต้องใช้สิทธิ์"</string>
     <string name="role_automotive_navigation_label" msgid="2701890757955474751">"แอปเริ่มต้นสำหรับการนำทาง"</string>
@@ -523,4 +523,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"ใช้ล่าสุดโดย <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"ความปลอดภัยและความเป็นส่วนตัว"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"ตรวจสอบสถานะ"</string>
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"ยืนยัน"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"กลับ"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"จะได้รับอนุญาตให้เข้าถึงไฟล์อื่นๆ ด้วย"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"จะไม่ได้รับอนุญาตให้เข้าถึงไฟล์อื่นๆ ด้วย"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"จะได้รับอนุญาตให้เข้าถึงไฟล์อื่นๆ ด้วย"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"จะไม่ได้รับอนุญาตให้เข้าถึงไฟล์อื่นๆ ด้วย"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"จะได้รับอนุญาตให้เข้าถึงรูปภาพและวิดีโอด้วย"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"จะไม่ได้รับอนุญาตให้เข้าถึงรูปภาพและวิดีโอด้วย"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"จะได้รับอนุญาตให้เข้าถึงไฟล์เพลงและไฟล์เสียงด้วย"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"จะไม่ได้รับอนุญาตให้เข้าถึงไฟล์เพลงและไฟล์เสียงด้วย"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"แอปนี้ไม่รองรับ Android เวอร์ชันล่าสุด หากแอปนี้เข้าถึงไฟล์เพลงและไฟล์เสียงได้ ก็จะได้รับอนุญาตให้เข้าถึงรูปภาพ วิดีโอ และไฟล์อื่นๆ ด้วย"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"แอปนี้ไม่รองรับ Android เวอร์ชันล่าสุด หากแอปนี้เข้าถึงไฟล์เพลงและไฟล์เสียงไม่ได้ ก็จะไม่ได้รับอนุญาตให้เข้าถึงรูปภาพ วิดีโอ และไฟล์อื่นๆ ด้วย"</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"แอปนี้ไม่รองรับ Android เวอร์ชันล่าสุด หากแอปนี้เข้าถึงรูปภาพและวิดีโอได้ ก็จะได้รับอนุญาตให้เข้าถึงไฟล์เพลง เสียง และไฟล์อื่นๆ ด้วย"</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"แอปนี้ไม่รองรับ Android เวอร์ชันล่าสุด หากแอปนี้เข้าถึงรูปภาพและวิดีโอไม่ได้ ก็จะไม่ได้รับอนุญาตให้เข้าถึงไฟล์เพลง เสียง และไฟล์อื่นๆ ด้วย"</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"แอปนี้ไม่รองรับ Android เวอร์ชันล่าสุด หากแอปนี้เข้าถึงไฟล์เพลงและไฟล์เสียงได้ ก็จะได้รับอนุญาตให้เข้าถึงรูปภาพและวิดีโอด้วย"</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"แอปนี้ไม่รองรับ Android เวอร์ชันล่าสุด หากแอปนี้เข้าถึงไฟล์เพลงและไฟล์เสียงไม่ได้ ก็จะไม่ได้รับอนุญาตให้เข้าถึงรูปภาพและวิดีโอด้วย"</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"แอปนี้ไม่รองรับ Android เวอร์ชันล่าสุด หากแอปนี้เข้าถึงรูปภาพและวิดีโอได้ ก็จะได้รับอนุญาตให้เข้าถึงไฟล์เพลงและไฟล์เสียงด้วย"</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"แอปนี้ไม่รองรับ Android เวอร์ชันล่าสุด หากแอปนี้เข้าถึงไฟล์เพลงและไฟล์เสียงไม่ได้ ก็จะไม่ได้รับอนุญาตให้เข้าถึงรูปภาพและวิดีโอด้วย"</string>
 </resources>

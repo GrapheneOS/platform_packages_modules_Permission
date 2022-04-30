@@ -196,10 +196,10 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Kuva rakenduse <xliff:g id="APP">%1$s</xliff:g> kõik load"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Kuva kõik selle loaga rakendused"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Kuva assistendi mikrofoni kasutamine"</string>
-    <string name="unused_apps_category_title" msgid="2988455616845243901">"Kasutamata rakenduste seaded"</string>
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"Kasutamata rakenduse seaded"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Eemalda load, kui rakendust ei kasutata"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Eemalda load ja vabasta ruumi"</string>
-    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Tegevusetuna rakenduse tegevuste peatam."</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Tegevusetuna rakenduse tegevuste peatamine"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"Eemaldatakse load, kustutatakse ajutised failid ja peatatakse märguanded"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Teie andmete kaitsmiseks eemaldatakse selle rakenduse load, kui seda mõne kuu jooksul ei kasutata."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Teie andmete kaitsmiseks eemaldatakse selle rakenduse järgmised load, kui rakendust mõne kuu jooksul ei kasutata: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Luba kõikide failide haldamiseks"</string>
     <string name="ask_header" msgid="2633816846459944376">"Küsi iga kord"</string>
     <string name="denied_header" msgid="903209608358177654">"Pole lubatud"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Mõned rakendused, mis pakuvad teie seadmes olulisi funktsioone, saavad erijuurdepääsu kõigile teie failidele"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Vaadake rakendusi, millel on juurdepääs kõigile failidele"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 päev}other{# päeva}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 tund}other{# tundi}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 minut}other{# minutit}}"</string>
@@ -336,7 +336,7 @@
     <string name="role_assistant_request_description" msgid="6836644847620178483">"Saab juurdepääsu SMS-idele ja kõnelogile"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Brauseri vaikerakendus"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Brauserirakendus"</string>
-    <string name="role_browser_description" msgid="3465253637499842671">"Rakendused, mis võimaldavad juurdepääsu Internetile ja kuvavad puudutatavaid linke"</string>
+    <string name="role_browser_description" msgid="3465253637499842671">"Rakendused, mis võimaldavad juurdepääsu internetile ja kuvavad puudutatavaid linke"</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"Kas määrata rakendus <xliff:g id="APP_NAME">%1$s</xliff:g> vaikebrauseriks?"</string>
     <string name="role_browser_request_description" msgid="5888803407905985941">"Lube ei ole vaja"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"Telefoni vaikerakendus"</string>
@@ -523,4 +523,40 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Kasutas hiljuti rakendus <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Turvalisus ja privaatsus"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Oleku kontrollimine"</string>
+    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
+    <skip />
 </resources>

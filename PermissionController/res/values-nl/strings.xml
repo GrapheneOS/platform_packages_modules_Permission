@@ -200,7 +200,7 @@
     <string name="auto_revoke_label" msgid="5068393642936571656">"Rechten intrekken als app niet wordt gebruikt"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Rechten intrekken en ruimte vrijmaken"</string>
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"App-activiteit onderbreken indien niet gebruikt"</string>
-    <string name="unused_apps_summary" msgid="8839466950318403115">"Rechten verwijderen, tijdelijke bestanden verwijderen en meldingen stoppen"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Verwijder rechten en tijdelijke bestanden, en stop meldingen"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Om je gegevens te beschermen worden de rechten voor deze app verwijderd als de app een aantal maanden niet is gebruikt."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Om je gegevens te beschermen worden de volgende rechten ingetrokken als de app een paar maanden niet is gebruikt: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Om je gegevens te beschermen zijn de rechten verwijderd van apps die al een paar maanden niet zijn gebruikt."</string>
@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Alle bestanden beheren"</string>
     <string name="ask_header" msgid="2633816846459944376">"Altijd vragen"</string>
     <string name="denied_header" msgid="903209608358177654">"Niet toegestaan"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Sommige apps die essentiële functionaliteit voor je apparaat bieden, kunnen speciale toegang tot al je bestanden hebben"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Apps met toegang tot alle bestanden bekijken"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 dag}other{# dagen}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 uur}other{# uur}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 minuut}other{# minuten}}"</string>
@@ -341,13 +341,13 @@
     <string name="role_browser_request_description" msgid="5888803407905985941">"Geen rechten nodig"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"Standaard telefoon-app"</string>
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Telefoon-app"</string>
-    <string name="role_dialer_description" msgid="8768708633696539612">"Apps waarmee je kunt bellen en gebeld kunt worden op je apparaat"</string>
+    <string name="role_dialer_description" msgid="8768708633696539612">"Apps waarmee je kunt bellen en gebeld kunt worden op je apparaat."</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g> instellen als standaard telefoon-app?"</string>
     <string name="role_dialer_request_description" msgid="2264219375528345270">"Krijgt toegang tot gesprekslijst en kan sms\'jes verzenden"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"kiezer"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Standaard sms-app"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"Sms-app"</string>
-    <string name="role_sms_description" msgid="3424020199148153513">"Apps waarmee je met je telefoonnummer onder andere sms\'jes, foto\'s en video\'s kunt verzenden en ontvangen"</string>
+    <string name="role_sms_description" msgid="3424020199148153513">"Apps waarmee je met je telefoonnummer onder andere sms\'jes, foto\'s en video\'s kunt sturen en ontvangen."</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Wil je <xliff:g id="APP_NAME">%1$s</xliff:g> instellen als je standaard sms-app?"</string>
     <string name="role_sms_request_description" msgid="983371022668134198">"Krijgt toegang tot contacten, sms en telefoon"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"tekst bericht, tekstbericht, sms, sms\'en, berichten, verzenden, sturen"</string>
@@ -370,7 +370,7 @@
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Geen rechten nodig"</string>
     <string name="role_call_screening_label" msgid="883935222060878724">"Standaard-app voor beller-ID\'s en spam"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"App voor beller-ID\'s en spam"</string>
-    <string name="role_call_screening_description" msgid="2349431420497468981">"Apps waarmee je gesprekken kunt identificeren en spam, robocalls of ongewenste nummers kunt blokkeren"</string>
+    <string name="role_call_screening_description" msgid="2349431420497468981">"Apps waarmee je gesprekken kunt identificeren en spam, robocalls of ongewenste nummers kunt blokkeren."</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"<xliff:g id="APP_NAME">%1$s</xliff:g> instellen als standaard-app voor beller-ID\'s en spam?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Geen rechten nodig"</string>
     <string name="role_automotive_navigation_label" msgid="2701890757955474751">"Standaard navigatie-app"</string>
@@ -523,4 +523,40 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Recent gebruikt door <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Beveiliging en privacy"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Status checken"</string>
+    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
+    <skip />
 </resources>
