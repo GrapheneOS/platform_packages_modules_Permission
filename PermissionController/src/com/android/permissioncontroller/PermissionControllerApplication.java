@@ -28,7 +28,7 @@ import androidx.annotation.RequiresApi;
 
 import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.permission.utils.Utils;
-import com.android.permissioncontroller.privacysources.AccessibilitySourceService.SafetyCenterAccessibilityListener;
+import com.android.permissioncontroller.privacysources.SafetyCenterAccessibilityListener;
 import com.android.permissioncontroller.role.model.Role;
 import com.android.permissioncontroller.role.model.Roles;
 import com.android.permissioncontroller.role.ui.SpecialAppAccessListActivity;
