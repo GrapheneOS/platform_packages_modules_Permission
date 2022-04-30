@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Kuvumelekile ukuphatha wonke amafayela"</string>
     <string name="ask_header" msgid="2633816846459944376">"Buza njalo"</string>
     <string name="denied_header" msgid="903209608358177654">"Akuvumelekile"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Amanye ama-app ahlinzeka ngokusebenza okubalulekile kwedivayisi yakho angaba nokufinyelela okukhethekile kuwo wonke amafayela akho"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Bona ama-app anokufinyelela kwawo wonke amafayela"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{usuku 1}one{izinsuku #}other{izinsuku #}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{ihora 1}one{amahora #}other{amahora #}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{umzuzu 1}one{imizuzu #}other{imizuzu #}}"</string>
@@ -523,4 +523,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Kusetshenziswe kamuva yi-<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Ukuphepha Nobumfihlo"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Hlola isimo"</string>
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"Qinisekisa"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"Emuva"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"Ukufinyelela kwamanye amafayela nakho kuzovunyelwa"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"Ukufinyelela kwamanye amafayela nakho ngeke kuvunyelwe"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"Ukufinyelela kwamanye amafayela nakho kuzovunyelwa"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"Ukufinyelela kwamanye amafayela nakho ngeke kuvunyelwe"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"Ukufinyelela ezithombeni namavidiyo nakho kuzovunyelwa"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"Ukufinyelela ezithombeni namavidiyo nakho ngeke kuvunyelwe"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"Ukufinyelela kumculo namafayela wokulalelwayo nakho kuzovunyelwa"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"Ukufinyelela kumculo namafayela wokulalelwayo nakho ngeke kuvunyelwe"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"Le app ayilusekeli uhlobo lwakamuva le-Android. Uma le app ikwazi ukufinyelela amafayela omculo nawomsindo, izovunyelwa nokufinyelela izithombe, amavidiyo, namanye amafayela."</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"Le app ayilusekeli uhlobo lwakamuva le-Android. Uma le app ingakwazi ukufinyelela umculo nomsindo kumafayela, ngeke ivunyelwe nokufinyelela izithombe, amavidiyo, namanye amafayela."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"Le app ayilusekeli uhlobo lwakamuva le-Android. Uma le app ikwazi ukufinyelela izithombe namavidiyo, izovunyelwa nokufinyelela umculo, umsindo, namanye amafayela."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"Le app ayilusekeli uhlobo lwakamuva le-Android. Uma le app ingakwazi ukufinyelela izithombe namavidiyo, ngeke ivunyelwe nokufinyelela umculo, umsindo, amanye amafayela."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"Le app ayilusekeli uhlobo lwakamuva le-Android. Uma le app ikwazi ukufinyelela amafayela omculo nawomsindo, izovunyelwa nokufinyelela izithombe namavidiyo."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Le app ayilusekeli uhlobo lwakamuva le-Android. Uma le app ingakwazi ukufinyelela umculo nomsindo kumafayela, ngeke ivunyelwe nokufinyelela izithombe namavidiyo."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Le app ayilusekeli uhlobo lwakamuva le-Android. Uma le app ikwazi ukufinyelela izithombe namavidiyo, izovunyelwa nokufinyelela umculo namanye amafayela omsindo."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Le app ayilusekeli uhlobo lwakamuva le-Android. Uma le app ingakwazi ukufinyelela umculo nomsindo kumafayela, ngeke ivunyelwe nokufinyelela izithombe namavidiyo."</string>
 </resources>
