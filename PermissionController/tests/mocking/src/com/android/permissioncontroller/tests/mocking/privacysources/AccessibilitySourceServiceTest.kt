@@ -29,7 +29,8 @@ import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.privacysources.AccessibilitySourceService
 import com.android.permissioncontroller.privacysources.AccessibilitySourceService.AccessibilityComponent
-import com.android.permissioncontroller.privacysources.AccessibilitySourceService.AccessibilityJobService
+import com.android.permissioncontroller.privacysources.AccessibilityJobService
+import com.android.permissioncontroller.privacysources.PROPERTY_SC_ACCESSIBILITY_SOURCE_ENABLED
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -339,7 +340,7 @@ class AccessibilitySourceServiceTest {
         whenever(
             DeviceConfig.getBoolean(
                 eq(DeviceConfig.NAMESPACE_PRIVACY),
-                eq(AccessibilitySourceService.PROPERTY_SC_ACCESSIBILITY_SOURCE_ENABLED),
+                eq(PROPERTY_SC_ACCESSIBILITY_SOURCE_ENABLED),
                 anyBoolean()
             )
         ).thenReturn(enabled)
