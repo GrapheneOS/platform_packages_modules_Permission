@@ -229,7 +229,6 @@ public class GrantPermissionsActivity extends SettingsActivity
                 mDelegated = true;
                 sCurrentGrantRequests.get(mKey).onNewFollowerActivity(this,
                         mRequestedPermissions, mLegacyAccessPermissions);
-                return;
             }
         }
 
@@ -360,7 +359,7 @@ public class GrantPermissionsActivity extends SettingsActivity
     }
 
     private void onRequestInfoLoad(List<RequestInfo> requests) {
-        if (!mViewModel.getRequestInfosLiveData().isInitialized() || isResultSet()) {
+        if (!mViewModel.getRequestInfosLiveData().isInitialized() || isResultSet() || mDelegated) {
             return;
         } else if (requests == null) {
             finishAfterTransition();
@@ -530,6 +529,10 @@ public class GrantPermissionsActivity extends SettingsActivity
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
+
+        if (mViewHandler == null || mViewModel == null) {
+            return;
+        }
 
         mViewHandler.saveInstanceState(outState);
         mViewModel.saveInstanceState(outState);
