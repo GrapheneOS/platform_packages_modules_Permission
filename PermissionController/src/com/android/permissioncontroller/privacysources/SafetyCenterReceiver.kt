@@ -31,23 +31,24 @@ import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.permission.service.v33.SafetyCenterQsTileService
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.privacysources.NotificationListenerCheck.NotificationListenerPrivacySource
+import com.android.permissioncontroller.privacysources.WorkPolicyInfo.Companion.WORK_POLICY_INFO_SOURCE_ID
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Default
 import kotlinx.coroutines.launch
 
-private fun createMapOfSourceIdsToSources(): Map<String, PrivacySource> {
+private fun createMapOfSourceIdsToSources(context: Context): Map<String, PrivacySource> {
     if (!SdkLevel.isAtLeastT()) {
         return emptyMap()
     }
-
     return mapOf(
-        SC_NLS_SOURCE_ID to NotificationListenerPrivacySource()
+            SC_NLS_SOURCE_ID to NotificationListenerPrivacySource(),
+            WORK_POLICY_INFO_SOURCE_ID to WorkPolicyInfo.get(context)
     )
 }
 
 class SafetyCenterReceiver(
-    private val getMapOfSourceIdsToSources: () -> Map<String, PrivacySource> =
+    private val getMapOfSourceIdsToSources: (Context) -> Map<String, PrivacySource> =
         ::createMapOfSourceIdsToSources,
     private val dispatcher: CoroutineDispatcher = Default
 ) : BroadcastReceiver() {
@@ -72,7 +73,7 @@ class SafetyCenterReceiver(
             return
         }
 
-        val mapOfSourceIdsToSources = getMapOfSourceIdsToSources()
+        val mapOfSourceIdsToSources = getMapOfSourceIdsToSources(context)
 
         when (intent.action) {
             ACTION_SAFETY_CENTER_ENABLED_CHANGED -> {
