@@ -38,6 +38,7 @@ import android.util.Log
 import androidx.core.util.Consumer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.DeviceUtils
 import com.android.permissioncontroller.PermissionControllerApplication
@@ -505,12 +506,16 @@ class GrantPermissionsViewModel(
                     }
                 }
 
-                // If group is a storage group, legacy apps will need special text
-                if (groupState.group.permGroupName in Utils.STORAGE_SUPERGROUP_PERMISSIONS) {
+                // If group is the storage group, legacy apps will need special text, and modern
+                // apps should not request it
+                if (SdkLevel.isAtLeastT() &&
+                    groupState.group.permGroupName == Manifest.permission_group.STORAGE) {
                     if (packageInfo.targetSdkVersion < Build.VERSION_CODES.Q) {
                         message = RequestMessage.STORAGE_SUPERGROUP_MESSAGE_PRE_Q
                     } else if (packageInfo.targetSdkVersion <= Build.VERSION_CODES.S_V2) {
                         message = RequestMessage.STORAGE_SUPERGROUP_MESSAGE_Q_TO_S
+                    } else {
+                        continue
                     }
                 }
 
