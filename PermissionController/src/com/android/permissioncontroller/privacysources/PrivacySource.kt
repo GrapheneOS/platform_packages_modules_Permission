@@ -26,6 +26,7 @@ interface PrivacySource {
      *
      * <p> Invoked when {@link SafetyCenterManager.ACTION_SAFETY_CENTER_ENABLED_CHANGED} received
      *
+     * @param context: Context of the broadcast
      * @param enabled: {@code true} if Safety Center now enabled
      */
     fun safetyCenterEnabledChanged(context: Context, enabled: Boolean)
