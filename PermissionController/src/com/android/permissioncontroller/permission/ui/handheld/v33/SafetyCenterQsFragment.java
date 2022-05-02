@@ -161,9 +161,6 @@ public class SafetyCenterQsFragment extends Fragment {
                 getChildFragmentManager().findFragmentById(R.id.safety_prefs);
         mPrefsFrag.addPreferencesFromResource(R.xml.safety_center_qs_prefs);
         mPrefs = mPrefsFrag.getPreferenceScreen();
-
-        setSensorToggleState(new ArrayMap<>(), root);
-        addPermissionUsageInformation(root);
         return root;
     }
 
