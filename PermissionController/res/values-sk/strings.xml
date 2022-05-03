@@ -200,7 +200,7 @@
     <string name="auto_revoke_label" msgid="5068393642936571656">"Odstrániť povolenia, ak sa aplikácia nepoužíva"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Odstraňovať povol. a uvoľňovať priestor"</string>
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"Pozastaviť aktivitu v nepoužívaných apl."</string>
-    <string name="unused_apps_summary" msgid="8839466950318403115">"Odstráňte povolenia, vymažte dočasné súbory a zastavte upozornenia"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Odstrániť povolenia, vymazať dočasné súbory a zastaviť upozornenia"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Ak túto aplikáciu niekoľko mesiacov nepoužijete, v záujme ochrany vašich údajov budú odstránené jej povolenia."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Ak túto aplikáciu niekoľko mesiacov nepoužijete, v záujme ochrany vašich údajov budú odstránené tieto povolenia: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"V záujme ochrany vašich údajov boli odobrané povolenia aplikáciám, ktoré ste niekoľko mesiacov nepoužívali."</string>
@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"S povolením spravovať všetky súbory"</string>
     <string name="ask_header" msgid="2633816846459944376">"Vždy sa opýtať"</string>
     <string name="denied_header" msgid="903209608358177654">"Nepovolené"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Niektoré aplikácie, ktoré vášmu zariadeniu poskytujú základné funkcie, môžu mať špeciálny prístup k všetkým vašim súborom"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Zobraziť aplikácie s prístupom k všetkým súborom"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 deň}few{# dni}many{# dňa}other{# dní}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 hodina}few{# hodiny}many{# hodiny}other{# hodín}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 minúta}few{# minúty}many{# minúty}other{# minút}}"</string>
@@ -523,4 +523,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Nedávno využila aplikácia <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Zabezpečenie a ochrana súkromia"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Skontrolovať stav"</string>
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"Potvrdiť"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"Späť"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"Bude povolený aj prístup k ďalším súborom"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"Nebude povolený ani prístup k ďalším súborom"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"Bude povolený aj prístup k ďalším súborom"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"Nebude povolený ani prístup k ďalším súborom"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"Bude povolený aj prístup k fotkám a videám"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"Nebude povolený ani prístup k fotkám a videám"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"Bude povolený aj prístup k hudobným a zvukovým súborom"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"Nebude povolený ani prístup k ďalším hudobným a zvukovým súborom"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"Táto aplikácia nepodporuje najnovšiu verziu Androidu. Ak má táto aplikácia prístup k hudobným a zvukovým súborom, bude ho mať aj k fotkám, videám a ďalším súborom."</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"Táto aplikácia nepodporuje najnovšiu verziu Androidu. Ak táto aplikácia nemá prístup k hudobným a zvukovým súborom, nebude ho mať ani k fotkám, videám a ďalším súborom."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"Táto aplikácia nepodporuje najnovšiu verziu Androidu. Ak má táto aplikácia prístup k fotkám a videám, bude ho mať aj k hudobným, zvukovým a ďalším súborom."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"Táto aplikácia nepodporuje najnovšiu verziu Androidu. Ak táto aplikácia nemá prístup k fotkám a videám, nebude ho mať ani k hudobným, zvukovým a ďalším súborom."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"Táto aplikácia nepodporuje najnovšiu verziu Androidu. Ak má táto aplikácia prístup k hudobným a zvukovým súborom, bude ho mať aj k fotkám a videám."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Táto aplikácia nepodporuje najnovšiu verziu Androidu. Ak táto aplikácia nemá prístup k hudobným a zvukovým súborom, nebude ho mať ani k fotkám a videám."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Táto aplikácia nepodporuje najnovšiu verziu Androidu. Ak má táto aplikácia prístup k fotkám a videám, bude ho mať aj k hudobným a zvukovým súborom."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Táto aplikácia nepodporuje najnovšiu verziu Androidu. Ak táto aplikácia nemá prístup k hudobným a zvukovým súborom, nebude ho mať ani k fotkám a videám."</string>
 </resources>

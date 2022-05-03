@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Bütün fayllara girişi olanlar"</string>
     <string name="ask_header" msgid="2633816846459944376">"Həmişə soruşulsun"</string>
     <string name="denied_header" msgid="903209608358177654">"İcazə verilməyib"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Cihazınız üçün vacib funksionallığı təmin edən bəzi tətbiqlər bütün fayllarınıza xüsusi giriş əldə edə bilər"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Bütün fayllara girişi olan tətbiqlərə baxın"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 gün}other{# gün}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 saat}other{# saat}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 dəqiqə}other{# dəqiqə}}"</string>
@@ -523,4 +523,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Bu yaxınlarda <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) tərəfindən istifadə edilib"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Güvənlik və məxfilik"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Statusu yoxlayın"</string>
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"Təsdiq"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"Geriyə"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"Digər fayllara da giriş etməyə icazə veriləcək"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"Digər fayllara da giriş etməyə icazə verilməyəcək"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"Digər fayllara da giriş etməyə icazə veriləcək"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"Digər fayllara da giriş etməyə icazə verilməyəcək"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"Foto və videolara girişə də icazə veriləcək"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"Foto və videolara girişə də icazə verilməyəcək"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"Musiqi və audio fayllarına da girişə icazə veriləcək"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"Musiqi və audio fayllarına da girişə icazə verilməyəcək"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"Bu tətbiq Android\'in ən son versiyasını dəstəkləmir. Əgər bu tətbiq musiqi və audio fayllarına giriş edə bilirsə, ona foto, video və digər fayllara da giriş etməyə icazə veriləcək."</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"Bu tətbiq Android\'in ən son versiyasını dəstəkləmir. Əgər bu tətbiq musiqi və audio fayllarına giriş edə bilmirsə, ona foto, video və digər fayllara da giriş etməyə icazə verilməyəcək."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"Bu tətbiq Android\'in ən son versiyasını dəstəkləmir. Əgər bu tətbiq foto və video fayllarına giriş edə bilirsə, ona musiqi, audio və digər fayllara da giriş etməyə icazə veriləcək."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"Bu tətbiq Android\'in ən son versiyasını dəstəkləmir. Əgər bu tətbiq foto və video fayllarına giriş edə bilmirsə, ona musiqi, audio və digər fayllara da giriş etməyə icazə verilməyəcək."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"Bu tətbiq Android\'in ən son versiyasını dəstəkləmir. Əgər bu tətbiq musiqi və audio fayllarına giriş edə bilirsə, ona foto və videolara da giriş etməyə icazə veriləcək."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Bu tətbiq Android\'in ən son versiyasını dəstəkləmir. Əgər bu tətbiq musiqi və audio fayllarına giriş edə bilmirsə, ona foto və videolara da giriş etməyə icazə verilməyəcək."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Bu tətbiq Android\'in ən son versiyasını dəstəkləmir. Əgər bu tətbiq foto və video fayllarına giriş edə bilirsə, ona musiqi və audio fayllarına da giriş etməyə icazə veriləcək."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Bu tətbiq Android\'in ən son versiyasını dəstəkləmir. Əgər bu tətbiq musiqi və audio fayllarına giriş edə bilmirsə, ona foto və videolara da giriş etməyə icazə verilməyəcək."</string>
 </resources>
