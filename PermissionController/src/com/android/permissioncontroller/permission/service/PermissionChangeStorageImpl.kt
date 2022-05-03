@@ -14,18 +14,16 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.service.v33
+package com.android.permissioncontroller.permission.service
 
 import android.app.job.JobScheduler
 import android.content.Context
-import android.os.Build
 import android.provider.DeviceConfig
 import android.util.Log
 import android.util.Xml
-import androidx.annotation.RequiresApi
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.hibernation.getUnusedThresholdMs
-import com.android.permissioncontroller.permission.data.v33.PermissionChange
+import com.android.permissioncontroller.permission.data.PermissionChange
 import com.android.permissioncontroller.permission.utils.Utils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -47,7 +45,6 @@ import java.util.Locale
  * Implementation of [BasePermissionEventStorage] for storing [PermissionChange] events for long
  * periods of time.
  */
-@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class PermissionChangeStorageImpl(
     context: Context,
     jobScheduler: JobScheduler = context.getSystemService(JobScheduler::class.java)!!

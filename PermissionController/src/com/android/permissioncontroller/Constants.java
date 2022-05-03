@@ -17,7 +17,7 @@
 package com.android.permissioncontroller;
 
 import com.android.permissioncontroller.hibernation.HibernationJobService;
-import com.android.permissioncontroller.permission.service.v33.PermissionEventCleanupJobService;
+import com.android.permissioncontroller.permission.service.PermissionEventCleanupJobService;
 
 /**
  * App-global constants

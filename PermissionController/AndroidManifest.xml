@@ -116,7 +116,7 @@
         <service android:name="com.android.permissioncontroller.hibernation.HibernationJobService"
                  android:permission="android.permission.BIND_JOB_SERVICE" />
 
-        <service android:name="com.android.permissioncontroller.permission.service.v33.PermissionEventCleanupJobService"
+        <service android:name="com.android.permissioncontroller.permission.service.PermissionEventCleanupJobService"
                  android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <activity android:name="com.android.permissioncontroller.permission.ui.GrantPermissionsActivity"
@@ -362,7 +362,7 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name="com.android.permissioncontroller.permission.service.v33.PersistedStoragePackageUninstalledReceiver"
+        <receiver android:name="com.android.permissioncontroller.permission.service.PersistedStoragePackageUninstalledReceiver"
                   android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_DATA_CLEARED" />
@@ -371,7 +371,7 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name="com.android.permissioncontroller.permission.service.v33.PermissionStorageTimeChangeReceiver"
+        <receiver android:name="com.android.permissioncontroller.permission.service.PermissionStorageTimeChangeReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

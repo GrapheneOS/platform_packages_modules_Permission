@@ -14,17 +14,16 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.service.v33
+package com.android.permissioncontroller.permission.service
 
-import android.os.Build
-import androidx.annotation.RequiresApi
+import android.annotation.SuppressLint
 import com.android.permissioncontroller.PermissionControllerApplication
-import com.android.permissioncontroller.permission.data.v33.PermissionEvent
+import com.android.permissioncontroller.permission.data.PermissionEvent
+import com.android.permissioncontroller.permission.service.v33.PermissionDecisionStorageImpl
 
 /**
  * Singleton of all supported [PermissionEventStorage] on the device.
  */
-@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class PermissionEventStorageImpls {
     companion object {
         @Volatile
@@ -35,6 +34,7 @@ class PermissionEventStorageImpls {
                 INSTANCE ?: createInstance().also { INSTANCE = it }
             }
 
+        @SuppressLint("NewApi")
         private fun createInstance(): List<PermissionEventStorage<out PermissionEvent>> {
             val list = mutableListOf<PermissionEventStorage<out PermissionEvent>>()
             list.add(PermissionChangeStorageImpl.getInstance())

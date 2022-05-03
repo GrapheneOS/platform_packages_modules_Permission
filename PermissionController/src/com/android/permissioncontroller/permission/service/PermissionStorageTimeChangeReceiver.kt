@@ -14,18 +14,16 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.service.v33
+package com.android.permissioncontroller.permission.service
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.annotation.VisibleForTesting
 import androidx.preference.PreferenceManager
 import com.android.permissioncontroller.DumpableLog
-import com.android.permissioncontroller.permission.data.v33.PermissionEvent
+import com.android.permissioncontroller.permission.data.PermissionEvent
 import com.android.permissioncontroller.permission.utils.SystemTimeSource
 import com.android.permissioncontroller.permission.utils.TimeSource
 import kotlinx.coroutines.Dispatchers
@@ -40,7 +38,6 @@ import kotlin.math.abs
  * of the delta we take a snapshot of the current time and time since boot after the
  * [Intent.ACTION_BOOT_COMPLETED] action.
  */
-@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class PermissionStorageTimeChangeReceiver(
     private val storages: List<PermissionEventStorage<out PermissionEvent>> =
         PermissionEventStorageImpls.getInstance(),

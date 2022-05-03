@@ -19,7 +19,6 @@
 package com.android.permissioncontroller.permission.service
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager.FLAG_PERMISSION_AUTO_REVOKED
 import android.content.pm.PackageManager.FLAG_PERMISSION_USER_SET
@@ -37,7 +36,6 @@ import com.android.permissioncontroller.permission.data.PackagePermissionsLiveDa
 import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
 import com.android.permissioncontroller.permission.model.livedatatypes.LightPackageInfo
-import com.android.permissioncontroller.permission.service.v33.PermissionChangeStorageImpl
 import com.android.permissioncontroller.permission.utils.KotlinUtils
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.application
@@ -62,7 +60,6 @@ private val SERVER_LOG_ID =
  * @return list of packages that successfully had their permissions revoked
  */
 @MainThread
-@SuppressLint("NewApi")
 suspend fun revokeAppPermissions(
     apps: Map<UserHandle, List<LightPackageInfo>>,
     context: Context,
