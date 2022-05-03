@@ -81,7 +81,7 @@
         </receiver>
 
         <receiver
-            android:name="com.android.permissioncontroller.privacysources.NotificationListenerCheck$SetupPeriodicNotificationListenerCheck"
+            android:name="com.android.permissioncontroller.privacysources.SetupPeriodicNotificationListenerCheck"
             android:enabled="@bool/is_at_least_t"
             android:exported="true">
             <intent-filter>
@@ -110,19 +110,19 @@
         </receiver>
 
         <receiver
-            android:name="com.android.permissioncontroller.privacysources.NotificationListenerCheck$NotificationDeleteHandler"
+            android:name="com.android.permissioncontroller.privacysources.NotificationListenerCheckNotificationDeleteHandler"
             android:enabled="@bool/is_at_least_t" />
 
         <receiver
-            android:name="com.android.permissioncontroller.privacysources.NotificationListenerCheck$DisableComponentHandler"
+            android:name="com.android.permissioncontroller.privacysources.DisableNotificationListenerComponentHandler"
             android:enabled="@bool/is_at_least_t" />
 
         <receiver
-            android:name="com.android.permissioncontroller.privacysources.NotificationListenerCheck$ActionCardDismissalReceiver"
+            android:name="com.android.permissioncontroller.privacysources.NotificationListenerActionCardDismissalReceiver"
             android:enabled="@bool/is_at_least_t" />
 
         <receiver
-            android:name="com.android.permissioncontroller.privacysources.NotificationListenerCheck$PackageResetHandler"
+            android:name="com.android.permissioncontroller.privacysources.NotificationListenerPackageResetHandler"
             android:enabled="@bool/is_at_least_t"
             android:exported="true">
             <intent-filter>
@@ -147,7 +147,7 @@
                  android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <service
-            android:name="com.android.permissioncontroller.privacysources.NotificationListenerCheck$NotificationListenerCheckJobService"
+            android:name="com.android.permissioncontroller.privacysources.NotificationListenerCheckJobService"
             android:enabled="@bool/is_at_least_t"
             android:permission="android.permission.BIND_JOB_SERVICE" />
 
