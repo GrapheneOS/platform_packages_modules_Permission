@@ -46,4 +46,8 @@ class TvUnusedAppsPreference(
     override fun setRemoveClickRunnable(runnable: Runnable) {
         // TV Settings don't have secondary icons and actions
     }
+
+    override fun setRemoveComponentEnabled(enabled: Boolean) {
+        // TV Settings doesn't have a remove component
+    }
 }
