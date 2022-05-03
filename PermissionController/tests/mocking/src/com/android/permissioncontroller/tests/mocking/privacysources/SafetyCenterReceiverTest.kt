@@ -16,6 +16,7 @@
 
 package com.android.permissioncontroller.tests.mocking.privacysources
 
+import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_BOOT_COMPLETED
 import android.content.pm.PackageManager
@@ -80,7 +81,7 @@ class SafetyCenterReceiverTest {
     private lateinit var mockitoSession: MockitoSession
     private lateinit var safetyCenterReceiver: SafetyCenterReceiver
 
-    private fun privacySourceMap() = mapOf(
+    private fun privacySourceMap(context: Context) = mapOf(
         TEST_PRIVACY_SOURCE_ID to mockPrivacySource,
         TEST_PRIVACY_SOURCE_ID_2 to mockPrivacySource2
     )
