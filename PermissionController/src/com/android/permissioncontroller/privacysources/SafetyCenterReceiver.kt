@@ -41,9 +41,8 @@ private fun createMapOfSourceIdsToSources(context: Context): Map<String, Privacy
         return emptyMap()
     }
     return mapOf(
-            SC_NLS_SOURCE_ID to NotificationListenerPrivacySource(),
-            WORK_POLICY_INFO_SOURCE_ID to WorkPolicyInfo.get(context)
-    )
+        SC_NLS_SOURCE_ID to NotificationListenerPrivacySource(),
+        WORK_POLICY_INFO_SOURCE_ID to WorkPolicyInfo.create(context))
 }
 
 class SafetyCenterReceiver(
@@ -62,10 +61,10 @@ class SafetyCenterReceiver(
         if (!SdkLevel.isAtLeastT()) {
             return
         }
-        val safetyCenterManager: SafetyCenterManager = Utils.getSystemServiceSafe(
-            PermissionControllerApplication.get().applicationContext,
-            SafetyCenterManager::class.java
-        )
+        val safetyCenterManager: SafetyCenterManager =
+            Utils.getSystemServiceSafe(
+                PermissionControllerApplication.get().applicationContext,
+                SafetyCenterManager::class.java)
 
         if (!safetyCenterManager.isSafetyCenterEnabled &&
             intent.action != ACTION_SAFETY_CENTER_ENABLED_CHANGED) {
@@ -89,8 +88,7 @@ class SafetyCenterReceiver(
                         intent,
                         RefreshEvent.EVENT_REFRESH_REQUESTED,
                         mapOfSourceIdsToSources,
-                        sourceIdsExtra.toList()
-                    )
+                        sourceIdsExtra.toList())
                 }
             }
             ACTION_BOOT_COMPLETED -> {
@@ -99,8 +97,7 @@ class SafetyCenterReceiver(
                     intent,
                     RefreshEvent.EVENT_DEVICE_REBOOTED,
                     mapOfSourceIdsToSources,
-                    mapOfSourceIdsToSources.keys.toList()
-                )
+                    mapOfSourceIdsToSources.keys.toList())
             }
         }
     }
@@ -120,14 +117,15 @@ class SafetyCenterReceiver(
 
     private fun updateTileVisibility(context: Context, enabled: Boolean) {
         val tileComponent = ComponentName(context, SafetyCenterQsTileService::class.java)
-        val wasEnabled = context.packageManager?.getComponentEnabledSetting(tileComponent) !=
+        val wasEnabled =
+            context.packageManager?.getComponentEnabledSetting(tileComponent) !=
                 PackageManager.COMPONENT_ENABLED_STATE_DISABLED
         if (enabled && !wasEnabled) {
-            context.packageManager.setComponentEnabledSetting(tileComponent,
-                PackageManager.COMPONENT_ENABLED_STATE_ENABLED, 0)
+            context.packageManager.setComponentEnabledSetting(
+                tileComponent, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, 0)
         } else if (!enabled && wasEnabled) {
-            context.packageManager.setComponentEnabledSetting(tileComponent,
-                PackageManager.COMPONENT_ENABLED_STATE_DISABLED, 0)
+            context.packageManager.setComponentEnabledSetting(
+                tileComponent, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, 0)
         }
     }
 
@@ -140,8 +138,8 @@ class SafetyCenterReceiver(
     ) {
         for (sourceId in sourceIdsToRefresh) {
             CoroutineScope(dispatcher).launch {
-                mapOfSourceIdsToSources[sourceId]?.rescanAndPushSafetyCenterData(context, intent,
-                    refreshEvent)
+                mapOfSourceIdsToSources[sourceId]?.rescanAndPushSafetyCenterData(
+                    context, intent, refreshEvent)
             }
         }
     }

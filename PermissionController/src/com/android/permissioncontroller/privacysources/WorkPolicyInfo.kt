@@ -30,11 +30,19 @@ import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.privacysources.SafetyCenterReceiver.RefreshEvent
 import com.android.settingslib.utils.WorkPolicyUtils
 
+/**
+ * Work Policy Info for managed devices to show the settings managed by their Organisation's IT
+ * Admin. It is a Privacy Source, and it receives broadcasts from SafetyCenter using
+ * SafetyCenterReceiver.kt
+ *
+ * safetyCenterEnabledChanged and rescanAndPushSafetyCenterData methods checks if the device is
+ * managed and shows the Work Policy Info by pushing the data in SafetyCenter
+ */
 class WorkPolicyInfo(private val workPolicyUtils: WorkPolicyUtils) : PrivacySource {
 
     companion object {
         const val WORK_POLICY_INFO_SOURCE_ID = "AndroidWorkPolicyInfo"
-        fun get(context: Context): WorkPolicyInfo {
+        fun create(context: Context): WorkPolicyInfo {
             val workPolicyUtils = WorkPolicyUtils(context)
             return WorkPolicyInfo(workPolicyUtils)
         }
@@ -44,23 +52,7 @@ class WorkPolicyInfo(private val workPolicyUtils: WorkPolicyUtils) : PrivacySour
         val intent = Intent(Settings.ACTION_SHOW_WORK_POLICY_INFO)
         val refreshEvent: RefreshEvent = RefreshEvent.UNKNOWN
         if (enabled) {
-            rescanAndPushSafetyCenterData(
-                    context,
-                    intent,
-                    refreshEvent
-            )
-        } else {
-            val safetySourceData = null
-            val safetyEvent: SafetyEvent = createSafetyEventForWorkPolicy(refreshEvent, intent)
-            val safetyCenterManager: SafetyCenterManager = Utils.getSystemServiceSafe(
-                    PermissionControllerApplication.get().applicationContext,
-                    SafetyCenterManager::class.java
-            )
-            safetyCenterManager.setSafetySourceData(
-                    WORK_POLICY_INFO_SOURCE_ID,
-                    safetySourceData,
-                    safetyEvent
-            )
+            rescanAndPushSafetyCenterData(context, intent, refreshEvent)
         }
     }
 
@@ -69,34 +61,34 @@ class WorkPolicyInfo(private val workPolicyUtils: WorkPolicyUtils) : PrivacySour
         intent: Intent,
         refreshEvent: RefreshEvent
     ) {
-        val safetyCenterManager: SafetyCenterManager = Utils.getSystemServiceSafe(
+        val safetyCenterManager: SafetyCenterManager =
+            Utils.getSystemServiceSafe(
                 PermissionControllerApplication.get().applicationContext,
-                SafetyCenterManager::class.java
-        )
+                SafetyCenterManager::class.java)
         val safetyEvent: SafetyEvent = createSafetyEventForWorkPolicy(refreshEvent, intent)
         val safetySourceData: SafetySourceData? = createSafetySourceDataForWorkPolicy(context)
 
         safetyCenterManager.setSafetySourceData(
-                WORK_POLICY_INFO_SOURCE_ID,
-                safetySourceData,
-                safetyEvent
-        )
+            WORK_POLICY_INFO_SOURCE_ID, safetySourceData, safetyEvent)
     }
 
     private fun createSafetySourceDataForWorkPolicy(context: Context): SafetySourceData? {
         if (!shouldShowWorkPolicyInfo()) return null
-        val pendingIntent = PendingIntent.getActivity(context, 0,
-                Intent(Settings.ACTION_SHOW_WORK_POLICY_INFO), PendingIntent.FLAG_IMMUTABLE)
-        val safetySourceStatus: SafetySourceStatus = SafetySourceStatus.Builder(
-                context.getText(R.string.work_policy_title),
-                context.getText(R.string.work_policy_summary),
-                SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED)
+        val pendingIntent =
+            PendingIntent.getActivity(
+                context,
+                0,
+                Intent(Settings.ACTION_SHOW_WORK_POLICY_INFO),
+                PendingIntent.FLAG_IMMUTABLE)
+        val safetySourceStatus: SafetySourceStatus =
+            SafetySourceStatus.Builder(
+                    context.getText(R.string.work_policy_title),
+                    context.getText(R.string.work_policy_summary),
+                    SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED)
                 .setPendingIntent(pendingIntent)
                 .build()
 
-        return SafetySourceData.Builder()
-                .setStatus(safetySourceStatus)
-                .build()
+        return SafetySourceData.Builder().setStatus(safetySourceStatus).build()
     }
 
     private fun createSafetyEventForWorkPolicy(
@@ -105,11 +97,12 @@ class WorkPolicyInfo(private val workPolicyUtils: WorkPolicyUtils) : PrivacySour
     ): SafetyEvent {
         return when (refreshEvent) {
             RefreshEvent.EVENT_REFRESH_REQUESTED -> {
-                val refreshBroadcastId = intent.getStringExtra(
-                        SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID
-                )
+                val refreshBroadcastId =
+                    intent.getStringExtra(
+                        SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID)
                 SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
-                        .setRefreshBroadcastId(refreshBroadcastId).build()
+                    .setRefreshBroadcastId(refreshBroadcastId)
+                    .build()
             }
             RefreshEvent.EVENT_DEVICE_REBOOTED -> {
                 SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_REBOOTED).build()
@@ -121,6 +114,6 @@ class WorkPolicyInfo(private val workPolicyUtils: WorkPolicyUtils) : PrivacySour
     }
 
     fun shouldShowWorkPolicyInfo(): Boolean {
-            return workPolicyUtils.hasWorkPolicy()
+        return workPolicyUtils.hasWorkPolicy()
     }
 }
