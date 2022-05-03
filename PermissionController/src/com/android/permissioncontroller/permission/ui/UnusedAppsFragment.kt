@@ -205,7 +205,7 @@ class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
                 allCategoriesEmpty = false
             }
 
-            for ((pkgName, user, shouldDisable, permSet) in packages) {
+            for ((pkgName, user, isSystemApp, permSet) in packages) {
                 val revokedPerms = permSet.toList()
                 val key = createKey(pkgName, user)
 
@@ -217,15 +217,10 @@ class UnusedAppsFragment<PF, UnusedAppPref> : Fragment()
                     pref.title = KotlinUtils.getPackageLabel(activity!!.application, pkgName, user)
                 }
 
-                if (shouldDisable) {
-                    pref.setRemoveClickRunnable {
-                        createDisableDialog(pkgName, user)
-                    }
-                } else {
-                    pref.setRemoveClickRunnable {
-                        viewModel.requestUninstallApp(this, pkgName, user)
-                    }
+                pref.setRemoveClickRunnable {
+                    viewModel.requestUninstallApp(this, pkgName, user)
                 }
+                pref.setRemoveComponentEnabled(!isSystemApp)
 
                 pref.onPreferenceClickListener = Preference.OnPreferenceClickListener { _ ->
                     viewModel.navigateToAppInfo(pkgName, user, sessionId)
