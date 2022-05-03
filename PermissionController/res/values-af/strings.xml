@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Toegelaat om alle lêers te bestuur"</string>
     <string name="ask_header" msgid="2633816846459944376">"Vra elke keer"</string>
     <string name="denied_header" msgid="903209608358177654">"Nie toegelaat nie"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Sommige programme wat noodsaaklike funksies vir jou toestel verskaf, kan spesiale toegang tot al jou lêers hê"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Sien programme met toegang tot alle lêers"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 dag}other{# dae}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 uur}other{# uur}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 minuut}other{# minute}}"</string>
@@ -523,4 +523,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Onlangs gebruik deur <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Sekuriteit en privaatheid"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Gaan status na"</string>
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"Bevestig"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"Terug"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"Toegang tot ander lêers sal ook toegelaat word"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"Toegang tot ander lêers sal ook nie toegelaat word nie"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"Toegang tot ander lêers sal ook toegelaat word"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"Toegang tot ander lêers sal ook nie toegelaat word nie"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"Toegang tot foto\'s en video\'s sal ook toegelaat word"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"Toegang tot foto\'s en video\'s sal ook nie toegelaat word"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"Toegang tot musiek- en oudiolêers sal ook toegelaat word"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"Toegang tot musiek- en oudiolêers sal ook nie toegelaat word nie"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"Hierdie program steun nie die jongste weergawe van Android nie As hierdie program toegang tot musiek- en oudiolêers het, sal dit ook toegelaat word om toegang tot foto\'s, video\'s en ander lêers te kry."</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"Hierdie program steun nie die jongste weergawe van Android nie As hierdie program nie toegang tot musiek- en oudiolêers het nie, sal dit ook nie toegelaat word om toegang tot foto\'s, video\'s en ander lêers te kry nie."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"Hierdie program steun nie die jongste weergawe van Android nie As hierdie program toegang tot foto\'s en video\'s het, sal dit ook toegelaat word om toegang tot musiek-, oudio- en ander lêers te kry."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"Hierdie program steun nie die jongste weergawe van Android nie As hierdie program nie toegang tot foto\'s en video\'s het nie, sal dit ook nie toegelaat word om toegang tot musiek-, oudio- en ander lêers te kry nie."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"Hierdie program steun nie die jongste weergawe van Android nie As hierdie program toegang tot musiek en oudiolêers het, sal dit ook toegelaat word om toegang tot foto\'s en video\'s te kry."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Hierdie program steun nie die jongste weergawe van Android nie As hierdie program nie toegang tot musiek- en oudiolêers het nie, sal dit ook nie toegelaat word om toegang tot foto\'s en video\'s te kry nie."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Hierdie program steun nie die jongste weergawe van Android nie As hierdie program toegang tot foto\'s en video\'s het, sal dit ook toegelaat word toegang tot musiek-, oudio- en ander lêers te kry."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Hierdie program steun nie die jongste weergawe van Android nie As hierdie program nie toegang tot musiek- en oudiolêers het nie, sal dit ook nie toegelaat word om toegang tot foto\'s en video\'s te kry nie."</string>
 </resources>

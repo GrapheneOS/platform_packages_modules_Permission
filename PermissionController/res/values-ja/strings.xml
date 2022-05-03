@@ -53,7 +53,7 @@
     <string name="app_permissions_breadcrumb" msgid="5136969550489411650">"アプリ"</string>
     <string name="app_permissions" msgid="3369917736607944781">"アプリの権限"</string>
     <string name="unused_apps" msgid="2058057455175955094">"使用されていないアプリ"</string>
-    <string name="no_unused_apps" msgid="12809387670415295">"使用されていないアプリなし"</string>
+    <string name="no_unused_apps" msgid="12809387670415295">"使用されていないアプリはありません"</string>
     <string name="zero_unused_apps" msgid="9024448554157499748">"使用していないアプリ: 0 個"</string>
     <string name="review_permission_decisions" msgid="309559429150613632">"最近の権限の許可 / 拒否"</string>
     <string name="review_permission_decisions_view_all" msgid="90391040431566130">"最近の権限の許可 / 拒否をすべて表示"</string>
@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"すべてのファイルの管理が許可されたアプリ"</string>
     <string name="ask_header" msgid="2633816846459944376">"毎回確認する"</string>
     <string name="denied_header" msgid="903209608358177654">"許可しない"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"デバイスの基本機能を提供する一部のアプリには、すべてのファイルへの特別なアクセス権が付与されることがあります"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"すべてのファイルへのアクセス権を持つアプリを見る"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 日}other{# 日}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 時間}other{# 時間}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 分}other{# 分}}"</string>
@@ -523,4 +523,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"<xliff:g id="APP_NAME">%1$s</xliff:g> が最近使用（<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>）"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"セキュリティとプライバシー"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"ステータスを確認する"</string>
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"確認"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"戻る"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"他のファイルへのアクセスも許可されます"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"他のファイルへのアクセスも許可されません"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"他のファイルへのアクセスも許可されます"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"他のファイルへのアクセスも許可されません"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"写真や動画へのアクセスも許可されます"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"写真や動画へのアクセスも許可されません"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"音楽ファイルや音声ファイルへのアクセスも許可されます"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"音楽ファイルや音声ファイルへのアクセスも許可されません"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"このアプリは最新バージョンの Android に対応していません。このアプリが音楽ファイルや音声ファイルにアクセスできる場合は、写真、動画などのファイルへのアクセスも許可されます。"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"このアプリは最新バージョンの Android に対応していません。このアプリが音楽ファイルや音声ファイルにアクセスできない場合は、写真、動画などのファイルへのアクセスも許可されません。"</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"このアプリは最新バージョンの Android に対応していません。このアプリが写真や動画にアクセスできる場合は、音楽ファイル、音声ファイルなどのファイルへのアクセスも許可されます。"</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"このアプリは最新バージョンの Android に対応していません。このアプリが写真や動画にアクセスできない場合は、音楽ファイル、音声ファイルなどのファイルへのアクセスも許可されません。"</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"このアプリは最新バージョンの Android に対応していません。このアプリが音楽ファイルや音声ファイルにアクセスできる場合は、写真や動画へのアクセスも許可されます。"</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"このアプリは最新バージョンの Android に対応していません。このアプリが音楽ファイルや音声ファイルにアクセスできない場合は、写真や動画へのアクセスも許可されません。"</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"このアプリは最新バージョンの Android に対応していません。このアプリが写真や動画にアクセスできる場合は、音楽ファイルや音声ファイルへのアクセスも許可されます。"</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"このアプリは最新バージョンの Android に対応していません。このアプリが音楽ファイルや音声ファイルにアクセスできない場合は、写真や動画へのアクセスも許可されません。"</string>
 </resources>
