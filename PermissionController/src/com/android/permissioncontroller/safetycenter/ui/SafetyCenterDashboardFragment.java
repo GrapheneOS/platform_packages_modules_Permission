@@ -26,6 +26,7 @@ import android.safetycenter.SafetyCenterEntryGroup;
 import android.safetycenter.SafetyCenterEntryOrGroup;
 import android.safetycenter.SafetyCenterErrorDetails;
 import android.safetycenter.SafetyCenterIssue;
+import android.safetycenter.SafetyCenterStaticEntry;
 import android.safetycenter.SafetyCenterStaticEntryGroup;
 import android.safetycenter.SafetyCenterStatus;
 import android.util.Log;
@@ -33,6 +34,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceGroup;
 
@@ -184,9 +186,15 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
             Context context, List<SafetyCenterStaticEntryGroup> staticEntryGroups) {
         mStaticEntriesGroup.removeAll();
 
-        staticEntryGroups.stream()
-                .flatMap(group -> group.getStaticEntries().stream())
-                .map(entry -> new StaticSafetyEntryPreference(context, entry))
-                .forEachOrdered(mStaticEntriesGroup::addPreference);
+        for (SafetyCenterStaticEntryGroup group : staticEntryGroups) {
+            PreferenceCategory category = new PreferenceCategory(context);
+            category.setTitle(group.getTitle());
+            mStaticEntriesGroup.addPreference(category);
+
+            for (SafetyCenterStaticEntry entry : group.getStaticEntries()) {
+                category.addPreference(new StaticSafetyEntryPreference(context, entry));
+            }
+        }
     }
+
 }
