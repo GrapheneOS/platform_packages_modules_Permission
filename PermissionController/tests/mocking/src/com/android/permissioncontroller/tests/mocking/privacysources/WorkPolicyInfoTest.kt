@@ -31,6 +31,7 @@ import androidx.test.filters.SdkSuppress
 import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.privacysources.SafetyCenterReceiver
 import com.android.permissioncontroller.privacysources.SafetyCenterReceiver.RefreshEvent
 import com.android.permissioncontroller.privacysources.WorkPolicyInfo
 import com.android.settingslib.utils.WorkPolicyUtils
@@ -41,21 +42,21 @@ import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.Mockito.verify
+import org.mockito.Mockito.verifyZeroInteractions
+import org.mockito.Mockito.`when` as whenever
 import org.mockito.MockitoAnnotations
 import org.mockito.MockitoSession
 import org.mockito.quality.Strictness
-import org.mockito.Mockito.`when` as whenever
 
+/** Unit tests for [SafetyCenterReceiver] */
 @RunWith(AndroidJUnit4::class)
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.TIRAMISU, codeName = "Tiramisu")
 class WorkPolicyInfoTest {
 
     private lateinit var mockitoSession: MockitoSession
     private lateinit var workPolicyInfo: WorkPolicyInfo
-    @Mock
-    lateinit var mockSafetyCenterManager: SafetyCenterManager
-    @Mock
-    lateinit var mWorkPolicyUtils: WorkPolicyUtils
+    @Mock lateinit var mockSafetyCenterManager: SafetyCenterManager
+    @Mock lateinit var mockWorkPolicyUtils: WorkPolicyUtils
 
     companion object {
         // Real context is used in order to avoid mocking resources and other expected things
@@ -66,9 +67,11 @@ class WorkPolicyInfoTest {
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        mockitoSession = ExtendedMockito.mockitoSession()
+        mockitoSession =
+            ExtendedMockito.mockitoSession()
                 .mockStatic(PermissionControllerApplication::class.java)
-                .strictness(Strictness.LENIENT).startMocking()
+                .strictness(Strictness.LENIENT)
+                .startMocking()
 
         // Mock application is used to setup the services, eg.devicePolicyManager, userManager
         val application = Mockito.mock(PermissionControllerApplication::class.java)
@@ -76,11 +79,11 @@ class WorkPolicyInfoTest {
         whenever(PermissionControllerApplication.get()).thenReturn(application)
         whenever(application.applicationContext).thenReturn(application)
         whenever(application.getSystemService(SafetyCenterManager::class.java))
-                .thenReturn(mockSafetyCenterManager)
+            .thenReturn(mockSafetyCenterManager)
         // Default state for hasWorkPolicy for tests.
         // For tests where hasWorkPolicy needs to be false, do it in the test logic
-        whenever(mWorkPolicyUtils.hasWorkPolicy()).thenReturn(true)
-        workPolicyInfo = WorkPolicyInfo(mWorkPolicyUtils)
+        whenever(mockWorkPolicyUtils.hasWorkPolicy()).thenReturn(true)
+        workPolicyInfo = WorkPolicyInfo(mockWorkPolicyUtils)
     }
 
     @After
@@ -93,202 +96,184 @@ class WorkPolicyInfoTest {
         workPolicyInfo.safetyCenterEnabledChanged(context, true)
 
         val pendingIntent =
-                PendingIntent.getActivity(context, 0,
-                        Intent(Settings.ACTION_SHOW_WORK_POLICY_INFO), PendingIntent.FLAG_IMMUTABLE)
-        val expectedSafetySourceStatus: SafetySourceStatus = SafetySourceStatus.Builder(
-                context.getText(R.string.work_policy_title),
-                context.getText(R.string.work_policy_summary),
-                SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED)
+            PendingIntent.getActivity(
+                context,
+                0,
+                Intent(Settings.ACTION_SHOW_WORK_POLICY_INFO),
+                PendingIntent.FLAG_IMMUTABLE)
+        val expectedSafetySourceStatus: SafetySourceStatus =
+            SafetySourceStatus.Builder(
+                    context.getText(R.string.work_policy_title),
+                    context.getText(R.string.work_policy_summary),
+                    SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED)
                 .setPendingIntent(pendingIntent)
                 .build()
-        val expectedSafetySourceData: SafetySourceData = SafetySourceData.Builder()
-                .setStatus(expectedSafetySourceStatus)
-                .build()
+        val expectedSafetySourceData: SafetySourceData =
+            SafetySourceData.Builder().setStatus(expectedSafetySourceStatus).build()
         val expectedSafetyEvent =
-                SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
+            SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
 
         verify(mockSafetyCenterManager)
-                .setSafetySourceData(
-                        WorkPolicyInfo.WORK_POLICY_INFO_SOURCE_ID,
-                        expectedSafetySourceData,
-                        expectedSafetyEvent
-                )
+            .setSafetySourceData(
+                WorkPolicyInfo.WORK_POLICY_INFO_SOURCE_ID,
+                expectedSafetySourceData,
+                expectedSafetyEvent)
     }
 
     @Test
     fun safetyCenterEnabledChanged_safetyCenterDisabled() {
         workPolicyInfo.safetyCenterEnabledChanged(context, false)
 
-        val expectedSafetySourceData: SafetySourceData? = null
-        val expectedSafetyEvent =
-                SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
-
-        verify(mockSafetyCenterManager)
-                .setSafetySourceData(
-                        WorkPolicyInfo.WORK_POLICY_INFO_SOURCE_ID,
-                        expectedSafetySourceData,
-                        expectedSafetyEvent
-                )
+        verifyZeroInteractions(mockSafetyCenterManager)
     }
 
     @Test
     fun safetyCenterEnabledChanged_safetyCenterEnabled_hasWorkPolicyFalse() {
-        whenever(mWorkPolicyUtils.hasWorkPolicy()).thenReturn(false)
+        whenever(mockWorkPolicyUtils.hasWorkPolicy()).thenReturn(false)
 
         workPolicyInfo.safetyCenterEnabledChanged(context, true)
 
         val expectedSafetySourceData: SafetySourceData? = null
         val expectedSafetyEvent =
-                SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
+            SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
 
         verify(mockSafetyCenterManager)
-                .setSafetySourceData(
-                        WorkPolicyInfo.WORK_POLICY_INFO_SOURCE_ID,
-                        expectedSafetySourceData,
-                        expectedSafetyEvent
-                )
+            .setSafetySourceData(
+                WorkPolicyInfo.WORK_POLICY_INFO_SOURCE_ID,
+                expectedSafetySourceData,
+                expectedSafetyEvent)
     }
 
     @Test
     fun safetyCenterEnabledChanged_safetyCenterDisabled_hasWorkPolicyFalse() {
-        whenever(mWorkPolicyUtils.hasWorkPolicy()).thenReturn(false)
+        whenever(mockWorkPolicyUtils.hasWorkPolicy()).thenReturn(false)
 
         workPolicyInfo.safetyCenterEnabledChanged(context, false)
 
-        val expectedSafetySourceData: SafetySourceData? = null
-        val expectedSafetyEvent =
-                SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
-
-        verify(mockSafetyCenterManager)
-                .setSafetySourceData(
-                        WorkPolicyInfo.WORK_POLICY_INFO_SOURCE_ID,
-                        expectedSafetySourceData,
-                        expectedSafetyEvent
-                )
+        verifyZeroInteractions(mockSafetyCenterManager)
     }
 
     @Test
-    fun rescanAndPushSafetyCenterData_EventRebooted() {
+    fun rescanAndPushSafetyCenterData_eventRebooted() {
         val intent = Intent(Intent.ACTION_BOOT_COMPLETED)
         workPolicyInfo.rescanAndPushSafetyCenterData(
-                context,
-                intent,
-                RefreshEvent.EVENT_DEVICE_REBOOTED
-        )
+            context, intent, RefreshEvent.EVENT_DEVICE_REBOOTED)
 
         val pendingIntent =
-                PendingIntent.getActivity(context, 0,
-                        Intent(Settings.ACTION_SHOW_WORK_POLICY_INFO), PendingIntent.FLAG_IMMUTABLE)
-        val expectedSafetySourceStatus: SafetySourceStatus = SafetySourceStatus.Builder(
-                context.getText(R.string.work_policy_title),
-                context.getText(R.string.work_policy_summary),
-                SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED)
+            PendingIntent.getActivity(
+                context,
+                0,
+                Intent(Settings.ACTION_SHOW_WORK_POLICY_INFO),
+                PendingIntent.FLAG_IMMUTABLE)
+        val expectedSafetySourceStatus: SafetySourceStatus =
+            SafetySourceStatus.Builder(
+                    context.getText(R.string.work_policy_title),
+                    context.getText(R.string.work_policy_summary),
+                    SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED)
                 .setPendingIntent(pendingIntent)
                 .build()
 
-        val expectedSafetySourceData: SafetySourceData = SafetySourceData.Builder()
-                .setStatus(expectedSafetySourceStatus)
-                .build()
+        val expectedSafetySourceData: SafetySourceData =
+            SafetySourceData.Builder().setStatus(expectedSafetySourceStatus).build()
         val expectedSafetyEvent =
-                SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_REBOOTED).build()
+            SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_REBOOTED).build()
 
         verify(mockSafetyCenterManager)
-                .setSafetySourceData(
-                        WorkPolicyInfo.WORK_POLICY_INFO_SOURCE_ID,
-                        expectedSafetySourceData,
-                        expectedSafetyEvent
-                )
+            .setSafetySourceData(
+                WorkPolicyInfo.WORK_POLICY_INFO_SOURCE_ID,
+                expectedSafetySourceData,
+                expectedSafetyEvent)
     }
 
     @Test
-    fun rescanAndPushSafetyCenterData_EventRefresh() {
-        val intent = Intent(Intent.ACTION_BOOT_COMPLETED)
-                .putExtra(SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID,
-                        SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID)
+    fun rescanAndPushSafetyCenterData_eventRefresh() {
+        val intent =
+            Intent(Intent.ACTION_BOOT_COMPLETED)
+                .putExtra(
+                    SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID,
+                    SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID)
 
         workPolicyInfo.rescanAndPushSafetyCenterData(
-                context,
-                intent,
-                RefreshEvent.EVENT_REFRESH_REQUESTED
-        )
+            context, intent, RefreshEvent.EVENT_REFRESH_REQUESTED)
 
         val pendingIntent =
-                PendingIntent.getActivity(context, 0,
-                        Intent(Settings.ACTION_SHOW_WORK_POLICY_INFO), PendingIntent.FLAG_IMMUTABLE)
-        val expectedSafetySourceStatus: SafetySourceStatus = SafetySourceStatus.Builder(
-                context.getText(R.string.work_policy_title),
-                context.getText(R.string.work_policy_summary),
-                SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED)
+            PendingIntent.getActivity(
+                context,
+                0,
+                Intent(Settings.ACTION_SHOW_WORK_POLICY_INFO),
+                PendingIntent.FLAG_IMMUTABLE)
+        val expectedSafetySourceStatus: SafetySourceStatus =
+            SafetySourceStatus.Builder(
+                    context.getText(R.string.work_policy_title),
+                    context.getText(R.string.work_policy_summary),
+                    SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED)
                 .setPendingIntent(pendingIntent)
                 .build()
 
-        val expectedSafetySourceData: SafetySourceData = SafetySourceData.Builder()
-                .setStatus(expectedSafetySourceStatus)
-                .build()
+        val expectedSafetySourceData: SafetySourceData =
+            SafetySourceData.Builder().setStatus(expectedSafetySourceStatus).build()
 
-        val refreshBroadcastId = intent.getStringExtra(
-                SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID
-        )
-        val expectedSafetyEvent = SafetyEvent
-                .Builder(SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
+        val refreshBroadcastId =
+            intent.getStringExtra(SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID)
+        val expectedSafetyEvent =
+            SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
                 .setRefreshBroadcastId(refreshBroadcastId)
                 .build()
 
         verify(mockSafetyCenterManager)
-                .setSafetySourceData(
-                        WorkPolicyInfo.WORK_POLICY_INFO_SOURCE_ID,
-                        expectedSafetySourceData,
-                        expectedSafetyEvent
-                )
+            .setSafetySourceData(
+                WorkPolicyInfo.WORK_POLICY_INFO_SOURCE_ID,
+                expectedSafetySourceData,
+                expectedSafetyEvent)
     }
 
     @Test
-    fun rescanAndPushSafetyCenterData_EventUnknown() {
+    fun rescanAndPushSafetyCenterData_eventUnknown() {
         val intent = Intent(Intent.ACTION_BOOT_COMPLETED)
         val pendingIntent =
-                PendingIntent.getActivity(context, 0,
-                        Intent(Settings.ACTION_SHOW_WORK_POLICY_INFO), PendingIntent.FLAG_IMMUTABLE)
+            PendingIntent.getActivity(
+                context,
+                0,
+                Intent(Settings.ACTION_SHOW_WORK_POLICY_INFO),
+                PendingIntent.FLAG_IMMUTABLE)
 
         workPolicyInfo.rescanAndPushSafetyCenterData(context, intent, RefreshEvent.UNKNOWN)
 
-        val expectedSafetySourceStatus: SafetySourceStatus = SafetySourceStatus.Builder(
-                context.getText(R.string.work_policy_title),
-                context.getText(R.string.work_policy_summary),
-                SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED)
+        val expectedSafetySourceStatus: SafetySourceStatus =
+            SafetySourceStatus.Builder(
+                    context.getText(R.string.work_policy_title),
+                    context.getText(R.string.work_policy_summary),
+                    SafetySourceData.SEVERITY_LEVEL_UNSPECIFIED)
                 .setPendingIntent(pendingIntent)
                 .build()
 
-        val expectedSafetySourceData: SafetySourceData = SafetySourceData.Builder()
-                .setStatus(expectedSafetySourceStatus)
-                .build()
-        val expectedSafetyEvent = SafetyEvent
-                .Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED)
-                .build()
+        val expectedSafetySourceData: SafetySourceData =
+            SafetySourceData.Builder().setStatus(expectedSafetySourceStatus).build()
+        val expectedSafetyEvent =
+            SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
 
         verify(mockSafetyCenterManager)
-                .setSafetySourceData(
-                        WorkPolicyInfo.WORK_POLICY_INFO_SOURCE_ID,
-                        expectedSafetySourceData,
-                        expectedSafetyEvent
-                )
+            .setSafetySourceData(
+                WorkPolicyInfo.WORK_POLICY_INFO_SOURCE_ID,
+                expectedSafetySourceData,
+                expectedSafetyEvent)
     }
 
     @Test
     fun rescanAndPushSafetyCenterData_hasWorkPolicyFalse() {
-        whenever(mWorkPolicyUtils.hasWorkPolicy()).thenReturn(false)
+        whenever(mockWorkPolicyUtils.hasWorkPolicy()).thenReturn(false)
 
         val intent = Intent(Intent.ACTION_BOOT_COMPLETED)
         workPolicyInfo.rescanAndPushSafetyCenterData(context, intent, RefreshEvent.UNKNOWN)
 
         val expectedSafetySourceData: SafetySourceData? = null
         val expectedSafetyEvent =
-                SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
+            SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
 
         verify(mockSafetyCenterManager)
-                .setSafetySourceData(
-                        WorkPolicyInfo.WORK_POLICY_INFO_SOURCE_ID,
-                        expectedSafetySourceData,
-                        expectedSafetyEvent
-                )
+            .setSafetySourceData(
+                WorkPolicyInfo.WORK_POLICY_INFO_SOURCE_ID,
+                expectedSafetySourceData,
+                expectedSafetyEvent)
     }
 }
