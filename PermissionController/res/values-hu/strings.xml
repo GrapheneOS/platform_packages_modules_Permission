@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Engedélyezve az összes fájl kezeléséhez"</string>
     <string name="ask_header" msgid="2633816846459944376">"Mindig kérdezzen rá"</string>
     <string name="denied_header" msgid="903209608358177654">"Nem engedélyezett"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Előfordulhat, hogy néhány nélkülözhetetlen funkciókat biztosító alkalmazásnak különleges hozzáférése van minden fájlhoz"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"A minden fájlhoz hozzáféréssel rendelkező appok megtekintése"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 nap}other{# nap}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 óra}other{# óra}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 perc}other{# perc}}"</string>
@@ -277,18 +277,13 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Engedélyek visszavonva az adatainak védelme érdekében"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"A(z) <xliff:g id="APP_NAME">%s</xliff:g> hozzáfér az Ön helyadataihoz a háttérben"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Ez az alkalmazás bármikor hozzáférhet az Ön tartózkodási helyéhez. A módosításhoz koppintson."</string>
-    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
+    <string name="notification_listener_reminder_notification_title" msgid="6214106302085018939">"Értesítésfigyelői hozzáférésű alkalmazás felülvizsgálata"</string>
+    <string name="notification_listener_reminder_notification_content" msgid="4740891089329946164">"A következő alkalmazás az összes értesítést olvashatja: <xliff:g id="APP_NAME">%s</xliff:g>."</string>
+    <string name="notification_listener_warning_card_content" msgid="8181427178654279926">"Az alkalmazás az összes értesítést olvashatja."</string>
+    <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Hozzáférés megvonása"</string>
+    <!-- no translation found for notification_listener_review_app_button_label (4452381557379652037) -->
     <skip />
-    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
-    <skip />
-    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
-    <skip />
-    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
-    <skip />
-    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
-    <skip />
-    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
-    <skip />
+    <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Hozzáférés visszavonva"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"A kisegítő lehetőségekhez hozzáférő appok áttekintése"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"A(z) <xliff:g id="APP_NAME">%s</xliff:g> a képernyőn megjelenő tartalmak mindegyikét olvashatja, tartalmakat jeleníthet meg a többi alkalmazás felett, és nyomon követheti az interakciókat."</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Az alkalmazás a képernyőn megjelenő tartalmak mindegyikét olvashatja, tartalmakat jeleníthet meg a többi alkalmazás felett, és nyomon követheti az interakciókat."</string>
@@ -536,12 +531,48 @@
     <string name="manage_permissions_qs" msgid="3780541819763475434">"Engedélyek kezelése"</string>
     <string name="active_call_usage_qs" msgid="8559974395932523391">"Jelenleg telefonhívás használja"</string>
     <string name="recent_call_usage_qs" msgid="743044899599410935">"Legutóbb telefonhívás során volt használva"</string>
-    <string name="active_app_usage_qs" msgid="4063912870936464727">"Jelenleg a következő használja: <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
-    <string name="recent_app_usage_qs" msgid="6650259601306212327">"Legutóbb a következő használta: <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
-    <string name="active_app_usage_1_qs" msgid="4325136375823357052">"Jelenleg a következő használja: <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
-    <string name="recent_app_usage_1_qs" msgid="261450184773310741">"Legutóbb a következő használta: <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
-    <string name="active_app_usage_2_qs" msgid="6107866785243565283">"Jelenleg a következő használja: <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
-    <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Legutóbb a következő használta: <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
+    <string name="active_app_usage_qs" msgid="4063912870936464727">"Jelenleg használja: <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
+    <string name="recent_app_usage_qs" msgid="6650259601306212327">"Legutóbb használta: <xliff:g id="APP_NAME">%1$s</xliff:g>"</string>
+    <string name="active_app_usage_1_qs" msgid="4325136375823357052">"Jelenleg használja: <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
+    <string name="recent_app_usage_1_qs" msgid="261450184773310741">"Legutóbb használta: <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>)"</string>
+    <string name="active_app_usage_2_qs" msgid="6107866785243565283">"Jelenleg használja: <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
+    <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Legutóbb használta: <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Biztonság és adatvédelem"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Állapot ellenőrzése"</string>
+    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
+    <skip />
 </resources>

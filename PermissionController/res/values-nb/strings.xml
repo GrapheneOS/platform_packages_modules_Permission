@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Kan administrere alle filer"</string>
     <string name="ask_header" msgid="2633816846459944376">"Spør hver gang"</string>
     <string name="denied_header" msgid="903209608358177654">"Ikke tillatt"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Noen apper som gir enheten nødvendig funksjonalitet, kan ha spesiell tilgang til alle filene dine"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Se apper med tilgang til alle filer"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 dag}other{# dager}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 time}other{# timer}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 minutt}other{# minutter}}"</string>
@@ -277,18 +277,13 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Tillatelser er fjernet for å ivareta personvernet ditt"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> fikk posisjonen din i bakgrunnen"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Denne appen har alltid tilgang til posisjonen din. Trykk for å endre."</string>
-    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
+    <string name="notification_listener_reminder_notification_title" msgid="6214106302085018939">"Gjennomgå app med lyttetilgang til varsler"</string>
+    <string name="notification_listener_reminder_notification_content" msgid="4740891089329946164">"<xliff:g id="APP_NAME">%s</xliff:g> kan lese alle varslene dine."</string>
+    <string name="notification_listener_warning_card_content" msgid="8181427178654279926">"Denne appen kan lese alle varslene dine."</string>
+    <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Fjern tilgang"</string>
+    <!-- no translation found for notification_listener_review_app_button_label (4452381557379652037) -->
     <skip />
-    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
-    <skip />
-    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
-    <skip />
-    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
-    <skip />
-    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
-    <skip />
-    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
-    <skip />
+    <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Tilgangen er fjernet"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Gjennomgå app med tilgjengelighetstilgang"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> kan lese alt innhold på skjermen, vise innhold over andre apper og spore samhandlingene dine."</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Denne appen kan lese alt innhold på skjermen, vise innhold over andre apper og spore samhandlingene dine."</string>
@@ -544,4 +539,40 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Nylig brukt av <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Sikkerhet og personvern"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Sjekk statusen"</string>
+    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
+    <skip />
 </resources>

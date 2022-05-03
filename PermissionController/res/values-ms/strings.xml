@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Dibenarkan mengurus semua fail"</string>
     <string name="ask_header" msgid="2633816846459944376">"Tanya setiap kali"</string>
     <string name="denied_header" msgid="903209608358177654">"Tidak dibenarkan"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Sesetengah apl yang menyediakan fungsi penting untuk peranti anda boleh mendapat akses khas kepada semua fail anda"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Lihat apl dengan akses semua fail"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 hari}other{# hari}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 jam}other{# jam}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 minit}other{# minit}}"</string>
@@ -277,18 +277,13 @@
     <string name="auto_revoke_preference_summary" msgid="5517958331781391481">"Kebenaran dialih keluar untuk melindungi privasi anda"</string>
     <string name="background_location_access_reminder_notification_title" msgid="1140797924301941262">"<xliff:g id="APP_NAME">%s</xliff:g> mendapat lokasi anda di latar belakang"</string>
     <string name="background_location_access_reminder_notification_content" msgid="7787084707336546245">"Apl ini boleh mengakses lokasi anda pada setiap masa. Ketik untuk menukar."</string>
-    <!-- no translation found for notification_listener_reminder_notification_title (6214106302085018939) -->
+    <string name="notification_listener_reminder_notification_title" msgid="6214106302085018939">"Semak apl dengan akses pendengar pemberitahuan"</string>
+    <string name="notification_listener_reminder_notification_content" msgid="4740891089329946164">"<xliff:g id="APP_NAME">%s</xliff:g> boleh membaca semua pemberitahuan anda."</string>
+    <string name="notification_listener_warning_card_content" msgid="8181427178654279926">"Apl ini boleh membaca semua pemberitahuan anda."</string>
+    <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Alih keluar akses"</string>
+    <!-- no translation found for notification_listener_review_app_button_label (4452381557379652037) -->
     <skip />
-    <!-- no translation found for notification_listener_reminder_notification_content (4740891089329946164) -->
-    <skip />
-    <!-- no translation found for notification_listener_warning_card_content (8181427178654279926) -->
-    <skip />
-    <!-- no translation found for notification_listener_remove_access_button_label (7101898782417817097) -->
-    <skip />
-    <!-- no translation found for notification_listener_review_app_button_label (1023909640634882973) -->
-    <skip />
-    <!-- no translation found for notification_listener_remove_access_success_label (2477611529875633107) -->
-    <skip />
+    <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Akses dialih keluar"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Semak apl dengan akses kebolehaksesan"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> boleh membaca semua kandungan pada skrin, memaparkan kandungan melalui apl lain dan menjejaki interaksi anda."</string>
     <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Apl ini boleh membaca semua kandungan pada skrin, memaparkan kandungan melalui apl lain dan menjejaki interaksi anda."</string>
@@ -544,4 +539,40 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Digunakan baru-baru ini oleh <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Keselamatan &amp; Privasi"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Semak status"</string>
+    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
+    <skip />
 </resources>

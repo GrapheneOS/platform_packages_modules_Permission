@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"ਸਾਰੀਆਂ ਫ਼ਾਈਲਾਂ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰਨ ਦਿੱਤਾ ਗਿਆ"</string>
     <string name="ask_header" msgid="2633816846459944376">"ਹਰ ਵਾਰ ਪੁੱਛੋ"</string>
     <string name="denied_header" msgid="903209608358177654">"ਗੈਰ-ਮਨਜ਼ੂਰਸ਼ੁਦਾ"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"ਤੁਹਾਡੇ ਡੀਵਾਈਸ ਲਈ ਅਹਿਮ ਪ੍ਰਕਾਰਜਾਤਮਕਤਾ ਮੁਹੱਈਆ ਕਰਵਾਉਣ ਵਾਲੀਆਂ ਕੁਝ ਐਪਾਂ ਤੁਹਾਡੀਆਂ ਸਾਰੀਆਂ ਫ਼ਾਈਲਾਂ ਤੱਕ ਖਾਸ ਪਹੁੰਚ ਰੱਖ ਸਕਦੀਆਂ ਹਨ"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"ਉਹ ਐਪਾਂ ਦੇਖੋ ਜਿਨ੍ਹਾਂ ਨੂੰ ਸਾਰੀਆਂ ਫ਼ਾਈਲਾਂ ਤੱਕ ਪਹੁੰਚ ਹੈ"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 ਦਿਨ}one{# ਦਿਨ}other{# ਦਿਨ}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 ਘੰਟਾ}one{# ਘੰਟਾ}other{# ਘੰਟੇ}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 ਮਿੰਟ}one{# ਮਿੰਟ}other{# ਮਿੰਟ}}"</string>
@@ -281,7 +281,8 @@
     <string name="notification_listener_reminder_notification_content" msgid="4740891089329946164">"<xliff:g id="APP_NAME">%s</xliff:g> ਤੁਹਾਡੀਆਂ ਸਾਰੀਆਂ ਸੂਚਨਾਵਾਂ ਪੜ੍ਹ ਸਕਦੀ ਹੈ।"</string>
     <string name="notification_listener_warning_card_content" msgid="8181427178654279926">"ਇਹ ਐਪ ਤੁਹਾਡੀਆਂ ਸਾਰੀਆਂ ਸੂਚਨਾਵਾਂ ਪੜ੍ਹ ਸਕਦੀ ਹੈ।"</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"ਪਹੁੰਚ ਹਟਾਓ"</string>
-    <string name="notification_listener_review_app_button_label" msgid="1023909640634882973">"ਸੂਚਨਾ ਪਹੁੰਚ ਨਾਲ ਐਪ ਦੀ ਸਮੀਖਿਆ ਕਰੋ"</string>
+    <!-- no translation found for notification_listener_review_app_button_label (4452381557379652037) -->
+    <skip />
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"ਪਹੁੰਚ ਹਟਾਈ ਗਈ"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"ਪਹੁੰਚਯੋਗਤਾ ਪਹੁੰਚ ਦੇ ਨਾਲ ਐਪ ਦੀ ਸਮੀਖਿਆ ਕਰੋ"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> ਵੱਲੋਂ ਸਕ੍ਰੀਨ \'ਤੇ ਸਾਰੀਆਂ ਸਮੱਗਰੀਆਂ ਨੂੰ ਪੜ੍ਹਿਆ ਜਾ ਸਕਦਾ ਹੈ, ਹੋਰ ਐਪਾਂ \'ਤੇ ਸਮੱਗਰੀ ਨੂੰ ਡਿਸਪਲੇ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ ਅਤੇ ਤੁਹਾਡੀਆਂ ਅੰਤਰਕਿਰਿਆਵਾਂ ਨੂੰ ਟਰੈਕ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ।"</string>
@@ -538,4 +539,40 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"ਹਾਲ ਹੀ ਵਿੱਚ <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) ਵੱਲੋਂ ਵਰਤਿਆ ਗਿਆ"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"ਸੁਰੱਖਿਆ ਅਤੇ ਪਰਦੇਦਾਰੀ"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"ਸਥਿਤੀ ਦੀ ਜਾਂਚ ਕਰੋ"</string>
+    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
+    <skip />
 </resources>
