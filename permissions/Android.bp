@@ -23,4 +23,5 @@ prebuilt_etc {
     name: "privapp_allowlist_com.android.permissioncontroller.xml",
     sub_dir: "permissions",
     src: "com.android.permissioncontroller.xml",
+    installable: false,
 }
