@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"سبھی فائلز کا نظم کرنے کے ليے اجازت یافتہ"</string>
     <string name="ask_header" msgid="2633816846459944376">"ہر بار پوچھیں"</string>
     <string name="denied_header" msgid="903209608358177654">"اجازت نہیں ہے"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"آپ کے آلے کے لیے ضروری فعالیت فراہم کرنے والی کچھ ایپس کو آپ کی سبھی فائلز تک خصوصی رسائی حاصل ہو سکتی ہے"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"سبھی فائلز تک رسائی کے ساتھ ایپس دیکھیں"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 دن}other{# دن}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 گھنٹہ}other{# گھنٹے}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 منٹ}other{# منٹ}}"</string>
@@ -370,7 +370,7 @@
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"کوئی اجازت درکار نہیں ہے"</string>
     <string name="role_call_screening_label" msgid="883935222060878724">"‏ڈیفالٹ کالر ID اور اسپام ایپ"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"‏کالر ID اور اسپام کی ایپ"</string>
-    <string name="role_call_screening_description" msgid="2349431420497468981">"ایسے ایپس جو آپ کی کالز کی شناخت کرنے اور اسپام، روبوکالز، یا ناپسندیدہ نمبروں کو مسدود کرنے کی اجازت دیتی ہیں"</string>
+    <string name="role_call_screening_description" msgid="2349431420497468981">"ایسی ایپس جو آپ کو کالز کی شناخت کرنے اور اسپام، روبوکالز، یا ناپسندیدہ نمبروں کو مسدود کرنے کی اجازت دیتی ہیں"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"‏<xliff:g id="APP_NAME">%1$s</xliff:g> کو کالر ID اور اسپام کی آپ کی ڈیفالٹ ایپ کے بطور سیٹ کریں؟"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"کوئی اجازت درکار نہیں ہے"</string>
     <string name="role_automotive_navigation_label" msgid="2701890757955474751">"ڈیفالٹ نیویگیشن ایپ"</string>
@@ -523,4 +523,40 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) کے ذریعے حال ہی میں استعمال کیا گیا"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"سیکیورٹی اور رازداری"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"صورتحال چیک کریں"</string>
+    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
+    <skip />
 </resources>
