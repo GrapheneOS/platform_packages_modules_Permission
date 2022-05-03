@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 The Android Open Source Project
+ * Copyright (C) 2022 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,19 +14,5 @@
  * limitations under the License.
  */
 
-package com.android.permissioncontroller.permission.ui
-
-/**
- * Preference with a clickable UI component for removal.
- */
-interface RemovablePref {
-    /**
-     * Sets the action to run when the remove UI component is clicked.
-     */
-    fun setRemoveClickRunnable(runnable: Runnable)
-
-    /**
-     * Set whether the UI component for removal should be enabled or not.
-     */
-    fun setRemoveComponentEnabled(enabled: Boolean)
-}
+@androidx.annotation.RequiresApi(android.os.Build.VERSION_CODES.TIRAMISU)
+package com.android.permissioncontroller.permission.ui.handheld.v33;
