@@ -26,6 +26,7 @@ import android.content.pm.PackageInfo
 import android.os.Build
 import android.os.UserHandle
 import android.os.UserManager
+import android.provider.DeviceConfig
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetySourceData
@@ -39,6 +40,7 @@ import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.PermissionControllerApplication
 import com.android.permissioncontroller.privacysources.NotificationListenerPrivacySource
 import com.android.permissioncontroller.privacysources.NotificationListenerCheckInternal
+import com.android.permissioncontroller.privacysources.PROPERTY_NOTIFICATION_LISTENER_CHECK_ENABLED
 import com.android.permissioncontroller.privacysources.SC_NLS_SOURCE_ID
 import com.android.permissioncontroller.privacysources.SafetyCenterReceiver
 import org.junit.After
@@ -46,6 +48,7 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.ArgumentMatchers.any
+import org.mockito.ArgumentMatchers.anyBoolean
 import org.mockito.ArgumentMatchers.eq
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
@@ -54,6 +57,7 @@ import org.mockito.quality.Strictness
 import org.mockito.Mockito.never
 import org.mockito.Mockito.`when` as whenever
 import org.mockito.Mockito.verify
+import org.mockito.Mockito.verifyZeroInteractions
 
 @RunWith(AndroidJUnit4::class)
 @SdkSuppress(minSdkVersion = Build.VERSION_CODES.TIRAMISU, codeName = "Tiramisu")
@@ -85,9 +89,13 @@ class NotificationListenerPrivacySourceTest {
         context = ApplicationProvider.getApplicationContext()
 
         mockitoSession = ExtendedMockito.mockitoSession()
+            .mockStatic(DeviceConfig::class.java)
             .mockStatic(PermissionControllerApplication::class.java)
             .mockStatic(Utils::class.java)
             .strictness(Strictness.LENIENT).startMocking()
+
+        // Setup default flagging
+        setNotificationListenerCheckEnabled(true)
 
         // Setup contexts
         whenever(Utils.getParentUserContext(any(ContextWrapper::class.java)))
@@ -169,6 +177,15 @@ class NotificationListenerPrivacySourceTest {
     }
 
     @Test
+    fun safetyCenterEnabledChanged_notificationListenerCheckDisabled_noSafetyCenterInteractions() {
+        setNotificationListenerCheckEnabled(false)
+
+        privacySource.safetyCenterEnabledChanged(context, false)
+
+        verifyZeroInteractions(mockSafetyCenterManager)
+    }
+
+    @Test
     fun rescanAndPushSafetyCenterData_eventDeviceRebooted_updateSafetyCenterData() {
         privacySource.rescanAndPushSafetyCenterData(
             context,
@@ -234,6 +251,30 @@ class NotificationListenerPrivacySourceTest {
                 expectedSafetySourceData,
                 expectedSafetyEvent
             )
+    }
+
+    @Test
+    fun rescanAndPushSafetyCenterData_notificationListenerCheckDisabled_noSafetyCenterInteractions
+            () {
+        setNotificationListenerCheckEnabled(false)
+
+        privacySource.rescanAndPushSafetyCenterData(
+            context,
+            Intent(Intent.ACTION_BOOT_COMPLETED),
+            SafetyCenterReceiver.RefreshEvent.UNKNOWN
+        )
+
+        verifyZeroInteractions(mockSafetyCenterManager)
+    }
+
+    private fun setNotificationListenerCheckEnabled(enabled: Boolean) {
+        whenever(
+            DeviceConfig.getBoolean(
+                eq(DeviceConfig.NAMESPACE_PRIVACY),
+                eq(PROPERTY_NOTIFICATION_LISTENER_CHECK_ENABLED),
+                anyBoolean()
+            )
+        ).thenReturn(enabled)
     }
 
     private fun getPackageInfo(): PackageInfo {
