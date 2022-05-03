@@ -28,6 +28,8 @@ import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING
 import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_RECOMMENDATION
 import android.safetycenter.SafetySourceIssue
 import android.safetycenter.SafetySourceStatus
+import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.setSafetyCenterConfigForTestsWithPermission
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs
 import android.safetycenter.cts.testing.SafetyCenterFlags
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import android.safetycenter.cts.testing.SimpleTestSource
@@ -152,6 +154,21 @@ class SafetyCenterActivityTest {
         simpleTestSource.setSourceData(safetySourceDataRecommendation)
 
         assertSourceDataDisplayed(safetySourceDataRecommendation)
+    }
+
+    @Test
+    fun launchActivity_displaysStaticSources() {
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(
+            SafetyCenterCtsConfigs.CTS_STATIC_SOURCE_CONFIG)
+        startSafetyCenterActivity()
+
+        findAllText(
+            context.getString(SafetyCenterCtsConfigs.CTS_STATIC_SOURCE_GROUP_1.titleResId),
+            context.getString(SafetyCenterCtsConfigs.CTS_STATIC_SOURCE_1.titleResId),
+            context.getString(SafetyCenterCtsConfigs.CTS_STATIC_SOURCE_1.summaryResId),
+            context.getString(SafetyCenterCtsConfigs.CTS_STATIC_SOURCE_GROUP_2.titleResId),
+            context.getString(SafetyCenterCtsConfigs.CTS_STATIC_SOURCE_2.titleResId),
+            context.getString(SafetyCenterCtsConfigs.CTS_STATIC_SOURCE_2.summaryResId))
     }
 
     @Test

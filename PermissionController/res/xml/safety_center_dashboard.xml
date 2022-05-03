@@ -24,17 +24,14 @@
         android:order="-3"
         app:selectable="false" />
 
-    <!-- TODO(b/205996247): Add primary safety warning. -->
-    <!-- TODO(b/205999071): Add link to more warnings page. -->
     <PreferenceCategory
         android:key="issues_group"
         android:layout="@layout/spaced_preference_category_no_label"
         app:selectable="false" />
 
-    <!-- TODO(b/205971026): Add real layouts for safety entries. -->
     <PreferenceCategory
         android:key="entries_group"
-        android:layout="@layout/preference_category_no_label"
+        android:title="@string/safety_center_entries_category_title"
         app:selectable="false" />
 
     <PreferenceCategory
