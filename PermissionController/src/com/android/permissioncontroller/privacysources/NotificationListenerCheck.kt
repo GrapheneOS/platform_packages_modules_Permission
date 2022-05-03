@@ -184,6 +184,27 @@ private fun getPackageNotificationIntervalMillis(): Long {
     )
 }
 
+/** Notification Listener Check requires Android T or later*/
+@ChecksSdkIntAtLeast(api = Build.VERSION_CODES.TIRAMISU)
+private fun checkNotificationListenerCheckSupported(): Boolean {
+    return SdkLevel.isAtLeastT()
+}
+
+/** Returns {@code true} when Notification listener check is supported, feature flag enabled and
+ *  Safety Center enabled */
+@ChecksSdkIntAtLeast(api = Build.VERSION_CODES.TIRAMISU)
+private fun checkNotificationListenerCheckEnabled(context: Context): Boolean {
+    return checkNotificationListenerCheckSupported() &&
+        isNotificationListenerCheckFlagEnabled() &&
+        getSystemServiceSafe(context, SafetyCenterManager::class.java).isSafetyCenterEnabled
+}
+
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
+private fun isProfile(context: Context): Boolean {
+    val userManager = getSystemServiceSafe(context, UserManager::class.java)
+    return userManager.isProfile
+}
+
 private fun getSafetySourceIssueIdFromComponentName(componentName: ComponentName): String {
     return "notification_listener_${componentName.flattenToString()}"
 }
@@ -234,7 +255,7 @@ internal class NotificationListenerCheckInternal(
     @WorkerThread
     internal suspend fun getEnabledNotificationListenersAndNotifyIfNeeded(
         params: JobParameters,
-        service: NotificationListenerCheck.NotificationListenerCheckJobService
+        service: NotificationListenerCheckJobService
     ) {
         nlsLock.withLock {
             try {
@@ -622,7 +643,7 @@ internal class NotificationListenerCheckInternal(
         componentName: ComponentName
     ): PendingIntent {
         val intent = Intent(parentUserContext,
-            NotificationListenerCheck.NotificationDeleteHandler::class.java).apply {
+            NotificationListenerCheckNotificationDeleteHandler::class.java).apply {
             putExtra(EXTRA_COMPONENT_NAME, componentName)
             flags = FLAG_RECEIVER_FOREGROUND
             identifier = componentName.flattenToString()
@@ -798,7 +819,7 @@ internal class NotificationListenerCheckInternal(
         componentName: ComponentName
     ): PendingIntent {
         val intent = Intent(context,
-                NotificationListenerCheck.DisableComponentHandler::class.java).apply {
+                DisableNotificationListenerComponentHandler::class.java).apply {
                 putExtra(EXTRA_SAFETY_SOURCE_ISSUE_ID, safetySourceIssueId)
                 putExtra(EXTRA_COMPONENT_NAME, componentName)
                 flags = FLAG_RECEIVER_FOREGROUND
@@ -831,7 +852,7 @@ internal class NotificationListenerCheckInternal(
         componentName: ComponentName
     ): PendingIntent {
         val intent = Intent(context,
-            NotificationListenerCheck.ActionCardDismissalReceiver::class.java).apply {
+            NotificationListenerActionCardDismissalReceiver::class.java).apply {
                 putExtra(EXTRA_COMPONENT_NAME, componentName)
                 flags = FLAG_RECEIVER_FOREGROUND
                 identifier = componentName.flattenToString()
@@ -870,306 +891,286 @@ internal class NotificationListenerCheckInternal(
     )
 }
 
+/**
+ * Checks if a new notification should be shown.
+ */
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
-class NotificationListenerCheck {
+class NotificationListenerCheckJobService : JobService() {
+    private var notificationListenerCheckInternal: NotificationListenerCheckInternal? = null
+    private val jobLock = Object()
+
+    /** We currently check if we should show a notification, the task executing the check  */
+    @GuardedBy("jobLock")
+    private var addNotificationListenerNotificationIfNeededJob: Job? = null
+
+    override fun onCreate() {
+        super.onCreate()
+
+        if (!checkNotificationListenerCheckEnabled(this)) {
+            // NotificationListenerCheck not enabled. End job.
+            return
+        }
+
+        notificationListenerCheckInternal =
+            NotificationListenerCheckInternal(this, BooleanSupplier {
+                synchronized(jobLock) {
+                    val job = addNotificationListenerNotificationIfNeededJob
+                    return@BooleanSupplier job?.isCancelled ?: false
+                }
+            })
+    }
 
     /**
-     * Checks if a new notification should be shown.
+     * Starts an asynchronous check if a notification listener notification should be shown.
+     *
+     * @param params Not used other than for interacting with job scheduling
+     *
+     * @return `false` if another check is already running, or if SDK Check fails (below T)
      */
-    class NotificationListenerCheckJobService : JobService() {
-        private var notificationListenerCheckInternal: NotificationListenerCheckInternal? = null
-        private val jobLock = Object()
-
-        /** We currently check if we should show a notification, the task executing the check  */
-        @GuardedBy("jobLock")
-        private var addNotificationListenerNotificationIfNeededJob: Job? = null
-
-        override fun onCreate() {
-            super.onCreate()
-
-            if (!checkNotificationListenerCheckEnabled(this)) {
-                // NotificationListenerCheck not enabled. End job.
-                return
-            }
-
-            notificationListenerCheckInternal =
-                NotificationListenerCheckInternal(this, BooleanSupplier {
-                    synchronized(jobLock) {
-                        val job = addNotificationListenerNotificationIfNeededJob
-                        return@BooleanSupplier job?.isCancelled ?: false
-                    }
-                })
-        }
-
-        /**
-         * Starts an asynchronous check if a notification listener notification should be shown.
-         *
-         * @param params Not used other than for interacting with job scheduling
-         *
-         * @return `false` if another check is already running, or if SDK Check fails (below T)
-         */
-        override fun onStartJob(params: JobParameters): Boolean {
-            if (!checkNotificationListenerCheckEnabled(this)) {
-                // NotificationListenerCheck not enabled. End job.
-                return false
-            }
-
-            synchronized(jobLock) {
-                if (addNotificationListenerNotificationIfNeededJob != null) {
-                    if (DEBUG) Log.d(TAG, "Job already running")
-                    return false
-                }
-                addNotificationListenerNotificationIfNeededJob = GlobalScope.launch(Default) {
-                    notificationListenerCheckInternal
-                        ?.getEnabledNotificationListenersAndNotifyIfNeeded(
-                            params,
-                            this@NotificationListenerCheckJobService
-                        ) ?: jobFinished(params, true)
-                }
-            }
-            return true
-        }
-
-        /**
-         * Abort the check if still running.
-         *
-         * @param params ignored
-         *
-         * @return false
-         */
-        override fun onStopJob(params: JobParameters): Boolean {
-            var job: Job?
-            synchronized(jobLock) {
-                job = if (addNotificationListenerNotificationIfNeededJob == null) {
-                    return false
-                } else {
-                    addNotificationListenerNotificationIfNeededJob
-                }
-            }
-            job?.cancel()
+    override fun onStartJob(params: JobParameters): Boolean {
+        if (!checkNotificationListenerCheckEnabled(this)) {
+            // NotificationListenerCheck not enabled. End job.
             return false
         }
 
-        fun clearJob() {
-            synchronized(jobLock) {
-                addNotificationListenerNotificationIfNeededJob = null
+        synchronized(jobLock) {
+            if (addNotificationListenerNotificationIfNeededJob != null) {
+                if (DEBUG) Log.d(TAG, "Job already running")
+                return false
+            }
+            addNotificationListenerNotificationIfNeededJob = GlobalScope.launch(Default) {
+                notificationListenerCheckInternal
+                    ?.getEnabledNotificationListenersAndNotifyIfNeeded(
+                        params,
+                        this@NotificationListenerCheckJobService
+                    ) ?: jobFinished(params, true)
             }
         }
+        return true
     }
 
     /**
-     * On boot set up a periodic job that starts checks.
+     * Abort the check if still running.
+     *
+     * @param params ignored
+     *
+     * @return false
      */
-    class SetupPeriodicNotificationListenerCheck : BroadcastReceiver() {
-
-        override fun onReceive(context: Context, intent: Intent) {
-            if (!checkNotificationListenerCheckSupported()) {
-                // Notification Listener Check not supported. Exit.
-                return
+    override fun onStopJob(params: JobParameters): Boolean {
+        var job: Job?
+        synchronized(jobLock) {
+            job = if (addNotificationListenerNotificationIfNeededJob == null) {
+                return false
+            } else {
+                addNotificationListenerNotificationIfNeededJob
             }
+        }
+        job?.cancel()
+        return false
+    }
 
-            if (isProfile(context)) {
-                // Profile parent handles child profiles too.
-                return
-            }
+    fun clearJob() {
+        synchronized(jobLock) {
+            addNotificationListenerNotificationIfNeededJob = null
+        }
+    }
+}
 
-            val jobScheduler = getSystemServiceSafe(context, JobScheduler::class.java)
-            if (jobScheduler.getPendingJob(PERIODIC_NOTIFICATION_LISTENER_CHECK_JOB_ID) == null) {
-                val job =
-                    JobInfo.Builder(
-                        PERIODIC_NOTIFICATION_LISTENER_CHECK_JOB_ID,
-                        ComponentName(context, NotificationListenerCheckJobService::class.java)
-                    ).setPeriodic(
-                        getPeriodicCheckIntervalMillis(),
-                        getFlexForPeriodicCheckMillis()
-                    ).build()
-                val scheduleResult = jobScheduler.schedule(job)
-                if (scheduleResult != JobScheduler.RESULT_SUCCESS) {
-                    Log.e(
-                        TAG,
-                        "Could not schedule periodic notification listener check $scheduleResult"
-                    )
-                } else if (DEBUG) {
-                    Log.i(TAG, "Scheduled periodic notification listener check")
-                }
+/**
+ * On boot set up a periodic job that starts checks.
+ */
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
+class SetupPeriodicNotificationListenerCheck : BroadcastReceiver() {
+
+    override fun onReceive(context: Context, intent: Intent) {
+        if (!checkNotificationListenerCheckSupported()) {
+            // Notification Listener Check not supported. Exit.
+            return
+        }
+
+        if (isProfile(context)) {
+            // Profile parent handles child profiles too.
+            return
+        }
+
+        val jobScheduler = getSystemServiceSafe(context, JobScheduler::class.java)
+        if (jobScheduler.getPendingJob(PERIODIC_NOTIFICATION_LISTENER_CHECK_JOB_ID) == null) {
+            val job =
+                JobInfo.Builder(
+                    PERIODIC_NOTIFICATION_LISTENER_CHECK_JOB_ID,
+                    ComponentName(context, NotificationListenerCheckJobService::class.java)
+                ).setPeriodic(
+                    getPeriodicCheckIntervalMillis(),
+                    getFlexForPeriodicCheckMillis()
+                ).build()
+            val scheduleResult = jobScheduler.schedule(job)
+            if (scheduleResult != JobScheduler.RESULT_SUCCESS) {
+                Log.e(
+                    TAG,
+                    "Could not schedule periodic notification listener check $scheduleResult"
+                )
+            } else if (DEBUG) {
+                Log.i(TAG, "Scheduled periodic notification listener check")
             }
         }
     }
+}
 
-    /**
-     * Handle the case where the notification is swiped away without further interaction.
-     */
-    class NotificationDeleteHandler : BroadcastReceiver() {
-        override fun onReceive(context: Context, intent: Intent) {
-            if (!checkNotificationListenerCheckSupported()) {
-                return
-            }
-
-            val componentName =
-                Utils.getParcelableExtraSafe<ComponentName>(intent, EXTRA_COMPONENT_NAME)
-            GlobalScope.launch(Default) {
-                NotificationListenerCheckInternal(context, null).markAsNotified(componentName)
-            }
-            Log.v(
-                TAG,
-                "Notification listener check notification declined with component=" +
-                    "${componentName.flattenToString()}"
-            )
+/**
+ * Handle the case where the notification is swiped away without further interaction.
+ */
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
+class NotificationListenerCheckNotificationDeleteHandler : BroadcastReceiver() {
+    override fun onReceive(context: Context, intent: Intent) {
+        if (!checkNotificationListenerCheckSupported()) {
+            return
         }
-    }
 
-    /** Disable a specified Notification Listener Service component */
-    class DisableComponentHandler : BroadcastReceiver() {
-        override fun onReceive(context: Context, intent: Intent) {
-            if (DEBUG) Log.d(TAG, "DisableComponentHandler.onReceive $intent")
-            val componentName =
-                Utils.getParcelableExtraSafe<ComponentName>(intent, EXTRA_COMPONENT_NAME)
-
-            GlobalScope.launch(Default) {
-                if (DEBUG) {
-                    Log.v(TAG, "DisableComponentHandler: disabling $componentName")
-                }
-
-                val safetyEventBuilder = try {
-                    val notificationManager = getSystemServiceSafe(
-                        context,
-                        NotificationManager::class.java
-                    )
-                    notificationManager.setNotificationListenerAccessGranted(
-                        componentName,
-                        /* granted= */ false,
-                        /* userSet= */ true)
-
-                    SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED)
-                } catch (e: Exception) {
-                    Log.w(TAG, "error occurred in disabling notification listener service.", e)
-                    SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
-                }
-
-                val safetySourceIssueId: String? =
-                    intent.getStringExtra(EXTRA_SAFETY_SOURCE_ISSUE_ID)
-                val safetyEvent = safetyEventBuilder
-                    .setSafetySourceIssueId(safetySourceIssueId)
-                    .setSafetySourceIssueActionId(SC_NLS_DISABLE_ACTION_ID)
-                    .build()
-
-                NotificationListenerCheckInternal(context, null).run {
-                    removeNotificationsForComponent(componentName)
-                    sendIssuesToSafetyCenter(safetyEvent)
-                }
-            }
+        val componentName =
+            Utils.getParcelableExtraSafe<ComponentName>(intent, EXTRA_COMPONENT_NAME)
+        GlobalScope.launch(Default) {
+            NotificationListenerCheckInternal(context, null).markAsNotified(componentName)
         }
+        Log.v(
+            TAG,
+            "Notification listener check notification declined with component=" +
+                "${componentName.flattenToString()}"
+        )
     }
+}
 
-    /* A Safety Center action card for a specified component was dismissed */
-    class ActionCardDismissalReceiver : BroadcastReceiver() {
-        override fun onReceive(context: Context, intent: Intent) {
-            if (DEBUG) Log.d(TAG, "ActionCardDismissalReceiver.onReceive $intent")
-            val componentName =
-                Utils.getParcelableExtraSafe<ComponentName>(intent, EXTRA_COMPONENT_NAME)
-            GlobalScope.launch(Default) {
-                if (DEBUG) {
-                    Log.v(TAG, "ActionCardDismissalReceiver: $componentName dismissed")
-                }
-                NotificationListenerCheckInternal(context, null).run {
-                    removeNotificationsForComponent(componentName)
-                    markAsNotified(componentName)
-                    // TODO(b/217566029): update Safety center action cards
-                }
-            }
-        }
-    }
+/** Disable a specified Notification Listener Service component */
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
+class DisableNotificationListenerComponentHandler : BroadcastReceiver() {
+    override fun onReceive(context: Context, intent: Intent) {
+        if (DEBUG) Log.d(TAG, "DisableComponentHandler.onReceive $intent")
+        val componentName =
+            Utils.getParcelableExtraSafe<ComponentName>(intent, EXTRA_COMPONENT_NAME)
 
-    /**
-     * If a package gets removed or the data of the package gets cleared, forget that we showed a
-     * notification for it.
-     */
-    class PackageResetHandler : BroadcastReceiver() {
-        override fun onReceive(context: Context, intent: Intent) {
-            val action = intent.action
-            if (action != Intent.ACTION_PACKAGE_DATA_CLEARED &&
-                action != Intent.ACTION_PACKAGE_FULLY_REMOVED
-            ) {
-                return
+        GlobalScope.launch(Default) {
+            if (DEBUG) {
+                Log.v(TAG, "DisableComponentHandler: disabling $componentName")
             }
 
-            if (!checkNotificationListenerCheckEnabled(context)) {
-                return
+            val safetyEventBuilder = try {
+                val notificationManager = getSystemServiceSafe(
+                    context,
+                    NotificationManager::class.java
+                )
+                notificationManager.setNotificationListenerAccessGranted(
+                    componentName,
+                    /* granted= */ false,
+                    /* userSet= */ true)
+
+                SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED)
+            } catch (e: Exception) {
+                Log.w(TAG, "error occurred in disabling notification listener service.", e)
+                SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
             }
 
-            if (isProfile(context)) {
-                if (DEBUG) {
-                    Log.d(TAG, "NotificationListenerCheck only supports parent profile")
-                }
-                return
-            }
+            val safetySourceIssueId: String? =
+                intent.getStringExtra(EXTRA_SAFETY_SOURCE_ISSUE_ID)
+            val safetyEvent = safetyEventBuilder
+                .setSafetySourceIssueId(safetySourceIssueId)
+                .setSafetySourceIssueActionId(SC_NLS_DISABLE_ACTION_ID)
+                .build()
 
-            val data = Preconditions.checkNotNull(intent.data)
-            val pkg = data.schemeSpecificPart
-
-            if (DEBUG) Log.i(TAG, "Reset $pkg")
-
-            GlobalScope.launch(Default) {
-                NotificationListenerCheckInternal(context, null).run {
-                    removeNotificationsForPackage(pkg)
-                    removePackageState(pkg)
-                    sendIssuesToSafetyCenter()
-                }
-            }
-        }
-    }
-
-    class NotificationListenerPrivacySource : PrivacySource {
-        override fun safetyCenterEnabledChanged(context: Context, enabled: Boolean) {
             NotificationListenerCheckInternal(context, null).run {
-                removeAnyNotification()
+                removeNotificationsForComponent(componentName)
+                sendIssuesToSafetyCenter(safetyEvent)
             }
         }
+    }
+}
 
-        override fun rescanAndPushSafetyCenterData(
-            context: Context,
-            intent: Intent,
-            refreshEvent: RefreshEvent
+/* A Safety Center action card for a specified component was dismissed */
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
+class NotificationListenerActionCardDismissalReceiver : BroadcastReceiver() {
+    override fun onReceive(context: Context, intent: Intent) {
+        if (DEBUG) Log.d(TAG, "ActionCardDismissalReceiver.onReceive $intent")
+        val componentName =
+            Utils.getParcelableExtraSafe<ComponentName>(intent, EXTRA_COMPONENT_NAME)
+        GlobalScope.launch(Default) {
+            if (DEBUG) {
+                Log.v(TAG, "ActionCardDismissalReceiver: $componentName dismissed")
+            }
+            NotificationListenerCheckInternal(context, null).run {
+                removeNotificationsForComponent(componentName)
+                markAsNotified(componentName)
+                // TODO(b/217566029): update Safety center action cards
+            }
+        }
+    }
+}
+
+/**
+ * If a package gets removed or the data of the package gets cleared, forget that we showed a
+ * notification for it.
+ */
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
+class NotificationListenerPackageResetHandler : BroadcastReceiver() {
+    override fun onReceive(context: Context, intent: Intent) {
+        val action = intent.action
+        if (action != Intent.ACTION_PACKAGE_DATA_CLEARED &&
+            action != Intent.ACTION_PACKAGE_FULLY_REMOVED
         ) {
-            val safetyRefreshEvent = when (refreshEvent) {
-                UNKNOWN ->
-                    SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
-                EVENT_DEVICE_REBOOTED ->
-                    SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_REBOOTED).build()
-                EVENT_REFRESH_REQUESTED -> {
-                    val refreshBroadcastId = intent.getStringExtra(
-                        SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID)
-                    SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
-                        .setRefreshBroadcastId(refreshBroadcastId).build()
-                }
-            }
+            return
+        }
 
+        if (!checkNotificationListenerCheckEnabled(context)) {
+            return
+        }
+
+        if (isProfile(context)) {
+            if (DEBUG) {
+                Log.d(TAG, "NotificationListenerCheck only supports parent profile")
+            }
+            return
+        }
+
+        val data = Preconditions.checkNotNull(intent.data)
+        val pkg = data.schemeSpecificPart
+
+        if (DEBUG) Log.i(TAG, "Reset $pkg")
+
+        GlobalScope.launch(Default) {
             NotificationListenerCheckInternal(context, null).run {
-                sendIssuesToSafetyCenter(safetyRefreshEvent)
+                removeNotificationsForPackage(pkg)
+                removePackageState(pkg)
+                sendIssuesToSafetyCenter()
             }
         }
     }
+}
 
-    companion object {
-        /** Notification Listener Check requires Android T or later*/
-        @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.TIRAMISU)
-        private fun checkNotificationListenerCheckSupported(): Boolean {
-            return SdkLevel.isAtLeastT()
+@RequiresApi(Build.VERSION_CODES.TIRAMISU)
+class NotificationListenerPrivacySource : PrivacySource {
+    override fun safetyCenterEnabledChanged(context: Context, enabled: Boolean) {
+        NotificationListenerCheckInternal(context, null).run {
+            removeAnyNotification()
+        }
+    }
+
+    override fun rescanAndPushSafetyCenterData(
+        context: Context,
+        intent: Intent,
+        refreshEvent: RefreshEvent
+    ) {
+        val safetyRefreshEvent = when (refreshEvent) {
+            UNKNOWN ->
+                SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
+            EVENT_DEVICE_REBOOTED ->
+                SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_REBOOTED).build()
+            EVENT_REFRESH_REQUESTED -> {
+                val refreshBroadcastId = intent.getStringExtra(
+                    SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID)
+                SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
+                    .setRefreshBroadcastId(refreshBroadcastId).build()
+            }
         }
 
-        /** Returns {@code true} when Notification listener check is supported, feature flag enabled and
-         *  Safety Center enabled */
-        @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.TIRAMISU)
-        private fun checkNotificationListenerCheckEnabled(context: Context): Boolean {
-            return checkNotificationListenerCheckSupported() &&
-                isNotificationListenerCheckFlagEnabled() &&
-                getSystemServiceSafe(context, SafetyCenterManager::class.java).isSafetyCenterEnabled
-        }
-
-        @RequiresApi(Build.VERSION_CODES.TIRAMISU)
-        private fun isProfile(context: Context): Boolean {
-            val userManager = getSystemServiceSafe(context, UserManager::class.java)
-            return userManager.isProfile
+        NotificationListenerCheckInternal(context, null).run {
+            sendIssuesToSafetyCenter(safetyRefreshEvent)
         }
     }
 }

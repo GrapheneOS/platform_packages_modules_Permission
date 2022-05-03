@@ -37,8 +37,9 @@ import com.android.dx.mockito.inline.extended.ExtendedMockito.doReturn
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.R
 import com.android.permissioncontroller.permission.utils.Utils
-import com.android.permissioncontroller.privacysources.NotificationListenerCheck
-import com.android.permissioncontroller.privacysources.NotificationListenerCheck.NotificationListenerCheckJobService
+import com.android.permissioncontroller.privacysources.DisableNotificationListenerComponentHandler
+import com.android.permissioncontroller.privacysources.NotificationListenerActionCardDismissalReceiver
+import com.android.permissioncontroller.privacysources.NotificationListenerCheckJobService
 import com.android.permissioncontroller.privacysources.NotificationListenerCheckInternal
 import com.android.permissioncontroller.privacysources.NotificationListenerCheckInternal.NlsComponent
 import com.android.permissioncontroller.privacysources.SC_NLS_DISABLE_ACTION_ID
@@ -392,7 +393,7 @@ class NotificationListenerCheckInternalTest {
         val expectedSeverityLevel = SafetySourceData.SEVERITY_LEVEL_INFORMATION
         val expectedIssueTypeId = NotificationListenerCheckInternal.SC_NLS_ISSUE_TYPE_ID
         val expectedDismissIntent = Intent(context,
-            NotificationListenerCheck.ActionCardDismissalReceiver::class.java).apply {
+            NotificationListenerActionCardDismissalReceiver::class.java).apply {
             putExtra(Intent.EXTRA_COMPONENT_NAME, testComponent)
             flags = Intent.FLAG_RECEIVER_FOREGROUND
             identifier = testComponent.flattenToString()
@@ -443,7 +444,7 @@ class NotificationListenerCheckInternalTest {
         componentName: ComponentName
     ): PendingIntent {
         val intent = Intent(context,
-            NotificationListenerCheck.DisableComponentHandler::class.java).apply {
+            DisableNotificationListenerComponentHandler::class.java).apply {
             putExtra(SafetyCenterManager.EXTRA_SAFETY_SOURCE_ISSUE_ID, safetySourceIssueId)
             putExtra(Intent.EXTRA_COMPONENT_NAME, componentName)
             flags = Intent.FLAG_RECEIVER_FOREGROUND
