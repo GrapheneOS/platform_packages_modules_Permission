@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"എല്ലാ ഫയലുകളും മാനേജ് ചെയ്യാൻ അനുവദിച്ചവ"</string>
     <string name="ask_header" msgid="2633816846459944376">"എപ്പോഴും ചോദിക്കുക"</string>
     <string name="denied_header" msgid="903209608358177654">"അനുവദിച്ചിട്ടില്ല"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"ഉപകരണത്തിന് ആവശ്യമുള്ള പ്രവർത്തനക്ഷമത നൽകുന്ന ചില ആപ്പുകൾക്ക് നിങ്ങളുടെ എല്ലാ ഫയലുകളിലേക്കും പ്രത്യേക ആക്സസ് ഉണ്ടായിരിക്കും"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"എല്ലാ ഫയലുകളിലേക്കും ആക്സസ് ഉള്ള ആപ്പുകൾ കാണുക"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{ഒരു ദിവസം}other{# ദിവസം}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{ഒരു മണിക്കൂർ}other{# മണിക്കൂർ}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{ഒരു മിനിറ്റ്}other{# മിനിറ്റ്}}"</string>
@@ -523,4 +523,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) അടുത്തിടെ ഉപയോഗിച്ചു"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"സുരക്ഷയും സ്വകാര്യതയും"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"നില പരിശോധിക്കുക"</string>
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"സ്ഥിരീകരിക്കുക"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"മടങ്ങുക"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"മറ്റ് ഫയലുകളിലേക്കുള്ള ആക്‌സസും അനുവദിക്കും"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"മറ്റ് ഫയലുകളിലേക്കുള്ള ആക്‌സസും അനുവദിക്കില്ല"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"മറ്റ് ഫയലുകളിലേക്കുള്ള ആക്‌സസും അനുവദിക്കും"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"മറ്റ് ഫയലുകളിലേക്കുള്ള ആക്‌സസും അനുവദിക്കില്ല"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"ഫോട്ടോകളിലേക്കും വീഡിയോകളിലേക്കുമുള്ള ആക്‌സസും അനുവദിക്കും"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"ഫോട്ടോകളിലേക്കും വീഡിയോകളിലേക്കുമുള്ള ആക്‌സസും അനുവദിക്കില്ല"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"സംഗീതത്തിലേക്കും ഓഡിയോ ഫയലുകളിലേക്കുമുള്ള ആക്‌സസും അനുവദിക്കും"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"സംഗീതത്തിലേക്കും ഓഡിയോ ഫയലുകളിലേക്കുമുള്ള ആക്‌സസും അനുവദിക്കില്ല"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"Android-ന്റെ ഏറ്റവും പുതിയ പതിപ്പിനെ ഈ ആപ്പ് പിന്തുണയ്ക്കുന്നില്ല. ഈ ആപ്പിന് സംഗീതവും ഓഡിയോ ഫയലുകളും ആക്‌സസ് ചെയ്യാൻ കഴിയുമെങ്കിൽ, ഫോട്ടോകളും വീഡിയോകളും മറ്റ് ഫയലുകളും ആക്‌സസ് ചെയ്യാനും ഇതിനെ അനുവദിക്കും."</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"Android-ന്റെ ഏറ്റവും പുതിയ പതിപ്പിനെ ഈ ആപ്പ് പിന്തുണയ്ക്കുന്നില്ല. ഈ ആപ്പിന് സംഗീതവും ഓഡിയോ ഫയലുകളും ആക്‌സസ് ചെയ്യാൻ കഴിയുന്നില്ലെങ്കിൽ, ഫോട്ടോകളും വീഡിയോകളും മറ്റ് ഫയലുകളും ആക്‌സസ് ചെയ്യാനും ഇതിനെ അനുവദിക്കില്ല."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"Android-ന്റെ ഏറ്റവും പുതിയ പതിപ്പിനെ ഈ ആപ്പ് പിന്തുണയ്ക്കുന്നില്ല. ഈ ആപ്പിന് ഫോട്ടോകളും വീഡിയോകളും ആക്‌സസ് ചെയ്യാൻ കഴിയുമെങ്കിൽ, സംഗീതം, ഓഡിയോ, മറ്റ് ഫയലുകൾ എന്നിവ ആക്‌സസ് ചെയ്യാനും ഇതിനെ അനുവദിക്കും."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"Android-ന്റെ ഏറ്റവും പുതിയ പതിപ്പിനെ ഈ ആപ്പ് പിന്തുണയ്ക്കുന്നില്ല. ഈ ആപ്പിന് ഫോട്ടോകളും വീഡിയോകളും ആക്‌സസ് ചെയ്യാൻ കഴിയുന്നില്ലെങ്കിൽ, സംഗീതം, ഓഡിയോ, മറ്റ് ഫയലുകൾ എന്നിവ ആക്‌സസ് ചെയ്യാനും ഇതിനെ അനുവദിക്കില്ല."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"Android-ന്റെ ഏറ്റവും പുതിയ പതിപ്പിനെ ഈ ആപ്പ് പിന്തുണയ്ക്കുന്നില്ല. ഈ ആപ്പിന് സംഗീതവും ഓഡിയോ ഫയലുകളും ആക്‌സസ് ചെയ്യാൻ കഴിയുമെങ്കിൽ, ഫോട്ടോകളും വീഡിയോകളും ആക്‌സസ് ചെയ്യാനും ഇതിനെ അനുവദിക്കും."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Android-ന്റെ ഏറ്റവും പുതിയ പതിപ്പിനെ ഈ ആപ്പ് പിന്തുണയ്ക്കുന്നില്ല. ഈ ആപ്പിന് സംഗീതവും ഓഡിയോ ഫയലുകളും ആക്‌സസ് ചെയ്യാൻ കഴിയുന്നില്ലെങ്കിൽ, ഫോട്ടോകളും വീഡിയോകളും ആക്‌സസ് ചെയ്യാനും ഇതിനെ അനുവദിക്കില്ല."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Android-ന്റെ ഏറ്റവും പുതിയ പതിപ്പിനെ ഈ ആപ്പ് പിന്തുണയ്ക്കുന്നില്ല. ഈ ആപ്പിന് ഫോട്ടോകളും വീഡിയോകളും ആക്‌സസ് ചെയ്യാൻ കഴിയുമെങ്കിൽ, സംഗീതവും ഓഡിയോ ഫയലുകളും ആക്‌സസ് ചെയ്യാനും ഇതിനെ അനുവദിക്കും."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Android-ന്റെ ഏറ്റവും പുതിയ പതിപ്പിനെ ഈ ആപ്പ് പിന്തുണയ്ക്കുന്നില്ല. ഈ ആപ്പിന് സംഗീതവും ഓഡിയോ ഫയലുകളും ആക്‌സസ് ചെയ്യാൻ കഴിയുന്നില്ലെങ്കിൽ, ഫോട്ടോകളും വീഡിയോകളും ആക്‌സസ് ചെയ്യാനും ഇതിനെ അനുവദിക്കില്ല."</string>
 </resources>

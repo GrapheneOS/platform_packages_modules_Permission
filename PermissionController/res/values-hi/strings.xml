@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"ये ऐप्लिकेशन सभी फ़ाइलों को मैनेज कर सकते हैं"</string>
     <string name="ask_header" msgid="2633816846459944376">"हर बार पूछें"</string>
     <string name="denied_header" msgid="903209608358177654">"अनुमति नहीं है"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"कुछ ऐप्लिकेशन आपके डिवाइस के लिए ज़रूरी सुविधाएं उपलब्ध कराते हैं. इन ऐप्लिकेशन को, खास तौर पर आपकी सभी फ़ाइलों का ऐक्सेस मिल सकता है"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"वे ऐप्लिकेशन देखें जिन्हें सभी फ़ाइलों का ऐक्सेस दिया गया है"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 दिन}one{# दिन}other{# दिन}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 घंटा}one{# घंटा}other{# घंटे}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 मिनट}one{# मिनट}other{# मिनट}}"</string>
@@ -341,13 +341,13 @@
     <string name="role_browser_request_description" msgid="5888803407905985941">"अनुमति की ज़रूरत नहीं है"</string>
     <string name="role_dialer_label" msgid="1100224146343237968">"डिफ़ॉल्ट फ़ोन ऐप्लिकेशन"</string>
     <string name="role_dialer_short_label" msgid="7186888549465352489">"फ़ोन ऐप्लिकेशन"</string>
-    <string name="role_dialer_description" msgid="8768708633696539612">"ऐसे ऐप्लिकेशन जिनकी मदद से आप अपने डिवाइस से टेलीफ़ोन कॉल कर सकते हैं और इनकमिंग कॉल का जवाब दे सकते हैं"</string>
+    <string name="role_dialer_description" msgid="8768708633696539612">"ऐसे ऐप्लिकेशन जिनकी मदद से, अपने डिवाइस से टेलीफ़ोन कॉल किए जा सकते हैं और इनकमिंग कॉल का जवाब दिया जा सकता है"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g> को आपके डिफ़ॉल्ट फ़ोन ऐप्लिकेशन के तौर पर सेट करें?"</string>
     <string name="role_dialer_request_description" msgid="2264219375528345270">"कॉल लॉग का ऐक्सेस मिलता है, मैसेज भेजें"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"डायलर"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"मैसेज का डिफ़ॉल्ट ऐप्लिकेशन"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"एसएमएस ऐप्लिकेशन"</string>
-    <string name="role_sms_description" msgid="3424020199148153513">"ऐसे ऐप्लिकेशन जिनकी मदद से आप अपने फ़ोन नंबर का इस्तेमाल मैसेज, फ़ोटो, वीडियो के साथ ही दूसरी चीज़ें भेजने और पाने के लिए कर सकते हैं"</string>
+    <string name="role_sms_description" msgid="3424020199148153513">"ऐसे ऐप्लिकेशन जिनकी मदद से अपने फ़ोन नंबर का इस्तेमाल मैसेज, फ़ोटो, वीडियो के साथ ही दूसरी चीज़ें भेजने और पाने के लिए किया जा सकता है"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g> को अपने डिफ़ॉल्ट मैसेज ऐप्लिकेशन के तौर पर सेट करें?"</string>
     <string name="role_sms_request_description" msgid="983371022668134198">"संपर्कों, मैसेज, फ़ोन का ऐक्सेस मिलता है"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"मैसेज, मैसेज भेजना, मैसेज करना, मैसेज भेजना या पाना."</string>
@@ -523,4 +523,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"हाल ही में, <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) ने इस्तेमाल किया"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"सुरक्षा और निजता"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"स्थिति देखें"</string>
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"पुष्टि करें"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"वापस जाएं"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"दूसरी फ़ाइलें ऐक्सेस करने की भी अनुमति होगी"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"दूसरी फ़ाइलें ऐक्सेस करने की भी अनुमति नहीं होगी"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"दूसरी फ़ाइलें ऐक्सेस करने की भी अनुमति होगी"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"दूसरी फ़ाइलें ऐक्सेस करने की भी अनुमति नहीं होगी"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"फ़ोटो और वीडियो ऐक्सेस करने की भी अनुमति होगी"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"फ़ोटो और वीडियो ऐक्सेस करने की भी अनुमति नहीं होगी"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"संगीत और ऑडियो फ़ाइलें ऐक्सेस करने की भी अनुमति होगी"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"संगीत और ऑडियो फ़ाइलें ऐक्सेस करने की भी अनुमति नहीं होगी"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"यह ऐप्लिकेशन, Android के नए वर्शन पर काम नहीं करता है. अगर यह ऐप्लिकेशन संगीत और ऑडियो फ़ाइलों को ऐक्सेस कर सकता है, तो यह फ़ोटो, वीडियो, और दूसरी फ़ाइलों को भी ऐक्सेस कर सकेगा."</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"यह ऐप्लिकेशन, Android के नए वर्शन पर काम नहीं करता है. अगर यह ऐप्लिकेशन संगीत और ऑडियो फ़ाइलों को ऐक्सेस नहीं कर सकता, तो यह फ़ोटो, वीडियो, और दूसरी फ़ाइलों को भी ऐक्सेस नहीं कर सकेगा."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"यह ऐप्लिकेशन, Android के नए वर्शन पर काम नहीं करता है. अगर यह ऐप्लिकेशन फ़ोटो और वीडियो को ऐक्सेस कर सकता है, तो यह संगीत, ऑडियो, और दूसरी फ़ाइलों को भी ऐक्सेस कर सकेगा."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"यह ऐप्लिकेशन, Android के नए वर्शन पर काम नहीं करता है. अगर यह ऐप्लिकेशन फ़ोटो और वीडियो को ऐक्सेस नहीं कर सकता, तो यह संगीत, ऑडियो, और दूसरी फ़ाइलों को भी ऐक्सेस नहीं कर सकेगा."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"यह ऐप्लिकेशन, Android के नए वर्शन पर काम नहीं करता है. अगर यह ऐप्लिकेशन संगीत और ऑडियो फ़ाइलों को ऐक्सेस कर सकता है, तो यह फ़ोटो और वीडियो को भी ऐक्सेस कर सकेगा."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"यह ऐप्लिकेशन, Android के नए वर्शन पर काम नहीं करता है. अगर यह ऐप्लिकेशन संगीत और ऑडियो फ़ाइलों को ऐक्सेस नहीं कर सकता, तो यह फ़ोटो और वीडियो को भी ऐक्सेस नहीं कर सकेगा."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"यह ऐप्लिकेशन, Android के नए वर्शन पर काम नहीं करता है. अगर यह ऐप्लिकेशन फ़ोटो और वीडियो को ऐक्सेस कर सकता है, तो यह संगीत और ऑडियो फ़ाइलों को भी ऐक्सेस कर सकेगा."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"यह ऐप्लिकेशन, Android के नए वर्शन पर काम नहीं करता है. अगर यह ऐप्लिकेशन संगीत और ऑडियो फ़ाइलों को ऐक्सेस नहीं कर सकता, तो यह फ़ोटो और वीडियो को भी ऐक्सेस नहीं कर सकेगा."</string>
 </resources>

@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Được phép quản lý tất cả các tệp"</string>
     <string name="ask_header" msgid="2633816846459944376">"Luôn hỏi"</string>
     <string name="denied_header" msgid="903209608358177654">"Không được phép"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Một số ứng dụng cung cấp chức năng cần thiết cho thiết bị của bạn có thể có quyền truy cập đặc biệt vào tất cả các tệp"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Xem các ứng dụng có quyền truy cập vào mọi tệp"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 ngày}other{# ngày}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 giờ}other{# giờ}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 phút}other{# phút}}"</string>
@@ -523,4 +523,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) đã dùng gần đây"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Bảo mật và quyền riêng tư"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Kiểm tra trạng thái"</string>
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"Xác nhận"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"Quay lại"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"Quyền truy cập vào các tệp khác cũng sẽ được cấp."</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"Quyền truy cập vào các tệp khác cũng sẽ không được cấp."</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"Quyền truy cập vào các tệp khác cũng sẽ được cấp."</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"Quyền truy cập vào các tệp khác cũng sẽ không được cấp."</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"Quyền truy cập vào ảnh và video cũng sẽ được cấp"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"Quyền truy cập vào ảnh và video cũng sẽ không được cấp"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"Quyền truy cập vào tệp nhạc và âm thanh cũng sẽ được cấp"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"Quyền truy cập vào tệp nhạc và âm thanh cũng sẽ không được cấp"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"Ứng dụng này không hỗ trợ phiên bản Android mới nhất. Nếu ứng dụng này có thể truy cập vào tệp nhạc và âm thanh, nó cũng sẽ được phép truy cập vào ảnh, video và các tệp khác."</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"Ứng dụng này không hỗ trợ phiên bản Android mới nhất. Nếu ứng dụng này không thể truy cập vào tệp nhạc và âm thanh, nó cũng sẽ không được phép truy cập vào ảnh, video và các tệp khác."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"Ứng dụng này không hỗ trợ phiên bản Android mới nhất. Nếu ứng dụng này có thể truy cập vào ảnh và video, nó cũng sẽ được phép truy cập vào nhạc, âm thanh và các tệp khác."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"Ứng dụng này không hỗ trợ phiên bản Android mới nhất. Nếu ứng dụng này không thể truy cập vào ảnh và video, nó cũng sẽ không được phép truy cập vào nhạc, âm thanh và các tệp khác."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"Ứng dụng này không hỗ trợ phiên bản Android mới nhất. Nếu ứng dụng này có thể truy cập vào tệp nhạc và âm thanh, nó cũng sẽ được phép truy cập vào ảnh và video."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Ứng dụng này không hỗ trợ phiên bản Android mới nhất. Nếu ứng dụng này không thể truy cập vào tệp nhạc và âm thanh, nó cũng sẽ không được phép truy cập vào ảnh và video."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Ứng dụng này không hỗ trợ phiên bản Android mới nhất. Nếu ứng dụng này có thể truy cập vào ảnh và video, nó cũng sẽ được phép truy cập vào các tệp âm thanh và nhạc."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Ứng dụng này không hỗ trợ phiên bản Android mới nhất. Nếu ứng dụng này không thể truy cập vào tệp nhạc và âm thanh, nó cũng sẽ không được phép truy cập vào ảnh và video."</string>
 </resources>

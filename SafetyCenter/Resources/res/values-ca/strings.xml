@@ -27,7 +27,7 @@
     <string name="permission_usage_summary" msgid="5323079206029964468">"Mostra quines aplicacions han utilitzat permisos fa poc"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"Gestor de permisos"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"Controla l\'accés de les aplicacions a les teves dades"</string>
-    <string name="advanced_title" msgid="8745436380690561172">"Més opcions"</string>
+    <string name="advanced_title" msgid="8745436380690561172">"Més opcions de configuració"</string>
     <string name="advanced_security_title" msgid="1126833338772188155">"Més opcions de configuració de seguretat"</string>
     <string name="advanced_security_summary" msgid="6172253327022425123">"Encriptació, credencials i més"</string>
 </resources>
