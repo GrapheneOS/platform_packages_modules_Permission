@@ -29,6 +29,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
+import android.icu.text.ListFormatter;
+import android.icu.util.ULocale;
 import android.os.Binder;
 import android.os.UserHandle;
 import android.safetycenter.SafetyCenterData;
@@ -48,6 +50,7 @@ import android.safetycenter.SafetySourceStatus;
 import android.safetycenter.config.SafetyCenterConfig;
 import android.safetycenter.config.SafetySource;
 import android.safetycenter.config.SafetySourcesGroup;
+import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.util.ArraySet;
 import android.util.Log;
@@ -77,6 +80,8 @@ import java.util.Objects;
 final class SafetyCenterDataTracker {
 
     private static final String TAG = "SafetyCenterDataTracker";
+
+    private static final String ANDROID_LOCK_SCREEN_SOURCES_ID = "AndroidLockScreenSources";
 
     private final ArrayMap<SafetySourceKey, SafetySourceData> mSafetySourceDataForKey =
             new ArrayMap<>();
@@ -682,22 +687,41 @@ final class SafetyCenterDataTracker {
             }
         }
 
-        SafetyCenterEntryGroupId safetyCenterEntryGroupId =
-                SafetyCenterEntryGroupId.newBuilder()
-                        .setSafetySourcesGroupId(safetySourcesGroup.getId())
-                        .build();
-        safetyCenterEntryOrGroups.add(
-                new SafetyCenterEntryOrGroup(
-                        new SafetyCenterEntryGroup.Builder(
-                                        SafetyCenterIds.encodeToString(safetyCenterEntryGroupId),
-                                        getString(safetySourcesGroup.getTitleResId()))
-                                .setSeverityLevel(maxSafetyCenterEntryLevel)
-                                .setSummary(getOptionalString(safetySourcesGroup.getSummaryResId()))
-                                .setEntries(entries)
-                                .setSeverityUnspecifiedIconType(
-                                        toGroupSeverityUnspecifiedIconType(
-                                                safetySourcesGroup.getStatelessIconType()))
-                                .build()));
+        if (entries.size() == 1) {
+            safetyCenterEntryOrGroups.add(new SafetyCenterEntryOrGroup(entries.get(0)));
+        } else if (entries.size() > 1) {
+            SafetyCenterEntryGroupId safetyCenterEntryGroupId =
+                    SafetyCenterEntryGroupId.newBuilder()
+                            .setSafetySourcesGroupId(safetySourcesGroup.getId())
+                            .build();
+            String groupSummary = getOptionalString(safetySourcesGroup.getSummaryResId());
+            if (safetySourcesGroup.getId().equals(ANDROID_LOCK_SCREEN_SOURCES_ID)
+                    && TextUtils.isEmpty(groupSummary)) {
+                List<CharSequence> titles = new ArrayList<>();
+                for (int i = 0; i < entries.size(); i++) {
+                    titles.add(entries.get(i).getTitle());
+                }
+                groupSummary =
+                        ListFormatter.getInstance(
+                                        ULocale.getDefault(ULocale.Category.FORMAT),
+                                        ListFormatter.Type.UNITS,
+                                        ListFormatter.Width.WIDE)
+                                .format(titles);
+            }
+            safetyCenterEntryOrGroups.add(
+                    new SafetyCenterEntryOrGroup(
+                            new SafetyCenterEntryGroup.Builder(
+                                            SafetyCenterIds.encodeToString(
+                                                    safetyCenterEntryGroupId),
+                                            getString(safetySourcesGroup.getTitleResId()))
+                                    .setSeverityLevel(maxSafetyCenterEntryLevel)
+                                    .setSummary(groupSummary)
+                                    .setEntries(entries)
+                                    .setSeverityUnspecifiedIconType(
+                                            toGroupSeverityUnspecifiedIconType(
+                                                    safetySourcesGroup.getStatelessIconType()))
+                                    .build()));
+        }
 
         return maxSafetyCenterEntryLevel;
     }
@@ -725,7 +749,6 @@ final class SafetyCenterDataTracker {
             @NonNull SafetySource safetySource, boolean isUserManaged, @UserIdInt int userId) {
         switch (safetySource.getType()) {
             case SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY:
-                Log.w(TAG, "Issue only safety source found in collapsible group");
                 return null;
             case SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC:
                 SafetySourceKey key = SafetySourceKey.of(safetySource.getId(), userId);
@@ -877,7 +900,6 @@ final class SafetyCenterDataTracker {
             @NonNull SafetySource safetySource, boolean isUserManaged, @UserIdInt int userId) {
         switch (safetySource.getType()) {
             case SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY:
-                Log.w(TAG, "Issue only safety source found in rigid group");
                 return null;
             case SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC:
                 SafetySourceKey key = SafetySourceKey.of(safetySource.getId(), userId);
