@@ -20,6 +20,7 @@ import android.content.Intent.ACTION_SAFETY_CENTER
 import android.safetycenter.config.SafetyCenterConfig
 import android.safetycenter.config.SafetySource
 import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_DYNAMIC
+import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_STATIC
 import android.safetycenter.config.SafetySourcesGroup
 
 /**
@@ -91,6 +92,38 @@ object SafetyCenterCtsConfigs {
             .addSafetySource(CTS_MULTIPLE_SOURCES_CONFIG_SOURCE_2)
             .build()
 
+    val CTS_STATIC_SOURCE_1 =
+        SafetySource.Builder(SAFETY_SOURCE_TYPE_STATIC)
+            .setId("cts_static_source_id_1")
+            .setTitleResId(android.R.string.dialog_alert_title)
+            .setSummaryResId(android.R.string.autofill)
+            .setIntentAction(ACTION_SAFETY_CENTER)
+            .setProfile(SafetySource.PROFILE_PRIMARY)
+            .build()
+
+    val CTS_STATIC_SOURCE_GROUP_1 =
+        SafetySourcesGroup.Builder()
+            .setId("cts_static_sources_group_id_1")
+            .setTitleResId(android.R.string.paste)
+            .addSafetySource(CTS_STATIC_SOURCE_1)
+            .build()
+
+    val CTS_STATIC_SOURCE_2 =
+        SafetySource.Builder(SAFETY_SOURCE_TYPE_STATIC)
+            .setId("cts_static_source_id_2")
+            .setTitleResId(android.R.string.copyUrl)
+            .setSummaryResId(android.R.string.cut)
+            .setIntentAction(ACTION_SAFETY_CENTER)
+            .setProfile(SafetySource.PROFILE_PRIMARY)
+            .build()
+
+    val CTS_STATIC_SOURCE_GROUP_2 =
+        SafetySourcesGroup.Builder()
+            .setId("cts_static_sources_group_id_2")
+            .setTitleResId(android.R.string.copy)
+            .addSafetySource(CTS_STATIC_SOURCE_2)
+            .build()
+
     /**
      * A simple [SafetyCenterConfig] for CTS tests with a single source of id
      * [CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID].
@@ -101,4 +134,10 @@ object SafetyCenterCtsConfigs {
     /** A simple [SafetyCenterConfig] for CTS tests with multiple sources. */
     val CTS_MULTIPLE_SOURCES_CONFIG =
         SafetyCenterConfig.Builder().addSafetySourcesGroup(CTS_MULTIPLE_SOURCES_GROUP).build()
+
+    val CTS_STATIC_SOURCE_CONFIG =
+        SafetyCenterConfig.Builder()
+            .addSafetySourcesGroup(CTS_STATIC_SOURCE_GROUP_1)
+            .addSafetySourcesGroup(CTS_STATIC_SOURCE_GROUP_2)
+            .build()
 }

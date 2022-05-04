@@ -37,7 +37,7 @@ import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.permissioncontroller.Constants.NOTIFICATION_LISTENER_CHECK_NOTIFICATION_ID
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.PermissionControllerApplication
-import com.android.permissioncontroller.privacysources.NotificationListenerCheck.NotificationListenerPrivacySource
+import com.android.permissioncontroller.privacysources.NotificationListenerPrivacySource
 import com.android.permissioncontroller.privacysources.NotificationListenerCheckInternal
 import com.android.permissioncontroller.privacysources.SC_NLS_SOURCE_ID
 import com.android.permissioncontroller.privacysources.SafetyCenterReceiver
