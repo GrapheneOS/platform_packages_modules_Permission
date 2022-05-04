@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Imaju dozvolu za upravljanje svim datotekama"</string>
     <string name="ask_header" msgid="2633816846459944376">"Pitaj svaki put"</string>
     <string name="denied_header" msgid="903209608358177654">"Nije dozvoljeno"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Neke aplikacije koje pružaju osnovne funkcije za uređaj mogu da imaju specijalan pristup svim fajlovima"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Prikaži aplikacije sa pristupom svim fajlovima"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 dan}one{# dan}few{# dana}other{# dana}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 sat}one{# sat}few{# sata}other{# sati}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 minut}one{# minut}few{# minuta}other{# minuta}}"</string>
@@ -334,7 +334,7 @@
     <string name="role_assistant_description" msgid="6622458130459922952">"Aplikacije za pomoć mogu da vam pomognu na osnovu informacija sa ekrana koji gledate. Neke aplikacije podržavaju usluge pokretača i glasovnog unosa da bi vam pružile integrisanu pomoć."</string>
     <string name="role_assistant_request_title" msgid="5964976301922776060">"Želite li da podesite aplikaciju <xliff:g id="APP_NAME">%1$s</xliff:g> kao podrazumevanu aplikaciju za pomoć?"</string>
     <string name="role_assistant_request_description" msgid="6836644847620178483">"Dobija pristup evidenciji SMS-ova i poziva"</string>
-    <string name="role_browser_label" msgid="2877796144554070207">"Podrazumevana apl. za pregled"</string>
+    <string name="role_browser_label" msgid="2877796144554070207">"Podrazumevana apl. pregledača"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Aplikacija za pregledač"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Aplikacije koje vam daju pristup internetu i prikazuju linkove koje možete da dodirnete"</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"Želite li da podesite <xliff:g id="APP_NAME">%1$s</xliff:g> kao podrazumevanu aplikaciju za pregledanje?"</string>
@@ -368,9 +368,9 @@
     <string name="role_call_redirection_description" msgid="6091669882014664420">"Aplikacije koje vam omogućavaju da prosleđujete odlazne pozive na drugi broj telefona"</string>
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"Želite li da podesite <xliff:g id="APP_NAME">%1$s</xliff:g> kao podrazumevanu aplikaciju za preusmeravanje poziva?"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Nije potrebna nijedna dozvola"</string>
-    <string name="role_call_screening_label" msgid="883935222060878724">"Podraz. apl. za ID poziv. i nepoželjne poruke"</string>
+    <string name="role_call_screening_label" msgid="883935222060878724">"Aplikacija za ID pozivaoca i nepoželjne poruke"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"Apl. za ID poz. i nepož. poz."</string>
-    <string name="role_call_screening_description" msgid="2349431420497468981">"Aplikacije koje vam omogućavaju da identifikujete pozive i blokirate nepoželjne i automatizovane pozive ili neželjene brojeve"</string>
+    <string name="role_call_screening_description" msgid="2349431420497468981">"Aplikacije koje vam omogućavaju da identifikujete pozive, blokirate nepoželjne i automatizovane pozive i neželjene brojeve"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Želite li da podesite <xliff:g id="APP_NAME">%1$s</xliff:g> kao podrazumevanu aplikaciju za ID pozivaoca i nepoželjne poruke?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Nije potrebna nijedna dozvola"</string>
     <string name="role_automotive_navigation_label" msgid="2701890757955474751">"Podrazumevana aplikacija za navigaciju"</string>
@@ -523,4 +523,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Nedavno koristila aplikacija <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Bezbednost i privatnost"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Proverite status"</string>
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"Potvrdi"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"Nazad"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"Biće dozvoljen pristup i drugim fajlovima"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"Ni pristup drugim fajlovima neće biti dozvoljen"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"Biće dozvoljen pristup i drugim fajlovima"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"Ni pristup drugim fajlovima neće biti dozvoljen"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"Biće dozvoljen pristup i slikama i video snimcima"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"Ni pristup slikama i video snimcima neće biti dozvoljen"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"Biće dozvoljen pristup i muzici i audio fajlovima"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"Ni pristup muzici i audio fajlovima neće biti dozvoljen"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"Ova aplikacija ne podržava najnoviju verziju Android-a. Ako ova aplikacija može da pristupa muzici i audio fajlovima, biće joj dozvoljeno i da pristupa slikama, video snimcima i drugim fajlovima."</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"Ova aplikacija ne podržava najnoviju verziju Android-a. Ako ova aplikacija ne može da pristupa muzici i audio fajlovima, neće joj biti dozvoljeno ni da pristupa slikama, video snimcima i drugim fajlovima."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"Ova aplikacija ne podržava najnoviju verziju Android-a. Ako ova aplikacija može da pristupa slikama i video snimcima, biće joj dozvoljeno i da pristupa muzici, audio i drugim fajlovima."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"Ova aplikacija ne podržava najnoviju verziju Android-a. Ako ova aplikacija ne može da pristupa slikama i video snimcima, neće joj biti dozvoljeno ni da pristupa muzici, audio i drugim fajlovima."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"Ova aplikacija ne podržava najnoviju verziju Android-a. Ako ova aplikacija može da pristupa muzici i audio fajlovima, biće joj dozvoljeno i da pristupa slikama i video snimcima."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Ova aplikacija ne podržava najnoviju verziju Android-a. Ako ova aplikacija ne može da pristupa muzici i audio fajlovima, neće joj biti dozvoljeno ni da pristupa slikama i video snimcima."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Ova aplikacija ne podržava najnoviju verziju Android-a. Ako ova aplikacija može da pristupa slikama i video snimcima, biće joj dozvoljeno i da pristupa muzici i audio fajlovima."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Ova aplikacija ne podržava najnoviju verziju Android-a. Ako ova aplikacija ne može da pristupa muzici i audio fajlovima, neće joj biti dozvoljeno ni da pristupa slikama i video snimcima."</string>
 </resources>

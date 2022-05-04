@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"הרשאה לניהול כל הקבצים"</string>
     <string name="ask_header" msgid="2633816846459944376">"יש לשאול בכל פעם"</string>
     <string name="denied_header" msgid="903209608358177654">"אין הרשאה"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"יכול להיות שלחלק מהאפליקציות שמפעילות פונקציות בסיסיות במכשיר תהיה גישה מיוחדת לכל הקבצים"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"לרשימת האפליקציות שיש להן גישה לכל הקבצים"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{יום אחד}two{יומיים}many{# ימים}other{# ימים}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{שעה אחת}two{שעתיים}many{# שעות}other{# שעות}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{דקה אחת}two{# דקות}many{# דקות}other{# דקות}}"</string>
@@ -322,7 +322,7 @@
     <string name="no_apps_allowed" msgid="7718822655254468631">"אין אפליקציות שקיבלו הרשאה"</string>
     <string name="no_apps_allowed_full" msgid="8011716991498934104">"לאף אפליקציה אין הרשאה לכל הקבצים"</string>
     <string name="no_apps_allowed_scoped" msgid="4908850477787659501">"לאף אפליקציה אין הרשאה למדיה בלבד"</string>
-    <string name="no_apps_denied" msgid="7663435886986784743">"אין אפליקציות ללא ההרשאה"</string>
+    <string name="no_apps_denied" msgid="7663435886986784743">"אין אפליקציות שלא קיבלו ההרשאה"</string>
     <string name="car_permission_selected" msgid="180837028920791596">"נבחר"</string>
     <string name="settings" msgid="5409109923158713323">"הגדרות"</string>
     <string name="accessibility_service_dialog_title_single" msgid="7956432823014102366">"לשירות <xliff:g id="SERVICE_NAME">%s</xliff:g> יש גישה מלאה למכשיר שלך"</string>
@@ -523,4 +523,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"נעשה שימוש לאחרונה על ידי <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"אבטחה ופרטיות"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"בדיקת הסטטוס"</string>
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"אישור"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"חזרה"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"תינתן גישה גם לקבצים אחרים"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"לא תינתן גישה גם לקבצים אחרים"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"תינתן גישה גם לקבצים אחרים"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"לא תינתן גישה גם לקבצים אחרים"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"תינתן גישה גם לתמונות ולסרטונים"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"לא תינתן גישה גם לתמונות ולסרטונים"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"תינתן גישה גם לקובצי מוזיקה ואודיו"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"לא תינתן גישה גם לקובצי מוזיקה ואודיו"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"‏האפליקציה הזו לא תומכת בגרסה החדשה ביותר של Android. אם האפליקציה הזו יכולה לגשת לקובצי מוזיקה ואודיו, היא תורשה לגשת גם לתמונות, לסרטונים ולקבצים אחרים."</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"‏האפליקציה הזו לא תומכת בגרסה החדשה ביותר של Android. אם האפליקציה הזו לא יכולה לגשת לקובצי מוזיקה ואודיו, היא לא תורשה לגשת גם לתמונות, לסרטונים ולקבצים אחרים."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"‏האפליקציה הזו לא תומכת בגרסה החדשה ביותר של Android. אם האפליקציה הזו יכולה לגשת לתמונות ולסרטונים, היא תורשה לגשת גם למוזיקה, לאודיו ולקבצים אחרים."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"‏האפליקציה הזו לא תומכת בגרסה החדשה ביותר של Android. אם האפליקציה הזו לא יכולה לגשת לתמונות ולסרטונים, היא לא תורשה לגשת גם למוזיקה, לאודיו ולקבצים אחרים."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"‏האפליקציה הזו לא תומכת בגרסה החדשה ביותר של Android. אם האפליקציה הזו יכולה לגשת לקובצי מוזיקה ואודיו, היא תורשה לגשת גם לתמונות ולסרטונים."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"‏האפליקציה הזו לא תומכת בגרסה החדשה ביותר של Android. אם האפליקציה הזו לא יכולה לגשת לקובצי מוזיקה ואודיו, היא לא תורשה לגשת גם לתמונות ולסרטונים."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"‏האפליקציה הזו לא תומכת בגרסה החדשה ביותר של Android. אם האפליקציה הזו יכולה לגשת לתמונות ולסרטונים, היא תורשה לגשת גם לקובצי מוזיקה ואודיו."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"‏האפליקציה הזו לא תומכת בגרסה החדשה ביותר של Android. אם האפליקציה הזו לא יכולה לגשת לקובצי מוזיקה ואודיו, היא לא תורשה לגשת גם לתמונות ולסרטונים."</string>
 </resources>
