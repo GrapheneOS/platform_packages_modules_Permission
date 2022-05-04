@@ -376,7 +376,7 @@
     <string name="role_assistant_description" msgid="6622458130459922952">"Апликације за помоћ могу да вам помогну на основу информација са екрана који гледате. Неке апликације подржавају услуге покретача и гласовног уноса да би вам пружиле интегрисану помоћ."</string>
     <string name="role_assistant_request_title" msgid="5964976301922776060">"Желите ли да подесите апликацију <xliff:g id="APP_NAME">%1$s</xliff:g> као подразумевану апликацију за помоћ?"</string>
     <string name="role_assistant_request_description" msgid="6836644847620178483">"Добија приступ евиденцији SMS-ова и позива"</string>
-    <string name="role_browser_label" msgid="2877796144554070207">"Подразумевана апл. за преглед"</string>
+    <string name="role_browser_label" msgid="2877796144554070207">"Подразумевана апл. прегледача"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Апликација за прегледач"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Апликације које вам дају приступ интернету и приказују линкове које можете да додирнете"</string>
     <string name="role_browser_request_title" msgid="2895200507835937192">"Желите ли да подесите <xliff:g id="APP_NAME">%1$s</xliff:g> као подразумевану апликацију за прегледање?"</string>
@@ -410,9 +410,9 @@
     <string name="role_call_redirection_description" msgid="6091669882014664420">"Апликације које вам омогућавају да прослеђујете одлазне позиве на други број телефона"</string>
     <string name="role_call_redirection_request_title" msgid="2816244455003562925">"Желите ли да подесите <xliff:g id="APP_NAME">%1$s</xliff:g> као подразумевану апликацију за преусмеравање позива?"</string>
     <string name="role_call_redirection_request_description" msgid="3118895714178527164">"Није потребна ниједна дозвола"</string>
-    <string name="role_call_screening_label" msgid="883935222060878724">"Подраз. апл. за ИД позив. и непожељне поруке"</string>
+    <string name="role_call_screening_label" msgid="883935222060878724">"Апликација за ИД позиваоца и непожељне поруке"</string>
     <string name="role_call_screening_short_label" msgid="2048465565063130834">"Апл. за ИД поз. и непож. поз."</string>
-    <string name="role_call_screening_description" msgid="2349431420497468981">"Апликације које вам омогућавају да идентификујете позиве и блокирате непожељне и аутоматизоване позиве или нежељене бројеве"</string>
+    <string name="role_call_screening_description" msgid="2349431420497468981">"Апликације које вам омогућавају да идентификујете позиве, блокирате непожељне и аутоматизоване позиве и нежељене бројеве"</string>
     <string name="role_call_screening_request_title" msgid="7358309224566977290">"Желите ли да подесите <xliff:g id="APP_NAME">%1$s</xliff:g> као подразумевану апликацију за ИД позиваоца и непожељне поруке?"</string>
     <string name="role_call_screening_request_description" msgid="7338511921032446006">"Није потребна ниједна дозвола"</string>
     <string name="role_watch_description" msgid="267003778693177779">"<xliff:g id="APP_NAME">%1$s</xliff:g> ће добити дозволу за интеракцију са обавештењима и приступ дозволама за телефон, SMS поруке, контакте и календар."</string>
@@ -479,7 +479,7 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Ова апликација жели да приступа локацији све време, чак и када не користите апликацију. "<annotation id="link">"Дозволите у подешавањима."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Дозвољавате да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; проналази уређаје у близини, повезује се с њима и одређује им релативан положај?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Дозвољавате да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; проналази уређаје у близини, повезује се с њима и одређује им релативан положај? "<annotation id="link">"Дозволите у подешавањима."</annotation></string>
-    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Желите ли да промените приступ апликације <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> локацији са приближне на прецизну?"</string>
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Желите ли да промените приступ апликације <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> из приближне локације на прецизну?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Желите ли да омогућите да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; приступа приближној локацији овог уређаја?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Прецизна"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Приближна"</string>

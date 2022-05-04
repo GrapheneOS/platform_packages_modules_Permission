@@ -43,7 +43,7 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"Mindig engedélyezett"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"Az alkalmazás használata közben"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"Váltás pontos helyadatokra"</string>
-    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Hozzávetőleges tartózkodási hely megtartása"</string>
+    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"Hozzávetőleges hely megtartása"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"Csak most"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"Mindig engedélyezett"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"Az összes fájl kezelésének engedélyezése"</string>
@@ -250,7 +250,7 @@
     <string name="permission_description_summary_location" msgid="2817531799933480694">"Az ezzel az engedéllyel rendelkező alkalmazások hozzáférhetnek az eszköz helyadataihoz"</string>
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Az ezzel az engedéllyel rendelkező alkalmazások megkereshetik a közeli eszközöket, meghatározhatják relatív pozíciójukat, és csatlakozhatnak hozzájuk"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Az ezzel az engedéllyel rendelkező alkalmazások készíthetnek hangfelvételt"</string>
-    <string name="permission_description_summary_phone" msgid="4515277217435233619">"Az ezzel az engedéllyel rendelkező alkalmazások képesek a telefonhívások kezdeményezésére és kezelésére"</string>
+    <string name="permission_description_summary_phone" msgid="4515277217435233619">"Az ezzel az engedéllyel rendelkező alkalmazások telefonhívásokat kezdeményezhetnek és kezelhetnek"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Az ezzel az engedéllyel rendelkező alkalmazások hozzáférhetnek az életjelekkel kapcsolatos szenzoradatokhoz"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Az ezzel az engedéllyel rendelkező alkalmazások küldhetnek és megtekinthetnek SMS-eket"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Az ezzel az engedéllyel rendelkező alkalmazások hozzáférhetnek az eszközön található fotókhoz, médiatartalmakhoz és fájlokhoz"</string>

@@ -368,7 +368,7 @@
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g>ను మీ ఆటోమేటిక్ ఫోన్ యాప్‌గా సెట్ చేయాలా?"</string>
     <string name="role_dialer_request_description" msgid="2264219375528345270">"కాల్ లాగ్, అలాగే SMSలు పంపడానికి యాక్సెస్ పొందుతుంది"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"డయలర్"</string>
-    <string name="role_sms_label" msgid="8456999857547686640">"ఆటోమాటిక్ SMS యాప్"</string>
+    <string name="role_sms_label" msgid="8456999857547686640">"ఆటోమేటిక్ SMS యాప్"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS యాప్"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"SMSలు, ఫోటోలు, వీడియోలు, మరిన్నింటిని పంపడానికి, అందుకోవడానికి మీ ఫోన్ నంబర్‌ను ఉపయోగించేందుకు మిమ్మల్ని అనుమతించే యాప్‌లు"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g>ను మీ ఆటోమేటిక్ SMS యాప్‌గా సెట్ చేయాలా?"</string>

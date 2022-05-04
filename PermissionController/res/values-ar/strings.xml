@@ -116,7 +116,7 @@
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"عرض الأذونات الأخرى"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>، <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g> و<xliff:g id="PERMGROUP_1">%2$s</xliff:g> و<xliff:g id="NUM">%3$s</xliff:g> تطبيق آخر"</string>
-    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"المخطط الزمني لاستخدام التطبيقات لـ <xliff:g id="PERMGROUP">%1$s</xliff:g> في آخر 24 ساعة"</string>
+    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"المخطط الزمني لاستخدام التطبيقات <xliff:g id="PERMGROUP">%1$s</xliff:g> في آخر 24 ساعة"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"وقت استخدام هذا التطبيق لإذن <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"مزيد من المعلومات"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>
@@ -299,7 +299,7 @@
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"تتمكن التطبيقات التي لديها هذا الإذن من العثور على الأجهزة المجاورة والربط بها وتحديد موضعها النسبي."</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"يمكن للتطبيقات التي لديها هذا الإذن تسجيل الصوت."</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"يمكن للتطبيقات التي لديها هذا الإذن إجراء مكالمات هاتفية وإدارتها."</string>
-    <string name="permission_description_summary_sensors" msgid="1836045815643119949">"يمكن للتطبيقات التي لديها هذا الإذن أن تصل إلى بيانات جهاز الاستشعار عن علاماتك الحيوية."</string>
+    <string name="permission_description_summary_sensors" msgid="1836045815643119949">"يمكن للتطبيقات التي لديها هذا الإذن أن تصل إلى بيانات جهاز الاستشعار الخاصة بمؤشراتك الحيوية."</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"‏يمكن للتطبيقات التي لديها هذا الإذن إرسال رسائل قصيرة SMS وعرضها."</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"يمكن للتطبيقات التي لديها هذا الإذن الوصول إلى الصور والوسائط والملفات على جهازك."</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"آخر استخدام للإذن: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
@@ -307,7 +307,7 @@
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"لم يستخدم الإذن مطلقًا"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"تم الرفض / لم يسبق الحصول على الإذن"</string>
     <string name="allowed_header" msgid="7769277978004790414">"الأذونات المسموح بها"</string>
-    <string name="allowed_always_header" msgid="6455903312589013545">"تطبيقات مسموح لها بالوصول طوال الوقت"</string>
+    <string name="allowed_always_header" msgid="6455903312589013545">"التطبيقات المسموح لها بالوصول طوال الوقت"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"تطبيقات يمكنها الوصول عند استخدامها فقط"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"التطبيقات المسموح لها بالوصول إلى الوسائط فقط"</string>
     <string name="allowed_storage_full" msgid="5356699280625693530">"التطبيقات المسموح لها بإدارة كل الملفات"</string>
@@ -557,7 +557,7 @@
     <string name="permgroupupgraderequest_camera" msgid="640758449200241582">"‏هل تريد تغيير إذن الوصول إلى الكاميرا بالنسبة إلى &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;؟"</string>
     <string name="permgroupupgraderequestdetail_camera" msgid="6642747548010962597">"يحتاج هذا التطبيق إلى التقاط صور وتسجيل فيديوهات طوال الوقت، حتى عند عدم استخدامك للتطبيق. يمكنك "<annotation id="link">"السماح بذلك في الإعدادات"</annotation></string>
     <string name="permgrouprequest_calllog" msgid="2065327180175371397">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بالوصول إلى سجلّ مكالماتك الهاتفية؟"</string>
-    <string name="permgrouprequest_phone" msgid="1829234136997316752">"‏هل تريد السماح لـ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بإجراء المكالمات الهاتفية وإدارتها؟"</string>
+    <string name="permgrouprequest_phone" msgid="1829234136997316752">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بإجراء المكالمات الهاتفية وإدارتها؟"</string>
     <string name="permgrouprequest_sensors" msgid="4397358316850652235">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بالوصول إلى بيانات استشعار مؤشراتك الحيوية؟"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"الأذونات خاضعة لتحكّم المشرف"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"يمكن الوصول إلى الموقع الجغرافي"</string>

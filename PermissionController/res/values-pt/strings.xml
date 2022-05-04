@@ -211,8 +211,8 @@
     <string name="app_permission_button_deny" msgid="6016454069832050300">"Não permitir"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Local exato"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"Local aproximado"</string>
-    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Usar localização exata"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Apps podem acessar a localização aproximada quando a localização exata estiver desativada"</string>
+    <string name="app_permission_location_accuracy" msgid="7166912915040018669">"Usar local exato"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"Apps podem acessar a localização aproximada quando o local exato está desativado"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"Permissão para acessar <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"Permitir que este app acesse: <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Ver todas as permissões do app <xliff:g id="APP">%1$s</xliff:g>"</string>
@@ -460,7 +460,7 @@
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"Este app quer acessar sua localização o tempo todo, mesmo quando não estiver em uso. "<annotation id="link">"Permita o acesso nas configurações"</annotation>"."</string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; encontre, conecte-se e determine a posição relativa de dispositivos por perto?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; encontre, conecte-se e determine a posição relativa de dispositivos por perto? "<annotation id="link">"Permita nas configurações."</annotation></string>
-    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Mudar o acesso do app <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> à localização de aproximado para exato?"</string>
+    <string name="permgrouprequest_fineupgrade" msgid="2334242928821697672">"Permitir a troca para que o app <xliff:g id="APP_NAME">&lt;b&gt;%1$s&lt;/b&gt;</xliff:g> acesse o local exato (em vez do aproximado)?"</string>
     <string name="permgrouprequest_coarselocation" msgid="7244605063736425232">"Permitir que o app &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acesse o local aproximado deste dispositivo?"</string>
     <string name="permgrouprequest_finelocation_imagetext" msgid="1313062433398914334">"Exata"</string>
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Aproximada"</string>

@@ -71,7 +71,7 @@
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g> z <xliff:g id="COUNT_1">%2$d</xliff:g> dozwolonych aplikacji"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Pokaż systemowe"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Ukryj systemowe"</string>
-    <string name="manage_permission" msgid="2895385393037061964">"Zarządzaj uprawnieniami"</string>
+    <string name="manage_permission" msgid="2895385393037061964">"Zarządzaj uprawnieniem"</string>
     <string name="no_apps" msgid="2412612731628386816">"Brak aplikacji"</string>
     <string name="location_settings" msgid="3624412509133422562">"Ustawienia lokalizacji"</string>
     <string name="location_warning" msgid="2381649060929040962">"<xliff:g id="APP_NAME">%1$s</xliff:g> jest dostawcą usług lokalizacyjnych dla tego urządzenia. Dostęp do danych lokalizacji można zmienić w ustawieniach lokalizacji."</string>
@@ -110,7 +110,7 @@
     <string name="message_staging" msgid="9110563899955511866">"Przygotowuję aplikację…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Inny"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"Panel ustawień prywatności"</string>
-    <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> – korzystanie z uprawnień"</string>
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"<xliff:g id="PERMGROUP">%1$s</xliff:g> – korzystanie z uprawnienia"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Zobacz inne uprawnienia"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> i jeszcze <xliff:g id="NUM">%3$s</xliff:g>"</string>
@@ -196,10 +196,10 @@
     </plurals>
     <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Nie używano w ciągu ostatnich 24 godzin"</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
-      <item quantity="few">Używany przez <xliff:g id="NUMBER">%1$d</xliff:g> aplikacje</item>
-      <item quantity="many">Używane przez <xliff:g id="NUMBER">%1$d</xliff:g> aplikacji</item>
-      <item quantity="other">Używane przez <xliff:g id="NUMBER">%1$d</xliff:g> aplikacji</item>
-      <item quantity="one">Używane przez 1 aplikację</item>
+      <item quantity="few">Uprawnienie używane przez <xliff:g id="NUMBER">%1$d</xliff:g> aplikacje</item>
+      <item quantity="many">Uprawnienie używane przez <xliff:g id="NUMBER">%1$d</xliff:g> aplikacji</item>
+      <item quantity="other">Uprawnienie używane przez <xliff:g id="NUMBER">%1$d</xliff:g> aplikacji</item>
+      <item quantity="one">Uprawnienie używane przez 1 aplikację</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Pokaż wszystko w panelu"</string>
     <string name="app_permission_usage_filter_label" msgid="7182861154638631550">"Filtrowane według: <xliff:g id="PERM">%1$s</xliff:g>"</string>
@@ -271,8 +271,8 @@
     <string name="permission_description_summary_call_log" msgid="7321437186317577624">"Aplikacje z tym uprawnieniem mogą odczytywać i zapisywać rejestr połączeń telefonicznych"</string>
     <string name="permission_description_summary_camera" msgid="108004375101882069">"Aplikacje z tym uprawnieniem mogą robić zdjęcia i nagrywać filmy"</string>
     <string name="permission_description_summary_contacts" msgid="2337798886460408996">"Aplikacje z tym uprawnieniem mają dostęp do kontaktów"</string>
-    <string name="permission_description_summary_location" msgid="2817531799933480694">"Aplikacje z tymi uprawnieniami mają dostęp do lokalizacji urządzenia"</string>
-    <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Aplikacje z tymi uprawnieniami mogą znajdować urządzenia w pobliżu, określać ich względne położenie oraz łączyć się z nimi"</string>
+    <string name="permission_description_summary_location" msgid="2817531799933480694">"Aplikacje z tym uprawnieniem mają dostęp do lokalizacji urządzenia"</string>
+    <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Aplikacje z tym uprawnieniem mogą znajdować urządzenia w pobliżu, określać ich względne położenie oraz łączyć się z nimi"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Aplikacje z tym uprawnieniem mogą nagrywać dźwięk"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Aplikacje z tym uprawnieniem mogą nawiązywać połączenia telefoniczne i nimi zarządzać"</string>
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Aplikacje z tym uprawnieniem mają dostęp do danych z czujnika podstawowych funkcji życiowych"</string>

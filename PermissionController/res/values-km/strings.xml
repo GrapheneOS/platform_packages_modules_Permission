@@ -43,7 +43,7 @@
     <string name="grant_dialog_button_allow_always" msgid="4485552579273565981">"អនុញ្ញាតគ្រប់ពេល"</string>
     <string name="grant_dialog_button_allow_foreground" msgid="501896824973636533">"ខណៈពេល​កំពុងប្រើ​កម្មវិធី"</string>
     <string name="grant_dialog_button_change_to_precise_location" msgid="3273115879467236033">"ប្ដូរ​ទៅទីតាំងជាក់លាក់"</string>
-    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"រក្សាទុកទីតាំងប្រហាក់ប្រហែល"</string>
+    <string name="grant_dialog_button_keey_approximate_location" msgid="438025182769080011">"រក្សាទីតាំងប្រហាក់ប្រហែល"</string>
     <string name="grant_dialog_button_allow_one_time" msgid="2618088516449706391">"តែពេលនេះ​ប៉ុណ្ណោះ"</string>
     <string name="grant_dialog_button_allow_background" msgid="8236044729434367833">"អនុញ្ញាតគ្រប់ពេល"</string>
     <string name="grant_dialog_button_allow_all_files" msgid="4955436994954829894">"អនុញ្ញាតឱ្យគ្រប់គ្រងឯកសារទាំងអស់"</string>
@@ -108,11 +108,11 @@
     <string name="message_staging" msgid="9110563899955511866">"កំពុងសាកល្បងកម្មវិធី…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"មិនស្គាល់"</string>
     <string name="permission_usage_title" msgid="1568233336351734538">"ផ្ទាំងគ្រប់គ្រង​ឯកជនភាព"</string>
-    <string name="permission_group_usage_title" msgid="2595013198075285173">"ការប្រើប្រាស់ <xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
+    <string name="permission_group_usage_title" msgid="2595013198075285173">"ការប្រើប្រាស់​<xliff:g id="PERMGROUP">%1$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"មើលការអនុញ្ញាត​ផ្សេងទៀត"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
     <string name="perm_usage_adv_info_summary_more_items" msgid="949055326299562218">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g> និង <xliff:g id="NUM">%3$s</xliff:g> ទៀត"</string>
-    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"បន្ទាត់ពេលវេលានៃ​ពេលដែលកម្មវិធី​បានប្រើ <xliff:g id="PERMGROUP">%1$s</xliff:g> របស់អ្នក​ក្នុងរយៈពេល 24 ម៉ោងចុងក្រោយ"</string>
+    <string name="permission_group_usage_subtitle" msgid="712843174810251274">"បន្ទាត់ពេលវេលានៃ​ពេលដែលកម្មវិធី​បានប្រើ​<xliff:g id="PERMGROUP">%1$s</xliff:g>​របស់អ្នក​ក្នុងរយៈពេល 24 ម៉ោងចុងក្រោយ"</string>
     <string name="permission_usage_access_dialog_subtitle" msgid="4171772805196955753">"នៅពេលកម្មវិធីនេះបានប្រើការអនុញ្ញាត <xliff:g id="PERMGROUP">%1$s</xliff:g> របស់អ្នក"</string>
     <string name="permission_usage_access_dialog_learn_more" msgid="7121468469493184613">"ស្វែងយល់បន្ថែម"</string>
     <string name="history_preference_subtext_2" msgid="1521763591164293683">"<xliff:g id="APP_NAME">%1$s</xliff:g> • <xliff:g id="TRUNCATED_TIME">%2$s</xliff:g>"</string>

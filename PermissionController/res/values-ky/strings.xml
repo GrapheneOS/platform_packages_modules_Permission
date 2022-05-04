@@ -285,7 +285,7 @@
     <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"1 колдонулбаган колдонмо"</string>
     <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> колдонулбаган колдонмо"</string>
     <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"Купуялыгыңызды коргоо максатында, уруксаттар өчүрүлөт. Кененирээк маалымат алгыңыз келсе, бул жерди басып коюңуз"</string>
-    <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"Иштетилбеген колдонмолордун уруксаттары өчүрүлдү"</string>
+    <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"Колдонулбаган колдонмолордун уруксаттары өчүрүлдү"</string>
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Айрым колдонмолор бир нече ай иштетилген жок. Көрүү үчүн таптап коюңуз."</string>
     <plurals name="auto_revoke_permission_notification_content_count" formatted="false" msgid="9159794096518540350">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> колдонмо бир нече айдан бери иштетиле элек. Көрүү үчүн таптап коюңуз</item>

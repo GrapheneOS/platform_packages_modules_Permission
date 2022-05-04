@@ -493,7 +493,7 @@
     <string name="additional_permissions_description" msgid="2186611950890732112">"Uygulamalara tanımlanan izinler."</string>
     <string name="privdash_label_camera" msgid="1426440033626198096">"Kamera"</string>
     <string name="privdash_label_microphone" msgid="8415035835803511693">"Mikrofon"</string>
-    <string name="privdash_label_location" msgid="6882400763866489291">"Yer"</string>
+    <string name="privdash_label_location" msgid="6882400763866489291">"Konum"</string>
     <string name="privdash_label_other" msgid="3710394147423236033">"Diğer"</string>
     <string name="privdash_label_none" msgid="5991866260360484858">"Yok"</string>
     <string name="privdash_label_24h" msgid="1512532123865375319">"Son\n24 saat"</string>
@@ -503,6 +503,6 @@
     <string name="blocked_microphone_title" msgid="1631517143648232585">"Cihaz mikrofonu engellenmiş"</string>
     <string name="blocked_location_title" msgid="2005608279812892383">"Cihaz konumu kapalı"</string>
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Uygulamalar ve hizmetler için"</string>
-    <string name="blocked_mic_summary" msgid="8960466941528458347">"Mikrofon verileri, bir acil durum numarasını aradığınızda paylaşılmaya devam edebilir."</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Mikrofon verileri, bir acil durum numarasını aradığınızda paylaşılmaya devam edilebilir."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Değiştir"</string>
 </resources>
