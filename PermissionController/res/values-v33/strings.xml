@@ -20,4 +20,8 @@
     <string name="role_dialer_request_description">This app will be allowed to send you Notifications, and will be given access to your Camera, Contacts, Microphone, Phone, and SMS</string>
     <!-- Description when an app requests to become the default SMS app. [CHAR LIMIT=NONE] -->
     <string name="role_sms_request_description">This app will be allowed to send you Notifications, and will be given access to your Camera, Contacts, Files and documents, Microphone, Phone, and SMS</string>
+    <!-- Title for the "Your Work Policy" under Advanced Settings in Safety Center for managed devices. [CHAR LIMIT=NONE]-->
+    <string name="work_policy_title" >Your work policy info</string>
+    <!-- Summary for the "Your Work Policy" for Advanced Settings in Safety Center for managed devices. [CHAR LIMIT=NONE]-->
+    <string name="work_policy_summary">Settings managed by your IT admin</string>
 </resources>
