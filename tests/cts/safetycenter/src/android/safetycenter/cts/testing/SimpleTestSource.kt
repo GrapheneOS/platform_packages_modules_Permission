@@ -33,6 +33,7 @@ class SimpleTestSource(private val safetyCenterManager: SafetyCenterManager) {
     fun cleanupService() {
         safetyCenterManager.clearAllSafetySourceDataForTestsWithPermission()
         safetyCenterManager.clearSafetyCenterConfigForTestsWithPermission()
+        SafetySourceReceiver.reset()
     }
 
     fun setSourceData(data: SafetySourceData, event: SafetyEvent = EVENT_SOURCE_STATE_CHANGED) {
@@ -42,6 +43,6 @@ class SimpleTestSource(private val safetyCenterManager: SafetyCenterManager) {
     companion object {
         val EVENT_SOURCE_STATE_CHANGED =
             SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
-        private val SOURCE_ID = SafetyCenterCtsConfigs.CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID
+        private const val SOURCE_ID = SafetyCenterCtsConfigs.CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID
     }
 }
