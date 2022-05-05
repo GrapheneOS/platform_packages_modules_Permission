@@ -70,6 +70,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.annotation.concurrent.NotThreadSafe;
+
 /**
  * A class that keeps track of all the {@link SafetySourceData} set by safety sources, and
  * aggregates them into a {@link SafetyCenterData} object to be used by PermissionController.
@@ -77,6 +79,7 @@ import java.util.Objects;
  * <p>This class isn't thread safe. Thread safety must be handled by the caller.
  */
 @RequiresApi(TIRAMISU)
+@NotThreadSafe
 final class SafetyCenterDataTracker {
 
     private static final String TAG = "SafetyCenterDataTracker";
@@ -89,7 +92,6 @@ final class SafetyCenterDataTracker {
     // TODO(b/221406600): Add persistent storage for dismissed issues.
     private final ArraySet<SafetyCenterIssueId> mDismissedSafetyCenterIssues = new ArraySet<>();
 
-    // TODO(b/228942349): This should allow for timeouts by e.g. mapping to an insertion timestamp.
     private final ArraySet<SafetyCenterIssueActionId> mSafetyCenterIssueActionsInFlight =
             new ArraySet<>();
 
@@ -210,6 +212,15 @@ final class SafetyCenterDataTracker {
     void markSafetyCenterIssueActionAsInFlight(
             @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
         mSafetyCenterIssueActionsInFlight.add(safetyCenterIssueActionId);
+    }
+
+    /**
+     * Unmarks the given {@link SafetyCenterIssueActionId} as in-flight and returns whether it was
+     * in-flight prior to this call.
+     */
+    boolean unmarkSafetyCenterIssueActionAsInFlight(
+            @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId) {
+        return mSafetyCenterIssueActionsInFlight.remove(safetyCenterIssueActionId);
     }
 
     /** Dismisses the given {@link SafetyCenterIssueId}. */
@@ -418,7 +429,7 @@ final class SafetyCenterDataTracker {
                     return;
                 }
                 mSafetyCenterRefreshTracker.reportSourceRefreshCompleted(
-                        safetySourceId, userId, refreshBroadcastId);
+                        safetySourceId, refreshBroadcastId, userId);
                 return;
             case SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED:
             case SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED:
@@ -453,7 +464,7 @@ final class SafetyCenterDataTracker {
                                 .setSafetyCenterIssueId(safetyCenterIssueId)
                                 .setSafetySourceIssueActionId(safetySourceIssueActionId)
                                 .build();
-                mSafetyCenterIssueActionsInFlight.remove(safetyCenterIssueActionId);
+                unmarkSafetyCenterIssueActionAsInFlight(safetyCenterIssueActionId);
                 return;
             case SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED:
             case SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_LOCALE_CHANGED:

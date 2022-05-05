@@ -18,6 +18,7 @@ package com.android.safetycenter;
 
 import static android.os.Build.VERSION_CODES.TIRAMISU;
 
+import static java.util.Collections.unmodifiableList;
 import static java.util.Objects.requireNonNull;
 
 import android.annotation.NonNull;
@@ -40,6 +41,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.annotation.concurrent.NotThreadSafe;
+
 /**
  * A class that reads the {@link SafetyCenterConfigInternal} from the associated {@link
  * SafetyCenterResourcesContext}.
@@ -47,6 +50,7 @@ import java.util.Objects;
  * <p>This class isn't thread safe. Thread safety must be handled by the caller.
  */
 @RequiresApi(TIRAMISU)
+@NotThreadSafe
 final class SafetyCenterConfigReader {
 
     private static final String TAG = "SafetyCenterConfigReade";
@@ -227,7 +231,7 @@ final class SafetyCenterConfigReader {
                     safetyCenterConfig,
                     safetyCenterConfig.getSafetySourcesGroups(),
                     extractExternalSafetySources(safetyCenterConfig),
-                    extractBroadcasts(safetyCenterConfig));
+                    unmodifiableList(extractBroadcasts(safetyCenterConfig)));
         }
 
         @NonNull
