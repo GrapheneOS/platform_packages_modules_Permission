@@ -92,6 +92,25 @@ object SafetyCenterCtsConfigs {
             .addSafetySource(CTS_MULTIPLE_SOURCES_CONFIG_SOURCE_2)
             .build()
 
+    private val CTS_SEVERITY_ZERO_CONFIG_SOURCE =
+        SafetySource.Builder(SAFETY_SOURCE_TYPE_DYNAMIC)
+            .setId(CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID)
+            .setPackageName(CTS_PACKAGE_NAME)
+            .setTitleResId(android.R.string.ok)
+            .setSummaryResId(android.R.string.ok)
+            .setIntentAction(ACTION_SAFETY_CENTER)
+            .setProfile(SafetySource.PROFILE_PRIMARY)
+            .setMaxSeverityLevel(0)
+            .build()
+
+    private val CTS_SEVERITY_ZERO_CONFIG_GROUP =
+        SafetySourcesGroup.Builder()
+            .setId(CTS_SINGLE_SOURCE_GROUP_ID)
+            .setTitleResId(android.R.string.ok)
+            .setSummaryResId(android.R.string.ok)
+            .addSafetySource(CTS_SEVERITY_ZERO_CONFIG_SOURCE)
+            .build()
+
     val CTS_STATIC_SOURCE_1 =
         SafetySource.Builder(SAFETY_SOURCE_TYPE_STATIC)
             .setId("cts_static_source_id_1")
@@ -134,6 +153,12 @@ object SafetyCenterCtsConfigs {
     /** A simple [SafetyCenterConfig] for CTS tests with multiple sources. */
     val CTS_MULTIPLE_SOURCES_CONFIG =
         SafetyCenterConfig.Builder().addSafetySourcesGroup(CTS_MULTIPLE_SOURCES_GROUP).build()
+
+    /**
+     * A simple [SafetyCenterConfig] for CTS tests with a source max severity level of 0.
+     */
+    val CTS_SEVERITY_ZERO_CONFIG =
+        SafetyCenterConfig.Builder().addSafetySourcesGroup(CTS_SEVERITY_ZERO_CONFIG_GROUP).build()
 
     val CTS_STATIC_SOURCE_CONFIG =
         SafetyCenterConfig.Builder()
