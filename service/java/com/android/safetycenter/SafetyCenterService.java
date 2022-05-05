@@ -144,8 +144,7 @@ public final class SafetyCenterService extends SystemService {
             Executor backgroundThreadExecutor = BackgroundThread.getExecutor();
             SafetyCenterEnabledListener listener = new SafetyCenterEnabledListener();
             // Ensure the listener is called first with the current state on the same thread.
-            backgroundThreadExecutor.execute(
-                    () -> listener.onSafetyCenterEnabledChanged(getSafetyCenterEnabledProperty()));
+            backgroundThreadExecutor.execute(listener::setInitialState);
             DeviceConfig.addOnPropertiesChangedListener(
                     DeviceConfig.NAMESPACE_PRIVACY, backgroundThreadExecutor, listener);
         }
@@ -621,6 +620,10 @@ public final class SafetyCenterService extends SystemService {
                 return;
             }
             onSafetyCenterEnabledChanged(safetyCenterEnabled);
+        }
+
+        private void setInitialState() {
+            mSafetyCenterEnabled = getSafetyCenterEnabledProperty();
         }
 
         private void onSafetyCenterEnabledChanged(boolean safetyCenterEnabled) {
