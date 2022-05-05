@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"सर्व फाइल व्यवस्थापित करण्यास अनुमती दिली आहे"</string>
     <string name="ask_header" msgid="2633816846459944376">"प्रत्येक वेळी विचारा"</string>
     <string name="denied_header" msgid="903209608358177654">"अनुमती नाही"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"तुमच्या डिव्‍हाइससाठी आवश्‍यक कार्यक्षमता पुरवणार्‍या काही ॲप्सना तुमच्या सर्व फाइलचा विशेष अ‍ॅक्सेस असू शकतो"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"सर्व फाइलचा अ‍ॅक्सेस असणारी ॲप्स पहा"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{एक दिवस}other{# दिवस}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{एक तास}other{# तास}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{एक मिनिट}other{# मिनिटे}}"</string>
@@ -523,4 +523,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) द्वारे अलीकडे वापरले गेले"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"सुरक्षा &amp; गोपनीयता"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"स्टेटस तपासा"</string>
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"कंफर्म करा"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"मागे जा"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"इतर फाइलच्या अ‍ॅक्सेसलादेखील अनुमती दिली जाईल"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"इतर फाइलच्या अ‍ॅक्सेसलादेखील अनुमती दिली जाणार नाही"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"इतर फाइलच्या अ‍ॅक्सेसलादेखील अनुमती दिली जाईल"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"इतर फाइलच्या अ‍ॅक्सेसलादेखील अनुमती दिली जाणार नाही"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"फोटो आणि व्हिडिओच्या अ‍ॅक्सेसलादेखील अनुमती दिली जाईल"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"फोटो आणि व्हिडिओच्या अ‍ॅक्सेसलादेखील अनुमती दिली जाणार नाही"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"संगीत आणि ऑडिओ फाइलच्या अ‍ॅक्सेसलादेखील अनुमती दिली जाईल"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"संगीत आणि ऑडिओ फाइलच्या अ‍ॅक्सेसलादेखील अनुमती दिली जाणार नाही"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"हे अ‍ॅप Android च्या नवीनतम आवृत्तीला सपोर्ट करत नाही. हे अ‍ॅप संगीत आणि ऑडिओ फाइल अ‍ॅक्सेस करू शकत असल्यास, त्याला फोटो, व्हिडिओ व इतर फाइल अ‍ॅक्सेस करण्याचीदेखील अनुमती दिली जाईल."</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"हे अ‍ॅप Android च्या नवीनतम आवृत्तीला सपोर्ट करत नाही. हे अ‍ॅप संगीत आणि ऑडिओ फाइल अ‍ॅक्सेस करू शकत नसल्यास, त्याला फोटो, व्हिडिओ व इतर फाइल अ‍ॅक्सेस करण्याचीदेखील अनुमती दिली जाणार नाही."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"हे अ‍ॅप Android च्या नवीनतम आवृत्तीला सपोर्ट करत नाही. हे अ‍ॅप फोटो आणि व्हिडिओ अ‍ॅक्सेस करू शकत असल्यास, त्याला संगीत, ऑडिओ व इतर फाइल अ‍ॅक्सेस करण्याचीदेखील अनुमती दिली जाईल."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"हे अ‍ॅप Android च्या नवीनतम आवृत्तीला सपोर्ट करत नाही. हे अ‍ॅप फोटो आणि व्हिडिओ अ‍ॅक्सेस करू शकत नसल्यास, त्याला संगीत, ऑडिओ व इतर फाइल अ‍ॅक्सेस करण्याचीदेखील अनुमती दिली जाणार नाही."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"हे अ‍ॅप Android च्या नवीनतम आवृत्तीला सपोर्ट करत नाही. हे अ‍ॅप संगीत आणि ऑडिओ फाइल अ‍ॅक्सेस करू शकत असल्यास, त्याला फोटो व व्हिडिओ अ‍ॅक्सेस करण्याचीदेखील अनुमती दिली जाईल."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"हे अ‍ॅप Android च्या नवीनतम आवृत्तीला सपोर्ट करत नाही. हे अ‍ॅप संगीत आणि ऑडिओ फाइल अ‍ॅक्सेस करू शकत नसल्यास, त्याला फोटो व व्हिडिओ अ‍ॅक्सेस करण्याचीदेखील अनुमती दिली जाणार नाही."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"हे अ‍ॅप Android च्या नवीनतम आवृत्तीला सपोर्ट करत नाही. हे अ‍ॅप फोटो आणि व्हिडिओ अ‍ॅक्सेस करू शकत असल्यास, त्याला संगीत व ऑडिओ फाइल अ‍ॅक्सेस करण्याचीदेखील अनुमती दिली जाईल."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"हे अ‍ॅप Android च्या नवीनतम आवृत्तीला सपोर्ट करत नाही. हे अ‍ॅप संगीत आणि ऑडिओ फाइल अ‍ॅक्सेस करू शकत नसल्यास, त्याला फोटो व व्हिडिओ अ‍ॅक्सेस करण्याचीदेखील अनुमती दिली जाणार नाही."</string>
 </resources>

@@ -196,11 +196,11 @@
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"Бардык <xliff:g id="APP">%1$s</xliff:g> уруксаттарын көрүү"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"Ушундай уруксат берилген бардык колдонмолорду көрүү"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"Кошумча микрофондун иштешин көрсөтүү"</string>
-    <string name="unused_apps_category_title" msgid="2988455616845243901">"Иштетилбеген колдонмолордун жөндөөлөрү"</string>
+    <string name="unused_apps_category_title" msgid="2988455616845243901">"Колдонулбаган колдонмолордун жөндөөлөрү"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"Эгер колдонмо пайдаланылбаса, уруксаттар өчүрүлсүн"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Уруксаттарды өчүрүп, орун бошотуу"</string>
-    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Иштетилбесе, колдонмолордо жасалган аракеттерди тындыруу"</string>
-    <string name="unused_apps_summary" msgid="8839466950318403115">"Уруксаттарды өчүрүү, убактылуу файлдарды жок кылуу жана билдирмелерди токтотуу"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"Колдонулбаган колдонмолордун ишин тындыруу"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Уруксаттар өчүрүлүп, убактылуу файлдар тазаланып, билдирмелер келбей калат"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Эгер колдонмо бир нече ай пайдаланылбаса, жеке маалыматтарыңызды коргоо үчүн бул колдонмого берилген уруксаттар өчүрүлөт."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Эгер колдонмо бир нече ай пайдаланылбаса, жеке дайын-даректериңизди коргоо максатында төмөнкү уруксаттар өчүрүлөт: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Жеке дайын-даректериңизди коргоо максатында, бир нече айдан бери ачылбаган колдонмолордогу уруксаттар өчүрүлдү."</string>
@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Бардык файлдарды башкарууга уруксат берилген"</string>
     <string name="ask_header" msgid="2633816846459944376">"Ар дайым суралсын"</string>
     <string name="denied_header" msgid="903209608358177654">"Тыюу салынган"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Түзмөгүңүздүн колдонулушун өркүндөткөн айрым колдонмолордун бардык файлдарыңызды колдонууга атайын уруксаты бар"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Бардык файлдарга мүмкүнчүлүгү бар колдонмолорду көрүү"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 күн}other{# күн}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 саат}other{# саат}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 мүнөт}other{# мүнөт}}"</string>
@@ -259,7 +259,7 @@
     <string name="auto_revoke_permission_reminder_notification_title_one" msgid="6690347469376854137">"1 колдонулбаган колдонмо"</string>
     <string name="auto_revoke_permission_reminder_notification_title_many" msgid="6062217713645069960">"<xliff:g id="NUMBER_OF_APPS">%s</xliff:g> колдонулбаган колдонмо"</string>
     <string name="auto_revoke_permission_reminder_notification_content" msgid="4492228990462107487">"Купуялыгыңызды коргоо максатында, уруксаттар өчүрүлөт. Кененирээк маалымат алгыңыз келсе, бул жерди басып коюңуз"</string>
-    <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"Иштетилбеген колдонмолордун уруксаттары өчүрүлдү"</string>
+    <string name="auto_revoke_permission_notification_title" msgid="2629844160853454657">"Колдонулбаган колдонмолордун уруксаттары өчүрүлдү"</string>
     <string name="auto_revoke_permission_notification_content" msgid="5125990886047799375">"Айрым колдонмолор бир нече ай иштетилген жок. Көрүү үчүн таптап коюңуз."</string>
     <string name="unused_apps_notification_title" msgid="4314832015894238019">"{count,plural, =1{# иштетилбеген колдонмо}other{# иштетилбеген колдонмо}}"</string>
     <string name="unused_apps_notification_content" msgid="9195026773244581246">"Уруксаттар менен убактылуу файлдар өчүрүлүп, билдирмелер токтотулду. Көрүү үчүн таптап коюңуз."</string>
@@ -523,4 +523,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Акыркы жолу <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) колдонмосунда иштетилди"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Коопсуздук жана купуялык"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Статусту текшерүү"</string>
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"Ырастоо"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"Артка"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"Башка файлдарды да колдонууга уруксат берилет"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"Башка файлдарды да колдонууга уруксат берилбейт"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"Башка файлдарды да колдонууга уруксат берилет"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"Башка файлдарды да колдонууга уруксат берилбейт"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"Сүрөттөр менен видеолорду да колдонууга уруксат берилет"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"Сүрөттөр менен видеолорду да колдонууга уруксат берилбейт"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"Музыканы жана аудио файлдарды да колдонууга уруксат берилет"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"Музыканы жана аудио файлдарды да колдонууга уруксат берилбейт"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"Бул колдонмону Android\'дин акыркы версиясына жаңытууга болбойт. Эгер бул колдонмо музыкага жана аудио файлдарда мүмкүнчүлүк ала алса, ал сүрөттөрдү, видеолорду жана башка файлдарды да колдоно алат."</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"Бул колдонмону Android\'дин акыркы версиясына жаңытууга болбойт. Эгер бул колдонмо музыкага жана аудио файлдарда мүмкүнчүлүк ала албаса, ал сүрөттөрдү, видеолорду жана башка файлдарды да колдоно албайт."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"Бул колдонмону Android\'дин акыркы версиясына жаңытууга болбойт. Эгер бул колдонмо сүрөттөргө жана видеолорго мүмкүнчүлүк ала алса, ал музыканы, аудиону жана башка файлдарды да колдоно алат."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"Бул колдонмону Android\'дин акыркы версиясына жаңытууга болбойт. Эгер бул колдонмо сүрөттөргө жана видеолорго мүмкүнчүлүк ала албаса, ал музыканы, аудиону жана башка файлдарды да колдоно албайт."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"Бул колдонмону Android\'дин акыркы версиясына жаңытууга болбойт. Эгер бул колдонмо музыкага жана аудио файлдарда мүмкүнчүлүк ала алса, ал сүрөттөрдү жана видеолорду да колдоно алат."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Бул колдонмону Android\'дин акыркы версиясына жаңытууга болбойт. Эгер бул колдонмо музыкага жана аудио файлдарда мүмкүнчүлүк ала албаса, ал сүрөттөрдү жана видеолорду да колдоно албайт."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Бул колдонмону Android\'дин акыркы версиясына жаңытууга болбойт. Эгер бул колдонмо сүрөттөргө жана видеолорго мүмкүнчүлүк ала алса, ал музыканы жана аудио файлдарды да колдоно алат."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Бул колдонмону Android\'дин акыркы версиясына жаңытууга болбойт. Эгер бул колдонмо музыкага жана аудио файлдарда мүмкүнчүлүк ала албаса, ал сүрөттөрдү жана видеолорду да колдоно албайт."</string>
 </resources>

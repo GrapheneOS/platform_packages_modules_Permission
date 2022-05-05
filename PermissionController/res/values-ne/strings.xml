@@ -180,7 +180,7 @@
     <string name="app_permission_usage_title" msgid="6676802437831981822">"एपको अनुमतिको उपयोग"</string>
     <string name="app_permission_usage_summary" msgid="390383661936709672">"पहुँच: <xliff:g id="NUM">%1$s</xliff:g> पटक। कुल समय: <xliff:g id="DURATION">%2$s</xliff:g>। पछिल्लो पटक <xliff:g id="TIME">%3$s</xliff:g> अघि प्रयोग गरिएको।"</string>
     <string name="app_permission_usage_summary_no_duration" msgid="3698475875179457400">"पहुँच: <xliff:g id="NUM">%1$s</xliff:g> पटक। पछिल्लो पटक <xliff:g id="TIME">%2$s</xliff:g> अघि प्रयोग गरिएको।"</string>
-    <string name="app_permission_button_allow" msgid="5808039516494774647">"अनुमति दिनुहोस्"</string>
+    <string name="app_permission_button_allow" msgid="5808039516494774647">"अनुमति दिइयोस्"</string>
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"सबै फाइलहरू व्यवस्थापन गर्ने अनुमति दिइयोस्"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"केवल मिडिया प्रयोग गर्ने अनुमति दिइयोस्"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"सधैँ अनुमति दिइयोस्"</string>
@@ -193,13 +193,13 @@
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"सटीक लोकेसन अफ हुँदा एपहरूलाई मेरो अनुमानित लोकेसन प्रयोग गर्न दिइयोस्"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g>सम्बन्धी अनुमति"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"<xliff:g id="PERM">%1$s</xliff:g>लाई यो एप प्रयोग गर्ने अनुमति दिने वा नदिने"</string>
-    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g>सँग भएका सबै अनुमति हेर्नुहोस्"</string>
+    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"<xliff:g id="APP">%1$s</xliff:g> सँग भएका सबै अनुमति हेर्नुहोस्"</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"यो अनुमति पाएका सबै एपहरू हेर्नुहोस्"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"सहायकको माइक्रोफोन प्रयोगसम्बन्धी डेटा देखाउनुहोस्"</string>
     <string name="unused_apps_category_title" msgid="2988455616845243901">"प्रयोग नगरिएको एपसम्बन्धी सेटिङ"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"यो एप प्रयोग नहुँदा यसलाई दिइएका अनुमतिहरू रद्द गरियोस्"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"अनुमतिहरू हटाई ठाउँ खाली गरियोस्"</string>
-    <string name="unused_apps_label_v2" msgid="7058776770056517980">"एप प्रयोग नगरिएको खण्डमा उक्त एपमा बिताएको समय रेकर्ड गर्ने कार्य केही समयका लागि रोक्नुहोस्"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"एप प्रयोग नगरिएको अवस्थामा उक्त एपमा बिताएको समय रेकर्ड नगरियोस्"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"अनुमतिहरू रद्द गरियोस्, अस्थायी फाइलहरू मेटाइयोस् र एपसम्बन्धी सूचना नपठाइयोस्"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"तपाईंका डेटाको सुरक्षार्थ यो एप केही महिनासम्म प्रयोग नगरिएका खण्डमा यसलाई दिइएका अनुमति रद्द गरिने छन्।"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"तपाईंका डेटाको सुरक्षार्थ यो एप केही महिनासम्म प्रयोग नगरिएका खण्डमा निम्न अनुमति रद्द गरिने छन्: <xliff:g id="PERMS">%1$s</xliff:g>"</string>
@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"सबै फाइल व्यवस्थापन गर्ने अनुमति दिइएको"</string>
     <string name="ask_header" msgid="2633816846459944376">"प्रत्येक पटक सोधियोस्"</string>
     <string name="denied_header" msgid="903209608358177654">"अनुमति नदिइएका"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"तपाईंको डिभाइसमा अत्यावश्यक सुविधा प्रदान गर्ने केही एपहरूसँग तपाईंका सबै फाइल प्रयोग गर्ने विशेष अनुमति हुन सक्छ"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"सबै फाइलहरू प्रयोग गर्ने अनुमति पाएका एपहरू हेर्नुहोस्"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{१ दिन}other{# दिन}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{१ घण्टा}other{# घण्टा}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{१ मिनेट}other{# मिनेट}}"</string>
@@ -423,7 +423,7 @@
     <string name="incident_report_notification_text" msgid="3376480583513587923">"<xliff:g id="APP_NAME">%1$s</xliff:g> डिबग प्रक्रियासम्बन्धी जानकारी अपलोड गर्न चाहन्छ।"</string>
     <string name="incident_report_dialog_title" msgid="669104389325204095">"डिबग प्रक्रियासम्बन्धी डेटा सेयर गर्ने हो?"</string>
     <string name="incident_report_dialog_intro" msgid="5897733669850951832">"प्रणालीले कुनै समस्या फेला पारेको छ"</string>
-    <string name="incident_report_dialog_text" msgid="5675553296891757523">"<xliff:g id="APP_NAME_0">%1$s</xliff:g> ले <xliff:g id="DATE">%2$s</xliff:g> <xliff:g id="TIME">%3$s</xliff:g> मा यो यन्त्रबाट लिएको बगको रिपोर्ट अपलोड गर्ने अनुरोध गर्दै छ। बग रिपोर्टमा प्रयोगकर्ताका नाम, स्ठानसम्बन्धी डेटा, डिभाइसका पहिचानकर्ता र नेटवर्कसम्बन्धी जानकारी जस्ता तपाईंको डिभाइसको व्यक्तिगत जानकारी वा अनुप्रयोगले लग गरेको जानकारी समावेश छ। तपाईंलाई यो जानकारी दिँदा फरक पर्दैन जस्तो लाग्ने विश्वसनीय मान्छे वा अनुप्रयोगसँग मात्र बग रिपोर्टहरू सेयर गर्नुहोस्। <xliff:g id="APP_NAME_1">%4$s</xliff:g> लाई बग रिपोर्ट अपलोड गर्न दिने हो?"</string>
+    <string name="incident_report_dialog_text" msgid="5675553296891757523">"<xliff:g id="APP_NAME_0">%1$s</xliff:g> ले <xliff:g id="DATE">%2$s</xliff:g> <xliff:g id="TIME">%3$s</xliff:g> मा यो यन्त्रबाट लिएको बगको रिपोर्ट अपलोड गर्ने अनुरोध गर्दै छ। बग रिपोर्टमा प्रयोगकर्ताका नाम, स्ठानसम्बन्धी डेटा, डिभाइसका पहिचानकर्ता र नेटवर्कसम्बन्धी जानकारी जस्ता तपाईंको डिभाइसको व्यक्तिगत जानकारी वा अनुप्रयोगले लग गरेको जानकारी समावेश छ। तपाईंलाई यो जानकारी दिँदा फरक पर्दैन जस्तो लाग्ने विश्वसनीय मान्छे वा एपसँग मात्र बग रिपोर्टहरू सेयर गर्नुहोस्। <xliff:g id="APP_NAME_1">%4$s</xliff:g> लाई बग रिपोर्ट अपलोड गर्न दिने हो?"</string>
     <string name="incident_report_error_dialog_text" msgid="4189647113387092272">"<xliff:g id="APP_NAME">%1$s</xliff:g> को बगसम्बन्धी रिपोर्ट प्रक्रियामा लैजाने क्रममा त्रुटि भयो। त्यस कारण विस्तृत डिबग प्रक्रियासम्बन्धी डेटा आदान प्रदान गर्ने कार्य अस्वीकार गरिएको छ। व्यवधानका लागि क्षमा गर्नुहोला।"</string>
     <string name="incident_report_dialog_allow_label" msgid="2970242967721155239">"अनुमति दिनुहोस्"</string>
     <string name="incident_report_dialog_deny_label" msgid="3535314290677579383">"अनुमति नदिनुहोस्"</string>
@@ -523,4 +523,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) ले हालसालै प्रयोग गरेको"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"सुरक्षा तथा गोपनीयता"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"स्थिति जाँच गर्नुहोस्"</string>
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"पुष्टि गर्नुहोस्"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"पछाडि"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"अन्य फाइलहरू पनि प्रयोग गर्न पाउने छ"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"अन्य फाइलहरू पनि प्रयोग गर्न पाउने छैन"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"अन्य फाइलहरू पनि प्रयोग गर्न पाउने छ"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"अन्य फाइलहरू पनि प्रयोग गर्न पाउने छैन"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"फोटो तथा भिडियोहरू पनि प्रयोग गर्न पाउने छ"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"फोटो तथा भिडियोहरू पनि प्रयोग गर्न पाउने छैन"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"सङ्गीत तथा अडियो फाइलहरू पनि प्रयोग गर्न पाउने छ"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"सङ्गीत तथा अडियो फाइलहरू पनि प्रयोग गर्न पाउने छैन"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"यो एप Android को नवीनतम संस्करणमा काम गर्दैन। यो एपले सङ्गीत तथा अडियो फाइलहरू प्रयोग गर्न सक्छ भने यसले फोटो, भिडियो र अन्य फाइलहरू पनि प्रयोग गर्न पाउने छ।"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"यो एप Android को नवीनतम संस्करणमा काम गर्दैन। यो एपले सङ्गीत तथा अडियो फाइलहरू प्रयोग गर्न सक्दैन भने यसले फोटो, भिडियो र अन्य फाइलहरू पनि प्रयोग गर्न पाउने छैन।"</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"यो एप Android को नवीनतम संस्करणमा काम गर्दैन। यो एपले फोटो तथा भिडियोहरू प्रयोग गर्न सक्छ भने यसले सङ्गीत, अडियो र अन्य फाइलहरू पनि प्रयोग गर्न पाउने छ।"</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"यो एप Android को नवीनतम संस्करणमा काम गर्दैन। यो एपले फोटो तथा भिडियोहरू प्रयोग गर्न सक्दैन भने यसले सङ्गीत, अडियो र अन्य फाइलहरू पनि प्रयोग गर्न पाउने छैन।"</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"यो एप Android को नवीनतम संस्करणमा काम गर्दैन। यो एपले सङ्गीत तथा अडियो फाइलहरू प्रयोग गर्न सक्छ भने यसले फोटो र भिडियोहरू पनि प्रयोग गर्न पाउने छ।"</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"यो एप Android को नवीनतम संस्करणमा काम गर्दैन। यो एपले सङ्गीत तथा अडियो फाइलहरू प्रयोग गर्न सक्दैन भने यसले फोटो र भिडियोहरू पनि प्रयोग गर्न पाउने छैन।"</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"यो एप Android को नवीनतम संस्करणमा काम गर्दैन। यो एपले फोटो तथा भिडियोहरू प्रयोग गर्न सक्छ भने यसले सङ्गीत र अडियो फाइलहरू पनि प्रयोग गर्न पाउने छ।"</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"यो एप Android को नवीनतम संस्करणमा काम गर्दैन। यो एपले सङ्गीत तथा अडियो फाइलहरू प्रयोग गर्न सक्दैन भने यसले फोटो र भिडियोहरू पनि प्रयोग गर्न पाउने छैन।"</string>
 </resources>

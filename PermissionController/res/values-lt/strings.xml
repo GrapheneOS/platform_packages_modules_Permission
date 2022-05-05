@@ -233,7 +233,7 @@
     <string name="permission_description_summary_nearby_devices" msgid="8269183818275073741">"Programos, kurioms suteiktas šis leidimas, gali rasti netoliese esančius įrenginius, prisijungti prie jų ir nustatyti apytikslį atstumą"</string>
     <string name="permission_description_summary_microphone" msgid="630834800308329907">"Programos, kurioms suteiktas šis leidimas, gali įrašyti garsą"</string>
     <string name="permission_description_summary_phone" msgid="4515277217435233619">"Programos, kurioms suteiktas šis leidimas, gal atlikti ir tvarkyti telefonų skambučius"</string>
-    <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Programos, kurioms suteiktas šis leidimas, gali pasiekti jutiklių duomenis apie gyvybinius ženklus"</string>
+    <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Programos, kurioms suteiktas šis leidimas, gali pasiekti jutiklių duomenis apie gyvybinius požymius"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Programos, kurioms suteiktas šis leidimas, gali siųsti ir peržiūrėti SMS pranešimus"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Programos, kurioms suteiktas šis leidimas, gali pasiekti nuotraukas, mediją ir failus jūsų įrenginyje"</string>
     <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"Programos, kurioms suteiktas šis leidimas, gali pasiekti muziką ir kitus garso failus jūsų įrenginyje"</string>
@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Leidžiama valdyti visus failus"</string>
     <string name="ask_header" msgid="2633816846459944376">"Klausti kaskart"</string>
     <string name="denied_header" msgid="903209608358177654">"Neleidžiama"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Kai kurioms programoms, teikiančioms pagrindines įrenginio funkcijas, gali būti suteikta speciali prieiga prie visų jūsų failų"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Žr. programas, kurioms suteikta visų failų prieiga"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 diena}one{# diena}few{# dienos}many{# dienos}other{# dienų}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 valanda}one{# valanda}few{# valandos}many{# valandos}other{# valandų}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 minutė}one{# minutė}few{# minutės}many{# minutės}other{# minučių}}"</string>
@@ -523,4 +523,40 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Neseniai naudota „<xliff:g id="APP_NAME">%1$s</xliff:g>“ (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Sauga ir privatumas"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Patikrinkite būseną"</string>
+    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
+    <skip />
 </resources>

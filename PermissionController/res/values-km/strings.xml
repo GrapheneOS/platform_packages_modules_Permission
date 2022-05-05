@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"បានអនុញ្ញាតឱ្យគ្រប់គ្រងឯកសារទាំងអស់"</string>
     <string name="ask_header" msgid="2633816846459944376">"សួរគ្រប់ពេល"</string>
     <string name="denied_header" msgid="903209608358177654">"មិន​បានអនុញ្ញាត​"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"កម្មវិធី​មួយចំនួន​ដែលផ្ដល់មុខងារ​ចាំបាច់​សម្រាប់ឧបករណ៍​របស់អ្នក​អាចមានសិទ្ធិពិសេស​ក្នុងការចូលប្រើ​ឯកសារ​ទាំងអស់​របស់អ្នក"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"មើលកម្មវិធី​ដែលមាន​សិទ្ធិចូលប្រើ​ឯកសារទាំងអស់"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 ថ្ងៃ}other{# ថ្ងៃ}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 ម៉ោង}other{# ម៉ោង}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 នាទី}other{# នាទី}}"</string>
@@ -523,4 +523,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"បានប្រើនាពេលថ្មីៗនេះដោយ <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"សុវត្ថិភាព និងឯកជនភាព"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"ពិនិត្យ​​ស្ថានភាព"</string>
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"បញ្ជាក់"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"ថយក្រោយ"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"សិទ្ធិចូលប្រើ​ឯកសារផ្សេងទៀត​ក៏នឹងត្រូវបាន​អនុញ្ញាតផងដែរ"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"សិទ្ធិចូលប្រើ​ឯកសារផ្សេងទៀត​ក៏នឹងមិនត្រូវបាន​អនុញ្ញាតផងដែរ"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"សិទ្ធិចូលប្រើ​ឯកសារផ្សេងទៀត​ក៏នឹងត្រូវបាន​អនុញ្ញាតផងដែរ"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"សិទ្ធិចូលប្រើ​ឯកសារផ្សេងទៀត​ក៏នឹងមិនត្រូវបាន​អនុញ្ញាតផងដែរ"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"សិទ្ធិចូលប្រើ​រូបថត និង​វីដេអូ​ក៏នឹងត្រូវបាន​អនុញ្ញាតផងដែរ"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"សិទ្ធិចូលប្រើ​រូបថត និង​វីដេអូ​ក៏នឹងមិនត្រូវបាន​អនុញ្ញាតផងដែរ"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"សិទ្ធិចូលប្រើ​ឯកសារសំឡេង និងតន្ត្រី​ក៏នឹងត្រូវបាន​អនុញ្ញាតផងដែរ"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"សិទ្ធិចូលប្រើ​ឯកសារសំឡេង និងតន្ត្រី​ក៏នឹងមិនត្រូវបាន​អនុញ្ញាតផងដែរ"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"កម្មវិធីនេះ​មិនស្គាល់កំណែ​ចុងក្រោយបំផុត​របស់ Android ទេ។ ប្រសិនបើ​កម្មវិធីនេះ​អាចចូលប្រើ​ឯកសារសំឡេង និងតន្ត្រីបាន នោះវាក៏នឹង​ត្រូវបានអនុញ្ញាតឱ្យ​ចូលប្រើ​រូបថត វីដេអូ និងឯកសារ​ផ្សេងទៀត​ផងដែរ។"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"កម្មវិធីនេះ​មិនស្គាល់កំណែ​ចុងក្រោយបំផុត​របស់ Android ទេ។ ប្រសិនបើ​កម្មវិធីនេះ​មិនអាចចូលប្រើ​ឯកសារសំឡេង និងតន្ត្រីបានទេ នោះវាក៏នឹង​មិនត្រូវបានអនុញ្ញាតឱ្យ​ចូលប្រើ​រូបថត វីដេអូ និងឯកសារ​ផ្សេងទៀត​ផងដែរ។"</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"កម្មវិធីនេះ​មិនស្គាល់កំណែ​ចុងក្រោយបំផុត​របស់ Android ទេ។ ប្រសិនបើ​កម្មវិធីនេះ​អាចចូលប្រើ​រូបថត និង​វីដេអូបាន នោះវាក៏នឹង​ត្រូវបានអនុញ្ញាតឱ្យ​ចូលប្រើ​តន្ត្រី សំឡេង និង​ឯកសារ​ផ្សេងទៀត​ផងដែរ។"</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"កម្មវិធីនេះ​មិនស្គាល់កំណែ​ចុងក្រោយបំផុត​របស់ Android ទេ។ ប្រសិនបើ​កម្មវិធីនេះ​មិនអាចចូលប្រើ​រូបថត និង​វីដេអូបានទេ នោះវាក៏នឹង​មិនត្រូវបាន​អនុញ្ញាតឱ្យ​ចូលប្រើ​តន្ត្រី សំឡេង និង​ឯកសារ​ផ្សេងទៀត​ផងដែរ។"</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"កម្មវិធីនេះ​មិនស្គាល់កំណែ​ចុងក្រោយបំផុត​របស់ Android ទេ។ ប្រសិនបើ​កម្មវិធីនេះ​អាចចូលប្រើ​ឯកសារសំឡេង និង​តន្ត្រីបាន នោះវាក៏នឹង​ត្រូវបានអនុញ្ញាត​ឱ្យចូលប្រើ​រូបថត និង​វីដេអូ​ផងដែរ។"</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"កម្មវិធីនេះ​មិនស្គាល់កំណែ​ចុងក្រោយបំផុត​របស់ Android ទេ។ ប្រសិនបើ​កម្មវិធីនេះ​មិនអាចចូលប្រើ​ឯកសារសំឡេង និង​តន្ត្រីបានទេ នោះវាក៏នឹង​មិនត្រូវបានអនុញ្ញាត​ឱ្យចូលប្រើ​រូបថត និង​វីដេអូ​ផងដែរ។"</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"កម្មវិធីនេះ​មិនស្គាល់កំណែ​ចុងក្រោយបំផុត​របស់ Android ទេ។ ប្រសិនបើ​កម្មវិធីនេះ​អាចចូលប្រើ​រូបថត និង​វីដេអូបាន នោះវាក៏នឹង​ត្រូវបានអនុញ្ញាតឱ្យ​ចូលប្រើ​ឯកសារសំឡេង និងតន្ត្រី​ផងដែរ។"</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"កម្មវិធីនេះ​មិនស្គាល់កំណែ​ចុងក្រោយបំផុត​របស់ Android ទេ។ ប្រសិនបើ​កម្មវិធីនេះ​មិនអាចចូលប្រើ​ឯកសារសំឡេង និង​តន្ត្រីបានទេ នោះវាក៏នឹង​មិនត្រូវបានអនុញ្ញាត​ឱ្យចូលប្រើ​រូបថត និង​វីដេអូ​ផងដែរ។"</string>
 </resources>

@@ -200,7 +200,7 @@
     <string name="auto_revoke_label" msgid="5068393642936571656">"Retirer les autorisations si l\'application est inutilisée"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"Retirer autorisations et libérer espace"</string>
     <string name="unused_apps_label_v2" msgid="7058776770056517980">"Suspendre l\'activité appli si inutilisée"</string>
-    <string name="unused_apps_summary" msgid="8839466950318403115">"Retirez les autorisations, supprimez les fichiers temporaires et arrêtez les notifications"</string>
+    <string name="unused_apps_summary" msgid="8839466950318403115">"Retirer les autorisations, supprimer les fichiers temporaires et arrêter les notifications"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"Afin de protéger vos données, les autorisations pour cette application seront supprimées si elle n\'est pas utilisée pendant quelques mois."</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"Afin de protéger vos données, si l\'application n\'est pas utilisée pendant quelques mois, les autorisations suivantes seront supprimées : <xliff:g id="PERMS">%1$s</xliff:g>"</string>
     <string name="auto_revoked_apps_page_summary" msgid="6594753657893756536">"Afin de protéger vos données, les autorisations ont été supprimées pour les applications que vous n\'avez pas utilisées depuis quelques mois."</string>
@@ -249,8 +249,8 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Autorisées à gérer tous les fichiers"</string>
     <string name="ask_header" msgid="2633816846459944376">"Toujours demander"</string>
     <string name="denied_header" msgid="903209608358177654">"Non autorisées"</string>
-    <string name="storage_footer_warning_text" msgid="2242258357752432337">"Certaines applications qui fournissent des fonctionnalités essentielles pour votre appareil peuvent avoir un accès spécial à tous vos fichiers"</string>
-    <string name="storage_footer_hyperlink_text" msgid="7759955324552930974">"Voir les applications ayant accès à tous les fichiers"</string>
+    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
+    <skip />
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 jour}one{# jour}other{# jours}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 heure}one{# heure}other{# heures}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 minute}one{# minute}other{# minutes}}"</string>
@@ -523,4 +523,40 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Récemment utilisé par <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Sécurité et confidentialité"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Vérification de l\'état"</string>
+    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
+    <skip />
+    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
+    <skip />
 </resources>
