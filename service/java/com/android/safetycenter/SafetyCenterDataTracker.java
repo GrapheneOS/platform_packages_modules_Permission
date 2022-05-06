@@ -694,8 +694,19 @@ final class SafetyCenterDataTracker {
                     SafetyCenterEntryGroupId.newBuilder()
                             .setSafetySourcesGroupId(safetySourcesGroup.getId())
                             .build();
-            String groupSummary = getOptionalString(safetySourcesGroup.getSummaryResId());
-            if (safetySourcesGroup.getId().equals(ANDROID_LOCK_SCREEN_SOURCES_ID)
+            CharSequence groupSummary = getOptionalString(safetySourcesGroup.getSummaryResId());
+            if (maxSafetyCenterEntryLevel > SafetyCenterEntry.ENTRY_SEVERITY_LEVEL_OK) {
+                for (int i = 0; i < entries.size(); i++) {
+                    SafetyCenterEntry entry = entries.get(i);
+
+                    CharSequence entrySummary = entry.getSummary();
+                    if (entry.getSeverityLevel() == maxSafetyCenterEntryLevel
+                            && entrySummary != null) {
+                        groupSummary = entrySummary;
+                        break;
+                    }
+                }
+            } else if (safetySourcesGroup.getId().equals(ANDROID_LOCK_SCREEN_SOURCES_ID)
                     && TextUtils.isEmpty(groupSummary)) {
                 List<CharSequence> titles = new ArrayList<>();
                 for (int i = 0; i < entries.size(); i++) {
