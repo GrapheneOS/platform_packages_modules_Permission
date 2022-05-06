@@ -100,6 +100,7 @@ java_sdk_library {
         //"framework-permission",
         "framework-permission-s.impl",
         "framework-permission-s-shared",
+        "jsr305",
 
         // Soong fails to automatically add this dependency because all the
         // *.kt sources are inside a filegroup.
