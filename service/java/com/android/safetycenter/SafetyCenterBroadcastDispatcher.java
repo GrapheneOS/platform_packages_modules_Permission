@@ -90,14 +90,13 @@ final class SafetyCenterBroadcastDispatcher {
             @RefreshReason int refreshReason,
             @NonNull UserProfileGroup userProfileGroup) {
         List<Broadcast> broadcasts = configInternal.getBroadcasts();
-        int requestType = toRefreshRequestType(refreshReason);
         BroadcastOptions broadcastOptions = createBroadcastOptions();
 
         for (int i = 0; i < broadcasts.size(); i++) {
             Broadcast broadcast = broadcasts.get(i);
 
             sendRefreshSafetySourcesBroadcast(
-                    broadcast, broadcastOptions, requestType, userProfileGroup, broadcastId);
+                    broadcast, broadcastOptions, refreshReason, userProfileGroup, broadcastId);
         }
     }
 
@@ -134,16 +133,18 @@ final class SafetyCenterBroadcastDispatcher {
     private void sendRefreshSafetySourcesBroadcast(
             @NonNull Broadcast broadcast,
             @NonNull BroadcastOptions broadcastOptions,
-            @RefreshRequestType int requestType,
+            @RefreshReason int refreshReason,
             @NonNull UserProfileGroup userProfileGroup,
             @NonNull String broadcastId) {
-        if (!broadcast.getSourceIdsForProfileOwner().isEmpty()) {
+        int requestType = toRefreshRequestType(refreshReason);
+        List<String> profileOwnerSourceIds = broadcast.getSourceIdsForProfileOwner(refreshReason);
+        if (!profileOwnerSourceIds.isEmpty()) {
             int profileOwnerUserId = userProfileGroup.getProfileOwnerUserId();
             Intent broadcastIntent =
                     createRefreshSafetySourcesBroadcastIntent(
                             requestType,
                             broadcast.getPackageName(),
-                            broadcast.getSourceIdsForProfileOwner(),
+                            profileOwnerSourceIds,
                             broadcastId);
             sendBroadcast(
                     broadcastIntent,
@@ -151,15 +152,17 @@ final class SafetyCenterBroadcastDispatcher {
                     SEND_SAFETY_CENTER_UPDATE,
                     broadcastOptions);
         }
-        if (!broadcast.getSourceIdsForManagedProfiles().isEmpty()) {
-            int[] managedProfileUserIds = userProfileGroup.getManagedProfilesUserIds();
-            for (int i = 0; i < managedProfileUserIds.length; i++) {
-                int managedProfileUserId = managedProfileUserIds[i];
+        List<String> managedProfilesSourceIds =
+                broadcast.getSourceIdsForManagedProfiles(refreshReason);
+        if (!managedProfilesSourceIds.isEmpty()) {
+            int[] managedProfilesUserIds = userProfileGroup.getManagedProfilesUserIds();
+            for (int i = 0; i < managedProfilesUserIds.length; i++) {
+                int managedProfileUserId = managedProfilesUserIds[i];
                 Intent broadcastIntent =
                         createRefreshSafetySourcesBroadcastIntent(
                                 requestType,
                                 broadcast.getPackageName(),
-                                broadcast.getSourceIdsForManagedProfiles(),
+                                managedProfilesSourceIds,
                                 broadcastId);
 
                 sendBroadcast(

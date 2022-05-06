@@ -23,11 +23,11 @@ import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.cle
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.clearSafetyCenterConfigForTestsWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.setSafetyCenterConfigForTestsWithPermission
 import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.setSafetySourceDataWithPermission
-import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.CTS_SINGLE_SOURCE_CONFIG
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_CONFIG
 
 class SimpleTestSource(private val safetyCenterManager: SafetyCenterManager) {
     fun configureTestSource() {
-        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(CTS_SINGLE_SOURCE_CONFIG)
+        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(SINGLE_SOURCE_CONFIG)
     }
 
     fun cleanupService() {
@@ -43,6 +43,6 @@ class SimpleTestSource(private val safetyCenterManager: SafetyCenterManager) {
     companion object {
         val EVENT_SOURCE_STATE_CHANGED =
             SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
-        private const val SOURCE_ID = SafetyCenterCtsConfigs.CTS_SINGLE_SOURCE_CONFIG_SOURCE_ID
+        private const val SOURCE_ID = SafetyCenterCtsConfigs.SINGLE_SOURCE_ID
     }
 }

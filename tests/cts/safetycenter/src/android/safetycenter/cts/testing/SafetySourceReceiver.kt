@@ -251,9 +251,9 @@ class SafetySourceReceiver : BroadcastReceiver() {
 
         private fun requestTypeToReason(requestType: Int) =
             when (requestType) {
-                EXTRA_REFRESH_REQUEST_TYPE_GET_DATA -> SafetySourceDataKey.Reason.REFRESH_PAGE_OPEN
+                EXTRA_REFRESH_REQUEST_TYPE_GET_DATA -> SafetySourceDataKey.Reason.REFRESH_GET_DATA
                 EXTRA_REFRESH_REQUEST_TYPE_FETCH_FRESH_DATA ->
-                    SafetySourceDataKey.Reason.REFRESH_RESCAN
+                    SafetySourceDataKey.Reason.REFRESH_FETCH_FRESH_DATA
                 else -> throw IllegalStateException("Unexpected request type: $requestType")
             }
 
@@ -263,7 +263,7 @@ class SafetySourceReceiver : BroadcastReceiver() {
             sourceIssueActionId: String
         ) {
             val inlineActionKey =
-                SafetySourceDataKey(SafetySourceDataKey.Reason.INLINE_ACTION, sourceId)
+                SafetySourceDataKey(SafetySourceDataKey.Reason.RESOLVING_ACTION, sourceId)
             if (!safetySourceData.containsKey(inlineActionKey)) {
                 throw IllegalStateException(
                     "Attempt to reply to an inline action when no data provided for it")
@@ -288,9 +288,9 @@ class SafetySourceReceiver : BroadcastReceiver() {
         data class SafetySourceDataKey(val reason: Reason, val sourceId: String) {
             /** The reasons why this receiver could provide [SafetySourceData]. */
             enum class Reason {
-                REFRESH_PAGE_OPEN,
-                REFRESH_RESCAN,
-                INLINE_ACTION
+                REFRESH_GET_DATA,
+                REFRESH_FETCH_FRESH_DATA,
+                RESOLVING_ACTION
             }
         }
     }
