@@ -109,14 +109,9 @@ class SafetyCenterActivityTest {
     }
 
     @Before
-    fun setUp() {
-        simpleTestSource.cleanupService()
-        simpleTestSource.configureTestSource()
-        SafetyCenterFlags.setSafetyCenterEnabled(true)
-    }
-
     @After
-    fun tearDown() {
+    fun clearDataBetweenTest() {
+        SafetyCenterFlags.setSafetyCenterEnabled(true)
         simpleTestSource.cleanupService()
     }
 
@@ -140,7 +135,9 @@ class SafetyCenterActivityTest {
 
     @Test
     fun launchActivity_displaysSafetyData() {
+        simpleTestSource.configureTestSource()
         simpleTestSource.setSourceData(safetySourceDataCritical)
+
         startSafetyCenterActivity()
 
         assertSourceDataDisplayed(safetySourceDataCritical)
@@ -148,6 +145,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun updatingSafetySourceData_updatesDisplayedSafetyData() {
+        simpleTestSource.configureTestSource()
         simpleTestSource.setSourceData(safetySourceDataCritical)
         startSafetyCenterActivity()
 
@@ -160,6 +158,7 @@ class SafetyCenterActivityTest {
     fun launchActivity_displaysStaticSources() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(
             SafetyCenterCtsConfigs.CTS_STATIC_SOURCE_CONFIG)
+
         startSafetyCenterActivity()
 
         findAllText(
@@ -173,6 +172,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun issueCard_confirmsDismissal_dismisses() {
+        simpleTestSource.configureTestSource()
         simpleTestSource.setSourceData(safetySourceDataCritical)
         startSafetyCenterActivity()
 
@@ -185,6 +185,7 @@ class SafetyCenterActivityTest {
 
     @Test
     fun issueCard_confirmsDismissal_cancels() {
+        simpleTestSource.configureTestSource()
         simpleTestSource.setSourceData(safetySourceDataCritical)
         startSafetyCenterActivity()
 
