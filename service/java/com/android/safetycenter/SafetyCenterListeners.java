@@ -36,6 +36,8 @@ import androidx.annotation.RequiresApi;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.concurrent.NotThreadSafe;
+
 /**
  * A class that keeps track of all the registered {@link IOnSafetyCenterDataChangedListener}
  * per-user.
@@ -43,6 +45,7 @@ import java.util.List;
  * <p>This class isn't thread safe. Thread safety must be handled by the caller.
  */
 @RequiresApi(TIRAMISU)
+@NotThreadSafe
 final class SafetyCenterListeners {
 
     private static final String TAG = "SafetyCenterListeners";
