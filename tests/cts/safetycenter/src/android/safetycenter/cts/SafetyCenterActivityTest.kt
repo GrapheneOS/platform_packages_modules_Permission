@@ -22,6 +22,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_SAFETY_CENTER
 import android.os.Build.VERSION_CODES.TIRAMISU
+import android.os.SystemClock
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetySourceData
 import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING
@@ -40,7 +41,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import com.android.compatibility.common.util.UiAutomatorUtils.waitFindObject
 import com.android.compatibility.common.util.UiAutomatorUtils.waitFindObjectOrNull
-import com.google.common.truth.Truth.assertThat
+import java.time.Duration
 import java.util.regex.Pattern
 import org.junit.After
 import org.junit.Assume.assumeTrue
@@ -59,7 +60,18 @@ class SafetyCenterActivityTest {
         PendingIntent.getActivity(
             context, 0 /* requestCode */, Intent(ACTION_SAFETY_CENTER), FLAG_IMMUTABLE)
 
-    private val criticalIssueTitle = "Critical issue title"
+    private val criticalIssue =
+        SafetySourceIssue.Builder(
+                "critical_issue_id",
+                "Critical issue title",
+                "Critical issue summary",
+                SEVERITY_LEVEL_CRITICAL_WARNING,
+                "issue_type_id")
+            .addAction(
+                SafetySourceIssue.Action.Builder(
+                        "critical_action_id", "Solve issue", somePendingIntent)
+                    .build())
+            .build()
     private val safetySourceDataCritical =
         SafetySourceData.Builder()
             .setStatus(
@@ -67,18 +79,7 @@ class SafetyCenterActivityTest {
                         "Critical title", "Critical summary", SEVERITY_LEVEL_CRITICAL_WARNING)
                     .setPendingIntent(somePendingIntent)
                     .build())
-            .addIssue(
-                SafetySourceIssue.Builder(
-                        "critical_issue_id",
-                        criticalIssueTitle,
-                        "Critical issue summary",
-                        SEVERITY_LEVEL_CRITICAL_WARNING,
-                        "issue_type_id")
-                    .addAction(
-                        SafetySourceIssue.Action.Builder(
-                                "critical_action_id", "Solve issue", somePendingIntent)
-                            .build())
-                    .build())
+            .addIssue(criticalIssue)
             .build()
     private val safetySourceDataRecommendation =
         SafetySourceData.Builder()
@@ -180,7 +181,7 @@ class SafetyCenterActivityTest {
         waitFindObject(By.text("Dismiss this alert?"))
         findButton("Dismiss").click()
 
-        assertThat(waitFindObjectOrNull(By.text(criticalIssueTitle))).isNull()
+        assertIssueNotDisplayed(criticalIssue)
     }
 
     @Test
@@ -193,7 +194,7 @@ class SafetyCenterActivityTest {
         waitFindObject(By.text("Dismiss this alert?"))
         findButton("Cancel").click()
 
-        assertThat(waitFindObjectOrNull(By.text(criticalIssueTitle))).isNotNull()
+        assertIssueDisplayed(criticalIssue)
     }
 
     // TODO: Add tests for issues dismissible without confirmation and non-dismissible issues if &
@@ -209,13 +210,21 @@ class SafetyCenterActivityTest {
     private fun assertSourceDataDisplayed(sourceData: SafetySourceData) {
         findAllText(sourceData.status?.title, sourceData.status?.summary)
 
-        for (issue in sourceData.issues) {
-            findAllText(issue.title, issue.subtitle, issue.summary)
-
-            for (action in issue.actions) {
-                findButton(action.label)
-            }
+        for (sourceIssue in sourceData.issues) {
+            assertIssueDisplayed(sourceIssue)
         }
+    }
+
+    private fun assertIssueDisplayed(sourceIssue: SafetySourceIssue) {
+        findAllText(sourceIssue.title, sourceIssue.subtitle, sourceIssue.summary)
+
+        for (action in sourceIssue.actions) {
+            findButton(action.label)
+        }
+    }
+
+    private fun assertIssueNotDisplayed(sourceIssue: SafetySourceIssue) {
+        waitTextNotDisplayed(sourceIssue.title.toString())
     }
 
     private fun findButton(label: CharSequence): UiObject2 {
@@ -225,5 +234,28 @@ class SafetyCenterActivityTest {
 
     private fun findAllText(vararg textToFind: CharSequence?) {
         for (text in textToFind) if (text != null) waitFindObject(By.text(text.toString()))
+    }
+
+    private fun waitTextNotDisplayed(text: String) {
+        val startMillis = SystemClock.elapsedRealtime()
+        while (true) {
+            if (waitFindObjectOrNull(By.text(text), NOT_DISPLAYED_CHECK_INTERVAL.toMillis()) ==
+                null) {
+                return
+            }
+            if (Duration.ofMillis(SystemClock.elapsedRealtime() - startMillis) >=
+                NOT_DISPLAYED_TIMEOUT) {
+                break
+            }
+            Thread.sleep(NOT_DISPLAYED_CHECK_INTERVAL.toMillis())
+        }
+        throw AssertionError(
+            "View with text $text is still displayed after waiting for at least" +
+                "$NOT_DISPLAYED_TIMEOUT")
+    }
+
+    companion object {
+        private val NOT_DISPLAYED_TIMEOUT = Duration.ofSeconds(20)
+        private val NOT_DISPLAYED_CHECK_INTERVAL = Duration.ofMillis(100)
     }
 }
