@@ -100,11 +100,13 @@ public class CompositeCircleViewLabeler extends RelativeLayout {
         float ccvCenterY = ccv.getY() + (ccvHeight * 0.5f);
         float ccvRadius = Math.min(ccvWidth, ccvHeight) * 0.5f;
         float labelRadius = ccvRadius * mLabelRadiusScalar;
+        int centerLabelX = (int) (ccvCenterX - (mCenterLabel.getWidth() * 0.5f));
+        int centerLabelY = (int) (ccvCenterY - (mCenterLabel.getHeight() * 0.5f));
 
         // Position center label.
         if (mCenterLabel != null) {
-            mCenterLabel.setX((int) (ccvCenterX - (mCenterLabel.getWidth() * 0.5f)));
-            mCenterLabel.setY((int) (ccvCenterY - (mCenterLabel.getHeight() * 0.5f)));
+            mCenterLabel.setX(centerLabelX);
+            mCenterLabel.setY(centerLabelY);
         }
 
         // For each provided label, determine position angle.
@@ -144,8 +146,51 @@ public class CompositeCircleViewLabeler extends RelativeLayout {
                 x -= offset;
             }
 
+            double labelMinX = x;
+            double labelMaxX = x + width;
+            double labelMinY = y;
+            double labelMaxY = y + height;
+            double centerLabelMinX = centerLabelX;
+            double centerLabelMaxX = centerLabelX + mCenterLabel.getWidth();
+            double centerLabelMinY = centerLabelY;
+            double centerLabelMaxY = centerLabelY + mCenterLabel.getHeight();
+
+            if (isOverlapping(labelMinX, labelMaxX, labelMinY, labelMaxY,
+                    centerLabelMinX, centerLabelMaxX, centerLabelMinY, centerLabelMaxY)) {
+                if (shouldMoveLabelUp(labelMinY, labelMaxY, centerLabelMinY, centerLabelMaxY)) {
+                    y += centerLabelMaxY - labelMinY;
+                } else {
+                    y -= labelMaxY - centerLabelMinY;
+                }
+            }
+
             label.setX((int) x);
             label.setY((int) y);
         }
+    }
+
+    /**
+     * Given the minimum and maximum X and Y values of the label and center label,
+     * determine whether they overlap.
+     * @return whether the label overlaps with the center label
+     */
+    private boolean isOverlapping(
+            double labelMinX, double labelMaxX, double labelMinY, double labelMaxY,
+            double centerLabelMinX, double centerLabelMaxX,
+            double centerLabelMinY, double centerLabelMaxY) {
+        // If they overlap, the condition inside the parentheses will not be true
+        return !(labelMinY > centerLabelMaxY || labelMaxY < centerLabelMinY
+                || labelMinX > centerLabelMaxX || labelMaxX < centerLabelMinX);
+    }
+
+    /**
+     * Determines the minimum distance to move the label along the Y axis in order to make it
+     * not overlap with the center label. Up means the positive direction in Java.
+     * @return whether we should move the label up
+     */
+    private boolean shouldMoveLabelUp(
+            double labelMinY, double labelMaxY, double centerLabelMinY, double centerLabelMaxY) {
+        // this returns (the distance to move the label up) < (the distance to move the label down)
+        return centerLabelMaxY - labelMinY < labelMaxY - centerLabelMinY;
     }
 }
