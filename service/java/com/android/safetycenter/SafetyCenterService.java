@@ -61,6 +61,7 @@ import com.android.safetycenter.internaldata.SafetyCenterIssueId;
 import com.android.safetycenter.resources.SafetyCenterResourcesContext;
 import com.android.server.SystemService;
 
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -79,14 +80,32 @@ public final class SafetyCenterService extends SystemService {
     /** Phenotype flag that determines whether SafetyCenter is enabled. */
     private static final String PROPERTY_SAFETY_CENTER_ENABLED = "safety_center_is_enabled";
 
+    /**
+     * Time for which a refresh is allowed to wait for sources to set data before timing out and
+     * marking the refresh as finished.
+     */
+    // TODO(b/218285164): Decide final timeout and use a Device Config value instead so that this
+    //  duration can be easily adjusted. Once done, add a test that overrides this Device Config
+    //  value in CTS tests.
+    private static final Duration REFRESH_TIMEOUT = Duration.ofSeconds(10);
+
+    /**
+     * Time for which a resolving action is allowed to run for before timing out and unmarking it as
+     * in-flight.
+     */
+    // TODO(b/218285164): Decide final timeout and use a Device Config value instead so that this
+    //  duration can be easily adjusted. Once done, add a test that overrides this Device Config
+    //  value in CTS tests.
+    private static final Duration RESOLVE_ACTION_TIMEOUT = Duration.ofSeconds(10);
+
     private final Object mApiLock = new Object();
-    // Broadcasts to safety sources are guarded by another lock: we may want to do this sequentially
-    // in a blocking fashion and the APIs that will be exercised by the receivers are already
-    // protected by `mApiLock`.
-    private final Object mBroadcastLock = new Object();
 
     @GuardedBy("mApiLock")
     private final SafetyCenterListeners mSafetyCenterListeners = new SafetyCenterListeners();
+
+    @GuardedBy("mApiLock")
+    private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker =
+            new SafetyCenterRefreshTracker();
 
     @GuardedBy("mApiLock")
     @NonNull
@@ -96,15 +115,10 @@ public final class SafetyCenterService extends SystemService {
     @NonNull
     private final SafetyCenterDataTracker mSafetyCenterDataTracker;
 
-    @GuardedBy("mBroadcastLock")
-    @NonNull
-    private final SafetyCenterBroadcastDispatcher mSafetyCenterBroadcastDispatcher;
+    @NonNull private final SafetyCenterBroadcastDispatcher mSafetyCenterBroadcastDispatcher;
 
     @NonNull private final AppOpsManager mAppOpsManager;
     private final boolean mDeviceSupportsSafetyCenter;
-
-    private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker =
-            new SafetyCenterRefreshTracker();
 
     /** Whether the {@link SafetyCenterConfig} was successfully loaded. */
     private volatile boolean mConfigAvailable;
@@ -117,8 +131,7 @@ public final class SafetyCenterService extends SystemService {
         mSafetyCenterDataTracker =
                 new SafetyCenterDataTracker(
                         context, safetyCenterResourcesContext, mSafetyCenterRefreshTracker);
-        mSafetyCenterBroadcastDispatcher =
-                new SafetyCenterBroadcastDispatcher(context, mSafetyCenterRefreshTracker);
+        mSafetyCenterBroadcastDispatcher = new SafetyCenterBroadcastDispatcher(context);
         mAppOpsManager = requireNonNull(context.getSystemService(AppOpsManager.class));
         mDeviceSupportsSafetyCenter =
                 context.getResources()
@@ -283,14 +296,22 @@ public final class SafetyCenterService extends SystemService {
             UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
 
             SafetyCenterConfigInternal configInternal;
+            String refreshBroadcastId;
             synchronized (mApiLock) {
                 configInternal = mSafetyCenterConfigReader.getCurrentConfigInternal();
+                // TODO(b/229060064): Check if a refresh is currently in progress, and only start a
+                //  new refresh if it should be replaced.
+                refreshBroadcastId =
+                        mSafetyCenterRefreshTracker.reportRefreshInProgress(
+                                configInternal, refreshReason, userProfileGroup);
             }
 
-            synchronized (mBroadcastLock) {
-                mSafetyCenterBroadcastDispatcher.sendRefreshSafetySources(
-                        configInternal, refreshReason, userProfileGroup);
-            }
+            RefreshTimeout refreshTimeout =
+                    new RefreshTimeout(refreshBroadcastId, userProfileGroup);
+            BackgroundThread.getHandler().postDelayed(refreshTimeout, REFRESH_TIMEOUT.toMillis());
+
+            mSafetyCenterBroadcastDispatcher.sendRefreshSafetySources(
+                    configInternal, refreshBroadcastId, refreshReason, userProfileGroup);
         }
 
         @Override
@@ -465,6 +486,13 @@ public final class SafetyCenterService extends SystemService {
                                     userProfileGroup);
                     listeners = mSafetyCenterListeners.getListeners(userProfileGroup);
                 }
+            }
+
+            if (safetySourceIssueAction.willResolve()) {
+                ResolvingActionTimeout resolvingActionTimeout =
+                        new ResolvingActionTimeout(safetyCenterIssueActionId, userProfileGroup);
+                BackgroundThread.getHandler()
+                        .postDelayed(resolvingActionTimeout, RESOLVE_ACTION_TIMEOUT.toMillis());
             }
 
             if (listeners != null) {
@@ -642,9 +670,7 @@ public final class SafetyCenterService extends SystemService {
                 configInternal = mSafetyCenterConfigReader.getCurrentConfigInternal();
             }
 
-            synchronized (mBroadcastLock) {
-                mSafetyCenterBroadcastDispatcher.sendEnabledChanged(configInternal);
-            }
+            mSafetyCenterBroadcastDispatcher.sendEnabledChanged(configInternal);
         }
 
         private void onApiDisabled() {
@@ -656,9 +682,87 @@ public final class SafetyCenterService extends SystemService {
                 mSafetyCenterListeners.clear();
             }
 
-            synchronized (mBroadcastLock) {
-                mSafetyCenterBroadcastDispatcher.sendEnabledChanged(configInternal);
+            mSafetyCenterBroadcastDispatcher.sendEnabledChanged(configInternal);
+        }
+    }
+
+    /** A {@link Runnable} that is called to signal a refresh timeout. */
+    private final class RefreshTimeout implements Runnable {
+
+        @NonNull private final String mRefreshBroadcastId;
+        @NonNull private final UserProfileGroup mUserProfileGroup;
+
+        RefreshTimeout(
+                @NonNull String refreshBroadcastId, @NonNull UserProfileGroup userProfileGroup) {
+            mRefreshBroadcastId = refreshBroadcastId;
+            mUserProfileGroup = userProfileGroup;
+        }
+
+        @Override
+        public void run() {
+            List<RemoteCallbackList<IOnSafetyCenterDataChangedListener>> listeners;
+            SafetyCenterData safetyCenterData;
+            synchronized (mApiLock) {
+                boolean hasClearedRefresh =
+                        mSafetyCenterRefreshTracker.clearRefresh(mRefreshBroadcastId);
+                if (!hasClearedRefresh) {
+                    return;
+                }
+                SafetyCenterConfigInternal configInternal =
+                        mSafetyCenterConfigReader.getCurrentConfigInternal();
+                safetyCenterData =
+                        mSafetyCenterDataTracker.getSafetyCenterData(
+                                configInternal, mUserProfileGroup);
+                listeners = mSafetyCenterListeners.getListeners(mUserProfileGroup);
             }
+
+            // TODO(b/228832622): Ensure listeners are called only when data changes.
+            SafetyCenterListeners.deliverUpdate(
+                    listeners,
+                    safetyCenterData,
+                    // TODO(b/229080761): Implement proper error message.
+                    new SafetyCenterErrorDetails("Refresh timeout"));
+        }
+    }
+
+    /** A {@link Runnable} that is called to signal a resolving action timeout. */
+    private final class ResolvingActionTimeout implements Runnable {
+
+        @NonNull private final SafetyCenterIssueActionId mSafetyCenterIssueActionId;
+        @NonNull private final UserProfileGroup mUserProfileGroup;
+
+        ResolvingActionTimeout(
+                @NonNull SafetyCenterIssueActionId safetyCenterIssueActionId,
+                @NonNull UserProfileGroup userProfileGroup) {
+            mSafetyCenterIssueActionId = safetyCenterIssueActionId;
+            mUserProfileGroup = userProfileGroup;
+        }
+
+        @Override
+        public void run() {
+            List<RemoteCallbackList<IOnSafetyCenterDataChangedListener>> listeners;
+            SafetyCenterData safetyCenterData;
+            synchronized (mApiLock) {
+                SafetyCenterConfigInternal configInternal =
+                        mSafetyCenterConfigReader.getCurrentConfigInternal();
+                boolean hasClearedInFlightAction =
+                        mSafetyCenterDataTracker.unmarkSafetyCenterIssueActionAsInFlight(
+                                mSafetyCenterIssueActionId);
+                if (!hasClearedInFlightAction) {
+                    return;
+                }
+                safetyCenterData =
+                        mSafetyCenterDataTracker.getSafetyCenterData(
+                                configInternal, mUserProfileGroup);
+                listeners = mSafetyCenterListeners.getListeners(mUserProfileGroup);
+            }
+
+            // TODO(b/228832622): Ensure listeners are called only when data changes.
+            SafetyCenterListeners.deliverUpdate(
+                    listeners,
+                    safetyCenterData,
+                    // TODO(b/229080761): Implement proper error message.
+                    new SafetyCenterErrorDetails("Resolve action timeout"));
         }
     }
 
