@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Имају дозволу за управљање свим датотекама"</string>
     <string name="ask_header" msgid="2633816846459944376">"Питај сваки пут"</string>
     <string name="denied_header" msgid="903209608358177654">"Није дозвољено"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Прикажи још апликација са приступом свим фајловима"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 дан}one{# дан}few{# дана}other{# дана}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 сат}one{# сат}few{# сата}other{# сати}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 минут}one{# минут}few{# минута}other{# минута}}"</string>
@@ -332,8 +331,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"Подразумев. дигитални помоћник"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Апликација дигиталног помоћника"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Апликације за помоћ могу да вам помогну на основу информација са екрана који гледате. Неке апликације подржавају услуге покретача и гласовног уноса да би вам пружиле интегрисану помоћ."</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"Желите ли да подесите апликацију <xliff:g id="APP_NAME">%1$s</xliff:g> као подразумевану апликацију за помоћ?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"Добија приступ евиденцији SMS-ова и позива"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Подразумевана апл. прегледача"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Апликација за прегледач"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Апликације које вам дају приступ интернету и приказују линкове које можете да додирнете"</string>
@@ -343,13 +340,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Апликација за телефон"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Апликације које вам омогућавају да упућујете и примате телефонске позиве на уређају"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Желите ли да подесите <xliff:g id="APP_NAME">%1$s</xliff:g> као подразумевану апликацију за телефон?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"Добија приступ евиденцији позива и слању SMS-ова"</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"Ова апликација ће добити приступ камери, контактима, микрофону, телефону и SMS-овима"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"бројчаник"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Подразумевана апл. за SMS"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"Апликација за SMS"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Апликације које вам омогућавају да користите број телефона да бисте слали и примали кратке SMS-ове, слике, видео снимке и још тога"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Желите ли да подесите <xliff:g id="APP_NAME">%1$s</xliff:g> као подразумевану апликацју за SMS?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"Добија приступ контактима, SMS-овима, телефону"</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"Ова апликација ће добити приступ камери, контактима, фајловима и медијима, микрофону, телефону и SMS-овима"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"SMS, слање SMS-ова, поруке, слање порука"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"Подраз. апл. за хитне случ."</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"Апликација за хитне случајеве"</string>

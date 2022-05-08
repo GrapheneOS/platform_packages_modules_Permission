@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"সমস্ত ফাইল ম্যানেজ করার অনুমতি দেওয়া হয়েছে"</string>
     <string name="ask_header" msgid="2633816846459944376">"প্রতিবার জিজ্ঞাসা করে"</string>
     <string name="denied_header" msgid="903209608358177654">"অনুমোদিত নয়"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"সব ফাইল অ্যাক্সেস করতে পারবে এমন আরও অ্যাপ দেখুন"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{১ দিন}one{# দিন}other{# দিন}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{১ ঘণ্টা}one{# ঘণ্টা}other{# ঘণ্টা}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{১ মিনিট}one{# মিনিট}other{# মিনিট}}"</string>
@@ -332,8 +331,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"ডিফল্ট ডিজিটাল অ্যাসিস্ট্যান্ট অ্যাপ"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"ডিজিটাল অ্যাসিস্ট্যান্ট অ্যাপ"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"আপনি যে স্ক্রিন দেখছেন সেটির তথ্যের উপর নির্ভর করে সহায়তা অ্যাপ আপনাকে সাহায্য করতে পারে৷ কিছু অ্যাপ আপনাকে ইন্টিগ্রেটেড সহায়তা দিতে, লঞ্চার ও ভয়েস ইনপুট দুটি পরিষেবাই ব্যবহার করতে পারে।"</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"<xliff:g id="APP_NAME">%1$s</xliff:g> অ্যাপকে আপনার ডিফল্ট সহায়তা অ্যাপ হিসেবে সেট করতে চান?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"এসএমএস, কল লগ অ্যাক্সেস করতে পারে"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"ডিফল্ট ব্রাউজার অ্যাপ"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"ব্রাউজার অ্যাপ"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"এমন অ্যাপ যা ইন্টারনেট অ্যাক্সেস করতে সাহায্য করে ও ট্যাপ করা লিঙ্কগুলি দেখায়"</string>
@@ -343,13 +340,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"ফোন অ্যাপ"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"এমন অ্যাপ যা আপনাকে ডিভাইস থেকে কল করতে ও ধরতে দেয়"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g> অ্যাপকে আপনার ডিফল্ট ফোন অ্যাপ হিসেবে সেট করতে চান?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"কল লগ অ্যাক্সেস করতে, এসএমএস পাঠাতে পারে"</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"এই অ্যাপ আপনার ক্যামেরা, পরিচিতি, মাইক্রোফোন ও এসএমএস অ্যাক্সেস করতে পারবে"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"ডায়ালার"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"ডিফল্ট এসএমএস অ্যাপ"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"এসএমএস অ্যাপ"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"এমন অ্যাপ যা আপনার ফোন নম্বর ব্যবহার করে ছোট টেক্সট মেসেজ, ফটো, ভিডিও সহ আরও অনেক কিছু পাঠাতে ও পেতে সাহায্য করে"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g> অ্যাপকে আপনার ডিফল্ট এসএমএস অ্যাপ হিসেবে সেট করতে চান?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"পরিচিতি, এসএমএস, ফোন অ্যাক্সেস করতে পারে"</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"এই অ্যাপ আপনার ক্যামেরা, পরিচিতি, ফাইল এবং মিডিয়া, মাইক্রোফোন, ফোন ও এসএমএস অ্যাক্সেস করতে পারবে"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"টেক্সট মেসেজ, টেক্সট মেসেজ পাঠানো, মেসেজগুলি, মেসেজিং"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"ডিফল্ট জরুরি অ্যাপ"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"জরুরি অ্যাপ"</string>

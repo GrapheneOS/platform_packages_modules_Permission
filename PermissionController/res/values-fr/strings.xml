@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Autorisées à gérer tous les fichiers"</string>
     <string name="ask_header" msgid="2633816846459944376">"Toujours demander"</string>
     <string name="denied_header" msgid="903209608358177654">"Non autorisées"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Voir plus d\'applis pouvant accéder à tous les fichiers"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 jour}one{# jour}other{# jours}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 heure}one{# heure}other{# heures}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 minute}one{# minute}other{# minutes}}"</string>
@@ -332,8 +331,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"Appli d\'assistant numérique par défaut"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Appli d\'assistant numérique"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Les applis d\'assistance peuvent se servir des infos à l\'écran pour vous aider. Certaines sont compatibles à la fois avec le lanceur d\'applications et les services de saisie vocale pour vous fournir une assistance intégrée."</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"Définir <xliff:g id="APP_NAME">%1$s</xliff:g> comme votre application d\'assistance par défaut ?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"Peut accéder aux SMS et au journal d\'appels"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Appli de navigateur par défaut"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Appli de navigateur"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Applications qui vous permettent d\'accéder à Internet et d\'afficher des liens sur lesquels appuyer"</string>
@@ -343,13 +340,15 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Appli de téléphone"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Applications qui vous permettent de passer et de recevoir des appels téléphoniques sur votre appareil"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Définir <xliff:g id="APP_NAME">%1$s</xliff:g> comme votre application de téléphone par défaut ?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"Peut accéder au journal d\'appels et envoyer des SMS"</string>
+    <!-- no translation found for role_dialer_request_description (6288839625724909320) -->
+    <skip />
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"clavier"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Appli de SMS par défaut"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"Appli de SMS"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Applications qui vous permettent d\'utiliser votre numéro de téléphone pour envoyer et recevoir des SMS, des photos, des vidéos et plus encore"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Définir <xliff:g id="APP_NAME">%1$s</xliff:g> comme application par défaut pour les SMS ?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"Peut accéder aux contacts, aux SMS et au téléphone"</string>
+    <!-- no translation found for role_sms_request_description (2691004766132144886) -->
+    <skip />
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"SMS, envoyer un SMS, messages, message"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"Appli urgences par défaut"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"Application pour les urgences"</string>
@@ -523,40 +522,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Récemment utilisé par <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Sécurité et confidentialité"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Vérifier l\'état"</string>
-    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
-    <skip />
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"Confirmer"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"Retour"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"L\'accès aux autres fichiers sera également autorisé"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"L\'accès aux autres fichiers ne sera pas non plus autorisé"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"L\'accès aux autres fichiers sera également autorisé"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"L\'accès aux autres fichiers ne sera pas non plus autorisé"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"L\'accès aux photos et aux vidéos sera également autorisé"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"L\'accès aux photos et aux vidéos ne sera pas non plus autorisé"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"L\'accès à la musique et aux fichiers audio sera également autorisé"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"L\'accès à la musique et aux fichiers audio ne sera pas non plus autorisé"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"Cette appli n\'est pas compatible avec la dernière version d\'Android. Si cette appli peut accéder à la musique et aux fichiers audio, elle sera également autorisée à accéder aux photos, aux vidéos et aux autres fichiers."</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"Cette appli n\'est pas compatible avec la dernière version d\'Android. Si cette appli ne peut pas accéder à la musique ni aux fichiers audio, elle ne sera pas non plus autorisée à accéder aux photos, aux vidéos ni aux autres fichiers."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"Cette appli n\'est pas compatible avec la dernière version d\'Android. Si cette appli peut accéder aux photos et aux vidéos, elle sera également autorisée à accéder à la musique, aux fichiers audio et aux autres fichiers."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"Cette appli n\'est pas compatible avec la dernière version d\'Android. Si cette appli ne peut pas accéder aux photos ni aux vidéos, elle ne sera pas non plus autorisée à accéder à la musique, aux fichiers audio ni aux autres fichiers."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"Cette appli n\'est pas compatible avec la dernière version d\'Android. Si cette appli peut accéder à la musique et aux fichiers audio, elle sera également autorisée à accéder aux photos et aux vidéos."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Cette appli n\'est pas compatible avec la dernière version d\'Android. Si cette appli ne peut pas accéder à la musique ni aux fichiers audio, elle ne sera pas non plus autorisée à accéder aux photos ni aux vidéos."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Cette appli n\'est pas compatible avec la dernière version d\'Android. Si cette appli peut accéder aux photos et aux vidéos, elle sera également autorisée à accéder à la musique et aux fichiers audio."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Cette appli n\'est pas compatible avec la dernière version d\'Android. Si cette appli ne peut pas accéder à la musique ni aux fichiers audio, elle ne sera pas non plus autorisée à accéder aux photos ni aux vidéos."</string>
 </resources>
