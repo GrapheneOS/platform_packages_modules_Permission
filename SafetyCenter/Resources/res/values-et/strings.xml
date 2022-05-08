@@ -29,5 +29,5 @@
     <string name="permission_manager_summary" msgid="8099852107340970790">"Rakenduste puhul andmetele juurdepääsu haldamine"</string>
     <string name="advanced_title" msgid="8745436380690561172">"Rohkem seadeid"</string>
     <string name="advanced_security_title" msgid="1126833338772188155">"Rohkem turvaseadeid"</string>
-    <string name="advanced_security_summary" msgid="6172253327022425123">"Krüpteerimine, mandaat ja muu"</string>
+    <string name="advanced_security_summary" msgid="6172253327022425123">"Krüpteerimine, mandaadid ja muu"</string>
 </resources>

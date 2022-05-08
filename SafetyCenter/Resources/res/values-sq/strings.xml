@@ -28,6 +28,6 @@
     <string name="permission_manager_title" msgid="5277347862821255015">"Menaxheri i lejeve"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"Kontrollo qasjen e aplikacioneve te të dhënat e tua"</string>
     <string name="advanced_title" msgid="8745436380690561172">"Cilësime të tjera"</string>
-    <string name="advanced_security_title" msgid="1126833338772188155">"Cilësime të tjera të privatësisë"</string>
+    <string name="advanced_security_title" msgid="1126833338772188155">"Cilësime të tjera të sigurisë"</string>
     <string name="advanced_security_summary" msgid="6172253327022425123">"Enkriptimi, kredencialet dhe të tjera"</string>
 </resources>
