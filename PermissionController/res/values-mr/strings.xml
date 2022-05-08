@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"सर्व फाइल व्यवस्थापित करण्यास अनुमती दिली आहे"</string>
     <string name="ask_header" msgid="2633816846459944376">"प्रत्येक वेळी विचारा"</string>
     <string name="denied_header" msgid="903209608358177654">"अनुमती नाही"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"सर्व फाइलचा ॲक्सेस असलेली आणखी ॲप्स पहा"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{एक दिवस}other{# दिवस}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{एक तास}other{# तास}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{एक मिनिट}other{# मिनिटे}}"</string>
@@ -281,8 +280,7 @@
     <string name="notification_listener_reminder_notification_content" msgid="4740891089329946164">"<xliff:g id="APP_NAME">%s</xliff:g> तुमच्या सर्व सूचना वाचू शकते."</string>
     <string name="notification_listener_warning_card_content" msgid="8181427178654279926">"हे अ‍ॅप तुमच्या सर्व सूचना वाचू शकते."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"अ‍ॅक्सेस काढून टाका"</string>
-    <!-- no translation found for notification_listener_review_app_button_label (4452381557379652037) -->
-    <skip />
+    <string name="notification_listener_review_app_button_label" msgid="4452381557379652037">"सूचना अ‍ॅक्सेस वापरून सर्व अ‍ॅप्सचे पुनरावलोकन करा"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"अ‍ॅक्सेस काढून टाकला"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"अ‍ॅक्सेसिबिलिटी अ‍ॅक्सेससह अ‍ॅपचे पुनरावलोकन करा"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> हे स्क्रीनवरील सर्व आशय वाचू शकते, इतर अ‍ॅप्सवर आशय प्रदर्शित करू शकते आणि तुमच्या संवादाचा मागोवा ठेवू शकते."</string>
@@ -345,8 +343,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"डीफॉल्ट डिजिटल साहाय्यक अ‍ॅप"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"डिजिटल असिस्टंट अ‍ॅप"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"साहाय्यक अ‍ॅप्स तुम्ही पाहत असलेल्या स्क्रीनवरील माहितीच्या आधारावर तुम्हाला मदत करू शकतात. काही अ‍ॅप्स तुम्हाला एकत्रित साहाय्य देण्यासाठी लाँचर आणि व्हॉइस इनपुट सेवा दोन्हींना सपोर्ट करतात."</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"<xliff:g id="APP_NAME">%1$s</xliff:g> तुमचे डीफॉल्ट साहाय्य अ‍ॅप म्हणून सेट करायचे?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"एसएमएस, कॉल लॉगचा अ‍ॅक्सेस मिळवते"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"डीफॉल्ट ब्राउझर अ‍ॅप"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"ब्राउझर अ‍ॅप"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"तुम्हाला इंटरनेटचा आणि तुम्ही टॅप करत असलेल्या डिस्प्ले लिंकचा अ‍ॅक्सेस देणारी अ‍ॅप्स"</string>
@@ -356,13 +352,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"फोन अ‍ॅप"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"तुम्हाला तुमच्या डिव्हाइसवर टेलिफोन कॉल करू आणि घेऊ देणारी अ‍ॅप्स"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g> तुमचे डीफॉल्ट फोन अ‍ॅप म्हणून सेट करायचे?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"कॉल लॉगचा अ‍ॅक्सेस मिळवते, एसएमएस पाठवते"</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"या ॲपला तुमच्या कॅमेरा, संपर्क, मायक्रोफोन, फोन आणि एसएमएसचा ॲक्सेस दिला जाईल"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"डायलर"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"डीफॉल्ट एसएमएस अ‍ॅप"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"एसएमएस अ‍ॅप"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"एसएमएस, फोटो, व्हिडिओ आणि बरेच काही पाठवण्यासाठी आणि मिळवण्यासाठी तुम्हाला तुमचा फोन नंबर वापरू देणारी अ‍ॅप्स"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g> तुमचे डीफॉल्ट एसएमएस अ‍ॅप म्हणून सेट करायचे?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"संपर्क, एसएमएस, फोनचा अ‍ॅक्सेस मिळवते"</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"या ॲपला तुमच्या कॅमेरा, संपर्क, फाइल आणि मीडिया, मायक्रोफोन, फोन व एसएमएसचा ॲक्सेस दिला जाईल"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"एसएमएस, एसएमएस पाठवणे, मेसेज, मेसेजिंग"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"डीफॉल्ट आणीबाणी अ‍ॅप"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"आणीबाणी अ‍ॅप"</string>
@@ -519,6 +515,7 @@
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"ही सूचना डिसमिस करायची का?"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"डिसमिस करा"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"रद्द करा"</string>
+    <string name="safety_center_entries_category_title" msgid="34356964062813115">"सेटिंग्ज"</string>
     <string name="security_settings" msgid="3808106921175271317">"सुरक्षा सेटिंग्ज"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"सेन्सर परवानग्या"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"गोपनीयता नियंत्रणे"</string>

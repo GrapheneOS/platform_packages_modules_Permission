@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Հավելվածներ, որոնց հասանելի են բոլոր ֆայլերը"</string>
     <string name="ask_header" msgid="2633816846459944376">"Ամեն անգամ հարցնել"</string>
     <string name="denied_header" msgid="903209608358177654">"Արգելված"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Տեսնել այլ հավելվածներ, որոնց հասանելի են բոլոր ֆայլերը"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 օր}one{# օր}other{# օր}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 ժամ}one{# ժամ}other{# ժամ}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 րոպե}one{# րոպե}other{# րոպե}}"</string>
@@ -281,8 +280,7 @@
     <string name="notification_listener_reminder_notification_content" msgid="4740891089329946164">"<xliff:g id="APP_NAME">%s</xliff:g> հավելվածը կարող է կարդալ ձեր բոլոր ծանուցումները։"</string>
     <string name="notification_listener_warning_card_content" msgid="8181427178654279926">"Այս հավելվածը կարող է կարդալ ձեր բոլոր ծանուցումները։"</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Հեռացնել մուտքի թույլտվությունը"</string>
-    <!-- no translation found for notification_listener_review_app_button_label (4452381557379652037) -->
-    <skip />
+    <string name="notification_listener_review_app_button_label" msgid="4452381557379652037">"Դիտել ծանուցումների հասանելիություն ունեցող հավելվածները"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Մուտքի թույլտվությունը հեռացվեց"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Ստուգեք հատուկ գործառույթների հասանելիությամբ հավելվածը"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> հավելվածը կարող է կարդալ էկրանի ամբողջ բովանդակությունը, ցուցադրել բովանդակություն մյուս հավելվածների վրա և հետագծել ձեր գործողությունները սարքում։"</string>
@@ -345,8 +343,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"Կանխադրված թվային օգնական"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Թվային օգնականի հավելված"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Օգնական հավելվածներն աշխատում են էկրանին առկա տեղեկությունների հետ: Որոշ հավելվածներ աջակցում են և՛ գործարկիչի, և՛ ձայնային ներածման ծառայությունները, ինչը ավելի լայն հնարավորություններ է տալիս ձեզ:"</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"Նշե՞լ <xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածը որպես կանխադրված օգնական հավելված"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"Տրվում է SMS-ների և զանգերի մատյանի հասանելիություն"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Դիտարկիչի կանխադրված հավելված"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Դիտարկիչի հավելված"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Հավելվածներ, որոնց միջոցով կարող եք այցելել կայքեր և բացել հղումներ"</string>
@@ -356,13 +352,15 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Հեռախոսի հավելված"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Հավելվածներ, որոնք թույլ են տալիս զանգեր կատարել և ստանալ ձեր սարքում"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Նշե՞լ <xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածը որպես հեռախոսի կանխադրված հավելված"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"Տրվում է զանգերի մատյանի և SMS ուղարկելու հասանելիություն"</string>
+    <!-- no translation found for role_dialer_request_description (6288839625724909320) -->
+    <skip />
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"համարահավաքիչ"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"SMS-ների կանխադրված հավելվածը"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS-ների փոխանակման հավելված"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Հավելվածներ, որոնք թույլ են տալիս ձեր հեռախոսահամարից ուղարկել և ստանալ կարճ տեքստային հաղորդագրություններ, լուսանկարներ, տեսանյութեր և այլն"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Նշե՞լ <xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածը որպես SMS-ների կանխադրված հավելված"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"Տրվում է կոնտակտների, SMS-ների և հեռախոսի հասանելիություն"</string>
+    <!-- no translation found for role_sms_request_description (2691004766132144886) -->
+    <skip />
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"տեքստային հաղորդագրություն, կարճ հաղորդագրությունների ուղարկում, հաղորդագրություններ, հաղորդակցում"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"Արտակարգ իրավիճակների կանխադրված հավելված"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"Արտակարգ իրավիճակների հավելված"</string>
@@ -519,6 +517,8 @@
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Փակե՞լ այս ծանուցումը"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Փակել"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Չեղարկել"</string>
+    <!-- no translation found for safety_center_entries_category_title (34356964062813115) -->
+    <skip />
     <string name="security_settings" msgid="3808106921175271317">"Անվտանգության կարգավորումներ"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Տվիչների թույլտվություններ"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Գաղտնիության կարգավորումներ"</string>
@@ -539,40 +539,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Վերջերս օգտագործվել է <xliff:g id="APP_NAME">%1$s</xliff:g> հավելվածի կողմից (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Անվտանգություն և գաղտնիություն"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Ստուգեք կարգավիճակը"</string>
-    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
-    <skip />
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"Հաստատել"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"Հետ"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"Այլ ֆայլերի օգտագործումը նույնպես կթույլատրվի"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"Այլ ֆայլերի օգտագործումը նույնպես չի թույլատրվի"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"Այլ ֆայլերի օգտագործումը նույնպես կթույլատրվի"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"Այլ ֆայլերի օգտագործումը նույնպես չի թույլատրվի"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"Լուսանկարների և տեսանյութերի օգտագործումը նույնպես կթույլատրվի"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"Լուսանկարների և տեսանյութերի օգտագործումը նույնպես չի թույլատրվի"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"Երաժշտության և աուդիո ֆայլերի օգտագործումը նույնպես կթույլատրվի"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"Երաժշտության և աուդիո ֆայլերի օգտագործումը նույնպես չի թույլատրվի"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"Այս հավելվածը չի աջակցում Android-ի վերջին տարբերակը։ Եթե հավելվածն ունենա երաժշտության և աուդիո ֆայլերի օգտագործման թույլտվություն, նրան նաև հասանելի կլինեն լուսանկարները, տեսանյութերը և այլ ֆայլեր։"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"Այս հավելվածը չի աջակցում Android-ի վերջին տարբերակը։ Եթե հավելվածը չունենա երաժշտության և աուդիո ֆայլերի օգտագործման թույլտվություն, նրան նաև հասանելի չեն լինի լուսանկարները, տեսանյութերը և այլ ֆայլեր։"</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"Այս հավելվածը չի աջակցում Android-ի վերջին տարբերակը։ Եթե հավելվածն ունենա լուսանկարների և տեսանյութերի օգտագործման թույլտվություն, նրան նաև հասանելի կլինեն երաժշտությունը, աուդիոն և այլ ֆայլեր։"</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"Այս հավելվածը չի աջակցում Android-ի վերջին տարբերակը։ Եթե հավելվածը չունենա լուսանկարների և տեսանյութերի օգտագործման թույլտվություն, նրան նաև հասանելի չեն լինի երաժշտությունը, աուդիոն և այլ ֆայլեր։"</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"Այս հավելվածը չի աջակցում Android-ի վերջին տարբերակը։ Եթե հավելվածն ունենա երաժշտության և աուդիո ֆայլերի օգտագործման թույլտվություն, նրան նաև հասանելի կլինեն լուսանկարները և տեսանյութերը։"</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Այս հավելվածը չի աջակցում Android-ի վերջին տարբերակը։ Եթե հավելվածը չունենա երաժշտության և աուդիո ֆայլերի օգտագործման թույլտվություն, նրան նաև հասանելի չեն լինի լուսանկարները և տեսանյութերը։"</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Այս հավելվածը չի աջակցում Android-ի վերջին տարբերակը։ Եթե հավելվածն ունենա լուսանկարների և տեսանյութերի օգտագործման թույլտվություն, նրան նաև հասանելի կլինեն երաժշտությունը և աուդիո ֆայլերը։"</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Այս հավելվածը չի աջակցում Android-ի վերջին տարբերակը։ Եթե հավելվածը չունենա երաժշտության և աուդիո ֆայլերի օգտագործման թույլտվություն, նրան նաև հասանելի չեն լինի լուսանկարները և տեսանյութերը։"</string>
 </resources>

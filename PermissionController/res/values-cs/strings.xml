@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Povolena správa všech souborů"</string>
     <string name="ask_header" msgid="2633816846459944376">"Pokaždé se zeptat"</string>
     <string name="denied_header" msgid="903209608358177654">"Nepovoleno"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Zobrazit další aplikace s přístupem ke všem souborům"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 den}few{# dny}many{# dne}other{# dní}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 hodina}few{# hodiny}many{# hodiny}other{# hodin}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 minuta}few{# minuty}many{# minuty}other{# minut}}"</string>
@@ -281,8 +280,7 @@
     <string name="notification_listener_reminder_notification_content" msgid="4740891089329946164">"Aplikace <xliff:g id="APP_NAME">%s</xliff:g> může číst všechna vaše oznámení."</string>
     <string name="notification_listener_warning_card_content" msgid="8181427178654279926">"Tato aplikace může číst všechna vaše oznámení."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Odebrat přístup"</string>
-    <!-- no translation found for notification_listener_review_app_button_label (4452381557379652037) -->
-    <skip />
+    <string name="notification_listener_review_app_button_label" msgid="4452381557379652037">"Zkontrolujte všechny aplikace s přístupem k oznámením"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Přístup byl odebrán"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Zkontrolujte aplikace s přístupem k usnadnění přístupu"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"Aplikace <xliff:g id="APP_NAME">%s</xliff:g> může číst veškerý obsah na obrazovce, zobrazovat obsah před ostatními aplikacemi a sledovat vaše interakce."</string>
@@ -345,8 +343,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"Výchozí digitální asistent"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Aplikace digitálního asistenta"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Asistenční aplikace pomáhají na základě informací na zobrazené obrazovce. Některé aplikace podporují spouštěče i hlasový vstup, a nabízejí tak integrovanou asistenci."</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"Nastavit <xliff:g id="APP_NAME">%1$s</xliff:g> jako výchozí asistenční aplikaci?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"Získá přístup k SMS a seznamu hovorů"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Výchozí prohlížeč"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Prohlížeč"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Aplikace, které vám umožňují přístup k internetu a zobrazují odkazy, na které můžete klepnout."</string>
@@ -356,13 +352,15 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Aplikace k telefonování"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Aplikace, které vám v zařízení umožňují volat a přijímat hovory."</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Nastavit <xliff:g id="APP_NAME">%1$s</xliff:g> jako výchozí aplikaci k telefonování?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"Získá přístup k seznamu hovorů a posílání SMS"</string>
+    <!-- no translation found for role_dialer_request_description (6288839625724909320) -->
+    <skip />
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"vytáčení"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Výchozí aplikace pro SMS"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"Aplikace pro SMS"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Aplikace, které vám umožňují pomocí telefonního čísla odesílat a přijímat SMS, fotky, videa a další obsah."</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Nastavit <xliff:g id="APP_NAME">%1$s</xliff:g> jako výchozí aplikaci pro SMS?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"Získá přístup ke kontaktům, SMS a telefonu"</string>
+    <!-- no translation found for role_sms_request_description (2691004766132144886) -->
+    <skip />
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"textová zpráva, posílání SMS, zprávy, odesílání zpráv"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"Výchozí nouzová aplikace"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"Nouzová aplikace"</string>
@@ -519,6 +517,8 @@
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Zavřít upozornění?"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Zavřít"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Zrušit"</string>
+    <!-- no translation found for safety_center_entries_category_title (34356964062813115) -->
+    <skip />
     <string name="security_settings" msgid="3808106921175271317">"Nastavení zabezpečení"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Oprávnění k senzoru"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Nastavení ochrany soukromí"</string>
@@ -539,40 +539,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Nedávno použila aplikace <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Zabezpečení a ochrana soukromí"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Zkontrolovat stav"</string>
-    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
-    <skip />
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"Potvrdit"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"Zpět"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"Bude povolen také přístup k dalším souborům"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"Bude zakázán také přístup k dalším souborům"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"Bude povolen také přístup k dalším souborům"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"Bude zakázán také přístup k dalším souborům"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"Bude povolen také přístup k fotografiím a videím"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"Bude zakázán také přístup k fotkám a videím"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"Bude zakázán také přístup k hudbě a zvukovým souborům"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"Bude zakázán také přístup k hudbě a zvukovým souborům"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"Tato aplikace nepodporuje nejnovější verzi Androidu. Pokud má tato aplikace přístup k hudbě a zvukovým souborům, bude mít přístup i k fotografiím, videím a dalším souborům."</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"Tato aplikace nepodporuje nejnovější verzi Androidu. Pokud tato aplikace nemá přístup k hudbě a zvukovým souborům, nebude mít přístup ani k fotografiím, videím a dalším souborům."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"Tato aplikace nepodporuje nejnovější verzi Androidu. Pokud má tato aplikace přístup k fotografiím a videím, bude mít přístup i k hudbě, zvukům a dalším souborům."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"Tato aplikace nepodporuje nejnovější verzi Androidu. Pokud tato aplikace nemá přístup k fotografiím a videím, nebude mít přístup ani k hudbě, zvukům a dalším souborům."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"Tato aplikace nepodporuje nejnovější verzi Androidu. Pokud má tato aplikace přístup k hudbě a zvukovým souborům, bude mít přístup i k fotografiím a videím."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Tato aplikace nepodporuje nejnovější verzi Androidu. Pokud tato aplikace nemá přístup k hudbě a zvukovým souborům, nebude mít přístup ani k fotografiím a videím."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Tato aplikace nepodporuje nejnovější verzi Androidu. Pokud má tato aplikace přístup k fotografiím a videím, bude mít přístup i k hudbě a zvukovým souborům."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Tato aplikace nepodporuje nejnovější verzi Androidu. Pokud tato aplikace nemá přístup k hudbě a zvukovým souborům, nebude mít přístup ani k fotografiím a videím."</string>
 </resources>

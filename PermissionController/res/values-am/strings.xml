@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"ሁሉንም ፋይሎች ማስተዳደር ተፈቀዷል"</string>
     <string name="ask_header" msgid="2633816846459944376">"ሁልጊዜ ጠይቅ"</string>
     <string name="denied_header" msgid="903209608358177654">"አይፈቀድም"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"ሁሉንም ፋይሎች መድረስ የሚችሉ ተጨማሪ መተግበሪያዎችን ይመልከቱ"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 ቀን}one{# ቀኖች}other{# ቀኖች}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 ሰዓት}one{# ሰዓቶች}other{# ሰዓቶች}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 ደቂቃ}one{# ደቂቃዎች}other{# ደቂቃዎች}}"</string>
@@ -281,8 +280,7 @@
     <string name="notification_listener_reminder_notification_content" msgid="4740891089329946164">"<xliff:g id="APP_NAME">%s</xliff:g> ሁሉንም ማሳወቂያዎችዎን ማንበብ ይችላል።"</string>
     <string name="notification_listener_warning_card_content" msgid="8181427178654279926">"ይህ መተግበሪያ ሁሉንም ማሳወቂያዎችዎ ማንበብ ይችላል።"</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"መዳረሻን አስወግድ"</string>
-    <!-- no translation found for notification_listener_review_app_button_label (4452381557379652037) -->
-    <skip />
+    <string name="notification_listener_review_app_button_label" msgid="4452381557379652037">"በማሳወቂያ መዳረሻ አማካኝነት ሁሉንም መተግበሪያዎች ይገምግሙ"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"መዳረሻ ተወግዷል"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"መተግበሪያን በተደራሽነት መዳረሻ ይገምግሙ"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> በማያ ገጹ ላይ ያሉትን ሁሉም ይዘቶች ማንበብ፣ ይዘቶችን በሌሎች መተግበሪያዎች ላይ ማሳየት እና መስተጋብርዎን መከታተል ይችላል።"</string>
@@ -345,8 +343,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"ነባሪ የዲጂታል ረዳት መተግበሪያ"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"የዲጂታል ረዳት መተግበሪያ"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"ረዳት መተግበሪያዎች በሚያዩት ማያ ገጽ ላይ ባለ መረጃ ላይ ተመስርቶ ሊያግዘዎት ይችላል። አንዳንድ መተግበሪያዎች የተዋሃደ እርዳታ ለእርስዎ ለመስጠት ሁለቱንም ማስጀመሪያ እና የድምፅ ግቤት አገልግሎቶችን ይደግፋሉ።"</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"<xliff:g id="APP_NAME">%1$s</xliff:g> እንደ የእርስዎ ነባሪ ረዳት መተግበሪያ ይቀናበር?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"ወደ ኤስኤምኤስ፣ የጥሪ ምዝግብ መዳረሻ ያገኛል"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"ነባሪ አሳሽ መተግበሪያ"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"የአሳሽ መተግበሪያ"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"ወደ በየነ መረብ ለእርስዎ መዳረሻ የሚሰጥዎትን እና እርስዎ መታ የሚያደርጓቸውን አገናኞች የሚያሳዩ መተግበሪያዎች"</string>
@@ -356,13 +352,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"የስልክ መተግበሪያ"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"በእርስዎ መሣሪያ ላይ የስልክ ጥሪዎች እንዲያደርጉ እና እንዲቀበሉ የሚፈቅድልዎት መተግበሪያዎች"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g> እንደ የእርስዎ ነባሪ ስልክ መተግበሪያ ይቀናበር?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"ወደ የጥሪ ምዝግብ መዳረሻ ያገኛል፣ ኤስኤምኤስ ይልካል"</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"ይህ መተግበሪያ ካሜራ፣ ዕውቂያዎች፣ ማይክሮፎን፣ ስልክ እና ኤስኤምኤስ መዳረሻ ይሰጠዋል"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"መደወያ"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"ነባሪ የኤስኤምኤስ መተግበሪያ"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"የኤስኤምኤስ መተግበሪያ"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"አጫጭር የጽሑፍ መልዕክቶችን፣ ፎቶዎችን፣ ቪዲዮዎችን እና ተጨማሪ ነገሮችን ለመላክ እና ለመቀበል የእርስዎን ስልክ ለመጠቀም እንዲችሉ የሚፈቅድልዎት መተግበሪያዎች"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g> እንደ የእርስዎ ነባሪ የኤስኤምኤስ መተግበሪያ ይዋቀር?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"ወደ ዕውቂያዎች፣ ኤስኤምኤስ ስልክ መዳረሻ ያገኛል"</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"ይህ መተግበሪያ የእርስዎን ካሜራ፣ ዕውቂያዎች፣ ፋይሎች እና ሚዲያ፣ ማይክሮፎን፣ ስልክ እና ኤስኤምኤስ መዳረሻ ይሰጠዋል"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"የጽሑፍ መልዕክት፣ ጽሑፍ መላክ፣ መልዕክቶች፣ መልዕክት መላላኪያ"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"ነባሪ የድንገተኛ አደጋ መተግበሪያ"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"የድንገተኛ አደጋ መተግበሪያ"</string>
@@ -519,6 +515,7 @@
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"ይህ ማንቂያ ይሰናበት?"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"አሰናብት"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"ይቅር"</string>
+    <string name="safety_center_entries_category_title" msgid="34356964062813115">"ቅንብሮች"</string>
     <string name="security_settings" msgid="3808106921175271317">"የደህንነት ቅንብሮች"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"የዳሳሽ ፈቃዶች"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"የግላዊነት ቁጥጥሮች"</string>
@@ -539,40 +536,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"በቅርብ ጊዜ በ<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) ስራ ላይ ውሏል"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"ደህንነት እና ግላዊነት"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"ሁኔታ አረጋግጥ"</string>
-    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
-    <skip />
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"አረጋግጥ"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"ተመለስ"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"የሌሎች ፋይሎች መዳረሻም ይፈቀዳል"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"የሌሎች ፋይሎች መዳረሻም አይፈቀድም"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"የሌሎች ፋይሎች መዳረሻም ይፈቀዳል"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"የሌሎች ፋይሎች መዳረሻም አይፈቀድም"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"የፎቶዎች እና ቪዲዮዎች መዳረሻም ይፈቀዳል"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"የፎቶዎች እና ቪዲዮዎች መዳረሻም አይፈቀድም"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"የሙዚቃ እና የኦዲዮዎች ፋይሎች መዳረሻም ይፈቀዳል"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"የሙዚቃ እና የኦዲዮዎች ፋይሎች መዳረሻም አይፈቀድም"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"ይህ መተግበሪያ የቅርቡን የAndroid ስሪት አይደግፍም። ይህ መተግበሪያ ሙዚቃ እና ኦዲዮ ፋይሎችን መድረስ ከቻለ ፎቶዎች፣ ቪዲዮዎች እና ሌሎች ፋይሎችንም እንዲደርስ ይፈቀድለታል።"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"ይህ መተግበሪያ የቅርቡን የAndroid ስሪት አይደግፍም። ይህ መተግበሪያ ሙዚቃ እና ኦዲዮ ፋይሎችን መድረስ ካልቻለ ፎቶዎች፣ ቪዲዮዎች እና ሌሎች ፋይሎችንም እንዲደርስ አይፈቀድለትም።"</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"ይህ መተግበሪያ የቅርቡን የAndroid ስሪት አይደግፍም። ይህ መተግበሪያ ፎቶዎች፣ ቪዲዮዎች መድረስ ከቻለ ሙዚቃ እና ኦዲዮ እና ሌሎች ፋይሎችንም እንዲደርስ ይፈቀድለታል።"</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"ይህ መተግበሪያ የቅርቡን የAndroid ስሪት አይደግፍም። ይህ መተግበሪያ ፎቶዎች፣ ቪዲዮዎች መድረስ ካልቻለ ሙዚቃ እና ኦዲዮ እና ሌሎች ፋይሎችንም እንዲደርስ አይፈቀድለትም።"</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"ይህ መተግበሪያ የቅርቡን የAndroid ስሪት አይደግፍም። ይህ መተግበሪያ ሙዚቃ እና ኦዲዮ ፋይሎችን መድረስ ከቻለ ፎቶዎችን እና ቪዲዮዎችንም እንዲደርስ ይፈቀድለታል።"</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"ይህ መተግበሪያ የቅርቡን የAndroid ስሪት አይደግፍም። ይህ መተግበሪያ ሙዚቃ እና ኦዲዮ ፋይሎችን መድረስ ካልቻለ ፎቶዎች እና ቪዲዮዎች እንዲደርስ አይፈቀድለትም።"</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"ይህ መተግበሪያ የቅርቡን የAndroid ስሪት አይደግፍም። ይህ መተግበሪያ ፎቶዎች፣ ቪዲዮዎች መድረስ ከቻለ ሙዚቃ እና ሌሎች ፋይሎችንም እንዲደርስ ይፈቀድለታል።"</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"ይህ መተግበሪያ የቅርቡን የAndroid ስሪት አይደግፍም። ይህ መተግበሪያ ሙዚቃ እና ኦዲዮ ፋይሎችን መድረስ ካልቻለ ፎቶዎች እና ቪዲዮዎች እንዲደርስ አይፈቀድለትም።"</string>
 </resources>

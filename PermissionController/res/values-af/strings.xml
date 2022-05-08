@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Toegelaat om alle lêers te bestuur"</string>
     <string name="ask_header" msgid="2633816846459944376">"Vra elke keer"</string>
     <string name="denied_header" msgid="903209608358177654">"Nie toegelaat nie"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Sien meer programme wat toegang tot alle lêers het"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 dag}other{# dae}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 uur}other{# uur}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 minuut}other{# minute}}"</string>
@@ -281,8 +280,7 @@
     <string name="notification_listener_reminder_notification_content" msgid="4740891089329946164">"<xliff:g id="APP_NAME">%s</xliff:g> kan al jou kennisgewings lees."</string>
     <string name="notification_listener_warning_card_content" msgid="8181427178654279926">"Hierdie program kan al jou kennisgewings lees."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Verwyder toegang"</string>
-    <!-- no translation found for notification_listener_review_app_button_label (4452381557379652037) -->
-    <skip />
+    <string name="notification_listener_review_app_button_label" msgid="4452381557379652037">"Gaan alle programme met kennisgewingtoegang na"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Toegang is verwyder"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Gaan program met toeganklikheidtoegang na"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> kan alle inhoud op die skerm lees, inhoud bo-oor ander programme wys, en jou interaksies naspoor."</string>
@@ -345,8 +343,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"Verstekdigitaleassistentprogram"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Digitaleassistentprogram"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Bystandprogramme kan jou help op grond van inligting vanaf die skerm waarna jy kyk. Sommige programme steun sowel lanseerder- as steminvoerdienste om vir jou geïntegreerde bystand te gee."</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"Stel <xliff:g id="APP_NAME">%1$s</xliff:g> as jou verstekbystandprogram?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"Kry toegang tot SMS, oproeprekord"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Verstekblaaier"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Blaaierprogram"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Programme wat jou toegang tot die internet gee en na vertoonskakels waarop jy tik"</string>
@@ -356,13 +352,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Foonprogram"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Programme wat jou toelaat om telefoonoproepe op jou toestel te maak en te ontvang"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Stel <xliff:g id="APP_NAME">%1$s</xliff:g> as jou verstekfoonprogram?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"Kry toegang tot oproeprekord, stuur SMS"</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"Hierdie program sal toegang tot jou kamera, kontakte, mikrofoon, foon en SMS\'e kry"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"beller"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Verstek-SMS-program"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS-program"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Programme wat jou toelaat om jou foonnommer te gebruik om kort SMS\'e, foto\'s, video\'s en meer te stuur en te ontvang"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Stel <xliff:g id="APP_NAME">%1$s</xliff:g> as jou verstek-SMS-program?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"Kry toegang tot kontakte, SMS en foon"</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"Hierdie program sal toegang tot jou kamera, kontakte, lêers en media, mikrofoon, foon en SMS\'e kry"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"sms, teksboodskappe, boodskappe, boodskappe"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"Versteknoodprogram"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"Noodprogram"</string>
@@ -519,6 +515,7 @@
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Maak hierdie waarskuwing toe?"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Maak toe"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Kanselleer"</string>
+    <string name="safety_center_entries_category_title" msgid="34356964062813115">"Instellings"</string>
     <string name="security_settings" msgid="3808106921175271317">"Sekuriteitinstellings"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Sensortoestemmings"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Privaatheidkontroles"</string>
