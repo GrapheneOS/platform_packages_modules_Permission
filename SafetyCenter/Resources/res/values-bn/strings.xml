@@ -33,5 +33,5 @@
     <string name="advanced_security_title" msgid="1126833338772188155">"আরও নিরাপত্তা সেটিংস"</string>
     <string name="advanced_security_summary" msgid="6172253327022425123">"এনক্রিপশন, ক্রেডেনশিয়াল এবং আরও অনেক কিছু"</string>
     <string name="advanced_privacy_title" msgid="1117725225706176643">"আরও গোপনীয়তা সেটিংস"</string>
-    <string name="advanced_privacy_summary" msgid="2281203390575069543">"অটোফিল, অ্যাক্টিভিটি এবং আরও অনেক কিছু"</string>
+    <string name="advanced_privacy_summary" msgid="2281203390575069543">"অটোফিল, অ্যাক্টিভিটি নিয়ন্ত্রণ এবং আরও অনেক কিছু"</string>
 </resources>

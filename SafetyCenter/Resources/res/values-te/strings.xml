@@ -18,7 +18,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"భద్రతా కేంద్ర రిసోర్స్‌లు"</string>
-    <string name="lock_screen_sources_title" msgid="3317906280484627707">"డివైజ్ లాక్"</string>
+    <string name="lock_screen_sources_title" msgid="3317906280484627707">"పరికరం లాక్"</string>
     <string name="lock_screen_title" msgid="4069104894527169877">"స్క్రీన్ లాక్"</string>
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"ఇంకా ఏ సమాచారం లేదు"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"గోప్యత"</string>

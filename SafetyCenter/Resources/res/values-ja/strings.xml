@@ -18,7 +18,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"セーフティ センターのリソース"</string>
-    <string name="lock_screen_sources_title" msgid="3317906280484627707">"デバイスロック"</string>
+    <string name="lock_screen_sources_title" msgid="3317906280484627707">"デバイスのロック"</string>
     <string name="lock_screen_title" msgid="4069104894527169877">"画面ロック"</string>
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"まだ情報がありません"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"プライバシー"</string>
