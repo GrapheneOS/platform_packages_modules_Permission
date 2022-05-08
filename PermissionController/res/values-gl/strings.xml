@@ -29,7 +29,7 @@
     <string name="grant_dialog_button_no_upgrade_one_time" msgid="5125892775684968694">"Manter Só esta vez"</string>
     <string name="grant_dialog_button_more_info" msgid="213350268561945193">"Máis datos"</string>
     <string name="grant_dialog_button_deny_anyway" msgid="7225905870668915151">"Non permitir aínda así"</string>
-    <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Ignorar"</string>
+    <string name="grant_dialog_button_dismiss" msgid="1930399742250226393">"Pechar"</string>
     <string name="current_permission_template" msgid="7452035392573329375">"<xliff:g id="CURRENT_PERMISSION_INDEX">%1$s</xliff:g> de <xliff:g id="PERMISSION_COUNT">%2$s</xliff:g>"</string>
     <string name="permission_warning_template" msgid="2247087781222679458">"Queres permitir á aplicación &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
     <string name="permission_add_background_warning_template" msgid="1812914855915092273">"Permitir sempre á aplicación &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; <xliff:g id="ACTION">%2$s</xliff:g>?"</string>
@@ -108,7 +108,7 @@
     <string name="current_permissions_category" msgid="4292990083585728880">"Permisos actuais"</string>
     <string name="message_staging" msgid="9110563899955511866">"Preparando aplicación…"</string>
     <string name="app_name_unknown" msgid="1319665005754048952">"Nome descoñecido"</string>
-    <string name="permission_usage_title" msgid="1568233336351734538">"Panel privado"</string>
+    <string name="permission_usage_title" msgid="1568233336351734538">"Panel de privacidade"</string>
     <string name="permission_group_usage_title" msgid="2595013198075285173">"Uso do permiso (<xliff:g id="PERMGROUP">%1$s</xliff:g>)"</string>
     <string name="perm_usage_adv_info_title" msgid="3357831829538873708">"Ver outros permisos"</string>
     <string name="perm_usage_adv_info_summary_2_items" msgid="3702175198750127822">"<xliff:g id="PERMGROUP_0">%1$s</xliff:g>, <xliff:g id="PERMGROUP_1">%2$s</xliff:g>"</string>
