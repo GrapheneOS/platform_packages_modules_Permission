@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"获准管理所有文件"</string>
     <string name="ask_header" msgid="2633816846459944376">"每次都询问"</string>
     <string name="denied_header" msgid="903209608358177654">"不允许"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"查看更多可以访问所有文件的应用"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 天}other{# 天}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 小时}other{# 小时}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 分钟}other{# 分钟}}"</string>
@@ -332,8 +331,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"默认数字助理应用"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"数字助理应用"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"辅助应用可根据您当前浏览的屏幕内容为您提供帮助。部分应用同时支持启动器和语音输入服务，可为您提供更全面的协助。"</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"要将<xliff:g id="APP_NAME">%1$s</xliff:g>设为您的默认辅助应用吗？"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"获取短信、通话记录的访问权限"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"默认浏览器应用"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"浏览器应用"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"这类应用可让您访问互联网以及显示您点按的链接"</string>
@@ -343,13 +340,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"电话应用"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"这类应用可让您通过设备拨打及接听电话"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"要将<xliff:g id="APP_NAME">%1$s</xliff:g>设为您的默认电话应用吗？"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"获取通话记录访问权限、短信发送权限"</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"该应用将获得对摄像头、通讯录、麦克风、电话和短信的访问权限"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"拨号器"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"默认短信应用"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"短信应用"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"这类应用可让您通过自己的手机号收发短信、照片、视频等内容"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"要将<xliff:g id="APP_NAME">%1$s</xliff:g>设为您的默认短信应用吗？"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"获取通讯录、短信、电话的访问权限"</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"该应用将获得对摄像头、通讯录、文件和媒体、麦克风、电话和短信的访问权限"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"短信, 信息, 发短信, 消息, 发送消息"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"默认紧急应用"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"紧急警报应用"</string>
@@ -500,12 +497,12 @@
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"针对应用和服务"</string>
     <string name="blocked_mic_summary" msgid="8960466941528458347">"当您拨打紧急电话号码时，系统可能仍会分享麦克风数据。"</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"更改"</string>
-    <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"安全性和隐私权"</string>
+    <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"安全和隐私"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"扫描"</string>
     <string name="safety_center_issue_card_dismiss_button" msgid="5113965506144222402">"关闭"</string>
     <string name="security_settings" msgid="3808106921175271317">"安全设置"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"传感器权限"</string>
-    <string name="privacy_controls_qs" msgid="471793881466080745">"隐私控制"</string>
+    <string name="privacy_controls_qs" msgid="471793881466080745">"隐私控件"</string>
     <string name="permissions_removed_qs" msgid="8957319130625294572">"已移除权限"</string>
     <string name="camera_usage_qs" msgid="7943349178368641820">"查看更多相机使用信息"</string>
     <string name="microphone_usage_qs" msgid="2393193350541830472">"查看更多麦克风使用信息"</string>
@@ -521,42 +518,24 @@
     <string name="recent_app_usage_1_qs" msgid="261450184773310741">"“<xliff:g id="APP_NAME">%1$s</xliff:g>”最近使用过（<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g>）"</string>
     <string name="active_app_usage_2_qs" msgid="6107866785243565283">"“<xliff:g id="APP_NAME">%1$s</xliff:g>”正在使用（<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>）"</string>
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"“<xliff:g id="APP_NAME">%1$s</xliff:g>”最近使用过（<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>）"</string>
-    <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"安全和隐私设置"</string>
+    <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"安全和隐私"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"查看状态"</string>
-    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
-    <skip />
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"确认"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"返回"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"也将能够访问其他文件"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"也将无法访问其他文件"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"也将能够访问其他文件"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"也将无法访问其他文件"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"也将能够访问照片和视频"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"也将无法访问照片和视频"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"也将能够访问音乐和音频文件"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"也将无法访问音乐和音频文件"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"此应用不支持最新版 Android 系统。如果此应用能够访问音乐和音频文件，那么它也将能够访问照片、视频和其他文件。"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"此应用不支持最新版 Android 系统。如果此应用无法访问音乐和音频文件，那么它也将无法访问照片、视频和其他文件。"</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"此应用不支持最新版 Android 系统。如果此应用能够访问照片和视频，那么它也将能够访问音乐、音频和其他文件。"</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"此应用不支持最新版 Android 系统。如果此应用无法访问照片和视频，那么它也将无法访问音乐、音频和其他文件。"</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"此应用不支持最新版 Android 系统。如果此应用能够访问音乐和音频文件，那么它也将能够访问照片和视频。"</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"此应用不支持最新版 Android 系统。如果此应用无法访问音乐和音频文件，那么它也将无法访问照片和视频。"</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"此应用不支持最新版 Android 系统。如果此应用能够访问照片和视频，那么它也将能够访问音乐和音频文件。"</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"此应用不支持最新版 Android 系统。如果此应用无法访问音乐和音频文件，那么它也将无法访问照片和视频。"</string>
 </resources>

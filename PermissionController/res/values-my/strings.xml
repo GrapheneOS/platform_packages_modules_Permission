@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"ဖိုင်အားလုံးကို စီမံခွင့်ပြုထားသည်"</string>
     <string name="ask_header" msgid="2633816846459944376">"အမြဲမေးရန်"</string>
     <string name="denied_header" msgid="903209608358177654">"ခွင့်ပြုမထားပါ"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"ဖိုင်အားလုံးသုံးနိုင်သည့် နောက်ထပ်အက်ပ်များ ကြည့်ရန်"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 ရက်}other{# ရက်}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 နာရီ}other{# နာရီ}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 မိနစ်}other{# မိနစ်}}"</string>
@@ -332,8 +331,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"မူလဒစ်ဂျစ်တယ် Assistant အက်ပ်"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"ဒစ်ဂျစ်တယ် Assistant အက်ပ်"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"အကူအညီအက်ပ်များသည် သင်ကြည့်နေသည့် မျက်နှာပြင်မှ အချက်အလက်ကို အခြေခံ၍ ပံ့ပိုးပေးနိုင်ပါသည်။ ဘက်စုံ အထောက်အကူပေးနိုင်ရန်အတွက် အချို့အက်ပ်များသည် စဖွင့်စနစ်နှင့် အသံဖြင့်ထည့်သွင်းဝန်ဆောင်မှု နှစ်ခုလုံးကို ပံ့ပိုးပါသည်။"</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"<xliff:g id="APP_NAME">%1$s</xliff:g> ကို သင့်မူရင်း အကူအညီအက်ပ်အဖြစ် သတ်မှတ်လိုပါသလား။"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"SMS နှင့် ခေါ်ဆိုမှတ်တမ်းကို ဝင်သုံးခွင့် ရယူသည်"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"မူရင်း ဘရောင်ဇာအက်ပ်"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"ဘရောင်ဇာ အက်ပ်"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"သင့်ကို အင်တာနက်အသုံးပြုခွင့်ပေးပြီး သင်တို့လိုက်သည့် လင့်ခ်များကို ပြသပေးသော အက်ပ်များ"</string>
@@ -343,13 +340,15 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"ဖုန်းအက်ပ်"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"သင့်စက်ပစ္စည်းတွင် တယ်လီဖုန်းခေါ်ဆိုမှုများ ပြုလုပ်၊ လက်ခံခွင့်ပြုသော အက်ပ်များ"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g> ကို သင့်ဖုန်း၏ မူရင်းအက်ပ်အဖြစ် သတ်မှတ်လိုပါသလား။"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"ခေါ်ဆို မှတ်တမ်း၊ SMS ပို့ခြင်းတို့ကို ဝင်သုံးခွင့် ရယူသည်"</string>
+    <!-- no translation found for role_dialer_request_description (6288839625724909320) -->
+    <skip />
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"ခေါ်ဆိုရန်နံပါတ်ကွက်"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"မူရင်း SMS အက်ပ်"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS အက်ပ်"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"စာတိုမက်ဆေ့ဂျ်၊ ဓာတ်ပုံ၊ ဗီဒီယိုနှင့် နောက်ထပ်အရာများ ပို့ရန်၊ လက်ခံရန်အတွက် သင့်ဖုန်းနံပါတ်ကို အသုံးပြုခွင့်ပေးသော အက်ပ်များ"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g> ကို သင့်မူလ SMS အက်ပ်အဖြစ် သတ်မှတ်လိုပါသလား။"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"အဆက်အသွယ်များ၊ SMS၊ ဖုန်းတို့ကို ဝင်သုံးခွင့် ရယူသည်"</string>
+    <!-- no translation found for role_sms_request_description (2691004766132144886) -->
+    <skip />
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"စာတို၊ စာတိုရိုက်ခြင်း၊ စာများ၊ စာပို့ခြင်း"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"မူရင်း အရေးပေါ်အက်ပ်"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"အရေးပေါ် အက်ပ်"</string>
@@ -523,40 +522,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"<xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) က မကြာသေးမီက အသုံးပြုထားသည်"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"လုံခြုံရေးနှင့် အချက်အလက်လုံခြုံမှု"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"အခြေအနေ စစ်ဆေးခြင်း"</string>
-    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
-    <skip />
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"အတည်ပြုရန်"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"နောက်သို့"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"အခြားဖိုင်များ ဖွင့်ရန်လည်း ခွင့်ပြုမည်"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"အခြားဖိုင်များ ဖွင့်ရန်လည်း ခွင့်ပြုမည်မဟုတ်ပါ"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"အခြားဖိုင်များ ဖွင့်ရန်လည်း ခွင့်ပြုမည်"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"အခြားဖိုင်များ ဖွင့်ရန်လည်း ခွင့်ပြုမည်မဟုတ်ပါ"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"ဓာတ်ပုံနှင့် ဗီဒီယိုများ ဖွင့်ရန်လည်း ခွင့်ပြုမည်"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"ဓာတ်ပုံနှင့် ဗီဒီယိုများ ဖွင့်ရန်လည်း ခွင့်ပြုမည်မဟုတ်ပါ"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"သီချင်းနှင့် အသံဖိုင်များ ဖွင့်ရန်လည်း ခွင့်ပြုမည်"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"သီချင်းနှင့် အသံဖိုင်များ ဖွင့်ရန်လည်း ခွင့်ပြုမည်မဟုတ်ပါ"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"ဤအက်ပ်က Android နောက်ဆုံးဗားရှင်းကို မပံ့ပိုးပါ။ ဤအက်ပ်သည် သီချင်းနှင့် အသံဖိုင်များကို ဖွင့်ခွင့်ရှိပါက ဓာတ်ပုံ၊ ဗီဒီယိုနှင့် အခြားဖိုင်များ ဖွင့်ရန်လည်း ၎င်းကိုခွင့်ပြုမည်။"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"ဤအက်ပ်က Android နောက်ဆုံးဗားရှင်းကို မပံ့ပိုးပါ။ ဤအက်ပ်သည် သီချင်းနှင့် အသံဖိုင်များကို ဖွင့်ခွင့်မရှိပါက ဓာတ်ပုံ၊ ဗီဒီယိုနှင့် အခြားဖိုင်များ ဖွင့်ရန်လည်း ၎င်းကို ခွင့်ပြုမည်မဟုတ်ပါ။"</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"ဤအက်ပ်က Android နောက်ဆုံးဗားရှင်းကို မပံ့ပိုးပါ။ ဤအက်ပ်သည် ဓာတ်ပုံနှင့် ဗီဒီယိုများကို ဖွင့်ခွင့်ရှိပါက သီချင်း၊ အသံနှင့် အခြားဖိုင်များ ဖွင့်ရန်လည်း ၎င်းကိုခွင့်ပြုမည်။"</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"ဤအက်ပ်က Android နောက်ဆုံးဗားရှင်းကို မပံ့ပိုးပါ။ ဤအက်ပ်သည် ဓာတ်ပုံနှင့် ဗီဒီယိုများကို ဖွင့်ခွင့်မရှိပါက သီချင်း၊ အသံနှင့် အခြားဖိုင်များ ဖွင့်ရန်လည်း ၎င်းကို ခွင့်ပြုမည်မဟုတ်ပါ။"</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"ဤအက်ပ်က Android နောက်ဆုံးဗားရှင်းကို မပံ့ပိုးပါ။ ဤအက်ပ်သည် သီချင်းနှင့် အသံဖိုင်များကို ဖွင့်ခွင့်ရှိပါက ဓာတ်ပုံနှင့် ဗီဒီယိုများ ဖွင့်ရန်လည်း ၎င်းကိုခွင့်ပြုမည်။"</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"ဤအက်ပ်က Android နောက်ဆုံးဗားရှင်းကို မပံ့ပိုးပါ။ ဤအက်ပ်သည် သီချင်းနှင့် အသံဖိုင်များကို ဖွင့်ခွင့်မရှိပါက ဓာတ်ပုံနှင့် ဗီဒီယိုများ ဖွင့်ရန်လည်း ၎င်းကို ခွင့်ပြုမည်မဟုတ်ပါ။"</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"ဤအက်ပ်က Android နောက်ဆုံးဗားရှင်းကို မပံ့ပိုးပါ။ ဤအက်ပ်သည် ဓာတ်ပုံနှင့် ဗီဒီယိုများကို ဖွင့်ခွင့်ရှိပါက သီချင်းနှင့် အသံဖိုင်များ ဖွင့်ရန်လည်း ၎င်းကိုခွင့်ပြုမည်။"</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"ဤအက်ပ်က Android နောက်ဆုံးဗားရှင်းကို မပံ့ပိုးပါ။ ဤအက်ပ်သည် သီချင်းနှင့် အသံဖိုင်များကို ဖွင့်ခွင့်မရှိပါက ဓာတ်ပုံနှင့် ဗီဒီယိုများ ဖွင့်ရန်လည်း ၎င်းကို ခွင့်ပြုမည်မဟုတ်ပါ။"</string>
 </resources>

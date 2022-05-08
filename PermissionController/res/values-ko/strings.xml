@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"모든 파일을 관리하도록 허용됨"</string>
     <string name="ask_header" msgid="2633816846459944376">"항상 확인"</string>
     <string name="denied_header" msgid="903209608358177654">"허용되지 않음"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"모든 파일에 액세스할 수 있는 앱 더보기"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1일}other{#일}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1시간}other{#시간}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1분}other{#분}}"</string>
@@ -332,8 +331,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"기본 디지털 어시스턴트 앱"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"디지털 어시스턴트 앱"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"지원 앱은 화면에 표시된 정보에 맞게 도움을 줄 수 있습니다. 일부 앱은 통합된 지원을 제공하기 위해 런처와 음성 입력 서비스를 모두 지원합니다."</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"<xliff:g id="APP_NAME">%1$s</xliff:g> 앱을 기본 지원 앱으로 설정하시겠습니까?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"SMS, 통화 기록에 액세스"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"기본 브라우저 앱"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"브라우저 앱"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"인터넷에 액세스하고 탭하는 링크를 표시하는 앱"</string>
@@ -343,13 +340,15 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"전화 앱"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"기기에서 전화를 걸고 받을 수 있게 해 주는 앱"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g> 앱을 기본 전화 앱으로 설정하시겠습니까?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"통화 기록 액세스 및 SMS 전송 권한"</string>
+    <!-- no translation found for role_dialer_request_description (6288839625724909320) -->
+    <skip />
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"다이얼러"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"기본 SMS 앱"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS 앱"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"내 전화번호를 사용하여 SMS, 사진, 동영상 등을 보내고 받을 수 있는 앱"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g> 앱을 기본 SMS 앱으로 설정하시겠습니까?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"연락처, SMS, 전화에 액세스"</string>
+    <!-- no translation found for role_sms_request_description (2691004766132144886) -->
+    <skip />
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"SMS, 문자 메시지, 메시지"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"기본 긴급 앱"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"긴급 앱"</string>
@@ -523,40 +522,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"최근 <xliff:g id="APP_NAME">%1$s</xliff:g>에서 사용됨(<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"보안 및 개인 정보 보호"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"상태 확인"</string>
-    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
-    <skip />
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"확인"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"뒤로"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"다른 파일에 대한 액세스도 허용"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"다른 파일에 대한 액세스도 허용하지 않음"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"다른 파일에 대한 액세스도 허용"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"다른 파일에 대한 액세스도 허용하지 않음"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"사진 및 동영상에 대한 액세스도 허용"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"사진 및 동영상에 대한 액세스도 허용하지 않음"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"음악 및 오디오 파일에 대한 액세스도 허용"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"음악 및 오디오 파일에 대한 액세스도 허용하지 않음"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"앱이 최신 버전의 Android를 지원하지 않습니다. 앱이 음악 및 오디오 파일에 액세스할 수 있는 경우 사진, 동영상 및 다른 파일에 대한 액세스도 허용됩니다."</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"앱이 최신 버전의 Android를 지원하지 않습니다. 앱이 음악 및 오디오 파일에 액세스할 수 없는 경우 사진, 동영상 및 다른 파일에 대한 액세스도 허용되지 않습니다."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"앱이 최신 버전의 Android를 지원하지 않습니다. 앱이 사진 및 동영상에 액세스할 수 있는 경우 음악, 오디오 및 다른 파일에 대한 액세스도 허용됩니다."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"앱이 최신 버전의 Android를 지원하지 않습니다. 앱이 사진 및 동영상에 액세스할 수 없는 경우 음악, 오디오 및 다른 파일에 대한 액세스도 허용되지 않습니다."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"앱이 최신 버전의 Android를 지원하지 않습니다. 앱이 음악 및 오디오 파일에 액세스할 수 있는 경우 사진 및 동영상에 대한 액세스도 허용됩니다."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"앱이 최신 버전의 Android를 지원하지 않습니다. 앱이 음악 및 오디오 파일에 액세스할 수 없는 경우 사진 및 동영상에 대한 액세스도 허용되지 않습니다."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"앱이 최신 버전의 Android를 지원하지 않습니다. 앱이 사진 및 동영상에 액세스할 수 있는 경우 음악 및 오디오 파일에 대한 액세스도 허용됩니다."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"앱이 최신 버전의 Android를 지원하지 않습니다. 앱이 음악 및 오디오 파일에 액세스할 수 없는 경우 사진 및 동영상에 대한 액세스도 허용되지 않습니다."</string>
 </resources>
