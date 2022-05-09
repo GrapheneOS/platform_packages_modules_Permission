@@ -26,7 +26,7 @@
     <string name="permission_usage_title" msgid="3633779688945350407">"Ideshibhodi yobumfihlo"</string>
     <string name="permission_usage_summary" msgid="5323079206029964468">"Bonisa ukuthi yimaphi ama-app asebenzise izimvume muva nje"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"Isiphathi semvume"</string>
-    <string name="permission_manager_summary" msgid="8099852107340970790">"Lawula ukufinyelela kohlelo lokusebenza kudatha yakho"</string>
+    <string name="permission_manager_summary" msgid="8099852107340970790">"Lawula ukufinyelela kwi-app kudatha yakho"</string>
     <string name="advanced_title" msgid="8745436380690561172">"Amanye amasethingi"</string>
     <string name="advanced_security_title" msgid="1126833338772188155">"Amasethingi okuvikeleka engeziwe"</string>
     <string name="advanced_security_summary" msgid="6172253327022425123">"Ukubethela, izimfanelo, nokunye"</string>
