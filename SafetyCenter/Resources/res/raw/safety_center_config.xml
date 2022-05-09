@@ -20,7 +20,7 @@
         <safety-sources-group
             id="AndroidLockScreenSources"
             title="@com.android.safetycenter.resources:string/lock_screen_sources_title"
-            summary="@com.android.safetycenter.resources:string/summary_placeholder">
+            summary="@com.android.safetycenter.resources:string/lock_screen_sources_summary">
             <dynamic-safety-source
                 id="AndroidLockScreen"
                 packageName="com.android.settings"
@@ -54,20 +54,20 @@
             <static-safety-source
                 id="AndroidPrivacyControls"
                 profile="primary_profile_only"
-                intentAction="TODO"
+                intentAction="android.settings.PRIVACY_CONTROLS"
                 title="@com.android.safetycenter.resources:string/privacy_controls_title"
                 summary="@com.android.safetycenter.resources:string/privacy_controls_summary"/>
             <issue-only-safety-source
                 id="AndroidAccessibility"
-                packageName="com.google.android.permissioncontroller"
+                packageName="com.android.permissioncontroller"
                 profile="primary_profile_only"/>
             <issue-only-safety-source
                 id="AndroidNotificationListener"
-                packageName="com.google.android.permissioncontroller"
+                packageName="com.android.permissioncontroller"
                 profile="primary_profile_only"/>
             <issue-only-safety-source
                 id="AndroidBackgroundLocation"
-                packageName="com.google.android.permissioncontroller"
+                packageName="com.android.permissioncontroller"
                 profile="primary_profile_only"/>
         </safety-sources-group>
         <safety-sources-group
@@ -75,7 +75,7 @@
             title="@com.android.safetycenter.resources:string/advanced_title">
             <dynamic-safety-source
                 id="AndroidWorkPolicyInfo"
-                packageName="com.google.android.permissioncontroller"
+                packageName="com.android.permissioncontroller"
                 profile="primary_profile_only"
                 initialDisplayState="hidden"/>
             <static-safety-source
@@ -87,7 +87,7 @@
             <static-safety-source
                 id="AndroidAdvancedPrivacy"
                 profile="primary_profile_only"
-                intentAction="TODO"
+                intentAction="android.settings.PRIVACY_ADVANCED_SETTINGS"
                 title="@com.android.safetycenter.resources:string/advanced_privacy_title"
                 summary="@com.android.safetycenter.resources:string/advanced_privacy_summary"/>
         </safety-sources-group>
