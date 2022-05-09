@@ -158,17 +158,17 @@ class SafetyCenterActivityTest {
     @Test
     fun launchActivity_displaysStaticSources() {
         safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(
-            SafetyCenterCtsConfigs.CTS_STATIC_SOURCE_CONFIG)
+            SafetyCenterCtsConfigs.STATIC_SOURCES_CONFIG)
 
         startSafetyCenterActivity()
 
         findAllText(
-            context.getString(SafetyCenterCtsConfigs.CTS_STATIC_SOURCE_GROUP_1.titleResId),
-            context.getString(SafetyCenterCtsConfigs.CTS_STATIC_SOURCE_1.titleResId),
-            context.getString(SafetyCenterCtsConfigs.CTS_STATIC_SOURCE_1.summaryResId),
-            context.getString(SafetyCenterCtsConfigs.CTS_STATIC_SOURCE_GROUP_2.titleResId),
-            context.getString(SafetyCenterCtsConfigs.CTS_STATIC_SOURCE_2.titleResId),
-            context.getString(SafetyCenterCtsConfigs.CTS_STATIC_SOURCE_2.summaryResId))
+            context.getString(SafetyCenterCtsConfigs.STATIC_SOURCE_GROUP_1.titleResId),
+            context.getString(SafetyCenterCtsConfigs.STATIC_SOURCE_1.titleResId),
+            context.getString(SafetyCenterCtsConfigs.STATIC_SOURCE_1.summaryResId),
+            context.getString(SafetyCenterCtsConfigs.STATIC_SOURCE_GROUP_2.titleResId),
+            context.getString(SafetyCenterCtsConfigs.STATIC_SOURCE_2.titleResId),
+            context.getString(SafetyCenterCtsConfigs.STATIC_SOURCE_2.summaryResId))
     }
 
     @Test

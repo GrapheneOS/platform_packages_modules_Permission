@@ -71,15 +71,15 @@ final class UserProfileGroup {
         UserManager userManager = getUserManagerForUser(userId, context);
         List<UserHandle> userProfiles = getEnabledUserProfiles(userManager);
         int profileOwnerUserId = USER_NULL;
-        int[] managedProfileUserIds = new int[userProfiles.size()];
-        int managedProfileUserIdsLen = 0;
+        int[] managedProfilesUserIds = new int[userProfiles.size()];
+        int managedProfilesUserIdsLen = 0;
         for (int i = 0; i < userProfiles.size(); i++) {
             UserHandle userProfileHandle = userProfiles.get(i);
             int userProfileId = userProfileHandle.getIdentifier();
 
             // TODO(b/223132917): Check if user running and/or if quiet mode is enabled?
             if (UserUtils.isManagedProfile(userProfileId, context)) {
-                managedProfileUserIds[managedProfileUserIdsLen++] = userProfileId;
+                managedProfilesUserIds[managedProfilesUserIdsLen++] = userProfileId;
             } else if (profileOwnerUserId == USER_NULL) {
                 profileOwnerUserId = userProfileId;
             } else {
@@ -96,7 +96,8 @@ final class UserProfileGroup {
         }
 
         return new UserProfileGroup(
-                profileOwnerUserId, Arrays.copyOf(managedProfileUserIds, managedProfileUserIdsLen));
+                profileOwnerUserId,
+                Arrays.copyOf(managedProfilesUserIds, managedProfilesUserIdsLen));
     }
 
     @NonNull

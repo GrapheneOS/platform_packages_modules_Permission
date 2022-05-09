@@ -133,12 +133,13 @@ final class SafetyCenterDataTracker {
             @NonNull String packageName,
             @UserIdInt int userId) {
         validateRequest(configInternal, safetySourceData, safetySourceId, packageName, userId);
-        processSafetyEvent(safetySourceId, safetyEvent, userId);
+        boolean safetyEventChangedSafetyCenterData =
+                processSafetyEvent(safetySourceId, safetyEvent, userId);
 
         SafetySourceKey key = SafetySourceKey.of(safetySourceId, userId);
         SafetySourceData existingSafetySourceData = mSafetySourceDataForKey.get(key);
         if (Objects.equals(safetySourceData, existingSafetySourceData)) {
-            return false;
+            return safetyEventChangedSafetyCenterData;
         }
 
         if (safetySourceData == null) {
@@ -173,22 +174,24 @@ final class SafetyCenterDataTracker {
 
     /**
      * Reports the given {@link SafetySourceErrorDetails} for the given {@code safetySourceId} and
-     * {@code userId} against the given {@link SafetyCenterConfigInternal}, and returns a {@link
-     * SafetyCenterErrorDetails} describing the issue.
+     * {@code userId} against the given {@link SafetyCenterConfigInternal}, and returns whether
+     * there was a change to the underlying {@link SafetyCenterData} against the given {@link
+     * SafetyCenterConfigInternal}.
      *
      * <p>Throws if the request is invalid based on the {@link SafetyCenterConfigInternal}: the
      * given {@code safetySourceId}, {@code packageName} and/or {@code userId} are unexpected.
      */
-    @NonNull
-    SafetyCenterErrorDetails reportSafetySourceError(
+    boolean reportSafetySourceError(
             @NonNull SafetyCenterConfigInternal configInternal,
             @NonNull String safetySourceId,
             @NonNull SafetySourceErrorDetails safetySourceErrorDetails,
             @NonNull String packageName,
             @UserIdInt int userId) {
         validateRequest(configInternal, null, safetySourceId, packageName, userId);
-        processSafetyEvent(safetySourceId, safetySourceErrorDetails.getSafetyEvent(), userId);
-        return toSafetyCenterErrorDetails(safetySourceId, safetySourceErrorDetails);
+        boolean safetyEventChangedSafetyCenterData =
+                processSafetyEvent(
+                        safetySourceId, safetySourceErrorDetails.getSafetyEvent(), userId);
+        return safetyEventChangedSafetyCenterData;
     }
 
     /**
@@ -206,6 +209,18 @@ final class SafetyCenterDataTracker {
             @NonNull SafetyCenterConfigInternal configInternal,
             @NonNull UserProfileGroup userProfileGroup) {
         return getSafetyCenterData(configInternal.getSafetySourcesGroups(), userProfileGroup);
+    }
+
+    /**
+     * Returns a {@link SafetyCenterErrorDetails} based on a {@link SafetySourceErrorDetails}, if
+     * any should be displayed.
+     */
+    @Nullable
+    SafetyCenterErrorDetails getSafetyCenterErrorDetails(
+            @NonNull String safetySourceId,
+            @NonNull SafetySourceErrorDetails safetySourceErrorDetails) {
+        // TODO(b/229080761): Implement proper error message.
+        return new SafetyCenterErrorDetails("Error");
     }
 
     /** Marks the given {@link SafetyCenterIssueActionId} as in-flight. */
@@ -411,7 +426,7 @@ final class SafetyCenterDataTracker {
         }
     }
 
-    private void processSafetyEvent(
+    private boolean processSafetyEvent(
             @NonNull String safetySourceId,
             @NonNull SafetyEvent safetyEvent,
             @UserIdInt int userId) {
@@ -426,11 +441,10 @@ final class SafetyCenterDataTracker {
                                     "Received safety event of type %d without a refresh broadcast"
                                             + " id.",
                                     safetyEvent.getType()));
-                    return;
+                    return false;
                 }
-                mSafetyCenterRefreshTracker.reportSourceRefreshCompleted(
+                return mSafetyCenterRefreshTracker.reportSourceRefreshCompleted(
                         safetySourceId, refreshBroadcastId, userId);
-                return;
             case SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED:
             case SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED:
                 String safetySourceIssueId = safetyEvent.getSafetySourceIssueId();
@@ -441,7 +455,7 @@ final class SafetyCenterDataTracker {
                                     "Received safety event of type %d without a safety source issue"
                                             + " id.",
                                     safetyEvent.getType()));
-                    return;
+                    return false;
                 }
                 String safetySourceIssueActionId = safetyEvent.getSafetySourceIssueActionId();
                 if (safetySourceIssueActionId == null) {
@@ -451,7 +465,7 @@ final class SafetyCenterDataTracker {
                                     "Received safety event of type %d without a safety source issue"
                                             + " action id.",
                                     safetyEvent.getType()));
-                    return;
+                    return false;
                 }
                 SafetyCenterIssueId safetyCenterIssueId =
                         SafetyCenterIssueId.newBuilder()
@@ -464,12 +478,14 @@ final class SafetyCenterDataTracker {
                                 .setSafetyCenterIssueId(safetyCenterIssueId)
                                 .setSafetySourceIssueActionId(safetySourceIssueActionId)
                                 .build();
-                unmarkSafetyCenterIssueActionAsInFlight(safetyCenterIssueActionId);
-                return;
+                return unmarkSafetyCenterIssueActionAsInFlight(safetyCenterIssueActionId);
             case SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED:
             case SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_LOCALE_CHANGED:
             case SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_REBOOTED:
+                return false;
         }
+        Log.w(TAG, "Unexpected SafetyEvent.Type: " + type);
+        return false;
     }
 
     @NonNull
@@ -554,9 +570,9 @@ final class SafetyCenterDataTracker {
                 continue;
             }
 
-            int[] managedProfileUserIds = userProfileGroup.getManagedProfilesUserIds();
-            for (int j = 0; j < managedProfileUserIds.length; j++) {
-                int managedProfileUserId = managedProfileUserIds[j];
+            int[] managedProfilesUserIds = userProfileGroup.getManagedProfilesUserIds();
+            for (int j = 0; j < managedProfilesUserIds.length; j++) {
+                int managedProfileUserId = managedProfilesUserIds[j];
 
                 maxSafetyCenterEntrySeverityLevel =
                         Math.max(
@@ -686,9 +702,9 @@ final class SafetyCenterDataTracker {
                 continue;
             }
 
-            int[] managedProfileUserIds = userProfileGroup.getManagedProfilesUserIds();
-            for (int j = 0; j < managedProfileUserIds.length; j++) {
-                int managedProfileUserId = managedProfileUserIds[j];
+            int[] managedProfilesUserIds = userProfileGroup.getManagedProfilesUserIds();
+            for (int j = 0; j < managedProfilesUserIds.length; j++) {
+                int managedProfileUserId = managedProfilesUserIds[j];
 
                 maxSafetyCenterEntryLevel =
                         Math.max(
@@ -891,9 +907,9 @@ final class SafetyCenterDataTracker {
                 continue;
             }
 
-            int[] managedProfileUserIds = userProfileGroup.getManagedProfilesUserIds();
-            for (int j = 0; j < managedProfileUserIds.length; j++) {
-                int managedProfileUserId = managedProfileUserIds[j];
+            int[] managedProfilesUserIds = userProfileGroup.getManagedProfilesUserIds();
+            for (int j = 0; j < managedProfilesUserIds.length; j++) {
+                int managedProfileUserId = managedProfilesUserIds[j];
 
                 addSafetyCenterStaticEntry(staticEntries, safetySource, true, managedProfileUserId);
             }
@@ -1047,14 +1063,6 @@ final class SafetyCenterDataTracker {
             return null;
         }
         return getString(stringId);
-    }
-
-    @NonNull
-    private static SafetyCenterErrorDetails toSafetyCenterErrorDetails(
-            @NonNull String safetySourceId,
-            @NonNull SafetySourceErrorDetails safetySourceErrorDetails) {
-        // TODO(b/229080761): Implement proper error message.
-        return new SafetyCenterErrorDetails("Error");
     }
 
     @Nullable
