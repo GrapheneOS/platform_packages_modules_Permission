@@ -29,6 +29,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
+import android.hardware.SensorPrivacyManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.UserHandle;
@@ -50,6 +51,7 @@ import androidx.preference.PreferenceScreen;
 import androidx.preference.PreferenceViewHolder;
 import androidx.preference.SwitchPreference;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.model.AppPermissions;
@@ -80,6 +82,13 @@ public final class AppPermissionsFragment extends SettingsWithHeader
     private PreferenceScreen mExtraScreen;
 
     private boolean mHasConfirmedRevoke;
+
+    private SensorPrivacyManager mSensorPrivacyManager;
+    private final SensorPrivacyManager.OnSensorPrivacyChangedListener mPrivacyChangedListener =
+            (sensor, enabled) -> {
+                mAppPermissions.refresh();
+                setPreferencesCheckedState();
+            };
 
     public static AppPermissionsFragment newInstance(String packageName, UserHandle user) {
         return setPackage(new AppPermissionsFragment(), packageName, user);
@@ -126,6 +135,10 @@ public final class AppPermissionsFragment extends SettingsWithHeader
             getActivity().finish();
             return;
         }
+
+        if (SdkLevel.isAtLeastT()) {
+            mSensorPrivacyManager = getContext().getSystemService(SensorPrivacyManager.class);
+        }
     }
 
     @Override
@@ -142,6 +155,9 @@ public final class AppPermissionsFragment extends SettingsWithHeader
         mAppPermissions.refresh();
         loadPreferences();
         setPreferencesCheckedState();
+        if (mSensorPrivacyManager != null) {
+            mSensorPrivacyManager.addSensorPrivacyListener(mPrivacyChangedListener);
+        }
     }
 
     @Override
@@ -347,6 +363,9 @@ public final class AppPermissionsFragment extends SettingsWithHeader
         mViewModel.getAutoRevokeLiveData().removeObservers(this);
         super.onPause();
         logToggledGroups();
+        if (mSensorPrivacyManager != null) {
+            mSensorPrivacyManager.removeSensorPrivacyListener(mPrivacyChangedListener);
+        }
     }
 
     private void addToggledGroup(AppPermissionGroup group) {
