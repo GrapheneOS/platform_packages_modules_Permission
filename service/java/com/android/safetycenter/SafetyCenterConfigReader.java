@@ -24,6 +24,8 @@ import static java.util.Objects.requireNonNull;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.content.res.Resources;
+import android.safetycenter.SafetyCenterManager;
+import android.safetycenter.SafetyCenterManager.RefreshReason;
 import android.safetycenter.config.SafetyCenterConfig;
 import android.safetycenter.config.SafetySource;
 import android.safetycenter.config.SafetySourcesGroup;
@@ -278,20 +280,23 @@ final class SafetyCenterConfigReader {
 
                     Broadcast broadcast = packageNameToBroadcast.get(safetySource.getPackageName());
                     if (broadcast == null) {
-                        broadcast =
-                                new Broadcast(
-                                        safetySource.getPackageName(),
-                                        new ArrayList<>(),
-                                        new ArrayList<>());
+                        broadcast = new Broadcast(safetySource.getPackageName());
                         packageNameToBroadcast.put(safetySource.getPackageName(), broadcast);
                         broadcasts.add(broadcast);
                     }
-                    broadcast.getSourceIdsForProfileOwner().add(safetySource.getId());
+                    broadcast.mSourceIdsForProfileOwner.add(safetySource.getId());
+                    if (safetySource.isRefreshOnPageOpenAllowed()) {
+                        broadcast.mSourceIdsForProfileOwnerOnPageOpen.add(safetySource.getId());
+                    }
                     // TODO(b/217688797): This might also be handled by the source directly.
                     boolean needsManagedProfilesBroadcast =
                             SafetySources.supportsManagedProfiles(safetySource);
                     if (needsManagedProfilesBroadcast) {
-                        broadcast.getSourceIdsForManagedProfiles().add(safetySource.getId());
+                        broadcast.mSourceIdsForManagedProfiles.add(safetySource.getId());
+                        if (safetySource.isRefreshOnPageOpenAllowed()) {
+                            broadcast.mSourceIdsForManagedProfilesOnPageOpen.add(
+                                    safetySource.getId());
+                        }
                     }
                 }
             }
@@ -305,17 +310,17 @@ final class SafetyCenterConfigReader {
 
         @NonNull private final String mPackageName;
 
-        @NonNull private final List<String> mSourceIdsForProfileOwner;
+        @NonNull private final List<String> mSourceIdsForProfileOwner = new ArrayList<>();
 
-        @NonNull private final List<String> mSourceIdsForManagedProfiles;
+        @NonNull private final List<String> mSourceIdsForProfileOwnerOnPageOpen = new ArrayList<>();
 
-        private Broadcast(
-                @NonNull String packageName,
-                @NonNull List<String> sourceIdsForProfileOwner,
-                @NonNull List<String> sourceIdsForManagedProfiles) {
+        @NonNull private final List<String> mSourceIdsForManagedProfiles = new ArrayList<>();
+
+        @NonNull
+        private final List<String> mSourceIdsForManagedProfilesOnPageOpen = new ArrayList<>();
+
+        private Broadcast(@NonNull String packageName) {
             mPackageName = packageName;
-            mSourceIdsForProfileOwner = sourceIdsForProfileOwner;
-            mSourceIdsForManagedProfiles = sourceIdsForManagedProfiles;
         }
 
         /** Returns the package name to dispatch the broadcast to. */
@@ -327,18 +332,28 @@ final class SafetyCenterConfigReader {
          * Returns the safety source ids associated with this broadcast in the profile owner.
          *
          * <p>If this list is empty, there are no sources to dispatch to in the profile owner.
+         *
+         * @param refreshReason the {@link RefreshReason} for the broadcast
          */
-        public List<String> getSourceIdsForProfileOwner() {
-            return mSourceIdsForProfileOwner;
+        public List<String> getSourceIdsForProfileOwner(@RefreshReason int refreshReason) {
+            if (refreshReason == SafetyCenterManager.REFRESH_REASON_PAGE_OPEN) {
+                return unmodifiableList(mSourceIdsForProfileOwnerOnPageOpen);
+            }
+            return unmodifiableList(mSourceIdsForProfileOwner);
         }
 
         /**
          * Returns the safety source ids associated with this broadcast in the managed profile(s).
          *
          * <p>If this list is empty, there are no sources to dispatch to in the managed profile(s).
+         *
+         * @param refreshReason the {@link RefreshReason} for the broadcast
          */
-        public List<String> getSourceIdsForManagedProfiles() {
-            return mSourceIdsForManagedProfiles;
+        public List<String> getSourceIdsForManagedProfiles(@RefreshReason int refreshReason) {
+            if (refreshReason == SafetyCenterManager.REFRESH_REASON_PAGE_OPEN) {
+                return unmodifiableList(mSourceIdsForManagedProfilesOnPageOpen);
+            }
+            return unmodifiableList(mSourceIdsForManagedProfiles);
         }
 
         @Override
@@ -348,13 +363,21 @@ final class SafetyCenterConfigReader {
             Broadcast that = (Broadcast) o;
             return mPackageName.equals(that.mPackageName)
                     && mSourceIdsForProfileOwner.equals(that.mSourceIdsForProfileOwner)
-                    && mSourceIdsForManagedProfiles.equals(that.mSourceIdsForManagedProfiles);
+                    && mSourceIdsForProfileOwnerOnPageOpen.equals(
+                            that.mSourceIdsForProfileOwnerOnPageOpen)
+                    && mSourceIdsForManagedProfiles.equals(that.mSourceIdsForManagedProfiles)
+                    && mSourceIdsForManagedProfilesOnPageOpen.equals(
+                            that.mSourceIdsForManagedProfilesOnPageOpen);
         }
 
         @Override
         public int hashCode() {
             return Objects.hash(
-                    mPackageName, mSourceIdsForProfileOwner, mSourceIdsForManagedProfiles);
+                    mPackageName,
+                    mSourceIdsForProfileOwner,
+                    mSourceIdsForProfileOwnerOnPageOpen,
+                    mSourceIdsForManagedProfiles,
+                    mSourceIdsForManagedProfilesOnPageOpen);
         }
 
         @Override
@@ -364,8 +387,12 @@ final class SafetyCenterConfigReader {
                     + mPackageName
                     + ", mSourceIdsForProfileOwner="
                     + mSourceIdsForProfileOwner
+                    + ", mSourceIdsForProfileOwnerOnPageOpen="
+                    + mSourceIdsForProfileOwnerOnPageOpen
                     + ", mSourceIdsForManagedProfiles="
                     + mSourceIdsForManagedProfiles
+                    + ", mSourceIdsForManagedProfilesOnPageOpen="
+                    + mSourceIdsForManagedProfilesOnPageOpen
                     + '}';
         }
     }
