@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"എല്ലാ ഫയലുകളും മാനേജ് ചെയ്യാൻ അനുവദിച്ചവ"</string>
     <string name="ask_header" msgid="2633816846459944376">"എപ്പോഴും ചോദിക്കുക"</string>
     <string name="denied_header" msgid="903209608358177654">"അനുവദിച്ചിട്ടില്ല"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"എല്ലാ ഫയലുകളും ആക്‌സസ് ചെയ്യാൻ കഴിയുന്ന കൂടുതൽ ആപ്പുകൾ കാണുക"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{ഒരു ദിവസം}other{# ദിവസം}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{ഒരു മണിക്കൂർ}other{# മണിക്കൂർ}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{ഒരു മിനിറ്റ്}other{# മിനിറ്റ്}}"</string>
@@ -332,8 +331,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"ഡിഫോൾട്ട് ഡിജിറ്റൽ അസിസ്‌റ്റന്റ് ആപ്പ്"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"ഡിജിറ്റൽ അസിസ്‌റ്റന്റ് ആപ്പ്"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"നിങ്ങൾ കാണുന്ന സ്ക്രീനിൽ നിന്നുള്ള വിവരങ്ങളെ അടിസ്ഥാനമാക്കി സഹായിക്കാൻ സഹായ ആപ്പിന് കഴിയും. നിങ്ങൾക്ക് സമ്പൂർണ്ണമായ സഹായം നൽകാൻ ലോഞ്ചറിനെയും വോയ്‌സ് ഇൻപുട്ട് സേവനങ്ങളെയും ചില ആപ്പുകൾ പിന്തുണയ്‌ക്കുന്നു."</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"<xliff:g id="APP_NAME">%1$s</xliff:g> എന്നതിനെ നിങ്ങളുടെ ഡിഫോൾട്ട് സഹായ ആപ്പായി സജ്ജീകരിക്കണോ?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"SMS, കോൾ ലോഗ് എന്നിവയിലേക്ക് ആക്‌സസ് നേടുക"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"ഡിഫോൾട്ട് ബ്രൗസർ ആപ്പ്"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"ബ്രൗസർ ആപ്പ്"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"നിങ്ങൾ ടാപ്പ് ചെയ്യുന്ന ലിങ്കുകൾ പ്രദർശിപ്പിക്കുകയും ഇന്റർനെറ്റ് ആക്‌സസ് നൽകുകയും ചെയ്യുന്ന ആപ്പുകൾ"</string>
@@ -343,13 +340,15 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"ഫോൺ ആപ്പ്"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"നിങ്ങളുടെ ഉപകരണത്തിൽ ടെലിഫോൺ കോളുകൾ ചെയ്യാനും സ്വീകരിക്കാനും അനുവദിക്കുന്ന ആപ്പുകൾ"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g> എന്നതിനെ നിങ്ങളുടെ ഡിഫോൾട്ട് ഫോൺ ആപ്പായി സജ്ജീകരിക്കണോ?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"SMS അയയ്‌ക്കൽ, കോൾ ചരിത്രം എന്നിവയിലേക്ക് ആക്‌സസ് നേടുക"</string>
+    <!-- no translation found for role_dialer_request_description (6288839625724909320) -->
+    <skip />
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"ഡയലർ"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"ഡിഫോൾട്ട് SMS ആപ്പ്"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS ആപ്പ്"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"ചുരുക്കത്തിലുള്ള ടെക്‌സ്‌റ്റ് മെസേജുകൾ, ഫോട്ടോകൾ, വീഡിയോകൾ എന്നിവയും മറ്റും അയയ്ക്കാനും സ്വീകരിക്കാനും നിങ്ങളുടെ ഫോൺ നമ്പർ ഉപയോഗിക്കാൻ അനുവദിക്കുന്ന ആപ്പുകൾ"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g> എന്നതിനെ നിങ്ങളുടെ ഡിഫോൾട്ട് SMS ആപ്പായി സജ്ജീകരിക്കണോ?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"കോൺടാക്‌റ്റുകൾ, SMS, ഫോൺ എന്നിവയിലേക്ക് ആക്‌സസ് നേടുക"</string>
+    <!-- no translation found for role_sms_request_description (2691004766132144886) -->
+    <skip />
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"ടെക്സ്റ്റ് മെസേജ്, ടെക്സ്റ്റ് ചെയ്യൽ, സന്ദേശങ്ങൾ, സന്ദേശം അയയ്‌ക്കൽ എന്നിവ"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"ഡിഫോൾട്ട് അടിയന്തിര ആപ്പ്"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"അടിയന്തിര ആപ്പ്"</string>

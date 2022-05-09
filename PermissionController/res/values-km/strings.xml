@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"បានអនុញ្ញាតឱ្យគ្រប់គ្រងឯកសារទាំងអស់"</string>
     <string name="ask_header" msgid="2633816846459944376">"សួរគ្រប់ពេល"</string>
     <string name="denied_header" msgid="903209608358177654">"មិន​បានអនុញ្ញាត​"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"មើលកម្មវិធីច្រើនទៀតដែលអាចចូលប្រើឯកសារទាំងអស់បាន"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 ថ្ងៃ}other{# ថ្ងៃ}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 ម៉ោង}other{# ម៉ោង}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 នាទី}other{# នាទី}}"</string>
@@ -332,8 +331,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"កម្មវិធីជំនួយការឌីជីថលលំនាំដើម"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"កម្មវិធីជំនួយការ​ឌីជីថល"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"កម្មវិធីជំនួយអាចជួយអ្នកដោយផ្អែកលើព័ត៌មានពីអេក្រង់ដែលអ្នកកំពុងមើល។ កម្មវិធីមួយចំនួនអាចប្រើបាន​ទាំង​កម្មវិធី​ចាប់ផ្ដើម និងសេវាកម្ម​បញ្ចូលសំឡេង ដើម្បី​ផ្ដល់ជំនួយ​រួមគ្នាដល់អ្នក។"</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"កំណត់​ <xliff:g id="APP_NAME">%1$s</xliff:g> ជាកម្មវិធី​ជំនួយ​លំនាំដើម​របស់អ្នក?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"អាច​ចូលប្រើ​សារ SMS កំណត់ហេតុហៅទូរសព្ទ"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"កម្មវិធីរុករកតាមអ៊ីនធឺណិតលំនាំដើម"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"កម្មវិធីរុករកតាមអ៊ីនធឺណិត"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"កម្មវិធី​ដែលផ្ដល់លទ្ធភាព​ឱ្យអ្នក​ចូលប្រើ​អ៊ីនធឺណិត និងបង្ហាញតំណ​ដែលអ្នកចុច"</string>
@@ -343,13 +340,15 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"កម្មវិធីទូរសព្ទ"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"កម្មវិធី​ដែលអនុញ្ញាតឱ្យ​អ្នកហៅ និងទទួល​ទូរសព្ទ​នៅលើឧបករណ៍​របស់អ្នក"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"កំណត់​ <xliff:g id="APP_NAME">%1$s</xliff:g> ជាកម្មវិធី​ទូរសព្ទ​លំនាំដើម​របស់អ្នក?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"អាច​ចូលប្រើ​កំណត់ហេតុហៅទូរសព្ទ ផ្ញើសារ SMS"</string>
+    <!-- no translation found for role_dialer_request_description (6288839625724909320) -->
+    <skip />
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"ផ្ទាំងចុចហៅ​ទូរសព្ទ"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"កម្មវិធី​សារ SMS ​លំនាំ​ដើម"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"​កម្មវិធី​សារ SMS"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"កម្មវិធីដែល​អនុញ្ញាត​ឱ្យអ្នក​ប្រើលេខទូរសព្ទរបស់អ្នក ដើម្បី​ផ្ញើ និងទទួលសារជាអក្សរខ្លី រូបថត វីដេអូ​ និងអ្វីៗ​ជាច្រើន​ទៀត"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"កំណត់​ <xliff:g id="APP_NAME">%1$s</xliff:g>​ ជាកម្មវិធីសារ SMS លំនាំដើម​របស់​អ្នក?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"អាច​ចូលប្រើ​ទំនាក់ទំនង សារ SMS ទូរសព្ទ"</string>
+    <!-- no translation found for role_sms_request_description (2691004766132144886) -->
+    <skip />
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"សារជាអក្សរ ការផ្ញើសារជាអក្សរ សារ ការផ្ញើសារ"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"កម្មវិធីអាសន្នលំនាំដើម"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"កម្មវិធី​អាសន្ន"</string>

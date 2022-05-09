@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"التطبيقات المسموح لها بإدارة كل الملفات"</string>
     <string name="ask_header" msgid="2633816846459944376">"الطلب في كل مرة"</string>
     <string name="denied_header" msgid="903209608358177654">"الأذونات غير المسموح بها"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"الاطّلاع على تطبيقات أكثر يمكنها الوصول إلى كل الملفات"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{يوم واحد}zero{# يوم}two{يومان}few{# أيام}many{# يومًا}other{# يوم}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{ساعة واحدة}zero{# ساعة}two{ساعتان}few{# ساعات}many{# ساعةً}other{# ساعة}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{دقيقة واحدة}zero{# دقيقة}two{دقيقتان}few{# دقائق}many{# دقيقةً}other{# دقيقة}}"</string>
@@ -332,8 +331,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"تطبيق المساعد الرقمي التلقائي"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"تطبيق المساعد الرقمي"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"بإمكان التطبيقات المساعِدة مساعدتك استنادًا إلى المعلومات على الشاشة التي تشاهدها. وتتوافق بعض التطبيقات مع كل من خدمة المشغّل وخدمة الإدخال الصوتي لتوفير مساعدة متكاملة لك."</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"هل تريد ضبط <xliff:g id="APP_NAME">%1$s</xliff:g> باعتباره تطبيق المساعد التلقائي؟"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"‏الحصول على إذن وصول إلى الرسائل القصيرة SMS وسجلّ المكالمات"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"تطبيق المتصفّح التلقائي"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"تطبيق المتصفح"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"التطبيقات التي تتيح إمكانية الوصول إلى الإنترنت وتعرض روابط تنقر عليها"</string>
@@ -343,13 +340,15 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"تطبيق الهاتف"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"التطبيقات التي تتيح لك إمكانية إجراء مكالمات هاتفية وتلقّيها على جهازك"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"هل تريد ضبط <xliff:g id="APP_NAME">%1$s</xliff:g> باعتباره تطبيق الهاتف التلقائي؟"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"‏الوصول إلى سجلّ المكالمات وإرسال الرسائل القصيرة SMS"</string>
+    <!-- no translation found for role_dialer_request_description (6288839625724909320) -->
+    <skip />
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"برنامج الاتصال"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"‏تطبيق رسائل SMS التلقائي"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"‏تطبيق SMS"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"التطبيقات التي تتيح لك استخدام رقم هاتفك لإرسال وتلقّي رسائل نصية قصيرة وصور وفيديوهات وغيرها"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"‏هل تريد ضبط <xliff:g id="APP_NAME">%1$s</xliff:g> باعتباره تطبيق الرسائل القصيرة SMS التلقائي؟"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"‏الوصول إلى جهات الاتصال والرسائل القصيرة SMS والهاتف"</string>
+    <!-- no translation found for role_sms_request_description (2691004766132144886) -->
+    <skip />
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"رسالة نصية، إرسال رسالة، رسائل، مراسلة"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"تطبيق الطوارئ التلقائي"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"تطبيق الطوارئ"</string>
@@ -523,40 +522,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"تم الاستخدام مؤخرًا من قِبل <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"الأمان والخصوصية"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"فحص الحالة"</string>
-    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
-    <skip />
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"تأكيد"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"رجوع"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"سيتم السماح أيضًا بالوصول إلى الملفات الأخرى"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"لن يتم السماح أيضًا بالوصول إلى الملفات الأخرى"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"سيتم السماح أيضًا بالوصول إلى الملفات الأخرى"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"لن يتم السماح أيضًا بالوصول إلى الملفات الأخرى"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"سيتم السماح أيضًا بالوصول إلى الصور والفيديوهات"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"لن يتم السماح أيضًا بالوصول إلى الصور والفيديوهات"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"سيتم السماح أيضًا بالوصول إلى الملفات الصوتية وملفات الموسيقى"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"لن يتم السماح أيضًا بالوصول إلى الملفات الصوتية وملفات الموسيقى"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"‏لا يعمل هذا التطبيق بموجب أحدث إصدار من نظام التشغيل Android. إذا كان بإمكان هذا التطبيق الوصول إلى الملفات الصوتية وملفات الموسيقى، سيُسمح له أيضًا بالوصول إلى الصور والفيديوهات والملفات الأخرى."</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"‏لا يعمل هذا التطبيق بموجب أحدث إصدار من نظام التشغيل Android. إذا لم يكن بإمكان هذا التطبيق الوصول إلى الملفات الصوتية وملفات الموسيقى، لن يُسمح له أيضًا بالوصول إلى الصور والفيديوهات والملفات الأخرى."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"‏لا يعمل هذا التطبيق بموجب أحدث إصدار من نظام التشغيل Android. إذا كان بإمكان هذا التطبيق الوصول إلى الصور والفيديوهات، سيُسمح له أيضًا بالوصول إلى الملفات الصوتية وملفات الموسيقى والملفات الأخرى."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"‏لا يعمل هذا التطبيق بموجب أحدث إصدار من نظام التشغيل Android. إذا لم يكن بإمكان هذا التطبيق الوصول إلى الصور والفيديوهات، لن يُسمح له أيضًا بالوصول إلى الملفات الصوتية وملفات الموسيقى والملفات الأخرى."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"‏لا يعمل هذا التطبيق بموجب أحدث إصدار من نظام التشغيل Android. إذا كان بإمكان هذا التطبيق الوصول إلى الملفات الصوتية وملفات الموسيقى، سيُسمح له أيضًا بالوصول إلى الصور والفيديوهات."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"‏لا يعمل هذا التطبيق بموجب أحدث إصدار من نظام التشغيل Android. إذا لم يكن بإمكان هذا التطبيق الوصول إلى الملفات الصوتية وملفات الموسيقى، لن يُسمح له أيضًا بالوصول إلى الصور والفيديوهات."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"‏لا يعمل هذا التطبيق بموجب أحدث إصدار من نظام التشغيل Android. إذا كان بإمكان هذا التطبيق الوصول إلى الصور والفيديوهات، سيُسمح له أيضًا بالوصول إلى الملفات الصوتية وملفات الموسيقى."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"‏لا يعمل هذا التطبيق بموجب أحدث إصدار من نظام التشغيل Android. إذا لم يكن بإمكان هذا التطبيق الوصول إلى الملفات الصوتية وملفات الموسيقى، لن يُسمح له أيضًا بالوصول إلى الصور والفيديوهات."</string>
 </resources>

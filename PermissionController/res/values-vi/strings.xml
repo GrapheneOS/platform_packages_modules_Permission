@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Được phép quản lý tất cả các tệp"</string>
     <string name="ask_header" msgid="2633816846459944376">"Luôn hỏi"</string>
     <string name="denied_header" msgid="903209608358177654">"Không được phép"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Xem thêm ứng dụng có thể truy cập tất cả các tệp"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 ngày}other{# ngày}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 giờ}other{# giờ}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 phút}other{# phút}}"</string>
@@ -332,8 +331,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"Ứng dụng trợ lý kỹ thuật số mặc định"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Ứng dụng trợ lý kỹ thuật số"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Các ứng dụng trợ lý có thể giúp bạn dựa trên thông tin từ màn hình bạn đang xem. Một số ứng dụng hỗ trợ cả dịch vụ nhập bằng giọng nói và trình chạy để hỗ trợ bạn toàn diện hơn."</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"Bạn muốn đặt <xliff:g id="APP_NAME">%1$s</xliff:g> làm ứng dụng trợ lý mặc định?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"Có quyền truy cập vào SMS, nhật ký cuộc gọi"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Ứng dụng trình duyệt mặc định"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Ứng dụng trình duyệt"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Các ứng dụng giúp bạn truy cập vào Internet và hiển thị đường liên kết để bạn nhấn vào"</string>
@@ -343,13 +340,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Ứng dụng điện thoại"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Các ứng dụng cho phép bạn thực hiện và nhận cuộc gọi điện thoại trên thiết bị của mình"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Bạn muốn đặt <xliff:g id="APP_NAME">%1$s</xliff:g> làm ứng dụng điện thoại mặc định?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"Có quyền truy cập vào nhật ký cuộc gọi, gửi SMS"</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"Ứng dụng này sẽ được cấp quyền truy cập vào Máy ảnh, Danh bạ, Micrô, Điện thoại và tin nhắn SMS của bạn"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"trình quay số"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Ứng dụng SMS mặc định"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"Ứng dụng SMS"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Các ứng dụng cho phép bạn sử dụng số điện thoại để gửi và nhận tin nhắn văn bản ngắn, ảnh, video, v.v."</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Bạn muốn đặt <xliff:g id="APP_NAME">%1$s</xliff:g> làm ứng dụng SMS mặc định?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"Có quyền truy cập vào danh bạ, SMS, điện thoại"</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"Ứng dụng này sẽ được cấp quyền truy cập vào Máy ảnh, Danh bạ, Tệp và nội dung nghe nhìn, Micrô, Điện thoại và tin nhắn SMS của bạn"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"tin nhắn văn bản, nhắn tin, tin nhắn, nhắn"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"Ứng dụng khẩn cấp mặc định"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"Ứng dụng khẩn cấp"</string>
