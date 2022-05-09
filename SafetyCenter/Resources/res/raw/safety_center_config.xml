@@ -19,7 +19,7 @@
         <safety-sources-group
             id="AndroidLockScreenSources"
             title="@com.android.safetycenter.resources:string/lock_screen_sources_title"
-            summary="@com.android.safetycenter.resources:string/summary_placeholder">
+            summary="@com.android.safetycenter.resources:string/lock_screen_sources_summary">
             <dynamic-safety-source
                 id="AndroidLockScreen"
                 packageName="com.android.settings"
@@ -50,6 +50,12 @@
                 intentAction="android.intent.action.MANAGE_PERMISSIONS"
                 title="@com.android.safetycenter.resources:string/permission_manager_title"
                 summary="@com.android.safetycenter.resources:string/permission_manager_summary"/>
+            <static-safety-source
+                id="AndroidPrivacyControls"
+                profile="primary_profile_only"
+                intentAction="android.settings.PRIVACY_CONTROLS"
+                title="@com.android.safetycenter.resources:string/privacy_controls_title"
+                summary="@com.android.safetycenter.resources:string/privacy_controls_summary"/>
         </safety-sources-group>
         <safety-sources-group
             id="AndroidAdvancedSources"
@@ -60,6 +66,12 @@
                 intentAction="com.android.settings.security.SECURITY_ADVANCED_SETTINGS"
                 title="@com.android.safetycenter.resources:string/advanced_security_title"
                 summary="@com.android.safetycenter.resources:string/advanced_security_summary"/>
+            <static-safety-source
+                id="AndroidAdvancedPrivacy"
+                profile="primary_profile_only"
+                intentAction="android.settings.PRIVACY_ADVANCED_SETTINGS"
+                title="@com.android.safetycenter.resources:string/advanced_privacy_title"
+                summary="@com.android.safetycenter.resources:string/advanced_privacy_summary"/>
         </safety-sources-group>
     </safety-sources-config>
 </safety-center-config>
