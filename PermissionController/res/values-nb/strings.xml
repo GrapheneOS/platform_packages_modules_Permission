@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Kan administrere alle filer"</string>
     <string name="ask_header" msgid="2633816846459944376">"Spør hver gang"</string>
     <string name="denied_header" msgid="903209608358177654">"Ikke tillatt"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Se flere apper som kan bruke alle filer"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 dag}other{# dager}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 time}other{# timer}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 minutt}other{# minutter}}"</string>
@@ -281,8 +280,7 @@
     <string name="notification_listener_reminder_notification_content" msgid="4740891089329946164">"<xliff:g id="APP_NAME">%s</xliff:g> kan lese alle varslene dine."</string>
     <string name="notification_listener_warning_card_content" msgid="8181427178654279926">"Denne appen kan lese alle varslene dine."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Fjern tilgang"</string>
-    <!-- no translation found for notification_listener_review_app_button_label (4452381557379652037) -->
-    <skip />
+    <string name="notification_listener_review_app_button_label" msgid="4452381557379652037">"Gjennomgå alle apper med varseltilgang"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Tilgangen er fjernet"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Gjennomgå app med tilgjengelighetstilgang"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> kan lese alt innhold på skjermen, vise innhold over andre apper og spore samhandlingene dine."</string>
@@ -345,8 +343,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"Standard digital assistentapp"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Digital assistent-app"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Assistentapper kan hjelpe deg basert på informasjon fra skjermen du bruker. Noen apper støtter tjenester for både appoversikten og taleinndata for å gi deg integrert hjelp."</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"Vil du angi <xliff:g id="APP_NAME">%1$s</xliff:g> som standard assistentapp?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"Får tilgang til SMS, samtalelogg"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Standard nettleserapp"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Nettleserapp"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Apper som gir deg tilgang til internett og viser linker du trykker på"</string>
@@ -356,13 +352,15 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Telefonapp"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Apper som lar deg ringe fra og motta anrop på enheten"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Vil du angi <xliff:g id="APP_NAME">%1$s</xliff:g> som standard telefonapp?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"Får tilgang til samtalelogg, sending av SMS"</string>
+    <!-- no translation found for role_dialer_request_description (6288839625724909320) -->
+    <skip />
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"ringeapp"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Standard SMS-app"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS-app"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Apper som lar deg bruke telefonnummeret til å sende og motta korte tekstmeldinger, bilder, videoer med mer"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Vil du angi <xliff:g id="APP_NAME">%1$s</xliff:g> som standardapp for SMS?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"Får tilgang til kontakter, SMS, telefon"</string>
+    <!-- no translation found for role_sms_request_description (2691004766132144886) -->
+    <skip />
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"SMS, sende tekstmelding, meldinger, sende meldinger"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"Standardapp for nødssituasjoner"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"Nødapp"</string>
@@ -519,6 +517,8 @@
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Vil du lukke dette varselet?"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Lukk"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Avbryt"</string>
+    <!-- no translation found for safety_center_entries_category_title (34356964062813115) -->
+    <skip />
     <string name="security_settings" msgid="3808106921175271317">"Sikkerhetsinnstillinger"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Sensortillatelser"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Personverninnstillinger"</string>
@@ -539,40 +539,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"Nylig brukt av <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Sikkerhet og personvern"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Sjekk statusen"</string>
-    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
-    <skip />
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"Bekreft"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"Tilbake"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"Tilgang til andre filer tillates også"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"Tilgang til andre filer tillates heller ikke"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"Tilgang til andre filer tillates også"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"Tilgang til andre filer tillates heller ikke"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"Tilgang til bilder og videoer tillates også"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"Tilgang til bilder og videoer tillates heller ikke"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"Tilgang til musikk- og lydfiler tillates også"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"Tilgang til musikk- og lydfiler tillates heller ikke"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"Denne appen støtter ikke den nyeste versjonen av Android. Hvis denne appen har tilgang til musikk- og lydfiler, har den også tilgang til bilder, videoer og andre filer."</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"Denne appen støtter ikke den nyeste versjonen av Android. Hvis denne appen ikke har tilgang til musikk- og lydfiler, har den heller ikke tilgang til bilder, videoer og andre filer."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"Denne appen støtter ikke den nyeste versjonen av Android. Hvis denne appen har tilgang til bilder og videoer, har den også tilgang til musikk, lyd og andre filer."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"Denne appen støtter ikke den nyeste versjonen av Android. Hvis denne appen ikke har tilgang til bilder og videoer, har den heller ikke tilgang til musikk, lyd og andre filer."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"Denne appen støtter ikke den nyeste versjonen av Android. Hvis denne appen har tilgang til musikk- og lydfiler, har den også tilgang til bilder og videoer."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Denne appen støtter ikke den nyeste versjonen av Android. Hvis denne appen ikke har tilgang til musikk- og lydfiler, har den heller ikke tilgang til bilder og videoer."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Denne appen støtter ikke den nyeste versjonen av Android. Hvis denne appen har tilgang til bilder og videoer, har den også tilgang til musikk- og lydfiler."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Denne appen støtter ikke den nyeste versjonen av Android. Hvis denne appen ikke har tilgang til musikk- og lydfiler, har den heller ikke tilgang til bilder og videoer."</string>
 </resources>

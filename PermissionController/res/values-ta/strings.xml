@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"எல்லா ஃபைல்களையும் நிர்வகிக்கும் அணுகலுள்ளவை"</string>
     <string name="ask_header" msgid="2633816846459944376">"ஒவ்வொரு முறையும் கேள்"</string>
     <string name="denied_header" msgid="903209608358177654">"அனுமதிக்கப்படாதவை"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"அனைத்து ஃபைல்களையும் அணுகக்கூடிய கூடுதல் ஆப்ஸைப் பாருங்கள்"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 நாள்}other{# நாட்கள்}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 மணிநேரம்}other{# மணிநேரம்}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 நிமிடம்}other{# நிமிடங்கள்}}"</string>
@@ -281,8 +280,7 @@
     <string name="notification_listener_reminder_notification_content" msgid="4740891089329946164">"<xliff:g id="APP_NAME">%s</xliff:g> ஆப்ஸால் உங்கள் அறிவிப்புகள் அனைத்தையும் படிக்க முடியும்."</string>
     <string name="notification_listener_warning_card_content" msgid="8181427178654279926">"இந்த ஆப்ஸால் உங்கள் அறிவிப்புகள் அனைத்தையும் படிக்க முடியும்."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"அணுகலை அகற்று"</string>
-    <!-- no translation found for notification_listener_review_app_button_label (4452381557379652037) -->
-    <skip />
+    <string name="notification_listener_review_app_button_label" msgid="4452381557379652037">"அறிவிப்பு அணுகலுள்ள அனைத்து ஆப்ஸையும் பாருங்கள்"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"அணுகல் அகற்றப்பட்டது"</string>
     <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"அணுகல்தன்மை அம்சங்களுடன் ஆப்ஸைப் பாருங்கள்"</string>
     <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> ஆப்ஸ் மூலம் திரையிலுள்ள அனைத்து உள்ளடக்கங்களையும் படிக்கலாம், பிற ஆப்ஸில் உள்ளடக்கங்களைக் காட்டலாம், உங்கள் செயல்பாடுகளை டிராக் செய்யலாம்."</string>
@@ -345,8 +343,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"இயல்பான டிஜிட்டல் அசிஸ்டண்ட்"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"டிஜிட்டல் அசிஸ்டண்ட் ஆப்ஸ்"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"நீங்கள் பார்க்கும் திரையில் உள்ள தகவலின் அடிப்படையில் அசிஸ்ட் ஆப்ஸ் உதவும். ஒருங்கிணைந்த உதவியை வழங்குவதற்காக \'தொடக்கியையும்\' \'குரல் உள்ளீட்டுச் சேவைகளையும்\' சில ஆப்ஸ் பயன்படுத்துகின்றன."</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"<xliff:g id="APP_NAME">%1$s</xliff:g>ஐ இயல்பான அசிஸ்ட் ஆப்ஸாக அமைக்கவா?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"மெசேஜ், அழைப்புப் பதிவுக்கான அணுகலைப் பெறும்"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"உலாவிக்கான இயல்பான ஆப்ஸ்"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"உலாவி ஆப்ஸ்"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"இணையத்திற்கும் திரையில் பார்த்துத் தட்டக்கூடிய இணைப்புகளுக்கும் அணுகலை வழங்கும் ஆப்ஸ்"</string>
@@ -356,13 +352,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"மொபைல் ஆப்ஸ்"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"உங்கள் சாதனத்தில் அழைப்புகளைச் செய்யவும் பெறவும் அனுமதிக்கும் ஆப்ஸ்"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g>ஐ இயல்பான மொபைல் ஆப்ஸாக அமைக்கவா?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"அழைப்புப் பதிவு, மெசேஜ் ஆகியவற்றுக்கான அணுகலைப் பெறும்"</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"கேமரா, தொடர்புகள், மைக்ரோஃபோன், மொபைல், மெசேஜ் ஆகியவற்றுக்கான அணுகல் இந்த ஆப்ஸுக்கு வழங்கப்படும்"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"டயலர்"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"இயல்பான மெசேஜ் ஆப்ஸ்"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"மெசேஜ் ஆப்ஸ்"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"சிறு மெசேஜ்கள், படங்கள், வீடியோக்கள் மற்றும் பலவற்றை அனுப்புவதற்கும் பெறுவதற்கும் உங்கள் மொபைல் எண்ணைப் பயன்படுத்த அனுமதிக்கும் ஆப்ஸ்"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g>ஐ இயல்பான மெசேஜ் ஆப்ஸாக அமைக்கவா?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"தொடர்புகள், மெசேஜ், மொபைல் ஆகியவற்றுக்கான அணுகலைப் பெறும்"</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"கேமரா, தொடர்புகள், ஃபைல்கள் &amp; மீடியா, மைக்ரோஃபோன், மொபைல், மெசேஜ் ஆகியவற்றுக்கான அணுகல் இந்த ஆப்ஸுக்கு வழங்கப்படும்"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"உரைச் செய்தி, உரைச் செய்தியிடல், மெசேஜ்கள், மெசேஜ் அனுப்புதல்"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"இயல்பான அவசரநிலை ஆப்ஸ்"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"அவசரகால ஆப்ஸ்"</string>
@@ -519,6 +515,7 @@
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"இந்த அறிவிப்பை நிராகரிக்கவா?"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"நிராகரி"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"ரத்துசெய்"</string>
+    <string name="safety_center_entries_category_title" msgid="34356964062813115">"அமைப்புகள்"</string>
     <string name="security_settings" msgid="3808106921175271317">"பாதுகாப்பு அமைப்புகள்"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"சென்சார் அனுமதிகள்"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"தனியுரிமைக் கட்டுப்பாடுகள்"</string>
