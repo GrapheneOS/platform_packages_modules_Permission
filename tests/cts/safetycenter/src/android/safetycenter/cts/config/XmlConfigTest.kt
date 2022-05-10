@@ -89,7 +89,8 @@ class XmlConfigTest {
     }
 
     companion object {
-        private const val ADVANCED_PRIVACY_INTENT_STRING = "android.settings.PRIVACY_ADVANCED_SETTINGS"
+        private const val ADVANCED_PRIVACY_INTENT_STRING =
+            "android.settings.PRIVACY_ADVANCED_SETTINGS"
         private const val PRIVACY_CONTROLS_INTENT_STRING = "android.settings.PRIVACY_CONTROLS"
     }
 }
