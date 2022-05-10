@@ -52,6 +52,7 @@ android_test {
 
     test_suites: [
         "device-tests",
+        "mts-permission",
     ],
 
     required: [
