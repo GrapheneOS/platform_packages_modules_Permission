@@ -50,7 +50,9 @@ import android.os.Build
 import android.os.Bundle
 import android.os.UserHandle
 import android.permission.PermissionManager
+import android.provider.DeviceConfig
 import android.text.TextUtils
+import androidx.annotation.ChecksSdkIntAtLeast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
@@ -91,6 +93,7 @@ object KotlinUtils {
         FLAG_PERMISSION_AUTO_REVOKED
 
     private const val KILL_REASON_APP_OP_CHANGE = "Permission related app op changed"
+    private const val SAFETY_PROTECTION_RESOURCES_ENABLED = "safety_protection_enabled"
 
     /**
      * Importance level to define the threshold for whether a package is in a state which resets the
@@ -1068,6 +1071,22 @@ object KotlinUtils {
                 PackageManager.FLAG_PERMISSION_SELECTED_LOCATION_ACCURACY to true,
                 filterPermissions = listOf(Manifest.permission.ACCESS_COARSE_LOCATION))
         }
+    }
+
+    /**
+     * Determines whether we should show the safety protection resources.
+     * We show the resources only if
+     * (1) the build version is T or after and
+     * (2) the feature flag safety_protection_enabled is enabled and
+     * (3) the resources exist (currently the resources only exist on GMS devices)
+     */
+    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.TIRAMISU)
+    fun shouldShowSafetyProtectionResources(context: Context): Boolean {
+        return SdkLevel.isAtLeastT() &&
+            DeviceConfig.getBoolean(
+                DeviceConfig.NAMESPACE_PRIVACY, SAFETY_PROTECTION_RESOURCES_ENABLED, false) &&
+            context.getDrawable(android.R.drawable.ic_safety_protection) != null &&
+            !context.getString(android.R.string.safety_protection_display_text).isNullOrEmpty()
     }
 }
 
