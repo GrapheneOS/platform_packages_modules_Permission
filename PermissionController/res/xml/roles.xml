@@ -738,6 +738,7 @@
         systemOnly="true"
         visible="false">
         <permissions>
+            <permission-set name="notifications" />
             <permission name="android.permission.ACCESS_SHORTCUTS" />
             <permission name="android.permission.ACCESS_BACKGROUND_LOCATION" minSdkVersion="33" />
             <permission name="android.permission.ACCESS_COARSE_LOCATION" minSdkVersion="33" />
@@ -787,6 +788,7 @@
         systemOnly="true"
         visible="false">
         <permissions>
+            <permission-set name="notifications" />
             <permission name="android.permission.CAPTURE_AUDIO_OUTPUT" />
             <permission name="android.permission.CAPTURE_MEDIA_OUTPUT" />
             <permission name="android.permission.CAPTURE_VOICE_COMMUNICATION_OUTPUT" />
@@ -878,6 +880,7 @@
         systemOnly="true"
         visible="false">
         <permissions>
+            <permission-set name="notifications" />
             <permission name="android.permission.REQUEST_NOTIFICATION_ASSISTANT_SERVICE" />
             <permission name="android.permission.SYSTEM_APPLICATION_OVERLAY" />
         </permissions>
@@ -913,6 +916,7 @@
         systemOnly="true"
         visible="false">
         <permissions>
+            <permission-set name="notifications" />
             <permission name="android.permission.ACCESS_BACKGROUND_LOCATION" minSdkVersion="33" />
             <permission name="android.permission.ACCESS_COARSE_LOCATION" minSdkVersion="33" />
             <permission name="android.permission.MANAGE_UI_TRANSLATION" />
@@ -952,6 +956,7 @@
         systemOnly="true"
         visible="false">
         <permissions>
+            <permission-set name="notifications" />
             <permission name="android.permission.CAMERA" />
             <permission name="android.permission.SYSTEM_CAMERA" />
             <permission name="android.permission.UPDATE_DEVICE_STATS" />
