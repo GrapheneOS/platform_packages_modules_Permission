@@ -882,23 +882,26 @@
     <!-- Success message for remove access action on safety center warning card [CHAR LIMIT=60] -->
     <string name="notification_listener_remove_access_success_label">Access removed</string>
 
-    <!-- The notification title for accessibility access (3rd party apps) reminder notification [CHAR LIMIT=60] -->
+    <!-- TODO(b/231585524): The notification title for accessibility access (3rd party apps) reminder notification [DO NOT TRANSLATE] [CHAR LIMIT=60] -->
     <string name="accessibility_access_reminder_notification_title">Review app with accessibility access</string>
 
-    <!-- The notification content for accessibility access reminder notification [CHAR LIMIT=none] -->
-    <string name="accessibility_access_reminder_notification_content"><xliff:g id="app_name" example="Gmail">%s</xliff:g> can read all contents on the screen, display contents over other apps and track your interactions.</string>
+    <!-- TODO(b/231585524): The notification content for accessibility access reminder notification [DO NOT TRANSLATE] [CHAR LIMIT=none] -->
+    <string name="accessibility_access_reminder_notification_content"><xliff:g id="app_name" example="Gmail">%s</xliff:g> can read all contents on the screen, display contents over other apps and track your interactions</string>
 
-    <!-- The warning card (in safety center) content for accessibility access [CHAR LIMIT=none] -->
-    <string name="accessibility_access_warning_card_content">This app can read all contents on the screen, display contents over other apps and track your interactions.</string>
+    <!-- TODO(b/231585524): The warning card (in safety center) content for accessibility access [DO NOT TRANSLATE] [CHAR LIMIT=none] -->
+    <string name="accessibility_access_warning_card_content">This app can read all contents on the screen and display contents over other apps. It can track your interactions and interact with apps on your behalf.</string>
 
-    <!-- The label for remove access button on safety center warning card [CHAR LIMIT=60] -->
+    <!-- TODO(b/231585524): The label for remove access button on safety center warning card [DO NOT TRANSLATE] [CHAR LIMIT=60] -->
     <string name="accessibility_remove_access_button_label">Remove access</string>
 
-    <!-- The label accessibility page button from safety center warning card [CHAR LIMIT=60] -->
-    <string name="accessibility_show_all_apps_button_label">See apps with accessibility access</string>
+    <!-- TODO(b/231585524): The label accessibility page button from safety center warning card [DO NOT TRANSLATE] [CHAR LIMIT=60] -->
+    <string name="accessibility_show_all_apps_button_label">View apps with accessibility access</string>
 
-    <!-- Success message for remove access action on safety center warning card [CHAR LIMIT=60] -->
+    <!-- TODO(b/231585524): Success message for remove access action on safety center warning card [DO NOT TRANSLATE] [CHAR LIMIT=60] -->
     <string name="accessibility_remove_access_success_label">Access removed</string>
+
+    <!-- TODO(b/231585524): Fallback app name (for notifications) in case PbA not available [DO NOT TRANSLATE] [CHAR LIMIT=60] -->
+    <string name="safety_center_notification_app_label">Android System</string>
 
     <!-- The notification title for the notification that a permission auto revoke has happened [CHAR LIMIT=60] -->
     <string name="auto_revoke_after_notification_title">App permissions removed to protect privacy</string>
