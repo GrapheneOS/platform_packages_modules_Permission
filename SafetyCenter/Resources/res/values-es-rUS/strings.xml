@@ -26,8 +26,8 @@
     <string name="permission_usage_title" msgid="3633779688945350407">"Panel de privacidad"</string>
     <string name="permission_usage_summary" msgid="5323079206029964468">"Muestra qué apps usaron permisos recientemente"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"Administrador de permisos"</string>
-    <string name="permission_manager_summary" msgid="8099852107340970790">"Controla el acceso de apps a tus datos"</string>
+    <string name="permission_manager_summary" msgid="8099852107340970790">"Controla el acceso de las apps a tus datos"</string>
     <string name="advanced_title" msgid="8745436380690561172">"Más parámetros de configuración"</string>
-    <string name="advanced_security_title" msgid="1126833338772188155">"Más parámetros de configuración de seguridad"</string>
+    <string name="advanced_security_title" msgid="1126833338772188155">"Más parámetros de seguridad"</string>
     <string name="advanced_security_summary" msgid="6172253327022425123">"Encriptación, credenciales y más"</string>
 </resources>
