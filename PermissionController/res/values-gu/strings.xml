@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"બધી ફાઇલો મેનેજ કરવાની મંજૂરી છે"</string>
     <string name="ask_header" msgid="2633816846459944376">"દર વખતે પૂછો"</string>
     <string name="denied_header" msgid="903209608358177654">"મંજૂરી નથી"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"બધી ફાઇલોને ઍક્સેસ કરી શકે તેવી વધુ ઍપ જુઓ"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 દિવસ}one{# દિવસ}other{# દિવસ}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 કલાક}one{# કલાક}other{# કલાક}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 મિનિટ}one{# મિનિટ}other{# મિનિટ}}"</string>
@@ -332,8 +331,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"ડિફૉલ્ટ ડિજિટલ આસિસ્ટંટ ઍપ"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"ડિજિટલ આસિસ્ટંટ ઍપ"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"તમે જોઈ રહ્યા હો તે સ્ક્રીન પરની માહિતીના આધારે સહાયક ઍપ તમને સહાય કરી શકે છે. કેટલીક ઍપ્લિકેશનો તમને એકીકૃત સહાયતા આપવા માટે લૉન્ચર અને વૉઇસ ઇનપુટ સેવાઓ એમ બંનેને સમર્થન આપે છે."</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"<xliff:g id="APP_NAME">%1$s</xliff:g>ને તમારી ડિફૉલ્ટ સહાયક ઍપ તરીકે સેટ કરીએ?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"SMS અને કૉલ લૉગનો ઍક્સેસ મેળવો"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"ડિફૉલ્ટ બ્રાઉઝર ઍપ"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"બ્રાઉઝર ઍપ"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"ઍપ કે જે તમને ઇન્ટરનેટનો ઍક્સેસ આપે અને તમે જેના પર ટૅપ કરો તે લિંક દર્શાવે"</string>
@@ -343,13 +340,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"ફોન ઍપ"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"ઍપ કે જે તમને તમારા ડિવાઇસ પરથી ટેલિફોન કૉલ કરવાની અને તેના પર ટેલિફોન કૉલ પ્રાપ્ત કરવાની મંજૂરી આપે છે"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g>ને તમારી ડિફૉલ્ટ ફોન ઍપ તરીકે સેટ કરીએ?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"કૉલ લૉગનો ઍક્સેસ મેળવે છે, SMS મોકલે છે"</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"આ ઍપને તમારા કૅમેરા, સંપર્કો, માઇક્રોફોન, ફોન અને SMSનો ઍક્સેસ આપવામાં આવશે."</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"ડાયલર"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"ડિફૉલ્ટ SMS ઍપ"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS ઍપ"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"ઍપ કે જે તમને તમારા ફોન નંબરનો ઉપયોગ કરીને નાના ટેક્સ્ટ મેસેજ, ફોટા, વીડિયો અને ઘણું બધું મોકલવા અને પ્રાપ્ત કરવાની મંજૂરી આપે છે"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g>ને તમારી ડિફૉલ્ટ SMS ઍપ તરીકે સેટ કરીએ?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"સંપર્કો, SMS અને ફોનનો ઍક્સેસ મેળવે છે"</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"આ ઍપને તમારા કૅમેરા, સંપર્કો, ફાઇલો અને મીડિયા, માઇક્રોફોન, ફોન અને SMSનો ઍક્સેસ આપવામાં આવશે."</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"ટેક્સ્ટ સંદેશ, ટેક્સ્ટિંગ, સંદેશા, મેસેજિંગ"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"ડિફૉલ્ટ ઇમર્જન્સી ઍપ"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"ઇમર્જન્સી ઍપ"</string>

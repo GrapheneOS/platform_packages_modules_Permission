@@ -28,6 +28,6 @@
     <string name="permission_manager_title" msgid="5277347862821255015">"Уруксаттарды башкаргыч"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"Колдонмолордун маалыматты колдонуу мүмкүнчүлүгүн көзөмөлдөө"</string>
     <string name="advanced_title" msgid="8745436380690561172">"Дагы жөндөөлөр"</string>
-    <string name="advanced_security_title" msgid="1126833338772188155">"Дагы коопсуздук жөндөөлөрү"</string>
-    <string name="advanced_security_summary" msgid="6172253327022425123">"Шифрлөө, эсептик дайындар жана башкалар"</string>
+    <string name="advanced_security_title" msgid="1126833338772188155">"Кошумча коопсуздук жөндөөлөрү"</string>
+    <string name="advanced_security_summary" msgid="6172253327022425123">"Шифрлөө, аккаунтка байланыштуу нерселер жана башкалар"</string>
 </resources>

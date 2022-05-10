@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Tüm dosyaları yönetme izni verilenler"</string>
     <string name="ask_header" msgid="2633816846459944376">"Her zaman sorulacaklar"</string>
     <string name="denied_header" msgid="903209608358177654">"İzin verilmeyenler"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Tüm dosyalara erişebilen daha fazla uygulama görün"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 gün}other{# gün}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 saat}other{# saat}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 dakika}other{# dakika}}"</string>
@@ -332,8 +331,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"Varsayılan dijital asistan uygulaması"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Dijital asistan uygulaması"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Asistan uygulamaları görüntülemekte olduğunuz ekrandaki bilgilere dayalı olarak size yardım edebilir. Bazı uygulamalar entegre yardım sağlamak için hem başlatıcıyı hem de ses girişi hizmetlerini destekler."</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"<xliff:g id="APP_NAME">%1$s</xliff:g>, varsayılan asistan uygulamanız olarak ayarlansın mı?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"SMS, arama kaydına erişim sağlar"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Varsayılan tarayıcı"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Tarayıcı uygulaması"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"İnternete erişmenizi sağlayan ve dokunduğunuz bağlantıları görüntüleyen uygulamalar"</string>
@@ -343,13 +340,15 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Telefon uygulaması"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Cihazınızda telefon aramaları almanıza ve yapmanıza olanak tanıyan uygulamalar"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g>, varsayılan telefon uygulamanız olarak ayarlansın mı?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"Arama kaydına erişim sağlar, SMS gönderir"</string>
+    <!-- no translation found for role_dialer_request_description (6288839625724909320) -->
+    <skip />
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"çevirici"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Varsayılan SMS uygulaması"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS uygulaması"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Kısa mesajlar, fotoğraflar, videolar ve başka içerikler göndermek ve almak için telefon numaranızı kullanmanıza olanak tanıyan uygulamalar"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g> varsayılan SMS uygulamanız olarak ayarlansın mı?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"Kişilere, SMS\'e, telefona erişim sağlar"</string>
+    <!-- no translation found for role_sms_request_description (2691004766132144886) -->
+    <skip />
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"kısa mesaj, kısa mesaj gönderme, mesajlar, mesajlaşma"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"Varsayılan acil durum uygulaması"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"Acil durum uygulaması"</string>
@@ -523,40 +522,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"En son <xliff:g id="APP_NAME">%1$s</xliff:g> (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>) tarafından kullanıldı"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"Güvenlik ve Gizlilik"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"Durumu denetle"</string>
-    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
-    <skip />
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"Onayla"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"Geri"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"Diğer dosyalara erişime de izin verilir"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"Diğer dosyalara erişime de izin verilmez"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"Diğer dosyalara erişime de izin verilir"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"Diğer dosyalara erişime de izin verilmez"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"Fotoğraflara ve videolara erişime de izin verilir"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"Fotoğraflara ve videolara erişime de izin verilmez"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"Müzik ve ses dosyalarına erişime de izin verilir"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"Müzik ve ses dosyalarına erişime de izin verilmez"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"Bu uygulamada Android\'in en son sürümü desteklenmiyor. Bu uygulama müzik ve ses dosyalarına erişebilirse fotoğraflara, videolara ve diğer dosyalara da erişmesine izin verilir."</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"Bu uygulamada Android\'in en son sürümü desteklenmiyor. Bu uygulama müzik ve ses dosyalarına erişemezse fotoğraflara, videolara ve diğer dosyalara da erişmesine izin verilmez."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"Bu uygulamada Android\'in en son sürümü desteklenmiyor. Bu uygulama fotoğraflara ve videolara erişebilirse müzik, ses ve diğer dosyalara da erişmesine izin verilir."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"Bu uygulamada Android\'in en son sürümü desteklenmiyor. Bu uygulama fotoğraflara ve videolara erişemezse müzik, ses ve diğer dosyalara da erişmesine izin verilmez."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"Bu uygulamada Android\'in en son sürümü desteklenmiyor. Bu uygulama müzik ve ses dosyalarına erişebilirse fotoğraflara ve videolara da erişmesine izin verilir."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"Bu uygulamada Android\'in en son sürümü desteklenmiyor. Bu uygulama müzik ve ses dosyalarına erişemezse fotoğraflara ve videolara da erişmesine izin verilmez."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"Bu uygulamada Android\'in en son sürümü desteklenmiyor. Bu uygulama fotoğraflara ve videolara erişebilirse müzik ve ses dosyalarına da erişmesine izin verilir."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"Bu uygulamada Android\'in en son sürümü desteklenmiyor. Bu uygulama müzik ve ses dosyalarına erişemezse fotoğraflara ve videolara da erişmesine izin verilmez."</string>
 </resources>

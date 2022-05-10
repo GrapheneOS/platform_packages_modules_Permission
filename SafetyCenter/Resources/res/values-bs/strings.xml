@@ -29,5 +29,5 @@
     <string name="permission_manager_summary" msgid="8099852107340970790">"Kontrolirajte pristup aplikacija podacima"</string>
     <string name="advanced_title" msgid="8745436380690561172">"Više postavki"</string>
     <string name="advanced_security_title" msgid="1126833338772188155">"Više postavki sigurnosti"</string>
-    <string name="advanced_security_summary" msgid="6172253327022425123">"Šifriranje, akreditivi i još mnogo toga"</string>
+    <string name="advanced_security_summary" msgid="6172253327022425123">"Šifriranje, akreditivi i drugo"</string>
 </resources>
