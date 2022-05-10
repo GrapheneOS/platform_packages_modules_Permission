@@ -58,7 +58,6 @@ import android.util.Log;
 import androidx.annotation.RequiresApi;
 
 import com.android.permission.util.UserUtils;
-import com.android.safetycenter.SafetyCenterConfigReader.SafetyCenterConfigInternal;
 import com.android.safetycenter.internaldata.SafetyCenterEntryGroupId;
 import com.android.safetycenter.internaldata.SafetyCenterEntryId;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
@@ -97,42 +96,46 @@ final class SafetyCenterDataTracker {
 
     @NonNull private final Context mContext;
     @NonNull private final SafetyCenterResourcesContext mSafetyCenterResourcesContext;
+    @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
     @NonNull private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker;
 
     /**
      * Creates a {@link SafetyCenterDataTracker} using the given {@link Context}, {@link
-     * SafetyCenterResourcesContext} and {@link SafetyCenterRefreshTracker}.
+     * SafetyCenterResourcesContext}, {@link SafetyCenterConfigReader} and {@link
+     * SafetyCenterRefreshTracker}.
      */
     SafetyCenterDataTracker(
             @NonNull Context context,
             @NonNull SafetyCenterResourcesContext safetyCenterResourcesContext,
+            @NonNull SafetyCenterConfigReader safetyCenterConfigReader,
             @NonNull SafetyCenterRefreshTracker safetyCenterRefreshTracker) {
         mContext = context;
         mSafetyCenterResourcesContext = safetyCenterResourcesContext;
+        mSafetyCenterConfigReader = safetyCenterConfigReader;
         mSafetyCenterRefreshTracker = safetyCenterRefreshTracker;
     }
 
     /**
      * Sets the latest {@link SafetySourceData} for the given {@code safetySourceId}, {@link
      * SafetyEvent}, {@code packageName} and {@code userId}, and returns whether there was a change
-     * to the underlying {@link SafetyCenterData} against the given {@link
-     * SafetyCenterConfigInternal}.
+     * to the underlying {@link SafetyCenterData}.
      *
-     * <p>Throws if the request is invalid based on the {@link SafetyCenterConfigInternal}: the
-     * given {@code safetySourceId}, {@code packageName} and/or {@code userId} are unexpected; or
-     * the {@link SafetySourceData} does not respect all constraints defined in the config.
+     * <p>Throws if the request is invalid based on the {@link SafetyCenterConfig}: the given {@code
+     * safetySourceId}, {@code packageName} and/or {@code userId} are unexpected; or the {@link
+     * SafetySourceData} does not respect all constraints defined in the config.
      *
      * <p>Setting a {@code null} {@link SafetySourceData} evicts the current {@link
      * SafetySourceData} entry.
      */
     boolean setSafetySourceData(
-            @NonNull SafetyCenterConfigInternal configInternal,
             @Nullable SafetySourceData safetySourceData,
             @NonNull String safetySourceId,
             @NonNull SafetyEvent safetyEvent,
             @NonNull String packageName,
             @UserIdInt int userId) {
-        validateRequest(configInternal, safetySourceData, safetySourceId, packageName, userId);
+        if (!validateRequest(safetySourceData, safetySourceId, packageName, userId)) {
+            return false;
+        }
         boolean safetyEventChangedSafetyCenterData =
                 processSafetyEvent(safetySourceId, safetyEvent, userId);
 
@@ -153,62 +156,41 @@ final class SafetyCenterDataTracker {
 
     /**
      * Returns the latest {@link SafetySourceData} that was set by {@link #setSafetySourceData} for
-     * the given {@code safetySourceId}, {@code packageName} and {@code userId} against the given
-     * {@link SafetyCenterConfigInternal}.
+     * the given {@code safetySourceId}, {@code packageName} and {@code userId}.
      *
-     * <p>Throws if the request is invalid based on the {@link SafetyCenterConfigInternal}: the
-     * given {@code safetySourceId}, {@code packageName} and/or {@code userId} are unexpected.
+     * <p>Throws if the request is invalid based on the {@link SafetyCenterConfig}: the given {@code
+     * safetySourceId}, {@code packageName} and/or {@code userId} are unexpected.
      *
      * <p>Returns {@code null} if it was never set since boot, or if the entry was evicted using
      * {@link #setSafetySourceData} with a {@code null} value.
      */
     @Nullable
     SafetySourceData getSafetySourceData(
-            @NonNull SafetyCenterConfigInternal configInternal,
-            @NonNull String safetySourceId,
-            @NonNull String packageName,
-            @UserIdInt int userId) {
-        validateRequest(configInternal, null, safetySourceId, packageName, userId);
+            @NonNull String safetySourceId, @NonNull String packageName, @UserIdInt int userId) {
+        if (!validateRequest(null, safetySourceId, packageName, userId)) {
+            return null;
+        }
         return mSafetySourceDataForKey.get(SafetySourceKey.of(safetySourceId, userId));
     }
 
     /**
      * Reports the given {@link SafetySourceErrorDetails} for the given {@code safetySourceId} and
-     * {@code userId} against the given {@link SafetyCenterConfigInternal}, and returns whether
-     * there was a change to the underlying {@link SafetyCenterData} against the given {@link
-     * SafetyCenterConfigInternal}.
+     * {@code userId}, and returns whether there was a change to the underlying {@link
+     * SafetyCenterData}.
      *
-     * <p>Throws if the request is invalid based on the {@link SafetyCenterConfigInternal}: the
-     * given {@code safetySourceId}, {@code packageName} and/or {@code userId} are unexpected.
+     * <p>Throws if the request is invalid based on the {@link SafetyCenterConfig}: the given {@code
+     * safetySourceId}, {@code packageName} and/or {@code userId} are unexpected.
      */
     boolean reportSafetySourceError(
-            @NonNull SafetyCenterConfigInternal configInternal,
-            @NonNull String safetySourceId,
             @NonNull SafetySourceErrorDetails safetySourceErrorDetails,
+            @NonNull String safetySourceId,
             @NonNull String packageName,
             @UserIdInt int userId) {
-        validateRequest(configInternal, null, safetySourceId, packageName, userId);
-        boolean safetyEventChangedSafetyCenterData =
-                processSafetyEvent(
-                        safetySourceId, safetySourceErrorDetails.getSafetyEvent(), userId);
-        return safetyEventChangedSafetyCenterData;
-    }
-
-    /**
-     * Returns the current {@link SafetyCenterData} for the given {@link UserProfileGroup},
-     * aggregated from all the {@link SafetySourceData} set so far against the given {@link
-     * SafetyCenterConfigInternal}.
-     *
-     * <p>Returns an arbitrary default value if the {@link SafetyCenterConfig} is not available.
-     *
-     * <p>If a {@link SafetySourceData} was not set, the default value from the {@link
-     * SafetyCenterConfig} is used.
-     */
-    @NonNull
-    SafetyCenterData getSafetyCenterData(
-            @NonNull SafetyCenterConfigInternal configInternal,
-            @NonNull UserProfileGroup userProfileGroup) {
-        return getSafetyCenterData(configInternal.getSafetySourcesGroups(), userProfileGroup);
+        if (!validateRequest(null, safetySourceId, packageName, userId)) {
+            return false;
+        }
+        return processSafetyEvent(
+                safetySourceId, safetySourceErrorDetails.getSafetyEvent(), userId);
     }
 
     /**
@@ -219,8 +201,24 @@ final class SafetyCenterDataTracker {
     SafetyCenterErrorDetails getSafetyCenterErrorDetails(
             @NonNull String safetySourceId,
             @NonNull SafetySourceErrorDetails safetySourceErrorDetails) {
+        if (!mSafetyCenterConfigReader.isExternalSafetySourceActive(safetySourceId)) {
+            return null;
+        }
         // TODO(b/229080761): Implement proper error message.
         return new SafetyCenterErrorDetails("Error");
+    }
+
+    /**
+     * Returns the current {@link SafetyCenterData} for the given {@link UserProfileGroup},
+     * aggregated from all the {@link SafetySourceData} set so far.
+     *
+     * <p>If a {@link SafetySourceData} was not set, the default value from the {@link
+     * SafetyCenterConfig} is used.
+     */
+    @NonNull
+    SafetyCenterData getSafetyCenterData(@NonNull UserProfileGroup userProfileGroup) {
+        return getSafetyCenterData(
+                mSafetyCenterConfigReader.getSafetySourcesGroups(), userProfileGroup);
     }
 
     /** Marks the given {@link SafetyCenterIssueActionId} as in-flight. */
@@ -349,13 +347,17 @@ final class SafetyCenterDataTracker {
         return mSafetyCenterIssueActionsInFlight.contains(safetyCenterIssueActionId);
     }
 
-    private void validateRequest(
-            @NonNull SafetyCenterConfigInternal configInternal,
+    /**
+     * Checks if a request to the SafetyCenter is valid, and returns whether the request should be
+     * processed.
+     */
+    private boolean validateRequest(
             @Nullable SafetySourceData safetySourceData,
             @NonNull String safetySourceId,
             @NonNull String packageName,
             @UserIdInt int userId) {
-        SafetySource safetySource = configInternal.getExternalSafetySources().get(safetySourceId);
+        SafetySource safetySource =
+                mSafetyCenterConfigReader.getExternalSafetySource(safetySourceId);
         if (safetySource == null) {
             throw new IllegalArgumentException(
                     String.format("Unexpected safety source \"%s\"", safetySourceId));
@@ -381,7 +383,7 @@ final class SafetyCenterDataTracker {
 
         boolean retrievingOrClearingData = safetySourceData == null;
         if (retrievingOrClearingData) {
-            return;
+            return mSafetyCenterConfigReader.isExternalSafetySourceActive(safetySourceId);
         }
 
         if (safetySource.getType() == SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY
@@ -424,6 +426,8 @@ final class SafetyCenterDataTracker {
                                 issueSeverityLevel, safetySourceId));
             }
         }
+
+        return mSafetyCenterConfigReader.isExternalSafetySourceActive(safetySourceId);
     }
 
     private boolean processSafetyEvent(

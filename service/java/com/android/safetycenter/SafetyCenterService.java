@@ -54,7 +54,7 @@ import androidx.annotation.RequiresApi;
 import com.android.internal.annotations.GuardedBy;
 import com.android.modules.utils.BackgroundThread;
 import com.android.permission.util.UserUtils;
-import com.android.safetycenter.SafetyCenterConfigReader.SafetyCenterConfigInternal;
+import com.android.safetycenter.SafetyCenterConfigReader.Broadcast;
 import com.android.safetycenter.internaldata.SafetyCenterIds;
 import com.android.safetycenter.internaldata.SafetyCenterIssueActionId;
 import com.android.safetycenter.internaldata.SafetyCenterIssueId;
@@ -104,12 +104,12 @@ public final class SafetyCenterService extends SystemService {
     private final SafetyCenterListeners mSafetyCenterListeners = new SafetyCenterListeners();
 
     @GuardedBy("mApiLock")
-    private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker =
-            new SafetyCenterRefreshTracker();
+    @NonNull
+    private final SafetyCenterConfigReader mSafetyCenterConfigReader;
 
     @GuardedBy("mApiLock")
     @NonNull
-    private final SafetyCenterConfigReader mSafetyCenterConfigReader;
+    private final SafetyCenterRefreshTracker mSafetyCenterRefreshTracker;
 
     @GuardedBy("mApiLock")
     @NonNull
@@ -128,9 +128,13 @@ public final class SafetyCenterService extends SystemService {
         SafetyCenterResourcesContext safetyCenterResourcesContext =
                 new SafetyCenterResourcesContext(context);
         mSafetyCenterConfigReader = new SafetyCenterConfigReader(safetyCenterResourcesContext);
+        mSafetyCenterRefreshTracker = new SafetyCenterRefreshTracker(mSafetyCenterConfigReader);
         mSafetyCenterDataTracker =
                 new SafetyCenterDataTracker(
-                        context, safetyCenterResourcesContext, mSafetyCenterRefreshTracker);
+                        context,
+                        safetyCenterResourcesContext,
+                        mSafetyCenterConfigReader,
+                        mSafetyCenterRefreshTracker);
         mSafetyCenterBroadcastDispatcher = new SafetyCenterBroadcastDispatcher(context);
         mAppOpsManager = requireNonNull(context.getSystemService(AppOpsManager.class));
         mDeviceSupportsSafetyCenter =
@@ -197,22 +201,13 @@ public final class SafetyCenterService extends SystemService {
             SafetyCenterData safetyCenterData;
             List<RemoteCallbackList<IOnSafetyCenterDataChangedListener>> listeners;
             synchronized (mApiLock) {
-                SafetyCenterConfigInternal configInternal =
-                        mSafetyCenterConfigReader.getCurrentConfigInternal();
                 boolean hasUpdate =
                         mSafetyCenterDataTracker.setSafetySourceData(
-                                configInternal,
-                                safetySourceData,
-                                safetySourceId,
-                                safetyEvent,
-                                packageName,
-                                userId);
+                                safetySourceData, safetySourceId, safetyEvent, packageName, userId);
                 if (!hasUpdate) {
                     return;
                 }
-                safetyCenterData =
-                        mSafetyCenterDataTracker.getSafetyCenterData(
-                                configInternal, userProfileGroup);
+                safetyCenterData = mSafetyCenterDataTracker.getSafetyCenterData(userProfileGroup);
                 listeners = mSafetyCenterListeners.getListeners(userProfileGroup);
             }
 
@@ -238,10 +233,8 @@ public final class SafetyCenterService extends SystemService {
             }
 
             synchronized (mApiLock) {
-                SafetyCenterConfigReader.SafetyCenterConfigInternal configInternal =
-                        mSafetyCenterConfigReader.getCurrentConfigInternal();
                 return mSafetyCenterDataTracker.getSafetySourceData(
-                        configInternal, safetySourceId, packageName, userId);
+                        safetySourceId, packageName, userId);
             }
         }
 
@@ -269,11 +262,9 @@ public final class SafetyCenterService extends SystemService {
             SafetyCenterErrorDetails safetyCenterErrorDetails;
             List<RemoteCallbackList<IOnSafetyCenterDataChangedListener>> listeners;
             synchronized (mApiLock) {
-                SafetyCenterConfigReader.SafetyCenterConfigInternal configInternal =
-                        mSafetyCenterConfigReader.getCurrentConfigInternal();
                 boolean hasUpdate =
                         mSafetyCenterDataTracker.reportSafetySourceError(
-                                configInternal, safetySourceId, errorDetails, packageName, userId);
+                                errorDetails, safetySourceId, packageName, userId);
                 safetyCenterErrorDetails =
                         mSafetyCenterDataTracker.getSafetyCenterErrorDetails(
                                 safetySourceId, errorDetails);
@@ -282,8 +273,7 @@ public final class SafetyCenterService extends SystemService {
                 }
                 if (hasUpdate) {
                     safetyCenterData =
-                            mSafetyCenterDataTracker.getSafetyCenterData(
-                                    configInternal, userProfileGroup);
+                            mSafetyCenterDataTracker.getSafetyCenterData(userProfileGroup);
                 }
                 listeners = mSafetyCenterListeners.getListeners(userProfileGroup);
             }
@@ -303,15 +293,15 @@ public final class SafetyCenterService extends SystemService {
 
             UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
 
-            SafetyCenterConfigInternal configInternal;
+            List<Broadcast> broadcasts;
             String refreshBroadcastId;
             synchronized (mApiLock) {
-                configInternal = mSafetyCenterConfigReader.getCurrentConfigInternal();
+                broadcasts = mSafetyCenterConfigReader.getBroadcasts();
                 // TODO(b/229060064): Check if a refresh is currently in progress, and only start a
                 //  new refresh if it should be replaced.
                 refreshBroadcastId =
                         mSafetyCenterRefreshTracker.reportRefreshInProgress(
-                                configInternal, refreshReason, userProfileGroup);
+                                refreshReason, userProfileGroup);
             }
 
             RefreshTimeout refreshTimeout =
@@ -319,7 +309,7 @@ public final class SafetyCenterService extends SystemService {
             BackgroundThread.getHandler().postDelayed(refreshTimeout, REFRESH_TIMEOUT.toMillis());
 
             mSafetyCenterBroadcastDispatcher.sendRefreshSafetySources(
-                    configInternal, refreshBroadcastId, refreshReason, userProfileGroup);
+                    broadcasts, refreshBroadcastId, refreshReason, userProfileGroup);
         }
 
         @Override
@@ -329,7 +319,7 @@ public final class SafetyCenterService extends SystemService {
                     .enforceCallingOrSelfPermission(MANAGE_SAFETY_CENTER, "getSafetyCenterConfig");
 
             synchronized (mApiLock) {
-                return mSafetyCenterConfigReader.getCurrentConfigInternal().getSafetyCenterConfig();
+                return mSafetyCenterConfigReader.getSafetyCenterConfig();
             }
         }
 
@@ -346,8 +336,7 @@ public final class SafetyCenterService extends SystemService {
             UserProfileGroup userProfileGroup = UserProfileGroup.from(getContext(), userId);
 
             synchronized (mApiLock) {
-                return mSafetyCenterDataTracker.getSafetyCenterData(
-                        mSafetyCenterConfigReader.getCurrentConfigInternal(), userProfileGroup);
+                return mSafetyCenterDataTracker.getSafetyCenterData(userProfileGroup);
             }
         }
 
@@ -371,10 +360,7 @@ public final class SafetyCenterService extends SystemService {
                 if (!registered) {
                     return;
                 }
-                safetyCenterData =
-                        mSafetyCenterDataTracker.getSafetyCenterData(
-                                mSafetyCenterConfigReader.getCurrentConfigInternal(),
-                                userProfileGroup);
+                safetyCenterData = mSafetyCenterDataTracker.getSafetyCenterData(userProfileGroup);
             }
 
             SafetyCenterListeners.deliverUpdate(listener, safetyCenterData, null);
@@ -427,10 +413,7 @@ public final class SafetyCenterService extends SystemService {
                     return;
                 }
                 mSafetyCenterDataTracker.dismissSafetyCenterIssue(safetyCenterIssueId);
-                safetyCenterData =
-                        mSafetyCenterDataTracker.getSafetyCenterData(
-                                mSafetyCenterConfigReader.getCurrentConfigInternal(),
-                                userProfileGroup);
+                safetyCenterData = mSafetyCenterDataTracker.getSafetyCenterData(userProfileGroup);
                 listeners = mSafetyCenterListeners.getListeners(userProfileGroup);
             }
 
@@ -489,9 +472,7 @@ public final class SafetyCenterService extends SystemService {
                     mSafetyCenterDataTracker.markSafetyCenterIssueActionAsInFlight(
                             safetyCenterIssueActionId);
                     safetyCenterData =
-                            mSafetyCenterDataTracker.getSafetyCenterData(
-                                    mSafetyCenterConfigReader.getCurrentConfigInternal(),
-                                    userProfileGroup);
+                            mSafetyCenterDataTracker.getSafetyCenterData(userProfileGroup);
                     listeners = mSafetyCenterListeners.getListeners(userProfileGroup);
                 }
             }
@@ -672,25 +653,23 @@ public final class SafetyCenterService extends SystemService {
         }
 
         private void onApiEnabled() {
-            SafetyCenterConfigInternal configInternal;
-
+            List<Broadcast> broadcasts;
             synchronized (mApiLock) {
-                configInternal = mSafetyCenterConfigReader.getCurrentConfigInternal();
+                broadcasts = mSafetyCenterConfigReader.getBroadcasts();
             }
 
-            mSafetyCenterBroadcastDispatcher.sendEnabledChanged(configInternal);
+            mSafetyCenterBroadcastDispatcher.sendEnabledChanged(broadcasts);
         }
 
         private void onApiDisabled() {
-            SafetyCenterConfigInternal configInternal;
-
+            List<Broadcast> broadcasts;
             synchronized (mApiLock) {
-                configInternal = mSafetyCenterConfigReader.getCurrentConfigInternal();
+                broadcasts = mSafetyCenterConfigReader.getBroadcasts();
                 mSafetyCenterDataTracker.clear();
                 mSafetyCenterListeners.clear();
             }
 
-            mSafetyCenterBroadcastDispatcher.sendEnabledChanged(configInternal);
+            mSafetyCenterBroadcastDispatcher.sendEnabledChanged(broadcasts);
         }
     }
 
@@ -716,11 +695,7 @@ public final class SafetyCenterService extends SystemService {
                 if (!hasClearedRefresh) {
                     return;
                 }
-                SafetyCenterConfigInternal configInternal =
-                        mSafetyCenterConfigReader.getCurrentConfigInternal();
-                safetyCenterData =
-                        mSafetyCenterDataTracker.getSafetyCenterData(
-                                configInternal, mUserProfileGroup);
+                safetyCenterData = mSafetyCenterDataTracker.getSafetyCenterData(mUserProfileGroup);
                 listeners = mSafetyCenterListeners.getListeners(mUserProfileGroup);
             }
 
@@ -751,17 +726,13 @@ public final class SafetyCenterService extends SystemService {
             List<RemoteCallbackList<IOnSafetyCenterDataChangedListener>> listeners;
             SafetyCenterData safetyCenterData;
             synchronized (mApiLock) {
-                SafetyCenterConfigInternal configInternal =
-                        mSafetyCenterConfigReader.getCurrentConfigInternal();
                 boolean hasClearedInFlightAction =
                         mSafetyCenterDataTracker.unmarkSafetyCenterIssueActionAsInFlight(
                                 mSafetyCenterIssueActionId);
                 if (!hasClearedInFlightAction) {
                     return;
                 }
-                safetyCenterData =
-                        mSafetyCenterDataTracker.getSafetyCenterData(
-                                configInternal, mUserProfileGroup);
+                safetyCenterData = mSafetyCenterDataTracker.getSafetyCenterData(mUserProfileGroup);
                 listeners = mSafetyCenterListeners.getListeners(mUserProfileGroup);
             }
 
