@@ -17,8 +17,6 @@
 package com.android.permissioncontroller.permission.ui.widget
 
 import android.content.Context
-import android.os.Build
-import android.provider.DeviceConfig
 import android.text.Html
 import android.util.AttributeSet
 import android.view.Gravity
@@ -26,9 +24,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.annotation.ChecksSdkIntAtLeast
-import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.permission.utils.KotlinUtils
 
 class SafetyProtectionSectionView : LinearLayout {
 
@@ -52,7 +49,7 @@ class SafetyProtectionSectionView : LinearLayout {
     init {
         gravity = Gravity.CENTER
         orientation = HORIZONTAL
-        visibility = if (isSafetyProtectionResourcesEnabled()) {
+        visibility = if (KotlinUtils.shouldShowSafetyProtectionResources(context)) {
             View.VISIBLE
         } else {
             View.GONE
@@ -61,22 +58,12 @@ class SafetyProtectionSectionView : LinearLayout {
 
     override fun onFinishInflate() {
         super.onFinishInflate()
-        if (isSafetyProtectionResourcesEnabled()) {
+        if (KotlinUtils.shouldShowSafetyProtectionResources(context)) {
             LayoutInflater.from(context).inflate(R.layout.safety_protection_section, this)
             val safetyProtectionDisplayTextView =
-                    requireViewById<TextView>(R.id.safety_protection_display_text)
+                requireViewById<TextView>(R.id.safety_protection_display_text)
             safetyProtectionDisplayTextView!!.setText(Html.fromHtml(
-                    context.getString(android.R.string.safety_protection_display_text), 0))
+                context.getString(android.R.string.safety_protection_display_text), 0))
         }
-    }
-
-    @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.TIRAMISU)
-    private fun isSafetyProtectionResourcesEnabled(): Boolean {
-        return SdkLevel.isAtLeastT() && DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_PRIVACY,
-                SAFETY_PROTECTION_RESOURCES_ENABLED, false)
-    }
-
-    companion object {
-        private const val SAFETY_PROTECTION_RESOURCES_ENABLED = "safety_protection_enabled"
     }
 }
