@@ -16,6 +16,7 @@
 
 package android.safetycenter.cts.testing
 
+import android.Manifest.permission.READ_DEVICE_CONFIG
 import android.Manifest.permission.WRITE_DEVICE_CONFIG
 import android.content.Context
 import android.content.res.Resources
@@ -39,6 +40,17 @@ object SafetyCenterFlags {
             { setSafetyCenterEnabledWithoutPermission(value) }, WRITE_DEVICE_CONFIG)
     }
 
+    /** Returns whether the device config flag for SafetyCenter is enabled. */
+    fun getSafetyCenterEnabled() =
+        callWithShellPermissionIdentity(
+            {
+                DeviceConfig.getBoolean(
+                    DeviceConfig.NAMESPACE_PRIVACY,
+                    PROPERTY_SAFETY_CENTER_ENABLED,
+                    /* defaultValue = */ false)
+            },
+            READ_DEVICE_CONFIG)
+
     /**
      * Sets the Safety Center device config flag to the given boolean [value], but without holding
      * the [WRITE_DEVICE_CONFIG] permission.
@@ -53,8 +65,6 @@ object SafetyCenterFlags {
                 PROPERTY_SAFETY_CENTER_ENABLED,
                 /* value = */ value.toString(),
                 /* makeDefault = */ false)
-        if (!valueWasSet) {
-            throw IllegalStateException("Could not set Safety Center flag value to: $value")
-        }
+        require(valueWasSet) { "Could not set Safety Center flag value to: $value" }
     }
 }
