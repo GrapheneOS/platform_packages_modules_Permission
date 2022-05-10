@@ -28,7 +28,7 @@
     <string name="permission_manager_title" msgid="5277347862821255015">"ခွင့်ပြုချက် မန်နေဂျာ"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"အက်ပ်၏ သင့်ဒေတာအသုံးပြုခွင့်ကို ထိန်းချုပ်သည်"</string>
     <string name="privacy_controls_title" msgid="5322875777945432395">"ကန့်သတ်ရန် ဆက်တင်များ"</string>
-    <string name="privacy_controls_summary" msgid="2402066941190435424">"မိုက်ခရိုဖုန်း၊ ကင်မရာ စသည်တို့ကို စက်ပစ္စည်းမှ ဝင်သုံးခွင့်အား ထိန်းချုပ်သည်"</string>
+    <string name="privacy_controls_summary" msgid="2402066941190435424">"မိုက်ခရိုဖုန်း၊ ကင်မရာ စသည်တို့ကို စက်ပစ္စည်းက ဝင်သုံးခွင့်အား ထိန်းချုပ်သည်"</string>
     <string name="advanced_title" msgid="8745436380690561172">"နောက်ထပ်ဆက်တင်များ"</string>
     <string name="advanced_security_title" msgid="1126833338772188155">"နောက်ထပ် လုံခြုံရေးဆက်တင်များ"</string>
     <string name="advanced_security_summary" msgid="6172253327022425123">"အသွင်ဝှက်ခြင်း၊ အထောက်အထားများ စသည်"</string>

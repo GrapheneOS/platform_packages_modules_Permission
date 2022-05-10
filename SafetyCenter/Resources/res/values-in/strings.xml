@@ -28,7 +28,7 @@
     <string name="permission_manager_title" msgid="5277347862821255015">"Pengelola izin"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"Mengontrol akses aplikasi ke data Anda"</string>
     <string name="privacy_controls_title" msgid="5322875777945432395">"Kontrol privasi"</string>
-    <string name="privacy_controls_summary" msgid="2402066941190435424">"Mengontrol akses perangkat ke mikrofon, kamera, dan lainnya"</string>
+    <string name="privacy_controls_summary" msgid="2402066941190435424">"Kontrol akses perangkat ke mikrofon, kamera, dan lainnya"</string>
     <string name="advanced_title" msgid="8745436380690561172">"Setelan lainnya"</string>
     <string name="advanced_security_title" msgid="1126833338772188155">"Setelan keamanan lainnya"</string>
     <string name="advanced_security_summary" msgid="6172253327022425123">"Enkripsi, kredensial, dan lainnya"</string>

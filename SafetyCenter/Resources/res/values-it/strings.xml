@@ -28,10 +28,10 @@
     <string name="permission_manager_title" msgid="5277347862821255015">"Gestione autorizzazioni"</string>
     <string name="permission_manager_summary" msgid="8099852107340970790">"Controlla l\'accesso delle app ai tuoi dati"</string>
     <string name="privacy_controls_title" msgid="5322875777945432395">"Controlli per la privacy"</string>
-    <string name="privacy_controls_summary" msgid="2402066941190435424">"Controlla l\'accesso del dispositivo a microfono, fotocamera e altro ancora"</string>
+    <string name="privacy_controls_summary" msgid="2402066941190435424">"Controlla l\'accesso del dispositivo a microfono, fotocamera e altro"</string>
     <string name="advanced_title" msgid="8745436380690561172">"Altre impostazioni"</string>
     <string name="advanced_security_title" msgid="1126833338772188155">"Altre impostazioni di sicurezza"</string>
-    <string name="advanced_security_summary" msgid="6172253327022425123">"Crittografia, credenziali e altro ancora"</string>
+    <string name="advanced_security_summary" msgid="6172253327022425123">"Crittografia, credenziali e altro"</string>
     <string name="advanced_privacy_title" msgid="1117725225706176643">"Altre impostazioni della privacy"</string>
-    <string name="advanced_privacy_summary" msgid="2281203390575069543">"Compilazione automatica, Gestione attività e altro ancora"</string>
+    <string name="advanced_privacy_summary" msgid="2281203390575069543">"Compilazione automatica, Gestione attività e altro"</string>
 </resources>

@@ -31,7 +31,7 @@
     <string name="privacy_controls_summary" msgid="2402066941190435424">"Seadme juurdepääsu haldamine mikrofonile, kaamerale ja muule"</string>
     <string name="advanced_title" msgid="8745436380690561172">"Rohkem seadeid"</string>
     <string name="advanced_security_title" msgid="1126833338772188155">"Rohkem turvaseadeid"</string>
-    <string name="advanced_security_summary" msgid="6172253327022425123">"Krüpteerimine, mandaat ja muu"</string>
+    <string name="advanced_security_summary" msgid="6172253327022425123">"Krüpteerimine, mandaadid ja muu"</string>
     <string name="advanced_privacy_title" msgid="1117725225706176643">"Rohkem privaatsusseadeid"</string>
     <string name="advanced_privacy_summary" msgid="2281203390575069543">"Automaattäide, kontotegevuste haldus ja muu"</string>
 </resources>
