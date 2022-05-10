@@ -26,8 +26,8 @@
     <string name="permission_usage_title" msgid="3633779688945350407">"Privatlivspanel"</string>
     <string name="permission_usage_summary" msgid="5323079206029964468">"Vis, hvilke apps der har brugt tilladelser for nylig"</string>
     <string name="permission_manager_title" msgid="5277347862821255015">"Tilladelsesadministrator"</string>
-    <string name="permission_manager_summary" msgid="8099852107340970790">"Administrer dine apps\' adgang til data"</string>
+    <string name="permission_manager_summary" msgid="8099852107340970790">"Administrer appadgang til dine data"</string>
     <string name="advanced_title" msgid="8745436380690561172">"Flere indstillinger"</string>
     <string name="advanced_security_title" msgid="1126833338772188155">"Flere sikkerhedsindstillinger"</string>
-    <string name="advanced_security_summary" msgid="6172253327022425123">"Kryptering, loginoplysninger og meget mere"</string>
+    <string name="advanced_security_summary" msgid="6172253327022425123">"Kryptering, loginoplysninger og mere"</string>
 </resources>

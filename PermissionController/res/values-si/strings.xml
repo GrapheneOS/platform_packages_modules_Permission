@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"සියලු පාලන කළමනාකරණය කිරීමට ඉඩ දී ඇත"</string>
     <string name="ask_header" msgid="2633816846459944376">"සෑම විටම ඉල්ලන්න"</string>
     <string name="denied_header" msgid="903209608358177654">"ඉඩ නොදේ"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"සියලු ගොනු වෙත ප්‍රවේශ විය හැකි තව යෙදුම් බලන්න"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{දින 1ක්}one{දින #ක්}other{දින #ක්}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{පැය 1ක්}one{පැය #ක්}other{පැය #ක්}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{මිනිත්තු 1ක්}one{මිනිත්තු #ක්}other{මිනිත්තු #ක්}}"</string>
@@ -332,8 +331,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"පෙරනිමි ඩිජිටල් සහායක යෙදුම"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"ඩිජිටල් සහායක යෙදුම"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"සහායක යෙදුම්වලට ඔබ බලන තිරයෙන් ලැබෙන තොරතුරුවලට අනුව ඔබට උදවු කළ හැක. සමහර යෙදුම් ඔබට ඒකාබද්ධ සහය ලබා දීමට දියක්කරණය සහ හඬ ආදාන සේවා යන දෙකටම සහය දක්වති."</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"<xliff:g id="APP_NAME">%1$s</xliff:g> ඔබේ පෙරනිමි සහකරු යෙදුම ලෙස සකසන්නේද?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"කෙටි පණිවුඩ, ඇමතුම් ලොග වෙත ප්‍රවේශය ලබන්න"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"පෙරනිමි බ්‍රවුසර යෙදුම"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"බ්‍රවුසර යෙදුම"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"අන්තර්ජාලය වෙත ඔබට ප්‍රවේශය දෙන යෙදුම් සහ ඔබ තට්ටු කරන සංදර්ශන සබැඳි"</string>
@@ -343,13 +340,15 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"දුරකථන යෙදුම"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"ඔබට ඔබේ උපාංගය මත දුරකථන ඇමතුම් කිරීමටත් ලැබීමටත් ඉඩ සලසන යෙදුම්"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g> ඔබේ පෙරනිමි දුරකථන යෙදුම ලෙස සකසන්නේද?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"ඇමතුම් ලොගය, කෙටි පණිවුඩ යැවීම වෙත ප්‍රවේශය ලබන්න"</string>
+    <!-- no translation found for role_dialer_request_description (6288839625724909320) -->
+    <skip />
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"ඩයල් කරන්නා"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"පෙරනිමි කෙටි පණිවුඩ යෙදුම"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"කෙටි පණිවුඩ යෙදුම"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"කෙටි පණිවුඩ, ඡායාරූප, වීඩියෝ, සහ තවත් ඒවා යැවීමටත් ලැබීමටත් ඔබට ඔබේ දුරකථන අංකය භාවිත කිරීමට ඉඩ සලසන යෙදුම්"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g> ඔබේ පෙරනිමි කෙටි පණිවුඩ යෙදුම ලෙස සකසන්නේද?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"සම්බන්ධතා, කෙටි පණිවුඩ, දුරකථනය වෙත ප්‍රවේශය ලබන්න"</string>
+    <!-- no translation found for role_sms_request_description (2691004766132144886) -->
+    <skip />
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"පෙළ පණිවිඩය, පෙළ පණිවිඩ යැවීම, පණිවිඩ, පණිවිඩකරණය"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"පෙරනිමි හදිසි යෙදුම"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"හදිසි යෙදුම"</string>
@@ -523,40 +522,22 @@
     <string name="recent_app_usage_2_qs" msgid="3591205954235694403">"මෑතකදී <xliff:g id="APP_NAME">%1$s</xliff:g> මගින් භාවිත කරන ලදි (<xliff:g id="ATTRIBUTION_LABEL">%2$s</xliff:g> • <xliff:g id="PROXY_LABEL">%3$s</xliff:g>)"</string>
     <string name="safety_privacy_qs_tile_title" msgid="5431148204168066203">"ආරක්ෂාව සහ පෞද්ගලිකත්වය"</string>
     <string name="safety_privacy_qs_tile_subtitle" msgid="3621544532041936749">"තත්ත්වය පරික්ෂා කරන්න"</string>
-    <!-- no translation found for media_confirm_dialog_positive_button (9020793594051526399) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_negative_button (226987376924861785) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_allow (8560601114044699903) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_aural_deny (7841428716317307685) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_allow (6469086448310893751) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_a_to_p_visual_deny (5767849609024384226) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_allow (3191904399336990537) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_aural_deny (3128147568953297969) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_allow (6310682466493330434) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_title_q_to_s_visual_deny (1123845663785900471) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_allow (7865167246140107623) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_aural_deny (287502523664804786) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_allow (4952410892939590487) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_a_to_p_visual_deny (6609500525590757681) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_allow (1702402580147536160) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_aural_deny (6832087393653561911) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_allow (3504335060843147760) -->
-    <skip />
-    <!-- no translation found for media_confirm_dialog_message_q_to_s_visual_deny (2145973462806481992) -->
-    <skip />
+    <string name="media_confirm_dialog_positive_button" msgid="9020793594051526399">"තහවුරු කරන්න"</string>
+    <string name="media_confirm_dialog_negative_button" msgid="226987376924861785">"ආපසු"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_allow" msgid="8560601114044699903">"වෙනත් ගොනු වෙත ප්‍රවේශයද ඉඩ දෙනු ඇත"</string>
+    <string name="media_confirm_dialog_title_a_to_p_aural_deny" msgid="7841428716317307685">"වෙනත් ගොනු වෙත ප්‍රවේශයද ඉඩ නොදෙනු ඇත"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_allow" msgid="6469086448310893751">"වෙනත් ගොනු වෙත ප්‍රවේශයද ඉඩ දෙනු ඇත"</string>
+    <string name="media_confirm_dialog_title_a_to_p_visual_deny" msgid="5767849609024384226">"වෙනත් ගොනු වෙත ප්‍රවේශයද ඉඩ නොදෙනු ඇත"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_allow" msgid="3191904399336990537">"ඡායාරූප සහ වීඩියෝ වෙත ප්‍රවේශයද ඉඩ දෙනු ඇත"</string>
+    <string name="media_confirm_dialog_title_q_to_s_aural_deny" msgid="3128147568953297969">"ඡායාරූප සහ වීඩියෝ වෙත ප්‍රවේශයද ඉඩ නොදෙනු ඇත"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_allow" msgid="6310682466493330434">"සංගීත සහ ශ්‍රව්‍ය ගොනු වෙත ප්‍රවේශයද ඉඩ දෙනු ඇත"</string>
+    <string name="media_confirm_dialog_title_q_to_s_visual_deny" msgid="1123845663785900471">"සංගීත සහ ශ්‍රව්‍ය ගොනු වෙත ප්‍රවේශයද ඉඩ නොදෙනු ඇත"</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_allow" msgid="7865167246140107623">"මෙම යෙදුම Android හි නවතම අනුවාදයට සහාය නොදක්වයි. මෙම යෙදුමට සංගීත සහ ශ්‍රව්‍ය ගොනු වෙත ප්‍රවේශ විය හැකි නම්, එයට ඡායාරූප, වීඩියෝ සහ වෙනත් ගොනු වෙත ප්‍රවේශ වීමටද ඉඩ දෙනු ඇත."</string>
+    <string name="media_confirm_dialog_message_a_to_p_aural_deny" msgid="287502523664804786">"මෙම යෙදුම Android හි නවතම අනුවාදයට සහාය නොදක්වයි. මෙම යෙදුමට සංගීත සහ ශ්‍රව්‍ය ගොනු වෙත ප්‍රවේශ විය නොහැකි නම්, එයට ඡායාරූප, වීඩියෝ සහ වෙනත් ගොනු වෙත ප්‍රවේශ වීමටද ඉඩ නොදෙනු ඇත."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_allow" msgid="4952410892939590487">"මෙම යෙදුම Android හි නවතම අනුවාදයට සහාය නොදක්වයි. මෙම යෙදුමට ඡායාරූප සහ වීඩියෝ වෙත ප්‍රවේශ විය හැකි නම්, එයට සංගීත, ශ්‍රව්‍ය සහ වෙනත් ගොනු වෙත ප්‍රවේශ වීමටද ඉඩ දෙනු ඇත."</string>
+    <string name="media_confirm_dialog_message_a_to_p_visual_deny" msgid="6609500525590757681">"මෙම යෙදුම Android හි නවතම අනුවාදයට සහාය නොදක්වයි. මෙම යෙදුමට ඡායාරූප සහ වීඩියෝ වෙත ප්‍රවේශ විය නොහැකි නම්, එයට සංගීත, ශ්‍රව්‍ය, වෙනත් ගොනු වෙත ප්‍රවේශ වීමටද ඉඩ නොදෙනු ඇත."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_allow" msgid="1702402580147536160">"මෙම යෙදුම Android හි නවතම අනුවාදයට සහාය නොදක්වයි. මෙම යෙදුමට සංගීත සහ ශ්‍රව්‍ය ගොනු වෙත ප්‍රවේශ විය හැකි නම්, එයට ඡායාරූප සහ වීඩියෝ වෙත ප්‍රවේශ වීමටද ඉඩ දෙනු ඇත."</string>
+    <string name="media_confirm_dialog_message_q_to_s_aural_deny" msgid="6832087393653561911">"මෙම යෙදුම Android හි නවතම අනුවාදයට සහාය නොදක්වයි. මෙම යෙදුමට සංගීත සහ ශ්‍රව්‍ය ගොනු වෙත ප්‍රවේශ විය නොහැකි නම්, එයට ඡායාරූප සහ වීඩියෝ වෙත ප්‍රවේශ වීමටද ඉඩ නොදෙනු ඇත."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_allow" msgid="3504335060843147760">"මෙම යෙදුම Android හි නවතම අනුවාදයට සහාය නොදක්වයි. මෙම යෙදුමට ඡායාරූප සහ වීඩියෝ වෙත ප්‍රවේශ විය හැකි නම්, එයට සංගීත සහ ශ්‍රව්‍ය ගොනු වෙත ප්‍රවේශ වීමටද ඉඩ දෙනු ඇත."</string>
+    <string name="media_confirm_dialog_message_q_to_s_visual_deny" msgid="2145973462806481992">"මෙම යෙදුම Android හි නවතම අනුවාදයට සහාය නොදක්වයි. මෙම යෙදුමට සංගීත සහ ශ්‍රව්‍ය ගොනු වෙත ප්‍රවේශ විය නොහැකි නම්, එයට ඡායාරූප සහ වීඩියෝ වෙත ප්‍රවේශ වීමටද ඉඩ නොදෙනු ඇත."</string>
 </resources>
