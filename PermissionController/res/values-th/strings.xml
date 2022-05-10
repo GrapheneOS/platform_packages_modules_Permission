@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"ได้รับอนุญาตให้จัดการไฟล์ทั้งหมด"</string>
     <string name="ask_header" msgid="2633816846459944376">"ถามทุกครั้ง"</string>
     <string name="denied_header" msgid="903209608358177654">"ไม่อนุญาต"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"ดูแอปอื่นๆ ที่สามารถเข้าถึงไฟล์ทั้งหมดได้"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 วัน}other{# วัน}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 ชั่วโมง}other{# ชั่วโมง}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 นาที}other{# นาที}}"</string>
@@ -332,8 +331,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"แอปผู้ช่วยดิจิทัลเริ่มต้น"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"แอปผู้ช่วยดิจิทัล"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"แอปผู้ช่วยจะช่วยเหลือคุณโดยใช้ข้อมูลจากหน้าจอที่คุณกำลังดูอยู่ แอปบางแอปรองรับทั้ง Launcher และบริการป้อนข้อมูลด้วยเสียงเพื่อให้ความช่วยเหลือแบบบูรณาการแก่คุณ"</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"ตั้งค่า <xliff:g id="APP_NAME">%1$s</xliff:g> เป็นแอปผู้ช่วยเริ่มต้นไหม"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"มีสิทธิ์เข้าถึง SMS และบันทึกการโทร"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"แอปเบราว์เซอร์เริ่มต้น"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"แอปเบราว์เซอร์"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"แอปที่ให้คุณเข้าถึงอินเทอร์เน็ตและแสดงลิงก์ที่คุณแตะ"</string>
@@ -343,13 +340,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"แอปโทรศัพท์"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"แอปที่ให้คุณโทรออกและรับสายในอุปกรณ์ได้"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"ตั้งค่า <xliff:g id="APP_NAME">%1$s</xliff:g> เป็นแอปโทรศัพท์เริ่มต้นไหม"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"มีสิทธิ์เข้าถึงบันทึกการโทรและส่ง SMS"</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"แอปนี้จะมีสิทธิ์เข้าถึงกล้อง รายชื่อติดต่อ ไมโครโฟน โทรศัพท์ และ SMS"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"โทรศัพท์"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"แอป SMS เริ่มต้น"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"แอป SMS"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"แอปที่ให้คุณใช้หมายเลขโทรศัพท์เพื่อส่งและรับ SMS, รูปภาพ, วิดีโอ และอื่นๆ"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"ตั้งค่า <xliff:g id="APP_NAME">%1$s</xliff:g> เป็นแอป SMS เริ่มต้น"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"มีสิทธิ์เข้าถึงรายชื่อติดต่อ SMS และโทรศัพท์"</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"แอปนี้จะมีสิทธิ์เข้าถึงกล้อง รายชื่อติดต่อ ไฟล์และสื่อ ไมโครโฟน โทรศัพท์ และ SMS"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"ข้อความ, การส่งข้อความ, ข้อความ, การส่งข้อความ"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"แอปฉุกเฉินเริ่มต้น"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"แอปฉุกเฉิน"</string>
