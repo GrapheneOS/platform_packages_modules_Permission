@@ -50,13 +50,12 @@ import android.safetycenter.SafetyCenterManager.RefreshRequestType;
 import androidx.annotation.RequiresApi;
 
 import com.android.safetycenter.SafetyCenterConfigReader.Broadcast;
-import com.android.safetycenter.SafetyCenterConfigReader.SafetyCenterConfigInternal;
 
 import java.time.Duration;
 import java.util.List;
 
 /**
- * Class to manage and track broadcasts sent by {@link SafetyCenterService}.
+ * A class that dispatches SafetyCenter broadcasts.
  *
  * <p>This class is thread safe as it does not contain any mutable state.
  */
@@ -85,11 +84,10 @@ final class SafetyCenterBroadcastDispatcher {
      * SafetyCenterManager#ACTION_REFRESH_SAFETY_SOURCES}.
      */
     void sendRefreshSafetySources(
-            @NonNull SafetyCenterConfigInternal configInternal,
+            @NonNull List<Broadcast> broadcasts,
             @NonNull String broadcastId,
             @RefreshReason int refreshReason,
             @NonNull UserProfileGroup userProfileGroup) {
-        List<Broadcast> broadcasts = configInternal.getBroadcasts();
         BroadcastOptions broadcastOptions = createBroadcastOptions();
 
         for (int i = 0; i < broadcasts.size(); i++) {
@@ -109,8 +107,7 @@ final class SafetyCenterBroadcastDispatcher {
      */
     // TODO(b/227310195): Consider adding a boolean extra to the intent instead of having clients
     //  rely on SafetyCenterManager#isSafetyCenterEnabled()?
-    void sendEnabledChanged(@NonNull SafetyCenterConfigInternal configInternal) {
-        List<Broadcast> broadcasts = configInternal.getBroadcasts();
+    void sendEnabledChanged(@NonNull List<Broadcast> broadcasts) {
         BroadcastOptions broadcastOptions = createBroadcastOptions();
 
         for (int i = 0; i < broadcasts.size(); i++) {
