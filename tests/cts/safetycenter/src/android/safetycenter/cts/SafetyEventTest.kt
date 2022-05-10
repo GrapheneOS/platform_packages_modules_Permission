@@ -21,6 +21,7 @@ import android.safetycenter.SafetyEvent
 import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_DEVICE_REBOOTED
 import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED
 import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED
+import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED
 import android.safetycenter.SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED
 import android.safetycenter.cts.testing.EqualsHashCodeToStringTester
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -57,6 +58,7 @@ class SafetyEventTest {
         val safetyEvent =
             SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
                 .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
+                .setSafetySourceIssueActionId(SAFETY_SOURCE_ISSUE_ACTION_ID)
                 .build()
 
         assertThat(safetyEvent.safetySourceIssueId).isEqualTo(SAFETY_SOURCE_ISSUE_ID)
@@ -66,10 +68,87 @@ class SafetyEventTest {
     fun getSafetySourceIssueActionId_returnsSafetySourceIssueActionId() {
         val safetyEvent =
             SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
+                .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
                 .setSafetySourceIssueActionId(SAFETY_SOURCE_ISSUE_ACTION_ID)
                 .build()
 
         assertThat(safetyEvent.safetySourceIssueActionId).isEqualTo(SAFETY_SOURCE_ISSUE_ACTION_ID)
+    }
+
+    @Test
+    fun build_actionFailed_withMissingIssueActionId_throwsIllegalArgumentException() {
+        val exception =
+            assertFailsWith(IllegalArgumentException::class) {
+                SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
+                    .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
+                    .build()
+            }
+
+        assertThat(exception)
+            .hasMessageThat()
+            .isEqualTo(
+                "Missing issue action id for resolving action safety event " +
+                    "($SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)")
+    }
+
+    @Test
+    fun build_actionFailed_withMissingIssueId_throwsIllegalArgumentException() {
+        val exception =
+            assertFailsWith(IllegalArgumentException::class) {
+                SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
+                    .setSafetySourceIssueActionId(SAFETY_SOURCE_ISSUE_ACTION_ID)
+                    .build()
+            }
+
+        assertThat(exception)
+            .hasMessageThat()
+            .isEqualTo(
+                "Missing issue id for resolving action safety event " +
+                    "($SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)")
+    }
+
+    @Test
+    fun build_actionSucceeded_withMissingIssueActionId_throwsIllegalArgumentException() {
+        val exception =
+            assertFailsWith(IllegalArgumentException::class) {
+                SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED)
+                    .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
+                    .build()
+            }
+
+        assertThat(exception)
+            .hasMessageThat()
+            .isEqualTo(
+                "Missing issue action id for resolving action safety event " +
+                    "($SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED)")
+    }
+
+    @Test
+    fun build_actionSucceeded_withMissingIssueId_throwsIllegalArgumentException() {
+        val exception =
+            assertFailsWith(IllegalArgumentException::class) {
+                SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED)
+                    .setSafetySourceIssueActionId(SAFETY_SOURCE_ISSUE_ACTION_ID)
+                    .build()
+            }
+
+        assertThat(exception)
+            .hasMessageThat()
+            .isEqualTo(
+                "Missing issue id for resolving action safety event " +
+                    "($SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED)")
+    }
+
+    @Test
+    fun build_refreshRequested_withMissingRefreshBroadcastId_throwsIllegalArgumentException() {
+        val exception =
+            assertFailsWith(IllegalArgumentException::class) {
+                SafetyEvent.Builder(SAFETY_EVENT_TYPE_REFRESH_REQUESTED).build()
+            }
+
+        assertThat(exception)
+            .hasMessageThat()
+            .isEqualTo("Missing refresh broadcast id for refresh requested safety event")
     }
 
     @Test
@@ -120,7 +199,6 @@ class SafetyEventTest {
                     .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
                     .setSafetySourceIssueActionId(SAFETY_SOURCE_ISSUE_ACTION_ID)
                     .build())
-            .addEqualityGroup(SafetyEvent.Builder(SAFETY_EVENT_TYPE_REFRESH_REQUESTED).build())
             .addEqualityGroup(SafetyEvent.Builder(SAFETY_EVENT_TYPE_DEVICE_REBOOTED).build())
             .addEqualityGroup(
                 SafetyEvent.Builder(SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
@@ -128,11 +206,8 @@ class SafetyEventTest {
                     .build())
             .addEqualityGroup(
                 SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
-                    .setSafetySourceIssueId(SAFETY_SOURCE_ISSUE_ID)
-                    .build())
-            .addEqualityGroup(
-                SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
                     .setSafetySourceIssueId(OTHER_SAFETY_SOURCE_ISSUE_ID)
+                    .setSafetySourceIssueActionId(SAFETY_SOURCE_ISSUE_ACTION_ID)
                     .build())
             .addEqualityGroup(
                 SafetyEvent.Builder(SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED)
