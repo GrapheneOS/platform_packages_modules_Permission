@@ -97,7 +97,7 @@ class SafetySourceCtsData(private val context: Context) {
     /** A [SafetySourceIssue] with a [SEVERITY_LEVEL_RECOMMENDATION] and a redirection [Action]. */
     val recommendationIssue =
         SafetySourceIssue.Builder(
-            "recommendation_issue_id",
+            RECOMMENDATION_ISSUE_ID,
             "Recommendation issue title",
             "Recommendation issue summary",
             SEVERITY_LEVEL_RECOMMENDATION,
@@ -172,6 +172,9 @@ class SafetySourceCtsData(private val context: Context) {
 
         /** Action ID for the resolving action in [criticalIssue]. */
         const val CRITICAL_ISSUE_ACTION_ID = "critical_issue_action_id"
+
+        /** Issue ID for [recommendationIssue]. */
+        const val RECOMMENDATION_ISSUE_ID = "recommendation_issue_id"
 
         /** Issue ID for [informationIssue]. */
         const val INFORMATION_ISSUE_ID = "information_issue_id"

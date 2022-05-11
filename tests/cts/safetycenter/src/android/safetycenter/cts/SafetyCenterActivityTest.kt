@@ -23,8 +23,12 @@ import android.safetycenter.SafetySourceData
 import android.safetycenter.SafetySourceIssue
 import android.safetycenter.cts.testing.SafetyCenterActivityLauncher.launchSafetyCenterActivity
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.MULTIPLE_SOURCES_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_ID
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_1
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_2
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SOURCE_ID_3
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.STATIC_SOURCES_CONFIG
 import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
@@ -32,9 +36,11 @@ import android.safetycenter.cts.testing.SafetySourceCtsData
 import android.support.test.uiautomator.By
 import android.support.test.uiautomator.BySelector
 import android.support.test.uiautomator.UiObject2
+import android.util.Log
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
+import com.android.compatibility.common.util.UiAutomatorUtils.getUiDevice
 import com.android.compatibility.common.util.UiAutomatorUtils.waitFindObject
 import com.android.compatibility.common.util.UiAutomatorUtils.waitFindObjectOrNull
 import java.time.Duration
@@ -181,6 +187,80 @@ class SafetyCenterActivityTest {
     // TODO(b/232104227): Add tests for issues dismissible without confirmation and non-dismissible
     // issues if and when the service supports them.
 
+    @Test
+    fun moreIssuesCard_underMaxShownIssues_noMoreIssuesCard() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithIssue)
+
+        context.launchSafetyCenterActivity {
+            assertIssueDisplayed(safetySourceCtsData.criticalIssue)
+            waitTextNotDisplayed("See all alerts")
+        }
+    }
+
+    @Test
+    fun moreIssuesCard_moreIssuesCardShown_additionalIssueCardsCollapsed() {
+        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
+        safetyCenterCtsHelper.setData(SOURCE_ID_1, safetySourceCtsData.criticalWithIssue)
+        safetyCenterCtsHelper.setData(SOURCE_ID_2, safetySourceCtsData.recommendationWithIssue)
+        safetyCenterCtsHelper.setData(SOURCE_ID_3, safetySourceCtsData.informationWithIssue)
+
+        context.launchSafetyCenterActivity {
+            assertIssueDisplayed(safetySourceCtsData.criticalIssue)
+            waitFindObject(By.text("See all alerts"))
+            assertIssueNotDisplayed(safetySourceCtsData.recommendationIssue)
+            assertIssueNotDisplayed(safetySourceCtsData.informationIssue)
+        }
+    }
+
+    @Test
+    fun moreIssuesCard_expandAdditionalIssueCards() {
+        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
+        safetyCenterCtsHelper.setData(SOURCE_ID_1, safetySourceCtsData.criticalWithIssue)
+        safetyCenterCtsHelper.setData(SOURCE_ID_2, safetySourceCtsData.recommendationWithIssue)
+        safetyCenterCtsHelper.setData(SOURCE_ID_3, safetySourceCtsData.informationWithIssue)
+
+        context.launchSafetyCenterActivity {
+            assertIssueDisplayed(safetySourceCtsData.criticalIssue)
+            waitFindObject(By.text("See all alerts")).click()
+
+            waitTextNotDisplayed("See all alerts")
+            assertIssueDisplayed(safetySourceCtsData.recommendationIssue)
+            assertIssueDisplayed(safetySourceCtsData.informationIssue)
+        }
+    }
+
+    @Test
+    fun moreIssuesCard_activityStopStart_cardsStillExpanded() {
+        safetyCenterCtsHelper.setConfig(MULTIPLE_SOURCES_CONFIG)
+        safetyCenterCtsHelper.setData(SOURCE_ID_1, safetySourceCtsData.criticalWithIssue)
+        safetyCenterCtsHelper.setData(SOURCE_ID_2, safetySourceCtsData.recommendationWithIssue)
+        safetyCenterCtsHelper.setData(SOURCE_ID_3, safetySourceCtsData.informationWithIssue)
+
+        context.launchSafetyCenterActivity {
+            // Expand cards
+            waitFindObject(By.text("See all alerts")).click()
+
+            // Verify cards initially expanded
+            waitTextNotDisplayed("See all alerts")
+            assertIssueDisplayed(safetySourceCtsData.criticalIssue)
+            assertIssueDisplayed(safetySourceCtsData.recommendationIssue)
+            assertIssueDisplayed(safetySourceCtsData.informationIssue)
+
+            // Stop activity, start activity to trigger usage of savedinstancestate
+            val uiDevice = getUiDevice()
+            uiDevice.sleep()
+            uiDevice.wakeUp()
+            uiDevice.waitForIdle()
+
+            // Verify cards remain expanded
+            waitTextNotDisplayed("See all alerts")
+            assertIssueDisplayed(safetySourceCtsData.criticalIssue)
+            assertIssueDisplayed(safetySourceCtsData.recommendationIssue)
+            assertIssueDisplayed(safetySourceCtsData.informationIssue)
+        }
+    }
+
     private fun assertSourceDataDisplayed(sourceData: SafetySourceData) {
         findAllText(sourceData.status?.title, sourceData.status?.summary)
 
@@ -224,9 +304,16 @@ class SafetyCenterActivityTest {
     private fun waitNotDisplayed(selector: BySelector) {
         val startMillis = SystemClock.elapsedRealtime()
         while (true) {
-            if (waitFindObjectOrNull(selector, NOT_DISPLAYED_CHECK_INTERVAL.toMillis()) ==
-                null) {
-                return
+            try {
+                if (waitFindObjectOrNull(selector, NOT_DISPLAYED_CHECK_INTERVAL.toMillis()) ==
+                    null) {
+                    return
+                }
+            } catch (e: android.support.test.uiautomator.StaleObjectException) {
+                Log.d(
+                    TAG,
+                    "StaleObjectException while calling waitTextNotDisplayed, will retry " +
+                        "if within timeout.")
             }
             if (Duration.ofMillis(SystemClock.elapsedRealtime() - startMillis) >=
                 NOT_DISPLAYED_TIMEOUT) {
@@ -240,6 +327,7 @@ class SafetyCenterActivityTest {
     }
 
     companion object {
+        private val TAG = SafetyCenterActivityTest::class.java.simpleName
         private val NOT_DISPLAYED_TIMEOUT = Duration.ofSeconds(20)
         private val NOT_DISPLAYED_CHECK_INTERVAL = Duration.ofMillis(100)
     }

@@ -82,6 +82,10 @@ public class IssueCardPreference extends Preference {
         }
     }
 
+    public int getSeverityLevel() {
+        return mIssue.getSeverityLevel();
+    }
+
     private void configureDismissButton(View dismissButton) {
         if (mIssue.isDismissible()) {
             dismissButton.setOnClickListener(
