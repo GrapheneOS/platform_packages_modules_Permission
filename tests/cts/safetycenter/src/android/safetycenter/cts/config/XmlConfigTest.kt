@@ -20,7 +20,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager.ResolveInfoFlags
 import android.os.Build.VERSION_CODES.TIRAMISU
-import android.safetycenter.config.SafetySource
+import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -81,11 +81,10 @@ class XmlConfigTest {
         val safetyCenterConfig =
             SafetyCenterConfigParser.parseXmlResource(
                 safetyCenterContext.safetyCenterConfig!!, safetyCenterContext.resources!!)
-        return safetyCenterConfig.safetySourcesGroups.any { safetySourceGroup ->
-            safetySourceGroup.safetySources
-                .filter { it.type != SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY }
-                .any { it.intentAction == intentAction }
-        }
+        return safetyCenterConfig.safetySourcesGroups
+            .flatMap { it.safetySources }
+            .filter { it.type != SAFETY_SOURCE_TYPE_ISSUE_ONLY }
+            .any { it.intentAction == intentAction }
     }
 
     companion object {
