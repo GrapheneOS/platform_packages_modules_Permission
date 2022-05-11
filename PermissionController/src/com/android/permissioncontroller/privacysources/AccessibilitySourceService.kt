@@ -55,10 +55,12 @@ import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.Constants
 import com.android.permissioncontroller.permission.utils.Utils
 import com.android.permissioncontroller.permission.utils.Utils.getSystemServiceSafe
+import com.android.permissioncontroller.privacysources.SafetyCenterReceiver.RefreshEvent
 import com.android.permissioncontroller.R
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -748,15 +750,13 @@ class AccessibilitySourceService(
     override fun rescanAndPushSafetyCenterData(
         context: Context,
         intent: Intent,
-        refreshEvent: SafetyCenterReceiver.RefreshEvent
+        refreshEvent: RefreshEvent
     ) {
-        val refreshBroadcastId = intent.getStringExtra(
-            SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID)
-        val safetyRefreshEvent = SafetyEvent.Builder(
-            SafetyEvent.SAFETY_EVENT_TYPE_REFRESH_REQUESTED)
-            .setRefreshBroadcastId(refreshBroadcastId)
-            .build()
-        sendIssuesToSafetyCenter(safetyRefreshEvent)
+        if (DEBUG) {
+            Log.v(LOG_TAG, "rescan and push event from safety center $refreshEvent")
+        }
+        val safetyCenterEvent = getSafetyCenterEvent(refreshEvent, intent)
+        sendIssuesToSafetyCenter(safetyCenterEvent)
     }
 
     @VisibleForTesting
@@ -784,7 +784,8 @@ class AccessibilityPackageResetHandler : BroadcastReceiver() {
         }
 
         val data = Preconditions.checkNotNull(intent.data)
-        GlobalScope.launch(Dispatchers.Default) {
+        val coroutineScope = CoroutineScope(Dispatchers.Default + SupervisorJob())
+        coroutineScope.launch(Dispatchers.Default) {
             if (DEBUG) {
                 Log.v(LOG_TAG, "package reset event occurred for ${data.schemeSpecificPart}")
             }
@@ -801,8 +802,8 @@ class AccessibilityNotificationDeleteHandler : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val componentName =
             Utils.getParcelableExtraSafe<ComponentName>(intent, Intent.EXTRA_COMPONENT_NAME)
-
-        GlobalScope.launch(Dispatchers.Default) {
+        val coroutineScope = CoroutineScope(Dispatchers.Default + SupervisorJob())
+        coroutineScope.launch(Dispatchers.Default) {
             if (DEBUG) {
                 Log.v(LOG_TAG, "deleting notification for ${componentName.flattenToShortString()}")
             }
@@ -821,8 +822,8 @@ class AccessibilityRemoveAccessHandler : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val a11yService: ComponentName =
             Utils.getParcelableExtraSafe<ComponentName>(intent, Intent.EXTRA_COMPONENT_NAME)
-
-        GlobalScope.launch(Dispatchers.Default) {
+        val coroutineScope = CoroutineScope(Dispatchers.Default + SupervisorJob())
+        coroutineScope.launch(Dispatchers.Default) {
             if (DEBUG) {
                 Log.v(LOG_TAG, "disabling a11y service ${a11yService.flattenToShortString()}")
             }
@@ -857,8 +858,8 @@ class AccessibilityWarningCardDismissalReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val componentName =
             Utils.getParcelableExtraSafe<ComponentName>(intent, Intent.EXTRA_COMPONENT_NAME)
-
-        GlobalScope.launch(Dispatchers.Default) {
+        val coroutineScope = CoroutineScope(Dispatchers.Default + SupervisorJob())
+        coroutineScope.launch(Dispatchers.Default) {
             if (DEBUG) {
                 Log.v(LOG_TAG, "removing notification for ${componentName.flattenToShortString()}")
             }
@@ -938,7 +939,8 @@ class AccessibilityJobService : JobService() {
                 mCurrentJob = null
                 return false
             }
-            mCurrentJob = GlobalScope.launch(Dispatchers.Default) {
+            val coroutineScope = CoroutineScope(Dispatchers.Default + SupervisorJob())
+            mCurrentJob = coroutineScope.launch(Dispatchers.Default) {
                 mSourceService?.processAccessibilityJob(
                     params,
                     this@AccessibilityJobService,
@@ -990,7 +992,8 @@ class SafetyCenterAccessibilityListener(val context: Context) :
             return
         }
 
-        GlobalScope.launch(Dispatchers.Default) {
+        val coroutineScope = CoroutineScope(Dispatchers.Default + SupervisorJob())
+        coroutineScope.launch(Dispatchers.Default) {
             if (DEBUG) {
                 Log.v(LOG_TAG, "processing accessibility event")
             }
