@@ -20,7 +20,10 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager.ResolveInfoFlags
 import android.os.Build.VERSION_CODES.TIRAMISU
+import android.safetycenter.SafetyCenterManager
 import android.safetycenter.config.SafetySource.SAFETY_SOURCE_TYPE_ISSUE_ONLY
+import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.getSafetyCenterConfigWithPermission
+import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -29,6 +32,7 @@ import com.android.safetycenter.config.SafetyCenterConfigParser
 import com.android.safetycenter.resources.SafetyCenterResourcesContext
 import com.google.common.truth.Truth.assertThat
 import com.google.common.truth.Truth.assertWithMessage
+import org.junit.After
 import org.junit.Assume.assumeTrue
 import org.junit.Before
 import org.junit.Test
@@ -39,19 +43,39 @@ import org.junit.runner.RunWith
 class XmlConfigTest {
     private val context: Context = getApplicationContext()
     private val safetyCenterContext = SafetyCenterResourcesContext(context)
+    private val safetyCenterCtsHelper = SafetyCenterCtsHelper(context)
+    private val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)!!
+    // JUnit's Assume is not supported in @BeforeClass by the CTS tests runner, so this is used to
+    // manually skip the setup and teardown methods.
+    private val shouldRunTests = context.deviceSupportsSafetyCenter()
 
     @Before
     fun assumeDeviceSupportsSafetyCenterToRunTests() {
-        assumeTrue(context.deviceSupportsSafetyCenter())
+        assumeTrue(shouldRunTests)
+    }
+
+    @Before
+    fun enableSafetyCenterBeforeTest() {
+        if (!shouldRunTests) {
+            return
+        }
+        safetyCenterCtsHelper.setEnabled(true)
+    }
+
+    @After
+    fun clearDataAfterTest() {
+        if (!shouldRunTests) {
+            return
+        }
+        safetyCenterCtsHelper.reset()
     }
 
     @Test
     fun safetyCenterConfigResource_validConfig() {
-        // Assert that the parser validates the Safety Center config without throwing any exception
-        assertThat(
-                SafetyCenterConfigParser.parseXmlResource(
-                    safetyCenterContext.safetyCenterConfig!!, safetyCenterContext.resources!!))
-            .isNotNull()
+        val parsedSafetyCenterConfig = parseXmlConfig()
+        val safetyCenterConfig = safetyCenterManager.getSafetyCenterConfigWithPermission()
+
+        assertThat(parsedSafetyCenterConfig).isEqualTo(safetyCenterConfig)
     }
 
     @Test
@@ -78,14 +102,16 @@ class XmlConfigTest {
     }
 
     private fun isIntentInConfig(intentAction: String): Boolean {
-        val safetyCenterConfig =
-            SafetyCenterConfigParser.parseXmlResource(
-                safetyCenterContext.safetyCenterConfig!!, safetyCenterContext.resources!!)
+        val safetyCenterConfig = parseXmlConfig()
         return safetyCenterConfig.safetySourcesGroups
             .flatMap { it.safetySources }
             .filter { it.type != SAFETY_SOURCE_TYPE_ISSUE_ONLY }
             .any { it.intentAction == intentAction }
     }
+
+    private fun parseXmlConfig() =
+        SafetyCenterConfigParser.parseXmlResource(
+            safetyCenterContext.safetyCenterConfig!!, safetyCenterContext.resources!!)
 
     companion object {
         private const val ADVANCED_PRIVACY_INTENT_STRING =

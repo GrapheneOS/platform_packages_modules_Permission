@@ -125,8 +125,10 @@ class SafetyCenterReceiver(
             context.packageManager?.getComponentEnabledSetting(tileComponent) !=
                 PackageManager.COMPONENT_ENABLED_STATE_DISABLED
         if (enabled && !wasEnabled) {
-            context.packageManager.setComponentEnabledSetting(
-                tileComponent, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, 0)
+            // Toggling the flag on and off quickly creates an NPE in CustomTile due to the icon
+            // being null, which causes failures in SafetyCenterActivityTest.
+            // context.packageManager.setComponentEnabledSetting(
+            //    tileComponent, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, 0)
         } else if (!enabled && wasEnabled) {
             context.packageManager.setComponentEnabledSetting(
                 tileComponent, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, 0)
