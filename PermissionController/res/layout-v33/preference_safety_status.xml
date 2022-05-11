@@ -73,4 +73,14 @@
         android:layout_marginTop="24dp"
         android:text="@string/safety_center_rescan_button"
         style="@style/SafetyCenter.RescanButton"  />
+
+    <com.android.permissioncontroller.permission.ui.widget.SafetyProtectionSectionView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/rescan_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="0dp"
+        android:layout_gravity="center" />
 </androidx.constraintlayout.widget.ConstraintLayout>
