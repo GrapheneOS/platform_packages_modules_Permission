@@ -59,10 +59,9 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
 
     private boolean maybeRedirectIfDisabled() {
         if (mSafetyCenterManager == null || !mSafetyCenterManager.isSafetyCenterEnabled()) {
-            Log.w(TAG, "Safety Center disabled, redirecting to security settings page");
+            Log.w(TAG, "Safety Center disabled, redirecting to settings page");
             startActivity(
-                    new Intent(Settings.ACTION_SECURITY_SETTINGS)
-                            .addFlags(FLAG_ACTIVITY_FORWARD_RESULT));
+                    new Intent(Settings.ACTION_SETTINGS).addFlags(FLAG_ACTIVITY_FORWARD_RESULT));
             finish();
             return true;
         }
