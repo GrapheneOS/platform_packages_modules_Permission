@@ -44,10 +44,20 @@ import javax.annotation.concurrent.NotThreadSafe;
 final class SafetyCenterRefreshTracker {
     private static final String TAG = "SafetyCenterRefreshTrac";
 
+    @NonNull private final SafetyCenterConfigReader mSafetyCenterConfigReader;
+
     @Nullable
     // TODO(b/229060064): Should we allow one refresh at a time per UserProfileGroup rather than
     //  one global refresh?
     private RefreshInProgress mRefreshInProgress = null;
+
+    /**
+     * Creates a {@link SafetyCenterRefreshTracker} using the given {@link
+     * SafetyCenterConfigReader}.
+     */
+    SafetyCenterRefreshTracker(@NonNull SafetyCenterConfigReader safetyCenterConfigReader) {
+        mSafetyCenterConfigReader = safetyCenterConfigReader;
+    }
 
     private int mRefreshCounter = 0;
 
@@ -55,15 +65,14 @@ final class SafetyCenterRefreshTracker {
      * Reports that a new refresh is in progress and returns the broadcast id associated with this
      * refresh.
      */
+    @NonNull
     String reportRefreshInProgress(
-            @NonNull SafetyCenterConfigReader.SafetyCenterConfigInternal configInternal,
-            @RefreshReason int refreshReason,
-            @NonNull UserProfileGroup userProfileGroup) {
+            @RefreshReason int refreshReason, @NonNull UserProfileGroup userProfileGroup) {
         if (mRefreshInProgress != null) {
             Log.w(TAG, "Replacing an ongoing refresh");
         }
 
-        List<Broadcast> broadcasts = configInternal.getBroadcasts();
+        List<Broadcast> broadcasts = mSafetyCenterConfigReader.getBroadcasts();
         String refreshBroadcastId =
                 Objects.hash(refreshReason, broadcasts, userProfileGroup) + "_" + mRefreshCounter++;
         mRefreshInProgress = new RefreshInProgress(refreshBroadcastId);
