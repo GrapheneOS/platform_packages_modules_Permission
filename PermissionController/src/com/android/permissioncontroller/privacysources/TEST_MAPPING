@@ -1,4 +1,18 @@
 {
+  "presubmit": [
+    {
+      "name": "PermissionControllerMockingTests",
+      "options": [
+        {
+          "include-filter": "com.android.permissioncontroller.tests.mocking.privacysources.NotificationListenerCheckInternalTest",
+          "include-filter": "com.android.permissioncontroller.tests.mocking.privacysources.NotificationListenerPrivacySourceTest"
+        },
+        {
+          "exclude-annotation": "androidx.test.filters.FlakyTest"
+        }
+      ]
+    }
+  ],
   "postsubmit": [
     {
       "name": "CtsPermissionTestCases",
