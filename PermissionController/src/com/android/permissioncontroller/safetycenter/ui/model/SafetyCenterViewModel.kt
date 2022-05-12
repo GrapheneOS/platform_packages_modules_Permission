@@ -20,64 +20,26 @@ import android.app.Application
 import android.safetycenter.SafetyCenterData
 import android.safetycenter.SafetyCenterErrorDetails
 import android.safetycenter.SafetyCenterIssue
-import android.safetycenter.SafetyCenterManager
-import androidx.core.content.ContextCompat.getMainExecutor
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
 
-class SafetyCenterViewModel(val app: Application) : AndroidViewModel(app) {
+abstract class SafetyCenterViewModel(protected val app: Application) : AndroidViewModel(app) {
 
-    val safetyCenterLiveData = SafetyCenterLiveData()
-    val errorLiveData = MutableLiveData<SafetyCenterErrorDetails>()
+    abstract val safetyCenterLiveData: LiveData<SafetyCenterData>
+    abstract val errorLiveData: LiveData<SafetyCenterErrorDetails>
     val autoRefreshManager = AutoRefreshManager()
 
-    private val safetyCenterManager = app.getSystemService(SafetyCenterManager::class.java)!!
+    abstract fun dismissIssue(issue: SafetyCenterIssue)
 
-    fun dismissIssue(issue: SafetyCenterIssue) {
-        safetyCenterManager.dismissSafetyCenterIssue(issue.id)
-    }
+    abstract fun executeIssueAction(issue: SafetyCenterIssue, action: SafetyCenterIssue.Action)
 
-    fun executeIssueAction(issue: SafetyCenterIssue, action: SafetyCenterIssue.Action) {
-        safetyCenterManager.executeSafetyCenterIssueAction(issue.id, action.id)
-    }
+    abstract fun rescan()
 
-    fun rescan() {
-        safetyCenterManager.refreshSafetySources(
-            SafetyCenterManager.REFRESH_REASON_RESCAN_BUTTON_CLICK)
-    }
+    abstract fun clearError()
 
-    fun clearError() {
-        errorLiveData.value = null
-    }
-
-    private fun refresh() {
-        safetyCenterManager.refreshSafetySources(SafetyCenterManager.REFRESH_REASON_PAGE_OPEN)
-    }
-
-    inner class SafetyCenterLiveData :
-        MutableLiveData<SafetyCenterData>(), SafetyCenterManager.OnSafetyCenterDataChangedListener {
-
-        override fun onActive() {
-            safetyCenterManager.addOnSafetyCenterDataChangedListener(
-                getMainExecutor(app.applicationContext), this)
-            super.onActive()
-        }
-
-        override fun onInactive() {
-            safetyCenterManager.removeOnSafetyCenterDataChangedListener(this)
-            super.onInactive()
-        }
-
-        override fun onSafetyCenterDataChanged(data: SafetyCenterData) {
-            value = data
-        }
-
-        override fun onError(errorDetails: SafetyCenterErrorDetails) {
-            errorLiveData.value = errorDetails
-        }
-    }
+    protected abstract fun refresh()
 
     inner class AutoRefreshManager : DefaultLifecycleObserver {
         // TODO(b/222323674): We may need to do this in onResume to cover certain edge cases.
