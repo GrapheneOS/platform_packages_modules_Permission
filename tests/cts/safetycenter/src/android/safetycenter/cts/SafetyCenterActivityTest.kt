@@ -16,24 +16,19 @@
 
 package android.safetycenter.cts
 
-import android.app.PendingIntent
-import android.app.PendingIntent.FLAG_IMMUTABLE
 import android.content.Context
-import android.content.Intent
-import android.content.Intent.ACTION_SAFETY_CENTER
 import android.os.Build.VERSION_CODES.TIRAMISU
 import android.os.SystemClock
-import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetySourceData
-import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_CRITICAL_WARNING
-import android.safetycenter.SafetySourceData.SEVERITY_LEVEL_RECOMMENDATION
 import android.safetycenter.SafetySourceIssue
-import android.safetycenter.SafetySourceStatus
-import android.safetycenter.cts.testing.SafetyCenterApisWithShellPermissions.setSafetyCenterConfigForTestsWithPermission
+import android.safetycenter.cts.testing.SafetyCenterActivityLauncher.launchSafetyCenterActivity
 import android.safetycenter.cts.testing.SafetyCenterCtsConfigs
-import android.safetycenter.cts.testing.SafetyCenterFlags
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_CONFIG
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.SINGLE_SOURCE_ID
+import android.safetycenter.cts.testing.SafetyCenterCtsConfigs.STATIC_SOURCES_CONFIG
+import android.safetycenter.cts.testing.SafetyCenterCtsHelper
 import android.safetycenter.cts.testing.SafetyCenterFlags.deviceSupportsSafetyCenter
-import android.safetycenter.cts.testing.SimpleTestSource
+import android.safetycenter.cts.testing.SafetySourceCtsData
 import android.support.test.uiautomator.By
 import android.support.test.uiautomator.UiObject2
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
@@ -54,55 +49,8 @@ import org.junit.runner.RunWith
 class SafetyCenterActivityTest {
     private val context: Context = getApplicationContext()
 
-    private val safetyCenterManager = context.getSystemService(SafetyCenterManager::class.java)!!
-    private val simpleTestSource = SimpleTestSource(safetyCenterManager)
-    private val somePendingIntent =
-        PendingIntent.getActivity(
-            context, 0 /* requestCode */, Intent(ACTION_SAFETY_CENTER), FLAG_IMMUTABLE)
-
-    private val criticalIssue =
-        SafetySourceIssue.Builder(
-                "critical_issue_id",
-                "Critical issue title",
-                "Critical issue summary",
-                SEVERITY_LEVEL_CRITICAL_WARNING,
-                "issue_type_id")
-            .addAction(
-                SafetySourceIssue.Action.Builder(
-                        "critical_action_id", "Solve issue", somePendingIntent)
-                    .build())
-            .build()
-    private val safetySourceDataCritical =
-        SafetySourceData.Builder()
-            .setStatus(
-                SafetySourceStatus.Builder(
-                        "Critical title", "Critical summary", SEVERITY_LEVEL_CRITICAL_WARNING)
-                    .setPendingIntent(somePendingIntent)
-                    .build())
-            .addIssue(criticalIssue)
-            .build()
-    private val safetySourceDataRecommendation =
-        SafetySourceData.Builder()
-            .setStatus(
-                SafetySourceStatus.Builder(
-                        "Recommendation title",
-                        "Recommendation summary",
-                        SEVERITY_LEVEL_RECOMMENDATION)
-                    .setPendingIntent(somePendingIntent)
-                    .build())
-            .addIssue(
-                SafetySourceIssue.Builder(
-                        "recommendation_issue_id",
-                        "Recommendation issue title",
-                        "Recommendation issue summary",
-                        SEVERITY_LEVEL_RECOMMENDATION,
-                        "issue_type_id")
-                    .addAction(
-                        SafetySourceIssue.Action.Builder(
-                                "recommendation_action_id", "See issue", somePendingIntent)
-                            .build())
-                    .build())
-            .build()
+    private val safetyCenterCtsHelper = SafetyCenterCtsHelper(context)
+    private val safetySourceCtsData = SafetySourceCtsData(context)
 
     @Before
     fun assumeDeviceSupportsSafetyCenterToRunTests() {
@@ -112,100 +60,94 @@ class SafetyCenterActivityTest {
     @Before
     @After
     fun clearDataBetweenTest() {
-        SafetyCenterFlags.setSafetyCenterEnabled(true)
-        simpleTestSource.cleanupService()
+        safetyCenterCtsHelper.reset()
     }
 
     @Test
     fun launchActivity_withFlagEnabled_showsSecurityAndPrivacyTitle() {
-        startSafetyCenterActivity()
-
-        // CollapsingToolbar title can't be found by text, so using description instead.
-        waitFindObject(By.desc("Security & Privacy"))
+        context.launchSafetyCenterActivity {
+            // CollapsingToolbar title can't be found by text, so using description instead.
+            waitFindObject(By.desc("Security & Privacy"))
+        }
     }
 
     @Test
     fun launchActivity_withFlagDisabled_showsSecurityTitle() {
-        SafetyCenterFlags.setSafetyCenterEnabled(false)
+        safetyCenterCtsHelper.setEnabled(false)
 
-        startSafetyCenterActivity()
-
-        // CollapsingToolbar title can't be found by text, so using description instead.
-        waitFindObject(By.desc("Security"))
-    }
-
-    @Test
-    fun launchActivity_displaysSafetyData() {
-        simpleTestSource.configureTestSource()
-        simpleTestSource.setSourceData(safetySourceDataCritical)
-
-        startSafetyCenterActivity()
-
-        assertSourceDataDisplayed(safetySourceDataCritical)
-    }
-
-    @Test
-    fun updatingSafetySourceData_updatesDisplayedSafetyData() {
-        simpleTestSource.configureTestSource()
-        simpleTestSource.setSourceData(safetySourceDataCritical)
-        startSafetyCenterActivity()
-
-        simpleTestSource.setSourceData(safetySourceDataRecommendation)
-
-        assertSourceDataDisplayed(safetySourceDataRecommendation)
+        context.launchSafetyCenterActivity {
+            // CollapsingToolbar title can't be found by text, so using description instead.
+            waitFindObject(By.desc("Security"))
+        }
     }
 
     @Test
     fun launchActivity_displaysStaticSources() {
-        safetyCenterManager.setSafetyCenterConfigForTestsWithPermission(
-            SafetyCenterCtsConfigs.STATIC_SOURCES_CONFIG)
+        safetyCenterCtsHelper.setConfig(STATIC_SOURCES_CONFIG)
 
-        startSafetyCenterActivity()
+        context.launchSafetyCenterActivity {
+            findAllText(
+                context.getString(SafetyCenterCtsConfigs.STATIC_SOURCE_GROUP_1.titleResId),
+                context.getString(SafetyCenterCtsConfigs.STATIC_SOURCE_1.titleResId),
+                context.getString(SafetyCenterCtsConfigs.STATIC_SOURCE_1.summaryResId),
+                context.getString(SafetyCenterCtsConfigs.STATIC_SOURCE_GROUP_2.titleResId),
+                context.getString(SafetyCenterCtsConfigs.STATIC_SOURCE_2.titleResId),
+                context.getString(SafetyCenterCtsConfigs.STATIC_SOURCE_2.summaryResId))
+        }
+    }
 
-        findAllText(
-            context.getString(SafetyCenterCtsConfigs.STATIC_SOURCE_GROUP_1.titleResId),
-            context.getString(SafetyCenterCtsConfigs.STATIC_SOURCE_1.titleResId),
-            context.getString(SafetyCenterCtsConfigs.STATIC_SOURCE_1.summaryResId),
-            context.getString(SafetyCenterCtsConfigs.STATIC_SOURCE_GROUP_2.titleResId),
-            context.getString(SafetyCenterCtsConfigs.STATIC_SOURCE_2.titleResId),
-            context.getString(SafetyCenterCtsConfigs.STATIC_SOURCE_2.summaryResId))
+    @Test
+    fun launchActivity_displaysSafetyData() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        val dataToDisplay = safetySourceCtsData.criticalWithIssue
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, dataToDisplay)
+
+        context.launchSafetyCenterActivity { assertSourceDataDisplayed(dataToDisplay) }
+    }
+
+    @Test
+    fun updatingSafetySourceData_updatesDisplayedSafetyData() {
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.information)
+
+        context.launchSafetyCenterActivity {
+            val dataToDisplay = safetySourceCtsData.recommendationWithIssue
+            safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, dataToDisplay)
+
+            assertSourceDataDisplayed(dataToDisplay)
+        }
     }
 
     @Test
     fun issueCard_confirmsDismissal_dismisses() {
-        simpleTestSource.configureTestSource()
-        simpleTestSource.setSourceData(safetySourceDataCritical)
-        startSafetyCenterActivity()
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithIssue)
 
-        waitFindObject(By.desc("Dismiss")).click()
-        waitFindObject(By.text("Dismiss this alert?"))
-        findButton("Dismiss").click()
+        context.launchSafetyCenterActivity {
+            waitFindObject(By.desc("Dismiss")).click()
+            waitFindObject(By.text("Dismiss this alert?"))
+            findButton("Dismiss").click()
 
-        assertIssueNotDisplayed(criticalIssue)
+            assertIssueNotDisplayed(safetySourceCtsData.criticalIssue)
+        }
     }
 
     @Test
     fun issueCard_confirmsDismissal_cancels() {
-        simpleTestSource.configureTestSource()
-        simpleTestSource.setSourceData(safetySourceDataCritical)
-        startSafetyCenterActivity()
+        safetyCenterCtsHelper.setConfig(SINGLE_SOURCE_CONFIG)
+        safetyCenterCtsHelper.setData(SINGLE_SOURCE_ID, safetySourceCtsData.criticalWithIssue)
 
-        waitFindObject(By.desc("Dismiss")).click()
-        waitFindObject(By.text("Dismiss this alert?"))
-        findButton("Cancel").click()
+        context.launchSafetyCenterActivity {
+            waitFindObject(By.desc("Dismiss")).click()
+            waitFindObject(By.text("Dismiss this alert?"))
+            findButton("Cancel").click()
 
-        assertIssueDisplayed(criticalIssue)
+            assertIssueDisplayed(safetySourceCtsData.criticalIssue)
+        }
     }
 
-    // TODO: Add tests for issues dismissible without confirmation and non-dismissible issues if &
-    // when the service supports them.
-
-    private fun startSafetyCenterActivity() {
-        context.startActivity(
-            Intent(ACTION_SAFETY_CENTER)
-                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK))
-    }
+    // TODO(b/232104227): Add tests for issues dismissible without confirmation and non-dismissible
+    // issues if and when the service supports them.
 
     private fun assertSourceDataDisplayed(sourceData: SafetySourceData) {
         findAllText(sourceData.status?.title, sourceData.status?.summary)
