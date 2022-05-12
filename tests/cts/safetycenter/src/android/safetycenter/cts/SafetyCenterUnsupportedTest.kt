@@ -67,14 +67,12 @@ class SafetyCenterUnsupportedTest {
 
     @Test
     fun launchActivity_showsSecurityTitle() {
-        // The security page redirects to the cars settings page on auto devices.
+        // TODO(b/232284056): Check if we can remove these test restrictions
         assumeFalse(packageManager.hasSystemFeature(FEATURE_AUTOMOTIVE))
-        // The security page says "Security & Restrictions" on TV.
         assumeFalse(packageManager.hasSystemFeature(FEATURE_LEANBACK))
 
         context.launchSafetyCenterActivity {
-            // CollapsingToolbar title can't be found by text, so using description instead.
-            waitFindObject(By.desc("Security"))
+            waitFindObject(By.text("Settings"))
         }
     }
 
