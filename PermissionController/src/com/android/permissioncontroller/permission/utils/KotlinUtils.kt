@@ -19,6 +19,9 @@ package com.android.permissioncontroller.permission.utils
 import android.Manifest
 import android.Manifest.permission.ACCESS_BACKGROUND_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
+import android.Manifest.permission.BACKUP
+import android.Manifest.permission.POST_NOTIFICATIONS
+import android.Manifest.permission_group.NOTIFICATIONS
 import android.app.ActivityManager
 import android.app.AppOpsManager
 import android.app.AppOpsManager.MODE_ALLOWED
@@ -51,7 +54,9 @@ import android.os.Bundle
 import android.os.UserHandle
 import android.permission.PermissionManager
 import android.provider.DeviceConfig
+import android.provider.Settings
 import android.text.TextUtils
+import android.util.Log
 import androidx.annotation.ChecksSdkIntAtLeast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
@@ -83,6 +88,8 @@ import kotlin.coroutines.suspendCoroutine
  * A set of util functions designed to work with kotlin, though they can work with java, as well.
  */
 object KotlinUtils {
+
+    private const val LOG_TAG = "PermissionController Utils"
 
     private const val PERMISSION_CONTROLLER_CHANGED_FLAG_MASK = FLAG_PERMISSION_USER_SET or
         FLAG_PERMISSION_USER_FIXED or
@@ -743,7 +750,7 @@ object KotlinUtils {
             }
         }
 
-        if (shouldKillForAnyPermission) {
+        if (shouldKillForAnyPermission && !shouldSkipKillForGroup(app, group)) {
             (app.getSystemService(ActivityManager::class.java) as ActivityManager).killUid(
                 group.packageInfo.uid, KILL_REASON_APP_OP_CHANGE)
         }
@@ -1016,6 +1023,53 @@ object KotlinUtils {
         }
         manager.setUidMode(op, uid, mode)
         return true
+    }
+
+    private fun shouldSkipKillForGroup(app: Application, group: LightAppPermGroup): Boolean {
+        if (group.permGroupName != NOTIFICATIONS) {
+            return false
+        }
+
+        return shouldSkipKillOnPermDeny(app, POST_NOTIFICATIONS, group.packageName,
+            group.userHandle)
+    }
+
+    /**
+     * Determine if the usual "kill app on permission denial" should be skipped. It should be
+     * skipped if the permission is POST_NOTIFICATIONS, the app holds the BACKUP permission, and
+     * a backup restore is currently in progress.
+     *
+     * @param app the current application
+     * @param permission the permission being denied
+     * @param packageName the package the permission was denied for
+     * @param user the user whose package the permission was denied for
+     *
+     * @return true if the permission denied was POST_NOTIFICATIONS, the app is a backup app, and a
+     * backup restore is in progress, false otherwise
+     */
+    fun shouldSkipKillOnPermDeny(
+        app: Application,
+        permission: String,
+        packageName: String,
+        user: UserHandle
+    ): Boolean {
+        val userContext: Context = Utils.getUserContext(app, user)
+        if (permission != POST_NOTIFICATIONS || userContext.packageManager
+            .checkPermission(BACKUP, packageName) != PackageManager.PERMISSION_GRANTED) {
+            return false
+        }
+
+        return try {
+            val isInSetup = Settings.Secure.getInt(userContext.contentResolver,
+                Settings.Secure.USER_SETUP_COMPLETE, user.identifier) == 0
+            val isInDeferredSetup = Settings.Secure.getInt(userContext.contentResolver,
+                Settings.Secure.USER_SETUP_PERSONALIZATION_STATE, user.identifier) ==
+                    Settings.Secure.USER_SETUP_PERSONALIZATION_STARTED
+            isInSetup || isInDeferredSetup
+        } catch (e: Settings.SettingNotFoundException) {
+            Log.w(LOG_TAG, "Failed to check if the user is in restore: $e")
+            false
+        }
     }
 
     /**
