@@ -17,6 +17,10 @@
 package com.android.permissioncontroller.permission.model.v31;
 
 import static android.Manifest.permission_group.MICROPHONE;
+import static android.app.AppOpsManager.OPSTR_PHONE_CALL_CAMERA;
+import static android.app.AppOpsManager.OPSTR_PHONE_CALL_MICROPHONE;
+
+import static com.android.permissioncontroller.Constants.OPSTR_RECEIVE_AMBIENT_TRIGGER_AUDIO;
 
 import android.Manifest;
 import android.app.AppOpsManager;
@@ -36,6 +40,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
 import com.android.permissioncontroller.permission.model.Permission;
 import com.android.permissioncontroller.permission.model.legacy.PermissionApps.PermissionApp;
@@ -60,9 +65,6 @@ public final class AppPermissionUsage {
     private final @NonNull List<GroupUsage> mGroupUsages = new ArrayList<>();
     private final @NonNull PermissionApp mPermissionApp;
 
-    // TODO: theianchen move them to SystemApi
-    private static final String OPSTR_PHONE_CALL_MICROPHONE = "android:phone_call_microphone";
-    private static final String OPSTR_PHONE_CALL_CAMERA = "android:phone_call_camera";
     private static final int PRIVACY_HUB_FLAGS = AppOpsManager.OP_FLAG_SELF
             | AppOpsManager.OP_FLAG_TRUSTED_PROXIED | AppOpsManager.OP_FLAG_TRUSTED_PROXY;
 
@@ -337,6 +339,9 @@ public final class AppPermissionUsage {
 
             if (appPermissionGroup.getName().equals(Manifest.permission_group.MICROPHONE)) {
                 allOps.add(OPSTR_PHONE_CALL_MICROPHONE);
+                if (SdkLevel.isAtLeastT()) {
+                    allOps.add(OPSTR_RECEIVE_AMBIENT_TRIGGER_AUDIO);
+                }
             }
 
             if (appPermissionGroup.getName().equals(Manifest.permission_group.CAMERA)) {
