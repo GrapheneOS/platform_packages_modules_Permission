@@ -33,12 +33,14 @@ import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.VisibleForTesting;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceGroup;
 
 import com.android.permissioncontroller.R;
+import com.android.permissioncontroller.safetycenter.ui.model.LiveSafetyCenterViewModelFactory;
 import com.android.permissioncontroller.safetycenter.ui.model.SafetyCenterViewModel;
 
 import java.util.List;
@@ -53,17 +55,42 @@ public final class SafetyCenterDashboardFragment extends PreferenceFragmentCompa
     private static final String ENTRIES_GROUP_KEY = "entries_group";
     private static final String STATIC_ENTRIES_GROUP_KEY = "static_entries_group";
 
+    @Nullable
+    private final ViewModelProvider.Factory mSafetyCenterViewModelFactoryOverride;
+
     private SafetyStatusPreference mSafetyStatusPreference;
     private PreferenceGroup mIssuesGroup;
     private PreferenceGroup mEntriesGroup;
     private PreferenceGroup mStaticEntriesGroup;
     private SafetyCenterViewModel mViewModel;
 
+    public SafetyCenterDashboardFragment() {
+        this(null);
+    }
+
+    /**
+     * Allows providing an override view model factory for testing this fragment. The view model
+     * factory will not be retained between recreations of the fragment.
+     */
+    @VisibleForTesting
+    public SafetyCenterDashboardFragment(
+            @Nullable ViewModelProvider.Factory safetyCenterViewModelFactoryOverride) {
+        mSafetyCenterViewModelFactoryOverride = safetyCenterViewModelFactoryOverride;
+    }
+
+    private ViewModelProvider.Factory getSafetyCenterViewModelFactory() {
+        return mSafetyCenterViewModelFactoryOverride != null
+                ? mSafetyCenterViewModelFactoryOverride
+                : new LiveSafetyCenterViewModelFactory(requireActivity().getApplication());
+    }
+
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.safety_center_dashboard, rootKey);
 
-        mViewModel = new ViewModelProvider(requireActivity()).get(SafetyCenterViewModel.class);
+        mViewModel =
+                new ViewModelProvider(requireActivity(), getSafetyCenterViewModelFactory())
+                        .get(SafetyCenterViewModel.class);
 
         mSafetyStatusPreference =
                 requireNonNull(getPreferenceScreen().findPreference(SAFETY_STATUS_KEY));

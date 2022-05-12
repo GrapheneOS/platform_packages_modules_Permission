@@ -28,9 +28,7 @@ import androidx.annotation.Keep;
 import com.android.permissioncontroller.R;
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 
-/**
- * Entry-point activity for SafetyCenter.
- */
+/** Entry-point activity for SafetyCenter. */
 @Keep
 public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
 
@@ -45,10 +43,12 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
         if (maybeRedirectIfDisabled()) return;
 
         setTitle(getString(R.string.safety_center_dashboard_page_title));
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.content_frame, new SafetyCenterDashboardFragment())
-                .commitNow();
+        if (savedInstanceState == null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.content_frame, new SafetyCenterDashboardFragment())
+                    .commitNow();
+        }
     }
 
     @Override
