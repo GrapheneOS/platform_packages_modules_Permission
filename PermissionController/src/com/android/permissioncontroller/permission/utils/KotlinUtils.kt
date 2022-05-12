@@ -65,6 +65,7 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceGroup
 import com.android.modules.utils.build.SdkLevel
 import com.android.permissioncontroller.R
+import com.android.permissioncontroller.permission.data.LightAppPermGroupLiveData
 import com.android.permissioncontroller.permission.data.LightPackageInfoLiveData
 import com.android.permissioncontroller.permission.data.get
 import com.android.permissioncontroller.permission.model.livedatatypes.LightAppPermGroup
@@ -79,11 +80,11 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import java.util.concurrent.atomic.AtomicReference
+import com.android.permissioncontroller.permission.service.LocationAccessCheck.PostRevokeHandler
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
-
 /**
  * A set of util functions designed to work with kotlin, though they can work with java, as well.
  */
@@ -766,6 +767,34 @@ object KotlinUtils {
     }
 
     /**
+     * Revoke background permissions
+     *
+     * @param context context
+     * @param packageName Name of the package
+     * @param permissionGroupName Name of the permission group
+     * @param user User handle
+     * @param postRevokeHandler Optional callback that lets us perform an action on revoke
+     */
+    fun revokeBackgroundRuntimePermissions(
+        context: Context,
+        packageName: String,
+        permissionGroupName: String,
+        user: UserHandle,
+        postRevokeHandler: PostRevokeHandler?
+    ) {
+        GlobalScope.launch(Dispatchers.Main) {
+            val group = LightAppPermGroupLiveData[packageName, permissionGroupName, user]
+                .getInitializedValue()
+            if (group != null) {
+                revokeBackgroundRuntimePermissions(context.application, group)
+            }
+            if (postRevokeHandler != null) {
+                postRevokeHandler.onRevoke(context, packageName)
+            }
+        }
+    }
+
+    /**
      * Determines if any permissions of a package are granted for one-time only
      *
      * @param app The current application
@@ -869,6 +898,26 @@ object KotlinUtils {
         if (perm.flags != newFlags) {
             app.packageManager.updatePermissionFlags(perm.name, group.packageInfo.packageName,
                 PERMISSION_CONTROLLER_CHANGED_FLAG_MASK, newFlags, user)
+        }
+
+        // If we revoke background access to the fine location, we trigger a check to remove
+        // notification warning about background location access
+        if (perm.isGrantedIncludingAppOp && !isGranted) {
+            var cancelLocationAccessWarning = false
+            if (perm.name == ACCESS_FINE_LOCATION) {
+                val bgPerm = group.permissions[perm.backgroundPermission]
+                cancelLocationAccessWarning = bgPerm?.isGrantedIncludingAppOp == true
+            } else if (perm.name == ACCESS_BACKGROUND_LOCATION) {
+                val fgPerm = group.permissions[ACCESS_FINE_LOCATION]
+                cancelLocationAccessWarning = fgPerm?.isGrantedIncludingAppOp == true
+            }
+            if (cancelLocationAccessWarning) {
+                // cancel location access warning notification
+                LocationAccessCheck(app, null).cancelBackgroundAccessWarningNotification(
+                    group.packageInfo.packageName,
+                    user
+                )
+            }
         }
 
         val newState = PermState(newFlags, isGranted)
