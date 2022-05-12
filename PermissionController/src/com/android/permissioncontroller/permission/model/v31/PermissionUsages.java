@@ -18,6 +18,10 @@ package com.android.permissioncontroller.permission.model.v31;
 
 import static android.Manifest.permission.CAMERA;
 import static android.Manifest.permission.RECORD_AUDIO;
+import static android.app.AppOpsManager.OPSTR_PHONE_CALL_CAMERA;
+import static android.app.AppOpsManager.OPSTR_PHONE_CALL_MICROPHONE;
+
+import static com.android.permissioncontroller.Constants.OPSTR_RECEIVE_AMBIENT_TRIGGER_AUDIO;
 
 import android.app.AppOpsManager;
 import android.app.AppOpsManager.HistoricalOps;
@@ -45,12 +49,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
+import com.android.modules.utils.build.SdkLevel;
 import com.android.permissioncontroller.permission.model.AppPermissionGroup;
-import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage.Builder;
 import com.android.permissioncontroller.permission.model.Permission;
 import com.android.permissioncontroller.permission.model.legacy.PermissionApps.PermissionApp;
 import com.android.permissioncontroller.permission.model.legacy.PermissionGroup;
 import com.android.permissioncontroller.permission.model.legacy.PermissionGroups;
+import com.android.permissioncontroller.permission.model.v31.AppPermissionUsage.Builder;
 import com.android.permissioncontroller.permission.utils.Utils;
 
 import java.util.ArrayList;
@@ -84,9 +89,6 @@ public final class PermissionUsages implements LoaderCallbacks<List<AppPermissio
     private static final String TELECOM_PACKAGE = "com.android.server.telecom";
     private static final int DEFAULT_REQUIRED_PERMISSION_FLAG = 3;
 
-    // TODO: theianchen move them to SystemApi
-    private static final String OPSTR_PHONE_CALL_MICROPHONE = "android:phone_call_microphone";
-    private static final String OPSTR_PHONE_CALL_CAMERA = "android:phone_call_camera";
     public static final int HISTORY_FLAG_GET_ATTRIBUTION_CHAINS = 1 << 2;
 
     private @Nullable PermissionsUsagesChangeCallback mCallback;
@@ -321,6 +323,9 @@ public final class PermissionUsages implements LoaderCallbacks<List<AppPermissio
                     new ArrayMap<>(usageBuilders.size());
             opNames.add(OPSTR_PHONE_CALL_MICROPHONE);
             opNames.add(OPSTR_PHONE_CALL_CAMERA);
+            if (SdkLevel.isAtLeastT()) {
+                opNames.add(OPSTR_RECEIVE_AMBIENT_TRIGGER_AUDIO);
+            }
             final String[] opNamesArray = opNames.toArray(new String[opNames.size()]);
             if ((mUsageFlags & USAGE_FLAG_LAST) != 0) {
                 final List<PackageOps> usageOps;
