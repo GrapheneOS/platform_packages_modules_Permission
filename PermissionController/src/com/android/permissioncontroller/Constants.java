@@ -16,6 +16,10 @@
 
 package com.android.permissioncontroller;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import com.android.permissioncontroller.hibernation.HibernationJobService;
 import com.android.permissioncontroller.permission.service.v33.PermissionEventCleanupJobService;
 
@@ -251,4 +255,9 @@ public class Constants {
      * Package name of the Android platform.
      */
     public static final String OS_PACKAGE_NAME = "android";
+
+    // TODO(b/231624295) add to API
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    public static final String OPSTR_RECEIVE_AMBIENT_TRIGGER_AUDIO =
+            "android:receive_ambient_trigger_audio";
 }

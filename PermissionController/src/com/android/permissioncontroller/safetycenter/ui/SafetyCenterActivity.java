@@ -42,8 +42,8 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
         SafetyCenterManager safetyCenterManager = getSystemService(SafetyCenterManager.class);
 
         if (safetyCenterManager == null || !safetyCenterManager.isSafetyCenterEnabled()) {
-            Log.w(TAG, "Safety Center disabled, redirecting to security settings page");
-            startActivity(new Intent(Settings.ACTION_SECURITY_SETTINGS).addFlags(
+            Log.w(TAG, "Safety Center disabled, redirecting to settings page");
+            startActivity(new Intent(Settings.ACTION_SETTINGS).addFlags(
                     FLAG_ACTIVITY_FORWARD_RESULT));
             finish();
             return;
