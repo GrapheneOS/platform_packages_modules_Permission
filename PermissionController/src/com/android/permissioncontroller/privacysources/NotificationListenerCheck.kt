@@ -1146,9 +1146,6 @@ class NotificationListenerPackageResetHandler : BroadcastReceiver() {
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 class NotificationListenerPrivacySource : PrivacySource {
     override fun safetyCenterEnabledChanged(context: Context, enabled: Boolean) {
-        if (!isNotificationListenerCheckFlagEnabled()) {
-            return
-        }
         NotificationListenerCheckInternal(context, null).run {
             removeAnyNotification()
         }
