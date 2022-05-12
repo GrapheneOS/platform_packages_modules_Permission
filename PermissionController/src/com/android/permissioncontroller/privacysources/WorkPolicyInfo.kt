@@ -19,6 +19,7 @@ package com.android.permissioncontroller.privacysources
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.os.UserHandle
 import android.provider.Settings
 import android.safetycenter.SafetyCenterManager
 import android.safetycenter.SafetyEvent
@@ -73,13 +74,32 @@ class WorkPolicyInfo(private val workPolicyUtils: WorkPolicyUtils) : PrivacySour
     }
 
     private fun createSafetySourceDataForWorkPolicy(context: Context): SafetySourceData? {
-        if (!shouldShowWorkPolicyInfo()) return null
+        val deviceOwnerIntent = workPolicyUtils.workPolicyInfoIntentDO
+        val profileOwnerIntent = workPolicyUtils.workPolicyInfoIntentPO
         val pendingIntent =
-            PendingIntent.getActivity(
-                context,
-                0,
-                Intent(Settings.ACTION_SHOW_WORK_POLICY_INFO),
-                PendingIntent.FLAG_IMMUTABLE)
+            when {
+                deviceOwnerIntent != null -> {
+                    PendingIntent.getActivity(
+                        context,
+                        0,
+                        deviceOwnerIntent,
+                        PendingIntent.FLAG_IMMUTABLE)
+                }
+                profileOwnerIntent != null -> {
+                    val managedProfileContext =
+                        context.createPackageContextAsUser(
+                            context.packageName,
+                            0,
+                            UserHandle.of(workPolicyUtils.managedProfileUserId))
+                    PendingIntent.getActivity(
+                        managedProfileContext,
+                        0,
+                        profileOwnerIntent,
+                        PendingIntent.FLAG_IMMUTABLE)
+                }
+                else -> null
+            } ?: return null
+
         val safetySourceStatus: SafetySourceStatus =
             SafetySourceStatus.Builder(
                     context.getText(R.string.work_policy_title),
@@ -111,9 +131,5 @@ class WorkPolicyInfo(private val workPolicyUtils: WorkPolicyUtils) : PrivacySour
                 SafetyEvent.Builder(SafetyEvent.SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED).build()
             }
         }
-    }
-
-    fun shouldShowWorkPolicyInfo(): Boolean {
-        return workPolicyUtils.hasWorkPolicy()
     }
 }
