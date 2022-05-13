@@ -103,6 +103,16 @@
 
     <style name="Theme.DeviceDefault.Dialog.Alert.DayNight" parent="@android:style/Theme.DeviceDefault.Light.Dialog.Alert" />
 
+    <style name="StoragePermissionDialogBase" parent="android:Theme.DeviceDefault.Light.Dialog.Alert" />
+
+    <style name="StoragePermissionDialog" parent="StoragePermissionDialogBase">
+        <item name="android:buttonCornerRadius">28dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:buttonBarPositiveButtonStyle">@style/StoragePermissionDialogPositiveButton</item>
+        <item name="android:buttonBarNegativeButtonStyle">@style/StoragePermissionDialogNegativeButton</item>
+        <item name="android:buttonBarButtonStyle">@style/StoragePermissionDialogButtonBar</item>
+    </style>
+
 
 <!-- Do not allow OEMs to overlay these themes.
  Must Guarantee that filterTouches is set for these activities -->
