@@ -285,6 +285,34 @@ public final class SafetyEvent implements Parcelable {
         /** Creates the {@link SafetyEvent} represented by this {@link Builder}. */
         @NonNull
         public SafetyEvent build() {
+            switch (mType) {
+                case SAFETY_EVENT_TYPE_REFRESH_REQUESTED:
+                    if (mRefreshBroadcastId == null) {
+                        throw new IllegalArgumentException(
+                                "Missing refresh broadcast id for refresh requested safety event");
+                    }
+                    break;
+                case SAFETY_EVENT_TYPE_RESOLVING_ACTION_SUCCEEDED:
+                case SAFETY_EVENT_TYPE_RESOLVING_ACTION_FAILED:
+                    if (mSafetySourceIssueId == null) {
+                        throw new IllegalArgumentException(
+                                String.format(
+                                        "Missing issue id for resolving action safety event (%s)",
+                                        mType));
+                    }
+                    if (mSafetySourceIssueActionId == null) {
+                        throw new IllegalArgumentException(
+                                String.format(
+                                        "Missing issue action id for resolving action safety event "
+                                                + "(%s)",
+                                        mType));
+                    }
+                    break;
+                case SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED:
+                case SAFETY_EVENT_TYPE_DEVICE_LOCALE_CHANGED:
+                case SAFETY_EVENT_TYPE_DEVICE_REBOOTED:
+                default:
+            }
             return new SafetyEvent(
                     mType, mRefreshBroadcastId, mSafetySourceIssueId, mSafetySourceIssueActionId);
         }
