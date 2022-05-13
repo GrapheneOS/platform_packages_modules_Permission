@@ -41,4 +41,6 @@
     </style>
 
     <style name="Theme.DeviceDefault.Dialog.Alert.DayNight" parent="@android:style/Theme.DeviceDefault.Dialog.Alert" />
+
+    <style name="StoragePermissionDialogBase" parent="android:Theme.DeviceDefault.Dialog.Alert" />
 </resources>

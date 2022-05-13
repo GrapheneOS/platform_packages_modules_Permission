@@ -1177,4 +1177,52 @@
 
     <!-- END WARNING BANNER -->
 
+    <!-- START STORAGE PERMISSION DIALOG -->
+
+    <style name="StoragePermissionDialogPositiveButton">
+        <item name="android:buttonCornerRadius">28dp</item>
+        <item name="android:background">@drawable/qs_dialog_button_outline</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:layout_marginStart">4dp</item>
+        <item name="android:layout_marginEnd">20dp</item>
+    </style>
+
+    <style name="StoragePermissionDialogNegativeButton">
+        <item name="android:buttonCornerRadius">28dp</item>
+        <item name="android:background">@drawable/qs_dialog_button_outline</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:layout_marginEnd">4dp</item>
+    </style>
+
+    <style name="StoragePermissionDialogButtonBar">
+        <item name="android:background">@drawable/qs_dialog_button_outline</item>
+        <item name="android:minHeight">56dp</item>
+        <item name="android:paddingBottom">18dp</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingEnd">24dp</item>
+    </style>
+
+    <style name="StorageDialogHeaderStyle">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:padding">24dp</item>
+    </style>
+
+    <style name="StorageDialogHeaderIconStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="StorageDialogHeaderTitleStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.DeviceDefault.DialogWindowTitle</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!-- END STORAGE PERMISSION DIALOG -->
+
 </resources>
