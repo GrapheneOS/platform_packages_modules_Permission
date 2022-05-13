@@ -58,6 +58,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -627,8 +628,14 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
 
     @Override
     public void showAdvancedConfirmDialog(AdvancedConfirmDialogArgs args) {
-        AlertDialog.Builder b = new AlertDialog.Builder(getContext())
-                .setIcon(args.getIconId())
+        LayoutInflater li = LayoutInflater.from(getContext());
+        LinearLayout header = (LinearLayout) li.inflate(R.layout.storage_dialog_header, null);
+        ((ImageView) header.findViewById(R.id.storage_dialog_icon))
+                .setImageResource(args.getIconId());
+
+        AlertDialog.Builder b = new AlertDialog.Builder(getContext(),
+                R.style.StoragePermissionDialog)
+                .setCustomTitle(header)
                 .setMessage(args.getMessageId())
                 .setNegativeButton(args.getNegativeButtonTextId(),
                         (DialogInterface dialog, int which) -> {
@@ -641,7 +648,7 @@ public class AppPermissionFragment extends SettingsWithLargeHeader
                                     args.getChangeRequest(), args.getButtonClicked());
                         });
         if (args.getTitleId() != 0) {
-            b.setTitle(args.getTitleId());
+            ((TextView) header.findViewById(R.id.storage_dialog_title)).setText(args.getTitleId());
         }
         b.show();
     }
