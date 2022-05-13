@@ -18,12 +18,14 @@ package com.android.permissioncontroller.permission.model;
 
 import static android.Manifest.permission.ACCESS_BACKGROUND_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+import static android.Manifest.permission.POST_NOTIFICATIONS;
 import static android.app.AppOpsManager.MODE_ALLOWED;
 import static android.app.AppOpsManager.MODE_FOREGROUND;
 import static android.app.AppOpsManager.MODE_IGNORED;
 import static android.app.AppOpsManager.OPSTR_LEGACY_STORAGE;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
+import android.Manifest;
 import android.app.ActivityManager;
 import android.app.AppOpsManager;
 import android.app.Application;
@@ -47,9 +49,11 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 
 import com.android.modules.utils.build.SdkLevel;
+import com.android.permissioncontroller.PermissionControllerApplication;
 import com.android.permissioncontroller.R;
 import com.android.permissioncontroller.permission.service.LocationAccessCheck;
 import com.android.permissioncontroller.permission.utils.ArrayUtils;
+import com.android.permissioncontroller.permission.utils.KotlinUtils;
 import com.android.permissioncontroller.permission.utils.LocationUtils;
 import com.android.permissioncontroller.permission.utils.SoftRestrictedPermissionPolicy;
 import com.android.permissioncontroller.permission.utils.Utils;
@@ -142,6 +146,12 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
      * changes are persisted.
      */
     private boolean mTriggerLocationAccessCheckOnPersist;
+
+    /**
+     * Set if {@link LocationAccessCheck#cancelBackgroundAccessWarningNotification()} should be
+     * triggered to cancel the warning once the changes are persisted.
+     */
+    private boolean mCancelLocationAccessWarningOnRevoke;
 
     private boolean mIsSelfRevoked;
 
@@ -869,7 +879,20 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
      * @param reason The reason why the apps are killed
      */
     private void killApp(String reason) {
+        if (shouldSkipKillForGroup()) {
+            return;
+        }
+
         mActivityManager.killUid(mPackageInfo.applicationInfo.uid, reason);
+    }
+
+    private boolean shouldSkipKillForGroup() {
+        if (!mName.equals(Manifest.permission_group.NOTIFICATIONS)) {
+            return false;
+        }
+
+        return KotlinUtils.INSTANCE.shouldSkipKillOnPermDeny(PermissionControllerApplication.get(),
+                POST_NOTIFICATIONS, mPackageInfo.packageName, mUserHandle);
     }
 
     /**
@@ -1096,6 +1119,8 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
                 break;
             }
 
+            boolean wasGranted = permission.isGrantedIncludingAppOp();
+
             if (mAppSupportsRuntimePermissions) {
                 // Revoke the permission if needed.
                 if (permission.isGranted()) {
@@ -1140,6 +1165,33 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
                     // Mark that the permission is kept granted only for compatibility.
                     if (!permission.isRevokedCompat()) {
                         permission.setRevokedCompat(true);
+                    }
+                }
+            }
+
+            // If we revoke background access to the fine location, we trigger a check to cancel
+            // the location access check notification to avoid stale warnings
+            if (wasGranted && !permission.isGrantedIncludingAppOp()) {
+                if (permission.getName().equals(ACCESS_FINE_LOCATION)) {
+                    Permission bgPerm = permission.getBackgroundPermission();
+                    if (bgPerm != null) {
+                        if (!bgPerm.isGrantedIncludingAppOp()) {
+                            mCancelLocationAccessWarningOnRevoke = true;
+                        }
+                    }
+                } else if (permission.getName().equals(ACCESS_BACKGROUND_LOCATION)) {
+                    ArrayList<Permission> fgPerms = permission.getForegroundPermissions();
+                    if (fgPerms != null) {
+                        int numFgPerms = fgPerms.size();
+                        for (int fgPermNum = 0; fgPermNum < numFgPerms; fgPermNum++) {
+                            Permission fgPerm = fgPerms.get(fgPermNum);
+                            if (fgPerm.getName().equals(ACCESS_FINE_LOCATION)) {
+                                if (!fgPerm.isGrantedIncludingAppOp()) {
+                                    mCancelLocationAccessWarningOnRevoke = true;
+                                }
+                                break;
+                            }
+                        }
                     }
                 }
             }
@@ -1553,6 +1605,12 @@ public final class AppPermissionGroup implements Comparable<AppPermissionGroup> 
         if (mTriggerLocationAccessCheckOnPersist) {
             new LocationAccessCheck(mContext, null).checkLocationAccessSoon();
             mTriggerLocationAccessCheckOnPersist = false;
+        }
+
+        if (mCancelLocationAccessWarningOnRevoke) {
+            new LocationAccessCheck(mContext, null).cancelBackgroundAccessWarningNotification(
+                    mPackageInfo.packageName, mUserHandle);
+            mCancelLocationAccessWarningOnRevoke = false;
         }
 
         String packageName = mPackageInfo.packageName;

@@ -72,12 +72,11 @@ class SafetyCenterActivityTest {
     }
 
     @Test
-    fun launchActivity_withFlagDisabled_showsSecurityTitle() {
+    fun launchActivity_withFlagDisabled_showsSettingsTitle() {
         safetyCenterCtsHelper.setEnabled(false)
 
         context.launchSafetyCenterActivity {
-            // CollapsingToolbar title can't be found by text, so using description instead.
-            waitFindObject(By.desc("Security"))
+            waitFindObject(By.text("Settings"))
         }
     }
 

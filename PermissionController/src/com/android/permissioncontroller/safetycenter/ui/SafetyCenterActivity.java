@@ -28,9 +28,7 @@ import androidx.annotation.Keep;
 import com.android.permissioncontroller.R;
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 
-/**
- * Entry-point activity for SafetyCenter.
- */
+/** Entry-point activity for SafetyCenter. */
 @Keep
 public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
 
@@ -45,10 +43,12 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
         if (maybeRedirectIfDisabled()) return;
 
         setTitle(getString(R.string.safety_center_dashboard_page_title));
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.content_frame, new SafetyCenterDashboardFragment())
-                .commitNow();
+        if (savedInstanceState == null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.content_frame, new SafetyCenterDashboardFragment())
+                    .commitNow();
+        }
     }
 
     @Override
@@ -59,10 +59,9 @@ public final class SafetyCenterActivity extends CollapsingToolbarBaseActivity {
 
     private boolean maybeRedirectIfDisabled() {
         if (mSafetyCenterManager == null || !mSafetyCenterManager.isSafetyCenterEnabled()) {
-            Log.w(TAG, "Safety Center disabled, redirecting to security settings page");
+            Log.w(TAG, "Safety Center disabled, redirecting to settings page");
             startActivity(
-                    new Intent(Settings.ACTION_SECURITY_SETTINGS)
-                            .addFlags(FLAG_ACTIVITY_FORWARD_RESULT));
+                    new Intent(Settings.ACTION_SETTINGS).addFlags(FLAG_ACTIVITY_FORWARD_RESULT));
             finish();
             return true;
         }
