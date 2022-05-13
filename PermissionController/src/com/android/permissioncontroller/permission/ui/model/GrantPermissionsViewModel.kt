@@ -506,16 +506,19 @@ class GrantPermissionsViewModel(
                     }
                 }
 
-                // If group is the storage group, legacy apps will need special text, and modern
-                // apps should not request it
-                if (SdkLevel.isAtLeastT() &&
-                    groupState.group.permGroupName == Manifest.permission_group.STORAGE) {
-                    if (packageInfo.targetSdkVersion < Build.VERSION_CODES.Q) {
-                        message = RequestMessage.STORAGE_SUPERGROUP_MESSAGE_PRE_Q
-                    } else if (packageInfo.targetSdkVersion <= Build.VERSION_CODES.S_V2) {
-                        message = RequestMessage.STORAGE_SUPERGROUP_MESSAGE_Q_TO_S
-                    } else {
+                if (SdkLevel.isAtLeastT()) {
+                    // If app is T+, requests for the STORAGE group are ignored
+                    if (packageInfo.targetSdkVersion > Build.VERSION_CODES.S_V2 &&
+                        groupState.group.permGroupName == Manifest.permission_group.STORAGE) {
                         continue
+                    }
+                    // If app is <T and requests STORAGE, grant dialogs has special text
+                    if (groupState.group.permGroupName in Utils.STORAGE_SUPERGROUP_PERMISSIONS) {
+                        if (packageInfo.targetSdkVersion < Build.VERSION_CODES.Q) {
+                            message = RequestMessage.STORAGE_SUPERGROUP_MESSAGE_PRE_Q
+                        } else if (packageInfo.targetSdkVersion <= Build.VERSION_CODES.S_V2) {
+                            message = RequestMessage.STORAGE_SUPERGROUP_MESSAGE_Q_TO_S
+                        }
                     }
                 }
 
