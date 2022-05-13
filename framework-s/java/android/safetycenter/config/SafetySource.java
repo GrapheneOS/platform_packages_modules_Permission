@@ -34,7 +34,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.util.Objects;
 
 /**
- * Data class used to represent the initial configuration of a safety source
+ * Data class used to represent the initial configuration of a safety source.
  *
  * @hide
  */
@@ -42,13 +42,32 @@ import java.util.Objects;
 @RequiresApi(TIRAMISU)
 public final class SafetySource implements Parcelable {
 
-    /** Static safety source. */
+    /**
+     * Static safety source.
+     *
+     * <p>A static safety source is a source completely defined in the Safety Center configuration.
+     * The source is displayed with no icon and neither the description displayed nor the tap
+     * behavior can be changed at runtime. A static safety source cannot have any issue associated
+     * with it.
+     */
     public static final int SAFETY_SOURCE_TYPE_STATIC = 1;
 
-    /** Dynamic safety source. */
+    /**
+     * Dynamic safety source.
+     *
+     * <p>The status, description, tap behavior, and related issues of a dynamic safety source can
+     * be set at runtime by the package that owns the source. The source is displayed with an icon
+     * reflecting the status when part of a collapsible safety sources group.
+     */
     public static final int SAFETY_SOURCE_TYPE_DYNAMIC = 2;
 
-    /** Issue only safety source. */
+    /**
+     * Issue-only safety source.
+     *
+     * <p>An issue-only safety source is not displayed as an entry in the Safety Center page. The
+     * package that owns an issue-only safety source can set the list of issues associated with the
+     * source at runtime.
+     */
     public static final int SAFETY_SOURCE_TYPE_ISSUE_ONLY = 3;
 
     /**
@@ -70,14 +89,16 @@ public final class SafetySource implements Parcelable {
     public static final int PROFILE_NONE = 0;
 
     /**
-     * Even when the active user has managed profiles, the safety source will be displayed as a
-     * single entry for the primary profile.
+     * Even when the active user has managed enabled profiles, a visible safety source will be
+     * displayed as a single entry for the primary profile. For dynamic sources, refresh requests
+     * will be sent to and set requests will be accepted from the primary profile only.
      */
     public static final int PROFILE_PRIMARY = 1;
 
     /**
-     * When the user has managed profiles, the safety source will be displayed as multiple entries
-     * one for each profile.
+     * When the user has managed enabled profiles, a visible safety source will be displayed as
+     * multiple entries one for each enabled profile. For dynamic sources, refresh requests will be
+     * sent to and set requests will be accepted from all profiles.
      */
     public static final int PROFILE_ALL = 2;
 
@@ -92,13 +113,22 @@ public final class SafetySource implements Parcelable {
     @Retention(RetentionPolicy.SOURCE)
     public @interface Profile {}
 
-    /** This dynamic source will create an enabled entry in the UI until an update is received. */
+    /**
+     * The dynamic safety source will create an enabled entry in the Safety Center page until a set
+     * request is received.
+     */
     public static final int INITIAL_DISPLAY_STATE_ENABLED = 0;
 
-    /** This dynamic source will create a disabled entry in the UI until an update is received. */
+    /**
+     * The dynamic safety source will create a disabled entry in the Safety Center page until a set
+     * request is received.
+     */
     public static final int INITIAL_DISPLAY_STATE_DISABLED = 1;
 
-    /** This dynamic source will have no entry in the UI until an update is received. */
+    /**
+     * The dynamic safety source will have no entry in the Safety Center page until a set request is
+     * received.
+     */
     public static final int INITIAL_DISPLAY_STATE_HIDDEN = 2;
 
     /**
@@ -193,13 +223,24 @@ public final class SafetySource implements Parcelable {
         return mType;
     }
 
-    /** Returns the id of this safety source. */
+    /**
+     * Returns the id of this safety source.
+     *
+     * <p>The id is unique among safety sources in a Safety Center configuration.
+     */
     @NonNull
     public String getId() {
         return mId;
     }
 
-    /** Returns the package name of this safety source. */
+    /**
+     * Returns the package name of this safety source.
+     *
+     * <p>This is the package that owns the source. The package will receive refresh requests and it
+     * can send set requests for the source.
+     *
+     * <p>Throws an {@link UnsupportedOperationException} if the source is of type static.
+     */
     @NonNull
     public String getPackageName() {
         if (mType == SAFETY_SOURCE_TYPE_STATIC) {
@@ -209,22 +250,39 @@ public final class SafetySource implements Parcelable {
         return mPackageName;
     }
 
-    /** Returns the resource id of the title of this safety source. */
+    /**
+     * Returns the resource id of the title of this safety source.
+     *
+     * <p>The id refers to a string resource that is either accessible from any resource context or
+     * that is accessible from the same resource context that was used to load the Safety Center
+     * configuration. The id is {@link Resources#ID_NULL} when a title is not provided.
+     *
+     * <p>Throws an {@link UnsupportedOperationException} if the source is of type issue-only.
+     */
     @StringRes
     public int getTitleResId() {
         if (mType == SAFETY_SOURCE_TYPE_ISSUE_ONLY) {
             throw new UnsupportedOperationException(
-                    "getTitleResId unsupported for issue only safety source");
+                    "getTitleResId unsupported for issue-only safety source");
         }
         return mTitleResId;
     }
 
-    /** Returns the resource id of the title for work of this safety source. */
+    /**
+     * Returns the resource id of the title for work of this safety source.
+     *
+     * <p>The id refers to a string resource that is either accessible from any resource context or
+     * that is accessible from the same resource context that was used to load the Safety Center
+     * configuration. The id is {@link Resources#ID_NULL} when a title for work is not provided.
+     *
+     * <p>Throws an {@link UnsupportedOperationException} if the source is of type issue-only or if
+     * the profile property of the source is set to {@link SafetySource#PROFILE_PRIMARY}.
+     */
     @StringRes
     public int getTitleForWorkResId() {
         if (mType == SAFETY_SOURCE_TYPE_ISSUE_ONLY) {
             throw new UnsupportedOperationException(
-                    "getTitleForWorkResId unsupported for issue only safety source");
+                    "getTitleForWorkResId unsupported for issue-only safety source");
         }
         if (mProfile == PROFILE_PRIMARY) {
             throw new UnsupportedOperationException(
@@ -233,22 +291,38 @@ public final class SafetySource implements Parcelable {
         return mTitleForWorkResId;
     }
 
-    /** Returns the resource id of the summary of this safety source. */
+    /**
+     * Returns the resource id of the summary of this safety source.
+     *
+     * <p>The id refers to a string resource that is either accessible from any resource context or
+     * that is accessible from the same resource context that was used to load the Safety Center
+     * configuration. The id is {@link Resources#ID_NULL} when a summary is not provided.
+     *
+     * <p>Throws an {@link UnsupportedOperationException} if the source is of type issue-only.
+     */
     @StringRes
     public int getSummaryResId() {
         if (mType == SAFETY_SOURCE_TYPE_ISSUE_ONLY) {
             throw new UnsupportedOperationException(
-                    "getSummaryResId unsupported for issue only safety source");
+                    "getSummaryResId unsupported for issue-only safety source");
         }
         return mSummaryResId;
     }
 
-    /** Returns the intent action of this safety source. */
+    /**
+     * Returns the intent action of this safety source.
+     *
+     * <p>An intent created from the intent action should resolve to a public activity. If the
+     * source is displayed as an entry in the Safety Center page, and if the action is set to {@code
+     * null} or if it does not resolve to an activity the source will be marked as disabled.
+     *
+     * <p>Throws an {@link UnsupportedOperationException} if the source is of type issue-only.
+     */
     @Nullable
     public String getIntentAction() {
         if (mType == SAFETY_SOURCE_TYPE_ISSUE_ONLY) {
             throw new UnsupportedOperationException(
-                    "getIntentAction unsupported for issue only safety source");
+                    "getIntentAction unsupported for issue-only safety source");
         }
         return mIntentAction;
     }
@@ -259,7 +333,12 @@ public final class SafetySource implements Parcelable {
         return mProfile;
     }
 
-    /** Returns the initial display state of this safety source. */
+    /**
+     * Returns the initial display state of this safety source.
+     *
+     * <p>Throws an {@link UnsupportedOperationException} if the source is of type static or
+     * issue-only.
+     */
     @InitialDisplayState
     public int getInitialDisplayState() {
         if (mType == SAFETY_SOURCE_TYPE_STATIC) {
@@ -268,12 +347,22 @@ public final class SafetySource implements Parcelable {
         }
         if (mType == SAFETY_SOURCE_TYPE_ISSUE_ONLY) {
             throw new UnsupportedOperationException(
-                    "getInitialDisplayState unsupported for issue only safety source");
+                    "getInitialDisplayState unsupported for issue-only safety source");
         }
         return mInitialDisplayState;
     }
 
-    /** Returns the maximum severity level of this safety source. */
+    /**
+     * Returns the maximum severity level of this safety source.
+     *
+     * <p>The maximum severity level dictates the maximum severity level values that can be used in
+     * the source status or the source issues when setting the source data at runtime. A source can
+     * always send a status severity level of at least {@link
+     * android.safetycenter.SafetySourceData#SEVERITY_LEVEL_INFORMATION} even if the maximum
+     * severity level is set to a lower value.
+     *
+     * <p>Throws an {@link UnsupportedOperationException} if the source is of type static.
+     */
     public int getMaxSeverityLevel() {
         if (mType == SAFETY_SOURCE_TYPE_STATIC) {
             throw new UnsupportedOperationException(
@@ -283,19 +372,31 @@ public final class SafetySource implements Parcelable {
     }
 
     /**
-     * Returns the resource id of the search terms of this safety source if set; otherwise {@link
-     * Resources#ID_NULL}.
+     * Returns the resource id of the search terms of this safety source.
+     *
+     * <p>The id refers to a string resource that is either accessible from any resource context or
+     * that is accessible from the same resource context that was used to load the Safety Center
+     * configuration. The id is {@link Resources#ID_NULL} when search terms are not provided.
+     *
+     * <p>Throws an {@link UnsupportedOperationException} if the source is of type issue-only.
      */
     @StringRes
     public int getSearchTermsResId() {
         if (mType == SAFETY_SOURCE_TYPE_ISSUE_ONLY) {
             throw new UnsupportedOperationException(
-                    "getSearchTermsResId unsupported for issue only safety source");
+                    "getSearchTermsResId unsupported for issue-only safety source");
         }
         return mSearchTermsResId;
     }
 
-    /** Returns the logging allowed property of this safety source. */
+    /**
+     * Returns the logging allowed property of this safety source.
+     *
+     * <p>If set to {@code false}, any remote logging related to the source data and UI interactions
+     * is disabled.
+     *
+     * <p>Throws an {@link UnsupportedOperationException} if the source is of type static.
+     */
     public boolean isLoggingAllowed() {
         if (mType == SAFETY_SOURCE_TYPE_STATIC) {
             throw new UnsupportedOperationException(
@@ -304,7 +405,14 @@ public final class SafetySource implements Parcelable {
         return mLoggingAllowed;
     }
 
-    /** Returns the refresh on page open allowed property of this safety source. */
+    /**
+     * Returns the refresh on page open allowed property of this safety source.
+     *
+     * <p>If set to {@code true}, a refresh request will be sent to the source when the Safety
+     * Center page is opened.
+     *
+     * <p>Throws an {@link UnsupportedOperationException} if the source is of type static.
+     */
     public boolean isRefreshOnPageOpenAllowed() {
         if (mType == SAFETY_SOURCE_TYPE_STATIC) {
             throw new UnsupportedOperationException(
@@ -430,91 +538,194 @@ public final class SafetySource implements Parcelable {
             mType = type;
         }
 
-        /** Sets the id of this safety source. */
+        /**
+         * Sets the id of this safety source.
+         *
+         * <p>The id must be unique among safety sources in a Safety Center configuration.
+         */
         @NonNull
         public Builder setId(@Nullable String id) {
             mId = id;
             return this;
         }
 
-        /** Sets the package name of this safety source. */
+        /**
+         * Sets the package name of this safety source.
+         *
+         * <p>This is the package that owns the source. The package will receive refresh requests
+         * and it can send set requests for the source.
+         *
+         * <p>The package name is required for sources of type dynamic and issue-only. The package
+         * name is prohibited for sources of type static.
+         */
         @NonNull
         public Builder setPackageName(@Nullable String packageName) {
             mPackageName = packageName;
             return this;
         }
 
-        /** Sets the resource id of the title of this safety source. */
+        /**
+         * Sets the resource id of the title of this safety source.
+         *
+         * <p>The id must refer to a string resource that is either accessible from any resource
+         * context or that is accessible from the same resource context that was used to load the
+         * Safety Center config. The id defaults to {@link Resources#ID_NULL} when a title is not
+         * provided.
+         *
+         * <p>The title is required for sources of type static and for sources of type dynamic that
+         * are not hidden and that do not provide search terms. The title is prohibited for sources
+         * of type issue-only.
+         */
         @NonNull
         public Builder setTitleResId(@StringRes int titleResId) {
             mTitleResId = titleResId;
             return this;
         }
 
-        /** Sets the resource id of the title for work of this safety source. */
+        /**
+         * Sets the resource id of the title for work of this safety source.
+         *
+         * <p>The id must refer to a string resource that is either accessible from any resource
+         * context or that is accessible from the same resource context that was used to load the
+         * Safety Center configuration. The id defaults to {@link Resources#ID_NULL} when a title
+         * for work is not provided.
+         *
+         * <p>The title for work is required if the profile property of the source is set to {@link
+         * SafetySource#PROFILE_ALL} and either the source is of type static or the source is a
+         * source of type dynamic that is not hidden and that does not provide search terms. The
+         * title for work is prohibited for sources of type issue-only and if the profile property
+         * of the source is not set to {@link SafetySource#PROFILE_ALL}.
+         */
         @NonNull
         public Builder setTitleForWorkResId(@StringRes int titleForWorkResId) {
             mTitleForWorkResId = titleForWorkResId;
             return this;
         }
 
-        /** Sets the resource id of the summary of this safety source. */
+        /**
+         * Sets the resource id of the summary of this safety source.
+         *
+         * <p>The id must refer to a string resource that is either accessible from any resource
+         * context or that is accessible from the same resource context that was used to load the
+         * Safety Center configuration. The id defaults to {@link Resources#ID_NULL} when a summary
+         * is not provided.
+         *
+         * <p>The summary is required for sources of type dynamic that are not hidden. The summary
+         * is prohibited for sources of type issue-only.
+         */
         @NonNull
         public Builder setSummaryResId(@StringRes int summaryResId) {
             mSummaryResId = summaryResId;
             return this;
         }
 
-        /** Sets the intent action of this safety source. */
+        /**
+         * Sets the intent action of this safety source.
+         *
+         * <p>An intent created from the intent action should resolve to a public activity. If the
+         * source is displayed as an entry in the Safety Center page, and if the action is set to
+         * {@code null} or if it does not resolve to an activity the source will be marked as
+         * disabled.
+         *
+         * <p>The intent action is required for sources of type static and for sources of type
+         * dynamic that are enabled. The intent action is prohibited for sources of type issue-only.
+         */
         @NonNull
         public Builder setIntentAction(@Nullable String intentAction) {
             mIntentAction = intentAction;
             return this;
         }
 
-        /** Sets the profile property of this safety source. */
+        /**
+         * Sets the profile property of this safety source.
+         *
+         * <p>The profile property is explicitly required for all source types.
+         */
         @NonNull
         public Builder setProfile(@Profile int profile) {
             mProfile = profile;
             return this;
         }
 
-        /** Sets the initial display state of this safety source. */
+        /**
+         * Sets the initial display state of this safety source.
+         *
+         * <p>The initial display state is prohibited for sources of type static and issue-only.
+         */
         @NonNull
         public Builder setInitialDisplayState(@InitialDisplayState int initialDisplayState) {
             mInitialDisplayState = initialDisplayState;
             return this;
         }
 
-        /** Sets the maximum severity level of this safety source. */
+        /**
+         * Sets the maximum severity level of this safety source.
+         *
+         * <p>The maximum severity level dictates the maximum severity level values that can be used
+         * in the source status or the source issues when setting the source data at runtime. A
+         * source can always send a status severity level of at least {@link
+         * android.safetycenter.SafetySourceData#SEVERITY_LEVEL_INFORMATION} even if the maximum
+         * severity level is set to a lower value.
+         *
+         * <p>The maximum severity level is prohibited for sources of type static.
+         */
         @NonNull
         public Builder setMaxSeverityLevel(int maxSeverityLevel) {
             mMaxSeverityLevel = maxSeverityLevel;
             return this;
         }
 
-        /** Sets the resource id of the search terms of this safety source. */
+        /**
+         * Sets the resource id of the search terms of this safety source.
+         *
+         * <p>The id must refer to a string resource that is either accessible from any resource
+         * context or that is accessible from the same resource context that was used to load the
+         * Safety Center configuration. The id defaults to {@link Resources#ID_NULL} when search
+         * terms are not provided.
+         *
+         * <p>The search terms are prohibited for sources of type issue-only.
+         */
         @NonNull
         public Builder setSearchTermsResId(@StringRes int searchTermsResId) {
             mSearchTermsResId = searchTermsResId;
             return this;
         }
 
-        /** Sets the logging allowed property of this safety source. */
+        /**
+         * Sets the logging allowed property of this safety source.
+         *
+         * <p>If set to {@code false}, any remote logging related to the source data and UI
+         * interactions is disabled. The logging allowed property defaults to {@code true}.
+         *
+         * <p>The logging allowed property is prohibited for sources of type static.
+         */
         @NonNull
         public Builder setLoggingAllowed(boolean loggingAllowed) {
             mLoggingAllowed = loggingAllowed;
             return this;
         }
 
-        /** Sets the refresh on page open allowed property of this safety source. */
+        /**
+         * Sets the refresh on page open allowed property of this safety source.
+         *
+         * <p>If set to {@code true}, a refresh request will be sent to the source when the Safety
+         * Center page is opened. The refresh on page open allowed property defaults to {@code
+         * false}.
+         *
+         * <p>The refresh on page open allowed property is prohibited for sources of type static.
+         */
         @NonNull
         public Builder setRefreshOnPageOpenAllowed(boolean refreshOnPageOpenAllowed) {
             mRefreshOnPageOpenAllowed = refreshOnPageOpenAllowed;
             return this;
         }
 
-        /** Creates the {@link SafetySource} defined by this {@link Builder}. */
+        /**
+         * Creates the {@link SafetySource} defined by this {@link Builder}.
+         *
+         * <p>Throws an {@link IllegalStateException} if any constraint on the safety source is
+         * violated.
+         */
         @NonNull
         public SafetySource build() {
             if (mType != SAFETY_SOURCE_TYPE_STATIC
