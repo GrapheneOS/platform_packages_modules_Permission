@@ -45,7 +45,10 @@ genrule {
 java_library {
     name: "permissioncontroller-statsd",
     sdk_version: "system_current",
-
+    min_sdk_version: "30",
+    apex_available: [
+        "com.android.permission",
+    ],
     srcs: [
         ":statslog-permissioncontroller-java-gen",
     ],
@@ -147,4 +150,8 @@ android_app {
     plugins: ["java_api_finder"],
 
     kotlincflags: ["-Xjvm-default=enable"],
+
+    apex_available: [
+        "com.android.permission",
+    ],
 }
