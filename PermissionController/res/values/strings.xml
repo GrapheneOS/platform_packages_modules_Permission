@@ -1445,9 +1445,6 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
     <string name="permgrouprequest_notifications">Allow
         &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to send you notifications?</string>
-    <!-- Message shown to the user when the apps request permission, after a temporary grant. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
-    <string name="permgrouprequestcontinue_notifications">Allow
-        &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to continue sending you notifications?</string>
 
     <!-- Notification shown to the user when location permissions are auto-granted by admin policy. These are for when the admin is forcing the permission and the user cannot control it. [CHAR LIMIT=120]-->
     <string name="auto_granted_permissions">Controlled permissions</string>
