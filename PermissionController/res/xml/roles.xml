@@ -75,6 +75,9 @@
     <permission-set name="storage">
         <permission name="android.permission.READ_EXTERNAL_STORAGE" />
         <permission name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        <permission name="android.permission.READ_MEDIA_AUDIO" minSdkVersion="33" />
+        <permission name="android.permission.READ_MEDIA_VIDEO" minSdkVersion="33" />
+        <permission name="android.permission.READ_MEDIA_IMAGES" minSdkVersion="33" />
     </permission-set>
 
     <permission-set name="nearby_devices">
@@ -751,6 +754,9 @@
             <permission name="android.permission.READ_CALL_LOG" minSdkVersion="33" />
             <permission name="android.permission.READ_CONTACTS" minSdkVersion="33" />
             <permission name="android.permission.READ_EXTERNAL_STORAGE" />
+            <permission name="android.permission.READ_MEDIA_AUDIO" minSdkVersion="33" />
+            <permission name="android.permission.READ_MEDIA_IMAGES" minSdkVersion="33" />
+            <permission name="android.permission.READ_MEDIA_VIDEO" minSdkVersion="33" />
             <permission name="android.permission.READ_SMS" minSdkVersion="33" />
             <permission name="android.permission.READ_PEOPLE_DATA" />
             <permission name="android.permission.READ_GLOBAL_APP_SEARCH_DATA" />

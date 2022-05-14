@@ -308,6 +308,10 @@ public final class SafetyEvent implements Parcelable {
                                         mType));
                     }
                     break;
+                case SAFETY_EVENT_TYPE_SOURCE_STATE_CHANGED:
+                case SAFETY_EVENT_TYPE_DEVICE_LOCALE_CHANGED:
+                case SAFETY_EVENT_TYPE_DEVICE_REBOOTED:
+                default:
             }
             return new SafetyEvent(
                     mType, mRefreshBroadcastId, mSafetySourceIssueId, mSafetySourceIssueActionId);
