@@ -727,10 +727,10 @@
     <string name="permission_description_summary_storage">Apps with this permission can access photos, media, and files on your device</string>
 
     <!-- Label for showing a permission group's description in the header of the list of apps that have the nearby devices permission [CHAR LIMIT=none] -->
-    <string name="permission_description_summary_read_media_aural">Apps with this permission can access music and other audio files on your device</string>
+    <string name="permission_description_summary_read_media_aural">Apps with this permission can access music and other audio files on this device</string>
 
     <!-- Label for showing a permission group's description in the header of the list of apps that have the nearby devices permission [CHAR LIMIT=none] -->
-    <string name="permission_description_summary_read_media_visual">Apps with this permission can access photos and videos on your device</string>
+    <string name="permission_description_summary_read_media_visual">Apps with this permission can access photos and videos on this device</string>
 
     <!-- Summary for showing the time and/or date of the most recent access of a permission by an app [CHAR LIMIT=60] -->
     <string name="app_permission_most_recent_summary">Last access: <xliff:g id="time_date" example="12:42 PM">%1$s</xliff:g></string>
@@ -1370,21 +1370,21 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
 
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
     <string name="permgrouprequest_storage">Allow
-        &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access &lt;b>files and documents&lt;/b> on your device?</string>
+        &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access photos, media, and files on your device?</string>
 
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
     <string name="permgrouprequest_storage_q_to_s">Allow
-        &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access &lt;b>photos, videos, music, and audio&lt;/b> on your device?</string>
+        &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access &lt;b>photos, videos, music, and audio&lt;/b> on this device?</string>
 
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
     <string name="permgrouprequest_storage_pre_q">Allow
-        &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access &lt;b>photos, videos, music, audio, and other files&lt;/b> on your device?</string>
+        &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access &lt;b>photos, videos, music, audio, and other files&lt;/b> on this device?</string>
 
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
-    <string name="permgrouprequest_read_media_aural">Allow &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access music and other audio files on this device?</string>
+    <string name="permgrouprequest_read_media_aural">Allow &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access music and audio on this device?</string>
 
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
-    <string name="permgrouprequest_read_media_visual">Allow &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access this device\u2019s photos and videos?</string>
+    <string name="permgrouprequest_read_media_visual">Allow &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to access photos and videos on this device?</string>
 
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
     <string name="permgrouprequest_microphone">Allow
@@ -1445,9 +1445,6 @@ Allow <xliff:g id="app_name" example="Gmail">%4$s</xliff:g> to upload a bug repo
     <!-- Message shown to the user when the apps requests permission from this group. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
     <string name="permgrouprequest_notifications">Allow
         &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to send you notifications?</string>
-    <!-- Message shown to the user when the apps request permission, after a temporary grant. If ever possible this should stay below 80 characters (assuming the parameters takes 20 characters). Don't abbreviate until the message reaches 120 characters though. [CHAR LIMIT=120] -->
-    <string name="permgrouprequestcontinue_notifications">Allow
-        &lt;b><xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b> to continue sending you notifications?</string>
 
     <!-- Notification shown to the user when location permissions are auto-granted by admin policy. These are for when the admin is forcing the permission and the user cannot control it. [CHAR LIMIT=120]-->
     <string name="auto_granted_permissions">Controlled permissions</string>

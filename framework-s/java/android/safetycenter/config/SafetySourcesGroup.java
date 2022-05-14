@@ -39,7 +39,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Data class used to represent the initial configuration of a group of safety sources
+ * Data class used to represent the initial configuration of a group of safety sources.
  *
  * @hide
  */
@@ -144,7 +144,14 @@ public final class SafetySourcesGroup implements Parcelable {
         mSafetySources = safetySources;
     }
 
-    /** Returns the type of this safety sources group. */
+    /**
+     * Returns the type of this safety sources group.
+     *
+     * <p>The type is inferred according to the state of certain fields. If no title is provided
+     * when building the group, the group is of type hidden. If a title is provided but no summary
+     * or stateless icon are provided when building the group, the group is of type rigid.
+     * Otherwise, the group is of type collapsible.
+     */
     @SafetySourceGroupType
     public int getType() {
         if (mTitleResId == Resources.ID_NULL) {
@@ -156,31 +163,57 @@ public final class SafetySourcesGroup implements Parcelable {
         return SAFETY_SOURCES_GROUP_TYPE_RIGID;
     }
 
-    /** Returns the id of this safety sources group. */
+    /**
+     * Returns the id of this safety sources group.
+     *
+     * <p>The id is unique among safety sources groups in a Safety Center configuration.
+     */
     @NonNull
     public String getId() {
         return mId;
     }
 
-    /** Returns the resource id of the title of this safety sources group. */
+    /**
+     * Returns the resource id of the title of this safety sources group.
+     *
+     * <p>The id refers to a string resource that is either accessible from any resource context or
+     * that is accessible from the same resource context that was used to load the Safety Center
+     * configuration. The id is {@link Resources#ID_NULL} when a title is not provided.
+     */
     @StringRes
     public int getTitleResId() {
         return mTitleResId;
     }
 
-    /** Returns the resource id of the summary of this safety sources group. */
+    /**
+     * Returns the resource id of the summary of this safety sources group.
+     *
+     * <p>The id refers to a string resource that is either accessible from any resource context or
+     * that is accessible from the same resource context that was used to load the Safety Center
+     * configuration. The id is {@link Resources#ID_NULL} when a summary is not provided.
+     */
     @StringRes
     public int getSummaryResId() {
         return mSummaryResId;
     }
 
-    /** Returns the stateless icon type of this safety sources group. */
+    /**
+     * Returns the stateless icon type of this safety sources group.
+     *
+     * <p>If set to a value other than {@link SafetySourcesGroup#STATELESS_ICON_TYPE_NONE}, the icon
+     * specified will be displayed for collapsible groups when all the sources contained in the
+     * group are stateless.
+     */
     @StatelessIconType
     public int getStatelessIconType() {
         return mStatelessIconType;
     }
 
-    /** Returns the list of {@link SafetySource}s in this safety sources group. */
+    /**
+     * Returns the list of {@link SafetySource}s in this safety sources group.
+     *
+     * <p>A safety sources group contains at least one {@link SafetySource}.
+     */
     @NonNull
     public List<SafetySource> getSafetySources() {
         return mSafetySources;
@@ -247,42 +280,76 @@ public final class SafetySourcesGroup implements Parcelable {
         /** Creates a {@link Builder} for a {@link SafetySourcesGroup}. */
         public Builder() {}
 
-        /** Sets the id of this safety sources group. */
+        /**
+         * Sets the id of this safety sources group.
+         *
+         * <p>The id must be unique among safety sources groups in a Safety Center configuration.
+         */
         @NonNull
         public Builder setId(@Nullable String id) {
             mId = id;
             return this;
         }
 
-        /** Sets the resource id of the title of this safety sources group. */
+        /**
+         * Sets the resource id of the title of this safety sources group.
+         *
+         * <p>The id must refer to a string resource that is either accessible from any resource
+         * context or that is accessible from the same resource context that was used to load the
+         * Safety Center configuration. The id defaults to {@link Resources#ID_NULL} when a title is
+         * not provided. A title is required unless the group only contains safety sources of type
+         * issue only.
+         */
         @NonNull
         public Builder setTitleResId(@StringRes int titleResId) {
             mTitleResId = titleResId;
             return this;
         }
 
-        /** Sets the resource id of the summary of this safety sources group. */
+        /**
+         * Sets the resource id of the summary of this safety sources group.
+         *
+         * <p>The id must refer to a string resource that is either accessible from any resource
+         * context or that is accessible from the same resource context that was used to load the
+         * Safety Center configuration. The id defaults to {@link Resources#ID_NULL} when a summary
+         * is not provided.
+         */
         @NonNull
         public Builder setSummaryResId(@StringRes int summaryResId) {
             mSummaryResId = summaryResId;
             return this;
         }
 
-        /** Sets the stateless icon type of this safety sources group. */
+        /**
+         * Sets the stateless icon type of this safety sources group.
+         *
+         * <p>If set to a value other than {@link SafetySourcesGroup#STATELESS_ICON_TYPE_NONE}, the
+         * icon specified will be displayed for collapsible groups when all the sources contained in
+         * the group are stateless.
+         */
         @NonNull
         public Builder setStatelessIconType(@StatelessIconType int statelessIconType) {
             mStatelessIconType = statelessIconType;
             return this;
         }
 
-        /** Adds a {@link SafetySource} to this safety sources group. */
+        /**
+         * Adds a {@link SafetySource} to this safety sources group.
+         *
+         * <p>A safety sources group must contain at least one {@link SafetySource}.
+         */
         @NonNull
         public Builder addSafetySource(@NonNull SafetySource safetySource) {
             mSafetySources.add(requireNonNull(safetySource));
             return this;
         }
 
-        /** Creates the {@link SafetySourcesGroup} defined by this {@link Builder}. */
+        /**
+         * Creates the {@link SafetySourcesGroup} defined by this {@link Builder}.
+         *
+         * <p>Throws an {@link IllegalStateException} if any constraint on the safety sources group
+         * is violated.
+         */
         @NonNull
         public SafetySourcesGroup build() {
             BuilderUtils.validateAttribute(mId, "id", true, false);
