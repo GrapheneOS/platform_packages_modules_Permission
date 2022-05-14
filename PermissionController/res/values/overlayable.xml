@@ -292,6 +292,19 @@
             <item type="style" name="WarningBannerWidgetFrame" />
             <!-- END WARNING BANNER PREFERENCE STYLE -->
 
+            <!-- START STORAGE PERMISSION DIALOG -->
+            <item type="style" name="StoragePermissionDialogPositiveButton" />
+            <item type="style" name="StoragePermissionDialogNegativeButton" />
+            <item type="style" name="StoragePermissionDialogButtonBar" />
+
+            <item type="style" name="StorageDialogHeaderStyle" />
+            <item type="style" name="StorageDialogHeaderIconStyle" />
+            <item type="style" name="StorageDialogHeaderTitleStyle" />
+
+            <!-- dialog theme -->
+            <item type="style" name="StoragePermissionDialog" />
+            <!-- END STORAGE PERMISSION DIALOG -->
+
         </policy>
 
     </overlayable>
