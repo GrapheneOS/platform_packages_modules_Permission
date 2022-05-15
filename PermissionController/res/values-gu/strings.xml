@@ -236,8 +236,10 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"આ પરવાનગી ધરાવતી ઍપ તમારા મહત્ત્વપૂર્ણ ચિહ્નો વિશેના સેન્સર ડેટાને ઍક્સેસ કરી શકશે"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"આ પરવાનગી ધરાવતી ઍપ SMS મેસેજ મોકલી અને જોઈ શકે છે"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"આ પરવાનગી ધરાવતી ઍપ તમારા ડિવાઇસ પર ફોટા, મીડિયા અને ફાઇલોને ઍક્સેસ કરી શકે છે"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"આ પરવાનગી ધરાવતી ઍપ તમારા ડિવાઇસ પરની મ્યુઝિક અને અન્ય ઑડિયો ફાઇલો ઍક્સેસ કરી શકે છે"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"આ પરવાનગી ધરાવતી ઍપ તમારા ડિવાઇસ પરના ફોટા અને વીડિયો ઍક્સેસ કરી શકે છે"</string>
+    <!-- no translation found for permission_description_summary_read_media_aural (3354728149930482199) -->
+    <skip />
+    <!-- no translation found for permission_description_summary_read_media_visual (4991801977881732641) -->
+    <skip />
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"છેલ્લે થયેલો ઍક્સેસ: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"હાલમાં નકારેલી / છેલ્લો ઍક્સેસ: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"ક્યારેય ઍક્સેસ કરેલ નથી"</string>
@@ -282,12 +284,6 @@
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"ઍક્સેસ કાઢી નાખો"</string>
     <string name="notification_listener_review_app_button_label" msgid="4452381557379652037">"નોટિફિકેશનનો ઍક્સેસ ધરાવતી તમામ ઍપનો રિવ્યૂ કરો"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"ઍક્સેસ કાઢી નાખ્યો"</string>
-    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"ઍક્સેસિબિલિટી ઍક્સેસ ધરાવતી ઍપનો રિવ્યૂ કરો"</string>
-    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g>, સ્ક્રીન પરનું બધું કન્ટેન્ટ વાંચી શકે છે, અન્ય ઍપ પર પોતાનું કન્ટેન્ટ બતાવી શકે છે તેમજ તમારી ક્રિયાપ્રતિક્રિયાઓ ટ્રૅક કરી શકે છે."</string>
-    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"આ ઍપ સ્ક્રીન પરનું બધું કન્ટેન્ટ વાંચી શકે છે, અન્ય ઍપ પર પોતાનું કન્ટેન્ટ બતાવી શકે છે તેમજ તમારી ક્રિયાપ્રતિક્રિયાઓ ટ્રૅક કરી શકે છે."</string>
-    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"ઍક્સેસ કાઢો"</string>
-    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"ઍક્સેસિબિલિટી ઍક્સેસ ધરાવતી બધી ઍપ જુઓ"</string>
-    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"ઍક્સેસ કાઢી નાખ્યો"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"પ્રાઇવસીની સુરક્ષા કરવા માટે ઍપ્લિકેશન પરવાનગીઓ કાઢી નાખી"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g>નો થોડા મહિનાથી ઉપયોગ કરવામાં આવ્યો નથી. રિવ્યૂ કરવા માટે ટૅપ કરો."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> અને 1 અન્ય ઍપનો થોડા મહિનાથી ઉપયોગ કરવામાં આવ્યો નથી. રિવ્યૂ કરવા માટે ટૅપ કરો."</string>
@@ -459,11 +455,15 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"અંદાજિત"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને તમારા કૅલેન્ડરને ઍક્સેસ કરવાની મંજૂરી આપીએ?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને SMS સંદેશા મોકલવા અને જોવાની મંજૂરી આપીએ?"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"શું &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને તમારા ડિવાઇસ પરની &lt;b&gt;ફાઇલો અને દસ્તાવેજો&lt;b&gt; ઍક્સેસ કરવાની મંજૂરી આપીએ?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને તમારા ડિવાઇસ પરના &lt;/b&gt;ફોટા, વીડિયો, મ્યુઝિક અને ઑડિયો&lt;/b&gt; ઍક્સેસ કરવાની મંજૂરી આપીએ?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને તમારા ડિવાઇસ પરના &lt;b&gt;ફોટા, વીડિયો, મ્યુઝિક, ઑડિયો અને અન્ય ફાઇલોના&lt;b&gt; ઍક્સેસની મંજૂરી આપીએ?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"શું &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને આ ડિવાઇસ પરની મ્યુઝિક અને અન્ય ઑડિયો ફાઇલો ઍક્સેસ કરવાની મંજૂરી આપીએ?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"શું &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને આ ડિવાઇસના ફોટા અને વીડિયો ઍક્સેસ કરવાની મંજૂરી આપીએ?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને તમારા ડિવાઇસ પરના ફોટા, મીડિયા અને ફાઇલોને ઍક્સેસ કરવાની મંજૂરી આપીએ?"</string>
+    <!-- no translation found for permgrouprequest_storage_q_to_s (8213701872983685505) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_storage_pre_q (168130651144569428) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_aural (2593365397347577812) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_visual (5548780620779729975) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને ઑડિયો રેકૉર્ડ કરવાની મંજૂરી આપીએ?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"જ્યારે તમે ઍપનો ઉપયોગ કરી રહ્યા હશો, માત્ર ત્યારે જ ઍપ ઑડિયો રેકોર્ડ કરી શકશે"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને ઑડિયો રેકોર્ડ કરવાની મંજૂરી આપીએ?"</string>
@@ -485,7 +485,6 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"જ્યારે તમે ઍપનો ઉપયોગ કરી રહ્યાં ન હો, ત્યારે પણ આ ઍપને બૉડી સેન્સરનો ડેટા ઍક્સેસ કરવાની મંજૂરી આપવા માટે, "<annotation id="link">"સેટિંગ પર જાઓ."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ઍપ ઉપયોગમાં હોય ત્યારે &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને બૉડી સેન્સર ડેટા ઍક્સેસ કરવાની મંજૂરી આપવાનું ચાલુ રાખીએ?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"શું &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને તમને નોટિફિકેશન મોકલવાની મંજૂરી આપીએ?"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"શું &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;ને તમને નોટિફિકેશન મોકલવાનું ચાલુ રાખવાની મંજૂરી આપીએ?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"નિયંત્રિત પરવાનગીઓ"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"સ્થાન ઍક્સેસ કરી શકાય છે"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"તમારા IT વ્યવસ્થાપક <xliff:g id="APP_NAME">%s</xliff:g>ને તમારું સ્થાન ઍક્સેસ કરવાની મંજૂરી આપે છે"</string>

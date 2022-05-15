@@ -236,8 +236,10 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Apl dengan kebenaran ini boleh mengakses data penderia tentang tanda vital anda"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Apl dengan kebenaran ini boleh menghantar dan melihat mesej SMS"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Apl dengan kebenaran ini boleh mengakses foto, media dan fail pada peranti anda"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"Apl dengan kebenaran ini boleh mengakses muzik dan fail audio lain pada peranti anda"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"Apl dengan kebenaran ini boleh mengakses foto dan video pada peranti anda"</string>
+    <!-- no translation found for permission_description_summary_read_media_aural (3354728149930482199) -->
+    <skip />
+    <!-- no translation found for permission_description_summary_read_media_visual (4991801977881732641) -->
+    <skip />
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Akses terakhir: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Ditolak pada masa ini / Akses terakhir: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Tidak pernah mengakses"</string>
@@ -282,12 +284,6 @@
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Alih keluar akses"</string>
     <string name="notification_listener_review_app_button_label" msgid="4452381557379652037">"Semak semua apl dengan akses pemberitahuan"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Akses dialih keluar"</string>
-    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Semak apl dengan akses kebolehaksesan"</string>
-    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> boleh membaca semua kandungan pada skrin, memaparkan kandungan melalui apl lain dan menjejaki interaksi anda."</string>
-    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Apl ini boleh membaca semua kandungan pada skrin, memaparkan kandungan melalui apl lain dan menjejaki interaksi anda."</string>
-    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Alih keluar akses"</string>
-    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"Lihat apl dengan akses kebolehaksesan"</string>
-    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Akses dialih keluar"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Kebenaran apl dialih keluar untuk melindungi privasi"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> tidak digunakan selama beberapa bulan. Ketik untuk menyemak."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> dan 1 apl lain tidak digunakan selama beberapa bulan. Ketik untuk menyemak."</string>
@@ -459,11 +455,15 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Anggaran"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses kalendar anda?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; menghantar dan melihat mesej SMS?"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses &lt;b&gt;fail dan dokumen&lt;/b&gt; pada peranti anda?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses &lt;b&gt;foto, video, muzik dan audio&lt;/b&gt; pada peranti anda?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses &lt;b&gt;foto, video, muzik, audio dan fail lain&lt;/b&gt; pada peranti anda?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; untuk mengakses muzik dan fail audio lain pada peranti ini?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; untuk mengakses foto dan video pada peranti ini?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses foto, media dan fail pada peranti anda?"</string>
+    <!-- no translation found for permgrouprequest_storage_q_to_s (8213701872983685505) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_storage_pre_q (168130651144569428) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_aural (2593365397347577812) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_visual (5548780620779729975) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; merakam audio?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Apl hanya boleh merakam audio semasa anda menggunakan apl tersebut"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; merakam audio?"</string>
@@ -485,7 +485,6 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Untuk membenarkan apl ini mengakses data penderia tubuh pada setiap masa, termasuk apabila anda tidak menggunakan apl, "<annotation id="link">"pergi ke tetapan."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Terus membenarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; mengakses data penderia tubuh semasa apl digunakan?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; menghantar pemberitahuan kepada anda?"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Benarkan &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; terus menghantar pemberitahuan kepada anda?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Kebenaran terkawal"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Lokasi dapat diakses"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Pentadbir IT anda membenarkan <xliff:g id="APP_NAME">%s</xliff:g> mengakses lokasi anda"</string>

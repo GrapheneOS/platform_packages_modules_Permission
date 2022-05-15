@@ -101,7 +101,7 @@
     <!-- no translation found for background_access_chooser_dialog_choices:1 (9127301153688725448) -->
     <!-- no translation found for background_access_chooser_dialog_choices:2 (4305536986042401191) -->
     <string name="permission_access_always" msgid="1474641821883823446">"Permitir siempre"</string>
-    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Permitir solo si la aplicación está en uso"</string>
+    <string name="permission_access_only_foreground" msgid="7801170728159326195">"Permitir solo mientras se usa la aplicación"</string>
     <string name="permission_access_never" msgid="4647014230217936900">"No permitir"</string>
     <string name="loading" msgid="4789365003890741082">"Cargando…"</string>
     <string name="all_permissions" msgid="6911125611996872522">"Todos los permisos"</string>
@@ -184,7 +184,7 @@
     <string name="app_permission_button_allow_all_files" msgid="1792232272599018825">"Permitir gestionar todos los archivos"</string>
     <string name="app_permission_button_allow_media_only" msgid="2834282724426046154">"Permitir acceso solo al contenido multimedia"</string>
     <string name="app_permission_button_allow_always" msgid="4573292371734011171">"Permitir siempre"</string>
-    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Permitir solo si la aplicación está en uso"</string>
+    <string name="app_permission_button_allow_foreground" msgid="1991570451498943207">"Permitir solo mientras se usa la aplicación"</string>
     <string name="app_permission_button_ask" msgid="3342950658789427">"Preguntar siempre"</string>
     <string name="app_permission_button_deny" msgid="6016454069832050300">"No permitir"</string>
     <string name="precise_image_description" msgid="6349638632303619872">"Ubicación precisa"</string>
@@ -236,8 +236,10 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Las aplicaciones con este permiso pueden acceder a los datos de los sensores sobre tus constantes vitales"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Las aplicaciones con este permiso pueden ver y enviar mensajes SMS"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Las aplicaciones con este permiso pueden acceder a fotos, contenido multimedia y archivos de tu dispositivo"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"Las aplicaciones que tienen este permiso pueden acceder a música y otros archivos de audio de tu dispositivo"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"Las aplicaciones que tienen este permiso pueden acceder a las fotos y los vídeos del dispositivo"</string>
+    <!-- no translation found for permission_description_summary_read_media_aural (3354728149930482199) -->
+    <skip />
+    <!-- no translation found for permission_description_summary_read_media_visual (4991801977881732641) -->
+    <skip />
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Último acceso: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Actualmente denegado / Último acceso: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"No ha accedido nunca"</string>
@@ -282,12 +284,6 @@
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Retirar acceso"</string>
     <string name="notification_listener_review_app_button_label" msgid="4452381557379652037">"Consultar todas las aplicaciones con acceso a notificaciones"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Acceso retirado"</string>
-    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Revisar aplicación con acceso a funciones de accesibilidad"</string>
-    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> puede leer todo el contenido de la pantalla, mostrar contenido sobre otras aplicaciones y rastrear tus interacciones."</string>
-    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Esta aplicación puede leer todo el contenido de la pantalla, mostrar contenido sobre otras aplicaciones y rastrear tus interacciones."</string>
-    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Retirar acceso"</string>
-    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"Ver aplicaciones con acceso a funciones de accesibilidad"</string>
-    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Acceso retirado"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Permisos de aplicación quitados para proteger la privacidad"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> no se ha utilizado desde hace algunos meses. Toca para revisarlo."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> y otra aplicación no se han utilizado desde hace algunos meses. Toca para revisarlo."</string>
@@ -352,15 +348,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Aplicación de teléfono"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Son las aplicaciones que te permiten hacer y recibir llamadas de teléfono en tu dispositivo"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"¿Quieres establecer a <xliff:g id="APP_NAME">%1$s</xliff:g> como tu aplicación de teléfono predeterminada?"</string>
-    <!-- no translation found for role_dialer_request_description (6288839625724909320) -->
-    <skip />
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"Esta aplicación tendrá acceso a la cámara, a los contactos, al micrófono, al teléfono y a los SMS"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"marcador"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Aplicación SMS predeterminada"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"Aplicación de SMS"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Son las aplicaciones que te permiten utilizar tu número de teléfono para enviar y recibir mensajes de texto cortos, fotos, vídeos y más"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"¿Quieres establecer a <xliff:g id="APP_NAME">%1$s</xliff:g> como tu aplicación de SMS predeterminada?"</string>
-    <!-- no translation found for role_sms_request_description (2691004766132144886) -->
-    <skip />
+    <string name="role_sms_request_description" msgid="2691004766132144886">"Esta aplicación tendrá acceso a la cámara, a los contactos, a los archivos y contenido multimedia, al micrófono, al teléfono y a los SMS"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"mensaje de texto, enviar SMS, mensajes, mensajería"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"App de emergencia predet."</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"Aplicación de emergencia"</string>
@@ -461,11 +455,15 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Aproximada"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a tu calendario?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; envíe y lea mensajes SMS?"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a &lt;b&gt;archivos y documentos&lt;/b&gt; de tu dispositivo?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a &lt;b&gt;fotos, vídeos, música y audio&lt;/b&gt; de tu dispositivo?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a &lt;b&gt;fotos, vídeos, música, audio y archivos&lt;/b&gt; de tu dispositivo?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a música y otros archivos de audio de este dispositivo?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a fotos y vídeos de este dispositivo?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a las fotos, al contenido multimedia y a los archivos de tu dispositivo?"</string>
+    <!-- no translation found for permgrouprequest_storage_q_to_s (8213701872983685505) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_storage_pre_q (168130651144569428) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_aural (2593365397347577812) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_visual (5548780620779729975) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; grabe audio?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"La aplicación solo podrá grabar audio mientras la estés usando."</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; grabe audio?"</string>
@@ -485,9 +483,8 @@
     <string name="permgroupupgraderequestdetail_sensors" msgid="6651914048792092835">"Esta aplicación quiere acceder a los datos de sensores de tus constantes vitales todo el tiempo, incluso cuando no la uses. Para hacer este cambio, "<annotation id="link">"ve a los ajustes"</annotation>"."</string>
     <string name="permgroupbackgroundrequest_sensors" msgid="5661924322018503886">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a los datos de sensores de tus constantes vitales?"</string>
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Para permitir que esta aplicación acceda a datos de sensores corporales todo el tiempo, incluso cuando no la uses, "<annotation id="link">"ve a los ajustes"</annotation>"."</string>
-    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a los datos de los sensores corporales mientras se usa?"</string>
+    <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"¿Seguir permitiendo que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; acceda a los datos de los sensores corporales mientras se usa?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; te envíe notificaciones?"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"¿Permitir que &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; siga enviándote notificaciones?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Permisos controlados"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Se puede acceder a tu ubicación"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Tu administrador de TI permite que <xliff:g id="APP_NAME">%s</xliff:g> acceda a tu ubicación"</string>
@@ -509,7 +506,7 @@
     <string name="blocked_microphone_title" msgid="1631517143648232585">"El micrófono del dispositivo está bloqueado"</string>
     <string name="blocked_location_title" msgid="2005608279812892383">"La ubicación del dispositivo está desactivada"</string>
     <string name="blocked_sensor_summary" msgid="4443707628305027375">"Para aplicaciones y servicios"</string>
-    <string name="blocked_mic_summary" msgid="8960466941528458347">"Pueden compartirse datos del micrófono cuando llames a un número de emergencia."</string>
+    <string name="blocked_mic_summary" msgid="8960466941528458347">"Aun así, pueden compartirse datos del micrófono cuando llamas a un número de emergencia."</string>
     <string name="blocked_sensor_button_label" msgid="6742092634984289658">"Cambiar"</string>
     <string name="safety_center_dashboard_page_title" msgid="7514620345152008005">"Seguridad y privacidad"</string>
     <string name="safety_center_rescan_button" msgid="8047036829052958144">"Analizar"</string>
@@ -517,8 +514,7 @@
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"¿Cerrar esta alerta?"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Cerrar"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Cancelar"</string>
-    <!-- no translation found for safety_center_entries_category_title (34356964062813115) -->
-    <skip />
+    <string name="safety_center_entries_category_title" msgid="34356964062813115">"Ajustes"</string>
     <string name="security_settings" msgid="3808106921175271317">"Ajustes de seguridad"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Permisos del sensor"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Controles de privacidad"</string>

@@ -236,8 +236,10 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Aplicațiile cu această permisiune pot accesa datele de la senzori despre semnele vitale"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Aplicațiile cu această permisiune pot să trimită și să afișeze mesajele SMS"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Aplicațiile cu această permisiune pot accesa fotografiile, conținutul media și fișierele de pe dispozitiv"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"Aplicațiile cu această permisiune pot accesa muzica și alte fișiere audio de pe dispozitiv"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"Aplicațiile cu această permisiune pot accesa fotografiile și videoclipurile de pe dispozitiv"</string>
+    <!-- no translation found for permission_description_summary_read_media_aural (3354728149930482199) -->
+    <skip />
+    <!-- no translation found for permission_description_summary_read_media_visual (4991801977881732641) -->
+    <skip />
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Ultima accesare: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Refuzat/Ultima accesare: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Nu a accesat niciodată"</string>
@@ -282,12 +284,6 @@
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Eliminați accesul"</string>
     <string name="notification_listener_review_app_button_label" msgid="4452381557379652037">"Examinați toate aplicațiile cu acces la notificări"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Acces eliminat"</string>
-    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Examinați aplicația cu acces la opțiunile de accesibilitate"</string>
-    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> poate să citească tot conținutul de pe ecran, să afișeze conținut peste alte aplicații și să vă urmărească interacțiunile."</string>
-    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Aplicația poate să citească tot conținutul de pe ecran, să afișeze conținut peste alte aplicații și să vă urmărească interacțiunile."</string>
-    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Eliminați accesul"</string>
-    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"Afișați aplicațiile cu acces la opțiunile de accesibilitate"</string>
-    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Acces eliminat"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Permisiunile pentru aplicație s-au eliminat pentru confidențialitate"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"Aplicația <xliff:g id="APP_NAME">%s</xliff:g> nu a fost folosită de câteva luni. Atingeți pentru a examina."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> și încă o aplicație nu au fost folosite de câteva luni. Atingeți pentru a examina."</string>
@@ -352,15 +348,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Aplicația Telefon"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Aplicațiile cu ajutorul cărora inițiați și primiți apeluri telefonice pe dispozitiv"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Setați <xliff:g id="APP_NAME">%1$s</xliff:g> ca aplicație prestabilită pentru telefon?"</string>
-    <!-- no translation found for role_dialer_request_description (6288839625724909320) -->
-    <skip />
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"Aplicația va avea acces la Camera foto, Agendă, Microfon, Telefon și SMS"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"tastatură telefon"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Aplicație SMS prestabilită"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"Aplicația SMS"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Aplicații cu ajutorul cărora puteți folosi numărul de telefon ca să trimiteți și să primiți mesaje text scurte, fotografii, videoclipuri și altele"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Setați <xliff:g id="APP_NAME">%1$s</xliff:g> ca aplicație prestabilită pentru SMS?"</string>
-    <!-- no translation found for role_sms_request_description (2691004766132144886) -->
-    <skip />
+    <string name="role_sms_request_description" msgid="2691004766132144886">"Aplicația va avea acces la Camera foto, Agendă, Fișiere și media, Microfon, Telefon și SMS"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"mesaj text, trimitere mesaje text, mesaje, trimitere mesaje"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"Aplicație de urgență prestabilită"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"Aplicația de urgență"</string>
@@ -461,11 +455,15 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Aproximativă"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Permiteți &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să vă acceseze calendarul?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Permiteți &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să trimită și să vadă mesajele SMS?"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"Permiteți accesul &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; la &lt;b&gt;fișiere și documente&lt;/b&gt; de pe dispozitiv?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"Permiteți accesul &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; la &lt;b&gt;fotografii, clipuri, conținut audio și muzică&lt;/b&gt; de pe dispozitiv?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"Permiteți accesul &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; la &lt;b&gt;fotografii, clipuri, conținut audio, muzică și alte fișiere&lt;/b&gt; de pe dispozitiv?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"Permiteți accesul &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; la muzică și alte fișiere audio de pe acest dispozitiv?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"Permiteți accesul &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; la fotografii și videoclipuri de pe dispozitiv?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"Permiteți &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să acceseze fotografiile, conținutul media și fișierele de pe dispozitiv?"</string>
+    <!-- no translation found for permgrouprequest_storage_q_to_s (8213701872983685505) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_storage_pre_q (168130651144569428) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_aural (2593365397347577812) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_visual (5548780620779729975) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Pemiteți &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să înregistreze audio?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Aplicația va putea să înregistreze conținut audio doar atunci când o folosiți"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Pemiteți ca &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să înregistreze conținut audio?"</string>
@@ -487,7 +485,6 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Pentru a permite accesul permanent al aplicației la datele de la senzorii corporali, chiar și atunci când nu o folosiți, "<annotation id="link">"accesați setările"</annotation>"."</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Permiteți în continuare accesul &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; la datele de la senzorii corporali în timpul folosirii aplicației?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Permiteți &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să vă trimită notificări?"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Permiteți &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; să continue să vă trimită notificări?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Permisiuni controlate"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Locația poate fi accesată"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Administratorul IT permite aplicației <xliff:g id="APP_NAME">%s</xliff:g> să vă acceseze locația"</string>
@@ -517,8 +514,7 @@
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Închideți alerta?"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Respingeți"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Anulați"</string>
-    <!-- no translation found for safety_center_entries_category_title (34356964062813115) -->
-    <skip />
+    <string name="safety_center_entries_category_title" msgid="34356964062813115">"Setări"</string>
     <string name="security_settings" msgid="3808106921175271317">"Setări de securitate"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Permisiuni pentru senzori"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Opțiuni de confidențialitate"</string>

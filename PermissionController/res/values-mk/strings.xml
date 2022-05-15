@@ -236,8 +236,10 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Апликациите со оваа дозвола може да пристапуваат до податоци од сензорите за виталните знаци"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Апликациите со оваа дозвола може да испраќаат и прегледуваат SMS-пораки"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Апликациите со оваа дозвола може да пристапуваат до фотографии, аудиовизуелни содржини и датотеки на вашиот уред"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"Апликациите со оваа дозвола може да пристапуваат до музиката и другите аудиодатотеки на уредот"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"Апликациите со оваа дозвола може да пристапуваат до фотографиите и видеата на уредот"</string>
+    <!-- no translation found for permission_description_summary_read_media_aural (3354728149930482199) -->
+    <skip />
+    <!-- no translation found for permission_description_summary_read_media_visual (4991801977881732641) -->
+    <skip />
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Последен пристап: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Моментално одбиена/Последен пристап: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Никогаш не е пристапено"</string>
@@ -282,12 +284,6 @@
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Отстрани го пристапот"</string>
     <string name="notification_listener_review_app_button_label" msgid="4452381557379652037">"Прегледајте ги сите апликации со пристап до известувања"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Пристапот е отстранет"</string>
-    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Прегледате ја апликацијата со пристап за пристапност"</string>
-    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> може да ги чита сите содржини на екранот, прикажани содржини на други апликации и да ги следи вашите интеракции."</string>
-    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Апликацијава може да ги чита сите содржини на екранот, прикажани содржини на други апликации и да ги следи вашите интеракции."</string>
-    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Отстранување пристап"</string>
-    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"Видете ги апликаците со пристап за пристапност"</string>
-    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Пристапот е отстранет"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Дозволите за аплик. се отстранети за заштита на приватноста"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"<xliff:g id="APP_NAME">%s</xliff:g> не е користена неколку месеци. Допрете за да прегледате."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> и уште 1 апликација не се користени неколку месеци. Допрете за да прегледате."</string>
@@ -459,11 +455,15 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Приближна"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до календарот?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да испраќа и прегледува SMS-пораки?"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до &lt;b&gt;датотеките и документите&lt;/b&gt; на уредот?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до &lt;b&gt;фотографии, видеа, музика и аудио&lt;/b&gt; на уредот?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до &lt;b&gt;фотографии, видеа, музика, аудио и други датотеки&lt;/b&gt; на уредот?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до музика и други аудиодатотеки на уредов?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до фотографиите и видеата на уредов?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да пристапува до фотографиите, аудиовизуелните содржини и датотеките на уредот?"</string>
+    <!-- no translation found for permgrouprequest_storage_q_to_s (8213701872983685505) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_storage_pre_q (168130651144569428) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_aural (2593365397347577812) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_visual (5548780620779729975) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да снима аудио?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Апликацијава ќе може да снима аудио само додека ја користите"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да снима аудио?"</string>
@@ -485,7 +485,6 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"За да дозволите апликацијава да пристапува до податоци од телесните сензори цело време, дури и кога не ја користите, "<annotation id="link">"одете во „Поставки“."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"И понатаму да се дозволи пристап на &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; до податоци од телесните сензори додека се користи апликацијата?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; да ви испраќа известувања?"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Да се дозволи &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; и понатаму да ви испраќа известувања?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Контролирани дозволи"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Може да се пристапи до локацијата"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"IT-администраторот дозволува <xliff:g id="APP_NAME">%s</xliff:g> да пристапува до вашата локација"</string>
