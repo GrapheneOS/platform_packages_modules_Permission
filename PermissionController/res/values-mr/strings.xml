@@ -66,7 +66,7 @@
     </plurals>
     <string name="old_sdk_deny_warning" msgid="2382236998845153919">"हे अ‍ॅप Android च्या जुन्या आवृत्तीसाठी डिझाइन करण्यात आले होते. परवानगी नाकारल्यामुळे ते यापुढे अपेक्षित असल्याप्रमाणे कार्य करणार नाही."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"अज्ञात क्रिया करा"</string>
-    <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_0">%1$d</xliff:g> पैकी <xliff:g id="COUNT_1">%2$d</xliff:g> अ‍ॅप्सना परवानगी दिली"</string>
+    <string name="app_permissions_group_summary" msgid="8788419008958284002">"<xliff:g id="COUNT_1">%2$d</xliff:g> पैकी <xliff:g id="COUNT_0">%1$d</xliff:g> अ‍ॅप्सना परवानगी दिली"</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"<xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g> अ‍ॅप्सना अनुमती आहे"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"सिस्टम दर्शवा"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"सिस्टम लपवा"</string>
@@ -212,7 +212,7 @@
     <string name="precise_image_description" msgid="6349638632303619872">"अचूक स्थान"</string>
     <string name="approximate_image_description" msgid="938803699637069884">"अंदाजे स्‍थान"</string>
     <string name="app_permission_location_accuracy" msgid="7166912915040018669">"अचूक स्थान वापरा"</string>
-    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"अचूक स्थान बंद असते तेव्हा, ॲप्स तुमचे अंदाजे स्थान अ‍ॅक्सेस करू शकतात"</string>
+    <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"अचूक स्थान बंद असते, तेव्हा ॲप्स तुमचे अंदाजे स्थान अ‍ॅक्सेस करू शकतात"</string>
     <string name="app_permission_title" msgid="2090897901051370711">"<xliff:g id="PERM">%1$s</xliff:g> परवानगी"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"या अ‍ॅपसाठी <xliff:g id="PERM">%1$s</xliff:g> चा अ‍ॅक्सेस द्या"</string>
     <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"सर्व <xliff:g id="APP">%1$s</xliff:g> परवानग्या पहा"</string>
@@ -258,7 +258,7 @@
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"सध्या नाकारली आहे / शेवटचे अ‍ॅक्सेस केले: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"कधीही अ‍ॅक्सेस केलेले नाही"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"नाकारले / कधीही अ‍ॅक्सेस केले नाही"</string>
-    <string name="allowed_header" msgid="7769277978004790414">"अनुमती असलेले"</string>
+    <string name="allowed_header" msgid="7769277978004790414">"अनुमती असलेली"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"नेहमी अनुमती आहे"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"फक्त वापरत असताना अनुमती आहे"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"फक्त मीडिया ॲक्सेस करण्यासाठी अनुमती दिली आहे"</string>
@@ -452,11 +452,11 @@
     <string name="assistant_record_audio_user_sensitive_summary" msgid="6482937591816401619">"व्हॉइस असिस्टंट अ‍ॅक्टिव्हेट करण्यासाठी मायक्रोफोन वापरला जाईल तेव्हा स्टेटस बारमध्ये आयकन दाखवा"</string>
     <string name="permgrouprequest_storage_isolated" msgid="4892154224026852295">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला तुमच्या डिव्हाइसवरील फोटो आणि मीडिया अ‍ॅक्सेस करू द्यायचा?"</string>
     <string name="permgrouprequest_contacts" msgid="8391550064551053695">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला तुमचे संपर्क अ‍ॅक्सेस करू द्यायचे?"</string>
-    <string name="permgrouprequest_location" msgid="6990232580121067883">"&lt;<xliff:g id="APP_NAME">%1$s</xliff:g>&gt; ला या डिव्हाइसचे स्थान ॲक्सेस करू द्यायचे आहे का?"</string>
+    <string name="permgrouprequest_location" msgid="6990232580121067883">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला या डिव्हाइसचे स्थान ॲक्सेस करू द्यायचे आहे का?"</string>
     <string name="permgrouprequestdetail_location" msgid="2635935335778429894">"तुम्ही अ‍ॅप वापरत असताना अ‍ॅपला फक्त स्थानाचा अ‍ॅक्सेस असेल"</string>
-    <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"&lt;<xliff:g id="APP_NAME">%1$s</xliff:g>&gt; ला या डिव्हाइसचे स्थान ॲक्सेस करू द्यायचे आहे का?"</string>
+    <string name="permgroupbackgroundrequest_location" msgid="1085680897265734809">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला या डिव्हाइसचे स्थान ॲक्सेस करू द्यायचे आहे का?"</string>
     <string name="permgroupbackgroundrequestdetail_location" msgid="8021219324989662957">"तुम्ही अ‍ॅप वापरत नसतानादेखील कदाचित या ॲपला नेहमी तुमचे स्थान ॲक्सेस करायचे आहे."<annotation id="link">"सेटिंग्जमधून अनुमती द्या."</annotation></string>
-    <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;<xliff:g id="APP_NAME">%1$s</xliff:g>&gt; चा स्थान ॲक्सेस बदलायचा आहे का?"</string>
+    <string name="permgroupupgraderequest_location" msgid="8328408946822691636">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; चा स्थान ॲक्सेस बदलायचा आहे का?"</string>
     <string name="permgroupupgraderequestdetail_location" msgid="1550899076845189165">"तुम्ही अ‍ॅप वापरत नसतानादेखील या ॲपला नेहमी तुमचे स्थान ॲक्सेस करायचे आहे. "<annotation id="link">"सेटिंग्जमधून अनुमती द्या."</annotation></string>
     <string name="permgrouprequest_nearby_devices" msgid="2272829282660436700">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला जवळील डिव्हाइस शोधण्याची, त्यांच्याशी कनेक्ट व त्यांचे संबंधित स्थान निर्धारित करण्याची अनुमती द्यायची का?"</string>
     <string name="permgroupupgraderequestdetail_nearby_devices" msgid="6877531270654738614">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ला जवळील डिव्हाइस शोधण्याची, त्यांच्याशी कनेक्ट व त्यांचे संबंधित स्थान निर्धारित करण्याची अनुमती द्यायची का? "<annotation id="link">"सेटिंग्जमध्ये अनुमती द्या."</annotation></string>
