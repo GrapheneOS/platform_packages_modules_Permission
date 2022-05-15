@@ -19,6 +19,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="safetyCenterResourcesAppLabel" msgid="4043334186295695930">"सुरक्षितता केंद्र स्रोत"</string>
     <string name="lock_screen_sources_title" msgid="3317906280484627707">"डिव्हाइसचे लॉक"</string>
+    <string name="lock_screen_sources_summary" msgid="7220439741282516496"></string>
     <string name="lock_screen_title" msgid="4069104894527169877">"स्क्रीन लॉक"</string>
     <string name="lock_screen_summary_disabled" msgid="354071230916616692">"अद्याप कोणतीही माहिती नाही"</string>
     <string name="privacy_sources_title" msgid="4061110826457365957">"गोपनीयता"</string>
