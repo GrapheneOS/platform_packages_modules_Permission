@@ -16,9 +16,10 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- no translation found for role_dialer_request_description (6188305064871543419) -->
+    <string name="role_dialer_request_description" msgid="6188305064871543419">"‘အကြောင်းကြားချက်များ’ သင့်ထံပို့ခွင့်ကို ဤအက်ပ်အား ပေးမည်ဖြစ်ပြီး သင်၏ ‘ကင်မရာ’၊ ‘အဆက်အသွယ်များ’၊ ‘မိုက်ခရိုဖုန်း’၊ ‘ဖုန်း’ နှင့် ‘SMS စာတိုစနစ်’ တို့ကို သုံးခွင့်ပေးပါမည်"</string>
+    <!-- no translation found for role_sms_request_description (1506966389698625395) -->
     <skip />
-    <!-- no translation found for role_sms_request_description (5567372488335965327) -->
+    <!-- no translation found for permission_description_summary_storage (1917071243213043858) -->
     <skip />
     <string name="work_policy_title" msgid="832967780713677409">"သင့်အလုပ်မူဝါဒ အချက်အလက်"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"သင့် IT စီမံခန့်ခွဲသူက သတ်မှတ်ထားသည့် ဆက်တင်များ"</string>
