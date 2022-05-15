@@ -193,7 +193,7 @@
     <string name="app_permission_location_accuracy_subtitle" msgid="2654077606404987210">"عندما يكون الموقع الجغرافي الدقيق غير مفعّل، يمكن للتطبيقات الوصول إلى الموقع الجغرافي التقريبي."</string>
     <string name="app_permission_title" msgid="2090897901051370711">"إذن <xliff:g id="PERM">%1$s</xliff:g>"</string>
     <string name="app_permission_header" msgid="2951363137032603806">"منح هذا التطبيق الإذن بالوصول إلى <xliff:g id="PERM">%1$s</xliff:g>"</string>
-    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"الاطّلاع على جميع أذونات <xliff:g id="APP">%1$s</xliff:g>"</string>
+    <string name="app_permission_footer_app_permissions_link" msgid="4926890342636587393">"الاطّلاع على جميع أذونات تطبيق \"<xliff:g id="APP">%1$s</xliff:g>\""</string>
     <string name="app_permission_footer_permission_apps_link" msgid="3941988129992794327">"الاطّلاع على جميع التطبيقات التي لديها هذا الإذن"</string>
     <string name="assistant_mic_label" msgid="1011432357152323896">"‏عرض أذونات استخدام ميكروفون \"مساعد Google\""</string>
     <string name="unused_apps_category_title" msgid="2988455616845243901">"إعدادات التطبيقات غير المُستخدَمة"</string>
@@ -236,13 +236,15 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"يمكن للتطبيقات التي لديها هذا الإذن أن تصل إلى بيانات جهاز الاستشعار الخاصة بمؤشراتك الحيوية."</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"‏يمكن للتطبيقات التي لديها هذا الإذن إرسال رسائل قصيرة SMS وعرضها."</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"يمكن للتطبيقات التي لديها هذا الإذن الوصول إلى الصور والوسائط والملفات على جهازك."</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"يمكن للتطبيقات التي لديها هذا الإذن الوصول إلى الموسيقى والملفات الصوتية الأخرى على جهازك."</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"يمكن للتطبيقات التي لديها هذا الإذن الوصول إلى الصور والفيديوهات على جهازك."</string>
+    <!-- no translation found for permission_description_summary_read_media_aural (3354728149930482199) -->
+    <skip />
+    <!-- no translation found for permission_description_summary_read_media_visual (4991801977881732641) -->
+    <skip />
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"آخر استخدام للإذن: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"مرفوض حاليًا / تاريخ آخر وصول: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"لم يستخدم الإذن مطلقًا"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"تم الرفض / لم يسبق الحصول على الإذن"</string>
-    <string name="allowed_header" msgid="7769277978004790414">"الأذونات المسموح بها"</string>
+    <string name="allowed_header" msgid="7769277978004790414">"التطبيقات الحاصلة على الإذن"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"التطبيقات المسموح لها بالوصول طوال الوقت"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"تطبيقات يمكنها الوصول عند استخدامها فقط"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"التطبيقات المسموح لها بالوصول إلى الوسائط فقط"</string>
@@ -340,15 +342,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"تطبيق الهاتف"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"التطبيقات التي تتيح لك إمكانية إجراء مكالمات هاتفية وتلقّيها على جهازك"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"هل تريد ضبط <xliff:g id="APP_NAME">%1$s</xliff:g> باعتباره تطبيق الهاتف التلقائي؟"</string>
-    <!-- no translation found for role_dialer_request_description (6288839625724909320) -->
-    <skip />
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"سيُمنح هذا التطبيق إذن الوصول إلى الكاميرا وجهات الاتصال والميكروفون والهاتف والرسائل القصيرة."</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"برنامج الاتصال"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"‏تطبيق رسائل SMS التلقائي"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"‏تطبيق SMS"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"التطبيقات التي تتيح لك استخدام رقم هاتفك لإرسال وتلقّي رسائل نصية قصيرة وصور وفيديوهات وغيرها"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"‏هل تريد ضبط <xliff:g id="APP_NAME">%1$s</xliff:g> باعتباره تطبيق الرسائل القصيرة SMS التلقائي؟"</string>
-    <!-- no translation found for role_sms_request_description (2691004766132144886) -->
-    <skip />
+    <string name="role_sms_request_description" msgid="2691004766132144886">"سيُمنح هذا التطبيق إذن الوصول إلى الكاميرا وجهات الاتصال والملفات والوسائط والميكروفون والهاتف والرسائل القصيرة."</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"رسالة نصية، إرسال رسالة، رسائل، مراسلة"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"تطبيق الطوارئ التلقائي"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"تطبيق الطوارئ"</string>
@@ -449,11 +449,15 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"تقريبي"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بالدخول إلى التقويم؟"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بإرسال رسائل SMS وعرضها؟"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"‏هل تريد السماح للتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بالوصول إلى &lt;b&gt;الملفات والمستندات&lt;/b&gt; على هذا الجهاز؟"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بالوصول إلى &lt;b&gt;الصور والفيديوهات والموسيقى والصوت&lt;/b&gt; على جهازك؟"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"‏هل تسمح بوصول &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; إلى &lt;b&gt;الصور والفيديوهات والموسيقى والملفات الصوتية الأخرى&lt;/b&gt; على جهازك؟"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"‏هل تريد السماح للتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بالوصول إلى الموسيقى والملفات الصوتية الأخرى على هذا الجهاز؟"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"‏هل تريد السماح للتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بالوصول إلى الصور والفيديوهات على هذا الجهاز؟"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بالوصول إلى الصور والوسائط والملفات على جهازك؟"</string>
+    <!-- no translation found for permgrouprequest_storage_q_to_s (8213701872983685505) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_storage_pre_q (168130651144569428) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_aural (2593365397347577812) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_visual (5548780620779729975) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بتسجيل الصوت؟"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"لن يتمكن هذا التطبيق من تسجيل الصوت إلا عندما يكون قيد الاستخدام"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بتسجيل الصوت؟"</string>
@@ -475,7 +479,6 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"للسماح لهذا التطبيق بالوصول إلى بيانات أجهزة استشعار الجسم دائمًا وحتى عند عدم استخدامك للتطبيق، "<annotation id="link">"انتقِل إلى الإعدادات"</annotation>"."</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"‏هل تريد مواصلة السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; عند استخدامه بالوصول إلى بيانات أجهزة استشعار الجسم؟"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بإرسال إشعارات إليك؟"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"‏هل تريد السماح لتطبيق &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بمواصلة إرسال إشعارات إليك؟"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"الأذونات خاضعة لتحكّم المشرف"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"يمكن الوصول إلى الموقع الجغرافي"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"يسمح مشرف تكنولوجيا المعلومات لتطبيق <xliff:g id="APP_NAME">%s</xliff:g> بالوصول إلى موقعك الجغرافي."</string>
