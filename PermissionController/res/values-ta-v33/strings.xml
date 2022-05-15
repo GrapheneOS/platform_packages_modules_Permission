@@ -17,5 +17,8 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="role_dialer_request_description" msgid="6188305064871543419">"உங்களுக்கு அறிவிப்புகளை அனுப்ப இந்த ஆப்ஸுக்கு அனுமதி வழங்கப்படும். கேமரா, தொடர்புகள், மைக்ரோஃபோன், மொபைல், மெசேஜ் ஆகியவற்றுக்கான அணுகல் இந்த ஆப்ஸுக்கு வழங்கப்படும்"</string>
-    <string name="role_sms_request_description" msgid="5567372488335965327">"உங்களுக்கு அறிவிப்புகளை அனுப்ப இந்த ஆப்ஸுக்கு அனுமதி வழங்கப்படும். கேமரா, தொடர்புகள், ஃபைல்கள் &amp; ஆவணங்கள், மைக்ரோஃபோன், மொபைல், மெசேஜ் ஆகியவற்றுக்கான அணுகல் இந்த ஆப்ஸுக்கு வழங்கப்படும்"</string>
+    <!-- no translation found for role_sms_request_description (1506966389698625395) -->
+    <skip />
+    <!-- no translation found for permission_description_summary_storage (1917071243213043858) -->
+    <skip />
 </resources>
