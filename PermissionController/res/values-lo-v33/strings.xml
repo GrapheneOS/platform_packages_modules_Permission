@@ -17,5 +17,8 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="role_dialer_request_description" msgid="6188305064871543419">"ແອັບນີ້ຈະໄດ້ຮັບອະນຸຍາດເພື່ອສົ່ງການແຈ້ງເຕືອນຫາທ່ານ ແລະ ຈະໄດ້ຮັບສິດເຂົ້າເຖິງກ້ອງຖ່າຍຮູບ, ລາຍຊື່ຜູ້ຕິດຕໍ່, ໄມໂຄຣໂຟນ, ໂທລະສັບ ແລະ SMS ຂອງທ່ານ"</string>
-    <string name="role_sms_request_description" msgid="5567372488335965327">"ແອັບນີ້ຈະໄດ້ຮັບອະນຸຍາດເພື່ອສົ່ງການແຈ້ງເຕືອນຫາທ່ານ ແລະ ຈະໄດ້ຮັບສິດເຂົ້າເຖິງກ້ອງຖ່າຍຮູບ, ລາຍຊື່ຜູ້ຕິດຕໍ່, ໄຟລ໌ ແລະ ເອກະສານ, ໄມໂຄຣໂຟນ, ໂທລະສັບ ແລະ SMS ຂອງທ່ານ"</string>
+    <!-- no translation found for role_sms_request_description (1506966389698625395) -->
+    <skip />
+    <!-- no translation found for permission_description_summary_storage (1917071243213043858) -->
+    <skip />
 </resources>
