@@ -176,7 +176,7 @@
     </plurals>
     <string name="permission_usage_preference_summary_not_used" msgid="8806755646449754282">"Autorizzazione non utilizzata nelle ultime 24 ore"</string>
     <plurals name="permission_usage_preference_label" formatted="false" msgid="9033113721294293706">
-      <item quantity="other">Autorizzazioni usate da <xliff:g id="NUMBER">%1$d</xliff:g> app</item>
+      <item quantity="other">Autorizzazione usata da <xliff:g id="NUMBER">%1$d</xliff:g> app</item>
       <item quantity="one">Autorizzazione usata da 1 app</item>
     </plurals>
     <string name="permission_usage_view_details" msgid="6675335735468752787">"Mostra tutto nella Dashboard"</string>
@@ -258,7 +258,7 @@
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Al momento rifiutata/Ultimo accesso: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Accesso mai eseguito"</string>
     <string name="app_permission_never_accessed_denied_summary" msgid="6596000497490905146">"Rifiutata/Accesso mai effettuato"</string>
-    <string name="allowed_header" msgid="7769277978004790414">"Autorizzazione concessa"</string>
+    <string name="allowed_header" msgid="7769277978004790414">"Autorizzate"</string>
     <string name="allowed_always_header" msgid="6455903312589013545">"Autorizzazione sempre concessa"</string>
     <string name="allowed_foreground_header" msgid="6845655788447833353">"Autorizzazione concessa solo durante l\'uso"</string>
     <string name="allowed_storage_scoped" msgid="5383645873719086975">"Autorizzate solo per contenuti multimediali"</string>
