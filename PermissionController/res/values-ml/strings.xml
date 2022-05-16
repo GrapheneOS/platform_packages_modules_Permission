@@ -236,8 +236,10 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"ഈ അനുമതിയുള്ള ആപ്പുകൾക്ക് നിങ്ങളുടെ ജീവാധാര ലക്ഷണങ്ങളെ കുറിച്ചുള്ള സെൻസർ വിവരങ്ങൾ ആക്‌സസ് ചെയ്യാനാവും"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"ഈ അനുമതിയുള്ള ആപ്പുകൾക്ക് SMS സന്ദേശങ്ങൾ കാണാനും അയയ്ക്കാനുമാവും"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"നിങ്ങളുടെ ഉപകരണത്തിലെ ഫോട്ടോകളും മീഡിയയും ഫയലുകളും ആക്‌സസ് ചെയ്യാൻ ഈ അനുമതിയുള്ള ആപ്പുകൾക്ക് കഴിയും"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"നിങ്ങളുടെ ഉപകരണത്തിലെ സംഗീതവും മറ്റ് ഓഡിയോ ഫയലുകളും ആക്‌സസ് ചെയ്യാൻ ഈ അനുമതിയുള്ള ആപ്പുകൾക്ക് കഴിയും"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"നിങ്ങളുടെ ഉപകരണത്തിലെ ഫോട്ടോകളും വീഡിയോകളും ആക്‌സസ് ചെയ്യാൻ ഈ അനുമതിയുള്ള ആപ്പുകൾക്ക് കഴിയും"</string>
+    <!-- no translation found for permission_description_summary_read_media_aural (3354728149930482199) -->
+    <skip />
+    <!-- no translation found for permission_description_summary_read_media_visual (4991801977881732641) -->
+    <skip />
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"അവസാനം ആക്‌‌സസ് ചെയ്‌തത്: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"നിലവിൽ നിരസിച്ചവ / അവസാന ആക്‌സസ്: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"ഒരിക്കലും ആക്‌‌സസ് ചെയ്‌തിട്ടില്ല"</string>
@@ -340,15 +342,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"ഫോൺ ആപ്പ്"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"നിങ്ങളുടെ ഉപകരണത്തിൽ ടെലിഫോൺ കോളുകൾ ചെയ്യാനും സ്വീകരിക്കാനും അനുവദിക്കുന്ന ആപ്പുകൾ"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g> എന്നതിനെ നിങ്ങളുടെ ഡിഫോൾട്ട് ഫോൺ ആപ്പായി സജ്ജീകരിക്കണോ?"</string>
-    <!-- no translation found for role_dialer_request_description (6288839625724909320) -->
-    <skip />
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"ഈ ആപ്പിന് നിങ്ങളുടെ ക്യാമറ, കോൺടാക്റ്റുകൾ, മൈക്രോഫോൺ, ഫോൺ, SMS എന്നിവയിലേക്ക് ആക്‌സസ് നൽകും"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"ഡയലർ"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"ഡിഫോൾട്ട് SMS ആപ്പ്"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS ആപ്പ്"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"ചുരുക്കത്തിലുള്ള ടെക്‌സ്‌റ്റ് മെസേജുകൾ, ഫോട്ടോകൾ, വീഡിയോകൾ എന്നിവയും മറ്റും അയയ്ക്കാനും സ്വീകരിക്കാനും നിങ്ങളുടെ ഫോൺ നമ്പർ ഉപയോഗിക്കാൻ അനുവദിക്കുന്ന ആപ്പുകൾ"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g> എന്നതിനെ നിങ്ങളുടെ ഡിഫോൾട്ട് SMS ആപ്പായി സജ്ജീകരിക്കണോ?"</string>
-    <!-- no translation found for role_sms_request_description (2691004766132144886) -->
-    <skip />
+    <string name="role_sms_request_description" msgid="2691004766132144886">"ഈ ആപ്പിന് നിങ്ങളുടെ ക്യാമറ, കോൺടാക്റ്റുകൾ, ഫയലുകളും മീഡിയയും, മൈക്രോഫോൺ, ഫോൺ, SMS എന്നിവയിലേക്ക് ആക്‌സസ് നൽകും"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"ടെക്സ്റ്റ് മെസേജ്, ടെക്സ്റ്റ് ചെയ്യൽ, സന്ദേശങ്ങൾ, സന്ദേശം അയയ്‌ക്കൽ എന്നിവ"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"ഡിഫോൾട്ട് അടിയന്തിര ആപ്പ്"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"അടിയന്തിര ആപ്പ്"</string>
@@ -449,11 +449,15 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"ഏകദേശം"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"നിങ്ങളുടെ കലണ്ടർ ആക്‌സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"SMS സന്ദേശങ്ങൾ അയയ്ക്കാനും കാണാനും &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"ഉപകരണത്തിലെ &lt;b&gt;ഫയലുകളും ഡോക്യുമെന്റുകളും&lt;/b&gt; ആക്സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കണോ?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"ഉപകരണത്തിലെ ഫോട്ടോകൾ, വീഡിയോകൾ, സംഗീതം, ഓഡിയോ&lt;/b&gt; എന്നിവ ആക്സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കണോ?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"ഉപകരണത്തിലെ &lt;b&gt;ഫോട്ടോകൾ, വീഡിയോകൾ, സംഗീതം, ഓഡിയോ, മറ്റ് ഫയലുകൾ&lt;/b&gt; എന്നിവ ആക്സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കണോ?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"ഈ ഉപകരണത്തിലെ സംഗീതവും മറ്റ് ഓഡിയോ ഫയലുകളും ആക്സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കണോ?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"ഈ ഉപകരണത്തിലെ ഫോട്ടോകളും വീഡിയോകളും ആക്സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കണോ?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"നിങ്ങളുടെ ഉപകരണത്തിലെ ഫോട്ടോകളും മീഡിയയും ഫയലുകളും ആക്‌സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>
+    <!-- no translation found for permgrouprequest_storage_q_to_s (8213701872983685505) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_storage_pre_q (168130651144569428) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_aural (2593365397347577812) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_visual (5548780620779729975) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"ഓഡിയോ റെക്കോർഡ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"നിങ്ങൾ ആപ്പ് ഉപയോഗിക്കുമ്പോൾ മാത്രമേ അതിന് ഓഡിയോ റെക്കോർഡ് ചെയ്യാൻ കഴിയൂ"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"ഓഡിയോ റെക്കോർഡ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ആപ്പിനെ അനുവദിക്കണോ?"</string>
@@ -475,7 +479,6 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"നിങ്ങൾ ആപ്പ് ഉപയോഗിക്കാത്ത സമയത്ത് ഉൾപ്പെടെ, എല്ലായ്‌പ്പോഴും ബോഡി സെൻസർ ഡാറ്റ ആക്‌സസ് ചെയ്യാൻ ഈ ആപ്പിനെ അനുവദിക്കുന്നതിന് "<annotation id="link">"ക്രമീകരണത്തിലേക്ക് പോകുക."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ആപ്പ് ഉപയോഗിക്കുമ്പോഴും ബോഡി സെൻസർ ഡാറ്റ ആക്‌സസ് ചെയ്യാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കുന്നത് തുടരണോ?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"നിങ്ങൾക്ക് അറിയിപ്പുകൾ അയയ്ക്കാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കണോ?"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"നിങ്ങൾക്ക് അറിയിപ്പുകൾ അയക്കുന്നത് തുടരാൻ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; എന്നതിനെ അനുവദിക്കണോ?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"നിയന്ത്രിത അനുമതികൾ"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"ലൊക്കേഷൻ ആക്‌സസ് ചെയ്യാൻ കഴിയും"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"നിങ്ങളുടെ ലൊക്കേഷൻ ആക്‌സസ് ചെയ്യാൻ നിങ്ങളുടെ ഐടി അഡ്‌മിൻ <xliff:g id="APP_NAME">%s</xliff:g> എന്നതിനെ അനുവദിക്കുന്നു"</string>

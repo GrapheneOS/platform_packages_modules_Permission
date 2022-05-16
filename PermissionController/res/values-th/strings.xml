@@ -236,8 +236,10 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"แอปที่มีสิทธิ์นี้จะเข้าถึงข้อมูลเซ็นเซอร์เกี่ยวกับสัญญาณชีพของคุณได้"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"แอปที่มีสิทธิ์นี้จะส่งและดูข้อความ SMS ได้"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"แอปที่มีสิทธิ์นี้จะเข้าถึงรูปภาพ สื่อ และไฟล์ในอุปกรณ์ของคุณได้"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"แอปที่มีสิทธิ์นี้จะเข้าถึงเพลงและไฟล์เสียงอื่นๆ ในอุปกรณ์ได้"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"แอปที่มีสิทธิ์นี้จะเข้าถึงรูปภาพและวิดีโอในอุปกรณ์ได้"</string>
+    <!-- no translation found for permission_description_summary_read_media_aural (3354728149930482199) -->
+    <skip />
+    <!-- no translation found for permission_description_summary_read_media_visual (4991801977881732641) -->
+    <skip />
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"เข้าถึงล่าสุด: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"ถูกปฏิเสธ/เข้าถึงล่าสุด: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"ไม่เคยเข้าถึง"</string>
@@ -447,11 +449,15 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"โดยประมาณ"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึงปฏิทินไหม"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ส่งและดูข้อความ SMS ไหม"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึงไฟล์และเอกสารในอุปกรณ์ไหม"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึงรูปภาพ วิดีโอ เพลง และเสียงในอุปกรณ์ไหม"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึงรูปภาพ วิดีโอ เพลง เสียง และไฟล์อื่นๆ ในอุปกรณ์ไหม"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึงเพลงและไฟล์เสียงอื่นๆ ในอุปกรณ์นี้ไหม"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึงรูปภาพและวิดีโอในอุปกรณ์นี้ไหม"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึงรูปภาพ สื่อ และไฟล์ในอุปกรณ์ไหม"</string>
+    <!-- no translation found for permgrouprequest_storage_q_to_s (8213701872983685505) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_storage_pre_q (168130651144569428) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_aural (2593365397347577812) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_visual (5548780620779729975) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; บันทึกเสียงไหม"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"แอปจะบันทึกเสียงได้ในขณะที่คุณใช้แอปอยู่เท่านั้น"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; บันทึกเสียงไหม"</string>
@@ -473,7 +479,6 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"หากต้องการให้แอปนี้เข้าถึงข้อมูลเซ็นเซอร์ร่างกายได้ทุกเมื่อ แม้ว่าคุณจะไม่ได้ใช้งานแอปอยู่ ให้"<annotation id="link">"ไปที่การตั้งค่า"</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; เข้าถึงข้อมูลเซ็นเซอร์ร่างกายได้ตลอดขณะใช้งานแอปไหม"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ส่งการแจ้งเตือนถึงคุณไหม"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"อนุญาตให้ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ส่งการแจ้งเตือนถึงคุณต่อไปไหม"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"สิทธิ์ที่มีการควบคุม"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"เข้าถึงตำแหน่งได้"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"ผู้ดูแลระบบไอทีอนุญาตให้ <xliff:g id="APP_NAME">%s</xliff:g> เข้าถึงตำแหน่งของคุณได้"</string>
