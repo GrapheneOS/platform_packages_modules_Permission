@@ -17,9 +17,10 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="role_dialer_request_description" msgid="6188305064871543419">"Táto aplikácia bude mať povolené odosielať vám upozornenia a bude jej udelený prístup k vašej kamere, kontaktom, mikrofónu, telefónu aj správam SMS"</string>
-    <string name="role_sms_request_description" msgid="5567372488335965327">"Táto aplikácia bude mať povolené odosielať vám upozornenia a bude jej udelený prístup k vašej kamere, kontaktom, súborom a dokumentom, mikrofónu, telefónu aj správam SMS"</string>
-    <!-- no translation found for work_policy_title (832967780713677409) -->
+    <!-- no translation found for role_sms_request_description (1506966389698625395) -->
     <skip />
-    <!-- no translation found for work_policy_summary (3886113358084963931) -->
+    <!-- no translation found for permission_description_summary_storage (1917071243213043858) -->
     <skip />
+    <string name="work_policy_title" msgid="832967780713677409">"Informácie o pracovných pravidlách"</string>
+    <string name="work_policy_summary" msgid="3886113358084963931">"Nastavenia spravované vaším správcom IT"</string>
 </resources>

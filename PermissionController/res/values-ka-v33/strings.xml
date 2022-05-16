@@ -17,7 +17,10 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="role_dialer_request_description" msgid="6188305064871543419">"ეს აპი შეძლებს თქვენთვის შეტყობინებების გამოგზავნასა და თქვენს კამერაზე, კონტაქტებზე, მიკროფონზე, ტელეფონსა და SMS-ებზე წვდომას"</string>
-    <string name="role_sms_request_description" msgid="5567372488335965327">"ეს აპი შეძლებს თქვენთვის შეტყობინებების გამოგზავნასა და თქვენს კამერაზე, კონტაქტებზე, ფაილებსა და დოკუმენტებზე, მიკროფონზე, ტელეფონსა და SMS-ებზე წვდომას"</string>
+    <!-- no translation found for role_sms_request_description (1506966389698625395) -->
+    <skip />
+    <!-- no translation found for permission_description_summary_storage (1917071243213043858) -->
+    <skip />
     <string name="work_policy_title" msgid="832967780713677409">"ინფორმაცია თქვენი სამსახურის პოლიტიკის შესახებ"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"პარამეტრებს მართავს თქვენი IT ადმინისტრატორი"</string>
 </resources>
