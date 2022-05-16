@@ -43,6 +43,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.UserHandle;
+import android.provider.DeviceConfig;
 import android.safetycenter.SafetyCenterManager;
 import android.safetycenter.SafetyCenterManager.RefreshReason;
 import android.safetycenter.SafetyCenterManager.RefreshRequestType;
@@ -65,12 +66,18 @@ final class SafetyCenterBroadcastDispatcher {
     private static final String TAG = "SafetyCenterBroadcastDi";
 
     /**
-     * Time for which an app, upon receiving a particular broadcast, will be placed on a temporary
-     * power allowlist allowing it to start a foreground service from the background.
+     * Device Config flag that determines the time for which an app, upon receiving a Safety Center
+     * refresh broadcast, will be placed on a temporary power allowlist allowing it to start a
+     * foreground service from the background.
      */
-    // TODO(b/219553295): Use a Device Config value instead, so that this duration can be
-    //  easily adjusted.
-    private static final Duration ALLOWLIST_DURATION = Duration.ofSeconds(20);
+    private static final String PROPERTY_FGS_ALLOWLIST_DURATION_MILLIS =
+            "safety_center_refresh_fgs_allowlist_duration_millis";
+
+    /**
+     * Default time for which an app, upon receiving a particular broadcast, will be placed on a
+     * temporary power allowlist allowing it to start a foreground service from the background.
+     */
+    private static final Duration FGS_ALLOWLIST_DEFAULT_DURATION = Duration.ofSeconds(20);
 
     @NonNull private final Context mContext;
 
@@ -222,11 +229,11 @@ final class SafetyCenterBroadcastDispatcher {
     private static BroadcastOptions createBroadcastOptions() {
         BroadcastOptions broadcastOptions = BroadcastOptions.makeBasic();
         // The following operation requires the START_FOREGROUND_SERVICES_FROM_BACKGROUND
-        // permission.
+        // and READ_DEVICE_CONFIG permissions.
         final long callingId = Binder.clearCallingIdentity();
         try {
             broadcastOptions.setTemporaryAppAllowlist(
-                    ALLOWLIST_DURATION.toMillis(),
+                    getFgsAllowlistDuration().toMillis(),
                     TEMPORARY_ALLOW_LIST_TYPE_FOREGROUND_SERVICE_ALLOWED,
                     REASON_REFRESH_SAFETY_SOURCES,
                     "Safety Center is requesting data from safety sources");
@@ -249,5 +256,17 @@ final class SafetyCenterBroadcastDispatcher {
                 return EXTRA_REFRESH_REQUEST_TYPE_GET_DATA;
         }
         throw new IllegalArgumentException("Unexpected refresh reason: " + refreshReason);
+    }
+
+    /**
+     * Returns the time for which an app, upon receiving a particular broadcast, should be placed on
+     * a temporary power allowlist allowing it to start a foreground service from the background.
+     */
+    private static Duration getFgsAllowlistDuration() {
+        return Duration.ofMillis(
+                DeviceConfig.getLong(
+                        DeviceConfig.NAMESPACE_PRIVACY,
+                        PROPERTY_FGS_ALLOWLIST_DURATION_MILLIS,
+                        FGS_ALLOWLIST_DEFAULT_DURATION.toMillis()));
     }
 }
