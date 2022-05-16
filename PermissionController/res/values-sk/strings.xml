@@ -74,7 +74,7 @@
     <string name="storage_supergroup_warning_allow" msgid="103093462784523190">"Táto aplikácia bola navrhnutá pre staršiu verziu Androidu. Ak zapnete toto povolenie, povolíte prístup k celému svojmu ukladaciemu priestoru (vrátane fotiek, videí, hudby, zvuku a ďalších súborov)."</string>
     <string name="storage_supergroup_warning_deny" msgid="6420765672683284347">"Táto aplikácia bola navrhnutá pre staršiu verziu Androidu. Ak toto povolenie odmietnete, zakážete prístup k celému svojmu ukladaciemu priestoru (vrátane fotiek, videí, hudby, zvuku a ďalších súborov)."</string>
     <string name="default_permission_description" msgid="4624464917726285203">"umožňuje vykonať neznámu akciu"</string>
-    <string name="app_permissions_group_summary" msgid="8788419008958284002">"Povolené pri <xliff:g id="COUNT_0">%1$d</xliff:g> z <xliff:g id="COUNT_1">%2$d</xliff:g> aplik."</string>
+    <string name="app_permissions_group_summary" msgid="8788419008958284002">"Povolené pri <xliff:g id="COUNT_0">%1$d</xliff:g> z(o) <xliff:g id="COUNT_1">%2$d</xliff:g> aplik."</string>
     <string name="app_permissions_group_summary2" msgid="4329922444840521150">"Počet povolených aplikácií: <xliff:g id="COUNT_0">%1$d</xliff:g>/<xliff:g id="COUNT_1">%2$d</xliff:g>"</string>
     <string name="menu_show_system" msgid="4254021607027872504">"Zobraziť systémové"</string>
     <string name="menu_hide_system" msgid="3855390843744028465">"Skryť systémové"</string>
@@ -236,8 +236,10 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Aplikácie s týmto povolením majú prístup k dátam senzorov o vašich životných funkciách"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Aplikácie s týmto povolením môžu odosielať a zobrazovať správy SMS"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Aplikácie s týmto povolením majú prístup k fotkám, médiám a súborom vo vašom zariadení"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"Aplikácie s týmto povolením majú prístup k hudbe a ďalším zvukovým súborom vo vašom zariadení"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"Aplikácie s týmto povolením majú prístup k fotkám a videám vo vašom zariadení"</string>
+    <!-- no translation found for permission_description_summary_read_media_aural (3354728149930482199) -->
+    <skip />
+    <!-- no translation found for permission_description_summary_read_media_visual (4991801977881732641) -->
+    <skip />
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Posledný prístup: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Momentálne zamietnuté / posledný prístup <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Nikdy nebolo použité"</string>
@@ -447,11 +449,15 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Približná"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup ku kalendáru?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; odosielať a zobrazovať správy SMS?"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k &lt;b&gt;súborom a dokumentom&lt;/b&gt; vo vašom zariadení?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k &lt;b&gt;fotkám, videám, hudbe a zvuku&lt;/b&gt; vo vašom zariadení?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k &lt;b&gt;fotkám, videám, hudbe, zvuku a ďalším súborom&lt;/b&gt; vo vašom zariadení?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k hudbe a ďalším zvukovým súborom v tomto zariadení?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k fotkám a videám tohto zariadenia?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k fotkám, médiám a súborom v zariadení?"</string>
+    <!-- no translation found for permgrouprequest_storage_q_to_s (8213701872983685505) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_storage_pre_q (168130651144569428) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_aural (2593365397347577812) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_visual (5548780620779729975) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; nahrávať zvuk?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Táto aplikácia bude môcť nahrávať zvuk iba vtedy, keď ju budete používať"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; nahrávať zvuk?"</string>
@@ -473,7 +479,6 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Ak chcete tejto aplikácii povoliť nepretržitý prístup k údajom telového senzora, a to aj v prípade, že ju nepoužívate, "<annotation id="link">"prejdite do nastavení."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; prístup k dátam telových senzorov počas jej používania?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; posielať vám upozornenia?"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Chcete povoliť aplikácii &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; posielať vám ďalej upozornenia?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Ovládané povolenia"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Polohu je možné používať"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Váš správca IT povoľuje aplikácii <xliff:g id="APP_NAME">%s</xliff:g> používať vašu polohu"</string>

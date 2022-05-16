@@ -199,7 +199,7 @@
     <string name="unused_apps_category_title" msgid="2988455616845243901">"အသုံးမပြုသော အက်ပ်ဆက်တင်များ"</string>
     <string name="auto_revoke_label" msgid="5068393642936571656">"အက်ပ်ကိုအသုံးမပြုလျှင် ခွင့်ပြုချက်များ ဖယ်ရှားရန်"</string>
     <string name="unused_apps_label" msgid="2595428768404901064">"ခွင့်ပြုချက်များဖယ်ရှားပြီး နေရာလွတ်ပြုလုပ်ရန်"</string>
-    <string name="unused_apps_label_v2" msgid="7058776770056517980">"အသုံးမပြုပါက အက်ပ် အသုံးပြုမှု ခဏရပ်ရန်"</string>
+    <string name="unused_apps_label_v2" msgid="7058776770056517980">"အသုံးမပြုပါက အက်ပ်လုပ်ဆောင်ချက် ခဏရပ်ရန်"</string>
     <string name="unused_apps_summary" msgid="8839466950318403115">"ခွင့်ပြုချက်များ ဖယ်ရှားခြင်း၊ ယာယီဖိုင်များ ဖျက်ခြင်းနှင့် အကြောင်းကြားချက်များ ရပ်ခြင်းတို့ ပြုလုပ်နိုင်သည်"</string>
     <string name="auto_revoke_summary" msgid="5867548789805911683">"အက်ပ်ကို လအနည်းငယ် အသုံးမပြုပါက သင်၏ဒေတာကိုကာကွယ်ရန် ဤအက်ပ်အတွက် ခွင့်ပြုချက်များကို ဖယ်ရှားပါမည်။"</string>
     <string name="auto_revoke_summary_with_permissions" msgid="389712086597285013">"အက်ပ်ကို လအနည်းငယ် အသုံးမပြုပါက သင်၏ဒေတာကိုကာကွယ်ရန် အောက်ပါခွင့်ပြုချက်များကို ဖယ်ရှားပါမည်- <xliff:g id="PERMS">%1$s</xliff:g>"</string>
@@ -236,8 +236,10 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များက သင်၏အရေးကြီးသော ကျန်းမာရေးလက္ခဏာများနှင့်ဆိုင်သည့် အာရုံခံစနစ်ဒေတာကို ဝင်သုံးနိုင်သည်"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်က SMS မက်ဆေ့ဂျ် ပို့နိုင်၊ ကြည့်နိုင်သည်"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"ဤခွင့်ပြုချက်ရှိသော အက်ပ်များက သင့်စက်ပေါ်ရှိ ဓာတ်ပုံ၊ မီဒီယာနှင့် ဖိုင်များကို ဝင်သုံးနိုင်သည်"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"ဤခွင့်ပြုချက်ရှိသည့် အက်ပ်များသည် သင့်စက်ရှိ တေးဂီတနှင့် အခြားအသံဖိုင်များကို သုံးနိုင်သည်"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"ဤခွင့်ပြုချက်ရှိသည့် အက်ပ်များသည် သင့်စက်ရှိ ဓာတ်ပုံနှင့် ဗီဒီယိုများကို သုံးနိုင်သည်"</string>
+    <!-- no translation found for permission_description_summary_read_media_aural (3354728149930482199) -->
+    <skip />
+    <!-- no translation found for permission_description_summary_read_media_visual (4991801977881732641) -->
+    <skip />
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"နောက်ဆုံး အသုံးပြုချိန်- <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"လက်ရှိငြင်းပယ်ထားသည် / နောက်ဆုံးဝင်သုံးချိန်− <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"တစ်ခါမှ အသုံးပြုမထားပါ"</string>
@@ -340,15 +342,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"ဖုန်းအက်ပ်"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"သင့်စက်ပစ္စည်းတွင် တယ်လီဖုန်းခေါ်ဆိုမှုများ ပြုလုပ်၊ လက်ခံခွင့်ပြုသော အက်ပ်များ"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g> ကို သင့်ဖုန်း၏ မူရင်းအက်ပ်အဖြစ် သတ်မှတ်လိုပါသလား။"</string>
-    <!-- no translation found for role_dialer_request_description (6288839625724909320) -->
-    <skip />
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"သင်၏ ‘ကင်မရာ’၊ ‘အဆက်အသွယ်များ’၊ ‘မိုက်ခရိုဖုန်း’၊ ‘ဖုန်း’ နှင့် ‘SMS စာတိုစနစ်’ တို့ကို ဤအက်ပ်အား သုံးခွင့်ပေးပါမည်"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"ခေါ်ဆိုရန်နံပါတ်ကွက်"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"မူရင်း SMS အက်ပ်"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS အက်ပ်"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"စာတိုမက်ဆေ့ဂျ်၊ ဓာတ်ပုံ၊ ဗီဒီယိုနှင့် နောက်ထပ်အရာများ ပို့ရန်၊ လက်ခံရန်အတွက် သင့်ဖုန်းနံပါတ်ကို အသုံးပြုခွင့်ပေးသော အက်ပ်များ"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g> ကို သင့်မူလ SMS အက်ပ်အဖြစ် သတ်မှတ်လိုပါသလား။"</string>
-    <!-- no translation found for role_sms_request_description (2691004766132144886) -->
-    <skip />
+    <string name="role_sms_request_description" msgid="2691004766132144886">"သင်၏ ‘ကင်မရာ’၊ ‘အဆက်အသွယ်များ’၊ ‘Files နှင့် မီဒီယာ’၊ ‘မိုက်ခရိုဖုန်း’၊ ‘ဖုန်း’ နှင့် ‘SMS စာတိုစနစ်’ တို့ကို ဤအက်ပ်အား သုံးခွင့်ပေးပါမည်"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"စာတို၊ စာတိုရိုက်ခြင်း၊ စာများ၊ စာပို့ခြင်း"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"မူရင်း အရေးပေါ်အက်ပ်"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"အရေးပေါ် အက်ပ်"</string>
@@ -449,11 +449,15 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"ခန့်မှန်းခြေ"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သင်၏ပြက္ခဒိန်ကို သုံးခွင့်ပေးလိုပါသလား။"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား SMS မက်ဆေ့ဂျ်များ ကြည့်ရှုခွင့်နှင့် ပို့ခွင့်ပေးလိုပါသလား။"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"စက်ရှိ &lt;b&gt;ဖိုင်နှင့် မှတ်တမ်းများ&lt;/b&gt; ကို &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သုံးခွင့်ပေးမလား။"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"စက်ရှိ &lt;b&gt;ဓာတ်ပုံ၊ ဗီဒီယို၊ တေးဂီတနှင့် အသံများ&lt;/b&gt; ကို &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သုံးခွင့်ပေးမလား။"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"စက်ရှိ &lt;b&gt;ဓာတ်ပုံ၊ ဗီဒီယို၊ တေးဂီတ၊ အသံနှင့်အခြားဖိုင်များ&lt;/b&gt; ကို &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သုံးခွင့်ပေးမလား။"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"ဤစက်ရှိ တေးဂီတနှင့် အခြားအသံဖိုင်များကို &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သုံးခွင့်ပေးမလား။"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"ဤစက်၏ ဓာတ်ပုံနှင့် ဗီဒီယိုများကို &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သုံးခွင့်ပေးမလား။"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; အား သင့်ဖုန်းရှိ ဓာတ်ပုံများ၊ မီဒီယာနှင့် ဖိုင်များ ဝင်သုံးခွင့်ပေးလိုပါသလား။"</string>
+    <!-- no translation found for permgrouprequest_storage_q_to_s (8213701872983685505) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_storage_pre_q (168130651144569428) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_aural (2593365397347577812) -->
+    <skip />
+    <!-- no translation found for permgrouprequest_read_media_visual (5548780620779729975) -->
+    <skip />
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ကို အသံဖမ်းယူခွင့် ပေးလိုပါသလား။"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"ဤအက်ပ်ကို အသုံးပြုနေသည့် အချိန်တွင်သာ ၎င်းက အသံဖမ်းနိုင်သည်။"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ကို အသံဖမ်းခွင့် ပေးလိုပါသလား။"</string>
@@ -475,7 +479,6 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"အက်ပ်သုံးမနေသော်လည်း ဤအက်ပ်ကို ခန္ဓာကိုယ်အာရုံခံစနစ် ဒေတာများ အမြဲသုံးခွင့်ပြုရန် "<annotation id="link">"ဆက်တင်များသို့ သွားပါ။"</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"အက်ပ်သုံးစဉ် &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ကို ခန္ဓာကိုယ်အာရုံခံစနစ် ဒေတာ ဆက်သုံးခွင့်ပြုမလား။"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ကို သင့်ထံ အကြောင်းကြားချက်များ ပို့ခွင့်ပြုမလား။"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ကို သင့်ထံ အကြောင်းကြားချက်များ ဆက်ပို့ခွင့်ပြုမလား။"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"ထိန်းချုပ်ထားသော ခွင့်ပြုချက်များ"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"တည်နေရာကို ဝင်ကြည့်နိုင်သည်"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"သင့် IT စီမံခန့်ခွဲသူက <xliff:g id="APP_NAME">%s</xliff:g> အား သင်၏တည်နေရာကို ဝင်ကြည့်ခွင့်ပြုထားသည်"</string>
