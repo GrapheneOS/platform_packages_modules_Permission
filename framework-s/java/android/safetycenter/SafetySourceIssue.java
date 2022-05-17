@@ -296,9 +296,9 @@ public final class SafetySourceIssue implements Parcelable {
                 + mId
                 + "mTitle="
                 + mTitle
-                + ", mSummary="
-                + mSubtitle
                 + ", mSubtitle="
+                + mSubtitle
+                + ", mSummary="
                 + mSummary
                 + ", mSeverityLevel="
                 + mSeverityLevel
