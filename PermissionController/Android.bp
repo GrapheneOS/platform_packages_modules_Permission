@@ -152,6 +152,7 @@ android_app {
     kotlincflags: ["-Xjvm-default=enable"],
 
     apex_available: [
+        "//apex_available:platform",
         "com.android.permission",
     ],
 }
