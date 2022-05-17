@@ -17,8 +17,6 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="role_dialer_request_description" msgid="6188305064871543419">"该应用将可以向您发送通知，并获得对摄像头、通讯录、麦克风、电话和短信的访问权限"</string>
-    <!-- no translation found for role_sms_request_description (1506966389698625395) -->
-    <skip />
-    <!-- no translation found for permission_description_summary_storage (1917071243213043858) -->
-    <skip />
+    <string name="role_sms_request_description" msgid="1506966389698625395">"该应用将可以向您发送通知，并且能够访问您的摄像头、通讯录、文件、麦克风、电话和短信"</string>
+    <string name="permission_description_summary_storage" msgid="1917071243213043858">"具有此权限的应用可以访问此设备上的所有文件"</string>
 </resources>
