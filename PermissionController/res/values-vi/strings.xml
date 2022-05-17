@@ -236,8 +236,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Các ứng dụng có quyền này có thể truy cập vào dữ liệu cảm biến về những dấu hiệu sinh tồn của bạn"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Các ứng dụng có quyền này có thể gửi và xem tin nhắn SMS"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Các ứng dụng có quyền này có thể truy cập vào ảnh, nội dung nghe nhìn và tệp trên thiết bị của bạn"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"Các ứng dụng được cấp quyền này có thể truy cập vào nhạc và các tệp âm thanh khác trên thiết bị của bạn"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"Các ứng dụng được cấp quyền này có thể truy cập vào ảnh và video trên thiết bị của bạn"</string>
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"Các ứng dụng được cấp quyền này có thể truy cập vào nhạc và tệp âm thanh khác trên thiết bị này"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"Các ứng dụng được cấp quyền này có thể truy cập vào ảnh và video trên thiết bị này"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Lần truy cập gần đây nhất: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Hiện đã từ chối/Lần truy cập gần đây nhất: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Chưa bao giờ truy cập"</string>
@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Được phép quản lý tất cả các tệp"</string>
     <string name="ask_header" msgid="2633816846459944376">"Luôn hỏi"</string>
     <string name="denied_header" msgid="903209608358177654">"Không được phép"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Xem thêm ứng dụng có thể truy cập tất cả các tệp"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 ngày}other{# ngày}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 giờ}other{# giờ}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 phút}other{# phút}}"</string>
@@ -332,8 +331,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"Ứng dụng trợ lý kỹ thuật số mặc định"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Ứng dụng trợ lý kỹ thuật số"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Các ứng dụng trợ lý có thể giúp bạn dựa trên thông tin từ màn hình bạn đang xem. Một số ứng dụng hỗ trợ cả dịch vụ nhập bằng giọng nói và trình chạy để hỗ trợ bạn toàn diện hơn."</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"Bạn muốn đặt <xliff:g id="APP_NAME">%1$s</xliff:g> làm ứng dụng trợ lý mặc định?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"Có quyền truy cập vào SMS, nhật ký cuộc gọi"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Ứng dụng trình duyệt mặc định"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Ứng dụng trình duyệt"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Các ứng dụng giúp bạn truy cập vào Internet và hiển thị đường liên kết để bạn nhấn vào"</string>
@@ -343,13 +340,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Ứng dụng điện thoại"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Các ứng dụng cho phép bạn thực hiện và nhận cuộc gọi điện thoại trên thiết bị của mình"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Bạn muốn đặt <xliff:g id="APP_NAME">%1$s</xliff:g> làm ứng dụng điện thoại mặc định?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"Có quyền truy cập vào nhật ký cuộc gọi, gửi SMS"</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"Ứng dụng này sẽ được cấp quyền truy cập vào Máy ảnh, Danh bạ, Micrô, Điện thoại và tin nhắn SMS của bạn"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"trình quay số"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Ứng dụng SMS mặc định"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"Ứng dụng SMS"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Các ứng dụng cho phép bạn sử dụng số điện thoại để gửi và nhận tin nhắn văn bản ngắn, ảnh, video, v.v."</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Bạn muốn đặt <xliff:g id="APP_NAME">%1$s</xliff:g> làm ứng dụng SMS mặc định?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"Có quyền truy cập vào danh bạ, SMS, điện thoại"</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"Ứng dụng này sẽ được cấp quyền truy cập vào Máy ảnh, Danh bạ, Tệp và nội dung nghe nhìn, Micrô, Điện thoại và tin nhắn SMS của bạn"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"tin nhắn văn bản, nhắn tin, tin nhắn, nhắn"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"Ứng dụng khẩn cấp mặc định"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"Ứng dụng khẩn cấp"</string>
@@ -450,11 +447,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Gần đúng"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào lịch của bạn?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; gửi và xem tin nhắn SMS?"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào &lt;b&gt;tệp và tài liệu&lt;/b&gt; trên thiết bị của bạn?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào &lt;b&gt;ảnh, video, nhạc và âm thanh&lt;/b&gt; trên thiết bị của bạn?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào &lt;b&gt;ảnh, video, nhạc, âm thanh và các tệp khác&lt;/b&gt; trên thiết bị của bạn?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào nhạc và các tệp âm thanh khác trên thiết bị này?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào ảnh và video trên thiết bị này?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào ảnh, nội dung nghe nhìn và tệp trên thiết bị của bạn?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào &lt;b&gt;ảnh, video, nhạc và âm thanh&lt;/b&gt; trên thiết bị này?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào &lt;b&gt;ảnh, video, nhạc, âm thanh và các tệp khác&lt;/b&gt; trên thiết bị này?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào nhạc và âm thanh trên thiết bị này?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào ảnh và video trên thiết bị này?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ghi âm?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Ứng dụng này chỉ có thể ghi âm khi bạn đang dùng ứng dụng"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ghi âm?"</string>
@@ -476,7 +473,6 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Để cho phép ứng dụng này truy cập vào dữ liệu cảm biến cơ thể bất cứ lúc nào, ngay cả khi bạn đang không dùng ứng dụng, "<annotation id="link">"chuyển đến phần cài đặt."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Luôn cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; truy cập vào dữ liệu cảm biến cơ thể trong khi đang dùng ứng dụng?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; gửi thông báo cho bạn?"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Cho phép &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; tiếp tục gửi thông báo cho bạn?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Các quyền bị kiểm soát"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Ứng dụng có thể truy cập thông tin vị trí"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"Quản trị viên CNTT đang cho phép ứng dụng <xliff:g id="APP_NAME">%s</xliff:g> truy cập vào thông tin vị trí của bạn"</string>

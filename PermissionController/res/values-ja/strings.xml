@@ -236,8 +236,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"この権限があるアプリはバイタルサインに関するセンサーデータにアクセスできます"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"この権限があるアプリは SMS メッセージの送信、参照を行えます"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"この権限があるアプリは、デバイス内の写真、メディア、ファイルにアクセスできます"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"この権限があるアプリはデバイス内の音楽などの音声ファイルにアクセスできます"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"この権限があるアプリはデバイス内の写真や動画にアクセスできます"</string>
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"この権限があるアプリはデバイス内の音楽などの音声ファイルにアクセスできます"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"この権限があるアプリはデバイス内の写真や動画にアクセスできます"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"最終アクセス: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"現在は許可しない / 最終アクセス: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"未アクセス"</string>
@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"すべてのファイルの管理が許可されたアプリ"</string>
     <string name="ask_header" msgid="2633816846459944376">"毎回確認する"</string>
     <string name="denied_header" msgid="903209608358177654">"許可しない"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"すべてのファイルにアクセスできるアプリをもっと見る"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 日}other{# 日}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 時間}other{# 時間}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 分}other{# 分}}"</string>
@@ -332,8 +331,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"デフォルトのデジタル アシスタント アプリ"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"デジタル アシスタント アプリ"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"アシストアプリは、表示している画面の情報に基づいてアシスタントを提供します。一部のアプリはランチャーと音声入力サービスの両方に対応しており、統合されたアシスタントを提供します。"</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"<xliff:g id="APP_NAME">%1$s</xliff:g> をデフォルトのアシストアプリとして設定しますか？"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"SMS、通話履歴へのアクセス権が必要です"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"デフォルトのブラウザアプリ"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"ブラウザアプリ"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"インターネットにアクセスするためのアプリです。タップしたリンクは、このアプリで開きます。"</string>
@@ -343,13 +340,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"電話アプリ"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"電話の発着信に使うアプリです"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g> をデフォルトの電話アプリとして設定しますか？"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"通話履歴へのアクセス権、SMS の送信権限が必要です"</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"このアプリは、カメラ、連絡先、マイク、電話、SMS にアクセスできるようになります"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"電話"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"デフォルトの SMS アプリ"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"SMS アプリ"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"電話番号を使用して短いテキスト メッセージ、写真、動画などを送受信できるアプリです"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g> をデフォルトの SMS アプリとして設定しますか？"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"連絡先、SMS、電話へのアクセス権が必要です"</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"このアプリは、カメラ、連絡先、ファイル、メディア、マイク、電話、SMS にアクセスできるようになります"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"テキスト メッセージ、テキスト送信、メッセージ、SMS"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"デフォルトの緊急アプリ"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"緊急アプリ"</string>
@@ -450,11 +447,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"おおよそ"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"カレンダーへのアクセスを「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に許可しますか？"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"SMS メッセージの送信と表示を「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に許可しますか？"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"デバイス内の&lt;b&gt;ファイルやドキュメント&lt;/b&gt;へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"デバイス内の&lt;b&gt;写真、動画、音楽、音声&lt;/b&gt;へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"デバイス内の&lt;b&gt;写真、動画、音楽、音声などのファイル&lt;/b&gt;へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"このデバイス内の音楽などの音声ファイルへのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"このデバイス内の写真や動画へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"デバイス内の写真、メディア、ファイルへのアクセスを「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に許可しますか？"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"このデバイス内の&lt;b&gt;写真、動画、音楽、音声&lt;/b&gt;へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"このデバイス内の&lt;b&gt;写真、動画、音楽、音声などのファイル&lt;/b&gt;へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"このデバイス内の音楽や音声へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"このデバイス内の写真や動画へのアクセスを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"音声の録音を「&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;」に許可しますか？"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"アプリは、ユーザーがアプリを使用している場合のみ音声を録音できます"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"音声の録音を &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
@@ -476,7 +473,6 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"アプリの未使用時も、常にボディセンサー データにアクセスすることをこのアプリに許可するには、"<annotation id="link">"設定に移動"</annotation>"してください。"</string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ボディセンサー データへのアクセスを、引き続きアプリの使用時のみ &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"通知の送信を &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"通知を引き続き送信することを &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; に許可しますか？"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"権限は管理されています"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"位置情報へのアクセスが許可されています"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"IT 管理者があなたの位置情報へのアクセスを <xliff:g id="APP_NAME">%s</xliff:g> に許可しています"</string>

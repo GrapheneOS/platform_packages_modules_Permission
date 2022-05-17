@@ -236,8 +236,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"इस अनुमति वाले ऐप्लिकेशन, आपके बारे में खास जानकारी देने वाली चीज़ों को बताने वाले सेंसर डेटा को ऐक्सेस कर सकते हैं"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"इस अनुमति वाले ऐप्लिकेशन, मैसेज (एसएमएस) भेज और देख सकते हैं"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"इसकी अनुमति वाले ऐप्लिकेशन आपके डिवाइस की फ़ोटो, मीडिया, और फ़ाइलें ऐक्सेस कर सकते हैं"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"जिन ऐप्लिकेशन को यह अनुमति मिलेगी वे आपके डिवाइस में मौजूद, संगीत और दूसरी ऑडियो फ़ाइलें ऐक्सेस कर पाएंगे"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"जिन ऐप्लिकेशन को यह अनुमति मिलेगी वे आपके डिवाइस में मौजूद, फ़ोटो और वीडियो ऐक्सेस कर पाएंगे"</string>
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"जिन ऐप्लिकेशन को यह अनुमति मिलेगी वे इस डिवाइस में मौजूद, संगीत और दूसरी ऑडियो फ़ाइलें ऐक्सेस कर पाएंगे"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"जिन ऐप्लिकेशन को यह अनुमति मिलेगी वे इस डिवाइस में मौजूद, फ़ोटो और वीडियो ऐक्सेस कर पाएंगे"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"पिछली बार ऐक्सेस किया गया: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"इस समय मना किया गया / आखिरी बार ऐक्सेस किया गया: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"कभी ऐक्सेस नहीं किया गया"</string>
@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"ये ऐप्लिकेशन सभी फ़ाइलों को मैनेज कर सकते हैं"</string>
     <string name="ask_header" msgid="2633816846459944376">"हर बार पूछें"</string>
     <string name="denied_header" msgid="903209608358177654">"अनुमति नहीं है"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"ऐसे और ऐप्लिकेशन देखें जो सभी फ़ाइलों को ऐक्सेस कर सकते हैं"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 दिन}one{# दिन}other{# दिन}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 घंटा}one{# घंटा}other{# घंटे}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 मिनट}one{# मिनट}other{# मिनट}}"</string>
@@ -332,8 +331,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"डिफ़ॉल्ट डिजिटल असिस्टेंट ऐप"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"डिजिटल असिस्टेंट ऐप्लिकेशन"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"आप जो स्क्रीन देख रहे हैं, उसकी जानकारी के मुताबिक सहायक ऐप्लिकेशन आपकी मदद कर सकते हैं. कुछ ऐप्लिकेशन पर आपकी पूरी मदद करने के लिए लॉन्चर और बोलकर फ़ोन को निर्देश देना, ये दोनों सेवाएं काम करती हैं."</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"<xliff:g id="APP_NAME">%1$s</xliff:g> को अपना डिफ़ॉल्ट सहायता ऐप्लिकेशन सेट करें?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"मैसेज, कॉल लॉग का ऐक्सेस पाएं"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"डिफ़ॉल्ट ब्राउज़र ऐप्लिकेशन"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"ब्राउज़र ऐप्लिकेशन"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"ऐसे ऐप्लिकेशन जिनसे आपको इंटरनेट का ऐक्सेस मिलता है. साथ ही, टैप करने के लिए डिसप्ले लिंक मिलता है"</string>
@@ -343,13 +340,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"फ़ोन ऐप्लिकेशन"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"ऐसे ऐप्लिकेशन जिनकी मदद से, अपने डिवाइस से टेलीफ़ोन कॉल किए जा सकते हैं और इनकमिंग कॉल का जवाब दिया जा सकता है"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g> को आपके डिफ़ॉल्ट फ़ोन ऐप्लिकेशन के तौर पर सेट करें?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"कॉल लॉग का ऐक्सेस मिलता है, मैसेज भेजें"</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"इस ऐप्लिकेशन को आपके कैमरे, संपर्कों, माइक्रोफ़ोन, फ़ोन, और मैसेज (एसएमएस) का ऐक्सेस मिलेगा"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"डायलर"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"मैसेज का डिफ़ॉल्ट ऐप्लिकेशन"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"एसएमएस ऐप्लिकेशन"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"ऐसे ऐप्लिकेशन जिनकी मदद से अपने फ़ोन नंबर का इस्तेमाल मैसेज, फ़ोटो, वीडियो के साथ ही दूसरी चीज़ें भेजने और पाने के लिए किया जा सकता है"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g> को अपने डिफ़ॉल्ट मैसेज ऐप्लिकेशन के तौर पर सेट करें?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"संपर्कों, मैसेज, फ़ोन का ऐक्सेस मिलता है"</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"इस ऐप्लिकेशन को आपके कैमरे, संपर्कों, फ़ाइलों और मीडिया, माइक्रोफ़ोन, फ़ोन, और मैसेज (एसएमएस) का ऐक्सेस मिलेगा"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"मैसेज, मैसेज भेजना, मैसेज करना, मैसेज भेजना या पाना."</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"डिफ़ॉल्ट आपातकालीन ऐप्लिकेशन"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"आपातकालीन ऐप्लिकेशन"</string>
@@ -450,11 +447,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"अनुमानित जगह"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को अपना कैलेंडर देखने की अनुमति देना चाहते हैं?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को एसएमएस (मैसेज) भेजने और देखने की अनुमति देना चाहते हैं?"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"क्या &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को डिवाइस में मौजूद &lt;b&gt;फ़ाइलों और दस्तावेज़ों&lt;/b&gt; का ऐक्सेस देना है?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"क्या &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को डिवाइस में मौजूद &lt;b&gt;फ़ोटो, वीडियो, संगीत, और ऑडियो&lt;/b&gt; का ऐक्सेस देना है?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को डिवाइस में मौजूद &lt;b&gt;फ़ोटो, वीडियो, संगीत, ऑडियो, और दूसरी फ़ाइलों&lt;/b&gt; का ऐक्सेस दें?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"क्या &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को इस डिवाइस में मौजूद संगीत और दूसरी ऑडियो फ़ाइलों का ऐक्सेस देना है?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"क्या &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को इस डिवाइस में मौजूद फ़ोटो और वीडियो का ऐक्सेस देना है?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को डिवाइस पर मौजूद फ़ोटो, ऑडियो-वीडियो, और फ़ाइलें ऐक्सेस करने की अनुमति देना चाहते हैं?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को इस डिवाइस में मौजूद &lt;b&gt;फ़ोटो, वीडियो, संगीत, और ऑडियो&lt;/b&gt; का ऐक्सेस देना है?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को डिवाइस में मौजूद &lt;b&gt;फ़ोटो, वीडियो, संगीत, ऑडियो, और अन्य फ़ाइल&lt;/b&gt; का ऐक्सेस देना है?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को इस डिवाइस में मौजूद संगीत और ऑडियो का ऐक्सेस देना है?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को इस डिवाइस में मौजूद फ़ोटो और वीडियो का ऐक्सेस देना है?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को ऑडियो रिकॉर्ड करने की अनुमति देनी है?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"ऐप्लिकेशन सिर्फ़ तब ही ऑडियो रिकॉर्ड कर पाएगा, जब आप ऐप्लिकेशन इस्तेमाल कर रहे हों"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"क्या आप &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को ऑडियो रिकॉर्ड करने की अनुमति देना चाहते हैं?"</string>
@@ -476,7 +473,6 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"इस ऐप्लिकेशन का इस्तेमाल न किए जाने पर भी, इसे बॉडी सेंसर के डेटा को हमेशा ऐक्सेस करने की अनुमति देने के लिए, "<annotation id="link">"सेटिंग पर जाएं."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"क्या इस्तेमाल के दौरान, &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को बॉडी सेंसर के डेटा का ऐक्सेस देते रहना है?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को, आपको सूचनाएं भेजने की अनुमति देनी है?"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"क्या &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; को सूचनाएं भेजते रहने की अनुमति देंगें?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"कंट्रोल की गई अनुमतियां"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"जगह की जानकारी देखी जा सकती है"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"आपका आईटी एडमिन <xliff:g id="APP_NAME">%s</xliff:g> को आपकी जगह की जानकारी देखने की अनुमति दे रहा है"</string>

@@ -236,8 +236,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"இந்த அனுமதியைக் கொண்டுள்ள ஆப்ஸ் உங்கள் உடலியக்கக் குறிகள் பற்றிய சென்சார் தரவை அணுகலாம்"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"இந்த அனுமதியைக் கொண்டுள்ள ஆப்ஸால் மெசேஜ்களை அனுப்பவும் பார்க்கவும் இயலும்"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"இந்த அனுமதியைக் கொண்டுள்ள ஆப்ஸால் உங்கள் சாதனத்திலுள்ள படங்கள், மீடியா மற்றும் ஃபைல்களை அணுக இயலும்"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"இந்த அனுமதியைக் கொண்டுள்ள ஆப்ஸால் உங்கள் சாதனத்திலுள்ள இசையையும் பிற ஆடியோ ஃபைல்களையும் அணுக முடியும்"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"இந்த அனுமதியைக் கொண்டுள்ள ஆப்ஸால் உங்கள் சாதனத்திலுள்ள படங்களையும் வீடியோக்களையும் அணுக முடியும்"</string>
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"இந்த அனுமதியைக் கொண்டுள்ள ஆப்ஸால் இந்தச் சாதனத்திலுள்ள இசையையும் பிற ஆடியோ ஃபைல்களையும் அணுக முடியும்"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"இந்த அனுமதியைக் கொண்டுள்ள ஆப்ஸால் இந்தச் சாதனத்திலுள்ள படங்களையும் வீடியோக்களையும் அணுக முடியும்"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"கடைசியாகப் பயன்படுத்தியது: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"தற்போது மறுக்கப்பட்டுள்ளது / கடைசி அணுகல்: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"பயன்படுத்தியதில்லை"</string>
@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"எல்லா ஃபைல்களையும் நிர்வகிக்கும் அணுகலுள்ளவை"</string>
     <string name="ask_header" msgid="2633816846459944376">"ஒவ்வொரு முறையும் கேள்"</string>
     <string name="denied_header" msgid="903209608358177654">"அனுமதிக்கப்படாதவை"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"அனைத்து ஃபைல்களையும் அணுகக்கூடிய கூடுதல் ஆப்ஸைப் பாருங்கள்"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 நாள்}other{# நாட்கள்}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 மணிநேரம்}other{# மணிநேரம்}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 நிமிடம்}other{# நிமிடங்கள்}}"</string>
@@ -332,8 +331,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"இயல்பான டிஜிட்டல் அசிஸ்டண்ட்"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"டிஜிட்டல் அசிஸ்டண்ட் ஆப்ஸ்"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"நீங்கள் பார்க்கும் திரையில் உள்ள தகவலின் அடிப்படையில் அசிஸ்ட் ஆப்ஸ் உதவும். ஒருங்கிணைந்த உதவியை வழங்குவதற்காக \'தொடக்கியையும்\' \'குரல் உள்ளீட்டுச் சேவைகளையும்\' சில ஆப்ஸ் பயன்படுத்துகின்றன."</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"<xliff:g id="APP_NAME">%1$s</xliff:g>ஐ இயல்பான அசிஸ்ட் ஆப்ஸாக அமைக்கவா?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"மெசேஜ், அழைப்புப் பதிவுக்கான அணுகலைப் பெறும்"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"உலாவிக்கான இயல்பான ஆப்ஸ்"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"உலாவி ஆப்ஸ்"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"இணையத்திற்கும் திரையில் பார்த்துத் தட்டக்கூடிய இணைப்புகளுக்கும் அணுகலை வழங்கும் ஆப்ஸ்"</string>
@@ -343,13 +340,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"மொபைல் ஆப்ஸ்"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"உங்கள் சாதனத்தில் அழைப்புகளைச் செய்யவும் பெறவும் அனுமதிக்கும் ஆப்ஸ்"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"<xliff:g id="APP_NAME">%1$s</xliff:g>ஐ இயல்பான மொபைல் ஆப்ஸாக அமைக்கவா?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"அழைப்புப் பதிவு, மெசேஜ் ஆகியவற்றுக்கான அணுகலைப் பெறும்"</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"கேமரா, தொடர்புகள், மைக்ரோஃபோன், மொபைல், மெசேஜ் ஆகியவற்றுக்கான அணுகல் இந்த ஆப்ஸுக்கு வழங்கப்படும்"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"டயலர்"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"இயல்பான மெசேஜ் ஆப்ஸ்"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"மெசேஜ் ஆப்ஸ்"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"சிறு மெசேஜ்கள், படங்கள், வீடியோக்கள் மற்றும் பலவற்றை அனுப்புவதற்கும் பெறுவதற்கும் உங்கள் மொபைல் எண்ணைப் பயன்படுத்த அனுமதிக்கும் ஆப்ஸ்"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"<xliff:g id="APP_NAME">%1$s</xliff:g>ஐ இயல்பான மெசேஜ் ஆப்ஸாக அமைக்கவா?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"தொடர்புகள், மெசேஜ், மொபைல் ஆகியவற்றுக்கான அணுகலைப் பெறும்"</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"கேமரா, தொடர்புகள், ஃபைல்கள் &amp; மீடியா, மைக்ரோஃபோன், மொபைல், மெசேஜ் ஆகியவற்றுக்கான அணுகல் இந்த ஆப்ஸுக்கு வழங்கப்படும்"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"உரைச் செய்தி, உரைச் செய்தியிடல், மெசேஜ்கள், மெசேஜ் அனுப்புதல்"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"இயல்பான அவசரநிலை ஆப்ஸ்"</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"அவசரகால ஆப்ஸ்"</string>
@@ -450,11 +447,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"தோராயமானது"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"கேலெண்டரை அணுகுவதற்கு &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"மெசேஜ்களை அனுப்பவும், பார்க்கவும் &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"சாதனத்திலுள்ள &lt;b&gt;ஃபைல்கள் &amp; ஆவணங்களுக்கான&lt;/b&gt; அணுகலை &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸுக்கு வழங்கவா?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"சாதனத்திலுள்ள &lt;b&gt;படங்கள், வீடியோக்கள், இசை &amp; ஆடியோவிற்கான&lt;/b&gt; அணுகலை &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸுக்கு வழங்கவா?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"சாதனத்திலுள்ள &lt;b&gt;படங்கள், இசை, வீடியோ, ஆடியோ &amp; பிற ஃபைல்களுக்கான&lt;/b&gt; அணுகலை &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;க்கு வழங்கவா?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"இந்தச் சாதனத்திலுள்ள இசை மற்றும் பிற ஆடியோ ஃபைல்களுக்கான அணுகலை &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸுக்கு வழங்கவா?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"இந்தச் சாதனத்திலுள்ள படங்கள் &amp; வீடியோக்களுக்கான அணுகலை &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸுக்கு வழங்கவா?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"உங்கள் சாதனத்திலுள்ள படங்கள், மீடியா, ஃபைல்கள் ஆகியவற்றை அணுகுவதற்கு &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"சாதனத்திலுள்ள &lt;b&gt;படங்கள், வீடியோக்கள், இசை &amp; ஆடியோவுக்கான&lt;/b&gt; அணுகலை &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸுக்கு வழங்கவா?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"சாதனத்திலுள்ள &lt;b&gt;படம், வீடியோ, இசை, ஆடியோ &amp; பிற ஃபைல்களின்&lt;/b&gt; அணுகலை &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸுக்கு வழங்கவா?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"இந்தச் சாதனத்திலுள்ள இசை மற்றும் ஆடியோவுக்கான அணுகலை &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸுக்கு வழங்கவா?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"இந்தச் சாதனத்திலுள்ள படங்கள் மற்றும் வீடியோக்களுக்கான அணுகலை &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸுக்கு வழங்கவா?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"ஆடியோ ரெக்கார்டு செய்ய &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"இந்த ஆப்ஸை நீங்கள் உபயோகிக்கும்போது மட்டுமே ஆடியோ ரெக்கார்டு செய்யும்"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"ஆடியோ ரெக்கார்டு செய்ய &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
@@ -476,7 +473,6 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"இந்த ஆப்ஸ் எல்லா நேரங்களிலும் உடல் சென்சார் தரவை அணுக (நீங்கள் ஆப்ஸைப் பயன்படுத்தாதபோதும்) "<annotation id="link">"அமைப்புகளுக்குச் செல்லுங்கள்."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"ஆப்ஸ் பயன்பாட்டில் இருக்கும்போது உடல் சென்சார் தரவை அணுக &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&amp;gt ஆப்ஸுக்குத் தொடர்ந்து அனுமதியளிக்கவா?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"உங்களுக்கு அறிவிப்புகளை அனுப்ப &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"உங்களுக்குத் தொடர்ந்து அறிவிப்புகளை அனுப்ப &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ஆப்ஸை அனுமதிக்கவா?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"கட்டுப்படுத்தப்பட்ட அனுமதிகள்"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"இருப்பிடத்தை அணுகலாம்"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"<xliff:g id="APP_NAME">%s</xliff:g> ஆப்ஸ் உங்கள் இருப்பிடத்தை அணுக உங்கள் IT நிர்வாகி அனுமதித்துள்ளார்"</string>
