@@ -17,10 +17,8 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="role_dialer_request_description" msgid="6188305064871543419">"កម្មវិធី​នេះ​នឹង​ត្រូវ​បាន​អនុញ្ញាត​ឱ្យផ្ញើ​ការ​ជូនដំណឹងដល់អ្នក​ ហើយ​នឹង​ត្រូវ​បាន​ផ្ដល់​សិទ្ធិ​ចូល​ប្រើ​កាមេរ៉ា ទំនាក់ទំនង មីក្រូហ្វូន ទូរសព្ទ និង​សារ SMS របស់​អ្នក"</string>
-    <!-- no translation found for role_sms_request_description (1506966389698625395) -->
-    <skip />
-    <!-- no translation found for permission_description_summary_storage (1917071243213043858) -->
-    <skip />
+    <string name="role_sms_request_description" msgid="1506966389698625395">"កម្មវិធី​នេះ​នឹង​ត្រូវ​បាន​អនុញ្ញាត​ឱ្យផ្ញើ​ការ​ជូនដំណឹងដល់អ្នក​ ហើយ​នឹង​ត្រូវ​បាន​ផ្ដល់​សិទ្ធិ​ចូល​ប្រើ​ប្រាស់កាមេរ៉ា ទំនាក់ទំនង ឯកសារ មីក្រូហ្វូន ទូរសព្ទ និង SMS របស់​អ្នក"</string>
+    <string name="permission_description_summary_storage" msgid="1917071243213043858">"កម្មវិធីដែលមានការអនុញ្ញាតនេះអាចចូលប្រើប្រាស់ឯកសារទាំងអស់នៅលើឧបករណ៍នេះ"</string>
     <string name="work_policy_title" msgid="832967780713677409">"ព័ត៌មាន​អំពីគោលការណ៍ការងារ​របស់អ្នក"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"ការកំណត់​​ដែល​ស្ថិត​ក្រោម​ការ​គ្រប់គ្រងដោយ​​អ្នកគ្រប់គ្រង​ផ្នែកព័ត៌មានវិទ្យា​របស់អ្នក"</string>
 </resources>

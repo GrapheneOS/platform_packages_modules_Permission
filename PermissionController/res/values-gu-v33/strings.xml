@@ -17,10 +17,8 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="role_dialer_request_description" msgid="6188305064871543419">"આ ઍપને તમને નોટિફિકેશન મોકલવાની મંજૂરી આપવામાં આવશે અને તમારા કૅમેરા, સંપર્કો, માઇક્રોફોન, ફોન અને SMSનો ઍક્સેસ આપવામાં આવશે."</string>
-    <!-- no translation found for role_sms_request_description (1506966389698625395) -->
-    <skip />
-    <!-- no translation found for permission_description_summary_storage (1917071243213043858) -->
-    <skip />
+    <string name="role_sms_request_description" msgid="1506966389698625395">"આ ઍપને તમને નોટિફિકેશન મોકલવાની મંજૂરી આપવામાં આવશે અને તમારા કૅમેરા, સંપર્કો, ફાઇલો, માઇક્રોફોન, ફોન અને SMSનો ઍક્સેસ આપવામાં આવશે"</string>
+    <string name="permission_description_summary_storage" msgid="1917071243213043858">"આ પરવાનગી ધરાવતી ઍપ આ ડિવાઇસ પરની બધી ફાઇલો ઍક્સેસ કરી શકે છે"</string>
     <string name="work_policy_title" msgid="832967780713677409">"તમારી કાર્ય પૉલિસીની માહિતી"</string>
     <string name="work_policy_summary" msgid="3886113358084963931">"તમારા IT ઍડમિન દ્વારા મેનેજ કરવામાં આવતા સેટિંગ"</string>
 </resources>
