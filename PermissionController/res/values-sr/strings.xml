@@ -236,8 +236,8 @@
     <string name="permission_description_summary_sensors" msgid="1836045815643119949">"Апликације са овом дозволом могу да приступају подацима сензора о виталним функцијама"</string>
     <string name="permission_description_summary_sms" msgid="725999468547768517">"Апликације са овом дозволом могу да шаљу и прегледају SMS-ове"</string>
     <string name="permission_description_summary_storage" msgid="6575759089065303346">"Апликације са овом дозволом могу да приступају сликама, медијском садржају и фајловима на уређају"</string>
-    <string name="permission_description_summary_read_media_aural" msgid="2789020637856210454">"Апликације са овом дозволом могу да приступају музици и другим аудио фајловима на уређају"</string>
-    <string name="permission_description_summary_read_media_visual" msgid="4210569227927436735">"Апликације са овом дозволом могу да приступају сликама и видео снимцима на уређају"</string>
+    <string name="permission_description_summary_read_media_aural" msgid="3354728149930482199">"Апликације са овом дозволом могу да приступају музици и другим аудио фајловима на овом уређају"</string>
+    <string name="permission_description_summary_read_media_visual" msgid="4991801977881732641">"Апликације са овом дозволом могу да приступају сликама и видео снимцима на овом уређају"</string>
     <string name="app_permission_most_recent_summary" msgid="4292074449384040590">"Последњи приступ: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_most_recent_denied_summary" msgid="7659497197737708112">"Тренутно одбијено/последњи приступ: <xliff:g id="TIME_DATE">%1$s</xliff:g>"</string>
     <string name="app_permission_never_accessed_summary" msgid="401346181461975090">"Без приступа"</string>
@@ -249,8 +249,7 @@
     <string name="allowed_storage_full" msgid="5356699280625693530">"Имају дозволу за управљање свим датотекама"</string>
     <string name="ask_header" msgid="2633816846459944376">"Питај сваки пут"</string>
     <string name="denied_header" msgid="903209608358177654">"Није дозвољено"</string>
-    <!-- no translation found for storage_footer_hyperlink_text (8873343987957834810) -->
-    <skip />
+    <string name="storage_footer_hyperlink_text" msgid="8873343987957834810">"Прикажи још апликација са приступом свим фајловима"</string>
     <string name="days" msgid="609563020985571393">"{count,plural, =1{1 дан}one{# дан}few{# дана}other{# дана}}"</string>
     <string name="hours" msgid="3447767892295843282">"{count,plural, =1{1 сат}one{# сат}few{# сата}other{# сати}}"</string>
     <string name="minutes" msgid="4408293038068503157">"{count,plural, =1{1 минут}one{# минут}few{# минута}other{# минута}}"</string>
@@ -281,15 +280,8 @@
     <string name="notification_listener_reminder_notification_content" msgid="4740891089329946164">"<xliff:g id="APP_NAME">%s</xliff:g> може да чита сва обавештења."</string>
     <string name="notification_listener_warning_card_content" msgid="8181427178654279926">"Ова апликација може да чита сва обавештења."</string>
     <string name="notification_listener_remove_access_button_label" msgid="7101898782417817097">"Уклони приступ"</string>
-    <!-- no translation found for notification_listener_review_app_button_label (4452381557379652037) -->
-    <skip />
+    <string name="notification_listener_review_app_button_label" msgid="4452381557379652037">"Прегледајте све апликације са приступом обавештењима"</string>
     <string name="notification_listener_remove_access_success_label" msgid="2477611529875633107">"Приступ је уклоњен"</string>
-    <string name="accessibility_access_reminder_notification_title" msgid="798487829152263568">"Прегледајте апликацију са функцијама приступачности"</string>
-    <string name="accessibility_access_reminder_notification_content" msgid="3897831796455872834">"<xliff:g id="APP_NAME">%s</xliff:g> може да чита сав садржај на екрану, да приказује садржај преко других апликација и да прати интеракције."</string>
-    <string name="accessibility_access_warning_card_content" msgid="3418029245041163015">"Ова апликација може да чита сав садржај на екрану, да приказује садржај преко других апликација и да прати интеракције."</string>
-    <string name="accessibility_remove_access_button_label" msgid="44145801526711640">"Уклони приступ"</string>
-    <string name="accessibility_show_all_apps_button_label" msgid="5027167822346195212">"Прегледајте апликације са функцијама приступачности"</string>
-    <string name="accessibility_remove_access_success_label" msgid="4380995302917014670">"Приступ је уклоњен"</string>
     <string name="auto_revoke_after_notification_title" msgid="5417761027669887431">"Дозволе за апликације су уклоњене ради заштите приватности"</string>
     <string name="auto_revoke_after_notification_content_one" msgid="6804038707453662753">"Апликција <xliff:g id="APP_NAME">%s</xliff:g> није коришћена пар месеци. Додирните да бисте прегледали."</string>
     <string name="auto_revoke_after_notification_content_two" msgid="9108709764831425172">"<xliff:g id="APP_NAME">%s</xliff:g> и још једна апликација нису коришћене пар месеци. Додирните да бисте прегледали."</string>
@@ -345,8 +337,6 @@
     <string name="role_assistant_label" msgid="4727586018198208128">"Подразумев. дигитални помоћник"</string>
     <string name="role_assistant_short_label" msgid="3369003713187703399">"Апликација дигиталног помоћника"</string>
     <string name="role_assistant_description" msgid="6622458130459922952">"Апликације за помоћ могу да вам помогну на основу информација са екрана који гледате. Неке апликације подржавају услуге покретача и гласовног уноса да би вам пружиле интегрисану помоћ."</string>
-    <string name="role_assistant_request_title" msgid="5964976301922776060">"Желите ли да подесите апликацију <xliff:g id="APP_NAME">%1$s</xliff:g> као подразумевану апликацију за помоћ?"</string>
-    <string name="role_assistant_request_description" msgid="6836644847620178483">"Добија приступ евиденцији SMS-ова и позива"</string>
     <string name="role_browser_label" msgid="2877796144554070207">"Подразумевана апл. прегледача"</string>
     <string name="role_browser_short_label" msgid="6745009127123292296">"Апликација за прегледач"</string>
     <string name="role_browser_description" msgid="3465253637499842671">"Апликације које вам дају приступ интернету и приказују линкове које можете да додирнете"</string>
@@ -356,13 +346,13 @@
     <string name="role_dialer_short_label" msgid="7186888549465352489">"Апликација за телефон"</string>
     <string name="role_dialer_description" msgid="8768708633696539612">"Апликације које вам омогућавају да упућујете и примате телефонске позиве на уређају"</string>
     <string name="role_dialer_request_title" msgid="5959618560705912058">"Желите ли да подесите <xliff:g id="APP_NAME">%1$s</xliff:g> као подразумевану апликацију за телефон?"</string>
-    <string name="role_dialer_request_description" msgid="2264219375528345270">"Добија приступ евиденцији позива и слању SMS-ова"</string>
+    <string name="role_dialer_request_description" msgid="6288839625724909320">"Ова апликација ће добити приступ камери, контактима, микрофону, телефону и SMS-овима"</string>
     <string name="role_dialer_search_keywords" msgid="3324448983559188087">"бројчаник"</string>
     <string name="role_sms_label" msgid="8456999857547686640">"Подразумевана апл. за SMS"</string>
     <string name="role_sms_short_label" msgid="4371444488034692243">"Апликација за SMS"</string>
     <string name="role_sms_description" msgid="3424020199148153513">"Апликације које вам омогућавају да користите број телефона да бисте слали и примали кратке SMS-ове, слике, видео снимке и још тога"</string>
     <string name="role_sms_request_title" msgid="7953552109601185602">"Желите ли да подесите <xliff:g id="APP_NAME">%1$s</xliff:g> као подразумевану апликацју за SMS?"</string>
-    <string name="role_sms_request_description" msgid="983371022668134198">"Добија приступ контактима, SMS-овима, телефону"</string>
+    <string name="role_sms_request_description" msgid="2691004766132144886">"Ова апликација ће добити приступ камери, контактима, фајловима и медијима, микрофону, телефону и SMS-овима"</string>
     <string name="role_sms_search_keywords" msgid="8022048144395047352">"SMS, слање SMS-ова, поруке, слање порука"</string>
     <string name="role_emergency_label" msgid="7028825857206842366">"Подраз. апл. за хитне случ."</string>
     <string name="role_emergency_short_label" msgid="2388431453335350348">"Апликација за хитне случајеве"</string>
@@ -463,11 +453,11 @@
     <string name="permgrouprequest_coarselocation_imagetext" msgid="8650605041483025297">"Приближна"</string>
     <string name="permgrouprequest_calendar" msgid="1493150855673603806">"Желите да дозволите да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; приступа календару?"</string>
     <string name="permgrouprequest_sms" msgid="5672063688745420991">"Желите да дозволите да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; шаље и прегледа SMS-ове?"</string>
-    <string name="permgrouprequest_storage" msgid="7426990523173124539">"Желите да дозволите да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; приступа &lt;b&gt;фајловима и документима&lt;/b&gt; на уређају?"</string>
-    <string name="permgrouprequest_storage_q_to_s" msgid="3942779386983426698">"Приступ &lt;b&gt;сликама, видео снимцима, музици и аудио фајловима&lt;/b&gt; на уређају за &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgrouprequest_storage_pre_q" msgid="1681166745228672009">"Приступ &lt;b&gt;сликама, видео снимцима, музици и аудио и другим фајловима&lt;/b&gt; на уређају за &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
-    <string name="permgrouprequest_read_media_aural" msgid="5948278590400297839">"Желите да дозволите да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; приступа музици и другим аудио фајловима на овом уређају?"</string>
-    <string name="permgrouprequest_read_media_visual" msgid="4188474766470776052">"Желите да дозволите да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; приступа сликама и видео снимцима овог уређаја?"</string>
+    <string name="permgrouprequest_storage" msgid="8717773092518621602">"Желите да дозволите да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; приступа сликама, медијским и другим фајловима на уређају?"</string>
+    <string name="permgrouprequest_storage_q_to_s" msgid="8213701872983685505">"Приступ &lt;b&gt;сликама, видеу, музици и звуку&lt;/b&gt; на уређају за &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <string name="permgrouprequest_storage_pre_q" msgid="168130651144569428">"Приступ сликама, видеу, музици, звуку и другом на уређају за &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <string name="permgrouprequest_read_media_aural" msgid="2593365397347577812">"Дозвољавате ли приступ музици и звуку на овом уређају за &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
+    <string name="permgrouprequest_read_media_visual" msgid="5548780620779729975">"Дозвољавате ли приступ сликама и видеу на овом уређају за &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt;?"</string>
     <string name="permgrouprequest_microphone" msgid="2825208549114811299">"Желите да дозволите да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; снима звук?"</string>
     <string name="permgrouprequestdetail_microphone" msgid="8510456971528228861">"Апликација ће моћи да снима звук само док користите апликацију"</string>
     <string name="permgroupbackgroundrequest_microphone" msgid="8874462606796368183">"Желите да дозволите да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; снима звук?"</string>
@@ -489,7 +479,6 @@
     <string name="permgroupbackgroundrequestdetail_sensors" msgid="7726767635834043501">"Да бисте дозволили овој апликацији да све време приступа подацима сензора за тело, чак и када не користите апликацију, "<annotation id="link">"идите у подешавања."</annotation></string>
     <string name="permgroupupgraderequest_sensors" msgid="7576527638411370468">"Желите да &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; и даље приступа подацима сензора за тело док се апликација користи?"</string>
     <string name="permgrouprequest_notifications" msgid="6396739062335106181">"Желите да дозволите да вам &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; шаље обавештења?"</string>
-    <string name="permgrouprequestcontinue_notifications" msgid="3895098107355024027">"Желите да дозволите да вам &lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; и даље шаље обавештења?"</string>
     <string name="auto_granted_permissions" msgid="6009452264824455892">"Контролисане дозволе"</string>
     <string name="auto_granted_location_permission_notification_title" msgid="1438871159268985993">"Може да се приступи локацији"</string>
     <string name="auto_granted_permission_notification_body" msgid="6919835973190443695">"ИТ администратор дозвољава апликацији <xliff:g id="APP_NAME">%s</xliff:g> да приступа локацији"</string>
@@ -519,6 +508,7 @@
     <string name="safety_center_issue_card_dismiss_confirmation_title" msgid="2734809473425036382">"Желите да одбаците ово обавештење?"</string>
     <string name="safety_center_issue_card_confirm_dismiss_button" msgid="5884137843083634556">"Одбаци"</string>
     <string name="safety_center_issue_card_cancel_dismiss_button" msgid="2874578798877712346">"Откажи"</string>
+    <string name="safety_center_entries_category_title" msgid="34356964062813115">"Подешавања"</string>
     <string name="security_settings" msgid="3808106921175271317">"Безбедносна подешавања"</string>
     <string name="sensor_permissions_qs" msgid="4365989229426201877">"Дозволе за сензоре"</string>
     <string name="privacy_controls_qs" msgid="471793881466080745">"Контроле приватности"</string>
